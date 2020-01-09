@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB oktatóanyag: Az Apache TinkerPops Gremlin-konzoljának létrehozása, lekérdezése és bejárása'
+title: 'Lekérdezés Azure Cosmos DB Gremlin API-val a TinkerPop Gremlin konzol használatával: oktatóanyag'
 description: Az Azure Cosmos DB rövid útmutatója csúcsok, élek és lekérdezések az Azure Cosmos DB Gremlin API-val történő létrehozásához.
 author: luisbosquez
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815965"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665177"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával
 
@@ -25,7 +25,7 @@ ms.locfileid: "71815965"
 > * [PHP](create-graph-php.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával, majd az [Apache TinkerPop](https://tinkerpop.apache.org) [Gremlin-KONZOLját](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használhatja a Gremlin API-adatokkal való együttműködéshez. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
@@ -39,7 +39,7 @@ A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell lennie. A 3.2.5-ös vagy újabb verziót használja. (A Windows Gremlin-konzol használatához telepítenie kell [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
+Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) telepítve kell lennie. Az **ajánlott verzió: v 3.4.3** vagy korábbi. (Ha Windows rendszeren szeretné használni a Gremlin-konzolt, telepítenie kell a [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html)szolgáltatást).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -62,9 +62,9 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell le
     kapcsolatkészlet|{enableSsl: true}|A kapcsolatkészletre vonatkozó beállítás az SSL-hez.
     szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
-    A gazdagépek értékéhez másolja a **GREMLIN URI** értékét az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
+    A gazdagépek értékéhez másolja a **Gremlin URI** értéket az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    A jelszó értékéhez másolja az **elsődleges kulcsot** a **kulcsok** lapról: ![Az elsődleges kulcs megtekintése és másolása a Azure Portal, kulcsok lapon](./media/create-graph-gremlin-console/keys.png)
+    A jelszó értékéhez másolja az **Elsődleges kulcs** értékét a **Kulcsok** lapról: ![Az Azure Portal Kulcsok lapján található elsődleges kulcs megtekintése és másolása](./media/create-graph-gremlin-console/keys.png)
 
 A remote-secure.yaml fájlnak így kell kinéznie:
 
@@ -302,9 +302,9 @@ g.E().drop()
 g.V().drop()
 ```
 
-Gratulálunk! Ezt a Azure Cosmos DB végrehajtotta: Gremlin API-oktatóanyag!
+Gratulálunk! Az Azure Cosmos DB: Gremlin API-oktatóanyag végére ért.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -312,9 +312,9 @@ Gratulálunk! Ezt a Azure Cosmos DB végrehajtotta: Gremlin API-oktatóanyag!
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB-fiókot, miként készíthet gráfokat az Adatkezelő használatával, és hogyan hozhat létre csúcsokat és éleket, valamint hogy hogyan járhat be gráfokat a Gremlin-konzollal. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
+A rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB-fiókot, miként készíthet gráfokat az Adatkezelő használatával, és hogyan hozhat létre csúcsokat és éleket, valamint hogy hogyan járhat be gráfokat a Gremlin-konzollal. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 
 > [!div class="nextstepaction"]
 > [Lekérdezés a Gremlin használatával](tutorial-query-graph.md)

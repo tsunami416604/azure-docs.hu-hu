@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424969"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlések Azure Active Directory feltételes hozzáféréshez?
 
 A [Azure Active Directory (Azure ad) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. A feltételes hozzáférési szabályzatban megadhatja a választ ("ezt") a szabályzat aktiválásának okáról ("Ha ez megtörténik").
 
-![Szabályozás](./media/controls/10.png)
+![Vezérlés](./media/controls/10.png)
 
 A feltételes hozzáférés kontextusában
 
@@ -31,7 +31,7 @@ A feltételes hozzáférés kontextusában
 
 Egy feltétel-utasítás és a vezérlők kombinációja feltételes hozzáférési szabályzatot jelöl.
 
-![Szabályozás](./media/controls/61.png)
+![Vezérlés](./media/controls/61.png)
 
 Mindegyik vezérlő olyan követelmény, amelyet a személynek vagy a rendszernek be kell tartania, vagy meg kell határoznia, hogy mit tehet a felhasználó a bejelentkezés után.
 
@@ -49,7 +49,7 @@ A Grant Controls segítségével a kívánt vezérlők kiválasztásával letilt
 - Az összes kijelölt vezérlő (*és*)
 - Egy kiválasztott vezérlőelem teljesítése (*vagy*)
 
-![Szabályozás](./media/controls/18.png)
+![Vezérlés](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
@@ -76,7 +76,7 @@ További információkért lásd: [felügyelt eszközök megkövetelése a Cloud
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-hez csatlakoztatott eszköz
 
-Egy hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése egy másik lehetőség, amely az eszközön alapuló feltételes hozzáférési szabályzatokat konfigurálhatja. Ez a követelmény olyan Windows rendszerű asztali számítógépekre, laptopokra és vállalati tablettákra vonatkozik, amelyek egy helyszíni Active Directoryhoz vannak csatlakoztatva. Ha ez a beállítás be van jelölve, a feltételes hozzáférési szabályzat hozzáférést biztosít a helyszíni Active Directoryhoz és a Azure Active Directoryhoz csatlakoztatott eszközökhöz való hozzáférési kísérletekhez.  
+Egy hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése egy másik lehetőség, amely az eszközön alapuló feltételes hozzáférési szabályzatokat konfigurálhatja. Ez a követelmény olyan Windows rendszerű asztali számítógépekre, laptopokra és vállalati tablettákra vonatkozik, amelyek egy helyszíni Active Directoryhoz vannak csatlakoztatva. Ha ez a beállítás be van jelölve, a feltételes hozzáférési szabályzat hozzáférést biztosít a helyszíni Active Directoryhoz és a Azure Active Directoryhoz csatlakoztatott eszközökhöz való hozzáférési kísérletekhez. A Mac-eszközök nem támogatják a hibrid Azure AD-csatlakozást.
 
 További információ: [Azure Active Directory eszközön alapuló feltételes hozzáférési házirendek beállítása](require-managed-devices.md).
 
@@ -114,7 +114,7 @@ A jelenleg kompatibilis szolgáltatást nyújtó szolgáltatók a következők:
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Pingelési identitás](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
@@ -133,11 +133,11 @@ Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne
 
 Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
 
-![Szabályozás](./media/controls/82.png)
+![Vezérlés](./media/controls/82.png)
 
 Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
-![Szabályozás](./media/controls/81.png)
+![Vezérlés](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 
@@ -155,7 +155,7 @@ Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és 
 
 A munkamenet-vezérlők lehetővé teszik a felhőalapú alkalmazások korlátozott felhasználói élményét. A munkamenet-vezérlőket a Cloud apps kényszeríti, és az Azure AD által az alkalmazással kapcsolatban elérhető további információkra támaszkodik.
 
-![Szabályozás](./media/controls/31.png)
+![Vezérlés](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 
@@ -166,7 +166,7 @@ További tudnivalókért lásd:
 - [Korlátozott hozzáférés engedélyezése a SharePoint Online-ban](https://aka.ms/spolimitedaccessdocs)
 - [Korlátozott hozzáférés engedélyezése az Exchange Online-ban](https://aka.ms/owalimitedaccess)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
 - Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

@@ -1,19 +1,18 @@
 ---
 title: Referenciák használata a Azure Stream Analyticsban való keresésekhez
 description: Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási adatok a Azure Stream Analytics feladatok lekérdezési tervében lévő adatok kereséséhez vagy összekapcsolásához.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369564"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -47,18 +46,18 @@ Ha a hivatkozási adatok várhatóan nem változnak, akkor a statikus hivatkozá
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Hivatkozási információ létrehozása ütemterv alapján
 
-Ha a hivatkozási adatok lassan módosulnak, akkor a hivatkozási adatok frissítésének támogatása a {Date} és az {Time} helyettesítési tokent használó bemeneti konfigurációban megadott elérésiút-minta megadásával engedélyezhető. Stream Analytics felveszi a frissített hivatkozási adatdefiníciókat ezen elérésiút-minta alapján. Például az **"éééé-hh-dd"** dátumformátum és a **"hh-mm"** időformátuma `sample/{date}/{time}/products.csv`. a stream Analyticst arra utasítja, hogy a frissített blobot a :30 3. április 16-án, 2015 UTC időzónában vegye fel.
+Ha a hivatkozási adatok lassan módosulnak, akkor a hivatkozási adatok frissítésének támogatása a {Date} és az {Time} helyettesítési tokent használó bemeneti konfigurációban megadott elérésiút-minta megadásával engedélyezhető. Stream Analytics felveszi a frissített hivatkozási adatdefiníciókat ezen elérésiút-minta alapján. Például az **"éééé-hh-nn"** dátumformátum és a **"hh-mm"** időformátuma `sample/{date}/{time}/products.csv` az Stream Analytics a frissített blob `sample/2015-04-16/17-30/products.csv` a 5:30 PM április 16-án 2015 UTC időzóna.
 
 Azure Stream Analytics automatikusan megkeresi a frissített hivatkozási adatblobokat egy perces intervallumban. Ha az időbélyeg 10:30:00-as számú blobja kis késleltetéssel van feltöltve (például 10:30:30), a blobra hivatkozó Stream Analytics-feladatban kis késleltetést fog tapasztalni. Az ilyen helyzetek elkerülése érdekében javasoljuk, hogy a megcélzott tényleges időpontnál (10:30:00) korábbinál töltse fel a blobot, hogy a Stream Analytics feladatnak elegendő idő legyen ahhoz, hogy felderítse és betöltse a memóriába és műveleteket hajtson végre. 
 
 > [!NOTE]
-> Jelenleg Stream Analytics feladat csak akkor keresi a Blobok frissítését, ha a gép ideje a blob nevében kódolt időpontra van beállítva. A feladattípus például a lehető legrövidebb `sample/2015-04-16/17-30/products.csv` értéket fogja keresni, de a 2015 UTC időzónában nem korábbi, mint 5:30 PM-t. A rendszer *soha nem* keres olyan blobot, amely a felderített utolsónál korábbi kódolású.
+> Jelenleg Stream Analytics feladat csak akkor keresi a Blobok frissítését, ha a gép ideje a blob nevében kódolt időpontra van beállítva. A feladatok például a lehető leghamarabb megkeresik a `sample/2015-04-16/17-30/products.csv`t, de az 2015 UTC időzónában nem korábbi, mint 5:30 PM. április 16-án. A rendszer *soha nem* keres olyan blobot, amely a felderített utolsónál korábbi kódolású.
 > 
-> Ha például a feladatban megtalálta a blobot, `sample/2015-04-16/17-30/products.csv`, a rendszer figyelmen kívül hagyja a 5:30. április 16-án, 2015-kor korábbi, kódolt dátummal ellátott fájlokat, így ha a feladattal azonos tárolóban jön létre egy későn érkező `sample/2015-04-16/17-25/products.csv` blob, a feladatot nem fogja használni.
+> Ha például a feladatban megtalálta a blobot `sample/2015-04-16/17-30/products.csv` akkor a rendszer figyelmen kívül hagyja az összes olyan fájlt, amely a 5:30. április 16-ától korábbi, 2015, így ha egy későn érkező `sample/2015-04-16/17-25/products.csv` blob ugyanabban a tárolóban jön létre, a feladatot nem fogja használni.
 > 
-> Hasonlóképpen, ha a `sample/2015-04-16/17-30/products.csv` csak 10:03. április 16-án, 2015-kor, de a tárolóban nincs korábbi dátummal ellátott blob, a feladathoz a 10:03 április 2015 16-i.
+> Hasonlóképpen, ha a `sample/2015-04-16/17-30/products.csv` csak a 10:03. április 16-án, 2015-ban készült, de a tárolóban nincs korábbi dátummal rendelkező blob, a feladattal a 10:03. április 16-ától kezdődően a fájlt fogja használni 2015, majd addig használja az előző hivatkozási adatait.
 > 
-> Ez alól kivételt képez, ha a feladatsornak időben újra fel kell dolgoznia az adatfeldolgozást, vagy amikor a feladatot először indítja el. A kezdéskor a rendszer a feladatok kezdési időpontja előtt előállított legújabb blobot keresi. Erre azért van szükség, hogy a feladatok elindulásakor ne legyen **üres** a hivatkozás adatkészlete. Ha az egyik nem található, a feladatokban a következő diagnosztika látható: `Initializing input without a valid reference data blob for UTC time <start time>`.
+> Ez alól kivételt képez, ha a feladatsornak időben újra fel kell dolgoznia az adatfeldolgozást, vagy amikor a feladatot először indítja el. A kezdéskor a rendszer a feladatok kezdési időpontja előtt előállított legújabb blobot keresi. Erre azért van szükség, hogy a feladatok elindulásakor ne legyen **üres** a hivatkozás adatkészlete. Ha az egyik nem található, a feladattípus a következő diagnosztikai: `Initializing input without a valid reference data blob for UTC time <start time>`jeleníti meg.
 
 A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) a stream Analytics által a hivatkozási adatok definícióinak frissítéséhez szükséges frissített Blobok létrehozásának feladatát is felhasználhatja. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely az adatok áthelyezésének és átalakításának összehangolására és átalakítására szolgál. Data Factory támogatja a [nagy számú felhőalapú és helyszíni adattárakhoz való csatlakozást](../data-factory/copy-activity-overview.md) , valamint az adatáthelyezést a megadott menetrend szerint. További információ és lépésenkénti útmutató arról, hogyan állíthat be egy Data Factory folyamatot, hogy olyan Stream Analyticsre hivatkozzon, amely előre meghatározott ütemterv alapján frissül, és tekintse meg ezt a [GitHub-mintát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
 

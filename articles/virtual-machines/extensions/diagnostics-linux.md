@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359362"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -127,7 +127,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Name (Név) | Érték
+Név | Value (Díj)
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő, `https://core.windows.net`. Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
@@ -135,7 +135,7 @@ storageAccountSasToken | Egy [fiók sas-jogkivonata](https://azure.microsoft.com
 mdsdHttpProxy | választható A HTTP-proxy azon adatai, amelyek lehetővé teszik a bővítménynek a megadott Storage-fiókhoz és végponthoz való csatlakozást.
 sinksConfig | választható Azon alternatív célhelyek részletei, amelyekhez mérőszámokat és eseményeket lehet továbbítani. A bővítmény által támogatott adattárolók konkrét részletei az alábbi szakaszokban találhatók.
 
-Ha SAS-tokent szeretne beolvasni egy Resource Manager-sablonon belül, használja a **listAccountSas** függvényt. Példa a sablonra: [példa a függvények listázására](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
+Ha SAS-tokent szeretne beolvasni egy Resource Manager-sablonon belül, használja a **listAccountSas** függvényt. Példa a sablonra: [példa a függvények listázására](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 A szükséges SAS-tokent egyszerűen létrehozhatja a Azure Portalon keresztül.
 
@@ -165,7 +165,7 @@ Másolja a generált SAS-t a storageAccountSasToken mezőbe; eltávolítja a kez
 
 Ez a választható szakasz azokat a további célhelyeket határozza meg, amelyekhez a bővítmény elküldi az általa gyűjtött adatokat. A "fogadó" tömb tartalmaz egy objektumot minden további adatfogadóhoz. A "type" attribútum meghatározza az objektum többi attribútumát.
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
 név | A bővítmény konfigurációjában máshol a fogadóhoz való hivatkozáshoz használt karakterlánc.
 type | A definiált fogadó típusa. Meghatározza az ilyen típusú példányok egyéb értékeit (ha vannak ilyenek).
@@ -227,7 +227,7 @@ Ez a struktúra különböző beállításokat tartalmaz, amelyek a bővítmény
 }
 ```
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
 StorageAccount | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta. A [védett beállításokban](#protected-settings)megadott névnek meg kell egyeznie.
 mdsdHttpProxy | választható Ugyanaz, mint a [védett beállításokban](#protected-settings). A nyilvános értéket felülbírálja a magánhálózati érték, ha be van állítva. Helyezzen el egy titkos kulcsot (például egy jelszót) tartalmazó proxybeállításokat a [védett beállításokban](#protected-settings).
@@ -250,7 +250,7 @@ A többi elemet a következő szakaszokban részletesen ismertetjük.
 
 Ez a választható struktúra szabályozza a metrikák és naplók összegyűjtését az Azure metrika szolgáltatásba és más adatnyelők számára történő kézbesítéshez. `performanceCounters` vagy `syslogEvents` vagy mindkettőt kell megadnia. Meg kell adnia a `metrics` struktúrát.
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
 eventVolume | választható A Storage-táblán belül létrehozott partíciók számának szabályozása. `"Large"`, `"Medium"`vagy `"Small"`egyikének kell lennie. Ha nincs megadva, az alapértelmezett érték `"Medium"`.
 sampleRateInSeconds | választható A nyers (nem aggregált) mérőszámok gyűjteménye közötti alapértelmezett időköz. A legkisebb támogatott mintavételi sebesség 15 másodperc. Ha nincs megadva, az alapértelmezett érték `15`.
@@ -267,7 +267,7 @@ sampleRateInSeconds | választható A nyers (nem aggregált) mérőszámok gyűj
 }
 ```
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
 resourceId | A virtuális gép vagy a virtuálisgép-méretezési csoport Azure Resource Manager erőforrás-azonosítója, amelyre a virtuális gép tartozik. Ezt a beállítást akkor is meg kell adni, ha a konfigurációban bármilyen JsonBlob-fogadó használatban van.
 scheduledTransferPeriod | Az összesített metrikák kiszámításának és az Azure-mérőszámokra való átadásának gyakorisága 8601-as Időintervallumként kifejezve. A legkisebb átvitel időtartama 60 másodperc, azaz PT1M. Legalább egy scheduledTransferPeriod meg kell adnia.
@@ -307,16 +307,16 @@ Ez a választható szakasz szabályozza a metrikák gyűjteményét. A nyers min
 * utolsó összegyűjtött érték
 * az Összesítés kiszámításához használt nyers minták száma
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
-Fogadóként | választható Egy vesszővel elválasztott lista azoknak a nyelőknek a neveiről, amelyekhez a LAD összesített metrikai eredményeket küld. Minden összesített metrika közzé lesz téve az egyes felsorolt fogadók számára. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
+fogadóként | választható Egy vesszővel elválasztott lista azoknak a nyelőknek a neveiről, amelyekhez a LAD összesített metrikai eredményeket küld. Minden összesített metrika közzé lesz téve az egyes felsorolt fogadók számára. Lásd: [sinksConfig](#sinksconfig). Példa: `"EHsink1, myjsonsink"`.
 type | A metrika tényleges szolgáltatóját azonosítja.
-Osztály | A "Counter" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
+osztály | A "Counter" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
 számláló | A "class" kifejezéssel együtt a szolgáltató névterében lévő adott mérőszámot azonosítja.
 counterSpecifier | Az Azure-metrikák névterében lévő adott mérőszámot azonosítja.
-condition | választható Kiválasztja az objektum egy adott példányát, amelyre a metrika vonatkozik, vagy kiválasztja az összesítést az adott objektum összes példánya között. További információ: `builtin` metrikai definíciók.
+feltétel | választható Kiválasztja az objektum egy adott példányát, amelyre a metrika vonatkozik, vagy kiválasztja az összesítést az adott objektum összes példánya között. További információ: `builtin` metrikai definíciók.
 Mintavételi | Az 8601-es intervallum, amely meghatározza, hogy a rendszer milyen mértékben gyűjtsön nyers mintákat a metrikához. Ha nincs beállítva, a gyűjtési időközt a [sampleRateInSeconds](#ladcfg)érték határozza meg. A legrövidebb támogatott mintavételi sebesség 15 másodperc (PT15S).
-egység | A következő karakterláncok egyikének kell lennie: "Count", "Bytes", "Seconds", "százalék", "CountPerSecond", "BytesPerSecond", "ezredmásodperc". Meghatározza a metrika egységét. Az összegyűjtött adatok felhasználói a begyűjtött adatértékeket az egységnek megfelelően elvárják. A mező figyelmen kívül hagyja ezt a mezőt.
+mennyiség | A következő karakterláncok egyikének kell lennie: "Count", "Bytes", "Seconds", "százalék", "CountPerSecond", "BytesPerSecond", "ezredmásodperc". Meghatározza a metrika egységét. Az összegyűjtött adatok felhasználói a begyűjtött adatértékeket az egységnek megfelelően elvárják. A mező figyelmen kívül hagyja ezt a mezőt.
 displayName | A címkét (a társított területi beállítás által megadott nyelven) az Azure-Mérőszámokban lévő adatokhoz kell csatolni. A mező figyelmen kívül hagyja ezt a mezőt.
 
 A counterSpecifier tetszőleges azonosító. A metrikák felhasználói, például az Azure Portal ábrázolási és riasztási funkció, a counterSpecifier használja "kulcsként", amely egy metrika vagy egy metrika egy példányát azonosítja. `builtin` metrikák esetében javasoljuk, hogy a `/builtin/`kezdetű counterSpecifier értékeket használja. Ha egy metrika egy adott példányát gyűjti be, javasoljuk, hogy a példány azonosítóját csatolja a counterSpecifier értékhez. Néhány példa:
@@ -353,9 +353,9 @@ Ez a választható szakasz a naplózási események a syslog-ből történő gy�
 
 A syslogEventConfiguration-gyűjtemény egyetlen bejegyzést tartalmaz minden olyan syslog-létesítményhez, amely az összes fontos eszközt felvette. Ha a minSeverity "nincs" egy adott létesítmény esetében, vagy ha a létesítmény egyáltalán nem jelenik meg az elemben, akkor a rendszer nem rögzíti az adott létesítményből származó eseményeket.
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
-Fogadóként | Vesszővel tagolt lista azoknak a fogadóknak a neveiről, amelyeken az egyes naplózási események közzé vannak téve. A syslogEventConfiguration korlátozásait egyeztető összes naplózási eseményt közzéteszi az egyes felsorolt fogadók. Példa: "EHforsyslog"
+fogadóként | Vesszővel tagolt lista azoknak a fogadóknak a neveiről, amelyeken az egyes naplózási események közzé vannak téve. A syslogEventConfiguration korlátozásait egyeztető összes naplózási eseményt közzéteszi az egyes felsorolt fogadók. Példa: "EHforsyslog"
 kódban | A syslog-létesítmény neve (például "LOG\_USER" vagy "LOG\_LOCAL0"). A teljes listához tekintse meg a [syslog man oldalának](http://man7.org/linux/man-pages/man3/syslog.3.html) "létesítmény" szakaszát.
 minSeverity | A syslog súlyossági szintje (például "LOG\_ERR" vagy "LOG\_INFO"). Tekintse meg a [syslog man oldalának](http://man7.org/linux/man-pages/man3/syslog.3.html) "szint" szakaszát a teljes listához. A bővítmény rögzíti a létesítménynek a megadott szinten vagy felett eljuttatott eseményeket.
 
@@ -382,13 +382,13 @@ Ez a választható szakasz vezérli a [tetszőleges típusú](https://github.com
 ]
 ```
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
 névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
 lekérdezés | A végrehajtandó a kipróbálható adatlekérdezés.
 table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
 frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
-Fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
+fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
 
 Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
 
@@ -406,11 +406,11 @@ A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok ír
 ]
 ```
 
-Elem | Érték
+Elem | Value (Díj)
 ------- | -----
-file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket.
+fájl | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket.
 table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
-Fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
+fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
 
 Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
 
@@ -419,7 +419,7 @@ Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
 A beépített metrikai szolgáltató a felhasználók széles köréhez legérdekesebb mérőszámok forrása. Ezek a metrikák öt átfogó osztályba sorolhatók:
 
 * Processzor
-* Memory (Memória)
+* Memória
 * Network (Hálózat)
 * Fájlrendszer
 * Lemez
@@ -431,7 +431,7 @@ A metrikák processzor-osztálya információt nyújt a virtuális gép processz
 számláló | Jelentés
 ------- | -------
 PercentIdleTime | Az összesítési időszakban a kernel üresjárati ciklusát végrehajtó munkafolyamatok százalékos aránya
-PercentProcessorTime | Nem tétlen szálat végrehajtó idő százalékos aránya
+percentProcessorTime | Nem tétlen szálat végrehajtó idő százalékos aránya
 PercentIOWaitTime | Az i/o-műveletek befejezésére várakozási idő százalékos aránya
 PercentInterruptTime | Hardver-/szoftver-megszakítások és-DPC végrehajtási idejének százalékos aránya (késleltetett eljárási hívások)
 PercentUserTime | A nem tétlen idő az összesítési időszakban, a felhasználó által a normál prioritásban eltöltött idő százalékos aránya
@@ -535,11 +535,11 @@ A parancs feltételezi, hogy az Azure CLI Azure Resource Management (ARM) üzemm
 
 Az előző definíciók alapján Íme egy példa a 3,0-es, néhány magyarázattal ellátott bővítmény-konfigurációra. Ha alkalmazni szeretné a mintát az esetére, használja a saját Storage-fiók nevét, a fiók SAS-tokenjét és a EventHubs SAS-tokeneket.
 
-### <a name="privateconfigjson"></a>PrivateConfig.json
+### <a name="privateconfigjson"></a>PrivateConfig. JSON
 
 Ezek a magánhálózati beállítások a következőket konfigurálják:
 
-* egy Storage-fiók
+* Egy Storage-fiók
 * egy megfelelő fiók SAS-jogkivonata
 * több mosogató (JsonBlob vagy EventHubs SAS-tokenekkel)
 
@@ -585,7 +585,7 @@ Ezek a magánhálózati beállítások a következőket konfigurálják:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig.json
+### <a name="publicconfigjson"></a>PublicConfig. JSON
 
 Ezek a nyilvános beállítások a következőt okozzák:
 
@@ -682,7 +682,7 @@ A konfigurációban szereplő `resourceId` meg kell egyeznie a virtuális gép v
 * Ha az Azure automatikus méretezést használja, az automatikus skálázási konfiguráció resourceId meg kell egyeznie a LAD által használt resourceId.
 * A resourceId a LAD által írt JsonBlobs nevére épül.
 
-## <a name="view-your-data"></a>Az adatai megtekintése
+## <a name="view-your-data"></a>Adatok megtekintése
 
 A Azure Portal használatával megtekintheti a teljesítményadatokat, vagy beállíthatja a riasztásokat:
 
@@ -694,7 +694,7 @@ A JsonBlob elküldhető adattárolók a [védett beállítások](#protected-sett
 
 Emellett használhatja ezeket a felhasználói felületi eszközöket az Azure Storage-ban tárolt adatok eléréséhez:
 
-* Visual Studio Server Explorer.
+* A Visual Studio Server Explorer.
 * [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azure Storage-táblákat és-tárolókat mutatja be egy, a teszt virtuális gépen megfelelően konfigurált, LAD 3,0-es bővítménnyel. A rendszerkép nem egyezik pontosan a [LAD 3,0-konfigurációval](#an-example-lad-30-configuration).
@@ -703,7 +703,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-what-is-event-hubs.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../monitoring-and-diagnostics/insights-alerts-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) létrehozása a mérőszámokhoz.

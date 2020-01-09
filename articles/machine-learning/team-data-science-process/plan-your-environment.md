@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495042"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647305"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
@@ -47,7 +47,7 @@ Helyi vagy Felhőbeli adatai vannak? A lehetséges helyszínek a következők:
 
 * nyilvánosan elérhető HTTP-címek
 * helyi vagy hálózati fájl helye
-* egy SQL Server adatbázis
+* SQL Server-adatbázis
 * Azure Storage-tároló
 
 ### <a name="what-is-the-azure-destination"></a>Mi az Azure-cél?
@@ -109,7 +109,7 @@ Ezek a kérdések kulcsfontosságúak a tárolási és feldolgozási környezete
 Használja például a Azure Machine Learning Studio (klasszikus) környezetet:
 
 * A Azure Machine Learning Studio által támogatott adatformátumok és típusok listáját az [adatformátumok és az adattípusok támogatottak](../studio/import-data.md#supported-data-formats-and-data-types) című szakaszban találja.
-* Az elemzési folyamatban használt egyéb Azure-szolgáltatások korlátaival kapcsolatos információkért lásd: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-subscription-service-limits.md).
+* Az elemzési folyamatban használt egyéb Azure-szolgáltatások korlátaival kapcsolatos információkért lásd: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Adatminőségi kérdések: feltárás és előzetes feldolgozás
 
@@ -158,7 +158,7 @@ A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehet
 
 Miután megválaszolta az előző szakaszban leírtakat, készen áll annak meghatározására, hogy melyik forgatókönyv felel meg legjobban az esetnek. A példákat a [Azure Machine learning speciális elemzési forgatókönyvei](plan-sample-scenarios.md)ismertetik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi a csoportos adatelemzési folyamat (TDSP)?](overview.md)

@@ -3,12 +3,12 @@ title: Oktatóanyag – Azure-beli virtuálisgép-fürt létrehozása a Terrafor
 description: A Terraform és a HCL használatával hozzon létre egy linuxos virtuálisgép-fürtöt az Azure-beli terheléselosztó segítségével
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159271"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665358"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform és a HCL-val
 
@@ -58,7 +58,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. Gyakran előfordul, hogy a `terraform.tfvars` Terraform nevet adja a Terraform, mivel a automatikusan betölt minden `terraform.tfvars` nevű fájlt (vagy `*.auto.tfvars`), ha az aktuális könyvtárban van. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `tenant` által visszaadott `az ad sp create-for-rbac` értéket. A `client_id` helyett használja az `appId` által visszaadott `az ad sp create-for-rbac` értéket. A `client_secret` helyett használja az `password` által visszaadott `az ad sp create-for-rbac` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -208,7 +208,7 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Alapértelmezés szerint a Terraform a következőképpen próbálta megkeresni 
 - `terraform.tfvars` nevű fájl
 - A nevű fájl a következő minta használatával: `*.auto.tfvars`
 
-Azonban a változók fájljának nem kell követnie az előző két konvenció egyikét sem. Ebben az esetben adja meg a változók fájlnevét a `-var-file` paraméterrel. A következő példa szemlélteti ezt a pontot:
+Azonban a változók fájljának nem kell követnie az előző két konvenció egyikét sem. Ebben az esetben adja meg a változók fájlnevét a `-var-file` paraméterrel, ahol a változó fájl neve nem tartalmaz kiterjesztést. A következő példa szemlélteti ezt a pontot:
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 A Terraform meghatározza azokat a műveleteket, amelyek szükségesek a konfigurációs fájlban megadott állapot eléréséhez.

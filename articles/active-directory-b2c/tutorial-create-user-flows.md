@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063397"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425506"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: Felhasználói folyamatok létrehozása a Azure Active Directory B2Cban
+# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
 Előfordulhat, hogy az alkalmazásaiban [felhasználói folyamatok](active-directory-b2c-reference-policies.md) vannak, amelyek lehetővé teszik a felhasználók számára, hogy regisztráljanak, jelentkezzenek be vagy kezelhetik a profiljaikat. A Azure Active Directory B2C (Azure AD B2C) bérlőben több különböző típusú felhasználói folyamatot is létrehozhat, és igény szerint használhatja azokat az alkalmazásokban. A felhasználói folyamatok az alkalmazások között újra felhasználhatók.
 
@@ -34,19 +34,19 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Regisztrálja a létrehozni kívánt felhasználói folyamatok részét képező [alkalmazásokat](tutorial-register-applications.md) .
+[Regisztrálja](tutorial-register-applications.md) a létrehozni kívánt felhasználói folyamatok részét képező alkalmazásokat.
 
 ## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Regisztrációs és bejelentkezési felhasználói folyamat létrehozása
 
 A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigurációval kezeli a regisztrálási és a bejelentkezési élményt. Az alkalmazás felhasználói a környezettől függően a megfelelő útvonalat vezetik le.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-    ![Címtár-és előfizetés-szűrő a B2C-bérlő kiválasztásával](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![B2C-bérlő, címtár és előfizetés panel, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. A bal oldali menüben a **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. A **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
 
     ![Felhasználói folyamatok lap a portálon új felhasználói folyamat gomb kiemelve](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -59,63 +59,63 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 
     ![Felhasználói folyamat létrehozása lap Azure Portal a tulajdonságok kiemelve](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-1. **Felhasználói attribútumok és**jogcímek esetében válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, és a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése**lehetőséget, majd az **ország/régió**, a **megjelenítendő név**és az **Irányítószám**elemnél válassza az attribútumok és jogcímek lehetőséget. Kattintson az **OK** gombra.
+1. **Felhasználói attribútumok és jogcímek**esetében válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, és a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése**lehetőséget, majd az **ország/régió**, a **megjelenítendő név**és az **Irányítószám**elemnél válassza az attribútumok és jogcímek lehetőséget. Kattintson az **OK** gombra.
 
     ![Attribútumok és jogcímek kiválasztása lap három jogcímek kiválasztásával](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. A *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
+1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** `https://jwt.ms`nak kell megjelennie.
 1. Kattintson a **felhasználói folyamat futtatása**elemre, majd válassza a **regisztráció most**lehetőséget.
 
     ![Felhasználói folyamat futtatása lap a portálon a felhasználói folyamat futtatása gomb kiemelve](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
 1. Adjon meg egy érvényes e-mail-címet, kattintson az **ellenőrző kód küldése**elemre, adja meg a kapott ellenőrző kódot, majd válassza a **kód ellenőrzése**lehetőséget.
 1. Adjon meg egy új jelszót, és erősítse meg a jelszót.
-1. Válassza ki az országot és a régiót, adja meg a megjeleníteni kívánt nevet, adjon meg egy irányítószámot, majd kattintson a **Létrehozás**gombra. A rendszer visszaküldi `https://jwt.ms` a tokent, és megjelenik Önnek.
+1. Válassza ki az országot és a régiót, adja meg a megjeleníteni kívánt nevet, adjon meg egy irányítószámot, majd kattintson a **Létrehozás**gombra. A rendszer visszaküldi a jogkivonatot a `https://jwt.ms`nek, és megjelenik Önnek.
 1. Most már újra futtathatja a felhasználói folyamatot, és be kell tudnia jelentkezni a létrehozott fiókkal. A visszaadott jogkivonat tartalmazza az ország/régió, a név és az irányítószám mezőben kiválasztott jogcímeket.
 
 ## <a name="create-a-profile-editing-user-flow"></a>Profil szerkesztése felhasználói folyamat létrehozása
 
 Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését az alkalmazásban, használja a felhasználói folyamatokat szerkesztő profilt.
 
-1. A Azure AD B2C bérlő áttekintő oldalának bal oldali menüjében válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
-1. Válassza ki a **profilt szerkesztő** felhasználói folyamatot az ajánlott lapon.
+1. A Azure AD B2C bérlő áttekintése lapon válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. Válassza ki a **profilt szerkesztő** felhasználói folyamatot az **ajánlott** lapon.
 1. Adja meg a felhasználói folyamat **nevét** . Például: *profileediting1*.
 1. Az **Identity Providers**esetében válassza a **helyi fiók bejelentkezési**lehetőséget.
 1. **Felhasználói attribútumok**esetében válassza ki azokat az attribútumokat, amelyeket szeretné, hogy az ügyfél szerkeszteni tudja a profiljában. Válassza például a **továbbiak megjelenítése**lehetőséget, majd válassza ki a **megjelenítendő név** és a **beosztás**attribútumait és jogcímeit. Kattintson az **OK** gombra.
-1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. A *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
+1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** `https://jwt.ms`nak kell megjelennie.
 1. Kattintson a **felhasználói folyamat futtatása**elemre, majd jelentkezzen be a korábban létrehozott fiókkal.
-1. Most már lehetősége van módosítani a felhasználó megjelenítendő nevét és a beosztás címét. Kattintson a **Folytatás** gombra. A rendszer visszaküldi `https://jwt.ms` a tokent, és megjelenik Önnek.
+1. Most már lehetősége van módosítani a felhasználó megjelenítendő nevét és a beosztás címét. Kattintson a **Folytatás** gombra. A rendszer visszaküldi a jogkivonatot a `https://jwt.ms`nek, és megjelenik Önnek.
 
 ## <a name="create-a-password-reset-user-flow"></a>Jelszó-visszaállítási felhasználói folyamat létrehozása
 
 Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a jelszavukat, jelszó-visszaállítási felhasználói folyamatot kell használnia.
 
-1. A bal oldali menüben válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
-1. Válassza a **jelszó** alaphelyzetbe állítása felhasználói folyamat lehetőséget az ajánlott lapon.
+1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok (házirendek)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. Válassza a **jelszó alaphelyzetbe állítása** felhasználói folyamat lehetőséget az **ajánlott** lapon.
 1. Adja meg a felhasználói folyamat **nevét** . Például: *passwordreset1*.
 1. Az **Identity Providers**esetében engedélyezze a **jelszó alaphelyzetbe állítását e-mail-cím használatával**.
 1. Az alkalmazás jogcímei területen kattintson a **továbbiak megjelenítése** lehetőségre, és válassza ki azokat a jogcímeket, amelyeket vissza szeretne állítani az alkalmazásnak visszaküldött engedélyezési jogkivonatokban. Válassza például a **Felhasználó objektumazonosítója** lehetőséget.
 1. Kattintson az **OK** gombra.
-1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. A *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
+1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** `https://jwt.ms`nak kell megjelennie.
 1. Kattintson a **felhasználói folyamat futtatása**elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás**lehetőséget.
-1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi `https://jwt.ms` a tokent, és megjelenik Önnek.
+1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi a jogkivonatot a `https://jwt.ms`nek, és megjelenik Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

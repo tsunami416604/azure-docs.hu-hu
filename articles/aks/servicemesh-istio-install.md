@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170805"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561738"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>A Istio telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -34,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A bővítmények elérése
 > * Istio eltávolítása az AK-ból
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikkben részletesen ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
@@ -136,7 +136,7 @@ spec:
 Telepítse a istio-et az `istioctl apply` parancs és a fenti `istio.aks.yaml` Istio-vezérlő síkja specifikációjának használatával a következő módon:
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 A telepítő számos [CRDs][kubernetes-crd] telepít, majd a függőségek kezelésével telepíti az adott Istio-konfigurációhoz definiált összes érintett objektumot. A következő kimeneti kódrészlethez hasonlóan kell megjelennie.
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 A Istio az AK-fürtből való eltávolításához használja az `istioctl manifest generate` parancsot az `istio.aks.yaml` Istio Control Plane spec file utasítással. Ez létrehozza a központilag telepített jegyzékfájlt, amelyet a rendszer az összes telepített összetevő és a `istio-system` névtér eltávolítása érdekében `kubectl delete`.
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Istio-CRDs és-titkok eltávolítása

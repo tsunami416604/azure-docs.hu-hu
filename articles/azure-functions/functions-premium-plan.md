@@ -5,16 +5,16 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532903"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561954"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium szintű Azure Functions-csomag
 
-A Azure Functions Premium csomag egy üzemeltetési lehetőség a Function apps alkalmazásokhoz. A Prémium csomag olyan szolgáltatásokat nyújt, mint például a VNet-kapcsolat, a hidegindító és a prémium szintű hardverek.  Több Function apps is telepíthető ugyanarra a prémium csomagra, és a csomag lehetővé teszi a számítási példány méretének, az alapcsomag méretének és a maximális méretnek a konfigurálását.  A Prémium csomag és az egyéb csomag-és üzemeltetési típusok összehasonlítását lásd: a [függvények méretezési és üzemeltetési lehetőségei](functions-scale.md).
+A Azure Functions Prémium csomag (más néven a rugalmas Prémium csomag) egy üzemeltetési lehetőség a Function apps számára. A Prémium csomag olyan szolgáltatásokat nyújt, mint például a VNet-kapcsolat, a hidegindító és a prémium szintű hardverek.  Több Function apps is telepíthető ugyanarra a prémium csomagra, és a csomag lehetővé teszi a számítási példány méretének, az alapcsomag méretének és a maximális méretnek a konfigurálását.  A Prémium csomag és az egyéb csomag-és üzemeltetési típusok összehasonlítását lásd: a [függvények méretezési és üzemeltetési lehetőségei](functions-scale.md).
 
 ## <a name="create-a-premium-plan"></a>Prémium csomag létrehozása
 
@@ -45,7 +45,7 @@ A Azure Portal előre bemelegítő példányok számát úgy is beállíthatja, 
 
 ![Rugalmas méretezési beállítások](./media/functions-premium-plan/scale-out.png)
 
-Az Azure CLI-vel is konfigurálhat előre bemelegített példányokat az alkalmazáshoz
+Az Azure CLI-vel is konfigurálhat előre bemelegített példányokat az alkalmazáshoz.
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -76,7 +76,7 @@ A terv létrehozásakor két beállítást kell beállítania: a példányok min
 
 Ha az alkalmazás a csomag méretétől meghaladó példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás az, ha az alkalmazást a meghatározott maximális korlátig méretezni, míg a minimálisan szükséges csomag példányai garantáltak az alkalmazás számára.
 
-A terv méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővíthető** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
+A csomag méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővítő** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
 Az Azure CLI maximális burst korlátját is megnövelheti:
 
@@ -103,27 +103,28 @@ Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott 
 |Ausztrália középső régiója| ✔<sup>1</sup> | |
 |Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
 |Ausztrália keleti régiója| ✔ | |
-|Délkelet-Ausztrália | ✔ | ✔ |
+|Délkelet-Ausztrália | ✔ | ✔<sup>1</sup> |
 |Dél-Brazília| ✔<sup>2</sup> |  |
 |Közép-Kanada| ✔ |  |
 |USA középső régiója| ✔ |  |
 |Kelet-Ázsia| ✔ |  |
-|USA keleti régiója | ✔ | ✔ |
+|USA keleti régiója | ✔ | ✔<sup>1</sup> |
 |USA 2. keleti régiója| ✔ |  |
 |Közép-Franciaország| ✔ |  |
-|Kelet-Japán| ✔ | ✔ |
+|Középnyugat-Németország| ✔ | |
+|Kelet-Japán| ✔ | ✔<sup>1</sup> |
 |Nyugat-Japán| ✔ | |
 |Korea középső régiója| ✔ |  |
 |USA északi középső régiója| ✔ |  |
-|Észak-Európa| ✔ | ✔ |
-|USA déli középső régiója| ✔ |  |
+|Észak-Európa| ✔ | ✔<sup>1</sup> |
+|USA déli középső régiója| ✔ | ✔<sup>1</sup> |
 |Dél-India | ✔ | |
-|Délkelet-Ázsia| ✔ | ✔ |
+|Délkelet-Ázsia| ✔ | ✔<sup>1</sup> |
 |Egyesült Királyság déli régiója| ✔ | |
 |Egyesült Királyság nyugati régiója| ✔ |  |
-|Nyugat-Európa| ✔ | ✔ |
+|Nyugat-Európa| ✔ | ✔<sup>1</sup> |
 |Nyugat-India| ✔ |  |
-|USA nyugati régiója| ✔ | ✔ |
+|USA nyugati régiója| ✔ | ✔<sup>1</sup> |
 |USA 2. nyugati régiója| ✔ |  |
 
 <sup>1</sup> A maximális méretezés legfeljebb 20 példányra korlátozódik.  

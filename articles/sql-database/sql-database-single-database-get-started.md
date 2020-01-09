@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821006"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443838"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Portal, a PowerShell és az Azure CLI használatával
 
@@ -33,7 +33,7 @@ Egyetlen adatbázis hozható létre a kiépített vagy kiszolgáló nélküli sz
 - A kiépített számítási réteg egyetlen adatbázisa előre lefoglalt számítási erőforrások (például CPU és memória) rögzített mennyiségét használja a két [beszerzési modell](sql-database-purchase-models.md)egyikével.
 - A kiszolgáló nélküli számítási réteg egyetlen adatbázisa számos számítási erőforrást tartalmaz, beleértve a CPU-t és a memóriát, amely automatikusan skálázható, és csak a [virtuális mag-alapú vásárlási modellekben](sql-database-service-tiers-vcore.md)érhető el.
 
-Egyetlen adatbázis létrehozásakor egy [SQL Database-kiszolgálót](sql-database-servers.md) is meg kell adnia a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../azure-resource-manager/resource-group-overview.md) helyezheti azt.
+Egyetlen adatbázis létrehozásakor egy [SQL Database-kiszolgálót](sql-database-servers.md) is meg kell adnia a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../azure-resource-manager/management/overview.md) helyezheti azt.
 
 > [!NOTE]
 > Ez a rövid útmutató a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)használja, de a [DTU-alapú vásárlási modell](sql-database-service-tiers-DTU.md) is elérhető.
@@ -76,7 +76,7 @@ Ha elkészült ezeknek az erőforrásoknak a használatával, a következőképp
 2. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet.
 3. Adja meg a *myResourceGroup* a mezőben, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozzon létre egy kiszolgálói szintű tűzfalszabály, amely a helyszíni vagy távoli eszközökről csatlakozik az önálló adatbázishoz. További információ: [kiszolgálói szintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md).
 - A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és lekérdezheti](sql-database-connect-query.md) azt.

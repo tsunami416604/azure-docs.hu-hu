@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684183"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640836"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Ismerkedés a Azure WebJobs SDK-val az eseményvezérelt háttér-feldolgozáshoz
 
@@ -257,17 +257,17 @@ Ebben a szakaszban helyileg hozza létre és futtatja a projektet, és egy üzen
 
 1. Adja *meg a várólista nevét* a várólista neveként, majd kattintson az **OK gombra**.
 
-   ![Várólista létrehozása](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Üzenetsor létrehozása](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. Kattintson a jobb gombbal az új várólista csomópontjára, majd válassza a **várólista megtekintése**lehetőséget.
 
 1. Válassza az **üzenet hozzáadása** ikont.
 
-   ![Várólista létrehozása](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Üzenetsor létrehozása](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. Az **üzenet hozzáadása** párbeszédpanelen adja meg a következőt: *"Helló világ!" alkalmazás!* az **üzenet szövegeként**, majd kattintson **az OK gombra**. Most már van egy üzenet a várólistában.
 
-   ![Várólista létrehozása](./media/webjobs-sdk-get-started/hello-world-text.png)
+   ![Üzenetsor létrehozása](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 1. Futtassa ismét a projektet.
 
@@ -399,21 +399,23 @@ A [Application Insights](../azure-monitor/app/app-insights-overview.md) naplóz�
 
 Ebben a szakaszban ismét helyileg futtatja annak ellenőrzéséhez, hogy a naplózási adatai mostantól Application Insights és a-konzolon is elérhetők lesznek.
 
-1. A Visual Studióban a **Server Explorer** használatával hozzon létre egy üzenetsor-üzenetet, ugyanúgy, mint [korábban](#trigger-the-function-in-azure), a *Hello app bepillantást* nem kell írnia. az üzenet szövegeként.
+1. A Visual Studióban a **Server Explorer** használatával hozzon létre egy üzenetsor-üzenetet, mint [korábban](#test-locally), a *Hello app bepillantást* beírni. az üzenet szövegeként.
 
 1. Futtassa a projektet.
 
-   A webjobs SDK dolgozza fel az üzenetsor-üzenetet, és a naplók megjelennek a konzol ablakban.
+   A webjobs SDK dolgozza fel az üzenetsor-üzenetet, és a naplók a konzol ablakában jelennek meg.
 
 1. Zárjuk be a konzolablak ablakát.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com/), és lépjen a Application Insights-erőforráshoz.
+1. A Application Insights erőforrás megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza ki a **Application Insights**.
+
+1. Válassza ki Application Insights-példányát.
 
 1. Válassza a **Keresés**lehetőséget.
 
    ![Keresés kiválasztása](./media/webjobs-sdk-get-started/select-search.png)
 
-1. Ha nem látja a *Hello app bepillantást!* üzenetben válassza a **frissítés** rendszeres időközönként több percig lehetőséget. (A naplók nem jelennek meg azonnal, mert a Application Insights-ügyfél eltarthat egy ideig, hogy kiürítse az informatikai folyamatokat.)
+1. Ha nem látja a *Hello app bepillantást!* üzenetben válassza a **frissítés** rendszeres időközönként több percig lehetőséget. (A naplók nem jelennek meg azonnal, mert eltarthat egy ideig, amíg a Application Insights-ügyfél kiüríti az informatikai folyamatokat.)
 
    ![Naplók Application Insights](./media/webjobs-sdk-get-started/logs-in-ai.png)
 

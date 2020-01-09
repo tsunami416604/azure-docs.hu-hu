@@ -4,15 +4,15 @@ description: A Azure Monitor DNS Analytics megoldásának beállítása és hasz
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6500020d9d1c7c735206efe8ebb08fd908eee10d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899094"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403249"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával
 
@@ -141,7 +141,7 @@ Az információ segítségével azonosíthatja a következőket:
 **Példa DDI Analytics-lekérdezésekre**. Azokat a leggyakoribb keresési lekérdezéseket tartalmazza, amelyek közvetlenül beolvasják a nyers elemzési adatforrásokat.
 
 
-![Példák a lekérdezésekre](./media/dns-analytics/queries.png)
+![Mintalekérdezések](./media/dns-analytics/queries.png)
 
 Ezeket a lekérdezéseket kiindulási pontként használhatja a testreszabott jelentéskészítéshez használható saját lekérdezések létrehozásához. A lekérdezések a DNS Analytics napló keresési oldalára mutatnak, ahol az eredmények megjelennek:
 
@@ -174,7 +174,7 @@ A naplók keresése lapon létrehozhat egy lekérdezést. A keresési eredménye
 
     ![DnsInventory-napló keresése](./media/dns-analytics/log-search-dnsinventory.png)
     
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Gyakori hibaelhárítási lépések:
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873726"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500063"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
 
@@ -23,7 +23,7 @@ A következő dokumentum a Graph adatmodellezési javaslatok biztosítására sz
 Az útmutatóban ismertetett folyamat az alábbi feltételezéseken alapul:
  * A probléma **entitásai** azonosítva vannak. Ezeket az entitásokat az egyes kérések esetében _atomian_ kell használni. Más szóval az adatbázisrendszer nem úgy van kialakítva, hogy egyetlen entitást több lekérdezési kérelemben is lekérjen.
  * Az adatbázisrendszer **olvasási és írási követelményeinek** ismerete. Ezek a követelmények a Graph adatmodellhez szükséges optimalizálásokat ismertetik.
- * Az [Apache Tinkerpop Property Graph standard](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) alapelvei jól megértettek.
+ * Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) alapelvei jól megértettek.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Mikor van szükség gráf-adatbázisra?
 
@@ -41,7 +41,7 @@ A következő lépés annak megállapítása, hogy a gráfot analitikai vagy tra
 
 ## <a name="how-to-use-graph-objects"></a>Graph-objektumok használata
 
-Az [Apache Tinkerpop Property Graph standard](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) két típusú objektumot határoz meg a **csúcspontok** és **élek**közül. 
+Az [Apache Tinkerpop Property Graph standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) két típusú objektumot határoz meg a **csúcspontok** és **élek**közül. 
 
 A Graph-objektumok tulajdonságaira vonatkozó ajánlott eljárások a következők:
 

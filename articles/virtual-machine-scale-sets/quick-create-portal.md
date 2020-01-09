@@ -1,7 +1,7 @@
 ---
-title: Rövid útmutató – Virtuálisgép-méretezési csoport létrehozása az Azure Portalon | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre gyorsan virtuálisgép-méretezési csoportot az Azure Portalon
-services: virtual-machine-scale-sets
+title: Rövid útmutató – virtuálisgép-méretezési csoport létrehozása a Azure Portalban
+description: Ismerkedjen meg az üzemelő példányokkal, hogy megtanulja, hogyan hozhat létre gyorsan egy virtuális gépet a Azure Portal.
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351144"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
-## <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
+## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
 Az Azure [Load Balancer](../load-balancer/load-balancer-overview.md) az egészséges virtuálisgép-példányok között osztja el a bejövő forgalmat. 
 
@@ -38,22 +38,22 @@ Először hozzon létre egy nyilvános alapszintű Load Balancer a portál haszn
 1. A keresőmezőbe írja be a **Load Balancer**kifejezést. A találatok között a **piactér** területen válassza a **Load balancert**.
 1. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat:
 
-    | Beállítás                 | Érték   |
+    | Beállítás                 | Value (Díj)   |
     | ---| ---|
     | Előfizetés  | Válassza ki előfizetését.    |    
     | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, és írja be a *myVMSSResourceGroup* szöveget a szövegmezőbe.|
-    | Name (Név)           | *myLoadBalancer*         |
-    | Régió         | Válassza az **USA keleti régiója** lehetőséget.       |
-    | Típus          | Válassza a **nyilvános**lehetőséget.       |
-    | SKU           | Válassza a **standard**lehetőséget.       |
+    | Név           | *myLoadBalancer*         |
+    | Region (Régió)         | Válassza az **USA keleti régiója** lehetőséget.       |
+    | Type (Típus)          | Válassza a **Nyilvános** lehetőséget.       |
+    | SKU (Cikkszám)           | Válassza a **standard**lehetőséget.       |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
-    | Nyilvános IP-cím neve  | *MyPip*   |
-    | hozzárendelés| Statikus |
+    | Nyilvános IP-cím  | *MyPip*   |
+    | Hozzárendelés| Statikus |
 
 1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet. 
 1. Az érvényesítést követően válassza a **Létrehozás**lehetőséget. 
 
-![Terheléselosztó létrehozása](./media/virtual-machine-scale-sets-create-portal/load-balancer.png)
+![Load Balancer létrehozása](./media/virtual-machine-scale-sets-create-portal/load-balancer.png)
 
 ## <a name="create-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképpel (például RHEL, CentOS, Ubuntu vagy SLES) helyezhet üzembe.
@@ -84,7 +84,7 @@ Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképp
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a méretezési csoporthoz tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy alapszintű méretezési csoportot hozott létre az Azure Portalon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]

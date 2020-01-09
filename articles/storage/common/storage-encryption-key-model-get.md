@@ -1,20 +1,21 @@
 ---
-title: A Storage-fiókhoz használt titkosítási kulcs modellének meghatározása – Azure Storage
+title: A Storage-fiókhoz használt titkosítási kulcs modellének meghatározása
+titleSuffix: Azure Storage
 description: A Azure Portal, a PowerShell vagy az Azure CLI használatával megtudhatja, hogyan kezelje a titkosítási kulcsokat a Storage-fiókhoz. A kulcsokat a Microsoft (alapértelmezett) vagy az ügyfél kezelheti. Az ügyfél által felügyelt kulcsokat Azure Key Vault kell tárolni.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 967e6f278008a59721d8d0c74e34c0252eeb1138
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666597"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665412"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>A Storage-fiókhoz használt Azure Storage titkosítási kulcs modelljének meghatározása
 
@@ -31,7 +32,7 @@ A titkosítási kulcsokkal kapcsolatos további információkért lásd: [Az Azu
 
 Az alábbi módszerek egyikével meghatározhatja, hogy a Storage-fiók Microsoft által felügyelt kulcsokat vagy az ügyfél által felügyelt kulcsokat használja-e a titkosításhoz.
 
-# <a name="azure-portaltabportal"></a>[Azure Portalra](#tab/portal)
+# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
 
 A következő lépésekkel ellenőrizheti a Storage-fiók titkosítási modelljét a Azure Portal használatával:
 

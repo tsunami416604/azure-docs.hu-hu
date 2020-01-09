@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120965"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659304"
 ---
 # <a name="networking-limit-increase"></a>Hálózatkezelési korlát növelése
 
@@ -27,9 +27,9 @@ A portálon a **Súgó + támogatás** panel vagy a **használat + kvóta** pane
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el. 
 
-1. https://portal.azure.comválassza a **Súgó + támogatás**lehetőséget.
+1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
 
-    ![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
+    ![Súgó + támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Válassza az **Új támogatási kérelem** lehetőséget. 
 
@@ -64,7 +64,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen. 
 
-1. https://portal.azure.comválassza az **előfizetések**lehetőséget.
+1. https://portal.azure.com válassza az **előfizetések**lehetőséget.
 
     ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -84,4 +84,4 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 ## <a name="about-networking-limits"></a>Tudnivalók a hálózati korlátokról
 
-A hálózati korlátokkal kapcsolatos további tudnivalókért tekintse meg a korlátozások lap [hálózatkezelés szakaszát](../azure-subscription-service-limits.md#networking-limits) , vagy a hálózat korlátai – gyakori kérdések
+A hálózati korlátokkal kapcsolatos további tudnivalókért tekintse meg a korlátozások lap [hálózatkezelés szakaszát](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) , vagy a hálózat korlátai – gyakori kérdések

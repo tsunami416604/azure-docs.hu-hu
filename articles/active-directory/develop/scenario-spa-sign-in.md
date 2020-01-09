@@ -1,5 +1,5 @@
 ---
-title: Egyoldalas alkalmazás bejelentkezés – Microsoft Identity platform | Azure
+title: Egyoldalas alkalmazás bejelentkezési & kijelentkezés – Microsoft Identity platform | Azure
 description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (bejelentkezés)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b3d7afdc634649ca3baf5f43d5e2376fb5d8b05d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423642"
 ---
-# <a name="single-page-application-sign-in"></a>Egyoldalas alkalmazás: bejelentkezés
+# <a name="single-page-application-sign-in-and-sign-out"></a>Egyoldalas alkalmazás: bejelentkezés és kijelentkezés
 
 Megtudhatja, hogyan adhat hozzá bejelentkezést az egyoldalas alkalmazás kódjához.
 

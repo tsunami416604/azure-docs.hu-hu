@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056676"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647764"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Mi az a végpontok hozzáférés-vezérlési listája?
 
@@ -39,7 +39,7 @@ A hálózati ACL-ek használatával a következőket teheti:
 * A szabályok sorrendjét használva biztosíthatja, hogy a megfelelő szabálykészlet legyen alkalmazva egy adott virtuálisgép-végponton (a legalacsonyabb – a legmagasabb).
 * Egy adott távoli alhálózati IPv4-címnek megfelelő ACL-t kell megadnia.
 
-Tekintse meg az [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) szóló cikket az ACL korlátaival kapcsolatban.
+Tekintse meg az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) szóló cikket az ACL korlátaival kapcsolatban.
 
 ## <a name="how-acls-work"></a>Az ACL-ek működése
 Az ACL egy olyan objektum, amely tartalmazza a szabályok listáját. Amikor létrehoz egy ACL-t, és alkalmazza azt egy virtuálisgép-végpontra, a csomagszűrés a virtuális gép gazdagép csomópontján történik. Ez azt jelenti, hogy a távoli IP-címekről érkező forgalmat a gazdagép csomópontja szűri az ACL-szabályoknak a virtuális gépen való megfeleltetése helyett. Ez megakadályozza, hogy a virtuális gép értékes CPU-ciklusokat fordítson a csomagszűrés számára.
@@ -76,7 +76,7 @@ Ha az alábbi példában az RDP-végpont elérését csak két nyilvános IPv4-c
 | 200 |159.0.0.0/8 |3389 |Engedélyezése |
 
 ### <a name="rule-order"></a>Szabály sorrendje
-Mivel egy végponthoz több szabály is megadható, a szabályok rendszerezésének meg kell felelnie, hogy melyik szabály elsőbbséget élvez. A szabály sorrendje a sorrendet adja meg. A hálózati ACL-ek a *legalacsonyabb elsőbbségi* szabályok sorrendjét követik. Az alábbi példában az 80-as porton lévő végpont szelektív módon kap hozzáférést csak bizonyos IP-címtartományok számára. Ennek konfigurálásához egy megtagadási szabály (100- \# es szabály) tartozik a 175.1.0.1/24 terület címeihez. Ezután megadhat egy második szabályt a 200-as prioritással, amely engedélyezi a hozzáférést az összes többi címhez a 175.0.0.0/8 alatt.
+Mivel egy végponthoz több szabály is megadható, a szabályok rendszerezésének meg kell felelnie, hogy melyik szabály elsőbbséget élvez. A szabály sorrendje a sorrendet adja meg. A hálózati ACL-ek a *legalacsonyabb elsőbbségi* szabályok sorrendjét követik. Az alábbi példában az 80-as porton lévő végpont szelektív módon kap hozzáférést csak bizonyos IP-címtartományok számára. Ennek konfigurálásához egy megtagadási szabály (\# 100-es szabály) tartozik a 175.1.0.1/24 terület címeihez. Ezután megadhat egy második szabályt a 200-as prioritással, amely engedélyezi a hozzáférést az összes többi címhez a 175.0.0.0/8 alatt.
 
 **Példa – szabályok prioritása**
 
@@ -90,6 +90,6 @@ A hálózati ACL-ek megadhatók egy elosztott terhelésű készlet végpontján.
 
 ![Hálózati ACL-ek és elosztott terhelésű készletek](./media/virtual-networks-acl/IC674733.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A végpontok hozzáférés-vezérlési listáját a PowerShell használatával kezelheti](virtual-networks-acl-powershell.md)
 

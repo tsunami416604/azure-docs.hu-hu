@@ -4,12 +4,12 @@ description: Az Azure Blockchain Service áttekintése
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387377"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Az Azure Blockchain Service egy teljes körűen felügyelt Főkönyv szolgáltat
 * Beépített konzorciumkezelés
 * Intelligens szerződések fejlesztése ismerős fejlesztői eszközökkel
 
-Az Azure Blockchain szolgáltatás több Főkönyv protokoll támogatására lett kialakítva. Jelenleg a [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusi mechanizmus használatával támogatja a Ethereum [kvórum](https://www.jpmorgan.com/Quorum) főkönyvét.
+Az Azure Blockchain szolgáltatás több Főkönyv protokoll támogatására lett kialakítva. Jelenleg a [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusi mechanizmus használatával támogatja a Ethereum [kvórum](https://www.goquorum.com/) főkönyvét.
 
 Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Az alkalmazások fejlesztésére és az üzleti logikára összpontosíthat, és nem kell időt és erőforrásokat lefoglalnia a virtuális gépek és az infrastruktúra kezeléséhez. Emellett továbbra is fejlesztheti alkalmazását az Ön által választott nyílt forráskódú eszközökkel és platformmal anélkül, hogy új ismeretekkel kellene elsajátítani a megoldásokat.
 
@@ -41,11 +41,11 @@ Az első blockchain-tag üzembe helyezése után további tranzakciós csomópon
 
 Felügyelt szolgáltatásként az Azure Blockchain Service biztosítja, hogy a Blockchain-tag csomópontjai a legújabb gazda operációs rendszerrel és a Főkönyv szoftveres verem frissítéseivel legyenek javítva, és a magas rendelkezésre álláshoz vannak konfigurálva (csak a standard csomag esetében), ami kiküszöböli a DevOps nagy részét. a hagyományos IaaS blockchain-csomópontokhoz szükséges.  A javítással és a frissítésekkel kapcsolatos további információkért lásd: az [Azure Blockchain Service Ledger támogatott verziói](ledger-versions.md).
 
-### <a name="monitoring-and-logging"></a>Monitorozás és naplózás
+### <a name="monitoring-and-logging"></a>Figyelés és naplózás
 
 Emellett az Azure Blockchain szolgáltatás részletes mérőszámokat biztosít Azure Monitor szolgáltatáson keresztül, amely betekintést nyújt a csomópontok CPU-, memória-és tárterület-használati adataiba.  A Azure Monitor hasznos betekintést nyújt a blockchain hálózati tevékenységekkel, például a kibányászott tranzakciókkal, a tranzakciós várólista mélységével és az aktív kapcsolatokkal.  A metrikák testreszabhatók úgy, hogy nézeteiket szolgáltassanak a blockchain-alkalmazás szempontjából fontos adatokhoz.  Emellett a küszöbértékeket olyan riasztások segítségével is meghatározhatja, amelyek lehetővé teszik a felhasználók számára olyan műveletek elindítását, mint például az e-mailek vagy SMS-üzenetek elküldése, a logikai alkalmazás, az Azure-függvény futtatása vagy egy egyéni módon definiált webhookra
 
-![Mérőszámok](./media/overview/metrics.png)
+![Metrikák](./media/overview/metrics.png)
 
 Az Azure Log Analytics segítségével a felhasználók megtekinthetik a kvórum főkönyvéhez kapcsolódó naplókat, illetve egyéb fontos információkat, például a tranzakciós csomópontokhoz való kapcsolódási kísérleteket.
 
@@ -67,10 +67,17 @@ Az Azure Blockchain Service-hez készült Blockchain-Data Manager az Azure Block
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
-Segítségre van szüksége, vagy visszajelzést szeretne küldeni?
+Az Azure Blockchain híreket az Azure [Blockchain blogon](https://azure.microsoft.com/blog/topics/blockchain/) tekintheti meg, ahol naprakészen tarthatja a Blockchain szolgáltatás ajánlatait és az Azure Blockchain Engineering csapata információit.
 
-* Látogasson el az [Azure Blockchain blogra](https://azure.microsoft.com/blog/topics/blockchain/), a [Microsoft műszaki közösségére](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)és az [Azure Blockchain fórumára](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
-* Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/921130-azure-blockchain-service).
+Ha visszajelzést szeretne küldeni a termékről, vagy új funkciókat szeretne kérni, szavazzon a [blockchain készült Azure visszajelzési fórumán](https://aka.ms/blockchainuservoice)keresztül.
+
+### <a name="community-support"></a>Közösségi támogatás
+
+Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
+
+* [Azure Blockchain MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
 ## <a name="next-steps"></a>Következő lépések
 

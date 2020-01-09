@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484369"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647560"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
 Ezek a lépések bemutatják, hogyan használhatók Azure PowerShell parancsok a klasszikus üzemi modellből származó infrastruktúra szolgáltatásként (IaaS) a Azure Resource Manager üzembe helyezési modellbe való áttelepítéséhez.
@@ -58,7 +58,7 @@ A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfig
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3\. lépés: Győződjön meg arról, hogy Ön az előfizetés rendszergazdája
 Az áttelepítés elvégzéséhez hozzá kell adnia az előfizetéshez tartozó [Azure Portal](https://portal.azure.com).
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A **központi** menüben válassza az **előfizetés**lehetőséget. Ha nem látja, válassza a **minden szolgáltatás**lehetőséget.
 3. Keresse meg a megfelelő előfizetési bejegyzést, majd tekintse meg a **saját szerepkör** mezőt. A rendszergazdák számára az értéknek a _fiók_rendszergazdája kell lennie.
 
@@ -125,7 +125,7 @@ Szerezze be az elérhető előfizetéseket a következő paranccsal:
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>5\. lépés: elegendő Resource Manager VM-vCPU
-Győződjön meg arról, hogy az aktuális üzembe helyezés vagy a virtuális hálózat Azure-régiójában elegendő Azure Resource Manager virtuális gépek vCPU. A következő PowerShell-paranccsal ellenőrizhető, hogy az aktuálisan hány vCPU Azure Resource Manager. További információ a vCPU-kvótákkal kapcsolatban: [korlátok és a Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+Győződjön meg arról, hogy az aktuális üzembe helyezés vagy a virtuális hálózat Azure-régiójában elegendő Azure Resource Manager virtuális gépek vCPU. A következő PowerShell-paranccsal ellenőrizhető, hogy az aktuálisan hány vCPU Azure Resource Manager. További információ a vCPU-kvótákkal kapcsolatban: [korlátok és a Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
 Ez a példa az **USA nyugati** régiójában lévő rendelkezésre állást ellenőrzi. Cserélje le a példában szereplő régió nevét a saját nevére.
 

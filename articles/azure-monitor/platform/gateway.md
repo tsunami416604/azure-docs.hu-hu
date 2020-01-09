@@ -4,15 +4,15 @@ description: Az eszközök és a Operations Manager által figyelt számítógé
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
-ms.date: 10/30/2019
-ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+author: bwren
+ms.author: bwren
+ms.date: 12/24/2019
+ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847281"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530986"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -45,7 +45,7 @@ A Log Analytics átjárót futtató számítógépen a Log Analytics Windows-üg
 
 Egy átjáró akár négy munkaterülethez is többoldalas lehet. A Windows-ügynökök által támogatott munkaterületek teljes száma.  
 
-Minden ügynöknek hálózati kapcsolattal kell rendelkeznie az átjáróhoz, hogy az ügynökök automatikusan átvihetik az adatátvitelt az átjáróba. Ne telepítse az átjárót egy tartományvezérlőre.
+Minden ügynöknek hálózati kapcsolattal kell rendelkeznie az átjáróhoz, hogy az ügynökök automatikusan átvihetik az adatátvitelt az átjáróba. Ne telepítse az átjárót egy tartományvezérlőre. Az átjárókiszolgáló mögötti linuxos számítógépek nem használhatják a [burkoló parancsfájl telepítési](agent-linux.md#install-the-agent-using-wrapper-script) módszerét a Linux rendszerhez készült log Analytics-ügynök telepítéséhez. Az ügynököt manuálisan kell letölteni, át kell másolni a számítógépre, és manuálisan kell telepíteni, mert az átjáró csak a korábban említett Azure-szolgáltatásokkal folytatott kommunikációt támogatja.
 
 Az alábbi ábrán a közvetlen ügynököktől, az átjárón keresztül Azure Automation és Log Analyticsig áramló adatok láthatók. Az ügynök proxyjának konfigurációjának egyeznie kell azzal a porttal, amelyhez az Log Analytics átjáró konfigurálva van.  
 
@@ -61,7 +61,7 @@ Az Log Analytics átjáró futtatására kijelölt számítógépeknek a követk
 
 * Windows 10, Windows 8,1 vagy Windows 7
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 vagy Windows Server 2008
-* Microsoft .NET Framework 4,5
+* Microsoft .NET-keretrendszer 4.5
 * Legalább 4 magos processzor és 8 GB memória 
 * A Windows rendszerhez készült [log Analytics ügynök](agent-windows.md) , amely az átjárón keresztül kommunikáló ügynökökkel azonos munkaterületre való jelentésre van konfigurálva
 
@@ -69,20 +69,20 @@ Az Log Analytics átjáró futtatására kijelölt számítógépeknek a követk
 
 A Log Analytics átjáró a következő nyelveken érhető el:
 
-- Kínai (egyszerűsített)
-- Kínai (hagyományos)
-- cseh
-- holland
+- kínai (egyszerűsített)
+- kínai (hagyományos)
+- Cseh
+- Holland
 - Angol
-- francia
-- német
+- Francia
+- Német
 - magyar
 - olasz
 - japán
 - koreai
 - lengyel
 - Portugál (brazíliai)
-- Portugál (portugáliai)
+- portugál (Portugália)
 - orosz
 - Spanyol (nemzetközi)
 
@@ -149,6 +149,7 @@ Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, k
    ![A helyi szolgáltatások képernyőképe, amely azt mutatja, hogy a OMS-átjáró fut](./media/gateway/gateway-service.png)
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Az Log Analytics-átjáró telepítése a parancssor használatával
+
 Az átjáró letöltött fájlja egy Windows Installer csomag, amely támogatja a csendes telepítést a parancssorból vagy más automatizált metódusból. Ha nem ismeri a Windows Installer szabványos parancssori kapcsolóit, tekintse meg a [parancssori kapcsolókat](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).
  
 Az alábbi táblázat a telepítő által támogatott paramétereket mutatja be.
@@ -178,15 +179,17 @@ Ha hitelesítő adatokat kell megadnia a proxyval történő hitelesítéshez, �
 Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
-A telepítés után ellenőrizheti a beállításokat (exlcuding a felhasználónevet és a jelszót) a következő PowerShell-parancsmagok használatával:
+A telepítés után ellenőrizheti a beállításokat (kivéve a felhasználónevet és a jelszót) a következő PowerShell-parancsmagok használatával:
 
 - **Get-OMSGatewayConfig** – az átjáró által a figyelésre konfigurált TCP-portot adja vissza.
 - **Get-OMSGatewayRelayProxy** – Visszaadja annak a proxykiszolgálónek az IP-címét, amelyet a szolgáltatással való kommunikációra konfigurált.
 
-## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás konfigurálása 
+## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás konfigurálása
+
 A hálózati terheléselosztás (NLB) használatával a magas rendelkezésre állású átjárót a Microsoft hálózati terheléselosztás [(NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), a [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)vagy a hardveres terheléselosztó segítségével állíthatja be. A terheléselosztó úgy kezeli a forgalmat, hogy átirányítja a kért kapcsolatokat a Log Analytics ügynököktől, vagy Operations Manager a felügyeleti kiszolgálókat a csomópontokon keresztül. Ha egy átjárókiszolgáló leáll, a rendszer átirányítja a forgalmat a többi csomópontra.
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft hálózati terheléselosztás
+
 A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és üzembe helyezésével kapcsolatos információkért lásd: [hálózati](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)terheléselosztás. A következő lépések a Microsoft hálózati terheléselosztási fürtök konfigurálását ismertetik.  
 
 1. Jelentkezzen be arra a Windows Serverre, amely az NLB-fürt tagja egy rendszergazdai fiókkal.  
@@ -200,6 +203,7 @@ A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és
     ![Hálózati terheléselosztás kezelője – gazdagép hozzáadása fürthöz: Kapcsolódás](./media/gateway/nlb03.png) 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
+
 A Azure Load Balancer megtervezéséhez és üzembe helyezéséhez tekintse meg a [Mi az a Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)című témakört. Alapszintű terheléselosztó üzembe helyezéséhez kövesse az ebben a rövid útmutatóban ismertetett lépéseket, a **háttér-kiszolgálók létrehozása**című szakaszban ismertetett lépéseket [kizárva.](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)   
 
 > [!NOTE]
@@ -213,18 +217,20 @@ A terheléselosztó létrehozása után létre kell hozni egy háttér-készlete
 >
 
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>A Log Analytics-ügynök és a Operations Manager felügyeleti csoport konfigurálása
+
 Ebből a szakaszból megtudhatja, hogyan konfigurálhat közvetlenül csatlakoztatott Log Analytics ügynököket, egy Operations Manager felügyeleti csoportot vagy Azure Automation hibrid Runbook-feldolgozókat az Log Analytics átjáróval a Azure Automation vagy a Log Analytics használatával folytatott kommunikációhoz.  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>Önálló Log Analytics-ügynök konfigurálása
+
 A Log Analytics ügynök konfigurálásakor cserélje le a proxykiszolgáló értékét a Log Analytics átjárókiszolgáló IP-címére és portszámára. Ha több átjárókiszolgáló van telepítve egy terheléselosztó mögött, a Log Analytics ügynök proxy konfigurációja a terheléselosztó virtuális IP-címe.  
 
 >[!NOTE]
->Ha a Log Analytics-ügynököt az átjáróra és a közvetlenül a Log Analyticshoz csatlakozó Windows-számítógépekre szeretné telepíteni, tekintse meg a [Windows rendszerű számítógépek összekapcsolása az Azure-beli log Analytics szolgáltatással](agent-windows.md) A Linux rendszerű számítógépek összekapcsolásáról lásd: [log Analytics-ügynök konfigurálása Linux rendszerű számítógépekhez hibrid környezetben](../../azure-monitor/learn/quick-collect-linux-computer.md). 
+>Ha a Log Analytics-ügynököt az átjáróra és a közvetlenül a Log Analyticshoz csatlakozó Windows-számítógépekre szeretné telepíteni, tekintse meg a [Windows rendszerű számítógépek összekapcsolása az Azure-beli log Analytics szolgáltatással](agent-windows.md) A Linux rendszerű számítógépek összekapcsolásával kapcsolatban lásd: Linux rendszerű [számítógépek Összekapcsolásának Azure monitor](agent-linux.md). 
 >
 
 Miután telepítette az ügynököt az átjárókiszolgálón, állítsa be úgy, hogy az átjáróval kommunikáló munkaterülethez vagy munkaterülethez tartozó ügynököknek jelentsen. Ha a Log Analytics Windows-ügynök nincs telepítve az átjárón, a 300-es esemény a OMS átjáró eseménynaplóba íródik, ami azt jelzi, hogy az ügynököt telepíteni kell. Ha az ügynök telepítve van, de nincs úgy konfigurálva, hogy ugyanarra a munkaterületre jelentsen, mint az azt használó ügynökök, a 105-es eseményt ugyanarra a naplóba írja a rendszer, amely azt jelzi, hogy az átjárón lévő ügynököt úgy kell konfigurálni, hogy ugyanarra a munkaterületre jelentsen, mint a Co-t használó ügynökök mmunicate az átjáróval.
 
-A konfiguráció befejezése után indítsa újra a OMS-átjáró szolgáltatást a módosítások alkalmazásához. Ellenkező esetben az átjáró elutasítja a Log Analytics kommunikálni próbáló ügynököket, és a 105-es eseményt a OMS átjáró eseménynaplójában fogja jelenteni. Ez akkor is megtörténik, amikor hozzáad vagy eltávolít egy munkaterületet az átjárókiszolgáló ügynökének konfigurációjával.   
+A konfiguráció befejezése után indítsa újra a **OMS-átjáró** szolgáltatást a módosítások alkalmazásához. Ellenkező esetben az átjáró elutasítja a Log Analytics kommunikálni próbáló ügynököket, és a 105-es eseményt a OMS átjáró eseménynaplójában fogja jelenteni. Ez akkor is megtörténik, amikor hozzáad vagy eltávolít egy munkaterületet az átjárókiszolgáló ügynökének konfigurációjával.
 
 Az Automation hibrid Runbook-feldolgozóval kapcsolatos információkért lásd: az [adatközpontban vagy a felhőben lévő erőforrások automatizálása hibrid Runbook-feldolgozók használatával](../../automation/automation-hybrid-runbook-worker.md).
 
@@ -381,6 +387,6 @@ Ha segítséget szeretne kérni, válassza a portál jobb felső sarkában láth
 
 ![Képernyőkép egy új támogatási kérelemről](./media/gateway/support.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Adatforrások hozzáadásával](../../azure-monitor/platform/agent-data-sources.md) adatokat gyűjthet a csatlakoztatott forrásokból, és tárolhatja az adatokat a log Analytics munkaterületen.

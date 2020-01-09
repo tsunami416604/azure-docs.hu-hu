@@ -8,30 +8,30 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
-ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429371"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>A C-hez készült Azure IoT Device SDK – további információ a szerializáló szolgáltatásról
 
-A sorozat első cikke bemutatta az [Azure IoT Device SDK C-hez való](iot-hub-device-sdk-c-intro.md)bevezetését. A következő cikk részletesebb leírást [tartalmaz a C--iothubclientről készült Azure IoT ESZKÖZOLDALI SDK-](iot-hub-device-sdk-c-iothubclient.md)ról. Ez a cikk az SDK lefedettségét fejezi ki úgy, hogy részletesebb leírást biztosít a fennmaradó összetevőről : a szerializáló könyvtáráról.
+A sorozat első cikke bemutatta az [Azure IoT Device SDK C-hez való bevezetését](iot-hub-device-sdk-c-intro.md). A következő cikk részletesebb leírást [tartalmaz a C--iothubclientről készült Azure IoT ESZKÖZOLDALI SDK-](iot-hub-device-sdk-c-iothubclient.md)ról. Ez a cikk az SDK lefedettségét fejezi ki úgy, hogy részletesebb leírást biztosít a fennmaradó összetevőről: a **szerializáló** könyvtáráról.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-A bevezető cikk azt ismerteti, hogyan használható a szerializáló függvénytár az események küldéséhez és az üzenetek fogadásához a IoT hubból. Ebben a cikkben részletesebben ismertetjük, hogy miként modellezhető az adatai a **szerializáló** makro nyelvével. A cikk több részletet is tartalmaz arról, hogy a könyvtár hogyan szerializálja az üzeneteket (és bizonyos esetekben hogyan vezérelheti a szerializálási viselkedést). Leírunk néhány olyan paramétert is, amelyet módosíthat, hogy meghatározza a létrehozott modellek méretét.
+A bevezető cikk azt ismerteti, hogyan használható a **szerializáló** függvénytár az események küldéséhez és az üzenetek fogadásához a IoT hubból. Ebben a cikkben részletesebben ismertetjük, hogy miként modellezhető az adatai a **szerializáló** makro nyelvével. A cikk több részletet is tartalmaz arról, hogy a könyvtár hogyan szerializálja az üzeneteket (és bizonyos esetekben hogyan vezérelheti a szerializálási viselkedést). Leírunk néhány olyan paramétert is, amelyet módosíthat, hogy meghatározza a létrehozott modellek méretét.
 
-Végül a cikk a korábbi cikkek, például az üzenetek és a tulajdonságok kezelésére szolgáló témaköröket is felkeresi. Amint kiderül, ezek a funkciók ugyanúgy működnek, mint a szerializálási függvénytárat a **iothubclientről** -kódtár használatával.
+Végül a cikk a korábbi cikkek, például az üzenetek és a tulajdonságok kezelésére szolgáló témaköröket is felkeresi. Amint kiderül, ezek a funkciók ugyanúgy működnek, mint a **szerializálási** függvénytárat a **iothubclientről** -kódtár használatával.
 
-A cikkben leírt összes művelet a szerializáló SDK -mintákon alapul. Ha követni szeretné a lépéseket, tekintse meg **a\_simplesample amqp** és a **simplesample\_http** -alkalmazásait a C Azure IoT Device SDK-ban.
+A cikkben leírt összes művelet a **szerializáló** SDK-mintákon alapul. Ha követni szeretné a lépéseket, tekintse meg a **simplesample\_amqp** és a **simplesample\_http** -alkalmazásokat a C Azure IoT eszközoldali SDK-ban.
 
-A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)-referenciában.
+A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github.com/Azure/azure-iot-sdk-c) -t megtalálja, és megtekintheti az API részleteit a [c API-referenciában](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>A modellezés nyelve
 
-Ebben a sorozatban az [Azure IoT eszközoldali SDK for c](iot-hub-device-sdk-c-intro.md) cikk az **Azure IoT Device SDK c** modellezési nyelvre lett bevezetve a **simplesample\_amqp** alkalmazásban bemutatott példán keresztül:
+Ebben a sorozatban az [Azure IoT ESZKÖZOLDALI SDK for c](iot-hub-device-sdk-c-intro.md) cikk az **Azure IoT Device SDK c** modellezési nyelvre lett bevezetve a **simplesample\_amqp** alkalmazásban bemutatott példán keresztül:
 
 ```C
 BEGIN_NAMESPACE(WeatherStation);
@@ -47,7 +47,7 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Amint láthatja, a modellezési nyelv C-makrón alapul. Mindig Kezdje a definíciót a **BEGIN\_névtérrel** , és mindig fejezze be a **végponti\_névteret**. Gyakori a vállalat névterének elnevezése, vagy például a projekt, amelyen dolgozik.
+Amint láthatja, a modellezési nyelv C-makrón alapul. A definíciót mindig megkezdheti **\_névtér** megkezdésével, és mindig az **End\_névtérrel**végződik. Gyakori a vállalat névterének elnevezése, vagy például a projekt, amelyen dolgozik.
 
 A névtéren belül a modell definíciói. Ebben az esetben a Szélmérők egyetlen modellje van. Ismét a modell neve bármi lehet, de általában a modell neve az eszköz vagy az adattípusa, amelyet IoT Hub szeretne cserélni.  
 
@@ -56,7 +56,7 @@ A modellek tartalmazzák a IoT Hubba beérkező események (az *adatok*), valami
 Ez a minta nem mutatja be az SDK által támogatott további adattípusokat. A következőt fogjuk kimutatni.
 
 > [!NOTE]
-> A IoT Hub az eszköz által az *eseményként*küldött adatokat jelöli, míg a modellezési nyelv az *adatokat* (a **WITH_DATA**használatával meghatározva) jelöli. Hasonlóképpen, IoT Hub az eszközökre üzenetként küldött adatként hivatkozik, míg a modellezési nyelv a *műveletekre* hivatkozik (a **WITH_ACTION**használatával meghatározva). Vegye figyelembe, hogy ezek a kifejezések a jelen cikkben is felcserélhetők.
+> A IoT Hub az eszköz által az *eseményként*küldött adatokat jelöli, míg a modellezési nyelv az *adatokat* ( **WITH_DATA**használatával meghatározott módon) jelöli. Hasonlóképpen, IoT Hub az eszközökre *üzenetként*küldött adatként hivatkozik, míg a modellezési nyelv a *műveletekre* hivatkozik (a **WITH_ACTION**használatával meghatározva). Vegye figyelembe, hogy ezek a kifejezések a jelen cikkben is felcserélhetők.
 > 
 > 
 
@@ -64,22 +64,22 @@ Ez a minta nem mutatja be az SDK által támogatott további adattípusokat. A k
 
 A következő adattípusok támogatottak a **szerializáló** függvénytárral létrehozott modellekben:
 
-| Type | Leírás |
+| Type (Típus) | Leírás |
 | --- | --- |
 | double |dupla pontosságú lebegőpontos szám |
 | int |32 bites egész szám |
-| float |egyszeres pontosságú lebegőpontos szám |
-| long |hosszú egész szám |
+| lebegőpontos |egyszeres pontosságú lebegőpontos szám |
+| hosszú |hosszú egész szám |
 | int8\_t |8 bites egész szám |
-| int16\_t |16 bites egész szám |
-| int32\_t |32 bites egész szám |
-| int64\_t |64 bites egész szám |
-| bool |boolean |
-| ascii\_char\_ptr |ASCII-karakterlánc |
-| EDM\_DATE\_TIME\_OFFSET |dátum és idő eltolása |
+| Int16\_t |16 bites egész szám |
+| Int32\_t |32 bites egész szám |
+| Int64\_t |64 bites egész szám |
+| logikai |logikai |
+| ASCII\_char\_PTR |ASCII-karakterlánc |
+| EDM\_dátum\_idő\_ELTOLÁS |dátum és idő eltolása |
 | EDM\_GUID |GUID |
-| EDM\_BINÁRIS FÁJL |binary |
-| DECLARE\_STRUCT |Összetett adattípus |
+| EDM\_bináris fájl |binary |
+| \_STRUCT DEKLARÁLása |Összetett adattípus |
 
 Kezdjük a legutóbbi adattípussal. A **Declare\_STRUCT** segítségével összetett adattípusokat határozhat meg, amelyek a többi primitív típus csoportjai. Ezek a csoportok lehetővé teszik, hogy Definiáljon egy modellt, amely a következőképpen néz ki:
 
@@ -139,7 +139,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-Alapvetően egy értéket rendelünk a tesztelési struktúra minden tagjához, majd meghívja a **SendAsync** -t, hogy elküldje az adat- **ellenőrzési** eseményt a felhőbe. A **SendAsync** egy segítő függvény, amely egyetlen adat-eseményt küld IoT hubba:
+Alapvetően egy értéket rendelünk a **tesztelési** struktúra minden tagjához, majd meghívja a **SendAsync** -t, hogy elküldje az adat- **ellenőrzési** eseményt a felhőbe. A **SendAsync** egy segítő függvény, amely egyetlen adat-eseményt küld IoT hubba:
 
 ```C
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -168,9 +168,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Ez a függvény szerializálja a megadott adat-eseményt, és elküldi IoT hub **iothubclientről\_SendEventAsync**használatával. Ez ugyanaz a kód, amelyet a korábbi cikkek is tárgyalnak (a**SendAsync** egy kényelmes függvénybe ágyazza be a logikát).
+Ez a függvény szerializálja a megadott adat-eseményt, és elküldi azt IoT Hub **iothubclientről\_SendEventAsync**használatával. Ez ugyanaz a kód, amelyet a korábbi cikkek is tárgyalnak (a**SendAsync** egy kényelmes függvénybe ágyazza be a logikát).
 
-Az előző kódban használt egy másik segítő függvény **GetDateTimeOffset**. Ez a függvény a megadott időt a **EDM\_dátum\_és idő\_eltolása**típusú értékre alakítja át:
+Az előző kódban használt egy másik segítő függvény **GetDateTimeOffset**. Ez a függvény a megadott időt egy EDM típusú értékre alakítja át **\_dátum\_idő\_eltolás**:
 
 ```C
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -194,15 +194,15 @@ Ha ezt a kódot futtatja, a rendszer a következő üzenetet küldi a IoT Hubnak
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Vegye figyelembe, hogy a szerializálás a JSON-ban van, amely a szerializáló könyvtár által generált formátum. Azt is vegye figyelembe, hogy a szerializált JSON-objektum minden tagja megfelel a modellben definiált **TestType** tagjainak. Az értékek pontosan egyeznek a kódban használt értékekkel is. Vegye figyelembe azonban, hogy a bináris adatfájl Base64 kódolású: A "AQID" a (z) {0x01, protokollszáma 0x02, 0x03} Base64-kódolása.
+Vegye figyelembe, hogy a szerializálás a JSON-ban van, amely a **szerializáló** könyvtár által generált formátum. Azt is vegye figyelembe, hogy a szerializált JSON-objektum minden tagja megfelel a modellben definiált **TestType** tagjainak. Az értékek pontosan egyeznek a kódban használt értékekkel is. Vegye figyelembe azonban, hogy a bináris adatfájl Base64 kódolású: a "AQID" a (z) {0x01, protokollszáma 0x02, 0x03} Base64 kódolása.
 
 Ez a példa a **szerializáló** függvénytár használatának előnyeit mutatja be. lehetővé teszi, hogy JSON-t küldjön a felhőbe anélkül, hogy explicit módon kellene foglalkoznia az alkalmazás szerializálásával. Mindössze annyit kell aggódnia, hogy a modellben szereplő adatesemények értékeit beállítja, majd egyszerű API-kat hív meg, hogy ezeket az eseményeket a felhőbe küldje.
 
-Ezen információk segítségével olyan modelleket adhat meg, amelyek tartalmazzák a támogatott adattípusok körét, beleértve a komplex típusokat is (a komplex típusokat más összetett típusokon belül is lehet megadni). A fenti példa által generált szerializált JSON azonban egy fontos pontot hoz létre. Az adatküldés a **szerializáló** könyvtárából pontosan meghatározza, hogy a JSON hogyan legyen kialakítva. Erre a pontra a következőt fogjuk lefedni.
+Ezen információk segítségével olyan modelleket adhat meg, amelyek tartalmazzák a támogatott adattípusok körét, beleértve a komplex típusokat is (a komplex típusokat más összetett típusokon belül is lehet megadni). A fenti példa által generált szerializált JSON azonban egy fontos pontot hoz létre. Az adatküldés a **szerializáló** könyvtárából pontosan meghatározza, hogy a *JSON hogyan legyen* kialakítva. Erre a pontra a következőt fogjuk lefedni.
 
 ## <a name="more-about-serialization"></a>További információ a szerializálásról
 
-Az előző szakasz a szerializáló könyvtára által generált kimenetre mutat példát. Ebben a szakaszban bemutatjuk, hogyan szerializálja a függvénytár az adatszerializálást, és hogyan vezérelheti a viselkedést a szerializálási API-k használatával.
+Az előző szakasz a **szerializáló** könyvtára által generált kimenetre mutat példát. Ebben a szakaszban bemutatjuk, hogyan szerializálja a függvénytár az adatszerializálást, és hogyan vezérelheti a viselkedést a szerializálási API-k használatával.
 
 A szerializálással kapcsolatos megbeszélések elvégzéséhez egy termosztáton alapuló új modellel fogunk dolgozni. Először is lássunk némi hátteret arra a forgatókönyvre, amellyel foglalkozni próbálunk.
 
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Vegye figyelembe, hogy a modell két adateseményt tartalmaz: **Hőmérséklet** és **páratartalom**. Az előző példáktól eltérően az egyes események típusa a **Declare\_STRUCT**használatával meghatározott struktúra. A **TemperatureEvent** tartalmaz egy hőmérséklet-mérést és egy időbélyeget; A **HumidityEvent** tartalmaz egy páratartalom-mérést és egy időbélyeget. Ez a modell természetes módszert kínál a fent ismertetett forgatókönyvhöz tartozó információk modellezésére. Amikor egy eseményt küld a felhőbe, a rendszer elküld egy hőmérsékletet/időbélyeget, vagy egy páratartalom/timestamp párt.
+Vegye figyelembe, hogy a modell két adateseményt tartalmaz: a **hőmérsékletet** és a **páratartalmat**. Az előző példáktól eltérően az egyes események típusa a **Declare\_STRUCT**használatával meghatározott struktúra. A **TemperatureEvent** tartalmaz egy hőmérséklet-mérést és egy időbélyeget; A **HumidityEvent** tartalmaz egy páratartalom-mérést és egy időbélyeget. Ez a modell természetes módszert kínál a fent ismertetett forgatókönyvhöz tartozó információk modellezésére. Amikor egy eseményt küld a felhőbe, a rendszer elküld egy hőmérsékletet/időbélyeget, vagy egy páratartalom/timestamp párt.
 
 Egy hőmérséklet-eseményt a felhőhöz a következő kód használatával küldhetünk:
 
@@ -253,7 +253,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 
 A kódban a hőmérséklet és a páratartalom rögzített értékeit fogjuk használni, de képzeljük el, hogy ezeket az értékeket ténylegesen lekéri a termosztát megfelelő érzékelők mintavételezésével.
 
-A fenti kód a korábban bevezetett **GetDateTimeOffset** segítőt használja. A később törlésre kerülő okok miatt ez a kód explicit módon elválasztja az esemény szerializálásának és küldésének feladatát. Az előző kód szerializálja a hőmérsékleti eseményt egy pufferbe. Ezután a **üzenetküldés** egy segítő függvény (tartalmazza a **simplesample\_amqp**), amely elküldi az eseményt az IoT hubnak:
+A fenti kód a korábban bevezetett **GetDateTimeOffset** segítőt használja. A később törlésre kerülő okok miatt ez a kód explicit módon elválasztja az esemény szerializálásának és küldésének feladatát. Az előző kód szerializálja a hőmérsékleti eseményt egy pufferbe. Ezt követően a **üzenetküldés** egy segítő függvény (a **simplesample\_amqp**), amely az eseményt az IoT hub küldi:
 
 ```C
 static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -278,7 +278,7 @@ Ha az előző kódot futtatjuk a hőmérsékleti esemény elküldéséhez, az es
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Olyan hőmérsékletet küldünk, amely **TemperatureEvent** típusú, és a struct **hőmérséklet** -és időtagot tartalmaz. Ez közvetlenül a szerializált adatként jelenik meg.
+**TemperatureEvent**típusú hőmérsékletet küldünk **, és a** struct **hőmérséklet** -és időtagot tartalmaz. Ez közvetlenül a szerializált adatként jelenik meg.
 
 Hasonlóképpen a következő kóddal is küldhetünk páratartalom-eseményt:
 
@@ -299,7 +299,7 @@ A IoT Hub eljuttatott szerializált űrlap a következőképpen jelenik meg:
 
 Ez a várt érték.
 
-Ennek a modellnek a segítségével elképzelheti, hogy a további események hogyan vehetők fel egyszerűen. A **\_Declare STRUCT**használatával több struktúrát határozhat meg, és a modellben a megfelelő eseményt is felhasználhatja **\_** az adataival.
+Ennek a modellnek a segítségével elképzelheti, hogy a további események hogyan vehetők fel egyszerűen. További struktúrákat határozhat meg a **Declare\_STRUCT**használatával, és a modellbe belefoglalhatja a megfelelő eseményt a **\_adataival**.
 
 Most módosítsuk a modellt úgy, hogy az ugyanazokat az adatszerkezetet tartalmazza, de egy másik struktúrával.
 
@@ -315,9 +315,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Ebben az esetben a **\_** bejelentési struktúra makróit kivettük, és egyszerűen definiáljuk a forgatókönyvben szereplő adatelemeket a modellezési nyelvből származó egyszerű típusok használatával.
+Ebben az esetben megtettük a **Declare\_STRUCT** -makrókat, és egyszerűen definiáljuk a forgatókönyvben szereplő adatelemeket a modellezési nyelvből származó egyszerű típusok használatával.
 
-Ebben az esetben hagyja figyelmen kívül az esemény időpontját. Ettől eltekintve a következő kód kerül be a bejövő hőmérsékletre:
+Ebben az esetben hagyja figyelmen kívül az esemény **időpontját** . Ettől eltekintve a következő kód kerül be a bejövő **hőmérsékletre**:
 
 ```C
 time_t now;
@@ -373,7 +373,7 @@ Más szóval várható, hogy ez a kód a **hőmérséklet** és a **páratartalo
 
 {"Hőmérséklet": 75, "páratartalom": 45}
 
-Ez furcsának tűnhet, mert a modell a hőmérsékletet és a **páratartalmat** két *külön* eseményként határozza meg:
+Ez furcsának tűnhet, mert a modell a **hőmérsékletet** és a **páratartalmat** két *külön* eseményként határozza meg:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -396,9 +396,9 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 );
 ```
 
-Ha ezt a modellt használtuk, könnyebb lenne megérteni, hogy a **hőmérséklet** és a **páratartalom** hogyan legyen elküldve ugyanabban a szerializált üzenetben. Azonban előfordulhat, hogy nem egyértelmű, hogy miért működik úgy, hogy mindkét adateseményt a 2. modell használatával szerializálja.
+Ha ezt a modellt használtuk, könnyebb lenne megérteni, hogy a **hőmérséklet** és a **páratartalom** hogyan legyen elküldve ugyanabban a szerializált üzenetben. Azonban előfordulhat, hogy nem egyértelmű, hogy miért működik úgy, hogy mindkét adateseményt a 2. modell használatával **szerializálja** .
 
-Ez a viselkedés könnyebben érthető, ha ismeri a szerializáló függvénytárának feltételezéseit. Ehhez térjünk vissza a modellbe:
+Ez a viselkedés könnyebben érthető, ha ismeri a **szerializáló** függvénytárának feltételezéseit. Ennek érdekében térjünk vissza a modellbe:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -431,13 +431,13 @@ Időnként előfordulhat, hogy csak a modell *bizonyos* tulajdonságait szeretn�
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Ez pontosan ugyanazt a szerializált eseményt hozza létre, mintha egy **hőmérséklet** -és időtaggal **TemperatureEvent** meg , ugyanúgy, mint az 1. modellel. Ebben az esetben képesek vagyunk pontosan ugyanazt a szerializált eseményt egy másik modell (2. modell) használatával kiállítani, mert más módon **szerializált** .
+Ez pontosan ugyanazt a szerializált eseményt hozza létre, mintha egy **hőmérséklet** **-és** időtaggal **TemperatureEvent** meg, ugyanúgy, mint az 1. modellel. Ebben az esetben képesek vagyunk pontosan ugyanazt a szerializált eseményt egy másik modell (2. modell) használatával kiállítani, mert a **szerializálást** más módon hívjuk.
 
 A lényeg az, hogy ha több adateseményt továbbít a **szerializáláshoz,** azt feltételezi, hogy minden esemény egy JSON-objektum egyik tulajdonsága.
 
-A legjobb megoldás attól függ, hogy mit gondol a modellre. Ha az "események" kifejezést a felhőbe küldi, és minden esemény a tulajdonságok meghatározott készletét tartalmazza, akkor az első megközelítés sok értelmet jelent. Ebben az esetben a DECLARE **\_STRUCT** használatával határozhatja meg az egyes események szerkezetét, majd belefoglalhatja őket a modellbe **a\_with adat** makróval. Ezután elküldheti az egyes eseményeket, ahogy a fenti első példában. Ebben a megközelítésben csak egyetlen adateseményt kell átadnia a **szerializáló**számára.
+A legjobb megoldás attól függ, hogy mit gondol a modellre. Ha az "események" kifejezést a felhőbe küldi, és minden esemény a tulajdonságok meghatározott készletét tartalmazza, akkor az első megközelítés sok értelmet jelent. Ebben az esetben a **Declare\_STRUCT** használatával határozhatja meg az egyes események szerkezetét, majd felveheti azokat a modellbe a **with\_** adatmakróval. Ezután elküldheti az egyes eseményeket, ahogy a fenti első példában. Ebben a megközelítésben csak egyetlen adateseményt kell átadnia a **szerializáló**számára.
 
-Ha úgy gondolja, hogy a modell egy objektumorientált módon van kialakítva, akkor a második megközelítés is megfelel Önnek. Ebben az esetben az **\_adatokat** használó elemek az objektum "tulajdonságok". Az események azon részhalmazát adja át , amely a kívánt módon szerializálható, attól függően, hogy mekkora az "objektum" állapota a felhőbe való küldéshez.
+Ha úgy gondolja, hogy a modell egy objektumorientált módon van kialakítva, akkor a második megközelítés is megfelel Önnek. Ebben az esetben a **\_adataival** definiált elemek az objektum tulajdonságai. Az események azon részhalmazát adja át, amely a kívánt módon **szerializálható** , attól függően, hogy mekkora az "objektum" állapota a felhőbe való küldéshez.
 
 Az Nether megközelítés helyes vagy helytelen. Vegye figyelembe, hogyan működik a **szerializáló** függvénytár, és válassza ki az igényeinek leginkább megfelelő modellezési megközelítést.
 
@@ -514,7 +514,7 @@ Ha üzenetet küld az eszköznek, ezt az Azure IoT Service SDK-n keresztül tehe
 {"Name" : "", "Parameters" : "" }
 ```
 
-Két tulajdonsággal rendelkező szerializált JSON-objektumot küld: A **Name** a művelet (üzenet) neve, a **Paraméterek** pedig tartalmazzák a művelet paramétereit.
+A következő két tulajdonsággal rendelkező szerializált JSON-objektumot küldi: a **Name** a művelet (üzenet) neve, a **Paraméterek** pedig tartalmazzák a művelet paramétereit.
 
 A **SetAirResistance** meghívásához például elküldheti ezt az üzenetet egy eszköznek:
 
@@ -537,7 +537,7 @@ Ez a szakasz azt ismerteti, hogy az események küldése és üzenetek fogadása
 
 Ha a **szerializáló** függvénytárat használja, az SDK fontos része, hogy tisztában legyen az Azure-c-Shared-Utility Library-ben.
 
-Ha már klónozott az Azure-IOT-SDK-c tárházat a GitHubról a--rekurzív lehetőséggel, akkor a következő megosztott segédprogram-függvénytárat fogja találni:
+Ha már klónozott az Azure-IOT-SDK-c tárházat a GitHubról, és kiadta a `git submodule update --init` parancsot, akkor itt találja ezt a megosztott segédprogram-tárat:
 
 ```C
 .\\c-utility
@@ -551,13 +551,13 @@ A megosztott segédprogramok könyvtárában a következő mappa jelenik meg:
 azure-c-shared-utility\\macro\_utils\_h\_generator.
 ```
 
-Ez a mappa egy Visual Studio-megoldást tartalmaz, amelynek neve **Macro\_utils\_h\_Generator. SLN**:
+Ez a mappa egy Visual Studio-megoldást tartalmaz, amelynek neve **macro\_utils\_h\_Generator. SLN**:
 
-  ![Képernyőfelvétel a Visual Studio megoldás maco_utils_h_generator](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
+  ![Képernyőkép a Visual Studio-megoldásról maco_utils_h_generator](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-Az ebben a megoldásban szereplő program létrehozza a **\_utils. h** nevű fájlt. Az SDK-ban szerepel\_egy alapértelmezett makró utils. h fájl. Ez a megoldás lehetővé teszi bizonyos paraméterek módosítását, majd a naplófájlok alapján hozza létre újra a fejlécet.
+Az ebben a megoldásban szereplő program a **\_utils. h** fájljának a makróját hozza létre. Az SDK tartalmaz egy alapértelmezett makrót\_utils. h fájlt. Ez a megoldás lehetővé teszi bizonyos paraméterek módosítását, majd a naplófájlok alapján hozza létre újra a fejlécet.
 
-A két fontos paraméter a következő: **nArithmetic** és **nMacroParameters** , amelyek a makró\_utils.tt található két sorban vannak meghatározva:
+A két fontos paraméter a következő: **nArithmetic** és **nMacroParameters**, amelyek a makróban\_utils.tt található két sorban vannak meghatározva:
 
 ```C
 <#int nArithmetic=1024;#>
@@ -566,7 +566,7 @@ A két fontos paraméter a következő: **nArithmetic** és **nMacroParameters**
 
 Ezek az értékek az SDK-ban található alapértelmezett paraméterek. Minden paraméter a következő jelentéssel rendelkezik:
 
-* nMacroParameters – azt határozza meg, hogy hány paramétert használhat az egyik\_deklarált modellben.
+* nMacroParameters – azt határozza meg, hogy hány paramétert használhat egy DEKLARÁLt\_modell-makró definíciójában.
 * nArithmetic – a modellben engedélyezett tagok teljes számát szabályozza.
 
 Ennek a paraméternek az az oka, hogy ezek a paraméterek a modell méretének szabályozására szolgálnak. Vegyük például a modell definícióját:
@@ -577,23 +577,23 @@ WITH_DATA(int, MyData)
 );
 ```
 
-Ahogy korábban említettük, a **deklarált\_modell** csak egy C-makró. A modell és a **\_with** adatutasítás neve (még egy másik makró) a **deklarált\_modell**paraméterei. a **nMacroParameters** határozza meg, hogy hány paraméter szerepelhet a **\_deklarált modellben**. Gyakorlatilag ez határozza meg, hogy hány adateseményre és műveletre vonatkozó deklarációt használhat. Így az alapértelmezett 124-as korláttal az azt jelenti, hogy meghatározhat egy modellt az 60 műveletekkel és az adateseményekkel együtt. Ha megpróbálja túllépni ezt a korlátot, a következőhöz hasonló fordítási hibákat fog kapni:
+Ahogy korábban említettük, állapítsa meg, **\_a modell** csak egy C makró. A modell neve és a **WITH\_** adatkivonata (még egy makró) a **Declare\_Model**paraméterei. a **nMacroParameters** határozza meg, hogy hány paraméter szerepelhet a **DEKLARÁLt\_modellben**. Gyakorlatilag ez határozza meg, hogy hány adateseményre és műveletre vonatkozó deklarációt használhat. Így az alapértelmezett 124-as korláttal az azt jelenti, hogy meghatározhat egy modellt az 60 műveletekkel és az adateseményekkel együtt. Ha megpróbálja túllépni ezt a korlátot, a következőhöz hasonló fordítási hibákat fog kapni:
 
   ![Képernyőkép a makró-paraméterek fordítási hibáiról](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
-A **nArithmetic** paraméterrel többet tudhat meg a makrók nyelvének belső működéséről, mint az alkalmazás.  Meghatározza a modellben lévő tagok teljes számát, beleértve a **DECLARE_STRUCT** makrókat is. Ha elindítja a fordítóprogram hibáit, például a következőt, próbálja meg növelni a **nArithmetic**:
+A **nArithmetic** paraméterrel többet tudhat meg a makrók nyelvének belső működéséről, mint az alkalmazás.  Meghatározza a modellben található tagok teljes számát, beleértve a **DECLARE_STRUCT** makrókat is. Ha elindítja a fordítóprogram hibáit, például a következőt, próbálja meg növelni a **nArithmetic**:
 
    ![Képernyőkép az aritmetikai fordítóprogram hibáiról](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
-Ha módosítani\_kívánja ezeket a paramétereket, módosítsa a makró utils.tt-fájljának értékeit, fordítsa újra a makrót\_a\_utils h\_Generator. SLN megoldással, és futtassa a lefordított programot. Ha így tesz, a rendszer létrehoz és\_elhelyez egy új, a.\\ h nevű makró-fájlt. common\\Inc könyvtár.
+Ha módosítani kívánja ezeket a paramétereket, módosítsa a makró\_utils.tt fájl értékeit, fordítsa le újra a makrót\_utils\_h\_Generator. SLN megoldást, és futtassa a lefordított programot. Ha így tesz, a rendszer létrehoz és elhelyez egy új makrót\_utils. h fájlt.\\Common\\Inc könyvtár.
 
-Ahhoz, hogy használni lehessen a Macro\_utils. h új verzióját, távolítsa el a **szerializáló** NuGet-csomagot a megoldásból, és a helyére foglalja bele a **szerializáló** Visual Studio-projektet. Ez lehetővé teszi, hogy a kód a szerializáló könyvtár forráskódján legyen lefordítva. Ez magában foglalja a frissített\_makrót (utils. h). Ha ezt szeretné tenni a **simplesample\_-amqp**, először távolítsa el a NuGet-csomagot a szerializáló könyvtárból a megoldásból:
+A\_utils. h nevű makró új verziójának használatához távolítsa el a **szerializáló** NuGet-csomagot a megoldásból, és a helyére foglalja bele a **szerializáló** Visual Studio-projektet. Ez lehetővé teszi, hogy a kód a szerializáló könyvtár forráskódján legyen lefordítva. Ide tartozik a\_utils. h frissített makró. Ha ezt szeretné tenni a **simplesample\_amqp**, először távolítsa el a NuGet-csomagot a szerializáló könyvtárból a megoldásból:
 
    ![Képernyőkép a szerializáló könyvtár NuGet-csomagjának eltávolításáról](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
 
 Ezt követően adja hozzá a projektet a Visual Studio-megoldáshoz:
 
-> .\\c\\serializer\\build\\windows\\serializer.vcxproj
+> .\\c\\szerializáló\\Build\\Windows\\szerializáló. vcxproj
 > 
 > 
 
@@ -601,37 +601,37 @@ Ha elkészült, a megoldásnak így kell kinéznie:
 
    ![Képernyőkép a simplesample_amqp Visual Studio megoldásról](media/iot-hub-device-sdk-c-serializer/05-serializer-project.png)
 
-Most, hogy lefordítja a megoldást, a frissített\_Macro. h a bináris fájl részét képezi.
+Most, hogy lefordítja a megoldást, a bináris\_a utils. h frissített makrót is tartalmazza.
 
 Vegye figyelembe, hogy ezek az értékek elég magasak lehetnek, és túllépik a fordítóprogram korlátait. Erre a pontra a **nMacroParameters** az a fő paraméter, amelynek az érintettnek kell lennie. A C99 specifikációja azt adja meg, hogy egy makró-definícióban legalább 127 paraméter megengedett. A Microsoft fordító pontosan követi a specifikációt (és 127), így az alapértelmezettnél nem fogja tudni megnövekedni a **nMacroParameters** . Más fordítóprogramok is engedélyezhetik ezt (például a GNU-fordító magasabb korlátot támogat).
 
-Eddig mindent megtettünk, amit tudnia kell, hogyan írhat kódot a szerializáló könyvtárral . Mielőtt megkezdené, olvassa el újra a korábbi cikkekből származó témaköröket, amelyeket érdemes tudnia.
+Eddig mindent megtettünk, amit tudnia kell, hogyan írhat kódot a **szerializáló** könyvtárral. Mielőtt megkezdené, olvassa el újra a korábbi cikkekből származó témaköröket, amelyeket érdemes tudnia.
 
 ## <a name="the-lower-level-apis"></a>Az alsó szintű API-k
 Az a minta alkalmazás, amelyre ez a cikk koncentrált, **simplesample\_amqp**. Ez a példa a magasabb szintű (a nem**ll**) API-kat használja az események küldéséhez és az üzenetek fogadásához. Ha ezeket az API-kat használja, a háttérben futó szál fut, amely az események küldését és az üzenetek fogadását is gondoskodik. Azonban az alsó szintű (LL) API-k használatával megkerülheti ezt a háttérbeli szálat, és explicit módon szabályozhatja, hogy mikor küldjön eseményeket vagy fogad üzeneteket a felhőből.
 
 Az [előző cikkben](iot-hub-device-sdk-c-iothubclient.md)leírtaknak megfelelően vannak olyan függvények, amelyek a magasabb szintű API-kat alkotják:
 
-* IoTHubClient\_CreateFromConnectionString
-* IoTHubClient\_SendEventAsync
-* IoTHubClient\_SetMessageCallback
-* IoTHubClient\_Destroy
+* Iothubclientről\_CreateFromConnectionString
+* Iothubclientről\_SendEventAsync
+* Iothubclientről\_SetMessageCallback
+* Iothubclientről\_megsemmisítése
 
 Ezeket az API-kat a **simplesample\_amqp**mutatja be.
 
 Az alacsonyabb szintű API-k is hasonló módon vannak elfoglalva.
 
-* IoTHubClient\_LL\_CreateFromConnectionString
-* IoTHubClient\_LL\_SendEventAsync
-* IoTHubClient\_LL\_SetMessageCallback
-* IoTHubClient\_LL\_Destroy
+* Iothubclientről\_LL\_CreateFromConnectionString
+* Iothubclientről\_LL\_SendEventAsync
+* Iothubclientről\_LL\_SetMessageCallback
+* Iothubclientről\_LL\_Destroy
 
-Vegye figyelembe, hogy az alsó szintű API-k pontosan ugyanúgy működnek, mint az előző cikkekben. Az API-k első készletét akkor használhatja, ha azt szeretné, hogy a háttérben futó szál kezelje az eseményeket és fogadja az üzeneteket. Az API-k második készletét kell használnia, ha a IoT Hubtól érkező adatok küldésekor és fogadásakor explicit módon szeretné szabályozni a vezérlést. Az API-k egy csoportja ugyanúgy működik együtt a szerializáló könyvtárral.
+Vegye figyelembe, hogy az alsó szintű API-k pontosan ugyanúgy működnek, mint az előző cikkekben. Az API-k első készletét akkor használhatja, ha azt szeretné, hogy a háttérben futó szál kezelje az eseményeket és fogadja az üzeneteket. Az API-k második készletét kell használnia, ha a IoT Hubtól érkező adatok küldésekor és fogadásakor explicit módon szeretné szabályozni a vezérlést. Az API-k egy csoportja ugyanúgy működik együtt a **szerializáló** könyvtárral.
 
-Az alsóbb szintű API-k szerializálási könyvtárral való használatának példáját a **simplesample\_http** -alkalmazásban találhatja meg.
+Az alsóbb szintű API-k **szerializálási** könyvtárral való használatának példáját a **simplesample\_http** -alkalmazásban találhatja meg.
 
 ## <a name="additional-topics"></a>További témakörök
-Néhány további téma is érdemes megemlíteni a tulajdonságok kezelését, alternatív eszköz hitelesítő adatokkal és konfigurációs lehetőségekkel. Ezeket az összes témakört egy [korábbi cikkben](iot-hub-device-sdk-c-iothubclient.md)tárgyaljuk. A lényeg az, hogy ezeknek a szolgáltatásoknak az összes funkciója ugyanúgy működik, mint a szerializáló könyvtára, ahogyan az a **iothubclientről** -könyvtárral együtt történik. Ha például a modellből egy eseményhez szeretne tulajdonságokat csatolni, a **IoTHubMessage\_tulajdonságokat** és a **Térkép**\_**AddorUpdate**kell használnia, ugyanúgy, mint a korábban leírt módon:
+Néhány további téma is érdemes megemlíteni a tulajdonságok kezelését, alternatív eszköz hitelesítő adatokkal és konfigurációs lehetőségekkel. Ezeket az összes témakört egy [korábbi cikkben](iot-hub-device-sdk-c-iothubclient.md)tárgyaljuk. A lényeg az, hogy ezeknek a szolgáltatásoknak az összes funkciója ugyanúgy működik, mint a **szerializáló** könyvtára, ahogyan az a **iothubclientről** -könyvtárral együtt történik. Ha például a modellből szeretne tulajdonságokat csatolni egy eseményhez, használja a **IoTHubMessage\_tulajdonságokat** , és **képezze** le\_**AddorUpdate**, ugyanúgy, mint a korábban leírt módon:
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -641,27 +641,27 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Azt jelzi, hogy az esemény a **szerializáló** könyvtárból lett létrehozva, vagy manuálisan lett létrehozva a **iothubclientről** -kódtár használatával.
 
-Az alternatív eszköz hitelesítő adataihoz az **iothubclientről\_ll\_Create** **\_iothubclientről** -t és a CreateFromConnectionString-t használja a **IOTHUB\_-ügyféllefoglalásához\_ LEÍRÓ**.
+Az alternatív eszköz hitelesítő adataihoz használja a **iothubclientről\_LL\_Create** -t, valamint a **iothubclientről\_CreateFromConnectionString** a **IOTHUB\_ügyfél\_leírójának**lefoglalásához.
 
-Végül, ha a **szerializáló** függvénytárat használja, a konfigurációs beállításokat az **iothubclientről\_ll\_SetOption** is megadhatja ugyanúgy, ahogy a **iothubclientről** -könyvtár használatakor.
+Végül, ha a **szerializáló** függvénytárat használja, beállíthatja a **iothubclientről\_ll\_SetOption** konfigurációs beállításait ugyanúgy, mint amikor a **iothubclientről** -függvénytárat használta.
 
-A szerializáló függvénytár egyedi funkciója az inicializálási API-k. A könyvtár használatának megkezdése előtt hívnia kell a **szerializáló\_init**:
+A **szerializáló** függvénytár egyedi funkciója az inicializálási API-k. A könyvtár használatának megkezdése előtt hívnia kell a **szerializáló\_init**:
 
 ```C
 serializer_init(NULL);
 ```
 
-Ezt csak a **iothubclientről\_CreateFromConnectionString**meghívása előtt végezheti el.
+Ez közvetlenül a **iothubclientről\_CreateFromConnectionString**meghívása előtt történik.
 
-Hasonlóképpen, amikor elkészült a könyvtárral, az utolsó hívás a **\_szerializáló deinit**:
+Hasonlóképpen, amikor elkészült a könyvtárral, az utolsó hívás a **szerializáló\_deinit**:
 
 ```C
 serializer_deinit();
 ```
 
-Ellenkező esetben a fent felsorolt többi funkció ugyanúgy működik a szerializáló könyvtárában , mint a **iothubclientről** -könyvtárban. További információt ezekről a témakörökről a sorozat [előző cikkében](iot-hub-device-sdk-c-iothubclient.md) talál.
+Ellenkező esetben a fent felsorolt többi funkció ugyanúgy működik a **szerializáló** könyvtárában, mint a **iothubclientről** -könyvtárban. További információt ezekről a témakörökről a sorozat [előző cikkében](iot-hub-device-sdk-c-iothubclient.md) talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti a **C-hez készült Azure IoT Device SDK**-ban található **szerializáló** függvénytár egyedi szempontjait. A megadott információkkal tisztában kell lennie azzal, hogyan használhatók modellek az események küldéséhez és az üzenetek fogadásához IoT Hubról.
 

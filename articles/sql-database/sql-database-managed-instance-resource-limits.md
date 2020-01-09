@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443832"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -87,7 +87,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 > - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok teljes felhasznált területét. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
 > - Az átviteli sebesség és a IOPS általános célú szinten a felügyelt példányok által kifejezetten nem korlátozott [fájlméretet](#file-io-characteristics-in-general-purpose-tier) is függ.
 > - Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
-> - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Ha például 7 x GB-nyi fájlt hoz létre, amely Max 5K IOPS-val rendelkezik, minden egyes és 7 kis fájl (128 GB-nál kisebb) és 500 IOPS mindegyike 38500, akkor a számítási feladatok az összes fájlt igénybe vehetik (7x5000 + 7x500). Vegye figyelembe, hogy az automatikus biztonsági mentések esetében bizonyos mennyiségű IOPS is használatban van.
+> - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Tegyük fel például, hogy ha 7 x TB-os fájlt hoz létre, amely Max 5K IOPS-t és 7 kis fájlt (128 GB-nál kisebb) a 500 38500 IOPS Vegye figyelembe, hogy az automatikus biztonsági mentések esetében bizonyos mennyiségű IOPS is használatban van.
 
 > [!NOTE]
 > A [felügyelt példányok készletében található erőforrás-korlátokkal](sql-database-instance-pools.md#instance-pools-resource-limitations)kapcsolatos további információkat ebben a cikkben talál.
@@ -178,7 +178,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a  **Create** (Létrehozás) gombra.
+7. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

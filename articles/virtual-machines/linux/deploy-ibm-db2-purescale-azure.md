@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083448"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530102"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan lehet üzembe helyezni egy olyan [példa archite
 
 Az áttelepítéshez használt lépések követéséhez tekintse meg a [DB2onAzure](https://aka.ms/db2onazure) adattár telepítési parancsfájljait a githubon. Ezek a parancsfájlok egy tipikus, közepes méretű online tranzakció-feldolgozási (OLTP) munkaterhelés architektúráján alapulnak.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 Az architektúra üzembe helyezéséhez töltse le és futtassa a [DB2onAzure](https://aka.ms/db2onazure) -tárházban található Deploy.sh-parancsfájlt a githubon.
 
@@ -40,33 +40,35 @@ A tárház parancsfájlokat is tartalmaz a Grafana-irányítópult beállítás�
 
 A deploy.sh szkript létrehozza és konfigurálja az architektúrához tartozó Azure-erőforrásokat. A parancsfájl kéri a célként megadott környezetben használt Azure-előfizetést és virtuális gépeket, majd a következő műveleteket hajtja végre:
 
--   Az Azure-beli erőforráscsoport, virtuális hálózat és alhálózatok beállítása a telepítéshez
+-   Beállítja az Azure-beli erőforráscsoportot, virtuális hálózatot és alhálózatokat a telepítéshez.
 
--   A hálózati biztonsági csoportok és az SSH beállítása a környezethez
+-   Beállítja a hálózati biztonsági csoportokat és az SSH-t a környezethez.
 
--   Hálózati adapterek beállítása a GlusterFS és a DB2 pureScale virtuális gépeken
+-   Több hálózati adaptert állít be a megosztott tárolón és a DB2 pureScale virtuális gépeken is.
 
--   Létrehozza a GlusterFS Storage-beli virtuális gépeket
+-   Létrehozza a megosztott tároló virtuális gépeket. Ha Közvetlen tárolóhelyek vagy egy másik tárolási megoldást használ, tekintse meg a [közvetlen tárolóhelyek áttekintése](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)című témakört.
 
 -   Létrehozza a Jumpbox virtuális gépet.
 
--   Létrehozza a DB2 pureScale virtuális gépeket
+-   Létrehozza a DB2 pureScale virtuális gépeket.
 
--   Létrehoz egy olyan tanúsító virtuális gépet, amely DB2 pureScale kopog
+-   Létrehoz egy olyan tanúsító virtuális gépet, amely DB2 pureScale kopog. A központi telepítés ezen részének kihagyása, ha a DB2-pureScale nem igényel tanúsító példányt.
 
--   Létrehoz egy Windows rendszerű virtuális gépet, amelyet tesztelésre használ, de nem telepít semmit
+-   Létrehoz egy Windows rendszerű virtuális gépet, amelyet tesztelésre használ, de nem telepít semmit.
 
-Ezt követően az üzembe helyezési parancsfájlok egy iSCSI virtuális tárolóhely hálózatot (vSAN) állítanak be a megosztott tárolóhoz az Azure-ban. Ebben a példában az iSCSI csatlakozik a GlusterFS. Ez a megoldás lehetővé teszi az iSCSI-tárolók egyetlen Windows-csomópontként történő telepítését is. az iSCSI egy megosztott blokk tárolási felületet biztosít a TCP/IP protokollon keresztül, amely lehetővé teszi, hogy a DB2 pureScale telepítési eljárása egy eszköz felületét használja a megosztott tárolóhoz való kapcsolódáshoz. A GlusterFS alapjaival kapcsolatban tekintse meg az [architektúrát: A kötetek](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/) típusai témakör a Gluster docs-ban.
+Ezt követően az üzembe helyezési parancsfájlok egy iSCSI virtuális tárolóhely hálózatot (vSAN) állítanak be a megosztott tárolóhoz az Azure-ban. Ebben a példában az iSCSI csatlakozik a megosztott tároló fürthöz. Az eredeti ügyfél-megoldásban a GlusterFS használta. Az IBM azonban már nem támogatja ezt a megközelítést. Az IBM támogatásának fenntartása érdekében egy támogatott iSCSI-kompatibilis fájlrendszert kell használnia. A Microsoft a Közvetlen tárolóhelyek (S2D) lehetőséget kínálja.
+
+Ez a megoldás lehetővé teszi az iSCSI-tárolók egyetlen Windows-csomópontként történő telepítését is. az iSCSI egy megosztott blokk tárolási felületet biztosít a TCP/IP protokollon keresztül, amely lehetővé teszi, hogy a DB2 pureScale telepítési eljárása egy eszköz felületét használja a megosztott tárolóhoz való kapcsolódáshoz.
 
 Az üzembe helyezési parancsfájlok az alábbi általános lépéseket futtatják:
 
-1.  A GlusterFS használatával hozzon létre egy megosztott tárolási fürtöt az Azure-ban. Ez a lépés legalább két Linux-csomópontot foglal magában. A telepítés részleteiért lásd: [Red Hat Gluster Storage beállítása Microsoft Azureban](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure) a Red Hat Gluster dokumentációjában.
+1.  Hozzon létre egy megosztott Storage-fürtöt az Azure-ban. Ez a lépés legalább két Linux-csomópontot foglal magában.
 
-2.  Hozzon létre egy iSCSI Direct-felületet a cél linuxos kiszolgálókon a GlusterFS. A telepítés részleteiért lásd: [iSCSI-GlusterFS](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/) a GlusterFS felügyeleti útmutatóban.
+2.  Hozzon létre egy iSCSI Direct-felületet a cél linuxos kiszolgálókon a megosztott tároló fürthöz.
 
-3.  Állítsa be az iSCSI-kezdeményezőt a Linux rendszerű virtuális gépeken. A kezdeményező iSCSI-tároló használatával fogja elérni a GlusterFS-fürtöt. A telepítés részleteiért lásd: [iSCSI-tároló és kezdeményező konfigurálása Linux rendszeren](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) a RootUsers dokumentációjában.
+3.  Állítsa be az iSCSI-kezdeményezőt a Linux rendszerű virtuális gépeken. A kezdeményező iSCSI-tároló használatával fogja elérni a megosztott tároló fürtöt. A telepítés részleteiért lásd: [iSCSI-tároló és kezdeményező konfigurálása Linux rendszeren](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) a RootUsers dokumentációjában.
 
-4.  Telepítse a GlusterFS-t az iSCSI-felület tárolási rétegéhez.
+4.  Telepítse az iSCSI-interfész megosztott tárolási rétegét.
 
 Miután a parancsfájlok létrehozták az iSCSI-eszközt, az utolsó lépés a DB2-pureScale telepítése. A DB2 pureScale-telepítés részeként az [IBM Spectrum](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (korábbi nevén GPFS) a GlusterFS-fürtön van lefordítva és telepítve. Ez a fürtözött fájlrendszer lehetővé teszi a DB2-pureScale számára az adatmegosztást a DB2 pureScale motort futtató virtuális gépek között. További információ: [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) dokumentáció az IBM webhelyén.
 
@@ -77,11 +79,11 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 > [!NOTE]
 > A DB2server. RSP egy minta válaszfájlt tartalmaz a GitHubon található [DB2onAzure](https://aka.ms/db2onazure) -tárházban. Ha ezt a fájlt használja, szerkesztenie kell, mielőtt működni fog a környezetben.
 
-| Képernyő neve               | Mező                                        | Value                                                                                                 |
+| Képernyő neve               | Mező                                        | Value (Díj)                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Üdvözöljük!                   |                                              | Új telepítés                                                                                           |
+| Üdvözöljük                   |                                              | Új telepítés                                                                                           |
 | Termék kiválasztása          |                                              | A DB2 verziója 11.1.3.3. Kiszolgálói kiadások DB2 pureScale                                              |
-| Konfiguráció             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Konfiguráció             | Könyvtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | A telepítés típusának kiválasztása                 | Tipikus                                                                                               |
 |                           | Elfogadom az IBM használati feltételeit                     | Bejelölve                                                                                               |
 | Példány tulajdonosa            | Meglévő felhasználó, példány, Felhasználónév        | DB2sdin1                                                                                              |
@@ -117,7 +119,7 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 
 - A telepítési parancsfájlok aliasokat használnak az iSCSI-lemezekhez, hogy a tényleges nevek könnyen megtalálhatók legyenek.
 
-- Ha a d0 futtatja a telepítési parancsfájlt, **a\* /dev/DM-** -értékek a D1, a cf0 és a cf1 értéktől eltérőek lehetnek. Az értékek különbsége nem befolyásolja a DB2 pureScale telepítését.
+- Ha a d0 futtatja a telepítési parancsfájlt, a **/dev/dm-\*** értékei a D1, a cf0 és a cf1 értéktől eltérőek lehetnek. Az értékek különbsége nem befolyásolja a DB2 pureScale telepítését.
 
 ## <a name="troubleshooting-and-known-issues"></a>Hibaelhárítás és ismert problémák
 
@@ -139,9 +141,7 @@ A GitHub-tárház tartalmaz egy tudásbázist, amelyet a szerzők tartanak fenn.
 
 További információ ezekről és az egyéb ismert problémákról: kb.md-fájl a [DB2onAzure](https://aka.ms/DB2onAzure) -tárházban.
 
-## <a name="next-steps"></a>További lépések
-
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+## <a name="next-steps"></a>Következő lépések
 
 -   [Szükséges felhasználók létrehozása a DB2 pureScale szolgáltatás telepítéséhez](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
@@ -149,8 +149,8 @@ További információ ezekről és az egyéb ismert problémákról: kb.md-fájl
 
 -   [DB2 pureScale-fürtök adatmegoldása](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
--   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
+-   [IBM-es adatstúdió](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [Platform modernizációs Szövetsége: IBM DB2 az Azure-ban](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+-   [Platform modernizációs Szövetség: IBM DB2 az Azure-ban](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
 -   [Az Azure Virtual adatközpontjának átemelési és átváltási útmutatója](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

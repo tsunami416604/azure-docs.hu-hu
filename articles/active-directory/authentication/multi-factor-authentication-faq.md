@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425135"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure Multi-Factor Authentication
 
@@ -26,9 +26,12 @@ Ez a gyakori kérdések az Azure Multi-Factor Authentication és az Multi-Factor
 
 > [!IMPORTANT]
 > 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> 
+> A fogyasztáson alapuló licencelés az új ügyfelek számára már nem érhető el, 2018. szeptember 1-től érvényes.
+> Az új hitelesítési szolgáltatók már nem hozhatók létre. szeptember 1., 2018. A meglévő hitelesítési szolgáltatók továbbra is használhatók és frissíthetők. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencekben.
+
 > [!NOTE]
 > Az alábbi, az Azure Multi-Factor Authentication-kiszolgálót érintő információ csak azokra a felhasználókra vonatkozik, akik már futtatták az MFA-kiszolgálót.
-
 
 **K: hogyan kezeli az Azure Multi-Factor Authentication-kiszolgáló a felhasználói adatmennyiséget?**
 

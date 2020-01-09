@@ -1,25 +1,14 @@
 ---
-title: Csomópont-típus eltávolítása az Azure Service Fabricban | Microsoft Docs
+title: Csomópont-típus eltávolítása az Azure Service Fabric
 description: Megtudhatja, hogyan távolíthat el egy csomópont-típust egy Azure-ban futó Service Fabric-fürtből.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
-ms.author: atsenthi
-ms.openlocfilehash: 44f25adf4168f4339a31e9270c2b23a8466a8889
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f3dc3210fdb436038174bb8d9347424f14d3faa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464509"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Service Fabric csomópont típusának eltávolítása
 Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt egy meglévő csomópont-típus fürtből való eltávolításával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt egy csomópont-típus (virtuálisgép-méretezési csoport) és annak összes csomópontjának eltávolításával.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -80,7 +69,7 @@ Foreach($node in $nodes)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a fürt [tartóssági jellemzőiről](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 - További információ a [csomópontok típusairól és Virtual Machine Scale sets](service-fabric-cluster-nodetypes.md).
 - További információ a [Service Fabric-fürt skálázásáról](service-fabric-cluster-scaling.md).

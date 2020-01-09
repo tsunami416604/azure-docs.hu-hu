@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 06/27/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4b0b0d91af15912e1c64761351ba33acfd3e2725
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448734"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Mi az a Bing Custom Search API?
 
 A Bing Custom Search API lehetővé teszi, hogy testreszabott ad-ingyenes keresési funkciókat hozzon létre az Ön számára fontos témakörökhöz. Megadhatja, hogy a Bing milyen tartományokat és weblapokat keressen, valamint PIN-kódot, lendületet vagy lefokozni bizonyos tartalmakat, hogy egyéni nézetet hozzon létre a weben, és segítsen a felhasználóknak a releváns keresési eredmények gyors megtalálásában. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |[Egyéni valós idejű keresési javaslatok](define-custom-suggestions.md)     | Olyan keresési javaslatokat adhat meg, amelyek legördülő listaként jeleníthetők meg a felhasználók típusaként.       | 
 |[Egyéni képkeresési élmények](get-images-from-instance.md)     | Lehetővé teheti a felhasználók számára, hogy az egyéni keresési példányban megadott tartományokból és webhelyekről keressenek rendszerképeket.        |        
@@ -39,13 +39,15 @@ A keresési példány létrehozása után integrálhatja azt (és opcionálisan 
 ![Kép, amely azt mutatja, hogy az API-n keresztül kapcsolódhat a Bing Custom Search szolgáltatáshoz](media/BCS-Overview.png "Hogyan működik a Bing Custom Search.")
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Annak érdekében, hogy gyorsan nekiláthasson, olvassa el [az első Bing Custom Search-példányok létrehozásáról](quick-start.md) szóló cikket.
 
 A keresési példány testreszabásával kapcsolatos részletekért lásd az [az egyéni keresési példány definiálásával](define-your-custom-view.md) foglalkozó témakört.
 
 Ügyeljen arra, hogy olvassa el a [Bing használati és megjelenítési követelményeit](./use-and-display-requirements.md) a keresési eredmények használatához a szolgáltatásokban és az alkalmazásokban.
+
+A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/search-the-web.md) .
 
 Tekintse át az egyéni keresési végpontokra vonatkozó referenciákat. A referencia olyan végpontokat, fejléceket és lekérdezési paramétereket tartalmaz, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne.
 

@@ -3,19 +3,19 @@ title: Az Azure Diagnostics (.NET) használata Cloud Services használatával | 
 description: Az Azure Diagnostics használatával adatokat gyűjthet az Azure Cloud Servicesből a hibakereséshez, a teljesítmény méréséhez, a figyeléshez, a forgalom elemzéséhez és egyebekhez.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361113"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics engedélyezése az Azure-ban Cloud Services
 A Azure Diagnostics hátterének [Azure Diagnostics áttekintését](../azure-diagnostics.md) lásd:.
@@ -26,7 +26,7 @@ Ez az útmutató azt ismerteti, hogyan valósítható meg egy olyan Azure feldol
 ### <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik Azure-előfizetéssel, és a Visual studiót használja az Azure SDK-val. Ha nem rendelkezik Azure-előfizetéssel, regisztrálhat az [ingyenes próbaverzióra][Free Trial]. Győződjön meg arról, hogy a [Azure PowerShell 0.8.7 vagy újabb verziót telepíti és konfigurálja][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>1\. lépés: Feldolgozói szerepkör létrehozása
+### <a name="step-1-create-a-worker-role"></a>1\. lépés: feldolgozói szerepkör létrehozása
 1. Indítsa el a **Visual Studiót**.
 2. Hozzon létre egy **Azure Cloud Service** -projektet a .NET-keretrendszer 4,5-es verzióit tároló **felhőalapú** sablonból.  Nevezze el a "WadExample" projektet, és kattintson az OK gombra.
 3. Válassza a feldolgozó **szerepkör** lehetőséget, majd kattintson az OK gombra. Ekkor létrejön a projekt.
@@ -34,7 +34,7 @@ Ez a cikk feltételezi, hogy rendelkezik Azure-előfizetéssel, és a Visual stu
 5. A **konfiguráció** lapon szüntesse meg a diagnosztika **engedélyezését** a diagnosztika 1,0 (Azure SDK 2,4 és korábbi verziók) letiltásához.
 6. Hozza létre a megoldását annak ellenőrzéséhez, hogy nincsenek-e hibák.
 
-### <a name="step-2-instrument-your-code"></a>2\. lépés: A kód műszere
+### <a name="step-2-instrument-your-code"></a>2\. lépés: a kód eszköze
 Cserélje le a WorkerRole.cs tartalmát a következő kódra. A [EventSource osztálytól][EventSource Class]örökölt SampleEventSourceWriter osztály négy naplózási módszert valósít meg: **SendEnums**, **MessageMethod**, **SetOther** és **HighFreq**. A **writeevent metódusnak** metódus első paramétere a megfelelő esemény azonosítóját határozza meg. A Run metódus egy végtelen hurkot valósít meg, amely minden egyes, a **SampleEventSourceWriter** osztályban implementált naplózási módszert meghívja 10 másodpercenként.
 
 ```csharp
@@ -118,7 +118,7 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>3\. lépés: Feldolgozói szerepkör üzembe helyezése
+### <a name="step-3-deploy-your-worker-role"></a>3\. lépés: a feldolgozói szerepkör üzembe helyezése
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -130,13 +130,13 @@ namespace WorkerRole1
 6. Módosítsa a megfelelő **beállításokat** , és kattintson a **Közzététel**gombra.
 7. Az üzembe helyezés befejezése után ellenőrizze a Azure Portal, hogy a felhőalapú szolgáltatás **fut** -e.
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>4\. lépés: A diagnosztika konfigurációs fájljának létrehozása és a bővítmény telepítése
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>4\. lépés: a diagnosztika konfigurációs fájljának létrehozása és a bővítmény telepítése
 1. Töltse le a nyilvános konfigurációs fájl sémájának definícióját a következő PowerShell-parancs végrehajtásával:
 
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Vegyen fel egy XML-fájlt a **WorkerRole1** -projektbe úgy, hogy a jobb gombbal a **WorkerRole1** projektre kattint, és kiválasztja az**új elem** **hozzáadása** -> lehetőséget. -> **Visual C# Items** -> -**adatok** -> **XML-fájlja**. Nevezze el a "WadExample. xml" fájlt.
+2. Vegyen fel egy XML-fájlt a **WorkerRole1** -projektbe úgy, hogy a jobb gombbal a **WorkerRole1** projektre kattint, és kiválasztja -> **új elem** **hozzáadása** lehetőséget. ->  **C# vizualizációs elemek** -> **adatok** -> **XML-fájl**. Nevezze el a "WadExample. xml" fájlt.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Társítsa a WadConfig. XSD fájlt a konfigurációs fájllal. Győződjön meg arról, hogy az WadExample. XML szerkesztő ablak az aktív ablak. Nyomja le az **F4** billentyűt a **Tulajdonságok** ablak megnyitásához. Kattintson a **sémák** tulajdonságra a **Tulajdonságok** ablakban. Kattintson a **.** . a **sémák** tulajdonságban. Kattintson a **Hozzáadás...** gombra, és navigáljon arra a helyre, ahová az XSD-fájlt mentette, majd válassza ki a WadConfig. XSD fájlt. Kattintson az **OK** gombra.
@@ -166,11 +166,11 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>5\. lépés: Diagnosztika telepítése a feldolgozói szerepkörre
-A webes vagy feldolgozói szerepkör diagnosztika-kezelési PowerShell-parancsmagjai a következők: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension, and Remove-AzureServiceDiagnosticsExtension.
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>5\. lépés: a diagnosztika telepítése a feldolgozói szerepkörre
+A webes vagy feldolgozói szerepkör diagnosztika szolgáltatásának kezelésére szolgáló PowerShell-parancsmagok a következők: set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension és Remove-AzureServiceDiagnosticsExtension.
 
 1. Nyissa meg Azure PowerShell.
-2. Futtassa a parancsfájlt a diagnosztika telepítéséhez a feldolgozói szerepkörön (cserélje le a *StorageAccountKey* -t a wadexample Storage-fiókhoz tartozó Storage-fiók kulcsára, és *config_path* a *wadexample. XML* fájl elérési útját):
+2. Futtassa a parancsfájlt a diagnosztika telepítéséhez a feldolgozói szerepkörön (cserélje le a *StorageAccountKey* -t a wadexample Storage-fiókja kulcsára, és *config_path* a *wadexample. XML* fájl elérési útját):
 
 ```powershell
 $storage_name = "wadexample"
@@ -181,19 +181,19 @@ $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -Sto
 Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Staging -Role WorkerRole1
 ```
 
-### <a name="step-6-look-at-your-telemetry-data"></a>6\. lépés: Tekintse meg a telemetria-adatait
+### <a name="step-6-look-at-your-telemetry-data"></a>6\. lépés: Tekintse meg a telemetria adatait
 A Visual Studio **Server Explorerben**navigáljon a wadexample Storage-fiókhoz. Miután a Cloud Service öt (5) percet futott, látnia kell a **WADEnumsTable**, a **WADHighFreqTable**, a **WADMessageTable**, a **WADPerformanceCountersTable** és a **WADSetOtherTable**táblákat. Kattintson duplán az egyik táblázatra a gyűjtött telemetria megtekintéséhez.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Konfigurációs fájl sémája
-A diagnosztikai konfigurációs fájl határozza meg azokat az értékeket, amelyeket a rendszer a diagnosztika ügynök indításakor a diagnosztikai konfigurációs beállítások inicializálásához használ. Tekintse meg az érvényes értékeket és példákat a [legújabb séma](/azure/azure-monitor/platform/diagnostics-extension-schema) -referenciával.
+A diagnosztikai konfigurációs fájl határozza meg azokat az értékeket, amelyeket a rendszer a diagnosztika ügynök indításakor a diagnosztikai konfigurációs beállítások inicializálásához használ. Tekintse meg az érvényes értékeket és példákat a [legújabb séma-referenciával](/azure/azure-monitor/platform/diagnostics-extension-schema) .
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha problémája van, tekintse meg a gyakori problémákkal kapcsolatos segítségért [Azure Diagnostics hibaelhárítással](../azure-diagnostics-troubleshooting.md) foglalkozó témakört.
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg a [kapcsolódó Azure virtuális gépek diagnosztikai cikkeinek listáját](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) a gyűjtött adatok módosításához, a problémák elhárításához, illetve a diagnosztika általános megismeréséhez.
+## <a name="next-steps"></a>Következő lépések
+[Tekintse meg a kapcsolódó Azure virtuális gépek diagnosztikai cikkeinek listáját](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) a gyűjtött adatok módosításához, a problémák elhárításához, illetve a diagnosztika általános megismeréséhez.
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 
@@ -201,3 +201,6 @@ Tekintse meg a [kapcsolódó Azure virtuális gépek diagnosztikai cikkeinek lis
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+
+
+

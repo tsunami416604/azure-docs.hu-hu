@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435395"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
@@ -37,7 +37,7 @@ További információ: [What is Apache Storm on Azure HDInsight?](storm/apache-s
 
 ## <a name="spark-streaming"></a>Spark streaming
 
-A Spark streaming egy Spark-bővítmény, amely lehetővé teszi, hogy ugyanazt a kódot használja, amelyet a kötegelt feldolgozáshoz használ. Egyszerre egyesítheti a Batch és az interaktív lekérdezéseket is ugyanabban az alkalmazásban. A Storm-vel ellentétben a Spark-adatfolyam állapot-nyilvántartó, pontosan egyszeri feldolgozási szemantikaot biztosít. Ha a [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)-val együtt használja, amely biztosítja, hogy az összes Kafka-adattal pontosan egyszer érkeznek meg a Spark streaming, a teljes körű, pontosan egyszeri garanciákat is el lehet érni. A Spark streaming erősségei közé tartoznak a hibatűrő képességei, így gyorsan helyreállítható a hibás csomópontok, ha több csomópont van használatban a fürtön belül.
+A Spark streaming egy Spark-bővítmény, amely lehetővé teszi, hogy ugyanazt a kódot használja, amelyet a kötegelt feldolgozáshoz használ. Egyszerre egyesítheti a Batch és az interaktív lekérdezéseket is ugyanabban az alkalmazásban. A Stormtől eltérően a Spark streaming pontosan egyszer dolgozza fel a szemantikai folyamatokat. Ha a [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)-val együtt használja, amely biztosítja, hogy az összes Kafka-adattal pontosan egyszer érkeznek meg a Spark streaming, a teljes körű garanciák elérését is lehetővé teszi. A Spark streaming erősségei közé tartoznak a hibatűrő képességei, így gyorsan helyreállítható a hibás csomópontok, ha több csomópont van használatban a fürtön belül.
 
 További információ: [What is Apache Spark streaming?](hdinsight-spark-streaming-overview.md).
 
@@ -45,11 +45,11 @@ További információ: [What is Apache Spark streaming?](hdinsight-spark-streami
 
 Bár a fürt csomópontjait is megadhatja a létrehozás során, érdemes lehet növelni vagy csökkenteni a fürtöt, hogy az megfeleljen a munkaterhelésnek. Az összes HDInsight-fürt lehetővé teszi a [fürtben lévő csomópontok számának módosítását](hdinsight-administer-use-portal-linux.md#scale-clusters). A Spark-fürtöket adatvesztés nélkül el lehet dobni, mivel az összes adattal az Azure Storage vagy a Data Lake Storage tárolja.
 
-A technológiák leválasztása számos előnnyel jár. Például a Kafka egy esemény-pufferelési technológia, így nagyon nagy i/o-igényű, és nem igényel nagy mennyiségű feldolgozási teljesítményt. Összehasonlítva a stream-processzorok, például a Spark streaming nagy számítási igényűek, és nagyobb teljesítményű virtuális gépeket igényelnek. Azáltal, hogy ezek a technológiák különböző fürtökre vannak leválasztva, a virtuális gépek legjobb kihasználásával egymástól függetlenül méretezhetők.
+A technológiák leválasztása számos előnnyel jár. Például a Kafka egy esemény-pufferelési technológia, ezért nagyon i/o-igényű, és nem igényel nagy mennyiségű feldolgozási teljesítményt. Összehasonlítva a stream-processzorok, például a Spark streaming nagy számítási igényűek, és nagyobb teljesítményű virtuális gépeket igényelnek. Azáltal, hogy ezek a technológiák különböző fürtökre vannak leválasztva, a virtuális gépek legjobb kihasználásával egymástól függetlenül méretezhetők.
 
 ### <a name="scale-the-stream-buffering-layer"></a>Az adatfolyam-pufferelés rétegének méretezése
 
-Az adatfolyam-pufferelési technológiák Event Hubs és a Kafka is használja a partíciókat és a fogyasztókat. A bemeneti átviteli sebesség méretezése a partíciók számának és a partíciók hozzáadásának növelését teszi lehetővé. Event Hubs a partíciók száma nem módosítható az üzembe helyezés után, ezért fontos, hogy a célként megadott méretezéssel kezdődjön. A Kafka használatával [partíciókat is hozzáadhat](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), még akkor is, ha a Kafka adatfeldolgozást végez. A Kafka eszköz lehetővé teszi a partíciók `kafka-reassign-partitions.sh`újbóli hozzárendelését. A HDInsight `rebalance_rackaware.py`egy [partíciós replika-átegyenlítő eszközt](https://github.com/hdinsight/hdinsight-kafka-tools)biztosít. Ez a kiegyenlítő eszköz úgy `kafka-reassign-partitions.sh` hívja meg az eszközt, hogy az egyes replikák külön tartalék tartományba és frissítési tartományba tartoznak, így a Kafka rack tisztában lesz, és növeli a hibatűrést.
+Az adatfolyam-pufferelési technológiák Event Hubs és a Kafka is használja a partíciókat és a fogyasztókat. A bemeneti átviteli sebesség méretezése a partíciók számának és a partíciók hozzáadásának növelését teszi lehetővé. Event Hubs a partíciók száma nem módosítható az üzembe helyezés után, ezért fontos, hogy a célként megadott méretezéssel kezdődjön. A Kafka használatával [partíciókat is hozzáadhat](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), még akkor is, ha a Kafka adatfeldolgozást végez. A Kafka eszköz lehetővé teszi a partíciók újbóli hozzárendelését, `kafka-reassign-partitions.sh`. A HDInsight egy [partíciós replika-átszabályozási eszközt](https://github.com/hdinsight/hdinsight-kafka-tools)biztosít, `rebalance_rackaware.py`. Ez az átszabályozási eszköz úgy hívja meg a `kafka-reassign-partitions.sh` eszközt, hogy minden replika külön tartalék tartományba és frissítési tartományba kerüljön, így a Kafka-állványt ismeri és növeli a hibatűrést.
 
 ### <a name="scale-the-stream-processing-layer"></a>Az adatfolyam feldolgozási rétegének méretezése
 
@@ -57,11 +57,11 @@ A Apache Storm és a Spark streaming is támogatja a munkavégző csomópontok h
 
 Ahhoz, hogy kihasználhassa az új csomópontok skálázásával hozzáadott csomópontokat, újra kell osztania a fürt méretének növelése előtt elindított Storm-topológiákat. Ez a kiegyensúlyozás a Storm webes kezelőfelületén vagy a parancssori felületén végezhető el. További információ: [Apache Storm dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-A Apache Spark három fő paramétert használ a környezet konfigurálásához az alkalmazás követelményeitől függően `spark.executor.instances`: `spark.executor.cores`, és `spark.executor.memory`. A *végrehajtó* egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladatainak végrehajtásáért. Az egyes fürtökhöz tartozó végrehajtók és a végrehajtói méretek alapértelmezett száma a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket a számokat a rendszer a `spark-defaults.conf`fürt minden egyes csomópontján tárolja a fájlban.
+A Apache Spark három fő paramétert használ a környezet konfigurálásához az alkalmazás követelményeitől függően: `spark.executor.instances`, `spark.executor.cores`és `spark.executor.memory`. A *végrehajtó* egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladatainak végrehajtásáért. Az egyes fürtökhöz tartozó végrehajtók és a végrehajtói méretek alapértelmezett száma a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket a számokat a `spark-defaults.conf`fájlban tárolja a rendszer a fürt minden egyes csomópontján.
 
 Ez a három paraméter a fürt szintjén konfigurálható a fürtön futó összes alkalmazás esetében, és az egyes alkalmazásokhoz is megadható. További információ: Apache Spark- [fürtök erőforrásainak kezelése](spark/apache-spark-resource-manager.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Storm topológia létrehozása és figyelése az Azure HDInsight](storm/apache-storm-quickstart.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](storm/apache-storm-example-topology.md)

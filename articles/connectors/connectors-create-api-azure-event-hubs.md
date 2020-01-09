@@ -1,18 +1,18 @@
 ---
 title: Kapcsolódás az Azure Event Hubshoz
-description: Események kezelése és figyelése az Azure Event Hubs és Azure Logic Apps
+description: Az Azure Event Hubs és Azure Logic Apps használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelik az eseményeket.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446168"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események figyelése, fogadása és küldése az Azure Event Hubs és Azure Logic Apps
 
@@ -135,7 +135,7 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
    | **Event hub neve** | Igen | Az Event hub, ahová el szeretné küldeni az eseményt |
    | **Tartalom** | Nem | Az elküldeni kívánt esemény tartalma |
    | **Tulajdonságok** | Nem | A küldendő alkalmazás tulajdonságai és értékei |
-   | **Partíciós kulcs** | Nem | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
+   | **Partíciókulcs** | Nem | Az esemény küldési helyének [partíció](../event-hubs/event-hubs-features.md#partitions) -azonosítója |
    ||||
 
    Elküldheti például a kimenetet a Event Hubs eseményindítóból egy másik Event hubhoz:

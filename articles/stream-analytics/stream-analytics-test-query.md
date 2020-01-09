@@ -1,24 +1,23 @@
 ---
 title: Azure Stream Analytics-feladatok tesztelése mintaadatok
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Azure Stream Analytics feladatok teszteléséhez, a minta bemenetekhez és a mintaadatok feltöltéséhez.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369864"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Azure Stream Analytics-feladatok tesztelése mintaadatok
 
-A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a bemeneti fogadóból, vagy feltöltötte a mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](stream-analytics-live-data-local-testing.md) és a [Visual Studio Code](vscode-local-run.md)-ban. 
+A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a bemeneti fogadóból, vagy feltöltötte a mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](stream-analytics-live-data-local-testing.md) és a [Visual Studio Code](visual-studio-code-local-run-live-input.md)-ban.
 
 ## <a name="sample-incoming-data-from-input"></a>Bejövő adatok mintája bemenetből
 
@@ -30,7 +29,7 @@ Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átv
 
 3. A Stream Analytics-feladatok lap **feladatok topológiájának** fejlécében válassza a **lekérdezés** lehetőséget a lekérdezés-szerkesztő ablak megnyitásához. 
 
-4. Ha szeretné megtekinteni a bejövő események mintáját, válassza a bevitel fájl ikont, és a minta eseményei automatikusan megjelennek a **bemeneti előnézetben**. 
+4. Ha szeretné megtekinteni a bejövő események mintáját, válassza a bevitel fájl ikont, és a minta eseményei automatikusan megjelennek a **bemeneti előnézetben**.
 
    a. A rendszer automatikusan észleli az adataihoz tartozó szerializálási típust, ha a JSON-vagy CSV-fájlja. A legördülő menüben lévő lehetőség módosításával manuálisan is módosíthatja a JSON-t, a CSV-t és a AVRO.
     
@@ -98,7 +97,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 10. A böngészőben megjelenített eredmények ellenőrzése után **elindíthatja** a feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 

@@ -1,70 +1,61 @@
 ---
-title: Hibakeresés az Azure Service Fabric-alkalmazásokat a Windows |} A Microsoft Docs
-description: Ismerje meg, hogyan figyelheti és diagnosztizálhatja a Microsoft Azure Service Fabric használatával egy helyi fejlesztői gépen írt szolgáltatásokat.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-alkalmazások hibakeresése Windows rendszeren
+description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a Microsoft Azure Service Fabric használatával írt szolgáltatásokat egy helyi fejlesztési gépen.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 31c559c1ab314b7e1f29bd96f74d6d82cfcc0420
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464623"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>A helyi gép fejlesztési telepítőjének szolgáltatások monitorozása és diagnosztizálása
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi számítógép-fejlesztési beállításokban
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 > * [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 > 
 > 
 
-Figyelés, észlelni, diagnosztizálása és hibaelhárítása lehetővé teszi a felhasználói élmény minimális megszakadását folytatásához szolgáltatások. Monitorozás és diagnosztika kritikus fontosságú egy tényleges üzembe helyezett éles környezetben, amelyek a hatékonyság függ egy hasonló modell bevezetése során győződjön meg arról, amikor helyez át egy való életből vett telepítő működnek a szolgáltatások fejlesztését. A Service Fabric megkönnyíti a szolgáltatás-fejlesztők számára a diagnosztikai is zökkenőmentesen együttműködő egygépes helyi fejlesztési beállításokat és a való életből vett éles fürt feladatainak megvalósítása.
+A szolgáltatások figyelése, észlelése, diagnosztizálása és hibaelhárítása lehetővé teszi, hogy a szolgáltatások továbbra is minimálisan megzavarják a felhasználói élményt. Habár a monitorozás és a diagnosztika kritikus fontosságú a tényleges üzembe helyezett éles környezetben, a hatékonyság a szolgáltatások fejlesztése során egy hasonló modell bevezetését fogja eredményezni, hogy a valós telepítéskor is működjön. A Service Fabric megkönnyíti a szolgáltatás-fejlesztők számára a diagnosztika megvalósítását, amely zökkenőmentesen képes együttműködni mind az egyszámítógépes helyi fejlesztési környezetekben, mind a valós üzemi fürtökön.
 
 ## <a name="event-tracing-for-windows"></a>Windows esemény-nyomkövetés
-[Esemény nyomkövetése Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) a javasolt technológiát a nyomkövetési üzeneteket a Service Fabricben. Néhány ETW használatának előnyei a következők:
+A [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) az ajánlott technológia a Service Fabricban lévő üzenetek nyomon követéséhez. A ETW használatának néhány előnye:
 
-* **ETW gyors.** Azt, hogy minimális hatással van a kód végrehajtási időpontok nyomkövetés technológiaként lett létrehozva.
-* **ETW-nyomkövetési problémamentesen működik a helyi fejlesztési környezetben, és emellett valós fürt beállítását.** Ez azt jelenti, hogy nem kell a nyomkövetés újraírnia, amikor készen áll a kód egy valódi fürtön történő üzembe helyezéséhez.
-* **A Service Fabric rendszer kód belső nyomkövetés ETW is használ.** Ez lehetővé teszi, hogy az alkalmazás hívásláncait közbeékeléses a Service Fabric rendszer nyomkövetések megtekintéséhez. Azt is segítségével könnyebben megismerheti a feladatütemezések és az alkalmazás kódja és események közötti összefüggéseket az alapul szolgáló rendszerben.
-* **Nincs beépített támogatás a Service Fabric a Visual Studio tools ETW-események megtekintése.** Miután a Visual Studio megfelelően van konfigurálva a Service Fabric segítségével a diagnosztikai események megtekintése a Visual Studio ETW-események jelennek meg. 
+* **A ETW gyors.** Olyan nyomkövetési technológiaként készült, amely minimális hatással van a kód végrehajtásának idejére.
+* **A ETW-nyomkövetés zökkenőmentesen működik a helyi fejlesztési környezetekben és a valós fürtökön is.** Ez azt jelenti, hogy nem kell újraírnia a nyomkövetési kódot, ha készen áll a kód valós fürtön való üzembe helyezésére.
+* **Service Fabric rendszerkód a belső nyomkövetés ETW is használja.** Ez lehetővé teszi, hogy megtekintse a Service Fabric rendszerkövetésekkel összekapcsolt alkalmazás-nyomkövetéseket. Emellett könnyebben megismerheti az alkalmazás kódjának és eseményeinek az alapul szolgáló rendszeren való összejátszását.
+* **A ETW-események megtekintéséhez beépített támogatás érhető el Service Fabric Visual Studio-eszközökben.** A Visual Studio diagnosztikai események nézetében megjelennek a ETW események, ha a Visual Studio megfelelően van konfigurálva a Service Fabric. 
 
-## <a name="view-service-fabric-system-events-in-visual-studio"></a>A Service Fabric rendszer események megtekintése a Visual Studióban
-A Service Fabric bocsát ki, mi történik a platform alkalmazásfejlesztők ETW-események. Ha ezt még nem tette meg, lépjen tovább, és kövesse a [az első alkalmazás létrehozása a Visual Studióban](service-fabric-tutorial-create-dotnet-app.md). Ezt az információt a megkezdheti az alkalmazás a diagnosztikai eseménynaplóhoz, a nyomkövetési üzenetek megjelenítése a segítséget.
+## <a name="view-service-fabric-system-events-in-visual-studio"></a>Rendszeresemények megtekintése a Visual Studióban Service Fabric
+Service Fabric ETW eseményeket bocsát ki, hogy az alkalmazások fejlesztői megértsék, mi történik a platformon. Ha még nem tette meg, folytassa a lépéseket, és kövesse az [első alkalmazás létrehozása a Visual Studióban](service-fabric-tutorial-create-dotnet-app.md)című témakör lépéseit. Ezek az információk segítséget nyújtanak az alkalmazásnak a nyomkövetési üzeneteket megjelenítő diagnosztikai eseménynaplókban való futtatásához.
 
-1. Nyissa meg a diagnosztikai események ablakában nem jelenik meg automatikusan, ha a **nézet** lapra a Visual Studióban, majd **Other Windows** , majd **diagnosztikai eseménynaplóban**.
-2. Minden esemény jelzi, hogy a csomópont, az alkalmazás és szolgáltatás, az esemény érkezik standard szintű metaadat-információkat tartalmaz. Az események használatával is végezhet a **események szűrése** az események ablak tetején. Szűrheti, például a **csomópontnév** vagy **szolgáltatás neve.** Esemény részletei dolgozik, ha fel is függesztheti használatával, és a **szüneteltetése** gombra az események ablak tetején, és később események adatveszteség nélküli folytatásához.
+1. Ha a diagnosztikai események ablak nem jelenik meg automatikusan, lépjen a **View (nézet** ) lapra a Visual Studióban, majd válassza a **más Windows** , majd a **diagnosztikai események megjelenítője**elemet.
+2. Minden esemény szabványos metaadat-információkkal rendelkezik, amelyekkel megtudhatja, hogy az esemény melyik csomóponton, alkalmazáson és szolgáltatáson származik. Az események listáját az események ablak felső részén található **szűrési események** mező használatával is szűrheti. Szűrheti például a **csomópont nevét** vagy a **szolgáltatás nevét.** Ha pedig az esemény részleteit keresi, az események ablak tetején lévő **szüneteltetés** gombra kattintva is szüneteltetheti az eseményeket, és később is folytathatja az események elvesztése nélkül.
    
-   ![Visual Studio Diagnostics Events Viewer](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+   ![Visual Studio diagnosztikai Eseménynapló](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
-## <a name="add-your-own-custom-traces-to-the-application-code"></a>A saját egyéni nyomkövetési az alkalmazáskód hozzáadása
-A Service Fabric a Visual Studio projektsablonokat tartalmaz mintakódot. A kód bemutatja, hogyan adhat hozzá egyéni kódot ETW-nyomkövetések, amely a Service Fabric a nyomkövetéseket a rendszer mellett a Visual Studio ETW megjelenítő megjelennek. Ez a módszer az előnye, hogy a metaadatok automatikusan hozzáadott nyomkövetéseket, és a Visual Studio diagnosztikai eseménynaplóban már konfigurálva van a megjelenítésükhöz.
+## <a name="add-your-own-custom-traces-to-the-application-code"></a>Saját egyéni nyomkövetés hozzáadása az alkalmazás kódjához
+A Service Fabric Visual Studio Project-sablonok mintakód-kódot tartalmaznak. A kód bemutatja, hogyan adhat hozzá a Visual Studio ETW-megjelenítőben megjelenített egyéni ETW-nyomkövetéseket a rendszernyomok Service Fabric. Ennek a módszernek az az előnye, hogy a rendszer automatikusan hozzáadja a metaadatokat a nyomkövetésekhez, és a Visual Studio diagnosztikai eseményeinek megjelenítője már be van állítva a megjelenítésre.
 
-Projektek alapján létrehozott a **szolgáltatássablonok** (állapot nélküli vagy állapot-nyilvántartó) csak keresse meg a `RunAsync` végrehajtása:
+A **szolgáltatási sablonokból** létrehozott projektek esetében (állapot nélküli vagy állapot-nyilvántartó) csak keressen rá a `RunAsync` megvalósításra:
 
-1. A hívás `ServiceEventSource.Current.ServiceMessage` a a `RunAsync` metódus azt mutatja be, az alkalmazás kódja egy egyéni ETW-nyomkövetési példát.
-2. Az a **ServiceEventSource.cs** fájlt, láthatja a túlterhelés a `ServiceEventSource.ServiceMessage` metódushoz, amely miatt a teljesítmény javítása érdekében a nagy gyakoriságú eseményeket kell használni.
+1. A `RunAsync` metódusban `ServiceEventSource.Current.ServiceMessage` hívása egy példát mutat be az alkalmazás kódjából származó egyéni ETW-nyomkövetésre.
+2. A **ServiceEventSource.cs** -fájlban a `ServiceEventSource.ServiceMessage` metódus túlterhelését fogja találni, amelyet a teljesítmény okai miatt nagy gyakoriságú eseményekhez kell használni.
 
-Projektek alapján létrehozott a **aktor sablonok** (állapot nélküli vagy állapot-nyilvántartó):
+A **Actor-sablonokból** létrehozott projektek esetében (állapot nélküli vagy állapot-nyilvántartó):
 
-1. Nyissa meg a **"ProjectName".cs** where fájl *ProjectName* a Visual Studio-projektek számára is választott neve.  
-2. Keresse meg a kódot `ActorEventSource.Current.ActorMessage(this, "Doing Work");` a a *DoWorkAsync* metódust.  Ez a példa egy egyéni ETW-nyomkövetési alkalmazáskód megírva.  
-3. A fájl **ActorEventSource.cs**, megtalálja a túlterhelés a `ActorEventSource.ActorMessage` metódushoz, amely miatt a teljesítmény javítása érdekében a nagy gyakoriságú eseményeket kell használni.
+1. Nyissa meg a **"ProjectName". cs** fájlt, ahol a *projektnév* a Visual Studio-projekthez választott név.  
+2. Keresse meg a *DoWorkAsync* metódusban `ActorEventSource.Current.ActorMessage(this, "Doing Work");` kódot.  Ez egy példa az alkalmazás kódjából írt egyéni ETW-nyomkövetésre.  
+3. A fájl **ActorEventSource.cs**a `ActorEventSource.ActorMessage` metódus túlterhelését fogja találni, amelyet a nagy gyakoriságú eseményekhez kell használni a teljesítményük miatt.
 
-A szolgáltatás programkód egyéni ETW-nyomkövetési felvett elkészítheti, telepítheti és futtassa újra az alkalmazást az esemény a diagnosztikai eseménynaplóban talál. Ha az alkalmazás hibakeresése **F5**, a diagnosztikai eseménynaplóban automatikusan megnyílik.
+Miután hozzáadta az egyéni ETW-nyomkövetést a szolgáltatás kódjához, felépítheti, telepítheti és futtathatja az alkalmazást, hogy megtekintse az esemény (eke) t a diagnosztikai események megjelenítőben. Ha az **F5 billentyűvel**végzi az alkalmazás hibakeresését, a rendszer automatikusan megnyitja a diagnosztikai események megjelenítőjét.
 
-## <a name="next-steps"></a>További lépések
-Helyi diagnosztikai fent az alkalmazáshoz hozzáadott ugyanazt nyomkövetés a kódot, amelyek segítségével megtekintheti ezeket az eseményeket az Azure-fürtön az alkalmazás futtatásakor fog működni. Tekintse meg ezeket a cikkeket, amely tárgyalják az eszközök különböző beállításait, és leírja, hogyan beállíthatja őket.
+## <a name="next-steps"></a>Következő lépések
+Ugyanaz a nyomkövetési kód, amelyet a fenti alkalmazáshoz adott a helyi diagnosztika esetében, az alkalmazás Azure-fürtön való futtatásakor használható eszközökkel fog működni. Tekintse át ezeket a cikkeket, amelyek az eszközök különböző lehetőségeit tárgyalják, és leírják, hogyan állíthatja be őket.
 
-* [Azure Diagnostics-naplók összegyűjtése](service-fabric-diagnostics-how-to-setup-wad.md)
-* [Események összesítése és gyűjtemény használatával eventflow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md)
+* [Naplók összegyűjtése a Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Események összesítése és gyűjtése a EventFlow segítségével használatával](service-fabric-diagnostics-event-aggregation-eventflow.md)
 

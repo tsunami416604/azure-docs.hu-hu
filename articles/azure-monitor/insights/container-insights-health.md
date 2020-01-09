@@ -1,25 +1,16 @@
 ---
 title: A Kubernetes-fürt állapotának figyelése az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan tekintheti meg és elemezheti az AK-beli és a nem ak-beli fürtök állapotát a Azure Monitor for containers használatával.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405095"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>A Kubernetes-fürt állapotának megértése a tárolók Azure Monitorével
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kubernetes-fürt állapotának megismerése a Tárolókhoz készült Azure Monitorral
 
 A tárolók Azure Monitorával figyeli és jelenti a felügyelt infrastruktúra összetevőinek, valamint a Azure Monitor által a tárolók által támogatott Kubernetes-fürtökön futó összes csomópontnak az állapotát. Ez a felület a fürt állapotának kiszámításához és a [több fürtre vonatkozó nézeten](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)jelentett állapotához is kiterjed, ahol most már megtudhatja, hogy a fürt egy vagy több csomópontja rendelkezik-e erőforrás-korlátozással, vagy egy csomópont vagy pod nem érhető el, amely hatással lehet egy futó alkalmazásra a fürtben, a kurátori mérőszámok alapján.
 
@@ -57,13 +48,13 @@ Az állapot-hierarchia ablaktáblán az összes figyelő hierarchikus elrendezé
 * A memória kihasználtságának kiértékelése a csomópontról és a tárolóból.
 * A hüvelyek és a csomópontok állapota a Kubernetes által jelentett készenléti állapot kiszámítása alapján.
 
-Az állapot jelzésére használt ikonok a következők:
+Az állapotot a következő ikonok jelölik:
 
 |Ikon|Jelentés|  
 |--------|-----------|  
-|![Kifogástalan állapotot jelző zöld pipa ikon](./media/container-insights-health/healthyicon.png)|Sikeres, az állapot rendben van (zöld)|  
-|![A sárga háromszög és a felkiáltójel figyelmeztetés](./media/container-insights-health/warningicon.png)|Figyelmeztetés (sárga)|  
-|![A piros gomb fehér X értékkel kritikus állapotot jelez](./media/container-insights-health/criticalicon.png)|Kritikus (piros)|  
+|![Kifogástalan állapotot jelző zöld pipa ikonja](./media/container-insights-health/healthyicon.png)|Sikeres, az állapot rendben van (zöld)|  
+|![Figyelmeztetést jelző sárga háromszög és felkiáltójel](./media/container-insights-health/warningicon.png)|Figyelmeztetés (sárga)|  
+|![Kritikus állapotot jelző piros gomb fehér X-szel](./media/container-insights-health/criticalicon.png)|Kritikus (piros)|  
 |![Szürke – ki ikon](./media/container-insights-health/grayicon.png)|Ismeretlen (szürke)|  
 
 ## <a name="monitor-configuration"></a>Konfiguráció figyelése
@@ -72,7 +63,7 @@ A containers Health Azure Monitort támogató egyes figyelők viselkedésének �
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AK-vagy nem ak-alapú fürt állapotának megtekintése
 

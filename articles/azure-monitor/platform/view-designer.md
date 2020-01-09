@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: a1a4dbffed37480178d1b94a77587ca251396db6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363200"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk áttekintést nyújt az egyéni nézetek létrehozásához és szerkesztéséhez szükséges tervezőről és eljárásokról.
@@ -32,7 +32,7 @@ A nézetek a Azure Portal Azure Monitor **Áttekintés** lapján jelennek meg. N
 
 A tervező nézettel létrehozott nézetek a következő táblázatban ismertetett elemeket tartalmazzák:
 
-| Részeként | Leírás |
+| Rész | Leírás |
 |:--- |:--- |
 | Csempék | Megjelenik a Azure Monitor **áttekintése** oldalon. Az egyes csempék az általa képviselt egyéni nézet vizuális összegzését jelenítik meg. Mindegyik csempe típusa különböző vizualizációkat biztosít a rekordokhoz. Az egyéni nézet megjelenítéséhez ki kell választania egy csempét. |
 | Egyéni nézet | Egy csempe kiválasztásakor jelenik meg. Minden nézet egy vagy több vizualizációs alkatrészt tartalmaz. |
@@ -100,7 +100,7 @@ A nézetek szerkesztési módban való használatának lehetőségeit az alábbi
 | Mentés        | Menti a módosításokat, és bezárja a nézetet. |
 | Mégse      | Elveti a módosításokat, és bezárja a nézetet. |
 | Nézet törlése | Törli a nézetet. |
-| Exportálás      | Exportálja a nézetet egy olyan [Azure Resource Manager-sablonba](../../azure-resource-manager/resource-group-authoring-templates.md) , amelyet importálhat egy másik munkaterületre. A fájl neve a nézet neve, és *omsview* kiterjesztéssel rendelkezik. |
+| Exportálás      | Exportálja a nézetet egy olyan [Azure Resource Manager-sablonba](../../azure-resource-manager/templates/template-syntax.md) , amelyet importálhat egy másik munkaterületre. A fájl neve a nézet neve, és *omsview* kiterjesztéssel rendelkezik. |
 | Importálás      | Importálja a másik munkaterületről exportált *omsview* fájlt. Ez a művelet felülírja a meglévő nézet konfigurációját. |
 | Klónozás       | Létrehoz egy új nézetet, és megnyitja a Tervező nézetben. Az új nézet neve megegyezik az eredeti névvel, de a *Másolás* hozzá van fűzve. |
 

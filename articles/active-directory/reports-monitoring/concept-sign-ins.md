@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429767"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -57,9 +57,15 @@ A felhasználói bejelentkezések jelentése a következő kérdésekre ad vála
 * Hány felhasználó jelentkezett be egy adott héten?
 * Milyen állapotúak ezek a bejelentkezések?
 
-Kezdje [Azure Portal](https://portal.azure.com). A bejelentkezési jelentés eléréséhez válassza a **bejelentkezések**lehetőséget, folytassa a **figyeléssel.** Néhány bejelentkezési rekord esetében akár két órát is igénybe vehet, hogy megjelenjenek a portálon.
+A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
 
-![Bejelentkezési tevékenység](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Bejelentkezési tevékenység")
+![Azure Active Directory kiválasztása](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+A **figyelés**területen válassza a **bejelentkezések** lehetőséget a [bejelentkezések jelentés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)megnyitásához.
+
+![Bejelentkezési tevékenység](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Bejelentkezési tevékenység")
+
+Néhány bejelentkezési rekord esetében akár két órát is igénybe vehet, hogy megjelenjenek a portálon.
 
 > [!IMPORTANT]
 > A bejelentkezési jelentés csak azokat az **interaktív** bejelentkezéseket jeleníti meg, amelyek a felhasználók saját felhasználónevével és jelszavával történő manuális bejelentkezéssel jelentkeznek be. A nem interaktív bejelentkezések, mint például a szolgáltatások közötti hitelesítés, nem jelennek meg a bejelentkezési jelentésben. 
@@ -79,7 +85,7 @@ A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szab
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/19.png "Bejelentkezési tevékenység")
 
-Az **oszlopok** párbeszédpanel lehetővé teszi a választható attribútumok elérését. A bejelentkezési jelentésben csak olyan attribútumok szerepelhetnek, amelyek nem rendelkeznek egy-a-többhöz kapcsolattal más attribútumokhoz oszlopként.
+Az **oszlopok** párbeszédpanel lehetővé teszi a választható attribútumok elérését. Egy bejelentkezési jelentésben nem rendelkezhet olyan mezőkkel, amelyek egynél több értékkel rendelkeznek egy adott bejelentkezési kérelemhez oszlopként. Ez például igaz a hitelesítés részleteire, a feltételes hozzáférési adatokra és a hálózati helyre.   
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/columns.png "Bejelentkezési tevékenység")
 

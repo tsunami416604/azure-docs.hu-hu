@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7e71c940d0c083642954114cf4fa1617b93335b9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979104"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531259"
 ---
 # <a name="manage-models-in-the-repository"></a>Modellek kezelése a tárházban
 
@@ -37,7 +37,7 @@ Az eszköz-képesség modellek és felületek tárolásához kétféle modell-t�
 Az [Azure Certified for IoT portálon](https://preview.catalog.azureiotsolutions.com)a következő feladatokat végezheti el:
 
 - [Fejezze be a IoT-eszköz minősítési folyamatát](./tutorial-certification-test.md).
-- Keresse meg a IoT Plug and Play eszköz képességeinek modelljeit. Ezekkel a modellekkel [gyorsan hozhat létre IoT-kompatibilis eszközöket, és integrálhatja azokat megoldásokkal](./quickstart-connect-pnp-device-solution.md).
+- Keresse meg a IoT Plug and Play eszköz képességeinek modelljeit. Ezekkel a modellekkel [gyorsan hozhat létre IoT-kompatibilis eszközöket, és integrálhatja azokat megoldásokkal](./quickstart-connect-pnp-device-solution-node.md).
 
 ## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 

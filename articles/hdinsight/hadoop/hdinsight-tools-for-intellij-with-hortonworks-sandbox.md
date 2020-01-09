@@ -3,18 +3,18 @@ title: Azure Toolkit for IntelliJ használata a Hortonworks-homokozóban
 description: Megtudhatja, hogyan használhatja a Azure Toolkit for IntelliJ HDInsight-eszközeit a Hortonworks-homokozóban.
 keywords: Hadoop-eszközök, kaptár-lekérdezés, IntelliJ, hortonworks-homokozó, Azure Toolkit for IntelliJ
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076256"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647832"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>A IntelliJ HDInsight-eszközeinek használata a Hortonworks-homokozóban
 
@@ -52,8 +52,8 @@ Ebben a szakaszban egy, a IntelliJ IDEA használatával létrehozott példa Scal
    1. Válassza ki a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
    2. A **Build-eszköz** listában válassza a következők egyikét a forgatókönyv alapján:
 
-      * **Maven**: A Scala projekt-létrehozás varázsló támogatásához.
-      * **SBT**: Függőségek kezeléséhez és a Scala projekt létrehozásához.
+      * **Maven**: a Scala projekt-létrehozási varázsló támogatásához.
+      * **SBT**: függőségek kezeléséhez és a Scala projekt létrehozásához.
 
    ![IntelliJ új Scala-projekt létrehozása](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
@@ -62,7 +62,7 @@ Ebben a szakaszban egy, a IntelliJ IDEA használatával létrehozott példa Scal
 
    1. A **projekt neve** mezőben adja meg a projekt nevét.
    2. A **projekt helye** mezőben adja meg a projekt helyét.
-   3. A **Project SDK** legördülő lista mellett válassza az **új**lehetőséget, válassza a **JDK**lehetőséget, majd adja meg a Java jdk 1,7-es vagy újabb verziójának mappáját. Válassza a **Java 1,8** lehetőséget a Spark 2. x fürthöz. Válassza a **Java 1,7** lehetőséget a Spark 1. x fürthöz. Az alapértelmezett hely a C:\Program Files\Java\jdk1.8.x_xxx.
+   3. A **Project SDK** legördülő lista mellett válassza az **új**lehetőséget, válassza a **JDK**lehetőséget, majd adja meg a Java jdk 1,7-es vagy újabb verziójának mappáját. Válassza a **Java 1,8** lehetőséget a Spark 2. x fürthöz. Válassza a **Java 1,7** lehetőséget a Spark 1. x fürthöz. Az alapértelmezett hely a C:\Program Files\Java\jdk1.8. x_xxx.
    4. A **Spark-verzió** legördülő listában a Scala projekt létrehozása varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a Spark 1.6.2 (Scala 2.10.5) szolgáltatást használja. Győződjön meg arról, hogy az adattárat a **Scala 2.10. x**jelöléssel jelölte meg. Ne használja az adattárat, amely a Scala 2.11. x-et jelölte.
     
       ![IntelliJ Scala-projekt tulajdonságainak létrehozása](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
@@ -72,7 +72,7 @@ Ebben a szakaszban egy, a IntelliJ IDEA használatával létrehozott példa Scal
 5. Ha a **projekt** nézet még nincs megnyitva, nyomja le az **Alt + 1** billentyűkombinációt a megnyitásához.
 6. A **Project Explorerben**bontsa ki a projektet, majd válassza az **src**elemet.
 7. Kattintson a jobb gombbal az **src**elemre, mutasson az **új**elemre, majd válassza a **Scala osztály**elemet.
-8. A **név** mezőbe írjon be egy nevet. A **típus** mezőben válassza az **objektum**lehetőséget. Ezután válassza az **OK** lehetőséget.
+8. A **Név** mezőben adja meg a megfelelő nevet. A **típus** mezőben válassza az **objektum**lehetőséget. Ezután válassza az **OK** lehetőséget.
 
     ![Az új Scala-osztály létrehozása párbeszédpanel](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
@@ -144,9 +144,9 @@ Projekt elküldése emulátorba:
     1. A **Spark-fürtben (csak Linux)** legördülő listában válassza ki a helyi Hortonworks-homokozót.
     2. A **fő osztály neve** mezőben válassza ki vagy adja meg a fő osztály nevét. Ebben a cikkben a név **GroupByTest**.
 
-3. Válassza ki **elküldése**. A beküldési naplók a Spark beküldési eszköz ablakában jelennek meg.
+3. Válassza a **Küldés** lehetőséget. A beküldési naplók a Spark beküldési eszköz ablakában jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre Apache Spark-alkalmazásokat egy HDInsight Spark Linux-fürthöz a Azure Toolkit for IntelliJ HDInsight eszközeinek használatával](../spark/apache-spark-intellij-tool-plugin.md).
 
@@ -158,4 +158,3 @@ Projekt elküldése emulátorba:
 
 - Megtudhatja, hogyan [hozhat létre Apache Spark-alkalmazásokat a Azure Toolkit for Eclipse HDInsight eszközeinek használatával](../spark/apache-spark-eclipse-tool-plugin.md).
 
-- Az Eclipse-hez készült HDInsight Tools-eszközökről a [Spark-alkalmazások létrehozásához használja az Eclipse-hez készült HDInsight-eszközök használatát](https://mix.office.com/watch/1rau2mopb6fha)ismertető témakört.

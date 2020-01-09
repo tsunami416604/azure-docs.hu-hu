@@ -6,24 +6,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0678d437a5c24b8193e7440a62445fb30ec97759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460497"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 
-Az Azure Storage támogatja a Azure Active Directory (AD) használatát a blob-és üzenetsor-tárolásra vonatkozó kérések engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A jogkivonat használatával engedélyezhető az erőforrás elérésére irányuló kérelem a blob vagy a várólista-tárolóban.
+Az Azure Storage támogatja a Azure Active Directory (Azure AD) használatát a blob-és üzenetsor-tárolásra vonatkozó kérések engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. A rendszerbiztonsági tag hitelesítése az Azure AD által OAuth 2,0 token visszaküldésével történik. A jogkivonat ezután felhasználható a blob-vagy üzenetsor-tárolóra irányuló kérelem engedélyezésére.
 
-Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a megosztott kulcs engedélyezési és közös hozzáférési aláírásai (SAS) számára. Az Azure AD-ben nem szükséges a fiókhoz tartozó hozzáférési kulcs tárolása a kóddal és a potenciális biztonsági rések kockázatával. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban. A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage-alkalmazásokhoz, ha lehetséges.
+Az Azure Storage-hoz az Azure AD-vel való kérések engedélyezése kiváló biztonságot és egyszerű használatot biztosít a megosztott kulcsos engedélyezéshez képest. A Microsoft az Azure AD-hitelesítés használatát javasolja a blob-és üzenetsor-alkalmazásokhoz, ha lehetséges, hogy minimálisra csökkentsék a megosztott kulcsban rejlő lehetséges biztonsági réseket.
 
-Az Azure AD-vel való engedélyezés az összes általános célú és blob Storage-fiókhoz elérhető az összes nyilvános régióban és nemzeti felhőben. Csak az Azure Resource Manager üzembehelyezési modellel létrehozott Storage-fiókok támogatják az Azure AD-hitelesítést. Az Azure AD-vel való engedélyezés nem támogatott az Azure Table Storage szolgáltatásban.
+Az Azure AD-vel való engedélyezés az összes általános célú és blob Storage-fiókhoz elérhető az összes nyilvános régióban és nemzeti felhőben. Csak az Azure Resource Manager üzembehelyezési modellel létrehozott Storage-fiókok támogatják az Azure AD-hitelesítést.
+
+A blob Storage Emellett támogatja az Azure AD-beli hitelesítő adatokkal aláírt közös hozzáférésű aláírások (SAS) létrehozását. További információ: [korlátozott hozzáférés engedélyezése az adatokhoz közös hozzáférési aláírásokkal](storage-sas-overview.md).
+
+Azure Files támogatja az Azure AD-vel való engedélyezést az SMB protokollon keresztül csak a tartományhoz csatlakoztatott virtuális gépek esetében. Ha szeretné megtudni, hogyan használhatja az Azure AD-t az SMB-en keresztül a Azure Fileshoz, tekintse meg [a Azure Files SMB-Azure Active Directory engedélyezésének áttekintését](../files/storage-files-active-directory-overview.md).
+
+Az Azure AD-vel való engedélyezés nem támogatott az Azure Table Storage szolgáltatásban. A megosztott kulcs használatával engedélyezze a Table Storage-kérelmeket.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>A blobok és a várólisták Azure AD-áttekintése
 
@@ -78,10 +84,6 @@ A Azure Portal azt jelzi, hogy melyik engedélyezési séma van használatban, a
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Adatokhoz való hozzáférés a PowerShell vagy az Azure CLI használatával
 
 Azure CLI-és PowerShell-támogatás az Azure AD-beli hitelesítő adatokkal való bejelentkezéshez. A bejelentkezés után a munkamenet ezen hitelesítő adatok alatt fut. További információ: [Azure CLI-vagy PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](storage-auth-aad-script.md).
-
-## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>Azure AD-hitelesítés SMB protokollon keresztül Azure Files
-
-Azure Files támogatja az Azure AD-t az SMB protokollon keresztül a tartományhoz csatlakoztatott virtuális gépek esetében (előzetes verzió). Ha szeretné megtudni, hogyan használhatja az Azure AD-t az SMB protokollon keresztül a Azure Fileshoz, tekintse meg [az Azure Active Directory engedélyezésének áttekintése az SMB-ben Azure Files (előzetes verzió](../files/storage-files-active-directory-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

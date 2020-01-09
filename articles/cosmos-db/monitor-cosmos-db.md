@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9a36b46d11657ef52051f8bf8df1e4944051da23
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445180"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk az Azure Cosmos-adatbázisok által létrehozott figyelési információkat ismerteti, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és riasztáshoz.
@@ -37,61 +37,30 @@ A [Azure Cosmos DB Azure monitor](../azure-monitor/insights/cosmosdb-insights-ov
 ![Cosmos DB Azure Monitor](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>A Azure Cosmos DB gyűjtött adatok figyelése
+
 Azure Cosmos DB ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások. A Azure Cosmos DB által létrehozott naplók és metrikák részletes ismertetését lásd: [Azure Cosmos db monitorozási adatok referenciája](monitor-cosmos-db-reference.md) .
 
 Az egyes Azure Cosmos-adatbázisokhoz tartozó Azure Portal **áttekintő** lapja az adatbázis-használat rövid áttekintését tartalmazza, beleértve a kérését és az óránkénti számlázási használatot. Ez hasznos információ, de csak kis mennyiségű figyelési adat érhető el. Ezeket az adatokat a rendszer automatikusan gyűjti, és az elemzéshez azonnal elérhetővé válik, miközben a további adatgyűjtést is engedélyezheti néhány konfigurációval.
 
 ![Áttekintő lap](media/monitor-cosmos-db/overview-page.png)
 
-
-
-## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
-A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) .
-
-Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. A Azure Cosmos DB kategóriái az alábbiakban láthatók a mintaadatok mellett.
-
- * **DataPlaneRequests**: válassza ezt a lehetőséget, ha a háttérbeli kérelmeket minden olyan API-hoz naplózni szeretné, amely tartalmazza az SQL, a Graph, a MongoDB, a Cassandra és a Table API fiókokat Azure Cosmos db. A fontos tulajdonságok a következők: Requestcharge, statusCode, clientIPaddress és partitionID.
-
-    ```
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
-
-* **MongoRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből a MongoDB API-ra irányuló Azure Cosmos db kérések kiszolgálásához. A MongoDB-kérelmek megjelennek a MongoRequests és a DataPlaneRequests is. A fontos tulajdonságok a következők: Requestcharge, műveleti kód.
-
-    ```
-    { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
-    ```
-
-* **QueryRuntimeStatistics**: válassza ezt a lehetőséget a végrehajtott lekérdezési szöveg naplózásához. 
-
-    ```
-    { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
-    ```
-
-* **PartitionKeyStatistics**: válassza ezt a lehetőséget a partíciós kulcsok statisztikáinak naplózásához. Ez jelenleg a partíciós kulcsok tárolási méretével (KB) van ábrázolva. A rendszer kibocsátja a naplót a legtöbb adattárolást elfoglaló első három partíciós kulcson.
-
-    ```
-    { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
-    ```
-
-* **Metrikai kérelmek**: Ha ezt a beállítást választja, a rendszer a diagnosztikai beállításban található célokból származó metrikai adatokat gyűjt a Azure Cosmos DBról. Ez ugyanazokat az adatokat gyűjti össze automatikusan az Azure-Mérőszámokban. A metrikai adatok összegyűjtése az erőforrás-naplókkal mindkét típusú adat elemzéséhez, valamint a Azure Monitoron kívüli metrikai adatok küldéséhez.
-
 ## <a name="analyzing-metric-data"></a>Metrikus adatok elemzése
+
 A Azure Cosmos DB a metrikák használatának egyéni élményét biztosítja. A jelen felület használatáról és a különböző Azure Cosmos DB forgatókönyvek elemzéséről lásd: [Azure Cosmos db metrikáinak monitorozása és hibakeresése Azure monitor](cosmos-db-azure-monitor-metrics.md) .
 
 A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítségével elemezheti az Azure Cosmos db metrikáit más Azure-szolgáltatásoktól származó metrikákkal. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) . Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mérőszámokban**szerepel. A következő dimenziókat használhatja ezekkel a metrikákkal, amikor szűrőt ad hozzá egy diagramhoz:
 
-- collectionName
+- CollectionName
 - DatabaseName
 - OperationType
-- Régió
+- Region (Régió)
 - StatusCode
 
 
 ## <a name="analyzing-log-data"></a>Naplózási adatok elemzése
 Azure Monitor naplókban található adatkészletek olyan táblákban tárolódnak, amelyekben az egyes táblák egyedi tulajdonságokkal rendelkeznek. A Azure Cosmos DB az alábbi táblázatokban tárolja az adattárakat.
 
-| Tábla | Leírás |
+| Table | Leírás |
 |:---|:---|
 | AzureDiagnostics | Az erőforrás-naplók tárolására több szolgáltatás által használt közös táblázat. Azure Cosmos DBból származó erőforrás-naplók azonosíthatók a `MICROSOFT.DOCUMENTDB`.   |
 | AzureActivity    | A tevékenység naplójában lévő összes rekordot tároló általános tábla. 
@@ -106,7 +75,7 @@ Azure Monitor naplókban található adatkészletek olyan táblákban tárolódn
 
 A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbázisokat.
 
-* Az összes Azure Cosmos DB-ből a diagnosztikai naplók lekérdezése egy megadott időszak:
+* Azure Cosmos DB összes diagnosztikai naplójának lekérdezése egy adott időszakban:
 
     ```Kusto
     AzureDiagnostics 
@@ -114,7 +83,7 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
 
     ```
 
-* Lekérdezni a 10 legtöbb nemrég naplózott események:
+* A 10 legutóbb naplózott esemény lekérdezése:
 
     ```Kusto
     AzureDiagnostics 
@@ -122,7 +91,7 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
     | limit 10
     ```
 
-* A lekérdezés minden műveletre, művelet típusa szerint csoportosítva:
+* Az összes művelet lekérdezése művelet típusa szerint csoportosítva:
 
     ```Kusto
     AzureDiagnostics 
@@ -139,7 +108,7 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
 
     ```
 
-* A lekérdezés az összes felhasználói tevékenység, erőforrás szerint csoportosítva:
+* Az összes felhasználói tevékenység lekérdezése erőforrás szerint csoportosítva:
 
     ```Kusto
     AzureActivity 
@@ -161,7 +130,7 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
     | limit 100
     ```
 
-* A lekérdezéshez, amelynek műveletek tovább tart, mint 3 idő ezredmásodpercben:
+* A 3 ezredmásodpercnél hosszabb műveletek lekérdezése:
 
     ```Kusto
     AzureDiagnostics 
@@ -169,7 +138,7 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
     | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
-* Lekérdezése, mely ügynök fut a műveletek:
+* A műveletet futtató ügynök lekérdezése:
 
     ```Kusto
     AzureDiagnostics 
@@ -177,7 +146,7 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
     | summarize count() by OperationName, userAgent_s
     ```
 
-* Lekérdezni a, ha a hosszú ideig futó műveletek lettek végrehajtva:
+* Lekérdezés a hosszú ideig futó műveletek végrehajtásakor:
 
     ```Kusto
     AzureDiagnostics 
@@ -195,17 +164,17 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
     | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
     ```
 
-## <a name="monitor-azure-cosmos-db-programmatically"></a>Azure Cosmos DB programozott figyelése
-A fiók metrikáit, például a fiók tárolási használat és a teljes kérelmek, a portálon elérhető nem érhetők el az SQL API-kon keresztül. Használati adatok, a gyűjtemény szintjén azonban lekérheti az SQL API-k használatával. Adatgyűjtési szint adatok lekéréséhez tegye a következőket:
+## <a name="monitor-azure-cosmos-db-programmatically"></a>Figyelő Azure Cosmos DB programozott módon
+A portálon elérhető fiók szintű mérőszámok, mint például a fiók tárterület-használata és az összes kérelem, nem érhetők el az SQL API-kon keresztül. A használati adatokat azonban a gyűjtemény szintjén is lekérheti az SQL API-k használatával. A gyűjtési szintű adatgyűjtés lekéréséhez tegye a következőket:
 
-* A REST API használatához [hajtsa végre a Get a gyűjteményt](https://msdn.microsoft.com/library/mt489073.aspx). A kvóta- és használati adatok gyűjtésére az x-ms-resource-kvóta és az x-ms-erőforrás-használat fejlécek, a válaszban adja vissza.
+* A REST API használatához [hajtsa végre a Get a gyűjteményt](https://msdn.microsoft.com/library/mt489073.aspx). A rendszer a gyűjteményre vonatkozó kvóta-és használati adatokat az x-MS-Resource-kvóta és az x-MS-Resource-használati fejlécekben adja vissza a válaszban.
 * A .NET SDK használatához használja a [DocumentClient. ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódust, amely egy olyan [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) ad vissza, amely számos használati tulajdonságot tartalmaz, például **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**és sok más.
 
-További metrikák eléréséhez használja a [Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)-t. Elérhető metrikai meghatározások meghívásával lekérhető:
+További metrikák eléréséhez használja a [Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)-t. A rendelkezésre álló metrika-definíciókat a meghívásával kérheti le:
 
     https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
 
-Lekérdezések egyéni metrikákat lekéréséhez használja a következő formátumot:
+Az egyes metrikák beolvasására irányuló lekérdezések a következő formátumot használják:
 
     https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
 

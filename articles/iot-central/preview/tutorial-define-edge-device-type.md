@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434871"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: új Azure IoT Edge eszköz típusának meghatározása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -400,4 +400,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy létrehozott egy eszközt az Azure IoT Central-alkalmazásban, ezt a következő lépésekkel végezheti el:
 
 > [!div class="nextstepaction"]
-> [Eszköz csatlakoztatása](./tutorial-connect-pnp-device.md)
+> [Peremhálózati eszköz csatlakoztatása](./tutorial-add-edge-as-leaf-device.md)

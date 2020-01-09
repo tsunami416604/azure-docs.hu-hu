@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b4627080879c9e7d2635b950bb7f31b7d23581
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: c40993df8033b9dbc49c81e8db2f9f01c6de37d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424924"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
 
@@ -34,9 +34,11 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, és válassza ki azokat a fiókokat, amelyeknek fenn kell tartaniuk a régi hitelesítés használatát. 
    1. Válassza a **Done** (Kész) lehetőséget.
+1. A **Cloud apps vagy a műveletek** területen válassza **az összes felhőalapú alkalmazás**lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre.
    1. Győződjön meg arról, hogy csak a **Mobile apps és az asztali ügyfelek** > **más ügyfeleket**.
-   2. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **hozzáférés-vezérlés** > a **támogatás**területen válassza a **hozzáférés letiltása**lehetőséget.
    1. Válassza a **Kiválasztás** lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
@@ -45,5 +47,7 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 ## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

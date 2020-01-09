@@ -1,7 +1,7 @@
 ---
 title: 'Szűrésen alapuló funkció kiválasztása: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatás szűrő alapú funkciójának kiválasztási modulját a legnagyobb prediktív teljesítménnyel rendelkező adatkészlet funkcióinak azonosításához.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning szűrő alapú funkció-kiválasztási modulját a legnagyobb prediktív teljesítménnyel rendelkező adatkészlet funkcióinak azonosítására.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428531"
 ---
-# <a name="filter-based-feature-selection"></a>Szűrésen alapuló funkció kiválasztása
+# <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
 
 Ez a cikk bemutatja, hogyan használhatja a Azure Machine Learning Designer (előzetes verzió) szűrő alapú funkciójának kiválasztási modulját. Ez a modul segít azonosítani a bemeneti adatkészletben található azon oszlopokat, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
 
@@ -93,7 +93,7 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
 7.  Futtassa a folyamatot, vagy válassza ki a szűrésen alapuló funkció kiválasztási modulját, majd válassza a **kijelölt futtatása**lehetőséget.
 
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A feldolgozás befejezése után:
 
@@ -133,7 +133,7 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 -   Ha egy szolgáltatásként kijelölt oszlop minden hiányzó értékkel rendelkezik, a modul nulla pontszámot rendel hozzá.   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

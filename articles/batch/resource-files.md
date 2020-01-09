@@ -1,6 +1,6 @@
 ---
-title: Erőforrás-fájlok létrehozása és használata – Azure Batch | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre Azure Batch forrásfájlokat különböző bemeneti forrásokból.
+title: Erőforrás-fájlok létrehozása és használata – Azure Batch
+description: Megtudhatja, hogyan hozhat létre batch-forrásfájlokat különböző bemeneti forrásokból. Ez a cikk néhány gyakori módszert ismertet a virtuális gépek létrehozásához és elhelyezéséhez.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390051"
 ---
 # <a name="creating-and-using-resource-files"></a>Erőforrás-fájlok létrehozása és használata
 
@@ -32,9 +32,9 @@ Az erőforrás-fájlok létrehozásához néhány különböző lehetőség áll
 
 Az erőforrásfájl létrehozásának lehetőségei:
 
-- [Storage-tároló URL-címe](#storage-container-url): Létrehoz egy erőforráscsoportot az Azure-ban található bármely tárolóból
-- [Storage-tároló neve](#storage-container-name): Létrehoz egy erőforráscsoportot egy, a köteghez csatolt Azure Storage-fiókban található tároló nevéből.
-- [Webes végpont](#web-endpoint): Létrehoz egy erőforráscsoportot bármely érvényes HTTP URL-címről
+- [Storage-tároló URL-címe](#storage-container-url): a rendszer létrehoz egy erőforráscsoportot az Azure-ban található bármely Storage-tárolóból.
+- [Storage-tároló neve](#storage-container-name): a köteghez csatolt Azure Storage-fiókban lévő tároló nevéből hoz létre egy erőforráscsoportot.
+- [Webes végpont](#web-endpoint): bármely érvényes HTTP URL-címről létrehoz egy erőforrásfájl-fájlt
 
 ### <a name="storage-container-url"></a>Storage-tároló URL-címe
 
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> A tárolók eléréséhez mind a, `Read` mind `List` az engedélyekkel kell rendelkeznie, míg a blob- `Read` hozzáféréssel rendelkezik, csak engedélyre van szüksége.
+> A tárolók hozzáféréséhez `Read` és `List` engedélyekkel kell rendelkeznie, míg a blob-hozzáféréssel csak `Read` engedélyre van szükség.
 
-Az engedélyek konfigurálása után hozza létre az SAS-jogkivonatot, és formázza az SAS URL-címét a tárolóhoz való hozzáféréshez. A Storage-tárolóhoz tartozó formázott SAS URL-cím használatával állítson elő [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)egy erőforráscsoportot a következővel:.
+Az engedélyek konfigurálása után hozza létre az SAS-jogkivonatot, és formázza az SAS URL-címét a tárolóhoz való hozzáféréshez. A Storage-tárolóhoz tartozó formázott SAS URL-cím használatával [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)tartalmazó erőforrásfájl hozható elő.
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -106,9 +106,9 @@ Ha egy feladatban több száz erőforrás van megadva, a Batch elutasítja a fel
 
 Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja az erőforrás-fájlok különböző "Container" módjait. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [alkalmazás csomagjait](batch-application-packages.md) az erőforrás-fájlok alternatívájaként.
-- További információ a tárolók erőforrás-fájlokhoz való használatáról: [tároló](batch-docker-container-workloads.md)munkaterhelések.
+- További információ a tárolók erőforrás-fájlokhoz való használatáról: [tároló munkaterhelések](batch-docker-container-workloads.md).
 - Ha szeretné megtudni, hogyan gyűjtheti és mentheti a tevékenységek kimeneti adatait, tekintse meg a feladatok [és tevékenységek kimenetének](batch-task-output.md)megtartása című témakört.
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351333"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -46,7 +46,7 @@ Az életciklus-kezelési funkció az összes Azure-régióban elérhető.
 
 A szabályzatokat a következő módszerek bármelyikével adhatja hozzá, szerkesztheti vagy távolíthatja el:
 
-* [Azure Portalra](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -58,7 +58,7 @@ A szabályzatok teljes mértékben olvashatók vagy írhatók. A részleges fris
 
 Ez a cikk bemutatja, hogyan kezelheti a szabályzatokat a portál és a PowerShell-metódusok használatával.  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Két módon adhat hozzá házirendet a Azure Portalon keresztül. 
 
@@ -69,7 +69,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
+2. A Azure Portal keresse meg és válassza ki a Storage-fiókját. 
 
 3. A **blob Service**területen válassza az **életciklus-kezelés** lehetőséget a szabályok megtekintéséhez vagy módosításához.
 
@@ -90,7 +90,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 #### <a name="azure-portal-code-view"></a>Azure Portal kód nézet
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
+2. A Azure Portal keresse meg és válassza ki a Storage-fiókját.
 
 3. A **blob szolgáltatás**területen válassza az **életciklus-kezelés** lehetőséget a szabályzat megtekintéséhez vagy módosításához.
 

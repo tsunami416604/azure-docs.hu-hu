@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279054"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681361"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>A saját jelszavának alaphelyzetbe állításához regisztrálja az ellenőrzési módszer adatait
 
@@ -29,7 +29,7 @@ Végfelhasználóként visszaállíthatja a jelszavát, vagy saját maga oldhatj
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>SSPR hitelesítés adatok regisztrálása vagy megerősítése
 
-1. Nyissa meg az eszközön a webböngészőt, és lépjen a [jelszó-visszaállítási regisztrációs oldalra](https://aka.ms/ssprsetup).
+1. Nyissa meg az eszközön a webböngészőt, és lépjen a [jelszó-visszaállítási regisztrációs oldalra](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
 2. Adja meg a felhasználónevét és a rendszergazda által megadott jelszót.
 3. Attól függően, hogy az informatikai részleg hogyan konfigurálta a dolgokat, az alábbi beállítások közül egy vagy több konfigurálható és ellenőrizhető. Ha a rendszergazda jogosult az Ön adatainak használatára, feltöltheti néhány információt.
     * **Irodai telefon**: csak a rendszergazda állíthatja be ezt a beállítást.
@@ -56,7 +56,7 @@ Előfordulhat, hogy a rendszergazdáknak egy adott idő elteltével meg kell er�
 | "A fiók nincs engedélyezve a jelszó-visszaállításhoz" hibaüzenet jelenik meg a felhasználói azonosító megadása után | A fiókja nincs engedélyezve a jelszó-visszaállításhoz. <br> <br> Sajnos az informatikai részleg nem állította be a fiókját a szolgáltatással való használatra. <br> <br> Ha szeretné, felvehetjük a kapcsolatot a szervezet rendszergazdájával, hogy alaphelyzetbe állítsa a jelszavát. | Ezt az üzenetet látja, mert az informatikai munkatárs nem engedélyezte a jelszó-visszaállítást a szervezet számára a **nem tud hozzáférni a fiók** hivatkozásához, vagy nem rendelkezik licenccel a funkció használatához. <br> <br> A jelszó alaphelyzetbe állításához válassza a **kapcsolat rendszergazdaként** hivatkozást. A rendszer e-mailt küld a vállalat informatikai munkatársának. Az e-mailben megtudhatja, hogy szeretné-e alaphelyzetbe állítani a jelszavát, így engedélyezheti ezt a funkciót. |
 | "Nem sikerült ellenőrizni a fiókját" hibaüzenet jelenik meg a felhasználói azonosító megadása után | Nem lehetett ellenőrizni a fiókját. <br> <br> Ha szeretné, felvehetjük a kapcsolatot a szervezet rendszergazdájával, hogy alaphelyzetbe állítsa a jelszavát. | Ezt az üzenetet látja, mert engedélyezve van a jelszó alaphelyzetbe állítása, de nem regisztrált a szolgáltatás használatára. Ha regisztrálni szeretne a jelszó-visszaállításra, lépjen a [jelszó-visszaállítási regisztrációs oldalra](https://aka.ms/ssprsetup) , miután visszanyerte a fiókhoz való hozzáférést. <br> <br> A jelszó alaphelyzetbe állításához jelölje be a **rendszergazda** hivatkozása, amely e-mailt küld a vállalat informatikai munkatársának. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Jelszó módosítása az önkiszolgáló jelszó-visszaállítás használatával](active-directory-passwords-update-your-own-password.md)
 * [Jelszó-visszaállítási regisztrációs oldal](https://aka.ms/ssprsetup)

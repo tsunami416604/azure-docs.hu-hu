@@ -2,19 +2,15 @@
 title: Runbook végrehajtás a Azure Automationban
 description: Ismerteti, hogy a rendszer hogyan dolgozza fel a runbook a Azure Automationban.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850754"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658117"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtás a Azure Automationban
 
@@ -37,11 +33,11 @@ A Azure Automation runbookok az Azure-ban vagy egy [hibrid Runbook-feldolgozón]
 |Integráció az Azure-erőforrásokkal|Azure-beli homokozó|Az Azure-ban üzemeltetett hitelesítés egyszerűbb. Ha hibrid Runbook-feldolgozót használ egy Azure-beli virtuális gépen, [felügyelt identitásokat használhat az Azure-erőforrásokhoz](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
 |Optimális teljesítmény az Azure-erőforrások kezeléséhez|Azure-beli homokozó|A parancsfájl ugyanabban a környezetben fut, amely viszont kevesebb késéssel rendelkezik|
 |Működési költségek csökkentése|Azure-beli homokozó|Nincs számítási terhelés, nincs szükség virtuális gépre|
-|Hosszú ideig futó parancsfájl|Hibrid forgatókönyv-feldolgozó|Az Azure-beli munkaterületek [korlátozásai az erőforrásokon](../azure-subscription-service-limits.md#automation-limits)|
+|Hosszú ideig futó parancsfájl|Hibrid forgatókönyv-feldolgozó|Az Azure-beli munkaterületek [korlátozásai az erőforrásokon](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Helyi szolgáltatásokkal való kommunikáció|Hibrid forgatókönyv-feldolgozó|Közvetlenül is hozzáférhet a gazdagéphez|
 |Harmadik féltől származó szoftverek és végrehajtható fájlok megkövetelése|Hibrid forgatókönyv-feldolgozó|Kezelheti az operációs rendszert, és telepíthet szoftvereket|
 |Fájl vagy mappa figyelése runbook|Hibrid forgatókönyv-feldolgozó|[Figyelő tevékenység](automation-watchers-tutorial.md) használata hibrid Runbook-feldolgozón|
-|Erőforrás-igényes parancsfájl|Hibrid forgatókönyv-feldolgozó| Az Azure-beli munkaterületek [korlátozásai az erőforrásokon](../azure-subscription-service-limits.md#automation-limits)|
+|Erőforrás-igényes parancsfájl|Hibrid forgatókönyv-feldolgozó| Az Azure-beli munkaterületek [korlátozásai az erőforrásokon](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Speciális követelményekkel rendelkező modulok használata| Hibrid forgatókönyv-feldolgozó|Néhány példa:</br> **Megnyerő** – függőség a megnyert. exe fájltól </br> **IISAdministration** – engedélyezni kell az IIS-t|
 |Telepítőt igénylő modul telepítése|Hibrid forgatókönyv-feldolgozó|A copiable modulnak kell lennie|
 |A 4.7.2-től eltérő .NET-keretrendszert igénylő runbookok vagy modulok használata|Hibrid forgatókönyv-feldolgozó|Az Automation-munkaterületeken a .NET-keretrendszer 4.7.2 van, és nincs lehetőség a frissítésre|
@@ -320,7 +316,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 Ha az erőforrásokat a felhő összes runbookok között meg szeretné osztani, Azure Automation ideiglenesen eltávolíthatja vagy leállíthatja a három óránál hosszabb ideig futó feladatokat. A [PowerShell-alapú runbookok](automation-runbook-types.md#powershell-runbooks) és a [Python runbookok](automation-runbook-types.md#python-runbooks) kapcsolatos feladatok leállnak, és nem indulnak újra, és a feladat állapota leáll.
 
-A hosszú ideig futó feladatok esetében javasoljuk, hogy használjon [hibrid Runbook-feldolgozót](automation-hrw-run-runbooks.md#job-behavior). A hibrid Runbook-feldolgozók nem korlátozódnak a méltányos megosztásra, és nincs korlátozás arra vonatkozóan, hogy mennyi ideig lehet végrehajtani a Runbook. A többi [feladattípus az](../azure-subscription-service-limits.md#automation-limits) Azure-beli és a hibrid Runbook-feldolgozókra is érvényes. Míg a hibrid Runbook-feldolgozók nem korlátozzák a 3 órás igazságos megosztási korlátot, a runbookok futtatását úgy kell kialakítani, hogy támogassa a váratlan helyi infrastrukturális problémák miatti újraindítási viselkedést.
+A hosszú ideig futó feladatok esetében javasoljuk, hogy használjon [hibrid Runbook-feldolgozót](automation-hrw-run-runbooks.md#job-behavior). A hibrid Runbook-feldolgozók nem korlátozódnak a méltányos megosztásra, és nincs korlátozás arra vonatkozóan, hogy mennyi ideig lehet végrehajtani a Runbook. A többi [feladattípus az](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) Azure-beli és a hibrid Runbook-feldolgozókra is érvényes. Míg a hibrid Runbook-feldolgozók nem korlátozzák a 3 órás igazságos megosztási korlátot, a runbookok futtatását úgy kell kialakítani, hogy támogassa a váratlan helyi infrastrukturális problémák miatti újraindítási viselkedést.
 
 Egy másik lehetőség, hogy optimalizálja a runbook a gyermek runbookok használatával. Ha a runbook több erőforráson ugyanazt a függvényt futtatja, például egy adatbázis-művelet több adatbázison, akkor áthelyezheti a függvényt egy [alárendelt runbook](automation-child-runbooks.md) , és meghívhatja azt a [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmaggal. Ezek az alárendelt runbookok külön folyamatokban párhuzamosan hajthatók végre. Ez a viselkedés csökkenti a szülő runbook befejezésének teljes időtartamát. Használhatja a [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) parancsmagot a runbook, hogy ellenőrizze a feladatok állapotát az egyes gyermekekhez, ha vannak olyan műveletek, amelyek a gyermek runbook befejezése után végeznek műveleteket.
 

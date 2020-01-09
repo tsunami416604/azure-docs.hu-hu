@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 3056b6c56be32cf5c054c4526a88157650a3e30b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432523"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Zero Instrumentation-alkalmazás figyelése Kubernetes által üzemeltetett alkalmazásokhoz
 
@@ -21,10 +21,10 @@ ms.locfileid: "72820777"
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Kubernetes-fürtön, így biztosítva a Box-alkalmazások figyelését bármely Kubernetes üzemeltetett alkalmazáshoz. Az alapértelmezett alkalmazás-betekintési funkciókkal, például az [alkalmazás-hozzárendeléssel](../../azure-monitor/app/app-map.md) a függőségek modellezéséhez, [élő metrikastream](../../azure-monitor/app/live-stream.md) valós idejű figyeléshez, hatékony vizualizációk az [alapértelmezett irányítópulttal](../../azure-monitor/app/overview-dashboard.md), [metrikus Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)és [ Munkafüzetek](../../azure-monitor/app/usage-workbooks.md). Ezzel a funkcióval a felhasználók a kiválasztott Kubernetes-névtérben lévő összes Kubernetes-munkafolyamaton belül érhetik el a szűk keresztmetszeteket és a meghibásodási pontokat. Ha a meglévő Service Mesh-beruházásokat a Istio hasonló technológiákkal szeretné kihasználni, Azure Monitor az alkalmazás kódjának módosítása nélkül lehetővé teszi az automatikus műszeres alkalmazások figyelését.
+A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Kubernetes-fürtön, így biztosítva a Box-alkalmazások figyelését bármely Kubernetes üzemeltetett alkalmazáshoz. Az alapértelmezett alkalmazás-betekintési funkciókkal (például az [alkalmazás-hozzárendeléssel](../../azure-monitor/app/app-map.md) ) a függőségek modellezéséhez [élő metrikastream](../../azure-monitor/app/live-stream.md) a valós idejű figyeléshez, az [alapértelmezett irányítópulttal](../../azure-monitor/app/overview-dashboard.md), [metrikus Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)és [munkafüzetekhez](../../azure-monitor/app/usage-workbooks.md)tartozó hatékony vizualizációkkal. Ezzel a funkcióval a felhasználók a kiválasztott Kubernetes-névtérben lévő összes Kubernetes-munkafolyamaton belül érhetik el a szűk keresztmetszeteket és a meghibásodási pontokat. Ha a meglévő Service Mesh-beruházásokat a Istio hasonló technológiákkal szeretné kihasználni, Azure Monitor az alkalmazás kódjának módosítása nélkül lehetővé teszi az automatikus műszeres alkalmazások figyelését.
 
 > [!NOTE]
-> Ez a Kubernetes-alkalmazások figyelésének számos módja. A Kubernetes-ben üzemeltetett összes alkalmazást a [Application INSIGHTS SDK](../../azure-monitor/azure-monitor-app-hub.md) -val is kialakíthatja, anélkül, hogy a szolgáltatás hálóját kellene használnia. A Kubernetes monitorozásához anélkül, hogy az alkalmazást egy SDK-val tenné, használhatja az alábbi módszert.
+> Ez a Kubernetes-alkalmazások figyelésének számos módja. A Kubernetes-ben üzemeltetett összes alkalmazást a [Application INSIGHTS SDK](../../azure-monitor/azure-monitor-app-hub.yml) -val is kialakíthatja, anélkül, hogy a szolgáltatás hálóját kellene használnia. A Kubernetes monitorozásához anélkül, hogy az alkalmazást egy SDK-val tenné, használhatja az alábbi módszert.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,8 +75,8 @@ A szolgáltatás hálóján kívül futó alkalmazások nem érintettek.
 1. [ *Application Insights-adapter* kiadásának](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/)letöltése és kinyerése.
 2. Navigáljon a */src/kubernetes/* a kiadási mappában.
 3. Alkalmazás szerkesztése – *istio-mixer-adapter-Deployment. YAML*
-    - szerkessze a *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* környezeti változó értékét, hogy tartalmazza a Azure Portal Application Insights erőforrásának rendszerállapot-kulcsát, amely tartalmazza a telemetria.
-    - Ha szükséges, módosítsa a *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* környezeti változó értékét úgy, hogy tartalmazza a névterek vesszővel tagolt listáját, amely számára engedélyezni szeretné a figyelést. Hagyja üresen az összes névtér figyelését.
+    - szerkessze *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* környezeti változó értékét, hogy tartalmazza a Azure Portal Application Insights erőforrásának rendszerállapot-kulcsát, hogy tartalmazza a telemetria.
+    - Ha szükséges, módosítsa *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* környezeti változó értékét úgy, hogy az tartalmazza a névterek vesszővel tagolt listáját, amely esetében engedélyezni szeretné a figyelést. Hagyja üresen az összes névtér figyelését.
 4. Alkalmazza a *src/kubernetes/* YAML *összes* fájlját a következő futtatásával (még a */src/kubernetes/* belül kell lennie):
 
    ```console
@@ -98,13 +98,13 @@ A szolgáltatás hálóján kívül futó alkalmazások nem érintettek.
 - Készítse elő a mintavételt az alkalmazáson, hogy ellenőrizze, a figyelés megfelelően működik-e.
 - 3-5 percen belül el kell indítania a telemetria megjelenését a Azure Portalban. Ügyeljen rá, hogy a portálon tekintse meg az Application Insights-erőforrás *alkalmazás-hozzárendelési* szakaszát.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Alább látható az a hibaelhárítási folyamat, amelyet akkor kell használni, ha a telemetria nem jelenik meg a Azure Portal a várt módon.
 
 1. Győződjön meg arról, hogy az alkalmazás terhelés alatt van, és a kérelmek küldése és fogadása egyszerű HTTP-n keresztül történik. Mivel a telemetria le van állítva a huzalból, a titkosított forgalom nem támogatott. Ha nincsenek bejövő vagy kimenő kérelmek, akkor nem lesz telemetria sem.
-2. Győződjön meg arról, hogy a megfelelő kialakítási kulcs a *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* környezeti változóban van megadva az *Application-ininsights-ISTIO-mixer-adapter-Deployment. YAML*. A rendszerállapot-kulcs a Azure Portal Application Insights erőforrásának *Áttekintés* lapján található.
-3. Győződjön meg arról, hogy a megfelelő Kubernetes-névtér van megadva a *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* környezeti változóban az *Application-ininsights-ISTIO-mixer-adapter-Deployment. YAML*. Hagyja üresen az összes névtér figyelését.
+2. Győződjön meg arról, hogy a *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* környezeti változóban van megadva a megfelelő kialakítási kulcs az *Application-ininsights-ISTIO-mixer-adapter-Deployment. YAML*. A rendszerállapot-kulcs a Azure Portal Application Insights erőforrásának *Áttekintés* lapján található.
+3. Győződjön meg arról, hogy a megfelelő Kubernetes-névtér van megadva a *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* környezeti változóban az *Application-ininsight-ISTIO-mixer-adapter-Deployment. YAML*. Hagyja üresen az összes névtér figyelését.
 4. Győződjön meg róla, hogy az alkalmazás hüvelyei a Istio által befecskendezve lettek. Győződjön meg arról, hogy a Istio oldalkocsija létezik az egyes Pod gépeken.
 
    ```console

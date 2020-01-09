@@ -2,19 +2,15 @@
 title: A Update Management üzembe helyezés előtti és utáni parancsfájlok konfigurálása az Azure-ban
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és kezelheti az előzetes parancsfájlokat és a parancsfájlok közzétételét a frissítések központi telepítéséhez.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417798"
 ---
 # <a name="manage-pre-and-post-scripts"></a>A parancsfájlok előtti és utáni kezelése
 

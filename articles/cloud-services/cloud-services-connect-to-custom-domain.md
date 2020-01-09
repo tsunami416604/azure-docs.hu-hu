@@ -2,17 +2,17 @@
 title: Felhőalapú szolgáltatás összekötése egyéni tartományvezérlővel | Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztathatók a webes/feldolgozói szerepkörök egy egyéni AD-tartományhoz a PowerShell és az AD tartományi bővítmény használatával
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 97a24720e65539a68745a5a1bb3f13ce1cafb9be
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387020"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services-szerepkörök csatlakoztatása az Azure-ban üzemeltetett egyéni AD-tartományvezérlőhöz
 Először be kell állítania egy Virtual Network (VNet) az Azure-ban. Ezután hozzáadunk egy Active Directory-tartomány vezérlőt (amelyet egy Azure-beli virtuális gépen futtat) a VNet. Ezután hozzáadjuk a meglévő Cloud Service-szerepköröket az előre létrehozott VNet, majd összekapcsolhatjuk azokat a tartományvezérlőhöz.
@@ -26,7 +26,7 @@ Kövesse ezt a lépésenkénti útmutatót, és ha bármilyen problémába ütk�
 
 A felhőalapú szolgáltatás által hivatkozott hálózatnak **klasszikus virtuális hálózatnak**kell lennie.
 
-## <a name="create-a-virtual-network"></a>Virtual Network létrehozása
+## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 Az Azure Portal vagy a PowerShell használatával létrehozhat egy Virtual Network az Azure-ban. Ebben az oktatóanyagban a PowerShell használatos. Ha a Azure Portal használatával szeretne virtuális hálózatot létrehozni, tekintse meg [a virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört. A cikk a virtuális hálózatok (Resource Manager) létrehozásával foglalkozik, de létre kell hoznia egy virtuális hálózatot (klasszikus) a Cloud Serviceshez. Ehhez a portálon válassza az **erőforrás létrehozása**elemet, írja be a *virtuális hálózat* **kifejezést a keresőmezőbe** , majd nyomja le az **ENTER**billentyűt. A keresési eredmények területen a **minden**elemnél válassza a **virtuális hálózat**lehetőséget. **A telepítési modell kiválasztása**területen válassza a **klasszikus**lehetőséget, majd kattintson a **Létrehozás**elemre. Ezután követheti a cikkben ismertetett lépéseket.
 
 ```powershell
@@ -88,7 +88,7 @@ A virtuális gépre való bejelentkezéshez az RDP-fájlt a PowerShellen kereszt
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Miután bejelentkezett a virtuális gépre, állítsa be a virtuális gépet AD-tartományvezérlőként az [ügyfél ad](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)-tartományvezérlő beállításának lépésenkénti útmutatója alapján.
+Miután bejelentkezett a virtuális gépre, állítsa be a virtuális gépet AD-tartományvezérlőként az [ügyfél ad-tartományvezérlő beállításának](https://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)lépésenkénti útmutatója alapján.
 
 ## <a name="add-your-cloud-service-to-the-virtual-network"></a>Felhőalapú szolgáltatás hozzáadása a Virtual Network
 Ezután hozzá kell adnia a Cloud Service-telepítést az új VNet. Ehhez módosítsa a Cloud Service cscfg úgy, hogy hozzáadja a megfelelő szakaszt a cscfg a Visual Studióval vagy az Ön által választott szerkesztővel.
@@ -149,3 +149,6 @@ A felhőalapú szolgáltatásokat csatlakoztatni kell az egyéni tartományvezé
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+

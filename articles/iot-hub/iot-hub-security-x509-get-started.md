@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457022"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az X. 509 Biztonság beállítása az Azure IoT hub-ban
 
@@ -97,9 +97,9 @@ Ezután megmutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hub-hoz reg
 
     Ez a lépés letölti, telepíti és hozzáadja az Azure IoT Device SDK NuGet csomagra és annak függőségeire mutató hivatkozást.
 
-1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
 
-    ```CSharp
+    ```csharp
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using System.Security.Cryptography.X509Certificates;
@@ -107,7 +107,7 @@ Ezután megmutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hub-hoz reg
 
 1. Adja hozzá a következő mezőket a **program** osztályhoz:
 
-    ```CSharp
+    ```csharp
         private static int MESSAGE_COUNT = 5;
         private const int TEMPERATURE_THRESHOLD = 30;
         private static String deviceId = "<your-device-id>";
@@ -120,7 +120,7 @@ Ezután megmutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hub-hoz reg
 
 1. Adja hozzá a következő függvényt a hőmérséklet és a páratartalom véletlenszerű számának létrehozásához, majd küldje el ezeket az értékeket a hubhoz:
 
-    ```CSharp
+    ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
     {
         string dataBuffer;
@@ -142,7 +142,7 @@ Ezután megmutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hub-hoz reg
 
 1. Végül adja hozzá a következő sornyi kódot a **fő** függvényhez, és cserélje le a helyőrzőket az _eszköz-azonosító_, _a-IOT-hub-Name_és az _abszolút elérésű útvonal-az-Ön-eszköz-pfx-fájlra_ a telepítéshez szükséges módon.
 
-    ```CSharp
+    ```csharp
     try
     {
         var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");
@@ -183,7 +183,7 @@ Ezután megmutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hub-hoz reg
 
    ![Eszköz alkalmazásának futtatása](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a IoT-megoldás biztonságossá tételéről, olvassa el a következő témakört:
 

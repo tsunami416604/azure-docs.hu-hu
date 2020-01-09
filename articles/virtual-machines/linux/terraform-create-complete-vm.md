@@ -14,16 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 819aeb225c4f55f803a5fad19eff33bd1748bf46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368929"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Teljes linuxos virtuális gépi infrastruktúra létrehozása az Azure-ban a Terraform
 
 A Terraform lehetővé teszi, hogy az Azure-ban teljes infrastruktúra-telepítéseket határozzon meg és hozzon létre. Az Azure-erőforrások egységes, reprodukálható módon történő létrehozásához és konfigurálásához az Terraform-sablonokat egy ember által olvasható formátumban kell létrehoznia. Ebből a cikkből megtudhatja, hogyan hozhat létre teljes linuxos környezetet és támogató erőforrásokat a Terraform. Azt is megtudhatja, hogyan [telepítheti és konfigurálhatja a Terraform](terraform-install-configure.md).
+
+> [!NOTE]
+> A Terraform-specifikus támogatáshoz forduljon közvetlenül a Terraform a közösségi csatornák egyikének használatával:
+>
+>   • A közösségi portál [Terraform szakasza](https://discuss.hashicorp.com/c/terraform-core) kérdéseket, használati eseteket és hasznos mintákat tartalmaz.
+>
+>   • A szolgáltatóval kapcsolatos kérdésekért látogasson el a közösségi portál [Terraform-szolgáltatók](https://discuss.hashicorp.com/c/terraform-providers) szakaszára.
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>Azure-beli kapcsolatok és erőforráscsoport létrehozása

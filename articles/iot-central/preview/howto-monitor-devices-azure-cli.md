@@ -3,17 +3,17 @@ title: Az eszközök kapcsolatának figyelése az Azure IoT Central Explorer has
 description: Az eszközök üzeneteinek figyelése és az eszköz két módosításának megfigyelése az IoT Central Explorer parancssori felületén keresztül.
 author: viv-liu
 ms.author: viviali
-ms.date: 09/27/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 2b1c4c64fc02df67f38e36194072efd5db3b8e38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90cf83f86acb647b8194619bc1b572e5147cc0cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434955"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli-preview-features"></a>Eszköz kapcsolatának figyelése az Azure CLI-vel (előzetes verzió)
 
@@ -74,6 +74,6 @@ Megtekintheti egy adott eszköz aktuális olvasási és olvasási/írási/olvas�
 az iot central device-twin show --app-id <app-id> --device-id <device-id>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a IoT Central Explorer használatát, a javasolt következő lépés az [eszközök kezelésének](howto-manage-devices.md)megismerése IoT Central.

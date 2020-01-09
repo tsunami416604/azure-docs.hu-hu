@@ -3,17 +3,17 @@ title: Biztonsági jogkivonat előállítása a IoT való hozzáféréshez Plug 
 description: Létrehoz egy közös hozzáférési aláírási jogkivonatot, amelyet akkor használhat, amikor egy IoT Plug and Play előzetes verziójú modellhez való hozzáférést.
 author: Philmea
 ms.author: philmea
-ms.date: 08/06/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2530c5b3561ad90eac0556770a8a356cfaa6a52c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976026"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531287"
 ---
 # <a name="generate-sas-token"></a>SAS-token előállítása
 

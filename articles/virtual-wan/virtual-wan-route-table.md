@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 2d8922084dbe30c2dbe494028f2e5a1497fb3759
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014991"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645106"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Virtuális központ útválasztási táblázatának létrehozása a forgalom irányításához egy hálózati virtuális berendezésre
 
 Ez a cikk bemutatja, hogyan irányíthatja át a forgalmat egy virtuális hubhoz egy hálózati virtuális berendezésre. 
 
-![Virtuális WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
+![A Virtual WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
 Ebben a cikkben az alábbiakkal fog megismerkedni:
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 * Útválasztási táblázat létrehozása
 * Az útválasztási táblázat alkalmazása
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -116,7 +116,7 @@ $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 Véglegesítse a módosításokat a virtuális központban.
 
 ```powershell
-Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
+Update-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
 ```
 
 ## <a name="next-steps"></a>Következő lépések

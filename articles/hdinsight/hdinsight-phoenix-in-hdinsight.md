@@ -5,22 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435496"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix az Azure HDInsight
 
 A [Apache Phoenix](https://phoenix.apache.org/) egy [Apache HBase](hbase/apache-hbase-overview.md)-ra épülő, nyílt forráskódú, nagymértékben párhuzamos, összehasonlítható adatbázis-réteg. A Phoenix használatával SQL-szerű lekérdezéseket használhat a HBase-on keresztül. A Phoenix JDBC-illesztőprogramokat használ, hogy lehetővé tegye a felhasználók számára az SQL-táblák,-indexek,-nézetek és-folyamatok létrehozását, törlését, megváltoztatását, valamint a upsert-sorok egyenkénti és tömeges használatát. A Phoenix noSQL natív fordítást használ ahelyett, hogy a MapReduce használatával lefordítsa a lekérdezéseket, és lehetővé teszi a kis késleltetésű alkalmazások létrehozását a HBase-on. A Phoenix felhasználja az ügyfél által megadott kód futtatásának támogatását a kiszolgáló címterület részeként, és a kód végrehajtásával az adott helyen található. Ez a megközelítés lekicsinyíti az ügyfél/kiszolgáló adatátvitelt.
 
 Apache Phoenix megnyit big data lekérdezéseket a nem fejlesztőknek, akik a programozás helyett SQL-szerű szintaxist használhatnak. A Phoenix kifejezetten HBase-re van optimalizálva, eltérően más eszközökkel, mint például a [Apache Hive](hadoop/hdinsight-use-hive.md) és az Apache Spark SQL. A fejlesztők számára a nagy teljesítményű lekérdezéseket sokkal kevesebb kóddal kell írni.
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 SQL-lekérdezés elküldésekor a Phoenix lefordítja a lekérdezést, hogy HBase a natív hívásokat, és párhuzamosan futtatja az ellenőrzést (vagy a tervet) az optimalizáláshoz. Ez az absztrakciós réteg felszabadítja a fejlesztőt a MapReduce feladatok írásához, hogy az üzleti logikára és az alkalmazás munkafolyamatára koncentráljon a Phoenix big data Storage-ban.
 
@@ -38,21 +37,21 @@ Hozzon létre egy másodlagos indexet a `CREATE INDEX` paranccsal:
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-Ez a megközelítés jelentős teljesítménybeli növekedést eredményezhet az egyetlen indexelt lekérdezések végrehajtásakor. Ez a típusú másodlagos index egy leképező **index**, amely a lekérdezésben szereplő összes oszlopot tartalmazza. Ezért a tábla keresése nem szükséges, és az index megfelel a teljes lekérdezésnek.
+Ez a megközelítés jelentős teljesítménybeli növekedést eredményezhet az egyetlen indexelt lekérdezések végrehajtásakor. Ez a típusú másodlagos index egy leképező **index**, amely a lekérdezésben szereplő összes oszlopot tartalmazza. Ezért a tábla keresése nem kötelező, és az index megfelel a teljes lekérdezésnek.
 
 ### <a name="views"></a>Nézetek
 
 A Phoenix-nézetek segítségével leküzdheti a HBase korlátozásokat, ahol a teljesítmény a 100-nál több fizikai tábla létrehozásakor csökken. A Phoenix-nézetek lehetővé teszik több *virtuális tábla* számára, hogy megosszák egy mögöttes fizikai HBase-táblázatot.
 
-A Phoenix nézet létrehozása hasonló a szabványos SQL View szintaxis használatához. Az egyik különbség az, hogy a nézet oszlopait az alaptáblától örökölt oszlopok mellett is meghatározhatja. Új `KeyValue` oszlopot is hozzáadhat.
+A Phoenix nézet létrehozása hasonló a szabványos SQL View szintaxis használatához. Az egyik különbség az, hogy a nézet oszlopait az alaptáblától örökölt oszlopok mellett is meghatározhatja. Emellett új `KeyValue` oszlopokat is hozzáadhat.
 
 Itt látható például egy `product_metrics` nevű fizikai tábla a következő definícióval:
 
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -71,7 +70,7 @@ Ha később további oszlopokat szeretne hozzáadni, használja a `ALTER VIEW` u
 
 A kihagyott vizsgálat egy összetett index egy vagy több oszlopát használja a különböző értékek megkereséséhez. A tartomány-ellenőrzéstől eltérően a kihagyás a vizsgálaton belüli beolvasást valósít meg, ami [jobb teljesítményt](https://phoenix.apache.org/performance.html#Skip-Scan)eredményez. A vizsgálat során az első egyező értéket a rendszer kihagyja az indextel együtt, amíg a következő érték nem található.
 
-A kihagyási vizsgálat a HBase szűrő `SEEK_NEXT_USING_HINT` enumerálását használja. A `SEEK_NEXT_USING_HINT` értékkel a kiugrási vizsgálat nyomon követi, hogy az egyes oszlopokban milyen kulcsokat vagy kulcs-tartományokat keres a rendszer. A kiugrási vizsgálat ezután a szűrő kiértékelése során átadott kulcsot fogad el, és meghatározza, hogy az egyik kombináció-e. Ha nem, a kiugrási vizsgálat kiértékeli a következő legmagasabb kulcsot a ugráshoz.
+A kihagyási vizsgálat a HBase szűrő `SEEK_NEXT_USING_HINT` enumerálását használja. A `SEEK_NEXT_USING_HINT`használatával a vizsgálat kihagyása nyomon követi, hogy az egyes oszlopokban mely kulcsok vagy kulcsok tartományait keresi a rendszer. A kiugrási vizsgálat ezután a szűrő kiértékelése során átadott kulcsot fogad el, és meghatározza, hogy az egyik kombináció-e. Ha nem, a kiugrási vizsgálat kiértékeli a következő legmagasabb kulcsot a ugráshoz.
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -81,7 +80,7 @@ Csakúgy, mint a hagyományos SQL-tranzakciók esetében, a Phoenix Transaction 
 
 A Phoenix-tranzakciók engedélyezéséhez tekintse meg a [Apache Phoenix tranzakció dokumentációját](https://phoenix.apache.org/transactions.html).
 
-Ha olyan új táblát szeretne létrehozni, amelyen engedélyezve vannak a tranzakciók, állítsa a `TRANSACTIONAL` tulajdonságot `true` értékre egy `CREATE` utasításban:
+Ha olyan új táblát szeretne létrehozni, amelyeken engedélyezve vannak a tranzakciók, állítsa a `TRANSACTIONAL` tulajdonságot `true`re egy `CREATE` utasításban:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
@@ -138,3 +137,5 @@ An méretű HDInsight HBase-fürt tartalmazza a [Ambari felhasználói felület�
 ## <a name="see-also"></a>Lásd még:
 
 * [Apache Phoenix használata Linux-alapú HBase-fürtökkel a HDInsight-ben](hbase/apache-hbase-query-with-phoenix.md)
+
+* [Az Apache Zeppelin használatával Apache Phoenix lekérdezéseket futtathat az Apache HBase az Azure HDInsight](./hbase/apache-hbase-phoenix-zeppelin.md)

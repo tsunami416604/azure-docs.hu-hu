@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379166"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689120"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása 
 
@@ -102,7 +102,8 @@ Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD-ben szemé
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: igen  
 
-Ez a mező jelzi, hogy az eszköz csatlakozik-e az Azure AD-hez. Ha az érték **nem**, az Azure ad-hez való csatlakozás még nem fejeződött be. 
+Ez a mező jelzi, hogy az eszköz csatlakoztatva van-e. Az érték **Igen** , ha az eszköz vagy egy Azure ad-hez csatlakoztatott eszköz vagy egy hibrid Azure ad-hez csatlakoztatott eszköz.
+Ha az érték **nem**, az Azure ad-hez való csatlakozás még nem fejeződött be. 
 
 További hibaelhárításhoz folytassa a következő lépésekkel.
 
@@ -371,13 +372,13 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 ##### <a name="federated-join-server-errors"></a>Összevont kapcsolódási kiszolgáló hibái
 
-| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Felbontás |
 | --- | --- | --- | --- |
 | Címtárhiba | A kérést átmenetileg szabályozzák. Próbálkozzon 300 másodperc elteltével. | Várt hiba. Valószínűleg azért, mert a gyors öröklés több regisztrációs kérelmet tesz elérhetővé. | Csatlakozzon újra a hűtési időszak után |
 
 ##### <a name="sync-join-server-errors"></a>Csatlakozási kiszolgáló hibáinak szinkronizálása
 
-| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Felbontás |
 | --- | --- | --- | --- |
 | Címtárhiba | AADSTS90002: a bérlő <UUID> nem található. Ez a hiba akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések. Egyeztessen az előfizetés rendszergazdájával. | A SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának bérlői azonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, és szerepel a bérlőn. |
 | Címtárhiba | Nem található az eszköz objektuma a megadott azonosító alapján. | A szinkronizáláshoz való csatlakozás várható hiba. Az eszköz objektuma nem lett szinkronizálva az AD-ből az Azure AD-be | Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
@@ -407,7 +408,7 @@ Ezek a mezők jelzik, hogy a felhasználó sikeresen hitelesített-e az Azure AD
 ## <a name="known-issues"></a>Ismert problémák
 - A beállítások – > fiókok – > hozzáférés munkahelyi vagy iskolai rendszerhez, a hibrid Azure AD-hez csatlakoztatott eszközök két különböző fiókot mutatnak be, amelyek közül az egyik az Azure AD, egy pedig a helyszíni AD-hez, a mobil hozzáférési pontokhoz vagy külső WiFi hálózatokhoz csatlakoztatva. Ez csak egy felhasználói felületi probléma, és nincs hatással a funkcióra. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az eszközök hibaelhárításának folytatása a dsregcmd parancs használatával](troubleshoot-device-dsregcmd.md)
 

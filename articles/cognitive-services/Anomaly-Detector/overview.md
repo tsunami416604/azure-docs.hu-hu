@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012054"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448974"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -25,11 +25,11 @@ A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a
 
 Az anomália detektor használata nem igényel korábbi felhasználói élményt a gépi tanulásban, és a REST API lehetővé teszi a szolgáltatás egyszerű integrálását az alkalmazásokba és folyamataiba.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az idősorozat-adataiban, vagy valós időben végezheti el azokat. 
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |A valós időben előforduló rendellenességek észlelése. | A korábban látott adatpontok használatával észlelheti a folyamatos adatátviteli hibák észlelését, és meghatározhatja, hogy a legújabb-e anomália. A művelet létrehoz egy modellt a küldött adatpontok használatával, és meghatározza, hogy a célként megadott pont anomáli-e. Ha az API-t az Ön által létrehozott összes új adatpontra hívja fel, az adatait a létrehozásuk során figyelheti. |
 |Az adatkészletekben lévő rendellenességek észlelése kötegként. | Az idősorozat használatával észlelheti az összes olyan rendellenességet, amely létezhet az összes adategységben. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.         |
@@ -72,8 +72,12 @@ Regisztráció után:
 
 ## <a name="algorithms"></a>Algoritmusok
 
-* Tekintse meg az [Azure rendellenesség-érzékelő API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) -t bemutató technikai blogokat, és [tekintse át az SR-CNN algoritmust az Azure anomália-detektorban](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) a motorháztető alatti algoritmusokkal kapcsolatban.
-* A Microsoft által fejlesztett élvonalbeli SR-CNN-algoritmusokról a Microsoft (KDD 2019 által elfogadott) [adatsorozat-anomália-észlelési szolgáltatást](https://arxiv.org/abs/1906.03821) ismertető cikkben olvashat.
+* A használt algoritmusokról a következő technikai blogokban tájékozódhat:
+    * [Az Azure rendellenesség-érzékelő API bemutatása](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
+    * [Az SR-CNN algoritmus áttekintése az Azure-beli anomáliák Detektorában](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+
+Ha többet szeretne megtudni a Microsoft által fejlesztett SR-CNN-algoritmusokról, olvassa el a Microsoft (KDD 2019 által elfogadott) [Time-sorozati anomália-észlelési szolgáltatást](https://arxiv.org/abs/1906.03821) .
+
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 

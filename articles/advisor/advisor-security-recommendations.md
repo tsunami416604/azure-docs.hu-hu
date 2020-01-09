@@ -1,23 +1,14 @@
 ---
-title: Erőforrások biztonságosabbá tétele a Azure Advisorkal | Microsoft Docs
+title: Erőforrások biztonságosabbá tétele a Azure Advisor
 description: A Azure Advisor segítségével javíthatja az Azure-beli üzembe helyezések biztonságát.
-services: advisor
-documentationcenter: NA
-author: saket-ms
-manager: ''
-ms.assetid: ''
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
-ms.author: sagupt
-ms.openlocfilehash: 8392e3b74677a8977684300d33ceb663c4e2fe81
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145318"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443036"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erőforrások biztonságosabbá tétele a Azure Advisor
 
@@ -33,7 +24,7 @@ A biztonsági javaslatokkal kapcsolatos további információkért lásd: [bizto
 
 2.  Az Advisor Irányítópultján kattintson a **Biztonság** fülre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)

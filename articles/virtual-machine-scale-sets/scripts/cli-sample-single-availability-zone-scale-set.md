@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-minták – Egyzónás méretezési csoport | Microsoft Docs
-description: Azure CLI-minták
+title: Azure CLI-minták – egyzónás méretezési csoport
+description: Ez a szkript egy Ubuntut futtató Azure virtuálisgép-méretezési készletet hoz létre egyetlen rendelkezésre állási zónában.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12e8ebea994b39b7c4324b52068b574749002117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45cef0e0e7d56baf8a5af3514f167d3a4565d15f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350994"
 ---
-# <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Hozzon létre egy Egyzónás virtuálisgép-méretezési csoportot az Azure CLI-vel
+# <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Egyzónás virtuálisgép-méretezési csoport létrehozása az Azure CLI-vel
 Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre egyetlen rendelkezésre állási zónában. A szkript futtatása után a virtuális gépet RDP-kapcsolaton keresztül érheti el.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -49,7 +49,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vmss create](/cli/azure/vmss) | Létrehozza a virtuálisgép-méretezési csoportot, és csatlakoztatja a virtuális hálózathoz, alhálózathoz és hálózati biztonsági csoporthoz. Továbbá egy terheléselosztót is létrehoz, amely elosztja a forgalmat a virtuálisgép-példányok között. A parancs megadja emellett a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az group delete](/cli/azure/ad/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
 A virtuálisgép-méretezési csoportokhoz kapcsolódó további Azure CLI-példaszkripteket az [Azure virtuálisgép-méretezési csoportok dokumentációjában](../cli-samples.md) találhat.

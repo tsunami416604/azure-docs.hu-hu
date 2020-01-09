@@ -2,18 +2,18 @@
 title: Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz a HDInsight – Azure
 description: A Linux-alapú HDInsight-fürtökön lévő Apache Hadoop-szolgáltatások számára lehetővé teheti a többszörös memóriaképek hibakeresését és elemzését.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494849"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658797"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "73494849"
 
 A kupac-memóriaképek az alkalmazás memóriájának pillanatképét tartalmazzák, beleértve a változók értékeit a memóriakép létrehozásakor. Így hasznosak lehetnek a futásidőben felmerülő problémák diagnosztizálásához.
 
-## <a name="whichServices"></a>Services
+## <a name="services"></a>Szolgáltatások
 
 A következő szolgáltatásokhoz is engedélyezheti a heap-memóriaképeket:
 
@@ -33,11 +33,11 @@ A következő szolgáltatásokhoz is engedélyezheti a heap-memóriaképeket:
 
 A térképhez is engedélyezheti a kupacbeli memóriaképeket, és csökkentheti a HDInsight által futtatott folyamatokat.
 
-## <a name="configuration"></a>A halom-memóriakép konfigurációjának ismertetése
+## <a name="understanding-heap-dump-configuration"></a>A halom-memóriakép konfigurációjának ismertetése
 
 A heap-memóriaképek a szolgáltatás indításakor a JVM (más néven a kiválasztások vagy paraméterek) átadásával engedélyezhetők. A legtöbb [Apache Hadoop](https://hadoop.apache.org/) szolgáltatás esetében módosíthatja a szolgáltatás elindításához használt rendszerhéj-parancsfájlt, hogy átadja ezeket a beállításokat.
 
-Az egyes parancsfájlokban az **\*\_** exportálását választja, amely a JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** parancsfájlban például a `export HADOOP_NAMENODE_OPTS=` kezdetű sor tartalmazza a NameNode szolgáltatás beállításait.
+Az egyes parancsfájlokban a **\*\_** exportálását választja, amely a JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** parancsfájlban például a `export HADOOP_NAMENODE_OPTS=` kezdetű sor tartalmazza a NameNode szolgáltatás beállításait.
 
 A leképezés és a folyamatok csökkentése némileg eltér, mivel ezek a műveletek a MapReduce szolgáltatás alárendelt folyamatai. A rendszer minden egyes térképet vagy csökkentési folyamatot egy gyermek tárolóban futtat, és két bejegyzést tartalmaz, amelyek tartalmazzák a JVM beállításait. Mindkettő a **mapred-site. xml fájlban**található:
 
@@ -66,7 +66,7 @@ A memóriakép fájljának alapértelmezett helye az aktuális munkakönyvtár. 
 
 A `-XX:HeapDumpPath=/tmp` használata például a memóriaképek tárolását okozza a/tmp könyvtárban.
 
-### <a name="scripts"></a>Scripts
+### <a name="scripts"></a>Parancsprogramok
 
 **Működése OutOfMemoryError** esetén is aktiválhat parancsfájlt. Például egy értesítés elindításával megtudhatja, hogy a hiba történt. A következő kapcsoló használatával aktiválhat egy parancsfájlt egy __működése OutOfMemoryError__:
 
@@ -81,12 +81,7 @@ A `-XX:HeapDumpPath=/tmp` használata például a memóriaképek tárolását ok
 
 Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL-cím https://YOURCLUSTERNAME.azurehdinsight.net.
-
-    Ha a rendszer kéri, végezzen hitelesítést a helyen a fürthöz tartozó HTTP-fióknév (alapértelmezett: rendszergazda) és a jelszó használatával.
-
-   > [!NOTE]  
-   > A Felhasználónév és a jelszó Ambari a második alkalommal is kérhető. Ha igen, adja meg ugyanazt a fióknevet és jelszót.
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net`, ahol a `CLUSTERNAME` a fürt neve.
 
 2. A bal oldali lista használatával válassza ki a módosítani kívánt szolgáltatási területét. Például: **HDFS**. A középső területen válassza a **konfigurációk** lapot.
 
@@ -121,4 +116,3 @@ Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi l�
    > Az **Újraindítási** gomb bejegyzései eltérőek lehetnek más szolgáltatások esetében.
 
 8. A szolgáltatások újraindítása után a **szolgáltatás műveletei** gomb használatával **kapcsolja ki a karbantartási módot**. Ezzel a Ambari folytathatja a szolgáltatáshoz tartozó riasztások figyelését.
-

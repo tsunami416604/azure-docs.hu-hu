@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440960"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Adatbázis csatolása Azure Resource Manager sablon használatával
 
-Ebből a szakaszból megtudhatja, hogyan csatolhat egy adatbázist egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-overview.md)használatával. 
+Ebből a szakaszból megtudhatja, hogyan csatolhat egy adatbázist egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával. 
 
 ```json
 {
@@ -378,7 +378,7 @@ Adatbázis csatolásakor az **"alapértelmezett rendszerbiztonsági tag módosí
 |---------|---------|
 |**Union**     |   A csatolt adatbázis-rendszerbiztonsági tag mindig tartalmazza az eredeti adatbázis-rendszerbiztonsági tag, valamint a követő adatbázishoz hozzáadott további új rendszerbiztonsági tagokat is.      |
 |**Csere**   |    Nem található a rendszerbiztonsági tag öröklése az eredeti adatbázisból. Új rendszerbiztonsági tag létrehozása szükséges a csatolt adatbázishoz.     |
-|**NEz egy**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
+|**Nincs**   |   A csatolt adatbázis-rendszerbiztonsági tag csak az eredeti adatbázis rendszerbiztonsági tagjait tartalmazza, további rendszerbiztonsági tag nélkül.      |
 
 További információ a jogosultságokkal rendelkező rendszerbiztonsági tag konfigurálásához használható vezérlési parancsokról: a [követő parancsok kezelése a követő fürtök](/azure/kusto/management/cluster-follower)felügyeletéhez.
 

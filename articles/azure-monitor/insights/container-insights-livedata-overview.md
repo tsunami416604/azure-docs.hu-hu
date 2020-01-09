@@ -1,24 +1,14 @@
 ---
 title: Élő adatértékek (előzetes verzió) megtekintése az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404759"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
@@ -36,7 +26,7 @@ Az élő adatszolgáltatások (előzetes verzió) beállításához vagy hibaelh
 
 ## <a name="live-data-preview-functionality-overview"></a>Az élő adat (előzetes verzió) funkcióinak áttekintése
 
-### <a name="search"></a>Keresés
+### <a name="search"></a>Search
 
 ![Példa az élő adatkonzol ablaktáblájának szűrésére](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -67,7 +57,7 @@ A valós idejű naplózási adatok megtekinthetők úgy, ahogy a tároló motorj
 4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.  
 
     >[!NOTE]
-    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikák**, a **feladatok**,  **Olyan cron-feladatok**, **hüvelyek**és **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
+    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
 
 A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktábla a teljesítményadatok rács alatt jelenik meg, ahol megtekintheti a naplózási adataikat egy folyamatos adatfolyamban. Ha a beolvasás állapotjelzője egy zöld pipa jelenik meg, amely a panel jobb szélén található, az azt jelenti, hogy a rendszer lekéri az adatait, és megkezdi a folyamatos átvitelt a konzolra.  
 
@@ -77,7 +67,7 @@ A panel címe annak a pod-nek a nevét mutatja, amelybe a tároló van csoportos
 
 ## <a name="view-events"></a>Események megtekintése
 
-Megtekintheti a tároló motor által a **csomópontok**, **vezérlők**, **tárolók**és **központi telepítések (előzetes verzió)** által generált valós idejű események adatait, ha tároló, Pod, node, ReplicaSet, daemonset elemet, Job, CronJob vagy A központi telepítés van kiválasztva. Az események megtekintéséhez hajtsa végre a következő lépéseket.
+Megtekintheti a tároló motor által a **csomópontok**, **vezérlők**, **tárolók**és **központi telepítések (előzetes verzió)** által generált valós idejű események adatait, amikor a tároló, a hüvely, a csomópont, a ReplicaSet, a daemonset elemet, a Job, a CronJob vagy a Deployment beállítás van kiválasztva. Az események megtekintéséhez hajtsa végre a következő lépéseket.
 
 1. A Azure Portal tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást.
 
@@ -88,7 +78,7 @@ Megtekintheti a tároló motor által a **csomópontok**, **vezérlők**, **tár
 4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.  
 
     >[!NOTE]
-    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikák**, a **feladatok**,  **Olyan cron-feladatok**, **hüvelyek**és **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
+    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
 
 A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktábla megjelenik a teljesítményadatok rács alatt. Ha a beolvasás állapotjelzője egy zöld pipa jelenik meg, amely a panel jobb szélén található, az azt jelenti, hogy a rendszer lekéri az adatait, és megkezdi a folyamatos átvitelt a konzolra. 
     
@@ -115,13 +105,13 @@ A valós idejű metrikai adatokat úgy tekintheti meg, ahogy a tároló motorja 
 4. Válasszon ki egy **Pod** objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.  
 
     >[!NOTE]
-    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikák**, a **feladatok**,  **Olyan cron-feladatok**, **hüvelyek**és **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
+    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
 
 A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktábla megjelenik a teljesítményadatok rács alatt. A rendszer beolvassa a metrikai adatokat, és megkezdi a folyamatos átvitelt a konzolon a két diagramon való megjelenítéshez. A panel címe annak a pod-nek a nevét mutatja, amelybe a tároló van csoportosítva.
 
 ![Példa a pod mérőszámok megtekintésére](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Monitor használatának megismeréséhez és az AK-fürt egyéb szempontjainak figyeléséhez lásd: az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md).
 

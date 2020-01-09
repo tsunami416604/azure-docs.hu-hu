@@ -11,56 +11,57 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448953"
 ---
 # <a name="query-expression-syntax"></a>Lekérdezési kifejezés szintaxisa
 
-Láttuk, hogy egy értelmező kérelemre adott válasz egy lekérdezési kifejezést tartalmaz. A felhasználó lekérdezését értelmező nyelvtan egy lekérdezési kifejezést hozott létre az egyes értelmezésekhez. A lekérdezési kifejezés ezután felhasználható egy kiértékelési kérelem kiküldésére az entitás keresési eredményeinek lekéréséhez.
+Láttuk, hogy egy **értelmező** kérelemre adott válasz egy lekérdezési kifejezést tartalmaz. A felhasználó lekérdezését értelmező nyelvtan egy lekérdezési kifejezést hozott létre az egyes értelmezésekhez. A lekérdezési kifejezés ezután felhasználható egy **kiértékelési** kérelem kiküldésére az entitás keresési eredményeinek lekéréséhez.
 
-Saját lekérdezési kifejezéseket is létrehozhat, amelyeket kiértékelési kérelemben is használhat. Ez akkor lehet hasznos, ha saját felhasználói felületet hoz létre, amely a felhasználó műveleteire adott válaszként létrehoz egy lekérdezési kifejezést. Ehhez ismernie kell a lekérdezési kifejezések szintaxisát.  
+Saját lekérdezési kifejezéseket is létrehozhat, amelyeket **kiértékelési** kérelemben is használhat. Ez akkor lehet hasznos, ha saját felhasználói felületet hoz létre, amely a felhasználó műveleteire adott válaszként létrehoz egy lekérdezési kifejezést. Ehhez ismernie kell a lekérdezési kifejezések szintaxisát.  
 
 A lekérdezési kifejezésben szereplő minden entitás attribútum egy adott adattípussal és a lehetséges lekérdezési operátorok készletével rendelkezik. Az egyes attribútumokhoz tartozó entitás-attribútumok és a támogatott operátorok halmaza az [entitás attribútumaiban](EntityAttributes.md)van megadva. Egy egyértékű lekérdezés esetében az attribútumnak támogatnia kell az *EQUAL* műveletet. Az előtag-lekérdezés megköveteli, hogy az attribútum támogassa a *StartsWith* műveletet. A numerikus tartomány lekérdezéséhez az attribútumnak támogatnia kell a *IsBetween* műveletet.
 
 Az entitások egy részét összetett attribútumokként tárolja a rendszer, ahogy azt a "." pont jelzi az attribútum nevében. A szerzői/kapcsolati adatok például összetett attribútumként jelennek meg. 4 összetevőt tartalmaz: AuN, AuId, AfN, AfId. Ezek az összetevők különálló adatmennyiséget alkotnak, amelyek egyetlen entitás-attribútum értékét alkotják.
 
+Megjegyzés: az összes lekérdezési kifejezésnek kisbetűs és speciális karakterek nélkül kell lennie.
 
-**Karakterlánc-attribútum: Egyetlen érték** (tartalmazza a szinonimák közötti egyezéseket)  
+**String attribútum: egyetlen érték** (tartalmazza a szinonimák egyezését)  
 Ti = ' a látens szemantikai elemzés szerint '  
 Összetett (AA. AuN = ' Sue dumais ')
 
-**Karakterlánc-attribútum: Pontos egyszeri érték** (csak a kanonikus értékek egyezése)  
+**String attribútum: pontos egyszeri érték** (csak a kanonikus értékek egyezése)  
 Ti = = ' a látens szemantikai elemzés által indexelve '  
 Összetett (AA. AuN = = ' Susan t dumais ')
      
-**Karakterlánc-attribútum: Előtag értéke**   
+**String attribútum: előtag értéke**   
 Ti = ' a látens Seman indexelése...  
 Összetett (AA. AuN = ' Sue du '...)
 
-**Numerikus attribútum: Egyetlen érték**  
-Y=2010
+**Numerikus attribútum: egyetlen érték**  
+Y = 2010
  
-**Numerikus attribútum: Tartomány értéke**  
-Y>2005  
-Y>=2005  
-Y<2010  
-Y<=2010  
+**Numerikus attribútum: tartomány értéke**  
+Y > 2005  
+Y > = 2005  
+Y < 2010  
+Y < = 2010  
 Y =\[2010, 2012\) (csak a bal oldali határ értékét tartalmazza: 2010, 2011)  
-Y =\[2010, 2012\] (mindkét határ értékkel rendelkezik: 2010, 2011, 2012)
+Y =\[2010, 2012\] (beleértve a határos értékeket is: 2010, 2011, 2012)
  
-**Numerikus attribútum: Előtag értéke**  
+**Numerikus attribútum: előtag értéke**  
 Y = ' 19 '... (a 19 értékkel kezdődő numerikus értékek) 
  
-**Date attribútum: Egyetlen érték**  
-D='2010-02-04'
+**Date attribútum: egyetlen érték**  
+D = ' 2010-02-04 '
 
-**Date attribútum: Tartomány értéke**  
-D>'2010-02-03'  
-D=['2010-02-03','2010-02-05']
+**Date attribútum: tartomány értéke**  
+D > "2010-02-03"  
+D = [' 2010-02-03 ', ' 2010-02-05 ']
 
 **És/vagy lekérdezések:**  
 És (Y = 1985, ti = ' elrendezetlen elektronikus rendszerek ')  
@@ -86,7 +87,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>Ebben a verzióban, mivel az összetett () alkalmazás a szerzőre és a kapcsolatra külön van alkalmazva a (z) és () esetében, az összes olyan dokumentumot megkapjuk, ahol a szerzők egyike "Mike Smith", a szerzői kapcsolatok egyike pedig "Harvard". Ez az előző lekérdezési példához hasonlóan hangzik, de nem ugyanaz a dolog.
 
-Általánosságban vegye figyelembe a következő példát: Egy "C" kompozit attribútummal rendelkezik, amelynek két összetevője az A és A B. Egy entitás több "C" értékkel rendelkezhet. Ezek az entitások:
+Általánosságban vegye figyelembe a következő példát: a C kompozit attribútummal rendelkezik, amely az A és B két összetevővel rendelkezik. Egy entitás több "C" értékkel rendelkezhet. Ezek az entitások:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996632"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658338"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -46,9 +46,9 @@ Azt javasoljuk, hogy legalább/28 alhálózat-alhálózati méretet használjon.
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Hálózati biztonsági csoportok a Application Gateway alhálózaton
 
-Application Gateway a hálózati biztonsági csoportok (NSG-EK) támogatottak. Több korlátozás is létezik:
+Application Gateway a hálózati biztonsági csoportok (NSG-EK) támogatottak. Vannak azonban korlátozások:
 
-- Engedélyeznie kell a bejövő internetes forgalmat a 65503-65534-as TCP-portokon a Application Gateway v1 SKU-hoz *, valamint a*65200-65535-es TCP-portokat a v2 SKU-hoz a célként megadott alhálózattal. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A külső entitások, beleértve az átjárók ügyfeleit, nem indíthatnak módosításokat a végpontokon a megfelelő tanúsítványok nélkül.
+- Engedélyeznie kell a bejövő internetes forgalmat a 65503-65534 **-as TCP** -portokon a Application Gateway v1 SKU-hoz, valamint a 65200-65535-es TCP-portokat a v2 SKU-hoz a célként megadott alhálózattal a **GatewayManager** szolgáltatás címkéjének megfelelően. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A külső entitások, beleértve az átjárók ügyfeleit, nem tudnak kommunikálni ezeken a végpontokon.
 
 - A kimenő internetkapcsolatot nem lehet blokkolni. A NSG alapértelmezett kimenő szabályai lehetővé teszik az internetkapcsolatot. A következő megoldást javasoljuk:
 
@@ -57,12 +57,12 @@ Application Gateway a hálózati biztonsági csoportok (NSG-EK) támogatottak. T
 
 - A **AzureLoadBalancer** címkétől érkező forgalmat engedélyezni kell.
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway hozzáférés engedélyezése néhány forrás IP-cím számára
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway hozzáférés engedélyezése néhány forrás IP-cím számára
 
 Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A következő korlátozásokat helyezze az alhálózatra az adott prioritási sorrendben:
 
-1. Engedélyezi a bejövő forgalmat a forrás IP-címről vagy az IP-címről, valamint a célhelyet a teljes Application Gateway alhálózatként vagy az adott konfigurált magánhálózati előtér-IP-címhez. A NSG nem működik nyilvános IP-címen.
-2. Az összes forrásból érkező, a 65503-65534-as portokra érkező kérések engedélyezése a Application Gateway v1 SKU-hoz, valamint a 65200-65535-es port a v2 SKU-hoz a [háttér-állapotú kommunikációhoz](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A megfelelő tanúsítványok nélkül a külső entitások nem indíthatnak módosításokat ezeken a végpontokon.
+1. Engedélyezi a bejövő forgalmat egy forrás IP-címről vagy IP-tartományból a célhelyként a teljes Application Gateway alhálózati címtartomány és célportként a bejövő hozzáférési portként, például a HTTP-hozzáférés 80-es portját.
+2. A forrástól érkező, a **GatewayManager** szolgáltatásként használt és a célként megadott 65503-65534 portokként való bejövő kérések engedélyezése a Application Gateway v1 SKU esetében, valamint a **65200-65535-es** port a v2 SKU-hoz a [háttér állapotának kommunikációja](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)érdekében. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A megfelelő tanúsítványok nélkül a külső entitások nem indíthatnak módosításokat ezeken a végpontokon.
 3. A bejövő Azure Load Balancer mintavételek (*AzureLoadBalancer* -címkék) és a bejövő virtuális hálózati forgalom (*VirtualNetwork* címke) engedélyezése a [hálózati biztonsági csoporton](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Az összes többi bejövő forgalom blokkolása megtagadás – minden szabály használatával.
 5. Az internetre irányuló kimenő adatforgalom engedélyezése az összes célhelyre.
@@ -74,10 +74,10 @@ A v1 SKU esetében a felhasználó által megadott útvonalak (UDR-EK) a Applica
 A v2 SKU esetében a UDR nem támogatottak a Application Gateway alhálózaton. További információ: [Azure Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
-> A UDR nem támogatottak a v2 SKU-ban.  Ha UDR szükséges, továbbra is telepítenie kell a v1 SKU-t.
+> A v2 SKU jelenleg nem támogatja a UDR.
 
 > [!NOTE]
-> Ha a UDR-t használja a Application Gateway alhálózaton, a [háttér állapot nézet](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) állapota "ismeretlen" állapotúként jelenik meg. Azt is okozhatja, hogy a Application Gateway naplók és mérőszámok generálása sikertelen lesz. Azt javasoljuk, hogy ne használja a UDR a Application Gateway alhálózaton, így megtekintheti a háttér állapotát, a naplókat és a metrikákat.
+> Ha a UDR-t használja az Application Gateway alhálózaton, a [háttér állapot nézetében](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) a "Unknown" érték jelenik meg. Azt is okozhatja, hogy Application Gateway naplók és mérőszámok generálása meghiúsul. Azt javasoljuk, hogy ne használja a UDR a Application Gateway alhálózaton, így megtekintheti a háttér állapotát, a naplókat és a metrikákat.
 
 ## <a name="front-end-ip"></a>Előtér-IP-cím
 
@@ -165,7 +165,7 @@ A globális egyéni hiba lap konfigurálásához lásd: [Azure PowerShell konfig
 
 Központosíthatja az SSL-tanúsítványok kezelését, és csökkentheti a titkosítási és visszafejtési terhelést a háttér-kiszolgálófarm számára. A központosított SSL-kezelést is lehetővé teszi, hogy megadhat egy központi SSL-házirendet, amely megfelel a biztonsági követelményeknek. Kiválaszthatja az *alapértelmezett*, az *előre definiált*vagy az *Egyéni* SSL-házirendet.
 
-Az SSL-szabályzat konfigurálásával szabályozhatja az SSL protokoll verzióit. Az Application Gateway konfigurálható úgy, hogy a TLS 1.0, a TLS 1.1 és a TLS 1.2 mobileszköz minimális képernyőfelbontását protokoll-verzióját használja a TLS-kézfogásokhoz. Alapértelmezés szerint az SSL 2,0 és 3,0 le van tiltva, és nem konfigurálható. További információ: [Application Gateway SSL-házirend áttekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+Az SSL-szabályzat konfigurálásával szabályozhatja az SSL protokoll verzióit. Az Application Gateway konfigurálható úgy, hogy a TLS-kézfogások minimális protokoll-verzióját használják a TLS 1.0, a TLS 1.1 és a TLS 1.2 használatával. Alapértelmezés szerint az SSL 2,0 és 3,0 le van tiltva, és nem konfigurálható. További információ: [Application Gateway SSL-házirend áttekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
 A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérések hogyan legyenek átirányítva a háttér felé.
 
@@ -256,7 +256,7 @@ Ez a funkció akkor hasznos, ha ugyanazon a kiszolgálón szeretné megőrizni a
 
 ### <a name="connection-draining"></a>Kapcsolatkiürítés
 
-A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a kérelmek, amelyek az átjáró által felügyelt munkamenet-affinitás miatt a példányok deregisztrációját igénylik, és a rendszer továbbra is a denyilvántartó példányok számára végzi a felügyeletet. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
+A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a példányok deregisztrációja az átjáró által felügyelt munkamenet-affinitás miatt, és a rendszer továbbra is továbbítja őket a deregistering példányokra. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
 
 ### <a name="protocol"></a>Protocol (Protokoll)
 

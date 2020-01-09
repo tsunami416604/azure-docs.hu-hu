@@ -1,7 +1,7 @@
 ---
-title: Hogyan hozhat létre egy egyéni modell - űrlap felismerő tanítási adathalmazt
+title: Betanítási adatkészlet létrehozása egyéni modell-űrlap felismerőhöz
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan biztosítson a tanítási adathalmazt egy űrlap felismerő modell tanítása van optimalizálva.
+description: Megtudhatja, hogyan biztosíthatja, hogy a betanítási adatkészletet az űrlap-felismerő modell betanítására optimalizálták.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,40 +9,42 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 643f0d6dd3ee073bd19f8697346689523032ad9f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380626"
 ---
-# <a name="build-a-training-data-set-for-a-custom-model"></a>Egy egyéni modell a tanítási adathalmazt létrehozása
+# <a name="build-a-training-data-set-for-a-custom-model"></a>Betanítási adatkészlet létrehozása egyéni modellhez
 
-Az űrlap felismerő egyéni modell használata esetén, adja meg a saját betanítási adatok, a modell betaníthatja az iparág-specifikus űrlapokon. Emellett két ki vannak töltve űrlap betaníthatja öt ki vannak töltve űrlapok vagy egy üres képernyő (szerepelnie kell az "üres" szót a fájlnév) modell. Még ha van elegendő ki vannak töltve űrlapok a taníthat be, a tanítási adathalmazt ad hozzá egy üres képernyő javíthatja a modell pontosságát.
+Ha az űrlap-felismerő egyéni modelljét használja, saját betanítási adatait is megadhatja, így a modell az iparágra jellemző űrlapokra is betanítható. A modelleket öt kitöltött űrlapon vagy egy üres űrlapon is betaníthatja (a fájlnévben a "Empty" szót kell megadnia), valamint két kitöltött űrlapot is. Még ha elegendő kitöltött űrlap is van a betanításhoz, a betanítási adatkészletbe üres űrlap hozzáadásával növelheti a modell pontosságát.
 
-## <a name="training-data-tips"></a>Betanítási adatok tippek
+Ha manuálisan címkézett betanítási adatmennyiséget szeretne használni, legalább öt azonos típusú formát kell kezdenie. Továbbra is használhat címkézetlen űrlapokat és egy üres űrlapot ugyanabban az adatkészletben.
 
-Fontos egy adatkészlet, amely optimalizált használata képzéshez. Az alábbi tippek segítségével győződjön meg arról, hogy a legjobb eredmények elérése érdekében a get használatát a [tanítási modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) műveletet:
+## <a name="training-data-tips"></a>Az adatképzéssel kapcsolatos tippek
 
-* Ha lehetséges használjon szöveges PDF-dokumentumok lemezkép-alapú dokumentumok helyett. A beolvasott PDF-fájlok, képek kezeli.
-* Egy üres képernyő és a két ki vannak töltve űrlapok használja, ha azok érhető el.
-* Kitöltött űrlapok használja a példa, amelyek az összes saját kitölti a mezőket.
-* Egyes mezők eltérő értékek űrlapokat használnak.
-* Ha az űrlap lemezképek alacsonyabb minőségű, használjon nagyobb (például a 10 – 15 képek).
+Fontos, hogy olyan adatkészletet használjon, amely betanításra van optimalizálva. A következő tippek segítségével biztosíthatja, hogy a legjobb eredményt kapja a [vonat egyéni modellje](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) műveletből:
+
+* Ha lehetséges, a képeken alapuló dokumentumok helyett szöveges alapú PDF-dokumentumokat használjon. A beolvasott PDF-fájlok képként vannak kezelve.
+* A kitöltött űrlapok esetében olyan példákat használjon, amelyekben az összes mező kitöltése megtörtént.
+* Minden mezőben más értékkel rendelkező űrlapot használjon.
+* Ha az űrlapon lévő képek gyengébb minőségűek, használjon nagyobb adatkészletet (például 10-15-es lemezképeket).
+* A betanítási adatkészlet teljes mérete legfeljebb 500 oldal lehet.
 
 ## <a name="general-input-requirements"></a>Általános bemeneti követelmények
 
-Ügyeljen, hogy a tanítási adathalmazt is minden űrlap felismerő tartalom bemeneti követelményeinek. 
+Győződjön meg arról, hogy a betanítási adatkészlet az összes űrlap-felismerő tartalomra vonatkozó bemeneti követelményeket is követi. 
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>A betanítási adatok feltöltése
 
-Ha Ön összeállítottunk űrlap dokumentumok szeretné használni a betanítási készlete, töltse fel az Azure blob storage-tárolókat az kell. Ha nem ismeri egy tárolót az Azure storage-fiók létrehozása, a következő a [Azure Storage a rövid útmutató az Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Ha összeállította a betanításhoz használni kívánt űrlap-dokumentumokat, fel kell töltenie egy Azure Blob Storage-tárolóba. Ha nem tudja, hogyan hozhat létre egy tárolóval rendelkező Azure Storage-fiókot, kövesse a [Azure Portal Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)gyors üzembe helyezési útmutatóját.
 
-### <a name="organize-your-data-in-subfolders-optional"></a>Almappák (nem kötelező) az adatok rendezése
+### <a name="organize-your-data-in-subfolders-optional"></a>Az Ön adatait almappákban rendszerezheti (opcionális)
 
-Alapértelmezés szerint a [tanítási modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) API csak arra használja a storage-tároló gyökérmappájában található űrlap dokumentumok. Azonban betaníthatja almappákban lévő adatokkal, ha megadja azt az API-hívással. Normális esetben törzse a [tanítási modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) hívást tartalmaz a következő formátumot követi, ahol `<SAS URL>` közös hozzáférési aláírás URL-címe a tárolóhoz van:
+Alapértelmezés szerint az [Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) -API-k csak a Storage-tároló gyökerében található űrlap-dokumentumokat használják. Ha azonban az API-hívásban megadhatja, az almappákban is betaníthatja az adatkészletet. Az [Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) -hívás törzsének általában a következő űrlapja van, ahol a `<SAS URL>` a tároló közös hozzáférési aláírásának URL-címe:
 
 ```json
 {
@@ -50,7 +52,7 @@ Alapértelmezés szerint a [tanítási modell](https://westus2.dev.cognitive.mic
 }
 ```
 
-A következő tartalmat ad hozzá a kérelem törzsében, ha az API-t az almappákban dokumentumok fog betanításához. A `"prefix"` mező nem kötelező, és korlátozza a tanítási adathalmazt, fájlok, amelyeknek elérési utak a megadott karakterlánc kezdődhet. Ezért érték `"Test"`, például miatt csak azokat a fájlokat vagy mappákat, a word "Test" karakterrel kezdődő tekintse meg az API-t.
+Ha az alábbi tartalmat adja hozzá a kérelem törzséhez, az API az almappákban található dokumentumokkal fog betanítani. A `"prefix"` mező nem kötelező, és a betanítási adatkészletet olyan fájlokra korlátozza, amelyek elérési útja a megadott karakterlánccal kezdődik. Így például a `"Test"`értéke, így az API csak azokat a fájlokat vagy mappákat vizsgálja meg, amelyek a "teszt" Szóval kezdődnek.
 
 ```json
 {
@@ -58,14 +60,15 @@ A következő tartalmat ad hozzá a kérelem törzsében, ha az API-t az almapp�
   "sourceFilter": {
     "prefix": "<prefix string>",
     "includeSubFolders": true
-  }
+  },
+  "useLabelFile": false
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan hozhat létre a tanítási adathalmazt, kövesse a gyors útmutató: egyéni űrlap felismerő modellek betanítása és vegye használatba az űrlapokon.
+Most, hogy megismerte, hogyan hozhat létre egy betanítási adatkészletet, egy rövid útmutató segítségével betaníthat egy egyéni űrlap-felismerő modellt, és megkezdheti az űrlapokon való használatát.
 
-* [Rövid útmutató: A modell betanítását, és bontsa ki az adatokat a cURL használatával](./quickstarts/curl-train-extract.md)
-* [Rövid útmutató: A modell betanítását, és bontsa ki az űrlapadatok REST API használatával a Python használatával](./quickstarts/python-train-extract.md)
-
+* [Gyors útmutató: modell betanítása és űrlap-adatok kinyerése a cURL használatával](./quickstarts/curl-train-extract.md)
+* [Gyors útmutató: modell betanítása és űrlap-adatok kinyerése a REST API és a Python használatával](./quickstarts/python-train-extract.md)
+* [Betanítás címkékkel a REST API és a Python használatával](./quickstarts/python-labeled-data.md)

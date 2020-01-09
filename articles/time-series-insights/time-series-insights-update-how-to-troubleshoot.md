@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452540"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Előzetes verziójú környezet diagnosztizálása és megoldása
 
@@ -25,7 +25,7 @@ Ez a cikk számos gyakori problémát foglal össze, amelyek a Azure Time Series
 
 Ez a probléma akkor fordulhat elő, ha nem rendelkezik a Time Series Insights-környezet eléréséhez szükséges engedélyekkel. A felhasználóknak olvasó szintű hozzáférési szerepkörre van szükségük Time Series Insights környezetük megtekintéséhez. Az aktuális hozzáférési szintek ellenőrzéséhez és további hozzáférés biztosításához lépjen a [Azure Portal](https://portal.azure.com/)Time Series Insights erőforrásának **adatelérési házirendek** szakaszára.
 
-  [![környezet](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![az adatelérési házirendek ellenőrzése.](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Probléma: az előnézeti Explorerben nem láthatók az adathalmazok
 
@@ -35,24 +35,25 @@ Számos gyakori oka lehet annak, hogy miért nem látja az adatait a [Azure Time
 
     Győződjön meg arról, hogy az eseményforrás, amely egy Event hub vagy egy IoT hub, fogadja a címkékből vagy példányokból származó adatok fogadását. Az ellenőrzéshez nyissa meg az erőforrás áttekintés lapját a Azure Portal.
 
-    [![irányítópult – áttekintés](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![tekintse át az irányítópult metrikáinak áttekintése című témakört.](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - Az eseményforrás-adatforrás nem JSON formátumú.
 
-    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 - Az eseményforrás kulcsa hiányzik egy szükséges engedély.
 
   * Egy IoT hub esetében meg kell adnia a **Service kapcsolódási** engedéllyel rendelkező kulcsot.
 
-    [![Konfiguráció](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [![ellenőrizze a IoT hub engedélyeit.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * Ahogy az előző ábrán is látható, a **iothubowner** és a **szolgáltatás** mindkét szabályzata működik, mert a **szolgáltatás csatlakozási** engedéllyel rendelkeznek.
+    * Mind a szabályzatok **iothubowner** , mind a **szolgáltatás** működik, mert a **szolgáltatás csatlakozási** engedéllyel rendelkeznek.
+
   * Az Event hub esetében meg kell adnia a **figyelés** engedéllyel rendelkező kulcsot.
   
-    [Engedélyek ![](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![tekintse át az Event hub engedélyeit.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * Ahogy az előző ábrán is látható, mindkét **olvasási** és **kezelési** házirend működik, mert a **figyelés** engedéllyel rendelkezik.
+    * Az **olvasási** és a **kezelési** szabályzat is működik, mert a **figyelés** engedéllyel rendelkezik.
 
 - A megadott fogyasztói csoport nem kizárólag Time Series Insights.
 
@@ -74,10 +75,10 @@ Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probléma: az esemény forrásának időbélyeg-tulajdonságának neve nem működik
 
-Győződjön meg arról, hogy a nevét és értékét megfelelnek-e a következő szabályok:
+Győződjön meg arról, hogy a név és az érték megfelel a következő szabályoknak:
 
 * Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
-* Az eseményforrás által a JSON-karakterláncként kapott időbélyeg-tulajdonság értéke `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Az ilyen típusú például `“2008-04-12T12:53Z”`.
+* Az eseményforrás által a JSON-karakterláncként kapott időbélyeg-tulajdonság értéke `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Ilyen karakterlánc például `“2008-04-12T12:53Z”`.
 
 Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Preview Explorer használata. A Time Series Insights Preview Explorerben a diagramon kiválaszthat egy időszakot, miután megadták az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, és válassza az **események feltárása** lehetőséget. Az első oszlop fejléce az időbélyeg-tulajdonság neve. `($ts)` a Word `Timestamp`mellett kell lennie a következő helyett:
 
@@ -98,7 +99,7 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
    Az idősorozat-modellek csak utólagos elszámolású környezetekben támogatottak. Az S1 vagy S2 környezet Time Series Insights Preview Explorerben való elérésével kapcsolatos további információkért lásd: [adatok megjelenítése az Explorerben](./time-series-insights-update-explorer.md).
 
-   [![hozzáférés](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [![nincs esemény a környezetben.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - Előfordulhat, hogy nincs engedélye a modell megtekintésére és szerkesztésére.
 
@@ -108,10 +109,12 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
 Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott idősorozat-modell hierarchiával. További információ: [Time Series-modellek használata](./time-series-insights-update-how-to-tsm.md).
 
-  [idősorozat-modellek ![](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [![nem szülő példányok figyelmeztetést jelenítenek meg.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Olvasási [munka az Idősorozat-modellekkel](./time-series-insights-update-how-to-tsm.md).
+
 - További információ a [támogatott JSON-alakzatokról](./how-to-shape-query-json.md).
+
 - Tekintse át a [tervezést és a korlátozásokat](./time-series-insights-update-plan.md) Azure Time Series Insights előzetes verzióban.

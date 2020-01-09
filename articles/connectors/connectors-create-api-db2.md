@@ -1,22 +1,22 @@
 ---
-title: Kapcsolódás az IBM DB2-hez
-description: Erőforrások kezelése az IBM DB2 REST API-kkal és Azure Logic Apps
+title: Az IBM DB2-erőforrások elérése és kezelése
+description: Az IBM DB2-erőforrások olvasása, szerkesztése, frissítése és kezelése az Azure Logic Apps használatával automatizált munkafolyamatok létrehozásával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446182"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2-erőforrások kezelése Azure Logic Apps
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Az IBM DB2-erőforrások elérése és kezelése Azure Logic Apps használatával
 
-A Azure Logic Apps és az IBM DB2-összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre a DB2-adatbázisban tárolt erőforrások alapján. A munkafolyamatok csatlakozhatnak az adatbázis erőforrásaihoz, olvashatják és listázják az adatbázis-táblákat, sorok hozzáadását, sorok módosítását, sorok törlését és egyebeket. Olyan műveleteket is hozzáadhat a logikai alkalmazásokban, amelyek válaszokat kapnak az adatbázisból, és más műveletek számára elérhetővé teszik a kimenetet.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [IBM DB2-összekötővel](/connectors/db2/)automatizált feladatokat és munkafolyamatokat hozhat létre a DB2-adatbázisban tárolt erőforrások alapján. A munkafolyamatok csatlakozhatnak az adatbázis erőforrásaihoz, olvashatják és listázják az adatbázis-táblákat, sorok hozzáadását, sorok módosítását, sorok törlését és egyebeket. Olyan műveleteket is hozzáadhat a logikai alkalmazásokban, amelyek válaszokat kapnak az adatbázisból, és más műveletek számára elérhetővé teszik a kimenetet.
 
 Ez a cikk bemutatja, hogyan hozhat létre olyan logikai alkalmazást, amely különböző adatbázis-műveleteket hajt végre. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
@@ -157,7 +157,7 @@ Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai
    | **Területi azonosító** | Igen | A kívánt rekord azonosítója (például "99999") ebben a példában |
    ||||
 
-   ![tábla kiválasztása](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -192,7 +192,7 @@ Egy DB2-adatbázistábla összes rekordjának beolvasásához használja a logik
 
 1. Nyissa meg a **tábla neve** listát, majd válassza ki a kívánt táblát, amely ebben a példában a "területen" látható:
 
-   ![tábla kiválasztása](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Ha szűrőt vagy lekérdezést szeretne megadni az eredményekhez, válassza a **Speciális beállítások megjelenítése**lehetőséget.
 
@@ -241,7 +241,7 @@ Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használ
 
    Példa:
 
-   ![tábla kiválasztása](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -289,7 +289,7 @@ Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használj
 
    Példa:
 
-   ![tábla kiválasztása](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -334,7 +334,7 @@ Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használ
 
    Példa:
 
-   ![tábla kiválasztása](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 

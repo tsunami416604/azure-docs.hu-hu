@@ -1,80 +1,77 @@
 ---
-title: Az Azure service health-riasztások küldése a pagerduty segítségével webhookok használata
-description: A Szolgáltatásállapot-események a PagerDuty-példányra vonatkozó személyre szabott értesítések küldése.
-author: stephbaron
-ms.author: stbaron
+title: Azure szolgáltatás állapotára vonatkozó riasztások küldése a PagerDuty
+description: Személyre szabott értesítések beszerzése a PagerDuty-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.topic: article
-ms.service: service-health
 ms.date: 06/10/2019
-ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 746113622b746949a0fae3fd0d7f1f9c7d170707
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067156"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551652"
 ---
-# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Az Azure service health-riasztások küldése a pagerduty segítségével webhookok használata
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a PagerDuty webhookok használatával
 
-Ez a cikk bemutatja, hogyan állíthatja be az Azure service health értesítések PagerDuty segítségével egy webhook használatával. Használatával [PagerDuty](https://www.pagerduty.com/)a Microsoft Azure integrációs egyéni típus, néhány kattintással hozzáadhatja a Service Health-riasztások az új vagy meglévő PagerDuty-szolgáltatások.
+Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás állapotára vonatkozó értesítéseket a PagerDuty webhook használatával. A [PagerDuty](https://www.pagerduty.com/)egyéni Microsoft Azure integrációs típusának használatával könnyedén hozzáadhat Service Health-riasztásokat az új vagy meglévő PagerDuty-szolgáltatásokhoz.
 
-## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>Service health integrációs URL létrehozása a pagerduty szolgáltatásban
-1.  Győződjön meg arról, hogy regisztrált-, és bejelentkezett, a [PagerDuty](https://www.pagerduty.com/) fiókot.
+## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>Szolgáltatás állapot-integrációs URL-cím létrehozása a PagerDuty-ben
+1.  Győződjön meg arról, hogy regisztrált, és be van jelentkezve a [PagerDuty](https://www.pagerduty.com/) -fiókjába.
 
-1.  Keresse meg a **szolgáltatások** szakasz a pagerduty szolgáltatásban.
+1.  Navigáljon a **szolgáltatások** szakaszhoz a PagerDuty.
 
-    ![A "Szolgáltatások" szakaszban a pagerduty szolgáltatásban](./media/webhook-alerts/pagerduty-services-section.png)
+    ![A PagerDuty "szolgáltatások" szakasza](./media/webhook-alerts/pagerduty-services-section.png)
 
-1.  Válassza ki **új szolgáltatás hozzáadása** vagy nyisson meg egy meglévő szolgáltatást állította be.
+1.  Válassza az **új szolgáltatás hozzáadása** vagy a beállított meglévő szolgáltatás megnyitása lehetőséget.
 
-1.  Az a **integrációs beállítások**, jelölje be az alábbiakat:
+1.  Az **integrációs beállítások**területen válassza ki a következőket:
 
-    a. **Integráció típus**: Microsoft Azure
+    a. **Integráció típusa**: Microsoft Azure
 
-    b. **Az integrációs nevének**: \<név\>
+    b. **Integráció neve**: \<neve\>
 
-    ![A pagerduty szolgáltatásban "integrációs beállítások"](./media/webhook-alerts/pagerduty-integration-settings.png)
+    ![Az "integrációs beállítások" a PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
-1.  Adja meg a többi szükséges mezőt, és válassza ki **Hozzáadás**.
+1.  Töltse ki a többi kötelező mezőt, és válassza a **Hozzáadás**lehetőséget.
 
-1.  Nyissa meg az új integrációs, és másolja és mentse a **integrációs URL-Címének**.
+1.  Nyissa meg az új integrációt, és másolja és mentse az **integrációs URL-címet**.
 
-    ![Az "integrációs URL-Címének" a pagerduty szolgáltatásban](./media/webhook-alerts/pagerduty-integration-url.png)
+    ![Az "integrációs URL" a PagerDuty](./media/webhook-alerts/pagerduty-integration-url.png)
 
-## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Hozzon létre egy riasztást, az Azure Portalon PagerDuty segítségével
-### <a name="for-a-new-action-group"></a>Az új műveletcsoport:
-1. Végezze el az 1 – 8 [az Azure portal segítségével hozzon létre egy riasztást a szolgáltatás állapotával kapcsolatos értesítés az új műveletcsoport](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Riasztás létrehozása a Azure Portal PagerDuty használatával
+### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
+1. Kövesse az 1 – 8. lépést a [riasztás létrehozása a szolgáltatás állapotáról szóló értesítésben egy új műveleti csoportra vonatkozóan a Azure Portal használatával](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-1. Adja meg a listában, **műveletek**:
+1. Definiálás a **műveletek**listájában:
 
-    a. **Művelet típusa:** *Webhook*
+    a. **Művelet típusa:** *webhook*
 
-    b. **Részletek:** A PagerDuty **integrációs URL-Címének** , korábban mentett.
+    b. **Részletek:** A korábban mentett PagerDuty **-integrációs URL-cím** .
 
-    c. **név:** A Webhook nevét, alias vagy azonosítója.
+    c. **Név:** Webhook neve, aliasa vagy azonosítója.
 
-1. Válassza ki **mentése** Ha ezzel elkészült, a riasztás létrehozásához.
+1. A riasztás létrehozásához válassza a **Mentés** lehetőséget.
 
-### <a name="for-an-existing-action-group"></a>A meglévő műveletcsoport:
-1. Az a [az Azure portal](https://portal.azure.com/)válassza **figyelő**.
+### <a name="for-an-existing-action-group"></a>Meglévő műveleti csoport esetén:
+1. A [Azure Portal](https://portal.azure.com/)válassza a **figyelő**elemet.
 
-1. Az a **beállítások** szakaszban jelölje be **Műveletcsoportok**.
+1. A **Beállítások** szakaszban válassza a **műveleti csoportok**lehetőséget.
 
-1. Keresse meg és válassza ki a szerkeszteni kívánt művelet csoportot.
+1. Keresse meg és válassza ki a szerkeszteni kívánt műveleti csoportot.
 
-1. Adja hozzá a listához, **műveletek**:
+1. Hozzáadás a **műveletek**listájához:
 
-    a. **Művelet típusa:** *Webhook*
+    a. **Művelet típusa:** *webhook*
 
-    b. **Részletek:** A PagerDuty **integrációs URL-Címének** , korábban mentett.
+    b. **Részletek:** A korábban mentett PagerDuty **-integrációs URL-cím** .
 
-    c. **név:** A Webhook nevét, alias vagy azonosítója.
+    c. **Név:** Webhook neve, aliasa vagy azonosítója.
 
-1. Válassza ki **mentése** végeztével a műveletcsoport frissítéséhez.
+1. A műveleti csoport frissítéséhez válassza a **Mentés** lehetőséget.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Egy HTTP POST kérelem használatával a webhook-integráció tesztelése
-1. Hozza létre a service health hasznos adatokat szeretne küldeni. Egy példa service health webhook hasznos adatai címen található [Webhookok az Azure-tevékenységi naplóriasztások](../azure-monitor/platform/activity-log-alerts-webhook.md).
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Webhook-integráció tesztelése HTTP POST-kérelem használatával
+1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Az Azure-beli [tevékenységekre vonatkozó riasztások webhookok](../azure-monitor/platform/activity-log-alerts-webhook.md)szolgáltatásában például a Service Health webhook hasznos adatai találhatók.
 
-1. HTTP POST-kérelmet a következőképpen hozhat létre:
+1. Hozzon létre egy HTTP POST-kérelmet a következőképpen:
 
     ```
     POST        https://events.pagerduty.com/integration/<IntegrationKey>/enqueue
@@ -83,12 +80,12 @@ Ez a cikk bemutatja, hogyan állíthatja be az Azure service health értesítés
 
     BODY        <service health payload>
     ```
-1. Ekkor kap egy `202 Accepted` egy üzenet, amely tartalmazza az "esemény azonosítóját."
+1. `202 Accepted` kap egy üzenetet, amely tartalmazza az "Event ID" azonosítót.
 
-1. Lépjen a [PagerDuty](https://www.pagerduty.com/) annak ellenőrzéséhez, hogy az integrációs sikeres volt-e beállítva.
+1. Nyissa meg a [PagerDuty](https://www.pagerduty.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő probléma felügyeleti rendszerek](service-health-alert-webhook-guide.md).
-- Tekintse át a [tevékenység log riasztási webhookséma](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../azure-monitor/platform/service-notifications.md).
-- Tudjon meg többet [Műveletcsoportok](../azure-monitor/platform/action-groups.md).
+## <a name="next-steps"></a>Következő lépések
+- Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
+- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../azure-monitor/platform/service-notifications.md).
+- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).

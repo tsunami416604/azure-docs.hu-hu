@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Egyoldalas webalkalmazás Bing Entity Search'
+title: 'Oktatóanyag: Bing Entity Search egyoldalas webalkalmazás'
 titleSuffix: Azure Cognitive Services
-description: Útmutató a Bing Entity Search API egyoldalas webalkalmazásban való használatához.
+description: Ez az oktatóanyag bemutatja, hogyan használható a Bing Entity Search API egy egyoldalas webalkalmazásban.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423987"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448589"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
@@ -86,7 +86,7 @@ A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekbe
 
 Annak érdekében, hogy a Bing Search és a Bing Térképek API előfizetői kulcsait ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk a kulcsokat. Ha a rendszer nem tárolta valamelyik kulcsot, akkor rákérdezünk, és tároljuk későbbi használatra. Ha az API később elutasítja a kulcsot, akkor érvénytelenítjük a tárolt kulcsot, ezért a következő keresésnél újra rá kell kérdeznünk a felhasználónál.
 
-Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```javascript
 // cookie names for data we store
@@ -380,9 +380,9 @@ function handleBingResponse() {
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Fázis|Lehetséges hiba vagy hibák|Kezelő|
+|Szakasz|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
-|JavaScript-kérésobjektum létrehozása|Érvénytelen URL|`try`/`catch` blokk|
+|JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
 |Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
 |Keresés végrehajtása|Érvénytelen kérés, érvénytelen JSON, sebességkorlátok|tesztek a `load` eseménykezelőben|
 
@@ -451,7 +451,7 @@ A leképező függvények a következő paramétereket fogadhatják el:
 
 Az `index` és `count` paraméterek használhatók a találatok megszámozására, egy gyűjtemény elején vagy végén egy speciális HTML létrehozására, egy bizonyos számú elem utáni sortörés beszúrására és így tovább. Ha egy leképezőnek nincs szüksége erre a funkcióra, akkor nem kell elfogadnia ezt a két paramétert. Ami azt illeti, az oktatóanyag alkalmazásában nem is használjuk őket a leképezőknél.
 
-Nézzük meg közelebbről a `entities` leképezőt:
+Vizsgáljuk meg alaposabban az `entities` renderelőt:
 
 ```javascript
     entities: function(item) {
@@ -506,7 +506,7 @@ Az entitásleképező függvény:
 
 > [!div class="checklist"]
 > * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez, ha van. 
-> * Létrehozza az `<a>` HTML-címkét, amely a képet tartalmazó oldalra hivatkozik.
+> * Létrehozza a képet tartalmazó oldalra hivatkozó `<a>` HTML -címkét.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 > * Magában foglalja az entitás besorolását a megjelenített tippekkel, ha vannak.
 > * Tartalmaz egy Bing-keresésre mutató hivatkozást, ahol további információt talál az entitásról.
@@ -543,7 +543,7 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Entity Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

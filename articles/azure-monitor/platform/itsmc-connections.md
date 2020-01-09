@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: d800f20826723d3a626d9a0f5f83664927c1185c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4dbc830ea106dee7ef21a28eb3aee63c94680be2
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927596"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664854"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek és-szolgáltatások összekötése IT-szolgáltatásmenedzsmenti csatoló
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](../../azure-monitor/platform/itsmc-overview.md).
@@ -160,7 +160,7 @@ A következő eljárással konfigurálhatja a figyelő telepítőjét a hibrid k
 
 3. Jelentkezzen be az Azure-beli hitelesítő adataival, és válassza ki az előfizetését, ahol a hibrid kapcsolatok létrejöttek.
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 A hibrid kapcsolat sikeresen csatlakoztatva van.
 
@@ -180,7 +180,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 ### <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 - A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- ServiceNow támogatott verziók: Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
+- ServiceNow támogatott verziók: New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
 
 A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-példányban**:
 - Ügyfél-azonosító és ügyfél-titkos kód előállítása a ServiceNow termékhez. Az ügyfél-azonosító és a titkos kulcs létrehozásával kapcsolatos információkért tekintse meg a szükséges információkat a következő információk alapján:

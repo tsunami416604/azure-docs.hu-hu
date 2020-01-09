@@ -2,18 +2,18 @@
 title: Apache Hadoop-fürtök létrehozása az Azure REST API használatával – Azure
 description: Megtudhatja, hogyan hozhat létre HDInsight-fürtöket Azure Resource Manager-sablonok Azure-REST API való elküldésével.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435525"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop-fürtök létrehozása az Azure REST API használatával
 
@@ -227,7 +227,7 @@ Kövesse az [Azure CLI használatának első](https://docs.microsoft.com/cli/azu
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    A listából válassza ki a használni kívánt előfizetést, és jegyezze fel a **Subscription_ID** és a __Tenant_ID__ oszlopokat. Mentse ezeket az értékeket.
+    A listából válassza ki a használni kívánt előfizetést, és jegyezze fel a **Subscription_ID** és __Tenant_ID__ oszlopokat. Mentse ezeket az értékeket.
 
 2. A következő parancs használatával hozzon létre egy alkalmazást a Azure Active Directory.
 
@@ -274,7 +274,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 Ha ez a kérelem sikeres, egy 200 sorozatú választ kap, és a válasz törzse JSON-dokumentumot tartalmaz.
 
-A kérelem által visszaadott JSON-dokumentum egy **access_token**nevű elemet tartalmaz. A **access_token** értéke a REST API felé irányuló kérelmek hitelesítésére szolgál.
+A kérelem által visszaadott JSON-dokumentum egy **access_token**nevű elemet tartalmaz. **Access_token** értékét a rendszer a REST API felé irányuló kérelmek hitelesítésére használja.
 
 ```json
 {
@@ -343,7 +343,7 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely a telepítési műveletre vo
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -352,7 +352,6 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő paranccs
 ### <a name="apache-hadoop-clusters"></a>Fürtök Apache Hadoop
 
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
-* [Az Apache Pig és a HDInsight használata](hadoop/hdinsight-use-pig.md)
 * [A MapReduce használata a HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase-fürtök

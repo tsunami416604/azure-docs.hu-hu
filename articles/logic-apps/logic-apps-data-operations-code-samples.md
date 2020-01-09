@@ -1,17 +1,17 @@
 ---
-title: Adatműveleti minták
-description: Példák a Azure Logic Apps adatműveleti műveleteinek kódjára
+title: Az adatműveletek használatára szolgáló kód mintái
+description: Próbálja ki ezeket a kódrészleteket, amelyek bemutatják, hogyan használhatók az adatműveletek az Azure Logic Apps használatával létrehozott automatizált munkafolyamatokban.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428691"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Adatműveleti kód mintái Azure Logic Apps
 
@@ -263,7 +263,7 @@ Az [ **illesztési** művelet példájának](../logic-apps/logic-apps-perform-da
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>JSON-elemzés
+## <a name="parse-json"></a>JSON értelmezése
 
 A [ **JSON elemzési** művelet példájának](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)kipróbálásához a következő művelet-definíciók használhatók:
 

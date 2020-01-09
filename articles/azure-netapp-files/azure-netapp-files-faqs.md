@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 630535103656e13ca43d958ef2a4124a4ea940ac
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546942"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658287"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -131,7 +131,7 @@ Igen, az SMB-kötetek telepítése előtt létre kell hoznia Active Directory-ka
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Hány Active Directory-kapcsolat támogatott?
 
-A Azure NetApp Files jelenleg egy Active Directory-kapcsolatban támogatja az előfizetések számát. Emellett az Active Directory-kapcsolatok egyetlen NetApp-fiókra is jellemzőek; a fiókok között nincs megosztva. 
+A Azure NetApp Files jelenleg csak egy Active Directory-kapcsolatokat támogat a NetApp-fiókok,-előfizetések és az egyes régiók esetében. a rendszer nem osztja meg a kapcsolatokat a NetApp-fiókok között.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files támogatja Azure Active Directory? 
 

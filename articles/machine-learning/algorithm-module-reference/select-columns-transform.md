@@ -1,7 +1,7 @@
 ---
 title: 'Oszlopok átalakítása: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, Azure Machine Learning hogyan hozhat létre egy olyan átalakítást, amely az oszlopok azonos részhalmazát jelöli, mint a megadott adatkészletben.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhat létre olyan átalakítást, amely az oszlopok kijelölése átalakító modullal Azure Machine Learning egy olyan transzformációt, amely a megadott adatkészletben lévő oszlopok azonos részhalmazát választja.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428471"
 ---
-# <a name="select-columns-transform"></a>Oszlopok átalakításának kiválasztása
+# <a name="select-columns-transform"></a>Oszlopok kiválasztása átalakításhoz
 
 Ez a cikk azt ismerteti, hogyan használható az Oszlopok kiválasztása átalakító modul a Azure Machine Learning Designerben (előzetes verzió). Az Oszlopok kiválasztása átalakító modul célja annak biztosítása, hogy kiszámítható, konzisztens oszlopok legyenek használatban az alárendelt gépi tanulási műveletekben.
 
@@ -53,6 +53,6 @@ Ez a forgatókönyv feltételezi, hogy a szolgáltatás kiválasztásával kív�
 A Mentés és az oszlopok kijelölésének folyamata biztosítja, hogy ugyanaz az Adatséma elérhető legyen a képzéshez és a pontozáshoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

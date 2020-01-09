@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827142"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553069"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 
@@ -35,6 +35,7 @@ Vegye figyelembe a következő előfeltételeket:
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbázisát a Azure Portal használatával.
+
 
 1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza ki azt az önálló adatbázist, amelyet hozzá szeretne adni a feladatátvételi csoporthoz. 
@@ -183,6 +184,9 @@ A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
 
 ---
 
+> [!IMPORTANT]
+> Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat. 
+
 ## <a name="elastic-pool"></a>Rugalmas készlet
 Hozza létre a feladatátvételi csoportot, és adjon hozzá egy rugalmas készletet a Azure Portal vagy a PowerShell használatával.  
 
@@ -328,11 +332,14 @@ Feladatátvétel a másodlagos kiszolgálóra:
 
 ---
 
+> [!IMPORTANT]
+> Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat. 
+
 ## <a name="managed-instance"></a>Felügyelt példány
 
 Hozzon létre egy feladatátvételi csoportot két felügyelt példány között a Azure Portal vagy a PowerShell használatával. 
 
-Létre kell hoznia egy átjárót az egyes felügyelt példányok virtuális hálózatához, össze kell kapcsolnia a két átjárót, majd létre kell hoznia a feladatátvételi csoportot.
+Be kell állítania a [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) -t, vagy létre kell hoznia egy átjárót a felügyelt példányok virtuális hálózatához, össze kell kapcsolnia a két átjárót, majd létre kell hoznia a feladatátvételi csoportot. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Vegye figyelembe a következő előfeltételeket:
@@ -344,7 +351,7 @@ Vegye figyelembe a következő előfeltételeket:
 
 ### <a name="create-primary-virtual-network-gateway"></a>Elsődleges virtuális hálózati átjáró létrehozása 
 
-Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal vagy a PowerShell használatával. 
+Ha még nem konfigurálta a [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md), az elsődleges virtuális hálózati átjárót a Azure Portal vagy a PowerShell segítségével hozhatja létre. 
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
@@ -363,7 +370,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
 
    Az alábbi táblázat az elsődleges felügyelt példány átjárója számára szükséges értékeket tartalmazza:
  
-    | **Mező** | Érték |
+    | **Mező** | Value (Díj) |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Name (Név)** | A virtuális hálózati átjáró neve. | 
@@ -424,7 +431,7 @@ Az előző szakaszban leírt lépések megismétlésével hozza létre a virtuá
 
    A következő táblázat a másodlagos felügyelt példány átjárója számára szükséges értékeket tartalmazza:
 
-   | **Mező** | Érték |
+   | **Mező** | Value (Díj) |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
    | **Name (Név)** | A virtuális hálózati átjáró neve, például `secondary-mi-gateway`. | 
@@ -650,7 +657,7 @@ A figyelő végpontja `fog-name.database.windows.net`, és látható a Azure Por
 - Egyetlen vagy készletezett adatbázis feladatátvételi csoportjának eltávolítása nem állítja le a replikálást, és nem törli a replikált adatbázist. Manuálisan kell leállítania a Geo-replikálást, és törölnie kell az adatbázist a másodlagos kiszolgálóról, ha az eltávolítását követően egyetlen vagy készletezett adatbázist szeretne visszaadni egy feladatátvételi csoportnak. Ha a művelet végrehajtása sikertelen, akkor a `The operation cannot be performed due to multiple errors`hoz hasonló hibaüzenetet eredményezhet, amikor az adatbázist a feladatátvételi csoportba próbálja hozzáadni. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladatátvételi csoportok konfigurálásának részletes lépéseiért tekintse meg a következő oktatóanyagokat:
 - [Egyetlen adatbázis hozzáadása egy feladatátvételi csoporthoz](sql-database-single-database-failover-group-tutorial.md)

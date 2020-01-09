@@ -1,17 +1,17 @@
 ---
 title: Az Azure adatelemzési Virtual Machines
-description: Kapcsolódjon egy Azure-Data Science Virtual Machine (DSVM) a Azure Notebooks számára elérhető számítási teljesítmény kibővítéséhez.
+description: Megtudhatja, hogyan csatlakozhat egy Azure Data Science Virtual Machine (DSVM) szolgáltatáshoz, hogy kiterjessze a számítási teljesítményt Azure Notebooks előzetes verzióra.
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277404"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646994"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure adatelemzési Virtual Machines
 
@@ -20,11 +20,13 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 > [!Note]
 > A Azure Notebooks csak a Linux Ubuntu-lemezképpel létrehozott Dsvm támogatott. A jegyzetfüzetek Windows 2012, Windows 2016 vagy Linux CentOS rendszerű lemezképeken nem támogatottak.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="create-a-dsvm-instance"></a>DSVM-példány létrehozása
 
 Új DSVM-példány létrehozásához kövesse az [Ubuntu-Data Science VM létrehozása](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)című témakör utasításait. A díjszabással kapcsolatos további információkért lásd: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="connect-to-the-dsvm"></a>A dsvm-hez való csatlakozáshoz
+## <a name="connect-to-the-dsvm"></a>Kapcsolódás a DSVM
 
 Miután létrehozta a DSVM, válassza a **Futtatás** legördülő listát a Azure Notebooks projekt irányítópulton, és válassza ki a megfelelő DSVM-példányt. A legördülő lista DSVM-példányokat jelenít meg, ha a következő feltételek teljesülnek:
 
@@ -56,7 +58,7 @@ Amikor egy projekt egy virtuális gépen fut, a fájlok a Jupyter-kiszolgáló g
 
 Ha több felhasználó osztozik egy DSVM, elkerülheti egymás blokkolását úgy, hogy DSVM-felhasználót hoz létre és használ az egyes notebook-felhasználók számára:
 
-1. Az [Azure Portalon](https://portal.azure.com)navigáljon a virtuális géphez.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a virtuális géphez.
 1. A bal oldali margó **támogatás + hibaelhárítás** területén válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
 1. Adjon meg egy új felhasználónevet és jelszót, és válassza a **frissítés**lehetőséget. (A meglévő felhasználónevek nincsenek hatással.)
 1. Ismételje meg az előző lépést a további felhasználók számára.

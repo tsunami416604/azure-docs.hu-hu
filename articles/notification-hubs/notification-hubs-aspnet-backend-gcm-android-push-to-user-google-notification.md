@@ -1,5 +1,5 @@
 ---
-title: Értesítések küldése adott Android-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
+title: Értesítések küldése adott Android-alkalmazásokba az Azure Notification Hubs
 description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c5c9ec26c9387cd9ae129002697210c2b342ab9b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b68d77bfdcf3fee0285b3c03ae0c598a3f6875c0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385890"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531139"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítés az Android-alkalmazások adott felhasználói számára az Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
 
@@ -50,7 +50,7 @@ Ezen oktatóanyag elvégzése előtt végezze el az [Oktatóanyag: Leküldéses 
 
 A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre az Azure Notification Hubs és a Google Cloud Messaging használatával](notification-hubs-android-push-notification-google-gcm-get-started.md) elvégzése során létrehozott Android-alkalmazás frissítése.
 
-1. Nyissa meg `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
+1. Nyissa meg a `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
 
     Új EditText vezérlőket ad hozzá a felhasználóként való bejelentkezéshez. Egy felhasználónév-címke számára kijelölt mezőt is hozzáad, amely szerepelni fog az elküldött értesítésekben:
 
@@ -141,7 +141,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
     />  
     </RelativeLayout>
     ```
-2. Nyissa meg `res/values/strings.xml` fájlt, és cserélje le a `send_button` definíciót a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button` számára, és karakterláncokat adhat hozzá a többi vezérlőhöz:
+2. Nyissa meg `res/values/strings.xml` fájlt, és cserélje le a `send_button` definícióját a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button`hoz, és a többi vezérlő sztringjét adja hozzá:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -155,7 +155,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
     A `main_activity.xml` grafikus elrendezésnek most a következő képhez hasonlóan kell kinéznie:
 
     ![][A1]
-3. Hozzon létre egy `RegisterClient` nevű új osztályt ugyanabban a csomagban, mint a `MainActivity` osztály. Használja az alábbi kódot az új osztályfájlhoz.
+3. Hozzon létre egy új, `RegisterClient` nevű osztályt a `MainActivity` osztálysal megegyező csomagban. Használja az alábbi kódot az új osztályfájlhoz.
 
     ```java
     import java.io.IOException;
@@ -406,7 +406,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
     }
     ```
 
-    A **bejelentkezési** gomb `login` kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelképezi), majd a `RegisterClient` használatával hívja meg a háttér-használatot a regisztrációhoz.
+    A **bejelentkezési** gomb `login` kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti felhasználónévvel és jelszóval (ez a hitelesítési séma által használt bármely tokent jelképezi), majd a `RegisterClient` használatával hívja meg a háttérbeli regisztrációt.
 
     A `sendPush` metódus a háttérrendszer meghívásával aktiválja egy biztonságos értesítés küldését a felhasználónak a felhasználói címke alapján. A `sendPush` által megcélzott platformértesítési szolgáltatás az átadott `pns` sztringtől függ.
 

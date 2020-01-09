@@ -2,17 +2,17 @@
 title: Mi az az Azure Private link Service?
 description: Ismerje meg az Azure Private link Service-t.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912983"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647373"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -68,7 +68,7 @@ A Private link Service a következő tulajdonságokat adja meg:
  
 - Az egyetlen privát kapcsolati szolgáltatás több, különböző virtuális hálózatok, előfizetéshez és/vagy Active Directory bérlőhöz tartozó privát végpontból is elérhető. A kapcsolatok egy kapcsolatok munkafolyamatán keresztül lettek létrehozva. 
  
-- Több magánhálózati kapcsolati szolgáltatás is létrehozható ugyanazon a standard Load Balancer különböző előtéri IP-konfigurációk használatával. A standard Load Balancer és előfizetések által létrehozott privát kapcsolati szolgáltatások száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Több magánhálózati kapcsolati szolgáltatás is létrehozható ugyanazon a standard Load Balancer különböző előtéri IP-konfigurációk használatával. A standard Load Balancer és előfizetések által létrehozott privát kapcsolati szolgáltatások száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
  
 - A Private link Service több NAT IP-konfigurációval is rendelkezhet. Ha egynél több NAT IP-konfigurációt választ ki, akkor a szolgáltatók méretezhetők. Jelenleg a szolgáltatók legfeljebb nyolc NAT IP-címet rendelhetnek hozzá privát kapcsolati szolgáltatásként. Az egyes NAT IP-címekkel több portot is hozzárendelhet a TCP-kapcsolatokhoz, így kibővítheti azokat. Miután több NAT IP-címet adott hozzá egy privát kapcsolati szolgáltatáshoz, nem törölheti a NAT IP-címeit. Ez azért szükséges, hogy az aktív kapcsolatok ne legyenek hatással a NAT IP-címeinek törlésekor.
 

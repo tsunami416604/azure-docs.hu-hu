@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425323"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -54,7 +54,7 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például **e-m
   * Kiemelt jogosultságú hitelesítés rendszergazdája
 
 * Ha 30 nap telt el egy próbaverziós előfizetésben; vagy
-* Egy hiúság tartomány van jelen, például contoso.com; vagy
+* Egyéni tartomány lett konfigurálva az Azure AD-bérlőhöz, például *contoso.com*; vagy
 * Azure AD Connect az identitások szinkronizálása a helyszíni címtárból
 
 ### <a name="exceptions"></a>Kivételek
@@ -62,7 +62,7 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például **e-m
 Az egy-kapus szabályzathoz egy hitelesítő adat szükséges, például egy e-mail-cím *vagy* telefonszám. Az egykapus szabályzat a következő esetekben érvényes:
 
 * A próbaverziós előfizetés első 30 napján belül van; vagy
-* Nincs jelen A hiúság tartománya (*. onmicrosoft.com); és
+* Nincs beállítva egyéni tartomány az Azure AD-bérlőhöz, ezért az alapértelmezett * *. onmicrosoft.com*használja. Vegye figyelembe, hogy az alapértelmezett * *. onmicrosoft.com* tartomány nem ajánlott éles használatra; és
 * Az Azure AD Connect nem szinkronizálja az identitásokat
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Az összes felhasználói fiókra érvényes UserPrincipalName szabályzatok

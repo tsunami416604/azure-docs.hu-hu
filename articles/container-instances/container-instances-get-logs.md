@@ -1,25 +1,25 @@
 ---
 title: Tároló-példányok naplóinak beolvasása & események
-description: Megtudhatja, hogyan végezhet hibakeresést a tároló naplóival és eseményeivel Azure Container Instances
+description: Megtudhatja, hogyan kérhet le Azure Container Instances tároló naplóit és eseményeit a tárolókkal kapcsolatos problémák elhárítása érdekében
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: 57d35b9423fd8c64e5a58ee4d8055aa3b238ba8c
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481742"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664733"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Tároló-naplók és-események beolvasása Azure Container Instances
 
-Ha nem megfelelő tárolót használ, először tekintse meg a naplókat az [az Container logs][az-container-logs]paranccsal, és a standard kimenő és standard hibáját az [az Container Attach][az-container-attach]paranccsal.
+Ha a tároló nem működik a Azure Container Instancesban, először tekintse meg a naplókat az [az Container logs][az-container-logs]paranccsal, és továbbítsa a standard out és a standard szintű hibát az [az Container Attach][az-container-attach]paranccsal. Megtekintheti a Azure Portal tároló példányainak naplóit és eseményeit, vagy a naplók napló-és esemény-adatfájljait is elküldheti [Azure monitor naplóiba](container-instances-log-analytics.md).
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
 Ha az alkalmazás kódjában lévő naplókat szeretné megtekinteni egy tárolóban, használhatja az az [Container logs][az-container-logs] parancsot.
 
-A következő lépés a példaként szolgáló feladaton alapuló tároló kimenete, amely az [ACI-ban futtatott tároló feladat futtatása](container-instances-restart-policy.md)után a feldolgozáshoz érvénytelen URL-címet adott meg:
+Az alábbiakban a példa feladathoz tartozó tároló kimenete látható, amely a [parancssort egy tároló példányban állítja be](container-instances-start-command.md#azure-cli-example), miután érvénytelen URL-címet adott meg a parancssori felülbírálás használatával:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -47,7 +47,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 Az az [Container Attach][az-container-attach] parancs diagnosztikai adatokat biztosít a tároló indításakor. A tároló megkezdése után az STDOUT és a STDERR a helyi konzolra kerül.
 
-Itt látható például a feladat-alapú tároló kimenete a [tárolóban lévő sablon futtatásakor az ACI-ban](container-instances-restart-policy.md), miután a nagy szövegfájl érvényes URL-címét adta meg a feldolgozáshoz:
+Például itt látható a feladat-alapú tárolóban a [parancssor beállítása egy tároló-példányban](container-instances-start-command.md#azure-cli-example), miután a nagy szövegfájl érvényes URL-címét adta meg a feldolgozáshoz:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -76,7 +76,7 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>Diagnosztikai események beolvasása
 
-Ha a tároló telepítése sikertelen, akkor át kell tekintenie a Azure Container Instances erőforrás-szolgáltató által megadott diagnosztikai adatokat. A tároló eseményeinek megtekintéséhez futtassa az [az Container show] [az-Container-show] parancsot:
+Ha a tároló telepítése nem sikerül, tekintse át a Azure Container Instances erőforrás-szolgáltató által biztosított diagnosztikai adatokat. A tároló eseményeinek megtekintéséhez futtassa az az [Container show][az-container-show] parancsot:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -142,9 +142,12 @@ A kimenet tartalmazza a tároló alapvető tulajdonságait, valamint az üzembe 
   ...
 }
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogy miként lehet [elhárítani a Azure Container instances gyakori tároló-és üzembe helyezési problémáit](container-instances-troubleshooting.md) .
+
+Megtudhatja, hogyan küldhet napló-és eseményvezérelt információkat a tárolók csoportjai számára a [naplók Azure monitor](container-instances-log-analytics.md).
 
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach
 [az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show

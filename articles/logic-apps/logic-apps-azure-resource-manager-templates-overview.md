@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428805"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
-Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager sablonba](../azure-resource-manager/resource-group-overview.md). Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez. Ha a központi telepítésben (más néven *parameterizing*) eltérő értékekre vonatkozó paramétereket határoz meg, akkor a különböző telepítési igények alapján ismételten és következetesen telepítheti a Logic apps-alkalmazásokat.
+Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager sablonba](../azure-resource-manager/management/overview.md). Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez. Ha a központi telepítésben (más néven *parameterizing*) eltérő értékekre vonatkozó paramétereket határoz meg, akkor a különböző telepítési igények alapján ismételten és következetesen telepítheti a Logic apps-alkalmazásokat.
 
-Ha például fejlesztési, tesztelési és éles környezetekben végez üzembe helyezést, akkor az egyes környezetekhez valószínűleg különböző kapcsolódási karakterláncokat fog használni. Deklarálhatja a sablon azon paramétereit, amelyek különböző kapcsolatok karakterláncokat fogadnak el, majd egy külön [paraméter-fájlban](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)tárolják ezeket a karakterláncokat. Így módosíthatja ezeket az értékeket a sablon frissítése és újbóli üzembe helyezése nélkül. Olyan esetekben, ahol olyan paraméterek vannak, amelyek érzékenyek, vagy amelyeket biztosítani kell, például a jelszavakat és a titkos kulcsokat, ezeket az értékeket [Azure Key Vaultban](../azure-resource-manager/resource-manager-keyvault-parameter.md) tárolhatja, és a paramétereket tartalmazó fájllal is lekérheti ezeket az értékeket. Ezekben az esetekben azonban az aktuális értékek beolvasásához újra üzembe kell helyezni.
+Ha például fejlesztési, tesztelési és éles környezetekben végez üzembe helyezést, akkor az egyes környezetekhez valószínűleg különböző kapcsolódási karakterláncokat fog használni. Deklarálhatja a sablon azon paramétereit, amelyek különböző kapcsolatok karakterláncokat fogadnak el, majd egy külön [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md)tárolják ezeket a karakterláncokat. Így módosíthatja ezeket az értékeket a sablon frissítése és újbóli üzembe helyezése nélkül. Olyan esetekben, ahol olyan paraméterek vannak, amelyek érzékenyek, vagy amelyeket biztosítani kell, például a jelszavakat és a titkos kulcsokat, ezeket az értékeket [Azure Key Vaultban](../azure-resource-manager/resource-manager-keyvault-parameter.md) tárolhatja, és a paramétereket tartalmazó fájllal is lekérheti ezeket az értékeket. Ezekben az esetekben azonban az aktuális értékek beolvasásához újra üzembe kell helyezni.
 
 Ez az Áttekintés egy Resource Manager-sablon azon attribútumait ismerteti, amelyek tartalmazzák a logikai alkalmazás munkafolyamatának definícióját. A sablon és a munkafolyamat-definíció JSON-szintaxist használ, de néhány eltérés létezik, mert a munkafolyamat-definíció a [munkafolyamat-definíció nyelvi sémáját](../logic-apps/logic-apps-workflow-definition-language.md)is követi. Például a sablonok kifejezései és a munkafolyamat-definíciós kifejezések különböznek a paraméterek és az általuk elfogadható értékek [függvényében](#parameter-references) .
 
@@ -30,7 +30,7 @@ A jelen témakörben szereplő logikai alkalmazás egy [Office 365 Outlook-esem�
 
 A Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
 * [Ajánlott eljárások az Azure Resource Manager-sablonokhoz](../azure-resource-manager/template-best-practices.md)
 * [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates-cloud-consistency.md)
 
@@ -45,7 +45,7 @@ A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fi�
 
 ## <a name="template-structure"></a>Sablonszerkezet
 
-A legfelső szinten egy Resource Manager-sablon követi ezt a struktúrát, amely teljes mértékben a [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md) című témakörben olvasható:
+A legfelső szinten egy Resource Manager-sablon követi ezt a struktúrát, amely teljes mértékben a [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md) című témakörben olvasható:
 
 ```json
 {
@@ -63,8 +63,8 @@ A Logic app-sablonok esetében elsősorban a következő sablon-objektumok haszn
 
 | Attribútum | Leírás |
 |-----------|-------------|
-| `parameters` | A [sablon paramétereit](../azure-resource-manager/resource-group-authoring-templates.md#parameters) deklarálja az Azure-ban üzembe helyezett erőforrások létrehozásakor és testreszabásakor használandó értékek elfogadásához. Ezek a paraméterek például elfogadják a logikai alkalmazás nevének és helyének, kapcsolatainak és az üzembe helyezéshez szükséges egyéb erőforrásoknak az értékeit. Ezeket a [paramétereket egy paraméter-fájlban](#template-parameter-files)tárolhatja, amelyet a témakör későbbi részében talál. Az általános részleteket lásd: [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md#parameters). |
-| `resources` | Meghatározza az Azure-erőforráscsoport létrehozásához vagy frissítéséhez és üzembe helyezéséhez szükséges [erőforrásokat](../azure-resource-manager/resource-group-authoring-templates.md#resources) , például a logikai alkalmazást, a kapcsolatokat, az Azure Storage-fiókokat stb. Az általános részleteket lásd: [erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md#resources). |
+| `parameters` | A [sablon paramétereit](../azure-resource-manager/templates/template-syntax.md#parameters) deklarálja az Azure-ban üzembe helyezett erőforrások létrehozásakor és testreszabásakor használandó értékek elfogadásához. Ezek a paraméterek például elfogadják a logikai alkalmazás nevének és helyének, kapcsolatainak és az üzembe helyezéshez szükséges egyéb erőforrásoknak az értékeit. Ezeket a [paramétereket egy paraméter-fájlban](#template-parameter-files)tárolhatja, amelyet a témakör későbbi részében talál. Az általános részleteket lásd: [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#parameters). |
+| `resources` | Meghatározza az Azure-erőforráscsoport létrehozásához vagy frissítéséhez és üzembe helyezéséhez szükséges [erőforrásokat](../azure-resource-manager/templates/template-syntax.md#resources) , például a logikai alkalmazást, a kapcsolatokat, az Azure Storage-fiókokat stb. Az általános részleteket lásd: [erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#resources). |
 ||||
 
 A logikai alkalmazás sablonja a következő formátumnév-formátumot használja:
@@ -78,7 +78,7 @@ A logikai alkalmazás sablonja a következő formátumnév-formátumot használj
 
 ## <a name="template-parameters"></a>Sablon paraméterei
 
-A logikai alkalmazások sablonja több `parameters` objektummal rendelkezik, amelyek különböző szinteken léteznek, és különböző funkciókat hajtanak végre. Például a legfelső szinten deklarálhatja a [sablon paramétereit](../azure-resource-manager/resource-group-authoring-templates.md#parameters) , amelyeket az Azure-beli erőforrások létrehozásakor és üzembe helyezéskor a telepítéskor elfogad és használhat, például:
+A logikai alkalmazások sablonja több `parameters` objektummal rendelkezik, amelyek különböző szinteken léteznek, és különböző funkciókat hajtanak végre. Például a legfelső szinten deklarálhatja a [sablon paramétereit](../azure-resource-manager/templates/template-syntax.md#parameters) , amelyeket az Azure-beli erőforrások létrehozásakor és üzembe helyezéskor a telepítéskor elfogad és használhat, például:
 
 * A logikai alkalmazás
 * Kapcsolatok, amelyeket a logikája a [felügyelt összekötők](../connectors/apis-list.md) használatával más szolgáltatásokhoz és rendszerekhez való hozzáféréshez használ
@@ -86,7 +86,7 @@ A logikai alkalmazások sablonja több `parameters` objektummal rendelkezik, ame
 
   Ha például a logikai alkalmazás egy [integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) használ a vállalatközi (B2B) forgatókönyvekhez, a sablon legfelső szintű `parameters` objektuma deklarálja azt a paramétert, amely elfogadja az adott integrációs fiók erőforrás-azonosítóját.
 
-Itt látható egy paraméter definíciójának általános szerkezete és szintaxisa, amelyet a [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md#parameters)teljes egészében ismertet:
+Itt látható egy paraméter definíciójának általános szerkezete és szintaxisa, amelyet a [Paraméterek – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#parameters)teljes egészében ismertet:
 
 ```json
 "<parameter-name>": {
@@ -147,7 +147,7 @@ A bizalmas vagy védeni kívánt értékeket (például felhasználóneveket, je
 
 A sablon paramétereinek biztonságossá tételéhez tekintse meg a következő témaköröket:
 
-* [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/template-best-practices.md#parameters)
+* [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Biztonságos sablon paraméterei](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
@@ -169,7 +169,7 @@ Ha a paraméterekre hivatkozik, a sablon kifejezései és a függvények eltér�
 
 * Adja meg a `defaultValue` attribútumot, amely üres értékeket adhat meg az összes paraméterhez, kivéve a bizalmas vagy a védeni kívánt értékeket. Mindig használjon biztonságos paramétereket a felhasználónevek, jelszavak és titkos kódok számára. A bizalmas paraméterek értékeinek elrejtéséhez vagy kivédéséhez kövesse az alábbi témakörökben található útmutatást:
 
-  * [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/template-best-practices.md#parameters)
+  * [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
   * [Biztonságos sablon paraméterei](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -177,13 +177,13 @@ Ha a paraméterekre hivatkozik, a sablon kifejezései és a függvények eltér�
 
 * A sablon-paraméterek neveinek a munkafolyamat-definíciós paraméterek neveiből való megkülönböztetéséhez használhatja a leíró sablon paraméterének nevét, például: `TemplateFabrikamPassword`
 
-További sablon ajánlott eljárásai: [ajánlott eljárások a sablon paramétereinek](../azure-resource-manager/template-best-practices.md#parameters)megtekintéséhez.
+További sablon ajánlott eljárásai: [ajánlott eljárások a sablon paramétereinek](../azure-resource-manager/templates/template-best-practices.md#parameters)megtekintéséhez.
 
 <a name="template-parameter-files"></a>
 
 ## <a name="template-parameters-file"></a>Sablon paramétereinek fájlja
 
-A sablon paramétereinek értékeinek megadásához tárolja ezeket az értékeket egy [paraméter-fájlban](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Így a telepítési igények alapján különböző paraméterekkel rendelkező fájlokat használhat. Itt látható a használni kívánt Fájlnév formátuma:
+A sablon paramétereinek értékeinek megadásához tárolja ezeket az értékeket egy [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md). Így a telepítési igények alapján különböző paraméterekkel rendelkező fájlokat használhat. Itt látható a használni kívánt Fájlnév formátuma:
 
 * Logic app-sablon fájlneve: **<*Logic-app-Name*>. JSON**
 * Parameters Fájlnév: **<*Logic-app-Name*>. Parameters. JSON**
@@ -267,8 +267,8 @@ A sablon egy `resources` objektummal rendelkezik, amely egy olyan tömb, amely a
 
 A sablonok erőforrásaival és attribútumaival kapcsolatos általános információkért tekintse meg a következő témaköröket:
 
-* [Erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md#resources)
-* [Ajánlott eljárások a sablonok erőforrásaihoz](../azure-resource-manager/template-best-practices.md#resources)
+* [Erőforrások – Resource Manager-sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Ajánlott eljárások a sablonok erőforrásaihoz](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 

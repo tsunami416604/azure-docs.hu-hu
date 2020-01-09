@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442840"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
@@ -28,7 +28,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 [Bejelentkezés a portálra](https://portal.azure.com)
 
 
-## <a name="create-a-server"></a>A kiszolgáló létrehozása
+## <a name="create-a-server"></a>Kiszolgáló létrehozása
 
 1. Kattintson **az + erőforrás létrehozása** > **Analytics** > **Analysis Services**elemre.
 
@@ -38,7 +38,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
    
    * **Kiszolgáló neve**: Írjon be egy egyedi nevet a kiszolgálóra való hivatkozáshoz. A kiszolgálónévnek kisbetűs karakterrel kell kezdődnie, és 3 – 128 kisbetűs karaktert és számot kell tartalmaznia. Szóközök és speciális karakterek használata nem engedélyezett.
    * **Előfizetés**: Válassza ki a kiszolgálóhoz társítani kívánt előfizetést.
-   * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. Az erőforráscsoportok segítségével Azure-erőforrások gyűjteményét kezelheti. További információ: [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
+   * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. Az erőforráscsoportok segítségével Azure-erőforrások gyűjteményét kezelheti. További információ: [erőforráscsoportok](../azure-resource-manager/management/overview.md).
    * **Hely**: Ez az Azure-adatközpont üzemelteti a kiszolgálót. A legnagyobb felhasználói bázisához legközelebb eső helyet válassza ki.
    * **Tarifacsomag**: Válasszon egy tarifacsomagot. Ha Ön éppen tesztel, és ezért a mintamodell-adatbázist kívánja telepíteni, válassza ki az ingyenes **D1** szintet. További tudnivalókat az [Azure Analysis Services díjszabását](https://azure.microsoft.com/pricing/details/analysis-services/) ismertető témakörben talál. 
    * **Rendszergazda**: Alapértelmezés szerint ezzel a fiókkal fog bejelentkezni. Másik fiókot az Azure Active Directoryból választhat.

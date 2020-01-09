@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795833"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531479"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -22,12 +22,12 @@ A Cognitive Services gépi tanulási képességeket biztosít olyan általános 
 
 [Cognitive Services](welcome.md) a szolgáltatások egy csoportja, amelyek mindegyike különböző, általánosított előrejelző képességeket támogat. A szolgáltatások különböző kategóriákba vannak osztva, így könnyebben megtalálhatja a megfelelő szolgáltatást. 
 
-|Szolgáltatáskategória|Cél|
+|Szolgáltatáskategória|Rendeltetés|
 |--|--|
-|[Döntési](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.|
+|[Döntési](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Megalapozott és hatékony döntéshozatalhoz használható ajánlatokat felkínáló alkalmazásokat hozhat létre.|
 |[Nyelv](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Engedélyezheti alkalmazásai számára a természetes nyelv előre beépített szkriptekkel történő feldolgozását, kiértékelheti a hangulatot, valamint megtudhatja, hogyan ismerheti fel, hogy mit szeretnének a felhasználók.|
 |[Keresés](https://azure.microsoft.com/services/cognitive-services/directory/search/)|A Bing Search API-jait az alkalmazásaihoz adva több milliárd weboldalt, képet, videót és hírt fésülhet át egyetlen API-hívással.|
-|[Beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|A beszédet szöveggé, a szöveget pedig természetesen hangzó beszéddé alakíthatja. Egyik nyelvtől a másikra fordíthat, valamint engedélyezheti a beszélő ellenőrzését és felismerését.|
+|[Beszédfelismerés](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Beszédet szöveggé, szöveget pedig természetes hangzású beszéddé konvertálhat. A szöveget egy nyelvről egy másikra fordíthatja, és engedélyezheti a beszélő felismerését és azonosítását.|
 |[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Felismerheti, azonosíthatja, feliratozhatja, indexelheti és moderálhatja képeit, videóit és digitális szabadkézi tartalmait.|
 ||||
 
@@ -92,7 +92,7 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |Kognitív szolgáltatás|Nincs szükség betanítási adatgyűjtésre|Megadhat egy vagy több betanítási adatkészletet|Valós idejű vagy közel valós idejű adatgyűjtés|
 |--|--|--|--|
 |[Anomália detektor](./Anomaly-Detector/overview.md)|x|x|x|
-|Bing kereső |x|||
+|Bing Search |x|||
 |[Computer Vision](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
@@ -131,12 +131,12 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információk
 
 * [Architektúra-útmutató – Mik a gépi tanulási termékek a Microsoftnál?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [Gépi tanulás – a Deep learning és a Machine learning bemutatása](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
+* [Gépi tanulás – a Deep learning és a Machine learning bemutatása](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozzon létre egy kognitív szolgáltatási fiókot a [Azure Portal](cognitive-services-apis-create-account.md) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)-vel.
 * Ismerje meg, hogyan végezhet [hitelesítést](authentication.md) egy kognitív szolgáltatásban.

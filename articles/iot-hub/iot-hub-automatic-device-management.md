@@ -1,45 +1,47 @@
 ---
-title: Az automatikus kezelés ipari méretekben az Azure IoT Hub |} A Microsoft Docs
-description: Automatikus Azure IoT Hub-Eszközfelügyelet használatával a konfiguráció több IoT-eszközök hozzárendelése
+title: Automatikus eszközkezelés az Azure IoT Hub-vel | Microsoft Docs
+description: Az Azure IoT Hub automatikus konfigurációinak használata több IoT-eszköz és-modul felügyeletéhez
 author: ChrisGMsft
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429349"
 ---
-# <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatikus az Azure portal használatával nagy mennyiségű IoT-Eszközfelügyelet
+# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Az eszköz-és IoT automatikus kezelése a Azure Portal használatával
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Az Azure IoT Hub automatikus kezelés automatizálja ismétlődő és összetett feladatok nagy eszköz flották kezelésével. Automatikus felügyeleti (MDM) cél az eszközök a hozzájuk tartozó tulajdonságok alapján, a kívánt konfiguráció definiálása, és ezután lehetővé az IoT Hub az eszközök frissíteni, ha a hatókör lépnek. Ez a frissítés történik használatával egy _automatikus eszközkonfiguráció_, amellyel összegzés befejezését és a megfelelőség, a leíró egyesítése és a ütközések, és megkezdik a konfigurációk a fázisos megközelítést.
+Az Azure-IoT Hub automatikus eszközkezelés számos olyan ismétlődő és összetett feladatot automatizál, amely nagy méretű eszköz-flották felügyeletét végzi. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, majd hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek. Ezt a frissítést _automatikus eszköz-konfigurációval_ vagy _automatikus modul-konfigurációval_végezheti el, így összefoglalhatja a befejezést és a megfelelőséget, kezelheti az egyesítést és az ütközéseket, valamint a konfigurációkat egy szakaszos megközelítésben.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Automatikus felügyeleti funkcióit ikereszközök készletét frissítése a kívánt tulajdonságokkal és ikereszköz alapján összefoglaló jelentés által jelentett tulajdonságokként.  Azt mutatja be egy új osztályt és nevű JSON-dokumentumok egy *konfigurációs* , amely három részből áll:
+Az automatikus eszközkezelés úgy működik, hogy az ikrek vagy a modul-modulok egy készletét frissíti a kívánt tulajdonságokkal, és összefoglalja a két jelentett tulajdonságon alapuló összegzést.  Új osztályt és JSON-dokumentumot vezet be, *amelynek neve* három részből áll:
 
-* A **feltétel cél** ikereszközök frissítendő hatókörének meghatározása. A célfeltétel device twin címkékre lekérdezésként van megadva és/vagy jelentett tulajdonságokként.
+* A **célként megadott feltétel** az ikrek vagy a modul-modulok frissítésének hatókörét határozza meg. A célként megadott feltétel két címkén és/vagy jelentett tulajdonságon alapuló lekérdezésként van megadva.
 
-* A **tartalmat** hozzáadva vagy frissítve a célzott eszközök ikerállapotának a kívánt tulajdonságok meghatározása. A tartalom elérési útját a módosítani kívánt tulajdonságok szakasza tartalmaz.
+* A **célként megadott tartalom** határozza meg a kívánt tulajdonságokat, amelyeket hozzá kell adni, vagy frissíteni kell a megcélzott eszköz ikrek vagy moduljában. A tartalom a módosítani kívánt tulajdonságok szakaszának elérési útját tartalmazza.
 
-* A **metrikák** határozza meg, például konfigurációs állapotait összesítő számát **sikeres**, **folyamatban lévő**, és **hiba**. Egyéni metrikák megadott eszközön lekérdezések ikereszköz jelentett tulajdonságait.  Rendszermérőszámokat olyan alapértelmezett mérőszámokat, amelyek az ikereszköz állapotát, például az ikereszközök szánt számát és a twins, amelyek sikeresen frissítve lett-e számát mérjük.
+* A **metrikák** határozzák meg a különböző konfigurációs állapotok, például a **sikeres**, **folyamatban lévő**és **hiba**összegzésének számát. Egyéni metrikák vannak megadva lekérdezésként a Twin jelentett tulajdonságainál.  A rendszermetrikák az alapértelmezett mérőszámok, amelyek a kettős frissítési állapotot mérik, például a megcélozott ikrek számát és a sikeresen frissített ikrek számát.
 
-Automatikus eszközkonfigurációkat futtassa először jön létre a konfigurációt követően rövid időn belül, majd öt perces időközönként. Metrikák lekérdezések futtatása minden egyes futásakor az automatikus eszköz konfigurálása.
+Az automatikus konfigurációk az első alkalommal futnak a konfiguráció létrehozása után, majd öt percenként. A metrikák lekérdezései minden alkalommal futnak, amikor az automatikus konfiguráció fut.
 
-## <a name="implement-device-twins-to-configure-devices"></a>Eszközök konfigurálása ikereszközök megvalósítása
+## <a name="implement-twins"></a>Az ikrek megvalósítása
 
-Automatikus eszközkonfigurációkat állapota a felhő és az eszközök közötti szinkronizálását ikereszközök használata szükséges.  Tekintse meg [ikereszközök megismerése és használata az IoT Hub](iot-hub-devguide-device-twins.md) útmutató ikereszközök használatával.
+Az eszközök automatikus konfigurálásához az eszközökön az ikrek szinkronizálása szükséges a felhő és az eszközök között.  További információ: [Eszközök ikerállapotának megismerése és használata az IoT hubon](iot-hub-devguide-device-twins.md).
 
-## <a name="identify-devices-using-tags"></a>Címkék használatával eszközök azonosítása
+Az automatikus modul-konfigurációkhoz az ikrek modul használatával kell szinkronizálni a felhő és a modulok közötti állapotot. További információ: az [ikrek megismerése és használata IoT Hubban](iot-hub-devguide-module-twins.md).
 
-Mielőtt létrehozna egy konfigurációt, mely eszközöket szeretné befolyásolni meg kell adnia. Az Azure IoT Hub eszköz az ikereszköz címkék használatával azonosítja. Minden eszköz rendelkezhet több címkét, és meghatározhatja azokat bármilyen módon, amely logikus a megoldáshoz. Például különböző helyeken lévő eszközök kezeléséhez, ha a következő címke hozzáadása az ikereszközök:
+## <a name="use-tags-to-target-twins"></a>Címkék használata az ikrek célzásához
+
+A konfiguráció létrehozása előtt meg kell adnia, hogy mely eszközöket vagy modulokat kívánja érinteni. Az Azure IoT Hub azonosítja az eszközöket, és címkék használatával azonosítja az eszközt a Twin-ben, és a modulban található címkék használatával azonosítja a modulokat. Minden eszköz vagy modul több címkével is rendelkezhet, és bármilyen módon meghatározhatja a megoldását. Ha például különböző helyen felügyeli az eszközöket, adja hozzá a következő címkéket egy eszközhöz a Twin:
 
 ```json
 "tags": {
@@ -52,43 +54,57 @@ Mielőtt létrehozna egy konfigurációt, mely eszközöket szeretné befolyáso
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse fel az IoT hubnak. 
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-2. Válassza ki **IoT-eszköz konfigurációs**.
+2. Válassza az **IoT**lehetőséget.
 
-3. Válassza ki **konfiguráció hozzáadása**.
+3. Válassza az **eszköz konfigurációjának hozzáadása** vagy a **modul konfigurációjának hozzáadása**lehetőséget.
 
-Hozzon létre egy konfigurációt öt lépésből áll. A következő szakaszok egyenként végig. 
+   ![Eszköz konfigurációjának vagy modul-konfigurációjának hozzáadása](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
+
+A konfiguráció létrehozásához öt lépés szükséges. A következő szakasz végigvezeti a műveletet. 
 
 ### <a name="name-and-label"></a>Név és címke
 
-1. Adjon meg egy egyedi nevet, amely legfeljebb 128 kisbetűket a konfiguráció. Kerülje a tárolóhelyek és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
+1. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
 
-2. Adja hozzá a címkéket a konfigurációk nyomon követéséhez. Címkék **neve**, **érték** párok, amelyek ismertetik a konfigurációt. Ha például `HostPlatform, Linux` vagy `Version, 3.0.1`.
+2. Címkék hozzáadása a konfigurációk nyomon követése érdekében. A címkék **név**, **érték** párok, amelyek leírják a konfigurációt. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
 
-3. Válassza ki **tovább** áthelyezése a következő lépéssel. 
+3. A **tovább** gombra kattintva lépjen a következő lépésre. 
 
 ### <a name="specify-settings"></a>Beállítások megadása
 
-Ebben a szakaszban meghatározza a cél tartalmat a célzott eszközök ikerállapotának kell beállítani. Nincsenek a két bemenet az egyes beállítások. Az első az eszköz ikereszköz útvonal, a JSON szakaszra belül az ikereszköz kívánt tulajdonságait, amely fogja állítani az elérési útját.  A második pedig a szakaszban lévő beszúrandó JSON-tartalmak. Például állítsa be az eszköz Ikereszköz elérési útját és a tartalom a következőhöz:
+Ez a szakasz azt a tartalmat határozza meg, amelyet meg kell adni a célként megadott eszköz vagy modul ikrekben. Az egyes beállításokhoz két bemenet van megadva. Az első az a kettős elérési út, amely a megadott Twin kívánt tulajdonságok között a JSON szakasz elérési útja.  A második a szakaszba beszúrandó JSON-tartalom. 
 
-![Adja meg a Device Twin elérési út és a tartalom](./media/iot-hub-auto-device-config/create-configuration-full-browser.png)
+Beállíthatja például, hogy a két útvonal `properties.desired.chiller-water`, majd adja meg a következő JSON-tartalmat: 
 
-Egyéni beállítások beállíthatja úgy, hogy a teljes elérési út megadását az eszköz Ikereszköz elérési útját és a tartalom nem zárójelekkel értékét is. Például állítsa be az eszköz Ikereszköz elérési útját `properties.desired.chiller-water.temperature` , és állítsa a tartalom `66`.
+```json
+{
+  "temperature": 66,
+  "pressure": 28
+}
+```
 
-Ha két vagy több konfigurációk ugyanazt eszköz az Ikereszköz elérési utat célként, a tartalom a legmagasabb prioritású konfigurációs alkalmazza (4. lépés a prioritás van megadva).
+![A kettős elérési út és a tartalom beállítása](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
-Ha el szeretné távolítani a tulajdonságot, adja meg a tulajdonság értéket `null`.
 
-További beállítások kiválasztásával adhat hozzá **Device Twin beállítás hozzáadása**.
+Az egyes beállításokat megadhatja úgy is, hogy megadja a teljes dupla elérési utat, és a szögletes zárójelek nélkül biztosítja az értéket. Például a kettős elérési úttal `properties.desired.chiller-water.temperature`a tartalmat állítsa `66`re. Ezután hozzon létre egy új, dupla beállítást a Pressure tulajdonsághoz. 
 
-### <a name="specify-metrics-optional"></a>Adja meg a metrikák (nem kötelező)
+Ha két vagy több konfiguráció ugyanazt a különálló elérési utat célozza meg, akkor a legmagasabb prioritású konfigurációból származó tartalom lesz érvényes (a 4. lépésben megadott prioritást kell megadni).
 
-Metrikák adja meg az eszköz lehet, hogy jelentéseket küldhetnek vissza konfigurációjának tartalma alkalmazása után állapotait összesítő számát. Például előfordulhat, hogy hozzon létre egy metrikát a függőben lévő beállításokat érintő változások, a egy metrikát a hibákat és a egy metrikát a sikeres beállítások módosításait.
+Ha el szeretne távolítani egy meglévő tulajdonságot, a `null`tulajdonság értékét kell megadnia.
 
-1. Adjon meg egy nevet **metrika neve**.
+További beállításokat adhat hozzá, ha az **eszköz hozzáadása** vagy a **modul különálló**beállítása lehetőséget választja.
 
-2. Adjon meg egy lekérdezést a **metrika feltételek**.  A lekérdezés alapul eszköz ikereszköz jelentett tulajdonságait.  A metrika a lekérdezés által visszaadott sorok számát jelöli.
+### <a name="specify-metrics-optional"></a>Metrikák megadása (nem kötelező)
+
+A metrikák a konfigurációs tartalom alkalmazása után egy eszköz vagy modul által visszajelentett különböző állapotok összesítő számát tartalmazzák. Létrehozhat például egy mérőszámot a függőben lévő beállítások változásaihoz, egy mérőszámot a hibákhoz, valamint egy mérőszámot a sikeres beállítások módosításához.
+
+Mindegyik konfiguráció legfeljebb öt egyéni metrikával rendelkezhet. 
+
+1. Adja meg a **metrika nevének**nevét.
+
+2. Adja meg a **mérőszám feltételeinek**lekérdezését.  A lekérdezés az eszköz Twin jelentett tulajdonságain alapul.  A metrika a lekérdezés által visszaadott sorok számát jelöli.
 
 Példa:
 
@@ -97,7 +113,7 @@ SELECT deviceId FROM devices
   WHERE properties.reported.chillerWaterSettings.status='pending'
 ```
 
-Megadhat egy záradékot, hogy a konfigurációt alkalmazta, például: 
+Felvehet egy záradékot, amelyet a konfiguráció alkalmaz, például: 
 
 ```sql
 /* Include the double brackets. */
@@ -105,114 +121,127 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-### <a name="target-devices"></a>Céleszközök
+Ha mérőszámot készít a konfigurált modulok jelentésére, válassza a `moduleId` lehetőséget `devices.modules`. Példa:
 
-A tulajdonság az ikereszközök címkék segítségével jelölje ki a kívánt eszközök, amelyek megkapják ezt a konfigurációt.  Az eszköz eszközök is célként ikereszköz jelentett tulajdonságait.
+```sql
+SELECT deviceId, moduleId FROM devices.modules
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
 
-Mivel több konfiguráció megcélozhatnak ugyanarra az eszközre, adjon az egyes konfigurációkhoz egy prioritást. Minden eddiginél van ütközés, ha a konfiguráció a legmagasabb prioritású wins. 
+### <a name="target-devices"></a>Eszközök megcélzása
 
-1. Adja meg egy pozitív egész számot a konfigurációs **prioritású**. A legnagyobb numerikus értéket számít a legmagasabb prioritást. Ha két azonos prioritású számot, azt, amelyik a legtöbb készült nemrégiben wins. 
+Az ikrek címkék tulajdonságával megcélozhatja azokat az eszközöket vagy modulokat, amelyeknek meg kell kapniuk ezt a konfigurációt. A Twin jelentett tulajdonságokat is megcélozhatja.
 
-2. Adjon meg egy **feltétel cél** meghatározni, hogy mely eszközök érinteni fog ebben a konfigurációban. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.chillerProperties.model='4000x'`. Megadhat `*` minden eszközt megcéloznak a.
+Az automatikus eszköz-konfigurációk csak az eszköz kettős címkéit célozzák meg, az automatikus modul-konfigurációk pedig csak a modul Twin címkéit tudják megcélozni. 
 
-3. Válassza ki **tovább** , továbbléphet az utolsó lépés.
+Mivel több konfiguráció is megcélozhatja ugyanazt az eszközt vagy modult, minden konfigurációnak prioritási számra van szüksége. Ütközés esetén a legmagasabb prioritású WINS-konfigurációt. 
 
-### <a name="review-configuration"></a>A konfiguráció áttekintése
+1. Adjon meg egy pozitív egész számot a konfigurációs **prioritáshoz**. A legmagasabb numerikus érték a legmagasabb prioritást veszi figyelembe. Ha két konfigurációban ugyanaz a prioritási szám, akkor a legutóbb létrehozott WINS. 
 
-Tekintse át a konfigurációs adatokat, majd válassza a **küldés**.
+2. Adja meg a **cél feltételt** annak meghatározásához, hogy mely eszközök vagy modulok lesznek megcélozva ezzel a konfigurációval. A feltétel a kettős címkék vagy a Twin jelentett tulajdonságok alapján történik, és egyeznie kell a kifejezés formátumával. 
 
-## <a name="monitor-a-configuration"></a>A figyelő a konfigurációs
-
-Egy konfigurációs adatait tekintheti meg, és az azt futtató eszközök figyelését, használja az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com), keresse fel az IoT hubnak. 
-
-2. Válassza ki **IoT-eszköz konfigurációs**.
-
-3. Vizsgálja meg a konfigurációs listát. Minden egyes konfiguráció esetében a következő adatokat tekintheti meg:
-
-   * **ID** -konfiguráció neve.
-
-   * **A feltétel cél** – a lekérdezés segítségével határozhatók meg a megcélzott eszközökön.
-
-   * **Prioritás** -a a konfiguráció rendelt prioritás száma.
-
-   * **Létrehozás ideje** – a konfiguráció létrehozásakor időbélyege. Az időbélyegző ties megszüntetése, ha két azonos prioritású szolgál. 
-
-   * **Rendszermérőszámokat** -metrikák, amely az IoT Hub számítják ki és a fejlesztők nem szabható testre. Megcélzott ikereszközök a célként megadott feltételnek megfelelő számát adja meg. Alkalmazza a megadott ikereszközök, hogy módosította a konfigurációt, amelyek magukban foglalhatják a részleges módosítás abban az esetben, ha egy különálló, magasabb prioritású konfigurációs továbbá által végrehajtott módosítások számát. 
-
-   * **Egyéni metrikák** -mérőszámok, amelyek az ikereszköz-lekérdezéseket, fejlesztője által lett megadva jelentett tulajdonságokként.  Legfeljebb öt egyéni metrikákat definiálható konfiguráció. 
+   Az eszközök automatikus konfigurálásához csak a címkét vagy a jelentett tulajdonságot adhatja meg célként. Például `tags.environment='test'` vagy `properties.reported.chillerProperties.model='4000x'`. Megadhatja `*` az összes eszköz célzásához. 
    
-4. Válassza ki a figyelni kívánt konfiguráció.  
+   Az automatikus modul konfigurálásához használjon lekérdezést az IoT hub-ban regisztrált modulok címkéi vagy jelentett tulajdonságainak megadásához. Például `from devices.modules where tags.environment='test'` vagy `from devices.modules where properties.reported.chillerProperties.model='4000x'`. A helyettesítő karakter nem használható az összes modul megcélzására. 
 
-5. Vizsgálja meg a konfigurációs adatait. Lapok használatával megtekintheti a részletes adatait az eszközöket, amelyek a konfigurációt kapott.
+3. A **tovább** gombra kattintva lépjen be az utolsó lépésbe.
 
-   * **A feltétel cél** – az eszközöket, amelyek a célként megadott feltételnek megfelelő. 
+### <a name="review-configuration"></a>Konfiguráció áttekintése
 
-   * **Metrikák** -rendszermérőszámot és egyéni mérőszámok listája.  Minden egyes metrika számítanak eszközök listáját megtekintheti a metrika kell választania a listából, és válassza **eszközök megtekintése**.
+Tekintse át a konfigurációs információkat, majd kattintson a **Submit (Küldés**) gombra.
 
-   * **Ikereszköz eszközbeállítások** – az ikereszköz eszközbeállítások által a konfigurációt. 
+## <a name="monitor-a-configuration"></a>Konfiguráció figyelése
 
-   * **Konfigurációs címkék** -konfiguráció leírására szolgáló kulcs-érték párokat.  Címkék semmilyen hatást a funkciót nem. 
+A konfiguráció részleteinek megtekintéséhez és az azt futtató eszközök figyeléséhez kövesse az alábbi lépéseket:
 
-## <a name="modify-a-configuration"></a>A konfiguráció módosítása
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-Ha módosítja a konfigurációt, a módosítások azonnal replikálja az összes megcélzott eszközre. 
+2. Válassza az **IoT**lehetőséget.
 
-A célfeltétel frissít, ha elő a következő frissítéseket:
+3. Ellenőrizze a konfigurációs listát. Az egyes konfigurációk esetében az alábbi adatokat tekintheti meg:
 
-* Az ikereszközök nem felelt meg a régi célfeltétel, de az új célfeltétel megfelel, és ez a konfiguráció a legmagasabb prioritású az adott ikereszköz, ha ez a konfiguráció az ikereszköz van alkalmazva. 
+   * **Azonosító** – a konfiguráció neve.
 
-* Az ikereszközök már nem felel meg a célként megadott feltétel, ha a konfigurációs beállításai a rendszer eltávolítja, és az ikereszköz fog módosította a következő legmagasabb prioritású konfigurációs. 
+   * **Cél feltétel** – a megcélzott eszközök vagy modulok definiálásához használt lekérdezés.
 
-* Ha már nem ez a konfiguráció jelenleg fut az ikereszközök a célfeltétel megfelel, és minden egyéb konfigurációt cél állapota nem felel meg, a konfigurációs beállításai a eltávolításra kerül, és minden egyéb módosítás kerül sor az ikereszköz. 
+   * **Prioritás** – a konfigurációhoz rendelt prioritási szám.
 
-A konfiguráció módosításához használja az alábbi lépéseket: 
+   * **Létrehozás időpontja** – a konfiguráció létrehozásának időbélyegzője. Ez az időbélyeg a kapcsolatok megszakítására szolgál, ha két konfiguráció azonos prioritással rendelkezik. 
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse fel az IoT hubnak. 
+   * **Rendszermetrikák** – IoT hub alapján kiszámított metrikák, amelyeket a fejlesztők nem tudnak testreszabni. A célként megadott érték határozza meg a célként megadott feltételnek megfelelő eszközök ikrek számát. A konfiguráció által módosított eszköz-ikrek számát adja meg, amely tartalmazhat részleges módosításokat abban az esetben, ha egy különálló, magasabb prioritású konfiguráció módosításokat is végez. 
 
-2. Válassza ki **IoT-eszköz konfigurációs**. 
+   * **Egyéni metrikák** – a fejlesztő által a kettős jelentett tulajdonságok alapján lekérdezéssel megadott metrikák.  Egy konfigurációban legfeljebb öt egyéni metrika definiálható. 
+   
+4. Válassza ki a figyelni kívánt konfigurációt.  
 
-3. Válassza ki a módosítani kívánt beállításait. 
+5. Ellenőrizze a konfiguráció részleteit. A lapok használatával megtekintheti a konfigurációt fogadó eszközök részletes adatait.
 
-4. Hajtsa végre a frissítéseket a következő mezőket: 
+   * **Cél feltétel** – a célként megadott feltételnek megfelelő eszközök vagy modulok. 
 
-   * Célfeltétel 
+   * **Metrikák** – a rendszermetrikák és az egyéni metrikák listája.  Megtekintheti az egyes mérőszámokhoz tartozó eszközök vagy modulok listáját, ha kiválasztja a metrikát a legördülő menüből, majd kiválasztja az **eszközök megtekintése** vagy a **modulok megtekintése**lehetőséget.
+
+   * **Device Twin beállítások** vagy **modul Twin beállítások** – a konfiguráció által beállított Twin beállítások. 
+
+   * **Konfigurációs címkék** – a konfiguráció leírásához használt kulcs-érték párok.  A címkék nem befolyásolják a funkcionalitást. 
+
+## <a name="modify-a-configuration"></a>Konfiguráció módosítása
+
+Konfiguráció módosításakor a módosítások azonnal replikálódnak az összes megadott eszközre vagy modulra. 
+
+Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
+
+* Ha egy iker nem felelt meg a régi cél feltételnek, de megfelel az új célként megadott feltételnek, és ez a konfiguráció az adott Twin legmagasabb prioritása, akkor ezt a konfigurációt alkalmazza a rendszer. 
+
+* Ha a jelenlegi konfigurációt jelenleg már nem teljesíti a megcélzott feltételnek, a rendszer eltávolítja a konfiguráció beállításait, és a Twin érték a következő legmagasabb prioritású konfigurációval lesz módosítva. 
+
+* Ha a jelenlegi konfiguráció jelenleg nem felel meg a megcélzott feltételnek, és nem teljesíti a többi konfiguráció célját, akkor a konfiguráció beállításai el lesznek távolítva, és a különálló módosítások nem lesznek elérhetők. 
+
+A konfiguráció módosításához kövesse az alábbi lépéseket: 
+
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
+
+2. Válassza az **IoT**lehetőséget. 
+
+3. Válassza ki a módosítani kívánt konfigurációt. 
+
+4. Frissítse a következő mezőket: 
+
+   * Cél feltétel 
    * Címkék 
    * Prioritás 
-   * Mérőszámok
+   * Metrikák
 
 4. Kattintson a **Mentés** gombra.
 
-5. Kövesse a [figyelése a configuration](#monitor-a-configuration) megkezdik a módosítások megtekintéséhez. 
+5. Kövesse a [konfiguráció figyelése](#monitor-a-configuration) című szakasz lépéseit a változások megtekintéséhez. 
 
 ## <a name="delete-a-configuration"></a>Konfiguráció törlése
 
-Amikor egy konfiguráció törléséhez a következő legmagasabb prioritású konfigurációjuk bármely ikereszközök igénybe vehet. Ikereszközök nem felelnek meg a célfeltétel bármely más beállítás, ha nincs más beállítások lesznek alkalmazva. 
+Ha töröl egy konfigurációt, minden eszköz-ikrek a következő legmagasabb prioritású konfigurációt veszi igénybe. Ha az eszközök nem teljesítik a többi konfiguráció célját, akkor a rendszer nem alkalmazza a többi beállítást. 
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse fel az IoT hubnak. 
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az IoT hubot. 
 
-2. Válassza ki **IoT-eszköz konfigurációs**. 
+2. Válassza az **IoT**lehetőséget. 
 
-3. A jelölőnégyzet segítségével válassza ki a törölni kívánt beállításait. 
+3. A jelölőnégyzet használatával válassza ki a törölni kívánt konfigurációt. 
 
 4. Válassza a **Törlés** elemet.
 
-5. Kérdés rákérdez, hogy erősítse meg.
+5. A rendszer kérni fogja a megerősítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a nagy mennyiségű IoT-eszközök. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
+Ebben a cikkben megtanulta, hogyan konfigurálhatja és figyelheti a IoT-eszközök méretét. Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
 * [IoT Hub-eszközidentitások csoportos kezelése](iot-hub-bulk-identity-mgmt.md)
-* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [IoT Hub metrikák](iot-hub-metrics.md)
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
-* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
+* [AI üzembe helyezése az Edge-eszközökön Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Böngészhet a beavatkozás nélküli, just-in-time kiépítését lehetővé tevő, olvassa el az IoT Hub Device Provisioning Service használatával: 
+Ha szeretné megtekinteni a IoT Hub Device Provisioning Service használatát a nulla érintéses, igény szerinti kiépítés engedélyezéséhez, olvassa el a következő témakört: 
 
 * [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

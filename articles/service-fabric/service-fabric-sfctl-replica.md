@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl replika | Microsoft Docs
-description: A CLI sfctl-replika parancsainak Service Fabric ismerteti.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl replika
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A replikák kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 34e53311e5338e540c1d987896112de39890de3b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901056"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646041"
 ---
 # <a name="sfctl-replica"></a>sfctl-replika
 Kezelheti a szolgáltatási partíciókhoz tartozó replikákat.
@@ -33,7 +24,7 @@ Kezelheti a szolgáltatási partíciókhoz tartozó replikákat.
 | egészségügy | Beolvas egy Service Fabric állapot-nyilvántartó szolgáltatás replikájának vagy állapot nélküli szolgáltatási példányának állapotát. |
 | információ | Egy Service Fabric partíció replikájának adatait kérdezi le. |
 | lista | Lekérdezi a Service Fabric szolgáltatás partíciójának replikáit. |
-| eltávolítása | Eltávolít egy csomóponton futó szolgáltatási replikát. |
+| eltávolítás | Eltávolít egy csomóponton futó szolgáltatási replikát. |
 | jelentés – állapot | Állapotjelentés küldése az Service Fabric-replikán. |
 | restart | Újraindítja egy csomóponton futó megőrzött szolgáltatás szolgáltatás-replikáját. |
 

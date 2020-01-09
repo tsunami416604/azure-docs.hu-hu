@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: da960861-0b6c-4d80-932d-898cdebb4f83
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8b99d89e8895cd1c8d8e9fe3961f0db9855fb7ee
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6d6e48c84f558840b3266193c4cbb9c3576f1a58
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196123"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665734"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
@@ -27,56 +27,35 @@ ms.locfileid: "74196123"
 
 ## SQL Database és SQL Data Warehouse<a name="data-sql"></a>
 
-Az SQL-veszélyforrások észlelése olyan rendellenes tevékenységeket azonosít, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához 
+A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
-|Riasztás|Leírás|
-|---|---|
-|**Az SQL-injektálás lehetséges biztonsági rése**|Egy alkalmazás egy hibás SQL-utasítást generált az adatbázisban. Ez az SQL-injektálási támadások lehetséges sebezhetőségét jelezheti. A hibás utasításoknak két lehetséges oka van. Előfordulhat, hogy az alkalmazás kódjában lévő hiba a hibás SQL-utasítást alakította ki. Vagy az alkalmazás kódja vagy tárolt eljárásai nem fertőtlenítik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, ami kihasználható az SQL-injektáláshoz.|
-|**Lehetséges SQL-injektálás**|Aktív biztonsági rés történt egy azonosított alkalmazásban, amely sebezhető az SQL-injektálással. Ez azt jelenti, hogy a támadó rosszindulatú SQL-utasításokat próbál beszúrni a sebezhető alkalmazás kódjával vagy tárolt eljárásaival.|
-|**Bejelentkezés szokatlan helyről**|A hozzáférési minta módosult SQL Serverre, ahol valaki szokatlan földrajzi helyről jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás rosszindulatú műveletet észlel (egy korábbi alkalmazott vagy külső támadó).|
-|**Bejelentkezés egy ismeretlen rendszerbiztonsági tag által**|A hozzáférési minta módosult SQL Serverra. Valaki egy szokatlan rendszerbiztonsági tag (felhasználó) használatával jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás rosszindulatú műveletet észlel (egy korábbi alkalmazott vagy külső támadó).|
-|**Potenciálisan ártalmas alkalmazás általi bejelentkezés történt**|Az adatbázis elérésére potenciálisan ártalmas alkalmazás van használatban. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás olyan támadást észlel, amely általános eszközöket használ.|
-|**Lehetséges SQL találgatásos támadási kísérlet**|Rendellenesen nagy számú sikertelen bejelentkezés történt a különböző hitelesítő adatokkal. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás találgatásos támadásokat észlel.|
+A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenciális sebezhetőségek vagy SQL-injektálási támadások, valamint az adatbázis-hozzáférés és a lekérdezési minták rendellenesek.
 
-További információ az SQL-veszélyforrások észleléséről: [Azure SQL Database fenyegetések észlelése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview). Tekintse át a veszélyforrások észlelésével kapcsolatos riasztások szakaszt. Azt is megtudhatja, [hogyan Azure Security Center segít feltárni a cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) , hogy megtudja, Security Center hogyan használják a rosszindulatú SQL-tevékenység észlelését a támadás felderítése érdekében.
+A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme az Azure SQL Database-adatbázisokat Azure SQL Database, a felügyelt példányokat, a Azure SQL Data Warehouse-adatbázisokat és az Virtual Machines Azure-beli SQL-kiszolgálókat tartalmazó speciális SQL-alapú biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi.
+
+További információ eléréséhez lásd:
+
+* [A komplex veszélyforrások elleni védelem engedélyezése a Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Az Azure-beli SQL serverek komplex veszélyforrások elleni védelmének engedélyezése Virtual Machines](security-center-iaas-advanced-data.md)
+* [A veszélyforrások elleni védelmi riasztások listája SQL Database és SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 ## Azure Storage<a name="azure-storage"></a>
 
->[!NOTE]
-> A tárterület komplex veszélyforrások elleni védelme jelenleg csak a blob Storage esetében érhető el.
-
-A Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és a biztonsági figyelő rendszereket kell kezelnie.
-
-Security Center elemzi az olvasási, írási és törlési kérelmeket a blob Storage-ba a fenyegetések észlelése érdekében, és riasztást küld, ha a tevékenységben rendellenességek jelentkeznek. További információ: [Storage Analytics naplózás konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging).
-
-> [!div class="mx-tableFixed"]
-
-|Riasztás|Leírás|
-|---|---|
-|**Hozzáférés szokatlan helyről egy Storage-fiókhoz**|Azt jelzi, hogy a hozzáférési minta egy Azure Storage-fiókra módosult. Valaki hozzáfért a fiókhoz egy, a legutóbbi tevékenységhez képest ismeretlen IP-címről. Vagy egy támadó hozzáfért a fiókhoz, vagy egy megbízható felhasználó új vagy szokatlan földrajzi helyről kapcsolódott. Az utóbbi egy példa egy új alkalmazásból vagy fejlesztőből származó távoli karbantartásra.|
-|**Szokatlan alkalmazás fér hozzá a Storage-fiókhoz**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|
-|**Névtelen hozzáférés egy Storage-fiókhoz**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókhoz. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott a blob Storage-t tároló tárolóhoz.|
-|**Hozzáférés egy Tor-kilépési csomópontról egy Storage-fiókba**|Azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor aktív kilépési csomópontjának (anonimizálásával-proxy) ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e. Lehetséges okok lehetnek olyan támadók, akik a Tor használatával hozzáfértek a Storage-fiókjához, vagy egy olyan legitim felhasználó, aki a Tor használatával fér hozzá a Storage-fiókhoz.|
-|**A Storage-fiókból kinyert adatok szokatlan mennyisége**|Azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. A lehetséges ok az, hogy egy támadó nagy mennyiségű adatmennyiséget adott ki egy olyan tárolóból, amely blob Storage-tárolót tárol.|
-|**Szokatlan törlés egy Storage-fiókban**|Azt jelzi, hogy egy vagy több váratlan törlési művelet történt egy Storage-fiókban, a fiókhoz tartozó legutóbbi tevékenységhez képest. Ennek lehetséges oka, hogy egy támadó törölte az adatait a Storage-fiókjából.|
-|**A. cspkg szokatlan feltöltése a Storage-fiókba**|Azt jelzi, hogy egy Azure Cloud Services csomag (. cspkg fájl) szokatlan módon lett feltöltve egy Storage-fiókba, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó arra készül, hogy rosszindulatú kódot helyezzen üzembe a Storage-fiókból egy Azure Cloud Service-be.|
-|**A hozzáférési engedélyek szokatlan módosítása egy Storage-fiókban**|Azt jelzi, hogy a tároló hozzáférési engedélyei szokatlan módon módosultak. Ennek lehetséges oka, hogy egy támadó megváltoztatta a tárolók engedélyeit, hogy gyengítse biztonsági állapotát, vagy az adatmegőrzést.|
-|**Szokatlan hozzáférés-ellenőrzés egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|
-|**Szokatlan adatfeltárás egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók rendellenes módon vannak felsorolva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|
-|**ELŐZETES verzió – lehetséges kártevők feltöltése a Storage-fiókba**|Azt jelzi, hogy egy lehetséges kártevőt tartalmazó blob feltöltve lett egy Storage-fiókba. A lehetséges okok miatt előfordulhat, hogy a támadók szándékos kártevőket töltenek fel egy ártó szándékú, rosszindulatú blob általi feltöltéssel, amely egy legitim felhasználó.|
+A tárolók komplex veszélyforrások elleni védelme (jelenleg csak a blob Storage esetében érhető el) szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében.
 
 >[!NOTE]
 >A komplex veszélyforrások elleni védelem jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
-További információ a tárolási riasztásokról: az [Azure Storage komplex veszélyforrások elleni védelme](../storage/common/storage-advanced-threat-protection.md). Különösen tekintse át a "védelmi riasztások" szakaszt.
+További információ eléréséhez lásd:
+
+* [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+* [Az Azure Storage veszélyforrások elleni védelmi értesítéseinek listája](alerts-reference.md#alerts-azurestorage)
 
 ## Azure Cosmos DB<a name="cosmos-db"></a>
 
-A következő riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához:
+A Azure Cosmos DB riasztások szokatlan és potenciálisan ártalmas kísérletekkel jönnek létre Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához.
 
-|Riasztás|Leírás|
-|---|---|
-|**Hozzáférés szokatlan helyről egy Cosmos DB-fiókhoz**|Azt jelzi, hogy a hozzáférési minta egy Azure Cosmos DB fiókra módosult. Valaki a legutóbbi tevékenységhez képest ismeretlen IP-címről kapta ezt a fiókot. Vagy egy támadó hozzáfért a fiókhoz, vagy egy megbízható felhasználó új és szokatlan földrajzi helyről férhet hozzá. Az utóbbi egy példa egy új alkalmazásból vagy fejlesztőből származó távoli karbantartásra.|
-|**Cosmos DB fiókból kinyert adatok szokatlan mennyisége**|Azt jelzi, hogy egy Azure Cosmos DB fiókból módosult az Adatkiemelési minta. Valaki a legutóbbi tevékenységhez képest szokatlan mennyiségű adattal kibontotta. Előfordulhat, hogy egy támadó nagy mennyiségű adatmennyiséget adott ki egy Azure Cosmos DB adatbázisból (például az adatok kiszűrése vagy szivárgását, vagy az adatok jogosulatlan átvitelét). Az is előfordulhat, hogy egy megbízható felhasználó vagy alkalmazás szokatlan mennyiségű adatmennyiséget adott ki egy tárolóból (például a karbantartási biztonsági mentési tevékenységek esetében).|
+További információ eléréséhez lásd:
 
-További információ: [a Azure Cosmos db komplex veszélyforrások elleni védelme](../cosmos-db/cosmos-db-advanced-threat-protection.md).
+* [A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
+* [A veszélyforrások elleni védelmi riasztások listája Azure Cosmos DB (előzetes verzió)](alerts-reference.md#alerts-azurecosmos)

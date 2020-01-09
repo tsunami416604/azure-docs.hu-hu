@@ -1,24 +1,26 @@
 ---
-title: Csomagok telepítéséhez a Jupyter notebook az Azure-ban
-description: Hogyan telepítheti a Python, R, és F# belül Jupyter notebook az Azure-ban a csomagokat.
-ms.topic: article
+title: Csomagok telepítése a Jupyter-jegyzetfüzetekben – Azure Notebooks előzetes verzió
+description: Megtudhatja, hogyan telepíthet Python, R F# és csomagokat az Azure-ban futó Jupyter-jegyzetfüzetből.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277532"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646228"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Egy jegyzetfüzetet a csomagok telepítése
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Csomagok telepítése Azure Notebooks előzetes verzióból
 
 Bár a projekt szintjén konfigurálhatja a [notebook környezetét](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), érdemes lehet csomagokat közvetlenül egy adott jegyzetfüzeten belül telepíteni.
 
-A notebookból telepített csomagok csak az aktuális kiszolgáló munkamenet érvényesek. Csomag telepítését követően a kiszolgáló leállítása nem megőrzött.
+A jegyzetfüzetből telepített csomagok csak az aktuális kiszolgálói munkamenetre érvényesek. A csomag telepítése nem szűnik meg, ha a kiszolgáló leáll.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
-Python-csomagok pip vagy conda-parancsok használatával a kód cellák segítségével telepíthető:
+A Pythonban található csomagok a PIP vagy a Conda használatával telepíthetők a kód celláin belüli parancsok használatával:
 
 ```bash
 !pip install <package_name>
@@ -26,7 +28,7 @@ Python-csomagok pip vagy conda-parancsok használatával a kód cellák segíts�
 !conda install <package_name> -y
 ```
 
-Ha a parancs kimenete azt jelzi, hogy már teljesülnek a feltételek, majd Azure notebookok tartalmazhatnak a csomag alapértelmezés szerint. Előfordulhat, hogy a csomagot a [Project Environment telepítési lépése](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)is telepíti.
+Ha a parancs kimenete azt jelzi, hogy a követelmény már teljesül, az Azure Notebooks alapértelmezés szerint a csomagot is tartalmazhatja. Előfordulhat, hogy a csomagot a [Project Environment telepítési lépése](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)is telepíti.
 
 ## <a name="r"></a>R
 
@@ -46,7 +48,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-F# A csomagok a [nuget.org](https://www.nuget.org) telepíthetők, ha meghívja a Paket függőség kezelőjét a kód celláiból. Első lépésként töltse be a Paket manager:
+F# A csomagok a [nuget.org](https://www.nuget.org) telepíthetők, ha meghívja a Paket függőség kezelőjét a kód celláiból. Először töltse be a Paket Managert:
 
 ```fsharp
 #load "Paket.fsx"
@@ -66,7 +68,7 @@ Ezután töltse be a Paket-generátort:
 #load "Paket.Generated.Refs.fsx"
 ```
 
-Nyissa meg a libray-t:
+Nyissa meg a könyvtárat:
 ```fsharp
 open MathNet.Numerics
 ```

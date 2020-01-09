@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456642"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Speciális JSON-átalakítások elvégzése folyékony sablonokkal Azure Logic Apps
 
@@ -29,14 +29,14 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
 
 * Alapszintű [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Alapvető ismeretek a [folyékony sablon nyelvéről.](https://shopify.github.io/liquid/)
+* Alapvető ismeretek a [folyékony sablon nyelvéről](https://shopify.github.io/liquid/)
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Likvid sablon vagy Térkép létrehozása az integrációs fiókhoz
 
 1. Ebben a példában hozza létre az ebben a lépésben ismertetett minta likvid sablont. A Liquid-sablonban használhat folyadék- [szűrőket](https://shopify.github.io/liquid/basics/introduction/#filters), amelyek [DotLiquid](https://dotliquidmarkup.org/) és C# elnevezési konvenciókat használnak. 
 
    > [!NOTE]
-   > Győződjön meg arról, hogy a szűrő neve *mondatot* használ a sablonban. Ellenkező esetben a szűrők nem működnek.
+   > Győződjön meg arról, hogy a szűrő neve *mondatot* használ a sablonban. Ellenkező esetben a szűrők nem működnek. Emellett a Maps [fájl mérete korlátokat](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)is tartalmaz.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -71,7 +71,7 @@ A logikai alkalmazásban a folyékony átalakítás elvégzése előtt meg kell 
    |----------|-------|-------------|
    | **Name (Név)** | JsonToJsonTemplate | A Térkép neve, amely ebben a példában "JsonToJsonTemplate". | 
    | **Térkép típusa** | **folyékony** | A Térkép típusa A JSON-ből a JSON-átalakításhoz ki kell választania a **folyadék**elemet. | 
-   | **Térkép** | "SimpleJsonToJsonTemplate. Liquid" | Ebben a példában a "SimpleJsonToJsonTemplate. Liquid" nevű meglévő likvid sablon vagy leképezési fájl, amely az átalakításhoz használható. A fájl megkereséséhez használhatja a fájl-választót. |
+   | **Térkép** | "SimpleJsonToJsonTemplate. Liquid" | Ebben a példában a "SimpleJsonToJsonTemplate. Liquid" nevű meglévő likvid sablon vagy leképezési fájl, amely az átalakításhoz használható. A fájl megkereséséhez használhatja a fájl-választót. A Térkép méretének korlátaival kapcsolatban lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
 
    ![Likvid sablon hozzáadása](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

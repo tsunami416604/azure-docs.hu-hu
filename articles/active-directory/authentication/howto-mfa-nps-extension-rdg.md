@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848340"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425451"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
@@ -120,11 +120,11 @@ Ez a szakasz útmutatást nyújt az RDS infrastruktúra Azure MFA használatára
 A hálózati házirend-kiszolgáló bővítmény konfigurációjának részeként rendszergazdai hitelesítő adatokat és az Azure ad-bérlőhöz tartozó Azure AD-azonosítót kell megadnia. A következő lépések bemutatják, hogyan kérheti le a bérlő AZONOSÍTÓját.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
-1. A bal oldali navigációs sávon válassza a **Azure Active Directory** ikont.
+1. A Azure Portal menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
 1. Válassza ki a **Tulajdonságok** elemet.
 1. A Tulajdonságok panelen, a könyvtár azonosítója mellett kattintson a **Másolás** ikonra az alább látható módon az azonosító vágólapra másolásához.
 
-   ![A könyvtár AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![A könyvtár AZONOSÍTÓjának beolvasása a Azure Portalból](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 

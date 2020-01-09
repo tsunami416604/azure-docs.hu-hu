@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba
+title: Pillanatkép exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba – PowerShell-minta
 description: Azure PowerShell parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként ugyanazon a különböző régióban lévő Storage-fiókba
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 5041261943ef8ff5c0ae64f45ea9008a538dae36
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 12b6c2abc9641f884cf1b90216cc1db0c53d0260
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368725"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával
 
@@ -42,7 +42,7 @@ A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS U
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Grant-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
+| [Engedélyezés – AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Létrehozza egy tárfiókkörnyezetet a fióknév és -kulcs használatával. Ennek a környezetnek a használatával olvasási/írási műveletek hajthatók végre a tárfiókon. |
 | [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Másolatot készít egy pillanatkép mögöttes VHD-fájljáról egy tárfiókba |
 

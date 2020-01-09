@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884791"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432599"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan történik a térinformatikai keresés és az IP
 
 ## <a name="default-behavior"></a>Alapértelmezett viselkedés
 
-Alapértelmezés szerint az IP-címek ideiglenes gyűjtése történik, de a Application Insights nem tárolja őket. Az alapszintű folyamat a következő:
+Alapértelmezés szerint az IP-címek ideiglenes gyűjtése történik, de a Application Insights nem tárolja őket. A folyamat alapvetően a következőképpen történik:
 
 Az IP-címeket a rendszer a telemetria-adatmennyiség részeként küldi Application Insights. Amikor eléri a betöltési végpontot az Azure-ban, a rendszer az IP-címet használja a térinformatikai keresés végrehajtásához a [GeoLite2-ből a Maxmind-ből](https://dev.maxmind.com/geoip/geoip2/geolite2/). A keresés eredményei a következő mezők feltöltésére szolgálnak `client_City`, `client_StateOrProvince``client_CountryOrRegion`. Ezen a ponton a rendszer elveti az IP-címet, és `0.0.0.0` a `client_IP` mezőbe írja.
 
@@ -101,7 +101,7 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
     
     Ennek eredményeképpen a rendszer a tulajdonságok listáját adja vissza. Az egyik tulajdonságnak `DisableIpMasking: true`kell olvasnia. Ha a PowerShellt az új tulajdonságnak a Azure Resource Manager használatával történő telepítése előtt futtatja, akkor a tulajdonság nem létezik.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rest API
 
 A [REST API](https://docs.microsoft.com/rest/api/azure/) -adattartalom, amely ugyanezeket a módosításokat hajtja végre, a következőképpen történik:
 
@@ -154,7 +154,7 @@ namespace MyWebApp
 > [!NOTE]
 > Ha nem fér hozzá `ISupportProperties`hoz, ellenőrizze, hogy a Application Insights SDK legújabb stabil kiadását futtatja-e. `ISupportProperties` a magas fokú kardinális értékekhez készültek, míg a `GlobalProperties` megfelelőbbek a kis-és nagyszámú értékek, például a régió neve, a környezet neve stb. 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>Engedélyezze a telemetria-inicializálást a következőhöz:. ASP.NET
+### <a name="enable-telemetry-initializer-for-aspnet"></a>Telemetria-inicializálás engedélyezése a ASP.NET
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

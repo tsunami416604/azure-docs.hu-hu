@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423285"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
@@ -65,7 +65,7 @@ Az ilyen típusú hitelesítés olyan démonok és szolgáltatásfiókok esetéb
 
 ### <a name="application-permissions"></a>Alkalmazás engedélyei
 
-Az ACL-ek használata helyett API-k használatával teheti elérhetővé az alkalmazások engedélyeit. Egy alkalmazás engedélyt kap egy alkalmazás számára egy szervezet rendszergazdája, és csak az adott szervezet és alkalmazottai által birtokolt adathozzáféréshez használható. Microsoft Graph például több alkalmazás-engedélyt tesz elérhetővé a következők elvégzéséhez:
+Az ACL-ek használata helyett API-k használatával teheti elérhetővé az **alkalmazások engedélyeit**. Egy alkalmazás engedélyt kap egy alkalmazás számára egy szervezet rendszergazdája, és csak az adott szervezet és alkalmazottai által birtokolt adathozzáféréshez használható. Microsoft Graph például több alkalmazás-engedélyt tesz elérhetővé a következők elvégzéséhez:
 
 * Levelek olvasása az összes postaládában
 * Levelek olvasása és írása az összes postaládában
@@ -75,6 +75,11 @@ Az ACL-ek használata helyett API-k használatával teheti elérhetővé az alka
 Az alkalmazás engedélyeivel kapcsolatos további információkért nyissa meg a [Microsoft Graph](https://developer.microsoft.com/graph).
 
 Az alkalmazás engedélyeinek használatához kövesse a következő szakaszokban ismertetett lépéseket.
+
+
+> [!NOTE]
+> Ha alkalmazásként végez hitelesítést, a felhasználóval ellentétben nem használhatja a "delegált engedélyek" (a felhasználó által megadott hatóköröket).  Az alkalmazás rendszergazdája (vagy a webes API általi előhitelesítésen keresztül) az "alkalmazás engedélyei" (más néven "szerepkörök") használatát kell megadnia.    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az engedélyek igénylése az alkalmazás regisztrációs portálján
 

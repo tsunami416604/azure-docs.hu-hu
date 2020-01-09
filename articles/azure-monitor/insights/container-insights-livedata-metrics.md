@@ -1,24 +1,14 @@
 ---
 title: A metrikák valós idejű megtekintése a Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk a metrikák valós idejű nézetét írja le anélkül, hogy a kubectl és a Azure Monitor for containers használatával kellene használnia.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 4608058d347888ab77bd4303600f00b270d6fed5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404930"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>A metrikák valós idejű megtekintése
 
@@ -34,7 +24,7 @@ Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció hasz
 
 Az élő adatszolgáltatások (előzetes verzió) beállításával vagy hibaelhárításával kapcsolatos segítségért tekintse át a [telepítési útmutatót](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>Működési elv 
+## <a name="how-it-works"></a>A működési elv 
 
 Az élő adatok (előzetes verzió) funkció közvetlenül a Kubernetes API-hoz érhető el, és a hitelesítési modellel kapcsolatos további információk [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)találhatók. 
 
@@ -92,6 +82,6 @@ Ez a teljesítményteszt a `kubectl get pods –all-namespaces` meghívásával 
 >[!NOTE]
 >A `kubectl` által értelmezett állapot neve nem pontosan egyezik a diagramban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a riasztások, a vizualizációk vagy a fürtök további elemzéséhez.

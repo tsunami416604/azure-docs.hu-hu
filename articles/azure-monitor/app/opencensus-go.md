@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432550"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Elosztott Nyomkövetések gyűjtése a go-ból (előzetes verzió)
 
@@ -43,13 +43,13 @@ Először létre kell hoznia egy Application Insights-erőforrást, amely a kial
 
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        | Value (Díj)           | Leírás  |
+   | Beállítások        | Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a  **Create** (Létrehozás) gombra.
+2. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="configure-local-forwarder"></a>Helyi továbbító konfigurálása
 

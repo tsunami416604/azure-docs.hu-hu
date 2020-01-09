@@ -1,25 +1,16 @@
 ---
-title: Hálózati módok konfigurálása az Azure Service Fabric Container Serviceshez | Microsoft Docs
+title: Hálózati módok konfigurálása a Container Serviceshez
 description: Ismerje meg, hogyan állíthatja be az Azure Service Fabric által támogatott különböző hálózati módokat.
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168801"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639802"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tároló hálózatkezelési módjai
 
@@ -30,7 +21,7 @@ Ha egy tároló szolgáltatás statikus végponttal rendelkezik a szolgáltatás
 Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy másik csomópontjára, az IP-cím megváltozik. Ezért nem ajánlott a dinamikusan hozzárendelt IP-cím használatával felderíteni a Container Services szolgáltatást. A szolgáltatás felderítéséhez csak a Service Fabric elnevezési szolgáltatás vagy a DNS-szolgáltatást kell használnia. 
 
 >[!WARNING]
->Az Azure összesen 65 356 IP-címet tesz lehetővé virtuális hálózatonként. A csomópontok számának és a tároló szolgáltatás példányainak (amelyek nyílt üzemmódot használnak) összege nem haladhatja meg a virtuális hálózaton belüli 65 356 IP-címeket. Nagy sűrűségű helyzetekben javasolt a NAT hálózati mód használata. Emellett más függőségek, például a terheléselosztó más [korlátozásokat](https://docs.microsoft.com/azure/azure-subscription-service-limits) is figyelembe vesznek. Egy csomóponton jelenleg akár 50 IP-cím lett tesztelve és bizonyítottan stabil. 
+>Az Azure összesen 65 356 IP-címet tesz lehetővé virtuális hálózatonként. A csomópontok számának és a tároló szolgáltatás példányainak (amelyek nyílt üzemmódot használnak) összege nem haladhatja meg a virtuális hálózaton belüli 65 356 IP-címeket. Nagy sűrűségű helyzetekben javasolt a NAT hálózati mód használata. Emellett más függőségek, például a terheléselosztó más [korlátozásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) is figyelembe vesznek. Egy csomóponton jelenleg akár 50 IP-cím lett tesztelve és bizonyítottan stabil. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nyitott hálózati mód beállítása
@@ -210,7 +201,7 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
    |Műveletek | Engedélyezés  | |
    | | |
 
-4. A hálózati mód megadása az alkalmazás jegyzékfájljában az egyes szolgáltatásokhoz: `<NetworkConfig NetworkType="Open">`. A hálózati mód **megnyitásakor** a szolgáltatás dedikált IP-címet kap. Ha nincs megadva mód, a szolgáltatás alapértelmezett értéke **NAT** mód. A következő manifest-példában a `NodeContainerServicePackage1` és a `NodeContainerServicePackage2` szolgáltatások mindegyike ugyanazon a porton figyelhető (mindkét szolgáltatás a `Endpoint1`) figyelésére szolgál. Ha meg van adva a hálózati mód, `PortBinding` konfigurációk nem adhatók meg.
+4. A hálózati mód megadása az alkalmazás jegyzékfájljában az egyes szolgáltatásokhoz: `<NetworkConfig NetworkType="Open">`. A hálózati mód **megnyitásakor** a szolgáltatás dedikált IP-címet kap. Ha nincs megadva mód, a szolgáltatás alapértelmezett értéke **NAT** mód. A következő manifest-példában a `NodeContainerServicePackage1` és `NodeContainerServicePackage2` szolgáltatások mindegyike ugyanazon a porton tud figyelni (mindkét szolgáltatás a `Endpoint1`figyeli). Ha meg van adva a hálózati mód, `PortBinding` konfigurációk nem adhatók meg.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

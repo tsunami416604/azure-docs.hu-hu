@@ -1,7 +1,7 @@
 ---
 title: 'Kereszt-ellenőrzési modell: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a modell átellenőrzése modult a besorolási vagy regressziós modellekre vonatkozó becslések átadásához az adatparticionálással.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning modell-ellenőrzési modulját a besorolási vagy regressziós modellekre vonatkozó becslések átállításához az adatparticionálással.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428561"
 ---
-# <a name="cross-validate-model"></a>Kereszt-ellenőrzési modell
+# <a name="cross-validate-model"></a>Modell keresztellenőrzése
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben (előzetes verzió) az Cross validate Model modul használata. A többértékű *ellenőrzés* a gépi tanulásban gyakran használatos, és az adatkészletek változékonyságát, valamint az ezen adatokat használó modellek megbízhatóságát is felméri.  
 
@@ -78,7 +78,7 @@ Ebben a forgatókönyvben a modellt többek között a modell betanításával �
 
     A modell későbbi újrafelhasználásához kattintson a jobb gombbal az algoritmust tartalmazó modul kimenetére (például a **két osztály Bayes pontjának gépe**). Ezután válassza **a Mentés betanítva modellként**lehetőséget.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Az összes iteráció befejezése után a Cross validate Model a teljes adatkészlet pontszámait hozza létre. Emellett teljesítménymutatókat is létrehoz, amelyeket a modell minőségének felméréséhez használhat.
 
@@ -88,9 +88,9 @@ A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, v
 
 Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a modell átellenőrzése modulra. Válassza a **pontozásos eredmények**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
 
-| Új oszlop neve      | Leírás                              |
+| Új oszlopnév      | Leírás                              |
 | -------------------- | ---------------------------------------- |
-| Pontozásos Címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
+| Pontozott címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
 | Pontozásos valószínűségek | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Azt jelzi, hogy az érték becsült valószínűsége a **pontozásos címkékben**. |
 | Fold száma          | A fold nulla alapú indexét jelzi, amelyet az egyes adatsorokhoz rendeltek a rendszer a kereszt-ellenőrzés során. |
 
@@ -125,7 +125,7 @@ A modul a következő metrikákat is tartalmazza a kiértékeléshez használt m
 + Az adatkészletet nem kell kiosztani képzésre és tesztelési csoportokra, ha a modell pontosságának méréséhez kereszt-érvényesítést használ. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

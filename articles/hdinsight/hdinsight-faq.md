@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706262"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644596"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: gyakori kérdések
 
@@ -114,7 +114,7 @@ Nem, nem lehet futtatni Apache Kafka és Apache Spark ugyanazon a HDInsight-für
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Hogyan változás időzónája a Ambari-ben?
 
-1. Nyissa meg a Ambari webes felhasználói felületét https://CLUSTERNAME.azurehdinsight.net, ahol a CLUSTERNAME a fürt neve.
+1. Nyissa meg a Ambari webes felhasználói felületét `https://CLUSTERNAME.azurehdinsight.net`, ahol a CLUSTERNAME a fürt neve.
 2. A jobb felső sarokban válassza a rendszergazda elemet | Beállítások. 
 
    ![Ambari-beállítások](media/hdinsight-faq/ambari-settings.png)
@@ -263,7 +263,7 @@ A beállításokat a fürt tulajdonságai között, a Azure Portalban találhatj
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Hogyan számítható ki a Storage-fiókok és a blob-tárolók használata a HDInsight-fürtökhöz?
 
-Tegye a következők egyikét:
+Folytassa a következők egyikével:
 
 - [A PowerShell használata](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 

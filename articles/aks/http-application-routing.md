@@ -8,16 +8,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: f0975d0a60081b66d3d5a513954deb0c4fa1b978
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cfd69ebf6408acaa2938271ba87f36768416de80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442950"
 ---
-# <a name="http-application-routing"></a>HTTP-alkalmazásútválasztás
+# <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
-A HTTP-alkalmazás útválasztási megoldásával egyszerűen elérheti az Azure Kubernetes-szolgáltatás (ak) fürtjébe telepített alkalmazásokat. Ha a megoldás engedélyezve van, egy [bejövő](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) adatvezérlőt KONFIGURÁL az AK-fürtben. Az alkalmazások telepítésekor a megoldás nyilvánosan elérhető DNS-neveket is létrehoz az alkalmazás-végpontokhoz.
+A HTTP-alkalmazás útválasztási megoldásával egyszerűen elérheti az Azure Kubernetes-szolgáltatás (ak) fürtjébe telepített alkalmazásokat. Ha a megoldás engedélyezve van, egy [bejövő adatvezérlőt](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) KONFIGURÁL az AK-fürtben. Az alkalmazások telepítésekor a megoldás nyilvánosan elérhető DNS-neveket is létrehoz az alkalmazás-végpontokhoz.
 
 Ha a bővítmény engedélyezve van, létrehoz egy DNS-zónát az előfizetésben. További információ a DNS-díjakról: [DNS-díjszabás][dns-pricing].
 
@@ -28,21 +28,21 @@ Ha a bővítmény engedélyezve van, létrehoz egy DNS-zónát az előfizetésbe
 
 A bővítmény két összetevőt helyez üzembe: egy [Kubernetes bejövő vezérlőt][ingress] és egy [külső DNS-][external-dns] vezérlőt.
 
-- **Bejövő adatkezelő**: A bejövő adatkezelő a terheléselosztó típusú Kubernetes szolgáltatás használatával teszi elérhetővé az internetet. A bejövő vezérlő figyeli és megvalósítja a [Kubernetes][ingress-resource]beáramlási erőforrásait, amely útvonalakat hoz létre az alkalmazás-végpontokhoz.
-- **Külső DNS-vezérlő**: Figyeli a Kubernetes bejövő erőforrásait, és DNS-rekordokat hoz létre a fürthöz tartozó DNS-zónában.
+- **Beáramló vezérlő**: a bejövő vezérlő a terheléselosztó típusú Kubernetes szolgáltatás használatával érhető el az interneten. A bejövő vezérlő figyeli és megvalósítja a Kubernetes beáramlási [erőforrásait][ingress-resource], amely útvonalakat hoz létre az alkalmazás-végpontokhoz.
+- **Külső DNS-vezérlő**: figyeli a Kubernetes bejövő erőforrásait, és DNS-rekordokat hoz létre a fürthöz tartozó DNS-zónában.
 
 ## <a name="deploy-http-routing-cli"></a>HTTP-útválasztás üzembe helyezése: parancssori felület
 
-A HTTP-alkalmazás útválasztási bővítményét engedélyezheti az Azure CLI-vel egy AK-fürt telepítésekor. Ehhez használja az az [AK Create][az-aks-create] parancsot `--enable-addons` az argumentummal.
+A HTTP-alkalmazás útválasztási bővítményét engedélyezheti az Azure CLI-vel egy AK-fürt telepítésekor. Ehhez használja az az [AK Create][az-aks-create] parancsot a `--enable-addons` argumentummal.
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
 
 > [!TIP]
-> Ha több bővítményt is engedélyezni szeretne, vesszővel tagolt listaként adja meg őket. A HTTP-alkalmazások útválasztásának és figyelésének engedélyezéséhez például használja a `--enable-addons http_application_routing,monitoring`következő formátumot:.
+> Ha több bővítményt is engedélyezni szeretne, vesszővel tagolt listaként adja meg őket. Például a HTTP-alkalmazások útválasztásának és figyelésének engedélyezéséhez használja a `--enable-addons http_application_routing,monitoring`formátumot.
 
-A HTTP-útválasztást egy meglévő AK-fürtön is engedélyezheti az az [AK Enable-addons][az-aks-enable-addons] parancs használatával. Ha engedélyezni szeretné a http-útválasztást egy meglévő fürtön, adja hozzá a `--addons` paramétert, és adja meg a *http_application_routing* az alábbi példában látható módon:
+A HTTP-útválasztást egy meglévő AK-fürtön is engedélyezheti az az [AK Enable-addons][az-aks-enable-addons] parancs használatával. Ha engedélyezni szeretné a HTTP-útválasztást egy meglévő fürtön, adja hozzá a `--addons` paramétert, és adja meg a *http_application_routing* az alábbi példában látható módon:
 
 ```azurecli
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
@@ -51,14 +51,15 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 A fürt üzembe helyezése vagy frissítése után az az [AK show][az-aks-show] paranccsal kérheti le a DNS-zóna nevét. Ez a név szükséges ahhoz, hogy alkalmazásokat lehessen üzembe helyezni az AK-fürtön.
 
 ```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
-
-Result
------------------------------------------------------
-9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpapplicationrouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-## <a name="deploy-http-routing-portal"></a>HTTP-útválasztás üzembe helyezése: Portál
+Eredmény
+
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+
+
+## <a name="deploy-http-routing-portal"></a>HTTP-útválasztás üzembe helyezése: portál
 
 A HTTP-alkalmazás útválasztási bővítményét engedélyezheti a Azure Portal egy AK-fürt telepítésekor.
 
@@ -77,7 +78,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Hozzon létre egy **Samples-http-Application-Routing. YAML** nevű fájlt, és másolja a következő YAML. Az 43-es sorban `<CLUSTER_SPECIFIC_DNS_ZONE>` frissítse a cikket a jelen cikk előző lépésben összegyűjtött DNS-zóna nevével.
+Hozzon létre egy **Samples-http-Application-Routing. YAML** nevű fájlt, és másolja a következő YAML. A 43. sorban frissítse `<CLUSTER_SPECIFIC_DNS_ZONE>` a jelen cikk előző lépésben összegyűjtött DNS-zóna nevével.
 
 
 ```yaml
@@ -179,7 +180,7 @@ az aks disable-addons --addons http_application_routing --name myAKSCluster --re
 
 Ha a HTTP-alkalmazás útválasztási bővítménye le van tiltva, bizonyos Kubernetes-erőforrások maradhatnak a fürtben. Ezek az erőforrások a *configMaps* és a *titkos kulcsokat*tartalmazzák, és a *Kube-System* névtérben jönnek létre. A tiszta fürt karbantartásához érdemes lehet eltávolítani ezeket az erőforrásokat.
 
-Keresse meg az *addon-http-Application-Routing* erőforrásokat a következő [kubectl][kubectl-get] -lekérési parancsok használatával:
+Keresse meg az *addon-http-Application-Routing* erőforrásokat a következő [kubectl-lekérési][kubectl-get] parancsok használatával:
 
 ```console
 kubectl get deployments --namespace kube-system
@@ -205,7 +206,7 @@ Az erőforrások törléséhez használja a [kubectl delete][kubectl-delete] par
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
 ```
 
-Ismételje meg `kubectl delete` az előző lépést minden olyan *addon-http-Application-Routing* erőforrásnál, amely a fürtön marad.
+Ismételje meg az előző `kubectl delete` lépést minden olyan *addon-http-Application-Routing* erőforrásnál, amely a fürtön marad.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -222,7 +223,7 @@ Ezek a rekordok a Azure Portal DNS-zóna erőforrásán is megtekinthetők.
 
 ![DNS-rekordok beolvasása](media/http-routing/clippy.png)
 
-A [kubectl logs][kubectl-logs] paranccsal megtekintheti az Nginx bejövő adatkezelő vezérlőhöz tartozó alkalmazási naplókat. A naplóknak meg kell `CREATE` erősíteniük egy bejövő erőforrást és a vezérlő újratöltését. Minden HTTP-tevékenység naplózva van.
+A [kubectl logs][kubectl-logs] paranccsal megtekintheti az Nginx bejövő adatkezelő vezérlőhöz tartozó alkalmazási naplókat. A naplóknak meg kell erősíteniük a bejövő erőforrások `CREATE`ét és a vezérlő újratöltését. Minden HTTP-tevékenység naplózva van.
 
 ```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -273,7 +274,7 @@ service "party-clippy" deleted
 ingress "party-clippy" deleted
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan telepíthet egy HTTPS-védelemmel ellátott bejövő vezérlőt az AK-ban: [https-bejövő forgalom az Azure Kubernetes szolgáltatásban (ak)][ingress-https].
 

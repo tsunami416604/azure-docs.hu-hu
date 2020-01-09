@@ -1,59 +1,58 @@
 ---
-title: Az Azure Stream Analytics ablakkezelési függvényeket bemutatása
-description: Ez a cikk azt ismerteti, négy ablakkezelési függvényeket (átfedésmentes, segítségével tehetjük meg, a késleltetett, munkamenet) az Azure Stream Analytics-feladatok által használt.
-services: stream-analytics
+title: Bevezetés az Azure Stream Analytics Windowing functions használatába
+description: Ez a cikk az Azure Stream Analytics-feladatokban használt négy ablakkezelő függvényt (kihúzást, átugrást, lecsúszást, munkamenetet) ismerteti.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 530ff8d09d6c580a31ae26929fafcec5bb5b471b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369422"
 ---
-# <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés a Stream Analytics ablakkezelési függvényeket
+# <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés az Stream Analytics Windowing functions használatába
 
-Forgatókönyvek idejű streamelés műveleteket hajt végre a historikus windows szereplő adatok a gyakori minta. Stream Analytics ablakkezelési függvényeket, natív támogatással rendelkezik, így a fejlesztők szerzője összetett adatfolyam-feldolgozás feladatokat, minimális erőfeszítéssel.
+A folyamatos átvitelt lehetővé tévő forgatókönyvek esetében az időbeli Windowsban tárolt adatokon végrehajtott műveletek egy gyakori minta. Stream Analytics natív módon támogatja az ablakkezelő függvényeket, így a fejlesztők a lehető legkevesebb erőfeszítéssel hozhatnak létre összetett adatfolyam-feldolgozási feladatokat.
 
-A historikus windows választhat négy fő típusba sorolhatók: [**Átfedésmentes**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [ **segítségével tehetjük meg**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [ **késleltetett**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics), és [ **munkamenet**  ](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) windows.  Ablak nyújtott funkciók használata a [ **GROUP BY** ](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) a lekérdezés szintaxisa a Stream Analytics-feladatok záradékában. Események összesítése használatával több windows keresztül a [ **Windows()** függvény](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
+Négy különböző időbeli időszak közül választhat: a [**kiesés**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), a [**hopping**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), a [**csúszó**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)és a [**munkamenet**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) -ablakok.  A Stream Analytics-feladatok lekérdezési szintaxisának [**Group By**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) záradékában található Window functions kifejezés használható. Az eseményeket a [ **Windows ()** függvénnyel](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)több Windows rendszeren is összesítheti.
 
-Az összes a [ablakkezelési](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) műveleteket, eredményeket a **záró** az ablak. A kimeneti ablak egyszeri esemény használja az aggregate függvény alapján lesz. A kimeneti esemény lesz az ablak végén időbélyegzőjét, és minden ablakfüggvények rögzített hosszúságú lettek definiálva. 
+Az összes [ablakos](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) művelet kimenete az ablak **végén** jelenik meg. Az ablak kimenete egyetlen esemény lesz a használt összesítő függvény alapján. A kimeneti esemény az ablak végének időbélyegzője lesz, és az összes ablak függvény rögzített hosszúságú. 
 
-![Stream Analytics ablakban-függvények alapelvei](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
+![Stream Analytics Window functions – fogalmak](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
-## <a name="tumbling-window"></a>Átfedésmentes ablak
-Átfedésmentes ablak Funkciók adatstream szegmentálja a distinct időpontja részekre, és alkalmasság őket, mint például az alábbi példa segítségével. Az Átfedésmentes ablakok kulcs versenytársaink is, hogy azok ismételje meg, ehhez nincs átfedés, és az esemény nem tartozhat egynél több átfedésmentes ablak.
+## <a name="tumbling-window"></a>Ablak kiesése
+A kieséses ablak függvények az adatfolyamok különböző időszegmensekre való szegmentálására szolgálnak, és a rajtuk végrehajtott függvényeket, például az alábbi példát használják. Az átfedésmentes ablak fő sajátossága, hogy ismétlődik, nincs átfedésben, és egy esemény csak egy átfedésmentes ablakhoz tartozhat.
 
-![Stream Analytics átfedésmentes ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
+![Stream Analytics ablak kiesése](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
-## <a name="hopping-window"></a>Ugróablak
-Ablak Funkciók Ugrás előre meg időben által meghatározott időtartamra. Elképzelhető, hogy könnyen gondol rájuk az Átfedésmentes ablakok, amely átfedésben is, így az események is tartozhat egynél több Hopping ablak eredményhalmaz. Hopping ablak ugyanaz, mint egy Átfedésmentes ablak az Ugrás mérete legyen ugyanaz, mint az ablak mérete adja meg. 
+## <a name="hopping-window"></a>Hopping-ablak
+Az ugróablak típusú függvények egy adott időtartamot ugranak előre az időben. Tulajdonképpen olyan átfedésmentes ablakok, amelyek lehetnek átfedésben, az események így több ugróablak eredményhalmazához is tartozhatnak. Az ablak méretével megegyező ugrások méretének megadásához a beugró ablaknak meg kell egyeznie. 
 
-![Stream Analytics ugróablak](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
+![Stream Analytics hopping-ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
-## <a name="sliding-window"></a>Csúszóablakszerűen történik
-Mozgó ablakfüggvények Átfedésmentes vagy segítségével tehetjük meg a windows, eltérően kimenetet **csak** -esemény bekövetkezésekor. Minden időszak kell legalább egy eseményt, és az ablak folyamatosan előrelépés egy "," (epszilon) által. Egynél több csúszóablakban windows meg, például eseményeket is tartozhat.
+## <a name="sliding-window"></a>Ablak csúsztatása
+A csúszó ablak függvényei, a kieséssel vagy a beugró ablakokkal ellentétben, **csak** egy esemény bekövetkezésekor hoznak létre kimenetet. Minden ablakhoz legalább egy esemény tartozik, amely folyamatosan halad előre egy € (epszilon) egységgel. Az ugróablakhoz hasonlóan egy esemény több csúszóablakhoz is tartozhat.
 
-![Stream Analytics csúszóablakban](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
+![Stream Analytics csúszó ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
-## <a name="session-window"></a>Munkameneti ablakban
-Munkamenet ablakfüggvények csoportosítása hasonló időpontokban érkező események szűri ki a időszakokra, ha nem szerepel megjeleníthető adat. Három fő paraméterekkel rendelkezik: időtúllépés, maximális időtartama és particionálókulcs (nem kötelező).
+## <a name="session-window"></a>Munkamenet-ablak
+A munkamenet-ablak a hasonló időpontokban érkező eseményeket csoportosítja, és kiszűri azokat az időszakokat, ahol nincs adat. Három fő paraméterrel rendelkezik: időtúllépés, maximális időtartam és particionálókulcs (nem kötelező).
 
-![Stream Analytics munkameneti ablakban](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
+![Stream Analytics munkamenet ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
 
-A munkameneti ablakban megkezdi az első esemény bekövetkeztekor. Ha a megadott időkorláton belül egy másik eseményt a legutóbbi feldolgozott esemény következik be, majd az ablak kiterjedjen az új esemény. Ellenkező esetben ha nincsenek események történnek az időkorláton belül, majd az időszak vége, az időkorlátot.
+A munkamenet-ablak az első esemény bekövetkezésekor kezdődik. Ha egy másik esemény kerül be a megadott időkorláton belül az utolsó betöltött eseménytől, akkor az ablak kiterjeszthető az új eseményre. Ellenkező esetben, ha az időkorláton belül nem következnek be események, az ablak bezáródik az időtúllépésnél.
 
-Ha eseményeket a megadott időkorláton belül tartani, a munkameneti ablakban fog tartani kiterjeszti a maximális időtartam eléréséig. A maximális időtartam ellenőrzése intervallumok akkora, mint a megadott maximális időtartam vannak beállítva. Például, ha a maximális időtartam 10, akkor az ellenőrzések, ha az ablak haladhatja meg a maximális időtartam fog történik a t = 0, 10, 20, 30, stb.
+Ha az események a megadott időkorláton belül maradnak, a munkamenet ablaka továbbra is meghosszabbítja a korlátot, amíg el nem éri a maximális időtartamot. A maximális időtartam-ellenőrzési intervallumok a megadott maximális időtartammal megegyező méretre vannak beállítva. Ha például a maximális időtartam 10, akkor a ellenőrzi, hogy az ablak túllépi-e a maximális időtartamot t = 0, 10, 20, 30 stb.
 
-Egy partíciókulcsot áll rendelkezésre, ha az események együtt a kulcs szerint vannak csoportosítva, és a munkameneti ablakban függetlenül van alkalmazva minden egyes csoportra. Ezt a particionálása esetén hasznos esetekben, ahol különböző munkamenet a windows különböző felhasználók vagy eszközök számára.
+A partíciós kulcs megadásakor az eseményeket a kulcs és a munkamenet ablak együttesen csoportosítja az egyes csoportokra egymástól függetlenül. Ez a particionálás olyan esetekben hasznos, amikor különböző felhasználókhoz vagy eszközökhöz eltérő munkamenet-ablakok szükségesek.
 
 
-## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+## <a name="next-steps"></a>Következő lépések
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

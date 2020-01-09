@@ -1,5 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple rövid útmutató – privát felhő létrehozása
+title: 'Rövid útmutató: saját felhő létrehozása'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy privát felhőt az Azure VMware-megoldással a CloudSimple használatával
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452397"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
@@ -57,7 +58,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 
 11. Kattintson **a Tovább gombra: Áttekintés és létrehozás**.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
-13. Kattintson a  **Create** (Létrehozás) gombra.
+13. Kattintson a **Create** (Létrehozás) gombra.
 
 Elindul a felhőalapú kiépítési folyamat.  A privát felhő üzembe helyezése akár két óráig is eltarthat.
 
@@ -113,7 +114,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
-4. Válassza a **felhasználók**lehetőséget.
+4. Válassza a **Felhasználók** lehetőséget.
 5. Kattintson **a saját VPN-konfiguráció letöltése**elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)
@@ -139,7 +140,7 @@ A privát felhő létrehozása után hozzon létre egy VLAN-t, amelyen üzembe h
 5. Válasszon ki egy VLAN-azonosítót a listából.  
 6. Adja meg az alhálózat nevét az alhálózat azonosításához.
 7. Határozza meg az alhálózat CIDR tartományát és maszkját.  Ez a tartomány nem lehet átfedésben a meglévő alhálózatokkal.
-8. Kattintson a **Submit (Küldés**) gombra.
+8. Kattintson a **Submit** (Küldés) gombra.
 
     ![VLAN/alhálózat létrehozása – részletek](media/create-new-vlan-subnet-details.png)
 

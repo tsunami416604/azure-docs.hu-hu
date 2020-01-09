@@ -1,7 +1,7 @@
 ---
 title: 'A permutáció funkció fontossága: modul leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a permutáció funkció fontossági modulját, hogy kiszámítsa a funkció változóinak fontossági sorrendjét a betanított modell és a tesztelési adatkészlet alapján.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a permutáció funkció fontossági modulját Azure Machine Learningban, hogy kiszámítsa a funkció változóinak fontossági sorrendjét a betanított modell és a tesztelési adatkészlet alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b939e88606fba5d7759e55239838d5308bf0563c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428489"
 ---
 # <a name="permutation-feature-importance"></a>A permutáció funkció fontossága
 
@@ -67,6 +67,6 @@ A modul által biztosított rangsorok gyakran eltérnek a [szűrésen alapuló f
 
 A különbség oka, hogy a permutáció funkció fontossága nem méri a szolgáltatás és a célérték közötti társítást. Ehelyett rögzíti, hogy az egyes szolgáltatások milyen mértékben befolyásolják a modell előrejelzéseit.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

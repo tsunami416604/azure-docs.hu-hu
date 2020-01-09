@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037459"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647883"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több always on rendelkezésre állási csoport figyelők konfigurálása – Resource Manager
 Ez a témakör a következőket mutatja be:
@@ -68,7 +68,7 @@ A cikkben szereplő példák a standard Load balancert határozzák meg. A péld
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Alapszintű terheléselosztó létrehozásához távolítsa el `-sku Standard` a terheléselosztó által létrehozott sorból. Például:
+Alapszintű terheléselosztó létrehozásához távolítsa el `-sku Standard` a terheléselosztó által létrehozott sorból. Példa:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
@@ -137,7 +137,7 @@ Az előtér-port az a port, amelyet az alkalmazások a SQL Server-példányhoz v
 > [!NOTE]
 > SQL Server rendelkezésre állási csoportok esetében minden IP-címnek egy adott mintavételi portra van szüksége. Ha például egy terheléselosztó egyik IP-címe a 59999-es mintavételi portot használja, a terheléselosztó más IP-címei nem használhatják az 59999-es mintavételi portot.
 
-* A terheléselosztó korlátaival kapcsolatos információkért lásd: **magánhálózati előtérbeli IP-cím/** terheléselosztó a [hálózati korlátok között – Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* A terheléselosztó korlátaival kapcsolatos információkért lásd: **magánhálózati előtérbeli IP-cím/** terheléselosztó a [hálózati korlátok között – Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * További információ a rendelkezésre állási csoport korlátairól: [korlátozások (rendelkezésre állási csoportok)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 A következő parancsfájl egy új IP-címet helyez el egy meglévő terheléselosztó számára. A ILB a figyelő portot használja a terheléselosztási előtér-porthoz. Ez a port lehet a SQL Server figyelő port. SQL Server alapértelmezett példányai esetében a port 1433. Egy rendelkezésre állási csoport terheléselosztási szabálya egy lebegőpontos IP-címet (közvetlen kiszolgáló-visszaküldést) igényel, így a háttér-port megegyezik az előtér-porttal. Frissítse a környezet változóit. 
@@ -230,7 +230,7 @@ Vegye figyelembe a következő irányelveket a rendelkezésre állási csoport f
 ## <a name="for-more-information"></a>További tudnivalók
 További információ: [Always On rendelkezésre állási csoport konfigurálása az Azure-beli virtuális gépen manuálisan](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
-## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
+## <a name="powershell-cmdlets"></a>PowerShell-parancsok
 Az alábbi PowerShell-parancsmagokkal hozzon létre egy belső Load balancert az Azure Virtual Machines szolgáltatáshoz.
 
 * A [New-AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) létrehoz egy Load balancert. 

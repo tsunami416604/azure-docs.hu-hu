@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929052"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658542"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -81,7 +81,7 @@ Előfordulhat, hogy a fürtök áttelepítésekor külső Azure-szolgáltatások
 * Azure Container Registry
 * Log Analytics
 * Application Insights
-* Traffic Manager
+* Forgalomkezelő
 * Tárfiók
 * Külső adatbázisok
 
@@ -91,7 +91,7 @@ Mivel az áttelepítés során további virtuális gépek lesznek telepítve az 
 
 Előfordulhat, hogy a [hálózati kvóták](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) növelését kell megadnia, hogy ne legyenek kimerítve az IP-címek. További információért lásd: [hálózati és IP-címtartományok](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
-További információ: Azure- [előfizetés és-szolgáltatási korlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
+További információ: Azure- [előfizetés és-szolgáltatási korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
 
 ## <a name="high-availability-and-business-continuity"></a>Magas rendelkezésre állás és Üzletmenet-folytonosság
 

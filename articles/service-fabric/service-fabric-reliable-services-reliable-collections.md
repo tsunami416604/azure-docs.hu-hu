@@ -1,25 +1,14 @@
 ---
-title: A megbízható gyűjtemények bemutatása az Azure Service Fabric állapot-nyilvántartó szolgáltatásokban | Microsoft Docs
+title: A megbízható gyűjtemények bemutatása
 description: Service Fabric állapot-nyilvántartó szolgáltatások megbízható gyűjteményeket biztosítanak, amelyek lehetővé teszik a nagyfokú rendelkezésre állású, méretezhető és kis késleltetésű felhőalapú alkalmazások írását.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 1/3/2019
-ms.author: atsenthi
-ms.openlocfilehash: a7b30003fd02f8ab2e367311cdb3f56c80dbb4b2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599269"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609723"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A megbízható gyűjtemények bemutatása az Azure Service Fabric állapot-nyilvántartó szolgáltatásokban
 
@@ -34,11 +23,11 @@ A megbízható gyűjtemények és más, magas rendelkezésre állású technoló
 
 A megbízható gyűjtemények olyanok, mint a rendszer természetes fejlődése **. gyűjtemények** osztályok: új gyűjtemények, amelyek a Felhőbeli és a többszámítógépes alkalmazások számára lettek kialakítva, a fejlesztő összetettségének növelése nélkül. Így a megbízható gyűjtemények a következők:
 
-* Replikált Az állapot módosításait a rendszer replikálja a magas rendelkezésre állás érdekében.
-* Kitartott Az adatmennyiség a nagy léptékű leállások (például egy adatközpont-áramkimaradás) miatt tartósan tartós lemez.
+* Replikálva: az állapot módosításait a rendszer replikálja a magas rendelkezésre állás érdekében.
+* Megőrzött: az adatmennyiség a nagy léptékű leállások (például adatközpont-áramkimaradás) miatti tartós tárolás miatt marad.
 * Mivel az írások megmaradnak és replikálódnak, nem hozhat létre olyan illékony ReliableDictionary, ReliableQueue vagy más megbízható gyűjteményt, amely csak a memóriában tárolt adatmennyiséget őrzi meg.
-* Aszinkron Az API-k aszinkron módon biztosítják, hogy a szálak ne legyenek letiltva az i/o-műveletek során.
-* Tranzakciós Az API-k a tranzakciók absztrakcióját használják, így egyszerűen kezelhet több megbízható gyűjteményt egy szolgáltatáson belül.
+* Aszinkron: az API-k aszinkron módon biztosítják, hogy a szálak ne legyenek letiltva az i/o-műveletek során.
+* Tranzakciós: az API-k a tranzakciók absztrakcióját használják, így a szolgáltatáson belül több megbízható gyűjtemény is kezelhető.
 
 A megbízható gyűjtemények erős konzisztencia-garanciát biztosítanak az alkalmazás állapotának megkönnyítése érdekében.
 Az erős konzisztencia úgy érhető el, hogy a tranzakciók véglegesítését csak akkor hajtja végre, ha a teljes tranzakciót a replikák többségi kvórumán naplózták, beleértve az elsődlegest is.
@@ -46,17 +35,17 @@ A gyengébb konzisztencia elérése érdekében az alkalmazások visszaigazoljá
 
 A megbízható gyűjtemények API-k az egyidejű gyűjtemények API-k (a **System. Collections. párhuzamos** névtér) fejlődése:
 
-* Aszinkron Egy feladatot ad vissza, mivel a párhuzamos gyűjteményektől eltérően a rendszer replikálja és megőrzi a műveleteket.
-* Nincsenek paraméterek: `ConditionalValue<T>` A egy`bool` és egy értéket ad vissza paraméterek helyett. `ConditionalValue<T>`hasonló `Nullable<T>` , de nem igényel T-t struct-ként.
-* Tranzakciók Egy tranzakciós objektumot használ, amely lehetővé teszi a felhasználó számára, hogy egy tranzakcióban több megbízható gyűjteménybe csoportosítsa a műveleteket.
+* Aszinkron: feladat visszaadása, mivel a párhuzamos gyűjteményektől eltérően a rendszer replikálja és megőrzi a műveleteket.
+* Nincsenek paraméterek: a `ConditionalValue<T>` használatával a paraméterek helyett egy `bool` és egy értéket ad vissza. `ConditionalValue<T>` olyan, mint `Nullable<T>`, de nem szükséges a T struktúrának lennie.
+* Tranzakciók: tranzakció-objektum használatával lehetővé teszi, hogy a felhasználó több megbízható gyűjteményben csoportosítsa a műveleteket egy tranzakcióban.
 
-Ma a **Microsoft. ServiceFabric.** Recollections. Collections három gyűjteményt tartalmaz:
+Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjteményt tartalmaz:
 
-* [Megbízható szótár](https://msdn.microsoft.com/library/azure/dn971511.aspx): A kulcs/érték párok replikált, tranzakciós és aszinkron gyűjteményét jelöli. A **ConcurrentDictionary**hasonlóan a kulcs és az érték is bármilyen típusú lehet.
-* [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): A replikált, tranzakciós és aszinkron, szigorú első-be, első kimenő (FIFO) várólistát jelöli. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
-* [Megbízható párhuzamos üzenetsor](service-fabric-reliable-services-reliable-concurrent-queue.md): Egy replikált, tranzakciós és aszinkron, a legjobb teljesítményt biztosító rendezési várakozási sort jelöl a nagy átviteli sebesség érdekében. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
+* [Megbízható szótár](https://msdn.microsoft.com/library/azure/dn971511.aspx): a kulcs/érték párok replikált, tranzakciós és aszinkron gyűjteményét jelöli. A **ConcurrentDictionary**hasonlóan a kulcs és az érték is bármilyen típusú lehet.
+* [Megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx): a replikált, tranzakciós és aszinkron, szigorú első-be, első kimenő (FIFO) várólistát jelöli. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
+* [Megbízható párhuzamos üzenetsor](service-fabric-reliable-services-reliable-concurrent-queue.md): a nagy átviteli sebesség érdekében a rendszer replikált, tranzakciós és aszinkron módon kezeli a legjobb rendezési várakozási sort. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megbízható gyűjteményekre vonatkozó irányelvek & javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
@@ -67,6 +56,6 @@ Ma a **Microsoft. ServiceFabric.** Recollections. Collections három gyűjtemén
   * [Reliable Collections-szerializáció](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Szerializálás és frissítés](service-fabric-application-upgrade-data-serialization.md)
   * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
-* Továbbiak
+* Egyebek
   * [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
   * [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

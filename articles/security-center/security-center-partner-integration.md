@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479371"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530952"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -47,7 +47,7 @@ A Security Centerből üzembe helyezett Azure biztonsági megoldások automatiku
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Integrált Azure biztonsági megoldások és egyéb adatforrások kezelése
 
-1. Jelentkezzen be az [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Jelentkezzen be az [Azure portálra](https://azure.microsoft.com/features/azure-portal/).
 
 2. A **Microsoft Azure menüben** válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
 
@@ -113,7 +113,7 @@ Azure Security Center összes eseménye Azure Monitor Azure- [tevékenység napl
 
 A következő szakaszok azt ismertetik, hogyan konfigurálható az Event hub adatfolyamként való továbbítása. A lépések azt feltételezik, hogy már van Azure Security Center konfigurálva az Azure-előfizetésében.
 
-### <a name="high-level-overview"></a>Magas szintű áttekintés
+### <a name="high-level-overview"></a>Áttekintés
 
 ![Magas szintű áttekintés](media/security-center-export-data-to-siem/overview.png)
 
@@ -135,7 +135,7 @@ Tekintse meg a következő cikk [stream Activity naplóját Event Hubs](../azure
 
 A monitorozási adatait az Azure Monitor segítségével könnyedén integrálhatja a partner SIEM-és figyelési eszközeivel.
 
-A [támogatott Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub) -listák listáját a következő cikkben tekintheti meg
+A [támogatott Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) -listák listáját a következő cikkben tekintheti meg
 
 ### <a name="example-for-querying-data"></a>Példa az adatlekérdezésre 
 
@@ -143,7 +143,7 @@ A [támogatott Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.m
 
 | **A lekérdezés leírása** | **Lekérdezés** |
 |----|----|
-| Minden riasztás| index=main Microsoft.Security/locations/alerts|
+| Minden riasztás| index = fő Microsoft. Security/Locations/riasztások|
 | Műveletek számának összefoglalása a nevük alapján| index = Main forrás típusa = "Adorján: biztonság" \| Table operationName \| stats Count by operationName|
 | Riasztások információinak beolvasása: idő, név, állapot, azonosító és előfizetés | index = fő Microsoft. Security/Locations/riasztások \| tábla \_idő, tulajdonságok. eventName, állapot, tulajdonságok. operationId, am_subscriptionId |
 

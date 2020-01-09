@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446211"
 ---
 [Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [csomag (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -45,12 +45,14 @@ A Ruby-fájlban importálja a következő csomagokat.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Hozzon létre változókat az erőforráshoz tartozó Azure-végponthoz és-kulcshoz `TEXT_ANALYTICS_ENDPOINT` és `TEXT_ANALYTICS_SUBSCRIPTION_KEY`névvel. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt. 
+Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>Objektummodell 
 
@@ -60,7 +62,7 @@ A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a haszn
 
 A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Text Analytics ügyféloldali kódtár használatával:
 
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-Ebben az osztályban hozzon létre egy `initialize` nevű függvényt az ügyfél hitelesítéséhez. Használja a `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` környezeti változókat. 
+Ebben az osztályban hozzon létre egy `initialize` nevű függvényt az ügyfél hitelesítéséhez a kulcs és a végpont használatával. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
@@ -91,7 +93,7 @@ Az osztályon kívül használja az ügyfél `new()` függvényét a létrehozá
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 
 Az ügyfél objektumban hozzon létre egy `AnalyzeSentiment()` nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját fogadja. Hívja meg az ügyfél `sentiment()` függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
@@ -204,7 +206,7 @@ Document ID: 2
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
 Az ügyfél objektumban hozzon létre egy `ExtractKeyPhrases()` nevű függvényt, amely a később létrehozandó bemeneti dokumentumok listáját fogadja. Hívja meg az ügyfél `key_phrases()` függvényét, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a kinyert kulcs kifejezéseit.
 

@@ -7,15 +7,15 @@ services: iot-pnp
 ms.topic: tutorial
 ms.author: koichih
 author: konichi3
-ms.date: 06/21/2019
-ms.openlocfilehash: 1516a132372a81d06d82de2409c48220f27b8d87
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 12/27/2019
+ms.openlocfilehash: dc2c33659f3f3a3df0f11fcc6ab36a9fc993da43
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878081"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550162"
 ---
-# <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Oktatóanyag: Igazolja a IoT Plug and Play előnézet eszközét
+# <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Oktatóanyag: a IoT Plug and Play előnézeti eszköz tanúsítása
 
 Ha közzé szeretne tenni egy IoT Plug and Play előnézeti eszközt az [Azure Certified for IoT Device Catalog szolgáltatásban](https://aka.ms/iotdevcat), akkor meg kell adnia a minősítési tesztek készletét. Az [Azure Certified for IoT](https://aka.ms/ACFI) portál használatával beküldheti az eszközét minősítésre. Az [Azure IoT Certification Service](https://aka.ms/azure-iot-aics) futtatja a minősítési teszteket.
 
@@ -77,7 +77,7 @@ Ezek a lépések egy lépésből állnak a minősítési tesztek futtatásához,
 1. Jelentkezzen be a portálra a partner Center-fiók használatával.
 1. A minősítési folyamat elindításához kattintson a **Kapcsolódás + tesztelés** elemre.
 1. Válassza ki azt a [hitelesítési módszert](../iot-dps/concepts-security.md#attestation-mechanism) , amellyel az eszközt az [Azure IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)használatával kiépítheti az AICS.
-   * Ha [X. 509 tanúsítványt](../iot-hub/iot-hub-security-x509-get-started.md#prerequisites)használ, töltse fel a generált X. 509 tanúsítványt. Érdemes áttekinteni az X. 509 tanúsítványok használatának módját bemutató mintakód használatát: [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/iothub_ll_client_x509_sample/iothub_ll_client_x509_sample.c), [C#](../iot-hub/iot-hub-security-x509-get-started.md).
+   * Ha [X. 509 tanúsítványt](../iot-hub/iot-hub-security-x509-get-started.md#prerequisites)használ, töltse fel a generált X. 509 tanúsítványt. Érdemes áttekinteni az X. 509 tanúsítványok használatát bemutató mintakód: [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/iothub_ll_client_x509_sample/iothub_ll_client_x509_sample.c), [C#](../iot-hub/iot-hub-security-x509-get-started.md).
    * Ha [szimmetrikus kulcsot](../iot-dps/concepts-symmetric-key-attestation.md)használ, másolja és illessze be a szimmetrikus kulcsot az eszköz kódjába.
    * A TPM-alapú hitelesítési módszer jelenleg nem támogatott.
 1. Másolja és illessze be az alábbi generált azonosítókat az eszköz kódjába.
@@ -96,10 +96,10 @@ Az Áttekintés lapon áttekintheti a felderített IoT Plug and Play felületeit
 1. A megvalósított IoT Plug and Play felületek tesztelésének futtatásához válassza a **tesztek futtatása**lehetőséget.
 1. Az összes teszt automatikusan fut. Ha bármelyik teszt sikertelen, válassza a **naplók megtekintése** lehetőséget a AICS és az Azure IoT hubba küldött nyers telemetria kapcsolatos hibaüzenetek megtekintéséhez.
 1. A minősítési tesztek elvégzéséhez válassza a **Befejezés**lehetőséget.
-1. Tegye közzé a Certified IoT Plug and Play eszközt a katalógusban. Ha a minősített eszközt hozzá szeretné adni a katalógushoz, válassza a **Hozzáadás** a katalógushoz lehetőséget az eszköztáron. Ha a **Hozzáadás** a katalógushoz szürkén jelenik meg, az azt jelenti, hogy a termék adatai hiányosak, vagy a tesztek sikertelenek voltak. 
+1. Tegye közzé a Certified IoT Plug and Play eszközt a katalógusban. Ha a minősített eszközt hozzá szeretné adni a katalógushoz, válassza a **Hozzáadás a katalógushoz** lehetőséget az eszköztáron. Ha a **Hozzáadás a katalógushoz** szürkén jelenik meg, az azt jelenti, hogy a termék adatai hiányosak, vagy a tesztek sikertelenek voltak. 
 1. Válassza a "CERTIFIED és a KATALÓGUSban" hivatkozást a közzétett eszköz az eszköz katalógusban való megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a IoT Plug and Play eszköz tanúsítását, a következő lépés a képesség-modellek kezelésével kapcsolatos további információ:
 

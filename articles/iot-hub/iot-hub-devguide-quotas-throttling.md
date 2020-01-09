@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: daeb09acd11d727b11ad8a7b98d97ff90fddc6d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228261"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457062"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -96,16 +96,16 @@ IoT Hub érvényesíti a többi működési korlátot:
 | Művelet | Korlát |
 | --------- | ----- |
 | Eszközök | Az egyetlen IoT hub-ban regisztrálható eszközök és modulok száma 1 000 000. A korlát növelésének egyetlen módja a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/)való kapcsolódás.|
-| Fájlfeltöltések | 10 egyidejű fájl feltöltése eszközönként. |
+| Fájlfeltöltés | 10 egyidejű fájl feltöltése eszközönként. |
 | <sup>1</sup> . feladatok | Az egyidejű feladatok maximális száma 1 (ingyenes és S1), 5 (S2 esetén) és 10 (S3 esetén). Az egyidejű [eszköz-importálási/exportálási feladatok](iot-hub-bulk-identity-mgmt.md) maximális száma azonban az összes szinten 1. <br/>A feladatok előzményeit 30 napig őrzi meg a rendszer. |
 | További végpontok | A fizetős SKU-hubok 10 további végponttal rendelkezhetnek. Az ingyenes SKU-hubok egy további végponttal rendelkezhetnek. |
 | Üzenet-útválasztási lekérdezések | A fizetős SKU-hubok 100-es útválasztási lekérdezéssel rendelkezhetnek. Előfordulhat, hogy az ingyenes SKU-hubok öt útválasztási lekérdezéssel rendelkeznek. |
 | Üzenetbővítések | A fizetős SKU-hubok legfeljebb 10 üzenet-bővítéssel rendelkezhetnek. Az ingyenes SKU-hubok legfeljebb 2 üzenet-dúsítást tartalmazhatnak.|
-| Eszközről a felhőbe irányuló üzenetkezelés | Az üzenet maximális mérete 256 KB |
+| Eszközről-a-felhőbe típusú üzenetek | Az üzenet maximális mérete 256 KB |
 | A felhőből az eszközre irányuló üzenetkezelés<sup>1</sup> | Az üzenet maximális mérete 64 KB. A kézbesítésre váró üzenetek maximális száma 50 eszközönként. |
 | <sup>1</sup> . közvetlen módszer | A közvetlen metódusok maximális hasznos mérete 128 KB. |
-| Automatikus eszköz-konfigurációk<sup>1</sup> | 100 konfiguráció/fizetős SKU-hub. 20 konfiguráció egy ingyenes SKU-hubhoz. |
-| Automatikus központi telepítések IoT Edge<sup>1</sup> | 20 modul üzembe helyezése. 100 üzemelő példányok fizetős SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
+| Automatikus eszköz-és modul-konfigurációk<sup>1</sup> | 100 konfiguráció/fizetős SKU-hub. 20 konfiguráció egy ingyenes SKU-hubhoz. |
+| Automatikus központi telepítések IoT Edge<sup>1</sup> | 20 modul üzembe helyezése. 100 üzemelő példányok (beleértve a rétegzett központi telepítéseket) fizetett SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
 | Ikrek<sup>1</sup> | A kívánt tulajdonságok maximális mérete és a jelentett tulajdonságok rész 32 KB. A címkék maximális mérete 8 KB. |
 
 <sup>1</sup> Ez a funkció nem érhető el az alapszintű IoT Hub. További információ: [How to Choo the right IoT hub](iot-hub-scaling.md).

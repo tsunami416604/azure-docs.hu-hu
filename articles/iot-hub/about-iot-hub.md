@@ -8,14 +8,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950467"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647407"
 ---
-# <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
+# <a name="what-is-azure-iot-hub"></a>Mi az az Azure IoT Hub?
 
 Az IoT Hub egy olyan felügyelt szolgáltatás, amely a felhőn fut, és amely az IoT-alkalmazás és az általa felügyelt eszközök közötti kétirányú kommunikáció üzenetközpontjaként működik. Az Azure IoT Hub segítségével megbízható és biztonságos kommunikációt használó IoT-megoldásokat készíthet több millió IoT-eszköz és egy felhőalapú háttérmegoldás között. Gyakorlatilag bármilyen eszközt csatlakoztathat az IoT Hubhoz.
 
@@ -85,7 +85,7 @@ Az [IoT Hubhoz](https://azure.microsoft.com/support/legal/sla/iot-hub/) 99,9%-os
 
 Az [Azure IoT eszközoldali SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)-kódtárakkal olyan alkalmazásokat készíthet, amelyek az eszközökön futnak, és az IoT Hubbal kommunikálnak. A támogatott platformok közé tartozik több Linux-disztribúció, Windows és valós idejű operációs rendszer. A támogatott nyelvek közé tartoznak a következők:
 
-* C
+* C#
 * C#
 * Java
 * Python
@@ -97,7 +97,7 @@ Az IoT Hub és az eszközoldali SDK-k a következő protokollokat támogatják a
 * AMQP
 * AMQP webes szoftvercsatornákon keresztül
 * MQTT
-* MQTT WebSocketen keresztül
+* MQTT webes szoftvercsatornákon keresztül
 
 Ha a megoldása nem tudja használni az eszközkódtárakat, az eszközök natív módon csatlakozhatnak a központhoz az MQTT v3.1.1, HTTPS 1.1 vagy AMQP 1.0 protokollokkal.
 
@@ -111,12 +111,16 @@ Ha a megoldás nem tudja használni egyik támogatott protokollt sem, kibővíth
 
 Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, amelyek meggátolják a szolgáltatással való visszaélést, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. Az előfizetések jelenlegi korlátja a 50 IoT hub/előfizetés. A támogatási részlegtől kérheti a kvóta növelését. További információ: [IoT hub kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md). A kvóta korlátaival kapcsolatos további részletekért tekintse meg a következő cikkek egyikét:
 
-* [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md)
+* [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [Az IoT Hub szabályozása és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 
-* [Rövid útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md)
+* [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-node.md)
+
+Ha többet szeretne megtudni arról, hogyan hozhat létre és helyezhet üzembe IoT-megoldásokat az Azure IoT, látogasson el ide:
+
+* [Alapismeretek: az Azure IoT-technológiák és-megoldások](../iot-fundamentals/iot-services-and-technologies.md).

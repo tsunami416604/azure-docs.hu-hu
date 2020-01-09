@@ -3,18 +3,18 @@ title: Node. js-alkalmazás a Socket.io használatával – Azure
 description: Ismerje meg, hogyan használhatja a socket.io-t az Azure-ban üzemeltetett Node. js-alkalmazásokban.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 0b515c630d8a3539cdab1df64b1925e9fcaf206e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360769"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Node. js csevegési alkalmazás létrehozása Azure Cloud Service-Socket.IO
 
@@ -37,10 +37,10 @@ A következő lépésekkel hozza létre a Cloud Service-projektet, amely a Socke
 1. A **Start menüből** vagy a **kezdőképernyőn**keressen rá a **Windows PowerShell**kifejezésre. Végül kattintson a jobb gombbal a **Windows PowerShell** elemre, és válassza **a Futtatás rendszergazdaként**lehetőséget.
    
     ![Azure PowerShell ikon][powershell-menu]
-2. Hozzon létre egy **c:\\Node**nevű könyvtárat. 
+2. Hozzon létre egy **c:\\csomópont**nevű könyvtárat. 
    
         PS C:\> md node
-3. Könyvtárak módosítása a **\\c: node** könyvtárba
+3. Könyvtárak módosítása a **c:\\Node** könyvtárba
    
         PS C:\> cd node
 4. Adja meg a következő parancsokat egy **chatapp** nevű új megoldás létrehozásához, valamint egy **WorkerRole1**nevű feldolgozói szerepkört:
@@ -57,19 +57,19 @@ Ebben a projektben a csevegés példáját fogjuk használni a [Socket.IO GitHub
 
 1. Hozzon létre egy helyi másolatot a tárházból a **klónozás** gomb használatával. A projekt letöltéséhez használhatja a **zip** gombot is.
    
-   ![A böngészőablakban megtekinthető https://github.com/LearnBoost/socket.io/tree/master/examples/chat zip-Letöltés ikon kiemelve](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
-2. Navigáljon a helyi tárház címtár-struktúrájához, amíg meg nem érkezik a **\\példákat tartalmazó csevegési** könyvtárba. Másolja a könyvtár tartalmát a **C:\\\\Node chatapp\\WorkerRole1** könyvtárba, amelyet korábban hozott létre.
+   ![Egy böngészőablakot megtekintő https://github.com/LearnBoost/socket.io/tree/master/examples/chat, a ZIP Letöltés ikon kiemelve](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
+2. Navigáljon a helyi tárház címtár-struktúrájához, amíg meg nem érkezik a **példák\\csevegési** könyvtárba. Másolja a könyvtár tartalmát a **C:\\csomópontra\\chatapp\\WorkerRole1** könyvtárat, amelyet korábban hozott létre.
    
-   ![Explorer – az archívumból kinyert\\példákat tartalmazó csevegő könyvtár tartalmának megjelenítése][chat-contents]
+   ![Explorer – a példák tartalmának megjelenítése\\az archívumból kinyert csevegési könyvtár][chat-contents]
    
-   A fenti képernyőképen szereplő Kiemelt elemek a **\\példákat tartalmazó csevegési** könyvtárból másolt fájlok.
-3. A **C:\\Node\\chatapp\\WorkerRole1** könyvtárban törölje a **Server. js** fájlt, majd nevezze át az **app. js** fájlt a **Server. js**fájlba. Ezzel eltávolítja az **Add-AzureNodeWorkerRole** parancsmag által korábban létrehozott alapértelmezett **Server. js** fájlt, és lecseréli azt a csevegési példa alkalmazás fájljára.
+   A fenti képernyőképen szereplő Kiemelt elemek a **példák\\csevegési** könyvtárból másolt fájlok.
+3. A **C:\\csomópont\\chatapp\\WorkerRole1** könyvtárban törölje a **Server. js** fájlt, majd nevezze át az **app. js** fájlt a **Server. js**fájlba. Ezzel eltávolítja az **Add-AzureNodeWorkerRole** parancsmag által korábban létrehozott alapértelmezett **Server. js** fájlt, és lecseréli azt a csevegési példa alkalmazás fájljára.
 
 ### <a name="modify-serverjs-and-install-modules"></a>A Server. js és a install modulok módosítása
 Mielőtt tesztelni szeretné az alkalmazást az Azure emulatorban, kisebb módosításokat kell végeznie. Hajtsa végre a következő lépéseket a Server. js fájlba:
 
 1. Nyissa meg a **Server. js** fájlt a Visual Studióban vagy bármely szövegszerkesztőben.
-2. Keresés a **modul függőségek** server.js elején szakaszt, és módosítsa a sor tartalmazó **sio = require('..//..//lib//socket.io')** való **sio = require('socket.io')** alább látható módon:
+2. Keresse meg a **modul függőségei** szakaszt a Server. js elején, és módosítsa a **sio = require ('.. //.. lib//socket. IO ")** a **sio = require (' socket. io ')** a következő ábrán látható módon:
    
        var express = require('express')
          , stylus = require('stylus')
@@ -87,11 +87,11 @@ Mielőtt tesztelni szeretné az alkalmazást az Azure emulatorban, kisebb módos
 
 A **Server. js**módosításainak mentése után a következő lépésekkel telepítheti a szükséges modulokat, majd tesztelheti az alkalmazást az Azure emulatorban:
 
-1. A **Azure PowerShell**használatával módosítsa a könyvtárakat a **C\\:\\Node\\chatapp WorkerRole1** könyvtárba, és az alábbi parancs használatával telepítse az alkalmazás által igényelt modulokat:
+1. **Azure PowerShell**használatával módosítsa a könyvtárakat a **C:\\csomópontra\\chatapp\\WorkerRole1** könyvtárba, és használja az alábbi parancsot az alkalmazás által igényelt modulok telepítéséhez:
    
        PS C:\node\chatapp\WorkerRole1> npm install
    
-   Ezzel telepíti a Package. JSON fájlban felsorolt modulokat. A parancs végrehajtása után a következőhöz hasonló kimenetnek kell megjelennie:
+   Ezzel telepíti a Package. JSON fájlban felsorolt modulokat. A parancs végrehajtásának befejeződése után a következőhöz hasonló kimenetnek kell megjelennie:
    
    ![A NPM telepítési parancsának kimenete][The-output-of-the-npm-install-command]
 2. Mivel ez a példa eredetileg a Socket.IO GitHub-tárházának része volt, és a relatív elérési úton közvetlenül hivatkozott a Socket.IO-könyvtárra, a Socket.IO nem hivatkoztak a Package. JSON fájlra, ezért a következő parancs kiadásával kell telepíteni:
@@ -104,11 +104,11 @@ A **Server. js**módosításainak mentése után a következő lépésekkel tele
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Ha problémák merülnek fel az emulátor indításával kapcsolatban, például: Start-AzureEmulator: Váratlan hiba történt.  Részletek: Váratlan hiba történt a kommunikációs objektum, a System. ServiceModel. Channels. ServiceChannel nem használható kommunikációra, mert hibás állapotban van.
+   > Ha problémák merülnek fel az emulátor indításakor, például: Start-AzureEmulator: váratlan hiba történt.  Részletek: váratlan hiba történt a (z) System. ServiceModel. Channels. ServiceChannel kommunikációs objektum nem használható kommunikációra, mert hibás állapotban van.
    > 
    > Telepítse újra a AzureAuthoringTools v 2.7.1 és a AzureComputeEmulator v 2,7 – ellenőrizze, hogy a verzió megfelel-e.
 
-2. Nyisson meg egy böngészőt, **http://127.0.0.1** és navigáljon a gombra.
+2. Nyisson meg egy böngészőt, és navigáljon **http://127.0.0.1** .
 3. Amikor megnyílik a böngészőablak, adjon meg egy becenevet, majd nyomja le az ENTER billentyűt.
    Ez lehetővé teszi az üzenetek adott becenévként való közzétételét. A többfelhasználós funkciók teszteléséhez nyissa meg a további böngészőablakokat ugyanazzal az URL-címmel, és adjon meg különböző beceneveket.
    
@@ -141,7 +141,7 @@ Az alkalmazás mostantól fut az Azure-ban, és a csevegési üzeneteket tovább
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure Cloud Service-ben üzemeltetett alapszintű csevegési alkalmazást. Az alkalmazás Azure-webhelyen való üzemeltetésével kapcsolatos további információkért lásd: [Node. js csevegési alkalmazás létrehozása az socket.IO-mel egy Azure][chatwebsite]-webhelyen.
 
 További információ: a [Node. js fejlesztői központ](https://docs.microsoft.com/azure/javascript/)is.
@@ -166,5 +166,8 @@ További információ: a [Node. js fejlesztői központ](https://docs.microsoft.
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
+
+
+
 
 

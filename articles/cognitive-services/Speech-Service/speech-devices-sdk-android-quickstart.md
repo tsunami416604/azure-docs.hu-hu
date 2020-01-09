@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: ccc6c2554576d91d2236fb84f81c8aeccdc07be7
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380320"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Androidon
 
@@ -65,7 +65,7 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
    >
    > ![Vysor fájl mappája](media/speech-devices-sdk/qsg-10.png)
    >
-   > Kattintson a **Beállítások** elemre. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek** > **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
+   > Válassza a **Beállítások** lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek** > **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
    >
    > ![Vysor MAC-címe](media/speech-devices-sdk/qsg-11.png)
    >
@@ -152,7 +152,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
 1. Kísérlet!
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha nem tud csatlakozni a beszédfelismerési eszközhöz. Írja be a következő parancsot egy parancssori ablakba. Az eszköz az eszközök listáját fogja visszaadni:
 

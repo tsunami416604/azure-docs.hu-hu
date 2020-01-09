@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 7cd922d0e65da627f11e6aab3827cb848c3dd635
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561428"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560522"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -42,7 +42,7 @@ Az egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Acti
 Ha az Azure AD-integrációt a JIRA SAML SSO használatával szeretné konfigurálni a Microsoftnál, a következő elemek szükségesek:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-- A JIRA Core és a szoftver 6,4 – 8,0 vagy a JIRA Service Desk 3,0 a 3,5-re a Windows 64 bites verziójában kell telepíteni és konfigurálni.
+- A JIRA Core és a 6,4 szoftvert a 8.5.1 vagy a JIRA Service Desk 3,0 4.6.0 kell telepíteni és konfigurálni a Windows 64 bites verziójában
 - A JIRA-kiszolgáló HTTPS-kompatibilis
 - Vegye figyelembe, hogy a JIRA beépülő modul támogatott verziói az alábbi szakaszban vannak felsorolva.
 - A JIRA-kiszolgáló elérhető az interneten, különösen az Azure AD bejelentkezési oldalán a hitelesítéshez, és képesnek kell lennie fogadni a jogkivonatot az Azure AD-től.
@@ -61,7 +61,7 @@ Első lépésként a következő elemeket kell megadnia:
 ## <a name="supported-versions-of-jira"></a>A JIRA támogatott verziói
 
 * JIRA Core és Software: 6,4 – 8.5.1
-* JIRA Service Desk 3.0.0 – 4.5.1
+* JIRA Service Desk 3.0.0 – 4.6.0
 * A JIRA a 5,2-es frissítést is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5,2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
@@ -132,7 +132,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

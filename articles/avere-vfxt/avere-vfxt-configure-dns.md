@@ -6,24 +6,24 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416039"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere-fürt DNS-konfigurációja
 
-Ez a szakasz ismerteti a DNS-rendszer konfigurálásának alapjait a avere vFXT-fürt terheléselosztásához. 
+Ez a szakasz ismerteti a DNS-rendszer konfigurálásának alapjait a avere vFXT-fürt terheléselosztásához.
 
-Ez a dokumentum *nem tartalmaz* utasításokat a DNS-kiszolgáló Azure-környezetben történő beállításához és kezeléséhez. 
+Ez a dokumentum *nem tartalmaz* utasításokat a DNS-kiszolgáló Azure-környezetben történő beállításához és kezeléséhez.
 
-Az Azure-beli vFXT-fürtök terheléselosztása helyett használjon kézi metódusokat, hogy az ügyfelek között egyenletesen rendeljen IP-címeket a csatlakoztatásuk során. [A avere-fürt csatlakoztatása](avere-vfxt-mount-clients.md)számos módszert ismertet. 
+Az Azure-beli vFXT-fürtök terheléselosztása helyett használjon kézi metódusokat, hogy az ügyfelek között egyenletesen rendeljen IP-címeket a csatlakoztatásuk során. [A avere-fürt csatlakoztatása](avere-vfxt-mount-clients.md)számos módszert ismertet.
 
-Tartsa szem előtt ezeket a dolgokat, amikor eldönti, hogy használ-e DNS-kiszolgálót: 
+Tartsa szem előtt ezeket a dolgokat, amikor eldönti, hogy használ-e DNS-kiszolgálót:
 
-* Ha a rendszer csak az NFS-ügyfelek számára érhető el, a DNS használata nem kötelező – az összes hálózati címet numerikus IP-címek használatával lehet megadni. 
+* Ha a rendszer csak az NFS-ügyfelek számára érhető el, a DNS használata nem kötelező – az összes hálózati címet numerikus IP-címek használatával lehet megadni.
 
 * Ha a rendszer támogatja az SMB (CIFS) elérését, a DNS-t kötelező megadni, mert meg kell adnia egy DNS-tartományt a Active Directory-kiszolgálóhoz.
 
@@ -41,12 +41,12 @@ Az optimális teljesítmény érdekében konfigurálja úgy a DNS-kiszolgálót,
 
 A bal oldalon megjelenik egy fürt VServer, és az IP-címek a központban és a jobb oldalon jelennek meg. Konfigurálja az egyes ügyfél-hozzáférési pontokat egy rekordokkal és mutatókkal az ábrán látható módon.
 
-![avere-fürt ciklikus multiplexelés DNS-diagramja](media/avere-vfxt-rrdns-diagram.png) 
+![avere-fürt ciklikus multiplexelés DNS-diagramja](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Minden ügyfél felé irányuló IP-címnek egyedi névvel kell rendelkeznie a fürt belső használatára. (Ebben a diagramban az ügyfél IP-címeinek neve vs1-Client-IP-*, az éles környezetben azonban érdemes lehet valami tömörebb, például az ügyfél * esetében használni.)
 
-Az ügyfelek a VServer nevével csatlakoztatják a fürtöt a kiszolgálói argumentumként. 
+Az ügyfelek a VServer nevével csatlakoztatják a fürtöt a kiszolgálói argumentumként.
 
 A DNS-kiszolgáló ``named.conf`` fájljának módosításával ciklikus sorrendet állíthat be a VServer való lekérdezésekhez. Ezzel a beállítással biztosíthatja, hogy az összes elérhető érték a következőn keresztül történjen:. Adjon hozzá egy, a következőhöz hasonló utasítást:
 
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-A következő nsupdate-parancsok a DNS helyes konfigurálására mutatnak példát:
+A következő ``nsupdate`` parancsok a DNS helyes konfigurálására szolgálnak példát:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -78,8 +78,6 @@ Válassza ki azt a DNS-kiszolgálót, amelyet a vFXT-fürt a **fürt** > **felü
 
 * DNS-kiszolgáló címe
 * DNS-tartománynév
-* DNS search domains
+* DNS-keresési tartományok
 
 A lap használatával kapcsolatos további részletekért olvassa el a [DNS-beállításokat](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) a avere-fürt konfigurációs útmutatójában.
-
-

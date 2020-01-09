@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435101"
 ---
 # <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
@@ -30,11 +30,10 @@ Az alkalmazás sablonjai a következőkből állnak:
 
 Az Ön által választott alkalmazás-sablon meghatározza, hogy az alkalmazás a IoT Central előzetes verziójának funkcióit használja-e, például Plug and Play az eszközökhöz.
 
-Jelenleg az _általánosan elérhető_ szolgáltatásokat használó alkalmazás-sablonok a következők:
+Az _általánosan elérhető_ szolgáltatásokat használó alkalmazás-sablon jelenleg a következőket használja:
 
-- Egyéni alkalmazás > egyéni alkalmazás
-- Egyéni alkalmazás > minta contoso
-- Egyéni alkalmazás > minta Devkits
+- Custom App > örökölt alkalmazás
+
 
 Jelenleg a _nyilvános előzetes_ verzió funkcióit használó alkalmazás-sablonok a következők:
 
@@ -52,7 +51,7 @@ Jelenleg a _nyilvános előzetes_ verzió funkcióit használó alkalmazás-sabl
 - Egészségügyi > folyamatos beteg monitorozása
 
 > [!NOTE]
-> Az **egyéni alkalmazás, a contoso, a minta Devkits** -sablonok jelenleg a **Egyesült Államokban**, **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**vagy az **Európa** helyein érhetők el, míg más sablonok jelenleg csak **Európában** és **USA** -beli helyszíneken érhetők el.
+> Az **örökölt alkalmazási** sablonok jelenleg a **Egyesült Államokban**, **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**vagy az **Európa** helyein érhetők el, míg más sablonok jelenleg csak **Európában** és **USA** -beli helyszíneken érhetők el.
 
 ## <a name="industry-focused-templates"></a>Iparági fókuszált sablonok
 
@@ -60,13 +59,13 @@ Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalma
 
 - [Kiskereskedelmi](../retail/overview-iot-central-retail-pnp.md)
   - Összekapcsolt logisztika
-  - Digitális terjesztési központ
+  - Digitális elosztási központ
   - Tárolt elemzési állapot figyelése
   - Tárolt elemzések – pénztár
   - Intelligens leltár kezelése
 - [Energiafogyasztás](../energy/overview-iot-central-energy.md)
-  - Intelligens fogyasztásmérő figyelése
-  - Napelemek figyelése
+  - Intelligens fogyasztásmérő monitorozása
+  - Napelempanel monitorozása
 - [Kormány](../government/overview-iot-central-government.md)
   - Összekapcsolt hulladékgazdálkodás
   - Vízfogyasztás figyelése

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707130"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442761"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -40,7 +40,7 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 <a name="databricks">4</a> – Azure Databricks a Spark-összekötő használata jelenleg nem támogatott.   
 <a name="gen2">5</a> – ADLS Gen2 összekötő jelenleg nem támogatott, de az Azure Blob Storage Connector ADLS Gen2 adatforrással is használható.   
 
-## <a name="other-data-sources"></a>Egyéb adatforrások
+## <a name="other-data-sources"></a>Más adatforrások
 
 |Adatforrás | Memóriabeli | DirectQuery |Megjegyzések   |
 |  --- | --- | --- | --- |
@@ -57,12 +57,12 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |JSON-dokumentum      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Bináris sorok      | Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |MySQL-adatbázis     | Igen | Nem |  |
-|OData-csatorna      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|OData-adatcsatorna      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |ODBC-lekérdezés     | Igen | Nem |  |
 |OLE DB     |   Igen | Nem |  |
 |Oracle  | Igen  |Igen  | <sup>[9](#oracle)</sup> |
-|PostgreSQL-adatbázis   | Igen | Nem | <sup>[6](#tab1400b)</sup> |
-|Salesforce objektumok|  Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|PostgreSQL Database   | Igen | Nem | <sup>[6](#tab1400b)</sup> |
+|Salesforce-objektumok|  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Salesforce-jelentések |Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Igen | Nem |  |
 |SAP Business Warehouse    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
@@ -87,7 +87,7 @@ Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatl
 
 ## <a name="understanding-providers"></a>Szolgáltatók ismertetése
 
-Táblázatos 1400 és a Visual Studióban a magasabb modellbeli projektek létrehozásakor alapértelmezés szerint nem adhat meg adatszolgáltatót adatforráshoz való csatlakozáskor az **adatlekérdezés**használatával. A táblázatos 1400-es és újabb modellek [Power Query](/power-query/power-query-what-is-power-query.md) összekötőket használnak a kapcsolatok, az adatlekérdezések és az adatforrások és a Analysis Services közötti adategyesítések kezelésére. Ezeket más néven *strukturált* adatforrás-kapcsolatoknak nevezzük, amelyekben a kapcsolati tulajdonságok beállításai vannak beállítva. Engedélyezheti azonban az örökölt adatforrásokat is. Ha engedélyezve van, a **Táblázat importálása varázslóval** kapcsolódhat a táblázatos 1200-ben hagyományosan támogatott adatforrásokhoz, valamint az *örökölt*vagy *szolgáltatói* adatforrásként használt alacsonyabb modellekhez. Ha szolgáltatói adatforrásként van megadva, megadhat egy adott adatszolgáltatót és egyéb speciális kapcsolódási tulajdonságokat. Csatlakozhat például egy helyszíni SQL Server adattárházhoz, vagy akár egy Azure SQL Database örökölt adatforrásként. Ezután kiválaszthatja a OLE DB illesztőprogramot SQL Server MSOLEDBSQL adatszolgáltatóhoz. Ebben az esetben egy OLE DB adatszolgáltató kiválasztása nagyobb teljesítményt biztosíthat az Power Query-összekötőn keresztül. 
+Táblázatos 1400 és a Visual Studióban a magasabb modellbeli projektek létrehozásakor alapértelmezés szerint nem adhat meg adatszolgáltatót adatforráshoz való csatlakozáskor az **adatlekérdezés**használatával. A táblázatos 1400-es és újabb modellek [Power Query](/power-query/power-query-what-is-power-query) összekötőket használnak a kapcsolatok, az adatlekérdezések és az adatforrások és a Analysis Services közötti adategyesítések kezelésére. Ezeket más néven *strukturált* adatforrás-kapcsolatoknak nevezzük, amelyekben a kapcsolati tulajdonságok beállításai vannak beállítva. Engedélyezheti azonban az örökölt adatforrásokat is. Ha engedélyezve van, a **Táblázat importálása varázslóval** kapcsolódhat a táblázatos 1200-ben hagyományosan támogatott adatforrásokhoz, valamint az *örökölt*vagy *szolgáltatói* adatforrásként használt alacsonyabb modellekhez. Ha szolgáltatói adatforrásként van megadva, megadhat egy adott adatszolgáltatót és egyéb speciális kapcsolódási tulajdonságokat. Csatlakozhat például egy helyszíni SQL Server adattárházhoz, vagy akár egy Azure SQL Database örökölt adatforrásként. Ezután kiválaszthatja a OLE DB illesztőprogramot SQL Server MSOLEDBSQL adatszolgáltatóhoz. Ebben az esetben egy OLE DB adatszolgáltató kiválasztása nagyobb teljesítményt biztosíthat az Power Query-összekötőn keresztül. 
 
 Ha a Visual Studióban a tábla importálása varázslót használja, az adatforrásokhoz való kapcsolódáshoz adatszolgáltató szükséges. Az alapértelmezett adatszolgáltató van kiválasztva. Szükség esetén módosíthatja az adatszolgáltatót. A választott szolgáltató típusa a teljesítménytől függ, függetlenül attól, hogy a modell memóriában tárolt tárolót vagy DirectQuery használ-e, és Analysis Services platformot, amelybe üzembe helyezi a modellt.
 

@@ -1,54 +1,45 @@
 ---
-title: Rendelkezésre állási zónák között egy Azure Service Fabric-fürt üzembe helyezése |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre az Azure Service Fabric-fürt rendelkezésre állási zónák között.
-services: service-fabric
-documentationcenter: .net
+title: Fürt üzembe helyezése Availability Zoneson keresztül
+description: Ismerje meg, hogyan hozhat létre Azure Service Fabric-fürtöt a Availability Zones között.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: b664c3d655ab45c89a65a0aea31622f57ddc8d9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077455"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609978"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Rendelkezésre állási zónák között egy Azure Service Fabric-fürt üzembe helyezése
-Az Azure-beli rendelkezésre állási zónák a magas rendelkezésre állást kínál, amely megvédi alkalmazásait és adatait az adatközpontok meghibásodásai. A rendelkezésre állási zónában az egy egyedi fizikai hely, független áramellátással, felszerelt, hűtés és hálózati egy Azure-régióban.
+# <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
+Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
 
-A Service Fabric-fürtök rendelkezésre állási zónák között a zónához rögzített csomóponttípusok üzembe helyezésével span támogatja. Ez biztosítja a magas rendelkezésre állás az alkalmazások. Azure-beli rendelkezésre állási zónák csak érhetők el minden régióban. További információkért lásd: [Azure rendelkezésre állási zónák áttekintésének](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric támogatja a különböző Availability Zonesokra kiterjedő fürtöket, ha olyan csomópont-típusokat telepít, amelyek meghatározott zónákra vannak rögzítve. Ez biztosítja az alkalmazások magas rendelkezésre állását. Azure Availability Zones csak a kiválasztott régiókban érhetők el. További információ: [Azure Availability Zones Overview (áttekintés](https://docs.microsoft.com/azure/availability-zones/az-overview)).
 
-Mintasablonok érhetők el: [A Service Fabric adatbázisközi rendelkezésre állási zóna sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+A sablonok elérhetők: [Service Fabric több rendelkezésre állási zóna sablonja](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
-## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Ajánlott az elsődleges csomópont típusú rendelkezésre állási zónák között átfedés Azure Service Fabric-fürtök topológiája
-Service Fabric-fürt rendelkezésre állási zónák között elosztott biztosítja, hogy a fürt állapotának magas rendelkezésre állás. Service Fabric-fürt span zónák között, létre kell hoznia egy elsődleges csomóponttípus minden rendelkezésre állási zónában az a régió támogatja. Ez lesz magcsomópontok egyenletes elosztása az elsődleges csomóponttípusok száma mindegyik.
+## <a name="recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones"></a>Ajánlott topológia az Azure-Service Fabric fürtök elsődleges csomópont-típusához Availability Zones
+A Availability Zones között elosztott Service Fabric-fürtök biztosítják a fürt állapotának magas rendelkezésre állását. Ha Service Fabric fürtöt a zónák között, a régió által támogatott összes rendelkezésre állási zónában létre kell hoznia egy elsődleges csomópont-típust. Ez egyenletesen osztja el a magok csomópontjait az egyes elsődleges csomópontok típusai között.
 
-Az elsődleges csomóponttípushoz a javasolt topológiát az alábbi erőforrásokat igényel:
+Az elsődleges csomópont típusához javasolt topológiához az alábbi erőforrások szükségesek:
 
-* A fürt megbízhatósági szintje Platinum.
-* Három csomóponttípusok megjelölni elsődlegesként.
-    * Mindegyik csomóponttípus hozzá kell rendelni a saját virtuálisgép-méretezési eltérő zónában található.
-    * Minden egyes virtuálisgép-méretezési csoportot kell rendelkeznie legalább öt csomópont (Silver szintű tartósságot).
-* Egyetlen nyilvános IP-erőforrást használ, a Standard Termékváltozat.
-* Egyetlen terheléselosztó erőforrást használ, a Standard Termékváltozat.
-* Egy NSG-t az alhálózatot, amelyben a virtuálisgép-méretezési csoportok üzembe hivatkozik.
+* A fürt megbízhatósági szintje Platinum értékre van állítva.
+* Három csomópontos típus van megjelölve elsődlegesként.
+    * Minden csomópont-típust hozzá kell rendelni a saját virtuálisgép-méretezési csoporthoz, amely különböző zónákban található.
+    * Minden virtuálisgép-méretezési csoportnak legalább öt csomóponttal kell rendelkeznie (ezüst tartósság).
+* Egyetlen nyilvános IP-erőforrás szabványos SKU használatával.
+* Egyetlen Load Balancer erőforrás szabványos SKU használatával.
+* Az alhálózat által hivatkozott NSG, amelyben üzembe helyezi a virtuálisgép-méretezési csoportokat.
 
 >[!NOTE]
-> A virtuálisgép-méretezési egyetlen elhelyezési csoport tulajdonság igaz értékre, mivel a Service Fabric nem támogatja a zónák kiterjedő egyetlen virtuális gép méretezési értékre kell állítani.
+> A virtuálisgép-méretezési csoport egyhelyes csoportok tulajdonságát igaz értékre kell állítani, mivel Service Fabric nem támogatja egyetlen virtuálisgép-méretezési csoportot, amely zónákra terjed ki.
 
- ![Az Azure Service Fabric rendelkezésre állási zónában architektúra][sf-architecture]
+ ![Azure Service Fabric rendelkezésre állási zóna architektúrája][sf-architecture]
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
-### <a name="public-ip-and-load-balancer-resource"></a>Nyilvános IP-cím és a terheléselosztó-erőforráshoz
-Ahhoz, hogy a virtuálisgép-méretezési csoportot a tulajdonsága erőforrást, a terheléselosztó és az IP-erőforrás hivatkozik rá, hogy a virtuálisgép-méretezési zónák is kell használnia egy *Standard* Termékváltozat. Egy terheléselosztó vagy IP-erőforrást az SKU tulajdonság nélkül létrehozása hoz létre egy alapszintű Termékváltozat, amely nem támogatja a rendelkezésre állási zónák. Standard Termékváltozatú terheléselosztó kívülről származó összes forgalmat blokkolja a alapértelmezett; Ahhoz, hogy a forgalom kívülről, telepíteni kell egy NSG-t az alhálózathoz.
+### <a name="public-ip-and-load-balancer-resource"></a>Nyilvános IP-cím és Load Balancer erőforrás
+Ha engedélyezni szeretné a zónák tulajdonságot egy virtuálisgép-méretezési csoport erőforrásán, a terheléselosztó és az adott virtuálisgép-méretezési csoport által hivatkozott IP-erőforrásnak is *szabványos* SKU-t kell használnia. Egy terheléselosztó vagy IP-erőforrás az SKU tulajdonság nélkül való létrehozása egy alapszintű SKU-t hoz létre, amely nem támogatja a Availability Zones. A standard SKU Load Balancer alapértelmezés szerint letiltja a kívülről érkező összes forgalmat. a külső forgalom engedélyezéséhez telepíteni kell egy NSG az alhálózatra.
 
 ```json
 {
@@ -96,10 +87,10 @@ Ahhoz, hogy a virtuálisgép-méretezési csoportot a tulajdonsága erőforrást
 ```
 
 >[!NOTE]
-> Nem alkalmas a nyilvános IP-cím és a load balancer-erőforrások egy helyi módosítása termékváltozat tennie. A meglévő erőforrások, amelyek rendelkeznek egy alapszintű Termékváltozat telepít át, ha ez a cikk a migrálás című szakaszában talál.
+> A nyilvános IP-címek és a terheléselosztó erőforrásainak helybeni módosítása nem lehetséges. Ha egy alapszintű SKU-val rendelkező meglévő erőforrásról végez áttelepítést, tekintse meg a jelen cikk áttelepítés című szakaszát.
 
-### <a name="virtual-machine-scale-set-nat-rules"></a>Virtuálisgép-méretezési NAT-szabályok
-A terheléselosztó bejövő NAT-szabályok egyeznie kell a NAT-készletek a virtuálisgép-méretezési csoportban. Minden egyes virtuálisgép-méretezési rendelkeznie kell egy egyedi bejövő NAT-készletet.
+### <a name="virtual-machine-scale-set-nat-rules"></a>Virtuálisgép-méretezési csoport NAT-szabályai
+A terheléselosztó bejövő NAT-szabályainak meg kell egyezniük a virtuálisgép-méretezési csoport NAT-készletével. Minden virtuálisgép-méretezési csoportnak rendelkeznie kell egy egyedi bejövő NAT-készlettel.
 
 ```json
 {
@@ -144,18 +135,18 @@ A terheléselosztó bejövő NAT-szabályok egyeznie kell a NAT-készletek a vir
 }
 ```
 
-### <a name="standard-sku-load-balancer-outbound-rules"></a>Standard Termékváltozatú terheléselosztó kimenő szabályok
-Standard Load Balancer és a Standard nyilvános IP-cím bevezetni új funkciókat vehetnek igénybe, és különböző beállításokat a kimenő kapcsolatot, ha alapszintű SKU-k használatához képest. Kimenő kapcsolat azt szeretné, ha Standard termékváltozatok dolgozik, ha explicit módon definiálnia kell azt a Standard nyilvános IP-címeket vagy nyilvános terheléselosztót. További információkért lásd: [kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) és [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+### <a name="standard-sku-load-balancer-outbound-rules"></a>Szabványos SKU Load Balancer kimenő szabályok
+A standard Load Balancer és a standard nyilvános IP-címek új képességeket és különböző viselkedéseket vezetnek be a kimenő kapcsolatokhoz az alapszintű SKU-hoz képest. Ha standard SKU-kal dolgozik a kimenő kapcsolaton, explicit módon meg kell határoznia a standard nyilvános IP-címeket vagy a standard nyilvános Load Balancer. További információ: [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) és [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
 >[!NOTE]
-> A standard sablon hivatkozik egy NSG-t, amely lehetővé teszi minden kimenő forgalom alapértelmezés szerint. Bejövő forgalom a Service Fabric-management műveletekhez szükséges portokról korlátozódik. Az NSG-szabályok az igényeknek is módosítható.
+> A standard sablon egy olyan NSG hivatkozik, amely alapértelmezés szerint engedélyezi az összes kimenő forgalmat. A bejövő forgalom a Service Fabric felügyeleti műveletekhez szükséges portokra korlátozódik. A NSG-szabályok módosíthatók a követelmények teljesítése érdekében.
 
-### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Állítsa be a virtuálisgép-méretezési csoportot zónák engedélyezése
-A zóna engedélyezéséhez állítsa be, a virtuálisgép-méretezési csoportot tartalmaznia kell a következő három érték található a virtuálisgép-méretezési készlet erőforrás.
+### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Zónák engedélyezése virtuálisgép-méretezési csoportokban
+Ha egy zónát szeretne engedélyezni egy virtuálisgép-méretezési csoporton, a következő három értéket kell tartalmaznia a virtuálisgép-méretezési csoport erőforrásaiban.
 
-* Az első érték a **zónák** tulajdonság, amely meghatározza, melyik rendelkezésre állási zónában, a virtuális gép méretezési telepítve lesz.
-* A második érték a "singlePlacementGroup" tulajdonság, amely állítsa igaz értékre.
-* A harmadik értéke a Service Fabric virtuálisgép-méretezési csoport bővítményének "faultDomainOverride" tulajdonsága. Ez a tulajdonság értéke tartalmaznia kell a régió és zóna, amelyben a virtuálisgép-méretezési kerülnek. Példa: "faultDomainOverride": "eastus/az1" minden virtuális gép méretezési erőforrások ugyanabban a régióban kell elhelyezni, mert nem rendelkezik Azure Service Fabric-fürtök platformfüggetlen régió támogatása.
+* Az első érték a **Zones** tulajdonság, amely megadja, hogy melyik rendelkezésre állási zónát telepíti a rendszer a virtuálisgép-méretezési csoport számára.
+* A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani.
+* A harmadik érték a Service Fabric virtuálisgép-méretezési csoport bővítményének "faultDomainOverride" tulajdonsága. Ennek a tulajdonságnak az értékének tartalmaznia kell azt a régiót és zónát, amelyben a virtuálisgép-méretezési csoport el lesz helyezve. Példa: "faultDomainOverride": "eastus/az1" a virtuálisgép-méretezési csoport összes erőforrását ugyanabba a régióba kell helyezni, mert az Azure Service Fabric-fürtök nem rendelkeznek több régiós támogatással.
 
 ```json
 {
@@ -195,8 +186,8 @@ A zóna engedélyezéséhez állítsa be, a virtuálisgép-méretezési csoporto
 }
 ```
 
-### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>A Service Fabric-fürt erőforrás több elsődleges csomóponttípusok engedélyezése
-Egy vagy több csomópont típus beállítása a fürt erőforrásai elsődlegesként, állítsa be a "isPrimary" tulajdonságot "true". A Service Fabric-fürt üzembe helyezése a rendelkezésre állási zónák között, amikor különböző zónák három csomóponttípusok kell rendelkeznie.
+### <a name="enabling-multiple-primary-node-types-in-the-service-fabric-cluster-resource"></a>Több elsődleges csomópont típusának engedélyezése a Service Fabric fürterőforrás
+Ha egy vagy több csomópontot szeretne elsődlegesként beállítani egy fürt erőforrásában, állítsa a "isPrimary" tulajdonságot "true" értékre. Service Fabric-fürt Availability Zones-beli üzembe helyezése során három csomópont-típust kell tartalmaznia különálló zónákban.
 
 ```json
 {
@@ -254,20 +245,20 @@ Egy vagy több csomópont típus beállítása a fürt erőforrásai elsődleges
 }
 ```
 
-## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>A rendelkezésre állási zónák használatára a fürthöz egy alapszintű Termékváltozatú terheléselosztó és a egy alapszintű Termékváltozat IP-cím használata
-A fürt, amely használta egy terheléselosztó és az IP egy alapszintű termékváltozatú, először létre kell hoznia egy teljesen új terheléselosztó és az IP-cím erőforrás a standard Termékváltozat használatával. Nem alkalmas ezen erőforrások helyben frissíteni.
+## <a name="migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrálás a fürt Availability Zones használatára egy alapszintű SKU Load Balancer és egy alapszintű SKU IP-cím használatával
+Ha olyan fürtöt szeretne áttelepíteni, amely egy alapszintű SKU-val Load Balancer és IP-címet használ, először létre kell hoznia egy teljesen új Load Balancer és IP-erőforrást a szabványos SKU használatával. Ezeket az erőforrásokat helyben nem lehet frissíteni.
 
-Az új LB és IP-az új közötti rendelkezésre állási zónában csomópont típusa, amely a használni kívánt lehet hivatkozni. A példában a fenti három új virtuálisgép-méretezési csoport erőforrásainak zónákban 1,2 és 3 bővült. Ezen virtuálisgép-méretezési csoport állítja be a hivatkozást az újonnan létrehozott LB és IP- és a Service Fabric fürterőforrás az elsődleges csomóponttípusok vannak megjelölve.
+Az új LB-t és IP-címet a használni kívánt új rendelkezésre állási zónák csomópont-típusaira kell hivatkozni. A fenti példában három új virtuálisgép-méretezési csoport erőforrásai lettek hozzáadva az 1., 2. és 3. zónához. Ezek a virtuálisgép-méretezési csoportok az újonnan létrehozott LB-re és IP-re hivatkoznak, és elsődleges csomópont-típusként vannak megjelölve a Service Fabric fürterőforrás számára.
 
-Ha szeretné elkezdeni, szüksége lesz az új erőforrások hozzáadása a meglévő Resource Manager-sablon. Ilyen erőforrások többek között:
-* Nyilvános IP-erőforrást használ, a Standard Termékváltozat.
-* Használatával a Standard Termékváltozatú terheléselosztó erőforrást.
-* Egy NSG-t az alhálózatot, amelyben a virtuálisgép-méretezési csoportok üzembe hivatkozik.
-* Három csomóponttípusok megjelölni elsődlegesként.
-    * Mindegyik csomóponttípus hozzá kell rendelni a saját virtuálisgép-méretezési eltérő zónában található.
-    * Minden egyes virtuálisgép-méretezési csoportot kell rendelkeznie legalább öt csomópont (Silver szintű tartósságot).
+A kezdéshez hozzá kell adnia az új erőforrásokat a meglévő Resource Manager-sablonhoz. Ezek az erőforrások a következők:
+* A standard SKU-t használó nyilvános IP-erőforrás.
+* A standard SKU-t használó Load Balancer erőforrás.
+* Az alhálózat által hivatkozott NSG, amelyben üzembe helyezi a virtuálisgép-méretezési csoportokat.
+* Három csomópontos típus van megjelölve elsődlegesként.
+    * Minden csomópont-típust hozzá kell rendelni a saját virtuálisgép-méretezési csoporthoz, amely különböző zónákban található.
+    * Minden virtuálisgép-méretezési csoportnak legalább öt csomóponttal kell rendelkeznie (ezüst tartósság).
 
-Ezeket az erőforrásokat egy példát találhat a [mintasablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure).
+Ilyen erőforrások például a [minta sablonban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)találhatók.
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -276,7 +267,7 @@ New-AzureRmResourceGroupDeployment `
     -TemplateParameterFile $Parameters
 ```
 
-Miután az erőforrások végzett üzembe helyezéséhez, tiltsa le az elsődleges csomóponttípushoz, az eredeti fürtben lévő csomópontok megkezdéséhez. A csomópontok le vannak tiltva, mert a helyrendszeri szolgáltatások az új elsődleges csomóponttípushoz, amely korábban telepítve lett az előző lépés során migrálja.
+Az erőforrások telepítésének befejezése után megkezdheti a csomópontok letiltását az elsődleges csomópont típusa alapján az eredeti fürtből. Mivel a csomópontok le vannak tiltva, a rendszerszolgáltatások a fenti lépésben üzembe helyezett új elsődleges csomópont-típusra lesznek áttelepítve.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
@@ -298,7 +289,7 @@ foreach($name in $nodeNames) {
 }
 ```
 
-Miután a csomópontok minden letiltva, a rendszer szolgáltatások futni fog az elsődleges csomóponttípushoz, amely zónák között megoszlik. Ezt követően eltávolíthatja a letiltott csomópontot a fürtből. Miután a csomópontok el lesznek távolítva, eltávolíthatja az eredeti IP, a terheléselosztó, és virtuális gép méretezési erőforrások.
+Ha a csomópontok le vannak tiltva, a rendszerszolgáltatások az elsődleges csomópont-típuson futnak, amely a zónák között oszlik meg. Ezután eltávolíthatja a letiltott csomópontokat a fürtből. A csomópontok eltávolítása után eltávolíthatja az eredeti IP-címet, a Load Balancer és a virtuálisgép-méretezési csoport erőforrásait.
 
 ```powershell
 foreach($name in $nodeNames){
@@ -318,9 +309,9 @@ Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 ```
 
-Ezután távolítsa el ezeket az erőforrásokat a Resource Manager-sablonnal üzembe helyezett kellett a hivatkozásokat.
+Ezután el kell távolítania az erőforrásokra mutató hivatkozásokat a telepített Resource Manager-sablonból.
 
-Az utolsó lépés magában foglalja a DNS-nevet és a nyilvános IP-cím frissítése.
+Az utolsó lépés a DNS-név és a nyilvános IP-cím frissítését is magában foglalja.
 
 ```powershell
 $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname

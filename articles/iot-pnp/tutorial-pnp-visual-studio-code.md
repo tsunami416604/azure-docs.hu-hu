@@ -3,18 +3,18 @@ title: IoT-Plug and Play előnézeti eszköz létrehozása és tesztelése | Mic
 description: Az eszköz fejlesztőinek tekintse meg, hogyan lehet a VS Code használatával új eszköz-képesség modellt létrehozni és tesztelni egy IoT Plug and Play előnézeti eszközhöz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569883"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550281"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Oktatóanyag: eszköz-képesség modell létrehozása és tesztelése a Visual Studio Code használatával
 
@@ -311,7 +311,7 @@ A VS Code-hoz készült **Azure IoT Tools** használatával létrehozhat csontv�
 
 1. Válassza a **Vcpkg keresztül** lehetőséget az eszköz SDK-nak való felvételéhez.
 
-A VS Code létrehozza a C-kód csontvázát, és a **sensorbox_app** mappában menti a fájlokat a **modelcode** mappában. A VS Code egy új ablakot nyit meg, amely a generált programkódokat tartalmazza.
+A VS Code létrehozza a C-kód csontvázát, és a fájlokat a **modelcode** mappa **sensorbox_app** mappájába menti. A VS Code egy új ablakot nyit meg, amely a generált programkódokat tartalmazza.
 
 ## <a name="update-the-generated-code"></a>A generált kód frissítése
 
@@ -329,13 +329,13 @@ A VS Code-ban a stubbed kód megvalósításának biztosítása:
 
 Mielőtt futtatja a kódot a IoT Plug and Play eszköz Azure IoT hubhoz való teszteléséhez, le kell fordítania a kódot.
 
-A Windows rendszeren a kód létrehozásához és futtatásához kövesse a **sensorbox_app** mappában található **readme.MD** fájl utasításait. A következő szakasz útmutatást tartalmaz egy eszköz-kapcsolódási karakterlánc lekéréséhez, amely az eszköz kódjának futtatásakor használható.
+Kövesse a **sensorbox_app** mappában található **readme.MD** fájl utasításait a kód Windows rendszeren való létrehozásához és futtatásához. A következő szakasz útmutatást tartalmaz egy eszköz-kapcsolódási karakterlánc lekéréséhez, amely az eszköz kódjának futtatásakor használható.
 
 ## <a name="test-the-code"></a>A kód tesztelése
 
 A kód futtatásakor a rendszer csatlakozik IoT Hubhoz, és elkezdi a minta-telemetria és-tulajdonságértékek küldését. Az eszköz a IoT Hub küldött parancsokra is válaszol. A viselkedés ellenőrzése:
 
-1. IoT hub létrehozása:
+1. IoT Hub létrehozása:
 
     ```azurecli-interactive
     az group create --name environmentalsensorresources --location centralus
@@ -362,7 +362,7 @@ A kód futtatásakor a rendszer csatlakozik IoT Hubhoz, és elkezdi a minta-tele
 
 1. Használja az Azure IoT Explorer eszközt az IoT hub-hoz csatlakoztatott IoT Plug and Play eszköz használatához. További információt az [Azure IoT Explorer telepítése és használata](./howto-install-iot-explorer.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már létrehozott egy IoT Plug and Play minősítésre készen áll, Ismerje meg a következőket:
 

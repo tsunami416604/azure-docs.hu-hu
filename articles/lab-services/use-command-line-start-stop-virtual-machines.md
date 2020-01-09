@@ -1,6 +1,6 @@
 ---
-title: Parancssori eszközök segítségével elindíthatja és leállíthatja a virtuális gépek Azure DevTest Labs |} A Microsoft Docs
-description: Ismerje meg, hogyan parancssori eszközök használatával elindíthatja és leállíthatja a virtuális gépek az Azure DevTest Labs szolgáltatásban.
+title: A virtuális gépek elindításához és leállításához használható parancssori eszközök használata Azure DevTest Labs | Microsoft Docs
+description: Megtudhatja, hogyan indíthatja el és állíthatja le a virtuális gépeket a Azure DevTest Labsban a parancssori eszközök használatával.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,29 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e00de295a7f41bf0ff768c4f948a667bc188616
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456947"
 ---
-# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Parancssori eszközök segítségével elindíthatja és leállíthatja a virtuális gépek Azure DevTest Labs szolgáltatásban
-Ez a cikk bemutatja, hogyan elindítani vagy leállítani a virtuális gépek az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet Azure PowerShell vagy az Azure CLI használatával. Ezek a műveletek automatizálása a PowerShell vagy a parancssori felületen parancsfájlok hozhat létre. 
+# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs virtuális gépek indítása és leállítása parancssori eszközök használatával
+Ez a cikk bemutatja, hogyan indíthatja el vagy állíthatja le a virtuális gépeket a Azure PowerShell vagy az Azure CLI használatával a Azure DevTest Labs tesztkörnyezetben. A műveletek automatizálásához létrehozhat PowerShell-vagy CLI-parancsfájlokat is. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
-Az Azure DevTest Labs szolgáltatás gyors, egyszerű és lean fejlesztési-tesztelési környezeteket hozhat létre. Lehetővé teszi, hogy a költségek kezelése, gyorsan üzembe virtuális gépeket és minimalizálja a selejt.  Nincsenek a beépített funkciók az Azure Portalon, amelyek lehetővé teszik, hogy a virtuális gép konfigurálása automatikusan elindíthatja és leállíthatja a megadott időpontban történő tesztkörnyezetben. 
+Azure DevTest Labs gyors, könnyen használható és karcsú fejlesztési és tesztelési környezeteket hozhat létre. Lehetővé teszi a díjak kezelését, a virtuális gépek gyors üzembe helyezését és a hulladék minimalizálását.  A Azure Portal beépített funkciói lehetővé teszik, hogy a virtuális gépeket egy laborban konfigurálja, hogy automatikusan induljon el és álljon le adott időpontokban. 
 
-Azonban bizonyos esetekben előfordulhat, hogy automatizálni szeretné indítása és leállítása, virtuális gépek a PowerShell és CLI-szkriptek. Biztosít néhány lehetőség a indítása és leállítása folyamatban van az egyes gépek megadott időpontban helyett bármikor. Íme néhány a helyzetekben, mely fut az ezeket a feladatokat a parancsfájlok segítségével hasznos lenne.
+Bizonyos esetekben azonban érdemes lehet automatizálni a virtuális gépek indítását és leállítását a PowerShell-vagy CLI-parancsfájlokból. Némi rugalmasságot biztosít az egyes gépek elindításához és leállításához, a megadott időpontok helyett. Íme néhány olyan helyzet, amelyben a feladatok parancsfájlok használatával történő futtatása hasznos lehet.
 
-- Egy tesztkörnyezetben részeként egy 3 szintű alkalmazás használatakor a rétegek kell elindítani, a feladatütemezés. 
-- Kikapcsolja a virtuális Gépet, pénzt takaríthat meg egy egyéni feltétel teljesülése esetén. 
-- Használhatja a CI/CD-munkafolyamaton belül feladatként indítsa el a folyamat elején, használja a virtuális gépek, a gépek hozhat létre, tesztelje a gépeket vagy infrastruktúrát, majd állítsa le a virtuális gépek, ha a folyamat befejeződött. Ilyen például az egyéni rendszerkép-előállító az Azure DevTest Labs lenne.  
+- Ha egy tesztelési környezet részeként 3 rétegbeli alkalmazást használ, a rétegeket egy sorba kell kezdeni. 
+- Kapcsolja ki a virtuális gépet, ha az egyéni feltételek teljesülnek a pénz megtakarítása érdekében. 
+- Egy CI/CD-munkafolyamaton belül feladatként használhatja a folyamat elejére, a virtuális gépeket Build Machines, test Machines vagy Infrastructure néven használhatja, majd leállíthatja a virtuális gépeket, amikor a folyamat befejeződött. Erre példa az egyéni rendszerkép-előállító Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-A következő PowerShell-parancsfájl egy tesztkörnyezetben egy virtuális gép elindul. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) referenciamodelljének a szkript van. A **ResourceId** paraméter értéke a lab-ben a virtuális gép teljesen minősített erőforrás-azonosító. A **művelet** paraméter, ahol a **Start** vagy **leállítása** beállításainak függően van szükség.
+
+> [!NOTE]
+> A következő szkript a Azure PowerShell az modult használja. 
+
+A következő PowerShell-parancsfájl egy virtuális gépet indít el egy laborban. A [meghívó-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) a parancsfájl elsődleges fókusza. A **ResourceId** paraméter a virtuális gép teljes erőforrás-azonosítója a laborban. A **műveleti** paraméter az a hely, ahol a szükséges **indítási** vagy **leállítási** beállítások vannak megadva.
 
 ```powershell
 # The id of the subscription
@@ -53,11 +57,7 @@ $vmAction = "Start"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
-if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
-} else {
-    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
-}
+$devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
 
 # Start the VM and return a succeeded or failed status
 $returnStatus = Invoke-AzResourceAction `
@@ -74,8 +74,8 @@ else {
 ```
 
 
-## <a name="azure-cli"></a>Azure CLI
-A [Azure CLI-vel](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) másik módja, indítását és leállítását DevTest Labs virtuális gépek automatizálásához. Az Azure CLI lehet [telepített](/cli/azure/install-azure-cli?view=azure-cli-latest) különböző operációs rendszereken. Az alábbi parancsfájlt és a labor virtuális gép leállítási parancsok biztosítja. 
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+Az [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) egy másik módszer a DevTest Labs-beli virtuális gépek indításának és leállításának automatizálására. Az Azure CLI különböző operációs rendszerekre [telepíthető](/cli/azure/install-azure-cli?view=azure-cli-latest) . A következő szkript egy virtuális gép elindítására és leállítására szolgáló parancsokat biztosít a laborban. 
 
 ```azurecli
 # Sign in to Azure
@@ -92,5 +92,5 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 ```
 
 
-## <a name="next-steps"></a>További lépések
-Ezek a műveletek elvégzésére az Azure portal használatával a következő cikkben talál: [Indítsa újra a virtuális gép](devtest-lab-restart-vm.md).
+## <a name="next-steps"></a>Következő lépések
+Az alábbi cikkből megtudhatja, hogyan használhatja a Azure Portal a következő műveletek elvégzéséhez: [indítsa újra a virtuális gépet](devtest-lab-restart-vm.md).

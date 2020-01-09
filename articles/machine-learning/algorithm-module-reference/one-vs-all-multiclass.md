@@ -1,7 +1,7 @@
 ---
 title: One-vs-All Multiclass
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatás One-vs-All Multiclass modulját egy többosztályos besorolási modell létrehozásához a bináris besorolási modellek együttes használatával.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használható a Azure Machine Learning One-vs-All Multiclass modulja többosztályos besorolási modell létrehozásához a bináris besorolási modellek együttes használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428503"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -52,13 +52,13 @@ A modellek kombinálása esetén One-vs-All Multiclass több bináris besorolás
 
 5. A folyamat futtatása.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A betanítás befejezése után a modellt használhatja a többosztályos előrejelzések készítéséhez.
 
 Azt is megteheti, hogy átadja a nem betanított osztályozó [modellt a modell](cross-validate-model.md) átadására a címkével ellátott ellenőrzési adatkészlet alapján.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

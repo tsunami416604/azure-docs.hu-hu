@@ -1,19 +1,14 @@
 ---
-title: Az alkalmazás rendelkezésre állásának javítása a Azure Advisorsal | Microsoft Docs
+title: Az alkalmazás rendelkezésre állásának javítása Azure Advisor
 description: Az Azure-beli üzemelő példányok magas rendelkezésre állásának javításához használja a Azure Advisor.
-services: advisor
-documentationcenter: NA
-author: saket-ms
-ms.author: sagupt
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: dd1b898adf4c4cdff45e05427757d90d5f80bf25
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443108"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az alkalmazás rendelkezésre állásának javítása Azure Advisor
 
@@ -103,7 +98,7 @@ Azok a virtuális gépek, amelyek nem rendelkeznek egy másik régióba való re
 
 2.  Az Advisor Irányítópultján kattintson a **magas rendelkezésre állás** fülre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Bevezetés a Azure Advisorba](advisor-overview.md)

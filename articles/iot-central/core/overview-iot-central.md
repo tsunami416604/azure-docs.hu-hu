@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure IoT Central? | Microsoft Docs
-description: Az Azure IoT Central egy IoT-alkalmazási platform, amely leegyszerűsíti a IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
+description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/26/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434971"
 ---
 <!---
 Purpose of an Overview article: 
@@ -99,7 +99,7 @@ A rendszergazdák [felhasználói szerepkörökkel és engedélyekkel](howto-adm
 
 Most, hogy áttekintette az Azure IoT Central jellemzőit, tekintse meg a javasolt következő lépéseket:
 
-- [Az Azure IoT Central és az Azure IoT-megoldásgyorsítók](overview-iot-options.md) különbségeinek összehasonlítása.
+- Ismerje meg az elérhető [Azure-technológiákat és-szolgáltatásokat a IoT-megoldások létrehozásához](../../iot-fundamentals/iot-services-and-technologies.md).
 - Ismerkedés az [Azure IoT Central kezelőfelületével](overview-iot-central-tour.md).
 - [Egy Azure IoT Central-alkalmazás létrehozásának](quick-deploy-iot-central.md) első lépései.
 - Egy oktatóanyag-sorozat mutatja be a következőket:

@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76d5aabc30d0375185130b9781caeaf4d5457455
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965398"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423721"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -43,7 +43,7 @@ Az alkalmazás identitásával és a felhasználóval kapcsolatos információk 
 
 Az alábbi C# kódrészlet egy olyan ügyfelet mutat be, amely az API-t hívja meg, miután beszerezte a tokent a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával:
 
-```CSharp
+```csharp
 var scopes = new[] {$"api://.../access_as_user}";
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
@@ -96,19 +96,19 @@ Ha egy alkalmazás egy `[Authorize]` attribútumot tartalmazó vezérlő művele
 
 A ASP.NET Core-ben ez a middleware a Startup.cs fájlban van inicializálva:
 
-```CSharp
+```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
 A middleware a webes API-hoz kerül a következő utasítással:
 
-```CSharp
+```csharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  Jelenleg a ASP.NET Core sablonok olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten belül vagy bármely szervezeten belül, személyes fiókkal nem rendelkező felhasználók számára jelentkeznek be. A Microsoft Identity platform végpontját azonban egyszerűen módosíthatja úgy, hogy hozzáadja ezt a kódot a Startup.cs-fájlhoz:
 
-```CSharp
+```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
     // This is a Microsoft identity platform web API.

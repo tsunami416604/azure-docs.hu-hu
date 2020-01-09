@@ -1,18 +1,14 @@
 ---
 title: Azure Red Hat OpenShift-fürtök konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára az Azure Red Hat OpenShift üzemeltetett Kubernetes-fürtök figyelésére.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: 07d84175325226af755712ec38ab93b901bbd361
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405573"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift-fürtök konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -127,7 +123,7 @@ A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figye
 
 A következő lépések végrehajtásával engedélyezheti az Azure-ban üzembe helyezett Azure Red Hat OpenShift-fürtök figyelését. Ezt a Azure Portal vagy a megadott sablonok használatával végezheti el.
 
-### <a name="from-the-azure-portal"></a>A Azure Portal
+### <a name="from-the-azure-portal"></a>Az Azure Portalról
  
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 

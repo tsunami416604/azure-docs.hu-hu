@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688277"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658440"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
-A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazásokhoz, a mobil háttér-és API-alkalmazásokhoz a [Azure Portal](https://portal.azure.com).
+A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
 
-A Azure Portalban áttekintheti az alkalmazások *kvótáit* és *mérőszámait* , valamint app Service megtervezheti az alkalmazásokat, és beállíthatja a *riasztásokat* és az *automatikus skálázást* is.
+A Azure Portal áttekintheti az alkalmazások *kvótáit* és *mérőszámait* , valamint app Service megtervezheti az alkalmazásokat, és beállíthat *riasztásokat* és automatikus *skálázást* is.
 
 ## <a name="understand-quotas"></a>A kvóták ismertetése
 
@@ -41,7 +41,7 @@ Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 
 Az *Alapszintű*, standard és *prémium* *szintű*alkalmazások esetében az egyetlen kvóta a fájlrendszer.
 
-További információ a különböző App Service SKU-ban elérhető konkrét kvótákkal, korlátozásokkal és szolgáltatásokkal kapcsolatban: [Azure-előfizetési szolgáltatás korlátai](../azure-subscription-service-limits.md#app-service-limits).
+További információ a különböző App Service SKU-ban elérhető konkrét kvótákkal, korlátozásokkal és szolgáltatásokkal kapcsolatban: [Azure-előfizetési szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Kvóta kényszerítése
 
@@ -87,14 +87,14 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 | **Http 406** | A HTTP 406 állapotkódot eredményező kérések száma. |
 | **Http-4xx** | A kérelmek száma a következő HTTP-állapotkódot eredményezi: ≥ 400, de < 500. |
 | **Http-kiszolgálói hibák** | A kérelmek száma a következő HTTP-állapotkódot eredményezi: ≥ 500, de < 600. |
-| **IO – egyéb bájtok másodpercenként** | Az alkalmazási folyamat által az adatokhoz nem kapcsolódó I/O-műveletekhez (például vezérlési műveletekhez) tartozó bájtok kibocsátásának sebessége.|
-| **IO egyéb műveletek másodpercenként** | Az alkalmazás folyamata olyan I/O-műveletek kiadására szolgál, amelyek nem olvasási vagy írási műveletek.|
+| **IO – egyéb bájtok másodpercenként** | Az alkalmazási folyamat által az adatokkal nem rendelkező I/O-műveletekhez (például vezérlési műveletekhez) tartozó bájtok kibocsátásának aránya.|
+| **IO egyéb műveletek másodpercenként** | Az alkalmazás folyamata olyan I/O-műveletek kiadására szolgál, amelyek nem rendelkeznek olvasási vagy írási műveletekkel.|
 | **IO olvasási bájtok másodpercenként** | Az alkalmazási folyamat által az I/O-műveletek bájtjainak olvasási sebessége.|
 | **I/o-olvasási műveletek másodpercenként** | Az alkalmazás folyamata olvasási I/O-műveletekre vonatkozó kiadási sebessége.|
 | **IO írási bájtok másodpercenként** | Az a sebesség, amellyel az alkalmazás a bájtok írását az I/O-műveletekhez.|
 | **IO írási műveletek másodpercenként** | Az alkalmazás folyamata írási I/O-műveletek kiadásának gyakorisága.|
 | **Memória munkakészlete** | Az alkalmazás által a MiB-ben használt memória aktuális mennyisége. |
-| **Saját bájtok** | A saját bájtok az alkalmazás által lefoglalt memória jelenlegi mérete (bájtban), amely nem osztható meg más folyamatokkal.|
+| **Saját bájtok** | A saját bájtok az alkalmazás által lefoglalt memória jelenlegi mérete (bájtban), amelyet más folyamatokkal nem lehet megosztani.|
 | **Kérelmek** | A kérelmek teljes száma a létrejövő HTTP-állapotkódtől függetlenül. |
 | **Kérelmek az alkalmazás-várólistán** | Az alkalmazás-kérelmek várólistájában lévő kérelmek száma.|
 | **Szálak száma** | Az alkalmazás folyamatában jelenleg aktív szálak száma.|
@@ -129,9 +129,9 @@ A CPU-használatot két mérőszám mutatja:
 ## <a name="metrics-granularity-and-retention-policy"></a>Mérőszámok részletességi és adatmegőrzési szabályzata
 Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti, a következő részletességi és adatmegőrzési szabályzatokkal:
 
-* A **percenkénti** részletességi metrikák 30 óráig őrződnek meg.
-* Az **óra** részletességi metrikáit 30 napig őrzi meg a rendszer.
-* A **napi** részletességi metrikákat 30 napig őrzi meg a rendszer.
+* A **percenkénti** részletességi metrikák 30 óráig tartanak.
+* Az **óra** részletességi mérőszámai 30 napig tartanak.
+* A **nap** részletességi mérőszámai 30 napig tartanak.
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Kvóták és metrikák figyelése a Azure Portalban
 Az alkalmazást érintő különböző kvóták és mérőszámok állapotának áttekintéséhez lépjen a [Azure Portal](https://portal.azure.com).
@@ -144,19 +144,16 @@ A kvóták megkereséséhez válassza a **beállítások** > **kvóták**lehető
 1. Jelenlegi korlátja.
 1. A jelenlegi értéke.
 
-![metrikai diagram a Azure Portal][metrics] a metrikák közvetlenül az **erőforrás** lapról érhetők el. A diagram testreszabása: 
-1. Válassza ki a diagramot.
-1. Válassza a **diagram szerkesztése**lehetőséget.
-1. Módosítsa az **időtartományt**.
-1. Szerkessze a **diagram típusát**.
-1. Szerkessze a megjeleníteni kívánt metrikákat.  
+![metrikai diagram a Azure Portal][metrics] a metrikák közvetlenül az erőforrás- **Áttekintés** lapon érhetők el. Itt láthatja az alkalmazások mérőszámait képviselő diagramokat.
+
+A diagramok bármelyikére kattintva megtekintheti a mérőszámokat, ahol egyéni diagramokat hozhat létre, különböző mérőszámokat jeleníthet meg, és még sok minden mást is megadhat. 
 
 További információ a metrikákkal kapcsolatban: a [szolgáltatás metrikáinak figyelése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Riasztások és autoskálázás
 Az alkalmazásokhoz vagy App Service tervekhez tartozó metrikák összekapcsolható riasztásokkal. További információ: [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Riasztások fogadása).
 
-Az alapszintű, standard vagy prémium szintű App Service-csomagokban üzemeltetett alkalmazások támogatják az autoskálázást. App Service Az autoscale használatával olyan szabályokat konfigurálhat, amelyek figyelik a App Service terv mérőszámait. A szabályok növelhetik vagy csökkenthetik a példányszámot, ami igény szerint további erőforrásokat is biztosíthat. A szabályok segítségével pénzt takaríthat meg, ha az alkalmazás túl van kiépítve.
+Az alapszintű vagy magasabb App Service-csomagokban üzemeltetett App Service-alkalmazások támogatják az autoskálázást. Az autoscale használatával olyan szabályokat konfigurálhat, amelyek figyelik a App Service terv mérőszámait. A szabályok növelhetik vagy csökkenthetik a példányszámot, ami igény szerint további erőforrásokat is biztosíthat. A szabályok segítségével pénzt takaríthat meg, ha az alkalmazás túl van kiépítve.
 
 További információ az automatikus méretezésről: az automatikus [skálázás Azure monitorának](../azure-monitor/platform/autoscale-best-practices.md) [skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md) és ajánlott eljárásai.
 

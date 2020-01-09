@@ -3,111 +3,126 @@ title: A titkok kezelése az Azure fejlesztői területtel való munka során
 services: azure-dev-spaces
 ms.date: 12/03/2019
 ms.topic: conceptual
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ismerje meg, hogyan használhatja a Kubernetes titkokat futtatáskor vagy létrehozáskor az Azure dev Spaces-alkalmazások fejlesztésekor
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438461"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>A titkok kezelése az Azure fejlesztői területtel való munka során
 
-A szolgáltatásokhoz bizonyos jelszavak, a kapcsolatok karakterláncai és egyéb titkos kulcsok, például adatbázisok vagy egyéb biztonságos Azure-szolgáltatások szükségesek. Ha beállítja a titkos kódok értékeit a konfigurációs fájlokban, a programkódban környezeti változókként elérhetővé teheti őket.  Ezeket körültekintően kell kezelni, hogy ne veszélyeztesse a titkok biztonságát.
+A szolgáltatásokhoz bizonyos jelszavak, a kapcsolatok karakterláncai és egyéb titkos kulcsok, például adatbázisok vagy egyéb biztonságos Azure-szolgáltatások szükségesek. Ha beállítja a titkos kódok értékeit a konfigurációs fájlokban, a programkódban környezeti változókként elérhetővé teheti őket.  Ezeket a konfigurációs fájlokat körültekintően kell kezelni, hogy ne veszélyeztesse a titkok biztonságát.
 
-Az Azure dev Spaces szolgáltatás két ajánlott, egyszerűbb lehetőséget biztosít a titkok tárolására az Azure dev Spaces-ügyfél eszközei által létrehozott Helm-diagramokon: a `values.dev.yaml` fájlban, és közvetlenül a `azds.yaml`. A titkok tárolása nem ajánlott `values.yaml`ban. A jelen cikkben definiált ügyféleszközök által létrehozott Helm-diagramok két megközelítésén kívül, ha létrehoz egy saját Helm-diagramot, a Helm diagramot közvetlenül is használhatja a titkok kezeléséhez és tárolásához.
+## <a name="storing-and-using-runtime-secrets"></a>Futásidejű titkok tárolása és használata
 
-## <a name="method-1-valuesdevyaml"></a>1\. módszer: Values. dev. YAML
-1. Nyissa meg a VS Code-ot a projekttel, amely engedélyezve van az Azure dev Spaces szolgáltatásban.
-2. Adjon hozzá egy _Values. dev. YAML_ nevű fájlt ugyanabban a mappában, mint a meglévő _azds. YAML_ , és adja meg a titkos kulcsot és az értékeket, ahogy az alábbi példában látható:
+Az Azure dev Spaces szolgáltatás két ajánlott, egyszerűbb lehetőséget biztosít a titkok tárolására az Azure dev Spaces-ügyfél eszközei által létrehozott Helm-diagramokon: a `values.dev.yaml` fájlban, és közvetlenül a `azds.yaml`. A titkok tárolása nem ajánlott `values.yaml`ban.
 
-    ```yaml
-    secrets:
-      redis:
-        port: "6380"
-        host: "contosodevredis.redis.cache.windows.net"
-        key: "secretkeyhere"
-    ```
-     
-3. a _azds. YAML_ már a _Values. dev. YAML_ fájlra hivatkozik, ha létezik. Ha más fájlnevet szeretne, frissítse a install. Values szakaszt:
+> [!NOTE]
+> Az alábbi módszerek azt mutatják be, hogyan tárolhatók és használhatók az ügyfél-eszközkészlet által létrehozott Helm-diagramok titkai. Ha létrehoz egy saját Helm-diagramot, a Helm diagramot közvetlenül is használhatja a titkok kezeléséhez és tárolásához.
 
-    ```yaml
-    install:
-      values:
-      - values.dev.yaml?
-      - secrets.dev.yaml?
-    ```
- 
-4. Módosítsa a programkódot úgy, hogy a következő példához hasonlóan környezeti változókként tekintse át ezeket a titkokat:
+### <a name="using-valuesdevyaml"></a>A Values. dev. YAML használata
 
-    ```
-    var redisPort = process.env.REDIS_PORT
-    var host = process.env.REDIS_HOST
-    var theKey = process.env.REDIS_KEY
-    ```
+Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, hozzon létre egy `values.dev.yaml` fájlt ugyanabban a mappában, mint `azds.yaml` a titkos kulcsok és értékek meghatározásához. Példa:
+
+```yaml
+secrets:
+  redis:
+    port: "6380"
+    host: "contosodevredis.redis.cache.windows.net"
+    key: "secretkeyhere"
+```
+
+`?`használatával ellenőrizze, hogy a `azds.yaml` fájl hivatkozásai `values.dev.yaml` választhatók-e. Példa:
+
+```yaml
+install:
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+```
+
+Ha további titkos fájlokkal rendelkezik, ezeket is hozzáadhatja.
+
+Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Példa:
+
+```javascript
+var redisPort = process.env.REDIS_PORT
+var host = process.env.REDIS_HOST
+var theKey = process.env.REDIS_KEY
+```
     
-5. Frissítse a fürtön futó szolgáltatásokat ezekkel a módosításokkal. A parancssorban futtassa a következő parancsot:
+A frissített szolgáltatásokat `azds up`használatával futtathatja.
 
-    ```
-    azds up
-    ```
+```console
+azds up
+```
  
-6. Választható A parancssorban győződjön meg arról, hogy a következő titkok lettek létrehozva:
+A `kubectl` használatával ellenőrizheti, hogy a titkok létre lettek-e hozva.
 
-      ```
-      kubectl get secret --namespace default -o yaml 
-      ```
+```console
+kubectl get secret --namespace default -o yaml 
+```
 
-7. Győződjön meg arról, hogy a _. gitignore_ fájlhoz adja hozzá a _Values. dev. YAML_ fájlt, hogy elkerülje a titkos kódok véglegesítését a verziókövetés során.
- 
- 
-## <a name="method-2-azdsyaml"></a>2\. módszer: azds. YAML
-1.  A _azds. YAML_szakaszban állítsa be a titkokat a YAML szakasz konfigurációk/fejlesztés/telepítés területén. Bár a titkos értékeket közvetlenül is megadhatja, nem ajánlott, mert a _azds. YAML_ be van jelölve a verziókövetésba. Ehelyett adja hozzá a helyőrzőket a "$PLACEHOLDER" szintaxis használatával.
+> [!IMPORTANT]
+> Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t használja, vegyen fel `values.dev.yaml`t a `.gitignore` fájlba, és ne véglegesítse a titkos kulcsokat a verziókövetés során.
 
-    ```yaml
-    configurations:
-      develop:
-        ...
-        install:
-          set:
-            secrets:
-              redis:
-                port: "$REDIS_PORT"
-                host: "$REDIS_HOST"
-                key: "$REDIS_KEY"
-    ```
+### <a name="using-azdsyaml"></a>A azds. YAML használata
+
+Egy olyan projektben, amelyet már előkészített az Azure dev Spaces használatával, adja hozzá a titkos kulcsokat és az értékeket a konfigurációk területen található *$PLACEHOLDER* szintaxissal *. fejlessze. install. set* in `azds.yaml`. Példa:
+
+```yaml
+configurations:
+  develop:
+    ...
+    install:
+      set:
+        secrets:
+          redis:
+            port: "$REDIS_PORT"
+            host: "$REDIS_HOST"
+            key: "$REDIS_KEY"
+```
+
+> [!NOTE]
+> A titkos értékeket közvetlenül a `azds.yaml` *$PLACEHOLDER* szintaxisának használata nélkül is megadhatja. Ez a megközelítés azonban nem ajánlott, mivel `azds.yaml` a verziókövetés tárolja.
      
-2.  Hozzon létre egy _. env_ fájlt ugyanabban a mappában, mint a _azds. YAML_. Adja meg a titkokat a standard Key = Value jelöléssel. Ne véglegesítse a _. env_ fájlt a verziókövetés számára. (A git-alapú verziókövetés rendszerből való kilépéshez vegye fel azt a _. gitignore_ fájlba.) A következő példa egy _. env_ fájlt mutat be:
+Hozzon létre egy `.env` fájlt ugyanabban a mappában, mint `azds.yaml` a *$PLACEHOLDER* értékek definiálásához. Példa:
 
-    ```
-    REDIS_PORT=3333
-    REDIS_HOST=myredishost
-    REDIS_KEY=myrediskey
-    ```
-2.  Módosítsa a szolgáltatás forráskódját úgy, hogy az a kódban szereplő titkos kódokra hivatkozzon, ahogy az alábbi példában is látható:
+```
+REDIS_PORT=3333
+REDIS_HOST=myredishost
+REDIS_KEY=myrediskey
+```
 
-    ```
-    var redisPort = process.env.REDIS_PORT
-    var host = process.env.REDIS_HOST
-    var theKey = process.env.REDIS_KEY
-    ```
+> [!IMPORTANT]
+> Nem ajánlott a titkokat a forrás vezérlőelemben tárolni. Ha a git-t használja, vegyen fel `.env`t a `.gitignore` fájlba, és ne véglegesítse a titkos kulcsokat a verziókövetés során.
+
+Frissítse vagy ellenőrizze, hogy a szolgáltatás környezeti változókként hivatkozik-e a titkokra. Példa:
+
+```javascript
+var redisPort = process.env.REDIS_PORT
+var host = process.env.REDIS_HOST
+var theKey = process.env.REDIS_KEY
+```
+    
+A frissített szolgáltatásokat `azds up`használatával futtathatja.
+
+```console
+azds up
+```
  
-3.  Frissítse a fürtön futó szolgáltatásokat ezekkel a módosításokkal. A parancssorban futtassa a következő parancsot:
+A `kubectl` használatával ellenőrizheti, hogy a titkok létre lettek-e hozva.
 
-    ```
-    azds up
-    ```
+```console
+kubectl get secret --namespace default -o yaml 
+```
 
-4.  választható A kubectl titkainak megtekintése:
+## <a name="using-secrets-as-build-arguments"></a>Titkok használata Build argumentumként
 
-    ```
-    kubectl get secret --namespace default -o yaml
-    ```
-
-## <a name="passing-secrets-as-build-arguments"></a>Titkok átadása Build argumentumként
-
-Az előző fejezetek azt mutatták be, hogyan lehet átadni a titkokat a tároló futási idején. Egy titkos kulcsot is átadhat a tároló felépítési idejére, például egy privát NuGet tartozó jelszót `azds.yaml`használatával.
+Az előző szakaszban megmutatta, hogyan tárolhat és használhat titkokat a tároló futási idején. A tárolók felépítésének időpontjában bármilyen titkos kulcsot is használhat, például egy privát NuGet tartozó jelszót `azds.yaml`használatával.
 
 A `azds.yaml`ban állítsa be a konfigurációkban a létrehozási idő titkait. a `<variable name>: ${secret.<secret name>.<secret key>}` szintaxissal alakítsa ki a Build. *Build. ARG* -t. Példa:
 

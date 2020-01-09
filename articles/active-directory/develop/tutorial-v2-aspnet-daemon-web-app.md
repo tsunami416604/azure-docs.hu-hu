@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423391"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>A Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: a Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Microsoft Identity platformot a Microsoft üzleti ügyfelei adatainak hosszú távú, nem interaktív folyamatokban való eléréséhez. A minta démon a [OAuth2 ügyfél hitelesítő adatait](v2-oauth2-client-creds-grant-flow.md) használja a hozzáférési jogkivonat beszerzéséhez. A démon ezután a token használatával hívja meg [Microsoft Graph](https://graph.microsoft.io) és a szervezeti adathozzáférést.
+
+> [!div class="checklist"]
+> * Daemon-alkalmazás integrálása a Microsoft Identity platformmal
+> * Alkalmazás engedélyeinek közvetlenül az alkalmazáshoz való megadása rendszergazdaként
+> * Hozzáférési jogkivonat beszerzése a Microsoft Graph API meghívásához
+> * Hívja meg a Microsoft Graph API-t.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.  
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Vagy [töltse le a mintát egy zip-fájlba](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>A minta alkalmazás regisztrálása az Azure AD-Bérlővel
+## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-Ez a minta egy projekttel rendelkezik. A regisztráláshoz az alábbiakat teheti:
+Ez a minta egy projekttel rendelkezik. Az alkalmazás Azure AD-Bérlővel való regisztrálásához az alábbiakat teheti:
 
-- Kövesse a [minta regisztrálása a Azure Active Directory Bérlővel](#register-the-sample-application-with-your-azure-ad-tenant) című témakör lépéseit, és [konfigurálja a mintát az Azure ad-bérlő használatára](#choose-the-azure-ad-tenant).
+- Kövesse a [minta regisztrálása a Azure Active Directory Bérlővel](#register-your-application) című témakör lépéseit, és [konfigurálja a mintát az Azure ad-bérlő használatára](#choose-the-azure-ad-tenant).
 - Használjon olyan PowerShell-parancsfájlokat, amelyek:
   - *Automatikusan* létrehozhatja az Azure ad-alkalmazásokat és a kapcsolódó objektumokat (jelszavak, engedélyek, függőségek).
   - Módosítsa a Visual Studio-projektek konfigurációs fájljait.
@@ -237,7 +245,10 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 1. Mentse a konfigurációt.
 1. Adja hozzá ugyanezt az URL-címet a **hitelesítés** > **átirányítási URI** -k menü értékek listájában. Ha több átirányítási URL-címmel rendelkezik, győződjön meg arról, hogy van egy új bejegyzés, amely az App Service URI azonosítóját használja az egyes átirányítási URL-címekhez.
 
-## <a name="community-help-and-support"></a>Közösségi Súgó és támogatás
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#register-your-application) lépésben létrehozott alkalmazás-objektumot.  Az alkalmazás eltávolításához kövesse az [Ön vagy a szervezete által létrehozott alkalmazás eltávolítása](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)című témakör utasításait.
+
+## <a name="get-help"></a>Segítség
 
 A [stack overflow](http://stackoverflow.com/questions/tagged/msal) segítségével kaphat támogatást a Közösségtől.
 Először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést.

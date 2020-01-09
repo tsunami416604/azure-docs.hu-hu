@@ -12,22 +12,22 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 7a8fe0f21ea8b31fb26727e2220f7395e2d71c2c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555375"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552549"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
-Az adatfelderítési & besorolása olyan speciális képességeket biztosít, amelyek Azure SQL Databaseba vannak építve, **így a bizalmas** adatoknak az adatbázisokban való **feltárásához**, **osztályozásához**, **címkézéséhez** & .
+Az adatfelderítési & besorolása olyan speciális képességeket **biztosít, amelyek**a Azure SQL Databasebe vannak építve, így a bizalmas adatoknak az adatbázisokban való felderítéséhez, **besorolásához**, **címkézéséhez** ** & .**
 
-A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
+A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. Infrastruktúraként alkalmas lehet az alábbiakra:
 
-- Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése.
+- Segíthet megfelelni az adatvédelmi szabványoknak és a szabályozási megfelelőség követelményeinek.
 - Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása.
-- A szigorúan bizalmas adatokat tartalmazó adatbázisok biztonságának szabályozása és a hozzáférés megerősítése.
+- Vezérelhető és megerősíthető vele a bizalmas adatokat tartalmazó adatbázisok biztonsága.
 
 Az adatfelderítési & besorolása a [speciális adatbiztonsági](sql-database-advanced-data-security.md) (ADS) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. az adatfelderítési & besorolása a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
@@ -40,11 +40,11 @@ Az adatfelderítési & besorolása fejlett szolgáltatásokat és új SQL-képes
 
 - **Felderítési & javaslatok**
 
-  A besorolási motor megvizsgálja az adatbázist, és azonosítja a potenciálisan bizalmas adatokat tartalmazó oszlopokat. Ezt követően egyszerű módszert biztosít a megfelelő besorolási javaslatok áttekintésére és alkalmazására a Azure Portal használatával.
+  A besorolási motor megvizsgálja az adatbázist, és azonosítja a potenciálisan bizalmas adatokat tartalmazó oszlopokat. Ezt követően egy egyszerű módszert kínál a megfelelő besorolási javaslatok áttekintésére és alkalmazására az Azure Portalon keresztül.
 
 - **Címkézés**
 
-  Az érzékenységi besorolási címkék az SQL Engine-be bevezetett új besorolási metaadatokat használó oszlopokban tartósan címkézve lehetnek. Ezt a metaadatokat ezután speciális, érzékenységen alapuló naplózási és védelmi forgatókönyvekhez lehet használni.
+  Az érzékenységi besorolási címkék az SQL Engine-be bevezetett új besorolási metaadatokat használó oszlopokban tartósan címkézve lehetnek. Ezeket a metaadatokat aztán speciális bizalmasságalapú naplózáshoz és védelmi helyzetekben lehet hasznosítani.
 
 - **Lekérdezési eredményhalmaz érzékenysége**
 
@@ -52,7 +52,7 @@ Az adatfelderítési & besorolása fejlett szolgáltatásokat és új SQL-képes
 
 - **Láthatóság**
 
-  Az adatbázis besorolási állapota a portálon található részletes irányítópulton tekinthető meg. Emellett letölthet egy jelentést (Excel-formátumban), amely megfelelőségi & naplózási célokra, valamint más igényekre is használható.
+  Az adatbázis besorolási állapota a portálon található részletes irányítópulton tekinthető meg. Ezenkívül letölthet egy jelentést (Excel-formátumban), amelyet egyebek mellett megfelelőségi és naplózási célokra használhat.
 
 ## <a id="subheading-2"></a>Felderítés, besorolás & címke bizalmas oszlopai
 
@@ -69,14 +69,14 @@ Az SQL adatfelderítési & besorolása tartalmaz egy beépített érzékenységi
 
 A besorolási besorolás meghatározása és testreszabása a teljes Azure-bérlő egyik központi helyén történik. Ez a hely [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), a biztonsági szabályzat részeként. Ezt a feladatot csak azok a felhasználók hajthatják végre, akik rendszergazdai jogokkal rendelkeznek a bérlő gyökérszintű felügyeleti csoportjában.
 
-A Information Protection házirend-kezelés részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Hozzáadhat saját egyéni adattípusokat is, és a karakterlánc-mintázatokkal konfigurálhatja azokat, amelyeket a rendszer az adatbázisokban az ilyen típusú adatok azonosításához ad hozzá a felderítési logikához.
+A Information Protection házirend-kezelés részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Saját egyéni információtípusokat is felvehet, és olyan sztringmintákkal konfigurálhatja őket, amelyek a felderítési logika részévé válva biztosítják az adattípus azonosíthatóságát.
 További információ a szabályzatok testreszabásáról és kezeléséről a [Information Protection szabályzat útmutatójában](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyéni adatbázisok besorolását a testreszabott szabályzat használatával.
 
 ## <a name="classify-your-sql-database"></a>A SQL Database besorolása
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2. A Azure SQL Database panel biztonsági fejléce alatt navigáljon a **speciális adatbiztonság** elemre. Kattintson ide a speciális adatbiztonság engedélyezéséhez, majd kattintson az **adatfelderítési & besorolási** kártyára.
 
@@ -98,7 +98,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
    - A javasolt oszlop besorolások listájának megtekintéséhez kattintson az ablak alján található javaslatok panelre:
 
-      ![Az adatai osztályozása](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+      ![Az adatok besorolása](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
    - Tekintse át a javaslatok listáját – egy adott oszlopra vonatkozó javaslat elfogadásához jelölje be a megfelelő sor bal oldali oszlopában található jelölőnégyzetet. A javaslatok tábla fejlécében a jelölőnégyzet bejelölésével megadhatja az elfogadásra váró *összes javaslatot* is.
 
@@ -149,7 +149,7 @@ A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el,
 - Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 # <a name="rest-apistabazure-rest-api"></a>[REST API-k](#tab/azure-rest-api)
-Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A közzétett REST API-k a következő műveleteket támogatják:
+A REST API-k használatával programozott módon kezelheti a besorolásokat és a javaslatokat. A közzétett REST API-k a következő műveleteket támogatják:
 
 - [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése
 - [Delete (Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) ) – egy adott oszlop érzékenységi címkéjét törli
@@ -157,13 +157,12 @@ Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A kö
 - [Javaslat engedélyezése](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) – az érzékenységi javaslatok engedélyezése egy adott oszlopban (a javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -lekéri egy adott oszlop érzékenységi címkéjét
 - [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – egy adott adatbázis aktuális érzékenységi címkéit kapja meg
-
 - [Adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – egy adott adatbázis javasolt érzékenységi címkéit kéri le
 
 # <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell-parancsmag](#tab/azure-powelshell)
-A PowerShell használatával lekérheti az összes ajánlott oszlopot egy Azure SQL Database-adatbázisban és felügyelt példányban.
+A PowerShell használatával kezelheti Azure SQL Database és felügyelt példány besorolásait és javaslatait.
 
-### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-parancsmag az Azure SQL Database-hez
+### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-parancsmag a Azure SQL Databasehoz
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)

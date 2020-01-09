@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672198"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681173"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>App Service-csomag kezelése az Azure-ban
 
@@ -24,11 +24,15 @@ Egy [Azure app Service csomag](overview-hosting-plans.md) biztosítja azokat az 
 
 Létrehozhat egy üres App Service-csomagot, vagy létrehozhat egy csomagot az alkalmazások létrehozásának részeként.
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **új** > **webalkalmazás** vagy más típusú app Service alkalmazás lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** elemet.
 
-   ![Hozzon létre egy alkalmazást a Azure Portalban.][createWebApp]
+   ![Hozzon létre egy erőforrást a Azure Portalban.][createResource] 
 
-2. Adja meg a **példány részletei** szakaszt a app Service terv konfigurálása előtt. Az olyan beállítások, mint a **közzétételi** és az **operációs rendszerek** , megváltoztathatják a app Service csomag elérhető díjszabási szintjeit. A **régió** határozza meg, hogy a app Service terv hol lett létrehozva.
+1. Válassza az **új** > **webalkalmazás** vagy más app Service-alkalmazás lehetőséget.
+
+   ![Hozzon létre egy alkalmazást a Azure Portalban.][createWebApp] 
+
+2. Adja meg a **példány részletei** szakaszt a app Service terv konfigurálása előtt. Az olyan beállítások, mint a **közzétételi** és az **operációs rendszerek** , megváltoztathatják a app Service csomag elérhető díjszabási szintjeit. A **régió** határozza meg, hogy a app Service terv hol lett létrehozva. 
    
 3. A **app Service terv** szakaszban válasszon ki egy meglévő csomagot, vagy hozzon létre egy csomagot az **új létrehozása**lehetőség kiválasztásával.
 
@@ -48,7 +52,7 @@ Az alkalmazások áthelyezhetők egy másik App Service csomagba, ha a forrás-�
 > A terv létrehozásakor nem adhatja meg a használni kívánt webtárhelyet, de lehetséges, hogy a terv ugyanabban a webtérben jön létre, mint egy meglévő csomag. Röviden, az azonos erőforráscsoport és régió kombinációval létrehozott összes csomag ugyanarra a webtárhelyre van telepítve. Ha például létrehozta az A és A B régióba tartozó csomagot, akkor az A és B régióba később létrehozott összes csomag ugyanarra a webtárhelyre lesz telepítve. Vegye figyelembe, hogy a csomagok létrehozása után nem helyezhetők át a webtárhelyek, így nem helyezhet át egy tervet "ugyanazon a webtárhelyre", mert egy másik erőforráscsoporthoz helyezi át.
 > 
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az áthelyezni kívánt alkalmazáshoz.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **app Services** elemet, és válassza ki az áthelyezni kívánt alkalmazást.
 
 2. A bal oldali menüben válassza az **app Service terv módosítása**lehetőséget.
 
@@ -92,8 +96,9 @@ Ha el szeretné kerülni a nem várt díjakat, akkor a App Service csomag utols�
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazások vertikális felskálázása az Azure-ban](manage-scale-up.md)
+> [Alkalmazás vertikális felskálázása az Azure-ban](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

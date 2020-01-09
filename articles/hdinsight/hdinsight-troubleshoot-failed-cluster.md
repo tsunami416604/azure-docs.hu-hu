@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498091"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647424"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight-fürtön futó lassú vagy sikertelen feladat hibáinak megoldása
 
@@ -90,7 +90,7 @@ A HDInsight számos Azure-szolgáltatásra támaszkodik. Virtuális kiszolgáló
 
 #### <a name="check-azure-service-usage-limits"></a>Az Azure-szolgáltatások használati korlátainak keresése
 
-Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információk: [Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információk: [Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére vonatkozó kéréssel](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>A kiadás verziójának keresése
@@ -259,7 +259,7 @@ A fürtlemez forrásának diagnosztizálásához indítson el egy új fürtöt u
 5. Folytassa, amíg az összes lépés hiba nélkül fut.
 6. Ha befejezte a tesztelési fürt hibakeresését, törölje azt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes felületével](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)

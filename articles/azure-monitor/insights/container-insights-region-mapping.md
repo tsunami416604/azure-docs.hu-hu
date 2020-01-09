@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor a tárolók régiójának leképezéséhez
 description: Ez a cikk a Azure Monitor for containers, a Log Analytics munkaterület és az egyéni metrikák között támogatott régió-hozzárendeléseket ismerteti.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 06/26/2019
-ms.openlocfilehash: f22c62dddf2e38fa2c9471ce98b49a8aa32390b3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403425"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>A tárolók Azure Monitor által támogatott régió-hozzárendelések
 

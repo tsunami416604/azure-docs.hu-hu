@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432537"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 [Az Azure Application Insights-][java]mel kapcsolatos kérdések és problémák Java-ban? Íme néhány tipp.
@@ -22,7 +22,7 @@ ms.locfileid: "72820807"
 
 * Ha a függőség `<version>` elem helyettesítő karaktereket (például Maven) `<version>[2.0,)</version>` vagy (Gradle) `version:'2.0.+'`) használ, próbáljon meg inkább egy adott verziót megadni, például `2.0.1`. Tekintse meg a legújabb verzió [kibocsátási megjegyzéseit](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
 
-## <a name="no-data"></a>Nincsenek adatkészletek
+## <a name="no-data"></a>Nincs adat
 **Felvettem Application Insights sikeresen, és futtattam az alkalmazást, de még soha nem láttam az adataim a portálon.**
 
 * Várjon egy percet, és kattintson a frissítés gombra. A diagramok rendszeresen frissülnek, de manuálisan is frissítheti őket. A frissítési időköz a diagram időtartományának függvénye.
@@ -52,7 +52,6 @@ ms.locfileid: "72820807"
 * Konfigurálta a Java-ügynököt a [Java-ügynök konfigurálása](java-agent.md) után?
 * Győződjön meg arról, hogy a Java Agent jar és a AI-Agent. xml fájl is ugyanabba a mappába kerül.
 * Győződjön meg arról, hogy az automatikus gyűjtéshez szükséges függőséget az automatikus gyűjtemény támogatja. Jelenleg csak a MySQL, az MsSQL, a Oracle DB és az Azure cache támogatott a Redis függőségi gyűjteményhez.
-* A JDK 1,7 vagy a 1,8-es verzióját használja? Jelenleg nem támogatott a függőségi gyűjtemény a JDK 9-ben.
 
 ## <a name="no-usage-data"></a>Nincsenek használati adatok
 **Megjelennek a kérelmekkel és a válaszadási időpontokkal kapcsolatos információk, de nem találhatók meg az oldal nézet, a böngésző vagy a felhasználói információ.**

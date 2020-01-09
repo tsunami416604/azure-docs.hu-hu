@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 11/26/2019
+ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406590"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563292"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
@@ -24,17 +24,18 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és ho
 
 + Kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit, vagy [hozzon létre egy Azure Cognitive Search Knowledge Store](knowledge-store-create-rest.md) -t a REST használatával, és hozza létre az ebben az útmutatóban használt, a minta tudásbázist. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 
-+ [Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
++ [A Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Példa Power BI sablonra – csak Azure Portal
 
-Ha [a Azure Portal használatával hozta létre a Knowledge Store](knowledge-store-create-portal.md)-t, az [Azure Cognitive Search Power bi sablon minta](https://github.com/Azure-Samples/cognitive-search-templates) használatával megtekintheti és kísérletezhet Power bi vizualizációkkal. Ez a sablon az **adatimportálás** varázsló lépésein keresztül is letölthető.
+Ha [a Azure Portal használatával](knowledge-store-create-portal.md)hoz létre egy tudásbázist, lehetősége van egy [Power bi sablon](https://github.com/Azure-Samples/cognitive-search-templates) letöltésére az **adat importálása** varázsló második oldalán. Ez a sablon több vizualizációt, például WordCloud és hálózati Navigátort biztosít a szöveges tartalomhoz. 
 
-A minta sablon automatikusan végrehajtja a jelen cikk további részében ismertetett telepítési lépéseket. Ha azonban a REST API használatával hozza létre a tudásbázist, ugorja át a sablont, és használja a cikk további részeit a Knowledge Store Power BIhoz való összekapcsolásához. Kezdje a [kapcsolatot a Power BIval](#connect-with-power-bi).
-
-A minta sablon több vizualizációt tartalmaz, például a WordCloud és a Network Navigator alkalmazást. A sablon egyes vizualizációi, például a helyszínek és az entitás – gráf megjelenítője nem jeleníti meg a [Tudásbázis létrehozása a Azure Portal a Knowledge Store](knowledge-store-create-portal.md)-ban létrehozott minta-tároló adatait. Ennek az az oka, hogy a rendszer csak az **adatimportálás** VARÁZSLÓBAN elérhető AI-dúsítások egy részhalmazát használta.
+Kattintson a **Beolvasás Power bi sablon** lehetőségre a **kognitív képességek hozzáadása** oldalon a sablon nyilvános GitHub-helyről való lekéréséhez és letöltéséhez. A varázsló módosítja a sablont úgy, hogy az megfeleljen az adatmennyiségnek, ahogy azt a varázslóban megadott Tudásbázis-prognózis rögzíti. Emiatt a letöltött sablon a varázsló minden egyes futtatásakor eltérő lesz, feltételezve, hogy különböző adatbevitelek és szaktudás-kiválasztás történik.
 
 ![Példa Azure Cognitive Search Power BI-sablonra](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Minta Power BI sablon")
+
+> [!NOTE]
+> Bár a sablon le van töltve, miközben a varázsló a közepén repül, meg kell várnia, amíg az áruház ténylegesen létre nem jön az Azure Table Storage-ban, mielőtt használni lehetne.
 
 ## <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
@@ -42,22 +43,25 @@ A minta sablon több vizualizációt tartalmaz, például a WordCloud és a Netw
 
 1. Az **adatlekérdezés** ablakban válassza az **Azure**lehetőséget, majd válassza az **Azure Table Storage**elemet.
 
-1. Kattintson a **Connect** (Csatlakozás) gombra.
+1. Kattintson a **Csatlakozás** gombra.
 
 1. A **fiók neve vagy URL-címe**mezőben adja meg az Azure Storage-fiók nevét (a teljes URL-cím lesz létrehozva).
 
 1. Ha a rendszer kéri, adja meg a Storage-fiók kulcsát.
 
-1. Válassza ki a *hotelReviewsSsDocument*, a *HotelReviewsSsKeyPhrases*és a *hotelReviewsSsPages* táblákat. Ezek a táblák az Azure Table-kivetítések, amelyek a szálloda által áttekintett mintaadatok, és tartalmazzák azokat a mesterséges intelligenciát, amelyeket a rendszer a Knowledge Store létrehozásakor választott ki.
+1. Válassza ki azokat a táblákat, amelyek tartalmazzák az előző forgatókönyvek által létrehozott, a Hotel által áttekintett adatelemzési 
 
-1. Kattintson a **Betöltés**elemre.
+   + A portál útmutatójában a *hotelReviewsSsDocument*, a *hotelReviewsSsEntities*, a *hotelReviewsSsKeyPhrases*és a *hotelReviewsSsPages*tábla neve szerepel. 
+   
+   + A REST-útmutatóban a *hotelReviewsDocument*, a *hotelReviewsPages*, a *hotelReviewsKeyPhrases*és a *hotelReviewsSentiment*tábla neve szerepel.
+
+1. Kattintson a **Betöltés** lehetőségre.
 
 1. A felső menüszalagon kattintson a **lekérdezések szerkesztése** elemre a **Power Query-szerkesztő**megnyitásához.
 
    ![Power Query megnyitása](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query megnyitása")
 
 1. Válassza a *hotelReviewsSsDocument*lehetőséget, majd távolítsa el a *PartitionKey*, a *RowKey*és az *időbélyegző* oszlopokat. 
-
    ![Táblák szerkesztése](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Táblák szerkesztése")
 
 1. A *tartalom*kibontásához kattintson a táblázat jobb felső sarkában található, ellentétes nyíllal ellátott ikonra. Amikor megjelenik az oszlopok listája, válassza a minden oszlop lehetőséget, majd törölje a metaadatokkal kezdődő oszlopokat. A kijelölt oszlopok megjelenítéséhez kattintson **az OK** gombra.
@@ -83,6 +87,8 @@ A minta sablon több vizualizációt tartalmaz, például a WordCloud és a Netw
 
 1. Kattintson duplán az egyes kapcsolatokra, és győződjön meg arról, hogy a **kereszt-szűrés iránya** **mindkettőre**van beállítva.  Ez lehetővé teszi, hogy a vizualizációk egy szűrő alkalmazása esetén frissüljenek.
 
+1. A bal oldali navigációs panelen kattintson a jelentés csempére az adatvizualizációk használatával való ismerkedéshez. A szöveges mezőkhöz a táblázatok és a kártyák hasznos vizualizációk. A táblázat vagy kártya kitöltéséhez a három tábla mezői közül választhat. 
+
 <!-- ## Try with larger data sets
 
 We purposely kept the data set small to avoid charges for a demo walkthrough. For a more realistic experience, you can create and then attach a billable Cognitive Services resource to enable a larger number of transactions against the sentiment analyzer, keyphrase extraction, and language detector skills.
@@ -102,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások díjfizetéssel járhatnak. Az erőforrásokat törölheti egyesével, vagy egyszerre, az erőforráscsoport törlésével.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
@@ -114,8 +120,3 @@ Az alábbi cikkből megtudhatja, hogyan derítheti fel ezt a Knowledge áruháza
 
 > [!div class="nextstepaction"]
 > [Megtekintés Storage Explorer](knowledge-store-view-storage-explorer.md)
-
-A következő cikkből megtudhatja, hogyan hozhat létre egy tudásbázist a REST API-k és a Poster használatával.  
-
-> [!div class="nextstepaction"]
-> [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-howto.md)

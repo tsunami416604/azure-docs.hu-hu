@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838592"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459628"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található, egyetlen adatbázisban lévő viszonyítási adatbázis tervezése
 
@@ -33,7 +33,7 @@ Az Azure SQL Database a Microsoft Cloud (Azure) egy szolgáltatásként szolgál
 > [!TIP]
 > A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely lekérdezi a Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), beleértve egy egyszerű adatbázis létrehozását is.
 > [!NOTE]
-> Ebben az oktatóanyagban egyetlen adatbázist használunk. Egy készletezett adatbázist is használhat egy rugalmas készletben vagy egy példány-adatbázisban egy felügyelt példányban. Felügyelt példányhoz való kapcsolódáshoz tekintse meg a következő felügyelt példányok: gyors útmutató [: Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való csatlakozáshoz](sql-database-managed-instance-configure-vm.md) és rövid útmutató [: pont – hely kapcsolat konfigurálása egy Azure SQL Databasehoz Felügyelt példány a helyszínen](sql-database-managed-instance-configure-p2s.md).
+> Ebben az oktatóanyagban egyetlen adatbázist használunk. Egy készletezett adatbázist is használhat egy rugalmas készletben vagy egy példány-adatbázisban egy felügyelt példányban. Felügyelt példányhoz való kapcsolódáshoz tekintse meg a következő felügyelt példányok: rövid útmutató [: Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való csatlakozáshoz](sql-database-managed-instance-configure-vm.md) és [gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,15 +44,15 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Üres önálló adatbázis létrehozása
 
-Azure SQL Databaseben egyetlen adatbázis jön létre a számítási és tárolási erőforrások egy meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) keretén belül jön létre, és egy [adatbázis-kiszolgáló](sql-database-servers.md)használatával van kezelve.
+Azure SQL Databaseben egyetlen adatbázis jön létre a számítási és tárolási erőforrások egy meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) keretén belül jön létre, és egy [adatbázis-kiszolgáló](sql-database-servers.md)használatával van kezelve.
 
 Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
 2. Az **Új** oldalon válassza az **Adatbázisok** elemet az Azure Marketplace szakaszban, majd kattintson az **SQL Database** elemre a **Kiemelt** szakaszban.
 
    ![üres adatbázis létrehozása](./media/sql-database-design-first-database/create-empty-database.png)
@@ -111,7 +111,7 @@ A SQL Database szolgáltatás egy IP-tűzfalat hoz létre a kiszolgáló szintj�
 
 1. Kattintson az **ügyfél IP-** címének hozzáadása elemre az eszköztáron, és adja hozzá az aktuális IP-címet egy új IP-tűzfalszabály-szabályhoz. Az IP-tűzfalszabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára is megnyithatja.
 
-1. Kattintson a **Save** (Mentés) gombra. A rendszer létrehoz egy kiszolgálói szintű IP-tűzfalszabály-szabályt az aktuális IP-címhez, amely az 1433-es portot nyitja meg a SQL Database kiszolgálón.
+1. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű IP-tűzfalszabály-szabályt az aktuális IP-címhez, amely az 1433-es portot nyitja meg a SQL Database kiszolgálón.
 
 1. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
@@ -132,7 +132,7 @@ A [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) ha
    | **Kiszolgáló típusa** | Adatbázismotor | Kötelezően megadandó érték. |
    | **Kiszolgálónév** | A teljes kiszolgálónév | Például: *YourServer.database.Windows.net*. |
    | **Hitelesítés** | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
-   | **Bejelentkezés** | A kiszolgálói rendszergazdai fiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
+   | **Bejelentkezés** | A kiszolgálói rendszergazdafiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | **Jelszó** | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
 
    ![kapcsolódás a kiszolgálóhoz](./media/sql-database-design-first-database/connect.png)
@@ -141,7 +141,7 @@ A [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) ha
 
     ![csatlakozás kiszolgálón található adatbázishoz](./media/sql-database-design-first-database/options-connect-to-db.png)  
 
-4. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik a **Object Explorer** ablak a SSMS.
+4. Kattintson a **Csatlakozás** gombra. Megnyílik a **Object Explorer** ablak a SSMS.
 
 5. Az **Object Explorerban**bontsa ki az **adatbázisok** csomópontot, majd bontsa ki a *yourDatabase* elemet, és tekintse meg a mintaadatbázis objektumait.
 
@@ -152,8 +152,8 @@ A [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) ha
 A [Transact-SQL](/sql/t-sql/language-reference) használatával hozzon létre egy adatbázis-sémát négy táblázattal, amelyek az egyetemek hallgatókezelési rendszerét modellezik:
 
 - Személy
-- Kurzus
-- Hallgató
+- Tanfolyam
+- Diák
 - Kredit
 
 Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. A *tanulói* tábla például a *személy* tábla *számú personid* oszlopára hivatkozik. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
@@ -268,7 +268,7 @@ Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő inf
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban számos alapvető adatbázis-feladatot tanult meg. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

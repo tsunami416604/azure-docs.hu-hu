@@ -1,25 +1,16 @@
 ---
-title: Az Azure Service Fabric-entitások összesített állapotának megtekintése | Microsoft Docs
+title: Az Azure Service Fabric-entitások összesített állapotának megtekintése
 description: Ismerteti, hogyan lehet lekérdezni, megtekinteni és kiértékelni az Azure Service Fabric entitások összesített állapotát, az állapot lekérdezéseit és az általános lekérdezéseket.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c4a312654fb54660a229c334071d33a5d6bc172f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496369"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464126"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric állapottal kapcsolatos jelentések megtekintése
 Az Azure Service Fabric olyan egészségügyi [modelleket](service-fabric-health-introduction.md) vezet be, amelyekben a rendszerösszetevők és a watchdogok jelenthetik a figyelt helyi feltételeket. Az állapotfigyelő az összes [állapotadatok összesítésével](service-fabric-health-introduction.md#health-store) megállapítja, hogy az entitások állapota Kifogástalan-e.
@@ -677,7 +668,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ### <a name="powershell"></a>PowerShell
 Az üzembe helyezett alkalmazás állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával. Ha szeretné megtudni, hogy az alkalmazás hol van telepítve, futtassa a [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) , és tekintse meg az üzembe helyezett alkalmazások gyermekeit.
 
-A következő parancsmag lekéri a **_Node_2**-on üzembe helyezett **Fabric:/WordCount** alkalmazás állapotát.
+A következő parancsmag beolvassa a **_Node_2**-on üzembe helyezett **Fabric:/WordCount** alkalmazás állapotát.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -735,7 +726,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ### <a name="powershell"></a>PowerShell
 Az üzembe helyezett szervizcsomag állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával. Ha szeretné megtekinteni, hogy az alkalmazás hol van telepítve, futtassa a [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) , és tekintse meg a telepített alkalmazásokat. Ha szeretné megtekinteni, hogy mely szervizcsomagok szerepelnek egy alkalmazásban, tekintse meg a [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) kimenetben található telepített szervizcsomagok gyermekeket.
 
-A következő parancsmag lekéri a **_Node_2**-on üzembe helyezett **Fabric:/WordCount-** alkalmazás **WordCountServicePkg** szolgáltatási csomagjának állapotát. Az entitás rendelkezik **System. hosting** jelentésekkel a sikeres Service-Package és a belépési pont aktiválásához, valamint a sikeres szolgáltatás típusú regisztrációhoz.
+A következő parancsmag beolvassa a **_Node_2**-on üzembe helyezett **Fabric:/WordCount** alkalmazás **WordCountServicePkg** szolgáltatási csomagjának állapotát. Az entitás rendelkezik **System. hosting** jelentésekkel a sikeres Service-Package és a belépési pont aktiválásához, valamint a sikeres szolgáltatás típusú regisztrációhoz.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -1236,7 +1227,7 @@ HealthEvents          :
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Rendszerállapot-jelentések használata a hibaelhárítás során](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
 [Egyéni Service Fabric állapotjelentés hozzáadása](service-fabric-report-health.md)

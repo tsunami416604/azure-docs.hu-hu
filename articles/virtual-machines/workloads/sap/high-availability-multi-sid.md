@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12498be63a688a67b2e8d09151ffe0a78d166072
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2726e9e5de53607d6bb766bf1506d6a09d714701
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101091"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647594"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver multi-SID konfiguráció létrehozása
 
@@ -77,8 +77,8 @@ ms.locfileid: "70101091"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 [dbms-guide-2.1]:../../virtual-machines-windows-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -365,9 +365,9 @@ ms.locfileid: "70101091"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -380,15 +380,15 @@ ms.locfileid: "70101091"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/management/overview.md
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 [virtual-machines-Az-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
@@ -488,11 +488,11 @@ A két magas rendelkezésre állású SAP-rendszerrel rendelkező teljes környe
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 Az infrastruktúra előkészítéséhez telepítsen egy további SAP ASCS/SCS-példányt a következő paraméterekkel:
 
-| Paraméternév | Value |
+| Paraméter neve | Value (Díj) |
 | --- | --- |
-| SAP ASCS/SCS SID |PR1-LB – ASCs |
+| SAP-ASCS/SCS SID |PR1-LB – ASCs |
 | SAP adatbázis-kezelő belső terheléselosztó | PR5 |
-| SAP virtuális gazdagép neve | pr5-sap-cl |
+| SAP virtuális gazdagép neve | PR5 – SAP-CL |
 | SAP ASCS/SCS virtuális gazdagép IP-címe (további Azure Load Balancer IP-cím) | 10.0.0.50 |
 | SAP-ASCS/SCS-példány száma | 50 |
 | ILB mintavételi port további SAP ASCS/SCS-példányhoz | 62350 |
@@ -507,7 +507,7 @@ További SAP ASCS/SCS-példányokat is telepíthet a meglévő WSFC-fürtbe két
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Statikus IP-cím |
 | --- | --- | --- |
 | 1\. ASCS/SCS-példányhoz tartozó fürtcsomópont |PR1-ASCs-0 |10.0.0.10 |
-| 2\. ASCS/SCS-példányhoz tartozó fürtcsomópont |PR1-ASCs-1 |10.0.0.9 |
+| 2\. ASCS/SCS-példányhoz tartozó fürtcsomópont |PR1-ASCs-1 |10.0.0.9 címek |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz a DNS-kiszolgálón
 
@@ -515,13 +515,13 @@ A következő paraméterek használatával létrehozhat egy DNS-bejegyzést a AS
 
 | Új SAP ASCS/SCS virtuális gazdagép neve | Társított IP-cím |
 | --- | --- |
-|pr5-sap-cl |10.0.0.50 |
+|PR5 – SAP-CL |10.0.0.50 |
 
 Az új állomásnév és IP-cím a DNS-kezelőben jelenik meg, az alábbi képernyőképen látható módon:
 
 ![A DNS-kezelő listája kiemelve a megadott DNS-bejegyzést az új SAP ASCS/SCS-fürt virtuális neve és TCP/IP-címe számára][sap-ha-guide-figure-6004]
 
-A DNS-bejegyzések létrehozásához szükséges eljárást a [Windows rendszerű virtuális gépeken a magas rendelkezésre állású SAP NetWeaver][sap-ha-guide-9.1.1]fő útmutatójában is részletesen ismertetjük.
+A DNS-bejegyzések létrehozásához szükséges eljárást a [Windows rendszerű virtuális gépeken a magas rendelkezésre állású SAP NetWeaver fő útmutatójában][sap-ha-guide-9.1.1]is részletesen ismertetjük.
 
 > [!NOTE]
 > A további ASCS/SCS-példány virtuális állomásnevét hozzárendelt új IP-címnek meg kell egyeznie az SAP Azure Load Balancerhez rendelt új IP-címmel.
@@ -637,12 +637,12 @@ A második SAP-rendszer infrastruktúra-előkészítésének befejezéséhez teg
 
 ## <a name="install-the-second-sap-sid2-netweaver-system"></a>A második SAP SID2 NetWeaver-szolgáltatás telepítése
 
-A második SAP SID2 rendszer telepítésének teljes folyamatát a Windows rendszerű [virtuális gépek magas rendelkezésre állású SAP NetWeaver][sap-ha-guide-9]fő útmutatója ismerteti.
+A második SAP SID2 rendszer telepítésének teljes folyamatát a Windows rendszerű [virtuális gépek magas rendelkezésre állású SAP NetWeaver fő útmutatója][sap-ha-guide-9]ismerteti.
 
 A magas szintű eljárás a következő:
 
-1. [Telepítse az SAP első fürtcsomópont][sap-ha-guide-9.1.2]-csomópontját.  
- Ebben a lépésben telepíti az SAP-t egy magas rendelkezésre állású ASCS/SCS-példánnyal a **meglévő WSFC-fürt 1**. csomópontján.
+1. [Telepítse az SAP első fürtcsomópont-csomópontját][sap-ha-guide-9.1.2].  
+ Ebben a lépésben telepíti az SAP-t egy magas rendelkezésre állású ASCS/SCS-példánnyal a **meglévő WSFC-fürt 1. csomópontján**.
 
 2. [Módosítsa az ASCS/SCS-példány SAP-profilját][sap-ha-guide-9.1.3].
 
@@ -652,7 +652,7 @@ A magas szintű eljárás a következő:
 4. [Telepítse az adatbázis-példányt][sap-ha-guide-9.2].  
  Ebben a lépésben telepíti az adatbázis-kezelőt egy dedikált WSFC-fürtre.
 
-5. [Telepítse a második fürtcsomópont][sap-ha-guide-9.3]-csomópontot.  
+5. [Telepítse a második fürtcsomópont-csomópontot][sap-ha-guide-9.3].  
  Ebben a lépésben telepíti az SAP-t egy magas rendelkezésre állású ASCS/SCS-példánnyal a meglévő WSFC-fürt 2. csomópontján.
 
 6. Nyissa meg a Windows tűzfal portjait az SAP ASCS/SCS-példányhoz és a ProbePort.  
@@ -667,7 +667,7 @@ A magas szintű eljárás a következő:
 
 10. [Tesztelje az SAP ASCS/SCS instance feladatátvételi és SIOS replikációját][sap-ha-guide-10].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több VIP Azure Load Balancer][load-balancer-multivip-overview]

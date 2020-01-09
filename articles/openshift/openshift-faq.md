@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378211"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
@@ -121,7 +121,7 @@ A syslog, a Docker-naplók, a Journal és a dmesg kezelése a felügyelt szolgá
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hogyan érhetik el az ügyfél az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb műveleteket is végrehajtsa. Úgy tűnik, hogy nem fut `kubectl top` egy ARO-fürtön.
 
-a `kubectl top` Red Hat OpenShift nem érhető el. Ehhez a OpenShift-figyelési veremben a Heapster (elavult) vagy metrika-Server (inkubálás vagy alfa) típusú háttérrendszer-forrás szükséges.
+Az ügyfelek a következő paranccsal érhetik el a CPU-/memória-metrikákat a csomópont szintjén: `oc adm top nodes` vagy `kubectl top nodes` az ügyfél-rendszergazda clusterrole.  Az ügyfelek a `pods` CPU-/memória-metrikáit is elérheti a paranccsal `oc adm top pods` vagy `kubectl top pods`
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Mi az az alapértelmezett Pod Scheduler-konfiguráció az ARO-hoz?
 
@@ -137,7 +137,7 @@ További részletekért tekintse meg [a virtuális gépek méretezési csoportj�
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Van mód a pod elhelyezés kezelésére?
 
-A közelgő ügyfél-rendszergazda frissítéssel az ügyfeleknek lehetőségük lesz a csomópontok beszerzésére és a címkék megtekintésére.  Ez lehetőséget biztosít a méretezési csoportba tartozó bármely virtuális gép célzására.
+Ügyfeleinknek lehetősége van a csomópontok beszerzésére és a címkék megtekintésére ügyfél-rendszergazdaként.  Ez lehetőséget biztosít a méretezési csoportba tartozó bármely virtuális gép célzására.
 
 Adott címkék használatakor körültekintően kell eljárni:
 
@@ -147,7 +147,7 @@ Adott címkék használatakor körültekintően kell eljárni:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Mi a hüvelyek maximális száma egy ARO-fürtben?  Mekkora számú hüvely/csomópont az ARO-ban?
 
-További részletekért tekintse meg a [felsőbb rétegbeli OpenShift dokumentációját](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) . A Red Hat OpenShift 3,11 250-Pod/Node korláttal rendelkezik, míg az [ARO 20 számítási csomóponti korláttal rendelkezik](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), így az ARO-fürtökben legfeljebb 250 * 20 = 5000-ra támogatott hüvelyek maximális száma.
+ Az Azure Red Hat OpenShift 3,11 egy 50-Pod/Node korláttal rendelkezik, és az [ARO 20 számítási csomópontos korlátot](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)tartalmaz, így az ARO-fürtökben legfeljebb 50 * 20 = 1000-ra támogatott hüvelyek maximális száma adható meg.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Megadhatjuk az IP-címtartományok üzembe helyezését a privát VNET, így elkerülhetők a többi vállalati virtuális hálózatok való ütközések?
 

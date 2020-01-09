@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-minták | Microsoft Docs
-description: Azure PowerShell-minták
+title: Azure PowerShell-minták
+description: Egy táblázat, amely a Azure PowerShell használatával létrehozott bash-szkriptekre mutató hivatkozásokat tartalmaz, például egy méretezési csoport létrehozását és felügyeletét.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 23110fb3fc395c3a3a1107ef9ab0d5a93ec8e3f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0a5939d1b64d93d4dbcc40b2639e3f3ac1a33be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369133"
 ---
-# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Az Azure PowerShell-minták virtuálisgép-méretezési csoportokban.
+# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Azure PowerShell minták a virtuálisgép-méretezési csoportokhoz.
 
 A következő táblázat az Azure PowerShell használatával létrehozott bash szkriptekre mutató hivatkozásokat tartalmaz.
 

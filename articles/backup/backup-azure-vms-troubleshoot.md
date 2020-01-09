@@ -2,20 +2,20 @@
 title: Azure-beli virtuális gépek biztonsági mentésével kapcsolatos hibák elhárítása
 description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével és visszaállításával kapcsolatos hibák elhárítását ismerteti.
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e5ee0e06d444db809ce3e168f8883048eaf45e27
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172465"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664629"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
 A Azure Backup használata során észlelt hibák elhárítása az alábbi információkkal végezhető el:
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 
 Ez a szakasz az Azure-beli virtuális gép biztonsági mentési műveletének hibáját ismerteti.
 
@@ -61,7 +61,6 @@ A biztonsági mentési művelet meghiúsult, mert a virtuális gép hibás álla
 Hibakód: UserErrorFsFreezeFailed <br/>
 Hibaüzenet: nem sikerült befagyasztani a virtuális gép egy vagy több csatlakoztatási pontját, hogy egy fájlrendszerrel konzisztens pillanatképet készítsen.
 
-* A **tune2fs** parancs használatával vizsgálja meg az összes csatlakoztatott eszköz fájlrendszerbeli állapotát, például **tune2fs-l/dev/sdb1 \\** .\| grep **fájlrendszer állapota**.
 * A **umount** parancs használatával válassza le azokat az eszközöket, amelyek esetében a fájlrendszer állapota nem lett megtisztítva.
 * Futtasson fájlrendszer-konzisztencia-ellenőrzéseket ezeken az eszközökön a **fsck** parancs használatával.
 * Csatlakoztassa újra az eszközöket, és próbálkozzon újra a biztonsági mentési művelettel.</ol>
@@ -183,8 +182,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 
 | A hiba részletei | Áthidaló megoldás |
 | ------ | --- |
-| **Hibakód**: 320001, ResourceNotFound <br/> **Hibaüzenet**: nem sikerült végrehajtani a műveletet, mert a virtuális gép már nem létezik. <br/> <br/> **Hibakód**: 400094, BCMV2VMNotFound <br/> **Hibaüzenet**: a virtuális gép nem létezik <br/> <br/>  Nem található Azure-beli virtuális gép.  |Ez a hiba akkor fordul elő, ha az elsődleges virtuális gép törlődik, de a biztonsági mentési szabályzat továbbra is a virtuális gép biztonsági mentését keresi. A hiba elhárításához hajtsa végre a következő lépéseket: <ol><li> Hozza létre újra a virtuális gépet ugyanazzal a névvel és ugyanazzal az erőforráscsoport-névvel, a **Cloud Service-névvel**,<br>**or**</li><li> Állítsa le a virtuális gép védelmét a biztonsági mentési adatok törlése nélkül vagy anélkül. További információ: a [virtuális gépek védelmének leállítása](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
-| **Hibakód**: UserErrorVmProvisioningStateFailed<br/> **Hibaüzenet**: a virtuális gép sikertelen kiépítési állapotban van: <br>Indítsa újra a virtuális gépet, és győződjön meg arról, hogy a virtuális gép fut vagy leáll. | Ez a hiba akkor fordul elő, ha a bővítmények egyike sikertelen kiépítési állapotba helyezi a virtuális gépet. Lépjen a bővítmények listára, ellenőrizze, hogy van-e sikertelen bővítmény, távolítsa el, majd próbálja meg újraindítani a virtuális gépet. Ha az összes bővítmény fut állapotban van, ellenőrizze, hogy fut-e a virtuálisgép-ügynök szolgáltatás. Ha nem, indítsa újra a VM Agent szolgáltatást. |
+| **Hibakód**: 320001, ResourceNotFound <br/> **Hibaüzenet**: nem sikerült végrehajtani a műveletet, mert a virtuális gép már nem létezik. <br/> <br/> **Hibakód**: 400094, BCMV2VMNotFound <br/> **Hibaüzenet**: a virtuális gép nem létezik <br/> <br/>  Nem található Azure-beli virtuális gép.  |Ez a hiba akkor fordul elő, ha az elsődleges virtuális gép törlődik, de a biztonsági mentési szabályzat továbbra is a virtuális gép biztonsági mentését keresi. A hiba elhárításához hajtsa végre a következő lépéseket: <ol><li> Hozza létre újra a virtuális gépet ugyanazzal a névvel és ugyanazzal az erőforráscsoport-névvel, a **Cloud Service-névvel**,<br>**vagy**</li><li> Állítsa le a virtuális gép védelmét a biztonsági mentési adatok törlése nélkül vagy anélkül. További információ: a [virtuális gépek védelmének leállítása](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
 |**Hibakód**: UserErrorBCMPremiumStorageQuotaError<br/> **Hibaüzenet**: nem sikerült másolni a virtuális gép pillanatképét, mert nincs elég szabad hely a Storage-fiókban. | A virtuális gépek biztonsági mentési verem v1-es verziójának prémium szintű virtuális gépei esetén a pillanatképet a Storage-fiókba másolja. Ez a lépés gondoskodik arról, hogy a biztonsági mentési felügyeleti forgalom, amely a pillanatképen működik, nem korlátozza az alkalmazás számára elérhető IOPS számát a prémium szintű lemezek használatával. <br><br>Javasoljuk, hogy a teljes Storage-fiók területének 50%-os, 17,5 TB-os számát foglalja le. Ezután a Azure Backup szolgáltatás átmásolhatja a pillanatképet a Storage-fiókba, és átviheti az adatait a Storage-fiókból a tárolóba. |
 | **Hibakód**: 380008, AzureVmOffline <br/> **Hibaüzenet**: nem sikerült telepíteni a Microsoft Recovery Services-bővítményt, mert a virtuális gép nem fut | A VM-ügynök az Azure Recovery Services bővítmény előfeltétele. Telepítse az Azure Virtual Machine Agent ügynököt, és indítsa újra a regisztrációs műveletet. <br> <ol> <li>Ellenőrizze, hogy a virtuális gép ügynöke megfelelően van-e telepítve. <li>Győződjön meg arról, hogy a virtuális gép konfigurációjának jelzője helyesen van beállítva.</ol> További információ a virtuálisgép-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről. |
 | **Hibakód**: ExtensionSnapshotBitlockerError <br/> **Hibaüzenet**: a pillanatkép-művelet a kötet ÁRNYÉKMÁSOLATA szolgáltatás (VSS) művelet hibája miatt sikertelen volt, mert az **BitLocker meghajtótitkosítás zárolta a meghajtót. A meghajtót fel kell oldani a Vezérlőpultról.** |Kapcsolja ki a BitLockert a virtuális gépen lévő összes meghajtón, és ellenőrizze, hogy megoldódott-e a VSS-probléma. |
@@ -198,7 +196,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
 | Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |None |
-| A feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. <br>**or**<br> A kijelölt feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. |Valószínű, hogy a feladatot majdnem befejezték. Várjon, amíg a feladatok befejeződik.|
+| A feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. <br>**vagy**<br> A kijelölt feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. |Valószínű, hogy a feladatot majdnem befejezték. Várjon, amíg a feladatok befejeződik.|
 | A biztonsági mentés nem tudja megszakítani a feladatot, mert nincs folyamatban: <br>A megszakítás csak folyamatban lévő feladatok esetén támogatott. Próbálkozzon egy folyamatban lévő feladat megszakításával. |Ez a hiba átmeneti állapot miatt fordul elő. Várjon egy percet, és ismételje meg a megszakítási műveletet. |
 | A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |None |
 
@@ -276,7 +274,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Az összes bővítményhez hasonlóan a biztonsági mentési bővítményeknek is hozzá kell férniük a nyilvános internethez. Ha nem fér hozzá a nyilvános internethez, többféleképpen is megnyilvánulhat:
 

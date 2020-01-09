@@ -5,13 +5,13 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: 2be21b20c394ae8505ad18f2c411db7aab06215f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 12/29/2019
+ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74694004"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690292"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: tavaszi Felhőbeli erőforrások figyelése riasztások és műveleti csoportok használatával
 
@@ -26,7 +26,7 @@ Az Azure Spring-követelmények mellett ez az oktatóanyag az alábbi forrásokb
 
 * Egy üzembe helyezett Azure Spring Cloud-példány.  [A kezdéshez kövesse a gyors](spring-cloud-quickstart-launch-app-cli.md) üzembe helyezési útmutatót.
 
-* A figyelni kívánt Azure-erőforrás, például a cikkben ismertetett adatbázis: a [Spring-adatApache Cassandra API használata a Azure Cosmos db](https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+* Egy figyelni kívánt Azure-erőforrás. Ez a példa a Spring Cloud-példányt figyeli.
  
 A következő eljárások inicializálják mindkét **műveleti csoportot** és a **riasztást** a Spring Cloud-példány bal oldali navigációs paneljének **riasztások** lehetőségével. (Az eljárás a Azure Portal **figyelő áttekintés** lapján is elindítható.) 
 
@@ -70,21 +70,46 @@ A **riasztások**konfigurálásához térjen vissza a **riasztások** lapra, maj
 
 1. Kattintson az **+ új riasztási szabály**elemre.
 
-  ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3.png)
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3.png)
 
-1. A **szabály létrehozása** lapon határozza meg az **erőforrást**, a **feltételt**és a **műveleteket**.  A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
+1. A **szabály létrehozása** lapon határozza meg az **erőforrást**.
 
-1. A **riasztás részletei**területen nevezze el a riasztási szabályt.
+1. A **feltétel** beállítása számos lehetőséget kínál a **Spring Cloud** -erőforrások figyelésére.  Kattintson a **Hozzáadás** gombra a **jel logikájának konfigurálása** panel megnyitásához.
+
+1. Válasszon ki egy feltételt. Ez a példa a **rendszer CPU-kihasználtságának százalékos arányát**használja.
+
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-1.png)
+
+1. Görgessen le a **jelzőlámpa konfigurálása** panelre, és állítsa be a figyelni kívánt **küszöbértéket** .
+
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-2.png)
+
+1. Kattintson a **Done** (Kész) gombra.
+
+A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options).
+
+ A **műveletek**területen kattintson a **műveleti csoport kiválasztása**elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
+
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-3.png) 
+
+1. Görgessen le, és a **riasztás részletei**területen nevezze el a riasztási szabályt.
+
+1. Állítsa be a **súlyosságot**.
 
 1. Kattintson a **riasztási szabály létrehozása**elemre.
 
-  ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-4.png)
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-4.png)
 
 Ellenőrizze, hogy az új riasztási szabály engedélyezve van-e.
 
-  ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-5.png)
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-4.png)
+
+A **metrikák** lapról is létrehozhat egy szabályt:
+
+   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Következő lépések
+* [Felhasználói portál metrikáinak beállításai](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 * [Műveleti csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

@@ -4,21 +4,21 @@ description: Log Analytics-munkaterületek létrehozásához és konfigurálás�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363370"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Azure Resource Manager sablonokkal](../../azure-resource-manager/resource-group-authoring-templates.md) log Analytics munkaterületeket hozhat létre és konfigurálhat Azure monitor. A sablonokkal végrehajtható feladatok például a következők:
+[Azure Resource Manager sablonokkal](../../azure-resource-manager/templates/template-syntax.md) log Analytics munkaterületeket hozhat létre és konfigurálhat Azure monitor. A sablonokkal végrehajtható feladatok például a következők:
 
 * Munkaterület létrehozása, beleértve az árképzési szintet 
 * Megoldás hozzáadása
@@ -45,7 +45,7 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 | Adatforrás | adatforrások   | 2015-11-01 – előzetes verzió |
 | Megoldás    | megoldások     | 2015-11-01 – előzetes verzió |
 
-## <a name="create-a-log-analytics-workspace"></a>Log Analytics munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
 A következő példa egy munkaterületet hoz létre egy sablon használatával a helyi gépről. A JSON-sablon úgy van konfigurálva, hogy csak az új munkaterület nevét és helyét használja (a többi munkaterület paraméterének alapértelmezett értékeivel, például az árképzési csomaggal és a megőrzéssel).  
 

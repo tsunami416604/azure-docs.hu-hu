@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230377"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561867"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
 
@@ -59,7 +59,7 @@ Ez a viselkedés a következő fontos pontokat mutatja be:
 
 ### <a name="retry-mechanisms-and-policies"></a>Újrapróbálkozási mechanizmusok és szabályzatok
 
-Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel. Megpróbálkozhat az újrapróbálkozási szabályok feldolgozásával, de olyan általános, hogy számos eszköz érhető el. Ezen könyvtárak használatával robusztus újrapróbálkozási házirendeket határozhat meg, amelyek segítenek megőrizni a feldolgozási sorrendet is.
+Bizonyos kivételek átmeneti jellegűek, és nem jelennek meg újra, amikor egy művelet később próbálkozik újra. Ezért az első lépés az, hogy mindig újra kell próbálkoznia a művelettel. Megismételheti az újrapróbálkozási szabályok feldolgozását, de olyan általános, hogy számos eszköz áll rendelkezésre. Ezen könyvtárak használatával robusztus újrapróbálkozási házirendeket határozhat meg, amelyek segítenek megőrizni a feldolgozási sorrendet is.
 
 A hibák kezelésére szolgáló kódtárak bevezetése a függvények számára lehetővé teszi az alapszintű és a speciális újrapróbálkozási házirendek definiálását is. Létrehozhat például egy olyan szabályzatot, amely a következő szabályok által illusztrált munkafolyamatot követi:
 
@@ -82,7 +82,7 @@ Arról, hogy minden üzenet feldolgozása legalább egyszer megtörténik, azt f
 
 ## <a name="stop-and-restart-execution"></a>Végrehajtás leállítása és újraindítása
 
-Néhány hiba is elfogadható lehet, mi a teendő, ha az alkalmazás jelentős hibákat tapasztal? Előfordulhat, hogy az események aktiválását le szeretné állítani, amíg a rendszer Kifogástalan állapotba nem ér. A szüneteltetési lehetőség feldolgozását gyakran egy áramkör-megszakító mintával éri el. Az áramkör-megszakító minta lehetővé teszi, hogy az alkalmazás "megtörje" az esemény folyamatát, és később folytassa a műveletet.
+Néhány hiba is elfogadható lehet, mi a teendő, ha az alkalmazás jelentős hibákat tapasztal? Előfordulhat, hogy az események aktiválását le szeretné állítani, amíg a rendszer Kifogástalan állapotba nem ér. A feldolgozás szüneteltetésének lehetősége gyakran egy áramkör-megszakító mintával érhető el. Az áramkör-megszakító minta lehetővé teszi, hogy az alkalmazás "megtörje" az esemény folyamatát, és később folytassa a műveletet.
 
 Az áramkör-megszakítót egy eseményvezérelt folyamat megvalósításához két darab szükséges:
 
@@ -120,7 +120,7 @@ Az e-mail-címzett megvizsgálhatja az áramkör állapotát, és ha szükséges
 
 Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes üzenet feldolgozása sorrendben történik, és szükség esetén az áramkört is megszüntetheti.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Segédanyagok és eszközök
 
 - [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Azure Durable Functions áramkör-megszakító](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)

@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Azure Batch-feladatok futtatása – Python API'
-description: Batch-feladatok és -tevékenységek gyors futtatása a Batch Python ügyfélkódtárával.
+description: A Batch Python ügyféloldali kódtár használatával gyorsan futtathat egy Azure Batch-minta feladatot és feladatot. Ismerje meg a Batch szolgáltatás legfontosabb fogalmait.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390239"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
 
@@ -51,7 +51,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Nyissa meg a könyvtárat, amely a `python_quickstart_client.py` Python-szkriptet tartalmazza.
+Nyissa meg azt a könyvtárat, amely tartalmazza a Python-szkriptet `python_quickstart_client.py`.
 
 A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip` segítségével.
 

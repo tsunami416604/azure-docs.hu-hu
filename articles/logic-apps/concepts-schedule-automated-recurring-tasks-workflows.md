@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 972b9360fa95b528bd955a07451e7347f3e1791d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456664"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezett és futtatása Azure Logic Apps
 
@@ -79,6 +79,16 @@ A Logic app-munkafolyamatban bármilyen művelet után a késleltetés és a ké
 | Kezdési idő jelenleg vagy a jövőben | Futtatja az első számítási feladatot a megadott kezdési időpontban. <p>A jövőbeli munkaterheléseket az utolsó futtatási idő számításai alapján futtatja. | A kezdési időpontból kiszámított ütemterv alapján az első számítási feladatot a kezdési időpontnál *hamarabb* futtatja. <p>A jövőbeli munkaterheléseket a megadott ütemterv alapján futtatja. <p>**Megjegyzés:** Ha egy ütemezett ismétlődést ad meg, de nem ad meg órákat vagy percet az ütemtervhez, akkor a jövőbeli futási idők az első futási idő órában vagy percben lesznek kiszámítva. |
 ||||
 
+> [!IMPORTANT]
+> Ha az ismétlődések nem határoznak meg speciális ütemezési beállításokat, a jövőbeli ismétlődések az utolsó futási időn alapulnak.
+> Ezeknek az ismétlődéseknek az indítási időpontja a tárolási hívások során felmerülő tényezők, például a késés miatt eltérhet. A következő lehetőségek egyikének használatával győződjön meg arról, hogy a logikai alkalmazás nem hagyja ki az ismétlődést, különösen akkor, ha a gyakoriság napokban vagy már nem érhető el.
+> 
+> * Adja meg az ismétlődés kezdési idejét.
+> 
+> * Adja meg az órákat és a perceket, hogy mikor futtassa az ismétlődést a **ezen órákon** és a **percekben** megadott tulajdonságok alapján.
+> 
+> * Az ismétlődési eseményindító helyett használja a [csúszó ablak eseményindítóját](../connectors/connectors-native-sliding-window.md).
+
 *Példa korábbi kezdési időre és ismétlődésre, de nincs ütemezése*
 
 Tegyük fel, hogy az aktuális dátum és idő szeptember 8., 2017, 1:00 PM. Megadhatja a kezdési dátumot és az időpontot szeptember 7., 2017., 2:00 PM, amely a múltban, valamint egy ismétlődés, amely két naponként fut.
@@ -116,7 +126,7 @@ Tehát attól függetlenül, hogy a múltban milyen messzire van szükség a kez
 
 Az alábbi példa a beállításokat támogató eseményindítók különböző ismétlődéseit jeleníti meg:
 
-| Eseményindító | Ismétlődés | Intervallum | Frequency | Kezdési idő | Ezekben a napokban | Ezen az órában | Ezen a perceken | Megjegyzés |
+| Eseményindító | Ismétlődés | Intervallum | Frequency | Kezdési idő | Ezeken a napokon | Órák | Percek | Megjegyzés |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (nincs kezdő dátum és idő) | 15 | Perc | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
 | Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (kezdő dátummal és idővel) | 15 | Perc | *StartDate* T*kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |

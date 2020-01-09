@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443886"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -48,7 +48,7 @@ A [Azure Automation](/azure/automation/automation-intro) lehetővé teszi a manu
 
 A Azure Backup a megfelelő számítógépen vagy kiszolgálón, vagy a felhőben letöltheti és telepítheti az összetevőket. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Az összes Azure Backup-összetevő (függetlenül attól, hogy a helyszíni vagy a felhőben tárolt adatok védelmére alkalmas-e) az adatok biztonsági mentését egy Azure Recovery Services-tárolóba az Azure-ban.
 
-További információ: [Azure Backup Components tábla](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
+További információ: [Azure Backup Components tábla](/azure/backup/backup-overview#what-can-i-back-up).
 
 ### <a name="site-recovery"></a>Site Recovery
 
@@ -118,7 +118,7 @@ A Windows-események rendszernaplói a virtuális gépek diagnosztikai naplóina
 
 A diagnosztikai naplók eltérnek a [tevékenység naplójától](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). A tevékenység naplója betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 A Azure Monitor telemetria biztosít az Azure-beli számítási feladatok teljesítményének és állapotának áttekintéséhez. Az Azure telemetria-adatok legfontosabb típusa a legtöbb Azure-erőforrás által kibocsátott [mérőszámok](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) (más néven teljesítményszámlálók). A Azure Monitor számos módszert biztosít ezen mérőszámok konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz.
 
@@ -169,7 +169,7 @@ A tervrajzok deklaratív módszert biztosítanak különböző erőforrás-sablo
 - Azure Resource Manager-sablonok
 - Erőforráscsoportok
 
-## <a name="devops"></a>DevOps
+## <a name="devops"></a>Fejlesztés és üzemeltetés
 
 A [fejlesztői műveletek (DevOps-alkalmazások)](https://www.visualstudio.com/learn/what-is-devops/) fejlesztése előtt a csapatok feladata a szoftverek üzleti követelményeinek összegyűjtése és a kód írása. Ezután egy különálló QA-csapat tesztelte a programot egy elkülönített fejlesztői környezetben. Ha teljesülnek a követelmények, a QA csapat kiadta a programkódot a telepítendő műveletekhez. Az üzembe helyezési csapatokat további csoportokba osztottuk, például hálózatkezelésre és adatbázisra. Minden alkalommal, amikor egy szoftver egy különálló csapatnak lett kiváltva, a rendszer szűk keresztmetszeteket adott hozzá.
 
@@ -187,7 +187,7 @@ Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadna
 - Az [infrastruktúra mint kód (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) olyan gyakorlat, amely lehetővé teszi a hálózatok és virtuális gépek létrehozásának és Teardown automatizálását és érvényesítését, így segítve a biztonságos, stabil alkalmazás-üzemeltetési platformok nyújtását.
 - A [szolgáltatás](https://www.visualstudio.com/learn/what-are-microservices/) architektúrája az üzleti használati esetek kis újrafelhasználható szolgáltatásokra való elkülönítésére szolgál.  Ez az architektúra lehetővé teszi a méretezhetőséget és a hatékonyságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Security and Audit megoldással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

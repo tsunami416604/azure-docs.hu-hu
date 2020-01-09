@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: c28ef627e9ef65f9985a520c8c4f3facc7a160da
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 18354881b7bf2899bdd109b47d6a10e29073cc36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432501"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
 
@@ -166,7 +166,7 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)

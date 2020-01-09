@@ -1,22 +1,18 @@
 ---
 title: Azure Monitor konfigurálása a tárolók Prometheus-integrációhoz | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Azure Monitor for containers agentet a Prometheus-mérőszámok az Azure Kubernetes Service-fürttel való kaparása céljából.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 51bdf0cfedb30fbd95f9a44e8f4a0efe4e857104
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403517"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>A Prometheus-metrikák Azure Monitor for containers szolgáltatással történő selejtezésének konfigurálása
 
-A [Prometheus](https://prometheus.io/) egy népszerű, nyílt forráskódú metrikafigyelési megoldás, mely a [Cloud Native Compute Foundation](https://www.cncf.io/) része. A tárolók Azure Monitor zökkenőmentes bevezetési élményt biztosít a Prometheus-metrikák gyűjtéséhez. A Prometheus használatához általában egy Prometheus-kiszolgálót kell beállítania és kezelnie egy tárolóval. A Azure Monitor integrálásával a Prometheus-kiszolgáló nem szükséges. Csak a Prometheus mérőszámok végpontját kell közzétennie az exportőrökön vagy a hüvelyeken (alkalmazáson) keresztül, és a tárolók Azure Monitor számára a tárolók számára a mérőszámokat fel lehet kaparni. 
+A [Prometheus](https://prometheus.io/) egy népszerű, nyílt forráskódú metrikus monitorozási megoldás, amely a [Felhőbeli natív számítási alaprendszer](https://www.cncf.io/)részét képezi. A tárolók Azure Monitor zökkenőmentes bevezetési élményt biztosít a Prometheus-metrikák gyűjtéséhez. A Prometheus használatához általában egy Prometheus-kiszolgálót kell beállítania és kezelnie egy tárolóval. A Azure Monitor integrálásával a Prometheus-kiszolgáló nem szükséges. Csak a Prometheus mérőszámok végpontját kell közzétennie az exportőrökön vagy a hüvelyeken (alkalmazáson) keresztül, és a tárolók Azure Monitor számára a tárolók számára a mérőszámokat fel lehet kaparni. 
 
 ![A Container monitoring architektúra a Prometheus számára](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -38,13 +34,13 @@ A Prometheus-metrikák aktív kaparása a következő két szempont egyikével v
 
 URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
 
-|Hatókör | Paraméter | Data type | Érték | Leírás |
+|Hatókör | Jelmagyarázat | Data type | Value (Díj) | Leírás |
 |------|-----|-----------|-------|-------------|
 | Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
 | | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
 | | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Logikai | true vagy false | Ha a `true`re van beállítva a teljes fürtre vonatkozó beállításokban, Azure Monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön a következő Prometheus-megjegyzésekhez fogja lekaparni:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Logikai | true vagy false | Engedélyezi a hüvely leselejtezését. a `monitor_kubernetes_pods` `true`re kell beállítani. |
+| | `monitor_kubernetes_pods` | Logikai | true (igaz) vagy false (hamis) | Ha a `true`re van beállítva a teljes fürtre vonatkozó beállításokban, Azure Monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön a következő Prometheus-megjegyzésekhez fogja lekaparni:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Logikai | true (igaz) vagy false (hamis) | Engedélyezi a hüvely leselejtezését. a `monitor_kubernetes_pods` `true`re kell beállítani. |
 | | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa `https`ra. | 
 | | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja nem `/metrics`, akkor ezt a jegyzetet adja meg. |
 | | `prometheus.io/port` | Sztring | 9102 | Itt adhatja meg a kaparni kívánt portot. Ha a port nincs beállítva, az alapértelmezett érték 9102 lesz. |
@@ -123,7 +119,7 @@ A következő lépések végrehajtásával konfigurálja és telepítheti a Conf
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Ha szeretné korlátozni a figyelést olyan hüvelyek esetében, amelyek megjegyzésekkel rendelkeznek, például csak éles számítási feladatokhoz dedikált hüvelyeket tartalmazhatnak, állítsa a `monitor_kubernetes_pod` `true`re a ConfigMap-ben, és adja hozzá a névtér-szűrőt `monitor_kubernetes_pods_namespaces` a a bekaparni kívánt névterek. Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          Ha korlátozni szeretné a jegyzetekkel rendelkező hüvelyek meghatározott névtereit, például csak az éles számítási feladatokhoz dedikált hüvelyeket tartalmazza, állítsa a `monitor_kubernetes_pod` `true`re a ConfigMap-ben, és adja hozzá a névtér-szűrőt, `monitor_kubernetes_pods_namespaces` adja meg a selejtes névtereket. Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 3. Hozzon létre ConfigMap a következő kubectl-parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml>`.
     

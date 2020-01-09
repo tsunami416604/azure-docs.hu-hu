@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/25/2018
-ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 12/27/2019
+ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684543"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552134"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákkal
 
@@ -126,13 +126,13 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
   - Folyamat aktivitása = $0,00003 (a végrehajtási idő 1 perces elszámolása. $0.002/óra Azure Integration Runtime)
   - Külső folyamat tevékenysége = $0,000041 (a végrehajtási idő 10 perce arányban. $0.00025/óra Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>A leképezési adatfolyamok hibakeresése normál munkanapokon (előzetes verzió díjszabása)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>A leképezési adatfolyam hibakeresésének használata normál munkanapokon
 
-Adatmérnökként minden nap feldolgozza a leképezési adatfolyamatok tervezését, összeállítását és tesztelését. Reggel be kell jelentkeznie az ADF felhasználói felületére, és engedélyeznie kell a hibakeresési módot az adatforgalomhoz. A hibakeresési munkamenetek alapértelmezett ÉLETTARTAMa 60 perc. A nap folyamán 10 óráig dolgozhat, így a hibakeresési munkamenet soha nem jár le. Ezért a napi díj a következő lesz:
+Adatmérnökként minden nap feldolgozza a leképezési adatfolyamatok tervezését, összeállítását és tesztelését. Reggel be kell jelentkeznie az ADF felhasználói felületére, és engedélyeznie kell a hibakeresési módot az adatforgalomhoz. A hibakeresési munkamenetek alapértelmezett ÉLETTARTAMa 60 perc. A nap folyamán 8 óráig dolgozhat, így a hibakeresési munkamenet soha nem jár le. Ezért a napi díj a következő lesz:
 
-**10 (óra) x 8 (magok) x $0,112 = $8,96**
+**8 (óra) x 8 (számításra optimalizált magok) x $0,193 = $12,35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>A blob-tárolóban lévő adatátalakítások leképezési adatforgalmával (előzetes verzió díjszabása)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>A blob-tárolóban lévő adatátalakítások leképezése adatfolyamatokkal
 
 Ebben a forgatókönyvben a blob-tárolóban lévő adatátalakítást az ADF-leképezési adatfolyamatok óránkénti időpontjában szeretné átalakítani.
 
@@ -153,7 +153,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Folyamat létrehozása | 3 olvasási/írási entitás (1 a folyamat létrehozásához, 2 az adatkészlet-hivatkozásokhoz) |
 | Folyamat beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 2 tevékenység fut (1 a trigger futtatásához, 1 a tevékenység futtatásához) |
-| Adatáramlási feltételezések: végrehajtási idő = 10 perc + 10 perc TTL | 10 \* 8 mag az általános számítási feladatokhoz 10 TTL-vel |
+| Adatáramlási feltételezések: végrehajtási idő = 10 perc + 10 perc TTL | 10 \* 16 olyan általános számítási mag, amelynek ÉLETTARTAMa 10 |
 | Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 figyelési futtatási rekordok újrapróbálva (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
 
 **Forgatókönyvek teljes díjszabása: $0,3011**
@@ -161,11 +161,11 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 - Data Factory műveletek = **$0,0001**
   - Írás/írás = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
   - Monitoring = 2\*000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
-- Folyamat-összehangolás &amp; végrehajtás = **$0,301**
+- Folyamat-összehangolás &amp; végrehajtás = **$1,463**
   - Tevékenység-futtatások = 001\*2 = 0,002 [1 Futtatás = $1/1000 = 0,001]
-  - Adatfolyam-tevékenységek = $0,299 arány 20 percre (10 perc végrehajtási idő + 10 perc TTL). $0.112/óra Azure Integration Runtime 8 maggal általános számítási feladatokkal
+  - Adatfolyam-tevékenységek = $1,461 arány 20 percre (10 perc végrehajtási idő + 10 perc TTL). $0.274/óra Azure Integration Runtime 16 maggal általános számítási feladatokkal
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette Azure Data Factory díjszabását, megkezdheti!
 

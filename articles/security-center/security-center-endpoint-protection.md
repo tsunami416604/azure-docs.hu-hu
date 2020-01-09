@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2019
+ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748430"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552933"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
 
-A Azure Security Center az Endpoint Protection-megoldások [támogatott](https://docs.microsoft.com/azure/security-center/security-center-os-coverage) verzióinak egészségügyi értékelését biztosítja. Ez a cikk ismerteti azokat a forgatókönyveket, amelyek Security Center a következő két javaslat létrehozásához vezetnek:
+A Azure Security Center az Endpoint Protection-megoldások [támogatott](security-center-services.md#supported-endpoint-protection-solutions-) verzióinak egészségügyi értékelését biztosítja. Ez a cikk ismerteti azokat a forgatókönyveket, amelyek Security Center a következő két javaslat létrehozásához vezetnek:
 
 * **Endpoint Protection-megoldások telepítése a virtuális gépre**
 * **Az Endpoint Protection állapotával kapcsolatos problémák megoldása a gépeken**
@@ -55,7 +55,7 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](https:/
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center a SCEPMpModule importálásakor **("$env:P Rogramfiles\microsoft biztonsági Client\MpProvider\MpProvider.psd1")** és a futtatáskor **javasolja az Endpoint Protection-megoldások telepítését a virtuális gépen. Get-MProtComputerStatus** eredmények a **AMServiceEnabled = false értékkel**
+* Security Center javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen a** SCEPMpModule importálásakor **("$env:P rogramfiles\microsoft biztonsági Client\MpProvider\MpProvider.psd1")** , valamint a **Get-MProtComputerStatus** eredményeinek a **AMServiceEnabled = false értékkel** történő futtatását.
 
 * Security Center a **Get-MprotComputerStatus** futtatásakor javasolja az **Endpoint Protection-állapottal kapcsolatos problémák megoldását a gépeken** , valamint a következő esetekben:
 
@@ -85,7 +85,7 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](https:/
     * **HKLM: \ SOFTWARE\TrendMicro\Deep biztonsági ügynök** létezik
     * **HKLM: \ SOFTWARE\TrendMicro\Deep biztonsági Agent\InstallationFolder** létezik
     * A **dsa_query. cmd** fájl a telepítési mappában található.
-    * A **dsa_query. cmd** eredményének futtatása az **Component. am. Mode: on-Trend Micro Deep Security Agent észlelve**
+    * **Dsa_query. cmd** eredményének futtatása a **Component. am. Mode: on-Trend Micro Deep Security Agent észlelve**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
 Security Center javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen** , ha a következő ellenőrzések bármelyike nem teljesül:
@@ -94,7 +94,7 @@ Security Center javasolja az **Endpoint Protection-megoldások telepítését a 
 
 * **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Vagy
+vagy
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 

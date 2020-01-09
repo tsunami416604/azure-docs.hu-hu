@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: affd5b58c312e07177fbfdaaf88f689b1a8caebd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954707"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435113"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
 
-Az **irányítópult** az a lap, amely akkor töltődik be, amikor az alkalmazáshoz hozzáférő felhasználók megnyitják az alkalmazás URL-címét. Ha az alkalmazást az egyik **alkalmazás-sablonból**hozta létre, akkor az alkalmazás előre definiált irányítópultot fog kezdeni. Ha az alkalmazást a **Custom Application** Application-sablon alapján hozta létre, az irányítópult üresen fog indulni.
+Az **irányítópult** az a lap, amely akkor töltődik be, amikor az alkalmazáshoz hozzáférő felhasználók megnyitják az alkalmazás URL-címét. Ha az alkalmazást az egyik **alkalmazás-sablonból**hozta létre, akkor az alkalmazás előre definiált irányítópultot fog kezdeni. Ha az alkalmazást az **örökölt Application** Application-sablon alapján hozta létre, az irányítópult üresen fog indulni.
 
 > [!NOTE]
 > A felhasználók az alapértelmezett alkalmazás-irányítópulton kívül [több irányítópultot is létrehozhatnak](howto-create-personal-dashboards.md) . Ezek az irányítópultok csak a felhasználó személyes tagjai, vagy az alkalmazás összes felhasználója között megoszthatók. 
@@ -70,18 +70,18 @@ A diagram vizualizációját úgy is megváltoztathatja, hogy a csempén a **von
 
 Az alábbi táblázat összefoglalja a csempék használatát az Azure IoT Centralban:
  
-| Csempe | Irányítópult | Leírás
+| Tile | Irányítópult | Leírás
 | ----------- | ------- | ------- |
 | Tartalom | Alkalmazások és eszközök beállítása irányítópultok |A Markdown által támogatott csempék a fejléc és a Leírás szövegét megjelenítő csempék. Ezt a csempét hivatkozás csempéként is használhatja, hogy a felhasználó az alkalmazáshoz kapcsolódó URL-címhez navigáljon.|
-| Kép | Alkalmazások és eszközök beállítása irányítópultok |A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Egy képcsempe használatával képeket adhat hozzá egy irányítópulthoz, és opcionálisan engedélyezheti a felhasználónak az alkalmazáshoz kapcsolódó URL-cím megkeresését.|
+| Lemezkép | Alkalmazások és eszközök beállítása irányítópultok |A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Egy képcsempe használatával képeket adhat hozzá egy irányítópulthoz, és opcionálisan engedélyezheti a felhasználónak az alkalmazáshoz kapcsolódó URL-cím megkeresését.|
 | Címke | Alkalmazás-irányítópultok |A felirat csempék egyéni szöveget jelenítenek meg az irányítópulton. Megadhatja a szöveg méretét. A címke csempével fontos információkat adhat hozzá az irányítópulthoz, például a leírásokat, a kapcsolattartási adatokat vagy a súgót.|
 | Térkép | Alkalmazások és eszközök beállítása irányítópultok |A Térkép csempéi az eszközök helyét és állapotát jelenítik meg. Megjelenítheti például az eszköz helyét, illetve azt, hogy a ventilátor be van-e kapcsolva.|
-| Vonalas diagram | Alkalmazás-és eszköz-irányítópultok |A vonalas diagram csempéi egy adott időszakra vonatkozóan egy adott eszköz összesített mértékének diagramját jelenítik meg. Megjeleníthet például egy olyan diagramot, amely az elmúlt órában egy eszköz átlagos hőmérsékletét és terhelését jeleníti meg.|
-| Oszlopdiagram | Alkalmazás-és eszköz-irányítópultok |A oszlopdiagram csempéi egy adott időszakra vonatkozó összesített mérési diagramot jelenítenek meg. Megjeleníthet például egy olyan sávdiagram, amely az elmúlt órában egy eszköz átlagos hőmérsékletét és terhelését jeleníti meg.|
+| Vonaldiagram | Alkalmazás-és eszköz-irányítópultok |A vonalas diagram csempéi egy adott időszakra vonatkozóan egy adott eszköz összesített mértékének diagramját jelenítik meg. Megjeleníthet például egy olyan diagramot, amely az elmúlt órában egy eszköz átlagos hőmérsékletét és terhelését jeleníti meg.|
+| Sávdiagram | Alkalmazás-és eszköz-irányítópultok |A oszlopdiagram csempéi egy adott időszakra vonatkozó összesített mérési diagramot jelenítenek meg. Megjeleníthet például egy olyan sávdiagram, amely az elmúlt órában egy eszköz átlagos hőmérsékletét és terhelését jeleníti meg.|
 | Tortadiagram | Alkalmazások és eszközök beállítása irányítópultok |A tortadiagram csempéi egy adott időszakra vonatkozó összesített mérési diagramot jelenítenek meg.|
 | Hőtérkép | Alkalmazások és eszközök beállítása irányítópultok |A Heat Map csempék megjelenítik az eszközbeállítások adatait, amelyek színként jelennek meg.|
-| Események előzményei | Alkalmazás-és eszköz-irányítópultok |Az esemény előzményei csempék az adott időszakon belül megjelenítik az adott eszköz eseményeit. Használhatja például az eszköz összes hőmérséklet-változásának megjelenítésére az elmúlt órában.|
-| Korábbi állapotok | Alkalmazás-és eszköz-irányítópultok |Az állapot előzményei csempék egy adott időszak mérési értékeit jelenítik meg. Használhatja például az eszköz hőmérsékleti értékének megjelenítésére az elmúlt órában.|
+| Eseményelőzmények | Alkalmazás-és eszköz-irányítópultok |Az esemény előzményei csempék az adott időszakon belül megjelenítik az adott eszköz eseményeit. Használhatja például az eszköz összes hőmérséklet-változásának megjelenítésére az elmúlt órában.|
+| Állapotelőzmények | Alkalmazás-és eszköz-irányítópultok |Az állapot előzményei csempék egy adott időszak mérési értékeit jelenítik meg. Használhatja például az eszköz hőmérsékleti értékének megjelenítésére az elmúlt órában.|
 | KPI | Alkalmazás-és eszköz-irányítópultok | A KPI-csempék összesített telemetria vagy az esemény mértékét jelenítik meg egy adott időszakra vonatkozóan. Használhatja például az eszköz utolsó órájában elérhető maximális hőmérséklet megjelenítését.|
 | Utolsó ismert érték | Alkalmazás-és eszköz-irányítópultok |Az utolsó ismert érték csempék a telemetria vagy az állapot mérésének legújabb értékét jelenítik meg. Ezzel a csempével például megjelenítheti az eszközök hőmérsékletének, nyomásának és nedvességtartalmának legutóbbi méréseit.|
 

@@ -10,17 +10,59 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/5/2019
+ms.date: 12/13/2019
 ms.author: raiye
-ms.openlocfilehash: 027fb5176ecf1fdb32119c933d1b44eaf9f82bb8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.openlocfilehash: 742f54ffb6c77d9f84582d6a68dff936fdbbe99c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386204"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
+
+## <a name="december-2019-guest-os"></a>2019. decemberi vendég operációs rendszer
+
+>[!NOTE]
+>A decemberi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások a decemberi vendég operációs rendszer részét képezik. A lista módosítása változhat.
+
+| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 19-12  |  [4530692]  |  Windows biztonság  | 2.93 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 2.93 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 3,80 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530698]  |  Windows biztonság  | 3,80 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530730]  |  Windows biztonság  | 4,73 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 4,73 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530689]  |  Legújabb összesítő frissítés  | 5,38 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4530715]  |  Legújabb összesítő frissítés  | 6,14 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4525235]  |  Nem biztonsági  | 2.93 | November 12., 2019 |
+|  Rel 19-12  |  [4531786]  |  Karbantartási verem frissítése  | 2.93 | Dec. 10, 2019 |
+|  Rel 19-12  |  [4525246]  |  Nem biztonsági  | 3,80 | November 12., 2019 |
+|  Rel 19-12  |  [4523208]  |  Karbantartási verem frissítése  | 3,8 | November 12., 2019 |
+|  Rel 19-12  |  [4525243]  |  Nem biztonsági  | 4,73 | November 12., 2019 |
+|  Rel 19-12  |  [4524445]  |  Karbantartási verem frissítése  | 4,73 | November 12., 2019 |
+|  Rel 19-12  |  [4520724]  |  Karbantartási verem frissítése  | 5,38 | November 12., 2019 |
+|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | 6,14 | November 12., 2019 |
+
+[4530692]: https://support.microsoft.com/kb/4530692
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530698]: https://support.microsoft.com/kb/4530698
+[4530730]: https://support.microsoft.com/kb/4530730
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530689]: https://support.microsoft.com/kb/4530689
+[4530715]: https://support.microsoft.com/kb/4530715
+[4525235]: https://support.microsoft.com/kb/4525235
+[4531786]: https://support.microsoft.com/kb/4531786
+[4525246]: https://support.microsoft.com/kb/4525246
+[4523208]: https://support.microsoft.com/kb/4523208
+[4525243]: https://support.microsoft.com/kb/4525243
+[4524445]: https://support.microsoft.com/kb/4524445
+[4520724]: https://support.microsoft.com/kb/4520724
+[4523204]: https://support.microsoft.com/kb/4523204
+
 
 ## <a name="november-2019-guest-os"></a>November 2019 vendég operációs rendszer
 

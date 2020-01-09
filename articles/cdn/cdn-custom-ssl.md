@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361661"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -36,7 +36,7 @@ Az egyéni HTTPS szolgáltatás legfőbb jellemzői a következők:
 
 - Teljes körű tanúsítványkezelés érhető el: nem kell foglalkoznia a tanúsítványok beszerzésével és kezelésével. A tanúsítványok üzembe helyezése és megújítása automatikusan megtörténik a lejárat előtt, így nem kell attól tartani, hogy a szolgáltatás megszakad egy lejárt tanúsítvány miatt.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - HTTPS-protokoll engedélyezése az egyéni tartományon
 > - CDN által kezelt tanúsítvány használata 
@@ -50,7 +50,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy CDN-profilt, és legalább egy CDN-végpontot. További információk: [Gyors útmutató: Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md)
 
-Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információkért lásd: [Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md) 
+Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információ: [oktatóanyag: egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md).
 
 > [!IMPORTANT]
 > A CDN által felügyelt tanúsítványok nem érhetők el gyökér-vagy APEX-tartományokhoz. Ha a Azure CDN az egyéni tartomány egy gyökér-vagy APEX-tartomány, akkor a saját tanúsítvány használata funkciót kell használnia. 
@@ -68,27 +68,29 @@ HA a CDN által kezelt tanúsítványt használ, a HTTPS szolgáltatás mindöss
 
 Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartományon:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **microsofttól a Azure CDN standardot**, **Azure CDN standard from Akamai**, **Azure CDN standard from Verizon** vagy **Azure CDN Premium from Verizon** Profile.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com) a Azure CDN által felügyelt tanúsítvány megkereséséhez. Keresse meg és válassza ki a **CDN-profilokat**. 
 
-2. A CDN-végpont listájából válassza ki az egyéni tartományt tartalmazó végpontot.
+2. Válassza ki a **Microsofttól származó Azure CDN szabványt**, **Azure CDN standard from Akamai**, **Azure CDN standard from Verizon**, vagy **Azure CDN Premium from Verizon** Profile.
+
+3. A CDN-végpont listájából válassza ki az egyéni tartományt tartalmazó végpontot.
 
     ![Végpontlista](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
     Megjelenik a **Végpont** lap.
 
-3. Az egyéni tartományok listájából válassza ki azt az egyéni tartományt, amelyen engedélyezni szeretné a HTTPS-t.
+4. Az egyéni tartományok listájából válassza ki azt az egyéni tartományt, amelyen engedélyezni szeretné a HTTPS-t.
 
     ![Egyéni tartományok listája](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     Megjelenik az **Egyéni tartomány** lap.
 
-4. A Tanúsítványkezelés típusa területen válassza a **CDN által felügyelt** lehetőséget.
+5. A Tanúsítványkezelés típusa területen válassza a **CDN által felügyelt** lehetőséget.
 
-5. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
+6. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
 
     ![Egyéni tartomány HTTPS-állapota](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
+7. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
 
 
 # <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[2. lehetőség: A HTTPS engedélyezése saját tanúsítvánnyal](#tab/option-2-enable-https-with-your-own-certificate)
@@ -176,9 +178,9 @@ Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a CDN-végpont gazdaneve:
 
-| Name (Név)            | Típus  | Érték                 |
+| Név            | Type (Típus)  | Value (Díj)                 |
 |-----------------|-------|-----------------------|
-| < a www. contoso. com > | CNAME | contoso.azureedge.net |
+| <www.contoso.com> | CNAME | contoso.azureedge.net |
 
 A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) részt.
 
@@ -204,7 +206,7 @@ webmaster@&lt;az-ön-tartományneve.com&gt;
 hostmaster@&lt;az-ön-tartományneve.com&gt;  
 postmaster@&lt;az-ön-tartományneve.com&gt;  
 
-Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha spam szűrőt használ, adja hozzá a(z) verification@digicert.com címet az engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemét-szűrőt használ, adja hozzá verification@digicert.com az engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
     
 ![Tartományérvényesítési e-mail](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -260,15 +262,17 @@ Az előző lépések során engedélyezte a HTTPS protokollt az egyéni tartomá
 
 ### <a name="disable-the-https-feature"></a>HTTPS szolgáltatás letiltása 
 
-1. Az [Azure Portalon](https://portal.azure.com) keressen rá a **Microsoft Azure CDN Standard**, **Verizon Azure CDN Standard** vagy a **Verizon Azure CDN Premium** profilra.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a **CDN-profilokat**. 
 
-2. A végpont listájában kattintson az egyéni tartományt tartalmazó végpontra.
+2. Válassza ki a **Microsofttól származó Azure CDN szabványt**, **Azure CDN a standardot a verizontól**, vagy **Azure CDN Premiumot a Verizon** -profilból.
 
-3. Válassza ki azt az egyéni tartományt, amelyen le szeretné tiltani a HTTPS-t.
+3. A végpontok listájában válassza ki az egyéni tartományt tartalmazó végpontot.
+
+4. Válassza ki azt az egyéni tartományt, amely esetében le szeretné tiltani a HTTPS-t.
 
     ![Egyéni tartományok listája](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. A HTTPS letiltásához kattintson a **Kikapcsolás** lehetőségre, majd a kattintson az **Alkalmaz** gombra.
+5. A HTTPS letiltásához válassza a **ki** lehetőséget, majd kattintson az **alkalmaz**gombra.
 
     ![Egyéni HTTPS párbeszédpanel](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -316,7 +320,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 7. *Hogyan működik a tanúsítvány megújítása a saját tanúsítvánnyal?*
 
-    Annak biztosítása érdekében, hogy egy újabb tanúsítvány legyen üzembe helyezve a PoP-infrastruktúrában, egyszerűen töltse fel az új tanúsítványt az Azure kulcstartóba, majd az Azure CDN SSL-beállításainál válassza a legújabb tanúsítvány verziót, és kattintson a Save (Mentés) gombra. A Azure CDN ekkor propogate az új, frissített tanúsítványt. 
+    Annak biztosítása érdekében, hogy egy újabb tanúsítvány legyen üzembe helyezve a PoP-infrastruktúrában, egyszerűen töltse fel az új tanúsítványt az Azure kulcstartóba, majd az Azure CDN SSL-beállításainál válassza a legújabb tanúsítvány verziót, és kattintson a Save (Mentés) gombra. A Azure CDN ezután propagálja az új frissített tanúsítványt. 
 
 ## <a name="next-steps"></a>Következő lépések
 

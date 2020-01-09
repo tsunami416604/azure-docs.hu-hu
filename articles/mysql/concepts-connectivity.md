@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765206"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659219"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Átmeneti hibák kezelése és hatékony kapcsolódás Azure Database for MySQL
 
@@ -52,7 +52,7 @@ Az adatbázis-kapcsolatok korlátozott erőforrást jelentenek, így a kapcsolat
 
 Az adatbázis-kapcsolatok kezelése jelentős hatással lehet az alkalmazás teljesítményére. Az alkalmazás teljesítményének optimalizálása érdekében a cél az, hogy csökkentse a kapcsolatok számát, valamint a kapcsolatok létrehozásának idejét a kulcstartó elérési útjain. Javasoljuk, hogy az adatbázis-kapcsolat készletezésével vagy állandó kapcsolataival kapcsolódjon Azure Database for MySQLhoz. Az adatbázis-kapcsolat készletezése kezeli az adatbázis-kapcsolatok létrehozását, kezelését és kiosztását. Amikor egy program adatbázis-kapcsolatot kér, az új kapcsolat létrehozása helyett rangsorolja a meglévő tétlen adatbázis-kapcsolatok kiosztását. Miután a program befejezte az adatbázis-kapcsolatok használatát, a rendszer az előkészítés során visszaállítja a kapcsolatokat a további használatra, nem pedig egyszerűen bezárták.
 
-A jelen cikk jobb illusztrációként tartalmaz [egy olyan mintakód-kódot](./sample-scripts-java-connection-pooling.md) , amely példaként a Java-t használja. További információ: [apache Common DBCP](http://commons.apache.org/proper/commons-dbcp/).
+A jelen cikk jobb illusztrációként tartalmaz [egy olyan mintakód-kódot](./sample-scripts-java-connection-pooling.md) , amely példaként a Java-t használja. További információ: [apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
 > A kiszolgáló egy időtúllépési mechanizmust konfigurál egy olyan kapcsolat bezárásához, amely inaktív állapotban van egy bizonyos ideig, hogy erőforrásokat szabadítson fel. Ügyeljen arra, hogy az ellenőrzési rendszert úgy állítsa be, hogy biztosítsa az állandó kapcsolatok hatékonyságát a használatakor. További információ: az [ellenőrzési rendszerek konfigurálása az ügyféloldali oldalon az állandó kapcsolatok hatékonyságának biztosítása érdekében](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).

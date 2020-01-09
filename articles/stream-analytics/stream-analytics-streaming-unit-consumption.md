@@ -1,20 +1,18 @@
 ---
 title: Folyamatos átviteli egységek Azure Stream Analytics
 description: Ez a cikk a folyamatos átviteli egységek beállítását és a Azure Stream Analytics teljesítményét befolyásoló egyéb tényezőket ismerteti.
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369847"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A folyamatos átviteli egységek ismertetése és módosítása
 
@@ -62,10 +60,10 @@ Vegye figyelembe, hogy az összetett lekérdezési logikával rendelkező felada
 
 A SU% kihasználtsága hirtelen eltérhet 0-ra egy rövid ideig, mielőtt visszatér a várt szintre. Ez átmeneti hibák vagy a rendszer által kezdeményezett frissítések miatt fordul elő. Előfordulhat, hogy a feladatokhoz tartozó folyamatos átviteli egységek száma nem csökkenti a SU% kihasználtságot, ha a lekérdezés nem [teljesen párhuzamos](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
-Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezek az operátorok megőrzik az állapotadatok állapotát. A lekérdezési elemek maximális ablakméret hét nap. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezési logika az időbeli elemekben
+Azure Stream Analytics feladatok egyik egyedi funkciója az állapot-nyilvántartó feldolgozás végrehajtása, például ablakos összesítések, időbeli illesztések és időbeli analitikai függvények. Ezek az operátorok megőrzik az állapotadatok állapotát. A lekérdezési elemek maximális ablakméret hét nap. 
 
-A historikus időszak fogalma a több Stream Analytics lekérdezési elemeket jelenik meg:
+Az időszakos ablak fogalma számos Stream Analytics lekérdezési elemben jelenik meg:
 1. Ablakos összesítések: kivonási, átugró és csúszó ablakok CSOPORTOSÍTÁSa
 
 2. Időbeli illesztések: csatlakozás a DATEDIFF függvénnyel
@@ -139,7 +137,7 @@ Egy adott feladathoz tartozó összes bemeneti partíció pufferrel rendelkezik.
 
 6 folyamatos átviteli egységgel rendelkező feladatokhoz szükség lehet az Event hub 4 vagy 8 partícióra. Azonban Kerülje a túl sok felesleges partíciót, mivel ez túlzott erőforrás-használatot okoz. Például egy legalább 16 partíciót tartalmazó Event hub egy olyan Stream Analytics-feladatokban, amely 1 folyamatos átviteli egységgel rendelkezik. 
 
-## <a name="reference-data"></a>Referenciaadat 
+## <a name="reference-data"></a>Hivatkozási érték 
 A gyors keresés érdekében az ASA-ben lévő hivatkozási adatmennyiség betöltődik a memóriába. Az aktuális implementációban a hivatkozási adattal rendelkező összes csatlakoztatási művelet a memóriában tárolja a hivatkozási adatmennyiséget, még akkor is, ha ugyanazokat a hivatkozási adatmennyiségeket többször is csatlakoztatja. A-sel rendelkező lekérdezések esetében minden partíció rendelkezik a hivatkozási adatmásolattal **, így**a partíciók teljes mértékben le vannak választva. A szorzó hatására a memóriahasználat gyorsan elvégezhető, ha több partícióval többször is összekapcsolja a hivatkozási adatokat.  
 
 ### <a name="use-of-udf-functions"></a>UDF függvények használata

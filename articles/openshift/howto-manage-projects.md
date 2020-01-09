@@ -8,12 +8,12 @@ ms.author: b-majude
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 5028ce3c71538e67b50a15abb6076871d5af7050
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378228"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift-fürtben 
 
@@ -37,7 +37,7 @@ Az API-hoz való hozzáférés a fejlesztők számára az önkiszolgáló fürt 
 
 ## <a name="modify-the-template-for-a-new-project"></a>Új projekt sablonjának módosítása 
 
-1. Jelentkezzen be jogosultságokkal rendelkező `customer-admin` felhasználóként.
+1. Jelentkezzen be `customer-admin` jogosultságokkal rendelkező felhasználóként.
 
 2. Szerkessze az alapértelmezett Project-Request sablont.
 
@@ -45,7 +45,7 @@ Az API-hoz való hozzáférés a fejlesztők számára az önkiszolgáló fürt 
    oc edit template project-request -n openshift
    ```
 
-3. A következő jegyzet hozzáadásával távolítsa el az alapértelmezett Project sablont az Azure Red Hat OpenShift (ARO) frissítési folyamatból:`openshift.io/reconcile-protect: "true"`
+3. A következő jegyzet hozzáadásával távolítsa el az alapértelmezett projektfájlt az Azure Red Hat OpenShift (ARO) frissítési folyamatáról: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -61,15 +61,15 @@ Az API-hoz való hozzáférés a fejlesztők számára az önkiszolgáló fürt 
 
 Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projektek önkiszolgáló létesítése után is megtörténjen.
 
-1. Jelentkezzen be jogosultságokkal rendelkező `customer-admin` felhasználóként.
+1. Jelentkezzen be `customer-admin` jogosultságokkal rendelkező felhasználóként.
 
 2. Szerkessze az önkiszolgálók fürt szerepkörének kötését.
 
    ```
-   oc edit clusterrolebinding self-provisioners
+   oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. A következő jegyzet hozzáadásával távolítsa el a szerepkört az ARO-frissítési `openshift.io/reconcile-protect: "true"`folyamatból:.
+3. A következő jegyzet hozzáadásával távolítsa el a szerepkört az ARO-frissítési folyamatból: `openshift.io/reconcile-protect: "true"`.
 
    ```
    ...
@@ -79,10 +79,10 @@ Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projektek 
    ...
    ```
 
-4. Módosítsa a fürt szerepkörének kötését `system:authenticated:oauth` , hogy ne hozzon létre projekteket:
+4. Módosítsa a fürt szerepkörének kötését, hogy `system:authenticated:oauth` ne hozzon létre projekteket:
 
    ```
-   apiVersion: authorization.openshift.io/v1
+   apiVersion: rbac.authorization.k8s.io/v1
    groupNames:
    - osa-customer-admins
    kind: ClusterRoleBinding
@@ -101,18 +101,18 @@ Megakadályozhatja, hogy egy hitelesített felhasználói csoport új projektek 
 
 ## <a name="manage-default-templates-and-imagestreams"></a>Az alapértelmezett sablonok és imageStreams kezelése
 
-Az Azure Red Hat OpenShift letilthatja az alapértelmezett sablonok és a névtéren belüli `openshift` képstreamek frissítéseit.
-Az összes `Templates` és `ImageStreams` a `openshift` névtér frissítéseinek letiltása:
+Az Azure Red Hat OpenShift letilthatja az alapértelmezett sablonok és a `openshift` névtéren belüli képstreamek frissítéseit.
+Az összes `Templates` és `ImageStreams` frissítéseinek letiltása `openshift` névtérben:
 
-1. Jelentkezzen be jogosultságokkal rendelkező `customer-admin` felhasználóként.
+1. Jelentkezzen be `customer-admin` jogosultságokkal rendelkező felhasználóként.
 
-2. Névtér `openshift` szerkesztése:
+2. `openshift` névtér szerkesztése:
 
    ```
    oc edit namespace openshift
    ```
 
-3. A `openshift` következő jegyzet hozzáadásával távolítsa el a névteret az ARO frissítési folyamatból:`openshift.io/reconcile-protect: "true"`
+3. Távolítsa el `openshift` névteret az ARO frissítési folyamatból a következő jegyzet hozzáadásával: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,9 +122,9 @@ Az összes `Templates` és `ImageStreams` a `openshift` névtér frissítéseine
    ...
    ```
 
-   A `openshift` névtérben található minden egyes objektum eltávolítható a frissítési folyamatból a `openshift.io/reconcile-protect: "true"` jegyzet hozzáadásával.
+   A `openshift` névtérben lévő minden egyes objektum eltávolítható a frissítési folyamatból, ha a jegyzetet `openshift.io/reconcile-protect: "true"` hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az oktatóanyagot:
 > [!div class="nextstepaction"]

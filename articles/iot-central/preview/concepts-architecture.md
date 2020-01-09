@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434985"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central architektúra (előzetes verziójú funkciók)
 
@@ -152,7 +152,7 @@ Egy Azure IoT Central alkalmazásban [létrehozhat és futtathat feladatokat](..
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-A rendszergazdák az előre definiált szerepkörök használatával meghatározhatják az Azure IoT Central-alkalmazások [hozzáférési szabályait](howto-administer.md) . A rendszergazdák olyan szerepkörökhöz rendelhetnek felhasználókat, amelyek meghatározzák az alkalmazás azon területeit, amelyekhez a felhasználó hozzáfér.
+A [rendszergazdák meghatározhatnak](howto-manage-users-roles.md) egy Azure IoT Central alkalmazás hozzáférési szabályait az egyik előre definiált szerepkör használatával vagy egyéni szerepkör létrehozásával. A szerepkörök határozzák meg, hogy az alkalmazás mely területeihez férhet hozzá a felhasználók, és milyen műveleteket végezhetnek el.
 
 ## <a name="security"></a>Biztonság
 

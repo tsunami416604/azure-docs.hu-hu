@@ -1,19 +1,14 @@
 ---
 title: Tárolók üzembe helyezésének Azure Monitor megtekintése (előzetes verzió) | Microsoft Docs
 description: Ez a cikk a Kubernetes-telepítések valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404772"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Központi telepítések (előzetes verzió) valós idejű megtekintése
 
@@ -67,7 +62,7 @@ Azt is megteheti, hogy a névtér vagy a fürt szintjén események alapján vé
 
 ![Az üzemelő példányok élő adatmegjelenítést mutatnak a konzolon](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Monitor használatának megismeréséhez és az AK-fürt egyéb szempontjainak figyeléséhez lásd: az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md).
 

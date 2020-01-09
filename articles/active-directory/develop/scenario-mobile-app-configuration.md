@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423796"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó mobil alkalmazás – kód konfigurálása
 
@@ -77,7 +77,7 @@ A következő bekezdés ismerteti, hogyan hozható létre az alkalmazás a Xamar
 
 A Xamarin vagy UWP az alkalmazás létrehozásának legegyszerűbb módja a következő, ahol a `ClientId` a regisztrált alkalmazás GUID azonosítója.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ A felhasználói felület szülőjének beállítása, az alapértelmezett szolg
 
 Androidon át kell adni a fölérendelt tevékenységet az interaktív hitelesítés előtt. Az iOS-ben a közvetítő használata esetén át kell adnia a ViewController. A UWP megegyező módon érdemes átadni a fölérendelt ablakot. Ez akkor lehetséges, ha a jogkivonat beszerzése után a visszahívást is megadhatja az alkalmazás létrehozásakor, amikor a delegált visszaküldi a UIParent.
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 Androidon [a `CurrentActivityPlugin` használatát](https://github.com/jamesmontemagno/CurrentActivityPlugin)javasoljuk.  Ezt követően a `PublicClientApplication` Builder-kód így fog kinézni:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ Az alábbi lépéseket követve engedélyezheti a Xamarin. iOS-alkalmazásnak, h
 
 A közvetítői támogatás`PublicClientApplication` alapon engedélyezett. Alapértelmezés szerint le van tiltva. A `PublicClientApplication` a `PublicClientApplicationBuilder`használatával történő létrehozásakor a `WithBroker()` paramétert kell használnia (alapértelmezés szerint igaz értékre állítva).
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 Ha a MSAL.NET meghívja a közvetítőt, akkor a közvetítő a `AppDelegate.OpenUrl` metódussal hívja vissza az alkalmazást. Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Ezt úgy teheti meg, hogy a `AppDelegate.cs` fájl frissítésével felülbírálja az alábbi metódust.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ Az objektum ablakának beállításához tegye a következőket:
 **Például:**
 
 Az `App.cs` szkriptben:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 Az `AppDelegate.cs` szkriptben:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 A jogkivonat beszerzése hívásban:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();

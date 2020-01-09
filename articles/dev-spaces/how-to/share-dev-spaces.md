@@ -3,14 +3,14 @@ title: Az Azure dev Spaces megosztása
 services: azure-dev-spaces
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ismerje meg, hogy az Azure dev Spaces hogyan oszthat meg fejlesztési helyet az Azure Kubernetes szolgáltatásban másokkal a csapatában
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 2c85625a4f61b701bc1e8b0a4a06f71dc0989ce0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e3a18ea205eda5617eab094046ec6536e82d113
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438432"
 ---
 # <a name="share-azure-dev-spaces"></a>Azure Dev Spaces megosztása
 
@@ -26,6 +26,6 @@ Az Azure dev Spaces használatával megoszthatja a fejlesztői tárhelyét máso
 
      ![A Visual Studio indítási beállításai legördülő menü](../media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a [Team Development](../team-development-nodejs.md) megismerését ismertető témakört.

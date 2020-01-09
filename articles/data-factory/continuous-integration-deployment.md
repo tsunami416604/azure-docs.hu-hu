@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440535"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és szállítás (CI/CD) Azure Data Factory
 
@@ -56,11 +56,11 @@ Az **ARM-sablon** legördülő menüben válassza az **ARM-sablon exportálása*
 
 A tesztelési és éles adatgyárak területen válassza az **ARM-sablon importálása**lehetőséget. Ez a művelet elvégzi a Azure Portal, ahol importálhatja az exportált sablont. Válassza a **saját sablon létrehozása lehetőséget a szerkesztőben** a Resource Manager-sablon szerkesztőjének megnyitásához.
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![Egyéni üzembe helyezés saját sablon létrehozása](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 Kattintson a **fájl betöltése** elemre, és válassza ki a generált Resource Manager-sablont.
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![Egyéni központi telepítési sablon szerkesztése](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 A beállítások ablaktáblában adja meg a konfigurációs értékeket, például a társított szolgáltatás hitelesítő adatait. Ha elkészült, kattintson a **vásárlás** elemre a Resource Manager-sablon telepítéséhez.
 
@@ -412,7 +412,7 @@ Az alábbiakban egy példát láthat arra, hogy a paraméterezés-sablonok hogya
 ```
 Alább látható a fenti sablon kialakításának magyarázata, erőforrás típusa szerint lebontva.
 
-#### <a name="pipelines"></a>Folyamatok
+#### <a name="pipelines"></a>Adatcsatornák
     
 * A Path tevékenységek/typeProperties/waitTimeInSeconds bármely tulajdonsága paraméteres. A folyamat minden olyan tevékenysége, amely `waitTimeInSeconds` (például a `Wait` tevékenység) nevű programkód szintű tulajdonsággal rendelkezik, alapértelmezett névvel van paraméterként. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy `headers` nevű tulajdonság (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.

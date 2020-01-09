@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 7df58c3f866ffd28348ecfa2e43bdccbd1d96001
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965698"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647254"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címeinek hozzáadása, módosítása vagy eltávolítása
 
@@ -37,13 +37,13 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
 - Ha még nem rendelkezik Azure-fiókkal, regisztráljon az [ingyenes próbaverziós fiókra](https://azure.microsoft.com/free).
 - Ha a portált használja, nyissa meg https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
 - Ha a cikkben szereplő feladatok végrehajtásához PowerShell-parancsokat használ, futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy a PowerShellt a számítógépről futtatva. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz a Azure PowerShell modul 1.0.0-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, akkor a `az login` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+- Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, a `az login` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 
 A fiókkal, amelybe bejelentkezik, vagy az Azure-hoz csatlakozik, hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a [hálózati adapter engedélyeiben](virtual-network-network-interface.md#permissions)felsorolt megfelelő műveletekhez van rendelve.
 
 ## <a name="add-ip-addresses"></a>IP-címek hozzáadása
 
-A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilvános](#public) [IPv4](#ipv4) -címet adhat hozzá, az [Azure Limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) cikkben felsorolt korlátokon belül. Privát IPv6-címet adhat hozzá egy [másodlagos IP-konfigurációhoz](#secondary) (ha nincsenek meglévő másodlagos IP-konfigurációk) egy meglévő hálózati adapterhez. Az egyes hálózati adapterek legfeljebb egy IPv6 magánhálózati címen rendelkezhetnek. Opcionálisan hozzáadhat egy nyilvános IPv6-cím IPv6-hálózati adapter konfigurációhoz is. Az IPv6-címek használatával kapcsolatos részletekért lásd az [IPv6-ot](#ipv6) .
+A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilvános](#public) [IPv4](#ipv4) -címet adhat hozzá, az [Azure Limits](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) cikkben felsorolt korlátokon belül. Privát IPv6-címet adhat hozzá egy [másodlagos IP-konfigurációhoz](#secondary) (ha nincsenek meglévő másodlagos IP-konfigurációk) egy meglévő hálózati adapterhez. Az egyes hálózati adapterek legfeljebb egy IPv6 magánhálózati címen rendelkezhetnek. Opcionálisan hozzáadhat egy nyilvános IPv6-cím IPv6-hálózati adapter konfigurációhoz is. Az IPv6-címek használatával kapcsolatos részletekért lásd az [IPv6-ot](#ipv6) .
 
 1. A Azure Portal tetején található szöveges *keresési erőforrásokat* tartalmazó mezőbe írja be a *hálózati adapterek*kifejezést. Ha a **hálózati adapterek** megjelennek a keresési eredmények között, válassza ki.
 2. Válassza ki azt a hálózati adaptert, amelyhez IPv4-címeket szeretne hozzáadni a listából.
@@ -68,7 +68,7 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
 
-Előfordulhat, hogy módosítania kell egy IPv4-cím hozzárendelési módszerét, módosítania kell a statikus IPv4-címet, vagy módosítania kell egy hálózati adapterhez rendelt nyilvános IP-címet. Ha módosítja egy virtuális gép másodlagos hálózati adapteréhez társított másodlagos IP-konfiguráció magánhálózati IPv4-címét (További információ az [elsődleges és a másodlagos hálózati adapterekről](virtual-network-network-interface-vm.md)), helyezze a virtuális gépet a leállított ( fel van foglalva) állapot az alábbi lépések végrehajtása előtt:
+Előfordulhat, hogy módosítania kell egy IPv4-cím hozzárendelési módszerét, módosítania kell a statikus IPv4-címet, vagy módosítania kell egy hálózati adapterhez rendelt nyilvános IP-címet. Ha módosítja egy virtuális gép másodlagos hálózati adapteréhez társított másodlagos IP-konfiguráció magánhálózati IPv4-címét (További információ az [elsődleges és a másodlagos hálózati adapterekről](virtual-network-network-interface-vm.md)), helyezze a virtuális gépet a leállított (felszabadított) állapotba az alábbi lépések elvégzése előtt:
 
 1. A Azure Portal tetején található szöveges *keresési erőforrásokat* tartalmazó mezőbe írja be a *hálózati adapterek*kifejezést. Ha a **hálózati adapterek** megjelennek a keresési eredmények között, válassza ki.
 2. Válassza ki azt a hálózati adaptert, amelyen meg szeretné tekinteni vagy módosítani kívánja az IP-címek beállításait a listából.
@@ -118,7 +118,7 @@ Minden hálózati adapterhez egy elsődleges IP-konfiguráció van rendelve. Els
 
 Az elsődleges IP-konfiguráción kívül a hálózati adapterek nulla vagy több másodlagos IP-konfigurációval rendelkezhetnek hozzájuk rendelve. Másodlagos IP-konfiguráció:
 
-- Hozzá kell rendelnie egy magánhálózati IPv4-vagy IPv6-cím. Ha a cím IPv6, akkor a hálózati adapter csak egy másodlagos IP-konfigurációval rendelkezhet. Ha a cím IPv4, akkor előfordulhat, hogy a hálózati adapterhez több másodlagos IP-konfiguráció van rendelve. Ha többet szeretne megtudni arról, hogy hány magán-és nyilvános IPv4-cím rendelhető hozzá egy hálózati adapterhez, tekintse meg az [Azure korlátozásait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető cikket.
+- Hozzá kell rendelnie egy magánhálózati IPv4-vagy IPv6-cím. Ha a cím IPv6, akkor a hálózati adapter csak egy másodlagos IP-konfigurációval rendelkezhet. Ha a cím IPv4, akkor előfordulhat, hogy a hálózati adapterhez több másodlagos IP-konfiguráció van rendelve. Ha többet szeretne megtudni arról, hogy hány magán-és nyilvános IPv4-cím rendelhető hozzá egy hálózati adapterhez, tekintse meg az [Azure korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető cikket.
 - Az is lehet, hogy egy nyilvános IPv4-vagy IPv6-cím is hozzá van rendelve. Több IPv4-cím egy hálózati adapterhez való hozzárendeléséhez a következő helyzetekben lehet hasznos:
   - Több webhely vagy szolgáltatás üzemeltetése különböző IP-címekkel és SSL-tanúsítványokkal egyetlen kiszolgálón.
   - Hálózati virtuális berendezésként szolgáló virtuális gép, például tűzfal vagy terheléselosztó.
@@ -154,7 +154,7 @@ Amellett, hogy a virtuális gép más erőforrásokkal is kommunikálni fog ugya
 
 Nyilvános IP-cím erőforráson keresztül hozzárendelt nyilvános IP-címek lehetővé teszik a virtuális géphez való bejövő kapcsolódást az internetről. Az internet felé irányuló kimenő kapcsolatok kiszámítható IP-címet használnak. További részleteket [Az Azure kimenő kapcsolatainak ismertetése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakörben talál. Nyilvános IP-címet rendelhet egy IP-konfigurációhoz, de nem szükséges. Ha nem rendel nyilvános IP-címet egy virtuális géphez egy nyilvános IP-cím erőforrás társításával, akkor a virtuális gép továbbra is kommunikálhat a kimenő állapottal az internettel. Ebben az esetben a magánhálózati IP-cím az Azure által az előre nem látható nyilvános IP-címhez fordított forrás-hálózati cím. További információ a nyilvános IP-címek erőforrásairól: [nyilvános IP-cím erőforrás](virtual-network-public-ip-address.md).
 
-A hálózati adapterhez hozzárendelhető magán-és nyilvános IP-címek száma korlátozott. Részletekért olvassa el az [Azure korlátozásait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető cikket.
+A hálózati adapterhez hozzárendelhető magán-és nyilvános IP-címek száma korlátozott. Részletekért olvassa el az [Azure korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető cikket.
 
 > [!NOTE]
 > Az Azure lefordítja a virtuális gép magánhálózati IP-címét egy nyilvános IP-címhez. Ennek eredményeképpen a virtuális gép operációs rendszere nem ismeri a hozzá rendelt nyilvános IP-címeket, így nem kell manuálisan hozzárendelni egy nyilvános IP-címet az operációs rendszeren belül.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035521"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561320"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
@@ -28,7 +28,7 @@ Mielőtt felhasználja a Piactéri ajánlatot egy önállóan felügyelt OpenShi
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Üzembe helyezés a Piactéri ajánlat használatával
 
-Az önfelügyelt OpenShift-tároló platform 3,11-fürtnek az Azure-ba történő üzembe helyezésének legegyszerűbb módja az [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)használata.
+Az önfelügyelt OpenShift-tároló platform 3,11-fürtnek az Azure-ba történő üzembe helyezésének legegyszerűbb módja az [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)használata.
 
 Ez a legegyszerűbb, de korlátozott testreszabási lehetőségekkel is rendelkezik. A Piactéri ajánlat üzembe helyezi a OpenShift-tároló platformjának 3.11.82, és a következő konfigurációs beállításokat tartalmazza:
 
@@ -67,9 +67,9 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 |-----------------------|-----------------|
 | Virtuális gép rendszergazdájának felhasználóneve | Az összes virtuálisgép-példányon létrehozandó rendszergazda felhasználó |
 | Nyilvános SSH-kulcs rendszergazdai felhasználóhoz | Virtuális gépre való bejelentkezéshez használt nyilvános SSH-kulcs – nem lehet hozzáférési kód |
-| Előfizetést | Azure-előfizetés a fürt üzembe helyezéséhez |
+| Előfizetés | Azure-előfizetés a fürt üzembe helyezéséhez |
 | Erőforráscsoport | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásaihoz |
-| Hely | Azure-régió a fürt üzembe helyezéséhez |
+| Földrajzi egység | Azure-régió a fürt üzembe helyezéséhez |
 
    ![Ajánlat alapjai panel](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
@@ -89,7 +89,7 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 | Új vagy meglévő Virtual Network | Új vNet létrehozása (alapértelmezett) vagy meglévő vNet használata |
 | Alapértelmezett CIDR-beállítások kiválasztása vagy az IP-címtartomány testreszabása (CIDR) | Fogadja el az alapértelmezett CIDR-tartományokat, vagy válassza az **Egyéni IP-címtartomány** lehetőséget, és adja meg az egyéni CIDR  Az alapértelmezett beállítások a vNet-t, a CIDR-t, a 10.0.0.0/14-et, a 10.1.0.0/16-ot, az infra alhálózatot 10.2.0.0/16, valamint a számítási és a CNS-alhálózatot 10.3.0.0/16 |
 | Key Vault erőforráscsoport neve | Az Key Vault tartalmazó erőforráscsoport neve |
-| Kulcstartó neve | Annak a Key Vaultnak a neve, amely a titkos SSH-kulccsal rendelkező titkot tartalmazza.  Csak alfanumerikus karakterek és kötőjelek megengedettek, és 3 – 24 karakter közé kell esnie. |
+| Key Vault neve | Annak a Key Vaultnak a neve, amely a titkos SSH-kulccsal rendelkező titkot tartalmazza.  Csak alfanumerikus karakterek és kötőjelek megengedettek, és 3 – 24 karakter közé kell esnie. |
 | Titok neve | Az SSH titkos kulcsot tartalmazó titok neve.  Csak alfanumerikus karakterek és kötőjelek engedélyezettek |
 
    ![Infrastruktúra-ajánlati panel](media/openshift-marketplace-self-managed/ocp-inframain.png)  
@@ -172,7 +172,7 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK** gombra.
    ![További telepítési CNS-telepítés](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
-**összegzés**
+**Összefoglalás**
 
 Ezen a ponton az ellenőrzés az alapvető kvóta ellenőrzéséhez elegendő a fürthöz kiválasztott virtuális gépek teljes számának üzembe helyezéséhez.  Tekintse át az összes megadott paramétert.  Ha a bemenetek elfogadhatók, kattintson **az OK** gombra a folytatáshoz.
 

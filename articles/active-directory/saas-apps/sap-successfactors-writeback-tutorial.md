@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: c780ee973c1dabb15c37b2519eb8253d2371080a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932306"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530034"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből az SAP SuccessFactors (előzetes verzió)
 Ennek az oktatóanyagnak a célja, hogy megjelenítse a visszaírási attribútumoknak az Azure AD-ből a SuccessFactors Employee Central-be történő elvégzéséhez szükséges lépéseket. A visszaírási által jelenleg támogatott attribútum az e-mail-attribútum. 
@@ -129,12 +129,12 @@ Ez a szakasz a következő lépéseit tartalmazza:
    * **Bérlői URL-cím –** Adja meg a SuccessFactors OData API Services-végpont nevét. Csak a kiszolgáló állomásnevét adja meg http vagy https nélkül. Ennek az értéknek a következőhöz hasonlóan kell kinéznie: **API-Server-Name.SuccessFactors.com**.
 
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a SuccessFactors hitelesítő adatok és az URL-cím érvényes-e.
     >[!div class="mx-imgBorder"]
-    >![Azure Portalra](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett leképezések **szinkronizálását Azure Active Directory felhasználókat a SuccessFactors**
 
@@ -152,7 +152,7 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
 
 1. Az **attribútum-hozzárendelések** szakaszban csak a SuccessFactors felhasználói profilnak az Azure ad-felhasználóval való összekapcsolásához és az Azure ad-ben az e-mailek forrásaként szolgáló attribútumhoz tartozó azonosítót lehet módosítani. 
     >[!div class="mx-imgBorder"]
-    >![Azure Portalra](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sfwb-attribute-mapping.png)
 
    >[!NOTE]
    >A SuccessFactors visszaírási csak az e-mail-attribútumot támogatja. Új attribútumok hozzáadásához ne használja az **Új leképezés hozzáadása** lehetőséget. 
@@ -170,7 +170,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a SuccessFactors-bérlőben lévő felhasználók számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 

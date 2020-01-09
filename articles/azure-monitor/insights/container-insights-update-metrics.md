@@ -1,18 +1,14 @@
 ---
 title: A tárolók Azure Monitorának frissítése a metrikák számára | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403227"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Tárolók Azure Monitor frissítése a metrikák engedélyezéséhez
 
@@ -24,7 +20,7 @@ A tárolók Azure Monitor támogatja a metrikák gyűjtését az Azure Kubernete
 
 A szolgáltatás részeként a következő metrikák engedélyezettek:
 
-| Metrikai névtér | Metrika | Leírás |
+| Metrika névtere | Metrika | Leírás |
 |------------------|--------|-------------|
 | bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* -metrikák, és a *gazdagép* dimenzióként is szerepelnek, és a<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
 | bepillantást nyerhet. tároló/hüvely | podCount | Ezek a *Pod* mérőszámok, és a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |

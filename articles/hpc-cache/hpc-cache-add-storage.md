@@ -4,14 +4,14 @@ description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsít�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166687"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647218"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -33,6 +33,8 @@ A Azure Portal nyissa meg a gyorsítótár-példányt, és kattintson a bal olda
 
 Egy új blob Storage-célnak szüksége van egy üres blob-tárolóra vagy egy olyan tárolóra, amely az Azure HPC cache Cloud File System formátumában található adatokkal van feltöltve. További információ a blob-tárolók [Azure Blob Storage-ba való áthelyezésének](hpc-cache-ingest.md)előzetes betöltéséről.
 
+A lap hozzáadása előtt új tárolót is létrehozhat.
+
 Azure Blob-tároló definiálásához adja meg ezt az információt.
 
 ![képernyőfelvétel a Storage-cél hozzáadása oldalról, amely az új Azure Blob Storage-tárolóra vonatkozó információkkal van feltöltve](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ Azure Blob-tároló definiálásához adja meg ezt az információt.
 
 * **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
 * **Cél típusa** – válassza a **blob**lehetőséget.
-* **Storage-fiók** – válassza ki a használni kívánt tárolóval rendelkező fiókot.
+* **Storage-fiók** – válassza ki a használni kívánt fiókot.
 
   Engedélyeznie kell a gyorsítótár-példányt a Storage-fiók eléréséhez a [hozzáférési Szerepkörök hozzáadása](#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint.
 
   A használható Storage-fiókkal kapcsolatos információkért olvassa el a [blob Storage-követelmények](hpc-cache-prereqs.md#blob-storage-requirements)című témakört.
 
-* **Storage-tároló** – válassza ki a cél blob-tárolóját.
+* **Storage-tároló** – jelölje ki a cél blob-tárolóját, vagy kattintson az **új létrehozása**gombra.
+
+  ![képernyőkép a párbeszédpanelről az új tárolóhoz tartozó név és hozzáférési szint (Private) megadásához](media/add-blob-new-container.png)
 
 * **Virtuális névtér elérési útja** – a tárolási cél ügyféloldali elérési útjának beállítása. A virtuális névtér szolgáltatással kapcsolatos további tudnivalókért olvassa el az [összesített névtér konfigurálása](hpc-cache-namespace.md) című témakört.
 
@@ -146,8 +150,8 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 | ---- | ---- | ---- | ---- |
-| Súlyos, ritka írások olvasása | Olvasás | Soha nem | None |
-| 15%-nál nagyobb írások | Olvasás/írás | Soha nem | 1 óra |
+| Súlyos, ritka írások olvasása | Olvasás | Soha | None |
+| 15%-nál nagyobb írások | Olvasás/írás | Soha | 1 óra |
 | Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | None |
 
 ## <a name="next-steps"></a>Következő lépések

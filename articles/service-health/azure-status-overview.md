@@ -1,18 +1,14 @@
 ---
 title: Az Azure status áttekintése | Microsoft Docs
 description: Globális nézet az Azure-szolgáltatások állapotáról
-services: Azure status
 ms.topic: article
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
 ms.date: 06/11/2019
-ms.openlocfilehash: 8a902fab7cfea574c9eb2a3e9411d3cca0920f56
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1257476234709380de3452015313e3a3bf71e04d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463991"
 ---
 # <a name="azure-status-overview"></a>Az Azure állapotának áttekintése
 
@@ -36,7 +32,7 @@ A múltban akár 90 napig is megtekintheti az eseményeket, beleértve az előze
 
 Az Azure-beli állapot [egy RSS-hírcsatornát](https://status.azure.com/status/feed/) is biztosít az Azure-szolgáltatások azon állapotának változásairól, amelyekre előfizethet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan szerezhet be személyre szabott nézetet az Azure Health szolgáltatásba [Service Health](./service-health-overview.md)használatával.
 * Megtudhatja, hogyan szerezhet be részletesebb nézetet az adott Azure-erőforrások állapotára [Resource Health](./resource-health-overview.md)használatával.

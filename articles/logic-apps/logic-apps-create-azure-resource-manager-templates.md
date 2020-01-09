@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428730"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása a Azure Logic Apps üzembe helyezésének automatizálásához
 
-A logikai alkalmazás létrehozásának és üzembe helyezésének automatizálása érdekében ez a cikk bemutatja, hogyan hozhat létre [Azure Resource Manager sablont](../azure-resource-manager/resource-group-overview.md) a logikai alkalmazáshoz. A munkafolyamat-definíciót és az üzembe helyezéshez szükséges egyéb erőforrásokat tartalmazó sablon szerkezetének és szintaxisának áttekintését lásd [: Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager sablonokkal](logic-apps-azure-resource-manager-templates-overview.md).
+A logikai alkalmazás létrehozásának és üzembe helyezésének automatizálása érdekében ez a cikk bemutatja, hogyan hozhat létre [Azure Resource Manager sablont](../azure-resource-manager/management/overview.md) a logikai alkalmazáshoz. A munkafolyamat-definíciót és az üzembe helyezéshez szükséges egyéb erőforrásokat tartalmazó sablon szerkezetének és szintaxisának áttekintését lásd [: Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager sablonokkal](logic-apps-azure-resource-manager-templates-overview.md).
 
 A Azure Logic Apps egy [előre elkészített Logic app-Azure Resource Manager sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) biztosít, amely nem csak a Logic apps létrehozásához használható, hanem az üzembe helyezéshez használt erőforrások és paraméterek meghatározására is. Ezt a sablont használhatja saját üzleti céljaihoz, vagy testreszabhatja a sablont az igényeinek megfelelően.
 
@@ -24,8 +24,8 @@ A Azure Logic Apps egy [előre elkészített Logic app-Azure Resource Manager sa
 
 A Azure Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure Resource Manager sablonok szerzője](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager sablonok szerzője](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
@@ -34,7 +34,7 @@ A Azure Resource Manager-sablonokkal kapcsolatos további információkért teki
 
 A legegyszerűbben az üzembe helyezésre kész, a Visual Studio (ingyenes Community Edition vagy újabb verzió) és a Visual studióhoz készült Azure Logic Apps Tools segítségével hozhatja létre az érvényes paraméteres logikai alkalmazások sablonját. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , vagy [megkeresheti és letöltheti a Azure Portal meglévő logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon emellett *felparaméterezi*vagy paramétereket is definiál, a logikai alkalmazás és az egyéb erőforrások üzembe helyezéséhez használt értékeket. A paraméterek értékeit egy külön Parameters fájlban adhatja meg. Így könnyebben módosíthatja ezeket az értékeket a telepítési igények alapján. További információkért tekintse meg a következő témaköröket:
+A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon emellett *felparaméterezi*vagy paramétereket is definiál, a logikai alkalmazás és az egyéb erőforrások üzembe helyezéséhez használt értékeket. A paraméterek értékeit egy külön Parameters fájlban adhatja meg. Így könnyebben módosíthatja ezeket az értékeket a telepítési igények alapján. További információt az alábbi témakörökben talál:
 
 * [Logikai alkalmazások létrehozása a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Logikai alkalmazások kezelése a Visual Studióval](../logic-apps/manage-logic-apps-with-visual-studio.md)

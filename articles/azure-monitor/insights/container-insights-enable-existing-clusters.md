@@ -1,18 +1,14 @@
 ---
 title: Az Azure Kubernetes Service (ak)-fürt üzembe helyezésének figyelése | Microsoft Docs
 description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzembe helyezett tárolók Azure Monitor az Azure Kubernetes Service-(ak-) fürtök figyelését.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eced371f7d44b486d671c2c22ca9fbb4c0b65fbb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405491"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
@@ -27,7 +23,7 @@ Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
+Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
 ## <a name="enable-using-azure-cli"></a>Engedélyezés az Azure CLI használatával
 
@@ -45,7 +41,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrálás meglévő munkaterülettel
 
-Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a következő lépéseket a `--workspace-resource-id` paraméterhez szükséges Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓjának azonosításához, majd futtassa a parancsot a figyelési bővítmény engedélyezéséhez megadott munkaterület.  
+Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a következő lépéseket a `--workspace-resource-id` paraméterhez szükséges Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓjának megadásához, majd futtassa a parancsot, hogy engedélyezze a figyelési bővítményt a megadott munkaterületen.  
 
 1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáféréssel rendelkezik a következő parancs használatával:
 
@@ -91,7 +87,7 @@ Ha inkább egy meglévő munkaterületet szeretne integrálni, hajtsa végre a k
 
 ## <a name="enable-using-terraform"></a>Engedélyezés a Terraform használatával
 
-1. A **oms_agent** -bővítmény profil hozzáadása a meglévő azurerm_kubernetes_cluster- [erőforráshoz](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
+1. Adja hozzá a **oms_agent** kiegészítő profilt a meglévő [azurerm_kubernetes_cluster erőforráshoz](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
 
    ```
    addon_profile {
@@ -367,7 +363,7 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 

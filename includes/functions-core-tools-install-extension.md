@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a050ce62f745591608249b41ba56992d8fd35204
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935900"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564816"
 ---
 ## <a name="register-extensions"></a>Bővítmények regisztrálása
 
@@ -25,7 +25,7 @@ Dönthet úgy is, hogy külön telepíti a kötési bővítményeket, vagy hozz�
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-További információ: [Azure functions kötési bővítmények regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles). A functions. JSON fájlhoz kötések hozzáadása előtt adja hozzá a kiterjesztési csomagokat a Host. JSON fájlhoz.
+További információ: [Azure functions kötési bővítmények regisztrálása](../articles/azure-functions/functions-bindings-register.md#extension-bundles). A function. JSON fájlhoz tartozó kötések hozzáadása előtt adja hozzá a kiterjesztési csomagokat a Host. JSON fájlhoz.
 
 ### <a name="register-individual-extensions"></a>Egyéni bővítmények regisztrálása
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024010"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425532"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure AD Domain Services konfigurációs beállításai
 
-Mivel a Azure Active Directory Domain Services (AD DS) hitelesítési és felügyeleti szolgáltatásokat biztosít más alkalmazások és munkaterhelések számára, a hálózati kapcsolat kulcsfontosságú összetevő. A nem megfelelően konfigurált virtuális hálózati erőforrások nélkül az alkalmazások és a munkaterhelések nem tudnak kommunikálni a szolgáltatással, és nem használhatják az Azure AD DS által biztosított szolgáltatásokat. Ha helyesen tervezi a virtuális hálózatot, győződjön meg róla, hogy az Azure AD DS szükség szerint képes kiszolgálni az alkalmazásokat és a számítási feladatokat.
+Mivel a Azure Active Directory Domain Services (AD DS) hitelesítési és felügyeleti szolgáltatásokat biztosít más alkalmazások és munkaterhelések számára, a hálózati kapcsolat kulcsfontosságú összetevő. A nem megfelelően konfigurált virtuális hálózati erőforrások nélkül az alkalmazások és a munkaterhelések nem tudnak kommunikálni az Azure AD DS által biztosított szolgáltatásokkal, és nem használhatják azokat. Ha helyesen tervezi a virtuális hálózatot, győződjön meg róla, hogy az Azure AD DS szükség szerint képes kiszolgálni az alkalmazásokat és a számítási feladatokat.
 
 Ez a cikk az Azure AD DS-t támogató Azure-beli virtuális hálózat kialakításával kapcsolatos szempontokat és követelményeket ismerteti.
 
@@ -94,7 +94,7 @@ Egy Azure AD DS felügyelt tartomány létrehoz néhány hálózati erőforrást
 | Dinamikus normál nyilvános IP-cím         | Az Azure AD DS szabványos SKU nyilvános IP-cím használatával kommunikál a szinkronizálási és a felügyeleti szolgáltatással. A nyilvános IP-címekről további információt az [IP-címek típusai és a kiosztási módszerek az Azure-ban](../virtual-network/virtual-network-ip-addresses-overview-arm.md)című témakörben talál. |
 | Azure standard Load Balancer               | Az Azure AD DS standard SKU Load balancert használ a hálózati címfordításhoz (NAT) és a terheléselosztáshoz (ha biztonságos LDAP-használatot használ). További információ az Azure Load balancerről: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Hálózati címfordítási (NAT) szabályok | Az Azure AD DS három NAT-szabályt hoz létre és használ a terheléselosztó számára – egy szabályt a biztonságos HTTP-forgalomhoz, és két szabályt a biztonságos PowerShell táveléréshez. |
-| Terheléselosztó szabályai                     | Ha az Azure AD DS felügyelt tartománya biztonságos LDAP-ra van konfigurálva a 636-as TCP-porton, akkor három szabály jön létre, és a terheléselosztó használatával terjeszti a forgalmat. |
+| Terheléselosztói szabályok                     | Ha az Azure AD DS felügyelt tartománya biztonságos LDAP-ra van konfigurálva a 636-as TCP-porton, akkor három szabály jön létre, és a terheléselosztó használatával terjeszti a forgalmat. |
 
 > [!WARNING]
 > Ne törölje az Azure AD DS által létrehozott hálózati erőforrások egyikét sem. Ha törli valamelyik hálózati erőforrást, akkor az Azure AD DS szolgáltatás leáll.
@@ -142,7 +142,7 @@ A következő hálózati biztonsági csoportokra vonatkozó szabályok szükség
 * Felügyeleti feladatok végrehajtásához használatos a PowerShell távelérési szolgáltatásával az Azure AD DS felügyelt tartományában.
 * A porthoz való hozzáférés nélkül az Azure AD DS felügyelt tartománya nem frissíthető, konfigurálható, készíthető biztonsági másolat vagy figyelhető.
 * A Resource Manager-alapú virtuális hálózatot használó Azure AD DS felügyelt tartományok esetében a porthoz való bejövő hozzáférést a *AzureActiveDirectoryDomainServices* szolgáltatás címkéjére korlátozhatja.
-    * Az örökölt Azure AD DS felügyelt tartományok klasszikus virtuális hálózattal való használata esetén a porthoz való bejövő hozzáférés a következő forrás IP-címekre korlátozható: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*és *104.40.87.209*.
+    * Az örökölt Azure AD DS felügyelt tartományok klasszikus virtuális hálózattal való használata esetén a porthoz való bejövő hozzáférést a következő forrás IP-címekre korlátozhatja: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*és *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Felhasználó által definiált útvonalak
 

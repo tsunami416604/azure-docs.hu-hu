@@ -3,27 +3,27 @@ title: Egyéni tartománynév konfigurálása Cloud Servicesban | Microsoft Docs
 description: A DNS-beállítások konfigurálásával megtudhatja, hogyan teheti elérhetővé Azure-alkalmazásait vagy-adatait az interneten egy egyéni tartományon.  Ezek a példák a Azure Portal használják.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8940d1a319d5bfabf8fd32b98f47cc6d283a8517
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386799"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Egyéni tartománynév konfigurálása Azure Cloud Service-hez
-Felhőalapú szolgáltatás létrehozásakor az Azure a **cloudapp.net**altartományához rendeli hozzá. Ha például a Cloud Service neve "contoso", a felhasználók az alkalmazáshoz hasonló `http://contoso.cloudapp.net`URL-címen érhetik el az alkalmazást. Az Azure egy virtuális IP-címet is hozzárendel.
+Felhőalapú szolgáltatás létrehozásakor az Azure a **cloudapp.net**altartományához rendeli hozzá. Ha például a Cloud Service neve "contoso", a felhasználók egy URL-címen (például `http://contoso.cloudapp.net`) érhetik el az alkalmazást. Az Azure egy virtuális IP-címet is hozzárendel.
 
 Az alkalmazást ugyanakkor saját tartománynevén is közzéteheti, például **contoso.com**. Ez a cikk bemutatja, hogyan foglalhat le vagy konfigurálhat egyéni tartománynevet a Cloud Service webes szerepköreihez.
 
 Már ismeri a CNAME és A rekordokat? [Ugorja át a magyarázatot](#add-a-cname-record-for-your-custom-domain).
 
 > [!NOTE]
-> Az ebben a feladatban ismertetett eljárások az Azure Cloud Servicesra vonatkoznak. App Services esetében lásd: [meglévő egyéni DNS-név leképezése az Azure web Appsra](../app-service/app-service-web-tutorial-custom-domain.md). A Storage-fiókok esetében tekintse [meg az Egyéni tartománynév konfigurálása az Azure Blob Storage](../storage/blobs/storage-custom-domain-name.md)-végponthoz című témakört.
+> Az ebben a feladatban ismertetett eljárások az Azure Cloud Servicesra vonatkoznak. App Services esetében lásd: [meglévő egyéni DNS-név leképezése az Azure web Appsra](../app-service/app-service-web-tutorial-custom-domain.md). A Storage-fiókok esetében tekintse [meg az Egyéni tartománynév konfigurálása az Azure Blob Storage-végponthoz](../storage/blobs/storage-custom-domain-name.md)című témakört.
 > 
 > 
 
@@ -37,14 +37,14 @@ Már ismeri a CNAME és A rekordokat? [Ugorja át a magyarázatot](#add-a-cname-
 ## <a name="understand-cname-and-a-records"></a>A CNAME és A rekordok ismertetése
 A CNAME (vagy alias Records) és A Records is lehetővé teszi, hogy a tartománynevet egy adott kiszolgálóhoz társítsa (vagy ebben az esetben a szolgáltatásban), de másképp működnek. Az Azure Cloud Services használatával olyan rekordokat is figyelembe kell vennie, amelyeket érdemes megfontolnia, mielőtt döntene.
 
-### <a name="cname-or-alias-record"></a>CNAME or Alias record
-A CNAME rekord egy *adott* tartományt (például **contoso.com** vagy **www\.contoso.com**) rendel egy kanonikus tartománynévhez. Ebben az esetben a kanonikus tartománynév az Azure által üzemeltetett alkalmazás **[SajátPr]. cloudapp. net** tartományának neve. A létrehozást követően a CNAME aliast hoz létre a következőhöz: **[SajátPr]. cloudapp. net**. A CNAME bejegyzés a **[SajátPr]. cloudapp. net** szolgáltatás automatikus IP-címére lesz feloldva, tehát ha a felhőalapú szolgáltatás IP-címe megváltozik, nem kell semmilyen műveletet végrehajtania.
+### <a name="cname-or-alias-record"></a>CNAME vagy alias rekord
+A CNAME rekordok egy *adott* tartományt (például **contoso.com** vagy **www\.contoso.com**) képeznek egy kanonikus tartománynévhez. Ebben az esetben a kanonikus tartománynév az Azure által üzemeltetett alkalmazás **[SajátPr]. cloudapp. net** tartományának neve. A létrehozást követően a CNAME aliast hoz létre a következőhöz: **[SajátPr]. cloudapp. net**. A CNAME bejegyzés a **[SajátPr]. cloudapp. net** szolgáltatás automatikus IP-címére lesz feloldva, tehát ha a felhőalapú szolgáltatás IP-címe megváltozik, nem kell semmilyen műveletet végrehajtania.
 
 > [!NOTE]
-> Egyes tartományi regisztrátorok csak CNAME rekordok (például www\.-contoso.com), és nem gyökérszintű nevek (például a contoso.com) használata esetén teszik lehetővé az altartományok leképezését. A CNAME-rekordokkal kapcsolatos további információkért tekintse meg a regisztrátor által biztosított dokumentációt, [a wikipedia bejegyzését a CNAME rekordon](https://en.wikipedia.org/wiki/CNAME_record), vagy az [IETF tartományneveket – megvalósítási és specifikációs](https://tools.ietf.org/html/rfc1035) dokumentumot.
+> Egyes tartományi regisztrátorok csak olyan CNAME rekordok használata esetén teszik lehetővé az altartományok leképezését, mint például a www\.contoso.com, és nem a gyökér neve, például contoso.com. A CNAME-rekordokkal kapcsolatos további információkért tekintse meg a regisztrátor által biztosított dokumentációt, [a wikipedia bejegyzését a CNAME rekordon](https://en.wikipedia.org/wiki/CNAME_record), vagy az [IETF tartományneveket – megvalósítási és specifikációs](https://tools.ietf.org/html/rfc1035) dokumentumot.
 
-### <a name="a-record"></a>A record
-Az *a* rekord leképezi a tartományt, például a **contoso.com** vagy a **www\.contoso.com**, *vagy egy helyettesítő karaktert*  **\*(például. contoso.com**) egy IP-címhez. Azure Cloud Service esetén a szolgáltatás virtuális IP-címe. Tehát a rekordok CNAME rekordon keresztüli fő előnye, hogy egy olyan bejegyzést használhat, amely helyettesítő karaktert \*(például **. contoso.com)** használ, amely több altartományhoz (például **mail.contoso.com** **) tartozó kéréseket fog kezelni. login.contoso.com**vagy **www\.-contso.com**.
+### <a name="a-record"></a>Egy rekord
+Az *a* rekord leképez egy tartományt, például **contoso.com** vagy **www\.contoso.com**, *vagy helyettesítő karaktert* , például **\*. contoso.com**IP-címhez. Azure Cloud Service esetén a szolgáltatás virtuális IP-címe. Tehát a rekordok CNAME rekordon keresztüli fő előnye, hogy egy olyan bejegyzést használhat, amely helyettesítő karaktert (például \* **. contoso.com)** használ, amely több altartományhoz (például **mail.contoso.com**, **login.contoso.com**vagy **www\.contso.com**) tartozó kéréseket fog kezelni.
 
 > [!NOTE]
 > Mivel egy rekord statikus IP-címekre van leképezve, nem tudja automatikusan feloldani a felhőalapú szolgáltatás IP-címének módosításait. A felhőalapú szolgáltatás által használt IP-címet a rendszer először az üres tárolóhelyre való üzembe helyezéskor (éles környezetben vagy előkészítéskor) osztja ki. Ha törli a tárolóhely üzembe helyezését, az Azure felszabadítja az IP-címet, és a tárolóhely jövőbeli telepítései új IP-címet kapnak.
@@ -58,11 +58,11 @@ CNAME rekord létrehozásához hozzá kell adnia egy új bejegyzést a DNS-tábl
 
 1. A módszerek egyikével megkeresheti a felhőalapú szolgáltatáshoz rendelt **. cloudapp.net** tartománynevet.
 
-   * Jelentkezzen be []a Azure Portalba, válassza ki a felhőalapú szolgáltatást, tekintse meg az **Áttekintés** szakaszt, és keresse meg a **webhely URL-címét** .
+   * Jelentkezzen be a [Azure Portal], válassza ki a felhőalapú szolgáltatást, tekintse meg az **Áttekintés** szakaszt, és keresse meg a **webhely URL-címét** .
 
        ![a webhely URL-címét bemutató gyors áttekintés szakasz][csurl]
 
-       **VAGY**
+       **OR**
    * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/overview), majd használja a következő parancsot:
 
        ```powershell
@@ -70,32 +70,32 @@ CNAME rekord létrehozásához hozzá kell adnia egy új bejegyzést a DNS-tábl
        ```
 
      Mentse az egyik metódus által visszaadott URL-címben használt tartománynevet, mivel CNAME rekord létrehozásakor szüksége lesz rá.
-2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek tartománynevet, DNS-t vagynévkiszolgáló **-** **kezelést**jelölő hivatkozásait vagy területeit.
-3. Itt megtalálhatja a CNAME elem kiválasztásának vagy megadásának helyét. Előfordulhat, hogy ki kell választania a bejegyzéstípust a legördülő listából, vagy a speciális beállítások lapra kell lépnie. A következő szavakat kell megkeresnie: **CNAME**, **alias**vagy altartomány.
-4. A CNAME tartomány vagy altartomány aliasnevét is meg kell adnia, például a **www** -t, ha létre szeretne hozni egy aliast a **www\.-customdomain.com**. Ha létre szeretne hozni egy aliast a gyökértartomány számára, akkor előfordulhat, hogy a " **\@** " szimbólum jelenik meg a regisztrátor DNS-eszközeiben.
+2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek **tartománynevet**, **DNS**-t vagy **névkiszolgáló-kezelést**jelölő hivatkozásait vagy területeit.
+3. Itt megtalálhatja a CNAME elem kiválasztásának vagy megadásának helyét. Előfordulhat, hogy ki kell választania a bejegyzéstípust a legördülő listából, vagy a speciális beállítások lapra kell lépnie. A következő szavakat kell megkeresnie: **CNAME**, **alias**vagy **altartomány**.
+4. A CNAME tartomány vagy altartomány aliasnevét is meg kell adnia, például a **www** -t, ha aliast szeretne létrehozni a **www\.customdomain.com**. Ha létre szeretne hozni egy aliast a gyökértartomány számára, akkor előfordulhat, hogy a rendszer " **\@** " szimbólumként sorolja fel a regisztrátor DNS-eszközeiben.
 5. Ezt követően meg kell adnia egy kanonikus állomásnév nevét, amely ebben az esetben az alkalmazás **cloudapp.net** tartománya.
 
-A következő CNAME rekord például továbbítja a **\.www contoso.com** és **contoso.cloudapp.net**közötti összes forgalmat, a telepített alkalmazás egyéni tartománynevét:
+A következő CNAME rekord például továbbítja a **www\.contoso.com** és **contoso.cloudapp.net**közötti összes forgalmat, a telepített alkalmazás egyéni tartománynevét:
 
-| Alias/Host name/Subdomain | Kanonikus tartomány |
+| Alias/állomásnév/altartomány | Kanonikus tartomány |
 | --- | --- |
 | www |contoso.cloudapp.net |
 
 > [!NOTE]
-> A **www\.contoso.com** látogatói soha nem fogják látni a valódi gazdagépet (contoso.cloudapp.net), így a továbbítási folyamat láthatatlan a végfelhasználó számára.
+> A **www\.contoso.com** látogatója soha nem fogja látni a valódi gazdagépet (contoso.cloudapp.net), így a továbbítási folyamat láthatatlan a végfelhasználó számára.
 > 
-> A fenti példa csak a **www** altartományon belüli forgalomra vonatkozik. Mivel a helyettesítő karakterek nem használhatók CNAME rekordokkal, minden tartományhoz/altartományhoz létre kell hoznia egy CNAME-t. Ha az altartományokból, például a *. contoso.com-ból szeretne forgalmat irányítani a cloudapp.net-címre, beállíthat egy URL- **átirányítási** vagy **URL-cím** -továbbítási bejegyzést a DNS-beállításokban, vagy létrehozhat egy rekordot.
+> A fenti példa csak a **www** altartományon belüli forgalomra vonatkozik. Mivel a helyettesítő karakterek nem használhatók CNAME rekordokkal, minden tartományhoz/altartományhoz létre kell hoznia egy CNAME-t. Ha az altartományokból, például a *. contoso.com-ból szeretne forgalmat irányítani a cloudapp.net-címre, beállíthat egy URL- **átirányítási** vagy **URL-cím-továbbítási** bejegyzést a DNS-beállításokban, vagy létrehozhat egy rekordot.
 
 ## <a name="add-an-a-record-for-your-custom-domain"></a>Rekord hozzáadása az egyéni tartományhoz
 Rekord létrehozásához először meg kell keresnie a felhőalapú szolgáltatás virtuális IP-címét. Ezután vegyen fel egy új bejegyzést az egyéni tartomány DNS-táblájába a regisztrátor által biztosított eszközök használatával. Minden regisztrálóhoz hasonló, de némileg eltérő módon kell megadni egy rekordot, de a fogalmak ugyanazok.
 
 1. A felhőalapú szolgáltatás IP-címének lekéréséhez használja az alábbi módszerek egyikét.
 
-   * Jelentkezzen be []a Azure Portalba, válassza ki a felhőalapú szolgáltatást, tekintse meg az **Áttekintés** szakaszt, és keresse meg a **nyilvános IP-címek** bejegyzést.
+   * Jelentkezzen be a [Azure Portal], válassza ki a felhőalapú szolgáltatást, tekintse meg az **Áttekintés** szakaszt, és keresse meg a **nyilvános IP-címek** bejegyzést.
 
        ![a VIP-t bemutató gyors áttekintés szakasz][vip]
 
-       **VAGY**
+       **OR**
    * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/overview), majd használja a következő parancsot:
 
        ```powershell
@@ -103,16 +103,16 @@ Rekord létrehozásához először meg kell keresnie a felhőalapú szolgáltat�
        ```
 
      Mentse az IP-címet, mert egy rekord létrehozásakor szüksége lesz rá.
-2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek tartománynevet, DNS-t vagynévkiszolgáló **-** **kezelést**jelölő hivatkozásait vagy területeit.
+2. Jelentkezzen be a DNS-regisztráló webhelyére, és nyissa meg a lapot a DNS kezeléséhez. Keresse meg a helyek **tartománynevet**, **DNS**-t vagy **névkiszolgáló-kezelést**jelölő hivatkozásait vagy területeit.
 3. Itt megtalálhatja A rekordok kiválasztásának vagy megadásának helyét. Előfordulhat, hogy ki kell választania a bejegyzéstípust a legördülő listából, vagy a speciális beállítások lapra kell lépnie.
-4. Válassza ki vagy adja meg azt a tartományt vagy altartományt, amely ezt A rekordot fogja használni. Válassza például a **www** lehetőséget, ha létre szeretne hozni egy aliast **a\.www customdomain.com**. Ha helyettesítő karaktert szeretne létrehozni az összes altartományhoz, írja be a "* * * * *" értéket. Ez minden olyan altartományt magában foglal, mint például a **mail.customdomain.com**, a **login.customdomain.com**és a **www\.customdomain.com**.
+4. Válassza ki vagy adja meg azt a tartományt vagy altartományt, amely ezt A rekordot fogja használni. Válassza például a **www** lehetőséget, ha a **www\.customdomain.com**aliast szeretne létrehozni. Ha helyettesítő karaktert szeretne létrehozni az összes altartományhoz, írja be a "* * * * *" értéket. Ez minden olyan altartományt magában foglal, mint például a **mail.customdomain.com**, a **login.customdomain.com**és a **www\.customdomain.com**.
 
-    Ha létre szeretne hozni egy rekordot a gyökértartomány számára, akkor előfordulhat, hogy a " **\@** " szimbólum jelenik meg a regisztrátor DNS-eszközeiben.
+    Ha létre szeretne hozni egy rekordot a gyökértartomány számára, akkor előfordulhat, hogy az " **\@** " szimbólum jelenik meg a regisztrátor DNS-eszközeiben.
 5. Adja meg a felhőalapú szolgáltatás IP-címét a megadott mezőben. Ez társítja az a rekordban használt tartományi bejegyzést a felhőalapú szolgáltatás központi telepítésének IP-címével.
 
 A következő rekord például a **contoso.com** -ről a **137.135.70.239**-re irányuló összes forgalmat továbbítja a telepített alkalmazás IP-címére:
 
-| Host name/Subdomain | IP-cím |
+| Gazdagép neve/altartománya | IP-cím |
 | --- | --- |
 | \@ |137.135.70.239 |
 
@@ -123,12 +123,12 @@ Ez a példa egy rekord létrehozását mutatja be a gyökértartomány számára
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)
 * [CDN-tartalom leképezése egyéni tartományra](../cdn/cdn-map-content-to-custom-domain.md)
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurálja az [SSL](cloud-services-configure-ssl-certificate-portal.md)-tanúsítványokat.
+* Konfigurálja az [SSL-tanúsítványokat](cloud-services-configure-ssl-certificate-portal.md).
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
@@ -138,3 +138,6 @@ Ez a példa egy rekord létrehozását mutatja be a gyökértartomány számára
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
+
+
+

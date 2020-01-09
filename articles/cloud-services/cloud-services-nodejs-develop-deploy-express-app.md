@@ -1,20 +1,21 @@
 ---
 title: Node. js Express-alkalmazás létrehozása és üzembe helyezése az Azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Express. js-alkalmazás létrehozása és üzembe helyezése a Node. js-ben az Azure Cloud Services
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360752"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Node. js-alapú Webalkalmazás létrehozása és üzembe helyezése az Express használatával egy Azure Cloud Services
 
@@ -33,7 +34,7 @@ A következő lépések végrehajtásával hozzon létre egy új, "expressapp" n
 1. A **Start menüből** vagy a **kezdőképernyőn**keressen rá a **Windows PowerShell**kifejezésre. Végül kattintson a jobb gombbal a **Windows PowerShell** elemre, és válassza **a Futtatás rendszergazdaként**lehetőséget.
    
     ![Azure PowerShell ikon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
-2. Módosítsa a könyvtárakat a **c\\: node** könyvtárba, majd írja be a következő parancsokat egy **expressapp** nevű új megoldás létrehozásához, valamint egy **webrole1 webes**nevű webes szerepkört:
+2. Módosítsa a könyvtárakat a **c:\\Node** könyvtárba, majd írja be a következő parancsokat egy **expressapp** nevű új megoldás létrehozásához, valamint egy **webrole1 webes**nevű webes szerepkört:
    
         PS C:\node> New-AzureServiceProject expressapp
         PS C:\Node\expressapp> Add-AzureNodeWebRole
@@ -93,10 +94,10 @@ Most módosítsa a nézetet, hogy megjelenjen az "Üdvözöljük az expressz az 
    
    ![Az index. Jade fájl tartalma](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   A Jade az Express-alkalmazások által használt alapértelmezett nézet motorja. A Jade View motorról további információt a következő témakörben talál: [http://jade-lang.com][http://jade-lang.com].
+   A Jade az Express-alkalmazások által használt alapértelmezett nézet motorja. További információ a Jade View motorról: [http://jade-lang.com][http://jade-lang.com].
 2. Módosítsa a szöveg utolsó sorát az **Azure-ban**való hozzáfűzéssel.
    
-   ![Az index. Jade fájl, az utolsó sor olvasás: p Üdvözöljük \#a (z) {title} az Azure-ban](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
+   ![Az index. Jade fájl, az utolsó sor olvasása: p Üdvözöljük \#{title} az Azure-ban](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. Mentse a fájlt, és zárja be a jegyzettömböt.
 4. Frissítse a böngészőt, és látni fogja a módosításokat.
    
@@ -113,11 +114,14 @@ Miután a telepítési művelet befejeződik, megnyílik a böngésző, és megj
 
 ![Egy webböngésző, amely az expressz lapot jeleníti meg. Az URL-cím azt jelzi, hogy az már az Azure-ban üzemel.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk: [Node.js fejlesztői központ](https://docs.microsoft.com/azure/javascript/).
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

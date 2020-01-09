@@ -1,7 +1,7 @@
 ---
 title: 'Átalakítás adatkészletbe: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan alakíthatja át az adatbevitelt a Microsoft Azure Machine Learning által használt belső adatkészlet-formátumba az Azure Machine Learning szolgáltatás átalakítás adatkészletbe moduljának használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan alakíthatja át az adatbevitelt a Microsoft Azure Machine Learning által használt belső adatkészlet-formátumba a Azure Machine Learning átalakítás adatkészletre moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428580"
 ---
-# <a name="convert-to-dataset"></a>Átalakítás adatkészletbe
+# <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) adatkészletre való konvertálása a folyamat összes adatának a tervező belső formátumára való átalakításához.
   
@@ -53,7 +53,7 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
   
 5.  Futtassa a folyamatot, vagy kattintson a jobb gombbal a konvertálás adatkészletre elemre, és válassza a **kijelölt futtatása**lehetőséget.  
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 +  Ha az eredményül kapott adatkészletet új névvel szeretné menteni, kattintson a jobb gombbal az adatkészletre való átalakítás kimenetére, majd válassza a **Mentés másként adatkészlet**lehetőséget.  
   
@@ -68,6 +68,6 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
 -   Az egyéni csere műveletei esetén a csere csendesen meghiúsul, ha helyettesítő karaktert használ, amely nem felel meg az oszlop aktuális adattípusának.  
 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

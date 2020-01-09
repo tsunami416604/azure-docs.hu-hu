@@ -5,12 +5,12 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445736"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
 
@@ -38,6 +38,10 @@ Ha az alapszintű lemezkép frissítései elérhetők, vagy a keretrendszer bár
 
 Ebben az esetben a fő és a másodlagos címkéket is folyamatosan szervizeli a rendszer. Alaprendszerkép-forgatókönyv esetén ez lehetővé teszi, hogy a rendszerkép tulajdonosa kiszolgált lemezképeket biztosítson.
 
+### <a name="delete-untagged-manifests"></a>Címkézetlen jegyzékfájlok törlése
+
+Ha egy stabil címkével rendelkező képet frissít, a korábban címkézett Rendszerkép nem címkézett, és egy árva rendszerképet eredményez. Az előző rendszerkép jegyzékfájlja és az egyedi rétegbeli adatok a beállításjegyzékben maradnak. A beállításjegyzék méretének megőrzése érdekében rendszeresen törölheti a nem címkézett jegyzékfájlokat a stabil képfrissítések eredményeként. Például a megadott időtartamnál régebbi címkézetlen jegyzékfájlok [automatikus kitisztítása](container-registry-auto-purge.md) vagy a címkézetlen jegyzékfájlok [adatmegőrzési szabályzatának](container-registry-retention-policy.md) beállítása.
+
 ## <a name="unique-tags"></a>Egyedi címkék
 
 **Javaslat**: használjon egyedi címkéket az üzemelő **példányokhoz**, különösen olyan környezetben, amely több csomópontra is méretezhető. Valószínűleg az összetevők konzisztens verziójának szándékos telepítését szeretné használni. Ha a tároló újraindul, vagy egy Orchestrator több példányra van kibővítve, a gazdagépek nem fognak véletlenül újabb verziót lekérni, és nem konzisztensek a többi csomóponttal.
@@ -50,6 +54,12 @@ Az egyedi címkézés egyszerűen azt jelenti, hogy a beállításjegyzékbe lek
 * **Build azonosítója** – ez a lehetőség lehet a legjobb megoldás, mivel ez valószínűleg növekményes, és lehetővé teszi, hogy az összes összetevő és napló megtalálásához visszakapcsolja az adott buildet. A manifest-kivonatokhoz hasonlóan előfordulhat, hogy az embernek nem kell elolvasnia a problémát.
 
   Ha a szervezet több Build-rendszerrel rendelkezik, a címke előállítása a létrehozási rendszer nevével a következő beállítás egyik változata: `<build-system>-<build-id>`. Megkülönböztetni például az API csapat Jenkins Build rendszerét és a webes csapat Azure-folyamatait.
+
+### <a name="lock-deployed-image-tags"></a>Telepített képcímkék zárolása
+
+Ajánlott eljárásként Azt javasoljuk, hogy [zárolja](container-registry-image-lock.md) az összes telepített képcímkét úgy, hogy a `write-enabled` attribútumát `false`re állítja be. Ez a gyakorlat megakadályozza, hogy véletlenül eltávolítsa a rendszerképet a beállításjegyzékből, és esetleg megszakítsa a telepítést. A zárolási lépést felveheti a kiadási folyamatba.
+
+Az üzembe helyezett lemezkép zárolása továbbra is lehetővé teszi, hogy a beállításjegyzékben a többi, nem telepített lemezképet eltávolítsa a beállításjegyzékből Azure Container Registry szolgáltatások használatával. Például a címkézetlen jegyzékfájlok [automatikus kiürítése](container-registry-auto-purge.md) vagy a megadott időtartamnál régebbi lemezképek kijavítása, illetve a címkézetlen jegyzékfájlok [megőrzési szabályának](container-registry-retention-policy.md) beállítása.
 
 ## <a name="next-steps"></a>Következő lépések
 
