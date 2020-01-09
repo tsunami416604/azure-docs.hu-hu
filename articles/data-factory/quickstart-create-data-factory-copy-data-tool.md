@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.openlocfilehash: 4ead3472e1706742781cb64a12103f3dec1fd27a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440127"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
 
@@ -34,7 +34,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
 1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
 
     ![Erőforrás létrehozása a Azure Portal menüből](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
@@ -54,7 +54,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
    - Kattintson a **Meglévő használata** elemre, majd válasszon egy meglévő erőforráscsoportot a listából. 
    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-   Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+   Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét.
 

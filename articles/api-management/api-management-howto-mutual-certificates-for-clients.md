@@ -1,5 +1,6 @@
 ---
-title: API-k biztonságossá tétele az API Management-Azure API Managementban az ügyféltanúsítvány-alapú hitelesítés használatával | Microsoft Docs
+title: API-k biztonságossá tétele az API Management-ben az ügyféltanúsítvány-alapú hitelesítés használatával
+titleSuffix: Azure API Management
 description: Ismerje meg, hogyan védheti meg az API-kat az Ügyféltanúsítványok használatával
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: apimpm
-ms.openlocfilehash: 263f8495b9dbb0a1c5b3c54301b4b4deab425e31
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430654"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával API Management
 
@@ -45,8 +46,8 @@ Az alábbi házirendek konfigurálhatók a kiállító és az ügyféltanúsítv
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) hitelesítésszolgáltatói tanúsítvány (oka) [](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
+> A tanúsítvány-visszavonási lista ellenőrzésének letiltásához használja a `context.Request.Certificate.VerifyNoRevocation()` `context.Request.Certificate.Verify()`helyett.
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) t fel kell [tölteni](api-management-howto-ca-certificates.md) API Managementre `context.Request.Certificate.Verify()` és `context.Request.Certificate.VerifyNoRevocation()` a működéshez.
 
 ## <a name="checking-the-thumbprint"></a>Az ujjlenyomat ellenőrzése
 
@@ -63,8 +64,8 @@ Az alábbi házirendek konfigurálhatók az ügyféltanúsítvány ujjlenyomatá
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) hitelesítésszolgáltatói tanúsítvány (oka) [](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
+> A tanúsítvány-visszavonási lista ellenőrzésének letiltásához használja a `context.Request.Certificate.VerifyNoRevocation()` `context.Request.Certificate.Verify()`helyett.
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) t fel kell [tölteni](api-management-howto-ca-certificates.md) API Managementre `context.Request.Certificate.Verify()` és `context.Request.Certificate.VerifyNoRevocation()` a működéshez.
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Ujjlenyomat ellenőrzése a API Management feltöltött tanúsítványokkal szemben
 
@@ -82,16 +83,16 @@ Az alábbi példa bemutatja, hogyan ellenőrizhető az ügyféltanúsítvány uj
 ```
 
 > [!NOTE]
-> A tanúsítvány-visszavonási lista használatának `context.Request.Certificate.VerifyNoRevocation()` ellenőrzésének `context.Request.Certificate.Verify()`letiltása a helyett.
-> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) hitelesítésszolgáltatói tanúsítvány (oka) [](api-management-howto-ca-certificates.md) t fel kell tölteni `context.Request.Certificate.Verify()` a `context.Request.Certificate.VerifyNoRevocation()` API Managementre és a működésre.
+> A tanúsítvány-visszavonási lista ellenőrzésének letiltásához használja a `context.Request.Certificate.VerifyNoRevocation()` `context.Request.Certificate.Verify()`helyett.
+> Ha az ügyféltanúsítvány önaláírt, a legfelső szintű (vagy köztes) HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány (oka) t fel kell [tölteni](api-management-howto-ca-certificates.md) API Managementre `context.Request.Certificate.Verify()` és `context.Request.Certificate.VerifyNoRevocation()` a működéshez.
 
 > [!TIP]
-> A jelen [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-alapú holtpont-probléma többféleképpen is megnyilvánulhat, például a kérések lefagyása `403 Forbidden` `context.Request.Certificate` után az időtúllépés után `null`a kérések állapotkódot eredményeznek. Ez a probléma általában `POST` `PUT` a tartalom hossza körülbelül 60KB vagy nagyobb.
+> A jelen [cikkben](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) ismertetett ügyféltanúsítvány-alapú holtpont-probléma többféleképpen is megnyilvánulhat, például a kérések befagyasztása után `403 Forbidden` állapotkódot eredményez, `context.Request.Certificate` `null`. Ez a probléma általában a `POST` és a `PUT` a tartalom hossza körülbelül 60KB vagy nagyobb.
 > Ha meg szeretné akadályozni, hogy ez a probléma ne jelenjen meg, kapcsolja be az "ügyfél-tanúsítvány egyeztetése" beállítást az "egyéni tartományok" panelen az alábbi ábrán látható módon. Ez a funkció nem érhető el a felhasználási szinten.
 
 ![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 -   [Tanúsítványok feltöltése](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

@@ -1,32 +1,23 @@
 ---
-title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése  | Microsoft Docs
+title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése
 description: Ismerje meg, hogyan tehet közzé egy háttér-webszolgáltatással kommunikáló ASP.NET Core webhelyet tartalmazó Azure Service Mesh-alkalmazást a Visual Studióval.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eef4cfaff38a96597794354cc991f5d3eeae9404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351846"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric-háló-alkalmazás üzembe helyezése
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
 
 Ez az oktatóanyag egy sorozat harmadik része, és azt mutatja be, hogyan tehető közzé az Azure Service Fabric Mesh-alkalmazás közvetlenül a Visual Studióból.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
 > * Az alkalmazás üzembe helyezésének ellenőrzése
@@ -35,7 +26,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * [Service Fabric Mesh-alkalmazás létrehozása a Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Egy, a helyi fejlesztési fürtön futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * Service Fabric Mesh-alkalmazás üzembe helyezése
 > * [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
 > * [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -48,7 +39,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Először [alakítsa ki a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítésével.
+* Győződjön meg arról, hogy [beállította a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md), amely tartalmazza a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítését.
 
 ## <a name="download-the-to-do-sample-application"></a>A teendőlista-mintaalkalmazás letöltése
 
@@ -120,9 +111,9 @@ Az oktatóanyagban használt alkalmazás neve: `todolistapp`. A következő para
 az mesh app show --resource-group $rg --name todolistapp
 ```
 
-## <a name="get-the-ip-address-of-your-deployment"></a>Az üzemelő példány IP-címének lekéréséhez
+## <a name="get-the-ip-address-of-your-deployment"></a>Az üzemelő példány IP-címének beolvasása
 
-Ha azt szeretné, az alkalmazás IP-címének lekéréséhez használja a következő parancsot:
+Ha az alkalmazáshoz tartozó IP-címet szeretné beszerezni, használja a következő parancsot:
   
 ```azurecli-interactive
 az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
@@ -136,7 +127,7 @@ Az „app list” paranccsal lekérheti az előfizetéséhez üzembe helyezett a
 az mesh app list --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

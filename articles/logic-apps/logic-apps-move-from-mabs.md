@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások áthelyezése BizTalk Servicesról Azure Logic Apps
-description: Migrálás az Azure BizTalk Services (MABS) szolgáltatásból a Azure Logic Appsba
+title: Alkalmazások migrálása BizTalk Servicesról Azure Logic Apps
+description: Alkalmazások és megoldások áthelyezése Microsoft Azure BizTalk Servicesról (MABS) Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,18 +8,18 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791874"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666652"
 ---
-# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Áttelepítés BizTalk Servicesról Azure Logic Apps
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Alkalmazások és megoldások migrálása BizTalk Servicesról Azure Logic Apps
 
 Microsoft Azure BizTalk Services (MABS) kivonása. A MABS-integrációs megoldások [Azure Logic Appsba](../logic-apps/logic-apps-overview.md)való áthelyezéséhez kövesse az ebben a cikkben található útmutatást. 
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 BizTalk Services két alszolgáltatásból áll:
 

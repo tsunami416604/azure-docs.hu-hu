@@ -1,25 +1,14 @@
 ---
-title: Tárolók naplóinak megtekintése az Azure Service Fabricban | Microsoft Docs
+title: Tárolók naplóinak megtekintése az Azure Service Fabric
 description: Ismerteti, hogyan lehet megtekinteni egy futó Service Fabric Container Services tároló-naplóit Service Fabric Explorer használatával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/15/2018
-ms.author: atsenthi
-ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458184"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric tároló szolgáltatás naplófájljainak megtekintése
 Az Azure Service Fabric egy tároló-Orchestrator, és támogatja a [Linux-és Windows-tárolókat](service-fabric-containers-overview.md)is.  Ez a cikk azt ismerteti, hogyan lehet megtekinteni egy futó tároló szolgáltatás vagy egy elhalt tároló tároló naplóit, így diagnosztizálhatja és elháríthatja a problémákat.
@@ -76,7 +65,7 @@ Válasz:
 {   "content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A [Linux Container Application alkalmazás létrehozásával foglalkozó oktatóanyagban](service-fabric-tutorial-create-container-images.md)dolgozhat.
 - További információ a [Service Fabric és a tárolók](service-fabric-containers-overview.md) használatáról
 

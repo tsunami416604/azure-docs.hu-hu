@@ -1,20 +1,19 @@
 ---
 title: Ellenőrzőpontok és újrajátszás helyreállítási fogalmak a Azure Stream Analytics
 description: Ez a cikk az ellenőrzőpontok és a Replay feladatok helyreállítási fogalmait ismerteti Azure Stream Analyticsban.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 26d8d8248c9dcc57edaaa4a90f87071ee61a70ce
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426395"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Ellenőrzőpont-és visszajátszás-fogalmak a Azure Stream Analytics-feladatokban
 Ez a cikk ismerteti a Azure Stream Analytics belső ellenőrzőpont-és újralejátszási fogalmait, valamint a feladatokra gyakorolt hatást. Minden alkalommal, amikor egy Stream Analytics feladatot futtat, az állapotadatok belsőleg maradnak. Az állapotadatok rendszeres időközönként kerülnek mentésre. Bizonyos esetekben az ellenőrzőpont-információk a feladatok helyreállítására szolgálnak, ha a feladattal kapcsolatos hiba vagy frissítés történik. Más esetekben az ellenőrzőpont nem használható a helyreállításhoz, és szükség van egy újrajátszásra.

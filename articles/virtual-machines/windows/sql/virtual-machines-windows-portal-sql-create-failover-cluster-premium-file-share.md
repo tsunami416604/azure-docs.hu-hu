@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464995"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -84,7 +84,6 @@ A cikk lépéseinek elvégzése előtt a következőket kell tennie:
    - Egy IP-cím minden egyes egyes adattömbhöz.
 - DNS konfigurálva az Azure-hálózaton, amely a tartományvezérlőkre mutat.
 - [Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) az adatfájlok adatbázisának tárolási kvótája alapján.
-- A biztonsági másolatok olyan fájlmegosztás, amely eltér az adatfájlokhoz használt prémium fájlmegosztástól. Ez a fájlmegosztás lehet standard vagy prémium.
 
 Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a feladatátvevő fürtöt. Első lépésként hozza létre a virtuális gépeket.
 
@@ -357,7 +356,7 @@ A terheléselosztó létrehozása:
 
 1. A háttér-készlet létrehozásához kattintson **az OK gombra** .
 
-### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapot-mintavételének konfigurálása
+### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának konfigurálása
 
 1. A terheléselosztó panelen válassza az **állapot**-mintavétel lehetőséget.
 
@@ -431,7 +430,7 @@ A fürt mintavételének beállítása után a PowerShellben láthatja a fürt �
 
 ## <a name="step-8-test-fci-failover"></a>8\. lépés: a feladatátvétel tesztelése
 
-Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Hajtsa végre a következő lépéseket:
+Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Tegye a következőket:
 
 1. Az RDP használatával csatlakozzon az egyik SQL Server a csomóponthoz.
 

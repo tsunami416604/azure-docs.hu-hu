@@ -1,5 +1,5 @@
 ---
-title: A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
+title: A Graph tömeges végrehajtó .NET-kódtár használata Azure Cosmos DB Gremlin API-val
 description: Megtudhatja, hogyan használhatja a tömeges végrehajtó függvénytárat a Graph-beli adatAzure Cosmos DB Gremlin API-tárolóba való tömeges importálásához.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442171"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 
@@ -23,7 +23,7 @@ Ahelyett, hogy a Gremlin-lekérdezéseket egy adatbázisba küldi, ahol a rendsz
 
 ## <a name="bulk-operations-with-graph-data"></a>Tömeges gráfadatműveletek
 
-A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret tartalmaz a Graph-objektumok létrehozásához és importálásához szükséges funkciók biztosításához. 
+A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) egy `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret tartalmaz a Graph-objektumok létrehozásához és importálásához szükséges funkciók biztosításához. 
 
 Az alábbi folyamat bemutatja, hogyan használható az adatmigrálás a Gremlin API-tárolók esetében:
 1. Rekordok lekérése az adatforrásból.
@@ -131,7 +131,7 @@ Ez az adattár tartalmazza a GraphBulkExecutor mintát a következő fájlokkal:
 File|Leírás
 ---|---
 `App.config`|Itt vannak megadva az alkalmazás- és adatbázis-specifikus paraméterek. Ezt a fájlt előbb módosítani kell, hogy a céladatbázishoz és -gyűjteményekhez csatlakozzon.
-`Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozását, a tisztítások kezelését és a tömeges végrehajtó kérések küldését.
+`Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozásának, a tisztítások kezelését és a tömeges végrehajtó kérések küldésének logikáját.
 `Util.cs`| Ez a fájl egy segítőosztályt tartalmaz, amely a tesztadatok létrehozásához szükséges mögöttes logikát biztosítja, valamint az adatbázis és a gyűjtemények meglétének ellenőrzését végzi.
 
 Az `App.config` fájlban az alábbi konfigurációs értékek adhatók meg:

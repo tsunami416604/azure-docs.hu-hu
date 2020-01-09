@@ -4,16 +4,16 @@ description: Használjon környezeti változókat, és hozzon létre beállítá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434528"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
 
@@ -23,7 +23,7 @@ Az adatok Azure Storage-szolgáltatásokkal vagy az eszköz tároló-tárolóban
 
 Ha a modul Storage-ból a gazdagépen lévő tárolóra mutató hivatkozást szeretne engedélyezni, hozzon létre egy környezeti változót a modulhoz, amely a tároló egyik tárolási mappájára mutat. Ezt követően a létrehozási beállításokkal társítsa a Storage mappát a gazdaszámítógép egyik mappájához.
 
-Ha például engedélyezni szeretné az IoT Edge hub számára az üzenetek tárolását az eszköz helyi tárolójában, és később lekéri őket, a környezeti változókat és a létrehozási beállításokat a Azure Portal a **speciális Edge-futtatókörnyezet beállításainak konfigurálása szakaszában állíthatja be.** szakasz.
+Ha például engedélyezni szeretné az IoT Edge hub számára az üzenetek tárolását az eszköz helyi tárolójában, és később lekéri őket, a környezeti változókat és a létrehozási beállításokat a Azure Portal a **futtatókörnyezet beállításai** szakaszban állíthatja be.
 
 1. A IoT Edge hub és a IoT Edge Agent esetében is adjon hozzá egy **storageFolder** nevű környezeti változót, amely a modul egyik könyvtárára mutat.
 1. A IoT Edge hub és a IoT Edge ügynök esetében adja hozzá a kötéseket, hogy a gazdagépen lévő helyi könyvtárat összekapcsolja a modul egyik könyvtárába. Példa:
@@ -70,11 +70,11 @@ A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. 
 }
 ```
 
-Cserélje le a `<HostStoragePath>` és a `<ModuleStoragePath>` értéket a gazdagép és a modul tárolási útvonalára; mindkét értéknek abszolút elérési útnak kell lennie.
+Cserélje le a `<HostStoragePath>` és a `<ModuleStoragePath>`t a gazdagép és a modul tárolási útvonalára; mindkét értéknek abszolút elérési útnak kell lennie.
 
-Linux rendszeren például a `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` érték azt jelenti, hogy a gazdagépen lévő **/etc/iotedge/Storage** a tárolóban lévő **/iotedge/Storage/** van leképezve. Egy Windows rendszerű rendszeren a `"Binds":["C:\\temp:C:\\contemp"]` érték azt jelenti, hogy a (z) **c: \\temp** a gazdagépen a (z) **c: \\contemp** könyvtárba van leképezve a tárolóban.
+A Linux rendszeren például a `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` azt jelenti, hogy a gazdagép **/etc/iotedge/Storage** lévő címtár a tároló **/iotedge/Storage/** van leképezve. Egy Windows rendszeren, mint egy másik példa, `"Binds":["C:\\temp:C:\\contemp"]` azt jelenti, hogy a (z) **c:\\Temp** a gazdagépen a (z) **c:\\** a tárolóban.
 
-Emellett a Linux-eszközökön ellenőrizze, hogy a modul felhasználói profilja rendelkezik-e a gazdagép rendszerkönyvtárához szükséges olvasási, írási és végrehajtási engedélyekkel. Visszatérve a korábbi példához, amely lehetővé teszi, hogy IoT Edge hub üzeneteket tároljon az eszköz helyi tárolójában, engedélyeket kell adnia a felhasználói profiljához, az UID 1000-hez. (A IoT Edge ügynök root-ként működik, ezért nincs szükség további engedélyekre.) A Linux rendszereken több módon is kezelhetők a címtár-engedélyek, például a `chown` használatával módosíthatja a könyvtár tulajdonosát, majd `chmod` az engedélyek módosításához, például:
+Emellett a Linux-eszközökön ellenőrizze, hogy a modul felhasználói profilja rendelkezik-e a gazdagép rendszerkönyvtárához szükséges olvasási, írási és végrehajtási engedélyekkel. Visszatérve a korábbi példához, amely lehetővé teszi, hogy IoT Edge hub üzeneteket tároljon az eszköz helyi tárolójában, engedélyeket kell adnia a felhasználói profiljához, az UID 1000-hez. (A IoT Edge ügynök root-ként működik, ezért nincs szükség további engedélyekre.) A Linux rendszereken több módon is kezelheti a címtár-engedélyeket, például a `chown` használatával módosíthatja a címtár tulajdonosát, majd `chmod` az engedélyek módosításához, például:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

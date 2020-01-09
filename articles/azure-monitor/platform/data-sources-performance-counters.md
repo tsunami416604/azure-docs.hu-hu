@@ -4,15 +4,15 @@ description: A teljesítményszámlálókat a Azure Monitor gyűjti a Windows-é
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363829"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
@@ -55,7 +55,7 @@ Kövesse ezt az eljárást egy új Linux-teljesítményszámláló hozzáadásá
 1. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek.  Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.  Ha ezt a fájlt manuálisan kívánja módosítani minden Linux-ügynökön, törölje a jelet az *alábbi konfiguráció alkalmazása a Linux rendszerű gépekre* lehetőségre, és kövesse az alábbi útmutatást.
 2. Írja be a számláló nevét a Format *objektum (példány) \ számláló*szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  
 3. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló az objektumhoz tartozó egyéb számlálók listájához való hozzáadásához.
-4. Egy objektum összes számlálója ugyanazt a **mintavételi időközt**használja.  Az alapértelmezett érték 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
+4. Egy objektum összes számlálója ugyanazt a **mintavételi időközt**használja.  Az alapértelmezett érték a 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
 5. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-teljesítményszámlálók konfigurálása a konfigurációs fájlban
@@ -87,14 +87,14 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Objektum neve | Számláló neve |
 |:--|:--|
 | Logikai lemez | Szabad inode%-ban |
-| Logikai lemez | Szabad terület (%) |
+| Logikai lemez | Szabad terület százalékos aránya |
 | Logikai lemez | Felhasznált inode%-ban |
 | Logikai lemez | Felhasznált terület (%) |
-| Logikai lemez | Lemez olvasási sebessége (bájt/s) |
-| Logikai lemez | Olvasási sebesség (lemez/mp) |
+| Logikai lemez | Lemezolvasás sebessége bájt/mp-ben |
+| Logikai lemez | Lemezolvasások/mp |
 | Logikai lemez | Lemez átvitele másodpercenként |
-| Logikai lemez | Lemez írási sebessége (bájt/s) |
-| Logikai lemez | Írási sebesség (írás/mp) |
+| Logikai lemez | Lemezírás sebessége bájt/mp-ben |
+| Logikai lemez | Lemezírások/mp |
 | Logikai lemez | Szabad terület (MB) |
 | Logikai lemez | Logikai lemez sebessége (bájt/s) |
 | Memória | Rendelkezésre álló memória%-ban |
@@ -103,9 +103,9 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Memória | Felhasznált swap-terület%-ban |
 | Memória | Rendelkezésre álló memória (MB) |
 | Memória | Rendelkezésre álló memória (MB) |
-| Memória | Olvasott lap/mp |
-| Memória | Írási idő/mp |
-| Memória | Lap/mp |
+| Memória | Olvasott lap/mperc |
+| Memória | Írt lap/mperc |
+| Memória | Mozgatott lapok (lap/sec) |
 | Memória | Felhasznált memória (MB) – lapozófájl |
 | Memória | Felhasznált memória (MB) |
 | Network (Hálózat) | Továbbított bájtok összesen |
@@ -125,19 +125,19 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Folyamat | Felhasznált memória (kilobájt) |
 | Folyamat | Virtuális megosztott memória |
 | Processzor | % DPC idő |
-| Processzor | Üresjárati idő%-ban |
+| Processzor | Üresjáratban eltöltött időhányad (%) |
 | Processzor | Megszakítási idő%-ban |
 | Processzor | I/o várakozási idő%-ban |
 | Processzor | % Nice idő |
 | Processzor | %-Os privilegizált idő |
-| Processzor | Processzoridő (%) |
+| Processzor | A processzor kihasználtsága (%) |
 | Processzor | Felhasználói idő%-ban |
 | Rendszer | Szabad fizikai memória |
 | Rendszer | Szabad terület a Lapozófájlokban |
 | Rendszer | Szabad virtuális memória |
 | Rendszer | Folyamatok |
 | Rendszer | Lapozófájlokban tárolt méret |
-| Rendszer | Üzemidő |
+| Rendszer | Hasznos üzemidő |
 | Rendszer | Felhasználók |
 
 
@@ -205,13 +205,13 @@ Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatoka
 | Perf |Minden teljesítményadatok |
 | A &#124; Perf, ahol a Computer = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |
 | A &#124; Perf, ahol a CounterName = = "a lemez aktuális várólistájának hossza" |Egy adott számláló összes teljesítményadatokat |
-| A &#124; Perf, ahol a ObjectName = = "Processor" és a CounterName = = "% Processor Time" és a példánynév &#124; = = "összesen" összefoglalja a AVGCPU = AVG (kártyabirtokos számlájának megterhelését) számítógép szerint |A CPU átlagos kihasználtsága az összes számítógépen |
+| A &#124; Perf, ahol a ObjectName = = "Processor" és a CounterName = = "% Processor Time" és a példánynév &#124; = = "_Total" összefoglaló AVGCPU = AVG (kártyabirtokos számlájának megterhelését) a számítógépen |A CPU átlagos kihasználtsága az összes számítógépen |
 | A &#124; Perf, ahol a CounterName = = "% &#124; Processor Time" összefoglalja a AggregatedValue = Max (kártyabirtokos számlájának megterhelését) t a számítógépen |Maximális CPU-kihasználtság az összes számítógépen |
 | Perf &#124; , ahol a ObjectName = = "LogicalDisk" és a CounterName = = "aktuális lemez várólistájának hossza" és a Computer &#124; = = "MyComputerName" összefoglaló AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by példánynév |Az aktuális Lemezvezérlő-várólista átlagos hossza egy adott számítógép összes példánya között |
 | A &#124; Perf, ahol a CounterName = = "Disk Transfers/mp" &#124; összefoglalja a AggregatedValue = percentilis (kártyabirtokos számlájának megterhelését, 95) a számítógépen |a 95. százalékos aránya/mp az összes számítógép között |
-| A &#124; Perf, ahol a CounterName = = "% Processor Time" és a példánynév = &#124; = "összesen" összefoglalja a AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), számítógép |A CPU-használat óránkénti átlaga az összes számítógépen |
-| A &#124; Perf, ahol a Computer = = "Sajátgép" és a CounterName startswith_cs "%" és példánynév = &#124; = "összesen" összefoglalása AggregatedValue = percentilis (kártyabirtokos számlájának megterhelését, 70) a bin (TimeGenerated, 1h), CounterName | Egy adott számítógép% százalékos számlálójának óránként 70 százalékos aránya |
-| A &#124; Perf, ahol a CounterName = = "% Processor Time" és a példánynév = = "összesen" és a Computer &#124; = = "Sajátgép" összegzése ["min (kártyabirtokos számlájának megterhelését)"] = min (kártyabirtokos számlájának megterhelését), ["AVG (kártyabirtokos számlájának megterhelését)"] = AVG (kártyabirtokos számlájának megterhelését), ["percentile75 (kártyabirtokos számlájának megterhelését)"] = percentilis (kártyabirtokos számlájának megterhelését, 75), ["Max (kártyabirtokos számlájának megterhelését)"] = Max (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), számítógép |Egy adott számítógép óránkénti átlaga, minimális, maximális és 75 – percentilis CPU-használata |
+| A &#124; Perf, ahol CounterName = = "% Processor Time" és példánynév = = " &#124; _Total" összegzi a AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), számítógép |A CPU-használat óránkénti átlaga az összes számítógépen |
+| A &#124; Perf, ahol a Computer = = "Sajátgép" és a CounterName startswith_cs "%" és a példánynév &#124; = = "_Total" összefoglalja a AggregatedValue = percentilis (kártyabirtokos számlájának megterhelését, 70) raktárhely alapján (TimeGenerated, 1h), CounterName | Egy adott számítógép% százalékos számlálójának óránként 70 százalékos aránya |
+| A &#124; Perf, ahol a CounterName = = "% Processor Time" és a példánynév = = "_Total" és a Computer &#124; = = "Sajátgép" összegzése ["min (kártyabirtokos számlájának megterhelését)"] = min (kártyabirtokos számlájának megterhelését), ["AVG (kártyabirtokos számlájának megterhelését)"] = AVG (kártyabirtokos számlájának megterhelését), ["percentile75 (kártyabirtokos számlájának megterhelését)"] = percentilis (kártyabirtokos számlájának megterhelését, 75), ["Max (kártyabirtokos számlájának megterhelését)"] = Max (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), számítógép |Egy adott számítógép óránkénti átlaga, minimális, maximális és 75 – percentilis CPU-használata |
 | Perf &#124; , ahol ObjectName = = "MSSQL $ INST2: adatbázisok" és példánynév = = "Master" | Az adatbázis teljesítményobjektum a Master adatbázishoz tartozó összes teljesítményadatokat a megnevezett SQL Server példány INST2.  
 
 

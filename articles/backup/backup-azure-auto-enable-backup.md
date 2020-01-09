@@ -1,16 +1,16 @@
 ---
-title: VIRTUÁLIS gépek biztonsági mentésének automatikus engedélyezése Azure Policy használatával
+title: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 description: A cikk azt ismerteti, hogyan használható a Azure Policy az adott hatókörben létrehozott összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450121"
 ---
-# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>VIRTUÁLIS gépek biztonsági mentésének automatikus engedélyezése Azure Policy használatával
+# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 
 A szervezet biztonsági mentési vagy megfelelőségi rendszergazdájának egyik kulcsfontosságú feladata, hogy biztosítsa, hogy az üzleti szempontból kritikus fontosságú gépek biztonsági mentése a megfelelő megőrzéssel történjen.
 
@@ -25,6 +25,8 @@ Napjainkban a Azure Backup egy beépített szabályzatot (Azure Policy használa
 * A megadott tár és a biztonsági mentésre konfigurált virtuális gépek különböző erőforráscsoportok alatt lehetnek.
 
 * A felügyeleti csoport hatóköre jelenleg nem támogatott.
+
+* A beépített szabályzat jelenleg nem érhető el az országos felhőkben.
 
 ## <a name="using-the-built-in-policy"></a>A beépített szabályzat használata
 

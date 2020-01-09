@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465218"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -21,9 +21,9 @@ A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálóz
 
 Ez a cikk azt ismerteti, hogyan használható az Azure ExpressRoute a Azure Site Recovery a vész-helyreállítási és-áttelepítéshez.
 
-## <a name="expressroute-circuits"></a>ExpressRoute-áramkörök
+## <a name="expressroute-circuits"></a>ExpressRoute-kapcsolatcsoportok
 
-ExpressRoute-kapcsolatcsoport a helyszíni infrastruktúra és a egy kapcsolatszolgáltatón keresztül a Microsoft-felhőszolgáltatások közötti logikai kapcsolatot jelöli. Több ExpressRoute-Kapcsolatcsoportok rendezheti. Minden kapcsolatnak az azonos vagy eltérő régiókban is lehetnek, és a helyszíni eredetű különböző kapcsolatszolgáltatók keresztül lehet csatlakoztatni. További információ az ExpressRoute- [áramkörökről](../expressroute/expressroute-circuit-peerings.md).
+A ExpressRoute áramkör a helyszíni infrastruktúra és a Microsoft Cloud Services közötti logikai kapcsolatot jelenti a kapcsolat szolgáltatóján keresztül. Több ExpressRoute-áramkört is rendelhet. Minden áramkör lehet azonos vagy különböző régiókban, és a különböző kapcsolati szolgáltatókon keresztül csatlakozhat a telephelyéhez. További információ az ExpressRoute- [áramkörökről](../expressroute/expressroute-circuit-peerings.md).
 
 Egy ExpressRoute-áramkörhöz több útválasztási tartomány van társítva. További információ az ExpressRoute [útválasztási tartományokról](../expressroute/expressroute-circuit-peerings.md#peeringcompare)és azok összehasonlításáról.
 
@@ -31,7 +31,7 @@ Egy ExpressRoute-áramkörhöz több útválasztási tartomány van társítva. 
 
 Azure Site Recovery lehetővé teszi a vész-helyreállítást és az Azure-ba való áttelepítést helyszíni [Hyper-V virtuális gépek](hyper-v-azure-architecture.md), [VMWare virtuális gépek](vmware-azure-architecture.md)és [fizikai kiszolgálók](physical-azure-architecture.md)számára. A helyszíni és az Azure-beli forgatókönyvek esetében a replikációs adatok küldése és tárolása egy Azure Storage-fiókban történik. A replikáció során nem számítunk fel virtuális gépek díját. Amikor feladatátvételt futtat az Azure-ba, Site Recovery automatikusan létrehozza az Azure IaaS virtuális gépeket.
 
-A Site Recovery egy nyilvános végponton keresztül replikálja az Azure Storage-fiókba vagy a replika felügyelt lemezére a cél Azure-régióban. Ha a ExpressRoute-t Site Recovery replikációs forgalomhoz kívánja használni, használhatja a [Microsoft-társat](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) vagy egy meglévő [nyilvános](../expressroute/expressroute-circuit-peerings.md#publicpeering) (új létrehozási) szolgáltatást. A replikációhoz a Microsoft-társ a javasolt útválasztási tartomány. Vegye figyelembe, hogy a replikálás nem támogatott privát társak esetén.
+A Site Recovery egy nyilvános végponton keresztül replikálja az Azure Storage-fiókba vagy a replika felügyelt lemezére a cél Azure-régióban. Ha a ExpressRoute-t Site Recovery replikációs forgalomhoz kívánja használni, használhatja a [Microsoft-társat](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) vagy egy meglévő [nyilvános](../expressroute/about-public-peering.md) (új létrehozási) szolgáltatást. A replikációhoz a Microsoft-társ a javasolt útválasztási tartomány. Vegye figyelembe, hogy a replikálás nem támogatott privát társak esetén.
 
 Győződjön meg arról, hogy a konfigurációs kiszolgáló [hálózati követelményei](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek. A konfigurációs kiszolgáló a Site Recovery replikáció összehangolása érdekében meghatározott URL-címekhez való kapcsolódást igényel. A ExpressRoute nem használható ehhez a kapcsolathoz. 
 

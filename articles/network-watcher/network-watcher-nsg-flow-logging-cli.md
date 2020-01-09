@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 950b014d7e08eeeeed40ba7b294e53e1c200474b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 21026a3de2b9feb11bc84cbdb60d4a363bd5a05c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454270"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Hálózati biztonsági csoport Folyamatábráinak konfigurálása az Azure CLI-vel
 
@@ -74,10 +74,8 @@ Ha meg van adva Storage-fiók, a rendszer a flow-naplófájlokat a következő h
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-> [!IMPORTANT]
-> Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Ha meglévő, nem nulla adatmegőrzési szabályzattal rendelkezik, javasoljuk, hogy rendszeresen törölje a megőrzési időtartamon felüli tárolási blobokat a felmerülő költségek elkerülése érdekében. További információ a NSG flow log-tárolási blog törléséről: [NSG flow log Storage-Blobok törlése](network-watcher-delete-nsg-flow-log-blobs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [jelenítheti meg a NSG flow-naplókat a PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) használatával
 

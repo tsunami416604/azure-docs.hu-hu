@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407834"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: geokerítésen beállítása Azure Maps használatával
 
@@ -36,7 +36,7 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
 
-Az oktatóanyag lépéseinek elvégzéséhez kövesse a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Azure Maps fiók előfizetése S1 árképzési szinten való létrehozásához című témakör útmutatását, és kövesse az [elsődleges kulcs beolvasása](./tutorial-search-location.md#getkey) a fiókhoz tartozó elsődleges előfizetési kulcs beszerzéséhez című témakör lépéseit.
+Az oktatóanyag lépéseinek elvégzéséhez kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetése S1 díjszabási szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 ## <a name="upload-geofences"></a>Geofences feltöltése
 
@@ -56,7 +56,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
     
     Az URL-cím GEOJSON paramétere a feltöltött adatformátumot jelöli.
 
-3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps elsődleges előfizetési kulcsára.
+3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps kulcsra.
    
     ![Kulcs-érték paraméterek Poster](./media/tutorial-geofence/postman-key-vals.png)
 

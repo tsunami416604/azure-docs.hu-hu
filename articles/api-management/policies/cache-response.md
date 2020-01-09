@@ -1,5 +1,6 @@
 ---
-title: Azure API Management-szabályzat minta – képességek hozzáadása egy háttér-szolgáltatáshoz | Microsoft Docs
+title: Példa API Management-szabályzat – képességek hozzáadása a háttér-szolgáltatáshoz
+titleSuffix: Azure API Management
 description: Azure API Management-szabályzat mintája – bemutatja, hogyan adhat hozzá képességeket egy háttér-szolgáltatáshoz. Lehetővé teheti például, hogy egy időjárás-előrejelző API-ban a szélesség és hosszúság helyett elég legyen egy hely nevét megadni.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 705d7e44f64f8dc3bba669cd80dafdab078fcccc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442471"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>Képességek hozzáadása egy háttérbeli szolgáltatáshoz
 
@@ -29,7 +30,7 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Call out to an HTTP endpoint and cache the response.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 

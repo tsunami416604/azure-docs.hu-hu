@@ -3,14 +3,14 @@ title: Ajánlott eljárások Azure Functions
 description: A Azure Functions ajánlott eljárásainak és mintáinak megismerése.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433299"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -70,7 +70,11 @@ Számos tényező befolyásolja a Function app-méretezési példányait. A rés
 
 ### <a name="share-and-manage-connections"></a>Kapcsolatok megosztása és kezelése
 
-Ha lehetséges, a külső erőforrásokhoz való kapcsolódást újra fel kell használni.  Lásd: [kapcsolatok kezelése Azure Functionsban](./manage-connections.md).
+Ha lehetséges, a külső erőforrásokhoz való kapcsolódást újra fel kell használni. Lásd: [kapcsolatok kezelése Azure Functionsban](./manage-connections.md).
+
+### <a name="avoid-sharing-storage-accounts"></a>A Storage-fiókok megosztásának elkerülése
+
+Egy Function-alkalmazás létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak. A teljesítmény maximalizálása érdekében használjon külön Storage-fiókot minden egyes Function alkalmazáshoz. Ez különösen akkor fontos, ha Durable Functions vagy Event hub által aktivált függvények vannak, amelyek nagy mennyiségű tárolási tranzakciót eredményeznek. Ha az alkalmazás logikája az Azure Storage-t használja közvetlenül (a Storage SDK használatával) vagy a tárolási kötések valamelyikével, használjon dedikált Storage-fiókot. Ha például egy Event hub által aktivált függvény a blob Storage-ba ír néhány adatát, akkor két Storage-fiókot kell használnia,&mdash;egyet a Function alkalmazáshoz, és egy másikat a függvény által tárolt Blobok számára.
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztet és a termelési kódot ugyanabban a Function alkalmazásban
 
@@ -84,9 +88,17 @@ Ne használja a részletes naplózást az éles kódban, amely negatív hatássa
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Aszinkron kód használata, de ne blokkolja a hívásokat
 
-Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra, vagy hívja meg `Wait` metódust egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
+Az aszinkron programozás ajánlott eljárás, különösen az I/O-műveletek blokkolása esetén.
+
+A C#-ben mindig kerülje a `Result` tulajdonságra való hivatkozásokat, vagy hívja meg `Wait` metódust egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>Több munkavégző folyamat használata
+
+Alapértelmezés szerint a függvények minden gazdagép-példánya egyetlen munkavégző folyamatot használ. A teljesítmény javítása érdekében, különösen az egyszálas futtatókörnyezetek, például a Python esetében, a [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) használatával növelheti a munkavégző folyamatok számát (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között. 
+
+A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez. 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 

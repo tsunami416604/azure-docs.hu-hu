@@ -1,5 +1,6 @@
 ---
-title: A fejlesztői portál oldaltartalmának módosítása az Azure API Managementben | Microsoft Docs
+title: Oldal tartalmának módosítása a fejlesztői portálon API Management
+titleSuffix: Azure API Management
 description: Megtudhatja, hogyan szerkesztheti az oldaltartalmakat a fejlesztői portálon az Azure API Managementben.
 services: api-management
 documentationcenter: ''
@@ -13,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072263"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430631"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Oldalak tartalmának és elrendezésének módosítása a fejlesztői portálon az Azure API Managementben
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
 
-* [A statikus lapok és a lapelrendezés elemek tartalmának szerkesztése][modify-content-layout] (magyarázat az útmutatóban)
+* [Szerkesztheti a statikus lapok és a lapelrendezés elemek tartalmát][modify-content-layout] (ez az útmutató ismerteti)
 * [Az oldal elemeihez használt stílusok frissítése a fejlesztői portálon][customize-styles]
 * A [portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentumok, termékek, felhasználói hitelesítés stb.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"></a>A fejlesztői portál oldalainak szerkezete
+## <a name="page-structure"> </a>A fejlesztői portál oldalainak szerkezete
 
 A fejlesztői portál egy tartalomkezelő rendszeren alapul. Az egyes oldalak elrendezése kis oldalelemek készleteire, más néven widgetekre épül:
 
@@ -41,7 +42,7 @@ Az összes widget szerkeszthető.
 
 A napi szintű oldalszerkesztés során általában csak a Tartalom widget szerkesztésére kerül sor, amely minden egyes laphoz különböző tartalommal rendelkezik.
 
-## <a name="modify-layout-widget"></a>Elrendezési widget tartalmának módosítása
+## <a name="modify-layout-widget"> </a>Elrendezési widget tartalmának módosítása
 
 A fejlesztői portál elérhető az Azure Portalról.
 
@@ -54,7 +55,7 @@ A fejlesztői portál elérhető az Azure Portalról.
 
 Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"> </a>További lépések
 * [Az oldal elemeihez használt stílusok frissítése a fejlesztői portálon][customize-styles]
 * A [portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentumok, termékek, felhasználói hitelesítés stb.)
 

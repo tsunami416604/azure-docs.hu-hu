@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462441"
 ---
 # <a name="workflow-automation-preview"></a>Munkafolyamat-automatizálás (előzetes verzió)
 
@@ -87,8 +87,11 @@ Egy logikai alkalmazás manuális futtatásához nyisson meg egy javaslatot, és
 
 [Logikai alkalmazás manuális elindítása ![](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>Adattípusok sémái
 
-## <a name="next-steps"></a>További lépések
+A logikai alkalmazás-példánynak átadott biztonsági riasztások vagy javaslatok eseményeinek nyers esemény-sémáit a munkafolyamat- [automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)között tekintheti meg. Ez olyan esetekben lehet hasznos, amikor nem használja a fent említett Security Center beépített logikai alkalmazás-összekötőit, de ehelyett a Logic app általános HTTP-összekötőjét használja – az Event JSON-sémával manuálisan elemezheti azt, ahogy jónak látja.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozhat létre Logic Appsokat, és hogyan futtathatja azokat manuálisan Security Center, és automatizálhatja a végrehajtást. 
 
@@ -98,3 +101,4 @@ Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket:
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 - [Tudnivalók Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logic Apps összekötők](https://docs.microsoft.com/connectors/)
+- [Munkafolyamat-automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)

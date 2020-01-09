@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 16892ec729f56f8c8e1713379285e07fbc0dd4d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084159"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495426"
 ---
-# <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések a VMware-ről az Azure-ba történő replikálásra
+# <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
 Ez a cikk a helyszíni VMware virtuális gépek (VM-EK) Azure-ba történő vész-helyreállításának telepítésekor felmerülő gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Mire van szükség a VMware virtuális gépek vész-helyreállításához?
 
@@ -176,7 +176,7 @@ Igen, új virtuális gépeket adhat hozzá egy meglévő replikációs csoportho
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Módosíthatom a replikált virtuális gépeket lemezek hozzáadásával vagy átméretezésével?
 
-Az Azure-ba történő VMware-replikáláshoz módosíthatja a lemez méretét. Ha új lemezeket szeretne hozzáadni, hozzá kell adnia a lemezt, és újra engedélyeznie kell a virtuális gép védelmét.
+Az Azure-ba történő VMware-replikáláshoz módosíthatja a forrásként használt virtuális gépek méretét. Ha új lemezeket szeretne hozzáadni, hozzá kell adnia a lemezt, és újra engedélyeznie kell a virtuális gép védelmét.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Áttelepíthetem a helyszíni gépeket egy új vCenter Serverra anélkül, hogy ez hatással lenne a folyamatos replikációra?
 
@@ -188,7 +188,7 @@ Nem, Site Recovery nem támogatja az Azure Storage-ba való replikálást a virt
 
 ## <a name="component-upgrade"></a>Összetevő frissítése
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mit tegyek?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>A mobilitási szolgáltatások ügynökének vagy a konfigurációs kiszolgálónak a saját verziója elavult, és a frissítés nem sikerült. Mi a teendő?
 
 Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr_support_statement) információ a nagyon régi verziókról való frissítésről.
 
@@ -202,7 +202,7 @@ Site Recovery az N-4 támogatási modellt követi. [További](https://aka.ms/asr
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Szükség van-e az egyes verziófrissítésekhez szükséges forrásoldali gépek újraindítására?
 
-Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információ](https://aka.ms/asr_vmware_upgrades).
+Az újraindítás ajánlott, de nem kötelező az egyes verziófrissítésekhez. [További információk](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -326,7 +326,7 @@ A VMware-ből az Azure-ba a legrégebbi helyreállítási pont 72 óra lehet.
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan Azure-beli virtuális gépeket a feladatátvételt követően?
 
-A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+A feladatátvételt követően az Azure-beli virtuális gépek biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en vagy Azure-ExpressRoute keresztül érhetők el. A csatlakozáshoz több dolgot kell előkészítenie. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>A feladatátvételi feladathoz képest rugalmas?
 
@@ -338,27 +338,24 @@ A [feladatátvétel](site-recovery-failover.md) nem automatikus. A feladatátvé
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Visszatérhetek egy másik helyre?
 
-Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információ](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Igen. Ha a feladatátvételt az Azure-ba hajtja végre, visszatérhet egy másik helyre, ha az eredeti nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Miért van szükségem VPN-vagy ExpressRoute-kapcsolatra a feladat-visszavétel érdekében?
 
 Ha az Azure-ból végez feladatátvételt, az Azure-ból származó adatok visszakerülnek a helyszíni virtuális gépre, és a privát hozzáférésre van szükség.
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>Átméretezhetim az Azure-beli virtuális gépet a feladatátvétel után?
-
-Nem, a cél virtuális gép méretét vagy típusát a feladatátvétel után nem módosíthatja.
 
 ## <a name="automation-and-scripting"></a>Automatizálás és parancsfájlkezelés
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Beállítható a replikáció parancsfájlok futtatásával?
 
-Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információ](vmware-azure-disaster-recovery-powershell.md).
+Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhatja Site Recovery munkafolyamatokat. [További információk](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Teljesítmény és kapacitás
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Szabályozható a replikálási sávszélesség?
 
-Igen. [További információ](site-recovery-plan-capacity-vmware.md).
+Igen. [További információk](site-recovery-plan-capacity-vmware.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

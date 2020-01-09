@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 609b1c4500e1602c38f3383df6cbe176a3333bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926782"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439557"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -135,7 +135,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       
      ![Új adat-előállító lap](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátneveADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -144,11 +144,11 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-        Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+        Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a  **Create** (Létrehozás) gombra.      
+7. Kattintson a **Create** (Létrehozás) gombra.      
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -191,11 +191,11 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 8. Váltson a **Kapcsolat** lapra a **Tulajdonságok** ablakban, majd kattintson a **Társított szolgáltatás** elemhez tartozó Új elemre. Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az adat-előállítóhoz kapcsolja az Azure Storage-fiókot. 
     
    ![Adatkészlet kapcsolata – új társított szolgáltatás](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
-9. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+9. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket: 
 
     1. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet.
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
-    3. Kattintson a **Save** (Mentés) gombra.
+    3. Kattintson a **Mentés** gombra.
 
    ![Új Azure Storage-beli társított szolgáltatás](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Adja meg a `@pipeline().parameters.sourceBlobContainer` mappanevet és az `emp.txt` fájlnevet. A sourceBlobContainer folyamatparaméterrel adhatja meg az adatkészlet mappájának elérési útját. 
@@ -272,7 +272,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 23. Húzza a másolási tevékenység melletti **piros** gombot a **SendFailureEmailActivity** nevű második webes tevékenységre. Szabadon áthelyezheti a tevékenységeket, így a folyamat a következő képhez hasonlóan fog kinézni: 
 
     ![A teljes folyamat az összes tevékenységgel](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. A folyamat érvényesítéséhez kattintson a **Érvényesítés** gombra az eszköztáron. Zárja be a **Folyamatérvényesítés kimenete** ablakot a **>>** gombra kattintva.
+24. A folyamat érvényesítéséhez kattintson a **Validation** (Érvényesítés) gombra az eszköztáron. Zárja be a **Folyamatérvényesítés kimenete** ablakot a **>>** gombra kattintva.
 
     ![Folyamat érvényesítése](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Ha közzé szeretné tenni az entitásokat (adatkészleteket, folyamatokat stb.) a Data Factory szolgáltatásban, válassza az **Összes közzététele** elemet. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
@@ -309,7 +309,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
     1. A **sourceBlobContainer** paraméterhez adja meg az **adftutorial/dummy/input** értéket. Győződjön meg arról, hogy a helyőrző mappa nem létezik az adftutorial tárolóban. 
     2. A **sinkBlobContainer** paraméterhez adja meg az **adftutorial/dummy/output** értéket. 
     3. Adja meg a **címzett** **e-mail-címét**. 
-    4. Kattintson a **Finish** (Befejezés) gombra.
+    4. Kattintson a **Befejezés** gombra.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>A sikertelen folyamatfuttatás monitorozása
 

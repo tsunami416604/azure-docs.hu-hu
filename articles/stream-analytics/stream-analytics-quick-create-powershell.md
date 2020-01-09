@@ -1,19 +1,18 @@
 ---
 title: Rövid útmutató – Stream Analytics-feladatok létrehozása Azure PowerShell használatával
 description: Ez a rövid útmutató azt ismerteti, hogyan használható a Azure PowerShell modul a Azure Stream Analytics feladatok üzembe helyezéséhez és futtatásához.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 44fe16caf6805819b0d942a02f5138fe766ae99c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431510"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával
 
@@ -306,7 +305,7 @@ New-AzStreamAnalyticsTransformation `
 
 3. Kattintson a **Run** (Futtatás) parancsra. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
 
-    ![Málna PI Azure IoT online szimulátor](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
+    ![Online Raspberry Pi Azure IoT-szimulátor](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 

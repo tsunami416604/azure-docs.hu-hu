@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: létrehozás, közzététel és válasz QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Hozzon létre egy új tudásbázist egy nyilvános, webalapú gyakori kérdésekből származó kérdésekkel és válaszokkal. A Tudásbázis mentése, betanítása és közzététele. Miután közzétette a tudásbázist, küldjön egy kérdést, és kap egy választ egy cURL-paranccsal. Ezután hozzon létre egy robotot, és tesztelje a robotot ugyanazzal a kérdéssel.
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy új tudásbázist egy nyilvános webalapú gyakori kérdésekből származó kérdésekkel és válaszokkal. A Tudásbázis mentése, betanítása és közzététele. Miután közzétette a tudásbázist, küldjön egy kérdést, és kap egy választ egy cURL-paranccsal. Ezután hozzon létre egy robotot, és tesztelje a robotot ugyanazzal a kérdéssel.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447383"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Oktatóanyag: a QnA Maker portálon hozzon létre egy tudásbázist
 
@@ -59,7 +59,7 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
 
     ![Képernyőkép a QnA Maker-portálról](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
-1. Adja meg a Tudásbázis nevét: `My Tutorial kb`.
+1. Adja meg a Tudásbázis nevét, `My Tutorial kb`.
 
     ![Képernyőkép a QnA Maker-portálról](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
 
@@ -109,7 +109,7 @@ Ne zárjuk be ezt a **közzétételi** lapot. A robot létrehozásához az oktat
 
     ![Képernyőfelvétel a curl lapról](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Másolja ki a **curl** lap szövegét, és futtassa azt egy curl-kompatibilis terminálon vagy parancssorban. Az engedélyezési fejléc értéke tartalmazza a `Endpoint` szöveget, egy záró szóközzel, majd a kulccsal.
+1. Másolja ki a **curl** lap szövegét, és futtassa azt egy curl-kompatibilis terminálon vagy parancssorban. Az engedélyezési fejléc értéke tartalmazza a `Endpoint`szöveget, a záró szóközzel és a kulccsal.
 
 1. Cserélje le a `<Your question>` elemet a `How large can my KB be?` kérdésre. Ez hasonlít a `How large a knowledge base can I create?` kérdéshez, de nem pontosan ugyanaz. A QnA Maker természetes nyelvi feldolgozás segítségével határozza meg, hogy a két kérdés azonos-e.     
 
@@ -139,7 +139,7 @@ Ne zárjuk be ezt a **közzétételi** lapot. A robot létrehozásához az oktat
 
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>A cURL használata a Chit-csevegési válaszok lekérdezéséhez
 
-1. A cURL-kompatibilis terminálon cserélje le a `How large can my KB be?` elemet egy, a felhasználótól származó bot-beszélgetés-záró utasítással, például `Thank you`.   
+1. A cURL-kompatibilis terminálon cserélje le a `How large can my KB be?`t egy, a felhasználótól származó bot-beszélgetés-záró utasítással, például `Thank you`.   
 
 1. Futtassa a cURL parancsot, és fogadja a JSON-választ, beleértve a pontszámot és a választ. 
 
@@ -181,7 +181,7 @@ Ne zárjuk be ezt a **közzétételi** lapot. A robot létrehozásához az oktat
 
 A QnA Maker nem biztos abban, hogy az alapértelmezett választ kapja. Ezt a választ az Azure Portalon kell konfigurálni. 
 
-1. A cURL-kompatibilis terminálon cserélje le a `Thank you` értéket `x` értékre. 
+1. A cURL-kompatibilis terminálon cserélje le a `Thank you`t a `x`ra. 
 
 1. Futtassa a cURL parancsot, és fogadja a JSON-választ, beleértve a pontszámot és a választ. 
 
@@ -201,7 +201,7 @@ A QnA Maker nem biztos abban, hogy az alapértelmezett választ kapja. Ezt a vá
     }
     ```
     
-    QnA Maker `0` pontszámot adott vissza, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja. 
+    QnA Maker egy `0`pontszámot adott vissza, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja. 
 
 ## <a name="create-a-knowledge-base-bot"></a>Tudásbázis-robot létrehozása
 
@@ -209,7 +209,7 @@ További információ: [csevegési robot létrehozása ezzel a tudásbázissal](
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a tudásbázishoz tartozó robottal, távolítsa el a `my-tutorial-rg` erőforráscsoportot, és távolítsa el a robot folyamat során létrehozott összes Azure-erőforrást.
+Ha elkészült a Tudásbázis robotjának használatával, távolítsa el az erőforráscsoportot, `my-tutorial-rg`, és távolítsa el a robot-folyamat során létrehozott összes Azure-erőforrást.
 
 Ha elkészült a tudásbázissal, a QnA Maker portálon válassza a **saját tudásbázisok**lehetőséget. Ezután válassza ki a tudásbázist, **az oktatóanyag kb-ot**, és kattintson a jobb szélen található Törlés ikonra a sorban.  
 

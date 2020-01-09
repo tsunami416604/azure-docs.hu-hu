@@ -1,21 +1,21 @@
 ---
 title: Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
 description: Megtudhatja, hogyan helyezheti üzembe, figyelheti és kezelheti Apache Storm topológiákat a Linux-alapú HDInsight található Storm irányítópult használatával. A Visual studióhoz készült Hadoop Tools használata.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228937"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494969"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
 
 Ebből a dokumentumból megtudhatja, hogyan kezelheti és figyelheti [Apache Storm](https://storm.apache.org/) a Storm on HDInsight-fürtökön futó topológiákat.
 
@@ -34,42 +34,40 @@ A Visual studióhoz készült Data Lake Tools segítségével elküldheti C# vag
 1. Ha még nem telepítette a Data Lake Tools for Visual Studio legújabb verzióját, tekintse meg a [Data Lake Tools for Visual Studio használatát](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)ismertető témakört.
 
     > [!NOTE]  
-    > A Visual studióhoz készült Data Lake-eszközöket korábban a Visual studióhoz készült HDInsight-eszközök hívták.
+    > A Azure Data Lake és Stream Analytics eszközöket korábban a Visual studióhoz készült HDInsight-eszközök hívták.
     >
-    > A Visual studióhoz készült Data Lake Tools a Visual Studio 2019 **Azure** -beli számítási feladatának részét képezi.
+    > A Visual studióhoz készült Azure Data Lake és Stream Analytics eszközök a Visual Studio 2019 **Azure-fejlesztési** számítási feladatának részét képezik.
 
-2. Nyissa meg a Visual Studiót.
+1. Indítsa el a Visual Studiót.
 
-3. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
+1. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
 
-4. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe, majd írja be a *Storm*kifejezést. Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább**gombra.
+1. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe, majd írja be a `Storm`. Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább**gombra.
 
-5. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután kattintson a **Létrehozás** elemre.
+1. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután kattintson a **Létrehozás** elemre.
 
     ![Az új Project-ablak, a Visual Studio konfigurálása](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
+1. A **Server Explorerben**kattintson a jobb gombbal az **Azure** elemre, és válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
+
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
 
     > [!NOTE]  
     > Ha a rendszer kéri, adja meg az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokat. Ha egynél több előfizetéssel rendelkezik, jelentkezzen be a HDInsight-fürtön található Stormot tartalmazóba.
 
-7. A **topológia beküldése** párbeszédpanel **Storm-fürt** legördülő listájában válassza ki a Storm on HDInsight-fürtöt, majd válassza a **Küldés**lehetőséget. A **kimenet** ablaktáblán megtekintheti, hogy a Küldés sikeres volt-e.
+1. A **topológia beküldése** párbeszédpanel **Storm-fürt** legördülő listájában válassza ki a Storm on HDInsight-fürtöt, majd válassza a **Küldés**lehetőséget. A **kimenet** ablaktáblán megtekintheti, hogy a Küldés sikeres volt-e.
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Topológia beküldése az SSH és a Storm parancs használatával
 
-Topológia küldése a Storm-hez SSH használatával:
+1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
-1. Az SSH használatával csatlakozzon a HDInsight-fürthöz. Cserélje le a `USERNAME`t az SSH-Felhasználónév nevére (például *sshuser*). Cserélje le a `CLUSTERNAME`t a HDInsight-fürt nevére.
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    További információ az SSH-val a HDInsight-fürthöz való kapcsolódásról: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Az SSH-munkamenetben használja a következő parancsot a **WordCount** példa topológiájának elindításához:
 
-2. A következő parancs használatával indítsa el a *WordCount* példa topológiáját:
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
@@ -176,15 +174,15 @@ A Storm felhasználói felületének fő lapja a következő információkat tar
 
 | Section | Leírás |
 | --- | --- |
-| **Fürt összegzése** | Alapszintű információk a Storm-fürtről. |
-| **Nimbus összegzése** | Az alapvető Nimbus-információk listája. |
-| **Topológia összegzése** | A futó topológiák listája. Egy adott topológiával kapcsolatos további információk megtekintéséhez válassza ki a hivatkozást a Name ( **név** ) oszlopban. |
-| **Felügyelői összefoglalás** | A Storm felettesének információi. Egy adott feletteshez társított munkavégző erőforrások megtekintéséhez válassza ki a hivatkozást a **gazdagép** vagy az **azonosító** oszlopban. |
-| **Nimbus-konfiguráció** | Nimbus-konfiguráció a fürthöz. |
+| Fürt összegzése| Alapszintű információk a Storm-fürtről. |
+| Nimbus összegzése | Az alapvető Nimbus-információk listája. |
+| Topológia összegzése | A futó topológiák listája. Egy adott topológiával kapcsolatos további információk megtekintéséhez válassza ki a hivatkozást a Name ( **név** ) oszlopban. |
+| Felügyelői összefoglalás | A Storm felettesének információi. Egy adott feletteshez társított munkavégző erőforrások megtekintéséhez válassza ki a hivatkozást a **gazdagép** vagy az **azonosító** oszlopban. |
+| Nimbus-konfiguráció | Nimbus-konfiguráció a fürthöz. |
 
 A Storm UI főoldala a következő weboldalhoz hasonlóan néz ki:
 
-![Főoldal, Storm felhasználói felület, Apache Storm topológiák, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![Főoldal, Storm UI, Apache Storm topológiák, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>Topológia összegzése
 
@@ -192,30 +190,30 @@ A **topológia összegzése** szakasz egy hivatkozásának kiválasztásával az
 
 | Section | Leírás |
 | --- | --- |
-| **Topológia összegzése** | A topológiával kapcsolatos alapvető információk. |
-| **Topológiai műveletek** | A topológiához elvégezhető felügyeleti műveletek. Az elérhető műveleteket a szakasz későbbi részében ismertetjük. |
-| **Topológia statisztikái** | A topológiával kapcsolatos statisztikák. Az ebben a szakaszban szereplő bejegyzés időkeretének megadásához válassza ki a hivatkozást az **ablak** oszlopban. |
-| **Kiöntő** *(időkeret)* | A topológia által használt kiöntők. Egy adott kiöntőről további információk megtekintéséhez válassza ki a hivatkozást az **azonosító** oszlopban. |
-| **Csavarok** *(időkeret)* | A topológia által használt csavarok. Egy adott bolttal kapcsolatos további információk megtekintéséhez válassza ki a hivatkozást az **azonosító** oszlopban. |
-| **Munkavégző erőforrások** | A munkavégző erőforrások listája. Egy adott feldolgozó erőforrással kapcsolatos további információk megtekintéséhez válassza ki a hivatkozást a **gazdagép** oszlopban. |
-| **Topológia vizualizációja** | **Vizualizáció megjelenítése** gomb, amely megjeleníti a topológia vizualizációját. |
-| **Topológia konfigurációja** | A kiválasztott topológia konfigurációja. |
+| Topológia összegzése | A topológiával kapcsolatos alapvető információk. |
+| Topológiai műveletek| A topológiához elvégezhető felügyeleti műveletek. Az elérhető műveleteket a szakasz későbbi részében ismertetjük. |
+| Topológia statisztikái | A topológiával kapcsolatos statisztikák. Az ebben a szakaszban szereplő bejegyzés időkeretének megadásához válassza ki a hivatkozást az **ablak** oszlopban. |
+| Kiöntő *(időkeret)* | A topológia által használt kiöntők. Egy adott kiöntőről további információk megtekintéséhez válassza ki a hivatkozást az **azonosító** oszlopban. |
+| Csavarok *(időkeret)* | A topológia által használt csavarok. Egy adott bolttal kapcsolatos további információk megtekintéséhez válassza ki a hivatkozást az **azonosító** oszlopban. |
+| Munkavégző erőforrások | A munkavégző erőforrások listája. Egy adott feldolgozó erőforrással kapcsolatos további információk megtekintéséhez válassza ki a hivatkozást a **gazdagép** oszlopban. |
+| Topológia vizualizációja | **Vizualizáció megjelenítése** gomb, amely megjeleníti a topológia vizualizációját. |
+| Topológia konfigurációja | A kiválasztott topológia konfigurációja. |
 
 A Storm-topológia összefoglalás lapja ehhez a weboldalhoz hasonlóan néz ki:
 
-![Topológia összegzése lap, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Topológia összegzése lap, Storm UI, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 A **topológiai műveletek** szakaszban a következő gombokra kattintva végezheti el a műveletet:
 
-| Gombra | Leírás |
+| Gomb | Leírás |
 | --- | --- |
-| **Aktiválás** | Folytatja a deaktivált topológia feldolgozását. |
-| **Inaktiválása** | Szünetelteti a futó topológiát. |
-| **Újra egyensúlyba hozni** | A topológia párhuzamosságának módosítása. Ha módosította a fürtben lévő csomópontok számát, érdemes a futó topológiákat újra kiegyenlíteni. Ez a művelet lehetővé teszi, hogy a topológia a párhuzamosságot úgy állítsa be, hogy kompenzálja a fürtben lévő csomópontok további vagy kevesebb számát.<br/><br/>További információ: <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topológia párhuzamosságának megismerése</a>.
-| **Kill** | A megadott időkorlát után leállítja a Storm-topológiát. |
-| **Hibakeresés** | Elindítja a futó topológia hibakeresési munkamenetét. |
-| **Hibakeresés leállítása** | A futó topológia hibakeresési munkamenetének vége. |
-| **Napló szintjének módosítása** | A hibakeresési napló szintjének módosítása. |
+| Aktiválás | Folytatja a deaktivált topológia feldolgozását. |
+| Inaktiválás | Szünetelteti a futó topológiát. |
+| Újra egyensúlyba hozni | A topológia párhuzamosságának módosítása. Ha módosította a fürtben lévő csomópontok számát, érdemes a futó topológiákat újra kiegyenlíteni. Ez a művelet lehetővé teszi, hogy a topológia a párhuzamosságot úgy állítsa be, hogy kompenzálja a fürtben lévő csomópontok további vagy kevesebb számát.<br/><br/>További információ: <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm topológia párhuzamosságának megismerése</a>.
+| Kill | A megadott időkorlát után leállítja a Storm-topológiát. |
+| Hibakeresés | Elindítja a futó topológia hibakeresési munkamenetét. |
+| Hibakeresés leállítása | A futó topológia hibakeresési munkamenetének vége. |
+| Napló szintjének módosítása | A hibakeresési napló szintjének módosítása. |
 
 ##### <a name="spout-and-bolt-summary"></a>Kiöntő és bolt összefoglalása
 
@@ -223,18 +221,18 @@ A **topológiai műveletek** szakaszban a következő gombokra kattintva végezh
 
 | Section | Leírás |
 | --- | --- |
-| **Összetevő összegzése** | Alapszintű információk a kiöntő vagy a boltról. |
-| **Összetevő-műveletek** | **Hibakeresés** és **Leállítás** gombokkal. |
-| **Kiöntő statisztika** vagy **bolt statisztikái** | A kiöntő vagy a bolt statisztikája. Az ebben a szakaszban szereplő bejegyzés időkeretének megadásához válassza ki a hivatkozást az **ablak** oszlopban. |
-| (Csak bolt)<br/>**Bemeneti statisztika** *(időkeret)* | A bolt által felhasznált bemeneti adatfolyamokra vonatkozó információk. |
-| **Kimeneti statisztika** *(időkeret)* | Információk a kiöntő vagy a bolt által kibocsátott adatfolyamokról. |
-| **Profilkészítés és hibakeresés** | Az ezen a lapon található összetevők profilkészítésének és hibakeresésének vezérlése. Megadhatja az **állapot/időkorlát (perc)** értéket, és kiválaszthatja a **JStack**, a **feldolgozót**és a **kupacot**is. |
-| **Végrehajtók** *(időkeret)* | Információk a kiöntő vagy a bolt példányairól. Ha meg szeretné tekinteni az ehhez a példányhoz létrehozott diagnosztikai információk naplóját, válassza ki az adott végrehajtóhoz tartozó **portot** . Az adott végrehajtóhoz társított munkavégző erőforrásokat is megtekintheti a **gazdagép** oszlopban található hivatkozás kiválasztásával. |
-| **Hibák** | A kiöntő vagy a boltra vonatkozó bármilyen hiba. |
+| Összetevő összegzése | Alapszintű információk a kiöntő vagy a boltról. |
+| Összetevő-műveletek | **Hibakeresés** és **Leállítás** gombokkal. |
+| Kiöntő statisztika vagy bolt statisztikái | A kiöntő vagy a bolt statisztikája. Az ebben a szakaszban szereplő bejegyzés időkeretének megadásához válassza ki a hivatkozást az **ablak** oszlopban. |
+| (Csak bolt)<br/>Bemeneti statisztika *(időkeret)* | A bolt által felhasznált bemeneti adatfolyamokra vonatkozó információk. |
+| Kimeneti statisztika *(időkeret)* | Információk a kiöntő vagy a bolt által kibocsátott adatfolyamokról. |
+| Profilkészítés és hibakeresés | Az ezen a lapon található összetevők profilkészítésének és hibakeresésének vezérlése. Megadhatja az **állapot/időkorlát (perc)** értéket, és kiválaszthatja a **JStack**, a **feldolgozót**és a **kupacot**is. |
+| Végrehajtók *(időkeret)* | Információk a kiöntő vagy a bolt példányairól. Ha meg szeretné tekinteni az ehhez a példányhoz létrehozott diagnosztikai információk naplóját, válassza ki az adott végrehajtóhoz tartozó **portot** . Az adott végrehajtóhoz társított munkavégző erőforrásokat is megtekintheti a **gazdagép** oszlopban található hivatkozás kiválasztásával. |
+| Hibák | A kiöntő vagy a boltra vonatkozó bármilyen hiba. |
 
 A Storm bolt összefoglaló lapja a következő weboldalhoz hasonlóan néz ki:
 
-![A bolt összefoglaló lapja, Storm UI, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![A bolt összefoglaló lapja, Storm UI, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>A topológia figyelése és kezelése a REST API használatával
 
@@ -257,7 +255,7 @@ A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megker
 | Ambari web | A Ambari-fürt weblapján (`https://CLUSTERNAME.azurehdinsight.net`) válassza ki a **szolgáltatások** elemet a lap tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
 | Ambari REST API | A (z) `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` parancs használatával lekérheti a Storm felhasználói felületének és REST API futó csomópont információit. Cserélje le a *CLUSTERNAME* két példányát a fürt nevére. Amikor a rendszer kéri, adja meg a felhasználói (rendszergazdai) fiókhoz tartozó jelszót. A válaszban a JSON-kimenet "host_name" bejegyzése tartalmazza a csomópont teljes tartománynevét. |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A REST APIra irányuló kérelmeknek *alapszintű hitelesítést*kell használniuk, ezért a HDInsight-fürthöz tartozó rendszergazdai nevet és jelszót kell használnia.
 

@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433034"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
@@ -88,12 +88,12 @@ Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>fürt s
 
 Ha az egér eseményei olyan rétegen történnek, amely fürtözött adatpontokat tartalmaz, a rendszer a fürtözött adatpontot GeoJSON pont szolgáltatás objektumként adja vissza az eseménynek. Ennek a pontnak a funkciója a következő tulajdonságokkal fog rendelkezni:
 
-| Tulajdonság neve | Típus | Leírás |
-|---------------|------|-------------|
-| fürt | logikai | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
-| cluster_id | sztring | A fürt egyedi azonosítója, amely a DataSource `getClusterExpansionZoom`, `getClusterChildren`és `getClusterLeaves` metódusokkal használható. |
-| point_count | szám | A fürt által tartalmazott pontok száma. |
-| point_count_abbreviated | sztring | Egy karakterlánc, amely a `point_count` értéket rövidíti, ha hosszú. (például 4 000-es lesz 4K) |
+| Tulajdonság neve             | Type (Típus)    | Leírás   |
+|---------------------------|---------|---------------|
+| `cluster`                 | logikai | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
+| `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely a DataSource `getClusterExpansionZoom`, `getClusterChildren`és `getClusterLeaves` metódusokkal használható. |
+| `point_count`             | szám  | A fürt által tartalmazott pontok száma.  |
+| `point_count_abbreviated` | sztring  | Egy karakterlánc, amely a `point_count` értéket rövidíti, ha hosszú. (például 4 000-es lesz 4K)  |
 
 Ez a példa egy olyan buborék réteget tesz elérhetővé, amely a fürt pontjait jeleníti meg, és Egy kattintásos eseményt ad hozzá, amely a leképezés aktiválásakor, kiszámításakor és nagyításakor a következő nagyítási szintre kerül, ahol a fürt a `DataSource` osztály `getClusterExpansionZoom` metódusával és a fürtözött adatpontra rákattintott `cluster_id` tulajdonsággal fog kitörni. 
 

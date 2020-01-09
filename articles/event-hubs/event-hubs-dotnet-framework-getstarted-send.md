@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: események küldése és fogadása a .NET-keretrendszer használatával – Azure Event Hubs'
+title: Azure Event Hubs – események küldése/fogadása a .NET-keretrendszer használatával
 description: 'Gyors útmutató: Ez a cikk egy olyan .NET-keretrendszerbeli alkalmazás létrehozásához nyújt útmutatást, amely eseményeket küld az Azure Event Hubsnak.'
 services: event-hubs
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 89419e9a3ef364d4095800a617a84ff2f63c09a0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437267"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a .NET-keretrendszerrel
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok és telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre C# a .NET-keretrendszer konzoljának alkalmazásait az események eventhub való küldéséhez vagy fogadásához. 
 
@@ -53,7 +53,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
    
     ```csharp
     using System.Threading;
@@ -214,7 +214,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
     
 3. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket: 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

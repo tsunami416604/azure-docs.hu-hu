@@ -1,20 +1,16 @@
 ---
-title: A Visual Studio teljesítményének optimalizálása Azure Service Fabric Mesh-projektekhez | Microsoft Docs
+title: A Visual Studio for Azure Service Fabric Mesh optimalizálása
 description: Ez a cikk bemutatja, hogyan optimalizálhatja a Visual Studio teljesítményét Service Fabric Mesh-projektekhez, hogy az első hibakeresési Futtatás (F5) sokkal gyorsabb legyen.
-services: service-fabric-mesh
-keywords: hibakeresési teljesítmény optimalizálása
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 04aeaa6b008b50789f4380e4bb98beba3957c2e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 40c4e9972a3d83a5dd8247bacac12e9d67a15f66
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663436"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497979"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>A Visual Studio teljesítményének optimalizálása Service Fabric Mesh-projektekhez
 
@@ -30,6 +26,6 @@ A Visual Studióban a **tools** > **options**  > **Service Fabric Mesh Tools** >
 
 Ha az Service Fabric eszközök kimeneti ablakában látja az üzeneteket, a Visual Studio "képek húzása", "bemelegítés" vagy "alkalmazás eltávolítása", akkor a fenti beállításokra hivatkozik. Ezeket a beállításokat ki is kapcsolhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Útmutató a Mesh-alkalmazás hibakereséséhez](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

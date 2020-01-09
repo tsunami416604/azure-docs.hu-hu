@@ -1,30 +1,19 @@
 ---
-title: Azure Service Fabric-fürt létrehozása | Microsoft Docs
+title: Azure Service Fabric-fürt létrehozása
 description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban Azure Resource Manager használatával.  Létrehozhat egy fürtöt egy alapértelmezett sablonnal, vagy használhatja a saját fürtözött sablonját.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 241349724929845afa2fd2a4bacabf9b5017cc7c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 935f67c25f4a2aee7d06be7591dbe7576c87806e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349874"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portalra](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Bing Custom Search ügyféloldali kódtár a Javához | Microsoft Docs'
-description: Ismerkedjen meg a Java-Bing Custom Search ügyféloldali kódtáraval, ha a Bing Custom Search-példány keresési eredményeit kéri le.
+title: 'Gyors útmutató: Bing Custom Search a Javához készült ügyféloldali kódtár'
+description: Ismerkedjen meg a Java Bing Custom Search-ügyfélszoftverével, ha a rövid útmutatóban a Bing Custom Search-példány keresési eredményeit kéri le.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384553"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>Gyors útmutató: Bing Custom Search a Javához készült ügyféloldali kódtár
 
@@ -151,7 +151,7 @@ gradle run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések

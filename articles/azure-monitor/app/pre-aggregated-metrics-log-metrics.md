@@ -8,14 +8,14 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: e0a0784c6331bdf4575f5c044c67cf9b4df3152f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406591"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Napló alapú és előre összevont metrikák a Application Insights
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
 
 Ez a cikk a "hagyományos" Application Insights a naplókon alapuló mérőszámok és a jelenleg nyilvános előzetes verzióban elérhető előre összevont mérőszámok közötti különbséget ismerteti. Mindkét típusú metrika elérhető a Application Insights felhasználók számára, és mindegyik egyedi értéket biztosít az alkalmazás állapotának, diagnosztizálásának és elemzésének figyeléséhez. Az alkalmazásokat kiépítő fejlesztők eldönthetik, hogy az alkalmazás méretétől, a várt telemetria és a metrikák pontosságára és riasztására vonatkozó üzleti követelményektől függően milyen típusú metrika felel meg legjobban az adott forgatókönyvnek.
 
@@ -41,13 +41,13 @@ Az újabb SDK-k ([Application Insights 2,7](https://www.nuget.org/packages/Micro
 
 Az olyan SDK-k esetében, amelyek nem implementálják az előzetes összesítést (azaz a Application Insights SDK-k vagy a böngésző-rendszerállapot korábbi verzióit), a Application Insights háttérrendszer az alkalmazás által fogadott események összesítésével továbbra is feltölti az új metrikákat. Az események gyűjtési végpontja. Ez azt jelenti, hogy miközben nem használja ki a hálózaton keresztül továbbított adatmennyiséget, továbbra is használhatja az előre összevont mérőszámokat, és a közel valós idejű dimenziós riasztások jobb teljesítményét és támogatását tapasztalhatja az SDK-k használatával, amelyek nem előre összevont metrikák a gyűjtemény során.
 
-Érdemes megemlíteni, hogy a gyűjtemény végpontja előre összesíti az eseményeket a betöltési mintavételezés előtt, ami azt jelenti, hogy a betöltési [mintavételezés](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) soha nem befolyásolja az előre aggregált mérőszámok pontosságát, függetlenül attól, hogy milyen SDK-verziót használ alkalmazás.  
+Érdemes megemlíteni, hogy a gyűjtemény végpontja előre összesíti az eseményeket a betöltési mintavételezés előtt, ami azt jelenti, hogy a betöltési [mintavételezés](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) soha nem befolyásolja az előre aggregált mérőszámok pontosságát, függetlenül az alkalmazáshoz használt SDK-verziótól.  
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Előzetes összesítés használata Application Insights egyéni metrikákkal
 
 Az összesítést egyéni metrikákkal is használhatja. A két fő előnye az egyéni metrika dimenziójának konfigurálása és riasztása, valamint az SDK-ból a Application Insights-gyűjtemény végpontja számára továbbított adatok mennyiségének csökkentése.
 
-[Az Application INSIGHTS SDK-ból többféleképpen küldhet egyéni metrikákat](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Ha az SDK verziója a [GetMetric és a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) metódust is tartalmazza, ez a módszer az egyéni metrikák küldésének előnyben részesített módja, mivel ebben az esetben az előzetes ÖSSZESÍTÉS az SDK-ban történik, nem csak az Azure-ban tárolt adatok mennyiségének csökkentése, hanem a kötet is. Az SDK-ból Application Insightsre továbbított adatok. Ellenkező esetben használja a [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) metódust, amely előre összesíti a metrikai eseményeket az adatok betöltése során.
+[Az Application INSIGHTS SDK-ból többféleképpen küldhet egyéni metrikákat](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Ha az SDK verziója a [GetMetric és a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) metódust is tartalmazza, akkor ez az egyéni metrikák küldésének előnyben részesített módja, mivel ebben az esetben az előzetes ÖSSZESÍTÉS az SDK-ban történik, nem csak az Azure-ban tárolt adatok mennyiségének csökkentése, hanem az SDK-ból a Application Insightsra továbbított adatok mennyisége is. Ellenkező esetben használja a [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) metódust, amely előre összesíti a metrikai eseményeket az adatok betöltése során.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Egyéni metrikák méretei és előzetes összesítés
 
@@ -63,7 +63,7 @@ Az egyéni metrikák dimenzióinak gyűjteménye alapértelmezés szerint ki van
 
 [Azure Monitor Metrikaböngésző](../platform/metrics-getting-started.md) használatával diagramokat rajzolhat előre összesített és naplózott metrikák alapján, valamint irányítópultokat hozhat létre a diagramokkal. A kívánt Application Insights erőforrás kiválasztása után a névtér-választóval válthat a standard (előzetes) és a log-alapú metrikák között, vagy kijelölhet egy egyéni metrikai névteret:
 
-![Metrikai névtér](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+![Metrika névtere](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

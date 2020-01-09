@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Computer Vision ügyféloldali kódtár a Go-hoz | Microsoft Docs'
+title: 'Rövid útmutató: Computer Vision ügyféloldali kódtár a Go-hoz'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedjen meg az Computer Vision ügyféloldali kódtáraval a Go-ban.
+description: Ismerkedjen meg az Computer Vision ügyféloldali függvénytárával, ahol ez a rövid útmutató is elérhető.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382309"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Rövid útmutató: Computer Vision ügyféloldali kódtár a Go-hoz
 
@@ -106,7 +106,7 @@ A következő osztályok és felületek a Computer Vision go SDK főbb funkciói
 |[ReadOperationResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ReadOperationResult)| Ez a típus a Batch olvasási műveletének eredményét tartalmazza. |
 |[VisualFeatureTypes](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#VisualFeatureTypes)| Ez a típus a képelemzés különböző fajtáit határozza meg, amelyeket szabványos elemzési műveletekben lehet elvégezni. Az igényeinek megfelelően adja meg a VisualFeatureTypes-értékek készletét. |
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat az Computer Vision ügyféloldali kódtár for go használatával:
 
@@ -255,7 +255,7 @@ go run sample-app.go
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések

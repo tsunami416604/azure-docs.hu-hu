@@ -1,6 +1,6 @@
 ---
-title: A Spark az Azure Cosmos DB Cassandra API kapcsolatos művelet-végrehajtási törlése
-description: Ez a cikk részletesen Spark az Azure Cosmos DB Cassandra API-t a táblázatokban lévő adatok törlése
+title: A Spark-Azure Cosmos DB Cassandra API műveleteinek törlése
+description: Ez a cikk részletesen ismerteti, hogyan törölhet adatokat a Sparkból Azure Cosmos DB Cassandra APIban lévő táblákban
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fc9e0dabd226952bea3bd14da0747c5b6292c2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442086"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Spark az Azure Cosmos DB Cassandra API táblázatokban lévő adatok törlése
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Adatok törlése a Spark Azure Cosmos DB Cassandra API tábláiból
 
-Ez a cikk ismerteti az Azure Cosmos DB Cassandra API táblázatokban lévő adatok törlése a Spark rendszerből.
+Ez a cikk azt ismerteti, hogyan lehet a Sparkból Azure Cosmos DB Cassandra API táblákban lévő adatok törlését.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
+## <a name="cassandra-api-configuration"></a>Cassandra API konfiguráció
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,8 +46,8 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Minta adatgenerátor
-Ez a kódrészlet a mintaadatok létrehozása használjuk:
+## <a name="sample-data-generator"></a>Mintaadatok-generátor
+A kódrészletet fogjuk használni a mintaadatok létrehozásához:
 
 ```scala
 //Create dataframe
@@ -67,9 +67,9 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>Adathalmaz API
+## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="delete-rows-that-match-a-condition"></a>A feltételnek megfelelő sorok törlése
+### <a name="delete-rows-that-match-a-condition"></a>Feltételnek megfelelő sorok törlése
 
 ```scala
 //1) Create dataframe
@@ -116,7 +116,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimeneti**
 
 ```
 == Physical Plan ==
@@ -153,7 +153,7 @@ deleteBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_id
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@187deb43
 ```
 
-### <a name="delete-all-the-rows-in-the-table"></a>A tábla összes sorát törlése
+### <a name="delete-all-the-rows-in-the-table"></a>A tábla összes sorának törlése
 
 ```scala
 //1) Create dataframe
@@ -199,7 +199,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimeneti**
 
 ```
 == Physical Plan ==
@@ -231,9 +231,9 @@ ReadSchema: struct<book_id:string,book_author:string,book_name:string,book_price
 +-------+-----------+---------+----------+-------------+
 ```
 
-## <a name="rdd-api"></a>RDD-API
+## <a name="rdd-api"></a>RDD API
 
-### <a name="delete-all-the-rows-in-the-table"></a>A tábla összes sorát törlése
+### <a name="delete-all-the-rows-in-the-table"></a>A tábla összes sorának törlése
 ```scala
 //1) Create RDD with all rows
 val deleteBooksRDD = 
@@ -278,7 +278,7 @@ println("==================")
 println("3) After")
 sc.cassandraTable("books_ks", "books").collect.foreach(println)
 ```
-**A kimenetre:**
+**Kimeneti**
 
 ```
 ==================
@@ -300,7 +300,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@317927
 ```
 
-### <a name="delete-specific-columns"></a>Meghatározott oszlopok törlése
+### <a name="delete-specific-columns"></a>Adott oszlopok törlése
 
 ```scala
 //1) Create RDD 
@@ -331,7 +331,7 @@ println("3) After")
 sc.cassandraTable("books_ks", "books").take(4).foreach(println)
 ```
 
-**A kimenetre:**
+**Kimeneti**
 
 ```
 ==================
@@ -356,9 +356,9 @@ CassandraRow{book_id: b00501, book_author: Arthur Conan Doyle, book_name: The me
 deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datastax.spark.connector.CassandraRow] = CassandraTableScanRDD[145] at RDD at CassandraRDD.scala:19
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Összesítő és másolási műveletek végrehajtásához tekintse meg –
+Az összesítési és adatmásolási műveletek végrehajtásához tekintse meg a következőt:
  
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
-* [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
+* [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)

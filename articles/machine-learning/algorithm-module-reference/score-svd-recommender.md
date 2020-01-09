@@ -1,7 +1,7 @@
 ---
 title: 'Pontszám SVD ajánló: modul referenciája'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a score SVD ajánló modult a Azure Machine Learning szolgáltatásban az adathalmazokra vonatkozó javaslatok előrejelzéséhez.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a score SVD ajánló modulját Azure Machine Learning az adathalmazokra vonatkozó ajánlások előrejelzéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456339"
 ---
-# <a name="score-svd-recommender"></a>Pontszám SVD ajánló
+# <a name="score-svd-recommender"></a>SVD-ajánló pontozása
 
 Ez a cikk azt ismerteti, hogyan használható a score SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal előrejelzéseket hozhat létre egy betanított javaslati modell használatával az egyértékű dekompozíciós (SVD) algoritmus alapján.
 
@@ -121,6 +121,6 @@ A kiértékeléshez a definíció szerint olyan előrejelzések szükségesek, a
 A modell működővé tenni az előrejelzési módot általában úgy módosítja, hogy az összes lehetséges elem alapján javaslatokat tegyen, hogy a lehető legjobb előrejelzések legyenek. Ezen előrejelzések nagy része nem rendelkezik megfelelő indokokkal. Így az ajánlás pontossága nem ellenőrizhető ugyanúgy, mint a folyamat műveletei során.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 389125b1ce3ed43e16f2c9c481e26f1297785a6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439354"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 
@@ -135,7 +135,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét (idézőjelek között, például így: `"adfrg"`), majd futtassa a parancsot. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét (idézőjelek között, például így: `"adfrg"`), majd futtassa a parancsot. 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"

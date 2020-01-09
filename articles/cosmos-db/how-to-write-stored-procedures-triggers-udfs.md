@@ -1,17 +1,17 @@
 ---
-title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
+title: Tárolt eljárások, eseményindítók és UDF írása Azure Cosmos DB
 description: Megtudhatja, hogyan határozhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441736"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
 
@@ -238,7 +238,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Az előzetes eseményindítók nem rendelkezhetnek bemeneti paraméterekkel. A triggerben található kérelem objektum a művelethez társított kérelem üzenetének kezelésére szolgál. Az előző példában a pre-trigger fut egy Azure Cosmos-elem létrehozásakor, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó tételt.
+Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. A triggerben található kérelem objektum a művelethez társított kérelem üzenetének kezelésére szolgál. Az előző példában a pre-trigger fut egy Azure Cosmos-elem létrehozásakor, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó tételt.
 
 Ha a triggerek regisztrálva vannak, megadhatja azokat a műveleteket, amelyeket futtathat a használatával. Ezt a triggert `TriggerOperation.Create``TriggerOperation` értékkel kell létrehozni, ami azt jelenti, hogy az triggert egy csere műveletben használja, ahogy az a következő kódban nem engedélyezett.
 
@@ -332,7 +332,7 @@ Console.WriteLine(response.ScriptLog);
 
 További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása vagy használata Azure Cosmos DBban:
 
-* [Tárolt eljárások, eseményindítók és felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
+* [Tárolt eljárások, eseményindítók és felhasználói függvények regisztrálása és használata az Azure Cosmos DB-ben](how-to-use-stored-procedures-triggers-udfs.md)
 
 * [Tárolt eljárások és eseményindítók írása a JavaScript lekérdezési API használatával Azure Cosmos DB](how-to-write-javascript-query-api.md)
 

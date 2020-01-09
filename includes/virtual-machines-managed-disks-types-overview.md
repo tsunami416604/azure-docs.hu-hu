@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467673"
 ---
 Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike konkrét felhasználói forgatókönyvek elérésére szolgál.
 
@@ -21,17 +21,17 @@ Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike 
 
 Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a standard SSD és a standard merevlemez-meghajtók (HDD) összehasonlítását ismerteti a felügyelt lemezekhez, amelyek segítségével eldöntheti, hogy mi a használat.
 
-|   | Ultravékony lemez   | Prémium SSD   | Standard SSD   | Standard HDD   |
+|   | Ultralemez   | Prémium SSD   | Standard SSD   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Lemez típusa   |SSD   |SSD   |SSD   |HDD   |
-|Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, enyhén használt Nagyvállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
-|Maximális lemez mérete   |65 536 gibibájtnak (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
-|Maximális átviteli sebesség   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximális IOPS   |160 000    |20,000   |6,000   |2,000   |
+|Alkalmazási helyzet   |I/o-igényes számítási feladatok, mint például a [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
+|Lemez maximális mérete   |65 536 gibibájt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
+|Maximális átviteli sebesség   |2000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximális IOPS-érték   |160 000    |20 000   |6000   |2,000   |
 
-## <a name="ultra-disk"></a>Ultravékony lemez
+## <a name="ultra-disk"></a>Ultralemez
 
-Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS virtuális gépek számára. Az ultra-lemezek további előnyei közé tartozik a lemez teljesítményének dinamikus módosítása, valamint a számítási feladatok, anélkül, hogy újra kellene indítania a virtuális gépeket (VM). Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok. Az ultra lemezeket csak adatlemezként lehet használni. Javasoljuk, hogy a prémium SSD-ket operációsrendszer-lemezként használja.
+Az Azure ultralemezei magas átviteli sebességet, magas IOPS-t, és konzisztensen alacsony késésű lemeztárhelyet biztosítanak Azure Iaas virtuális gépek számára. Az ultra-lemezek további előnyei közé tartozik a lemez teljesítményének dinamikus módosítása, valamint a számítási feladatok, anélkül, hogy újra kellene indítania a virtuális gépeket (VM). Az ultralemezek olyan adatigényes számítási feladatokhoz használhatók, mint az SAP HANA, a felső szintű adatbázisok és a tranzakcióigényes számítási feladatok. Az ultralemezek csak adatlemezként használhatók. Prémium SSD-lemezeket célszerű operációsrendszer-lemezként használnia.
 
 ### <a name="performance"></a>Teljesítmény
 
@@ -48,15 +48,15 @@ Az ultra-lemezek főbb képességei a következők:
 
 |Lemezméret (GiB)  |IOPS sapka  |Átviteli sebesség (MB/s)  |
 |---------|---------|---------|
-|4     |1,200         |300         |
-|8     |2,400         |600         |
-|16     |4,800         |1,200         |
-|32     |9 600         |2,000         |
+|4     |1200         |300         |
+|8     |2 400         |600         |
+|16     |4800         |1200         |
+|32     |9600         |2,000         |
 |64     |19 200         |2,000         |
 |128     |38 400         |2,000         |
-|256     |76 800         |2,000         |
-|512     |80,000         |2,000         |
-|1024 – 65536 (az ebben a tartományban lévő méretek 1 TiB-onként növekednek)     |160 000         |2,000         |
+|256     |76 800         |2,000         |
+|512     |80 000         |2,000         |
+|1024 – 65536 (az ebben a tartományban lévő méretek 1 TiB-onként növekednek)     |160 000         |2,000         |
 
 ### <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 

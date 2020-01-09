@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Java-alkalmazás létrehozása az aszinkron Java SDK-val egy SQL API-fiók kezeléséhez Azure Cosmos DB'
+title: 'Oktatóanyag: Java-alkalmazás létrehozása Azure Cosmos DB aszinkron Java SDK-val az SQL API-fiókban tárolt adatkezeléshez'
 description: Ebből az oktatóanyagból megtudhatja, hogyan tárolhat és férhet hozzá az SQL API-fiókban található, Azure Cosmos DB egy aszinkron Java-alkalmazás használatával.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 972328ec5052f5089994efbb940ff00c889ae78f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444888"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Oktatóanyag: Java-alkalmazás létrehozása az aszinkron Java SDK-val az SQL API-fiókokban tárolt adatkezelési szolgáltatásokhoz
 
@@ -275,7 +275,7 @@ Ezzel elvégezte ezt a NoSQL-oktatóanyagot, és egy működőképes Java-konzol
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Java-alkalmazást az aszinkron Java SDK-val az SQL API-beli adatkezelési Azure Cosmos DB. Továbbléphet a következő cikkre:
 

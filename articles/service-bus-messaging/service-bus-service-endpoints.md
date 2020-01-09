@@ -1,6 +1,6 @@
 ---
 title: Virtuális hálózati szolgáltatás végpontjai – Azure Service Bus
-description: Adjon hozzá egy Microsoft. ServiceBus szolgáltatási végpontot egy virtuális hálózathoz.
+description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. ServiceBus szolgáltatási végpontot egy virtuális hálózathoz.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -8,18 +8,18 @@ editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5446ee12a6933a916444d4f64a0eb983a35a59f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462058"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtual Network szolgáltatási végpontok használata Azure Service Bus
 
-Service Bus és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint a virtuális hálózatokhoz kötött virtuális gépek, és a hálózati forgalom elérési útja egyaránt védett végződik.
+Service Bus és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint a virtuális hálózatokhoz kötött virtuális gépek, és a hálózati forgalom elérési útja mindkét végén védett.
 
 Ha úgy konfigurálták, hogy legalább egy virtuális hálózati alhálózat szolgáltatási végponthoz legyen kötve, a megfelelő Service Bus névtér többé nem fogadja el a forgalmat bárhonnan, de engedélyezett virtuális hálózat (ok) ból. A virtuális hálózat szempontjából a Service Bus névtér kötése egy szolgáltatási végponthoz egy elkülönített hálózati alagutat konfigurál a virtuális hálózat alhálózatáról az üzenetküldési szolgáltatáshoz.
 
@@ -47,11 +47,11 @@ Az eredmény az alhálózathoz és a megfelelő Service Bus névtérhez kötött
 
 Fontos szempont, hogy a VNet szolgáltatásbeli végpontok a Service Bus használatával történő használata esetén ne engedélyezze ezeket a végpontokat olyan alkalmazásokban, amelyek a standard és a prémium szintű Service Bus névtereket keverik. Mivel a standard szint nem támogatja a virtuális hálózatok, a végpont csak a prémium szintű névterek számára van korlátozva.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>A VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
-Megoldásokat igénylő szoros és elméleti biztonsági, és hogy a virtuális hálózat alhálózataiban, adja meg a szegmentálási a compartmentalized szolgáltatások közötti továbbra is általánosan kell ezeket a veremből a hozzá tartozó szolgáltatások közötti kommunikációs útvonalat.
+A szigorú és compartmentalized biztonságot igénylő megoldások, valamint a virtuális hálózatok alhálózatai biztosítják a compartmentalized szolgáltatások közötti szegmentálást, általánosságban továbbra is szükség van a kommunikációs útvonalakra az ezekben a rekeszekben található szolgáltatások között.
 
-A környezetben, beleértve a szerepkör végrehajtsa a HTTPS TCP/IP, felett közötti bármely azonnali IP útvonal a hálózati réteg biztonsági rések kiaknázását kockázatát hordozza az fel. Üzenetkezelési szolgáltatások teljesen szigetelt kommunikációs útvonalat, ahol üzeneteket is írja a lemezre, azok tarifacsomagokból a felek biztosítják. Az ugyanahhoz a Service Bus-példányhoz kötött két különálló virtuális hálózatban a munkaterhelések hatékonyan és megbízhatóan kommunikálhatnak az üzeneteken keresztül, miközben a hálózat elkülönítési határának megfelelő integritása megmarad.
+A rekeszek közötti közvetlen IP-útvonal, beleértve a TCP/IP protokollon keresztüli HTTPS-t is, a hálózati réteg biztonsági réseinak kiaknázásának kockázatát hordozza. Az üzenetkezelési szolgáltatások teljes mértékben szigetelt kommunikációs útvonalakat biztosítanak, ahol az üzenetek a felek közötti váltáskor lemezre is írhatók. Az ugyanahhoz a Service Bus-példányhoz kötött két különálló virtuális hálózatban a munkaterhelések hatékonyan és megbízhatóan kommunikálhatnak az üzeneteken keresztül, miközben a hálózat elkülönítési határának megfelelő integritása megmarad.
  
 Ez azt jelenti, hogy a biztonsági szempontból érzékeny felhőalapú megoldások nem csupán az Azure piacvezető megbízható és skálázható üzenetkezelési képességeihez férnek hozzá, de mostantól az üzenetküldés használatával kommunikációs útvonalakat hozhatnak létre a biztonságos Megoldási rekeszek között, amelyek a szolgáltatás természeténél fogva biztonságosabb, mint bármely egyenrangú kommunikációs mód, beleértve a HTTPS-t és más TLS-védelemmel ellátott szoftvercsatorna-protokollokat.
 
@@ -76,7 +76,7 @@ Sablon paraméterei:
 > Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
 > Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a ***"defaultAction"***
 > 
-> from
+> forrás
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -188,9 +188,9 @@ Sablon:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Virtuális hálózatokkal kapcsolatos további információkért lásd az alábbi hivatkozásokat:
+A virtuális hálózatokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 
 - [Azure Virtual Network szolgáltatásbeli végpontok][vnet-sep]
 - [Azure Service Bus IP-szűrés][ip-filtering]

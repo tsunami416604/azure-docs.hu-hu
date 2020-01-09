@@ -1,23 +1,23 @@
 ---
-title: Integrált megoldások | Azure
+title: Integrált megoldások – Azure Marketplace
 description: Integrált megoldások az Azure Marketplace-en és Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 12/16/2019
 ms.author: v-qiwe
-ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b00cc2917ac15797ed98af9793533d9bc12eeaaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427190"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
-Egy csomagban található, integrált megoldás egy szolgáltatási partner üzembe helyezésével és támogatásával ötvözi a szoftvergyártók pont-megoldási technológiáit. A szolgáltatási partner felsorolja az ajánlatot az Azure piactéren, vagy Microsoft AppSource [tanácsadói szolgáltatásként](https://docs.microsoft.com/azure/marketplace/consulting-services).
+Egy csomagban található, integrált megoldás egy szolgáltatási partner üzembe helyezésével és támogatásával ötvözi a szoftvergyártók pont-megoldási technológiáit. A szolgáltatási partner a Microsoft AppSource vagy az Azure Marketplace [tanácsadói szolgáltatásként](https://docs.microsoft.com/azure/marketplace/consulting-services)sorolja fel az ajánlatot.
 
 Az integrált megoldások célja, hogy egy adott vásárlói igényt vagy forgatókönyvet foglalkozzon. A szolgáltatók az iparági kihívások vagy a fájdalom pontok megismerésével kezdődnek. Ezután integrálják a két vagy több legjobb technológiát, hogy egységes és ismételhető üzembe helyezési élményt hozzanak létre az ügyfelek számára. A szolgáltatók gyorsan elérhetik az ügyfeleket. Az ügyfél számára egyetlen kapcsolódási pontot biztosítanak, amely biztosítja a megfelelő testreszabási, tanácsadási és megoldási támogatást. Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
 
@@ -30,7 +30,7 @@ Az integrált megoldási program áttekintését [ebben a videóban](https://aka
 * A Services-partnerek előre definiált, előre integrált megoldásokat hozhatnak létre, amelyek a legjobb technológiával rendelkeznek a méretezéshez, a földterülethez és a bővítéshez több ügyfél-fiókban.
 * A Microsoft ezeket az előre integrált, iparágilag igazított megoldásokat az ügyfelek számára könnyebben értékesítheti. A díjszabás és a feltételek előre vannak rendezve. 
 
-## <a name="eligibility-criteria"></a>Jogosultsági feltételek
+## <a name="eligibility-criteria"></a>Megfelelőségi feltételek
 
 * A résztvevő partnereknek MPN-AZONOSÍTÓval kell rendelkezniük.
 * A résztvevő szolgáltatók számára készen kell lennie a közös értékesítésre.
@@ -40,16 +40,16 @@ Az integrált megoldási program áttekintését [ebben a videóban](https://aka
     * Alkalmazásfejlesztés
     * Alkalmazásintegrálás
     * Alkalmazások életciklusának kezelése
-    * Felhőalapú platform
+    * Cloud Platform
     * Adatelemzés
     * Adatközpont
     * Data Platform
-    * DevOps
+    * Fejlesztés és üzemeltetés
 
 * A megoldásnak tartalmaznia kell legalább két partneri szervezetet, így az IP-címet és a szolgáltatásokat egy teljes körű felhasználói megoldáshoz és élményhez.
 * A partneri IP-címet az Azure-ra, a Dynamics 365-ra vagy a Power platformra kell felépíteni.
 * Az integrált megoldás IP-címét meg kell különböztetni a szoftvergyártótól és az alapszintű szolgáltatások – szolgáltatói ajánlatoknak.
-* Az összes partner megoszthatja azt a célt, hogy megismételhető ajánlatot hozzon létre, amely az Azure Marketplace-en, Microsoft AppSourceon vagy mindkettőn keresztül is felhasználható.
+* Az összes partner megoszthatja azt a célt, hogy megismételhető ajánlatot hozzon létre, amely a Microsoft AppSourceon, az Azure Marketplace-en vagy mindkettőn keresztül is felhasználható.
 
 ## <a name="submit-a-nomination"></a>Jelölés beküldése
 
@@ -66,19 +66,19 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
     * Ügyfelek megcélzása
     * Értékajánlat
     * Díjszabás
-    * Licencek
+    * Licencelés
     * Feltételek és kikötések
     * Támogatási megközelítés
     * Marketing tevékenységek
     * Értékesítési folyamat
-    * Tevékenységek
+    * Activities (Tevékenységek)
 
     Az integrációs megközelítéssel kapcsolatos vitájában a következő szempontokat kell figyelembe venni: 
     * Integrációs pontok
     * Megoldásarchitektúra
-    * Authentication
+    * Hitelesítés
     * Felhasználói felület
-    * Figyelés
+    * Monitoring
     * Üzembe helyezési mechanizmus
     * API-k
     * Egyesített adattár
@@ -93,9 +93,9 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
 1. Fejlessze a megoldás teljes technikai integrációját.
 
-1. Döntse el a megoldás díjszabását, és egyetlen árat az Azure Marketplace-en vagy a Microsoft AppSourceon.
+1. Döntse el a megoldás díjszabását, és egyetlen árat a Microsoft AppSource vagy az Azure Marketplace felületén.
 
-1. Fejezze be az Azure Marketplace-en vagy Microsoft AppSource-listán szereplő marketing-biztosítékot, beleértve a következőket:
+1. Fejezze be a Microsoft AppSource vagy az Azure Marketplace-lista marketing-biztosítékait, beleértve a következőket:
 
     * Egy kombinált megoldás neve.
     * Az integrált megoldás listázási leírása. Ajánlat követése [– ajánlott eljárások listázása](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
@@ -105,14 +105,14 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
 ## <a name="publish-your-integrated-solution"></a>Az integrált megoldás közzététele 
 
-Miután befejezte a technikai integrációt és a marketing-biztosítékot, tekintse meg az [Azure Marketplace és a Microsoft AppSource tanácsadói szolgáltatásainak](https://docs.microsoft.com/azure/marketplace/consulting-services)közzétevői útmutatóját. Ezzel az erőforrással megállapíthatja, hogy a megoldás közzé lesz-e téve az Azure Marketplace-en vagy Microsoft AppSource. Az útmutatót is használhatja a közzétételi összetevők előkészítéséhez és a közzétételi folyamat befejezéséhez.
+Miután befejezte a technikai integrációt és a marketing-biztosítékot, tekintse meg a [Microsoft AppSource és az Azure Marketplace tanácsadói szolgáltatásainak](https://docs.microsoft.com/azure/marketplace/consulting-services)közzétevői útmutatóját. Ezzel az erőforrással megállapíthatja, hogy a megoldás közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en. Az útmutatót is használhatja a közzétételi összetevők előkészítéséhez és a közzétételi folyamat befejezéséhez.
 
 Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz, az integrált megoldásnak vagy a koncepció igazolásának vagy teljes megvalósításának kell lennie.
 
 ## <a name="go-to-market-with-your-integrated-solution"></a>Lépjen a piacra az integrált megoldással 
 
-Ha a megoldás az Azure Marketplace-en vagy a AppSource-ben él, érdemes lehet a marketing tevékenységeken keresztül megtekinteni a hangfelismerést és a keresletet. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
+Ha a megoldás a Microsoft AppSource vagy az Azure Marketplace-en él, érdemes lehet a marketing-tevékenységekkel kapcsolatos ismereteket és igényt vezetnie. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az integrált megoldásoknak a piactéren való megvásárlásával kapcsolatos információkért lásd: [integrált megoldások](https://docs.microsoft.com/azure/marketplace/integrated-solutions).

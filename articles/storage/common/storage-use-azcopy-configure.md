@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371394"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -56,16 +56,21 @@ A teljesítmény-teljesítményteszt teszt futtatásához használja a következ
 | **Szintaxis** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Példa** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
+> [!TIP]
+> Ez a példa a Path argumentumokat szimpla idézőjelekkel (' ') fedi le. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
+
 Ez a parancs teljesítménytesztet futtat egy megadott célhelyre való feltöltéssel. A tesztelési adatok a memóriában jönnek létre, feltöltve a célhelyre, majd a teszt befejezése után törlődnek a célhelyről. Megadhatja, hogy hány fájl legyen létrehozva, és hogy milyen méretben szeretné őket használni a választható parancssori paraméterek használatával.
+
+A részletes dokumentációt lásd: [azcopy pad](storage-ref-azcopy-bench.md).
 
 A parancs részletes súgójának megtekintéséhez írja be `azcopy bench -h`, majd nyomja le az ENTER billentyűt.
 
 ### <a name="optimize-throughput"></a>Teljesítmény optimalizálása
 
-A `cap-mbps` jelzővel egy felső korlátot helyezhet el az átviteli sebességre. Például a következő parancs Caps átviteli sebessége `10` megabit (MB) másodpercenként.
+A parancsokban a `cap-mbps` jelzővel egy felső korlátot helyezhet el az adatátviteli sebességen. A következő parancs például folytatja a feladatok és a kupakok átviteli sebességét `10` megabit (MB) másodpercenként. 
 
 ```azcopy
-azcopy --cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
 Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A `AZCOPY_CONCURRENCY_VALUE` környezeti változó beállításával növelheti az átviteli sebességet. Ez a változó határozza meg az egyidejű kérések számát.  
@@ -146,6 +151,9 @@ A sikertelen/megszakított feladat folytatásához használja az alábbi parancs
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
+
+> [!TIP]
+> Az elérési út argumentumai, például a SAS-token egyetlen idézőjelekkel (' '). A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 Amikor folytat egy feladatot, a AzCopy megtekinti a feladatütemezés fájlját. A terv fájl felsorolja a feladatok első létrehozásakor feldolgozásra azonosított összes fájlt. Ha folytatja a feladatot, a AzCopy megkísérli átvinni az összes olyan fájlt, amely a csomagban már nem lett áthelyezve.
 

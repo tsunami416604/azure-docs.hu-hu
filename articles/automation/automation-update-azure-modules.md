@@ -2,19 +2,15 @@
 title: Azure-modulok frissítése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan frissítheti a Azure Automation alapértelmezés szerint elérhető általános Azure PowerShell modulokat.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 06/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 76514e620f044b78b992db2b88733e69dbabf135
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d7eaae452f307b350c111452b819576cf7f17e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420486"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>A Azure Automation Azure PowerShell moduljainak frissítése
 

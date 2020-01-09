@@ -1,25 +1,14 @@
 ---
-title: Távoli kapcsolódás Azure Service Fabric fürtcsomópont-csomóponthoz | Microsoft Docs
+title: Távoli kapcsolódás Azure Service Fabric fürtcsomópont-csomóponthoz
 description: Megtudhatja, hogyan csatlakozhat távolról egy méretezési csoport példányaihoz (Service Fabric fürtcsomópont).
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458315"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
 Az Azure-ban futó Service Fabric-fürtökben minden egyes definiált csomópont-típus [a virtuális gép külön méretezését állítja](service-fabric-cluster-nodetypes.md)be.  A távoli kapcsolódást egy adott méretezési csoport példányaihoz (fürtcsomópontok) lehet csatlakoztatni.  Az Egypéldányos virtuális gépektől eltérően a méretezési csoport példányai nem rendelkeznek saját virtuális IP-címmel. Ez kihívást jelenthet, ha olyan IP-címet és portot keres, amelyet egy adott példányhoz való távoli kapcsolódáshoz használhat.
@@ -28,9 +17,9 @@ Ha olyan IP-címet és portot szeretne megkeresni, amelyet egy adott példányho
 
 1. A RDP protokoll (RDP) bejövő NAT-szabályainak beolvasása.
 
-    A fürtben definiált csomópont-típusok általában saját virtuális IP-címmel és dedikált Load balancerrel rendelkeznek. Alapértelmezés szerint a rendszer a csomópontok típusának terheléselosztó nevét a következő formátumban adja meg: *LB-{fürt neve} – {Node-Type}* ; például: *LB-mycluster-FrontEnd*. 
+    A fürtben definiált csomópont-típusok általában saját virtuális IP-címmel és dedikált Load balancerrel rendelkeznek. Alapértelmezés szerint a rendszer a csomópont típusú terheléselosztást a következő formátumban nevezi el: *LB-{cluster-Name}-{Node-Type}* ; például: *LB-mycluster-FrontEnd*. 
     
-    A terheléselosztó lapján a Azure Portalban válassza a **Beállítások** > **bejövő NAT-szabályok**elemet: 
+    A terheléselosztó lapján a Azure Portalban válassza a **beállítások** > **bejövő NAT-szabályok**elemet: 
 
     ![Terheléselosztó bejövő NAT-szabályai](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -40,7 +29,7 @@ Ha olyan IP-címet és portot szeretne megkeresni, amelyet egy adott példányho
 
     Az egyes csomópontok esetében az IP-cím a **cél** oszlopban jelenik meg, a **cél** oszlop pedig megadja a méretezési csoport példányát, és a **szolgáltatás** oszlopa megadja a portszámot. A távoli kapcsolatok esetében a portok a 3389-es porttól kezdődően növekvő sorrendben vannak lefoglalva az egyes csomópontokhoz.
 
-    A bejövő NAT-szabályokat a fürt Resource Manager- `Microsoft.Network/loadBalancers` sablonjának szakaszában találja.
+    A bejövő NAT-szabályok a fürt Resource Manager-sablonjának `Microsoft.Network/loadBalancers` szakaszában is megtalálhatók.
     
 2. Ha szeretné megerősíteni, hogy a bejövő port egy csomóponthoz tartozó porthoz legyen hozzárendelve, kattintson a szabályra, és tekintse meg a **célport értékét.** Az alábbi képernyőfelvételen az előző lépésben a **FrontEnd (1. példány)** csomópont bejövő NAT-szabálya látható. Figyelje meg, hogy bár a (bejövő) portszáma 3390, a célként megadott port a 3389-es portra van leképezve, a célhelyen lévő RDP szolgáltatás portja.  
 

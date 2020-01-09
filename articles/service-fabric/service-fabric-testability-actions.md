@@ -1,75 +1,66 @@
 ---
-title: Az Azure mikroszolgáltatások hibák szimulálása |} A Microsoft Docs
-description: Ez a cikk ismerteti a Microsoft Azure Service Fabric található testability műveletek.
-services: service-fabric
-documentationcenter: .net
+title: Hibák szimulálása az Azure-beli szolgáltatásokban
+description: Ez a cikk a Microsoft Azure Service Fabric található tesztelési műveletekre mutat.
 author: motanv
-manager: chackdan
-editor: heeldin
-ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465586"
 ---
-# <a name="testability-actions"></a>Testability műveletek
-Annak érdekében, hogy szimulálja egy nem megbízható infrastruktúra, az Azure Service Fabric biztosít, a fejlesztői, azzal, hogy különböző valós hibák és állapotváltozási adat áramlik szimulálásához. Ezek a testability műveletként érhetők el. A műveletek végezhetők az alacsony szintű API-k, amelyek egy adott hibabeszúrás, állapotváltás vagy érvényesítés. Ezek a műveletek kombinálásával átfogó tesztelési helyzetek írhat a szolgáltatásokhoz.
+# <a name="testability-actions"></a>Tesztelési műveletek
+A megbízhatatlan infrastruktúra szimulálása érdekében az Azure Service Fabric biztosítja a fejlesztőket, és lehetővé teszi a különböző valós hibák és az állami váltások szimulálása. Ezek tesztelési műveleteknek vannak kitéve. A műveletek az alacsony szintű API-k, amelyek egy adott hiba befecskendezését, állapotának átváltását vagy érvényesítését okozzák. A műveletek kombinálásával átfogó tesztelési forgatókönyveket írhat a szolgáltatásaihoz.
 
-A Service Fabric biztosít néhány gyakori tesztelési helyzetek mikroszolgáltatásokból álló, ezeket a műveleteket. Kifejezetten ajánljuk, hogy használja-e beépített forgatókönyveket, amelyek vannak közös állapotváltásra és hiba eseteket teszteléséhez választottuk ki. Azonban műveleteket hozhat létre egyéni tesztelési helyzetek, amikor forgatókönyvek, amelyek nem tartoznak a beépített forgatókönyvek még vagy az egyéni szabott az alkalmazáshoz lefedettséggel hozzáadni kívánt használható.
+Service Fabric a műveletekből álló gyakori tesztelési forgatókönyveket tartalmaz. Javasoljuk, hogy használja ezeket a beépített forgatókönyveket, amelyek körültekintően vannak kiválasztva a gyakori állapotú átmeneti és sikertelen esetek teszteléséhez. A műveletek azonban egyéni tesztelési forgatókönyvek létrehozásához is használhatók, ha olyan forgatókönyvekhez kívánja hozzáadni a lefedettséget, amelyeket nem a beépített forgatókönyvek, vagy amelyek az alkalmazáshoz vannak szabva.
 
-C#a műveletek megvalósítását a System.Fabric.dll szerelvényben találhatók. A rendszer Fabric PowerShell-modult a Microsoft.ServiceFabric.Powershell.dll szerelvény megtalálható. A ServiceFabric PowerShell-modul runtime telepítésének részeként, telepítve van a, hogy a használat megkönnyítése érdekében.
+C#a műveletek implementációja a System. Fabric. dll szerelvényben található. A System Fabric PowerShell-modul a Microsoft. ServiceFabric. PowerShell. dll szerelvényben található. A futásidejű telepítés részeként a ServiceFabric PowerShell-modul telepítve van a könnyű használat érdekében.
 
-## <a name="graceful-vs-ungraceful-fault-actions"></a>Biztonságos és végbemenjen tartalék műveletek
-Testability műveletek két fő gyűjtők sorolhatók:
+## <a name="graceful-vs-ungraceful-fault-actions"></a>Kecses és nem zökkenőmentes hibák
+A tesztelési műveletek két fő gyűjtőbe sorolhatók:
 
-* Végbemenjen hibák: Ezek a hibák hibaszimuláció például a gép újraindul, és a szoftverleállások feldolgozni. Ebben az esetben a hibák a végrehajtási környezet folyamat váratlanul leáll. Ez azt jelenti, hogy az állapot nincs karbantartási futtathatja, mielőtt az alkalmazás indul újra.
-* Sikeres-e hibák: Ezek a hibák szimulálása a szabályos műveletekhez, például a replika áthelyezését és terheléselosztási funkciók által aktivált csepp. Ezekben az esetekben a szolgáltatás lekérdezi egy értesítés, amely a Bezárás gombra, és mielőtt kilépne távolíthatja el az állapot.
+* Sikertelen hibák: ezek a hibák szimulálják a hibákat, például a gép újraindítását és a folyamatok összeomlását. Ilyen meghibásodás esetén a folyamat végrehajtási környezete hirtelen leáll. Ez azt jelenti, hogy a rendszer nem tudja futtatni az állapotot az alkalmazás újraindítása előtt.
+* Kecses hibák: ezek a hibák olyan kecses műveleteket szimulálnak, mint a replika mozgatása és a terheléselosztás által kiváltott adatvesztés. Ilyen esetekben a szolgáltatás értesítést kap a bezárásról, és a kilépés előtt törli az állapotot.
 
-Jobb minőségű ellenőrzés céljából a szolgáltatás és az üzleti számítási feladatok futtatásához közben, hogy a különböző szabályos és végbemenjen hibákat. Végbemenjen hibák gyakorolja forgatókönyvek, ahol a szolgáltatás folyamat váratlanul kilép közepén néhány munkafolyamatot. Ez teszteli a helyreállítási elérési út után a szolgáltatás replika által a Service Fabric helyreáll. Ez segít az adatkonzisztencia és -e a szolgáltatás állapotának karban kell hiba után teszteléséhez. Hibák (a sikeres-e hibák) más készletét tesztelje, hogy a szolgáltatás megfelelően reagál a Service Fabric áthelyezett replikákra. Megszakítás kezelési ellenőrzi a RunAsync metódusában. Ellenőrizze a visszavonás jogkivonat beállítása, megfelelően a hozzá tartozó állapot mentése folyamatban van, és lépjen ki a RunAsync metódusában kell a szolgáltatást.
+A jobb minőség-ellenőrzés érdekében futtassa a szolgáltatást és az üzleti számítási feladatot, miközben a különböző kecses és zavartalan hibákat okoz. A hibát okozó hibák olyan forgatókönyveket mutatnak be, amelyekben a szolgáltatási folyamat hirtelen kilép egy munkafolyamat közepéről. Ez ellenőrzi a helyreállítási útvonalat, miután a Service Fabric visszaállította a szolgáltatás replikáját. Ez segít az adatkonzisztencia tesztelésében, valamint azt, hogy a szolgáltatás állapota a hibák után megfelelően van-e karbantartva. A további hibák (a kecses meghibásodások) azt tesztelik, hogy a szolgáltatás megfelelően áthelyezi a replikákat Service Fabric. Ez a RunAsync metódus lemondásának kezelését ellenőrzi. A szolgáltatásnak ellenőriznie kell a beállított lemondási tokent, helyesen kell mentenie az állapotát, és ki kell lépnie a RunAsync metódusból.
 
-## <a name="testability-actions-list"></a>Testability műveletek listája
-| Műveletek | Leírás | Managed API | PowerShell-parancsmag | Normális/végbemenjen hibák |
+## <a name="testability-actions-list"></a>Tesztelési műveletek listája
+| Műveletek | Leírás | Felügyelt API | PowerShell-parancsmag | Kecses/nem zökkenőmentes hibák |
 | --- | --- | --- | --- | --- |
-| CleanTestState |A test-illesztőprogram a hibás leállás esetén a fürt eltávolítja az összes teszt állapota. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem alkalmazható |
-| InvokeDataLoss |Adatvesztés kapott egy szolgáltatás partícióra. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Sikeres-e |
-| InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatási partíció beteszi a kvórum elvesztése. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Sikeres-e |
-| A MovePrimary |A megadott fürtcsomópont helyezi át a megadott elsődleges replika egy állapotalapú szolgáltatás. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Sikeres-e |
-| MoveSecondary |Az állapotalapú szolgáltatások aktuális másodlagos replikája áthelyezi egy másik fürtcsomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Sikeres-e |
-| RemoveReplica |Egy replika meghibásodása szimulálja a replika eltávolítása egy fürtről. Ez a replika bezárul, és a szerepkör veszi "None", a fürt összes állapotában eltávolítását. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Sikeres-e |
-| RestartDeployedCodePackage |A kód csomag folyamat hibája szimulálja egy fürt egy csomópontján üzembe helyezett egy kódcsomaghoz újraindításával. Ez megszakítja a kód csomag folyamat, amely minden felhasználó szolgáltatás replika üzemeltetett újraindul, az adott folyamatban. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Végbemenjen |
-| RestartNode |A Service Fabric-fürt Csomóponthiba szimulálja egy csomópont újraindításával. |RestartNodeAsync |Restart-ServiceFabricNode |Végbemenjen |
-| RestartPartition |Egy adatközpont kieső vagy a fürt kieső forgatókönyv szimulálja a partíció vagy az összes replika újraindításával. |RestartPartitionAsync |Restart-ServiceFabricPartition |Sikeres-e |
-| RestartReplica |Egy replika meghibásodása szimulálja a megőrzött replika újraindításával egy fürtben, a replika bezárása és majd megnyitni. |RestartReplicaAsync |Restart-ServiceFabricReplica |Sikeres-e |
-| Kiindulási_csomópont |Elindul a csomópont egy fürtöt, amely már le van állítva. |StartNodeAsync |Start-ServiceFabricNode |Nem alkalmazható |
-| StopNode |Egy Csomóponthiba szimulálja egy fürt csomópontja leállításával. A csomópont le marad, amíg Kiindulási_csomópont nevezzük. |StopNodeAsync |Stop-ServiceFabricNode |Végbemenjen |
-| ValidateApplication |A rendelkezésre állás és a egy alkalmazásban, a rendszer néhány hiba hogy után általában az összes Service Fabric-szolgáltatások állapotát ellenőrzi. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nem alkalmazható |
-| ValidateService |A rendelkezésre állás és a egy Service Fabric-szolgáltatás állapotát ellenőrzi után általában néhány tartalék hogy a rendszer. |ValidateServiceAsync |Test-ServiceFabricService |Nem alkalmazható |
+| CleanTestState |Eltávolítja az összes teszt állapotot a fürtből a tesztelési illesztőprogram hibás leállítása esetén. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem alkalmazható |
+| InvokeDataLoss |Adatvesztést okoz a szolgáltatás partíciójában. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Biztonságos |
+| InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatási partíciót helyez el kvórum elvesztéseként. |InvokeQuorumLossAsync |Meghívás – ServiceFabricQuorumLoss |Biztonságos |
+| MovePrimary |Áthelyezi egy állapot-nyilvántartó szolgáltatás megadott elsődleges replikáját a fürt megadott csomópontjára. |MovePrimaryAsync |Áthelyezés – ServiceFabricPrimaryReplica |Biztonságos |
+| MoveSecondary |Egy állapot-nyilvántartó szolgáltatás aktuális másodlagos replikáját áthelyezi egy másik fürtcsomópont-csomópontra. |MoveSecondaryAsync |Áthelyezés – ServiceFabricSecondaryReplica |Biztonságos |
+| RemoveReplica |Replika meghibásodásának szimulálása egy replika fürtből való eltávolításával. Ez lezárta a replikát, és átvált a "None" szerepkörre, és eltávolítja az összes állapotát a fürtből. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Biztonságos |
+| RestartDeployedCodePackage |A kód-előkészítési folyamat hibájának szimulálása egy fürt csomópontjain telepített kód újraindításával. Ezzel megszakítja a kód-csomag folyamatát, amely újraindítja a folyamatban lévő összes felhasználói szolgáltatás replikáját. |RestartDeployedCodePackageAsync |Újraindítás – ServiceFabricDeployedCodePackage |Biztonságos |
+| RestartNode |Egy csomópont újraindításával szimulálja Service Fabric fürtcsomópont meghibásodását. |RestartNodeAsync |Újraindítás – ServiceFabricNode |Biztonságos |
+| RestartPartition |Egy adott partíció egy vagy több replikájának újraindításával szimulálja az adatközpont áramszünetét vagy a fürt kimaradási forgatókönyvét. |RestartPartitionAsync |Restart-ServiceFabricPartition |Biztonságos |
+| RestartReplica |Nem szimulálja a replikát egy megőrzött replika újraindításával egy fürtben, bezárja a replikát, majd újból megnyitja. |RestartReplicaAsync |Újraindítás – ServiceFabricReplica |Biztonságos |
+| StartNode |Egy olyan csomópontot indít el a fürtben, amely már le van állítva. |StartNodeAsync |Start-ServiceFabricNode |Nem alkalmazható |
+| Stopnode parancs |Csomópont meghibásodásának szimulálása egy fürt csomópontjainak leállításával. A csomópont a StartNode meghívása után marad lefelé. |StopNodeAsync |Stop-ServiceFabricNode |Biztonságos |
+| ValidateApplication |Érvényesíti az alkalmazáson belüli összes Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateApplicationAsync |Teszt – ServiceFabricApplication |Nem alkalmazható |
+| ValidateService |Ellenőrzi a Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateServiceAsync |Teszt – ServiceFabricService |Nem alkalmazható |
 
-## <a name="running-a-testability-action-using-powershell"></a>Egy PowerShell-lel testability-művelet futtatása
-Ez az oktatóanyag bemutatja, hogyan testability-művelet futtatása a PowerShell használatával. Megtudhatja, hogyan testability-művelet futtatásához (beépített) a helyi fürt vagy egy Azure-fürtön. Microsoft.Fabric.Powershell.dll – a Service Fabric PowerShell-modul – a Microsoft Service Fabric MSI telepítésekor automatikusan telepítve van. A modul automatikusan betöltődik, amikor megnyit egy PowerShell-parancssort.
+## <a name="running-a-testability-action-using-powershell"></a>Tesztelési művelet futtatása a PowerShell használatával
+Ez az oktatóanyag bemutatja, hogyan futtathat tesztelési műveletet a PowerShell használatával. Megtudhatja, hogyan futtathat tesztelési műveletet egy helyi (egyablakos) fürtön vagy egy Azure-fürtön. Microsoft. Fabric. PowerShell. dll – a Service Fabric PowerShell-modul – a Microsoft Service Fabric MSI telepítésekor automatikusan települ. A modul automatikusan betöltődik, amikor megnyit egy PowerShell-parancssort.
 
-Az oktatóanyag szegmensek:
+Oktatóanyag-szegmensek:
 
-* [Művelet futtatásához egy beépített fürtön](#run-an-action-against-a-one-box-cluster)
-* [Művelet futtatásához egy Azure-fürtön](#run-an-action-against-an-azure-cluster)
+* [Művelet futtatása egy egymezős fürtön](#run-an-action-against-a-one-box-cluster)
+* [Művelet futtatása Azure-fürtön](#run-an-action-against-an-azure-cluster)
 
-### <a name="run-an-action-against-a-one-box-cluster"></a>Művelet futtatásához egy beépített fürtön
-Testability-művelet futtatásához egy helyi fürtön, először csatlakozzon a fürthöz, és nyissa meg a PowerShell-parancssort rendszergazdai módban. Lássunk a **újraindítás-ServiceFabricNode** művelet.
+### <a name="run-an-action-against-a-one-box-cluster"></a>Művelet futtatása egy egymezős fürtön
+Ha a tesztelési műveletet egy helyi fürtön szeretné futtatni, először kapcsolódjon a fürthöz, és nyissa meg a PowerShell-parancssort rendszergazdai módban. Nézzük meg a **restart-ServiceFabricNode** műveletet.
 
 ```powershell
 Restart-ServiceFabricNode -NodeName Node1 -CompletionMode DoNotVerify
 ```
 
-A művelet itt **újraindítás-ServiceFabricNode** fut egy csomóponton "Csomópont1" nevű. A befejezési mód meghatározza, hogy azt nem ellenőrizze hogy a csomópont újraindítása művelet ténylegesen sikeres volt. A befejezési mód megadásával, mint a "Hitelesítés" eredményezi, hogy ellenőrizze, hogy az újraindítás művelet ténylegesen sikeres volt. Helyett a nevével adja meg közvetlenül a csomópont, adhatja meg azt egy partíciókulcsot és a replika, milyen módon:
+Itt a művelet **újraindítása – a ServiceFabricNode** egy "csomópont1" nevű csomóponton fut. A befejezési mód azt adja meg, hogy az nem ellenőrzi, hogy a csomópont-újraindítási művelet végrehajtása sikeres volt-e. A befejezési mód megadásával az "ellenőrzés" hatására a rendszer ellenőrzi, hogy az újraindítási művelet sikeresen befejeződött-e. Ahelyett, hogy a csomópontot a neve alapján közvetlenül megadta, megadhatja azt egy partíciós kulccsal és a replika típusával, a következőképpen:
 
 ```powershell
 Restart-ServiceFabricNode -ReplicaKindPrimary  -PartitionKindNamed -PartitionKey Partition3 -CompletionMode Verify
@@ -84,34 +75,34 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-**Újraindítás-ServiceFabricNode** indítsa újra a Service Fabric-csomópont egy fürtben használandó. Ezzel leállítja a Fabric.exe folyamat, amely a rendszer szolgáltatás és a felhasználó szolgáltatás replikák mindegyike ezen a csomóponton futó újraindul. Ez az API segítségével tesztelheti a szolgáltatást segít tárhat fel a feladatátvétel helyreállítási elérési út mentén hibák. A fürtben lévő csomópont hibák szimulálása nyújt segítséget.
+**Restart-ServiceFabricNode** használatával újra kell indítani egy Service Fabric csomópontot a fürtben. Ezzel a művelettel leállítja a Fabric. exe folyamatot, amely újraindítja a csomóponton futó összes rendszerszolgáltatási és felhasználói szolgáltatás replikáját. Ha ezt az API-t használja a szolgáltatás tesztelésére, segít felfedni a hibákat a feladatátvételi helyreállítási útvonalak mentén. Segít szimulálni a csomópontok hibáit a fürtben.
 
-Az alábbi képernyőfelvételen a **újraindítás-ServiceFabricNode** testability parancsot a művelet.
+A következő képernyőképen az **Újraindítás-ServiceFabricNode** tesztelési parancs látható működés közben.
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-A kimenet az első **Get-ServiceFabricNode** (a parancsmag a Service Fabric PowerShell-modul) jeleníti meg, hogy rendelkezik-e a helyi fürt öt csomópontjának: A Node.5 node.1. A testability-művelet (parancsmag) után **újraindítás-ServiceFabricNode** hajtja végre a csomópont nevű Node.4, láthatjuk, hogy a csomóponti üzemidőt alaphelyzetbe lett állítva.
+Az első **Get-ServiceFabricNode** (a Service Fabric PowerShell-modulból származó parancsmag) kimenete azt mutatja, hogy a helyi fürt öt csomóponttal rendelkezik: Node. 1 – Node. 5. A tesztelési művelet (parancsmag) **újraindítása** után a ServiceFabricNode a Node. 4 nevű csomóponton fut, láthatjuk, hogy a csomópont üzemidőe alaphelyzetbe áll.
 
-### <a name="run-an-action-against-an-azure-cluster"></a>Művelet futtatásához egy Azure-fürtön
-Testability-művelet (a PowerShell használatával) futtat egy Azure-fürtön a hasonló művelet helyi fürtön történő futtatása. Az egyetlen különbség, hogy a művelet helyett a helyi fürthöz való csatlakozás futtatása előtt kell először csatlakozik az Azure-fürtben.
+### <a name="run-an-action-against-an-azure-cluster"></a>Művelet futtatása Azure-fürtön
+A tesztelési művelet (PowerShell használatával) egy Azure-fürtön való futtatása hasonló a művelet helyi fürtön való futtatásához. Az egyetlen különbség, hogy a művelet futtatása előtt a helyi fürthöz való csatlakozás helyett először csatlakoznia kell az Azure-fürthöz.
 
-## <a name="running-a-testability-action-using-c35"></a>A C használatával testability-művelet futtatása&#35;
-Testability-művelet futtatása használatával C#, először szüksége FabricClient használatával csatlakozhat a fürthöz. Ezután szerezze be a művelet végrehajtásához szükséges paraméterek. Különböző paraméterek használhatók ugyanaz a művelet végrehajtásához.
-A RestartServiceFabricNode művelet megnézzük, futtassa egyik módja, a csomópont adatokat (a csomópont nevét és a csomópont azonosítója) a fürt használatával.
+## <a name="running-a-testability-action-using-c35"></a>Tesztelési művelet futtatása C használatával&#35;
+Ha tesztelési műveletet szeretne futtatni a használatával C#, először a FabricClient használatával kell csatlakoznia a fürthöz. Ezután szerezze be a művelet futtatásához szükséges paramétereket. Ugyanazon művelet futtatására különböző paraméterek használhatók.
+A RestartServiceFabricNode művelettel a futtatásának egyik módja a csomópont információinak (a csomópont neve és a csomópont-példány azonosítója) használata a fürtben.
 
 ```csharp
 RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, CancellationToken.None)
 ```
 
-A paraméter magyarázata:
+Paraméter magyarázata:
 
-* **CompleteMode** Megadja, hogy a mód nem ellenőrizze-e az újraindítási művelet ténylegesen sikeres volt. A befejezési mód megadásával, mint a "Hitelesítés" eredményezi, hogy ellenőrizze, hogy az újraindítás művelet ténylegesen sikeres volt.  
-* **Így időtúllépés történt** beállítása, a művelet befejezését, mielőtt egy TimeoutException kivétel történt.
-* **CancellationToken** lehetővé teszi, hogy a függőben lévő hívást kell lennie.
+* A **CompleteMode** azt adja meg, hogy a mód nem ellenőrzi, hogy az újraindítási művelet ténylegesen sikeres volt-e. A befejezési mód megadásával az "ellenőrzés" hatására a rendszer ellenőrzi, hogy az újraindítási művelet sikeresen befejeződött-e.  
+* A **OperationTimeout** Beállítja azt az időtartamot, ameddig a művelet befejeződik, mielőtt timeoutexception osztályról a kivételt.
+* A **CancellationToken** lehetővé teszi, hogy a függőben lévő hívás megszakítható legyen.
 
-Helyett a nevével adja meg közvetlenül a csomópont, később is megadhatja egy partíciókulcsot és a replika típusú keresztül.
+Ahelyett, hogy a csomópontot a neve alapján közvetlenül megadja, megadhatja azt egy partíciós kulccsal és a replika típusával.
 
-További információkért lásd: PartitionSelector és ReplicaSelector.
+További információ: PartitionSelector és ReplicaSelector.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll
@@ -181,9 +172,9 @@ class Test
 
 ## <a name="partitionselector-and-replicaselector"></a>PartitionSelector és ReplicaSelector
 ### <a name="partitionselector"></a>PartitionSelector
-PartitionSelector érhető el a testability segítő, és válasszon ki egy adott partíciót, amelyen a testability műveletek végrehajtására szolgál. Egy adott partícióra válassza, ha a Partícióazonosító előre ismert használható. Vagy megadhatja a partíciókulcs és a művelet feloldja a Partícióazonosító belső használatra. Akkor is kiválaszthatja, véletlenszerű partíció.
+A PartitionSelector egy tesztelési segédeszköz, amely egy adott partíció kiválasztására szolgál, amely a tesztelési műveletek bármelyikét végrehajtja. Egy adott partíció kiválasztására szolgál, ha a partíció-azonosító előre ismert. Vagy megadhatja a partíciós kulcsot, és a művelet belsőleg fogja megoldani a partíció-azonosítót. Lehetőség van egy véletlenszerű partíció kiválasztására is.
 
-A segítő hozza létre a PartitionSelector objektumot, és válassza ki a partíciót a Select * módszerek egyikének használatával. Az API-hoz, amely azt igényli, akkor továbbítja a PartitionSelector objektumban. Ha nincs lehetőség be van jelölve, a rendszer alapértelmezés szerint egy véletlenszerű partíciót.
+Ennek a segítőnek a használatához hozza létre a PartitionSelector objektumot, és válassza ki a partíciót a Select * metódusok egyikének használatával. Ezután továbbítsa a PartitionSelector objektumot a szükséges API-nak. Ha nincs kiválasztva beállítás, az alapértelmezett érték egy véletlenszerű partíció.
 
 ```csharp
 Uri serviceName = new Uri("fabric:/samples/InMemoryToDoListApp/InMemoryToDoListService");
@@ -205,9 +196,9 @@ PartitionSelector uniformIntPartitionSelector = PartitionSelector.PartitionKeyOf
 ```
 
 ### <a name="replicaselector"></a>ReplicaSelector
-ReplicaSelector érhető el a testability Segéd, amely segítségével kiválaszthatja egy replikát, amelyen a testability műveletek végrehajtására szolgál. Válassza az adott replika, ha a másodpéldány-azonosító néven ismert előre használható. Emellett van egy elsődleges másodpéldány, vagy egy véletlenszerű másodlagos kiválaszthatja. ReplicaSelector PartitionSelector, származik, ezért ki kell választania a replika és a a partíciót, amelyen szeretné, a testability-művelet végrehajtásához.
+A ReplicaSelector egy tesztelési segédeszköz, amely a tesztelési műveletek elvégzésére szolgáló replika kiválasztását segíti. Egy adott replika kiválasztására használható, ha a replika AZONOSÍTÓjának előzetes ismerete. Emellett lehetősége van egy elsődleges replika vagy egy véletlenszerű másodlagos lehetőség kiválasztására. A ReplicaSelector a PartitionSelector származtatja, ezért ki kell választania a replikát és azt a partíciót, amelyen el szeretné végezni a tesztelési műveletet.
 
-A segítő használatához ReplicaSelector objektum létrehozása, és állítsa be a kívánt válassza ki a replika és a partíció. Meg lehet majd át azt az API-t, amely ezt megköveteli. Ha nincs lehetőség be van jelölve, a rendszer alapértelmezés szerint egy véletlenszerű replika és a véletlenszerű partíció.
+A segítő használatához hozzon létre egy ReplicaSelector objektumot, és állítsa be, hogyan szeretné kijelölni a replikát és a partíciót. Ezután átadhatja azt az API-nak, amelyhez szükség van. Ha nincs kiválasztva beállítás, az alapértelmezett érték egy véletlenszerű replika és egy véletlenszerű partíció.
 
 ```csharp
 Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
@@ -227,9 +218,9 @@ ReplicaSelector replicaByIdSelector = ReplicaSelector.ReplicaIdOf(partitionSelec
 ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(partitionSelector);
 ```
 
-## <a name="next-steps"></a>További lépések
-* [Testability alkalmazási helyzetek](service-fabric-testability-scenarios.md)
+## <a name="next-steps"></a>Következő lépések
+* [Tesztelési forgatókönyvek](service-fabric-testability-scenarios.md)
 * A szolgáltatás tesztelése
-  * [Hibák szimulálása a szolgáltatások számítási feladatai közben](service-fabric-testability-workload-tests.md)
-  * [Szolgáltatások közötti kommunikációs hibákkal szemben](service-fabric-testability-scenarios-service-communication.md)
+  * [Hibák szimulálása a szolgáltatás munkaterhelései során](service-fabric-testability-workload-tests.md)
+  * [Szolgáltatások közötti kommunikációs hibák](service-fabric-testability-scenarios-service-communication.md)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: adatrendellenességek megjelenítése valós idejű eseményekben – Azure Event Hubs'
+title: Azure Event Hubs – adatanomáliák megjelenítése valós idejű eseményekben
 description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437143"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
@@ -47,7 +47,7 @@ Ehhez az oktatóanyaghoz szüksége lesz egy Event Hubs-névtérre és egy esem�
 
 Az alábbi szakaszok ismertetik a szükséges lépések elvégzésének módját. Kövesse a parancssori felületre *vagy* a PowerShellre vonatkozó utasításokat a következő lépések végrehajtásához:
 
-1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). 
+1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/management/overview.md). 
 
 2. Event Hubs-névtér létrehozása. 
 
@@ -186,7 +186,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** elemre. 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Create** (Létrehozás) gombra. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -217,7 +217,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
    ![Bemeneti stream Stream Analytics-feladathoz való hozzáadását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -239,7 +239,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 4. A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -268,7 +268,7 @@ Ez a lekérdezés a Power BI-vizualizációnak küldött végső adatok lekéré
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének tesztelése 
 
@@ -371,7 +371,7 @@ Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]

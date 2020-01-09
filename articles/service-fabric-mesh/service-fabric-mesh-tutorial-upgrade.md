@@ -1,38 +1,30 @@
 ---
-title: Oktatóanyag – Azure Service Fabric Mesh-alkalmazás frissítése | Microsoft Docs
+title: Oktatóanyag – Azure Service Fabric Mesh-alkalmazás frissítése
 description: Ez az oktatóanyag egy sorozat negyedik része, amely bemutatja, hogyan frissíthet egy Azure Service Fabric Mesh-alkalmazást közvetlenül a Visual studióból.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81f155d5708a2fca2fc1145feb20af12d2fd151e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351721"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Service Fabric alkalmazások frissítése a Visual Studióval
 
 Ez az oktatóanyag egy sorozat negyedik része, amely bemutatja, hogyan frissíthet egy Azure Service Fabric Mesh-alkalmazást közvetlenül a Visual studióból. A frissítés tartalmazza a kód frissítését és a konfiguráció frissítését is. Láthatja, hogy a Visual studión belüli verziófrissítés és közzététel lépései megegyeznek.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Service Fabric Mesh szolgáltatás frissítése a Visual Studio használatával
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Service Fabric Mesh-alkalmazás létrehozása Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás létrehozása a Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Egy, a helyi fejlesztési fürtön futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * Service Fabric Mesh-alkalmazás frissítése
 > * [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -159,9 +151,9 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure-ban futó webhelyet. Ekkor egy olyan weboldalt kell látnia, amely tartalmaz egy category (kategória) oszlopot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag jelen része az alábbiakat ismertette:
+Ez az oktatóanyag a következőket ismertette:
 > [!div class="checklist"]
 > * Service Fabric Mesh-alkalmazás frissítése a Visual Studio használatával
 

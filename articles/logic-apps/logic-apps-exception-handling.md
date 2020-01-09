@@ -1,6 +1,6 @@
 ---
-title: Hibák és kivételek feldolgozása
-description: További tudnivalók a hibák és kivételek kezelésére vonatkozó mintákról Azure Logic Apps
+title: Hibák és kivételek kezelése
+description: Megtudhatja, hogyan kezelheti a Azure Logic Apps használatával létrehozott automatizált feladatokban és munkafolyamatokban előforduló hibákat és kivételeket.
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453391"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
@@ -32,7 +32,7 @@ Az újrapróbálkozási szabályzatok típusai:
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. | 
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. | 
 | **Rögzített intervallum**  | Ez a házirend a következő kérelem elküldése előtt megvárja a megadott intervallumot. | 
-| **NEz egy**  | Ne küldje újra a kérelmet. | 
+| **Nincs**  | Ne küldje újra a kérelmet. | 
 ||| 
 
 További információ az újrapróbálkozási házirend korlátairól: [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -67,7 +67,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az újraprób
 }
 ```
 
-*Szükséges*
+*Kötelező*
 
 | Value (Díj) | Type (Típus) | Leírás |
 |-------|------|-------------|
@@ -76,7 +76,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az újraprób
 | *újrapróbálkozási kísérletek* <> | Egész szám | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie | 
 ||||
 
-*Választható*
+*Nem kötelező*
 
 | Value (Díj) | Type (Típus) | Leírás |
 |-------|------|-------------|

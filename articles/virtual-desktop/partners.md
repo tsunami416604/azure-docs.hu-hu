@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451353"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -38,7 +38,6 @@ Jóváhagyott szolgáltatóként a Windows rendszerű virtuális asztalok előny
 
 - [Regisztráljon a Horizon Cloud Microsoft Azure-on elérhető Tech Preview-ra](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Lépjen a partner webhelyére](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a k�
 
 - [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
 
+## <a name="hp"></a>HP
+
+![HP-embléma](./media/partners/hp.png)
+
+A HP vékony ügyfél a Microsoft Azure-és Windows-alapú virtuális asztali szolgáltatásainak jóváhagyott és ellenőrzött partnere. A Windows 10 IoT Enterprise rendszerű HP vékony ügyfelek az Azure-alapú számítási feladatokhoz és a Windows rendszerű virtuális asztali gépekhez használható, beépített támogatást biztosítanak. A hardver és az operációs rendszer úgy van optimalizálva, hogy olyan legjobb élményt nyújtson, amely hatékonyan kézbesíti a távoli munkaterheléseket, miközben csökkenti az operációs rendszer helyigényét, a hardvert és a karbantartási költségeket.
+
+Ahogy az iparági trendek, az ügyfelekkel kapcsolatos kihívások és a fejlesztési folyamat során kínált megoldások virtualizációja is megvizsgálta, az ideális Felhőbeli végpontot ihlette a következő négy oszlopos értékkel: tervezés, kezelhetőség, biztonság és sokoldalúságot. Minden HP vékony ügyfél célja, hogy az informatikai döntéshozókat szem előtt tartva. A HP vékony ügyfelek tartósak, biztonságosak, könnyen üzembe helyezhetők és felügyelhetők, és hatékonyak, így könnyedén áthelyezhetők a VDI vagy a Felhőbeli számítástechnika felé. A HP sokoldalú portfóliója lehetővé teszi az Ön számára legmegfelelőbb modern végponti megoldás kiválasztását.
+
+- [Lépjen a partner webhelyére](https://hp.com/go/thin).
+
 ## <a name="igel"></a>IGEL
 
 ![IGEL embléma](./media/partners/igel.png)
@@ -90,7 +99,7 @@ A IGEL a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltat
  
 A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, asztali gépeket és Felhőbeli munkaterület-protokollt támogatja a Citrixtől, a Microsofttól és a VMware-től. Integrált technológiákat tartalmaz a 85 perifériás, Interface és Protocol partnerektől, hogy a szervezetek gyorsan fogadjanak el Windowsos virtuális asztali szolgáltatásokat a saját egyedi felhasználói környezetében. A IGEL operációs rendszer írásvédett, moduláris végpont operációs rendszer, amely segít a védelemben. Emellett egy teljes "megbízhatósági láncot" is tartalmaz, amely ellenőrzi a végponton futó legfontosabb főbb folyamatok integritását, a végponti hardvertől (néhány kiválasztott modelltől), vagy az UEFI folyamattól egészen az Azure Cloud és a Windows Virtual Desktop szolgáltatásokhoz. A IGEL operációs rendszerrel a vállalatok az Azure-felhőből előfizethetnek a Windows rendszerű virtuális asztalra, így teljes körű megbízhatósággal rendelkeznek a felhasználói végpont eszközeinek integritásában, biztonságában és kezelhetőségében.
 
-- [Lépjen a partner webhelyére.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Lépjen a partner webhelyére](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
 

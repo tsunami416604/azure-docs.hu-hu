@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b8c2ca3bf919d70123b7b5b6d13c0301e0c1fd13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383578"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Gyors útmutató: Hírek keresése a Javához készült Bing News Search SDK-val
 
@@ -57,7 +57,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Keresési ügyfél létrehozása és a hitelesítő adatok tárolása
 
-1. Hozzon létre egy `getClient()` nevű metódust, amely új `NewsSearchAPIImpl` keresési ügyfelet ad vissza. Adja hozzá a végpontot az új`NewsSearchAPIImpl` objektum első paramétereként, valamint egy új `ServiceClientCredentials` objektumot a hitelesítő adatok tárolásához.
+1. Hozzon létre egy `getClient()` nevű metódust, amely új `NewsSearchAPIImpl` keresési ügyfelet ad vissza. Adja hozzá a végpontot az új`NewsSearchAPIImpl` objektum első paramétereként, valamint egy új `ServiceClientCredentials` objektumot a hitelesítő adatok tárolásához. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -135,7 +135,7 @@ import java.io.IOException;
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

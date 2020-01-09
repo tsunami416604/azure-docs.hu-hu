@@ -7,14 +7,14 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433013"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 
@@ -22,11 +22,11 @@ A Azure Maps web SDK olyan adatforrásokban tárolja az adatforrásokat, amelyek
 
 **GeoJSON-adatforrás**
 
-A GeoJSON-alapú adatforrások helyileg is betölthetik és `DataSource` tárolhatják az adataikat a osztály használatával. A GeoJSON adatai manuálisan hozhatók létre vagy hozhatók létre az [Atlas.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) adatnévtérben található segítő osztályok használatával. Az `DataSource` osztály a helyi vagy távoli GeoJSON-fájlok importálására szolgáló funkciókat biztosít. A távoli GeoJSON-fájlokat egy CORs-kompatibilis végponton kell tárolni. Az `DataSource` osztály a fürtszolgáltatási pontokra vonatkozó adatgyűjtési funkciókat biztosít. Az adatkészletek könnyen hozzáadhatók, eltávolíthatók és frissíthetők az `DataSource` osztály használatával.
+A GeoJSON-alapú adatforrások helyileg, a `DataSource` osztály használatával tölthetnek fel és tárolhatnak az adattárolást. A GeoJSON adatai manuálisan hozhatók létre vagy hozhatók létre az [Atlas.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) adatnévtérben található segítő osztályok használatával. A `DataSource` osztály a helyi vagy távoli GeoJSON-fájlok importálására szolgáló függvényeket biztosít. A távoli GeoJSON-fájlokat egy CORs-kompatibilis végponton kell tárolni. A `DataSource` osztály a fürtszolgáltatási pontokra vonatkozó adatkezelési funkciókat biztosítja. Az adat`DataSource` osztállyal egyszerűen hozzáadhatók, eltávolíthatók és frissíthetők az adathalmazok.
 
 
 > [!TIP]
-> Ha az a `DataSource`-ben lévő összes adat felülírására van szükség, és a `clear` rendszer hívásokat `add` hajt végre, akkor a Térkép kétszer próbálkozik, ami egy kis késleltetést eredményezhet. Ehelyett használja `setShapes` azt a függvényt, amely eltávolítja és lecseréli az adatforrásban lévő összes adatát, és csak egyszeres leképezést indít el.
+> Ha a `DataSource`összes adatát felül szeretné írni, ha a `clear`, majd `add` függvényeket kezdeményez, akkor a Térkép kétszer próbálkozik a leképezéssel, ami egy kis késleltetést eredményezhet. Ehelyett használja a `setShapes` függvényt, amely eltávolítja és lecseréli az adatforrásban lévő összes adatát, és csak a Térkép egyetlen újbóli leképezését aktiválja.
 
 **Vektoros csempe forrása**
 
@@ -37,9 +37,9 @@ A vektoros csempék forrása azt ismerteti, hogyan lehet hozzáférni a vektoros
  - A vektoros leképezésekben lévő adatstílus módosítása nem igényli újra az adatletöltést, mivel az új stílust alkalmazni lehet az ügyfélen. Ezzel szemben a raszteres csempék stílusának módosítása általában olyan csempék betöltését igényli a kiszolgálóról, amelyeken alkalmazva van az új stílus.
  - Mivel az adat vektoros formában lett továbbítva, az adatelőkészítéshez kevesebb kiszolgálóoldali feldolgozás szükséges, ami azt jelenti, hogy az újabb adat gyorsabban elérhetővé tehető.
 
-A vektoros forrást használó összes rétegnek meg `sourceLayer` kell adnia egy értéket. 
+A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket. 
 
-A létrehozás után az adatforrások hozzáadhatók a térképhez a `map.sources` tulajdonságon keresztül, amely egy [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). A következő kód bemutatja, hogyan hozhat létre `DataSource` és adhat hozzá a térképhez.
+A létrehozás után az adatforrások hozzáadhatók a térképhez a `map.sources` tulajdonságon keresztül, amely egy [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). A következő kód bemutatja, hogyan hozhat létre egy `DataSource`, és hogyan adhatja hozzá a térképhez.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -117,7 +117,7 @@ var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

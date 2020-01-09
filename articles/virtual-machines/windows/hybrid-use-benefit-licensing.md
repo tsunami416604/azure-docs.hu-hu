@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461156"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek számára a Windows Server Azure Hybrid Benefit lehetővé teszi a helyszíni Windows Server-licencek használatát, és a Windows rendszerű virtuális gépek futtatását az Azure-ban csökkentett költségek mellett. A Windows Server Azure Hybrid Benefit használatával telepíthet új virtuális gépeket Windows operációs rendszerre. Ez a cikk áttekinti az új virtuális gépek Windows Serverre Azure Hybrid Benefit való üzembe helyezésének lépéseit, valamint azt, hogy miként frissítheti a meglévő futó virtuális gépeket. A Windows Server licenceléssel és a költségmegtakarítással Azure Hybrid Benefitával kapcsolatos további információkért tekintse meg a [Azure Hybrid Benefit a Windows Server licencelése lapon](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -64,7 +64,7 @@ New-AzVm `
     -LicenseType "Windows_Server"
 ```
 
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
@@ -110,7 +110,7 @@ A portál virtuálisgép-paneljén frissítheti a virtuális gépet a Azure Hybr
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 - Meglévő Windows Server-alapú virtuális gépek konvertálása Azure Hybrid Benefit Windows Serverre
 
     ```azurecli
@@ -143,7 +143,7 @@ Location                 : westus
 LicenseType              :
 ```
 
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Windows_Server']" -o table
 ```
@@ -164,7 +164,7 @@ $vms = Get-AzVM
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 ```azurecli
 az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
@@ -201,4 +201,4 @@ Azt is megtudhatja, hogyan [módosíthatja a virtuálisgép-méretezési csoport
 - További információ a [Windows Server licencelésének részletes útmutatója Azure Hybrid Benefit](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - Tudjon meg többet a [Windows Server Azure Hybrid Benefitéről, és Azure site Recovery az alkalmazások áttelepítése az Azure-ba még](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) költséghatékonyabb
 - További információ az Azure-beli Windows 10-ről a több- [bérlős üzemeltetési jogosultsággal](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- További információ a [Resource Manager-sablonok használatáról](../../azure-resource-manager/resource-group-overview.md)
+- További információ a [Resource Manager-sablonok használatáról](../../azure-resource-manager/management/overview.md)

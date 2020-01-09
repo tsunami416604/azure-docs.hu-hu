@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c30f1246dccbe14445b0f7db8584e37c0f4be6ab
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f728338284c755116414a03cbc586915e1cc9325
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462214"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure PowerShell használatával
 
@@ -146,6 +146,22 @@ A klasszikus előfizetés-rendszergazda és a társ-rendszergazdák szerepkör-h
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>Felügyelt identitás szerepkör-hozzárendeléseinek listázása
+
+1. Szerezze be a rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitás objektum-AZONOSÍTÓját. 
+
+    A felhasználó által hozzárendelt felügyelt identitás objektum-AZONOSÍTÓjának lekéréséhez használhatja a [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
+
+    ```azurepowershell
+    Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
+    ```
+
+1. A szerepkör-hozzárendelések listázásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+
+    ```azurepowershell
+    Get-AzRoleAssignment -ObjectId <objectid>
+    ```
 
 ## <a name="next-steps"></a>Következő lépések
 

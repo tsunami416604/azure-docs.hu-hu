@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364118"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Resource Manager-sablon használatával a Windows rendszerű virtuális gépekhez
 
@@ -25,7 +25,7 @@ Ez a cikk a vendég operációs rendszer teljesítményének mérőszámait isme
 
 Az ezen a helyen való tárolás lehetővé teszi, hogy ugyanazokat a műveleteket elérje a platform metrikái esetében. A műveletek közé tartoznak a közel valós idejű riasztások, a diagramok, az Útválasztás és a hozzáférés egy REST API és egyebek között. Korábban a diagnosztikai bővítmény az Azure Storage-ba írt, de nem a Azure Monitor adattárba.
 
-Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok központi telepítésével](../../azure-resource-manager/resource-group-overview.md) , valamint azok struktúrájával és szintaxisával.
+Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok központi telepítésével](../../azure-resource-manager/management/overview.md) , valamint azok struktúrájával és szintaxisával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -15,14 +15,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427128"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
+
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` az RSS-hírcsatorna olvasójának.
 
 Ez a cikk a Azure Media Services v3 verzióban bevezetett változásokat ismerteti, és megjeleníti a két verzió közötti különbségeket, és áttelepítési útmutatót biztosít.
 
@@ -101,7 +103,7 @@ A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartal
 
 Az alábbi táblázat a v2 és v3 kód közötti különbségeket mutatja be a gyakori forgatókönyvek esetében.
 
-|Forgatókönyv|V2 API|V3 API|
+|Alkalmazási helyzet|V2 API|V3 API|
 |---|---|---|
 |Eszköz létrehozása és fájl feltöltése |[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Feladatok elküldése|[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Bemutatja, hogyan hozhat létre először egy átalakítót, majd küldhet el egy feladatot.|

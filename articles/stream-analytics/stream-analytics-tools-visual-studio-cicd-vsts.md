@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics feladatok üzembe helyezése CI/CD-vel és Azure DevOps
 description: A cikk azt írja le, hogyan helyezhet üzembe egy Azure Stream Analytics-feladatot a CI/CD-vel az Azure DevOps Services használatával.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354436"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
 Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz az Azure Pipelines használatával. 
@@ -152,7 +151,7 @@ Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiv�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a jövőben szeretné még használni a feladatot, leállíthatja, és később újraindíthatja, amikor szüksége lesz rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az oktatóanyagban létrehozott összes erőforrást törölheti:
+Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az oktatóanyagban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.

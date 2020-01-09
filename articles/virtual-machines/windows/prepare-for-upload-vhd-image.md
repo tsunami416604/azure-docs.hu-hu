@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6db0f6c5f65967dd42d6ed9a8a1e50364ced094d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461129"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -78,6 +78,10 @@ Ebben a parancsban cserélje le a `-Path` értékét az átalakítani kívánt v
 Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](https://en.wikipedia.org/wiki/VMDK)van, a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) használatával alakítsa át VHD formátumra. További információ: [VMware VMDK konvertálása Hyper-V virtuális merevlemezre](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
 ## <a name="set-windows-configurations-for-azure"></a>Windows-konfigurációk beállítása az Azure-hoz
+
+> [!NOTE]
+> Az Azure platform egy ISO-fájlt csatlakoztat a DVD-ROM-hoz, amikor egy Windows rendszerű virtuális gépet egy általánosított rendszerképből hoznak létre.
+> Emiatt a DVD-ROM-ot engedélyezni kell az operációs rendszerben az általánosított rendszerképben. Ha a szolgáltatás le van tiltva, a Windows rendszerű virtuális gép elakad az OOBE-ben.
 
 Az Azure-ba feltölteni kívánt virtuális gépen futtassa a következő parancsokat egy rendszergazda [jogú parancssorból](https://technet.microsoft.com/library/cc947813.aspx):
 
@@ -148,12 +152,11 @@ Get-Service -Name TermService | Where-Object { $_.StartType -ne 'Manual' } | Set
 Get-Service -Name MpsSvc | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
 Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
 ```
-
 ## <a name="update-remote-desktop-registry-settings"></a>Távoli asztal beállításjegyzék-beállításainak frissítése
 Győződjön meg arról, hogy a következő beállítások megfelelően vannak konfigurálva a táveléréshez:
 
 >[!NOTE] 
->Előfordulhat, hogy a `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`futtatásakor hibaüzenet jelenik meg. Nyugodtan figyelmen kívül hagyhatja ezt az üzenetet. Ez azt jelenti, hogy a tartomány nem küldi el ezt a konfigurációt egy Csoportházirend objektumon keresztül.
+>Előfordulhat, hogy a `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`futtatásakor hibaüzenet jelenik meg. Az üzenet biztonságosan figyelmen kívül hagyható. Ez azt jelenti, hogy a tartomány nem küldi el ezt a konfigurációt egy Csoportházirend objektumon keresztül.
 
 1. A RDP protokoll (RDP) engedélyezve van:
    
@@ -358,7 +361,7 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
 Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehetséges, ellenőrizze, hogy telepítve vannak-e a következő frissítések. A legújabb frissítések beszerzéséhez tekintse meg a Windows Update History-lapokat: Windows [10 és Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8,1 és Windows Server 2012 R2](https://support.microsoft.com/help/4009470) és [Windows 7 SP1 és Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
-| Component (Összetevő)               | bináris         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Component (Összetevő)               | Bináris         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Adattárolás                 | Disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -380,7 +383,7 @@ Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehe
 |                         | mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | MRxSmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
 |                         | tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Mag                    | ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Távoli asztali szolgáltatások | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |

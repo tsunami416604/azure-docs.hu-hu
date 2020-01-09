@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433378"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Webalkalmazás és Azure cache létrehozása a Redis sablon használatával
 
@@ -20,7 +20,7 @@ ms.locfileid: "74122640"
 
 Ebben a témakörben megtudhatja, hogyan hozhat létre olyan Azure Resource Manager-sablont, amely egy Azure-webalkalmazást telepít az Azure cache Redis. Megtudhatja, hogyan határozhatja meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
 
 A teljes sablon: [webalkalmazás az Azure cache for Redis sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
@@ -40,7 +40,7 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Nevekre vonatkozó változók
-Ez a sablon változók használatával hozza létre az erőforrások nevét. A [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) függvény használatával hoz létre értéket az erőforráscsoport azonosítója alapján.
+Ez a sablon változók használatával hozza létre az erőforrások nevét. A [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) függvény használatával hoz létre értéket az erőforráscsoport azonosítója alapján.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -76,7 +76,7 @@ A sablon ugyanazon a helyen hozza létre a gyorsítótárat, mint az erőforrás
     }
 
 
-### <a name="web-app"></a>Web app
+### <a name="web-app"></a>Webalkalmazás
 Létrehozza a **webSiteName** változóban megadott nevű webalkalmazást.
 
 Figyelje meg, hogy a webalkalmazás az Alkalmazásbeállítások tulajdonságaival van konfigurálva, amelyek lehetővé teszik, hogy együttműködjön a Redis készült Azure cache-sel. Az alkalmazás beállításai dinamikusan jönnek létre az üzembe helyezés során megadott értékek alapján.
@@ -120,5 +120,5 @@ Figyelje meg, hogy a webalkalmazás az Alkalmazásbeállítások tulajdonságaiv
 ### <a name="powershell"></a>PowerShell
     New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup

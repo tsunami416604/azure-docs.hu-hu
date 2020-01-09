@@ -4,16 +4,16 @@ description: Az oktatóanyag segítségével megismerheti, hogyan lehet elérni,
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: a30b7569c14aaccb40b357cc5acb82b0e32d2895
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 11ce572cdb8a04dac07689b37eef76f354475df3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365622"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](tutorial-logs-dashboards.md) oktatóanyag folytatása.   
@@ -36,7 +36,7 @@ A következő példában létrehoz egy metrikamérési riasztási szabályt az [
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. Új riasztás létrehozásához a bal oldali panelen válassza a **Riasztások** elemet, majd kattintson az oldal tetején található **Új riasztási szabály** elemre.<br><br> ![Új riasztási szabály létrehozása](./media/tutorial-response/alert-rule-02.png)<br>
-3. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza az **Erőforrás** **DefaultLAWorkspace** elemet, majd kattintson a **Kész** gombra.<br><br> ![Riasztás létrehozása, 1. lépés](./media/tutorial-response/alert-rule-03.png)<br>
+3. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza ki az **erőforrás** - **DefaultLAWorkspace** , majd kattintson a **kész**gombra.<br><br> ![Riasztás létrehozása, 1. lépés](./media/tutorial-response/alert-rule-03.png)<br>
 4. A **Riasztási feltételek** szakaszban kattintson a **Feltétel hozzáadása** elemre a mentett lekérdezés kiválasztásához, majd adja meg a logikát, amelyet a riasztási szabály követ.  A **Jellogika konfigurálása** panelen válassza az *Azure-beli virtuális gépek – Processzorhasználat* elemet a listából.  A panel frissül, és a riasztás konfigurációs beállításait mutatja.  Felül a kiválasztott jel és a keresési lekérdezés eredményeit mutatja az elmúlt 30 percre vonatkozóan.  
 5. Konfigurálja a riasztást az alábbi információkkal:  
    a. A **Riasztás alapja** legördülő menüből válassza a **Metrikamérés** elemet.  A metrikamérés egy riasztást hoz létre a lekérdezés minden egyes objektumához, amelynek értéke meghaladja a megadott küszöbértéket.  

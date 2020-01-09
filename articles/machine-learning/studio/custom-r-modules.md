@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 6c81cd927ac26779cab042d1d4e54f2e8c02918c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fdd91b62355b11ba99aafcda04f86282ce5a4f71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454743"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Azure Machine Learning Studiohoz (klasszikus)
 
@@ -24,9 +24,9 @@ Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni R s
 
 
 ## <a name="what-is-a-custom-r-module"></a>Mi az egyéni R-modul?
-Az **Egyéni modul** egy felhasználó által definiált modul, amely feltölthető a munkaterületre, és a Azure Machine learning Studio Experiment klasszikus verziójának részeként is végrehajtható. Az **Egyéni r-modul** egy egyéni modul, amely egy felhasználó által definiált r-függvényt hajt végre. Az **R** olyan statisztikai számítástechnikai és grafikai programozási nyelv, amelyet a statisztikusok és az adatszakértők széles körben használnak az algoritmusok megvalósításához. Jelenleg az egyéni modulok csak az egyedüli nyelvet támogatják, a további nyelvek támogatása pedig későbbi kiadásokra van ütemezve.
+Az **Egyéni modul** egy felhasználó által definiált modul, amely feltölthető a munkaterületre, és Azure Machine learning Studio (klasszikus) kísérlet részeként is végrehajtható. Az **Egyéni r-modul** egy egyéni modul, amely egy felhasználó által definiált r-függvényt hajt végre. Az **R** olyan statisztikai számítástechnikai és grafikai programozási nyelv, amelyet a statisztikusok és az adatszakértők széles körben használnak az algoritmusok megvalósításához. Jelenleg az egyéni modulok csak az egyedüli nyelvet támogatják, a további nyelvek támogatása pedig későbbi kiadásokra van ütemezve.
 
-Az egyéni modulok az **első osztályú állapottal** rendelkeznek a Azure Machine learning Studio klasszikus verziójában abban az értelemben, hogy ugyanúgy használhatók, mint bármely más modul. A közzétett kísérletekben vagy vizualizációkban található más modulokkal is végrehajthatók. Ön szabályozhatja a modul által megvalósított algoritmust, a használandó bemeneti és kimeneti portokat, a modellezési paramétereket és a különböző futásidejű viselkedéseket. Az egyéni modulokat tartalmazó kísérletek könnyen megoszthatók a Azure AI Gallery is.
+Az egyéni modulok az **első osztályú állapottal** rendelkeznek Azure Machine learning Studio (klasszikus) abban az értelemben, hogy ugyanúgy használhatók, mint bármely más modul. A közzétett kísérletekben vagy vizualizációkban található más modulokkal is végrehajthatók. Ön szabályozhatja a modul által megvalósított algoritmust, a használandó bemeneti és kimeneti portokat, a modellezési paramétereket és a különböző futásidejű viselkedéseket. Az egyéni modulokat tartalmazó kísérletek könnyen megoszthatók a Azure AI Gallery is.
 
 ## <a name="files-in-a-custom-r-module"></a>Egyéni R-modul fájljai
 Egy egyéni R modult egy. zip fájl definiál, amely legalább két fájlt tartalmaz:
@@ -55,7 +55,7 @@ Vegyünk például egy olyan **egyéni sorok hozzáadása** modult, amely módos
     } 
 
 ### <a name="the-xml-definition-file"></a>Az XML-definíciós fájl
-Ha ezt a `CustomAddRows` funkciót egy Azure Machine Learning Studio modul klasszikus változataként szeretné közzétenni, létre kell hoznia egy XML-definíciós fájlt, amely meghatározza, hogy az **egyéni sorok hozzáadása** modul hogyan nézzen és viselkedjen. 
+Ahhoz, hogy a `CustomAddRows` funkció elérhető legyen Azure Machine Learning Studio (klasszikus) modulként, létre kell hoznia egy XML-definíciós fájlt, amely meghatározza, hogy az **egyéni sorok hozzáadása** modul hogyan nézzen és viselkedjen. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -90,14 +90,14 @@ Ha ezt a `CustomAddRows` funkciót egy Azure Machine Learning Studio modul klass
     </Module>
 
 
-Fontos megjegyezni, hogy az XML-fájlban szereplő **bemeneti** és **ARG** elemek **azonosító** attribútumainak értékének meg kell egyeznie a CustomAddRows. r fájlban található r-kód Function paraméterének neveivel, pontosan: (*DataSet1 elemet*, *dataset2*, és *Csere* a példában). Hasonlóképpen, a **nyelvi** elem **BelépésiPont** attribútumának értékének meg kell egyeznie a függvény nevével az R-szkriptben pontosan: (a példában a*CustomAddRows* ). 
+Fontos megjegyezni, hogy az XML-fájlban szereplő **bemeneti** és **ARG** elemek **azonosító** attribútumainak értékének meg kell egyeznie a CustomAddRows. r fájlban található r-kód Function paraméterének nevével pontosan: (*DataSet1 elemet*, *dataset2*és *swap* a példában). Hasonlóképpen, a **nyelvi** elem **BelépésiPont** attribútumának értékének meg kell egyeznie a függvény nevével az R-szkriptben pontosan: (a példában a*CustomAddRows* ). 
 
 Ezzel szemben a **kimeneti** elem **ID** attribútuma nem felel meg az R-szkriptben szereplő változóknak. Ha egynél több kimenetre van szükség, egyszerűen visszaállíthat egy listát az R-függvényből, amelynek *a sorrendje megegyezik* a **kimeneti** elemek XML-fájlban való deklarált eredményeivel.
 
 ### <a name="package-and-register-the-module"></a>A modul becsomagolása és regisztrálása
 Mentse ezt a két fájlt a *CustomAddRows. R* és a *CustomAddRows. XML* fájlként, majd a két fájlt egy *CustomAddRows. zip* fájlba.
 
-Ha regisztrálni szeretné őket a Machine Learning munkaterületen, lépjen a munkaterületre a Machine Learning Studio klasszikus verziójában, kattintson az alsó **+ új** gombra, és válassza a **modul-> a zip-csomagból** lehetőséget az új **Egyéni hozzáadási sorok** feltöltéséhez. modul.
+Ha regisztrálni szeretné őket a Machine Learning munkaterületen, lépjen a munkaterületre Azure Machine Learning Studio (klasszikus) területen, kattintson az **+ új** gombra az alján, és válassza a **modul-> a zip-csomagból** lehetőséget az új **egyéni sorok hozzáadása** modul feltöltéséhez.
 
 ![Zip feltöltése](./media/custom-r-modules/upload-from-zip-package.png)
 
@@ -123,7 +123,7 @@ A karakterek korlátozásai a modul elemeiben:
 * A **Leírás** elem tartalma nem lehet hosszabb 128 karakternél.
 * A **tulajdonos** elem tartalma nem lehet hosszabb 32 karakternél.
 
-A modulok eredményei lehetnek determinisztikus vagy determinált. * * alapértelmezés szerint az összes modul determinisztikus tekintendő. Ez azt eredményezi, hogy a bemeneti paraméterek és adatok változatlanul eltérő készletét kell visszaadnia, és a modulnak ugyanazt az eredményt kell visszaadnia, vagy eacRAND. Ennek a viselkedésnek a miatt a klasszikus Azure Machine Learning Studio csak a determinisztikus jelölésű modulokat futtatja, ha a paraméter vagy a bemeneti adatok módosultak. A gyorsítótárazott eredmények visszaadása a kísérletek sokkal gyorsabb végrehajtását is lehetővé teszi.
+A modulok eredményei lehetnek determinisztikus vagy determinált. * * alapértelmezés szerint az összes modul determinisztikus tekintendő. Ez azt eredményezi, hogy a bemeneti paraméterek és adatok változatlanul eltérő készletét kell visszaadnia, és a modulnak ugyanazt az eredményt kell visszaadnia, vagy eacRAND. Ennek a viselkedésnek a miatt a Azure Machine Learning Studio (klasszikus) csak determinisztikus jelölésű modulokat futtat, ha a paraméter vagy a bemeneti adatok módosultak. A gyorsítótárazott eredmények visszaadása a kísérletek sokkal gyorsabb végrehajtását is lehetővé teszi.
 
 Vannak olyan függvények, amelyek determinált, például a RAND vagy egy függvény, amely az aktuális dátumot vagy időpontot adja vissza. Ha a modul determinált függvényt használ, megadhatja, hogy a modul nem determinisztikus, ha a választható **isDeterministic** attribútumot **hamis**értékre állítja. Ez azt biztosítja, hogy a modul a kísérlet futtatásakor újra fut, még akkor is, ha a modul bemenete és paraméterei nem változtak. 
 
@@ -179,7 +179,7 @@ Az egyéni R-modulok esetében a zip-portok AZONOSÍTÓjának nem kell egyeznie 
 
 Az egyéni R-modulok kimenetei esetében az **ID** attribútum értékének nem kell megfelelnie az R-parancsfájlban található semmit, de egyedinek kell lennie. Egyetlen modul kimenete esetén az R függvény visszatérési értékének egy *adat. frame típusúnak*kell lennie. A támogatott adattípusok egynél több objektumának exportálásához meg kell adni a megfelelő kimeneti portokat az XML-definíciós fájlban, és az objektumokat listaként kell megadni. A kimeneti objektumok a bal és jobb oldali kimeneti portokhoz vannak rendelve, ami azt jelzi, hogy az objektumok milyen sorrendben kerülnek a visszaadott listára.
 
-Ha például módosítani kívánja az **egyéni sorok hozzáadása** modult, hogy az eredeti két adatkészletet, a *DataSet1 elemet* és a *dataset2*is kiírja az új csatlakoztatott adatkészlet mellett, az *adatkészletet*(egy rendelésben, balról jobbra, a következővel: *adatkészlet*). *DataSet1 elemet*, *dataset2*), majd adja meg a kimeneti portokat a CustomAddRows. xml fájlban a következőképpen:
+Ha például módosítani kívánja az **egyéni sorok hozzáadása** modult, hogy az eredeti két adatkészletet, a *DataSet1 elemet* és a *dataset2*az új csatlakoztatott adatkészlet, az *adatkészlet*(egy rendelésben, balról jobbra, mint: *adatkészlet*, *DataSet1 elemet*, *dataset2*) alapján adja meg, akkor a következő módon határozza meg a kimeneti portokat a CustomAddRows. xml fájlban:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -283,17 +283,17 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
   
   * **allowedTypes** – a kiválasztható oszlopok típusát szűri. Az érvényes értékek a következők: 
     
-    * numerikus
+    * Numerikus
     * Logikai
     * Kategorikus
     * Sztring
     * Címke
-    * Funkció
+    * Szolgáltatás
     * Pontszám
     * Mind
   * **alapértelmezett** – az oszlop választójának alapértelmezett értékei a következők: 
     
-    * Nincs
+    * None
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -330,7 +330,7 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
   * **alapértelmezett** – az alapértelmezett tulajdonság értékének meg kell egyeznie az **elem** egyik elemének azonosító értékével.
 
 ### <a name="auxiliary-files"></a>Kiegészítő fájlok
-Az egyéni modul ZIP-fájljába helyezett összes fájl elérhető lesz a végrehajtás ideje alatt. A rendszer megőrzi a szükséges címtár-struktúrákat. Ez azt jelenti, hogy a fájl beszerzése a helyi és a Azure Machine Learning Studio-végrehajtás klasszikus verziójában is működik. 
+Az egyéni modul ZIP-fájljába helyezett összes fájl elérhető lesz a végrehajtás ideje alatt. A rendszer megőrzi a szükséges címtár-struktúrákat. Ez azt jelenti, hogy a fájl beszerzése a helyi és a Azure Machine Learning Studio (klasszikus) végrehajtással azonos módon működik. 
 
 > [!NOTE]
 > Figyelje meg, hogy minden fájl "src" könyvtárba van kibontva, így minden elérési útnak "src/" előtaggal kell rendelkeznie.

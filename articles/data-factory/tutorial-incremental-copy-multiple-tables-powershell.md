@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 46e0815ea341b732e20ebe7ffa9af355e1f35e87
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d426562f4403776e3926564857b4cdbf0d4390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439233"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 
@@ -230,7 +230,7 @@ END
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét dupla idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét dupla idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";

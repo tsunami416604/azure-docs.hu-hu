@@ -1,5 +1,5 @@
 ---
-title: Xamarin iOS-ADAL migrálása a MSAL.NET-be
+title: Xamarin-alkalmazások migrálása közvetítők használatával MSAL.NET rendszerre
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan telepíthet át Microsoft Authenticatort használó Xamarin iOS-alkalmazásokat a ADAL.NET-ről a MSAL.NET-re.
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e70865c897e408f1cebb7359d0890d27b11243b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c830b7f6d13d9b85eae34b6193ad2a10e7bfb410
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424197"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
 
@@ -52,14 +52,14 @@ A ADAL.NET-ben a Broker-támogatás hitelesítésen alapuló kontextusban volt e
 
 `useBroker` jelzőt True értékre a `PlatformParameters` konstruktorban a közvetítő meghívásához:
 
-```CSharp
+```csharp
 public PlatformParameters(
         UIViewController callerViewController, 
         bool useBroker)
 ```
 Emellett a platform-specifikus kódban, ebben a példában az iOS-hez készült Page renderelő esetében állítsa be a `useBroker` 
 igaz jelző:
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -67,7 +67,7 @@ page.BrokerParameters = new PlatformParameters(
 ```
 
 Ezután adja meg a paramétereket a beszerzési jogkivonat hívásában:
-```CSharp
+```csharp
  AuthenticationResult result =
                     await
                         AuthContext.AcquireTokenAsync(
@@ -83,7 +83,7 @@ A MSAL.NET-ben a közvetítői támogatás PublicClientApplication alapon enged�
 
 `WithBroker()` paraméter (alapértelmezés szerint igaz értékre állítva) a közvetítő meghívásához:
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -91,7 +91,7 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 A jogkivonat beszerzése hívásban:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -107,7 +107,7 @@ A rendszer átadja a UIViewController
 
 `PlatformParameters` az iOS-specifikus platformon.
 
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -122,16 +122,16 @@ A MSAL.NET-ben két dolgot kell beállítania az iOS-hez készült objektum abla
 **Például:**
 
 Az `App.cs` szkriptben:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 Az `AppDelegate.cs` szkriptben:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 A jogkivonat beszerzése hívásban:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -140,7 +140,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3\. lépés: a visszahívás kezeléséhez a AppDelegate frissítése
-Mind a ADAL, mind a MSAL meghívja a közvetítőt, a közvetítő pedig visszahívja az alkalmazást az `AppDelegate` osztály `OpenUrl` metódusával. További információkért tekintse meg [ezt a dokumentációt](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback).
+Mind a ADAL, mind a MSAL meghívja a közvetítőt, a közvetítő pedig visszahívja az alkalmazást az `AppDelegate` osztály `OpenUrl` metódusával. További információkért tekintse meg [ezt a dokumentációt](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback).
 
 A ADAL.NET és a MSAL.NET között nincs változás.
 
@@ -162,7 +162,7 @@ előtagként, majd a `CFBundleURLName`
 
 Például:`$"msauth.(BundleId")`
 
-```CSharp
+```csharp
  <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -190,27 +190,28 @@ A ADAL.NET és a MSAL.NET egyaránt a `-canOpenURL:` használatával ellenőrizz
 <table>
 <tr><td>Aktuális ADAL-kód:</td><td>MSAL-ügyfél:</td></tr>
 <tr><td>
-Felhasználások 
+Használati területek 
 
 `msauth`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauth</string>
 </array>
 ```
 </td><td>
-Felhasználások 
+Használati területek 
 
 `msauthv2`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauthv2</string>
+     <string>msauthv3</string>
 </array>
 ```
 </table>
@@ -237,7 +238,7 @@ Példa:
 
 </table>
 
-További információ az átirányítási URI-portálon való regisztrálásáról: [a közvetítő kihasználása a Xamarin. iOS-alkalmazásokban](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app).
+További információ az átirányítási URI-portálon való regisztrálásáról: [a közvetítő kihasználása a Xamarin. iOS-alkalmazásokban](msal-net-use-brokers-with-xamarin-apps.md#step-8-make-sure-the-redirect-uri-is-registered-with-your-app).
 
 ## <a name="next-steps"></a>Következő lépések
 

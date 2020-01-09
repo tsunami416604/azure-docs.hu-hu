@@ -6,48 +6,50 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68f893c694369d95dd82b9e5af3d08d67be78884
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461649"
 ---
-# <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Az állandó tárterület használata az Azure Spring Cloud-ban
+# <a name="use-persistent-storage-in-azure-spring-cloud"></a>Állandó tárolók használata az Azure Spring Cloudban
 
-Az Azure Spring Cloud két típusú tárolót biztosít az alkalmazáshoz: állandó és ideiglenes.  Az Azure Spring Cloud alapértelmezés szerint minden egyes alkalmazás-példány esetében engedélyezi az ideiglenes tárolást. Az ideiglenes tárterület az alapértelmezett csatlakoztatási útvonallal rendelkező 5GB-ra korlátozódik: `/tmp`.
+Az Azure Spring Cloud két típusú tárolót biztosít az alkalmazáshoz: állandó és ideiglenes.
 
-> [!WARNING]
-> Egy alkalmazás példányának újraindítása véglegesen törli a hozzá tartozó ideiglenes tárolót.
-
-Az állandó tárterület egy, az Azure által lefoglalt fájlmegosztási tároló. Az állandó tárolóban tárolt adatmennyiség az alkalmazás összes példánya között meg van osztva. Az Azure Spring Cloud Service-példányok legfeljebb 10 olyan alkalmazást tartalmazhatnak, amelyeken engedélyezve van az állandó lemez. Minden alkalmazás állandó tárterületet 50 GB kap. Az állandó tárterület alapértelmezett csatlakoztatási útvonala `/persistent`.
+Alapértelmezés szerint az Azure Spring Cloud minden egyes alkalmazás-példány esetében ideiglenes tárhelyet biztosít. Az ideiglenes tárterület az alapértelmezett csatlakozási útvonallal/tmp. 5 GB-onként van korlátozva.
 
 > [!WARNING]
-> Az állandó tárterület *letiltása* felszabadítja az adott alkalmazás tárterületét.  A Storage-fiókban lévő összes érték elvész. 
+> Ha újraindít egy alkalmazás-példányt, a rendszer véglegesen törli a kapcsolódó ideiglenes tárolót.
 
-## <a name="enable-persistent-storage-using-the-azure-portal"></a>Az állandó tárterület engedélyezése a Azure Portal használatával
+Az állandó tárterület egy, az Azure által kezelt fájlmegosztás-tároló, amelyet egy alkalmazás foglal le. Az állandó tárolóban tárolt adatmennyiséget az alkalmazás összes példánya megosztja. Az Azure Spring Cloud-példányok legfeljebb 10 olyan alkalmazást tartalmazhatnak, amelyeken engedélyezve van az állandó tárterület. Minden alkalmazás 50 GB állandó tárterületet foglal le. Az állandó tárterület alapértelmezett csatlakoztatási útvonala a/persistent.
 
-1. A Azure Portal kezdőképernyőn válassza a **minden erőforrás**elemet.
+> [!WARNING]
+> Ha letilt egy alkalmazás állandó tárterületét, az összes tárterület fel van foglalva, és az összes tárolt érték elvész.
 
-     >![A minden erőforrás ikon megkeresése](media/portal-all-resources.jpg)
+## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Az állandó tárterület engedélyezése a Azure Portal használatával
 
-1. Keresse meg és válassza ki azt az Azure Spring Cloud-erőforrást, amelynek állandó tárterületre van szüksége.  Ebben a példában az alkalmazás neve *jpspring*.
+1. A Azure Portal **kezdőlapján** válassza az **összes erőforrás**lehetőséget.
 
-    > ![A applicationb megkeresése](media/select-service.jpg)
+    >![A minden erőforrás ikon megkeresése](media/portal-all-resources.jpg)
+
+1. Válassza ki azt az Azure Spring Cloud-erőforrást, amelynek állandó tárterületre van szüksége. Ebben a példában a kiválasztott alkalmazás neve **felrugós**.
+
+    > ![Alkalmazás kiválasztása](media/select-service.jpg)
 
 1. A **Beállítások** fejléc alatt válassza az **alkalmazások**lehetőséget.
 
-1. A Spring Cloud Services a táblázatban fog megjelenni.  Válassza ki azt a szolgáltatást, amelyhez állandó tárolót kíván hozzáadni.  Ebben a példában az **átjáró** szolgáltatást fogjuk kiválasztani.
+1. Az Azure Spring Cloud Services egy táblában jelenik meg.  Válassza ki azt a szolgáltatást, amelyhez állandó tárolót kíván hozzáadni. Ebben a példában az **átjáró** szolgáltatás van kiválasztva.
 
     > ![Válassza ki a szolgáltatást](media/select-gateway.jpg)
 
-1. A szolgáltatás konfiguráció paneljén válassza a **Konfigurálás** lehetőséget.
+1. A szolgáltatás konfigurációja lapon válassza a **Konfigurálás** lehetőséget.
 
-1. Válassza ki az **állandó tárterület** fület, és engedélyezze az állandó tárterületet.
+1. Válassza ki az **állandó tárterület** fület, és válassza az **Engedélyezés**lehetőséget.
 
     > ![Állandó tárterület engedélyezése](media/enable-persistent-storage.jpg)
 
-Ha az állandó tárterület engedélyezve van, a mérete és elérési útja is megjelenik ezen az oldalon.
+Az állandó tárterület engedélyezése után a mérete és elérési útja a konfiguráció lapon látható.
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Az állandó tároló módosítása az Azure CLI használatával
 
@@ -56,28 +58,30 @@ Ha szükséges, telepítse az Azure CLI-hez készült Spring Cloud bővítményt
 ```azurecli
 az extension add --name spring-cloud
 ```
+Egyéb műveletek:
 
-Állandó lemezzel rendelkező alkalmazás létrehozása:
- 
-```azurecli
-az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-```
+* Állandó tárterülettel rendelkező alkalmazás létrehozása:
 
-Állandó tárterület engedélyezése egy meglévő alkalmazásban:
+    ```azurecli
+    az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
+    ```
 
-```azurecli
-az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-``` 
+* Állandó tárterület engedélyezése egy meglévő alkalmazáshoz:
 
-Állandó tárterület letiltása egy meglévő alkalmazásban:
+    ```azurecli
+    az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
+    ```
 
-> [!WARNING]
-> Az állandó tárterület letiltásával felszabadítja az adott alkalmazás tárterületét, és véglegesen elveszíti az ott tárolt összes adatvesztést. 
+* Az állandó tárterület letiltása egy meglévő alkalmazásban:
 
-```azurecli
-az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
-```
+    ```azurecli
+    az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
+    ```
 
-## <a name="next-steps"></a>További lépések
+    > [!WARNING]
+    > Ha letilt egy alkalmazás állandó tárterületét, az összes tárterület fel van foglalva, és az összes tárolt érték véglegesen elvész.
 
-Ismerje meg az [alkalmazás-és szolgáltatási kvótákat](spring-cloud-quotas.md), vagy Ismerje meg, hogyan [méretezheti manuálisan az alkalmazást](spring-cloud-tutorial-scale-manual.md).
+## <a name="next-steps"></a>Következő lépések
+
+* Az [alkalmazások és a szolgáltatási kvóták](spring-cloud-quotas.md)megismerése.
+* Megtudhatja, hogyan [méretezheti manuálisan az alkalmazást](spring-cloud-tutorial-scale-manual.md).

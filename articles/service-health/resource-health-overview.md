@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Health áttekintése | Microsoft Docs
+title: Azure Resource Health áttekintése
 description: A Azure Resource Health áttekintése
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356794"
 ---
 # <a name="resource-health-overview"></a>Resource Health áttekintése
  
@@ -25,7 +22,7 @@ Az *erőforrás* egy Azure-szolgáltatás adott példánya, például egy virtu�
 
 Az állapot értékelésével kapcsolatos további információkért tekintse meg az erőforrástípusok és állapot-ellenőrzések listáját [Azure Resource Health](resource-health-checks-resource-types.md).
 
-## <a name="health-status"></a>Állapot
+## <a name="health-status"></a>Állapotadatok
 
 Egy erőforrás állapota a következő állapotok egyike jelenik meg.
 
@@ -35,7 +32,7 @@ Az *elérhető* érték azt jelenti, hogy nem észlelhetők olyan események, am
 
 ![Az * elérhető * állapot a "nemrég megoldott" értesítéssel rendelkező virtuális géphez](./media/resource-health-overview/Available.png)
 
-### <a name="unavailable"></a>Nem elérhető
+### <a name="unavailable"></a>Nem érhető el
 
 A nem *érhető el* érték azt jelenti, hogy a szolgáltatás egy folyamatos platformot észlelt, vagy az erőforrás állapotát befolyásoló nem platformos eseményt.
 
@@ -57,15 +54,15 @@ A platformon kívüli eseményeket a felhasználói műveletek aktiválják. Ily
 
 Az *ismeretlen* érték azt jelenti, hogy Resource Health több mint 10 percen belül nem kapott információt az erőforrásról. Bár ez az állapot nem az erőforrás állapotának végleges jele, a hibaelhárításhoz fontos adatpont.
 
-Ha az erőforrás a várt módon fut, az erőforrás állapota néhány perc múlva elérhetővé válik.
+Ha az erőforrás a várt módon fut, az erőforrás állapota néhány perc múlva *elérhetővé* válik.
 
 Ha az erőforrással kapcsolatos problémákat tapasztal, az *ismeretlen* állapot azt jelentheti, hogy a platformon lévő esemény hatással van az erőforrásra.
 
 ![Ismeretlen * állapotú virtuális gép esetén](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Csökkentett teljesítmény
+### <a name="degraded"></a>Csökkentett teljesítményű
 
-Az elromlott érték azt jelenti, hogy az erőforrás a teljesítmény csökkenését észlelte, bár a szolgáltatás továbbra is használható.
+Az *elromlott* érték azt jelenti, hogy az erőforrás a teljesítmény csökkenését észlelte, bár a szolgáltatás továbbra is használható.
 
 A különböző erőforrásoknak a saját feltételeiket kell megadniuk, amikor jelentést készítenek azok teljesítményéről.
 
@@ -73,7 +70,7 @@ A különböző erőforrásoknak a saját feltételeiket kell megadniuk, amikor 
 
 ## <a name="reporting-an-incorrect-status"></a>Helytelen állapot jelentése
 
-Ha úgy gondolja, hogy az aktuális állapot helytelen, a **jelentés helytelen**állapot állapotának kiválasztásával megadhatja a számunkra. Abban az esetben, ha egy Azure-probléma hatással van az Ön számára, javasoljuk, hogy forduljon a Resource Health támogatási szolgálatához.
+Ha úgy gondolja, hogy az aktuális állapot helytelen, a **jelentés helytelen állapot állapotának**kiválasztásával megadhatja a számunkra. Abban az esetben, ha egy Azure-probléma hatással van az Ön számára, javasoljuk, hogy forduljon a Resource Health támogatási szolgálatához.
 
 ![Helytelen állapottal kapcsolatos adatok beküldésére szolgáló űrlap](./media/resource-health-overview/incorrect-status.png)
 
@@ -83,7 +80,7 @@ A Resource Health **állapotának korábbi** 14 napja is elérhető.
 
 ![Resource Health események listája az elmúlt két hétben](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
 Resource Health megnyitása egy erőforráshoz:
 
@@ -97,7 +94,7 @@ A Resource Health a **minden szolgáltatás** lehetőség kiválasztásával és
 
 ![Resource Health megnyitása a "minden szolgáltatás"](./media/resource-health-overview/FromOtherServices.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át ezeket a hivatkozásokat, hogy többet tudjon meg a Resource Healthról:
 -  [Erőforrástípusok és állapot-ellenőrzések Azure Resource Health](resource-health-checks-resource-types.md)

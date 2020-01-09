@@ -2,23 +2,25 @@
 title: Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
 description: Ismerje meg, hogyan csatlakozhat magántulajdonban lévő Storage-fiókhoz az Azure-ban egy privát végpont használatával.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899803"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357566"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet egy Azure-beli virtuális hálózaton, egy privát végponttal rendelkező Storage-fiókot a Azure Portal használatával. Ezután biztonságosan hozzáférhet a Storage-fiókhoz a virtuális gépről.
 
+> [!NOTE]
+> A magánhálózati végpont (ok) nem engedélyezett ugyanazon alhálózaton lévő szolgáltatási végpontokkal együtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 0fdba3afe7e0977496af105e39fb5d7e657df2f0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 4a0207299b480136e8054fbe3d4579dd98f45267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430552"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Többtárolós (előzetes verziójú) alkalmazás létrehozása Docker-összeállítási konfiguráció használatával
 
-A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazásoknak a Web App for Containersben történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) egy Docker Compose-konfiguráció használatával.
+> [!NOTE]
+> A multi-Container előzetes verzióban érhető el.
+
+A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy többtárolós alkalmazást (előzetes verzió) a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) Docker-összeállítási konfiguráció használatával történő Web App for containers.
 
 Ezt a rövid útmutatót a Cloud Shellben követjük végig, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) (2.0.32-es vagy újabb verzió) használatával. 
 

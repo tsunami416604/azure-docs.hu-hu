@@ -4,22 +4,16 @@ description: Gyors útmutató az Azure-alkalmazások konfigurációjának a .NET
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: .NET
-ms.workload: tbd
-ms.date: 10/09/2019
+ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433626"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
 
@@ -35,7 +29,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+6. Válassza a **Configuration Explorer** > **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
     | Jelmagyarázat | Value (Díj) |
     |---|---|
@@ -49,7 +43,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a  **Create** (Létrehozás) gombra.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a **Létrehozás** gombra.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -98,12 +92,15 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 1. Állítson be egy **ConnectionString** nevű környezeti változót az alkalmazás konfigurációs tárolójának kapcsolati karakterláncára. Ha Windows-parancssort használ, futtassa a következő parancsot:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
 1. Indítsa újra a Visual studiót, hogy a módosítás érvénybe lépjen. A konzol alkalmazás létrehozásához és futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

@@ -6,23 +6,34 @@ ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 10b3e572ec61d1eff342f24a6a5a7bcba6276983
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954440"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495373"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-ba történő replikáció engedélyezése VMware virtuális gépekhez
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a helyszíni VMware virtuális gépek replikálása az Azure-ba.
 
+## <a name="resolve-common-issues"></a>Gyakori problémák megoldása
+
+* Minden lemeznek 4 TB-nál kisebbnek kell lennie.
+* Az operációsrendszer-lemeznek alaplemeznek kell lennie, nem dinamikus lemeznek.
+* A 2. és UEFI-kompatibilis virtuális gépek esetében az operációsrendszer-családnak Windows rendszernek kell lennie, és a rendszerindító lemeznek a 300 GB-nál kisebbnek kell lennie.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy rendelkezik:
+Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
 - [A helyszíni forrás környezet beállítása](vmware-azure-set-up-source.md).
 - [Állítsa be a célként megadott környezetet az Azure-ban](vmware-azure-set-up-target.md).
+- Mielőtt elkezdené, [ellenőrizze a követelményeket és az előfeltételeket](vmware-physical-azure-support-matrix.md) . Fontos megjegyezni a következőket:
+    - A replikált gépek [támogatott operációs rendszerei](vmware-physical-azure-support-matrix.md#replicated-machines) .
+    - [Tárterület-/lemez-](vmware-physical-azure-support-matrix.md#storage) támogatás.
+    - Az [Azure-követelmények](vmware-physical-azure-support-matrix.md#azure-vm-requirements) , amelyeknek a helyszíni számítógépeknek meg kell felelniük.
+
 
 ## <a name="before-you-start"></a>Előkészületek
 A VMware virtuális gépek replikálásakor tartsa szem előtt ezeket az információkat:
@@ -123,11 +134,7 @@ A Microsoft frissítési garanciával rendelkező ügyfelei az Azure-ba migrált
 
 További információ a [Azure Hybrid Benefitról](https://aka.ms/azure-hybrid-benefit-pricing).
 
-## <a name="resolve-common-issues"></a>Gyakori problémák megoldása
 
-* Minden lemeznek 4 TB-nál kisebbnek kell lennie.
-* Az operációsrendszer-lemeznek alaplemeznek kell lennie, nem dinamikus lemeznek.
-* A 2. és UEFI-kompatibilis virtuális gépek esetében az operációsrendszer-családnak Windows rendszernek kell lennie, és a rendszerindító lemeznek a 300 GB-nál kisebbnek kell lennie.
 
 ## <a name="next-steps"></a>Következő lépések
 

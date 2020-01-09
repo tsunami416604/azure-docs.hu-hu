@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bfff7790fa4984241e1c3dda19a20c8b13591fb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442031"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
@@ -21,7 +21,6 @@ A Azure Cosmos DB natív támogatást biztosít a huzal protokollal kompatibilis
 Az SQL API, a Gremlin API és a Table API használatakor a rendszer az Azure Cosmos-fiókban konfigurált alapértelmezett konzisztencia-szintet használja. 
 
 Ha Cassandra API vagy Azure Cosmos DB API-ját használja a MongoDB, az alkalmazások az Apache Cassandra és a MongoDB által kínált összes konzisztencia-készletet megkapják, ami még erősebb következetességet és tartósságot garantál. Ez a dokumentum az Apache Cassandra és a MongoDB konzisztencia-szintjeinek megfelelő Azure Cosmos DB következetességi szinteket mutatja.
-
 
 ## <a id="cassandra-mapping"></a>Az Apache Cassandra és a Azure Cosmos DB konzisztencia-szintjei közötti leképezés
 

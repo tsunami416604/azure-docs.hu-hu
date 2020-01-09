@@ -1,25 +1,16 @@
 ---
-title: Chaos-és feladatátvételi tesztek létrehozása az Azure Service Fabrichoz | Microsoft Docs
+title: Chaos-és feladatátvételi tesztek létrehozása az Azure Service Fabric
 description: A Service Fabric Chaos test és a feladatátvételi teszt forgatókönyvek használatával a hibák kiváltása és a szolgáltatások megbízhatóságának ellenőrzése.
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465531"
 ---
 # <a name="testability-scenarios"></a>Tesztelési forgatókönyvek
 A nagyméretű elosztott rendszerek, például a felhőalapú infrastruktúrák eleve megbízhatatlanok. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy a megbízható infrastruktúrák alapján futtassák a szolgáltatásokat. A magas színvonalú szolgáltatások írásához a fejlesztőknek képesnek kell lenniük az ilyen megbízhatatlan infrastruktúra kiváltására a szolgáltatásaik stabilitásának teszteléséhez.

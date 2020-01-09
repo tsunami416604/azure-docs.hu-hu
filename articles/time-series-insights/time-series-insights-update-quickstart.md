@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: az előzetes bemutató környezetének megismerése – Azure Time Series Insights | Microsoft Docs'
-description: Ismerkedjen meg Azure Time Series Insights előzetes bemutató környezettel egy minta rövid útmutató segítségével.
+description: Ismerkedjen meg a Azure Time Series Insights Preview bemutató környezet főbb funkcióival.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/24/2019
-ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/20/2019
+ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014760"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497473"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rövid útmutató: Ismerkedés a Azure Time Series Insights előzetes verziójának bemutató környezetével
 
@@ -43,33 +43,33 @@ A Time Series Insights Preview Explorer az előzmények és a kiváltó okok ele
    1. Módosítsa a nézet tartományát **1/1/17 20:00:00.00 – 3/10/17 20:00:00.00 (UTC) értékre**.
    1. Az érzékelő kiválasztásához válassza a **contoso növény 1** > **W7** > **Generator System** > **GeneratorSpeed**elemet. Ezután tekintse át a megjelenített értékeket.
 
-      [![W7 a contoso-üzemben 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 a contoso-üzemben 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
 1. Az utóbbi időben a contoso tüzet észlelt a Wind Turbine **W7**-ben. A vélemények eltérőek lehetnek a tüzet kiváltó okok miatt. Time Series Insights láthatjuk, hogy a Fire Alert-érzékelő aktiválva lett a tűz során.
 
    1. Módosítsa a nézet tartományát **3/9/17 20:00:00.00 – 3/10/17 20:00:00.00 (UTC) értékre**.
    1. Válassza a **biztonsági rendszerek** > **FireAlert**elemet.
 
-      [![contoso tüzet észlelt a Wind Turbine W7 szolgáltatásban](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![contoso tüzet észlelt a Wind Turbine W7 szolgáltatásban](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Tekintse át a további eseményeket a tűz idején, hogy megértse, mi történt. Az olajnyomás és az aktív figyelmeztetések közvetlenül a tűz előtt vannak megszegve.
 
    1. Válassza a **pitch System** > **HydraulicOilPressure**elemet.
    1. Válassza a **pitch System** > **ActiveWarning**elemet.
 
-      [![tekintse át a többi eseményt egy időben](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![tekintse át a többi eseményt egy időben](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
 1. Az olajnyomás és az aktív figyelmeztetési érzékelők közvetlenül a tűz előtt vannak megszegve. A megjelenített idősorozat kibontásával megtekintheti a tüzet eredményező egyéb jeleket. Mindkét érzékelő következetesen ingadozik az idő múlásával. Az ingadozások állandó és aggasztó mintát jeleznek.
 
     * Módosítsa a nézet tartományát **2/24/17 20:00:00.00 – 3/10/17 20:00:00.00 (UTC) értékre**.
 
-      [![olajnyomás és aktív figyelmeztetési érzékelők is Tüskén](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![olajnyomás és aktív figyelmeztetési érzékelők is Tüskén](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
 1. A két éves korábbi adatmennyiség vizsgálatával egy másik, az érzékelővel megegyező állapotú esemény is kiderül.
 
     * Módosítsa a nézet tartományát **1/1/16-12/31/17 értékre** (az összes adatértékre).
 
-      [![a korábbi minták megkeresése](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![a korábbi minták megkeresése](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
 A Time Series Insights és az érzékelő telemetria használatával felderítjük a régi adatokat tartalmazó hosszú távú trendet. Az új ismeretekkel a következőket teheti:
 
@@ -84,7 +84,7 @@ A Time Series Insights és az érzékelő telemetria használatával felderítj�
     1. Módosítsa a nézet tartományát **6/1/17 20:00:00.00 – 7/1/17 20:00:00.00 (UTC) értékre**.
     1. Válassza a **contoso növény 1** > **W6** > **biztonsági** > **VoltageActuatorSwitchWarning**lehetőséget.
 
-       [![a nézet tartományának módosítása és a W6 kiválasztása](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![a nézet tartományának módosítása és a W6 kiválasztása](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. A figyelmeztetés a generátortól kapott feszültséggel kapcsolatos hibát jelez. A generátor teljes teljesítménye az aktuális intervallumban található normál paramétereken belül van. Az intervallum növelésével egy másik mintázat jelenik meg. A legördülő lista egyértelmű.
 
@@ -92,20 +92,20 @@ A Time Series Insights és az érzékelő telemetria használatával felderítj�
     1. Válassza a **Generator System** > **ActivePower**elemet.
     1. Módosítsa az intervallumot a **3D**értékre.
 
-       [![az intervallum módosítása a 3D értékre](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![az intervallum módosítása a 3D értékre](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
 1. Az időtartomány kibővítésével meghatározhatja, hogy a probléma leállt-e, vagy folytatja-e a problémát.
 
     * Az időtartam meghosszabbítása 60 napra.
 
-      [![az időtartam meghosszabbítása 60 napra](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![az időtartam meghosszabbítása 60 napra](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
 1. Más szenzor-adatpontok is hozzáadhatók a nagyobb kontextus érdekében. Minél több érzékelők is megtekinthetők, a probléma megismertetését. A tényleges értékek megjelenítéséhez dobjunk egy jelölőt. 
 
     1. Válassza a **Generátorrendszer**lehetőséget, majd válassza ki a három érzékelőt: **GridVoltagePhase1**, **GridVoltagePhase2**és **GridVoltagePhase3**.
     1. Dobjon egy jelölőt a látható terület utolsó adatpontjára.
 
-       [jelölő ![eldobása](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [jelölő ![eldobása](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
     A feszültség-érzékelők közül kettő egyformán működik, a normál paramétereken belül. Úgy tűnik, a **GridVoltagePhase3** -érzékelő a bűnös.
 
@@ -113,7 +113,7 @@ A Time Series Insights és az érzékelő telemetria használatával felderítj�
 
     * Módosítsa a megjelenítést úgy, hogy az összes **generátor** rendszerérzékelője ugyanazon a diagramon legyen.
 
-      [![a Megjelenítés módosításával mindent tartalmaz](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![a Megjelenítés módosításával mindent tartalmaz](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

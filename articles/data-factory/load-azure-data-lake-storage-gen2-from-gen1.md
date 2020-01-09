@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 19b1b345c72361ae1fcdad5221dcd0e877b32fe7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5809307ff8e047ebc6120cb5ebf36590f2a2a51a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444006"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása Azure Data Lake Storage Gen1ból a Gen2-be Azure Data Factory
 
@@ -49,7 +49,7 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
  
     * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "az adatfeldolgozó neve \"LoadADLSDemo\" nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállító számára. Például: _**sajátneve**_ **ADFTutorialDataFactory**. Hozza létre újra az adatelőállítót. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
-    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából. Kiválaszthatja az **új létrehozása** lehetőséget is, és megadhatja az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-overview.md) ismertető cikket. 
+    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából. Kiválaszthatja az **új létrehozása** lehetőséget is, és megadhatja az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
     * **Verzió**: válassza a **v2**elemet.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállító által használt adattárak más helyeken és régiókban is lehetnek. 
 

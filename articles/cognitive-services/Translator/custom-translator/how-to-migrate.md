@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446782"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
@@ -27,7 +27,7 @@ Ezeket a műveleteket az áttelepítés során hajtja végre a rendszer:
 * A központi képzésből áttelepített BLEU-pontszám a modell TrainingDetails oldalán található a "Bleu pontszám az MT hub-ban" című szakaszban.
 
 > [!Note] 
-> A sikeres képzés érdekében a Custom Translator legalább 10 000 egyedi kinyert mondatot igényel. Az egyéni fordító nem végezheti el a [javasolt minimálisnál](sentence-alignment.md#suggested-minimum-number-of-sentences)kevesebb tanítást.
+> A sikeres képzés érdekében a Custom Translator legalább 10 000 egyedi kinyert mondatot igényel. Az egyéni fordító nem végezheti el a [javasolt minimálisnál](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)kevesebb tanítást.
 
 ## <a name="find-custom-translator-workspace-id"></a>Egyéni Translator-munkaterület AZONOSÍTÓjának keresése
 
@@ -130,10 +130,10 @@ Ha részletesebb áttelepítési jelentést szeretne készíteni a projektekről
 
 Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit hasonlítja össze.
 
-|   | Hub | Custom Translator |
+|   | Központ | Custom Translator |
 |:-----|:----:|:----:|
 |Testreszabási funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
-| Szöveges API-verzió  | 2\. verzió    | V3  |
+| Szöveges API-verzió  | 2\. verzió    | K3  |
 | SMT testreszabása | Igen   | Nem |
 | NMT testreszabása | Nem    | Igen |
 | Új Unified Speech Services testreszabása | Nem    | Igen |
@@ -143,7 +143,7 @@ Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit h
 
 Ha Ön olyan Közösség vagy szervezet, amely a Microsoft Translator új nyelvi rendszerének létrehozásán dolgozik, további információért tekintse meg [custommt@microsoft.com](mailto:custommt@microsoft.com) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell betanítása](how-to-train-model.md).
 - Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.

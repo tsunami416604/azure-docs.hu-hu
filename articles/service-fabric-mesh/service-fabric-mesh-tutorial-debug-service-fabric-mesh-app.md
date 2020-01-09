@@ -1,32 +1,23 @@
 ---
-title: Oktatóanyag – Hibakeresés egy helyi fejlesztési fürtben futó Azure Service Fabric Mesh-webalkalmazásban | Microsoft Docs
+title: Helyileg futó Azure Service Fabric Mesh-webalkalmazás hibakeresése
 description: Ebben az oktatóanyagban egy olyan Azure Service Fabric mesh-alkalmazásban végez hibakeresést, amely a helyi fürtön fut.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810407"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494961"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: A helyi fejlesztési fürtön futó Service Fabric-háló alkalmazások hibakeresése
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése
 
 Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric Mesh-alkalmazások helyi fejlesztői fürtön történő felépítését és hibakeresését ismerteti.
 
-Ebben az oktatóanyagban elsajátíthatja:
+Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * Mi történik az Azure Service Fabric mash-alkalmazások fejlesztésekor
@@ -48,11 +39,11 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Először [alakítsa ki a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítésével.
+* Győződjön meg arról, hogy [beállította a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md), amely tartalmazza a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítését.
 
 ## <a name="download-the-to-do-sample-application"></a>A teendőlista-mintaalkalmazás letöltése
 
-Ha nem hozott létre a feladatlista mintaalkalmazáshoz [oktatóanyag-sorozat része](service-fabric-mesh-tutorial-create-dotnetcore.md), töltheti le. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
+Ha nem hozta létre a tennivaló minta alkalmazást a [jelen oktatóanyag-sorozat első részében](service-fabric-mesh-tutorial-create-dotnetcore.md), letöltheti azt. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh
@@ -74,11 +65,11 @@ Az **F5** billentyű megnyomásával végezze el a fordítást és a szolgáltat
 
 Miután a helyi üzembe helyezés befejeződött, és a Visual Studio elindította az alkalmazást, egy böngészőablakban megnyílik a mintául szolgáló alapértelmezett weboldal.
 
-## <a name="debugging-tips"></a>Hibakeresési tippeket
+## <a name="debugging-tips"></a>Hibakeresési tippek
 
-Az első hibakeresés (F5) sokkal gyorsabban futtassa a következő témakör utasításait követve ellenőrizze [teljesítmény optimalizálása a Visual Studio](service-fabric-mesh-howto-optimize-vs.md).
+A [Visual Studio teljesítményének optimalizálása](service-fabric-mesh-howto-optimize-vs.md)című részben leírtak szerint végezze el az első hibakeresési műveletet (F5).
 
-Jelenleg egy olyan probléma, hatására a hívás `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` sikertelen csatlakozni a szolgáltatáshoz. Ez ekkor fordulhat elő, ha a gazdagép IP-címe megváltozik. A probléma megoldása:
+Jelenleg probléma merül fel, ami miatt a rendszer meghívja a `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` a szolgáltatáshoz való sikertelen kapcsolódásra. Ez ekkor fordulhat elő, ha a gazdagép IP-címe megváltozik. A probléma megoldása:
 
 1. Távolítsa el az alkalmazást a helyi fürtből (a Visual Studio esetében: **Build** > **Clean Solution** [Build > Megoldás eltávolítása]).
 2. A Service Fabric Local Cluster Manager alkalmazásban válassza a **Stop Local Cluster** (Helyi fürt leállítása), majd a **Start Local Cluster** (Helyi fürt indítása) elemet.
@@ -92,16 +83,16 @@ Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy ta
 
 ### <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 
-Hibakeresése a Visual Studióban egy Service Fabric-háló alkalmazást, hogy egy helyi Service Fabric fejlesztési fürtöt használ. Annak ellenőrzéséhez, hogy a rendszer miként olvassa be a teendőket a háttérszolgáltatásból, végezze el az OnGet() metódus hibakeresését.
-1. Az a **WebFrontEnd** projektben nyissa meg **oldalak** > **Index.cshtml** > **Index.cshtml.cs** és állítsa be a Töréspont az a **OnGet** metódus (17. sor).
-2. Az a **ToDoService** projektben nyissa meg **TodoController.cs** és állítson be egy töréspontot a **első** metódus (15. sor).
+Ha egy Service Fabric Mesh alkalmazást a Visual Studióban tesz elérhetővé, helyi Service Fabric fejlesztési fürtöt használ. Annak ellenőrzéséhez, hogy a rendszer miként olvassa be a teendőket a háttérszolgáltatásból, végezze el az OnGet() metódus hibakeresését.
+1. A **webfrontend** projektben nyissa meg a **lapokat** > **index. cshtml** > **index.cshtml.cs** , és állítson be egy töréspontot a **OnGet** metódusban (17. sor).
+2. A **ToDoService** projektben nyissa meg a **TodoController.cs** , és állítson be egy töréspontot a **Get** metódusban (15. sor).
 3. Térjen vissza a böngészőbe, és frissítse az oldalt. Az első töréspont a webes kezelőfelület `OnGet()` metódusában jelentkezik. A `backendUrl` változó ellenőrzésével megvizsgálhatja, hogy a rendszer hogyan vonja össze a **service.yaml** fájlban megadott környezeti változókat a háttérszolgáltatással való kapcsolatfelvételhez használt URL-ben.
 4. Lépje át a `client.GetAsync(backendUrl).GetAwaiter().GetResult())` hívást (F10), és a következő töréspont a vezérlő `Get()`metódusában jelentkezik. Ezzel a módszerrel láthatja, hogy a rendszer hogyan olvassa be a teendők listáját a memóriabeli listából.
-5. Amikor végzett, nyomja le a Visual Studióban a project hibakeresésének leállításához **Shift + F5**.
+5. Ha elkészült, a **SHIFT + F5**billentyűkombináció lenyomásával állítsa le a projekt hibakeresését a Visual Studióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag jelen része az alábbiakat ismertette:
+Ez az oktatóanyag a következőket ismertette:
 
 > [!div class="checklist"]
 > * Mi történik az Azure Service Fabric mash-alkalmazások fejlesztésekor

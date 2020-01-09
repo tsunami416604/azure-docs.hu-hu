@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric DNS-szolgáltatás | Microsoft Docs
+title: Azure Service Fabric DNS-szolgáltatás
 description: Használja a Service Fabric DNS-szolgáltatását, hogy a rendszer a fürtön belül felfedezzék a szolgáltatásait.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 7/20/2018
-ms.author: atsenthi
-ms.openlocfilehash: 707fc9f073e37d60c6c6fca8e9a8392b2550da9f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458027"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS szolgáltatás az Azure-ban Service Fabric
 A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
@@ -181,7 +170,7 @@ A partíciót tároló DNS-lekérdezések a következőképpen vannak formázva:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Az elemek magyarázata:
+Helyszín:
 
 - *Első – a particionált-Service-DNSName* az első része a szolgáltatás DNS-nevének.
 - A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "--". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).

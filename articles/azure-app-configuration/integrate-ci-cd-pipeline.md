@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag folyamatos integrációs és kézbesítési folyamat integrálásához az Azure app Configuration használatával | Microsoft Docs
+title: 'Oktatóanyag: integrálás folyamatos integrációs és szállítási folyamattal'
+titleSuffix: Azure App Configuration
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhatja ki a konfigurációs fájlokat az Azure-alkalmazások konfigurációjában tárolt adathasználattal a folyamatos integráció és a kézbesítés során
 services: azure-app-configuration
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8adfee1e707181e78f4e845f61477b08af935e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433637"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 

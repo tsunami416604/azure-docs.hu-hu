@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/24/2019
+ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311693"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495782"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Java-alkalmazások készítése Apache HBase
 
@@ -36,6 +36,7 @@ A jelen dokumentumban leírt lépések az [Apache Maven](https://maven.apache.or
 * Egy szövegszerkesztő. Ez a cikk a Microsoft Jegyzettömb alkalmazást használja.
 
 ## <a name="test-environment"></a>Tesztkörnyezet
+
 A cikkben használt környezet a Windows 10 rendszert futtató számítógép volt.  A parancsok végrehajtása egy parancssorban történt, a különböző fájlok pedig a Jegyzettömb alkalmazásban lettek szerkesztve. Ennek megfelelően módosítsa a környezetét.
 
 A parancssorba írja be az alábbi parancsokat egy működő környezet létrehozásához:
@@ -84,7 +85,7 @@ A `pom.xml`a `<dependencies>` szakaszban adja hozzá a következő szöveget:
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -101,8 +102,8 @@ Ez a szakasz azt jelzi, hogy a projektnek szüksége van a **hbase-Client** és 
 
 | HDInsight-fürt verziója | Apache HBase-verzió használata |
 | --- | --- |
-| 3.6 | 1.1.2 |
-| 4.0 | 2.0.0 |
+| 3,6 | 1.1.2 |
+| 4,0 | 2.0.0 |
 
 A HDInsight-verziókkal és-összetevőkkel kapcsolatos további információkért tekintse meg [a HDInsight-ben elérhető különböző Apache Hadoop összetevőket](../hdinsight-component-versioning.md).
 
@@ -128,7 +129,7 @@ Adja hozzá a következő kódot a `pom.xml` fájlhoz, majd mentse és zárjuk b
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -408,7 +409,7 @@ A következő lépések `scp` használatával másolják a JAR-t az Apache-HBase
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. A Java-alkalmazással létrehozott HBase-tábla létrehozásához használja a következő parancsot az Open SSH-kapcsolatban:
+3. A Java-alkalmazással létrehozott HBase-tábla létrehozásához használja a következő parancsot az Open SSH-kapcsolatban:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable

@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: 2b83c61d05cbc9d84c74d03004839a21505519fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444094"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Megosztott, saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
 
@@ -99,7 +99,7 @@ Ha Azure PowerShell használatával szeretné létrehozni a megosztott saját ü
     > [!NOTE]  
     > Ez a lépés nem kötelező. Ha már rendelkezik egy adatelőállítóval, ugorja át ezt a lépést. 
 
-    Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a WestEurope helyen: 
+    Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a WestEurope helyen: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

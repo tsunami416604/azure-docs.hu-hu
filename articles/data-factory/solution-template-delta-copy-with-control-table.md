@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439749"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolat egy adatbázisból egy vezérlő táblával
 
@@ -38,10 +38,13 @@ A sablon négy tevékenységet tartalmaz:
 - A másolás csak a forrásadatbázis változásait **másolja** a célhelyre. A forrásadatbázis módosításainak azonosítására szolgáló lekérdezés hasonló a "SELECT * FROM Data_Source_Table, ahol TIMESTAMP_Column >" utolsó nagy vízjel "és TIMESTAMP_Column < =" aktuális, magas vízjel "".
 - A **SqlServerStoredProcedure** a jelenlegi magas küszöbértékű értéket egy külső vezérlőelem-táblázatba írja a következő alkalommal, a különbözeti másoláshoz.
 
-A sablon öt paramétert határoz meg:
+A sablon a következő paramétereket definiálja:
 - *Data_Source_Table_Name* a forrás-adatbázis azon táblája, amelyről be szeretné tölteni az adatait.
 - *Data_Source_WaterMarkColumn* a forrás tábla azon oszlopának neve, amely az új vagy frissített sorok azonosítására szolgál. Az oszlop típusa általában *datetime*, *int*vagy hasonló.
-- *Data_Destination_Folder_Path* vagy *Data_Destination_Table_Name* az a hely, ahol az Adatmásolás a célhelyre történik.
+- A *Data_Destination_Container* az a hely, ahol az Adatmásolás a célhelyre történik.
+- A *Data_Destination_Directory* a könyvtár elérési útja annak a helynek a gyökerében, ahová az adat a célhelyre másolódik.
+- A *Data_Destination_Table_Name* az a hely, ahol az Adatmásolás a célhelyre történik (ez akkor alkalmazható, ha az "Azure szinapszis Analytics (korábbi NEVÉN SQL DW)" lehetőséget választotta az adat célhelyként.
+- *Data_Destination_Folder_Path* az a hely, ahová a rendszer átmásolja az adatait a célhelyre (ha a "fájlrendszer" vagy a "Azure Data Lake Storage Gen1" lehetőség van kiválasztva adat célhelyként).
 - A *Control_Table_Table_Name* a külső vezérlő tábla, amely a nagy vízjel értékét tárolja.
 - *Control_Table_Column_Name* a külső vezérlő tábla azon oszlopa, amely a nagy vízjel értékét tárolja.
 
@@ -100,20 +103,18 @@ A sablon öt paramétert határoz meg:
     ![Új kapcsolódás létrehozása a Control Table adattárhoz](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. Kattintson a **Sablon használata** lehetőségre.
-
-     ![A sablon használata](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. A rendelkezésre álló folyamat az alábbi példában látható módon jelenik meg:
+  
+    ![A folyamat áttekintése](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![A folyamat áttekintése](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. Válassza a **tárolt eljárás**lehetőséget. A **tárolt eljárás neve**mezőben válassza a **[dbo] lehetőséget. [ update_watermark]** . Válassza az **importálási paraméter**lehetőséget, majd válassza a **dinamikus tartalom hozzáadása**lehetőséget.  
 
-9. Válassza a **tárolt eljárás**lehetőséget. A **tárolt eljárás neve**mezőben válassza a következőt: **[update_watermark]** . Válassza az **importálási paraméter**lehetőséget, majd válassza a **dinamikus tartalom hozzáadása**lehetőséget.  
-
-     ![Tárolt eljárási tevékenység beállítása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![Tárolt eljárási tevékenység beállítása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. Írja be a **(z) {Activity ("LookupCurrentWaterMark"). output. firstRow. NewWatermarkValue} nevű\@** tartalmat, majd válassza a **Befejezés**lehetőséget.  
 
-     ![A tárolt eljárás paramétereinek megírása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![A tárolt eljárás paramétereinek megírása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
@@ -132,13 +133,12 @@ A sablon öt paramétert határoz meg:
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
+
 14. A folyamat ismételt futtatásához válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
-    ![Válassza a * * hibakeresés * * lehetőséget](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    Látni fogja, hogy csak az új sorok lettek átmásolva a célhelyre.
 
-    Láthatja, hogy csak az új sorok lettek átmásolva a célhelyre.
-
-15. Választható Ha a SQL Data Warehouse lehetőséget választotta az adat célhelyként, akkor az Azure Blob Storage-hoz való kapcsolódást is meg kell adnia az átmeneti tároláshoz, amelyet a SQL Data Warehouse-alapok igényelnek. Győződjön meg arról, hogy a tároló már létre van hozva a blob Storage-ban.
+15. Választható Ha az Azure szinapszis Analytics (korábbi nevén SQL DW) lehetőséget választja az adat célhelyként, akkor az Azure Blob Storage-hoz való kapcsolódást is meg kell adnia az átmeneti tároláshoz, amelyet a SQL Data Warehouse-alapok igényelnek. A sablon létrehozza a tároló elérési útját. A folyamat futtatása után győződjön meg arról, hogy a tároló létre lett-e hozva a blob Storage-ban.
     
     ![A bázisterület konfigurálása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

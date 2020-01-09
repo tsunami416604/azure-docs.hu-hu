@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 2e5cebb05549c2bd3cd810da58930efdae1422e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 313b9c92b10d3170eb71bb8290a9388bb8dcc67c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427520"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Hangulati elemzési modell létrehozása Azure Machine Learning Studio (klasszikus)
 
@@ -66,7 +66,7 @@ Az N-Gram-funkciók kinyerésének alternatív megközelítése használhatja a 
 ## <a name="step-3-train-classification-or-regression-model"></a>3\. lépés: besorolás vagy regressziós modell betanítása
 Most a szöveg át lett alakítva numerikus funkciók oszlopaira. Az adatkészlet továbbra is tartalmaz előző fázisokból származó karakterlánc-oszlopokat, ezért a kizárni kívánt oszlopokat használjuk az adatkészletben.
 
-Ezután [kétosztályos logisztikai regressziót](https://msdn.microsoft.com/library/azure/dn905994.aspx) használunk, hogy megjósoljuk a célunkat: magas vagy alacsony felülvizsgálati pontszám. Ezen a ponton a szöveges elemzési probléma egy rendszeres besorolási problémára lett átalakítva. A modell fejlesztéséhez használhatja a Azure Machine Learning Studio klasszikus verziójában elérhető eszközöket. Például kísérletezheti különböző besorolásokkal, hogy megtudja, milyen eredményeket adnak, vagy a hiperparaméter hangolásával javítsa a pontosságot.
+Ezután [kétosztályos logisztikai regressziót](https://msdn.microsoft.com/library/azure/dn905994.aspx) használunk, hogy megjósoljuk a célunkat: magas vagy alacsony felülvizsgálati pontszám. Ezen a ponton a szöveges elemzési probléma egy rendszeres besorolási problémára lett átalakítva. A modell javítása érdekében a Azure Machine Learning Studio (klasszikus) eszközben elérhető eszközöket is használhatja. Például kísérletezheti különböző besorolásokkal, hogy megtudja, milyen eredményeket adnak, vagy a hiperparaméter hangolásával javítsa a pontosságot.
 
 ![Betanítás és pontszám](./media/text-analytics-module-tutorial/scoring-text.png)
 
@@ -86,6 +86,6 @@ Az adatkészletek modulban az oszlop kiválasztása előtt szúrjuk be a Select 
 
 Most már van egy kísérlet, amely webszolgáltatásként, a Request-Response vagy a Batch végrehajtási API-k használatával hívható meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg az [MSDN-dokumentációból](https://msdn.microsoft.com/library/azure/dn905886.aspx)származó Text Analytics-modulokat.
 

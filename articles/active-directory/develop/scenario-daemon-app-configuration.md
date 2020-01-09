@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423941"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -34,8 +34,8 @@ A Daemon-alkalmazásokat támogató Microsoft-kódtárak a következők:
   MSAL-könyvtár | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A Daemon-alkalmazások létrehozásához támogatott platformok a .NET-keretrendszer és a .NET Core-platformok (a UWP, a Xamarin. iOS és a Xamarin. Android is, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használhatók)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Fejlesztés folyamatban – nyilvános előzetes verzió
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A Daemon-alkalmazások támogatása a javában
 
 ## <a name="configuration-of-the-authority"></a>A szolgáltató konfigurációja
 
@@ -136,7 +136,7 @@ Adja hozzá a [Microsoft. IdentityClient](https://www.nuget.org/packages/Microso
 A MSAL.NET-ben a bizalmas ügyfélalkalmazás a `IConfidentialClientApplication` felület által reprezentált.
 MSAL.NET-névtér használata a forráskódban
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -164,7 +164,7 @@ Az alábbi kód segítségével hozhatja létre a bizalmas ügyfélalkalmazás e
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -204,7 +204,7 @@ Az alábbi kód segítségével hozhat létre egy tanúsítványt az alkalmazás
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -271,7 +271,7 @@ A MSAL.NET kétféle módszerrel biztosítanak aláírt állításokat a bizalma
 
 `WithClientAssertion`használatakor meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md)
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -281,7 +281,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 `WithClientClaims`használatakor a MSAL.NET saját maga fogja kiszámítani az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfél-jogcímeket tartalmazó aláírt állítást.
 Az alábbi kódrészlettel végezheti el az alábbiakat:
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);

@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár Content Moderator | Microsoft Docs'
+title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedjen meg a .NET-hez készült Content Moderator ügyféloldali kódtáraval.
+description: Ismerkedjen meg a .NET-hez készült Content Moderator ügyféloldali kódtár ezzel a rövid útmutatóval.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: cb812a0432e5fdb2828054751ef35f3de82226e7
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 52f00b1c35daab142e4131c60110aa0ed686a6bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382055"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Rövid útmutató: a .NET-hez készült ügyféloldali kódtár Content Moderator
 
@@ -103,7 +103,7 @@ A következő osztályok a Content Moderator .NET SDK főbb funkcióit kezelik.
 |[TextModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Ez az osztály a nyelv, a káromkodás, a hibák és a személyes adatok szövegének elemzéséhez nyújt funkciókat.|
 |[Értékelés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Ez az osztály a felülvizsgálati API-k funkcionalitását biztosítja, beleértve a feladatok létrehozására, az egyéni munkafolyamatokra és az emberi felülvizsgálatokra vonatkozó módszereket is.|
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat az Content Moderator .NET-hez készült ügyféloldali kódtára használatával:
@@ -270,7 +270,7 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések

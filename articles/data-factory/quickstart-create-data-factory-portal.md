@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea218da5316e921c44b7e80fa5f072417d98ca05
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c6a7755b692ec796707e4a22ed7e15ae2b60dfe7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440112"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
@@ -38,7 +38,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
 1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
    
    ![Válassza az erőforrás létrehozása lehetőséget Azure Portal menüből](./media/doc-common-process/create-a-resource.png)
@@ -56,7 +56,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
    - Kattintson a **Meglévő használata** elemre, majd válasszon egy meglévő erőforráscsoportot a listából. 
    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-   Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+   Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét.
 

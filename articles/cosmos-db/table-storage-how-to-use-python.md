@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
+title: A Azure Cosmos DB Table API és az Azure Table Storage használata a Python használatával
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 883965d1d59e5523527a6aab1e83521d7491bf82
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6c01b9581795f4ac74bd74757b9116c0d5df586d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444754"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
 
@@ -81,7 +81,7 @@ table_service = TableService(connection_string='DefaultEndpointsProtocol=https;A
 
 ## <a name="create-a-table"></a>Tábla létrehozása
 
-Hívja meg a [create_table][py_create_table] a tábla létrehozásához.
+Hívja meg [create_table][py_create_table] a tábla létrehozásához.
 
 ```python
 table_service.create_table('tasktable')
@@ -89,7 +89,7 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Entitás hozzáadásához először létre kell hoznia az entitást képviselő objektumot, majd át kell adni az objektumot az [TableService. insert_entity metódusnak][py_TableService]. Az Entity (entitás) objektum lehet egy szótár vagy egy [entitás][py_Entity]típusú objektum, amely meghatározza az entitás tulajdonságainak nevét és értékeit. Minden entitásnak tartalmaznia kell a szükséges [PartitionKey és RowKey](#partitionkey-and-rowkey) tulajdonságot, az entitás számára meghatározott egyéb tulajdonságokon kívül.
+Entitás hozzáadásához először létre kell hoznia az entitást képviselő objektumot, majd át kell adni az objektumot a [TableService. insert_entity metódusnak][py_TableService]. Az Entity (entitás) objektum lehet egy szótár vagy egy [entitás][py_Entity]típusú objektum, amely meghatározza az entitás tulajdonságainak nevét és értékeit. Minden entitásnak tartalmaznia kell a szükséges [PartitionKey és RowKey](#partitionkey-and-rowkey) tulajdonságot, az entitás számára meghatározott egyéb tulajdonságokon kívül.
 
 Ez a példa egy entitást jelképező szótár objektumot hoz létre, majd átadja a [insert_entity][py_insert_entity] metódusnak, hogy hozzáadja a táblához:
 
@@ -99,7 +99,7 @@ task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
 table_service.insert_entity('tasktable', task)
 ```
 
-Ez a példa egy [Entity][py_Entity] objektumot hoz létre, majd átadja a [insert_entity][py_insert_entity] metódusnak, hogy hozzáadja a táblához:
+Ez a példa egy [entitás][py_Entity] objektumot hoz létre, majd átadja a [insert_entity][py_insert_entity] metódusnak, hogy hozzáadja a táblához:
 
 ```python
 task = Entity()
@@ -141,11 +141,11 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> A [update_entity][py_update_entity] metódus lecseréli egy meglévő entitás összes tulajdonságát és értékét, amelyet a tulajdonságok meglévő entitásból való eltávolítására is használhat. A [merge_entity][py_merge_entity] metódussal a meglévő entitásokat új vagy módosított tulajdonságértékek használatával frissítheti anélkül, hogy teljesen lecseréli az entitást.
+> A [update_entity][py_update_entity] metódus egy meglévő entitás összes tulajdonságát és értékét lecseréli, amelyet a tulajdonságok meglévő entitásból való eltávolítására is használhat. A [merge_entity][py_merge_entity] metódussal frissítheti a meglévő entitásokat új vagy módosított tulajdonságértékek használatával anélkül, hogy teljesen lecseréli az entitást.
 
 ## <a name="modify-multiple-entities"></a>Több entitás módosítása
 
-Annak biztosításához, hogy a Table Service elvégezze a kérés atomi feldolgozását, egy kötegben egyszerre több műveletet is elküldhet. Először használja a [TableBatch][py_TableBatch] osztályt több művelet egyetlen kötegbe való felvételéhez. Ezután hívja meg a [TableService][py_TableService]. [commit_batch][py_commit_batch] a műveleteknek egy atomi műveletben való elküldéséhez. A kötegelten módosítani kívánt entitásoknak ugyanazon a partíción kell lenniük.
+Annak biztosításához, hogy a Table Service elvégezze a kérés atomi feldolgozását, egy kötegben egyszerre több műveletet is elküldhet. Először használja a [TableBatch][py_TableBatch] osztályt több művelet egyetlen kötegbe való felvételéhez. Ezután hívja meg a [TableService][py_TableService]. [commit_batch][py_commit_batch] a műveletek atomi műveletben való elküldéséhez. A kötegelten módosítani kívánt entitásoknak ugyanazon a partíción kell lenniük.
 
 Ez a példa két entitást ad hozzá egy kötegben:
 
@@ -214,7 +214,7 @@ for task in tasks:
 
 ## <a name="delete-an-entity"></a>Entitás törlése
 
-Entitás törlése a **PartitionKey** és a **RowKey** a [delete_entity][py_delete_entity] metódusba való átadásával.
+Entitás törlése a **PartitionKey** és a **RowKey** [delete_entity][py_delete_entity] metódusba való átadásával.
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')

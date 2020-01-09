@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre/beszúrási művelet adatait az Azure Cosmos DB Cassandra API Spark rendszerből
-description: Ez a cikk részletesen bemutatja az Azure Cosmos DB Cassandra API táblák Mintaadat beszúrásához
+title: Adatok létrehozása vagy beillesztése a Spark Azure Cosmos DB Cassandra APIba
+description: Ez a cikk a mintaadatok Azure Cosmos DB Cassandra API táblákba való beszúrásának részleteit ismerteti.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60894045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442123"
 ---
-# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Hozzon létre/beszúrási művelet adatait az Azure Cosmos DB Cassandra API Spark rendszerből
+# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Adatok létrehozása/beillesztése a Spark Azure Cosmos DB Cassandra APIba
  
-Ez a cikk ismerteti, hogyan lehet egy Azure Cosmos DB Cassandra API a Spark-táblára Mintaadat beszúrásához.
+Ez a cikk azt ismerteti, hogyan szúrható be mintaadatok a Azure Cosmos DB Cassandra API a Sparkból egy táblába.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
+## <a name="cassandra-api-configuration"></a>Cassandra API konfiguráció
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -45,9 +45,9 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="dataframe-api"></a>Adathalmaz API
+## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="create-a-dataframe-with-sample-data"></a>Hozzon létre Dataframe-mintaadatok
+### <a name="create-a-dataframe-with-sample-data"></a>Mintaadatok létrehozása Dataframe
 
 ```scala
 // Generate a dataframe containing five records
@@ -67,11 +67,11 @@ booksDF.show
 ```
 
 > [!NOTE]
-> "Létrehozása if not exists" funkciót, egy sor szintjén még nem támogatott.
+> A "Létrehozás ha nem létezik" funkció egy sor szintjén nem támogatott.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API megőrzése
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Továbbra is Azure Cosmos DB Cassandra API
 
-Adatok mentésekor is beállíthat, time-to-live és a konzisztencia-beállítások a következő példában látható módon:
+Az adatmentéskor a következő példában látható módon is beállíthatja az élettartam és a konzisztencia házirend beállításait:
 
 ```scala
 //Persist
@@ -83,18 +83,18 @@ booksDF.write
 ```
 
 > [!NOTE]
-> Oszlopszintű Élettartama még nem támogatott.
+> Az oszlop szintű TTL még nem támogatott.
 
-#### <a name="validate-in-cqlsh"></a>Ellenőrizze az cqlsh
+#### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
 
 ```sql
 use books_ks;
 select * from books;
 ```
 
-## <a name="resilient-distributed-database-rdd-api"></a>Rugalmas elosztott adatbázis (RDD) API
+## <a name="resilient-distributed-database-rdd-api"></a>Rugalmas elosztott adatbázis-(RDD-) API
 
-### <a name="create-a-rdd-with-sample-data"></a>Egy RDD létrehozása mintaadatok használatával
+### <a name="create-a-rdd-with-sample-data"></a>Mintaadatok létrehozása RDD
 ```scala
 //Delete records created in the previous section 
 val cdbConnector = CassandraConnector(sc)
@@ -114,11 +114,11 @@ booksRDD.take(2).foreach(println)
 ```
 
 > [!NOTE]
-> Hozzon létre, ha nem létezik a funkció még nem támogatott.
+> Ha nem létezik, akkor a létrehozás lehetőség még nem támogatott.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API megőrzése
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Továbbra is Azure Cosmos DB Cassandra API
 
-Cassandra API-hoz az adatok mentésekor is beállíthat, time-to-live és a konzisztencia-beállítások a következő példában látható módon:
+Az Cassandra APIba való adatmentéskor a következő példában látható módon állíthatja be az élettartam és a konzisztencia-házirend beállításait is:
 
 ```scala
 import com.datastax.spark.connector.writer._
@@ -127,20 +127,20 @@ import com.datastax.spark.connector.writer._
 booksRDD.saveToCassandra("books_ks", "books", SomeColumns("book_id", "book_author", "book_name", "book_pub_year"),writeConf = WriteConf(ttl = TTLOption.constant(900000),consistencyLevel = ConsistencyLevel.ALL))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ellenőrizze az cqlsh
+#### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
 
 ```sql
 use books_ks;
 select * from books;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Adatok beszúrása az Azure Cosmos DB Cassandra API-tábla, után folytassa a Cosmos DB Cassandra API-ban tárolt adatokkal kapcsolatos egyéb műveletek végrehajtásához a következő cikkeket:
+Az adatoknak a Azure Cosmos DB Cassandra API táblázatba való beszúrása után folytassa a következő cikkekkel, hogy más műveleteket hajtson végre a Cosmos DB Cassandra API tárolt adatokon:
  
-* [olvasási műveletek](cassandra-spark-read-ops.md)
-* [Upsert művelet](cassandra-spark-upsert-ops.md)
-* [Törlési műveletek](cassandra-spark-delete-ops.md)
+* [Olvasási műveletek](cassandra-spark-read-ops.md)
+* [Upsert-műveletek](cassandra-spark-upsert-ops.md)
+* [Műveletek törlése](cassandra-spark-delete-ops.md)
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
-* [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
+* [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)
 

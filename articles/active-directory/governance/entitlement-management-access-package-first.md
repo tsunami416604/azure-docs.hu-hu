@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: Oktatóanyag – hozzáférési csomag létrehozása – Azure AD-jogosultságok kezelése
 description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422658"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -65,7 +65,7 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
 
 1. Hozza létre vagy konfigurálja a következő két felhasználót. Ezeket a neveket vagy más neveket is használhatja. A **Rendszergazda1** lehet az a felhasználó, aki jelenleg be van jelentkezve.
 
-    | Név | Címtárbeli szerepkör |
+    | Név | Címtárszerepkör |
     | --- | --- |
     | **Rendszergazda1** | Globális rendszergazda<br/>– vagy –<br/>Felhasználói rendszergazda |
     | **Requestor1** | Felhasználó |
@@ -190,7 +190,7 @@ Ebben a lépésben a lépéseket a **belső kérelmezőnek** kell elvégeznie, �
 
     ![Hozzáférési portál – hozzáférés kérése](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Kattintson a **Submit (Küldés**) gombra.
+1. Kattintson a **Submit** (Küldés) gombra.
 
 1. A bal oldali menüben kattintson a **kérelmek előzményei** elemre, és ellenőrizze, hogy elküldte-e a kérést.
 

@@ -1,5 +1,6 @@
 ---
-title: Azure API Management-szabályzat mintája – közös hozzáférésű aláírás előállítása | Microsoft Docs
+title: Példa API Management-szabályzat – közös hozzáférésű aláírás előállítása
+titleSuffix: Azure API Management
 description: Azure API Management házirend-minta – bemutatja, hogyan hozhatja meg a közös hozzáférésű aláírásokat kifejezések használatával, és továbbítsa a kérést az Azure Storage-ba az újraírható URI-házirenddel.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 45e29673e264f64c976cce664eaf749636400c7f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0f003bc268af6b7f8bd6b046ae84734dbefeac28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442456"
 ---
 # <a name="generate-shared-access-signature"></a>Közös hozzáférésű aláírás előállítása
 
@@ -29,7 +30,7 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Generate Shared Access Signature and forward request to Azure storage.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 

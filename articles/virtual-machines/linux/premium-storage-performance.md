@@ -1,18 +1,18 @@
 ---
-title: 'Azure Premium Storage: teljesítmény kialakítása Windows rendszerű virtuális gépeken '
-description: Nagy teljesítményű alkalmazások tervezése az Azure Premium Storage használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
+title: 'Azure Premium Storage: Linux rendszerű virtuális gépek teljesítményének kialakítása | Microsoft Docs'
+description: Nagy teljesítményű alkalmazások tervezése az Azure Premium SSD Managed Disks használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 56836b81ad63c3a2170606dc64988aab8dc7f47f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9940ee4cfce9721ac65f2b3cf1469e180adfa098
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458690"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "74035286"
 >
 > Ha a virtuális gép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, a már telepített virtuális gépeken is engedélyezheti a Windows és [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) [rendszereken](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) .
 
-Mielőtt elkezdené, ha a Premium Storage új, először olvassa el az [Azure-lemez kiválasztása a IaaS virtuális gépekhez](disks-types.md) és az [Azure Storage méretezhetősége és a teljesítmény-célkitűzések a Storage-fiókok számára](../../storage/common/storage-scalability-targets.md)című cikkből.
+Mielőtt elkezdené, ha a Premium Storage új, először olvassa el az [Azure-lemez kiválasztása a IaaS virtuális gépekhez](disks-types.md) és [méretezhetőségi célokat a prémium szintű blob Storage-fiókokhoz](../../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]

@@ -1,25 +1,14 @@
 ---
-title: Alkalmazás-forgatókönyvek és kialakítás | Microsoft Docs
+title: Alkalmazási forgatókönyvek és kialakítás
 description: A felhőalapú alkalmazások kategóriáinak áttekintése Service Fabricban. Ismerteti az alkalmazás kialakítását, amely állapot-nyilvántartó és állapot nélküli szolgáltatásokat használ.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 4/24/2019
-ms.author: atsenthi
-ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464905"
 ---
 # <a name="service-fabric-application-scenarios"></a>Alkalmazás-forgatókönyvek Service Fabric
 Az Azure Service Fabric megbízható és rugalmas platformot kínál, ahol számos különböző típusú üzleti alkalmazást és szolgáltatást írhat és futtathat. Ezek az alkalmazások és a szolgáltatások állapot nélküliek vagy állapot-nyilvántartók lehetnek, és a hatékonyság maximalizálása érdekében erőforrás-kiegyensúlyozottak a virtuális gépek között. 

@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12311fa476d069d2c866fac82ed2bac25ce88ef4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441624"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB API a MongoDB-hez (3,6-es verzió): támogatott funkciók és szintaxis
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-ját a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
 
-A MongoDB-hez készült Azure Cosmos DB API-val élvezheti a használt MongoDB előnyeit, és az összes, a Cosmos DB által nyújtott vállalati képességgel rendelkezik: [globális terjesztés](distribute-data-globally.md), [automatikus](partition-data.md)horizontális felskálázás, rendelkezésre állás és késés garantálja az összes mező, a titkosítás és a biztonsági másolatok automatikus indexelését, és még sok más.
+A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt MongoDB előnyeit, és az összes olyan vállalati funkciót, amelyet a Cosmos DB biztosít: [globális elosztás](distribute-data-globally.md), [automatikus](partition-data.md)horizontális felskálázás, rendelkezésre állási és késési garanciák, az összes mező automatikus indexelése, a titkosítás nyugalmi állapotban, biztonsági mentések és sok más további lehetőség.
 
 ## <a name="protocol-support"></a>Protokollok támogatása
 
-A MongoDB Azure Cosmos DB API-ját az MongoDB Server **3,6** -es verziójának az új fiókok esetében alapértelmezés szerint kompatibilisnek kell lennie. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfél-illesztőprogram, amely ismeri ezeket a protokollokat, képesnek kell lennie csatlakozni a Azure Cosmos DB API-MongoDB.
+A MongoDB Azure Cosmos DB API-ját az MongoDB Server **3,6** -es verziójának az új fiókok esetében alapértelmezés szerint kompatibilisnek kell lennie. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz.
 
 ## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 
@@ -355,6 +355,7 @@ A Azure Cosmos DB még nem támogatja a kiszolgálóoldali munkamenet-parancsoka
 
 ## <a name="next-steps"></a>Következő lépések
 
+- További információ: [Mongo 3,6 version features](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
 - Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

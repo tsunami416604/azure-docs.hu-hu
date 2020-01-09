@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egyoldalas Webalkalmazás létrehozása a Bing News Search API használatával'
+title: 'Oktatóanyag: egyoldalas Webalkalmazás létrehozása a Bing News Search API használatával'
 titleSuffix: Azure Cognitive Services
 description: Ezzel az Oktatóanyaggal létrehozhat egy egyoldalas webalkalmazást, amely képes keresési lekérdezéseket küldeni a Bing News API-nak, és megjeleníti az eredményeket a weboldalon belül.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383115"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás létrehozása
+# <a name="tutorial-create-a-single-page-web-app"></a>Oktatóanyag: egylapos webes alkalmazás létrehozása
 
 A Bing News Search API lehetővé teszi az interneten való keresést és a keresési lekérdezésnek megfelelő hírtípus szerinti eredmények lekérését. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing News Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html) érhető el.
 
@@ -61,7 +61,7 @@ A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekbe
 
 Annak érdekében, hogy a Bing Search API előfizetői azonosítóját ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk az azonosítót. Mielőtt az azonosítót eltárolnánk, elkérjük a felhasználó azonosítóját. Ha az azonosítót később elutasítja az API, érvénytelenítjük a tárolt azonosítót, ezért a felhasználótól újra el kell kérnünk az övét.
 
-Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amelyet nem minden böngésző támogat), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó azonosítójának tárolására és lekérésére használja ezeket a függvényeket.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amelyet nem minden böngésző támogat), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó azonosítójának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ``` javascript
 // Cookie names for data we store
@@ -271,7 +271,7 @@ function handleBingResponse() {
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Fázis|Lehetséges hiba vagy hibák|Kezelő|
+|Szakasz|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
 |A JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
 |Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
@@ -315,7 +315,7 @@ function renderResults(items) {
 ```
 A Bing News Search API legfeljebb négy különböző típusú kapcsolódó eredményt ad vissza, mindegyiket a saját legfelső szintű objektumában. Ezek a következők:
 
-|Kapcsolat|Leírás|
+|Kapcsolat típusa|Leírás|
 |-|-|
 |`pivotSuggestions`|Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat.|
 |`queryExpansions`|Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.|
@@ -397,7 +397,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott `Access-Control-Expose-Headers` válasz fejléce lehetővé teszi a válaszok fejléceit, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely lehetővé teszi a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
@@ -413,6 +413,6 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Bing News Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)

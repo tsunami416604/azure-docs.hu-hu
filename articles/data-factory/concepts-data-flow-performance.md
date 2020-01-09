@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444522"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -81,7 +81,7 @@ Még ha nincs is particionálva az adatai a célhelyen, a javasolt, hogy az adat
 
 ### <a name="disable-indexes-on-write"></a>Indexek letiltása íráskor
 
-A folyamat során adjon hozzá egy [tárolt eljárási tevékenységet](transform-data-using-stored-procedure.md) az adatfolyam tevékenysége előtt, amely letiltja a fogadóban írt céltábla indexeit. Az adatfolyam tevékenysége után adjon hozzá egy másik tárolt eljárási tevékenységet, amely engedélyezi ezeket az indexeket.
+A folyamat során adjon hozzá egy [tárolt eljárási tevékenységet](transform-data-using-stored-procedure.md) az adatfolyam tevékenysége előtt, amely letiltja a fogadóban írt céltábla indexeit. Az adatfolyam tevékenysége után adjon hozzá egy másik tárolt eljárási tevékenységet, amely engedélyezi ezeket az indexeket. Az adatbázis-fogadóban az előfeldolgozási és a feldolgozás utáni parancsfájlokat is használhatja.
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Az Azure SQL-adatbázis és a DW méretének növeléséhez
 
@@ -114,7 +114,7 @@ A számítási csomópont erőforrásainak kimerítése érdekében tartsa meg a
 
 ### <a name="looping-through-file-lists"></a>Áthurkolás a fájlok listájáról
 
-Ha a forrás-átalakítás több fájlban is megismétli a több fájlra való átirányítást, akkor a leképezési folyamat jobban végrehajtódik Javasoljuk, hogy használjon helyettesítő karaktereket vagy fájlneveket a forrás-átalakításban. Az adatfolyam-folyamat gyorsabban fog történni, mivel lehetővé teszi a hurok a Spark-fürtön belüli megkötését. További információ: [helyettesítő karakter a forrás-átalakításban](data-flow-source.md#file-based-source-options).
+Ha a forrás-átalakítás több fájlban is megismétli a több fájlra való átirányítást, akkor a leképezési folyamat jobban végrehajtódik Javasoljuk, hogy használjon helyettesítő karaktereket vagy fájlneveket a forrás-átalakításban. Az adatfolyam-folyamat gyorsabban fog történni, mivel lehetővé teszi a hurok a Spark-fürtön belüli megkötését. További információ: [helyettesítő karakter a forrás-átalakításban](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
 
 Ha például az 2019-es számú adatfájlok listáját szeretné feldolgozni a Blob Storage egyik mappájában, az alábbi helyettesítő karakter használható a forrás-átalakításban.
 
@@ -127,8 +127,8 @@ A helyettesítő karakterek használatával a folyamat csak egy adatfolyam-tevé
 Az átviteli sebesség és a Batch tulajdonságainak beállítása a CosmosDB-tárolók esetében csak az adott adatfolyamnak egy folyamat adatfolyam-tevékenységből való végrehajtásakor lép érvénybe. Az eredeti gyűjtemény beállításait a CosmosDB az adatfolyam-végrehajtás után fogja tiszteletben venni.
 
 * Köteg mérete: kiszámítja az adatainak durva sorszámát, és győződjön meg arról, hogy a rowSize * batch mérete kisebb, mint 2 000 000. Ha igen, növelje a köteg méretét, hogy jobb teljesítményt kapjon
-* Througput: magasabb átviteli sebesség beállításának beállítása, amely lehetővé teszi a dokumentumok gyorsabb írását a CosmosDB. Ne feledje, hogy a magasabb szintű RU-költségek nagy adatátviteli beállításokon alapulnak.
-*   Írási átviteli sebesség költségvetése: olyan értéket használjon, amely kisebb, mint a percenkénti összes RUs. Ha nagy számú Spark-partitiongs rendelkező adatfolyamattal rendelkezik, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
+* Átviteli sebesség: állítsa be a nagyobb átviteli sebesség beállítását, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb szintű RU-költségek nagy adatátviteli beállításokon alapulnak.
+*   Írási átviteli sebesség költségvetése: olyan értéket használjon, amely kisebb, mint a percenkénti összes RUs. Ha nagy számú Spark-partícióval rendelkező adatfolyamot tartalmaz, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
 
 ## <a name="next-steps"></a>Következő lépések
 

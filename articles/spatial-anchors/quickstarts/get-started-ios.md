@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 39732ef785fc610572f917be77dec3f560698fb7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 277a669484201a060a2bb5455d6154165bbb8e84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465166"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: iOS-alkalmazás létrehozása Azure térbeli Horgonyokkal Swift vagy Objective-C nyelven
 
@@ -33,7 +33,7 @@ A következőket fogja megtanulni:
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - A <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> és a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> legújabb verziójával rendelkező, a fejlesztőknek készült MacOS-es gép.
-- A git telepítése a HomeBrew használatával történik. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
+- A git telepítése a HomeBrew használatával történik. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git` és `brew install git-lfs`.
 - A fejlesztők által engedélyezett <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> IOS-eszköz.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -91,7 +91,7 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Nyissa meg `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
+Nyissa meg a `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift` alkalmazást.
 
 Keresse meg a `spatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 
@@ -99,7 +99,7 @@ Keresse meg a `spatialAnchorsAccountId` mezőt, és cserélje le a `Set me`t a f
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Nyissa meg `iOS/Objective-C/SampleObjC/BaseViewController.m`.
+Nyissa meg a `iOS/Objective-C/SampleObjC/BaseViewController.m` alkalmazást.
 
 Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 

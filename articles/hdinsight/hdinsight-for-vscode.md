@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311729"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435689"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -284,19 +284,19 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a. vscode mappa automa
 
     | név | leírás | type |
     | :- | :- | :- |
-    | file | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
+    | fájl | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
     | proxyUser | A felhasználó megszemélyesítése a feladatok futtatásakor | Sztring |
     | className | Java/Spark fő osztály alkalmazása | Sztring |
     | args | Az alkalmazás parancssori argumentumai | Karakterláncok listája |
-    | jars | A munkamenetben használandó tégelyek | Karakterláncok listája | 
+    | üvegek | A munkamenetben használandó tégelyek | Karakterláncok listája | 
     | pyFiles | A munkamenetben használni kívánt Python-fájlok | Karakterláncok listája |
-    | files | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
+    | fájlok | A munkamenetben használni kívánt fájlok | Karakterláncok listája |
     | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | Sztring |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | Int |
     | executorMemory | A felhasználható memória mennyisége/végrehajtó folyamat | Sztring |
     | executorCores | Az egyes végrehajtók számára használandó magok száma | Int |
     | numExecutors | A munkamenet elindításához szükséges végrehajtók száma | Int |
-    | archives | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
+    | Archívum | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
     | üzenetsor | A beküldeni kívánt FONÁL-várólista neve| Sztring |
     | név | A munkamenet neve | Sztring |
     | conf | Spark-konfiguráció tulajdonságai | Kulcs leképezése = val |
@@ -307,8 +307,8 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a. vscode mappa automa
     | :- | :- | :- |
     | id | Munkamenet-azonosító | Int |
     | appId | A munkamenet alkalmazás-azonosítója | Sztring |
-    | appInfo | Részletes alkalmazásadatok | Kulcs leképezése = val |
-    | log | Naplózási sorok | Karakterláncok listája |
+    | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
+    | Napló | Naplózási sorok | Karakterláncok listája |
     | state |Köteg állapota | Sztring |
 
     > [!NOTE]
@@ -389,7 +389,7 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
   >
   >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
-## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók tallózása
 
@@ -403,7 +403,7 @@ Ha Data Lake Storage Gen2 használatával küld el egy feladatot egy HDInsight-f
 
 > [!NOTE]
 >
-> A Storage-fiók elérési kulcsát a Azure Portal kérheti le. További információ: [hozzáférési kulcsok megtekintése és másolása](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
+> A Storage-fiók elérési kulcsát a Azure Portal kérheti le. További információ: a [Storage-fiók elérési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md).
 
 ## <a name="unlink-cluster"></a>Fürt leválasztása
 

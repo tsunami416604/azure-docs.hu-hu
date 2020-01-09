@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458673"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép feltöltése és létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -35,7 +35,7 @@ Győződjön meg arról, hogy a legújabb [Azure CLI](/cli/azure/install-az-cli2
 
 Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: `myResourceGroup`, `mystorageaccount`és `mydisks`.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `WestUs` helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy `WestUs` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -121,10 +121,10 @@ Tekintse meg a **[Linux telepítési megjegyzéseit](create-upload-generic.md#ge
 > 
 > 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Az erőforráscsoportok logikailag egyesítik az összes Azure-erőforrást a virtuális gépek támogatásához, például a virtuális hálózatkezeléshez és a tárhelyhez. További információforrások az erőforráscsoportok [áttekintése](../../azure-resource-manager/resource-group-overview.md)című témakörben találhatók. Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először létre kell hoznia egy erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal.
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+Az erőforráscsoportok logikailag egyesítik az összes Azure-erőforrást a virtuális gépek támogatásához, például a virtuális hálózatkezeléshez és a tárhelyhez. További információforrások az erőforráscsoportok [áttekintése](../../azure-resource-manager/management/overview.md)című témakörben találhatók. Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először létre kell hoznia egy erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal.
 
-A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `westus` helyen:
+A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Storage-fiók kulcsainak listázása
-Az Azure minden egyes Storage-fiókhoz 2 512 bites hozzáférési kulcsokat hoz létre. Ezeket a hozzáférési kulcsokat a rendszer a Storage-fiókhoz való hitelesítéskor használja, például az írási műveletek végrehajtásához. További információ a [tárterülethez való hozzáférés kezeléséről itt](../../storage/common/storage-account-manage.md#access-keys)található. A hozzáférési kulcsokat az [az Storage Account Keys List](/cli/azure/storage/account/keys)paranccsal tekintheti meg.
+Az Azure minden egyes Storage-fiókhoz 2 512 bites hozzáférési kulcsokat hoz létre. Ezeket a hozzáférési kulcsokat a rendszer a Storage-fiókhoz való hitelesítéskor használja, például az írási műveletek végrehajtásához. A Storage-fiók hozzáférési kulcsaival kapcsolatos további információkért lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md). A hozzáférési kulcsokat az [az Storage Account Keys List](/cli/azure/storage/account/keys)paranccsal tekintheti meg.
 
 Tekintse meg a létrehozott Storage-fiók elérési kulcsait:
 
@@ -204,7 +204,7 @@ Továbbra is meg kell adnia vagy válaszolnia kell az alkalmazáshoz, az az **VM
 
 
 ## <a name="resource-manager-template"></a>Resource Manager-sablon
-Azure Resource Manager sablonok JavaScript Object Notation (JSON) fájlok, amelyek meghatározzák a létrehozni kívánt környezetet. A sablonok különböző erőforrás-szolgáltatókkal (például számítás vagy hálózat) vannak lebontva. Használhat meglévő sablonokat, vagy írhat sajátot is. További információ a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/resource-group-overview.md).
+Azure Resource Manager sablonok JavaScript Object Notation (JSON) fájlok, amelyek meghatározzák a létrehozni kívánt környezetet. A sablonok különböző erőforrás-szolgáltatókkal (például számítás vagy hálózat) vannak lebontva. Használhat meglévő sablonokat, vagy írhat sajátot is. További információ a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/management/overview.md).
 
 A sablon `Microsoft.Compute/virtualMachines`-szolgáltatóján belül egy `storageProfile` csomópont található, amely a virtuális gép konfigurációs adatait tartalmazza. A szerkeszteni kívánt két fő paraméter a `image` és `vhd` URI azonosító, amely az egyéni lemezre és az új virtuális gép virtuális lemezére mutat. Az alábbi példa egy egyéni lemez használatára szolgáló JSON-példát mutat be:
 
@@ -224,7 +224,7 @@ A sablon `Microsoft.Compute/virtualMachines`-szolgáltatóján belül egy `stora
           }
 ```
 
-[Ezzel a meglévő sablonnal létrehozhat egy virtuális gépet egyéni rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) , vagy megtekintheti [saját Azure Resource Manager sablonjainak létrehozását](../../azure-resource-manager/resource-group-authoring-templates.md). 
+[Ezzel a meglévő sablonnal létrehozhat egy virtuális gépet egyéni rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) , vagy megtekintheti [saját Azure Resource Manager sablonjainak létrehozását](../../azure-resource-manager/templates/template-syntax.md). 
 
 Miután konfigurálta a sablont, az [az Group Deployment Create](/cli/azure/group/deployment) paranccsal hozhatja létre a virtuális gépeket. Adja meg a JSON-sablon URI-JÁT a `--template-uri` paraméterrel:
 
@@ -242,5 +242,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Következő lépések
-Miután felkészítette és feltöltötte az egyéni virtuális lemezt, további információt olvashat a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/resource-group-overview.md). Előfordulhat, hogy [adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is szeretne hozzáadni az új virtuális gépekhez. Ha olyan alkalmazások futnak a virtuális gépeken, amelyekhez hozzá kell férnie, ne felejtse el [megnyitni a portokat és a végpontokat](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Miután felkészítette és feltöltötte az egyéni virtuális lemezt, további információt olvashat a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/management/overview.md). Előfordulhat, hogy [adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is szeretne hozzáadni az új virtuális gépekhez. Ha olyan alkalmazások futnak a virtuális gépeken, amelyekhez hozzá kell férnie, ne felejtse el [megnyitni a portokat és a végpontokat](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461538"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és a helyszíni SQL Server között
 
@@ -33,14 +33,20 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásához: Hogyan lehet
 
 ## <a name="create-sync-group"></a>Szinkronizálási csoport létrehozása
 
-1. A böngészőben navigáljon a Azure Portal. Keresse meg az SQL-adatbázist az irányítópulton, vagy válassza ki az **SQL-adatbázisok** ikont az eszköztáron, és az **SQL-adatbázisok** lapon válassza ki azt az adatbázist, amelyet az adatszinkronizálási központ-adatbázisként kíván használni.
+1. Az SQL-adatbázis megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **SQL-adatbázisokat**.
+
+    ![SQL-adatbázisok keresése, Microsoft Azure Portal](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+
+1. Válassza ki azt az adatbázist, amelyet központi adatbázisként kíván használni az adatszinkronizáláshoz.
+
+    ![Válasszon az SQL Database listából, Microsoft Azure Portal](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
-    > A hub-adatbázis szinkronizálási topológiájának központi végpontja, amelyben a szinkronizálási csoport több adatbázis-végponttal rendelkezik. A szinkronizálási csoportban található végpontokkal rendelkező összes többi tag-adatbázis szinkronizálva van a központi adatbázissal.
+    > A hub-adatbázis egy szinkronizálási topológia központi végpontja, amelyben a szinkronizálási csoport több adatbázis-végponttal rendelkezik. A szinkronizálási csoportban található végpontokkal rendelkező összes többi tag-adatbázis szinkronizálva van a központi adatbázissal.
 
-1. A kiválasztott adatbázishoz tartozó **SQL-adatbázis** lapon válassza a **szinkronizálás más adatbázisokkal**lehetőséget.
+1. A kiválasztott adatbázishoz tartozó **SQL-adatbázis** menüben válassza a **szinkronizálás más adatbázisokkal**lehetőséget.
 
-    ![Szinkronizálás más adatbázisokkal lehetőséggel](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![Szinkronizálás más adatbázisokkal, SQL Database, Microsoft Azure Portal](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
 1. A **más adatbázisok szinkronizálása** lapon válassza az **új szinkronizálási csoport**elemet. Megnyílik az **új szinkronizálási csoport** lap, amely kiemelt **szinkronizálási csoportot hoz létre (1. lépés)** .
 
@@ -163,7 +169,7 @@ Az új szinkronizálási csoport tagjainak létrehozása és telepítése után 
 
     ![Manuális szinkronizálás](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 **Milyen gyakran tud szinkronizálni az adatszinkronizálási adatokat?**
 
@@ -223,7 +229,7 @@ Miután *. bacpac* fájlként exportált egy adatbázist, és importálja a fáj
 
 Az ügyfél-ügynökkel kapcsolatos gyakori kérdésekért lásd: [ügynök – gyakori](sql-database-data-sync-agent.md#agent-faq)kérdések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk! Olyan szinkronizálási csoportot hozott létre, amely SQL Database példányt és egy SQL Server adatbázist is tartalmaz.
 

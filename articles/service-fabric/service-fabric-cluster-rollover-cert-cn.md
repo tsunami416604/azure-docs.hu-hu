@@ -1,24 +1,14 @@
 ---
-title: Azure Service Fabric-fürt tanúsítványának átadása | Microsoft Docs
+title: Azure Service Fabric-fürt tanúsítványának átadása
 description: Ismerje meg, hogyan lehet áttekinteni a tanúsítvány köznapi nevével azonosított Service Fabric-fürt tanúsítványát.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: d6ead6aaa5d4c0e864126bf63d4cc0e9339464f2
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451962"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric-fürt tanúsítványának manuális átadása
 Ha egy Service Fabric-fürt tanúsítványa le van zárva, frissítenie kell a tanúsítványt.  A tanúsítvány-átváltási egyszerű, ha a fürtöt [úgy állították be, hogy a tanúsítványokat köznapi név](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (ujjlenyomat helyett) alapján használja.  Új tanúsítvány beszerzése egy új lejárati dátummal rendelkező hitelesítésszolgáltatótól.  Az önaláírt tanúsítványok nem támogatják az éles Service Fabric fürtöket, így Azure Portal fürt létrehozásakor létrehozott tanúsítványokat is tartalmazhatnak. Az új tanúsítványnak ugyanazzal a köznapi névvel kell rendelkeznie, mint a régebbi tanúsítványnak. 
@@ -83,7 +73,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 >[!NOTE]
 > A számítási műveletek virtuálisgép-méretezési csoportjának titkai nem támogatják ugyanazt az erőforrás-azonosítót két külön titok esetében, mivel minden egyes titok egy verzióval ellátott egyedi erőforrás. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
 * [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)

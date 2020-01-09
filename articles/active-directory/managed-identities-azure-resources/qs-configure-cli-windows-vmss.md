@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74d8faed0637b5b5b82e1ad450a3b1535bb063e4
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 2832a8c584c0fbe707f22501809d772c6ffb970b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430086"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával
 
@@ -69,7 +69,7 @@ Virtuálisgép-méretezési csoport létrehozása a rendszerhez rendelt felügye
    az login
    ```
 
-2. Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#terminology) a virtuálisgép-méretezési csoport és a kapcsolódó erőforrások tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ezt a lépést kihagyhatja, ha már rendelkezik a használni kívánt erőforráscsoporthoz:
+2. Hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/management/overview.md#terminology) a virtuálisgép-méretezési csoport és a kapcsolódó erőforrások tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ezt a lépést kihagyhatja, ha már rendelkezik a használni kívánt erőforráscsoporthoz:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -124,7 +124,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti és távolíthatja el a
 
 Ez a szakasz végigvezeti egy virtuálisgép-méretezési csoport létrehozásán, valamint egy felhasználó által hozzárendelt felügyelt identitásnak a virtuálisgép-méretezési csoportba való hozzárendelésén. Ha már rendelkezik a használni kívánt virtuálisgép-méretezési csoporttal, ugorja át ezt a szakaszt, és folytassa a következő lépéssel.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoport-csoporttal. Hozzon létre egy [erőforráscsoportot](~/articles/azure-resource-manager/resource-group-overview.md#terminology) a felhasználó által hozzárendelt felügyelt identitás tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoport-csoporttal. Hozzon létre egy [erőforráscsoportot](~/articles/azure-resource-manager/management/overview.md#terminology) a felhasználó által hozzárendelt felügyelt identitás tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

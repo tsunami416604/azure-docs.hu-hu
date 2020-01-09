@@ -7,16 +7,16 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: f0bf81ce6392e1650d9986d81a55eac9c416c24d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444473"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Hibakeresés Kusto lekérdezési nyelv beágyazott Python használatával VS Code
 
-Az Azure Adatkezelő támogatja a [Python () beépülő modul](/azure/kusto/query/pythonplugin)használatával a Kusto-lekérdezési nyelven beágyazott Python-kód futtatását. A beépülő modul futtatókörnyezetét homokozóban, elkülönített és biztonságos Python-környezetben üzemeltetjük. A Python () beépülő modul képességei kiterjesztik a Kusto lekérdezési nyelvét natív funkciókkal az OSS Python-csomagok hatalmas archívumával. Ez a bővítmény lehetővé teszi speciális algoritmusok, például gépi tanulás, mesterséges intelligencia, statisztikai és idősorozatok futtatását a lekérdezés részeként.
+Az Azure Adatkezelő támogatja a [Python () beépülő modul](/azure/kusto/query/pythonplugin)használatával a Kusto-lekérdezési nyelven beágyazott Python-kód futtatását. A beépülő modul futtatókörnyezetét homokozóban, elkülönített és biztonságos Python-környezetben üzemeltetjük. A Python () beépülő modul képességei kiterjesztik a Kusto lekérdezési nyelvét natív funkciókkal az OSS Python-csomagok hatalmas archívumával. Ez a bővítmény lehetővé teszi speciális algoritmusok, például a gépi tanulás, a mesterséges intelligencia, a statisztikai adatok és az idősorozatok futtatását a lekérdezés részeként.
 
 A Kusto-lekérdezés nyelvi eszközei nem alkalmasak a Python-algoritmusok fejlesztésére és hibakeresésére. Ezért fejlesztheti az algoritmust a kedvenc Python-integrált fejlesztési környezetében, például a Jupyter, a Notebookshoz, a VS vagy a VS Code használatával. Ha az algoritmus elkészült, másolja és illessze be a KQL. A munkafolyamat fejlesztése és egyszerűsítése érdekében az Azure Adatkezelő támogatja a Kusto Explorer vagy webes felhasználói felületi ügyfelek, valamint a VS Code integrációját a KQL beágyazott Python-kódok készítéséhez és hibakereséséhez. 
 

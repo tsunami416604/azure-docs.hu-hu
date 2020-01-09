@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454637"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Vizsgálja meg az API által létrehozott Video Indexer kimenetet
 
-Ha meghívja a **videó beolvasása** API-t, és a válasz állapota ok, akkor részletes JSON-kimenetet kap a válasz tartalmaként. A JSON-tartalom a megadott videó-információk részleteit tartalmazza. Az elemzések közé tartoznak például a következő méretek: átiratok, felismerése, arcok, témakörök, blokkok stb. A méretek olyan időtartomány-példányokkal rendelkeznek, amelyek megmutatják, hogy az egyes dimenziók Mikor jelentek meg a videóban.  
+Ha meghívja a **videó beolvasása** API-t, és a válasz állapota ok, akkor részletes JSON-kimenetet kap a válasz tartalmaként. A JSON-tartalom a megadott videó-információk részleteit tartalmazza. Az elemzések a következők: átiratok, felismerése, arcok, témakörök, blokkok stb. Az egyes betekintési típusok olyan időtartomány-példányokat tartalmaznak, amelyek azt mutatják be, hogy mikor jelenik meg a videóban. 
 
 1. A JSON-fájl lekéréséhez hívja meg a [video index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) -t.
 1. Ha az adott összetevőkre is kíváncsi, hívja le a [videó-összetevő letöltése URL API-t](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?)
@@ -94,7 +94,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 |márkák| Nulla vagy több márkát is tartalmazhat. Részletesebb információ: [Brands](#brands).|
 |statisztikák | Részletesebb információ: [statisztika](#statistics).|
 |érzelmeket| Nulla vagy több érzelem is szerepelhet. Részletesebb információ: [érzelmek](#emotions).|
-|témakör|Nulla vagy több témakört is tartalmazhat. A [témakörök](#topics) dimenzió.|
+|témakör|Nulla vagy több témakört is tartalmazhat. A [témakörök](#topics) betekintést nyújtanak.|
 
 ## <a name="videos"></a>videók
 
@@ -150,7 +150,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 ```
 ### <a name="insights"></a>betekintést
 
-Az elemzések dimenziók (például átiratok, arcok, márkák stb.) összessége, ahol minden egyes dimenzió az egyedi elemek (például face1, face2, face3) listája, és minden elem saját metaadatokat tartalmaz, valamint a példányok listáját (amelyek időtartományai a következők: további választható metaadatok).
+Az egyes elemzések (például a átirat sorai, az arcok, a márkák stb.) tartalmazzák az egyedi elemek listáját (például face1, face2, face3), és mindegyik elemhez saját metaadatok tartoznak, valamint a példányok listája (amely a további opcionális metaadatokat tartalmazó időtartományok).
 
 Az arcok rendelkezhetnek AZONOSÍTÓval, névvel, miniatűrvel, egyéb metaadatokkal és az ideiglenes példányaik listájával (például: 00:00:05 – 00:00:10, 00:01:00-00:02:30 és 00:41:21 – 00:41:49). Minden ideiglenes példányhoz további metaadatok tartozhatnak. Például az arc téglalapjának koordinátái (20230, 60, 60).
 
@@ -158,20 +158,20 @@ Az arcok rendelkezhetnek AZONOSÍTÓval, névvel, miniatűrvel, egyéb metaadato
 |---|---|
 |sourceLanguage|A videó forrásának nyelve (feltételezve, hogy egy fő nyelv). [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc formájában.|
 |language|Az adatfelismerés nyelve (a forrás nyelvétől lefordítva). [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc formájában.|
-|átirat|Az [átirat](#transcript) dimenzió.|
-|OCR|Az [OCR](#ocr) -dimenzió.|
-|kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
+|átirat|Az [átirat](#transcript) betekintést nyújt.|
+|OCR|Az [OCR](#ocr) -betekintést.|
+|kulcsszavak|A [kulcsszavak](#keywords) betekintése.|
 |blocks|Egy vagy több [blokkot](#blocks) is tartalmazhat|
-|arcok|Az [arcok](#faces) dimenzió.|
-|Címkék|A [címkék](#labels) dimenzió.|
-|lövések|A [felvételek](#shots) dimenzió.|
-|márkák|A [márkák](#brands) dimenzió.|
-|audioEffects|Az [audioEffects](#audioEffects) dimenzió.|
-|érzelmeket|Az [érzelmek](#sentiments) dimenzió.|
-|visualContentModeration|Az [visualContentModeration](#visualcontentmoderation) dimenzió.|
-|textualContentModeration|Az [textualContentModeration](#textualcontentmoderation) dimenzió.|
-|érzelmeket| Az [érzelmek](#emotions) dimenzió.|
-|témakör|A [témakörök](#topics) dimenzió.|
+|arcok|Az [arcok](#faces) betekintést nyernek.|
+|Címkék|A [címkék](#labels) betekintést nyernek.|
+|lövések|A [felvételek](#shots) betekintést nyernek.|
+|márkák|A [márkák](#brands) betekintése.|
+|audioEffects|A [audioEffects](#audioEffects) betekintést nyújt.|
+|érzelmeket|Az [érzelmek](#sentiments) betekintése.|
+|visualContentModeration|A [visualContentModeration](#visualcontentmoderation) betekintést nyújt.|
+|textualContentModeration|A [textualContentModeration](#textualcontentmoderation) betekintést nyújt.|
+|érzelmeket| Az [érzelmek](#emotions) betekintése.|
+|témakör|A [témakörök](#topics) betekintést nyújtanak.|
 
 Példa:
 
@@ -501,7 +501,7 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 |referenceId | A márka wikipedia URL-címének utótagja Például a "Target_Corporation" a [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)utótagja.
 |referenceUrl | A márka wikipedia URL-címe, ha van ilyen. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |leírás|A márkák leírása.|
-|tags|A márkához társított előre definiált címkék listája.|
+|címkét|A márkához társított előre definiált címkék listája.|
 |megbízhatóság|A Video Indexer Brand detektor (0-1) megbízhatósági értéke.|
 |példányok|A márka időtartományának listája. Minden példány rendelkezik egy brandType, amely azt jelzi, hogy ez a márka szerepel-e az átiratban vagy az OCR-ben.|
 

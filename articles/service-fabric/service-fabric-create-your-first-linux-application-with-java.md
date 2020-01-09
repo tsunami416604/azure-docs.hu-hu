@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric Reliable Actors Java-alkalmazás létrehozása Linux rendszeren | Microsoft Docs
+title: Azure Service Fabric megbízható Actors Java-alkalmazás létrehozása Linux rendszeren
 description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Java Service Fabric Reliable Actors-alkalmazást öt perc alatt.
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599681"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458164"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -50,8 +39,8 @@ A Reliable Actors használatának elsajátításához csak néhány alapfogalomm
 * **Aktorillesztő**. Az aktor illesztője határozza meg az aktor erős típusmegadású nyilvános illesztőjét. A Reliable Actor modellterminológiában az aktor illesztője határozza meg azt, hogy az aktor milyen típusú üzeneteket képes értelmezni és feldolgozni. Az aktor illesztőjét használják a további aktorok és ügyfélalkalmazások, hogy üzeneteket „küldjenek” (aszinkron módon) az aktor felé. A Reliable Actors több illesztőt is képes implementálni.
 * **ActorProxy-osztály**. Az ActorProxy-osztály használatával hívják meg az ügyfélalkalmazások az aktor illesztőjén keresztül közzétett metódusokat. Az ActorProxy-osztály két fontos funkciót lát el:
   
-  * Névfeloldás: Képes megkeresni a szereplőt a fürtben (keresse meg a fürt azon csomópontját, ahol a gazdagép található).
-  * Sikertelen kezelést: Újrapróbálkozhat a metódus meghívásával, és újból feloldja a színész helyét, például olyan hibát, amely megköveteli, hogy a szereplő a fürt egy másik csomópontjára legyen áthelyezve.
+  * Névfeloldás: Képes megállapítani az aktor helyét a fürtben (megtalálja a fürt azon csomópontját, ahol az aktor található).
+  * Hibakezelés: Képes újra megpróbálkozni a metódusok meghívásával, majd újra feloldani az aktor helyét például olyan esetben, ha egy hiba miatt az aktort át kellett helyezni a fürt egy másik csomópontjára.
 
 Az aktorok illesztőivel kapcsolatban a következő szabályokat érdemes megemlíteni:
 
@@ -303,8 +292,8 @@ A Service Fabric Reliable Services támogatása az alkalmazáshoz.
   }
   ```
 
-### <a name="others"></a>Továbbiak
-#### <a name="transport"></a>Átvitel
+### <a name="others"></a>Egyebek
+#### <a name="transport"></a>Közlekedés
 
 Az átviteli réteg támogatása a Service Fabric Java-alkalmazáshoz. Ezt a függőséget nem kell kifejezetten hozzáadnia a Reliable Actor- vagy Service-alkalmazásaihoz, hacsak a programozást nem az átviteli réteg szintjén végzi.
 
@@ -346,7 +335,7 @@ A natív Service Fabric-futtatókörnyezettel kommunikáló Service Fabric rends
   }
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása Linuxra Eclipse használatával](service-fabric-get-started-eclipse.md)
 * [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)

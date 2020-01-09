@@ -1,7 +1,7 @@
 ---
 title: '2\. Oktatóanyag: a kredit kockázati modelljeinek betanítása'
 titleSuffix: ML Studio (classic) - Azure
-description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást a Azure Machine Learning Studio klasszikus verziójában. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat második része. Bemutatja, hogyan kell betanítani és kiértékelni a modelleket.
+description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást Azure Machine Learning Studio (klasszikus). Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat második része. Bemutatja, hogyan kell betanítani és kiértékelni a modelleket.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 author: sdgilley
 ms.author: sgilley
@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427491"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>2\. Oktatóanyag: a kredit kockázati modelljeinek betanítása – Azure Machine Learning Studio (klasszikus)
 
-Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. A Machine Learning Studio klasszikus verziójában egy egyszerű modellt fejlesztünk.  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
+Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
 
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz a Azure Machine Learning Studio klasszikus verzióját és egy Machine Learning webszolgáltatást kell használnia.  
+A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz Azure Machine Learning Studio (klasszikus) és egy Machine Learning webszolgáltatást fog használni.  
 
 Ebben a három részből álló oktatóanyagban nyilvánosan elérhető hitelkockázat-adatforrásokkal kezdheti meg.  Ezután fejlesztheti és betaníthatja a prediktív modellt.  Végül üzembe helyezi a modellt webszolgáltatásként.
 
@@ -44,7 +44,7 @@ Fejezze be [az oktatóanyag első részét](tutorial-part1-credit-risk.md).
 
 ## <a name="train"></a>Több modell betanítása
 
-A gépi tanulási modellek létrehozásához a Azure Machine Learning Studio klasszikus verziójának egyik előnye, hogy egyetlen kísérlet során egyszerre több típust is kipróbálhat, és összehasonlítja az eredményeket. Ez a fajta kísérletezés segít megtalálni a legjobb megoldást a problémára.
+A gépi tanulási modellek létrehozásához Azure Machine Learning Studio (klasszikus) használatának egyik előnye, hogy egyetlen kísérlet során egyszerre több típusú modellt próbálnak ki, és összehasonlítjuk az eredményeket. Ez a fajta kísérletezés segít megtalálni a legjobb megoldást a problémára.
 
 Az oktatóanyagban fejlesztés alatt álló kísérlet során két különböző típusú modellt hoz létre, majd összehasonlítja a pontozási eredményeit, hogy eldöntse, melyik algoritmust kívánja használni a végső kísérlet során.  
 
@@ -57,7 +57,7 @@ Többféle modell közül választhat. A rendelkezésre álló modellek megtekin
 
 Ebben a kísérletben a [kétosztályos növelt döntési fa][two-class-boosted-decision-tree] modult és a [kétosztályos támogatás vektoros gépi][two-class-support-vector-machine] modulját is fel kell vennie.
 
-### <a name="two-class-boosted-decision-tree"></a>Kétosztályos, megnövelt döntési fa
+### <a name="two-class-boosted-decision-tree"></a>Kétosztályos súlyozott döntési fa
 
 Először állítsa be a megnövelt döntési fa modelljét.
 
@@ -88,7 +88,7 @@ Most meg kell adnia a [betanítási modell][train-model] modulját, amely alapj�
 
 1. Kattintson az **OK** pipa jelre.
 
-### <a name="two-class-support-vector-machine"></a>Kétosztályos támogató vektorgép
+### <a name="two-class-support-vector-machine"></a>Kétosztályos tartóvektor-gép
 
 Ezután állítsa be a SVM modellt.  
 
@@ -206,7 +206,7 @@ Az eredmények értelmezése és a modell teljesítményének finomhangolása az
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  

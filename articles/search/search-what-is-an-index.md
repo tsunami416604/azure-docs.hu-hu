@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460749"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Alapszintű index létrehozása az Azure Cognitive Searchban
 
@@ -158,7 +158,7 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 
 Az Azure Cognitive Search [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)kapcsolatos részletesebb információkat itt talál.
 
-### <a name="index-attributes"></a>Index attribútumai
+### <a name="index-attributes"></a>Indexattribútumok
 
 Az index pontosan egy mezőjének a kijelölt **kulcs** mezőnek kell lennie, amely egyedileg azonosítja az egyes dokumentumokat.
 
@@ -175,10 +175,9 @@ Az indexek létrehozásához használt API-k eltérő alapértelmezett viselked�
 | `facetable` |Lehetővé teszi az adott mező [értékkorlátozott navigációs](search-faceted-navigation.md) szerkezetben történő használatát a felhasználó által önállóan irányított szűrések során. Általában olyan ismétlődő értékeket tartalmazó mezők, amelyek dokumentumok csoportosítására használhatók (például adott márkához vagy szolgáltatási kategóriához tartozó dokumentumok esetében). |
 | `searchable` |Azt jelzi, hogy az adott mező teljes szöveges keresésre alkalmas. |
 
+## <a name="index-size"></a>Index mérete
 
-## <a name="storage-implications"></a>Tárolási következmények
-
-A kiválasztott attribútumok hatással vannak a tárterületre. Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be.
+Az index méretét a feltöltött dokumentumok mérete határozza meg, valamint az indexelési konfiguráció, például a javaslatok belefoglalása, valamint az attribútumok egyéni mezőkhöz való beállítása. Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be.
 
 Az index a [beépített Real Estate Sample](search-get-started-portal.md) adatforráson alapul, amelyet a portálon indexelheti és lekérdezheti. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* indexben a **kereshető** attribútum van kiválasztva, és semmi mást sem, a *Realestate* lekérhető index a **beolvasható** attribútum van kiválasztva, semmi más, és így tovább.
 
@@ -186,13 +185,13 @@ Az index a [beépített Real Estate Sample](search-get-started-portal.md) adatfo
 
 Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. **Beállítja a** lekérdezhető növelési index méretét? Nem. Növeli a mezők hozzáadását egy **javaslathoz** az index méretének növelése érdekében? Igen.
 
-A szűrést és rendezést támogató indexek a csak teljes szöveges keresést támogató indexek arányosan nagyobbak. Ennek az az oka, hogy a szűrés és a rendezés lekérdezése pontos egyezéseket eredményez, így a dokumentumok érintetlenül tárolódnak. Ezzel szemben a teljes szöveges és a zavaros keresést támogató kereshető mezők invertált indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok.
+A szűrőket és a rendezést támogató indexek arányosan nagyobbak, mint a csak teljes szöveges keresések. A pontos egyezések szűrése és rendezése – a sértetlen dokumentumok jelenlétének megkövetelése. Ezzel szemben a teljes szöveges és a zavaros keresést támogató kereshető mezők invertált indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok. 
 
 > [!Note]
 > A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
 
 ## <a name="suggesters"></a>Javaslatok
-A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában részleges keresési karakterláncokat küld a [javaslatoknak (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , miközben a felhasználó keresési lekérdezést ír be, és az API a javasolt kifejezések egy halmazát adja vissza. 
+A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában a részleges keresési karakterláncokat küldi el a [javaslatok (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) számára, amíg a felhasználó begépel egy keresési lekérdezést, és az API a javasolt dokumentumok vagy kifejezések készletét adja vissza. 
 
 A rendszer a javaslathoz hozzáadott mezőket használja a típus előtti keresési feltételek kiépítéséhez. Az összes keresési kifejezés az indexelés során jön létre, és külön tárolja őket. A javaslati struktúra létrehozásával kapcsolatos további információkért lásd: [javaslatok hozzáadása](index-add-suggesters.md).
 
@@ -220,7 +219,7 @@ A következő beállítások állíthatók be a CORS:
 
 ## <a name="encryption-key"></a>Titkosítási kulcs
 
-Noha az összes Azure Cognitive Search index a Microsoft által felügyelt kulcsokkal van titkosítva, az indexek úgy konfigurálhatók, hogy a Key Vault-ben az **ügyfél által felügyelt kulcsokkal** titkosítva legyenek. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
+Habár a Microsoft által felügyelt kulcsokkal az összes Azure Cognitive Search-index titkosítva van, az indexek úgy konfigurálhatók, hogy az **ügyfél által felügyelt kulcsokkal** legyenek titkosítva Key Vault. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

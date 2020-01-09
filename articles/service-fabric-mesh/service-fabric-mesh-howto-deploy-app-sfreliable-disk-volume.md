@@ -1,25 +1,17 @@
 ---
-title: Egy Azure Service Fabric Mesh-alkalmazásban található, magasan elérhető Service Fabric megbízható lemez mennyisége | Microsoft Docs
+title: Service Fabric Mesh Service Fabric megbízható lemez kötete
 description: Megtudhatja, hogyan tárolhatja az állapotot egy Azure Service Fabric Mesh alkalmazásban úgy, hogy Service Fabric megbízható lemez-alapú kötetet csatlakoztat a tárolóhoz az Azure CLI használatával.
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036157"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497964"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Kiválóan elérhető Service Fabric megbízható lemez alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
 A tároló alkalmazásokkal való megőrzés közös módszere a távoli tárolás, például az Azure File Storage vagy az adatbázis, például a Azure Cosmos DB használata. Ez jelentős olvasási és írási hálózati késést okoz a távoli tárolónak.
@@ -29,11 +21,11 @@ Service Fabric megbízható lemez a magas rendelkezésre állás érdekében a S
 
 Ebben a példában a számláló alkalmazásnak van egy ASP.NET Core szolgáltatása egy weboldallal, amely egy böngészőben megjeleníti a számláló értékét.
 
-Az `counterService` időnként beolvas egy számláló értékét egy fájlból, megnöveli azt, és visszaírja a fájlba. A fájl egy olyan mappában van tárolva, amely Service Fabric megbízható lemez által támogatott kötetre van csatlakoztatva.
+A `counterService` rendszeresen beolvas egy számláló értékét egy fájlból, megnöveli azt, és visszaírja a fájlba. A fájl egy olyan mappában van tárolva, amely Service Fabric megbízható lemez által támogatott kötetre van csatlakoztatva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A feladat végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését. Ha az Azure CLI-t ehhez a cikkhez szeretné `az --version` használni, győződjön `azure-cli (2.0.43)`meg arról, hogy legalább a értéket adja vissza.  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
+A feladat végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését. Ha az Azure CLI-t ehhez a cikkhez szeretné használni, győződjön meg arról, hogy a `az --version` legalább `azure-cli (2.0.43)`ad vissza.  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -44,9 +36,9 @@ az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezheti. A következő parancs egy nevű `myResourceGroup` erőforráscsoportot hoz létre a keleti Egyesült Államok egy helyen. Ha megváltoztatja az erőforráscsoport nevét az alábbi parancsban, ne felejtse el módosítani az összes következő parancsban.
+Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezheti. A következő parancs egy `myResourceGroup` nevű erőforráscsoportot hoz létre a keleti Egyesült Államok egyik helyén. Ha megváltoztatja az erőforráscsoport nevét az alábbi parancsban, ne felejtse el módosítani az összes következő parancsban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +58,7 @@ A központi telepítés állapotát a paranccsal is megtekintheti
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Figyelje meg annak az átjáró-erőforrásnak a nevét, `Microsoft.ServiceFabricMesh/gateways`amelynek az erőforrástípus a típusa. Ezt fogja használni a rendszer az alkalmazás nyilvános IP-címének lekérése során.
+Figyelje meg, hogy az átjáró erőforrásának neve `Microsoft.ServiceFabricMesh/gateways`típusú. Ezt fogja használni a rendszer az alkalmazás nyilvános IP-címének lekérése során.
 
 ## <a name="open-the-application"></a>Az alkalmazás megnyitása
 
@@ -75,13 +67,13 @@ Az alkalmazás sikeres üzembe helyezése után szerezze be az alkalmazás átj�
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-A kimenetnek rendelkeznie kell egy `ipAddress` olyan tulajdonsággal, amely a szolgáltatás végpontjának nyilvános IP-címe. Nyissa meg egy böngészőben. Ekkor megjelenik egy weblap, amelyen a számláló értéke másodpercenként frissül.
+A kimenetnek rendelkeznie kell egy `ipAddress` tulajdonsággal, amely a szolgáltatás végpontjának nyilvános IP-címe. Nyissa meg egy böngészőben. Ekkor megjelenik egy weblap, amelyen a számláló értéke másodpercenként frissül.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Annak ellenőrzése, hogy az alkalmazás képes-e a kötet használatára
 
-Az alkalmazás létrehoz egy nevű `counter.txt` fájlt a kötet belső `counter/counterService` mappájában. A fájl tartalma a weblapon megjelenő számláló értéke.
+Az alkalmazás létrehoz egy `counter.txt` nevű fájlt `counter/counterService` mappában található köteten. A fájl tartalma a weblapon megjelenő számláló értéke.
 
-## <a name="delete-the-resources"></a>Az erőforrások törlése
+## <a name="delete-the-resources"></a>Erőforrások törlése
 
 Gyakran törölje azokat az erőforrásokat, amelyeket már nem használ az Azure-ban. Az ehhez a példához kapcsolódó erőforrások törléséhez törölje azt az erőforráscsoportot, amelyben a központi telepítés történt (amely az erőforráscsoporthoz társított összes műveletet törli) a következő paranccsal:
 
@@ -89,8 +81,8 @@ Gyakran törölje azokat az erőforrásokat, amelyeket már nem használ az Azur
 az group delete --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a Service Fabric megbízható kötet lemez minta [](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter)alkalmazást a githubon.
+- Tekintse meg a Service Fabric megbízható kötet lemez minta alkalmazást a [githubon](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - A Service Fabric-erőforrásmodellel kapcsolatos további tudnivalókért lásd a [Service Fabric Mesh-erőforrásmodellt](service-fabric-mesh-service-fabric-resources.md) bemutató cikket.
 - A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.

@@ -1,25 +1,14 @@
 ---
-title: A Service Fabric és a tárolók áttekintése | Microsoft Docs
+title: A Service Fabric és a tárolók áttekintése
 description: A Service Fabric áttekintése és a tárolók használata a Service-alkalmazások üzembe helyezéséhez. Ez a cikk áttekintést nyújt a tárolók használatáról és a Service Fabric rendelkezésre álló lehetőségeiről.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458222"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric és tárolók
 
@@ -29,14 +18,14 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 
 Service Fabric a Microsoft [tároló-Orchestrator](service-fabric-cluster-resource-manager-introduction.md) , amellyel a gépeket egy fürtön belül üzembe helyezheti. A Microsoft által nyújtott szolgáltatások nagy léptékű szolgáltatásokkal való ellátása során az évek során szerzett tapasztalatok Service Fabric.
 
-A mikroszolgáltatások számos különféle módon fejleszthetőek a [Service Fabric programozási modellektől](service-fabric-choose-framework.md) és az [ASP.NET Core-tól](service-fabric-reliable-services-communication-aspnetcore.md) [tetszőleges kód üzembe helyezéséig](service-fabric-guest-executables-introduction.md). Ha azonban csak a tárolókat szeretné [üzembe helyezni és felügyelni](service-fabric-containers-overview.md), Service Fabric is remek választás.
+A mikroszolgáltatások számos különféle módon fejleszthetőek a [Service Fabric programozási modellektől](service-fabric-choose-framework.md) és az [ASP.NET Core-tól](service-fabric-reliable-services-communication-aspnetcore.md)[tetszőleges kód üzembe helyezéséig](service-fabric-guest-executables-introduction.md). Ha azonban csak a [tárolókat szeretné üzembe helyezni és felügyelni](service-fabric-containers-overview.md), Service Fabric is remek választás.
 
 Alapértelmezés szerint a Service Fabric folyamatokként telepíti és aktiválja ezeket a szolgáltatásokat. A folyamatok biztosítják a fürt erőforrásainak leggyorsabb aktiválását és legnagyobb sűrűségű használatát. A Service Fabric a szolgáltatásokat tároló lemezképekben is üzembe helyezheti. A szolgáltatásokat a folyamatokban és a tárolókban lévő szolgáltatásokban is összekeverheti ugyanabban az alkalmazásban.
 
 Ha szeretné azonnal beugrani, és kipróbálni a tárolókat a Service Fabricon, próbálkozzon egy gyors útmutatóval, oktatóanyaggal vagy mintával:  
 
-[Rövid útmutató: Linux-tároló alkalmazás üzembe helyezése Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Rövid útmutató: Windows Container-alkalmazás üzembe helyezése Service Fabric](service-fabric-quickstart-containers.md)  
+[Gyors útmutató: linuxos Container-alkalmazás üzembe helyezése Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Gyors útmutató: Windows Container-alkalmazás üzembe helyezése Service Fabric](service-fabric-quickstart-containers.md)  
 [Meglévő .NET-alkalmazás tárolóba helyezése](service-fabric-host-app-in-a-container.md)  
 [Service Fabric-tárolóminták](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +37,10 @@ A tárolók közvetlenül a kernelen futnak, és a fájlrendszer és más erőfo
 
 A virtuális gépekhez képest a tárolók a következő előnyöket biztosítják:
 
-* **Kicsi**: A tárolók a hatékonyság növelése érdekében egyetlen tárolóhelyet és a rétegek verzióját és frissítését használják.
-* **Gyors**: A tárolóknak nem kell teljes operációs rendszert elindítaniuk, így sokkal gyorsabbak lehetnek – általában másodpercek alatt.
-* **Hordozhatóság**: A tárolóban lévő alkalmazás-rendszerképek a felhőben, a helyszínen, a virtuális gépeken, illetve közvetlenül a fizikai gépeken is futtathatók.
-* **Erőforrás-szabályozás**: A tárolók korlátozhatják a gazdagépen felhasználható fizikai erőforrásokat.
+* **Kisméretű**: a tárolók a hatékonyság növelése érdekében egyetlen tárolóhelyet és a rétegek verzióját és frissítéseit használják.
+* **Gyors**: a tárolók nem rendelkeznek teljes operációs rendszer indításával, így sokkal gyorsabbak lehetnek – általában másodpercek alatt.
+* **Hordozhatóság**: egy tárolóban lévő alkalmazási rendszerkép a felhőben, a helyszínen, a virtuális gépeken vagy közvetlenül a fizikai gépeken is futtatható.
+* **Erőforrás-szabályozás**: a tárolók korlátozhatják a gazdagépen felhasználható fizikai erőforrásokat.
 
 ### <a name="container-types-and-supported-environments"></a>Tárolók típusai és támogatott környezetek
 
@@ -76,11 +65,11 @@ Az alábbi ábrán az elérhető virtualizációs és elkülönítési szintek k
 
 Íme egy tipikus példa, amelyben a tároló jó választás:
 
-* **IIS-emelés és-váltás**: Egy meglévő [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást egy tárolóban helyezhet át a ASP.net Coreba való Migrálás helyett. Ezek a ASP.NET MVC-alkalmazások a Internet Information Servicestól (IIS) függenek. Ezeket az alkalmazásokat tároló lemezképbe csomagolhatja az előre létrehozott IIS-lemezképből, és üzembe helyezheti azokat Service Fabric használatával. A Windows-tárolókkal kapcsolatos információkért lásd: [tároló lemezképek a Windows Serveren](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
+* **IIS-lift és-váltás**: egy meglévő [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást helyezhet üzembe egy tárolóban ahelyett, hogy áttelepíti azt a ASP.net Coreba. Ezek a ASP.NET MVC-alkalmazások a Internet Information Servicestól (IIS) függenek. Ezeket az alkalmazásokat tároló lemezképbe csomagolhatja az előre létrehozott IIS-lemezképből, és üzembe helyezheti azokat Service Fabric használatával. A Windows-tárolókkal kapcsolatos információkért lásd: [tároló lemezképek a Windows Serveren](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
 
-* **Tárolók és Service Fabric-szolgáltatások együttes szolgáltatása**: Egy meglévő tároló-rendszerkép használata az alkalmazás egy részénél. Használhatja például az alkalmazás és az állapot-nyilvántartó szolgáltatások webes kezelőfelületének [NGINX](https://hub.docker.com/_/nginx/) -tárolóját az intenzívebb háttérbeli számításokhoz.
+* **Tárolók és Service Fabric-szolgáltatások együttes**használata: használjon egy meglévő tároló-rendszerképet az alkalmazás részeként. Használhatja például az alkalmazás és az állapot-nyilvántartó szolgáltatások webes kezelőfelületének [NGINX-tárolóját](https://hub.docker.com/_/nginx/) az intenzívebb háttérbeli számításokhoz.
 
-* **A "zajos szomszédok" szolgáltatások hatásának csökkentése**: A tárolók erőforrás-irányítási képességeinek használatával korlátozhatja a szolgáltatás által a gazdagépen használt erőforrásokat. Ha a szolgáltatások sok erőforrást használnak, és hatással vannak mások teljesítményére (például egy hosszan futó, lekérdezés-szerű művelet), fontolja meg, hogy ezek a szolgáltatások olyan tárolókban legyenek, amelyeknek erőforrás-szabályozása van.
+* A **"zajos szomszédok" szolgáltatások hatásának csökkentése**: a tárolók erőforrás-irányítási képességével korlátozhatja a szolgáltatás által a gazdagépen használt erőforrásokat. Ha a szolgáltatások sok erőforrást használnak, és hatással vannak mások teljesítményére (például egy hosszan futó, lekérdezés-szerű művelet), fontolja meg, hogy ezek a szolgáltatások olyan tárolókban legyenek, amelyeknek erőforrás-szabályozása van.
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric tárolók támogatása
 
@@ -103,7 +92,7 @@ A Service Fabric számos tároló-képességet biztosít, amelyek segítségéve
 
 Az Azure-beli tárolók támogatásának átfogó áttekintése, például a Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással, a privát Docker-beállításjegyzék létrehozása a Azure Container Registry-ben és további információ: [Azure for containers](https://docs.microsoft.com/azure/containers/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogy milyen támogatási Service Fabric biztosít a tárolók futtatásához. Ezután az egyes funkciók példáit követve megtudhatja, hogyan használhatja őket.
 

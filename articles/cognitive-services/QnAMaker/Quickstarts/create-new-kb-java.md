@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Tudásbázis létrehozása – REST, Java – QnA Maker'
+title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Java – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ez a Java REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
@@ -8,22 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: c5a1af0b26f30cac39a76c4480848fbe1d75477b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bd2e12660894f51ae4606ce3b2766f6cff821f41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447637"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker Java használatával
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Java használatával
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja.
 
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+* [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java-minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,9 +47,14 @@ A `CreateKB.java` tetején a következő sorok hozzáadásával adja hozzá a sz
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
-A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is a `CreateKB` osztályhoz. 
+A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is a `CreateKB` osztályhoz.
 
-Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és az erőforrás nevének lekéréséhez **válassza a** gyors üzembe helyezés lehetőséget a QnA Maker erőforrásának Azure Portal. 
+Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és az erőforrás nevének lekéréséhez **válassza a** gyors üzembe helyezés lehetőséget a QnA Maker erőforrásának Azure Portal.
+
+Állítsa be a következő értékeket:
+
+* `<your-qna-maker-subscription-key>` – a **kulcs** egy 32 karakterből álló karakterlánc, amely a Azure Portal a gyors üzembe helyezés lapon, a QnA Maker erőforrásban érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
+* `<your-resource-name>` – az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`formátumban. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 Az osztály befejezéséhez nem kell hozzáadnia a záró kerek zárójelet. Ez a rövid útmutató végén a végső kódrészletben szerepel.
 
@@ -135,7 +144,7 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

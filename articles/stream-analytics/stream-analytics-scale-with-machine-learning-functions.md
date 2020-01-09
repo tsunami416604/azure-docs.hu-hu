@@ -1,19 +1,18 @@
 ---
 title: Machine Learning függvények méretezése Azure Stream Analytics
 description: Ez a cikk azt ismerteti, hogyan méretezhetők a Machine Learning függvényeket használó Stream Analytics feladatok a particionálási és a stream-egységek konfigurálásával.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dedffab0b17515cedc54569d5debf6d29b273644
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458746"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
@@ -104,14 +103,14 @@ Alább látható a különböző SUs-és batch-méretekhez tartozó Stream Analy
 
 | köteg mérete (ML késleltetés) | 500 (200 MS) | 1 000 (200 MS) | 5 000 (250 MS) | 10 000 (300 MS) | 25 000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2 500 |5000 |20 000 |30 000 |50 000 |
-| **3 SUs** |2 500 |5000 |20 000 |30 000 |50 000 |
-| **6 SUs** |2 500 |5000 |20 000 |30 000 |50 000 |
-| **12 SUs** |5000 |10,000 |40 000 |60 000 |100 000 |
-| **18 SUs** |7500 |15 000 |60 000 |90 000 |150 000 |
-| **24 SUs** |10,000 |20 000 |80 000 |120 000 |200,000 |
-| **...** |... |... |... |... |... |
-| **60 SUs** |25 000 |50 000 |200,000 |300 000 |500 000 |
+| **1 SU** |2500 |5000 |20 000 |30 000 |50 000 |
+| **3 SUs** |2500 |5000 |20 000 |30 000 |50 000 |
+| **6 SUs** |2500 |5000 |20 000 |30 000 |50 000 |
+| **12 SUs** |5000 |10,000 |40 000 |60 000 |100 000 |
+| **18 SUs** |7500 |15 000 |60 000 |90,000 |150 000 |
+| **24 SUs** |10,000 |20 000 |80 000 |120 000 |200,000 |
+| **...** |… |… |… |… |… |
+| **60 SUs** |25,000 |50 000 |200,000 |300,000 |500,000 |
 
 Mostantól már jól megértette, hogyan Machine Learning függvények a Stream Analytics működésében. Valószínűleg azt is tudomásul veszi, hogy Stream Analytics feladatok "lekéréses" adatai az adatforrásokból és az egyes "lekérések" az Stream Analytics feladathoz tartozó események kötegét adja vissza. Hogyan befolyásolja ez a lekérési modell a Machine Learning webszolgáltatási kérelmeket?
 
@@ -140,7 +139,7 @@ Stream Analytics feladatok Machine Learning függvényekkel való méretezéséh
 
 Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Azure stream Analytics fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) egy nagyszerű erőforrás, amellyel további segítséget kaphat a stream Analytics csapattól.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Stream Analyticsról további információt a következő témakörben talál:
 
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

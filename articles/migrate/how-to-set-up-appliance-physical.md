@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: db67defc72dcc7d913f897c6fb61548c5c33cf52
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 548ebfca9a937e58dfc5c1aff1adf6f6cb2dcc5d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454609"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Berendezés beállítása fizikai kiszolgálókhoz
 
@@ -82,7 +82,7 @@ Futtassa a szkriptet a következő módon:
 3. Módosítsa a PowerShell könyvtárat arra a mappára, ahol a rendszer kibontotta a tartalmat a letöltött tömörített fájlból.
 4. Futtassa a szkriptet a következő parancs futtatásával:
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    AzureMigrateInstaller.ps1
     ```
 A szkript a készülék webalkalmazásának sikeres befejeződése után elindítja a készüléket.
 
@@ -102,7 +102,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe csatlakozni tud a s
 2. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDNformában.
+        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDN formában.
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő a virtuális gép felderítésének megfelelő működéséhez szinkronban kell lennie.

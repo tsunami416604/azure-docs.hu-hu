@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444138"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató
 
@@ -246,7 +246,7 @@ Konfigurálja a **enableStaging** beállítást a másolási tevékenységben an
 | --- | --- | --- | --- |
 | enableStaging |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |Nem |
 | linkedServiceName |Adja meg egy [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tárolási példányra hivatkozik. <br/><br/> Nem használhat megosztott hozzáférési aláírással rendelkező tárolót az adatok SQL Data Warehouseba való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |– |Igen, ha a **enableStaging** értéke TRUE (igaz) |
-| elérési út |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |– |Nem |
+| path |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |– |Nem |
 | enableCompression |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |Nem |
 
 >[!NOTE]
@@ -293,7 +293,8 @@ A díj két lépésből áll: a másolás időtartama és a másolás típusa al
 
 Az alábbiakban a támogatott adattárakkal kapcsolatos Teljesítményfigyelés és hangolási referenciák találhatók:
 
-* Azure Storage, beleértve a blob Storage-t és a Table Storage-t: az [Azure Storage skálázhatósági céljai](../storage/common/storage-scalability-targets.md) és az [Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](../storage/common/storage-performance-checklist.md).
+* Azure Blob Storage: a blob Storage-hoz szükséges [méretezhetőségi és teljesítményi célok](../storage/blobs/scalability-targets.md) , valamint a blob Storage-hoz kapcsolódó [teljesítmény-és méretezhetőségi ellenőrzőlista](../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: a táblázatos tároláshoz [szükséges méretezhetőségi](../storage/tables/scalability-targets.md) és teljesítményi célok, [valamint a Table Storage teljesítményére és méretezhetőségére vonatkozó ellenőrzőlista](../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: nyomon követheti [a teljesítményt](../sql-database/sql-database-single-database-monitor.md) , és ellenőrizheti az adatbázis-tranzakciós egység (DTU) százalékos arányát.
 * Azure SQL Data Warehouse: a képesség mérése adatraktár-egységekben (DWU) történik. Lásd: [a számítási teljesítmény kezelése Azure SQL Data Warehouseban (áttekintés)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Azure Cosmos db teljesítmény szintjei](../cosmos-db/performance-levels.md).

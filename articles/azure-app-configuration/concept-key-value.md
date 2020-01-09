@@ -1,23 +1,17 @@
 ---
-title: Azure-alkalmazás konfigurációs kulcs-érték tárolója | Microsoft Docs
-description: A konfigurációs információk Azure-alkalmazás konfigurációban való tárolásának áttekintése
-services: azure-app-configuration
-documentationcenter: ''
+title: Azure-alkalmazás konfigurációs kulcs-érték tárolója
+description: Áttekintés arról, hogy a konfigurációs információk hogyan tárolódnak az Azure-alkalmazások konfigurációjában.
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 054de294c9edb0fe5b75da4ac7fd54ce987123de
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 11e019e276944e0c3f50d604420046979b5f3fbb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185221"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495269"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
@@ -75,7 +69,7 @@ A címkékben bármilyen Unicode-karaktert használhat, `*`, `,`és `\`kivétel�
 
 Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy címkét, amely `null`lehet. A kulcsok értékeit egy minta megadásával kérdezheti le. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
 
-| Paraméter | |
+| Jelmagyarázat | |
 |---|---|
 | `key` ki van hagyva vagy `key=*` | Az összes kulcs egyezése |
 | `key=abc` | Pontosan megfelel az **ABC** -kulcs nevének |

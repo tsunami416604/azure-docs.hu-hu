@@ -1,5 +1,5 @@
 ---
-title: Lekérdezési problémák diagnosztizálása és hibaelhárítása Azure Cosmos DB használatakor
+title: Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elháríthatja a Azure Cosmos DB SQL-lekérdezéssel kapcsolatos problémákat.
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444722"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB lekérdezési teljesítményének megoldása
 Ez a cikk a Azure Cosmos DB SQL-lekérdezési problémák azonosítását, diagnosztizálását és hibaelhárítását ismerteti. Az Azure Cosmos DB lekérdezések optimális teljesítményének elérése érdekében kövesse az alábbi hibaelhárítási lépéseket. 
@@ -26,7 +26,7 @@ A [konzisztencia szintje](consistency-levels.md) hatással lehet a teljesítmén
 
 ## <a name="log-the-executed-sql-query"></a>A végrehajtott SQL-lekérdezés naplózása 
 
-Naplózhatja a végrehajtott SQL-lekérdezést egy Storage-fiókban vagy a diagnosztikai napló táblájában. A [diagnosztikai naplókon keresztüli SQL-lekérdezési naplók](monitor-cosmos-db.md#diagnostic-settings) lehetővé teszik, hogy az Ön által választott Storage-fiókba naplózza a megzavarodott lekérdezést. Így megtekintheti a naplókat, és megkeresheti a magasabb RUs-t használó lekérdezést. Később a tevékenység-AZONOSÍTÓval megegyezően használhatja a QueryRuntimeStatistics aktuális lekérdezését. A lekérdezés a biztonsági célra, a lekérdezési paraméterek neveivel és a WHERE záradékokban szereplő értékekkel nem egyezik meg a tényleges névvel és értékekkel. A naplózás a Storage-fiók használatával megtarthatja a végrehajtott lekérdezések hosszú távú megőrzését.  
+Naplózhatja a végrehajtott SQL-lekérdezést egy Storage-fiókban vagy a diagnosztikai napló táblájában. A [diagnosztikai naplókon keresztüli SQL-lekérdezési naplók](cosmosdb-monitor-resource-logs.md) lehetővé teszik, hogy az Ön által választott Storage-fiókba naplózza a megzavarodott lekérdezést. Így megtekintheti a naplókat, és megkeresheti a magasabb RUs-t használó lekérdezést. Később a tevékenység-AZONOSÍTÓval megegyezően használhatja a QueryRuntimeStatistics aktuális lekérdezését. A lekérdezés a biztonsági célra, a lekérdezési paraméterek neveivel és a WHERE záradékokban szereplő értékekkel nem egyezik meg a tényleges névvel és értékekkel. A naplózás a Storage-fiók használatával megtarthatja a végrehajtott lekérdezések hosszú távú megőrzését.  
 
 ## <a name="log-query-metrics"></a>Napló lekérdezési metrikái
 
@@ -117,7 +117,7 @@ Ha a kifejezés lefordítható különböző sztringértékekre, akkor használh
   * Ha lehetséges, a lekérdezések írása partíciókulcs-szűrő használatával történjen.
   * Az elvégezhető lekérdezések elérésének elkerülése érdekében a szűrőben ne legyenek meghívók a felső/alacsonyabb érték. Ehelyett a beszúráskor normalizálja az értékek házát. Minden értéknél illessze be az értéket a kívánt burkolattal, vagy szúrja be az eredeti értéket és az értéket a kívánt burkolattal. 
 
-    Például:
+    Példa:
     
     ```sql
 
@@ -148,7 +148,7 @@ Ellenőrizze, hogy az aktuális [indexelési szabályzat](index-policy.md) optim
 További részletekért lásd az [indexelési szabályzat kezelése](how-to-manage-indexing-policy.md) című cikket.
 
 ## <a name="spatial-data-check-ordering-of-points"></a>Térbeli információk: a pontok sorrendjét vizsgálja
-Sokszög belül pontok óramutató járásával ellentétes irányban sorrendben kell adni. Egy megadott óramutató sorrendben sokszög benne a régió inverzét jelöli.
+A sokszögben lévő pontokat a megfelelő sorrendben kell megadni. A megegyező sorrendben megadott sokszög a régió inverzét jelöli.
 
 ## <a name="optimize-join-expressions"></a>ILLESZTÉSi kifejezések optimalizálása
 `JOIN` kifejezések nagy mennyiségű termékre bővíthetők. Ha lehetséges, szűkítse a lekérdezést egy kisebb keresési területtel egy szűkebb szűrő használatával.

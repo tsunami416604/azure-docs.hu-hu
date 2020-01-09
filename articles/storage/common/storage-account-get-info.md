@@ -1,5 +1,6 @@
 ---
-title: A Storage-fiók típusának és az SKU nevének beolvasása a .NET-Azure Storage szolgáltatással
+title: A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
+titleSuffix: Azure Storage
 description: Ismerje meg, hogyan kérheti le az Azure Storage-fiók típusát és az SKU nevét a .NET ügyféloldali kódtár használatával.
 services: storage
 author: mhopkins-msft
@@ -8,12 +9,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457472"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
 
@@ -23,9 +24,9 @@ A fiókadatok a 2018-03-28-es verziótól kezdődően elérhetők a szolgáltat�
 
 ## <a name="about-account-type-and-sku-name"></a>A fiók típusa és az SKU neve
 
-**Fiók típusa**: Érvényes fióktípus például a `BlobStorage`következők `BlockBlobStorage` `FileStorage`:,,, `StorageV2`és. `Storage` Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
+**Fióktípus**: az érvényes fióktípus például `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage`és `StorageV2`. Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
 
-**SKU neve**: Az érvényes SKU- `Premium_LRS`nevek `Premium_ZRS` `Standard_GRS`a `Standard_GZRS` következők:`Standard_ZRS`,,,,,, és. `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)sztring mezői.
+**SKU neve**: érvényes SKU-nevek: `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`és `Standard_ZRS`. Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)sztring mezői.
 
 ## <a name="retrieve-account-information"></a>Fiókadatok beolvasása
 
@@ -59,10 +60,8 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan végezhet el más műveleteket a Storage-fiókokon a [Azure Portal](https://portal.azure.com) és az Azure REST API használatával.
 
-- [Storage-fiók kezelése](storage-account-manage.md)
-- [Storage-fiók frissítése](storage-account-upgrade.md)
 - [Fiókadatok beolvasása művelet (REST)](/rest/api/storageservices/get-account-information)

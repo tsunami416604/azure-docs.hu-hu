@@ -1,20 +1,16 @@
 ---
-title: Az Azure Service Fabric Mesh parancssori felületének beállítása | Microsoft Docs
+title: Az Azure Service Fabric Mesh parancssori felületének beállítása
 description: Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. Itt állíthatja be.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5c9733a5fc5aec337a326fe39e78c3e5c0b8ca4f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461890"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
 Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. Itt állíthatja be.
@@ -86,7 +82,7 @@ Ha a Maven Java-alkalmazásban szeretné használni a Maven beépülő modult, a
 
 A részletes használatról a [MAVEN CLI-referenciáját](service-fabric-mesh-reference-maven.md) ismertető szakaszban olvashat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Windows fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) is beállíthatja.
 

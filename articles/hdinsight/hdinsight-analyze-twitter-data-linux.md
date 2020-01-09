@@ -1,78 +1,76 @@
 ---
-title: Az Apache Hive – Azure HDInsight Twitter-adatok elemzése
-description: Megtudhatja, hogyan használható az Apache Hive- és Apache Hadoop HDInsight, nyers TWitter-adatok átalakítása a kereshető Hive-táblába.
+title: Twitter-alapú adatelemzés Apache Hive-Azure HDInsight
+description: Ismerje meg, hogyan alakíthatja át a nyers TWitter-információkat a HDInsight a Apache Hive és a Apache Hadoop használatával egy kereshető struktúra-táblázatba.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 8c7f6695880cfdb0a350edc37d61e771d03b92df
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 12/16/2019
+ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435616"
 ---
-# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hive- és Apache Hadoop használatával Twitter-adatok elemzése
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-adataik elemzése Apache Hive és Apache Hadoop használatával a HDInsight-on
 
-Ismerje meg, hogyan használható [Apache Hive](https://hive.apache.org/) folyamat Twitter-adatok. Ez a legtöbb tweeteket egy bizonyos szót tartalmazó küldő Twitter-felhasználók listája.
+Megtudhatja, hogyan dolgozhat a Twitter-adatfeldolgozási [Apache Hive](https://hive.apache.org/) használatával. Az eredmény azon Twitter-felhasználók listája, akik az adott szót tartalmazó legtöbb tweetet elküldötték.
 
 > [!IMPORTANT]  
-> A jelen dokumentumban leírt lépések tesztelt, a HDInsight 3.6-ot.
+> A dokumentumban ismertetett lépéseket a HDInsight 3,6-es verziójában tesztelték.
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
-Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScript Object Notation (JSON) dokumentumban REST API-n keresztül. [OAuth](https://oauth.net) az API-hitelesítés szükséges.
+A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) dokumentumként való lekérését egy REST APIon keresztül. Az API-hoz való hitelesítéshez [OAuth](https://oauth.net) szükséges.
 
 ### <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
-1. Egy webböngészőben, jelentkezzen be a [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kattintson a **most regisztrál** hivatkozásra, ha nem rendelkezik egy Twitter-fiókkal.
+1. Egy webböngészőből jelentkezzen be [https://developer.twitter.com/apps/ ba ](https://developer.twitter.com/apps/). Ha nem rendelkezik Twitter-fiókkal, válassza a **regisztráció most** hivatkozást.
 
-2. Kattintson a **új alkalmazás létrehozása**.
+2. Válassza az **új alkalmazás létrehozása**lehetőséget.
 
-3. Adja meg **neve**, **leírás**, **webhely**. Meghatározhat egy URL-címe be a **webhely** mező. Az alábbi táblázat néhány mintaértékeket használhatja:
+3. Adja meg a **nevet**, a **leírást**, a **webhelyet**. Létrehozhat egy URL-címet a **webhely** mezőhöz. A következő táblázat a használandó példákat tartalmazza:
 
-   | Mező | Érték |
-   |:--- |:--- |
-   | Name (Név) |MyHDInsightApp |
+   | Mező | Value (Díj) |
+   |--- |--- |
+   | Név |MyHDInsightApp |
    | Leírás |MyHDInsightApp |
-   | Webhely |https:\//www.myhdinsightapp.com |
+   | Honlap |`https://www.myhdinsightapp.com` |
 
-4. Ellenőrizze **Igen, elfogadom**, és kattintson a **Twitter-alkalmazás létrehozása**.
+4. Válassza az **Igen, elfogadom**lehetőséget, majd válassza **a Twitter-alkalmazás létrehozása**lehetőséget.
 
-5. Kattintson a **engedélyek** fülre. Az alapértelmezett engedély **csak olvasható**.
+5. Válassza az **engedélyek** fület. Az alapértelmezett engedély **csak olvasható**.
 
-6. Kattintson a **kulcsok és hozzáférési tokenek** fülre.
+6. Válassza a **kulcsok és hozzáférési tokenek** fület.
 
-7. Kattintson a **saját hozzáférési token létrehozása**.
+7. Válassza **a saját hozzáférési jogkivonat létrehozása**lehetőséget.
 
-8. Kattintson a **teszt OAuth** az oldal jobb felső sarkában.
+8. A lap jobb felső sarkában válassza a **teszt OAuth** elemet.
 
-9. Írja le **fogyasztói kulcs**, **fogyasztói titkos kulcs**, **hozzáférési jogkivonat**, és **hozzáférési token titkos**.
+9. Jegyezze fel a fogyasztói kulcsot, a **fogyasztói titkos**kulcsot, a **hozzáférési tokent**és a **hozzáférési jogkivonat titkos** **kulcsát**.
 
-### <a name="download-tweets"></a>Töltse le a Twitter-üzenetek
+### <a name="download-tweets"></a>Tweetek letöltése
 
-A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket egy fájlt **tweets.txt**.
+A következő Python-kód letölti az 10 000 tweeteket a Twitterről, és menti őket egy **tweetes. txt**nevű fájlba.
 
 > [!NOTE]  
-> Az alábbi lépéseket a HDInsight-fürtön történik, mivel a Python már telepítve van.
+> A HDInsight-fürtön a következő lépések végezhetők el, mivel a Python már telepítve van.
 
-1. Csatlakozzon SSH-val a HDInsight-fürthöz:
+1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](./hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
-    ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-3. Telepítse az alábbi parancsokkal [Tweepy](https://www.tweepy.org/), [folyamatjelző sáv](https://pypi.python.org/pypi/progressbar/2.2), és a többi szükséges csomagot:
+1. A következő parancsokkal telepítheti a [Tweepy](https://www.tweepy.org/), a [folyamatjelző sávot](https://pypi.python.org/pypi/progressbar/2.2)és az egyéb szükséges csomagokat:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
    sudo apt remove python-openssl
-   pip install virtualenv
+   python -m pip install virtualenv
    mkdir gettweets
    cd gettweets
    virtualenv gettweets
@@ -80,13 +78,13 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
    pip install tweepy progressbar pyOpenSSL requests[security]
    ```
 
-4. A következő paranccsal hozzon létre egy fájlt **gettweets.py**:
+1. A következő parancs használatával hozzon létre egy **gettweets.py**nevű fájlt:
 
    ```bash
    nano gettweets.py
    ```
 
-5. Használja a következő szöveget a tartalmát, a **gettweets.py** fájlt:
+1. Szerkessze az alábbi kódot úgy, hogy `Your consumer secret`, `Your consumer key`, `Your access token`és `Your access token secret` helyett a Twitter-alkalmazásból származó releváns adatokat cseréli ki. Ezután illessze be a szerkesztett kódot a **gettweets.py** -fájl tartalmába.
 
    ```python
    #!/usr/bin/python
@@ -104,7 +102,7 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
    access_token_secret='Your access token secret'
 
    #The number of tweets we want to get
-   max_tweets=10000
+   max_tweets=100
 
    #Create the listener class that receives and saves tweets
    class listener(StreamListener):
@@ -142,50 +140,42 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-    > [!IMPORTANT]  
-    > Cserélje le a helyőrző szöveg a következő elemek twitter-alkalmazás adatait:
-    >
-    > * `consumer_secret`
-    > * `consumer_key`
-    > * `access_token`
-    > * `access_token_secret`
-
     > [!TIP]  
-    > A témakörök szűrő népszerű kulcsszavak nyomon követéséhez az utolsó sorban állítsa be. Népszerű kulcsszavakat, a parancsfájl futtatása során lehetővé teszi az adatok gyorsabb rögzítési.
+    > Módosítsa a témakörök szűrőt az utolsó sorban a népszerű kulcsszavak nyomon követéséhez. A parancsfájl futtatásának időpontjában népszerű kulcsszavakat használva gyorsabb adatrögzítést tesz lehetővé.
 
-6. Használat **Ctrl + X**, majd **Y** szeretné menteni a fájlt.
+1. A fájl mentéséhez használja a **CTRL + X billentyűkombinációt**, majd az **Y** billentyűt.
 
-7. Az alábbi parancs segítségével futtassa a fájlt, és töltse le a Twitter-üzenetek:
+1. Futtassa a következő parancsot a fájl futtatásához és a tweetek letöltéséhez:
 
     ```bash
     python gettweets.py
     ```
 
-    Egy folyamatjelző jelenik meg. 100 %-a tweetek letöltöttként számolja.
+    Megjelenik egy folyamatjelző. A tweetek letöltése akár 100%-ot is megszámol.
 
    > [!NOTE]  
-   > Azt mutatja be, a folyamatjelző sáv kell hosszú ideig tart a vártnál, ha módosítania kell a szűrő Népszerű témakörök nyomon követéséhez. Ha a témakör a szűrő számos tweetekről, a szükséges 10000 tweeteket gyorsan kérheti le.
+   > Ha hosszabb ideig tart, amíg a folyamatjelző előre be nem következik, módosítania kell a szűrőt, hogy nyomon követhesse a trendek témakörét. Ha sok Tweet van a szűrőben szereplő témakörhöz, gyorsan lekérheti az 100-tweetek szükségesek.
 
-### <a name="upload-the-data"></a>Az adatok feltöltése
+### <a name="upload-the-data"></a>Adatok feltöltése
 
-Az adatok feltöltése a HDInsight storage, a következő parancsokat használja:
+Az adatok HDInsight-tárolóba való feltöltéséhez használja a következő parancsokat:
 
 ```bash
 hdfs dfs -mkdir -p /tutorials/twitter/data
 hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ```
 
-Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen tárolja az adatokat.
+Ezek a parancsok olyan helyen tárolják az adattárakat, amelyet a fürt összes csomópontja elérhet.
 
-## <a name="run-the-hiveql-job"></a>A HiveQL-feladat futtatása
+## <a name="run-the-hiveql-job"></a>A HiveQL-feladatok futtatása
 
-1. A következő paranccsal hozzon létre egy fájlt tartalmazó [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) utasításokat:
+1. A következő parancs használatával hozzon létre egy [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) -utasításokat tartalmazó fájlt:
 
    ```bash
    nano twitter.hql
    ```
 
-    Használja a fájl tartalmát a következő szöveget:
+    Használja a következő szöveget a fájl tartalmának:
 
    ```hiveql
    set hive.exec.dynamic.partition = true;
@@ -293,16 +283,17 @@ Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen táro
    WHERE (length(json_response) > 500);
    ```
 
-2. Nyomja le az **Ctrl + X**, majd nyomja le az **Y** szeretné menteni a fájlt.
-3. Az alábbi parancs segítségével futtassa a HiveQL a fájlban található:
+1. Nyomja le a **CTRL + X**billentyűkombinációt, majd nyomja le az **Y** billentyűt a fájl mentéséhez.
+
+1. A következő parancs használatával futtassa a fájlban található HiveQL:
 
    ```bash
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    Ez a parancs futtatható a **twitter.hql** fájlt. Ha a lekérdezés befejeződött, megjelenik egy `jdbc:hive2//localhost:10001/>` parancssort.
+    Ez a parancs futtatja a **Twitter. HQL** fájlt. A lekérdezés befejeződése után megjelenik egy `jdbc:hive2//localhost:10001/>` prompt.
 
-4. A beeline használatával a következő lekérdezés használatával győződjön meg arról, hogy az adatok lettek importálva:
+1. A Beeline parancssorból a következő lekérdezéssel ellenőrizheti, hogy az adatok importálása megtörtént-e:
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
@@ -312,21 +303,14 @@ Ezeket a parancsokat a fürt összes csomópontja által elérhető helyen táro
    ORDER BY cc DESC LIMIT 10;
    ```
 
-    A lekérdezés visszaad egy legfeljebb 10 szót tartalmazó tweeteket **Azure** az az üzenet szövege.
+    Ez a lekérdezés legfeljebb 10 olyan tweetet ad vissza, amely az üzenet szövege tartalmazza az **Azure** szót.
 
     > [!NOTE]  
-    > Ha módosította a szűrőt a `gettweets.py` parancsfájl, cserélje le **Azure** -egy szűrőt használt.
+    > Ha módosította a szűrőt a `gettweets.py` parancsfájlban, cserélje le az **Azure** -t a használt szűrők egyikére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Megtanulhatta, hogyan alakíthatja az strukturálatlan JSON-adatkészlet egy strukturált [Apache Hive](https://hive.apache.org/) tábla. A HDInsight Hive kapcsolatos további információkért tekintse meg a következő dokumentumokat:
+Megtanulta, hogyan alakíthat át strukturálatlan JSON-adatkészletet egy strukturált [Apache Hive](https://hive.apache.org/) táblázatba. Ha többet szeretne megtudni a HDInsight-beli Kaptárról, tekintse meg a következő dokumentumokat:
 
-* [HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight használatával repülőjáratok késési adatainak elemzése](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
-
-[curl]: https://curl.haxx.se
-[curl-download]: https://curl.haxx.se/download.html
-
-[apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial
-
-[twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
+* [Ismerkedés a HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Repülési késleltetési idő elemzése az HDInsight használatával](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

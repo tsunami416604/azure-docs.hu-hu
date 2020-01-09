@@ -1,25 +1,14 @@
 ---
-title: Azure-Service Fabric önálló fürt frissítése | Microsoft Docs
-description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló fürtjének verzióját vagy konfigurációját.  T?
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric önálló fürt frissítése
+description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló fürtjének verzióját vagy konfigurációját.  T
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451828"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Önálló Service Fabric-fürt frissítése és frissítése
 
@@ -41,14 +30,14 @@ Az elhelyezési megkötések, a csomópont-tulajdonságok és a definiált beál
  
 
 ## <a name="add-capacity-metrics"></a>Kapacitási mérőszámok hozzáadása
-Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat, amelyeket az alkalmazásokban használni szeretne a betöltés jelentéséhez. A kapacitási mérőszámok betöltésének jelentésével kapcsolatos részletekért tekintse meg a fürt és a metrikák, [valamint](service-fabric-cluster-resource-manager-metrics.md)a terhelések [leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) Service Fabric fürterőforrás-kezelő dokumentumait.
+Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat, amelyeket az alkalmazásokban használni szeretne a betöltés jelentéséhez. A kapacitási mérőszámok betöltésének jelentésével kapcsolatos részletekért tekintse meg a fürt és a [metrikák, valamint a terhelések](service-fabric-cluster-resource-manager-metrics.md) [leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) Service Fabric fürterőforrás-kezelő dokumentumait.
 
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Az operációs rendszer javítása a fürtcsomópontok között
 A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti. 
 
 
-## <a name="next-steps"></a>További lépések
-* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök](service-fabric-cluster-fabric-settings.md) néhány beállítását
+## <a name="next-steps"></a>Következő lépések
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 

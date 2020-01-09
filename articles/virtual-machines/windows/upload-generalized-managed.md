@@ -1,25 +1,20 @@
 ---
-title: Felügyelt Azure-beli virtuális gép létrehozása általánosított helyszíni VHD-vel
+title: Virtuális gép létrehozása feltöltött, általánosított virtuális merevlemezről
 description: Töltsön fel egy általánosított virtuális merevlemezt az Azure-ba, és használja az új virtuális gépek létrehozásához a Resource Manager-alapú üzemi modellben.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c482caf2407c89ffdb6c55c9184c31e2e3197c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464949"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Töltse fel az általános VHD-t, és használja az új virtuális gépek létrehozásához az Azure-ban
 
@@ -27,17 +22,15 @@ Ez a cikk végigvezeti a PowerShell használatával egy általánosított virtu�
 
 A minta parancsfájlt a [virtuális merevlemezek Azure-ba való feltöltéséhez és egy új virtuális gép létrehozásához](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)című témakörben tekintheti meg.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 - A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ismertető témakört.
 - A Migrálás megkezdése előtt tekintse át [a Managed Disks áttelepítésének tervét](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) [Managed Disks](managed-disks-overview.md).
 
  
-
-
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>A forrás virtuális gép általánosítása a Sysprep használatával
 
-A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. A Sysprep eszközről a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)című témakörben olvashat bővebben.
+Ha még nem tette meg, az Azure-ba való feltöltés előtt telepítenie kell a virtuális gépet. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. A Sysprep eszközről a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)című témakörben olvashat bővebben.
 
 Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -56,40 +49,49 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 6. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>Töltse fel a VHD-t a Storage-fiókjába
+## <a name="upload-the-vhd"></a>A VHD feltöltése 
 
 Most már közvetlenül is feltölthet egy virtuális merevlemezt egy felügyelt lemezre. Útmutatásért lásd: [virtuális merevlemez feltöltése az Azure-ba Azure PowerShell használatával](disks-upload-vhd-to-managed-disk-powershell.md).
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Felügyelt rendszerkép létrehozása a feltöltött VHD-ből 
 
-Hozzon létre egy felügyelt lemezképet az általánosított operációs rendszer felügyelt lemezéről. Cserélje le a következő értékeket a saját adataira.
+Miután feltöltötte a VHD-t a felügyelt lemezre, a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) használatával kell beolvasnia a felügyelt lemezt.
 
-
-Először állítsa be a paramétereket:
-
-```powershell
-$location = "East US" 
-$imageName = "myImage"
+```azurepowershell-interactive
+$disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
-Hozza létre a rendszerképet a általánosított operációs rendszer VHD-fájljának használatával.
+## <a name="create-the-image"></a>A rendszerkép létrehozása
+Hozzon létre egy felügyelt lemezképet az általánosított operációs rendszer felügyelt lemezéről. Cserélje le a következő értékeket a saját adataira.
+
+Először állítson be néhány változót:
 
 ```powershell
+$location = 'East US'
+$imageName = 'myImage'
+$rgName = 'myResourceGroup'
+```
+
+Hozza létre a lemezképet a felügyelt lemez használatával.
+
+```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `
    -Location $location
 $imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
-   -OsType Windows `
    -OsState Generalized `
-   -BlobUri $urlOfUploadedImageVhd `
-   -DiskSizeGB 20
-New-AzImage `
+   -OsType Windows `
+   -ManagedDiskId $disk.Id
+```
+
+Hozza létre a rendszerképet.
+
+```azurepowershell-interactive
+$image = New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
 ```
-
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
@@ -100,7 +102,7 @@ Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új v
 New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
-    -ImageName $imageName `
+    -Image $image.Id `
     -Location $location `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `
@@ -110,7 +112,7 @@ New-AzVm `
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 

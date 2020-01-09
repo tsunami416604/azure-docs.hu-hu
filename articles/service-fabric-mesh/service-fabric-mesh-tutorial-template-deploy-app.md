@@ -1,26 +1,17 @@
 ---
-title: Oktatóanyag – Alkalmazás üzembe helyezése az Azure Service Fabric Meshben | Microsoft Docs
+title: Oktatóanyag – alkalmazás üzembe helyezése az Azure Service Fabric Meshban
 description: Ebből az oktatóanyagból megismerheti, hogyan helyezhet üzembe egy alkalmazást a Service Fabric Meshben egy sablonnal.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306950"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494939"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -68,7 +59,7 @@ az login
 az account set --subscription "<subscriptionName>"
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő paranccsal hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -109,7 +100,7 @@ A regisztrációs adatbázis létrehozásakor a kimenet a következő példához
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Rendszerképek leküldése az Azure Container Registrybe
 
-Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. Lásd: [Service Fabric-háló webes alkalmazás készítése](service-fabric-mesh-tutorial-create-dotnetcore.md) információkat az alkalmazás a Visual Studióban történő létrehozásának módját. A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
+Ez az oktatóanyag egy teendőlistás mintaalkalmazást használ példaként.  A [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) szolgáltatások tárolólemezképei a Docker Hubban találhatók. A Visual Studióban történő alkalmazás létrehozásával kapcsolatos információkért lásd: [Service Fabric Mesh-Webalkalmazás létrehozása](service-fabric-mesh-tutorial-create-dotnetcore.md) . A Service Fabric Mesh Windows és Linux rendszerű tárolókon futhat.  Ha Linux-tárolókkal dolgozik, válassza a Docker **Váltás Linux-tárolókra** lehetőségét.  Ha Windows-tárolókkal dolgozik, válassza a Docker **Váltás Windows-tárolókra** lehetőségét.
 
 Ahhoz, hogy képet tudjon küldeni egy ACR-példányba, először szüksége van egy tárolólemezképre. Ha még nincs egy helyi tárolólemezképe sem, a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal kérje le a [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) és a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) képeit a Docker Hubból.
 
@@ -139,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Jelentkezzen be az Azure Container Registrybe.
+Jelentkezzen be a Azure Container Registryba.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -264,7 +255,7 @@ A szolgáltatások az alkalmazás-erőforrás tulajdonságaiként vannak megszab
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -345,9 +336,9 @@ Az alábbi paranccsal hozza létre az alkalmazást és a kapcsolódó erőforrá
 
 A paraméterfájlban frissítse a következő paraméterértékeket:
 
-|Paraméter|Érték|
+|Paraméter|Value (Díj)|
 |---|---|
-|hely|Az alkalmazás üzembe helyezési régiója.  Például: „eastus”.|
+|location|Az alkalmazás üzembe helyezési régiója.  Például: „eastus”.|
 |registryPassword|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért jelszó. A sablon ezen paramétere egy biztonságos sztring, amely nem jelenik meg az üzembe helyezési állapot képernyőjén és az `az mesh service show` típusú parancsokban.|
 |registryUserName|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért felhasználónév.|
 |registryServer|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért regisztrációs adatbázis kiszolgálóneve.|
@@ -360,7 +351,7 @@ Az alkalmazás üzembe helyezéséhez futtassa a következő parancsot:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Ez a parancs, amely az alábbiakban látható JSON-kódrészlet állítja elő. Alatt a ```outputs``` a JSON-kimenetet másolási szakaszában a ```publicIPAddress``` tulajdonság.
+Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON-kimenet ```outputs``` szakaszában másolja a ```publicIPAddress``` tulajdonságot.
 
 ```json
 "outputs": {
@@ -371,7 +362,7 @@ Ez a parancs, amely az alábbiakban látható JSON-kódrészlet állítja elő. 
 }
 ```
 
-Ez az információ származik a ```outputs``` az ARM-sablon részében. Ahogy az alábbi, ebben a szakaszban hivatkozik az átjáró erőforrás nyilvános IP-címének beolvasása. 
+Ezek az információk az ARM-sablon ```outputs``` szakasza alapján származnak. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
 
 ```json
   "outputs": {
@@ -405,7 +396,7 @@ Vizsgálja meg az üzembe helyezett alkalmazás naplóit az `az mesh code-packag
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

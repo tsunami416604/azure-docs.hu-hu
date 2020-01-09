@@ -1,25 +1,14 @@
 ---
-title: Service Fabric alkalmazás verziófrissítésének oktatóanyaga | Microsoft Docs
+title: Service Fabric alkalmazás verziófrissítésének oktatóanyaga
 description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helyezésének, a kód módosításának és a Visual Studio használatával történő frissítésének folyamatán.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464828"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric alkalmazás-frissítési oktatóanyag a Visual Studióval
 > [!div class="op_single_selector"]
@@ -41,14 +30,14 @@ A **publish (közzététel** ) elem kiválasztásával felugró ablak jelenik me
 
 ![Service Fabric alkalmazás közzététele][image2]
 
-Most kattintson a **Közzététel** lehetőségre a párbeszédpanelen. [A Service Fabric Explorer használatával megtekintheti a fürtöt és az alkalmazást](service-fabric-visualizing-your-cluster.md). A vizualizáció objektumok alkalmazáshoz egy webszolgáltatást kell beírnia, ha beírja a [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) kifejezést a böngésző címsorába.  A képernyőn körülbelül 10 lebegő vizualizációs objektumot kell látni.
+Most kattintson a **Közzététel** lehetőségre a párbeszédpanelen. [A Service Fabric Explorer használatával megtekintheti a fürtöt és az alkalmazást](service-fabric-visualizing-your-cluster.md). A vizualizáció objektumok alkalmazáshoz egy webszolgáltatást kell beírnia [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) a böngésző címsorába.  A képernyőn körülbelül 10 lebegő vizualizációs objektumot kell látni.
 
-**Megjegyzés:** Ha `Cloud.xml` profilt (Azure Service Fabric) helyez üzembe, az alkalmazásnak ekkor elérhetőnek kell lennie a **http://{ServiceFabricName} címen. { Régió}. cloudapp. Azure. com: 8081/visualobjects/** . Győződjön meg arról, hogy `8081/TCP` konfigurálva van a Load Balancerban (keresse meg a Load Balancer ugyanabban az erőforráscsoporthoz, mint a Service Fabric-példányt).
+**Megjegyzés:** Ha `Cloud.xml` profilra (Azure Service Fabric) telepíti az alkalmazást, akkor az alkalmazásnak a **http://{ServiceFabricName} címen kell elérhetőnek lennie. { Régió}. cloudapp. Azure. com: 8081/visualobjects/** . Győződjön meg arról, hogy van `8081/TCP` konfigurálva a Load Balancerban (keresse meg a Load Balancer ugyanabban az erőforráscsoporthoz, mint az Service Fabric példány).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2\. lépés: a vizuális objektumok mintájának frissítése
 Észreveheti, hogy az 1. lépésben üzembe helyezett verziónál a vizualizációs objektumok nem forognak. Frissítjük az alkalmazást arra a szintre, ahol a vizualizáció objektumok is forognak.
 
-Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a **VisualObjectActor.cs** fájlt. A fájlon belül keresse meg a következő metódust: `MoveObject`, Megjegyzés: `visualObject.Move(false)`, és Megjegyzés: `visualObject.Move(true)`. A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés*lehetőséget választja, frissítenie kell az összes projekt verzióját.
+Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a **VisualObjectActor.cs** fájlt. A fájlon belül keresse meg a következő metódust: `MoveObject`, Megjegyzés `visualObject.Move(false)`és Megjegyzés uncomment `visualObject.Move(true)`. A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés*lehetőséget választja, frissítenie kell az összes projekt verzióját.
 
 Az alkalmazás verziószámát is meg kell adni. Ha módosítani szeretné a verziót, miután a jobb gombbal a **VisualObjects** projektre kattint, használhatja a Visual Studio **jegyzékfájl-verziójának szerkesztése** lehetőséget. A beállítás kiválasztásával megjelenik a kiadási verziók párbeszédpanelje a következő módon:
 

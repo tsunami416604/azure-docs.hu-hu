@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag az Azure-alkalmazások konfigurációjának beállításához az események webes végpontra való küldéséhez | Microsoft Docs
+title: 'Oktatóanyag: események küldése webes végpontnak az Azure app Configuration használatával'
+titleSuffix: Azure App Configuration
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433690"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Gyors útmutató: Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
 
@@ -30,11 +31,11 @@ Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az Azure-alka
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy az Azure CLI legújabb verzióját futtatja-e (2.0.24 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.24 vagy újabb verzió) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 

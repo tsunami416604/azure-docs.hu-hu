@@ -7,26 +7,26 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9a91f81c9d28f1b3c8d553a2a8a26d53ff1b2b3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444488"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása Azure Resource Manager sablon használatával
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
+> * [Portál](create-cluster-database-portal.md)
 > * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Azure Resource Manager-sablon](create-cluster-database-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. 
 
-Ebben a cikkben egy Azure Adatkezelő-fürtöt és-adatbázist hoz létre egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-overview.md)használatával. A cikk bemutatja, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok készítése](/azure/azure-resource-manager/resource-group-authoring-templates). A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Kusto-erőforrástípusok](/azure/templates/microsoft.kusto/allversions).
+Ebben a cikkben egy Azure Adatkezelő-fürtöt és-adatbázist hoz létre egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával. A cikk bemutatja, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok készítése](/azure/azure-resource-manager/resource-group-authoring-templates). A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Kusto-erőforrástípusok](/azure/templates/microsoft.kusto/allversions).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 

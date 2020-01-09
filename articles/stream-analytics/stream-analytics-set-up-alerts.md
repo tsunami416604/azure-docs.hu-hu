@@ -1,78 +1,77 @@
 ---
-title: Állítsa be a riasztásokat az Azure Stream Analytics-feladatok figyelése
-description: Ez a cikk ismerteti, hogyan állítsa be a figyelést és riasztásokat az Azure Stream Analytics-feladatok az Azure portal használatával.
-services: stream-analytics
+title: Figyelési riasztások beállítása Azure Stream Analytics feladatokhoz
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal az Azure Stream Analytics feladatok figyelésének és riasztásának beállításához.
 author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 836b7a489e3c73d745b128cbbc0c3566220ac409
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621757"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458736"
 ---
-# <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Állítsa be a riasztásokat az Azure Stream Analytics-feladatok
+# <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Riasztások beállítása Azure Stream Analytics feladatokhoz
 
-Fontos figyelése az Azure Stream Analytics-feladat annak érdekében, hogy a feladat folyamatosan futó gond nélkül. Ez a cikk ismerteti a gyakori szituációhoz kínál olyan figyelendő riasztásokat állíthat be. 
+Fontos, hogy figyelemmel kísérje a Azure Stream Analytics-feladatot, hogy a feladatok folyamatosan, problémák nélkül fussanak. Ez a cikk azt ismerteti, hogyan állíthat be riasztásokat a figyelni kívánt gyakori forgatókönyvekhez. 
 
-Meghatározhat szabályokat metrikákhoz műveletnaplók adatokból a portálon keresztül, valamint [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
+A műveleti naplók adatai a portálon keresztül, valamint [programozott](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)módon is meghatározhatók.
 
-## <a name="set-up-alerts-in-the-azure-portal"></a>Az Azure Portal értesítések beállítása
-### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>A feldolgozás leállása esetén küldjön riasztást
+## <a name="set-up-alerts-in-the-azure-portal"></a>Riasztások beállítása a Azure Portalban
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>Riasztást kap, ha a feladatok váratlanul leállnak
 
-A következő példa bemutatja, hogyan állítható be a riasztások, a feladat sikertelen állapotba kerül, ha. Ez a riasztás javasolt az összes feladat.
+Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a feladatainak sikertelen állapotba kerülnek. Ez a riasztás minden feladathoz ajánlott.
 
-1. Az Azure Portalon nyissa meg a Stream Analytics-feladat szeretne riasztást létrehozni.
+1. A Azure Portal nyissa meg azt a Stream Analytics feladatot, amelyhez riasztást szeretne létrehozni.
 
-2. Az a **feladat** lapon, keresse meg a **figyelés** szakaszban.  
+2. A **feladatok** lapon navigáljon a **figyelés** szakaszhoz.  
 
-3. Válassza ki **metrikák**, majd **Új riasztási szabály**.
+3. Válassza a **metrikák**, majd az **új riasztási szabály**lehetőséget.
 
-   ![Az Azure portal Stream Analytics riasztások beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
+   ![Azure Portal Stream Analytics riasztások beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. A Stream Analytics-feladat neve automatikusan meg kell jelennie a **erőforrás**. Kattintson a **feltétel hozzáadása**, és válassza ki **összes felügyeleti műveletet** alatt **jellogika konfigurálása**.
+4. A Stream Analytics feladatának neve automatikusan megjelenik az **erőforrás**területen. Kattintson a **feltétel hozzáadása**elemre, majd válassza az **összes felügyeleti műveletet** a **jel logikájának konfigurálása**területen.
 
-   ![Válassza ki a Stream Analytics-riasztásból jel neve](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
+   ![Adja meg a Stream Analytics riasztáshoz tartozó jel nevét](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. Alatt **jellogika konfigurálása**, módosítsa **Eseményszint** való **összes** , és módosítsa **állapota** való **sikertelen** . Hagyja **esemény kezdeményezője** üres, és válassza ki **kész**.
+5. A **jel logikájának konfigurálása**területen az **események szintje** az **összes** értékre változik, és a változás **állapota** **sikertelen**értékre vált. Hagyja üresen **az eseményt** , és válassza a **kész**lehetőséget.
 
-   ![A Stream Analytics-riasztásból jellogika konfigurálása](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
+   ![Stream Analytics riasztáshoz tartozó jel logikájának konfigurálása](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
-6. Válasszon ki egy meglévő műveletet, vagy hozzon létre egy új csoportot. Ebben a példában egy új műveletcsoportot nevű **TIDashboardGroupActions** hozták- **e-mailek** műveletet, amelyet a felhasználóknak egy e-mailt küld a **tulajdonosa** Azure Resource Szerepkör.
+6. Válasszon ki egy meglévő műveleti csoportot, vagy hozzon létre egy új csoportot. Ebben a példában egy **TIDashboardGroupActions** nevű új műveleti csoport jött létre egy **e-mail** -művelettel, amely e-mailt küld a felhasználóknak a **tulajdonos** Azure Resource Manager szerepkörrel.
 
-   ![Az Azure Stream Analytics-feladat riasztás beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
+   ![Riasztás beállítása Azure streaming Analytics-feladatokhoz](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. A **erőforrás**, **feltétel**, és **MŰVELETCSOPORTOK** kell minden egyes egy bejegyzést. Ne feledje, hogy ahhoz, hogy a riasztások üzenetszám, a megadott feltételeket, amelyeknek teljesülniük kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
+7. Az **erőforrásnak**, a **feltételnek**és a **műveleti csoportnak** szerepelnie kell egy bejegyzésben. Vegye figyelembe, hogy ahhoz, hogy a riasztások tüzet, a meghatározott feltételeknek teljesülnie kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
 
    ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Adjon hozzá egy **riasztási szabály neve**, **leírása**, és a **erőforráscsoport** , a **riasztás részletei** , és kattintson a **létrehozása riasztás a szabály** a szabály a Stream Analytics-feladat létrehozásához.
+   Adja hozzá a riasztási **szabály nevét**, **leírását**és az **erőforráscsoportot** a **riasztás részleteihez** , majd kattintson a **riasztási szabály létrehozása** elemre a stream Analyticsi feladathoz tartozó szabály létrehozásához.
 
    ![Stream Analytics riasztási szabály létrehozása](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
-## <a name="scenarios-to-monitor"></a>Forgatókönyvek figyelése
+## <a name="scenarios-to-monitor"></a>Figyelési forgatókönyvek
 
-Az alábbi riasztások használata akkor javasolt, a Stream Analytics-feladatok teljesítményének monitorozásához. Ezeket a metrikákat a legutóbbi 5 perces időszak alatt percenként kell kiértékelni.
+A következő riasztások ajánlottak a Stream Analyticsi feladatok teljesítményének figyeléséhez. Ezeket a metrikákat percenként kell kiértékelni az elmúlt 5 perces időszakban.
 
-|Metrika|Állapot|Idő összesítése|Küszöbérték|Javítási műveleteket|
+|Metrika|Állapot|Idő összesítése|Küszöbérték|Javítási műveletek|
 |-|-|-|-|-|
-|SU százalékos kihasználtsága|Nagyobb, mint|Maximum|80|Nincsenek számos tényező, melyek növelik a SU százalékos kihasználtság. Skálázás párhuzamos lekérdezési folyamatokkal, vagy növelje a folyamatos átviteli egységek számát. További információért lásd [az Azure Stream Analytics-lekérdezések párhozamosításának előnyeit ismertető](stream-analytics-parallelization.md) cikket.|
-|A futásidejű hibák|Nagyobb, mint|Összes|0|Vizsgálja meg a tevékenység vagy a diagnosztikai naplók és a megfelelő módosításokat a bemenetek, lekérdezési vagy kimenetek.|
-|Vízjel késleltetés|Nagyobb, mint|Maximum|Amikor átlagos Ez a metrika az elmúlt 15 percben értéke nagyobb, mint a késedelmes érkezési tolerancia (másodpercben). Ha nem módosította a késedelmes érkezési tolerancia, az alapértelmezett érték 5 másodperc.|Próbálja meg SUs számának növelése vagy párhuzamosan futtatni a lekérdezést. SUS-t a további információkért lásd: [ismertetése és módosítása a folyamatos átviteli egységek](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). További információ a párhuzamosan futtatni a lekérdezést: [emelés lekérdezés párhuzamos feldolgozás, az Azure Stream Analyticsben](stream-analytics-parallelization.md).|
-|A deszerializálás bemeneti hibái|Nagyobb, mint|Összes|0|Vizsgálja meg a tevékenység vagy a diagnosztikai naplók, valamint a bemeneti megfelelő módosítására. További információ a diagnosztikai naplók: [hibaelhárítása az Azure Stream Analytics használatával a diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)|
+|SU% kihasználtsága|Nagyobb mint|Maximum|80|Több tényező is megnövelheti a SU%-os kihasználtságot. A lekérdezési párhuzamos méretezéssel vagy a folyamatos átviteli egységek számának növelésével bővíthető. További információért lásd [az Azure Stream Analytics-lekérdezések párhozamosításának előnyeit ismertető](stream-analytics-parallelization.md) cikket.|
+|Futásidejű hibák|Nagyobb mint|Összes|0|Vizsgálja meg a tevékenységeket vagy a diagnosztikai naplókat, és végezze el a megfelelő módosításokat a bemeneteken, lekérdezéseken vagy kimeneteken.|
+|Vízjel késleltetése|Nagyobb mint|Maximum|Ha a metrika átlagos értéke az elmúlt 15 percben meghaladja a késői érkezési toleranciát (másodpercben). Ha nem módosította a késői érkezési toleranciát, az alapértelmezett érték 5 másodperc.|Próbálja meg növelni a lekérdezés SUs-vagy tetszés számát. További információ az SUs szolgáltatásról: a [folyamatos átviteli egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). A lekérdezés tetszés kapcsolatos további információkért lásd: [a lekérdezési párhuzamos kihasználása a Azure stream Analyticsban](stream-analytics-parallelization.md).|
+|Bemeneti deszerializálási hibák|Nagyobb mint|Összes|0|Vizsgálja meg a tevékenység vagy a diagnosztikai naplókat, és végezze el a megfelelő módosításokat a bemeneten. A diagnosztikai naplókkal kapcsolatos további információkért lásd: [Azure stream Analytics diagnosztikai naplók használatával történő hibakeresése](stream-analytics-job-diagnostic-logs.md)|
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség
 
-Riasztások konfigurálása az Azure Portalon a további részletekért lásd: [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+A Azure Portal riasztások konfigurálásával kapcsolatos további részletekért lásd: [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
-További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+## <a name="next-steps"></a>Következő lépések
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-get-started.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

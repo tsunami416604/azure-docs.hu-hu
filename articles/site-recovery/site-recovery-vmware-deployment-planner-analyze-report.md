@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961381"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495871"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási Deployment Planner jelentés elemzése az Azure-ba
 
@@ -40,7 +40,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt arról a VMware-körn
 
 **Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)): Az összes profilkészítési napon megfigyelt átlagos adatváltozás. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
-## <a name="recommendations"></a>Javaslatok
+## <a name="recommendations"></a>Ajánlatok
 
 A VMware – Azure jelentés javaslati táblázatában a következő részletek találhatók (a kiválasztott RPO szerint):
 
@@ -178,7 +178,7 @@ A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló el
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen**\* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes\*** (Igen) lehet. **Igen**\* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Példa:
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15
 * 256 GB és 512 GB között P20.
@@ -221,10 +221,7 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 
 **VM Compatibility** (Virtuális gép kompatibilitása): Azt jelzi, hogy miért nem kompatibilis az adott virtuális gép a Site Recoveryvel való használattal. Az indokok a virtuális gép minden nem kompatibilis lemezénél vannak megadva, és a közzétett [tárhelykorlátok](https://aka.ms/azure-storage-scalbility-performance) alapján a következők lehetnek:
 
-* A lemez mérete nagyobb 4095 GB-nál. Az Azure Storage jelenleg nem támogatja a 4095 GB-nál nagyobb adatlemez-méretet.
-
-* Az operációsrendszer-lemez mérete nagyobb 2048 GB-nál. Az Azure Storage jelenleg nem támogatja a 2048 GB-nál nagyobb méretű operációsrendszer-lemezeket.
-
+* Az adatlemez mérete vagy helytelen operációsrendszer-lemez mérete nem megfelelő. [Tekintse át](vmware-physical-azure-support-matrix.md#azure-vm-requirements) a támogatási korlátokat. 
 * A virtuális gép teljes mérete (replikáció + TFO) meghaladja a támogatott tárfiók méretkorlátozását (35 TB). Ez a fajta inkompatibilitás általában akkor fordul elő, ha a virtuális gép egy lemezének egyik teljesítményjellemzője meghaladja a támogatott standard szintű tárolóra vonatkozó Azure- vagy Site Recovery-korlátozásokat. Egy ilyen példány a prémium szintű tárolózónába kényszeríti a virtuális gépet. A prémium szintű tárfiókok maximális támogatott mérete azonban 35 TB, és egyetlen védett virtuális gép nem védhető több tárfiókon keresztül. Ügyeljen arra is, hogy amikor a feladatátvételi tesztet védett virtuális gépen hajtja végre, akkor az ugyanazon a tárfiókon fut, ahol a replikáció folyik. Ezen a példányon a lemez méretének kétszeresét kell kiosztani, hogy a replikáció is folytatódhasson, és ezzel párhuzamosan a feladatátvételi teszt is sikeres legyen.
 
 * A forrás IOPS-érték meghaladja a tároló lemezenkénti 7500-as IOPS-korlátját.

@@ -1,5 +1,5 @@
 ---
-title: Service Bus engedélyezési szabály létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
+title: Service Bus engedélyezési szabály létrehozása Azure-sablon használatával
 description: Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához Azure Resource Manager sablon használatával
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 8769979fe3e5107e4ca788f65ff1e721b266776b
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c795c61ec4891205ad9c77e96914d9b374fa88af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426916"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához Azure Resource Manager sablon használatával
 
@@ -53,7 +53,7 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy nevű `Parameters` szakaszt, amely tartalmazza az összes paraméter értékét. Meg kell határoznia a paramétert azokhoz az értékekhez, amelyek a telepített projekttől függően változnak, vagy amely az Ön által telepített környezet alapján változik. Ne definiáljon paramétereket olyan értékekhez, amelyek mindig azonosak maradnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz egy `Parameters` nevű szakaszt, amely az összes paraméter értékét tartalmazza. Meg kell határoznia a paramétert azokhoz az értékekhez, amelyek a telepített projekttől függően változnak, vagy amely az Ön által telepített környezet alapján változik. Ne definiáljon paramétereket olyan értékekhez, amelyek mindig azonosak maradnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
 A sablon a következő paramétereket adja meg.
 
@@ -149,7 +149,7 @@ Létrehoz egy **üzenetküldés**típusú standard Service Bus névteret, valami
     ]
 ```
 
-A JSON szintaxis és tulajdonságok esetében lásd [](/azure/templates/microsoft.servicebus/namespaces): névterek, [várólisták](/azure/templates/microsoft.servicebus/namespaces/queues)és [engedélyezési szabályok](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
+A JSON szintaxis és tulajdonságok esetében lásd: [névterek](/azure/templates/microsoft.servicebus/namespaces), [várólisták](/azure/templates/microsoft.servicebus/namespaces/queues)és [engedélyezési szabályok](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -159,21 +159,21 @@ A JSON szintaxis és tulajdonságok esetében lásd [](/azure/templates/microsof
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 ```azurecli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy Azure Resource Manager használatával hozta létre és telepítette az erőforrásokat, megtudhatja, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
 
 * [A Service Bus kezelése a PowerShell használatával](service-bus-powershell-how-to-provision.md)
 * [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 * [Hitelesítés és engedélyezés Service Bus](service-bus-authentication-and-authorization.md)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md

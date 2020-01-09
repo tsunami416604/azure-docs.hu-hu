@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fab3b919ee3ecb1f8e76b70bada57a5380aaeab8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20df41ce6fe2bd6e18445877da4cb4de3c9c3d5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444204"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása a PostgreSQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -42,7 +42,7 @@ Ez a PostgreSQL-összekötő támogatja a PostgreSQL **7,4-es vagy újabb verzi�
 
 A 3,7-nál kisebb, saját üzemeltetésű IR-verziók esetében telepítenie kell a [PostgreSQL-hez készült Ngpsql-adatszolgáltatót](https://go.microsoft.com/fwlink/?linkid=282716) a 2.0.12 és a 3.1.9 között a Integration Runtime gépen.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -55,7 +55,7 @@ A PostgreSQL-hez társított szolgáltatás a következő tulajdonságokat támo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **PostgreSql** | Igen |
-| connectionString | Az Azure Database for PostgreSQLhoz való kapcsolódáshoz használandó ODBC-kapcsolati karakterlánc. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectionString | Az Azure Database for PostgreSQLhoz való kapcsolódáshoz használandó ODBC-kapcsolati karakterlánc. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 Egy tipikus `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`a kapcsolatok karakterlánca. További tulajdonságok állíthatók be az egyes esetekben:
@@ -73,10 +73,7 @@ Egy tipikus `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Pass
     "properties": {
         "type": "PostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
-            }
+            "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -94,10 +91,7 @@ Egy tipikus `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Pass
     "properties": {
         "type": "PostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

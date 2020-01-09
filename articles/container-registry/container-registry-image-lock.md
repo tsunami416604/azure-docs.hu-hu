@@ -3,12 +3,12 @@ title: Rendszerképek zárolása
 description: Adja meg a tárolók rendszerképének vagy tárházának attribútumait, hogy ne lehessen törölni vagy felülírni az Azure Container registryben.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442215"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
 
@@ -19,11 +19,15 @@ Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.
 > [!IMPORTANT]
 > Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/resource-group-lock-resources.md)érdekében.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Alapértelmezés szerint a Azure Container Registryban lévő címkézett képek *változhatnak*, ezért a megfelelő engedélyekkel többször is frissítheti és leküldheti a rendszerképet ugyanazzal a címkével egy beállításjegyzékbe. A tároló lemezképeit szükség szerint is [törölheti](container-registry-delete.md) . Ez a viselkedés akkor hasznos, ha képeket fejleszt, és a beállításjegyzéknek meg kell őriznie a méretet.
 
-Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előfordulhat *, hogy egy* nem módosítható tároló-lemezképre van szüksége. Egy nem módosítható rendszerkép az egyik, hogy véletlenül nem lehet törölni vagy felülírni. A tárház attribútumainak beállításához használja az az [ACR adattár Update][az-acr-repository-update] parancsot, így a következőket teheti:
+Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előfordulhat *, hogy egy* nem módosítható tároló-lemezképre van szüksége. Egy nem módosítható rendszerkép az egyik, hogy véletlenül nem lehet törölni vagy felülírni.
+
+A beállításjegyzékben található rendszerképek [címkézéséhez](container-registry-image-tag-version.md) és a lemezképek verziószámozásához szükséges stratégiákat itt tekintheti meg.
+
+A tárház attribútumainak beállításához használja az az [ACR adattár Update][az-acr-repository-update] parancsot, így a következőket teheti:
 
 * Rendszerkép verziójának vagy teljes tárházának zárolása
 
@@ -31,7 +35,7 @@ Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előford
 
 * Olvasási (lekéréses) műveletek megakadályozása egy rendszerkép vagy egy teljes tárház esetében
 
-Példákat a következő részekben talál.
+Példákat a következő részekben talál. 
 
 ## <a name="lock-an-image-or-repository"></a>Rendszerkép vagy adattár zárolása 
 

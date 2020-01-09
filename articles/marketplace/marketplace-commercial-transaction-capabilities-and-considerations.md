@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427161"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Kereskedelmi piactér tranzakciós képességei és szempontjai
 
@@ -223,7 +223,7 @@ Ebben a szakaszban a különböző típusú ajánlatok Transact-követelményeit
 - A Transact közzétételi lehetőséghez Microsoft-fiók és pénzügyi információk szükségesek, az ajánlat díjszabási modelljétől függetlenül.
 - A kötelező pénzügyi információk közé tartozik a kifizetési fiók és az adó profil.
 
-A fiókok beállításával kapcsolatos további információkért lásd: [a partner Center-fiók kezelése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
+A fiókok beállításával kapcsolatos további információkért lásd: [a partner Center-fiók kezelése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
 
 
 ### <a name="requirements-for-specific-offer-types"></a>Az egyes ajánlatok típusaira vonatkozó követelmények

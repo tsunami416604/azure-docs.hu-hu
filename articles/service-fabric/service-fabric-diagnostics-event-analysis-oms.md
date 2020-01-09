@@ -1,97 +1,88 @@
 ---
-title: Az Azure Service Fabric Eseményelemzés az Azure Monitor-naplók |} A Microsoft Docs
-description: További információ megjelenítése, és a monitorozást és diagnosztikát az Azure Service Fabric-fürtök események az Azure Monitor használatával naplózza.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric Event Analysis Azure Monitor-naplókkal
+description: Ismerje meg, hogyan jelenítheti meg és elemezheti az eseményeket Azure Monitor naplók használatával az Azure Service Fabric-fürtök monitorozásához és diagnosztizálásához.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464739"
 ---
-# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Esemény elemzése és képi megjelenítése a Azure Monitor naplóira
- Az Azure Monitor naplóira gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan lekérdezéseket futtathat az Azure Monitor-naplók elemzése és hibaelhárítása, mi történik a fürtön. Az alábbi gyakori kérdések foglalkozik:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
+ Azure Monitor naplók gyűjti és elemzi a felhőben üzemeltetett alkalmazások és szolgáltatások telemetria, és elemzési eszközöket biztosít a rendelkezésre állás és a teljesítmény maximalizálása érdekében. Ez a cikk azt ismerteti, hogyan futtathat lekérdezéseket Azure Monitor-naplókban, hogy betekintést nyerjen, és hárítsa el, mi történik a fürtben. A következő gyakori kérdéseket tárgyaljuk:
 
-* Hogyan háríthatom el a health-események?
-* Honnan tudhatom meg, amikor egy csomópont leáll?
-* Honnan tudhatom, hogy ha saját alkalmazásszolgáltatások elindítani vagy leállítani?
+* Hogyan az állapottal kapcsolatos eseményeket?
+* Hogyan tudni, hogy egy csomópont leáll-e?
+* Hogyan tudni, hogy az alkalmazás szolgáltatásai elindultak vagy leálltak?
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="overview-of-the-log-analytics-workspace"></a>A Log Analytics-munkaterület áttekintése
+## <a name="overview-of-the-log-analytics-workspace"></a>A Log Analytics munkaterület áttekintése
 
 >[!NOTE] 
->Diagnosztikai tárfiók alapértelmezés szerint engedélyezve van a fürt létrehozásakor, miközben továbbra is be kell állítania a Log Analytics-munkaterületet a diagnosztikai tárfiók olvasni.
+>Habár a diagnosztikai tár alapértelmezés szerint engedélyezve van a fürt létrehozási idején, a Log Analytics munkaterületet is be kell állítania a diagnosztikai tárolóból való olvasáshoz.
 
-Az Azure Monitor a felügyelt erőforrások, például egy Azure storage-táblába, vagy az ügynök összegyűjti az adatokat naplózza, és egy központi tárházban megőrzi azt. Az adatok ezután lehet, elemzés, a riasztás és a Vizualizáció használatos, vagy további exportálását. Az Azure Monitor támogatja az események, teljesítményadatok vagy bármely más egyéni adatokat naplózza. Tekintse meg [eseményeket a diagnosztikai bővítmény konfigurálásának lépései](service-fabric-diagnostics-event-aggregation-wad.md) és [olvasni a storage-ban az események Log Analytics-munkaterület létrehozásához szükséges lépéseket](service-fabric-diagnostics-oms-setup.md) , hogy az Azure Monitor adatok beérkeznek naplók.
+Azure Monitor a naplók adatokat gyűjtenek a felügyelt erőforrásokból, beleértve az Azure Storage-táblát vagy az ügynököt, és egy központi tárházban tárolják azokat. Az adatelemzéshez, riasztáshoz és vizualizációhoz, illetve további exportáláshoz is használhatók. Azure Monitor naplók támogatják az eseményeket, a teljesítményadatokat vagy bármely más egyéni adat használatát. Tekintse meg [a diagnosztikai bővítmény konfigurálásához szükséges lépéseket, hogy összegyűjtse az eseményeket](service-fabric-diagnostics-event-aggregation-wad.md) és [lépéseket a log Analytics munkaterület létrehozásához a Storage eseményeiből való olvasáshoz](service-fabric-diagnostics-oms-setup.md) , hogy az adatok Azure monitor naplókba legyenek átáramlva.
 
-Az Azure Monitor-naplók által adatok fogadását követően az Azure rendelkezik több *figyelési megoldások* , amelyek előre összeállított megoldások vagy figyelheti a bejövő adatokat, testre szabva, hogy számos forgatókönyv operatív irányítópultokat. Ezek közé tartozik egy *Service Fabric-elemzés* megoldás és a egy *tárolók* megoldást, amely két dolgokat azok, diagnosztika és figyelés a Service Fabric-fürtök használatakor. Ez a cikk ismerteti, hogyan használható a Service Fabric-elemzés megoldást, amely a munkaterület jön létre.
+Azure Monitor naplókból származó adatok fogadása után az Azure számos olyan *figyelési megoldással* rendelkezik, amelyek előre csomagolt megoldásokkal vagy operatív irányítópultokkal figyelik a bejövő adatok figyelését, a különböző forgatókönyvek szerint testre szabva. Ezek közé tartozik a *Service Fabric Analytics* megoldás és a *tárolók* megoldása, amely a diagnosztika és a figyelés két legfontosabb tényezője Service Fabric fürtök használata esetén. Ez a cikk a munkaterülettel létrehozott Service Fabric Analytics megoldás használatát ismerteti.
 
-## <a name="access-the-service-fabric-analytics-solution"></a>Hozzáférés a Service Fabric-elemzés megoldás
+## <a name="access-the-service-fabric-analytics-solution"></a>A Service Fabric Analytics-megoldás elérése
 
-Az a [az Azure Portal](https://portal.azure.com), nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás.
+Az [Azure Portalon](https://portal.azure.com)nyissa meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást.
 
-Válassza ki az erőforrást **ServiceFabric\<nameOfOMSWorkspace\>** .
+Válassza ki az erőforrás- **ServiceFabric\<nameOfOMSWorkspace\>** .
 
-A `Summary`, csempék formájában grafikon, látni fogja az egyes, a megoldások engedélyezve van, amelyek közül az egyik a Service fabric. Kattintson a **Service Fabric** graph, hogy a Service Fabric-elemzés megoldás.
+`Summary`a csempék egy gráf formájában jelennek meg az összes engedélyezett megoldáshoz, például egyet a Service Fabrichoz. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
-![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+![Service Fabric megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-Az alábbi képen látható a Service Fabric-elemzés megoldás kezdőlapján. A kezdőlap nyújt a pillanatkép, hogy mi történik a fürtön.
+Az alábbi képen a Service Fabric Analytics-megoldás kezdőlapja látható. Ez a Kezdőlap pillanatkép-nézetet jelenít meg a fürtben zajló eseményekről.
 
-![A Service Fabric-megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
- Ha engedélyezte a diagnosztikai fürt létrehozásakor, láthatja az események 
+ Ha a fürt létrehozásakor engedélyezte a diagnosztika szolgáltatást, a következő eseményeket tekintheti meg: 
 
-* [A Service Fabric-fürthöz kapcsolódó események](service-fabric-diagnostics-event-generation-operational.md)
-* [A Reliable Actors programozási modell események](service-fabric-reliable-actors-diagnostics.md)
-* [A Reliable Services programozási modell események](service-fabric-reliable-services-diagnostics.md)
+* [Service Fabric-fürt eseményei](service-fabric-diagnostics-event-generation-operational.md)
+* [Reliable Actors programozási modell eseményei](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services programozási modell eseményei](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->A beépített Service Fabric-események, valamint részletesebb rendszeresemények által gyűjtött [a diagnosztikai bővítmény, a konfiguráció frissítésével](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>A Service Fabric események mellett a [diagnosztikai bővítmény konfigurációjának frissítésével](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)részletesebb rendszereseményeket is gyűjthet.
 
-## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Nézet Service Fabric-események, beleértve a csomópontokon műveletek
+## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric események megtekintése, beleértve a csomópontokon végrehajtott műveleteket is
 
-A Service Fabric-elemzés oldalon kattintson a diagramon az **Service Fabric-események**.
+A Service Fabric Analytics lapon kattintson a diagramra **Service Fabric eseményekhez**.
 
-![Service Fabric megoldást műveleti csatorna](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+![Service Fabric megoldás működési csatornája](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-Kattintson a **lista** az események megtekintése a listában. Miután itt látni fogja a rendszer minden olyan események, összegyűjtött alkalmazásproblémát. Referenciaként az alábbiak a **WADServiceFabricSystemEventsTable** az Azure Storage-fiókot, és ehhez hasonlóan a megbízható szolgáltatások és az actors esemény ezután megjelenik megfelelő táblák származnak.
+A **lista elemre kattintva** megtekintheti a listában szereplő eseményeket. Ha itt látható, az összes összegyűjtött rendszeresemény megjelenik. Ezek az Azure Storage-fiók **WADServiceFabricSystemEventsTable** származnak, és hasonlóképpen a megbízható szolgáltatások és Actors-események, amelyek a következőket látják, a megfelelő táblákból származnak.
     
-![Lekérdezés műveleti csatorna](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+![Működési csatorna lekérdezése](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Másik lehetőségként kattintson a Nagyító ikonra a bal oldali és a Kusto-lekérdezési nyelv használatával találja, amit keres. Ha például a fürtben található csomópontok végzett összes művelet megkereséséhez használhatja a következő lekérdezést. Az alábbiakban használt eseményazonosítók találhatók a [műveleti csatorna események referencia](service-fabric-diagnostics-event-generation-operational.md).
+Azt is megteheti, hogy a bal oldali nagyítóra kattint, és a Kusto lekérdezési nyelv segítségével megkeresi a keresett helyet. A fürt csomópontjain végrehajtott összes művelet megkereséséhez például a következő lekérdezést használhatja. Az alább használt eseményazonosító az [operatív csatorna eseményeinek referenciájában](service-fabric-diagnostics-event-generation-operational.md)található.
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-A számos további mezők, például a csomópontok (számítógép) a rendszer szolgáltatás (TaskName) lekérdezheti.
+Több mezőből is lekérdezhető, például a rendszerszolgáltatás (feladatnév) adott csomópontjaira.
 
-## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Nézet Service Fabric Reliable Services és az Aktor esemény
+## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Megbízható szolgáltatás-és Actor-események megtekintése Service Fabric
 
-A Service Fabric-elemzés oldalon kattintson a diagram a **Reliable Services**.
+A Service Fabric Analytics lapon kattintson a **Reliable Services**gráfra.
 
-![A Service Fabric megoldást a Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+![Service Fabric megoldás Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-Kattintson a **lista** az események megtekintése a listában. Itt láthatja a reliable services eseményei. A különböző események láthatja, ha a szolgáltatás runasync elkezdődött és befejeződött, amely általában akkor fordul elő a telepítésekkel és frissítésekkel. 
+A **lista elemre kattintva** megtekintheti a listában szereplő eseményeket. Itt láthatja a megbízható szolgáltatások eseményeit. A szolgáltatás runasync indításakor és befejezésekor különböző eseményeket tekinthet meg, amelyek általában az üzembe helyezéseken és a frissítéseken történnek. 
 
-![A Reliable Services lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+![Lekérdezés Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Reliable actors-események hasonló módon is megtekinthetők. A reliable actors részletesebb események beállításához módosítani szeretné a `scheduledTransferKeywordFilter` a Config a diagnosztikai bővítmény (lásd alább). Ezek a következők az értékeket a részletek a [a reliable actors-események referencia](service-fabric-reliable-actors-diagnostics.md#keywords).
+A megbízható színészi eseményeket hasonló módon lehet megtekinteni. A megbízható szereplők részletes eseményeinek konfigurálásához módosítania kell a `scheduledTransferKeywordFilter` a diagnosztikai bővítmény konfigurációjában (lásd alább). Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -105,14 +96,14 @@ Reliable actors-események hasonló módon is megtekinthetők. A reliable actors
                 },
 ```
 
-A Kusto-lekérdezési nyelve, hatékony. Egy másik értékes lekérdezés futtatása, hogy ismerje meg, melyik csomópontokon létrehozó a legtöbb esemény. A lekérdezés az alábbi képernyőképen a Service Fabric műveleti események összesíteni az adott szolgáltatás és a csomópont jeleníti meg.
+A Kusto lekérdezési nyelve nagy teljesítményű. Egy másik értékes lekérdezés futtatásával megtudhatja, hogy mely csomópontok generálják a legtöbb eseményt. Az alábbi képernyőképen látható lekérdezés Service Fabric az adott szolgáltatással és csomóponttal összesített működési eseményeket mutatja.
 
-![Lekérdezés események száma csomópontonként](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Események lekérdezése/csomópont](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ahhoz, hogy az infrastruktúra figyelő például teljesítményszámlálók, látogasson el [hozzáadása a Log Analytics-ügynököket](service-fabric-diagnostics-oms-agent.md). Az ügynök összegyűjti a teljesítményszámlálók, és hozzáadja őket a meglévő munkaterülethez.
-* A helyszíni fürtök esetén az Azure Monitor naplóira, amelyek segítségével adatokat küldeni a naplókat az Azure Monitor átjárót (http-továbbítás Proxy) nyújt. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használata az Azure Monitor naplóira](../azure-monitor/platform/gateway.md).
-* Konfigurálása [automatizált riasztások](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
-* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók az Azure Monitor naplóira részeként érhető el.
-* Részletesebb ismertetőt az Azure Monitor naplóira, és mit kínál, a olvasási [Mi az Azure Monitor naplóira?](../operations-management-suite/operations-management-suite-overview.md).
+* Az infrastruktúra figyelésének engedélyezéséhez, azaz a teljesítményszámlálók létrehozásához lépjen [a log Analytics-ügynök hozzáadásához](service-fabric-diagnostics-oms-agent.md). Az ügynök gyűjti a teljesítményszámlálókat, és hozzáadja őket a meglévő munkaterülethez.
+* Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy a [számítógépek internetkapcsolat nélküli csatlakoztatása Azure monitor naplókhoz a log Analytics átjáró használatával](../azure-monitor/platform/gateway.md).
+* [Automatikus riasztások](../log-analytics/log-analytics-alerts.md) konfigurálása az észlelés és a diagnosztika támogatásához.
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal.
+* Részletes áttekintést kaphat Azure Monitor naplókról, valamint arról, hogy mit kínál, olvassa el a [Mi az Azure monitor naplók?](../operations-management-suite/operations-management-suite-overview.md)című témakört.

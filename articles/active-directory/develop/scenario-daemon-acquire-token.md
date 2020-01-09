@@ -1,5 +1,5 @@
 ---
-title: Jogkivonatok beszerzése a web API-kat meghívó Daemon-alkalmazásokban – Microsoft Identity platform | Azure
+title: Jogkivonatok beszerzése webes API-k meghívásához (Daemon-alkalmazás) – Microsoft Identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (tokenek beszerzése)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 58952bdb58619693b31ee4705b6f9f704431657d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423953"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
@@ -33,7 +33,7 @@ Az ügyfél-hitelesítési folyamatra vonatkozó kérelem hatóköre az erőforr
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
@@ -70,7 +70,7 @@ Az alkalmazáshoz tartozó jogkivonatok beszerzéséhez a platformtól függően
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 
 // With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the
@@ -185,7 +185,7 @@ További információkért tekintse meg a protokoll dokumentációját: [Microso
 
 A MSAL.NET-ben a `AcquireTokenForClient` az **alkalmazás-jogkivonat gyorsítótárát** használja (az összes többi AcquireTokenXX-módszer a felhasználói jogkivonat-gyorsítótárat használja), mielőtt meghívja a `AcquireTokenSilent`t a **felhasználói** jogkivonat gyorsítótárának meg`AcquireTokenForClient` hívása előtt `AcquireTokenSilent` használja. `AcquireTokenForClient` ellenőrzi az **alkalmazás** -jogkivonat gyorsítótárát, és frissíti azt.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Használta az erőforrás/. alapértelmezett hatókört?
 

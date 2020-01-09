@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450149"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -42,7 +42,7 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
  Egy tároló tárolja az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat, és a biztonsági mentési szabályzatokat a biztonsági másolattal rendelkező gépekhez társítja. Hozzon létre egy tárolót az alábbiak szerint:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A Keresés mezőbe írja be a következőt: **Recovery Services**. A **szolgáltatások**területen kattintson a **Recovery Services**-tárolók elemre.
 
      ![Recovery Services-tárolók keresése](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -63,9 +63,8 @@ A tároló létrehozása után megjelenik a Recovery Services-tárolók listáj�
 
 ![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Azure Backup a szolgáltatás egy külön erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) hoz létre a pillanatkép tárolásához, a névadási formátum **AzureBackupRG_geography_number** (például: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési szabályzatának az *azonnali helyreállítási pillanatkép megtartása* szakaszában megadott időtartam alatt lesznek tárolva.  Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet.<br>
-Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
+>[!NOTE]
+> Azure Backup mostantól lehetővé teszi a Azure Backup szolgáltatás által létrehozott erőforráscsoport-név testreszabását. További információ: [Virtual Machines Azure Backup erőforráscsoport](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
 ### <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
 
@@ -167,13 +166,13 @@ Az **adatok átvitele a tárba** fázisba több napot is igénybe vehet, a lemez
 
 A feladatok állapota a következő esetektől függően változhat:
 
-**Snapshot** | **Adatok átvitele a tárba** | **Feladatok állapota**
+**Pillanatkép** | **Adatok átvitele a tárba** | **Feladatok állapota**
 --- | --- | ---
 Befejezve | Folyamatban | Folyamatban
-Befejezve | Kimarad | Befejezve
+Befejezve | Kihagyva | Befejezve
 Befejezve | Befejezve | Befejezve
-Befejezve | Sikertelen | Figyelmeztetéssel fejeződött be
-Sikertelen | Sikertelen | Sikertelen
+Befejezve | Meghiúsult | Figyelmeztetéssel fejeződött be
+Meghiúsult | Meghiúsult | Meghiúsult
 
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így az olyan helyzetekben, amikor a következő napi biztonsági mentés sikertelen lesz, a biztonsági mentési feladat elkerülhető a leválasztási funkciókkal. A következő napi biztonsági másolatok rendelkezhetnek pillanatképtel **, miközben az adatok átvitele a tárba** kihagyva, ha egy korábbi nap biztonsági mentési feladata folyamatban van.
 A tárolóban létrehozott növekményes helyreállítási pont rögzíti a tárolóban létrehozott utolsó helyreállítási pont összes változását. Nincs hatással a felhasználóra.
@@ -184,7 +183,7 @@ A tárolóban létrehozott növekményes helyreállítási pont rögzíti a tár
 
 Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure virtuálisgép-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy manuálisan kell telepítenie az ügynököt a táblázatban foglaltak szerint.
 
-**VM** | **Részletek**
+**Virtuális gép** | **Részletek**
 --- | ---
 **Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal a **WaAppAgent. exe** > **Tulajdonságok**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
@@ -249,7 +248,7 @@ Ha nem rendelkezik rendszerfiók-proxyval, állítsa be egyet a következő mód
      * Adja hozzá ezt a sort a **/etc/Environment** -fájlhoz:
        * **http_proxy = http:\//proxy IP-címe: proxy port**
      * Adja hozzá ezeket a sorokat a **/etc/waagent.conf** -fájlhoz:
-         * **HttpProxy.Host=proxy IP address**
+         * **Http. Host = proxy IP-címe**
          * **Http. port = proxy port**
    * Windows rendszerű gépeken a böngésző beállításainál határozza meg, hogy a proxyt kell-e használni. Ha jelenleg használ egy proxyt egy felhasználói fiókon, akkor a parancsfájl segítségével alkalmazhatja a beállítást a rendszerfiók szintjén.
 

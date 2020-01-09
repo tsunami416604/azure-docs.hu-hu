@@ -4,15 +4,15 @@ description: Az Azure Diagnostics Azure Virtual Machines, Service Fabric vagy Cl
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450557"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás Azure Diagnostics
 Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
@@ -109,7 +109,7 @@ Ha a folyamatok futnak, ugorjon a következőre: az adatrögzítés [helyileg?](
 
 Ha ez nem oldja meg a problémát, próbálja meg a következőket:
 
-1. Az ügynök eltávolítása
+1. Ügynök eltávolítása
 2. Könyvtár C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics eltávolítása
 3. Ügynök újbóli telepítése
 
@@ -213,7 +213,7 @@ Ez a kód négy táblát hoz létre:
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Tudástár
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>A diagnosztikai bővítmény konfigurációjának megkeresése
 A bővítmény konfigurálásának legegyszerűbb módja, ha a [Azure erőforrás-kezelő](https://resources.azure.com), majd a Azure Diagnostics bővítményt (IaaSDiagnostics/PaaDiagnostics) futtató virtuális gépre vagy Felhőbeli szolgáltatásra lép.
@@ -260,7 +260,7 @@ A figyelési ügynök a naplókat és összetevőket `.tsf` fájlként gyűjti. 
 Egy `<relevantLogFile>.csv` nevű új fájl ugyanabban az elérési úton jön létre, mint a megfelelő `.tsf` fájl.
 
 >[!NOTE]
-> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a kapcsolódó fájlokat (például PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF stb.).
+> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a csatolt fájlokat (például PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF stb.).
 
 ### <a name="more-about-missing-trace-logs"></a>További információ a hiányzó nyomkövetési naplókról
 

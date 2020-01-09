@@ -1,5 +1,6 @@
 ---
-title: Azure API Management-szabályzat – minta – OAuth2 használata az átjáró és a háttér közötti hitelesítéshez | Microsoft Docs
+title: Példa Azure API Management-szabályzatra – a OAuth2 használata az átjáró és a háttér közötti engedélyezéshez
+titleSuffix: Azure API Management
 description: Azure API Management-szabályzat – példa – bemutatja, hogyan használható a OAuth2 az átjáró és a háttér közötti hitelesítéshez. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: fac10b728e4b7f09ec1019c3257f7c9e5d6e7714
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442352"
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 használata az átjáró és a háttér közötti engedélyezéshez
 
@@ -33,7 +34,7 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get OAuth2 access token from AAD and forward it to the backend.policy.xml)]
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 

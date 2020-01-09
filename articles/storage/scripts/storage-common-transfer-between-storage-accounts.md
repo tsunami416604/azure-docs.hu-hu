@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-példaszkript – Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával | Microsoft Docs
-description: Egy Azure Storage-fiókban található blobok másolása egy másik fiókba az AzCopy használatával.
+title: Blobok migrálása a Storage-fiókok között a Windows AzCopy
+description: Azure PowerShell parancsfájl-minta – az AzCopy használatával egy Azure Storage-fiók blob tartalmát egy másikba másolja.
 services: storage
 documentationcenter: na
 author: normesta
@@ -12,12 +12,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: normesta
-ms.openlocfilehash: 0af945177289760ca0d2a97133a300d9978ce702
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 559b8b2875b789034ae07901f668f241505073b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465057"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával
 
@@ -68,9 +68,9 @@ Ez a szkript a következő parancsokat használja az adatok egyik tárfiókból 
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Visszaadja az adott Storage-fiókhoz társított tárolókat. |
-| [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Létrehoz egy Azure Storage-környezetet. |
+| [Új – AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Létrehoz egy Azure Storage-környezetet. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

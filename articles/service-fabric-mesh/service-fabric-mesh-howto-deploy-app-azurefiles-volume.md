@@ -1,25 +1,17 @@
 ---
-title: Azure Files alapú kötet használata Service Fabric Mesh-alkalmazásban | Microsoft Docs
+title: Azure Files alapú kötet használata Service Fabric Mesh-alkalmazásban
 description: Megtudhatja, hogyan tárolhatja az állapotot egy Azure Service Fabric Mesh alkalmazásban, ha egy Azure Files-alapú kötetet csatlakoztat egy szolgáltatáson belül az Azure CLI használatával.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e02afde27335e9a512d1e297880993b19fa4304e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e2172c1808ddf72c09bc08efe680ed497f960b75
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034724"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497999"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure Files-alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
 
@@ -42,7 +34,7 @@ PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 
 A cikk végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését is. 
 
-Ha az Azure CLI-t helyileg szeretné használni a cikkben, `az --version` győződjön meg arról `azure-cli (2.0.43)`, hogy legalább a értéket adja vissza.  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
+Ha a cikkben helyileg szeretné használni az Azure CLI-t, győződjön meg arról, hogy a `az --version` legalább `azure-cli (2.0.43)`ad vissza.  Az alábbi [utasításokat](service-fabric-mesh-howto-setup-cli.md)követve telepítse (vagy frissítse) az Azure Service FABRIC Mesh CLI bővítmény modulját.
 
 Az Azure-ba való bejelentkezéshez és az előfizetés beállításához:
 
@@ -65,7 +57,7 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Szerezze be a Storage-fiók nevét és kulcsát, valamint a fájlmegosztás nevét
-A Storage-fiók neve, a Storage-fiók kulcsa, valamint a fájlmegosztás neve a `<storageAccountName>`következő `<storageAccountKey>`részekben `<fileShareName>` , és a fájlokra hivatkozik. 
+A Storage-fiók neve, a Storage-fiók kulcsa és a fájlmegosztás neve `<storageAccountName>`, `<storageAccountKey>`és `<fileShareName>`re hivatkozik a következő részekben. 
 
 Sorolja fel a Storage-fiókokat, és szerezze be a Storage-fiók nevét a használni kívánt fájlmegosztás használatával:
 ```azurecli-interactive
@@ -83,17 +75,17 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 Ezeket az értékeket a [Azure Portal](https://portal.azure.com)is megtalálhatja:
-* `<storageAccountName>`– A **Storage-fiókok**területen a fájlmegosztás létrehozásához használt Storage-fiók neve.
-* `<storageAccountKey>`– Válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **hozzáférési kulcsok** lehetőséget, és használja a **key1**alatti értéket.
-* `<fileShareName>`– Válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **fájlok**lehetőséget. A használandó név a létrehozott fájlmegosztás neve.
+* `<storageAccountName>` – a **Storage-fiókok**területen a fájlmegosztás létrehozásához használt Storage-fiók neve.
+* `<storageAccountKey>` – válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **hozzáférési kulcsok** lehetőséget, és használja a **key1**alatti értéket.
+* `<fileShareName>` – válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **fájlok**lehetőséget. A használandó név a létrehozott fájlmegosztás neve.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Mennyiségi erőforrás deklarálása és a szolgáltatási erőforrás (JSON) frissítése
 
-Paraméterek hozzáadása az `<fileShareName>`előző lépésben `<storageAccountName>`megtalált, és `<storageAccountKey>` értékekhez. 
+Adja hozzá az előző lépésben megtalált `<fileShareName>`hoz, `<storageAccountName>`hoz és `<storageAccountKey>` értékekhez tartozó paramétereket. 
 
-Hozzon létre egy kötet-erőforrást az alkalmazás-erőforrás társaként. Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). A `azureFileParameters`alkalmazásban határozza meg az előző `<fileShareName>`lépésben `<storageAccountName>`megtalált, és `<storageAccountKey>` értékek paramétereit.
+Hozzon létre egy kötet-erőforrást az alkalmazás-erőforrás társaként. Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). A `azureFileParameters`ben határozza meg az előző lépésben megtalált `<fileShareName>`, `<storageAccountName>`és `<storageAccountKey>` értékek paramétereit.
 
-Ha a kötetet a szolgáltatásban szeretné csatlakoztatni `volumeRefs` , vegyen fel egy `codePackages` elemet a szolgáltatás eleméhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
+Ha csatlakoztatni szeretné a kötetet a szolgáltatásban, adjon hozzá egy `volumeRefs` a szolgáltatás `codePackages` eleméhez.  `name` a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath` az a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
 
 ```json
 {
@@ -203,7 +195,7 @@ Ha a kötetet a szolgáltatásban szeretné csatlakoztatni `volumeRefs` , vegyen
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Mennyiségi erőforrás deklarálása és a szolgáltatási erőforrás (YAML) frissítése
 
-Vegyen fel egy új *Volume. YAML* fájlt az alkalmazásához tartozó alkalmazás- *erőforrások* könyvtárba.  Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). `<fileShareName>`a, és `<storageAccountKey>` az egy előző lépésben megtalált értékek. `<storageAccountName>`
+Vegyen fel egy új *Volume. YAML* fájlt az alkalmazásához tartozó alkalmazás- *erőforrások* könyvtárba.  Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). `<fileShareName>`, `<storageAccountName>`és `<storageAccountKey>` az előző lépésben megtalált értékek.
 
 ```yaml
 volume:
@@ -218,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Frissítse a Service *. YAML* fájlt a szolgáltatás *erőforrásainak* könyvtárában a kötet a szolgáltatásban való csatlakoztatásához.  Adja hozzá `volumeRefs` az elemet a `codePackages` elemhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
+Frissítse a Service *. YAML* fájlt a szolgáltatás *erőforrásainak* könyvtárában a kötet a szolgáltatásban való csatlakoztatásához.  Adja hozzá a `volumeRefs` elemet a `codePackages` elemhez.  `name` a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath` az a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
 
 ```yaml
 ## Service definition ##
@@ -254,8 +246,8 @@ application:
             - name: VolumeTestNetwork
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a Azure Files mennyiségi minta [](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter)alkalmazást a githubon.
+- Tekintse meg a Azure Files mennyiségi minta alkalmazást a [githubon](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - A Service Fabric-erőforrásmodellel kapcsolatos további tudnivalókért lásd a [Service Fabric Mesh-erőforrásmodellt](service-fabric-mesh-service-fabric-resources.md) bemutató cikket.
 - A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.

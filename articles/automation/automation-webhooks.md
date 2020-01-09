@@ -2,19 +2,15 @@
 title: Azure Automation runbook indítása webhooktal
 description: Webhook, amely lehetővé teszi, hogy az ügyfél HTTP-hívással indítson el egy runbook a Azure Automationban.  Ez a cikk bemutatja, hogyan hozhat létre webhookot, és hogyan hívhat meg egyet egy runbook elindításához.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418974"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation runbook indítása webhooktal
 
@@ -51,7 +47,7 @@ A **$WebhookData** objektum a következő tulajdonságokkal rendelkezik:
 |:--- |:--- |
 | WebhookName |A webhook neve. |
 | RequestHeader |A beérkező POST kérelem fejléceit tartalmazó kivonatoló tábla. |
-| requestBody |A beérkező POST kérelem törzse. Ez megőrzi az összes formázást, például a karakterláncot, a JSON-t, az XML-t vagy az űrlap kódolású adatát. A runbook a várt adatformátummal való együttműködésre kell írni. |
+| RequestBody |A beérkező POST kérelem törzse. Ez megőrzi az összes formázást, például a karakterláncot, a JSON-t, az XML-t vagy az űrlap kódolású adatát. A runbook a várt adatformátummal való együttműködésre kell írni. |
 
 Nincs szükség a webhook konfigurálására a **$WebhookData** paraméter támogatásához, és a runbook nem kell elfogadnia. Ha a runbook nem határozza meg a paramétert, a rendszer figyelmen kívül hagyja az ügyféltől érkező kérések részleteit.
 

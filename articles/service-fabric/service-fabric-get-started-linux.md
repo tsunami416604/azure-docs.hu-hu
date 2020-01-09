@@ -1,25 +1,14 @@
 ---
-title: A fejlesztési környezet beállítása Linuxon | Microsoft Docs
+title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 6471d3f58fbe0e19910f39e9527f193d00a228be
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457894"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -235,7 +224,7 @@ A generátorok telepítése után hozzon létre futtatható vendégalkalmazások
 
 ## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
 
-Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#linuxubuntu) [a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen érhetők el, jelenleg előzetes verzióban.
+Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#linuxubuntu)[a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen érhetők el, jelenleg előzetes verzióban.
 
 ## <a name="set-up-java-development"></a>Java fejlesztői környezet beállítása
 

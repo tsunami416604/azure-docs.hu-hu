@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás létrehozása a Cassandra API és a Java használatával – Azure Cosmos DB
+title: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API
 description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására az Azure Portal és a Java használatával
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5b1eacb1d0121f2dd0d97807f07042e828fe7932
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1f9151ab174a9a1f9e492bd068b5285772f6a546
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442050"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API-alapú adatkezeléshez
 
@@ -50,7 +50,7 @@ A dokumentum-adatbázis létrehozásához először létre kell hoznia egy Cassa
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Cassandra-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig váltsunk át kódok használatára. A következő lépésekben elvégezheti a Cassandra-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
 1. Nyisson meg egy parancssort. Hozzon létre egy `git-samples` nevű mappát. Ezután zárja be a parancssort.
 
@@ -64,7 +64,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -210,7 +210,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     ![Adatkezelő-Azure Cosmos DBban lévő adatmegjelenítés](./media/create-cassandra-java/view-data-explorer-java-app.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -218,7 +218,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, Cassandra-adatbázist és tárolót az Adatkezelő segítségével, valamint hogyan futtathat egy alkalmazást, amely programozottan hajtja végre ugyanezt. Mostantól további adatait is importálhatja az Azure Cosmos-tárolóba. 
 

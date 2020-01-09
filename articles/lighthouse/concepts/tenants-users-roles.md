@@ -3,12 +3,12 @@ title: Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatók�
 description: Megismerheti Azure Active Directory bérlők, a felhasználók és a szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
 ms.date: 11/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1ad004c79f90f4642640405da9e8876b9202e98
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453573"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben
 
@@ -22,13 +22,13 @@ Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. 
 
 ## <a name="role-support-for-azure-delegated-resource-management"></a>Szerepkör-támogatás az Azure-beli delegált erőforrás-kezeléshez
 
-Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni a [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)egyikét. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nem támogatottak.
+Az engedélyezés meghatározásakor minden felhasználói fiókhoz hozzá kell rendelni a [szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)egyikét. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 
-Az Azure-beli delegált erőforrás-kezelés jelenleg az összes [beépített szerepkört](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) támogatja, a következő kivételekkel:
+Az Azure-beli delegált erőforrás-kezelés jelenleg az összes [beépített szerepkört](../../role-based-access-control/built-in-roles.md) támogatja, a következő kivételekkel:
 
-- A [tulajdonosi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) szerepkör nem támogatott.
-- A [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) engedéllyel rendelkező beépített szerepkörök nem támogatottak.
-- A [felhasználói hozzáférés rendszergazdai](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) beépített szerepköre támogatott, de csak azzal a korlátozott céllal, [hogy szerepköröket rendeljen hozzá egy felügyelt identitáshoz az ügyfél bérlője](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)számára. Ehhez a szerepkörhöz általában nem érvényesek más engedélyek. Ha megad egy felhasználót a szerepkörhöz, meg kell adnia azokat a beépített szerepkör (eke) t, amelyeket a felhasználó a felügyelt identitásokhoz hozzárendelhet.
+- A [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör nem támogatott.
+- A [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepkörök nem támogatottak.
+- A [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) beépített szerepköre támogatott, de csak azzal a korlátozott céllal, [hogy szerepköröket rendeljen hozzá egy felügyelt identitáshoz az ügyfél bérlője](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)számára. Ehhez a szerepkörhöz általában nem érvényesek más engedélyek. Ha megad egy felhasználót a szerepkörhöz, meg kell adnia azokat a beépített szerepkör (eke) t, amelyeket a felhasználó a felügyelt identitásokhoz hozzárendelhet.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Ajánlott eljárások felhasználók és szerepkörök definiálásához
 
@@ -36,8 +36,8 @@ Az engedélyek létrehozásakor javasoljuk a következő ajánlott eljárásokat
 
 - A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet.
 - Ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek, ami segít csökkenteni a véletlen hibák esélyét. További információ: [ajánlott biztonsági eljárások](../concepts/recommended-security-practices.md).
-- Vegyen fel egy felhasználót a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörével](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) , így szükség esetén később is [eltávolíthatja a delegáláshoz való hozzáférést](../how-to/onboard-customer.md#remove-access-to-a-delegation) . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
-- Győződjön meg arról, hogy minden olyan felhasználónak, akinek meg kell [tekintenie a saját ügyfelek lapot a Azure Portal](../how-to/view-manage-customers.md) rendelkezik az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkörrel (vagy egy másik beépített szerepkörrel, amely olvasói hozzáféréssel rendelkezik).
+- Vegyen fel egy felhasználót a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörével](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) , így szükség esetén később is [eltávolíthatja a delegáláshoz való hozzáférést](../how-to/onboard-customer.md#remove-access-to-a-delegation) . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
+- Győződjön meg arról, hogy minden olyan felhasználónak, akinek meg kell [tekintenie a saját ügyfelek lapot a Azure Portal](../how-to/view-manage-customers.md) rendelkezik az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkörrel (vagy egy másik beépített szerepkörrel, amely olvasói hozzáféréssel rendelkezik).
 
 ## <a name="next-steps"></a>Következő lépések
 

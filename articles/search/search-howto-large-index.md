@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460740"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
@@ -34,7 +34,7 @@ A Batch-indexelés a REST vagy a .NET használatával, vagy az indexelő segíts
 
 ## <a name="option-2-add-resources"></a>2\. lehetőség: erőforrások hozzáadása
 
-A [standard szintű díjszabási](search-sku-tier.md) szinten kiépített szolgáltatások gyakran kihasználatlan kapacitást biztosítanak a tároláshoz és a munkaterhelésekhez (lekérdezésekhez vagy indexeléshez), ami [növeli a partíciót és a replikát, és](search-capacity-planning.md) nyilvánvaló megoldást kínál a következőhöz: nagyobb adatkészletek elhelyezése. A legjobb eredmény érdekében mindkét erőforrásra szüksége van: partíciók tároláshoz, valamint az adatfeldolgozáshoz szükséges replikák.
+A [standard szintű díjszabási](search-sku-tier.md) szinten kiépített szolgáltatások gyakran kihasználatlan kapacitást biztosítanak a tároláshoz és a munkaterhelésekhez (lekérdezésekhez vagy indexeléshez), ami [növeli a partíció és a replika számára a](search-capacity-planning.md) nagyobb adatkészletek fogadásának kézenfekvő megoldását. A legjobb eredmény érdekében mindkét erőforrásra szüksége van: partíciók tároláshoz, valamint az adatfeldolgozáshoz szükséges replikák.
 
 A megnövelt replikák és partíciók olyan számlázható események, amelyek növelik a költségeket, de ha a maximális terhelés alatt folyamatosan indexeli az indexelést, az indexelési folyamat időtartamára skálát adhat hozzá, majd az indexelés után lefelé állíthatja az erőforrás-szinteket. befejeződött.
 
@@ -74,7 +74,7 @@ A párhuzamos feldolgozás a következő elemekből áll:
 + Ütemezze az összes indexelő futtatását egy időben.
 
 > [!NOTE]
-> Az Azure Cognitive Search nem támogatja a replikák vagy partíciók adott számítási feladatokhoz való kihelyezését. Az egyidejű indexelés kockázata nagy mértékben terheli a rendszerét a lekérdezési teljesítmény rovására. Ha tesztelési környezettel rendelkezik, először párhuzamos indexelést kell végrehajtania a kompromisszumok megismeréséhez.
+> Az Azure Cognitive Searchban nem rendelhet hozzá különálló replikákat vagy partíciókat az indexeléshez vagy a lekérdezések feldolgozásához. A rendszer határozza meg az erőforrások felhasználásának módját. A lekérdezési teljesítményre gyakorolt hatás megismerése érdekében próbálkozzon párhuzamos indexeléssel egy tesztkörnyezetben, mielőtt éles környezetbe helyezné azokat.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Párhuzamos indexelés konfigurálása
 

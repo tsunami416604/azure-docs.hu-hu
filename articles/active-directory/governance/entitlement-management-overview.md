@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure AD-jogosultságkezelés? – Azure Active Directory
+title: Mi az a jogosultságkezelés? – Azure AD
 description: Áttekintés a Azure Active Directory jogosultságok kezeléséről, valamint arról, hogy miként kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső és külső felhasználók számára.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422576"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -38,7 +38,7 @@ A nagyvállalati szervezetek gyakran szembesülnek kihívásokkal az alkalmazott
 - Előfordulhat, hogy a felhasználók nem tudják, hogy milyen hozzáférésre van szükségük, és még ha igen, nehéz lehet megtalálni a megfelelő személyeket a hozzáférésük jóváhagyására
 - Miután a felhasználók megkeresik és megkapják a hozzáférést egy erőforráshoz, előfordulhat, hogy a hozzáférésük hosszabb ideig tart, mint az üzleti célra szükséges
 
-Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Például:
+Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Példa:
 
 - Előfordulhat, hogy egyetlen személy sem tudja, hogy a többi szervezet könyvtáraiban lévő összes adott személy meghívja őket
 - Még ha ezek a felhasználók is meghívhatják ezeket a felhasználókat, a szervezetben senki sem emlékszik arra, hogy az összes felhasználó hozzáférését következetesen kezelje
@@ -71,7 +71,7 @@ A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát m
 - Hozzárendelés az Azure AD vállalati alkalmazásokhoz, beleértve az SaaS-alkalmazásokat, valamint az összevonás/egyszeri bejelentkezést és/vagy üzembe helyezést támogató egyéni integrált alkalmazásokat
 - SharePoint Online-webhelyek tagsága
 
-Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
+Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
 
 - A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
 - Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával

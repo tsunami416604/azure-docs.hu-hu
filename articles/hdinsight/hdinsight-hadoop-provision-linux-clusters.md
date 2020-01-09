@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435563"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és más szolgáltatásokkal
 
@@ -25,7 +25,7 @@ Megtudhatja, hogyan állíthatja be és konfigurálhatja a HDInsight-fürtöket 
 A Hadoop-fürtök több virtuális gépről (csomópontból) állnak, amelyek a feladatok elosztott feldolgozásához használatosak. Az Azure HDInsight az egyes csomópontok telepítésének és konfigurálásának megvalósítási részleteit kezeli, így csak általános konfigurációs adatokat kell megadnia.
 
 > [!IMPORTANT]  
-> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. További információ a [fürtök törléséről.](hdinsight-delete-cluster.md)
+> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban. További információ a [fürtök törléséről.](hdinsight-delete-cluster.md)
 
 ## <a name="cluster-setup-methods"></a>Fürt beállítási módszerei
 
@@ -57,7 +57,7 @@ Kövesse a képernyőn megjelenő utasításokat. A részleteket az alábbi táb
 
 ## <a name="resource-group-name"></a>Erőforráscsoport neve
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) segít az alkalmazásban lévő erőforrásokkal való munkavégzésben, amely Azure-erőforráscsoport néven is ismert. Az alkalmazás összes erőforrását egyetlen összehangolt műveletben telepítheti, frissítheti, figyelheti vagy törölheti.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) segít az alkalmazásban lévő erőforrásokkal való munkavégzésben, amely Azure-erőforráscsoport néven is ismert. Az alkalmazás összes erőforrását egyetlen összehangolt műveletben telepítheti, frissítheti, figyelheti vagy törölheti.
 
 ## <a name="cluster-types"></a>Fürtök típusai és konfigurációja
 
@@ -122,8 +122,8 @@ Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) ha
 
 A HDInsight-fürtök a következő tárolási lehetőségeket használhatják:
 
-* 2\. generációs Azure Data Lake Storage
-* 1\. generációs Azure Data Lake Storage
+* Azure Data Lake Storage Gen2
+* Azure Data Lake Storage Gen1
 * Azure Storage általános célú v2
 * Azure Storage általános célú v1
 * Azure Storage Block-blob (**csak másodlagos tárolóként támogatott**)
@@ -185,11 +185,11 @@ A csomópont-használat számlázása addig történik, amíg a fürt létezik. 
 
 Mindegyik fürt típusa saját számú csomóponttal, csomópontok terminológiával és alapértelmezett virtuálisgép-mérettel rendelkezik. Az alábbi táblázatban az egyes csomópont-típusok csomópontjainak száma zárójelben van.
 
-| Típus | Csomópontok | Ábra |
+| Type (Típus) | Csomópontok | Ábra |
 | --- | --- | --- |
 | Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |![HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |![HDInsight Storm-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| A Storm |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |![HDInsight Storm-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Fő csomópont (2), munkavégző csomópont (1 +), ZooKeeper-csomópont (3) (az A1-es ZooKeeper VM-mérethez ingyenes) |![HDInsight Spark-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 További információ: az [alapértelmezett csomópont-konfiguráció és a fürtök virtuálisgép-mérete](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) a "mi a Hadoop-összetevők és-verziók a HDInsight-ben?"
@@ -272,7 +272,7 @@ Időnként a következő konfigurációs fájlokat szeretné konfigurálni a lé
 
 További információ: HDInsight- [fürtök testreszabása a bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 * [Mik azok a HDInsight, a Apache Hadoop ökoszisztémák és a Hadoop-fürtök?](hadoop/apache-hadoop-introduction.md)

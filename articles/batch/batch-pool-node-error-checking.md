@@ -1,18 +1,18 @@
 ---
 title: Készlet-és csomópont-hibák keresése – Azure Batch
-description: Hibák a készletek és a csomópontok létrehozásakor
+description: Ez a cikk az esetlegesen előforduló háttér-műveleteket, valamint a készletek és csomópontok létrehozásakor fellépő hibákat és azok elkerülését ismerteti.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449790"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -121,7 +121,7 @@ A Batch-ügynök minden egyes csomóponton futó folyamata olyan naplófájlokat
 A készlethez tartozó virtuális gép ideiglenes meghajtóját a Batch a feladatok fájljai, a feladatok fájljai és a megosztott fájlok számára használja.
 
 - Alkalmazás-csomagok fájljai
-- Feladat erőforrásfájljai
+- Feladat-erőforrás fájljai
 - A Batch-mappák egyikére letöltött alkalmazás-specifikus fájlok
 - Stdout-és stderr-fájlok az egyes feladatok alkalmazás-végrehajtásához
 - Alkalmazásspecifikus kimeneti fájlok
@@ -140,6 +140,6 @@ Az egyes feladatok által írt fájlok esetében megadható az egyes feladatokho
 Ha az ideiglenes lemezterület kitöltése megtörténik, a csomópont jelenleg leállítja a futó feladatokat. A jövőben a rendszer [Node-hibát](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) jelez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Győződjön meg arról, hogy az alkalmazás teljes körű hibaellenőrzés megvalósítására van beállítva, különösen aszinkron műveletekhez. Kritikus fontosságú lehet a problémák azonnali észlelése és diagnosztizálása.

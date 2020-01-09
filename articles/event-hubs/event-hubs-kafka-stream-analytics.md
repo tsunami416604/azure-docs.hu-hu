@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Apache Kafka-események feldolgozása a stream Analytics használatával – Azure Event Hubs'
+title: Azure Event Hubs – Apache Kafka események feldolgozása
 description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan dolgozhatja fel az Event hub-n keresztül betöltött Kafka-eseményeket Azure Stream Analytics használatával'
 services: event-hubs
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 7801b3252ab13df1f92e7aa5e0eba071195cb76c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437251"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
 Ez a cikk bemutatja, hogyan továbbíthatja az adatátvitelt a Kafka-kompatibilis Event Hubsba, és feldolgozhatja azt Azure Stream Analytics használatával. Végigvezeti a következő lépéseken: 
@@ -55,7 +55,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     4. Válassza ki azt az **előfizetést** , amelyben létre szeretné hozni az Event hub-névteret. 
     5. Hozzon létre egy új **erőforráscsoportot** , vagy válasszon ki egy meglévő erőforráscsoportot. 
     6. Válasszon egy **helyet**. 
-    7. Kattintson a **Létrehozás** elemre.
+    7. Kattintson a **Create** (Létrehozás) gombra.
     
         ![Névtér létrehozása](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
 4. Az **értesítési üzenetben**válassza ki az **erőforráscsoport nevét**. 
@@ -129,7 +129,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     4. Válassza ki a feladatokhoz tartozó **helyet** .
     5. Válassza a **Létrehozás** lehetőséget a feladatok létrehozásához. 
 
-        ![Új Stream Analytics-feladatok](./media/event-hubs-kafka-stream-analytics/new-stream-analytics-job.png)
+        ![Új Stream Analytics-feladat](./media/event-hubs-kafka-stream-analytics/new-stream-analytics-job.png)
 
 ### <a name="configure-job-input"></a>Feladatbemenet konfigurálása
 
@@ -176,7 +176,7 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
 1. Válassza az **Áttekintés** lehetőséget a bal oldali menüben. 
-2. Válassza az **Indítás**lehetőséget. 
+2. Válassza az **Indítás** elemet. 
 
     ![Start menü](./media/event-hubs-kafka-stream-analytics/start-menu.png)
 1. A **kezdési feladatok** lapon válassza az **Indítás**lehetőséget. 
@@ -204,7 +204,7 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)

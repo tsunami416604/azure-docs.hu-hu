@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: de42acd9cb8ca0520db616237c23b7db9fadb77f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 666bd2f9575019f3bfb77050d27363fef66474bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439287"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 
@@ -151,7 +151,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -208,10 +208,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -235,7 +232,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
 Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
 
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService.json** nevű JSON-fájlt a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában a következő tartalommal: Mielőtt mentené a fájlt, a **&lt;server&gt;, a &lt;database name&gt;, a &lt;user id&gt; és a &lt;password&gt;** helyőrzőt cserélje az Azure SQL Server nevére, az adatbázis nevére, a felhasználói azonosítóra és a jelszóra. 
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában a következő tartalommal: cserélje le **&lt;Server&gt; &lt;adatbázisnév&gt;, &lt;felhasználói azonosító&gt;, és &lt;jelszó&gt;** az Azure SQL Server neve, az adatbázis neve, a felhasználói azonosító és a jelszó a fájl mentése előtt. 
 
     ```json
     {
@@ -243,10 +240,7 @@ Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }

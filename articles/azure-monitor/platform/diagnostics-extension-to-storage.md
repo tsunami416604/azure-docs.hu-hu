@@ -2,18 +2,18 @@
 title: Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
 description: Ismerje meg, hogyan gyűjthet Azure-diagnosztikai adatokat egy Azure Storage-fiókban, így megtekintheti azt a számos elérhető eszköz egyikével.
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395017"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
 A diagnosztikai adatok nem tárolódnak véglegesen, hacsak nem továbbítja azt a Microsoft Azure Storage-emulátorba vagy az Azure Storage-ba. A tárolás után a több elérhető eszköz egyikével is megtekinthető.
@@ -33,12 +33,12 @@ A gyűjtött diagnosztikai adatok típusától függően Azure Diagnostics a Blo
 
 | Adatforrás | Tárolási formátum |
 | --- | --- |
-| Azure-naplók |Tábla |
+| Azure-naplók |Table |
 | IIS 7,0-naplók |Blob |
-| Azure Diagnostics-infrastruktúranaplók |Tábla |
+| Azure Diagnostics-infrastruktúranaplók |Table |
 | Sikertelen kérelmek nyomkövetési naplói |Blob |
-| Windows-eseménynaplók |Tábla |
-| Teljesítményszámlálók |Tábla |
+| Windows-eseménynaplók |Table |
+| Teljesítményszámlálók |Table |
 | összeomlási memóriaképek, |Blob |
 | Egyéni hibanaplók |Blob |
 
@@ -71,13 +71,13 @@ A naplófájlok tárolása a blob vagy a Table Storage szolgáltatásban törté
 * **"Custom"** – egyéni tároló, amely a diagnosztikai figyelő által figyelt könyvtárak konfigurálásán alapul.  A blob-tároló neve a WADDirectoriesTable-ben lesz meghatározva.
 
 ## <a name="tools-to-view-diagnostic-data"></a>Eszközök a diagnosztikai adatgyűjtés megtekintéséhez
-Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Például:
+Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Példa:
 
 * Kiszolgálókezelő a Visual Studióban – ha telepítette a Microsoft Visual studióhoz készült Azure-eszközöket, a Server Explorerben az Azure Storage csomópont használatával megtekintheti az Azure Storage-fiókok írásvédett blob-és táblázat-adatait. A helyi Storage Emulator-fiókból és az Azure-hoz létrehozott Storage-fiókoktól származó adatok is megjeleníthetők. További információ: [Storage-erőforrások tallózása és kezelése a Server Explorerben](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.
 * Az [azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) tartalmaz Azure Diagnostics kezelőt, amely lehetővé teszi az Azure-on futó alkalmazások által gyűjtött diagnosztikai adatok megtekintését, letöltését és kezelését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A folyamat nyomon követése egy Cloud Services alkalmazásban Azure Diagnostics](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 
 

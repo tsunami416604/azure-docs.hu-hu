@@ -1,6 +1,6 @@
 ---
-title: Az oktatóanyag az Azure Data Box Edge üzembe helyezése az Azure portál, datacenter környezet előkészítése a |} A Microsoft Docs
-description: Az első oktatóanyagban helyezhető üzembe az Azure Data Box Edge magában foglalja a előkészítése az Azure Portalon.
+title: Oktatóanyag a Azure Portal, adatközpont-környezet előkészítéséhez Azure Data Box Edge üzembe helyezéséhez | Microsoft Docs
+description: A Azure Data Box Edge telepítésének első oktatóanyaga a Azure Portal előkészítését foglalja magában.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 364ceabc3c9e7a577bd126b81bcd5256d947bbe3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438666"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Oktatóanyag: Az üzembe helyezés az Azure Data Box Edge előkészítése  
+# <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Oktatóanyag: Felkészülés a Azure Data Box Edge üzembe helyezésére  
 
-Ez az az, hogy teljes mértékben az Azure Data Box Edge telepítéséhez szükséges az üzembehelyezési oktatóanyagok a sorozat első oktatóanyaga. Ez az oktatóanyag leírja, hogyan készíti elő az Azure portal Data Box Edge erőforrás üzembe helyezéséhez.
+Ez az első oktatóanyag a Azure Data Box Edge teljes telepítéséhez szükséges telepítési oktatóanyagok sorozatában. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Data Box Edge-erőforrás üzembe helyezéséhez.
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
@@ -30,45 +30,45 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-### <a name="get-started"></a>Bevezetés
+### <a name="get-started"></a>Az első lépések
 
-Data Box Edge telepíteni, tekintse meg az alábbi oktatóanyagok az előírt sorrendben.
+Data Box Edge telepítéséhez tekintse meg az alábbi oktatóanyagokat az előírt sorozatban.
 
 | **#** | **Ebben a lépésben** | **Ezeket a dokumentumokat használja** |
 | --- | --- | --- | 
 | 1. |**[Az Azure Portal előkészítése a Data Box Edge-hez](data-box-edge-deploy-prep.md)** |A Data Box Edge fizikai eszköz üzembe helyezése előtt hozza létre és konfigurálja a Data Box Edge-erőforrást. |
 | 2. |**[A Data Box Edge telepítése](data-box-edge-deploy-install.md)**|Csomagolja ki, helyezze állványra, és csatlakoztassa a kábeleket a Data Box Edge fizikai eszközhöz.  |
-| 3. |**[Csatlakozás, állítsa be, és aktiválja a Data Box Edge](data-box-edge-deploy-connect-setup-activate.md)** |Csatlakozzon a helyi webes felhasználói felülethez, végezze el az eszköz konfigurálását, majd aktiválja az eszközt. Az eszköz készen áll az SMB- vagy NFS-megosztások beállítására.  |
+| 3. |**[Data Box Edgeek összekapcsolása, beállítása és aktiválása](data-box-edge-deploy-connect-setup-activate.md)** |Csatlakozzon a helyi webes felhasználói felülethez, végezze el az eszköz konfigurálását, majd aktiválja az eszközt. Az eszköz készen áll az SMB- vagy NFS-megosztások beállítására.  |
 | 4. |**[Adatok átvitele a Data Box Edge segítségével](data-box-edge-deploy-add-shares.md)** |Vegyen fel megosztásokat, és csatlakozzon a megosztásokhoz SMB vagy NFS használatával. |
-| 5. |**[Adatok átalakítása a Data Box Edge segítségével](data-box-edge-deploy-configure-compute.md)** |Számítási modulok konfigurálása az adatok átalakításához, ahogy azt az Azure-bA helyezi át az eszközön. |
+| 5. |**[Adatok átalakítása a Data Box Edge segítségével](data-box-edge-deploy-configure-compute.md)** |Konfigurálja a számítási modulokat az eszközön az adatok átalakításához az Azure-ba való átlépéshez. |
 
 Most megkezdheti az Azure Portal beállítását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az alábbiakban az adatközponti hálózathoz, a Data Box Edge erőforrás és a Data Box Edge-eszköz konfigurációs előfeltételeit.
+A következő konfigurációs előfeltételek vonatkoznak a Data Box Edge erőforrásra, a Data Box Edge eszközre és az adatközpont-hálózatra.
 
 ### <a name="for-the-data-box-edge-resource"></a>Data Box Edge-erőforrás esetén
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- A Microsoft Azure-előfizetés engedélyezve van a Data Box Edge erőforrás. Utólagos elszámolású előfizetések nem támogatottak.
-- Rendelkezik tulajdonosi vagy közreműködői hozzáférés a Data Box Edge/Data Box átjáró, az IoT Hub és az Azure Storage-erőforrások erőforráscsoport szintjén.
+- A Microsoft Azure-előfizetés engedélyezve van egy Data Box Edge erőforráshoz. Az utólagos elszámolású előfizetések nem támogatottak.
+- Tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén a Data Box Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások számára.
 
-    - Minden olyan Data Box-Edge létrehozása / Data Box-Gateway-erőforrás, rendelkeznie kell közreműködője (vagy magasabb) hatókörön belüli erőforráscsoport szintjén. Győződjön meg arról, hogy emellett a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. Regisztrálásával kapcsolatos további információkért látogasson el a [erőforrás-szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Minden IoT Hub-erőforrás létrehozásához, ellenőrizze, hogy Microsoft.Devices szolgáltató regisztrálva van. Regisztrálásával kapcsolatos további információkért látogasson el a [erőforrás-szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Hozzon létre egy tárfiók típusú erőforrást, újra kell közreműködői vagy magasabb hozzáférési hatókörrel rendelkező, az erőforráscsoport szintjén. Az Azure Storage szolgáltatás alapértelmezés szerint egy regisztrált erőforrás-szolgáltató.
-- Rendszergazdai vagy a felhasználó hozzáférhet az Azure Active Directory Graph API-val rendelkezik. További információkért lásd: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+    - Bármilyen Data Box Edge/Data Box Gateway erőforrás létrehozásához jogosultságot kell biztosítania a közreműködői (vagy magasabb) hatókörnek az erőforráscsoport szintjén. Győződjön meg arról is, hogy a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
+    - Ha IoT Hub erőforrást szeretne létrehozni, győződjön meg arról, hogy a Microsoft. Devices szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
+    - A Storage-fiók erőforrásának létrehozásához ismét közreműködői vagy magasabb szintű hozzáférési hatókörre van szükség az erőforráscsoport szintjén. Az Azure Storage alapértelmezés szerint regisztrált erőforrás-szolgáltató.
+- Rendszergazdai vagy felhasználói hozzáféréssel rendelkezik Azure Active Directory Graph APIhoz. További információ: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
 
 ### <a name="for-the-data-box-edge-device"></a>Data Box Edge-eszköz esetén
 
 Fizikai eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
-- Áttekintette a biztonsági adatokat, a szállítás csomag található.
-- Van egy elérhető standard 19" rack 1 u tárhely rack az eszköz csatlakoztatása az Adatközpont.
-- Rendelkezik hozzáféréssel egy egybesimított, stabil és szintű munkahelyi felületére, ahol az eszköz nyugodt lehet biztonságosan.
-- A hely, ahol szeretne beállítani az eszközt a szokásos hálózati áramellátás Visszaállt egy független forrás vagy egy állvány power terjesztési egység (PDU) szünetmentes tápegység (UPS) rendelkezik.
+- Áttekintette a szállítási csomagban található biztonsági információkat.
+- Az eszköz csatlakoztatásához az adatközpontban egy szabványos 19. állványban érhető el egy 1U-tárolóhely.
+- Olyan sima, stabil és szintű munkafelülethez férhet hozzá, ahol az eszköz biztonságosan megnyugodtan működik.
+- A hely, ahol be kívánja állítani az eszközt, szabványos AC-teljesítménnyel rendelkezik egy független forrásból, vagy egy szünetmentes áramforrással (UPS) rendelkező rack Power Distribution Unit (PDU).
 - Hozzáférése kell rendelkeznie egy fizikai eszközhöz.
 
 
@@ -76,89 +76,89 @@ Fizikai eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- A hálózat, az adatközpontban a Data Box Edge-eszköz hálózati követelményei szerint van konfigurálva. További információkért lásd: [Data Box Edge rendszerkövetelmények](data-box-edge-system-requirements.md).
+- Az adatközpont hálózata a Data Box Edge eszköz hálózati követelményeinek megfelelően van konfigurálva. További információ: [Data Box Edge rendszerkövetelmények](data-box-edge-system-requirements.md).
 
-- A Data Box Edge normál működési feltételek mellett van:
+- A Data Box Edge normál működési feltételei:
 
-    - Legalább 10 MB/s sávszélesség és a frissített marad, az eszköz letöltéséhez.
-    - Legalább 20 MB/s dedikált sávszélesség és a fájlok átvitelét le- és feltöltése.
+    - Legalább 10 MB/s letöltési sávszélesség, hogy az eszköz naprakész maradjon.
+    - A fájlok átviteléhez legalább 20 Mbps dedikált feltöltési és letöltési sávszélesség szükséges.
 
 ## <a name="create-a-new-resource"></a>Új erőforrás létrehozása
 
 Ha rendelkezik meglévő Data Box Edge-erőforrással a fizikai eszközök kezeléséhez, hagyja ki ezt a lépést, és folytassa [az aktiválási kulcs lekérésével](#get-the-activation-key).
 
-Hozzon létre egy Data Box Edge erőforrást, az alábbi lépéseket az Azure Portalon.
+Data Box Edge-erőforrás létrehozásához hajtsa végre a következő lépéseket a Azure Portal.
 
-1. Jelentkezzen be a hitelesítő adatait a Microsoft Azure használatával 
+1. A Microsoft Azure hitelesítő adataival jelentkezzen be 
     
-    - Az Azure Portalon a következő URL-címen: [ https://portal.azure.com ](https://portal.azure.com).
-    - Vagy az Azure Government portálra az URL-címen: [ https://portal.azure.us ](https://portal.azure.us). További részletekért látogasson el [csatlakozhat az Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+    - A Azure Portal ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com).
+    - Vagy a Azure Government portál ezen az URL-címen: [https://portal.azure.us](https://portal.azure.us). További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
-2. A bal oldali ablaktáblán válassza **+ erőforrás létrehozása**. Keresse meg **Data Box-Edge / Data Box-átjáró**. Válassza ki **Data Box-Edge / Data Box-átjáró**. Kattintson a **Létrehozás** gombra.
-3. Válassza ki az előfizetést, amelyet a Data Box peremhálózati eszköz használni szeretne. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el. 
+2. A bal oldali panelen válassza az **+ erőforrás létrehozása**lehetőséget. **Data Box Edge/Data Box Gateway**keresése. Válassza a **Data Box Edge/Data Box Gateway**lehetőséget. Kattintson a **Létrehozás** gombra.
+3. Válassza ki a Data Box Edge eszközhöz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. Ebben a kiadásban az USA keleti régiója, Dél-Kelet-Ázsia és Nyugat-Európa is elérhető. 
 
-    Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak eszközfelügyeleti metaadatait tárolja. A tényleges adatok minden olyan storage-fiókban tárolhatók. 
+    Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók. 
     
-    Az a **Data Box Edge** beállításnál válassza **létrehozás**.
+    A **Data Box Edge** lehetőségnél válassza a **Létrehozás**lehetőséget.
 
     ![A Data Box Edge szolgáltatás megkeresése](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
-3. Az a **alapjai** lapon adja meg vagy válassza ki az alábbi **projektadatok**.
+3. Az **alapvető beállítások** lapon adja meg vagy válassza ki a következő **projekt részleteit**.
     
-    |Beállítás  |Érték  |
+    |Beállítás  |Value (Díj)  |
     |---------|---------|
-    |Előfizetés    |Ez a rendszer automatikusan kitölti a korábban kiválasztott alapján. A számlázási fiókhoz társított előfizetés. |
-    |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/resource-group-overview.md) kapcsolatban.     |
+    |Előfizetés    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
+    |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
 
-4. Adja meg vagy válassza ki az alábbi **példány részletei**.
+4. Adja meg vagy válassza ki a következő **példány részleteit**.
 
-    |Beállítás  |Érték  |
+    |Beállítás  |Value (Díj)  |
     |---------|---------|
-    |Name (Név)   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Régió     |Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el az erőforrás üzembe helyezéséhez. Ha használja az Azure Government, government-régiók érhetők el, ahogyan a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/).<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    |Név   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
+    |Region (Régió)     |Ebben a kiadásban az USA keleti régiója, Dél-Kelet-Ázsia és Nyugat-Európa is elérhető az erőforrás üzembe helyezéséhez. Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
-    ![Projekt és a példány részletei](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
+    ![Projekt és példány részletei](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 
-5. Válassza ki **tovább: Szállítási cím**.
+5. Válassza a **Next (tovább): szállítási címet**.
 
-    - Ha már rendelkezik egy eszközt, jelölje be a kombinált **Data Box peremhálózati eszköz**.
-    - Ha ez az új eszköz, amely a rendszer rendezése, adja meg a kapcsolattartónak a neve, vállalati, cím az eszköz szállításra, és a kapcsolattartási adatokat.
+    - Ha már rendelkezik egy eszközzel, válassza a kombinált listát, amelyhez **Data Box Edge eszközem van**.
+    - Ha ez az új eszköz, amelyet Ön megrendelt, adja meg a kapcsolattartó nevét, a vállalatot, az eszköz szállítását és a kapcsolattartási adatokat.
 
-    ![Új eszköz szállítási cím](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
+    ![Az új eszköz szállítási címe](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. Válassza ki **tovább: Felülvizsgálat + létrehozás**.
+6. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet.
 
-7. Az a **tekintse át + létrehozása** lapján, a **díjszabás**, **használati feltételeket tartalmazó fájl**, és az erőforrás részleteit. Válassza ki a kombinált **áttekintettem az adatvédelmi szabályzat feltételeit**.
+7. A **felülvizsgálat + létrehozás** lapon tekintse át a **díjszabás részleteit**, **használati feltételek**és az erőforrás részleteit. Válassza ki az **adatvédelmi feltételeket áttekintő**kombinált listát.
 
-    ![Tekintse át a Data Box Edge erőforrás részleteit és adatvédelmi szabályzata](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
+    ![A Data Box Edge erőforrás részleteinek és adatvédelmi feltételeinek áttekintése](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 
 8. Kattintson a **Létrehozás** gombra.
 
-Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeresen létrehozott és telepített, miután, értesítést kap. Válassza ki **erőforrás megnyitása**.
+Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza **az Ugrás erőforráshoz**lehetőséget.
 
-![A Data Box Edge erőforrás megnyitása](media/data-box-edge-deploy-prep/data-box-edge-resource3.png)
+![Ugrás a Data Box Edge erőforrásra](media/data-box-edge-deploy-prep/data-box-edge-resource3.png)
 
-Után a rendelés kerül, a Microsoft áttekinti a rendelést, és véglegesítéskor (e-mailen keresztül), a szállítási adatok.
+A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
 
-![Tekintse át a Data Box Edge rendelés értesítést](media/data-box-edge-deploy-prep/data-box-edge-resource4.png)
+![Értesítés a Data Box Edge sorrend felülvizsgálatához](media/data-box-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 
-Miután a Data Box Edge erőforrás helyezheti üzembe, be kell szereznie az aktiválási kulcs. Ezzel a kulccsal aktiválhatja, majd csatlakoztathatja a Data Box Edge-eszközt az erőforráshoz. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
+Miután a Data Box Edge erőforrás működik, le kell kérnie az aktiválási kulcsot. Ezzel a kulccsal aktiválhatja, majd csatlakoztathatja a Data Box Edge-eszközt az erőforráshoz. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
 
-1. Válassza ki a létrehozott erőforrást. Válassza ki **áttekintése** majd **eszközbeállítások**.
+1. Válassza ki a létrehozott erőforrást. Válassza az **Áttekintés** lehetőséget, majd válassza az **eszköz beállítása**lehetőséget.
 
-    ![Válassza ki az eszköz beállítása](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Eszköz beállításának kiválasztása](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. Az a **aktiválás** csempéről válassza **kulcs generálása** hozhat létre egy aktiválási kulcsot. Kattintson a Másolás ikonra, másolja a kulcsot, és mentheti későbbi használatra.
+2. A csempe **aktiválása** lapon válassza a **kulcs létrehozása** lehetőséget az aktiválási kulcs létrehozásához. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
 
     ![Aktiválási kulcs lekérése](media/data-box-edge-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - Az aktiválási kulcs jön létre, azt követően három nappal lejár.
-> - Ha a kulcs érvényessége lejárt, hozzon létre egy új kulcsot. A régebbi kulcs nem lesz érvényes.
+> - Az aktiválási kulcs három nappal a létrehozása után lejár.
+> - Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Data Box Edge-dzsel kapcsolatos alábbi témakörökkel ismerkedett meg:
 
@@ -166,7 +166,7 @@ Ebben az oktatóanyagban a Data Box Edge-dzsel kapcsolatos alábbi témakörökk
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
-Folytassa a következő oktatóanyaggal, megtudhatja, hogyan telepítheti a Data Box Edge.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan telepítheti Data Box Edge.
 
 > [!div class="nextstepaction"]
 > [Data Box Edge telepítése](./data-box-edge-deploy-install.md)

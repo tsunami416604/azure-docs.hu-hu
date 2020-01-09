@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 1a567e8f910ccf539038a19eef0319f21833f336
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a53128605e1f124cbd26fb679e799822b8abad29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454808"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
 
@@ -32,7 +32,7 @@ A Machine Learning webszolgáltatások Machine Learning Studio (klasszikus) hasz
 ## <a name="overview"></a>Áttekintés
 A Azure Machine Learning webszolgáltatással egy külső alkalmazás valós időben kommunikál egy Machine Learning munkafolyamat-pontozási modellel. Egy Machine Learning webszolgáltatás hívása egy külső alkalmazásnak adja vissza az előrejelzési eredményeket. Machine Learning webszolgáltatás-hívás létrehozásához át kell adnia egy, az előrejelzés központi telepítésekor létrehozott API-kulcsot. A Machine Learning webszolgáltatás a webes programozási projektek számára népszerű architektúrán alapul.
 
-A Azure Machine Learning Studio klasszikus verziója két típusú szolgáltatást tartalmaz:
+A Azure Machine Learning Studio (klasszikus) két típusú szolgáltatást tartalmaz:
 
 * Kérelem-válasz szolgáltatás (RR) – alacsony késésű, rugalmasan méretezhető szolgáltatás, amely felületet biztosít a Machine Learning Studio (klasszikus) által létrehozott és telepített állapot nélküli modellekhez.
 * Batch végrehajtási szolgáltatás (BES) – egy aszinkron szolgáltatás, amely az adatrekordok kötegét szerzi be.

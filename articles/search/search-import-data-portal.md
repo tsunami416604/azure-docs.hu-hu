@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460699"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Az Azure Cognitive Search adatimportálási varázslója
 
@@ -64,7 +64,7 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 |  Kiválasztás | Leírás |
 | ---------- | ----------- |
 | **Meglévő adatforrás** |Ha már van definiálva indexelő a keresési szolgáltatásban, lehet, hogy van egy meglévő adatforrás-definíciója, amelyet újra használhat. Az Azure Cognitive Searchban az adatforrás-objektumokat csak az indexelő használják. Az adatforrás-objektumokat programozott módon vagy az **adatimportálás** varázslóval is létrehozhatja, és igény szerint újra felhasználhatja őket.|
-| **Minták**| Az Azure Cognitive Search két beépített minta adatforrást biztosít, amelyek az oktatóanyagokban és a gyors útmutatókban használhatók: egy ingatlan SQL Database-adatbázis és egy Cosmos DB-on üzemeltetett Hotels-adatbázis. A Hotels-minta alapján történő átjáráshoz tekintse meg az [index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutatóban. |
+| **Példák**| Az Azure Cognitive Search két beépített minta adatforrást biztosít, amelyek az oktatóanyagokban és a gyors útmutatókban használhatók: egy ingatlan SQL Database-adatbázis és egy Cosmos DB-on üzemeltetett Hotels-adatbázis. A Hotels-minta alapján történő átjáráshoz tekintse meg az [index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutatóban. |
 | [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati sztring használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati sztring lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet.|
 | **Azure virtuális gépen futó SQL Server** |Adja meg a teljes szolgáltatásnevet, a felhasználói azonosítót és a jelszót, valamint az adatbázist a kapcsolatok karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Útmutatásért lásd: [SQL VM-kapcsolódás az Azure Cognitive Searchhoz](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Megadhat egy lekérdezést, amely lelapul vagy szűrheti a sorhalmazt, vagy hagyja üresen a lekérdezést. A varázslóban nincs szükség lekérdezésre.|
@@ -109,7 +109,7 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 
 1. Attribútumok beállítása annak meghatározására, hogy az adott mező hogyan használható egy indexben. 
 
-   Használja ki az időt ezzel a lépéssel, mert az attribútumok határozzák meg az index mezőinek fizikai kifejezését. Ha később módosítani kívánja az attribútumokat, még a programozott módon is, szinte mindig el kell dobnia és újra létre kell hoznia az indexet. A **kereshető** és lekérhető alapvető attribútumok [elhanyagolható hatással vannak a tárterületre](search-what-is-an-index.md#storage-implications). A szűrők engedélyezése és a javaslatok használata növelheti a tárolási követelményeket. 
+   Használja ki az időt ezzel a lépéssel, mert az attribútumok határozzák meg az index mezőinek fizikai kifejezését. Ha később módosítani kívánja az attribútumokat, még a programozott módon is, szinte mindig el kell dobnia és újra létre kell hoznia az indexet. A **kereshető** és lekérhető alapvető attribútumok [elhanyagolható hatással vannak a tárterületre](search-what-is-an-index.md#index-size). A szűrők engedélyezése és a javaslatok használata növelheti a tárolási követelményeket. 
    
    + A **kereshetővé** teszi a teljes szöveges keresést. Az ingyenes űrlapos lekérdezésekben vagy a lekérdezési kifejezésekben használt összes mezőnek rendelkeznie kell ezzel az attribútummal. A rendszer fordított indexeket hoz létre minden **kereshetőként**megjelölt mezőhöz.
 

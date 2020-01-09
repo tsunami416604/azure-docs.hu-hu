@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 5a3b6852563955bfac940073bdda7d0afa02e77f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 82ad197a1f64040dfb91aa73d7a6dfd4210f99a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365274"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Szöveges adatelemzés Azure Monitor naplókban
 Néhány Azure Monitor által összegyűjtött naplózási adat több adatot is tartalmaz egyetlen tulajdonságban. Ha ezeket az adatelemzéseket több tulajdonságba elemezze, egyszerűbbé teheti a lekérdezésekben való használatát. Az általános példa egy olyan [Egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzést gyűjt több értékkel egyetlen tulajdonságban. A különböző értékek külön tulajdonságainak létrehozásával megkeresheti és összesítheti az egyes értékeket.

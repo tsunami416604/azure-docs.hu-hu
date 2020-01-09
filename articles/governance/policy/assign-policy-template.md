@@ -3,12 +3,12 @@ title: 'Rövid útmutató: új szabályzat-hozzárendelés sablonokkal'
 description: Ebben a rövid útmutatóban egy Resource Manager-sablonnal hozhat létre szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436466"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához Resource Manager-sablon használatával
 
@@ -39,13 +39,13 @@ A sablon egy másolata:
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Név | Value (Díj) |
    |------|-------|
-   | Előfizetést | Válassza ki az Azure-előfizetését. |
+   | Előfizetés | Válassza ki az Azure-előfizetését. |
    | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. A képernyőképen az erőforráscsoport neve _mypolicyquickstart\<dátum a MMDD\>RG-ban_. |
-   | Hely | Válasszon régiót. Például az **USA középső**régiója. |
+   | Földrajzi egység | Válasszon régiót. Például az **USA középső**régiója. |
    | Szabályzat-hozzárendelés neve | Adja meg a szabályzat-hozzárendelés nevét. Ha szeretné, használhatja a szabályzat-definíció megjelenítését. Például a **felügyelt lemezeket nem használó virtuális gépek naplózása**. |
-   | RG neve | Adja meg azt az erőforráscsoport-nevet, amelyhez hozzá szeretné rendelni a szabályzatot. Ebben a rövid útmutatóban használja az alapértelmezett **[resourceGroup (). name]** értéket. a **[resourceGroup ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** egy olyan sablon-függvény, amely lekéri az erőforráscsoportot. |
+   | RG neve | Adja meg azt az erőforráscsoport-nevet, amelyhez hozzá szeretné rendelni a szabályzatot. Ebben a rövid útmutatóban használja az alapértelmezett **[resourceGroup (). name]** értéket. a **[resourceGroup ()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** egy olyan sablon-függvény, amely lekéri az erőforráscsoportot. |
    | Házirend-definíció azonosítója | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**megadásához. |
    | Elfogadom a fenti feltételeket és kikötéseket | Válassza |
 
@@ -55,7 +55,7 @@ Néhány további erőforrás:
 
 - További minták sablonjait az Azure rövid útmutató [sablonjában](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)talál.
 - A sablon hivatkozásának megtekintéséhez nyissa meg az [Azure-sablonok referenciáját](/azure/templates/microsoft.authorization/allversions).
-- A Resource Manager-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](../../azure-resource-manager/resource-group-overview.md)talál további információt.
+- A Resource Manager-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](../../azure-resource-manager/management/overview.md)talál további információt.
 - Az előfizetési szintű központi telepítés megismeréséhez tekintse meg [Az erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../../azure-resource-manager/deploy-to-subscription.md)című témakört.
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
@@ -70,7 +70,7 @@ További információt a [megfelelőség működéséről](./how-to/get-complian
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépéseket:
+A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépéseket:
 
 1. Válassza a **Megfelelőség** (vagy **Hozzárendelések**) elemet az Azure Policy oldal bal oldalán, és keresse meg a létrehozott **Felügyelt lemezeket nem használó virtuális gépek naplózása** szabályzat-hozzárendelést.
 
@@ -80,9 +80,9 @@ A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépése
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy beépített szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést. A szabályzatdefiníció ellenőrzi, hogy megfelelő a hatókörben lévő összes erőforrást, és azonosítja a nem.
+Ebben a rövid útmutatóban egy beépített szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést. A házirend-definíció ellenőrzi, hogy a hatókör összes erőforrása megfelelő-e, és azonosítja, hogy melyek nem.
 
-További információ a szabályzatok ellenőrzése, hogy az új erőforrások megfelelnek hozzárendeléséről, folytassa a következő oktatóanyagban:
+Ha többet szeretne megtudni a szabályzatok hozzárendeléséről az új erőforrások megfelelőségének ellenőrzéséhez, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
 > [Szabályzatok létrehozása és kezelése](./tutorials/create-and-manage.md)

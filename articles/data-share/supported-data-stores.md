@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 762cea6dce3e0c6be3f5e977c5f9de806ca0880e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56103ed89d2e7813fd60bc50ecca7271f5421a4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438689"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Támogatott adattárak az Azure-adatmegosztásban
 
@@ -26,26 +26,26 @@ Az alábbi táblázat az Azure-adatmegosztás támogatott adatforrásait részle
 | Adattár | Pillanatkép-alapú megosztás | Helyben történő megosztás 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ | |
-| 1\. generációs Azure Data Lake Storage |✓ | |
-| 2\. generációs Azure Data Lake Storage |✓ ||
+| Azure Data Lake Storage Gen1 |✓ | |
+| Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Database |Nyilvános előzetes verzió | |
-| Azure SQL Data Warehouse |Nyilvános előzetes verzió | |
-| Azure Data Explorer | |[Korlátozott előzetes verzió](https://aka.ms/azuredatasharepreviewsignup) |
+| Azure szinapszis Analytics (korábban Azure SQL DW) |Nyilvános előzetes verzió | |
+| Azure Adatkezelő | |[Korlátozott előzetes verzió](https://aka.ms/azuredatasharepreviewsignup) |
 
 ## <a name="data-store-support-matrix"></a>Adattár támogatási mátrixa
 
-Az Azure-beli adatmegosztás rugalmasságot biztosít az adattáraknak az adattárakban való elfogadásához. Előfordulhat például, hogy az Azure SQL Database által megosztott adatok Azure Data Lake Store Gen2, Azure SQL Database vagy Azure SQL Data Warehouseba érkeznek. Az ügyfelek kiválaszthatják, hogy a fogadott adatmegosztás konfigurálásakor milyen formátumú adatfogadásra van lehetőség. 
+Az Azure-beli adatmegosztás rugalmasságot biztosít az adattáraknak az adattárakban való elfogadásához. Előfordulhat például, hogy az Azure SQL Database által megosztott adatok Azure Data Lake Store Gen2, Azure SQL Database vagy az Azure szinapszis Analyticsbe érkeznek. Az ügyfelek kiválaszthatják, hogy a fogadott adatmegosztás konfigurálásakor milyen formátumú adatfogadásra van lehetőség. 
 
 Az alábbi táblázat a különböző kombinációkat és választásokat ismerteti, amelyeket az adatfogyasztók az adatmegosztás elfogadásakor és konfigurálásakor tartalmaznak. Az adatkészlet-hozzárendelések konfigurálásával kapcsolatos további információkért lásd: [adatkészlet-hozzárendelések konfigurálása](how-to-configure-mapping.md).
 
-|  | Azure Blob Storage | Azure SQL Data Lake Gen1 | Azure SQL Data Lake Gen2 | Azure SQL Database | Azure SQL Data Warehouse 
+|  | Azure Blob Storage | Azure SQL Data Lake Gen1 | Azure SQL Data Lake Gen2 | Azure SQL Database | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ ||✓|
-| 1\. generációs Azure Data Lake Storage |✓ | |✓|
-| 2\. generációs Azure Data Lake Storage |✓ | |✓|
+| Azure Data Lake Storage Gen1 |✓ | |✓|
+| Azure Data Lake Storage Gen2 |✓ | |✓|
 | Azure SQL Database |✓ | |✓|✓|✓|
-| Azure SQL Data Warehouse |✓ | |✓|✓|✓|
+| Azure Synapse Analytics |✓ | |✓|✓|✓|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

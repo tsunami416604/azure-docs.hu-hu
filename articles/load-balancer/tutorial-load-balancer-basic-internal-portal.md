@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: belső terheléselosztó létrehozása – Azure Portal'
 titleSuffix: Azure Load Balancer
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre belső alapszintű terheléselosztót az Azure portal használatával.
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre belső alapszintű terheléselosztó-t a Azure Portal használatával.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453522"
 ---
-# <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Oktatóanyag: Egyenleg belső bejövő forgalmának terhelés egy alapszintű load balancer az Azure Portalon
+# <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Oktatóanyag: a belső forgalom terheléselosztása egy alapszintű terheléselosztó Azure Portal
 
-Terheléselosztási a bejövő kérelmeket virtuális gépeken (VM) között osztja szét a magasabb rendelkezésre állást és méretezést biztosít. Alapszintű load balancer létrehozása, és többek között a virtuális gépek belső bejövő forgalmának terheléselosztása az Azure portal segítségével. Ez az oktatóanyag bemutatja, hogyan hozhat létre és konfiguráljon egy belső terheléselosztó háttér-kiszolgálók és hálózati erőforrások az alapszintű díjcsomagot.
+A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít a bejövő kérések virtuális gépeken (VM) keresztüli terjesztésével. A Azure Portal segítségével alapszintű terheléselosztó hozható létre, és a virtuális gépek közötti belső forgalmat is kiegyensúlyozhatja. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat belső terheléselosztó-, háttér-és hálózati erőforrásokat az alapszintű díjszabási szinten.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -32,9 +32,9 @@ Ha szeretné, hajtsa végre ezeket a lépéseket az [Azure CLI](load-balancer-ge
 
 Az oktatóanyag lépéseinek elvégzéséhez jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)címen.
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>Virtuális hálózat, a háttérkiszolgálók és a tesztelési virtuális gép létrehozása
+## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>VNet, háttér-kiszolgálók és tesztelési virtuális gép létrehozása
 
-Először hozzon létre egy virtuális hálózatot (VNet). A virtuális hálózat létrehozása két virtuális gépet a terheléselosztó teszteléséhez használja a háttér-készlet az alapszintű load balancer és a egy külső virtuális gép használatával. 
+Először hozzon létre egy virtuális hálózatot (VNet). A VNet hozzon létre két virtuális gépet az alapszintű Load Balancer háttér-készletéhez, valamint egy harmadik, a terheléselosztó teszteléséhez használni kívánt virtuális gépet. 
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -63,7 +63,7 @@ Először hozzon létre egy virtuális hálózatot (VNet). A virtuális hálóza
    
 1. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**lehetőséget. 
    
-   Győződjön meg arról, hogy a következő kijelölt:
+   Győződjön meg arról, hogy a következők vannak kiválasztva:
    - **Virtuális hálózat**: **MyVNet**
    - **Alhálózat**: **MyBackendSubnet**
    
@@ -83,34 +83,34 @@ Először hozzon létre egy virtuális hálózatot (VNet). A virtuális hálóza
 
 ## <a name="create-a-basic-load-balancer"></a>Alapszintű terheléselosztó létrehozása
 
-Alapszintű belső load balancer létrehozása a portál használatával. A név és IP-címet hoz létre automatikusan megtörténik, a terheléselosztó előtérbeli.
+Hozzon létre egy alapszintű belső terheléselosztót a portál használatával. A létrehozott név és IP-cím automatikusan a terheléselosztó előlapján lesz konfigurálva.
 
 1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
    
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value (Díj)                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegrouplb erőforráscsoportban* szöveget a szövegmezőbe.|
     | Név                   | *myLoadBalancer*                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Típus          | Válassza a **belső**lehetőséget.                                        |
-    | SKU           | Válassza az **Alapszintű** lehetőséget.                          |
+    | Region (Régió)         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
+    | Type (Típus)          | Válassza a **belső**lehetőséget.                                        |
+    | SKU (Cikkszám)           | Válassza az **Alapszintű** lehetőséget.                          |
     | Virtuális hálózat           | Válassza a *MyVNet*lehetőséget.                          |    
-    | IP-cím hozzárendelése              | Válassza a **statikus**lehetőséget.   |
+    | IP-cím hozzárendelése              | Válassza a **Statikus** lehetőséget.   |
     | Magánhálózati IP-cím|Írjon be egy olyan címeket, amely a virtuális hálózat és az alhálózat címterület területén található, például *10.3.0.7*.  |
 
 3. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás**gombra. 
    
 
-## <a name="create-basic-load-balancer-resources"></a>Alapszintű load balancer-erőforrások létrehozása
+## <a name="create-basic-load-balancer-resources"></a>Alapszintű Load Balancer-erőforrások létrehozása
 
 Ebben a szakaszban a terheléselosztó beállításait konfigurálja egy háttérbeli címkészlet és egy állapot-mintavétel számára, és meg kell adnia a terheléselosztó szabályait.
 
 ### <a name="create-a-back-end-address-pool"></a>Háttércímkészlet létrehozása
 
-A terheléselosztó osztja el a forgalmat a virtuális gépekhez, használja a háttér címkészletet. A háttér-címkészletet a terheléselosztóhoz csatlakozó virtuális hálózati adaptereket (NIC) IP-címét tartalmazza. 
+A forgalom a virtuális gépekre való terjesztéséhez a terheléselosztó egy háttérbeli címkészletet használ. A háttérbeli címkészlet tartalmazza a terheléselosztó számára csatlakozó virtuális hálózati adapterek (NIC-EK) IP-címeit. 
 
 **VM1-t és VM2-t tartalmazó háttér-címkészlet létrehozása:**
 
@@ -124,7 +124,7 @@ A terheléselosztó osztja el a forgalmat a virtuális gépekhez, használja a h
    - **Társított**: legördülő lista, és válassza a **rendelkezésre állási csoport**lehetőséget.
    - **Rendelkezésre állási csoport**: válassza a **MyAvailabilitySet**lehetőséget.
    
-1. Válassza **a cél hálózati IP-konfiguráció hozzáadása**lehetőséget. 
+1. Válassza a **Célhálózati IP-konfiguráció hozzáadása** elemet. 
    1. Adja hozzá a **MyVM1** és a **MyVM2** a háttér-készlethez.
    2. Miután hozzáadta az egyes gépeket, legördülő menüből válassza ki a **hálózati IP-konfigurációt**. 
    
@@ -133,13 +133,13 @@ A terheléselosztó osztja el a forgalmat a virtuális gépekhez, használja a h
    
 1. Kattintson az **OK** gombra.
    
-   ![Adja hozzá a háttér-címkészletet](./media/tutorial-load-balancer-basic-internal-portal/3-load-balancer-backend-02.png)
+   ![A háttérbeli Címkészlet hozzáadása](./media/tutorial-load-balancer-basic-internal-portal/3-load-balancer-backend-02.png)
    
 1. A **háttérbeli készletek** lapon bontsa ki a **MyBackendPool** elemet, és győződjön meg arról, hogy mind a **VM1** , mind a **VM2** szerepel.
 
 ### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
-Ahhoz, hogy a load balancer monitorozhassa a virtuális gép állapotát, állapotmintát használni. Az állapotminta dinamikusan hozzáadja a virtuális gépeket a terheléselosztó rotációjához vagy eltávolítja belőle azokat, az állapotellenőrzésekre adott válaszuk alapján. 
+Ha engedélyezni szeretné a terheléselosztó számára a virtuális gép állapotának figyelését, az állapot-mintavételt kell használnia. Az állapotminta dinamikusan hozzáadja a virtuális gépeket a terheléselosztó rotációjához vagy eltávolítja belőle azokat, az állapotellenőrzésekre adott válaszuk alapján. 
 
 **Állapot-mintavétel létrehozása a virtuális gépek állapotának figyeléséhez:**
 
@@ -152,9 +152,9 @@ Ahhoz, hogy a load balancer monitorozhassa a virtuális gép állapotát, állap
    - **Név**: írja be a *MyHealthProbe*nevet.
    - **Protokoll**: legördülő menüből válassza a **http**lehetőséget. 
    - **Port**: Type *80*. 
-   - **Elérési út**: fogadja */* az alapértelmezett URI-t. Ez az érték lecserélheti bármely más URI-t. 
-   - **Időköz**: Type *15*. Az időköz a mintavételi kísérletek között eltelt másodpercek száma.
-   - Nem megfelelő **állapot küszöbértéke**: Type *2*. Ez az érték az egymást követő mintavételi hiba, amely a virtuális gép nem megfelelő állapotúnak számít még azelőtt számát jelenti.
+   - **Elérési út**: fogadja */* az alapértelmezett URI-t. Ezt az értéket bármely más URI azonosítóval helyettesítheti. 
+   - **Időköz**: Type *15*. Az intervallum a mintavételi kísérletek között eltelt másodpercek száma.
+   - Nem megfelelő **állapot küszöbértéke**: Type *2*. Ez az érték azon egymást követő mintavételi hibák száma, amelyek a virtuális gép nem megfelelő állapotának tekintendők.
    
 1. Kattintson az **OK** gombra.
    
@@ -162,7 +162,7 @@ Ahhoz, hogy a load balancer monitorozhassa a virtuális gép állapotát, állap
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A terheléselosztási szabály megadja, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. A szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalmat, a háttérbeli IP-címkészletet, és a forgalom és a szükséges forrás és cél portok. 
+A terheléselosztási szabály megadja, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. A szabály meghatározza a bejövő forgalom előtér-IP-konfigurációját, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás-és célport eléréséhez. 
 
 A **MyLoadBalancerRule** nevű terheléselosztó-szabály a 80-es portot figyeli az előtér- **LoadBalancerFrontEnd**. A szabály a 80-es porton is továbbítja a hálózati forgalmat a háttérbeli címkészlet **MyBackendPool**. 
 
@@ -184,17 +184,17 @@ A **MyLoadBalancerRule** nevű terheléselosztó-szabály a 80-es portot figyeli
    
 1. Kattintson az **OK** gombra.
    
-   ![Adjon hozzá egy terheléselosztó-szabályt](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
+   ![Terheléselosztási szabály hozzáadása](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-A háttér-kiszolgálón telepíti az Internet Information Services (IIS), majd MyTestVM a magánhálózati IP-címére a terheléselosztó teszteléséhez. Minden egyes háttérbeli virtuális gép egy másik verzióját az IIS alapértelmezett weblapjára szolgálja ki, így láthatja a kérések a két virtuális gép között osztja el a terheléselosztó.
+Telepítse a Internet Information Services (IIS) szolgáltatást a háttér-kiszolgálókon, majd a MyTestVM használatával tesztelje a terheléselosztó saját IP-címével. Minden háttérbeli virtuális gép az alapértelmezett IIS-weblap egy másik verzióját szolgálja ki, így láthatja, hogy a terheléselosztó a két virtuális gép között osztja el a kérelmeket.
 
 A portálon, a MyLoadBalancer **Áttekintés** lapján keressemeg az IP-címét a **magánhálózati IP-cím**alatt. Vigye a kurzort a címek fölé, és válassza a **Másolás** ikont a másoláshoz. Ebben a példában ez a **10.3.0.7**. 
 
-### <a name="connect-to-the-vms-with-rdp"></a>Csatlakozhat a virtuális gépekhez RDP-vel
+### <a name="connect-to-the-vms-with-rdp"></a>Kapcsolódás a virtuális gépekhez RDP használatával
 
-Először csatlakozzon a három virtuális gép a távoli asztali (RDP). 
+Először kapcsolódjon mindhárom virtuális géphez Távoli asztal (RDP) használatával. 
 
 >[!NOTE]
 >Alapértelmezés szerint a virtuális gépeken már nyitva van az **RDP** (távoli asztal) port a távoli asztal elérésének engedélyezéséhez. 
@@ -213,11 +213,11 @@ Először csatlakozzon a három virtuális gép a távoli asztali (RDP).
    
 1. Válaszoljon az **Igen** értékre bármelyik tanúsítványra. 
    
-   A virtuális gép asztalához egy új ablakban nyílik meg. 
+   A VM Desktop új ablakban nyílik meg. 
 
-### <a name="install-iis-and-replace-the-default-iis-page-on-the-back-end-vms"></a>Telepítse az IIS szolgáltatást, és cserélje le az alapértelmezett IIS-oldal a háttérbeli virtuális gépeken
+### <a name="install-iis-and-replace-the-default-iis-page-on-the-back-end-vms"></a>Telepítse az IIS-t, és cserélje le az alapértelmezett IIS-lapot a háttérbeli virtuális gépekre
 
-A háttér-kiszolgálókon PowerShell használatával telepítse az IIS és az IIS alapértelmezett weblapjára cserélje le a testre szabott lapot.
+Az egyes háttér-kiszolgálókon a PowerShell használatával telepítse az IIS-t, és cserélje le az alapértelmezett IIS-weblapot testreszabott lapra.
 
 >[!NOTE]
 >Az IIS telepítéséhez használhatja a **Kiszolgálókezelő** **szerepkörök és szolgáltatások hozzáadása varázslóját** is. 
@@ -226,7 +226,7 @@ A háttér-kiszolgálókon PowerShell használatával telepítse az IIS és az I
 
 1. A MyVM1 és a MyVM2 alkalmazásban indítsa el a **Windows PowerShellt** a **Start** menüből. 
 
-2. Futtassa az IIS telepítéséhez, és cserélje le az IIS alapértelmezett weblapjára a következő parancsokat:
+2. A következő parancsok futtatásával telepítse az IIS-t, és cserélje le az alapértelmezett IIS-weblapot:
    
    ```powershell-interactive
     # Install IIS
@@ -246,9 +246,9 @@ A háttér-kiszolgálókon PowerShell használatával telepítse az IIS és az I
    
 1. Illessze be vagy írja be a terheléselosztó magánhálózati IP-címét (*10.3.0.7*) a böngésző címsorába. 
    
-   A testre szabott IIS kiszolgáló alapértelmezett weblap jelenik meg a böngészőben. Az üzenet beolvassa **"Helló világ!" alkalmazás a MyVM1-ból**, vagy **"Helló világ!" alkalmazás a MyVM2**.
+   Megjelenik a testreszabott IIS-webkiszolgáló alapértelmezett lapja a böngészőben. Az üzenet beolvassa **"Helló világ!" alkalmazás a MyVM1-ból**, vagy **"Helló világ!" alkalmazás a MyVM2**.
    
-1. Frissítse a böngészőt a terheléselosztót, virtuális gép között osztja el a forgalmat. Szükség lehet törölni a böngésző gyorsítótárát kísérletek között.
+1. Frissítse a böngészőt, és tekintse meg, hogy a terheléselosztó osztja el a forgalmat a virtuális gépek között. Előfordulhat, hogy a próbálkozások között törölnie kell a böngésző gyorsítótárát is.
 
    Előfordulhat, hogy a **MyVM1** lap megjelenik, és más esetekben a **MyVM2** oldal jelenik meg, mivel a terheléselosztó az egyes háttérbeli virtuális gépekhez továbbítja a kéréseket. 
 
@@ -258,11 +258,11 @@ A háttér-kiszolgálókon PowerShell használatával telepítse az IIS és az I
 
 A terheléselosztó és az összes kapcsolódó erőforrás törléséhez, ha már nincs szüksége rájuk, nyissa meg a **myresourcegrouplb erőforráscsoportban** erőforráscsoportot, és válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy Basic szintű belső load balancer. Létrehozott és konfigurált hálózati erőforrásokhoz, háttér-kiszolgálók, az állapotfigyelő mintavételező és a terheléselosztó szabályainak. Az IIS telepítve a háttérbeli virtuális géppel, és a tesztelési virtuális gép használja a terheléselosztó teszteléséhez a böngészőben. 
+Ebben az oktatóanyagban létrehozott egy alapszintű belső Load balancert. Létrehozta és konfigurálta a hálózati erőforrásokat, a háttér-kiszolgálókat, az állapot-mintavételt és a terheléselosztó szabályait. Telepítette az IIS-t a háttérbeli virtuális gépeken, és egy tesztelési virtuális gépet használ a terheléselosztó teszteléséhez a böngészőben. 
 
-Ezután megtudhatja, hogyan virtuális gépek terheléselosztása rendelkezésre állási zónák között.
+Ezután megismerheti a virtuális gépek terheléselosztását a rendelkezésre állási zónák között.
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

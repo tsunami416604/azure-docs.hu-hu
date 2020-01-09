@@ -1,5 +1,6 @@
 ---
-title: Az Azure API Management használata belső virtuális hálózatokkal | Microsoft Docs
+title: Az Azure API Management használata belső virtuális hálózatokkal
+titleSuffix: Azure API Management
 description: Ismerje meg, hogyan állíthatja be és konfigurálhatja az Azure API Managementt egy belső virtuális hálózaton
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 29c86363842299870179b35a0466d2e44d2e56e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430600"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Az Azure API Management szolgáltatás használata belső virtuális hálózattal
 Az Azure Virtual Networks használatával az Azure API Management képes az interneten keresztül nem elérhető API-k kezelésére. Számos VPN-technológia érhető el a kapcsolat létrehozásához. API Management a virtuális hálózaton belül két fő módban is üzembe helyezhető:
@@ -54,7 +55,7 @@ A belső virtuális hálózat API Management szolgáltatása a [belső terhelés
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Virtuális hálózati kapcsolatok engedélyezése a Azure Portal használatával
 
-1. Tallózással keresse meg az Azure API Management- [](https://portal.azure.com/)példányát a Azure Portalban.
+1. Tallózással keresse meg az Azure API Management-példányát a [Azure Portalban](https://portal.azure.com/).
 2. Válassza ki a **Virtuális hálózatot**.
 3. Konfigurálja a virtuális hálózaton belül telepítendő API Management példányt.
 
@@ -62,7 +63,7 @@ A belső virtuális hálózat API Management szolgáltatása a [belső terhelés
 
 4. Kattintson a **Mentés** gombra.
 
-Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látnia kell a API Management szolgáltatás **magánhálózati** virtuális IP-címét és **nyilvános** virtuális IP-címét. A **magánhálózati** virtuális IP-cím egy elosztott terhelésű IP-cím a API Management delegált alhálózaton `gateway`belül `portal`, `management` `scm` amelyen keresztül a végpontok elérhetők. A **nyilvános** virtuális IP-cím **csak** a 3443-es porton `management` keresztüli végpontra irányuló vezérlési sík forgalmára szolgál, és a [ApiManagement][ServiceTags] servicetag is zárolható.
+Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látnia kell a API Management szolgáltatás **magánhálózati** virtuális IP-címét és **nyilvános** virtuális IP-címét. A **magánhálózati** virtuális IP-cím egy elosztott TERHELÉSű IP-cím a API Management delegált alhálózaton belül, amelyen `gateway`, `portal`, `management` és `scm` végpontok érhetők el. A **nyilvános** virtuális IP-cím **csak** a 3443-es porton keresztüli végpontra irányuló vezérlési sík `management` forgalmára szolgál, és a [ApiManagement][ServiceTags] servicetag is zárolható.
 
 ![Irányítópult API Management konfigurált belső virtuális hálózattal][api-management-internal-vnet-dashboard]
 
@@ -75,9 +76,9 @@ Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látni
 
 A virtuális hálózati kapcsolatot a PowerShell-parancsmagok használatával is engedélyezheti.
 
-* API Management szolgáltatás létrehozása virtuális hálózaton belül: A [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) parancsmag használatával hozzon létre egy Azure API Management szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy a belső virtuális hálózat típusát használja.
+* API Management szolgáltatás létrehozása virtuális hálózaton belül: a [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) parancsmag használatával hozzon létre egy Azure API Management-szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy a belső virtuális hálózat típusát használja.
 
-* Egy API Management szolgáltatás meglévő központi telepítésének frissítése egy virtuális hálózaton belül: Az [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) parancsmag használatával helyezzen át egy meglévő API Management szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy a belső virtuális hálózat típusát használja.
+* Egy API Management szolgáltatás meglévő központi telepítésének frissítése egy virtuális hálózaton belül: az [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) parancsmag használatával helyezzen át egy meglévő API Management-szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy a belső virtuális hálózat típusát használja.
 
 ## <a name="apim-dns-configuration"></a>DNS-konfiguráció
 Ha API Management külső virtuális hálózati módban van, a DNS-t az Azure felügyeli. Belső virtuális hálózati módban a saját útválasztását kell kezelnie.
@@ -108,7 +109,7 @@ Ezen API Management szolgáltatás-végpontok eléréséhez létrehozhat egy vir
 
    * 10.1.0.5 contosointernalvnet.management.azure-api.net
 
-   * 10.1.0.5     contosointernalvnet.scm.azure-api.net
+   * 10.1.0.5 contosointernalvnet.scm.azure-api.net
 
 Ezután az összes szolgáltatás-végpontot elérheti a létrehozott virtuális gépről.
 Ha egy virtuális hálózatban egyéni DNS-kiszolgálót használ, létrehozhat egy DNS-rekordot, és elérheti ezeket a végpontokat a virtuális hálózat bármely pontjáról.
@@ -124,7 +125,7 @@ Ha egy virtuális hálózatban egyéni DNS-kiszolgálót használ, létrehozhat 
 ## <a name="routing"></a> Útválasztás
 
 * Az alhálózat tartományának elosztott terhelésű *magánhálózati* virtuális IP-címe le lesz foglalva, és a virtuális hálózatról a API Management szolgáltatási végpontok elérésére szolgál. Ez a *magánhálózati* IP-cím a Azure Portal szolgáltatásának áttekintés paneljén található. Ezt a címeket regisztrálni kell a virtuális hálózat által használt DNS-kiszolgálókkal.
-* Egy elosztott terhelésű *nyilvános* IP-cím (VIP) is le lesz foglalva, hogy hozzáférést biztosítson a felügyeleti szolgáltatási végponthoz a 3443-es porton keresztül. Ez a *nyilvános* IP-cím a Azure Portal szolgáltatásának áttekintés paneljén található. A *nyilvános* IP-címet csak a 3443-es porton keresztül `management` a végpont felé irányuló vezérlési síkon lehet használni, és zárolható a [ApiManagement][ServiceTags] servicetag.
+* Egy elosztott terhelésű *nyilvános* IP-cím (VIP) is le lesz foglalva, hogy hozzáférést biztosítson a felügyeleti szolgáltatási végponthoz a 3443-es porton keresztül. Ez a *nyilvános* IP-cím a Azure Portal szolgáltatásának áttekintés paneljén található. A *nyilvános* IP-címet csak a 3443-as porton keresztül a `management` végpontra irányuló vezérlési síkon lehet használni, és a [ApiManagement][ServiceTags] servicetag is zárolható.
 * Az alhálózat IP-tartományból (DIP) származó IP-címeket a szolgáltatás minden virtuális géphez hozzárendeli a rendszer, és a virtuális hálózaton belüli erőforrásokhoz fér hozzá. A virtuális hálózaton kívüli erőforrások eléréséhez nyilvános IP-címet (VIP) kell használni. Ha az IP-korlátozási listát a virtuális hálózaton belüli erőforrások védelmére használja, akkor a API Management szolgáltatást futtató alhálózat teljes tartományát meg kell adni a szolgáltatás elérésének engedélyezéséhez vagy korlátozásához.
 * Az elosztott terhelésű nyilvános és magánhálózati IP-címek a Azure Portal áttekintés paneljén találhatók.
 * A nyilvános és a privát hozzáféréshez hozzárendelt IP-címek megváltozhatnak, ha a szolgáltatás el lett távolítva, majd visszakerül a virtuális hálózatba. Ha ez történik, előfordulhat, hogy frissítenie kell a DNS-regisztrációkat, az útválasztási szabályokat és az IP-korlátozási listát a virtuális hálózaton belül.

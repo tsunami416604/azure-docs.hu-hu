@@ -1,6 +1,6 @@
 ---
-title: Rögzítése az események streamelése az Azure portal – Azure Event Hubs használatával |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan lehet engedélyezni az Azure Portalon keresztül az Azure Event Hubs streamelési események rögzítése.
+title: Event Hubs – folyamatos átviteli események rögzítése Azure Portal használatával
+description: Ez a cikk azt ismerteti, hogyan engedélyezhető az események rögzítése az Azure Event Hubs az Azure Portal használatával.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 18dea8e8e4cfcabec63e35dd302f6a5259721a8a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 267f7c47d101406463378ad12c295ace80aecb7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437236"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubson keresztül továbbított események rögzítésének engedélyezése
 
@@ -36,7 +36,7 @@ Eseményközpont létrehozásakor a **Be** gombra kattintva engedélyezheti a Ca
 
 Az időkeret alapértelmezett értéke 5 perc. A minimális értéke 1, a maximális 15. A **Méret** ablak 10–500 MB tartománnyal rendelkezik.
 
-![Ez alatt az időszak a rögzítéshez][1]
+![Rögzítési idő ablaka][1]
 
 > [!NOTE]
 > Engedélyezheti vagy letilthatja az üres fájlok kibocsátását, ha a rögzítési időszak során nem történik esemény. 
@@ -58,7 +58,7 @@ Az adatok Azure Data Lake Store-ban történő rögzítéséhez létre kell hozn
 2. Az **Eseményközpont létrehozása** portál oldalán válassza az **Azure Data Lake Store** lehetőséget a **Capture-szolgáltató** mezőben.
 3. A **Data Lake Store kiválasztása** mezőben adja meg a korábban létrehozott Data Lake Store-fiókot, a **Data Lake elérési útja** mezőben pedig a létrehozott adatmappa elérési útját.
 
-    ![Válassza ki a Data Lake Storage-fiók][3]
+    ![Data Lake Storage fiók kiválasztása][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>A Capture hozzáadása vagy konfigurálása egy meglévő eseményközponton
 
@@ -66,18 +66,18 @@ A Capture-t olyan meglévő eseményközpontokon konfigurálhatja, amelyek az Ev
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![Az Azure Blob-tároló konfigurálása][2]
+![Az Azure Blob Storage konfigurálása][2]
 
-### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+### <a name="azure-data-lake-store"></a>Azure Data Lake adattár
 
-![Az Azure Data Lake Storage konfigurálása][4]
+![Azure Data Lake Storage konfigurálása][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Event Hubs rögzítésről: [Event Hubs rögzítés áttekintése][capture-overview].
 - Az Azure Resource Manager-sablonok használatával is konfigurálhatja az Event Hubs Capture-t. További információkért lásd: [Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).

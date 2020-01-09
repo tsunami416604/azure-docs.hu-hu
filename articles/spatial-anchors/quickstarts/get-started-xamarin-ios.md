@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d2e1612804c78e3436b776cdffea7e19bc2925fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465148"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rövid útmutató: Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -34,7 +34,8 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 - MacOS rendszerű, magas Sierra (10,13) vagy újabb rendszert futtató Mac-kiszolgáló:
   - Az [App Store áruházból](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)telepített Xcode és iOS SDK legújabb verziója.
   - A <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 +</a>verziójának naprakész verziója.
-  - <a href="https://git-scm.com/download/mac" target="_blank">Git macOS rendszerhez</a>
+  - <a href="https://git-scm.com/download/mac" target="_blank">Git MacOS rendszerhez</a>.
+  - <a href="https://git-lfs.github.com/">Git-LFS</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -48,7 +49,7 @@ Nyissa meg `Xamarin/SampleXamarin.sln` a Visual Studióban.
 
 A következő lépés az alkalmazás konfigurálása a fiók azonosítójának és a fiók kulcsának használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
-Nyissa meg `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
+Nyissa meg a `Xamarin/SampleXamarin.Common/AccountDetails.cs` alkalmazást.
 
 Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me`t a fiók kulcsára.
 

@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0a6d7ce8f1f6b81c3dbae3d41842345be5d2e551
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465114"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a JavaScripthez
 
@@ -29,7 +29,7 @@ A JavaScripthez készült Azure Blob Storage ügyféloldali kódtára a követke
 * A blob letöltése a helyi számítógépre
 * Tároló törlése
 
-[API-referenciák dokumentációja](/javascript/api/@azure/storage-blob) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0) | [minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+[API-referenciák dokumentációja](/javascript/api/@azure/storage-blob) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob) | [minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -114,11 +114,11 @@ A projekt könyvtárából:
 
 1. Mentse az új fájlt *blob-Quickstart-v12. js* néven a *blob-Gyorsindítás-V12* könyvtárba.
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellnek vagy definíciónak, például szöveges vagy bináris adatoknak. A blob Storage háromféle típusú erőforrást kínál:
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A blob Storage háromféle típusú erőforrást kínál:
 
 * A Storage-fiók
 * Egy tároló a Storage-fiókban
@@ -134,7 +134,7 @@ Használja az alábbi JavaScript-osztályokat a következő erőforrásokkal val
 * [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): a `ContainerClient` osztály lehetővé teszi az Azure Storage-tárolók és a Blobok kezelését.
 * [BlobClient](/javascript/api/@azure/storage-blob/blobclient): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő műveleteket az Azure Blob Storage ügyféloldali kódtára használatával a JavaScripthez:
 
@@ -154,11 +154,11 @@ Adja hozzá ezt a kódot a `main` függvényhez:
 ```javascript
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable is
-// created after the application is launched in a console or with Visual Studio,
-// the shell or application needs to be closed and reloaded to take the
-// environment variable into account.
-const CONNECT_STR = process.env.CONNECT_STR;
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
+// environment variable is created after the application is launched in a
+// console or with Visual Studio, the shell or application needs to be closed
+// and reloaded to take the environment variable into account.
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
 ### <a name="create-a-container"></a>Tároló létrehozása
@@ -174,7 +174,7 @@ Adja hozzá ezt a kódot a `main` függvény végéhez:
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(CONNECT_STR);
+const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -308,16 +308,16 @@ Deleting container...
 Done
 ```
 
-Lépjen be a hibakeresőbe, és vizsgálja meg a Azure Portal a folyamat során. Ellenőrizze, hogy a tároló létrehozása folyamatban van-e. A blobot megnyithatja a tárolón belül, és megtekintheti a tartalmat.
+Lépjen be a hibakeresőbe, és vizsgálja meg a [Azure Portal](https://portal.azure.com) a folyamat során. Ellenőrizze, hogy a tároló létrehozása folyamatban van-e. A blobot megnyithatja a tárolón belül, és megtekintheti a tartalmat.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a JavaScript használatával.
 
-A blob Storage-beli minták alkalmazásainak megtekintéséhez folytassa a következőket:
+Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 JavaScript-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+> [Azure a JavaScripthez – dokumentáció](/azure/javascript/)
 
-* További információt a [javascripthez készült Azure SDK](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md)-ban talál.
-* Az oktatóanyagok, minták, gyors indítás és egyéb dokumentációk az [Azure SDK for JavaScript dokumentációjában találhatók](/azure/javascript/)meg.
+* További információért lásd az [Azure Blob Storage ügyféloldali kódtárat a javascripthez](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)című témakört.
+* Ha szeretné megtekinteni a blob Storage-beli példákat, folytassa az [Azure Blob Storage ügyféloldali kódtár V12 JavaScript-mintáit](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).

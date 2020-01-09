@@ -1,5 +1,5 @@
 ---
-title: Azure AD AngularJS egyoldalas alkalmazás létrehozása bejelentkezési & kijelentkezéshez | Microsoft Docs
+title: Azure AD AngularJS egyoldalas alkalmazás létrehozása bejelentkezéshez/kijelentkezéshez | Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre olyan AngularJS egyoldalas alkalmazást, amely az Azure AD-t integrálja & kijelentkezési & meghívja az Azure AD-védelemmel ellátott API-kat a OAuth használatával.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa82985fcde59c4cfd8d4bec75ae77643f7da448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424096"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rövid útmutató: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez
 
@@ -83,7 +83,7 @@ Kezdje az adal.js a TodoSPA projekthez történő hozzáadásával, a csomagkeze
 
 1. Töltse le az [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) szkriptet, és adja hozzá az `App/Scripts/` projektkönyvtárhoz.
 2. Töltse le az [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) szkriptet, és adja hozzá az `App/Scripts/` projektkönyvtárhoz.
-3. Az egyes szkripteket az `index.html` `</body>` elemének a vége előtt töltse be:
+3. Az egyes szkripteket az `index.html``</body>` elemének a vége előtt töltse be:
 
     ```js
     ...

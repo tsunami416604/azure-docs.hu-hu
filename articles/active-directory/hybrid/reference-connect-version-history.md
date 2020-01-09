@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422356"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: verziók kiadási előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -38,9 +38,20 @@ Letöltés| [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?Link
 Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik meg a másodlagos kiadási szám pozíciójában, ahogy az "1.3. X. 0" értéknél – ez azt jelenti, hogy a jelen dokumentumban szereplő kibocsátási megjegyzések az "1,3." kezdetű összes verzióra érvényesek. Amint elvégezte a kiadási folyamat véglegesítését, a kiadás verziószámát a rendszer frissíti a legújabb verzióra, és a kiadási állapot frissülni fog a "kiadás a letöltéshez és az automatikus frissítéshez".
 Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kapcsolatos további információért kövesse ezt a hivatkozást
 
+>[!IMPORTANT]
+> 2020 november 1-től kezdődően megkezdjük egy elavult folyamat megvalósítását, amelynek során a több mint 18 hónappal ezelőtt kiadott Azure AD Connect verziók elavultak lesznek. Ekkor megkezdjük ezt a folyamatot, ha elavulttá válik a (4/12/2018-es verzióban kiadott) 1.1.751.0-verzióval rendelkező Azure AD Connect összes kiadása, és az új verziók kiadásakor a rendszer minden alkalommal kiértékeli Azure AD Connect régebbi verzióinak elavult verzióját.
+>
+> Győződjön meg arról, hogy a Azure AD Connect legújabb verzióját futtatja, hogy optimális támogatási élményt kapjon. 
+>
+>Ha a Azure AD Connect elavult verzióját futtatja, előfordulhat, hogy nem rendelkezik a legújabb biztonsági javításokkal, a teljesítménnyel kapcsolatos javításokkal, a hibaelhárítással és a diagnosztikai eszközökkel, valamint a szolgáltatás fejlesztésével, és ha támogatásra van szüksége, előfordulhat, hogy nem tudjuk biztosítani a a szervezet számára szükséges szolgáltatások.
+>
+>Ha engedélyezte a Azure AD Connect for Sync szolgáltatást, hamarosan automatikusan megkezdi az olyan állapotadatok fogadását, amelyek figyelmeztetik a közelgő elavult verziókra, amikor az egyik régebbi verziót futtatja.
+>
+>[Ebben a cikkben](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
+
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Kiadás állapota
-12/6/2019: kiadás letölthető. Nem érhető el az automatikus frissítéssel.
+12/9/2019: kiadás letölthető. Nem érhető el az automatikus frissítéssel.
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 - Frissítettük a jelszó-kivonatok szinkronizálását a Azure AD Domain Services számára a Kerberos-kivonatok kitöltésének megfelelő kiszámításához.  Ez a HRE és a Azure AD Domain Services közötti jelszó-szinkronizálás során javítja a teljesítményt.
 - A megbízható munkamenetek támogatása a hitelesítési ügynök és a Service Bus között.
@@ -49,7 +60,7 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 - Felvettük a lehetőséget arra, hogy konkrét ügynököt célozjon meg a felhőből az ügynök kapcsolatának teszteléséhez.
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
-- A kiadási 1.4.18.0 hibát észlelt, ha a DSSO PowerShell-parancsmagja a PS futtatásakor megadott rendszergazdai hitelesítő adatok helyett a bejelentkezési Windows hitelesítő adatokat használta. Ennek eredményeképpen a DSSO nem engedélyezhető több erdőben a AADConnect felhasználói felületén keresztül. 
+- A kiadási 1.4.18.0 olyan hibát észlelt, amelyben a DSSO PowerShell-parancsmagja használta a bejelentkezési Windows hitelesítő adatokat a PS futtatásakor megadott rendszergazdai hitelesítő adatok helyett. Ennek eredményeképpen a DSSO nem engedélyezhető több erdőben a AADConnect felhasználói felületén keresztül. 
 - Javítás történt a DSSO egyidejű engedélyezéséhez az összes erdőben a AADConnect felhasználói felületén keresztül
 
 ## <a name="14320"></a>1.4.32.0

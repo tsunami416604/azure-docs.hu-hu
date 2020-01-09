@@ -1,21 +1,21 @@
 ---
-title: Az AWS és a használati jelentés integrációjának beállítása és konfigurálása Azure Cost Management
+title: AWS-integráció beállítása Azure Cost Management
 description: Ez a cikk bemutatja, hogyan állíthatja be és konfigurálja az AWS-t és a használati jelentéseket a Azure Cost Management-integrációval.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/15/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 77bc7772e1d9b8144199c865a8d82f818d5e1963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444610"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Az AWS és a használati jelentés integrálásának beállítása és konfigurálása
 
@@ -68,7 +68,7 @@ Az új szerepkör létrehozása varázsló használata:
 4. A következő oldalon válasszon **egy másik AWS-fiókot**.
 5. A **fiók azonosítója**mezőben adja meg a **432263259397**értéket.
 6. A **Beállítások**területen jelölje be a **külső azonosító megkövetelése (ajánlott eljárás, ha egy harmadik fél ezt a szerepkört fogja feltételezni)** .
-7. A **külső azonosító**mezőben adja meg a külső azonosítót. A külső azonosító az AWS szerepkör és a Azure Cost Management közötti közös PIN-kód. Ugyanez a külső azonosító is használatban van a Cost Management **új összekötő** lapján. Egy külső azonosító például a _Companyname1234567890123_hasonlít.
+7. A **külső azonosító**mezőben adja meg azt a külső azonosítót, amely az AWS szerepkör és a Azure Cost Management közötti közös PIN-kód. Ugyanez a külső azonosító is használatban van a Cost Management **új összekötő** lapján. A Microsoft azt javasolja, hogy erős PIN-kódot használjon a külső azonosító megadásakor.
 
     > [!NOTE]
     > Ne módosítsa az **MFA megkövetelése**beállítást. Továbbra is törölni kell.
@@ -150,7 +150,7 @@ A szabályzat JSON-nek az alábbi példához hasonlónak kell lennie. Cserélje 
 
 Az alábbi információk használatával AWS-összekötőt hozhat létre, és megkezdheti az AWS-költségek figyelését:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Lépjen **Cost Management + számlázási** > **Cost Management**.
 3. A **Beállítások**területen válassza a **Cloud Connectors (előzetes verzió)** lehetőséget.  
     ![például a Cloud Connectors (előzetes verzió) beállítást](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)).

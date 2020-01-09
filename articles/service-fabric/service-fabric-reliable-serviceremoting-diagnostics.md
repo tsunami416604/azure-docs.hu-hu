@@ -1,25 +1,16 @@
 ---
-title: Azure ServiceFabric diagnosztika és monitorozás | Microsoft Docs
+title: Azure ServiceFabric diagnosztika és monitorozás
 description: Ez a cikk a Service Fabric megbízható ServiceRemoting futtatókörnyezet (például az általa kibocsátott teljesítményszámlálók) Teljesítményfigyelő funkcióit ismerteti.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426699"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
 A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.

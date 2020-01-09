@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460717"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
@@ -55,11 +55,14 @@ Néhány előre definiált elemző, mint például a **minta** vagy a **Leállí
 
 3. A **indexAnalyzer** és a **searchAnalyzer** mező paramétereinek használatával **különböző elemzőket** is beállíthat az indexeléshez és lekérdezésekhez. Az adatok előkészítéséhez és lekéréséhez különböző elemzőket kellene használni, ha az egyik tevékenységhez szükséges egy adott átalakítás, amelyet a másik nem igényel.
 
+> [!NOTE]
+> Egy adott mezőnél nem lehet más [nyelvi elemzőt](index-add-language-analyzers.md) használni, mint a lekérdezés időpontjában. Ez a képesség [Egyéni elemzők](index-add-custom-analyzers.md)számára van fenntartva. Ezért ha a **searchAnalyzer** vagy a **indexAnalyzer** tulajdonságot a Language Analyzer nevére próbálja beállítani, a REST API hibaüzenetet ad vissza. Ehelyett a **Analyzer** tulajdonságot kell használnia.
+
 Az **analizátor** vagy a **indexAnalyzer** egy már fizikailag létrehozott mezőhöz való hozzárendelésének engedélyezése nem engedélyezett. Ha a fentiek bármelyike nem egyértelmű, tekintse át a következő táblázatot annak részletezéséhez, hogy mely műveletek szükségesek a helyreállításhoz, és miért.
  
  | Alkalmazási helyzet | Hatás | Lépések |
  |----------|--------|-------|
- | Új mező hozzáadása | Minimális | Ha a mező még nem létezik a sémában, nem végezhető el a mező módosítása, mert a mező még nem rendelkezik fizikai jelenléttel az indexben. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával új mezőket adhat hozzá egy meglévő indexhez, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez.|
+ | Új mező hozzáadása | minimális | Ha a mező még nem létezik a sémában, nem végezhető el a mező módosítása, mert a mező még nem rendelkezik fizikai jelenléttel az indexben. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával új mezőket adhat hozzá egy meglévő indexhez, és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez.|
  | **Elemző** vagy **indexAnalyzer** hozzáadása egy meglévő indexelt mezőhöz. | [újraépítése](search-howto-reindex.md) | Az adott mező fordított indexét újra létre kell hozni az alapoktól, és a mezők tartalmát újra kell indexelni. <br/> <br/>Az aktív fejlesztés alatt álló indexek esetében [törölje](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [hozza létre](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexet az új mező definíciójának kiválasztásához. <br/> <br/>Az éles környezetben lévő indexek esetében egy új mező létrehozásával elhalaszthatja az újraépítést, és megkezdheti a módosítást, és a régi helyett használhatja azt. A [frissítési index](https://docs.microsoft.com/rest/api/searchservice/update-index) használatával vegye fel az új mezőt és a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a feltöltéshez. Később, a tervezett indexek karbantartásának részeként törölheti az indexet az elavult mezők eltávolításához. |
 
 ## <a name="when-to-add-analyzers"></a>Mikor lehet elemzőket felvenni
@@ -113,7 +116,7 @@ A következő példa:
 
 * Az elemzők egy kereshető mező mező osztályának tulajdonsága.
 * Az egyéni elemző egy index definíciójának része. Lehet, hogy ez a beállítás egyedileg testreszabható (például egyetlen lehetőség testreszabása egy szűrőben), vagy több helyen is testreszabható.
-* Ebben az esetben az egyéni analizátor "my_analyzer", amely egy testreszabott szabványos tokenizer "my_standard_tokenizer" és két jogkivonat-szűrőt használ: kisbetűs és testreszabott asciifolding szűrő "my_asciifolding".
+* Ebben az esetben az egyéni analizátor "my_analyzer", amely egy testreszabott standard tokenizer "my_standard_tokenizer" és két jogkivonat-szűrőt használ: kisbetűs és testreszabott asciifolding szűrő "my_asciifolding".
 * Emellett 2 egyéni char-szűrőt is definiál: "map_dash" és "remove_whitespace". Az első lecseréli az aláhúzással ellátott kötőjeleket, míg a másodikban az összes szóköz el lett távolítva. A szóközöknek UTF-8 kódolással kell rendelkezniük a leképezési szabályokban. A char szűrők a jogkivonatok létrehozása előtt lesznek alkalmazva, és hatással vannak az eredményül kapott jogkivonatokra (a normál tokenizer kötőjeleken és szóközökön, de nem aláhúzáson).
 
 ~~~~
@@ -334,7 +337,7 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + Tekintse át a [teljes szöveges keresés az Azure Cognitive Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
 
@@ -344,9 +347,9 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 
 + [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
- [Dokumentumok keresése REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
  [Egyszerű lekérdezési szintaxis](query-simple-syntax.md) 
 

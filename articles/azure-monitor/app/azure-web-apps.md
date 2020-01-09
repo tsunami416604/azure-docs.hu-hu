@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407229"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -77,9 +77,9 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-A .NET Core következő verziói támogatottak: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
+A .NET Core következő verziói támogatottak: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
-A .NET Core, az önálló üzemelő példányok és a ASP.NET Core 3,0 közötti teljes keretrendszer megcélzása jelenleg **nem támogatott** az ügynök/bővítmény alapú figyeléssel. (A programkódon keresztüli[manuális](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) kialakítás az összes korábbi forgatókönyvben működni fog.)
+A .NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások teljes keretrendszerének megcélzása jelenleg **nem támogatott** az ügynök/bővítmény alapú figyeléssel. (A programkódon keresztüli[manuális](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) kialakítás az összes korábbi forgatókönyvben működni fog.)
 
 1. Az App Service-hez tartozó Azure Vezérlőpulton **válassza a Application Insights lehetőséget** .
 
@@ -92,7 +92,7 @@ A .NET Core, az önálló üzemelő példányok és a ASP.NET Core 3,0 közötti
 
      ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
 
-2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a .NET Core 2,0, 2,1 és 2,2 rendszerekhez **ajánlott gyűjteményt** vagy **letiltottat** kínál.
+2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A .NET Core a .NET Core 2,0, 2,1, 2,2 és 3,0 **ajánlott gyűjteményét** vagy **letiltását** ajánlja.
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -349,7 +349,7 @@ A verzió 2.8.9 kezdődően az előre telepített hely kiterjesztése van haszn�
 
 Ha a frissítés a 2.5.1-nél korábbi verzióról történik, ellenőrizze, hogy a ApplicationInsigths dll-fájljai el lettek-e távolítva az Application bin mappából, [lásd: hibaelhárítási lépések](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Services-on futó .NET-és .NET Core-alapú alkalmazások bővítmény-és ügynök-alapú figyeléséhez.
 

@@ -1,20 +1,14 @@
 ---
-title: Azure Service Fabric Mesh-alkalmazás titkainak kezelése | Microsoft Docs
+title: Az Azure Service Fabric Mesh alkalmazás titkainak kezelése
 description: Az alkalmazási titkokat felügyelheti, így biztonságosan hozhat létre és helyezhet üzembe egy Service Fabric Mesh-alkalmazást.
-services: service-fabric-mesh
-keywords: titkos kódok
-author: athinanthny
-ms.author: atsenthi
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chackdan
-ms.openlocfilehash: ef3f04437aca7b6ad9aab8806d54e65d00159d87
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461932"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-alkalmazás titkainak kezelése
 Service Fabric Mesh a titkokat Azure-erőforrásokként támogatja. A Service Fabric Mesh titkos kulcsa lehet bármilyen bizalmas szöveges információ, például a tárolási kapcsolatok sztringje, jelszava vagy más olyan érték, amelyet biztonságosan kell tárolni és továbbítani. Ez a cikk bemutatja, hogyan helyezheti üzembe és kezelheti a titkokat a Service Fabric Biztonságos tár szolgáltatás használatával.
@@ -24,8 +18,8 @@ A háló alkalmazás titkos kulcsa a következőkből áll:
 * Egy vagy több **titok/érték** erőforrás, amely a **titkok** erőforrás-tárolóban van tárolva. Az egyes **titkok/értékek** erőforrásait a verziószáma különbözteti meg. A **Secret/Values** erőforrás verziószáma nem módosítható, csak új verzió hozzáfűzése.
 
 A titkok kezelése a következő lépésekből áll:
-1. A Mesh Secrets -erőforrás deklarálása egy Azure Resource Model-YAML vagy JSON-fájlban a inlinedValue-típus és a SecretsStoreRef ContentType-definíciók használatával.
-2. A Secrets **/Values** típusú erőforrások deklarálása egy Azure Resource Model-YAML vagy JSON-fájlban, amelyet a **titkok** erőforrása tárol (az 1. lépésből).
+1. A Mesh **Secrets** -erőforrás deklarálása egy Azure Resource Model-YAML vagy JSON-fájlban a inlinedValue-típus és a SecretsStoreRef ContentType-definíciók használatával.
+2. A **Secrets** **/Values** típusú erőforrások deklarálása egy Azure Resource Model-YAML vagy JSON-fájlban, amelyet a titkok erőforrása tárol (az 1. lépésből).
 3. Mesh-alkalmazás módosítása a rácsvonalak titkos értékeire való hivatkozáshoz.
 4. A Mesh alkalmazás üzembe helyezése vagy működés közbeni frissítése a titkos értékek felhasználása érdekében.
 5. Használja az Azure "az" CLI-parancsait Biztonságos tár szolgáltatás életciklus-felügyelethez.
@@ -101,7 +95,7 @@ Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets-erőforrásoka
 ## <a name="declare-mesh-secretsvalues-resources"></a>A Mesh Secrets/Values típusú erőforrások deklarálása
 A Mesh Secrets/Values erőforrásai az előző lépésben meghatározott rácsvonal-titkok erőforrásaitól függenek.
 
-A "Resources" (erőforrások) szakasz "Value:" és "Name:" mezők közötti kapcsolata esetén: a "Name:" karakterlánc második része, amely kettősponttal van elválasztva, a titkos kulcshoz használt verziószám, valamint a kettőspontnak meg kell egyeznie a háló titkos értékével, amelynek a neve függőségi. Az elem ```name: mysecret:1.0```esetében például a verziószám 1,0, a névnek ```mysecret``` pedig meg kell egyeznie a korábban definiált ```"value": "mysecret"```értékkel.
+A "Resources" (erőforrások) szakasz "Value:" és "Name:" mezők közötti kapcsolata esetén: a "Name:" karakterlánc második része, amely kettősponttal van elválasztva, a titkos kulcshoz használt verziószám, valamint a kettőspontnak meg kell egyeznie a háló titkos értékével, amelynek a neve függőségi. Például a (z) ```name: mysecret:1.0```elemnél a verziószám 1,0, a névnek pedig ```mysecret```nak meg kell egyeznie a korábban definiált ```"value": "mysecret"```.
 
 >
 Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets/Values-erőforrásokat egy JSON-fájlban:
@@ -189,7 +183,7 @@ Az alábbi példa bemutatja, hogyan deklarálhatja a Mesh Secrets/Values erőfor
 ## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Rácsvonal-alkalmazás módosítása a rácsvonalak titkos értékeinek hivatkozásához
 Service Fabric Mesh-alkalmazásoknak a következő két karakterláncot kell figyelembe venniük Biztonságos tár szolgáltatás titkos értékek felhasználása érdekében:
 1. A Microsoft. ServiceFabricMesh/Secrets. name a fájl nevét tartalmazza, és a Secrets értéket fogja tartalmazni szöveges formátumban.
-2. A "Fabric_SettingPath" Windows vagy Linux környezeti változó tartalmazza annak a könyvtárnak az elérési útját, ahol a Biztonságos tár szolgáltatás titkok értékeit tartalmazó fájlok elérhetők lesznek. Ez a "C:\Settings" a Windows által üzemeltetett és "/var/Settings" a Linux által üzemeltetett Mesh-alkalmazásokhoz.
+2. A (z) "Fabric_SettingPath" Windows vagy Linux környezeti változó tartalmazza annak a könyvtárnak az elérési útját, ahol a Biztonságos tár szolgáltatás titkok értékeit tartalmazó fájlok elérhetők lesznek. Ez a "C:\Settings" a Windows által üzemeltetett és "/var/Settings" a Linux által üzemeltetett Mesh-alkalmazásokhoz.
 
 ## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>A Mesh-alkalmazás működés közbeni frissítésének üzembe helyezése vagy használata a titkos értékek felhasználása érdekében
 A titkos kulcsok és/vagy a verzióval ellátott titkok/értékek létrehozása az erőforrás-modell által deklarált központi telepítésekre korlátozódik. Ezeknek az erőforrásoknak a létrehozásához az alábbi módon kell átadnia egy erőforrás-modell JSON-vagy YAML-fájlját az az **Mesh Deployment** parancs használatával:
@@ -247,6 +241,6 @@ az mesh secretvalue show --Resource-group <myResourceGroup> --secret-name <mySec
 az mesh secretvalue delete --Resource-group <myResourceGroup> --secret-name <mySecret> --version <N>
 ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az áttekintést:
 - [Service Fabric Mesh – áttekintés](service-fabric-mesh-overview.md)

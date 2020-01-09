@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 9c72bc9c0862820b72fbecee7966e946f4ba0001
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b6826fa53e9810bdd30af4faf9fbf6bc3c3492e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439252"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Az új fájlok növekményes másolása a Adatok másolása eszköz használatával, az időparticionált fájl neve alapján
 
@@ -72,7 +72,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végreh
 
     b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét. 
          
-    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-overview.md) ismertető cikket.
+    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket.
 
 5. A **Verzió** résznél válassza a **V2** értéket.
 6. A **Hely** alatt válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más helyeken/régiókban is lehetnek.

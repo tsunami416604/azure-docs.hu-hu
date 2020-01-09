@@ -1,31 +1,23 @@
 ---
 title: Azure Service Fabric Application manifest – példák
 description: Megtudhatja, hogyan konfigurálhatja az alkalmazások és szolgáltatások jegyzékfájljának beállításait egy Service Fabric alkalmazáshoz.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451642"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric alkalmazás-és szolgáltatás-jegyzékfájl – példák
 Ez a szakasz az alkalmazás-és szolgáltatás-jegyzékfájlok példáit tartalmazza. Ezek a példák nem mutatják be a fontos forgatókönyveket, azonban a különböző elérhető beállításokat és azok használatát ismertetik. 
 
 Az alábbiakban láthatók a megjelenített funkciók és a példaként szolgáló jegyzékfájl (ok) indexe.
 
-|Funkció|Jegyzék|
+|Szolgáltatás|Jegyzék|
 |---|---|
 |[Erőforrások szabályozása](service-fabric-resource-governance.md)|[Reliable Services alkalmazás jegyzékfájlja](service-fabric-manifest-example-reliable-services-app.md#application-manifest), [Container Application manifest](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Szolgáltatás futtatása helyi rendszergazdai fiókkal](service-fabric-application-runas-security.md)|[Reliable Services alkalmazás jegyzékfájlja](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

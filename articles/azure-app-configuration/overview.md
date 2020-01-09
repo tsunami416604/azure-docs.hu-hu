@@ -1,24 +1,17 @@
 ---
-title: Mi az Azure app Configuration? | Microsoft Docs
+title: Mi az Azure app Configuration?
 description: Az Azure app Configuration szolgáltatás áttekintése.
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 40630bbbbcea344fb74d8ad971eb4c808bf0c142
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185069"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495250"
 ---
 # <a name="what-is-azure-app-configuration"></a>Mi az Azure app Configuration?
 
@@ -60,12 +53,12 @@ Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.mic
 
 Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A programozási nyelv és keretrendszer alapján a következő legjobb módszerek érhetők el Önnek.
 
-| Programozási nyelv és keretrendszer | Csatlakozás |
+| Programozási nyelv és keretrendszer | A csatlakozás lépései |
 |---|---|
-| .NET Core and ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
+| .NET Core és ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
 | .NET-keretrendszer és ASP.NET | A .NET-hez készült app Configuration Builder |
 | Java Spring | Alkalmazás-konfigurációs ügyfél a Spring Cloud-hoz |
-| Egyéb | Alkalmazás-konfiguráció REST API |
+| Egyebek | Alkalmazás-konfiguráció REST API |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,78 +1,76 @@
 ---
-title: Az Azure service health-riasztások küldése az opsgenie segítségével webhookok használata
-description: A Szolgáltatásállapot-események az opsgenie segítségével példányra kapcsolatos személyre szabott értesítések küldése.
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
+title: Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a OpsGenie webhookok használatával
+description: Személyre szabott értesítések beszerzése a OpsGenie-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.service: service-health
+ms.topic: article
 ms.date: 06/10/2019
-ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465231"
 ---
-# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Az Azure service health-riasztások küldése az opsgenie segítségével webhookok használata
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a OpsGenie webhookok használatával
 
-Ez a cikk bemutatja, hogyan állíthatja be az Azure service health-riasztások az opsgenie segítségével egy webhook használatával. Használatával [opsgenie segítségével](https://www.opsgenie.com/)az Azure Service Health integráció, a továbbíthatja az Azure Service Health-riasztások az opsgenie segítségével. Opsgenie segítségével megadhatja, hogy a megfelelő értesítendő személyeket és az alapján a készenléti ütemezéseket, e-mailben, szöveges üzenetben (SMS), telefonhívások, iOS és Android leküldéses értesítések használatával, és a problémák továbbítása riasztások, amíg a riasztás nem igazoltak vissza vagy lezárt.
+Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás állapotával kapcsolatos riasztásokat a OpsGenie webhook használatával. A [OpsGenie](https://www.opsgenie.com/)Azure Service Health-integrációjának használatával Azure Service Health riasztásokat továbbíthat a OpsGenie. A OpsGenie meg tudja határozni a megfelelő személyeket a hívási ütemezés alapján, e-mailben, SMS-ben, telefonhívásokkal, iOS & Android leküldéses értesítésekkel és a riasztások kiterjesztésével, amíg a riasztást nem igazolják vagy bezárták.
 
-## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>Service health integrációs URL létrehozása a opsgenie segítségével
-1.  Győződjön meg arról, hogy regisztrált-, és bejelentkezett, a [opsgenie segítségével](https://www.opsgenie.com/) fiókot.
+## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>Szolgáltatás állapot-integrációs URL-cím létrehozása a OpsGenie-ben
+1.  Győződjön meg arról, hogy regisztrált, és be van jelentkezve a [OpsGenie](https://www.opsgenie.com/) -fiókjába.
 
-1.  Keresse meg a **Integrációk** opsgenie segítségével szakaszát.
+1.  Navigáljon a OpsGenie **integrációk** szakaszához.
 
-    ![Az "Integrációs" szakaszban az opsgenie segítségével](./media/webhook-alerts/opsgenie-integrations-section.png)
+    ![A OpsGenie integrációs szakasza](./media/webhook-alerts/opsgenie-integrations-section.png)
 
-1.  Válassza ki a **Azure Service Health** integrációs gombra.
+1.  Válassza a **Azure Service Health** Integration (integráció) gombot.
 
-    ![A "az Azure Service Health gombot" opsgenie segítségével](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
+    ![A "Azure Service Health gomb" a OpsGenie](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-1.  **Név** a riasztást, és adja meg a **csapathoz rendelt** mező.
+1.  **Nevezze** el a riasztást, és adja meg a **hozzárendelt csoport** mezőt.
 
-1.  Adja meg például a többi mező **címzettek**, **engedélyezve**, és **értesítések elrejtése**.
+1.  Töltse ki a többi mezőt, például a **címzetteket**, az **engedélyezést**és az **értesítések mellőzését**.
 
-1.  Másolja ki és mentse a **integrációs URL-címet**, amely már tartalmaznia kell a `apiKey` hozzáfűzi a teljes körű.
+1.  Másolja ki és mentse el az **integrációs URL-címet**, amelynek már tartalmaznia kell a `apiKey` a végéhez hozzáfűzve.
 
-    ![Az "integrációs URL-címet" opsgenie segítségével](./media/webhook-alerts/opsgenie-integration-url.png)
+    ![Az "integrációs URL" a OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
 
-1.  Válassza ki **integrációs mentése**
+1.  **Integrációs mentés** kiválasztása
 
-## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Hozzon létre egy riasztást opsgenie segítségével az Azure portál használatával
-### <a name="for-a-new-action-group"></a>Az új műveletcsoport:
-1. Végezze el az 1 – 8 [az Azure portal segítségével hozzon létre egy riasztást a szolgáltatás állapotával kapcsolatos értesítés az új műveletcsoport](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Riasztás létrehozása a Azure Portal OpsGenie használatával
+### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
+1. Kövesse az 1 – 8. lépést a [riasztás létrehozása a szolgáltatás állapotáról szóló értesítésben egy új műveleti csoportra vonatkozóan a Azure Portal használatával](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-1. Adja meg a listában, **műveletek**:
+1. Definiálás a **műveletek**listájában:
 
-    a. **Művelet típusa:** *Webhook*
+    a. **Művelet típusa:** *webhook*
 
-    b. **Részletek:** Az opsgenie segítségével **integrációs URL-Címének** , korábban mentett.
+    b. **Részletek:** A korábban mentett OpsGenie **-integrációs URL-cím** .
 
-    c. **név:** A Webhook nevét, alias vagy azonosítója.
+    c. **Név:** Webhook neve, aliasa vagy azonosítója.
 
-1. Válassza ki **mentése** Ha ezzel elkészült, a riasztás létrehozásához.
+1. A riasztás létrehozásához válassza a **Mentés** lehetőséget.
 
-### <a name="for-an-existing-action-group"></a>A meglévő műveletcsoport:
-1. Az a [az Azure portal](https://portal.azure.com/)válassza **figyelő**.
+### <a name="for-an-existing-action-group"></a>Meglévő műveleti csoport esetén:
+1. A [Azure Portal](https://portal.azure.com/)válassza a **figyelő**elemet.
 
-1. Az a **beállítások** szakaszban jelölje be **Műveletcsoportok**.
+1. A **Beállítások** szakaszban válassza a **műveleti csoportok**lehetőséget.
 
-1. Keresse meg és válassza ki a szerkeszteni kívánt művelet csoportot.
+1. Keresse meg és válassza ki a szerkeszteni kívánt műveleti csoportot.
 
-1. Adja hozzá a listához, **műveletek**:
+1. Hozzáadás a **műveletek**listájához:
 
-    a. **Művelet típusa:** *Webhook*
+    a. **Művelet típusa:** *webhook*
 
-    b. **Részletek:** Az opsgenie segítségével **integrációs URL-Címének** , korábban mentett.
+    b. **Részletek:** A korábban mentett OpsGenie **-integrációs URL-cím** .
 
-    c. **név:** A Webhook nevét, alias vagy azonosítója.
+    c. **Név:** Webhook neve, aliasa vagy azonosítója.
 
-1. Válassza ki **mentése** végeztével a műveletcsoport frissítéséhez.
+1. A műveleti csoport frissítéséhez válassza a **Mentés** lehetőséget.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Egy HTTP POST kérelem használatával a webhook-integráció tesztelése
-1. Hozza létre a service health hasznos adatokat szeretne küldeni. Egy példa service health webhook hasznos adatai címen található [Webhookok az Azure-tevékenységi naplóriasztások](../azure-monitor/platform/activity-log-alerts-webhook.md).
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Webhook-integráció tesztelése HTTP POST-kérelem használatával
+1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Az Azure-beli [tevékenységekre vonatkozó riasztások webhookok](../azure-monitor/platform/activity-log-alerts-webhook.md)szolgáltatásában például a Service Health webhook hasznos adatai találhatók.
 
-1. HTTP POST-kérelmet a következőképpen hozhat létre:
+1. Hozzon létre egy HTTP POST-kérelmet a következőképpen:
 
     ```
     POST        https://api.opsgenie.com/v1/json/azureservicehealth?apiKey=<APIKEY>
@@ -81,12 +79,12 @@ Ez a cikk bemutatja, hogyan állíthatja be az Azure service health-riasztások 
 
     BODY        <service health payload>
     ```
-1. Ekkor kap egy `200 OK` válasz állapota "sikeres" üzenet
+1. A "sikeres" állapotú üzenettel `200 OK` választ kapni.
 
-1. Lépjen a [opsgenie segítségével](https://www.opsgenie.com/) annak ellenőrzéséhez, hogy az integrációs sikeres volt-e beállítva.
+1. Nyissa meg a [OpsGenie](https://www.opsgenie.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő probléma felügyeleti rendszerek](service-health-alert-webhook-guide.md).
-- Tekintse át a [tevékenység log riasztási webhookséma](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../azure-monitor/platform/service-notifications.md).
-- Tudjon meg többet [Műveletcsoportok](../azure-monitor/platform/action-groups.md).
+## <a name="next-steps"></a>Következő lépések
+- Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
+- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../azure-monitor/platform/service-notifications.md).
+- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).

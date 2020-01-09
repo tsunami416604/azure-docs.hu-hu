@@ -1,14 +1,14 @@
 ---
-title: Architektúra – áttekintés
+title: Az architektúra áttekintése
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450196"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -44,8 +44,8 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
@@ -57,7 +57,7 @@ A Azure Backup különböző biztonsági mentési ügynököket biztosít, attó
 **MARS-ügynök** | <ul><li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az egyes helyszíni Windows Server-gépeken fut.</li> <li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az Azure-beli virtuális gépeken fut.</li> <li>A DPM/MABS-kiszolgálókon futtatja a DPM/MABS helyi tároló lemezét az Azure-ba történő biztonsági mentéshez.</li></ul>
 **Azure VM-bővítmény** | Az Azure-beli virtuális gépeken futtatja őket egy tárolóba.
 
-## <a name="backup-types"></a>Biztonsági másolatok típusai
+## <a name="backup-types"></a>A biztonsági mentés típusai
 
 A következő táblázat ismerteti a különböző típusú biztonsági mentéseket és azok használatát:
 
@@ -174,7 +174,7 @@ A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival
 Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a Azure Backup használatával végezheti el:
 
 - A Premium Storage *-alapú*virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
-- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [Részletek](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
+- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. További információ: [a prémium szintű oldal blob Storage-fiókok méretezhetőségi célpontjai](../storage/blobs/scalability-targets-premium-page-blobs.md). Ne módosítsa az átmeneti helyet.
 - A biztonsági mentési feladatok befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/windows/disks-types.md#billing).
 

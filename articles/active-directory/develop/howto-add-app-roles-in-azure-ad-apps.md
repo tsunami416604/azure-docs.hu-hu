@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe116b5ae26522c9bce0322123836a6e08d3cfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424496"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -125,7 +125,7 @@ Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárende
 
 - [Engedélyezés egy webalkalmazásban az Azure AD-alkalmazás szerepköreinek &amp; szerepkör-jogcímek (minta) használatával](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
 - [Biztonsági csoportok és alkalmazás-szerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
-- [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
+- [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [HRE hozzáférési jogkivonatok](access-tokens.md)
 - [HRE `id_tokens`](id-tokens.md)

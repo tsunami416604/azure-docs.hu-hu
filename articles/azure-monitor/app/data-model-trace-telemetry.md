@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Telemetria adatmodell – nyomkövetési telemetria | Microsoft Docs
+title: Azure Application Insights adatmodell – nyomkövetési telemetria
 description: Application Insights adatmodell nyomkövetési telemetria
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,16 +8,16 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 6e188039a86f4c655df3098be1d769668dcf3571
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407136"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Nyomkövetési telemetria: Application Insights adatmodell
 
-A nyomkövetési telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a szöveg által keresett, `printf` stílusú nyomkövetési utasításokat jelöli. a `Log4Net`, `NLog` és más szöveg alapú naplófájl-bejegyzések ilyen típusú példányokra vannak lefordítva. A nyomkövetés nem rendelkezik bővíthetőségi mértékkel.
+A nyomkövetési telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a szöveg által keresett, `printf` stílusú nyomkövetési utasításokat jelöli. a `Log4Net`, `NLog`és más szöveg alapú naplófájl-bejegyzések ilyen típusú példányokra vannak lefordítva. A nyomkövetés nem rendelkezik bővíthetőségi mértékkel.
 
 ## <a name="message"></a>Üzenet
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433215"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
 
@@ -61,7 +61,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
-    | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Válassza `myResourceGroup`vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával megkönnyítheti az erőforrások törlését, ha ezzel az Oktatóanyaggal végzett. |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza `myResourceGroup`vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával megkönnyítheti az erőforrások törlését, ha ezzel az Oktatóanyaggal végzett. |
     | **Virtuális gép neve** | VNET – WordPress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
     | **[Régió](https://azure.microsoft.com/regions/)** | (Európa) Nyugat-Európa | Válasszon egy Önhöz közeli régiót vagy a virtuális gépet elérő függvények közelében. |
     | **Méret** | B1s | Válassza a **méret módosítása** lehetőséget, majd válassza ki a B1s standard rendszerképet, amely 1 vCPU és 1 GB memóriát tartalmaz. |
@@ -75,7 +75,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Name (Név)** | myResourceGroup-vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
+    | **Name (Név)** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
     | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
     | **Alhálózat neve** | Oktatóanyag – net | Az alhálózat neve. |
     | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a WordPress webhely használja.  A `/24` alhálózatok 254-es gazdagépi címeket biztosítanak. |
@@ -118,9 +118,9 @@ A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhe
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Virtuális hálózat** | MyResourceGroup-vnet | Ez a virtuális hálózat a korábban létrehozott. |
+    | **Virtuális hálózat** | MyResourceGroup – vnet | Ez a virtuális hálózat a korábban létrehozott. |
     | **Alhálózat** | Új alhálózat létrehozása | Hozzon létre egy alhálózatot a virtuális hálózatban a Function alkalmazás használatára. A VNet-integrációt üres alhálózat használatára kell konfigurálni. Nem számít, hogy a függvények más alhálózatot használnak, mint a virtuális gép. A virtuális hálózat automatikusan átirányítja a forgalmat a két alhálózat között. |
-    | **Alhálózat neve** | Function-Net | Az új alhálózat neve. |
+    | **Alhálózat neve** | Függvény – net | Az új alhálózat neve. |
     | **Virtuális hálózati címterület** | 10.10.0.0/16 | Válassza ki ugyanazt a Címterület-blokkot, amelyet a WordPress-webhely használ. Csak egy címterület van definiálva. |
     | **Címtartomány** | 10.10.2.0/24   | Az alhálózat mérete korlátozza azon példányok számát, amelyeket a prémium szintű csomag funkciójának alkalmazásával fel lehet méretezni. Ez a példa egy `/24` alhálózatot használ, amely 254 elérhető gazdagép-címmel rendelkezik. Ez az alhálózat túl van kiépítve, de könnyen kiszámítható. |
 
@@ -138,7 +138,7 @@ Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alk
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
-    | **Name (Név)** | Növény | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
+    | **Name (Név)** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
     | **Útvonal sablonja** | /plant | Egy VM-erőforráshoz hozzárendelt útvonal. |
     | **Háttér URL-címe** | http://< YOUR_VM_IP >/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le a `<YOUR_VM_IP>`t a korábban létrehozott WordPress-virtuális gép IP-címére. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
 

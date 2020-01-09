@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172788"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450026"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása a Windowsba az Azure Resource Manager üzemi modell használatával
 
-Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági mentési tárból. Az adatok visszaállításához használja az Microsoft Azure Recovery Services (MARS) ügynök adatok helyreállítása varázslóját. A következőket teheti:
+Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági mentési tárból. Az adatok visszaállításához használja az Microsoft Azure Recovery Services (MARS) ügynök adatok helyreállítása varázslóját. Előnyök:
 
 * Állítsa vissza az adatokat ugyanarra a gépre, amelyről a biztonsági másolatok készültek.
 * Adatok visszaállítása egy másik gépre.
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan lehet visszaállítani az adatok biztonsági men
 Az azonnali visszaállítás funkcióval írható helyreállítási pontok pillanatképét csatlakoztathatja helyreállítási kötetként. Ezután felfedezheti a helyreállítási kötetet, és átmásolhatja a fájlokat egy helyi számítógépre, ezzel szelektív módon helyreállíthatja a fájlokat.
 
 > [!NOTE]
-> A [januári 2017 Azure Backup frissítésre](https://support.microsoft.com/help/3216528?preview) van szükség, ha az adatvisszaállításhoz szeretné használni az azonnali visszaállítást. Emellett a biztonsági mentési adattárakat a támogatási cikkben felsorolt területi beállításokban kell védeni. Az azonnali visszaállítást támogató területi beállítások legújabb listáját a [január 2017 Azure Backup Update webhelyen](https://support.microsoft.com/help/3216528?preview) találhatja meg.
+> A [januári 2017 Azure Backup frissítésre](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) van szükség, ha az adatvisszaállításhoz szeretné használni az azonnali visszaállítást. Emellett a biztonsági mentési adattárakat a támogatási cikkben felsorolt területi beállításokban kell védeni. Az azonnali visszaállítást támogató területi beállítások legújabb listáját a [január 2017 Azure Backup Update webhelyen](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) találhatja meg.
 >
 
 Az Azure Portal Recovery Services tárolókkal való azonnali visszaállítást használhat. Ha biztonsági mentési tárolókban tárolta az adattárolást, a rendszer átalakította Recovery Services-tárolóra. Ha azonnali visszaállítást szeretne használni, töltse le a MARS-frissítést, és kövesse az azonnali visszaállítást megemlítő eljárásokat.

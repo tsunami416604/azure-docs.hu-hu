@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/23/2019
+ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494649"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494986"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával
 
@@ -22,7 +22,7 @@ A legtöbb SSD több mint 1 GByte-t biztosít a sávszélesség másodpercenkén
 
 > [!Note]  
 > Az IO cache jelenleg a RubiX-t használja gyorsítótárazási összetevőként, de ez a szolgáltatás jövőbeli verzióiban változhat. Használjon IO cache-interfészeket, és ne vegyen fel függőségeket közvetlenül a RubiX implementációján.
->Az i/o-gyorsítótár jelenleg csak az Azure BLOB Storage-ban támogatott. 
+>Az i/o-gyorsítótár jelenleg csak az Azure BLOB Storage-ban támogatott.
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Az Azure HDInsight IO cache előnyei
 
@@ -32,21 +32,19 @@ Nem kell módosítania a Spark-feladatokat, hogy a teljesítmény megnövekszik 
 
 ## <a name="getting-started"></a>Első lépések
 
-Az Azure HDInsight IO gyorsítótára alapértelmezés szerint inaktiválva van az előzetes verzióban. Az i/o-gyorsítótár elérhető az Azure HDInsight 3.6 + Spark-fürtökön, amelyek Apache Spark 2,3-et futtatnak.  Az i/o-gyorsítótár aktiválásához tegye a következőket:
+Az Azure HDInsight IO gyorsítótára alapértelmezés szerint inaktiválva van az előzetes verzióban. Az i/o-gyorsítótár elérhető az Azure HDInsight 3.6 + Spark-fürtökön, amelyek Apache Spark 2,3-et futtatnak.  Az IO-gyorsítótár aktiválásához a HDInsight 4,0-es számítógépen hajtsa végre a következő lépéseket:
 
-1. Válassza ki a HDInsight-fürtöt [a Azure Portalban](https://portal.azure.com).
-
-1. Az **Áttekintés** oldalon (amely alapértelmezés szerint meg van nyitva a fürt kiválasztásakor) válassza a **Ambari Kezdőlap** elemet a **fürt irányítópultok**területen.
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net`, ahol a `CLUSTERNAME` a fürt neve.
 
 1. Válassza ki a bal oldali **i/o-gyorsítótár** szolgáltatást.
 
-1. Válassza a **műveletek** és az **aktiválás**lehetőséget.
+1. Válassza a **műveletek** (**szolgáltatási műveletek** a HDI 3,6-ben) és az **aktiválás**lehetőséget.
 
     ![Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben")
 
 1. Erősítse meg az összes érintett szolgáltatás újraindítását a fürtön.
 
->[!NOTE]  
+> [!NOTE]  
 > Annak ellenére, hogy az állapotjelző sáv aktiválva van, az i/o-gyorsítótár valójában nincs engedélyezve, amíg újra nem indítja a többi érintett szolgáltatást.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -71,12 +69,12 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Válassza az **újraindítás** > **az összes érintett újraindítása**lehetőséget.
 
-    ![Az Apache Ambari újraindítása minden érintett](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
+    ![Az Apache Ambari újraindítja az összes érintett](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
 
 1. Válassza **az összes újraindításának megerősítése**lehetőséget.
 
 Ha ez nem működik, tiltsa le az IO cache-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az IO cache-ről, beleértve a teljesítménnyel kapcsolatos teljesítményteszteket ebben a blogbejegyzésben: [Apache Spark a feladatok akár 9x sebességre is felgyorsítják a HDINSIGHT IO cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/) -t
+További információ az IO cache-ről, beleértve a teljesítménnyel kapcsolatos teljesítményteszteket ebben a blogbejegyzésben: [Apache Spark a feladatok akár 9x sebességre is felgyorsítják a HDINSIGHT IO cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/) -t

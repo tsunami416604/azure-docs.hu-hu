@@ -1,28 +1,18 @@
 ---
-title: Windows-tárolóalkalmazás létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
+title: Windows Container-alkalmazás létrehozása Service Fabric az Azure-ban
 description: Ebben a gyors útmutatóban létrehozza az első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466271"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Gyors útmutató: Windows-tárolók üzembe helyezése Service Fabric
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rövid útmutató: Windows-tárolók üzembe helyezése a Service Fabricben
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
@@ -57,7 +47,7 @@ Válassza ki **Service Fabric alkalmazást**, nevezze el "MyFirstContainer", maj
 
 A **Hosted Containers and Applications** (Üzemeltetett tárolók és alkalmazások) sablonokból válassza a **Container** (Tároló) elemet.
 
-A **rendszerkép neve**mezőbe írja be a "MCR.microsoft.com/Windows/ServerCore/IIS:windowsservercore-ltsc2016", a [Windows Server Core Server és az IIS](https://hub.docker.com/_/microsoft-windows-servercore-iis)alaprendszerképét.
+A **rendszerkép neve**mezőbe írja be a "MCR.microsoft.com/Windows/ServerCore/IIS:windowsservercore-ltsc2016", a [Windows Server Core Server és az IIS alaprendszerképét](https://hub.docker.com/_/microsoft-windows-servercore-iis).
 
 Konfigurálja úgy a tárolóport–gazdagépport leképezést, hogy a szolgáltatáshoz a 80-as porton beérkező kérések a tárolón a 80-as portra legyenek leképezve.  Állítsa a **Tárolóport** beállítást 80, a **Gazdaport** beállítást pedig szintén 80 értékre.  
 
@@ -98,15 +88,15 @@ Az alábbi parancsfájl egy öt csomópontos Service Fabric fürtöt hoz létre,
 
 Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítások alapján.
 
-A következő szkript futtatása előtt a PowerShell futtatásával `Connect-AzAccount` hozzon létre egy, az Azure-hoz való kapcsolódást.
+A következő szkript futtatása előtt a PowerShellben futtassa a `Connect-AzAccount`-t az Azure-beli kapcsolatok létrehozásához.
 
-Másolja az alábbi parancsfájlt a vágólapra, és nyissa meg **Windows PowerShell integrált parancsprogram-kezelési környezet**.  Illessze be a tartalmat az üres Untitled1. ps1 ablakba. Ezután adja meg a változók értékeit a következő parancsfájlban `certpwd`: `certfolder` `subscriptionId`, `adminuser`, `adminpwd`,, stb.  A parancsfájl futtatása előtt a `certfolder` megadott címtárnak léteznie kell.
+Másolja az alábbi parancsfájlt a vágólapra, és nyissa meg **Windows PowerShell integrált parancsprogram-kezelési környezet**.  Illessze be a tartalmat az üres Untitled1. ps1 ablakba. Ezután adja meg a változók értékeit a következő parancsfájlban: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`stb.  A parancsfájl futtatása előtt a `certfolder` számára megadott könyvtárnak léteznie kell.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
 Miután megadta a változók értékeit, nyomja le az **F5** billentyűt a szkript futtatásához.
 
-A szkript futtatása és a fürt létrehozása után keresse meg a kimenetben a `ClusterEndpoint` következőt:. Példa:
+A parancsfájl futtatása és a fürt létrehozása után keresse meg a `ClusterEndpoint` a kimenetben. Példa:
 
 ```powershell
 ...
@@ -115,9 +105,9 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 ### <a name="install-the-certificate-for-the-cluster"></a>A fürt tanúsítványának telepítése
 
-Most a PFX-t a *et currentuser\my tanúsítványtárolóba* -tanúsítványtárolóban fogjuk telepíteni. A pfx-fájl a fenti PowerShell-parancsfájl `certfolder` környezeti változója alapján megadott könyvtárba kerül.
+Most a PFX-t a *et currentuser\my tanúsítványtárolóba* -tanúsítványtárolóban fogjuk telepíteni. A PFX-fájl a fenti PowerShell-szkriptben a `certfolder` környezeti változóval megadott könyvtárba kerül.
 
-Váltson erre a könyvtárra, majd futtassa a következő PowerShell-parancsot, és cserélje le `certfolder` a könyvtárban található pfx-fájl nevét, valamint a `certpwd` változóban megadott jelszót. Ebben a példában az aktuális könyvtár a PowerShell-parancsfájlban a `certfolder` változó által megadott könyvtárra van beállítva. A `Import-PfxCertificate` parancs futtatása:
+Váltson erre a könyvtárra, majd futtassa a következő PowerShell-parancsot, és cserélje le a `certfolder` könyvtárban található PFX-fájl nevét, valamint a `certpwd` változóban megadott jelszót. Ebben a példában az aktuális könyvtár a PowerShell-parancsfájl `certfolder` változójában megadott könyvtárra van beállítva. Innen a `Import-PfxCertificate` parancs fut:
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
@@ -142,9 +132,9 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 
 A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **MyFirstContainer** elemre, majd kattintson a **Publish** (Közzététel) parancsra. Ekkor megjelenik a Publish (Közzététel) párbeszédpanel.
 
-Másolja a következőt a **CN =** nevű tartalmat a PowerShell-ablakban `Import-PfxCertificate` a fenti parancs futtatásakor, és adja hozzá a portot. `19000` Például: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Másolja azt a **kapcsolatok végpont** mezőjébe. Jegyezze fel ezt az értéket, mert egy későbbi lépésben szüksége lesz rá.
+Másolja a következőt a **CN =** nevű tartalmat a PowerShell-ablakban a fenti `Import-PfxCertificate` parancs futtatásakor, és adja hozzá a porthoz `19000`. Például: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Másolja azt a **kapcsolatok végpont** mezőjébe. Jegyezze fel ezt az értéket, mert egy későbbi lépésben szüksége lesz rá.
 
-Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) elemre, és ellenőrizze a kapcsolati paraméterek információit.  A *FindValue* és a *servercertthumbprint értékeknek egyezniük* értékének meg kell egyeznie az előző lépésben futtatott `Import-PfxCertificate` tanúsítvány ujjlenyomatával.
+Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) elemre, és ellenőrizze a kapcsolati paraméterek információit.  A *FindValue* és a *servercertthumbprint értékeknek egyezniük* értékének meg kell egyeznie az előző lépésben `Import-PfxCertificate` futtatásakor telepített tanúsítvány ujjlenyomatával.
 
 ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -152,15 +142,15 @@ Kattintson a **Publish** (Közzététel) gombra.
 
 A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie. Ha névütközés van, nevezze át a Visual Studio-projektet, és telepítse újra.
 
-Nyisson meg egy böngészőt, és navigáljon az előző lépésben a **kapcsolódási végpont** mezőjébe helyezett címre. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Például http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Nyisson meg egy böngészőt, és navigáljon az előző lépésben a **kapcsolódási végpont** mezőjébe helyezett címre. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Például http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
- Az IIS alapértelmezett weblapjának kell megjelennie: ![Alapértelmezett IIS-weblap][iis-default]
+ Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A fürt futása során továbbra is felmerülnek a költségek. Érdemes lehet [törölni a fürtöt](service-fabric-cluster-delete.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

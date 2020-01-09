@@ -1,24 +1,24 @@
 ---
-title: Oktatóanyag a webalkalmazások Azure cache-sel való létrehozásához a gyorsítótár-feltöltési mintát használó Redis
-description: Ismerje meg, hogyan hozhat létre webalkalmazást az Azure cache használatával a gyorsítótár-feltöltési mintát használó Redis
+title: 'Oktatóanyag: Webalkalmazás létrehozása (gyorsítótár-félretéve) – Azure cache a Redis-hez'
+description: Ismerje meg, hogyan hozhat létre egy webalkalmazást az Azure cache használatával a gyorsítótár-feltöltési mintát használó Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411939"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
 Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.net-webalkalmazást, amely az [Azure cache](cache-web-app-howto.md)-hez készült ASP.net-útmutatóban jön létre a Redis-hez, hogy tartalmazzon egy olyan Leaderboard-t, amely az Azure cache-t használó [gyorsítótár-](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) feltöltési mintát használja Redis A minta alkalmazás megjeleníti a csapat statisztikáit egy adatbázisból, és bemutatja, hogyan használhatja az Azure cache-t a Redis tárolt adatok tárolására és lekérésére a teljesítmény javítása érdekében. Az oktatóanyag elvégzése után egy futó webalkalmazás rendelkezik, amely egy adatbázisba olvas és ír, amely az Azure cache-vel és az Azure-ban üzemeltetett Redis van optimalizálva.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Javítsa az adatok átviteli sebességét, és csökkentse az adatbázis terhelését azáltal, hogy az Azure cache használatával tárolja és beolvassa az Redis.
@@ -62,7 +62,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Modellosztály hozzáadása](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
-1. A `using`Team.cs*fájl elején cserélje le a* utasításokat az alábbi `using` utasításokra:
+1. A *Team.cs* fájl elején cserélje le a `using` utasításokat az alábbi `using` utasításokra:
 
     ```csharp
     using System;
@@ -146,7 +146,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
-1. A `connectionStrings` szakaszon belül adja hozzá a következő `configuration` szakaszt. A kapcsolati sztring nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
+1. A `configuration` szakaszon belül adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati sztring nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
 
     Ez a kapcsolati karakterlánc azt feltételezi, hogy teljesítette az [előfeltételeket](#prerequisites) , és telepítette SQL Server Express LocalDB, amely a Visual Studio 2019-mel telepített *.net Desktop-fejlesztési* számítási feladathoz tartozik.
 
@@ -729,11 +729,11 @@ Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- �
 
     ![Törlés](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** elemre.
+4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
 
     A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure cache méretezése a Redis](./cache-how-to-scale.md)

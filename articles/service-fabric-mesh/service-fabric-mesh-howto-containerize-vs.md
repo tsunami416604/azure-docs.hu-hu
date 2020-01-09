@@ -1,20 +1,16 @@
 ---
-title: Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Meshhoz | Microsoft Docs
+title: Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Mesh számára
 description: Adja hozzá Service Fabric Mesh-tárolók előkészítésének támogatását a teljes .NET-keretrendszert használó ASP.NET és konzolos projektekhez.
-services: service-fabric-mesh
-keywords: tárolóba helyezése Service Fabric Mesh
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462051"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Mesh számára
 
@@ -69,6 +65,6 @@ Miután hozzáadta a Container-előkészítési támogatást az alkalmazáshoz, 
 
 Most már közzéteheti az alkalmazást az Azure Service Fabric Mesh szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan tehet közzé egy alkalmazást a Service Fabric Meshban: [oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

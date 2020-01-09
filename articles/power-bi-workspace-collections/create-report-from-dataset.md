@@ -1,6 +1,6 @@
 ---
-title: Új jelentés létrehozása adatkészletből a Power BI-Munkaterületcsoportok |} A Microsoft Docs
-description: A Power BI-Munkaterületcsoport jelentések mostantól a saját alkalmazásában egy adatkészletből hozható létre.
+title: Jelentés létrehozása adatkészletből – Power BI munkaterület-gyűjteményekből
+description: A Power BI-munkaterületi jelentések mostantól létrehozhatók a saját alkalmazásbeli adatkészletből.
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
 author: rkarlin
@@ -8,33 +8,33 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 2034c62a17b71b92b43a7afd794c2c172288d58c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: bcc6044d0f0f5270f81a619e4d1ad71ea35cc170
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427063"
 ---
-# <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Új jelentés létrehozása adatkészletből a Power BI munkaterületi gyűjteményekkel
+# <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Új jelentés létrehozása adatkészletből Power BI munkaterület-gyűjteményekből
 
-A Power BI-Munkaterületcsoport jelentések mostantól a saját alkalmazásában egy adatkészletből hozható létre.
+A Power BI-munkaterületi jelentések mostantól létrehozhatók a saját alkalmazásbeli adatkészletből.
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-A hitelesítési módszer a jelentések beágyazásáról hasonló. Hozzáférési jogkivonatok, amelyek adott adatkészlet alapján. A powerbi.com-on használt tokenek kibocsátott által az Azure Active Directory (AAD). A Power BI-Munkaterületcsoport jogkivonatok adják ki alkalmazását.
+A hitelesítési módszer hasonló a jelentés beágyazásához. Az adatkészletre jellemző hozzáférési jogkivonatokon alapul. A PowerBI.com használt jogkivonatokat a Azure Active Directory (HRE) állítja ki. Power BI munkaterület-gyűjtemény jogkivonatait a saját alkalmazás állítja ki.
 
-Egy beágyazott jelentés létrehozásakor a kiállított jogkivonatok egy adott adatkészlet. Jogkivonatok a beágyazási URL-címet az azonos elem a mindegyik rendelkezik egy egyedi token társítva kell lennie. Annak érdekében, hogy hozzon létre egy beágyazott jelentést *Dataset.Read és Workspace.Report.Create* hatókörök meg kell adnia a hozzáférési jogkivonatot.
+Beágyazott jelentés létrehozásakor a kibocsátott tokenek egy adott adatkészlethez tartoznak. A jogkivonatokat ugyanahhoz az elemhez tartozó beágyazási URL-címhez kell társítani, hogy mindegyik egyedi jogkivonattal rendelkezzen. Beágyazott jelentés létrehozásához *adatkészlet. Read és Workspace. report. Create* hatóköröket kell megadni a hozzáférési jogkivonatban.
 
 ## <a name="create-access-token-needed-to-create-new-report"></a>Új jelentés létrehozásához szükséges hozzáférési jogkivonat létrehozása
 
-A Power BI munkaterületi gyűjtemények használata egy beágyazási token, amely HMAC-val aláírt JSON webes jogkivonatainak. A jogkivonatok van bejelentkezve a Power BI-Munkaterületcsoport a hozzáférési kulcsára. Beágyazási tokenek, alapértelmezés szerint, egy jelentés beágyazása egy alkalmazásba való csak olvasási hozzáférést biztosítanak. Beágyazási tokenek egy adott jelentéshez kibocsátott, és egy beágyazási URL-címet társítva kell lennie.
+Power BI munkaterület-gyűjtemények beágyazási tokent használnak, amely HMAC aláírt JSON webes jogkivonatokat használ. A tokenek a Power BI munkaterület-gyűjtemény hozzáférési kulcsával vannak aláírva. A beágyazási tokenek alapértelmezés szerint csak olvasási hozzáférést biztosítanak a jelentésekhez az alkalmazásba való beágyazáshoz. A beágyazási tokenek egy adott jelentéshez lettek kiadva, és egy beágyazási URL-címmel kell társítani őket.
 
-Hozzáférési jogkivonatokat a kiszolgálón kell létrehozni a hozzáférési kulcsokat használ a tokenek bejelentkezési/titkosításához. A hozzáférési jogkivonat létrehozása információkért lásd: [Authenticating and authorizing with és a Power BI-Munkaterületcsoportok](app-token-flow.md). Emellett áttekintheti a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metódust. Íme egy példa, Mi ez módon jelenik meg a Power bi-ban a .NET SDK használatával.
+A hozzáférési jogkivonatokat a kiszolgálón kell létrehozni, mivel a jogkivonatok aláírására/titkosítására a hozzáférési kulcsok használhatók. A hozzáférési jogkivonat létrehozásával kapcsolatos információkért lásd: [Power bi munkaterület-gyűjtemények hitelesítése és engedélyezése](app-token-flow.md). A [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metódust is ellenőrizheti. Íme egy példa arra, hogy ez hogyan fog kinézni a .NET SDK for Power BI használatával.
 
-Ebben a példában az adathalmaz-azonosító, amely az új jelentés létrehozása a kívánt van. Is hozzá kell adnunk a a hatókörök *Dataset.Read és Workspace.Report.Create*.
+Ebben a példában az adatkészlet-azonosítót szeretnénk létrehozni az új jelentés létrehozásához. Emellett hozzá kell adnia az adatkészlet hatóköreit *. olvasás és munkaterület. jelentés. létrehozás*.
 
-A *PowerBIToken osztály* kell telepíteni a [Power BI fő NuGut csomagot](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+A *PowerBIToken osztályhoz* telepítenie kell az [Power bi Core NuGut csomagot](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **NuGet-csomag telepítése**
 
@@ -42,7 +42,7 @@ A *PowerBIToken osztály* kell telepíteni a [Power BI fő NuGut csomagot](https
 Install-Package Microsoft.PowerBI.Core
 ```
 
-**C#-kód**
+**C#kód**
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -54,12 +54,12 @@ PowerBIToken embedToken = PowerBIToken.CreateReportEmbedTokenForCreation(workspa
 var token = embedToken.Generate("{access key}");
 ```
 
-## <a name="create-a-new-blank-report"></a>Hozzon létre egy új üres jelentés
+## <a name="create-a-new-blank-report"></a>Új üres jelentés létrehozása
 
-Annak érdekében, hogy létrehoz egy új jelentést, meg kell adni a konfigurációjának létrehozása. Ennek tartalmaznia kell a hozzáférési jogkivonatot, a embedURL és a datasetID, amelyet meg szeretnénk szemben a jelentés létrehozásához. Ehhez az szükséges, hogy telepítse a nuget [Power BI JavaScript csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl lesz, https://embedded.powerbi.com/appTokenReportEmbed.
+Új jelentés létrehozásához meg kell adni a létrehozási konfigurációt. Ennek tartalmaznia kell a hozzáférési jogkivonatot, a embedURL és azt a datasetID, amelyhez a jelentést létre kívánja hozni. Ehhez telepítenie kell a nuget [Power bi JavaScript-csomagot](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). A embedUrl csak https://embedded.powerbi.com/appTokenReportEmbed lesz.
 
 > [!NOTE]
-> Használhatja a [JavaScript Jelentésbeágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/) funkció teszteléséhez. Hitelesítésikód-példák a különböző műveletek elérhető is biztosít.
+> A [JavaScript-jelentés beágyazási mintája](https://microsoft.github.io/PowerBI-JavaScript/demo/) használható a funkciók tesztelésére. Emellett az elérhető különböző műveletekhez is tartalmaz példákat.
 
 **NuGet-csomag telepítése**
 
@@ -67,7 +67,7 @@ Annak érdekében, hogy létrehoz egy új jelentést, meg kell adni a konfigurá
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
-**JavaScript-kódot**
+**JavaScript-kód**
 
 ```html
 <div id="reportContainer"></div>
@@ -87,13 +87,13 @@ var embedCreateConfiguration = {
 </script>
 ```
 
-Hívó *powerbi.createReport()* lehetővé teszi egy üres vászonból szerkesztési módban belül jelennek meg a *div* elemet.
+A *powerbi. createReport ()* hívása egy üres vászonat tesz lehetővé szerkesztési módban, amely a *div* elemen belül jelenik meg.
 
 ![Új üres jelentés](media/create-report-from-dataset/create-new-report.png)
 
 ## <a name="save-new-reports"></a>Új jelentések mentése
 
-A jelentés nem jön létre, amíg meg nem hívja a **Mentés másként** műveletet. Ez a Fájl menüből, és a JavaScript-alapú elvégezhető.
+A jelentés addig nem jön létre, amíg meg nem hívja a **Mentés másként** műveletet. Ezt a fájl menüből vagy a JavaScriptből teheti meg.
 
 ```javascript
  // Get a reference to the embedded report.
@@ -108,13 +108,13 @@ A jelentés nem jön létre, amíg meg nem hívja a **Mentés másként** művel
 ```
 
 > [!IMPORTANT]
-> Új jelentés létrehozása után csak **Mentés másként** nevezzük. Miután menti, a vászon továbbra is megjeleníti az adatkészlet szerkesztési mód és a nem a jelentésben. Töltse be újra az új jelentést, mint bármilyen más jelentés kell.
+> A rendszer csak a **Mentés másként** nevű új jelentést hozza létre. A mentés után a vászon továbbra is szerkesztési módban jeleníti meg az adatkészletet, nem pedig a jelentést. Újra kell töltenie az új jelentést, mint bármilyen más jelentést.
 
-![Menü - fájl mentése másként](media/create-report-from-dataset/save-new-report.png)
+![Fájl menü – Mentés másként](media/create-report-from-dataset/save-new-report.png)
 
 ## <a name="load-the-new-report"></a>Az új jelentés betöltése
 
-Annak érdekében, hogy kommunikáljanak az új jelentést szeretne beágyazhatja a ugyanúgy, mint az alkalmazás beágyazása egy hagyományos jelentésben, ami azt jelenti, egy új jogkivonatot kell kiállítani. kifejezetten az új jelentést, és majd hívja meg a beágyazási metódust.
+Ahhoz, hogy együttműködjön az új jelentéssel, a beágyazást ugyanúgy be kell ágyazni, ahogy az alkalmazás egy normál jelentést ágyaz be, ami azt jelenti, hogy az új jogkivonatot kifejezetten az új jelentéshez kell kiadni, majd meg kell hívnia a beágyazási módszert.
 
 ```html
 <div id="reportContainer"></div>
@@ -133,9 +133,9 @@ var embedConfiguration = {
 </script>
 ```
 
-## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Mentés automatizálását és a "mentett" esemény használatával egy új jelentés betöltése
+## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Új jelentés mentésének és betöltésének automatizálása a "Saved" esemény használatával
 
-Annak érdekében, hogy automatizálhatják a "Mentés másként" és az új jelentést, majd betöltéséhez használja az "mentett" esemény teheti. Ezt az eseményt a mentési művelet befejeződött, és adja vissza, egy Json-objektum, amely tartalmazza az új Jelentésazonosító, a jelentés neve, a régi Jelentésazonosító (ha volt ilyen), és ha a művelet volt a Mentés másként vagy menthet.
+A "Mentés másként" folyamatának automatizálásához, majd az új jelentés betöltéséhez használhatja a "Saved" eseményt. Ez az esemény akkor aktiválódik, ha a mentési művelet befejeződött, és egy olyan JSON-objektumot ad vissza, amely tartalmazza az új Jelentésazonosító, a jelentés nevét, a régi Jelentésazonosító (ha van ilyen), és ha a művelet mentés vagy Mentés volt.
 
 ```json
 {
@@ -146,7 +146,7 @@ Annak érdekében, hogy automatizálhatják a "Mentés másként" és az új jel
 }
 ```
 
-Segítségével automatizálja a folyamatot a "mentett" eseményt figyelni, az új Jelentésazonosító igénybe, az új jogkivonat létrehozása és az új jelentés beágyazása.
+A "Saved" esemény figyelésére szolgáló folyamat automatizálásához hajtsa végre az új Jelentésazonosító, hozza létre az új jogkivonatot, és ágyazza be az új jelentést.
 
 ```html
 <div id="reportContainer"></div>
@@ -196,7 +196,7 @@ var embedCreateConfiguration = {
 </script>
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 [Bevezetés a minta használatába](get-started-sample.md)  
 [Jelentések mentése](save-reports.md)  
@@ -204,7 +204,7 @@ var embedCreateConfiguration = {
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[A Power BI alapvető NuGut csomag](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
-[A Power BI JavaScript-csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
+[Power BI Core NuGut csomag](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
+[Power BI JavaScript-csomag](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)

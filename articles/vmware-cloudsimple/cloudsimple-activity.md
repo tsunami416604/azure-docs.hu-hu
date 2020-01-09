@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-megoldás a CloudSimple által – CloudSimple Activity Management
+title: CloudSimple-tevékenységek kezelése
+titleSuffix: Azure VMware Solution by CloudSimple
 description: A CloudSimple VMware-megoldásának tevékenység-fogalmait ismerteti
 author: sharaths-cs
 ms.author: dikamath
@@ -8,22 +9,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430260"
 ---
 # <a name="activity-management-overview"></a>A tevékenységek kezelése – áttekintés
 
 A CloudSimple nyomon követi az összes olyan tevékenységet, amely hatással lehet a saját felhőalapú környezetének működésére. A tevékenységek közé tartoznak a riasztások, az események, a feladatok és a naplózási tevékenységek. A [tevékenység oldalai](monitor-activity.md) összefoglalják az összes aktuális tevékenységet, és részletezik a további részleteket.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Események
 
 Az események nyomon követik a felhasználói és rendszertevékenységeket a CloudSimple-portálon. Az események egy adott erőforráshoz tartozó tevékenységet és a hatás súlyosságát mutatják be.  Az eseményeket a CloudSimple-portálon tekintheti meg.
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 
 A riasztások a CloudSimple-környezetben felmerülő jelentős tevékenységekről szóló értesítések. A számlázást vagy a felhasználói hozzáférést befolyásoló események riasztásként jelennek meg.  A riasztásokat a CloudSimple-portálról is elfogadhatja.
 
@@ -35,6 +36,6 @@ A feladatok minden olyan felhasználói műveletet nyomon követhetnek, amely 30
 
 A naplók nyomon követhetik a felhasználói műveleteket. A naplók tartalmazzák a felhasználó által a művelethez megadott paramétereket.  A naplók segítségével figyelheti a felhasználói tevékenységeket az összes felhasználó számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A fiók összegzésének megtekintése](account.md)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f113366363de40f8934a9db6cb3a82cc477f03
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430018"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure Resource Manager használatával
 
@@ -42,10 +42,10 @@ Felhasználó által hozzárendelt felügyelt identitást nem lehet listázni é
 
 A Azure Portal és a parancsfájlok futtatásához hasonlóan Azure Resource Manager-sablonok lehetővé teszik az Azure-erőforráscsoport által definiált új vagy módosított erőforrások telepítését. A sablonok szerkesztéséhez és üzembe helyezéséhez több lehetőség is rendelkezésre áll, a helyi és a portálon is, beleértve a következőket:
 
-- [Egyéni sablon használata az Azure piactéren](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi, hogy teljesen új sablont hozzon létre, vagy egy meglévő gyakori vagy gyors üzembe helyezési [sablonon](https://azure.microsoft.com/documentation/templates/)alapuljon.
-- Egy meglévő erőforráscsoporthoz származtatva, az [eredeti telepítésből](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)vagy az üzemelő példány [aktuális állapotától](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)származó sablon exportálásával.
+- [Egyéni sablon használata az Azure piactéren](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi, hogy teljesen új sablont hozzon létre, vagy egy meglévő gyakori vagy gyors üzembe helyezési [sablonon](https://azure.microsoft.com/documentation/templates/)alapuljon.
+- Egy meglévő erőforráscsoporthoz származtatva, az [eredeti telepítésből](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)vagy az üzemelő példány [aktuális állapotától](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)származó sablon exportálásával.
 - Helyi JSON- [szerkesztő (például vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)használata, majd a PowerShell vagy a parancssori felület használatával történő feltöltés és üzembe helyezés.
-- A Visual Studio [Azure erőforráscsoport-projekt](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) használatával hozzon létre és helyezzen üzembe egy sablont. 
+- A Visual Studio [Azure erőforráscsoport-projekt](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) használatával hozzon létre és helyezzen üzembe egy sablont. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: f55b6e743ff82d4192cbdd91ba54c92efef432bc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427576"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Első lépések az R programozási nyelv Azure Machine Learning Studio (klasszikus)
 
@@ -23,9 +23,9 @@ ms.locfileid: "73838747"
 
 ## <a name="introduction"></a>Bevezetés
 
-Ez az oktatóanyag segítséget nyújt a Azure Machine Learning Studio (klasszikus) kiterjesztésének megkezdéséhez az R programozási nyelv használatával. Kövesse ezt az R programozási oktatóanyagot az R-kód létrehozásához, teszteléséhez és végrehajtásához a studión belül (klasszikus). Az oktatóanyagban végzett munka során egy teljes előrejelző megoldást fog létrehozni az R nyelv használatával a Studio klasszikus verziójában.  
+Ez az oktatóanyag segítséget nyújt a Azure Machine Learning Studio (klasszikus) kiterjesztésének megkezdéséhez az R programozási nyelv használatával. Kövesse ezt az R programozási oktatóanyagot az R-kód létrehozásához, teszteléséhez és végrehajtásához a studión belül (klasszikus). Az oktatóanyagban végzett munka során egy teljes előrejelzési megoldást fog létrehozni a Studio (klasszikus) R-nyelvének használatával.  
 
-A Azure Machine Learning Studio klasszikus verziója számos hatékony gépi tanulási és adatkezelési modult tartalmaz. A nagy teljesítményű R nyelv leírása a lingua franca of Analytics. Szerencsére a Studio klasszikus verziójában az elemzés és az adatkezelés is bővíthető az R használatával. Ez a kombináció a Studio klasszikus verziójának méretezhetőségét és egyszerű üzembe helyezését teszi lehetővé az R rugalmasságával és mélyreható elemzésével.
+A Azure Machine Learning Studio (klasszikus) számos hatékony gépi tanulási és adatkezelési modult tartalmaz. A nagy teljesítményű R nyelv leírása a lingua franca of Analytics. Szerencsére a Studio (klasszikus) elemzési és adatkezelési szolgáltatását az R használatával lehet kiterjeszteni. Ez a kombináció a Studio (klasszikus) méretezhetőségét és egyszerű üzembe helyezését teszi lehetővé az R rugalmasságával és mélyreható elemzésével.
 
 ### <a name="forecasting-and-the-dataset"></a>Előrejelzés és az adatkészlet
 
@@ -39,23 +39,23 @@ A cikkben használt adatok, valamint az R-parancsfájlok is letölthetők a [Mac
 
 ### <a name="organization"></a>Szervezet
 
-A Azure Machine Learning Studio-környezet klasszikus verziójában megtudhatja, hogyan hozhat létre, tesztelheti és hajthat végre elemzési és adatmanipulációs R-kódokat a következő lépések végrehajtásával:  
+A Azure Machine Learning Studio (klasszikus) környezetben az elemzési és adatkezelési R-kód létrehozásával, tesztelésével és végrehajtásával kapcsolatban számos lépéssel elsajátítjuk a folyamatokat.  
 
-* Először is megismerheti az R nyelv használatának alapjait Azure Machine Learning Studio környezet klasszikus verziójában.
-* Ezt követően megbeszéljük, hogy az I/O-t, az R-kódot és a grafikát a Azure Machine Learning Studio környezet klasszikus verziójának különböző szempontjaival tárgyaljuk.
+* Először is megismerheti az R nyelv használatának alapjait a Azure Machine Learning Studio (klasszikus) környezetben.
+* Ezt követően megbeszéljük az I/O adatkezelési szempontjait, az R-kódot és a grafikát a Azure Machine Learning Studio (klasszikus) környezetben.
 * Az előrejelzési megoldás első részét az adattisztítás és-átalakítás kódjának létrehozásával fogjuk létrehozni.
 * Az adatok előkészítésekor a rendszer elvégzi az adatkészlet számos változója közötti korrelációk elemzését.
 * Végezetül létrehozunk egy szezonális idősorozat-előrejelzési modellt a tejtermékek termeléséhez.
 
 ## <a id="mlstudio"></a>Az R nyelvvel való interakció Machine Learning Studio (klasszikus)
 
-Ez a szakasz végigvezeti az R programozási nyelv Machine Learning Studio (klasszikus) környezetben való interakciójának alapjain. Az R nyelv hatékony eszközt biztosít a testreszabott elemzési és adatkezelési modulok létrehozásához a Azure Machine Learning Studio környezet klasszikus változatán belül.
+Ez a szakasz végigvezeti az R programozási nyelv Machine Learning Studio (klasszikus) környezetben való interakciójának alapjain. Az R nyelv hatékony eszközt biztosít a testreszabott elemzési és adatkezelési modulok létrehozásához a Azure Machine Learning Studio (klasszikus) környezetben.
 
-A RStudio használatával kis méretben fejlesztem, tesztelni és hibakeresést végezhetek az R-kódban. Ezt a kódot a rendszer kivágja és beilleszti egy [Execute R script][execute-r-script] modulba, amely készen áll a Machine learning Studio klasszikus verziójában való futtatásra.  
+A RStudio használatával kis méretben fejlesztem, tesztelni és hibakeresést végezhetek az R-kódban. Ezt a kódot ezután kivágja és beilleszti egy [végrehajtási R script][execute-r-script] modulba, amely készen áll a Azure Machine learning Studio (klasszikus) futtatására.  
 
 ### <a name="the-execute-r-script-module"></a>Az R-szkript végrehajtása modul
 
-A Machine Learning Studio klasszikus verziójában az R-szkriptek az [r szkript végrehajtása][execute-r-script] modulon belül futnak. Az 1. ábrán látható példa a Machine Learning Studio klasszikus verziójának [végrehajtási R szkript][execute-r-script] moduljának végrehajtására.
+Machine Learning Studio (klasszikus) belül az R-parancsfájlok az R- [szkript végrehajtása][execute-r-script] modulon belül futnak. Az 1. ábrán látható példa az [R-szkriptek végrehajtása][execute-r-script] Machine learning Studio (klasszikus) modulra.
 
  ![R programozási nyelv: a Machine Learning Studioben kiválasztott R-szkript végrehajtása modul (klasszikus)](./media/r-quickstart/fig1.png)
 
@@ -69,7 +69,7 @@ Az 1. ábrára hivatkozva vizsgáljuk meg az Machine Learning Studio (klasszikus
 
 A cikk további részében természetesen az [R szkript végrehajtásának][execute-r-script] részletes ismertetését fogjuk megbeszélni.
 
-Összetett R-függvények használata esetén azt javasoljuk, hogy szerkessze, tesztelje és végezzen hibakeresést a RStudio-ben. Csakúgy, mint bármely szoftverfejlesztés esetében, fokozatosan kiterjesztheti a kódot, és tesztelheti kis, egyszerű tesztelési esetekben. Ezután vágja ki és illessze be a függvényeket az R-szkript [végrehajtása][execute-r-script] modul r-szkript ablakába. Ez a módszer lehetővé teszi a RStudio integrált fejlesztési környezet (IDE) és a Azure Machine Learning Studio klasszikus verziójának a kiaknázását.  
+Összetett R-függvények használata esetén azt javasoljuk, hogy szerkessze, tesztelje és végezzen hibakeresést a RStudio-ben. Csakúgy, mint bármely szoftverfejlesztés esetében, fokozatosan kiterjesztheti a kódot, és tesztelheti kis, egyszerű tesztelési esetekben. Ezután vágja ki és illessze be a függvényeket az R-szkript [végrehajtása][execute-r-script] modul r-szkript ablakába. Ez a módszer lehetővé teszi a RStudio integrált fejlesztési környezet (IDE) és a Azure Machine Learning Studio (klasszikus) teljesítményének kihasználását.  
 
 #### <a name="execute-r-code"></a>R-kód végrehajtása
 
@@ -77,17 +77,17 @@ Az [r-szkript végrehajtása][execute-r-script] modulban az r-kód a **Futtatás
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>A Azure Machine Learning védelmi R-kódolása
 
-Ha R-kódot fejleszt a-hez, tegyük fel, hogy a webszolgáltatások a Azure Machine Learning Studio klasszikus verzióját használják, érdemes megtervezni, hogy a kód hogyan fog működni a nem várt adatbevitelsel és kivételekkel kapcsolatban. Az egyértelműség érdekében a kód legtöbb példájában nem szerepelt az ellenőrzés vagy a kivétel kezelésének módja. A folytatáshoz azonban több példát is biztosítunk a függvények számára az R kivétel-kezelési képességének használatával.  
+Ha R-kódot fejleszt, például egy webszolgáltatást Azure Machine Learning Studio (klasszikus) használatával, érdemes megterveznie, hogyan kezelje a kód váratlan adatbevitelt és kivételeket. Az egyértelműség érdekében a kód legtöbb példájában nem szerepelt az ellenőrzés vagy a kivétel kezelésének módja. A folytatáshoz azonban több példát is biztosítunk a függvények számára az R kivétel-kezelési képességének használatával.  
 
 Ha az R-kivételek kezelésének átfogóbb kezelésére van szüksége, akkor azt javasoljuk, hogy olvassa el a könyv megfelelő részeit az alább felsorolt Wickham [további olvasnivalóban](#appendixb).
 
 #### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>Hibakeresés és tesztelés az R-ben Machine Learning Studio (klasszikus)
 
-Az ismételt próbálkozáshoz azt javasoljuk, hogy az R-kódot kis méretekben tesztelje és hibakeresése a RStudio-ben. Vannak azonban olyan esetek, amikor le kell követnie az R-kód problémáit az [r-szkript végrehajtása][execute-r-script] során. Emellett érdemes megnézni az eredményeket a Machine Learning Studio klasszikus verziójában.
+Az ismételt próbálkozáshoz azt javasoljuk, hogy az R-kódot kis méretekben tesztelje és hibakeresése a RStudio-ben. Vannak azonban olyan esetek, amikor le kell követnie az R-kód problémáit az [r-szkript végrehajtása][execute-r-script] során. Emellett érdemes megnézni az eredményeket Machine Learning Studio (klasszikus).
 
-Az R-kód végrehajtásának és a Azure Machine Learning Studio platform klasszikus verziójának kimenete elsősorban a kimenet. log naplófájlban található. Néhány további információ jelenik meg a error. log naplófájlban.  
+Az R-kód és a Azure Machine Learning Studio (klasszikus) platform végrehajtásának kimenete elsődlegesen a kimenet. log naplófájlban található. Néhány további információ jelenik meg a error. log naplófájlban.  
 
-Ha hiba történik az R-kód futtatásakor Machine Learning Studio klasszikus verziójában, akkor az első lépés a következő: error. log. Ez a fájl hasznos hibaüzeneteket tartalmazhat, amelyek segítenek megérteni és elhárítani a hibát. A hiba. log naplófájl megtekintéséhez a hibát tartalmazó [végrehajtási R-parancsfájl][execute-r-script] **Tulajdonságok paneljén** válassza a **hibanapló megtekintése** lehetőséget.
+Ha az R-kód futtatása közben Machine Learning Studio (klasszikus) hiba történik, az első lépés a következő: error. log. Ez a fájl hasznos hibaüzeneteket tartalmazhat, amelyek segítenek megérteni és elhárítani a hibát. A hiba. log naplófájl megtekintéséhez a hibát tartalmazó [végrehajtási R-parancsfájl][execute-r-script] **Tulajdonságok paneljén** válassza a **hibanapló megtekintése** lehetőséget.
 
 Például a következő R-kódot futtattam egy nem definiált változó y értékkel egy [Execute R script][execute-r-script] modulban:
 
@@ -133,7 +133,7 @@ A RStudio egy széles körben használt IDE az R-hez. RStudio használok a jelen
 
 Ha nincs telepítve az R programozási nyelv az asztali gépen, azt javasoljuk, hogy tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a [https://www.r-project.org/](https://www.r-project.org/)címen elérhető átfogó r Archive Network (Cran) címen érhető el. Letölthetők a Windows, Mac OS és a Linux/UNIX rendszerhez készült letöltések. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatmanipulációs csomagot tartalmaz.
 
-Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX rendszerű letöltéseit http://www.rstudio.com/products/RStudio/címen találja. Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
+Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX rendszerű letöltéseit http://www.rstudio.com/products/RStudio/ címen találja. Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
 
 A RStudio oktatóanyagának bemutatása [a RSTUDIO ide használatával](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)érhető el.
 
@@ -149,9 +149,9 @@ A szakasz teljes kódja a [MachineLearningSamples-notebook/Studio-Samples](https
 
 #### <a id="loading"></a>Az adatkészlet betöltése
 
-Először töltse be a **csdairydata. csv** fájlt a Azure Machine learning Studio klasszikus verziójába.
+Először töltse be a **csdairydata. csv** fájlt Azure Machine learning Studioba (klasszikus).
 
-1. Indítsa el Azure Machine Learning Studio környezetének klasszikus verzióját.
+1. Indítsa el a Azure Machine Learning Studio (klasszikus) környezetet.
 1. Válassza a képernyő bal alsó sarkában található **+ új** lehetőséget, majd válassza az **adatkészlet**lehetőséget.
 1. Válasszon a **helyi fájlból**, majd **tallózással** válassza ki a fájlt.
 1. Győződjön meg arról, hogy az adatkészlet típusaként az **általános CSV-fájlt (. csv)** jelölte meg.
@@ -160,7 +160,7 @@ Először töltse be a **csdairydata. csv** fájlt a Azure Machine learning Stud
 
 #### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Most, hogy a Machine Learning Studio klasszikus verziójában vannak adatai, létre kell hozni egy kísérletet az elemzés elvégzéséhez.  
+Most, hogy Machine Learning Studio (klasszikus) adataink vannak, létre kell hozni egy kísérletet az elemzés elvégzéséhez.  
 
 1. Válassza az **+ új** lehetőséget a bal alsó sarokban, majd válassza a **kísérlet**, majd az **üres kísérlet**lehetőséget.
 1. A kísérletet a lap tetején, a **... címmel létrehozott kísérlet** kiválasztásával és módosításával nevezheti el. Például módosítsa a **hitelesítésszolgáltatói tejtermékek elemzését**.
@@ -185,11 +185,11 @@ Tekintsük át a kísérletbe betöltött adatgyűjtést. A kísérletben válas
 
 *4. ábra. A cadairydata. csv adatkészlet összefoglalása.*
 
-Ebben a nézetben sok hasznos információ látható. Az adatkészlet első néhány sorát láthatjuk. Ha kiválasztunk egy oszlopot, a statisztikai szakasz további információkat jelenít meg az oszlopról. A szolgáltatás típusa sorban például megtekintheti, hogy milyen adattípusok vannak hozzárendelve az oszlophoz Azure Machine Learning Studio klasszikus verziója. Egy gyors kinézete, hogy ez egy jó józanság, mielőtt elkezdjük a komoly munkát.
+Ebben a nézetben sok hasznos információ látható. Az adatkészlet első néhány sorát láthatjuk. Ha kiválasztunk egy oszlopot, a statisztikai szakasz további információkat jelenít meg az oszlopról. A szolgáltatás típusa sor például megmutatja, hogy milyen adattípusok vannak hozzárendelve az oszlophoz Azure Machine Learning Studio (klasszikus). Egy gyors kinézete, hogy ez egy jó józanság, mielőtt elkezdjük a komoly munkát.
 
 ### <a name="first-r-script"></a>Első R-szkript
 
-Hozzunk létre egy egyszerű, első R-szkriptet, amely a Azure Machine Learning Studio klasszikus verziójában kísérletezik. Létrehoztam és teszteltem a következő szkriptet a RStudio-ben.  
+Hozzunk létre egy egyszerű, első R-szkriptet, amely Azure Machine Learning Studio (klasszikus) belül kísérletezni próbál. Létrehoztam és teszteltem a következő szkriptet a RStudio-ben.  
 
 ```R
 ## Only one of the following two lines should be used
@@ -204,7 +204,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 maml.mapOutputPort('cadairydata')
 ```
 
-Most át kell vinni ezt a szkriptet a Azure Machine Learning Studio klasszikus verziójára. Egyszerűen kivágással és beillesztéssel. Ebben az esetben azonban az R-szkriptet egy zip-fájlon keresztül viszem át.
+Most ezt a szkriptet át kell Azure Machine Learning Studio (klasszikus). Egyszerűen kivágással és beillesztéssel. Ebben az esetben azonban az R-szkriptet egy zip-fájlon keresztül viszem át.
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>Adatok bevitele az R-parancsfájl végrehajtása modulba
 
@@ -224,7 +224,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> A Azure Machine Learning Studio klasszikus verziója a zip-fájlokban lévő fájlokat úgy kezeli, mintha a src/könyvtárban vannak, ezért a fájlneveket előtaggal kell elvégeznie. Ha például a zip a zip-fájl gyökerében `yourfile.R` és `yourData.rdata` fájlokat tartalmazza, akkor `source` és `load`használatakor ezeket `src/yourfile.R`ként és `src/yourData.rdata`ként fogja kezelni.
+> Azure Machine Learning Studio (klasszikus) a zip-fájlokban lévő fájlokat úgy kezeli, mintha a src/könyvtárban vannak, ezért a fájlneveket előtaggal kell elvégeznie. Ha például a zip a zip-fájl gyökerében `yourfile.R` és `yourData.rdata` fájlokat tartalmazza, akkor `source` és `load`használatakor ezeket `src/yourfile.R`ként és `src/yourData.rdata`ként fogja kezelni.
 
 Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betöltéséről. Miután létrehozta és tesztelte az előző szakaszban bemutatott R-szkriptet, tegye a következőket:
 
@@ -245,7 +245,7 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
 
 1. Hozzon létre egy zip-fájlt, és másolja a szkriptet ebbe a zip-fájlba. Windows rendszeren kattintson a jobb gombbal a fájlra, és válassza a **Küldés**, majd a **tömörített mappa**lehetőséget. Ezzel létrehoz egy új zip-fájlt, amely a következőt tartalmazza: "simpleplot. R "fájl.
 
-1. Adja hozzá a fájlt a Machine Learning Studio klasszikus verziójában található **adatkészletekhez** , és adja meg a típust **zip**-ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
+1. Adja hozzá a fájlt a Azure Machine Learning Studio (klasszikus) **adatkészletekhez** , és adja meg a típust **zip**-ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
 
 1. Húzza a zip-fájlt az **adatkészletek** rajzsablonról a **ml Studio (klasszikus) vászonra**.
 
@@ -374,7 +374,7 @@ A konverziók szintaxisa egyszerű: `as.datatype()`. Ilyen típusú átalakítá
 
 Az előző szakaszban megadott oszlopok adattípusai megvizsgálva: az összes oszlop numerikus típusú, a "Month" feliratú oszlop kivételével, amely karakter típusú. Alakítsa át ezt egy tényezőre, és tesztelje az eredményeket.  
 
-Törölte azt a sort, amely létrehozta a scatterplot mátrixot, és hozzáadta a "Month" oszlopot egy tényezőhöz. A saját kísérletben most kivágtam és beillesztem az R-kódot az [r-szkript végrehajtása][execute-r-script] modul kódjának ablakába. Frissíthetjük a zip-fájlt, és feltölthetik a Azure Machine Learning Studio klasszikus verziójára, de ez több lépést is igénybe vehet.  
+Törölte azt a sort, amely létrehozta a scatterplot mátrixot, és hozzáadta a "Month" oszlopot egy tényezőhöz. A saját kísérletben most kivágtam és beillesztem az R-kódot az [r-szkript végrehajtása][execute-r-script] modul kódjának ablakába. Frissítheti a zip-fájlt, és feltöltheti Azure Machine Learning Studio (klasszikus), de ez több lépést is igénybe vehet.  
 
 ```R
 ## Only one of the following two lines should be used
@@ -468,7 +468,7 @@ Az R dataframes támogatja a hatékony szűrési képességeket. Az adatkészlet
 Az adathalmazon egy kis szűrésre van szükségünk. Ha megtekinti a cadairydata dataframe lévő oszlopokat, két felesleges oszlop jelenik meg. Az első oszlop csak sorszámmal rendelkezik, ami nem nagyon hasznos. A második oszlop, év. hónap, redundáns adatokat tartalmaz. Ezeket az oszlopokat egyszerűen kizárhatja a következő R-kód használatával.
 
 > [!NOTE]
-> Mostantól ebben a szakaszban az [R-szkriptek végrehajtása][execute-r-script] modulban felvenni kívánt további kódokat is megmutatom. Új sort adok hozzá az `str()` függvény **előtt** . Ezt a funkciót használom a Azure Machine Learning Studio klasszikus verziójának eredményeinek ellenőrzéséhez.
+> Mostantól ebben a szakaszban az [R-szkriptek végrehajtása][execute-r-script] modulban felvenni kívánt további kódokat is megmutatom. Új sort adok hozzá az `str()` függvény **előtt** . Ezt a funkciót használom a Azure Machine Learning Studio (klasszikus) eredményeinek ellenőrzéséhez.
 
 Az [r-szkript végrehajtása][execute-r-script] modulban adja hozzá a következő sort az r-kódhoz.
 
@@ -503,7 +503,7 @@ Futtassa ezt a kódot a kísérletben, és vizsgálja meg az eredményt a kimene
 
 *11. ábra. Az dataframe összefoglalása két oszloppal eltávolítva.*
 
-Jó hír! Megkapjuk a várt eredményeket.
+Van egy jó hírünk! Megkapjuk a várt eredményeket.
 
 ### <a name="add-a-new-column"></a>Új oszlop hozzáadása
 
@@ -1030,7 +1030,7 @@ A kód futtatása a Time Series-sorozatot ábrázolja a 22. ábrán látható R-
 
 Egy idősorozat-objektumot hozott létre, és megtekintette az adatokat, kezdjük egy trend-modellt létrehozni a kaliforniai tejtermék-termelési adatokat illetően. Ezt egy idősorozat-regresszióval teheti meg. Azonban a mintaterületből nem egyértelmű, hogy a betanítási adatokban a megfigyelt trendet pontosan modellezni fogjuk.
 
-Az adat kis mérete miatt építem a RStudio trend modelljét, majd kivágja és beilleszti az eredményül kapott modellt a Azure Machine Learning Studio klasszikus verziójába. A RStudio interaktív környezetet biztosít az ilyen típusú interaktív elemzésekhez.
+Az adat kis mérete miatt építem a RStudio trend modelljét, majd kivágja és beilleszti az eredményül kapott modellt Azure Machine Learning Studioba (klasszikus). A RStudio interaktív környezetet biztosít az ilyen típusú interaktív elemzésekhez.
 
 Első kísérletként egy polinom-regressziót próbálok meg 3-ig terjedő hatáskörökkel. Az ilyen típusú modellek valós veszélyt jelentenek. Ezért érdemes elkerülni a nagy rendelési feltételeket. A `I()` függvény gátolja a tartalom értelmezését (a "as is" tartalmát értelmezi), és lehetővé teszi, hogy egy regressziós egyenletben egy szó szerint értelmezett függvényt írjon.
 
@@ -1094,7 +1094,7 @@ Ez a következőt hozza létre.
 
 Ez jobban néz ki. Az összes feltétel jelentős. A 2e-16 érték azonban alapértelmezett érték, és nem lehet túl komolyan venni.  
 
-A "józan ész" teszt során tegyük fel, hogy a kaliforniai tejtermék-termelési adatokat tartalmazó idősorozat ábrázolja a látható trend görbét. Felvettem a következő kódot a klasszikus Azure Machine Learning Studio az [R script][execute-r-script] Model (nem RStudio) futtatásával a modell létrehozásához és egy mintaterület készítéséhez. Az eredmény a 23. ábrán látható.
+A "józan ész" teszt során tegyük fel, hogy a kaliforniai tejtermék-termelési adatokat tartalmazó idősorozat ábrázolja a látható trend görbét. Felvettem a következő kódot a Azure Machine Learning Studio (klasszikus) [R-szkriptek végrehajtása][execute-r-script] (nem RStudio) használatával a modell létrehozásához és a mintaterület készítéséhez. Az eredmény a 23. ábrán látható.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1156,7 +1156,7 @@ Ez a következőt hozza létre.
 
 Láthatjuk, hogy a modell már nem rendelkezik elfogási kifejezéssel, és 12 jelentős hónapra vonatkozó tényezővel rendelkezik. Pontosan ezt láttuk.
 
-Tegyük fel, hogy a kaliforniai tejtermékek termelési információinak egy másik idősorozata látható, hogy milyen jól működik a szezonális modell. Felvettem a következő kódot a klasszikus verzióban, Azure Machine Learning Studio az [R-szkriptet][execute-r-script] a modell létrehozásához és egy mintaterület készítéséhez.
+Tegyük fel, hogy a kaliforniai tejtermékek termelési információinak egy másik idősorozata látható, hogy milyen jól működik a szezonális modell. Felvettem a következő kódot a Azure Machine Learning Studio (klasszikus) [R-szkript végrehajtásával][execute-r-script] a modell létrehozásához és egy mintaterület készítéséhez.
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,7 +1165,7 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-A kód Azure Machine Learning Studio klasszikus verziójában való futtatása a 24. ábrán látható ábrát állítja elő.
+A kód Azure Machine Learning Studioban (klasszikus) való futtatása a 24. ábrán látható ábrát állítja elő.
 
 ![Kaliforniai tejtermékek gyártása a modellel, beleértve az idényjellegű hatásokat](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1310,7 +1310,7 @@ A RStudio elég jól dokumentálva. Íme néhány hivatkozás a RStudio dokument
 
 ## <a id="appendixb"></a>További olvasnivalók
 
-Ez az R programozási oktatóanyag ismerteti az alapismereteket, amelyekkel az R nyelvet kell használnia a Azure Machine Learning Studio klasszikus verziójával. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
+Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Azure Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
 
 * A [kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) az Emmanuel Paradis jó kiindulópontja az R.  
 * [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. Al. egy kicsit mélyebbre kerül.

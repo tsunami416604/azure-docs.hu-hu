@@ -1,6 +1,6 @@
 ---
 title: Adatlekérdezés az előzetes verzióban – Azure Time Series Insights | Microsoft Docs
-description: További információ a Azure Time Series Insights előzetes adatlekérdezésről.
+description: Az Adatlekérdezési fogalmak és a HTTP-REST API áttekintése Azure Time Series Insights előzetes verzióban.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006312"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374578"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Adatlekérdezés Azure Time Series Insights előzetes verzióban
 
@@ -39,8 +39,8 @@ A következő alapvető API-k támogatottak.
 
 A következő környezeti API-k érhetők el:
 
-* A [környezeti API beolvasása](/rest/api/time-series-insights/management/environments/get): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
-* [Környezet rendelkezésre állási API-k beolvasása](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): az esemény időbélyegének `$ts`az események számának eloszlását adja vissza. Ez az API segít meghatározni, hogy vannak-e események az időbélyegen az események számának visszaadásával, ha vannak ilyenek.
+* [Környezetek beolvasása API](/rest/api/time-series-insights/management/environments/get): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
+* [Környezetek rendelkezésre állási API-k beolvasása](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): az események számának eloszlását adja vissza az esemény időbélyegzője `$ts`. Ez az API segít meghatározni, hogy vannak-e események az időbélyegen az események számának visszaadásával, ha vannak ilyenek.
 * [Event Schema API beolvasása](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): egy adott keresési span esemény-séma metaadatainak beolvasása. Ez az API segít beolvasni a sémában elérhető összes metaadatot és tulajdonságot a megadott keresési tartományhoz.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model – Query (TSM-Q) API-k

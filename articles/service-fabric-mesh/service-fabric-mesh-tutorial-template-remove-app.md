@@ -1,28 +1,19 @@
 ---
-title: Oktatóanyag – Az Azure Service Fabric Meshben futó alkalmazások eltávolítása | Microsoft Docs
+title: Oktatóanyag – az Azure Service Fabric Meshban futó alkalmazások eltávolítása
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan lehet eltávolítani a Service Fabric Meshben futó alkalmazásokat, és törölni az erőforrásokat.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351801"
 ---
-# <a name="tutorial-remove-an-application-and-resources"></a>Oktatóanyag: Távolítsa el az alkalmazások és erőforrások
+# <a name="tutorial-remove-an-application-and-resources"></a>Oktatóanyag: Alkalmazás és erőforrások eltávolítása
 
 Ez az oktatóanyag egy sorozat negyedik része. Elsajátíthatja, hogyan távolíthat el egy futó alkalmazást, amelyet [korábban üzembe helyezett a Service Fabric Meshben](service-fabric-mesh-tutorial-template-deploy-app.md). 
 
@@ -81,7 +72,7 @@ A hálózat törlése:
 az mesh network delete --resource-group myResourceGroup --name todolistappNetwork
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

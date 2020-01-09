@@ -3,14 +3,14 @@ title: Tartós entitások – Azure Functions
 description: Megtudhatja, milyen tartós entitásokat használ, és hogyan használhatja őket a Azure Functions Durable Functions-bővítményében.
 author: cgillum
 ms.topic: overview
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433323"
 ---
 # <a name="entity-functions"></a>Entitás-függvények
 
@@ -34,13 +34,14 @@ Az entitások egyedi azonosítóval, az *entitás azonosítójának*használatá
 
 Előfordulhat például, hogy egy `Counter` Entity függvényt használ a pontszámok online játékokban való megőrzésére. A játék minden példánya egyedi AZONOSÍTÓval rendelkezik, például `@Counter@Game1` és `@Counter@Game2`. Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
 
-### <a name="entity-operations"></a>Entitások műveletei ###
+### <a name="entity-operations"></a>Entitás-műveletek ###
 
 Egy művelet egy entitáson való meghívásához a következőt kell megadnia:
 
 * A célként megadott entitás **azonosítója** .
 * A **művelet neve**, amely egy karakterlánc, amely meghatározza a végrehajtandó műveletet. Az `Counter` entitás például támogathatja `add`, `get`vagy `reset` műveleteit.
 * A **művelet bemenete**, amely egy opcionális bemeneti paraméter a művelethez. A hozzáadási művelet például egész számot vehet igénybe bemenetként.
+* **ütemezett időpont*, amely egy opcionális paraméter a művelet kézbesítési idejének megadásához. Egy művelet például megbízhatóan ütemezhető úgy, hogy több napot is futtasson a jövőben.
 
 A műveletek visszaadhatják az eredmény értékét vagy a hiba eredményét, például JavaScript-hibát vagy .NET-kivételt. Ezt az eredményt vagy hibát megfigyelheti a műveletet meghívó Összehangolók.
 
@@ -165,7 +166,7 @@ Az alábbi példák az entitások elérésének különféle módjait szemlélte
 
 ### <a name="example-client-signals-an-entity"></a>Példa: az ügyfél jelzi az entitást
 
-Ha az entitásokat egy általános Azure-függvényből szeretné elérni, amely más néven ügyfél-függvény, használja az [entitás ügyfél-kimeneti kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást jelez.
+Ha az entitásokat egy általános Azure-függvényből kívánja elérni, amely más néven ügyfél-függvény, használja az [entitás-ügyfél kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást jelez.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -186,7 +187,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    await context.df.signalEntity(entityId, "add", 1);
+    await client.signalEntity(entityId, "add", 1);
 };
 ```
 
@@ -203,8 +204,8 @@ public static async Task<HttpResponseMessage> Run(
     [DurableClient] IDurableEntityClient client)
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
-    JObject state = await client.ReadEntityStateAsync<JObject>(entityId);
-    return req.CreateResponse(HttpStatusCode.OK, state);
+    EntityStateResponse<JObject> stateResponse = await client.ReadEntityStateAsync<JObject>(entityId);
+    return req.CreateResponse(HttpStatusCode.OK, stateResponse.EntityState);
 }
 ```
 
@@ -214,7 +215,8 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    return context.df.readEntityState(entityId);
+    const stateResponse = await context.df.readEntityState(entityId);
+    return stateResponse.entityState;
 };
 ```
 
@@ -249,12 +251,11 @@ module.exports = df.orchestrator(function*(context){
 
     // Two-way call to the entity which returns a value - awaits the response
     currentValue = yield context.df.callEntity(entityId, "get");
-    if (currentValue < 10) {
-        // One-way signal to the entity which updates the value - does not await a response
-        yield context.df.signalEntity(entityId, "add", 1);
-    }
 });
 ```
+
+> [!NOTE]
+> A JavaScript jelenleg nem támogatja az entitások Orchestrator való jelzését. A `callEntity` használható helyette.
 
 Csak a bevezetések képesek az entitások meghívására és a válasz lekérésére, ami lehet visszatérési érték vagy kivétel. Az [ügyfél-kötést](durable-functions-bindings.md#entity-client) használó ügyfél-függvények csak az entitásokat jelezhetik.
 
@@ -375,7 +376,7 @@ A szabályok megszegése futásidejű hibát okoz, például `LockingRulesViolat
 
 ## <a name="comparison-with-virtual-actors"></a>Összehasonlítás virtuális szereplőkkel
 
-A tartós entitások számos funkcióját a [színészi modell](https://en.wikipedia.org/wiki/Actor_model)ihlette. Ha már ismeri a szereplőket, felismerheti a cikkben ismertetett fogalmakat. A tartós entitások különösen hasonlók a [virtuális szereplőkkel](https://research.microsoft.com/projects/orleans/)vagy a gabonához, ahogyan az [Orleans-projekt](http://dotnet.github.io/orleans/)népszerűsítette. Például:
+A tartós entitások számos funkcióját a [színészi modell](https://en.wikipedia.org/wiki/Actor_model)ihlette. Ha már ismeri a szereplőket, felismerheti a cikkben ismertetett fogalmakat. A tartós entitások különösen hasonlók a [virtuális szereplőkkel](https://research.microsoft.com/projects/orleans/)vagy a gabonához, ahogyan az [Orleans-projekt](http://dotnet.github.io/orleans/)népszerűsítette. Példa:
 
 * A tartós entitások az entitás AZONOSÍTÓján keresztül címezhető.
 * A tartós entitások műveletei a verseny feltételeinek megelőzése érdekében egyszerre hajtanak végre sorosan.

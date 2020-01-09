@@ -1,26 +1,15 @@
 ---
-title: Linux-alapú Service Fabric-fürt létrehozása az Azure-ban | Microsoft Docs
+title: Linux Service Fabric-fürt létrehozása az Azure-ban
 description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fabric-fürtöt egy meglévő Azure-beli virtuális hálózatban az Azure CLI használatával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598851"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465408"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózaton
 
@@ -28,7 +17,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet üzembe Linux Service Fabric-fü
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előkészületek:
+Előzetes teendők
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md)
@@ -53,29 +42,29 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban a rendszer üzembe helyez 
 
 * három csomópont típusa
 * az elsődleges csomópont típusának öt csomópontja (a sablon paraméterei között állítható be), a többi csomópont egyik csomópontja
-* OS: Ubuntu 16,04 LTS (a sablon paraméterei között konfigurálható)
+* Ubuntu 16.04 LTS operációs rendszer (a sablon paramétereiben konfigurálható);
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
 * bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
 * ezüst szintű [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
-* ügyfélkapcsolati végpont: 19000 (a sablon paramétereinek konfigurálható)
-* HTTP-átjáró végpontja: 19080 (a sablon paramétereinek konfigurálható)
+* ügyfélkapcsolati végpont: 19000 (a sablon paramétereiben konfigurálható);
+* HTTP-átjáró végpontja: 19080 (a sablon paramétereiben konfigurálható).
 
-### <a name="azure-load-balancer"></a>Azure-terheléselosztó
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 A **Microsoft.Network/loadBalancers** erőforrásban a rendszer egy terheléselosztót konfigurál, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
 
-* ügyfélkapcsolati végpont: 19000
-* HTTP-átjáró végpontja: 19080
-* alkalmazás portja: 80
-* alkalmazás portja: 443
+* ügyfélkapcsolati végpont: 19000;
+* HTTP-átjáró végpontja: 19080;
+* alkalmazásport: 80;
+* alkalmazásport: 443;
 
 ### <a name="virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat
 
-A virtuális hálózat és az alhálózat neve a sablon paramétereiben határozható meg.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
+A virtuális hálózat és az alhálózat neve a sablon paramétereiben határozható meg.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg, és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
-* virtuális hálózati címtartomány: 10.0.0.0/16
-* Alhálózati címterület Service Fabric: 10.0.2.0/24
+* virtuális hálózat címtere: 10.0.0.0/16
+* Service Fabric-alhálózat címtere: 10.0.2.0/24
 
 Ha további alkalmazásportokra van szükség, akkor módosítania kell a Microsoft.Network/loadBalancers erőforrást a forgalom beengedésére.
 
@@ -90,7 +79,7 @@ A [AzureDeploy. Parameters][parameters] paraméter-fájl deklarálja a fürt és
 |clusterName|mysfcluster123| A fürt neve. |
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány SHA1 ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3” </p>|
-|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Példa: "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
@@ -162,7 +151,7 @@ sfctl cluster health
 
 Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [méretezheti a fürtöt](service-fabric-tutorial-scale-cluster.md).
 

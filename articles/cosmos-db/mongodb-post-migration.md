@@ -1,72 +1,72 @@
 ---
-title: Optimalizálás az áttelepítést követő lépéseket használata az Azure Cosmos DB API a mongodb-hez
-description: Ezt a dokumentumot tartalmaz az áttelepítés utáni optimalizálási technikákat MongoDB-ből az Azure Cosmos DB APi Mongo DB-hez készült.
+title: Áttelepítés utáni optimalizálás lépései Azure Cosmos DB API-MongoDB
+description: Ez a dokumentum áttelepítés utáni optimalizálási technikákat biztosít a MongoDB Azure Cosmos DB APi-hoz a Mongo DB-hez.
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: roaror
-ms.openlocfilehash: c0c761fef481a1fdaa027f1329e9a4e72d62985a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c521546bedf1ebfd42bce4c50aa79b199553fd5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61331206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441568"
 ---
-# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Optimalizálás az áttelepítést követő lépéseket használata az Azure Cosmos DB API a mongodb-hez 
+# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés utáni optimalizálási lépések Azure Cosmos DB API-MongoDB való használatakor 
 
-A mongodb-hez készült Azure Cosmos DB API a MongoDB-adatbázisban tárolt adatok, az áttelepítés után csatlakozhat az Azure Cosmos DB, és az adatok kezeléséhez. Ez az útmutató ismerteti a migrálás után érdemes lépéseit. Tekintse meg a [MongoDB Migrálása az Azure Cosmos DB API a MongoDB-oktatóanyag](../dms/tutorial-mongodb-cosmos-db.md) áttelepítési lépéseit.
+Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-ját a MongoDB-hez, csatlakozhat Azure Cosmos DBhoz, és kezelheti az adatkezelési lehetőséget. Ez az útmutató az áttelepítés után megfontolandó lépéseket ismerteti. Az áttelepítési lépésekhez tekintse [meg a MongoDB áttelepítése a Azure Cosmos db API-ját a MongoDB oktatóanyagban](../dms/tutorial-mongodb-cosmos-db.md) .
 
 Ebből az útmutatóból a következőket tudhatja meg:
-- [Az alkalmazás csatlakoztatása](#connect-account)
-- [Az indexelési házirendet optimalizálása](#indexing)
-- [A MongoDB API-hoz az Azure Cosmos DB globális terjesztés konfigurálása](#distribute-data)
-- [Set konzisztenciaszint](#consistency)
+- [Az alkalmazás összekötése](#connect-account)
+- [Az indexelési házirend optimalizálása](#indexing)
+- [Globális terjesztés konfigurálása a MongoDB-hez Azure Cosmos DB API-hoz](#distribute-data)
+- [Konzisztencia szintjének beállítása](#consistency)
 
 > [!NOTE]
-> Az alkalmazás szintjén az csak a következő kötelező áttelepítés utáni lépésben módosul, hogy az új Azure Cosmos DB-fiók mutasson az alkalmazás a kapcsolati karakterláncot. Áttelepítés az összes többi optimalizálás használata ajánlott.
+> Az alkalmazás szintjén az egyetlen kötelező áttelepítés utáni lépés módosítja az alkalmazásban lévő kapcsolódási karakterláncot, hogy az új Azure Cosmos DB fiókra mutasson. Az összes többi áttelepítési lépés javasolt optimalizálás.
 >
 
-## <a id="connect-account"></a>Az alkalmazás csatlakoztatása 
+## <a id="connect-account"></a>Az alkalmazás összekötése 
 
-1. Az egy új ablakban jelentkezzen be a [Azure Portalon](https://www.portal.azure.com/)
-2. Az a [az Azure portal](https://www.portal.azure.com/), a bal oldali ablaktáblában nyissa meg a **összes erőforrás** menüben, és keresse meg az Azure Cosmos DB-fiókot, amelyhez az adatok átvitelét.
-3. Nyissa meg a **kapcsolati karakterlánc** panelen. A jobb oldali panel tartalmazza a fiókhoz való kapcsolódáshoz szükséges összes információt.
-4. Használja a kapcsolatadatokat az alkalmazás konfigurációs (vagy más releváns helyen), hogy az Azure Cosmos DB API a MongoDB kapcsolati az alkalmazásban. 
-![Connection-String](./media/mongodb-post-migration/connection-string.png)
+1. Új ablakban jelentkezzen be a [Azure Portal](https://www.portal.azure.com/)
+2. A [Azure Portal](https://www.portal.azure.com/)a bal oldali ablaktáblán nyissa meg a **minden erőforrás** menüt, és keresse meg azt a Azure Cosmos db fiókot, amelyre áttelepítette az adatait.
+3. Nyissa meg a **kapcsolatok karakterláncának** paneljét. A jobb oldali panel tartalmazza a fiókhoz való kapcsolódáshoz szükséges összes információt.
+4. Használja a kapcsolódási adatokat az alkalmazás konfigurációjában (vagy más kapcsolódó helyeken), hogy tükrözze a Azure Cosmos DB API-ját az MongoDB való kapcsolódáshoz. 
+![kapcsolatok – karakterlánc](./media/mongodb-post-migration/connection-string.png)
 
-További részletekért tekintse meg a [egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása](connect-mongodb-account.md) lapot.
+További részletekért tekintse meg a [MongoDB-alkalmazás Összekötése Azure Cosmos db](connect-mongodb-account.md) lapra.
 
-## <a id="indexing"></a>Az indexelési házirendet optimalizálása
+## <a id="indexing"></a>Az indexelési házirend optimalizálása
 
-Az összes adat mezők automatikusan indexelt, alapértelmezés szerint az Azure Cosmos DB-adatok áttelepítése során. Sok esetben ez az alapértelmezett indexelési szabályzat elfogadható. Általában indexek eltávolítása optimalizálja az írási kérések, és alapértelmezett indexelési szabályzat (azaz a Automatikus indexelés) kellene optimalizálja az olvasási kéréseket.
+Alapértelmezés szerint a rendszer az összes adatmezőt automatikusan indexeli a Azure Cosmos DBba történő adatáttelepítés során. Sok esetben ez az alapértelmezett indexelési házirend elfogadható. Általánosságban elmondható, hogy az indexek eltávolítása optimalizálja az írási kérelmeket, és az alapértelmezett indexelési házirend (azaz automatikus indexelés) optimalizálja az olvasási kérelmeket.
 
-Az indexelő további információkért lásd: [adatok indexelése az Azure Cosmos DB API a mongodb-hez](mongodb-indexing.md) , valamint a [indexelése az Azure Cosmos DB](index-overview.md) cikkeket.
+Az indexeléssel kapcsolatos további információkért lásd: [adatindexelés Azure Cosmos db API-MongoDB](mongodb-indexing.md) , valamint a Azure Cosmos db cikkek [indexelése](index-overview.md) .
 
-## <a id="distribute-data"></a>Terjessze globálisan az adatait
+## <a id="distribute-data"></a>Az adatai globális terjesztése
 
-Az Azure Cosmos DB érhető el az összes [Azure-régiók](https://azure.microsoft.com/regions/#services) világszerte. Miután az Azure Cosmos DB-fiókja alapértelmezett konzisztenciaszintjét, egy vagy több Azure-régiók (attól függően, a globális terjesztés szükségleteitől) is hozzárendelhetők. A magas rendelkezésre állás és üzleti folytonosság ajánlott legalább 2 régióban futó. Áttekintheti a tippek [optimalizálása az Azure Cosmos DB többrégiós üzemelő példányok költségei](optimize-cost-regions.md).
+A Azure Cosmos DB világszerte minden [Azure-régióban](https://azure.microsoft.com/regions/#services) elérhető. Miután kiválasztotta az alapértelmezett konzisztencia-szintet a Azure Cosmos DB-fiókhoz, hozzárendelhet egy vagy több Azure-régiót (a globális terjesztési igényektől függően). A magas rendelkezésre állás és az üzletmenet folytonossága érdekében mindig javasoljuk, hogy legalább két régiót futtasson. Áttekintheti a [többrégiós központi telepítések költségeit Azure Cosmos DBban](optimize-cost-regions.md).
 
-Terjessze globálisan az adatait, tekintse meg [terjesztheti az adatait globálisan az Azure Cosmos DB API a mongodb-hez](tutorial-global-distribution-mongodb.md). 
+Az adattovábbítás globális elosztása érdekében tekintse [meg az Adatterjesztés globálisan Azure Cosmos db API-MongoDB](tutorial-global-distribution-mongodb.md)című témakört. 
 
-## <a id="consistency"></a>Set konzisztenciaszint
-Az Azure Cosmos DB kínál jól definiált 5 [konzisztenciaszintek](consistency-levels.md). Olvassa el a mongodb-hez és az Azure Cosmos DB konzisztenciaszintjeinek közötti leképezéseket, olvassa el [konzisztenciaszintek és az Azure Cosmos DB API-k](consistency-levels-across-apis.md). Az alapértelmezett konzisztenciaszint a munkamenet-konzisztencia szintjét. A konzisztencia szintjének módosítása nem kötelező, és optimalizálhatja az alkalmazáshoz. Az Azure portal használatával konzisztenciaszint módosítása:
+## <a id="consistency"></a>Konzisztencia szintjének beállítása
+Azure Cosmos DB 5 jól meghatározott konzisztencia- [szintet](consistency-levels.md)kínál. A MongoDB és a Azure Cosmos DB konzisztencia-szintek közötti leképezésről a [konzisztencia-szintek és a Azure Cosmos db API](consistency-levels-across-apis.md)-k című cikkből tájékozódhat. Az alapértelmezett konzisztencia-szint a munkamenet konzisztenciáji szintje. A konzisztencia szintjének módosítása nem kötelező, és optimalizálható az alkalmazáshoz. A konzisztencia szintjének módosítása Azure Portal használatával:
 
-1. Nyissa meg a **alapértelmezett konzisztencia** a beállítások panelen.
-2. Válassza ki a [konzisztenciaszint](consistency-levels.md)
+1. Lépjen az **alapértelmezett konzisztencia** panelre a beállítások területen.
+2. A [konzisztencia szintjének](consistency-levels.md) kiválasztása
 
-A felhasználók többsége a konzisztencia szintjét az alapértelmezett munkamenet-konzisztencia beállításának, hagyja üresen. Vannak azonban [kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md). 
+A legtöbb felhasználó a konzisztencia szintjét az alapértelmezett munkamenet-konzisztencia beállításnál hagyja. Vannak azonban [rendelkezésre állási és teljesítménybeli kompromisszumok a különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez](connect-mongodb-account.md)
-* [A Studio 3T használata az Azure Cosmos DB-fiók csatlakoztatása](mongodb-mongochef.md)
-* [Hogyan terjessze globálisan olvassa be az Azure Cosmos DB API használatával a mongodb-hez](mongodb-readpreference.md)
-* [Hamarosan lejár az adatokat az Azure Cosmos DB API a mongodb-hez](mongodb-time-to-live.md)
-* [Az Azure Cosmos DB Konzisztenciaszint](consistency-levels.md)
-* [Az Azure Cosmos DB indexelése](index-overview.md)
-* [Az Azure Cosmos DB-kérésegységeiről](request-units.md)
+* [Kapcsolódás Azure Cosmos DB fiókhoz a Studio 3T használatával](mongodb-mongochef.md)
+* [Olvasási műveletek globális elosztása a Azure Cosmos DB API-MongoDB](mongodb-readpreference.md)
+* [Adatok lejárttá tétele a MongoDB-hez készült Azure Cosmos DB API-val](mongodb-time-to-live.md)
+* [Azure Cosmos DB konzisztenciáji szintjei](consistency-levels.md)
+* [Indexelés Azure Cosmos DB](index-overview.md)
+* [Az Azure Cosmos DB kérelemegységei](request-units.md)
 
 
 

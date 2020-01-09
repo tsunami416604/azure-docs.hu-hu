@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449826"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -94,7 +94,7 @@ Javasoljuk, hogy hozzon létre egy Storage-fiókot *kifejezetten* a Batch-fiókj
 > Jelenleg nem használhat olyan Azure Storage-fiókkal rendelkező alkalmazáscsomag-csomagokat, amely [Tűzfalszabályok](../storage/common/storage-network-security.md)használatára van konfigurálva.
 > 
 
-A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokkolási blobként való tárolására. A blob-adatblokkok esetében a [szokásos módon kell fizetni][storage_pricing] , és az egyes csomagok mérete nem haladhatja meg a [Blobok maximális méretét](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets). Ügyeljen rá, hogy az alkalmazáscsomag mérete és száma, valamint a költségek csökkentése érdekében rendszeresen távolítsa el az elavult csomagokat.
+A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokkolási blobként való tárolására. A blob-adatblokkok esetében a [szokásos módon kell fizetni][storage_pricing] , és az egyes csomagok mérete nem haladhatja meg a Blobok maximális méretét. További információ: [Azure Storage skálázhatósági és teljesítménybeli célok a Storage-fiókokhoz](../storage/blobs/scalability-targets.md). Ügyeljen rá, hogy az alkalmazáscsomag mérete és száma, valamint a költségek csökkentése érdekében rendszeresen távolítsa el az elavult csomagokat.
 > 
 > 
 
@@ -141,7 +141,7 @@ Kattintson az **Alkalmazások** > **Hozzáadás** elemre.
 
 Az **új alkalmazás** ablak a következő mezőket biztosítja az új alkalmazás-és alkalmazáscsomag beállításainak megadásához.
 
-**Alkalmazás azonosítója**
+**Alkalmazásazonosító**
 
 Ez a mező adja meg az új alkalmazás AZONOSÍTÓját, amelyre a szabványos Azure Batch azonosító érvényesítési szabályok vonatkoznak. Az alkalmazás-AZONOSÍTÓk nyújtásának szabályai a következők:
 
@@ -171,7 +171,7 @@ Miután kiválasztott egy fájlt, kattintson **az OK** gombra az Azure Storage-b
 > 
 
 ### <a name="add-a-new-application-package"></a>Új alkalmazáscsomag hozzáadása
-Egy meglévő alkalmazás alkalmazáscsomag-verziójának hozzáadásához válasszon ki egy alkalmazást az **alkalmazások** Windowsban, és kattintson a **csomagok**  > **Hozzáadás**gombra.
+Egy meglévő alkalmazás alkalmazáscsomag-verziójának hozzáadásához válasszon ki egy alkalmazást az **alkalmazások** Windowsban, és kattintson a **csomagok** > **Hozzáadás**gombra.
 
 ![Alkalmazáscsomag hozzáadása panel Azure Portal][8]
 

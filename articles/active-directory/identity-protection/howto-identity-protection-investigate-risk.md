@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430964"
 ---
 # <a name="how-to-investigate-risk"></a>Útmutató: a kockázat vizsgálata
 
@@ -30,7 +30,7 @@ A három jelentés a **Azure Portal** > **Azure Active Directory** > **biztonsá
 
 ## <a name="navigating-the-reports"></a>Navigálás a jelentésekben
 
-Minden jelentés a jelentés tetején látható időszakra vonatkozó összes észlelési listával elindul. Minden jelentés lehetővé teszi az oszlopok hozzáadását vagy eltávolítását a rendszergazdai beállítások alapján. A rendszergazdák eldönthetik, hogy letöltik-e az adatfájlokat. CSV-formátum. A jelentések a jelentés tetején lévő szűrők használatával szűrhetők.
+Minden jelentés a jelentés tetején látható időszakra vonatkozó összes észlelési listával elindul. Minden jelentés lehetővé teszi az oszlopok hozzáadását vagy eltávolítását a rendszergazdai beállítások alapján. A rendszergazdák eldönthetik, hogy letöltik-e az adatfájlokat. CSV vagy. JSON-formátum. A jelentések a jelentés tetején lévő szűrők használatával szűrhetők.
 
 Az egyes bejegyzések kijelölése további bejegyzéseket is engedélyezhet a jelentés tetején, például megerősítheti a bejelentkezést sérült vagy biztonságos módon, megerősítheti a felhasználót, hogy feltörték a felhasználót, vagy utasítsa el a felhasználói kockázatot.
 
@@ -44,7 +44,7 @@ A kockázatos felhasználók jelentés által biztosított információkkal a re
 
 - Mely felhasználók vannak kitéve kockázatoknak, vagy kockázatos volt a kockázata?
 - Az észlelések részletei
-- Kockázatos bejelentkezések előzményei
+- Az összes kockázatos bejelentkezés előzményei
 - Kockázati előzmények
  
 A rendszergazdák ezután dönthetnek úgy, hogy műveleteket hajtanak végre ezekről az eseményekről. A rendszergazdák a következőket választhatják:

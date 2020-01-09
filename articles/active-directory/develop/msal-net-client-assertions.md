@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424240"
 ---
 # <a name="confidential-client-assertions"></a>Bizalmas ügyfél-kijelentések
 
@@ -42,7 +42,7 @@ A MSAL.NET négy módszerrel biztosíthatja a bizalmas ügyfélalkalmazás szám
 
 Az aláírt ügyfél egy aláírt JWT formáját ölti az Azure AD által megkövetelt, Base64 kódolású, szükséges hitelesítési jogcímeket tartalmazó adattartalommal. A használatához:
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -62,7 +62,7 @@ Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát. A JWT lé
 
 Íme egy példa a jogcímek kiépítésére:
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
@@ -88,7 +88,7 @@ private static IDictionary<string, string> GetClaims()
 
 Az alábbi lépésekből megtudhatja, hogyan lehet aláírt ügyfél-kijelentést készíteni:
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -138,7 +138,7 @@ string GetSignedClientAssertion()
 
 Lehetősége van arra is, hogy a [Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) használatával hozza létre az állítást. A kód az alábbi példában látható módon elegáns lesz:
 
-```CSharp
+```csharp
         string GetSignedClientAssertion()
         {
             var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
@@ -171,7 +171,7 @@ Lehetősége van arra is, hogy a [Microsoft. IdentityModel. JsonWebTokens](https
 
 Ha már rendelkezik az aláírt ügyfél-állítással, használhatja a MSAL API-kkal az alább látható módon.
 
-```CSharp
+```csharp
             string signedClientAssertion = GetSignedClientAssertion();
 
             var confidentialApp = ConfidentialClientApplicationBuilder
@@ -184,7 +184,7 @@ Ha már rendelkezik az aláírt ügyfél-állítással, használhatja a MSAL API
 
 a `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` alapértelmezés szerint az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfelek jogcímeit tartalmazó aláírt állítást hoz létre. Az alábbi kódrészlettel teheti ezt meg.
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

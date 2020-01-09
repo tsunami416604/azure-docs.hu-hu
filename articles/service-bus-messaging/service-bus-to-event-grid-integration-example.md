@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462100"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions és a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
 Ebből az oktatóanyagból megtudhatja, hogyan válaszolhat a Azure Event Grid használatával fogadott Azure Service Bus eseményekre Azure Functions és Azure Logic Apps használatával. A következő lépéseket kell végrehajtania:
@@ -50,7 +50,7 @@ Az üzenetek Service Bus-témakörbe történő elküldéséhez bármilyen metó
 3. Lépjen a **MessageSender** projekthez, és válassza a **Program.cs** fájlt.
 4. Adja meg a Service Bus témakör nevét és az előző lépésből kapott, a következőhöz tartozó kapcsolatok karakterláncot:
 
-    ```CSharp
+    ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
@@ -69,7 +69,7 @@ Ezután hajtsa végre a következő lépéseket:
 
 1. Bontsa ki a **függvények** csomópontot a fanézetben, majd válassza ki a függvényt. Cserélje le a függvény kódját a következő kódra: 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     
     using System.Net;
@@ -120,7 +120,7 @@ Ezután hajtsa végre a következő lépéseket:
     ![Függvény alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
 3. Válassza a **függvény URL-címének lekérése** és az URL-cím lekérése 
 
-    ![Függvény URL-címének beolvasása](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+    ![Függvény URL-címének lekérése](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 # <a name="azure-functions-v1tabv1"></a>[Azure Functions v1](#tab/v1)
 
@@ -131,7 +131,7 @@ Ezután hajtsa végre a következő lépéseket:
     2. Válassza a **~ 1** lehetőséget a **futtatókörnyezet verziójának**kiválasztásához. 
 2. Bontsa ki a **függvények** csomópontot a fanézetben, majd válassza ki a függvényt. Cserélje le a függvény kódját a következő kódra: 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using Newtonsoft.Json;
@@ -179,7 +179,7 @@ Ezután hajtsa végre a következő lépéseket:
     ![Függvény alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
 4. Válassza a **függvény URL-címének lekérése** és az URL-cím lekérése 
 
-    ![Függvény URL-címének beolvasása](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+    ![Függvény URL-címének lekérése](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 ---
 
@@ -312,7 +312,7 @@ Az alábbi lépéseket követve összekapcsolhatók a logikai alkalmazások Azur
 
     ![Logic Apps Designer – logikai alkalmazás futtatása](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók az [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.
 * További tudnivalók az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.

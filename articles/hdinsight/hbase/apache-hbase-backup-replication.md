@@ -2,18 +2,18 @@
 title: Biztonsági mentési & replikáció az Apache HBase, Phoenix – Azure HDInsight
 description: Az Apache HBase és a Apache Phoenix Azure HDInsight való biztonsági mentésének és replikálásának beállítása
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: 9611199cf08084505381223ef485ae2b6f00cb21
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 12/19/2019
+ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044702"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495935"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>A biztonsági mentés és a replikálás beállítása az Apache HBase és a Apache Phoenix on HDInsight
 
@@ -60,15 +60,19 @@ A fürt törlése után meghagyhatja az adott helyet, vagy átmásolhatja az új
 
 ## <a name="export-then-import"></a>Exportálás, importálás
 
-A forrás HDInsight-fürtön használja az Exportálás segédprogramot (a HBase-ben) az adatok exportálásához a forrástábla és az alapértelmezett csatlakoztatott tároló között. Ezután átmásolhatja az exportált mappát a cél tárolóhelyre, és futtathatja az importálási segédprogramot a cél HDInsight-fürtön.
+A forrás HDInsight-fürtön használja az [Exportálás segédprogramot](https://hbase.apache.org/book.html#export) (a HBase-ben) az adatok exportálásához a forrástábla és az alapértelmezett csatlakoztatott tároló között. Ezután átmásolhatja az exportált mappát a cél tárolóhelyre, és futtathatja az [importálási segédprogramot](https://hbase.apache.org/book.html#import) a cél HDInsight-fürtön.
 
-Egy tábla exportálásához először SSH-t a forrás HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
+A tábla adatai exportálásához először SSH-t a forrás HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-Egy tábla importálásához az SSH-t a cél HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
+Az exportálási könyvtárnak még nem kell létezni. A tábla neve megkülönbözteti a kis-és nagybetűket.
+
+Ha importálni szeretné a táblák adatait, az SSH-t a cél HDInsight-fürt fő csomópontjára, majd futtassa a következő `hbase` parancsot:
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+
+A táblának már léteznie kell.
 
 Az alapértelmezett tárolóhoz vagy a csatlakoztatott tárolási beállításokhoz tartozó teljes exportálási útvonal megadása. Például az Azure Storage-ban:
 
@@ -90,11 +94,12 @@ Vegye figyelembe, hogy az exportálandó sorok verziószámát meg kell adnia. A
 
 ## <a name="copy-tables"></a>Táblák másolása
 
-A CopyTable segédprogram a forrás táblából, egy sorba, egy meglévő, a forrással megegyező sémával rendelkező céltábla adatait másolja. A cél tábla lehet ugyanazon a fürtön vagy egy másik HBase-fürtön is.
+A [CopyTable segédprogram](https://hbase.apache.org/book.html#copy.table) a forrás táblából, egy sorba, egy meglévő, a forrással megegyező sémával rendelkező céltábla adatait másolja. A cél tábla lehet ugyanazon a fürtön vagy egy másik HBase-fürtön is. A táblák nevei megkülönböztetik a kis-és nagybetűket.
 
 Ha CopyTable szeretne használni a fürtön belül, SSH-t a forrás HDInsight-fürt fő csomópontjára, majd futtassa ezt a `hbase` parancsot:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+
 
 Ha a CopyTable-t egy másik fürt egyik táblájába kívánja másolni, adja hozzá a `peer` kapcsolót a célként megadott fürt címeként:
 
@@ -155,7 +160,7 @@ A példánkban:
 
 ## <a name="snapshots"></a>Pillanatképek
 
-A pillanatképek lehetővé teszik a HBase adattárban lévő adatbiztonsági másolat készítését. A pillanatképek minimális terheléssel rendelkeznek, és másodpercek alatt elvégezhető, mert egy pillanatkép-művelet gyakorlatilag egy metaadat-művelet, amely az adott pillanatban tárolja a tárolóban lévő összes fájl nevét. A pillanatképek időpontjában nem másolhatók tényleges adatok. A pillanatképek a HDFS tárolt adatok nem módosítható természetétől függenek, ahol a frissítések, a törlések és a beszúrások mind új adatokként jelennek meg. A pillanatképeket visszaállíthatja ugyanazon a fürtön, vagy exportálhatja a pillanatképet egy másik fürtre.
+A [Pillanatképek](https://hbase.apache.org/book.html#ops.snapshots) lehetővé teszik a HBase adattárban lévő adatbiztonsági másolat készítését. A pillanatképek minimális terheléssel rendelkeznek, és másodpercek alatt elvégezhető, mert egy pillanatkép-művelet gyakorlatilag egy metaadat-művelet, amely az adott pillanatban tárolja a tárolóban lévő összes fájl nevét. A pillanatképek időpontjában nem másolhatók tényleges adatok. A pillanatképek a HDFS tárolt adatok nem módosítható természetétől függenek, ahol a frissítések, a törlések és a beszúrások mind új adatokként jelennek meg. A pillanatképeket visszaállíthatja ugyanazon a fürtön, vagy exportálhatja a pillanatképet egy másik fürtre.
 
 Pillanatkép létrehozásához SSH-t a HDInsight HBase-fürt fő csomópontjára, és indítsa el a `hbase` rendszerhéjt:
 
@@ -171,7 +176,7 @@ Ha a `hbase` rendszerhéjon belüli név alapján szeretné visszaállítani a p
     restore_snapshot '<snapshotName>'
     enable '<tableName>'
 
-Egy pillanatkép új táblára való visszaállításához használja a clone_snapshot:
+A pillanatkép új táblára való visszaállításához használja a clone_snapshot:
 
     clone_snapshot '<snapshotName>', '<newTableName>'
 
@@ -183,13 +188,13 @@ A `<hdfsHBaseLocation>` a forrás-fürt számára elérhető tárolóhelyek bár
 
     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 
-A Pillanatkép exportálása után az SSH-t a célszámítógép fő csomópontjára helyezi, és a restore_snapshot paranccsal állíthatja vissza a pillanatképet a korábban leírtaknak megfelelően.
+A Pillanatkép exportálása után az SSH-t a célszámítógép fő csomópontjára helyezi, és a restore_snapshot parancs használatával visszaállíthatja a pillanatképet az előzőekben leírtak szerint.
 
 A pillanatképek a `snapshot` parancs időpontjában teljes biztonsági mentést biztosítanak egy tábláról. A pillanatképek nem teszik lehetővé a növekményes Pillanatképek elvégzését a Windowsban, és nem határozzák meg a pillanatképbe foglalandó oszlopok családokat.
 
 ## <a name="replication"></a>Replikáció
 
-A HBase-replikáció automatikusan leküldi a tranzakciókat egy forráskiszolgálóról a célkiszolgálóra, és egy aszinkron mechanizmust használ, amely minimális terheléssel rendelkezik a forrás-fürtön. A HDInsight-ben beállíthatja a fürtök közötti replikációt, ahol:
+A [HBase-replikáció](https://hbase.apache.org/book.html#_cluster_replication) automatikusan leküldi a tranzakciókat egy forráskiszolgálóról a célkiszolgálóra, és egy aszinkron mechanizmust használ, amely minimális terheléssel rendelkezik a forrás-fürtön. A HDInsight-ben beállíthatja a fürtök közötti replikációt, ahol:
 
 * A forrás-és a cél fürtök ugyanabban a virtuális hálózatban találhatók.
 * A forrás-és célhelyek fürtök a VPN-átjárók által összekapcsolt különböző virtuális hálózatokban találhatók, de mindkét fürt ugyanabban a földrajzi helyen található.
@@ -209,3 +214,4 @@ A HDInsight replikálásának engedélyezéséhez alkalmazzon parancsfájl-műve
 ## <a name="next-steps"></a>Következő lépések
 
 * [Apache HBase-replikáció konfigurálása](apache-hbase-replication.md)
+* [A HBase importálási és exportálási segédprogramjának használata](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)

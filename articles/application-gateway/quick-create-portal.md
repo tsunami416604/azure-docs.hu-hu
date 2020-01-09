@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442336"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal
 
@@ -29,9 +29,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
-## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget. Megjelenik az **új** ablak.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet. Megjelenik az **új** ablak.
 
 2. Válassza a **hálózatkezelés** lehetőséget, majd a **Kiemelt** listában válassza a **Application Gateway** lehetőséget.
 
@@ -66,7 +66,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 1. A **frontendek** lapon ellenőrizze, hogy a előtérbeli **IP-cím típusa** **nyilvános**értékre van-e állítva. <br>Az előtérbeli IP-címet úgy állíthatja be, hogy a használati esetnek megfelelően nyilvános vagy privát legyen. Ebben a példában egy nyilvános előtérbeli IP-címet választ.
    > [!NOTE]
-   > A Application Gateway v2 SKU esetében csak **nyilvános** ELŐTÉRBELI IP-konfigurációt választhat. Ehhez a v2 SKU-hoz jelenleg nincs engedélyezve a saját előtérbeli IP-konfiguráció. A nyilvános és a privát előtér-IP-konfiguráció is megadható.
+   > A Application Gateway v2 SKU esetében csak **nyilvános** ELŐTÉRBELI IP-konfigurációt választhat. Ehhez a v2 SKU-hoz csak a privát előtérbeli IP-konfiguráció (csak ILB mód) van engedélyezve. A nyilvános és a privát előtér-IP-konfiguráció is megadható.
 
 2. Válassza a **nyilvános IP-cím** **új létrehozása** lehetőséget, és adja meg a *myAGPublicIPAddress* a nyilvános IP-cím neveként, majd kattintson **az OK gombra**. 
 
@@ -136,7 +136,7 @@ Ehhez a következőket kell tennie:
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget. Megjelenik az **új** ablak.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet. Megjelenik az **új** ablak.
 2. Válassza a **számítás** lehetőséget, majd válassza a **Windows Server 2016 Datacenter** elemet a **népszerű** listában. Megjelenik a **virtuális gép létrehozása** lap.<br>Application Gateway átirányíthatja a forgalmat a háttér-készletben használt bármilyen típusú virtuális gépre. Ebben a példában egy Windows Server 2016 Datacenter rendszert használ.
 3. Adja meg ezeket az értékeket az **alapok** lapon a következő virtuálisgép-beállításokhoz:
 
@@ -193,13 +193,13 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
 7. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
 
-## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
 Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![Az Application Gateway nyilvános IP-](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) címének rögzítése vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
+1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon.![az Application Gateway nyilvános IP-címének rögzítése](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
-3. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e kapcsolatot létesíteni a háttérrel.![Az Application Gateway tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+3. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e kapcsolatot létesíteni a háttérrel.![Az alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -212,7 +212,7 @@ Az erőforráscsoport eltávolítása:
 3. Az **erőforráscsoport lapon**válassza az **erőforráscsoport törlése**elemet.
 4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)
+> [Webes forgalom kezelése alkalmazásátjáróval az Azure CLI használatával](./tutorial-manage-web-traffic-cli.md)

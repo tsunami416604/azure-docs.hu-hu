@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric-tárolóalkalmazás létrehozása | Microsoft Docs
+title: Azure Service Fabric Container-alkalmazás létrehozása
 description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban. Egy Python-alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6ff3fb3057b21f389d42ad98fe4ebb2803f5fc8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458009"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -354,7 +343,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>A Windows Server Container operációs rendszer és a gazdagép operációs rendszerének kompatibilitása
 
-A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Például:
+A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. Példa:
  
 - A Windows Server 1709-es verziójának használatával létrehozott Windows Server-tárolók nem működnek a Windows Server 2016-es verzióját futtató gazdagépeken. 
 - A Windows Server 2016 használatával létrehozott Windows Server-tárolók Hyper-V elkülönítési módban működnek, csak a Windows Server 1709-es verzióját futtató gazdagépeken. 
@@ -362,7 +351,7 @@ A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszeré
  
 További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Például:
+Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Példa:
 
 - Győződjön meg arról, hogy a fürt csomópontjain lévő operációs rendszernek megfelelő operációs rendszerrel rendelkező tárolókat telepít.
 - Győződjön meg arról, hogy a tároló alkalmazáshoz megadott elkülönítési mód konzisztens a tároló operációs rendszer azon csomópontjának támogatásával, amelyen üzembe van helyezve.
@@ -606,7 +595,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

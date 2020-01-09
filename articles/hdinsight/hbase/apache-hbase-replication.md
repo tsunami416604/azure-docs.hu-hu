@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435669"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks szolgáltatásban
 
@@ -51,7 +51,7 @@ Három konfigurációs lehetőség közül választhat:
 
 Ez a cikk a földrajzi replikálási forgatókönyvet ismerteti.
 
-A környezetek beállításának elősegítése érdekében létrehoztunk néhány [Azure Resource Manager sablont](../../azure-resource-manager/resource-group-overview.md). Ha más módszerekkel szeretné beállítani a környezeteket, tekintse meg a következőt:
+A környezetek beállításának elősegítése érdekében létrehoztunk néhány [Azure Resource Manager sablont](../../azure-resource-manager/management/overview.md). Ha más módszerekkel szeretné beállítani a környezeteket, tekintse meg a következőt:
 
 - [Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Apache HBase-fürtök létrehozása az Azure-ban Virtual Network](apache-hbase-provision-vnet.md)
@@ -104,7 +104,7 @@ Az utolsó szakaszban a sablon létrehoz egy Ubuntu-alapú virtuális gépet a k
 
 A kötés telepítéséhez a Yon-nek meg kell keresnie a két DNS virtuális gép nyilvános IP-címét.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 2. A DNS virtuális gép megnyitásához válassza az **erőforráscsoportok > [erőforráscsoport neve] > [vnet1DNS]** elemet.  Az erőforráscsoport neve az utolsó eljárásban létrehozott csoport. Az alapértelmezett DNS-beli virtuális gépek nevei a következők: *vnet1DNS* és *vnet2NDS*.
 3. Válassza a **Tulajdonságok** lehetőséget a virtuális hálózat Tulajdonságok lapjának megnyitásához.
 4. Jegyezze fel a **nyilvános IP-címet**, és ellenőrizze a **magánhálózati IP-címet**is.  A magánhálózati IP-címet a vnet2DNS vnet1DNS és **10.2.0.4** **10.1.0.4** kell megadni.  

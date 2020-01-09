@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB Update RU/s az SQL (Core) API-hoz
+title: PowerShell-parancsfájl a Azure Cosmos DB SQL (Core) API-hoz tartozó RU/s frissítéséhez
 description: Azure Cosmos-adatbázis vagy-tároló átviteli sebességének frissítése PowerShell-parancsfájl – SQL (Core) API használatával
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5a03c992e1ce1dc17c53bf414f0b07d2b60ddcce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 70dd5810d3549f19075b437044ce0dd332c45c49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444958"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>A Azure Cosmos DB-SQL (Core) API-hoz tartozó adatbázishoz vagy tárolóhoz tartozó RU/s frissítése
 

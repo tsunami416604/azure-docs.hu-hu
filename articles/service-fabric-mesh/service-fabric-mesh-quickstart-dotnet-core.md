@@ -1,28 +1,19 @@
 ---
-title: Rövid útmutató – Azure Service Fabric háló-webalkalmazás üzembe helyezése |} A Microsoft Docs
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy ASP.NET Core-webhelyen, és közzé kell tennie az Azure Service Fabric-háló Visual Studio használatával.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Gyors útmutató – webalkalmazás üzembe helyezése az Azure Service Fabric Mesh szolgáltatásban
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre ASP.NET Core webhelyeket, és hogyan teheti közzé az Azure Service Fabric Meshban a Visual Studióval.
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811260"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459067"
 ---
-# <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Gyors útmutató: Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben
+# <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rövid útmutató: Webalkalmazás létrehozása és üzembe helyezése az Azure Service Fabric Mesh-ben
 
 Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül.
 
@@ -116,7 +107,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Az erőforráscsoportot az [Azure Portalról](https://portal.azure.com) is törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]

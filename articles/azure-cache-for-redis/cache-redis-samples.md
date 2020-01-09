@@ -1,18 +1,17 @@
 ---
 title: Azure Cache for Redis-minták
-description: Útmutató az Azure Cache for Redis használatához
+description: 'Ismerje meg, hogyan használhatja az Azure cache-t a Redis az alábbi mintakód-mintákkal: csatlakozás gyorsítótárhoz, gyorsítótárban lévő információk olvasása és írása, ASP.NET Azure cache a Redis-szolgáltatók számára.'
 author: yegu-ms
-ms.service: cache
-ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 9097a25c0223faebd91fe3c01ff3edea6c4e6f9f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433404"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis-minták
 Ez a témakör felsorolja az Azure cache-t a Redis-mintákhoz, beleértve a gyorsítótárhoz való csatlakozást, az adatok olvasását és a gyorsítótárból történő írását, valamint a Redis-szolgáltatók ASP.NET Azure-gyorsítótárának használatát. Néhány minta letölthető projekt, és néhány lépésről lépésre útmutatást nyújt, és tartalmazza a kódrészleteket, de nem kapcsolódik egy letölthető projekthez.
@@ -62,4 +61,3 @@ A [Retwis](https://github.com/SyntaxC4-MSFT/retwis) minta a Redis "Helló világ
 
 ## <a name="bandwidth-monitor"></a>Sávszélesség-figyelő
 A [sávszélesség-figyelő](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) minta lehetővé teszi az ügyfélen használt sávszélesség figyelését. A sávszélesség méréséhez futtassa a mintát a gyorsítótár-ügyfélszámítógépen, hajtson végre hívásokat a gyorsítótárba, és figyelje meg a sávszélesség-figyelő minta által jelentett sávszélességet.
-

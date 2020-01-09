@@ -1,5 +1,5 @@
 ---
-title: ADAL a MSAL áttelepítési útmutató Javához | Azure
+title: ADAL a MSAL áttelepítési útmutatóhoz (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan telepítheti át Azure Active Directory Authentication Library (ADAL) Java-alkalmazását a Microsoft Authentication Library-be (MSAL).
 services: active-directory
@@ -16,12 +16,12 @@ ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e99cee3f21a4e0088fa97dcbec8fdcfdf982d80
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c228e708988d9d1ec9f58fce4f1289fd61f817b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424448"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL a MSAL áttelepítési útmutató Javához
 
@@ -32,7 +32,7 @@ A Microsoft Authentication Library for Java (MSAL4J) és a Javához készült Az
 A MSAL a következő előnyöket kínálja:
 
 - Mivel az újabb Microsoft Identity platform-végpontot használja, a Microsoft-identitások szélesebb körét hitelesítheti, például az Azure ad-identitásokat, a Microsoft-fiókokat, valamint a közösségi és helyi fiókokat az Azure AD Business to Consumer (B2C) szolgáltatáson keresztül.
-- A felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
+- a felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
 - Az alkalmazás lehetővé teszi a növekményes hozzáférést, és megkönnyíti a feltételes hozzáférés támogatását.
 
 A Javához készült MSAL a Microsoft Identity platform használatával javasolt hitelesítési függvénytár. A ADAL4J-on nem lesznek új funkciók implementálva. Minden, a jövőre irányuló erőfeszítés a MSAL javítására koncentrál.
