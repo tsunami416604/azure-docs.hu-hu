@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6e3b4be836699cc200d30168c14462f81136646b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8c4c346dd004e435846aff5592a20cd747c45df7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821098"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552627"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz
 
@@ -429,6 +429,10 @@ Az oktatóanyag ezen része a következő az CLI parancsmagokat használja:
 ---
 
 
+> [!IMPORTANT]
+> Ha meg kívánja őrizni az erőforráscsoportot, de törölni szeretné a másodlagos adatbázist, akkor a törlés előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat. 
+
+
 ## <a name="full-scripts"></a>Teljes parancsfájlok
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -475,7 +479,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 További Azure SQL Database szkriptek itt találhatók: [Azure PowerShell](sql-database-powershell-samples.md) és [Azure CLI](sql-database-cli-samples.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure SQL Database önálló adatbázist adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket: 
 

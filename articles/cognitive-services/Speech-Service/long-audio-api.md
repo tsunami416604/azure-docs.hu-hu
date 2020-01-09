@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815337"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562544"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
@@ -42,15 +42,24 @@ Ez az ábra a munkafolyamat magas szintű áttekintését tartalmazza.
 A szövegfájl előkészítésekor győződjön meg róla, hogy:
 
 * Egyszerű szöveges (. txt) vagy SSML szöveg (. txt)
-  * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
-  * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – lásd a [SSML szöveges bemeneti példáját](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt). A nyelvi kódokkal kapcsolatban lásd: [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)
 * Kódolása [UTF-8, byte Order Mark (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) értékkel
-* Több mint 10 000 karaktert vagy több mint 50 bekezdést tartalmaz
 * Egyetlen fájl, nem zip
+* Több mint 400 karaktert [tartalmaz az egyszerű szöveges vagy a 400](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) -es SSML-szövegekhez, és kisebb, mint 10 000 bekezdés
+  * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
+  * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
+> [!NOTE]
+> Kínai (anyaországi), Kínai (Hongkong), Kínai (Tajvan), Japán és koreai nyelveken az egyik szó két karakterből áll. 
+
+## <a name="submit-synthesis-requests"></a>Szintézisi kérelmek elküldése
+
+A bemeneti tartalom előkészítése után a kérelem elküldéséhez kövesse a [hosszú formátumú hangszintézis rövid](https://aka.ms/long-audio-python) útmutatóját. Ha egynél több bemeneti fájllal rendelkezik, több kérést is el kell küldenie. Néhány korlátozást figyelembe kell venni: 
+* Az ügyfél legfeljebb 5 kérést küldhet a kiszolgálónak másodpercenként az egyes Azure-előfizetési fiókokhoz. Ha meghaladja a korlátozást, akkor az ügyfél 429 hibakódot kap (túl sok kérés). Csökkentse a kérelmek mennyiségét másodpercenként
+* A kiszolgáló az egyes Azure-előfizetésekhez tartozó fiókokhoz legfeljebb 120 kérelmet futtathat, és a várólistára helyezhető. Ha meghaladja a korlátozást, a kiszolgáló 429 hibakódot ad vissza (túl sok kérés). Várjon, és ne küldje el az új kérést, amíg néhány kérelem be nem fejeződik
+* A kiszolgáló minden egyes Azure-előfizetési fiók esetében 20 000-kérelmeket tart fenn. Ha túllépi a korlátozást, töröljön néhány kérelmet az új adatbázisok elküldése előtt
 
 ## <a name="audio-output-formats"></a>Hangkimeneti formátumok
 
-A hosszú hang API a következő hangkimeneti formátumokat támogatja:
+A rugalmas hangkimeneti formátumokat támogatjuk. A "concatenateResult" paraméter beállításával egy adott kimenetet adhat meg egy bekezdésben, vagy összefűzheti a hanganyagokat egy kimenetben. A hosszú hang API a következő hangkimeneti formátumokat támogatja:
 
 > [!NOTE]
 > Az alapértelmezett hang formátuma a riff-16khz-16bit-mono-PCM.
