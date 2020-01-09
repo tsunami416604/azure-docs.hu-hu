@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs biztonságos leküldés
+title: Azure Notification Hubs biztonságos leküldéses iOS rendszerhez
 description: Ismerje meg, hogyan küldhet biztonságos leküldéses értesítéseket egy iOS-alkalmazásba az Azure-ból. A Objective-C és C#a kódban írt példák
 documentationcenter: ios
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212147"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530748"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs biztonságos leküldés
 
@@ -56,23 +56,23 @@ Ez a biztonságos leküldéses oktatóanyag a leküldéses értesítések bizton
 
 ## <a name="modify-the-ios-project"></a>Az iOS-projekt módosítása
 
-Most, hogy úgy módosította az alkalmazást, hogy csak az adott értesítés azonosítóját küldje el, módosítania kell az iOS-alkalmazást az értesítés kezelésére, és vissza kell hívnia a háttérben a megjelenítendő biztonságos üzenet lekéréséhez.
+Most, hogy úgy módosította az alkalmazást, hogy csak az adott értesítés *azonosítóját* küldje el, módosítania kell az iOS-alkalmazást az értesítés kezelésére, és vissza kell hívnia a háttérben a megjelenítendő biztonságos üzenet lekéréséhez.
 
 A cél eléréséhez meg kell írni a logikát, hogy a biztonságos tartalmat lekérje az alkalmazás háttérből.
 
-1. A `AppDelegate.m`-ben ellenőrizze, hogy az alkalmazás regisztrálja-e a csendes értesítéseket, hogy feldolgozza a háttérből küldött értesítési azonosítót. Adja hozzá `UIRemoteNotificationTypeNewsstandContentAvailability` a kapcsolót a didFinishLaunchingWithOptions-ben:
+1. A `AppDelegate.m`ban ellenőrizze, hogy az alkalmazás regisztrálja-e a csendes értesítéseket, hogy feldolgozza a háttérből küldött értesítési azonosítót. Adja hozzá a `UIRemoteNotificationTypeNewsstandContentAvailability` lehetőséget a didFinishLaunchingWithOptions:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. `AppDelegate.m` A felül lévő implementáció szakaszban a következő deklarációval:
+2. A `AppDelegate.m` a felső részen adja meg a megvalósítási szakaszt a következő deklarációval:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Ezután adja hozzá a megvalósítás szakaszhoz a következő kódot, és a helyőrzőt `{back-end endpoint}` a háttérbe való helyettesítéssel, korábban beszerzett végpontra:
+3. Ezután adja hozzá a következő kódot a megvalósítás szakaszhoz, és cserélje le a helyőrzőt `{back-end endpoint}` a végpontra, amelyet korábban a háttérként kapott:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -126,7 +126,7 @@ A cél eléréséhez meg kell írni a logikát, hogy a biztonságos tartalmat le
 
     ![][IOS1]
 
-6. A következő módszer hozzáadása a leküldéses értesítések kezeléséhez: `AppDelegate.m`
+6. A `AppDelegate.m` adja hozzá a következő metódust a leküldéses értesítések kezeléséhez:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

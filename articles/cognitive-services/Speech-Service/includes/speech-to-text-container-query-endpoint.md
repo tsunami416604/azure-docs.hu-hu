@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: dapine
 ms.openlocfilehash: 2d96385f2d2d34d161739c55228220cf28871048
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "74132625"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>Beszéd – szöveg vagy Custom Speech – szöveg
@@ -22,7 +22,7 @@ A tároló olyan WebSocket-alapú lekérdezési végpont API-kat biztosít, amel
 > [!TIP]
 > Ha a Speech SDK-t tárolókkal használja, nem kell megadnia az Azure Speech Resource [-előfizetés kulcsát vagy egy hitelesítési tulajdonosi jogkivonatot](../rest-speech-to-text.md#authentication).
 
-Tekintse meg az alábbi példákat.
+Ez az alábbi példákon látható.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

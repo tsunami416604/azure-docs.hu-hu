@@ -3,19 +3,19 @@ title: Mi az a tinta felismerő? -Ink-felismerő API
 titleSuffix: Azure Cognitive Services
 description: Integrálja a kézírás-felismerőt az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba, hogy a szabadkézi adatok azonosíthatók legyenek, és bemenetként legyenek használva.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448150"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
 
@@ -24,15 +24,15 @@ A tinta-felismerő kognitív szolgáltatás felhőalapú REST API biztosít a di
 
 ![Egy, az API-ba irányuló tollvonási bemenet küldését leíró folyamatábra](media/ink-recognizer-pen-graph.svg)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 A kézírás-felismerő API használatával könnyedén felismerheti az alkalmazásaiban található kézzel írt tartalmakat. 
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 | Kézírás-felismerés | A kézzel írt tartalmakat 63 fő [nyelven és területi beállításokban](language-support.md)ismerheti fel. | 
 | Elrendezés felismerése | A digitális tinta tartalmával kapcsolatos szerkezeti információk beolvasása. A tartalom a régiók, a bekezdések, a sorok, a szavak és a listajeles listák megírásával szakítható meg. Az alkalmazások ezután az elrendezési adatok segítségével további funkciókat hozhatnak létre, például az automatikus lista formázását és az alakzat igazítását. |
-| Alakzat felismerése | A leggyakrabban használt geometriai [alakzatok](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) felismerése Megjegyzés készítésekor. |
+| Alakzat felismerése | A leggyakrabban használt [geometriai alakzatok](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) felismerése Megjegyzés készítésekor. |
 | Egyesített alakzatok és szöveges felismerés | Ismerje meg, hogy mely szabadkézi ecsetvonások tartoznak az alakzatokhoz vagy a kézzel írott tartalomhoz|
 
 ## <a name="workflow"></a>Munkafolyamat
@@ -47,12 +47,12 @@ Regisztráció után:
 1. Küldjön egy kérelmet a tinta-felismerő API-nak az adataival.
 1. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő nyelveken kipróbálhat egy rövid útmutatót, amellyel megkezdheti a szabadkézi felismerő API hívását.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 Ha szeretné megtudni, hogyan működik a Ink-felismerési API egy digitális, a GitHubon futó alkalmazásban, tekintse meg az alábbi példákat a GitHubon:
 * [C# és Univerzális Windows-platform (Universal Windows Platform, UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

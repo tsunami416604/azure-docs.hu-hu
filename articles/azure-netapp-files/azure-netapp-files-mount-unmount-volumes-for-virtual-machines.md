@@ -1,25 +1,18 @@
 ---
-title: Azure NetApp Files kötet csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez | Microsoft Docs
-description: Ismerteti, hogyan lehet kötetet csatlakoztatni vagy leválasztani a virtuális gépekhez vagy a Linux rendszerű virtuális gépekhez.
-services: azure-netapp-files
-documentationcenter: ''
+title: Azure NetApp Files kötetek csatlakoztatása virtuális gépekhez
+description: Megtudhatja, hogyan csatlakoztathat vagy leválaszthat köteteket Windows rendszerű virtuális gépekhez vagy linuxos virtuális gépekhez az Azure-ban.
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.author: b-juche
-ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3457adf67fa067a154eef008b08d8cfcc1d9eaa0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894096"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551539"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl-Azure Cosmos DB Table API tábla létrehozása
+title: PowerShell-szkript egy tábla létrehozásához Azure Cosmos DB Table API
 description: Ismerje meg, hogyan lehet PowerShell-parancsfájlokkal frissíteni egy adatbázis vagy egy tároló átviteli sebességét Azure Cosmos DB Table API
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 12a7c9cd6e1a9c1271aa73b9c2b2e1c834c743a7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b99d4ed9043e0411216b953829a40eb2ee71fc30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441307"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Táblázat létrehozása a Azure Cosmos DB-Table API
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: fa400d875a8f39d54d10820c603e12e97f0cd854
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452233"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451302"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Az Azure soros konzol engedélyezése és letiltása
 
@@ -27,13 +27,16 @@ A többi erőforráshoz hasonlóan az Azure soros konzol is engedélyezhető és
 
 A rendszerindítási diagnosztika letiltásával letilthatja a soros konzolt egy adott virtuális gép vagy virtuálisgép-méretezési csoport példányai esetében is. A virtuális gép/virtuálisgép-méretezési csoport és a rendszerindítási diagnosztika Storage-fiókja esetében a közreműködői szintű hozzáférés vagy annál újabb rendszer szükséges.
 
-## <a name="vm-level-disable"></a>Virtuálisgép-szintű letiltása
+## <a name="vm-level-disable"></a>VM-szintű letiltás
 A soros konzol le lehet tiltani egy adott virtuális gép vagy virtuálisgép-méretezési csoport számára a rendszerindítási diagnosztika beállítás letiltásával. Kapcsolja ki a rendszerindítási diagnosztikát a Azure Portal a virtuális gép vagy a virtuálisgép-méretezési csoport soros konzoljának letiltásához. Ha a soros konzolt egy virtuálisgép-méretezési csoporton használja, a virtuálisgép-méretezési csoport példányait a legújabb modellre kell frissítenie.
 
 
 ## <a name="subscription-level-enabledisable"></a>Előfizetés szintű engedélyezés/letiltás
 
-### <a name="azure-cli"></a>Azure CLI
+> [!NOTE]
+> A parancs futtatása előtt győződjön meg arról, hogy a megfelelő felhőben (Azure Public Cloud, Azure USA Government Cloud) van. A `az cloud list` és a felhőt `az cloud set -n <Name of cloud>`segítségével állíthatja be.
+
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Serial console letiltható és újraengedélyezhető a teljes előfizetéshez az Azure CLI következő parancsaival (a "kipróbálás" gombra kattintva elindíthatja a Azure Cloud Shell azon példányát, amelyben futtathatja a parancsokat):
 
@@ -57,9 +60,6 @@ subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
-
-> [!NOTE]
-> A parancs futtatása előtt győződjön meg arról, hogy a megfelelő felhőben (Azure Public Cloud, Azure USA Government Cloud) van. A `az cloud list` és a felhőt `az cloud set -n <Name of cloud>`segítségével állíthatja be.
 
 ### <a name="powershell"></a>PowerShell
 

@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453664"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása Resource Manager-sablon használatával
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rövid útmutató: titkos kód beállítása és lekérése Azure Key Vault Resource Manager-sablon használatával
 
 A [Azure Key Vault](./key-vault-overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára, például kulcsokat, jelszavakat, tanúsítványokat és egyéb titkokat. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát, amely egy kulcstartó és egy titkos kulcs létrehozásával foglalkozik.
 
@@ -77,13 +77,13 @@ Két Azure-erőforrás van definiálva a sablonban:
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
-    * **Hely**: válasszon ki egy helyet.  Ha például **USA középső RÉGIÓJA**.
+    * **Hely**: válasszon ki egy helyet.  Például az **USA középső**régiója.
     * **Key Vault neve**: adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben. A telepítés ellenőrzésekor a következő szakaszban kell megadnia a nevet.
     * **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlő azonosítóját.  Ne módosítsa az alapértelmezett értéket.
-    * **Ad felhasználói azonosító**: adja meg az előfeltételekből beolvasott Azure ad felhasználói [](#prerequisites)objektum azonosítóját.
+    * **Ad felhasználói azonosító**: adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
     * **Titkos kód neve**: adja meg a Key vaultban tárolt titok nevét.  Például: **AdminPassword**.
     * **Titkos érték**: adja meg a titkos értéket.  Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
-    * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza.
+    * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza ki.
 3. Válassza a **Beszerzés** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
 
     ![Resource Manager-sablon, Key Vault integráció, portál-értesítés üzembe helyezése](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -148,11 +148,11 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy kulcstartót és egy titkos kulcsot hozott létre egy Azure Resource Manager sablonnal, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](key-vault-overview.md)
-- További információ a [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+- További információ a [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-and-certificates.md)
 - [Azure Key Vault ajánlott eljárások](key-vault-best-practices.md) áttekintése

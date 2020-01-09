@@ -2,31 +2,39 @@
 title: Oktatóanyag – az Azure IoT Hub üzenetek gazdagítása
 description: 'Oktatóanyag: az üzenetek dúsításának használata az Azure IoT Hub üzeneteihez'
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 323730fff4659c87058669016b69808a880994cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453879"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenetek gazdagítása
 
 Az *üzenet-gazdagítás* a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen *lepecsételni* . Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz. További információ: az [üzenetek dúsításának áttekintése](iot-hub-message-enrichments-overview.md).
 
-Ebben az oktatóanyagban az Azure CLI használatával állítja be az erőforrásokat, köztük két végpontot, amelyek két különböző tároló-tárolóra mutatnak – **gazdagított** és **eredeti**. Ezután a [Azure Portal](https://portal.azure.com) használatával konfigurálja az üzenetek dúsítását, hogy csak a **dúsított** tárolóval rendelkező végpontnak küldött üzenetekre alkalmazza a rendszer. Üzeneteket küld a IoT Hubnak, amelyek mindkét tárolóba vannak irányítva. Csak a **dúsított** tároló számára a végpontnak küldött üzenetek gazdagítva lesznek.
+Ebben az oktatóanyagban két módon hozhat létre és konfigurálhat olyan erőforrásokat, amelyek az üzenetek dúsításának teszteléséhez szükségesek egy IoT Hub számára. Az erőforrások közé tartozik egy Storage-fiók két tároló-tárolóval – az egyik a dúsított üzenetek tárolására és egy az eredeti üzenetek tárolására. A csomagban szerepel egy IoT hub is, amely az üzeneteket fogadja, és a megfelelő tárolóba irányítja, attól függően, hogy azok gazdagítva vannak-e. 
 
-Az oktatóanyag elvégzéséhez az alábbi feladatokat kell végrehajtani:
+* Az első módszer az Azure CLI használata az erőforrások létrehozásához és az üzenet-útválasztás konfigurálásához. Ezután manuálisan definiálja a dúsításokat a [Azure Portal](https://portal.azure.com)használatával. 
+
+* A második módszer egy Azure Resource Manager-sablon használata az üzenetek útválasztásához és az üzenetek dúsításához szükséges erőforrások *és* konfigurációk létrehozásához. 
+
+Az üzenet-útválasztás és az üzenetek dúsításának konfigurálását követően az alkalmazással üzeneteket küldhet a IoT Hub, amelyek ezután mindkét tárolóba irányítják őket. A rendszer csak a **dúsított** tároló számára a végpontnak küldött üzeneteket gazdagítja.
+
+Az oktatóanyag elvégzéséhez az alábbi feladatokat végezheti el:
 
 **IoT Hub üzenet-gazdagítás használata**
 > [!div class="checklist"]
-> * Az Azure CLI használatával hozza létre az erőforrásokat – egy IoT hubot, egy két végponttal rendelkező Storage-fiókot és az útválasztási konfigurációt.
-> * Az üzenet-gazdagítás konfigurálásához használja a Azure Portal.
+> * Első módszer: manuális üzenetek bővítései
+>   - Erőforrások létrehozása és az üzenetek útválasztásának konfigurálása az Azure CLI használatával.
+>   - Az üzenetek dúsítását manuálisan konfigurálja a [Azure Portal](https://portal.azure.com)használatával.
+> * Második módszer: RM-sablon használata
+>   - Erőforrások létrehozása, az üzenetek útválasztásának és az üzenetek dúsításának konfigurálása Azure Resource Manager sablon használatával. 
 > * Futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzeneteket küld az elosztónak.
 > * Tekintse meg az eredményeket, és ellenőrizze, hogy az üzenetek gazdagítása a várt módon működik-e.
 
@@ -38,17 +46,19 @@ Az oktatóanyag elvégzéséhez az alábbi feladatokat kell végrehajtani:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="retrieve-the-sample-code"></a>A mintakód beolvasása
+## <a name="retrieve-the-iot-c-samples-repository"></a>A IoT C# -minták tárházának beolvasása
 
-Töltse le a [IoT-eszköz szimulációját](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és csomagolja ki. Ez a tárház több alkalmazással is rendelkezik, beleértve azt is, amelyet az üzenetek küldésére fog használni az IoT hub számára.
+Töltse le [a C# IoT mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a githubról, és csomagolja ki őket. A tárházban számos alkalmazás, parancsfájl és Resource Manager-sablon található. Az oktatóanyaghoz használt eszközök a következők:
 
-Ez a letöltés tartalmazza azt a parancsfájlt is, amely az üzenetek dúsításának teszteléséhez használt erőforrásokat hozza létre. A parancsfájl a/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Egyelőre megtekintheti a szkriptet, és használhatja azt. A szkriptet közvetlenül a cikkből is másolhatja.
+* A manuális módszerhez van egy CLI-szkript az erőforrások létrehozásához. Ez a szkript a **/azure-iot-samples-csharp/iot-hub/tutorials/routing/simulateddevice/resources/iothub_msgenrichment_cli. azcli**. Ez a szkript létrehozza az erőforrásokat, és konfigurálja az üzenet-útválasztást. A futtatása után manuálisan hozza létre az üzenetek dúsítását a [Azure Portal](https://portal.azure.com) használatával, majd futtassa a DeviceSimulation alkalmazást, és tekintse meg a dúsítások működését.
 
-Ha készen áll a tesztelés elindítására, az eszköz-szimulációs alkalmazás a letöltés után üzenetet küld az IoT hub-nak.
+* Az automatizált metódushoz van egy Azure Resource Manager sablon. A sablon a **/azure-iot-samples-csharp/iot-hub/tutorials/routing/simulateddevice/resources/template_msgenrichments. JSON**fájlban található. Ez a sablon létrehozza az erőforrásokat, konfigurálja az üzenet-útválasztást, és végül konfigurálja az üzenetek dúsítását. A sablon betöltése után futtassa az eszköz-szimulációs alkalmazást, és tekintse meg a dúsítások működését.
 
-## <a name="set-up-and-configure-resources"></a>Erőforrások beállítása és konfigurálása
+* A használt harmadik alkalmazás az eszköz-szimulációs alkalmazás, amellyel üzeneteket küldhet az IoT hubhoz, és tesztelheti az üzenetek dúsítását.
 
-A szükséges erőforrások létrehozása mellett az Azure CLI-szkript a két útvonalat is konfigurálja külön tárolók közötti végpontokra. Az Útválasztás konfigurálásával kapcsolatos további információkért tekintse meg az [útválasztással foglalkozó oktatóanyagot](tutorial-routing.md). Az erőforrások beállítása után a [Azure Portal](https://portal.azure.com) segítségével konfigurálja az egyes végpontok üzenet-dúsítását, majd folytassa a tesztelési lépéssel.
+## <a name="manual-set-up-and-configuration-using-azure-cli"></a>Manuális beállítás és konfigurálás az Azure CLI-vel
+
+A szükséges erőforrások létrehozása mellett az Azure CLI-szkript a két útvonalat is konfigurálja külön tárolók közötti végpontokra. Az üzenet-útválasztás konfigurálásával kapcsolatos további információkért tekintse meg az [útválasztással foglalkozó oktatóanyagot](tutorial-routing.md). Az erőforrások beállítása után a [Azure Portal](https://portal.azure.com) segítségével konfigurálja az egyes végpontok üzenet-dúsítását, majd folytassa a tesztelési lépéssel.
 
 > [!NOTE]
 > Az összes üzenet mindkét végponthoz van irányítva, de csak a végpontra irányuló, konfigurált üzenet-dúsítású üzenetek lesznek bővítve.
@@ -69,7 +79,7 @@ Ha még nem tette meg, nyisson meg egy [Cloud Shell ablakot](https://shell.azure
 
 Itt láthatók a szkript által létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Name (Név) | Érték |
+| Név | Value (Díj) |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | tároló neve | eredeti  |
@@ -237,11 +247,11 @@ az iot hub route create \
   --condition $condition
 ```
 
-Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztás konfigurálva van. Megtekintheti az üzenet-útválasztási konfigurációt a portálon, és beállíthatja az üzenetek dúsítását a **dúsított** tárolóba kerülő üzenetekhez.
+Ezen a ponton az erőforrások mindegyike be van állítva, az üzenet-útválasztás pedig konfigurálva van. Megtekintheti az üzenet-útválasztási konfigurációt a portálon, és beállíthatja az üzenetek dúsítását a **dúsított** tárolóba kerülő üzenetekhez.
 
-### <a name="view-routing-and-configure-the-message-enrichments"></a>Útválasztás megtekintése és az üzenetek dúsításának konfigurálása
+### <a name="manually-configure-the-message-enrichments-using-the-azure-portal"></a>Az üzenet-gazdagítás manuális konfigurálása a Azure Portal használatával
 
-1. Lépjen a IoT Hub az **erőforráscsoportok**lehetőségre, majd válassza ki az oktatóanyaghoz beállított erőforráscsoportot (**ContosoResources_MsgEn**). Keresse meg a IoT Hub a listában, és válassza ki. Válassza az IOT hub **üzenet-útválasztás** elemét.
+1. Lépjen a IoT Hub az **erőforráscsoportok**lehetőség kiválasztásával, majd válassza ki az oktatóanyaghoz beállított erőforráscsoportot (**ContosoResourcesMsgEn**). Keresse meg a IoT Hub a listában, és válassza ki. Válassza az IOT hub **üzenet-útválasztás** elemét.
 
    ![Üzenet-útválasztás kiválasztása](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -251,10 +261,10 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
 2. Adja hozzá ezeket az értékeket a ContosoStorageEndpointEnriched-végpont listájához.
 
-   | Paraméter | Érték | Végpont (legördülő lista) |
+   | Jelmagyarázat | Value (Díj) | Végpont (legördülő lista) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | deviceLocation | $twin. Tags. location | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | DeviceLocation | $twin. Tags. location | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |Vevőkód | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
@@ -266,9 +276,58 @@ Ezen a ponton az erőforrások mindegyike be van állítva, és az Útválasztá
 
    ![Táblázat az összes hozzáadott alkoholtartalommal](./media/tutorial-message-enrichments/all-message-enrichments.png)
 
-4. A módosítások mentéséhez kattintson az **alkalmaz** gombra.
+4. A módosítások mentéséhez kattintson az **alkalmaz** gombra. Ugorjon a [tesztelési üzenetek dúsítása](#testing-message-enrichments) szakaszra.
 
-## <a name="send-messages-to-the-iot-hub"></a>Üzenetek küldése a IoT Hub
+## <a name="use-an-rm-template-to-create-and-configure-the-resources-message-routing-and-message-enrichments"></a>RM-sablon használata az erőforrások, az üzenetek útválasztásának és az üzenetek dúsításának létrehozásához és konfigurálásához 
+
+1. Jelentkezzen be az Azure Portalra. Kattintson **az + erőforrás létrehozása**elemre. Ekkor megjelenik a keresőmező. Keresse meg a **sablon központi telepítését**. Az eredmények ablaktábláján válassza a **template Deployment (üzembe helyezés egyéni sablon használatával)** lehetőséget.
+
+   ![Template deployment a Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
+
+1. Válassza a **Létrehozás** lehetőséget a sablon üzembe helyezése ablaktáblán. 
+
+1. Az egyéni telepítés ablaktáblán. válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
+
+1. A sablon szerkesztése panelen válassza a **fájl betöltése**lehetőséget. Megjelenik a Windows Intéző. Keresse meg a **template_messageenrichments. JSON** fájlt a **/IOT-hub/tutorials/Routing/SimulatedDevice/Resources**-ben található kibontott adattár-fájlban. 
+
+   ![Sablon kiválasztása a helyi gépről](./media/tutorial-message-enrichments/template-select.png)
+
+1. Válassza a **Megnyitás** elemet a sablonfájl a helyi gépről való betöltéséhez. Betölti azt a szerkesztési ablaktáblába, és megjeleníti az Ön számára.
+
+   Ez a sablon úgy van beállítva, hogy globálisan egyedi IoT Hub nevet és a Storage-fiók nevét használja egy véletlenszerű érték az alapértelmezett nevek végéhez való hozzáadásával, így a sablon módosítás nélkül használható. 
+
+   Itt láthatók a sablon betöltésével létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható. Ezek az Azure CLI-szkriptben használt értékek.
+
+   | Név | Value (Díj) |
+   |-----|-----|
+   | resourceGroup | ContosoResourcesMsgEn |
+   | tároló neve | eredeti  |
+   | tároló neve | sokoldalú és  |
+   | IoT-eszköz neve | Contoso-test-Device |
+   | IoT Hub neve | ContosoTestHubMsgEn |
+   | Storage-fiók neve | contosostorage |
+   | végpont neve 1 | ContosoStorageEndpointOriginal |
+   | végpont neve 2 | ContosoStorageEndpointEnriched|
+   | útvonal neve 1 | ContosoStorageRouteOriginal |
+   | útvonal neve 2 | ContosoStorageRouteEnriched |
+
+1. Válassza a **Mentés**lehetőséget, majd az egyéni telepítés panel jelenik meg, amely a sablon által használt összes paramétert megjeleníti. Az egyetlen mező, amelyet be kell állítani az **erőforráscsoporthoz**. Hozzon létre egy újat, vagy válasszon ki egyet a legördülő listából.
+
+   Itt látható az egyéni telepítés panel felső fele. Láthatja, hogy hol tölti ki az erőforráscsoportot.
+
+   ![Egyéni üzembe helyezési ablaktábla felső fele](./media/tutorial-message-enrichments/template-deployment-top.png)
+
+1. Itt látható az egyéni telepítési ablaktábla alsó fele. Láthatja a többi paramétert és a használati feltételeket. 
+
+   ![Az egyéni telepítési ablaktábla alsó fele](./media/tutorial-message-enrichments/template-deployment-bottom.png)
+
+1. Jelölje be a feltételek és kikötések elfogadását jelző jelölőnégyzetet, majd válassza a **vásárlás** lehetőséget a sablon telepítésének folytatásához.
+
+1. Várjon, amíg a sablon teljesen telepítve lesz. Az előrehaladás ellenőrzéséhez a képernyő tetején található harang ikont is kiválaszthatja. Ha elkészült, továbbra is [tesztelheti az üzenetek dúsítását](#testing-message-enrichments).
+
+## <a name="testing-message-enrichments"></a>Üzenetek dúsításának tesztelése
+
+Az üzenetek dúsítását az **erőforráscsoportok**lehetőség kiválasztásával tekintheti meg, majd kiválaszthatja az oktatóanyaghoz használt erőforráscsoportot. Ezután válassza ki a IoT Hub az erőforrások listájából, és lépjen az **üzenetküldés**lehetőségre. Ez az üzenet-útválasztási konfigurációt és a beállított bővítéseket mutatja.
 
 Most, hogy az üzenet gazdagítása konfigurálva van a végponthoz, futtassa a szimulált eszköz alkalmazást, hogy üzeneteket küldjön a IoT Hub. A hub beállítása olyan beállításokkal történt, amelyek a következőket hajtják végre:
 
@@ -290,9 +349,9 @@ Ha nem rendelkezik az eszköz kulcsával, lekérheti azt a portálról. A bejele
         private readonly static string s_deviceKey = "{your device key}";
    ```
 
-## <a name="run-and-test"></a>Futtatás és tesztelés
+### <a name="run-and-test"></a>Futtatás és tesztelés
 
-Futtassa a konzolalkalmazást. Várjon néhány percet. Az elküldött üzenetek az alkalmazás konzol képernyőjén jelennek meg.
+Futtassa a konzol alkalmazást néhány percig. Az elküldött üzenetek az alkalmazás konzol képernyőjén jelennek meg.
 
 Az alkalmazás másodpercenként elküld egy új üzenetet az eszközről a felhőbe az IoT Hubnak. Az üzenet egy JSON-szerializált objektumot tartalmaz az eszköz azonosítójával, a hőmérséklettel, a páratartalommal és az üzenet szintjével, amely alapértelmezés szerint `normal`. Véletlenszerűen rendel hozzá `critical` vagy `storage`szintet, így az üzenet a Storage-fiókba vagy az alapértelmezett végpontba irányítható. A Storage-fiókban a **dúsított** tárolóba küldött üzenetek gazdagítva lesznek.
 
@@ -328,7 +387,7 @@ Ha el szeretné távolítani az oktatóanyagban létrehozott összes erőforrás
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején **ContosoResources** vissza.
+Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején **ContosoResourcesMsgEn** vissza.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -340,9 +399,12 @@ Ebben az oktatóanyagban az alábbi lépéseket követve konfigurálta és teszt
 
 **IoT Hub üzenet-gazdagítás használata**
 > [!div class="checklist"]
-> * Az Azure CLI használatával hozza létre az erőforrásokat – egy IoT hubot, egy két enendpoints rendelkező Storage-fiókot és az útválasztási konfigurációt.
-> * Az üzenet-gazdagítás konfigurálásához használja a Azure Portal.
-> * Futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzenetet küld az elosztónak.
+> * Első módszer
+>   * Erőforrások létrehozása és az üzenetek útválasztásának konfigurálása az Azure CLI használatával.
+>   * Az üzenetek dúsítását manuálisan konfigurálja a [Azure Portal](https://portal.azure.com)használatával.
+> * Második módszer
+>   * Erőforrások létrehozása, az üzenetek útválasztásának és az üzenetek dúsításának konfigurálása Azure Resource Manager sablon használatával. 
+> * Futtasson egy alkalmazást, amely egy IoT-eszközt szimulál, amely üzeneteket küld az elosztónak.
 > * Tekintse meg az eredményeket, és ellenőrizze, hogy az üzenetek gazdagítása a várt módon működik-e.
 
 Az üzenetek dúsításával kapcsolatos további információkért tekintse meg az üzenetek bővítésének [áttekintése](iot-hub-message-enrichments-overview.md)című témakört.

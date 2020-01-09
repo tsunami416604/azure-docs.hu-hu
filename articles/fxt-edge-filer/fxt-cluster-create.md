@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge Filer-fürt létrehozása
+title: 'Oktatóanyag: az Azure FXT Edge Filer gyorsítótár-fürt létrehozása'
 description: Hibrid tárolási gyorsítótár-fürt létrehozása az Azure FXT Edge Filer használatával
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 54d70f60d4b7290b60c864817c756648fef1f481
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256088"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551267"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: az Azure FXT Edge Filer-fürt létrehozása
 
@@ -103,19 +103,19 @@ A hálózati kapcsolat ellenőrzéséhez győződjön meg arról, hogy a csomóp
 
 A csomópont indításakor a rendszer IP-címet kér. Ha egy DHCP-kiszolgálóhoz csatlakozik, akkor elfogadja a DHCP által biztosított IP-címet. (Ez az IP-cím ideiglenes. A fürt létrehozásakor megváltozik.)
 
-Ha nem csatlakozik egy DHCP-kiszolgálóhoz, vagy nem kap választ, a csomópont a Bonjour szoftver használatával állítja be az önkiszolgáló IP-címet 169,254. \*. \*. A fürt létrehozásához azonban egy ideiglenes statikus IP-címet kell beállítania a csomópont egyik hálózati kártyáján. Ebben az örökölt dokumentumban az utasítások is szerepelnek. forduljon a Microsoft szolgáltatáshoz, és támogassa a frissített információkat: [a függelék: statikus IP-cím beállítása egy FXT-csomóponton](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+Ha nem csatlakozik egy DHCP-kiszolgálóhoz, vagy nem kap választ, a csomópont a Bonjour szoftver használatával állítja be az önkiszolgáló IP-címet a 169,254 formátumban.\*.\*. A fürt létrehozásához azonban egy ideiglenes statikus IP-címet kell beállítania a csomópont egyik hálózati kártyáján. Ebben az örökölt dokumentumban az utasítások is szerepelnek. forduljon a Microsoft szolgáltatáshoz, és támogassa a frissített információkat: [a függelék: statikus IP-cím beállítása egy FXT-csomóponton](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
 ### <a name="find-the-ip-address"></a>Az IP-cím megkeresése
 
 Kapcsolódjon az Azure FXT Edge Filer-csomóponthoz az IP-címének megkereséséhez. Használhat soros kábelt, közvetlen kapcsolatot az USB-és VGA-portokkal, vagy csatlakozhat egy KVM-kapcsolón keresztül. (A port kapcsolat részleteiért lásd a [kezdeti jelszavak beállítása](fxt-node-password.md)című témakört.)
 
-A csatlakozás után jelentkezzen be `root` felhasználónévvel és a csomópont első indításakor beállított jelszóval.  
+A csatlakozás után jelentkezzen be a Felhasználónév `root` és a jelszó, amelyet a csomópont első indításakor beállított.  
 
 A bejelentkezést követően meg kell határoznia a csomópont IP-címét.
 
-A rendszerhez rendelt címek megtekintéséhez használja a `ifconfig` parancsot.
+Az `ifconfig` parancs használatával megtekintheti a rendszerhez rendelt címeket.
 
-Például az `ifconfig | grep -B5 inet` parancs megkeresi az internetes címekkel rendelkező portokat, és öt sornyi kontextust biztosít a port azonosítójának megjelenítéséhez.
+A `ifconfig | grep -B5 inet` parancs például megkeresi az internetes címekkel rendelkező portokat, és öt sornyi kontextust biztosít a port azonosítójának megjelenítéséhez.
 
 Jegyezze fel az ifconfig jelentésben látható bármely IP-címet. A portok neveivel (például e0a vagy e0b) felsorolt címek jó beállítások. Ne használjon E7 * névvel rendelkező IP-címeket, mivel ezek a nevek csak a iDRAC/IPMI szolgáltatás portjaihoz használatosak.  
 
@@ -174,9 +174,9 @@ A felső szakaszban adja meg az új fürt alapvető információit.
 
 * **Rendszergazdai jelszó** – az alapértelmezett rendszergazda felhasználó jelszavának beállítása, `admin`.
   
-  Egyéni felhasználói fiókokat kell beállítania minden olyan személy számára, aki felügyeli a fürtöt, de nem tudja eltávolítani a `admin` felhasználót. Ha további felhasználókat szeretne létrehozni, jelentkezzen be `admin` néven.
+  Egyéni felhasználói fiókokat kell beállítania minden olyan személy számára, aki felügyeli a fürtöt, de nem tudja eltávolítani a felhasználó `admin`. Ha további felhasználókat szeretne létrehozni, jelentkezzen be `admin`.
  
-  A `admin` jelszót a fürt Vezérlőpultjának **felügyelet** > **felhasználói** beállítások lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  A `admin` jelszavát a fürt Vezérlőpultjának **felügyelet** > **felhasználók** beállításai lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -204,7 +204,7 @@ A **felügyeleti** szakaszban található beállítások olyan hálózatra vonat
 
 * **Felügyeleti IP** -Cím – Itt adhatja meg azt az IP-címet, amelyet a fürt Vezérlőpultjának eléréséhez fog használni. Ezt a címeket a fürt elsődleges csomópontja igényli, de automatikusan egy kifogástalan állapotú csomópontra kerül, ha az eredeti elsődleges csomópont elérhetetlenné válik.
 
-  A legtöbb fürt csak egy felügyeleti IP-címet használ. Ha egynél többre van szüksége **, a fürt**létrehozása után is hozzáadhatja őket a  > **felügyeleti hálózati** beállítások lapon. További információ a [fürt konfigurációs útmutatójában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html)olvasható.
+  A legtöbb fürt csak egy felügyeleti IP-címet használ. Ha egynél többre van szüksége, a fürt létrehozása után is hozzáadhatja őket a **fürt** > **felügyeleti hálózati** beállítások lapon. További információ a [fürt konfigurációs útmutatójában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html)olvasható.
 
 * **Hálózati maszk** – a felügyeleti hálózat hálózati maszkjának megadása.
 
@@ -226,7 +226,7 @@ A fürt hálózati beállításai a fürtcsomópontok között, valamint a fürt
 
 * **Első IP** -cím és **utolsó IP** – adja meg azokat az IP-címeket, amelyek meghatározzák a fürt belső kommunikációjához használt tartományt. Az itt használt IP-címeknek összefüggőnek kell lennie, és a DHCP nem rendeli hozzá őket.
 
-  A fürt létrehozása után további IP-címeket is hozzáadhat. Használja a **fürt** > **fürt hálózati** beállításai lapot (a[fürt konfigurációs útmutatójának dokumentációja](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
+  A fürt létrehozása után további IP-címeket is hozzáadhat. Használja a **fürt** > a **fürt hálózati** beállításai lapot (a[fürt konfigurációs útmutatójának dokumentációja](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
 
   A tartományban lévő **IP-címek számának** értékét a rendszer automatikusan kiszámítja és megjeleníti.
 
@@ -282,7 +282,7 @@ A fürt létrehozása után testre kell szabnia a hálózat és a munkafolyamat 
 
 Az új fürt beállításához használja a Vezérlőpult webes felületét. Kövesse a fürt létrehozási állapota képernyő hivatkozását, vagy keresse meg a fürtön beállított felügyeleti IP-címet.
 
-Jelentkezzen be a webes felületen a username `admin` névvel és a fürt létrehozásakor beállított jelszóval.
+Jelentkezzen be a webes felületre a Felhasználónév `admin` és a fürt létrehozásakor beállított jelszóval.
 
 ![a Vezérlőpult bejelentkezési mezőinek megjelenítéséhez használt webböngésző](media/fxt-cluster-create/admin-login.png)
 
@@ -379,13 +379,13 @@ A támogatási feltöltések beállításához kövesse az alábbi lépéseket.
 1. Kattintson a **feltöltési adatok újraérvényesítése** gombra.
 1. Adja meg a fürt támogatási nevét az **egyedi fürt neve** alatt – ügyeljen arra, hogy a fürt egyedi módon azonosítható legyen a munkatársak támogatásához.
 1. A **statisztikák figyelésére**, az **általános adatok feltöltésére**és az **Összeomlási adatok feltöltésére**vonatkozó jelölőnégyzeteket itt találja.
-1. Kattintson a **Submit (Küldés**) gombra.  
+1. Kattintson a **Submit** (Küldés) gombra.  
 
    ![A támogatási beállítások oldalának Completed Customer info szakaszt tartalmazó képernyőképe](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Kattintson a **biztonságos proaktív támogatás (SPS)** bal oldalán található háromszögre a szakasz kibontásához.
 1. Jelölje be az **SPS-hivatkozás engedélyezése**jelölőnégyzetet.
-1. Kattintson a **Submit (Küldés**) gombra.
+1. Kattintson a **Submit** (Küldés) gombra.
 
    ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/fxt-cluster-create/fxt-support-sps.png)
 

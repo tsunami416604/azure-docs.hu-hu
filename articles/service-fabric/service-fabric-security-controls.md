@@ -1,20 +1,16 @@
 ---
 title: Az Azure Service Fabric biztonsági vezérlői
-description: Az Azure-Service Fabric kiértékelésére szolgáló biztonsági ellenőrzési ellenőrzőlista
-services: service-fabric
-documentationcenter: ''
+description: Ismerje meg az Azure Service Fabric biztonsági vezérlőit. A beépített biztonsági vezérlők ellenőrzőlistáját tartalmazza.
 author: msmbaldwin
-manager: rkarlin
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d62c7848588c494c8190f0d429ce2d6641928b52
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886758"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645429"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Az Azure Service Fabric biztonsági vezérlői
 
@@ -39,12 +35,12 @@ Ez a cikk az Azure Service Fabric beépített biztonsági vezérlőket dokument�
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A vezérlési sík műveletei a naplózási és jóváhagyási folyamatokon keresztül futnak. |
 | Adatsíkok naplózása és naplózása| – | Az ügyfél tulajdonosa a fürt.  |
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |
-| Authorization| Igen | Az identitás-és hozzáférés-kezelés (IAM) a SFRP-on keresztüli hívásokhoz. A közvetlenül a fürt végpontja felé irányuló hívások két szerepkört támogatnak: Felhasználó és rendszergazda. Az ügyfél bármely szerepkörhöz hozzárendelheti az API-kat. |
+| Hitelesítés| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |
+| Engedélyezés| Igen | Az identitás-és hozzáférés-kezelés (IAM) a SFRP-on keresztüli hívásokhoz. A közvetlenül a fürt végpontja felé irányuló hívások két szerepkört támogatnak: felhasználó és rendszergazda. Az ügyfél bármely szerepkörhöz hozzárendelheti az API-kat. |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -62,6 +58,6 @@ Ez a cikk az Azure Service Fabric beépített biztonsági vezérlőket dokument�
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

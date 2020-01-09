@@ -12,12 +12,12 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 62c6488cfcb30c969c388343c766c482cff7e03b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466990"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432181"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás paramétereinek használata
 A Azure Machine Learning webszolgáltatás egy olyan kísérlet közzétételével jön létre, amely konfigurálható paraméterekkel rendelkező modulokat tartalmaz. Bizonyos esetekben érdemes lehet módosítani a modul működését, amíg a webszolgáltatás fut. A *webszolgáltatás paraméterei* lehetővé teszik a feladat elvégzését. 
@@ -45,14 +45,14 @@ A webszolgáltatás API-dokumentációja a webszolgáltatás azon felhasználój
 ## <a name="example"></a>Példa
 Tegyük fel például, hogy egy olyan [adatexportálási][writer] modullal kísérletezünk, amely adatokat küld az Azure Blob Storage szolgáltatásnak. Definiálunk egy "blob Path" nevű webszolgáltatás-paramétert, amely lehetővé teszi, hogy a webszolgáltatás-felhasználó módosítsa a blob Storage elérési útját a szolgáltatás elérésekor.
 
-1. A Machine Learning Studio klasszikus verziójában kattintson az [adatexportálás][writer] modulra a kiválasztásához. A tulajdonságok a kísérlet vászontól jobbra látható Tulajdonságok ablaktáblán jelennek meg.
+1. A Machine Learning Studio (klasszikus) területen kattintson az [adatexportálás][writer] modulra a kiválasztásához. A tulajdonságok a kísérlet vászontól jobbra látható Tulajdonságok ablaktáblán jelennek meg.
 2. Adja meg a tárolási típust:
    
    * Az adja **meg az adat célhelyét**területen válassza az "Azure Blob Storage" lehetőséget.
    * A **kérjük, adja meg a hitelesítés típusát**területen válassza a "fiók" lehetőséget.
    * Adja meg az Azure Blob Storage-fiók adatait. 
 
-3. Kattintson az elérési út jobb oldalán lévő ikonra a **Container paraméterrel kezdődő blobra**. Így néz ki:
+3. Kattintson az elérési út jobb oldalán lévő ikonra a **Container paraméterrel kezdődő blobra**. A következőképpen néz ki:
    
    ![Webszolgáltatás paraméterének ikonja](./media/web-service-parameters/icon.png)
    

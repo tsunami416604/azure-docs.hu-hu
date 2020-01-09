@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 082ef9753f84aef3f867a9dee4b4e9fbf73dd379
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422096"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
 
@@ -94,7 +94,7 @@ Ha a Resource Manager-sablon MSDeploy használ, a telepítési hibaüzenetek neh
 
 ## <a name="choose-a-unique-web-app-name"></a>Egyedi webalkalmazás nevének kiválasztása
 
-A webalkalmazás nevének globálisan egyedinek kell lennie. Használhat olyan elnevezési konvenciót, amely valószínűleg egyedi, vagy használhatja a [uniqueString függvényt](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) egyedi név létrehozásához.
+A webalkalmazás nevének globálisan egyedinek kell lennie. Használhat olyan elnevezési konvenciót, amely valószínűleg egyedi, vagy használhatja a [uniqueString függvényt](../azure-resource-manager/templates/template-functions-string.md#uniquestring) egyedi név létrehozásához.
 
 ```json
 {

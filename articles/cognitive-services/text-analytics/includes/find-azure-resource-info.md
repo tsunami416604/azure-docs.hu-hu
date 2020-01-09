@@ -9,14 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/07/2019
 ms.author: aahi
-ms.openlocfilehash: 221bcdf3a98a48646bab5abf780dc2a69c8e10f2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378763"
 ---
-> [!TIP]
+> [!IMPORTANT]
 > A kulcs és a végpont megkeresése a Azure Portalon:
-> 1. Navigáljon az Azure-erőforráshoz a címen https://portal.azure.com/.
+> 1. Navigáljon az Azure-erőforráshoz https://portal.azure.com/ címen.
 > 2. Kattintson a **gyors üzembe helyezés**elemre, amely az **Erőforrás-kezelés**területen található.
+>
+> Ne felejtse el törölni a hitelesítő adatait a kódból, amikor elkészült, és soha ne tegye közzé őket nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Például az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

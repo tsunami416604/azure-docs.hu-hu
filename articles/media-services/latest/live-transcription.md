@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: a85f9f8b9d98f77cf673778f031d8f47f132fbe1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 875d8f498fc8405a53d8fb60631c52ce09b30a62
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431927"
 ---
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
@@ -102,7 +102,7 @@ Előzetes verzióban az élő átírással kapcsolatos ismert problémák a köv
 
 * A szolgáltatás csak az USA 2. nyugati régiójában érhető el.
 * Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI specifikációjának](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) leírásában talál.
-* Az egyetlen támogatott nyelv az angol.
+* Az egyetlen támogatott nyelv az angol (en-US).
 * A tartalomvédelem tekintetében csak az AES-borítékok titkosítása támogatott.
 
 ## <a name="next-steps"></a>Következő lépések

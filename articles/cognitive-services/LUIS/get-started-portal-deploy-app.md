@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448076"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Ha a LUIS-alkalmazás készen áll arra, hogy egy ügyfélalkalmazás (például egy csevegési robot) teljes beolvasását adja vissza, az alkalmazást az előrejelzési végpontra kell telepítenie.
 
@@ -39,10 +37,10 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
 
 1. Konfigurálja az előfizetést a következő beállításokkal:
 
-   |Beállítás|Érték|Cél|
+   |Beállítás|Value (Díj)|Rendeltetés|
    |--|--|--|
-   |Name (Név)|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
-   |Előfizetést|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
+   |Név|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
+   |Előfizetés|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
    |Erőforráscsoport|`my-resource-group`|Hozzon létre egy új erőforráscsoportot az összes kognitív szolgáltatás erőforrásaihoz. Ha elkészült az erőforrásokkal, törölheti az erőforráscsoportot az előfizetés tisztításához. |
    |Szerzői hely|**USA nyugati régiója**|Az Azure-régió létrehozásához.|
    |A szerzői díjak szintjei|**F0**|A szerzői műveletek alapértelmezett díjszabási szintje.|
@@ -71,7 +69,7 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
 1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
 
-   ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 

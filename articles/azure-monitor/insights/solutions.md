@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: b5304f2f9af3f3dac5a1259669cdd78548c2e832
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7ea7051b24deeddea25b1db771b73a226f650067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933725"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401149"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 A monitorozási megoldások kihasználják az Azure szolgáltatásait, hogy további információkat szolgáltassanak egy adott alkalmazás vagy szolgáltatás működéséről. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről.
@@ -29,8 +29,7 @@ A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáad
 ## <a name="use-monitoring-solutions"></a>Monitorozási megoldások használata
 Nyissa meg Azure Monitor **Áttekintés** lapját, és jelenítse meg a munkaterületen telepített összes megoldás csempéjét. 
 
-1. Jelentkezzen be az Azure Portalra.
-1. Nyissa meg **az összes szolgáltatást** és keresse meg a **figyelőt**.
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com). Keresse meg és válassza a **figyelő**elemet.
 1. Az **áttekintések** menüben válassza a **továbbiak**lehetőséget.
 1. A képernyő felső részén található legördülő listák használatával módosíthatja a munkaterületet vagy a csempék időtartományát.
 1. Kattintson a csempére egy megoldás megnyitásához, amely részletesebb elemzést tartalmaz az összegyűjtött adatokról.
@@ -42,9 +41,8 @@ A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, �
 ## <a name="list-installed-monitoring-solutions"></a>Telepített figyelési megoldások listázása 
 Az alábbi eljárás segítségével listázhatja az előfizetésében telepített figyelési megoldásokat.
 
-1. Jelentkezzen be az Azure Portalra.
-1. Nyissa meg **az összes szolgáltatást** , és keresse meg a **megoldásokat**.
-4. Az összes munkaterületre telepített megoldások listája látható. A megoldás nevét a-ben telepített munkaterület neve követi.
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com). Keresse meg és válassza ki a **megoldásokat**.
+1. Az összes munkaterületre telepített megoldások listája látható. A megoldás nevét a-ben telepített munkaterület neve követi.
 1. Az előfizetés vagy az erőforráscsoport alapján történő szűréshez használja a képernyő felső részén található legördülő listákat.
 
 

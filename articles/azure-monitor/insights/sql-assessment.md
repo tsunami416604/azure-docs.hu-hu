@@ -4,15 +4,15 @@ description: A Azure Monitor használatával az SQL Health-ellenőrzési megold�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401039"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
 
@@ -34,7 +34,7 @@ A megoldás hozzáadása és az értékelés befejezése után a fókusz terüle
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az SQL Health ellenőrzési megoldáshoz a .NET-keretrendszer 4-es verziójának támogatott verzióját kell telepíteni minden olyan számítógépre, amelyen telepítve van a Microsoft monitoring Agent (MMA).  Az MMA-ügynököt a System Center 2016-Operations Manager és az Operations Manager 2012 R2, valamint a Azure Monitor használja.  
+* Az SQL Health ellenőrzési megoldáshoz a .NET-keretrendszer 4.6.2 egy támogatott verzióját kell telepíteni minden olyan számítógépen, amelyen telepítve van a Microsoft monitoring Agent (MMA).  Az MMA-ügynököt a System Center 2016-Operations Manager és az Operations Manager 2012 R2, valamint a Azure Monitor használja.  
 * A megoldás a 2012, 2014 és 2016 SQL Server verziót támogatja.
 * Log Analytics munkaterület az SQL Health-ellenőrzési megoldás az Azure Marketplace-en való hozzáadásához a Azure Portalban.  A megoldás telepítéséhez rendszergazdának vagy közreműködőnek kell lennie az Azure-előfizetésben.
 
@@ -47,7 +47,7 @@ A SQL Server-kiszolgálók állapot-ellenőrzésének végrehajtásához a köve
 
 1. Telepítse a [Microsoft monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) programot, ha a kiszolgálót még nem figyeli a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
 2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitor-mel, a kiszolgáló többplatformos lehet a Log Analytics, hogy adatokat gyűjtsön és továbbítson a szolgáltatásnak, és továbbra is Operations Manager figyeli.  
-3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a következőben: munkaterület.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
 
 A SQL Server ügynöke, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
@@ -79,14 +79,14 @@ Az alábbi információk segítségével állíthatja be az SQL Health-ellenőrz
 
 1. A Operations Managerban nyissa meg az operatív konzolt, majd kattintson az **Adminisztráció**elemre.
 2. A **futtató konfiguráció**alatt kattintson a **profilok**elemre, majd nyissa meg **SQL Assessment futtató profilt**.
-3. A **futtató fiókok** lapon kattintson a **Hozzáadás**gombra.
+3. A **Futtató fiókok** lapon kattintson **Hozzáadás** lehetőségre.
 4. Válasszon olyan Windows rendszerű futtató fiókot, amely tartalmazza a SQL Serverhoz szükséges hitelesítő adatokat, vagy kattintson az **új** elemre egy létrehozásához.
 
    > [!NOTE]
    > A futtató fiók típusának Windowsnak kell lennie. A futtató fióknak a helyi Rendszergazdák csoport részét kell képeznie a SQL Server példányokat üzemeltető összes Windows-kiszolgálón.
    >
    >
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 6. Módosítsa, majd hajtsa végre az alábbi T-SQL-mintát minden SQL Server példányon, hogy az állapot-ellenőrzés elvégzéséhez szükséges minimális engedélyeket adja meg a futtató fiók számára. Ezt azonban nem kell megtennie, ha egy futtató fiók már része a sysadmin (rendszergazda) kiszolgálói szerepkörnek SQL Server példányokon.
 
 ```
@@ -143,7 +143,7 @@ Az egyes javaslatok súlyozása az egyes fókuszokhoz rendelkezésre álló telj
 
 **Műveletek és monitorozás** – ez a fókusz az informatikai műveletek egyszerűsítését, a megelőző karbantartás megvalósítását és a teljesítmény maximalizálása érdekében ajánlásokat mutat be.
 
-**Módosítási és konfigurálási felügyelet** – ez a fókusz terület a napi műveletek védelmére vonatkozó ajánlásokat mutat be, hogy a változások ne legyenek negatív hatással az infrastruktúrára, a változás-ellenőrzési eljárások létrehozására, valamint a rendszer nyomon követésére és auditálására. konfigurációk.
+**Módosítási és konfigurálási felügyelet** – ez a fókusz terület a napi műveletek védelméhez nyújt javaslatokat, és gondoskodik arról, hogy a változások ne legyenek negatív hatással az infrastruktúrára, a változás-ellenőrzési eljárások létrehozására, valamint a rendszerkonfigurációk nyomon követésére és naplózására.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Érdemes 100%-ot kimutatni minden fókuszban?
 Nem feltétlenül. A javaslatok a Microsoft-mérnökök által több ezer ügyfél-látogatáson keresztül szerzett ismeretekre és tapasztalatokra épülnek. Azonban két kiszolgálói infrastruktúra sem azonos, és a konkrét javaslatok többé vagy kevésbé fontosak lehetnek. Előfordulhat például, hogy bizonyos biztonsági javaslatok kevésbé fontosak, ha a virtuális gépek nem lesznek elérhetők az internethez. Egyes rendelkezésre állási javaslatok kevésbé fontosak lehetnek az alacsony prioritású ad hoc adatgyűjtést és jelentéskészítést biztosító szolgáltatások esetében. Az érett üzleti tevékenység szempontjából fontos problémák kevésbé fontosak az indításhoz. Érdemes lehet azonosítani, hogy mely Kiemelt területek legyenek a prioritásai, és hogyan változnak meg a pontszámok időbeli változása.

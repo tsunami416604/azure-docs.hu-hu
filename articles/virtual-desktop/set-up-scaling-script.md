@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607458"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451342"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Munkamenet-gazdagépek dinamikus skálázása
 
@@ -50,7 +50,7 @@ Először készítse elő a környezetet a skálázási parancsfájlhoz:
 
 1. Jelentkezzen be a virtuális gépre (a méretezési virtuális gépre), amely az ütemezett feladatot egy tartományi rendszergazdai fiókkal fogja futtatni.
 2. Hozzon létre egy mappát a méretezési virtuális gépen a skálázási parancsfájl és a konfigurációjának tárolásához (például **C:\\skálázás-HostPool1**).
-3. Töltse le a **basicScale. ps1**, a **config. XML**és az **functions-PSStoredCredentials. Ps1** fájlt, valamint a **PowershellModules** mappát a [skálázási parancsfájl-tárházból](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) , és másolja azokat a 2. lépésben létrehozott mappába. A skálázási virtuális gépre való másolás előtt két fő módszert kell megszereznie a fájlok beszerzéséhez:
+3. Töltse le a **basicScale. ps1**, a **config. JSON**és a **functions-PSStoredCredentials. Ps1** fájlt, valamint a **PowershellModules** mappát a [skálázási parancsfájl-tárházból](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) , és másolja azokat a 2. lépésben létrehozott mappába. A skálázási virtuális gépre való másolás előtt két fő módszert kell megszereznie a fájlok beszerzéséhez:
     - A git-tárház klónozása a helyi gépre.
     - Tekintse meg az egyes fájlok **nyers** verzióját, másolja és illessze be az egyes fájlok tartalmát egy szövegszerkesztőbe, majd mentse a fájlokat a megfelelő fájlnévvel és fájltípussal. 
 
@@ -73,13 +73,13 @@ Ezután létre kell hoznia a biztonságos tárolt hitelesítő adatokat:
     ```
     
     **Adja meg például a következőt: set-változó-Name – scope Global-Value "c:\\skálázás – HostPool1"**
-5. Futtassa a **New-StoredCredential-\$** . Ha a rendszer kéri, adja meg a Windows rendszerű virtuális asztali hitelesítő adatait, amely jogosult a gazdagép lekérdezésére (az alkalmazáskészletet a **config. XML**fájlban lehet megadni).
+5. Futtassa a **New-StoredCredential-\$** . Ha a rendszer kéri, adja meg a Windows rendszerű virtuális asztali hitelesítő adatait, amely jogosult a gazdagép lekérdezésére (az alkalmazáskészletet a **config. JSON fájlban**lehet megadni).
     - Ha más egyszerű szolgáltatásnevet vagy standard fiókot használ, akkor a helyi tárolt hitelesítő adatok létrehozásához minden fióknál futtassa a **New-StoredCredential------\$-a-a-a-a-a-** .
 6. A **Get-StoredCredential-List** futtatásával erősítse meg, hogy a hitelesítő adatok sikeresen létrejöttek.
 
-### <a name="configure-the-configxml-file"></a>A config. xml fájl konfigurálása
+### <a name="configure-the-configjson-file"></a>A config. JSON fájl konfigurálása
 
-Adja meg a megfelelő értékeket a következő mezőkben, hogy frissítse a méretezési parancsfájl beállításait a config. xml fájlban:
+Adja meg a megfelelő értékeket a következő mezőkben, hogy frissítse a méretezési parancsfájl beállításait a config. JSON fájlban:
 
 | Mező                     | Leírás                    |
 |-------------------------------|------------------------------------|
@@ -103,7 +103,7 @@ Adja meg a megfelelő értékeket a következő mezőkben, hogy frissítse a mé
 
 ### <a name="configure-the-task-scheduler"></a>A Feladatütemező konfigurálása
 
-A Configuration. xml fájl konfigurálása után a Feladatütemezőt úgy kell konfigurálnia, hogy rendszeres időközönként futtassa az basicScaler. ps1 fájlt.
+A konfigurációs JSON-fájl konfigurálása után a Feladatütemezőt úgy kell konfigurálnia, hogy rendszeres időközönként futtassa az basicScaler. ps1 fájlt.
 
 1. Indítsa el a **Feladatütemezőt**.
 2. A Feladatütemező **ablakban válassza** a **feladat létrehozása..** . lehetőséget.
@@ -117,13 +117,13 @@ A Configuration. xml fájl konfigurálása után a Feladatütemezőt úgy kell k
 
 ## <a name="how-the-scaling-script-works"></a>A skálázási parancsfájl működése
 
-Ez a skálázási parancsfájl egy config. XML fájlból olvassa be a beállításokat, beleértve a maximális kihasználtsági időszak kezdetét és végét a nap folyamán.
+Ez a skálázási parancsfájl egy config. JSON fájlból olvassa be a beállításokat, beleértve a maximális kihasználtsági időszak kezdetét és végét a nap folyamán.
 
-A maximális kihasználtság ideje alatt a parancsfájl ellenőrzi a munkamenetek aktuális számát és a jelenlegi futó RDSH kapacitását az egyes gazdagépek esetében. Kiszámítja, hogy a futó munkamenet-gazdagép virtuális gépei rendelkeznek-e elegendő kapacitással a meglévő munkamenetek támogatásához a config. xml fájlban meghatározott SessionThresholdPerCPU paraméter alapján. Ha nem, a parancsfájl további munkamenet-gazdagép virtuális gépeket indít el a gazdagép-készletben.
+A maximális kihasználtság ideje alatt a parancsfájl ellenőrzi a munkamenetek aktuális számát és a jelenlegi futó RDSH kapacitását az egyes gazdagépek esetében. Kiszámítja, hogy a futó munkamenet-gazdagép virtuális gépei rendelkeznek-e elegendő kapacitással a meglévő munkamenetek támogatásához a config. JSON fájlban meghatározott SessionThresholdPerCPU paraméter alapján. Ha nem, a parancsfájl további munkamenet-gazdagép virtuális gépeket indít el a gazdagép-készletben.
 
-A nem maximális kihasználtsági idő alatt a parancsfájl meghatározza, hogy a munkamenet-gazdagép virtuális gépei melyik MinimumNumberOfRDSH paraméter alapján legyenek leállítva a config. xml fájlban. A parancsfájl úgy állítja be a munkamenet-gazdagép virtuális gépei számára a kiürítési módot, hogy megakadályozza az új munkamenetek kapcsolódását a gazdagépekhez. Ha a config. xml fájlban a **LimitSecondsToForceLogOffUser** paramétert nem nulla értékű pozitív értékre állítja, akkor a parancsfájl értesíti a jelenleg bejelentkezett felhasználókat, hogy mentse a munkát, várjon a beállított időtartamra, majd kényszerítse ki a felhasználókat a kijelentkezésre. Ha az összes felhasználói munkamenet ki lett jelentkezve egy munkamenet-gazda virtuális gépen, a parancsfájl leállítja a kiszolgálót.
+A nem maximális kihasználtsági idő alatt a parancsfájl meghatározza, hogy a munkamenet-gazdagép virtuális gépei melyik MinimumNumberOfRDSH-paraméter alapján legyenek leállítva a config. JSON fájlban. A parancsfájl úgy állítja be a munkamenet-gazdagép virtuális gépei számára a kiürítési módot, hogy megakadályozza az új munkamenetek kapcsolódását a gazdagépekhez. Ha a config. JSON fájlban a **LimitSecondsToForceLogOffUser** paramétert nem nulla értékű pozitív értékre állítja, akkor a parancsfájl értesíti a jelenleg bejelentkezett felhasználókat a munka megtakarításához, várjon a beállított időtartamra, majd kényszeríti a felhasználókat a kijelentkezésre. Ha az összes felhasználói munkamenet ki lett jelentkezve egy munkamenet-gazda virtuális gépen, a parancsfájl leállítja a kiszolgálót.
 
-Ha a config. xml fájlban a **LimitSecondsToForceLogOffUser** paramétert nullára állítja, a parancsfájl lehetővé teszi a munkamenet-konfiguráció beállítását a gazdagép-készlet tulajdonságaiban a felhasználói munkamenetek kijelentkezésének kezeléséhez. Ha egy munkamenet-gazda virtuális gépen vannak munkamenetek, akkor a munkamenet-gazda virtuális gép nem fut. Ha nincsenek munkamenetek, a szkript leállítja a munkamenet-gazda virtuális gépet.
+Ha a config. JSON fájlban a **LimitSecondsToForceLogOffUser** paramétert nullára állítja, a parancsfájl lehetővé teszi a munkamenet-konfiguráció beállítását a gazdagép-készlet tulajdonságaiban a felhasználói munkamenetek kijelentkezésének kezeléséhez. Ha egy munkamenet-gazda virtuális gépen vannak munkamenetek, akkor a munkamenet-gazda virtuális gép nem fut. Ha nincsenek munkamenetek, a szkript leállítja a munkamenet-gazda virtuális gépet.
 
 A szkriptet úgy tervezték, hogy rendszeres időközönként fusson a skálázható virtuálisgép-kiszolgálón a Feladatütemező használatával. A Távoli asztali szolgáltatások környezet méretétől függően válassza ki a megfelelő időintervallumot, és ne feledje, hogy a virtuális gépek indítása és leállítása hosszabb időt is igénybe vehet. Azt javasoljuk, hogy 15 percenként futtassa a skálázási parancsfájlt.
 

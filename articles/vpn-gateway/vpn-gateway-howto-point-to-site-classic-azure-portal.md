@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450801"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása tanúsítványalapú hitelesítés használatával (klasszikus)
 
@@ -95,13 +95,13 @@ Ha még nem rendelkezik virtuális hálózattal (VNet), hozzon létre egyet. A k
 
 3. A **telepítési modell kiválasztása** listában válassza a **klasszikus**lehetőséget, majd válassza a **Létrehozás**lehetőséget. Megnyílik a **virtuális hálózat létrehozása** lap.
 
-4. A **Virtuális hálózat létrehozása** lapon konfigurálja a VNet beállításait. Ezen a lapon adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A virtuális hálózat létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel.
+4. A **Virtuális hálózat létrehozása** lapon konfigurálja a VNet beállításait. Ezen a lapon adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A VNet létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel.
 
    ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
 
 5. Válassza ki a használni kívánt **előfizetést** a legördülő listából.
 
-6. Válasszon ki egy meglévő **erőforráscsoportot**. Vagy hozzon létre egy új erőforráscsoportot az **új létrehozása** elem kiválasztásával, és adjon meg egy nevet. Ha új erőforráscsoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Válasszon ki egy meglévő **erőforráscsoportot**. Vagy hozzon létre egy új erőforráscsoportot az **új létrehozása** elem kiválasztásával, és adjon meg egy nevet. Ha új erőforráscsoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. Válassza ki a VNet **helyét** . Ez a beállítás határozza meg a VNet üzembe helyezett erőforrások földrajzi helyét.
 

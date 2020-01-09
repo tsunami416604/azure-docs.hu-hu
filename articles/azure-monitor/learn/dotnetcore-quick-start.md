@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
-description: Útmutatást nyújt egy ASP.NET Core webalkalmazás gyors beállításához a figyeléshez Application Insights
+title: Gyors útmutató ASP.NET Core – Azure Monitor Application Insights
+description: Útmutatást nyújt egy ASP.NET Core webalkalmazás gyors beállításához Azure Monitor-alapú figyeléshez Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399020"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -23,7 +23,7 @@ Ez a rövid útmutató végigvezeti a Application Insights SDK meglévő ASP.NET
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 - [Telepítse a Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
   - ASP.NET és webfejlesztés
@@ -53,10 +53,12 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    | Beállítások        |  Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
+   | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a  **Create** (Létrehozás) gombra.
+2. Kattintson a **Create** (Létrehozás) gombra.
+
+
 
 ## <a name="configure-app-insights-sdk"></a>Az App Insights SDK konfigurálása
 
@@ -106,6 +108,9 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
+
+> [!NOTE]
+> Ha meglévő erőforráscsoportot használt, az alábbi utasítások nem fognak működni, és csak törölni kell az egyéni Application Insights erőforrást. Ne feledje, hogy bármikor törli az erőforráscsoportot az összes olyan underyling-erőforrást, amely tagja a csoportnak.
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.

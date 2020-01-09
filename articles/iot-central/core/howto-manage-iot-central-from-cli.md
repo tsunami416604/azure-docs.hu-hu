@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c5622f32dbf849b9a21a1fd2e458f35b8aa1d098
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 1051ea91378cc2e2facec7e34f6d303297b91ce8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454067"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central kezelése az Azure CLI-vel
 
@@ -31,7 +31,7 @@ Ha a helyi gépen szeretné futtatni az Azure CLI-t, tekintse meg [Az Azure CLI 
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Az az [iotcentral app Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) paranccsal hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Például:
+Az az [iotcentral app Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) paranccsal hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Példa:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -55,18 +55,16 @@ Ezek a parancsok először az USA keleti régiójában hozzanak létre erőforr�
 | resource-group    | Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
 | location          | Alapértelmezés szerint ez a parancs az erőforráscsoport helyét használja. Jelenleg IoT Central alkalmazást hozhat létre a **Egyesült Államok**, **Ausztráliában**, **Ázsia és a csendes-óceáni térség**vagy az **Európa** helyein. |
 | név              | Az alkalmazás neve a Azure Portalban. |
-| subdomain         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
-| sku               | Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
+| altartomány         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
+| SKU               | Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
 | sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
 | megjelenítendő név      | Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
-**Általánosan elérhető funkciókkal rendelkező alkalmazás-sablonok**
+**Az általánosan elérhető funkciókkal rendelkező alkalmazás sablonja**
 
 | Sablon neve            | Leírás |
 | ------------------------ | ----------- |
-| iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
-| iotc-demo@1.0.0          | Létrehoz egy alkalmazást, amely már tartalmaz egy eszközsablont egy hűtött eladóautomatához. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
-| iotc-devkit-sample@1.0.0 | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Akkor használja ezt a sablont, ha egy eszköz fejlesztője ezen eszközök bármelyikével kísérletezik. |
+| iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el.
 
 
 **Nyilvános előzetes funkciókkal rendelkező alkalmazás-sablonok**
@@ -105,7 +103,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Alkalmazás eltávolítása
 
-IoT Central alkalmazás törléséhez használja az az [iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) parancsot. Például:
+IoT Central alkalmazás törléséhez használja az az [iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) parancsot. Példa:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

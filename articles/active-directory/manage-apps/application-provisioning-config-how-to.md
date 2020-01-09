@@ -16,12 +16,13 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2955a418aa0ce43c030afc588a2840bbb9b50f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443427"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>A felhasználók üzembe helyezésének konfigurálása Azure AD Gallery-alkalmazásokban
 
@@ -52,6 +53,6 @@ Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory hasz
 
 A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ide tartozik a "megfelelő tulajdonság" beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál. Az attribútumok hozzárendelésével kapcsolatos további információkért tekintse meg a *következő lépések* hivatkozását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az SaaS-alkalmazások felhasználói kiépítési attribútum-leképezésének testreszabása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

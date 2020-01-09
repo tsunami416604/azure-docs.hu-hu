@@ -3,12 +3,12 @@ title: Meglévő hozzárendelés frissítése a portálról
 description: Ismerje meg, hogyan frissíthet egy meglévő tervezet-hozzárendelést a portálról az Azure-tervezetekben.
 ms.date: 11/21/2019
 ms.topic: how-to
-ms.openlocfilehash: 3cce84127475b2f11388b4ad4eb48dedec19cd1d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436581"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
@@ -55,7 +55,7 @@ A frissített hozzárendelések telepítése néhány fontos szabályt követ. E
 
 ## <a name="possible-errors-on-updating-assignments"></a>A hozzárendelések frissítésének lehetséges hibái
 
-A hozzárendelések frissítésekor lehetséges, hogy a végrehajtott módosítások megszakadnak. Ilyen például a már üzembe helyezett erőforráscsoport helyének módosítása. A [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) által támogatott bármely módosítás elvégezhető, de előfordulhat, hogy a Azure Resource Manager által hibát eredményező változás a hozzárendelés hibáját is eredményezi.
+A hozzárendelések frissítésekor lehetséges, hogy a végrehajtott módosítások megszakadnak. Ilyen például a már üzembe helyezett erőforráscsoport helyének módosítása. A [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) által támogatott bármely módosítás elvégezhető, de előfordulhat, hogy a Azure Resource Manager által hibát eredményező változás a hozzárendelés hibáját is eredményezi.
 
 Korlátlan számú hozzárendelés frissíthető. Ha hiba történik, állapítsa meg a hibát, és készítsen egy másik frissítést a hozzárendeléshez.  Példa a hibákra:
 

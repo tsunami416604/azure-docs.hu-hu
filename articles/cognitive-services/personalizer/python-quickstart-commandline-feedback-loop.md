@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: megszemélyesítő ügyféloldali kódtár a Pythonhoz | Microsoft Docs'
+title: 'Gyors útmutató: személyre szabott ügyféloldali kódtár a Pythonhoz'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedjen meg a személyre szabott ügyféloldali kódtáraval a Pythonhoz egy tanulási hurok használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el az első lépéseket a Python személyre szabott ügyféloldali kódtára egy tanulási hurok használatával.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378942"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Gyors útmutató: személyre szabott ügyféloldali kódtár a Pythonhoz
 
@@ -86,7 +86,7 @@ A személyre szabott jutalom elküldéséhez hozzon létre egy RewardRequest, ma
 
 A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendszerekben annak meghatározása, hogy milyen hatással van a [jutalom pontszáma](concept-rewards.md) , és hogy mekkora mértékben lehet egy összetett folyamat, dönthet úgy, hogy idővel változhat. Ennek az egyik elsődleges tervezési döntésnek kell lennie a személyre szabott architektúrában. 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Python személyre szabott ügyféloldali kódtár használatával:
 
@@ -177,7 +177,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[A megszemélyesítő működése](how-personalizer-works.md)

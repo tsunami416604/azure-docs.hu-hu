@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438893"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
@@ -44,7 +44,7 @@ A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alk
 Ha többet szeretne megtudni a Batch szolgáltatásról, tekintse meg [a Batch dokumentációját](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factoryt választani?
-A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory használatával olyan felügyelt adatfolyamatokat hozhat létre, amelyek a helyszíni és a Felhőbeli adattárakból egy központi adattárba helyezik át az adatátvitelt. Példa az Azure Blob Storage-ra. A Data Factory használatával az Azure HDInsight és a Azure Machine Learning szolgáltatásokkal dolgozhat fel és alakíthat át adatátalakítást. Az adatfolyamatokat ütemezett módon is ütemezheti (például óránként, naponta és hetente). Egy pillantással figyelheti és kezelheti a folyamatokat a problémák azonosításához és a műveletek elvégzéséhez.
+A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely az adatok áthelyezésének és átalakításának összehangolására és átalakítására szolgál. A Data Factory használatával olyan felügyelt adatfolyamatokat hozhat létre, amelyek a helyszíni és a Felhőbeli adattárakból egy központi adattárba helyezik át az adatátvitelt. Példa az Azure Blob Storage-ra. A Data Factory használatával az Azure HDInsight és a Azure Machine Learning szolgáltatásokkal dolgozhat fel és alakíthat át adatátalakítást. Az adatfolyamatokat ütemezett módon is ütemezheti (például óránként, naponta és hetente). Egy pillantással figyelheti és kezelheti a folyamatokat a problémák azonosításához és a műveletek elvégzéséhez.
 
   Ha nem ismeri a Data Factoryt, az alábbi cikkek segítenek megérteni a cikkben ismertetett megoldás architektúráját/megvalósítását:  
 
@@ -93,7 +93,7 @@ Ha nem rendelkezik Azure-előfizetéssel, gyorsan létrehozhat egy ingyenes pró
 #### <a name="azure-storage-account"></a>Azure Storage-fiók
 Az ebben az oktatóanyagban tárolt adattárolási fiók használatával tárolhatja az adattárakat. Ha nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md)című témakört. A minta megoldás blob Storage-t használ.
 
-#### <a name="azure-batch-account"></a>Azure Batch fiók
+#### <a name="azure-batch-account"></a>Azure Batch-fiók
 Hozzon létre egy batch-fiókot a [Azure Portal](https://portal.azure.com/)használatával. További információ: [Batch-fiók létrehozása és kezelése](../../batch/batch-account-create-portal.md). Jegyezze fel a Batch-fiók nevét és a fiók kulcsát. A [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal létrehozhat egy batch-fiókot is. A parancsmag használatáról a következő témakörben talál útmutatást: a [Batch PowerShell-parancsmagok használatának első](../../batch/batch-powershell-cmdlets-get-started.md)lépései.
 
 A minta megoldás a Batch (egy adatfeldolgozó folyamaton keresztüli) használatával párhuzamosan dolgozza fel az adatok mennyiségét a számítási csomópontok (felügyelt virtuális gépek) készletén.
@@ -192,7 +192,7 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
 
    g. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-1. Válassza az **eszközök** > **NuGet Package Manager** > **csomagkezelő konzolt**.
+1. Válassza az **Eszközök** > **NuGet-csomagkezelő** > **Package Csomagkezelő konzol** elemet.
 
 1. A Package Manager konzolon hajtsa végre a következő parancsot a Microsoft. Azure. Management. DataFactories importálásához:
 
@@ -556,7 +556,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 
    ![Új adattár](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [hozzáférési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-account-manage.md#access-keys)című témakörben olvashat bővebben.
+1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
@@ -847,7 +847,7 @@ Ebben a lépésben teszteli a folyamatot a fájlok bemeneti mappákba való eldo
 
 1. A **OutputDataset** panelen kattintson a jobb gombbal arra a szeletre, amelyben a **szelet kezdési időpontja** **11/16/2015 01:00:00**-re van állítva. Válassza a **Futtatás** lehetőséget a szelet újrafuttatásához/újrafeldolgozásához. A szelet most már öt fájlból áll egy fájl helyett.
 
-    ![Futtassa a következőt:](./media/data-factory-data-processing-using-batch/image17.png)
+    ![Futtatás](./media/data-factory-data-processing-using-batch/image17.png)
 
 1. A szelet futtatása után az állapota **elkészült**, ellenőrizze a szelet kimeneti fájljában lévő tartalmat (**2015-11-16 -01. txt**). A kimeneti fájl a blob Storage-ban `outputfolder` `mycontainer` alatt jelenik meg. A szelet minden fájljához meg kell adni egy sort.
 
@@ -913,7 +913,7 @@ A hibakeresés néhány alapvető módszerből áll.
 
    ![Egyéni tevékenység zip-fájljának listája](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Győződjön meg arról, hogy a **assemblyName** (MyDotNetActivity. dll), a **BelépésiPont** (MyDotNetActivityNS. MyDotNetActivity), a **packageFile** (customactivitycontainer/MyDotNetActivity. zip) és a **packageLinkedService** (a következőre kell mutatnia: a zip-fájlt tartalmazó blob Storage a megfelelő értékekre van beállítva.
+1. Győződjön meg arról, hogy a **assemblyName** (MyDotNetActivity. dll), a **BelépésiPont** (MyDotNetActivityNS. MyDotNetActivity), a **packageFile** (customactivitycontainer/MyDotNetActivity. zip) és a **packageLinkedService** (a zip-fájlt tartalmazó blob-tárolóra kell mutatnia) a megfelelő értékre van állítva.
 
 1. Ha kijavított egy hibát, és újra fel szeretné dolgozni a szeletet, kattintson a jobb gombbal a szeletre a **OutputDataset** panelen, és válassza a **Futtatás**lehetőséget.
 
@@ -960,11 +960,11 @@ Ezt a mintát kiterjesztheti Data Factory és a Batch funkcióinak megismerésé
 Az adatfeldolgozást követően online eszközökkel, például Power BI használhatja azokat. Az alábbi hivatkozások segítséget nyújtanak a Power BI és az Azure-ban való használat megismerésében:
 
 * [Adathalmaz megismerése Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Ismerkedés a Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Első lépések a Power BI Desktopban](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Power BIban lévő Adatfrissítés](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure és Power BI: alapszintű áttekintés](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Tudástár
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [A Data Factory szolgáltatás bemutatása](data-factory-introduction.md)

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443582"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows újraindítási hurok Azure-beli virtuális gépen
 Ez a cikk a Windows rendszerű virtuális gépeken (VM) tapasztalható újraindítási hurkot ismerteti Microsoft Azureban.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
 Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ egy virtuális gép képernyőképének beszerzéséhez, a rendszer elindítja a virtuális gépet, de a rendszerindítási folyamat megszakad, és a folyamat elindul.
 
@@ -32,17 +32,17 @@ Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ egy virtu
 
 Az újraindítási hurok a következő okok miatt fordul elő:
 
-### <a name="cause-1"></a>OK: 1
+### <a name="cause-1"></a>1\. ok
 
 Létezik egy harmadik féltől származó szolgáltatás, amely kritikusként van megjelölve, és nem indítható el. Ez az operációs rendszer újraindítását okozza.
 
-### <a name="cause-2"></a>OK 2
+### <a name="cause-2"></a>2\. ok
 
 Néhány módosítás történt az operációs rendszeren. Ezek általában a frissítés telepítésével, az alkalmazások telepítésével vagy egy új házirenddel kapcsolatosak. További részletekért tekintse meg a következő naplókat:
 
 - Eseménynaplók
-- CBS.logWindows
-- Update.log
+- CBS. logWindows
+- Update. log
 
 ### <a name="cause-3"></a>3\. ok
 
@@ -62,11 +62,11 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 4. A mentési virtuális gépen nyissa meg a Windows rendszerleíróadatbázis-szerkesztőt (Regedit).
 
-5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **betöltése struktúra** lehetőséget a menüből.
+5. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot, majd válassza a **fájl** > **betöltési struktúra** lehetőséget a menüből.
 
 6. Keresse meg a rendszerfájlt a **\Windows\System32\config** mappában.
 
-7. Válassza a **Megnyitás**elemet, írja be a **BROKENSYSTEM** nevet, bontsa ki a **HKEY_LOCAL_MACHINE** kulcsot, majd megjelenik egy **BROKENSYSTEM**nevű további kulcs.
+7. Válassza a **Megnyitás**elemet, írja be a **BROKENSYSTEM** nevet, bontsa ki a **HKEY_LOCAL_MACHINE** kulcsot, majd megjelenik egy további, **BROKENSYSTEM**nevű kulcs.
 
 8. Győződjön meg arról, hogy a számítógép melyik ControlSet indul el. A kulcs számát a következő beállításkulcs fogja látni.
 
@@ -86,7 +86,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Válassza ki a **BROKENSYSTEM** kulcsot, majd válassza a **fájl** > **betöltése struktúra** lehetőséget a menüből.
+13. Válassza ki a **BROKENSYSTEM** kulcsot, majd válassza a **fájl** > a **struktúra** eltávolítása lehetőséget a menüből.
 
 14. Válassza le az operációsrendszer-lemezt a hibaelhárítási virtuális gépről.
 

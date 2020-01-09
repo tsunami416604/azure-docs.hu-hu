@@ -84,6 +84,8 @@
       items:
         - name: Adatok átalakítása leképezési adatfolyammal
           href: tutorial-data-flow.md
+        - name: Adatfolyamok leképezését ismertető oktatóvideók
+          href: data-flow-tutorials.md
         - name: Adatok előkészítése szervezési adatfolyammal
           href: wrangling-data-flow-tutorial.md
     - name: Külső átalakítások

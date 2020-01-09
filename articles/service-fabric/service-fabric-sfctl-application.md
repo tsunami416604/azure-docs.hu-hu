@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl alkalmazás | Microsoft Docs
-description: Ismerteti a CLI-sfctl Service Fabric parancssori felületét.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl alkalmazás
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az alkalmazások kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 163faaab8fa2503458503d9f2b72d27a3e5856f0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901291"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645412"
 ---
 # <a name="sfctl-application"></a>sfctl-alkalmazás
 Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése.
@@ -37,13 +28,13 @@ Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelé
 | információ | Beolvas egy Service Fabric alkalmazással kapcsolatos információkat. |
 | lista | A megadott szűrőknek megfelelő Service Fabric-fürtben létrehozott alkalmazások listájának beolvasása. |
 | betöltés | Beolvas egy Service Fabric alkalmazás betöltési adatait. |
-| Nyilvánvaló | Beolvassa az alkalmazás típusát leíró jegyzékfájlt. |
+| manifest | Beolvassa az alkalmazás típusát leíró jegyzékfájlt. |
 | rendelkezés | Kiépíti vagy regisztrálja Service Fabric alkalmazás típusát a fürtön a külső tárolóban található ". sfpkg" csomaggal, vagy a rendszerkép-tárolóban lévő alkalmazáscsomag használatával. |
 | jelentés – állapot | Állapotjelentést küld a Service Fabric alkalmazásról. |
 | type | Beolvassa a Service Fabric-fürtben található, pontosan a megadott névvel egyező típusú alkalmazások listáját. |
 | típus – lista | Beolvassa a Service Fabric-fürtben található Alkalmazásbeállítások listáját. |
 | leépítése | Egy Service Fabric alkalmazás típusának eltávolítása vagy törlése a fürtből. |
-| Frissítés | Egy alkalmazás frissítésének megkezdése a Service Fabric fürtön. |
+| frissítés | Egy alkalmazás frissítésének megkezdése a Service Fabric fürtön. |
 | frissítés – folytatás | Folytatja az alkalmazások frissítését a Service Fabric-fürtön. |
 | frissítés – visszaállítás | Elindítja a Service Fabric fürtön futó alkalmazás jelenleg folyamatban lévő frissítését. |
 | frissítés – állapot | Az alkalmazáson végrehajtott legújabb frissítés részleteinek beolvasása. |
@@ -307,7 +298,7 @@ Egy Service Fabric alkalmazás típusának kiosztása a fürttel. A kiépítés 
 | --Application-Type-Name | Csak a külső tároló üzembe helyezéséhez. Az alkalmazás típusának neve az alkalmazás jegyzékfájljában található alkalmazás típusának neve. |
 | --alkalmazás-típus-verzió | Csak a külső tároló üzembe helyezéséhez. Az alkalmazás típusának verziója az alkalmazás jegyzékfájljában található alkalmazás típusú verziót jelöli. |
 | – külső – kiépítés | Az a hely, ahonnan az alkalmazáscsomag regisztrálható vagy üzembe helyezhető. Azt jelzi, hogy a kiépítés olyan alkalmazáscsomag esetében, amelyet korábban egy külső tárolóba töltöttek fel. Az alkalmazáscsomag a *. sfpkg kiterjesztéssel végződik. |
-| --No-WAIT | Azt jelzi, hogy aszinkron módon történjen-e a kiépítés. <br><br> Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a létesítési művelet időkorlát nélkül folytatódik. Az alapértelmezett érték false (hamis). Nagyméretű alkalmazáscsomag esetén azt javasoljuk, hogy az értéket állítsa igaz értékre. |
+| --No-WAIT | Azt jelzi, hogy aszinkron módon történjen-e a kiépítés. <br><br> Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a létesítési művelet időkorlát nélkül folytatódik. Alapértelmezett értéke hamis. Nagyméretű alkalmazáscsomag esetén azt javasoljuk, hogy az értéket állítsa igaz értékre. |
 | --időtúllépés-t | Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -412,7 +403,7 @@ Ez a művelet csak akkor hajtható végre, ha az alkalmazás összes példánya 
 | --- | --- |
 | --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
 | --Application-Type-Version [kötelező] | Az alkalmazás jegyzékfájlban definiált verziója. |
-| --aszinkron-paraméter | Az a jelző, amely azt jelzi, hogy a kiépítés megszüntetése aszinkron módon történik-e. Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a kiépítés művelet időkorlát nélkül folytatódik. Az alapértelmezett érték false (hamis). Azt javasoljuk azonban, hogy igaz értékre állítsa a nagyméretű, kiépített alkalmazás-csomagokat. |
+| --aszinkron-paraméter | Az a jelző, amely azt jelzi, hogy a kiépítés megszüntetése aszinkron módon történik-e. Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a kiépítés művelet időkorlát nélkül folytatódik. Alapértelmezett értéke hamis. Azt javasoljuk azonban, hogy igaz értékre állítsa a nagyméretű, kiépített alkalmazás-csomagokat. |
 | --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok

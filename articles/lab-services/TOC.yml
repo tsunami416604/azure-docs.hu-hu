@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: A tesztkörnyezet skálázása
           href: devtest-lab-scale-lab.md
+        - name: Tesztkörnyezeti virtuális gépek felügyelt identitásainak engedélyezése
+          href: enable-managed-identities-lab-vms.md
         - name: Virtuálisgép-bázisok felügyelete
           items:
             - name: Azure Marketplace-rendszerképek konfigurálása

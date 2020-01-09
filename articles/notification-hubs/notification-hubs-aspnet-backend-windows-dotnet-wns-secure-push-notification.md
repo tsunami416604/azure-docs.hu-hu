@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs biztonságos leküldés
+title: Azure Notification Hubs biztonságos leküldés Windows rendszerre
 description: Ismerje meg, hogyan küldhet biztonságos leküldéses értesítéseket az Azure-ban. A kódminták C# nyelven íródtak, a .NET API használatával.
 documentationcenter: windows
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5d1cf2a74d4fe85bb85eb244da3e3757f36fba0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212047"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530731"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Biztonságos leküldéses értesítések az Azure Notification Hubs
 
@@ -62,7 +62,7 @@ Ez a biztonságos leküldéses oktatóanyag a leküldéses értesítések bizton
     ```csharp
     RegisterBackgroundTask();
     ```
-2. Továbbra is a app.XAML.cs-ben adja hozzá a következő `OnLaunched()` kódot közvetlenül a metódus után:
+2. A App.xaml.cs továbbra is a következő kódot adja hozzá közvetlenül a `OnLaunched()` metódus után:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -79,7 +79,7 @@ Ez a biztonságos leküldéses oktatóanyag a leküldéses értesítések bizton
         }
     }
     ```
-3. Adja hozzá a `using` következő utasításokat a app.XAML.cs fájl elejéhez:
+3. Adja hozzá a következő `using` utasításokat a App.xaml.cs fájl elejéhez:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -95,8 +95,8 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
 2. Bontsa ki az **áruházbeli alkalmazások**csomópontot, majd kattintson az **alkalmazások Windows Phone-telefon**, majd a **Windows-futtatókörnyezet összetevő (Windows Phone-telefon)** elemre. Nevezze el a projekt **PushBackgroundComponent**, majd kattintson az **OK** gombra a projekt létrehozásához.
 
     ![][12]
-3. Megoldáskezelő kattintson a jobb gombbal a **PushBackgroundComponent (Windows Phone-telefon 8,1)** projektre, majd kattintson a **Hozzáadás**, majd az **osztály**elemre. Nevezze el az új `PushBackgroundTask.cs`osztályt. Az osztály létrehozásához kattintson a **Hozzáadás** gombra.
-4. Cserélje le a `PushBackgroundComponent` névtér teljes tartalmát a következő kódra, és helyettesítse be a helyőrzőt `{back-end endpoint}` a háttérrendszer üzembe helyezése során kapott háttér-végponttal:
+3. Megoldáskezelő kattintson a jobb gombbal a **PushBackgroundComponent (Windows Phone-telefon 8,1)** projektre, majd kattintson a **Hozzáadás**, majd az **osztály**elemre. Nevezze el az új osztályt `PushBackgroundTask.cs`. Az osztály létrehozásához kattintson a **Hozzáadás** gombra.
+4. Cserélje le a `PushBackgroundComponent` névtér definíciójának teljes tartalmát a következő kódra, és helyettesítse be a helyőrző `{back-end endpoint}` a háttérrendszer üzembe helyezése során kapott háttér-végponttal:
 
     ```csharp
     public sealed class Notification
@@ -147,7 +147,7 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
 7. A **Search** (Keresés) mezőbe írja be a **Http Client** (HTTP-ügyfél) kifejezést.
 8. Az eredmények listájában kattintson a **Microsoft http-ügyféloldali kódtárak**elemre, majd kattintson a **telepítés**gombra. Fejezze be a telepítést.
 9. A NuGet **Search** (Keresés) mezőjébe írja be a **Json.net** kifejezést. Telepítse a **JSON.net** csomagot, majd lépjen be a NuGet csomagkezelő ablakba.
-10. Adja hozzá a `using` következő utasításokat a `PushBackgroundTask.cs` fájl elejéhez:
+10. Adja hozzá a következő `using` utasításokat a `PushBackgroundTask.cs` fájl elejéhez:
 
     ```csharp
     using Windows.ApplicationModel.Background;
@@ -160,10 +160,10 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
     using Windows.Data.Xml.Dom;
     ```
 11. Megoldáskezelő a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása..** . elemre. A Reference Manager párbeszédpanelen jelölje be a **PushBackgroundComponent**melletti jelölőnégyzetet, majd kattintson az **OK**gombra.
-12. A Megoldáskezelő kattintson duplán a **Package. appxmanifest** elemre a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben. Az **értesítések**területen állítsa a pirítóst **Igen**értékre.
+12. A Megoldáskezelő kattintson duplán a **Package. appxmanifest** elemre a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben. Az **értesítések**területen állítsa a **pirítóst** **Igen**értékre.
 
     ![][3]
-13. Továbbra is a **Package. appxmanifest**, kattintson a felül található deklarációk menüre. Az **elérhető deklarációk** legördülő menüben kattintson a **háttér-feladatok**elemre, majd a **Hozzáadás**gombra.
+13. Továbbra is a **Package. appxmanifest**, kattintson a felül található **deklarációk** menüre. Az **elérhető deklarációk** legördülő menüben kattintson a **háttér-feladatok**elemre, majd a **Hozzáadás**gombra.
 14. A **Package. appxmanifest**területen a **Tulajdonságok**alatt keresse le a **leküldéses értesítést**.
 15. A **Package. Appxmanifest** **alkalmazásban az Alkalmazásbeállítások**területen írja be a **PushBackgroundComponent. PushBackgroundTask** értéket a **belépési pont** mezőbe.
 

@@ -11,16 +11,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4d3c74db9a0c4e13ee7c17eb78552d8c11cd7afb
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5669b606d7dc06483641c2bdd6ef27c82e75bf4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431875"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
-A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázis-kiszolgáló a különálló adatbázisok és a rugalmas készlet számára az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy az adatbázisok [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) fogad-e kommunikációt a virtuális hálózatok adott alhálózatait küldik. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként biztonságos módon engedélyezni a Azure SQL Database és SQL Data Warehouse.
+A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázis-kiszolgáló az önálló adatbázisok és a rugalmas készlet számára az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) a virtuális hálózatokban lévő adatbázisaihoz tartozó adatátvitelt fogadja-e. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként biztonságos módon engedélyezni a Azure SQL Database és SQL Data Warehouse.
 
 > [!IMPORTANT]
 > Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ez a cikk *nem* vonatkozik a **felügyelt példányokra** Azure SQL Database, mert nem rendelkezik hozzá társított szolgáltatás-végponttal.
@@ -158,15 +158,15 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
        > - Nincs szükség a titkos kulcs megadására az Azure Storage-hozzáférési kulccsal, mert ez a mechanizmus [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) használ a borítók alatt.
        > - Az identitás nevének **"Managed Service Identity"** kell lennie a VNet által védett Azure Storage-fiókkal való együttműködéshez.
 
-   1. Hozzon létre egy külső adatforrást a abfss://sémával az általános célú v2 Storage-fiókhoz való csatlakozáshoz a következő paranccsal:
+   1. Hozzon létre külső adatforrást `abfss://` sémával az általános célú v2 Storage-fiókhoz való csatlakozáshoz a következő paranccsal:
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
        ```
 
        > [!NOTE]
-       > - Ha már rendelkezik az általános célú v1-vagy blob Storage-fiókhoz társított külső táblákkal, először el kell dobnia ezeket a külső táblákat, majd el kell dobnia a megfelelő külső adatforrást. Ezután hozzon létre egy külső adatforrást az általános célú v2 Storage-fiókhoz csatlakozó abfss://séma használatával, és hozza létre újra az összes külső táblát az új külső adatforrással. Használhatja a [Parancsfájlok létrehozása és közzététele varázslót](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) a Create-scriptek létrehozásához az összes külső táblázat számára a könnyebb kezelhetőség érdekében.
-       > - A abfss://sémával kapcsolatos további információkért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - Ha már rendelkezik az általános célú v1-vagy blob Storage-fiókhoz társított külső táblákkal, először el kell dobnia ezeket a külső táblákat, majd el kell dobnia a megfelelő külső adatforrást. Ezután hozzon létre egy külső adatforrást `abfss://` sémával, amely az általános célú v2 Storage-fiókhoz csatlakozik, a fentiek szerint, és hozza létre újra az összes külső táblát az új külső adatforrás használatával. Használhatja a [Parancsfájlok létrehozása és közzététele varázslót](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) a Create-scriptek létrehozásához az összes külső táblázat számára a könnyebb kezelhetőség érdekében.
+       > - `abfss://` sémával kapcsolatos további információkért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
        > - A külső ADATFORRÁS LÉTREHOZÁSával kapcsolatos további információkért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
 
    1. Lekérdezés normál módon [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)használatával.
@@ -235,9 +235,9 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure Portal][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure portálra][http-azure-portal-link-ref-477t].
 
-2. Ezután navigáljon a portálon az **SQL-kiszolgálók** &gt; **tűzfal/virtuális hálózatok**elemre.
+2. Keresse meg és válassza ki az **SQL-kiszolgálók**elemet, majd válassza ki a kiszolgálót. A **Biztonság**területen válassza a **tűzfalak és virtuális hálózatok**lehetőséget.
 
 3. Állítsa be az **Azure-szolgáltatások hozzáférés engedélyezése** a kikapcsoláshoz lehetőséget.
 

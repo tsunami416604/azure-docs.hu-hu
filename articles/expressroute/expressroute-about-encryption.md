@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8e9748360b22cd1c693b2c601024c0824ffb483
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437047"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute titkosítása
  
-A ExpressRoute támogatja a különböző titkosítási technológiákat a hálózat és a Microsoft hálózata közötti adatforgalom titkosságának és integritásának biztosítása érdekében.
+A ExpressRoute több titkosítási technológiát támogat a hálózat és a Microsoft hálózata közötti adatforgalom titkosságának és integritásának biztosításához.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Pont-pont típusú titkosítás MACsec – gyakori kérdések
 A MACsec egy [IEEE standard](https://1.ieee802.org/security/802-1ae/). Az adathordozó-hozzáférés-vezérlési (MAC) vagy a 2. hálózati rétegben lévő adattitkosítást titkosítja. A MACsec a hálózati eszközök és a Microsoft hálózati eszközei közötti fizikai kapcsolatok titkosítására is használható, ha a [ExpressRoute Direct](expressroute-erdirect-about.md)használatával csatlakozik a Microsofthoz. A MACsec alapértelmezés szerint le van tiltva a ExpressRoute Direct-portokon. Saját MACsec-kulcsot használ a titkosításhoz, és tárolja azt [Azure Key Vaultban](../key-vault/key-vault-overview.md). Ön dönti el, hogy mikor kell elforgatni a kulcsot. Tekintse meg az alábbi további gyakori kérdéseket.
@@ -40,7 +40,7 @@ Igen. A MACsec biztosítja az Ön és a Microsoft közötti fizikai kapcsolatoka
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Használhatom az Azure VPN Gatewayt az IPsec-alagút beállításához a helyszíni hálózat és az Azure-beli virtuális hálózat között?
 Igen. Ezt az IPsec-alagutat a ExpressRoute-áramkör Microsoft-társának használatával állíthatja be. Kövesse a [konfigurációs útmutatót](site-to-site-vpn-over-microsoft-peering.md).
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Használhatom az Azure VPN Gatewayt az IPsec-alagút Azure-beli privát kapcsolaton keresztüli beállításához?
-Nem. Telepítenie kell egy külső gyártótól származó VPN-átjárót az Azure-beli virtuális hálózatban, és létre kell hoznia egy IPsec-alagutat az IT és a helyszíni VPN-átjáró között.
+Ha elfogadja az Azure Virtual WAN-t, az [alábbi lépéseket](../virtual-wan/vpn-over-expressroute.md) követve titkosíthatja a végpontok közötti kapcsolatokat. Ha rendszeres Azure-VNET rendelkezik, telepíthet egy külső VPN-átjárót a VNET, és létrehozhat egy IPsec-alagutat az IT és a helyszíni VPN-átjáró között.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Milyen átviteli sebességre lesz szükség az IPsec az ExpressRoute-kapcsolatban való engedélyezése után?
 Ha az Azure VPN Gateway használatban van, ellenőrizze a [teljesítménnyel kapcsolatos számokat](../vpn-gateway/vpn-gateway-about-vpngateways.md). Ha a rendszer külső VPN-átjárót használ, ellenőrizze a teljesítménnyel kapcsolatos számokat a szállítónál.
 

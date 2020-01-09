@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460189"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről a PowerShell használatával
 
@@ -26,7 +26,7 @@ Hozzon létre egy új virtuális gépet egy speciális felügyelt lemez csatlako
 
 Ha speciális virtuális merevlemezt használ egy új virtuális gép létrehozásához, az új virtuális gép megőrzi az eredeti virtuális gép számítógépnevét. Más számítógépekre vonatkozó információk is megmaradnak, és bizonyos esetekben ez a duplikált információ problémákat okozhat. A virtuális gépek másolásakor vegye figyelembe, hogy az alkalmazásai milyen típusú számítógép-specifikus információkat használnak.
 
-Több lehetőség közül választhat:
+Erre számos lehetősége van:
 * [Meglévő felügyelt lemez használata](#option-1-use-an-existing-disk). Ez a beállítás akkor hasznos, ha olyan virtuális géppel rendelkezik, amely nem megfelelően működik. Törölheti a virtuális gépet, majd újra felhasználhatja a felügyelt lemezt egy új virtuális gép létrehozásához. 
 * [VHD feltöltése](#option-2-upload-a-specialized-vhd) 
 * [Meglévő Azure-beli virtuális gép másolása Pillanatképek használatával](#option-3-copy-an-existing-azure-vm)
@@ -70,7 +70,7 @@ Most már közvetlenül is feltölthet egy virtuális merevlemezt egy felügyelt
 
 Létrehozhat egy, a felügyelt lemezeket használó virtuális gép másolatát a virtuális gép pillanatképének elkészítésével, majd a pillanatkép használatával új felügyelt lemez és új virtuális gép létrehozásához.
 
-Ha egy meglévő virtuális gépet egy másik régióba szeretne másolni, érdemes lehet a azcopy használatával másolatot készíteni egy [lemezről egy másik régióban](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
+Ha egy meglévő virtuális gépet egy másik régióba szeretne másolni, érdemes lehet a azcopy használatával [másolatot készíteni egy lemezről egy másik régióban](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációsrendszer-lemezről
 

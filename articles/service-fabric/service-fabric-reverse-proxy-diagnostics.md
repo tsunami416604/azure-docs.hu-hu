@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric fordított proxy diagnosztika | Microsoft Docs
-description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a kérelmek feldolgozását a fordított proxyn.
-services: service-fabric
-documentationcenter: .net
+title: Azure-Service Fabric fordított proxy diagnosztika
+description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a kérelmek feldolgozását az Azure Service Fabric-alkalmazások fordított proxyján.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933974"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645463"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>A kérelmek feldolgozásának figyelése és diagnosztizálása fordított proxyn
 
@@ -104,7 +96,7 @@ A [fordított proxyval kapcsolatos események](service-fabric-diagnostics-event-
      }
      }
      ```
-     Egy másik példa, ahol a fordított proxy a 404 nem található értéket adja vissza: a ApplicationGateway\Http konfigurációs paraméter értéke TRUE (igaz), a fordított proxy pedig a **https** **-t figyeli** , de az összes replika-végpont nem biztonságos ( HTTP-figyelés).
+     Egy másik példa, ahol a fordított proxy a 404 nem található értéket adja vissza: a ApplicationGateway\Http konfigurációs paraméter értéke TRUE (igaz), a fordított proxy pedig a **https** **-t figyeli** , azonban az összes replika-végpont nem biztonságos (a http-t figyeli).
      A fordított proxy a 404 értéket adja vissza, mert nem talál a HTTPS-t figyelő végpontot a kérelem továbbítására. Az esemény-adattartalomban található paraméterek elemzése segít a probléma szűkítéséhez:
     
      ```
@@ -181,9 +173,9 @@ A [fordított proxyval kapcsolatos események](service-fabric-diagnostics-event-
       }
     }
     ```
-5. Fordított proxy visszatérési értéke 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
+5. A fordított proxy visszaadja a 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    FABRIC_E_SERVICE_DOES_NOT_EXIST hiba, ha a szolgáltatási jegyzékfájlban nincs megadva URI-séma a szolgáltatási végponthoz.
+    FABRIC_E_SERVICE_DOES_NOT_EXIST hiba történik, ha a szolgáltatási jegyzékfájlban nincs megadva URI-séma a szolgáltatási végponthoz.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432047"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MariaDB-kiszolgálóhoz az Azure Portal használatával
 
@@ -26,7 +26,7 @@ Nyissa meg a böngészőjében az [Azure Portalt](https://portal.azure.com/). Ad
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB-kiszolgáló létrehozása
 
-Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőforrások](concepts-pricing-tiers.md) egy meghatározott készletével együtt fogja létrehozni. A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül hozza létre.
+Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőforrások](concepts-pricing-tiers.md) egy meghatározott készletével együtt fogja létrehozni. A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
 
 Azure Database for MariaDB-kiszolgáló létrehozása:
 
@@ -213,7 +213,7 @@ Ahhoz, hogy csatlakozzon a kiszolgálóhoz a MySQL Workbench használatával:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti a teljes [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). Ez a beállítás az erőforráscsoport összes erőforrását törli. Ha a többi erőforrást érintetlenül szeretné hagyni, csak egy kiszolgálói erőforrást töröljön.
+Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti a teljes [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md). Ez a beállítás az erőforráscsoport összes erőforrását törli. Ha a többi erőforrást érintetlenül szeretné hagyni, csak egy kiszolgálói erőforrást töröljön.
 
 > [!TIP]
 > A gyűjteményhez tartozó többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy folytatja az Azure Database for MariaDB-t ismertető rövid útmutatók használatát, akkor ne törölje az itt létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutató során létrehozott összes erőforrást.

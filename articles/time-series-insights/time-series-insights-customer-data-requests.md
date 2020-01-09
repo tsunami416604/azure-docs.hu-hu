@@ -4,19 +4,19 @@ description: Tudnivalók a Azure Time Series Insights ügyfél-adatkérési funk
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 08/09/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: d134c7cbe220e6aa6b1471b50aa23e17d09734d5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f0f1cf4202eebd3639d3946cd4c800bc5c216a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460321"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
+# <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
 
 A Azure Time Series Insights egy felügyelt felhőalapú szolgáltatás tárolási, elemzési és vizualizációs összetevőkkel, amelyek megkönnyítik a több milliárd esemény egyidejű betöltését, tárolását, feltárását és elemzését.
 
@@ -28,7 +28,7 @@ Az adattulajdonosi kérelem alá tartozó személyes adatok megtekintéséhez, e
 
 Azure Time Series Insights úgy gondolja, hogy a személyes adat a rendszergazdákkal és a Time Series Insights felhasználókkal kapcsolatos adat. A Time Series Insights a környezethez hozzáféréssel rendelkező felhasználók Azure Active Directory objektum-AZONOSÍTÓját tárolja. A Azure Portal megjeleníti a felhasználói e-mail-címeket, de ezek az e-mail-címek nem tárolódnak a Time Series Insightsban, a rendszer dinamikusan felkeresi a Azure Active Directory Object-ID-t a Azure Active Directory.
 
-## <a name="deleting-customer-data"></a>Vásárlói adatok törlése
+## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 
 A bérlői rendszergazdák a Azure Portal használatával törölhetik az ügyféladatokat.
 
@@ -40,7 +40,7 @@ A REST API használatával is elvégezheti a hozzáférési szabályzatok törl�
 
 Time Series Insights integrálva van a Azure Portal szabályzat paneljével. A Time Series Insights és a szabályzat panel is lehetővé teszi a szolgáltatáson belül tárolt felhasználói adatnézetek megtekintését, exportálását és törlését. A Azure Portal házirend paneljén végrehajtott törlési műveletek a felhasználói adatTime Series Insightson belüli törlését eredményezik. Ha például egy felhasználó mentett személyes lekérdezést tartalmaz, a lekérdezés véglegesen törlődik a Time Series Insights Explorerben. Ha a felhasználó rendelkezik mentett megosztott lekérdezéssel, a lekérdezés továbbra is fennáll, de a rendszer véglegesen törli a felhasználói adatokat. A következő Megjegyzés a feladatok végrehajtásával kapcsolatos utasításokat tartalmazza.
 
-## <a name="exporting-customer-data"></a>Vásárlói adatok exportálása
+## <a name="exporting-customer-data"></a>Ügyféladatok exportálása
 
 Az adatok törléséhez hasonlóan a bérlői rendszergazdák megtekinthetik és exportálhatjuk a Time Series Insights tárolt adatait a Azure Portal szabályzat paneljén.
 

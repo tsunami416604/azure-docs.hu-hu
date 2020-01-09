@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429306"
 ---
-# <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
+# <a name="control-access-to-iot-hub"></a>Hozzáférés elérésének szabályozása
 
 Ez a cikk az IoT hub biztonságossá tételének lehetőségeit ismerteti. IoT Hub az *engedélyek* használatával engedélyezi az egyes IoT hub-végpontokhoz való hozzáférést. Az engedélyek a funkcionalitás alapján korlátozzák az IoT hub elérését.
 
@@ -57,14 +57,14 @@ Például egy tipikus IoT-megoldásban:
 > [!NOTE]
 > Részletes információk: [engedélyek](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
-Az Azure IoT Hub hozzáférést biztosít a végpontokhoz egy jogkivonat ellenőrzésével a megosztott hozzáférési házirendek és a személyazonossági beállításjegyzék biztonsági hitelesítő adataival.
+Az Azure IoT Hub egy biztonsági jogkivonatnak a megosztott hozzáférési szabályzatok és az identitásjegyzékbeli biztonsági hitelesítő adatok alapján végzett ellenőrzésével ad hozzáférést a végpontokhoz.
 
 A biztonsági hitelesítő adatokat, például a szimmetrikus kulcsokat a rendszer soha nem továbbítja a huzalon.
 
 > [!NOTE]
-> Az Azure IoT Hub erőforrás-szolgáltatót az Azure-előfizetése biztosítja, mint a [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)összes szolgáltatója.
+> Az Azure IoT Hub erőforrás-szolgáltatót az Azure-előfizetése biztosítja, mint a [Azure Resource Manager](../azure-resource-manager/management/overview.md)összes szolgáltatója.
 
 További információ a biztonsági jogkivonatok létrehozásáról és használatáról: [IoT hub biztonsági jogkivonatok](iot-hub-devguide-security.md#security-tokens).
 
@@ -72,7 +72,7 @@ További információ a biztonsági jogkivonatok létrehozásáról és használ
 
 Minden támogatott protokoll, például a MQTT, a AMQP és a HTTPS, különböző módokon szállítja át a jogkivonatokat.
 
-A MQTT használatakor a kapcsolódási csomag rendelkezik a deviceId ClientId, `{iothubhostname}/{deviceId}` a Felhasználónév mezőben és egy sas-jogkivonattal a Password (jelszó) mezőben. `{iothubhostname}`az IoT hub teljes CName értékének kell lennie (például contoso.azure-devices.net).
+A MQTT használatakor a KAPCSOLÓDÁSi csomag rendelkezik a deviceId értékkel, `{iothubhostname}/{deviceId}` a Felhasználónév mezőben, valamint egy SAS-tokent a jelszó mezőben. `{iothubhostname}` legyen az IoT hub teljes CName-je (például contoso.azure-devices.net).
 
 A [AMQP](https://www.amqp.org/)használatakor a IoT hub támogatja a [SASL Plain](https://tools.ietf.org/html/rfc4616) és a [AMQP-alapú biztonsági jogcímeket](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
@@ -80,8 +80,8 @@ Ha a AMQP-alapú biztonsági jogcímeket használja, a standard határozza meg, 
 
 SASL PLAIN a **Felhasználónév** a következő lehet:
 
-* `{policyName}@sas.root.{iothubName}`IoT hub szintű jogkivonatok használata esetén.
-* `{deviceId}@sas.{iothubname}`eszköz-hatókörű tokenek használata esetén.
+* `{policyName}@sas.root.{iothubName}`, ha IoT hub szintű jogkivonatokat használ.
+* `{deviceId}@sas.{iothubname}`, ha az eszköz hatókörű jogkivonatokat használ.
 
 A jelszó mező mindkét esetben tartalmazza a jogkivonatot a [IoT hub biztonsági jogkivonatok](iot-hub-devguide-security.md#security-tokens)című cikkben leírtak szerint.
 
@@ -89,7 +89,7 @@ A HTTPS a hitelesítést az **engedélyezési** kérelem fejlécében szereplő 
 
 #### <a name="example"></a>Példa
 
-Felhasználónév (a DeviceId a kis-és nagybetűk megkülönböztetése):`iothubname.azure-devices.net/DeviceId`
+Felhasználónév (a DeviceId megkülönbözteti a kis-és nagybetűket): `iothubname.azure-devices.net/DeviceId`
 
 Password (létrehozhat egy SAS-tokent az [Eszközkezelő](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eszközzel, a CLI bővítmény parancs az [IOT hub generált-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), vagy a [Visual Studio Code-hoz készült Azure IOT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
@@ -134,17 +134,17 @@ A biztonsági jogkivonat formátuma a következő:
 
 A várt értékek a következők:
 
-| Value | Leírás |
+| Value (Díj) | Leírás |
 | --- | --- |
-| aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: A kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-SHA256 számítás végrehajtásához. |
-| {resourceURI} |A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), az IoT hub állomásneve (nincs protokoll). Például: `myHub.azure-devices.net/devices/device1` |
-| {expiry} |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
-| {URL-encoded-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
+| aláírás |Az űrlap HMAC-SHA256 aláírási karakterlánca: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: a kulcs dekódolása base64-ből történik, és kulcsként használatos a HMAC-sha256 számítás végrehajtásához. |
+| ResourceURI |A jogkivonattal elérhető végpontok URI-előtagja (szegmens szerint), az IoT hub állomásneve (nincs protokoll). Például: `myHub.azure-devices.net/devices/device1` |
+| lejárta |UTF8-karakterláncok a 00:00:00-es, 1970-os UTC-kor óta eltelt idő másodpercben. |
+| {URL-kódolt-resourceURI} |Kisbetűs URL-cím – a kisbetűs erőforrás URI-ja kódolása |
 | PolicyName |Annak a megosztott hozzáférési házirendnek a neve, amelyre ez a jogkivonat hivatkozik. Hiányzik, ha a jogkivonat az eszköz beállításjegyzékbeli hitelesítő adataira hivatkozik. |
 
-**Megjegyzés az előtagon**: Az URI-előtagot szegmens alapján számítjuk ki, nem pedig karakter. Például `/a/b` egy `/a/bc`előtag, de nem. `/a/b/c`
+**Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` a `/a/b/c` előtagja, de nem `/a/bc`.
 
-A következő Node. js-kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja `resourceUri, signingKey, policyName, expiresInMins`a tokent a bemeneti adatokból. A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
+A következő Node. js-kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja a tokent a bemenetek `resourceUri, signingKey, policyName, expiresInMins`. A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -240,7 +240,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 A **DeviceConnect** -engedélyeket kétféleképpen lehet megszerezni IoT hub biztonsági jogkivonatokkal: használjon [szimmetrikus eszközt az azonosító beállításjegyzékből](#use-a-symmetric-key-in-the-identity-registry), vagy használjon [megosztott hozzáférési kulcsot](#use-a-shared-access-policy).
 
-Ne feledje, hogy az eszközökről elérhető összes funkció megtervezése az előtaggal `/devices/{deviceId}`rendelkező végpontokon történik.
+Ne feledje, hogy az eszközökről elérhető összes funkció megtervezése a `/devices/{deviceId}`előtaggal rendelkező végpontokon történik.
 
 > [!IMPORTANT]
 > Egy adott eszköz hitelesítésének egyetlen módja, ha a IoT Hub az eszköz identitásának szimmetrikus kulcsát használja. Azokban az esetekben, amikor megosztott hozzáférési házirendet használ az eszköz funkcióinak eléréséhez, a megoldásnak meg kell fontolnia a biztonsági jogkivonatot kiállító összetevőt megbízható alösszetevőként.
@@ -254,12 +254,12 @@ Az eszközre irányuló végpontok (a protokolltól függetlenül):
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>Szimmetrikus kulcs használata az Identity registryben
 
-Ha az eszköz identitásának szimmetrikus kulcsát használja a jogkivonat létrehozásához, a jogkivonat`skn`policyName () elemét a rendszer kihagyja.
+Ha az eszköz identitásának szimmetrikus kulcsát használja a jogkivonat létrehozásához, a token policyName (`skn`) elemét a rendszer kihagyja.
 
 Az összes eszköz funkció eléréséhez létrehozott tokennek például a következő paraméterekkel kell rendelkeznie:
 
-* erőforrás URI- `{IoT hub name}.azure-devices.net/devices/{device id}`ja:,
-* aláíró kulcs: az `{device id}` identitáshoz tartozó bármely szimmetrikus kulcs,
+* erőforrás URI-ja: `{IoT hub name}.azure-devices.net/devices/{device id}`,
+* aláíró kulcs: a `{device id}` identitáshoz tartozó bármely szimmetrikus kulcs,
 * nincs szabályzat neve,
 * bármely lejárati idő.
 
@@ -292,7 +292,7 @@ Mivel a megosztott hozzáférési házirend bármely eszközhöz hozzáférést 
 
 Például az **eszköz** nevű, előre létrehozott megosztott elérési házirendet használó jogkivonat-szolgáltatás létrehoz egy jogkivonatot a következő paraméterekkel:
 
-* erőforrás URI- `{IoT hub name}.azure-devices.net/devices/{device id}`ja:,
+* erőforrás URI-ja: `{IoT hub name}.azure-devices.net/devices/{device id}`,
 * aláíró kulcs: a `device` szabályzat egyik kulcsa,
 * Házirend neve: `device`,
 * bármely lejárati idő.
@@ -311,7 +311,7 @@ Az eredmény, amely a device1 összes funkciója számára hozzáférést biztos
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697&skn=device`
 
-Egy protokoll-átjáró ugyanazt a jogkivonatot használhatja az összes eszközhöz, egyszerűen állítsa `myhub.azure-devices.net/devices`be az erőforrás-URI-t.
+Egy protokoll-átjáró ugyanazt a tokent használhatja az összes eszközhöz, egyszerűen beállíthatja az erőforrás URI-JÁT a `myhub.azure-devices.net/devices`.
 
 ### <a name="use-security-tokens-from-service-components"></a>Biztonsági jogkivonatok használata a szolgáltatás-összetevőkből
 
@@ -328,7 +328,7 @@ Itt láthatók a végpontokon elérhető szolgáltatási függvények:
 
 Például a **registryRead** nevű, előre létrehozott megosztott elérési házirend használatával generált szolgáltatás létrehoz egy jogkivonatot a következő paraméterekkel:
 
-* erőforrás URI- `{IoT hub name}.azure-devices.net/devices`ja:,
+* erőforrás URI-ja: `{IoT hub name}.azure-devices.net/devices`,
 * aláíró kulcs: a `registryRead` szabályzat egyik kulcsa,
 * Házirend neve: `registryRead`,
 * bármely lejárati idő.
@@ -367,11 +367,11 @@ Az [Azure IoT Service SDK ( C# verzió:](https://github.com/Azure/azure-iot-sdk-
 
 Az eszközökhöz tartozó X. 509 tanúsítványok konfigurálásához a CLI-bővítmény parancs az [IOT hub Device-Identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsot is használhatja.
 
-### <a name="c-support"></a>C\# -támogatás
+### <a name="c-support"></a>C\# támogatás
 
 A **RegistryManager** osztály az eszközök regisztrálására szolgáló programozott módszert biztosít. A **AddDeviceAsync** és a **UpdateDeviceAsync** metódus lehetővé teszi az eszközök regisztrálását és frissítését az IoT hub Identity registryben. Ez a két módszer bemenetként veszi fel az **eszköz** példányát. Az **eszközosztály** tartalmaz egy olyan **hitelesítési** tulajdonságot, amely lehetővé teszi az elsődleges és másodlagos X. 509 tanúsítvány ujjlenyomatai megfelelnek megadását. Az ujjlenyomat az X. 509 tanúsítvány SHA256 kivonatát jelöli (a bináris DER kódolással tárolva). Lehetősége van elsődleges ujjlenyomat vagy másodlagos ujjlenyomat vagy mindkettő megadására. A tanúsítvány-átváltási forgatókönyvek kezeléséhez az elsődleges és a másodlagos ujjlenyomatai megfelelnek is támogatott.
 
-Az alábbi minta C\# kódrészlettel regisztrálhat egy eszközt X. 509 tanúsítvány-ujjlenyomat használatával:
+Az alábbi minta C\# kódrészletet használ egy eszköz X. 509 tanúsítvány ujjlenyomattal való regisztrálásához:
 
 ```csharp
 var device = new Device(deviceId)
@@ -392,7 +392,7 @@ await registryManager.AddDeviceAsync(device);
 
 A [.net-hez készült Azure IoT Device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (1.0.11 +) támogatja az X. 509 tanúsítványok használatát.
 
-### <a name="c-support"></a>C\# -támogatás
+### <a name="c-support"></a>C\# támogatás
 
 A **DeviceAuthenticationWithX509Certificate** osztály támogatja a **DeviceClient** -példányok létrehozását X. 509 tanúsítvány használatával. Az X. 509 tanúsítványnak a titkos kulcsot tartalmazó PFX (más néven PKCS #12) formátumúnak kell lennie.
 
@@ -418,7 +418,7 @@ A jogkivonat-szolgáltatás mintájának fő lépései a következők:
 
 2. Ha egy eszköznek/modulnak hozzá kell férnie az IoT hub-hoz, a jogkivonat-szolgáltatás aláírt jogkivonatot kér. Az eszköz hitelesíthető az egyéni identitás-regisztrációs vagy hitelesítési sémával annak megállapításához, hogy a jogkivonat-szolgáltatás melyik eszközt használja a jogkivonat létrehozásához.
 
-3. A jogkivonat-szolgáltatás visszaadja a tokent. `/devices/{deviceId}` A jogkivonat a `moduleId` `deviceId` vagy `/devices/{deviceId}/module/{moduleId}`a használatával jön létre ,mintazeszközhitelesítvevagyahitelesítőmodul.`resourceURI` A jogkivonat-szolgáltatás a megosztott elérési házirendet használja a jogkivonat létrehozásához.
+3. A jogkivonat-szolgáltatás visszaadja a tokent. A jogkivonat létrehozása `/devices/{deviceId}` vagy `/devices/{deviceId}/module/{moduleId}`, `resourceURI`, `deviceId`, mert az eszköz hitelesítése megtörtént, vagy `moduleId` a hitelesítő modulként. A jogkivonat-szolgáltatás a megosztott elérési házirendet használja a jogkivonat létrehozásához.
 
 4. Az eszköz/modul a tokent közvetlenül az IoT hub használatával használja.
 
@@ -462,7 +462,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a hozzáférési IoT Hub vezérlését, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422011"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -38,9 +38,9 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 3. Válassza az **identitás**lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
-    ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
@@ -169,7 +169,7 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
 
-    ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 
@@ -251,10 +251,10 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> |Paraméter neve|A|Leírás|
+> |Paraméter neve|Az|Leírás|
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
-> |API-Version|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
+> |api-verzió|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
 > |titkos kód|Fejléc|A MSI_SECRET környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.|
 > |ClientID|Lekérdezés|(Nem kötelező, kivéve, ha felhasználó által hozzárendelt) A használni kívánt felhasználó által hozzárendelt identitás azonosítója. Ha nincs megadva, a rendszer hozzárendelt identitást használja.|
 
@@ -299,7 +299,7 @@ Content-Type: application/json
 }
 ```
 
-### <a name="code-examples"></a>Példák a kódokra
+### <a name="code-examples"></a>Kódpéldák
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

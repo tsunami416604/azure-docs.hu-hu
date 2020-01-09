@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
-ms.openlocfilehash: f17b96ad880742cf1232b074e4398f3b1d15e5ba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451198"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Az Azure soros konzolon elérhető energiagazdálkodási lehetőségek
 
-Az Azure soros konzol számos hatékony eszközt biztosít az energiagazdálkodáshoz a virtuális gépen vagy a virtuálisgép-méretezési csoporton. Ezek az energiagazdálkodási lehetőségek bizonyos esetekben zavaróak lehetnek, így ez a dokumentum áttekintést nyújt az egyes eszközökről és azok felhasználási eseteiről.
+Az Azure soros konzol számos hatékony eszközt biztosít az energiagazdálkodáshoz a virtuális gépen vagy a virtuálisgép-méretezési csoporton. Ezek az energiagazdálkodási lehetőségek bizonyos esetekben zavaróak lehetnek, így ez az egyes eszközök és a kívánt használati eset áttekintése.
 
 Soros konzol funkció | Leírás | Használati eset
 :----------------------|:------------|:---------
@@ -32,6 +32,6 @@ Virtuális gép alaphelyzetbe állítása | A virtuális gép vagy a virtuálisg
 SysRq – újraindítás (b) | A vendég újraindítását kényszerítő rendszerkérelem. | Ez a funkció csak a Linux operációs rendszerekre alkalmazható, és az operációs rendszerben [engedélyezni kell a SYSRQ](./serial-console-nmi-sysrq.md#system-request-sysrq) . Ha az operációs rendszer megfelelően van konfigurálva a SysRq, ez a parancs az operációs rendszer újraindítását fogja eredményezni.
 NMI (nem maszkolt megszakítás) | Egy megszakítási parancs, amely az operációs rendszerbe lesz továbbítva | Ez a művelet [Windows](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) -és [Linux](./serial-console-nmi-sysrq.md#non-maskable-interrupt-nmi) -alapú virtuális gépekhez is elérhető, és a NMI engedélyezését igényli. A NMI elküldése általában az operációs rendszer összeomlását okozza. Beállíthatja, hogy az operációs rendszer hozzon létre egy memóriaképfájl-fájlt, majd indítsa újra a NMI fogadása után, ami hasznos lehet az alacsony szintű hibakeresésben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Linux rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-linux.md)
 * További információ a [Windows rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-windows.md)

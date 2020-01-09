@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422156"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Egyéni Linux-tároló üzembe helyezése Azure App Service
 
@@ -26,7 +26,7 @@ A Linuxon futó App Service a Linuxon előre definiált alkalmazásokat biztosí
 
 ## <a name="create-an-image"></a>Rendszerkép létrehozása
 
-A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](/azure/container-registry)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a rövid útmutató [: Private Container Registry létrehozása a Azure Portal segítségével](/azure/container-registry/container-registry-get-started-portal), de az `hello-world` rendszerkép helyett használja a `mcr.microsoft.com/azuredocs/go` rendszerképet.
+A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](/azure/container-registry)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a rövid útmutató [: Private Container Registry létrehozása a Azure Portal segítségével](/azure/container-registry/container-registry-get-started-portal), de az `hello-world` rendszerkép helyett használja a `mcr.microsoft.com/azuredocs/go` rendszerképet. A [minta Docker az Azure Samples-](https://github.com/Azure-Samples/go-docs-hello-world)tárházban található.
 
 > [!IMPORTANT]
 > Ügyeljen arra, hogy a **rendszergazda felhasználó** beállítással **engedélyezze** a tároló-beállításjegyzék létrehozását. Azt is megteheti, hogy a beállításjegyzék oldalának **hozzáférési kulcsok** szakasza is be van állítva a Azure Portal. Ez a beállítás App Service hozzáféréshez szükséges.

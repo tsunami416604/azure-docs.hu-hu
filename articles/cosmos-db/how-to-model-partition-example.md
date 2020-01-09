@@ -1,17 +1,17 @@
 ---
-title: Az adatAzure Cosmos DBek modellezése és particionálása valós példa használatával
+title: Azure Cosmos DB-modell és-particionálás valós példával
 description: Ismerje meg, hogyan modellezheti és particionálhatja a valós példákat a Azure Cosmos DB Core API használatával
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445380"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Az adatAzure Cosmos DBek modellezése és particionálása valós példa használatával
 
@@ -21,7 +21,7 @@ Ha általában a kapcsolatok adatbázisaival dolgozik, valószínűleg az adatmo
 
 ## <a name="the-scenario"></a>A forgatókönyv
 
-Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket*. A felhasználók emellett hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
+Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket*. *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
 
 > [!TIP]
 > Kiemeltek néhány szót *dőlt betűvel*; Ezek a szavak határozzák meg, hogy milyen típusú "dolgok" a modellnek.
@@ -38,7 +38,7 @@ További követelmények hozzáadása a specifikációhoz:
 
 Első lépésként a megoldás hozzáférési mintáinak azonosításával egy struktúrát adunk a kezdeti specifikációnk számára. Azure Cosmos DB adatmodell tervezésekor fontos tisztában lennie azzal, hogy a modellnek milyen kéréseket kell biztosítania ahhoz, hogy a modell hatékonyan szolgálja majd ki a kérelmeket.
 
-Ahhoz, hogy az átfogó folyamat könnyebben követhető legyen, a különböző kérelmeket parancsok vagy lekérdezések szerint kategorizáljuk, a [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) , ahol a parancsok írási kérések (azaz a rendszer frissítésének szándéka), és a lekérdezések csak olvashatók. kérelmek.
+Ahhoz, hogy az átfogó folyamat könnyebben követhető legyen, a különböző kérelmeket parancsok vagy lekérdezések szerint kategorizáljuk, a [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) , ahol a parancsok írási kérések (azaz a rendszer frissítésének szándéka), és a lekérdezések csak olvasható kérelmek.
 
 A platform által elérhető kérelmek listája a következő:
 
@@ -57,9 +57,9 @@ Ebben a szakaszban nem gondoltuk, hogy mit tartalmaz az egyes entitások (felhas
 
 A fő ok, amiért fontos, hogy az elejétől kiderítse a hozzáférési mintákat, azért, mert a kérések listája a test Suite lesz. Minden alkalommal, amikor megismétli az adatmodellt, áttekintjük a kérelmeket, és megvizsgáljuk a teljesítményt és a méretezhetőséget.
 
-## <a name="v1-a-first-version"></a>V1 Első verzió
+## <a name="v1-a-first-version"></a>V1: első verzió
 
-Kezdjük két tárolóval: `users` és. `posts`
+Kezdjük két tárolóval: `users` és `posts`.
 
 ### <a name="users-container"></a>Felhasználók tárolója
 
@@ -70,7 +70,7 @@ Ez a tároló csak a felhasználói elemeket tárolja:
       "username": "<username>"
     }
 
-Ezt a tárolót a `id`alapján particionáljuk, ami azt jelenti, hogy az adott tárolón belüli minden logikai partíció csak egyetlen elemből fog állni.
+Ezt a tárolót `id`alapján particionáljuk, ami azt jelenti, hogy a tárolóban lévő minden logikai partíció csak egyetlen elemből áll.
 
 ### <a name="posts-container"></a>Bejegyzések tárolója
 
@@ -103,9 +103,9 @@ Ez a tároló bejegyzéseket, megjegyzéseket és a következőt szereti:
       "creationDate": "<like-creation-date>"
     }
 
-Ezt a tárolót a `postId`használatával particionáljuk, ami azt jelenti, hogy az adott tárolón belüli minden logikai partíció egy bejegyzést tartalmaz, a bejegyzés összes megjegyzését és a bejegyzéshez tartozó összes hozzászólást.
+Ezt a tárolót `postId`alapján particionáljuk, ami azt jelenti, hogy az adott tárolón belüli minden logikai partíció egyetlen bejegyzést tartalmaz, a bejegyzés összes megjegyzését és az adott bejegyzéshez tartozó összes hozzászólást.
 
-Vegye figyelembe, hogy az ebben `type` a tárolóban tárolt elemekben bevezetünk egy tulajdonságot a tároló által üzemeltetett entitások három típusa közötti különbségtételhez.
+Vegye figyelembe, hogy az ebben a tárolóban tárolt elemekben bevezetünk egy `type` tulajdonságot a tároló által üzemeltetett entitások három típusa közötti különbségtételhez.
 
 Azt is kiválasztottuk, hogy a kapcsolódó adatokra hivatkozzon a beágyazás helyett ( [ezt a szakaszt](modeling-data.md) a fogalmakkal kapcsolatos részletekért tekintse meg), mivel:
 
@@ -120,13 +120,13 @@ Az első verzió teljesítményének és méretezhetőségének felmérése most
 
 ### <a name="c1-createedit-a-user"></a>C1 Felhasználó létrehozása/szerkesztése
 
-Ez a kérelem egyszerűen megvalósítható a `users` tárolóban lévő elemek létrehozásakor vagy frissítésekor. A kérések szépen oszlanak meg az összes partíción a `id` partíciós kulcsnak köszönhetően.
+Ez a kérelem egyszerűen megvalósítható a `users` tárolóban található elemek létrehozásakor vagy frissítésekor. A kérések szépen oszlanak el az összes partíción a `id` partíciós kulcsnak köszönhetően.
 
 ![Egyetlen elem írása a felhasználók tárolójába](./media/how-to-model-partition-example/V1-C1.png)
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
-| 7 MS | 5,71 RU | ✅ |
+| 7 ms | 5,71 RU | ✅ |
 
 ### <a name="q1-retrieve-a-user"></a>Első Felhasználó beolvasása
 
@@ -146,11 +146,11 @@ A **[C1]** -hez hasonlóan csak írni kell a `posts` tárolóba.
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
-| 9 MS | 8,76 RU | ✅ |
+| 9 ms | 8,76 RU | ✅ |
 
 ### <a name="q2-retrieve-a-post"></a>Q2 Bejegyzés beolvasása
 
-Kezdjük azzal, hogy beolvassa a megfelelő dokumentumot `posts` a tárolóból. De ez nem elég, a specifikációnk alapján pedig összesíteni kell a bejegyzés szerzőjének felhasználónevét, valamint azt is, hogy hány Megjegyzés és hány hozzászólás van jelen a bejegyzésben, amelyhez 3 további SQL-lekérdezést kell kiállítani.
+Először beolvassa a megfelelő dokumentumot a `posts` tárolóból. De ez nem elég, a specifikációnk alapján pedig összesíteni kell a bejegyzés szerzőjének felhasználónevét, valamint azt is, hogy hány Megjegyzés és hány hozzászólás van jelen a bejegyzésben, amelyhez 3 további SQL-lekérdezést kell kiállítani.
 
 ![Bejegyzés beolvasása és további adatok összesítése](./media/how-to-model-partition-example/V1-Q2.png)
 
@@ -158,7 +158,7 @@ A további lekérdezési szűrők a megfelelő tárolójának partíciós kulcs�
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
-| 9 MS | 19,54 RU | ⚠ |
+| 9 ms | 19,54 RU | ⚠ |
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>Q3 A felhasználó bejegyzéseinek rövid formában való listázása
 
@@ -169,7 +169,7 @@ Először le kell kérnie a kívánt bejegyzéseket egy olyan SQL-lekérdezésse
 Ez a megvalósítás számos hátrányat jelent:
 
 - az első lekérdezés által visszaadott összes bejegyzés esetében a megjegyzések számának és az azt követő lekérdezéseknek a kiosztását kell kiállítani.
-- a főlekérdezés nem szűri a `posts` tároló partíciós kulcsát, ami egy ventilátor-és egy partíciós vizsgálathoz vezet a tárolón keresztül.
+- a főlekérdezés nem szűri a `posts` tároló partíciós kulcsát, amely egy ventilátort és egy partíciós vizsgálatot eredményez a tárolóban.
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -177,13 +177,13 @@ Ez a megvalósítás számos hátrányat jelent:
 
 ### <a name="c3-create-a-comment"></a>C3 csomag Megjegyzés létrehozása
 
-A Megjegyzés létrehozásához írja be a megfelelő elemeket a `posts` tárolóba.
+A Megjegyzés a `posts` tárolóban található megfelelő elemek megírásával jön létre.
 
 ![Egyetlen elem írása a Posts tárolóba](./media/how-to-model-partition-example/V1-C2.png)
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
-| 7 MS | 8,57 RU | ✅ |
+| 7 ms | 8,57 RU | ✅ |
 
 ### <a name="q4-list-a-posts-comments"></a>Q4 Bejegyzés megjegyzésének listázása
 
@@ -219,11 +219,11 @@ Akárcsak a **[Q4]** esetében, lekérdezjük az adott bejegyzésre vonatkozó, 
 
 ### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>Q6 A rövid formátumban létrehozott x legújabb bejegyzések listázása (hírcsatorna)
 
-A legutóbbi hozzászólások beolvasásához a `posts` tároló lekérdezése csökkenő létrehozási dátummal történik, majd összesíti a felhasználóneveket és a hozzászólások számát, és szereti az egyes bejegyzéseket.
+A legfrissebb bejegyzéseket a `posts` tároló lekérdezésével, csökkenő létrehozási dátum szerint rendezve, majd az egyes bejegyzések összesített felhasználóneveit és megjegyzéseit kell lekérdezni.
 
 ![A Legutóbbi bejegyzések beolvasása és a további adatok összesítése](./media/how-to-model-partition-example/V1-Q6.png)
 
-A kezdeti lekérdezés nem a `posts` tároló partíciós kulcsára van szűrve, ami költséges ventilátort indít el. Ez még rosszabb, mint a sokkal nagyobb eredményhalmaz megcélzása és az eredmények egy `ORDER BY` záradékkal való rendezése, ami drágább a kérési egységek tekintetében.
+A kezdeti lekérdezés nem az `posts` tároló partíciós kulcsára van szűrve, ami költséges ventilátort indít el. Ez még rosszabb, mint a sokkal nagyobb eredményhalmaz megcélzása és az eredmények egy `ORDER BY` záradékkal való rendezése, ami drágább a kérési egységek tekintetében.
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ Tekintse át az előző szakaszban felmerülő teljesítménnyel kapcsolatos pro
 
 Hárítsa el ezeket a problémákat, kezdve az elsővel.
 
-## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2 A denormalizálás ismertetése az olvasási lekérdezések optimalizálásához
+## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2: a denormalizálás bevezetése az olvasási lekérdezések optimalizálására
 
 Az OK, amiért bizonyos esetekben további kérelmeket kell kiadnia, mert a kezdeti kérés eredményei nem tartalmazzák az összes visszaadott adatmennyiséget. Ha olyan nem kapcsolattal rendelkező adattárakkal dolgozik, mint például a Azure Cosmos DB, az ilyen jellegű problémát általában az adathalmazon belüli adatnormalizálás okozta.
 
@@ -280,9 +280,9 @@ A megjegyzéseket és a hasonló elemeket is módosítjuk, hogy hozzá lehessen 
 
 ### <a name="denormalizing-comment-and-like-counts"></a>A megjegyzések és a hasonló számok denormalizálása
 
-Azt szeretnénk elérni, hogy minden alkalommal, amikor hozzáadunk egy hozzászólást vagy hasonlót, a megfelelő bejegyzésben `commentCount` is megnöveli a vagy a `likeCount` -t. `postId`Mivel a `posts` tároló particionálva van, az új elem (Megjegyzés vagy hasonló) és a hozzá tartozó post Sit ugyanabban a logikai partícióban található. Ennek eredményeképpen a művelet végrehajtásához [tárolt eljárást](stored-procedures-triggers-udfs.md) használhatunk.
+Azt szeretnénk elérni, hogy minden alkalommal, amikor hozzáadunk egy megjegyzést vagy hasonlót, az adott bejegyzés `commentCount` vagy `likeCount` is megnöveli. Mivel a `posts` tárolót a `postId`particionálja, az új elem (Megjegyzés vagy hasonló) és a hozzá tartozó post Sit ugyanabban a logikai partícióban található. Ennek eredményeképpen a művelet végrehajtásához [tárolt eljárást](stored-procedures-triggers-udfs.md) használhatunk.
 
-Miután létrehoz egy megjegyzést ( **[C3]** ) ahelyett, hogy csak egy új elem hozzáadása a `posts` tárolóhoz, a következő tárolt eljárást hívjuk a tárolón:
+Miután létrehoz egy megjegyzést ( **[C3]** ) ahelyett, hogy új elemeket adna hozzá a `posts` tárolóhoz, a következő tárolt eljárást hívjuk a tárolón:
 
 ```javascript
 function createComment(postId, comment) {
@@ -314,19 +314,19 @@ function createComment(postId, comment) {
 Ez a tárolt eljárás a bejegyzés és az új Megjegyzés törzsének AZONOSÍTÓját veszi fel paraméterekként, majd:
 
 - a bejegyzés beolvasása
-- növeli a`commentCount`
+- növeli a `commentCount`
 - a bejegyzés cseréje
 - hozzáadja az új megjegyzést
 
-Mivel a tárolt eljárások atomi tranzakcióként vannak végrehajtva, garantálható, hogy a `commentCount` megjegyzések és a tényleges Hozzászólások száma mindig szinkronban marad.
+Mivel a tárolt eljárások atomi tranzakcióként vannak végrehajtva, garantálható, hogy a `commentCount` és a hozzászólások tényleges száma mindig szinkronban maradjon.
 
-Nyilvánvalóan hasonló tárolt eljárást hívjuk fel, amikor új, az `likeCount`érték növelését szereti.
+Nyilvánvalóan hasonló tárolt eljárást kell meghívni, amikor új, a `likeCount`növelését szereti.
 
 ### <a name="denormalizing-usernames"></a>Felhasználónevek denormalizálása
 
-A felhasználónevek eltérő megközelítést igényelnek, mivel a felhasználók nem csak a különböző partíciókban ülnek, hanem egy másik tárolóban. Ha a partíciók és tárolók közötti adattitkosítást le kell állítani, a forrás tároló változási [csatornáját](change-feed.md)is használhatja.
+A felhasználónevek eltérő megközelítést igényelnek, mivel a felhasználók nem csak a különböző partíciókban ülnek, hanem egy másik tárolóban. Ha a partíciók és tárolók közötti adattitkosítást le kell állítani, a forrás tároló [változási csatornáját](change-feed.md)is használhatja.
 
-A példánkban a tároló változási csatornáját használjuk arra, `users` hogy reagáljon arra, amikor a felhasználók frissítik a felhasználóneveket. Ebben az esetben a változást egy másik tárolt eljárás meghívásával propagáljuk a `posts` tárolón:
+A példánkban a `users` tároló adatváltozási csatornájának módosításával reagál, amikor a felhasználók frissítik a felhasználóneveket. Ebben az esetben a változást egy másik tárolt eljárás meghívásával propagáljuk a `posts` tárolón:
 
 ![Felhasználónevek denormalizálása a Posts tárolóba](./media/how-to-model-partition-example/denormalization-1.png)
 
@@ -354,9 +354,9 @@ function updateUsernames(userId, username) {
 
 Ez a tárolt eljárás a felhasználó AZONOSÍTÓját és a felhasználó új felhasználónevét adja meg paraméterként, majd:
 
-- lekéri az `userId` összes elemet (amely lehet hozzászólások, hozzászólások vagy kedvelő)
+- a `userId`nak megfelelő összes elem beolvasása (amely lehet hozzászólások, hozzászólások vagy szerethető)
 - mindegyik elemhez
-  - lecseréli a`userUsername`
+  - lecseréli a `userUsername`
   - az tétel cseréje
 
 > [!IMPORTANT]
@@ -394,7 +394,7 @@ Ugyanezt a helyzetet kell megegyeznie, amikor felsorolja az szereti.
 | --- | --- | --- |
 | 4 MS | 8,92 RU | ✅ |
 
-## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: Győződjön meg arról, hogy az összes kérelem skálázható
+## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: az összes kérelem méretezhetőségének biztosítása
 
 Az általános teljesítménybeli tökéletesítéseken még két kérelem is található, amelyeket nem teljesen optimalizáltunk: **[Q3]** és **[K6]** . Ezek olyan lekérdezések, amelyek nem szűrik az általuk megcélzott tárolók partíciós kulcsára vonatkozó kérelmeket.
 
@@ -408,12 +408,12 @@ A fennmaradó lekérdezés azonban továbbra sem a `posts` tároló partíciós 
 
 Ennek a helyzetnek a meggondolása valójában egyszerű:
 
-1. A kérésnek szűrnie kell a `userId` -t, mert egy adott felhasználó összes bejegyzését szeretné beolvasni
-1. Nem jól teljesíti, mert a tárolón fut `posts` , amelyet a nem particionál`userId`
-1. Egyértelművé tettük a teljesítménnyel kapcsolatos problémát, ha a kérelmet egy olyan tárolón hajtja végre, amelyet a következő particionál:`userId`
+1. A kérelemnek szűrnie kell a *`userId`, mert* egy adott felhasználó összes bejegyzését szeretné beolvasni
+1. Nem jól teljesíti, mert az `posts` tárolón fut, amelyet a `userId` nem particionál.
+1. Egyértelművé tettük a teljesítménnyel kapcsolatos problémát, ha a kérést egy `userId` *által particionált* tárolón hajtják végre.
 1. Kiderül, hogy már van ilyen tárolónk: a `users` tároló!
 
-Ezért bevezetjük a denormalizálás második szintjét úgy, hogy a teljes bejegyzést a `users` tárolóba duplikálja. Ennek során gyakorlatilag beolvasjuk a hozzászólásaink egy példányát, és csak egy másik dimenzió mentén particionáljuk, így hatékonyabban lehet lekérni `userId`őket.
+Ezért bevezetjük a denormalizálás második szintjét a teljes bejegyzéseknek az `users` tárolóba való másolásával. Ennek során gyakorlatilag beolvasjuk a hozzászólásaink egy példányát, és csak egy másik dimenzió mentén particionáljuk, így hatékonyabban tudják lekérni a `userId`.
 
 A `users` tároló most két típusú elemet tartalmaz:
 
@@ -440,13 +440,13 @@ A `users` tároló most két típusú elemet tartalmaz:
 Vegye figyelembe:
 
 - bevezetünk egy `type` mezőt a felhasználói elemben, hogy megkülönböztessék a felhasználókat a bejegyzésektől,
-- hozzáadunk `userId` egy mezőt is a felhasználói elemhez, amely redundáns `id` a mezővel, de szükség van rá, mivel `users` a tároló most már particionálva `userId` van (és `id` nem korábban)
+- hozzáadott egy `userId` mezőt is a felhasználói elemben, amely redundáns a `id` mezővel, de szükség van rá, mert a `users` tároló most már particionálva van `userId` (és nem `id` korábban)
 
-A denormalizálás érdekében ismét a változási csatornát használjuk. Ezúttal a `posts` tároló változási csatornáján reagálunk arra, hogy új vagy frissített bejegyzést küldjön a `users` tárolóba. Mivel a bejegyzések bejegyzései nem igénylik a teljes tartalom visszaküldését, a folyamat során lerövidítheti azokat.
+A denormalizálás érdekében ismét a változási csatornát használjuk. Ezúttal a `posts` tároló változási csatornáján reagálunk arra, hogy új vagy frissített bejegyzéseket küldjön a `users` tárolóba. Mivel a bejegyzések bejegyzései nem igénylik a teljes tartalom visszaküldését, a folyamat során lerövidítheti azokat.
 
 ![Bejegyzések denormalizálása a felhasználók tárolójába](./media/how-to-model-partition-example/denormalization-2.png)
 
-Most már elvégezhető a lekérdezés átirányítása a `users` tárolóba, a tároló partíciós kulcsának szűrésével.
+Most átirányítjuk a lekérdezést a `users` tárolóba, a tároló partíciós kulcsának szűrésével.
 
 ![Felhasználó összes bejegyzésének beolvasása](./media/how-to-model-partition-example/V3-Q3.png)
 
@@ -462,7 +462,7 @@ Ehhez hasonló helyzetet kell megbirkóznia: még a v2-ben bevezetett denormaliz
 
 Ugyanezt a megközelítést követve a kérés teljesítményének és méretezhetőségének maximalizálása megköveteli, hogy csak egy partíciót lásson. Ez elképzelhető, hogy csak korlátozott számú elemet kell visszaadnia. a blogírás platform kezdőlapjának feltöltéséhez csupán a 100 legújabb bejegyzéseit kell megszereznie, anélkül, hogy a teljes adathalmazon át kellene lapozni.
 
-A legutóbbi kérelem optimalizálása érdekében egy harmadik tárolót vezetünk be a kialakításba, amely kizárólag a kérelem kiszolgálására szolgál. A bejegyzéseket az új `feed` tárolóra denormalizáljuk:
+A legutóbbi kérelem optimalizálása érdekében egy harmadik tárolót vezetünk be a kialakításba, amely kizárólag a kérelem kiszolgálására szolgál. A bejegyzéseket a következő új `feed` tárolóba denormalizáljuk:
 
     {
       "id": "<post-id>",
@@ -477,9 +477,9 @@ A legutóbbi kérelem optimalizálása érdekében egy harmadik tárolót vezet�
       "creationDate": "<post-creation-date>"
     }
 
-Ez a tároló particionálva `type`van, amely `post` mindig az elemek között lesz. Ezzel biztosíthatja, hogy a tároló összes eleme ugyanabban a partícióban maradjon.
+Ezt a tárolót a `type`particionálja, amely mindig `post` az elemek között. Ezzel biztosíthatja, hogy a tároló összes eleme ugyanabban a partícióban maradjon.
 
-A denormalizálás eléréséhez csak be kell kapcsolnia a változási csatornát, amelyet korábban már bevezetett, hogy az új tárolóba küldjön a bejegyzéseket. Fontos szem előtt tartani, hogy meg kell győződni arról, hogy csak a 100 legutóbbi bejegyzéseit tároljuk. Ellenkező esetben előfordulhat, hogy a tároló tartalma meghaladja a partíciók maximális méretét. Ezt úgy teheti meg, [](stored-procedures-triggers-udfs.md#triggers) hogy minden alkalommal meghívja a triggert, amikor egy dokumentumot adnak hozzá a tárolóhoz:
+A denormalizálás eléréséhez csak be kell kapcsolnia a változási csatornát, amelyet korábban már bevezetett, hogy az új tárolóba küldjön a bejegyzéseket. Fontos szem előtt tartani, hogy meg kell győződni arról, hogy csak a 100 legutóbbi bejegyzéseit tároljuk. Ellenkező esetben előfordulhat, hogy a tároló tartalma meghaladja a partíciók maximális méretét. Ezt úgy teheti meg, hogy minden alkalommal meghívja a [triggert](stored-procedures-triggers-udfs.md#triggers) , amikor egy dokumentumot adnak hozzá a tárolóhoz:
 
 ![Bejegyzések denormalizálása a hírcsatorna-tárolóba](./media/how-to-model-partition-example/denormalization-3.png)
 
@@ -536,24 +536,24 @@ Az utolsó lépés a lekérdezés átirányítása az új `feed` tárolóra:
 
 | **Késés** | **RU díj** | **Teljesítmény** |
 | --- | --- | --- |
-| 9 MS | 16,97 RU | ✅ |
+| 9 ms | 16,97 RU | ✅ |
 
 ## <a name="conclusion"></a>Összegzés
 
 Tekintse át a tervünk különböző verzióiban bevezetett általános teljesítmény-és méretezhetőségi funkciókat.
 
-| | 1-es verzió | 2\. verzió | V3 |
+| | 1\. verzió | 2\. verzió | K3 |
 | --- | --- | --- | --- |
-| **[C1]** | 7 MS/5,71 RU | 7 MS/5,71 RU | 7 MS/5,71 RU |
-| **[Q1]** | 2 ms / 1 RU | 2 ms / 1 RU | 2 ms / 1 RU |
-| **[C2]** | 9 MS/8,76 RU | 9 MS/8,76 RU | 9 MS/8,76 RU |
-| **[Q2]** | 9 MS/19,54 RU | 2 ms / 1 RU | 2 ms / 1 RU |
-| **[Q3]** | 130 MS/619,41 RU | 28 MS/201,54 RU | 4 MS/6,46 RU |
-| **[C3]** | 7 MS/8,57 RU | 7 MS/15,27 RU | 7 MS/15,27 RU |
-| **[Q4]** | 23 MS/27,72 RU | 4 MS/7,72 RU | 4 MS/7,72 RU |
-| **[C4]** | 6 MS/7,05 RU | 7 MS/14,67 RU | 7 MS/14,67 RU |
-| **[Q5]** | 59 MS/58,92 RU | 4 MS/8,92 RU | 4 MS/8,92 RU |
-| **[Q6]** | 306 MS/2063,54 RU | 83 MS/532,33 RU | 9 MS/16,97 RU |
+| **C1** | 7 MS/5,71 RU | 7 MS/5,71 RU | 7 MS/5,71 RU |
+| **Első** | 2 MS/1 RU | 2 MS/1 RU | 2 MS/1 RU |
+| **C2** | 9 MS/8,76 RU | 9 MS/8,76 RU | 9 MS/8,76 RU |
+| **Q2** | 9 MS/19,54 RU | 2 MS/1 RU | 2 MS/1 RU |
+| **Q3** | 130 MS/619,41 RU | 28 MS/201,54 RU | 4 MS/6,46 RU |
+| **C3 csomag** | 7 MS/8,57 RU | 7 MS/15,27 RU | 7 MS/15,27 RU |
+| **Q4** | 23 MS/27,72 RU | 4 MS/7,72 RU | 4 MS/7,72 RU |
+| **C4** | 6 MS/7,05 RU | 7 MS/14,67 RU | 7 MS/14,67 RU |
+| **Q5** | 59 MS/58,92 RU | 4 MS/8,92 RU | 4 MS/8,92 RU |
+| **Q6** | 306 MS/2063,54 RU | 83 MS/532,33 RU | 9 MS/16,97 RU |
 
 ### <a name="we-have-optimized-a-read-heavy-scenario"></a>Optimalizáltunk egy nagy olvasási forgatókönyvet
 
@@ -569,7 +569,7 @@ A jelen cikkben ismertetett skálázhatósági funkciók az adathalmazon belüli
 
 Az a változás, amelyet a frissítések más tárolók számára történő terjesztésére használunk, az összes frissítést tartósan tárolja. Ez lehetővé teszi az összes frissítés igénylését, mivel a tároló létrehozása és a rendszerindítási műveletek elvégezte a betöltési nézetek egyszeri észlelési műveletként, még akkor is, ha a rendszer már sok adattal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gyakorlati adatmodellezés és particionálás után érdemes megtekinteni a következő cikkeket az érintett fogalmak áttekintéséhez:
 

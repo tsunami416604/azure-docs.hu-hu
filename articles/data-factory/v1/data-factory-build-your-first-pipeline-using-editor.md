@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439007"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -110,7 +110,7 @@ Ebben a lépésben társítja a tárfiókot az adat-előállítójához. A jelen
 
    ![Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs lekéréséről [a tárfiók kezelését](../../storage/common/storage-account-manage.md#access-keys) ismertető szakasz tárelérési kulcsok megtekintéséről, másolásáról és ismételt létrehozásáról szóló részében olvashat.
+1. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
@@ -211,11 +211,11 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
    | Tulajdonság | Beágyazott alatt | Leírás |
    |:--- |:--- |:--- |
    | type | properties |A tulajdonság beállítása **AzureBlob**, mert az adatok blobtárolóban találhatók. |
-   | linkedServiceName | formátumban |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
+   | linkedServiceName | formátum |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
    | folderPath | typeProperties | A bemeneti blobokat tartalmazó blobtárolót és mappát adja meg. | 
    | fileName | typeProperties |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az oktatóanyagban csak az input.log fájl feldolgozása történik meg. |
-   | type | formátumban |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
-   | columnDelimiter | formátumban |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
+   | type | formátum |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
+   | columnDelimiter | formátum |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
    | frequency/interval | availability |A gyakoriság beállítás értéke **Hónap**, az időköz beállítás értéke **1**, tehát a bemeneti szeletek havonta érhetők el. |
    | external | properties | Ez a tulajdonság **igaz** értékre van állítva, ha a bemeneti adatokat nem ez a folyamat hozta létre. Mivel ebben az oktatóanyagban a bemeneti naplófájlt nem ez a folyamat hozta létre, a tulajdonság értéke **igaz**. |
 
@@ -431,7 +431,7 @@ Az oktatóanyag során létrehozott egy adat-előállítót, amely egy HDInsight
 * Két adatkészlet létrehozása, amelyek leírják a bemeneti és kimeneti adatokat a folyamat HDInsight Hive-tevékenysége számára.
 * Egy HDInsight Hive-tevékenységgel rendelkező folyamat létrehozása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. Ha tudni szeretné, hogyan használhatja a Másolás tevékenységet az adatok Azure-blobból Azure SQL Database-adatbázisba történő másolásához, lásd: [Oktatóanyag: Adatok másolása blobtárolóból az SQL Database-be](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még:

@@ -1,27 +1,21 @@
 ---
-title: A vadászati könyvjelzők használatával nyomon követheti az adatgyűjtést az Azure Sentinelben | Microsoft Docs
+title: A vadászati könyvjelzők használata adatvizsgálatokhoz az Azure Sentinel szolgáltatásban
 description: Ez a cikk azt ismerteti, hogyan használható az Azure Sentinel vadászati könyvjelzői az adatnyomon követéshez.
-services: sentinel
-documentationcenter: na
 author: cabailey
+ms.author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2019
-ms.author: cabailey
-ms.openlocfilehash: f4714dd09ada01f1adaa9081819e836601599a53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935262"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563734"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>A vadászat során az Azure Sentinel használatával nyomon követheti az adatgyűjtést
 
@@ -124,7 +118,7 @@ A vizsgálati gráf használatára vonatkozó utasításokért tekintse meg a r�
 Az incidensen belüli könyvjelző megtekintéséhez navigáljon a **Sentinel** > **veszélyforrások kezelése** > **incidensek** elemre, és válassza ki az incidenst a könyvjelzővel. Válassza a **teljes részletek megtekintése**lehetőséget, majd kattintson a **könyvjelzők** fülre.
 
 > [!TIP]
-> A parancssáv **incidensek (előzetes verzió)** lehetőségének alternatívájaként a menüsávon a helyi menü ( **..** .) segítségével választhatja ki az **új incidens létrehozására**, **a meglévő incidenshez való hozzáadására**és eltávolítására szolgáló beállításokat.  **incidens**. 
+> A parancssáv **incidensek (előzetes verzió)** lehetőségének alternatívájaként a menüsávon a helyi menü ( **..** .) segítségével választhatja ki az **új incidens létrehozására**, **a meglévő incidenshez való hozzáadására**és **az incidensből való eltávolításra**vonatkozó beállításokat. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Könyvjelzővel ellátott adatnaplók megtekintése
 

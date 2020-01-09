@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan segíthet a VMware Monitoring-megoldás a napl�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dc453ad42312bb096aed1356d376b0906870a7b0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ac735c9131ebe7b7273d93a927cb4d4a8be24508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399196"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
 
@@ -43,7 +43,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
 ### <a name="configure-syslog-collection"></a>Syslog-gyűjtemény konfigurálása
 1. Állítsa be a syslog-továbbítást a VSphere. A syslog-továbbítás beállításával kapcsolatos részletes információkért lásd: [a syslog konfigurálása ESXi 5,0 és újabb rendszereken (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Lépjen az **ESXi-gazdagép konfigurációja** > **szoftverek** > **Speciális beállítások** > **syslog**lehetőségre.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Például `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
+1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Például: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
 1. Nyissa meg az ESXi-gazdagép tűzfalát a syslog számára. **ESXi-gazdagép konfigurációja** > **szoftver** > **biztonsági profil** > **tűzfal** és nyitott **Tulajdonságok**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
@@ -51,7 +51,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. A vSphere-konzolon ellenőrizze, hogy a syslog megfelelően van-e beállítva. Erősítse meg az ESXI-gazdagépen, hogy a **1514** -es port konfigurálva van.
 1. Töltse le és telepítse a Linux rendszerhez készült Log Analytics-ügynököt a Linux-kiszolgálón. További információkért tekintse meg a [Linux rendszerhez készült log Analytics-ügynök dokumentációját](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. A Linux rendszerhez készült Log Analytics-ügynök telepítése után nyissa meg a/etc/opt/Microsoft/omsagent/sysconf/omsagent.d könyvtárat, és másolja a vmware_esxi. conf fájlt a/etc/opt/Microsoft/omsagent/conf/omsagent.d könyvtárba, és a tulajdonos/csoport módosítása és a fájl engedélyei. Példa:
+1. A Linux rendszerhez készült Log Analytics-ügynök telepítése után nyissa meg a/etc/opt/Microsoft/omsagent/sysconf/omsagent.d könyvtárat, és másolja a vmware_esxi. conf fájlt a/etc/opt/Microsoft/omsagent/conf/omsagent.d könyvtárba, és módosítsa a fájl tulajdonosát, csoportját és engedélyeit. Példa:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
@@ -76,7 +76,7 @@ A VMware Monitoring megoldás különféle teljesítménymutatókat és adatokat
 
 Az alábbi táblázat az adatgyűjtés módszereit és az adatok gyűjtésének egyéb részleteit mutatja be.
 
-| Platform | Linux-Log Analytics ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
+| platform | Linux-Log Analytics ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 percenként |
 
@@ -89,7 +89,7 @@ A következő táblázat példákat mutat be a VMware Monitoring megoldás álta
 | EventTime_t |az esemény bekövetkezésekor bekövetkezett idő |
 | HostName_s |ESXi-gazdagép neve |
 | Operation_s |virtuális gép létrehozása vagy virtuális gép törlése |
-| ProcessName_s |Esemény neve |
+| ProcessName_s |esemény neve |
 | ResourceId_s |a VMware-gazdagép neve |
 | ResourceLocation_s |VMware |
 | ResourceName_s |VMware |

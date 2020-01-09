@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Node.js-webalkalmazás létrehozása a JavaScript SDK használatával az Azure Cosmos DB SQL API-adatok kezeléséhez'
+title: 'Oktatóanyag: Node. js-Webalkalmazás létrehozása Azure Cosmos DB JavaScript SDK-val az SQL API-alapú adatkezeléshez'
 description: Ez a Node. js-oktatóanyag azt ismerteti, hogyan használható a Microsoft Azure Cosmos DB a Microsoft Azure App Service Web Apps funkciójában tárolt Node. js Express-webalkalmazásból származó adatok tárolására és elérésére.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a67870cc2494321aa739d6f59f18651013b7403b
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441265"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node. js-Webalkalmazás létrehozása a JavaScript SDK használatával az SQL API-fiók kezeléséhez Azure Cosmos DB 
 

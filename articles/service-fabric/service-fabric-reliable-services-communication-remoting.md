@@ -1,25 +1,16 @@
 ---
-title: Szolgáltatás távelérése a C# Service Fabric használatával | Microsoft Docs
+title: Szolgáltatás távelérése a C# Service Fabric használatával
 description: Service Fabric a távelérés lehetővé teszi, hogy az ügyfelek C# és szolgáltatások távoli eljáráshívás használatával kommunikáljanak a szolgáltatásokkal.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: BharatNarasimman
-ms.assetid: abfaf430-fea0-4974-afba-cfc9f9f2354b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 1654a7be8c3aba4efa6fcf96024ea987e2957e73
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433884"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérése C# a Reliable Services
 

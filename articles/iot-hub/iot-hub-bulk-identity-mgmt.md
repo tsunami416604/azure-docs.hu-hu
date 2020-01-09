@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429256"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub eszköz-identitások tömeges importálása és exportálása
 
@@ -91,7 +91,7 @@ Az összes IoT Hub-szinten egyszerre csak 1 aktív eszköz-importálási vagy-ex
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
-A **ExportDevicesAsync** metódus használatával exportálhatja egy IoT hub-identitás teljes egészét egy [Azure Storage](../storage/index.yml) blob-tárolóba egy [közös hozzáférési aláírás](../storage/common/storage-security-guide.md#authorization)használatával.
+A **ExportDevicesAsync** metódus használatával exportálhatja egy IoT hub-identitás teljes egészét egy Azure Storage blob-tárolóba egy közös hozzáférési aláírás (SAS) használatával. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md).
 
 Ez a módszer lehetővé teszi, hogy megbízható biztonsági másolatokat hozzon létre az eszköz adatairól egy Ön által vezérelt blob-tárolóban.
 
@@ -419,7 +419,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan végezheti el a tömeges műveleteket egy IoT hub azonosító-beállításjegyzékében. Számos művelet, többek között az eszközök egyik központból a másikba való áthelyezésének módja, a [IoT hub-ban regisztrált eszközökön található, a IoT hub klónozásának módja](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
 

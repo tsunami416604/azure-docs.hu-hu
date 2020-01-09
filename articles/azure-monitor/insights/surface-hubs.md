@@ -4,15 +4,15 @@ description: A Surface Hub megoldással nyomon követheti a felszíni hubok áll
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400897"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Felszíni hubok figyelése Azure Monitorekkel az állapotuk nyomon követéséhez
 
@@ -47,7 +47,7 @@ Az Intune egy Microsoft-termék, amely lehetővé teszi, hogy központilag felü
 5. Mentse a szabályzatot.
 6. Társítsa a szabályzatot a megfelelő eszközök csoportjához.
 
-   ![Intune-szabályzat](./media/surface-hubs/intune.png)
+   ![Intune-házirend](./media/surface-hubs/intune.png)
 
 Ezután az Intune szinkronizálja a Log Analytics beállításait a célcsoport eszközeivel, majd regisztrálja őket a Log Analytics munkaterületen.
 

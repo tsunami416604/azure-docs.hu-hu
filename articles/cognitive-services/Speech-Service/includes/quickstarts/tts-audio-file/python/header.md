@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 49e7481a2a7f6d1bcd17321551601cb1f084e4c0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d6c30205aecaa87fffbd9b1b947d90fafe6ff678
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818076"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468611"
 ---
 Ha szívesebben szeretne ugrani, tekintse meg vagy töltse le az összes <a href="https://aka.ms/speech/github-python">SPEECH SDK Python-mintát</a> a githubon. Ellenkező esetben kezdjük a kezdéssel.

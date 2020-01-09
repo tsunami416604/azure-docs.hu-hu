@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl Mesh alkalmazás | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl Mesh alkalmazás parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl Mesh alkalmazás
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A Service Fabric mesh alkalmazás-erőforrások kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 18cf1107ed86915f96dbc92d588a6ebedab530b4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 96f628cb1a54b0c68f81bbafea42e5b9313f42ec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901479"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645378"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh alkalmazás
 Alkalmazás erőforrásainak beolvasása és törlése.
@@ -30,7 +21,7 @@ Alkalmazás erőforrásainak beolvasása és törlése.
 | --- | --- |
 | delete | Törli az alkalmazás erőforrását. |
 | lista | Felsorolja az összes alkalmazás-erőforrást. |
-| megjelenítése | Lekéri az alkalmazás-erőforrást a megadott névvel. |
+| megjelenítés | Lekéri az alkalmazás-erőforrást a megadott névvel. |
 
 ## <a name="sfctl-mesh-app-delete"></a>sfctl Mesh-alkalmazás törlése
 Törli az alkalmazás erőforrását.

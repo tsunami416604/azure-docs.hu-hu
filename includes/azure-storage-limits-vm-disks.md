@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 12/25/2019
 ms.locfileid: "68669678"
 ---
 Több adatlemezt is csatolhat egy Azure-beli virtuális géphez. A virtuális gépek adatlemezei skálázhatósági és teljesítményi céljai alapján meghatározhatja a teljesítményre és a kapacitásra vonatkozó követelmények teljesítéséhez szükséges lemez számát és típusát.
@@ -20,14 +20,14 @@ Több adatlemezt is csatolhat egy Azure-beli virtuális géphez. A virtuális g�
 
 Az alábbi táblázat az erőforrások számának alapértelmezett és maximális korlátját mutatja régiónként/előfizetésben. A Managed Disks, a pillanatképek és a lemezképek száma nincs korlátozva erőforráscsoport esetén.  
 
-> | Resource | Alapértelmezett korlát  | Felső korlát |
+> | Erőforrás | Alapértelmezett korlát  | Felső korlát |
 > | --- | --- | --- |
-> | Standard szintű felügyelt lemezek | 50,000 | 50,000 |
-> | Standard SSD típusú felügyelt lemezek | 50,000 | 50,000 |
-> | Prémium szintű Managed Disks | 50,000 | 50,000 |
-> | Standard_LRS-Pillanatképek | 50,000 | 50,000 |
-> | Standard_ZRS-Pillanatképek | 50,000 | 50,000 |
-> | Felügyelt rendszerkép | 50,000 | 50,000 |
+> | Standard szintű felügyelt lemezek | 50 000 | 50 000 |
+> | Felügyelt lemezek standard SSD | 50 000 | 50 000 |
+> | Prémium szintű Managed Disks | 50 000 | 50 000 |
+> | Pillanatképek Standard_LRS | 50 000 | 50 000 |
+> | Pillanatképek Standard_ZRS | 50 000 | 50 000 |
+> | Felügyelt rendszerkép | 50 000 | 50 000 |
 
 * **Standard szintű Storage-fiókok esetén:** A standard szintű Storage-fiók maximális száma 20 000 IOPS. A standard Storage-fiókban lévő összes virtuálisgép-lemez teljes IOPS nem lépheti túl ezt a korlátot.
   

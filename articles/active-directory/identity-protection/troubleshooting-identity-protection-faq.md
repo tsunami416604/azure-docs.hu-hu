@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443571"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -42,6 +42,14 @@ A kockázatkezelési **megoldás** a **kockázatalapú szabályzat által vezér
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
+### <a name="why-is-a-user-is-at-risk"></a>Miért van kockázat a felhasználó számára?
+
+Ha Ön Azure AD Identity Protection ügyfél, lépjen a [kockázatos felhasználók](howto-identity-protection-investigate-risk.md#risky-users) nézetre, és kattintson a veszélyeztetett felhasználóra. A lap alján található "kockázati előzmények" lapon megjelenik az összes olyan esemény, amely a felhasználó kockázati változásához vezetett. Ha szeretné megtekinteni az összes kockázatos bejelentkezést a felhasználó számára, kattintson a "felhasználó kockázatos bejelentkezések" elemre. Ha meg szeretné tekinteni a felhasználó összes kockázati észlelését, kattintson a "felhasználó kockázati észlelése" elemre.
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hogyan szerezhetek be egy adott típusú észlelési jelentést?
+
+Lépjen a kockázati észlelések nézetre, és szűrje az "észlelés típusa" értéket. Ezután letöltheti ezt a jelentést a alkalmazásban. CSV vagy. JSON-formátum a felül található **Letöltés** gomb használatával. További információ [: How to: kivizsgálás kockázat](howto-identity-protection-investigate-risk.md#risk-detections).
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Miért nem tudom beállítani a saját kockázati szinteket az egyes kockázati észlelésekhez?
 
 Az Identity Protection kockázati szintjei az észlelés pontosságán és a felügyelt gépi tanuláson alapulnak. A felhasználók által megjelenített felhasználói élmény testreszabásához a rendszergazda belefoglalhat vagy kizárhat bizonyos felhasználókat/csoportokat a felhasználói kockázat és a bejelentkezési kockázati szabályzatok alapján.
@@ -49,6 +57,20 @@ Az Identity Protection kockázati szintjei az észlelés pontosságán és a fel
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Miért nem egyezik meg a bejelentkezés helye, ha a felhasználó valóban be van jelentkezve?
 
 Az IP térinformatikai leképezés az iparági szintű kihívás. Ha úgy érzi, hogy a bejelentkezési jelentésben szereplő hely nem felel meg a tényleges helynek, lépjen kapcsolatba a Microsoft ügyfélszolgálatával. 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Hogyan zárhatók ki bizonyos kockázati észlelések, mint a régi felhasználói felületen?
+
+Visszajelzéseket adhat a kockázati észlelésekről, ha a csatolt bejelentkezést sérültként vagy biztonságosként erősíti meg. A bejelentkezés során kapott visszajelzések a bejelentkezés során végzett összes észlelésre kiterjednek. Ha olyan észleléseket szeretne, amelyek nem kapcsolódnak a bejelentkezéshez, megadhatja a visszajelzéseket a felhasználói szinten. További információkért tekintse meg a következő cikket [: Hogyan lehet kockázati visszajelzést adni a Azure ad Identity Protection](howto-identity-protection-risk-feedback.md).
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Meddig mehetek vissza az időben, hogy megértsük, mi történik a felhasználóval?
+
+- A [kockázatos felhasználók](howto-identity-protection-investigate-risk.md#risky-users) nézet az összes korábbi bejelentkezés alapján jeleníti meg a felhasználó kockázatait. 
+- A kockázatos [bejelentkezések](howto-identity-protection-investigate-risk.md#risky-sign-ins) nézet a kockázatos jeleket mutatja az elmúlt 30 napban. 
+- A [kockázati észlelések](howto-identity-protection-investigate-risk.md#risk-detections) nézetben az elmúlt 90 napban elvégzett kockázati észlelések láthatók.
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Hogyan tudhatok meg többet egy adott észlelésről?
+
+Az összes kockázati észlelésről szóló cikkben a [Mi a kockázat](concept-identity-protection-risks.md#risk-types-and-detection). Ha többet szeretne megtudni az észlelésről, vigye a kurzort az észlelés melletti (i) szimbólumra az Azure Portalon.
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Hogyan működik az Identity Protection visszajelzési mechanizmusai?
 

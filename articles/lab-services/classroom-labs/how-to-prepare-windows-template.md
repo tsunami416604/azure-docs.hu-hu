@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: e8c0e67567bd5ddbfdd45762edd52112c1fd4c70
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897272"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428945"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
 
@@ -142,7 +142,7 @@ Ha a sablon számítógépének szüksége van az Office-ra, javasoljuk, hogy az
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>A Microsoft Office 365 frissítési csatorna módosítása
 
-Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket.  Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét.  A frissítési csatorna URL-címei a frissítési [csatorna módosítása után találhatók, miután engedélyezte az Office 365-ügyfelek számára a frissítések fogadását Configuration Managerról](https://docs.microsoft.com/sccm/sum/deploy-use/manage-office-365-proplus-updates#change-the-update-channel-after-you-enable-office-365-clients-to-receive-updates-from-configuration-manager). Az alábbi példa bemutatja, hogyan állíthatja be az Office 365-et a havi frissítési csatorna használatára.
+Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket.  Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét.  A frissítési csatorna URL-címei a következő helyen találhatók: [a frissítési csatorna módosítása, miután engedélyezte az Office 365-ügyfelek számára a frissítések fogadását Configuration Manager]/ConfigMgr/Sum/Deploy-use/Manage-Office-365-ProPlus-Updates # bkmk_channel). Az alábbi példa bemutatja, hogyan állíthatja be az Office 365-et a havi frissítési csatorna használatára.
 
 ```powershell
 # Update to the Office 365 Monthly Channel

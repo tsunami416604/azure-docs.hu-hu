@@ -1,20 +1,21 @@
 ---
 title: Kapcsolódás az Office 365-felhasználókhoz
-description: Felhasználói profilok kezelése az Office 365-felhasználók REST API-kkal és Azure Logic Apps
+description: A profilokat az Office 365 felhasználói profiljaiban lekérdező és kezelő feladatok és munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789519"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666856"
 ---
-# <a name="get-started-with-the-office-365-users-connector"></a>Ismerkedés az Office 365 felhasználói összekötővel
+# <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Az Office 365-felhasználók profiljainak lekérése és kezelése Azure Logic Apps használatával
+
 Kapcsolódjon az Office 365-felhasználókhoz profilok, keresés a felhasználók és egyebek között. Az Office 365-felhasználókkal a következőket teheti:
 
 * Az Office 365-felhasználóktól kapott adatok alapján hozza létre üzleti folyamatát. 
@@ -23,7 +24,8 @@ Kapcsolódjon az Office 365-felhasználókhoz profilok, keresés a felhasználó
 A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
 
 ## <a name="create-a-connection-to-office-365-users"></a>Office 365-felhasználók közötti kapcsolatok létrehozása
-Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, be kell jelentkeznie az Office 365 felhasználói fiókjába, és engedélyeznie kell a Logic apps számára a fiókhoz való csatlakozást.
+
+Ha hozzáadja ezt az összekötőt a logikai alkalmazásokhoz, be kell jelentkeznie az Office 365 felhasználói fiókjába, hogy Azure Logic Apps tud csatlakozni a fiókjához.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 
@@ -33,7 +35,8 @@ A kapcsolatok létrehozása után adja meg az Office 365-felhasználók tulajdon
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/officeusers/)megjelenő korlátokat is.
+Az eseményindítók, műveletek és korlátok részletes technikai részleteiért lásd az összekötők feladatainak leírását, és tekintse át az [összekötő hivatkozási oldalát](/connectors/officeusers/).
 
-## <a name="more-connectors"></a>További összekötők
-Lépjen vissza az API-k [listájára](apis-list.md).
+## <a name="next-steps"></a>Következő lépések
+
+* További Logic Apps- [Összekötők](apis-list.md) megismerése

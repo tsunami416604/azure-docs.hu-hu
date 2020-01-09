@@ -1,19 +1,20 @@
 ---
-title: Mi a Microsoft Flow, a Logic Apps, a functions és a webjobs? – Azure
+title: Integrációs és automatizálási platform lehetőségei az Azure-ban
 description: 'Az integrációs feladatokhoz optimalizált Microsoft Cloud Services összehasonlítása: Microsoft Flow, Logic Apps, functions és webjobs.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409837"
 ---
-# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Mi a Microsoft Flow, a Logic Apps, a functions és a webjobs?
+# <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Válassza ki a megfelelő integrációs és automatizálási szolgáltatásokat az Azure-ban
 
-Ez a cikk a következő Microsoft-felhőt hasonlítja össze 
+Ez a cikk összehasonlítja az alábbi Microsoft-felhőszolgáltatásokat:
+
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -36,10 +37,10 @@ Az alábbi táblázat segítségével meghatározhatja, hogy Microsoft Flow vagy
 |  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Felhasználók |Irodai dolgozók, üzleti felhasználók, SharePoint-adminisztrátorok |Professzionális integrátorok és fejlesztők, informatikai szakemberek |
-| Forgatókönyvek |Önkiszolgáló |Speciális integrációk |
+| Alkalmazási helyzetek |Önkiszolgáló |Speciális integrációk |
 | Kialakítási eszköz |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
 | Alkalmazások életciklus-felügyelete (ALM) |Tervezés és tesztelés nem éles környezetekben, előléptetés éles környezetben, ha készen áll |Azure DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| A rendszergazda teendői |Microsoft Flow környezetek és adatvesztés-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [Microsoft flow felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
+| Rendszergazdai feladatok |Microsoft Flow környezetek és adatvesztés-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [Microsoft flow felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
 | Biztonság |Office 365 biztonsági és megfelelőségi naplók, DLP, inaktív adatok [titkosítása](https://wikipedia.org/wiki/Data_at_rest#Encryption) bizalmas adatokhoz |Az Azure biztonsági garanciája: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
@@ -53,11 +54,11 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 |  | Tartós függvények | Logic Apps |
 | --- | --- | --- |
 | Fejlesztés | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
-| Kapcsolatok | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
+| Kapcsolódás | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | Műveletek | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| Figyelés | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| Kezelés | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
-| Végrehajtási környezet | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak a felhőben fut|
+| Monitoring | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| Felügyelet | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| Végrehajtási környezet | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
 
 <a name="function"></a>
 
@@ -77,12 +78,12 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 
 |  | Functions | WebJobs WebJobs SDK-val |
 | --- | --- | --- |
-|[Kiszolgáló nélküli alkalmazásmodell](https://azure.microsoft.com/solutions/serverless/) [automatikus skálázással](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
+|[Kiszolgáló nélküli alkalmazásmodell](https://azure.microsoft.com/solutions/serverless/)[automatikus skálázással](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Fejlesztése és tesztelés böngészőben](functions-create-first-azure-function.md) |✔||
 |[Használatalapú fizetés](functions-scale.md#consumption-plan)|✔||
 |[Integráció a Logic Apps szolgáltatással](functions-twitter-email.md)|✔||
 | Kiváltó események |[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Fájlrendszer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Támogatott nyelvek  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
+| Támogatott nyelvek  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
 |Csomagkezelők|NPM és NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> a webjobs (a webjobs SDK nélkül) C#támogatja a következőt: Java, JavaScript, bash,. cmd,. bat, PowerShell, php, írógéppel, Python és sok más. Ez nem egy átfogó lista. A WebJobs képes bármilyen programot vagy szkriptet futtatni, amely képes futni az App Service tesztkörnyezetben.

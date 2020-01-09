@@ -3,12 +3,12 @@ title: 'Rövid útmutató: terv létrehozása a PowerShell-lel'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a PowerShell használatával.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436635"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése a PowerShell-lel
 
@@ -379,7 +379,9 @@ Miután közzétett egy tervet a PowerShell használatával, hozzárendelhető e
      > [!IMPORTANT]
      > A tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
-## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
 Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori művelet az összetevők már szükségtelen erőforrásai esetén. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. A terv-hozzárendelés eltávolításához használja a `Remove-AzBlueprintAssignment` parancsmagot:
 

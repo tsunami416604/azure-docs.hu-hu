@@ -1,27 +1,21 @@
 ---
-title: Az Azure Sentinel jegyzetfüzetek használatával történő vadászati képességei | Microsoft Docs
+title: Jegyzetfüzetek használata az Azure Sentinel használatával a biztonsági vadászathoz
 description: Ez a cikk bemutatja, hogyan használhatók a jegyzetfüzetek az Azure Sentinel vadászati képességeivel.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/25/2019
-ms.author: rkarlin
-ms.openlocfilehash: 1b78f6f0773e114a4dda536213e2684d8fbd706d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 44a37fb8d06040b0d872f15ab25bdd2c7ff685b8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483273"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563700"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-jegyzetfüzetek használata biztonsági fenyegetések vadászatához
 
@@ -68,7 +62,7 @@ Az Azure Sentinelből közvetlenül is futtathat egy jegyzetfüzetet, vagy az ö
  
 1. A Azure Portal navigáljon az **Azure sentinel** > **veszélyforrások kezelése** > **jegyzetfüzetekhez**, ahol láthatja az Azure Sentinel által biztosított jegyzetfüzeteket. 
 
-2. Válassza az egyéni jegyzetfüzetek lehetőséget a leírások, a szükséges adattípusok és az adatforrások olvasásához. Például:
+2. Válassza az egyéni jegyzetfüzetek lehetőséget a leírások, a szükséges adattípusok és az adatforrások olvasásához. Példa:
     
     > [!div class="mx-imgBorder"]
     > ![notebook elindítása](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -92,7 +86,7 @@ Ez az eljárás létrehoz egy Azure Notebooks projektet az Ön számára, amely 
 
    ![Jegyzetfüzet importálása](./media/notebooks/sentinel-create-project.png)
 
-4. Nyissa meg az imént létrehozott projektet, majd nyissa meg a **jegyzetfüzetek** mappát a jegyzetfüzetek megtekintéséhez. Például:
+4. Nyissa meg az imént létrehozott projektet, majd nyissa meg a **jegyzetfüzetek** mappát a jegyzetfüzetek megtekintéséhez. Példa:
 
    ![Adattár importálása](./media/notebooks/sentinel-open-notebook1.png)
 

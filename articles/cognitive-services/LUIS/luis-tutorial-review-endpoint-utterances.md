@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: a végpont hosszúságú kimondott szöveg áttekintése – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Fejlesztheti az alkalmazás előrejelzéseit a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
+description: Ebben az oktatóanyagban a Luis nem biztos, hogy a Luis HTTP-végponton keresztül kapott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejleszti az alkalmazások előrejelzéseit. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447820"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban a Luis HTTPS-végponton keresztül fogadott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejlesztheti az alkalmazás-előrejelzéseket, hogy a LUIS nem biztos benne. Tekintse át a végpontok hosszúságú kimondott szöveg az ütemezett LUIS-karbantartás rendszeres részeként.
@@ -28,8 +28,6 @@ Ez a felülvizsgálati folyamat lehetővé teszi a LUIS számára az alkalmazás
 * Rendszeresen át kell tekinteni.
 
 A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavíthatja a kimondott szöveg előrejelzett szándékát.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -46,7 +44,7 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 Egy alkalmazás importálásához kövesse az alábbi lépéseket.
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
 
 1. Az [előnézeti Luis-portálon](https://preview.luis-ai)importálja a. JSON fájlt egy új alkalmazásba.
 

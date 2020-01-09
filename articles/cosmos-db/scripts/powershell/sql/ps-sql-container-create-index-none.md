@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell szkript – egy Azure Cosmos-fiókban kikapcsolt tároló indexelésének létrehozása
+title: PowerShell-parancsfájl index nélküli tároló létrehozásához egy Azure Cosmos-fiókban
 description: Azure PowerShell parancsfájl-minta – egy Azure Cosmos-fiókban kikapcsolt tároló indexelésének létrehozása
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: d216aa7eaa25ee18c7b5e962309e2a08f11df284
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 13bec89b0c6f713a4b8c66f7bab6cda3d6513ef9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441369"
 ---
 # <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Egy Azure Cosmos-fiókban kikapcsolt tároló indexelésének létrehozása a PowerShell használatával
 
@@ -39,12 +39,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
+| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
 |**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

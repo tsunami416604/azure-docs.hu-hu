@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor fo
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: e9e5504125920cedaf383f8fa4299a4b1b1d60ed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 40d89dd675e063283d1ed90cf145575b8164e4e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400691"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése hibrid környezetekhez
 
@@ -42,7 +42,7 @@ A feladat elvégzéséhez szükséges lépéseket a következőképpen összegzi
 
 ## <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepítése Windows rendszeren
 
-A függőségi ügynököt manuálisan is telepítheti a Windows rendszerű számítógépeken `InstallDependencyAgent-Windows.exe` futtatásával. Ha bármilyen lehetőség nélkül futtatja ezt a végrehajtható fájlt, elindul egy telepítővarázsló, amelyet követve interaktív módon telepítheti az ügynököt.
+A függőségi ügynököt manuálisan is telepítheti a Windows rendszerű számítógépeken `InstallDependencyAgent-Windows.exe`futtatásával. Ha bármilyen lehetőség nélkül futtatja ezt a végrehajtható fájlt, elindul egy telepítővarázsló, amelyet követve interaktív módon telepítheti az ügynököt.
 
 >[!NOTE]
 >Az ügynök telepítéséhez vagy eltávolításához *rendszergazdai* jogosultságok szükségesek.
@@ -157,7 +157,7 @@ Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, t
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version` parancsot. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-and-execute-a-template"></a>Sablon létrehozása és végrehajtása
 
@@ -224,7 +224,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
     ```
    A figyelés engedélyezése után körülbelül 10 percet is igénybe vehet, mielőtt megtekintheti a hibrid számítógép állapotát és mérőszámait.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="vm-doesnt-appear-on-the-map"></a>A virtuális gép nem jelenik meg a térképen
 

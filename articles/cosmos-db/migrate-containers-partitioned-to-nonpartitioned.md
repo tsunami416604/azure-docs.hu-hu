@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445268"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
 
@@ -117,6 +117,14 @@ A dokumentumok újraparticionálásával kapcsolatos teljes minta a [.net-mintá
 Azure Cosmos DB SDK-k (például v2. x. x és v1. x. x) régebbi verziója nem támogatja a rendszer által definiált partíciós kulcs tulajdonságot. Tehát ha egy régebbi SDK-ból olvassa be a tároló definícióját, nem tartalmaz partíciós kulcs definícióját, és ezek a tárolók ugyanúgy működnek, mint korábban. Az SDK-k régebbi verziójával létrehozott alkalmazások továbbra is a nem particionált módon működnek, mivel nem módosulnak. 
 
 Ha egy áttelepített tárolót az SDK legújabb/v3 verziója használ, és megkezdi a rendszer által definiált partíciós kulcs feltöltését az új dokumentumokon belül, akkor a régebbi SDK-k által már nem férhet hozzá (olvasási, frissítési, törlési, lekérdezési) ilyen dokumentumokat.
+
+## <a name="known-issues"></a>Ismert problémák
+
+**A v3 SDK használatával a partíciós kulcs nélkül beszúrt elemek száma nagyobb átviteli sebességgel járhat**
+
+Ha a v2 SDK-val beszúrt elemek esetében a v3 SDK-ból kérdez le, vagy a v3 SDK-val `PartitionKey.None` paraméterrel beszúrt elemeket, akkor a Count lekérdezés több RU/s-t is felhasználhat, ha a FeedOptions a `PartitionKey.None` paramétert megadja. Azt javasoljuk, hogy ne adja meg a `PartitionKey.None` paramétert, ha nem szúr be más elemet partíciós kulccsal.
+
+Ha az új elemek a partíciós kulcs különböző értékeivel vannak beszúrva, akkor az ilyen elemek számának lekérdezése a `FeedOptions` megfelelő kulcsának átadásával nem fog problémát okozni. Miután új dokumentumokat szúrt be a partíciós kulccsal, ha csak a dokumentumok darabszámát kell lekérdezni a partíciós kulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-t eredményezhet a normál particionált gyűjteményekhez hasonló módon.
 
 ## <a name="next-steps"></a>Következő lépések
 

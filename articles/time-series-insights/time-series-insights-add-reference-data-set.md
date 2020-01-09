@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d1bbfb43c6e2319706f5eeac15fa1d60791b62b9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460303"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
 
@@ -68,9 +68,9 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
    Ha hiba történik az adatértékek elemzésekor, a hiba az oldal alján piros színnel jelenik meg, például `CSV parsing error, no rows extracted`.
 
-1. Az adatgyűjtés sikeres elemzése után egy adatrács jelenik meg, amely megjeleníti az adatoszlopokat és az azokat jelképező sorokat.  A pontosság érdekében tekintse át az adatrácsot.
+1. Az adatgyűjtés sikeres elemzése után egy adatrács jelenik meg, amely megjeleníti az adatoszlopokat és az azokat jelképező sorokat. A pontosság érdekében tekintse át az adatrácsot.
 
-   [![hivatkozási érték hozzáadása](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
+   [![felülvizsgálati hivatkozási adatai](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
 1. Tekintse át az egyes oszlopokat a feltételezett adattípus megjelenítéséhez, és szükség esetén módosítsa az adattípust.  Válassza ki az adattípus szimbólumát az oszlop fejlécében: **#** dupla (numerikus), **t | F** logikai vagy **ABC** karakterlánchoz.
 

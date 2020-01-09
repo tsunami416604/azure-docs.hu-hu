@@ -3,19 +3,19 @@ title: Komplex veszélyforrások elleni védelem Azure Cosmos DB
 description: Ismerje meg, hogyan biztosítja a Azure Cosmos DB az inaktív adatok titkosítását és megvalósítását.
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555030"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445531"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Komplex veszélyforrások elleni védelem Azure Cosmos DB
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
 
 A Azure Cosmos DB komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel Azure Cosmos DB fiókok eléréséhez vagy kihasználásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére, akár biztonsági szakértő nélkül, akár a központi biztonsági figyelő rendszerekkel való integrációhoz.
 
@@ -27,6 +27,14 @@ A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáli�
 > * A Azure Cosmos DB komplex veszélyforrások elleni védelme jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
 
 A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztikai naplózás engedélyezése Azure Cosmos DBban](https://docs.microsoft.com/azure/cosmos-db/logging), amely maga az adatbázison naplózza a műveleteket, beleértve a szifiliszi műveleteket az összes dokumentumon, tárolón és adatbázison.
+
+## <a name="threat-types"></a>Fenyegetéstípusok
+
+A Azure Cosmos DB komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. Jelenleg a következő riasztásokat indítja el:
+
+- **Hozzáférés szokatlan helyekről**: Ez a riasztás akkor aktiválódik, ha módosul a hozzáférési minta egy Azure Cosmos-fiókhoz, ahol valaki egy szokatlan földrajzi helyről kapcsolódott a Azure Cosmos db végponthoz. Bizonyos esetekben a riasztás jogszerű műveletet észlel, ami egy új alkalmazás vagy fejlesztői karbantartási művelet. Más esetekben a riasztás rosszindulatú műveletet észlel egy korábbi alkalmazotttól, külső támadótól stb.
+
+- **Szokatlan adatok kinyerése**: Ez a riasztás akkor aktiválódik, ha az ügyfél szokatlan adatmennyiséget nyer ki egy Azure Cosmos db fiókból. Ez lehet annak a tünete, hogy egyes adatok kiszűrése a fiókban tárolt adatok külső adattárba történő átviteléhez.
 
 ## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
@@ -41,7 +49,7 @@ A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztika
 3. A **speciális biztonsági** beállítások panelen:
 
     * Kattintson a komplex **veszélyforrások elleni védelem** lehetőségre a **beállításához.**
-    * Kattintson a **Save (Mentés** ) gombra az új vagy frissített összetett veszélyforrások elleni védelmi szabályzat mentéséhez.   
+    * Az új vagy frissített Advanced Threat Protection-szabályzat mentéséhez kattintson a **Mentés** lehetőségre.   
 
 ### <a name="set-up-atp-using-rest-api"></a>ATP beállítása REST API használatával
 
@@ -101,5 +109,5 @@ A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [diagnosztikai naplózásról Azure Cosmos db](monitor-cosmos-db.md#diagnostic-settings)
+* További információ a [diagnosztikai naplózásról Azure Cosmos db](cosmosdb-monitor-resource-logs.md)
 * További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

@@ -1,42 +1,42 @@
 ---
 title: 'Azure ExpressRoute: figyelés, mérőszámok és riasztások'
-description: Ez az oldal ismerteti az ExpressRoute monitorozása
+description: Ez az oldal a ExpressRoute figyelésével kapcsolatos információkat tartalmaz
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436918"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
 
-Ez a cikk segít megérteni a ExpressRoute-monitorozás, mérőszámok és riasztások az Azure Monitor használatával. Az Azure Monitor riasztási, az összes Azure diagnosztikai naplók egy helyen érheti minden metrika.
+Ez a cikk segít megérteni a ExpressRoute-figyelést, metrikákat és riasztásokat a Azure Monitor használatával. Azure Monitor az összes Azure-beli mérőszámok, riasztások és diagnosztikai naplók egyikének leállítása.
  
 >[!NOTE]
->Használatával **klasszikus metrikák** nem ajánlott.
+>A **klasszikus metrikák** használata nem ajánlott.
 >
 
 ## <a name="expressroute-metrics"></a>ExpressRoute metrikák
 
-A **metrikák**megtekintéséhez navigáljon a *Azure monitor* lapra, és kattintson a *metrikák*elemre. Az **ExpressRoute** -metrikák megtekintéséhez a *ExpressRoute típusú áramköröket*. **Global REACH** mérőszámok megtekintéséhez válassza az erőforrás típusa ExpressRoute- *áramkörök* lehetőséget, és válasszon ki egy Global REACH engedélyezett ExpressRoute-áramköri erőforrást. A **közvetlen ExpressRoute** -metrikák megtekintéséhez *ExpressRoute-portok*alapján szűrheti az erőforrás típusát. 
+A **metrikák**megtekintéséhez navigáljon a *Azure monitor* lapra, és kattintson a *metrikák*elemre. Az **ExpressRoute** -metrikák megtekintéséhez a szűrés erőforrás típusú *ExpressRoute-áramkörök*alapján. **Global REACH** mérőszámok megtekintéséhez válassza az erőforrás típusa ExpressRoute- *áramkörök* lehetőséget, és válasszon ki egy Global REACH engedélyezett ExpressRoute-áramköri erőforrást. A **közvetlen ExpressRoute** -metrikák megtekintéséhez *ExpressRoute-portok*alapján szűrheti az erőforrás típusát. 
 
 Ha kijelöl egy mérőszámot, a rendszer az alapértelmezett összesítést alkalmazza. Igény szerint a felosztást is alkalmazhatja, amely a metrikát különböző dimenziókkal jeleníti meg.
 
 ### <a name="available-metrics"></a>Elérhető metrikák
 |**Metrika**|**Kategória**|**Dimenzió (k)**|**Szolgáltatás (ok)**|
 | --- | --- | --- | --- |
-|ARP rendelkezésre állása|Rendelkezésre állás|<ui><li>Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Peering Type (magán/nyilvános/Microsoft)</ui></li>|ExpressRoute|
-|BGP rendelkezésre állása|Rendelkezésre állás|<ui><li> Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus</ui></li>|ExpressRoute|
-|BitsInPerSecond|Adatforgalom|<ui><li> Peering Type (ExpressRoute)</ui></li><ui><li>Hivatkozás (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Adatforgalom| <ui><li>Peering Type (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>Közvetlen ExpressRoute</ui></li> |
-|GlobalReachBitsInPerSecond|Adatforgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
-|GlobalReachBitsOutPerSecond|Adatforgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
+|ARP rendelkezésre állása|Elérhetőség|<ui><li>Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Peering Type (magán/nyilvános/Microsoft)</ui></li>|ExpressRoute|
+|BGP rendelkezésre állása|Elérhetőség|<ui><li> Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus</ui></li>|ExpressRoute|
+|BitsInPerSecond|Forgalom|<ui><li> Peering Type (ExpressRoute)</ui></li><ui><li>Hivatkozás (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Forgalom| <ui><li>Peering Type (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>Közvetlen ExpressRoute</ui></li> |
+|GlobalReachBitsInPerSecond|Forgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
+|GlobalReachBitsOutPerSecond|Forgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Globális elérhetőség|
 |AdminState|Fizikai kapcsolat|Hivatkozás|ExpressRoute Direct|
 |LineProtocol|Fizikai kapcsolat|Hivatkozás|ExpressRoute Direct|
 |RxLightLevel|Fizikai kapcsolat|<ui><li>Hivatkozás</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
@@ -51,13 +51,13 @@ Ha kijelöl egy mérőszámot, a rendszer az alapértelmezett összesítést alk
 
 A mérőszámokat megtekintheti egy adott ExpressRoute-áramkörön található összes társon.
 
-![Kapcsolatcsoport metrikák](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
+![áramköri metrikák](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
 ### <a name="bits-in-and-out---metrics-per-peering"></a>BITS be-és kimenő metrikák
 
-Magánhálózati, nyilvános és a Microsoft a társviszony-létesítés bit/másodperc metrikáinak megtekintéséhez.
+A privát, nyilvános és Microsoft-partnerek mérőszámait BITS/másodpercben tekintheti meg.
 
-![Társviszony-létesítés metrika](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
+![metrikák felhasználónként](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
 ### <a name="bgp-availability---split-by-peer"></a>BGP rendelkezésre állása – megosztás társ szerint  
 
@@ -103,36 +103,36 @@ Megtekintheti a TX-fény szintjét (a ExpressRoute közvetlen port által **köz
 
 ![er Direct line Rx fény szintje](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
 
-## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Az ExpressRoute-átjáró kapcsolatok bit/másodperc
+## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute bit/másodpercben
 
-![Gateway-kapcsolatok](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
+![átjáró kapcsolatai](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
-## <a name="alerts-for-expressroute-gateway-connections"></a>Az ExpressRoute-átjáró kapcsolatok kapcsolatos riasztások
+## <a name="alerts-for-expressroute-gateway-connections"></a>Riasztások a ExpressRoute-átjáró kapcsolataihoz
 
-1. Annak érdekében, hogy a riasztások konfigurálásához lépjen **Azure Monitor**, majd kattintson a **riasztások**.
+1. A riasztások konfigurálásához navigáljon **Azure monitor**, majd kattintson a **riasztások**elemre.
 
    ![riasztások](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. Kattintson a **+ cél kiválasztása** , és válassza ki az ExpressRoute-átjáró kapcsolati erőforrás.
+2. Kattintson a **+ cél kiválasztása** elemre, és válassza ki a ExpressRoute-átjáróhoz tartozó kapcsolatok erőforrását.
 
-   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
-3. A riasztás részleteinek megadása.
+   ![cél]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+3. Adja meg a riasztás részleteit.
 
-   ![Műveletcsoport](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![műveleti csoport](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
-4. Határozza meg, és adja hozzá a műveleti csoport.
+4. Adja meg és adja hozzá a műveleti csoportot.
 
-   ![Műveletcsoport hozzáadása](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![műveleti csoport hozzáadása](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
-## <a name="alerts-based-on-each-peering"></a>Minden társviszony-létesítés alapuló riasztások
+## <a name="alerts-based-on-each-peering"></a>Riasztások az egyes társak alapján
 
  ![mi](./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg)
 
-## <a name="configure-alerts-for-activity-logs-on-circuits"></a>A Kapcsolatcsoportok tevékenységeket tartalmazó naplók riasztások konfigurálása
+## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Riasztások konfigurálása a tevékenységi naplókhoz az áramkörön
 
-Az a **riasztási feltételek**, választhat **tevékenységnapló** a jel típusa, és válassza ki a jel.
+A **riasztási feltételek**között kiválaszthatja a jel típusa **tevékenység naplóját** , és kiválaszthatja a jelet.
 
-  ![egy másik](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
+  ![másik](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
 ## <a name="next-steps"></a>Következő lépések
 

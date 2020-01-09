@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429122"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Üzenetek bővítése az eszközről a felhőbe IoT Hub üzenetekhez
 
@@ -54,7 +54,7 @@ Az üzenetek bármilyen, [IoT hub üzenet-útválasztás](iot-hub-devguide-messa
 
 Bővítheti az olyan üzenetekhez tartozó bővítéseket, amelyek a IoT Hub beépített végpontján, illetve az olyan üzeneteknél, amelyek az Azure Blob Storage-hoz, egy Service Bus-várólistához vagy egy Service Bus témakörhöz vannak irányítva.
 
-A Event Grid közzétett üzenetekhez bővítéseket adhat hozzá, ha Event Gridként kiválasztja a végpontot. A Event Grid-előfizetés alapján létrehozunk egy alapértelmezett útvonalat IoT Hub az eszköz telemetria. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Ha az Event Grid-előfizetést az eszköz telemetria hozta létre, akkor konfigurálhatja a dúsítást az Event Grid ENT [ponthoz. További információ: [IOT hub és Event Grid](iot-hub-event-grid.md).
+A Event Grid közzétett üzenetekhez bővítéseket adhat hozzá, ha Event Gridként kiválasztja a végpontot. A Event Grid-előfizetés alapján létrehozunk egy alapértelmezett útvonalat IoT Hub az eszköz telemetria. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az Event Grid-végpont dúsítását az Event Grid-előfizetés az eszköz telemetria való létrehozása után is konfigurálhatja. További információ: [IOT hub és Event Grid](iot-hub-event-grid.md).
 
 A dúsítások egy végponton vannak alkalmazva. Ha öt dúsítást ad meg egy adott végpontra vonatkozóan, a végponthoz tartozó összes üzenetet ugyanazzal az öt gazdagítva kell lepecsételni.
 
@@ -63,7 +63,7 @@ A dúsítást a következő módszerekkel lehet konfigurálni:
 | **Metódus** | **Parancs** |
 | ----- | -----| 
 | Portál | [Azure Portal](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
-| Azure CLI   | [az IOT hub Message-gazdagodás](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure parancssori felület (CLI)   | [az IOT hub Message-gazdagodás](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 
 Az üzenet-bővítések hozzáadása nem jár késéssel az üzenet-útválasztáshoz.
@@ -92,7 +92,7 @@ Az üzenetek dúsításának kipróbálásához tekintse meg az [üzenet gazdag�
 
 Az üzenetek dúsítása díjmentesen elérhető. Jelenleg akkor számítunk fel díjat, amikor üzenetet küld egy IoT Hubnak. Erre az üzenetre csak egyszer kell fizetnie, még akkor is, ha az üzenet több végpontra is érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg ezeket a cikkeket, ha további információt szeretne arról, hogyan lehet útválasztási üzeneteket IoT Hub:
 

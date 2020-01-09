@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438841"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-programok meghívása Azure Data Factory folyamatokból
 
@@ -105,7 +105,7 @@ Ebben a lépésben társítja a tárfiókot az adat-előállítójához. Az útm
 
    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Cserélje le a **fiók nevét** és a **fiók kulcsát** a Storage-fiókja nevére és hozzáférési kulcsára. A tárelérési kulcs lekéréséről [a tárfiók kezelését](../../storage/common/storage-account-manage.md#access-keys) ismertető szakasz tárelérési kulcsok megtekintéséről, másolásáról és ismételt létrehozásáról szóló részében olvashat.
+1. Cserélje le a **fiók nevét** és a **fiók kulcsát** a Storage-fiókja nevére és hozzáférési kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 
 1. A társított szolgáltatás üzembe helyezéséhez válassza a parancssáv **üzembe helyezés** elemét. A társított szolgáltatás sikeres üzembe helyezése után megjelenik a Draft-1 (Vázlat-1) ablak. Az ablak bal oldalán, fanézetben látható az **AzureStorageLinkedService** szolgáltatás.
 
@@ -324,7 +324,7 @@ Itt látható egy Spark-tevékenységgel rendelkező folyamat JSON-definíciója
 
 A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
 | név | A folyamatban szereplő tevékenység neve. | Igen |
 | leírás | A tevékenység működését leíró szöveg | Nem |
@@ -344,10 +344,10 @@ A Spark-tevékenység nem támogatja az olyan beágyazott parancsfájlokat, mint
 
 Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltatás által hivatkozott blob Storage-tárolóban. Ezután töltse fel a függő fájlokat a **entryFilePath**által jelölt gyökérmappa megfelelő almappájába. Töltse fel például a Python-fájlokat a pyFiles almappában és a jar-fájlokba a gyökérmappa tégelyek almappájába. Futásidőben a Data Factory szolgáltatás a következő mappastruktúrát várja a blob Storage-ban: 
 
-| Útvonal | Leírás | Kötelező | Típus |
+| Útvonal | Leírás | Szükséges | Type (Típus) |
 | ---- | ----------- | -------- | ---- |
 | . | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban. | Igen | Mappa |
-| &lt;felhasználó által definiált &gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Igen | Fájl |
+| &lt;felhasználó által definiált &gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Igen | File |
 | ./jars | A rendszer a mappában található összes fájlt feltölti és elhelyezi a fürt Java-osztályútvonal. | Nem | Mappa |
 | ./pyFiles | A rendszer az ebben a mappában található összes fájlt feltölti és elhelyezi a fürt PYTHONPATH. | Nem | Mappa |
 | ./files | A rendszer a mappában található összes fájlt feltöltötte és a végrehajtó munkakönyvtárba helyezi. | Nem | Mappa |

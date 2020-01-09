@@ -1,17 +1,17 @@
 ---
-title: Azure Resource Manager sablonok Azure Cosmos DB Cassandra API
+title: Resource Manager-sablonok a Azure Cosmos DB Cassandra API
 description: Azure Cosmos DB-Cassandra API létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: f09ab6958eb768895a2d16f129354074cb6f00c8
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 54d1c27148f20c89e17b343f0ac87295f978c140
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445275"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával
 
@@ -56,7 +56,7 @@ Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jele
 
 ## <a name="next-steps"></a>Következő lépések
 
-Íme néhány további erőforrás:
+Néhány további információforrás:
 
 - [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
 - [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)

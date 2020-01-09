@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453975"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central-alkalmazás létrehozása és kezelése a CSP-portálról
 
@@ -33,7 +33,7 @@ Az Azure IoT Central Application Manager oldalán landol. Az Azure IoT Central a
 
 ![Kezelő létrehozása a CSP-hez](media/howto-create-application-csp/image3.png)
 
-Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben a **Létrehozás** elemre. Válasszon az egyik iparági sablon közül, vagy válassza az **Egyéni** alkalmazás lehetőséget, hogy teljesen új alkalmazást hozzon létre. Ekkor betöltődik az alkalmazás-létrehozási oldal. Az összes mezőt el kell végeznie ezen a lapon, majd a **Létrehozás**lehetőséget kell választania. További információkat az alábbi mezőkben talál.
+Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben a **Létrehozás** elemre. Válasszon az egyik iparági sablon közül, vagy válassza az **örökölt alkalmazás** lehetőséget egy új alkalmazás létrehozásához. Ekkor betöltődik az alkalmazás-létrehozási oldal. Az összes mezőt el kell végeznie ezen a lapon, majd a **Létrehozás**lehetőséget kell választania. További információkat az alábbi mezőkben talál.
 
 ![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-application-csp/image4.png)
 
@@ -85,13 +85,12 @@ Megtekintheti azokat a régiókat, amelyekben az Azure IoT Central elérhető a 
 
 ## <a name="application-template"></a>Alkalmazássablon
 
-Az új Azure IoT Central-alkalmazáshoz elérhető alkalmazás-sablonok közül választhat. Az alkalmazássablon előre megadott elemeket, például eszközsablonokat és irányítópultokat tartalmazhat, amelyek segítséget nyújtanak az első lépésekhez.
+Az új Azure IoT Central-alkalmazáshoz az alábbi alkalmazás-sablon közül választhat.
 
 | Alkalmazássablon | Leírás |
 | -------------------- | ----------- |
-| Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
-| Minta: Contoso       | Létrehoz egy alkalmazást, amely tartalmaz egy egyszerű csatlakoztatott eszközhöz tartozó sablont. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
-| Minta: Devkits       | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Akkor használja ezt a sablont, ha olyan eszköz fejlesztője, amely az egyik ilyen eszközön kóddal kísérletezik. |
+| Örökölt alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
+
 
 ## <a name="next-steps"></a>Következő lépések
 

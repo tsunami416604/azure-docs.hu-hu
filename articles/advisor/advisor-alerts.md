@@ -1,20 +1,14 @@
 ---
-title: Új javaslatokhoz tartozó Azure Advisor riasztások létrehozása | Microsoft Docs
+title: Új javaslatok Azure Advisor riasztások létrehozása
 description: Új javaslat Azure Advisor riasztások létrehozása
-services: advisor
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/09/2019
-ms.author: sagupt
-ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443156"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Új javaslatokra vonatkozó Azure Advisor riasztások létrehozása 
 
@@ -24,7 +18,7 @@ Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy 
 
 A következő tulajdonságokkal is meghatározhatja a javaslatok típusait:
 
-* Category
+* Kategória
 * Hatás szintje
 * Javaslat típusa
 
@@ -38,7 +32,7 @@ A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok 
 > [!NOTE] 
 > Az Advisor-riasztások jelenleg csak a magas rendelkezésre állás, a teljesítmény és a Cost-javaslatok esetében érhetők el. A biztonsági javaslatok nem támogatottak. 
 
-## <a name="in-the-azure-portal"></a>A Azure Portal
+## <a name="in-the-azure-portal"></a>Az Azure Portalon
 1. A **portálon**válassza a **Azure Advisor**lehetőséget.
 
     ![Azure Advisor a portálon](./media/advisor-alerts/create1.png)
@@ -274,7 +268,7 @@ Ha nem használja a közös sémát, az adattartalom a következőhöz hasonlóa
 }
 ```
 
-Bármelyik sémában azonosíthatja az Advisor-javaslatok eseményeit, ha **eventSource** `Recommendation` keres, és a `Microsoft.Advisor/recommendations/available/action` **operationName** .
+Bármelyik sémában azonosíthatja az Advisor-javaslatok eseményeit, ha a **eventSource** `Recommendation`, és a **operationName** `Microsoft.Advisor/recommendations/available/action`.
 
 Néhány további fontos mező, amelyet érdemes használni: 
 

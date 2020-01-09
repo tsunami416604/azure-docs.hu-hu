@@ -1,21 +1,21 @@
 ---
 title: 'Rövid útmutató: A Text Analytics API meghívása a PHP használatával'
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Text Analytics API használatának gyors megkezdéséhez olvassa el az információk és a kódok mintáit.
+description: Ez a rövid útmutató bemutatja, hogyan szerezhet be információkat és kódokat, amelyekkel gyorsan megkezdheti az Azure Cognitive Services Text Analytics API használatának első lépéseit.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 3b95109ea3389cc8ee7e748e06265870d5f903a4
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378585"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a PHP használatával
 <a name="HOLTop"></a>
@@ -34,9 +34,9 @@ Ebből a cikkből megtudhatja, hogyan derítheti fel  [text Analytics](//go.mi
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Futtassa a programot.
 
 ```php
@@ -47,18 +47,8 @@ A Language Detection API a [Detect Language metódus](https://westcentralus.dev.
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/languages';
 
@@ -151,9 +141,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Futtassa a programot.
 
 ```php
@@ -163,19 +154,8 @@ A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sent
 // ;extension=php_openssl.dll
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
-
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/sentiment';
 
@@ -247,10 +227,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
-
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Futtassa a programot.
 
 ```php
@@ -260,19 +239,8 @@ A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumok
 // ;extension=php_openssl.dll
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
-
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/keyPhrases';
 
@@ -359,9 +327,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra. 
 1. Futtassa a programot.
 
 ```php
@@ -371,19 +339,8 @@ Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az 
 // ;extension=php_openssl.dll
 // You might need to set the full path, for example:
 // extension="C:\Program Files\Php\ext\php_openssl.dll"
-
-$key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-if (!getenv($key_var)) {
-    throw new Exception ("Please set/export the following environment variable: $key_var");
-} else {
-    $subscription_key = getenv($key_var);
-}
-$endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-if (!getenv($endpoint_var)) {
-    throw new Exception ("Please set/export the following environment variable: $endpoint_var");
-} else {
-    $endpoint = getenv($endpoint_var);
-}
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
 $path = '/text/analytics/v2.1/entities';
 
@@ -471,12 +428,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még: 
 
  [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

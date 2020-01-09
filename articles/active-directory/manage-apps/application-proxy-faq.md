@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832216"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443418"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -53,9 +53,9 @@ Javaslatokért lásd: [az alkalmazásproxy-összekötők és-alkalmazások magas
 
 Nem, ez a forgatókönyv nem támogatott. Az Azure-ba irányuló kimenő adatforgalomhoz csak az összekötő-és frissítési szolgáltatásokat lehet konfigurálni. Lásd: [a meglévő helyszíni proxykiszolgálók használata](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Támogatott-e az SSL-lezárás (SSL/HHTPS-ellenőrzés vagy-gyorsítás) az összekötő-kiszolgálókról az Azure-ba irányuló forgalomra?
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Támogatott-e az SSL-lezárás (SSL/HTTPS-ellenőrzés vagy gyorsítás) az összekötő-kiszolgálókról az Azure-ba irányuló forgalomra?
 
-Az alkalmazásproxy-összekötő tanúsítvány alapú hitelesítést végez az Azure-ban. Az SSL-lezárás (SSL/HHTPS-ellenőrzés vagy gyorsítás) megszakítja ezt a hitelesítési módszert, és nem támogatott. Az összekötőtől az Azure-ba irányuló forgalomnak meg kell kerülnie az SSL-lezárást végző eszközöket.  
+Az alkalmazásproxy-összekötő tanúsítvány alapú hitelesítést végez az Azure-ban. Az SSL-lezárás (SSL/HTTPS-ellenőrzés vagy gyorsítás) megszakítja ezt a hitelesítési módszert, és nem támogatott. Az összekötőtől az Azure-ba irányuló forgalomnak meg kell kerülnie az SSL-lezárást végző eszközöket.  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Létre kell hozni egy dedikált fiókot az összekötő Azure AD Application Proxy-beli regisztrálásához?
 
@@ -63,7 +63,7 @@ Nincs ok a következőre:. Minden globális rendszergazda vagy alkalmazás-rends
 
 ### <a name="how-can-i-monitor-the-performance-of-the-azure-ad-application-proxy-connector"></a>Hogyan figyelhető meg az Azure AD Application Proxy-összekötő teljesítménye?
 
-A Teljesítményfigyelő-számlálók a-összekötővel együtt települnek. Megtekintheti őket:  
+A Teljesítményfigyelő-számlálók a-összekötővel együtt települnek. Ezek megtekintéséhez:  
 
 1. Kattintson a **Start**gombra, írja be a "Perfmon" kifejezést, majd nyomja le az ENTER billentyűt.
 2. Válassza a **Teljesítményfigyelő** lehetőséget, majd kattintson a zöld **+** ikonra.

@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378381"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Eldobott értesítések diagnosztizálása az Azure-ban Notification Hubs
 
@@ -103,7 +103,7 @@ A rendszer minden köteget elküld a leküldéses értesítési szolgáltatásna
 
 Ebben az esetben a rendszer eltávolítja a hibás regisztrációt az adatbázisból. Ezután újrapróbálkozunk az értesítés kézbesítésével a kötegben lévő többi eszközön.
 
-Ha többet szeretne megtudni a regisztráció sikertelen kézbesítési kísérletéről, használja a Notification Hubs REST API-kat [telemetria: értesítési üzenet](https://msdn.microsoft.com/library/azure/mt608135.aspx) küldése a telemetria és a [PNS-visszajelzésről](https://msdn.microsoft.com/library/azure/mt705560.aspx). A mintakód esetében tekintse meg a [Rest-példa küldése](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)című részt.
+Ha többet szeretne megtudni a regisztráció sikertelen kézbesítési kísérletéről, használja a Notification Hubs REST API-kat [telemetria: értesítési üzenet](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) küldése a telemetria és a [PNS-visszajelzésről](https://msdn.microsoft.com/library/azure/mt705560.aspx). A mintakód esetében tekintse meg a [Rest-példa küldése](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)című részt.
 
 ## <a name="push-notification-service-issues"></a>Leküldéses értesítési szolgáltatással kapcsolatos problémák
 
@@ -127,7 +127,7 @@ Itt láthatók az eldobott értesítések kiváltó okának diagnosztizálásár
 
 Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálján (APNs, FCM, Windows Notification Service stb.). További információ: [oktatóanyag: értesítések küldése univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs használatával](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Azure portál ####
 
 A leküldéses értesítési szolgáltatás fejlesztői portálján beszerzett hitelesítő adatok áttekintéséhez és egyeztetéséhez lépjen a Azure Portal **hozzáférési szabályzatok** lapjára.
 
@@ -139,7 +139,7 @@ A leküldéses értesítési szolgáltatás fejlesztői portálján beszerzett h
 
 A Visual Studióban a Server Explorerben csatlakozhat az Azure-hoz, így több Azure-szolgáltatást is megtekinthet és kezelhet, beleértve a Notification Hubst is. Ez a parancsikon elsősorban fejlesztési és tesztelési környezetben hasznos.
 
-![Visual Studio Server Explorer][9]
+![A Visual Studio Server Explorer][9]
 
 A hub összes regisztrációját megtekintheti és kezelheti. A regisztrációk a platform, a natív vagy a sablon regisztrálása, a leküldéses értesítési szolgáltatás azonosítója, a regisztrációs azonosító és a lejárati dátum szerint kategorizálva is megadhatók. Ezen az oldalon szerkesztheti a regisztrációt is. Ez különösen hasznos a címkék szerkesztéséhez.
 
@@ -168,7 +168,7 @@ Számos ügyfél [Service Bus Explorer](https://github.com/paolosalvatori/Servic
 
 ### <a name="verify-message-notifications"></a>Üzenetek értesítéseinek ellenőrzése
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Azure portál ####
 
 Ha teszt-értesítést szeretne küldeni az ügyfeleknek anélkül, hogy a szolgáltatást vissza kellene állítani, és nem fut, a **támogatás + hibaelhárítás**területen válassza a **küldési teszt**lehetőséget.
 
@@ -196,7 +196,7 @@ Ha az értesítés nem érkezik meg az ügyfél-eszközre, akkor hiba történt,
 
 A leküldéses értesítési szolgáltatás hibáinak megismeréséhez használhatja a [EnableTestSend] tulajdonságot. Ez a tulajdonság automatikusan engedélyezve lesz, amikor tesztüzenet küld a portálról vagy a Visual Studio-ügyfélről. Ennek a tulajdonságnak a használatával részletes hibakeresési információkat és API-kat is megtekintheti. Jelenleg a .NET SDK-ban is használható. A rendszer az összes ügyfél SDK-nak végül hozzáadja.
 
-Ha a REST-hívással szeretné használni a `EnableTestSend` tulajdonságot, fűzze hozzá a küldési hívás végén a *test* nevű lekérdezési karakterlánc paramétert. Például:
+Ha a REST-hívással szeretné használni a `EnableTestSend` tulajdonságot, fűzze hozzá a küldési hívás végén a *test* nevű lekérdezési karakterlánc paramétert. Példa:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -245,7 +245,7 @@ Ez az üzenet azt jelzi, hogy a Notification Hubsban konfigurált hitelesítő a
 
 ### <a name="review-telemetry"></a>Telemetria áttekintése ###
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Azure portál ####
 
 A portálon gyors áttekintést kaphat az értesítési központban található összes tevékenységről.
 
@@ -261,7 +261,7 @@ A portálon gyors áttekintést kaphat az értesítési központban található 
 
 4. Ha az értesítési központ hitelesítési beállításai helytelenek, megjelenik az üzenet **PNS hitelesítési hiba** . A leküldéses értesítési szolgáltatás hitelesítő adatait érdemes megnézni.
 
-#### <a name="programmatic-access"></a>Szoftveres hozzáférés ####
+#### <a name="programmatic-access"></a>Programozott hozzáférés ####
 
 További információ a programozott hozzáférésről: [programozott hozzáférés](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 

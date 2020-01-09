@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric fordított proxy beállítása | Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be és konfigurálhatja Service Fabric fordított proxyját.
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Azure Service Fabric fordított proxy beállítása
+description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a fordított proxy szolgáltatást egy Azure Service Fabric alkalmazáshoz.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933899"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645446"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
 A fordított proxy egy opcionális Azure Service Fabric szolgáltatás, amely segít a Service Fabric-fürtökön futó, a http-végpontokkal rendelkező más szolgáltatásokkal való kommunikációban. További információ: [fordított proxy az Azure Service Fabricban](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be és konfigurálhatja a fordított proxykat a fürtben. 
@@ -50,7 +41,7 @@ Meglévő fürt esetén a [Azure Portal](https://docs.microsoft.com/azure/azure-
 
 A Resource Manager-sablonokkal a következő lépéseket követve engedélyezheti a fordított proxyt:
 
-1. Definiáljon egy portot a fordított proxyhoz a sablon [Paraméterek szakaszában](../azure-resource-manager/resource-group-authoring-templates.md) .
+1. Definiáljon egy portot a fordított proxyhoz a sablon [Paraméterek szakaszában](../azure-resource-manager/templates/template-syntax.md) .
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ A Resource Manager-sablonokkal a következő lépéseket követve engedélyezhet
         }
     },
     ```
-2. Adja meg a portot a [**Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszban](../azure-resource-manager/resource-group-authoring-templates.md)található összes NodeType-objektumhoz.
+2. Adja meg a portot a [**Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszban](../azure-resource-manager/templates/template-syntax.md)található összes NodeType-objektumhoz.
 
     A portot a paraméter neve, reverseProxyEndpointPort azonosítja.
 

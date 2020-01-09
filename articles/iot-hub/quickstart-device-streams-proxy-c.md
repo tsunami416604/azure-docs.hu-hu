@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8554fc3f691af05a2c6a660d07ffb9a6ff29f31
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03b0269b1a4500fd8ae26cd5e56f48427c5506aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429184"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon C alkalmazásproxy-alkalmazással (előzetes verzió)
 
@@ -76,18 +76,19 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
 
     Fontos megjegyezni, hogy a Visual Studio előfeltételei (a Visual Studio és az *asztali C++ környezet fejlesztése* számítási feladattal) telepítve legyenek a gépen a CMAK telepítésének megkezdése *előtt* . Az előfeltételek érvénybe helyezése és a letöltés ellenőrzése után telepítheti a CMak-Build rendszerét.
 
-1. Nyisson meg egy parancssort vagy a Git Bash-felületet. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
+1. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház klónozásához:
 
-    ```
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     A művelet eltarthat néhány percig.
 
-1. Hozzon létre egy *CMAK* -alkönyvtárat a git-tárház gyökérkönyvtárában, ahogy az a következő parancsban látható, majd navigáljon a mappához.
+1. Hozzon létre egy *CMAK* -alkönyvtárat a git-tárház gyökérkönyvtárában, és navigáljon a mappához. Futtassa az alábbi parancsokat az *Azure-IOT-SDK-c* könyvtárból:
 
-    ```
-    cd azure-iot-sdk-c
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -109,6 +110,9 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
 
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
+
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
 
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release

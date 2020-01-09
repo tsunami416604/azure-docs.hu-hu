@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár | Microsoft Docs'
-description: Ismerkedés a .NET-hez készült Face ügyféloldali kódtáraval.
+title: 'Gyors útmutató: Face ügyféloldali kódtár a .NET-hez'
+description: Ismerkedjen meg a .NET-hez készült Face ügyféloldali kódtár ezzel a rövid útmutatóval.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448187"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Gyors útmutató: Face ügyféloldali kódtár a .NET-hez
 
@@ -295,7 +295,7 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, futtassa a következő kódot a programban:

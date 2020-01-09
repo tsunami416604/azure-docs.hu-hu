@@ -1,6 +1,6 @@
 ---
-title: Az Azure storage table tervezési kapcsolatok modellezését |} A Microsoft Docs
-description: Ismerje meg a modellezési folyamatban, a table storage-megoldás tervezésekor.
+title: Modellezési kapcsolatok az Azure Table Storage kialakításában | Microsoft Docs
+description: A táblázatos tárolási megoldás tervezésekor megismerheti a modellezés folyamatát.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,121 +8,121 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457559"
 ---
 # <a name="modeling-relationships"></a>Kapcsolatok modellezése
-Ez a cikk ismerteti az Azure Table storage-megoldások tervezéséhez nyújt segítséget a modellezési folyamatban.
+Ez a cikk az Azure Table Storage-megoldások kialakításához segítséget nyújtó modellezési folyamatot ismerteti.
 
-Tartomány modellek készítése Ez a komplex rendszerek kialakítását legfontosabb lépés. A modellezési folyamat jellemzően entitások és a közöttük megismerheti az üzleti tartomány és a kialakítás a rendszer tájékoztatja, hogy a kapcsolatok azonosításához használni. Ez a szakasz összpontosít hogyan tudja lefordítani a közös kapcsolat típusok tartományi modellekkel az eltérések for a Table service tervek található. Egy logikai adatmodell-leképezés egy fizikai NoSQL-alapú-adatmodellbe, a folyamat eltér a relációs adatbázis tervezése során használt. Relációs adatbázisok tervezési általában feltételezi, hogy egy adatok normalizálási folyamat optimalizált minimálisra csökkentik a redundancia – és a egy deklaratív lekérdezési képesség, amely kivonatolja, hogyan megvalósítása az adatbázis működését.  
+A tartományi modellek kiépítése kulcsfontosságú lépés a komplex rendszerek kialakításában. Általában a modellezési folyamattal azonosíthatja az entitásokat és a köztük lévő kapcsolatokat az üzleti tartomány megismerése érdekében, és tájékoztatja a rendszer kialakításáról. Ez a szakasz azt ismerteti, hogyan lehet lefordítani a tartományi modellekben található általános kapcsolattípus-típusokat a Table service kialakításához. A logikai adatmodellből fizikai NoSQL-alapú adatmodellre való hozzárendelési folyamat különbözik a kapcsolatok adatbázisának tervezésekor használt adatoktól. A rokon adatbázisok kialakítása általában feltételezi a redundancia minimalizálása érdekében optimalizált adatnormalizálás folyamatát, valamint egy deklaratív lekérdezési képességet, amely absztrakt módon ismerteti az adatbázis működésének megvalósítását.  
 
-## <a name="one-to-many-relationships"></a>-A-többhöz kapcsolatok
-Üzleti tartományi objektumok közötti egy-a-többhöz kapcsolatok gyakran előfordulnak: például egy részleg sok alkalmazott. Többféleképpen is egy-a-többhöz kapcsolatok megvalósításához a Table service szolgáltatásban minden egyes az előnyei és hátrányai, előfordulhat, hogy meg kell adni az adott forgatókönyv.  
+## <a name="one-to-many-relationships"></a>Egy-a-többhöz kapcsolat
+Gyakran fordulnak elő egy-a-többhöz kapcsolat az üzleti tartomány objektumai között: például az egyik részleg számos alkalmazottal rendelkezik. Több módon is megvalósítható egy-a-többhöz kapcsolat a Table serviceban, amelyek az adott forgatókönyvhöz kapcsolódó előnyökkel és hátrányokkal rendelkeznek.  
 
-Vegyünk egy nagy, multinacionális corporation például az intézetek, valamint alkalmazotti entitások, ahol minden részlege rendelkezik sok alkalmazott, és minden alkalmazott, egy adott részleg társított tízezer. Egyik lehetőség, hogy külön részleg és alkalmazott entitások, például a következő:  
+Vegyünk példaként egy nagyméretű, többnemzetiségű vállalatot, amely több tízezer részleget és alkalmazotti entitást tartalmaz, ahol minden részlegnek számos alkalmazottja van, és mindegyik alkalmazott egy adott részleghez társítva van. Az egyik módszer a különálló részleg és az alkalmazotti entitások (például a következők) tárolása:  
 
 
-![Store külön osztály és alkalmazottak entitások](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
+![Különálló részleg és alkalmazott entitások tárolása](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
 
-Ez a példa bemutatja egy implicit egy-a-többhöz kapcsolat a típusok alapján között a **PartitionKey** értéket. Bármelyik részleg lehet sok alkalmazott.  
+Ez a példa egy implicit, egy-a-többhöz kapcsolatot mutat be a típusok között a **PartitionKey** érték alapján. Minden részlegnek számos alkalmazottja lehet.  
 
-Ez a példa bemutatja egy szervezeti egység és a kapcsolódó alkalmazott entitásokat is ugyanazon a partíción. A különböző partíciók, táblái vagy még akkor is, a storage-fiókok használata a különböző entitások esetében dönthet.  
+Ez a példa egy részleg entitást és a hozzá tartozó alkalmazott entitásokat is megjeleníti ugyanabban a partícióban. Dönthet úgy, hogy különböző partíciókat, táblákat vagy akár tárolási fiókokat is használhat a különböző entitások típusaihoz.  
 
-Egy másik módszert, ha denormalizálja az adatokat, és csak az adatok denormalizált részleg, az alábbi példában látható módon alkalmazott entitásokat. Adott esetben ez denormalizált megközelítésében rejlik-kezelő nem lehet a legjobb, ha a követelmény, hogy tudja majd módosítani egy részleg vezetője részleteit, mivel ehhez frissítenie a részleg minden alkalmazott rendelkezik.  
+Egy másik megoldás az, hogy denormalizálja az adatait, és csak az alkalmazott entitásokat tárolja a denormalizált részleg adataival az alábbi példában látható módon. Ebben az adott esetben ez a normalizált megközelítés nem a legjobb megoldás, ha a Department Manager részletes adatainak módosítására van szükség, mivel ehhez frissítenie kell a részleg összes alkalmazottját.  
 
-![Alkalmazott entitás](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
+![Alkalmazotti entitás](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
 
-További információkért lásd: a [Denormalizáció minta](table-storage-design-patterns.md#denormalization-pattern) Ez az útmutató későbbi.  
+További információ: a [denormalizálás mintája](table-storage-design-patterns.md#denormalization-pattern) az útmutató későbbi részében.  
 
-Az alábbi táblázat foglalja össze, és a hátrányai az alkalmazottak és a egy-a-többhöz kapcsolat áll fenn részleg entitások tárolására szolgáló fent vázolt módszerek előnyeit. Érdemes azt is, hogy várhatóan milyen gyakran csatlakozva különféle műveleteket végezhet: Elképzelhető, hogy elfogadható, amely magában foglalja a drága művelet, ha a művelet csak akkor fordul elő, ritkán kell.  
+Az alábbi táblázat összefoglalja a fentiekben ismertetett megközelítések előnyeit és hátrányait, amelyek egy-a-többhöz kapcsolattal rendelkező alkalmazotti és részlegi entitások tárolására szolgálnak. Azt is érdemes figyelembe venni, hogy milyen gyakran várható a különböző műveletek végrehajtása: elfogadható, ha olyan kialakítással rendelkezik, amely költséges műveletet tartalmaz, ha a művelet csak ritkán fordul elő.  
 
 <table>
 <tr>
-<th>A módszer</th>
-<th>Szakemberek számára</th>
+<th>Módszer</th>
+<th>Előnyök</th>
 <th>Hátrányok</th>
 </tr>
 <tr>
-<td>Külön entitástípusok, ugyanazon a partíción, ugyanazon a táblán</td>
+<td>Különálló entitások típusai, azonos partíció, azonos tábla</td>
 <td>
 <ul>
-<li>A részleg entitás egyetlen művelettel frissítheti.</li>
-<li>Egy EGT használatával fenntartani a konzisztenciát, ha van egy szervezeti egység módosítása követelmény, amikor Ön frissítési, beszúrási vagy törlési alkalmazott entitás. Ha például egy részlegszintű alkalmazottak száma az egyes részlegek megmaradjanak.</li>
+<li>Egyetlen művelettel frissítheti a részleg entitásait.</li>
+<li>Az EGT segítségével megtarthatja az egységességet, ha az alkalmazotti entitás frissítésekor/beszúrásakor/törlésekor követelmény, hogy módosítania kell egy részleg entitását. Ha például az egyes részlegek esetében fenntart egy részleg alkalmazottainak a darabszámát.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Szükség lehet egy alkalmazott és a egy részleg entitás néhány ügyfél tevékenységek.</li>
-<li>Tárolási műveletekre kerül sor, ugyanazon a partíción. Magas tranzakciós mennyiségben előfordulhat, hogy emiatt typu hotspot.</li>
-<li>Egy új osztály használatával egy EGT nem helyezhetők át egy alkalmazott.</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>Külön entitástípusok, a különböző partíciók vagy táblák vagy a storage-fiókok</td>
-<td>
-<ul>
-<li>Egyetlen művelettel frissítheti egy részleg vagy alkalmazotti entitásokból.</li>
-<li>Magas tranzakciós mennyiségben Ez segíthet több partíció között elosztani a terhelést.</li>
-</ul>
-</td>
-<td>
-<ul>
-<li>Szükség lehet egy alkalmazott és a egy részleg entitás néhány ügyfél tevékenységek.</li>
-<li>Nem használhat EGTs biztosítja az egységességet amikor, frissítési, beszúrási vagy törlési egy alkalmazott és a egy részleg frissítés. Például frissítése folyamatban van egy szervezeti egységben az alkalmazottak száma.</li>
-<li>Egy új osztály használatával egy EGT nem helyezhetők át egy alkalmazott.</li>
+<li>Előfordulhat, hogy egy alkalmazott és egy részleg entitást is le kell kérnie néhány ügyfél-tevékenységhez.</li>
+<li>A tárolási műveletek ugyanabban a partícióban történnek. A nagy tranzakciós kötetek esetében ez egy hotspotot eredményezhet.</li>
+<li>EGT használatával nem helyezhető át egy alkalmazott egy új részlegbe.</li>
 </ul>
 </td>
 </tr>
 <tr>
-<td>Denormalizálja az egyetlen entitás típusa</td>
+<td>Különálló entitások típusai, különböző partíciók, táblák vagy Storage-fiókok</td>
 <td>
 <ul>
-<li>Egyetlen kérelem szükséges összes információt kérheti le.</li>
+<li>Egyetlen művelettel frissítheti a részleg entitásait vagy az alkalmazott entitásokat.</li>
+<li>A nagy tranzakciós kötetek esetében ez segíthet a terhelés több partíción való elosztásában.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Elképzelhető, hogy költséges fenntartani a konzisztenciát, ha részleg adatokat (Ez megköveteli, hogy frissítse a részleg minden alkalmazott) frissíteni kell.</li>
+<li>Előfordulhat, hogy egy alkalmazott és egy részleg entitást is le kell kérnie néhány ügyfél-tevékenységhez.</li>
+<li>A EGTs nem használható a konzisztencia fenntartására egy alkalmazott frissítésekor/behelyezése/törlése és a részleg frissítése során. Például egy részleg entitásban lévő alkalmazottak számának frissítése.</li>
+<li>EGT használatával nem helyezhető át egy alkalmazott egy új részlegbe.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>Normalizálás egyetlen entitás típusúra</td>
+<td>
+<ul>
+<li>Az összes szükséges információt egyetlen kérelemmel kérheti le.</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Költséges lehet a konzisztencia fenntartása, ha frissítenie kell a részleg adatait (ez a részleg összes alkalmazottjának frissítését igényli).</li>
 </ul>
 </td>
 </tr>
 </table>
 
-Hogyan választja ezeket a beállításokat, és mely és a hátrányai jelentős, attól függ, az adott alkalmazás-forgatókönyvek között. Például hogy milyen gyakran tegye módosítása részleg entitások; az alkalmazott összes lekérdezés szükséges a további részlegszintű információt; Hogyan zárja be, hogy a partíciók vagy a tárfiók skálázási korlátaival való?  
+A lehetőségek közül választhat, és az előnyeit és hátrányait a legjelentősebb mértékben az adott alkalmazási helyzettől függ. Például azt, hogy milyen gyakran módosítja a részleg entitásait; az összes alkalmazotti lekérdezésnek szüksége van a további tanszéki információkra; Hogyan közelíti meg a partíciók skálázhatósági korlátait vagy a Storage-fiókját?  
 
-## <a name="one-to-one-relationships"></a>-Az-egyhez kapcsolat
-Tartományi modellekkel tartalmazhat-az-egyhez kapcsolatot az entitások között. Egy-az-egyhez kapcsolat megvalósítása a Table service szolgáltatásban van szüksége, a két kapcsolódó entitások összekapcsolása, amikor szüksége van kérheti le azokat mindkét is ki kell választania. Ez a hivatkozás lehet implicit, egy egyezmény található értékek alapján, vagy explicit hivatkozás formájában való tárolásával **PartitionKey** és **rowkey tulajdonságok esetén** minden entitás, a kapcsolódó entitás értékeit. Az e tárolja a kapcsolódó entitások ugyanazon a partíción, lásd a szakasz [egy-a-többhöz kapcsolatok](#one-to-many-relationships).  
+## <a name="one-to-one-relationships"></a>Egy-az-egyhez kapcsolat
+A tartományi modellek tartalmazhatnak egy-az-egyhez kapcsolatot az entitások között. Ha egy-az-egyhez kapcsolatot kell létrehoznia a Table serviceban, azt is ki kell választania, hogyan csatolja a két kapcsolódó entitást, ha mindkettőt le kell kérnie. Ez a hivatkozás implicit lehet, a kulcs értékeinek konvenciója alapján, vagy explicit módon, ha egy hivatkozást a **PartitionKey** és a **RowKey** értékek formájában tárol az egyes entitásokban a kapcsolódó entitáshoz. Ha meg szeretné tudni, hogy a kapcsolódó entitásokat ugyanabban a partícióban kell tárolnia, tekintse meg az [egy-a-többhöz kapcsolatok](#one-to-many-relationships)című szakaszt.  
 
-Is vannak, amelyek a Table service szolgáltatásban való kapcsolatok implementálási szempontok:  
+Olyan implementációs megfontolások is megtalálhatók, amelyek egy-az-egyhez kapcsolatok megvalósítására vezethetnek a Table serviceban:  
 
-* Nagy entitások kezelése (további információkért lásd: [nagy entitások minta](table-storage-design-patterns.md#large-entities-pattern)).  
-* Végrehajtási hozzáférés-vezérlés (további információkért lásd: közös hozzáférésű jogosultságkódokkal hozzáférés szabályozása).  
+* Nagyméretű entitások kezeléséhez (További információ: [nagyméretű entitások mintája](table-storage-design-patterns.md#large-entities-pattern)).  
+* Hozzáférés-vezérlések implementálása (További információ: hozzáférés szabályozása közös hozzáférési aláírásokkal).  
 
-## <a name="join-in-the-client"></a>Csatlakozás az ügyfél
-Bár vannak kapcsolatok modellezésére a Table service szolgáltatásban, meg kell felejtse el, hogy a két elsődleges oka a Table service használatával-e a méretezhetőséget és teljesítményt. Ha talál, amelyek veszélyeztetik a teljesítményét és méretezhetőségét, hogy a megoldás több kapcsolatot vannak modellezés, kérdezze meg saját maga, hogy az adatkapcsolatok beépítése az Táblatervezés szükséges. Előfordulhat, hogy a kialakítás és javítását célzó méretezhetőségét és teljesítményét, hogy a megoldás, ha hagyja, hogy az ügyfélalkalmazás, hajtsa végre a szükséges illesztések.  
+## <a name="join-in-the-client"></a>Csatlakozás az ügyfélen
+Bár a Table serviceban a kapcsolatok modellezése is lehetséges, ne feledje, hogy a Table service használatának két fő oka a méretezhetőség és a teljesítmény. Ha úgy találja, hogy számos olyan kapcsolatot modellez, amely veszélyezteti a megoldás teljesítményét és méretezhetőségét, meg kell kérdezni, hogy szükség van-e az összes adatkapcsolat létrehozására a tábla kialakításában. Lehet, hogy leegyszerűsíti a kialakítást, és javítja a megoldás méretezhetőségét és teljesítményét, ha lehetővé teszi, hogy az ügyfélalkalmazás bármilyen szükséges illesztést végezzen.  
 
-Például ha rendelkezik, amelyek adatokat tartalmaznak, amelyek nem változik gyakran kis táblák, ezután is egyszer lekérdezhetik ezeket az adatokat, és gyorsítótárazza azt az ügyfélen. Ez elkerülhető, ismétlődő életű könyvtárgyorsítótárból ugyanazokat az adatokat lekérdezni. Megvizsgáltunk van, ebben az útmutatóban a példákban az egy kis szervezetben lévő részlegek számára rendkívül kicsi, és módosítsa a ritkán így jó jelöltnek számít egy ügyfélalkalmazás egyszer töltheti le adatokat, és a gyorsítótár adatainak megkeresésére, valószínűleg.  
+Ha például olyan kis táblákat használ, amelyek gyakran nem változnak, akkor ezeket az adatfájlokat egyszer kell lekérnie, és az ügyfélen kell gyorsítótárazni. Ezzel elkerülhető, hogy az ismétlődő adatpontok ugyanazt az adatlekérdezést tudják lekérni. A jelen Útmutatóban bemutatott példákban a kisméretű szervezet részlegei valószínűleg kicsik lesznek, és ritkán változnak, hogy az ügyfélalkalmazás csak egyszer tölthető le és gyorsítótárazza az adatkeresési feladatait.  
 
-## <a name="inheritance-relationships"></a>Öröklés kapcsolatok
-Ha az ügyfélalkalmazás osztályokat, amelyek részét képezik az öröklési kapcsolatban, amelyek az üzleti entitásokat használ, egyszerűen megőrizheti ezen entitások a Table service szolgáltatásban. Például előfordulhat, hogy rendelkezik a következő csoportját az ügyfélalkalmazásban található megadott ahol **személy** absztrakt osztály.
+## <a name="inheritance-relationships"></a>Öröklési kapcsolatok
+Ha az ügyfélalkalmazás olyan osztályok készletét használja, amelyek egy öröklési kapcsolat részét képezik az üzleti entitások képviseletére, egyszerűen megtarthatja ezeket az entitásokat a Table service. Előfordulhat például, hogy a következő osztályok vannak meghatározva az ügyfélalkalmazásban, ahol a **személy** absztrakt osztály.
 
-![Absztrakt osztály személy](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
+![Absztrakt személy osztálya](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
 
-Az a Table service használatával egyetlen személy tábla entitások használatával, hogy néz ki ez a két tényleges osztály példányainak megőrizheti a:  
+A két konkrét osztály példányait megtarthatja a Table service egyetlen személy tábla használatával a következőhöz hasonló entitások használatával:  
 
 ![Személy tábla](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-A több entitástípusok ugyanabban a táblában az Ügyfélkód működő kapcsolatos további információkért lásd: a szakasz az útmutató későbbi részében heterogén entitástípusok dolgozik. Ez példákat az Ügyfélkód entitástípus felismerése.  
+Ha többet szeretne megtudni arról, hogyan használható több entitás típusa ugyanabban a táblában az ügyfél kódjában, tekintse meg az útmutató későbbi, heterogén entitások típusának használata című szakaszát. Ez példákat tartalmaz arra, hogyan ismerhető fel az entitás típusa az ügyfél kódjában.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Táblázat kialakítási minták](table-storage-design-patterns.md)
+- [Tábla kialakítási mintái](table-storage-design-patterns.md)
 - [Lekérdezés tervezése](table-storage-design-for-query.md)
-- [Táblák adatainak titkosítása](table-storage-design-encrypt-data.md)
-- [Adatmódosítás tervezése](table-storage-design-for-modification.md)
+- [Tábla adatai titkosítása](table-storage-design-encrypt-data.md)
+- [Adatmódosítási terv](table-storage-design-for-modification.md)

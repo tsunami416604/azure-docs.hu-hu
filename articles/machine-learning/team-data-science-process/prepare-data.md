@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74936037"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432139"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
 Az adatok előfeldolgozása és tisztítása olyan fontos feladatok, amelyeket általában el kell végezni, mielőtt az adatkészlet hatékonyan használható legyen a gépi tanuláshoz. A nyers adatok gyakran zajosak és megbízhatatlanok, és lehet, hogy hiányoznak az értékek. Ha ilyen adatokat használ a modellezéshez, félrevezető eredményeket hozhat létre. Ezek a feladatok a csoportos adatelemzési folyamat (TDSP) részét képezik, és általában egy olyan adatkészlet kezdeti vizsgálatát végzik, amely a szükséges előzetes feldolgozás felderítésére és megtervezésére szolgál. A TDSP folyamatával kapcsolatos részletesebb útmutatásért tekintse meg a [csoportos adatelemzési folyamat](overview.md)lépéseit.
 
-Az előfeldolgozással és a tisztítással kapcsolatos feladatok, például az adatfeltárási feladat különböző környezetekben, például az SQL-ben, a kaptárban vagy a Azure Machine Learning Studioban, valamint különböző eszközökkel és nyelvekkel (például R vagy Python) végezhetők el, attól függően, hogy az adatok hol vannak tárolva és hogyan történik a formázása. Mivel a TDSP ismétlődő jellegű, ezeket a feladatokat a folyamat munkafolyamatának különböző lépésein végezheti el.
+Az előfeldolgozási és tisztítási feladatok, például az adatfeltárási feladat számos különböző környezetben, például az SQL-ben vagy a kaptárban, illetve a Azure Machine Learning Studio (klasszikus), valamint különböző eszközökkel és nyelvekkel (például R vagy Python) végezhetők el, attól függően, hogy hol találhatók az adatok tárolása és formázása. Mivel a TDSP ismétlődő jellegű, ezeket a feladatokat a folyamat munkafolyamatának különböző lépésein végezheti el.
 
-Ez a cikk bemutatja a különböző adatfeldolgozási fogalmakat és feladatokat, amelyek az adatok Azure ML Studioba (klasszikus) történő betöltése előtt vagy után hajthatók végre.
+Ez a cikk különféle adatfeldolgozási fogalmakat és feladatokat mutat be, amelyek az adatoknak a Azure Machine Learning Studioba (klasszikus) történő betöltése előtt vagy után hajthatók végre.
 
-Az Azure ML Studio (klasszikus) szolgáltatáson belül végzett adatfeltárásra és előfeldolgozásra például az [adatfeldolgozást előkészítő](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videóban olvashat.
+Az Azure Machine Learning Studio (klasszikus) szolgáltatásban végzett adatfeltárásra és előfeldolgozásra például a következő helyen olvashat: az [adatfeldolgozást előkészítő](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videó.
 
 ## <a name="why-pre-process-and-clean-data"></a>Miért érdemes előre feldolgozni és megtisztítani az adatfeldolgozást?
 A valós világbeli adatok gyűjtése különböző forrásokból és folyamatokból történik, és az adatkészletek minőségét veszélyeztető szabálytalanságokat vagy sérült adatokat is tartalmazhat. A felmerülő jellemző adatminőségi problémák a következők:
@@ -51,7 +51,7 @@ Az általános minőséget az alábbiak ellenőrzésével ellenőrizheti:
 
 Ha az adatokkal kapcsolatos problémákat tapasztal, a **feldolgozási lépések** szükségesek, ami gyakran magában foglalja a hiányzó értékek tisztítását, az adatnormalizálás, a diszkretizálási, a szöveg feldolgozását a beágyazott karakterek eltávolítására és/vagy cseréjére, ami hatással lehet az adatok igazítására, a közös mezőkben szereplő vegyes adattípusokra és egyebek
 
-A **Azure Machine learning jól formázott táblázatos adatokat**használ.  Ha az adatokat már táblázatos formában végzik, az adatfeldolgozást közvetlenül az Azure ML Studio (klasszikus) használatával is elvégezheti a Machine Learning.  Ha az adatokat nem táblázatos formában, tegyük fel, hogy az XML-ben van, akkor az adatokat táblázatos formában kell konvertálni.  
+A **Azure Machine learning jól formázott táblázatos adatokat**használ.  Ha az adatokat már táblázatos formában végzik, az adatfeldolgozást közvetlenül a Machine Learning Azure Machine Learning Studio (klasszikus) használatával is elvégezheti.  Ha az adatokat nem táblázatos formában, tegyük fel, hogy az XML-ben van, akkor az adatokat táblázatos formában kell konvertálni.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Mik az adatok előfeldolgozásával kapcsolatos főbb feladatok?
 * **Adatok tisztítása**: töltse ki vagy adja meg a hiányzó értékeket, azonosítsa és távolítsa el a zajos adatokat és a kiugró adatokat.

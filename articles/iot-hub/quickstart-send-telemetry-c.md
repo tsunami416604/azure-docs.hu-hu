@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 4ccfa45c56a7e59024ce0639f218861054e32395
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 769cb77f297fb30d619623c4a635ef6793825421
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429093"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (C)
 
@@ -59,31 +59,34 @@ Ebben a rövid útmutatóban azonban elő fog készíteni egy fejlesztési körn
 
 1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
-    Fontos, hogy a Visual Studio előfeltételei (a Visual Studio és az "asztali fejlesztés C++munkaterheléssel") telepítve legyenek a gépen a `CMake` telepítés megkezdése **előtt** . Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
+    Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
-2. Nyisson meg egy parancssort vagy a git bash shellt, és navigáljon egy munkakönyvtárhoz, amelybe az Azure IoT C SDK-t szeretné klónozott. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
+2. Keresse meg az SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
+
+3. Nyisson meg egy parancssort vagy a Git Bash-felületet. Futtassa az alábbi parancsokat az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárház legújabb kiadásának klónozásához. Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Ez a művelet várhatóan több percig is eltarthat.
 
-3. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. Adja meg a következő parancsokat a munkakönyvtárból:
+4. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. Futtassa az alábbi parancsokat a `azure-iot-sdk-c` könyvtárából:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. Futtassa a következő parancsot, hogy az SDK egy olyan verzióját hozza létre, amely a fejlesztői ügyféloldali platformra jellemző. A szimulált eszközhöz tartozó Visual Studio-megoldás a `cmake` könyvtárban jön létre.
+5. Futtassa a következő parancsot, hogy az SDK egy olyan verzióját hozza létre, amely a fejlesztői ügyféloldali platformra jellemző. A szimulált eszközhöz tartozó Visual Studio-megoldás a `cmake` könyvtárban jön létre.
 
     ```cmd
     cmake ..
     ```
 
-    Ha a `cmake` nem találja C++ a fordítót, akkor a fenti parancs futtatásakor hibák merülhetnek fel. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Ha `cmake` nem találja a C++ fordítót, előfordulhat, hogy a fenti parancs futtatásakor hibákat fog kiépíteni. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
@@ -150,7 +153,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
     static const char* connectionString = "[device connection string]";
     ```
 
-    Cserélje le a `connectionString` konstans értékét a korábban jegyzett eszköz-kapcsolási sztringre. Utána mentse el az **iothub_convenience_sample.c** módosításait.
+    Cserélje le a `connectionString` konstans értékét a korábban jegyzett eszköz-összekapcsolási sztringre. Utána mentse el az **iothub_convenience_sample.c** módosításait.
 
 3. Egy helyi terminálablakban keresse meg az *iothub_convenience_sample* projektkönyvtárat az Azure IoT C SDK-ban létrehozott CMake könyvtárban. Írja be a következő parancsot a munkakönyvtárból:
 

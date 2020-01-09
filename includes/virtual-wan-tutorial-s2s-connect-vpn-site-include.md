@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bcc4af837cc28a18345e49cd39ddf88d24e44dd8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450830"
 ---
 1. Válassza a **VPN-helyek összekapcsolása** lehetőséget a **helyek összekapcsolását** ismertető lap megnyitásához.
 
@@ -22,7 +22,7 @@ ms.locfileid: "73488895"
    Hajtsa végre a következő mezőket:
 
    * Adjon meg egy előmegosztott kulcsot. Ha nem ad meg kulcsot, az Azure automatikusan létrehoz egyet.
-   * Válassza ki a protokollt és az IPsec-beállításokat. Tekintse meg az alapértelmezett/egyéni IPSec-részleteket (helyezze a lapra mutató hivatkozást)
+   * Válassza ki a protokollt és az IPsec-beállításokat. Tekintse meg az [alapértelmezett/egyéni IPSec-részletek] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
    * Válassza ki a megfelelő beállítást az **alapértelmezett útvonal propagálásához**. Az **Engedélyezés** beállítás lehetővé teszi, hogy a virtuális központ a megtanult alapértelmezett útvonalat propagálja ehhez a kapcsolódáshoz. Ez a jelző az alapértelmezett útvonal-propagálást csak akkor engedélyezi egy kapcsolathoz, ha az alapértelmezett útvonalat már megismerte a virtuális WAN-központ a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely kényszerített bújtatást engedélyez. Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik.
 
 2. Kattintson a **Csatlakozás** gombra.

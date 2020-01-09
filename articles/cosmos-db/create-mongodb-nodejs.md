@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2abf6187be78ee6cb78676284848051a935b150b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445465"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Gyors útmutató: meglévő MongoDB Node. js-webalkalmazás migrálása Azure Cosmos DBre 
 
@@ -38,7 +38,7 @@ Ha elkészült, a rendszer a [Cosmos db](https://azure.microsoft.com/services/co
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
@@ -64,7 +64,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. Ez a mintatárh
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
 
     ```bash
     git clone https://github.com/prashanthmadi/mean
@@ -97,7 +97,7 @@ Ha a `cosmosdb` nincs az alapparancsok listáján, telepítse újra az [Azure CL
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webappokat, adatbázisokat és tárfiókokat). 
+Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/management/overview.md) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webappokat, adatbázisokat és tárfiókokat). 
 
 A következő példában létrehozunk egy erőforráscsoportot a nyugat-európai régióban. Adjon egyedi nevet az erőforráscsoportnak.
 
@@ -111,7 +111,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 Hozzon létre egy Cosmos-fiókot az az [cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) paranccsal.
 
-A következő parancsban cserélje ki a saját egyedi Cosmos-fiókjának nevét, ahol a `<cosmosdb-name>` helyőrző látható. Ezt az egyedi nevet a rendszer a Cosmos DB végpont (`https://<cosmosdb-name>.documents.azure.com/`) részeként használja, így a névnek egyedinek kell lennie az Azure-beli Cosmos-fiókok között. 
+A következő parancsban cserélje ki a saját egyedi Cosmos-fiókjának nevét, ahol a `<cosmosdb-name>` helyőrző látható. Ezt az egyedi nevet fogja használni a Cosmos DB Endpoint (`https://<cosmosdb-name>.documents.azure.com/`) részeként, így a névnek egyedinek kell lennie az Azure-beli Cosmos-fiókok között. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -165,7 +165,7 @@ Ebben a lépésben a MEAN. js-minta alkalmazást a most létrehozott Cosmos-adat
 
 A MEAN.js-tárházban nyissa meg a `config/env/local-development.js` fájlt.
 
-Cserélje le a fájl tartalmát a következő kódra. Ügyeljen arra, hogy a két `<cosmosdb-name>` helyőrzőt is cserélje le a Cosmos-fiók nevével.
+Cserélje le a fájl tartalmát a következő kódra. Ügyeljen arra, hogy a két `<cosmosdb-name>` helyőrzőt is cserélje le a Cosmos-fiók nevére.
 
 ```javascript
 'use strict';
@@ -205,7 +205,7 @@ npm start
 
 Ekkor egy konzolüzenet arról értesíti, hogy a fejlesztőkörnyezet fut. 
 
-Nyissa meg a `http://localhost:3000` böngészőt a böngészőben. A felső menüben válassza a **regisztráció** lehetőséget, majd próbálja meg két dummy felhasználót létrehozni. 
+Nyissa meg a `http://localhost:3000`t egy böngészőben. A felső menüben válassza a **regisztráció** lehetőséget, majd próbálja meg két dummy felhasználót létrehozni. 
 
 A MEAN.js-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. Ha a MEAN.js-nek sikerül automatikusan bejelentkeznie a létrehozott felhasználói fiókba, akkor az Azure Cosmos DB-adatbázissal létesített kapcsolat megfelelően működik. 
 
@@ -237,7 +237,7 @@ A `db` objektumban cserélje le az `uri` értékét az alábbi példa szerint. A
 ```
 
 > [!NOTE] 
-> A `ssl=true` lehetőség azért fontos, mert [Cosmos db SSL szükséges](connect-mongodb-account.md#connection-string-requirements). 
+> Az `ssl=true` lehetőség azért fontos, mert [Cosmos db SSL szükséges](connect-mongodb-account.md#connection-string-requirements). 
 >
 >
 

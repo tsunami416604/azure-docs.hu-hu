@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: 8460ddca5cff2b3da540b5fa8cf66e0687892789
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "73491171"
 ---
 A tároló [REST-alapú Endpoint API-kat](../rest-text-to-speech.md)biztosít. A platformhoz, a keretrendszerhez és a nyelvi változatokhoz számos [minta forráskód-projekt](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/) áll rendelkezésre.
@@ -51,7 +51,7 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
  -d '<speak version="1.0" xml:lang="en-US"><voice name="{VOICE_NAME}">This is a test, only a test.</voice></speak>'
 ```
 
-Ez a parancs:
+A parancs a következőket hajtja végre:
 
 * Egy HTTP POST-kérelmet hoz létre az `speech/synthesize/cognitiveservices/v1` végponthoz.
 * `audio/*` `Accept` fejlécének megadása

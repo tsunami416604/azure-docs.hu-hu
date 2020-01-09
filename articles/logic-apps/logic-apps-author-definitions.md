@@ -1,21 +1,21 @@
 ---
-title: Logic app-definíciók létrehozása, szerkesztése vagy kiterjesztése
-description: Logic app JSON-definíciók írása, szerkesztése és kiterjesztése a Azure Logic Apps-ben
+title: Logic app JSON munkafolyamat-definíciók létrehozása, szerkesztése vagy kiterjesztése
+description: A logikai alkalmazás JSON munkafolyamat-definícióinak írása, szerkesztése és kiterjesztése Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 95e9f7211c8cd6cb4edd59d099ae9c189bae3780
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792589"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666924"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>JSON létrehozása, szerkesztése vagy kiterjesztése a Logic app-definíciókban Azure Logic Apps
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>JSON létrehozása, szerkesztése vagy kiterjesztése a Logic app munkafolyamat-definícióinak Azure Logic Apps
 
-Ha [Azure Logic apps](../logic-apps/logic-apps-overview.md)-ben automatizált munkafolyamatokkal rendelkező vállalati integrációs megoldásokat hoz létre, az alapul szolgáló logikai alkalmazás-definíciók egyszerű és deklaratív JavaScript Object Notation (JSON) és a [munkafolyamat-definíciós nyelv (WDL) sémáját](../logic-apps/logic-apps-workflow-definition-language.md) használják a leíráshoz és az érvényesítéshez. Ezek a formátumok a Logic app-definíciók könnyebben olvashatók és megérthetők, és a kód ismerete nélkül. Ha automatizálni szeretné a logikai alkalmazások létrehozását és üzembe helyezését, [Azure Resource Manager-sablonokban](../azure-resource-manager/template-deployment-overview.md)található [Azure-erőforrásokként](../azure-resource-manager/resource-group-overview.md) is hozzáadhat logikai alkalmazás-definíciókat. A Logic apps létrehozásához, kezeléséhez és üzembe helyezéséhez használhatja a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), az [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)vagy a [Azure Logic apps REST API-kat](https://docs.microsoft.com/rest/api/logic/).
+Ha [Azure Logic apps](../logic-apps/logic-apps-overview.md)-ben automatizált munkafolyamatokkal rendelkező vállalati integrációs megoldásokat hoz létre, az alapul szolgáló logikai alkalmazás-definíciók egyszerű és deklaratív JavaScript Object Notation (JSON) és a [munkafolyamat-definíciós nyelv (WDL) sémáját](../logic-apps/logic-apps-workflow-definition-language.md) használják a leíráshoz és az érvényesítéshez. Ezek a formátumok a Logic app-definíciók könnyebben olvashatók és megérthetők, és a kód ismerete nélkül. Ha automatizálni szeretné a logikai alkalmazások létrehozását és üzembe helyezését, [Azure Resource Manager-sablonokban](../azure-resource-manager/template-deployment-overview.md)található [Azure-erőforrásokként](../azure-resource-manager/management/overview.md) is hozzáadhat logikai alkalmazás-definíciókat. A Logic apps létrehozásához, kezeléséhez és üzembe helyezéséhez használhatja a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), az [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)vagy a [Azure Logic apps REST API-kat](https://docs.microsoft.com/rest/api/logic/).
 
 Ha a Logic app-definíciókat a JSON-ban szeretné használni, nyissa meg a kód nézet szerkesztőjét, ha a Azure Portal vagy a Visual Studióban dolgozik, vagy másolja a definíciót a kívánt szerkesztőbe. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [az első logikai alkalmazás létrehozását ismertető témakört](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -39,7 +39,7 @@ Mielőtt a Logic app-definícióját a Visual Studióban tudja dolgozni, győző
 
 A Visual Studióban megnyithatja azokat a Logic apps-alkalmazásokat, amelyeket közvetlenül a Azure Portal vagy a Visual studióból Azure Resource Manager projects használatával hoztak létre és helyeztek üzembe.
 
-1. Nyissa meg a Visual Studio-megoldást vagy az [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) -projektet, amely tartalmazza a logikai alkalmazást.
+1. Nyissa meg a Visual Studio-megoldást vagy az [Azure erőforráscsoport](../azure-resource-manager/management/overview.md) -projektet, amely tartalmazza a logikai alkalmazást.
 
 2. Keresse meg és nyissa meg a logikai alkalmazás definícióját, amely alapértelmezés szerint egy **LogicApp. JSON**nevű [Resource Manager-sablonban](../azure-resource-manager/template-deployment-overview.md)jelenik meg. A sablont a különböző környezetekben való üzembe helyezéshez használhatja és testreszabhatja.
 
@@ -58,7 +58,7 @@ A Visual Studióban megnyithatja azokat a Logic apps-alkalmazásokat, amelyeket 
 
 ## <a name="parameters"></a>Paraméterek
 
-Az üzembe helyezési életciklus általában különböző környezetekkel rendelkezik fejlesztési, tesztelési, előkészítési és éles környezetben. Ha olyan értékekkel rendelkezik, amelyeket a logikai alkalmazásban rögzítjük nélkül kíván használni, vagy amelyek a telepítési igényektől függően változnak, létrehozhat egy [Azure Resource Manager sablont](../azure-resource-manager/resource-group-overview.md) a munkafolyamat-definícióhoz, hogy automatizálható legyen a logikai alkalmazások telepítése is. 
+Az üzembe helyezési életciklus általában különböző környezetekkel rendelkezik fejlesztési, tesztelési, előkészítési és éles környezetben. Ha olyan értékekkel rendelkezik, amelyeket a logikai alkalmazásban rögzítjük nélkül kíván használni, vagy amelyek a telepítési igényektől függően változnak, létrehozhat egy [Azure Resource Manager sablont](../azure-resource-manager/management/overview.md) a munkafolyamat-definícióhoz, hogy automatizálható legyen a logikai alkalmazások telepítése is. 
 
 Az alábbi általános lépések végrehajtásával *parametrizálja*, vagy definiálhatja és használhatja a paramétereket az értékekhez. Ezután megadhatja az értékeket egy külön paraméter-fájlban, amely átadja ezeket az értékeket a sablonnak. Ily módon a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket. A részletekért lásd [: Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -72,7 +72,7 @@ Az alábbi általános lépések végrehajtásával *parametrizálja*, vagy defi
 
    A munkafolyamat-definíciós paraméterek értékeinek megadásakor a rendszer a munkafolyamat-definíción kívüli paraméterek szakaszt használva hivatkozhat a sablon paramétereinek használatára, de továbbra is a logikai alkalmazás erőforrás-definícióján belül marad. Ily módon átadhatja a sablon paramétereinek értékeit a munkafolyamat-definíciós paraméterekbe.
 
-1. Tárolja a paraméterek értékeit egy külön paraméter- [fájlban](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) , és adja hozzá a fájlt az üzembe helyezéshez.
+1. Tárolja a paraméterek értékeit egy külön paraméter- [fájlban](../azure-resource-manager/templates/parameter-files.md) , és adja hozzá a fájlt az üzembe helyezéshez.
 
 ## <a name="process-strings-with-functions"></a>Karakterláncok feldolgozása függvényekkel
 

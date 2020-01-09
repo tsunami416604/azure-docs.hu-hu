@@ -1,17 +1,17 @@
 ---
-title: Hitelesítés hozzáadása egyéni API-khoz
-description: Hitelesítés beállítása egyéni API-k hívásához Azure Logic Apps
+title: Hitelesítés hozzáadása az egyéni API-khoz irányuló hívások biztonságossá tételéhez
+description: Hitelesítés beállítása a Azure Logic Apps egyéni API-khoz érkező hívások biztonságossá tételéhez
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793154"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666890"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Egyéni API-k biztonságos hívása Azure Logic Apps
 
@@ -201,7 +201,7 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 | -------- | -------- | ----------- | 
 | Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
 | célközönség | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| clientId | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| ügyfél-azonosító | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
 | titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
 | type | Igen | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. | 
 |||| 
@@ -234,7 +234,7 @@ Példa:
 
 <a name="certificate"></a>
 
-#### <a name="certificate-authentication"></a>Tanúsítványalapú hitelesítés
+#### <a name="certificate-authentication"></a>Tanúsítványhitelesítés
 
 Ha ellenőrizni szeretné a logikai alkalmazás bejövő kérelmeit a webalkalmazásba vagy az API-alkalmazásba, használhat ügyféltanúsítványt. A kód beállításához megtudhatja, [hogyan konfigurálhatja a TLS kölcsönös hitelesítését](../app-service/app-service-web-configure-tls-mutual-auth.md).
 

@@ -1,7 +1,6 @@
 ---
 title: Oktatóanyag – felhasználó C# által definiált függvények írása Azure stream Analytics feladatokhoz a Visual Studióban (előzetes verzió)
 description: Ez az oktatóanyag bemutatja, hogyan írhat c# felhasználó által definiált függvényeket Stream Analytics feladatokhoz a Visual Studióban.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426299"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Oktatóanyag: C# felhasználó által definiált függvény írása Azure stream Analytics feladathoz (előzetes verzió)
 

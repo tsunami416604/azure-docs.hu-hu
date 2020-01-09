@@ -2,19 +2,15 @@
 title: Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
 description: Tudnivalók az Update és a Change Tracking megoldás előkészítéséről az Azure Automationhöz.
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421847"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
 
@@ -37,7 +33,7 @@ Az oktatóanyag elvégzésének a következők a feltételei:
 
 ## <a name="onboard-an-azure-vm"></a>Azure-beli virtuális gép előkészítése
 
-A gépek előkészítésének több módja is van. A megoldást [egy virtuális gépről](automation-onboard-solutions-from-vm.md), [az Automation-fiókjában](automation-onboard-solutions-from-automation-account.md) lévő [több számítógép tallózásával](automation-onboard-solutions-from-browse.md) vagy egy runbook segítségével készítheti elő. Ez az oktatóanyag végigvezeti az Update Management runbook segítségével történő engedélyezésén. Nagy mennyiségű Azure-beli virtuális gép előkészítéséhez egy meglévő virtuális gépet kell előkészíteni a Change Tracking vagy az Update Management megoldással. Ebben a lépésben egy virtuális gépet fogunk előkészíteni az Update Management és a Change Tracking megoldással.
+A gépek több módon is üzembe helyezhetők, a megoldás a [virtuális gépről](automation-onboard-solutions-from-vm.md)is felhasználható, így [több gép is tallózható](automation-onboard-solutions-from-browse.md) az [Automation-fiókból](automation-onboard-solutions-from-automation-account.md)vagy a runbook. Ez az oktatóanyag végigvezeti az Update Management runbook segítségével történő engedélyezésén. Nagy mennyiségű Azure-beli virtuális gép előkészítéséhez egy meglévő virtuális gépet kell előkészíteni a Change Tracking vagy az Update Management megoldással. Ebben a lépésben egy virtuális gépet fogunk előkészíteni az Update Management és a Change Tracking megoldással.
 
 ### <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
@@ -135,7 +131,7 @@ A runbook indításához elő kellett készítenie a change tracking vagy az upd
 
 Virtuális gép eltávolítása Update Managementról:
 
-* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates` mentett keresésből. A mentett keresések a munkaterület **általános** területén találhatók.
+* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfigurációs `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
 * Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Következő lépések

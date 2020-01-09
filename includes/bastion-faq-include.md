@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466589"
 ---
 ### <a name="regions"></a>Mely régiók érhetők el?
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875474"
 ### <a name="publicip"></a>Szükségem van nyilvános IP-címekre a virtuális gépen?
 
 NINCS szüksége nyilvános IP-címekre azon Azure-beli virtuális gépen, amelyhez az Azure Bastion szolgáltatáshoz csatlakozik. A megerősített szolgáltatás megnyitja az RDP/SSH-munkamenetet/kapcsolatot a virtuális géppel a virtuális gép magánhálózati IP-címén a virtuális hálózaton belül.
+
+### <a name="is-ipv6-supported"></a>Támogatott-e az IPv6?
+
+Az IPv6 jelenleg nem támogatott. Az Azure Bastion csak az IPv4-t támogatja.
 
 ### <a name="rdpssh"></a>Szükség van RDP-vagy SSH-ügyfélre?
 

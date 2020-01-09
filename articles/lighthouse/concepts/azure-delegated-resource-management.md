@@ -3,12 +3,12 @@ title: Az Azure által delegált erőforrás-kezelés
 description: A felügyelt szolgáltatások lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat adjanak az ügyfeleknek az Azure piactéren.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453630"
 ---
 # <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
 
@@ -33,7 +33,7 @@ Amikor az ügyfelet az Azure-beli delegált erőforrás-kezelésre helyezi, hozz
 
 Magas szinten a következőképpen működik az Azure-beli delegált erőforrás-kezelés:
 
-1. Szolgáltatóként azonosítania kell a csoportok, a szolgáltatások és a felhasználók által az ügyfél Azure-erőforrásainak felügyeletéhez szükséges hozzáférési jogosultságokat (szerepköröket). A hozzáférési definíció tartalmazza a szolgáltató bérlői AZONOSÍTÓját, valamint az ajánlathoz szükséges hozzáférést, amely a bérlő **principalId** -identitások használatával van leképezve a [beépített **definíciós** -értékekre](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (közreműködő, virtuális gép Közreműködő, olvasó stb.).
+1. Szolgáltatóként azonosítania kell a csoportok, a szolgáltatások és a felhasználók által az ügyfél Azure-erőforrásainak felügyeletéhez szükséges hozzáférési jogosultságokat (szerepköröket). A hozzáférési definíció tartalmazza a szolgáltató bérlői AZONOSÍTÓját, valamint az ajánlathoz szükséges hozzáférést, amely a bérlő **principalId** -identitások használatával van leképezve a [beépített **definíciós** -értékekre](../../role-based-access-control/built-in-roles.md) (közreműködő, VM közreműködő, olvasó stb.).
 2. Ezt a hozzáférést és az ügyfelet az Azure-beli delegált erőforrás-kezeléshez kétféleképpen adhatja meg:
    - Az ügyfél által elfogadásra kerülő [Azure Marketplace-beli felügyelt szolgáltatások](../how-to/publish-managed-services-offers.md) (privát vagy nyilvános) közzététele
    - [Azure Resource Manager-sablon üzembe helyezése az ügyfél bérlője](../how-to/onboard-customer.md) számára egy vagy több konkrét előfizetés vagy erőforráscsoport esetén

@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681484"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563537"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-create-datasets.md)
-> * [Aktuális verzió](concepts-datasets-linked-services.md)
+> * [Aktuális verzió](concepts-linked-services.md)
 
 Ez a cikk leírja, hogy a társított szolgáltatások milyen módon vannak definiálva a JSON formátumban, és hogyan használják őket Azure Data Factory folyamatokban.
 
@@ -61,7 +61,7 @@ Data Factory társított szolgáltatás JSON formátumban van definiálva a köv
 
 A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
-Tulajdonság | Leírás | Kötelező |
+Tulajdonság | Leírás | Szükséges |
 -------- | ----------- | -------- |
 név | A társított szolgáltatás neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
 type | A társított szolgáltatás típusa. Például: AzureStorage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Igen |
@@ -77,10 +77,7 @@ A következő társított szolgáltatás egy Azure Storage-beli társított szol
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,12 +92,12 @@ A következő társított szolgáltatás egy Azure Storage-beli társított szol
 Társított szolgáltatásokat a következő eszközök vagy SDK-k egyikével hozhat létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal
 
 ## <a name="data-store-linked-services"></a>Adattárhoz társított szolgáltatások
-A Data Factory által támogatott adatok listáját az [összekötő áttekintése című](copy-activity-overview.md#supported-data-stores-and-formats) cikkben találja. A támogatott kapcsolatok tulajdonságainak megismeréséhez kattintson egy adattárra.
+A Data Factory által támogatott adattárak listáját az [Összekötők áttekintése című](copy-activity-overview.md#supported-data-stores-and-formats) cikkben találja. A támogatott kapcsolatok tulajdonságainak megismeréséhez kattintson egy adattárra.
 
-## <a name="compute-linked-services"></a>Társított szolgáltatások számítása
+## <a name="compute-linked-services"></a>A Compute-tal társított szolgáltatások
 A [számítási környezetek](compute-linked-services.md) ismertetése a különböző számítási környezetekről nyújt segítséget, amelyekkel kapcsolódhat az adat-előállítóhoz, valamint a különböző konfigurációkhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő oktatóanyag részletes útmutatást nyújt a folyamatok és adatkészletek létrehozásához ezen eszközök vagy SDK-k egyikének használatával.
 
 - [Gyors útmutató: adat-előállító létrehozása .NET használatával](quickstart-create-data-factory-dot-net.md)

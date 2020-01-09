@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 6e2e39381e1500f86bce55726dda0286385d1674
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 530cc029f2339c4aeb7aa1744dceec21810db2b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772892"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432064"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra a Azure Database for MariaDBban
 Ez a cikk ismerteti a Azure Database for MariaDB kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MariaDB-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -28,46 +28,46 @@ Ahogy az ügyfél csatlakozik az adatbázishoz, egy kapcsolati karakterláncot k
 
 A következő táblázat felsorolja az Azure Database for MariaDB átjáró elsődleges és másodlagos IP-címeit az összes adatterülethez. Az elsődleges IP-cím az átjáró aktuális IP-címe, a második IP-cím pedig egy feladatátvételi IP-cím az elsődleges hiba esetén. Ahogy említettük, az ügyfeleknek engedélyezniük kell a kimenő forgalmat az IP-címekre is. A második IP-cím nem figyeli a szolgáltatásokat, amíg Azure Database for MariaDB nem aktiválja a kapcsolatokat.
 
-| **Régió neve** | **Elsődleges IP-cím** | **Másodlagos IP-cím** |
-|:----------------|:-------------|:------------------------|
-| Ausztrália keleti régiója | 13.75.149.87 | 40.79.161.1 |
-| Délkelet-Ausztrália | 191.239.192.109 | 13.73.109.251 |
-| Dél-Brazília | 104.41.11.5 | |
-| Közép-Kanada | 40.85.224.249 | |
-| Kelet-Kanada | 40.86.226.166 | |
-| USA középső régiója | 23.99.160.139 | 13.67.215.62 |
-| Kelet-Kína 1 | 139.219.130.35 | |
-| Kína 2. keleti régiója | 40.73.82.1 | |
-| Észak-Kína 1 | 139.219.15.17 | |
-| Kína 2. északi régiója | 40.73.50.0 | |
-| Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
-| USA keleti régiója 1 | 191.238.6.43 | 40.121.158.30 |
-| USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
-| Közép-Franciaország | 40.79.137.0 | 40.79.129.1 |
-| Közép-Németország | 51.4.144.100 | |
-| Közép-India | 104.211.96.159 | |
-| Dél-India | 104.211.224.146 | |
-| Nyugat-India | 104.211.160.80 | |
-| Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
-| Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
-| Korea középső régiója | 52.231.32.42 | |
-| Dél-Korea | 52.231.200.86 |  |
-| USA északi középső régiója | 23.98.55.75 | 23.96.178.199 |
-| Észak-Európa | 191.235.193.75 | 40.113.93.91 |
-| USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
-| Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
-| Dél-Afrika északi régiója | 102.133.152.0 | |
-| Dél-Afrika nyugati régiója | 102.133.24.0 | |
-| Egyesült Arab Emírségek északi régiója | 65.52.248.0 | |
-| Egyesült Királyság déli régiója | 51.140.184.11 | |
-| Egyesült Királyság nyugati régiója | 51.141.8.11| |
-| Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
-| USA nyugati régiója 1 | 23.99.34.75 | 104.42.238.205 |
-| USA 2. nyugati régiója | 13.66.226.202 | |
+| **Régió neve** | **Átjáró IP-címei** |
+|:----------------|:-------------|
+| Ausztrália középső régiója| 20.36.105.0     |
+| Ausztráliai Central2     | 20.36.113.0   |
+| Ausztrália keleti régiója | 13.75.149.87, 40.79.161.1     |
+| Délkelet-Ausztrália |191.239.192.109, 13.73.109.251   |
+| Dél-Brazília | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
+| Közép-Kanada |40.85.224.249  |
+| Kelet-Kanada | 40.86.226.166    |
+| USA középső régiója | 23.99.160.139, 13.67.215.62   |
+| Kína 2. keleti régiója | 40.73.82.1  |
+| Kína 2. északi régiója | 40.73.50.0     |
+| Kelet-Ázsia | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
+| USA keleti régiója | 40.121.158.30, 191.238.6.43  |
+| USA 2. keleti régiója |40.79.84.180, 191.239.224.107, 52.167.104.0     |
+| Közép-Franciaország | 40.79.137.0, 40.79.129.1  |
+| Közép-Németország | 51.4.144.100     |
+| Kelet-Észak-Németország | 51.5.144.179  |
+| Közép-India | 104.211.96.159     |
+| Dél-India | 104.211.224.146  |
+| Nyugat-India | 104.211.160.80    |
+| Kelet-Japán | 13.78.61.196, 191.237.240.43  |
+| Nyugat-Japán | 104.214.148.156, 191.238.68.11    |
+| Korea középső régiója | 52.231.32.42   |
+| Dél-Korea | 52.231.200.86    |
+| USA északi középső régiója | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
+| Észak-Európa | 40.113.93.91, 191.235.193.75    |
+| Dél-Afrika északi régiója  | 102.133.152.0    |
+| Dél-Afrika nyugati régiója | 102.133.24.0   |
+| USA déli középső régiója |13.66.62.124, 23.98.162.75   |
+| Délkelet-Ázsia | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
+| Egyesült Arab Emírségek középső régiója | 20.37.72.64  |
+| Egyesült Arab Emírségek északi régiója | 65.52.248.0    |
+| Egyesült Királyság déli régiója | 51.140.184.11   |
+| Egyesült Királyság nyugati régiója | 51.141.8.11  |
+| USA nyugati középső régiója | 13.78.145.25     |
+| Nyugat-Európa | 40.68.37.158, 191.237.232.75     |
+| USA nyugati régiója | 104.42.238.205, 23.99.34.75  |
+| USA 2. nyugati régiója | 13.66.226.202  |
 ||||
-
-> [!NOTE]
-> Az *USA 2. keleti* régiójában a `52.167.104.0`harmadlagos IP-címe is szerepel.
 
 ## <a name="next-steps"></a>Következő lépések
 

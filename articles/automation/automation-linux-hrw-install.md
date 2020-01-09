@@ -2,19 +2,15 @@
 title: Az Azure Automation hibrid runbook-feldolgozója Linuxra
 description: Ez a cikk a Azure Automation hibrid Runbook-feldolgozók telepítésével kapcsolatos információkat tartalmaz, így a runbookok Linux-alapú számítógépeken futtatható a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421924"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -48,7 +44,7 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 
 | **Szükséges csomag** | **Leírás** | **Minimális verzió**|
 |--------------------- | --------------------- | -------------------|
-|glibc |GNU C könyvtár| 2.5-12 |
+|Glibc |GNU C könyvtár| 2.5-12 |
 |Openssl| OpenSSL-kódtárak | 1,0 (a TLS 1,1 és a TLS 1,2 támogatott|
 |Curl | cURL webes ügyfél | 7.15.5|
 |Python – ctypes | A Python 2. x megadása kötelező |

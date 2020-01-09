@@ -5,26 +5,25 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 4079b0cab0126a9750bbb91ca7046aa18dbe9ece
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379432"
 ---
 Az űrlap-felismerő a következő követelményeknek megfelelő bemeneti dokumentumokon működik:
 
-* A formátumnak JPG, PNG vagy PDF formátumúnak kell lennie (szöveges vagy beolvasott). A Text-Embedded PDF-fájlok a legjobbak, mert nem lehetséges a hibák kinyerése és helye.
+* A formátumnak JPG, PNG, PDF (Text vagy beolvasott) vagy TIFF formátumúnak kell lennie. A Text-Embedded PDF-fájlok a legjobbak, mert nem lehetséges a hibák kinyerése és helye.
 * Ha a PDF-fájlok jelszóval vannak zárolva, a küldés előtt el kell távolítania a zárolást.
-* A fájlméretnek 4 MB-nál kisebbnek kell lennie.
+* A PDF-és a TIFF-dokumentumnak 200 vagy annál kisebbnek kell lennie, és a betanítási adatkészlet teljes méretének 500 vagy annál kisebbnek kell lennie.
 * Képek esetén a méretek 600 x 100 képpont és 4200 x 4200 képpont közé kell, hogy legyenek.
 * Ha papíralapú dokumentumokból olvas be dokumentumokat, az űrlapoknak kiváló minőségű vizsgálatokat kell ellátniuk.
 * A szövegnek a latin ábécét (angol karakter) kell használnia.
-* Az adatoknak kulcsokat és értékeket kell tartalmazniuk.
-* A kulcsok megjelenhetnek a fent vagy az értékek bal oldalán, de nem lent vagy jobbra.
+* A nem felügyelt tanulás (címkézett adatok nélkül) esetében az adatoknak kulcsokat és értékeket kell tartalmazniuk.
+* A nem felügyelt tanulás (címkézett adatok nélkül) esetében a kulcsoknak az értékek felett vagy balra kell megjelenniük; nem jelennek meg a jobb oldalon.
 
 Az űrlap-felismerő jelenleg nem támogatja az ilyen típusú bemeneti adatokat:
 
 * Összetett táblák (beágyazott táblák, egyesített fejlécek vagy cellák stb.).
 * Jelölőnégyzetek és választógombok.
-* A PDF-dokumentumok 50 oldalnál hosszabbak.

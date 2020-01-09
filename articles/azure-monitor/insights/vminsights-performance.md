@@ -4,15 +4,15 @@ description: A teljesítmény a Azure Monitor for VMs szolgáltatása, amely aut
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399281"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>A teljesítmény diagramon Azure Monitor for VMs (előzetes verzió)
 
@@ -28,7 +28,7 @@ Azure Monitor a teljesítmény szolgáltatás az előfizetésben vagy a környez
 
 ![A VM-elemzések teljesítménye a legfontosabb N lista nézet](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Ha egynél több Log Analytics munkaterülettel rendelkezik, a **felső N diagramok** lapon válassza ki azt a munkaterületet, amelyet a megoldás az oldal tetején lévő **munkaterület** -választóval engedélyez. A **csoport** választója előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../platform/computer-groups.md)és virtuálisgép-méretezési csoportokat ad vissza a kiválasztott munkaterülethez kapcsolódó számítógépeken, amelyeket az ezen az oldalon található diagramokon megjelenített eredmények további szűréséhez használhat, valamint a többi oldalon. A kijelölés csak a teljesítmény szolgáltatásra vonatkozik, és nem végez átadást az állapotra vagy a térképre.  
+Ha egynél több Log Analytics munkaterülettel rendelkezik, a **felső N diagramok** lapon válassza ki azt a munkaterületet, amelyet a megoldás az oldal tetején lévő **munkaterület** -választóval engedélyez. A **csoport** választója előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../platform/computer-groups.md)és virtuálisgép-méretezési csoportokat ad vissza a kiválasztott munkaterülethez kapcsolódó számítógépeken, amelyeket az ezen a lapon és a többi oldalon található diagramokon megjelenített eredmények további szűréséhez használhat. A kijelölés csak a teljesítmény szolgáltatásra vonatkozik, és nem végez átadást az állapotra vagy a térképre.  
 
 Alapértelmezés szerint a diagramok az elmúlt 24 órában láthatók. A **TimeRange** -választó használatával akár 30 napig is lekérdezheti a korábbi időtartományokat, hogy megmutassa, hogyan nézett ki a teljesítmény a múltban.
 
@@ -38,7 +38,7 @@ A lapon látható öt kapacitás-kihasználtsági diagram a következő:
 * Rendelkezésre álló memória – megjeleníti az első öt gépet a rendelkezésre álló memória legkisebb átlagos mennyiségétől számítva. 
 * Használt logikai lemezterület (%) – az első öt gépet mutatja, amely a legnagyobb átlagos lemezterületet használja az összes lemez kötetén. 
 * Elküldési sebesség (bájt) – megjeleníti az első öt gépet, amely a legtöbb elküldési bájtos átlagot mutatja 
-* Bájtok fogadásának aránya – az első öt, a másodpercenként elküldhető bájtok átlagát mutatja. 
+* Bájtok fogadásának aránya – az első öt, a maximálisan fogadott bájtot tartalmazó gépet mutatja. 
 
 Az öt diagram jobb felső sarkában található rögzítés ikonra kattintva rögzítheti a kiválasztott diagramot az utolsó megtekintett Azure-irányítópulton.  Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, a rendszer átirányítja Azure Monitor for VMs és betölti a helyes hatókört és nézetet.  
 
@@ -74,7 +74,7 @@ Ha szeretné megtekinteni az egyes virtuális gépek erőforrás-felhasználás�
 
 Ha egy adott virtuális gépen szeretné szűrni az eredményeket a listában, adja meg a számítógép nevét a **Keresés név alapján** szövegmezőbe.  
 
-Ha inkább a kihasználtságot szeretné megtekinteni egy másik teljesítménymutató alapján, a **metrika** legördülő listából válassza ki a **rendelkezésre álló memóriát**, a **felhasznált logikai lemezterületet (%)** , a **hálózat fogadott bájt/mp**vagy a **hálózati bájt/mp** elemet, valamint a frissítések listázása az adott metrika hatókörén belüli kihasználtság megjelenítéséhez.  
+Ha inkább a kihasználtságot szeretné megtekinteni egy másik teljesítménymutató alapján, a **metrika** legördülő listából válassza ki a **rendelkezésre álló memóriát**, a **használt logikai lemezterületet (%)** , a **hálózat fogadott bájt/mp**vagy a **hálózat által küldött bájt/mp** elemet, valamint a lista frissítéseit, hogy megjelenjenek az adott metrika hatókörének kihasználtsága.  
 
 Ha kiválasztja a virtuális gépet a listából, megnyílik a **Tulajdonságok** panel a lap jobb oldalán, és Itt választhatja ki a **teljesítmény részleteit**.  Megnyílik a **virtuális gép részletei** lap, és az adott virtuális gépre van kiterjedően, ami a virtuálisgép-elemzések teljesítményének közvetlenül az Azure-beli virtuális gépről való elérésekor is hasonló élményt nyújt.  
 
@@ -123,7 +123,7 @@ Az egyik diagram jobb felső sarkában található rögzítés ikonra kattintva 
 
 A Azure Monitor for VMs részeként engedélyezett teljesítmény-mérőszámok nem tartalmaznak előre konfigurált riasztási szabályokat. Az Azure-beli virtuális gépen észlelt teljesítményproblémák (például a nagy CPU-kihasználtság, a kevés memória, a kevés lemezterület stb.) megfelelő [állapotú riasztások](vminsights-health.md#alerts) tartoznak.  Ezek az állapot-riasztások azonban csak a Azure Monitor for VMs számára engedélyezett összes virtuális gépre érvényesek. 
 
-A Log Analytics munkaterületen azonban csak a szükséges teljesítmény-mérőszámok egy részhalmazát gyűjthetjük és tároljuk. Ha a figyelési stratégia olyan elemzést vagy riasztást igényel, amely más teljesítménymutatókat is tartalmaz a virtuális gép kapacitásának vagy állapotának hatékony kiértékeléséhez, vagy a rugalmasságot a saját riasztási feltételeinek vagy logikájának megadásához, lehetősége van konfigurálja a [teljesítményszámlálók gyűjteményét](../platform/data-sources-performance-counters.md) a log Analyticsban, és adja meg a [naplók riasztásait](../platform/alerts-log.md). Míg a Log Analytics lehetővé teszi, hogy összetett elemzéseket végezzen más adattípusokkal, és hogy továbbra is megmaradjon a trend-elemzések támogatása, a metrikák pedig a közel valós idejű forgatókönyvek támogatása érdekében. Ezeket az [Azure diagnosztikai ügynök](../../virtual-machines/windows/monitor.md) gyűjti, és a Azure monitor metrikai tárolóban tárolja, így a riasztások alacsonyabb késéssel és alacsonyabb áron hozhatók létre.
+A Log Analytics munkaterületen azonban csak a szükséges teljesítmény-mérőszámok egy részhalmazát gyűjthetjük és tároljuk. Ha a figyelési stratégia olyan elemzést vagy riasztást igényel, amely más teljesítménymutatókat is tartalmaz a virtuális gép kapacitásának vagy állapotának hatékony kiértékeléséhez, vagy ha rugalmasságra van szüksége a saját riasztási feltételeinek vagy logikájának megadásához, konfigurálhatja a [teljesítményszámlálók gyűjteményét](../platform/data-sources-performance-counters.md) log Analytics, és meghatározhatja a [naplók riasztásait](../platform/alerts-log.md). Míg a Log Analytics lehetővé teszi, hogy összetett elemzéseket végezzen más adattípusokkal, és hogy továbbra is megmaradjon a trend-elemzések támogatása, a metrikák pedig a közel valós idejű forgatókönyvek támogatása érdekében. Ezeket az [Azure diagnosztikai ügynök](../../virtual-machines/windows/monitor.md) gyűjti, és a Azure monitor metrikai tárolóban tárolja, így a riasztások alacsonyabb késéssel és alacsonyabb áron hozhatók létre.
 
 Tekintse át a [metrikák és naplók összegyűjtésének](../platform/data-platform.md) áttekintését Azure monitor segítségével, hogy jobban megértse az alapvető különbségeket és egyéb szempontokat a további mérőszámok és riasztási szabályok gyűjtésének konfigurálása előtt.  
 

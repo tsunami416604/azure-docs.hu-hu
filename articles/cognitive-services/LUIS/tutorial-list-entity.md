@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447789"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Oktatóanyag: pontos szöveggel egyező adatok beolvasása a listázási entitással
 
 Ebből az oktatóanyagból megtudhatja, hogyan kérhet le olyan adatokat, amelyek pontosan megfelelnek az előre meghatározott elemek listájának.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -51,7 +49,7 @@ A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
 ## <a name="import-example-json-and-add-utterances"></a>Importálás példa. JSON és hosszúságú kimondott szöveg hozzáadása
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -74,7 +72,7 @@ Az elsődleges név és a szinonimák példái a következők:
 |Kanonikus név|Szinonimák|
 |--|--|
 |Deep Dish|mély<br>mély tál kéreg<br>vastag<br>sűrű kéreg|
-|Pásztázás|Rendszeres<br>eredeti<br>normál<br>normál kéreg<br>eredeti kéreg<br>normál kéreg|
+|Pásztázás|rendszeres<br>eredeti<br>normál<br>normál kéreg<br>eredeti kéreg<br>normál kéreg|
 |Töltött|töltött kéreg|
 |Vékony|vékony kéreg<br>sovány<br>sovány kéreg|
 

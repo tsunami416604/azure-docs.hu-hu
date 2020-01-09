@@ -1,25 +1,16 @@
 ---
-title: Az Azure Service Fabric Reliable Services konfigurálása | Microsoft Docs
-description: Tudnivalók az állapot-nyilvántartó Reliable Services konfigurálásáról az Azure Service Fabricban.
-services: Service-Fabric
-documentationcenter: .net
+title: Az Azure Service Fabric konfigurálása Reliable Services
+description: Tudnivalók az állapot-nyilvántartó Reliable Services Azure Service Fabric-alkalmazásokban való konfigurálásáról globálisan és egyetlen szolgáltatáshoz.
 author: sumukhs
-manager: chackdan
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242889"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645514"
 ---
 # <a name="configure-stateful-reliable-services"></a>Állapot-nyilvántartó megbízható szolgáltatások konfigurálása
 A megbízható szolgáltatások két konfigurációs beállítással rendelkeznek. Az egyik készlet globális a fürt összes megbízható szolgáltatásához, míg a másik készlet egy adott megbízható szolgáltatásra jellemző.

@@ -1,25 +1,14 @@
 ---
-title: Az Azure Service Fabricban található állapot-nyilvántartó szolgáltatások egység tesztelése | Microsoft Docs
+title: Az Azure Service Fabricban az állapot-nyilvántartó szervezeti egységek tesztelése
 description: Ismerje meg az egység tesztelési Service Fabric állapot-nyilvántartó szolgáltatásainak fogalmait és gyakorlatát.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249270"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433915"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Állapot-nyilvántartó Service Fabric egység tesztelése
 
@@ -51,13 +40,13 @@ Emellett több példány is lehetővé teszi a tesztek számára, hogy az egyes 
 A State Managert távoli erőforrásként kell kezelni, ezért a rendszer kigúnyolja. A State Manager kiírásakor szükség van néhány, a memóriában tárolt tárterületre, amellyel nyomon követhető, hogy a rendszer milyen adatokat ment az állami kezelőbe, hogy azok olvashatók és ellenőrizhetők legyenek. Ez egy egyszerű módja annak, hogy a megbízható gyűjtemények egyes típusaihoz hozzon létre mintául szolgáló példányokat. Ezekben a modellekben olyan adattípust használjon, amely szorosan igazodik az adott gyűjteményen végrehajtott műveletekhez. Az alábbiakban néhány javasolt adattípust ismertetünk az egyes megbízható gyűjteményekhez
 
 - IReliableDictionary < TKey, TValue >-> System. Collections. párhuzamos. ConcurrentDictionary < TKey, TValue >
-- IReliableQueue\<t >-> System. Collections. Generic.\<üzenetsor t >
-- IReliableConcurrentQueue\<t >-> System. Collections. párhuzamos. ConcurrentQueue\<T >
+- IReliableQueue\<T >-> System. Collections. Generic. üzenetsor\<T >
+- IReliableConcurrentQueue\<T >-> System. Collections. párhuzamos. ConcurrentQueue\<T >
 
 #### <a name="many-state-manager-instances-single-storage"></a>Számos State Manager-példány, egyetlen tárterület
 Ahogy azt korábban említettük, a State Managert és a megbízható gyűjteményeket távoli erőforrásként kell kezelni. Ezért ezeket az erőforrásokat az egységen belüli tesztek során kell kitalálni. Azonban egy állapot-nyilvántartó szolgáltatás több példányának futtatásakor a rendszer kihívást jelent, hogy minden egyes kigúnyolt állapotú kezelőt szinkronizáljon a különböző állapot-nyilvántartó szolgáltatási példányok között. Ha az állapot-nyilvántartó szolgáltatás a fürtön fut, a Service Fabric gondoskodik az egyes másodlagos replikák állapot-kezelőjének az elsődleges replikával való összhangban tartásáról. Ezért a teszteknek ugyanúgy kell működniük, hogy szimulálják a szerepkör módosításait.
 
-A szinkronizálás egyszerű módja, ha a mögöttes objektumra egyedi mintát használ, amely az egyes megbízható gyűjteményeknek írt adatokat tárolja. Ha például egy állapot-nyilvántartó szolgáltatás a szolgáltatást használja `IReliableDictionary<string, string>`. A kigúnyolt állapot kezelőjének a modelljét `IReliableDictionary<string, string>`kell visszaadnia. A modell `ConcurrentDictionary<string, string>` a segítségével nyomon követheti az írt kulcs/érték párokat. A `ConcurrentDictionary<string, string>` -nek a szolgáltatásnak átadott állami vezetők összes példánya által használt egyedinek kell lennie.
+A szinkronizálás egyszerű módja, ha a mögöttes objektumra egyedi mintát használ, amely az egyes megbízható gyűjteményeknek írt adatokat tárolja. Ha például egy állapot-nyilvántartó szolgáltatás egy `IReliableDictionary<string, string>`használ. A kigúnyolt állapot-kezelőnek `IReliableDictionary<string, string>`mintáját kell visszaadnia. A modell egy `ConcurrentDictionary<string, string>` segítségével nyomon követheti a megírt kulcs/érték párokat. A `ConcurrentDictionary<string, string>`nek a szolgáltatásnak átadott állami vezetők összes példánya által használt egyedinek kell lennie.
 
 #### <a name="keep-track-of-cancellation-tokens"></a>A lemondási tokenek nyomon követése
 A lemondási jogkivonatok az állapot-nyilvántartó szolgáltatások fontos, de gyakran megtekinthető aspektusa. Ha Service Fabric egy állapot-nyilvántartó szolgáltatás elsődleges replikáját indítja el, a rendszer lemondási jogkivonatot biztosít. Ez a lemondási token arra szolgál, hogy jelezze a szolgáltatásnak, amikor a rendszer eltávolítja vagy lefokozza egy másik szerepkört. Az állapot-nyilvántartó szolgáltatásnak le kell állítania a hosszú ideig futó vagy aszinkron műveleteket, hogy a Service Fabric el tudja végezni a szerepkör-módosítási munkafolyamatot.
@@ -79,7 +68,7 @@ Az egységek teszteléséhez az alkalmazás kódjának nagy részét kell végre
     Then the request should should return the "John Smith" employee
 ```
 
-Ez a teszt azt állítja be, hogy az egyik replikán rögzített adattárolók elérhetők legyenek egy másodlagos replika számára, ha az elsődlegesre van előléptetve. Feltételezve, hogy a megbízható gyűjtemény az alkalmazotti adataihoz tartozó tároló, a teszttel esetlegesen megjelenő, AA típusú lehetséges hiba, ha az új alkalmazott `CommitAsync` mentéséhez az alkalmazás kódja nem lett végrehajtva a tranzakcióban. Ebben az esetben az alkalmazottak beszerzésére irányuló második kérelem nem adja vissza az első kérelem által felvett alkalmazottat.
+Ez a teszt azt állítja be, hogy az egyik replikán rögzített adattárolók elérhetők legyenek egy másodlagos replika számára, ha az elsődlegesre van előléptetve. Feltételezve, hogy a megbízható gyűjtemény az alkalmazotti adataihoz tartozó tároló, a teszttel esetlegesen fellépő esetleges sikertelenek, ha az alkalmazás kódja nem hajtotta végre `CommitAsync` a tranzakción az új alkalmazott mentéséhez. Ebben az esetben az alkalmazottak beszerzésére irányuló második kérelem nem adja vissza az első kérelem által felvett alkalmazottat.
 
 ### <a name="acting"></a>Működő
 #### <a name="mimic-service-fabric-replica-orchestration"></a>Service Fabric replika összehangolása
@@ -122,5 +111,5 @@ Hosszú ideig futó vagy aszinkron folyamatok, amelyeket meg kell szüntetni, ha
 #### <a name="verify-which-replicas-should-serve-requests"></a>A kérelmeket kézbesítő replikák ellenőrzése
 A teszteknek meg kell tenniük a várt viselkedést, ha egy kérés nem elsődleges replikához van irányítva. A Service Fabric lehetővé teszi a másodlagos replikák kérések kiszolgálását. A megbízható gyűjteményekbe való írás azonban csak az elsődleges replikából történhet. Ha az alkalmazás csak elsődleges replikákat szándékozik kézbesíteni a kérések kiszolgálásához, vagy csak a kérelmek egy részhalmazát tudja kezelni egy másodlagos, akkor a tesztek a pozitív és a negatív esetek esetében is a várt viselkedést fogják érvényesíteni. A rendszer egy olyan replikára irányítja át a negatív esetet, amely nem kezeli a kérést, és a pozitív az ellenkezője.
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan tesztelheti az [állapot-nyilvántartó szolgáltatásokat](service-fabric-how-to-unit-test-stateful-services.md).
+## <a name="next-steps"></a>Következő lépések
+Ismerje meg, hogyan [tesztelheti az állapot-nyilvántartó szolgáltatásokat](service-fabric-how-to-unit-test-stateful-services.md).

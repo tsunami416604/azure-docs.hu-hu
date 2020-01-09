@@ -1,142 +1,131 @@
 ---
-title: Service Fabric-szolgáltatások particionálása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet particionálni a Service Fabric állapotalapú szolgáltatások. Partíciók lehetővé teszi, hogy a helyi gépek való adattárolás, adatokat és a számítási együtt skálázhatók.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Service Fabric szolgáltatások particionálása
+description: Útmutató Service Fabric állapot-nyilvántartó szolgáltatások particionálásához. A partíciók lehetővé teszik az adattárolást a helyi gépeken, hogy az adatok és a számítások együtt is méretezhetők legyenek.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
-ms.author: atsenthi
-ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711892"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434058"
 ---
-# <a name="partition-service-fabric-reliable-services"></a>A Service Fabric reliable services particionálása
-Ez a cikk mutatja be az Azure Service Fabric reliable services particionálása alapvető fogalmait. A cikkben használt forráskódja is elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+# <a name="partition-service-fabric-reliable-services"></a>A Partition Service Fabric megbízható szolgáltatások
+Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A cikkben használt forráskód a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
 
 ## <a name="partitioning"></a>Particionálás
-A particionálás nem egyedi a Service Fabric. Ez valójában egy alapvető szerkezet méretezhető szolgáltatások. Tágabb értelemben azt gondolja át a particionálás egy osztani állapota (adatok) fogalmát és számítási méretezhetőséget és a teljesítmény javítása érdekében kisebb elérhető egységekbe. Egy jól ismert űrlap particionálás [adatparticionálás][wikipartition], más néven horizontális skálázás.
+A particionálás nem egyedi a Service Fabric. Valójában a skálázható szolgáltatások létrehozásának egyik alapvető mintázata. Tágabb értelemben azt gondoljuk, hogy a particionálási állapot (adatok) felosztása és a kisebb elérhető egységekre való számítás fogalma a méretezhetőség és a teljesítmény javítása érdekében. A particionálás jól ismert formája az [adatparticionálás][wikipartition], más néven horizontális felskálázás.
 
-### <a name="partition-service-fabric-stateless-services"></a>A Service Fabric állapotmentes szolgáltatások partíció
-Az állapotmentes szolgáltatások esetében is gondolja folyamatban van egy logikai egységet, a szolgáltatás egy vagy több példányt tartalmazó partíció. 1\. ábra állapotmentes szolgáltatás öt példányban elosztva a több partíciót egy fürtöt mutat be.
+### <a name="partition-service-fabric-stateless-services"></a>Service Fabric állapot nélküli szolgáltatások particionálása
+Az állapot nélküli szolgáltatások esetében úgy gondolja, hogy egy partíció olyan logikai egység, amely a szolgáltatás egy vagy több példányát tartalmazza. Az 1. ábrán egy állapot nélküli szolgáltatás látható, amely egy partíció használatával öt példányban oszlik meg a fürtben.
 
-![Az állapotmentes szolgáltatás](./media/service-fabric-concepts-partitioning/statelessinstances.png)
+![Állapot nélküli szolgáltatás](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Valójában két típusa van állapotmentes szolgáltatás megoldások. Az első utótagcímkéjét szolgáltatása továbbra is fennáll állapotában kívülről, például egy Azure SQL Database (például egy webhely, amely tárolja a munkamenet-információk és adatok). A második érték, csak számítási szolgáltatások (például Számológép- vagy képfájl thumbnailing), amely nem minden olyan állandó állapot kezelése.
+Valójában két típusú állapot nélküli szolgáltatási megoldás létezik. Az első egy olyan szolgáltatás, amely külsőleg is megőrzi az állapotát, például egy Azure SQL Database-adatbázisban (például egy olyan webhelyen, amely a munkamenet adatait és adatait tárolja). A második a csak számítási szolgáltatások (például a számológép vagy a képminiatűr), amely nem kezel állandó állapotot.
 
-A vagy esetben állapotmentes szolgáltatások particionálása nagyon ritkán fordul elő ez a forgatókönyv--méretezhetőség és rendelkezésre állását általában további példányok hozzáadásával érhető el. A csak érdemes több partíciót az állapotmentes szolgáltatás példányainak, amikor csak szüksége lehet speciális útválasztási kérelmek.
+Az állapot nélküli szolgáltatások particionálása mindkét esetben nagyon ritka forgatókönyv – a méretezhetőség és a rendelkezésre állás általában további példányok hozzáadásával valósul meg. Az állapot nélküli szolgáltatási példányok esetében egyetlen alkalommal érdemes több partíciót figyelembe venni, ha a speciális útválasztási kérelmeket meg kell felelnie.
 
-Tegyük fel fontolja meg egy esetet, ahol bizonyos számos azonosítókkal rendelkező felhasználókat kell csak kiszolgálása az internetszolgáltatójuk által egy adott szolgáltatáspéldány. Ha sikerült particionálása állapotmentes szolgáltatás egy másik példa, amikor valóban particionált háttérrendszernek (például a szilánkos SQL database) rendelkezik, és azt szeretné beállítani, hogy mely szolgáltatáspéldányban kell írni az adatbázis többi – vagy más belül előkészítő feladatok végrehajtására a állapotmentes szolgáltatás, amely használatban van a háttérrendszerhez van szükség ugyanahhoz a particionálási adatok. Ezeket a feldolgozástípusokat forgatókönyveket is különböző módon kell megoldani, és nem feltétlenül szükséges szolgáltatások particionálását.
+Példaként vegyünk például egy olyan esetet, amikor egy bizonyos tartományba tartozó azonosítóval rendelkező felhasználókat csak egy adott szolgáltatási példány számára kell kiszolgálni. Egy másik példa az állapot nélküli szolgáltatás particionálására, ha valóban particionált háttérrel rendelkezik (például egy többrétegű SQL-adatbázissal), és szeretné szabályozni, hogy melyik szolgáltatási példánynak kell írnia az adatbázisba, vagy más előkészítési munkát hajtson végre a következőn belül: állapot nélküli szolgáltatás, amelyhez ugyanaz a particionálási adatok szükségesek, mint a háttérbeli használatban. Az ilyen típusú forgatókönyvek különböző módokon is megoldhatók, és nem feltétlenül szükségesek a szolgáltatások particionálásához.
 
-Ez az útmutató további része az állapotalapú szolgáltatások összpontosít.
+Az útmutató hátralévő része az állapot-nyilvántartó szolgáltatásokra koncentrál.
 
-### <a name="partition-service-fabric-stateful-services"></a>A Service Fabric stateful services particionálása
-A Service Fabric megkönnyíti a skálázható állapotalapú szolgáltatások fejlesztése egy első osztályú módon partíció állapota (adatok). Elméleti szinten is úgy gondolja, hogy az állapotalapú szolgáltatások eloszlása kapcsolatban, amely révén nagyon megbízható skálázási egységként [replikák](service-fabric-availability-services.md) , amely az elosztott és a fürt csomópontjai között.
+### <a name="partition-service-fabric-stateful-services"></a>Service Fabric állapot-nyilvántartó szolgáltatások particionálása
+A Service Fabric megkönnyíti a méretezhető állapot-nyilvántartó szolgáltatások fejlesztését azáltal, hogy az állapot (az adatfeldolgozás) első osztályú módját kínálja. Elméletileg úgy gondolja, hogy egy állapot-nyilvántartó szolgáltatás partíciója olyan méretezési egység, amely nagyon megbízható a fürt csomópontjain elosztott és kiegyensúlyozott [replikák](service-fabric-availability-services.md) révén.
 
-A folyamat, amely meghatározza, hogy egy adott szolgáltatás partíció felelős a szolgáltatás teljes állapota egy része a Service Fabric állapotalapú szolgáltatások keretében particionálás hivatkozik. (Ahogy korábban említettük, egy partíciót egy olyan [replikák](service-fabric-availability-services.md)). Tudnivalók a Service Fabric egy nagyszerű dolog, hogy a partíciók különböző csomópontokon helyezi. Ez lehetővé teszi számukra, hogy a csomópont erőforráskorlátot. Az adatok igények nő, partíciók nő, és a Service Fabric partíciók-csomópontokon keresztüli újra egyensúlyba hozza. Ez biztosítja, hogy a hardver-erőforrások folyamatos hatékony felhasználása.
+Service Fabric állapot-nyilvántartó szolgáltatások környezetében történő particionálás azt jelenti, hogy egy adott szolgáltatási partíció felelős a szolgáltatás teljes állapotának egy részéért. (Ahogy korábban említettük, a partíció [replikák](service-fabric-availability-services.md)halmaza). Service Fabric nagyszerű dolog, hogy a partíciókat különböző csomópontokon helyezi el. Ez lehetővé teszi a csomópontok erőforrás-korlátjának növekedését. Mivel az adatmennyiség növekedésre szorul, a partíciók növekednek, és Service Fabric a partíciókat a csomópontok között. Ez biztosítja a hardveres erőforrások folyamatos hatékony használatát.
 
-Hogy egy példa, tegyük fel, hogy először a egy 5 csomópontos fürt és a egy szolgáltatás, amely 10 partíciók és a egy cél összesen három replikapéldány van konfigurálva. Ebben az esetben a Service Fabric elosztása és a replikák szét a fürt és lenne kialakított két elsődleges [replikák](service-fabric-availability-services.md) csomópontonkénti.
-Ha most szeretné a 10 csomópont-fürt horizontálisan, a Service Fabric lenne újraegyensúlyozására az elsődleges [replikák](service-fabric-availability-services.md) minden 10 csomópont között. Hasonlóan ha vissza az 5 csomópont van ellátva, a Service Fabric lenne újraegyensúlyozására minden replika 5 csomópontjai között.  
+Ha példát szeretne adni, tegyük fel, hogy egy 5 csomópontos fürtöt és egy olyan szolgáltatást indít el, amely úgy van beállítva, hogy 10 partíciót és három replikát céloz meg. Ebben az esetben a Service Fabric kiegyenlíti és elosztja a replikákat a fürtön belül – és két elsődleges [replikával](service-fabric-availability-services.md) fog végződnie.
+Ha most ki kell bővíteni a fürtöt 10 csomópontra, Service Fabric az elsődleges [replikákat](service-fabric-availability-services.md) az összes 10 csomóponton át kellene egyenlíteni. Hasonlóképpen, ha visszaméretezi az 5 csomópontot, Service Fabric az összes replikát újra kiegyenlíti az 5 csomópontok között.  
 
-2\. ábra 10 partíciók előtt és után a fürt méretezése elosztását mutatja.
+A 2. ábrán a fürt skálázása előtt és után 10 partíció eloszlása látható.
 
-![Állapotalapú szolgáltatás](./media/service-fabric-concepts-partitioning/partitions.png)
+![Állapot-nyilvántartó szolgáltatás](./media/service-fabric-concepts-partitioning/partitions.png)
 
-Ennek eredményeképpen a kibővített érhető el, mivel az ügyfelektől érkező kérelmek vannak elosztva a számítógépek, az alkalmazás általános teljesítménye javult, és csökkenti a versengést az adattömböket az adatok elérését.
+Ennek eredményeképpen a Kibővítés azért érhető el, mert az ügyfelektől érkező kérések a számítógépek között oszlanak meg, az alkalmazás teljes teljesítménye javult, és az adattömbökhöz való hozzáférés korlátozott.
 
-## <a name="plan-for-partitioning"></a>A particionálás tervezése
-Egy szolgáltatás-k megvalósítása előtt minden esetben fontolja meg a szükséges horizontális particionálási stratégia. Különböző módja van, de ezek mindegyike összpontosítson az alkalmazásnak kell érhet el. Ez a cikk a környezetnek vegyünk néhány fontosabb szempontjait.
+## <a name="plan-for-partitioning"></a>A particionálás megtervezése
+A szolgáltatás megvalósítása előtt mindig tekintse át a kibővíteni kívánt particionálási stratégiát. Különböző módokon, de ezek mindegyike arra koncentrál, hogy mit kell elérnie az alkalmazásnak. A cikk kontextusában tekintsük át a fontosabb szempontokat.
 
-Egy jó módszer, gondolja át az állapot, amely lehet particionálni első lépéseként meg kell a struktúra.
+A megfelelő módszer a particionálni kívánt állapot struktúrájának meggondolása, az első lépés.
 
-Vessünk egy egyszerű példa. Ha egy szolgáltatás megye kiterjedő voksát egy szavazáson hozhat létre, létrehozhat egy partíció mindegyik városhoz a megyét. Ezután minden egyes személy számára a szavazatok tárolhatja az a partíció, amely megfelel a várost az városa. 3\. ábra azt szemlélteti, személyek és a város, amelyben található.
+Vessünk egy egyszerű példát. Ha egy megyei szintű lekérdezéshez szeretne szolgáltatást kiépíteni, létrehozhat egy partíciót a megye minden városához. Ezután az adott városnak megfelelő partícióban tárolhatja a szavazatokat a városban lévő minden személy számára. A 3. ábra a személyek és a város helyét mutatja be.
 
 ![Egyszerű partíció](./media/service-fabric-concepts-partitioning/cities.png)
 
-A cities, population érték nagy eltéréseket mutat, mivel bizonyos mennyiségű adatot (pl. budapest) tartalmazó partíciókat és a többi partíción nagyon kevés állapota (pl. Kirkland), előfordulhat, hogy megtörténhet. Tehát Mi az a partíció állapota egyenetlen mennyiségű hatását?
+Mivel a városok népessége széles körben változik, előfordulhat, hogy a sok adatmennyiséget (például Seattle) és más, nagyon kevés állapotú partíciókat (például a Kirkland-t) tartalmazó partíciók. Tehát milyen hatással van a partíciók egyenetlen mennyiségű állapotára?
 
-Ha úgy gondolja, hogy a példában kapcsolatos újra, könnyen látható, hogy a partíció, amely tartalmazza a szavazatok Seattle fog kapni, mint a Kirkland egy nagyobb forgalmat. Alapértelmezés szerint a Service Fabric gondoskodik arról, hogy minden egyes csomóponton elsődleges és másodlagos replikák azonos számú kapcsolatban. Ezért fordulhatnak elő, amelyek rendelkeznek a replikákat, amely nagyobb forgalmat és mások, amelyek kevesebb forgalmat csomóponttal. Lehetőleg szeretne elkerülése érdekében a gyakran és ritkán használt kritikus pontok elkerülése érdekében ilyen egy fürtben.
+Ha úgy gondolja, hogy a példa ismét látható, egyszerűen láthatja, hogy a Seattle-i szavazatot birtokló partíció nagyobb forgalmat fog kapni, mint a Kirkland. Alapértelmezés szerint a Service Fabric biztosítja, hogy az egyes csomópontokon azonos számú elsődleges és másodlagos replika legyen. Így előfordulhat, hogy a csomópontok olyan replikákat tartanak, amelyek nagyobb forgalmat és másokat is kiszolgálnak, és kevesebb forgalmat szolgálnak ki. Érdemes elkerülni a gyakori és a ritka elérésű helyeket, mint a fürtben.
 
-Annak érdekében, hogy ennek elkerülése érdekében a particionálási szempontjából két dolgot kell tennie:
+Ennek elkerüléséhez két dolgot kell tennie a particionálási szempontból:
 
-* Próbálja meg partíció állapotát, hogy egyenletesen legyen elosztva az összes partíciót.
-* A szolgáltatás a replikák mindegyike a jelentés betöltése. (További információkért tekintse meg ebben a cikkben a [metrikák és a terhelés](service-fabric-cluster-resource-manager-metrics.md)). A Service Fabric lehetővé teszi, hogy a jelentés betöltési használja fel szolgáltatásokat, például memória mennyisége vagy a rekordok száma. A jelentett mérőszámok alapján a Service Fabric észleli, hogy az egyes partíciók szolgálnak ki, mint a többi magasabb terhelés, és a fürt rebalances a megfelelő csomópontok replikák helyezi át, hogy a teljes nem csomópont túl van terhelve.
+* Próbálja meg particionálni az állapotot úgy, hogy az egyenletesen legyen elosztva az összes partíció között.
+* A szolgáltatás minden replikájának betöltését jelenti. (Erről a cikkről a [metrikák és a betöltések](service-fabric-cluster-resource-manager-metrics.md)című cikkben olvashat bővebben.) Service Fabric lehetőséget biztosít a szolgáltatások által felhasznált terhelés jelentésére, például a memória mennyiségére vagy a rekordok számára. A jelentett mérőszámok alapján Service Fabric észleli, hogy egyes partíciók nagyobb terhelést mutatnak, mint mások, és a replikák több megfelelő csomópontra való áthelyezésével kiegyensúlyozzák a fürtöt, így a teljes csomópont nincs túlterhelve.
 
-Egyes esetekben nem tudja, mennyi adatot egy adott partíció lesz. Így egy általános ajánlás az, hogy mindkét – először particionálási stratégia bevezetésével, amely az adatok egyenletesen a partíciók és a második, által terjed jelentéskészítési betöltése  Az első módszer megakadályozza, hogy olyan helyzetekben, míg a második segítségével zökkenőmentes ideiglenes fennálló különbségek hozzáférést és a terhelés idővel a szavazási példában bemutatott módon.
+Előfordulhat, hogy nem tudja, hogy mennyi adat lesz egy adott partícióban. Ezért az általános javaslat az, hogy mindkettőt – először egy particionálási stratégia bevezetésével, amely egyenletesen osztja el az adategységeket a partíciók között, és másodszor is a bejelentések betöltésével.  Az első módszer megakadályozza a szavazási példában ismertetett helyzeteket, míg a második a hozzáférés vagy a betöltés átmeneti eltéréseit segíti az idő múlásával.
 
-A partíció tervezés szerepet játszó másik tényező, hogy először válassza ki a megfelelő számú partíciót.
-A Service Fabric-perspektívát nincs semmi, amely megakadályozza, hogy ismerkednek a partíciók száma, a forgatókönyv a vártnál.
-Feltéve, hogy a partíciók maximális száma valójában egy érvényes megközelítés.
+A partíciók megtervezésének egy másik aspektusa, hogy kiválassza a megfelelő számú partíciót a kezdéshez.
+Egy Service Fabric perspektívából semmi sem akadályozza meg, hogy a forgatókönyvhöz vártnál nagyobb számú partíciót indítson el.
+Valójában, feltételezve, hogy a partíciók maximális száma érvényes megközelítés.
 
-Bizonyos ritkán előforduló esetekben, előfordulhat, hogy végül kellene a kezdetben kiválasztott számánál több partíciót. A partíciók száma után az a tény nem módosítható, mivel néhány speciális partíció megoldások, például egy új szolgáltatáspéldány azonos típusú szolgáltatás létrehozása a alkalmazni kell. Is kell bizonyos ügyféloldali logikát, amely a megfelelő szolgáltatáspéldány, az Ügyfélkód kell karbantartani az ügyféloldali ismeretek alapján irányítja a kérelmeket.
+Ritka esetekben előfordulhat, hogy az eredetileg kiválasztottnál több partíciót kell megadnia. Mivel a partíciók száma nem módosítható a tény után, néhány speciális partíciós módszert kell alkalmaznia, például egy új, azonos szolgáltatástípus-példány létrehozását. Emellett olyan ügyféloldali logikát is végre kell hajtania, amely a kérelmeket a megfelelő szolgáltatási példányra irányítja, az ügyfél kódjának megőrzéséhez szükséges ügyféloldali ismeret alapján.
 
-A particionálás tervezési egy másik szempont, a rendelkezésre álló számítógép erőforrásai. Az állapot elérése és tárolt igényekhez, vannak kötve kövesse:
+A particionálás megtervezésének másik szempontja a rendelkezésre álló számítógép-erőforrások. Az állapot eléréséhez és tárolásához kötve kell lennie a következőknek:
 
-* Hálózati sávszélesség korlátja
-* Rendszer memóriakorlátokat
-* Tárolási korlátok
+* Hálózati sávszélesség korlátai
+* Rendszermemória korlátai
+* Lemezes tárterület korlátai
 
-Tehát mi történik, ha egy futó fürt erőforrás-korlátozások? A válasz az, hogy egyszerűen horizontális felskálázása az új követelményeknek megfelelően a fürtöt.
+Tehát mi történik, ha erőforrás-korlátozásokat futtat egy futó fürtben? A válasz az, hogy egyszerűen kibővítheti a fürtöt az új követelmények kielégítése érdekében.
 
-[A kapacitástervezési útmutató](service-fabric-capacity-planning.md) miként állapítható meg, hány csomóponttal, a fürt szükséges útmutatást kínál.
+[A kapacitás-tervezési útmutató](service-fabric-capacity-planning.md) útmutatást nyújt annak meghatározásához, hogy a fürt hány csomópontot igényel.
 
-## <a name="get-started-with-partitioning"></a>A particionálás használatának első lépései
-Ez a szakasz ismerteti a particionálást a szolgáltatás használatának első lépései.
+## <a name="get-started-with-partitioning"></a>Ismerkedés a particionálással
+Ez a szakasz a szolgáltatás particionálásának első lépéseit ismerteti.
 
-A Service Fabric kínálja három partíciós séma közül választhat:
+A Service Fabric három partíciós séma közül választhat:
 
-* Előre particionálás (más néven UniformInt64Partition).
-* Neve a particionálást. Ez a modell általában használó alkalmazások is lehet bucketed, a körülhatárolt belül adatainak kell. Datová Pole elnevezett partíciókulcsok használt néhány gyakori példa régiók, postai kódok, felhasználói csoportok vagy egyéb üzleti határok lenne.
-* Egyszeres particionálás. A szolgáltatás nem igényel további útválasztási egyszeres partíciók általában használják. Például állapotmentes szolgáltatások alapértelmezés szerint használják ennek a particionálási sémának.
+* Tartományon kívüli particionálás (más néven UniformInt64Partition).
+* Nevesített particionálás. Az ezt a modellt használó alkalmazások általában a rögzített készleten belüli, gyűjtővel ellátható adattal rendelkeznek. A nevesített partíciós kulcsokként használt adatmezők néhány gyakori példája: régiók, irányítószámok, vevőcsoportok vagy más üzleti határok.
+* Egyedi particionálás. Az Egypéldányos partíciókat jellemzően akkor használja a rendszer, ha a szolgáltatás nem igényel további útválasztást. Például az állapot nélküli szolgáltatások alapértelmezés szerint ezt a particionálási sémát használják.
 
-Nevű és egypéldányos particionálási sémákat előre partíciók speciális formája. Alapértelmezés szerint a Service Fabric használatát a Visual Studio-sablonok előre particionálást, mivel a leggyakoribb és hasznos egy. Ez a cikk további része a ranged particionálási séma összpontosít.
+A nevesített és az egyedi particionálási sémák a tartományba tartozó partíciók speciális formái. Alapértelmezés szerint a Service Fabric Visual Studio-sablonjai a tartományon alapuló particionálást használják, mivel ez a leggyakoribb és leghasznosabb. A cikk további része a tartományon alapuló particionálási sémára összpontosít.
 
-### <a name="ranged-partitioning-scheme"></a>Előre a particionálási séma
-Ennek segítségével adja meg egy egész szám tartományának (azonosított egy alacsony és magas kulcsot) és a megfelelő számú partíciót (n). Minden egyes felelős egy, az általános partíciókulcs-tartományok nem fedhetik alosztály n partíciók hoz létre. Például egy ranged particionálási sémát 0 kulccsal alacsony, magas kulcs 99-es és 4 számát hozna létre négy partíciót alább látható módon.
+### <a name="ranged-partitioning-scheme"></a>Tartományon kívüli particionálási séma
+Ezzel a beállítással adható meg az egész szám (alacsony kulcs és magas kulcs azonosítva) és számos partíció (n). N partíciót hoz létre, amelyek mindegyike felelős a partíciós kulcs teljes tartományának nem átfedésben lévő altartományához. Például egy olyan tartományba tartozó particionálási séma, amelynek alacsony kulcsa a 0, a 99 magas kulcsa, a 4. számú partíció pedig négy partíciót hoz létre az alább látható módon.
 
-![Tartományba a particionálása](./media/service-fabric-concepts-partitioning/range-partitioning.png)
+![Tartomány particionálás](./media/service-fabric-concepts-partitioning/range-partitioning.png)
 
-Általánosan használt megközelítés, hogy az adatkészlet belül egyedi kulcs alapján kivonatot hoz létre. Néhány gyakori példa kulcsok lenne egy jármű-azonosító szám (VIN), az alkalmazott azonosítója vagy egy egyedi karakterlánccá. Az egyedi kulcs használatával, majd hoz létre a kivonatkód, modulus kulcstartományhoz, a kulcs használatára. Az engedélyezett kulcs tartomány felső és alsó meze is megadhat.
+Gyakori módszer az adathalmazon belüli egyedi kulcs alapján létrehozott kivonat létrehozása. Néhány gyakori példa a kulcsok azonosítására (VIN), egy alkalmazotti AZONOSÍTÓra vagy egy egyedi karakterláncra. Ezt az egyedi kulcsot használva létrehoz egy kivonatoló kódot, amely a kulcs tartományát használja a kulcshoz. Megadhatja az engedélyezett kulcs tartományának alsó és felső határát.
 
-### <a name="select-a-hash-algorithm"></a>Válasszon kivonatoló algoritmust
-Fontos része annak a kivonatolás kijelölése a kivonatoló algoritmus. Veszi figyelembe a cél (helye bizalmas kivonatoláshoz) – egymáshoz közel hasonló kulcsokat csoportosítására-e, vagy ha a tevékenység széles körben terjesztése összes partíciójára (kivonatoló terjesztési), amely jelenleg egyre gyakoribb.
+### <a name="select-a-hash-algorithm"></a>Kivonatoló algoritmus kiválasztása
+A kivonatolás fontos része a kivonatoló algoritmus kiválasztása. Figyelembe kell venni, hogy a cél a hasonló kulcsok csoportosítása egymáshoz (a helyi megkülönböztető kivonatok), vagy ha a tevékenységet széles körben szét kell osztani az összes partíción (terjesztési kivonat), ami gyakoribb.
 
-Egy jó kivonatoló algoritmusa mutatókat, hogy könnyen kiszámítása, van néhány ütközések, és egyenlően osztja el a kulcsokat. Egy hatékony kivonatoló algoritmus jó példa a [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) kivonatoló algoritmust.
+A jó elosztási kivonatoló algoritmus jellemzői, hogy könnyű kiszámítani, néhány ütközést tartalmaz, és egyenletesen osztja el a kulcsokat. A hatékony kivonatoló algoritmus jó példája a [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) kivonatoló algoritmus.
 
-A leghasznosabb általános kivonatoló kódot algoritmus választásokhoz van a [Wikipédia-oldal kivonatoló függvényeket a](https://en.wikipedia.org/wiki/Hash_function).
+Egy jó erőforrás az általános kivonatoló kód algoritmusának kiválasztásához a [wikipedia oldal a kivonatoló függvényeknél](https://en.wikipedia.org/wiki/Hash_function).
 
-## <a name="build-a-stateful-service-with-multiple-partitions"></a>Több partíciót az állapotalapú szolgáltatás készítése
-Hozzuk létre az első megbízható állapotalapú szolgáltatás több partícióval. Ebben a példában egy nagyon egyszerű alkalmazás, hol szeretné tárolni a ugyanazon a partíción ugyanazon betűvel kezdődő összes Vezetéknév fog létrehozni.
+## <a name="build-a-stateful-service-with-multiple-partitions"></a>Hozzon létre egy állapot-nyilvántartó szolgáltatást több partícióval
+Hozzuk létre az első megbízható állapot-nyilvántartó szolgáltatást több partícióval. Ebben a példában egy nagyon egyszerű alkalmazást fog létrehozni, amelyben az összes olyan vezetéknevet tárolni szeretné, amely ugyanazzal a betűvel kezdődik ugyanabban a partícióban.
 
-Mielőtt bármilyen kódot írna, gondolja át a partíciók és a partíciókulcsok kell. 26 partíciók (egy az ábécé minden betű), de mi van szükség az alacsony és magas kulcsok?
-Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk 0 az alsó kulcsa és 25 magas kulcsaként, mivel minden betű a saját kulcs.
+A kód írása előtt gondolja át a partíciókat és a partíciós kulcsokat. 26 partícióra van szüksége (egy az ábécében szereplő minden betűhöz), de mi a helyzet az alacsony és a magas kulcsokkal?
+Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony kulcsként 0, a 25 pedig a magas kulcs, mivel minden betű a saját kulcsa.
 
 > [!NOTE]
-> Ez a lehetőség egy egyszerűsített forgatókönyvben a valóságban a terjesztési egyenetlen lenne. Vezetéknév kezdve az "S" vagy "M" betűk gyakoribbak, rétegében kezdve az "X" vagy "Y".
+> Ez egy egyszerűsített forgatókönyv, ahogy a valóságban a terjesztés egyenetlen lenne. Az "S" vagy "M" betűvel kezdődő vezetéknevek gyakoribbak, mint az "X" vagy "Y" kezdetű nevek.
 > 
 > 
 
-1. Nyissa meg **a Visual Studio** > **fájl** > **új** > **projekt**.
-2. Az a **új projekt** párbeszédpanelen válassza ki a Service Fabric-alkalmazás.
-3. Hívja meg a projekt "AlphabetPartitions".
-4. Az a **szolgáltatás létrehozása** párbeszédpanelen válassza ki **állapotalapú** szolgáltatást, és a "Alphabet.Processing" meghívására.
-5. A partíciók számának megadása. Nyissa meg a projekt AlphabetPartitions ApplicationPackageRoot mappában található Applicationmanifest.xml fájlt, és frissítse a paraméter Processing_PartitionCount 26 alább látható módon.
+1. Nyissa meg a **Visual Studio** > **fájlt** > **új** > **projektet**.
+2. Az **új projekt** párbeszédpanelen válassza a Service Fabric alkalmazást.
+3. Hívja meg a "AlphabetPartitions" projektet.
+4. A **szolgáltatás létrehozása** párbeszédpanelen válassza az **állapot-nyilvántartó** szolgáltatás lehetőséget, és hívja meg az "ABC. Processing" kifejezést.
+5. Állítsa be a partíciók számát. Nyissa meg a AlphabetPartitions projekt ApplicationPackageRoot mappájában található Applicationmanifest. xml fájlt, és frissítse a paramétert Processing_PartitionCount 26-ra az alábbi ábrán látható módon.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    Is szeretne az statefulservice-ből elemet az ApplicationManifest.xml, ahogy az alábbi LowKey és HighKey tulajdonságainak frissítéséhez.
+    Emellett frissítenie kell a StatefulService elem LowKey és HighKey tulajdonságait a ApplicationManifest. xml fájlban az alábbi ábrán látható módon.
    
     ```xml
     <Service Name="Processing">
@@ -145,27 +134,27 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
       </StatefulService>
     </Service>
     ```
-6. A szolgáltatás érhető el nyissa meg egy portot a végpont ServiceManifest.xml (PackageRoot mappájában található), a végpont elem felvétele a Alphabet.Processing szolgáltatás alább látható módon:
+6. Ahhoz, hogy a szolgáltatás elérhető legyen, nyisson meg egy végpontot egy porton. Ehhez adja hozzá a ServiceManifest. XML (a PackageRoot mappában található) végpont elemet az ábécé. Processing szolgáltatáshoz az alábbi ábrán látható módon:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
    
-    Most már a szolgáltatás a konfigurációja szerint 26 partícióval rendelkező egy belső végponthoz.
-7. Ezután felül kell bírálnia az `CreateServiceReplicaListeners()` feldolgozási osztály metódusát.
+    A szolgáltatás most úgy van konfigurálva, hogy 26 partíciót tartalmazó belső végpontot hallgasson.
+7. Ezután felül kell bírálnia a feldolgozási osztály `CreateServiceReplicaListeners()` metódusát.
    
    > [!NOTE]
-   > Ebben a példában feltételezzük, hogy egy egyszerű HttpCommunicationListener használja. Kommunikáció a reliable Services további információkért lásd: [a Reliable Services modellt](service-fabric-reliable-services-communication.md).
+   > Ebben a példában feltételezzük, hogy egyszerű HttpCommunicationListener használ. A megbízható szolgáltatásokkal folytatott kommunikációról a [megbízható szolgáltatás kommunikációs modellje](service-fabric-reliable-services-communication.md)című témakörben olvashat bővebben.
    > 
    > 
-8. Ajánlott mintája a következő URL-CÍMÉT, amely figyeli egy replika a következő formátumban: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
-    Így szeretné konfigurálni a megfelelő végponton, és ezzel a mintával figyelni a kommunikációs figyelőjének.
+8. A replika által figyelt URL-címhez javasolt minta a következő formátum: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
+    Ezért úgy konfigurálja a kommunikációs figyelőt, hogy a helyes végpontokat figyelje, és ezzel a mintával.
    
-    Több replika, a szolgáltatás üzemeltethető ugyanazon a számítógépen, ezért ez a cím egyedinek kell lennie a replikára. Ezért az URL-cím van Partícióazonosító + másodpéldány-azonosító. Mindaddig, amíg az URL-cím előtag az egyedi HttpListener több cím ugyanazt a portot is figyelni.
+    Előfordulhat, hogy a szolgáltatás több replikája ugyanazon a számítógépen található, ezért a címnek egyedinek kell lennie a replikában. Ezért az URL-cím a Partition ID + replika azonosítója. A HttpListener ugyanazon a porton több címet is megfigyelheti, ha az URL-előtag egyedi.
    
-    A felesleges GUID van-e egy speciális esetekhez, amelyen másodlagos replika is figyeljen a csak olvasási kérelmek. Ha ebben az esetben győződjön meg arról, hogy egy új egyedi címet használja, amikor a Váltás az elsődleges, másodlagos kényszerítése az ügyfelek számára, hogy újra feloldani a címet szeretné. "+" Itt címet használja, hogy a replika figyel az összes rendelkezésre álló gazdagép (IP, teljes Tartományneve, a localhost stb.) Az alábbi kódot egy példa látható.
+    A további GUID-azonosító egy speciális eset, amelyben a másodlagos replikák is figyelik a csak olvasási kérelmeket. Ebben az esetben meg kell győződnie arról, hogy a rendszer új egyedi címeket használ az elsődlegesről másodlagosra történő áttéréskor, hogy az ügyfelek újra feloldják a címeket. a "+" címet használja a rendszer, hogy a replika figyelje az összes elérhető gazdagépet (IP, FQDN, localhost stb.). Az alábbi kód egy példát mutat be.
    
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
          return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
@@ -189,11 +178,11 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
     }
     ```
    
-    Emellett akkor is érdemes megjegyezni, hogy a közzétett URL-címe, kissé eltérhetnek a figyelő URL-előtagot.
-    A figyelő URL-cím HttpListener elbírálása. A közzétett URL-je a Service Fabric elnevezési szolgáltatásban, a szolgáltatásészlelés használt közzétett URL-CÍMÉT. Ügyfelek ekkor megkérdezi, hogy felderítése adatszerkezeteket ehhez a címhez. A cím, amelyet az ügyfelek számára rendelkeznie kell a tényleges IP vagy FQDN-jének a csomópont ahhoz, hogy csatlakozhasson. Ki kell cserélni, "+" a csomópont IP vagy FQDN jelennek meg.
-9. Az utolsó lépés, hogy a feldolgozási logika hozzáadása a szolgáltatás az alább látható módon.
+    Azt is érdemes megjegyezni, hogy a közzétett URL-cím némileg eltér a figyelő URL-előtagtól.
+    A figyelő URL-cím a HttpListener számára lett megadva. A közzétett URL-cím a Service Fabric elnevezési szolgáltatás közzétett URL-cím, amelyet a rendszer a szolgáltatás felderítéséhez használ. Az ügyfelek a felderítési szolgáltatáson keresztül kérik ezt a címeket. Az ügyfelek által lekérdezett címnek a csomópont tényleges IP-címének vagy teljes tartománynevének kell lennie ahhoz, hogy csatlakozni lehessen. Ezért a "+" értéket a csomópont IP-címével vagy teljes tartománynevével kell helyettesítenie a fenti ábrán látható módon.
+9. Az utolsó lépés a feldolgozási logika hozzáadása a szolgáltatáshoz az alább látható módon.
    
-    ```CSharp
+    ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         string output = null;
@@ -235,21 +224,21 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
     }
     ```
    
-    `ProcessInternalRequest` a lekérdezési karakterlánc paramétereként, a partíció és a hívások meghívható beolvasásával `AddUserAsync` a lastname hozzáadása a megbízható szótárban `dictionary`.
-10. Adjunk hozzá egy állapotmentes szolgáltatás a projekthez, hogy tekintse meg, hogyan hívhatja egy adott partíció.
+    `ProcessInternalRequest` beolvassa a partíció meghívásához használt lekérdezési karakterlánc paraméter értékeit, és meghívja a `AddUserAsync`, hogy hozzáadja a LastName-t a megbízható szótárhoz `dictionary`.
+10. Hozzunk létre egy állapot nélküli szolgáltatást a projekthez, amelyből megtudhatja, hogyan hívhat meg egy adott partíciót.
     
-    Ez a szolgáltatás egy egyszerű webes felület, amely elfogadja a lekérdezési sztring paramétereként, a lastname, meghatározza a partíciókulcsot, és elküldi azokat a Alphabet.Processing szolgáltatásnak feldolgozásra funkcionál.
-11. Az a **szolgáltatás létrehozása** párbeszédpanelen válassza ki **Stateless** szolgáltatást, és nevezze el "Alphabet.Web" alább látható módon.
+    Ez a szolgáltatás egy egyszerű webes felület, amely a LastName lekérdezési karakterlánc paraméterként való fogadására szolgál, meghatározza a partíciós kulcsot, és elküldi az Ábécébe. feldolgozási szolgáltatás feldolgozásra.
+11. A **szolgáltatás létrehozása** párbeszédpanelen válassza az **állapot nélküli** szolgáltatás lehetőséget, és hívja meg az "ABC. Web" kifejezést az alábbi ábrán látható módon.
     
-    ![Az állapotmentes szolgáltatás képernyőképe](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Frissítse a végpont adatait elemet a ServiceManifest.xml a Alphabet.WebApi szolgáltatás nyisson meg egy portot a lent látható módon.
+    ![Állapot nélküli szolgáltatás képernyőképe](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+12. Frissítse a végponti adatokat az ABC. WebApi szolgáltatás ServiceManifest. XML fájljában, és nyisson meg egy portot az alább látható módon.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
     ```
-13. A webes osztály ServiceInstanceListeners vissza kell. Újra választhat egy egyszerű HttpCommunicationListener megvalósításához.
+13. A ServiceInstanceListeners gyűjteményét kell visszaadnia a web osztályban. Egy egyszerű HttpCommunicationListener is megvalósíthat.
     
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
@@ -263,9 +252,9 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Most kell a feldolgozása a logikát alkalmazzák. A HttpCommunicationListener hívások `ProcessInputRequest` amikor kérelem érkezik. Ezért haladjunk, és adja hozzá az alábbi kódot.
+14. Most végre kell hajtania a feldolgozási logikát. A HttpCommunicationListener meghívja a `ProcessInputRequest`t, amikor egy kérelem érkezik. Nézzük meg, és adjuk hozzá az alábbi kódot.
     
-    ```CSharp
+    ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         String output = null;
@@ -309,30 +298,30 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
     }
     ```
     
-    Nézzük meg, lépésről lépésre. A kód beolvassa a lekérdezési karakterlánc paramétereként első betűje `lastname` be karakter lehet. Ezután meghatározza, hogy ez a levél partíciókulcsa hexadecimális értékét kivonásával `A` , az utolsó nevének első betűje hexadecimális értékét.
+    Nézzük végig lépésről lépésre. A kód beolvassa a lekérdezési karakterlánc paraméterének első betűjét `lastname` egy karakterbe. Ezután meghatározza a levél partíciós kulcsát úgy, hogy kivonja a `A` hexadecimális értékét az utolsó név első betűje hexadecimális értékétől.
     
-    ```CSharp
+    ```csharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
     ```
     
-    Ne feledje, hogy ebben a példában partíciónként egy partíciókulccsal rendelkező 26 partíciók használjuk.
-    Ezt követően a szolgáltatás partíció célpontot `partition` a kulcs használatával a `ResolveAsync` metódust a `servicePartitionResolver` objektum. `servicePartitionResolver` típusúként van definiálva
+    Ne feledje, hogy ebben a példában 26 partíciót használunk partícióként egy partíciós kulccsal.
+    Ezután beszerezzük a kulcshoz tartozó `partition` a `servicePartitionResolver` objektum `ResolveAsync` metódusának használatával. `servicePartitionResolver` a következőképpen van definiálva
     
-    ```CSharp
+    ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    A `ResolveAsync` metódust vesz igénybe a szolgáltatás URI-t, a partíciókulcs és a lemondás jogkivonat-paraméterekként. A szolgáltatás a feldolgozási szolgáltatás URI-ja `fabric:/AlphabetPartitions/Processing`. Ezután a végpont a partíció kapunk.
+    A `ResolveAsync` metódus a szolgáltatás URI-JÁT, a partíciós kulcsot és a lemondási tokent paraméterként veszi át. A feldolgozási szolgáltatáshoz tartozó szolgáltatás-URI `fabric:/AlphabetPartitions/Processing`. Ezután lekérdezjük a partíció végpontját.
     
-    ```CSharp
+    ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
-    Végül a végpont URL-címe és a lekérdezési karakterlánc létrehozása, valamint a feldolgozási szolgáltatás hívásához.
+    Végezetül felépítjük a végpont URL-címét és a querystring, és meghívjuk a feldolgozási szolgáltatást.
     
-    ```CSharp
+    ```csharp
     JObject addresses = JObject.Parse(ep.Address);
     string primaryReplicaAddress = (string)addresses["Endpoints"].First();
     
@@ -342,8 +331,8 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
     string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
     ```
     
-    Miután megtörtént a feldolgozása, hogy kiírhatja a kimenetet vissza.
-15. Az utolsó lépéseként tesztelheti a szolgáltatást. A Visual Studio használ alkalmazásparamétereket a helyi és felhőbeli üzembe helyezés. A szolgáltatás helyi 26 partícióval rendelkező teszteléséhez frissítenie a `Local.xml` AlphabetPartitions projekt ApplicationParameters mappában fájl alább látható módon:
+    Ha elkészült a feldolgozással, a kimenetet a rendszer visszaírja.
+15. Az utolsó lépés a szolgáltatás tesztelése. A Visual Studio alkalmazás-paramétereket használ a helyi és a Felhőbeli üzembe helyezéshez. A szolgáltatás helyi 26 partícióval való teszteléséhez frissítenie kell a `Local.xml` fájlt a AlphabetPartitions-projekt ApplicationParameters mappájába az alábbi ábrán látható módon:
     
     ```xml
     <Parameters>
@@ -351,24 +340,24 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
       <Parameter Name="WebApi_InstanceCount" Value="1" />
     </Parameters>
     ```
-16. Ha befejezte a központi telepítés, ellenőrizheti a szolgáltatás és az összes, a Service Fabric Explorert a partíciók száma.
+16. Miután befejezte a telepítést, megtekintheti a szolgáltatást és annak összes partícióját a Service Fabric Explorer.
     
-    ![A Service Fabric Explorer képernyőképe](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. Egy böngészőben, tesztelheti a particionálási logikai megadásával `http://localhost:8081/?lastname=somename`. Láthatja, hogy ugyanazon a partíción tárolt egyes Vezetéknév ugyanazzal a betűvel kezdődik.
+    ![Képernyőkép Service Fabric Explorer](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
+17. A böngészőben a particionálási logikát a `http://localhost:8081/?lastname=somename`beírásával ellenőrizheti. Látni fogja, hogy az azonos betűvel kezdődő összes vezetéknevet ugyanazon a partíción tárolja a rendszer.
     
     ![Böngésző képernyőképe](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-A teljes minta forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+A minta teljes forráskódja elérhető a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services és a Aktor elágaztatási magában
-A Service Fabric reliable services és ezt követően a reliable actors elágaztatási magában nem támogatja. Miért nem támogatott például [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nem használható egy nem támogatott részfolyamathoz regisztrálásához és a megszakítási tokeneket csak érkeznek regisztrált feldolgozza; sokféle problémák, például eredményez frissítési hibák, amikor magában nem zárható be, a szülő folyamat megszakítási jogkivonatot kapott. 
+## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services-és Actor-elágazási alfolyamatok
+A Service Fabric nem támogatja a megbízható szolgáltatásokat és a későbbiekben megbízható Actors elágazási alfolyamatokat. A nem támogatott alfolyamatok nem regisztrálhatók, és a visszavonási jogkivonatok csak a regisztrált folyamatoknak [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) , ezért nem használhatók. az olyan problémák, mint például a frissítési hibák, ha az alfolyamatok nem zárulnak le, miután a fölérendelt folyamat megkapta a lemondási tokent. 
 
-## <a name="next-steps"></a>További lépések
-A Service Fabric fogalmakról további információkért tekintse meg a következőket:
+## <a name="next-steps"></a>Következő lépések
+Service Fabric fogalmakkal kapcsolatos információkért tekintse meg a következőket:
 
-* [Service Fabric-szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
-* [Service Fabric-szolgáltatások méretezhetősége](service-fabric-concepts-scalability.md)
-* [Kapacitás megtervezése a Service Fabric-alkalmazások](service-fabric-capacity-planning.md)
+* [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
+* [Service Fabric szolgáltatások skálázhatósága](service-fabric-concepts-scalability.md)
+* [Service Fabric alkalmazások kapacitásának megtervezése](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

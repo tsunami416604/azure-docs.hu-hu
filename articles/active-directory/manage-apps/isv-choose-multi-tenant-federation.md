@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443375"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Válassza ki a megfelelő összevonási protokollt a több-bérlős alkalmazáshoz
 
@@ -30,12 +30,12 @@ A következő táblázat összehasonlítja a
 * Security Assertion Markup Language (SAML)
 * Web Services-összevonás (WSFed)
 
-| Képesség| OAuth/OIDC| SAML/WSFed |
+| Szolgáltatás| OAuth/OIDC| SAML/WSFed |
 | - |-|-|
 | Webalapú egyszeri bejelentkezés| √| √ |
 | Webalapú egyszeri kijelentkezés| √| √ |
-| Mobile-alapú egyszeri bejelentkezés| √| √* |
-| Mobile-alapú egyszeri kijelentkezés| √| √* |
+| Mobile-alapú egyszeri bejelentkezés| √| √ |
+| Mobile-alapú egyszeri kijelentkezés| √| √ |
 | A mobil alkalmazások feltételes hozzáférési szabályzatai| √| X |
 | Zökkenőmentes MFA-élmény a Mobile Applications szolgáltatáshoz| √| X |
 | Hozzáférés Microsoft Graph| √| X |
@@ -44,7 +44,7 @@ A következő táblázat összehasonlítja a
 
 ## <a name="oauth-20-and-open-id-connect"></a>OAuth 2,0 és Open ID-kapcsolat
 
-A OAuth 2,0 egy [iparági szabványnak](https://oauth.net/2/) megfelelő protokoll az engedélyezéshez. A OIDC (OpenID Connect) egy [iparági szabványnak](https://openid.net/connect/) megfelelő identitás-hitelesítési réteg, amely az 2,0 protokollra épül.
+A OAuth 2,0 egy [iparági szabványnak](https://oauth.net/2/) megfelelő protokoll az engedélyezéshez. A OIDC (OpenID Connect) egy [iparági szabványnak](https://openid.net/connect/) megfelelő identitás-hitelesítési réteg, amely az OAuth 2,0 protokollra épül.
 
 ### <a name="benefits"></a>Előnyök
 
@@ -94,7 +94,7 @@ Az egyszeri bejelentkezéshez a fenti protokollok bármelyikének használata le
 
 Ha Open ID-csatlakozást használ a hitelesítéshez, akkor a fejlesztési élmény zökkenőmentes, mivel a OAuth2-t, a nyitott AZONOSÍTÓk összekapcsolásának alapját fogja használni a tokenek beszerzéséhez Microsoft Graph API-k meghívásához. Ha az alkalmazás SAML-vagy WSFed-t használ, az alkalmazásban további kódokat kell hozzáadnia ahhoz, hogy a OAuth2 megszerezze a Microsoft Graph API-k meghívásához szükséges jogkivonatokat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Egyszeri bejelentkezés engedélyezése a több-bérlős alkalmazáshoz](isv-sso-content.md)
 

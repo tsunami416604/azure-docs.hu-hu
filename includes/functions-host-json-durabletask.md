@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 614d93a16b9149a217b5ff1004031e0a2d7337ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615050"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410213"
 ---
 [Durable functions](../articles/azure-functions/durable-functions-overview.md)konfigurációs beállításai.
 
@@ -52,14 +52,15 @@ ms.locfileid: "73615050"
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
-      "controlQueueBatchSize": 32,
-      "partitionCount": 4,
-      "controlQueueVisibilityTimeout": "00:05:00",
-      "workItemQueueVisibilityTimeout": "00:05:00",
-      "maxQueuePollingInterval": "00:00:30",
       "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
-      "trackingStoreNamePrefix": "DurableTask"
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
       "traceInputsAndOutputs": false,
@@ -82,7 +83,8 @@ ms.locfileid: "73615050"
     "maxConcurrentActivityFunctions": 10,
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
   }
 }
 ```
@@ -93,6 +95,7 @@ A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számok
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Az alternatív [feladatok központi](../articles/azure-functions/durable-functions-task-hubs.md) neve felhasználható több Durable functions-alkalmazás elkülönítésére, még akkor is, ha ugyanazt a tárolási hátteret használják.|
 |controlQueueBatchSize|32|A vezérlési sorból egyszerre lekérdezett üzenetek száma.|
+|controlQueueBufferThreshold|256|A memóriában egyszerre pufferelt ellenőrzési üzenetsor-üzenetek száma, amelynél a kézbesítő a további üzenetek elszállítása előtt várakozik.|
 |partitionCount |4|A vezérlő várólistájának partícióinak száma. Egy 1 és 16 közötti pozitív egész szám lehet.|
 |controlQueueVisibilityTimeout |5 perc|A várólista-vezérlési üzenetsor üzeneteinek láthatósági időtúllépése.|
 |workItemQueueVisibilityTimeout |5 perc|A várólistán lévő munkaelem üzenetsor-üzeneteinek láthatósági időtúllépése.|
@@ -102,12 +105,13 @@ A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számok
 |azureStorageConnectionStringName |AzureWebJobsStorage|Annak az alkalmazás-beállításnak a neve, amely a mögöttes Azure Storage-erőforrások kezeléséhez használt Azure Storage-beli kapcsolódási karakterláncot tartalmaz.|
 |trackingStoreConnectionStringName||Az előzmények és a példányok tábláihoz használandó kapcsolódási karakterlánc neve. Ha nincs megadva, a rendszer a `azureStorageConnectionStringName`-kapcsolatokat használja.|
 |trackingStoreNamePrefix||Az előzmények és a példányok tábláihoz használandó előtag, ha `trackingStoreConnectionStringName` van megadva. Ha nincs beállítva, az alapértelmezett előtag értéke `DurableTask`lesz. Ha `trackingStoreConnectionStringName` nincs megadva, akkor az előzmények és a példányok táblázata az `hubName` értéket használja előtagként, és a `trackingStoreNamePrefix` minden beállítását figyelmen kívül hagyja a rendszer.|
-|traceInputsAndOutputs |hamis|Egy érték, amely azt jelzi, hogy nyomon kell-e követni a függvények bemeneteit és kimeneteit. Az alapértelmezett viselkedés, ha a nyomkövetési függvény végrehajtásának eseményei között szerepel a bájtok száma a szerializált bemenetekben és a függvények hívásainak kimenetében. Ez a viselkedés minimális információt nyújt arról, hogy a bemenetek és a kimenetek hogyan néznek ki a naplók közelítése vagy a bizalmas adatok szándékos kitéve nélkül. Ha ezt a tulajdonságot True értékre állítja, az alapértelmezett függvény naplózza a függvény bemeneteit és kimeneteit teljes tartalmának naplózására.|
-|logReplayEvents|hamis|Egy érték, amely azt jelzi, hogy a rendszer megírja-e a hangelőkészítési eseményeket Application Insightsba.|
+|traceInputsAndOutputs |false|Egy érték, amely azt jelzi, hogy nyomon kell-e követni a függvények bemeneteit és kimeneteit. Az alapértelmezett viselkedés, ha a nyomkövetési függvény végrehajtásának eseményei között szerepel a bájtok száma a szerializált bemenetekben és a függvények hívásainak kimenetében. Ez a viselkedés minimális információt nyújt arról, hogy a bemenetek és a kimenetek hogyan néznek ki a naplók közelítése vagy a bizalmas adatok szándékos kitéve nélkül. Ha ezt a tulajdonságot True értékre állítja, az alapértelmezett függvény naplózza a függvény bemeneteit és kimeneteit teljes tartalmának naplózására.|
+|logReplayEvents|false|Egy érték, amely azt jelzi, hogy a rendszer megírja-e a hangelőkészítési eseményeket Application Insightsba.|
 |eventGridTopicEndpoint ||Egy Azure Event Grid egyéni témakörbeli végpont URL-címe Ha ez a tulajdonság be van állítva, a rendszer a munkafolyamatok életciklus-értesítési eseményeit közzéteszi a végponton. Ez a tulajdonság támogatja az Alkalmazásbeállítások feloldását.|
 |eventGridKeySettingName ||Annak az alkalmazás-beállításnak a neve, amely a Azure Event Grid egyéni témakörben a `EventGridTopicEndpoint`címen történő hitelesítéshez használt kulcsot tartalmazza.|
 |eventGridPublishRetryCount|0|Az újrapróbálkozások száma, ha a Event Grid témakörben való közzététel meghiúsul.|
 |eventGridPublishRetryInterval|5 perc|A Event Grid az újrapróbálkozási időközt a *óó: PP: SS* formátumban teszi közzé.|
 |eventGridPublishEventTypes||Az Event Grid közzétenni kívánt eseménytípus listája. Ha nincs megadva, az összes eseménytípus közzé lesz téve. Az engedélyezett értékek a következők: `Started`, `Completed`, `Failed`, `Terminated`.|
+|useGracefulShutdown|false|Előnézet A zökkenőmentes leállítás lehetővé teszi, hogy a gazdagépek leállításának esélyét a folyamaton kívüli függvények végrehajtása okozza.|
 
 Ezeknek a beállításoknak a nagy része a teljesítmény optimalizálása. További információ: [teljesítmény és skálázás](../articles/azure-functions/durable-functions-perf-and-scale.md).

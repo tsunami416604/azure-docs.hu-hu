@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4432aecee882ff2e312587baa543dd66c0372a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448061"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Mintázatok hozzáadása az előrejelzési pontosság növeléséhez
 Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [mintázattal](luis-concept-patterns.md) növelheti az előrejelzés pontosságát olyan hosszúságú kimondott szöveg esetében, amelyek felfedik a mintázatot a Word-sorrend és a szó választása alapján. A minták az adott [szintaxist](luis-concept-patterns.md#pattern-syntax) használják a következő helyének jelzésére: [entitások](luis-concept-entity-types.md), entitások [szerepkörei](luis-concept-roles.md)és opcionális szöveg.
@@ -26,7 +26,27 @@ Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [m
 > [!CAUTION]
 > A minták csak a gépi megtanult entitások szüleit tartalmazzák, nem alösszetevőkből.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Sablon-Kimondás hozzáadása minta létrehozásához
+## <a name="adding-example-utterances-as-pattern"></a>Példa hosszúságú kimondott szöveg mintaként való hozzáadására
+
+Ha egy entitáshoz mintázatot szeretne hozzáadni, a _legegyszerűbb_ módszer a minta létrehozása a szándék részletei lapról. Ez biztosítja, hogy a szintaxis megfelel a példának.
+
+1. A [Luis-portálon](https://preview.luis.ai)válassza ki az alkalmazást a **saját alkalmazások** lapról.
+1. A **cél** lista lapon válassza ki annak a példának a leképezési nevét, amelynek a sablonból való kiválasztását szeretné létrehozni.
+1. A leképezés részletei lapon válassza ki a sablon-kifejezésként használni kívánt példa részletének sorát, majd válassza a **+ Hozzáadás mint minta** lehetőséget a helyi eszköztáron.
+
+    > [!div class="mx-imgBorder"]
+    > ![képernyőkép a példa szerinti kiválasztásról sablon mintaként a szándék részletei lapon.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+1. Az előugró ablakban válassza a **kész** lehetőséget a **minták megerősítése** lapon. Nem kell meghatároznia az entitások alösszetevőit, korlátozásait vagy leíróit. Csak a géppel megtanult entitást kell listáznia.
+
+    > [!div class="mx-imgBorder"]
+    > ![képernyőkép a megerősítő példa részleteit tartalmazó sablon mintaként a leképezés részletei lapon.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Ha szerkesztenie kell a sablont, például a szöveg választhatóként való kiválasztását, a `[]` (szögletes) zárójelekkel, ezt a szerkesztési űrlapot kell létrehoznia a **minták** lapon.
+
+1. A navigációs sávon válassza a **betanítás** lehetőséget az alkalmazás új mintázattal való betanításához.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Sablon teljes megadása a helyes szintaxissal
 
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** lapon, majd a bal oldali panelen válassza a **mintázatok** lehetőséget az **alkalmazás teljesítményének javítása**lehetőségnél.
 

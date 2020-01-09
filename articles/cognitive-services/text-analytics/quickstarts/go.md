@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378762"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: A Text Analytics Cognitive Services meghívása a Go használatával 
 <a name="HOLTop"></a>
@@ -37,9 +37,9 @@ Ebből a cikkből megtudhatja, hogyan [derítheti fel a nyelveket](#Detect), [el
 
 A Language Detection API a [Detect Language metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics API kulcsot és a végpontot a kódra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
 1. Nyisson meg egy parancssort egy olyan számítógépen, amelyen a go telepítve van a gyökérkönyvtárból.
 1. Állítsa össze a fájlt (például: `go build detect.go`).
@@ -60,17 +60,9 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
-
+    
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     const uriPath = "/text/analytics/v2.1/languages"
 
     var uri = endpoint + uriPath
@@ -178,9 +170,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
 1. Nyisson meg egy parancssort egy olyan számítógépen, amelyen a go telepítve van a gyökérkönyvtárból.
 1. Állítsa össze a fájlt (például: `go build sentiment.go`).
@@ -201,16 +193,8 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
     const uriPath = "/text/analytics/v2.1/sentiment"
 
@@ -294,9 +278,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
+1. Másolja a Text Analytics kulcsot és a végpontot a kódra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
 1. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
 1. Állítsa össze a fájlt (például: `go build key-phrases.go`).
@@ -317,16 +301,8 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     
     const uriPath = "/text/analytics/v2.1/keyPhrases"
 
@@ -430,7 +406,6 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) használatával. Az [entitások](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) szövegből kinyerik a szavakat, például a "Egyesült Államok" kifejezést, majd megadja a Word (ek) típus és/vagy wikipedia hivatkozását. A "Egyesült Államok" típusa `location`, míg a wikipedia-ra mutató hivatkozás `https://en.wikipedia.org/wiki/United_States`.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Környezeti változókat hozhat létre `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT` az erőforrás Azure-végpontjának és előfizetési kulcsának. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor a környezeti változók eléréséhez be kell majd állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a rendszerhéjat.
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
 1. Mentse a fájlt „.go” kiterjesztéssel.
@@ -453,16 +428,9 @@ import (
 )
 
 func main() {
-    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
-    if "" == os.Getenv(subscriptionKeyVar) {
-        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
-    }
-    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
-    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
-    if "" == os.Getenv(endpointVar) {
-        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
-    }
-    var endpoint string = os.Getenv(endpointVar)
+
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     
     const uriPath = "/text/analytics/v2.1/entities"
 
@@ -567,12 +535,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
  [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

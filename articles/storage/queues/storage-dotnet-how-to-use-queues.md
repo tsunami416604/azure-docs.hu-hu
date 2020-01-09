@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5ffee146bdbd666d4175af2f49f6b447743b2bc0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721567"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457699"
 ---
-# <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
+# <a name="get-started-with-azure-queue-storage-using-net"></a>Ismerkedés az Azure Queue Storage .NET-tel való használatával
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -29,7 +29,7 @@ Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások ö
 
 Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue Storage szolgáltatást használó általános forgatókönyvhöz. Az ismertetett forgatókönyvek az üzenetsorok létrehozására és törlésére, valamint az üzenetsor üzeneteinek hozzáadására, olvasására és törlésére vonatkoznak.
 
-**Várható befejezési idő:** 45 perc
+**Az oktatóanyag áttekintésének becsült ideje:** 45 perc
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -66,9 +66,9 @@ Az Azure Storage ügyféloldali kódtárait bármilyen típusú .NET-alkalmazás
 
 A következő három csomagra kell hivatkoznia a projektben az oktatóanyag elvégzéséhez:
 
-* [A .net-hez készült általános ügyféloldali függvénytár Microsoft Azure Storage](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ez a csomag programozott hozzáférést biztosít a Storage-fiókban található adaterőforrásokhoz.
-* [Microsoft Azure Storage üzenetsor-függvénytár a .net-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Ez az ügyféloldali kódtár lehetővé teszi, hogy az ügyfél által elérhető üzenetek tárolásához a Microsoft Azure Storage Queue szolgáltatás is működjön.
-* [Microsoft Azure Configuration Manager .net-függvénytár](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban lévő kapcsolatok karakterláncának elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
+* A [.net-hez készült általános ügyféloldali kódtár Microsoft Azure Storage](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ez a csomag programozott hozzáférést biztosít a Storage-fiókban lévő adaterőforrásokhoz.
+* [Microsoft Azure Storage üzenetsor-függvénytár a .net-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): ez az ügyféloldali kódtár lehetővé teszi a Microsoft Azure Storage Queue szolgáltatás használatát az ügyfél által elérhető üzenetek tárolásához.
+* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati sztring elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
 A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseket:
 
@@ -89,7 +89,7 @@ Az útmutatóban lévő példákat kétféle környezetben futtathatja:
 * A kódot futtathatja a felhőben, egy Azure Storage-fiókban.
 * A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../common/storage-use-emulator.md).
 
-Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információ eléréséhez lásd: [Hozzáférési kulcsok](../common/storage-account-manage.md#access-keys).
+Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információ: a [Storage-fiók elérési kulcsainak kezelése](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > A Storage Emulator megcélzásával elkerülheti az Azure Storage-hoz kapcsolódó költségeket. Ha azonban mégis egy Azure Storage-fiókot céloz meg a felhőben, az oktatóanyag végrehajtásával járó költségek elhanyagolhatóak.
@@ -369,7 +369,7 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 queue.Delete();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is.
 

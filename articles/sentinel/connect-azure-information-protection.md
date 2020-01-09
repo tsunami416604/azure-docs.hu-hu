@@ -1,25 +1,21 @@
 ---
-title: Azure Information Protection-adatkapcsolatok csatlakoztatása az Azure Sentinelhez | Microsoft Docs
+title: Azure Information Protection összekötése az Azure Sentinel-vel
 description: Megtudhatja, hogyan csatlakoztatható Azure Information Protection-adatkapcsolat az Azure Sentinelben.
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261821"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563683"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Adatok összekapcsolásának Azure Information Protection
 
@@ -29,7 +25,7 @@ ms.locfileid: "71261821"
 
 Az Azure Information Protection adatösszekötő konfigurálásával továbbíthatja a naplózási adatokat [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) az Azure sentinelbe. A Azure Information Protection segítségével szabályozhatja és biztonságossá teheti a bizalmas adatokat, függetlenül attól, hogy a felhőben vagy a helyszínen van tárolva.
 
-Ha a [Azure Information Protection központi jelentéskészítése](https://docs.microsoft.com/azure/information-protection/reports-aip) már konfigurálva van, így a szolgáltatás naplózási adatai ugyanabban a log Analytics-munkaterületen tárolódnak, mint az Azure Sentinel esetében, akkor kihagyhatja a következő konfigurációt: Ez az adatösszekötő. A Azure Information Protection naplózási adatai már elérhetők az Azure Sentinel szolgáltatásban.
+Ha a [Azure Information Protection központi jelentéskészítése](https://docs.microsoft.com/azure/information-protection/reports-aip) már konfigurálva van, így a szolgáltatás naplózási adatai ugyanabban a log Analytics-munkaterületen tárolódnak, mint az Azure Sentinel esetében, akkor kihagyhatja az adatösszekötő konfigurációját. A Azure Information Protection naplózási adatai már elérhetők az Azure Sentinel szolgáltatásban.
 
 Ha azonban a Azure Information Protection naplózási adatai egy másik Log Analytics munkaterületre kerülnek, mint amit jelenleg az Azure Sentinel számára választott, tegye a következők egyikét:
 
@@ -42,10 +38,10 @@ Ha azonban a Azure Information Protection naplózási adatai egy másik Log Anal
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A bérlőhöz tartozó alábbi Azure AD-rendszergazdai szerepkörök egyike: 
-    - Azure Information Protection-rendszergazda
+    - Azure Information Protection rendszergazda
     - Biztonsági rendszergazda
-    - Szabályozási ügyintéző
-    - Megfelelőségi adatok adminisztrátora
+    - Megfelelőségi rendszergazda
+    - Megfelelőségi adatkezelő
     - Globális rendszergazda
     
     > [!NOTE]
@@ -69,11 +65,11 @@ Ha nem konfigurált Log Analytics munkaterületet Azure Information Protectionho
 
 4. Ha kiválasztott egy munkaterületet, kattintson az **OK gombra** , és az összekötő **állapota** most a **Connected**értékre vált.
 
-5. A Azure Information Protectionból származó jelentéskészítési adatok a kiválasztott munkaterületen lévő **InformationProtectionLogs_CL** táblában tárolódnak. 
+5. A Azure Information Protection jelentési adatait a rendszer a kiválasztott munkaterületen található **InformationProtectionLogs_CL** táblában tárolja. 
     
     A jelentéskészítési adatokat Azure Monitor vonatkozó sémájának használatához keresse meg a **InformationProtectionEvents**. Az Event functions szolgáltatással kapcsolatos további információkért tekintse meg a Azure Information Protection dokumentációjának az [Event functions-hez készült rövid séma-referenciája](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) című szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Information Protection az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

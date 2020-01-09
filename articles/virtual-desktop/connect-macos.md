@@ -5,21 +5,18 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a46be5dea8286194ccd2558b2e6e301e2624a5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460207"
 ---
 # <a name="connect-with-the-macos-client"></a>Kapcsolódás a macOS-ügyfélhez
 
 > A következőkre vonatkozik: macOS 10,12 vagy újabb
-
->[!NOTE]
-> Jelenleg előzetes verzióban érhető el a Windows rendszerű virtuális asztali erőforrások elérésének lehetősége a macOS-ügyfélről.
 
 A macOS-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a letölthető ügyféllel. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az ügyfelet.
 

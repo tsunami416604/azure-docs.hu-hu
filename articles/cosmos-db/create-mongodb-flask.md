@@ -1,5 +1,5 @@
 ---
-title: Lombik-Webalkalmazás létrehozása a MongoDB és a Python SDK-hoz készült Azure Cosmos DB API-val
+title: Python-lombik Webalkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
 description: Egy Python-beli mintakód-mintát tartalmaz, amellyel csatlakozhat a Azure Cosmos DB API-MongoDB való kapcsolódáshoz és lekérdezésekhez.
 author: markjbrown
 ms.author: mjbrown
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 2bd8fa81d0825e604c42c54c0f789b7939206804
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445492"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Python-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
 
@@ -58,7 +58,7 @@ Most hozzon létre egy MongoDB alkalmazást a GitHubról, állítsa be a kapcsol
     cd "C:\git-samples"
     ```
 
-3. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
@@ -153,7 +153,7 @@ Ha nem szeretne létrehozni elágazást ehhez az adattárhoz, az alul találhat�
 > [!NOTE]
 > Ha a kódot a GitHubon vagy más verziókövetés-beállításokban szeretné tárolni, ne felejtse el törölni a kapcsolódási karakterláncokat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

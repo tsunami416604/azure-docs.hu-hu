@@ -62,12 +62,12 @@
           href: migrate-support-matrix-hyper-v.md
         - name: A fizikai kiszolgálók felmérésének és migrálásának támogatási mátrixa
           href: migrate-support-matrix-physical.md
+        - name: Az Azure Migrate-berendezés támogatási mátrixa
+          href: migrate-appliance.md
     - name: A Hyper-V migrálási architektúrája
       href: hyper-v-migration-architecture.md
     - name: Ügynökalapú migrálási architektúra
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate-berendezés
-      href: migrate-appliance.md
     - name: Azure Migrate replikációs berendezés
       href: migrate-replication-appliance.md
     - name: Ajánlott felmérési eljárások
@@ -80,6 +80,8 @@
   items:
     - name: Az előző verzió használata
       href: migrate-v1.md
+    - name: Azure Migrate-projektek létrehozása és kezelése
+      href: create-manage-projects.md
     - name: VMware-berendezés üzembe helyezése
       href: how-to-set-up-appliance-vmware.md
     - name: Hyper-V-berendezés üzembe helyezése
@@ -123,7 +125,13 @@
 - name: Hibaelhárítás
   items:
     - name: Az Azure Migrate hibaelhárítása
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: Azure Migrate-projektek hibaelhárítása
+      href: troubleshoot-project.md
+    - name: Azure Migrate-berendezés/felderítés hibaelhárítása
+      href: troubleshoot-appliance-discovery.md
+    - name: Értékelés/függőségek vizualizációjának hibaelhárítása
+      href: troubleshoot-assessment.md
 - name: További források
   items:
     - name: Migrálás a felhőbevezetési keretrendszerbe

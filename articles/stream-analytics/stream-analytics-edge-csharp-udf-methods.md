@@ -1,33 +1,30 @@
 ---
 title: .NET-es szabványos függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
 description: Útmutató c# felhasználó által definiált függvények írásához Stream Analytics feladatokhoz.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0bc59ac3e55466f8ac06a3a8fa9cf08fecbb5ce3
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426310"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>.NET-es szabványos felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
 
 A Azure Stream Analytics SQL-szerű lekérdezési nyelvet kínál az adatstreamek közötti átalakítások és számítások végrehajtásához. Számos beépített függvény létezik, de bizonyos összetett forgatókönyvek további rugalmasságot igényelnek. A .NET Standard felhasználó által definiált függvények (UDF) használatával meghívhatja a saját függvényeit bármely .NET Standard nyelven (C#, F#stb.), hogy kiterjessze a stream Analytics lekérdezési nyelvet. A UDF lehetővé teszi összetett matematikai számítások végrehajtását, egyéni ML-modellek importálását a ML.NET használatával, és a hiányzó adatokhoz egyéni imputálási logikát használhat. Stream Analytics feladatok UDF-funkciója jelenleg előzetes verzióban érhető el, ezért nem használható éles környezetben.
 
 A felhőalapú feladatok .NET-felhasználó által definiált függvénye a (z) rendszerben érhető el:
-* USA nyugati középső régiója (elérhető)
-* Észak-Európa (elérhető)
-* USA keleti régiója (elérhető)
-* USA nyugati régiója (hamarosan elérhető)
-* USA 2. keleti régiója (hamarosan kivezetve)
-* Nyugat-Európa (hamarosan kivezetve)
+* USA nyugati középső régiója
+* Észak-Európa
+* USA keleti régiója
+* USA nyugati régiója
+* USA 2. keleti régiója
+* Nyugat-Európa
 
 Ha más régiókban szeretné használni ezt a funkciót, [hozzáférés kérhető](https://aka.ms/ccodereqregion).
 
@@ -51,7 +48,7 @@ Az UDF-csomagok formátuma `/UserCustomCode/CLR/*`elérési úttal rendelkezik. 
 |hosszú  |  bigint   |
 |double  |  double   |
 |sztring  |  nvarchar (max.)   |
-|DateTime  |  DateTime   |
+|dateTime  |  dateTime   |
 |struct  |  IRecord   |
 |objektum  |  IRecord   |
 |Tömb\<objektum >  |  IArray   |
@@ -139,7 +136,7 @@ Az UDF előzetes verziója jelenleg a következő korlátozásokkal rendelkezik:
 
 * A Azure Portal Query Editor hibaüzenetet jelenít meg, amikor a .NET Standard UDF-t használja a portálon. 
 
-* Mivel az egyéni kódok Azure Stream Analytics motorral vannak megosztva, az egyéni kód nem hivatkozhat olyanra, amely ütköző névtérrel/dll_name rendelkezik Azure Stream Analytics kóddal. Nem hivatkozhat például a *Newtonsoft JSON*-ra.
+* Mivel az egyéni kódok Azure Stream Analytics motorral vannak megosztva, az egyéni kód nem hivatkozhat olyanra, amely ütköző névtérrel/dll_name Azure Stream Analytics kóddal rendelkezik. Nem hivatkozhat például a *Newtonsoft JSON*-ra.
 
 ## <a name="next-steps"></a>Következő lépések
 

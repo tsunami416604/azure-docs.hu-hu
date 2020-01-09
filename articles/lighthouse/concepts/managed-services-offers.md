@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 description: A felügyelt szolgáltatások lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat adjanak az ügyfeleknek az Azure piactéren.
-ms.date: 09/19/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7dcaa34b1fb471823acd74a7d9b05e42dd44161
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463998"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453589"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 
@@ -22,19 +22,20 @@ Ezt követően a szervezetében lévő felhasználók az ajánlatnak a [Cloud Pa
 
 ## <a name="public-and-private-offers"></a>Nyilvános és privát ajánlatok
 
-A felügyelt szolgáltatások minden ajánlata egy vagy több csomagot tartalmaz. A csomagok lehetnek magán-vagy nyilvánosak.
+A felügyelt szolgáltatások minden ajánlata egy vagy több csomagot tartalmaz. A csomagok lehetnek magán-vagy nyilvánosak is. 
 
-Ha korlátozni szeretné az ajánlatát bizonyos ügyfeleknek, közzétehet egy privát csomagot. Ha így tesz, a terv csak az Ön által megadott előfizetés-azonosítók esetében vásárolható meg. További információ: [privát ajánlatok](https://docs.microsoft.com/azure/marketplace/private-offers).
+Ha korlátozni szeretné az ajánlatát bizonyos ügyfeleknek, közzétehet egy privát csomagot. Ha így tesz, a terv csak az Ön által megadott előfizetés-azonosítók esetében vásárolható meg. További információ: [privát ajánlatok](../../marketplace/private-offers.md).
 
 A nyilvános csomagok lehetővé teszik a szolgáltatások új ügyfelekhez való előléptetését. Ezek általában megfelelőbbek, ha csak korlátozott hozzáférésre van szüksége az ügyfél bérlője számára. Ha kapcsolatot létesített egy ügyféllel, ha úgy dönt, hogy további hozzáférést biztosítanak a szervezetnek, akkor ezt akár egy új privát csomag közzétételével is megteheti, akár [Azure Resource Manager-sablonok használatával történő további hozzáféréshez](../how-to/onboard-customer.md).
 
-Ne feledje, hogy a csomag nyilvánosként való közzététele után nem módosítható magánjellegűre. Emellett nem korlátozhatja a nyilvános csomag elérhetőségét bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfelet is, de a csomag teljes értékesítését megszüntetheti, ha ezt választja.
-
 Ha szükséges, a nyilvános és a saját csomagok is felhasználhatók ugyanabban az ajánlatban.
+
+> [!IMPORTANT]
+> Miután közzétett egy csomagot nyilvánosként, nem módosíthatja magánjellegűre. Egy privát csomag használatával szabályozhatja, hogy mely ügyfelek fogadhatják el az ajánlatot, és hogyan delegálhat erőforrásokat. Egy nyilvános csomaggal nem korlátozhatja a rendelkezésre állást bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfél számára is (bár ha úgy dönt, hogy teljesen megszüntetheti a csomag értékesítését). Jelenleg nincs olyan mechanizmus, amely elutasítja vagy eltávolítja a delegálásokat, ha az ügyfél elfogad egy ajánlatot, de bármikor elérheti az ügyfelet, és megkérheti, hogy [távolítsa el a hozzáférését](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ## <a name="publish-managed-service-offers"></a>Felügyelt szolgáltatás-ajánlatok közzététele
 
-A felügyelt szolgáltatások ajánlatának közzétételével kapcsolatos további információkért lásd: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace](../how-to/publish-managed-services-offers.md)-en. Az Azure Marketplace-en a Cloud Partner Portal használatával történő közzétételsel kapcsolatos általános információkért lásd: az [Azure Marketplace és a AppSource közzétételi útmutatója](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) , valamint az [Azure és a AppSource Marketplace-ajánlatok kezelése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+A felügyelt szolgáltatások ajánlatának közzétételével kapcsolatos további információkért lásd: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace](../how-to/publish-managed-services-offers.md)-en. Az Azure Marketplace-en a Cloud Partner Portal használatával történő közzétételsel kapcsolatos általános információkért lásd: az [Azure Marketplace és a AppSource közzétételi útmutatója](../../marketplace/marketplace-publishers-guide.md) , valamint az [Azure és a AppSource Marketplace-ajánlatok kezelése](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

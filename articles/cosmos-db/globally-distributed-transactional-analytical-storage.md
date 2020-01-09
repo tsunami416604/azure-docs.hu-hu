@@ -1,5 +1,5 @@
 ---
-title: Globálisan elosztott tranzakciós és analitikai tároló az Azure Cosmos-tárolók számára
+title: Globálisan elosztott tranzakciós és analitikai (privát előzetes verzió) tároló az Azure Cosmos-tárolók számára
 description: Ismerje meg a tranzakciós és analitikai tárterületet, valamint az Azure Cosmos-tárolók konfigurációs beállításait.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445403"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálisan elosztott tranzakciós és analitikai tároló az Azure Cosmos-tárolók számára
 
-Az Azure Cosmos-tárolót a két tárolóeszköz, a tranzakciós tárolók és egy frissíthető analitikai tároló motorja belsőleg támogatja. A Storage-motorokat a rendszer naplózza és írásra optimalizálta a gyorsabb frissítésekhez. Azonban mindegyik kódolása másképp történik:
+Az Azure Cosmos-tárolót a két Storage-motor és egy frissíthető analitikai tároló motorja (privát előzetes verzió) belsőleg támogatja. A Storage-motorokat a rendszer naplózza és írásra optimalizálta a gyorsabb frissítésekhez. Azonban mindegyik kódolása másképp történik:
 
 * **Tranzakciós tárolási motor** – a rendszer a gyors tranzakciós olvasások és lekérdezések során sor-orientált formátumban kódolja.
 
@@ -67,6 +67,6 @@ Egy adott régióban a tranzakciós munkaterhelések a tároló tranzakciós/sor
 
 A tranzakciós munkaterhelések használják a kiépített átviteli sebességet (RUs). A tranzakciós munkaterhelésekkel ellentétben az elemzési számítási feladatok átviteli sebessége a tényleges felhasználáson alapul. Az analitikus számítási feladatok igény szerint használják az erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Élettartam Azure Cosmos DB](time-to-live.md)

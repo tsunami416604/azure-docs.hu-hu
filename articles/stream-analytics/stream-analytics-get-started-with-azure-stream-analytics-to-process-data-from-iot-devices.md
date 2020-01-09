@@ -1,19 +1,18 @@
 ---
 title: Valós idejű IoT-adatfolyamok feldolgozása Azure Stream Analytics
 description: IoT-érzékelőcímkék és -adatfolyamok streamelemzéssel és valós idejű adatfeldolgozással
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426251"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Valós idejű IoT-adatfolyamok feldolgozása Azure Stream Analytics
 

@@ -1,6 +1,6 @@
 ---
 title: Vész-helyreállítás integrációs fiókokhoz
-description: Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
+description: Az integrációs fiókok és a B2B-összetevők beállítása a régiók közötti vész-helyreállítási Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 5ab0b14a190461d4dfba74e277f3d2ec30d9981a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 25dff0cb14467513bf1cc60fd1fb6c2205bd2276
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793138"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666903"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
 

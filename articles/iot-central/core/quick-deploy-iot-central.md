@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: ba131002df64f972aa921a0f002a6d26c58f21ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cb9968d3bcc30fe8e0f0023bcf7101cde5e4a196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453911"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -36,13 +36,11 @@ Ezután válassza az **egyéni alkalmazás**lehetőséget.
 
 1. Az Azure IoT Central automatikusan javaslatot tesz az alkalmazás nevére a kiválasztott alkalmazás sablonja alapján. Ezt a nevet elfogadhatja, vagy megadhatja a saját felhasználóbarát alkalmazásának nevét, például a **contoso IoT**is. Az Azure IoT Central egy egyedi URL-címet is létrehoz az Ön számára az alkalmazás neve alapján. Ha szeretné, megváltoztathatja ezt az URL-előtagot valami emlékezetre.
 
-1. Válasszon olyan sablont, amely nem használja az előzetes verziójú funkciókat. Az alkalmazássablon előre megadott elemeket, például eszközsablonokat és irányítópultokat tartalmazhat, amelyek segítséget nyújtanak az első lépésekhez.
+1. Válassza ki azt az **örökölt alkalmazást** , amely nem használja az előzetes verziójú funkciókat.
 
     | Alkalmazássablon | Leírás |
     | -------------------- | ----------- |
-    | Minta: Contoso       | Létrehoz egy alkalmazást, amely már tartalmaz egy eszközsablont egy hűtött eladóautomatához. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
-    | Minta: Devkits       | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Ha Ön eszközfejlesztő, aki ezekkel az eszközökkel kísérletezik, használja ezt a sablont. |
-    | Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
+    | Örökölt alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
 
 1. Válassza ki a fizetési konstrukciót:
    - a **7 napos ingyenes próbaverziós** alkalmazások a lejárat előtt hét napig ingyenesek. A lejáratuk előtt bármikor elvégezhető a **fizetésre való váltás** . Ha létrehoz egy **próbaverziós** alkalmazást, meg kell adnia a kapcsolattartási adatait, és el kell döntenie, hogy szeretne-e információkat és tippeket kapni a Microsofttól.

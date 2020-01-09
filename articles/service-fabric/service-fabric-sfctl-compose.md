@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl összeállítás | Microsoft Docs
-description: A CLI-sfctl összeállítási parancsainak Service Fabric ismerteti.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl-összeállítás
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A Docker-összeállítási alkalmazásokhoz tartozó parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901656"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645395"
 ---
 # <a name="sfctl-compose"></a>sfctl-összeállítás
 Docker-összeállítási alkalmazások létrehozása, törlése és kezelése.
@@ -30,9 +21,9 @@ Docker-összeállítási alkalmazások létrehozása, törlése és kezelése.
 | --- | --- |
 | létrehozás | Létrehoz egy Service Fabric összeállítási központi telepítést. |
 | lista | A Service Fabric-fürtben létrehozott összeállítási központi telepítések listájának beolvasása. |
-| eltávolítása | Töröl egy meglévő Service Fabric összeállítási telepítést a fürtből. |
+| eltávolítás | Töröl egy meglévő Service Fabric összeállítási telepítést a fürtből. |
 | status | Információ beolvasása egy Service Fabric összeállítási telepítésről. |
-| Frissítés | Megkezdi az összeállítási központi telepítés frissítését a Service Fabric-fürtön. |
+| frissítés | Megkezdi az összeállítási központi telepítés frissítését a Service Fabric-fürtön. |
 | frissítés – visszaállítás | Elindítja az összeállítási központi telepítés frissítését a Service Fabric-fürtön. |
 | frissítés – állapot | Beolvassa az ezen a Service Fabric-összeállításon végrehajtott legújabb frissítés részleteit. |
 

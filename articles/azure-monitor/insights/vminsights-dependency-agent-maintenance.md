@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet frissíteni a Azure Monitor f
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f062dead8d479fe4da5de46b76b82cee9207bd83
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400796"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>A Azure Monitor for VMs függőségi ügynök frissítése
 
@@ -46,7 +46,7 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentw
 
 6. Az **Dependency Agent 9.9.0 eltávolítása** párbeszédpanelen kattintson az **Eltávolítás** gombra, és folytassa az előző verzió eltávolításával a párbeszédpanelen megadott elérési útról. 
 
-7. A **Dependency Agent 9.9.0 eltávolítása** párbeszédpanelen megjelenik az eltávolítási folyamat, és amikor elkészült, megjelenik a **Dependency Agent eltávolításának befejezése** lap. Kattintson a **Finish** (Befejezés) gombra.
+7. A **Dependency Agent 9.9.0 eltávolítása** párbeszédpanelen megjelenik az eltávolítási folyamat, és amikor elkészült, megjelenik a **Dependency Agent eltávolításának befejezése** lap. Kattintson a **Befejezés** gombra.
 
 8. A **Dependency Agent 9.9.1 telepítése** párbeszédpanelen megjelenik a telepítési folyamat. Amikor megjelenik a **Dependency Agent eltávolításának befejezése** lap, kattintson a **Befejezés**gombra. 
 
@@ -54,7 +54,7 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentw
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Futtassa a következő parancsot.
+2. Futtassa az alábbi parancsot.
 
     ```dos
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual

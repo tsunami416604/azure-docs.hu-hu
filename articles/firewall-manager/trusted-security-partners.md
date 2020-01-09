@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436768"
 ---
 # <a name="what-are-trusted-security-partners-preview"></a>Mik azok a megbízható biztonsági partnerek (előzetes verzió)?
 
@@ -23,7 +23,7 @@ A Azure Firewall Manager *megbízható biztonsági partnerei (előzetes verzió)
 
 A gyors konfigurálással biztonságossá teheti a hubot egy támogatott biztonsági partnerrel, és átirányíthatja és szűrheti az internetes forgalmat a virtuális hálózatok (virtuális hálózatok) vagy az adott régión belüli fiókirodák között. Ez az automatikus útválasztási felügyelettel végezhető el a felhasználó által megadott útvonalak (UDR-EK) beállítása és kezelése nélkül.
 
-Az Ön által választott biztonsági partnerrel konfigurált biztonságos hubokat több Azure-régióban is üzembe helyezheti, így a felhasználók bárhonnan és biztonságosan érhetik el a felhasználókat a különböző régiókban. A biztonsági partnernek az internetes/SaaS-alkalmazások forgalmára való használatának, valamint a biztonságos hubokon Azure Firewall a privát forgalomra való felépítése lehetővé teszi, hogy az Azure-ban a globálisan elosztott felhasználókhoz közelebb eső biztonsági szegélyt hozzon létre. alkalmazások.
+Az Ön által választott biztonsági partnerrel konfigurált biztonságos hubokat több Azure-régióban is üzembe helyezheti, így a felhasználók bárhonnan és biztonságosan érhetik el a felhasználókat a különböző régiókban. A biztonsági partnernek az internetes/SaaS-alkalmazások forgalmára való használatának, valamint a biztonságos hubokon Azure Firewall a privát forgalomra való felépítése lehetővé teszi, hogy a globálisan elosztott felhasználókhoz és alkalmazásokhoz közeledő Azure-beli biztonsági szegélyt fejlesszen fel.
 
 Ebben az előzetes verzióban a támogatott biztonsági partnerek a **ZScaler** és a **iboss**. A támogatott régiók a következők: WestCentralUS, NorthCentralUS, WestUS, WestUS2 és EastUS.
 
@@ -75,9 +75,9 @@ Az Office 365 esetében a hálózati késés és a teljesítmény kritikus fonto
 
 Az [office 365 hálózati kapcsolati alapelveket](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) hívja a key Office 365 hálózati kapcsolatainak helyi továbbítására a felhasználói ágban vagy a mobileszközön, és közvetlenül az interneten keresztül a legközelebbi Microsoft hálózati pontra.
 
-Emellett az Office 365-kapcsolatok szigorúan titkosítva vannak az adatvédelem szempontjából, és hatékony, szabadalmaztatott protokollokat használnak a teljesítmény szempontjából. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezeknek az okoknak az az oka, hogy az ügyfelek közvetlenül az ágakból küldik el az Office 365 forgalmat, mielőtt elküldik a forgalmat az Azure-on keresztül. A Microsoft több, az Azure-ral és az Office 365-nal integrált SD-WAN-megoldási szolgáltatóval együttműködik, és megkönnyíti az ügyfelek számára, hogy az Office 365 Direct és a helyi internetes breakout szolgáltatást is engedélyezzék. További részletek: [Hogyan saját O365-szabályzatok beállítása virtuális WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan) -kapcsolaton keresztül?
+Emellett az Office 365-kapcsolatok szigorúan titkosítva vannak az adatvédelem szempontjából, és hatékony, szabadalmaztatott protokollokat használnak a teljesítmény szempontjából. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezeknek az okoknak az az oka, hogy az ügyfelek közvetlenül az ágakból küldik el az Office 365 forgalmat, mielőtt elküldik a forgalmat az Azure-on keresztül. A Microsoft több, az Azure-ral és az Office 365-nal integrált SD-WAN-megoldási szolgáltatóval együttműködik, és megkönnyíti az ügyfelek számára, hogy az Office 365 Direct és a helyi internetes breakout szolgáltatást is engedélyezzék. További részletek: [Hogyan saját O365-szabályzatok beállítása virtuális WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) -kapcsolaton keresztül?
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyezzen üzembe egy megbízható biztonsági ajánlatot egy biztonságos központban a Azure Firewall Manager használatával](deploy-trusted-security-partner.md).

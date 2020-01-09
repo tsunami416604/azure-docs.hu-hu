@@ -1,20 +1,16 @@
 ---
-title: Service Fabric Secrets Store-ban | Microsoft Docs
+title: A Service Fabric titkoskulcs-tárolója
 description: Ez a cikk a Service Fabric Secrets Store használatát ismerteti.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457504"
 ---
-#  <a name="service-fabric-secrets-store"></a>Service Fabric Secrets áruház
+#  <a name="service-fabric-secrets-store"></a>A Service Fabric titkoskulcs-tárolója
 Ez a cikk azt ismerteti, hogyan hozhat létre és használhat titkokat Service Fabric alkalmazásokban a Service Fabric Secrets Store (CSS) használatával. A CSS egy helyi titkos tároló-gyorsítótár, amely bizalmas adatok, például jelszó, tokenek és a memóriában titkosított kulcsok megőrzésére szolgál.
 
 ## <a name="enabling-secrets-store"></a>Titkok tárolójának engedélyezése
@@ -24,8 +20,8 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és használhat titkokat Service F
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és használhat titkokat Service F
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>Titkos erőforrás deklarálása
 Létrehozhat egy titkos erőforrást a Resource Manager-sablon vagy a REST API használatával.
@@ -180,5 +179,5 @@ A "SecretsStoreRef" típus megadásával köthető a titkos kulcshoz egy folyama
   <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
 </EnvironmentVariables>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)

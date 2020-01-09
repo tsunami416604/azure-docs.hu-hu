@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438830"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -440,7 +440,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 2. Kattintson a parancssáv **új adattár** elemére, és válassza az **Azure Storage**lehetőséget. A szerkesztőben megjelenik az Azure Storage társított szolgáltatás létrehozására szolgáló JSON-parancsfájl.
 
     ![Új adattár – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Cserélje le az `<accountname>`t az Azure Storage-fiók nevére, és `<accountkey>` az Azure Storage-fiók hozzáférési kulcsával. A tárelérési kulcs lekérésével kapcsolatos információk: [Tárelérési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-account-manage.md#access-keys).
+3. Cserélje le az `<accountname>`t az Azure Storage-fiók nevére, és `<accountkey>` az Azure Storage-fiók hozzáférési kulcsával. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 
     ![Azure Storage – szeretett szolgáltatás](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Deploy** (Üzembe helyezés) elemére.

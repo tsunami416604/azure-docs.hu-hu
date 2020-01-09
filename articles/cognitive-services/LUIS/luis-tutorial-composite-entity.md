@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: összetett entitások oktatóanyaga – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Összetett entitás hozzáadása a különböző típusú kinyert adatmennyiségek egyetlen tartalmazó entitásba való kinyeréséhez. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
+description: Ebben az oktatóanyagban egy összetett entitást ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893185"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447949"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: kapcsolódó adatok csoportosítása és kinyerése
 Ebben az oktatóanyagban egy összetett entitást ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
@@ -28,8 +28,6 @@ Az összetett entitás jól illeszkedik az ilyen típusú adattípusokhoz, mert 
 * Kapcsolódnak egymáshoz.
 * Többféle típusú entitást használhat.
 * Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -46,9 +44,10 @@ Az összetett entitás jól illeszkedik az ilyen típusú adattípusokhoz, mert 
 
 ## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) az entitás listázása oktatóanyagból.
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) az entitás listázása oktatóanyagból.
 
-2. Importálja a JSON-t egy új alkalmazásba.
+2. Importálja a JSON-t egy új alkalmazásba a [Luis portál](https://www.luis.ai)használatával.
 
 3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `composite` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 

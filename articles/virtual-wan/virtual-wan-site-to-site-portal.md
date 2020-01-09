@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e17205af1ede845ea77b04f6f2b4c6babf3bc450
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 10b9dba2f54a2d20b0cb405285772f8c3d74b3a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450842"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -35,9 +35,9 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > Ha több hellyel rendelkezik, általában egy [Virtual WAN-partner](https://aka.ms/virtualwan) segítségével hozza létre ezt a konfigurációt. A konfigurációt azonban maga is létrehozhatja, ha elboldogul a hálózatkezeléssel, és tudja, hogyan kell konfigurálnia saját VPN-eszközeit.
 >
 
-![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan.png)
+![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan.png)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -75,7 +75,7 @@ A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek köz�
 
 ## <a name="site"></a>Hely létrehozása
 
-Most már készen áll a fizikai helyeknek megfelelő helyek létrehozására. Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfelelően. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. Virtuális WAN-ban akár 1000-es helyet hozhat létre virtuális hubhoz. Ha több hubhoz is rendelkezett, minden egyes hubhoz létrehozhat 1000-et. Ha van virtuális WAN-partner (hivatkozás beszúrása) CPE-eszköz, egyeztessen velük az Azure-ra való automatizálásáról. Az automatizálás általában egyszerű kattintásos élményt nyújt a nagyméretű fiókirodák Azure-ba való exportálásához és a CPE és az Azure közötti virtuális WAN VPN-átjáró közötti kapcsolat beállításához (itt az Azure-ról a CPE-re irányuló automatizálási útmutató hivatkozása).
+Most már készen áll a fizikai helyeknek megfelelő helyek létrehozására. Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfelelően. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. Virtuális WAN-ban akár 1000-es helyet hozhat létre virtuális hubhoz. Ha több hubhoz is rendelkezett, minden egyes hubhoz létrehozhat 1000-et. Ha van virtuális WAN-partner (hivatkozás beszúrása) CPE-eszköz, egyeztessen velük az Azure-ra való automatizálásáról. Az automatizálás általában egyszerű kattintásos élményt nyújt a nagyméretű fiókirodai információk Azure-ba való exportálásához, valamint a CPE és az Azure virtuális WAN VPN-átjáró közötti kapcsolat beállításához. További információ: Automation- [útmutató az Azure-ról a CPE-partnerekre](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
@@ -257,6 +257,6 @@ Amennyiben útmutatásra van szüksége az eszköz konfigurálásához, használ
 2. Az **Áttekintés** oldalon a térképen lévő minden pont egy hubot jelöl. Vigye a kurzort a központ állapotának összegzése, a kapcsolat állapota és a bejövő és kimenő bájtok megtekintéséhez.
 3. A hubok és kapcsolatok szakaszban megtekintheti a központ állapotát, a VPN-helyeket stb. Ha további részletekre van szüksége, kattintson egy adott hub-névre, és navigáljon a VPN-webhelyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

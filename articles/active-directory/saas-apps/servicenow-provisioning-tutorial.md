@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A ServiceNow konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+title: 'Oktatóanyag: a ServiceNow konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a ServiceNow.
 services: active-directory
 documentationCenter: na
@@ -13,100 +13,141 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 12/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443230"
 ---
-# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: A ServiceNow konfigurálása az automatikus felhasználó-kiépítés Azure Active Directory
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ServiceNow konfigurálása
 
-Ennek az oktatóanyagnak a célja, hogy megmutassa a ServiceNow és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a ServiceNow.
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a ServiceNow és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [ServiceNow](https://www.servicenow.com/) . A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Felhasználók létrehozása a ServiceNow-ben
+> * Felhasználók eltávolítása a ServiceNow-ben, ha már nincs szükség hozzáférésre
+> * Felhasználói attribútumok szinkronizálása az Azure AD és a ServiceNow között
+> * Csoportok és csoporttagságok kiépítése a ServiceNow-ben
+> * [Egyszeri bejelentkezés](servicenow-tutorial.md) a ServiceNow-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció ServiceNow való konfigurálásához a következő elemek szükségesek:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-- Azure AD-előfizetés
-- ServiceNow, a ServiceNow, a Calgary vagy a magasabb verziójának példánya vagy bérlője
-- A ServiceNow Express esetében a ServiceNow Express, Helsinki vagy újabb verziójának példánya
+* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* Calgary vagy magasabb [ServiceNow-példány](https://www.servicenow.com/)
+* [ServiceNow Express-példány](https://www.servicenow.com/) (Helsinki vagy újabb)
+* Felhasználói fiók a ServiceNow-ben a rendszergazdai szerepkörrel
 
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
+## <a name="step-1-plan-your-provisioning-deployment"></a>1\. lépés A kiépítési üzembe helyezés megtervezése
+1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
+2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, hogy az [Azure ad és a ServiceNow között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+## <a name="step-2-configure-servicenow-to-support-provisioning-with-azure-ad"></a>2\. lépés ServiceNow konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik Azure AD-próbaverzióval, [ingyenes fiókot](https://azure.microsoft.com/free/)szerezhet be.
+1. Azonosítsa a ServiceNow-példány nevét. A ServiceNow eléréséhez használt URL-címen megkeresheti a példány nevét. Az alábbi példában a példány neve dev35214.
 
-## <a name="assigning-users-to-servicenow"></a>Felhasználók kiosztása a ServiceNow
+![ServiceNow-példány](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
+    
+2. Hitelesítő adatok beszerzése egy rendszergazda számára a ServiceNow-ben. Navigáljon a felhasználói profilhoz a ServiceNow-ben, és ellenőrizze, hogy a felhasználó rendelkezik-e rendszergazdai szerepkörrel. 
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a ServiceNow alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a ServiceNow-alkalmazáshoz: [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+![ServiceNow-rendszergazdai szerepkör](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3\. lépés ServiceNow hozzáadása az Azure AD Application Galleryből
+
+Vegyen fel ServiceNow az Azure AD-alkalmazás-katalógusból a ServiceNow való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a ServiceNow az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
+
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4\. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
+
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
+
+* Felhasználók és csoportok ServiceNow való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+
+* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
 
-> [!IMPORTANT]
->*   Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a ServiceNow a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
->*   Ha a felhasználó ServiceNow rendel hozzá, ki kell választania egy érvényes felhasználói szerepkört. Az "alapértelmezett hozzáférés" szerepkör nem működik a kiépítés során.
->*   A szerepkörök Azure AD-beli létrehozásával és konfigurálásával kapcsolatos további információkért tekintse meg ezt a [hivatkozást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
+## <a name="step-5-configure-automatic-user-provisioning-to-servicenow"></a>5\. lépés Automatikus felhasználó-kiépítés beállítása a ServiceNow 
 
-## <a name="enable-automated-user-provisioning"></a>Automatikus felhasználó-kiépítés engedélyezése
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
-Ez a szakasz végigvezeti az Azure AD-nek a ServiceNow felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és ServiceNow alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
+### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a ServiceNow az Azure AD-ben:
 
-> [!TIP]
->Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a ServiceNow, a Azure Portalban megadott [](https://portal.azure.com)utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-### <a name="configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+2. Az alkalmazások listában válassza a **ServiceNow**lehetőséget.
 
-1. Ha már konfigurálta a ServiceNow az egyszeri bejelentkezéshez, keresse meg a ServiceNow-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **ServiceNow** az alkalmazás-gyűjteményben. Válassza a ServiceNow lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
+    ![Az ServiceNow hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Válassza ki a ServiceNow példányát, majd válassza a kiépítés lapot.
+3. Válassza ki a **kiépítés** lapot.
 
-1. Állítsa a **kiépítési** módot **automatikus**értékre. 
+    ![Kiépítés lap](common/provisioning.png)
 
-    ![kiépítés folyamatban](./media/servicenow-provisioning-tutorial/provisioning.png)
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-1. A rendszergazdai hitelesítő adatok szakaszban hajtsa végre a következő lépéseket:
-   
-    a. A **ServiceNow-példány neve** szövegmezőbe írja be a ServiceNow-példány nevét.
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-    b. A **ServiceNow rendszergazda felhasználóneve** szövegmezőbe írja be a rendszergazda felhasználónevét.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a ServiceNow rendszergazdai hitelesítő adatait és a felhasználónevet. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a ServiceNow. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a ServiceNow-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    c. A **ServiceNow rendszergazdai jelszó** szövegmezőben a rendszergazda jelszava.
+    ![kiépítési](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-1. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a ServiceNow-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a ServiceNow-fiókja rendelkezik rendszergazdai jogosultságokkal, és ismételje meg a **"rendszergazdai hitelesítő adatok"** lépést.
+6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az **értesítő e-mailek** mezőben, majd jelölje be a jelölőnégyzetet.
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-1. Kattintson a **Mentés gombra.**
+7. Kattintson a **Mentés** gombra.
 
-1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ServiceNow lehetőséget.**
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ServiceNow**lehetőséget.
 
-1. Az **attribútum** -hozzárendelések szakaszban tekintse át az Azure ad-ből az ServiceNow-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ServiceNow felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő ServiceNow. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ServiceNow felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a ServiceNow API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-1. Az Azure AD-kiépítési szolgáltatás ServiceNow való engedélyezéséhez módosítsa a kiépítési **állapotot** a következőre a beállítások szakaszban:
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a ServiceNow**lehetőséget.
 
-1. Kattintson a **Mentés gombra.**
+11. Tekintse át az Azure AD-ből szinkronizált ServiceNow az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ServiceNow tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-Elindítja a felhasználók és csoportok szakaszban ServiceNow rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a ServiceNow alkalmazásban végrehajtott összes műveletet.
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+13. Az Azure AD-kiépítési szolgáltatás ServiceNow való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+
+14. Adja meg a ServiceNow kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+
+    ![Kiépítési hatókör](common/provisioning-scope.png)
+
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
+
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
+
+## <a name="step-6-monitor-your-deployment"></a>6\. lépés Az üzemelő példány figyelése
+Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
+
+1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
+* **InvalidLookupReference:** Bizonyos attribútumok, például a részleg és a ServiceNow-ben való kiépítés során az értékeknek már léteznie kell a ServiceNow található egyik táblázatban. Előfordulhat például, hogy két helyet (Seattle, Los Angeles) és három részleget (Sales, Finance, marketing) tartalmaz **a ServiceNow** . Ha olyan felhasználót próbál kiépíteni, amelyben a részlege "Sales", és a tartózkodási hely "Seattle", akkor a rendszer sikeresen kiépíti. Ha olyan felhasználót próbál kiépíteni, amely a "Sales" osztályt és a "LA" helyet kísérli meg, a felhasználó nem lesz kiépítve. A (z) LA helyet fel kell venni a ServiceNow hivatkozási táblájába, vagy az Azure AD felhasználói attribútumát frissíteni kell, hogy az megfeleljen a ServiceNow formátumának. 
+* **EntryJoiningPropertyValueIsMissing:** A megfelelő attribútum azonosításához tekintse át az [attribútumok leképezéseit](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) . Ennek az értéknek jelen kell lennie a kiépíteni próbált felhasználón vagy csoportban. 
+* Tekintse át a [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) -t, hogy megértse az összes követelményt és korlátozást (például a felhasználó országkód megadásának formátuma)
+* Egyes ServiceNow-telepítések lehetővé teszik az IP-címtartományok engedélyezését az Azure AD kiépítési szolgáltatás számára. Az Azure AD kiépítési szolgáltatás számára fenntartott IP-címtartományok [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók: "AzureActiveDirectoryDomainServices".
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Egyszeri bejelentkezés konfigurálása](servicenow-tutorial.md)
 
+## <a name="next-steps"></a>Következő lépések
 
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

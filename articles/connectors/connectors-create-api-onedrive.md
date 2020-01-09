@@ -1,22 +1,22 @@
 ---
-title: Kapcsolódás a OneDrive
-description: Fájlok feltöltése és kezelése a OneDrive REST API-kkal és Azure Logic Apps
+title: Fájlok elérése és kezelése a Microsoft OneDrive
+description: Fájlok feltöltése és kezelése a OneDrive-ben automatizált munkafolyamatok létrehozásával Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378432"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Ismerkedés az OneDrive-összekötővel
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Fájlok elérése és kezelése a OneDrive-összekötőben Azure Logic Apps használatával
 
-Kapcsolódjon a OneDrive a fájlok kezeléséhez, beleértve a feltöltési, a lekérési, a fájlok törlését és egyebeket. A OneDrive segítségével a következő feladatokat hajthatja végre:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [OneDrive-összekötő](/connectors/onedriveconnector/)használatával automatizált feladatokat és munkafolyamatokat hozhat létre a fájlok kezeléséhez, beleértve a feltöltési, a lekérési, a fájlok törlését és egyebeket. A OneDrive segítségével a következő feladatokat hajthatja végre:
 
 * Hozza létre a munkafolyamatot úgy, hogy fájlokat tárol a OneDrive-ben, vagy frissíti a meglévő fájlokat a OneDrive-ben. 
 * Az eseményindítók használatával elindíthatja a munkafolyamatot egy fájl létrehozásakor vagy frissítésekor a OneDrive belül.
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használhatja a OneDrive-összekötőt egy logikai a
 
 Ha többet szeretne megtudni a Logic Appsről, tekintse meg a [Mi a Logic apps](../logic-apps/logic-apps-overview.md) és [a logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakört.
 
-## <a name="connect-to-onedrive"></a>Kapcsolódás a OneDrive
+## <a name="connect-to-onedrive"></a>Csatlakozás a OneDrive-hoz
 
 Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, először létre kell hoznia egy *kapcsolatot* a szolgáltatással. A kapcsolat kapcsolatot biztosít egy logikai alkalmazás és egy másik szolgáltatás között. Ha például csatlakozni szeretne a OneDrive-hoz, először egy OneDrive- *kapcsolatra*van szüksége. Kapcsolat létrehozásához adja meg azokat a hitelesítő adatokat, amelyeket általában a kapcsolódáshoz használni kívánt szolgáltatás eléréséhez használ. Így a OneDrive esetében adja meg a OneDrive-fiók hitelesítő adatait a kapcsolódás létrehozásához.
 
@@ -38,7 +38,7 @@ Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, e
 
 Az eseményindító egy olyan esemény, amely a logikai alkalmazásban definiált munkafolyamat elindítására szolgál. A "lekérdezés" a szolgáltatást a kívánt időközönként és gyakorisággal indítja el. [További információ az eseményindítókkal kapcsolatban](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. A logikai alkalmazásban írja be a "onedrive" kifejezést az eseményindítók listájának lekéréséhez:  
+1. A Logic app Designerben írja be a `onedrive` értéket az eseményindítók listájának lekéréséhez:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajt
 
 2. Válassza **a művelet hozzáadása**lehetőséget.
 
-3. A szövegmezőbe írja be a "onedrive" kifejezést az összes elérhető művelet listájának lekéréséhez.
+3. A keresőmezőbe írja be a `onedrive` kifejezést az összes elérhető művelet listájának lekéréséhez.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

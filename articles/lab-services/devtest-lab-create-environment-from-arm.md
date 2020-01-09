@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c699f9b392be5f2e2bc16b5729d6567ace7f17
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 9e80bc3e176f831f8609dd7f2a2ee22a2495e89b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428938"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépre kiterjedő környezetek és Pásti-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
-Azure DevTest Labs környezetek lehetővé teszik a felhasználók számára, hogy a labor határain belül konzisztens módon telepítsék az összetett infrastruktúrákat. [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) -sablonokkal környezeteket hozhat létre az DevTest Labs erőforrásainak készletével. Ezek a környezetek a Resource Manager-sablonok által létrehozott Azure-erőforrásokat is tartalmazhatnak. 
+Azure DevTest Labs környezetek lehetővé teszik a felhasználók számára, hogy a labor határain belül konzisztens módon telepítsék az összetett infrastruktúrákat. [Azure Resource Manager-sablonokkal](../azure-resource-manager/templates/template-syntax.md) környezeteket hozhat létre az DevTest Labs erőforrásainak készletével. Ezek a környezetek a Resource Manager-sablonok által létrehozott Azure-erőforrásokat is tartalmazhatnak. 
 
 A [Azure Portal](https://portal.azure.com)használatával könnyedén [hozzáadhat egy virtuális gépet (VM)](devtest-lab-add-vm.md) a laborhoz. A többrétegű webalkalmazások vagy egy SharePoint-farmok esetében azonban olyan mechanizmusra van szükség, amely egyetlen lépésben több virtuális gépet hoz létre. Azure Resource Manager sablonok használatával megadhatja az Azure-megoldás infrastruktúráját és konfigurációját, és ismételten telepítheti a több virtuális gépet konzisztens állapotba. 
 
 Azure Resource Manager sablonok a következő előnyöket is biztosítják:
 
 - Azure Resource Manager a sablonok közvetlenül a GitHubról vagy az Azure Repos forrás-ellenőrzési adattárból tölthetők be.
-- A felhasználók létrehozhatnak egy környezetet úgy, hogy kiválasztanak egy konfigurált Azure Resource Manager sablont a Azure Portalból, ugyanúgy, mint más [](devtest-lab-comparing-vm-base-image-types.md)típusú virtuálisgép-bázisokkal.
+- A felhasználók létrehozhatnak egy környezetet úgy, hogy kiválasztanak egy konfigurált Azure Resource Manager sablont a Azure Portalból, ugyanúgy, mint más típusú virtuálisgép- [bázisokkal](devtest-lab-comparing-vm-base-image-types.md).
 - Egy Azure Resource Manager sablonból kiépítheti az Azure IaaS-erőforrásokat, valamint a környezetekben lévő virtuális gépeket is.
 - A laborban lévő környezetek költségeit nyomon követheti a más típusú adatbázisok által létrehozott egyéni virtuális gépeken kívül is. A rendszer létrehozza a Pásti-erőforrásokat, és megjelenik a Cost Tracking szolgáltatásban. A virtuális gép automatikus leállítása azonban nem vonatkozik a Pásti-erőforrásokra.
 
-Ha többet szeretne megtudni arról, hogy a Resource Manager-sablonok hogyan telepíthetnek, frissíthetnek vagy törölhetnek számos laboratóriumi erőforrást egyetlen műveletben, tekintse meg a [Resource Manager-sablonok használatának előnyei](../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager)című témakört.
+Ha többet szeretne megtudni arról, hogy a Resource Manager-sablonok hogyan telepíthetnek, frissíthetnek vagy törölhetnek számos laboratóriumi erőforrást egyetlen műveletben, tekintse meg a [Resource Manager-sablonok használatának előnyei](../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager)című témakört.
 
 > [!NOTE]
 > Ha egy Resource Manager-sablont használ a laboratóriumi virtuális gépek létrehozásához, a több virtuális gép vagy egyetlen virtuális gép létrehozása között néhány különbség áll fenn. További információ: [virtuális gép Azure Resource Manager sablonjának használata](devtest-lab-use-resource-manager-template.md).
@@ -56,7 +56,7 @@ A Azure Resource Manager-sablonok egy adattárban való rendszerezéséhez szám
   
 - Ha paraméterként megadott paramétereket kíván használni, a *azuredeploy. Parameters. JSON*nevű paramétert kell megadni.
   
-  A paramétereket `_artifactsLocation` és `_artifactsLocationSasToken` a parametersLink URI értékét is felhasználhatja, így a DevTest Labs automatikusan kezelhet beágyazott sablonokat. További információ: [beágyazott Azure Resource Manager-sablonok központi telepítése tesztelési környezetekhez](deploy-nested-template-environments.md).
+  A parametersLink URI értékének létrehozásához használhatja a `_artifactsLocation` és `_artifactsLocationSasToken` paramétereket, így a DevTest Labs automatikusan kezelhet beágyazott sablonokat. További információ: [beágyazott Azure Resource Manager-sablonok központi telepítése tesztelési környezetekhez](deploy-nested-template-environments.md).
   
 - A metaadatokat úgy definiálhatja, hogy megadja a sablon megjelenítendő nevét és leírását egy *metadata. JSON*nevű fájlban, a következőképpen:
   
@@ -73,14 +73,14 @@ A Azure Resource Manager-sablonok egy adattárban való rendszerezéséhez szám
 
 A tárház létrehozása és konfigurálása után a Azure Portal a következő paranccsal adhatja hozzá a laborhoz: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A Labs listából válassza ki a kívánt labort. 
 1. A labor **Áttekintés** paneljén válassza a **konfiguráció és szabályzatok**lehetőséget.
    
    ![Konfigurálás és szabályzatok](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
    
-1. A **konfigurációs és házirend** -beállítások listából válassza a **tárak**elemet. A **nyilvános** összetevő tárháza automatikusan létrejön az összes laborhoz, és csatlakozik a [DevTest Labs nyilvános GitHub](https://github.com/Azure/azure-devtestlab)-tárházához.
+1. A **konfigurációs és házirend** -beállítások listából válassza a **tárak**elemet. A **nyilvános** összetevő tárháza automatikusan létrejön az összes laborhoz, és csatlakozik a [DevTest Labs nyilvános GitHub-tárházához](https://github.com/Azure/azure-devtestlab).
    
 1. A Azure Resource Manager sablon adattárának hozzáadásához válassza a **Hozzáadás**lehetőséget.
    
@@ -88,13 +88,13 @@ A tárház létrehozása és konfigurálása után a Azure Portal a következő 
    
 1. A **Tárházak** ablaktáblán adja meg a következő adatokat:
    
-   - **Név**: Adja meg a laborban használni kívánt tárház nevét.
-   - **Git-klón URL-címe**: Adja meg a git HTTPS-klón URL-címét a GitHubról vagy az Azure Repos-ból. 
-   - **Ág** (nem kötelező): Adja meg az ág nevét az Azure Resource Manager-sablon definícióinak eléréséhez.
-   - **Személyes hozzáférési jogkivonat**: Adja meg az adattár biztonságos eléréséhez használt személyes hozzáférési jogkivonatot.
-     - A token Azure reposből való lekéréséhez a profil alatt válassza a **felhasználói beállítások** > **biztonsági** > **személyes hozzáférési tokenek**lehetőséget.
-     - Ha szeretné lekérni a tokent a githubról, a profil alatt válassza a **Beállítások** > **fejlesztői beállítások** > **személyes hozzáférési**jogkivonatok lehetőséget.
-   - **Mappa elérési útjai**: Adja meg azt a mappa elérési útját, amely az összetevő-definíciók vagy a Azure Resource Manager-sablon definíciói esetében a git-klón URI-hoz képest relatív. 
+   - **Név**: adja meg a laborban használni kívánt tárház nevét.
+   - **Git-klón URL-címe**: adja meg a git HTTPS Clone URL-címét a githubról vagy az Azure Repos-ból. 
+   - **Ág** (nem kötelező): írja be az ág nevét az Azure Resource Manager sablon definícióinak eléréséhez.
+   - **Személyes hozzáférési jogkivonat**: adja meg az adattár biztonságos eléréséhez használt személyes hozzáférési jogkivonatot.
+     - A token Azure Reposből való lekéréséhez a profil alatt válassza a **felhasználói beállítások** > **biztonsági** > **személyes hozzáférési tokenek**lehetőséget.
+     - Ha szeretné lekérni a tokent a GitHubról, a profil alatt válassza a **beállítások** > a **fejlesztői beállítások** > a **személyes hozzáférési tokenek**lehetőséget.
+   - **Mappa elérési útjai**: adja meg az összetevő-definíciók vagy a Azure Resource Manager-sablon definíciói számára a git-klón URI-hoz viszonyított mappa elérési útját. 
    
 1. Kattintson a **Mentés** gombra.
    
@@ -104,7 +104,7 @@ Miután hozzáadta Azure Resource Manager sablont a laborhoz, a labor felhaszná
 
 ## <a name="configure-access-rights-for-lab-users"></a>A tesztkörnyezet felhasználói hozzáférési jogosultságának konfigurálása
 
-A labor felhasználói alapértelmezés szerint rendelkeznek olvasói szerepkörrel, így nem módosíthatják a környezeti erőforráscsoport erőforrásait. Például nem állíthatják le és nem indíthatják el erőforrásaikat. 
+A labor felhasználói alapértelmezés szerint rendelkeznek **olvasói** szerepkörrel, így nem módosíthatják a környezeti erőforráscsoport erőforrásait. Például nem állíthatják le és nem indíthatják el erőforrásaikat. 
 
 Az alábbi lépéseket követve biztosíthatja, hogy a labor-felhasználók **közreműködő** szerepkörrel szerkesszék a környezetében található erőforrásokat:
 
@@ -120,7 +120,7 @@ A következő szakasz végigvezeti a környezetek létrehozásán egy Azure Reso
 
 Miután hozzáadta Azure Resource Manager sablont a laborhoz, a labor felhasználói a következő lépésekkel hozhatnak létre környezeteket a Azure Portalban:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
    
 1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
    
@@ -128,7 +128,7 @@ Miután hozzáadta Azure Resource Manager sablont a laborhoz, a labor felhaszná
    
 1. A labor lapon válassza a **Hozzáadás**lehetőséget.
    
-1. Az alapszintű ablaktábla **választása** megjeleníti a használni kívánt alapképeket, valamint a Azure Resource Manager sablonokat. Válassza ki a kívánt Azure Resource Manager sablont.
+1. Az **alapszintű ablaktábla választása** megjeleníti a használni kívánt alapképeket, valamint a Azure Resource Manager sablonokat. Válassza ki a kívánt Azure Resource Manager sablont.
    
    ![Alap kiválasztása](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
    
@@ -169,7 +169,7 @@ Miután hozzáadta Azure Resource Manager sablont a laborhoz, a labor felhaszná
 
 Lehetséges, hogy a Azure Portal használatával egyetlen környezetet vehet fel egy laborba, de ha egy fejlesztési vagy tesztelési forgatókönyvnek több környezetet kell létrehoznia, az automatikus üzembe helyezés jobb megoldás. 
 
-A folytatás előtt győződjön meg arról, hogy rendelkezik egy Azure Resource Manager sablonnal, amely meghatározza a létrehozandó erőforrásokat. [Adja hozzá és konfigurálja a sablont egy git](#configure-your-own-template-repositories)-tárházban, és [adja hozzá a tárházat a laborhoz](#add-template-repositories-to-the-lab).
+A folytatás előtt győződjön meg arról, hogy rendelkezik egy Azure Resource Manager sablonnal, amely meghatározza a létrehozandó erőforrásokat. [Adja hozzá és konfigurálja a sablont egy git-tárházban](#configure-your-own-template-repositories), és [adja hozzá a tárházat a laborhoz](#add-template-repositories-to-the-lab).
 
 A következő minta-szkript létrehoz egy környezetet a laborban. A megjegyzések segítenek jobban megérteni a szkriptet. 
 
@@ -295,7 +295,7 @@ A DevTest Labs Resource Manager-sablonjainak használatakor vegye figyelembe eze
     
   - A prémium szintű lemezek száma tesztkörnyezetben felhasználónként
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Miután létrehozta a virtuális gépet, a virtuális gép felügyeleti paneljén a **Kapcsolódás** lehetőségre kattintva csatlakozhat a virtuális géphez.
 - A környezet erőforrásainak megtekintéséhez és kezeléséhez válassza ki a környezetet a **saját virtuális gépek** listájában a laborban. 
 - Ismerkedjen meg a [Azure Resource Manager-sablonokkal az Azure Gyorsindítás sablon-galériájában](https://github.com/Azure/azure-quickstart-templates).

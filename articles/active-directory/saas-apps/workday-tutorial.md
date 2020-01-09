@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443333"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció munkanapokkal
 
@@ -123,9 +123,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -167,7 +167,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
    > [!NOTE]
    > A környezeti attribútum értéke a bérlői URL-cím értékéhez van kötve:  
-   > – Ha a munkanap bérlői URL-címének tartományneve a Impl-val kezdődik, például: *https: \//impl.workday.com/\<tenant \>/login-saml2.Flex*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
+   > – Ha a munkanap bérlői URL-címének tartományneve a Impl-val kezdődik, például: *https://www.myworkday.com/"bérlő"/login-saml2.htmld*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
    > – Ha a tartománynév egy másikkal kezdődik, kapcsolatba kell lépnie a [munkanap ügyfél-támogatási csapatával](https://www.workday.com/en-us/partners-services/services/support.html) , hogy a megfelelő **környezeti** értéket kapja.
 
 4. Az **SAML beállítása** szakaszban hajtsa végre a következő lépéseket:
@@ -180,13 +180,13 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 5. Az **SAML Identity Providers** szakaszban hajtsa végre a következő lépéseket:
 
-    ![SAML-identitás szolgáltatók](./media/workday-tutorial/IC7829271.png "SAML-identitás szolgáltatók")
+    ![SAML-identitás szolgáltatók](./media/workday-tutorial/IC7829271.png "SAML-identitásszolgáltatók")
 
     a. Az **identitás-szolgáltató neve** szövegmezőbe írja be a szolgáltató nevét (például: *SPInitiatedSSO*).
 
     b. A Azure Portal a **munkanap beállítása** szakaszban másolja az **Azure ad-azonosító** értékét, majd illessze be a **kiállító** szövegmezőbe.
 
-    ![SAML-identitás szolgáltatók](./media/workday-tutorial/IC7829272.png "SAML-identitás szolgáltatók")
+    ![SAML-identitás szolgáltatók](./media/workday-tutorial/IC7829272.png "SAML-identitásszolgáltatók")
 
     c. A Azure Portal a **munkanap beállítása** szakaszban másolja ki a **KIJELENTKEZÉSI URL-címet** , majd illessze be a **kijelentkezési válasz URL-címe** szövegmezőbe.
 
@@ -206,7 +206,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![X509 nyilvános kulcsának megtekintése](./media/workday-tutorial/IC782930.png "X509 nyilvános kulcsának megtekintése")
 
-    a. A **név** szövegmezőbe írja be a tanúsítvány nevét (például: *PPE \_SP*).
+    a. A **név** szövegmezőbe írja be a tanúsítvány nevét (például: *PPE\_SP*).
 
     b. Az **érvényes feladó** szövegmezőbe írja be a tanúsítvány érvényes értékének értékét.
 
@@ -233,7 +233,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     c. A **hitelesítési kérelem aláírása módszerként**válassza a **sha256**lehetőséget.
 
-    ![Hitelesítési kérelem aláírása módszer](./media/workday-tutorial/WorkdaySSOConfiguration.png "Hitelesítési kérelem aláírása módszer") 
+    ![Hitelesítési kérelem aláírása módszer](./media/workday-tutorial/WorkdaySSOConfiguration.png "Hitelesítési kérelem aláírása módszer")
 
     d. Kattintson az **OK** gombra.
 

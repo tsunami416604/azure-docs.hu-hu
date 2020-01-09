@@ -1,20 +1,20 @@
 ---
-title: Kapcsolódás a GitHubhoz
-description: GitHub-események monitorozása a GitHub REST API-kkal és Azure Logic Apps
+title: A GitHub-tárház elérése, monitorozása és kezelése
+description: A GitHub-események monitorozása és a GitHub-tárház kezelése a Azure Logic Apps használatával automatizált munkafolyamatok létrehozásával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378449"
 ---
-# <a name="connect-to-github-from-azure-logic-apps"></a>Kapcsolódás a GitHubhoz Azure Logic Apps
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>A GitHub-tárház monitorozása és kezelése Azure Logic Apps használatával
 
 A GitHub egy webalapú git-tárház, amely a git és más szolgáltatások összes elosztott változat-és forráskód-kezelési (SCM) funkcióját kínálja.
 

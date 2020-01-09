@@ -1,24 +1,24 @@
 ---
-title: Az SMB protokollon keresztüli Azure Active Directory hitelesítésének áttekintése Azure Files-Azure Storage-hoz
+title: Áttekintés – Azure AD Domain Services hitelesítés – Azure Files
 description: A Azure Files a Azure Active Directory (Azure AD) tartományi szolgáltatásokon keresztül támogatja az SMB (Server Message Block) protokollon keresztüli identitás-alapú hitelesítést. A tartományhoz csatlakoztatott Windows rendszerű virtuális gépek (VM-EK) az Azure AD-beli hitelesítő adatok használatával férhetnek hozzá az Azure-fájlmegosztást.
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611775"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460289"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Az Azure Files Azure Active Directory tartományi szolgáltatás (Azure AD DS) hitelesítési támogatásának áttekintése SMB-hozzáféréshez
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Ha szeretné megtudni, hogyan engedélyezhető az Azure AD DS-hitelesítés a Azure Files számára, tekintse meg [a Azure Active Directory tartományi szolgáltatás hitelesítésének engedélyezése SMB protokollon keresztül Azure Files](storage-files-active-directory-enable.md).
 
-## <a name="glossary"></a>Szószedet 
+## <a name="glossary"></a>Fogalmak 
 Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kapcsolatos néhány kulcsfontosságú kifejezést a Azure Files SMB protokollon keresztül:
 
 -   **Azure Active Directory (Azure AD)**  
@@ -49,7 +49,7 @@ Az Azure AD tartományi szolgáltatás hitelesítése Azure Files számos előny
 -   **ACL-ek biztonsági mentése az adataival együtt**  
     A meglévő helyszíni fájlmegosztás biztonsági mentéséhez Azure Files is használhatja. Azure Files megőrzi a hozzáférés-vezérlési listákat az adataival együtt, amikor biztonsági mentést készít egy fájlmegosztás számára az SMB-Azure Files keresztül.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 A Azure Files a Azure AD Domain Services használatával támogatja a Kerberos-hitelesítést az Azure AD hitelesítő adataival a tartományhoz csatlakoztatott virtuális gépekről. Az Azure AD és a Azure Files használatának megkezdése előtt engedélyeznie kell Azure AD Domain Services és csatlakoztatnia kell a tartományt azokról a virtuális gépekről, amelyekről a fájl adatait szeretné elérni. A tartományhoz csatlakoztatott virtuális gépnek ugyanabban a virtuális hálózatban (VNET) kell lennie, mint Azure AD Domain Services. 
 
 Ha egy virtuális gépen futó alkalmazáshoz tartozó identitás megpróbál hozzáférni Azure Filesban lévő adatokhoz, a rendszer elküldi a kérést az Azure AD Domain Servicesnak, hogy hitelesítse az identitást. Ha a hitelesítés sikeres, Azure AD Domain Services egy Kerberos-tokent ad vissza. Az alkalmazás olyan kérelmet küld, amely tartalmazza a Kerberos-tokent, és a Azure Files ezt a tokent használja a kérelem engedélyezéséhez. Azure Files csak a tokent kapja, és nem tart fenn Azure AD-beli hitelesítő adatokat.
@@ -78,12 +78,12 @@ A Storage-fiók kulcsát birtokló felhasználó a rendszergazdai jogosultságok
 > A biztonsággal kapcsolatos ajánlott eljárások részeként Kerülje a Storage-fiók kulcsainak megosztását, és ha lehetséges, használja az Azure AD-engedélyeket.
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>A könyvtár és a fájl ACL-ek megőrzése az Azure-fájlmegosztás adatimportálásához
-Azure Files mostantól támogatja a címtár vagy a fájl ACL-ek megőrzését az Azure-fájlmegosztásba való adatmásoláskor. Az ACL-eket egy könyvtárra vagy fájlra másolhatja Azure Filesba. A [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) és a jelző `/copy:s` együttes használatával például az Azure-fájlmegosztás adatfájljait és az ACL-eket is másolhatja. Az ACL megőrzése alapértelmezés szerint be van kapcsolva, és nem szükséges explicit módon engedélyezni az Azure AD tartományi szolgáltatás-hitelesítési szolgáltatást a Storage-fiókjában. 
+Azure Files mostantól támogatja a címtár vagy a fájl ACL-ek megőrzését az Azure-fájlmegosztásba való adatmásoláskor. Az ACL-eket egy könyvtárra vagy fájlra másolhatja Azure Filesba. A [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) és a Flag `/copy:s` használatával például átmásolhatja az Azure-fájlmegosztás adatfájljait és hozzáférés-vezérlési lehetőségeit. Az ACL megőrzése alapértelmezés szerint be van kapcsolva, és nem szükséges explicit módon engedélyezni az Azure AD tartományi szolgáltatás-hitelesítési szolgáltatást a Storage-fiókjában. 
 
 ## <a name="pricing"></a>Díjszabás
 Az Azure AD-hitelesítés az SMB protokollon keresztüli engedélyezéséhez nincs további szolgáltatási díj a Storage-fiókban. A díjszabással kapcsolatos további információkért tekintse meg [Azure Files díjszabási](https://azure.microsoft.com/pricing/details/storage/files/) és [Azure ad Domain Services díjszabási](https://azure.microsoft.com/pricing/details/active-directory-ds/) lapjait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Files és az Azure AD-hitelesítés SMB-kapcsolaton keresztüli használatáról további információt az alábbi forrásokban talál:
 
 - [Bevezetés a Azure Filesba](storage-files-introduction.md)

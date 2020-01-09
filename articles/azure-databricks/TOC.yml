@@ -1477,6 +1477,9 @@
         - name: Databricks-kapcsolat
           href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
+        - name: CI/CD – Jenkins
+          href: /azure/databricks/dev-tools/ci-cd
+          maintainContext: true
         - name: Adatfolyamatokban lévő függőségek kezelése
           href: /azure/databricks/dev-tools/data-pipelines
           maintainContext: true
@@ -1578,6 +1581,9 @@
           items:
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020. január
+              href: /azure/databricks/release-notes/product/2020/january
               maintainContext: true
             - name: 2019. december
               href: /azure/databricks/release-notes/product/2019/december

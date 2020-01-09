@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428960"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezet-fiókok konfigurálása Azure Lab Services 
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.
@@ -30,7 +30,7 @@ Ha egy virtuális hálózatot egyenrangú hálózatként szeretne csatlakozni a 
 
     ![Labs konfigurációs lapja](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. A **társ virtuális hálózat**esetében válassza az **engedélyezve** vagy a **Letiltva**lehetőséget. Az alapértelmezett érték **le van tiltva**. A társ virtuális hálózat engedélyezéséhez hajtsa végre a következő lépéseket: 
-    1. Válassza az **engedélyezve**lehetőséget.
+    1. Válassza az **Engedélyezve** lehetőséget.
     2. Válassza ki a **VNet** a legördülő listából. 
 3. Válassza az eszköztár **Save** (Mentés) elemét. 
 
@@ -133,8 +133,16 @@ A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a github
 
 Végül a rendszer kéri, hogy hozzon létre egy Microsoft-fiók, amely a GitHub-fiókjához van csatolva. Automatikusan megtörténik, amikor az oktató kiválasztja a **Next (tovább**) gombot.  Ezután az oktató azonnal bejelentkezik, és csatlakozik az osztályterem laborhoz.
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Virtuális gépek automatikus leállítása a kapcsolat bontásakor
+A távoli asztali kapcsolat leválasztása után engedélyezheti vagy letilthatja a Windows Lab virtuális gépek (sablon vagy tanuló) automatikus leállítását. Azt is megadhatja, hogy a virtuális gépek mennyi ideig várjon a felhasználó újrakapcsolódására az automatikus leállítás előtt.
 
-## <a name="next-steps"></a>További lépések
+![Automatikus leállítás beállítása Lab-fiókban](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+Ez a beállítás a labor-fiókban létrehozott összes laborra vonatkozik. A labor tulajdonosa felülbírálhatja ezt a beállítást a tesztkörnyezet szintjén. A labor-fiókban a beállítás módosítása csak a módosítás után létrehozott laborokra lesz hatással.
+
+Ha szeretné megtudni, hogy a labor tulajdonosa hogyan állíthatja be ezt a beállítást a labor szintjén, tekintse meg [ezt a cikket.](how-to-enable-shutdown-disconnect.md)
+
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)

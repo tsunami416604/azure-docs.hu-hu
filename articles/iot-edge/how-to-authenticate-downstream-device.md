@@ -4,16 +4,16 @@ description: Hogyan hitelesítheti az alárendelt eszközöket vagy a levélben 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/23/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 922654a6947a21eeee945762100abe086c552ad7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 74ef00a1b7310284c5f8c51e3c2c6685ffcd5071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434489"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -23,19 +23,19 @@ A sikeres transzparens átjáró-kapcsolatok létrehozásához három általáno
 
 1. Az átjáró-eszköznek képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra, az alárendelt eszközökről érkező kommunikáció fogadására és az üzenetek megfelelő célhelyre való továbbítására. További információ: [IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)használatra.
 2. **Az alsóbb rétegbeli eszköznek rendelkeznie kell egy eszköz-identitással, hogy képes legyen hitelesíteni a IoT Hub, és tudnia kell kommunikálni az átjáró eszközén keresztül.**
-3. Az alsóbb rétegbeli eszköznek képesnek kell lennie az átjáró eszközéhez való biztonságos kapcsolódásra. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
+3. Az alsóbb rétegbeli eszköznek biztonságosan kell csatlakoznia az átjáró eszközéhez. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
 
 Az alsóbb rétegbeli eszközök a következő három módszer egyikével hitelesíthetők a IoT Hub használatával: szimmetrikus kulcsok (más néven közös hozzáférési kulcsok), X. 509 önaláírt tanúsítvány vagy X. 509 hitelesítésszolgáltató (CA) által aláírt tanúsítvány. A hitelesítési lépések hasonlók a nem IoT-eszközök IoT Hub-vel való beállításához használt lépésekhez, és kisebb eltéréseket jelentenek az átjáró kapcsolatának bejelentéséhez.
 
-A cikkben ismertetett lépések bemutatják a manuális eszközök kiépítés nélküli üzembe helyezését, és nem automatikus kiépítés az Azure IoT Hub Device Provisioning Service. 
+A cikkben ismertetett lépések a manuális eszközök kiépítés nélküli üzembe helyezését mutatják be az Azure IoT Hub Device Provisioning Service (DPS) szolgáltatással való automatikus kiépítés nélkül. Az alárendelt eszközök DPS-vel való kiépítés nem támogatott. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Végezze el az [IoT Edge-eszköz konfigurálásának lépéseit transzparens átjáróként való](how-to-create-transparent-gateway.md)művelethez. Ha X. 509 hitelesítést használ az alsóbb rétegbeli eszközhöz, ugyanazt a tanúsítvány-létrehozási parancsfájlt kell használnia, amelyet az átlátszó átjáró című cikkben állított be. 
 
-Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a config. YAML fájl **hostname** paraméterében a IoT Edge Gateway eszközön. Ez a cikk a tanúsítványok létrehozásához használatos, és az alsóbb rétegbeli eszközök kapcsolódási karakterláncában hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy gazdagépet tartalmazó bejegyzést kell használnia.
+Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a config. YAML fájl **hostname** paraméterében a IoT Edge Gateway eszközön. Az alárendelt eszköz kapcsolódási sztringje hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy gazdagépet tartalmazó bejegyzést kell használnia.
 
-## <a name="symmetric-key-authentication"></a>Szimmetrikus kulcsos hitelesítés
+## <a name="register-device-symmetric-key"></a>Eszköz regisztrálása (szimmetrikus kulcs)
 
 A szimmetrikus kulcsos hitelesítés vagy a közös hozzáférésű kulcsos hitelesítés a legegyszerűbb módszer a IoT Hub való hitelesítéshez. A szimmetrikus kulcsos hitelesítéssel Base64-kulcsot társítunk a IoT-eszköz AZONOSÍTÓJÁHOZ IoT Hub. Ezt a kulcsot a IoT-alkalmazásokban is felveszi, hogy az eszköz bemutassa a IoT Hubhoz való csatlakozáskor. 
 
@@ -56,20 +56,115 @@ Az új eszköz identitásának létrehozásakor adja meg a következő informác
 Ugyanezt a műveletet az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) használatával végezheti el. A következő példa egy új IoT-eszközt hoz létre szimmetrikus kulcsos hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
 
 ```cli
-az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID}
+az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
 Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
 
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Kapcsolódás IoT Hub átjárón keresztül
 
-Ugyanez a folyamat használható a normál IoT-eszközöknek a szimmetrikus kulccsal való IoT Hub hitelesítésére is az alárendelt eszközökre. Az egyetlen különbség, hogy fel kell vennie egy mutatót az átjáró eszközre a kapcsolat irányításához, vagy offline helyzetekben, hogy kezelni tudja a hitelesítést a IoT Hub nevében. 
+Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül. 
 
-A szimmetrikus kulcsos hitelesítéshez nem kell további lépéseket végrehajtania az eszközön a IoT Hub való hitelesítéshez. Továbbra is szükség van a tanúsítványokra, hogy az alsóbb rétegbeli eszköz csatlakozhasson az átjáró eszközéhez, ahogy az [egy alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md)című témakörben leírtak szerint.
+## <a name="register-device-x509-self-signed"></a>Eszköz regisztrálása (X. 509 önaláírt) 
+
+Az X. 509 önaláírt hitelesítés (más néven ujjlenyomatos hitelesítés) esetében új tanúsítványokat kell létrehoznia a IoT-eszközre való elhelyezéshez. Ezek a tanúsítványok olyan ujjlenyomattal rendelkeznek, amelyet IoT Hub a hitelesítéshez. 
+
+Ha nem rendelkezik hitelesítésszolgáltatóval X. 509 tanúsítványok létrehozásához, [létrehozhat bemutató-tanúsítványokat IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md). Az alsóbb rétegbeli eszközhöz tartozó tesztelési tanúsítványok létrehozásakor ugyanazt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használja, amely az átjáró-eszköz tanúsítványait generálta. 
+
+1. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány használatával hozzon létre két (elsődleges és másodlagos) tanúsítványokat az alsóbb rétegbeli eszközhöz. 
+
+   Az eszköz tanúsítványához meg kell adni a tulajdonos nevét a IoT eszköz Azure IoT Hubban való regisztrálásakor használni kívánt eszköz AZONOSÍTÓjának. Ez a beállítás a hitelesítéshez szükséges.
+
+2. Kérje le az SHA1 ujjlenyomatot (a IoT Hub felületen található ujjlenyomatot) minden tanúsítványból, amely egy 40 hexadecimális karakterből álló karakterlánc. A következő OpenSSL-paranccsal tekintheti meg a tanúsítványt, és keresse meg az ujjlenyomatot:
+
+   ```PowerShell/bash
+   openssl x509 -in <primary device certificate>.cert.pem -text -fingerprint | sed 's/[:]//g'
+   ```
+
+   Futtassa kétszer ezt a parancsot az elsődleges tanúsítványhoz és egyszer a másodlagos tanúsítványhoz. Mindkét tanúsítvány ujjlenyomatát adja meg, ha új IoT-eszközt regisztrál önaláírt X. 509 tanúsítvánnyal. 
+
+3. Navigáljon az IoT hubhoz a Azure Portalon, és hozzon létre egy új IoT-eszköz identitását a következő értékekkel: 
+
+   * Adja meg az eszköz tanúsítványának tulajdonos nevével megegyező **azonosítóját** . 
+   * Válassza az **X. 509 önaláírt** hitelesítési típusként lehetőséget.
+   * Illessze be azokat a hexadecimális karakterláncokat, amelyeket az eszköz elsődleges és másodlagos tanúsítványainakből másolt.
+   * Válassza a **szülő eszköz beállítása** elemet, és válassza ki azt a IoT Edge átjáró-eszközt, amelyre ez az alárendelt eszköz fog csatlakoztatva. Egy alárendelt eszköz X. 509 hitelesítéséhez szülő eszköz szükséges. 
+
+   ![Eszköz AZONOSÍTÓjának létrehozása X. 509 önaláírt hitelesítéssel a portálon](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
+
+4. Másolja az eszköz tanúsítványát és kulcsait az alsóbb rétegbeli eszköz bármely helyére. Helyezze át a megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatát is, amely az átjáró-eszköz tanúsítványát és az alsóbb rétegbeli eszköz tanúsítványait is létrehozta. 
+
+   Ezeket a fájlokat a IoT Hubhoz csatlakozó Leaf Device-alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
+
+5. Az előnyben részesített nyelvtől függően tekintse át az X. 509 tanúsítványok IoT-alkalmazásokban való hivatkozásának mintáit: 
+
+   * C#: [Az X. 509 Biztonság beállítása az Azure IoT hub-ban](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
+   * C: [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample)
+   * Node. js: [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
+   * Java: [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py)
+   * Python: [send_message_x509.](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/advanced-hub-scenarios/send_message_x509.py)
+
+Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. A következő példa egy új IoT-eszközt hoz létre X. 509 önaláírt hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
+
+```cli
+az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
+```
+
+Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+
+
+Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül. 
+
+
+## <a name="register-device-x509-ca-signed"></a>Eszköz regisztrálása (X. 509 HITELESÍTÉSSZOLGÁLTATÓ aláírva)
+
+Az X. 509 hitelesítésszolgáltató (CA) által aláírt hitelesítéshez szükség van egy IoT Hub regisztrált legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra, amelyet a IoT-eszköz tanúsítványainak aláírásához használ. Minden olyan eszköz, amely a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a köztes tanúsítványok valamelyikével kapcsolatos hibát okozó tanúsítványt használ, a hitelesítés engedélyezve lesz. 
+
+Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](../iot-hub/iot-hub-security-x509-get-started.md)IoT hub cikkében részletesen ismertetett utasításokon alapul. Az ebben a szakaszban ismertetett lépéseket követve megtudhatja, hogy mely értékeket kell használni egy átjárón keresztül csatlakozó alsóbb rétegbeli eszköz beállításához. 
+
+Ha nem rendelkezik hitelesítésszolgáltatóval X. 509 tanúsítványok létrehozásához, [létrehozhat bemutató-tanúsítványokat IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md). Az alsóbb rétegbeli eszközhöz tartozó tesztelési tanúsítványok létrehozásakor ugyanazt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használja, amely az átjáró-eszköz tanúsítványait generálta. 
+
+1. Kövesse az x [. 509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) -ban című szakasz utasításait az *x. 509 szintű biztonság beállítása az Azure IoT hub-ban*. Ebben a szakaszban a következő lépéseket hajtja végre: 
+
+   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a bemutató tanúsítványokat használja, a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ **\<path >/certs/Azure-IOT-test-only.root.ca.CERT.PEM**. 
+
+   2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa.
+
+2. Az *x. 509 Biztonság beállítása az Azure IoT hub-ban*című rész útmutatását követve [hozzon létre egy x. 509-eszközt az IoT hub létrehozásához](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) . Ebben a szakaszban a következő lépéseket hajtja végre: 
+
+   1. Adjon hozzá egy új eszközt. Adja meg az **eszköz azonosítójának**kisbetűs nevét, és válassza ki az **X. 509 hitelesítésszolgáltató által aláírt**hitelesítési típust. 
+   2. Hozzon létre egy fölérendelt eszközt. Alsóbb rétegbeli eszközök esetén válassza a **fölérendelt eszköz beállítása** lehetőséget, majd válassza ki azt a IoT Edge átjáró eszközt, amely a IoT hubhoz való kapcsolódást biztosítja. 
+
+3. Hozzon létre egy tanúsítványláncot az alsóbb rétegbeli eszközhöz. Használja ugyanazt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt, amelyet a IoT Hub feltöltött a lánc elvégzéséhez. Használja ugyanazt a kisbetűs eszköz-azonosítót, amelyet az eszköz identitásához adott a portálon.
+
+4. Másolja az eszköz tanúsítványát és kulcsait az alsóbb rétegbeli eszköz bármely helyére. Helyezze át a megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatát is, amely az átjáró-eszköz tanúsítványát és az alsóbb rétegbeli eszköz tanúsítványait is létrehozta. 
+
+   Ezeket a fájlokat a IoT Hubhoz csatlakozó Leaf Device-alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
+
+5. Az előnyben részesített nyelvtől függően tekintse át az X. 509 tanúsítványok IoT-alkalmazásokban való hivatkozásának mintáit: 
+
+   * C#: [Az X. 509 Biztonság beállítása az Azure IoT hub-ban](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
+   * C: [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample)
+   * Node. js: [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
+   * Java: [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py)
+   * Python: [send_message_x509.](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/advanced-hub-scenarios/send_message_x509.py)
+
+Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. A következő példa egy új IoT-eszközt hoz létre X. 509 HITELESÍTÉSSZOLGÁLTATÓI aláírásos hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
+
+```cli
+az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
+```
+
+Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+
+
+Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül. 
+
+
+## <a name="retrieve-and-modify-connection-string"></a>A kapcsolatok karakterláncának lekérése és módosítása
 
 Miután létrehozta a IoT-eszköz identitását a portálon, lekérheti az elsődleges vagy másodlagos kulcsait. A kulcsok egyikének szerepelnie kell a IoT Hubkal kommunikáló alkalmazásokban szerepeltetett kapcsolódási karakterláncban. A szimmetrikus kulcsos hitelesítéshez IoT Hub biztosítja a teljes mértékben formázott kapcsolati karakterláncot az eszköz részleteiben az Ön kényelme érdekében. További információkat kell felvennie az átjáró-eszközről a kapcsolódási karakterláncra. 
 
-Az alsóbb rétegbeli eszközök szimmetrikus kulcsú kapcsolatainak karakterláncai a következő összetevőket igényelik: 
+Az alsóbb rétegbeli eszközökhöz tartozó kapcsolatok karakterláncának a következő összetevőket kell megadnia: 
 
 * Az a IoT hub, amelyhez az eszköz csatlakozik: `Hostname={iothub name}.azure-devices.net`
 * A központban regisztrált eszköz azonosítója: `DeviceID={device ID}`
@@ -82,309 +177,17 @@ Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőké
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Ha létrehozott egy szülő/gyermek kapcsolatot ehhez az alárendelt eszközhöz, a kapcsolati karakterlánc leegyszerűsíthető úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Például: 
+Ha létrehozott egy szülő/gyermek kapcsolatot ehhez az alárendelt eszközhöz (az X. 509 hitelesítéshez, de a szimmetrikus kulcsos hitelesítéshez nem kötelező), akkor leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Példa: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
-## <a name="x509-authentication"></a>X. 509 hitelesítés 
+Ekkor egy IoT Edge eszköz regisztrálva van, és átjáróként kell konfigurálni. Egy alsóbb rétegbeli IoT-eszköz is regisztrálva van, és az átjáró eszközére mutat. Az utolsó lépés az alsóbb rétegbeli eszközön lévő tanúsítványok elhelyezése, hogy biztonságosan lehessen csatlakozni az átjáróhoz. 
 
-Az X. 509 tanúsítványokkal kétféleképpen hitelesíthető egy IoT-eszköz. Bármelyik módszert választja, az eszköz IoT Hub való csatlakoztatásának lépései megegyeznek. Válassza ki az önaláírt vagy a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványokat a hitelesítéshez, majd folytassa a IoT Hubhoz való kapcsolódással kapcsolatos tudnivalókat. 
+Folytassa az átjáró sorozat következő cikkével, [csatlakoztasson egy alsóbb rétegbeli eszközt egy Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
 
-A IoT Hub X. 509 hitelesítés használatával kapcsolatos további információkért tekintse meg a következő cikkeket: 
-* [Eszköz hitelesítése X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok használatával](../iot-hub/iot-hub-x509ca-overview.md)
-* [Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban](../iot-hub/iot-hub-x509ca-concept.md)
-
-### <a name="create-the-device-identity-with-x509-self-signed-certificates"></a>Az eszköz identitásának létrehozása X. 509 önaláírt tanúsítványokkal
-
-Az X. 509 önaláírt hitelesítés (más néven ujjlenyomatos hitelesítés) esetében új tanúsítványokat kell létrehoznia a IoT-eszközre való elhelyezéshez. Ezek a tanúsítványok olyan ujjlenyomattal rendelkeznek, amelyet IoT Hub a hitelesítéshez. 
-
-A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a tanúsítványok tárolására **\<WRKDIR >** hívunk. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
-
-1. Navigáljon a munkakönyvtárhoz egy bash-vagy PowerShell-ablakban. 
-
-2. Hozzon létre két tanúsítványt (elsődleges és másodlagos) az alsóbb rétegbeli eszközhöz. Adja meg az eszköz nevét, majd az elsődleges vagy a másodlagos címkét. Ezek az adatok a fájlok elnevezésére szolgálnak, így nyomon követheti a több eszköz tanúsítványait. 
-
-   ```PowerShell
-   New-CACertsDevice "<device name>-primary"
-   New-CACertsDevice "<device name>-secondary"
-   ```
-
-   ```bash
-   ./certGen.sh create_device_certificate "<device name>-primary"
-   ./certGen.sh create_device_certificate "<device name>-secondary"
-   ```
-
-3. Kérje le az SHA1 ujjlenyomatot (a IoT Hub felületen található ujjlenyomatot) minden tanúsítványból, amely egy 40 hexadecimális karakterből álló karakterlánc. A következő OpenSSL-paranccsal tekintheti meg a tanúsítványt, és keresse meg az ujjlenyomatot:
-
-   ```PowerShell/bash
-   openssl x509 -in <WORKDIR>/certs/iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
-   ```
-
-4. Navigáljon az IoT hubhoz a Azure Portalon, és hozzon létre egy új IoT-eszköz identitását a következő értékekkel: 
-
-   * Válassza az **X. 509 önaláírt** hitelesítési típusként lehetőséget.
-   * Illessze be azokat a hexadecimális karakterláncokat, amelyeket az eszköz elsődleges és másodlagos tanúsítványainakből másolt.
-   * Válassza a **szülő eszköz beállítása** elemet, és válassza ki azt a IoT Edge átjáró-eszközt, amelyre ez az alárendelt eszköz fog csatlakoztatva. Egy alárendelt eszköz X. 509 hitelesítéséhez szülő eszköz szükséges. 
-
-   ![Eszköz AZONOSÍTÓjának létrehozása X. 509 önaláírt hitelesítéssel a portálon](./media/how-to-authenticate-downstream-device/x509-self-signed-portal.png)
-
-5. Másolja a következő fájlokat az alsóbb rétegbeli eszköz bármelyik könyvtárába:
-
-   * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
-   * `<WRKDIR>\certs\iot-device-<device name>*.cert.pem`
-   * `<WRKDIR>\certs\iot-device-<device id>*.cert.pfx`
-   * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
-
-   Ezeket a fájlokat a IoT Hubhoz csatlakozó Leaf Device-alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
-
-Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. A következő példa egy új IoT-eszközt hoz létre X. 509 önaláírt hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
-
-```cli
-az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
-```
-
-Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
-
-### <a name="create-the-device-identity-with-x509-ca-signed-certificates"></a>Az eszköz identitásának létrehozása X. 509 HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványokkal
-
-Az X. 509 hitelesítésszolgáltató (CA) által aláírt hitelesítéshez szükség van egy IoT Hub regisztrált legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra, amelyet a IoT-eszköz tanúsítványainak aláírásához használ. Minden olyan eszköz, amely a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a köztes tanúsítványok valamelyikével kapcsolatos hibát okozó tanúsítványt használ, a hitelesítés engedélyezve lesz. 
-
-Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](../iot-hub/iot-hub-security-x509-get-started.md)IoT hub cikkében részletesen ismertetett utasításokon alapul. Az ebben a szakaszban ismertetett lépéseket követve megtudhatja, hogy mely értékeket kell használni egy átjárón keresztül csatlakozó alsóbb rétegbeli eszköz beállításához. 
-
-A forgatókönyv tesztelésének legegyszerűbb módja, ha ugyanazt a számítógépet használja, amelyet a tanúsítványok létrehozásához használt a [IoT Edge eszköz konfigurálásához, hogy transzparens átjáróként működjön](how-to-create-transparent-gateway.md). Ezt a gépet már be kell állítani a megfelelő eszközzel, legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal és a köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal, hogy létrehozza a IoT-eszköz tanúsítványait. Ezt követően a végső tanúsítványokat és azok titkos kulcsait átmásolhatja az alsóbb rétegbeli eszközre. Az átjáróval kapcsolatos cikkben leírt lépéseket követve állíthatja be az OpenSSL-t a gépen, majd klónozott a IoT Edge-tárházat a tanúsítvány-létrehozási parancsfájlok eléréséhez. Ezután létrehozott egy munkakönyvtárat, amelyet a tanúsítványok tárolására **\<WRKDIR >** hívunk. Az alapértelmezett tanúsítványok a fejlesztéshez és teszteléshez készültek, így csak az utolsó 30 nap. Létre kell hoznia egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és egy köztes tanúsítványt. 
-
-1. Kövesse az x [. 509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) -ban című szakasz utasításait az *x. 509 szintű biztonság beállítása az Azure IoT hub-ban*. Ebben a szakaszban a következő lépéseket hajtja végre: 
-
-   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a transzparens Gateway-cikkben létrehozott tanúsítványokat használja, töltse fel **\<WRKDIR >/certs/Azure-IOT-test-only.root.ca.CERT.PEM** a főtanúsítvány-fájlként. 
-   2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa. \<WRKDIR >jában ellenőrizheti a tanúsítvány-ellenőrzési eszközöket. 
-
-      ```powershell
-      New-CACertsVerificationCert "<verification code from Azure portal>"
-      ```
-
-      ```bash
-      ./certGen.sh create_verification_certificate <verification code from Azure portal>"
-      ```
-
-2. Az *x. 509 Biztonság beállítása az Azure IoT hub-ban*című rész útmutatását követve [hozzon létre egy x. 509-eszközt az IoT hub létrehozásához](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) . Ebben a szakaszban a következő lépéseket hajtja végre: 
-
-   1. Adjon hozzá egy új eszközt. Adja meg az **eszköz azonosítójának**kisbetűs nevét, és válassza ki az **X. 509 hitelesítésszolgáltató által aláírt**hitelesítési típust. 
-   2. Hozzon létre egy fölérendelt eszközt. Alsóbb rétegbeli eszközök esetén válassza a **fölérendelt eszköz beállítása** lehetőséget, majd válassza ki azt a IoT Edge átjáró eszközt, amely a IoT hubhoz való kapcsolódást biztosítja. 
-
-3. Hozzon létre egy tanúsítványláncot az alsóbb rétegbeli eszközhöz. Használja ugyanazt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt, amelyet a IoT Hub feltöltött a lánc elvégzéséhez. Használja ugyanazt a kisbetűs eszköz-azonosítót, amelyet az eszköz identitásához adott a portálon.
-
-   ```powershell
-   New-CACertsDevice "<device id>"
-   ```
-
-   ```bash
-   ./certGen.sh create_device_certificate "<device id>"
-   ```
-
-4. Másolja a következő fájlokat az alsóbb rétegbeli eszköz bármelyik könyvtárába: 
-
-   * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
-   * `<WRKDIR>\certs\iot-device-<device id>*.cert.pem`
-   * `<WRKDIR>\certs\iot-device-<device id>*.cert.pfx`
-   * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
-
-   Ezeket a fájlokat a IoT Hubhoz csatlakozó Leaf Device-alkalmazásokban fogja hivatkozni. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.
-
-Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. A következő példa egy új IoT-eszközt hoz létre X. 509 HITELESÍTÉSSZOLGÁLTATÓI aláírásos hitelesítéssel, és egy fölérendelt eszközt rendel hozzá: 
-
-```cli
-az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
-```
-
-Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
-
-
-### <a name="connect-to-iot-hub-through-a-gateway"></a>Kapcsolódás IoT Hub átjárón keresztül
-
-Minden egyes Azure IoT SDK egy kicsit másképp kezeli az X. 509 hitelesítést. Ugyanakkor ugyanez a folyamat használható a normál IoT-eszközöknek az X. 509 tanúsítványokkal való IoT Hub való hitelesítésére is az alárendelt eszközökre. Az egyetlen különbség, hogy fel kell vennie egy mutatót az átjáró eszközre a kapcsolat irányításához, vagy offline helyzetekben, hogy kezelni tudja a hitelesítést a IoT Hub nevében. Általában ugyanazokat az X. 509 hitelesítési lépéseket követheti az összes IoT Hub eszközön, majd egyszerűen lecserélheti az **állomásnév** értékét a kapcsolódási karakterláncban az átjáró-eszköz állomásneveként. 
-
-A következő részekben néhány példa látható a különböző SDK-nyelvekre. 
-
->[!IMPORTANT]
->Az alábbi példák azt mutatják be, hogy az IoT Hub SDK-k hogyan használnak tanúsítványokat az eszközök hitelesítéséhez. Éles környezetben az összes titkot, például a magán-vagy SAS-kulcsokat egy hardveres Secure modulban (HSM) kell tárolnia. 
-
-#### <a name="net"></a>.NET
-
-Ha például az X. C# 509 tanúsítványokkal IoT hub hitelesítő programot szeretne elvégezni, tekintse [meg az x. 509 Biztonság beállítása az Azure IoT hub-ban](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)című témakört. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
-
-A DeviceClient-példány állomásnévének deklarálása során használja az IoT Edge Gateway-eszköz állomásnevét. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
-
-Ha a IoT Edge git-tárház által biztosított tesztelési tanúsítványokat használja, a tanúsítványok kulcsa **1234**.
-
-```csharp
-try
-{
-    var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");
-    var auth = new DeviceAuthenticationWithX509Certificate("<device-id>", cert);
-    var deviceClient = DeviceClient.Create("<gateway hostname>", auth, TransportType.Amqp_Tcp_Only);
-
-    if (deviceClient == null)
-    {
-        Console.WriteLine("Failed to create DeviceClient!");
-    }
-    else
-    {
-        Console.WriteLine("Successfully created DeviceClient!");
-        SendEvent(deviceClient).Wait();
-    }
-
-    Console.WriteLine("Exiting...\n");
-}
-catch (Exception ex)
-{
-    Console.WriteLine("Error in sample: {0}", ex.Message);
-}
-```
-
-#### <a name="c"></a>C#
-
-Ha például az X. 509 tanúsítványokkal IoT Hub hitelesítő C programot szeretne elvégezni, tekintse meg a C IoT SDK [iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample) -mintáját. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
-
-Az alsóbb rétegbeli eszközhöz tartozó kapcsolódási karakterlánc meghatározásakor használja az IoT Edge átjáró eszközének állomásnevét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
-
-```C
-// If your downstream device uses X.509 authentication (self signed or X.509 CA) then
-// resulting connection string should look like the following:
-// "HostName=<gateway device hostname>;DeviceId=<device_id>;x509=true"
-static const char* connectionString = "[Downstream device IoT Edge connection string]";
-
-// Path to the Edge "owner" root CA certificate
-static const char* edge_ca_cert_path = "[Path to root CA certificate]";
-
-// When the downstream device uses X.509 authentication, a certificate and key 
-// in PRM format must be provided.
-static const char * x509_device_cert_path = "[Path to primary or secondary device cert]";
-static const char * x509_device_key_path = "[Path to primary or secondary device key]";
-
-int main(void)
-{
-    // Create the iothub handle here
-    device_handle = IoTHubDeviceClient_CreateFromConnectionString(connectionString, protocol);
-
-    // Provide the Azure IoT device client with the same root
-    // X509 CA certificate that was used to set up the IoT Edge gateway runtime
-    if (edge_ca_cert_path != NULL)
-    {
-        cert_string = obtain_edge_ca_certificate();
-        (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
-    }
-
-    if ((x509_device_cert_path != NULL) && (x509_device_key_path != NULL))
-    {
-        const char *x509certificate = obtain_file_contents(x509_device_cert_path);
-        const char *x509privatekey = obtain_file_contents(x509_device_key_path);
-        if ((IoTHubDeviceClient_SetOption(device_handle, OPTION_X509_CERT, x509certificate) != IOTHUB_CLIENT_OK) ||
-            (IoTHubDeviceClient_SetOption(device_handle, OPTION_X509_PRIVATE_KEY, x509privatekey) != IOTHUB_CLIENT_OK)
-            )
-        {
-            printf("failure to set options for x509, aborting\r\n");
-            exit(1);
-        }
-    }
-}
-```
-
-#### <a name="nodejs"></a>Node.js
-
-Ha egy Node. js-programot szeretne egy X. 509 tanúsítvánnyal IoT Hub hitelesíteni, tekintse meg a Node. js IoT SDK [simple_sample_device_x509. js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js) -mintáját. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
-
-Az alsóbb rétegbeli eszközhöz tartozó kapcsolódási karakterlánc meghatározásakor használja az IoT Edge átjáró eszközének állomásnevét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
-
-Ha a IoT Edge git-tárház által biztosított tesztelési tanúsítványokat használja, a tanúsítványok kulcsa **1234**.
-
-```node
-// String containing Hostname and Device Id in the following format:
-//  "HostName=<gateway device hostname>;DeviceId=<device_id>;x509=true"
-var connectionString = '<DEVICE CONNECTION STRING WITH x509=true>';
-var certFile = '<PATH-TO-CERTIFICATE-FILE>';
-var keyFile = '<PATH-TO-KEY-FILE>';
-var passphrase = '<KEY PASSPHRASE IF ANY>';
-
-// fromConnectionString must specify a transport constructor, coming from any transport package.
-var client = Client.fromConnectionString(connectionString, Protocol);
-
-var options = {
-   cert : fs.readFileSync(certFile, 'utf-8').toString(),
-   key : fs.readFileSync(keyFile, 'utf-8').toString(),
-   passphrase: passphrase
- };
-
-// Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client transport to use x509 when connecting to IoT Hub
-client.setOptions(options);
-```
-
-#### <a name="python"></a>Python
-
-A Python SDK jelenleg csak a X509-tanúsítványok és-kulcsok használatát támogatja a fájlokból, amelyek nincsenek definiálva beágyazottként. A következő példában a releváns filepaths a környezeti változók tárolják.
-
-Az alsóbb rétegbeli eszköz állomásnévének meghatározásakor használja az IoT Edge Gateway-eszköz állomásnévjét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
-
-```python
-import os
-from azure.iot.device import IoTHubDeviceClient, X509
-
-HOSTNAME = "[IoT Edge Gateway Hostname]"
-DEVICE_ID = "[Device ID]"
-
-def iothub_client_init():
-    x509 = X509(
-        cert_file=os.getenv("X509_CERT_FILE"),
-        key_file=os.getenv("X509_KEY_FILE")
-    )
-
-    client = IoTHubDeviceClient.create_from_x509_certificate(
-        x509=x509,
-        hostname=HOSTNAME,
-        device_id=DEVICE_ID
-    )
-)
-
-if __name__ == '__main__':
-    iothub_client_init()
-```
-
-#### <a name="java"></a>Java
-
-Az X. 509 tanúsítványokkal IoT Hubra hitelesítő Java-programokra példát a Java IoT SDK [SendEventX509. Java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py) -mintájában talál. A minta néhány fő sora itt található a hitelesítési folyamat bemutatásához.
-
-Az alsóbb rétegbeli eszközhöz tartozó kapcsolódási karakterlánc meghatározásakor használja az IoT Edge átjáró eszközének állomásnevét a **hostname** paraméterhez. Az állomásnév az átjáró eszköz config. YAML fájljában található. 
-
-```java
-//PEM encoded representation of the public key certificate
-private static String publicKeyCertificateString =
-    "-----BEGIN CERTIFICATE-----\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "-----END CERTIFICATE-----\n";
-
-//PEM encoded representation of the private key
-private static String privateKeyString =
-    "-----BEGIN EC PRIVATE KEY-----\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-    "-----END EC PRIVATE KEY-----\n";
-
-DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCertificateString, false, privateKeyString, false);
-```
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ennek a cikknek a végrehajtásával rendelkeznie kell egy IoT Edge eszközzel, amely transzparens átjáróként és egy IoT hub-ban regisztrált alsóbb rétegbeli eszközként működik. Ezután be kell állítania az alsóbb rétegbeli eszközöket, hogy megbízzon az átjáró-eszközön, és üzeneteket küldjön neki. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
+Ennek a cikknek a végrehajtásával rendelkeznie kell egy IoT Edge eszközzel, amely transzparens átjáróként és egy IoT hub-ban regisztrált alsóbb rétegbeli eszközként működik. Ezután be kell állítania az alsóbb rétegbeli eszközöket, hogy megbízzon az átjáró-eszközön, és biztonságosan kapcsolódjon hozzá. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).

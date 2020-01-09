@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432007"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Kapcsolódás Azure-alapú virtuális géphez
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan csatlakozhat az Azure-ban létrehozott virtuáli
 
 ## <a name="connect-to-a-windows-based-vm"></a>Kapcsolódás Windows-alapú virtuális géphez
 
-Az Azure-ban üzemeltetett Windows-alapú virtuális géphez való kapcsolódáshoz a távoli asztali ügyfelet fogja használni.  A Windows legtöbb verziója natív módon támogatja a Remote Desktop Protocol (RDP) szolgáltatást.  Más gépek esetén további információkat találhat [Távoli asztal ügyfelek](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)ügyfeleiről.  
+A távoli asztal ügyfelével csatlakozhat az Azure-ban üzemeltetett Windows-alapú virtuális géphez.  A Windows legtöbb verziója natív módon támogatja a Remote Desktop Protocol (RDP) szolgáltatást.  Más gépek esetén további információkat találhat [Távoli asztal ügyfelek](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)ügyfeleiről.  
 
 A következő cikk részletesen ismerteti, hogyan használható a beépített Windows RDP-támogatás a virtuális géphez való kapcsolódáshoz: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](../../../virtual-machines/windows/connect-logon.md).  
 
@@ -33,22 +33,23 @@ A következő cikk részletesen ismerteti, hogyan használható a beépített Wi
 
 A Linux-alapú virtuális gép összekapcsolásához Secure Shell Protocol-(SSH-) ügyfélre van szükség.  Ez a vitafórum az ingyenes [Putty](https://www.ssh.com/ssh/putty/) SHH-terminált fogja használni.
 
-1. A Azure Portal **virtuális gépek** paneljén válassza [](https://ms.portal.azure.com)ki azt a virtuális gépet, amelyhez csatlakozni szeretne.  
-2. Ha még nem fut, **indítsa el** a virtuális gépet.
-3. Kattintson a virtuális gép nevére, és nyissa meg az **Áttekintés** oldalát.
-4. Jegyezze fel a virtuális gép nyilvános IP-címét és DNS-nevét.  (Ha ezek az értékek nincsenek beállítva, akkor létre kell [hoznia egy hálózati adaptert](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) .
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com). Keresse meg és válassza ki a **virtuális gépeket**. 
+2. Válassza ki azt a virtuális gépet, amelyhez csatlakozni szeretne.  
+3. Ha még nem fut, **indítsa el** a virtuális gépet.
+4. Kattintson a virtuális gép nevére, és nyissa meg az **Áttekintés** oldalát.
+5. Jegyezze fel a virtuális gép nyilvános IP-címét és DNS-nevét.  (Ha ezek az értékek nincsenek beállítva, akkor létre kell [hoznia egy hálózati adaptert](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) .
 
    ![VIRTUÁLIS gépek áttekintése – beállítások](./media/publishvm_019.png)
  
-5. Nyissa meg a PuTTY alkalmazást.  
-6. A PuTTY konfigurációja párbeszédpanelen adja meg a virtuális gép IP-címét vagy DNS-nevét. 
+6. Nyissa meg a PuTTY alkalmazást.  
+7. A PuTTY konfigurációja párbeszédpanelen adja meg a virtuális gép IP-címét vagy DNS-nevét. 
 
    ![Putty-terminál beállításai](./media/publishvm_020.png)
  
-7. A PuTTY-terminál megnyitásához kattintson a **Megnyitás** gombra.  
-8. Amikor a rendszer kéri, adja meg a linuxos virtuális gép fiókjának nevét és jelszavát. 
+8. A PuTTY-terminál megnyitásához kattintson a **Megnyitás** gombra.  
+9. Amikor a rendszer kéri, adja meg a linuxos virtuális gép fiókjának nevét és jelszavát. 
 
-   Ha kapcsolódási problémák léptek fel, tekintse meg az SSH-ügyfél dokumentációját, például a [10. fejezet: gyakori hibaüzenetek](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+Ha kapcsolódási problémák léptek fel, tekintse meg az SSH-ügyfél dokumentációját, például a [10. fejezet: gyakori hibaüzenetek](https://www.ssh.com/ssh/putty/putty-manuals).
 
 További információt, többek között az asztal egy kiépített linuxos virtuális géphez való hozzáadásával kapcsolatban lásd: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](../../../virtual-machines/linux/use-remote-desktop.md).
 
@@ -66,6 +67,6 @@ Az Azure gyorsan leállítja a virtuális gépet egy *felszabadítás*nevű foly
 Ha később szeretné újraaktiválni egy leállított virtuális gépet, jelölje ki, majd kattintson a **Start** gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A távoli csatlakozást követően készen áll a [virtuális gép konfigurálására](./cpp-configure-vm.md).
+A távoli csatlakozást követően készen áll [a virtuális gép konfigurálására](./cpp-configure-vm.md).

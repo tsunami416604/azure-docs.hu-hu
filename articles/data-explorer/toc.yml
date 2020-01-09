@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure Data Explorer?
       href: data-explorer-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Fürt és adatbázis létrehozása – Azure Portal
@@ -32,6 +32,8 @@
       href: ingest-data-overview.md
     - name: Az adatmegjelenítés áttekintése
       href: viz-overview.md
+    - name: Biztonsági áttekintés
+      href: security.md
 - name: Útmutatók
   items:
     - name: Fürt és adatbázis létrehozása
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: Biztonságos
+      items:
+        - name: Fürtbiztonság kezelése
+          href: manage-cluster-security.md
+        - name: Felügyelt identitások konfigurálása
+          href: managed-identities.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager-sablon
+              href: customer-managed-keys-resource-manager.md
     - name: Kezelés
       items:
         - name: Fürt
@@ -154,8 +168,6 @@
               href: manage-cluster-horizontal-scaling.md
             - name: Fürtök vertikális skálázásának kezelése
               href: manage-cluster-vertical-scaling.md
-            - name: Fürtbiztonság kezelése
-              href: manage-cluster-security.md
             - name: Fürt állapotának ellenőrzése
               href: check-cluster-health.md
         - name: Adatbázis

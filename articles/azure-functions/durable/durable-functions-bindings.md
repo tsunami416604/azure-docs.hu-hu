@@ -2,14 +2,14 @@
 title: Kötések a Durable Functionshoz – Azure
 description: Eseményindítók és kötések használata a Azure Functions Durable Functions bővítményéhez.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410223"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
 
@@ -36,7 +36,7 @@ Ha Orchestrator-függvényeket ír a parancsfájlkezelési nyelveken (például 
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Trigger viselkedése
+### <a name="trigger-behavior"></a>Eseményindító működése
 
 Íme néhány Megjegyzés az előkészítési triggerről:
 
@@ -143,7 +143,7 @@ Ha a VS Code-ot vagy a Azure Portal fejlesztésre használja, a tevékenység-tr
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólistát kérdezi le. Ez a várólista a bővítmény belső implementációjának részletes adatai, ezért nincs explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Trigger viselkedése
+### <a name="trigger-behavior"></a>Eseményindító működése
 
 Íme néhány Megjegyzés a tevékenység-triggerről:
 
@@ -372,7 +372,7 @@ Ha a Visual Studio-eszközöket használja a Azure Functionshoz, az entitás-tri
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
-### <a name="trigger-behavior"></a>Trigger viselkedése
+### <a name="trigger-behavior"></a>Eseményindító működése
 
 Íme néhány Megjegyzés az entitás-triggerről:
 
@@ -398,7 +398,7 @@ Minden entitás függvényhez tartozik egy `IDurableEntityContext`paraméter, am
 * **DeleteState ()** : törli az entitás állapotát. 
 * **GetInput\<TInput > ()** : beolvassa az aktuális művelet bemenetét. A `TInput` Type paraméternek primitív vagy JSON-serializeable típusúnak kell lennie.
 * **Return (ARG)** : egy értéket ad vissza a műveletnek nevezett eljáráshoz. A `arg` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
-* **SignalEntity (EntityId, művelet, bemenet)** : egyirányú üzenet küldése egy entitásnak. A `operation` paraméternek nem null értékű sztringnek kell lennie, és a `input` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
+* **SignalEntity (EntityId, scheduledTimeUtc, művelet, bemenet)** : egyirányú üzenet küldése egy entitásnak. A `operation` paraméter nem lehet null értékű karakterlánc, a választható `scheduledTimeUtc`nak UTC datetime-értéknek kell lennie, amelyen a műveletet meg kell hívni, és a `input` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
 * **CreateNewOrchestration (orchestratorFunctionName, bemenet)** : új előkészítést indít el. A `input` paraméternek primitív vagy JSON-serializeable objektumnak kell lennie.
 
 Az Entity függvénynek átadott `IDurableEntityContext` objektum a `Entity.Current` aszinkron-local tulajdonsággal érhető el. Ez a megközelítés az osztály alapú programozási modell használata esetén hasznos.
@@ -519,7 +519,7 @@ Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fej
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ A .NET-függvények általában a `IDurableEntityClient`hoz kötődnek, ami telj
 
 * **ReadEntityStateAsync\<t >** : egy entitás állapotának beolvasása. Egy olyan választ ad vissza, amely jelzi, hogy létezik-e a célként megadott entitás, és ha igen, milyen állapotban van.
 * **SignalEntityAsync**: egyirányú üzenetet küld egy entitásnak, és megvárja, amíg a várólistán lévő.
+* **ListEntitiesAsync**: több entitás állapotának lekérdezése. Az entitásokat *név* és *utolsó működési idő*szerint lehet lekérdezni.
 
 Nem kell létrehoznia a cél entitást a jel elküldése előtt – az entitás állapota a jelet kezelő entitás függvényből hozható létre.
 
@@ -636,7 +637,7 @@ module.exports = async function (context) {
 > A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben.
 
 <a name="host-json"></a>
-## <a name="hostjson-settings"></a>Host.JSON-beállítások
+## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 

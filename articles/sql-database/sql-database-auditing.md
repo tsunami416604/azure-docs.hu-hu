@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928703"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551624"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -70,7 +70,7 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz vagy alapért
 
 A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal használatával.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Az SQL Database/Server (biztonság) fejléc alatt navigáljon a **naplózás** elemre.
 
     <a id="auditing-screenshot"></a>![navigációs ablaktábla][1]
@@ -108,7 +108,7 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 
     ![Eseményközpont](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 10. Ha testre szeretné szabni a naplózott eseményeket, ezt [PowerShell-parancsmagok](#subheading-7) vagy a [REST API](#subheading-9)használatával végezheti el.
 11. A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](sql-database-threat-detection-get-started.md).
 
@@ -243,7 +243,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 - HRE-hitelesítés használata esetén a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
 
 
-## <a id="subheading-7"></a>SQL Database-naplózás kezelése Azure PowerShell használatával
+## <a id="subheading-7"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése Azure PowerShell használatával
 
 **PowerShell-parancsmagok (beleértve a további szűrések where záradékának támogatását)** :
 
@@ -256,7 +256,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
 A parancsfájlokra példa: a [naplózás és a veszélyforrások észlelésének konfigurálása a PowerShell használatával](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a id="subheading-9"></a>SQL Database-naplózás kezelése REST API használatával
+## <a id="subheading-8"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése REST API használatával
 
 **REST API**:
 
@@ -272,7 +272,7 @@ Kiterjesztett szabályzat a WHERE záradék támogatásával további szűréshe
 - [Adatbázis *kiterjesztett* naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Kiszolgáló *kiterjesztett* naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Az SQL Database naplózásának kezelése Azure Resource Manager sablonokkal
+## <a id="subheading-9"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése Azure Resource Manager-sablonokkal
 
 Az Azure SQL Database naplózását [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok használatával felügyelheti, ahogy az alábbi példákban is látható:
 
@@ -289,10 +289,9 @@ Az Azure SQL Database naplózását [Azure Resource Manager](https://docs.micros
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading – 8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

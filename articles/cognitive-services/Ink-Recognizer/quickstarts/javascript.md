@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: Digitális tinta felismerése a tinta-felismerő REST API és a Node. js-sel'
 titleSuffix: Azure Cognitive Services
-description: A tinta-felismerő API használatával megkezdheti a digitális tollvonások felismerését.
+description: A szabadkézi felismerő API-val megkezdheti a digitális tollvonások felismerését ebben a rövid útmutatóban.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 19626bd68ad82108b2ebaa823d196d0f22008e29
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448141"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és a JavaScripttel
 
@@ -59,7 +59,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 2. A `<body>` címkén belül adja hozzá a következő HTML-kódot:
     1. Két szöveges terület a JSON-kérelem és-válasz megjelenítéséhez.
-    2. Egy gomb a `recognizeInk()` függvény meghívásához, amely később lesz létrehozva.
+    2. Egy gomb a `recognizeInk()` függvény meghívásához, amelyet később fog létrehozni.
     
     ```HTML
     <!-- <body>-->
@@ -75,11 +75,11 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="load-the-example-json-data"></a>A példa JSON-adatbázis betöltése
 
-1. A `<script>` címkén belül hozzon létre egy változót a sampleJson. Ezután hozzon létre egy `openFile()` nevű JavaScript-függvényt, amely megnyitja a fájlkezelőt, hogy kiválassza a JSON-fájlt. Ha a `Recognize ink` gombra kattint, meghívja ezt a függvényt, és megkezdi a fájl olvasását.
+1. A `<script>` címkén belül hozzon létre egy változót a sampleJson. Ezután hozzon létre egy `openFile()` nevű JavaScript-függvényt, amely megnyitja a fájlkezelőt, így kiválaszthatja a JSON-fájlt. Ha a `Recognize ink` gombra kattint, meghívja ezt a függvényt, és megkezdi a fájl olvasását.
 2. A fájl aszinkron feldolgozásához használjon egy `FileReader` objektum `onload()` függvényét. 
-    1. Cserélje le a fájl összes `\n` vagy `\r` karakterét üres karakterlánccal. 
+    1. Cserélje le a fájlban lévő összes `\n` vagy `\r` karaktert egy üres karakterlánccal. 
     2. A szöveg konvertálása érvényes JSON-re a `JSON.parse()` használatával
-    3. Frissítse a `request` szövegmezőt az alkalmazásban. A JSON-karakterlánc formázásához használja a `JSON.stringify()` értéket. 
+    3. Frissítse a `request` szövegmezőt az alkalmazásban. A JSON-karakterláncot a `JSON.stringify()` használatával formázhatja. 
     
     ```javascript
     var sampleJson = "";
@@ -98,7 +98,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>Kérelem küldése a tinta-felismerő API-nak
 
-1. A `<script>` címkén belül hozzon létre egy `recognizeInk()` nevű függvényt. Ez a függvény később meghívja az API-t, és frissíti a választ tartalmazó lapot. Adja hozzá a kódot az alábbi lépésekkel a függvényen belül. 
+1. A `<script>` címkén belül hozzon létre egy `recognizeInk()`nevű függvényt. Ez a függvény később meghívja az API-t, és frissíti a választ tartalmazó lapot. Adja hozzá a kódot az alábbi lépésekkel a függvényen belül. 
         
     ```javascript
     function recognizeInk() {
@@ -147,7 +147,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
         };
         ```
     
-    5. Küldje el az API-kérést. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és állítsa a `content-type` értéket `application/json` értékre.
+    5. Küldje el az API-kérést. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és állítsa be a `content-type`t `application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -161,7 +161,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 Ez az alkalmazás a böngészőben is futtatható. A sikeres válaszokat JSON formátumban adja vissza a rendszer. A JSON-válasz a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json)is megtalálható:
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [REST API – referencia](https://go.microsoft.com/fwlink/?linkid=2089907)

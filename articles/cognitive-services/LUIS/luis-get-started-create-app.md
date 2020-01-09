@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: alkalmazás létrehozása – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Hozzon létre egy LUIS-alkalmazást, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre olyan LUIS-alkalmazást, amely az előre elkészített tartományi `HomeAutomation` használja a fények és a készülékek be-és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448103"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
-
 Ebben a rövid útmutatóban egy LUIS-alkalmazást hoz létre, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Ehhez a cikkhez egy ingyenes LUIS-fiókra van szüksége, amely a [https://www.luis.ai](https://www.luis.ai) címen elérhető LUIS portálon hozható létre. 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
-A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alkalmazásokat. 
+A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alkalmazásokat.
 
 1. A LUIS portál saját alkalmazások listájában válassza a **+ Létrehozás**elemet.
 
     ![A LUIS portál saját alkalmazások listájában válassza a + létrehozás elemet.](./media/create-app-in-portal.png)
 
-1. A párbeszédpanelen nevezze el az alkalmazást `Home Automation` majd válassza a **kész**lehetőséget. LUIS létrehozza az alkalmazást. A leírás nem kötelező, és nem használható szerzői vagy előrejelzési műveletekhez. LUIS-alkalmazás létrehozásakor az előrejelzési erőforrás is opcionális. Ha az alkalmazást éles környezetben teszi közzé, egy előrejelzési erőforrást kell rendelnie, hogy az alkalmazás képes legyen sok kérést kezelni.  
+1. A párbeszédpanelen nevezze el az alkalmazást `Home Automation` majd válassza a **kész**lehetőséget. LUIS létrehozza az alkalmazást. A leírás nem kötelező, és nem használható szerzői vagy előrejelzési műveletekhez. LUIS-alkalmazás létrehozásakor az előrejelzési erőforrás is opcionális. Ha az alkalmazást éles környezetben teszi közzé, egy előrejelzési erőforrást kell rendelnie, hogy az alkalmazás képes legyen sok kérést kezelni.
 
     ![A párbeszédpanelen nevezze el az alkalmazás "Home Automation"](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >A kulturális környezet az alkalmazás létrehozása után nem módosítható. 
+    >A kulturális környezet az alkalmazás létrehozása után nem módosítható.
 
 ## <a name="add-prebuilt-domain"></a>Előre összeállított tartomány hozzáadása
 
@@ -61,7 +55,7 @@ Válassza a **leképezések** lehetőséget a HomeAutomation-tartomány szándé
 ![Képernyőkép a HomeAutomation-leképezések listájáról](media/luis-quickstart-new-app/home-automation-intents.png "Képernyőkép a HomeAutomation-leképezések listájáról")
 
 > [!NOTE]
-> A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak. 
+> A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak.
 
 Válassza a **HomeAutomation.TurnOff** szándékot. Láthatja, hogy a szándék olyan kimondott szövegek listáját tartalmazza, amelyek entitásokkal vannak feliratozva.
 
@@ -72,7 +66,7 @@ Válassza a **HomeAutomation.TurnOff** szándékot. Láthatja, hogy a szándék 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
-Miután betanította az alkalmazását, tesztelheti is. Válassza a **teszt**lehetőséget. Írjon be egy tesztet, például `Turn off the lights` az interaktív teszt ablaktáblába, majd nyomja le az ENTER billentyűt. 
+Miután betanította az alkalmazását, tesztelheti is. Válassza a **teszt**lehetőséget. Írjon be egy tesztet, például `Turn off the lights` az interaktív teszt ablaktáblába, majd nyomja le az ENTER billentyűt.
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Az előrejelzéssel kapcsolatos további információk áttekintéséhez válass
 
 ![A teszt panel képernyőképe ellenőrzési információkkal](media/luis-quickstart-new-app/test.png)
 
-Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához. 
+Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>A V3 API előrejelzési végpontjának lekérdezése
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. A böngésző címsorába a lekérdezési karakterlánchoz ellenőrizze, hogy a következő név és érték sávok szerepelnek-e az URL-címben. Ha nem szerepelnek a lekérdezési karakterláncban, adja hozzá őket:
 
@@ -201,13 +195,13 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
     ```
 
     További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
-    
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Behívhatja a végpontot kódból:
 

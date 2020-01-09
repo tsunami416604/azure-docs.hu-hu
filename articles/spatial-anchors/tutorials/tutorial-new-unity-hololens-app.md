@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0d63f2df17804d5cc171f94a34ebc5831be384fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457722"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -141,17 +141,27 @@ Most az Update () ciklus használatával ellenőrizze, hogy van-e várólistán 
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure térbeli horgonyok SDK beszerzése
 
-Most letöltjük az Azure térbeli horgonyok SDK-t. Ugrás az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az eszközök alatt töltse le a **AzureSpatialAnchors. unitypackage** fájlt.
+## <a name="via-unity-packagetabunitypackage"></a>[Unity-csomagon keresztül](#tab/UnityPackage)
 
-Az egység területen válassza az **eszközök**, majd a **csomag importálása** > **Egyéni csomag...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget.
+Most letöltjük az Azure térbeli horgonyok SDK-t. Lépjen az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az eszközök alatt töltse le a **AzureSpatialAnchors. unitypackage**. Az egység területen válassza az **eszközök**, majd a **csomag importálása** > **Egyéni csomag...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget.
 
-Az új **importálási egység csomag** ablakban válassza a **nincs** lehetőséget a bal alsó sarokban. Ezután a **AzureSpatialAnchorsPlugin** > **plugins**területen válassza a **Common**, a **Editor**és a **HoloLens**elemet. Kattintson az **Importálás** elemre a jobb alsó sarokban.
+Az új **importálási egység csomag** ablakban válassza ki a **plugins** elemet, majd kattintson az **Importálás** elemre a jobb alsó sarokban.
 
 Most vissza kell állítania a Nuget-csomagokat az Azure térbeli horgonyok SDK beszerzéséhez. Hozzon létre egy **egységet** , majd nyissa meg és hozza létre újra az eredményül kapott **Visual Studio** -megoldást, ahogy [azt a kipróbálás](#trying-it-out)során is részletezi.
 
+## <a name="via-nugetforunitytabnugetforunity"></a>[NuGetForUnity-n keresztül](#tab/NuGetForUnity)
+
+Először telepítenie kell a NuGetForUnity. Lépjen a [NuGetForUnity GitHub-kiadások oldalára](https://github.com/GlitchEnzo/NuGetForUnity/releases). Az eszközök alatt töltse le a legújabb **NuGetForUnity. unitypackage**. Az egység területen válassza az **eszközök**, majd a **csomag importálása** > **Egyéni csomag...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget. Az Unity most telepíti a NugetForUnity-t. Ha nem jelenik meg új **NuGet** legördülő lista az egységben, előfordulhat, hogy a jobb gombbal kell kattintania a **projektek** > **eszközök**területen. Ezután válassza **az összes újraimportálása**elemet.
+
+Miután telepítette a NuGetForUnity, válassza a **NuGet** > **NuGet-csomagok kezelése**lehetőséget. Ezután keressen rá a Microsoft. Azure. SpatialAnchors. Unity kifejezésre, és válassza a **telepítés**lehetőséget.
+
+Most létre kell hozni a tényleges Azure térbeli horgonyok SDK-t, mivel a letöltött NuGet-csomag csak segítő parancsfájlokat tartalmaz. Hozzon létre egy **egységet** , majd nyissa meg és hozza létre újra az eredményül kapott **Visual Studio** -megoldást, ahogy [azt a kipróbálás](#trying-it-out)során is részletezi.
+
+---
+
 A **Visual Studio** -megoldásban adja hozzá a következő importálást a `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs`ba:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
 
 Ezután adja hozzá a következő tag-változókat a `AzureSpatialAnchorsScript` osztályhoz:
 

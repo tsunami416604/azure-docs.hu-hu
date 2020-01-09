@@ -3,12 +3,12 @@ title: 'Gyors útmutató: terv létrehozása REST API'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a REST API használatával.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436599"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
 
@@ -47,7 +47,7 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-A `{subscriptionId}`$restUri**változóban a** helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `-Body` `Invoke-RestMethod` paraméterében.
+A **$restUri** változóban a `{subscriptionId}` helyére írja be a saját előfizetését az információkérés tárgyaként. A $response változó tárolja az `Invoke-RestMethod` parancsmag által visszaadott eredményt, amely a [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) és hasonló parancsmagok által elemezhető. Ha a REST API szolgáltatásvégpontja **kérelemtörzset** vár, adjon meg egy JSON formátumú változót az `Invoke-RestMethod``-Body` paraméterében.
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
@@ -407,7 +407,9 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      > [!IMPORTANT]
      > A tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
-## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
 Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori művelet az összetevők már szükségtelen erőforrásai esetén. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. A tervhozzárendelések törléséhez használja a következő REST API-műveletet:
 
@@ -417,7 +419,7 @@ Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori mű
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>Terv törlése
+### <a name="delete-a-blueprint"></a>Terv törlése
 
 Maguknak a terveknek a törléséhez használja a következő REST API-műveletet:
 
@@ -427,7 +429,7 @@ Maguknak a terveknek a törléséhez használja a következő REST API-művelete
   DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet REST APIsal. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

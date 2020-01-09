@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428852"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Nyilvános alapszintű Load Balancer naplók Azure Monitor
 
@@ -38,7 +38,7 @@ Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Ba
 
 A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. Az esemény-és állapot-mintavételi naplózás engedélyezése a naplókon keresztül elérhető adatok gyűjtésének megkezdéséhez. A naplózás engedélyezéséhez kövesse az alábbi lépéseket.
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com). Ha még nem rendelkezik terheléselosztó, a folytatás előtt [hozzon létre egy Load balancert](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+Jelentkezzen be az [Azure portálra](https://portal.azure.com). Ha még nem rendelkezik terheléselosztó, a folytatás előtt [hozzon létre egy Load balancert](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. A portálon kattintson az **erőforráscsoportok**elemre.
 2. Válassza ki **\<erőforrás-csoport-név >** , ahol a Load Balancer.
@@ -51,7 +51,7 @@ Jelentkezzen be az [Azure Portal](https://portal.azure.com). Ha még nem rendelk
    * **Stream az Event hub-ba**
    * **Küldés Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archiválás egy Storage-fiókba
+    ### <a name="archive-to-a-storage-account"></a>Archiválás tárfiókba
     Ehhez a folyamathoz már létre kell hoznia egy Storage-fiókot.  A Storage-fiók létrehozásával kapcsolatban tekintse meg [a Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) című témakört.
 
     1. Jelölje be az archiválás elem melletti jelölőnégyzetet a **Storage-fiókhoz**.
@@ -60,7 +60,7 @@ Jelentkezzen be az [Azure Portal](https://portal.azure.com). Ha még nem rendelk
     4. A legördülő listában válassza ki a Storage-fiók nevét a **Storage-fiók** területen. 
     5. Kattintson az OK gombra.
 
-    ### <a name="stream-to-an-event-hub"></a>Stream az Event hub-ba
+    ### <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
     Ehhez a folyamathoz már létrehozott Event hub szükséges.  Az Event hub létrehozásával kapcsolatban tekintse meg az [Event hub létrehozása Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) című témakört.
 
     1. Jelölje be a stream elem melletti jelölőnégyzetet az **Event hubhoz**
@@ -170,8 +170,8 @@ Kapcsolódjon a Storage-fiókhoz, és kérje le az Event és Health mintavételi
 > [!TIP]
 > Ha ismeri a Visual Studiót, illetve C#-állandók és -változók módosításának alapfogalmait, használja a GitHubról elérhető [naplókonvertáló eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter).
 
-## <a name="stream-to-an-event-hub"></a>Stream az Event hub-ba
-Ha a diagnosztikai adatokat egy esemény központba továbbítják, akkor a központi naplózási elemzéshez használható egy harmadik féltől származó SIEM-eszközben Azure Monitor integrációval. További információ: az [Azure monitoring-adatok továbbítása az Event hub-hoz](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
+## <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
+Ha a diagnosztikai adatokat egy esemény központba továbbítják, akkor a központi naplózási elemzéshez használható egy harmadik féltől származó SIEM-eszközben Azure Monitor integrációval. További információ: az [Azure monitoring-adatok továbbítása az Event hub-hoz](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek
 Az Azure-beli erőforrásokhoz közvetlenül egy Log Analytics munkaterületre küldhetnek diagnosztikai adatokat, ahol az összetett lekérdezéseket a hibaelhárítás és az elemzés érdekében az információk alapján lehet futtatni.  További információ: az [Azure-erőforrás-naplók gyűjtése log Analytics munkaterületen Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)

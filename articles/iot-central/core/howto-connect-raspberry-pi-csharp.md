@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ba903d75707be91bb8af1271b52eb260ffcde306
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d27f792b39a1809cde0f27186f343af7d7aef60a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454163"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Málna PI összekötése az Azure IoT Central alkalmazással (C#)
 
@@ -27,12 +27,12 @@ Ez a cikk azt ismerteti, hogyan lehet az eszköz fejlesztője a málna PI-t a Mi
 
 A cikkben szereplő lépések végrehajtásához a következő összetevőkre van szükség:
 
-* A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* Az **örökölt alkalmazás** -sablonból létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 * A Raspbian operációs rendszert futtató málna PI-eszköz. A málna PI-nek képesnek kell lennie az internethez való kapcsolódásra. További információ: [a málna PI beállítása](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
-## <a name="sample-devkits-application"></a>**Példa Devkits** alkalmazásra
+## <a name="add-a-device-template"></a>Eszközsablon hozzáadása
 
-A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -eszközt tartalmaznak a következő jellemzőkkel:
+Az Azure IoT Central alkalmazásban vegyen fel egy új **málna PI** -eszközt a következő jellemzőkkel:
 
 * Telemetria, amely a következő méréseket tartalmazza, amelyeket az eszköz gyűjt:
   * Páratartalom
@@ -49,6 +49,11 @@ A **mintául szolgáló Devkits** létrehozott alkalmazások egy **málna PI** -
 * Tulajdonságok
   * Die Number Device tulajdonság
   * Location Cloud tulajdonság
+
+1. Válassza az **+ új** elemet az eszközök sablonjaiból ![az eszköz sablonja](media/howto-connect-raspberry-pi-csharp/adddevicetemplate.png)
+   
+
+2. Válassza a **málna PI** lehetőséget, és hozza létre a málna PI-eszköz sablonját ![eszköz sablonjának hozzáadása](media/howto-connect-raspberry-pi-csharp/newdevicetemplate.png)
 
 Az eszköz sablon konfigurációjának részletes ismertetését lásd: [málna PI-eszköz sablonjának részletei](#raspberry-pi-device-template-details).
 
@@ -359,7 +364,7 @@ Váltási beállítások
 
 | Megjelenített név | Mező neve | Szövegen | Kikapcsolt szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | KIKAPCSOLÁSA      | Ki     |
+| IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 

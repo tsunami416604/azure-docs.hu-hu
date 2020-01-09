@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421964"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményvezérelt háttérben végzett feldolgozáshoz
 
@@ -84,7 +84,7 @@ A fejlesztési mód engedélyezésének folyamata az SDK verziójától függ.
 3\. verzió. az *x* a standard ASP.net Core API-kat használja. Hívja meg a [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) metódust a [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) példányon. Adjon át egy `development`nevű karakterláncot, ahogy az alábbi példában látható:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -95,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -236,7 +236,7 @@ A kötési típusok telepítésének és kezelésének folyamata attól függ, h
 A 3. verzióban. *x*, a tárolási kötések beletartoznak a `Microsoft.Azure.WebJobs.Extensions.Storage` csomagba. Hívja meg a `AddAzureStorage` Extension metódust a `ConfigureWebJobs` metódusban az itt látható módon:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -247,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -255,7 +255,7 @@ static void Main()
 Más triggerek és kötési típusok használatához telepítse az azokat tartalmazó NuGet-csomagot, és hívja meg a bővítményben megvalósított `Add<binding>`-bővítményi módszert. Ha például egy Azure Cosmos DB kötést szeretne használni, telepítse a `Microsoft.Azure.WebJobs.Extensions.CosmosDB`t, és hívja meg a `AddCosmosDB`, például a következőt:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -266,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -318,7 +318,7 @@ A [`ExecutionContext`] kötésének folyamata az SDK verziójától függ.
 Hívja meg a `AddExecutionContextBinding` Extension metódust a `ConfigureWebJobs` metódusban az itt látható módon:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -329,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -373,7 +373,7 @@ A következő kötéseket állíthatja be:
 Ez a példa bemutatja, hogyan konfigurálhatja a Azure Cosmos DB triggert:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -390,8 +390,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -403,7 +402,7 @@ További részletekért tekintse meg az [Azure CosmosDB-kötést](../azure-funct
 Ez a példa bemutatja, hogyan konfigurálhatja a Event Hubs triggert:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -419,8 +418,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -434,7 +432,7 @@ A következő példák bemutatják, hogyan konfigurálhatja a várólista-tárol
 #### <a name="version-3x"></a>3\. verzió. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -450,8 +448,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -480,7 +477,7 @@ További részletekért tekintse meg a [Host. JSON v1. x hivatkozást](../azure-
 Ez a példa bemutatja, hogyan konfigurálhatja a SendGrid kimeneti kötését:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -495,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -508,7 +504,7 @@ További részletekért tekintse meg a [SendGrid-kötést](../azure-functions/fu
 Ez a példa bemutatja, hogyan konfigurálhatja a Service Bus triggert:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -523,8 +519,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -538,7 +533,7 @@ Egyes triggerek és kötési típusok saját egyéni konfigurációs típusokat 
 #### <a name="version-3x"></a>3\. verzió. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -549,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -571,7 +565,7 @@ static void Main()
 }
 ```
 
-## <a name="binding-expressions"></a>Kötési kifejezések
+## <a name="binding-expressions"></a>Kötéskifejezések
 
 Az attribútumok konstruktorának paraméterei között olyan kifejezéseket használhat, amelyek különböző forrásokból származó értékekre vannak feloldva. Például a következő kódban a `BlobTrigger` attribútum elérési útja létrehoz egy `filename`nevű kifejezést. Ha a kimeneti kötést használja, `filename` az kiváltó blob nevére lesz feloldva.
 
@@ -827,7 +821,7 @@ Javasoljuk a ASP.NET fejlesztett naplózási keretrendszert. Az [első lépések
 
 Minden `ILogger`-példány által létrehozott naplóhoz társított `Category` és `Level`tartozik. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|Naplózási szint    |Kód|
+|LogLevel    |Kód|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
@@ -924,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 A Build [`ConfigureServices`] meghívásával adja hozzá az egyéni [`ITelemetryInitializer`] a folyamathoz.
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -951,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```

@@ -3,12 +3,12 @@ title: 'Rövid útmutató: terv létrehozása a portálon'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a Azure Portalon keresztül.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436617"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
@@ -22,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Ebben a példában hozzon létre egy **MyBlueprint** nevű új tervet az előfizetés szerepkör-és szabályzat-hozzárendeléseinek konfigurálásához. Ezután vegyen fel egy új erőforráscsoportot, és hozzon létre egy Resource Manager-sablont és egy szerepkör-hozzárendelést az új erőforráscsoporthoz.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** elemet, majd a lap tetején kattintson a **+ terv létrehozása** gombra.
 
@@ -268,7 +268,9 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. A **terv-hozzárendelés** lapon ellenőrizze, hogy az összes összetevő telepítése sikeres volt-e, és hogy nem történt-e hiba a telepítés során. Ha hiba történt, tekintse meg a [tervekkel kapcsolatos hibaelhárítási](./troubleshoot/general.md) lépéseket, amelyek alapján megállapíthatja, hogy mi volt a probléma.
 
-## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
 Ha már nincs szüksége terv-hozzárendelésre, távolítsa el az előfizetésből. Lehetséges, hogy a tervet egy újabb terv váltotta fel, amely frissített mintákat, szabályzatokat és terveket tartalmaz. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. A tervek hozzárendelését az alábbi lépések szerint szüntetheti meg:
 
@@ -278,7 +280,7 @@ Ha már nincs szüksége terv-hozzárendelésre, távolítsa el az előfizetésb
 
 1. Olvassa el a megerősítő üzenetet, majd kattintson **az OK gombra**.
 
-## <a name="delete-a-blueprint"></a>Terv törlése
+### <a name="delete-a-blueprint"></a>Terv törlése
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
@@ -288,7 +290,7 @@ Ha már nincs szüksége terv-hozzárendelésre, távolítsa el az előfizetésb
 > A terv törlése ebben a metódusban a kiválasztott terv összes közzétett verzióját is törli.
 > Egyetlen verzió törléséhez nyissa meg a tervet, válassza a **közzétett verziók** lapot, válassza ki a törölni kívánt verziót, majd válassza a **verzió törlése**lehetőséget. Emellett nem törölheti a tervet, amíg a terv definíciójának összes hozzárendelését törölni nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet Azure Portalsal. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

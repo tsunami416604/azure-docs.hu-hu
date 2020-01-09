@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 506eb38a2844ed8e8eb9739b116d7647bc1810ec
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c731dae02e9013fc436d6f30d8c8b2ab384968a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453991"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-A [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) parancsmag használatával hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Például:
+A [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) parancsmag használatával hozzon létre egy IoT Central alkalmazást az Azure-előfizetésében. Példa:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -66,20 +66,18 @@ A szkript először létrehoz egy erőforráscsoportot az alkalmazás keleti ré
 |Paraméter         |Leírás |
 |------------------|------------|
 |ResourceGroupName |Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
-|Hely |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg IoT Central alkalmazást hozhat létre a **Egyesült Államok**, **Ausztráliában**, **Ázsia és a csendes-óceáni térség**vagy az **Európa** helyein.  |
-|Name (Név)              |Az alkalmazás neve a Azure Portalban. |
-|Subdomain         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
-|SKU               |Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Földrajzi egység |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg IoT Central alkalmazást hozhat létre a **Egyesült Államok**, **Ausztráliában**, **Ázsia és a csendes-óceáni térség**vagy az **Európa** helyein.  |
+|Név              |Az alkalmazás neve a Azure Portalban. |
+|Résztartomány         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
+|Termékváltozat               |Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
-|DisplayName       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
+|Megjelenítendő név       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
-**Általánosan elérhető funkciókkal rendelkező alkalmazás-sablonok**
+**Az általánosan elérhető funkciókkal rendelkező alkalmazás sablonja**
 
 | Sablon neve            | Leírás |
 | ------------------------ | ----------- |
-| iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
-| iotc-demo@1.0.0          | Létrehoz egy alkalmazást, amely már tartalmaz egy eszközsablont egy hűtött eladóautomatához. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
-| iotc-devkit-sample@1.0.0 | Létrehoz egy eszközsablonokat tartalmazó alkalmazást, amelyekkel csatlakoztathat egy MXChip vagy Raspberry Pi eszközt. Akkor használja ezt a sablont, ha egy eszköz fejlesztője ezen eszközök bármelyikével kísérletezik. |
+| iotc-default@1.0.0       | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el.
 
 
 **Nyilvános előzetes funkciókkal rendelkező alkalmazás-sablonok**
@@ -118,7 +116,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Alkalmazás eltávolítása
 
-IoT Central alkalmazás törléséhez használja a [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) parancsmagot. Például:
+IoT Central alkalmazás törléséhez használja a [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) parancsmagot. Példa:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

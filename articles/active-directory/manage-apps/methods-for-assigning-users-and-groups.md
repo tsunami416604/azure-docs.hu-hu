@@ -1,6 +1,6 @@
 ---
-title: Felhasználók és csoportok hozzárendelése egy alkalmazáshoz |} A Microsoft Docs
-description: Felhasználók hozzárendelése az alkalmazáshoz való hozzáférés biztosítása
+title: Felhasználók és csoportok társítása egy alkalmazáshoz | Microsoft Docs
+description: Felhasználók hozzárendelése az alkalmazáshoz hozzáférés biztosításához
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -14,158 +14,159 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd66df381e11582b30ded5e3b529070357f35ad2
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: abd6b13dc56f8f948d50e2b3564712ed8f5b1476
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443349"
 ---
-# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
-Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok társítása egy alkalmazáshoz Azure Active Directory
+Ez a cikk bemutatja, hogyan rendelhet hozzá felhasználókat vagy csoportokat Azure Active Directory (Azure AD) alkalmazáshoz. A felhasználókat először hozzá kell rendelni egy alkalmazáshoz, mielőtt a rendszergazda hozzáférést biztosíthat számukra a következő műveletekhez:
 
--   Hozzáférés egy alkalmazás által **ellenőrizheti, hogy az alkalmazás URL-CÍMÉT közvetlenül** (más néven SP által kezdeményezett bejelentkezés).
+-   Az alkalmazás eléréséhez nyissa **meg közvetlenül az alkalmazás URL-címét** (más néven az SP által kezdeményezett bejelentkezés).
 
--   Az alkalmazás eléréséhez a **felhasználói hozzáférési URL-címe** olyan alkalmazást **tulajdonságok** (más néven Identitásszolgáltató által kezdeményezett bejelentkezési) lap.
+-   Egy alkalmazás eléréséhez használja a **felhasználói hozzáférési URL-címet** az alkalmazás **Tulajdonságok** LAPJÁN (más néven identitásszolgáltató-alapú bejelentkezés).
 
--   Tekintse meg az alkalmazások jelennek meg azok [alkalmazás-hozzáférési Panel](https://myapps.microsoft.com/) vagy mobilalkalmazás.
+-   Egy alkalmazás megjelenik az [alkalmazás hozzáférési paneljén](https://myapps.microsoft.com/) vagy a mobileszköz-alkalmazásban.
 
--   Tekintse meg az alkalmazások jelennek meg azok [Office 365 Alkalmazásindítójában](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
+-   Tekintse meg az [Office 365 Application Launcher](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)alkalmazásban megjelenő alkalmazást.
 
 A csoport alapú hozzárendelések elérhetőségét a licencszerződés határozza meg. A csoport alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagságok és a O365 csoportok jelenleg nem támogatottak.
 
-## <a name="prerequisites"></a>Előfeltételek
-Felhasználók és csoportok alkalmazásokhoz való hozzárendelés előtt meg kell kérnie a felhasználó-hozzárendelés. A felhasználó-hozzárendelés szükséges:
+## <a name="configure-the-application-to-require-assignment"></a>Az alkalmazás konfigurálása hozzárendelés megköveteléséhez
 
-1. Jelentkezzen be rendszergazdai fiókkal az Azure Portalon.
-2. Kattintson a a **minden szolgáltatás** a főmenü elemére.
-3. Válassza ki azt a könyvtárat az alkalmazás használ.
+Egy alkalmazás konfigurálható úgy, hogy a hozzáféréshez megkövetelje a hozzárendelést. Hozzárendelés megkövetelése:
+
+1. Jelentkezzen be a Azure Portal egy rendszergazdai fiókkal vagy az alkalmazás tulajdonosaként a **vállalati alkalmazások**területen.
+2. Kattintson a főmenü **minden szolgáltatás** elemére.
+3. Válassza ki az alkalmazáshoz használt könyvtárat.
 4. Kattintson a **vállalati alkalmazások** fülre.
-5. Ebben a könyvtárban társított alkalmazások listájából válassza ki az alkalmazást.
-6. Kattintson a **tulajdonságok** fülre.
-7. Módosítsa a **kell felhasználó-hozzárendelés?** váltógomb Igen.
-8. Kattintson a **mentése** gombra a képernyő tetején.
+5. Válassza ki az alkalmazást a címtárhoz társított alkalmazások listájából.
+6. Kattintson a **Tulajdonságok** fülre.
+7. Módosítani kívánja a **felhasználó-hozzárendelést?** váltson Igen értékre.
+8. Kattintson a **Save (Mentés** ) gombra a képernyő tetején.
 
 ## <a name="assign-users"></a>Felhasználók hozzárendelése
 
-Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
+Egy vagy több felhasználó közvetlenül egy alkalmazáshoz való hozzárendeléséhez kövesse az alábbi lépéseket:
 
 1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként vagy nem rendszergazdai alkalmazás tulajdonosaként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüből.
+4.  a Azure Active Directory bal oldali navigációs menüjében kattintson a **vállalati alkalmazások** elemre.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  kattintson a **minden alkalmazás** elemre az alkalmazások listájának megtekintéséhez.
 
-    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+    * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 
-6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
+6.  Válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni a listából.
 
-7.  Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7.  Az alkalmazás betöltése után kattintson a **felhasználók és csoportok** elemre az alkalmazás bal oldali navigációs menüjében.
 
-8.  Kattintson a **Hozzáadás** a gombot a **felhasználók és csoportok** listán, megnyílik a **hozzárendelés hozzáadása** ablaktáblán.
+8.  Kattintson a **Hozzáadás** gombra a **felhasználók és csoportok** lista tetején a **hozzárendelés hozzáadása** ablaktábla megnyitásához.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
+9.  a **hozzárendelés hozzáadása** panelen kattintson a **felhasználók és csoportok** választóra.
 
-10. Írja be a **teljes név** vagy **e-mail-cím** Önt érdeklő való hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+10. Írja be annak a felhasználónak a **teljes nevét** vagy **e-mail-címét** , **akit a keresés név vagy e-mail cím keresőmező alapján** szeretne hozzárendelni.
 
-11. A kurzort a **felhasználói** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a felhasználó profilfényképének vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
+11. A **jelölőnégyzet**megjelenítéséhez vigye a kurzort a listában szereplő **felhasználó** fölé. Kattintson a felhasználó profiljának fényképe vagy emblémája melletti jelölőnégyzetre a felhasználó a **kiválasztott** listához való hozzáadásához.
 
-12. **Választható** Ha **egynél több felhasználót**szeretne felvenni, írjon be egy másik **teljes nevet** vagy **e-mail-címet** a **Keresés név vagy e-mail-cím** Keresés mezőbe, és kattintson a jelölőnégyzetre a felhasználó a **kiválasztott** listához való hozzáadásához.
+12. Nem **kötelező:** Ha **egynél több felhasználót szeretne felvenni**, írjon be egy másik **teljes nevet** vagy **e-mail-címet** a **Keresés név vagy e-mail-cím** Keresés mezőbe, és kattintson a jelölőnégyzetre a felhasználó a **kiválasztott** listához való hozzáadásához.
 
-13. Amikor elkészült, válassza a felhasználók, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
+13. Ha befejezte a felhasználók kiválasztását, kattintson a **kiválasztás** gombra, és adja hozzá őket az alkalmazáshoz hozzárendelni kívánt felhasználók és csoportok listájához.
 
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** hozzárendelése a kiválasztott felhasználói szerepkör kiválasztása panel.
+14. Nem **kötelező:** kattintson a **szerepkör** kiválasztása lehetőségre a **hozzárendelés hozzáadása** panelen, és válassza ki a kiválasztott felhasználókhoz hozzárendelni kívánt szerepkört.
 
-15. Kattintson a **hozzárendelése** gombra kattintva rendelje hozzá az alkalmazás a kijelölt felhasználók számára.
+15. Kattintson a **hozzárendelés** gombra az alkalmazás a kijelölt felhasználókhoz való hozzárendeléséhez.
 
 Rövid idő elteltével a kiválasztott felhasználók el tudják indítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek alapján.
 
-## <a name="assign-groups"></a>Csoportok hozzárendelése
+## <a name="assign-groups"></a>Csoportok társítása
 
-Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
+Egy vagy több csoport egy alkalmazáshoz való közvetlen hozzárendeléséhez kövesse az alábbi lépéseket:
 
 1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy nem rendszergazdai alkalmazásként egy hozzárendelt prémium szintű Azure ad-licenccel.
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3.  Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüből.
+4.  a Azure Active Directory bal oldali navigációs menüjében kattintson a **vállalati alkalmazások** elemre.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  kattintson a **minden alkalmazás** elemre az alkalmazások listájának megtekintéséhez.
 
-    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+    * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 
-6.  Válassza ki a kívánt rendelje hozzá egy felhasználót a listáról az alkalmazást.
+6.  Válassza ki azt az alkalmazást, amelyhez felhasználót szeretne hozzárendelni a listából.
 
-7.  Ha az alkalmazás betöltött, kattintson a **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
+7.  Az alkalmazás betöltése után kattintson a **felhasználók és csoportok** elemre az alkalmazás bal oldali navigációs menüjében.
 
-8.  Kattintson a **Hozzáadás** a gombot a **felhasználók és csoportok** listán, megnyílik a **hozzárendelés hozzáadása** ablaktáblán.
+8.  Kattintson a **Hozzáadás** gombra a **felhasználók és csoportok** lista tetején a **hozzárendelés hozzáadása** ablaktábla megnyitásához.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzárendelés hozzáadása** ablaktáblán.
+9.  a **hozzárendelés hozzáadása** panelen kattintson a **felhasználók és csoportok** választóra.
 
-10. Írja be a **teljes csoportnév** a csoport Önt érdeklő való hozzárendelése a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
+10. Írja be annak a csoportnak a **teljes csoportjának nevét** , amelyet szeretne a **Keresés név vagy e-mail-cím** keresése mezőbe rendelni.
 
-11. A kurzort a **csoport** megjelenítéséhez a listában egy **jelölőnégyzet**. Jelölje be a jelölőnégyzetet, a csoport profilfénykép, vagy adja hozzá a felhasználót az embléma mellett a **kijelölt** listája.
+11. A **jelölőnégyzet**megjelenítéséhez vigye a kurzort a listában a **csoport** fölé. Kattintson a csoport profiljának fényképe vagy emblémája melletti jelölőnégyzetre a felhasználó a **kiválasztott** listához való hozzáadásához.
 
-12. **Választható** Ha egynél **több csoportot szeretne felvenni**, írjon be egy másik **teljes nevet** a **Keresés név vagy e-mail-cím** keresőmezőbe, majd a jelölőnégyzetre kattintva vegye fel a csoportot a **kiválasztott** listára.
+12. Nem **kötelező:** Ha egynél **több csoportot szeretne felvenni**, írjon be egy másik **teljes nevet** a **Keresés név vagy e-mail-cím** keresőmezőbe, majd a jelölőnégyzetre kattintva vegye fel a csoportot a **kiválasztott** listára.
 
-13. Ha befejezte a csoportok kiválasztásával, kattintson a **kiválasztása** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazást.
+13. Ha befejezte a csoportok kijelölését, kattintson a **kiválasztás** gombra, és adja hozzá őket az alkalmazáshoz hozzárendelni kívánt felhasználók és csoportok listájához.
 
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** -választójában jelenítse a **hozzárendelés hozzáadása** ablaktáblán válassza ki a szerepkör hozzárendelése a kiválasztott csoportokhoz.
+14. Nem **kötelező:** kattintson a **szerepkör** kiválasztása lehetőségre a **hozzárendelés hozzáadása** panelen, és válassza ki a kiválasztott csoportokhoz hozzárendelni kívánt szerepkört.
 
-15. Kattintson a **hozzárendelése** gombra az alkalmazás a kijelölt csoportokhoz hozzárendelni.
+15. Kattintson a **hozzárendelés** gombra az alkalmazás a kijelölt csoportokhoz való hozzárendeléséhez.
 
-Rövid idő elteltével a kiválasztott csoportokban lévő felhasználók el tudják indítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek alapján. Ha ezek a dinamikus csoportok, lehet néhány további feldolgozás késéssel jelennek meg ezek a hozzárendelt csoportokat lévő felhasználók ezeket a hozzárendeléseket a.
+Rövid idő elteltével a kiválasztott csoportokban lévő felhasználók el tudják indítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek alapján. Ha ezek dinamikus csoportok, akkor előfordulhat, hogy az ezekben a hozzárendelt csoportokban lévő felhasználók számára további feldolgozási késleltetés fordul elő ezekben a hozzárendelésekben.
 
-## <a name="enable-self-service-application-access"></a>Az önkiszolgáló alkalmazás-hozzáférés engedélyezése
+## <a name="enable-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés engedélyezése
 
-Az önkiszolgáló alkalmazás-hozzáférés kiválóan alkalmas, hogy a felhasználók saját felderíteni az alkalmazások, igény szerint jóváhagyása ezeknek az alkalmazásoknak hozzáférést az üzleti csoport lehetővé teszik. Engedélyezheti, hogy az üzleti csoportok a hozzáférési paneljükön jelszó egyszeri bejelentkezést az alkalmazások jobb a felhasználókhoz rendelt hitelesítő adatok kezelésére.
+Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók számára az alkalmazások önfelderítését, opcionálisan lehetővé teszi, hogy az üzleti csoport jóváhagyja az alkalmazásokhoz való hozzáférést. Lehetővé teheti az üzleti csoport számára, hogy az adott felhasználókhoz rendelt hitelesítő adatokat a hozzáférési panelektől közvetlenül a jelszó egyszeri bejelentkezésre szolgáló alkalmazásokban kezelhesse.
 
-Ahhoz, hogy az önkiszolgáló alkalmazás-hozzáférést egy alkalmazáshoz, hajtsa végre az alábbi lépéseket:
+Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüből.
+4. a Azure Active Directory bal oldali navigációs menüjében kattintson a **vállalati alkalmazások** elemre.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. kattintson a **minden alkalmazás** elemre az alkalmazások listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 
-6. Válassza ki az önkiszolgáló engedélyezni kívánt alkalmazást a listából való hozzáférést.
+6. Válassza ki azt az alkalmazást, amely számára engedélyezni szeretné az önkiszolgáló hozzáférést a listáról.
 
-7. Ha az alkalmazás betöltött, kattintson a **önkiszolgáló** az alkalmazás bal oldali navigációs menüjében.
+7. Az alkalmazás betöltése után kattintson az **önkiszolgáló** elemre az alkalmazás bal oldali navigációs menüjében.
 
-8. Ehhez az alkalmazáshoz önkiszolgáló alkalmazás-hozzáférés engedélyezéséhez kapcsolja be a **engedélyezése a felhasználók számára az alkalmazáshoz való hozzáférés kérése?** kapcsolót **igen.**
+8. Az alkalmazás önkiszolgáló alkalmazásokhoz való hozzáférésének engedélyezéséhez kapcsolja be a **felhasználók számára az alkalmazáshoz való hozzáférés kérését?** váltson át az Igen értékre **.**
 
-9. Ezután, amelyekhez a felhasználók, akik kérése az alkalmazáshoz való hozzáférést kell adni a csoport kijelöléséhez kattintson a választó a felirat melletti **melyik csoporthoz lesz hozzáadva a hozzárendelt felhasználók?** , és válasszon ki egy csoportot.
+9. Ezután válassza ki azt a csoportot, amelyhez hozzá szeretné adni az alkalmazáshoz hozzáférést kérő felhasználókat, kattintson a címke melletti választóra, **amelyhez hozzá** kívánja adni a felhasználókat, és válasszon ki egy csoportot.
 
-10. **Választható** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek-e az üzleti jóváhagyáshoz, akkor az **alkalmazáshoz való hozzáférés engedélyezése előtt állítsa be a jóváhagyás megkövetelése** beállítást. az **Igen**értékre vált.
+10. Nem **kötelező:** Ha szeretné megkövetelni, hogy a felhasználók hozzáférhessenek-e az üzleti jóváhagyáshoz, akkor az **alkalmazáshoz való hozzáférés engedélyezése előtt állítsa be a jóváhagyás megkövetelése** beállítást. az **Igen**értékre vált.
 
-11. **Választható Csak jelszó egyszeri bejelentkezést használó alkalmazások esetén** , ha engedélyezni szeretné, hogy ezek az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, állítsa be a **jóváhagyók engedélyezése a felhasználó jelszavának beállításához az alkalmazáshoz?** Váltás az **Igen**értékre.
+11. **Opcionális: csak jelszó egyszeri bejelentkezést használó alkalmazásokhoz,** ha engedélyezni szeretné, hogy ezek az üzleti jóváhagyók megadják az alkalmazásnak a jóváhagyott felhasználók számára eljuttatott jelszavakat, állítsa be az **alkalmazáshoz tartozó felhasználók jelszavának engedélyezése a jóváhagyóknak beállítást?** váltás az **Igen**értékre.
 
-12. **Választható** Azon üzleti jóváhagyók megadásához, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, kattintson az **alkalmazáshoz való hozzáférés jóváhagyására jogosult** címke melletti választóra? a legfeljebb 10 egyéni üzleti jóváhagyó kiválasztásához.
+12. Nem **kötelező:** Azon üzleti jóváhagyók megadásához, akik számára engedélyezett az alkalmazáshoz való hozzáférés jóváhagyása, kattintson az **alkalmazáshoz való hozzáférés jóváhagyására jogosult** címke melletti választóra? a legfeljebb 10 egyéni üzleti jóváhagyó kiválasztásához.
 
     >[!NOTE]
-    >Csoportok nem támogatottak.
+    >A csoportok nem támogatottak.
     >
     >
 
-13. **Választható** A **szerepköröket közzétevő alkalmazások esetében**, ha az önkiszolgáló jóváhagyott felhasználókat szeretné hozzárendelni egy szerepkörhöz, kattintson arra a választóra, amelynek a szerepkörét el szeretné rendelni az **alkalmazásban?** lehetőségre kattintva válassza ki azt a szerepkört, amelyhez hozzá szeretné rendelni ezeket a felhasználókat.
+13. Nem **kötelező:** **a szerepköröket közzétevő alkalmazások esetében**, ha az önkiszolgáló jóváhagyott felhasználókat szeretné hozzárendelni egy szerepkörhöz, kattintson arra a választóra, amelynek a szerepkörét hozzá szeretné rendelni az **alkalmazáshoz?** lehetőségre kattintva válassza ki azt a szerepkört, amelyhez ezeket a felhasználókat hozzá kell rendelni.
 
-14. Kattintson a **mentése** gombra a Befejezés gombra a panel tetején.
+14. A befejezéshez kattintson a **Mentés** gombra a panel tetején.
 
-Miután elvégezte az önkiszolgáló alkalmazás-konfigurációs, felhasználók kaphatnak a [alkalmazás-hozzáférési Panel](https://myapps.microsoft.com/) , és kattintson a **+ Hozzáadás** , amelyhez engedélyezte az önkiszolgáló alkalmazások gomb a hozzáférés. Munkahelyi jóváhagyónak is megjelenik egy értesítés a saját [alkalmazás-hozzáférési Panel](https://myapps.microsoft.com/). Engedélyezheti egy e-mail értesíti őket, amikor a felhasználó által kért a jóváhagyást igénylő alkalmazásokhoz való hozzáférés. 
+Az önkiszolgáló alkalmazás konfigurálásának befejezése után a felhasználók az [alkalmazás-hozzáférési panelre](https://myapps.microsoft.com/) léphetnek, és a **+ Hozzáadás** gombra kattintva megkereshetik azokat az alkalmazásokat, amelyekhez engedélyezte az önkiszolgáló hozzáférést. Az üzleti jóváhagyók az [alkalmazás hozzáférési paneljén](https://myapps.microsoft.com/)is megtekinthetik az értesítéseket. Engedélyezheti az e-mailek értesítését, ha egy felhasználó hozzáférést kért egy olyan alkalmazáshoz, amelyhez jóváhagyás szükséges. 
 
 Ezek a jóváhagyások csak az egyszeri jóváhagyási munkafolyamatokat támogatják, ami azt jelenti, hogy ha több jóváhagyót ad meg, akkor egyetlen jóváhagyó jóváhagyhatja az alkalmazáshoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
-[Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)
+## <a name="next-steps"></a>Következő lépések
+[Egyszeri bejelentkezés biztosítása az alkalmazásokba az Application proxy használatával](application-proxy-configure-single-sign-on-with-kcd.md)

@@ -1,20 +1,18 @@
 ---
 title: JavaScript nyelvű felhasználó által definiált összesítések az Azure Stream Analytics szolgáltatásban
 description: Ez a cikk azt ismerteti, hogyan hajtható végre speciális lekérdezési mechanika JavaScript felhasználó által definiált összesítésekkel Azure Stream Analyticsban.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426091"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript felhasználó által definiált összesítések Azure Stream Analytics
  
@@ -78,9 +76,9 @@ function main() {
 
 Minden JavaScript-UDA egy Function Object deklaráció definiál. A UDA definíciójának fő elemei a következők.
 
-### <a name="function-alias"></a>Függvényalias
+### <a name="function-alias"></a>Függvény aliasa
 
-A függvény aliasa a UDA azonosítója. Stream Analytics lekérdezésben való híváskor mindig használjon UDA aliast a "uda" értékkel együtt. előtag.
+A függvény aliasa a UDA azonosítója. Stream Analytics lekérdezésben való híváskor mindig használjon UDA aliast a "uda" értékkel együtt. előtagot.
 
 ### <a name="function-type"></a>Függvény típusa
 
@@ -225,13 +223,13 @@ Hozzon létre egy helyi JSON-fájlt az alábbi tartalommal, töltse fel a fájlt
 ]
 ```
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség
 
 További segítségért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

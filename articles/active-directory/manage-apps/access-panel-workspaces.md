@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443444"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Munkaterületek létrehozása a saját alkalmazások (előzetes verzió) portálon
 
@@ -45,7 +45,7 @@ A felhasználók a My apps (előzetes verzió) portálon megtekinthetik és elin
    ![Felhasználói előnézet funkciói](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> A saját alkalmazások portál megnyitásához a felhasználók használhatják a `https://myapps.microsoft.com` vagy a testre szabott hivatkozást a szervezethez, például `https://myapps.microsoft.com/contoso.com`. Ha a felhasználók nem lettek átirányítva a saját alkalmazások előzetes verziójára, a felhasználóknak meg kell próbálnia `https://myapplications.microsoft.com` vagy `https://myapplications.microsoft.com/contoso.com`.
+> A saját alkalmazások portál megnyitásához a felhasználók használhatják a `https://myapps.microsoft.com` vagy a testre szabott hivatkozást a szervezethez, például `https://myapps.microsoft.com/contoso.com`. Miután engedélyezte az új saját alkalmazások felületét, a **frissített My Applications szolgáltatás elérhető** szalagcím **jelenik meg a** saját alkalmazások oldal tetején, a felhasználók pedig kiválaszthatják, hogy megtekintsék az új felhasználói élményt. Az új felület használatának leállításához a felhasználók az **új élmény kihagyása** szalagcímből választhatják az **Igen** lehetőséget az oldal tetején.
 
 ## <a name="create-a-workspace"></a>Munkaterületek létrehozása
 
@@ -98,6 +98,15 @@ A naplókat a [Azure Portalban](https://portal.azure.com) érheti el. ehhez vál
 
    ![Szerepkörök társítása felhasználókhoz és csoportokhoz](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>Fiókhoz tartozó lapok támogatásának beolvasása
+
+A saját alkalmazások oldalon a felhasználó kiválaszthatja a **fiókomat** > **megtekintheti a** fiókomat, és megnyithatja a fiók beállításait. **Az Azure ad fiókom** oldalon a felhasználók kezelhetik biztonsági adataikat, eszközeiket, jelszavait és egyebeket. Az Office-fiókok beállításait is elérheti.
+
+Ha támogatási kérelmet kell benyújtania az Azure AD-fiók vagy az Office-fiók oldalával kapcsolatos problémához, kövesse az alábbi lépéseket, hogy a kérés megfelelően legyen irányítva: 
+
+* Az **Azure ad "Fiókom"** oldalával kapcsolatos problémák esetén nyisson meg egy támogatási kérést a Azure Portalon belül. Nyissa meg **Azure Portal** > **Azure Active Directory** > **új támogatási kérést**.
+
+* Az **Office "Fiókom"** oldalával kapcsolatos problémák esetén nyisson meg egy támogatási kérést a Microsoft 365 felügyeleti központban. Lépjen a **Microsoft 365 felügyeleti központ** > **támogatásához**. 
 
 ## <a name="next-steps"></a>Következő lépések
 [A Azure Active Directory alkalmazások végfelhasználói élményei](end-user-experiences.md)

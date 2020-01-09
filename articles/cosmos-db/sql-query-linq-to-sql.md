@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441250"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
 
@@ -64,7 +64,7 @@ Az SQL .NET SDK-ban található LINQ Provider a következő operátorokat támog
 - **OrderBy** és **OrderByDescending**: lefordítható az ASC vagy a desc szerinti sorrendbe.
 - Az összesítéshez a **Count**, a **Sum**, a **min**, a **Max**és az **átlag** operátor, valamint a **CountAsync**, a **SumAsync**, a **MinAsync**, a **MaxAsync**és a **AverageAsync**.
 - **Compareto metódus végrehajtása**: a tartomány-összehasonlításokra fordít. Általában a sztringek esetében használatos, mivel azok nem összehasonlíthatóak a .NET-ben.
-- **Igény**: az SQL Top-re fordítja le a lekérdezés eredményeinek korlátozását.
+- **Kihagyás** és **igény**: az SQL-eltolás és a lekérdezési eredmények korlátozásának korlátozása és a tördelés végrehajtása.
 - **Matematikai függvények**: támogatja a .net `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`és `Truncate` megfelelő SQL beépített függvényeknek való fordítását.
 - **Karakterlánc-függvények**: támogatja a .net `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`és `TrimStart` megfelelő SQL beépített függvényeknek való fordítását.
 - **Array functions**: támogatja a .net `Concat`, `Contains`és `Count` fordítását a megfelelő SQL beépített függvényekbe.

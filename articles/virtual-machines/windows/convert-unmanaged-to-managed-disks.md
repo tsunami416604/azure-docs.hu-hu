@@ -1,17 +1,17 @@
 ---
-title: Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre – Azure Managed Disks
+title: Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 description: Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről a felügyelt lemezekre a PowerShell használatával a Resource Manager-alapú üzemi modellben
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 92f70cbfcf261c218ea43b159ed49126f7b2ecd5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460130"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -19,7 +19,7 @@ Ha már van olyan Windows rendszerű virtuális gép (VM), amely nem felügyelt 
 
  
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 
 * Tekintse át [a Managed Disksre való áttelepítésre vonatkozó tervet](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
@@ -94,7 +94,7 @@ A konvertálás előtt győződjön meg arról, hogy az összes virtuálisgép-b
 
 A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a felügyelt lemezekre.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a portálon lévő virtuális gépek listájából.
 3. A virtuális gép paneljén válassza a menü **lemezek** elemét.
 4. A **lemezek** panel tetején válassza az **áttelepítés felügyelt lemezekre**lehetőséget.

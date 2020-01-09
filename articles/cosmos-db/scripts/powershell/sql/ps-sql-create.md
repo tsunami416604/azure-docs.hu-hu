@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB SQL-(Core-) API-adatbázis és-tároló létrehozása
+title: PowerShell-szkript Azure Cosmos DB SQL (Core) API-adatbázis és-tároló létrehozásához
 description: Azure PowerShell script-Azure Cosmos DB SQL-(Core-) API-adatbázis és-tároló létrehozása
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: eee1e31808412dc5e4308dee92f3685507e771f3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5a57b8cb3e4e7076d3be73a9010d9a29a8b004a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441364"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Adatbázis és tároló létrehozása a Azure Cosmos DB-SQL (Core) API-hoz
 
@@ -22,7 +22,7 @@ ms.locfileid: "71178804"
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript létrehoz egy Cosmos-fiókot az SQL (Core) API-hoz két régióban a munkamenet-szintű konzisztencia, egy megosztott átviteli sebességgel rendelkező adatbázis és egy partíciós kulccsal rendelkező tároló, egyéni indexelési házirend, egyedi kulcs házirend, TTL, dedikált átviteli sebesség és a legutóbbi író WINS használatával. ütközés-feloldási házirend egy egyéni ütközés-feloldási útvonallal, amelyet `multipleWriteLocations=true`a rendszer akkor használ, amikor.
+Ez a szkript létrehoz egy Cosmos-fiókot az SQL (Core) API-hoz két régióban a munkamenet-szintű konzisztencia, a közös átviteli sebességű adatbázis és egy partíciós kulccsal rendelkező tároló, egyéni indexelési házirend, egyedi kulcs-házirend, TTL, dedikált átviteli sebesség és a legutóbbi író WINS-ütközési megoldási szabályzattal együtt, amelyet a rendszer a `multipleWriteLocations=true`kor fog használni.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
@@ -41,12 +41,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
+| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
 |**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460360"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET-keretrend
 
 * Egy fájl tartalmának beolvasása.
 * Állítsa be a fájlmegosztás maximális méretét vagy *kvótáját* .
-* Közös hozzáférésű jogosultságkód (SAS-kulcs) létrehozása egy, a megosztásban meghatározott megosztott elérési házirendet használó fájlhoz.
+* Hozzon létre egy megosztott hozzáférési aláírást (SAS-kulcsot) egy olyan fájlhoz, amely a megosztáson definiált tárolt hozzáférési szabályzatot használja.
 * Fájl másolása másik fájlba egy tárfiókon belül.
 * Fájl másolása blobba egy tárfiókon belül.
 * Az Azure Storage metrikáinak használata a hibaelhárításhoz.
@@ -34,12 +34,12 @@ További információ a Azure Filesről: [Mi az Azure Files?](storage-files-intr
 
 ## <a name="understanding-the-net-apis"></a>A .NET API-k ismertetése
 
-Azure Files az ügyfélalkalmazások két széles körű megközelítését biztosítja: Kiszolgálói üzenetblokk (SMB) és REST. A .NET-en belül a `System.IO` és a `WindowsAzure.Storage` API-k elvonták ezeket a megközelítést.
+Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazásokhoz: az SMB protokollt és a REST-et. A .NET-en belül a `System.IO` és `WindowsAzure.Storage` API-k elvonták ezeket a megközelítést.
 
-API | A következő esetekben használja | Megjegyzések
+API | When to use | Megjegyzések
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Az alkalmazás/alkalmazásnak: <ul><li>Az SMB használatával kell olvasni/írni a fájlokat</li><li>Olyan eszközön fut, amely a 445-ös porton keresztül éri el az Azure Files-fiókot.</li><li>Nem kell kezelnie a fájlmegosztás rendszergazdai beállításait.</li></ul> | A Azure Files SMB protokollon keresztül megvalósított fájl I/O általában ugyanaz, mint a hálózati fájlmegosztás vagy a helyi tárolóeszköz I/O-értéke. A .NET-szolgáltatások számos funkciójának bevezetéséhez, beleértve a fájl I/O-t, tekintse meg a [konzol alkalmazás](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) oktatóanyagát.
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk a `Microsoft.Azure.Storage.File` használatát mutatja be a fájl I/O-használatáról az SMB és a fájlmegosztás kezelése helyett.
+[Microsoft. Azure. Storage. file](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk azt mutatja be, hogyan használhatók a fájlok I/O-használata az SMB és a fájlmegosztás kezelése helyett a REST-`Microsoft.Azure.Storage.File`.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>A konzolalkalmazás létrehozása és az összeállítás elérése
 
@@ -79,12 +79,12 @@ A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 1. A csomagok keresése és telepítése:
 
    * **Microsoft. Azure. Storage. Common**
-   * **Microsoft.Azure.Storage.File**
+   * **Microsoft. Azure. Storage. file**
    * **Microsoft. Azure. ConfigurationManager**
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Mentse a Storage-fiók hitelesítő adatait az app. config fájlba
 
-Ezután mentse a hitelesítő adatait a projekt `App.config` fájljába. A **megoldáskezelő**kattintson duplán a `App.config` elemre, és szerkessze a fájlt úgy, hogy az a következő példához hasonló legyen. Cserélje le a `myaccount` értéket a Storage-fiók nevével, és `mykey` a Storage-fiók kulcsával.
+Ezután mentse a hitelesítő adatait a projekt `App.config` fájljában. A **megoldáskezelő**kattintson duplán a `App.config` elemre, és szerkessze a fájlt úgy, hogy az a következő példához hasonló legyen. Cserélje le a `myaccount`t a Storage-fiók nevére, és `mykey` a Storage-fiók kulcsával.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Közös hozzáférésű jogosultságkód létrehozása egy fájlhoz vagy fájlmegosztáshoz
 
-Az Azure Storage ügyféloldali kódtár 5.x-es verziójától kezdve létrehozhat egy közös hozzáférésű jogosultságkódot (shared access signature, SAS) egy fájlmegosztáshoz vagy fájlhoz. Létrehozhat egy megosztott elérési házirendet is egy fájlmegosztáshoz, hogy kezelni tudja a közös hozzáférésű jogosultságkódokat. Javasoljuk, hogy hozzon létre egy megosztott hozzáférési szabályzatot, mert az lehetővé teszi az SAS visszavonását, ha az biztonsága sérül.
+Az Azure Storage ügyféloldali kódtár 5.x-es verziójától kezdve létrehozhat egy közös hozzáférésű jogosultságkódot (shared access signature, SAS) egy fájlmegosztáshoz vagy fájlhoz. A megosztott hozzáférési aláírások kezeléséhez egy fájlmegosztás tárolt hozzáférési szabályzata is létrehozható. Azt javasoljuk, hogy hozzon létre egy tárolt hozzáférési szabályzatot, mert az lehetővé teszi az SAS visszavonását, ha az biztonsága sérül.
 
-A következő példa közös hozzáférési szabályzatot hoz létre egy megosztáson. A példa ezt a házirendet használja a megosztásban található fájlokra vonatkozó SAS-korlátozások megadásához.
+A következő példa egy tárolt hozzáférési szabályzatot hoz létre egy megosztáson. A példa ezt a házirendet használja a megosztásban található fájlokra vonatkozó SAS-korlátozások megadásához.
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -212,7 +212,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -222,7 +222,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 
@@ -428,14 +428,14 @@ A [Azure Portal](https://portal.azure.com)Azure Files metrikáit is engedélyezh
 
 Az alábbi példakód bemutatja, hogyan használható a Storage .NET-hez készült ügyféloldali kódtára arra, hogy engedélyezze a mérőszámok használatát az Azure Fileshoz.
 
-Először adja hozzá az alábbi `using` irányelveket a `Program.cs` fájlhoz, a fent hozzáadott fájlok mellett:
+Először adja hozzá a következő `using` irányelveket a `Program.cs`-fájlhoz, a fent hozzáadott fájlok mellett:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Bár az Azure-Blobok, az Azure-táblák és az Azure-várólisták a megosztott `ServiceProperties` típust használják a `Microsoft.Azure.Storage.Shared.Protocol` névtérben, a Azure Files a saját típusát, a `FileServiceProperties` típust használja a `Microsoft.Azure.Storage.File.Protocol` névtérben. Az alábbi kód fordításához azonban mindkét névteret hivatkoznia kell a kódból.
+Bár az Azure-Blobok, az Azure-táblák és az Azure-várólisták a megosztott `ServiceProperties` típust használják a `Microsoft.Azure.Storage.Shared.Protocol` névtérben, Azure Files a saját típusát használja, a `FileServiceProperties` típusát a `Microsoft.Azure.Storage.File.Protocol` névtérben. Az alábbi kód fordításához azonban mindkét névteret hivatkoznia kell a kódból.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -480,7 +480,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Ha bármilyen problémába ütközik, tekintse meg a [Windows Azure Files kapcsolatos problémák elhárítása](storage-troubleshoot-windows-file-connection-problems.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Filesről:
 
@@ -491,14 +491,14 @@ További információ a Azure Filesről:
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage-eszköztámogatás
 
-* [Ismerkedés a AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Bevezetés az AzCopy használatába](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Azure Files-problémák hibaelhárítása Windowson](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Hivatkozás
+### <a name="reference"></a>Leírások
 
 * [Azure Storage API-k a .NET-hez](/dotnet/api/overview/azure/storage)
-* [Fájlszolgáltatások REST API](/rest/api/storageservices/File-Service-REST-API)
+* [A File szolgáltatás REST API-ja](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>Blogbejegyzések
 

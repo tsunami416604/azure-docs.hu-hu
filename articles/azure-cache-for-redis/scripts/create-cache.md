@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI Példaszkript – Azure Cache létrehozása a redis
-description: Az Azure CLI Példaszkript – Azure Cache létrehozása a redis
+title: Azure cache létrehozása a Redis – Azure CLI
+description: Ez az Azure CLI-mintakód azt mutatja be, hogyan lehet Azure cache-t létrehozni a Redis-példányhoz az az Redis Create paranccsal.
 author: yegu-ms
 tags: azure-service-management
 ms.service: cache
@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: e0ca7131a4ea9a512ac31231754f86d218c35025
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 79b749c0d02a21c1225ee0d046d73ed3fdd98904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411322"
 ---
-# <a name="create-an-azure-cache-for-redis"></a>A Redis Azure Cache létrehozása
+# <a name="create-an-azure-cache-for-redis"></a>Az Azure Cache for Redis létrehozása
 
-Ebben a forgatókönyvben, megtudhatja, hogyan hozhat létre egy Azure Cache redis.
+Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre Azure-gyorsítótárat a Redis.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,16 +29,16 @@ Ebben a forgatókönyvben, megtudhatja, hogyan hozhat létre egy Azure Cache red
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport és a egy Azure Cache létrehozása a Redis. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport és egy Azure-gyorsítótár létrehozásához a Redis. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az a redis létrehozása](https://docs.microsoft.com/cli/azure/redis) | Az Azure gyorsítótár létrehozása a Redis-példányt. |
+| [az Redis Create](https://docs.microsoft.com/cli/azure/redis) | Azure cache létrehozása a Redis-példányhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Azure Cache a Redis CLI-példaszkripteket megtalálható a [Azure Cache Redis dokumentációt](../cli-samples.md).
+További Azure cache a Redis CLI-szkriptekhez az [Azure cache Redis dokumentációjában](../cli-samples.md)található.

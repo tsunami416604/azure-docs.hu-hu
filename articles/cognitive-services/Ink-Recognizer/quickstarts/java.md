@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és Javával'
 titleSuffix: Azure Cognitive Services
-description: A tinta-felismerő API használatával megkezdheti a digitális tollvonások felismerését.
+description: A szabadkézi felismerő API-val megkezdheti a digitális tollvonások felismerését ebben a rövid útmutatóban.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: e8cd6a4acbd1492bba1c9e88b523a7c44a44f009
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448122"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és Javával
 

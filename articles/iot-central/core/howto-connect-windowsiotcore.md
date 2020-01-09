@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454045"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -21,23 +21,28 @@ ms.locfileid: "73930204"
 
 Ez a cikk azt ismerteti, hogyan lehet egy Windows IoT Core-eszközt a Microsoft Azure IoT Central alkalmazáshoz csatlakozni az eszköz fejlesztői számára.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-- A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+- Az **örökölt alkalmazás** -sablonból létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 
 - A Windows 10 IoT Core operációs rendszert futtató eszköz. További információ: [a Windows 10 IoT Core-eszköz beállítása](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 - A [Node. js](https://nodejs.org/) 8.0.0 vagy újabb verzióját futtató fejlesztői gép. Az `node --version` a parancssorban futtatva ellenőrizhető a verzió. A Node.js az operációs rendszerek széles körében elérhető.
 
-## <a name="the-sample-devkits-application"></a>A minta Devkits alkalmazás
+## <a name="add-a-device-template"></a>Eszközsablon hozzáadása
 
-A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT Core** -eszközt tartalmaznak a következő jellemzőkkel:
+Az Azure IoT Central alkalmazásban vegyen fel egy új **Windows IoT Core** -eszközt a következő jellemzőkkel:
 
 - Telemetria mérések az eszközhöz: **páratartalom**, **hőmérséklet**és **nyomás**.
 - A **ventilátor sebességének**szabályozására szolgáló beállítás.
 - Egy eszköz tulajdonságának **Megnyomási száma** és egy Felhőbeli tulajdonság **helye**.
+
+1. Válassza az **+ új** elemet az eszközök sablonjaiból ![az eszköz sablonja](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. Válassza a **Windows IoT Core** lehetőséget, és hozza létre a Windows IoT Core-eszköz sablonját ![eszköz sablonjának hozzáadása](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 Az eszköz sablonjának konfigurálásával kapcsolatos részletes információkért lásd: a [Windows IoT Core-eszköz sablonjának részletei](#device-template-details).
 
@@ -90,7 +95,7 @@ Néhány perc elteltével megtekintheti a telemetria az eszközéről a IoT Cent
 A [Windows-eszközök portálon](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) olyan eszközök találhatók, amelyek segítségével elháríthatja az eszközt:
 
 - Az **alkalmazások kezelője** lapon vezérelheti az eszközön futó alkalmazásokat.
-- Ha nem rendelkezik csatlakoztatott monitorral az eszközhöz, az **eszközbeállítások lapon rögzítheti az eszköz** képernyőképeit. Például:
+- Ha nem rendelkezik csatlakoztatott monitorral az eszközhöz, az **eszközbeállítások lapon rögzítheti az eszköz** képernyőképeit. Példa:
 
     ![Alkalmazás képernyőképe](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -104,7 +109,7 @@ A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT C
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
+| Mező neve     | egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | ideiglenes           | °C     | – 40     | 120     | 0              |
@@ -114,16 +119,16 @@ A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT C
 
 Numerikus beállítások
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Ventilátor sebessége    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Data type |
+| Type (Típus)            | Megjelenített név | Mező neve | Data type |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköz tulajdonsága | Die száma   | dieNumber  | szám    |
-| Szöveg            | Hely     | location   | N/A       |
+| Szöveg            | Földrajzi egység     | location   | –       |
 
 ## <a name="next-steps"></a>Következő lépések
 

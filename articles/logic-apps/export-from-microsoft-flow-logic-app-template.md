@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428885"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
@@ -81,7 +81,7 @@ További információ: [Grow up to Azure Logic apps](https://flow.microsoft.com/
 
       Az engedélyezést igénylő minden egyes kapcsolaton figyelmeztető ikon jelenik meg:
 
-      ![Figyelmeztető ikon](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
+      ![Figyelmeztetés ikon](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
    1. Minden olyan lépéshez, amelyhez engedélyezve van a kapcsolat, bontsa ki ezt a lépést, és válassza az **új hozzáadása**lehetőséget.
 
@@ -133,7 +133,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
 1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, és válassza a > **új** **telepítése** lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
 
-1. Amikor a rendszer kéri, erősítse meg az Azure-előfizetést, az Azure-erőforráscsoportot, valamint az üzembe helyezéshez használni kívánt egyéb beállításokat, például a sablon paramétereinek átadásához használandó [paramétereket](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) , majd válassza a **telepítés**lehetőséget.
+1. Amikor a rendszer kéri, erősítse meg az Azure-előfizetést, az Azure-erőforráscsoportot, valamint az üzembe helyezéshez használni kívánt egyéb beállításokat, például a sablon paramétereinek átadásához használandó [paramétereket](../azure-resource-manager/templates/parameter-files.md) , majd válassza a **telepítés**lehetőséget.
 
    ![Központi telepítési beállítások megerősítése](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 

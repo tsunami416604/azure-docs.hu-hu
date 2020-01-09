@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl Mesh Service – replika | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl Mesh Service-replika parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl Mesh Service – replika
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az alkalmazás-erőforrások replikájának beolvasására szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: e8eaa5fd7c9eeeff3f70a949b04d0fbf5f6c388f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 219a691dd1b74ec2214c156018e6e3f62366f523
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901170"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645327"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh szolgáltatásreplika
 A replika adatainak beolvasása és az adott szolgáltatás replikáinak listázása egy alkalmazás-erőforrásban.
@@ -29,7 +20,7 @@ A replika adatainak beolvasása és az adott szolgáltatás replikáinak listáz
 |Parancs|Leírás|
 | --- | --- |
 | lista | A szolgáltatás összes replikáját listázza. |
-| megjelenítése | Egy alkalmazás szolgáltatásának adott replikájának beolvasása. |
+| megjelenítés | Egy alkalmazás szolgáltatásának adott replikájának beolvasása. |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>sfctl Mesh Service – replika lista
 A szolgáltatás összes replikáját listázza.

@@ -2,19 +2,16 @@
 title: Azure rövid útmutató – Azure Automation-runbook létrehozása | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre Azure Automation-runbookot
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 02/05/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421675"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
@@ -96,7 +93,7 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
 Ha már nincs rá szükség, törölje a runbookot. Ehhez válassza ki a runbook listából a runbookot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, szerkesztett, tesztelt és közzétett egy runbookot, és elindított egy runbookfeladatot. Az Automation-runbookokkal kapcsolatos további információkért folytassa az Automationben létrehozható és használható különböző runbooktípusokkal foglalkozó cikkel.
 

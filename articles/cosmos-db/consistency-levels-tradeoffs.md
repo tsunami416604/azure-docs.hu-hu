@@ -1,5 +1,5 @@
 ---
-title: Rendelkezésre állási és teljesítménybeli kompromisszumok a Azure Cosmos DB különböző konzisztenciáji szintjeihez
+title: Azure Cosmos DB a konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok
 description: Rendelkezésre állási és teljesítménybeli kompromisszumok a Azure Cosmos DB különböző konzisztenciáji szintjeihez.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445553"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
-A magas rendelkezésre állást, az alacsony késést vagy mindkettőt a replikálásra támaszkodó elosztott adatbázisoknak kompromisszumokat kell tenniük. A kompromisszumok az olvasási konzisztencia és a rendelkezésre állás, a késés és az átviteli sebesség között vannak.
+Az olyan elosztott adatbázisok esetében, amelyek replikációt használnak a magas rendelkezésre állás, az alacsony késleltetés vagy mindkettő eléréséhez, kompromisszumokra van szükség. Ezek az olvasási konzisztenciára, illetve a rendelkezésre állásra, a késleltetésre és az átviteli sebességre vonatkoznak.
 
 A Azure Cosmos DB az adatkonzisztencia a választási lehetőségek spektrumát közelíti meg. Ez a megközelítés több lehetőséget is kínál, mint az erős és a végleges konzisztencia két véglete. Öt jól definiált modell közül választhat a konzisztencia-spektrumon. A modellek a legerősebbtól a leggyengébbig a következők:
 
@@ -54,10 +54,10 @@ Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti ka
 |---------|---------|---------|---------|---------|
 |1|Egy vagy több főkiszolgáló|Bármely konzisztencia-szint|< 240 perc|< 1 hét|
 |> 1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
-|> 1|Egyetlen főkiszolgáló|Kötött elavulás|*K*  & *t*|< 15 perc|
+|> 1|Egyetlen főkiszolgáló|Kötött elavulás|*K* & *t*|< 15 perc|
 |> 1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
 |> 1|Több főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
-|> 1|Több főkiszolgáló|Kötött elavulás|*K*  & *t*|0|
+|> 1|Több főkiszolgáló|Kötött elavulás|*K* & *t*|0|
 
 *K* = egy elem *"k"* verziója (azaz frissítései) száma.
 

@@ -1,62 +1,62 @@
 ---
-title: Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
-description: Migrálási megoldásokkal, amelyek támogatják az Azure Cosmos DB a Microsoft-partnerek listája.
+title: Áttelepítési és alkalmazás-fejlesztési partnerek Azure Cosmos DB
+description: A Azure Cosmos DBt támogató áttelepítési megoldásokkal rendelkező Microsoft-partnerek listája.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257360"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530697"
 ---
-# <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
+# <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL áttelepítési és alkalmazásfejlesztés-partnerek
 
-A nosql-alapú áttelepítés alkalmazásfejlesztés közül választhat különböző rendszerintegrátor partnereink tapasztalt rendszerek és eszközök támogatásához az Azure Cosmos DB-megoldások. 
+A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és eszközt választhat a Azure Cosmos DB-megoldások támogatásához. 
 
 ## <a name="migration-tools"></a>Migrálási eszközök
 
-|**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok/régiók**  |**Contact**  |
+|**Partner**  |**Képességek & felület**  |**Támogatott országok/régiók**  |**Kapcsolat**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | [Adatok migrálása](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) az Azure Cosmos DB MongoDB-ből. <br/> Imanis adatok globális vállalatok számára, hogy gyorsan és egyszerűen áttelepíteni a helyszíni vagy felhőbeli MongoDB adatbázisok az Azure Cosmos DB lehetővé teszi. Imanis adatok az ügynök nélküli kivételfigyelés, növekményes örökre szóló felhőalapú áttelepítési módszert biztosít a MongoDB-adattárak, amely leegyszerűsíti a migrálási, és jelentősen csökkenti az állásidőt.|  USA  |   [Webhely](http://www.imanisdata.com/)      |
-|![Striim][2]    |  [Valós idejű adatok áthelyezése az Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) számos különféle adatforrásból. <br/> Striim valós idejű gyűjtése és helyszíni forrásokból származhatnak, beleértve a vállalati dokumentumok és a relációs adatbázisok, érzékelők és naplófájlokat az Azure Cosmos DB-be számos adatmozgás egyszerűbbé teszi. |   USA   |  [Webhely](https://www.striim.com/)       |
+|![ImanisData][1]   | Adatáttelepítés a MongoDB-ből a Azure Cosmos DBba. <br/> A ambrusis-adatbázisok lehetővé teszik a globális vállalatok számára, hogy gyorsan és könnyen migrálják helyszíni vagy felhőalapú MongoDB-adatbázisait Azure Cosmos DBba. Sándor a MongoDB-adattárak számára biztosít olyan ügynök nélküli, növekményes, örökre Felhőbeli áttelepítési módszert, amely leegyszerűsíti az áttelepítést, és jelentősen csökkenti az állásidőt.|  USA  |   [Webhely](https://www.cohesity.com/products/imanis-data/)      |
+|![Striim][2]    |  A [valós idejű adatok Azure Cosmos db](https://www.striim.com/striim-for-azure-cosmos-db/) számos adatforrásból áthelyezhetők. <br/> A Striim leegyszerűsíti a különböző helyszíni forrásokból származó adatok valós idejű gyűjtését és áthelyezését, beleértve a vállalati dokumentumokat és a kapcsolódó adatbázisokat, érzékelőket és naplófájlokat Azure Cosmos DBba. |   USA   |  [Webhely](https://www.striim.com/)       |
 
-## <a name="systems-integrator-partners"></a>Rendszerintegrátor partnereink rendszerek
+## <a name="systems-integrator-partners"></a>A Systems integrátor partnerei
 
-|**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok/régiók**  |**Contact**  |
+|**Partner**  |**Képességek & felület**  |**Támogatott országok/régiók**  |**Kapcsolat**  |
 |---------|---------|---------|---------|
-| ![10thMagnitude][13] | Nosql-alapú áttelepítés; Új alkalmazások fejlesztéséhez | USA | [Webhely](https://www.10thmagnitude.com/)|
-|![Altoros fejlesztési LLC][3]    |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |   Egyesült Államok, Norvégia, Finnország, Belarusz, Argentína |  [Webhely](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez      |    USA     |  [Webhely](https://www.attunix.com/)       |
-| ![Avanade][26] | Új alkalmazások fejlesztését, <br/> Alkalmazásfejlesztés (meglévő alkalmazások) | Ausztria, Németország, Svájc, Olaszország, Norvégia, Spanyolország, Egyesült Királyság | [Webhely](https://www.avanade.com/)
-|![Bluemetal Architects-nek][5]     |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez       |    Észak-Amerikában, Ázsiában és csendes-óceáni     |  [Webhely](https://www.bluemetal.com/)       |
-|![Capax globális LLC][6]     |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez       |    USA     |  [Webhely](https://www.capaxglobal.com/)       |
-| ![Szolgáltatást valamennyi][14] | Nosql-alapú áttelepítés; Alkalmazásfejlesztés (meglévő alkalmazások); Új alkalmazások fejlesztéséhez | Egyesült Államok, Franciaország, Egyesült Királyság, Németország, Finnország  | [Webhely](https://www.capgemini.com/) | 
-|![Coeo][7]     |   Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |    Egyesült Királyság     |  [Webhely](https://www.coeo.com/)       |
-| ![Cognizant][15] | Nosql-alapú áttelepítés |Egyesült Államok, Kanada, Egyesült Királyság, Dánia, Hollandia, Svájc, Ausztrália, japán | [Webhely](https://www.cognizant.com/)|
-|![Infosys][8]     |  Nosql-alapú áttelepítés       |    Globális     |  [Webhely](https://www.infosys.com/)       |
-| ![Lagash][16] | Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Argentína, Chile, Kolumbia, Mexikó| [Webhely](https://www.lagash.com/)|
-| ![Lambda3 Informatics][17] | Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Brazília| [Webhely](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     Alkalmazásfejlesztés (új alkalmazás)    |    USA     |  [Webhely](https://www.nealanalytics.com/)       |
-|![Pragmatic Works szoftver Inc vállalattól][10]    |   Nosql-alapú áttelepítés      |   USA      |  [Webhely](https://www.pragmaticworks.com/)       |
-| ![Globális Ricoh][18] | Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások)| Egyesült Királyság  | [Webhely](https://www.ricoh.com/)|
-| ![SNP technológiák][19] | Nosql-alapú áttelepítés| USA | [Webhely](https://www.snp.com/)|
-| ![Solidsoft válasz][20] | Nosql-alapú áttelepítés | Horvátország, Svédország, Dánia, Írország, Bulgária, Szlovénia, Ciprus, Málta, Litvánia, a Cseh Köztársaság, Izland és Svájc és Liechtenstein| [Webhely](https://www.reply.com/solidsoft-reply/)|
-| ![Spanyol pont technológiák][21] | Nosql-alapú áttelepítés| Írország| [Webhely](https://www.spanishpoint.ie/)|
-| ![Syone][22] | Nosql-alapú áttelepítés| Portugália| [Webhely](https://www.syone.com/)|
-|![Tallan][11]    |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez       |    USA     |  [Webhely](https://www.tallan.com/)       |
-| ![TKR][23] | Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez | Egyesült Államok, Egyesült Királyság, Franciaország, Malajzia, Dánia, Norvégia, Svédország| [Webhely](https://www.tcs.com/)|
-|![VTeamLabs][12]    | Nosql-alapú áttelepítés       |  USA      | [Webhely](https://www.vteamlabs.com/)       |
-| ![Fehér kacsa][24] |Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Németország | [Webhely](https://whiteducksoftware.com/)|
-| ![Informatikai kibontása][25] | Új alkalmazások fejlesztéséhez | Portugália, Egyesült Királyság| [Webhely](https://www.xpand-it.com/)|
+| ![10thMagnitude][13] | NoSQL migrálása; Új alkalmazások fejlesztése | USA | [Webhely](https://www.10thmagnitude.com/)|
+|![Altoros Development LLC][3]    |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése |   Egyesült Államok, Norvégia, Finnország, Fehéroroszország, Argentína |  [Webhely](https://www.altoros.com/)     |
+|![Attunix Redapt][4]     |   NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése      |    USA     |  [Webhely](https://www.attunix.com/)       |
+| ![Avanade][26] | Új alkalmazások fejlesztése, <br/> Alkalmazás-innováció (meglévő alkalmazások) | Ausztria, Németország, Svájc, Olaszország, Norvégia, Spanyolország, Egyesült Királyság | [Webhely](https://www.avanade.com/)
+|![Bluemetal-építészek][5]     |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése       |    Észak-Amerika, Ázsia – csendes-óceáni térség     |  [Webhely](https://www.bluemetal.com/)       |
+|![Capax Global LLC][6]     |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése       |    USA     |  [Webhely](https://www.capaxglobal.com/)       |
+| ![Capgemini][14] | NoSQL migrálása; Alkalmazás-innováció (meglévő alkalmazások); Új alkalmazások fejlesztése | Egyesült Államok, Franciaország, Egyesült Királyság, Hollandia, Finnország  | [Webhely](https://www.capgemini.com/) | 
+|![Coeo][7]     |   Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése |    Egyesült Királyság     |  [Webhely](https://www.coeo.com/)       |
+| ![Cognizant][15] | NoSQL migrálása |Egyesült Államok, Kanada, Egyesült Királyság, Dánia, Hollandia, Svájc, Ausztrália, Japán | [Webhely](https://www.cognizant.com/)|
+|![Infosys][8]     |  NoSQL migrálása       |    Globális     |  [Webhely](https://www.infosys.com/)       |
+| ![Lagash][16] | NoSQL Migrálás, <br/> Új alkalmazások fejlesztése | Argentína, Chile, Kolumbia, Mexikó| [Webhely](https://www.lagash.com/)|
+| ![Lambda3 informatika][17] | NoSQL Migrálás, <br/> Új alkalmazások fejlesztése | Brazília| [Webhely](https://www.lambda3.com.br/)|
+|![Neal Analytics][9]     |     Alkalmazásfejlesztés (új alkalmazások)    |    USA     |  [Webhely](https://www.nealanalytics.com/)       |
+|![Gyakorlatias Works szoftver Inc][10]    |   NoSQL migrálása      |   USA      |  [Webhely](https://www.pragmaticworks.com/)       |
+| ![Ricoh globális][18] | NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások)| Egyesült Királyság  | [Webhely](https://www.ricoh.com/)|
+| ![SNP-technológiák][19] | NoSQL migrálása| Egyesült Államok | [Webhely](https://www.snp.com/)|
+| ![Solidsoft válasz][20] | NoSQL migrálása | Horvátország, Svédország, Dánia, Írország, Bulgária, Szlovénia, Ciprus, Málta, Litvánia, Cseh Köztársaság, Izland és Svájc és Liechtenstein| [Webhely](https://www.reply.com/solidsoft-reply/)|
+| ![Spanyol pont technológiák][21] | NoSQL migrálása| Írország| [Webhely](https://www.spanishpoint.ie/)|
+| ![Syone][22] | NoSQL migrálása| Portugália| [Webhely](https://www.syone.com/)|
+|![Tallantól][11]    |  NoSQL Migrálás, <br/> Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése       |    USA     |  [Webhely](https://www.tallan.com/)       |
+| ![TKR][23] | Alkalmazás-innováció (meglévő alkalmazások), <br/> Új alkalmazások fejlesztése | Egyesült Államok, Egyesült Királyság, Franciaország, Malajzia, Dánia, Norvégia, Svédország| [Webhely](https://www.tcs.com/)|
+|![VTeamLabs][12]    | NoSQL migrálása       |  USA      | [Webhely](https://www.vteamlabs.com/)       |
+| ![Fehér kacsa][24] |NoSQL Migrálás, <br/> Új alkalmazások fejlesztése | Németország | [Webhely](https://whiteducksoftware.com/)|
+| ![Kinyitás][25] | Új alkalmazások fejlesztése | Portugália, Egyesült Királyság| [Webhely](https://www.xpand-it.com/)|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Microsoft más partnerekkel némelyike kapcsolatos további információkért tekintse meg a [Microsoft-Partner hely](https://partner.microsoft.com/en-US/).
+Ha többet szeretne megtudni a Microsoft egyéb partnereiről, tekintse meg a [Microsoft partner webhelyét](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
 [1]: ./media/partners-migration-cosmosdb/imanisdata_logo.png

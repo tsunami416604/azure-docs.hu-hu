@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
-description: A Node.js használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
+description: A Node. js használatával a jelen oktatóanyagban a Language Understanding (LUIS) szolgáltatással integrált csevegési robotot hozhat létre. Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448000"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata a Node. js-ben 
 
@@ -46,23 +46,23 @@ A Node. js használatával a Language Understanding (LUIS) nyelvvel integrált c
 
 1. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
 
-    |Beállítás|Cél|Javasolt beállítás|
+    |Beállítás|Rendeltetés|Javasolt beállítás|
     |--|--|--|
     |Robot neve|Erőforrás neve|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Előfizetés|Az előfizetés, amelyben létre szeretné hozni a robotot.|Az Ön elsődleges előfizetése.
     |Erőforráscsoport|Az Azure-erőforrások logikai csoportja|Hozzon létre új csoportot a robothoz használt erőforrások tárolására. A csoport neve legyen: `luis-nodejs-bot-resource-group`.|
     |Földrajzi egység|Azure-régió – Nem kell a LUIS létrehozási vagy közzétételi régiójával azonosnak lennie.|`westus`|
-    |Tarifacsomag|Szolgáltatáskérési korlátokhoz és számlázáshoz használható.|Az `F0` az ingyenes szint.
+    |Díjcsomag|Szolgáltatáskérési korlátokhoz és számlázáshoz használható.|Az `F0` az ingyenes szint.
     |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
-    |App Service-csomag/hely|Ne módosítsa a megadott alapértelmezett értéket.|
+    |App Service-csomag/Hely|Ne módosítsa a megadott alapértelmezett értéket.|
     |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
-    |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
+    |Microsoft-alkalmazásazonosító és jelszó|Ne módosítsa a megadott alapértelmezett értéket.|
 
 1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
-    |Beállítás|Cél|Kiválasztás|
+    |Beállítás|Rendeltetés|Kiválasztás|
     |--|--|--|
     |SDK verziója|Bot Framework verziója|**SDK v4**|
     |SDK nyelve|Robot programozási nyelve|**Node.js**|
@@ -216,7 +216,7 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal. 
 

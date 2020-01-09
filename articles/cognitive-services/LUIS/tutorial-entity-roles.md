@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447860"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: a kontextussal kapcsolatos adatok kinyerése a teljes tartalomból
 
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Például egy forrás-és célhely az egyik városból a másikba történő átvitelhez. Mindkét adathoz szükség lehet, és egymáshoz kapcsolódnak.
 
 A szerepkörök bármely előre elkészített vagy egyéni entitás típussal használhatók, és a példaként használt hosszúságú kimondott szöveg és mintákban is használhatók.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -51,7 +49,11 @@ A kinyerni kívánt entitások esetében egy szerepkört kell használni:
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. Jelentkezzen be az előnézeti LUIS portálra a [https://preview.luis.ai](https://preview.luis.ai)URL-címével.
+
+1. Válassza az **új alkalmazás létrehozása**lehetőséget, írja be a `HumanResources` nevet, és tartsa meg az alapértelmezett kulturális kultúrát **angol nyelven**. A leírást hagyja üresen.
+
+1. Válassza a **Done** (Kész) lehetőséget.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Hozzon létre egy szándékot az alkalmazottak városok közötti áthelyezéséhez
 
@@ -61,7 +63,8 @@ A kinyerni kívánt entitások esetében egy szerepkört kell használni:
 
 1. Az előugró párbeszédpanelen írja be a `MoveEmployeeToCity` karakterláncot, majd válassza a **Kész** elemet.
 
-    ![Új szándék létrehozása párbeszédpanel képernyőképe](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![képernyőkép az új leképezési párbeszédpanel létrehozásáról](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. Adjon hozzá kimondott példaszövegeket a szándékhoz.
 
@@ -77,7 +80,8 @@ A kinyerni kívánt entitások esetében egy szerepkört kell használni:
     |Steve Standish átvitele San Diegoból a Bellevue felé |
     |a Kansas Cityből emelt Tanner Thompson és a Chicago felé irányuló váltás|
 
-    [![a LUIS új hosszúságú kimondott szöveg a MoveEmployee szándékban](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![a LUIS új hosszúságú kimondott szöveg a MoveEmployee szándékban](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Előre összeépített entitás geographyV2 hozzáadása
 
@@ -87,16 +91,30 @@ Az előre elkészített entitás, geographyV2, Kinyeri a hely adatait, beleértv
 
 1. Válassza az **előre elkészített entitás hozzáadása**lehetőséget, majd a keresési sávban a `geo` gombra kattintva szűrheti az előre elkészített entitásokat.
 
-    ![Előre elkészített geographyV2-entitás hozzáadása az alkalmazáshoz](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![geographyV2 előre elkészített entitás hozzáadása az alkalmazáshoz](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. Jelölje be a jelölőnégyzetet, majd válassza a **kész**lehetőséget.
 1. Az **entitások** listában válassza ki a **geographyV2** az új entitás megnyitásához.
 1. Vegyen fel két szerepkört, `Origin`és `Destination`.
 
-    ![Szerepkörök hozzáadása előre felépített entitáshoz](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. A bal oldali navigációs sávon válassza a **leképezések** lehetőséget, majd válassza ki a **MoveEmployeeToCity** szándékát. Figyelje meg, hogy a város neve az előre elkészített entitás **geographyV2**van megjelölve.
-1. A lista első teljes tartalmában válassza ki a forrás helyét. Megjelenik egy legördülő menü. A listából válassza a **geographyV2** lehetőséget, majd a **forrás**elem kiválasztásához kövesse a teljes menüt.
-1. Az előző lépés metódusának használatával megjelölheti az összes hely összes szerepkörét az összes hosszúságú kimondott szöveg.
+    > [!div class="mx-imgBorder"]
+    > ![Szerepkörök hozzáadása az előre felépített entitáshoz](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. A bal oldali navigációs sávon válassza a **leképezések** lehetőséget, majd válassza ki a **MoveEmployeeToCity** szándékát. Figyelje meg, hogy a város neve az előre elkészített entitás **geographyV2**van megjelölve.
+1. A környezeti eszköztáron válassza az **entitás palettát**.
+
+    > [!div class="mx-imgBorder"]
+    > ![válassza ki az Entity paletta elemet a tartalom eszköztárból](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Válassza ki az előre elkészített entitást, **geographyV2**, majd válassza ki az **entitás-felügyelőt**.
+1. Az **entitás-felügyelőben**válassza ki az egyik szerepkört, a **célhelyet**. Ez megváltoztatja az egér kurzorát. A kurzor használatával címkézheti a célhelyen lévő összes hosszúságú kimondott szöveg szövegét.
+
+    > [!div class="mx-imgBorder"]
+    > ![válassza ki a szerepkört az entitások palettáján](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. Térjen vissza az **entitás-felügyelőhöz**, váltson a **forrásra**a szerepkörre. A kurzor használatával címkézze fel a szöveget az összes olyan hosszúságú kimondott szöveg, amely a forrás helyét jelöli.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz
 

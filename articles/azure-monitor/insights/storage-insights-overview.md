@@ -4,15 +4,15 @@ description: Ez a cikk az Azure Storage-fiókokkal kapcsolatos teljesítmény-é
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401132"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban (előzetes verzió)
 
@@ -47,7 +47,7 @@ Azure Monitor a tranzakció, a késés és a kapacitás részleteit megtekinthet
 
 Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és rendelkezésre állását az összes előfizetésében, hajtsa végre a következő lépéseket.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az **áttekintések** szakaszban válassza a **Storage-fiókok (előzetes verzió)** lehetőséget.
 
@@ -255,7 +255,7 @@ A kiválasztott Storage-fiókok száma legfeljebb 200, a kiválasztott előfizet
 
 A portálon csak a kiválasztott előfizetések adatai jelennek meg a portál indításakor. A kiválasztott előfizetések módosításához válassza a jobb felső sarokban található jegyzetfüzetet, és kattintson a szűrő ikonra. Ekkor megjelenik a címtár + előfizetések lap.
 
-![Címtár + előfizetés](./media/storage-insights-overview/fqa3.png)
+![Címtár és előfizetés](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>A színezés és a küszöbérték módosítása a rendelkezésre álláshoz
 

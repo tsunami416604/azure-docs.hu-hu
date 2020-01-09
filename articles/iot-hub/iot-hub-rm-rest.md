@@ -8,12 +8,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7d5e38e2ecfa2406ff0f58f73d828aa45d84c512
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429172"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>IoT hub létrehozása az erőforrás-szolgáltató REST API (.NET) használatával
 
@@ -170,13 +170,13 @@ Most már elvégezheti az alkalmazást úgy, hogy meghívja a **CreateIoTHub** m
 > [!NOTE]
 > Ez az alkalmazás egy S1 szabványú IoT Hub hoz létre, amelynek számlázása. Ha elkészült, törölheti az IoT hubot a [Azure Portalon](https://portal.azure.com/) keresztül, vagy a befejezéskor a **Remove-AzResource PowerShell-** parancsmag használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy üzembe helyezett egy IoT hubot az erőforrás-szolgáltató REST API használatával, érdemes megvizsgálnia a következőket:
 
 * További információ a [IoT hub erőforrás-szolgáltató REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)képességeiről.
 
-* A Azure Resource Manager képességeinek megismeréséhez olvassa el [Azure Resource Manager áttekintést](../azure-resource-manager/resource-group-overview.md) .
+* A Azure Resource Manager képességeinek megismeréséhez olvassa el [Azure Resource Manager áttekintést](../azure-resource-manager/management/overview.md) .
 
 Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg a következő cikkeket:
 

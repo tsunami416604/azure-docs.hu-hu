@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976145"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429151"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
 
@@ -29,7 +29,7 @@ Ez a cikk a IoT Hub klónozásának módjait mutatja be, és a Kezdés előtt v�
 A hub klónozásához rendszergazdai hozzáféréssel rendelkező előfizetésre van szükség az eredeti hubhoz. Az új hubot egy új erőforráscsoport és régióba helyezheti, ugyanabban az előfizetésben, mint az eredeti hubot, vagy akár egy új előfizetésben is. Csak nem használhatja ugyanazt a nevet, mert a hub nevének globálisan egyedinek kell lennie.
 
 > [!NOTE]
-> Jelenleg nincs olyan első osztályú szolgáltatás, amely egy IoT hub klónozására használható. Ez elsősorban egy manuális folyamat, ezért meglehetősen hibákra hajlamos. A hub klónozásának összetettsége közvetlenül a központ összetettségével arányos. Például az IoT hub és az üzenet-útválasztás nélküli klónozás meglehetősen egyszerű. Ha csak egy összetettséggel adja hozzá az üzenet-útválasztást, akkor a hub klónozása legalább egy nagyságrenddel bonyolultabb lesz. Ha az útválasztási végpontokhoz használt erőforrásokat is át szeretné helyezni, akkor a magniture még összetettebb. 
+> Jelenleg nincs lehetőség az IoT hub automatikus klónozására. Ez elsősorban egy manuális folyamat, ezért meglehetősen hibákra hajlamos. A hub klónozásának összetettsége közvetlenül a központ összetettségével arányos. Például az IoT hub és az üzenet-útválasztás nélküli klónozás meglehetősen egyszerű. Ha csak egy összetettséggel adja hozzá az üzenet-útválasztást, akkor a hub klónozása legalább egy nagyságrenddel bonyolultabb lesz. Ha az útválasztási végpontokhoz használt erőforrásokat is át szeretné helyezni, akkor a magniture még összetettebb. 
 
 ## <a name="things-to-consider"></a>Megfontolandó dolgok
 
@@ -485,7 +485,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>A minta alkalmazás futtatása és parancssori argumentumok használata
 
-1. Nyisson meg egy parancssort. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
+1. Nyisson meg egy parancsablakot. Válassza a Windows lehetőséget, és írja be `command prompt` a parancssorablak beszerzéséhez.
 
 1. Másolja a környezeti változókat beállító parancsokat egy időben, és illessze be őket a parancssorablakba, és válassza az ENTER billentyűt. Ha elkészült, írja be a `SET` parancsot a parancssori ablakban, hogy megtekintse a környezeti változókat és azok értékeit. Miután bemásolta ezeket a parancssori ablakba, nem kell újból átmásolnia, hacsak nem nyit meg egy új parancssori ablakot.
 

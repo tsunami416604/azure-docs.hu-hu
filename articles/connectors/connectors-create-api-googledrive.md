@@ -1,20 +1,20 @@
 ---
 title: Kapcsolódás a Google Drive-hoz
-description: Fájlok létrehozása és kezelése a Google Drive REST API-kkal és Azure Logic Apps
+description: A Google Drive-hoz tartozó fájlok létrehozásával és kezelésével kapcsolatos munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 155a579438747ca7de67eba6449b8a0191e86e2c
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789715"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666839"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Ismerkedés a Google Drive-összekötővel
+# <a name="create-and-manage-files-for-google-drive-by-using-azure-logic-apps"></a>Fájlok létrehozása és kezelése a Google Drive-hoz a Azure Logic Apps használatával
 
 Kapcsolódjon a Google Drive-hoz fájlok létrehozásához, sorok beszerzéséhez és egyebekhez. A Google Drive használatával a következőket teheti: 
 
@@ -33,8 +33,8 @@ A kapcsolatok létrehozása után adja meg a Google Drive tulajdonságait, péld
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/googledrive/)megjelenő korlátokat is.
+Az eseményindítók, műveletek és korlátok részletes technikai részleteiért lásd az összekötők feladatainak leírását, és tekintse át az [összekötő hivatkozási oldalát](/connectors/googledrive/).
 
-## <a name="more-connectors"></a>További összekötők
+## <a name="next-steps"></a>Következő lépések
 
-Lépjen vissza az API-k [listájára](apis-list.md).
+* További Logic Apps- [Összekötők](apis-list.md) megismerése

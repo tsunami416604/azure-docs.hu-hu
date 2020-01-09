@@ -1,17 +1,17 @@
 ---
-title: Hozzon létre egy szintetikus partíciós kulcsot a Azure Cosmos DBban az adatok és a számítási feladatok egyenletes elosztásához.
+title: Szintetikus partíciós kulcs létrehozása a Azure Cosmos DBban
 description: Megtudhatja, hogyan használhatja a szintetikus partíciós kulcsokat az Azure Cosmos-tárolókban az adatok és a számítási feladatok egyenletes elosztása érdekében a partíciós kulcsok között.
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 093610777b150c90ad55f1ce18337f1de8b17219
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441222"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Szintetikus partíciókulcs létrehozása
 
