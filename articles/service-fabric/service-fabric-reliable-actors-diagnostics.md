@@ -1,175 +1,166 @@
 ---
-title: Actors-diagnosztika és figyelés |} A Microsoft Docs
-description: Ez a cikk ismerteti a diagnosztikai és a teljesítményfigyelési funkciókat a Service Fabric Reliable Actors-futtatókörnyezetben, többek között az események és teljesítményszámlálók, által kibocsátott.
-services: service-fabric
-documentationcenter: .net
+title: Aktordiagnosztika és -monitorozás
+description: Ez a cikk a Service Fabric Reliable Actors Runtime diagnosztikai és teljesítmény-figyelési funkcióit ismerteti, beleértve az általa kibocsátott eseményeket és teljesítményszámlálókat is.
 author: abhishekram
-manager: chackdan
-editor: vturecek
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376732"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
-A Reliable Actors-futtatókörnyezet bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) események és [teljesítményszámlálók](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Ezek hogyan működik a futtatókörnyezet betekintést nyújtson, és a hibaelhárítás és alkalmazásteljesítmény-figyelés segítségével.
+A Reliable Actors futtatókörnyezet [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) [eseményeket és teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a futtatókörnyezet működésével, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
 
 ## <a name="eventsource-events"></a>EventSource események
-A Reliable Actors-futtatókörnyezet EventSource szolgáltató neve "A Microsoft-ServiceFabric-Actors". Származó események megjelennek a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakot, amikor folyamatban van, az actors-alkalmazás [hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md).
+A Reliable Actors Runtime EventSource-szolgáltatójának neve "Microsoft-ServiceFabric-Actors". Az eseményforrás eseményei a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakban jelennek meg, amikor a Actor alkalmazást a [Visual Studióban](service-fabric-debugging-your-application.md)végzik.
 
-Példa eszközöket és technológiákat, amelyek segítségével gyűjtése és/vagy EventSource események megtekintése a [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [Szemantikus naplózás](https://msdn.microsoft.com/library/dn774980.aspx), és a [ A Microsoft TraceEvent könyvtár](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Példák olyan eszközökre és technológiákra, amelyek a EventSource-események összegyűjtését és/vagy megtekintését segítik [perfview eszköz](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [szemantikai naplózás](https://msdn.microsoft.com/library/dn774980.aspx)és a [Microsoft TraceEvent könyvtárában](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-### <a name="keywords"></a>a kulcsszavak
-A Reliable Actors EventSource tartozó összes esemény legalább egy kulcsszavas társítva. Ez lehetővé teszi, hogy a gyűjtött események szűrése. A következő kulcsszó bits vannak meghatározva.
+### <a name="keywords"></a>Kulcsszavak
+A Reliable Actors EventSource tartozó összes esemény egy vagy több kulcsszóhoz van társítva. Ez lehetővé teszi a gyűjtött események szűrését. A következő kulcsszavas bitek definiálva vannak.
 
-| bit | Leírás |
+| Bites | Leírás |
 | --- | --- |
-| 0x1 |Állítsa be a fontos eseményekről, amelyek a Fabric Actors futásidejű művelet összefoglalásához. |
-| 0x2 |Módszer aktorhívások leíró események készlete. További információkért lásd: a [actors bevezető üzenettémához](service-fabric-reliable-actors-introduction.md). |
-| 0x4 |Aktorok állapotának kapcsolatos események készlete. További információkért lásd a témakör [aktor állapot-felügyeleti](service-fabric-reliable-actors-state-management.md). |
-| 0x8 |Az aktor fordulókra egyidejűségi kapcsolatos események készlete. További információkért lásd a témakör [egyidejűségi](service-fabric-reliable-actors-introduction.md#concurrency). |
+| 0x1 |Olyan fontos események összessége, amelyek összefoglalják a Fabric Actors futtatókörnyezet működését. |
+| 0x2 |A színészi metódusok hívásait leíró események halmaza. További információ: a [szereplőkkel kapcsolatos bevezető témakör](service-fabric-reliable-actors-introduction.md). |
+| 0x4 |A Actor állapotával kapcsolatos események halmaza. További információkért lásd a [színészi állapot kezelésével](service-fabric-reliable-actors-state-management.md)foglalkozó témakört. |
+| 0x8 |A színészben a turn-based egyidejűséghez kapcsolódó események halmaza. További információ: [egyidejűségi](service-fabric-reliable-actors-introduction.md#concurrency)témakör. |
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-A Reliable Actors-futtatókörnyezet határozza meg a következő teljesítményszámláló-kategóriák.
+A Reliable Actors futtatókörnyezet a következő teljesítményszámláló-kategóriákat határozza meg.
 
-| Category | Leírás |
+| Kategória | Leírás |
 | --- | --- |
-| Service Fabric-Aktor |Azure Service Fabric actors, pl. időt vett aktor állapotmentésének jellemző teljesítményszámlálók |
-| Service Fabric-Aktormetódus |Számlálók Service Fabric actors által megvalósított metódusok jellemző, például hogy milyen gyakran egy aktor metódus meghívásakor kerül |
+| Service Fabric színész |Az Azure Service Fabric Actors-ra jellemző számlálók, például a színész állapotának mentéséhez szükséges idő |
+| Service Fabric Actors metódus |Service Fabric szereplők által megvalósított metódusokra jellemző számlálók, például hogy milyen gyakran hívja meg a Actor metódust |
 
-A fenti kategóriákba mindegyike egy vagy több számlálóval rendelkezik.
+A fenti kategóriák mindegyike egy vagy több számlálóval rendelkezik.
 
-A [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely a Windows operációs rendszerben alapértelmezés szerint elérhető használható összegyűjtése és megtekintése a teljesítményszámláló-adatokat. [Az Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) van egy másik lehetőség a teljesítményszámlálók adatainak összegyűjtése, majd feltölteni a Azure-táblákat.
+A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
 
-### <a name="performance-counter-instance-names"></a>Teljesítményszámlálók példány nevét
-Egy fürt, amelyben sok aktorszolgáltatások vagy aktor service partíciók teljesítményét számláló aktorpéldányok nagy számú lesz. A teljesítményszámláló-példány neveket segítséget nyújthat az azonosító az adott [partíció](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) és aktormetódus (ha van ilyen), amelyhez a teljesítményszámláló-példány van társítva.
+### <a name="performance-counter-instance-names"></a>Teljesítményszámláló-példányok nevei
+A nagy számú Actor Services-vagy színész-szolgáltatási partícióval rendelkező fürtök nagy számú Actors teljesítményszámláló-példánnyal rendelkeznek. A teljesítményszámláló-példányok nevei segíthetnek a teljesítményszámláló-példányhoz társított adott [partíció](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) és Actor metódus (ha alkalmazható) azonosításában.
 
-#### <a name="service-fabric-actor-category"></a>Service Fabric-Aktor kategória
-A kategória `Service Fabric Actor`, a teljesítményszámlálók példány nevét a következő formátumban van:
+#### <a name="service-fabric-actor-category"></a>Service Fabric Actor kategória
+A (z) `Service Fabric Actor`kategóriához a számláló példányainak neve a következő formátumú:
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* a Service Fabric partícióazonosító: a teljesítményszámláló-példány tartozó karakterlánca ábrázolása. A Partícióazonosító egy GUID Azonosítót, és annak karakterláncként keresztül jön létre a [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) formátummegadó "D" metódust.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID azonosító, amely a karakterlánc-ábrázolást a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal hozza létre a "D" formátum megadásával.
 
-*ActorRuntimeInternalID* egy 64 bites egész számot, a belső használatra a Fabric Actors modul által létrehozott karakterlánca ábrázolása. Ez a teljesítményszámláló példány nevének az egyediség biztosítása céljából, és ne ütközzenek más teljesítményszámlálók példány nevét tartalmazza. Felhasználók nem próbálja meg a teljesítményszámláló példány nevének ezen részét értelmezni.
+A *ActorRuntimeInternalID* egy 64 bites egész szám karakterlánc-ábrázolása, amelyet a Fabric Actors futtatókörnyezet generál belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-Az alábbiakban egy példát egy teljesítményszámláló-példány neve, amelyhez tartozik egy számláló a a `Service Fabric Actor` kategória:
+A következőkben egy példa látható egy számláló példányának nevére a `Service Fabric Actor` kategóriához tartozó számlálóhoz:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046`
 
-A fentiek példában `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric Partícióazonosító karakterlánca ábrázolása és `635650083799324046` a 64 bites azonosítója, amely akkor jön létre, a futásidejű a belső használni.
+A fenti példában a `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partíció-azonosító karakterlánc-ábrázolása, a `635650083799324046` pedig a futtatókörnyezet belső használatára generált 64 bites azonosító.
 
-#### <a name="service-fabric-actor-method-category"></a>Service Fabric-Aktormetódus kategória
-A kategória `Service Fabric Actor Method`, a teljesítményszámlálók példány nevét a következő formátumban van:
+#### <a name="service-fabric-actor-method-category"></a>Service Fabric Actors metódus kategóriája
+A (z) `Service Fabric Actor Method`kategóriához a számláló példányainak neve a következő formátumú:
 
 `MethodName_ActorsRuntimeMethodId_ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*MethodName* a aktormetódus, amelyhez társítva van a teljesítményszámláló-példány neve. Název metody formátumát határozza meg, amely elosztja az olvashatóság érdekében a neve a maximálisan megengedett a teljesítményszámláló-példány neveket a korlátozások a Windows Fabric Actors-futtatókörnyezetben egy logikai.
+A *MethodName* annak a Actor metódusnak a neve, amelyhez a teljesítményszámláló-példány társítva van. A metódus nevének formátuma a Fabric Actors futtatókörnyezetben lévő néhány logika alapján van meghatározva, amely a név olvashatóságát a Windows rendszeren a teljesítményszámláló-példányok neveinek maximális hosszára vonatkozó korlátozásokkal kiegyenlíti.
 
-*ActorsRuntimeMethodId* egy 32 bites egész szám, a belső használatra a Fabric Actors modul által létrehozott karakterlánca ábrázolása. Ez a teljesítményszámláló példány nevének az egyediség biztosítása céljából, és ne ütközzenek más teljesítményszámlálók példány nevét tartalmazza. Felhasználók nem próbálja meg a teljesítményszámláló példány nevének ezen részét értelmezni.
+A *ActorsRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a Fabric Actors futtatókörnyezet generál belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-*ServiceFabricPartitionID* a Service Fabric partícióazonosító: a teljesítményszámláló-példány tartozó karakterlánca ábrázolása. A Partícióazonosító egy GUID Azonosítót, és annak karakterláncként keresztül jön létre a [ `Guid.ToString` ](https://msdn.microsoft.com/library/97af8hh4.aspx) formátummegadó "D" metódust.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID azonosító, amely a karakterlánc-ábrázolást a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal hozza létre a "D" formátum megadásával.
 
-*ActorRuntimeInternalID* egy 64 bites egész számot, a belső használatra a Fabric Actors modul által létrehozott karakterlánca ábrázolása. Ez a teljesítményszámláló példány nevének az egyediség biztosítása céljából, és ne ütközzenek más teljesítményszámlálók példány nevét tartalmazza. Felhasználók nem próbálja meg a teljesítményszámláló példány nevének ezen részét értelmezni.
+A *ActorRuntimeInternalID* egy 64 bites egész szám karakterlánc-ábrázolása, amelyet a Fabric Actors futtatókörnyezet generál belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-Az alábbiakban egy példát egy teljesítményszámláló-példány neve, amelyhez tartozik egy számláló a a `Service Fabric Actor Method` kategória:
+A következőkben egy példa látható egy számláló példányának nevére a `Service Fabric Actor Method` kategóriához tartozó számlálóhoz:
 
 `ivoicemailboxactor.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486`
 
-A fentiek példában `ivoicemailboxactor.leavemessageasync` metódus neve `2` jön létre a futtatókörnyezet belső használatra, 32 bites azonosítója `89383d32-e57e-4a9b-a6ad-57c6792aa521` a Service Fabric Partícióazonosító karakterlánca ábrázolása és `635650083804480486` jön létre a 64 bites azonosítója a a modul a belső használatra.
+A fenti példában `ivoicemailboxactor.leavemessageasync` a metódus neve, `2` a futtatókörnyezet belső használatára generált 32 bites azonosító, `89383d32-e57e-4a9b-a6ad-57c6792aa521` a Service Fabric partíció AZONOSÍTÓjának karakterláncos ábrázolása, a `635650083804480486` pedig a futtatókörnyezet belső használatára generált 64 bites azonosító.
 
 ## <a name="list-of-events-and-performance-counters"></a>Események és teljesítményszámlálók listája
-### <a name="actor-method-events-and-performance-counters"></a>Aktor metódus események és teljesítményszámlálók
-A Reliable Actors-futtatókörnyezet az alábbi kapcsolatos eseményeket bocsát ki [aktor módszerek](service-fabric-reliable-actors-introduction.md).
+### <a name="actor-method-events-and-performance-counters"></a>Színészi metódus eseményei és teljesítményszámlálói
+A Reliable Actors Runtime a következő, a [Actor metódusokkal](service-fabric-reliable-actors-introduction.md)kapcsolatos eseményeket bocsátja ki.
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Részletes |0x2 |Aktorok futásidejű arra készül, hogy az aktor metódus meghívása. |
-| ActorMethodStop |8 |Részletes |0x2 |Egy aktor metódus végrehajtása befejeződött. Azt jelenti a futásidejű aszinkron hívás az aktor metódus visszatért, és az aktor metódus által visszaadott a feladat befejeződött. |
-| ActorMethodThrewException |9 |Figyelmeztetés |0x3 |Kivétel történt az aktor metódus végrehajtása közben vagy a futásidejű aszinkron az aktor metódus hívása során vagy a feladat végrehajtása közben az aktor metódus adja vissza. Az esemény azt jelzi, hogy valamilyen hiba történt a az aktor kódot, amely a platformnaplók vizsgálata szükséges. |
+| ActorMethodStart |7 |Részletezés |0x2 |A Actors futtatókörnyezet egy Actor metódus meghívására készül. |
+| ActorMethodStop |8 |Részletezés |0x2 |Egy Actor metódus befejezte a végrehajtást. Ez azt eredményezi, hogy a futásidejű aszinkron hívást kapott a Actor metódus, és a Actor metódus által visszaadott feladat befejeződött. |
+| ActorMethodThrewException |9 |Figyelmeztetés |0x3 |Kivétel történt egy Actor metódus végrehajtása során, vagy a futásidejű aszinkron hívása során, vagy a Actor metódus által visszaadott feladat végrehajtása során. Ez az esemény bizonyos típusú hibát jelez a színészi kódban, amelynek vizsgálatára van szükség. |
 
-A Reliable Actors-futtatókörnyezet az aktor módszerek végrehajtásával kapcsolatos alábbi teljesítményszámlálók tesz közzé.
+A Reliable Actors futtatókörnyezet a Actor metódusok végrehajtásával kapcsolatos következő teljesítményszámlálók közzétételét teszi közzé.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-Aktormetódus |Indítások/mp |Az aktor service metódus meghívásainak száma másodpercenként hányszor |
-| Service Fabric-Aktormetódus |Hívásonkénti átlagos idő ezredmásodpercben |Ennyi ezredmásodpercig tart az aktor service metódus végrehajtásához szükséges idő |
-| Service Fabric-Aktormetódus |Kivétel keletkezett kivétel/mp |Az aktorszolgáltatási metódus száma másodpercenként kivételt okozott. |
+| Service Fabric Actors metódus |Hívás/mp |A Actor szolgáltatás metódusának meghívása másodpercenkénti számú alkalommal |
+| Service Fabric Actors metódus |Hívás átlagos száma ezredmásodpercben |A Actor szolgáltatás metódusának végrehajtásához szükséges idő ezredmásodpercben |
+| Service Fabric Actors metódus |Kivételek száma másodpercenként |Az a szám, ahányszor a Actor Service metódus kivételt okozott másodpercenként |
 
-### <a name="concurrency-events-and-performance-counters"></a>Egyidejűség-események és teljesítményszámlálók
-A Reliable Actors-futtatókörnyezet az alábbi kapcsolatos eseményeket bocsát ki [egyidejűségi](service-fabric-reliable-actors-introduction.md#concurrency).
+### <a name="concurrency-events-and-performance-counters"></a>Egyidejűségi események és teljesítményszámlálók
+A Reliable Actors futtatókörnyezet az [egyidejűséghez](service-fabric-reliable-actors-introduction.md#concurrency)kapcsolódó alábbi eseményeket bocsátja ki.
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Részletes |0x8 |Ez az esemény minden egyes új kapcsolja az aktor elején van megírva. A függőben lévő beszerezni az aktoronkénti zárolásra fordulókra egyidejűségi megőrző váró aktorhívások számát tartalmazza. |
+| ActorMethodCallsWaitingForLock |12 |Részletezés |0x8 |Ezt az eseményt a színész minden új bekapcsolásának elején kell megírni. Tartalmazza azon függőben lévő Actor-hívások számát, amelyek arra várnak, hogy beszerezzék a bekapcsolási egyidejűséget végrehajtó, a színészi zárolást. |
 
-A Reliable Actors-modul a következő teljesítményszámlálókkal kapcsolatos egyidejűségi tesz közzé.
+A Reliable Actors futtatókörnyezet a párhuzamossághoz kapcsolódó következő teljesítményszámlálók közzétételét teszi közzé.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-Aktor |aktor zárolására váró aktorhívások száma |Függőben lévő beszerezni az aktoronkénti zárolásra fordulókra egyidejűségi megőrző váró aktorhívások száma |
-| Service Fabric-Aktor |Várakozás zárolásra átlagos ideje ezredmásodpercben |Ideje (ezredmásodpercben), amelyeket az egyidejűségi fordulókra kényszerít az aktoronkénti zárolásra |
-| Service Fabric-Aktor |Aktorzárolás átlagos ideje ezredmásodpercben |Az aktoronkénti zárolásra tárolt, amelynek időtartama (ezredmásodpercben) |
+| Service Fabric színész |a színészi zárolásra várakozó Actors-hívások száma |A függőben lévő szereplők által kezdeményezett hívások száma, amelyek kikényszerítik a Turn-alapú párhuzamosságot |
+| Service Fabric színész |Zárolási várakozás átlagos száma ezredmásodpercben |Igénybe vett idő (ezredmásodpercben) a többtényezős zárolás beolvasásához, amely kikényszeríti a párhuzamos párhuzamosságot |
+| Service Fabric színész |Átlagosan ezredmásodpercben tartott színész zárolása |Az az idő (ezredmásodpercben), amely esetében az egytényezős zárolást tárolják |
 
-### <a name="actor-state-management-events-and-performance-counters"></a>Aktor felügyeleti események és teljesítményszámlálók
-A Reliable Actors-futtatókörnyezet az alábbi kapcsolatos eseményeket bocsát ki [aktor állapot-felügyeleti](service-fabric-reliable-actors-state-management.md).
+### <a name="actor-state-management-events-and-performance-counters"></a>Színészi állapot-felügyeleti események és teljesítményszámlálók
+A Reliable Actors Runtime a következő eseményeket bocsátja ki a [szereplők állapotának kezelésével](service-fabric-reliable-actors-state-management.md)kapcsolatban.
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Részletes |0x4 |Aktorok futásidejű arra készül, hogy az aktor állapotmentésének időtartama. |
-| ActorSaveStateStop |11 |Részletes |0x4 |Aktorok runtime az aktorok állapotának mentése befejeződött. |
+| ActorSaveStateStart |10 |Részletezés |0x4 |A Actors futtatókörnyezet a színész állapotának mentésére készül. |
+| ActorSaveStateStop |11 |Részletezés |0x4 |A Actors Runtime befejezte a színész állapotának mentését. |
 
-A Reliable Actors-modul a következő teljesítményszámlálókkal kapcsolatos aktor állapot-felügyeleti tesz közzé.
+A Reliable Actors Runtime közzéteszi a szereplők állapotának kezelésével kapcsolatos következő teljesítményszámlálókat.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-Aktor |Átlagos ideje ezredmásodpercben mentése művelet. |Idő az aktor állapotmentésének időtartama ezredmásodpercben |
-| Service Fabric-Aktor |Állapotbetöltési művelet átlagos ideje ezredmásodpercben |Ennyi ezredmásodpercig tart aktorállapot betöltésének ideje |
+| Service Fabric színész |Átlagosan ezredmásodperc/mentési állapot művelete |A színészi állapot mentéséhez szükséges idő ezredmásodpercben |
+| Service Fabric színész |Terhelési állapot átlagos száma ezredmásodpercben |A Actor állapotának betöltéséhez szükséges idő ezredmásodpercben |
 
-### <a name="events-related-to-actor-replicas"></a>Szereplők replikáinak kapcsolódó eseményeket.
-A Reliable Actors-futtatókörnyezet az alábbi kapcsolatos eseményeket bocsát ki [szereplők replikáinak](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
+### <a name="events-related-to-actor-replicas"></a>Actor-replikákkal kapcsolatos események
+A Reliable Actors futtatókörnyezet a következő, [színészi replikákkal](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)kapcsolatos eseményeket bocsátja ki.
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ReplicaChangeRoleToPrimary |1 |Tájékoztató |0x1 |Aktor replika szerepkör elsődleges módosult. Ez azt jelenti, hogy a partíció a szereplők az ezen belül hozható létre. |
-| ReplicaChangeRoleFromPrimary |2 |Tájékoztató |0x1 |Aktor replika nem elsődleges szerepkör módosult. Ez azt jelenti, hogy a partíció az aktorokat már nem jön létre az ezen belül. Ez a másodpéldány belül már létrehozott actors nincs új kérelem lesz elküldve. Az aktorok meg kell semmisíteni, a folyamatban lévő kérések után. |
+| ReplicaChangeRoleToPrimary |1 |Tájékoztató |0x1 |A Actor replika megváltoztatta a szerepkört az elsődleges értékre. Ez azt jelenti, hogy a partíció résztvevői a replikán belül lesznek létrehozva. |
+| ReplicaChangeRoleFromPrimary |2 |Tájékoztató |0x1 |A Actor replika a szerepkört nem elsődlegesre módosította. Ez azt jelenti, hogy a partíció résztvevői többé nem jönnek létre a replikán belül. A rendszer nem küld új kérelmeket a replikán belül már létrehozott résztvevőknek. A rendszer a folyamatban lévő kérések befejezése után megsemmisíti a szereplőket. |
 
-### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Aktor aktiválás és az inaktiválást események és teljesítményszámlálók
-A Reliable Actors-futtatókörnyezet az alábbi kapcsolatos eseményeket bocsát ki [aktor aktiválás és az inaktiválást](service-fabric-reliable-actors-lifecycle.md).
+### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Színészi aktiválási és inaktiválási események és teljesítményszámlálók
+A Reliable Actors Runtime a következő, a [színész aktiválásával és inaktiválásával](service-fabric-reliable-actors-lifecycle.md)kapcsolatos eseményeket bocsátja ki.
 
 | Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
-| ActorActivated |5 |Tájékoztató |0x1 |Egy aktor aktiválva lett. |
-| ActorDeactivated |6 |Tájékoztató |0x1 |Egy aktor ki lett kapcsolva. |
+| ActorActivated |5 |Tájékoztató |0x1 |Egy színész aktiválva lett. |
+| ActorDeactivated |6 |Tájékoztató |0x1 |Egy szereplő inaktiválva lett. |
 
-A Reliable Actors-modul a következő teljesítményszámlálókkal kapcsolatos aktor aktiválás és az inaktiválást tesz közzé.
-
-| Kategória neve | Számláló neve | Leírás |
-| --- | --- | --- |
-| Service Fabric-Aktor |Átlagos ideje ezredmásodpercben OnActivateAsync |Ennyi ezredmásodpercig tart az OnActivateAsync metódus végrehajtásához szükséges idő |
-
-### <a name="actor-request-processing-performance-counters"></a>Teljesítményszámlálók aktor a kérelem feldolgozása
-Amikor egy ügyfél keresztül aktor proxy objektum egy metódust hív meg, egy kérelemüzenetet küld a hálózaton keresztül az aktorszolgáltatás eredményez. A szolgáltatás feldolgozza a kérést üzenetet, és visszaküldi a választ az ügyfél. A Reliable Actors-futtatókörnyezet tesz közzé a következő teljesítményszámlálókkal kapcsolatos aktor a kérelem feldolgozása.
+A Reliable Actors futtatókörnyezet a következő teljesítményszámlálók közzétételét teszi közzé a Actor aktiválásával és inaktiválásával kapcsolatban.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-Aktor |függőben lévő kérések száma |A szolgáltatás a feldolgozás alatt álló kérelmek száma |
-| Service Fabric-Aktor |Kérelmenkénti átlagos idő ezredmásodpercben |Igénybe vett idő (ezredmásodpercben) a szolgáltatás által feldolgozott kérések |
-| Service Fabric-Aktor |Kérelem deszerializálásának átlagos ideje ezredmásodpercben |(Ezredmásodpercben) deszerializálása actor-kérelem üzenet érkezésekor Ez a szolgáltatás igénybe vett idő |
-| Service Fabric-Aktor |Válasz szerializálásának átlagos ideje ezredmásodpercben |Időtartam (ezredmásodpercben) az aktor válaszüzenetet, a szolgáltatás szerializálni az ügyfélnek a válasz elküldése előtt |
+| Service Fabric színész |Átlagos OnActivateAsync ezredmásodpercben |A OnActivateAsync metódus végrehajtásához szükséges idő ezredmásodpercben |
 
-## <a name="next-steps"></a>További lépések
-* [A Service Fabric platformot használja a Reliable Actors](service-fabric-reliable-actors-platform.md)
-* [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+### <a name="actor-request-processing-performance-counters"></a>Színészi kérelmek feldolgozási teljesítményszámlálók
+Amikor az ügyfél egy metódust egy Actor proxy objektumon keresztül hív meg, a rendszer a hálózaton keresztül küldött kérést küld a Actor szolgáltatásnak. A szolgáltatás feldolgozza a kérelem üzenetét, és visszaküldi a választ az ügyfélnek. A Reliable Actors futtatókörnyezet a következő teljesítményszámlálók közzétételét teszi közzé a Actor Request Processing szolgáltatással kapcsolatban.
+
+| Kategória neve | Számláló neve | Leírás |
+| --- | --- | --- |
+| Service Fabric színész |függőben lévő kérelmek száma |A szolgáltatásban feldolgozott kérelmek száma |
+| Service Fabric színész |Kérelmek átlagos száma ezredmásodpercben |A szolgáltatás által a kérelem feldolgozásához szükséges idő (ezredmásodpercben) |
+| Service Fabric színész |Kérelem deszerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben) a színészi kérelem üzenetének deszerializálásához, amikor a szolgáltatás megkapja a szolgáltatást |
+| Service Fabric színész |Válasz szerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben), hogy a rendszer a válasz küldése előtt szerializálja a szolgáltatásbeli válaszüzenetet az ügyfélnek. |
+
+## <a name="next-steps"></a>Következő lépések
+* [Hogyan Reliable Actors használni a Service Fabric platformot?](service-fabric-reliable-actors-platform.md)
+* [A Actor API-referenciájának dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [A PerfView EventSource szolgáltatók](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [EventSource-szolgáltatók a Perfview eszköz-ben](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

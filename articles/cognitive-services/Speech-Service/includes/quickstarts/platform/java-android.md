@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: c3d7f265993a03c637577678cd9b3012776598c7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: cd99d6227f32e1382f32f5fa3c7455475ebbbcda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469426"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Java [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t Androidon. A telepítő a Speech SDK Maven-csomagon alapul, és Android Studio 3,3.
 

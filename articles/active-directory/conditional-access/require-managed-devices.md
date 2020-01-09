@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424820"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -91,9 +91,10 @@ A megfelelőként megjelölt eszközök esetében feltételezhető, hogy:
 - A céges adatok védelméhez segítséget nyújt a munkatársak hozzáférésének és megosztásának szabályozása
 - Az eszköz és az alkalmazásai megfelelnek a vállalat biztonsági követelményeinek
 
-> [!NOTE]
-> Ha a szabályzatot úgy konfigurálja, hogy megkövetelje a megfelelő eszközök felhasználóinak megkövetelését Mac, iOS és Android rendszerre, az eszköz tanúsítványának kiválasztásához a szabályzat kiértékelése során. Ez egy ismert viselkedés.
+### <a name="known-behavior"></a>Ismert viselkedés
 
-## <a name="next-steps"></a>További lépések
+Windows 7, iOS, Android, macOS és néhány külső webböngészőben az Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja. Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhassa a böngészőt.
+
+## <a name="next-steps"></a>Következő lépések
 
 Az eszköz alapú feltételes hozzáférési szabályzatnak a környezetben való konfigurálása előtt tekintse át a [Azure Active Directory a feltételes hozzáférés ajánlott eljárásait](best-practices.md).

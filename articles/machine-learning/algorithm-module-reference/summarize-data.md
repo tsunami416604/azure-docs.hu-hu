@@ -1,7 +1,7 @@
 ---
 title: Adatok összegzése
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban található összegző adatok modult az adatkészlet oszlopaihoz tartozó alapszintű leíró statisztikai jelentés létrehozásához.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhatja ki az adatkészletek oszlopaihoz tartozó alapszintű leíró statisztikai jelentést az Azure Machine Learning-ben az összegző adatok modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428461"
 ---
 # <a name="summarize-data"></a>Adatok összegzése
 
@@ -42,7 +42,7 @@ A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként m
 
 1. Futtassa a folyamatot, vagy kattintson a jobb gombbal a modulra, és válassza a **kijelölt futtatása**lehetőséget.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A modul jelentései a következő statisztikákat is tartalmazhatják. 
 
@@ -59,7 +59,7 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
 |**1. kvartilis**|Érték az első kvartilis|
 |**Medián**|Medián oszlop értéke|
 |**harmadik kvartilis**|Érték a harmadik kvartilis|
-|**Mód**|Oszlop értékeinek módja|
+|**Mode**|Oszlop értékeinek módja|
 |**Tartomány**|A maximális és a minimális értékek közötti értékek számát jelző egész szám|
 |**Minta eltérése**|Az oszlop eltérése; Lásd: Megjegyzés|
 |**Minta szórása**|Oszlop szórása; Lásd: Megjegyzés|
@@ -71,6 +71,6 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
 |**P95**|95% percentilis|
 |**P 99,5**|99,5% percentilis |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) .  
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .  

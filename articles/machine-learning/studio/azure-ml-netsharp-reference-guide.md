@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427667"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Útmutató a net # neurális hálózat specifikációjának nyelvéhez Azure Machine Learning Studio (klasszikus)
 
@@ -56,7 +56,7 @@ A net # emellett a következő négy típusú speciális csatlakoztatási köteg
 
 ## <a name="supported-customizations"></a>Támogatott testreszabások
 
-A Azure Machine Learning Studio klasszikus verziójában létrehozott neurális hálózati modellek architektúrája nagy mértékben testreszabható a NET # használatával. A következőket teheti:
+A Azure Machine Learning Studio (klasszikus) szolgáltatásban létrehozott neurális hálózati modellek architektúrája a NET # használatával széles körben testreszabható. Előnyök:
 
 + Rejtett rétegek létrehozása és a csomópontok számának szabályozása az egyes rétegekben.
 + Határozza meg, hogyan kapcsolódjanak egymáshoz a rétegek.
@@ -169,7 +169,7 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ A (z) `ByRow`predikátumában `s` egy olyan paraméter, amely az indexet jelképezi a bemeneti réteg csomópontjainak téglalap alakú sorában, `Pixels`és `d` egy indexet jelképező paraméter a rejtett réteg csomópontjainak tömbje számára. , `ByRow`. Mindkét `s` és `d` típusa a két hosszúságú egész számokból álló rekord. Elméletileg `s` tartományokat a `0 <= s[0] < 10` és a `0 <= s[1] < 20`egész szám egészére vonatkozóan, és az egész számra `d` tartományokat, `0 <= d[0] < 10` és `0 <= d[1] < 12`.
++ A (z) `ByRow`predikátumában `s` egy olyan paraméter, amely az indexet jelképezi a bemeneti réteg csomópontjainak téglalap alakú sorában, `Pixels`és `d` egy olyan paraméter, amely az indexet jelképezi a rejtett réteg csomópontjainak tömbje számára `ByRow`. Mindkét `s` és `d` típusa a két hosszúságú egész számokból álló rekord. Elméletileg `s` tartományokat a `0 <= s[0] < 10` és a `0 <= s[1] < 20`egész szám egészére vonatkozóan, és az egész számra `d` tartományokat, `0 <= d[0] < 10` és `0 <= d[1] < 12`.
 
 + A predikátum kifejezés jobb oldalán van egy feltétel. Ebben a példában a `s` minden értékéhez, és `d` úgy, hogy a feltétel igaz legyen, a forrás réteg csomópontról a cél réteg csomópontra van egy szegély. Így ez a szűrő kifejezés azt jelzi, hogy a csomag tartalmaz egy, a `s` által definiált csomópontból a `d` által meghatározott csomóponthoz való kapcsolódást, ahol az s [0] értéke d [0].
 
@@ -259,7 +259,7 @@ További információ a rétegek készletezésével kapcsolatban:
 
 A **Válasz normalizálása** egy olyan helyi normalizáló séma, amelyet először az Geoffrey Hinton, az et al vezetett be, a papír [ImageNet besorolása pedig a mélyreható, a nagy-és a decentralizációs neurális hálózatokkal](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-A válasz normalizálása a neurális hálók általánosításának támogatására szolgál. Ha az egyik neuron nagyon magas aktiválási szinten vált, a helyi válasz normalizálása letiltja a környező neuronok aktiválási szintjét. Ez három paraméterrel (`α`, `β`és `k`) és egy-egy, egy-egy többrészes szerkezettel (vagy szomszédság alakzattal) végezhető el. Az **y** célként megadott réteg minden neuronja egy neuron **x** -nek felel meg a forrás rétegben. Az **y** aktiválási szintjét a következő képlet adja meg, ahol a `f` egy neuron aktiválási szintje, és `Nx` a kernel (vagy az **x**szomszédságában található neuronokat tartalmazó készlet), az alábbi, szerkezet
+A válasz normalizálása a neurális hálók általánosításának támogatására szolgál. Ha az egyik neuron nagyon magas aktiválási szinten vált, a helyi válasz normalizálása letiltja a környező neuronok aktiválási szintjét. Ez három paraméterrel (`α`, `β`és `k`) és egy-egy, egy-egy többrészes szerkezettel (vagy szomszédság alakzattal) végezhető el. Az **y** célként megadott réteg minden neuronja egy neuron **x** -nek felel meg a forrás rétegben. Az **y** aktiválási szintjét a következő képlet adja meg, ahol a `f` a neuron aktiválási szintje, és `Nx` a kernel (vagy az **x**szomszédságában található neuronokat tartalmazó készlet), az alábbi, a következő összetételi struktúra által meghatározott módon:
 
 ![a többszabályos struktúra képlete](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + A csomópontok teljes száma a (z) [50, 5, 5] réteg deklarált dimenzióját használatával számítható ki a következőképpen: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Mivel a `Sharing[d]` csak `d == 0`esetén hamis, a kernelek száma `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Nyugtázása
+## <a name="acknowledgements"></a>Köszönetnyilvánítás
 
 A neurális hálózatok architektúrájának testre szabására szolgáló net # nyelv a Microsoft számára készült az Katzenberger (Architect, Machine Learning) és a Alekszej Kamenev (szoftverfejlesztő mérnök, Microsoft Research) számára. Belsőleg használatos a gépi tanulási projektekhez és az alkalmazásokhoz, a képek észlelése és a szöveges elemzések között. További információ: [neurális hálók a Azure Machine learning Studióban – bevezetés a net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) használatába

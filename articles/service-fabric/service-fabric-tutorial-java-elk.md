@@ -1,28 +1,19 @@
 ---
-title: Alkalmazások monitorozása a Service Fabricben az ELK-val az Azure-ban | Microsoft Docs
+title: Alkalmazások monitorozása Service Fabric az Azure-ban a ELK használatával
 description: Ez az oktatóanyag azt mutatja be, hogyan állíthatja be az ELK-t és monitorozhatja Service Fabric-alkalmazásait.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61388727"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376658"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Az elk-val a Service Fabric-alkalmazások figyelése
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val
 
 Ez az oktatóanyag egy sorozat negyedik része. Azt mutatja be, hogyan használhatja az ELK-t (Elasticsearch, Logstash és Kibana) az Azure-ban futó Service Fabric-alkalmazások monitorozására.
 
@@ -109,7 +100,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Hozzon létre vagy módosítsa a meglévő Logstash konfigurációs fájlt a következő tartalommal: A fájlt hoz létre, hogy rendelkezik-e létrehozandó ```/opt/bitnami/logstash/conf/access-log.conf``` ELK Bitnami-rendszerkép használata az Azure-ban.
+4. Hozzon létre vagy módosítson egy meglévő Logstash konfigurációs fájlt a következők szerint: amennyiben a fájl létrehozása mellett dönt, az Azure-ban található ELK Bitnami-rendszerkép használata esetén a következő helyen kell létrehoznia: ```/opt/bitnami/logstash/conf/access-log.conf```.
 
     ```json
     input
@@ -149,11 +140,11 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. A Kibana irányítópultját a következő hozzáférési **http:\//SERVER-IP** és a Kibana felhasználónevét és jelszavát adja meg. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
+8. Nyissa meg a Kibana irányítópultját **http:\//Server-IP** , és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

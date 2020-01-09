@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2251725597e44a15e421f33cc315be3fb1c7846f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459165"
 ---
 Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.
 
@@ -30,7 +30,7 @@ Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az 
 Az összes rendelkezésre álló elszigetelt méretről [itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)olvashat bővebben.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>D15_v2/DS15_v2 elkülönítés kivonása 2020. február 15-én
-Nemrég bejelentettük az Azure dedikált gazdagép előzetes verzióját, amely lehetővé teszi a szervezet Linux és Windows rendszerű virtuális gépei futtatását egybérlős fizikai kiszolgálókon. Azt tervezzük, hogy az elkülönített Azure-beli virtuális gépeket teljesen lecseréljük az Azure dedikált gazdagépre. A **2020. február 15** . után az Azure-beli virtuális gépek D15_v2/DS15_v2 már nem különíthető el a hardver.
+Az Azure dedikált gazdagép most már GA, amely lehetővé teszi a szervezet Linux és Windows rendszerű virtuális gépei futtatását egybérlős fizikai kiszolgálókon. Azt tervezzük, hogy az elkülönített Azure-beli virtuális gépeket teljesen lecseréljük az Azure dedikált gazdagépre. A **2020. február 15** . után az Azure-beli virtuális gépek D15_v2/DS15_v2 már nem különíthető el a hardver.
 
 ## <a name="how-does-this-affect-me"></a>Hogyan érint ez engem?
 2020. február 15-én már nem biztosítunk elkülönítési garanciát a D15_v2/DS15_v2 Azure-beli virtuális gépekhez. 
@@ -40,7 +40,7 @@ Ha a hardveres elkülönítés nem szükséges az Ön számára, nincs szükség
 
 Ha elkülönítésre van szükség, a 2020. február 15. előtt a következőkre lesz szüksége:
 
-• A számítási feladatok [migrálása](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) az Azure dedikált gazdagép előzetes verziójára
+• A számítási feladatok [áttelepíthetők](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) az Azure dedikált gazdagépre.
 
 • [Hozzáférés kérése](https://aka.ms/D15iRequestAccess) egy D15i_v2hoz és DS15i_v2 Azure-beli virtuális géphez, hogy ugyanazt az árat lehessen elérni. Ez a lehetőség csak az utólagos elszámolású és az egy éves fenntartott példányok esetében érhető el.    
 
@@ -57,7 +57,7 @@ Részletekért lásd alább:
 | Május 15., 2021  | A D/DS15i_v2 kivonása (az összes ügyfél, kivéve, ha a D/DS15_v2 3 éves RI-t vásárolt, 2019. november 18. előtt)| 
 | November 17, 2022   | A (z) D/DS15i_v2 kivonása a 3 éves beérkező 2019 DS15_v2 példányok esetében | 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 ### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>K: Miért nem látom az új D/DS15i_v2 méreteket a portálon?
 **A**: Ha aktuális d/DS15_v2 ügyfél, és az új d/DS15i_v2 méretet szeretné használni, töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
 
@@ -76,23 +76,23 @@ Részletekért lásd alább:
 ### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>K: már vásárolt 1 vagy 3 éves fenntartott példányt D15_v2 vagy Ds15_v2. Hogyan történik a kedvezmény alkalmazása a virtuális gépek használatára?
 **A**: a 2019. november 18. előtt megvásárolt RIs-példányok automatikusan kiterjesztik a lefedettséget az új elkülönített virtuálisgép-sorozatra. 
 
-| FENNTARTOTT példányok |  Példány méretének rugalmassága | Juttatások támogathatósága |   
+| RI |  Példány méretének rugalmassága | Juttatások támogathatósága |   
 | --- | --- | --- |
 |   D15_v2  |   Ki     |   D15_v2 és D15i_v2 |    
-|   D15_v2  |   Bekapcsolva  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
-|   D14_v2  |   Bekapcsolva  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
+|   D15_v2  |   Be  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
+|   D14_v2  |   Be  |   D15_v2 adatsorozat-és D15i_v2 az RI-juttatást is megkapja. |    
  
 Hasonlóképpen a Dsv2 sorozathoz.
  
 ### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>K: szeretnék további fenntartott példányokat vásárolni a Dv2. Melyiket válasszam?
 **A**: a 2019. november 18. után megvásárolt összes RIs a következő viselkedéssel rendelkezik. 
 
-| FENNTARTOTT példányok |  Példány méretének rugalmassága | Juttatások támogathatósága |   
+| RI |  Példány méretének rugalmassága | Juttatások támogathatósága |   
 | --- | --- | --- |
 | D15_v2 |  Ki |   Csak D15_v2  
-| D15_v2 |  Bekapcsolva |    A D15_v2 sorozat az RI juttatást fogja kapni. Az új D15i_v2 nem jogosult a ri-típusból származó RI juttatásra. | 
+| D15_v2 |  Be |    A D15_v2 sorozat az RI juttatást fogja kapni. Az új D15i_v2 nem jogosult a ri-típusból származó RI juttatásra. | 
 | D15i_v2 |     Ki | Csak D15i_v2 |  
-| D15i_v2 |     Bekapcsolva  | Csak D15i_v2 | 
+| D15i_v2 |     Be  | Csak D15i_v2 | 
  
 A példányok méretének rugalmassága nem használható más méretekre, például D2_v2re, D4_v2ra vagy D15_v2re. Hasonlóképpen, a Dsv2 sorozathoz.  
  

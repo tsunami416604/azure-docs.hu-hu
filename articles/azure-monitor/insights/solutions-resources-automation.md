@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401821"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation erőforrások hozzáadása felügyeleti megoldáshoz (előzetes verzió)
 > [!NOTE]
@@ -31,7 +31,7 @@ Ez a cikk azt feltételezi, hogy már ismeri a következő információkat.
 
 - [Felügyeleti megoldás létrehozása]( solutions-creating.md).
 - Egy [megoldás fájljának]( solutions-solution-file.md)szerkezete.
-- [Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md) készítése
+- [Resource Manager-sablonok](../../azure-resource-manager/templates/template-syntax.md) készítése
 
 ## <a name="automation-account"></a>Automation-fiók
 Azure Automation összes erőforrása egy [Automation-fiókban](../../automation/automation-security-overview.md#automation-account-overview)található.  Az [log Analytics munkaterület és az Automation-fiók]( solutions.md#log-analytics-workspace-and-automation-account) című témakörben leírtak szerint az Automation-fiók nem szerepel a felügyeleti megoldásban, de a megoldás telepítése előtt léteznie kell.  Ha nem érhető el, a megoldás telepítése sikertelen lesz.
@@ -165,7 +165,7 @@ A hitelesítőadat-erőforrások tulajdonságait az alábbi táblázat ismerteti
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| userName |A hitelesítő adat felhasználóneve. |
+| userName (Felhasználónév) |A hitelesítő adat felhasználóneve. |
 | jelszó |A hitelesítő adat jelszava. |
 
 
@@ -196,7 +196,7 @@ Az ütemezett erőforrások tulajdonságait az alábbi táblázat ismerteti.
 | leírás |Az ütemterv leírását nem kötelező megadni. |
 | startTime |Meghatározza az ütemterv kezdő időpontját DateTime objektumként. Karakterláncot adhat meg, ha egy érvényes DateTime értékre konvertálható. |
 | isEnabled |Meghatározza, hogy az ütemterv engedélyezve van-e. |
-| interval |Az ütemterv intervallumának típusa<br><br>nap<br>óra |
+| interval |Az ütemterv intervallumának típusa<br><br>napon<br>hour |
 | frequency |A gyakoriság, amelyet az ütemtervnek a napok vagy órák számának megfelelően kell megjelennie. |
 
 Az ütemezett kezdési időpontnak az aktuális időpontnál nagyobb értékkel kell rendelkeznie.  Ez az érték nem adható meg változóként, mert nem tudná tudni, hogy mikor lesz telepítve.
@@ -264,7 +264,7 @@ A változó erőforrások tulajdonságait az alábbi táblázat ismerteti.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | leírás | A változó leírását nem kötelező megadni. |
-| isEncrypted | Megadja, hogy a változó titkosítva legyen-e. |
+| IsEncrypted | Megadja, hogy a változó titkosítva legyen-e. |
 | type | Ennek a tulajdonságnak jelenleg nincs hatása.  A változó adattípusa a kezdeti érték alapján lesz meghatározva. |
 | érték | A változó értéke. |
 
@@ -275,10 +275,10 @@ Ha a változóhoz a kezdeti értéket állítja be, akkor azt megfelelő adattí
 
 | Data type | Leírás | Példa | Feloldás |
 |:--|:--|:--|:--|
-| sztring   | Érték befoglalása idézőjelek közé.  | "\"Hello World \"" | "Helló világ" |
+| sztring   | Érték befoglalása idézőjelek közé.  | "\"Hello World\"" | "Helló világ" |
 | numerikus  | Numerikus érték szimpla idézőjelekkel.| "64" | 64 |
-| logikai  | **igaz** vagy **hamis** idézőjelek között.  Vegye figyelembe, hogy ennek az értéknek kisbetűsnek kell lennie. | igaz | igaz |
-| dátum/idő | Szerializált dátumérték.<br>Az ConvertTo-JSON parancsmagot a PowerShellben használhatja egy adott dátumhoz tartozó érték létrehozásához.<br>Példa: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378) \\/" | 2017-05-24 13:14:57 |
+| logikai  | **igaz** vagy **hamis** idézőjelek között.  Vegye figyelembe, hogy ennek az értéknek kisbetűsnek kell lennie. | "true" | igaz |
+| dátum/idő | Szerializált dátumérték.<br>Az ConvertTo-JSON parancsmagot a PowerShellben használhatja egy adott dátumhoz tartozó érték létrehozásához.<br>Példa: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok
 A felügyeleti megoldásnak nem kell megadnia a runbookok által használt [globális modulokat](../../automation/automation-integration-modules.md) , mivel azok mindig elérhetők lesznek az Automation-fiókban.  Meg kell adnia egy erőforrást a runbookok által használt bármely más modulhoz.

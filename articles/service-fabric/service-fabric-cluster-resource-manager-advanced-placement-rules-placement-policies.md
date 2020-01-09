@@ -1,51 +1,42 @@
 ---
-title: Service Fabric fürt Resource Manager - elhelyezési házirendek |} A Microsoft Docs
-description: További elhelyezési házirendeket és a szabályok a Service Fabric-szolgáltatások áttekintése
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric fürterőforrás-kezelő elhelyezési házirendjei
+description: További elhelyezési házirendek és szabályok áttekintése Service Fabric szolgáltatásokhoz
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: d5aea441f15cbf7a2a444439c06cd5f74a559d3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9861faeaf4ab4049de7404a9e6f8b59a9445fe5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452186"
 ---
-# <a name="placement-policies-for-service-fabric-services"></a>A service fabric-szolgáltatások elhelyezési házirendek
-Elhelyezési házirendeket, amelyek segítségével szabályozhatja az egyes konkrét, kevésbé-közös forgatókönyvekben a szolgáltatások elhelyezését további szabályok. Néhány példa, illetve a forgatókönyvek a következők:
+# <a name="placement-policies-for-service-fabric-services"></a>A Service Fabric-szolgáltatások elhelyezési házirendjei
+Az elhelyezési házirendek olyan további szabályok, amelyek segítségével szabályozható a szolgáltatások elhelyezése bizonyos konkrét, kevésbé gyakori helyzetekben. Ilyen forgatókönyvek például a következők:
 
-- A Service Fabric-fürt kiterjedő földrajzi távokat, például a több helyszíni adatközpont vagy Azure-régiók között
-- A környezet kiterjedő geopolitikai vagy jogi vezérlőelem több területet, vagy néhány egyéb házirend esetében ki kell kényszerítenie határok
-- Kommunikációs teljesítmény vagy a késés megfontolások miatt nagy távolságra vagy a lassabb vagy kevésbé megbízható hálózati kapcsolatok
-- Bizonyos munkaterhelések közös elhelyezésű, ajánlott annak érdekében, vagy más számítási feladatokkal, vagy az ügyfelek számára közelségi megőrzése
+- A Service Fabric-fürt földrajzi távolságokra, például több helyszíni adatközpontra vagy Azure-régióra terjed ki.
+- A környezet kiterjed a geopolitikai vagy jogi szabályozás több területére, vagy olyan esetekre, amikor a szabályzatok határain belül kell kikényszeríteni
+- A kommunikációs teljesítményre vagy késésre vonatkozó megfontolások nagy távolságok vagy lassabb vagy kevésbé megbízható hálózati kapcsolatok használata miatt
+- Bizonyos számítási feladatokat a lehető legjobb közös elhelyezésű kell tartania, akár más számítási feladatokkal, akár az ügyfelek közelében
 
-Ezek a követelmények a legtöbb igazodva szerinti a tartalék tartományok a fürt a fürt fizikai elrendezését. 
+A követelmények többsége a fürt fizikai elrendezésével van összhangban, amely a fürt tartalék tartománya. 
 
-A speciális elhelyezési házirendeket, amelyek segítenek ezek a forgatókönyvek a következők:
+Az ilyen forgatókönyveket segítő speciális elhelyezési házirendek a következők:
 
-1. Érvénytelen tartomány
-2. A tartományok megadása kötelező
-3. Elsődleges tartomány
-4. Replika csomagolási kapcsolatai
+1. Érvénytelen tartományok
+2. Szükséges tartományok
+3. Előnyben részesített tartományok
+4. Replika csomagolásának letiltása
 
-Az alábbi vezérlők a legtöbb csomópont-tulajdonságok és elhelyezési korlátozások konfigurálása sikerült, de néhány összetettebb. A Service Fabric fürterőforrás-kezelő egyszerűbbé teszik a dolgokat, biztosít ezen további elhelyezési házirendeket. Elhelyezési házirendeket egy elnevezett szolgáltatás példány alapon vannak konfigurálva. Akkor is frissíthető dinamikusan.
+A következő vezérlők többsége konfigurálható a csomópont tulajdonságai és az elhelyezési megkötések használatával, de néhány bonyolultabb. A Service Fabric fürterőforrás-kezelője egyszerűbbé teszi a további elhelyezési házirendeket. Az elhelyezési házirendek egy névvel ellátott szolgáltatási példány alapján konfigurálhatók. Dinamikusan is frissíthetők.
 
-## <a name="specifying-invalid-domains"></a>Érvénytelen tartomány megadása
-A **InvalidDomain** elhelyezési házirend lehetővé teszi, hogy egy adott tartalék tartomány érvénytelen adott szolgáltatásokhoz. Ez a házirend biztosítja, hogy egy adott szolgáltatás egy bizonyos területen, például a geopolitikai vagy vállalati házirendek miatt soha ne fusson. Érvénytelen több tartomány segítségével különböző házirendeket lehet megadni.
+## <a name="specifying-invalid-domains"></a>Érvénytelen tartományok meghatározása
+A **InvalidDomain** elhelyezési házirend lehetővé teszi annak megadását, hogy egy adott tartalék tartomány egy adott szolgáltatás esetében érvénytelen. Ez a szabályzat biztosítja, hogy egy adott szolgáltatás soha ne fusson egy adott területen, például geopolitikai vagy vállalati házirend miatt. Több érvénytelen tartomány is megadható külön szabályzatok használatával.
 
 <center>
 
-![Érvénytelen tartomány – példa][Image1]
+![érvénytelen tartományi példa][Image1]
 </center>
 
 Kód:
@@ -61,12 +52,12 @@ PowerShell:
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
-## <a name="specifying-required-domains"></a>Adja meg a szükséges tartományok
-A szükséges tartományi elhelyezési házirend megköveteli, hogy megtalálható-e a szolgáltatás csak a megadott tartományban. Több kötelező tartomány különböző házirendeket keresztül adható meg.
+## <a name="specifying-required-domains"></a>Szükséges tartományok megadása
+A szükséges tartomány-elhelyezési házirend megköveteli, hogy a szolgáltatás csak a megadott tartományban legyen megtalálható. Több kötelező tartomány is megadható külön szabályzatok használatával.
 
 <center>
 
-![Kötelező: Példa][Image2]
+![szükséges tartományi példa][Image2]
 </center>
 
 Kód:
@@ -83,12 +74,12 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Állapotalapú szolgáltatás elsődleges replika az elsődleges tartomány megadása
-Az előnyben részesített elsődleges tartomány elhelyezése az elsődleges, a tartalék tartományának megadása. Az elsődleges fejeződik be a tartomány minden kifogástalan esetén. Ha a tartomány vagy az elsődleges replika meghibásodik, vagy leáll, az elsődleges áthelyezi egy másik helyre, ideális ugyanabban a tartományban. Ha az új hely nem előnyben részesített a tartományban, a fürterőforrás-kezelő tér vissza az elsődleges tartomány minél hamarabb. Természetesen ez a beállítás csak értelme az állapotalapú szolgáltatások esetében. Ez a szabályzat akkor a leghasznosabb, amely az Azure-régióban vannak felölelt fürtök, vagy több adatközpont, de a szolgáltatások, amelyek inkább az elhelyezési bizonyos helyen vannak. Elsődleges tartja a felhasználók vagy más szolgáltatások közelében biztosít a kisebb késés, különösen az olvasási, amely alapértelmezés szerint elsődleges kezeli.
+## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Előnyben részesített tartomány megadása egy állapot-nyilvántartó szolgáltatás elsődleges replikái számára
+Az előnyben részesített elsődleges tartomány meghatározza azt a tartalék tartományt, amelybe az elsődleges helyet helyezni kívánja. Az elsődleges végpont ebben a tartományban, ha minden kifogástalan állapotú. Ha a tartomány vagy az elsődleges replika meghibásodik vagy leáll, az elsődleges áthelyezés egy másik helyre, ideális esetben ugyanabban a tartományban történik. Ha az új hely nincs az előnyben részesített tartományban, a fürterőforrás-kezelő a lehető leghamarabb áthelyezi az előnyben részesített tartományba. Ez a beállítás természetesen csak az állapot-nyilvántartó szolgáltatások esetében van értelme. Ez a szabályzat a legtöbb Azure-régióban vagy több adatközpontban átnyúló fürtök esetében hasznos, de olyan szolgáltatásokkal rendelkezik, amelyek előnyben részesítik az elhelyezést egy adott helyen. Az elsődleges felhasználók vagy más szolgáltatások közel tartása segít csökkenteni a késést, különösen az olvasások esetében, amelyeket alapértelmezés szerint az elsődlegesek kezelnek.
 
 <center>
 
-![Előnyben részesített elsődleges tartományok és feladatátvétel][Image3]
+![elsődleges tartományok és feladatátvételi][Image3]
 </center>
 
 ```csharp
@@ -103,18 +94,18 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Replika terjesztési igénylő és csomagolási kapcsolatai
-Replikák _általában_ elosztva hibatűrési és frissítési tartományokba, amikor a fürt állapota kifogástalan. Vannak azonban esetekben, ahol egynél több replikát egy adott partíció esetében előfordulhat, hogy végül ideiglenesen csomagolt egy tartományba. Például tegyük fel, hogy a fürt három tartalék tartományt, fd kilenc csomópontok rendelkezik: / 0, fd: / 1- es fd: / 2. Is tegyük fel, hogy a szolgáltatás rendelkezik-e a három replika készül. Tegyük fel, amely ezeket az fd-replikákhoz használt csomópontok: / 1 és fd: / 2 csökkent. Általában a fürterőforrás-kezelő inkább más csomópontok ezek azonos tartalék tartományokban. Ebben az esetben tegyük miatt nehézségekbe ütközhet az ezeket a tartományokat a többi csomópont sem érvényes. A fürterőforrás-kezelő létrehozta ezeket a replikákat a lecserélendő, ha azt kellene csomópontok kiválasztása az fd: / 0. Azonban ez _, amely_ hoz létre egy olyan helyzetet, ahol a tartalék tartomány korlátozás sérül. Replikák növeli annak esélyét, hogy a teljes replika beállítása sikerült leáll vagy megszakadt. 
+## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Replika terjesztésének és a csomagolás letiltásának megkövetelése
+A replikák _általában_ a hibák és a frissítési tartományok között oszlanak el, ha a fürt kifogástalan állapotban van. Vannak azonban olyan esetek, amikor egy adott partíció több replikája átmenetileg becsomagolható egyetlen tartományba. Tegyük fel például, hogy a fürt kilenc csomóponttal rendelkezik három tartalék tartományban, az FD:/0, az FD:/1 és az FD:/2. Azt is tegyük fel, hogy a szolgáltatás három replikával rendelkezik. Tegyük fel, hogy azok a csomópontok, amelyek az FD:/1 és az FD:/2-beli replikák esetében voltak használatban, leálltak. Általában a fürterőforrás-kezelő előnyben részesített más csomópontokat ugyanezen tartalék tartományokban. Ebben az esetben tegyük fel, hogy a kapacitási problémák miatt a tartományok más csomópontjai sem érvényesek. Ha a fürterőforrás-kezelő ezeket a replikákat építi fel, akkor a csomópontok közül kell kiválasztania a következőt: FD:/0. Ezzel azonban olyan _helyzetet hoz létre, amelyben_ a tartalék tartomány megkötése meg lett sértve. A csomagolási replikák növelik azt az esélyt, hogy a teljes replika leáll vagy elvész. 
 
 > [!NOTE]
-> További információ a korlátozások és a korlátozás prioritások általában, tekintse meg [ebben a témakörben](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
+> A korlátozásokkal és a korlátozási prioritásokkal kapcsolatos további információkért tekintse meg [ezt a témakört](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
 >
 
-Ha valaha megtudhatta, egészségügyi üzenet például a "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`", akkor ezt az állapotot, vagy valami, mint hogy eléri. Általában csak egy vagy két replika van csomagolt együtt ideiglenesen. Mindaddig, amíg vannak kevesebb mint egy kvórum replikák egy adott tartományban, akkor biztonságos voltát. Balí se ritkán fordul elő, de akkor fordulhat elő, és ezekben a helyzetekben általában átmeneti, mivel a csomópontok tér vissza. Ha a csomópontok maradjon le, és a fürterőforrás-kezelő cseréjére létre kell hoznia, általában nincsenek más csomópontok elérhető az ideális tartalék tartományokban.
+Ha már látott egy egészségügyi üzenetet (például "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`"), akkor ezt a feltételt találta, vagy valami hasonló. Általában csak egy vagy két replika van csomagolva, ideiglenesen együtt. Ha az adott tartományban kevesebb, mint a replikák kvóruma, akkor biztonságban van. A csomagolás ritka, de előfordulhat, hogy ezek a helyzetek általában átmenetiek, mivel a csomópontok visszatérnek. Ha a csomópontok lemaradnak, és a fürterőforrás-kezelőnek ki kell építenie a cseréket, általában az ideális tartalék tartományokban más csomópontok is elérhetők.
 
-Bizonyos munkaterhelések inkább, mindig a replikákat, célszáma kellene akkor is, ha azok kevesebb tartományokban vannak elhelyezve. Ezeket a feladatokat is tudásához teljes egyidejű állandó tartomány meghibásodásokkal szemben, és általában helyre tudja állítani a helyi állapotot. Más számítási feladatok inkább igénybe az állásidő kockázati helyességét, és adatvesztés, mint korábban. A legtöbb éles számítási feladatok futtatása több mint három replika, több mint három tartalék tartományt, és számos érvényes csomópontok maximális száma a tartalék tartomány. Emiatt az alapértelmezett viselkedés lehetővé teszi, hogy tartományi csomagolási alapértelmezés szerint. Alapértelmezés szerint lehetővé teszi, hogy a normál terheléselosztási és feladatátvételi ilyen szélsőséges esetek kezeléséhez akkor is, ha azt jelenti, hogy ideiglenes tartomány csomagolási.
+Bizonyos munkaterhelések előnyben részesítették a replikák megcélzott számát, még akkor is, ha azok kevesebb tartományba vannak csomagolva. Ezek a számítási feladatok a teljes egyidejű állandó tartományi hibákra, és általában helyi állapot helyreállítására szolgálnak. Más munkaterhelések inkább az állásidőt vennék igénybe, mint a kockázat helyességét vagy elvesztését. A legtöbb éles számítási feladat több mint három replikával fut, több mint három tartalék tartománnyal és számos érvényes csomóponttal. Emiatt az alapértelmezett viselkedés lehetővé teszi a tartomány becsomagolását alapértelmezés szerint. Az alapértelmezett viselkedés lehetővé teszi a normál elosztást és feladatátvételt a szélsőséges esetek kezelésére, még akkor is, ha az ideiglenes tartományi csomagolást jelent.
 
-Ha szeretné tiltani egy adott számítási feladathoz tartozó ilyen csomagolási, megadhatja a `RequireDomainDistribution` házirend a szolgáltatásban. Ha ez a házirend be van állítva, a fürterőforrás-kezelő biztosítja, hogy két replika. az ugyanazon a partíción futtassa az azonos tartalék vagy frissítési tartományban.
+Ha egy adott munkaterhelés esetében le szeretné tiltani az ilyen csomagolást, megadhatja a szolgáltatás `RequireDomainDistribution` házirendjét. Ha ez a szabályzat be van állítva, a fürterőforrás-kezelő nem biztosít két replikát ugyanahhoz a partíciós vagy frissítési tartományhoz.
 
 Kód:
 
@@ -129,10 +120,10 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-Most azt volna lehetséges ezen konfigurációk használata a szolgáltatások a fürtben, amely nem földrajzilag felölelt? Próbálja meg, de nem áll egy remek kivételt túl. A szükséges érvénytelen és előnyben részesített tartomány konfigurációk kerülni kell, ha a forgatókönyvek hitelesíteni. Azt nem értelme bármely próbál kényszerítése egy adott számítási feladatok futtatása az egyetlen állványon, vagy inkább a helyi fürt egyes szegmens egy másikkal szemben. Különböző hardverkonfigurációk kell tartalék tartomány között elosztani és normál elhelyezési korlátozások és csomópont-tulajdonságok keresztül kezeli.
+Mostantól lehetséges lenne ezeket a konfigurációkat használni a fürt olyan szolgáltatásaihoz, amelyek földrajzilag nem voltak átnyúlva? Lehetséges, hogy ez nem egy nagyszerű ok. A szükséges, érvénytelen és előnyben részesített tartományi konfigurációkat el kell kerülni, ha a forgatókönyvek nem igénylik. Nincs értelme arra, hogy egy adott munkaterhelést egyetlen állványon futtasson, vagy a helyi fürt egyes szegmenseit egy másikra szeretné kipróbálni. A különböző hardveres konfigurációkat a tartalék tartományok között kell elosztani, és a normál elhelyezési korlátozásokkal és a csomópont tulajdonságaival kell kezelni őket.
 
-## <a name="next-steps"></a>További lépések
-- További információt a szolgáltatások konfigurálása [megismerheti a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
+## <a name="next-steps"></a>Következő lépések
+- A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

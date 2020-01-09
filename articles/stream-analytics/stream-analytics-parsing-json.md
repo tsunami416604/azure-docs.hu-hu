@@ -1,28 +1,27 @@
 ---
-title: JSON-elemzés és az avro-hoz az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk ismerteti, hogyan működnek az összetett adattípusok, mint a tömbök, JSON-, CSV formátumú adatok.
-services: stream-analytics
+title: JSON-és AVRO elemzése Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan működik az összetett adattípusok, például a tömbök, a JSON és a CSV formátumú adat.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431605"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Az Azure Stream Analyticsben JSON-t és az Avro adatainak elemzése
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-és Avro-adatelemzés Azure Stream Analytics
 
-Az Azure Stream Analytics támogatja a fürt megosztott kötetei szolgáltatás, a JSON és a Avro adatformátumok a célnyelven események feldolgozását. JSON és az Avro-adatok szervezhetők, és néhány komplex típusok, például a beágyazott objektumok (rekord) és a tömbök tartalmazhat. 
-
-
+Azure Stream Analytics támogatja a CSV-, JSON-és Avro-adatformátumok feldolgozási eseményeit. A JSON-és a Avro-adatok is strukturálva lehetnek, és tartalmazhatnak olyan összetett típusokat, mint például a beágyazott objektumok (rekordok) és a tömbök. 
 
 
-## <a name="record-data-types"></a>Rekord adattípusok
-Rekord adattípusokat képviselő JSON-t és az Avro-tömbök, amikor a megfelelő formátumban vannak használatban a bemeneti adatok adatfolyamok használja. Ezek a példák bemutatják, minta érzékelő, amely a bemeneti események JSON formátumban olvasó. A következő példa egy adott eseményhez:
+
+
+## <a name="record-data-types"></a>Adattípusok rögzítése
+Az adattípusok a JSON-és Avro-tömböket jelölik, ha a bemeneti adatfolyamokban a megfelelő formátumok használatosak. Ezek a példák egy minta-érzékelőt mutatnak be, amely JSON formátumban olvassa be a bemeneti eseményeket. Íme egy példa egyetlen eseményre:
 
 ```json
 {
@@ -48,8 +47,8 @@ Rekord adattípusokat képviselő JSON-t és az Avro-tömbök, amikor a megfelel
 ```
 
 
-### <a name="access-nested-fields-in-known-schema"></a>Hozzáférés a beágyazott mezők ismert séma
-Pont jelölés (.) segítségével könnyedén elérheti a beágyazott mezői a lekérdezést. Például ez a lekérdezés a szélességi és hosszúsági koordináták mellett a Location tulajdonsághoz kijelöli a fenti JSON-adatokat. Többszintű lépjen az alább látható módon használható a felépítését.
+### <a name="access-nested-fields-in-known-schema"></a>Beágyazott mezők elérése az ismert sémában
+A beágyazott mezők közvetlenül a lekérdezésből való egyszerű eléréséhez használja a pont jelölését (.). Ez a lekérdezés például kiválasztja a szélességi és hosszúsági koordinátákat az előző JSON-adat Location tulajdonsága alatt. A dot jelöléssel több szint is navigálható az alább látható módon.
 
 ```SQL
 SELECT
@@ -60,15 +59,15 @@ SELECT
 FROM input
 ```
 
-### <a name="select-all-properties"></a>Válassza ki az összes tulajdonság
-Kiválaszthatja egy beágyazott rekord az összes tulajdonság "*" helyettesítő karakter. Vegye figyelembe az alábbi példában:
+### <a name="select-all-properties"></a>Az összes tulajdonság kijelölése
+A beágyazott rekordok összes tulajdonságát "*" helyettesítő karakterrel is kiválaszthatja. Tekintse meg a következő példát:
 
 ```SQL
 SELECT input.Location.*
 FROM input
 ```
 
-Az eredmény a következő:
+Az eredmény a következőket eredményezi:
 
 ```json
 {
@@ -78,10 +77,10 @@ Az eredmény a következő:
 ```
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Hozzáférés a beágyazott mezők tulajdonság neve megkülönbözteti a változó
-Használja a [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) működnek, ha a tulajdonság neve megkülönbözteti a változót. 
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Beágyazott mezők elérése, ha a tulajdonság neve változó
+Használja a [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) függvényt, ha a tulajdonság neve változó. 
 
-Képzeljünk el például egy minta adatfolyam kell, amelyet egyesíteni kell a hivatkozás adatokat tartalmazó küszöbértékek minden egyes eszköz érzékelő. Az ilyen referenciaadatok egy kódrészletet az alábbiakban látható.
+Tegyük fel például, hogy egy minta adatfolyamot kell összekapcsolni az egyes eszköz-érzékelők küszöbértékeit tartalmazó hivatkozási adattal. Alább láthatók a hivatkozási adatrészletek.
 
 ```json
 {
@@ -104,8 +103,8 @@ WHERE
     -- the where statement selects the property value coming from the reference data
 ```
 
-### <a name="convert-record-fields-into-separate-events"></a>Rekordmezők átalakítása külön események
-Az elkülönített események rekordmezők konvertálásához használja a [ALKALMAZ](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátorral együtt a [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) függvény. Például ha az előző példában több rekordot a SensorReading, az alábbi lekérdezés használható ki tudják nyerni azokat különböző események:
+### <a name="convert-record-fields-into-separate-events"></a>Rekord mezők konvertálása különálló eseményekre
+A rekordok mezőinek különálló eseményekre való átalakításához használja az [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátort a [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) függvénnyel együtt. Ha például az előző példában több rekord is volt a SensorReading-hez, a következő lekérdezés használható a különböző eseményekre való kinyeréséhez:
 
 ```SQL
 SELECT
@@ -118,14 +117,14 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 
 
-## <a name="array-data-types"></a>Tömb adattípusok
+## <a name="array-data-types"></a>Tömb adattípusai
 
-Tömb adattípusok az értékeket egy rendezett gyűjteménye. A tömb értékek néhány jellemző műveleteket lásd lent. Ezek a példák feltételezik, hogy a bemeneti események rendelkezik "arrayField" nevű tulajdonságot, amely egy tömböt adattípus.
+A tömb típusú adattípusok értékek rendezett gyűjteményei. A tömb értékeivel kapcsolatos néhány jellemző művelet alább látható. Ezek a példák feltételezik, hogy a bemeneti események "arrayField" nevű tulajdonsággal rendelkeznek, amely egy tömb adattípusa.
 
-Ezek a példák a függvények [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics), és a [ALKALMAZ](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátor.
+Ezek a példák a functions [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), a [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), a [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)és az [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátort használják.
 
-### <a name="working-with-a-specific-array-element"></a>Egy adott tömbelem használata
-Válassza ki a tömbelem egy megadott indextől (a tömb első eleme kiválasztása):
+### <a name="working-with-a-specific-array-element"></a>Egy adott tömb elem használata
+Válassza ki a tömb elemet a megadott indexben (az első tömb elem kiválasztásával):
 
 ```SQL
 SELECT
@@ -133,7 +132,7 @@ SELECT
 FROM input
 ```
 
-### <a name="select-array-length"></a>Válassza ki a délka Pole
+### <a name="select-array-length"></a>Tömb hosszának kiválasztása
 
 ```SQL
 SELECT
@@ -141,8 +140,8 @@ SELECT
 FROM input
 ```
 
-### <a name="convert-array-elements-into-separate-events"></a>Tömb elemek átalakítása külön események
-Válassza ki az összes tömbelem egyes eseményeket. A [ALKALMAZ](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátorral együtt a [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) beépített függvény kinyeri az összes tömbelemek rekordsémáját, az egyes események:
+### <a name="convert-array-elements-into-separate-events"></a>Tömb elemek konvertálása különálló eseményekre
+Válassza az összes tömb elemet egyedi eseményként. Az operátor [alkalmazása](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) a [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) beépített függvénnyel együtt kinyeri az összes tömb elemet az egyes eseményekként:
 
 ```SQL
 SELECT
@@ -154,4 +153,4 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 
 
 ## <a name="see-also"></a>Lásd még:
-[Adattípusok az Azure Stream Analytics szolgáltatásban](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Adattípusok a Azure Stream Analyticsban](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

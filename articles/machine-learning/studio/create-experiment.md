@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c6b52585200db07ebc2e15f509b1def55dff5caf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427723"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rövid útmutató: az első adatelemzési kísérlet létrehozása Azure Machine Learning Studio (klasszikus)
 
@@ -45,7 +45,7 @@ Ez a rövid útmutató egy kísérlet alapértelmezett munkafolyamatát követi:
 ## <a name="get-the-data"></a>Az adatok lekérése
 
 Az első dolog, amire szüksége van a Machine learning szolgáltatásban.
-A Studio klasszikus verziója számos minta adatkészletet tartalmaz, amelyeket használhat, vagy több forrásból is importálhat adatokat. Ebben a példában a munkaterületén megtalálható **Automobile price data (Raw)** (Nyers autóáradatok) nevű mintahalmazt fogjuk használni.
+A Studio (klasszikus) számos minta adatkészletet tartalmaz, amelyeket használhat, vagy több forrásból is importálhat adatokat. Ebben a példában a munkaterületén megtalálható **Automobile price data (Raw)** (Nyers autóáradatok) nevű mintahalmazt fogjuk használni.
 Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepel. A bejegyzések számos adatot (például márka, típus, műszaki specifikációk, ár) tartalmaznak.
 
 > [!TIP]
@@ -235,7 +235,7 @@ Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű kísérletet egy minta adatkészlet használatával. Ha szeretné megvizsgálni, hogyan hozhat létre és helyezhet üzembe egy modellt részletesebben, folytassa a prediktív megoldás oktatóanyagával.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671767"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680953"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
 
@@ -97,7 +97,9 @@ Ha a fiókja rendelkezik a szükséges engedélyekkel, beállíthatja az Azure-f
 
 A helyi git üzembe helyezésének engedélyezése az alkalmazáshoz Azure-folyamatokkal (előzetes verzió):
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com)Azure app Service alkalmazás lapjára, és a bal oldali menüben válassza a **központi telepítési központ** elemet.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **app Services**lehetőséget. 
+
+1. Válassza ki a Azure App Service alkalmazást, és a bal oldali menüben válassza ki a **központi telepítési központ** elemet.
    
 1. A **központi telepítési központ** lapon válassza a **helyi git**lehetőséget, majd kattintson a **Folytatás**gombra. 
    

@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350912"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Windows SQL Server virtuális gép kiépítése a Azure Portal
 
@@ -64,10 +64,10 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
 * A **projekt részletei**területen ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. 
 *  Az **erőforráscsoport** szakaszban vagy válasszon ki egy meglévő erőforráscsoportot a listából, vagy válassza az **új létrehozása** lehetőséget az új erőforráscsoport létrehozásához. Az erőforráscsoportok az Azure-ban egymáshoz kapcsolódó erőforrásokból (virtuális gépekből, tárfiókokból, virtuális hálózatokból stb.) álló gyűjtemények. 
 
-    ![Előfizetést](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+    ![Előfizetés](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Az Azure szolgáltatásban futó SQL Server üzemelő példányok tesztelésekor vagy a velük való megismerkedéskor érdemes egy új erőforráscsoportot használni. A tesztelés befejezése után törölje az erőforráscsoportot a virtuális gép és az erőforráscsoporthoz társított összes erőforrás automatikus törléséhez. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../../../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
+  > Az Azure szolgáltatásban futó SQL Server üzemelő példányok tesztelésekor vagy a velük való megismerkedéskor érdemes egy új erőforráscsoportot használni. A tesztelés befejezése után törölje az erőforráscsoportot a virtuális gép és az erőforráscsoporthoz társított összes erőforrás automatikus törléséhez. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../../../azure-resource-manager/management/overview.md) (Az Azure Resource Manager áttekintése).
 
 
 * A **példány részletei**területen:
@@ -106,7 +106,7 @@ A **lemezek** lapon adja meg a lemez beállításait.
 ![Az SQL virtuális gép lemezének beállításai](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat. 
 
@@ -118,7 +118,7 @@ A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat.
 
 ![Az SQL VM hálózatkezelési beállításai](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-networking.png)
 
-#### <a name="monitoring"></a>Figyelés
+#### <a name="monitoring"></a>Monitoring
 
 A **figyelés** lapon konfigurálja a figyelést és az automatikus leállítást. 
 
@@ -143,7 +143,7 @@ A **SQL Server beállítások** lapon adja meg a SQL Server adott beállításai
 | [Machine Learning Services](#machine-learning-services) |
 
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolódás
 
 Az **SQL kapcsolatok** alatt adja meg, milyen típusú hozzáférést szeretne az ezen a virtuális gépen futó SQL Server-példányhoz. A jelen útmutatóban válassza a **nyilvános (Internet)** lehetőséget, hogy lehetővé tegye a kapcsolódást az interneten található gépekről vagy szolgáltatásokból SQL Server. Ha ez a beállítás be van jelölve, az Azure automatikusan konfigurálja a tűzfalat és a hálózati biztonsági csoportot, hogy engedélyezze a forgalmat a kiválasztott porton.
 
@@ -163,7 +163,7 @@ Ha nem szeretné engedélyezni az adatbázis-alrendszerhez az interneten kereszt
 
 
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Ha SQL Server hitelesítésre van szüksége, az **SQL Server beállítások** lapon kattintson az **SQL-hitelesítés** alatt az **Engedélyezés** elemre.
 
@@ -242,7 +242,7 @@ A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre.
 További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése Azure virtuális gépeken).
 
 
-### <a name="machine-learning-services"></a>Machine Learning Services
+### <a name="machine-learning-services"></a>Machine Learning-szolgáltatások
 
 Lehetősége van a [Machine learning Services](/sql/advanced-analytics/)engedélyezésére. Ez a beállítás lehetővé teszi a gépi tanulás használatát a Python és az R használatával SQL Server 2017-es verzióban. Az **SQL Server beállítások** ablakban válassza az **Engedélyezés** lehetőséget.
 

@@ -1,27 +1,18 @@
 ---
-title: Az első Service Fabric-alkalmazás létrehozása C# a-ben | Microsoft Docs
+title: Hozza létre az első Service Fabric alkalmazást aC#
 description: Bevezetés az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal Microsoft Azure Service Fabric alkalmazás létrehozásához.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d9b44d75-e905-468e-b867-2190ce97379a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: f3b3d5c3dcea7d190724ae946a27c47b34a26c31
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462818"
 ---
-# <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
+# <a name="get-started-with-reliable-services"></a>Első lépések a megbízható szolgáltatásokkal
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-quick-start.md)
 > * [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
@@ -33,10 +24,10 @@ Egy Azure Service Fabric-alkalmazás egy vagy több olyan szolgáltatást tartal
 ## <a name="basic-concepts"></a>Alapfogalmak
 A Reliable Services megkezdéséhez csak néhány alapvető fogalmat kell megismernie:
 
-* **Szolgáltatás típusa**: Ez a szolgáltatás implementálása. A nevet a megjelenő osztály határozza meg, `StatelessService` amely kiterjeszti, valamint az ott használt egyéb kódokat vagy függőségeket, valamint a nevét és verziószámát.
-* **Nevesített Service-példány**: A szolgáltatás futtatásához létre kell hoznia a szolgáltatás típusának elnevezett példányait, hasonlóan ahhoz, ahogyan egy adott típusú objektum példányait hozza létre. A szolgáltatási példány neve URI formátumú, a "Fabric:/" használatával séma, például "Fabric:/SajátPr/MyService".
-* **Szolgáltatás gazdagépe**: A létrehozott elnevezett szolgáltatás-példányokat a gazdagépen belül kell futtatni. A szolgáltatás gazdagépe csak egy folyamat, ahol a szolgáltatás példányai futhatnak.
-* **Szolgáltatás regisztrálása**: A regisztráció minden együtt jár. A szolgáltatási típust regisztrálni kell a Service Host Service Fabric futtatókörnyezetében, hogy a Service Fabric példányokat hozzon létre a futtatásához.  
+* **Szolgáltatás típusa**: Ez a szolgáltatás implementálása. Ezt az írási osztály határozza meg, amely kiterjeszti `StatelessService` és az ott használt egyéb kódokat vagy függőségeket, valamint a nevet és a verziószámot.
+* **Nevesített Service-példány**: a szolgáltatás futtatásához a szolgáltatás típusának elnevezett példányait kell létrehoznia, hasonlóan ahhoz, mint egy adott típusú objektum példányának létrehozásakor. A szolgáltatási példány neve URI formátumú, a "Fabric:/" használatával séma, például "Fabric:/SajátPr/MyService".
+* **Service Host**: a létrehozott elnevezett szolgáltatás-példányokat a gazdagépen belül kell futtatni. A szolgáltatás gazdagépe csak egy folyamat, ahol a szolgáltatás példányai futhatnak.
+* **Szolgáltatás regisztrálása**: a regisztráció minden együtt jár. A szolgáltatási típust regisztrálni kell a Service Host Service Fabric futtatókörnyezetében, hogy a Service Fabric példányokat hozzon létre a futtatásához.  
 
 ## <a name="create-a-stateless-service"></a>Állapot nélküli szolgáltatás létrehozása
 Az állapot nélküli szolgáltatás olyan típusú szolgáltatás, amely jelenleg a Felhőbeli alkalmazásokhoz tartozó szabvány. A rendszer állapot nélkülinek tekinti, mivel maga a szolgáltatás nem tartalmaz megbízhatóan vagy nagyon elérhetővé tenni kívánt adattárolást. Ha egy állapot nélküli szolgáltatás egy példánya leáll, az összes belső állapota elvész. Ebben a típusú szolgáltatásban az állapotot egy külső tárolón (például Azure-táblákon vagy SQL-adatbázison) kell megőrizni ahhoz, hogy az informatikai szervezet számára elérhető és megbízható legyen.
@@ -51,7 +42,7 @@ Ezután hozzon létre egy állapot nélküli szolgáltatási projektet a **.net 
 
 A megoldás mostantól két projektet tartalmaz:
 
-* *HelloWorld*. Ez a szolgáltatásait tartalmazó *alkalmazás* -projekt . Tartalmazza továbbá az alkalmazást leíró alkalmazás-jegyzékfájlt, valamint számos PowerShell-szkriptet, amelyek segítenek az alkalmazás üzembe helyezésében.
+* *HelloWorld*. Ez a *szolgáltatásait*tartalmazó *alkalmazás* -projekt. Tartalmazza továbbá az alkalmazást leíró alkalmazás-jegyzékfájlt, valamint számos PowerShell-szkriptet, amelyek segítenek az alkalmazás üzembe helyezésében.
 * *HelloWorldStateless*. Ez a szolgáltatási projekt. Az állapot nélküli szolgáltatás megvalósítását tartalmazza.
 
 ## <a name="implement-the-service"></a>A szolgáltatás implementálása
@@ -76,7 +67,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 Ebben az oktatóanyagban a `RunAsync()` belépési pont módszerére fogunk összpontosítani. Itt azonnal megkezdheti a kód futtatását.
-A projekt sablonja tartalmaz egy olyan minta `RunAsync()` -implementációt, amely egy gördülő szám.
+A projekt sablonja `RunAsync()` egy minta-implementációját tartalmazza, amely növeli a működés közbeni darabszámot.
 
 > [!NOTE]
 > További információ a kommunikációs verem használatáról: [Service Fabric webes API-szolgáltatások OWIN-alapú önálló üzemeltetéssel](service-fabric-reliable-services-communication-webapi.md)
@@ -112,9 +103,9 @@ A platform meghívja ezt a módszert, ha a szolgáltatás egy példánya el van 
 
 Ezt a koordinálást a rendszer felügyeli, hogy a szolgáltatás elérhető legyen, és megfelelően kiegyensúlyozott legyen.
 
-`RunAsync()`ne tiltsa le a szinkron módon. A RunAsync implementációjának egy feladatot kell visszaadnia, vagy várnia kell a hosszan futó vagy a blokkoló műveletekre, hogy a futtatókörnyezet továbbra is folytatódjon. Vegye figyelembe, hogy az előző példában szereplő `await Task.Delay()` hurokbanegyfeladat-visszaküldésiműveletvanhasználatban.`while(true)` Ha a számítási feladatnak szinkronban kell lennie, egy új feladatot `Task.Run()` `RunAsync` kell ütemeznie a megvalósításában.
+a `RunAsync()` nem tiltható le szinkron módon. A RunAsync implementációjának egy feladatot kell visszaadnia, vagy várnia kell a hosszan futó vagy a blokkoló műveletekre, hogy a futtatókörnyezet továbbra is folytatódjon. Vegye figyelembe, hogy az előző példában szereplő `while(true)` hurokban egy feladat-visszaadott `await Task.Delay()` van használatban. Ha a számítási feladatnak szinkronban kell lennie, egy új feladatot kell ütemeznie `Task.Run()` a `RunAsync` megvalósításában.
 
-A számítási feladatok megszakítása a megadott lemondási token által koordinált együttműködési erőfeszítés. A rendszer megvárja a feladat befejezését (sikeres befejezéssel, megszakítással vagy hibával), mielőtt továbblép. Fontos, hogy tiszteletben tartsák a lemondási jogkivonatot, fejezze `RunAsync()` be a munkát, és a lehető leggyorsabban lépjen ki, amikor a rendszer a lemondást kéri.
+A számítási feladatok megszakítása a megadott lemondási token által koordinált együttműködési erőfeszítés. A rendszer megvárja a feladat befejezését (sikeres befejezéssel, megszakítással vagy hibával), mielőtt továbblép. Fontos, hogy tiszteletben tartsák a lemondási jogkivonatot, fejezze be a munkát, és a lehető leggyorsabban lépjen ki `RunAsync()`, amikor a rendszer a lemondást kéri.
 
 Ebben az állapot nélküli szolgáltatási példában a Count egy helyi változóban van tárolva. Azonban mivel ez egy állapot nélküli szolgáltatás, a tárolt érték csak a szolgáltatási példányának aktuális életciklusában létezik. A szolgáltatás áthelyezése vagy újraindítása után az érték elvész.
 
@@ -168,18 +159,18 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás `RunAsync()`előtt. Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
+`RunAsync()` hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében, mielőtt végrehajtja `RunAsync()`. Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható State Manager
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-A [IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) egy olyan szótári implementáció, amellyel megbízhatóan tárolhatja az állapotot a szolgáltatásban. A Service Fabric és megbízható gyűjtemények révén közvetlenül a szolgáltatásban tárolhatja az adatait anélkül, hogy külső állandó tárolóra lenne szükség. A megbízható gyűjtemények kiválóan elérhetővé teszik az adataikat. A Service Fabric a szolgáltatás több replikájának létrehozásával  és kezelésével hajtja végre. Emellett olyan API-t is biztosít, amely ellátja a replikák kezelésének bonyolultságát és az állapotukat.
+A [IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) egy olyan szótári implementáció, amellyel megbízhatóan tárolhatja az állapotot a szolgáltatásban. A Service Fabric és megbízható gyűjtemények révén közvetlenül a szolgáltatásban tárolhatja az adatait anélkül, hogy külső állandó tárolóra lenne szükség. A megbízható gyűjtemények kiválóan elérhetővé teszik az adataikat. A Service Fabric a szolgáltatás több *replikájának* létrehozásával és kezelésével hajtja végre. Emellett olyan API-t is biztosít, amely ellátja a replikák kezelésének bonyolultságát és az állapotukat.
 
 A megbízható gyűjtemények bármilyen .NET-típust tárolhatnak, beleértve az egyéni típusokat is, néhány figyelmeztetéssel:
 
-* A Service Fabric az állapotot a csomópontok közötti *replikálással* , a megbízható gyűjtemények pedig az összes replikán tárolják az adataikat a helyi lemezen. Ez azt jelenti, hogy a megbízható gyűjteményekben tárolt összes elemnek szerializálható kell lennie. Alapértelmezés szerint a megbízható gyűjtemények [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) használ a szerializáláshoz, ezért fontos, hogy az adategyezmény-szerializáló a típusait az alapértelmezett szerializáló használata esetén is [támogatja](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) .
+* A Service Fabric az állapotot a csomópontok közötti *replikálással* , a megbízható gyűjtemények pedig az összes replikán tárolják az adataikat a helyi lemezen. Ez azt jelenti, hogy a megbízható gyűjteményekben tárolt összes elemnek *szerializálható*kell lennie. Alapértelmezés szerint a megbízható gyűjtemények [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) használ a szerializáláshoz, ezért fontos, hogy az [adategyezmény-szerializáló](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) a típusait az alapértelmezett szerializáló használata esetén is támogatja.
 * Az objektumok a magas rendelkezésre állás érdekében replikálódnak, amikor megbízható gyűjteményekre vonatkozó tranzakciókat véglegesít. A megbízható gyűjteményekben tárolt objektumokat a szolgáltatás helyi memóriájában tárolja. Ez azt jelenti, hogy van egy helyi hivatkozása az objektumra.
   
    Fontos, hogy ne módosítsa az objektumok helyi példányait anélkül, hogy frissítési műveletet hajt végre a tranzakcióban található megbízható gyűjteményen. Ennek az az oka, hogy az objektumok helyi példányainak módosításait a rendszer nem replikálja automatikusan. Újra be kell szúrni az objektumot a szótárba, vagy a *frissítési* módszerek egyikét kell használnia a szótárban.
@@ -198,9 +189,9 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-A megbízható gyűjtemények nagy része ugyanazokkal a műveletekkel `System.Collections.Generic` `System.Collections.Concurrent` rendelkezik, mint a LINQ. A megbízható gyűjtemények műveletei aszinkron módon vannak elvégezve. Ennek az az oka, hogy az írási műveletek megbízható gyűjteményekkel végeznek I/O-műveleteket a lemezre való replikáláshoz és az adatok megőrzéséhez.
+A megbízható gyűjtemények számos különböző művelettel rendelkeznek, amelyeket a `System.Collections.Generic` és a `System.Collections.Concurrent`-partnerek végeznek, a LINQ kivételével. A megbízható gyűjtemények műveletei aszinkron módon vannak elvégezve. Ennek az az oka, hogy az írási műveletek megbízható gyűjteményekkel végeznek I/O-műveleteket a lemezre való replikáláshoz és az adatok megőrzéséhez.
 
-A megbízható gyűjtési műveletek tranzakciós tevékenységek, így az állapot konzisztens marad több megbízható gyűjtemény és művelet között. Megadhat például egy munkaelemet egy megbízható várólistából, végrehajthat egy műveletet, és az eredményt egy megbízható szótárban mentheti, mindezt egyetlen tranzakción belül. Ezt atomi műveletként kezeli a rendszer, és garantálja, hogy a teljes művelet sikeres lesz, vagy a teljes művelet visszaállítja a műveletet. Ha hiba lép fel az elem kivonása után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és az elem a várólistán marad a feldolgozáshoz.
+A megbízható gyűjtési műveletek *tranzakciós*tevékenységek, így az állapot konzisztens marad több megbízható gyűjtemény és művelet között. Megadhat például egy munkaelemet egy megbízható várólistából, végrehajthat egy műveletet, és az eredményt egy megbízható szótárban mentheti, mindezt egyetlen tranzakción belül. Ezt atomi műveletként kezeli a rendszer, és garantálja, hogy a teljes művelet sikeres lesz, vagy a teljes művelet visszaállítja a műveletet. Ha hiba lép fel az elem kivonása után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és az elem a várólistán marad a feldolgozáshoz.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 Most visszatérünk a *HelloWorld* alkalmazáshoz. Most már létrehozhatja és üzembe helyezheti szolgáltatásait. Ha lenyomja az **F5**billentyűt, az alkalmazás a helyi fürtön lesz felépítve és telepítve.
@@ -214,10 +205,10 @@ A szolgáltatások elindítása után megtekintheti a generált Windows esemény
 
 ![Diagnosztikai események megtekintése a Visual Studióban](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Service Fabric-alkalmazás hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)
 
-[Első lépések: Webes API-szolgáltatások Service Fabric OWIN-alapú önálló üzemeltetéssel](service-fabric-reliable-services-communication-webapi.md)
+[Első lépések: Service Fabric webes API-szolgáltatások OWIN-alapú önkiszolgáló használatával](service-fabric-reliable-services-communication-webapi.md)
 
 [További információ a megbízható gyűjteményekről](service-fabric-reliable-services-reliable-collections.md)
 

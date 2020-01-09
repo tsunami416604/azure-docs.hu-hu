@@ -1,6 +1,6 @@
 ---
-title: Nagyméretű Azure-beli virtuálisgép-méretezési csoportok használata | Microsoft Docs
-description: Tudnivalók a nagyméretű Azure-beli virtuálisgép-méretezési csoportok használatáról
+title: Nagyméretű Azure-Virtual Machine Scale Sets használata
+description: Tudnivalók a nagyméretű Azure-beli virtuálisgép-méretezési csoportokról az alkalmazásban való használat érdekében.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459338"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -50,7 +50,7 @@ Amikor méretezési csoportot hoz létre az Azure Portalon, csak adja meg a *Pé
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-Az [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_ parancsával létrehozhat egy nagyméretű virtuálisgép-méretezési csoportot. Ez a parancs az intelligens alapértelmezett beállításokat (például a _példányszám_ argumentumon alapuló alhálózat méretét) adja meg:
+A nagyméretű virtuálisgép-méretezési csoport létrehozása az [Azure CLI](https://github.com/Azure/azure-cli) az _vmss Create_ paranccsal végezhető el. Ez a parancs az intelligens alapértelmezett beállításokat (például a _példányszám_ argumentumon alapuló alhálózat méretét) adja meg:
 
 ```bash
 az group create -l southcentralus -n biginfra

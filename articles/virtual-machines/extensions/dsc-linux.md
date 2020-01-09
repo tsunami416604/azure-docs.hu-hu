@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359153"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -44,7 +44,7 @@ A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítm�
 
 A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](/azure/virtual-machines/linux/endorsed-distros) , kivéve a következőket:
 
-| Disztribúció | Verzió |
+| Terjesztés | Verzió |
 |---|---|
 | Debian | Az összes verzió |
 | Ubuntu| 18,04 |
@@ -82,17 +82,17 @@ A támogatott védett konfigurációs paraméterek a következők:
 * `RegistrationKey`: (nem kötelező, karakterlánc) a Azure Automation fiók elérési kulcsa
 
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 ### <a name="register-an-azure-automation-account"></a>Azure Automation fiók regisztrálása
-protected.json
+védett. JSON
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-public.json
+nyilvános. JSON
 ```json
 {
   "ExtensionAction" : "Register",
@@ -121,7 +121,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>MOF konfigurációs fájl (Azure Storage-fiókban) alkalmazása a virtuális gépre
 
-protected.json
+védett. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -129,7 +129,7 @@ protected.json
 }
 ```
 
-public.json
+nyilvános. JSON
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -153,7 +153,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>MOF konfigurációs fájl (nyilvános tárolóban) alkalmazása a virtuális gépre
 
-public.json
+nyilvános. JSON
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -169,7 +169,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Meta MOF konfigurációs fájl alkalmazása (Azure Storage-fiókban) a virtuális géphez
 
-protected.json
+védett. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -177,7 +177,7 @@ protected.json
 }
 ```
 
-public.json
+nyilvános. JSON
 ```json
 {
   "ExtensionAction": "Pull",
@@ -199,7 +199,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Meta MOF konfigurációs fájl (nyilvános tárolóban) alkalmazása a virtuális gépre
-public.json
+nyilvános. JSON
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -215,14 +215,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Egyéni erőforrás-modul (egy Azure Storage-fiókban lévő zip-fájl) telepítése a virtuális gépre
-protected.json
+védett. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-public.json
+nyilvános. JSON
 ```json
 {
   "ExtensionAction": "Install",
@@ -244,7 +244,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Egyéni erőforrás-modul (egy nyilvános tárolóban lévő zip-fájl) telepítése a virtuális gépre
-public.json
+nyilvános. JSON
 ```json
 {
   "ExtensionAction": "Install",
@@ -260,7 +260,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Egyéni erőforrás-modul eltávolítása a virtuális gépről
-public.json
+nyilvános. JSON
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -277,19 +277,19 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonok ideálisak, ha egy vagy több olyan virtuális gépet telepít, amely a telepítés utáni konfigurálást igényli, például Azure Automation bevezetését. 
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak, ha egy vagy több olyan virtuális gépet telepít, amely a telepítés utáni konfigurálást igényli, például Azure Automation bevezetését. 
 
 A minta Resource Manager-sablon a [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) és [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
-További információ a Azure Resource Manager sablonnal kapcsolatban: [Azure Resource Manager sablonok készítése](../../azure-resource-manager/resource-group-authoring-templates.md).
+További információ a Azure Resource Manager sablonnal kapcsolatban: [Azure Resource Manager sablonok készítése](../../azure-resource-manager/templates/template-syntax.md).
 
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 ### <a name="use-azure-cliazure-cli"></a>Az [Azure CLI] [Azure-CLI] használata
 A DSCForLinux-bővítmény üzembe helyezése előtt konfigurálja a `public.json`, és `protected.json` a 3. szakaszban szereplő különböző forgatókönyvek szerint.
 
-#### <a name="classic"></a>Klasszikus
+#### <a name="classic"></a>Hagyományos
 A klasszikus üzembe helyezési módot Azure Service Management üzemmódnak is nevezik. A következő futtatásával válthat:
 ```
 $ azure config mode asm
@@ -306,7 +306,7 @@ Az elérhető legújabb bővítmény-verzió megismeréséhez futtassa a követk
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Erőforrás-kezelő
 A Azure Resource Manager módba való váltáshoz futtassa a következőt:
 ```
 $ azure config mode arm
@@ -324,7 +324,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>A [Azure PowerShell] [Azure-PowerShell] használata
 
-#### <a name="classic"></a>Klasszikus
+#### <a name="classic"></a>Hagyományos
 
 Az Azure-fiókba való bejelentkezéshez az Azure Service Management módban is bejelentkezhet:
 
@@ -363,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Erőforrás-kezelő
 
 Azure Resource Manager módban is bejelentkezhet az Azure-fiókjába a következő futtatásával:
 
@@ -405,7 +405,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -415,7 +415,7 @@ A bővítmények állapotával kapcsolatos adatok a Azure Portal és az Azure CL
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájlt:
+A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ```
 /var/log/azure/<extension-name>/<version>/extension.log file.
@@ -430,5 +430,5 @@ Bizonyos esetekben a DSC Linux bővítmény nem tudja telepíteni a következőt
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/community/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

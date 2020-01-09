@@ -1,5 +1,6 @@
 ---
-title: Értesítések és e-mail sablonok konfigurálása az Azure API Managementban | Microsoft Docs
+title: Értesítések és e-mail sablonok konfigurálása
+titleSuffix: Azure API Management
 description: Ismerje meg, hogyan konfigurálhatja az értesítéseket és az e-mail-sablonokat az Azure API Managementban.
 services: api-management
 documentationcenter: ''
@@ -12,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442680"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban
 API Management lehetővé teszi az értesítések konfigurálását adott eseményekhez, valamint a API Management-példányok rendszergazdájával és fejlesztőivel folytatott kommunikációhoz használt e-mail-sablonok konfigurálását. Ez a cikk bemutatja, hogyan konfigurálhatja az értesítéseket az elérhető eseményekhez, és áttekintést nyújt az eseményekhez használt e-mail sablonok konfigurálásáról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik API Management Service-példánnyal, hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
+Ha nem rendelkezik API Management Service-példánnyal, hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik API Management Service-példánnyal, hajtsa végre a követke
     Az alábbi események listáját beállíthatja az értesítésekhez.
 
    * **Előfizetési kérelmek (jóváhagyást igénylő)** – a megadott e-mail-címzettek és felhasználók e-mail-értesítéseket kapnak a jóváhagyást igénylő API-termékek előfizetési kéréseiről.
-   * **Új** előfizetések – a megadott e-mail-címzettek és felhasználók e-mailben értesítést kapnak az új API-termékek előfizetéséről.
+   * **Új előfizetések** – a megadott e-mail-címzettek és felhasználók e-mailben értesítést kapnak az új API-termékek előfizetéséről.
    * **Application Gallery-kérelmek** – a megadott e-mail-címzettek és felhasználók e-mail-értesítéseket kapnak, amikor új alkalmazások kerülnek be az alkalmazás-katalógusba.
    * **Titkos másolat** – a megadott e-mail-címzettek és felhasználók e-mailben megkapják a fejlesztők számára küldött e-mailek vak széndioxid-másolatait.
    * **Új probléma vagy Megjegyzés** – a megadott e-mail-címzettek és felhasználók kapnak e-mail-értesítéseket, amikor új probléma vagy megjegyzés érkezik a fejlesztői portálra.

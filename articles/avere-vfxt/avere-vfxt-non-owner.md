@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415055"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
 
@@ -19,11 +19,11 @@ Ezek az utasítások egy megkerülő megoldás, amely lehetővé teszi, hogy a f
 
 (A avere vFXT rendszer központi telepítésének ajánlott módja, ha egy tulajdonosi jogosultsággal rendelkező felhasználó rendelkezik a létrehozás lépéseivel, ahogy azt a [felkészülés a avere vFXT létrehozására](avere-vfxt-prereqs.md)című cikk ismerteti.)  
 
-A megkerülő megoldás olyan további hozzáférési szerepkör létrehozásával jár, amely megfelelő jogosultságot biztosít a felhasználóknak a fürt telepítéséhez. A szerepkört egy előfizetés tulajdonosának kell létrehoznia, és a tulajdonosnak hozzá kell rendelnie a megfelelő felhasználókhoz. 
+A megkerülő megoldás olyan további hozzáférési szerepkör létrehozásával jár, amely megfelelő jogosultságot biztosít a felhasználóknak a fürt telepítéséhez. A szerepkört egy előfizetés tulajdonosának kell létrehoznia, és a tulajdonosnak hozzá kell rendelnie a megfelelő felhasználókhoz.
 
-Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketplace-rendszerkép [használati feltételeit](avere-vfxt-prereqs.md) is. 
+Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketplace-rendszerkép [használati feltételeit](avere-vfxt-prereqs.md) is.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Ezeket a lépéseket a fürthöz használni kívánt előfizetéshez tartozó tulajdonosi jogosultságokkal rendelkező felhasználónak kell elvégeznie.
 
 1. Másolja ezeket a sorokat, és mentse őket fájlba (például `averecreatecluster.json`). Használja az előfizetés-AZONOSÍTÓját a `AssignableScopes` utasításban.
@@ -49,7 +49,7 @@ Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketpl
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -63,6 +63,7 @@ Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketpl
    `az role definition create --role-definition <PATH_TO_FILE>`
 
     Példa:
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketpl
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Az eljárás után az ehhez a szerepkörhöz rendelt összes felhasználó a következő engedélyekkel rendelkezik az előfizetéshez: 
+Az eljárás után az ehhez a szerepkörhöz rendelt összes felhasználó a következő engedélyekkel rendelkezik az előfizetéshez:
 
 * A hálózati infrastruktúra létrehozása és konfigurálása
 * A fürt létrehozása

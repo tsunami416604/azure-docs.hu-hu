@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldás
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2017
-ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402430"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health megoldás a Azure Monitor
 A Agent Health megoldás az Azure-ban segít megérteni, hogy az összes ügynök, amely közvetlenül a Log Analytics munkaterületen jelent meg Azure Monitor vagy egy Azure Monitorhoz csatlakoztatott System Center Operations Manager felügyeleti csoport, amely nem válaszol, és operatív adatgyűjtés elküldése.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -86,7 +86,7 @@ Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az 
 | `RemoteIPLongitude` | A számítógép földrajzi helyének hosszúsági koordinátája.|
 | `RemoteIPLatitude` | A számítógép fölrajzi helyének szélességi koordinátája.|
 
-Minden Operations Manager felügyeleti kiszolgálónak küldött ügynök két szívverést küld, a SCAgentChannel tulajdonság értéke pedig a **közvetlen** és a **SCManagementServer** is, attól függően, hogy milyen adatforrásokat és figyelési megoldásokat tartalmaz engedélyezve van az előfizetésben. Ha felidézi, a megoldásokból származó adatokat a rendszer közvetlenül egy Operations Manager felügyeleti kiszolgálóról küldi el Azure Monitor vagy az ügynökön összegyűjtött adatok mennyisége miatt, közvetlenül az ügynöktől a Azure Monitorig küldi el. Az **SCManagementServer** értékű szívverések esetében a ComputerIP értéke a felügyeleti kiszolgáló IP-címe, mivel ez tölti fel az adatokat.  Azoknál a szívveréseknél, ahol az SCAgentChannel beállítása **Direct** (Közvetlen), ez az ügynök nyilvános IP-címe.  
+Minden Operations Manager felügyeleti kiszolgálónak küldött ügynök két szívverést küld, a SCAgentChannel tulajdonság értéke pedig a **közvetlen** és a **SCManagementServer** is, attól függően, hogy milyen adatforrásokat és figyelési megoldásokat engedélyezett az előfizetésében. Ha felidézi, a megoldásokból származó adatokat a rendszer közvetlenül egy Operations Manager felügyeleti kiszolgálóról küldi el Azure Monitor vagy az ügynökön összegyűjtött adatok mennyisége miatt, közvetlenül az ügynöktől a Azure Monitorig küldi el. Az **SCManagementServer** értékű szívverések esetében a ComputerIP értéke a felügyeleti kiszolgáló IP-címe, mivel ez tölti fel az adatokat.  Azoknál a szívveréseknél, ahol az SCAgentChannel beállítása **Direct** (Közvetlen), ez az ügynök nyilvános IP-címe.  
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsolatos naplókeresési mintákat tartalmazza.

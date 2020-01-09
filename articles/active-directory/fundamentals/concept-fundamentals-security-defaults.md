@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422837"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -60,7 +60,7 @@ A Multi-Factor Authentication való regisztráció után a következő kilenc Az
 
 Miután ezek a támadók hozzáférnek, az eredeti fiók tulajdonosának nevében kérhetnek hozzáférést az emelt szintű információhoz. Akár le is tölthetik a teljes könyvtárat, hogy elvégezzenek egy adathalászat elleni támadást a teljes szervezetben. 
 
-Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, hogy mindenki számára a fiókok ellenőrzésének erősebb formáját kell megkövetelni, például Multi-Factor Authentication. Miután a felhasználók befejezték Multi-Factor Authentication regisztrációt, a rendszer szükség esetén további hitelesítést kér.
+Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, hogy mindenki számára a fiókok ellenőrzésének erősebb formáját kell megkövetelni, például Multi-Factor Authentication. Miután a felhasználók beMulti-Factor Authenticationák a regisztrációt, a rendszer szükség esetén további hitelesítésre kéri.
 
 ### <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
 
@@ -73,11 +73,14 @@ Napjainkban a kiegyezéses bejelentkezési kísérletek többsége örökölt hi
 
 Ha a biztonsági alapértékek engedélyezve vannak a bérlőben, a régebbi protokoll által végrehajtott összes hitelesítési kérelem le lesz tiltva. A biztonsági alapértelmezett beállítások nem gátolják meg az Exchange ActiveSync szolgáltatást.
 
+> [!WARNING]
+> A biztonsági beállítások engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-fundamentals-block-legacy-authentication.md).
+
 ### <a name="protecting-privileged-actions"></a>A Kiemelt műveletek védelme
 
 A szervezetek a Azure Resource Manager API-n keresztül felügyelt különböző Azure-szolgáltatásokat használják, beleértve a következőket:
 
-- Azure Portal 
+- Azure portál 
 - Azure PowerShell 
 - Azure parancssori felület (CLI)
 
@@ -89,22 +92,30 @@ Miután engedélyezte a biztonsági alapértelmezett beállításokat a bérlőb
 
 Ha a felhasználó nincs regisztrálva a Multi-Factor Authenticationhoz, a folytatáshoz a Microsoft Authenticator alkalmazás használatával kell regisztrálnia a felhasználót. A rendszer nem biztosít 14 napos Multi-Factor Authentication regisztrációs időszakot.
 
+> [!NOTE]
+> A Azure AD Connect szinkronizálási fiók ki van zárva a biztonsági alapbeállításokból, és a rendszer nem kéri a többtényezős hitelesítés regisztrálását vagy elvégzését. A szervezetek más célokra nem szabad ezt a fiókot használni.
+
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
 A következő további szempontok a bérlő biztonsági alapértékeinek üzembe helyezésével kapcsolatosak.
 
-### <a name="older-protocols"></a>Régebbi protokollok
+### <a name="authentication-methods"></a>Hitelesítési módok
 
-A levelezési ügyfelek a régebbi hitelesítési protokollokat (például az IMAP, az SMTP és a POP3) használják a hitelesítési kérések elvégzéséhez. Ezek a protokollok nem támogatják a Multi-Factor Authentication. A fiók többsége megsérti a Microsoftot, hogy olyan régebbi protokollokkal szembeni támadásokkal szemben, amelyek a Multi-Factor Authentication megkerülésére próbálnak kerülni. 
+A biztonsági alapértékek lehetővé teszik az Azure Multi-Factor Authentication regisztrációját és használatát, és **csak az Microsoft Authenticator alkalmazást használják az értesítések használatával**. A feltételes hozzáférés lehetővé teszi bármely hitelesítési módszer használatát, amelyet a rendszergazda az engedélyezéshez választ.
 
-Annak biztosítása érdekében, hogy Multi-Factor Authentication szükséges a rendszergazdai fiókba való bejelentkezéshez, és hogy a támadók ne tudják megkerülni azt, a biztonsági alapértékek blokkolják a rendszergazdai fiókokra vonatkozó összes hitelesítési kérelmet a régebbi protokollok közül.
+|   | Alapértelmezett biztonsági szabályok | Feltételes hozzáférés |
+| --- | --- | --- |
+| Értesítés mobilalkalmazásban | X | X |
+| Mobilalkalmazásbeli ellenőrző kód vagy hardvertoken |   | X |
+| Telefonra küldött szöveges üzenet |   | X |
+| Telefonos hívás |   | X |
+| Alkalmazásjelszók |   | X * * |
 
-> [!WARNING]
-> A beállítás engedélyezése előtt győződjön meg arról, hogy a rendszergazdák nem használnak régebbi hitelesítési protokollokat. További információkért lásd: [a korábbi hitelesítéstől való elmozdulás](concept-fundamentals-block-legacy-authentication.md).
+\* * Az alkalmazások jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
-A feltételes hozzáférés használatával olyan házirendeket konfigurálhat, amelyek a biztonsági Alapértelmezések által engedélyezett viselkedést biztosítják. Ha feltételes hozzáférést használ, és a környezetében engedélyezve vannak feltételes hozzáférési szabályzatok, a biztonsági beállítások nem lesznek elérhetők az Ön számára. Ha olyan licenccel rendelkezik, amely feltételes hozzáférést biztosít, de nem rendelkezik a környezetben engedélyezett feltételes hozzáférési szabályzatokkal, akkor a feltételes hozzáférési szabályzatok engedélyezése előtt üdvözli a biztonsági beállítások használatát.
+A feltételes hozzáférés használatával a biztonsági alapértékekhez hasonló házirendeket konfigurálhat, de részletesebben is megadhatja a felhasználói kivételeket, amelyek nem érhetők el a biztonsági alapbeállításokban. Ha feltételes hozzáférést használ, és a környezetében engedélyezve vannak feltételes hozzáférési szabályzatok, a biztonsági beállítások nem lesznek elérhetők az Ön számára. Ha olyan licenccel rendelkezik, amely feltételes hozzáférést biztosít, de nem rendelkezik a környezetben engedélyezett feltételes hozzáférési szabályzatokkal, akkor a feltételes hozzáférési szabályzatok engedélyezése előtt üdvözli a biztonsági beállítások használatát. Az Azure AD-licenceléssel kapcsolatos további információkért tekintse meg az [Azure ad díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ![Figyelmeztető üzenet arról, hogy a biztonsági alapértelmezett beállítások vagy a feltételes hozzáférés nem mindkét esetben](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

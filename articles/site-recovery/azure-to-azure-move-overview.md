@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091941"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498048"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
 
@@ -81,7 +81,7 @@ A korábban említett [architektúrák](#typical-architectures-for-a-multi-tier-
 
      ![Egypéldányos virtuális gép üzembe helyezése rétegek között](media/move-vm-overview/single-zone.png)
 
-* **Virtuális gépek a rendelkezésre állási csoportokban üzembe helyezett egyes szinteken**: a virtuális gépeket egy rendelkezésre állási csoportban állíthatja be külön Availability Zones, ha Azure site Recovery használatával engedélyezi a virtuális gép replikálását. A rendelkezésre állásra vonatkozó SLA az áthelyezési művelet elvégzése után 99,9% lesz.
+* **Virtuális gépek a rendelkezésre állási csoportokban üzembe helyezett egyes szinteken**: a virtuális gépeket egy rendelkezésre állási csoportban állíthatja be külön Availability Zones, ha Azure site Recovery használatával engedélyezi a virtuális gép replikálását. A rendelkezésre állásra vonatkozó SLA az áthelyezési művelet elvégzése után 99,99% lesz.
 
      ![VIRTUÁLIS gépek üzembe helyezése rendelkezésre állási csoportokban és Availability Zones](media/move-vm-overview/aset-azone.png)
 

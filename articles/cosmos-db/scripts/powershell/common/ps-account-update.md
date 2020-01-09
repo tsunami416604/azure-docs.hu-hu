@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell parancsfájl – Azure Cosmos-fiók frissítése
+title: PowerShell-parancsfájl Azure Cosmos-fiók frissítéséhez
 description: Azure PowerShell parancsfájl-minta – Azure Cosmos-fiók frissítése vagy régiók módosítása
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: ec160f03fa5a8b9415dc33885fca512d4289f37b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 075c33b0818aa3ec8b16158f538ae302446ff5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445023"
 ---
 # <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>Azure Cosmos-fiók frissítése vagy régiók módosítása a PowerShell használatával
 
@@ -43,14 +43,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hozzon létre egy erőforrást. |
+| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hozzon létre egy erőforrást. |
 | [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Erőforrás frissítése. |
 |**Azure-erőforráscsoportok**| |
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

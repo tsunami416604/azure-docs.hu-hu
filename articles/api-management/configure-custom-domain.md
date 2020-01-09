@@ -1,5 +1,6 @@
 ---
-title: Egyéni tartománynév beállítása az Azure API Management-példányhoz | Microsoft Docs
+title: Egyéni tartománynév konfigurálása az Azure API Management-példányhoz
+titleSuffix: Azure API Management
 description: Ez a témakör bemutatja, hogyan konfigurálhat egyéni tartománynevet az Azure API Management-példányához.
 services: api-management
 documentationcenter: ''
@@ -11,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442545"
 ---
-# <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
+# <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév beállítása
 
 Azure API Management Service-példány létrehozásakor az Azure a azure-api.net altartományát rendeli hozzá (például `apim-service-name.azure-api.net`). Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
 
@@ -90,6 +91,6 @@ Ha az egyéni tartománynévhez konfigurálja a DNS-t, két lehetőség közül 
 > [!NOTE]
 > Bár az API Management-példány IP-címe statikus, néhány esetben változhat. Ezért javasoljuk, hogy használjon CNAME-t az egyéni tartomány konfigurálásakor. A DNS-konfigurációs módszer kiválasztásakor vegye figyelembe a figyelmet. További információ a [API Management GYIK](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)-ban olvasható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A szolgáltatás frissítése és méretezése](upgrade-and-scale.md)

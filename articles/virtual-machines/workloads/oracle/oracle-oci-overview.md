@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799560"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459299"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja (előzetes verzió)
 
@@ -44,15 +44,15 @@ A több felhőalapú konfigurációban futtatható alkalmazások a következők:
 * Oracle kereskedelmi alkalmazások
 * Oracle Hyperion pénzügyi felügyelet
 
-A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy webes réteget az Azure-ban. További információkért tekintse meg a következő szakaszok.
+A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy webes réteget az Azure-ban. További információt a következő részekben talál.
 
 ![Az Azure OCI-megoldás áttekintése](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Az előzetes verzióban elérhető Felhőbeli kapcsolatok az Azure East US (eastus) & Egyesült Királyság déli régiója (uksouth) régióira és a OCI Ashburn (USA keleti régió) & London (Egyesült Királyság déli régiója) régiókra korlátozódnak. Egyesült Királyság déli régiója esetén használja az 1. rendelkezésre állási tartományt (AD 1) a OCI-ben a kapcsolat közötti kapcsolat létrehozásakor az alacsonyabb késés érdekében.
+* Az előzetes verzióban az Azure East US (eastus), a Egyesült Királyság déli régiója (uksouth) és a Canada Central (canadacentral) régiói, valamint a OCI Ashburn (USA keleti régiója), London (Egyesült Királyság déli régiója) és Toronto (Kanada délkeleti régió) régióira korlátozódik. Egyesült Királyság déli régiója esetén használja az 1. rendelkezésre állási tartományt (AD 1) a OCI-ben a kapcsolat közötti kapcsolat létrehozásakor az alacsonyabb késés érdekében.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A nagyvállalati ügyfelek gyakran úgy döntenek, hogy különböző üzleti és üzemeltetési okokból több felhőben is diverzifikálják és üzembe helyezik a számítási feladatokat. Az ügyfelek változatossá teszik a felhőalapú hálózatokat az interneten, az IPSec VPN-en vagy a felhőalapú szolgáltató közvetlen csatlakozási megoldásának használatával a helyszíni hálózaton keresztül. A felhőalapú hálózatok összekapcsolásával jelentős mértékű befektetésekre lehet szükség az idő, a pénz, a tervezés, a beszerzés, a telepítés, a tesztelés és a műveletek terén. 
 
@@ -66,13 +66,13 @@ A hálózati biztonság a vállalati alkalmazások egyik kulcsfontosságú össz
 
 Emellett [biztonsági listát](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) is BEÁLLÍTHAT a OCI virtuális felhőalapú hálózati és biztonsági szabályaihoz (az Azure [hálózati biztonsági csoportjaihoz](../../../virtual-network/security-overview.md)csatolva). Ezekkel a szabályokkal szabályozhatja a virtuális hálózatokban lévő gépek közötti forgalmat. A hálózati biztonsági szabályok a gép szintjén, az alhálózat szintjén és a virtuális hálózat szintjén is hozzáadhatók.
  
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 Az identitás a Microsoft és az Oracle közötti partnerség egyik legfontosabb pillére. Jelentős munka történt az [Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) [Azure Active Directory](../../../active-directory/index.yml) (Azure ad) szolgáltatással való integrálásához. Az Azure AD a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Segítségével a felhasználók bejelentkezhetnek, és különböző erőforrásokhoz férhetnek hozzá. Az Azure AD lehetővé teszi a felhasználók és az engedélyeik kezelését is.
 
 Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen kezelje a Azure Active Directory. Az Azure AD szinkronizálja a címtárban bekövetkezett változásokat a megfelelő Oracle-címtárral, és az egyszeri bejelentkezést használja a felhőalapú Oracle-megoldásokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure és a OCI közötti [Felhőbeli hálózattal](configure-azure-oci-networking.md) . 
 

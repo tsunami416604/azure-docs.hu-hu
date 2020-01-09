@@ -1,102 +1,93 @@
 ---
-title: Az Azure Service Fabric platformot szintű figyelése |} A Microsoft Docs
-description: Ismerje meg a platformszintű események és naplók monitorozása és diagnosztizálása az Azure Service Fabric-fürtökkel használt.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric platform szintű monitorozás
+description: Ismerje meg az Azure Service Fabric-fürtök figyelésére és diagnosztizálására szolgáló platform szintű eseményeket és naplókat.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376936"
 ---
 # <a name="monitoring-the-cluster"></a>A fürt figyelése
 
-Fontos meghatározni,-e a hardver és a fürt van a várt módon viselkedik a fürt szintjén figyelheti. Bár a Service Fabric is fenntartható az alkalmazások futtatása közben egy hardverhiba, de továbbra is szeretné diagnosztizálhatja, hogy hiba történt az alkalmazások vagy az alapul szolgáló infrastruktúra készítését. Is célszerű figyelemmel kísérni a fürtök jobban megtervezheti a kapacitást hozzáadásával vagy eltávolításával hardver kapcsolatos döntéseket hozta a segít.
+Fontos, hogy a fürt szintjén figyelje azt, hogy a hardver és a fürt a várt módon viselkedik-e. Bár a Service Fabric a hardverhiba miatt megtarthatja az alkalmazások futtatását, azonban továbbra is meg kell vizsgálnia, hogy egy alkalmazásban vagy a mögöttes infrastruktúrában történt-e hiba. Emellett érdemes figyelnie a fürtöket a kapacitás megtervezésére, ami segít a hardver hozzáadásával vagy eltávolításával kapcsolatos döntések meghozatalában.
 
-A Service Fabric több strukturált platform eseményt, mutatja [Service Fabric-események](service-fabric-diagnostics-events.md), az EventStore és a különböző naplózási csatornák-a-beépített keresztül. 
+Service Fabric több strukturált platform-eseményt tesz elérhetővé [Service Fabric eseményekként](service-fabric-diagnostics-events.md)a EventStore és a különböző naplózási csatornákon. 
 
-Windows, a Service Fabric-események állnak rendelkezésre a megfelelő számú egyetlen ETW-szolgáltató `logLevelKeywordFilters` használt műveleti és adatok & üzenetküldés csatornák - között válasszon Ez az a módszer azt ki kimenő Service Fabric-események szűrés külön az igény szerint.
+Windows rendszeren Service Fabric események egyetlen ETW-szolgáltatóból érhetők el, amelyek a működési és az adatok & üzenetkezelési csatornák közötti kiválasztására szolgáló releváns `logLevelKeywordFilters`. Ez a módszer a kimenő Service Fabric események igény szerinti szűrésének módját.
 
-* **Működési** magas szintű, Service Fabric és a fürtöt, egy csomópontot hamarosan, egy új alkalmazást, üzembe helyezéséhez vagy egy frissítési visszaállítási események által végrehajtott műveleteket stb. Az események teljes listáját lásd: [Itt](service-fabric-diagnostics-event-generation-operational.md).  
+* **Működési műveletek** A Service Fabric és a fürt által végrehajtott magas szintű műveletek, beleértve az esetlegesen megjelenő csomópontok eseményeit, egy új alkalmazás üzembe helyezését, vagy egy frissítés visszaállítását stb. Az események teljes listáját [itt](service-fabric-diagnostics-event-generation-operational.md)tekintheti meg.  
 
-* **Működési – részletes**  
-Rendszerállapot-jelentések és a terheléselosztási döntéseket hozhat.
+* **Működés – részletes**  
+Állapotjelentés és terheléselosztási döntések.
 
-A művelet csatornán többféleképpen ETW/Windows-eseménynaplók, beleértve keresztül érhetők el a [EventStore](service-fabric-diagnostics-eventstore.md) (elérhető Windows verziók 6.2 és újabb verziók, Windows fürtök esetén). Az EventStore hozzáférést biztosít (beleértve a fürt, csomópontok, alkalmazások, szolgáltatások, partíciók, replikák és tárolók entitások) / entitás alapja a fürt eseményeit, és elérhetővé teszi őket a REST API-k és a Service Fabric ügyféloldali kódtár használatával. Az EventStore használatával figyelheti a fejlesztési-tesztelési fürtökhöz, és lekérhesse az éles fürtök állapotát egy időponthoz ismeretekkel.
+A műveleti csatorna számos különböző módon érhető el, például a ETW-/Windows-eseménynaplók, a [EventStore](service-fabric-diagnostics-eventstore.md) (a Windows rendszerben, a Windows-fürtök esetében pedig a 6,2-es és újabb verzióiban érhető el). A EventStore (entitások, csomópontok, alkalmazások, szolgáltatások, partíciók, replikák és tárolók) számára lehetővé teszi a fürt eseményeinek elérését, és a REST API-k és a Service Fabric ügyféloldali kódtár használatával teszi elérhetővé őket. A EventStore segítségével figyelheti a fejlesztési és tesztelési fürtöket, és megkezdheti az éles fürtök állapotának az időponthoz való bevezetését.
 
-* **Adat & üzenetkezelés**  
-Kritikus fontosságú naplók és esemény jön létre (jelenleg csak a ReverseProxy) üzenetküldést és adatelérési útjának (a reliable services-modellekhez).
+* **Adat& üzenetkezelés**  
+Az üzenetkezelésben létrehozott kritikus naplók és események (jelenleg csak a ReverseProxy) és az adatelérési út (megbízható szolgáltatások modelljei).
 
-* **Adat & üzenetkezelés – részletes**  
-A data- és üzenetkezelés (Ez a csatorna rendelkezik egy nagyon nagy mennyiségű esemény) a fürt minden nem kritikus fontosságú naplót tartalmazó részletes csatornát.
+* **& Üzenetkezelés – részletes információk**  
+A fürtben lévő adatokból és üzenetküldésből származó összes nem kritikus naplót tartalmazó részletes csatorna (ez a csatorna nagyon nagy mennyiségű eseményt tartalmaz).
 
-Ezeket kívül két megadott strukturált EventSource csatornákat, valamint a jellegű támogatási célból gyűjtött naplók.
+Ezen kívül két strukturált EventSource-csatornát is biztosítunk, valamint a támogatási célokra gyűjtött naplókat.
 
 * [A Reliable Services eseményei](service-fabric-reliable-services-diagnostics.md)  
-Programozási modell adott események.
+Programozási modell adott eseményei.
 
 * [A Reliable Actors eseményei](service-fabric-reliable-actors-diagnostics.md)  
-Programozási modell adott események és teljesítményszámlálók.
+Programozási modell – adott események és teljesítményszámlálók.
 
 * Támogatási naplók  
-A rendszernaplók csak az USA által használható, ha a támogatást nyújtó Service Fabric által generált.
+A Service Fabric által létrehozott rendszernaplókat csak akkor használhatja, ha támogatást biztosít.
 
-Ezek a különböző csatornák lefedje a javasolt szintű platform-naplózás. Kiszolgálószintű naplózás platform javítása érdekében fontolja meg jobban az állapotközpontú modellről megismeréséhez és egyéni állapotjelentések hozzáadása és hozzáadása ehhez egyéni **teljesítményszámlálók** hozhat létre egy valós idejű ismeretekkel hatását a szolgáltatások és alkalmazások a fürtön.
+Ezek a különböző csatornák a platform szintű naplózás nagy részét fedik le. A platformok szintjének naplózásának javítása érdekében érdemes megfontolni az egészségügyi modell jobb megismerését és az egyéni állapotadatok hozzáadását, valamint az egyéni **teljesítményszámlálók** hozzáadását, amelyekkel valós időben megismerheti a szolgáltatások és alkalmazások hatását a fürtön.
 
-Ezek a naplók kihasználása érdekében azt javasoljuk, hogy engedélyezve van az Azure Portalon a fürt létrehozásakor a "diagnosztika". Diagnosztikai bekapcsolásával a fürt telepítésekor a Windows Azure Diagnostics az operatív, a Reliable Services és Reliable actors-csatornák tudomásul veszi, és tárolja az adatokat, amint azt további [az Azure-ral események összesítése Diagnosztikai](service-fabric-diagnostics-event-aggregation-wad.md).
+A naplók kihasználása érdekében erősen ajánlott a "diagnosztika" engedélyezése a fürt létrehozásakor az Azure Portalon. A diagnosztika bekapcsolásával a fürt üzembe helyezésekor a Windows Azure Diagnostics képes fogadni az operatív, Reliable Services és megbízható Actors-csatornákat, és az adatokat az [Azure Diagnostics használatával összesített események](service-fabric-diagnostics-event-aggregation-wad.md)szerint tárolja.
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Az Azure Service Fabric health és terhelésjelentés-készítés
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric állapot-és betöltési jelentéskészítés
 
-A Service Fabric a saját állapotmodell, ezek a cikkek részletesen ismertetett rendelkezik:
+A Service Fabric saját Health modellel rendelkezik, amely részletesen szerepel a következő cikkekben:
 
-- [Service Fabric állapotmonitorozásának bemutatása](service-fabric-health-introduction.md)
+- [Az Service Fabric Health monitoring bemutatása](service-fabric-health-introduction.md)
 - [Szolgáltatásállapot jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [Egyéni Service Fabric-állapotjelentések hozzáadása](service-fabric-report-health.md)
-- [A Service Fabric-állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
+- [Egyéni Service Fabric állapotjelentés hozzáadása](service-fabric-report-health.md)
+- [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
-Szolgáltatásállapot-figyelést, kritikus fontosságú több szempontból üzemeltetéséig, különösen egy alkalmazás frissítése során. Miután a szolgáltatás minden frissítési tartomány frissítve van, a frissítési tartomány kell telnie állapot-ellenőrzések helyezi át a központi telepítés a következő frissítési tartományra. OK állapot nem érhető el, ha az üzembe helyezés, vissza lesz állítva a, hogy az alkalmazás egy ismert OK állapotban marad. Mielőtt a szolgáltatások visszavonásra hatással lehetnek egyes ügyfelek, bár a legtöbb ügyfél problémát nem tapasztalható. Ezenkívül megoldást akkor fordul elő, viszonylag gyorsan nem kell megvárnia egy humán operátort a művelet. A további állapotát ellenőrzi, hogy a kód, a több rugalmas a szolgáltatás az, hogy az üzembe helyezési problémák vannak építve.
+Az állapotfigyelő szolgáltatás kritikus fontosságú a szolgáltatások működtetésének több aspektusa szempontjából, különösen az alkalmazások frissítésekor. A szolgáltatás minden frissítési tartományának frissítése után a frissítési tartománynak át kell adnia az állapot-ellenőrzéseket, mielőtt a központi telepítés a következő frissítési tartományra mozdul. Ha az OK állapota nem érhető el, a rendszer visszaállítja a központi telepítést, hogy az alkalmazás egy ismert OK állapotban maradjon. Bár előfordulhat, hogy egyes ügyfeleket a szolgáltatások visszavonása előtt érintenek, a legtöbb ügyfél nem fog problémát tapasztalni. Emellett a megoldás viszonylag gyorsan zajlik anélkül, hogy meg kellene várnia egy emberi operátor műveletét. Minél több egészségügyi ellenőrzés van beépítve a kódban, annál rugalmasabb a szolgáltatás üzembe helyezési problémái.
 
-A service health szerepet játszó másik tényező jelent a metrikák a szolgáltatásból. Metrikák fontosak a Service Fabricben, mert azokat erőforrás-használat elosztása érdekében. Metrikák is azt jelzi, hogy a helyrendszer állapotát. Például előfordulhat, hogy egy alkalmazás, amely számos szolgáltatás rendelkezik, és minden példány egy második (RPS) metrikánként kérelmek jelenti. Ha egy szolgáltatás több erőforrást, mint egy másik szolgáltatás használja, a Service Fabric szolgáltatáspéldány körül a fürt, még akkor is, erőforrás-használat karbantartása próbál helyezi át. Erőforrás-használat működésének részletesebb magyarázatáért lásd: [erőforrás-használat kezelésére, és a Service Fabric-metrikák betöltése](service-fabric-cluster-resource-manager-metrics.md).
+A szolgáltatás állapotának egy másik aspektusa a szolgáltatásból származó jelentések mérőszámai. A metrikák fontosak a Service Fabricban, mert az erőforrás-használat kiegyensúlyozására szolgálnak. A metrikák a rendszerállapot kijelzője is lehetnek. Előfordulhat például, hogy egy olyan alkalmazással rendelkezik, amely számos szolgáltatással rendelkezik, és mindegyik példány másodpercenkénti (RPS) mérőszámot jelent. Ha egy szolgáltatás több erőforrást használ, mint egy másik szolgáltatást, Service Fabric a fürt körül helyezi el a szolgáltatási példányokat, hogy az erőforrás-használatot is meg lehessen próbálni. Az erőforrás-kihasználtság működésének részletes ismertetését lásd: erőforrás- [felhasználás kezelése és terhelés Service Fabric a metrikákkal](service-fabric-cluster-resource-manager-metrics.md).
 
-Metrikák is segíthet információhoz juthat arról, hogy a szolgáltatás működik-e. Az idő múlásával a metrikák használatával ellenőrizze, hogy működik-e a szolgáltatás paraméterek belül. Például ha trendeket mutatják, hogy hétfő reggel ismét elindíthatja a 9-kor RPS átlagos 1000, majd beállíthat egy jelentés, amely figyelmeztet, ha az RPS 500 alatt vagy felett 1500. Minden tökéletesen finom lehet, de győződjön meg arról, hogy az ügyfelek merülnek fel a nagyszerű felhasználói élményt meg érdemes lehet. A szolgáltatás is meghatározhatja egy adott mérőszámok, amelyek jelenteni lehet állapotának ellenőrzése céljából, de a fürt resource terheléselosztás, amelyek nem befolyásolják. Ehhez állítsa nullára a metrika súlyának. Azt javasoljuk, hogy indítsa el az összes metrikát egy nulla-as súlyozással rendelkező, és nem növeli a súly, amíg nem biztos abban, hogy megértette, hogyan befolyásolja a metrikák súlyozási erőforrás-fürthöz tartozó terheléselosztási.
+A metrikák segítségével betekintést nyerhet a szolgáltatás teljesítményére. Az idő múlásával a metrikák segítségével ellenőrizhető, hogy a szolgáltatás a várt paramétereken belül működik-e. Ha például a trendek azt mutatják be, hogy hétfőn reggel 9 ÓRAKOR az átlagos RPS érték 1 000, akkor beállíthat egy állapotjelentést, amely riasztást küld, ha az RPS értéke a 500 vagy a feletti 1 500. Lehet, hogy minden rendben jól működik, de érdemes lehet meggyőződni arról, hogy az ügyfelek nagy tapasztalattal rendelkeznek. A szolgáltatás meghatározhatja az állapot-ellenőrzési célokat szolgáló mérőszámok készletét, de ez nem befolyásolja a fürt erőforrás-kiegyensúlyozását. Ehhez állítsa nulla értékre a metrika súlyozását. Javasoljuk, hogy az összes mérőszámot nulla értékű súlyozással indítsa el, és ne növelje a súlyozást, amíg nem biztos benne, hogy tisztában van azzal, hogy a metrikák súlyozása milyen hatással van a fürt erőforrás-kiegyensúlyozására.
 
 > [!TIP]
-> Ne használjon túl sok súlyozott metrikákat. Tudni, miért szolgáltatáspéldányok vannak folyamatban áthelyezhető a terheléselosztás nehézkes lehet. Néhány metrikák hosszú úgy folytathatja!
+> Ne használjon túl sok súlyozott mérőszámot. Nehéz lehet megérteni, hogy a szolgáltatási példányok hogyan mozdulnak el a terheléselosztásban. Néhány mérőszám hosszú utat mutathat be.
 
-Metrikák és az állapotjelentéseket jelöltségét ellenőrző azt jelzi, állapotát és teljesítményét az alkalmazás információit. **CPU teljesítményszámláló megtudhatja, hogyan a csomópont fel van, de nem utasítja, hogy egy adott szolgáltatás állapota kifogástalan, mivel több szolgáltatás előfordulhat, hogy fut egy csomóponton.** De mérőszámokat, például RPS elemek feldolgozását, és minden késleltetése egy adott szolgáltatás állapotát jelezheti.
+Minden olyan információ, amely az alkalmazás állapotának és teljesítményének megadására utal, a mérőszámok és az állapotadatok jelöltje. **A CPU-teljesítményszámláló megtudhatja, hogyan használja a rendszer a csomópontot, de nem jelzi, hogy egy adott szolgáltatás kifogástalan állapotú-e, mert több szolgáltatás is futhat egyetlen csomóponton.** Azonban a metrikák, például az RPS, a feldolgozott elemek és a kérelmek késése is jelezheti egy adott szolgáltatás állapotát.
 
-## <a name="service-fabric-support-logs"></a>A Service Fabric támogatási naplók
+## <a name="service-fabric-support-logs"></a>Service Fabric támogatási naplók
 
-Az Azure Service Fabric-fürttel, segítségért forduljon a Microsoft támogatási van szüksége, ha a támogatási naplók szinte mindig szükség. Ha a fürt az Azure-ban üzemel, támogatási naplók automatikusan konfigurálva és fürt létrehozásának részeként gyűjti. A naplók a fürterőforrás-csoporthoz dedikált tárfiókok vannak tárolva. A storage-fiók nem rendelkezik rögzített neve, de a fiókban található blob-tárolók és táblák kezdetű névvel rendelkező *fabric*. Önálló fürt log gyűjtemények beállításával kapcsolatos további információkért lásd: [létrehozása és kezelése egy önálló Azure Service Fabric-fürt](service-fabric-cluster-creation-for-windows-server.md) és [konfigurációs beállításai egy különálló Windows-fürt](service-fabric-cluster-manifest.md). Önálló Service Fabric-példányok a naplók helyi fájlmegosztást kell küldeni. Ön **szükséges** szeretné, hogy ezek a naplók a támogatást, de nem tartozhat használható bárki kívül a Microsoft ügyfél-támogatási csoporthoz.
+Ha kapcsolatba kell lépnie a Microsoft ügyfélszolgálatával az Azure Service Fabric-fürttel kapcsolatos segítségért, a támogatási naplók szinte mindig szükségesek. Ha a fürt az Azure-ban üzemel, a rendszer automatikusan konfigurálja és gyűjti a támogatási naplókat a fürt létrehozása során. A naplók tárolása egy dedikált Storage-fiókban történik a fürt erőforráscsoport-csoportjában. A Storage-fiók nem rendelkezik rögzített névvel, de a fiókban a blob-tárolók és-táblák a *hálóval*kezdődő névvel jelennek meg. További információ a naplófájlok önálló fürthöz való beállításáról: [önálló Azure Service Fabric-fürt és konfigurációs beállítások létrehozása és kezelése](service-fabric-cluster-creation-for-windows-server.md) [önálló Windows-fürthöz](service-fabric-cluster-manifest.md). Önálló Service Fabric-példányok esetén a naplókat egy helyi fájlmegosztás számára kell elküldeni. Ezeknek a naplóknak támogatásra van **szükségük** , de nem használhatók a Microsoft ügyfélszolgálati csapatán kívüli személyek számára.
 
-## <a name="measuring-performance"></a>Teljesítmény méréséhez
+## <a name="measuring-performance"></a>Teljesítmény mérése
 
-Mérték teljesítmény, a fürt segít megérteni, hogyan tudja kezelni a terhelés és a meghajtó döntések körül a fürt méretezése (lásd: a fürthöz méretezés [az Azure-ban](service-fabric-cluster-scale-up-down.md), vagy [helyszíni](service-fabric-cluster-windows-server-add-remove-nodes.md)). Teljesítményadatok akkor is hasznos, a műveleteket, vagy az alkalmazások és szolgáltatások tartott, amikor a naplók elemzése a jövőben képest. 
+A fürt teljesítményének mérése segít megérteni, hogyan képes kezelni a terhelést és a meghajtóval kapcsolatos döntéseket a fürt méretezése terén (lásd: a fürt méretezése az [Azure](service-fabric-cluster-scale-up-down.md)-ban vagy [a helyszínen](service-fabric-cluster-windows-server-add-remove-nodes.md)). A teljesítményadatok abban az esetben is hasznosak, ha az Ön vagy alkalmazásai és szolgáltatásai a jövőben is elvégezték a naplók elemzését. 
 
-A teljesítményszámlálók gyűjtése, ha a Service Fabricet használja, lásd: [teljesítményszámlálók a Service Fabricben](service-fabric-diagnostics-event-generation-perf.md)
+A Service Fabric használatakor gyűjtött teljesítményszámlálók listáját lásd: [teljesítményszámlálók a Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
 
-Itt két egyszerű módja, amelyben állíthat be a fürthöz tartozó teljesítményadatok gyűjtése:
+Íme két gyakori módszer, amelyekkel a fürt teljesítményadatokat gyűjthet:
 
-* **Az ügynök használatával**  
-Ez az előnyben részesített módja gyűjt a gépről, teljesítmény, mivel ügynökök általában gyűjtendő lehetséges teljesítmény-mérőszámok listája, és válassza ki a metrikákat szeretné gyűjteni, vagy módosítása egy viszonylag egyszerű folyamat. A Service Fabric bejelentkezik az Azure Monitor, az Azure Monitor ajánlat olvashat [Azure Monitor-naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) és [beállítása a Log Analytics-ügynököket](../log-analytics/log-analytics-windows-agent.md) további információ a Log Analytics-ügynököket, amelyek van egy ilyen monitorozási ügynök, amely képes a fürt virtuális gépeihez teljesítményadatok csomópontmetrikák és üzembe helyezett tárolók.
+* **Ügynök használata**  
+Ez az előnyben részesített módszer a gépek teljesítményének begyűjtésére, mivel az ügynökök általában a lehetséges teljesítmény-mérőszámok listáját gyűjtik, és viszonylag egyszerű folyamat, amellyel kiválaszthatja a begyűjteni vagy módosítani kívánt mérőszámokat. Az Azure Monitor ajánlat Azure Monitor naplók beolvasása Service Fabric [Azure monitor naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) és [a log Analytics-ügynök beállítása](../log-analytics/log-analytics-windows-agent.md) további információk a log Analytics ügynökről, amely egy ilyen figyelő ügynök, amely képes a fürtözött virtuális gépek és a telepített tárolók teljesítményadatait felvenni.
 
-* **Az Azure Table Storage-teljesítményszámlálók**  
-Teljesítmény-mérőszámok az azonos table Storage, az eseményeket is küldhet. Ehhez a megfelelő teljesítményszámlálók felvételéhez a fürt virtuális gépekről az Azure Diagnostics-beállítások módosítása, illetve engedélyezni kívánja, hogy az érvényesítse a docker-stats, ha telepít tárolókat. Olvassa el konfigurálása [WAD teljesítményszámlálókat](service-fabric-diagnostics-event-aggregation-wad.md) a Service Fabric beállításához teljesítményszámlálót.
+* **Teljesítményszámlálók az Azure Table Storage**  
+A teljesítménymutatókat is elküldheti ugyanahhoz a tábla-tárolóhoz, mint az eseményeket. Ehhez módosítania kell a Azure Diagnostics konfigurációt a fürtben lévő virtuális gépek megfelelő teljesítményszámlálói kiválasztásához, és lehetővé kell tenni a Docker-statisztika felvételét, ha tárolókat helyez üzembe. További információ a teljesítményszámlálók [a Service FABRIC wad](service-fabric-diagnostics-event-aggregation-wad.md) -ben történő konfigurálásáról a teljesítményszámláló-gyűjtemény beállításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Olvassa el a Service Fabric [Azure Monitor-naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) fürt diagnosztikai adatok gyűjtéséhez és egyéni lekérdezésekkel és riasztások létrehozása
-* Ismerkedés a Service Fabric beépített diagnosztikai információt biztosít, az a [EventStore](service-fabric-diagnostics-eventstore.md)
-* Tárgyalja [diagnosztikai szokványos](service-fabric-diagnostics-common-scenarios.md) a Service Fabricben
+* További információ a Service Fabric [Azure monitor naplók integrálásáról](service-fabric-diagnostics-event-analysis-oms.md) a fürt diagnosztika gyűjtéséhez és egyéni lekérdezések és riasztások létrehozásához
+* Ismerkedjen meg Service Fabric a beépített diagnosztikai felülettel, a [EventStore](service-fabric-diagnostics-eventstore.md)
+* Tekintse át a Service Fabric [gyakori diagnosztikai forgatókönyveit](service-fabric-diagnostics-common-scenarios.md)

@@ -1,7 +1,7 @@
 ---
 title: 'A Train SVD ajánló: modul referenciája'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a Train SVD ajánló modult a Bayes-ajánlások betanításához a SVD algoritmus használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Train SVD ajánló modulját a SVD algoritmus használatával a Bayes-ajánlások betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428418"
 ---
-# <a name="train-svd-recommender"></a>SVD-ajánló
+# <a name="train-svd-recommender"></a>SVD-ajánló betanítása
 
 Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben (előzetes verzió). Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
 
@@ -50,14 +50,14 @@ A modul használata előtt a bemeneti adatoknak az ajánlási modell által vár
 
 Az **éttermi minősítési** adatkészlet Azure Machine learning Designerben (a **mentett adatkészletek** kiválasztása, majd a **minták**) a várt formátumot mutatja:
 
-|UserID|placeID|rating|
+|userID|placeID|rating|
 |------------|-------------|------------|
 |U1077|135085|2|
 |U1077|135038|2|
 
 Ebből a mintából láthatja, hogy egyetlen felhasználó minősítése két külön étterem. 
 
-### <a name="train-the-model"></a>A modell betanítása
+### <a name="train-the-model"></a>A modell tanítása
 
 1.  Adja hozzá a Train SVD Ajánlói modult a folyamathoz a tervezőben, és kapcsolja össze a betanítási adataival.  
    
@@ -74,6 +74,6 @@ Ebből a mintából láthatja, hogy egyetlen felhasználó minősítése két k�
 5.  A folyamat futtatása.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

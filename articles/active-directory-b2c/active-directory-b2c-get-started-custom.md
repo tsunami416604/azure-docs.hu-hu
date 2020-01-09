@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367892"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -31,10 +31,10 @@ Az [Egyéni házirendek](active-directory-b2c-overview-custom.md) olyan konfigur
 
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. A felső menüben a **könyvtár + előfizetés** szűrő használatával válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Az Áttekintés lapon válassza az **identitási élmény keretrendszere** elemet a **házirendek** ablaktáblán.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. Az Áttekintés lap **szabályzatok**területén válassza az **identitási élmény keretrendszere**elemet.
 
 ### <a name="create-the-signing-key"></a>Az aláíró kulcs létrehozása
 
@@ -77,10 +77,9 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 
 #### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
 
-1. Válassza a **minden szolgáltatás** lehetőséget a Azure Portal bal felső sarkában.
-1. A keresőmezőbe írja be a `Azure Active Directory` kifejezést.
-1. A keresési eredmények között válassza a **Azure Active Directory** lehetőséget.
-1. A bal oldali menü **kezelés** területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+1. Az **Azure Active Directory** áttekintés menüjének **kezelés**területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
 1. Válassza az **Új alkalmazás regisztrálása** elemet.
 1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework`.
 1. Az **alkalmazás típusa mezőben**válassza a **Web App/API**lehetőséget.

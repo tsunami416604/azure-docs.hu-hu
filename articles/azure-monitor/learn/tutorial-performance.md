@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398622"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -72,7 +72,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 
     ![Teljesítménnyel kapcsolatos tipp](media/tutorial-performance/6-perf-tip.png)
 
-8.  További elemzéshez kattintson a **nyomkövetés letöltése** lehetőségre a nyomkövetés a Visual studióba való letöltéséhez.
+8.   További elemzéshez kattintson a **nyomkövetés letöltése** lehetőségre a nyomkövetés letöltéséhez. Ezeket az adatlapokat a [perfview eszköz](https://github.com/Microsoft/perfview#perfview-overview)használatával tekintheti meg.
 
 ## <a name="use-logs-data-for-server"></a>A kiszolgálók naplófájljainak használata
  A naplók részletes lekérdezési nyelvet biztosítanak, amely lehetővé teszi az Application Insights által összegyűjtött összes adatok elemzését. Ezzel a funkcióval részletes elemzéseket végezhet a kérések és a teljesítmény adatairól.
@@ -87,7 +87,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 ## <a name="identify-slow-client-operations"></a>Lassú ügyfélműveletek azonosítása
 Amellett, hogy azonosítja a kiszolgálói folyamatokat az optimalizálás érdekében, az Application Insights az ügyfélböngészők szempontjából is képes elemzést végezni.  Így megtalálhatja a javítási lehetőségeket az ügyfél összetevői számára, és különböző böngészők vagy helyek problémáit is megtalálhatja.
 
-1. A **vizsgálat** **területen válassza a** böngésző **teljesítménye** elemet, vagy válassza a **teljesítmény** lehetőséget a **vizsgálat** szakaszban, majd váltson a **böngésző** lapra a jobb felső sarokban található kiszolgáló/böngésző váltógomb gombra kattintva Nyissa meg a böngésző teljesítményének összegzését. Ez egy vizuális összefoglalást nyújt az alkalmazása különböző telemetriáiról a böngésző szempontjából.
+1. A **vizsgálat** **területen válassza a** böngésző **teljesítménye** lehetőséget, vagy a jobb felső sarokban lévő kiszolgáló/böngésző váltógomb lehetőségre kattintva nyissa meg a böngésző teljesítményének összegzése **elemet a** **vizsgálat elemnél, és váltson** a **böngésző lapra.** Ez egy vizuális összefoglalást nyújt az alkalmazása különböző telemetriáiról a böngésző szempontjából.
 
     ![Böngésző összefoglalása](media/tutorial-performance/8-browser.png)
 
@@ -102,7 +102,7 @@ A kiszolgáló teljesítményére gyűjtött adatokhoz hasonlóan a Application 
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél. Az első lekérdezés a különböző oldalmegtekintések időtartamát jeleníti meg az idő függvényében.
 
-    ![naplók lekérdezése](media/tutorial-performance/10-page-view-logs.png)
+    ![Naplók lekérdezése](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Az intelligens diagnosztika a naplók egyik funkciója, amely az adat egyedi mintáit azonosítja. Ha rákattint az Intelligens Diagnosztika pontjára a vonaldiagramon, ugyanaz a lekérdezés fut le az anomáliát okozó rekordok nélkül. Ezeknek a rekordoknak a részletei a lekérdezés megjegyzéseket tartalmazó részében láthatók, így azonosíthatja azoknak az oldalmegtekintéseknek a tulajdonságait, amelyek a hosszú időtartamért felelősek.
 

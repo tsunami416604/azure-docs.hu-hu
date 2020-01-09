@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 8fd88c3bfad962f264efa030d0a3aea44e95dc8c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427691"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Ügyfél-adatforgalom elemzése Azure Machine Learning Studio (klasszikus) használatával
 ## <a name="overview"></a>Áttekintés
 Ez a cikk a Azure Machine Learning Studio (klasszikus) használatával létrehozott ügyfél-adatforgalom-elemzési projekt hivatkozási megvalósítását ismerteti. Ebben a cikkben a kapcsolódó általános modelleket tárgyaljuk az ipari ügyfelek adatforgalmával kapcsolatos problémák holisztikus megoldásához. A Machine Learning használatával létrehozott modellek pontosságát is mérjük, és értékeljük a további fejlesztés irányait.  
 
-### <a name="acknowledgements"></a>Nyugtázása
+### <a name="acknowledgements"></a>Köszönetnyilvánítás
 Ezt a kísérletet a Serge Berger, a Microsoft legfontosabb adattudósa és Roger Barga, korábban a Microsoft Azure Machine Learning Studio (klasszikus) termék-kezelője fejlesztette ki és tesztelte. Az Azure dokumentációs csapata hálásan tudomásul veszi szakértelmét, és köszönjük nekik a tanulmány megosztását.
 
 > [!NOTE]
@@ -71,7 +71,7 @@ Itt is érdekes big data elemzések. A mai távközlési és kiskereskedelmi vá
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>A modellezési archetípus implementálása Machine Learning Studio (klasszikus)
-Az ismertetett probléma miatt mi a legjobb módszer egy integrált modellezési és pontozási módszer megvalósítására? Ebben a szakaszban bemutatjuk, hogyan teljesítjük ezt a Azure Machine Learning Studio klasszikus verziójának használatával.  
+Az ismertetett probléma miatt mi a legjobb módszer egy integrált modellezési és pontozási módszer megvalósítására? Ebben a szakaszban bemutatjuk, hogyan valósult meg ez a Azure Machine Learning Studio (klasszikus) használatával.  
 
 A többmodelles megközelítés a globális archetípusok megtervezése során szükséges. Még a megközelítés pontozási (prediktív) részét is többmodelles értékre kell állítani.  
 
@@ -131,11 +131,11 @@ A négy modellt egy címkével ellátott betanítási adatkészlet használatáv
 
 A pontozási adatkészletet egy összehasonlítható modellre is elküldte, amely az SAS Enterprise Miner 12 asztali kiadásával készült. A SAS-modell pontosságát és mind a négy Machine Learning Studio (klasszikus) modellt mértük.  
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 Ebben a szakaszban bemutatjuk a modellek pontosságával kapcsolatos megállapításokat a pontozási adatkészlet alapján.  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>Pontozás pontossága és pontossága
-Általánosságban elmondható, hogy a Azure Machine Learning Studio klasszikus verziójának implementálása a (z) 10-15% (a görbe vagy a AUC alatti terület) pontossága mögötti SAS.  
+Általánosságban elmondható, hogy a Azure Machine Learning Studio (klasszikus) implementációja a 10-15% (a görbe vagy a AUC alatti terület) pontossága alatt áll az SAS mögött.  
 
 Azonban a forgalom legjelentősebb mérőszáma a téves besorolási arány: vagyis az osztályozó által előre jelzett legfontosabb N-adatforgalom, amelyek valójában **nem** voltak forgalomban, és különleges kezelést is kapott? A következő diagram az összes modellhez hasonlítja ezt a téves besorolási arányt:  
 
@@ -178,7 +178,7 @@ A következő táblázat összefoglalja az algoritmusok teljesítményét:
 
 *1. táblázat. Az algoritmusok általános teljesítménye (pontossága)*
 
-| LR | BT | AP | SVM |
+| LR | BT | ÁZSIAI ÉS CSENDES-ÓCEÁNI TÉRSÉG | SVM |
 | --- | --- | --- | --- |
 | Átlagos modell |A legjobb modell |Alulteljesítő |Átlagos modell |
 
@@ -200,17 +200,17 @@ Ez a fontos megfigyelés gyakran megtekinthető az üzleti életben, ami által�
 
 Az önkiszolgáló elemzések Machine Learning Studio (klasszikus) használatával történő használatának ígérete azonban az, hogy a négy, osztással vagy részleggel osztályozott információ értékes forrást jelent a gépi tanulással kapcsolatban.  
 
-A Azure Machine Learning Studio klasszikus verziójának egy másik izgalmas funkciója, amely lehetővé teszi, hogy egyéni modult adjon hozzá a már elérhető előre definiált modulok tárházához. Ez a képesség lényegében lehetőséget teremt a kódtárak kiválasztására és sablonok létrehozására a vertikális piacok számára. A piacon a Azure Machine Learning Studio klasszikus verziójának fontos megkülönböztetője.  
+Azure Machine Learning Studio (klasszikus) egy másik izgalmas funkciója, amely lehetővé teszi egyéni modul hozzáadását a már elérhető előre definiált modulok tárházához. Ez a képesség lényegében lehetőséget teremt a kódtárak kiválasztására és sablonok létrehozására a vertikális piacok számára. A Azure Machine Learning Studio (klasszikus) fontos megkülönböztetője a piacon.  
 
 Reméljük, hogy a jövőben is folytatjuk ezt a témakört, különösen a big data analyticshez kapcsolódóan.
   
 
 ## <a name="conclusion"></a>Összegzés
-Ez a tanulmány egy ésszerű módszert mutat be az ügyfelek adatforgalmával kapcsolatos gyakori problémák általános keretrendszer használatával történő kezeléséhez. A pontozási modellek prototípusát tekintették, és a Azure Machine Learning Studio klasszikus verzióját használva Implementáljuk. Végezetül felmértük a prototípus megoldás pontosságát és teljesítményét az SAS-ben található hasonló algoritmusok tekintetében.  
+Ez a tanulmány egy ésszerű módszert mutat be az ügyfelek adatforgalmával kapcsolatos gyakori problémák általános keretrendszer használatával történő kezeléséhez. A pontozási modellek prototípusát tekintették, és a Azure Machine Learning Studio (klasszikus) használatával Implementáljuk. Végezetül felmértük a prototípus megoldás pontosságát és teljesítményét az SAS-ben található hasonló algoritmusok tekintetében.  
 
  
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Tudástár
 [1] prediktív elemzés: az előrejelzéseken felül a W. McKnight, az Information Management, a július/August 2011, a p. 18 – 20.  
 
 [2] wikipedia-cikk: [pontosság és pontosság](https://en.wikipedia.org/wiki/Accuracy_and_precision)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448496"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Python és a Bing News Search használatával REST API
 
@@ -26,17 +26,15 @@ Ezt a mintakód Jupyter jegyzetfüzetként is futtathatja a [MyBinder](https://m
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
-A minta forráskódja a githubon is elérhető. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)
+A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a kérelem modulját. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a keresési kifejezéshez. A végpontot az Azure-irányítópulton találja.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a kérelem modulját. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```python
 import requests
@@ -48,7 +46,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 
 ### <a name="create-parameters-for-the-request"></a>Paraméterek létrehozása a kérelemhez
 
-1. Adja hozzá az előfizetési kulcsot egy új szótárhoz `"Ocp-Apim-Subscription-Key"` , a kulcsként használva. Tegye meg ugyanezt a keresési paramétereknél.
+1. Adja hozzá az előfizetési kulcsot egy új szótárhoz, `"Ocp-Apim-Subscription-Key"` kulcsként használva. Tegye meg ugyanezt a keresési paramétereknél.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
@@ -65,7 +63,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_results = response.json()
     ```
 
-2. `search_results`az API-ból származó választ JSON-objektumként tartalmazza. A válaszban szereplő cikkek leírásának elérése.
+2. `search_results` az API-ból származó választ JSON-objektumként tartalmazza. A válaszban szereplő cikkek leírásának elérése.
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]
@@ -82,7 +80,7 @@ rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc)
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

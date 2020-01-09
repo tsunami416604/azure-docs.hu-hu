@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4d44598bd1352ac6d4d98ae73838fbfc9e2485e7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427699"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine Learning Studio (klasszikus)
 
@@ -23,7 +23,7 @@ Ez a témakör azt ismerteti, hogyan választhatja ki a megfelelő hiperparamét
 
 
 
-A modell kiválasztásának számos módja van. A gépi tanulásban a többtényezős hitelesítés az egyik legszélesebb körben használt módszer a modell kiválasztásához, és ez az alapértelmezett modell-kiválasztási mechanizmus az Azure Machine Learning Studio klasszikus verziójában. Mivel a Azure Machine Learning Studio klasszikus verziója támogatja az R és a Python használatát, az R vagy a Python használatával mindig saját modell-kiválasztási mechanizmusokat alkalmazhat.
+A modell kiválasztásának számos módja van. A gépi tanulásban a kereszt-ellenőrzés az egyik legszélesebb körben használt módszer a modell kiválasztásához, és ez az alapértelmezett modell-kiválasztási mechanizmus a Azure Machine Learning Studio (klasszikus). Mivel a Azure Machine Learning Studio (klasszikus) az R és a Python használatát is támogatja, az R vagy a Python használatával mindig saját modell-kiválasztási mechanizmusokat alkalmazhat.
 
 A legjobb beállításhalmaz megkeresésének folyamata négy lépésből áll:
 
@@ -32,7 +32,7 @@ A legjobb beállításhalmaz megkeresésének folyamata négy lépésből áll:
 3. **A metrika meghatározása**: döntse el, hogy melyik mérőszámot kell használni a legjobb paraméterek meghatározásához, például a pontosságot, a legfelső szintű négyzetes hibát, a pontosságot, a visszahívás vagy az f-score értékét.
 4. **Betanítási, kiértékelési és összehasonlítási**lehetőségek: a paraméterek értékeinek minden egyedi kombinációja esetén a rendszer az Ön által megadott hiba alapján hajtja végre a kereszt-érvényesítést. A kiértékelés és az összehasonlítás után kiválaszthatja a legjobban teljesítő modellt.
 
-Az alábbi ábra bemutatja, hogyan érhető el ez a Azure Machine Learning Studio klasszikus verziójában.
+Az alábbi ábrán látható, hogyan érhető el a Azure Machine Learning Studio (klasszikus).
 
 ![A legjobb beállításhalmaz megkeresése](./media/algorithm-parameters-optimize/fig1.png)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368002"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: az Azure AD-Graph API használata
 
@@ -29,9 +29,6 @@ A B2C-bérlők esetében két elsődleges mód van a Graph API való kommunikác
 * **Automatizált**, folyamatos feladatok esetén a felügyeleti feladatok elvégzéséhez szükséges jogosultságokkal ellátott valamilyen típusú szolgáltatásfiókot kell használnia. Az Azure AD-ben ezt egy alkalmazás regisztrálásával és az Azure AD-be történő hitelesítéssel teheti meg. Ezt egy olyan *alkalmazás-azonosító* használatával végezheti el, amely a [OAuth 2,0 ügyfél hitelesítő adatait](../active-directory/develop/service-to-service.md)használja. Ebben az esetben az alkalmazás önmaga, nem pedig felhasználóként működik a Graph API meghívásához.
 
 Ebből a cikkből megtudhatja, hogyan hajthatja végre az automatikus használati esetet. Olyan .NET 4,5 `B2CGraphClient` hoz létre, amely felhasználói létrehozási, olvasási, frissítési és törlési (szifilisz-) műveleteket hajt végre. Az ügyfél egy Windows parancssori felülettel (CLI) fog rendelkezni, amely lehetővé teszi különböző módszerek meghívását. A kód azonban nem interaktív, automatizált módon viselkedik.
-
->[!IMPORTANT]
-> Az [Azure ad Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) használatával felügyelheti a felhasználókat egy Azure ad B2C könyvtárban. Az Azure AD Graph API eltér a Microsoft Graph API-tól. További információt ebben az MSDN blogbejegyzésben talál: [Microsoft Graph vagy Azure ad Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,8 +60,9 @@ A korábban megadott *olvasási és írási címtár-* adathozzáférési enged�
 
 Ha szeretné, hogy az alkalmazás törölje a felhasználókat vagy frissítse a jelszavakat, meg kell adnia a *felhasználó rendszergazdai* szerepkörét.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és váltson arra a könyvtárra, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki **Azure ad B2C**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. A **kezelés**területen válassza a **szerepkörök és rendszergazdák**lehetőséget.
 1. Válassza ki a **felhasználói rendszergazda** szerepkört.
 1. Válassza a **hozzárendelés hozzáadása**elemet.

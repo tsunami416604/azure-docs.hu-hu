@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple szerint – saját Felhőbeli tevékenység figyelése
+title: Privát Felhőbeli tevékenység figyelése
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Az Azure VMware megoldás CloudSimple-környezettel, például riasztásokkal, eseményekkel, feladatokkal és naplózással kapcsolatos tevékenységeit ismerteti.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ddb3741c987e839fafb8bc222231547988d72f01
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459200"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-megoldás figyelése CloudSimple-tevékenység alapján
 
@@ -37,7 +38,7 @@ A tevékenység lapon található tevékenységek részleteinek megtekintéséhe
 
 Kattintson egy oszlop fejlécére a Megjelenítés rendezéséhez.  A megtekinthető adott értékek oszlopai szűrhetők.  Töltse le a tevékenység jelentését a **Letöltés CSV-ként** elemre kattintva.
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 
 A riasztások a CloudSimple-környezetben felmerülő jelentős tevékenységekről szóló értesítések.  A riasztások olyan eseményeket érintenek, amelyek befolyásolják a számlázási vagy a felhasználói hozzáférést.
 
@@ -45,30 +46,30 @@ A riasztások elfogadásához és a listából való eltávolításához válass
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Column | Leírás |
 ------------ | ------------- |
-| Riasztás típusa | A riasztás kategóriája.|
-| Time | A riasztás ideje. |
-| severity | A riasztás jelentősége.|
+| Riasztástípus | A riasztás kategóriája.|
+| Idő | A riasztás ideje. |
+| Súlyosság | A riasztás jelentősége.|
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
-| Erőforrástípus | Erőforrás kategóriája: Saját felhő, felhőalapú állvány. |
+| Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Leírás | A riasztást kiváltó esemény leírása. |
-| Arra vonatkozik | Annak jelzése, hogy a riasztás igazolva van-e. |
+| Nyugtázva | Annak jelzése, hogy a riasztás igazolva van-e. |
 
-## <a name="events"></a>Events
+## <a name="events"></a>Események
 
 Az események a CloudSimple-portál felhasználói és rendszertevékenységeit mutatják be. Az események lap felsorolja az adott erőforráshoz társított tevékenységet és a hatás súlyosságát.
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Column | Leírás |
 ------------ | ------------- |
-| Time | Az esemény dátuma és időpontja. |
+| Idő | Az esemény dátuma és időpontja. |
 | Eseménytípus | Az eseményt azonosító numerikus kód. |
-| severity | Esemény súlyossága.|
+| Súlyosság | Esemény súlyossága.|
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
-| Erőforrástípus | Erőforrás kategóriája: Saját felhő, felhőalapú állvány. |
+| Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Leírás | A riasztást kiváltó esemény leírása. |
 
 ## <a name="tasks"></a>Feladatok
@@ -77,16 +78,16 @@ A feladatok olyan magánjellegű felhőalapú tevékenységek, amelyek várható
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Column | Leírás |
 ------------ | ------------- |
-| Feladatazonosító | A feladat egyedi azonosítója. |
+| Feladat azonosítója | A feladat egyedi azonosítója. |
 | Művelet | A feladat által végrehajtott művelet. |
 | Felhasználó | A feladat végrehajtásához hozzárendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
-| Erőforrástípus | Erőforrás kategóriája: Saját felhő, felhőalapú állvány. |
+| Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Start | A feladat kezdési időpontja. |
-| vége | A feladat befejezési időpontja. |
+| Kezdés | A feladat kezdési időpontja. |
+| Vége | A feladat befejezési időpontja. |
 | Állapot | Aktuális feladat állapota. |
 | Eltelt idő | Az az idő, ameddig a feladat befejeződik (ha elkészült) vagy éppen folyamatban van (ha folyamatban van). |
 | Leírás | Feladat leírása. |
@@ -97,19 +98,19 @@ A naplók nyomon követhetik a felhasználói tevékenységeket. A naplók segí
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
-| Oszlop | Leírás |
+| Column | Leírás |
 ------------ | ------------- |
-| Time | A naplóbejegyzés időpontja. |
+| Idő | A naplóbejegyzés időpontja. |
 | Művelet | A feladat által végrehajtott művelet. |
 | Felhasználó | A feladathoz hozzárendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
-| Erőforrástípus | Erőforrás kategóriája: Saját felhő, felhőalapú állvány. |
+| Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Eredmény | A tevékenység eredménye, például **sikeres**. |
-| Szükséges idő | A feladat elvégzéséhez szükséges idő. |
+| Igénybe vett idő | A feladat elvégzéséhez szükséges idő. |
 | Leírás | A művelet leírása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

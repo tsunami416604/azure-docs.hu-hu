@@ -1,7 +1,7 @@
 ---
-title: ARCUL ütötte
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a ARCUL ütötte modult a Azure Machine Learning szolgáltatásban az adatkészletekben előforduló kis előfordulású példák számának növelésére a túlmintavételezés használatával.
+title: SMOTE
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a ARCUL ütötte modult a Azure Machine Learningban az adathalmazok alacsony előfordulású példáinak számának növelésével a túlmintavételezés használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428440"
 ---
-# <a name="smote"></a>ARCUL ütötte
+# <a name="smote"></a>SMOTE
 
 Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben (előzetes verzió) a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
 
@@ -40,7 +40,7 @@ Ha hozzáadja az adatkészletet egy folyamathoz, és kiválasztja az adatkészle
  
 Az esetek számának növeléséhez a következő módon állíthatja be a **arcul ütötte százalékos**értékét a 100 többszörösével:
 
-||0\. osztály|1\. osztály|teljes|  
+||0\. osztály|1\. osztály|összesen|  
 |-|-------------|-------------|-----------|  
 |Eredeti adatkészlet<br /><br /> (a **arcul ütötte-értékkel** egyenértékű = **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
 |**Arcul ütötte százalék** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
@@ -62,7 +62,7 @@ Az esetek számának növeléséhez a következő módon állíthatja be a **arc
   
 4.  A ARCUL ütötte modul automatikusan azonosítja a kisebbségi osztályt a Label (címke) oszlopban, majd beolvassa a kisebbségi osztály összes példáját. Az összes oszlopnak nem lehet NaN-értéke.
   
-5.  A **arcul ütötte százalékos értéke** beállításban adjon meg egy egész számot, amely a kimeneti adatkészletben a kisebbségi esetek céljának százalékos arányát jelzi. Például:  
+5.  A **arcul ütötte százalékos értéke** beállításban adjon meg egy egész számot, amely a kimeneti adatkészletben a kisebbségi esetek céljának százalékos arányát jelzi. Példa:  
   
     - Adja meg a **0**értéket. A ARCUL ütötte modul pontosan ugyanazt az adatkészletet adja vissza, amelyet bemenetként adott meg. Nem hoz létre új kisebbségi eseteket. Ebben az adatkészletben az osztály aránya nem módosult.  
   
@@ -97,7 +97,7 @@ Az esetek számának növeléséhez a következő módon állíthatja be a **arc
   + Olyan Ensemble-technikák, amelyek a tanulót közvetlenül a fürtözés, a csomagok és az adaptív növelés használatával segítik elő.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

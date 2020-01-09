@@ -1,7 +1,7 @@
 ---
-title: Azure AD-tanúsítvány hitelesítő adatai
+title: A Microsoft Identity platform tanúsítványának hitelesítő adatai
 titleSuffix: Microsoft identity platform
-description: Ez a cikk a tanúsítvány hitelesítő adatainak regisztrálását és használatát ismerteti az alkalmazás hitelesítéséhez
+description: Ez a cikk a tanúsítvány hitelesítő adatainak regisztrálását és használatát ismerteti az alkalmazás hitelesítéséhez.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424723"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
-Azure Active Directory (Azure AD) lehetővé teszi, hogy az alkalmazás a saját hitelesítő adatait használja a hitelesítéshez, például a OAuth 2,0 ügyfél-hitelesítő adatok megadására szolgáló folyamat ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) és a folyamaton kívüli ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
+A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják a hitelesítéshez, például a [OAuth 2,0 ügyfél hitelesítő adataiban flowv 2.0](v2-oauth2-client-creds-grant-flow.md) -t és a [folyamaton](v2-oauth2-on-behalf-of-flow.md)kívüli folyamatot kell megadniuk.
 
 Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy JSON Web Token (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
 
 ## <a name="assertion-format"></a>Érvényesítési formátum
-
-Az állítás kiszámításához használhatja a számos [JSON web token](https://jwt.ms/) -függvénytár egyikét a választott nyelven. A jogkivonat által végrehajtott információk a következők:
+A Microsoft Identity platform az állítás kiszámításához használhatja a számos [JSON web token](https://jwt.ms/) -függvénytár egyikét a választott nyelven. A jogkivonat által végrehajtott információk a következők:
 
 ### <a name="header"></a>Fejléc
 
@@ -89,9 +88,9 @@ A következő karakterlánc egy példa a kódolt állításra. Ha alaposan meggo
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>Tanúsítvány regisztrálása az Azure AD-ben
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>A tanúsítvány regisztrálása a Microsoft Identity platformmal
 
-A tanúsítvány hitelesítő adatait az alábbi módszerek bármelyikével társíthatja az Azure AD-beli ügyfélalkalmazás Azure Portal használatával:
+A tanúsítvány hitelesítő adatait a Microsoft Identity platformon található ügyfélalkalmazás alapján a következő módszerek bármelyikével társíthatja a Azure Portal használatával:
 
 ### <a name="uploading-the-certificate-file"></a>A tanúsítványfájl feltöltése
 
@@ -125,7 +124,7 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
        }
    ]
    ```
-3. Mentse a módosításokat az alkalmazás-jegyzékfájlba, majd töltse fel a jegyzékfájlt az Azure AD-be. 
+3. Mentse a módosításokat az alkalmazás-jegyzékfájlba, majd töltse fel a jegyzékfájlt a Microsoft Identity platformba. 
 
    A `keyCredentials` tulajdonság többértékű, így több tanúsítványt is feltölthet a gazdagabb kulcsok kezeléséhez.
    
@@ -134,4 +133,4 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 > [!NOTE]
 > A X5T fejlécét a tanúsítvány kivonatának használatával kell kiszámítani, és azt Base64 karakterlánccá kell átalakítani. A C# (z) a következőhöz hasonlóan néz ki: `System.Convert.ToBase64String(cert.GetCertHash());`
 
-Az [Azure ad-be a tanúsítványokkal rendelkező Daemon-](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) alkalmazásokban való hitelesítéshez használt mintakód azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) a `New-SelfSignedCertificate` PowerShell-paranccsal. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.
+A [Microsoft Identity platformhoz tartozó Daemon-alkalmazásokban a tanúsítványokat tartalmazó](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) kód minta azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) a `New-SelfSignedCertificate` PowerShell-paranccsal. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.

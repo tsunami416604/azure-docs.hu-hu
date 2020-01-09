@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Identity platform által támogatott engedélyezési protokollok | Azure
+title: OAuth 2,0 és OpenID Connect protokollok – Microsoft Identity platform | Azure
 description: Útmutató a OAuth 2,0 és az OpenID Connect protokollokhoz, amelyeket a Microsoft Identity platform végpontja támogat.
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7b25f1753e6dcb415927ee6278c36b3b179dd353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424730"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity platform-protokollok
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
 
 A Microsoft Identity platform végpontja az iparági szabványoknak megfelelő, az OpenID Connect és a OAuth 2,0-as szolgáltatást nyújtó szolgáltatáshoz. Míg a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt olvasható információk akkor hasznosak, ha úgy dönt, hogy a kódot közvetlenül a HTTP-kérések küldésével és felügyeletével vagy harmadik féltől származó nyílt forráskódú kódtár használatával írja elő, és nem használja a [nyílt forráskódú kódtárak](reference-v2-libraries.md)egyikét sem.
 

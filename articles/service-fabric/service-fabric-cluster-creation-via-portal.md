@@ -1,30 +1,19 @@
 ---
-title: Service Fabric-fürt létrehozása a Azure Portalban | Microsoft Docs
+title: Service Fabric-fürt létrehozása az Azure Portalon
 description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban a Azure Portal és a Azure Key Vault használatával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934059"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452283"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portalra](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -41,7 +30,7 @@ Ez egy lépésenkénti útmutató, amely végigvezeti egy Service Fabric-fürt (
 ## <a name="cluster-security"></a>Fürtbiztonság 
 A Service Fabric tanúsítványokat használ a hitelesítéshez és titkosításhoz a fürtök és a rajtuk található alkalmazások különféle részeinek védelmére. A tanúsítványok Service Fabricban való használatával kapcsolatos további információkért lásd a [Service Fabric-fürtök biztonsági forgatókönyveit][service-fabric-cluster-security].
 
-Ha első alkalommal hoz létre Service Fabric-fürtöt, vagy fürtöt helyez üzembe a tesztelési feladatokhoz, ugorjon a következő szakaszra (**fürt létrehozása az Azure Portalon**), és a rendszer tanúsítványokat hoz létre a futtató fürtökhöz. a számítási feladatok tesztelése. Ha éles számítási feladatokhoz állít be fürtöt, akkor folytassa az olvasást.
+Ha első alkalommal hoz létre Service Fabric-fürtöt, vagy fürtöt helyez üzembe a tesztelési feladatokhoz, ugorjon a következő szakaszra (**fürt létrehozása az Azure Portalon**), és a rendszer tanúsítványokat hoz létre a fürtökhöz, amelyek tesztelési feladatokat futtatnak. Ha éles számítási feladatokhoz állít be fürtöt, akkor folytassa az olvasást.
 
 #### <a name="cluster-and-server-certificate-required"></a>Fürt és kiszolgáló tanúsítványa (kötelező)
 Ez a tanúsítvány szükséges a fürt biztonságossá tételéhez és a jogosulatlan hozzáférés megakadályozásához. Több módon biztosítja a fürt biztonságát:
@@ -111,7 +100,7 @@ Az alapvető beállítások panelen meg kell adnia a fürt alapszintű részlete
 Konfigurálja a fürtcsomópontok konfigurációját. A csomópontok típusai határozzák meg a virtuálisgép-méreteket, a virtuális gépek számát és a tulajdonságaikat. A fürt több csomópontos típussal is rendelkezhet, de az elsődleges csomópont típusának (a portálon definiált elsőnek) legalább öt virtuális géppel kell rendelkeznie, mivel ez a csomópont típusa, ahol Service Fabric rendszerszolgáltatások vannak elhelyezve. Ne konfigurálja az **elhelyezési tulajdonságokat** , mert a rendszer automatikusan hozzáadja a "NodeTypeName" alapértelmezett elhelyezési tulajdonságát.
 
 > [!NOTE]
-> A több csomópontos típusok gyakori forgatókönyve egy előtér-szolgáltatást és egy háttér-szolgáltatást tartalmazó alkalmazás. Az előtér-szolgáltatást kisebb virtuális gépeken (például D2_V2) kívánja elhelyezni az internetre nyitott portokkal, és a háttér-szolgáltatást nagyobb méretű virtuális gépeken (például D3_V2, D6_V2, D15_V2 stb.) helyezheti el, és az internethez csatlakozó portok nem nyílnak meg.
+> A több csomópontos típusok gyakori forgatókönyve egy előtér-szolgáltatást és egy háttér-szolgáltatást tartalmazó alkalmazás. Az előtér-szolgáltatást kisebb virtuális gépeken (például D2_V2) helyezi üzembe az internetre nyitott portokkal, és a háttér-szolgáltatást nagyobb méretű virtuális gépeken helyezi üzembe (például D3_V2, D6_V2, D15_V2 stb.) anélkül, hogy az internethez csatlakozó portok meg legyenek nyitva.
 > 
 
 1. Válassza ki a csomópont típusának nevét (1 – 12 karakter, amely csak betűket és számokat tartalmaz).

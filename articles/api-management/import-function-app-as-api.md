@@ -1,5 +1,6 @@
 ---
-title: Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával | Microsoft Docs
+title: Azure-függvényalkalmazás importálása API-ként API Management
+titleSuffix: Azure API Management
 description: Ez az oktatóanyag bemutatja, hogyan lehet az Azure API Management használatával Azure-függvényalkalmazásokat API-ként importálni.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442581"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -74,7 +75,7 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-06.png)
 
-8. Kattintson a **Létrehozás** gombra.
+8. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
 
@@ -106,7 +107,7 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
 
-8. Kattintson a **importálás**.
+8. Kattintson az **Importálás** gombra.
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 

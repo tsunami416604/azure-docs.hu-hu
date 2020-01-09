@@ -6,22 +6,22 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: rohogue
-ms.openlocfilehash: bcdba7f14147714c5e29c13bfe9e20fa44a27ef9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d963c951d2202b3f60f0dd93c440b36fabf6478d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415301"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
-A fürt létrehozása után előfordulhat, hogy fürt csomópontjait kell felvennie, vagy le kell állítania vagy újra kell indítania a fürtöt. A projekt befejezését követően tudnia kell, hogyan állíthatja le és távolíthatja el véglegesen a fürtöt. 
+A fürt létrehozása után előfordulhat, hogy fürt csomópontjait kell felvennie, vagy le kell állítania vagy újra kell indítania a fürtöt. A projekt befejezését követően tudnia kell, hogyan állíthatja le és távolíthatja el véglegesen a fürtöt.
 
-A Fürtfelügyelő feladattól függően előfordulhat, hogy a avere Vezérlőpultot, a vfxt.py parancssori fürt létrehozási parancsfájlját vagy a Azure Portal kell használnia. 
+A Fürtfelügyelő feladattól függően előfordulhat, hogy a avere Vezérlőpultot, a vfxt.py parancssori fürt létrehozási parancsfájlját vagy a Azure Portal kell használnia.
 
-Ez a táblázat áttekintést nyújt az egyes feladatokhoz használható eszközökről. 
+Ez a táblázat áttekintést nyújt az egyes feladatokhoz használható eszközökről.
 
-| Műveletek | Avere Vezérlőpult | vfxt.py  | Azure Portal |
+| Műveletek | Avere Vezérlőpult | vfxt.py  | Azure portál |
 | --- | --- | --- | --- |
 | Fürtcsomópontok hozzáadása | nem | igen | nem |
 | Fürtcsomópontok eltávolítása | igen | nem | nem |
@@ -36,21 +36,21 @@ Az egyes eszközökre vonatkozó részletes utasítások alább találhatók.
 
 ## <a name="about-stopped-instances-in-azure"></a>A leállított példányok az Azure-ban
 
-Ha leállítja vagy leállítja az Azure-beli virtuális gépeket, leállítja a számítási költségeket, de továbbra is fizetnie kell a tárterületért. Ha leállít egy vFXT-csomópontot vagy a teljes vFXT-fürtöt, és nem kívánja újraindítani, a kapcsolódó virtuális gépek törléséhez használja a Azure Portal. 
+Ha leállítja vagy leállítja az Azure-beli virtuális gépeket, leállítja a számítási költségeket, de továbbra is fizetnie kell a tárterületért. Ha leállít egy vFXT-csomópontot vagy a teljes vFXT-fürtöt, és nem kívánja újraindítani, a kapcsolódó virtuális gépek törléséhez használja a Azure Portal.
 
 A Azure Portal egy *leállított* csomópont (amely újraindítható) megjeleníti a Azure Portalban **leállított** állapotot. a *törölt* csomópontok a leállított állapotot jelenítik meg (fel nem **osztott)** , és már nem számítanak fel számítási vagy tárolási díjat.
 
 A virtuális gép törlése előtt győződjön meg arról, hogy az összes módosult adatok a gyorsítótárból a háttérbeli tárterületre lettek írva a avere Vezérlőpult vagy a vfxt.py beállítások használatával a fürt leállításához vagy leállításához.
 
-## <a name="manage-the-cluster-with-avere-control-panel"></a>A fürt kezelése a avere Vezérlőpulttal 
+## <a name="manage-the-cluster-with-avere-control-panel"></a>A fürt kezelése a avere Vezérlőpulttal
 
-A következő feladatokhoz használhatja a avere Vezérlőpultot: 
+A következő feladatokhoz használhatja a avere Vezérlőpultot:
 
 * Az egyes csomópontok leállítása vagy újraindítása
 * Csomópont eltávolítása a fürtből
 * A teljes fürt leállítása vagy újraindítása
 
-A avere Vezérlőpulton rangsorolja az adatok integritását, így a valószínűleg pusztító művelet előtt megkísérli bármilyen módosított adatok írását a háttérbeli tárolóba. Ez biztonságosabb megoldást kínál, mint a avere-portál. 
+A avere Vezérlőpulton rangsorolja az adatok integritását, így a valószínűleg pusztító művelet előtt megkísérli bármilyen módosított adatok írását a háttérbeli tárolóba. Ez biztonságosabb megoldást kínál, mint a avere-portál.
 
 A avere Vezérlőpult webböngészőből való elérése. Ha segítségre van szüksége, kövesse az [vFXT-fürt eléréséhez](avere-vfxt-cluster-gui.md) szükséges utasításokat.
 
@@ -60,7 +60,7 @@ Az **FXT-csomópontok** beállításai lap az egyes csomópontok kezelésére sz
 
 Csomópont leállításához, újraindításához vagy eltávolításához keresse meg a csomópontot a FXT- **csomópontok** lapon, és kattintson a megfelelő gombra a **műveletek** oszlopban.
 
-> [!NOTE] 
+> [!NOTE]
 > Előfordulhat, hogy az IP-címek a fürtcsomópontok között mozognak, amikor az aktív csomópontok száma megváltozik.
 
 További információért olvassa el a [fürt > FXT csomópontot](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) a avere-fürt beállítási útmutatójában.
@@ -73,9 +73,9 @@ Amikor egy fürt leáll, először az állapotjelző üzeneteket az **irányít�
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>A fürt kezelése a vfxt.py
 
-a vfxt.py egy parancssori eszköz a fürtök létrehozásához és felügyeletéhez. 
+a vfxt.py egy parancssori eszköz a fürtök létrehozásához és felügyeletéhez.
 
-a vfxt.py előre telepítve van a fürt vezérlő virtuális gépén. Ha másik rendszeren szeretné telepíteni, tekintse meg a dokumentációt a következő címen: <https://github.com/Azure/AvereSDK>.
+a vfxt.py előre telepítve van a fürt vezérlő virtuális gépén. Ha másik rendszeren szeretné telepíteni, tekintse meg a dokumentációt <https://github.com/Azure/AvereSDK>címen.
 
 A vfxt.py parancsfájl használható a következő fürtszolgáltatási feladatokhoz:
 
@@ -89,25 +89,25 @@ A GitHubon teljes vfxt.py használati útmutató érhető el: a [felhőalapú f�
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Fürtcsomópontok hozzáadása a vfxt.py
 
-A fürt csomópontjainak hozzáadására szolgáló minta parancsfájlt a rendszer a tartományvezérlőn is tartalmazza. Keresse meg ``./add-nodes`` értéket a vezérlőn, és nyissa meg egy szerkesztőben, és szabja testre a fürt adataival. 
+A fürt csomópontjainak hozzáadására szolgáló minta parancsfájlt a rendszer a tartományvezérlőn is tartalmazza. Keresse meg ``./add-nodes`` a vezérlőn, és nyissa meg egy szerkesztőben, és szabja testre a fürt adataival.
 
-A parancs használatához a fürtnek futnia kell. 
+A parancs használatához a fürtnek futnia kell.
 
-Adja meg a következő értékeket: 
+Adja meg a következő értékeket:
 
 * A fürt erőforráscsoport-neve, valamint a hálózati és tárolási erőforrások esetében is, ha azok nem azonosak a fürttel
 * Fürt helye
-* Fürt hálózata és alhálózata 
+* Fürt hálózata és alhálózata
 * Fürtcsomópont-hozzáférési szerepkör (használja a beépített szerepkör avere- [kezelőjét](../role-based-access-control/built-in-roles.md#avere-operator))
-* Fürt felügyeleti IP-címe és rendszergazdai jelszava 
+* Fürt felügyeleti IP-címe és rendszergazdai jelszava
 * Hozzáadandó csomópontok száma (1, 2 vagy 3)
-* Csomópont-példány típusa és a gyorsítótár méretének értékei 
+* Csomópont-példány típusa és a gyorsítótár méretének értékei
 
-Ha nem használja a prototípust, a következőhöz hasonló parancsot kell létrehoznia, beleértve az összes fent leírt információt. 
+Ha nem használja a prototípust, a következőhöz hasonló parancsot kell létrehoznia, beleértve az összes fent leírt információt.
 
 ```bash
    vfxt.py --cloud-type azure --from-environment \
-   --resource-group GROUP_NAME \ 
+   --resource-group GROUP_NAME \
    [--network-resource-group GROUP_NAME --storage-resource-group GROUP_NAME]  \
    --location LOCATION --azure-network NETWORK_NAME --azure-subnet SUBNET_NAME \
    --add-nodes --nodes NODE_COUNT \
@@ -129,7 +129,7 @@ vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME 
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
-```    
+```
 
 Mivel a fürt leáll, a fürtcsomópontok megadásához át kell adni a példány-azonosítókat. További információért olvassa el, hogy [melyik fürtöt szeretné módosítani](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) a vfxt.py használati útmutatójában.
 
@@ -139,15 +139,15 @@ Mivel a fürt leáll, a fürtcsomópontok megadásához át kell adni a példán
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-A ``--quick-destroy`` kapcsoló akkor használható, ha nem szeretné, hogy a rendszer a fürt gyorsítótárába írja a módosított adatok tartalmát.
+A ``--quick-destroy`` kapcsoló akkor használható, ha nem szeretne módosítani egy módosított adatforrást a fürt gyorsítótárából.
 
-További információért olvassa el a [vfxt.py használati útmutatóját](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) .  
+További információért olvassa el a [vfxt.py használati útmutatóját](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) .
 
-## <a name="manage-cluster-vms-from-the-azure-portal"></a>Fürtözött virtuális gépek kezelése a Azure Portal 
+## <a name="manage-cluster-vms-from-the-azure-portal"></a>Fürtözött virtuális gépek kezelése a Azure Portal
 
-A Azure Portal a fürt virtuális gépei egyenkénti megsemmisítésére használható, de az adatok integritása nem garantált, ha a fürt nem áll le tisztán. 
+A Azure Portal a fürt virtuális gépei egyenkénti megsemmisítésére használható, de az adatok integritása nem garantált, ha a fürt nem áll le tisztán.
 
-A Azure Portal a következő fürtszolgáltatási feladatokhoz használhatók: 
+A Azure Portal a következő fürtszolgáltatási feladatokhoz használhatók:
 
 * Leállított vFXT-csomópont elindítása
 * Egy adott vFXT-csomópont leállítása (a fürt csomópont-meghibásodásként értelmezi ezt)
@@ -174,12 +174,12 @@ A bal oldali menüben válassza a **virtuális gépek** lehetőséget, majd katt
 
 A virtuális gép végleges megsemmisítéséhez kattintson az Áttekintés lap tetején található **Törlés** gombra.
 
-Ezt a módszert használhatja a fürtcsomópontok végleges eltávolításához, miután azok biztonságosan leállnak. 
+Ezt a módszert használhatja a fürtcsomópontok végleges eltávolításához, miután azok biztonságosan leállnak.
 
 ### <a name="destroy-the-cluster-from-the-azure-portal"></a>A fürt megsemmisítése a Azure Portal
 
-> [!NOTE] 
-> Ha azt szeretné, hogy a gyorsítótárban megmaradt ügyfél-módosítások a háttérbeli tárolóba kerüljenek, használja a vfxt.py `--destroy` kapcsolót, vagy a avere-Vezérlőpult használatával állítsa le a fürtöt a Azure Portal csomópont-példányainak eltávolítása előtt.
+> [!NOTE]
+> Ha azt szeretné, hogy a gyorsítótárban lévő összes megmaradt ügyfél megváltoztassa a háttérbeli tárterületet, használja a vfxt.py `--destroy` kapcsolót, vagy a avere-Vezérlőpult használatával állítsa le a fürtöt a Azure Portal csomópont-példányainak eltávolítása előtt.
 
 A csomópont-példányok végleges megsemmisítéséhez törölje őket a Azure Portal. Ezeket egyenként törölheti a fent leírtak szerint, vagy a **Virtual Machines** lapon megkeresheti az összes fürt virtuális gépet, kijelölheti őket a jelölőnégyzetekkel, majd a **Törlés** gombra kattintva eltávolíthatja őket egy művelettel.
 
@@ -189,24 +189,24 @@ A csomópont-példányok végleges megsemmisítéséhez törölje őket a Azure 
 
 Ha a vFXT-fürthöz további erőforrásokat hozott létre, előfordulhat, hogy el szeretné távolítani őket a fürt lebontásának részeként. Ne semmisítse meg a szükséges adatokat tartalmazó elemeket, illetve a más projektekkel megosztott elemeket.
 
-A fürtcsomópontok törlésén kívül érdemes eltávolítani ezeket az összetevőket: 
+A fürtcsomópontok törlésén kívül érdemes eltávolítani ezeket az összetevőket:
 
 * A fürt vezérlő virtuális gépe
 * Fürtcsomópontokon társított adatlemezek
 * A fürt összetevőihez társított hálózati adapterek és nyilvános IP-címek
 * Virtuális hálózatok
 * Storage-fiókok (**csak** akkor, ha nem tartalmaznak fontos adatvesztést)
-* Rendelkezésre állási csoport 
+* Rendelkezésre állási csoport
 
 ![Azure Portal "minden erőforrás" lista, amely a tesztelési fürthöz létrehozott erőforrásokat jeleníti meg](media/avere-vfxt-all-resources-list.png)
 
 ### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Fürt erőforráscsoport törlése a Azure Portal
 
-Ha kifejezetten a fürt házához tartozó erőforráscsoportot hozott létre, akkor a fürt összes kapcsolódó erőforrását megsemmisítheti az erőforráscsoport megsemmisítésével. 
+Ha kifejezetten a fürt házához tartozó erőforráscsoportot hozott létre, akkor a fürt összes kapcsolódó erőforrását megsemmisítheti az erőforráscsoport megsemmisítésével.
 
-> [!Caution] 
+> [!Caution]
 > Csak akkor semmisítse meg az erőforráscsoportot, ha biztos benne, hogy a csoportban található egyik érték sincs. Győződjön meg például arról, hogy áthelyezte az összes szükséges adatforrást az erőforráscsoporthoz tartozó összes tárolóból.  
 
-Egy erőforráscsoport törléséhez kattintson az **erőforráscsoportok** elemre a portál bal oldali menüjében, és szűrje az erőforráscsoportok listáját, hogy megkeresse a vFXT-fürthöz létrehozott csoportot. Válassza ki az erőforráscsoportot, és kattintson a panel jobb oldalán található három pontra. Válassza az **Erőforráscsoport törlése** elemet. A portál megkéri, hogy erősítse meg a törlést, amely visszafordíthatatlan.  
+Egy erőforráscsoport törléséhez kattintson az **erőforráscsoportok** elemre a portál bal oldali menüjében, és szűrje az erőforráscsoportok listáját, hogy megkeresse a vFXT-fürthöz létrehozott csoportot. Válassza ki az erőforráscsoportot, és kattintson a panel jobb oldalán található három pontra. Válassza az **Erőforráscsoport törlése** elemet. A portál megkéri, hogy erősítse meg a törlést, amely visszafordíthatatlan.
 
 ![Az "erőforráscsoport törlése" műveletet megjelenítő erőforráscsoport](media/avere-vfxt-delete-resource-group.png)

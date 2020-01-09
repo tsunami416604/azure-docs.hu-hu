@@ -3,18 +3,18 @@ title: Rövid útmutató – az eszközök figyelése az Azure IoT Central
 description: Kezelőként az Azure IoT Central alkalmazással figyelheti az eszközöket ebben a rövid útmutatóban.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e0f0e765ba6bb8b0969fbf639c8427e8b65214fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434758"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>Gyors útmutató: az Azure IoT Central használata az eszközök figyelésére (előzetes verziójú funkciók)
 

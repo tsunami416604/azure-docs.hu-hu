@@ -1,27 +1,26 @@
 ---
-title: A Power BI irányítópult-integráció az Azure Stream Analytics
-description: Ez a cikk ismerteti, hogyan valós idejű Power BI-irányítópult használatával jelenítheti meg az adatokat egy Azure Stream Analytics-feladatban.
-services: stream-analytics
+title: Irányítópult-integráció Power BI Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan lehet valós idejű Power BI irányítópultot használni az adatok Azure Stream Analytics feladatokból való megjelenítéséhez.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431634"
 ---
-# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok, a streamelési adatok
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
-Az Azure Stream Analytics lehetővé teszi, hogy a vezető Üzletiintelligencia-eszközök, egy [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozzon létre Üzletiintelligencia-eszközök a Power BI kimenetként a az Azure Stream Analytics-feladatokhoz. Azt is megtudhatja, hogyan hozhat létre és használhat a valós idejű irányítópultok.
+Azure Stream Analytics lehetővé teszi, hogy kihasználhassa az egyik vezető üzleti intelligencia-eszközt, a [Microsoft Power BIt](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozhat létre az üzleti intelligencia-eszközöket a Azure Stream Analytics feladatok kimenetének Power BI használatával. Azt is megtudhatja, hogyan hozhat létre és használhat valós idejű irányítópultokat.
 
-Ez a cikk továbbra is a Stream Analyticsből származó [valós idejű csalásészlelés](stream-analytics-real-time-fraud-detection.md) oktatóanyag. Azt, hogy az oktatóanyagban létrehozott munkafolyamat épül, és a kimeneti Stream Analytics-feladat által észlelt rosszindulatú telefonhívásokat jelenítheti meg, hogy a Power BI hozzáadja. 
+Ez a cikk a Stream Analytics [valós idejű csalások észlelését](stream-analytics-real-time-fraud-detection.md) ismertető oktatóanyagban folytatódik. Ez az oktatóanyagban létrehozott munkafolyamatra épül, és hozzáadja a Power BI kimenetet, hogy megjelenítse a streaming Analytics-feladatok által észlelt csalárd telefonhívásokat. 
 
-Megtekinthet [videó](https://www.youtube.com/watch?v=SGUpT-a99MA) annak szemléltetésére, hogy ebben a forgatókönyvben.
+Megtekintheti [a](https://www.youtube.com/watch?v=SGUpT-a99MA) forgatókönyvet bemutató videót.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -29,56 +28,56 @@ Megtekinthet [videó](https://www.youtube.com/watch?v=SGUpT-a99MA) annak szemlé
 Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Egy Azure-fiók.
-* A Power bi-fiók. Egy munkahelyi vagy iskolai fiók is használhatja.
-* A befejezett verzióját a [valós idejű csalásészlelés](stream-analytics-real-time-fraud-detection.md) oktatóanyag. Az oktatóanyag tartalmazza a fiktív telefonhívás metaadatokat hoz létre alkalmazást. Az oktatóanyagban létrehoz egy eseményközpontot, és a streamelési telefonhívás-adatok küldése az event hubs. Írhat egy lekérdezést, amely észleli a csaló hívások (az azonos számú egyszerre különböző helyeken hívásait). 
+* Egy fiók a Power BIhoz. Munkahelyi fiókot vagy iskolai fiókot is használhat.
+* A [valós idejű csalások észlelésére](stream-analytics-real-time-fraud-detection.md) vonatkozó oktatóanyag befejezett verziója. Az oktatóanyag egy olyan alkalmazást tartalmaz, amely fiktív telefonhívási metaadatokat hoz létre. Az oktatóanyagban létrehoz egy Event hubot, és elküldi a streaming Phone-hívási adatátvitelt az Event hub-nak. Olyan lekérdezést kell írnia, amely észleli a csalárd hívásokat (az azonos számú hívások a különböző helyeken található azonos időpontban). 
 
 
-## <a name="add-power-bi-output"></a>A Power BI-kimenet hozzáadása
-A csalások valós idejű észlelése az oktatóanyagban a kimeneti küld az Azure Blob storage. Ebben a szakaszban adjon hozzá egy kimeneti, amely adatokat küld a Power bi-ban.
+## <a name="add-power-bi-output"></a>Power BI kimenet hozzáadása
+A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet az Azure Blob Storage-ba küldi a rendszer. Ebben a szakaszban olyan kimenetet ad hozzá, amely adatokat küld a Power BInak.
 
-1. Az Azure Portalon nyissa meg a korábban létrehozott Stream Analytics-feladat. Ha a javasolt nevet használt, a feladat neve `sa_frauddetection_job_demo`.
+1. A Azure Portal nyissa meg a korábban létrehozott streaming Analytics-feladatot. Ha a javasolt nevet használta, a feladattípus neve `sa_frauddetection_job_demo`.
 
-2. A bal oldali menüben válassza ki a **kimenetek** alatt **feladattopológia**. Ezután válassza ki **+ Hozzáadás** válassza **Power BI** a legördülő menüből.
+2. A bal oldali menüben válassza a **kimenetek** lehetőséget a **feladatok topológiája**alatt. Ezután válassza a **+ Hozzáadás** lehetőséget, majd a legördülő menüből válassza a **Power bi** lehetőséget.
 
 3. Válassza a **+ Hozzáadás** > **Power BI** lehetőséget. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Kimeneti alias  |  CallStream-PowerBI  |
-   |Adatkészlet neve  |   sa-dataset  |
-   |Tábla neve |  fraudulent-calls  |
+   |Kimeneti alias  |  CallStream – PowerBI  |
+   |Adatkészlet neve  |   SA-adatkészlet  |
+   |Tábla neve |  csalárd – hívások  |
 
-   ![Stream Analytics-kimenetben konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
+   ![Stream Analytics kimenet konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
    > [!WARNING]
-   > Ha a Power BI egy adatkészletet és egy táblázatot, amely azokat a Stream Analytics-feladatban megadott nevével megegyező nevet kell, felülírják a már meglévőket.
-   > Azt javasoljuk, hogy ne explicit módon hozzon létre ezzel az adatkészlettel és táblát a Power BI-fiókjában. Ezek automatikusan jönnek létre a Stream Analytics-feladat indítása és a feladat kimeneti szivattyútelepek elindítja a Power BI-bA. A feladat lekérdezés nem ad vissza eredményt, ha az adatkészlet és a táblázat nem jönnek létre.
+   > Ha Power BI rendelkezik olyan adatkészlettel és táblával, amelynek neve megegyezik a Stream Analytics feladatban megadott névvel, a rendszer felülírja a meglévőket.
+   > Azt javasoljuk, hogy ne hozzon létre explicit módon ezt az adatkészletet és táblát a Power BI-fiókjában. Ezek automatikusan létrejönnek, amikor elindítja a Stream Analytics feladatot, és a művelet elindítja a kimenetet Power BIba. Ha a feladathoz tartozó lekérdezés nem ad vissza eredményt, az adatkészlet és a tábla nem jön létre.
    >
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
 8. Kattintson a **Create** (Létrehozás) gombra.
 
-Az adatkészlet jön létre a következő beállításokkal:
+Az adatkészlet a következő beállításokkal jön létre:
 
-* **defaultRetentionPolicy: BasicFIFO** -adata FIFO, legfeljebb 200 000 sort.
-* **defaultMode: pushStreaming** -adatkészlet streamelési csempék és a jelentés-alapú hagyományos Vizualizációk (leküldés) is támogatja.
+* **defaultRetentionPolicy: BasicFIFO** – az adatmennyiség FIFO, amely legfeljebb 200 000 sorral rendelkezik.
+* **defaultMode: pushStreaming** – az adatkészlet támogatja a streaming csempéket és a hagyományos, jelentésen alapuló vizualizációkat (más néven leküldéses).
 
-Az adatkészletek jelenleg nem hozható létre más jelzővel.
+Jelenleg nem hozhat létre más jelzőket tartalmazó adatkészleteket.
 
-A Power BI-adatkészletek kapcsolatos további információkért lásd: a [Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) hivatkozást.
+Power BI adatkészletekkel kapcsolatos további információkért tekintse meg a [Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) referenciát.
 
 
 ## <a name="write-the-query"></a>A lekérdezés írása
 
-1. Zárja be a **kimenetek** panelt és térjen vissza a feladat panelt.
+1. Zárjuk be a **kimenetek** panelt, és térjen vissza a feladatok panelhez.
 
-2. Kattintson a **lekérdezés** mezőbe. 
+2. Kattintson a **lekérdezés** mezőre. 
 
-3. Adja meg a következő lekérdezést. Ez a lekérdezés önillesztést lekérdezéshez, a visszaélések észleléséhez az oktatóanyagban létrehozott hasonlít. A különbség az, hogy ezt a lekérdezést elküldi az eredményeket a létrehozott új kimenet (`CallStream-PowerBI`). 
+3. Adja meg a következő lekérdezést. Ez a lekérdezés hasonló a csalások észlelését ismertető oktatóanyagban létrehozott saját illesztési lekérdezéshez. A különbség az, hogy ez a lekérdezés eredményeket küld a létrehozott új kimenetnek (`CallStream-PowerBI`). 
 
     >[!NOTE]
-    >Ha ezt tette nincs a bemeneti `CallStream` csalásészlelés oktatóanyagban helyett írja be a `CallStream` a a **FROM** és **CSATLAKOZZON** záradékok a lekérdezésben.
+    >Ha nem adta meg a bemeneti `CallStream` a csalások észlelése oktatóanyagban, akkor a lekérdezésben szereplő **from** és **JOIN** záradékban helyettesítse be a `CallStream` nevét.
 
    ```SQL
    /* Our criteria for fraud:
@@ -100,119 +99,119 @@ A Power BI-adatkészletek kapcsolatos további információkért lásd: a [Power
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 
 ## <a name="test-the-query"></a>A lekérdezés tesztelése
 
-Ez a szakasz az opcionális de javasolt. 
+Ez a szakasz nem kötelező, de ajánlott. 
 
-1. Ha a TelcoStreaming alkalmazást jelenleg nem fut, indítsa el az alábbi lépéseket:
+1. Ha a TelcoStreaming alkalmazás jelenleg nem fut, indítsa el a következő lépéseket:
 
-    * Nyissa meg a parancssort.
-    * Lépjen abba a mappába, amelyeknél a telcogenerator.exe és a módosított telcodatagen.exe.config fájlokat.
-    * Futtassa a következő parancsot:
+    * Nyisson meg egy parancssort.
+    * Lépjen arra a mappára, ahol a telcogenerator. exe és a módosított telcodatagen. exe. config fájl található.
+    * Futtassa az alábbi parancsot:
 
        `telcodatagen.exe 1000 .2 2`
 
-2. Az a **lekérdezés** a Stream Analytics-feladat oldalára, kattintson a Tovább gombra a pontra a `CallStream` adja meg, és válassza ki **mintaadatok bemenetből**.
+2. A Stream Analytics-feladathoz tartozó **lekérdezés** lapon kattintson a `CallStream` bemenet melletti pontokra, majd válassza a **mintaadatok bemenetből**lehetőséget.
 
-3. Adja meg, hogy három perc alatt az adatokat, majd kattintson **OK**. Várjon, amíg a rendszer értesíti arról, hogy az adatok mintavételezése befejeződött.
+3. Itt adhatja meg, hogy három perces értékű adatot kíván használni, majd kattintson **az OK**gombra. Várjon, amíg a rendszer értesíti arról, hogy az adatok mintavételezése befejeződött.
 
-4. Kattintson a **teszt** , és tekintse át az eredményeket.
+4. Kattintson a **teszt** gombra, és tekintse át az eredményeket.
 
 ## <a name="run-the-job"></a>A feladat futtatása
 
-1. Ellenőrizze, hogy a TelcoStreaming alkalmazás fut-e.
+1. Győződjön meg arról, hogy a TelcoStreaming alkalmazás fut.
 
-2. Keresse meg a **áttekintése** lapon a Stream Analytics-feladat, és válassza **Start**.
+2. Navigáljon a Stream Analytics-feladatokhoz tartozó **Áttekintés** lapra, és válassza az **Indítás**lehetőséget.
 
-    ![A Stream Analytics-feladat indítása](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
+    ![A Stream Analytics-feladatok elindítása](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
-A Streaming Analytics-feladat elindul, a bejövő streamet a csaló hívások keres. A feladat is hoz létre az adatkészlet és a táblázat a Power bi-ban, és elindítja a csaló hívások rájuk vonatkozó adatok küldését.
+A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hívásokat keresik. A feladattal létrejön a Power BI adatkészlet és táblázat is, és megkezdi az adatok küldését a hamis hívásokról.
 
 
-## <a name="create-the-dashboard-in-power-bi"></a>Az irányítópult létrehozásához a Power bi-ban
+## <a name="create-the-dashboard-in-power-bi"></a>Az irányítópult létrehozása Power BI
 
-1. Lépjen a [Powerbi.com](https://powerbi.com) , és jelentkezzen be munkahelyi vagy iskolai fiókjával. Ha a Stream Analytics-Feladatlekérdezés eredményeket, láthatja, hogy az adatkészlet már létrejött:
+1. Nyissa meg a [Powerbi.com](https://powerbi.com) , és jelentkezzen be munkahelyi vagy iskolai fiókjával. Ha a Stream Analytics feladatok lekérdezése kimenetet eredményez, láthatja, hogy az adatkészlet már létre van hozva:
 
-    ![Streamelési adatkészlet helye a Power bi-ban](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
+    ![Folyamatos átviteli adatkészlet helye Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. A munkaterületén kattintson  **+ &nbsp;létrehozás**.
+2. A munkaterületen kattintson **+&nbsp;létrehozás**gombra.
 
-    ![A Power BI-munkaterület létrehozása gomb](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
+    ![A létrehozás gomb Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
-3. Hozzon létre egy új irányítópultot, és adja neki `Fraudulent Calls`.
+3. Hozzon létre egy új irányítópultot, és nevezze el `Fraudulent Calls`.
 
-    ![Hozzon létre egy irányítópultot, és adjon meg egy nevet a Power BI-munkaterület](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
+    ![Irányítópult létrehozása és név megadása Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. Kattintson az ablak tetején **csempe hozzáadása**válassza **egyedi STREAMELÉSI adatok**, és kattintson a **tovább**.
+4. Az ablak tetején kattintson a **csempe hozzáadása**elemre, válassza az **Egyéni adatfolyam**-adatátvitelek lehetőséget, majd kattintson a **tovább**gombra.
 
-    ![Egyéni streamelési adatkészlet csempét a Power bi-ban](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
+    ![Egyéni folyamatos átviteli adatkészlet csempe Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
-5. A **YOUR DATSETS**válassza ki a az adatkészlet, majd kattintson a **tovább**.
+5. **A DATSETS**területen válassza ki az adatkészletet, majd kattintson a **tovább**gombra.
 
-    ![A streamelési adatkészletet a Power bi-ban](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
+    ![A folyamatos átviteli adatkészlet Power BI](./media/stream-analytics-power-bi-dashboard/your-streaming-dataset.png)
 
-6. Alatt **Vizualizáció típusának**válassza **kártya**, majd a **mezők** listáról válassza ki **fraudulentcalls**.
+6. A **vizualizáció típusa**területen válassza a **kártya**lehetőséget, majd a **mezők** listában válassza a **fraudulentcalls**lehetőséget.
 
-    ![Új csempe képi megjelenítés részletei](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
+    ![Új csempe vizualizációs adatai](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
 7. Kattintson a **Tovább** gombra.
 
-8. Adja meg például a cím és alcím csempe részletei.
+8. Töltse ki a csempe részleteit, például egy címet és egy feliratot.
 
-    ![Cím és alcím új csempe](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
+    ![Új csempe címe és alcíme](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
 9. Kattintson az **Alkalmaz** gombra.
 
-    Most már rendelkezik egy csalás számláló!
+    Most már van egy csalás elleni számláló!
 
-    ![Csalás számláló Power BI-irányítópulton](./media/stream-analytics-power-bi-dashboard/power-bi-fraud-counter-tile.png)
+    ![Csalási számláló Power BI irányítópulton](./media/stream-analytics-power-bi-dashboard/power-bi-fraud-counter-tile.png)
 
-8. Kövesse a lépéseket, hogy újra felvesz egy csempét (4. lépés-től induló). Ennek során tegye a következőket:
+8. Kövesse újra a lépéseket a csempék hozzáadásához (a 4. lépéstől kezdve). Ezúttal tegye a következőket:
 
-    * Amikor juthat el a **Vizualizáció típusának**válassza **vonaldiagram**. 
+    * Ha a **vizualizáció típusát**választja, válassza a **vonal diagram**lehetőséget. 
     * Adjon hozzá egy tengelyt, és válassza ki **windowend** lehetőséget. 
     * Adjon meg egy értéket, és válassza a **fraudulentcalls** lehetőséget.
     * A **Megjelenítendő időtartomány** beállításnál válassza ki az utolsó 10 percet.
 
-      ![Vonaldiagram tartalmazó csempe létrehozása a Power bi-ban](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![Csempe létrehozása diagramhoz Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
-9. Kattintson a **tovább**, cím és alcím hozzáadása, és kattintson a **alkalmaz**.
+9. Kattintson a **tovább**gombra, adjon meg egy címet és egy feliratot, majd kattintson az **alkalmaz**gombra.
 
-     A Power BI-irányítópult mostantól lehetővé teszi az adatok kétféle nézetét kapcsolatos csaló hívásokat a streamelt adatokat az észlelt.
+     A Power BI irányítópultja mostantól két, az adatfolyamban észlelt, csalárd hívásokkal kapcsolatos információt nyújt.
 
-     ![Befejeződött a rosszindulatú hívások két csempét megjelenítő Power BI-irányítópult](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![Elkészült Power BI irányítópulton két csempe látható a csalárd hívásokhoz](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>További információ a Power BI szolgáltatásról
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre csak néhány típusú Vizualizációk egy adatkészlet. Power BI segítségével könnyebben hozhat létre a szervezet más felhasználói Üzletiintelligencia-eszközök. További ötleteket találhat a következő forrásanyagokban talál:
+Ez az oktatóanyag azt mutatja be, hogyan hozhat létre csak néhány fajta vizualizációt egy adatkészlethez. A Power BI segítséget nyújthat más ügyfél üzleti intelligencia-eszközeinek létrehozásához a szervezet számára. További ötleteket a következő forrásokban talál:
 
-* Power BI-irányítópult egy másik példa, tekintse meg a [Power BI – első lépések](https://youtu.be/L-Z_6P56aas?t=1m58s) videó.
-* Stream Analytics konfigurálásával kapcsolatos további információkat a feladat kimeneti a Power bi-ba, és a Power BI-csoportok használata esetén tekintse át a [Power BI](stream-analytics-define-outputs.md#power-bi) szakaszában a [kiírja a Stream Analytics](stream-analytics-define-outputs.md) cikk. 
-* Általában a Power BI használatával kapcsolatos információkért lásd: [Power BI-irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+* Egy Power BI irányítópult egy másik példájának megtekintéséhez tekintse meg a [Első lépések Power bi](https://youtu.be/L-Z_6P56aas?t=1m58s) videóval.
+* A streaming Analytics-feladatok kimenetének Power BI és Power BI csoportok használatával történő konfigurálásával kapcsolatos további információkért tekintse át a [stream Analytics outputs](stream-analytics-define-outputs.md) című cikk [Power bi](stream-analytics-define-outputs.md#power-bi) szakaszát. 
+* További információ a Power BI használatáról: [Power bi-irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
 
-## <a name="learn-about-limitations-and-best-practices"></a>Korlátozások és ajánlott eljárások ismertetése
-Jelenleg a Power BI nem hívható meg nagyjából egyszer másodpercenként. Streamelési Vizualizációk 15 KB-os csomagokat támogatja. Efölött streamelési Vizualizációk sikertelen (de a leküldéses továbbra is működik). Ezek a korlátozások miatt a Power BI adatmodelljeinek legtöbb természetesen hol tárolódnak az Azure Stream Analytics a jelentős terhelés adatcsökkentés esetekben. Azt javasoljuk, hogy egy Átfedésmentes ablak vagy Hopping ablak segítségével győződjön meg arról, hogy adatleküldés legfeljebb egy leküldéses másodpercenként, és, hogy a lekérdezést hajtanak végre az átviteli sebességet megkövetelő belül.
+## <a name="learn-about-limitations-and-best-practices"></a>További tudnivalók a korlátozásokról és az ajánlott eljárásokról
+Jelenleg Power BI nagyjából egyszer hívható meg másodpercenként. A streaming vizualizációk 15 KB-os csomagokat támogatnak. Ezen túlmenően a streaming vizualizációk meghiúsulnak (de a leküldések továbbra is működni fognak). Ezeknek a korlátozásoknak a miatt a Power BI a legtermészetesebb esetben olyan esetekhez nyújtja magát, amikor az Azure Stream Analytics jelentős adatterhelést eredményez. Azt javasoljuk, hogy a kiugró ablak vagy a ugráló ablak használatával ellenőrizze, hogy az adatküldés másodpercenként legfeljebb egy leküldéses legyen, és hogy a lekérdezés az átviteli sebességre vonatkozó követelményeken belül landol-e.
 
-Az alábbi egyenlet használatával számítja ki az ablak adni másodpercben értékét:
+A következő egyenlettel számíthatja ki az értéket, hogy másodpercek alatt adja meg az ablakot:
 
-![Egyenlőségi ablak adni másodpercben érték kiszámításához](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
+![A számítási értékhez tartozó egyenlet, amely másodpercek alatt megadja az ablakokat](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
 Példa:
 
-* Adatok küldése egy másodperces intervallumon 1000 eszközzel rendelkezik.
-* A Power BI Pro támogató Termékváltozatot / óra 1 000 000 sort használja.
-* A Power bi-bA eszközönként átlagos adatok mennyisége közzétenni kívánt.
+* A 1 000-es eszközök egymásodperces időközönként küldik el az adatokat.
+* Az Power BI Pro SKU-t használja, amely óránként 1 000 000 sort támogat.
+* Egy eszköz átlagos adatmennyiségét szeretné közzétenni Power BI.
 
-Ennek eredményeképpen az egyenlet:
+Ennek eredményeképpen az egyenlet a következőképpen változik:
 
-![Egyenlőségi feltétel példa alapján](./media/stream-analytics-power-bi-dashboard/power-bi-example-equation.png)  
+![Példa a feltételek alapján](./media/stream-analytics-power-bi-dashboard/power-bi-example-equation.png)  
 
-Ebben a konfigurációban módosíthatja az eredeti lekérdezés a következőhöz:
+Ebben a konfigurációban az eredeti lekérdezést a következőre módosíthatja:
 
 ```SQL
     SELECT
@@ -228,19 +227,19 @@ Ebben a konfigurációban módosíthatja az eredeti lekérdezés a következőh�
         dspl
 ```
 
-### <a name="renew-authorization"></a>Engedély megújítása
-Ha a jelszó megváltozott, mivel a feladat létrehozásának vagy utolsó hitelesített, meg kell hitelesítse magát újra a Power BI-fiókjába. Ha az Azure multi-factor Authentication konfigurálva van az Azure Active Directory (Azure AD) bérlő, is újítsa meg a Power BI engedélyezési kéthetente kell. Ha nem újítja meg, például egy feladat kimenetének hiánya probléma sikerült megjelenik, vagy egy `Authenticate user error` a művelet naplókban.
+### <a name="renew-authorization"></a>Engedélyezés megújítása
+Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyezését. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya vagy a műveleti naplók `Authenticate user error`.
 
-Hasonlóképpen a jogkivonat lejárata után elindul egy feladat, ha hiba lép fel, és a feladat meghiúsul. A probléma megoldásához állítsa le a feladatot, hogy fut-e, és nyissa meg a Power BI-kimenet. Adatvesztés elkerülése érdekében válassza ki a **engedély megújítása** hivatkozásra, és indítsa újra a feladatot a **leállt legutóbbi**.
+Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból**.
 
-Miután az engedélyezés a Power bi-JAL frissítve lett, egy zöld riasztás jelenik meg az engedélyezési területen megfelelően, hogy a probléma megoldódott.
+Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="get-help"></a>Segítségkérés
-További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítség
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+## <a name="next-steps"></a>Következő lépések
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Az Azure Stream Analytics lekérdezési nyelv leírása](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Az Azure Stream Analytics felügyeleti REST API-referencia](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

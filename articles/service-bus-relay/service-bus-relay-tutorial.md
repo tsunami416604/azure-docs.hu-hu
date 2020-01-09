@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával'
+title: Helyszíni WCF REST-szolgáltatás elérhetővé tétele az ügyfeleknek a Azure Relay használatával
 description: 'Oktatóanyag: ügyfél-és szolgáltatásalkalmazás létrehozása WCF Relay használatával.'
 services: service-bus-relay
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452292"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával
 
@@ -104,7 +104,7 @@ A szolgáltatási szerződés meghatározza a szolgáltatás által támogatott 
    > A szolgáltatási szerződés névtere általában tartalmaz egy elnevezési sémát, amely tartalmazza a verzióinformációkat. Ha a verzióinformációk szerepelnek a szolgáltatási szerződés névterében, a szolgáltatások képesek elkülöníteni a nagyobb módosításokat egy új szolgáltatási szerződés új névtérrel való meghatározása, valamint egy új végponton való megjelenítése révén. Ily módon az ügyfelek továbbra is használhatják a régi szolgáltatási szerződést anélkül, hogy frissíteni kellene őket. A verzióinformációk dátumot vagy buildszámot tartalmazhatnak. További információ: [Service Versioning](/dotnet/framework/wcf/service-versioning) (Szolgáltatás verziószámozása). Ebben az oktatóanyagban a szolgáltatási szerződés névterének elnevezési sémája nem tartalmazza a verzióval kapcsolatos információkat.
    >
 
-1. Az `IEchoContract` felületen belül deklaráljon egy metódust az egyetlen művelethez, amely a `IEchoContract` szerződést felfedi a felületen, és alkalmazza a `OperationContractAttribute` attribútumot arra a metódusra, amelyet közzé szeretne tenni a nyilvános WCF Relay szerződés részeként, a következőképpen: :
+1. Az `IEchoContract` felületen belül deklaráljon egy metódust az egyetlen művelethez, amely a `IEchoContract` szerződést felfedi a felületen, és alkalmazza a `OperationContractAttribute` attribútumot arra a metódusra, amelyet közzé szeretne tenni a nyilvános WCF Relay szerződés részeként, a következőképpen:
 
     ```csharp
     [OperationContract]
@@ -174,7 +174,7 @@ Az Azure Relay létrehozásához egy felület használatával először létre k
     }
     ```
 
-1. Valósítsa meg az `Echo` felületen meghatározott `IEchoContract` metódust az `EchoService` osztályban.
+1. Valósítsa meg az `IEchoContract` felületen meghatározott `Echo` metódust az `EchoService` osztályban.
 
     ```csharp
     public string Echo(string text)
@@ -585,7 +585,7 @@ Azonban az egyik fő különbség az, hogy az ügyfélalkalmazás egy csatornát
 
 ### <a name="implement-a-client-application"></a>Ügyfélalkalmazás implementálása
 
-1. A csatlakozási mód beállítása legyen `AutoDetect`. Adja hozzá a következő kódot az `Main()`EchoClient**alkalmazás** metódusában.
+1. A csatlakozási mód beállítása legyen `AutoDetect`. Adja hozzá a következő kódot az **EchoClient** alkalmazás `Main()` metódusában.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
@@ -776,7 +776,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. Ezzel a módszerrel folytathatja szöveges üzenetek küldését az ügyfélről a szolgáltatásba. Ha elkészült, válassza az ENTER lehetőséget az ügyfél és a szolgáltatás konzolján a Windows mindkét alkalmazás befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal:
 

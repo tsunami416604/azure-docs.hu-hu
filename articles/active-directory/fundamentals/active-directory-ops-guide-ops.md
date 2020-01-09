@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422944"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
 
@@ -107,7 +107,7 @@ Az ajánlott eljárások bevezetése segíthet a helyszíni ügynökök optimál
 #### <a name="on-premises-agents-management-recommended-reading"></a>Helyszíni ügynökök felügyeletének ajánlott olvasata
 
 - [Az Azure AD Application Proxy-összekötők ismertetése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Azure AD átmenő hitelesítés – gyors útmutató](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Azure AD átmenő hitelesítés – gyors útmutató](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Felügyelet nagy léptékben
 
@@ -131,7 +131,7 @@ Az Azure AD két "feladó" címet használ: <o365mc@email2.microsoft.com>, amely
 
 - [Azure AD-hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Vállalati alkalmazás lejárati tanúsítványának értesítései](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
 - Vállalati alkalmazások kiépítési szolgáltatásával kapcsolatos értesítések
@@ -162,13 +162,13 @@ Ha AD FS csak az Azure AD-összevonás esetében használatos, néhány végpont
 
 A szervezeteknek a helyszíni hibrid összetevőkkel megegyező módon kell lezárniuk a gépek hozzáférését a helyszíni tartományhoz. Például a biztonságimásolat-felelős vagy a Hyper-V-rendszergazda nem tud bejelentkezni a Azure AD Connect kiszolgálóra a szabályok módosításához.
 
-A Active Directory felügyeleti réteg modellje úgy lett kialakítva, hogy a rendszer a környezet teljes vezérlése (0. réteg) és a támadók által gyakran feltört magas kockázatú munkaállomás-eszközök között puffer zónák használatával megvédje az identitási rendszereket. ![A réteg modell három rétegét bemutató ábra](./media/active-directory-ops-guide/active-directory-ops-img18.png)
+A Active Directory felügyeleti réteg modellje úgy lett kialakítva, hogy a rendszer a környezet teljes vezérlése (0. réteg) és a támadók által gyakran feltört magas kockázatú munkaállomás-eszközök között puffer zónák használatával megvédje az identitási rendszereket. ![A többrétegű modell három rétegét bemutató ábra](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
 A [réteg modell](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) három szintből áll, és csak rendszergazdai fiókokat tartalmaz, nem általános jogú felhasználói fiókokat.
 
-- **0. réteg** – a vállalati identitások közvetlen ellenőrzése a környezetben. A 0. csomag olyan fiókokat, csoportokat és egyéb eszközöket tartalmaz, amelyek közvetlen vagy közvetett felügyeleti felügyelettel rendelkeznek a Active Directory erdőben, tartományokban vagy tartományvezérlőkön, valamint az összes benne található eszközön. Az összes 0. szintű eszköz biztonsági érzékenysége egyenértékű, mivel azok hatékonyan szabályozzák egymást.
-- **1. réteg** – a vállalati kiszolgálók és alkalmazások vezérlése. Az 1. szintű eszközök közé tartoznak a kiszolgálói operációs rendszerek, a Cloud Services és a vállalati alkalmazások. Az 1. szintű rendszergazdai fiókok az ezen eszközökön üzemeltetett jelentős mennyiségű üzleti érték felügyeleti felügyeletével rendelkeznek. Gyakori példa a kiszolgálói rendszergazdák, akik karbantartják ezeket az operációs rendszereket, és képesek az összes vállalati szolgáltatásra hatással.
-- **2. réteg** – felhasználói munkaállomások és eszközök vezérlése. A 2. szintű rendszergazdai fiókok a felhasználói munkaállomásokon és eszközökön üzemeltetett jelentős mennyiségű üzleti érték felügyeletét szabályozzák. Ilyenek például az ügyfélszolgálat és a számítógép-támogatási rendszergazdák, mert befolyásolhatják a szinte bármilyen felhasználói adatok integritását.
+- **0. réteg** – a vállalati identitások közvetlen ellenőrzése a környezetben. A 0. réteg olyan fiókokat, csoportokat és más elemeket tartalmaz, amelyek közvetlen vagy közvetett ellenőrzéssel rendelkeznek az Active Directory-erdő, -tartomány vagy -tartományvezérlő, valamint a bennük található valamennyi erőforrás felett. A 0. rétegbeli erőforrások biztonsági érzékenysége egyenértékű, ugyanis gyakorlatilag egymás ellenőrzése alatt állnak.
+- **1. réteg** – a vállalati kiszolgálók és alkalmazások vezérlése. Az 1. réteg erőforrásai közé a kiszolgálói operációs rendszerek, a felhőszolgáltatások és a vállalati alkalmazások tartoznak. Az 1. rétegbeli rendszergazdai fiókok az ezeken az erőforrásokon található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Általános példaként említhetjük erre a kiszolgálói rendszergazdák szerepkörét, akik ezeket az operációs rendszereket karbantartják, és az összes vállalati szolgáltatásra hatással lehetnek.
+- **2. réteg** – felhasználói munkaállomások és eszközök vezérlése. A 2. rétegbeli rendszergazdai fiókok a munkaállomásokon és eszközökön található jelentős mennyiségű üzleti érték felett gyakorolnak ellenőrzést. Példaként említhetők erre az ügyfélszolgálati és számítógép-támogatási rendszergazdák, hiszen ők szinte bármilyen felhasználói adat épségére hatással lehetnek.
 
 A tartományvezérlők esetében ugyanúgy zárja be a helyszíni identitás-összetevők, például a Azure AD Connect, a AD FS és az SQL-szolgáltatások elérését.
 

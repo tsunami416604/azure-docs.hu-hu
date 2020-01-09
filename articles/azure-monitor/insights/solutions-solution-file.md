@@ -8,18 +8,18 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401584"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájljának létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
 > Ez az előzetes dokumentáció az Azure-ban jelenleg előzetes verzióban elérhető felügyeleti megoldások létrehozásához. Az alább ismertetett sémák változhatnak.  
 
-Az Azure-beli felügyeleti megoldások [Resource Manager-sablonokként](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)valósulnak meg.  A felügyeleti megoldások létrehozásával kapcsolatos legfontosabb feladat a [sablon](../../azure-resource-manager/resource-group-authoring-templates.md)készítésének megtanulása.  Ez a cikk a megoldásokhoz használt sablonok egyedi részleteit és a tipikus megoldási erőforrások konfigurálásának módját ismerteti.
+Az Azure-beli felügyeleti megoldások [Resource Manager-sablonokként](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)valósulnak meg.  A felügyeleti megoldások létrehozásával kapcsolatos legfontosabb feladat a [sablon](../../azure-resource-manager/templates/template-syntax.md)készítésének megtanulása.  Ez a cikk a megoldásokhoz használt sablonok egyedi részleteit és a tipikus megoldási erőforrások konfigurálásának módját ismerteti.
 
 
 ## <a name="tools"></a>Eszközök
@@ -32,8 +32,8 @@ Bármely szövegszerkesztővel dolgozhat a megoldás fájljaival, de javasoljuk,
 
 
 
-## <a name="structure"></a>szerkezet
-A felügyeleti megoldás fájljának alapstruktúrája megegyezik egy [Resource Manager-sablonnal](../../azure-resource-manager/resource-group-authoring-templates.md#template-format), amely a következő.  Az alábbi részek a megoldás legfelső szintű elemeit és azok tartalmát ismertetik.  
+## <a name="structure"></a>Struktúra
+A felügyeleti megoldás fájljának alapstruktúrája megegyezik egy [Resource Manager-sablonnal](../../azure-resource-manager/templates/template-syntax.md#template-format), amely a következő.  Az alábbi részek a megoldás legfelső szintű elemeit és azok tartalmát ismertetik.  
 
     {
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -45,7 +45,7 @@ A felügyeleti megoldás fájljának alapstruktúrája megegyezik egy [Resource 
     }
 
 ## <a name="parameters"></a>Paraméterek
-A [Paraméterek](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) olyan értékek, amelyekre szükség van a felhasználótól a felügyeleti megoldás telepítésekor.  Az összes megoldáshoz szabványos paraméterek tartoznak, és az adott megoldáshoz szükséges további paramétereket adhat hozzá.  A felhasználók által a megoldás telepítésekor megadott paraméterek az adott paramétertől és a megoldás telepítésének módjától függenek.
+A [Paraméterek](../../azure-resource-manager/templates/template-syntax.md#parameters) olyan értékek, amelyekre szükség van a felhasználótól a felügyeleti megoldás telepítésekor.  Az összes megoldáshoz szabványos paraméterek tartoznak, és az adott megoldáshoz szükséges további paramétereket adhat hozzá.  A felhasználók által a megoldás telepítésekor megadott paraméterek az adott paramétertől és a megoldás telepítésének módjától függenek.
 
 Amikor egy felhasználó az Azure Marketplace-en vagy az Azure rövid útmutató sablonjain keresztül [telepíti a felügyeleti megoldást](solutions.md#install-a-monitoring-solution) , a rendszer a [log Analytics munkaterület és az Automation-fiók](solutions.md#log-analytics-workspace-and-automation-account)kiválasztását kéri.  Ezek a szabványos paraméterek értékeinek feltöltésére szolgálnak.  A felhasználó nem kéri közvetlenül a szabványos paraméterek értékének megadását, de a rendszer kéri, hogy adjon meg értékeket a további paraméterek számára.
 
@@ -66,7 +66,7 @@ A következő táblázat a paraméter attribútumait ismerteti.
 |:--- |:--- |
 | type |A paraméter adattípusa. A felhasználó számára megjelenített beviteli vezérlő az adattípustól függ.<br><br>bool – legördülő lista<br>karakterlánc – szövegmező<br>int-Text Box<br>SecureString – jelszó mező<br> |
 | category |A paraméter nem kötelező kategóriája.  Az azonos kategóriába tartozó paraméterek együtt vannak csoportosítva. |
-| Ellenőrzési |További funkciók a karakterlánc-paraméterekhez.<br><br>datetime – datetime típusú vezérlő jelenik meg.<br>GUID – a GUID azonosító automatikusan létrejön, és a paraméter nem jelenik meg. |
+| control |További funkciók a karakterlánc-paraméterekhez.<br><br>datetime – datetime típusú vezérlő jelenik meg.<br>GUID – a GUID azonosító automatikusan létrejön, és a paraméter nem jelenik meg. |
 | leírás |A paraméter leírását nem kötelező megadni.  A paraméter melletti információs buborékban jelenik meg. |
 
 ### <a name="standard-parameters"></a>Szabványos paraméterek
@@ -126,7 +126,7 @@ Az alábbiakban a megoldás fájljába másolható és beilleszthető szabványo
 A megoldás más elemeiben a paraméterek értékeit a szintaxis **paraméterei ("paraméter neve")** alapján tekintheti meg.  Ha például a munkaterület nevét szeretné elérni, használja a **paramétereket ("workspaceName").**
 
 ## <a name="variables"></a>Változók
-A [változók](../../azure-resource-manager/resource-group-authoring-templates.md#variables) olyan értékek, amelyeket a felügyeleti megoldás további részében fog használni.  Ezek az értékek nem lesznek elérhetők a megoldást telepítő felhasználó számára.  Céljuk, hogy a szerző számára egyetlen helyet biztosítsanak, ahol olyan értékeket kezelhetnek, amelyek több alkalommal is felhasználhatók a megoldás során. A megoldáshoz tartozó összes értéket olyan változókban kell elhelyezni, amelyek nem az **erőforrások** elemben rögzített kódolással rendelkeznek.  Így a kód olvashatóbbá válik, és lehetővé teszi, hogy a későbbi verziókban könnyedén módosítsa ezeket az értékeket.
+A [változók](../../azure-resource-manager/templates/template-syntax.md#variables) olyan értékek, amelyeket a felügyeleti megoldás további részében fog használni.  Ezek az értékek nem lesznek elérhetők a megoldást telepítő felhasználó számára.  Céljuk, hogy a szerző számára egyetlen helyet biztosítsanak, ahol olyan értékeket kezelhetnek, amelyek több alkalommal is felhasználhatók a megoldás során. A megoldáshoz tartozó összes értéket olyan változókban kell elhelyezni, amelyek nem az **erőforrások** elemben rögzített kódolással rendelkeznek.  Így a kód olvashatóbbá válik, és lehetővé teszi, hogy a későbbi verziókban könnyedén módosítsa ezeket az értékeket.
 
 Az alábbi példa egy, a megoldásokban használt jellemző paraméterekkel rendelkező **változók** elemre mutat példát.
 
@@ -155,7 +155,7 @@ Meghatározhat olyan összetett változókat is, amelyek több halmazt tartalmaz
 Ebben az esetben a megoldáson keresztül változó értékeket tekint a szintaxis **változói ("változó neve"). tulajdonsággal**.  Ha például a megoldás neve változót szeretné elérni, használja a **változókat ("megoldás"). Név**.
 
 ## <a name="resources"></a>Segédanyagok és eszközök
-Az [erőforrások](../../azure-resource-manager/resource-group-authoring-templates.md#resources) határozzák meg azokat a különböző erőforrásokat, amelyeket a felügyeleti megoldás telepíteni és konfigurálni fog.  Ez lesz a sablon legnagyobb és legbonyolultabb része.  Megtekintheti az erőforrás-elemek szerkezetét és leírását [Azure Resource Manager sablonok létrehozásához](../../azure-resource-manager/resource-group-authoring-templates.md#resources).  A különböző erőforrások, amelyeket általában meghatároz, az ebben a dokumentációban található egyéb cikkekben talál részletes leírást. 
+Az [erőforrások](../../azure-resource-manager/templates/template-syntax.md#resources) határozzák meg azokat a különböző erőforrásokat, amelyeket a felügyeleti megoldás telepíteni és konfigurálni fog.  Ez lesz a sablon legnagyobb és legbonyolultabb része.  Megtekintheti az erőforrás-elemek szerkezetét és leírását [Azure Resource Manager sablonok létrehozásához](../../azure-resource-manager/templates/template-syntax.md#resources).  A különböző erőforrások, amelyeket általában meghatároz, az ebben a dokumentációban található egyéb cikkekben talál részletes leírást. 
 
 
 ### <a name="dependencies"></a>Függőségek
@@ -207,7 +207,7 @@ A megoldás erőforrásának tulajdonságai a következő táblázatban láthat�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| workspaceResourceId |A Log Analytics munkaterület azonosítója a (z) *\<Resource Group id >/providers/Microsoft.OperationalInsights/workspaces/\<Workspace neve \>* . |
+| workspaceResourceId |A Log Analytics munkaterület azonosítója az űrlapon *\<ERŐFORRÁSCSOPORT azonosítója >/providers/Microsoft.OperationalInsights/workspaces/\<munkaterület neve\>* . |
 | referencedResources |Azon erőforrások listája, amelyeket nem szabad eltávolítani a megoldás eltávolításakor. |
 | containedResources |Azon erőforrások listája, amelyeket el kell távolítani a megoldás eltávolításakor. |
 
@@ -221,7 +221,7 @@ A megoldás erőforrásának **csomag** entitása a következő táblázatban ta
 | név |A megoldás neve. |
 | version |A megoldásnak a szerző által meghatározott verziója. |
 | product |Egyedi karakterlánc a megoldás azonosításához. |
-| Publisher |A megoldás közzétevője. |
+| közzétevő |A megoldás közzétevője. |
 
 
 
@@ -229,5 +229,5 @@ A megoldás erőforrásának **csomag** entitása a következő táblázatban ta
 * [Mentett keresések és riasztások hozzáadása](solutions-resources-searches-alerts.md) a felügyeleti megoldáshoz.
 * [Nézetek hozzáadása](solutions-resources-views.md) a felügyeleti megoldáshoz.
 * [Vegyen fel runbookok és egyéb Automation-erőforrásokat](solutions-resources-automation.md) a felügyeleti megoldásba.
-* A [Azure Resource Manager-sablonok létrehozási](../../azure-resource-manager/resource-group-authoring-templates.md)részleteinek megismerése.
+* A [Azure Resource Manager-sablonok létrehozási](../../azure-resource-manager/templates/template-syntax.md)részleteinek megismerése.
 * Más Resource Manager-sablonokból származó mintákhoz is kereshet Azure-beli [Gyorsindítás sablonokat](https://azure.microsoft.com/documentation/templates) .

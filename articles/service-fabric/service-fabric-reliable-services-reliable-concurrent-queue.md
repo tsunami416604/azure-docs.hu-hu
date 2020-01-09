@@ -1,25 +1,14 @@
 ---
 title: Megbízható párhuzamos várólista az Azure Service Fabric
 description: A megbízható párhuzamos várólista egy nagy átviteli sebességű üzenetsor, amely párhuzamos enqueues és-várólistákat tesz lehetővé.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462736"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható párhuzamos várólista bemutatása
 A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált üzenetsor, amely magas párhuzamosságot biztosít a sorba helyezni és a dequeuing műveletekhez. A szolgáltatás úgy lett kialakítva, hogy magas átviteli sebességet és kis késleltetést biztosítson a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) által biztosított szigorú FIFO-sorrend kihasználása mellett, és ehelyett a lehető legjobb rendezést biztosítja.
@@ -30,7 +19,7 @@ A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált
 |--------------------------------|------------------------------------------------------------------|
 | void sorba helyezni (T-tétel)           | Feladat EnqueueAsync (ITransaction TX, T elem)                       |
 | bool TryDequeue (kimenő eredmény)  | Feladat < ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
-| int szám ()                    | long Count()                                                     |
+| int szám ()                    | hosszú darabszám ()                                                     |
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Összehasonlítás [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
@@ -49,10 +38,10 @@ A megbízható párhuzamos várólista esetében az [üzenetsor](https://en.wiki
 * A Count nem tranzakciós. Felhasználhatja a várólista elemeinek számát, de egy időpontot is jelent, és nem hivatkozhat rá.
 * A nem várólistán lévő elemek költséges feldolgozását a tranzakció aktív állapotában nem kell végrehajtani, hogy elkerülje a hosszú ideig futó tranzakciókat, amelyek hatással lehetnek a rendszer teljesítményére.
 
-## <a name="code-snippets"></a>Kódrészletek
+## <a name="code-snippets"></a>Kódtöredékek
 Nézzük meg néhány kódrészletet és a várt kimeneteket. Ebben a szakaszban a kivételek kezelését figyelmen kívül hagyja a rendszer.
 
-### <a name="instantiation"></a>Létrehozó
+### <a name="instantiation"></a>Példányosítás
 Egy megbízható párhuzamos várólista példányának létrehozása hasonló a többi megbízható gyűjteményhez.
 
 ```csharp

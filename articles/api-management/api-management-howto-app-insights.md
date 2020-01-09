@@ -1,5 +1,6 @@
 ---
-title: Az Azure API Management integrálása az Azure Application Insights használatával | Microsoft Docs
+title: Az Azure API Management integrálása az Azure-Application Insights
+titleSuffix: Azure API Management
 description: Megtudhatja, hogyan naplózhatja és tekintheti meg az Azure-API Management az Azure Application Insightsban.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: ae467e3def65d446a8c331c4f15033b4c01886ae
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442716"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Az Azure API Management integrálása az Azure-Application Insights
 
@@ -32,9 +33,9 @@ Az útmutató követéséhez Azure API Management-példánnyal kell rendelkeznie
 Az Azure Application Insights használatához először létre kell hoznia a szolgáltatás egy példányát.
 
 1. Nyissa meg a **Azure Portal** , és navigáljon a **Application Insights**.  
-    ![Alkalmazás-áttekintések létrehozása](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
+    ![alkalmazás-áttekintések létrehozása](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
 2. Kattintson a **+Hozzáadás** gombra.  
-    ![Alkalmazás-áttekintések létrehozása](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
+    ![alkalmazás-áttekintések létrehozása](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Töltse ki az űrlapot. Válassza az **általános** lehetőséget az **alkalmazás típusaként**.
 4. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -43,7 +44,7 @@ Az Azure Application Insights használatához először létre kell hoznia a szo
 1. Navigáljon az **Azure API Management Service-példányhoz** a **Azure Portal**.
 2. A bal oldali menüben válassza a **Application Insights** lehetőséget.
 3. Kattintson a **+Hozzáadás** gombra.  
-    ![App-bepillantások naplózó](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
+    ![app bepillantások naplózó](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Válassza ki a korábban létrehozott **Application Insights** példányt, és adjon meg egy rövid leírást.
 5. Kattintson a **Create** (Létrehozás) gombra.
 6. Most létrehozott egy rendszerállapot-kulccsal rendelkező Azure Application Insights naplózó eszközt. Ekkor meg kell jelennie a listában.  
@@ -59,11 +60,11 @@ Az Azure Application Insights használatához először létre kell hoznia a szo
 3. Kattintson az API-ra, ebben az esetben a **bemutató konferencia API**-ra.
 4. Nyissa meg a **Beállítások** lapot a felső sávon.
 5. Görgessen le a **diagnosztikai naplók** szakaszhoz.  
-    ![App-bepillantások naplózó](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
+    ![app bepillantások naplózó](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
 6. Jelölje be az **Engedélyezés** jelölőnégyzetet.
 7. Válassza ki a csatolt naplózó elemet a **cél** legördülő menüben.
 8. Adja meg a **100** bemenetet **mintavételezésként (%)** , és jelölje **be a mindig naplózott hibák** jelölőnégyzetet.
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 > [!WARNING]
 > Ha felülbírálja az alapértelmezett **0** értéket az **első bájtban, a törzs** mezőben jelentős mértékben csökkentheti az API-k teljesítményét.
@@ -73,17 +74,17 @@ Az Azure Application Insights használatához először létre kell hoznia a szo
 
 | Beállítás neve                        | Érték típusa                        | Leírás                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Engedélyezés                              | boolean                           | Megadja, hogy engedélyezve van-e az API naplózása.                                                                                                                                                                                                                                                                                                |
-| Destination                         | Azure Application Insights Logger | A használandó Azure Application Insights-naplózó megadása                                                                                                                                                                                                                                                                                           |
+| Engedélyezés                              | logikai                           | Megadja, hogy engedélyezve van-e az API naplózása.                                                                                                                                                                                                                                                                                                |
+| Cél                         | Azure Application Insights Logger | A használandó Azure Application Insights-naplózó megadása                                                                                                                                                                                                                                                                                           |
 | Mintavételezés (%)                        | tizedes tört                           | 0 és 100 közötti értékek (százalék). <br/> Megadja, hogy a rendszer milyen százalékban naplózza a kérelmeket az Azure Application Insightsba. 0%-os mintavételezés: a rendszer a naplózott nulla kérelmeket jelenti, míg a 100% mintavételezés az összes naplózott kérelmet jelenti. <br/> Ezzel a beállítással csökkenthető a kérelmek Azure Application Insightsra való naplózásának teljesítményre gyakorolt hatása (lásd az alábbi szakaszt). |
-| Hibák naplózása mindig                   | boolean                           | Ha ez a beállítás be van jelölve, a rendszer minden hibát naplóz az Azure Application Insightsba, a **mintavételezési** beállítástól függetlenül.                                                                                                                                                                                                                  |
-| Alapszintű beállítások: Fejlécek              | list                              | Azokat a fejléceket adja meg, amelyek az Azure Application Insightsba lesznek naplózva kérések és válaszok esetén.  Alapértelmezett: nincsenek naplózva fejlécek.                                                                                                                                                                                                             |
-| Alapszintű beállítások: Törzs első bájtja  | integer                           | Megadja, hogy a törzs hány első bájtjában legyen naplózva az Azure Application Insights a kérések és válaszok számára.  Alapértelmezett: a törzs nincs naplózva.                                                                                                                                                                                                    |
-| Speciális beállítások: Részletességi         |                                   | Megadja a részletességi szintet. A rendszer csak a magasabb súlyossági szintű egyéni nyomkövetéseket naplózza. Alapértelmezett Információk.                                                                                                                                                                                                                               |
-| Speciális beállítások: Előtér-kérelem  |                                   | Itt adhatja meg, hogy a rendszer hogyan naplózza a *frontend-kérelmeket* az Azure Application Insightsba. A *frontend-kérelem* az Azure API Management szolgáltatásba beérkező kérelem.                                                                                                                                                                        |
-| Speciális beállítások: Előtér-válasz |                                   | Megadja, hogy a rendszer hogyan naplózza az Azure-Application Insights a *felületi válaszokat* . A *frontend válasza* az Azure API Management szolgáltatásból kimenő válasz.                                                                                                                                                                   |
-| Speciális beállítások: Háttér-kérelem   |                                   | Megadja, hogy a rendszer naplózza-e a háttérbeli kérelmeket az Azure Application Insightsba. A *háttér-kérelem* az Azure API Management szolgáltatásból kimenő kérelem.                                                                                                                                                                        |
-| Speciális beállítások: Háttérbeli válasz  |                                   | Meghatározza, hogy a *háttérbeli válaszokat* a rendszer naplózza-e az Azure Application Insightsba. A *háttérbeli válasz* az Azure API Management szolgáltatásba érkező válasz.                                                                                                                                                                       |
+| Hibák naplózása mindig                   | logikai                           | Ha ez a beállítás be van jelölve, a rendszer minden hibát naplóz az Azure Application Insightsba, a **mintavételezési** beállítástól függetlenül.                                                                                                                                                                                                                  |
+| Alapszintű beállítások: fejlécek              | lista                              | Azokat a fejléceket adja meg, amelyek az Azure Application Insightsba lesznek naplózva kérések és válaszok esetén.  Alapértelmezett: nincsenek naplózva fejlécek.                                                                                                                                                                                                             |
+| Alapszintű beállítások: a törzs első bájtjai  | egész szám                           | Megadja, hogy a törzs hány első bájtjában legyen naplózva az Azure Application Insights a kérések és válaszok számára.  Alapértelmezett: a törzs nincs naplózva.                                                                                                                                                                                                    |
+| Speciális beállítások: részletesség         |                                   | Megadja a részletességi szintet. A rendszer csak a magasabb súlyossági szintű egyéni nyomkövetéseket naplózza. Alapértelmezett: információ.                                                                                                                                                                                                                               |
+| Speciális beállítások: előtér-kérelem  |                                   | Itt adhatja meg, hogy a rendszer hogyan naplózza a *frontend-kérelmeket* az Azure Application Insightsba. A *frontend-kérelem* az Azure API Management szolgáltatásba beérkező kérelem.                                                                                                                                                                        |
+| Speciális beállítások: frontend-válasz |                                   | Megadja, hogy a rendszer hogyan naplózza az Azure-Application Insights a *felületi válaszokat* . A *frontend válasza* az Azure API Management szolgáltatásból kimenő válasz.                                                                                                                                                                   |
+| Speciális beállítások: háttérbeli kérelem   |                                   | Megadja, hogy a rendszer naplózza-e a *háttérbeli kérelmeket* az Azure Application Insightsba. A *háttér-kérelem* az Azure API Management szolgáltatásból kimenő kérelem.                                                                                                                                                                        |
+| Speciális beállítások: háttérbeli válasz  |                                   | Meghatározza, hogy a *háttérbeli válaszokat* a rendszer naplózza-e az Azure Application Insightsba. A *háttérbeli válasz* az Azure API Management szolgáltatásba érkező válasz.                                                                                                                                                                       |
 
 > [!NOTE]
 > Különböző szinteken is megadhatja a naplózók – egyetlen API-naplózó vagy az összes API-hoz tartozó naplózó.
@@ -96,7 +97,7 @@ Az Azure Application Insights használatához először létre kell hoznia a szo
 
 Az Azure Application Insights fogadása:
 
-+ Telemetria-elem kérése minden bejövő kérelemhez (előtér-*kérelem*, előtér- *Válasz*)
++ Telemetria-elem *kérése* minden bejövő kérelemhez (előtér-*kérelem*, előtér- *Válasz*)
 + *Függőségi* telemetria elem, a háttér-szolgáltatásba továbbított minden kérelem esetében (*háttér-kérelem*, *háttérbeli válasz*),
 + *Kivétel* telemetria elem, minden sikertelen kérelem esetén.
 
@@ -113,7 +114,7 @@ A sikertelen kérelem egy kérelem, amely:
 
 A belső terhelési tesztek alapján a funkció engedélyezése 40%-50%-os csökkenést eredményezett az átviteli sebességben, amikor a kérelmek száma túllépte az 1 000 kérelmek másodpercenkénti számát. Az Azure Application Insights az alkalmazások teljesítményének felmérésére szolgáló statisztikai elemzések használatára készült. Nem tekinthető naplózási rendszernek, és nem alkalmas arra, hogy a nagy mennyiségű API-ra vonatkozó egyedi kérelmeket naplózza.
 
-A bejelentkezett kérelmek számát a mintavételezési beállítás módosításával módosíthatja (lásd a fenti lépéseket). A 100%-os érték azt jelenti, hogy az összes kérelem naplózva van, míg a 0%-os nincs naplózás. A **mintavétel** segít csökkenteni a telemetria mennyiségét, ami gyakorlatilag megakadályozza a teljesítmény jelentős romlását, miközben továbbra is a naplózás előnyeit hordozza.
+A bejelentkezett kérelmek számát a **mintavételezési** beállítás módosításával módosíthatja (lásd a fenti lépéseket). A 100%-os érték azt jelenti, hogy az összes kérelem naplózva van, míg a 0%-os nincs naplózás. A **mintavétel** segít csökkenteni a telemetria mennyiségét, ami gyakorlatilag megakadályozza a teljesítmény jelentős romlását, miközben továbbra is a naplózás előnyeit hordozza.
 
 A fejlécek és a kérelmek és válaszok naplózásának kihagyása pozitív hatással lesz a teljesítménnyel kapcsolatos problémák enyhítésére is.
 
@@ -123,7 +124,7 @@ A fejlécek és a kérelmek és válaszok naplózásának kihagyása pozitív ha
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + További információ az [Azure Application Insightsról](https://docs.microsoft.com/azure/application-insights/).
 + Vegye fontolóra [Az Azure Event Hubs való bejelentkezést](api-management-howto-log-event-hubs.md).

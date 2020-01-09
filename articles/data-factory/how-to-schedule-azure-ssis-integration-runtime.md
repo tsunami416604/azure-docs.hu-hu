@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8d7d4c8d7e01c6a4bfa644b84f03f8a2ea5bfd06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440324"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime ütemezett elindítása és leállítása
 Ez a cikk bemutatja, hogyan ütemezhet Azure-SSIS Integration Runtime (IR) indítását és leállítását Azure Data Factory (ADF) használatával. A Azure-SSIS IR a SQL Server Integration Services (SSIS) csomagok végrehajtásához dedikált, ADF számítási erőforrás. A Azure-SSIS IR futtatásához hozzá kell rendelni egy díjat. Ezért általában csak akkor szeretné futtatni az IR-t, ha SSIS-csomagokat kell végrehajtania az Azure-ban, és le kell állítania az IR-t, ha már nincs rá szükség. Az IR-/app vagy a Azure PowerShell az [IR manuális indításához vagy leállításához](manage-azure-ssis-integration-runtime.md)használhatja az ADF felhasználói felületét (UI).
@@ -64,12 +64,12 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
    - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
    - Válassza az **új létrehozása**lehetőséget, és adja meg az új erőforráscsoport nevét.   
          
-   Az erőforráscsoportok megismeréséhez tekintse meg [Az Azure-erőforrások kezelésével foglalkozó erőforráscsoportok használata](../azure-resource-manager/resource-group-overview.md) című cikket.
+   Az erőforráscsoportok megismeréséhez tekintse meg [Az Azure-erőforrások kezelésével foglalkozó erőforráscsoportok használata](../azure-resource-manager/management/overview.md) című cikket.
    
 6. A **verziónál**válassza a **v2** elemet.
 7. A **hely**mezőben válassza ki az ADF létrehozásához támogatott helyek egyikét a legördülő listából.
 8. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-9. Kattintson a  **Create** (Létrehozás) gombra.
+9. Kattintson a **Create** (Létrehozás) gombra.
 10. Az Azure-irányítópulton a következő csempe jelenik meg állapottal: **Data Factory üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -114,7 +114,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
     1. A **szerepkör**területen válassza a **közreműködő**lehetőséget. 
     2. A **hozzáférésének hozzárendeléséhez**válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. 
     3. A **kiválasztás**elemnél keresse meg az ADF nevét, és jelölje ki. 
-    4. Kattintson a **Save** (Mentés) gombra.
+    4. Kattintson a **Mentés** gombra.
     
    ![Felügyelt identitás szerepkör-hozzárendelésének automatikus kiosztása](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 

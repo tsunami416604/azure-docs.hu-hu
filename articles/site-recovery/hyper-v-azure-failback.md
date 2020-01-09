@@ -1,6 +1,6 @@
 ---
-title: A Hyper-v virtuális gépek feladatátvétele az Azure-ból Azure Site Recovery
-description: Ismerje meg, hogyan hajthatja végre a Hyper-V virtuális gépeket egy helyszíni helyre a vész-helyreállítás során az Azure-ba a Azure Site Recovery szolgáltatással.
+title: A Hyper-V virtuális gépek feladatátvétele az Azure-ból Azure Site Recovery
+description: A Hyper-V virtuális gépek feladatátvétele egy helyszíni helyre az Azure-ból Azure Site Recovery használatával.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,91 +8,78 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: b924c1424a309fb61f690c21e5665a70356c7a62
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084226"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498184"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>A Hyper-V virtuális gépek feladat-visszavételének futtatása
 
-Ez a cikk a Site Recovery által védett Hyper-V virtuális gépek feladatátvételét ismerteti.
+Ez a cikk a Hyper-V virtuális gépek helyszíni helyről az Azure-ba történő feladatátvétele után létrehozott Azure-beli virtuális gépek visszaadását ismerteti [Azure site Recovery](site-recovery-overview.md)használatával.
 
-## <a name="prerequisites"></a>Előfeltételek
+- A Hyper-V virtuális gépeket az Azure-ból végezheti el egy tervezett feladatátvétel futtatásával az Azure-ból a helyszíni helyre. Ha a feladatátvétel iránya az Azure-ból a helyszíni rendszerbe kerül, a feladat-visszavételnek tekintendő.
+- Mivel az Azure egy magasan elérhető környezet, és a virtuális gépek mindig elérhetők, az Azure-beli feladat-visszavétel tervezett tevékenység. Kis állásidőt is megtervezheti, hogy a számítási feladatok újra el tudják indítani a helyszíni rendszert. 
+- A tervezett feladat-visszavétel kikapcsolja a virtuális gépeket az Azure-ban, és letölti a legújabb módosításokat. Az adatvesztés nem várható.
 
-- Győződjön meg arról, hogy elolvasta a feladat- [visszavétel különböző típusairól](concepts-types-of-failback.md) és a vonatkozó kikötésekről szóló részleteket.
-- Győződjön meg arról, hogy az elsődleges hely VMM-kiszolgálója vagy a Hyper-V-kiszolgáló csatlakozik az Azure-hoz.
-- A virtuális gépen **véglegesíteni** kell a végrehajtást.
-- Győződjön meg arról, hogy Storage-fiókot használ a replikáláshoz és a nem felügyelt lemezekhez. A Hyper-V virtuális gépek felügyeleti lemezekkel történő replikálása nem támogatott.
+## <a name="before-you-start"></a>Előkészületek
 
-## <a name="perform-failback"></a>Feladat-visszavétel végrehajtása
-Az elsődlegesről a másodlagos helyre történő feladatátvételt követően a replikált virtuális gépeket nem Site Recovery védi, és a másodlagos hely most aktív helyként működik. Egy helyreállítási tervben szereplő virtuális gépek feladatátvételéhez futtassa a tervezett feladatátvételt a másodlagos helyről az elsődlegesre, az alábbiak szerint. 
-1. Válassza a **helyreállítási tervek** > *recoveryplan_name*lehetőséget. Kattintson a **feladatátvétel** > **tervezett feladatátvétel**elemre.
-2. A **tervezett feladatátvétel megerősítése** lapon válassza ki a forrás és a cél helyét. Jegyezze fel a feladatátvétel irányát. Ha a feladatátvétel elsődlegesen a várt módon működik, és az összes virtuális gép a másodlagos helyen található, akkor ez csak tájékoztató.
-3. Ha az Azure-ban nem végez biztonsági mentést, válassza az **adatok szinkronizálása**beállítást:
-    - **Adatszinkronizálás a feladatátvétel előtt (csak a különbözeti változások szinkronizálása)** – ezzel a beállítással csökkenthető a virtuális gépek leállása anélkül, hogy azokat le kellene állítani. A következő lépéseket hajtja végre:
-        - 1\. fázis: pillanatkép készítése az Azure-beli virtuális gépről, majd átmásolja a helyszíni Hyper-V-gazdagépre. A gép továbbra is fut az Azure-ban.
-        - 2\. fázis: leállítja a virtuális gépet az Azure-ban, hogy ne történjen új változás. A különbözeti változások végső készlete a helyszíni kiszolgálóra kerül, és a helyszíni virtuális gép elindult.
-
-    - Az **adatszinkronizálás csak feladatátvétel során (teljes letöltés)** – ez a beállítás gyorsabb.
-        - Ez a beállítás gyorsabb, mert várható, hogy a lemez nagy része megváltozott, és nem szeretnénk időt tölteni az ellenőrzőösszeg kiszámításakor. Elvégzi a lemez letöltését. Akkor is hasznos, ha a helyszíni virtuális gépet törölték.
-        - Azt javasoljuk, hogy ezt a lehetőséget akkor használja, ha már futtatta az Azure-t egy ideig (egy hónapig vagy többet), vagy a helyszíni virtuális gépet törölték. Ez a beállítás nem végez ellenőrzőösszeg-számításokat.
+1. [Tekintse át az Ön által használható feladat-visszavételi típusokat – az](failover-failback-overview.md#hyper-v-reprotectionfailback) eredeti helyre történő helyreállítást és a másodlagos hely helyreállítását.
+2. Győződjön meg arról, hogy az Azure-beli virtuális gépek Storage-fiókot és nem felügyelt lemezeket használnak. A felügyelt lemezek használatával replikált Hyper-V virtuális gépek feladat-visszavétele nem támogatott.
+3. Ellenőrizze, hogy fut-e a helyszíni Hyper-V-gazdagép (vagy a System Center VMM-kiszolgáló, ha a Site Recovery használatával működik), és csatlakozik az Azure-hoz. 
+4. Győződjön meg arról, hogy a feladatátvétel és a végrehajtás befejeződött a virtuális gépek számára. Nem kell beállítania a Hyper-V virtuális gépek Azure-ból történő feladat-visszavételéhez szükséges konkrét Site Recovery-összetevőket.
+5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információk](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
-4. Ha engedélyezve van az adattitkosítás a felhőben, a **titkosítási kulcsban** válassza ki azt a tanúsítványt, amelyet a VMM-kiszolgálón a szolgáltató telepítése során adott meg, amikor engedélyezte az adattitkosítást.
+## <a name="fail-back-to-the-original-location"></a>Feladat-visszavétel az eredeti helyre
+
+Ha az Azure-ban lévő Hyper-V virtuális gépeket az eredeti helyszíni virtuális gépre szeretné felvenni, futtassa az Azure-ból a helyszíni helyre tervezett feladatátvételt az alábbiak szerint:
+
+1. A tárolóban > **replikált elemek**területen válassza ki a virtuális gépet. Kattintson a jobb gombbal a **tervezett feladatátvételt**> virtuális gépre. Ha nem végez helyreállítási tervet, válassza ki a csomag nevét, majd kattintson a **feladatátvétel** > **tervezett feladatátvétel**lehetőségre.
+2. A **tervezett feladatátvétel megerősítése lapon**válassza ki a forrás-és célhelyeket. Jegyezze fel a feladatátvétel irányát. Ha az elsődleges feladatátvétel az elvárt módon működik, és az összes virtuális gép a másodlagos helyen található, akkor ez csak tájékoztató.
+3. Az **adatszinkronizálás**területen válasszon egy beállítást:
+    - **Adatszinkronizálás a feladatátvétel előtt (csak a különbözeti változások szinkronizálása)** – ezzel a beállítással csökkenthető a virtuális gépek leállása anélkül, hogy le kellene állítani őket.
+        - **1. fázis**: pillanatképet készít az Azure-beli virtuális gépről, és átmásolja a helyszíni Hyper-V-gazdagépre. A gép továbbra is fut az Azure-ban.
+        - **2. fázis**: leállítja az Azure-beli virtuális gépet, hogy ne történjen új változás. A különbözeti változások végső készlete a helyszíni kiszolgálóra kerül, és a helyszíni virtuális gép elindult.
+    - **Adatszinkronizálás csak feladatátvétel közben (teljes letöltés)** – ez a beállítás gyorsabb, mert feltételezhető, hogy a lemez nagy része megváltozott, és nem kíván időt fordítani az ellenőrzőösszegek kiszámítására. Ez a beállítás nem végez ellenőrzőösszeg-számításokat.
+        - Elvégzi a lemez letöltését. 
+        - Javasoljuk, hogy ezt a lehetőséget akkor használja, ha az Azure-t egy ideig (egy hónapig vagy többet) futtatta, vagy ha a helyszíni virtuális gép törlődik.
+
+4. Csak VMM esetén, ha engedélyezve van az adattitkosítás a felhőben, akkor a **titkosítási kulcsban**válassza ki azt a tanúsítványt, amelyet az adattitkosítás engedélyezésekor adott meg a VMM-kiszolgálón a szolgáltató telepítésekor.
 5. Indítsa el a feladatátvételt. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
-6. Ha a feladatátvétel előtt szinkronizálja az adatokat, miután a kezdeti adatszinkronizálás befejeződött, és készen áll a virtuális gépek leállítására az Azure-ban, kattintson a **feladatok** > feladat neve > **teljes feladatátvétel**lehetőségre. Ezzel leállítja az Azure-gépet, átviszi a legutóbbi módosításokat a helyszíni virtuális gépre, és elindítja a virtuális gépet a helyszínen.
-7. Most már bejelentkezhet a virtuális gépre, és ellenőrizheti, hogy az a várt módon elérhető-e.
+6. Ha a feladatátvétel előtt szinkronizálja az adatokat, miután a kezdeti adatszinkronizálás befejeződött, és készen áll a virtuális gépek leállítására az Azure-ban, kattintson a **feladatok** > feladat neve > **teljes feladatátvétel**lehetőségre. Ez a következő műveleteket végzi el:
+    - Leállítja az Azure-gépet.
+    - Átviszi a legújabb módosításokat a helyszíni virtuális gépre.
+    - Elindítja a helyszíni virtuális gépet.
+7. Most bejelentkezhet a helyszíni virtuálisgép-gépre, és ellenőrizhető, hogy az a várt módon elérhető-e.
 8. A virtuális gép véglegesített függő állapotban van. A feladatátvétel elvégzéséhez kattintson a **véglegesít** gombra.
-9. A feladat-visszavétel befejezéséhez kattintson a **visszirányú replikálás** gombra a virtuális gép elsődleges helyen való védelmének megkezdéséhez.
+9. A feladat-visszavétel befejezéséhez kattintson a **visszirányú replikálás** gombra a helyszíni virtuális gép újbóli replikálásához az Azure-ba.
 
 
-Az alábbi eljárásokkal visszatérhet az eredeti elsődleges helyre. Ez az eljárás azt ismerteti, hogyan futtathat egy tervezett feladatátvételt egy helyreállítási tervhez. Azt is megteheti, hogy a feladatátvételt egyetlen virtuális géphez futtatja a **Virtual Machines** lapon.
 
+## <a name="fail-back-to-an-alternate-location"></a>Feladat-visszavétel másik helyre 
 
-## <a name="failback-to-an-alternate-location-in-hyper-v-environment"></a>Feladat-visszavétel egy másik helyre a Hyper-V környezetben
-Ha a [Hyper-V-hely és az Azure](site-recovery-hyper-v-site-to-azure.md) közötti védelmet telepített, az Azure-ból egy másik helyszíni helyre történő feladat-visszavétel lehetősége van. Ez akkor hasznos, ha új helyszíni hardvert kell beállítania. A következőképpen teheti meg.
+A következő lépésekkel térhet vissza egy másik helyre:
 
-1. Ha új hardvert állít be, telepítse a Windows Server 2012 R2-t és a Hyper-V szerepkört a kiszolgálón.
+1. Ha új hardvert állít be, telepítse a [Windows támogatott verzióját](hyper-v-azure-support-matrix.md#replicated-vms)és a Hyper-V szerepkört a gépen.
 2. Hozzon létre egy azonos nevű virtuális hálózati kapcsolót az eredeti kiszolgálón.
-3. Válassza a **védett elemek** -> **védelmi csoport** -> \<ProtectionGroupName >-> \<VirtualMachineName >, amelyről vissza kívánja állítani a feladatokat, és válassza a **tervezett feladatátvétel**lehetőséget.
-4. A **tervezett feladatátvétel megerősítése** területen válassza **a helyszíni virtuális gép létrehozása elemet, ha az még nem létezik**.
-5. Az Állomásnév mezőben válassza ki azt az új Hyper-V-gazdagépet, amelyre a virtuális gépet helyezni kívánja.
-6. Az adatszinkronizálás során javasoljuk, hogy a feladatátvétel előtt szinkronizálja az adatokat. Ez a virtuális gépek leállását a lehető legkisebbre állítja, miközben az szinkronizálása nem történik meg. A következő műveleteket végzi el:
-
-    - 1\. fázis: pillanatkép készítése az Azure-beli virtuális gépről, majd átmásolja a helyszíni Hyper-V-gazdagépre. A gép továbbra is fut az Azure-ban.
-    - 2\. fázis: leállítja a virtuális gépet az Azure-ban, hogy ne történjen új változás. A változtatások végső készlete a helyszíni kiszolgálóra kerül, és a helyszíni virtuális gép elindult.
+3. A **védett elemek** > **védelmi csoport** > \<ProtectionGroupName >-> \<VirtualMachineName > Válassza ki azt a virtuális gépet, amelyet vissza szeretne állítani, majd válassza a **tervezett feladatátvétel**lehetőséget.
+4. A **tervezett feladatátvétel megerősítése lapon**válassza **a helyszíni virtuális gép létrehozása, ha nem létezik**.
+5. Az **állomásnév**mezőben válassza ki azt az új Hyper-V-gazdagépet, amelyen el szeretné helyezni a virtuális gépet.
+6. Az **adatszinkronizálás**során javasoljuk, hogy a feladatátvétel előtt szinkronizálja az adatokat. Ez lecsökkenti a virtuális gépek leállását, mivel az szinkronizálás nélkül leáll. A következő műveleteket végzi el:
+    - **1. fázis**: pillanatképet készít az Azure-beli virtuális gépről, és átmásolja a helyszíni Hyper-V-gazdagépre. A gép továbbra is fut az Azure-ban.
+    - **2. fázis**: leállítja az Azure-beli virtuális gépet, hogy ne történjen új változás. A változtatások végső készlete a helyszíni kiszolgálóra kerül, és a helyszíni virtuális gép elindult.
     
 7. Kattintson a pipa jelre a feladatátvétel (feladat-visszavétel) elindításához.
-8. Miután a kezdeti szinkronizálás befejeződik, és készen áll a virtuális gép leállítására az Azure-ban, kattintson a **feladatok** > \<tervezett feladatátvételi feladat > > **teljes feladatátvétel**elemre. Ezzel leállítja az Azure-gépet, átviszi a legújabb módosításokat a helyszíni virtuális gépre, és elindítja azt.
-9. Bejelentkezhet a helyszíni virtuális gépre annak ellenőrzéséhez, hogy minden a várt módon működik-e. Ezután kattintson a **véglegesítés** gombra a feladatátvétel befejezéséhez. A commit művelettel törli az Azure-beli virtuális gépet és annak lemezeit, és előkészíti a virtuális gépet, hogy ismét védetté legyen.
-10. A helyszíni virtuális gép védelmének megkezdéséhez kattintson a **visszirányú replikálás** elemre.
+8. Miután a kezdeti szinkronizálás befejeződik, és készen áll az Azure-beli virtuális gép leállítására, kattintson a **feladatok** > \<tervezett feladatátvételi feladat > > **teljes feladatátvétel**elemre. Ezzel leállítja az Azure-gépet, átviszi a legújabb módosításokat a helyszíni virtuális gépre, és elindítja azt.
+9. Bejelentkezhet a helyszíni virtuális gépre annak ellenőrzéséhez, hogy minden a várt módon működik-e.
+10. A feladatátvétel befejezéséhez kattintson a **véglegesítés** gombra. A commit művelettel törli az Azure-beli virtuális gépet és annak lemezeit, és előkészíti a helyszíni virtuális gépet, hogy ismét védelmet biztosítson.
+10. A helyi virtuális gép Azure-ba történő replikálásának megkezdéséhez kattintson a **visszirányú replikálás** elemre. A rendszer a virtuális gép Azure-ban való kikapcsolását követően csak a különbözeti változásokat replikálja.
 
     > [!NOTE]
-    > Ha megszakítja a feladat-visszavételi feladatot, amíg az adatszinkronizálási lépésben szerepel, a helyszíni virtuális gép sérült állapotban lesz. Ennek az az oka, hogy az adatszinkronizálás az Azure-beli virtuális gépekről származó legfrissebb adatok átmásolását végzi a helyszíni adatlemezekre, és amíg a szinkronizálás be nem fejeződik, előfordulhat, hogy a lemez adatainak nem konzisztens állapotban vannak. Ha a helyszíni virtuális gép elindult az adatszinkronizálás megszakítása után, akkor előfordulhat, hogy a rendszer nem indul el. A feladatátvétel újraindítása az adatszinkronizálás befejezéséhez.
+    > Ha megszakítja a feladat-visszavételi feladatot az adatszinkronizálás során, a helyszíni virtuális gép sérült állapotban lesz. Ennek az az oka, hogy az adatszinkronizálás az Azure VM-lemezek legújabb adatait a helyszíni adatlemezekre másolja, és a szinkronizálás befejezéséig a lemez adatainak nem konzisztens állapotban vannak. Ha a helyszíni virtuális gép elindul az adatszinkronizálás megszakítása után, előfordulhat, hogy a rendszer nem indul el. Ebben az esetben futtassa újra a feladatátvételt az adatszinkronizálás befejezéséhez.
 
 
-## <a name="why-is-there-no-button-called-failback"></a>Miért nincs a feladat-visszavétel nevű gomb?
-A portálon nincs a feladat-visszavétel nevű explicit kézmozdulat. A feladat-visszavétel egy olyan lépés, amelyben visszatérhet az elsődleges helyre. Definíció szerint a feladat-visszavétel akkor történik meg, amikor a virtuális gépeket a helyreállításról az elsődlegesre végzi.
-
-Ha feladatátvételt kezdeményez, a panel a virtuális gépek áthelyezésének irányát értesíti, ha az irány az Azure-ból a helyszíni rendszerbe kerül, a feladat-visszavétel.
-
-## <a name="why-is-there-only-a-planned-failover-gesture-to-failback"></a>Miért van csak egy tervezett feladatátvételi kézmozdulat a feladat-visszavételhez?
-Az Azure egy magasan elérhető környezet, és a virtuális gépek mindig elérhetők. A feladat-visszavétel olyan tervezett tevékenység, amelyben kis állásidőt kell elvégeznie, hogy a munkaterhelések a helyszínen újra futtathatók legyenek. Ez az adatvesztést nem számítja ki. Ezért csak egy tervezett feladatátvételi kézmozdulat érhető el, amely kikapcsolja a virtuális gépeket az Azure-ban, letölti a legújabb módosításokat, és gondoskodik arról, hogy ne legyen adatvesztés.
-
-## <a name="do-i-need-a-process-server-in-azure-to-failback-to-hyper-v"></a>Szükségem van egy Azure-beli Process Serverre a Hyper-v-re történő feladat-visszavétel érdekében?
-Nem, a Process Server csak akkor szükséges, ha a VMware virtuális gépeket védi. A Hyper-v virtuális gépek védelmének/feladat-visszavételének biztosításához nincs szükség további összetevők telepítésére.
-
-
-## <a name="time-taken-to-failback"></a>A feladat-visszavételhez szükséges idő
-Az adatszinkronizálás végrehajtásához és a virtuális gép elindításához szükséges idő a különböző tényezőktől függ. Annak érdekében, hogy betekintést kapjon a szükséges idő, elmagyarázza, mi történik az adatszinkronizálás során.
-
-Az adatok szinkronizálása pillanatképet készít a virtuális gép lemezéről, és a blokkokat blokkolja, és kiszámítja az ellenőrzőösszeget. Ezt a kiszámított ellenőrzőösszeget a rendszer a helyszínen továbbítja, hogy összehasonlítsa az azonos blokk helyszíni ellenőrzőösszegét. Ha az ellenőrzőösszegek egyeznek, az adatblokk nem kerül átvitelre. Ha nem egyezik, az adatblokkot a rendszer áthelyezi a helyszíni szolgáltatásba. Ez az adatátviteli idő a rendelkezésre álló sávszélességtől függ. Az ellenőrzőösszeg sebessége percenként néhány GB. 
-
-Az adatletöltés felgyorsításához beállíthatja, hogy a MARS-ügynök több szálat használjon a letöltés integrálással. Az ügynök letöltési szálának módosításához tekintse meg a [dokumentumot](https://support.microsoft.com/en-us/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage) .
-
-
-## <a name="next-steps"></a>További lépések
-
-A **véglegesítés**után kezdeményezheti a *visszirányú replikálást*. Ez elindítja a virtuális gép helyszíni biztonsági mentését az Azure-ba. Ez csak a módosításokat replikálja, mivel a virtuális gép ki van kapcsolva az Azure-ban, és így csak különbözeti módosításokat küld.
+## <a name="next-steps"></a>Következő lépések
+Miután a helyszíni virtuális gép az Azure-ba replikálódik, igény szerint [futtathat egy másik feladatátvételt](site-recovery-failover.md) az Azure-ban.

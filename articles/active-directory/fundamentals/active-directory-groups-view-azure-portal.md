@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató a csoportok és a tagok megtekintéséhez – Azure Active Directory | Microsoft Docs
-description: Keresse meg, és megtekintheti a szervezet és a hozzárendelt tagjaik kapcsolatos utasításokat.
+title: Rövid útmutató – csoportok megtekintése & tagoknak – Azure AD
+description: Útmutatás a szervezeti csoportok és a hozzájuk rendelt tagok megkereséséhez és megtekintéséhez.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423014"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Gyors útmutató: Megtekintheti a szervezete csoportait és tagjait Azure Active Directory
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Rövid útmutató: A vállalat csoportjainak és csoporttagjainak megtekintése az Azure Active Directoryban
 Megtekintheti a vállalat meglévő csoportjait és csoporttagjait az Azure Portalon. A csoportok az olyan felhasználók (tagok) kezelésére szolgálnak, akiknek azonos hozzáférés és azonos engedélyek szükségesek potenciálisan korlátozott alkalmazásokhoz és szolgáltatásokhoz.
 
 Ebben a rövid útmutatóban megtekinti a vállalat összes meglévő csoportját és az azokhoz rendelt tagokat.
@@ -44,11 +44,11 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
 
 2. Töltse ki a **Csoport** lapot:
     
-    - **Csoport típusa:** **Biztonság** kiválasztása
+    - **Csoport típusa:** válassza a **Biztonság** lehetőséget.
     
-    - **Csoport neve:** Írja be a _Mdm Policy-West_
+    - **Csoport neve:** írja be a következőt: _MDM policy – West_
     
-    - **Tagság típusa:** Válassza a **hozzárendelés**lehetőséget.
+    - **Tagság típusa:** válassza a **Hozzárendelt** lehetőséget.
 
 3. Kattintson a **Létrehozás** gombra.
 
@@ -59,9 +59,9 @@ Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak m
 
 2. Töltse ki a **Felhasználó** lapot:
 
-    - **név:** Írja be az _Alain Charon_ .
+    - **Név:** írja be a következőt: _Alain Charon_.
 
-    - **Felhasználónév:** Írja be az *Alain\@contoso.com*.
+    - **Felhasználónév:** Írja be az *alain\@contoso.com*.
 
 3. Másolja a **Jelszó** mezőben szereplő, automatikusan előállított jelszót, majd válassza a **Létrehozás** lehetőséget.
 
@@ -105,7 +105,7 @@ A **Csoportok – Minden csoport** lapon keresse meg az **MDM policy – West** 
 ## <a name="view-group-members"></a>Csoporttagok megtekintése
 Most, hogy megtalálta a csoportot, megtekintheti a csoporthoz rendelt tagokat.
 
-- Válassza a **Tagok** elemet a **Kezelés** területen, majd tekintse át az adott csoporthoz rendelt tagok neveinek teljes listáját, köztük _Alain Charont_ .
+- Válassza a **Tagok** elemet a **Kezelés** területen, majd tekintse át az adott csoporthoz rendelt tagok neveinek teljes listáját, köztük _Alain Charont_.
 
     ![Az MDM policy – West csoporthoz hozzárendelt tagok listája](media/active-directory-groups-view-azure-portal/groups-all-members.png)
 
@@ -127,7 +127,7 @@ Ezt a csoportot több útmutatóban is használjuk, amelyek a dokumentáció **�
     >[!Important]
     >Ez nem törli Alain Charon felhasználót, csak a tagságát a törölt csoportban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikk azt ismerteti, hogyan társíthat egy előfizetést az Azure AD-címtárhoz.
 
 > [!div class="nextstepaction"]

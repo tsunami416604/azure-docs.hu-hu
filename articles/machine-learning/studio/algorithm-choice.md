@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: c69b4c15397dc13f36a707f932c2464a4ff94ca7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2073123a61e919c10caaaea141f776e842f4d717
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427734"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>Algoritmusok kiválasztása Azure Machine Learning Studiohoz (klasszikus)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838467"
 
 A válasz arra a kérdésre, hogy milyen gépi tanulási algoritmust használok? mindig "függ". Ez az adatok méretétől, minőségétől és természetétől függ. Ez attól függ, hogy mit szeretne tenni a válaszban. Ez attól függ, hogy az algoritmus matematikai értéke hogyan lett lefordítva a használt számítógépre vonatkozó utasításokba. Ez attól függ, hogy mennyi idő van. Még a legtapasztaltabb adatszakértők sem tudják megállapítani, hogy melyik algoritmus fogja elvégezni a legjobban a kipróbálás előtt.
 
-A Machine Learning Studio (klasszikus) a legkorszerűbb algoritmusokat, például a skálázható, kibővített döntési fákat, a Bayes ajánlási rendszereket, a mély neurális hálózatokat és a Microsoft Research által fejlesztett döntési Dzsungeleket biztosít. Az olyan méretezhető, nyílt forráskódú gépi tanulási csomagokat, mint a Vowpal Wabbit, szintén támogatja a Machine Learning Studio. A Machine Learning Studio klasszikus verziója támogatja a gépi tanulási algoritmusokat a többosztályos és a bináris besoroláshoz, a regresszióhoz és a fürtözéshez. Tekintse meg [Machine learning modulok](/azure/machine-learning/studio-module-reference/index)teljes listáját.
+A Machine Learning Studio (klasszikus) a legkorszerűbb algoritmusokat, például a skálázható, kibővített döntési fákat, a Bayes ajánlási rendszereket, a mély neurális hálózatokat és a Microsoft Research által fejlesztett döntési Dzsungeleket biztosít. Az olyan méretezhető, nyílt forráskódú gépi tanulási csomagokat, mint a Vowpal Wabbit, szintén támogatja a Machine Learning Studio. A Machine Learning Studio (klasszikus) támogatja a gépi tanulási algoritmusokat a többosztályos és a bináris besoroláshoz, a regresszióhoz és a fürtözéshez. Tekintse meg [Machine learning modulok](/azure/machine-learning/studio-module-reference/index)teljes listáját.
 A dokumentáció tartalmaz néhány információt az egyes algoritmusokról, és ismerteti, hogyan hangolhatja be a paramétereket a használati algoritmus optimalizálásához.  
 
 
@@ -49,7 +49,7 @@ Ezek a javaslatok számos adatszakértőből és gépi tanulási szakértőkből
 
 A felügyelt tanulási algoritmusok példákon alapuló előrejelzéseket hoznak létre. A korábbi készletek díjszabásával például kitalálhatja a jövőbeli árakat. A képzéshez használt egyes példák a kamat értékkel vannak megjelölve, ebben az esetben a tőzsdei árfolyamon. A felügyelt tanulási algoritmus mintákat keres az értékek címkéjén. Bármilyen releváns információt használhat – a hét napját, a szezont, a vállalat pénzügyi adatait, az iparág típusát, a zavaró geopolitikai események jelenlétét, és minden algoritmus különböző típusú mintákat keres. Miután az algoritmus megtalálta a legjobb mintát, ezt a mintát használja, hogy előrejelzéseket készítsen a címke nélküli tesztelési adatként – a holnap árait.
 
-A felügyelt tanulás a gépi tanulás népszerű és hasznos típusa. Egyetlen kivétel esetén a Azure Machine Learning Studio klasszikus verziójának összes modulja felügyelt tanulási algoritmusok. A felügyelt tanulásnak számos különböző típusa van, amelyek a Azure Machine Learning Studio (klasszikus) területen jelennek meg: besorolás, regresszió és anomália észlelés.
+A felügyelt tanulás a gépi tanulás népszerű és hasznos típusa. Egyetlen kivétel esetén a Azure Machine Learning Studio (klasszikus) összes modulja felügyelt tanulási algoritmusok. A felügyelt tanulásnak számos különböző típusa van, amelyek a Azure Machine Learning Studio (klasszikus) területen jelennek meg: besorolás, regresszió és anomália észlelés.
 
 * **Besorolás**. Ha az adat egy kategória előrejelzésére használatos, a felügyelt tanulást besorolásnak is nevezzük. Ez a helyzet olyankor, amikor egy képet "Cat" vagy "Dog" képként rendel hozzá. Ha csak két lehetőség van, akkor a rendszer **kétosztályos** vagy **binomiális besorolású**. Ha több kategória van, mint az NCAA March Madness verseny győztesének előrejelzése, akkor ezt a problémát **többosztályos besorolásnak**nevezzük.
 * **Regresszió**. Egy érték előrejelzése esetén, mint a részvényárfolyamok esetében, a felügyelt tanulást regressziónak nevezzük.
@@ -95,7 +95,7 @@ A veszélyek ellenére a lineáris algoritmusok nagyon népszerűek a támadás 
 
 A paraméterekkel az adattudós egy algoritmus beállításakor válik elérhetővé. Ezek olyan számok, amelyek hatással vannak az algoritmus viselkedésére, például a hibatűrésre vagy az ismétlések számára, illetve az algoritmus működésének különböző változatai közötti beállításokra. Az algoritmus betanítási ideje és pontossága esetenként meglehetősen érzékeny lehet a megfelelő beállítások beszerzésére. A nagy számú paraméterrel rendelkező algoritmusok általában a legtöbb próbaidőszakot és hibát igénylik a jó kombináció megtalálásához.
 
-Azt is megteheti, hogy a (z) Azure Machine Learning Studio klasszikus verziójában egy [paraméter-elsöprő](algorithm-parameters-optimize.md) modul található, amely automatikusan az összes paraméter-kombinációt megkísérli a választott részletességgel. Habár ez nagyszerű módja annak, hogy megbizonyosodjon róla, hogy a paraméter területét átölelte, a modell betanításához szükséges idő exponenciálisan növekszik a paraméterek számával.
+Azt is megteheti, hogy a Azure Machine Learning Studio (klasszikus) [paraméter-elsöprő](algorithm-parameters-optimize.md) modul blokkja automatikusan megkísérli az összes paraméter-kombinációt a választott részletességgel. Habár ez nagyszerű módja annak, hogy megbizonyosodjon róla, hogy a paraméter területét átölelte, a modell betanításához szükséges idő exponenciálisan növekszik a paraméterek számával.
 
 Minél több paraméterrel rendelkezik, az azt jelenti, hogy egy algoritmus nagyobb rugalmasságot biztosít. Ez gyakran nagyon jó pontosságot érhet el, és a paraméterek beállításainak megfelelő kombinációját is megtalálhatja.
 
@@ -134,7 +134,7 @@ Egyes tanulási algoritmusok kifejezetten feltételezik az adatok szerkezetét v
 | [neurális hálózat](/azure/machine-learning/studio-module-reference/neural-network-regression) |● | | |9 |[További Testreszabás is lehetséges](azure-ml-netsharp-reference-guide.md) |
 | [Poisson](/azure/machine-learning/studio-module-reference/poisson-regression) | | |● |5 |Műszakilag lineáris. A prediktív számláláshoz |
 | [sorszámok](/azure/machine-learning/studio-module-reference/ordinal-regression) | | | |0 |A rangsor megrendelésének előrejelzéséhez |
-| **Rendellenességek észlelése** | | | | | |
+| **Anomáliadetektálás** | | | | | |
 | [a vektoros gép támogatása](/azure/machine-learning/studio-module-reference/one-class-support-vector-machine) |○ |○ | |2 |Különösen hasznos a nagyméretű funkciókhoz |
 | [PCA-alapú anomáliák észlelése](/azure/machine-learning/studio-module-reference/pca-based-anomaly-detection) | |○ |● |3 | |
 | [K – azt jelenti, hogy](/azure/machine-learning/studio-module-reference/k-means-clustering) | |○ |● |4 |Egy fürtözési algoritmus |
@@ -165,7 +165,7 @@ Annak ellenére, hogy a "regresszió" szerepel a névben, a logisztikai regressz
 
 ### <a name="trees-forests-and-jungles"></a>Fák, erdők és dzsungelek
 
-Döntési erdők[(regresszió](/azure/machine-learning/studio-module-reference/decision-forest-regression), [kétosztályos](/azure/machine-learning/studio-module-reference/two-class-decision-forest)és [többosztályos](/azure/machine-learning/studio-module-reference/multiclass-decision-forest)), döntési dzsungel ([kétosztályos](/azure/machine-learning/studio-module-reference/two-class-decision-jungle) és [többosztályos](/azure/machine-learning/studio-module-reference/multiclass-decision-jungle)), valamint a megnövelt döntési fák ([regresszió](/azure/machine-learning/studio-module-reference/boosted-decision-tree-regression) és [kétosztályos](/azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree)) minden döntés alapján fák, alapszintű gépi tanulási koncepció. A döntési fák számos változatban szerepelnek, de mind ugyanezt a dolgot is kiosztják – a szolgáltatás területét a leginkább ugyanazzal a címkével rendelkező régiókba osztjuk. Ezek lehetnek konzisztens kategóriák vagy állandó értékek régiói, attól függően, hogy a besorolást vagy a regressziót végzi.
+Döntési erdők[(regresszió](/azure/machine-learning/studio-module-reference/decision-forest-regression), [kétosztályos](/azure/machine-learning/studio-module-reference/two-class-decision-forest)és [többosztályos](/azure/machine-learning/studio-module-reference/multiclass-decision-forest)), döntési dzsungel ([kétosztályos](/azure/machine-learning/studio-module-reference/two-class-decision-jungle) és [többosztályos](/azure/machine-learning/studio-module-reference/multiclass-decision-jungle)), valamint a megnövelt döntési fák ([regresszió](/azure/machine-learning/studio-module-reference/boosted-decision-tree-regression) és [kétosztályos](/azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree)) mind a döntési fák, mind a megalapozott gépi tanulási koncepció alapján. A döntési fák számos változatban szerepelnek, de mind ugyanezt a dolgot is kiosztják – a szolgáltatás területét a leginkább ugyanazzal a címkével rendelkező régiókba osztjuk. Ezek lehetnek konzisztens kategóriák vagy állandó értékek régiói, attól függően, hogy a besorolást vagy a regressziót végzi.
 
 ![Döntési fa kiosztása egy szolgáltatás területének](./media/algorithm-choice/image5.png)
 
@@ -179,7 +179,7 @@ A [Fast Forest quantile regresszió](/azure/machine-learning/studio-module-refer
 
 ### <a name="neural-networks-and-perceptrons"></a>Neurális hálózatok és perceptrons
 
-A neurális hálózatok olyan agyi ihletésű tanulási algoritmusok, amelyek [többosztályos](/azure/machine-learning/studio-module-reference/multiclass-neural-network), [kétosztályos](/azure/machine-learning/studio-module-reference/two-class-neural-network)és [regressziós](/azure/machine-learning/studio-module-reference/neural-network-regression) problémákkal rendelkeznek. A rendszer végtelen változatosságot eredményez, de a Azure Machine Learning Studio klasszikus változatán belüli neurális hálózatok az irányított aciklikus-diagramok összes formája. Ez azt jelenti, hogy a bemeneti funkciók továbbítva lesznek (soha nem visszafelé) a rétegek sorozatából, mielőtt a kimenetek be lettek kapcsolva. Az egyes rétegekben a bemenetek súlyozása különböző kombinációkban történik, és a rendszer a következő rétegre továbbítja azokat. Az egyszerű számítások ezen kombinációja azt eredményezi, hogy a mágia alapján a kifinomult osztályok és az adattrendek is megtanultak. A számos rétegben elvégezhető hálózatok a "mély tanulást" végzik, amelyekkel a legtöbb technikai jelentéskészítési és tudományos fikciós technológia használható.
+A neurális hálózatok olyan agyi ihletésű tanulási algoritmusok, amelyek [többosztályos](/azure/machine-learning/studio-module-reference/multiclass-neural-network), [kétosztályos](/azure/machine-learning/studio-module-reference/two-class-neural-network)és [regressziós](/azure/machine-learning/studio-module-reference/neural-network-regression) problémákkal rendelkeznek. A rendszer végtelen változatosságot eredményez, de a Azure Machine Learning Studioon (klasszikuson) belüli neurális hálózatok az irányított aciklikus-diagramok teljes formája. Ez azt jelenti, hogy a bemeneti funkciók továbbítva lesznek (soha nem visszafelé) a rétegek sorozatából, mielőtt a kimenetek be lettek kapcsolva. Az egyes rétegekben a bemenetek súlyozása különböző kombinációkban történik, és a rendszer a következő rétegre továbbítja azokat. Az egyszerű számítások ezen kombinációja azt eredményezi, hogy a mágia alapján a kifinomult osztályok és az adattrendek is megtanultak. A számos rétegben elvégezhető hálózatok a "mély tanulást" végzik, amelyekkel a legtöbb technikai jelentéskészítési és tudományos fikciós technológia használható.
 
 Ez a nagy teljesítményű szolgáltatás azonban nem ingyenes. A neurális hálózatok hosszú időt vehetnek igénybe a betanítás során, különösen a nagyméretű adathalmazok esetében. Több paraméterrel is rendelkeznek, mint a legtöbb algoritmus, ami azt jelenti, hogy a leválasztási paraméterek nagy mértékben kibővítik a betanítási időt.
 A lehetőségek azonban a [saját hálózati struktúrájának megadására szeretnének megadhatók](azure-ml-netsharp-reference-guide.md).
@@ -205,7 +205,7 @@ A nemlineáris SVMs intelligens bővítményének használatával az [egyosztál
 
 ### <a name="bayesian-methods"></a>Bayes-módszerek
 
-A Bayes-as metódusok kiváló minőségűek: elkerülhetők a túlilleszkedés. Ezt úgy teheti meg, hogy a válasz valószínű eloszlásával kapcsolatban előre feltételezi a feltételeit. Ennek a módszernek egy másik mellékterméke, hogy nagyon kevés paraméterrel rendelkeznek. Azure Machine Learning Studio klasszikus verziója mindkét besorolási ([kétosztályos Bayes](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)) és a regresszió ([Bayes lineáris regresszió](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)) esetében a Bayes-algoritmusokat tartalmaz.
+A Bayes-as metódusok kiváló minőségűek: elkerülhetők a túlilleszkedés. Ezt úgy teheti meg, hogy a válasz valószínű eloszlásával kapcsolatban előre feltételezi a feltételeit. Ennek a módszernek egy másik mellékterméke, hogy nagyon kevés paraméterrel rendelkeznek. A Azure Machine Learning Studio (klasszikus) a[kétosztályos Bayes](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)és a regresszió (a[Bayes lineáris regresszió](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)) esetében egyaránt tartalmaz Bayes-algoritmusokat.
 Vegye figyelembe, hogy ezek az adatsorok eloszthatók, és egyenes vonallal is elférnek.
 
 Egy korábbi megjegyzésben a Bayes "Point Machines fejlesztették ki a Microsoft Research szolgáltatásban. Néhány kivételesen szép elméleti munkát végeznek. Az érdeklődő tanuló a [JMLR eredeti cikkére](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) és egy [éleslátó blogra van irányítva Chris Bishop alapján](https://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
@@ -232,14 +232,14 @@ Létezik egy együttes, [egy-v-all többosztályos osztályozó](/azure/machine-
 
 ***Egy kétosztályos osztályozó pár egy háromrétegű osztályozó alkotása.***
 
-A Azure Machine Learning Studio klasszikus verziója a [Vowpal Wabbit](/azure/machine-learning/studio-module-reference/train-vowpal-wabbit-version-7-4-model)cím alatt is tartalmaz hozzáférést egy hatékony gépi tanulási keretrendszerhez.
+A Azure Machine Learning Studio (klasszikus) a [Vowpal Wabbit](/azure/machine-learning/studio-module-reference/train-vowpal-wabbit-version-7-4-model)címe alatt egy hatékony gépi tanulási keretrendszer elérését is magában foglalja.
 A VW itt kategorizálja a kategorizálást, mivel az a besorolási és a regressziós problémák megismerésére is képes, és akár részlegesen címkézett adatokból is tanulhat. Azt is beállíthatja, hogy tetszőleges számú tanulási algoritmust, adatvesztési funkciót és optimalizálási algoritmust használjon. A rendszer az alapoktól kezdve hatékonyan, párhuzamosan és rendkívül gyorsan lett kialakítva. Nevetségesen nagy kimutatott funkciókkal kezeli a szolgáltatásait.
 A Microsoft Research saját John Langford által megkezdett és vezetett, a VW egy, a Stock Car-algoritmusok egyik mezőjében bekövetkező bejegyzés. Nem minden probléma illik a VW-re, de ha igen, érdemes lehet megmászni a tanulási görbe felületén. [Önálló, nyílt forráskódként](https://github.com/JohnLangford/vowpal_wabbit) is elérhető több nyelven.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Machine learning alapjairól szóló, könnyen értelmezhető infographic-áttekintést az általános gépi tanulási kérdések megválaszolásához használt népszerű algoritmusok megismerését ismertető [cikkben](basics-infographic-with-algorithm-examples.md)találhatja meg.
 
 * A Machine Learning Studio (klasszikus) szolgáltatásban elérhető gépi tanulási algoritmusok kategóriája alapján a következő témakörben talál információt: [inicializálási modell](/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) a Machine learning Studio (klasszikus) algoritmus és modul súgójában.
 
-* Az Machine Learning Studio klasszikus verziójában található algoritmusok és modulok teljes betűrendes listáját a (Z) Machine Learning Studio (klasszikus) [Machine learning Studio (klasszikus) modulok listáját](/azure/machine-learning/studio-module-reference/a-z-module-list) ismertető témakörben találhatja meg.
+* Machine Learning Studio (klasszikus) algoritmusok és modulok teljes betűrendes listáját a (Z) Machine Learning Studio (klasszikus) [Machine learning Studio (klasszikus) modulok listájában](/azure/machine-learning/studio-module-reference/a-z-module-list) találhatja meg.

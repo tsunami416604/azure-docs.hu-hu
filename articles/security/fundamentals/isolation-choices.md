@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459159"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
@@ -73,7 +73,7 @@ Az Azure RBAC három alapvető szerepkörrel rendelkezik, amelyek minden erőfor
 
 - Az **olvasó** megtekintheti a meglévő Azure-erőforrásokat.
 
-![Azure szerepköralapú Access Control](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure szerepköralapú hozzáférés-vezérlés](./media/isolation-choices/azure-isolation-fig3.png)
 
 Az Azure további RBAC szerepkörei lehetővé teszik bizonyos Azure-erőforrások kezelését. A virtuális gépi közreműködő szerepkör például lehetővé teszi a felhasználó számára a virtuális gépek létrehozását és felügyeletét. Nem biztosít számukra hozzáférést az Azure Virtual Network vagy az alhálózathoz, amelyhez a virtuális gép csatlakozik.
 
@@ -149,7 +149,7 @@ A Fabric-vezérlőktől az ügynök felé irányuló kommunikáció egyirányú.
 Az elkülönítés kiterjeszti a virtuális gépet a vendég virtuális gépekről, a vendég virtuális gépeket pedig egymástól. A számítási csomópontok is el vannak különítve a tárolási csomópontok között a fokozott védelem érdekében.
 
 
-A hypervisor és a gazda operációs rendszer hálózati csomagokat biztosít, így biztosíthatja, hogy a nem megbízható virtuális gépek nem tudnak hamisított forgalmat előállítani, vagy nem fogadnak hozzájuk címzett forgalmat, a védett infrastruktúra-végpontokra irányuló közvetlen forgalmat, vagy a küldést/fogadást nem megfelelő szórási forgalom.
+A hypervisor és a gazda operációs rendszer hálózati csomagokat biztosít, így biztosíthatja, hogy a nem megbízható virtuális gépek nem tudnak hamisított forgalmat előállítani, vagy nem fogadnak hozzájuk címzett forgalmat, a védett infrastruktúra-végpontokra irányítsák a forgalmat, vagy nem megfelelő szórásos forgalmat küldenek/fogadnak.
 
 
 ### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>A háló vezérlő ügynöke által a virtuális gép elkülönítéséhez konfigurált további szabályok
@@ -161,10 +161,10 @@ A szabályok két kategóriába sorolhatók:
 
 -   **Szerepkör-konfigurációs fájl:** Ez határozza meg a beérkező Access Control listákat (ACL-eket) a bérlő szolgáltatási modellje alapján.
 
-### <a name="vlan-isolation"></a>VLAN-elkülönítés
+### <a name="vlan-isolation"></a>Virtuális helyi hálózati elkülönítés
 Az egyes fürtökön három VLAN van:
 
-![VLAN-elkülönítés](./media/isolation-choices/azure-isolation-fig8.jpg)
+![Virtuális helyi hálózati elkülönítés](./media/isolation-choices/azure-isolation-fig8.jpg)
 
 
 -   A fő VLAN – a nem megbízható ügyfél-csomópontok közötti kapcsolat
@@ -196,7 +196,7 @@ Az IP-tárolási adatokat olyan hálózati mechanizmussal lehet védeni a jogosu
 
 ### <a name="encryption"></a>Titkosítás
 Az Azure a következő titkosítási típusokat biztosítja az adatvédelem érdekében:
--   Titkosítás átvitel közben
+-   Titkosítás az átvitel során
 
 -   Titkosítás inaktív állapotban
 
@@ -205,7 +205,7 @@ Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelm
 
 -   [Átviteli szintű titkosítás](../../storage/common/storage-security-guide.md), például https, ha az Azure Storage-ba vagy az-ba helyezi át az adatátvitelt.
 
--   [Vezetékes titkosítás](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), például SMB 3,0 titkosítás az Azure-fájlmegosztás számára.
+-   [Vezetékes titkosítás](../../storage/common/storage-security-guide.md), például SMB 3,0 titkosítás az Azure-fájlmegosztás számára.
 
 -   [Ügyféloldali titkosítás](../../storage/common/storage-security-guide.md), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 

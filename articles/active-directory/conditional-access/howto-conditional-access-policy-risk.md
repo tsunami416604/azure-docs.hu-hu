@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424832"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Feltételes hozzáférés: kockázatalapú feltételes hozzáférés
 
@@ -38,7 +38,7 @@ Ha engedélyezi ezt a házirendet, az összes felhasználónak 14 napon belül r
    1. A **kizárás**területen válassza a **kizárt felhasználók kiválasztása**lehetőséget, válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat, és válassza a **kiválasztás**lehetőséget. 
    1. Válassza a **Done** (Kész) lehetőséget.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="require-a-password-change-high-risk-users"></a>Jelszó módosításának megkövetelése magas kockázatú felhasználók számára
 
@@ -56,7 +56,7 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
 1. A **vezérlők** > **hozzáférés**területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése**jelölőnégyzetet.
    1. Kattintson a **Kiválasztás** gombra.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>MFA közepes vagy magas bejelentkezési kockázatú felhasználók megkövetelése
 
@@ -74,11 +74,13 @@ A legtöbb felhasználó viselkedése normális, amely követhető, és amikor e
 1. A **vezérlők** > **hozzáférés**területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
    1. Kattintson a **Kiválasztás** gombra.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 

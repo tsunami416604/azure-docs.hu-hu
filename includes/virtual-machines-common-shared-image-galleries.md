@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875551"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663030"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
@@ -222,7 +222,7 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 1. Nyissa meg az **összes erőforrást**.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
 1. Keressen a **privát**katalógus típusú erőforrásokat.
@@ -239,9 +239,9 @@ Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógu
  
 Igen. A lemezképek típusain alapuló 3 forgatókönyv van.
 
- 1\. eset: ha felügyelt lemezképpel rendelkezik, létrehozhat egy rendszerkép-definíciót és egy rendszerkép-verziót is.
+ 1\. forgatókönyv: Ha a SIG-vel megegyező előfizetésben felügyelt rendszerkép található, akkor a rendszerkép definícióját és a rendszerkép verzióját is létrehozhatja.
 
- 2\. forgatókönyv: Ha nem felügyelt rendszerképet használ, létrehozhat egy felügyelt rendszerképet, majd létrehozhatja a rendszerkép definícióját és a rendszerkép verzióját. 
+ 2\. forgatókönyv: Ha nem felügyelt képpel rendelkezik a SIG-vel megegyező előfizetésben, létrehozhat egy felügyelt rendszerképet, majd létrehozhatja a rendszerkép definícióját és a rendszerkép verzióját. 
 
  3\. forgatókönyv: Ha a helyi fájlrendszerben virtuális merevlemezt használ, fel kell töltenie a virtuális merevlemezt egy felügyelt rendszerképbe, majd a rendszerkép-definíciót és a rendszerkép verzióját is létrehozhatja belőle.
 

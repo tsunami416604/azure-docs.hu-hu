@@ -7,18 +7,35 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b597ecb67ab30c8617029fe741af1014444a9b70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693152"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498106"
 ---
-# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Helyszíni feladat-visszavétel az Azure-ban – problémamegoldás
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure-ból helyszíni rendszerbe történő feladat-visszavétel hibaelhárítása
 
 Ez a cikk az Azure-beli virtuális gépeknek a helyszíni VMware-infrastruktúrába való feladatátvétele után az Azure-ba való feladatátvételt követően a [Azure site Recovery](site-recovery-overview.md)használatával kapcsolatos hibák elhárítását ismerteti.
 
 A feladat-visszavétel lényegében két fő lépést foglal magában. Az első lépésben a feladatátvételt követően újra kell védelemmel ellátnia az Azure-beli virtuális gépeket a helyszíni környezetbe, hogy azok replikációt indítsanak. A második lépés egy feladatátvétel futtatása az Azure-ból a helyszíni helyre való visszatéréshez.
+
+## <a name="common-issues"></a>Gyakori problémák
+
+- Ha csak olvasási jogosultsággal rendelkező felhasználói vCenter-felderítést végez, és a virtuális gépek védelme, a védelem sikeres és a feladatátvétel működik. Az ismételt védelem során a feladatátvétel meghiúsul, mert nem lehet felderíteni az adattárolókat. A tünet az, hogy az adattárolók nem jelennek meg az ismételt védelem során. A probléma megoldásához frissítse a vCenter hitelesítő adatait egy olyan fiókkal, amely rendelkezik engedélyekkel, majd próbálja megismételni a feladatot.
+- Ha egy linuxos virtuális gépet hajt végre, és a helyszínen futtatja azt, láthatja, hogy a Network Manager-csomag el lett távolítva a gépről. Ez az Eltávolítás azért fordul elő, mert a Network Manager-csomag el lesz távolítva a virtuális gép Azure-ban való helyreállításakor.
+- Ha egy Linux rendszerű virtuális gép statikus IP-címmel van konfigurálva, és a feladatátvétel az Azure-ba történik, az IP-cím beszerzése a DHCP-ből történik. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gép továbbra is DHCP-t használ az IP-cím megvásárlásához. Manuálisan jelentkezzen be a gépre, és szükség esetén állítsa vissza az IP-címet statikusra. A Windows rendszerű virtuális gépek újra megvásárolhatják statikus IP-címét.
+- Ha az ESXi 5,5 Free Edition vagy a vSphere 6 hypervisor Free Edition verziót használja, a feladatátvétel sikeres lesz, de a feladat-visszavétel nem sikerül. A feladat-visszavétel engedélyezéséhez frissítsen a program próbaverziós licencére.
+- Ha nem tudja elérni a konfigurációs kiszolgálót a folyamat-kiszolgálóról, a Telnet használatával ellenőrizze a 443-es porton futó konfigurációs kiszolgálóval létesített kapcsolatot. A konfigurációs kiszolgálót a Process Serverről is megpróbálhatja pingelni. A folyamat kiszolgálójának szívverése is lehet, ha a konfigurációs kiszolgálóhoz csatlakozik.
+- A fizikai helyszíni kiszolgálóként védett Windows Server 2008 R2 SP1-kiszolgálót nem lehet visszaadni az Azure-ból a helyszíni helyre.
+- A következő esetekben nem végezhető el a feladat-visszavétel:
+    - A gépeket áttelepítette az Azure-ba. [További információk](migrate-overview.md#what-do-we-mean-by-migration).
+    - Áthelyezett egy virtuális gépet egy másik erőforráscsoporthoz.
+    - Törölte az Azure-beli virtuális gépet.
+    - Letiltotta a virtuális gép védelmét.
+    - A virtuális gépet manuálisan hozta létre az Azure-ban. Az ismételt védelem előtt a gépet először a helyszínen, a feladatátvételt pedig az Azure-ba kellett volna védeni.
+    - Csak egy ESXi-gazdagépre lehet sikertelen. A VMware virtuális gépeket és fizikai kiszolgálókat nem lehet feladat-visszavétel Hyper-V-gazdagépekre, fizikai gépekre vagy VMware-munkaállomásokra.
+
 
 ## <a name="troubleshoot-reprotection-errors"></a>Ismételt védelmi hibák elhárítása
 
@@ -65,7 +82,7 @@ A feladatátvételt végző virtuális gép újravédéséhez az Azure-beli virt
 
 **Az adattár nem érhető el az ESXi-gazdagépről.**
 
-A feladat-visszavételhez keresse meg a [fő cél előfeltételeit és a támogatott adattárakat](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) .
+A feladat-visszavételhez keresse meg a [fő cél előfeltételeit és a támogatott adattárakat](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) .
 
 
 ## <a name="troubleshoot-failback-errors"></a>Feladat-visszavételi hibák elhárítása

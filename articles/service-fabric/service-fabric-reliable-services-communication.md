@@ -1,25 +1,16 @@
 ---
-title: Reliable Services kommunikáció áttekintése | Microsoft Docs
+title: Reliable Services kommunikáció áttekintése
 description: A Reliable Services kommunikációs modell áttekintése, beleértve a figyelők megnyitását, a végpontok feloldását és a szolgáltatások közötti kommunikációt.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: BharatNarasimman
-ms.assetid: 36217988-420e-409d-b0a4-e0e875b6eac8
-ms.service: service-fabric
-ms.devlang: csharp, java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 4d3deb7f3b7e7fb6334525886c6d5b8787a8f940
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462957"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként teljes mértékben független a szolgáltatások közötti kommunikációtól. Minden protokoll és verem elfogadható, UDP-ről HTTP-re. A szolgáltatás fejlesztője dönti el, hogyan kommunikálnak a szolgáltatások. A Reliable Services alkalmazás-keretrendszer beépített kommunikációs veremeket és API-kat biztosít, amelyeket az egyéni kommunikációs összetevők kiépítéséhez használhat.
@@ -98,7 +89,7 @@ public class MyStatefulService : StatefulService
 
 Mindkét esetben a figyelők gyűjteményét kell visszaadnia. Ez lehetővé teszi a szolgáltatás számára, hogy több figyelő használatával több végponton figyelje a különböző protokollokat. Előfordulhat például, hogy egy HTTP-figyelővel és egy különálló WebSocket-figyelővel rendelkezik. Minden figyelő kap egy nevet, és az eredményül kapott *név: cím* párok JSON-objektumként jelennek meg, amikor egy ügyfél egy szolgáltatási példány vagy egy partíció figyelési címeit kéri le.
 
-Állapot nélküli szolgáltatás esetén a felülbírálás a ServiceInstanceListeners gyűjteményét adja vissza. A `ServiceInstanceListener` tartalmaz egy függvényt, amely `ICommunicationListener(C#) / CommunicationListener(Java)` létrehoz egy nevet, és megadja a nevét. Az állapot-nyilvántartó szolgáltatások esetében a felülbírálás a ServiceReplicaListeners gyűjteményét adja vissza. Ez némileg eltér az állapot nélküli munkatársaitól, mert az `ServiceReplicaListener` a lehetőség, hogy egy másodlagos `ICommunicationListener` replikán is megnyitható. Nem csupán több kommunikációs figyelőt használhat egy szolgáltatásban, de azt is megadhatja, hogy mely figyelők fogadják el a kérelmeket a másodlagos replikák esetében, és melyek csak az elsődleges replikákat figyelik.
+Állapot nélküli szolgáltatás esetén a felülbírálás a ServiceInstanceListeners gyűjteményét adja vissza. A `ServiceInstanceListener` függvényt tartalmaz egy `ICommunicationListener(C#) / CommunicationListener(Java)` létrehozásához, és egy nevet ad neki. Az állapot-nyilvántartó szolgáltatások esetében a felülbírálás a ServiceReplicaListeners gyűjteményét adja vissza. Ez némileg eltér az állapot nélküli munkatársaitól, mert egy `ServiceReplicaListener` lehetősége van egy `ICommunicationListener` megnyitására a másodlagos replikán. Nem csupán több kommunikációs figyelőt használhat egy szolgáltatásban, de azt is megadhatja, hogy mely figyelők fogadják el a kérelmeket a másodlagos replikák esetében, és melyek csak az elsődleges replikákat figyelik.
 
 Rendelkezhet például olyan ServiceRemotingListener, amely csak az elsődleges replikák esetében fogad RPC-hívásokat, valamint egy második, egyéni figyelőt, amely olvasási kéréseket küld a másodlagos replikák számára HTTP-n keresztül:
 
@@ -121,11 +112,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 ```
 
 > [!NOTE]
-> Ha több figyelőt hoz létre egy szolgáltatáshoz, minden figyelőnek egyedi nevet kell adni.
+> Ha több figyelőt hoz létre egy szolgáltatáshoz, minden figyelőnek egyedi **nevet kell adni** .
 >
 >
 
-Végezetül írja le a szolgáltatáshoz a végpontok szakaszban található szolgáltatáshoz szükséges [](service-fabric-application-and-service-manifests.md) végpontokat.
+Végezetül írja le a szolgáltatáshoz a végpontok szakaszban található [szolgáltatáshoz](service-fabric-application-and-service-manifests.md) szükséges végpontokat.
 
 ```xml
 <Resources>
@@ -137,7 +128,7 @@ Végezetül írja le a szolgáltatáshoz a végpontok szakaszban található szo
 
 ```
 
-A kommunikációs figyelő hozzáférhet a számára lefoglalt `CodePackageActivationContext` végponti erőforrásokhoz a `ServiceContext`alkalmazásból. A figyelő ezután megkezdheti a kérések figyelését a megnyitásakor.
+A kommunikációs figyelő elérheti a számára lefoglalt végponti erőforrásokat a `ServiceContext``CodePackageActivationContext`. A figyelő ezután megkezdheti a kérések figyelését a megnyitásakor.
 
 ```csharp
 var codePackageActivationContext = serviceContext.CodePackageActivationContext;
@@ -156,7 +147,7 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 >
 
 ### <a name="service-address-registration"></a>Szolgáltatási címek regisztrálása
-A *elnevezési szolgáltatás* nevű rendszerszolgáltatás Service Fabric-fürtökön fut. A elnevezési szolgáltatás a szolgáltatások regisztrátora, valamint azok címei, amelyekben a szolgáltatás minden példánya vagy replikája figyeli a szolgáltatást. Ha egy`ICommunicationListener(C#) / CommunicationListener(Java)` Befejezés metódusa befejeződik, a visszatérési értéke a elnevezési szolgáltatásban lesz regisztrálva. `OpenAsync(C#) / openAsync(Java)` A elnevezési szolgáltatás közzétett visszatérési értéke egy olyan karakterlánc, amelynek értéke bármi lehet. Ez a karakterlánc azt látja, hogy mely ügyfelek látják a szolgáltatáshoz tartozó címek megadását a elnevezési szolgáltatás.
+A *elnevezési szolgáltatás* nevű rendszerszolgáltatás Service Fabric-fürtökön fut. A elnevezési szolgáltatás a szolgáltatások regisztrátora, valamint azok címei, amelyekben a szolgáltatás minden példánya vagy replikája figyeli a szolgáltatást. Ha egy `ICommunicationListener(C#) / CommunicationListener(Java)` `OpenAsync(C#) / openAsync(Java)` metódusa befejeződik, a visszatérési értéke a elnevezési szolgáltatás lesz regisztrálva. A elnevezési szolgáltatás közzétett visszatérési értéke egy olyan karakterlánc, amelynek értéke bármi lehet. Ez a karakterlánc azt látja, hogy mely ügyfelek látják a szolgáltatáshoz tartozó címek megadását a elnevezési szolgáltatás.
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -197,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 A Service Fabric olyan API-kat biztosít, amelyek lehetővé teszik az ügyfelek és más szolgáltatások számára, hogy ezt a nevet a szolgáltatásnév alapján kérjék. Ez azért fontos, mert a szolgáltatás címe nem statikus. A szolgáltatások a fürtön vannak áthelyezve erőforrás-kiegyenlítő és rendelkezésre állási célokra. Ez az a mechanizmus, amely lehetővé teszi, hogy az ügyfelek feloldják a szolgáltatás figyelési címeit.
 
 > [!NOTE]
-> A kommunikációs figyelő megírásának teljes körű bemutatása: [Service Fabric web API-szolgáltatások a OWIN önálló üzemeltetéssel](service-fabric-reliable-services-communication-webapi.md) C#, míg a Java-hoz saját http-kiszolgáló megvalósítását is megírhatja, lásd: EchoServer Application example at https://github.com/Azure-Samples/service-fabric-java-getting-started.
+> A kommunikációs figyelő megírásának teljes körű bemutatása: C# [Service Fabric webes API-szolgáltatások a OWIN önkiszolgáló szolgáltatással](service-fabric-reliable-services-communication-webapi.md) , míg a Javához saját http-kiszolgálói implementációt írhat, lásd: EchoServer Application example on https://github.com/Azure-Samples/service-fabric-java-getting-started.
 >
 >
 
@@ -205,7 +196,7 @@ A Service Fabric olyan API-kat biztosít, amelyek lehetővé teszik az ügyfelek
 A Reliable Services API a következő könyvtárakat biztosítja a szolgáltatásokkal kommunikáló ügyfelek írásához.
 
 ### <a name="service-endpoint-resolution"></a>Szolgáltatás végpontjának feloldása
-A szolgáltatással folytatott kommunikáció első lépéseként meg kell oldani annak a szolgáltatásnak a végponti címeit, amelynek a használatával szeretne kommunikálni. A `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` segédprogram osztály egy alapszintű primitív, amely segít az ügyfeleknek a szolgáltatás végpontjának meghatározásában futásidőben. Service Fabric terminológiában a szolgáltatás végpontjának meghatározásának folyamatát a *szolgáltatási végpont feloldásának*nevezzük.
+A szolgáltatással folytatott kommunikáció első lépéseként meg kell oldani annak a szolgáltatásnak a végponti címeit, amelynek a használatával szeretne kommunikálni. A `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` Utility osztály egy alapszintű primitív, amely segít az ügyfeleknek a szolgáltatás végpontjának meghatározásában futásidőben. Service Fabric terminológiában a szolgáltatás végpontjának meghatározásának folyamatát a *szolgáltatási végpont feloldásának*nevezzük.
 
 A fürtön belüli szolgáltatásokhoz való kapcsolódáshoz a ServicePartitionResolver az alapértelmezett beállításokkal hozhatók létre. A legtöbb esetben ez az ajánlott használat:
 
@@ -225,7 +216,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.clo
 FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
 ```
 
-`FabricClient` Azt is megteheti, `ServicePartitionResolver` hogy egy függvényt hoz létre belső használatra:
+Azt is megteheti, `ServicePartitionResolver` a belső használatra szolgáló `FabricClient` létrehozására szolgáló függvényt is kaphat:
 
 ```csharp
 public delegate FabricClient CreateFabricClientDelegate();
@@ -240,7 +231,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`az a objektum, amely az Service Fabric-fürttel való kommunikációra szolgál a fürt különböző felügyeleti műveleteihez. Ez akkor lehet hasznos, ha jobban meg szeretné határozni, hogy a szolgáltatás partíció-feloldása hogyan kommunikál a fürttel. `FabricClient`belső gyorsítótárazást végez, és általában költséges a létrehozása, ezért fontos, hogy a példányokat a lehető legnagyobb mértékben újra lehessen használni `FabricClient` .
+`FabricClient` az a objektum, amely az Service Fabric-fürttel való kommunikációra szolgál a fürt különböző felügyeleti műveleteihez. Ez akkor lehet hasznos, ha jobban meg szeretné határozni, hogy a szolgáltatás partíció-feloldása hogyan kommunikál a fürttel. a `FabricClient` belső gyorsítótárazást végez, és általában költséges a létrehozása, ezért fontos, hogy a lehető legnagyobb mértékben újra felhasználja `FabricClient` példányokat.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -271,7 +262,7 @@ Az ügyfél kódjának általában nem kell közvetlenül a ServicePartitionReso
 ### <a name="communication-clients-and-factories"></a>Kommunikációs ügyfelek és gyárak
 A kommunikációs gyár könyvtára egy tipikus hibatűrő újrapróbálkozási mintát valósít meg, amely megkönnyíti a kapcsolatok megoldott szolgáltatási végpontokhoz való újrapróbálkozását. A gyári függvénytár biztosítja az újrapróbálkozási mechanizmust a hibák megadásakor.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`meghatározza a kommunikációs ügyfél-előállító által megvalósított alapszintű felületet, amely a Service Fabric szolgáltatással kommunikáló ügyfeleket állít elő. A CommunicationClientFactory megvalósítása a Service Fabric szolgáltatás által használt kommunikációs veremtől függ, amelyben az ügyfél kommunikálni szeretne. A Reliable Services API biztosítja a `CommunicationClientFactoryBase<TCommunicationClient>`. Ez a CommunicationClientFactory felület alapszintű megvalósítását biztosítja, és az összes kommunikációs verem esetében közös feladatokat hajt végre. (Ezek a feladatok egy ServicePartitionResolver használatával határozzák meg a szolgáltatási végpontot). Az ügyfelek általában az absztrakt CommunicationClientFactoryBase osztályt alkalmazzák a kommunikációs veremre jellemző logikák kezelésére.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` a kommunikációs ügyfél-előállító által megvalósított alapszintű felületet határozza meg, amely olyan ügyfeleket állít elő, amelyek egy Service Fabric szolgáltatással tudnak kommunikálni. A CommunicationClientFactory megvalósítása a Service Fabric szolgáltatás által használt kommunikációs veremtől függ, amelyben az ügyfél kommunikálni szeretne. A Reliable Services API `CommunicationClientFactoryBase<TCommunicationClient>`biztosít. Ez a CommunicationClientFactory felület alapszintű megvalósítását biztosítja, és az összes kommunikációs verem esetében közös feladatokat hajt végre. (Ezek a feladatok egy ServicePartitionResolver használatával határozzák meg a szolgáltatási végpontot). Az ügyfelek általában az absztrakt CommunicationClientFactoryBase osztályt alkalmazzák a kommunikációs veremre jellemző logikák kezelésére.
 
 A kommunikációs ügyfél csak egy címeket kap, és azt használja a szolgáltatáshoz való kapcsolódáshoz. Az ügyfél bármilyen protokollt igénybe vehet.
 
@@ -341,14 +332,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Végezetül, egy kivétel kezelője feladata annak megállapítása, hogy milyen műveletet kell végrehajtani a kivétel bekövetkezésekor. A kivételek az újrapróbálható és **nem**újrapróbálható értékekre vannak kategorizálva.
+Végezetül, egy kivétel kezelője feladata annak megállapítása, hogy milyen műveletet kell végrehajtani a kivétel bekövetkezésekor. A kivételek az **újrapróbálható** és **nem újrapróbálható**értékekre vannak kategorizálva.
 
-* A **nem** újrapróbálható kivételek egyszerűen visszakerülnek a hívóba.
-* az újrapróbálkozást lehetővé tevő kivételek további kategorizálva **átmeneti** és **nem átmeneti**jellegűek.
+* A **nem újrapróbálható** kivételek egyszerűen visszakerülnek a hívóba.
+* az **újrapróbálkozást** lehetővé tevő kivételek további kategorizálva **átmeneti** és **nem átmeneti**jellegűek.
   * Az **átmeneti** kivételek azok, amelyek egyszerűen újra feloldhatók a szolgáltatási végponti cím feloldása nélkül. Ezek közé tartoznak az átmeneti hálózati problémák vagy a szolgáltatás-végpontot jelző, nem létező szolgáltatási hibák.
   * A **nem átmeneti** kivételek azok, amelyekhez a szolgáltatás-végponti címnek újbóli feloldására van szükség. Ezek közé tartoznak azok a kivételek, amelyek jelzik, hogy a szolgáltatási végpont nem érhető el, jelezve, hogy a szolgáltatás egy másik csomópontra került.
 
-Az `TryHandleException` egy adott kivételre vonatkozó döntést tesz. Ha **nem tudja** , hogy milyen döntéseket kell hoznia egy kivételről, **Hamis értéket**kell visszaadnia. Ha **tudja** , hogy milyen döntést kell hoznia, az eredményt ennek megfelelően kell beállítania, és **igaz**értéket kell visszaadnia.
+A `TryHandleException` egy adott kivétellel kapcsolatos döntést tesz. Ha **nem tudja** , hogy milyen döntéseket kell hoznia egy kivételről, **Hamis értéket**kell visszaadnia. Ha **tudja** , hogy milyen döntést kell hoznia, az eredményt ennek megfelelően kell beállítania, és **igaz**értéket kell visszaadnia.
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler
@@ -396,7 +387,7 @@ public class MyExceptionHandler implements ExceptionHandler {
 }
 ```
 ### <a name="putting-it-all-together"></a>Végső összeállítás
-`ICommunicationClient(C#) / CommunicationClient(Java)`Egy, `ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`a `ServicePartitionClient(C#) / FabricServicePartitionClient(Java)` és `IExceptionHandler(C#) / ExceptionHandler(Java)` egy kommunikációs protokoll köré épülő megoldással együtt csomagolja össze az összeset, és biztosítja a hibajavítási és szolgáltatás-partíciós címek feloldási hurkot ezen összetevők körül.
+Egy kommunikációs protokollon alapuló `ICommunicationClient(C#) / CommunicationClient(Java)`, `ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`és `IExceptionHandler(C#) / ExceptionHandler(Java)` esetén a `ServicePartitionClient(C#) / FabricServicePartitionClient(Java)` összecsomagolja az egészet, és biztosítja a hibajavítási és szolgáltatás-partíciós címek feloldási hurkot ezen összetevők körül.
 
 ```csharp
 private MyCommunicationClientFactory myCommunicationClientFactory;
@@ -430,7 +421,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [ASP.NET Core a Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)

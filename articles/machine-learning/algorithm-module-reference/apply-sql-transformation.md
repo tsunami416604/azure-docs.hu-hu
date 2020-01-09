@@ -1,7 +1,7 @@
 ---
 title: SQL-átalakítás alkalmazása
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használhatja az SQL-transzformációs modult a Azure Machine Learning szolgáltatásban egy SQLite-lekérdezés futtatásához a bemeneti adatkészleteken az adatok átalakításához.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használható az SQL-transzformációs modul alkalmazása Azure Machine Learning egy SQLite-lekérdezés futtatásához a bemeneti adatkészleteken az adatok átalakításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456524"
 ---
 # <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
 
@@ -62,6 +62,6 @@ Bár az SQLite az ANSI SQL standard nagy részét is támogatja, nem tartalmazza
 
 A hivatalos SQLite webhelyen elérhető nem támogatott függvények listája mellett a következő wiki a többi nem támogatott funkció listáját tartalmazza: [SQLite –](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql) nem támogatott SQL  
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -3,18 +3,18 @@ title: Gyors útmutató – szabályok és műveletek konfigurálása az Azure I
 description: Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a telemetria szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434819"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Gyors útmutató: szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Central (előzetes verziójú funkciók)
 
@@ -65,7 +65,7 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
 
     ![Szabály létrehozása művelet](./media/quick-configure-rules/action.png)
 
-1. Kattintson a **Mentés** gombra. A szabály a **szabályok** lapon jelenik meg.
+1. Kattintson a **Mentés** gombra. A szabály a megjelenik a **Szabályok** oldalon.
 
 ## <a name="test-the-rule"></a>A szabály tesztelése
 

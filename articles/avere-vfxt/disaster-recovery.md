@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414218"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Vész-helyreállítási útmutató az Azure-hoz készült avere-vFXT
 
@@ -104,7 +104,7 @@ Ha a biztonsági mentési tárolót az Azure-fürthöz tartozó avere-vFXT szere
 1. Ha szükséges, hozzon létre egy új avere-vFXT az Azure-fürthöz egy nem érintett régióban.
 
    > [!TIP]
-   > Amikor létrehoz egy avere-vFXT az Azure-fürthöz, mentheti a létrehozási sablonját és paramétereit. Ha ezt az információt az elsődleges fürt létrehozásakor menti, akkor a segítségével egy olyan helyettesítő fürtöt hozhat létre, amely azonos tulajdonságokkal rendelkezik. Az [Érvényesítés és összefoglalás](avere-vfxt-deploy.md#validation-and-purchase) lapon kattintson a **sablon és paraméterek letöltése** hivatkozásra. Mentse az adatokat egy fájlba, mielőtt a fürt létrehozásához az **OK** gombra kattint.
+   > Amikor létrehoz egy avere-vFXT az Azure-fürthöz, mentheti a létrehozási sablonját és paramétereit. Ha ezt az információt az elsődleges fürt létrehozásakor menti, akkor a segítségével egy olyan helyettesítő fürtöt hozhat létre, amely azonos tulajdonságokkal rendelkezik. Az [Összefoglalás](avere-vfxt-deploy.md#validation-and-purchase) lapon kattintson a **sablon és paraméterek letöltése** hivatkozásra. Mentse az adatokat egy fájlba, mielőtt létrehozza a fürtöt.
 
 1. Vegyen fel egy új, az ismétlődő blob-tárolóra mutató Cloud Core filert.
 

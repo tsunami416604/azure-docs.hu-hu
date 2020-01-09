@@ -1,21 +1,21 @@
 ---
-title: A kérelmek egységének optimalizálása és a Azure Cosmos DB-lekérdezések futtatásának díja
+title: A Cost és az RU/s optimalizálása a lekérdezések futtatásához Azure Cosmos DB
 description: Megtudhatja, hogyan értékelheti ki a lekérdezésekre vonatkozó kérések egységeit, és hogyan optimalizálhatja a lekérdezést a teljesítmény és a költség tekintetében.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445133"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>A lekérdezési díjak optimalizálása Azure Cosmos DB
 
-A Azure Cosmos DB az adatbázis-műveletek gazdag készletét kínálja, beleértve a tárolóban lévő elemeken működő viszonyítási és hierarchikus lekérdezéseket. Az egyes műveletekhez kapcsolódó díjak a művelet végrehajtásához szükséges CPU, IO és memória alapján változnak. A hardveres erőforrások gondolkodása és kezelése helyett a kérések egysége (RU) egyetlen mértékként használható a különböző adatbázis-műveletek végrehajtásához szükséges erőforrások esetében. Ez a cikk azt ismerteti, hogyan értékelhető ki a lekérdezésre vonatkozó kérési egység, és hogyan optimalizálható a lekérdezés a teljesítmény és a költség tekintetében. 
+Az Azure Cosmos DB többféle olyan adatbázis-műveletet biztosít, amelyek a tárolókban lévő elemekre vonatkoznak, beleértve a relációs és hierarchikus lekérdezéseket is. Az egyes ilyen műveletekhez kapcsolódó költségek a művelet végrehajtásához szükséges CPU, IO és memória függvényében változnak. A hardveres erőforrások használata és kezelése helyett a kérelemegységet tekintheti a kérelmet kiszolgáló különböző adatbázis-műveletek erőforrásaira vonatkozó egyetlen mértékegységnek. Ez a cikk azt írja le, hogyan értékelhetők ki egy lekérdezés kérelemegység-költségei, és hogyan optimalizálható a lekérdezés a teljesítmény és a költség tekintetében. 
 
 A Azure Cosmos DB lekérdezéseit általában a leggyorsabb/leghatékonyabb értékről lassabb/kevésbé hatékonyra, a következőképpen kell megrendelni az átviteli sebesség tekintetében:  
 

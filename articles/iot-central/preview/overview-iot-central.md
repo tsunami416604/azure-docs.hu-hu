@@ -3,18 +3,18 @@ title: Mi az az Azure IoT Central? | Microsoft Docs
 description: Az Azure IoT Central egy IoT-alkalmazási platform, amely leegyszerűsíti a IoT-megoldások létrehozását, és segít csökkenteni a IoT-kezelési műveletek terheit és költségeit, valamint a fejlesztést. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434853"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Mi az Azure IoT Central (előzetes verziójú funkciók)?
 
@@ -41,15 +41,11 @@ Ez a cikk IoT Central:
 > [!Note]
 > Ezek az ismert problémák csak a IoT Central előzetes verzió alkalmazásaira vonatkoznak.
 
-- A szabályok nem támogatják az összes műveletet (csak e-mail-cím).
-- Összetett típusok esetén – a szabályok, az elemzések és az eszközök csoportjai nem támogatottak.
 - A folyamatos adatexportálás nem támogatja a Avro formátumot (inkompatibilitás).
-- A szimulált eszközök nem támogatják az összes összetett típust.
 - A GeoJSON jelenleg nem támogatott.
 - A Térkép csempe jelenleg nem támogatott.
 - A feladatok nem támogatják az összetett típusokat.
 - A tömb sémájának típusai nem támogatottak.
-- Az alkalmazás sablonjának exportálása és az alkalmazás másolása nem támogatott.
 - A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
 - Ez csak a Egyesült Államok és Európa helyein érhető el.
 - Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
@@ -115,7 +111,7 @@ Miután a szerkesztő meghatározta, hogy az alkalmazáshoz milyen típusú eszk
 
 További információkért olvassa el a következő blogbejegyzést: [Milyen előnyökkel jár, ha az Azure IoT SDK-kat használja, és milyen buktatókkal, ha nem?](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)
 
-### <a name="azure-iot-edge-devices"></a>Az Azure IoT Edge-eszközök
+### <a name="azure-iot-edge-devices"></a>Eszközök Azure IoT Edge
 
 Továbbá az [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks)-k használatával létrehozott eszközökhöz [Azure IoT Edge eszközöket](../../iot-edge/about-iot-edge.md) is csatlakozhat egy IoT Central alkalmazáshoz. Azure IoT Edge lehetővé teszi, hogy közvetlenül a IoT Central által felügyelt IoT-eszközökön futtassa a felhőalapú intelligenciát és az egyéni logikát. A IoT Edge Runtime a következőket teszi lehetővé:
 
@@ -149,7 +145,7 @@ Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással l
 
 Most, hogy áttekintette a IoT Centralt, a következő lépések javasoltak:
 
-- Ismerje meg a [IoT Central és az Azure IoT megoldás-gyorsító](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)közötti különbségeket.
+- Ismerje meg az elérhető [Azure-technológiákat és-szolgáltatásokat a IoT-megoldások létrehozásához](../../iot-fundamentals/iot-services-and-technologies.md).
 - Ismerkedés az [Azure IoT Central kezelőfelületével](overview-iot-central-tour.md).
 - [Egy Azure IoT Central-alkalmazás létrehozásának](quick-deploy-iot-central.md) első lépései.
 - További információ a [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)

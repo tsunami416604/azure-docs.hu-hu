@@ -1,5 +1,6 @@
 ---
-title: Az Azure API Management használata a Virtual Networkban a Application Gateway használatával | Microsoft Docs
+title: A Virtual Network API Management használata a Application Gateway
+titleSuffix: Azure API Management
 description: Megtudhatja, hogyan állíthatja be és konfigurálhatja az Azure API Management belső Virtual Networkekben a Application Gateway (WAF) felülettel
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442706"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
 

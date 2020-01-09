@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434738"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>A bérlős kiépítése 
 
@@ -191,7 +191,6 @@ A könnyebb tisztítás érdekében ezek a virtuális gépek ugyanahhoz az erőf
 
 Ebben a szakaszban az Azure IoT C SDK-t minden egyes virtuális gépen klónozotta. Az SDK tartalmaz egy mintát, amely szimulálja a bérlő eszközének kiépítését az egyes régiókban.
 
-
 1. Minden virtuális gép esetében telepítse a következő parancsokat a **CMAK**, a **g + +** , a **GCC**és a [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) használatával:
 
     ```bash
@@ -199,12 +198,14 @@ Ebben a szakaszban az Azure IoT C SDK-t minden egyes virtuális gépen klónozot
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. Keresse meg az SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
-1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) klónozása mindkét virtuális gépen.
+1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) klónozása mindkét virtuális gépen.  Használja az előző lépésben megtalált címkét a `-b` paraméter értékeként:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Ez a művelet várhatóan több percig is eltarthat.
@@ -409,7 +410,7 @@ Az itt leírt lépések azt feltételezik, hogy a cikkben szereplő összes erő
 
 Az erőforráscsoport törlése név szerint:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com), és kattintson az **Erőforráscsoportok** elemre.
 
 2. A **szűrés név szerint...** szövegmezőbe írja be az erőforrásokat tartalmazó erőforráscsoport nevét, a **contoso-US-Resource-Group**nevet. 
 

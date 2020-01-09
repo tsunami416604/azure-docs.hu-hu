@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428392"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
 
@@ -31,7 +31,7 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
 * A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox-böngészőjében kapcsolja be a `gfx.xrender.enabled` jelzőt `about:config`. [Részletek](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Érdemes megfontolni a `False``mousewheel.enable_pixel_scrolling` beállítását is. [Részletek](https://support.mozilla.org/questions/981140).
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox-böngészőjében kapcsolja be a `gfx.xrender.enabled` jelzőt `about:config`. [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Érdemes megfontolni a `False``mousewheel.enable_pixel_scrolling` beállítását is. [További információk](https://support.mozilla.org/questions/981140).
 * **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
@@ -174,17 +174,17 @@ Próbáljon ki egy véletlenszerű erdő modellt is. A véletlenszerű erdők sz
 
 ## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Modell üzembe helyezése Azure Machine Learning Studio (klasszikus)
 
-A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amely megkönnyíti a prediktív elemzési modellek kiépítését és üzembe helyezését. A Azure Machine Learning Studio klasszikus verziójának szép funkciója, hogy bármilyen R-funkciót webszolgáltatásként tehet közzé. A Azure Machine Learning Studio R-csomag megkönnyíti az üzembe helyezést az R-munkamenetből, közvetlenül a DSVM.
+A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amely megkönnyíti a prediktív elemzési modellek kiépítését és üzembe helyezését. Azure Machine Learning Studio (klasszikus) szép funkciója, hogy bármely R-funkciót webszolgáltatásként tehet közzé. A Azure Machine Learning Studio (klasszikus) R csomag egyszerűvé teszi az üzembe helyezést az R-munkamenetből a DSVM.
 
 Az előző szakaszban szereplő döntési fakód üzembe helyezéséhez jelentkezzen be Azure Machine Learning Studio (klasszikus) webhelyre. A bejelentkezéshez szüksége lesz a munkaterület-AZONOSÍTÓra és egy engedélyezési jogkivonatra. Ezeknek az értékeknek a megkereséséhez és a Azure Machine Learning változók inicializálásához hajtsa végre a következő lépéseket:
 
 1. A bal oldali menüben válassza a **Beállítások**lehetőséget. Jegyezze fel a **munkaterület azonosítójának**értékét.
 
-   ![A Azure Machine Learning Studio munkaterület azonosítója](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![A Azure Machine Learning Studio (klasszikus) munkaterület azonosítója](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 1. Válassza ki az **engedélyezési jogkivonatok** lapot. Jegyezze fel az **elsődleges engedélyezési jogkivonat**értékét.
 
-   ![A Azure Machine Learning Studio elsődleges engedélyezési jogkivonat](./media/linux-dsvm-walkthrough/workspace-token.png)
+   ![A Azure Machine Learning Studio (klasszikus) elsődleges engedélyezési token](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Töltse be a **AzureML** csomagot, majd állítsa be a változók értékeit a token és a munkaterület azonosítójával az R-munkamenetben a DSVM:
 
         if(!require("AzureML")) install.packages("AzureML")
@@ -241,14 +241,14 @@ A keretrendszeren alapuló minták mellett átfogó útmutatók is elérhetők. 
 
 A többi szakaszban bemutatjuk, hogyan használhatja a Linux DSVM telepített eszközöket. A következő eszközöket tárgyaljuk:
 
-* XGBoost
+* Xgboost
 * Python
 * JupyterHub
-* Csörgő
+* Rattle
 * PostgreSQL és mókus SQL
 * Adattárház SQL Server
 
-### <a name="xgboost"></a>XGBoost
+### <a name="xgboost"></a>Xgboost
 
 A [XGBoost](https://xgboost.readthedocs.org/en/latest/) gyorsan és precízen növelt faszerkezetes megvalósítást biztosít.
 
@@ -350,7 +350,7 @@ Több minta jegyzetfüzet már telepítve van a DSVM:
 > [!NOTE]
 > A Júlia nyelve a Linux DSVM parancssorában is elérhető.
 
-### <a name="rattle"></a>Csörgő
+### <a name="rattle"></a>Rattle
 
 A [csörgő](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *a*analitikus *t*OOL *t*o *L*keres *E*asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő: az R adatbányászati grafikus felhasználói felülete](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
 
@@ -496,7 +496,7 @@ A helyi kiszolgálóhoz való kapcsolódás beállítása:
 1. Az új alias létrehozásához kattintson a **+** gombra. Az új alias neve mezőbe írja be a **Levélszemét-adatbázist**. 
 1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
 1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
-1. Adja meg a felhasználónevét és a jelszavát.
+1. Adja meg felhasználónevét és jelszavát.
 1. Kattintson az **OK** gombra.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
 1. Kattintson a **Csatlakozás** gombra.

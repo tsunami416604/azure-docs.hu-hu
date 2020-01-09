@@ -1,6 +1,6 @@
 ---
-title: Betanítási útmutató a Alkalmazásregisztrációk (örökölt) rendszerről az új Alkalmazásregisztrációk-élményre való áttéréshez Azure Portal
-description: Bevezetés az új alkalmazás regisztrációs felületére a Azure Portal
+title: Új alkalmazásregisztráció az Azure Portalon – képzési útmutató
+description: Bevezeti az új Azure Portal alkalmazás regisztrációs élményét
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844260"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424660"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Váltás az Appok regisztrálása felületről (régi) az új Alkalmazásregisztrációk felületre az Azure Portalon
+# <a name="new-azure-portal-app-registration-training-guide"></a>Új alkalmazásregisztráció az Azure Portalon – képzési útmutató
 
 Számos újdonságot talál a Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületén. Ha már ismeri a Azure Portal Alkalmazásregisztrációk (örökölt) felületét, az új felület használatának megkezdéséhez használja ezt a tanítási útmutatót.
 

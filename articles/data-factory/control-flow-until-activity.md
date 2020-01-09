@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440372"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>A tevékenység Azure Data Factory
 A amíg tevékenység ugyanazokat a funkciókat biztosítja, mint a ciklusok közötti hurkos struktúra a programozási nyelvek esetében. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
@@ -51,13 +51,13 @@ A amíg tevékenység ugyanazokat a funkciókat biztosítja, mint a ciklusok kö
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Kötelező
+Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 név | A `Until` tevékenység neve. | Sztring | Igen
 type | **Csak**a értékre kell beállítani. | Sztring | Igen
 kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
-timeout | A do-ig hurkos időtúllépés a megadott idő után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
-Tevékenységek | A kifejezésnek a `true`ba való kiértékelése után végrehajtott tevékenységek összessége. | Tevékenységek tömbje. |  Igen
+timeout | A do-ig hurkos időtúllépés a megadott idő után. | sztring elemet. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
+Activities (Tevékenységek) | A kifejezésnek a `true`ba való kiértékelése után végrehajtott tevékenységek összessége. | Tevékenységek tömbje. |  Igen
 
 ## <a name="example-1"></a>1\. példa
 
@@ -199,10 +199,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -288,7 +285,7 @@ while ($True) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)

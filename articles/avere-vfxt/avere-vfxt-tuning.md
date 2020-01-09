@@ -6,17 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 274a20f84b978b38a284d1feb315d6621b7d3ccd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414330"
 ---
 # <a name="cluster-tuning"></a>Fürt finomhangolása
 
-
-A legtöbb vFXT-fürt kihasználhatja a testreszabott teljesítmény-beállításokat. Ezek a beállítások segítenek abban, hogy a fürt a legjobban működjön az adott munkafolyamattal, adatkészlettel és eszközökkel. 
+A legtöbb vFXT-fürt kihasználhatja a testreszabott teljesítmény-beállításokat. Ezek a beállítások segítenek abban, hogy a fürt a legjobban működjön az adott munkafolyamattal, adatkészlettel és eszközökkel.
 
 Ezt a testreszabást a támogatási szakembernek kell elvégeznie, mert általában olyan funkciókat konfigurál, amelyek nem érhetők el a avere Vezérlőpultján.
 
@@ -34,9 +33,9 @@ Ez a szakasz az egyéni hangolás néhány lehetséges módját ismerteti.
 
 Ezeket a módosításokat az adatkészlet tulajdonságai vagy a munkafolyamat stílusa alapján lehet használni.
 
-* Ha a számítási feladat írási nehéz, növelje az írási gyorsítótár méretét a 20%-os alapértéktől. 
-* Ha az adatkészlet sok kisméretű fájlt foglal magában, növelje a fürt gyorsítótára fájlméretének számát. 
-* Ha a munka két adattár közötti másolást vagy áthelyezést foglalja magában, módosítsa az adatok áthelyezéséhez használt szálak számát: 
+* Ha a számítási feladat írási nehéz, növelje az írási gyorsítótár méretét a 20%-os alapértéktől.
+* Ha az adatkészlet sok kisméretű fájlt foglal magában, növelje a fürt gyorsítótára fájlméretének számát.
+* Ha a munka két adattár közötti másolást vagy áthelyezést foglalja magában, módosítsa az adatok áthelyezéséhez használt szálak számát:
   * A sebesség növeléséhez növelheti a használt párhuzamos szálak számát.
   * Ha a háttérbeli tároló kötete túlterhelt, előfordulhat, hogy csökkentenie kell a használt párhuzamos szálak számát.
 * Ha a fürt Nfsv4 névleképezője ACL-eket használó központi Filer adatait gyorsítótárazza, engedélyezze a hozzáférési mód gyorsítótárazását az egyes ügyfelek számára a fájlok engedélyezésének egyszerűsítése érdekében.
@@ -58,4 +57,4 @@ A felhőalapú burst-forgatókönyv vagy a hibrid tárolás WAN-optimalizálási
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Az Azure-hoz készült avere-vFXT optimalizálásának elősegítése
 
-A [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md) című témakörben ismertetett eljárással vegye fel a kapcsolatot a támogatási munkatársakkal ezekkel az optimalizálásokkal kapcsolatban. 
+A [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md) című témakörben ismertetett eljárással vegye fel a kapcsolatot a támogatási munkatársakkal ezekkel az optimalizálásokkal kapcsolatban.

@@ -1,7 +1,7 @@
 ---
 title: A felhasználó viselkedésének nyomon követése Application Insights
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan engedélyezheti az eseménynaplókat a Application Insights Azure AD B2C felhasználói úton egyéni szabályzatok használatával (előzetes verzió).
+description: Megtudhatja, hogyan engedélyezheti az eseménynaplókat a Application Insights Azure AD B2C felhasználói úton egyéni házirendek használatával.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367960"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>A felhasználó viselkedésének nyomon követése Azure Active Directory B2C a Application Insights használatával
 
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) és az Azure Application Insights egy�
 
 A Azure AD B2C identitás-keretrendszer része a szolgáltató `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Az eseményre vonatkozó adatokat közvetlenül az Application Insights számára küldi el a Azure AD B2C számára megadott rendszerállapot-kulcs használatával.
 
-A technikai profil ezt a szolgáltatót használja a Azure AD B2C eseményének definiálásához. A profil megadja az esemény nevét, a rögzített jogcímeket és a kialakítási kulcsot. Egy esemény közzétételéhez a technikai profilt `orchestration step`ként, vagy egyéni felhasználói úton `validation technical profile`ként adja hozzá a rendszer.
+A technikai profil ezt a szolgáltatót használja a Azure AD B2C eseményének definiálásához. A profil megadja az esemény nevét, a rögzített jogcímeket és a kialakítási kulcsot. Egy esemény közzétételéhez a technikai profilt a rendszer `orchestration step`ként adja hozzá egy egyéni felhasználói útvonalon.
 
 A Application Insights az eseményeket egy korrelációs azonosító használatával egyesítheti egy felhasználói munkamenet rögzítéséhez. A Application Insights másodpercek alatt elérhetővé teszi az eseményt és a munkamenetet, és számos vizualizációs, exportálási és analitikai eszközt megjelenít.
 
@@ -48,11 +48,11 @@ Ha a Azure AD B2C használatával Application Insightst használ, mindössze ann
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a bérlő nem az Ön Azure AD B2C bérlője.
 3. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában, majd keresse meg és válassza a **Application Insights**lehetőséget.
-4. Kattintson a  **Create** (Létrehozás) gombra.
+4. Kattintson a **Create** (Létrehozás) gombra.
 5. Adja meg az erőforrás **nevét** .
 6. Az **alkalmazás típusa**mezőben válassza a **ASP.net webalkalmazás**lehetőséget.
 7. Az **erőforráscsoport**területen válasszon egy meglévő csoportot, vagy adjon meg egy új csoport nevét.
-8. Kattintson a  **Create** (Létrehozás) gombra.
+8. Kattintson a **Create** (Létrehozás) gombra.
 4. A Application Insights erőforrás létrehozása után nyissa meg, bontsa ki az **Essentials**csomópontot, és másolja a kialakítási kulcsot.
 
 ![Application Insights áttekintése és kialakítási kulcsa](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)

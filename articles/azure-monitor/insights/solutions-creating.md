@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402047"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Felügyeleti megoldás kialakítása és létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -60,7 +60,7 @@ A Log Analytics nézetei a Log Analytics adattárból származó adatok megjelen
 
 
 ## <a name="create-solution-file"></a>Megoldás fájljának létrehozása
-Miután konfigurálta és tesztelte a megoldás részét képező összetevőket, létrehozhat [egy megoldási fájlt]( solutions-solution-file.md).  A megoldás-összetevőket egy [Resource Manager-sablonban](../../azure-resource-manager/resource-group-authoring-templates.md) kell megvalósítani, amely tartalmaz egy [megoldási erőforrást]( solutions-solution-file.md#solution-resource) , amely a fájlban található többi erőforrással való kapcsolattal rendelkezik.  
+Miután konfigurálta és tesztelte a megoldás részét képező összetevőket, létrehozhat [egy megoldási fájlt]( solutions-solution-file.md).  A megoldás-összetevőket egy [Resource Manager-sablonban](../../azure-resource-manager/templates/template-syntax.md) kell megvalósítani, amely tartalmaz egy [megoldási erőforrást]( solutions-solution-file.md#solution-resource) , amely a fájlban található többi erőforrással való kapcsolattal rendelkezik.  
 
 
 ## <a name="test-your-solution"></a>A megoldás tesztelése
@@ -76,5 +76,5 @@ Miután elvégezte és tesztelte a megoldást, az alábbi forrásokon keresztül
 
 ## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [hozhat létre megoldást]( solutions-solution-file.md) a felügyeleti megoldáshoz.
-* A [Azure Resource Manager-sablonok létrehozási](../../azure-resource-manager/resource-group-authoring-templates.md)részleteinek megismerése.
+* A [Azure Resource Manager-sablonok létrehozási](../../azure-resource-manager/templates/template-syntax.md)részleteinek megismerése.
 * Más Resource Manager-sablonokból származó mintákhoz is kereshet Azure-beli [Gyorsindítás sablonokat](https://azure.microsoft.com/documentation/templates) .

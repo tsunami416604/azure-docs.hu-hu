@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
-description: Útmutatást nyújt a mobileszközök gyors beállításához Application Insights és App Center
+title: Mobil alkalmazások figyelése Azure Monitor Application Insights
+description: Útmutatást nyújt a mobileszközök gyors beállításához Azure Monitor Application Insights és App Center
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: fe514e7a05701901759ab5453e1c1d02870da91d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398889"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -82,7 +82,7 @@ Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket a
      | **Erőforráscsoport**     | Egy új erőforráscsoport, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben létrehozza az új Application Insights-erőforrást |
    | **Hely** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-3. Kattintson a  **Create** (Létrehozás) gombra.
+3. Kattintson a **Create** (Létrehozás) gombra.
 
 Ha az alkalmazás több platformot (iOS, Android stb.) támogat, érdemes minden platform számára külön Application Insights-erőforrást létrehozni.
 

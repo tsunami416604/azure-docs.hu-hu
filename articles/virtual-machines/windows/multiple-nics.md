@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358275"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows rendszerű virtuális gép létrehozása és kezelése
 Az Azure-ban a virtuális gépek (VM-EK) több virtuális hálózati adapterrel (NIC) is rendelkezhetnek hozzájuk. Gyakori forgatókönyv, hogy különböző alhálózatokat kell létrehozni az előtér-és háttér-kapcsolathoz. Több hálózati adaptert is hozzárendelhet egy virtuális GÉPHEZ több alhálózathoz, de ezek az alhálózatok mind ugyanabban a virtuális hálózatban (vNet) találhatók. Ez a cikk részletesen ismerteti, hogyan hozható létre több hálózati adapterrel rendelkező virtuális gép. Azt is megtudhatja, hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni.
@@ -218,7 +218,7 @@ Ha egy virtuális hálózati adaptert szeretne eltávolítani egy meglévő virt
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Több hálózati adapter létrehozása sablonokkal
-Azure Resource Manager-sablonok segítségével az erőforrások több példánya is létrehozható az üzembe helyezés során, például több hálózati adapter létrehozása. A Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környezet definiálásához. További információ: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md). A *Másolás* lehetőséggel megadhatja a létrehozandó példányok számát:
+Azure Resource Manager-sablonok segítségével az erőforrások több példánya is létrehozható az üzembe helyezés során, például több hálózati adapter létrehozása. A Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környezet definiálásához. További információ: [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md). A *Másolás* lehetőséggel megadhatja a létrehozandó példányok számát:
 
 ```json
 "copy": {

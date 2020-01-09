@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385556"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
 A Cloud Shell az Azure file Storage-t használja a fájlok munkamenetek közötti megőrzéséhez. A kezdeti indításkor Cloud Shell egy új vagy meglévő fájlmegosztás hozzárendelését kéri a fájlok munkamenetek közötti megőrzéséhez.
 
 > [!NOTE]
 > A bash és a PowerShell ugyanazt a fájlmegosztást használja. Cloud Shell-ben csak egy fájlmegosztás társítható az automatikus csatlakoztatási szolgáltatáshoz.
+
+> [!NOTE]
+> A Cloud Shell Storage-fiókok nem támogatják az Azure Storage-tűzfalat.
 
 ## <a name="create-new-storage"></a>Új tároló létrehozása
 
@@ -63,9 +66,9 @@ A társított Azure Storage-fiókoknak ugyanabban a régióban kell lenniük, mi
 
 Cloud Shell gépek léteznek a következő régiókban:
 
-|Terület|Régió|
+|Terület|Region (Régió)|
 |---|---|
-|Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
+|Észak-, Dél- és Közép-Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
 |Európa|Észak-Európa, Nyugat-Európa|
 |Ázsia és a Csendes-óceáni térség|Közép-India, Délkelet-Ázsia|
 

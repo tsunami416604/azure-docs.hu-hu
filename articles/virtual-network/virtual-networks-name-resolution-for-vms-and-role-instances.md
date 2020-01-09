@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368035"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Az Azure Virtual Networks erőforrásainak névfeloldása
 
@@ -58,7 +58,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 ### <a name="features"></a>Jellemzők
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
-* Egyszerű használat. Nincs szükség konfigurációra.
+* Egyszerű használat. Nem igényel konfigurálást.
 * Magas rendelkezésre állás. A saját DNS-kiszolgálók fürtjének létrehozása és kezelése nem szükséges.
 * A szolgáltatást a saját DNS-kiszolgálóival együtt használhatja a helyszíni és az Azure-beli állomásnevek feloldásához.
 * A névfeloldást a virtuális gépek és a szerepkör-példányok között lehet használni ugyanazon a felhőalapú szolgáltatáson belül anélkül, hogy teljes tartománynevet kellene használnia.
@@ -193,22 +193,16 @@ Ha saját DNS-kiszolgálókat használ, az Azure lehetővé teszi, hogy virtuál
 
 > [!NOTE]
 > A hálózati kapcsolatok tulajdonságait, például a DNS-kiszolgáló IP-címeit nem szabad közvetlenül a virtuális gépeken belül szerkeszteni. Ennek az az oka, hogy a szolgáltatás meggyógyítása során előfordulhat, hogy a virtuális hálózati adapter helyére kerül. Ez a Windows és a Linux rendszerű virtuális gépekre is vonatkozik.
->
->
 
 A Azure Resource Manager üzemi modell használatakor megadhatja a virtuális hálózathoz és a hálózati adapterhez tartozó DNS-kiszolgálókat. Részletekért lásd: [virtuális hálózat kezelése](manage-virtual-network.md) és [hálózati adapterek kezelése](virtual-network-network-interface.md).
 
 > [!NOTE]
 > Ha egyéni DNS-kiszolgálót választ a virtuális hálózatához, meg kell adnia legalább egy DNS-kiszolgáló IP-címét; Ellenkező esetben a virtuális hálózat figyelmen kívül hagyja a konfigurációt, és az Azure által biztosított DNS-t használja helyette.
->
->
 
 A klasszikus üzemi modell használatakor megadhatja a virtuális hálózat DNS-kiszolgálóit a Azure Portal vagy a [hálózati konfigurációs fájlban](https://msdn.microsoft.com/library/azure/jj157100). A Cloud Services esetében a DNS-kiszolgálókat a [szolgáltatás konfigurációs fájljával](https://msdn.microsoft.com/library/azure/ee758710) vagy a PowerShell használatával adhatja meg a [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Ha módosítja egy olyan virtuális hálózat vagy virtuális gép DNS-beállításait, amely már telepítve van, az új DNS-beállítások érvénybe léptetéséhez a DHCP-bérlet megújítását kell végrehajtania a virtuális hálózatban lévő összes érintett virtuális gépen. A Windows operációs rendszert futtató virtuális gépek esetében a `ipconfig /renew` közvetlenül a virtuális gépen való beírásával teheti meg. A lépések az operációs rendszertől függően változnak. Tekintse meg az operációs rendszer típusának megfelelő dokumentációt. 
->
->
+> Ha módosítja egy olyan virtuális hálózat vagy virtuális gép DNS-beállításait, amely már telepítve van, az új DNS-beállítások érvénybe léptetéséhez a DHCP-bérlet megújítását kell végrehajtania a virtuális hálózatban lévő összes érintett virtuális gépen. A Windows operációs rendszert futtató virtuális gépek esetében a `ipconfig /renew` közvetlenül a virtuális gépen való beírásával teheti meg. A lépések az operációs rendszertől függően változnak. Tekintse meg az operációs rendszer típusának megfelelő dokumentációt.
 
 ## <a name="next-steps"></a>Következő lépések
 

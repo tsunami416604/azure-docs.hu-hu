@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és a Python-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
+description: Ismerkedjen meg a Bing Spell Check REST API használatával a helyesírás és a nyelvtan ellenőrzéséhez ezzel a rövid útmutatóval.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 9a75148ab1ca1dae0acb5af8128fe1220fbbe8b3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448454"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a Pythonban
 
@@ -36,7 +36,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
    import json
    ```
 
-2. Hozzon létre változókat a helyesírás-ellenőrzéshez használni kívánt szöveghez, az előfizetési kulcshoz és a Bing Spell Check végponthoz.
+2. Hozzon létre változókat a helyesírás-ellenőrzéshez használni kívánt szöveghez, az előfizetési kulcshoz és a Bing Spell Check végponthoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -85,6 +85,15 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     print(json.dumps(json_response, indent=4))
     ```
 
+
+## <a name="run-the-application"></a>Az alkalmazás futtatása
+
+Ha a parancssort használja, futtassa az alábbi parancsot az alkalmazás futtatásához.
+
+```bash
+python <FILE_NAME>.py
+```
+
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
@@ -127,7 +136,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webes alkalmazás létrehozása](../tutorials/spellcheck.md)

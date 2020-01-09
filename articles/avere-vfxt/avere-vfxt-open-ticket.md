@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415107"
 ---
 # <a name="get-help-with-your-system"></a>Segítség kérése a rendszeren
 
@@ -19,15 +19,15 @@ Ha segítségre van szüksége az Azure-hoz készült avere-vFXT, az alábbi mó
 
 * **Avere vFXT-probléma** – a Azure Portal segítségével nyisson meg egy támogatási jegyet az avere-vFXT az [alább](#open-a-support-ticket-for-your-avere-vfxt)leírtak szerint.
 * **Kvóta** – ha kvótával kapcsolatos probléma merül fel, [a kvóta növelését kéri](#request-a-quota-increase)
-* **Dokumentáció és példák** – ha problémák merülnek fel ezzel a dokumentációval vagy példákkal kapcsolatban, görgessen a lap aljára, és használja a **visszajelzés** szakaszt a meglévő problémák megkereséséhez, és szükség esetén új fájl létrehozásához.  
+* **Dokumentáció és példák** – ha problémák merülnek fel ezzel a dokumentációval vagy példákkal kapcsolatban, görgessen a lap aljára, és használja a **visszajelzés** szakaszt a meglévő problémák megkereséséhez, és szükség esetén új fájl létrehozásához.
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Támogatási jegy megnyitása a avere-vFXT
 
-Ha a avere vFXT telepítése vagy használata során problémák merülnek fel, kérjen segítséget a Azure Portal.  
+Ha a avere vFXT telepítése vagy használata során problémák merülnek fel, kérjen segítséget a Azure Portal.
 
-Kövesse az alábbi lépéseket annak biztosításához, hogy a támogatási jegye a fürt egy erőforrásával legyen címkézve. A jegy címkézése segít a megfelelő támogatási erőforráshoz való átirányításban. 
+Kövesse az alábbi lépéseket annak biztosításához, hogy a támogatási jegye a fürt egy erőforrásával legyen címkézve. A jegy címkézése segít a megfelelő támogatási erőforráshoz való átirányításban.
 
-1. [@No__t – 1](https://portal.azure.com)területen válassza az **erőforráscsoportok**lehetőséget.
+1. [https://portal.azure.com](https://portal.azure.com)válassza az **erőforráscsoportok**lehetőséget.
 
    ![képernyőkép Azure Portal bal oldali menü "erőforráscsoportok" körben](media/avere-vfxt-ticket-rg.png)
 
@@ -43,7 +43,7 @@ Kövesse az alábbi lépéseket annak biztosításához, hogy a támogatási jeg
 
     ![képernyőkép a Azure Portal új támogatási kérés képernyőjéről, az "alapismeretek" fejléctel és a "szolgáltatás" elem köré. A "minden szolgáltatás" gomb van kiválasztva, és a legördülő menü mező értéke "avere vFXT".](media/avere-vfxt-ticket-service.png)
 
-1. A második oldalon válassza ki a probléma típusát és kategóriáját, amely leginkább megfelel a problémának. Adjon hozzá egy rövid címet és egy leírást, amely tartalmazza a probléma előfordulásának időpontját. 
+1. A második oldalon válassza ki a probléma típusát és kategóriáját, amely leginkább megfelel a problémának. Adjon hozzá egy rövid címet és egy leírást, amely tartalmazza a probléma előfordulásának időpontját.
 
    ![képernyőkép az új támogatási kérés képernyőről a "probléma" fejléctel, amely sok olyan mezőt tartalmaz, amelyeket el kell végezni](media/avere-vfxt-ticket-problem.png)
 

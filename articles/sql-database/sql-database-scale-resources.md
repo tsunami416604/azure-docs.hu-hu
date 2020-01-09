@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462611"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Adatbázis-erőforrások dinamikus méretezése minimális állásidővel
 
@@ -62,12 +62,12 @@ A vertikális fel-vagy leskálázási műveletek kezdeményezése bármely aroma
 
 ## <a name="alternative-scale-methods"></a>Alternatív méretezési módszerek
 
-Az erőforrások méretezése a legegyszerűbb és a leghatékonyabb módszer az adatbázis teljesítményének javítására az adatbázis vagy az alkalmazás kódjának módosítása nélkül. Bizonyos esetekben a legmagasabb szintű szolgáltatási szintek, a számítási méretek és a teljesítmény-optimalizálás nem kezelheti a munkaterhelést sikeres és költséghatékony módon. Ebben az esetben ezekkel a további beállításokkal méretezheti az adatbázist:
+Az erőforrások méretezése a legegyszerűbb és a leghatékonyabb módszer az adatbázis teljesítményének javítására az adatbázis vagy az alkalmazás kódjának módosítása nélkül. Bizonyos esetekben a legmagasabb szintű szolgáltatási szintek, a számítási méretek és a teljesítmény-optimalizálási feladatok nem kezelhetik a munkaterhelést sikeres és költséghatékony módon. Ebben az esetben ezekkel a további beállításokkal méretezheti az adatbázist:
 
-- Az [olvasási felskálázás](sql-database-read-scale-out.md) egy olyan szolgáltatás, ahol egy olyan írásvédett replikát kap az adataihoz, ahol a csak olvasható lekérdezéseket, például jelentéseket futtathat. A csak olvasási jogosultsággal rendelkező replikák az elsődleges adatbázis erőforrás-használatának befolyásolása nélkül kezelik az írásvédett munkaterhelést.
+- Az [olvasási felskálázás](sql-database-read-scale-out.md) egy elérhető szolgáltatás, amelyben egy írásvédett replikát kap az adatairól, ahol a csak olvasható lekérdezéseket, például jelentéseket futtathat. A csak olvasási jogosultsággal rendelkező replikák az elsődleges adatbázis erőforrás-használatának befolyásolása nélkül kezelik az írásvédett munkaterhelést.
 - Az [adatbázis](sql-database-elastic-scale-introduction.md) -skálázás olyan technikák összessége, amelyek lehetővé teszik az adatmegosztást több adatbázisra, és egymástól függetlenül méretezheti azokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az adatbázis-teljesítmény javításáról az adatbázis kódjának módosításával: [teljesítményre vonatkozó javaslatok keresése és alkalmazása](sql-database-advisor-portal.md).
 - További információ a beépített adatbázis-intelligenciával való optimalizálásáról: [automatikus hangolás](sql-database-automatic-tuning.md).
