@@ -1,5 +1,6 @@
 ---
-title: Komplex veszélyforrások elleni védelem az Azure Storage-ban
+title: Komplex veszélyforrások elleni védelem konfigurálása
+titleSuffix: Azure Storage
 description: Az Azure Storage komplex veszélyforrások elleni védelmének beállításával észlelheti a fiókban észlelt rendellenességeket, és értesítést kaphat a fiókjához való hozzáférésre vonatkozó lehetséges ártalmas kísérletekről.
 services: storage
 author: tamram
@@ -8,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457413"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem az Azure Storage-ban
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
 Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi, hogy biztonsági szakértő vagy biztonsági figyelő rendszerek kezelése nélkül foglalkozzon a fenyegetésekkel.
 
@@ -54,7 +55,7 @@ Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyfo
 1. Az **árképzési rétegek kiválasztása erőforrástípus szerint** szakaszban, a Storage- **fiókok** sorban kattintson az **engedélyezve** vagy a **Letiltva**lehetőségre.
 
     ![ATP engedélyezése Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 
@@ -100,7 +101,7 @@ Használja a következő PowerShell-parancsmagokat:
 Ha a tárolási tevékenységek rendellenességeket tapasztalnak, e-mailben értesítést kap a gyanús biztonsági eseményről. Az esemény részletei a következők:
 
 * A rendellenesség természete
-* A Storage-fiók neve
+* A tárfiók neve
 * Az esemény időpontja
 * A tárolási típus
 * A lehetséges okok
@@ -119,7 +120,7 @@ Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági rias
 
 A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. Az Azure Storage-hoz kapcsolódó riasztások listáját a Azure Security Center riasztások [adatszolgáltatásainak veszélyforrások észlelése](../../security-center/security-center-alerts-data-services.md#azure-storage) **című részében** találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
 * További információ a [Azure Security Center](../../security-center/security-center-intro.md)

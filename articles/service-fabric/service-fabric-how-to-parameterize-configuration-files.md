@@ -1,23 +1,16 @@
 ---
-title: Parametrizálja konfigurációs fájlok az Azure Service Fabricban | Microsoft Docs
-description: Ismerje meg, hogyan parametrizálja a konfigurációs fájlok a Service Fabricban.
-documentationcenter: .net
+title: Parametrizálja konfigurációs fájlok az Azure-ban Service Fabric
+description: Megtudhatja, hogyan parametrizálja a konfigurációs fájlokat a Service Fabricban, amely hasznos módszer több környezet kezelésekor.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: dad497978de7187177998524db3b2f2ee448c717
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464783"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644630"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Konfigurációs fájlok parametrizálja Service Fabric
 
@@ -27,7 +20,7 @@ Ez a cikk bemutatja, hogyan parametrizálja egy konfigurációs fájlt a Service
 
 Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalmazás telepítésében található paraméterek használatával.
 
-1. Nyissa meg a  *\<MyService > \PackageRoot\Config\Settings.XML* fájlt a szolgáltatási projektben.
+1. Nyissa meg a *\<MyService > \PackageRoot\Config\Settings.XML* fájlt a szolgáltatási projektben.
 1. A következő XML-kód hozzáadásával állítsa be a konfigurációs paraméter nevét és értékét, például a gyorsítótár méretét 25-re:
 
    ```xml
@@ -37,7 +30,7 @@ Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalm
    ```
 
 1. Mentse és zárja be a fájlt.
-1. Nyissa meg a  *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.XML* fájlt.
+1. Nyissa meg a *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.XML* fájlt.
 1. A ApplicationManifest. xml fájlban deklaráljon egy paramétert és egy alapértelmezett értéket a `Parameters` elemben.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás nevét (például "MyService").
 
    ```xml
@@ -45,7 +38,7 @@ Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalm
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. A ApplicationManifest. xml fájl `ConfigOverrides` `ConfigOverride` szakaszábanadjonhozzáegyésegyelemet,amelyakonfigurációscsomagra,aszakaszraésaparaméterre`ServiceManifestImport` hivatkozik.
+1. A ApplicationManifest. xml fájl `ServiceManifestImport` szakaszában adjon hozzá egy `ConfigOverrides` és `ConfigOverride` elemet, amely a konfigurációs csomagra, a szakaszra és a paraméterre hivatkozik.
 
    ```xml
     <ConfigOverrides>
@@ -64,5 +57,5 @@ Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalm
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Visual Studióban elérhető egyéb alkalmazás-felügyeleti lehetőségekről: [Service Fabric alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

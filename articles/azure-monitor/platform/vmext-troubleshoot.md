@@ -4,15 +4,15 @@ description: Leírja a Windows és a Linux rendszerű Azure virtuális gépek Lo
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 9ec0d5036632c575415a7de19b9ea35eb2a28118
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e0f41529c5daed134c6eb8efb3595e311cf5fee1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363150"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>A Log Analytics virtuálisgép-bővítmény hibáinak elhárítása Azure Monitor
 Ez a cikk segítséget nyújt a Windows-és Linux-alapú virtuális gépek Log Analytics virtuálisgép-bővítményével kapcsolatos hibaelhárítási hibák elhárításához Microsoft Azure rendszeren, és javaslatot tesz a lehetséges megoldásokra.
@@ -20,7 +20,7 @@ Ez a cikk segítséget nyújt a Windows-és Linux-alapú virtuális gépek Log A
 A bővítmény állapotának ellenőrzéséhez hajtsa végre a következő lépéseket a Azure Portal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában írja be a következőt: **Virtual Machines**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **virtuális gépek**lehetőséget.
+2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában írja be a következőt: **Virtual Machines**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Virtuális gépek** lehetőséget.
 3. A virtuális gépek listájában keresse meg és válassza ki azt.
 3. A virtuális gépen kattintson a **bővítmények**lehetőségre.
 4. A listából ellenőrizze, hogy az Log Analytics-bővítmény engedélyezve van-e, vagy sem.  A Linux esetében az ügynök **OMSAgentforLinux** és Windows rendszeren szerepel, az ügynök **MicrosoftMonitoringAgent**néven szerepel.

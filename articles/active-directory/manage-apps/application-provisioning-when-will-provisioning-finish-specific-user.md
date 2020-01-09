@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900408"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681378"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -35,7 +35,7 @@ Amikor először konfigurálja az automatikus kiosztást, az oldal alján talál
 - A jelenleg futó vagy utolsó befejezett kiépítési ciklus típusa (kezdeti vagy növekményes).
 - Egy **folyamatjelző sáv** , amely a befejezett kiépítési ciklus százalékos arányát mutatja. A százalékos arány a kiosztott lapok számát tükrözi. Vegye figyelembe, hogy az egyes lapok több felhasználót vagy csoportot is tartalmazhatnak, így a százalékos arány nem felel meg közvetlenül a felhasználók, csoportok vagy szerepkörök kiépített számával.
 - A **frissítés** gombra kattintva megtarthatja a nézet frissítését.
-- A kiépített **felhasználók** és **csoportok** száma, valamint a létrehozott szerepkörök száma. A kezdeti ciklusban a **felhasználók** száma 1, ha a felhasználó létrehozása vagy frissítése megtörtént, és 1 értéket számít fel a felhasználó törlésekor. Növekményes ciklusban a felhasználói frissítések nem érintik a **felhasználók** darabszámát; a szám csak a felhasználók létrehozásakor vagy törlésekor változik.
+- Az összekötő adattárában lévő **felhasználók** és **csoportok** száma. A darabszám növekszik, amikor egy objektum bekerül a kiépítés hatókörébe. A számláló nem fog lejárni, ha a felhasználó nem törölhető vagy nem törölhető, mert ez nem távolítja el az objektumot az összekötő adattárból. A rendszer a CDS [alaphelyzetbe állítása](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) után újra kiszámításakor az első szinkronizálást. 
 - A **naplók megtekintése** hivatkozás, amely megnyitja az Azure ad-kiépítési naplókat a felhasználói kiépítési szolgáltatás által futtatott összes művelet részleteiről, beleértve az egyes felhasználók kiépítési állapotát is (lásd alább a [kiépítési naplók használata](#use-provisioning-logs-to-check-a-users-provisioning-status) című szakaszt).
 
 A létesítési ciklus befejezése után a **statisztikák a mai napig** szakasz megjeleníti a dátummal kiépített felhasználók és csoportok összesített számát, valamint az utolsó ciklus befejezési dátumát és időtartamát. A **tevékenység azonosítója** egyedileg azonosítja a legutóbbi kiépítési ciklust. A **feladathoz tartozó azonosító** a kiépítési feladathoz tartozó egyedi azonosító, és a bérlőn lévő alkalmazásra vonatkozik.

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 803b1e397efd4a6f9ddaa3bae1d101c8f204e728
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328297"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645803"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
 
@@ -77,8 +77,8 @@ ms.locfileid: "74328297"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide_general.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "74328297"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74328297"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -390,7 +390,7 @@ A funkció részletei a következő cikkben találhatók: [SQL Server adatfájlo
 Az éles rendszerekre vonatkozó javaslat elkerüli ezt a konfigurációt, és nem közvetlenül az Azure-Blobok helyett az Azure Premium Storage VHD-k SQL Server-és naplófájljainak elhelyezését választja.
 
 
-## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 Buffer Pool Extension
+## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 puffer-készlet kiterjesztése
 A SQL Server 2014 egy új funkciót vezetett be, amelyet a rendszer [puffer-készlet bővítménynek](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017)nevez. Ez a funkció kibővíti SQL Server pufferének készletét, amelyet a memóriában tartanak egy második szintű gyorsítótárral, amelyet egy kiszolgáló vagy virtuális gép helyi SSD-je támogat. A puffer-készlet kiterjesztése lehetővé teszi a nagyobb munkakészletek tárolását a memóriában. Az Azure standard Storage-hoz való hozzáféréshez képest az Azure-beli virtuális gépek helyi SSD-készletéből tárolt puffer kiterjesztésére való hozzáférést számos tényező okozza. A puffer-bővítmény az Azure-ba való összehasonlításával Premium Storage az olvasási gyorsítótárat SQL Server adatfájlok esetében ajánlott, nem várható jelentős előny a puffer-bővítmények számára. Ennek oka, hogy a gyorsítótárak (SQL Server a pufferek és a Premium Storage olvasási gyorsítótár) az Azure számítási csomópontjának helyi lemezeit használják.
 
 Az időközben szerzett tapasztalatok az SAP számítási feladattal együtt SQL Server a pufferek készletének bővítményét, és továbbra sem egyértelmű javaslatokat tesznek arra, hogy minden esetben használhatók-e. Az ideális esetben az, hogy az SAP-alkalmazás munkakészlete megfelel a fő memóriának. Az Azure-ban az akár 4 TB-os memóriával rendelkező virtuális gépeket is elérhetővé kell tennie a munkakészletnek a memóriában való megtartásához. Ezért a pufferelési készlet kiterjesztésének használata néhány ritka esetre korlátozódik, és nem lehet általános eset.  
@@ -453,7 +453,7 @@ Mivel az Azure Marketplace-en lévő SQL Server rendszerképek nincsenek beáll�
 
 A folyamat csak néhány percet vesz igénybe. A következő lépések végrehajtásával győződjön meg arról, hogy a lépés a megfelelő eredménnyel zárult-e:
 
-* Nyissa meg az SQL Server Management Studio alkalmazást.
+* Nyissa meg az SQL Server Management Studiót.
 * Nyisson meg egy lekérdezési ablakot.
 * Hajtsa végre a sp_helpsort parancsot a SQL Server Master adatbázisban.
 
@@ -552,7 +552,7 @@ Ebben az útmutatóban számos javaslat található, és azt javasoljuk, hogy az
 1. Használja a legújabb adatbázis-kezelői kiadást, mint például a SQL Server 2017, amely az Azure legtöbb előnyét biztosítja. 
 2. Körültekintően tervezze meg az SAP-rendszerkörnyezetet az Azure-ban az adatfájlok elrendezésének és az Azure-korlátozások kiegyensúlyozásához:
    * Ne legyen túl sok lemeze, de elegendő ahhoz, hogy el tudja érni a szükséges IOPS.
-   * Ha nem használja a Managed Diskst, ne feledje, hogy az Azure Storage-fiókok IOPS is korlátozottak, és a Storage-fiókok az egyes Azure-előfizetéseken belül korlátozottak ([További részletek][azure-subscription-service-limits]). 
+   * Ha nem használja a Managed Diskst, ne feledje, hogy az Azure Storage-fiókok IOPS is korlátozottak, és a Storage-fiókok az egyes Azure-előfizetéseken belül korlátozottak ([További részletek][azure-resource-manager/management/azure-subscription-service-limits]). 
    * Csak a lemezek közötti sáv, ha magasabb átviteli sebességet kell elérnie.
 3. Soha ne telepítsen szoftvert, vagy ne helyezzen olyan fájlokat, amelyek adatmegőrzést igényelnek a D:\ Ez a meghajtó nem állandó, és a meghajtón található összes adat elvész a Windows újraindításakor.
 4. Ne használjon lemezes gyorsítótárazást az Azure standard Storage-hoz.

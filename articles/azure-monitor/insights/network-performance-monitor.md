@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403142"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -37,17 +37,25 @@ További információ a [Network Performance monitor](https://docs.microsoft.com
  
 ## <a name="supported-regions"></a>Támogatott régiók
 A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti kapcsolatot a következő régiók egyikében üzemeltetett munkaterületről képes figyelni:
+* Észak-Európa
 * Nyugat-Európa
+* Közép-Franciaország
+
 * USA nyugati középső régiója
 * USA északi középső régiója
+* USA déli középső régiója
+* USA középső régiója
 * USA keleti régiója
 * USA 2. keleti régiója
+* USA 2. nyugati régiója
 * Kelet-Japán
 * Délkelet-Ázsia
 * Dél-Kelet-Ausztrália
 * Ausztrália középső régiója
 * Ausztrália keleti régiója
 * Dél-Egyesült Királyság
+* Kelet-Ázsia
+* Korea középső régiója
 * Közép-India
 * USA-beli kormányzati Virginia
 * Kína 2. keleti régiója

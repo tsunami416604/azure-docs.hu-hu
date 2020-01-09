@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603838"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531445"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>A Azure Event Gridban lévő eseményforrás
 
@@ -61,7 +61,7 @@ Fizessen elő az egyéni témakörökre, hogy válaszoljon az alkalmazás esemé
 | [Resource Manager-sablon: egyéni témakör és Event Hubs végpont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Resource Manager-sablon, amely létrehoz egy egyéni témakörhöz tartozó előfizetést. Eseményeket küld egy Azure-Event Hubs. |
 | [Esemény sémája](event-schema.md) | Az egyéni események mezőinek megjelenítése. |
 
-## <a name="event-hubs"></a>Event Hubs
+## <a name="event-hubs"></a>Azure Event Hubs-eseményközpontok
 
 Fizessen elő Event Hubs eseményekre, hogy válaszoljanak a rögzítési fájl eseményeire. A Event Hubs az esemény forrásaként vagy eseménykezelőként működhet. Az alábbi cikkek bemutatják, hogyan használhatja a Event Hubs forrásként.
 
@@ -95,7 +95,7 @@ Fizessen elő Key Vault eseményekről, amelyekről értesítést kap, amikor a 
 | [Oktatóanyag: Key Vault események létrehozása és figyelése a Event Grid](../key-vault/event-grid-tutorial.md) | Megtudhatja, hogyan állíthatja be a Key Vault Event Grid értesítéseit. |
 | [Esemény sémája](event-schema-key-vault.md) | Key Vault események mezőinek megjelenítése. |
 
-## <a name="media-services"></a>Media Services
+## <a name="media-services"></a>Médiaszolgáltatások
 
 Előfizetés Media Services eseményekre a feladatok állapotára vonatkozó eseményekre való válaszadáshoz.
 
@@ -119,7 +119,7 @@ Fizessen elő az erőforráscsoport eseményeire, hogy válaszoljon az erőforr�
 | [Resource Manager-sablon: erőforrás-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Feliratkozik az Azure-előfizetésekre vagy-csoportokra vonatkozó eseményekre. Eseményeket küld egy webhooknak. |
 | [Eseményséma](event-schema-resource-groups.md) | Mezők megjelenítése az erőforráscsoport eseményeiben. |
 
-## <a name="service-bus"></a>Service Bus
+## <a name="service-bus"></a>Szolgáltatásbusz
 
 Fizessen elő Service Bus eseményekre, amelyek aktív figyelő nélküli üzenetekre válaszolnak.
 
@@ -129,7 +129,7 @@ Fizessen elő Service Bus eseményekre, amelyek aktív figyelő nélküli üzene
 | [Áttekintés: Azure Service Bus Event Grid Integration](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és a Event Grid integrálásának áttekintése. |
 | [Esemény sémája](event-schema-service-bus.md) | Service Bus események mezőinek megjelenítése. |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Adattárolás
 
 Fizessen elő Blob Storage eseményekre, hogy válaszoljanak a blob által létrehozott és törölt eseményekre.
 
@@ -144,7 +144,7 @@ Fizessen elő Blob Storage eseményekre, hogy válaszoljanak a blob által létr
 | [Áttekintés: a blob Storage eseményeire való reagálás](../storage/blobs/storage-blob-event-overview.md) | A blob Storage Event Grid-val való integrálásának áttekintése. |
 | [Esemény sémája](event-schema-blob-storage.md) | Blob Storage események mezőinek megjelenítése. |
 
-## <a name="maps"></a>Maps
+## <a name="maps"></a>Térképek
 Fizessen elő Azure Maps eseményekre, hogy válaszoljon a geokerítésen eseményekre. Egy alkalmazás például minden alkalommal elküldheti az e-mail-értesítést, amikor egy eszköz belép vagy kilép egy geokerítésen.
 
 |Cím  |Leírás  |
@@ -177,10 +177,10 @@ Feliratkozás Azure Machine Learning munkaterület eseményeire a modell regiszt
 
 | Cím | Leírás |
 | ----- | ----- |
-| [Azure Machine Learning események felhasználása](../machine-learning/service/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
+| [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 | [Azure Machine Learning Azure Event Gridi esemény sémája](event-schema-machine-learning.md) | A Azure Machine Learning események mezőinek megjelenítése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
+* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

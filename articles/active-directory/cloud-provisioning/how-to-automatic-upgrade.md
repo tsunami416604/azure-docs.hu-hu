@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect Cloud kiépítési ügynök: automatikus frissítés | Microsoft Docs'
-description: Ez a témakör a Azure AD Connect Cloud kiépítési ügynök beépített automatikus frissítési funkcióját ismerteti.
+description: Ez a cikk a Azure AD Connect Cloud kiépítési ügynök beépített automatikus frissítési funkcióját ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,35 +15,35 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 193804064fbf6d1abb2ce06df1e923ec709ef6de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d3786386f75f4b85fe89562254eab63471de6cb2
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794457"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549397"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect Cloud kiépítési ügynök: automatikus frissítés
 
-Győződjön meg arról, hogy a Azure AD Connect Cloud kiépítési ügynök telepítése mindig naprakész, és soha nem volt ilyen egyszerű az **automatikus frissítési** funkció. Ez a funkció alapértelmezés szerint engedélyezve van, és nem tiltható le.
+Győződjön meg arról, hogy a Azure Active Directory (Azure AD) a felhőalapú üzembe helyezési ügynök telepítése mindig naprakész, és az automatikus frissítési funkció egyszerű. Ez a funkció alapértelmezés szerint engedélyezve van, és nem tiltható le.
 
-Az ügynök itt van telepítve: **"program FILES\AZURE ad-kapcsolat létesítése Agent\AADConnectProvisioningAgent.exe"**
+Az ügynök itt van telepítve: "program files\Azure AD-kapcsolat létesítése Agent\AADConnectProvisioningAgent.exe"
 
-A verzió ellenőrzéséhez kattintson a jobb gombbal a végrehajtható fájlra, és válassza a tulajdonságok, majd a részletek elemet.
+A verzió ellenőrzéséhez kattintson a jobb gombbal a végrehajtható fájlra, majd válassza a tulajdonságok, majd a részletek elemet.
 
 ![Ügynök fájljának verziója](media/how-to-automatic-upgrade/agent1.png)
 
-Az ügynök-Updater itt van telepítve: **"program FILES\AZURE ad-létesítési ügynök Updater\AzureADConnectAgentUpdater.exe"**
+Az ügynök-Updater itt van telepítve: "program files\Azure AD-létesítési ügynök Updater\AzureADConnectAgentUpdater.exe"
 
-A verzió ellenőrzéséhez kattintson a jobb gombbal a végrehajtható fájlra, és válassza a tulajdonságok, majd a részletek elemet.
+A verzió ellenőrzéséhez kattintson a jobb gombbal a végrehajtható fájlra, majd válassza a tulajdonságok, majd a részletek elemet.
 
 ![Ügynök frissítési verziója](media/how-to-automatic-upgrade/agent2.png)
 
-## <a name="uninstalling-the-agent"></a>Az ügynök eltávolítása
-Az ügynök eltávolításához navigáljon **egy program eltávolításához vagy módosításához** , és távolítsa el a következőket:
+## <a name="uninstall-the-agent"></a>Ügynök eltávolítása
+Az ügynök eltávolításához lépjen az **Eltávolítás vagy a program módosítása** elemre, és távolítsa el a következőket:
 
-- Microsoft Azure AD összekapcsolási ügynök frissítése
-- Microsoft Azure AD kiépítési ügynök összekötése
-- Microsoft Azure AD létesítési ügynök csomagjának összekötése
+- **Microsoft Azure AD összekapcsolási ügynök frissítése**
+- **Microsoft Azure AD kiépítési ügynök összekötése**
+- **Microsoft Azure AD létesítési ügynök csomagjának összekötése**
 
 ![Ügynök eltávolítása](media/how-to-automatic-upgrade/agent3.png)
 

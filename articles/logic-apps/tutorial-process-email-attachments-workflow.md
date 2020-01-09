@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428770"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
 
@@ -57,8 +57,8 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
    | Beállítás | Value (Díj) | Leírás |
    |---------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |  
-   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport*> | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. Ez a példa a "LA-tutorial-RG" protokollt használja. <p>**Megjegyzés:** Az erőforráscsoportok adott régiókon belül léteznek. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. |
-   | **Storage-fiók neve** | <*Azure-Storage-fiók-név*> | A Storage-fiók neve, amelynek 3-24 karakterből kell állnia, és csak kisbetűket és számokat tartalmazhat. Ez a példa a "attachmentstorageacct" kifejezést használja. |
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport*> | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) neve. Ez a példa a "LA-tutorial-RG" protokollt használja. <p>**Megjegyzés:** Az erőforráscsoportok adott régiókon belül léteznek. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. |
+   | **Tárfiók neve** | <*Azure-Storage-fiók-név*> | A Storage-fiók neve, amelynek 3-24 karakterből kell állnia, és csak kisbetűket és számokat tartalmazhat. Ez a példa a "attachmentstorageacct" kifejezést használja. |
    | **Hely** | <*Azure-régió*> | Az a régió, ahol a Storage-fiókkal kapcsolatos információkat tárolhatja. Ez a példa a "West US"-t használja. |
    | **Teljesítmény** | Standard | Ez a beállítás adja meg a támogatott adattípusokat és az adathordozót az adatok tárolásához. Lásd: [A tárfiókok típusai](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Fióktípus** | Általános rendeltetésű | A [tárfiók típusa](../storage/common/storage-introduction.md#types-of-storage-accounts) |
@@ -146,7 +146,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    | **OS** | <*az operációs rendszer*> | Válassza ki azt az operációs rendszert, amely támogatja kedvenc funkciójának programozási nyelvét. Ebben a példában válassza a **Windows**lehetőséget. |
    | **Szolgáltatási csomag** | Használatalapú csomag | Ez a beállítás határozza meg az erőforrások, például a számítási teljesítmény lefoglalásának és méretezésének módját a függvényalkalmazás futtatásához. Lásd a [szolgáltatási csomagok összehasonlítását](../azure-functions/functions-scale.md). |
    | **Hely** | USA nyugati régiója | A korábban is használt régió |
-   | **Futásidejű verem** | Elsődleges nyelv | Válasszon olyan futtatókörnyezetet, amely támogatja kedvenc funkciójának programozási nyelvét. Válassza a .net C# elemet F# és a függvényeket. |
+   | **Futtatókörnyezeti verem** | Elsődleges nyelv | Válasszon olyan futtatókörnyezetet, amely támogatja kedvenc funkciójának programozási nyelvét. Válassza a .net C# elemet F# és a függvényeket. |
    | **Storage** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a Storage-fiók tartalmazza a Function-alkalmazásokat, és eltér a korábban létrehozott Storage-fióktól az e-mail-mellékletek számára. |
    | **Application Insights** | Letiltás | Az alkalmazás figyelésének bekapcsolása a [Application Insightssal](../azure-monitor/app/app-insights-overview.md), de ebben az oktatóanyagban válassza a **Letiltás** > **alkalmaz**lehetőséget. |
    ||||
@@ -177,7 +177,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
 
 1. Miután megnyílik a szerkesztő, a sablonban lévő kód helyére illessze be ezt a mintakódot, amely eltávolítja a HTML-formázást és visszaadja az eredményeket a hívónak:
 
-   ```CSharp
+   ```csharp
    #r "Newtonsoft.Json"
 
    using System.Net;
@@ -600,8 +600,8 @@ Ezután adjon meg egy műveletet, hogy a logikai alkalmazás egy e-mail-üzenete
    | Beállítás | Value (Díj) | Megjegyzések |
    | ------- | ----- | ----- |
    | **Címzett** | <*recipient-email-address*> | Tesztelési célokra használhatja a saját e-mail-címét. |
-   | **Tárgy**  | ```ASAP - Review applicant for position:``` **Tárgy** | Az e-mail tárgya, amelyet használni kíván. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából az **Új e-mail érkezésekor** mellett válassza a **Tárgy** mezőt. |
-   | **Törzs** | ```Please review new applicant:``` <p>```Applicant name:``` **Feladó** <p>```Application file location:``` **Elérési út** <p>```Application email content:``` **Törzs** | Az e-mail szövegtörzsének tartalma. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából válassza az alábbi mezőket: <p>- A **Feladó** mezőt az **Új e-mail érkezésekor** alatt </br>- Az **Elérési út** mezőt a **Blob létrehozása az e-mail törzséhez** alatt </br>- A **Törzs** mezőt a **Call RemoveHTMLFunction to clean email body** (A RemoveHTMLFunction meghívása az e-mail-törzs megtisztításához) alatt |
+   | **Tárgy**  | ```ASAP - Review applicant for position:``` **tárgya** | Az e-mail tárgya, amelyet használni kíván. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából az **Új e-mail érkezésekor** mellett válassza a **Tárgy** mezőt. |
+   | **Törzs** | ```Please review new applicant:``` <p>```Applicant name:``` **innen** : <p>```Application file location:``` **elérési út** <p>```Application email content:``` **törzs** | Az e-mail szövegtörzsének tartalma. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából válassza az alábbi mezőket: <p>- A **Feladó** mezőt az **Új e-mail érkezésekor** alatt </br>- Az **Elérési út** mezőt a **Blob létrehozása az e-mail törzséhez** alatt </br>- A **Törzs** mezőt a **Call RemoveHTMLFunction to clean email body** (A RemoveHTMLFunction meghívása az e-mail-törzs megtisztításához) alatt |
    ||||
 
    > [!NOTE]

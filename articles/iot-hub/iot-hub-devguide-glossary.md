@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457162"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
 Ez a cikk a IoT Hub cikkeiben használt általános kifejezéseket sorolja fel.
@@ -30,7 +30,7 @@ A megoldás háttérbe állítása [automatikus eszköz-konfigurációk](iot-hub
 ## <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 A [klasszikus Azure CLI](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők. A parancssori felület ezen verzióját csak a klasszikus központi telepítésekhez szabad használni.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők.
 
 
@@ -43,14 +43,14 @@ Több nyelven is elérhetők olyan _szolgáltatási SDK_ -k, amelyek lehetővé 
 ## <a name="azure-iot-tools"></a>Azure IoT-eszközök
 Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy platformfüggetlen, nyílt forráskódú Visual Studio Code-bővítmény, amely segít az Azure-IoT hub és-eszközök felügyeletében a vs Code-ban. Az Azure IoT Tools révén a IoT-fejlesztők könnyedén hozhatnak létre IoT-projekteket a VS Code-ban.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portál
 A [Microsoft Azure Portal](https://portal.azure.com) egy központi hely, ahol üzembe helyezheti és kezelheti Azure-erőforrásait. A tartalmat a _pengék_használatával rendezi.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 A [Azure PowerShell](/powershell/azure/overview) parancsmagok gyűjteménye, amelyekkel az Azure a Windows PowerShell segítségével kezelhető. A parancsmagok segítségével az Azure platformon keresztül továbbított megoldásokat és szolgáltatásokat hozhat létre, tesztelheti, üzembe helyezheti és kezelheti.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-A [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival. Egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti a megoldás erőforrásait.
+A [Azure Resource Manager](../azure-resource-manager/management/overview.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival. Egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti a megoldás erőforrásait.
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 A [Service Bus](../service-bus/index.md) felhőalapú kommunikációt tesz lehetővé vállalati üzenetkezeléssel és közvetített kommunikációval, amely segít a helyszíni megoldások felhővel való összekapcsolásában. Egyes IoT Hub oktatóanyagok Service Bus [várólisták](../service-bus-messaging/service-bus-messaging-overview.md)használatát teszik elérhetővé.
@@ -170,7 +170,7 @@ A [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szer
 ## <a name="iot-hub-resource-rest-api"></a>Erőforrás-REST API IoT Hub
 A [IoT hub erőforrás-REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) segítségével kezelheti az [Azure-előfizetéshez](#subscription) tartozó IoT-hubokat olyan műveletek végrehajtásához, mint például a hubok létrehozása, frissítése és törlése.
 
-## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
+## <a name="iot-solution-accelerators"></a>IoT-megoldástámogatók
 Az Azure IoT megoldás-gyorsító csomag több Azure-szolgáltatást is kínál a megoldásokhoz. Ezek a megoldások lehetővé teszik a gyakori IoT-forgatókönyvek teljes körű megvalósításának gyors megkezdését. További információ: [Mi az Azure IoT megoldás-gyorsító?](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli"></a>Az Azure CLI-hez készült IoT-bővítmény 
@@ -193,7 +193,7 @@ Az eszközökhöz hasonlóan a Twin modul egy JSON-dokumentum, amely a modul ál
 ## <a name="mqtt"></a>MQTT
 A [MQTT](https://mqtt.org/) az egyik üzenetküldési protokoll, amelyet a [IoT hub](#iot-hub) támogat az eszközökkel való kommunikációhoz. További információ a IoT Hub által támogatott üzenetküldési protokollokról: [üzenetek küldése és fogadása IoT hub](iot-hub-devguide-messaging.md)használatával.
 
-## <a name="operations-monitoring"></a>Műveletek figyelése
+## <a name="operations-monitoring"></a>Műveletek monitorozása
 A IoT Hub [Operations monitoring](iot-hub-operations-monitoring.md) lehetővé teszi, hogy valós időben figyelje a IoT hub műveleteinek állapotát. [IoT hub](#iot-hub) az eseményeket több különböző kategóriába tartozó műveletben követi nyomon. A feldolgozáshoz egy vagy több kategóriából is küldhet eseményeket IoT Hub végpontra. A hibák figyelése és az adatmintázatok alapján összetettebb feldolgozás is beállítható.
 
 ## <a name="physical-device"></a>Fizikai eszköz
@@ -226,10 +226,10 @@ A IoT hub [útválasztási szabályait](iot-hub-devguide-messages-read-custom.md
 ## <a name="sasl-plain"></a>SASL PLAIN
 SASL PLAIN egy protokoll, amelyet a AMQP protokoll a biztonsági jogkivonatok átvitelére használ.
 
-## <a name="service-rest-api"></a>Szolgáltatás REST API-ja
+## <a name="service-rest-api"></a>Szolgáltatási REST API
 Az eszközök kezeléséhez használhatja a megoldás háttér- [REST API a szolgáltatását](https://docs.microsoft.com/rest/api/iothub/service) . Az API lehetővé teszi az [eszközök Twin](#device-twin) tulajdonságainak lekérését és frissítését, a [közvetlen metódusok](#direct-method)meghívását és a [feladatok](#job)ütemezését. Általában a magasabb szintű [szolgáltatási SDK](#azure-iot-service-sdks) -k egyikét kell használnia, ahogy az a IoT hub oktatóanyagokban is látható.
 
-## <a name="shared-access-signature"></a>Közös hozzáférési aláírás
+## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. Az SAS-hitelesítésnek két összetevője van: egy _közös hozzáférési házirend_ és egy _közös hozzáférési aláírás_ (más néven token). Az eszközök SAS használatával végzik el a hitelesítést egy IoT hub használatával. A [háttérbeli alkalmazások](#back-end-app) az SAS használatával is hitelesítik magukat az IoT hub szolgáltatással szemben lévő végpontokkal. Általában az SAS-tokent a [kapcsolati karakterláncban](#connection-string) adja meg, amelyet az alkalmazás használ a IoT hub-kapcsolat létesítéséhez.
 
 ## <a name="shared-access-policy"></a>Megosztott elérési házirend

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e08fe23f99cbf2fac7fc0528b04360f36d22b875
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448528"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Rövid útmutató: Hírek eredményeinek beolvasása a Bing News Search REST API és go használatával
 
@@ -26,13 +26,13 @@ Ez a rövid útmutató a go nyelvet használja a Bing News Search API meghívás
 * Az eredmények megjelenítéséhez telepítse a go-köp függvénytárat az IT szép nyomtatóhoz
     * A könyvtár telepítése: `$ go get -u https://github.com/davecgh/go-spew`
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Projekt létrehozása és kódtárak importálása
 
 Hozzon létre egy új go-projektet az IDE vagy a szerkesztőben. Ezután importálja `net/http` a kérelmekhez, `ioutil` a válasz olvasásához, és `encoding/json` az eredmények JSON-szövegének kezeléséhez. A go-köp függvénytár a JSON elemzéséhez szükséges. 
 
-```
+```go
 package main
 
 import (
@@ -49,7 +49,7 @@ import (
 
 A `NewsAnswer` struktúra formázza a válaszban megadott adatokat. A válasz JSON többszintű és meglehetősen összetett.  A következő implementáció az alapvető tudnivalókat tartalmazza.
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -87,9 +87,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>A fő függvény deklarálása és a változók megadása  
 
-A következő kód deklarálja a fő függvényt, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából.
+A következő kód deklarálja a fő függvényt, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -110,7 +110,7 @@ func main() {
 
 A lekérdezési karakterlánc és az elérési kulcs fejlécének hozzáadása
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -125,7 +125,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 Hozza létre az ügyfelet, és küldje el a Get kérelmet. 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -141,7 +141,7 @@ if err != nil {
 
 Küldje el a kérést, és olvassa el az eredményeket `ioutil`használatával.
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -162,7 +162,7 @@ if err != nil {
 
 A `Unmarshall` függvény kinyeri az adatokat a News Search API által visszaadott JSON-szövegből.  Ezután az eredmények csomópontjait a `go-spew` Pretty nyomtató használatával jelenítheti meg.
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)
@@ -179,7 +179,7 @@ spew.Dump(result.Name, result.URL)
 
 ```
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Az eredmény az egyes eredmények nevét és URL-címét tartalmazza.
 

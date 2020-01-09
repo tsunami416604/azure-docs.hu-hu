@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 0b38bc3309d8cf265a554a10e36311f53e6fe8a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33cc4537a8339b9329a3be059c0e86a1ffe69941
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440805"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Adatok másolása Azure Cosmos DB API-MongoDB az Azure Data Factory használatával
 
@@ -48,7 +48,7 @@ A MongoDB társított szolgáltatáshoz tartozó Azure Cosmos DB API-k esetében
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **Type** tulajdonságot **CosmosDbMongoDbApi**értékre kell beállítani. | Igen |
-| connectionString |Adja meg a Azure Cosmos DB API-MongoDB tartozó kapcsolatok karakterláncát. A Azure Portal > a Cosmos DB > elsődleges vagy másodlagos kapcsolatok karakterláncát, `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`mintázatával. <br/><br />A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. |Igen |
+| connectionString |Adja meg a Azure Cosmos DB API-MongoDB tartozó kapcsolatok karakterláncát. A Azure Portal > a Cosmos DB > elsődleges vagy másodlagos kapcsolatok karakterláncát, `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`mintázatával. <br/><br />A Azure Key Vaultban jelszót is beállíthat, és lekérheti a `password` konfigurációját a kapcsolatok karakterláncán kívülre. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) ban című témakört.|Igen |
 | adatbázis | Az elérni kívánt adatbázis neve. | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhatja a Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
 
@@ -60,10 +60,7 @@ A MongoDB társított szolgáltatáshoz tartozó Azure Cosmos DB API-k esetében
     "properties": {
         "type": "CosmosDbMongoDbApi",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-            },
+            "connectionString": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
             "database": "myDatabase"
         },
         "connectVia": {
@@ -174,6 +171,9 @@ A másolási tevékenység fogadója szakasz a következő tulajdonságokat tám
 | writeBatchSize | A **writeBatchSize** tulajdonság az egyes kötegekben írandó dokumentumok méretét határozza meg. A **writeBatchSize** értékének növelésével növelheti a teljesítményt és csökkentheti az értéket, ha a dokumentum mérete nagy. |Nem<br />(az alapértelmezett érték **10 000**) |
 | writeBatchTimeout | Az a várakozási idő, ameddig a kötegelt beszúrási művelet befejezi az időtúllépést. Az engedélyezett érték a TimeSpan. | Nem<br/>(az alapértelmezett érték **00:30:00** – 30 perc) |
 
+>[!TIP]
+>Ha JSON-dokumentumokat szeretne importálni, tekintse meg a [JSON-dokumentumok importálása vagy exportálása](#import-and-export-json-documents) szakaszt; a táblázatos adatokból történő másoláshoz tekintse meg a [séma-hozzárendelést](#schema-mapping).
+
 **Példa**
 
 ```json
@@ -206,18 +206,18 @@ A másolási tevékenység fogadója szakasz a következő tulajdonságokat tám
 ]
 ```
 
->[!TIP]
->Ha JSON-dokumentumokat szeretne importálni, tekintse meg a [JSON-dokumentumok importálása vagy exportálása](#import-or-export-json-documents) szakaszt; a táblázatos adatokból történő másoláshoz tekintse meg a [séma-hozzárendelést](#schema-mapping).
-
-## <a name="import-or-export-json-documents"></a>JSON-dokumentumok importálása vagy exportálása
+## <a name="import-and-export-json-documents"></a>JSON-dokumentumok importálása és exportálása
 
 Ezt a Azure Cosmos DB összekötőt egyszerűen elvégezheti:
 
-* A különböző forrásokból származó JSON-dokumentumokat importálhatja Azure Cosmos DBba, beleértve az Azure Blob Storage-ból, Azure Data Lake Storeból és más, a Azure Data Factory által támogatott fájl-alapú tárolókat.
-* JSON-dokumentumok exportálása Azure Cosmos DB gyűjteményből különböző file-alapú áruházakba.
 * Dokumentumok másolása két Azure Cosmos DB gyűjtemény között.
+* A különböző forrásokból származó JSON-dokumentumokat importálhatja Azure Cosmos DBba, többek között a MongoDB, az Azure Blob Storage-ból, a Azure Data Lake Storeból és más, a Azure Data Factory által támogatott fájl-alapú áruházakból.
+* JSON-dokumentumok exportálása Azure Cosmos DB gyűjteményből különböző file-alapú áruházakba.
 
-Az ilyen sémák és sémák közötti másoláshoz ugorjon a másolási tevékenységben a "Structure" (más néven *séma*) szakaszra.
+Séma – agnosztikus másolás:
+
+* Az Adatok másolása eszköz használatakor válassza az **Exportálás másként lehetőséget a JSON-fájlok vagy a Cosmos db-gyűjtemény** lehetőségre.
+* Ha tevékenység-létrehozást használ, válassza a JSON formátum elemet a forrás vagy a fogadó megfelelő fájljával.
 
 ## <a name="schema-mapping"></a>Séma-hozzárendelés
 

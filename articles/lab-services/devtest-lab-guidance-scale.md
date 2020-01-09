@@ -1,6 +1,6 @@
 ---
-title: Vertikális felskálázás az Azure DevTest Labs-infrastruktúra
-description: Ez a cikk nyújt útmutatást az Azure DevTest Labs-infrastruktúra méretezése.
+title: A Azure DevTest Labs-infrastruktúra vertikális felskálázása
+description: Ez a cikk útmutatást nyújt a Azure DevTest Labs infrastruktúra méretezéséhez.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,58 +13,58 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561489"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644834"
 ---
-# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Vertikális felskálázás az Azure DevTest Labs-infrastruktúra
-DevTest Labs megvalósítása nagyvállalati szintű, mielőtt nincsenek több fő döntési pontokat. A döntési pontokat magas szintű megismerése segít tervezési döntéseket a szervezete a jövőben. Azonban ezeket a pontokat kell tartalmaz vissza egy szervezet a koncepció igazolása elindítását. A kezdeti tervezésen növelheti az első három területek a következők:
+# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>A Azure DevTest Labs-infrastruktúra vertikális felskálázása
+A nagyvállalati szintű DevTest Labs megvalósítása előtt több kulcsfontosságú döntési pont is van. Ezen döntési pontok magas szinten való megismerése segíti a szervezetet a jövőbeli tervezési döntések meghozatalában. Ezek a pontok azonban nem tudják visszatartani a szervezetet a koncepció igazolásának elindításával. A kezdeti méretezési tervezés első három területe a következő:
 
-- Hálózati és biztonsági
-- Előfizetés-topológia
+- Hálózatkezelés és biztonság
+- Előfizetési topológia
 - Szerepkörök és felelősségek
 
-## <a name="networking-and-security"></a>Hálózati és biztonsági
-Hálózati és biztonsági rendszer minden olyan szervezetnek alapja. Egy vállalati szintű üzembe helyezési sok mélyebb elemzésre van szüksége, amíg nincsenek követelmények sikeres elvégzéséhez a koncepció igazolása csökkentett számát. Fókusz néhány legfontosabb területek a következők:
+## <a name="networking-and-security"></a>Hálózatkezelés és biztonság
+A Hálózatkezelés és a biztonság minden szervezet számára sarokköve. A nagyvállalati szintű üzembe helyezés sokkal mélyebb elemzést tesz szükségessé, ezért kevesebb követelményt kell elvégeznie a koncepció igazolásának sikeres végrehajtásához. A hangsúly néhány kulcsfontosságú területe a következőkre terjed ki:
 
-- **Azure-előfizetés** – DevTest Labs, üzembe helyezése az Azure-előfizetéshez hozhat létre erőforrásokat a megfelelő jogosultságokkal hozzáféréssel kell rendelkeznie. Nincsenek különféle módokon, például egy nagyvállalati szerződés és a Használatalapú Azure-előfizetések eléréséhez. Egy Azure-előfizetés hozzáférjenek a további információkért lásd: [licencelése az Azure nagyvállalati](https://azure.microsoft.com/pricing/enterprise-agreement/).
-- **A helyszíni erőforrásokhoz való hozzáférés** – egyes szervezetek megkövetelik a DevTest Labs szolgáltatásban létrehozott erőforrások rendelkezik a helyszíni erőforrásokhoz való hozzáférést. A helyszíni környezetből az Azure-bA biztonságos kapcsolat szükséges. Ezért fontos, hogy beállíthatja, VPN vagy Express Route-kapcsolat az első lépések előtt fel vagy konfigurálása. További információkért lásd: [virtuális hálózatok áttekintése](../virtual-network/virtual-networks-overview.md).
-- **További biztonsági követelményeket** – egyéb biztonsági követelményekkel, például a számítógép-házirendek, nyilvános IP-címek, kapcsolódjon az internethez való hozzáférést is előfordulhat, hogy kell vizsgálni a koncepció igazolása implementálása előtt forgatókönyvek. 
+- **Azure-előfizetés** – a DevTest Labs üzembe helyezéséhez hozzá kell férnie egy Azure-előfizetéshez, amely megfelelő jogosultságokkal rendelkezik az erőforrások létrehozásához. Több módon is elérheti az Azure-előfizetéseket, beleértve az Nagyvállalati Szerződés és a fizetést. További információ az Azure-előfizetések elérésének beszerzéséről: [Az Azure licencelése a vállalat számára](https://azure.microsoft.com/pricing/enterprise-agreement/).
+- **Hozzáférés a helyszíni erőforrásokhoz** – egyes szervezetek számára a DevTest Labs erőforrásainak megkövetelése a helyszíni erőforrások eléréséhez. A helyszíni környezet és az Azure közötti biztonságos kapcsolódásra van szükség. Ezért fontos, hogy az első lépések megkezdése előtt állítsa be vagy konfigurálja a VPN-t vagy az Express Route-kapcsolatát. További információ: [Virtual Networks Overview (virtuális hálózatok áttekintése](../virtual-network/virtual-networks-overview.md)).
+- **További biztonsági követelmények** – az egyéb biztonsági követelmények, például a gépi házirendek, a nyilvános IP-címekhez való hozzáférés, az internethez való csatlakozás olyan forgatókönyvek, amelyeket a megvalósíthatósági gyakorlat megvalósítása előtt érdemes áttekinteni. 
 
-## <a name="subscription-topology"></a>Előfizetés-topológia
-Előfizetés a topológia akkor a fontos tervezési szempontot jelent, az Enterprise DevTest Labs telepítésekor. Azonban nem szükséges minden döntés, amíg megszilárdulni megvalósíthatósági befejezése után. A szükséges vállalati meghatározásában előfizetések számát kiértékelésekor van két szélsőséges: 
+## <a name="subscription-topology"></a>Előfizetési topológia
+Az előfizetési topológia kritikus tervezési szempont, ha a DevTest Labs szolgáltatást a vállalatra telepíti. Azonban nincs szükség az összes döntés bemegszilárdítására addig, amíg meg nem történt a koncepció igazolása. A nagyvállalati megvalósításhoz szükséges előfizetések számának kiértékelése során két véglet van: 
 
-- Egy előfizetéssel a teljes cég számára
+- Egy előfizetés a teljes szervezet számára
 - Előfizetés felhasználónként
 
-Ezután azt jelöljön ki egyes megközelítés a szakemberek számára.
+Ezután kiemeljük az egyes megközelítések előnyeit.
 
-### <a name="one-subscription"></a>Egy előfizetéssel
-A módszer egy előfizetés gyakran nem áll nagy vállalatok kezelhető. Azonban az előfizetések számának korlátozása a következő előnyöket nyújtja:
+### <a name="one-subscription"></a>Egy előfizetés
+Az egyik előfizetés megközelítése gyakran nem kezelhető nagy vállalatokban. Az előfizetések számának korlátozása azonban a következő előnyöket biztosítja:
 
-- **Előrejelzés** vállalati költségeit.  Költségvetés lesz egy előfizetés sokkal egyszerűbb, mivel egyetlen szerepelnek az összes erőforrás. Ez a megközelítés lehetővé teszi, hogy egyszerűbb döntési végzett az elszámolási időszakban egy adott időpontban méri a költségek ellenőrzés során.
-- **Kezelhetőségi** virtuális gépeket, összetevők, képleteket, hálózati konfigurációt, engedélyek, szabályzatok, stb. egyszerűbb, mivel a frissítések csak szükséges egy adott előfizetéshez szemben, így a frissítések sok előfizetések között.
-- **Hálózatkezelés** erőfeszítés nagyban megkönnyíti a vállalatok számára, ahol a helyszíni kapcsolat egy előfizetés. Virtuális hálózatok összekapcsolása az előfizetések (küllős modell) szükség további előfizetésekkel, amelyhez szükséges további konfigurációs, felügyeleti, IP-címtereket, stb.
-- **Csoportmunka** esetén könnyebb mindenki ugyanabban az előfizetésben működik – például egyszerűbb újbóli hozzárendelése a virtuális gép egy munkatársnak, megoszthatja a csapatával erőforrások stb.
+- A vállalat **előrejelzési** költségei.  A költségvetés-tervezés sokkal egyszerűbbé válik egy adott előfizetésben, mivel az összes erőforrás egyetlen készletben található. Ez a megközelítés lehetővé teszi az egyszerűbb döntéshozatalt abban az esetben, ha egy számlázási ciklusban egy adott időpontban a Cost Control-mértékek gyakorlása folyamatban van.
+- A virtuális gépek, az összetevők, a képletek, a hálózati konfiguráció, az engedélyek, a házirendek stb. egyszerűbb **kezelhetősége** , mivel az összes frissítés csak az egyik előfizetéshez szükséges, és nem a sok előfizetésre vonatkozó frissítések.
+- A **hálózatkezelési** erőfeszítések nagy mértékben leegyszerűsítve vannak olyan vállalatok esetében, amelyeknél követelmény a helyszíni kapcsolat. A virtuális hálózatok összekapcsolása az előfizetések között (sugaras modell) további előfizetésekre van szükség, amelyekhez további konfigurálásra, felügyeletre, IP-címekre stb. van szükség.
+- A **csapatmunka** egyszerűbb, ha mindenki ugyanazon az előfizetésen dolgozik, például egyszerűbb egy virtuális gépet egy munkatárshoz rendelni, megoszthatja a csoport erőforrásait stb.
 
 ### <a name="subscription-per-user"></a>Előfizetés felhasználónként
-Felhasználónként különálló előfizetést, az alternatív spektrum egyenlő lehetőségeket biztosít. Sok előfizetést kellene előnyei a következők:
+Felhasználónként egy külön előfizetés biztosítja az alternatív spektrumot. A számos előfizetés előnyei többek között a következők:
 
-- **Kvóták méretezés Azure** nem akadályozzák a bevezetési fog. Ha például a jelen cikk írásakor az Azure lehetővé teszi, hogy előfizetésenként 200 tárfiókra. Nincsenek a legtöbb szolgáltatás az Azure-ban működési kvóták (számos testre szabható, néhányat nem). Ebben a modellben az előfizetés felhasználónként nagyon valószínűtlen, hogy elérte-e a legtöbb kvóták. Aktuális Azure skálázási kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
-- **Költséghelyi elszámolási műveleteket** csoportokat vagy egyedi fejlesztők sokkal egyszerűbb, így a szervezetek költségek a jelenlegi modellt használó tárfiókot válnak.
-- **Tulajdonjog és engedélyek** a DevTest Labs-környezetben egyszerűek. Engedélyezi a fejlesztők az előfizetés-szintű elérését és 100 %-os mindenről, beleértve a hálózati konfiguráció, a laborszabályzatok és a virtuális gépek felügyelete.
+- Az **Azure skálázási kvóták** nem akadályozzák az örökbefogadást. Az Azure írásakor például az 200 Storage-fiókok előfizetését teszik lehetővé. Az Azure legtöbb szolgáltatásának működési kvótái vannak (számos személyre szabható, de nem). A felhasználónkénti előfizetés ezen modelljében nagyon valószínűtlen, hogy a legtöbb kvótát elérte. Az aktuális Azure skálázási kvótákkal kapcsolatos további információkért lásd az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md)ismertető témakört.
+- A csoportokba vagy az egyéni fejlesztőkbe való jóváírások sokkal egyszerűbbé válnak, így a szervezetek a jelenlegi modelljük alapján tudják felvenni a költségeket.
+- A DevTest Labs-környezetek **tulajdonosi & engedélyei** egyszerűek. Az előfizetési szintű hozzáférést a fejlesztőknek kell megadnia, és ezekért a 100% felelős, beleértve a hálózati konfigurációt, a labor-házirendeket és a virtuális gépek kezelését.
 
-A vállalat a szélsőséges szélsőség elegendő korlátozásaihoz előfordulhatnak. Ezért szükség lehet az előfizetéseket úgy, hogy ezek a szélsőséges közepén esik. Ajánlott eljárásként a cél a szervezet lehetséges szem a kényszerítési funkciók, amelyek növelik a előfizetéseinek száma az előfizetések a lehető legkevesebb adatokként kell lennie. Kifejezni, előfizetés-topológia kritikus vállalati üzembe helyezéshez, DevTest Labs, de a koncepció igazolása késedelem nélkül kell. Nincsenek további részletek a [Cégirányítási](devtest-lab-guidance-governance-policy-compliance.md) dönthet arról, hogy az előfizetés és a tesztkörnyezet granularitási a szervezet cikkünket.
+Előfordulhat, hogy a vállalaton belül a spektrum szélsőségesen megtalálhatók a korlátok. Ezért előfordulhat, hogy az előfizetéseket úgy kell beállítania, hogy a szélsőségesek közepébe essen. Az ajánlott eljárás a szervezet célja, hogy a lehető legkevesebb előfizetést használja az előfizetések teljes számának növelésére. Az előfizetési topológia kritikus fontosságú a DevTest Labs vállalati telepítéséhez, de nem késleltetheti a koncepció igazolását. További részleteket az [irányításról](devtest-lab-guidance-governance-policy-compliance.md) szóló cikkben talál, amely bemutatja, hogyan döntheti el az előfizetést és a labor részletességét a szervezeten belül.
 
 ## <a name="roles-and-responsibilities"></a>Szerepkörök és felelősségek
-A DevTest Labs megvalósíthatósági példa három elsődleges szerepkör meghatározott tartományvezérlőkért – előfizetés tulajdonosa, DevTest Labs tulajdonos, DevTest Labs-felhasználó, és opcionálisan egy közreműködő rendelkezik.
+A DevTest Labs-igazolási koncepció három elsődleges szerepkört tartalmaz: az előfizetés tulajdonosa, a DevTest Labs tulajdonosa, a DevTest Labs-felhasználó és opcionálisan közreműködő.
 
-- **Előfizetés tulajdonosa** – jogosultsága az előfizetés tulajdonosa felügyelheti az Azure-előfizetés hozzárendelése a felhasználók, a házirendek kezelése, létrehozása és kezelése a hálózati topológiát, beleértve kérő kvótanövelésre stb. További információkért tekintse meg [ezt a cikket](../role-based-access-control/rbac-and-directory-admin-roles.md).
-- **DevTest Labs-tulajdonos** – a DevTest Labs tulajdonosa a labor teljes rendszergazdai hozzáféréssel rendelkezik. Ezt a személyt felelős, felhasználók hozzáadása vagy eltávolítása költség általános labor beállítások, és más virtuális gép/összetevő-alapú feladatok kezelésére. A lab is tulajdonosa a DevTest Labs-felhasználó összes jogosultságát.
-- **DevTest Labs-felhasználó** – a DevTest Labs-felhasználó hozhat létre és felhasználását a virtuális gépek a tesztkörnyezetben. Ezek a személyek néhány minimális felügyeleti képességekkel rendelkeznek az általuk létrehozott virtuális gépeken (indítása/leállítása/delete/konfigurálja a virtuális gépek). A felhasználók nem tudja kezelni a más felhasználók virtuális gépeket.
+- **Előfizetés tulajdonosa** – az előfizetés tulajdonosa rendelkezik olyan Azure-előfizetés felügyeletéhez szükséges jogokkal, mint a felhasználók kiosztása, a házirendek kezelése, & a hálózati topológia kezelése, a kvóta növelésének megadásával stb. További információkért tekintse meg [ezt a cikket](../role-based-access-control/rbac-and-directory-admin-roles.md).
+- **DevTest Labs-tulajdonos** – a DevTest Labs-tulajdonos teljes körű rendszergazdai hozzáféréssel rendelkezik a laborhoz. Ez a személy felelős a felhasználók hozzáadásával/eltávolításával, a költségadatok kezelésével, az általános labor-beállításokkal és az egyéb virtuális gépekkel/összetevőkkel kapcsolatos feladatokkal. A labor tulajdonosa is rendelkezik egy DevTest Labs-felhasználó minden jogosultságával.
+- **DevTest Labs-felhasználó** – a DevTest Labs-felhasználó létrehozhat és felhasználhatja a virtuális gépeket a laborban. Ezek a személyek bizonyos minimális felügyeleti képességekkel rendelkeznek az általuk létrehozott virtuális gépeken (a virtuális gépek indítása/leállítása/törlése/konfigurálása). A felhasználók nem kezelhetik más felhasználók virtuális gépeket.
 
-## <a name="next-steps"></a>További lépések
-Ez a sorozat következő cikkében talál: [Koordinálhatja az Azure DevTest Labs megvalósítása](devtest-lab-guidance-orchestrate-implementation.md)
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg a sorozat következő cikkét: [a Azure DevTest Labs megvalósításának](devtest-lab-guidance-orchestrate-implementation.md) összehangolása

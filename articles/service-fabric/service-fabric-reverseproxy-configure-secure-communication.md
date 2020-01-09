@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric fordított proxy biztonságos kommunikációja | Microsoft Docs
-description: Fordított proxy konfigurálása a biztonságos végpontok közötti kommunikáció engedélyezéséhez.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric fordított proxy biztonságos kommunikációja
+description: Fordított proxy konfigurálása az Azure Service Fabric-alkalmazások biztonságos, végpontok közötti kommunikációjának engedélyezéséhez.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: e915e689f09ba7f5c92958ebf8531aa67eef4493
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933959"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639394"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz fordított proxyval
 
@@ -30,7 +22,7 @@ A fordított proxy Service Fabric-ben való konfigurálásához tekintse meg a [
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Biztonságos kapcsolat létesítése a fordított proxy és a szolgáltatások között 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Fordított proxy hitelesítése a szolgáltatásokban:
-A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [ **-sablon Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/resource-group-authoring-templates.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig. JSON **biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [ **-sablon Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/templates/template-syntax.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig. JSON **biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 A szolgáltatások a fordított proxy által megjelenített tanúsítvány ellenőrzéséhez implementálják a logikát. A szolgáltatások megadhatják az elfogadott ügyféltanúsítvány részleteit konfigurációs beállításokként a konfigurációs csomagban. Ez futásidőben olvasható, és a fordított proxy által bemutatott tanúsítvány ellenőrzéséhez használható. A konfigurációs beállítások hozzáadásához tekintse meg az [alkalmazás paramétereinek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) című témakört. 
 
@@ -63,7 +55,7 @@ A [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#appl
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: a fordított proxy ellenőrzi a szolgáltatás által bemutatott tanúsítványt a tanúsítvány köznapi neve és az azonnali kiállító ujjlenyomata alapján: adja meg a **ApplicationCertificateValidationPolicy** értéket **. A ServiceCommonNameAndIssuer** a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban található.
+- **ServiceCommonNameAndIssuer**: a fordított proxy ellenőrzi a szolgáltatás által bemutatott tanúsítványt a tanúsítvány köznapi neve és az azonnali kiállító ujjlenyomata alapján: a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban adja meg a **ApplicationCertificateValidationPolicy** értéket a **ServiceCommonNameAndIssuer** értékkel.
 
    ```json
    {
@@ -110,7 +102,7 @@ A [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#appl
    }
    ```
 
-- **ServiceCertificateThumbprints**: a fordított proxy ellenőrzi a proxyn lévő szolgáltatás tanúsítványát az ujjlenyomata alapján. Dönthet úgy is, hogy ezt az útvonalat adja meg, ha a szolgáltatások önaláírt tanúsítványokkal vannak konfigurálva: a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) -ben **ServiceCertificateThumbprints** értékű **ApplicationCertificateValidationPolicy** megadása szakasz.
+- **ServiceCertificateThumbprints**: a fordított proxy ellenőrzi a proxyn lévő szolgáltatás tanúsítványát az ujjlenyomata alapján. Dönthet úgy is, hogy ezt az útvonalat adja meg, ha a szolgáltatások önaláírt tanúsítványokkal vannak konfigurálva: a [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban adja meg a **ServiceCertificateThumbprints** értékkel rendelkező **ApplicationCertificateValidationPolicy** .
 
    ```json
    {

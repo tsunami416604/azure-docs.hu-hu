@@ -1,14 +1,14 @@
 ---
 title: Ügyfelek és delegált erőforrások megtekintése és kezelése
 description: Az Azure-beli delegált erőforrás-kezelést használó szolgáltatóként megtekintheti az összes delegált ügyfél-erőforrást és-előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456833"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
@@ -16,7 +16,9 @@ Az Azure-beli [delegált erőforrás-kezelést](../concepts/azure-delegated-reso
 
 Ha a Azure Portal **saját ügyfelek** lapját szeretné elérni, válassza a **minden szolgáltatás**lehetőséget, majd keresse meg az **ügyfeleket** , és válassza ki azt. Azt is megteheti, hogy beírja az "ügyfelek" kifejezést a Azure Portal tetején található keresőmezőbe.
 
-Ne feledje, hogy a **saját ügyfelek** lap felső szakasza csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek információit jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](https://docs.microsoft.com/partner-center/csp-overview)keresztül), akkor ezekkel az ügyfelekkel kapcsolatos információk nem jelennek meg, hacsak nem készíti elő az erőforrásokat a delegált erőforrás-kezeléshez. A lap alsó részén a **Cloud Solution Provider (előzetes verzió)** szakasz a [Microsoft ügyfél-szerződést (MCA) aláíró](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ügyfeleinek számlázási információit és erőforrásait, valamint az Azure-csomag részét képezi, függetlenül attól, hogy be lett-e telepítve Az Azure-beli delegált erőforrás-kezeléshez. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](https://docs.microsoft.com/azure/billing/mpa-overview).
+Ne feledje, hogy a **saját ügyfelek** lap legfontosabb **ügyfelek** szakasza csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek adatait jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](https://docs.microsoft.com/partner-center/csp-overview)keresztül), akkor nem fogja látni az ügyfelekkel kapcsolatos információkat az **ügyfelek** szakaszban, kivéve, ha az Azure-beli delegált erőforrás-kezeléshez felvette az erőforrásait.
+
+A lap alsó részén, a **Cloud Solution Provider (előzetes verzió)** nevű külön szakasz a számlázási adatokat és erőforrásokat jeleníti meg a CSP azon ügyfelei számára, akik [aláírták a Microsoft Customer szerződést (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) , és [Az Azure-csomag alatt](https://docs.microsoft.com/partner-center/azure-plan-get-started)találhatók. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../billing/mpa-overview.md). Vegye figyelembe, hogy az ilyen CSP-ügyfelek ebben a szakaszban jelennek meg, függetlenül attól, hogy az Azure-beli delegált erőforrás-kezeléshez is felvette őket. Hasonlóképpen, a CSP-ügyfélnek nem kell megjelennie az **ügyfelek** **felhőalapú megoldás-szolgáltató (előzetes verzió)** szakaszában, hogy az Azure-beli delegált erőforrás-kezeléshez be lehessen őket készíteni.
 
 > [!NOTE]
 > Az ügyfelek megtekinthetik a szolgáltatók adatait úgy, hogy a Azure Portalban **lévő szolgáltatókra** navigálnak. További információ: szolgáltatók [megtekintése és kezelése](view-manage-service-providers.md).
@@ -28,7 +30,7 @@ Az ügyfél részleteinek megtekintéséhez válassza a **Customers** (ügyfelek
 Minden ügyfél esetében látni fogja az ügyfél nevét, az ügyfél AZONOSÍTÓját (bérlői AZONOSÍTÓját), valamint az engagement szolgáltatáshoz tartozó ajánlatot. A **delegálások** oszlopban látható a delegált előfizetések száma és/vagy a delegált erőforráscsoportok száma.
 
 > [!IMPORTANT]
-> A delegálás megtekintéséhez a felhasználóknak meg kell adni az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz) a bevezetési folyamat során.
+> A delegálás megtekintéséhez a felhasználóknak meg kell adni az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz) a bevezetési folyamat során.
 
 Az oldal tetején lévő szűrők segítségével rendezheti és csoportosíthatja az ügyfél adatait, vagy szűrheti az ügyfelek, ajánlatok vagy kulcsszavak alapján.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327145"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448642"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Gyors útmutató: keresési kérelem küldése a Javához készült Bing Entity Search SDK-val
 
@@ -67,7 +67,7 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
 
 ## <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. Implementálja az `dominantEntityLookup`-ügyfelet, amely az API-végpontot és a `ServiceClientCredentials` osztály egy példányát igényli.
+1. Implementálja az `dominantEntityLookup`-ügyfelet, amely az API-végpontot és a `ServiceClientCredentials` osztály egy példányát igényli. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {

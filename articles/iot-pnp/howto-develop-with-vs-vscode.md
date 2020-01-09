@@ -3,23 +3,23 @@ title: A Visual Studio és a Visual Studio Code használata a IoT-Plug and Play 
 description: A Visual Studio és a Visual Studio Code használatával felgyorsíthatja az IoT Plug and Play az eszközök modelljeinek készítését és az eszköz kódjának megvalósítását.
 author: liydu
 ms.author: liydu
-ms.date: 10/29/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b4325aa6f379dc0b281d06cb593c28448698c71b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748033"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531326"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>A Visual Studio és a Visual Studio Code használata IoT Plug and Play-eszközök létrehozásához
 
 A Visual Studio Code-hoz készült Azure IoT-eszközök integrált környezetet biztosítanak az eszköz-képességi modellek (DCM) és felületek létrehozásához, a modell-Tárházak közzétételéhez, valamint a csontváz C kód létrehozásához az eszköz alkalmazásának megvalósításához.
 
-Ez a cikk bemutatja, hogyan végezheti el a következőket:
+Ez a cikk a következőkhöz nyújt útmutatást:
 
 - Eszköz kódjának és alkalmazási Projektének előállítása.
 - Használja a generált kódot az eszköz projektben.
@@ -29,7 +29,7 @@ Ha többet szeretne megtudni a VS Code IoT-eszközök fejlesztéséről, tekints
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Telepítse a [Visual Studio Code](https://code.visualstudio.com/)-ot.
+A [Visual Studio Code](https://code.visualstudio.com/) telepítése.
 
 Az alábbi lépésekkel telepítheti a kiterjesztési csomagot a VS Code-ban.
 
@@ -69,7 +69,7 @@ A Code Generator megpróbálja használni a helyi mappában található DCM és 
 
 A kód létrehozása után a bővítmény megnyílik egy új VS Code-ablak a kóddal. Ha olyan létrehozott fájlt nyit meg, mint a **Main. c**, akkor előfordulhat, hogy az IntelliSense azt jelenti, hogy nem tudja megnyitni a c SDK-forrásfájlokat. Az IntelliSense és a kód helyes navigálásának engedélyezéséhez kövesse az alábbi lépéseket a C SDK-forrás felvételéhez:
 
-1. A vs Code-ban használja a **CTRL + SHIFT + P** billentyűkombinációt a parancs paletta megnyitásához, írja be a **C/C++: Edit configurations (JSON)** parancsot a **c_cpp_properties. JSON** fájl megnyitásához.
+1. A vs Code-ban a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be és válassza a **C/C++: Edit configurations (JSON)** parancsot a **c_cpp_properties. JSON** fájl megnyitásához.
 
 1. Adja hozzá az eszköz SDK elérési útját a `includePath` szakaszban:
 
@@ -150,13 +150,13 @@ Az eszköz kódjának és az eszköz C SDK-Vcpkg együtt történő létrehozás
 
 ### <a name="windows"></a>Windows
 
-Az eszköz kódjának és a Windows-eszközök C SDK-val együtt történő létrehozásához a CMak és a VisualC++ Studio C/fordítóprogramok segítségével a parancssorban tekintse meg a [IoT Plug and Play](./quickstart-create-pnp-device.md)gyors útmutató című témakört. Az alábbi lépések bemutatják, hogyan hozhatja létre az eszköz kódját a C SDK-Vcpkg a Visual Studióban a CMak-projektként.
+Az eszköz kódjának és a Windows-eszközök C SDK-val együtt történő létrehozásához a CMak és a VisualC++ Studio C/fordítóprogramok segítségével a parancssorban tekintse meg a [IoT Plug and Play](./quickstart-create-pnp-device-windows.md)gyors útmutató című témakört. Az alábbi lépések bemutatják, hogyan hozhatja létre az eszköz kódját a C SDK-Vcpkg a Visual Studióban a CMak-projektként.
 
-1. Kövesse a rövid útmutató lépéseit, és telepítse a C Azure IoT Device [SDK-t](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) a Vcpkg-on keresztül.
+1. Kövesse a rövid útmutató lépéseit, és telepítse a C Azure IoT Device [SDK-t](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device-windows#prepare-the-development-environment) a Vcpkg-on keresztül.
 
 1. A [Visual Studio 2019 (Community, Professional vagy Enterprise)](https://visualstudio.microsoft.com/downloads/) telepítése – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az **asztali fejlesztést C++**  is tartalmazza a számítási feladatok segítségével.
 
-1. Nyissa meg a Visual studiót, válassza a **fájl > megnyitás > CMAK lehetőséget.** Ha meg szeretné nyitni a `CMakeLists.txt`t a mappában, a generált kódot tartalmaz.
+1. Nyissa meg a Visual studiót, válassza a **fájl > megnyitás > CMAK..** . lehetőséget, hogy megnyissa a `CMakeLists.txt` a mappában, amely generált kódot tartalmaz.
 
 1. Az **általános** eszköztáron keresse meg a **konfigurációk** legördülő menüt. Válassza a **konfiguráció kezelése** lehetőséget a projekthez tartozó CMAK-beállítás hozzáadásához.
 
@@ -256,6 +256,6 @@ A kód generátora újragenerálhatja a kódot, ha módosítja a DCM-vagy az ill
 
 Az Azure IoT Tools egy nyílt forráskódú projekt a GitHubon. A problémák és a szolgáltatások iránti kérelmek esetében [probléma hozható létre a githubon](https://github.com/microsoft/vscode-azure-iot-tools/issues/new).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan használhatja a Visual studiót és a Visual Studio Code-ot a csontváz C kód létrehozásához az eszköz alkalmazásának megvalósításához. A következő lépés azt ismerteti, hogyan [telepítheti és használhatja az Azure IoT Explorer](./howto-install-iot-explorer.md) eszközt.

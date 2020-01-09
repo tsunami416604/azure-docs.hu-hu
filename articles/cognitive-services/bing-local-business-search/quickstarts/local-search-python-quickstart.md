@@ -1,7 +1,7 @@
 ---
 title: Rövid útmutató – lekérdezés küldése az API-nak a Pythonban – Bing helyi üzleti keresés
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megkezdheti a Bing helyi üzleti keresési API használatát a Pythonban.
+description: Ezzel a rövid útmutatóval megkezdheti a Bing local Business Search API használatát a Pythonban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: a73851a4c88998a377a5123d411948946173fa89
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379743"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak a Pythonban
 

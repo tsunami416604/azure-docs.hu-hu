@@ -1,38 +1,29 @@
 ---
-title: Hibák szimulálása az Azure Service Fabric-alkalmazásokban | Microsoft Docs
-description: Szolgáltatások megerősítése a kecses és a nem zökkenőmentes hibák ellen.
-services: service-fabric
-documentationcenter: .net
+title: Hibák szimulálása az Azure Service Fabric-alkalmazásokban
+description: Ismerje meg, hogyan erősítheti meg Azure Service Fabric szolgáltatásait a kecses és a nem zökkenőmentes meghibásodások ellen.
 author: anmolah
-manager: chackdan
-editor: ''
-ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: bbb89b66231c949627c7ffbf99ebe9b5dd379ca2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348723"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645990"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatások számítási feladatai közben
 Az Azure Service Fabric tesztelési forgatókönyvei lehetővé teszik a fejlesztők számára, hogy ne aggódjanak az egyes hibák kezelésével kapcsolatban. Vannak azonban olyan forgatókönyvek, amelyekben szükség lehet az ügyfél-munkaterhelések és a hibák explicit módon történő elvégzésére. Az ügyfél-munkaterhelések és a hibák elhagyása biztosítja, hogy a szolgáltatás ténylegesen végezzen valamilyen műveletet, ha a hiba történik. A tesztelés által biztosított szabályozás szintje miatt ezek a számítási feladatok végrehajtásának pontos pontjai lehetnek. Az alkalmazás különböző állapotában lévő hibák levonása hibákat talál, és javíthatja a minőséget.
 
 ## <a name="sample-custom-scenario"></a>Példa egyéni forgatókönyvre
-Ez a teszt egy olyan forgatókönyvet mutat be, amely összekapcsolja az üzleti munkaterhelést [kecses és](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)zavartalan hibákkal. A hibákat a szolgáltatási műveletek közepén vagy a legjobb eredmények érdekében kell kiszámítani.
+Ez a teszt egy olyan forgatókönyvet mutat be, amely összekapcsolja az üzleti munkaterhelést [kecses és zavartalan hibákkal](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibákat a szolgáltatási műveletek közepén vagy a legjobb eredmények érdekében kell kiszámítani.
 
-Ismerkedjen meg egy olyan szolgáltatás példáján, amely négy munkaterhelést tesz elérhetővé: A, B, C és D. Mindegyik a munkafolyamatok egy készletének felel meg, amely lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példában elküldjük a számítási feladatokat. Az ebben a példában szereplő különböző hibák a következők:
+Ismerkedjen meg egy olyan szolgáltatás példáján, amely négy munkaterhelést tesz elérhetővé: A, B, C és D. az egyes munkafolyamatok egy csoportjának felelnek meg, amely lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példában elküldjük a számítási feladatokat. Az ebben a példában szereplő különböző hibák a következők:
 
-* RestartNode: Hiba a gép újraindításának szimulálása során.
-* RestartDeployedCodePackage: Hiba a Service Host-folyamat összeomlásának szimulálása közben.
-* RemoveReplica: Kecses hiba a replika eltávolításának szimulálása érdekében.
-* MovePrimary A Service Fabric Load Balancer által aktivált replika-áthelyezések szimulálása esetén kecses hiba.
+* RestartNode: nem megfelelő hiba a gép újraindításának szimulálása érdekében.
+* RestartDeployedCodePackage: hiba a Service Host-folyamat összeomlásának szimulálása közben.
+* RemoveReplica: kecses hiba a replika eltávolításának szimulálása érdekében.
+* MovePrimary: az Service Fabric Load Balancer által aktivált replika-áthelyezések szimulálására szolgáló kecses hiba.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

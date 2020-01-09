@@ -1,5 +1,5 @@
 ---
-title: Azure AD hozzáadása a csatlakoztatott szolgáltatásokkal
+title: A Active Directory csatlakoztatott szolgáltatás (Visual Studio) használata
 description: Azure Active Directory hozzáadása a Visual Studio csatlakoztatott szolgáltatások hozzáadása párbeszédpanel használatával
 author: ghogen
 manager: jillfra
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423184"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
 
 Azure Active Directory (Azure AD) használatával a ASP.NET MVC-webalkalmazásokhoz vagy a webes API-szolgáltatásokban való Active Directory hitelesítéshez is támogathatja az egyszeri bejelentkezést (SSO). Az Azure AD-hitelesítéssel a felhasználók a fiókjaikat Azure Active Directory használatával csatlakozhatnak a webalkalmazásokhoz. Az Azure AD-hitelesítésnek a webes API-val való használatának előnyei közé tartozik a fokozott adatbiztonság, amikor egy webalkalmazásból kiteszi az API-t. Az Azure AD-vel nem kell külön hitelesítési rendszereket kezelnie a saját fiókjával és a felhasználói felügyelettel.
 

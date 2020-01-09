@@ -1,6 +1,6 @@
 ---
-title: Tábla másolási műveletek az Azure Cosmos DB Cassandra API Spark rendszerből.
-description: Ez a cikk részletesen bemutatja az adatok másolása az Azure Cosmos DB Cassandra API táblák között
+title: Táblázatos másolási műveletek Azure Cosmos DB Cassandra API Sparkból
+description: Ez a cikk részletesen ismerteti, hogyan másolhat adatokat a táblák között Azure Cosmos DB Cassandra API
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60895181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445627"
 ---
-# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Tábla másolási műveletek az Azure Cosmos DB Cassandra API Spark rendszerből
+# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Táblázatos másolási műveletek Azure Cosmos DB Cassandra API Sparkból
 
-Ez a cikk azt ismerteti, hogyan másolhat adatokat az Azure Cosmos DB Cassandra API a Spark táblái között. Az ebben a cikkben leírt parancsokat is használható az adatok másolása az Apache Cassandra-táblák az Azure Cosmos DB Cassandra API-táblákat.
+Ez a cikk azt ismerteti, hogyan másolhatók adatok a Azure Cosmos DB Cassandra API a Sparkból. A cikkben ismertetett parancsok az Apache Cassandra-táblázatokból származó adatok másolására is használhatók Azure Cosmos DB Cassandra API táblákba.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
+## <a name="cassandra-api-configuration"></a>Cassandra API konfiguráció
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -63,9 +63,9 @@ booksDF.write
   .save()
 ```
 
-## <a name="copy-data-between-tables"></a>Adatok másolása a táblák között
+## <a name="copy-data-between-tables"></a>Adatmásolás táblák között
 
-### <a name="copy-data-between-tables-destination-table-exists"></a>Adatok másolása (cél tábla létezik) táblák között
+### <a name="copy-data-between-tables-destination-table-exists"></a>Adatmásolás táblák között (létező céltábla)
 
 ```scala
 //1) Create destination table
@@ -93,7 +93,7 @@ sqlContext
   .show
 ```
 
-### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Adatok másolása (céltábla nem létezik) táblák között
+### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Adatmásolás táblák között (a céltábla nem létezik)
 
 ```scala
 import com.datastax.spark.connector._
@@ -127,7 +127,7 @@ sqlContext
   .load
   .show
 ```
-A kimeneti-
+A kimenet –
 ```
 +-------+------------------+--------------------+----------+-------------+
 |book_id|       book_author|           book_name|book_price|book_pub_year|
@@ -144,7 +144,7 @@ readBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: str
 newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: string ... 3 more fields]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával.
  * [Mintaadatokat betöltése a Cassandra API táblába](cassandra-api-load-data.md) Java-alkalmazás használatával.

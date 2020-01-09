@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl tulajdonság | Microsoft Docs
-description: A CLI-sfctl tulajdonságainak Service Fabric ismertetése.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl tulajdonság
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szövegegység-és lekérdezési tulajdonságok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901074"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639105"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
 Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
@@ -29,7 +20,7 @@ Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
 |Parancs|Leírás|
 | --- | --- |
 | delete | Törli a megadott Service Fabric tulajdonságot. |
-| Get | Lekéri a megadott Service Fabric tulajdonságot. |
+| elérés | Lekéri a megadott Service Fabric tulajdonságot. |
 | lista | Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása. |
 | Put | Létrehoz vagy frissít egy Service Fabric tulajdonságot. |
 

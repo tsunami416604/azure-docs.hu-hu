@@ -1,25 +1,16 @@
 ---
-title: A kódok gyakori hibáinak diagnosztizálása a Service Fabric használatával | Microsoft Docs
+title: A kódok gyakori hibáinak diagnosztizálása Service Fabric használatával
 description: Útmutató az Azure-Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463114"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>A kódok gyakori hibáinak diagnosztizálása Service Fabric használatával
 
@@ -63,9 +54,9 @@ Kilépési kód | Hexadecimális érték | Rövid leírás | Gyökérok | Lehets
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Ez a hiba esetenként azt jelenti, hogy a gép elfogyott az asztali tárolóhelyen. Ez különösen akkor valószínű, ha számos olyan folyamata van, amely a csomóponton futó alkalmazáshoz tartozik. | Ha a program nem úgy lett felépítve, hogy válaszoljon a CTRL + C jelekre, akkor engedélyezheti a **EnableActivateNoWindow** beállítást a fürt jegyzékfájljában. Ha engedélyezi ezt a beállítást, a kód csomagja nem grafikus felhasználói felülettel fog futni, és nem kap CTRL + C jeleket. Ez a művelet csökkenti az egyes folyamatok által felhasznált asztali tárolóhelyek mennyiségét is. Ha a kód csomagjának a CTRL + C jeleket kell kapnia, növelheti a csomópont asztali kupacjának méretét.
 3762504530 | 0xe0434352 | – | Ez az érték a felügyelt kódból (azaz .NET) származó kezeletlen kivétel hibakódját jelöli. | Ez a kilépési kód azt jelzi, hogy az alkalmazás olyan kivételt váltott ki, amely kezeletlen marad, és amely megszakította a folyamatot. A hiba kiváltásának első lépéseként hibakeresést végezhet az alkalmazás naplófájljaiban és a fájlok kiírásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [gyakori forgatókönyvek diagnosztizálásáról](service-fabric-diagnostics-common-scenarios.md).
 * Tekintse át a Azure Monitor naplók részletes áttekintését és a [Azure monitor áttekintését ismertető témakört](../operations-management-suite/operations-management-suite-overview.md).
-* További információ az észlelési [](../log-analytics/log-analytics-alerts.md) és diagnosztikai támogatásokról Azure monitor naplók riasztásáról.
+* További információ az észlelési és diagnosztikai támogatásokról Azure Monitor naplók [riasztásáról](../log-analytics/log-analytics-alerts.md) .
 * Ismerkedjen meg Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal.

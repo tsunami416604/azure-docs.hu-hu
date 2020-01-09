@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847866"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560256"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -129,11 +129,13 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
      Az eredménynek a "Running" **állapotot** kell mutatnia.
 
 1. Regisztrálja a proxyt.
-   * A 3. lépés befejezése után a proxy szolgáltatás fut a gépen. A szolgáltatás azonban még nem rendelkezik az Azure AD-vel való kommunikációhoz szükséges hitelesítő adatokkal. Az Azure AD-vel való regisztráció szükséges:
+   * A 3. lépés befejezése után a proxy szolgáltatás fut a gépen, de még nem rendelkezik az Azure AD-vel való kommunikációhoz szükséges hitelesítő adatokkal. Az Azure AD-vel való regisztráció szükséges:
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Ehhez a parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz. Helyi Active Directory tartományi rendszergazdai jogosultságokkal is rendelkeznie kell az erdő gyökértartományában. Miután ez a parancs egyszer sikeres volt egy proxy szolgáltatáshoz, a további meghívások sikeresek lesznek, de szükségtelenek.
+     Ehhez a parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz. Helyi Active Directory tartományi rendszergazdai jogosultságokkal is rendelkeznie kell az erdő gyökértartományában. Ezt a parancsmagot a helyi rendszergazdai jogosultságokkal rendelkező fiókkal is futtatnia kell.
+
+     Miután ez a parancs egyszer sikeres volt egy proxy szolgáltatáshoz, a további meghívások sikeresek lesznek, de szükségtelenek.
 
       A `Register-AzureADPasswordProtectionProxy` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure Multi-Factor Authentication-t, de a harmadik mód nem. További részletekért tekintse meg az alábbi megjegyzéseket.
 
@@ -177,7 +179,9 @@ Az Azure AD jelszavas védelméhez két kötelező telepítő szükséges. Ezek 
    > Előfordulhat, hogy egy adott Azure-bérlő esetében a parancsmag első futtatásakor észrevehető késleltetési idő van. Ha nem jelent hibát, ne aggódjon ez a késés.
 
 1. Regisztrálja az erdőt.
-   * Az `Register-AzureADPasswordProtectionForest` PowerShell-parancsmag használatával inicializálnia kell a helyszíni Active Directory erdőt az Azure-nal való kommunikációhoz szükséges hitelesítő adatokkal. A parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz. Helyszíni Active Directory vállalati rendszergazdai jogosultságokat is igényel. Ez a lépés erdőn keresztül egyszer fut.
+   * Az `Register-AzureADPasswordProtectionForest` PowerShell-parancsmag használatával inicializálnia kell a helyszíni Active Directory erdőt az Azure-nal való kommunikációhoz szükséges hitelesítő adatokkal.
+
+      A parancsmaghoz globális rendszergazdai hitelesítő adatok szükségesek az Azure-bérlőhöz.  Ezt a parancsmagot a helyi rendszergazdai jogosultságokkal rendelkező fiókkal is futtatnia kell. Helyszíni Active Directory vállalati rendszergazdai jogosultságokat is igényel. Ez a lépés erdőn keresztül egyszer fut.
 
       A `Register-AzureADPasswordProtectionForest` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure Multi-Factor Authentication-t, de a harmadik mód nem. További részletekért tekintse meg az alábbi megjegyzéseket.
 

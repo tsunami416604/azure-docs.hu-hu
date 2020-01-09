@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682254"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640941"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitásának megtervezése
 
@@ -47,7 +47,7 @@ Ha már rendelkezik olyan Storage-fiókkal vagy Data Lake Storage, amely tartalm
 
 Miután telepített egy HDInsight-fürtöt, további Azure Storage-fiókokat is csatolhat, vagy más Data Lake Storagehoz férhet hozzá. Az összes Storage-fióknak ugyanabban a helyen kell lennie, mint a fürtnek. Egy Data Lake Storage lehet egy másik helyen, de ez bizonyos adatolvasási/írási késést eredményezhet.
 
-Az Azure Storage [kapacitása korlátozott](../azure-subscription-service-limits.md#storage-limits), míg Data Lake Storage Gen1 gyakorlatilag korlátlan.
+Az Azure Storage [kapacitása korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), míg Data Lake Storage Gen1 gyakorlatilag korlátlan.
 
 A fürtök különböző tárolási fiókok kombinációjából is hozzáférhetnek. A tipikus példák a következők:
 
@@ -92,7 +92,17 @@ Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, va
 
 ## <a name="quotas"></a>Kvóták
 
-A célként megadott fürt virtuálisgép-méretének, méretezésének és típusának meghatározása után keresse meg az előfizetés aktuális kvóta-kapacitási korlátait. Ha eléri a kvóta korlátját, előfordulhat, hogy nem tud új fürtöket telepíteni vagy bővíteni a meglévő fürtöket további munkavégző csomópontok hozzáadásával. Az egyetlen kvóta a CPU magok kvótája, amely az egyes előfizetések régiójának szintjén található. Az előfizetés például 30 Magos korláttal rendelkezhet az USA keleti régiójában. Ha kvótát kell megadnia, hajtsa végre a következő lépéseket:
+A célként megadott fürt virtuálisgép-méretének, méretezésének és típusának meghatározása után keresse meg az előfizetés aktuális kvóta-kapacitási korlátait. Ha eléri a kvóta korlátját, előfordulhat, hogy nem tud új fürtöket telepíteni vagy bővíteni a meglévő fürtöket további munkavégző csomópontok hozzáadásával. Az egyetlen kvóta a CPU magok kvótája, amely az egyes előfizetések régiójának szintjén található. Az előfizetés például 30 Magos korláttal rendelkezhet az USA keleti régiójában. 
+
+Az elérhető magok vizsgálatához hajtsa végre a következő lépéseket:
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. Navigáljon a HDInsight-fürt **áttekintő** oldalára. 
+3. A bal oldali menüben kattintson a **kvóta korlátai**elemre.
+
+   A lap megjeleníti a használatban lévő magok számát, a rendelkezésre álló magok számát és az összes magot.
+
+Ha kvótát kell megadnia, hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1. A lap bal alsó részén kattintson a **Súgó és támogatás** elemre.
@@ -115,9 +125,9 @@ A célként megadott fürt virtuálisgép-méretének, méretezésének és típ
 
 [Az ügyfélszolgálattól kérheti a kvóta növelését](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Vannak azonban rögzített kvóták, például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Vannak azonban rögzített kvóták, például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök beállítása a Apache Hadoop-, Spark-, Kafka-és egyéb szolgáltatásokkal](hdinsight-hadoop-provision-linux-clusters.md): megtudhatja, hogyan állíthatja be és konfigurálhatja a fürtöket a HDInsight-ben Apache Hadoop, Spark, Kafka, Interactive kaptár, HBASE, ml Services vagy Storm használatával.
 * A [fürt teljesítményének figyelése](hdinsight-key-scenarios-to-monitor.md): megismerheti a HDInsight-fürt azon főbb forgatókönyveit, amelyek hatással lehetnek a fürt kapacitására.

@@ -1,92 +1,92 @@
 ---
-title: Migrálási lépéseket adatmigrálások a MongoDB-ből az Azure Cosmos DB API a mongodb-hez
-description: Ezt a dokumentumot adatmigrálás előfeltételeinek áttekintést nyújt a mongodb-hez a Cosmos DB-hez.
+title: Áttelepítés előtti lépések a Azure Cosmos DB API-MongoDB való áttelepítéshez
+description: Ez a dokumentum áttekintést nyújt a MongoDB és a Cosmos DB közötti adatáttelepítés előfeltételeiről.
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: roaror
-ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc7038d0ff5180f15a43268fd3f3aa0cbb0c7a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61330855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445196"
 ---
-# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Migrálási lépéseket adatmigrálások a MongoDB-ből az Azure Cosmos DB API a mongodb-hez
+# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 
-MongoDB-ből az adatok áttelepítése előtt (a helyszínen vagy a felhőben (IaaS)) az Azure Cosmos DB API a mongodb-hez, akkor:
+Mielőtt áttelepíti az adatait a MongoDB (helyszíni vagy a felhőben (IaaS)) Azure Cosmos DB a MongoDB API-ra, a következőkre van szüksége:
 
 1. [Azure Cosmos DB-fiók létrehozása](#create-account)
-2. [Becsülni az átviteli sebességet a számítási feladatokhoz szükséges](#estimate-throughput)
-3. [Válasszon ki egy optimális partíciókulcsot az adatok](#partitioning)
-4. [Az indexelési házirendet, amely lehet az adatok megismerése](#indexing)
+2. [A munkaterhelésekhez szükséges átviteli sebesség becslése](#estimate-throughput)
+3. [Válasszon ki egy optimális partíciós kulcsot az adataihoz](#partitioning)
+4. [Az adataihoz beállítható indexelési szabályzat ismertetése](#indexing)
 
-Ha már végrehajtotta a fenti előfeltételek az áttelepítéshez, tekintse meg a [MongoDB át adatokat az Azure Cosmos DB MongoDB API-](../dms/tutorial-mongodb-cosmos-db.md) a tényleges adatok áttelepítési utasításokért. Ha nem, ez a dokumentum útmutatást ad kezelje ezeket az előfeltételeket. 
+Ha már végrehajtotta a fenti előfeltételeket az áttelepítéshez, tekintse [meg a MongoDB Azure Cosmos db-adatok áttelepítése a MONGODB API](../dms/tutorial-mongodb-cosmos-db.md) -ját a tényleges adatáttelepítési utasításokhoz. Ha nem, ez a dokumentum útmutatást nyújt az előfeltételek kezeléséhez. 
 
-## <a id="create-account"></a> Az Azure Cosmos DB-fiók létrehozása 
+## <a id="create-account"></a>Azure Cosmos DB fiók létrehozása 
 
-A frissítés megkezdése előtt kell [létre Azure Cosmos DB API használatával a mongodb-hez készült Azure Cosmos-fiókot](create-mongodb-dotnet.md). 
+Az áttelepítés megkezdése előtt létre kell [hoznia egy Azure Cosmos-fiókot a MongoDB-hez készült Azure Cosmos db API](create-mongodb-dotnet.md)-val. 
 
-A fiók létrehozásakor kiválaszthatja a beállítások [terjessze globálisan](distribute-data-globally.md) adatait. A beállítás engedélyezése többrégiós írási műveletek (vagy több főkiszolgálós configuration), amely lehetővé teszi, hogy a régió is az írási és olvasási régió is rendelkezik.
+A fiók létrehozásakor megadhatja a beállításokat, hogy [globálisan terjessze](distribute-data-globally.md) az adatait. Lehetősége van a többrégiós írások (vagy a több főkiszolgálós konfiguráció) engedélyezésére is, amely lehetővé teszi, hogy mindegyik régió írási és olvasási régióként is használható legyen.
 
-![Account-Creation](./media/mongodb-pre-migration/account-creation.png)
+![Fiók létrehozása](./media/mongodb-pre-migration/account-creation.png)
 
-## <a id="estimate-throughput"></a> A számítási feladatok átviteli szükség becslése
+## <a id="estimate-throughput"></a>A számítási feladatokhoz szükséges átviteli sebesség becslése
 
-Segítségével az áttelepítés megkezdése előtt a [Database Migration Service (DMS)](../dms/dms-overview.md), az összeg kiosztása az Azure Cosmos-adatbázisok és gyűjtemények átviteli becslései szerint kell.
+Mielőtt elindítja az áttelepítést a [Database Migration Service (DMS)](../dms/dms-overview.md)használatával, becsülje meg az Azure Cosmos-adatbázisok és-gyűjtemények számára rendelkezésre álló átviteli sebesség mértékét.
 
-Átviteli sebesség bővítheti a következők:
+Az átviteli sebesség kiépíthető a következők valamelyikére:
 
 - Gyűjtemény
 
 - Adatbázis
 
 > [!NOTE]
-> A fenti kombinációját is lehet, ahol az adatbázis egyes gyűjtemények előfordulhat, hogy rendelkezik dedikált kiosztott átviteli sebesség, és másokkal megoszthatják az átviteli sebességet. Részletekért tekintse meg a [teljesítmény beállítása az adatbázis és a egy tároló](set-throughput.md) lapot.
+> A fentiek kombinációja is lehet, ha egy adatbázis egyes gyűjteményei dedikált átviteli sebességgel rendelkezhetnek, és mások is megoszthatják az átviteli sebességet. További részletekért tekintse meg az [átviteli sebesség beállítása egy adatbázisban és a tároló](set-throughput.md) oldalon.
 >
 
-Kell először eldöntheti, hogy szeretné-e kiépítése az adatbázis vagy a gyűjtemény szintű teljesítményt, illetve mindkettőt. Általában javasoljuk egy dedikált átviteli sebesség konfigurálásához, a gyűjtemény szintjén. Az adatbázis szintjén kiépítési átviteli sebesség lehetővé teszi, hogy a gyűjtemények a kiosztott átviteli sebesség megosztani az adatbázisban. Megosztott átviteli sebességgel azonban nem garantált az egy adott egyéni gyűjtemények átviteli sebességet, és kiszámítható teljesítményt biztosítanak a bármilyen adott gyűjtemény nem kap.
+Először döntse el, hogy szeretné-e kiépíteni az adatbázis vagy a gyűjtési szint átviteli sebességét, vagy a kettő kombinációját. Általánosságban elmondható, hogy egy dedikált átviteli sebességet kell beállítani a gyűjtemény szintjén. Az adatbázis szintjén kiépített átviteli sebesség lehetővé teszi, hogy az adatbázisban lévő gyűjtemények megosszák a kiosztott átviteli sebességet. A megosztott átviteli sebességnek megfelelően azonban nem garantálható egy adott átviteli sebesség az egyes gyűjtemények esetében, és nem érhető el előre jelezhető teljesítmény egy adott gyűjteményen.
 
-Ha nem biztos abban, milyen átviteli sebességre kell minden egyes gyűjtemény számára dedikált, kiválaszthatja az adatbázisszintű átviteli sebességet. Is felfoghatók a kiosztott átviteli sebesség konfigurált az Azure Cosmos Database, egy logikai megfelelője a MongoDB virtuális gép vagy fizikai kiszolgálók számítási kapacitását, de a költséghatékonyabb lehetővé teszi az rugalmasan méretezhető. További információkért lásd: [az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli](set-throughput.md).
+Ha nem biztos abban, hogy mekkora átviteli sebességet kell kijelölni az egyes gyűjteményekhez, az adatbázis szintű átviteli sebességet is kiválaszthatja. Gondolja át az Azure Cosmos-adatbázison konfigurált kiépített átviteli sebességet a MongoDB virtuális gép vagy a fizikai kiszolgáló számítási kapacitásának megfelelő logikai értékre, de költséghatékonyan, a rugalmas skálázási képességgel. További információ: az [átviteli sebesség kiépítése az Azure Cosmos-tárolók és-adatbázisok](set-throughput.md)számára.
 
-Ha üzembe helyezi az átviteli sebesség az adatbázis szintjén, partíció/szegmenskulccsal rendelkező adatbázis belül létrehozott összes gyűjteményt kell létrehozni. A particionálás további információkért lásd: [particionálás és a horizontális skálázás az Azure Cosmos DB](partition-data.md). Ha nem ad meg egy partíció-és szegmenskulcs az áttelepítés során, az Azure Database Migration Service automatikusan kitölti a szegmensek kulcsmező egy *_azonosítója* attribútum, amely automatikusan jön létre minden egyes dokumentum.
+Ha az átviteli sebességet az adatbázis szintjén hozza létre, az abban az adatbázisban létrehozott összes gyűjteményt partíció/szegmens kulccsal kell létrehozni. További információ a particionálásról: [particionálás és horizontális skálázás Azure Cosmos DBban](partition-data.md). Ha az áttelepítés során nem ad meg partíciót/szegmens kulcsot, a Azure Database Migration Service automatikusan feltölti a szegmens kulcs mezőt egy olyan *_id* attribútummal, amely automatikusan létrejön az egyes dokumentumokhoz.
 
-### <a name="optimal-number-of-request-units-rus-to-provision"></a>Üzembe helyezni a kérelemegység (RU) optimális számát
+### <a name="optimal-number-of-request-units-rus-to-provision"></a>A kiépíteni kívánt kérési egységek (RUs) optimális száma
 
-Az Azure Cosmos DB az átviteli sebességet előre ki van építve, és a másodpercenkénti Kérelemegységek (RU) mérve. Ha a virtuális gép vagy a helyszíni MongoDB futó számítási feladatokat, úgy, RU a mint egy egyszerű absztrakciós fizikai erőforrások, például a méretét, a virtuális gép vagy a-egy helyszíni kiszolgáló és rendelkeznek, például az erőforrások memória, Processzor, az iops-t. 
+Azure Cosmos DB az átviteli sebességet előre kiépítve, és a rendszer a kérelmek egységében (RU) mérve másodpercenként méri. Ha olyan munkaterhelésekkel rendelkezik, amelyek virtuális gépen vagy helyszíni MongoDB futnak, a fizikai erőforrások egyszerű absztrakciója, például egy virtuális gép vagy egy helyszíni kiszolgáló mérete, valamint az általuk birtokolt erőforrások, például a memória, a processzor és a IOPs. 
 
-Virtuális gépek és a helyszíni kiszolgálók eltérően RUs is skálázható felfelé és lefelé bármikor egyszerűen. A fenntartott egységek számát másodpercek alatt módosíthatja, és csak egy adott egy órás időszak kiosztott Kérelemegységek maximális száma lesznek számlázva. További információkért lásd: [Azure Cosmos DB-Kérésegységeiről](request-units.md).
+A virtuális gépekkel és a helyszíni kiszolgálókkal ellentétben a RUs bármikor könnyedén méretezhető. A kiépített RUs száma másodpercek alatt módosítható, és csak az adott egyórás időszakra kiépített RUs maximális száma után számítunk fel díjat. További információ: [kérelmek egységei a Azure Cosmos DBban](request-units.md).
 
-Kulcsfontosságú tényező befolyásolja a szükséges fenntartott egységek számát a következők:
-- **Elem (azaz a dokumentum) mérete**: Egy elem/dokumentum mérete nő, ahogy a fenntartott egységek számát felhasznált olvasására vagy írására elem/dokumentum is nő.
-- **Konfigurációelem-tulajdonság száma**: Feltéve, hogy a [alapértelmezett indexelési](index-overview.md) az összes tulajdonság a fenntartott egységek számát írhat egy elem növeli az elem tulajdonság száma növekszik, felhasznált. Csökkentheti a kérelem-egységek felhasználását az írási műveletek által [száma a indexelt tulajdonságok](index-policy.md).
-- **Az egyidejű művelet**: Felhasznált egységek is függ, mely különböző CRUD-műveletek (például az írás, Olvasás, frissítések, törli) az gyakran és a bonyolultabb lekérdezések végrehajtásakor kérelmet. Használhat [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) a kimenetben az aktuális MongoDB-adatok egyidejűségi igényeit.
-- **Lekérdezési minták**: A lekérdezés összetettségétől befolyásolja a lekérdezés által felhasznált kérelemegységek számát.
+A következő kulcsfontosságú tényezők befolyásolják a szükséges RUs-ket:
+- **Elem (például dokumentum) mérete**: az elem/dokumentum mérete nő, az elem/dokumentum olvasásához vagy írásához felhasznált RUs száma is nő.
+- **Elem tulajdonságainak száma**: Ha az összes tulajdonságnál az [alapértelmezett indexelést használja](index-overview.md) , az elem írásához felhasznált RUs száma nő, mivel az elem tulajdonságainak száma nő. Az [indexelt tulajdonságok számának korlátozásával](index-policy.md)csökkentheti a kérések egység általi felhasználását írási műveletekhez.
+- **Egyidejű műveletek**: a felhasználható kérelmek köre attól függ, hogy milyen gyakorisággal történik a különböző szifilisz-műveletek (például írások, olvasások, frissítések, törlések) és összetettebb lekérdezések végrehajtása. A [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) segítségével az aktuális MongoDB-adatainak párhuzamossági igényeit is kipróbálhatja.
+- **Lekérdezési minták**: a lekérdezés bonyolultsága befolyásolja, hogy a lekérdezés hány kérési egységet használ fel.
 
-Ha JSON-fájlok használatával exportálja [mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) , és ismerje meg, hány írási, olvasási, frissíti, és törli az adott másodpercenként kerül sor, akkor használhatja a [Azure Cosmos DB-kapacitás planner](https://www.documentdb.com/capacityplanner) becslése érdekében a kezdeti sok Kérelemegységet üzembe helyezni. A capacity planner nem kéttényezős díja beleszámít a összetettebb lekérdezéseket. Ezért ha bonyolult lekérdezéseket az adatokon, további Kérelemegységet fognak használni. A kalkulátor is feltételezi, hogy az összes mezőt indexeli ugyan, és munkamenet-konzisztencia szolgál. A legjobb módszer a lekérdezések költsége van az adatok (vagy a mintaadatok) áttelepítése az Azure Cosmos DB [csatlakozás a Cosmos DB végpont](connect-mongodb-account.md) mintalekérdezés futtatását a MongoDB Shell használatával, és a `getLastRequestStastistics` parancs használatával beszerezheti az kérelem számolunk fel, amely kimenete felhasznált Kérelemegységek számát:
+Ha a [mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) használatával exportálja a JSON-fájlokat, és megértette, hogy hány írási, olvasási, frissítési és törlési műveletet hajt végre, akkor a [Azure Cosmos db Capacity Planner](https://www.documentdb.com/capacityplanner) segítségével megbecsülheti a kiépíthető RUs kezdeti számát. A Capacity Planner nem befolyásolja az összetettebb lekérdezések költségeit. Ha tehát összetett lekérdezésekkel rendelkezik az adatain, a rendszer további RUs-t fog használni. A számológép azt is feltételezi, hogy az összes mező indexelve van, és a munkamenet konzisztenciája van használatban. A lekérdezési költségek megismerésének legjobb módja az adatok (vagy mintaadatok) Azure Cosmos DBba való migrálása, a [Cosmos db végponthoz való kapcsolódás](connect-mongodb-account.md) és a MongoDB-rendszerhéjból való lekérdezés futtatása a `getLastRequestStastistics` parancs használatával a kérések díja, amely a felhasználható RUs mennyiségét fogja kinyerni:
 
 `db.runCommand({getLastRequestStatistics: 1})`
 
-Ez a parancs a következőhöz hasonló JSON-dokumentumok:
+Ez a parancs a következőhöz hasonló JSON-dokumentumot fog kiadni:
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-Miután megismerkedett a lekérdezések által felhasznált Kérelemegységek számát, és az egyidejűséget van szüksége az adott lekérdezés, módosíthatja a fenntartott egységek számát. Fenntartott egységek optimalizálása nem egyszeri esemény – érdemes folyamatosan optimalizálhatja vagy vertikális felskálázás a RUs kiépített, attól függően, hogy, nem várt érték egy nagy forgalmú figyelésekor nagy terhelést vagy adatok importálása.
+Ha megértette, hogy a lekérdezés által felhasznált RUs száma és az adott lekérdezés párhuzamossága szükséges, beállíthatja a kiépített RUs számát. Az RUs optimalizálása nem egyszeri esemény – folyamatosan optimalizálni vagy bővíteni kell az RUs kiosztását, attól függően, hogy nem várható-e nagy adatforgalom, vagy az adatok importálásával szemben.
 
-## <a id="partitioning"></a>Válassza ki a partíciós kulcs
-A particionálás nem szempont, például az Azure Cosmos DB egy globálisan elosztott adatbázis-ba való migrálás előtt a fő pont. Az Azure Cosmos DB használja a particionálás egy adatbázisban az igényeinek a méretezhetőség és teljesítmény az alkalmazás egyes tárolók méretezését. A particionálás, a tárolóban lévő elemek meg vannak osztva nevű logikai partíció különböző alkészleteiben. Részletek és az adatok a megfelelő partíciókulcs kiválasztása a javaslatok, tekintse meg a [kiválasztása egy Partíciókulcsot szakasz](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
+## <a id="partitioning"></a>Válassza ki a partíciós kulcsot
+A particionálás kulcsfontosságú szempont, mielőtt migrál egy globálisan elosztott adatbázisba, például Azure Cosmos DBba. Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat egy adatbázisban az alkalmazás méretezhetőségének és teljesítményének kielégítéséhez. A particionálás során a tároló elemei a logikai partíciók nevű különálló részhalmazokra vannak osztva. Az adatok megfelelő partíciós kulcsának kiválasztásával kapcsolatos részletekért és javaslatokért tekintse meg a [partíciós kulcs kiválasztása szakaszt](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
 
-## <a id="indexing"></a>Az adatok indexelése
-Alapértelmezés szerint az Azure Cosmos DB indexeli az Adatbetöltési esetén minden adatmezőket. Módosíthatja a [indexelési szabályzat](index-policy.md) bármikor az Azure Cosmos DB-ben. Sőt milyen gyakran ajánlott kapcsolja ki az indexelés adatainak áttelepítésekor, majd kapcsolja vissza, ha az adatok már Cosmos DB-ben. Indexelő olvashat további részletes a [indexelése az Azure Cosmos DB](index-overview.md) szakaszban. 
+## <a id="indexing"></a>Az adatai indexelése
+Alapértelmezés szerint a Azure Cosmos DB indexeli az összes adatmezőt a betöltés után. Az [indexelési szabályzatot](index-policy.md) bármikor módosíthatja Azure Cosmos DBban. Valójában általában ajánlott kikapcsolni az indexelést az adatáttelepítés során, majd visszakapcsolja azt, ha az adatCosmos DBban már szerepel. Az indexeléssel kapcsolatos további részletekért tekintse meg a Azure Cosmos DB szakaszban található [indexeléssel](index-overview.md) foglalkozó témakört. 
 
-[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatikusan áttelepíti a MongoDB-gyűjteményeket, amelyek egyedi indexeket. Az egyedi indexek azonban az áttelepítés előtt kell létrehozni. Az Azure Cosmos DB nem támogatja a egyedi indexek létrehozása, ha már van adatok ebben a gyűjteményben. További információkért lásd: [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md).
+A [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatikusan áttelepíti a MongoDB-gyűjteményeket egyedi indexekkel. Az áttelepítést megelőzően azonban létre kell hozni az egyedi indexeket. A Azure Cosmos DB nem támogatja az egyedi indexek létrehozását, ha már szerepelnek a gyűjtemények adatai. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
 
-## <a name="next-steps"></a>További lépések
-* [A MongoDB-adatok áttelepítése a Cosmos DB-hez a Database Migration Service segítségével.](../dms/tutorial-mongodb-cosmos-db.md) 
-* [Az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli](set-throughput.md)
+## <a name="next-steps"></a>Következő lépések
+* [Telepítse át a MongoDB-adatait Cosmos DB a Database Migration Service használatával.](../dms/tutorial-mongodb-cosmos-db.md) 
+* [Átviteli sebesség az Azure Cosmos-tárolók és-adatbázisok számára](set-throughput.md)
 * [Particionálás az Azure Cosmos DB-ben](partition-data.md)
-* [Az Azure Cosmos DB globális terjesztését](distribute-data-globally.md)
-* [Az Azure Cosmos DB indexelése](index-overview.md)
-* [Az Azure Cosmos DB-kérésegységeiről](request-units.md)
+* [Globális eloszlás Azure Cosmos DB](distribute-data-globally.md)
+* [Indexelés Azure Cosmos DB](index-overview.md)
+* [Az Azure Cosmos DB kérelemegységei](request-units.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dcd2f5f00c00ce0f74c07bfb7ba8e81316d9a53e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459981"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>VHD feltöltése az Azure-ba a Azure PowerShell használatával
 
@@ -27,7 +27,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 
 - Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps).
-- Ha a virtuális merevlemezt a PEM-ról kívánja feltölteni: az Azure-hoz [készült](prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
+- Ha a virtuális merevlemezt a helyszínen kívánja feltölteni: az Azure-hoz [készült](prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
 - Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása

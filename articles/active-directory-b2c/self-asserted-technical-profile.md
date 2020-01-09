@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bfa8982fb49b31540d1926bdeb75a96dc1d79cf0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425618"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -38,7 +38,7 @@ Az alábbi példa egy önérvényesített technikai profilt mutat be az e-mailek
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-Önérvényesített technikai profilban a **szabályzattípushoz** és a **InputClaimsTransformations** elemek használatával előre feltöltheti az önérvényesített lapon megjelenő jogcímek értékét (kimeneti jogcímek). Például a profil szerkesztése területen a felhasználói út először beolvassa a felhasználói profilt a Azure AD B2C Directory szolgáltatásból, majd az önérvényesített technikai profil beállítja a bemeneti jogcímeket a felhasználói profilban tárolt felhasználói adatokkal. Ezeket a jogcímeket a rendszer a felhasználói profilból gyűjti be, majd bemutatja azt a felhasználót, aki szerkesztheti a meglévő adatokat.
+Önérvényesített technikai profilban a **szabályzattípushoz** és a **InputClaimsTransformations** elemek használatával előre feltöltheti az önérvényesített lapon megjelenő jogcímek értékét (a megjelenítési jogcímeket). Például a profil szerkesztése területen a felhasználói út először beolvassa a felhasználói profilt a Azure AD B2C Directory szolgáltatásból, majd az önérvényesített technikai profil beállítja a bemeneti jogcímeket a felhasználói profilban tárolt felhasználói adatokkal. Ezeket a jogcímeket a rendszer a felhasználói profilból gyűjti be, majd bemutatja azt a felhasználót, aki szerkesztheti a meglévő adatokat.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,31 +51,92 @@ Az alábbi példa egy önérvényesített technikai profilt mutat be az e-mailek
   </InputClaims>
 ```
 
+## <a name="display-claims"></a>Jogcímek megjelenítése
+
+A megjelenítési jogcímek szolgáltatás jelenleg **előzetes**verzióban érhető el.
+
+A **DisplayClaims** elem tartalmazza azon jogcímek listáját, amelyeket a képernyőn kell megjeleníteni az adatok felhasználónak való összegyűjtéséhez. A kimeneti jogcímek értékeinek előre való feltöltéséhez használja a korábban leírt bemeneti jogcímeket. Az elem tartalmazhat alapértelmezett értéket is.
+
+A **DisplayClaims** lévő jogcímek sorrendje határozza meg, hogy a Azure ad B2C milyen sorrendben jelenítse meg a jogcímeket a képernyőn. Ha szeretné kényszeríteni a felhasználót, hogy adjon meg egy értéket egy adott jogcím számára, állítsa a **DisplayClaim** elem **kötelező** attribútumát `true`értékre.
+
+A **DisplayClaims** -gyűjtemény **claimType** elemének a **UserInputType** elemet kell beállítania a Azure ad B2C által támogatott összes felhasználói bemeneti típusra. Például `TextBox` vagy `DropdownSingleSelect`.
+
+### <a name="add-a-reference-to-a-displaycontrol"></a>Hivatkozás hozzáadása egy DisplayControl
+
+A megjelenítési jogcímek gyűjteményében a létrehozott [DisplayControl](display-controls.md) mutató hivatkozást is megadhat. A megjelenítési vezérlő egy olyan felhasználói felületi elem, amely speciális funkciókkal rendelkezik, és a Azure AD B2C háttérrendszer-szolgáltatással kommunikál. Lehetővé teszi a felhasználó számára, hogy műveleteket hajtson végre az oldalon, amely a háttérbeli érvényesítési technikai profilt hívja meg. Például egy e-mail-cím, telefonszám vagy ügyfél-hűség számának ellenőrzése.
+
+A következő példában `TechnicalProfile` szemlélteti a megjelenítési vezérlőkkel rendelkező megjelenítési jogcímek használatát.
+
+* Az első megjelenítési jogcím a `emailVerificationControl` megjelenítési vezérlőelemre hivatkozik, amely összegyűjti és ellenőrzi az e-mail-címet.
+* Az ötödik megjelenítési jogcím a `phoneVerificationControl` megjelenítési vezérlőelemre hivatkozik, amely a telefonszámot gyűjti és ellenőrzi.
+* A többi megjelenítési jogcímet a felhasználó ClaimTypes gyűjti.
+
+```XML
+<TechnicalProfile Id="Id">
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim DisplayControlReferenceId="phoneVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
+</TechnicalProfile>
+```
+
+Ahogy azt korábban említettük, a megjelenítési vezérlőelemre mutató hivatkozás a saját érvényesítését is futtathatja, például az e-mail cím ellenőrzésével. Emellett az önérvényesített oldal támogatja az érvényesítési technikai profil használatát a teljes oldal ellenőrzéséhez, beleértve a felhasználói bevitelt (jogcím-típusok vagy megjelenítési vezérlők), mielőtt továbblép a következő előkészítési lépésre.
+
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>A megjelenítési jogcímek és a kimeneti jogcímek használatának összevonása körültekintően
+
+Ha egy vagy több **DisplayClaim** -elemet ad meg egy önérvényesített technikai profilban, *minden* olyan jogcím esetében DisplayClaim kell használnia, amelyet a képernyőn megjeleníteni kíván, és a felhasználótól gyűjt. Nem jelenik meg a kimeneti jogcímek egy olyan önérvényesített technikai profilban, amely legalább egy megjelenítési jogcímet tartalmaz.
+
+Vegye figyelembe a következő példát, amikor egy `age` jogcím **kimeneti** jogcímként van definiálva egy alapházirendben. Ahhoz, hogy megjelenjenek a megjelenítési jogcímek az önérvényesített technikai profilhoz, a rendszer a `age` jogcímet jeleníti meg a képernyőn a felhasználótól származó adatgyűjtés céljából:
+
+```XML
+<TechnicalProfile Id="id">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="age" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+Ha egy olyan levélre vonatkozó házirend, amely ezt az alapszintű örökli, a `officeNumber` **megjelenítési** jogcímként adja meg:
+
+```XML
+<TechnicalProfile Id="id">
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="officeNumber" />
+  </DisplayClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="officeNumber" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+Az alapházirendben lévő `age` jogcím már nem jelenik meg a képernyőn a felhasználó számára – ez gyakorlatilag "rejtett". A `age` jogcím megjelenítéséhez és a kor értékének a felhasználótól való összegyűjtéséhez hozzá kell adnia egy `age` **DisplayClaim**.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A **OutputClaims** elem tartalmazza azon jogcímek listáját, amelyeket be kell mutatni az adatoknak a felhasználótól való összegyűjtéséhez. A kimeneti jogcímek egyes értékekkel való előzetes feltöltéséhez használja a korábban leírt bemeneti jogcímeket. Az elem tartalmazhat alapértelmezett értéket is. A **OutputClaims** lévő jogcímek sorrendje vezérli azt a sorrendet, amely Azure ad B2C a jogcímeket a képernyőn jeleníti meg. A **DefaultValue** attribútum csak akkor lép életbe, ha a jogcímet korábban még nem állították be. Ha azonban korábban már be van állítva egy korábbi előkészítési lépésben, akkor is, ha a felhasználó üresen hagyja az értéket, az alapértelmezett érték nem lép érvénybe. Az alapértelmezett érték használatának kényszerítéséhez állítsa `true`értékre a **AlwaysUseDefaultValue** attribútumot. Ha szeretné kényszeríteni a felhasználót, hogy adjon meg egy értéket egy adott kimeneti jogcím számára, állítsa a **OutputClaims** elem **kötelező** attribútumát `true`értékre.
+A **OutputClaims** elem a következő előkészítési lépéshez visszaadott jogcímek listáját tartalmazza. A **DefaultValue** attribútum csak akkor lép életbe, ha a jogcím még nincs beállítva. Ha egy korábbi előkészítési lépésben lett beállítva, az alapértelmezett érték nem lép érvénybe, még akkor sem, ha a felhasználó üresen hagyja az értéket. Az alapértelmezett érték használatának kényszerítéséhez állítsa `true`értékre a **AlwaysUseDefaultValue** attribútumot.
 
-A **OutputClaims** -gyűjtemény **claimType** elemének a **UserInputType** elemet kell beállítania a Azure ad B2C által támogatott összes felhasználói beviteli típushoz, például `TextBox` vagy `DropdownSingleSelect`. Vagy a **OutputClaim** elemnek egy **DefaultValue**-t kell beállítania.
+> [!NOTE]
+> Az Identity Experience Framework (IEF) korábbi verzióiban a kimeneti jogcímeket a rendszer a felhasználó adatainak gyűjtésére használta. Ha adatokat szeretne gyűjteni a felhasználótól, használjon helyette egy **DisplayClaims** -gyűjteményt.
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
-A következő kimeneti jogcím mindig `live.com`ra van beállítva:
+### <a name="when-you-should-use-output-claims"></a>Ha kimeneti jogcímeket szeretne használni
 
-```XML
-<OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" AlwaysUseDefaultValue="true" />
-```
+Az önellenőrzött technikai profilokban a kimeneti jogcímek gyűjteménye a következő előkészítési lépéshez adja vissza a jogcímeket.
 
-### <a name="use-case"></a>Használati eset
+A kimeneti jogcímeket a következőket kell használnia:
 
-A kimeneti jogcímek négy forgatókönyvből állnak:
-
-- A **kimeneti jogcímek összegyűjtése a felhasználótól** – Ha adatokat kell gyűjtenie a felhasználótól, például a születési dátumtól, a jogcímet hozzá kell adnia a **OutputClaims** gyűjteményhez. A felhasználónak megjelenő jogcímeknek meg kell adniuk a **UserInputType**, például `TextBox` vagy `DropdownSingleSelect`. Ha az önérvényesített technikai profil egy olyan érvényesítési műszaki profilt tartalmaz, amely ugyanazt a jogcímet adja vissza, Azure AD B2C nem jelent jogcímet a felhasználónak. Ha nincs olyan kimeneti jogcím, amely a felhasználó felé mutat, Azure AD B2C kihagyja a technikai profilt.
-- **Alapértelmezett érték beállítása a kimeneti jogcímek esetében** – a felhasználótól származó adatok begyűjtése vagy az érvényesítési technikai profilból való visszaküldése nélkül. A `LocalAccountSignUpWithLogonEmail` önérvényesített technikai profil állítja be a **végrehajtott SelfAsserted-bemeneti** jogcímet, hogy `true`.
+- **A jogcímeket kimeneti jogcím-átalakítás**eredményezi.
+- A **kimeneti jogcímek alapértelmezett értékének beállítása** anélkül, hogy adatokat kellene begyűjtenie a felhasználótól, vagy vissza kell adni az adatokat az érvényesítési technikai profilból. A `LocalAccountSignUpWithLogonEmail` önérvényesített technikai profil állítja be a **végrehajtott SelfAsserted-bemeneti** jogcímet, hogy `true`.
 - **Az érvényesítési technikai profil a kimeneti jogcímeket adja vissza** – a technikai profil egy érvényesítési műszaki profilt hívhat meg, amely visszaadja a jogcímeket. Előfordulhat, hogy fel kívánja készíteni a jogcímeket, és visszaadja azokat a felhasználói utazás következő hangolási lépéseihez. Ha például helyi fiókkal jelentkezik be, a `SelfAsserted-LocalAccountSignin-Email` nevű önérvényesített technikai profil meghívja a `login-NonInteractive`nevű érvényesítési technikai profilt. Ez a technikai profil ellenőrzi a felhasználói hitelesítő adatokat, és a felhasználói profilt is visszaadja. Ilyen például a "userPrincipalName", a "displayName", a "givenName" és a "vezetéknév".
-- **Jogcímek kimeneti jogcímek átalakításán keresztüli kimenete**
+- A **megjelenítési vezérlő visszaadja a kimeneti jogcímeket** – a technikai profil egy [megjelenítési vezérlőelemre](display-controls.md)mutató hivatkozással rendelkezhet. A megjelenítési vezérlő bizonyos jogcímeket ad vissza, például az ellenőrzött e-mail-címet. Előfordulhat, hogy fel kívánja készíteni a jogcímeket, és visszaadja azokat a felhasználói utazás következő hangolási lépéseihez. A megjelenítési vezérlő szolgáltatás jelenleg **előzetes**verzióban érhető el.
 
-A következő példában a `LocalAccountSignUpWithLogonEmail` önérvényesített technikai profil a kimeneti jogcímek használatát mutatja be, és a **SelfAsserted-input** parancsot a `true`. A `objectId`, `authenticationSource``newUser` jogcímek a `AAD-UserWriteUsingLogonEmail` érvényesítési technikai profil kimenetét jelentik, és nem jelennek meg a felhasználó számára.
+Az alábbi példa azt mutatja be, hogyan használható egy önérvényesített technikai profil, amely a megjelenítési jogcímeket és a kimeneti jogcímeket egyaránt használja.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -86,32 +147,30 @@ A következő példában a `LocalAccountSignUpWithLogonEmail` önérvényesítet
     <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
     <Item Key="language.button_continue">Create</Item>
   </Metadata>
-  <CryptographicKeys>
-    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-  </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" />
   </InputClaims>
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim DisplayControlReferenceId="SecondaryEmailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
   <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" Required="true" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
-    <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
     <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
     <OutputClaim ClaimTypeReferenceId="authenticationSource" />
     <OutputClaim ClaimTypeReferenceId="newUser" />
-
-    <!-- Optional claims, to be collected from the user -->
-    <OutputClaim ClaimTypeReferenceId="displayName" />
-    <OutputClaim ClaimTypeReferenceId="givenName" />
-    <OutputClaim ClaimTypeReferenceId="surName" />
   </OutputClaims>
   <ValidationTechnicalProfiles>
     <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
   </ValidationTechnicalProfiles>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
 </TechnicalProfile>
-
 ```
 
 ## <a name="persist-claims"></a>Jogcímek fenntartása
@@ -142,16 +201,3 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
 A **CryptographicKeys** elem nincs használatban.
-
-
-
-
-
-
-
-
-
-
-
-
-

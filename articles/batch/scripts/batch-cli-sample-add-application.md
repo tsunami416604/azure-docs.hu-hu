@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban | Microsoft Docs
-description: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban
+title: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban
+description: Ez a minta azt mutatja be, hogyan adhat hozzá egy alkalmazást Azure Batch készlettel vagy feladattal való használatra.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: ba7f64910e033751df7d158a6fddf36371f2933f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9c580fa7ed4834ca516d373b3c7bb47f4cfd1b38
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390464"
 ---
-# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI-példa: Alkalmazás hozzáadása Azure Batch-fiókhoz
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Parancssori felületi példa: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
 
 Ez a szkript bemutatja, hogyan lehet hozzáadni egy alkalmazást az Azure Batch-készlettel vagy feladattal való használatra. Amikor előkészít egy alkalmazást a Batch-fiókjához való hozzáadáshoz, csomagolja be a végrehajtható fájlt – valamennyi függőségével együtt – egy zip-fájlba. 
 
@@ -57,6 +57,6 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az batch application set](/cli/azure/batch/application#az-batch-application-set) | Frissíti egy alkalmazás tulajdonságait.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).

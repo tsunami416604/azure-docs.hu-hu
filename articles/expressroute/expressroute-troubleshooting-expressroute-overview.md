@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033792"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551981"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt az ExpressRoute-kapcsolatok ellenőrzéséhez és hibakereséséhez. A ExpressRoute kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amelyet általában egy kapcsolat szolgáltatója is megkönnyít. A ExpressRoute-kapcsolat hagyományosan három különálló hálózati zónát foglal magában, az alábbiak szerint:
 
--   Ügyfél hálózata
+-   Ügyfélhálózat
 -   Szolgáltatói hálózat
 -   Microsoft Datacenter
 
 > [!NOTE]
-> A ExpressRoute közvetlen kapcsolati modellben (10/100 GB/s sávszélesség esetén) a cusomters közvetlenül kapcsolódhat a Microsoft Enterprise Edge (MSEE) útválasztók portjához. Ezért a közvetlen kapcsolati modellben csak az ügyfél és a Microsoft hálózati zónái érhetők el.
+> Az ExpressRoute közvetlen kapcsolati modellben (10/100 GB/s sávszélesség esetén) az ügyfelek közvetlenül kapcsolódhatnak a Microsoft Enterprise Edge (MSEE) útválasztók portjához. Ezért a közvetlen kapcsolati modellben csak az ügyfél és a Microsoft hálózati zónái érhetők el.
 >
 
 
@@ -288,8 +288,8 @@ A nem létező társításhoz tartozó parancs mintájának kimenete a következ
     Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
     StatusCode: 400
 
-## <a name="next-steps"></a>További lépések
-További információ vagy a Súgó tekintse meg az alábbi hivatkozásokat:
+## <a name="next-steps"></a>Következő lépések
+További információért és segítségért tekintse meg az alábbi hivatkozásokat:
 
 - [Microsoft ügyfélszolgálata][Support]
 - [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása][CreateCircuit]

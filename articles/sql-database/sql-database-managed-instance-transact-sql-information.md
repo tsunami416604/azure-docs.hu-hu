@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707643"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552746"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -48,7 +48,7 @@ A [magas rendelkezésre állás](sql-database-high-availability.md) a felügyelt
 - [RENDELKEZÉSRE ÁLLÁSI CSOPORT ELDOBÁSA](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql) utasítás [set HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) záradéka
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Biztonsági mentés
 
 A felügyelt példányok automatikus biztonsági mentéssel rendelkeznek, így a felhasználók létrehozhatnak teljes adatbázis-`COPY_ONLY` biztonsági mentést. A különbözeti, a napló és a fájl pillanatképének biztonsági mentése nem támogatott.
 
@@ -61,7 +61,7 @@ A felügyelt példányok automatikus biztonsági mentéssel rendelkeznek, így a
   - Szalagos beállítások: `REWIND`, `NOREWIND`, `UNLOAD`és `NOUNLOAD` nem támogatott.
   - A naplózásra jellemző beállítások: a `NORECOVERY`, a `STANDBY`és a `NO_TRUNCATE` nem támogatott.
 
-Korlátozások 
+Korlátozások: 
 
 - Felügyelt példány esetén biztonsági mentést készíthet egy példány-adatbázisról olyan biztonsági másolatra, amelyen akár 32 sáv is található, ami elegendő a 4 TB-ig terjedő adatbázisokhoz, ha biztonsági mentési tömörítést használ.
 - Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` a szolgáltatás által felügyelt transzparens adattitkosítás (TDE) titkosított adatbázison. A szolgáltatás által felügyelt TDE a biztonsági mentések belső TDE-kulccsal lesznek titkosítva. A kulcs nem exportálható, így a biztonsági mentés nem állítható vissza. Használjon automatikus biztonsági mentést és időponthoz való visszaállítást, vagy használja helyette az [ügyfél által felügyelt (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Emellett letilthatja a titkosítást az adatbázison.
@@ -191,7 +191,7 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
 - A [puffer-készlet kiterjesztése](/sql/database-engine/configure-windows/buffer-pool-extension) nem támogatott.
 - a `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` nem támogatott. Lásd: a [kiszolgáló konfigurációjának módosítása](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Egybevetés
+### <a name="collation"></a>Rendezés
 
 A példányok alapértelmezett rendezése `SQL_Latin1_General_CP1_CI_AS`, és megadható létrehozási paraméterként. Lásd: [rendezések](/sql/t-sql/statements/collations).
 
@@ -299,7 +299,7 @@ További információ: [Alter Database](/sql/t-sql/statements/alter-database-tra
 
 A következő SQL Agent-funkciók jelenleg nem támogatottak:
 
-- Legközelebbi
+- Proxyk
 - Feladatok ütemezése üresjárati PROCESSZORon
 - Ügynök engedélyezése vagy letiltása
 - Értesítések
@@ -406,41 +406,12 @@ A HDFS vagy az Azure Blob Storage-ban található fájlokra hivatkozó külső t
 - A pillanatképek és a kétirányú replikációs típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
 - A [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) a felügyelt példány nyilvános előzetes verziójához érhető el, néhány korlátozással:
     - A replikációs résztvevők (kiadó, terjesztő, lekéréses előfizető és leküldéses előfizető) minden típusa felügyelt példányokon helyezhető el, de a közzétevőnek és a terjesztőnek egyaránt a felhőben vagy mindkét helyszínen kell lennie.
-    - A felügyelt példányok kommunikálhatnak a SQL Server legújabb verzióival. Tekintse meg a [támogatott verziókat](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
+    - A felügyelt példányok kommunikálhatnak a SQL Server legújabb verzióival. További információért tekintse meg a [támogatott verziók mátrixot](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems) .
     - A tranzakciós replikáció [további hálózati követelményekkel](sql-database-managed-instance-transactional-replication.md#requirements)rendelkezik.
 
-A replikáció konfigurálásával kapcsolatos információkért tekintse meg a [replikálási oktatóanyagot](replication-with-sql-database-managed-instance.md).
-
-
-Ha a replikáció engedélyezve van egy [feladatátvételi csoportban](sql-database-auto-failover-group.md)lévő adatbázison, a felügyelt példány rendszergazdájának törölnie kell a régi elsődleges összes kiadványt, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően. Ebben a forgatókönyvben a következő tevékenységek szükségesek:
-
-1. Állítsa le az adatbázison futó összes replikációs feladatot, ha vannak ilyenek.
-2. Az előfizetés metaadatainak eldobása a közzétevőtől a következő parancsfájl futtatásával a közzétevő adatbázisán:
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. Az előfizetés metaadatainak eldobása az előfizetőtől. Futtassa a következő parancsfájlt az előfizetői példány előfizetési adatbázisában:
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. Az összes replikációs objektum kényszerített eldobása a közzétevőtől a közzétett adatbázisban a következő parancsfájl futtatásával:
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. Az eredeti elsődleges példánytól származó régi terjesztő kényszerített eldobása (ha a feladatátvételt egy olyan régi elsődlegesre végzi, amely a terjesztőhöz lett használva). Futtassa a következő parancsfájlt a főadatbázisban a régi terjesztő által felügyelt példányon:
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
+- [A MI közzétevő és az előfizető közötti replikáció](replication-with-sql-database-managed-instance.md)
+- [A MI kiadó, a MI terjesztő és a SQL Server előfizető közötti replikáció](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>VISSZAÁLLÍTÁSi utasítás 
 
@@ -470,7 +441,7 @@ A következő adatbázis-beállítások vannak beállítva vagy felülbírálva,
 - A rendszer a meglévő memória-optimalizált fájlcsoportja átnevezi a XTP. 
 - a `SINGLE_USER` és az `RESTRICTED_USER` beállítások `MULTI_USER`re lesznek konvertálva.
 
-Korlátozások 
+Korlátozások: 
 
 - Előfordulhat, hogy a sérült adatbázisok biztonsági másolatait a rendszer a sérülés típusától függően visszaállítja, az automatikus biztonsági mentések azonban nem lesznek elvégezve, amíg a sérülés nem lesz kijavítva. A probléma elkerülése érdekében győződjön meg arról, hogy a forrás példányon `DBCC CHECKDB` futtat, és a biztonsági mentési `WITH CHECKSUM` használja.
 - A jelen dokumentumban leírt korlátozásokat tartalmazó adatbázis `.BAK` fájljának visszaállítása (például `FILESTREAM` vagy `FILETABLE` objektum) nem állítható vissza a felügyelt példányon.
@@ -535,11 +506,55 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 
 Általános célú szinten a `tempdb` maximális fájlmérete nem lehet nagyobb, mint 24 GB. Egy üzletileg kritikus szinten a `tempdb` maximális méretét a példány tárolási mérete korlátozza. `Tempdb` naplófájl mérete általános célú szinten legfeljebb 120 GB lehet. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha a `tempdb` Core-nál több mint 24 GB-nál több adatra van szükségük, vagy ha több mint 120 GB adatnaplót hoznak létre.
 
+### <a name="msdb"></a>MSDB
+
+A felügyelt példány következő MSDB-sémáinak a megfelelő előre definiált szerepkörökkel kell rendelkezniük:
+
+- Általános szerepkörök
+  - TargetServersRole
+- [Rögzített adatbázis-szerepkörök](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail szerepkörök](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+  - DatabaseMailUserRole
+- [Integrációs szolgáltatások szerepkörei](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+  - db_ssisadmin
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> Az előre definiált szerepkör-nevek, a sémák és a séma tulajdonosainak ügyfeleink általi módosítása hatással lesz a szolgáltatás normál működésére. Az ezekkel kapcsolatos módosítások visszaállnak az előre meghatározott értékekre, amint az észlelve lett, vagy a legújabb szolgáltatás frissítése esetén a normál szolgáltatási művelet biztosítása érdekében.
+
 ### <a name="error-logs"></a>Hibanaplók
 
 A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="Issues"></a>Ismert problémák
+## <a name="Issues"></a> Ismert problémák
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>Az SQL-ügynök szerepköreinek explicit végrehajtási engedélyekre van szükségük a nem sysadmin bejelentkezésekhez
+
+**Dátum:** Dec 2019
+
+Ha nem sysadmin bejelentkezési adatokat ad hozzá az [SQL Agent rögzített adatbázis-szerepköreihez](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), létezik egy olyan probléma, amelyben a bejelentkezési adatok működéséhez meg kell adni explicit végrehajtási engedélyeket a fő tárolt eljárásokhoz. A probléma előfordulásakor a "végrehajtás engedély megtagadva az objektumon < object_name > (Microsoft SQL Server, hiba: 229)" hibaüzenet jelenik meg.
+
+**Megkerülő megoldás**: Miután hozzáadta a bejelentkezéseket az SQL Agent rögzített adatbázis-szerepköreihez: SQLAgentUserRole, SQLAgentReaderRole vagy sqlagentoperatorrole indíthatják, a szerepkörökhöz hozzáadott összes bejelentkezéshez hajtsa végre az alábbi T-SQL-szkriptet, hogy explicit módon adjon végrehajtási engedélyeket a felsorolt tárolt eljárásoknak.
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>Az SQL-ügynök feladatait az ügynök folyamatának újraindítása okozhatja
+
+**Dátum:** Dec 2019
+
+Az SQL Agent egy új munkamenetet hoz létre minden alkalommal, amikor elindít egy feladatot, és fokozatosan növeli a memória-felhasználást. Ha el szeretné kerülni a belső memória korlátját, amely letiltja az ütemezett feladatok végrehajtását, akkor az ügynök folyamata újraindul, miután a memória-felhasználás eléri a küszöbértéket. Ez a művelet az újraindítás pillanatában futó feladatok végrehajtásának megszakításához vezethet.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>A memóriában tárolt OLTP-korlátok nincsenek alkalmazva
 

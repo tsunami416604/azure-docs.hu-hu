@@ -3,14 +3,14 @@ title: Csoportmunka-fejlesztés a .NET Core és a Visual Studio Code használat�
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure dev Spaces és a Visual Studio Code az Azure Kubernetes Service-ben futó .NET Core-alkalmazásokban való csoportmunka-fejlesztéshez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 30d132b78279e9ae1ca190c0037c962a7cbd8e6f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e864d67e0126edf9138ff0d811331829bc758030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438144"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>Csoportmunka-fejlesztés a .NET Core és a Visual Studio Code segítségével az Azure dev Spaces használatával
 

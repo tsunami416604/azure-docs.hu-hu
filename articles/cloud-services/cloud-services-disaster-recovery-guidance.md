@@ -1,5 +1,6 @@
 ---
-title: Mi a teendő olyan Azure-szolgáltatás megszakadásakor, amely hatással van az Azure Cloud Servicesra | Microsoft Docs
+title: Az Azure Cloud Servicest érintő Azure-szolgáltatások megszakadásának kezelését
+titleSuffix: Azure Cloud Services
 description: Ismerje meg, mi a teendő olyan Azure-szolgáltatás megszakadásakor, amely hatással van az Azure Cloud Servicesra.
 services: cloud-services
 documentationcenter: ''
@@ -9,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: a014c3d5ada2024609e9262d8943090ac7b205c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f65b61d7265268b33d2c9a113503cc1b5a87db8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361211"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Mi a teendő olyan Azure-szolgáltatás megszakadásakor, amely hatással van az Azure Cloud Services
 A Microsoftnál keményen dolgozunk, hogy a szolgáltatások mindig elérhetők legyenek, amikor szüksége van rájuk. A szabályozáson kívüli erők időnként a nem tervezett szolgáltatások megszakadását okozó módokat érintik.
@@ -52,7 +53,7 @@ Az alkalmazás adatforrásaitól függően előfordulhat, hogy ellenőriznie kel
 ## <a name="option-3-wait-for-recovery"></a>3\. lehetőség: várakozás a helyreállításra
 Ebben az esetben nincs szükség beavatkozásra, de a szolgáltatás addig nem lesz elérhető, amíg vissza nem állítja a régiót. A szolgáltatás aktuális állapotát a [Azure Service Health irányítópulton](https://azure.microsoft.com/status/)tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a vész-helyreállítási és a magas rendelkezésre állási stratégia megvalósításáról, tekintse meg a vész [-helyreállítási és magas rendelkezésre állású Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)című témakört.
 
 A felhőalapú platform képességeinek részletes technikai megismeréséhez lásd: az [Azure rugalmasságával kapcsolatos technikai útmutató](/azure/architecture/checklist/resiliency-per-service).

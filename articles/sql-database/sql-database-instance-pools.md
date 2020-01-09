@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810395"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552780"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Mik azok a SQL Database példány-készletek (előzetes verzió)?
 
@@ -61,7 +61,7 @@ Az alábbi lista azokat a fő felhasználási eseteket tartalmazza, amelyekben a
 
 A példány-készletek hasonló architektúrával rendelkeznek a normál felügyelt példányokhoz (*egyetlen példány*). Az [Azure Virtual Networks (virtuális hálózatok) szolgáltatáson belüli központi telepítések](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) támogatásához , valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példányok készletei is a [virtuális fürtökre](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
 
-A két üzemi modell közötti fő különbség az, hogy a példányok több SQL Server folyamat telepítését teszik lehetővé ugyanazon a virtuálisgép-csomóponton, amely a [Windows-feladatok objektumaira](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)érvényes erőforrás, míg az önálló példányok mindig a egy virtuálisgép-csomópont.
+A két üzemi modell közötti fő különbség az, hogy a példányok több SQL Server folyamat telepítését teszik lehetővé ugyanazon a virtuálisgép-csomóponton, amely a [Windows-feladatok objektumaira](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)érvényes erőforrás, míg az egyes példányok mindig önállóak a virtuálisgép-csomópontokon.
 
 A következő ábra egy példány-készletet és két, ugyanabban az alhálózatban üzembe helyezett példányt mutat be, és bemutatja a telepítési modellek fő architektúrájának részleteit:
 
@@ -108,7 +108,7 @@ A készletben üzembe helyezett összes felügyelt példány külön SQL Agent-p
 
 Azok a választható funkciók vagy szolgáltatások, amelyekhez szükség van bizonyos értékek kiválasztására (például a példány szintű rendezés, az időzóna, a nyilvános végpont az adatforgalomhoz, a feladatátvételi csoportok) a példány szintjén vannak konfigurálva, és a készlet minden példánya esetében eltérőek lehetnek.
 
-## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
+## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
 
 Bár a készletekben lévő felügyelt példányok dedikált virtuális mag és RAM-mal rendelkeznek, a helyi lemez (tempdb-használat) és a hálózati erőforrások megoszthatók. Ez nem valószínű, de lehetséges a *zajos szomszéd* hatása, ha a készletben több példány is magas erőforrás-felhasználással rendelkezik. Ha ezt a viselkedést észleli, érdemes lehet ezeket a példányokat egy nagyobb készletbe vagy egyetlen példányként telepíteni.
 
@@ -126,7 +126,7 @@ Ha a példány-készlet üzembe helyezésével kapcsolatos problémákat tapaszt
 
 Ha egy készleten belül egy példányhoz vagy adatbázishoz kapcsolódó problémákat tapasztal, hozzon létre egy rendszeres támogatási jegyet Azure SQL Database felügyelt példányokhoz.
 
-Ha nagyobb felügyelt példányokat kíván létrehozni (példány-készletekkel vagy anélkül), előfordulhat, hogy nagyobb regionális kvótát kell megszereznie. Használja a [szabványos felügyelt példányok eljárását nagyobb kvóta kéréséhez](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), de vegye figyelembe, hogy ha példány-készleteket használ, a telepítési logika összehasonlítja a *készlet szintjének* teljes virtuális mag-felhasználását a kvóta alapján annak megállapításához, hogy Ön engedélyezett új erőforrások létrehozása a kvóta további növelése nélkül.
+Ha nagyobb felügyelt példányokat kíván létrehozni (példány-készletekkel vagy anélkül), előfordulhat, hogy nagyobb regionális kvótát kell megszereznie. Használja a [szabványos felügyelt példányok eljárását nagyobb kvóta kéréséhez](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), de vegye figyelembe, hogy ha példány-készleteket használ, a telepítési logika összehasonlítja a *készlet szintjének* teljes virtuális mag-felhasználását a kvóta alapján annak megállapítása érdekében, hogy engedélyezett-e új erőforrások létrehozása a kvóta további növelése nélkül.
 
 ## <a name="instance-pool-billing"></a>Példány-készlet számlázása
 
@@ -136,7 +136,7 @@ a készlet virtuális mag díja attól függetlenül történik, hogy hány pél
 
 A számítási díj (virtuális mag mérve) esetében két díjszabási lehetőség érhető el:
 
-  1. *Licenc mellékelve*: meglévő SQL Server licencek alkalmazása frissítési garanciával.
+  1. *Licenc tartalmazza*: az SQL-licencek díját tartalmazza. Azok az ügyfelek, akik úgy döntenek, hogy nem alkalmazzák a meglévő SQL Server licenceket frissítési garanciával.
   2. *Azure Hybrid Benefit*: kedvezményes ár, amely SQL Server Azure Hybrid Benefit tartalmaz. Az ügyfelek a frissítési garanciával rendelkező meglévő SQL Server-licencek használatával dönthetik el ezt az árat. A jogosultsági és egyéb részleteket lásd: [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 A különböző díjszabási lehetőségek beállítása nem lehetséges a készletben lévő egyes példányok esetében. A szülő készletben lévő összes példánynak licenccel ellátott árat vagy Azure Hybrid Benefit árat kell tartalmaznia. A készlethez tartozó licencelési modell a készlet létrehozása után módosítható.

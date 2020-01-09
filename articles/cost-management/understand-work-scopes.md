@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440981"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -45,7 +45,7 @@ Az Azure három hatókört támogat az erőforrás-kezeléshez. Minden hatókör
 
     Erőforrás típusa: [Microsoft. Resources/előfizetések](/rest/api/resources/subscriptions)
 
-- [**Erőforráscsoportok**](../azure-resource-manager/resource-group-overview.md#resource-groups) – a kapcsolódó erőforrások logikai csoportosítása egy olyan Azure-megoldáshoz, amely ugyanazt az életciklust használja. Ilyenek például az üzembe helyezett és a együtt törölt erőforrások.
+- [**Erőforráscsoportok**](../azure-resource-manager/management/overview.md#resource-groups) – a kapcsolódó erőforrások logikai csoportosítása egy olyan Azure-megoldáshoz, amely ugyanazt az életciklust használja. Ilyenek például az üzembe helyezett és a együtt törölt erőforrások.
 
     Erőforrás típusa: [Microsoft. Resources/Subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -63,7 +63,7 @@ Cost Management a következő beépített szerepköröket támogatja az egyes ha
 - [**Cost Management közreműködő**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – megtekintheti a költségeket, kezelheti a költségek konfigurációját, és megtekintheti a javaslatokat.
 - [**Cost Management olvasó**](../role-based-access-control/built-in-roles.md#cost-management-reader) – megtekintheti a költségadatok és a költséghatékonyság beállításait, és megtekintheti az ajánlásokat.
 
-Cost Management közreműködő az ajánlott legkevesebb jogosultsággal rendelkező szerepkör. Lehetővé teszi a felhasználók számára, hogy a költségvetések és exportálások létrehozása és kezelése hatékonyabban figyelje és jelentse a költségeket. Cost Management közreműködők további szerepköröket is igényelhetnek a teljes körű Cost Management-forgatókönyvek támogatásához. Vegye figyelembe a következő forgatókönyveket:
+Cost Management közreműködő az ajánlott legkevesebb jogosultsággal rendelkező szerepkör. Lehetővé teszi a felhasználók számára, hogy a költségvetések és exportálások létrehozása és kezelése hatékonyabban figyelje és jelentse a költségeket. Cost Management közreműködők további szerepköröket is igényelhetnek a teljes körű Cost Management-forgatókönyvek támogatásához. Vegyük példaként a következő eseteket:
 
 - **Ha túllépi a költségvetést** , Cost Management közreműködők számára is hozzáférést kell biztosítani a műveleti csoportok létrehozásához és/vagy kezeléséhez, hogy a rendszer automatikusan reagáljon a túllépésekre. Vegye fontolóra, hogy a [figyelő közreműködőt](../role-based-access-control/built-in-roles.md#monitoring-contributor) olyan erőforráscsoporthoz adja meg, amely tartalmazza a költségvetési küszöbértékek túllépése esetén használandó műveleti csoportot. Az egyes műveletek automatizálásához további szerepkörökre van szükség a használt szolgáltatások, például az Automation és a Azure Functions számára.
 - A **költségadatok exportálásának ütemezett időpontja** – Cost Management közreműködők is hozzáféréssel kell rendelkezniük a Storage-fiókok kezeléséhez, hogy a rendszer exportálja az Adatmásolást egy Storage-fiókba. Érdemes lehet a [Storage-fiók közreműködőjét](../role-based-access-control/built-in-roles.md#storage-account-contributor) olyan erőforráscsoporthoz adni, amely tartalmazza azt a Storage-fiókot, ahol a költségadatok exportálva vannak.
@@ -234,7 +234,7 @@ Cost Management API-k használatakor a hatókör ismerete kritikus fontosságú.
 3. Másolja a felügyeleti csoport AZONOSÍTÓját a táblából.
 4. A hatóköre: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Előfizetést
+### <a name="subscription"></a>Előfizetés
 
 1. Nyissa meg a Azure Portal, és navigáljon a szolgáltatások listájában lévő **előfizetésekhez** .
 2. Másolja az előfizetés-azonosítót a táblából.

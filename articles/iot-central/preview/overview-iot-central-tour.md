@@ -3,18 +3,18 @@ title: Ismerkedés az Azure IoT Central kezelőfelületével | Microsoft Docs
 description: Ismerkedjen meg az Azure IoT Central felhasználói felületének azon főbb területeivel, amelyeket a IoT-megoldás létrehozásához, kezeléséhez és használatához használ.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: f8aa467f95bb97c42e726d1392deca53e15df624
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 23deb77b6fda0b3801057d2ae97a740301449e28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434896"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Ismerkedjen meg az Azure IoT Central felhasználói felületével (előzetes verziójú funkciók)
 
@@ -133,7 +133,7 @@ Az Explorer oldalon láthatók az Azure IoT Central alkalmazásban található _
 
 További információ: az [eszközök monitorozása](./quick-monitor-devices.md) . 
 
-### <a name="device-groups"></a>Eszközök csoportjai
+### <a name="device-groups"></a>Eszközcsoportok
 
 > [!div class="mx-imgBorder"]
 > ![eszközcsoport lap](media/overview-iot-central-tour/device-groups-pnp.png)
@@ -160,7 +160,7 @@ Az Analytics lehetővé teszi, hogy egyéni nézeteket hozzon létre az eszköz 
 
 A feladatok lap lehetővé teszi, hogy az eszközökön tömeges eszközkezelés műveleteket futtasson. Az eszközbeállítások, a beállítások és a parancsok végrehajtása az eszközök csoportjaira is frissíthető. További tudnivalókért tekintse meg a [Feladat futtatása](../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) cikket.
 
-### <a name="device-templates"></a>Eszközök sablonjai
+### <a name="device-templates"></a>Eszközsablonok
 
 > [!div class="mx-imgBorder"]
 > ![az eszközök sablonjai lapot](media/overview-iot-central-tour/templates-pnp.png)
@@ -182,12 +182,12 @@ További tudnivalókért lásd az [új eszköztípus az Azure IoT Central-alkalm
 
 Az adatok exportálása lehetővé teszi az adatstreamek (például telemetria) beállítását az alkalmazásból a külső rendszerekre. További információ: az [Azure-beli adatexportálás IoT Central](./howto-export-data.md) cikk.
 
-### <a name="administration"></a>Adminisztráció
+### <a name="administration"></a>Felügyelet
 > [!div class="mx-imgBorder"]
 > ![adminisztrációs lap](media/overview-iot-central-tour/administration-pnp.png)
 
 Az adminisztráció oldalon konfigurálhatja és testre szabhatja a IoT Central alkalmazást. Itt megváltoztathatja az alkalmazás nevét, URL-címét, a felhasználók és szerepkörök kezelését, API-jogkivonatok létrehozását és az alkalmazás exportálását. További tudnivalókért lásd az [Azure IoT Central-alkalmazások adminisztrációját](howto-administer.md) ismertető szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Azure IoT Central jellemzőit, és megismerkedett a kezelőfelület elrendezésével, a javasolt következő lépés az [Azure IoT Central-alkalmazás létrehozását](quick-deploy-iot-central.md) ismertető rövid útmutató elvégzése.

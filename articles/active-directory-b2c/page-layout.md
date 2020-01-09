@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425655"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Lapelrendezés kiválasztása Azure Active Directory B2C egyéni házirendek használatával
 
@@ -30,9 +30,9 @@ Ez a cikk azt ismerteti, hogyan lehet kijelölni egy lapelrendezést a Azure AD 
 > [!NOTE]
 > Ha engedélyezni szeretné a JavaScriptet a felhasználói folyamatokhoz, tekintse [meg a JavaScript-és lapelrendezés-verziókat a Azure Active Directory B2C](user-flow-javascript-overview.md).
 
-## <a name="replace-datauri-values"></a>DataUri értékek lecserélése
+## <a name="replace-datauri-values"></a>DataUri értékek cseréje
 
-A egyéni szabályzatait, szükség lehet [ContentDefinitions](contentdefinitions.md) , hogy a használt a felhasználói interakciósorozatban szereplő HTML-sablonok meghatározása. A **ContentDefinition** tartalmaz egy **DataUri** hivatkozik, amely az Azure AD B2C által biztosított elemei. A **LoadUri** a HTML és CSS tartalmat, Ön által megadott relatív elérési útját.
+Az egyéni szabályzatokban lehetnek olyan [ContentDefinitions](contentdefinitions.md) , amelyek meghatározzák a felhasználói úton használt HTML-sablonokat. A **ContentDefinition** olyan **DataUri** tartalmaz, amely a Azure ad B2C által biztosított oldal elemeire hivatkozik. A **tartalomdefinícióban** az Ön által megadott HTML-és CSS-tartalom relatív elérési útja.
 
 ```XML
 <ContentDefinition Id="api.idpselections">
@@ -46,9 +46,9 @@ A egyéni szabályzatait, szükség lehet [ContentDefinitions](contentdefinition
 </ContentDefinition>
 ```
 
-Az oldalelrendezés kiválasztásához módosítsa a [ContentDefinitions](contentdefinitions.md) lévő **DataUri** értékeket a szabályzatokban. A régi váltásával **DataUri** értékek új értékeivel, nem módosítható csomagot választjuk. Ez a csomag használatára előnye, hogy tudni fogja, nem módosíthatja és nem várt viselkedést okozhat az oldalon.
+Az oldalelrendezés kiválasztásához módosítsa a [ContentDefinitions](contentdefinitions.md) lévő **DataUri** értékeket a szabályzatokban. Ha a régi **DataUri** értékeket az új értékekre vált, kiválaszt egy megváltoztathatatlan csomagot. A csomag használatának előnye, hogy tudja, hogy nem változik, és váratlan viselkedést okoz a lapon.
 
-Az **DataUri** beállításához használja a következő táblázatot a kívánt értékek megkereséséhez.
+Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, szúrjon be `contract` `elements` és az oldal típusa között (például `selfasserted`), és adja meg a verziószámot. Példa:
 
 | Régi DataUri érték | Új DataUri érték |
 | ----------------- | ----------------- |
@@ -68,17 +68,23 @@ Az **DataUri** beállításához használja a következő táblázatot a kíván
 
 A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalmazzanak javításokat és javításokat a lapok elemeiben. A következő változási napló meghatározza az egyes verziókban bevezetett módosításokat.
 
-### <a name="120"></a>1.2.0 
+### <a name="200"></a>2.0.0
+
+- Önérvényesített oldal (`selfasserted`)
+  - A [megjelenítési vezérlők](display-controls.md) támogatása az egyéni házirendekben.
+
+### <a name="120"></a>1.2.0
+
 - Minden oldal
   - Kisegítő lehetőségek – javítások
   - Most hozzáadhatja a `data-preload="true"` attribútumot a HTML-címkékben a CSS és a JavaScript betöltési sorrendjének szabályozásához. A forgatókönyvek a következők:
-      - Használja ezt a CSS-hivatkozást a CSS-fájlnak a HTML-sel való betöltéséhez, hogy ne legyen "villódzásmentes" a fájlok betöltése között
-      - Ez az attribútum lehetővé teszi a parancsfájl-címkék beolvasásának és végrehajtásának sorrendjét a lap betöltése előtt.
+    - Használja ezt a CSS-hivatkozást a CSS-fájlnak a HTML-sel való betöltéséhez, hogy ne legyen "villódzásmentes" a fájlok betöltése között
+    - Ez az attribútum lehetővé teszi a parancsfájl-címkék beolvasásának és végrehajtásának sorrendjét a lap betöltése előtt.
   - Az e-mail-mező mostantól `type=email` és a mobil billentyűzetek biztosítják a megfelelő javaslatokat
   - A Chrome fordításának támogatása
 - Egységes és önállóan érvényesített oldal
   - A Felhasználónév/e-mail és jelszó mezők mostantól a Form HTML-elemet használják.  Ez mostantól lehetővé teszi az Edge és az IE számára az adatok megfelelő mentését
-  
+
 ### <a name="110"></a>1.1.0
 
 - Kivétel lap (globalexception)
@@ -107,4 +113,4 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az alkalmazások felhasználói felületének testreszabását [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md).
+További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával az Azure Active Directory B2C egyéni házirendjének használatával](active-directory-b2c-ui-customization-custom.md).

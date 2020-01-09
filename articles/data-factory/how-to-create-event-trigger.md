@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 0b1d9fad2992397a3a6768d0f5e7ff26a400a2b3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443924"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Olyan eseményindító létrehozása, amely egy adott eseményre válaszul futtat egy folyamatot
 
@@ -30,7 +30,7 @@ A szolgáltatás tíz percen belüli bevezetéséhez és bemutatásához tekints
 
 
 > [!NOTE]
-> A cikkben ismertetett integráció a [Azure Event Gridtól](https://azure.microsoft.com/services/event-grid/)függ. Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+> A cikkben ismertetett integráció a [Azure Event Gridtól](https://azure.microsoft.com/services/event-grid/)függ. Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
@@ -78,13 +78,13 @@ Az előző példában az eseményindító úgy van beállítva, hogy a. csv fáj
 
 Az alábbi táblázat áttekintést nyújt az eseményvezérelt eseményindítókkal kapcsolatos séma-elemekről:
 
-| **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Szükséges** |
+| **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Igen |
 | **események** | A triggert tüzet kiváltó események típusa. | Tömb    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Igen, az értékek bármely kombinációja. |
 | **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. `/records/blobs/december/` például csak a Blobok eseményindítóját a `records` tároló alatti `december` mappában. | Sztring   | | Legalább egy értéket meg kell adnia a következő tulajdonságok közül: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
 | **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. `december/boxes.csv` például csak a `boxes` nevű Blobok eseményindítóját indítja el egy `december` mappában. | Sztring   | | Legalább egy értéket meg kell adnia a következő tulajdonságok közül: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
-| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true vagy false | Nem |
+| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | Nem |
 
 ## <a name="examples-of-event-based-triggers"></a>Példák eseményvezérelt eseményindítóra
 
@@ -103,5 +103,5 @@ Ez a szakasz az eseményvezérelt eseményindítók beállításait mutatja be.
 | **A blob elérési útja véget ér** | `/containername/blobs/file.txt` | Eseményeket fogad egy `file.txt` nevű blobhoz a tároló `containername`alatt. |
 | **A blob elérési útja véget ér** | `foldername/file.txt` | Egy `file.txt` nevű blobhoz tartozó eseményeket fogad `foldername` mappában bármely tárolóban. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers).

@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool kiadás 1/29/2019 – Azure
 description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928105"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548778"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.60126.1 – 1/29/2019
 
@@ -37,7 +29,7 @@ A Microsoft Threat Modeling Tool verziójának 7.1.60126.1 január 29 2019-én a
 
 ### <a name="model-validation-option"></a>Modell-ellenőrzési lehetőség
 
-Az ügyfelek visszajelzései alapján a modell érvényesítésének engedélyezéséhez vagy letiltásához lehetőség lett hozzáadva az eszközhöz. Korábban, ha a sablon egyetlen egyirányú adatfolyamatot használt két objektum között, előfordulhat, hogy hibaüzenetet kapott az üzenetek keretében: A ObjectsName használatához legalább egy "any" szükséges. A modell érvényesítésének letiltása megakadályozza, hogy ezek a figyelmeztetések a nézetben legyenek megjelenítve.
+Az ügyfelek visszajelzései alapján a modell érvényesítésének engedélyezéséhez vagy letiltásához lehetőség lett hozzáadva az eszközhöz. Korábban, ha a sablon egyetlen egyirányú adatfolyamatot használt két objektum között, előfordulhat, hogy hibaüzenetet kapott az üzenetek keretében: a ObjectsName használatához legalább egy "any" érték szükséges. A modell érvényesítésének letiltása megakadályozza, hogy ezek a figyelmeztetések a nézetben legyenek megjelenítve.
 
 A modell-ellenőrzés be-és kikapcsolásának lehetősége a file-> Settings-> Options menüben található. A beállítás alapértelmezett értéke le van tiltva.
 
@@ -68,6 +60,6 @@ A Windows 10 Enterprise LTSB (1507-es verzió) azon felhasználói, akik telepí
 
 - A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

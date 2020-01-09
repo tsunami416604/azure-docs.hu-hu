@@ -1,18 +1,18 @@
 ---
 title: 'ExpressRoute: áramkörök áthelyezése a Klasszikusból a Azure Resource Managerba'
-description: A klasszikus és a Resource Manager-alapú üzemi modellek adatközponthíd-képzés áttekintése.
+description: A klasszikus és a Resource Manager-alapú üzemi modellek összevetésének áttekintése.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076646"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645905"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.
@@ -39,7 +39,7 @@ Engedélyezheti, hogy a Resource Manager-alapú üzemi modellben létrehozott Ex
 * A klasszikus üzemi modellhez való hozzáférést az ExpressRoute-kapcsolatcsoport **allowClassicOperations** paramétere vezérli.
 
 > [!IMPORTANT]
-> A [szolgáltatásokra vonatkozó korlátozások](../azure-subscription-service-limits.md) oldalon ismertetett összes kvóta érvényben van. Egy szabványos kapcsolatcsoport például legfeljebb 10 virtuális hálózati kapcsolattal/csatlakozással rendelkezhet a klasszikus és a Resource Manager-alapú üzemi modellekben.
+> A [szolgáltatásokra vonatkozó korlátozások](../azure-resource-manager/management/azure-subscription-service-limits.md) oldalon ismertetett összes kvóta érvényben van. Egy szabványos kapcsolatcsoport például legfeljebb 10 virtuális hálózati kapcsolattal/csatlakozással rendelkezhet a klasszikus és a Resource Manager-alapú üzemi modellekben.
 > 
 > 
 
@@ -57,7 +57,7 @@ Az ExpressRoute-kapcsolatcsoportokon a következő klasszikus műveletek támoga
 * Virtuális hálózati kapcsolatok létrehozása/frissítése/lekérése/törlése klasszikus virtuális hálózatokkal
 * Virtuális hálózati kapcsolatok hitelesítéseinek létrehozása/frissítése/lekérése/törlése előfizetések közötti kapcsolatokhoz
 
-Azonban, hogy amikor **allowClassicOperations** az igaz értékre van állítva, nem hajtható végre a következő műveleteket:
+Ha azonban a **allowClassicOperations** értéke TRUE (igaz), a következő klasszikus műveletek nem végezhetők el:
 
 * Border Gateway Protocol- (BGP-) társviszonyok létrehozása/frissítése/lekérése/törlése Azure privát, Azure nyilvános és Microsoft társviszony-létesítéshez
 * ExpressRoute-kapcsolatcsoportok törlése
@@ -90,7 +90,7 @@ Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében nem támogatott művel
 ## <a name="configuration"></a>Konfiguráció
 Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md) című szakaszban ismertetett utasításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [ExpressRoute-kapcsolatcsoporthoz kapcsolt virtuális hálózatok áttelepítése a klasszikusból az Azure Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 * További információkért lásd: [ExpressRoute-kapcsolatcsoportok kiépítési munkafolyamatai és kapcsolatcsoport-állapotok](expressroute-workflows.md).
 * Az ExpressRoute-kapcsolat konfigurálása:

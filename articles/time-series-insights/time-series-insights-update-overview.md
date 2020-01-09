@@ -1,6 +1,6 @@
 ---
 title: 'Áttekintés: Mi az Azure Time Series Insights Preview? – Azure Time Series Insights | Microsoft Docs'
-description: Ismerkedjen meg a Azure Time Series Insights előzetes verziójának főbb újdonságokkal.
+description: További információ a Azure Time Series Insights előzetes verziójának változásairól, tökéletesítéséről és funkcióiról.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/29/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f6f6039be1d8837b4b1fe4eb225289f4cd1642cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014749"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452475"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Mi az Azure Time Series Insights előzetes verziója?
 
@@ -45,7 +45,7 @@ Az alábbi képen egy jellemző IoT-adatfolyam látható.
 
 [![IoT-adatfolyam](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-## <a name="azure-time-series-insights-for-industrial-iot"></a>Az Azure Time Series Insights az ipari IoT
+## <a name="azure-time-series-insights-for-industrial-iot"></a>Azure Time Series Insights ipari IoT
 
 A IoT-környezet különböző iparági szegmenseket ölel fel, többek között a gyártást, az autóipart, az energiát, a segédprogramokat, az intelligens épületeket és a tanácsadást. Az ipari IoT-piac ezen széles skáláján olyan Felhőbeli natív megoldások jelennek meg, amelyek átfogó elemzéseket biztosítanak a nagy léptékű IoT-adatmennyiségekről. 
 
@@ -82,8 +82,8 @@ Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Time S
 | Idősorozat-modell a nyers telemetria contextualize, és az eszköz-alapú adatfelismerések származtatása | Az idősorozat-modell használatával példányokat, hierarchiákat, típusokat és változókat hozhat létre az idősoros adataihoz. Ha többet szeretne megtudni a Time Series-modellről, tekintse meg a [Time Series Model](./time-series-insights-update-tsm.md)című témakört.  |
 | Zökkenőmentes és folyamatos integráció más adatmegoldásokkal | Time Series Insights hűtőházi tárolóban tárolt adattárakat a nyílt forráskódú Apache Parquet-fájlok [tárolják](./time-series-insights-update-storage-ingress.md) . Ez lehetővé teszi az adatintegrációt más adatmegoldásokkal (1. vagy harmadik felekkel) olyan forgatókönyvek esetén, amelyek üzleti intelligenciát, speciális gépi tanulást és prediktív elemzést tartalmaznak. |
 | Közel valós idejű adatelemzés | A [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) felhasználói élmény vizualizációt biztosít a betöltési folyamaton keresztüli összes adatfolyamhoz. Az eseményforrás összekapcsolását követően megtekintheti, feltárhatja és lekérdezheti az események adatforrásait. Ily módon ellenőrizheti, hogy az eszköz az elvárt módon bocsát-e ki adatforrásokat. Egy IoT-eszközt is nyomon követheti az állapot, a termelékenység és az általános hatékonyság érdekében. | 
-| Bővíthetőség és integráció | Az Azure Time Series Insights Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **Exportálás** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezések exportálását is lehetővé teszik. a Power BI asztalra, és megtekintheti az idősorozat-diagramokat más BI-elemzések mellett. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. | 
-| A Time Series Insights platformra épülő egyéni alkalmazások | A Time Series Insights támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK-t biztosít a gazdag vezérlők és egyszerűen hozzáférhet a lekérdezéseket. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Time Series Insights az üzleti igényeinek megfelelően. A Time Series Insights [lekérdezési API-kat](./time-series-insights-update-tsq.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba történő adattovábbításhoz. |
+| Bővíthetőség és integráció | Az Azure Time Series Insights Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **exportálási** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezéseket közvetlenül a Power bi asztalra, a többi bi-elemzéssel együtt megtekinthetik az idősorozat-diagramokat. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. | 
+| A Time Series Insights platformra épülő egyéni alkalmazások | A Time Series Insights támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Time Series Insights az üzleti igényeinek megfelelően. A Time Series Insights [lekérdezési API-kat](./time-series-insights-update-tsq.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba történő adattovábbításhoz. |
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -92,7 +92,7 @@ Ismerkedés a Azure Time Series Insights előzetes verziójával:
 > [!div class="nextstepaction"]
 > [Útmutató a gyors üzembe helyezéshez](./time-series-insights-update-quickstart.md)
 
-További információ a használati esetek:
+Tudnivalók a használati esetekről:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights előzetes verzió használati esetei](./time-series-insights-update-use-cases.md)

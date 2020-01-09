@@ -1,18 +1,17 @@
 ---
-title: Oktatóanyag az Azure FXT Edge Filer fizikai eszköz telepítéséről | Microsoft Docs
+title: 'Oktatóanyag: Azure FXT Edge Filer fizikai eszköz telepítése'
 description: A Microsoft Azure FXT Edge Filer Hybrid Storage cache fizikai eszköz összetevőjének kicsomagolása, rack és kábeles csatlakoztatása
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256049"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551029"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Oktatóanyag: az Azure FXT Edge Filer telepítése 
 
@@ -97,7 +96,7 @@ A beépülő modult vagy a körkörös furatokat tartalmazó állványok esetéb
 
 1. Helyezze a bal és a jobb oldali sín **elülső** részét, amely a befelé néző. Helyezze az egyes végpontokat úgy, hogy az a függőlegesen futó karimák elülső oldalán lévő lyukakba kerüljön. 1
 
-2. Illessze be az egyes végpontokat a rack alsó és felső lyukakba abban a térben, amelyhez csatlakoztatni kívánja. 2
+2. Illessze be az egyes végpontokat a rack alsó és felső lyukakba abban a térben, amelyhez csatlakoztatni kívánja. (2)
 
 3. Folytassa a sín hátsó végét egészen addig, amíg teljes mértékben nem ül a függőleges állvány peremén, és a retesz a helyére kattan. Ismételje meg ezeket a lépéseket úgy, hogy az előtér-darabot a függőleges állvány peremén pozícionálja és helyezze el. 3
 
@@ -111,9 +110,9 @@ A beépülő modult vagy a körkörös furatokat tartalmazó állványok esetéb
 Az összefűzött lyukakkal rendelkező állványok esetében kövesse ezt az eljárást a Rails összeállításához és telepítéséhez.
 
 1. Távolítsa el a PIN-kód első és hátsó szerelvényeit egy lapos csavarhúzóval. 1
-1. A sínre reteszelő alszerelvények lekérése és elforgatásával távolítsa el őket a beépítési zárójelből. 2
+1. A sínre reteszelő alszerelvények lekérése és elforgatásával távolítsa el őket a beépítési zárójelből. (2)
 1. Csatolja a bal és a jobb oldali szerelvényt az elülső függőleges rack karimához két pár csavart használva. 3
-1. Csúsztassa a bal és a jobb oldali zárójelet a hátsó függőleges rack karimák felé, és csatolja őket két pár csavar használatával. 4
+1. Csúsztassa a bal és a jobb oldali zárójelet a hátsó függőleges rack karimák felé, és csatolja őket két pár csavar használatával. (4) elemet
 
 ![Az eszközhöz tartozó sínek telepítésének és eltávolításának ábrája, a következő lépésekkel megszámozva](media/fxt-install/installing-removing-tooled-rails-400.png)
 
@@ -122,7 +121,7 @@ Az összefűzött lyukakkal rendelkező állványok esetében kövesse ezt az el
 A következő lépésekkel csatlakoztathatja az Azure FXT Edge Filer eszközt a rackben.
 
 1. Húzza ki a belső diát a rackből, amíg a helyükre nem zár. 1
-1. Keresse meg a hátsó vasúti patthelyzetet az eszköz mindkét oldalán, és csökkentse azokat a hátsó, a dia szerelvényeken található nyílásokkal. 2 
+1. Keresse meg a hátsó vasúti patthelyzetet az eszköz mindkét oldalán, és csökkentse azokat a hátsó, a dia szerelvényeken található nyílásokkal. (2) 
 1. Forgassa el az eszközt lefelé, amíg az összes vasúti patthelyzet be nem illeszkedik a J-slotba. 3
 1. Az eszköz befelé történő leküldése, amíg a zárolási kar be nem kattint a helyére.
 1. Nyomja le mindkét Rails (4) lenyomott zárolási gombját, és csúsztassa az eszközt a rackbe.

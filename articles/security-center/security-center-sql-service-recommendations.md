@@ -11,27 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2019
+ms.date: 12/19/2019
 ms.author: memildin
-ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663896"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552865"
 ---
-# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Az Azure-beli adatkezelési és-tárolási szolgáltatások védelme Azure Security Center
-Ebből a témakörből megtudhatja, hogyan tekintheti meg és implementálhatja az adatkezelési és a tárolási erőforrások biztonsági javaslatait. A Azure Security Center az Azure-erőforrások biztonsági állapotának elemzésekor találta meg ezeket az ajánlásokat.
+# <a name="protect-azure-data-and-storage-services"></a>Az Azure-beli adatkezelési és-tárolási szolgáltatások védelme
+Ha Azure Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
+
+Ez a cikk a Security Center erőforrás-biztonsági szakaszának **adatbiztonság lapját** ismerteti.
+
+Az ezen a lapon megjelenő javaslatok teljes listáját az [adatkezelési és tárolási javaslatok](recommendations-reference.md#recs-datastorage)című cikkben tekintheti meg.
+
 
 ## <a name="view-your-data-security-information"></a>Az adatbiztonsági adatok megtekintése
 
 1. Az **erőforrás-biztonsági higiénia** szakaszban kattintson az **adatforrások és tárolók erőforrásai**elemre.
 
-    ![Adat& Storage-erőforrások](./media/security-center-monitoring/click-data.png)
+    ![Adatok és tárolási erőforrások](./media/security-center-monitoring/click-data.png)
 
     Megnyílik az **adatbiztonság** lap, amely az adaterőforrásokra vonatkozó ajánlásokat tartalmaz.
 
-    ![Adatforrások](./media/security-center-monitoring/sql-overview.png)
+    [adaterőforrások ![](./media/security-center-monitoring/sql-overview.png)](./media/security-center-monitoring/sql-overview.png#lightbox)
 
     Ezen a lapon a következőket teheti:
 
@@ -50,7 +55,7 @@ Ebből a témakörből megtudhatja, hogyan tekintheti meg és implementálhatja 
 
 2. Kattintson egy javaslatra. Megnyílik a javaslat lap, és megjeleníti a **szervizelési lépéseket** a javaslat megvalósításához.
 
-   ![Szervizelési lépések](./media/security-center-monitoring/remediate1.png)
+   ![Javítási lépések](./media/security-center-monitoring/remediate1.png)
 
 3. Kattintson a **művelet elvégzése**gombra. Megjelenik az erőforrás-beállítások lap.
 
@@ -58,29 +63,11 @@ Ebből a témakörből megtudhatja, hogyan tekintheti meg és implementálhatja 
 
 4. Kövesse a **szervizelési lépéseket** , és kattintson a **Mentés**gombra.
 
-## <a name="data-and-storage-recommendations"></a>Az adatkezeléssel és a tárolással kapcsolatos javaslatok
 
-|Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
-|----|----|----|----|
-|Tárfiók|20|A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell|A biztonságos átvitel olyan lehetőség, amely arra kényszeríti a Storage-fiókot, hogy csak biztonságos kapcsolatokból (HTTPS) fogadja a kéréseket. A HTTPS biztosítja a hitelesítést a kiszolgáló és a szolgáltatás között, és védelmet biztosít a hálózati rétegbeli támadásoktól, például az embertől a középponttól, a lehallgatás és a munkamenet-eltérítéstől.|
-|Redis|20|Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve|Csak SSL-kapcsolaton keresztül engedélyezze az Azure cache-t a Redis. A biztonságos kapcsolatok használata biztosítja a kiszolgáló és a szolgáltatás közötti hitelesítést, és védelmet biztosít a hálózati rétegbeli támadásoktól, például az embertől a középponttól, a lehallgatás és a munkamenet-eltérítéstől.|
-|SQL|15|Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás|Transzparens adattitkosítás engedélyezése a REST-alapú adatok védelme és a megfelelőségi követelmények teljesítése érdekében.|
-|SQL|15|Az SQL Server naplózását engedélyezni kell|Az Azure SQL Server-kiszolgálók naplózásának engedélyezése. (Csak Azure SQL-szolgáltatás. Nem tartalmazza a virtuális gépeken futó SQL-t.)|
-|A "Lake Analytics"|5|A Data Lake Analytics diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
-|A adatközpont-tároló|5|A Azure Data Lake Store diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
-|SQL|30|Az SQL-adatbázisok biztonsági réseit szervizelni kell|Az SQL sebezhetőségi felmérés megkeresi az adatbázist a biztonsági rések tekintetében, és az ajánlott eljárásoktól, például a helytelen konfigurációtól, a túlzott engedélyekkel és a nem védett bizalmas adatoktól származó eltéréseket tesz elérhetővé. A talált biztonsági rések feloldása nagyban növelheti az adatbázis biztonsági termetét.|
-|SQL|20|Azure AD-rendszergazda kiépítése az SQL Serverhez|Hozzon létre egy Azure AD-rendszergazdát az SQL Server számára az Azure AD-hitelesítés engedélyezéséhez. Az Azure AD-hitelesítés lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését.|
-|Tárfiók|15|A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell|Naplózza a nem korlátozott hálózati hozzáférést a Storage-fiók tűzfala beállításaiban. Ehelyett konfigurálja úgy a hálózati szabályokat, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Ha engedélyezni szeretné az adott internetről vagy helyszíni ügyfelekről érkező kapcsolatokat, hozzáférést biztosíthat bizonyos Azure-beli virtuális hálózatokból vagy a nyilvános internetes IP-címtartományok érkező adatforgalomhoz.|
-|Tárfiók|1|A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra|Használjon új Azure Resource Manager v2-t a Storage-fiókok számára a következő biztonsági fejlesztések biztosításához: erősebb hozzáférés-vezérlés (RBAC), jobb auditálás, erőforrás-kezelő alapú üzembe helyezés és irányítás, felügyelt identitásokhoz való hozzáférés, hozzáférés a Key vaulthoz a titkokat és az Azure AD-alapú hitelesítést, valamint a címkék és erőforráscsoportok támogatását a biztonsági felügyelet megkönnyítésére.|
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="see-also"></a>Lásd még:
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő témaköröket:
 
+* [Azure Security Center biztonsági javaslatainak teljes listája](recommendations-reference.md)
 * [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
-
-Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő témaköröket:
-
-* [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 636a422cd46dc6b6274766b92753f04195a829a0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a45896e796011edd97fb1fd63fc3bda4a669927c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360072"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Hálózati biztonsági csoport folyamatábráinak konfigurálása REST API használatával
 
@@ -32,7 +32,7 @@ ms.locfileid: "74277930"
 
 A hálózati biztonsági csoport folyamatábrái a Network Watcher szolgáltatása, amely lehetővé teszi, hogy a hálózati biztonsági csoporton keresztül megtekintse a bejövő és kimenő IP-forgalomra vonatkozó információkat. Ezeket a folyamatokat a rendszer JSON formátumban írja be, és a kimenő és bejövő folyamatokat egy szabály alapján jeleníti meg, a flow a folyamatra vonatkozik, 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/cél port, protokoll), és ha a forgalom engedélyezett vagy megtagadott volt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A ARMclient a REST API a PowerShell használatával történő meghívására szolgál. A ARMClient a chocolatey címen található a [ARMClient-on](https://chocolatey.org/packages/ARMClient)
 
@@ -41,7 +41,7 @@ Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létreho
 > [!Important]
 > A (z) Network Watcher REST API meghívja az erőforráscsoport nevét a kérelem URI azonosítójában az az erőforráscsoport, amely a Network Watcher tartalmazza, és nem a diagnosztikai műveleteket végző erőforrásokat.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 A cikkben ismertetett forgatókönyv bemutatja, hogyan engedélyezheti, tilthatja le és kérdezheti le a flow-naplókat a REST API használatával. Ha többet szeretne megtudni a hálózati biztonsági csoport folyamatának naplózásáról, keresse fel a [hálózati biztonsági csoport flow naplózása – áttekintés](network-watcher-nsg-flow-logging-overview.md)című témakört.
 
@@ -217,9 +217,6 @@ Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-
-> [!IMPORTANT]
-> Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Ha meglévő, nem nulla adatmegőrzési szabályzattal rendelkezik, javasoljuk, hogy rendszeresen törölje a megőrzési időtartamon felüli tárolási blobokat a felmerülő költségek elkerülése érdekében. További információ a NSG flow log-tárolási blog törléséről: [NSG flow log Storage-Blobok törlése](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

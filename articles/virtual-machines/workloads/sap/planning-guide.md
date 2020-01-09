@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 12/13/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 863070eb025d8ac58f6a0946d49732dc6b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d9c5556934b31144e66f0985ab32d4e2cf759774
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951751"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643270"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -76,8 +76,8 @@ ms.locfileid: "74951751"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -235,7 +235,7 @@ ms.locfileid: "74951751"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74951751"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -311,7 +311,7 @@ ms.locfileid: "74951751"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 [capture-image-linux-step-2-create-vm-image]:../../linux/capture-image.md#step-2-create-vm-image
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
+
 
 Microsoft Azure lehetővé teszi a vállalatok számára a számítási és tárolási erőforrások beszerzését a hosszadalmas beszerzési ciklusok nélküli minimális idő alatt. Az Azure Virtual Machine szolgáltatás lehetővé teszi a vállalatok számára, hogy klasszikus alkalmazásokat telepítsenek, például az SAP NetWeaver-alapú alkalmazásokat az Azure-ba, és a megbízhatóságot és a rendelkezésre állást anélkül bővítik, hogy a helyszínen további erőforrások Az Azure Virtual Machine Services a létesítmények közötti kapcsolatot is támogatja, amely lehetővé teszi a vállalatok számára, hogy aktívan integrálják az Azure Virtual Machines a helyszíni tartományba, a saját felhőbe és az SAP-rendszerük környezetében.
 Ez a tanulmány ismerteti Microsoft Azure virtuális gép alapjait, és végigvezeti az Azure-beli SAP NetWeaver-telepítések tervezési és megvalósítási szempontjain, és így a tényleges Kezdés előtt olvassa el a dokumentumot. az SAP NetWeaver üzembe helyezése az Azure-ban.
@@ -329,7 +329,7 @@ A Microsoft Azure Virtual Machine Services szolgáltatással a Microsoft átfog�
 A könyv két fő szempontra összpontosít:
 
 * Az első rész két támogatott üzembe helyezési mintát ismertet az Azure-beli SAP NetWeaver-alapú alkalmazásokhoz. Ismerteti az Azure általános kezelését is az SAP-környezetekben.
-* A második rész részletei az első részben ismertetett két különböző forgatókönyv megvalósításában.
+* A második rész az első részben ismertetett különböző forgatókönyvek megvalósításának részleteit ismerteti.
 
 További forrásokért tekintse meg a jelen dokumentumban található [erőforrások][planning-guide-1.2] című fejezetet.
 
@@ -386,13 +386,12 @@ A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatos témakörhöz 
 
 Olvassa el a Linux rendszerhez készült összes SAP-megjegyzést tartalmazó [állapotváltozás wikit](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) is.
 
-[Ebben a cikkben][azure-subscription-service-limits-subscription]a általános alapértelmezett korlátozások és az Azure-előfizetések maximális korlátai találhatók.
+[Ebben a cikkben][azure-resource-manager/management/azure-subscription-service-limits-subscription]a általános alapértelmezett korlátozások és az Azure-előfizetések maximális korlátai találhatók.
 
 ## <a name="possible-scenarios"></a>Lehetséges forgatókönyvek
 Az SAP-t gyakran a vállalatok egyik legfontosabb alapvető fontosságú alkalmazásának tekinti. Az alkalmazások architektúrája és műveletei többnyire összetettek, és fontos, hogy megfeleljenek a rendelkezésre állásra és a teljesítményre vonatkozó követelményeknek.
 
-Ezért a vállalatoknak alaposan meg kell fontolniuk, hogy melyik felhőalapú szolgáltató dönti el, hogy az üzleti szempontból kritikus fontosságú üzleti folyamatokat kívánják-e futtatni. Az Azure ideális nyilvános felhőalapú platform az üzleti szempontból kritikus fontosságú SAP-alkalmazások és az üzleti folyamatok számára. Az Azure-infrastruktúra széles választéka miatt napjainkban szinte minden meglévő SAP NetWeaver-és S/4HANA-rendszer üzemeltethető az Azure-ban. Az Azure számos terabájt memóriát és több mint 200 processzort biztosít a virtuális gépek számára. Az Azure-on túl [nagy méretű Hana-példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)is használhatók, amelyek lehetővé teszik a legfeljebb 120TB 24TB és kibővíthető Ana üzembe helyezését. 
-
+Ezért a vállalatoknak alaposan meg kell fontolniuk, hogy melyik felhőalapú szolgáltató dönti el, hogy az üzleti szempontból kritikus fontosságú üzleti folyamatokat kívánják-e futtatni. Az Azure ideális nyilvános felhőalapú platform az üzleti szempontból kritikus fontosságú SAP-alkalmazások és az üzleti folyamatok számára. Az Azure-infrastruktúra széles választéka miatt napjainkban szinte minden meglévő SAP NetWeaver-és S/4HANA-rendszer üzemeltethető az Azure-ban. Az Azure számos terabájt memóriát és több mint 200 processzort biztosít a virtuális gépek számára. Az Azure-on túl [nagy méretű Hana-példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)is használhatók, amelyek lehetővé teszik a legfeljebb 120TB 24TB és kibővíthető Ana üzembe helyezését. Ma már majdnem az összes helyszíni SAP-forgatókönyv futtatható az Azure-ban is. 
 
 Az SAP-rendszerek sikeres üzembe helyezéséhez az Azure IaaS vagy a IaaS-ben fontos megérteni a hagyományos outsourcerek vagy a szolgáltatók és a IaaS-ajánlatok ajánlatai közötti jelentős különbségeket. Míg a hagyományos szolgáltató vagy a kiszervezés az infrastruktúrát (hálózat, tárolás és kiszolgáló típusa) az ügyfél által üzemeltetett munkaterheléshez igazítja, az ügyfél vagy a partner feladata a számítási feladat jellemzése, és kiválasztja a megfelelő Azure-t a virtuális gépek, a tárolás és a hálózat összetevői a IaaS üzembe helyezéséhez.
 
@@ -457,6 +456,18 @@ A helyszíni hálózat Microsoft Azurehoz való összekapcsolásával kapcsolato
 * A támogatott operációsrendszer-kiadásokat, az Azure-beli virtuálisgép-szolgáltatásokban támogatott adatbázisrendszer-kiadásokat az SAP- [1928533]SAP-megjegyzéssel együtt dokumentáljuk.
 * Az Azure Virtual Machine Services által támogatott SAP-alkalmazásokat és-kiadásokat a [1928533]-es SAP-Megjegyzés dokumentálja.
 * Az SAP-forgatókönyvek esetében csak a 64 bites lemezképek támogatottak a vendég virtuális gépek Azure-ban való futtatásához. Ennek eredményeképpen csak a 64 bites SAP-alkalmazások és-adatbázisok támogatottak.
+
+
+## <a name="first-steps-planning-a-deployment"></a>Központi telepítés megtervezésének első lépései
+Az üzembe helyezés megtervezésének első lépése nem az SAP futtatásához elérhető virtuális gépek keresése. Az első lépés az, hogy az időigényes, de a legfontosabb, hogy működjön együtt a megfelelőségi és biztonsági csapatokkal a vállalatnál, hogy a határokra milyen feltételek vonatkoznak az SAP számítási feladatok vagy az üzleti folyamatok nyilvános felhőbe való üzembe helyezéséhez. Ha a vállalata még az Azure-ba telepített más szoftvereket, a folyamat egyszerűen elvégezhető. Ha a vállalata még nem az utazás elején található, nagyobb vitákra lehet szükség ahhoz, hogy meg lehessen állapítani a határokra vonatkozó feltételeket, a biztonsági feltételeket, amelyek lehetővé teszik bizonyos SAP-és SAP-üzleti folyamatok nyilvános felhőben történő üzemeltetését.
+
+Ha hasznos segítségre van szüksége, a Microsoft által biztosított megfelelőségi ajánlatokat tartalmazó listán a [Microsoft megfelelőségi ajánlatait](https://docs.microsoft.com/microsoft-365/compliance/offering-home) is megtekintheti. 
+
+Az egyéb, az Azure-szolgáltatásokban tárolt adatok titkosításával kapcsolatos egyéb területeken az Azure [encryption áttekintése című témakörben](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview)olvashat bővebben.
+
+Ne becsülje alá a projekt ezen fázisát a tervezésben. Az Azure-ban üzembe helyezett hálózati architektúra megtervezése csak akkor szükséges, ha rendelkezik a jelen témakörben foglalt szerződéssel és szabályokkal.
+
+
 
 ## <a name="microsoft-azure-virtual-machine-services"></a>Virtuális gépi szolgáltatások Microsoft Azure
 A Microsoft Azure platform egy Microsoft-adatközpontokban üzemeltetett és üzemeltetett, internetre kiterjedő felhőalapú szolgáltatási platform. A platform része a Microsoft Azure virtuálisgép-szolgáltatások (infrastruktúra-szolgáltatás, IaaS) és a szolgáltatásként nyújtott platform ("a") funkcióinak összessége.
@@ -586,7 +597,7 @@ Premium Storageről további információt itt találhat: <https://azure.microso
 
 Szolgáltatások vagy virtuális gépek Azure-beli üzembe helyezése esetén a VHD-k és a virtuálisgép-lemezképek üzembe helyezése az Azure Storage-fiókok nevű egységekben is megszervezhető. Az Azure-beli üzembe helyezés tervezése során alaposan meg kell fontolnia az Azure korlátozásait. Az Azure-előfizetések esetében az egyik oldalon korlátozott számú Storage-fiók található. Bár az egyes Azure Storage-fiókok nagy mennyiségű VHD-fájlt tárolhatnak, a teljes IOPS rögzített korlát van. Több száz olyan SAP virtuális gép üzembe helyezése során, amelyekben jelentős IO-hívásokat hoznak létre az adatbázis-kezelő rendszerekkel, ajánlott nagy IOPS adatbázis-kezelő virtuális gépeket terjeszteni több Azure Storage-fiók között. Ügyelni kell arra, hogy ne lépje túl az Azure Storage-fiókok aktuális korlátját előfizetésben. Mivel a tárterület az adatbázis központi telepítésének létfontosságú része egy SAP-rendszer számára, ezt a koncepciót a már hivatkozott adatbázis- [kezelő üzembe helyezési útmutatójában][dbms-guide]részletesebben tárgyaljuk.
 
-Az Azure Storage-fiókokról további információt ebben a [cikkben][storage-scalability-targets]találhat. A cikk elolvasása során kiderül, hogy az Azure standard Storage-fiókok és a Premium Storage-fiókok korlátai között különbségek vannak. A fő különbségek az ilyen Storage-fiókban tárolható adatmennyiség. A standard szintű tárolóban a kötet mérete nagyobb, mint Premium Storage. A másik oldalon a standard Storage-fiók szigorúan korlátozott a IOPS (lásd az oszlop **teljes kérelmek arányát**), míg az Azure Premium Storage fióknak nincs ilyen korlátozása. Ezen eltérések részleteit és eredményeit az SAP-rendszerek, különösen az adatbázis-kezelő kiszolgálók központi telepítései kapcsán tárgyaljuk.
+Az Azure Storage-fiókokkal kapcsolatos további információkért tekintse meg a [standard szintű Storage-fiókok méretezhetőségi célkitűzéseit](../../../storage/common/scalability-targets-standard-account.md) és a [prémium oldal blob Storage-fiókokra vonatkozó skálázhatósági célokat](../../../storage/blobs/scalability-targets-premium-page-blobs.md). A cikkek elolvasása során kiderül, hogy különbségek vannak az Azure standard Storage-fiókok és a Premium Storage-fiókok korlátai között. A fő különbségek az ilyen Storage-fiókban tárolható adatmennyiség. A standard szintű tárolóban a kötet mérete nagyobb, mint Premium Storage. A másik oldalon a standard Storage-fiók szigorúan korlátozott a IOPS (lásd az oszlop **teljes kérelmek arányát**), míg az Azure Premium Storage fióknak nincs ilyen korlátozása. Ezen eltérések részleteit és eredményeit az SAP-rendszerek, különösen az adatbázis-kezelő kiszolgálók központi telepítései kapcsán tárgyaljuk.
 
 A Storage-fiókon belül lehetősége van különböző tárolók létrehozására a különböző virtuális merevlemezek rendszerezése és kategorizálása céljából. Ezek a tárolók például a különböző virtuális gépek különálló virtuális merevlemezeit használják. Egyetlen Azure Storage-fiók alatt egyetlen tároló vagy több tároló használata nem jelent teljesítménybeli hatást.
 
@@ -770,7 +781,7 @@ Lásd még ezt a blogot és a csatolt dokumentumot az Azure-beli SAP-méretezés
 
 ## <a name="managing-azure-assets"></a>Azure-eszközök kezelése
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 A Azure Portal az Azure-beli virtuális gépek központi telepítésének kezelésére szolgáló három felület egyike. Az alapszintű felügyeleti feladatok, például a virtuális gépek lemezképből való üzembe helyezése a Azure Portal keresztül végezhető el. Emellett a Storage-fiókok, a virtuális hálózatok és az egyéb Azure-összetevők létrehozása is felveszi a feladatokat, a Azure Portal képes jól kezelni. Azonban a virtuális merevlemezek a helyszínről az Azure-ba való feltöltése vagy az Azure-on belüli virtuális merevlemezek másolása is felhasználható, amelyek a PowerShell vagy a parancssori felület használatával vagy harmadik féltől származó eszközöket vagy felügyeletet igényelnek.
 
@@ -1621,8 +1632,6 @@ A létesítmények közötti vagy hibrid forgatókönyvek nagyjából az alábbi
 
 ![Helyek közötti kapcsolat a helyszíni és az Azure-eszközök között][planning-guide-figure-2100]
 
-A fent látható forgatókönyv olyan forgatókönyvet ismertet, amelyben a helyszíni
-
 A minimális követelmény a biztonságos kommunikációs protokollok, például az SSL/TLS használata a böngésző-hozzáféréshez vagy a VPN-alapú kapcsolatok számára az Azure-szolgáltatásokhoz való hozzáféréshez. Feltételezi, hogy a vállalatok a VPN-kapcsolatot a vállalati hálózat és az Azure között eltérően kezelik. Előfordulhat, hogy egyes vállalatok üresen nyitják meg az összes portot. Előfordulhat, hogy egyes vállalatok pontosan szeretnék, hogy mely portokat kell megnyitni, stb.
 
 Az alábbi táblázatban látható az SAP kommunikációs portok listája. Alapvetően elegendő az SAP Gateway portjának megnyitása.
@@ -2002,7 +2011,7 @@ Az SAP-példányok automatikus indításával kapcsolatban itt talál további i
 
 * [Az SAP elindítása/leállítása a UNIX-kiszolgáló indításával/leállításával együtt](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
 * [Az SAP NetWeaver felügyeleti ügynökök elindítása és leállítása](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [A HANA-adatbázis automatikus indításának engedélyezése](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [A HANA-adatbázis automatikus indításának engedélyezése](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Nagyobb 3 szintű SAP-rendszerek
 A 3 rétegbeli SAP-konfigurációk magas rendelkezésre állási szempontjai már a korábbi szakaszokban lettek megtárgyalva. De mi a helyzet azokon a rendszereken, amelyekben az adatbázis-kezelő kiszolgáló követelményei túl nagyok ahhoz, hogy az Azure-ban legyenek, de az SAP-alkalmazás rétege üzembe helyezhető az Azure-ban

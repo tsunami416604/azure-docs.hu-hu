@@ -1,25 +1,14 @@
 ---
-title: A Service Fabric-alkalmazások kapacitásának megtervezése | Microsoft Docs
+title: Service Fabric alkalmazások kapacitásának megtervezése
 description: Útmutatás a Service Fabric alkalmazásokhoz szükséges számítási csomópontok számának azonosításához
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377208"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric alkalmazások kapacitásának megtervezése
 Ebből a dokumentumból megtudhatja, hogyan becsülheti meg az Azure Service Fabric-alkalmazások futtatásához szükséges erőforrások mennyiségét (CPU-t, RAM-ot, lemezes tárolást). Az erőforrás-követelmények időbeli változása gyakori. Általában kevés erőforrásra van szükség a szolgáltatás fejlesztésekor/tesztelésekor, majd az éles környezetbe való bevezetéshez több erőforrásra van szükség, és az alkalmazása egyre népszerűbb. Az alkalmazás tervezésekor gondolja át a hosszú távú követelményeket, és olyan döntéseket hozzon, amelyek lehetővé teszik a szolgáltatás számára, hogy megfeleljen a nagy ügyfelek igényeinek.
@@ -33,7 +22,7 @@ A virtuális gépek nagy mennyiségű adatmennyiségét kezelő szolgáltatások
 ## <a name="determine-how-many-nodes-you-need"></a>Határozza meg, hány csomópontra van szüksége
 A szolgáltatás particionálása lehetővé teszi a szolgáltatás adatainak méretezését. További információ a particionálásról: [particionálás Service Fabric](service-fabric-concepts-partitioning.md). Minden partíciónak egyetlen virtuális gépen belül kell lennie, de a több (kis) partíció egyetlen virtuális gépre helyezhető el. Így a kisebb partíciók nagyobb rugalmasságot biztosítanak, mint néhány nagyobb partíció. A kikapcsolás azt eredményezi, hogy sok partíció növeli Service Fabric terhelést, és a partíciók között nem hajtható végre tranzakciós művelet. Több lehetséges hálózati forgalom is fennáll, ha a szolgáltatási kódnak gyakran kell hozzáférni a különböző partíciókban élő adatokhoz. A szolgáltatás tervezésekor alaposan meg kell fontolnia, hogy milyen előnyökkel és hátrányokkal kell megérkezniük egy hatékony particionálási stratégiára.
 
-Tegyük fel, hogy az alkalmazása egyetlen állapot-nyilvántartó szolgáltatással rendelkezik, amelynek tárolási mérete várhatóan évente DB_Size GB-ra nő. További alkalmazásokat (és partíciókat) kíván hozzáadni, miközben az adott évben növekedni fog.  A replikációs tényező (RF), amely meghatározza, hogy a szolgáltatás replikái hányan befolyásolják a teljes DB_Size. Az összes replika teljes DB_Size a replikálási tényező a DB_Size szorzata.  A Node_Size azt a lemezterületet/RAM-ot jelöli, amelyet a szolgáltatáshoz használni kíván. A legjobb teljesítmény érdekében a DB_Size a fürt teljes memóriájában kell lennie, és a virtuális gép RAM-ban található Node_Size kell kiválasztani. A RAM-kapacitásnál nagyobb Node_Size kiosztásával a Service Fabric futtatókörnyezet által biztosított lapozásra támaszkodik. Ezért előfordulhat, hogy a teljesítmény nem optimális, ha a teljes adatok gyorsak (mivel az adatok bekerülnek a be-vagy kifelé). Számos olyan szolgáltatás esetében azonban, ahol csak az adatok egy része meleg, a költséghatékonyság költséghatékony.
+Tegyük fel, hogy az alkalmazása egyetlen állapot-nyilvántartó szolgáltatással rendelkezik, amelynek tárolási mérete várhatóan egy évig DB_Size GB-ra nő. További alkalmazásokat (és partíciókat) kíván hozzáadni, miközben az adott évben növekedni fog.  A replikációs tényező (RF), amely meghatározza, hogy a szolgáltatás replikái hányan befolyásolják a teljes DB_Size. Az összes replikán az összes DB_Size a replikálási tényező a DB_Size szorzata.  Node_Size a szolgáltatáshoz használni kívánt lemezterületet/RAM-ot jelöli. A legjobb teljesítmény érdekében a DB_Sizenek a fürt teljes memóriájában kell lennie, és a virtuális gép RAM-ban található Node_Size kell kiválasztani. A RAM-kapacitásnál nagyobb Node_Size kiosztásával a Service Fabric Runtime által biztosított lapozásra támaszkodik. Ezért előfordulhat, hogy a teljesítmény nem optimális, ha a teljes adatok gyorsak (mivel az adatok bekerülnek a be-vagy kifelé). Számos olyan szolgáltatás esetében azonban, ahol csak az adatok egy része meleg, a költséghatékonyság költséghatékony.
 
 A maximális teljesítményhez szükséges csomópontok száma a következőképpen számítható ki:
 
@@ -44,11 +33,11 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 
 ## <a name="account-for-growth"></a>Fiók a növekedéshez
-Érdemes lehet kiszámítani a csomópontok számát azon DB_Size alapján, amelyek várhatóan növekednek a szolgáltatásban, valamint a DB_Size. Ezután növelje a csomópontok számát a szolgáltatás növekedésével, hogy ne legyenek túlterhelve a csomópontok száma. A partíciók számát azonban azon csomópontok száma alapján kell megadni, amelyekre szükség van a szolgáltatás maximális növekedéssel történő futtatásakor.
+Érdemes lehet kiszámítani a csomópontok számát azon DB_Size alapján, amelyek várhatóan növekednek a szolgáltatásban, és a megkezdett DB_Size mellett. Ezután növelje a csomópontok számát a szolgáltatás növekedésével, hogy ne legyenek túlterhelve a csomópontok száma. A partíciók számát azonban azon csomópontok száma alapján kell megadni, amelyekre szükség van a szolgáltatás maximális növekedéssel történő futtatásakor.
 
 Érdemes lehet néhány további gépet bármikor elérhetővé tenni, így bármilyen váratlan csúcsot vagy hibát kezelhet (például ha néhány virtuális gép leáll).  Míg a további kapacitást a várt tüskékkel kell meghatározni, a kiindulási pont a néhány további virtuális gép (5-10 százalékos extra) lefoglalása.
 
-A fentiekben egyetlen állapot-nyilvántartó szolgáltatást feltételez. Ha egynél több állapot-nyilvántartó szolgáltatással rendelkezik, hozzá kell adnia a többi szolgáltatáshoz társított DB_Size az egyenlethez. Azt is megteheti, hogy a csomópontok számát külön kiszámítja az egyes állapot-nyilvántartó szolgáltatásokhoz.  Előfordulhat, hogy a szolgáltatás replikákat vagy partíciókat tartalmaz, amelyek nem kiegyensúlyozottak. Ne feledje, hogy a partíciók a többinél több adattal is rendelkezhetnek. A particionálással kapcsolatos további információkért lásd az [ajánlott eljárások particionálásával foglalkozó cikket](service-fabric-concepts-partitioning.md). Az előző egyenlet azonban a partíció és a replika agnosztikus, mivel Service Fabric biztosítja, hogy a replikák optimalizált módon legyenek kiosztva a csomópontok között.
+A fentiekben egyetlen állapot-nyilvántartó szolgáltatást feltételez. Ha egynél több állapot-nyilvántartó szolgáltatással rendelkezik, fel kell vennie a többi szolgáltatáshoz társított DB_Size az egyenletbe. Azt is megteheti, hogy a csomópontok számát külön kiszámítja az egyes állapot-nyilvántartó szolgáltatásokhoz.  Előfordulhat, hogy a szolgáltatás replikákat vagy partíciókat tartalmaz, amelyek nem kiegyensúlyozottak. Ne feledje, hogy a partíciók a többinél több adattal is rendelkezhetnek. A particionálással kapcsolatos további információkért lásd az [ajánlott eljárások particionálásával foglalkozó cikket](service-fabric-concepts-partitioning.md). Az előző egyenlet azonban a partíció és a replika agnosztikus, mivel Service Fabric biztosítja, hogy a replikák optimalizált módon legyenek kiosztva a csomópontok között.
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>Táblázat használata a költségadatok kiszámításához
 Most tegyünk néhány valós számot a képletbe. Egy [példa táblázat](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx) bemutatja, hogyan tervezze meg egy olyan alkalmazás kapacitását, amely három típusú adatobjektumot tartalmaz. Minden objektum esetében a méretet és a várt objektumok számát közelítjük meg. Azt is kiválasztjuk, hogy az egyes objektumtípusok hány replikát kívánnak használni. A táblázat kiszámítja a fürtben tárolandó memória teljes mennyiségét.

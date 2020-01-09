@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 52a43dff5d2e740633675b71d5177d0df876d3cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092208"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644273"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Azure belső Load Balancer áthelyezése másik régióba a PowerShell használatával
 
@@ -32,7 +32,7 @@ Az Azure belső terheléselosztó nem helyezhető át egyik régióból a másik
 
 - Ellenőrizze, hogy az Azure-előfizetése lehetővé teszi-e belső terheléselosztó létrehozását a használt célcsoportban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
 
-- Ellenőrizze, hogy az előfizetése rendelkezik-e elegendő erőforrással a folyamathoz tartozó terheléselosztó hozzáadásának támogatásához.  Tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Ellenőrizze, hogy az előfizetése rendelkezik-e elegendő erőforrással a folyamathoz tartozó terheléselosztó hozzáadásának támogatásához.  Tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Előkészítés és áthelyezés
@@ -60,7 +60,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg az  **\<erőforrás-csoport-név >. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a **\<Resource-Group-name >. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -105,9 +105,9 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
     Get-AzLocation | format-table
     
     ```
-8.  **Az\<erőforrás-csoport neve >. JSON** fájlban más paramétereket is megadhat, ha Ön a következőt választja, és a követelményektől függően nem kötelező:
+8.  A **\<Resource-Group-name >. JSON** fájl egyéb paramétereit is módosíthatja, ha a lehetőséget választja, és a követelményektől függően nem kötelező:
 
-    * **Címterület** – a VNET a Mentés előtt módosítható, ha módosítja az **erőforrások** > **addressSpace** szakaszt, és megváltoztatja a **addressPrefixes** tulajdonságot a  **\< erőforrás-csoport – név >. JSON** fájl:
+    * **Címterület** – a VNET címtartomány a Mentés előtt módosítható az **erőforrások** > **addressSpace** szakaszának módosításával és a **addressPrefixes** tulajdonság módosításával a **\<Resource-Group-Name >. JSON** fájlban:
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
         ```
 
-    * **Alhálózat** – az alhálózat neve és az alhálózati címtartomány módosítható, vagy hozzáadható az  **\<erőforrás-csoport neve >. JSON** fájl **alhálózatok** szakaszának módosításával. Az alhálózat neve módosítható a **Name** tulajdonság megváltoztatásával. Az alhálózati címtartomány módosítható úgy, hogy módosítja a **addressPrefix** tulajdonságot az  **\<erőforrás-csoport neve >. JSON** fájlban:
+    * **Alhálózat** – az alhálózat neve és az alhálózati címtartomány módosítható vagy hozzáadható a **\<Resource-group-Name >. JSON** fájl **alhálózatok** szakaszának módosításával. Az alhálózat neve módosítható a **Name** tulajdonság megváltoztatásával. Az alhálózati címtartomány módosítható úgy, hogy módosítja a **addressPrefix** tulajdonságot a **\<Resource-group-Name >. JSON** fájlban:
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
                 ]
         ```
 
-         Az **Erőforrás-csoport neve >. JSON fájlban a címzési előtag módosításához két helyen kell szerkesztenie, a fent felsorolt szakaszt és az alább felsorolt típusok szakaszát. \<**  Módosítsa a **addressPrefix** tulajdonságot úgy, hogy az megfeleljen a fentieknek:
+         A **\<erőforráscsoport-név >. JSON** fájlban a címzési előtag módosításához két helyen kell szerkesztenie, a fent felsorolt szakaszt és az alább felsorolt **típusok** szakaszát.  Módosítsa a **addressPrefix** tulajdonságot úgy, hogy az megfeleljen a fentieknek:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -194,7 +194,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
          ]
         ```
 
-9.  Mentse az  **\<erőforrás-csoport neve >. JSON** fájlt.
+9.  Mentse a **\<erőforrás-csoport neve >. JSON** fájlt.
 
 10. Hozzon létre egy erőforráscsoportot a VNET a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) használatával telepítendő célként megadott régióban.
     
@@ -202,7 +202,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Telepítse a szerkesztett  **\<erőforrás-csoport neve >. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<Resource-Group-name >. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -241,7 +241,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg az  **\<erőforrás-csoport-név >. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a **\<Resource-Group-name >. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -263,7 +263,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
              }
     ```
  
-6. A fent áthelyezett cél virtuális hálózat értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie az  **\<erőforrás-csoport neve >. JSON** fájlba.  Az azonosító beszerzéséhez használja a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. A fent áthelyezett cél virtuális hálózat értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie a **\<Resource-Group-name >. JSON** fájlba.  Az azonosító beszerzéséhez használja a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -275,7 +275,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  Az erőforrás- **csoport neve >. JSON fájlban illessze be az erőforrás-azonosítót a második paraméterben található "defaultValue" érték helyett a cél virtuális hálózati azonosítóhoz, és győződjön meg arról, hogy az elérési utat idézőjelek közé helyezi \<** :
+7.  A **\<erőforráscsoport-név >. JSON** fájlban illessze be az **erőforrás-azonosítót** a második paraméterben található, a CÉLKÉNT megadott virtuális hálózati azonosítóhoz tartozó **defaultValue** helyett, és ügyeljen arra, hogy az elérési utat az idézőjelek közé foglalja:
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
              }
     ```
 
-8. Ha módosítani szeretné a belső terheléselosztó konfigurációját áthelyező célhelyet, akkor módosítsa a **Location** (hely ) tulajdonságot az  **\<erőforrás-csoport neve >. JSON** fájljában:
+8. Ha módosítani szeretné a belső terheléselosztó konfigurációját áthelyező célhelyet, akkor módosítsa a **Location (hely** ) tulajdonságot a **\<Resource-group-Name >. JSON** fájlban található **erőforrások** területen:
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
     ```
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
     
-    * **SKU** – módosíthatja a belső terheléselosztó SKU-jának konfigurációját a standard és az alap közötti értékről a standard értékre, ha megváltoztatja az **SKU** > **Name** tulajdonságot az **\<erőforrás-csoport neve >. JSON fájlban.** fájl:
+    * **SKU** – megváltoztathatja a belső terheléselosztó SKU-jának konfigurációjában a standard és az alapszintű, illetve az alapszintről standard értékre, ha módosítja az **SKU** > **Name** tulajdonságot a **\<Resource-Group-Name >. JSON** fájlban:
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
         ```
       Az alapszintű és standard SKU-terheléselosztó közötti különbségekről az [Azure standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) című témakörben olvashat bővebben.
 
-    * Terheléselosztási **szabályok** – a konfigurációban hozzáadhat vagy eltávolíthat terheléselosztási szabályokat, ha bejegyzéseket ad hozzá vagy távolít el az  **\<erőforrás-csoport neve >. JSON** fájl **loadBalancingRules** részéhez:
+    * Terheléselosztási **szabályok** – a konfigurációban hozzáadhat vagy eltávolíthat terheléselosztási szabályokat a **\<Resource-group-Name >. JSON** fájl **loadBalancingRules** szakaszának bejegyzéseinek hozzáadásával vagy eltávolításával:
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
         ```
        További információ a terheléselosztási szabályokról: [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Mintavételek – hozzáadhat** vagy eltávolíthat egy mintavételt a terheléselosztó számára a konfigurációban, ha bejegyzéseket ad hozzá vagy távolít el az  **\<erőforrás-csoport neve >. JSON** fájl mintavételek **szakaszához** :
+    * Mintavétel **– hozzáadhat** vagy eltávolíthat egy mintavételt a terheléselosztó számára a konfigurációban, ha bejegyzéseket ad hozzá vagy távolít el a **\<Resource-group-Name >. JSON-** fájl mintavételek **szakaszához** :
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
         ```
        Azure Load Balancer állapot-mintavételsel kapcsolatos további információkért lásd: [Load Balancer Health Szondák](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **Bejövő NAT-szabályok** – a terheléselosztó bejövő NAT-szabályainak hozzáadásához vagy eltávolításához adja hozzá a bejegyzéseket az  **\<erőforráscsoport-név >. JSON** fájl **inboundNatRules** szakaszához:
+    * **Bejövő NAT-szabályok** – a TERHELÉSELOSZTÓ bejövő NAT-szabályait hozzáadhatja vagy eltávolíthatja, ha bejegyzéseket ad hozzá vagy távolít el a **\<Resource-group-Name >. JSON** fájl **inboundNatRules** szakaszához:
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
                     }
                 ]
         ```
-        Egy bejövő NAT-szabály hozzáadásának vagy eltávolításának befejezéséhez a szabálynak jelen kell lennie, vagy el kell távolítania az  **\<erőforrás-csoport neve >. JSON** fájl végén található **Type (típus** ) tulajdonságként:
+        Egy bejövő NAT-szabály hozzáadásának vagy eltávolításának befejezéséhez a szabálynak jelen kell lennie, vagy el kell távolítania a **\<Resource-Group-name >. JSON** fájl végén található **Type (típus** ) tulajdonságként:
 
         ```json
         {
@@ -431,14 +431,14 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
         ```
         További információ a bejövő NAT-szabályokról: [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
     
-13. Mentse az  **\<erőforrás-csoport neve >. JSON** fájlt.
+13. Mentse a **\<erőforrás-csoport neve >. JSON** fájlt.
     
 10. Hozzon létre vagy egy erőforráscsoportot a cél régióban ahhoz, hogy a cél belső terheléselosztó a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával legyen üzembe helyezhető. A fent említett meglévő erőforráscsoport a folyamat részeként is újra felhasználható:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Telepítse a szerkesztett  **\<erőforrás-csoport neve >. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<Resource-Group-name >. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -489,7 +489,7 @@ Remove-AzVirtualNetwork -Name <virtual-network-name> -ResourceGroupName <resourc
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy belső Azure Load balancert helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 

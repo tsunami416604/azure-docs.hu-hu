@@ -1,50 +1,49 @@
 ---
-title: Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk ismerteti, hogyan használhatja az Azure Stream Analytics és az Azure Machine Learning együtt észlelje a rendellenességeket.
-services: stream-analytics
+title: Anomáliák észlelése Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Stream Analytics és Azure Machine Learning együtt a rendellenességek észlelésére.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e2fd226f1c605821f0fd595832b2cbe26d994fb4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459613"
 ---
-# <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
+# <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliák észlelése Azure Stream Analytics
 
-Elérhető a felhőben és az Azure IoT Edge segítségével, az Azure Stream Analytics biztosít beépített machine learning-alapú anomáliadetektálás észlelési képességek, amelyek segítségével figyelheti a két leggyakrabban előforduló rendellenességek: ideiglenes és állandó. Az a **AnomalyDetection_SpikeAndDip** és **AnomalyDetection_ChangePoint** funkciók, közvetlenül a Stream Analytics-feladatot a is végezhet rendellenesség-észlelést.
+A felhőben és Azure IoT Edgeban egyaránt elérhető, Azure Stream Analytics beépített gépi tanuláson alapuló anomália-észlelési képességeket kínál, amelyek a két leggyakrabban előforduló rendellenesség figyelésére használhatók: ideiglenes és állandó. A **AnomalyDetection_SpikeAndDip** és a **AnomalyDetection_ChangePoint** függvények esetében közvetlenül a stream Analytics feladatban is elvégezheti a anomáliák észlelését.
 
-A machine learning-modellek tegyük fel, egységesen mintavételezett idősorozat. Ha az idősor nem egységes, beszúrhat egy összesítési lépés egy átfedésmentes ablak anomáliadetektálás hívása előtt.
+A gépi tanulási modellek egységesen mintául szolgáló idősorozatot feltételeznek. Ha az idősorozat nem egységes, a rendellenesség észlelésének meghívása előtt beillesztheti az összesítési lépést egy elválasztó ablakba.
 
-A machine learning-műveletek nem támogatják szezonalitás trendeket vagy több változós összefüggéseket jelenleg.
+A gépi tanulási műveletek jelenleg nem támogatják a szezonális trendeket vagy a többváltozós korrelációkat.
 
-## <a name="model-behavior"></a>Eszközmodell viselkedésének
+## <a name="model-behavior"></a>Modell viselkedése
 
-Általában a modell pontosságát javítja a csúszóablakban további adatokkal. A megadott csúszóablakban adatait a normál értéktartományt adott időkeret részét számít. A modell csak úgy véli, Eseményelőzmények. Ellenőrizze, hogy az aktuális esemény rendellenes eltoltan keresztül. Ahogy mozog a csúszóablakban, régi értékek ürülnek ki a modell betanítása.
+Általában a modell pontossága nagyobb, mint a csúszó ablakban lévő adatok. A megadott csúszó ablakban lévő adatok az adott időszakra vonatkozó normál tartományának részeként vannak kezelve. A modell csak az események előzményeit tekinti meg a csúszó ablakon annak vizsgálatához, hogy az aktuális esemény rendellenes-e. A csúszó ablak mozgatásakor a rendszer kizárja a régi értékeket a modell betanítása alapján.
 
-A függvények milyen, amint láthatta, amennyiben alapján normál létrehozásával működnek. Kiugró értékek a létrehozott normál, a megbízhatósági szint belül hasonlítja azonosítja. Az ablak mérete a normál működéshez a modell betanítását, így ha anomália található, felismerni képes lenne szükséges minimális események alapján.
+A függvények úgy működnek, hogy az eddig látottak alapján egy bizonyos normálisat hoznak létre. A kiugró értékeket a meghatározott normál, megbízhatósági szinten való összehasonlítással azonosítjuk. Az ablak méretének a modell normál működéséhez szükséges minimális események alapján kell megjelennie, így ha anomália van, akkor felismerhetővé válik.
 
-A modell válaszidő növeli előzmények méretű, mert porovnání a múltban történt eseményekről megnövelt számú. Javasoljuk, hogy csak az események a jobb teljesítmény érdekében szükséges számát tartalmazzák.
+A modell válaszideje az előzmények méretével nő, mivel az összehasonlításhoz nagyobb számú múltbeli eseményre van szükség. Azt javasoljuk, hogy a jobb teljesítmény érdekében csak a szükséges számú eseményt foglalja bele.
 
-A time series hiányosságok lehet a modell nem fogadott események bizonyos időpontokban a időben. Ebben a helyzetben a Stream Analytics imputálási logikai kapcsolattal történik. Az előzmények mérete, valamint egy időtartamot, az azonos csúszóablakban a rendszer kiszámítja, amellyel események várhatóan érkeznek átlagos sebességét.
+Az idősorozatbeli rések a modell bizonyos időpontokban nem fogadó eseményeinek eredményét eredményezik. Ezt a helyzetet a Stream Analytics a imputálási Logic használatával kezeli. Az előzmények méretének, valamint az időtartamnak ugyanazt a csúszó időszakot kell használnia, hogy kiszámítsa azt az átlagos sebességet, amelyen az események várhatóan megérkeznek.
 
-Az anomáliadetektálási generátor elérhető [Itt](https://aka.ms/asaanomalygenerator) hírcsatorna adatokat a különböző anomáliadetektálási minták az Iot Hub segítségével. Az ASA-feladat beállíthatja a ezeket anomáliadetektálási észlelési funkciók az Iot-központ olvasni, és észlelje a rendellenességeket.
+Az [itt](https://aka.ms/asaanomalygenerator) elérhető anomáliák generátora egy IOT hub különböző anomália-mintázatú adattal való megkötésére használható. Ezekkel a rendellenesség-észlelési funkciókkal egy ASA-feladattal lehet beolvasni az IOT-hubhoz, és észleli a rendellenességeket.
 
-## <a name="spike-and-dip"></a>Megnövekedett és dedikált IP-címmel
+## <a name="spike-and-dip"></a>Spike és dip
 
-Egy time series eseménystream ideiglenes protokollmegvalósításokat, csúcsok és süllyedések ismertek. Csúcsok és a DIP figyelhető a Machine Learning-alapú operátorral [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
-).
+Az idősorozat-adatfolyamban az ideiglenes anomáliák a tüskék és a dips néven ismertek. A tüskék és a dips a Machine Learning-alapú operátor, [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+)segítségével figyelhető meg.
 
-![Megnövekedett és a dip anomáliadetektálási – példa](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
+![Példa a Spike és a DIP anomáliára](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-Az azonos csúszóablakban, a második ugrásszerű kisebb, mint az elsőt, ha a kiszámított pontszámot a kisebb kiugrást a nem elegendő az első kiugrás belül a megbízhatósági szint esetében a pontszámot képest megadott jelentős. A modell megbízhatósági szint ilyen rendellenességek észlelése csökkenő próbálhatja ki. Azonban ha elkezdi túl sok értesítéseket kaphat, egy magasabb megbízhatósági intervallum használhatja.
+Ugyanabban a tolóajtóban, ha egy második tüske kisebb, mint az első, a kisebb tüske számított pontszáma valószínűleg nem elég jelentős ahhoz képest, mint a megadott megbízhatósági szinten lévő első tüske pontszáma. Megpróbálhatja csökkenteni a modell megbízhatósági szintjét az ilyen anomáliák észlelése érdekében. Ha azonban túl sok riasztást szeretne kapni, nagyobb megbízhatósági intervallumot is használhat.
 
-A következő példalekérdezés feltételezi, hogy a bemeneti arány egy 2 perces csúszóablakban másodpercenként egy esemény-120 eseményeit. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 95 %-os megbízhatósági szint állapotát.
+Az alábbi lekérdezés feltételezi, hogy egy esemény másodpercenként egy egységes bemeneti arányt mutat be egy 2 perces csúszó ablakban, amelynek előzménye 120 esemény. Az utolsó SELECT utasítás kinyeri és kiírja a pontszám és a rendellenesség állapotát 95%-os megbízhatósági szinttel.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,21 +66,21 @@ INTO output
 FROM AnomalyDetectionStep
 ```
 
-## <a name="change-point"></a>Pont módosítása
+## <a name="change-point"></a>Változási pont
 
-Egy time series eseménystream állandó rendellenességek olyan módosításokat az értékek eloszlását az eseménystream, például megváltozik, és trendeket. A Stream Analytics, az ilyen rendellenességek észlelése használata a Machine Learning-alapú [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operátor.
+Az idősorozat-adatfolyamban az állandó anomáliák módosulnak az esemény-adatfolyamban lévő értékek eloszlásában, például a szintek változásaiban és trendjeiben. Stream Analytics az ilyen anomáliák észlelése a Machine Learning-alapú [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operátor használatával történik.
 
-Állandó módosítások sokkal hosszabb ideig, mint a csúcsok és süllyedések és katasztrofális esemény arra utalhat. Állandó módosítások nem láthatók általában szemmel, de az észlelése a **AnomalyDetection_ChangePoint** operátor.
+Az állandó változások a tüskéknél és a dipsnál jóval hosszabb ideig tartanak, és katasztrofális esemény (ek) et jelezhetnek. Az állandó módosítások általában nem láthatók a szabad szemmel, de a **AnomalyDetection_ChangePoint** operátorral észlelhetők.
 
-Az alábbi képen egy példa egy szint módosításának:
+Az alábbi ábrán egy példa látható a szint változására:
 
-![Szint módosításának anomáliadetektálási – példa](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
+![Példa a szint változási rendellenességére](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
 
-Az alábbi képen egy példa egy trend módosítása:
+Az alábbi ábrán egy példa látható a trend változására:
 
-![Trend módosítás anomáliadetektálási – példa](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
+![Példa a trend változási rendellenességére](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-A következő példalekérdezés feltételezi, hogy a bemeneti arány egy esemény / másodperc egy 20 perces csúszóablakban 1200-as események előzményei mérettel. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 80 %-os megbízhatósági szint állapotát.
+Az alábbi lekérdezés feltételezi, hogy egy esemény másodpercenként egy egységes bemeneti sebességű egy 20 perces csúszó ablakban, amelynek előzmény mérete 1200 esemény. Az utolsó SELECT utasítás kinyeri és kiírja a pontszám és a rendellenesség állapotát 80%-os megbízhatósági szinttel.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -105,59 +104,59 @@ FROM AnomalyDetectionStep
 
 ```
 
-## <a name="performance-characteristics"></a>Teljesítményjellemzők
+## <a name="performance-characteristics"></a>Teljesítmény jellemzői
 
-Ezek a modellek teljesítményének függ az előzmények mérete, a időszak, az esemény terhelés, és e funkció szintű particionálás szolgál. Ez a szakasz ismerteti ezeket a konfigurációkat és minták az Adatbetöltési díjait számoljuk fel 1 KB, 5 KB és 10 ezer esemény / másodperc átcsoportosítása hogyan.
+Ezeknek a modelleknek a teljesítménye az előzmények méretétől, az időtartamtól, az események betöltéstől, valamint attól függ, hogy a rendszer használja-e a függvény szintű particionálást. Ez a szakasz ezeket a konfigurációkat ismerteti, és mintákat biztosít a másodpercenkénti 1K-, 5K-és 10K-események betöltési arányának fenntartásához.
 
-* **Előzmények mérete** – ezek a modellek végre lineárisan **előzmények mérete**. Minél hosszabb a előzmények méretet, a hosszabb a modellek igénybe pontszámot rendelni az új eseményt kap. Ennek oka az, a modellek, hasonlítsa össze az egyes előzmények pufferben elmúlt eseményt az új esemény.
-* **Ablak időtartamának** – a **ablak időtartamának** tükröznie kell mennyi ideig tart az előzmények mérete által megadott tetszőleges számú eseményeket fogadni. Anélkül, hogy sok eseményt az ablakban az Azure Stream Analytics imputálására lenne a hiányzó értékeket. Ezért a CPU-felhasználás az előzmények mérete függvénye.
-* **Esemény terhelés** – minél nagyobb a **esemény terhelés**, annál több munkahelyi, amely végzi modellekkel, amely hatással van a CPU-felhasználás. A feladat azáltal, hogy zavaróan párhuzamos, feltéve, hogy az üzleti logika használata több bemeneti partíciók logikus kiterjeszthető.
-* **Függvény szint particionálás** - **függvény szint particionálás** segítségével történik ```PARTITION BY``` belül a rendellenességek észlelése függvény hívásához szükséges. Az ilyen típusú particionálás hozzáadja az-terhelés a állapotban kell tartani a több modell egy időben igényei szerint. Függvény szint particionálás eszköz szintű particionálás ilyen esetekben használatos.
+* **Előzmények mérete** – ezek a modellek lineárisan, az **Előzmények méretével**végezhetők el. Minél hosszabb az előzmények mérete, annál hosszabb lesz a modell egy új esemény kiértékeléséhez. Ennek az az oka, hogy a modellek összehasonlítják az új eseményt az előzmények pufferben lévő összes korábbi eseménysel.
+* **Ablak időtartama** – az **ablak időtartamának** tükröznie kell, hogy mennyi időt vesz igénybe az előzmények mérete által meghatározott számú esemény fogadása. Az ablakban számos esemény nélkül Azure Stream Analytics a hiányzó értékeket. Ezért a CPU-felhasználás az előzmények méretének függvénye.
+* **Esemény betöltése** – minél nagyobb az **esemény terhelése**, annál több munka van, amelyet a modellek végeznek, ami hatással van a CPU-felhasználásra. A feladatot zavaróan párhuzamosan lehet kibővíteni, feltételezve, hogy az üzleti logika több bemeneti partíció használatát teszi lehetővé.
+* A függvények szintjének **particionálásához** - a **függvények szintjének particionálását** a rendellenesség-észlelési függvény hívásának ```PARTITION BY``` használatával végezheti el. Ez a particionálási típus felveszi a terhelést, mivel az állapotot egyszerre több modell esetében is fenn kell tartani. A függvények szintjének particionálását olyan forgatókönyvek használják, mint az eszközök szintjének particionálás.
 
-### <a name="relationship"></a>Kapcsolat
-Az előzmények mérete, időszak hossza és esemény teljes terhelés kapcsolódnak egymáshoz, a következő módon:
+### <a name="relationship"></a>Relationship
+Az előzmények mérete, az ablak időtartama és az összes esemény terhelése a következő módon kapcsolódik:
 
-windowDuration (milliszekundumban) = 1000 * historySize / (teljes bemeneti aránya / s / bemeneti partíciók száma)
+windowDuration (MS) = 1000 * historySize/(összes bemeneti esemény másodpercenként/bemeneti partíciók száma)
 
-A függvény által deviceId történő particionálása esetén hozzáadása "Partíció által deviceId", a rendellenességek észlelése függvény hívásához szükséges.
+A függvény deviceId szerinti particionálásakor adja hozzá a "PARTITION BY deviceId" kifejezést a rendellenesség-észlelési függvény hívásához.
 
-### <a name="observations"></a>Megfigyelés
-Az alábbi táblázat tartalmazza az átviteli sebesség megfigyelések egy egyetlen csomópont (6 SU) a nem particionált esethez:
+### <a name="observations"></a>Észrevételeket
+A következő táblázat a nem particionált esetekhez tartozó egyetlen csomópont (6 SU) átviteli sebességét tartalmazza:
 
-| Előzmények mérete (események) | Ablak időtartama (ms) | Összes bemeneti események másodpercenkénti száma |
+| Előzmények mérete (események) | Ablak időtartama (MS) | Összes bemeneti esemény másodpercenként |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2,200 |
-| 600 | 728 | 1,650 |
-| 6,000 | 10,910 | 1,100 |
+| 60 | 55 | 2200 |
+| 600 | 728 | 1 650 |
+| 6000 | 10 910 | 1100 |
 
-Az alábbi táblázat tartalmazza a particionált esethez (6 SU) egy csomópont esetén az átviteli sebesség megfigyelések:
+A következő táblázat a particionált eset egyetlen csomópontjának (6 SU) átviteli sebességét tartalmazza:
 
-| Előzmények mérete (események) | Ablak időtartama (ms) | Összes bemeneti események másodpercenkénti száma | Eszközök száma |
+| Előzmények mérete (események) | Ablak időtartama (MS) | Összes bemeneti esemény másodpercenként | Eszközök száma |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1,091 | 1,100 | 10 |
-| 600 | 10,910 | 1,100 | 10 |
-| 6,000 | 218,182 | <550 | 10 |
-| 60 | 21,819 | 550 | 100 |
-| 600 | 218,182 | 550 | 100 |
-| 6,000 | 2,181,819 | <550 | 100 |
+| 60 | 1 091 | 1100 | 10 |
+| 600 | 10 910 | 1100 | 10 |
+| 6000 | 218 182 | < 550 | 10 |
+| 60 | 21 819 | 550 | 100 |
+| 600 | 218 182 | 550 | 100 |
+| 6000 | 2 181 819 | < 550 | 100 |
 
-Mintakód futtatásához a fenti konfigurációk nem particionált található a [Streamelési a méretezési csoport tárház](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) Azure minták. A kód létrehoz egy stream analytics-feladat a függvény szint particionálás, amely Eseményközpontot használja kimenetként és bemenetként. A bemeneti terhelés tesztcélú ügyfelek használatával jön létre. Minden bemeneti esemény egy 1 KB-os json-dokumentumot. Események (legfeljebb 1 KB-eszközök esetén) JSON-adatokat küld valamelyik IoT-eszköz szimulálása. Az előzmények mérete, időszak hossza és esemény teljes terhelés sokfélék 2 bemeneti partíció keresztül.
+A fentiekben nem particionált konfigurációk futtatásához használandó mintakód az Azure-minták [streaming skáláján](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) található. A kód olyan stream Analytics-feladatot hoz létre, amely nem rendelkezik működési szintű particionálással, ami az Event hub bemenetként és kimenetként való használatát is felhasználja. A bemeneti terhelés a tesztelési ügyfelek használatával jön létre. Minden bemeneti esemény egy 1KB JSON-dokumentum. Az események a JSON-adatokat küldő IoT-eszközt szimulálják (legfeljebb 1K-eszközök esetén). Az előzmények mérete, az ablak időtartama és az események teljes terhelése két bemeneti partíción keresztül változhat.
 
 > [!Note]
-> A pontosabb becslést testre szabhatja a saját forgatókönyvéhez igazítva mintákat.
+> A pontosabb becslés érdekében szabja testre a mintákat úgy, hogy illeszkedjenek a forgatókönyvhöz.
 
 ### <a name="identifying-bottlenecks"></a>Szűk keresztmetszetek azonosítása
-Az Azure Stream Analytics-feladat a metrika panel használatával a folyamatban, szűk keresztmetszetek azonosítása. Felülvizsgálat **bemeneti/kimeneti események** átviteli sebességet és ["Vízjel késleltetés"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy **várakozó események** megtekintheti, ha a feladat viselkedéssel a bemeneti arány. Az Event Hubs-metrikák, keressen **kérelmek szabályozva** , és ennek megfelelően módosítsa a küszöbérték egységek. Cosmos DB metrikákkal, tekintse át a **felhasznált max. RU/s partíciókulcs-tartományonként** alatt kulcstartományokkal biztosításához a partíció átviteli sebesség egyenletesen felhasznált. Azure SQL Database monitorozása **naplózási IO** és **CPU**.
+A Azure Stream Analytics feladatok mérőszámok paneljén azonosíthatja a folyamat szűk keresztmetszeteit. Tekintse át a **bemeneti/kimeneti eseményeket** az átviteli sebesség és a "küszöbértékek [késleltetése"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy a **várakozó események** között, és ellenőrizze, hogy a feladatban szerepel-e a bemeneti sebesség. Az Event hub mérőszámai esetében keresse meg a **szabályozott kérelmeket** , és ennek megfelelően módosítsa a küszöbértékeket. Cosmos DB metrikák esetében tekintse át a **maximálisan felhasznált ru/s** értékeit az átviteli sebesség alatt, hogy a partíciós kulcsok tartománya egységesen legyen felhasználva. Az Azure SQL DB esetében figyelje a **log IO** és a **CPU**-t.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomáliadetektálás gépi tanulás használatával az Azure Stream Analytics szolgáltatásban
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomáliák észlelése a Machine learning használatával Azure Stream Analytics
 
-A következő videó bemutatja, hogyan észleli az anomáliadetektálási Azure Stream Analytics a machine learning-függvények használatával valós idejű. 
+A következő videó bemutatja, hogyan észlelhető egy anomália valós időben a Machine learning functions használatával Azure Stream Analyticsban. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

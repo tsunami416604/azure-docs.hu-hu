@@ -1,6 +1,6 @@
 ---
 title: Az előzetes verziójú környezet megtervezése – Azure Time Series Insights | Microsoft Docs
-description: Megtudhatja, hogyan tervezheti meg Azure Time Series Insights előnézeti környezetét.
+description: Ajánlott eljárások a Azure Time Series Insights-előnézeti környezet konfigurálásához, kezeléséhez, megtervezéséhez és üzembe helyezéséhez.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452436"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
@@ -48,7 +48,7 @@ A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyez
 A melegen tárolt lekérdezések ingyenesek, míg a hűtőházi tárolással kapcsolatos lekérdezések költségekkel járnak. Fontos megérteni a lekérdezési mintákat, és ennek megfelelően tervezze meg a meleg tároló konfigurációját. Azt javasoljuk, hogy az interaktív elemzések a legújabb, a meleg áruházban található és a minták elemzése, valamint a hosszú távú trendek esetében is naprakészek legyenek.
 
 > [!NOTE]
-> A meleg tárolással jelenleg legfeljebb 1 000 tulajdonságot támogatunk.
+> Ha többet szeretne megtudni a meleg adatainak lekérdezéséről, olvassa el a [következő témakört:](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 A kezdéshez három további elemre van szükség:
 

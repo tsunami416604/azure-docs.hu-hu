@@ -1,5 +1,5 @@
 ---
-title: Hibák és kivételek diagnosztizálása a webalkalmazásokban az Azure Application Insightsban | Microsoft Docs
+title: Hibák és kivételek diagnosztizálása az Azure Application Insights
 description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a kérelem telemetria együtt.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/11/2019
-ms.openlocfilehash: 90f03baa35d0bf2b63ec480a23db30409df3845f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f89149de9b1173a659176f686053e8dc564ab85c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432657"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>A webalkalmazások kivételeinek diagnosztizálása a Application Insights
 Az élő webalkalmazásban lévő kivételeket [Application Insights](../../azure-monitor/app/app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
@@ -70,7 +70,7 @@ Egyetlen kattintással áttekintheti a reprezentatív mintákat a műveletek egy
 ## <a name="custom-tracing-and-log-data"></a>Egyéni nyomkövetési és naplózási adatszolgáltatások
 Az alkalmazásra vonatkozó diagnosztikai adatgyűjtéshez kódot szúrhat be a saját telemetria-adatai elküldéséhez. Ez a diagnosztikai keresésben a kérelem, az oldal nézet és az egyéb automatikusan összegyűjtött adatok mellett jelenik meg.
 
-Több lehetőség közül választhat:
+Erre számos lehetősége van:
 
 * A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) általában a használati minták figyelésére használatos, de az általa küldött adatok is megjelennek az egyéni események szakaszban a diagnosztikai keresésben. Az események neve, és a karakterlánc-tulajdonságokat és numerikus mérőszámokat is végezhet, amelyeken [szűrheti a diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md).
 * A [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) lehetővé teszi, hogy több adatot, például post-adatokat küldjön.
@@ -159,7 +159,7 @@ A tulajdonságok és a mérések paramétereinek megadása nem kötelező, de ha
 ## <a name="browser-exceptions"></a>Böngészőkivételek
 A legtöbb böngészőbeli kivételt jelenteni kell.
 
-Ha a weblap parancsfájlokat tartalmaz a Content Delivery Networks vagy más tartományokból, győződjön meg arról, hogy a parancsfájl címkéje ```crossorigin="anonymous"``` attribútummal rendelkezik, és hogy a kiszolgáló [CORS-fejléceket](https://enable-cors.org/)küld. Ez lehetővé teszi, hogy lekérje a verem nyomon követését és részleteit a nem kezelt JavaScript-kivételekről ezekből az erőforrásokból.
+Ha a weblap parancsfájlokat tartalmaz a Content Delivery Networks vagy más tartományokból, győződjön meg arról, hogy a parancsfájl címkéje ```crossorigin="anonymous"```attribútummal rendelkezik, és hogy a kiszolgáló [CORS-fejléceket](https://enable-cors.org/)küld. Ez lehetővé teszi, hogy lekérje a verem nyomon követését és részleteit a nem kezelt JavaScript-kivételekről ezekből az erőforrásokból.
 
 ## <a name="reuse-your-telemetry-client"></a>A telemetria-ügyfél újrafelhasználása
 
@@ -185,7 +185,7 @@ public class GoodController : ApiController
 ## <a name="web-forms"></a>Webes űrlapok
 A webes űrlapok esetében a HTTP-modul képes lesz összegyűjteni a kivételeket, ha nincsenek átirányítások konfigurálva a CustomErrors.
 
-Ha azonban aktív átirányítással rendelkezik, adja hozzá a következő sorokat a Application_Error függvényhez a Global.asax.cs-ben. (Adjon hozzá egy Global. asax fájlt, ha még nem rendelkezik ilyennel.)
+Ha azonban aktív átirányítással rendelkezik, adja hozzá a következő sorokat az Application_Error függvényhez a Global.asax.cs-ben. (Adjon hozzá egy Global. asax fájlt, ha még nem rendelkezik ilyennel.)
 
 ```csharp
     void Application_Error(object sender, EventArgs e)
@@ -260,7 +260,7 @@ Cserélje le a HandleError attribútumot a vezérlők új attribútumára.
 [Minta](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-@No__t_0 regisztrálása globális szűrőként a Global.asax.cs-ben:
+`AiHandleErrorAttribute` regisztrálása globális szűrőként a Global.asax.cs-ben:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication

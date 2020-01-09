@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73590824"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467436"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -83,8 +83,8 @@ A [felügyelt lemezek](../articles/virtual-machines/windows/managed-disks-overvi
 Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
 
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
-2. **Tekintse át a Storage-fiókokban lévő nem felügyelt lemezekre vonatkozó [korlátokat](../articles/storage/common/storage-scalability-targets.md),** mielőtt további virtuális merevlemezeket adna hozzá egy tárfiókhoz.
-3. **Használjon külön tárfiókot minden egyes virtuális géphez a rendelkezésre állási csoportban.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a Storage-fiókok megosztása, ha az ajánlott eljárások követése ![nem felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
+2. **Tekintse át az Azure Storage-fiókban nem felügyelt lemezek számának [korlátozásait](../articles/storage/blobs/scalability-targets-premium-page-blobs.md)**  , mielőtt további virtuális merevlemezeket adna hozzá egy Storage-fiókhoz
+3. **Használjon külön Storage-fiókot a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a Storage-fiókok megosztása, ha az ajánlott eljárások követése ![nem felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
 

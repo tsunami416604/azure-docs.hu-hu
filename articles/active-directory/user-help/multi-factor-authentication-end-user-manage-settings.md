@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7e557ca1bfc7587b6a65957177440041bf4e902f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231926"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681327"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>A kétfaktoros ellenőrzési módszer és beállítások módosítása
 
@@ -32,16 +32,16 @@ A munkahelyi vagy iskolai fiókjához tartozó biztonsági ellenőrzési módsze
 
 ## <a name="using-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés lap használata
 
-Ha a szervezete a kétfaktoros ellenőrzés bekapcsolásának és kezelésének részletes lépéseit ismerteti, kövesse ezeket az utasításokat. Ellenkező esetben a biztonsági ellenőrzési módszer beállításait a [további biztonsági ellenőrzés](https://aka.ms/mfasetup) oldalon érheti el.
+Ha a szervezete a kétfaktoros ellenőrzés bekapcsolásának és kezelésének részletes lépéseit ismerteti, kövesse ezeket az utasításokat. Ellenkező esetben a biztonsági ellenőrzési módszer beállításait a [további biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) oldalon érheti el.
 
 >[!Note]
 >Ha a képernyőn megjelenő információk nem egyeznek meg a jelen cikkben ismertetett lépésekkel, az azt jelenti, hogy a rendszergazda bekapcsolta a biztonsági adatok (előzetes verzió) felületét, vagy hogy a szervezete rendelkezik saját egyéni portálral. További információ a biztonsági információkkal kapcsolatos felhasználói élményről: [biztonsági adatok (előzetes verzió) – áttekintés](user-help-security-info-overview.md). Ha többet szeretne megtudni a szervezet egyéni portálján, forduljon az ügyfélszolgálathoz.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés oldalának beolvasása
 
-- Nyissa meg a következőt: https://aka.ms/mfasetup.
+- Lépjen a [további biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) lapra.
 
-    ![További biztonsági ellenőrző képernyő, az elérhető biztonsági ellenőrzési módszer részleteivel](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+    ![További biztonsági ellenőrzés lap, az elérhető biztonsági ellenőrzési módszer részleteivel](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
     Ha a hivatkozásra kattintva nem működik, az alábbi lépéseket követve is elérheti a **további biztonsági ellenőrzés** oldalt:
 
@@ -133,7 +133,7 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
     Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákról.
 

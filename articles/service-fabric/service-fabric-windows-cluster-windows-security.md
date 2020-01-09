@@ -1,36 +1,27 @@
 ---
-title: Windows-rendszerbiztonság használatával a Windows rendszerű fürt biztonságossá tétele |} A Microsoft Docs
-description: Ismerje meg, egy önálló fürtön futó Windows-rendszerbiztonság használatával Windows-csomópontok és ügyfél-csomópont biztonságának konfigurálása.
-services: service-fabric
-documentationcenter: .net
+title: Windows rendszerű fürt biztonságossá tétele Windows-Biztonság használatával
+description: Megtudhatja, hogyan konfigurálhatja a csomópontok közötti és az ügyfél és a csomópont közötti biztonságot a Windows rendszeren futó önálló fürtön a Windows biztonsági szolgáltatással.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7a1ff63f39777c1f7a83190adae2991138a11d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464054"
 ---
-# <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
-Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
+# <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Önálló fürt biztonságossá tétele Windows rendszeren a Windows biztonsági szolgáltatással
+A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása érdekében védenie kell a fürtöt. A biztonság különösen akkor fontos, ha a fürt éles számítási feladatokat futtat. Ez a cikk azt ismerteti, hogyan konfigurálható a csomópontok közötti és az ügyfél és a csomópont közötti biztonság a Windows Biztonság használatával a *ClusterConfig. JSON* fájlban.  A folyamat megfelel a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)biztonsági lépéseként. További információ arról, hogy a Service Fabric hogyan használja a Windows-biztonságot: a [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).
 
 > [!NOTE]
-> Vegye figyelembe a csomópontok közötti biztonsági választott gondosan, mivel nem fürt frissítése egy biztonsági választhatja a másikra. A biztonsági beállításának módosításához kell újraépíteni a teljes fürtöt.
+> Érdemes figyelembe vennie a csomópontok közötti biztonság kiválasztását, mivel nincs olyan fürt, amely az egyik biztonsági megoldásból a másikra van frissítve. A biztonsági kijelölés módosításához újra kell építenie a teljes fürtöt.
 >
 >
 
-## <a name="configure-windows-security-using-gmsa"></a>Csoportosan felügyelt szolgáltatásfiókot használó Windows biztonságának konfigurálása  
-A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.\< verzió > .zip](https://go.microsoft.com/fwlink/?LinkId=730690) különálló fürt csomag tartalmazza a sablon konfigurálásához a Windows biztonsági használatával [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+## <a name="configure-windows-security-using-gmsa"></a>A Windows Biztonság konfigurálása a gMSA használatával  
+A [Microsoft. Azure. ServiceFabric. windowsserver.\<verzió >. zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürtjében letöltött minta *ClusterConfig. gMSA. Windows. MultiMachine. JSON* konfigurációs fájl tartalmaz egy sablont a Windows biztonsági beállításainak a [csoportosan felügyelt szolgáltatásfiók](https://technet.microsoft.com/library/hh831782.aspx)használatával történő konfigurálásához (gMSA):  
 
 ```
 "security": {
@@ -51,24 +42,24 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfi
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
-| ClusterCredentialType |Állítsa be *Windows* Windows biztonsági csomópontok közötti kommunikáció engedélyezéséhez.  | 
-| ServerCredentialType |Állítsa be *Windows* Windows biztonsági kliens csomópont közötti kommunikáció engedélyezéséhez. |
-| WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |
-| ClustergMSAIdentity |Konfigurálja a csomópont a csomópont közötti biztonsághoz. A csoportosan felügyelt szolgáltatásfiók. |
-| ClusterSPN |Csoportosan felügyelt szolgáltatásfiók egyszerű Szolgáltatásnevének regisztrált|
-| ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |
-| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |
-| IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |
+| ClusterCredentialType |Állítsa a *Windows* rendszerre, hogy engedélyezze a Windows Biztonság csomópont-csomópont típusú kommunikációt.  | 
+| ServerCredentialType |Állítsa a *Windows* -ra lehetőséget, hogy engedélyezze a Windows biztonságot az ügyfél-csomópont kommunikációhoz. |
+| WindowsIdentities |A fürt és az ügyfél identitását tartalmazza. |
+| ClustergMSAIdentity |A csomópontok közötti biztonságot konfigurálja. Csoportosan felügyelt szolgáltatásfiók. |
+| ClusterSPN |Regisztrált SPN a gMSA-fiókhoz|
+| ClientIdentities |Az ügyfél és a csomópont közötti biztonság konfigurálása. Az ügyfél felhasználói fiókjainak tömbje. |
+| Identitáskezelés |Adja hozzá a tartományi felhasználót (tartomány \ Felhasználónév) az ügyfél identitásához. |
+| IsAdmin |Állítsa igaz értékre, ha azt szeretné megadni, hogy a tartományi felhasználó rendszergazdai ügyfél-hozzáféréssel vagy FALSE értékkel rendelkezik a felhasználói ügyfelek hozzáféréséhez. |
 
 > [!NOTE]
-> Formátumú ClustergMSAIdentity érték lehet "mysfgmsa@mydomain".
+> A ClustergMSAIdentity értékének "mysfgmsa@mydomain" formátumúnak kell lennie.
 
-[A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) úgy van konfigurálva **ClustergMSAIdentity** amikor szüksége van a service fabric csoportosan felügyelt szolgáltatásfiók alatt szeretné futtatni. Annak érdekében, hogy a csomópontok közötti bizalmi kapcsolatokat hozhat létre, is el kell tisztában egymással. Ez két különböző módon valósítható meg: Adja meg a csoportosan felügyelt szolgáltatásfiók, amely tartalmazza az összes csomóponton a fürtben, vagy adja meg a tartományi számítógép csoportot, amely tartalmazza az összes csomóponton a fürtben. Kifejezetten javasoljuk a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítés, különösen a nagyobb fürtök (10-nél több csomópont) vagy a fürtök, amelyek valószínűleg növekedhet és csökkenhet.  
-Ez a módszer nem igényel, amelynek fürt rendszergazdák kapott hozzáférési jogosultsága ahhoz, hozzáadhat és eltávolíthat tagokat tartományi csoport létrehozását. Ezek a fiókok automatikus jelszókezelés is hasznosak. További információkért lásd: [csoportosan felügyelt szolgáltatásfiókok – első lépések](https://technet.microsoft.com/library/jj128431.aspx).  
+A csomópontok közötti [Biztonság](service-fabric-cluster-security.md#node-to-node-security) a **ClustergMSAIdentity** beállításával állítható be, ha a Service fabricnek a gMSA alatt kell futnia. A csomópontok közötti megbízhatósági kapcsolatok létrehozásához tudniuk kell egymással kapcsolatban. Ez két különböző módon valósítható meg: megadhatja a fürtben lévő összes csomópontot tartalmazó csoportosan felügyelt szolgáltatásfiókot, vagy megadhatja a fürtben lévő összes csomópontot tartalmazó tartományi számítógép csoportot is. Javasoljuk, hogy használja a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítését, különösen a nagyobb fürtök (több mint 10 csomópont) vagy a valószínűleg növekedni vagy zsugorodó fürtök esetében.  
+Ehhez a megközelítéshez nincs szükség olyan tartományi csoport létrehozására, amelyhez a fürt rendszergazdája hozzáférési jogokat kapott a tagok hozzáadásához és eltávolításához. Ezek a fiókok az automatikus jelszavas felügyelethez is hasznosak. További információ: [első lépések csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/library/jj128431.aspx).  
  
-[A csomópont security ügyfél](service-fabric-cluster-security.md#client-to-node-security) használatára van konfigurálva, **ClientIdentities**. Annak érdekében, hogy az ügyfél és a fürt közötti megbízhatósági kapcsolatot hoz létre, konfigurálnia kell a fürt tudni, hogy melyik ügyfél, amely megbízható, identitásokat. Ezt kétféleképpen teheti meg: Adja meg a tartományi felhasználók csoporthoz, amely csatlakozni vagy adja meg a csomópont Tartományfelhasználók kapcsolódhatnak az. A Service Fabric támogatja a különböző hozzáférés-vezérlő kétféle Service Fabric-fürt csatlakozó ügyfelek számára: rendszergazdai és felhasználói. Hozzáférés-vezérlés lehetővé teszi a fürt rendszergazdája a különböző csoportok számára, így több biztonságos a fürt a fürt működését bizonyos típusú való hozzáférés korlátozásához.  A rendszergazdák (beleértve az olvasási/írási képességeket) felügyeleti képességek teljes hozzáféréssel rendelkezik. Felhasználók, alapértelmezés szerint rendelkezik csak olvasási hozzáférés a felügyeleti funkciók (például a lekérdezési képességek), valamint az alkalmazások és szolgáltatások megoldásához. További információ a hozzáférés-vezérlés: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).  
+Az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security) a **ClientIdentities**használatával van konfigurálva. Az ügyfél és a fürt közötti megbízhatósági kapcsolat létrehozásához konfigurálnia kell a fürtöt, hogy megtudja, melyik ügyfél-identitások bízhatnak meg. Ezt kétféleképpen teheti meg: megadhatja, hogy mely felhasználók csatlakozhatnak a hálózathoz, vagy megadhatják azokat a tartományi csomópontokat, akik csatlakozhatnak. Service Fabric két különböző hozzáférés-vezérlési típust támogat a Service Fabric-fürthöz csatlakozó ügyfelekhez: rendszergazda és felhasználó. A hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája korlátozza a hozzáférést bizonyos típusú fürtökhöz a különböző felhasználói csoportok számára, így a fürt biztonságosabbá tehető.  A rendszergazdák teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez (beleértve az írási/olvasási képességeket is). A felhasználók alapértelmezés szerint csak olvasási jogosultságot biztosítanak a felügyeleti képességekhez (például a lekérdezési képességekhez), valamint az alkalmazások és szolgáltatások feloldásának lehetőségét. A hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlése](service-fabric-cluster-security-roles.md).  
  
-Az alábbi példa **biztonsági** szakaszban konfigurálja a Windows biztonsági csoportosan felügyelt szolgáltatásfiókot használó, és azt jelenti, hogy a gépek *ServiceFabric.clusterA.contoso.com* csoportosan felügyelt szolgáltatásfiók a fürt és az adott részétképezik. *CONTOSO\usera* felügyeleti ügyfél hozzáfér:  
+A következő példa **biztonsági** szakasz a Windows-biztonságot konfigurálja a gMSA használatával, és megadja, hogy a *ServiceFabric.clusterA.contoso.com* gMSA lévő gépek a fürt részét képezik, és hogy a *CONTOSO\usera* rendszergazdai ügyfél-hozzáféréssel rendelkezik:  
   
 ```
 "security": {
@@ -85,8 +76,8 @@ Az alábbi példa **biztonsági** szakaszban konfigurálja a Windows biztonsági
 }
 ```
   
-## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurálja a Windows biztonsági gép csoport használatával  
-Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felügyelt szolgáltatásfiókot használja a fenti útmutató szerint. A minta *ClusterConfig.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.\< verzió > .zip](https://go.microsoft.com/fwlink/?LinkId=730690) különálló fürt csomag tartalmazza a sablon konfigurálásához a Windows biztonsági.  Windows biztonsági konfigurálva van a **tulajdonságok** szakaszban: 
+## <a name="configure-windows-security-using-a-machine-group"></a>A Windows biztonsági beállítások konfigurálása gépi csoport használatával  
+Ez a modell elavult. Javasoljuk, hogy a fentiekben ismertetett gMSA használja. A [Microsoft. Azure. ServiceFabric. windowsserver.\<verzió >. zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürtjében letöltött minta *ClusterConfig. Windows. MultiMachine. JSON* konfigurációs fájl tartalmaz egy sablont a Windows biztonságának konfigurálásához.  A Windows biztonsági beállításai a **Tulajdonságok** szakaszban vannak konfigurálva: 
 
 ```
 "security": {
@@ -104,24 +95,24 @@ Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felüg
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
-| ClusterCredentialType |Állítsa be *Windows* Windows biztonsági csomópontok közötti kommunikáció engedélyezéséhez.  |
-| ServerCredentialType |Állítsa be *Windows* Windows biztonsági kliens csomópont közötti kommunikáció engedélyezéséhez. |
-| WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |
-| ClusterIdentity |Egy gép csoportnevet domain\machinegroup, használja a csomópontok közötti biztonságának konfigurálása. |
-| ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |  
-| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
-| IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |  
+| ClusterCredentialType |Állítsa a *Windows* rendszerre, hogy engedélyezze a Windows Biztonság csomópont-csomópont típusú kommunikációt.  |
+| ServerCredentialType |Állítsa a *Windows* -ra lehetőséget, hogy engedélyezze a Windows biztonságot az ügyfél-csomópont kommunikációhoz. |
+| WindowsIdentities |A fürt és az ügyfél identitását tartalmazza. |
+| ClusterIdentity |A csomópontok közötti biztonság konfigurálásához használjon domain\machinegroup nevet. |
+| ClientIdentities |Az ügyfél és a csomópont közötti biztonság konfigurálása. Az ügyfél felhasználói fiókjainak tömbje. |  
+| Identitáskezelés |Adja hozzá a tartományi felhasználót (tartomány \ Felhasználónév) az ügyfél identitásához. |  
+| IsAdmin |Állítsa igaz értékre, ha azt szeretné megadni, hogy a tartományi felhasználó rendszergazdai ügyfél-hozzáféréssel vagy FALSE értékkel rendelkezik a felhasználói ügyfelek hozzáféréséhez. |  
 
-[A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) beállítás használatával konfigurálható **ClusterIdentity** Ha azt szeretné, a gép csoportot használja az Active Directory-tartományban. További információkért lásd: [hozzon létre egy gép csoportot az Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).
+A csomópontok közötti [biztonsági](service-fabric-cluster-security.md#node-to-node-security) beállításokat a **ClusterIdentity** használatával állíthatja be, ha egy Active Directory-tartományon belül szeretne gépi csoportot használni. További információ: [Machine Group létrehozása a Active Directoryban](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).
 
-[Ügyfél-csomópont biztonsági](service-fabric-cluster-security.md#client-to-node-security) használatával konfigurálható **ClientIdentities**. Ügyfél és a fürt közötti megbízhatósági kapcsolatot hoz létre, konfigurálnia kell a fürt tudni, hogy az ügyfél, amely a fürt megbízható identitásokat. Megbízhatósági kapcsolat két különböző módon is létrehozhat:
+Az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security) a **ClientIdentities**használatával konfigurálható. Az ügyfél és a fürt közötti megbízhatósági kapcsolat létrehozásához úgy kell beállítania a fürtöt, hogy megismerje a fürt által megbízhatónak ítélt ügyfél-identitásokat. Két különböző módon hozhat létre megbízhatósági kapcsolatot:
 
-- Adja meg a tartományi felhasználók csoporthoz, amely csatlakozni tud.
-- Adja meg a csomópont Tartományfelhasználók kapcsolódhatnak.
+- Itt adhatja meg azokat a tartományi csoportokat, akik csatlakozhatnak.
+- Válassza ki azokat a tartományi csomópont-felhasználókat, akik csatlakozhatnak.
 
-A Service Fabric támogatja a különböző hozzáférés-vezérlő kétféle Service Fabric-fürt csatlakozó ügyfelek számára: rendszergazdai és felhasználói. Hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája korlátozhatják bizonyos típusú különböző csoportjaihoz, felhasználók, a fürt működését, ami lehetővé teszi a fürt biztonságosabb.  A rendszergazdák (beleértve az olvasási/írási képességeket) felügyeleti képességek teljes hozzáféréssel rendelkezik. Felhasználók, alapértelmezés szerint rendelkezik csak olvasási hozzáférés a felügyeleti funkciók (például a lekérdezési képességek), valamint az alkalmazások és szolgáltatások megoldásához.  
+Service Fabric két különböző hozzáférés-vezérlési típust támogat a Service Fabric-fürthöz csatlakozó ügyfelekhez: rendszergazda és felhasználó. A hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája korlátozza a hozzáférést bizonyos típusú fürtökhöz a különböző felhasználói csoportok esetében, ami biztonságosabbá teszi a fürtöt.  A rendszergazdák teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez (beleértve az írási/olvasási képességeket is). A felhasználók alapértelmezés szerint csak olvasási jogosultságot biztosítanak a felügyeleti képességekhez (például a lekérdezési képességekhez), valamint az alkalmazások és szolgáltatások feloldásának lehetőségét.  
 
-Az alábbi példa **biztonsági** szakaszban konfigurálja a Windows biztonsági, azt jelenti, hogy a gépek *ServiceFabric/clusterA.contoso.com* a fürt részét képezik, és meghatározza, hogy *CONTOSO\usera* felügyeleti ügyfél hozzáfér:
+A következő példa **biztonsági** szakasz a Windows biztonsági beállításokat konfigurálja, és megadja, hogy a *ServiceFabric/clustera. contoso. com* -ban lévő gépek a fürt részét képezik, és megadja, hogy a *CONTOSO\usera* rendszergazdai jogosultsággal rendelkezik:
 
 ```
 "security": {
@@ -138,13 +129,13 @@ Az alábbi példa **biztonsági** szakaszban konfigurálja a Windows biztonsági
 ```
 
 > [!NOTE]
-> A Service Fabric tartományvezérlőn nem kerül sor. Ellenőrizze, hogy nincs-e a tartományvezérlő IP-címét tartalmazza, a gép csoport használata esetén ClusterConfig.json, vagy csoportosan felügyelt szolgáltatásfiók (gMSA).
+> Service Fabric nem telepíthető tartományvezérlőre. Győződjön meg arról, hogy a ClusterConfig. JSON nem tartalmazza a tartományvezérlő IP-címét egy gépi csoport vagy csoportosan felügyelt szolgáltatásfiók (gMSA) használata esetén.
 >
 >
 
-## <a name="next-steps"></a>További lépések
-A Windows biztonsági konfigurálása után a *ClusterConfig.JSON* fájlt, a Fürtlétrehozási folyamatának folytatásához [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md).
+## <a name="next-steps"></a>Következő lépések
+Miután konfigurálta a Windows-biztonságot a *ClusterConfig. JSON* fájlban, folytassa a fürt létrehozásának folyamatát a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakörben.
 
-Hogyan-csomópontok biztonsági, az ügyfél a csomópont közötti biztonsághoz és a szerepköralapú hozzáférés-vezérlés, lásd: További információ [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
+További információ a csomópontok közötti biztonságról, az ügyfelek és a csomópontok biztonságáról, valamint a szerepköralapú hozzáférés-vezérlésről: [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).
 
-Lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md) példák csatlakoztathatók a PowerShell vagy a FabricClient használatával.
+Lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md) példák a PowerShell vagy a FabricClient használatával történő csatlakozásra.

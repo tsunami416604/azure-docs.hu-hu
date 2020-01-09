@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460691"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -26,14 +26,15 @@ A megfelelő hitelesítési módszer kiválasztásával az alkalmazásait a felh
 
 3. Ez az Azure AD összes többi speciális biztonsági és felhasználói élményének alapja.
 
-4. A hitelesítési módszert nehéz megváltoztatni a megvalósítása után.
+Az identitás az IT-biztonság új vezérlő síkja, így a hitelesítés egy szervezet hozzáférés-védelme az új felhő világába. A szervezeteknek olyan Identity Control-síkon kell rendelkezniük, amely megerősíti a biztonságot, és a támadók biztonságban tartja a Felhőbeli alkalmazásaikat.
 
-Az identitás az informatikai biztonság új vezérlő síkja. Így a hitelesítés egy szervezet hozzáférés-őrzése az új felhő világába. A szervezeteknek olyan Identity Control-síkon kell rendelkezniük, amely megerősíti a biztonságot, és a támadók biztonságban tartja a Felhőbeli alkalmazásaikat.
+> [!NOTE]
+> A hitelesítési módszer megváltoztatásához tervezési, tesztelési és lehetséges állásidő szükséges. A [kétlépcsős](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) bevezetéssel tesztelheti és fokozatosan áttelepítheti az összevonási szolgáltatásból a felhőbe történő hitelesítést.
 
 ### <a name="out-of-scope"></a>Hatókörön kívül
 Azok a szervezetek, amelyek nem rendelkeznek meglévő helyszíni címtár-lábnyommal, nem a jelen cikk középpontjában állnak. Ezek a vállalatok jellemzően csak a felhőben hoznak létre identitásokat, ami nem igényel hibrid identitási megoldást. A csak felhőalapú identitások kizárólag a felhőben találhatók, és nem kapcsolódnak a megfelelő helyszíni identitásokhoz.
 
-## <a name="authentication-methods"></a>Hitelesítési módszerek
+## <a name="authentication-methods"></a>Hitelesítési módok
 Ha az Azure AD Hybrid Identity megoldás az új vezérlő síkja, a hitelesítés a Felhőbeli hozzáférés alapja. A megfelelő hitelesítési módszer kiválasztása kulcsfontosságú első döntés az Azure AD Hybrid Identity megoldás létrehozásához. A Azure AD Connect használatával konfigurált hitelesítési módszer implementálása, amely a felhőben lévő felhasználókat is kiépíti.
 
 A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak.
@@ -69,7 +70,7 @@ A döntéssel kapcsolatos kérdések részletei:
 
 1. Az Azure AD a felhasználók bejelentkezését anélkül tudja kezelni, hogy helyszíni összetevőket kellene használni a jelszavak ellenőrzéséhez.
 2. Az Azure AD szolgáltatással kikapcsolhatja a felhasználói bejelentkezést egy megbízható hitelesítési szolgáltatóra, például a Microsoft AD FSra.
-3. Ha alkalmaznia kell, a felhasználói szintű Active Directory biztonsági házirendeket, például a fiók lejártát, a fiók lejáratát, a jelszó lejártát, a fiók zárolását, valamint a bejelentkezési órákat minden felhasználói bejelentkezéskor, az Azure AD-nek néhány helyszíni összetevőt kell használnia.
+3. Ha olyan felhasználói szintű Active Directory biztonsági házirendeket kell alkalmaznia, mint a fiók lejárt, a letiltott fiók, a jelszó lejárt, a fiók kizárva, valamint a bejelentkezési idő minden felhasználói bejelentkezéskor, az Azure AD-nek néhány helyszíni összetevőre van szüksége.
 4. Az Azure AD nem támogatja natív módon a bejelentkezési funkciókat:
    * Bejelentkezés intelligens kártyák vagy tanúsítványok használatával.
    * Bejelentkezés a helyszíni MFA-kiszolgáló használatával.
@@ -100,7 +101,7 @@ A döntéssel kapcsolatos kérdések részletei:
 * **Megfontolások**. A jelszó-kivonatolási szinkronizálás jelenleg nem kényszeríti ki azonnal a helyi fiók állapotának módosításait. Ebben az esetben a felhasználók csak akkor férhetnek hozzá a felhőalapú alkalmazásokhoz, ha a felhasználói fiók állapota szinkronizálva lett az Azure AD-val. Előfordulhat, hogy a szervezetek egy új szinkronizálási ciklus futtatásával szeretnék legyőzni ezt a korlátozást, miután a rendszergazdák tömeges frissítést végeznek a helyszíni felhasználói fiókok állapotára. Ilyen például a fiókok letiltása.
 
 > [!NOTE]
-> A jelszó lejárt, és a fiókhoz tartozó kizárt állapotok jelenleg nem szinkronizálhatók az Azure AD-val Azure AD Connect. Amikor megváltoztatja a felhasználó jelszavát, és beállítja, hogy a felhasználónak be kell állítania a *jelszót a következő bejelentkezéskor* , a rendszer nem szinkronizálja a jelszó-kivonatot az Azure ad-val Azure ad Connect, amíg a felhasználó meg nem változtatja a jelszavát.
+> A jelszó lejárt, és a fiókhoz tartozó kizárt állapotok jelenleg nem szinkronizálhatók az Azure AD-val Azure AD Connect. Amikor megváltoztatja a felhasználó jelszavát, és beállítja, hogy a *felhasználónak a következő bejelentkezési jelzőn kell megváltoztatnia a jelszót* , a jelszó-kivonat nem lesz szinkronizálva az Azure ad-val Azure ad Connect, amíg a felhasználó nem módosítja a jelszavát.
 
 Tekintse át a [jelszó-kivonatok szinkronizálásának megvalósítása](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) című témakört.
 
@@ -112,7 +113,7 @@ Tekintse át a [jelszó-kivonatok szinkronizálásának megvalósítása](../../
 
 * **Felhasználói élmény**. A felhasználók bejelentkezési élményének javítása érdekében zökkenőmentes SSO-t helyezzen üzembe átmenő hitelesítéssel. Ha a felhasználók bejelentkeznek, a zökkenőmentes egyszeri bejelentkezés kiküszöböli a szükségtelen kéréseket.
 
-* **Speciális forgatókönyvek**. Az átmenő hitelesítés a bejelentkezés időpontjában kényszeríti a helyszíni fiók házirendjét. A hozzáférés megtagadható például akkor, ha egy helyszíni felhasználó fiókjának állapota le van tiltva, ki van zárva, vagy a [jelszó lejárt](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) , vagy az órákon kívül esik, amikor a felhasználó bejelentkezhet.
+* **Speciális forgatókönyvek**. Az átmenő hitelesítés a bejelentkezés időpontjában kényszeríti a helyszíni fiók házirendjét. Például a hozzáférés megtagadva, ha egy helyszíni felhasználó fiókjának állapota le van tiltva, ki van zárva, vagy a [jelszavuk lejár](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) , vagy a bejelentkezési kísérlet az órákon kívül esik, amikor a felhasználó bejelentkezhet.
 
     Az átmenő hitelesítéssel többtényezős hitelesítést igénylő szervezeteknek az Azure Multi-Factor Authentication (MFA) vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszert, amely az összevonásra támaszkodik. A speciális funkciók megkövetelik, hogy a jelszó-kivonat szinkronizálása telepítve legyen, függetlenül attól, hogy az áteresztő hitelesítést választja-e. Ilyen például az Identity Protection kiszivárgott hitelesítő adatairól szóló jelentés.
 
@@ -145,7 +146,7 @@ Tekintse át az [átmenő hitelesítés implementálása](../../active-directory
 
 * **Megfontolások**. Az összevont rendszerek jellemzően nagyobb mértékű befektetést igényelnek a helyszíni infrastruktúrában. A legtöbb szervezet ezt a lehetőséget választja, ha már van helyszíni összevonási beruházása. Ha pedig erős üzleti követelmény, hogy egyetlen identitású szolgáltatót használjon. Az összevonás bonyolultabb a felhőalapú hitelesítési megoldásokkal összehasonlítva a működéshez és a hibakereséshez.
 
-Olyan nem irányítható tartomány esetén, amely nem ellenőrizhető az Azure AD-ben, további konfigurációra van szükség a felhasználói azonosító bejelentkezésének megvalósításához. Ezt a követelményt másodlagos bejelentkezési AZONOSÍTÓnak is nevezzük. Lásd: [alternatív bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) a korlátozásokhoz és a követelményekhez. Ha úgy dönt, hogy egy külső féltől származó multi-Factor Authentication szolgáltatót használ összevonással, a szolgáltató támogatja a WS-Trust használatát, hogy az eszközök csatlakozzanak az Azure AD-hoz.
+Olyan nem átirányítható tartományhoz, amely nem ellenőrizhető az Azure AD-ben, további konfigurációra van szükség a felhasználói azonosító bejelentkezésének megvalósításához. Ezt a követelményt másodlagos bejelentkezési AZONOSÍTÓnak is nevezzük. Lásd: [alternatív bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) a korlátozásokhoz és a követelményekhez. Ha úgy dönt, hogy egy külső féltől származó multi-Factor Authentication szolgáltatót használ összevonással, a szolgáltató támogatja a WS-Trust használatát, hogy az eszközök csatlakozzanak az Azure AD-hoz.
 
 Tekintse át az [összevonási kiszolgálók](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) központi telepítésének lépéseit ismertető témakört.
 
@@ -170,9 +171,9 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 
 ## <a name="comparing-methods"></a>Módszerek összehasonlítása
 
-|Figyelembe|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
+|Megfontolandó|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
-|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni követelmények|
+|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
 |A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
 |Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|None|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
@@ -188,9 +189,9 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 |Milyen speciális forgatókönyvek támogatottak?|[Intelligens jelszó zárolása](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Kiszivárgott hitelesítő adatok jelentései prémium szintű Azure AD P2-vel](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligens jelszó zárolása](../../active-directory/authentication/howto-password-smart-lockout.md)|Többhelyes, kis késleltetésű hitelesítési rendszerek<br><br>[Extranetes zárolás AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integráció harmadik féltől származó személyazonossági rendszerekkel](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
-> Az Azure AD feltételes hozzáférés szolgáltatásban az egyéni vezérlők jelenleg nem támogatják az eszközök regisztrálását.
+> Az Azure AD feltételes hozzáférésben az egyéni vezérlők jelenleg nem támogatják az eszközök regisztrálását.
 
-## <a name="recommendations"></a>Javaslatok
+## <a name="recommendations"></a>Ajánlatok
 Az Identity rendszer biztosítja, hogy a felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz, valamint az áttelepített és a felhőben elérhetővé tenni kívánt üzletági alkalmazásokhoz. Annak érdekében, hogy a jogosult felhasználók a szervezet bizalmas adataiból származó, produktív és rosszul működő felhasználókat is megőrizzen, a hitelesítés szabályozza az alkalmazásokhoz való hozzáférést.
 
 A jelszó-kivonatolási szinkronizálást a választott hitelesítési módszerhez használhatja vagy engedélyezheti a következő okok miatt:
@@ -199,19 +200,19 @@ A jelszó-kivonatolási szinkronizálást a választott hitelesítési módszerh
 
     Az egyes meghibásodási pontok elkerülése érdekében helyezzen üzembe redundáns kiszolgálókat. A hitelesítési kérelmeket a rendszer mindig szervizeli, ha valamelyik összetevő meghibásodik. Az átmenő hitelesítés és az összevonás is arra támaszkodik, hogy a tartományvezérlők válaszolnak a hitelesítési kérelmekre, ami szintén sikertelen lehet. Ezeknek az összetevőknek sok karbantartásra van szükségük, hogy egészségesek maradjanak. Az kimaradások nagyobb valószínűséggel működnek, ha a karbantartás nem tervezett és nem megfelelően van megvalósítva. A jelszó-kivonatoló szinkronizálás használatával elkerülhetők a leállások, mivel a Microsoft Azure AD felhőalapú hitelesítési szolgáltatás globálisan méretezhető, és mindig elérhető.
 
-2. **A helyszíni leállás túlélése**.  Egy, a Cyber-támadás vagy a katasztrófa miatti helyszíni kimaradás következményei jelentősek lehetnek, a megbénult szervezettől kezdve a támadók nem tudják kezelni a támadásokat. A közelmúltban számos szervezet volt a kártevők elleni támadásoknak, beleértve a megcélzó ransomware is, amelyek miatt a helyszíni kiszolgálók leállnak. Ha a Microsoft segítséget nyújt az ügyfeleknek az ilyen típusú támadások kezelésében, két szervezetet lát:
+2. **A helyszíni leállás túlélése**.  Egy, a Cyber-támadás vagy a katasztrófa miatti helyszíni kimaradás következményei jelentősek lehetnek, a megbénult szervezettől kezdve a támadók nem tudják kezelni a támadásokat. A közelmúltban számos szervezet volt a kártevők elleni támadás, beleértve a megtalált ransomware is, ami miatt a helyszíni kiszolgálók leállnak. Ha a Microsoft segítséget nyújt az ügyfeleknek az ilyen típusú támadások kezelésében, két szervezetet lát:
 
    * Azok a szervezetek, amelyek korábban bekapcsolták a jelszó-kivonatolási szinkronizálást, módosították a hitelesítési módszert a jelszó-kivonatoló szinkronizálás használatára. Egy órán belül ismét online állapotba kerültek. Ha az Office 365-on keresztül fér hozzá az e-mailekhez, a problémák megoldásához és más felhőalapú számítási feladatokhoz való hozzáféréshez is dolgozott.
 
    * Azok a szervezetek, amelyeknek korábban nem engedélyezték a jelszó-kivonatolási szinkronizálást, nem megbízható külső fogyasztói e-mail-rendszerekre kellett volna rendelkezniük a problémák megoldásához. Ezekben az esetekben hetekig tartották a helyszíni identitás-infrastruktúrát, mielőtt a felhasználók újra bejelentkeznek a felhőalapú alkalmazásokba.
 
-3. **Identity Protection**. A Felhőbeli felhasználók védelmének egyik legjobb módja a prémium szintű Azure AD P2 Azure AD Identity Protection. A Microsoft folyamatosan ellenőrzi az interneten a felhasználók és a jelszavak listáját, hogy a rossz szereplőkkel árulnak és elérhetővé teszik a Dark web-t. Az Azure AD ezeket az információkat használva ellenőrizheti, hogy a szervezetben lévő felhasználónevek és jelszavak biztonsága sérült-e. Ezért fontos, hogy az összevont vagy átmenő hitelesítéstől függetlenül engedélyezze a jelszó-kivonatok szinkronizálását, függetlenül attól, hogy milyen hitelesítési módszert használ. A kiszivárgott hitelesítő adatok jelentésként jelennek meg. Ezekkel az adatokkal blokkolhatja vagy kényszerítheti a felhasználókat a jelszavuk módosítására, amikor megpróbálnak bejelentkezni a kiszivárgott jelszavakkal.
+3. **Identity Protection**. A Felhőbeli felhasználók védelmének egyik legjobb módja a prémium szintű Azure AD P2 Azure AD Identity Protection. A Microsoft folyamatosan ellenőrzi az interneten a felhasználók és a jelszavak listáját, hogy a rossz szereplőkkel árulnak és elérhetővé teszik a Dark web-t. Az Azure AD ezeket az információkat használva ellenőrizheti, hogy a szervezetben lévő felhasználónevek és jelszavak biztonsága sérült-e. Ezért fontos a jelszó-kivonat szinkronizálásának engedélyezése, függetlenül attól, hogy melyik hitelesítési módszert használja, legyen az összevont vagy átmenő hitelesítés. A kiszivárgott hitelesítő adatok jelentésként jelennek meg. Ezekkel az adatokkal blokkolhatja vagy kényszerítheti a felhasználókat a jelszavuk módosítására, amikor megpróbálnak bejelentkezni a kiszivárgott jelszavakkal.
 
 ## <a name="conclusion"></a>Összegzés
 
 Ez a cikk a felhőalapú alkalmazásokhoz való hozzáférés támogatásához a szervezetek által konfigurálható és telepíthető különböző hitelesítési lehetőségeket ismerteti. A különböző üzleti, biztonsági és technikai követelmények teljesítése érdekében a szervezetek választhatnak a jelszó-kivonat szinkronizálása, az átmenő hitelesítés és az összevonás között.
 
-Vegye figyelembe az egyes hitelesítési módszereket. A megoldás üzembe helyezésének és a felhasználói élményének a megterhelése az üzleti igények kielégítése érdekében? Értékelje ki, hogy a szervezetnek szüksége van-e az egyes hitelesítési módszerek speciális forgatókönyvekre és üzletmenet-folytonossági szolgáltatásaira. Végezetül értékelje ki az egyes hitelesítési módszerek szempontjait. Ezek közül bármelyiket meggátolja az Ön döntésének megvalósításában?
+Vegye figyelembe az egyes hitelesítési módszereket. A megoldás üzembe helyezésének erőfeszítése, valamint a bejelentkezési folyamat felhasználói tapasztalata az üzleti igények kielégítése érdekében? Értékelje ki, hogy a szervezetnek szüksége van-e az egyes hitelesítési módszerek speciális forgatókönyvekre és üzletmenet-folytonossági szolgáltatásaira. Végezetül értékelje ki az egyes hitelesítési módszerek szempontjait. Ezek közül bármelyiket meggátolja az Ön döntésének megvalósításában?
 
 ## <a name="next-steps"></a>Következő lépések
 

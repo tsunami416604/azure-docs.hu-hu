@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585394"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645089"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Egyéni szabályok a webalkalmazási tűzfal v2-hez az Azure Application Gateway
 
@@ -29,7 +29,7 @@ Ugyanazon szabályon belül a különböző egyeztetési feltételek mindig a **
 Ha **vagy** két különböző feltételt szeretne használni, a két feltételnek különböző szabályokban kell lennie. Például letilthatja a forgalmat egy adott IP-címről, vagy letilthatja a forgalmat, ha egy adott böngészőt használnak.
 
 > [!NOTE]
-> Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-subscription-service-limits.md#application-gateway-limits)című témakört.
+> Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)című témakört.
 
 A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, mint a CRS-szabályrendszerek. Ezekről a példákat lásd: 3. és 5. példa az [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md)című témakörben.
 
@@ -215,7 +215,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | CU | Kuba|
 | CV | Cabo Verde|
 | CY | Ciprus|
-| CZ | Cseh Köztársaság|
+| CZ | Csehország|
 | DE | Németország|
 | DK | Dánia|
 | DO | Dominikai Köztársaság|
@@ -238,7 +238,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | GR | Görögország|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hongkong (KKT)|
+| HK | Hongkong KKT|
 | HN | Honduras|
 | HR | Horvátország|
 | HT | Haiti|
@@ -264,7 +264,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | KW | Kuvait|
 | KY | Kajmán-szigetek|
 | KZ | Kazahsztán|
-| LA | Laoszi Népi Demokratikus Köztársaság|
+| LATIN-AMERIKA | Laoszi Népi Demokratikus Köztársaság|
 | LB | Libanon|
 | LI | Liechtenstein|
 | LK | Srí Lanka|
@@ -281,7 +281,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | ML | Mali|
 | MM | Mianmar|
 | MN | Mongólia|
-| MO | Makaó KKT|
+| MO | Makaó (KKT)|
 | MQ | Martinique|
 | MR | Mauritánia|
 | MT | Málta|
@@ -290,7 +290,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | MX | Mexikó|
 | MY | Malajzia|
 | MZ | Mozambik|
-| NA | Namíbia|
+| n/a | Namíbia|
 | NE | Niger|
 | NG | Nigéria|
 | NI | Nicaragua|
@@ -338,7 +338,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | TZ | Tanzániai Egyesült Köztársaság|
 | UA | Ukrajna|
 | UG | Uganda|
-| USA | Egyesült Államok|
+| Egyesült Államok | Egyesült Államok|
 | UY | Uruguay|
 | UZ | Üzbegisztán|
 | VC | Saint Vincent és Grenadine-szigetek|
@@ -350,6 +350,6 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | ZM | Zambia|
 | ZW | Zimbabwe|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szabályok megismerése után [hozza létre saját egyéni szabályait](create-custom-waf-rules.md).

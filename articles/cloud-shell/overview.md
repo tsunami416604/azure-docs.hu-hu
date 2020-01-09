@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449002"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>A Azure Cloud Shell áttekintése
 A Azure Cloud Shell egy interaktív, hitelesített, böngészővel elérhető rendszerhéj az Azure-erőforrások kezeléséhez.
-Rugalmasságot biztosít a működésének legmegfelelőbb rendszerhéj-élmény kiválasztásában, vagy bash vagy PowerShell használatával.
+Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével.
 
 Az alábbi gombra kattintva próbálja ki a shell.azure.com.
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell elindítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 Próbálja ki a Azure Portalt a Cloud Shell ikon használatával.
 
 ![Portál elindítása](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
 A Cloud Shell lehetővé teszi az Azure felügyeleti feladatokkal létrehozott, böngészőalapú parancssori felület elérését.
@@ -52,7 +52,7 @@ A Cloud Shell a Microsoft felügyeli, ezért népszerű parancssori eszközöket
 Tekintse meg a [Cloud Shell telepített eszközök teljes listáját.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Integrált Cloud Shell szerkesztő
-Cloud Shell egy integrált grafikus szövegszerkesztőt kínál a nyílt forráskódú Monaco-szerkesztő alapján. Egyszerűen hozhat létre és szerkeszthet konfigurációs fájlokat `code .` az Azure CLI vagy a Azure PowerShell használatával történő zökkenőmentes üzembe helyezéshez.
+Cloud Shell egy integrált grafikus szövegszerkesztőt kínál a nyílt forráskódú Monaco-szerkesztő alapján. Egyszerűen hozhat létre és szerkeszthet konfigurációs fájlokat az Azure CLI vagy Azure PowerShell használatával történő zökkenőmentes üzembe helyezéshez `code .` futtatásával.
 
 [További információ a Cloud Shell Szerkesztőről](using-cloud-shell-editor.md).
 
@@ -70,9 +70,12 @@ A Cloud Shell egy rugalmas eszköz, amely a következő helyekről használható
 * [Visual Studio Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure fájlok tárolójának összekötése
-Cloud Shell gépek ideiglenesek, de a fájlok két módon maradnak meg: lemezképen keresztül, valamint egy nevű `clouddrive`csatlakoztatott fájlmegosztás használatával.  Az első indításkor Cloud Shell kéri, hogy hozzon létre egy erőforráscsoportot, egy Storage-fiókot és egy Azure Files megosztást az Ön nevében. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. Egyetlen fájlmegosztás képezhető le, amelyet a bash és a PowerShell is használ Cloud Shellban.
+Cloud Shell gépek ideiglenesek, de a fájlok két módon maradnak meg: lemezképen keresztül, valamint egy `clouddrive`nevű csatlakoztatott fájlmegosztás segítségével.  Az első indítás alkalmával a Cloud Shell felkéri egy erőforráscsoport, tárfiók és Azure Files-megosztás létrehozására. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. Egyetlen fájlmegosztás képezhető le, amelyet a bash és a PowerShell is használ Cloud Shellban.
 
 További információ: [új vagy meglévő Storage-fiók](persisting-shell-storage.md) csatlakoztatása, illetve a [Cloud Shell használt adatmegőrzési mechanizmusok](persisting-shell-storage.md#how-cloud-shell-storage-works)megismerése.
+
+> [!NOTE]
+> A Cloud Shell Storage-fiókok nem támogatják az Azure Storage-tűzfalat.
 
 ## <a name="concepts"></a>Alapelvek
 * A Cloud Shell munkamenetenkénti, felhasználónkénti alapon megadott ideiglenes gazdagépen fut.
@@ -88,6 +91,6 @@ További információ a bash szolgáltatásairól [Cloud Shell](features.md) és
 ## <a name="pricing"></a>Díjszabás
 A Cloud Shell gép üzemeltetése ingyenes, és egy csatlakoztatott Azure Files-megosztás előfeltétele. A normál tárolási költségek érvényesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md)

@@ -1,32 +1,23 @@
 ---
-title: Események actor-alapú Azure Service Fabric actors |} A Microsoft Docs
-description: A Service Fabric Reliable Actors eseményei bemutatása.
-services: service-fabric
-documentationcenter: .net
+title: A Actor-alapú Azure Service Fabric Actors eseményei
+description: Ismerje meg Service Fabric Reliable Actors eseményeit, amelyek hatékony módszert biztosítanak a szereplők és az ügyfelek közötti kommunikációhoz.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 9075fc8391e8afa21e3963c1eff6a630c586d647
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726400"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639666"
 ---
-# <a name="actor-events"></a>Actors-események
-Actors-események az aktor a legjobb értesítéseket küldhet az ügyfelek számára terveztek. Actors-események actor-ügyfél-kommunikáció lettek kialakítva, és nem alkalmazható az aktor actor kommunikációt.
+# <a name="actor-events"></a>Színészi események
+A színészi események lehetővé teszik a legjobb erőfeszítést jelző értesítések küldését a színésztől az ügyfeleknek. A Actors-események a színészek közötti kommunikációhoz készültek, és nem használhatók a színészek közötti kommunikációhoz.
 
-Az alábbi kódrészletek azt mutatják szereplő események használata az alkalmazásban.
+A következő kódrészletek azt mutatják be, hogyan használhatók a Actor Events az alkalmazásban.
 
-Adja meg, amely leírja az aktor által közzétett események illesztőfelületet. Ez az interfész kell származnia a `IActorEvents` felületet. Az argumentumok a módszerek [adatokat szerződéses szerializálható](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). A módszerek musí vrátit typ void, eseményként értesítések egyik módja, és a lehető legjobb.
+Definiáljon egy felületet, amely leírja a színész által közzétett eseményeket. Ezt az illesztőfelületet a `IActorEvents` felületről kell származtatni. A metódusok argumentumai csak [szerializálható adategyezmények](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)lehetnek. A metódusoknak Void értéket kell visszaadnia, mivel az eseményekre vonatkozó értesítések az egyik módszer és a legjobb erőfeszítés.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -40,7 +31,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Az aktor található az aktor illesztőjét által közzétett események deklarálható.
+Deklarálja a színészi felületen közzétett eseményeket.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -58,7 +49,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Az ügyfél oldalán az eseménykezelő megvalósítása.
+Az ügyfél oldalon hajtsa végre az eseménykezelőt.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -79,7 +70,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Az ügyfélen hozzon létre egy proxyt, amely közzéteszi az eseményt az aktor felé, és iratkozzon fel az eseményeket.
+Az ügyfélen hozzon létre egy proxyt az eseményt közzétevő színész számára, és fizessen elő az eseményeire.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -94,9 +85,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-Folyamatban lévő feladatátvételi teszteket, ha az aktor előfordulhat, hogy feladatátvételt egy másik folyamat vagy csomópont. Az aktor proxy az aktív előfizetések kezeli, és automatikusan újra feliratkozik rájuk. Szabályozhatja, hogy az előfizetés újbóli intervallum keresztül a `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API-t. Előfizetés lemondása, használja a `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API-t.
+Feladatátvétel esetén a szereplő egy másik folyamathoz vagy csomóponthoz is átadhatja a feladatokat. A Actor proxy kezeli az aktív előfizetéseket, és automatikusan újra Előfizeti őket. Az előfizetések intervallumát az `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API-n keresztül szabályozhatja. A leiratkozáshoz használja a `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API-t.
 
-Az aktor mivel azok közzé az az eseményeket. Ha az esemény-előfizetők, a az Actors modul elküldi őket az értesítést.
+A színészen tegye közzé az eseményeket, ahogy történnek. Ha vannak előfizetők az eseményhez, a szereplők futtatókörnyezete elküldi nekik az értesítést.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
@@ -108,10 +99,10 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* [Actors – újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
-* [Actors diagnosztizálása és teljesítményfigyelése](service-fabric-reliable-actors-diagnostics.md)
-* [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C#-minta kódja](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [C# .NET Core mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
+## <a name="next-steps"></a>Következő lépések
+* [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+* [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
+* [A Actor API-referenciájának dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#Mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C#.NET Core-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)

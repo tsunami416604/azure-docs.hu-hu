@@ -2,17 +2,17 @@
 title: Mi a Cloud Service-modell és-csomag | Microsoft Docs
 description: Ismerteti a Cloud Service-modellt (. csdef,. cscfg) és a csomagot (. cspkg) az Azure-ban
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359560"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360701"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan lehet becsomagolni?
 A felhőalapú szolgáltatás három összetevőből, a szolgáltatás-definícióból ( *. csdef)* , a szolgáltatás-konfigurációból *(. cscfg)* és egy szolgáltatáscsomag *(. cspkg)* jön létre. A **ServiceDefinition. csdef** és a **ServiceConfig. CSCFG** fájl is XML-alapú, és leírja a Cloud Service szerkezetét és konfigurálását. együttesen nevezik a modellt. A **szervizcsomag. cspkg** egy zip-fájl, amely a **ServiceDefinition. csdef** és egyebek között jön létre, és tartalmazza az összes szükséges bináris-alapú függőséget. Az Azure létrehoz egy felhőalapú szolgáltatást mind a **szervizcsomaggal. cspkg** , mind a **ServiceConfig. cscfg**.
@@ -31,7 +31,7 @@ Miután a Cloud Service fut az Azure-ban, újrakonfigurálhatja azt a **ServiceC
 
 <a name="csdef"></a>
 
-## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
+## <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
 A **ServiceDefinition. csdef** fájl azokat a beállításokat adja meg, amelyeket az Azure a Cloud Service konfigurálásához használ. Az [Azure-szolgáltatás definíciós sémája (. Csdef fájl)](/previous-versions/azure/reference/ee758711(v=azure.100)) egy szolgáltatás-definíciós fájl számára engedélyezhető formátumot biztosít. A következő példa a webes és feldolgozói szerepkörökhöz definiálható beállításokat mutatja be:
 
 ```xml
@@ -106,12 +106,12 @@ A helyi tárolási erőforrások definícióit tartalmazza. A helyi tárolási e
 **Importálja**  
 Az importált modulok definícióit tartalmazza. Az előző példában a Távoli asztali kapcsolat és az Azure-kapcsolat moduljai láthatók.
 
-**Indítási**  
+**Startup**  
 A szerepkör indításakor futtatott feladatokat tartalmazza. A feladatok egy. cmd vagy végrehajtható fájlban vannak meghatározva.
 
 <a name="cscfg"></a>
 
-## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
+## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration. cscfg
 A felhőalapú szolgáltatás beállításainak konfigurációját a **ServiceConfiguration. cscfg** fájl értékei határozzák meg. Itt adhatja meg, hogy hány példányt kíván telepíteni a fájl egyes szerepköreihez. A szolgáltatás-definíciós fájlban megadott konfigurációs beállítások értékeit a rendszer hozzáadja a szolgáltatás konfigurációs fájljához. A rendszer a felhőalapú szolgáltatáshoz társított felügyeleti tanúsítványok ujjlenyomatai megfelelnek is hozzáadja a fájlhoz. Az [Azure szolgáltatás konfigurációs sémája (. Cscfg fájl)](/previous-versions/azure/reference/ee758710(v=azure.100)) a szolgáltatás konfigurációs fájljának engedélyezett formátumát adja meg.
 
 A szolgáltatás konfigurációs fájlja nincs becsomagolva az alkalmazásba, de az Azure-ba feltöltött külön fájlként, és a felhőalapú szolgáltatás konfigurálására szolgál. A felhőalapú szolgáltatás újbóli üzembe helyezése nélkül feltöltheti az új szolgáltatás konfigurációs fájlját. A felhőalapú szolgáltatás konfigurációs értékei megváltoztathatók a Cloud Service futása közben. A következő példa a webes és feldolgozói szerepkörökhöz definiálható konfigurációs beállításokat mutatja be:
@@ -137,10 +137,10 @@ A szolgáltatás konfigurációs fájlja nincs becsomagolva az alkalmazásba, de
 Az itt használt XML-séma jobb megismeréséhez tekintse meg a [szolgáltatás konfigurációs sémáját](/previous-versions/azure/reference/ee758710(v=azure.100)) , de itt találja az elemek gyors magyarázatát:
 
 **Esetben**  
-A szerepkörhöz tartozó futó példányok számát konfigurálja. Annak megakadályozása érdekében, hogy a felhőalapú szolgáltatás esetleg elérhetetlenné váljon a frissítések során, javasoljuk, hogy a webes szerepkörök egynél több példányát telepítse. Több példány üzembe helyezésével betartja az [Azure számítási szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/)irányelveit, ami 99,95%-os külső kapcsolatot garantál az internetes szerepkörökhöz, ha két vagy több szerepkör-példány van telepítve a szolgáltatáshoz .
+A szerepkörhöz tartozó futó példányok számát konfigurálja. Annak megakadályozása érdekében, hogy a felhőalapú szolgáltatás esetleg elérhetetlenné váljon a frissítések során, javasoljuk, hogy a webes szerepkörök egynél több példányát telepítse. Több példány üzembe helyezésével betartja az [Azure számítási szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/)irányelveit, ami 99,95%-os külső kapcsolatot garantál az internetes szerepkörökhöz, ha két vagy több szerepkör-példány van telepítve egy szolgáltatáshoz.
 
 **ConfigurationSettings**  
-A szerepkörhöz tartozó futó példányok beállításainak konfigurálása. Az `<Setting>` elemek nevének meg kell egyeznie a szolgáltatás-definíciós fájlban megadott beállításokkal.
+A szerepkörhöz tartozó futó példányok beállításainak konfigurálása. A `<Setting>` elem nevének meg kell egyeznie a szolgáltatás-definíciós fájlban megadott beállításokkal.
 
 **Tanúsítványok**  
 A szolgáltatás által használt tanúsítványok konfigurálása. Az előző kód példa bemutatja, hogyan határozható meg a RemoteAccess modul tanúsítványa. Az *ujjlenyomat* -attribútum értékét a használni kívánt tanúsítvány ujjlenyomatára kell beállítani.
@@ -148,7 +148,7 @@ A szolgáltatás által használt tanúsítványok konfigurálása. Az előző k
 <p/>
 
 > [!NOTE]
-> A Tanúsítvány ujjlenyomata egy szövegszerkesztő használatával adható hozzá a konfigurációs fájlhoz. Az értéket a Visual Studióban a szerepkör tulajdonságlapján is hozzáadhatja  a **tanúsítványok** lapon.
+> A Tanúsítvány ujjlenyomata egy szövegszerkesztő használatával adható hozzá a konfigurációs fájlhoz. Az értéket a Visual Studióban a szerepkör **tulajdonságlapján** is hozzáadhatja a **tanúsítványok** lapon.
 > 
 > 
 
@@ -215,10 +215,10 @@ Az [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 
 <a name="cspkg"></a>
 
-## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+## <a name="servicepackagecspkg"></a>Szervizcsomag. cspkg
 Egy alkalmazás Azure-beli felhőalapú szolgáltatásként történő üzembe helyezéséhez először a megfelelő formátumban kell becsomagolni az alkalmazást. A **CSPack** parancssori eszközt (az [Azure SDK](https://azure.microsoft.com/downloads/)-val együtt) a Visual Studio alternatívájaként a csomagfájl létrehozásához használhatja.
 
-A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg`, de más nevet is megadhat a  `/out` CSPack lehetőség használatával.
+A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg`, de más nevet is megadhat a **CSPack**`/out` kapcsolójának használatával.
 
 A **CSPack** a következő helyen található:  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -259,18 +259,18 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 Ahol a változók a következőképpen vannak meghatározva:
 
-| Változó | Value |
+| Változó | Value (Díj) |
 | --- | --- |
-| \[Könyvtárnév\] |Az Azure-projekt. csdef fájlját tartalmazó legfelső szintű projekt könyvtárában található alkönyvtár. |
+| \[könyvtárnév\] |Az Azure-projekt. csdef fájlját tartalmazó legfelső szintű projekt könyvtárában található alkönyvtár. |
 | \[ServiceDefinition\] |A szolgáltatás definíciós fájljának neve. Alapértelmezés szerint a fájl neve ServiceDefinition. csdef. |
-| \[OutputFileName\] |A létrehozott csomagfájl neve. Ez általában az alkalmazás nevére van beállítva. Ha nincs megadva fájlnév, az alkalmazáscsomag az ApplicationName \[\]. cspkg néven jön létre. |
+| \[OutputFileName\] |A létrehozott csomagfájl neve. Ez általában az alkalmazás nevére van beállítva. Ha nincs megadva fájlnév, az alkalmazáscsomag \[ApplicationName\]. cspkg néven jön létre. |
 | \[RoleName\] |A szolgáltatás definíciós fájljában definiált szerepkör neve. |
 | \[RoleBinariesDirectory] |A szerepkör bináris fájljainak helye. |
-| \[VirtualPath\] |A szolgáltatás definíciójának helyek szakaszában meghatározott virtuális elérési utak fizikai könyvtárai. |
+| \[VirtuálisElérésiÚt\] |A szolgáltatás definíciójának helyek szakaszában meghatározott virtuális elérési utak fizikai könyvtárai. |
 | \[PhysicalPath\] |A szolgáltatás definíciójának hely csomópontjában meghatározott virtuális elérési utak tartalmának fizikai könyvtára. |
 | \[RoleAssemblyName\] |A szerepkör bináris fájljának neve. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Létrehozok egy Cloud Service-csomagot, és szeretnék...
 
 * [Távoli asztal beállítása Cloud Service-példányhoz][remotedesktop]
@@ -289,3 +289,6 @@ Visual studiót használok, és szeretnék...
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
+
+
+

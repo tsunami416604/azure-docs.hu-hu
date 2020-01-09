@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics lekérdezések helyi tesztelése a Visual Studióban
 description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg tesztelni a Visual studióhoz készült Azure Stream Analytics eszközökkel.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 01383531293635af8c15f891928eec004e05b54d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c4854d050cce18082def436243a669ba09c474ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369660"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
 
@@ -26,7 +24,7 @@ Ebből a rövid útmutatóból megtudhatja [, hogyan](stream-analytics-quick-cre
 
 A Azure Stream Analytics projektben kattintson duplán a **script. asaql** elemre a szkript megnyitásához a szerkesztőben. A lekérdezés fordításával megállapíthatja, hogy vannak-e szintaktikai hibák. A lekérdezés-szerkesztő támogatja az IntelliSense, a szintaxis színezését és a hiba jelölőjét.
 
-![Lekérdezés-szerkesztő](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
+![Lekérdezésszerkesztő](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>Helyi bemenet hozzáadása
 
@@ -38,7 +36,7 @@ Az előugró ablakban válassza a mintaadatok lehetőséget a helyi elérési ú
    
 ![Helyi bemenet hozzáadása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-A rendszer automatikusan hozzáadja a **local_EntryStream. JSON** nevű fájlt a bemenetek mappájához.
+A rendszer automatikusan felvesz egy **local_EntryStream. JSON** nevű fájlt a bemenetek mappájába.
    
 ![Helyi bemeneti mappa fájljának listája](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    

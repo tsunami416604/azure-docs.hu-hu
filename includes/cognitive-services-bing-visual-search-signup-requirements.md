@@ -3,20 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2019
-ms.openlocfilehash: 16ee9ae9a4eec6b38c57b984b3acb75479b437e6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 12/17/2019
+ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379495"
 ---
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search APIs-hozzáféréssel rendelkező. A folytatás előtt szüksége lesz a hozzáférési kulcs után egy előfizetést, S9 árkategória indítása, ahogyan biztosított [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
 
-Előfizetés indítása az Azure Portalon:
-1. A szövegmezőbe, amely szerint az Azure portal tetején adja meg a "BingSearchV7" `Search resources, services, and docs`.  
-2. Marketplace-en a legördülő listában, válassza a `Bing Search v7`.
-3. Adja meg `Name` az új erőforrás.
-4. Válassza ki `Pay-As-You-Go` előfizetés.
-5. Válassza ki `S9` tarifacsomag.
-6. Kattintson a `Enable` az előfizetés indításához.
+A Bing Visual Search API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
+
+* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Nincs szükség Azure-előfizetésre.
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Bing Search v7-erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Válassza ki a `S9` árképzési szintet.
+
+* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

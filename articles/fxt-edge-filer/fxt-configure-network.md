@@ -1,25 +1,25 @@
 ---
-title: A Microsoft Azure FXT Edge Filer-fürt hálózati beállításainak módosítása
+title: 'Oktatóanyag: a hálózat konfigurálása egy Azure FXT Edge Filer-fürtben'
 description: Hálózati beállítások testreszabása az Azure FXT Edge Filer-fürt létrehozása után
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254892"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551063"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: a fürt hálózati beállításainak konfigurálása 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: a fürt hálózati beállításainak konfigurálása
 
 Az újonnan létrehozott Azure FXT Edge Filer-fürt használata előtt tekintse át és szabja testre a munkafolyamat több hálózati beállítását. 
 
 Ez az oktatóanyag ismerteti azokat a hálózati beállításokat, amelyekre szükség lehet az új fürthöz való alkalmazkodáshoz. 
 
-Az oktatóanyagban érintett témák köre: 
+Megtanulhatja a következőket: 
 
 > [!div class="checklist"]
 > * Lehet, hogy mely hálózati beállításokat kell frissíteni a fürt létrehozása után
@@ -142,7 +142,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 * DNS-kiszolgáló címe
 * DNS-tartománynév
-* DNS search domains
+* DNS-keresési tartományok
 
 További részletekért olvassa el a [DNS-beállítások](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) című témakört a fürt konfigurációs útmutatójában.
 

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129346"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639871"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionális vész-helyreállítás Azure Databricks-fürtökhöz
 
@@ -21,7 +21,7 @@ Ez a cikk a Azure Databricks fürtökhöz hasznos vész-helyreállítási archit
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks architektúra
 
-Magas szinten, amikor létrehoz egy Azure Databricks munkaterületet a Azure Portalból, a [felügyelt készülék](../managed-applications/overview.md) Azure-erőforrásként lesz üzembe helyezve az előfizetésben, a kiválasztott Azure-régióban (például az USA nyugati régiójában). Ezt a készüléket egy [Azure-Virtual Network](../virtual-network/virtual-networks-overview.md) helyezi üzembe, egy [hálózati biztonsági csoporttal](../virtual-network/manage-network-security-group.md) és egy Azure Storage-fiókkal, amely elérhető az előfizetésében. A virtuális hálózat peremhálózati szintű biztonságot nyújt a Databricks-munkaterülethez, és hálózati biztonsági csoporton keresztül védett. A munkaterületen belül Databricks-fürtöket hozhat létre a feldolgozó és az illesztőprogram virtuálisgép-típusának és Databricks-futtatókörnyezetének megadásával. A megőrzött adatai elérhetők a Storage-fiókban, amely lehet Azure Blob Storage vagy Azure Data Lake Storage. A fürt létrehozása után a feladatokat jegyzetfüzetek, REST API-k, ODBC/JDBC végpontok segítségével futtathatja, ha egy adott fürthöz csatolja őket.
+Magas szinten, amikor létrehoz egy Azure Databricks munkaterületet a Azure Portalból, a [felügyelt készülék](../azure-resource-manager/managed-applications/overview.md) Azure-erőforrásként lesz üzembe helyezve az előfizetésben, a kiválasztott Azure-régióban (például az USA nyugati régiójában). Ezt a készüléket egy [Azure-Virtual Network](../virtual-network/virtual-networks-overview.md) helyezi üzembe, egy [hálózati biztonsági csoporttal](../virtual-network/manage-network-security-group.md) és egy Azure Storage-fiókkal, amely elérhető az előfizetésében. A virtuális hálózat peremhálózati szintű biztonságot nyújt a Databricks-munkaterülethez, és hálózati biztonsági csoporton keresztül védett. A munkaterületen belül Databricks-fürtöket hozhat létre a feldolgozó és az illesztőprogram virtuálisgép-típusának és Databricks-futtatókörnyezetének megadásával. A megőrzött adatai elérhetők a Storage-fiókban, amely lehet Azure Blob Storage vagy Azure Data Lake Storage. A fürt létrehozása után a feladatokat jegyzetfüzetek, REST API-k, ODBC/JDBC végpontok segítségével futtathatja, ha egy adott fürthöz csatolja őket.
 
 A Databricks vezérlő síkja felügyeli és figyeli a Databricks-munkaterület környezetét. Minden felügyeleti művelet, például a fürt létrehozása a vezérlési síkon lesz kezdeményezve. Az összes metaadatot, például az ütemezett feladatokat egy Azure-adatbázisban tárolja a rendszer a hibatűrés érdekében a Geo-replikációval.
 
@@ -310,6 +310,6 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
 Ha más Azure-szolgáltatásokat használ, mindenképpen hajtsa végre a vész-helyreállítási ajánlott eljárásokat ezen szolgáltatások esetében is. Ha például külső Hive-metaadattár-példányt szeretne használni, érdemes megfontolnia a vész-helyreállítást az [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), az [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)és/vagy a [Azure Database for MySQL](../mysql/concepts-business-continuity.md). A vész-helyreállítással kapcsolatos általános információkért lásd: vész- [helyreállítás Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Databricks dokumentáció](index.yml).

@@ -1,14 +1,14 @@
 ---
 title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása SAP HANA
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892600"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664598"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -84,27 +84,27 @@ A biztonsági mentések konfigurálása előtt tekintse át az [Előfeltételek]
 
 Tegyük fel, hogy a "H21" SDC HANA-példányról biztonsági másolat készül. A biztonsági mentési elemek lapon megjelenik a biztonsági mentési elem neve **"H21 (SDC)"** néven. Ha megpróbálja visszaállítani az adatbázist egy másik cél SDC, tegyük fel, hogy a H11 a következő bemeneti adatokat kell megadni.
 
-![SDC-visszaállítási bemenetek](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+![Visszaállított SDC-adatbázis neve](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 Vegye figyelembe a következő szempontokat:
 
-- Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve, azaz H21 (SDC)
+- Alapértelmezés szerint a visszaállított adatbázis neve a biztonsági mentési elem nevével lesz feltöltve. Ebben az esetben a H21 (SDC).
 - A cél kiválasztása, mivel a H11 nem módosítja automatikusan a visszaállított adatbázis nevét. **Ezt a H11 (SDC) kell szerkeszteni**. A SDC kapcsolatban a visszaállított adatbázis neve a célként megadott példány-azonosító kisbetűkkel és a "SDC" zárójelek között.
 - Mivel a SDC csak egyetlen adatbázissal rendelkezhet, a jelölőnégyzetre kattintva engedélyezheti a meglévő adatbázis-adatmennyiség felülbírálását a helyreállítási pontra vonatkozó adattal.
 - A Linux megkülönbözteti a kis-és nagybetűket. Ezért ügyeljen arra, hogy megőrizze a kis-és nagybetűket.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Több tároló-adatbázis (MDC) visszaállítása
 
-A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez a visszaállítás felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Ezért miután a rendszeradatbázist visszaállította egy cél példányra, az egyiknek újra kell futtatnia az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
+A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez a visszaállítás felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Tehát miután a rendszeradatbázist visszaállította egy cél példányra, futtassa újra az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
 
 ## <a name="upgrading-from-sap-hana-10-to-20"></a>Frissítés SAP HANA 1,0 – 2,0
 
-Ha SAP HANA 1,0-es adatbázist véd, és a 2,0-re kíván frissíteni, hajtsa végre az alábbi lépéseket:
+Ha SAP HANA 1,0-es adatbázist véd, és a 2,0-re kíván frissíteni, hajtsa végre a következő lépéseket:
 
 - A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi SDC-adatbázis megőrzése érdekében.
 - Végezze el a frissítést. A befejezést követően a HANA már MDC a rendszer-ADATBÁZISsal és a bérlői ADATBÁZISokkal
 - Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a (SID és MDC) helyes részleteivel.
-- A bővítmény újbóli regisztrálása ugyanarra a gépre az Azure Portalon (Backup-> nézet részletei – > Válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja).
+- A bővítmény újbóli regisztrálása ugyanarra a gépre Azure Portal (Backup-> nézet részletei – > Válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja).
 - Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli felderítése elemre. Ez a művelet a 2. lépésben szereplő új adatbázisok helyes részleteit (SYSTEMDB és bérlői adatbázis, nem SDC) jeleníti meg.
 - Konfigurálja az új adatbázisok biztonsági mentését.
 

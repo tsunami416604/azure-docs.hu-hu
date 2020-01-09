@@ -1,27 +1,16 @@
 ---
-title: Azure Service Fabric-alkalmazások hibakeresése Linux rendszeren | Microsoft Docs
+title: Azure Service Fabric-alkalmazások hibakeresése Linux rendszeren
 description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-szolgáltatásokat egy helyi linuxos fejlesztői gépen.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 017b359f4c6da438f5179813fa3ed1ad2c536834
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168864"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526294"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi számítógép-fejlesztési beállításokban
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi Linux-alapú gépek fejlesztésének beállításakor
 
 
 > [!div class="op_single_selector"]
@@ -35,9 +24,9 @@ A szolgáltatások figyelése, észlelése, diagnosztizálása és hibaelhárít
 
 ## <a name="debugging-service-fabric-java-applications"></a>Java-alkalmazások hibakeresése Service Fabric
 
-Java-alkalmazások esetében [több naplózási keretrendszer](https://en.wikipedia.org/wiki/Java_logging_framework) érhető el. Mivel a `java.util.logging` az alapértelmezett beállítás a JRE-vel, a [kód példákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)is használ a githubban. A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszert.
+Java-alkalmazások esetében [több naplózási keretrendszer](https://en.wikipedia.org/wiki/Java_logging_framework) érhető el. Mivel a `java.util.logging` az alapértelmezett beállítás a JRE-ben, a [kód példákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)is használ a githubban. A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszert.
 
-A Java. util. Logging használatával átirányíthatja az alkalmazás naplóit a memóriára, a kimeneti adatfolyamokra, a konzol fájljaira vagy a szoftvercsatornára. Ezen beállítások esetében a keretrendszerben már vannak alapértelmezett kezelők. @No__t-0 fájl létrehozásával konfigurálhatja az alkalmazás fájlkezelőjét az összes napló helyi fájlba való átirányításához.
+A Java. util. Logging használatával átirányíthatja az alkalmazás naplóit a memóriára, a kimeneti adatfolyamokra, a konzol fájljaira vagy a szoftvercsatornára. Ezen beállítások esetében a keretrendszerben már vannak alapértelmezett kezelők. `app.properties`-fájl létrehozásával konfigurálhatja az alkalmazás fájlkezelőjét az összes napló helyi fájlba való átirányításához.
 
 A következő kódrészlet egy példa konfigurációt tartalmaz:
 
@@ -51,14 +40,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-A `app.properties` fájl által rámutatott mappának léteznie kell. A `app.properties` fájl létrehozása után módosítania kell a belépési pont parancsfájlját, `entrypoint.sh` értéket a `<applicationfolder>/<servicePkg>/Code/` mappában, hogy a tulajdonságot `java.util.logging.config.file` értékre állítsa `app.properties` fájlra. A bejegyzésnek a következő kódrészlethez hasonlóan kell kinéznie:
+A `app.properties` fájl által mutatott mappának léteznie kell. A `app.properties` fájl létrehozása után módosítania kell a belépési pont parancsfájlját is, `entrypoint.sh` a `<applicationfolder>/<servicePkg>/Code/` mappában, hogy a tulajdonságot `java.util.logging.config.file` `app.properties` fájlra állítsa be. A bejegyzésnek a következő kódrészlethez hasonlóan kell kinéznie:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Ez a konfiguráció a naplókat a következő rotációs módon gyűjti: `/tmp/servicefabric/logs/`. Ebben az esetben a naplófájl neve mysfapp% u.% g. log, ahol:
+Ez a konfiguráció a naplókat a következő rotációs módon gyűjti: `/tmp/servicefabric/logs/`. Ebben az esetben a naplófájl neve mysfapp% u .% g. log, ahol:
 * a **(z)% u** egy egyedi szám az egyidejű Java-folyamatok közötti ütközések feloldásához.
 * a **(z)% g** a létrehozási szám, amely megkülönbözteti a forgó naplók közötti különbséget.
 
@@ -131,7 +120,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Az előző kódrészlet a naplófájlokat `/tmp/MyServiceLog.txt` fájlba írja. A fájl nevét megfelelően frissíteni kell. Ha át szeretné irányítani a naplókat a konzolra, használja a következő kódrészletet a testreszabott EventListener osztályban:
+Az előző kódrészlet a naplókat `/tmp/MyServiceLog.txt`fájlba írja. A fájl nevét megfelelően frissíteni kell. Ha át szeretné irányítani a naplókat a konzolra, használja a következő kódrészletet a testreszabott EventListener osztályban:
 
 ```csharp
 public static TextWriter Out = Console.Out;

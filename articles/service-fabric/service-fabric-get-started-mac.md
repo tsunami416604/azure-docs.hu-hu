@@ -1,24 +1,16 @@
 ---
-title: A fejlesztési környezet beállítása Mac OS X-en az Azure Service Fabric használatához | Microsoft Docs
-description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására.
-services: service-fabric
-documentationcenter: linux
+title: Fejlesztői környezet beállítása macOS rendszeren
+description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A telepítés befejezése után készen áll az alkalmazások macOS rendszeren való létrehozására.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035283"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609876"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -109,7 +101,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának [http://localhost:19080](http://localhost:19080)megtekintéséhez:
+5. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapota [http://localhost:19080](http://localhost:19080):
 
     ```bash 
     docker logs sftestcluster
@@ -174,7 +166,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
     ```
 
     > [!IMPORTANT]
-    > Előfordulhat, hogy `brew cask install java` a jelenlegi verziói a JDK újabb verzióját telepítik.
+    > A `brew cask install java` jelenlegi verziói telepíthetik a JDK újabb verzióját.
     > Ügyeljen arra, hogy a JDK 8 telepítse.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Alkalmazás telepítése Mac gépen a terminálból
@@ -196,7 +188,7 @@ Miután létrehozta és kiépítette a Service Fabric-alkalmazását, a [Service
 
 ## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
 
-Telepítse az [Mac rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#macos) [a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen találhatók, amely jelenleg előzetes verzióban érhető el.
+Telepítse az [Mac rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#macos)[a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen találhatók, amely jelenleg előzetes verzióban érhető el.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Az Eclipse-hez készült Service Fabric beépülő modul telepítése Mac gépen
 
@@ -219,7 +211,7 @@ Az attribútumok a következők:
 >Ha a tárolót más, az `sfonebox` névtől eltérő néven indítja, frissítse a név értéket a Service Fabric-aktor Java alkalmazásában lévő testclient.sh fájlban.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 <!-- Links -->
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse-hez készült Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

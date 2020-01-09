@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435083"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -25,12 +25,12 @@ Ez a cikk a MXChip IoT fejlesztői készlet (fejlesztői készlet) eszköznek a 
 
 A cikkben szereplő lépések végrehajtásához a következő erőforrásokra van szükség:
 
-1. A **mintául szolgáló Devkits** létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+1. Az **örökölt alkalmazás** -sablonból létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 1. Egy fejlesztői készlet-eszköz. Fejlesztői készlet-eszköz vásárlásához látogasson el a [MXChip IoT fejlesztői készlet](https://microsoft.github.io/azure-iot-developer-kit/).
 
-## <a name="sample-devkits-application"></a>Példa Devkits alkalmazásra
+## <a name="add-a-device-template"></a>Eszközsablon hozzáadása
 
-A **mintául szolgáló Devkits** létrehozott alkalmazás tartalmaz egy **MXChip** , amely meghatározza a következő eszköz jellemzőit:
+Az Azure IoT Central alkalmazásban adjon hozzá egy új **MXChip** -sablont, amely meghatározza a következő eszköz jellemzőit:
 
 - Telemetria mérések a **páratartalom**, a **hőmérséklet**, a **nyomás**, a **Magnetometer** (x, y, z tengely mentén mérve), **gyorsulásmérő** (x, y, z tengely mentén mérve) és **giroszkóp** (x, y, z tengely mentén mérve).
 - Állapot mérése az **eszköz állapotához**.
@@ -40,6 +40,11 @@ A **mintául szolgáló Devkits** létrehozott alkalmazás tartalmaz egy **MXChi
 - **A-ben előállított**Cloud Property.
 - Parancsok **visszhangja** és **visszaszámlálása**. Ha egy valós eszköz egy **echo** -parancsot kap, az elküldött érték jelenik meg az eszköz képernyőjén. Ha egy valós eszköz **visszaszámlálási** parancsot kap, a rendszer egy minta alapján a LED-ciklusokat, az eszköz pedig visszaszámlálási értékeket küld vissza IoT Central.
 
+1. Válassza az **+ új** elemet az eszközök sablonjaiból ![az eszköz sablonja](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. Válassza a **MXChip** elemet, és hozza létre a MXChip-eszköz sablonját ![az eszköz sablonjának hozzáadása](media/howto-connect-devkit/newtemplate.png)
+
 A konfiguráció részletes ismertetését lásd: [MXChip-eszköz sablonjának részletei](#mxchip-device-template-details)
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
@@ -48,7 +53,7 @@ A konfiguráció részletes ismertetését lásd: [MXChip-eszköz sablonjának r
 
 Az Azure IoT Central alkalmazásban vegyen fel egy valódi eszközt a **MXChip** -eszköz sablonból, és jegyezze fel az eszköz kapcsolatának részleteit: a **hatókör-azonosítót, az eszköz azonosítóját és az elsődleges kulcsot**:
 
-1. Valódi eszköz hozzáadásához vegyen fel egy **valós eszközt** a Device Explorerból, és válassza az **+ új > valós** lehetőséget.
+1. Adjon hozzá egy valódi **eszközt** az eszközökről, és válassza az **+ új > valós** lehetőséget egy valódi eszköz hozzáadásához.
 
     * Adja meg a kisbetűs **eszköz azonosítóját**, vagy használja a javasolt **eszköz azonosítóját**.
     * Adja meg az **eszköz nevét**, vagy használja a javasolt nevet
@@ -156,7 +161,7 @@ git clone https://github.com/Azure/iot-central-firmware
 Az előző parancs letölti a forráskódot egy `iot-central-firmware`nevű mappába.
 
 > [!NOTE]
-> Ha a **git** nincs telepítve a fejlesztői környezetben, letöltheti [https://git-scm.com/downloadról ](https://git-scm.com/download).
+> Ha a **git** nincs telepítve a fejlesztői környezetben, letöltheti [https://git-scm.com/download ról ](https://git-scm.com/download).
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
@@ -194,7 +199,7 @@ A mintául szolgáló Devkits létrehozott alkalmazás tartalmaz egy MXChip-eszk
 
 #### <a name="telemetry"></a>Telemetria
 
-| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
+| Mező neve     | egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | ideiglenes           | °C     | – 40     | 120     | 0              |
@@ -210,12 +215,12 @@ A mintául szolgáló Devkits létrehozott alkalmazás tartalmaz egy MXChip-eszk
 | gyroscopeZ     | mdps   | – 2000   | 2000    | 0              |
 
 #### <a name="states"></a>Állapotok 
-| Name (Név)          | Megjelenített név   | NORMÁL | Vigyázat | VESZÉLY | 
+| Név          | Megjelenített név   | NORMAL (Normál) | Vigyázat | VESZÉLY | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Eszközállapot   | Zöld  | Narancssárga  | Piros    | 
+| DeviceState   | Eszközállapot   | Zöld  | Orange  | Piros    | 
 
 #### <a name="events"></a>Események 
-| Name (Név)             | Megjelenített név      | 
+| Név             | Megjelenített név      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | B gomb lenyomva  | 
 
@@ -223,7 +228,7 @@ A mintául szolgáló Devkits létrehozott alkalmazás tartalmaz egy MXChip-eszk
 
 Numerikus beállítások
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültség      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Aktuális      | setCurrent | Erősítők  | 0              | 0       | 100     | 0       |
@@ -233,23 +238,23 @@ Váltási beállítások
 
 | Megjelenített név | Mező neve | Szövegen | Kikapcsolt szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | KIKAPCSOLÁSA      | Ki     |
+| IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Data type |
+| Type (Típus)            | Megjelenített név | Mező neve | Data type |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköz tulajdonsága | Die száma   | dieNumber  | szám    |
 | Eszköz tulajdonsága | Eszköz helye   | location  | location    |
-| Szöveg            | Gyártás folyamatban     | manufacturedIn   | N/A       |
+| Szöveg            | Gyártás folyamatban     | manufacturedIn   | –       |
 
 ### <a name="commands"></a>Parancsok
 
 | Megjelenített név | Mező neve | Visszatérési típus | Beviteli mező megjelenítendő neve | Beviteli mező neve | Beviteli mező típusa |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | Echo         | echo       | szöveg        | megjelenítendő érték         | displayedValue   | szöveg             |
-| Visszaszámlálás    | Visszaszámlálás  | szám      | Darabszám               | countFrom        | szám           |
+| Visszaszámlálás    | visszaszámlálás  | szám      | Darabszám               | countFrom        | szám           |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan csatlakozhat egy MXChip IoT-fejlesztői készlet az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés annak megismerése, hogyan [állíthat be egyéni eszközöket](howto-set-up-template.md) a saját IoT-eszközéhez.

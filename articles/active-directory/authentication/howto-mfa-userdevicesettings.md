@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a1e6dc3ed1c1f9af6f6b935cdd3a6ceaedbe7a4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07845bb5b742b1bcfbb22d260457e9a8e16edab6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425262"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Felhasználói beállítások kezelése az Azure Multi-Factor Authentication a felhőben
 
@@ -30,7 +30,7 @@ Rendszergazdaként a következő felhasználói és eszközbeállítások felüg
 
 A hitelesítés-rendszergazdai szerepkörhöz rendelt rendszergazda megkövetelheti, hogy a felhasználók új jelszót állítsanak vissza, regisztrálják újra az MFA-t, vagy visszavonják a meglévő MFA-munkameneteket a felhasználói objektumból.
 
-![Hitelesítési módszerek kezelése a Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+![Hitelesítési módszerek kezelése a Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal oldalon válassza az **Azure Active Directory** > **Felhasználók** > **Minden felhasználó** lehetőséget.

@@ -2,18 +2,18 @@
 title: Deep Dive – fejlett Analitika – Azure HDInsight
 description: Ismerje meg, hogy a fejlett elemzési algoritmusok hogyan használják a big data Azure HDInsight való feldolgozását.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.author: ashishth
-ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 6fc6ea9ca0ce3bf82f027b964db94df50f07f2bd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241651"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646523"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -39,16 +39,15 @@ A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfonto
 
 * Felügyelt – az algoritmust a címkével ellátott adathalmazon kell tanítani, mielőtt az eredményeket megadhatja
 * A részben felügyelt algoritmusok további célokból is kihasználhatók az oktató által végzett interaktív lekérdezéseken keresztül, amelyek a képzés kezdeti szakaszában nem voltak elérhetők.
-* Nem felügyelt algoritmus – nem szükséges betanítási adat 
+* Nem felügyelt algoritmus – nem szükséges betanítási adat
 * Megerősítés – az algoritmus a szoftver-ügynökök használatával határozza meg az ideális viselkedést egy adott kontextuson belül (gyakran a robotika esetében használatos)
-
 
 | Algoritmus kategóriája| Használat | Tanulás típusa | Algoritmusok |
 | --- | --- | --- | -- |
 | Osztályozás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
-| Fürtszolgáltatás | Példák halmazának elosztása homogén csoportokba | Unsupervised | K – fürtözés |
+| Fürtözés | Példák halmazának elosztása homogén csoportokba | Unsupervised | K – fürtözés |
 | Mintázat észlelése | Az adatkezelés gyakori hozzárendeléseinek azonosítása | Unsupervised | Társítási szabályok |
-| Regressziós | Numerikus eredmények előrejelzése | Felügyelt | Lineáris regresszió, neurális hálózatok |
+| Regresszió | Numerikus eredmények előrejelzése | Felügyelt | Lineáris regresszió, neurális hálózatok |
 | Megerősítő | A robotok optimális viselkedésének meghatározása | Megerősítő | Monte Carlo-szimulációk, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Gépi tanulás a HDInsight-on
@@ -62,15 +61,13 @@ A HDInsight számos gépi tanulási lehetőséggel rendelkezik a fejlett elemzé
 
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning és Apache Spark
 
-
-A [HDInsight Spark](../spark/apache-spark-overview.md) egy [Apache Spark](https://spark.apache.org/), egy egységes, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszer, amely memórián belüli feldolgozást használ a Big adatelemzéshez. A Spark-feldolgozó motor a sebességre, a könnyű használatra és a kifinomult elemzésekre épül. A Spark memóriában elosztott számítási képességei jó választást biztosítanak a gépi tanulásban és a Graph-számításokban használt iterációs algoritmusok számára. 
-
+A [HDInsight Spark](../spark/apache-spark-overview.md) egy [Apache Spark](https://spark.apache.org/), egy egységes, nyílt forráskódú, párhuzamos adatfeldolgozási keretrendszer, amely memórián belüli feldolgozást használ a Big adatelemzéshez. A Spark-feldolgozó motor a sebességre, a könnyű használatra és a kifinomult elemzésekre épül. A Spark memóriában elosztott számítási képességei jó választást biztosítanak a gépi tanulásban és a Graph-számításokban használt iterációs algoritmusok számára.
 
 Három skálázható gépi tanulási kódtár van, amelyek a következő elosztott környezethez biztosítanak algoritmikus modellezési képességeket:
 
 * A [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib a Spark RDD-ra épülő eredeti API-t tartalmazza.
 * A [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML egy újabb csomag, amely egy magasabb szintű API-t biztosít a Spark DataFrames, amely ml-folyamatok létrehozását teszi lehetővé.
-* [**MMLSpark**](https://github.com/Azure/mmlspark) – a (z) Apache Spark Microsoft Machine learning könyvtára (MMLSpark) úgy lett kialakítva, hogy az adatszakértőket hatékonyabbá tegye a Sparkban, hogy növelje a kísérletezés mértékét, és kihasználja az élvonalbeli gépi tanulási technikákat, beleértve a következőket: mély tanulás, nagyon nagy adathalmazokon. A MMLSpark könyvtár leegyszerűsíti az általános modellezési feladatokat a PySpark-modellek létrehozásához. 
+* [**MMLSpark**](https://github.com/Azure/mmlspark) – a (z) Apache Spark Microsoft Machine learning könyvtára (MMLSpark) úgy lett kialakítva, hogy az adatszakértőket hatékonyabbá tegye a Sparkban, hogy növelje a kísérletezés mértékét, és kihasználja az élvonalbeli gépi tanulási technikákat, beleértve a mély tanulást a nagy adathalmazokon. A MMLSpark könyvtár leegyszerűsíti az általános modellezési feladatokat a PySpark-modellek létrehozásához.
 
 ### <a name="r-and-ml-services"></a>R és ML szolgáltatások
 
@@ -78,29 +75,29 @@ A HDInsight részeként létrehozhat egy HDInsight-fürtöt ml- [szolgáltatáso
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning és Apache Hive
 
-A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) eszközöket biztosít a prediktív elemzések modellezéséhez, valamint egy teljes körűen felügyelt szolgáltatáshoz, amely a prediktív modellek használatra kész webszolgáltatásként való üzembe helyezésére használható. A Azure Machine Learning eszközöket biztosít a felhőben a teljes prediktív elemzési megoldások létrehozásához, teszteléséhez, működővé tenni és a prediktív modellek kezeléséhez. Válasszon egy nagyméretű algoritmus-függvénytárból, használjon webalapú stúdiót modellek létrehozásához, és egyszerűen üzembe helyezheti a modellt webszolgáltatásként.
+A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) eszközöket biztosít a prediktív elemzések modellezéséhez, valamint egy teljes körűen felügyelt szolgáltatáshoz, amellyel a prediktív modelleket használatra kész webszolgáltatásként helyezheti üzembe. A Azure Machine Learning eszközöket biztosít a felhőben a teljes prediktív elemzési megoldások létrehozásához, teszteléséhez, működővé tenni és a prediktív modellek kezeléséhez. Válasszon egy nagyméretű algoritmus-függvénytárból, használjon webalapú stúdiót modellek létrehozásához, és egyszerűen üzembe helyezheti a modellt webszolgáltatásként.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark és mély tanulás
 
-A [Deep learning](https://www.microsoft.com/research/group/dltc/) a gépi tanulás olyan ága, amely az emberi agy biológiai folyamatai által inspirált *mély neurális hálózatokat* (DNN) használ. Számos kutató a mesterséges intelligencia ígéretes megközelítésének tekinti a mélyreható tanulást. Néhány példa a mély tanulásra: beszélt nyelvi fordítók, képfelismerési rendszerek és gépi indoklás. A Microsoft az ingyenes, könnyen használható, nyílt forráskódú [Microsoft Cognitive Toolkitt](https://www.microsoft.com/en-us/cognitive-toolkit/)fejlesztette ki, hogy elősegítse a munkát a mélyreható tanulásban. Az eszközkészlet széles körben használatos számos Microsoft-termék, a világszerte működő vállalatok számára, hogy nagy mennyiségű, nagy léptékű tanulást és a legújabb algoritmusokat és technikákat érdeklik. 
+A [Deep learning](https://www.microsoft.com/research/group/dltc/) a gépi tanulás olyan ága, amely az emberi agy biológiai folyamatai által inspirált *mély neurális hálózatokat* (DNN) használ. Számos kutató a mesterséges intelligencia ígéretes megközelítésének tekinti a mélyreható tanulást. Néhány példa a mély tanulásra: beszélt nyelvi fordítók, képfelismerési rendszerek és gépi indoklás. A Microsoft az ingyenes, könnyen használható, nyílt forráskódú [Microsoft Cognitive Toolkitt](https://www.microsoft.com/en-us/cognitive-toolkit/)fejlesztette ki, hogy elősegítse a munkát a mélyreható tanulásban. Az eszközkészlet széles körben használatos számos Microsoft-termék, a világszerte működő vállalatok számára, hogy nagy mennyiségű, nagy léptékű tanulást és a legújabb algoritmusokat és technikákat érdeklik.
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Forgatókönyv – képek a városi fejlesztési minták azonosításához
 
 Tekintsük át a fejlett analitikai gépi tanulási folyamat példáját a HDInsight használatával.
 
-Ebben a forgatókönyvben láthatja, hogy a Microsoft Cognitive Toolkit (CNTK) egy Deep learning-keretrendszerben létrehozott DNN hogyan használható az Azure Blob Storage-fiókban tárolt nagy képgyűjtemények pontozására egy HDInsight Spark-fürtön a PySpark használatával. Ezt a megközelítést egy közös DNN-használati esetre, a légi rendszerképek besorolására alkalmazza, és felhasználható a közelmúltbeli mintázatok azonosítására a városi fejlesztésekben.  Egy előre betanított rendszerkép-besorolási modellt fog használni. A modell előre betanítva van a [CIFAR-10 adatkészleten](https://www.cs.toronto.edu/~kriz/cifar.html) , és 10 000 visszatartott lemezképre lett alkalmazva.
+Ebben a forgatókönyvben láthatja, hogy a Microsoft Cognitive Toolkit (CNTK) által létrehozott DNN hogyan használható az Azure Blob Storage-fiókban tárolt nagy képgyűjtemények pontozására egy HDInsight Spark-fürtön a PySpark használatával. Ezt a megközelítést egy közös DNN-használati esetre, a légi rendszerképek besorolására alkalmazza, és felhasználható a közelmúltbeli mintázatok azonosítására a városi fejlesztésekben.  Egy előre betanított rendszerkép-besorolási modellt fog használni. A modell előre betanítva van a [CIFAR-10 adatkészleten](https://www.cs.toronto.edu/~kriz/cifar.html) , és 10 000 visszatartott lemezképre lett alkalmazva.
 
 Ebben a fejlett elemzési forgatókönyvben három kulcsfontosságú feladat van:
 
-1. Hozzon létre egy Azure HDInsight Hadoop fürtöt egy Apache Spark 2.1.0-eloszlással. 
-2. Egyéni parancsfájl futtatásával Microsoft Cognitive Toolkit telepíthet egy Azure HDInsight Spark-fürt összes csomópontjára. 
-3. Töltse fel a HDInsight Spark-fürthöz egy előre összeállított Jupyter-jegyzetfüzetet, amely egy Azure Blob Storage-fiókban lévő, a Spark Python API-t (PySpark) használó, betanított Microsoft Cognitive Toolkit mély tanulási modellt alkalmaz. 
+1. Hozzon létre egy Azure HDInsight Hadoop fürtöt egy Apache Spark 2.1.0-eloszlással.
+2. Egyéni parancsfájl futtatásával Microsoft Cognitive Toolkit telepíthet egy Azure HDInsight Spark-fürt összes csomópontjára.
+3. Töltse fel a HDInsight Spark-fürthöz egy előre összeállított Jupyter-jegyzetfüzetet, amely egy Azure Blob Storage-fiókban lévő, a Spark Python API-t (PySpark) használó, betanított Microsoft Cognitive Toolkit mély tanulási modellt alkalmaz.
 
 Ez a példa a CIFAR-10 képkészletet használja, amelyet Alex Krizhevsky, vino Siro és Geoffrey Hinton lefordított és elosztott. A CIFAR-10 adatkészlet 60 000 32 × 32 színes képet tartalmaz, amelyek a 10 egymást kölcsönösen kizáró osztályhoz tartozóak:
 
 ![Machine Learning képek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
-Az adatkészlettel kapcsolatos további részletekért lásd: Alex Krizhevsky, [több rétegbeli funkcióinak megismerése apró képekből](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
+Az adatkészlettel kapcsolatos további információkért tekintse meg az Alex Krizhevsky [learning több rétegét a Tiny images szolgáltatásban](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
 Az adatkészlet 50 000 rendszerképekből és 10 000-es rendszerképekből álló tesztelési csoportba lett particionálva. Az első készlet egy húsz rétegű, nagy teljesítményű (ResNet) modell betanítására szolgál a Microsoft Cognitive Toolkit használatával a Cognitive Toolkit GitHub-tárházból származó [oktatóanyagot](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) követve. A fennmaradó 10 000-es kép a modell pontosságának tesztelésére szolgál. Ebben az esetben az elosztott számítástechnika játékba kerül: az előzetes feldolgozás és a képek pontozásának feladata nagyon párhuzamosítható. A mentett betanított modellel együtt a következőket használtuk:
 
@@ -115,7 +112,7 @@ Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy p
 
 ### <a name="try-it-out"></a>Próbálja ki!
 
-[Ez az oktatóanyag](../spark/apache-spark-microsoft-cognitive-toolkit.md) a megoldás végpontok közötti megvalósítását ismerteti: HDInsight Spark-fürt beállítása, Cognitive Toolkit telepítése, valamint a 10 000-es CIFAR-lemezképeket követő Jupyter notebook futtatása.
+A megoldás teljes körű megvalósításához kövesse [az oktatóanyagot](../spark/apache-spark-microsoft-cognitive-toolkit.md) : hozzon létre egy HDInsight Spark-fürtöt, telepítse a Cognitive Toolkitt, és futtassa a 10 000-es SZÁMú CIFAR-rendszerképekből álló Jupyter notebook.
 
 ## <a name="next-steps"></a>Következő lépések
 

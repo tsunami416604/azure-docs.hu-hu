@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Cloud kiépítési ügynök telepítése
-description: Ez a témakör részletesen ismerteti a kiépítési ügynök telepítését.
+title: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
+description: Ez a cikk ismerteti, hogyan telepítheti a Azure AD Connect Cloud kiépítési ügynököt.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,15 +11,15 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e3b2a113d46ff3d8799927f56fa66601c94ed5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846232"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549502"
 ---
-# <a name="install-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect Cloud kiépítési ügynök telepítése
-Ez a dokumentum végigvezeti a Azure AD Connect üzembe helyezési ügynök telepítési folyamatán, és azt, hogy miként lehet először konfigurálni a Azure Portalban.
+# <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
+Ez a dokumentum végigvezeti a Azure Active Directory-(Azure AD-) kapcsolat létesítési ügynökének telepítési folyamatán, és azt, hogy miként konfigurálható először a Azure Portal.
 
 >[!IMPORTANT]
 >A következő telepítési utasítások feltételezik, hogy az összes [előfeltétel](how-to-prerequisites.md) teljesült.
@@ -31,62 +31,72 @@ Azure AD Connect kiépítés telepítése és konfigurálása a következő lép
 
 
 ## <a name="install-the-agent"></a>Az ügynök telepítése
+Az ügynök telepítéséhez kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a-kiszolgálóra, amelyet a vállalati rendszergazdai engedélyekkel fog használni.
-2. Navigáljon a Azure Portalhoz, és válassza a bal oldalon a Azure Active Directory lehetőséget.
-3. Kattintson a **kiépítés kezelése (előzetes verzió)** elemre, és válassza **az összes ügynök áttekintése**lehetőséget.
-3. Töltse le a Azure AD Connect kiépítési ügynököt a Azure Portalból.
-![Üdvözlőképernyő](media/how-to-install/install9.png)</br>
-3. Az Azure AD Connect kiépítés futtatása (AADConnectProvisioningAgent. Installer)
-3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
-![Üdvözlőképernyő](media/how-to-install/install1.png)</br>
+1. Jelentkezzen be arra a kiszolgálóra, amelyet vállalati rendszergazdai engedélyekkel fog használni.
+1. Nyissa meg az Azure Portalt. A bal oldalon válassza a **Azure Active Directory**lehetőséget.
+1. Válassza a **felügyelet létesítése (előzetes verzió)**  > **az összes ügynök áttekintése**lehetőséget.
+1. Töltse le a Azure AD Connect kiépítési ügynököt a Azure Portalból.
 
-4. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.
-5. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory rendszergazdai fiókjával.  Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.</br>
-![Üdvözlőképernyő](media/how-to-install/install3.png)</br>
+   ![Helyszíni ügynök letöltése](media/how-to-install/install9.png)</br>
+1. Futtassa az Azure AD Connect kiépítési telepítőt (AADConnectProvisioningAgent. Installer).
+1. A **Microsoft Azure ad a kiépítési ügynök csomagjának összekapcsolása** képernyőn fogadja el a licencelési feltételeket, és válassza a **telepítés**lehetőséget.
 
-6. A **konfiguráció kész** képernyőn kattintson a **Confirm (megerősítés**) gombra.  Ez a művelet regisztrálja és újraindítja az ügynököt.</br>
-![Üdvözlőképernyő](media/how-to-install/install4.png)</br>
+   ![Microsoft Azure AD a kiépítési ügynök csomagjának összekapcsolására szolgáló képernyő](media/how-to-install/install1.png)</br>
 
-7. Miután a művelet befejeződik, meg kell jelennie arról, hogy **a sikeres ellenőrzést** észlelte.  Kattintson a **Kilépés**lehetőségre.</br>
-![Üdvözlőképernyő](media/how-to-install/install5.png)</br>
-8. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás**gombra.
+1. A művelet befejeződése után elindul a konfigurációs varázsló. Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.
+1. A **Active Directory összekapcsolása** képernyőn válassza a **könyvtár hozzáadása**lehetőséget. Ezután jelentkezzen be Active Directory rendszergazdai fiókjával. Ez a művelet hozzáadja a helyszíni címtárat. Kattintson a **Tovább** gombra.
 
+   ![Active Directory képernyő összekötése](media/how-to-install/install3.png)</br>
+
+1. A **konfiguráció befejezése** képernyőn válassza a **Confirm (megerősítés**) lehetőséget. Ez a művelet regisztrálja és újraindítja az ügynököt.
+
+   ![A konfigurálás befejeződött képernyő](media/how-to-install/install4.png)</br>
+
+1. A művelet befejezése után látnia kell, hogy az **ügynök konfigurációjának ellenőrzése sikeres volt.** Válassza a **Kilépés**lehetőséget.
+
+   ![Kilépés gomb](media/how-to-install/install5.png)</br>
+1. Ha továbbra is megjelenik a kezdeti Microsoft Azure AD a létesítési **ügynök csomagjának** kiosztása képernyő, válassza a **Bezárás**lehetőséget.
 
 ## <a name="verify-agent-installation"></a>Ügynök telepítésének ellenőrzése
 Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszolgálón történik.
 
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
-Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
+Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az Azure-ban.
 
 1. Jelentkezzen be az Azure portálra.
-2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
-![Azure Portalra](media/how-to-install/install6.png)</br>
+1. A bal oldalon válassza a **Azure Active Directory** > **Azure ad Connect**lehetőséget. A központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 
-3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése**elemre.
-Azure AD-kiépítés ![](media/how-to-install/install7.png)</br>
+   ![Azure portál](media/how-to-install/install6.png)</br>
+
+1.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn válassza az **összes ügynök áttekintése**lehetőséget.
+
+    ![Az összes ügynök lehetőség áttekintése](media/how-to-install/install7.png)</br>
  
-4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök **aktív**-e, és hogy van-e megjelölve.
-![kiépítési ügynökök](media/how-to-install/verify1.png)</br>
+1. A helyszíni **kiépítési ügynökök** képernyőjén láthatja a telepített ügynököket. Ellenőrizze, hogy a szóban forgó ügynök *aktív*-e, és hogy van-e megjelölve.
+
+   ![Helyszíni kiépítési ügynökök képernyő](media/how-to-install/verify1.png)</br>
 
 ### <a name="verify-the-port"></a>A port ellenőrzése
-Annak ellenőrzéséhez, hogy az Azure figyel-e a 443-es porton, és hogy az ügynök képes-e kommunikálni vele, a következőket használhatja:
+Az alábbi lépéseket követve ellenőrizheti, hogy az Azure figyel-e a 443-es porton, és hogy az ügynök tud-e kommunikálni vele.
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-Ez a teszt azt ellenőrzi, hogy az ügynökök képesek-e kommunikálni az Azure-ban a 443-as porton keresztül.  Nyisson meg egy böngészőt, és navigáljon a fenti URL-címre abban a kiszolgálón, ahol az ügynököt telepítették.
-![Szolgáltatások](media/how-to-install/verify2.png)
+Ez a teszt ellenőrzi, hogy az ügynökök az 443-as porton keresztül kommunikálnak-e az Azure-ban. Nyisson meg egy böngészőt, és keresse meg az előző URL-címet arról a kiszolgálóról, amelyen az ügynököt telepítették.
+
+![A port elérhetőségének ellenőrzése](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>A helyi kiszolgálón
-Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
+Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
 
-1.  Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal
-2.  Nyissa meg a szolgáltatásokat vagy navigáljon a **szolgáltatáshoz** , vagy indítsa el a Start/Run/Services. msc parancsot.
-3.  A **szolgáltatások** területen győződjön meg arról, hogy **Microsoft Azure ad az ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van ott, és az állapota **fut**.
-![Szolgáltatások](media/how-to-troubleshoot/troubleshoot1.png)
+1.  Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal.
+1.  Nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatásba, vagy **indítsa** el **a >  > ** **Services. msc parancsot**.
+1.  Győződjön meg arról, hogy a **szolgáltatások**területen **Microsoft Azure ad a összekapcsolási ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van, és az állapota *fut*.
+
+    ![Szolgáltatások képernyő](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->Az ügynök telepítve van, de konfigurálni és engedélyezni kell a felhasználók szinkronizálásának megkezdése előtt.  Új ügynök konfigurálásához tekintse meg az [új ügynök konfigurációjának Azure ad Connect üzembe](how-to-configure.md)helyezését ismertető témakört.
+>Az ügynök telepítve van, de konfigurálni és engedélyezni kell a felhasználók szinkronizálásának megkezdése előtt. Új ügynök konfigurálásához tekintse meg a következőt: [Azure ad Connect Cloud kiépítés új ügynök konfigurálása](how-to-configure.md).
 
 
 

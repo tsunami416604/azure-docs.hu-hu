@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386986"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rövid útmutató: Azure Storage-fiók integrálása az Azure CDN-nel
 Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Network (CDN)](cdn-overview.md) számára az Azure Storage-ből származó tartalmak gyorsítótárazását. Az Azure CDN egy globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. Képes arra, hogy fizikai csomópontokon gyorsítótárazza a blobokat és a számítási példányok statikus tartalmát az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika területén.
@@ -66,7 +66,7 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
     
 4. A többi beállításhoz használja a következő táblázatban megadott értékeket:
 
-    | Beállítás  | Érték |
+    | Beállítás  | Value (Díj) |
     | -------- | ----- |
     | **Üzemi modell** | Használja az alapértelmezett értéket. |
     | **Fióktípus** | Használja az alapértelmezett értéket. |
@@ -75,7 +75,7 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
     | **Teljesítmény** | Használja az alapértelmezett értéket. |
     | **Biztonságos átvitelre van szükség** | Használja az alapértelmezett értéket. |
     | **Előfizetés** | Válasszon egy Azure-előfizetést a legördülő listából. |
-    | **Erőforráscsoport** | Válassza az **Új létrehozása** lehetőséget, és írja be a *my-resource-group-123* értéket az erőforráscsoport neveként. A névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet, vagy válassza ki a **Meglévő használata** lehetőséget, majd a **my-resource-group-123** elemet a legördülő listából. <br />Az erőforráscsoportokra vonatkozó információval kapcsolatban lásd [az Azure Resource Manager áttekintését](../azure-resource-manager/resource-group-overview.md#resource-groups).| 
+    | **Erőforráscsoport** | Válassza az **Új létrehozása** lehetőséget, és írja be a *my-resource-group-123* értéket az erőforráscsoport neveként. A névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet, vagy válassza ki a **Meglévő használata** lehetőséget, majd a **my-resource-group-123** elemet a legördülő listából. <br />Az erőforráscsoportokra vonatkozó információval kapcsolatban lásd [az Azure Resource Manager áttekintését](../azure-resource-manager/management/overview.md#resource-groups).| 
     | **Virtuális hálózatok konfigurálása** | Használja az alapértelmezett értéket. |  
     
 5. Válassza a **Rögzítés az irányítópulton** lehetőséget, ha a tárfiókot a létrehozása után az irányítópultra szeretné rögzíteni.
@@ -94,7 +94,7 @@ Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. 
     
 2. Új végpontot a következő táblázatban ismertetett információk megadásával hozhat létre:
 
-    | Beállítás  | Érték |
+    | Beállítás  | Value (Díj) |
     | -------- | ----- |
     | **CDN-profil** | Válassza az **új létrehozása** elemet, és adja meg a profil nevét, például: *My-CDN-profile-123*. A névnek globálisan egyedinek kell lennie.  |
     | **Tarifacsomag** | Válassza a **Standard – Verizon** értéket a legördülő listából. |

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8756d8e60e7612c1610e07b0567465e3a0ea8884
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961935"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531496"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -85,10 +85,10 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 
 |ELŐREJELZÉSI API VERZIÓJA|METÓDUS|URL-cím|
 |--|--|--|
-|V3|GET|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>előrejelzése</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? lekérdezés =<b>{query}</b>|
-|V3|POST|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>előrejelzése</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
+|K3|GET|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>előrejelzése</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? lekérdezés =<b>{query}</b>|
+|K3|POST|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>előrejelzése</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
 |2\. verzió|GET|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>előrejelzése</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Versions/<b>{Version-ID}</b>/Predict? Query =<b>{query}</b>|
-|2\. verzió|POST|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>Előrejelzés</b><b>v 3.0</b>/apps/<b>{app-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
+|2\. verzió|POST|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/-<b>Előrejelzés</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
 
 |`SLOT-NAME` érvényes értékei|
 |--|
@@ -101,14 +101,14 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 
 A V3 API különböző lekérdezési karakterlánc-paraméterekkel rendelkezik.
 
-|Params neve|Típus|Verzió|Alapértelmezett|Cél|
+|Params neve|Type (Típus)|Verzió|Alapértelmezett|Rendeltetés|
 |--|--|--|--|--|
 |`log`|logikai|V2 & v3|false|A lekérdezés tárolása a naplófájlban. Az alapértelmezett érték false (hamis).| 
 |`query`|sztring|Csak v3|Nincs alapértelmezett – a GET kérelemben szükséges|A **v2-ben**a megjósolható teljes érték a `q` paraméterben található. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
 |`show-all-intents`|logikai|Csak v3|false|Az összes leképezés visszaküldése a megfelelő pontszámmal a **jóslat. szándékok** objektumban. A rendszer egy szülő `intents` objektumban lévő objektumokként adja vissza a leképezéseket. Ez lehetővé teszi a programozott hozzáférést anélkül, hogy meg kellene találni a szándékot egy tömbben: `prediction.intents.give`. A v2-ben ezek egy tömbben voltak visszaadva. |
 |`verbose`|logikai|V2 & v3|false|Ha **a v2**értéke TRUE (igaz) értékre van állítva, az összes előre jelzett leképezést visszaadja. Ha minden előre jelzett leképezésre van szüksége, használja a `show-all-intents`v3 paraméterét.<br><br>**A v3-** as verzióban ez a paraméter csak az entitások előrejelzését biztosító entitás-metaadatokat tartalmazza.  |
 |`timezoneOffset`|sztring|2\. verzió|-|A datetimeV2 entitásokra alkalmazott időzóna.|
-|`datetimeReference`|sztring|V3|-|A datetimeV2 entitásokra alkalmazott [időzóna](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . Lecseréli a `timezoneOffset`t a v2-ből.|
+|`datetimeReference`|sztring|K3|-|A datetimeV2 entitásokra alkalmazott [időzóna](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . Lecseréli a `timezoneOffset`t a v2-ből.|
 
 
 ### <a name="v3-post-body"></a>V3 POST törzs
@@ -125,7 +125,7 @@ A V3 API különböző lekérdezési karakterlánc-paraméterekkel rendelkezik.
 }
 ```
 
-|Tulajdonság|Típus|Verzió|Alapértelmezett|Cél|
+|Tulajdonság|Type (Típus)|Verzió|Alapértelmezett|Rendeltetés|
 |--|--|--|--|--|
 |`dynamicLists`|tömb|Csak v3|Nem kötelező.|A [dinamikus listák](#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
 |`externalEntities`|tömb|Csak v3|Nem kötelező.|A [külső entitások](#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
@@ -408,7 +408,7 @@ Ha a `preferExternalEntities` `true`re van beállítva, a LUIS egy választ ad v
 
 
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 A nem _kötelező_ `resolution` tulajdonság visszaadja az előrejelzési választ, így átadhatja a külső entitáshoz társított metaadatokat, majd visszaküldheti azt a válaszban. 
 

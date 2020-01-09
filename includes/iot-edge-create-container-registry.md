@@ -2,40 +2,40 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 485a76cb91e5146f59e6be592ffd9cbba68e585a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179236"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564730"
 ---
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ebben az oktatóanyagban használhatja az Azure IoT Tools bővítmény fel egy modult, és hozzon létre egy **tárolórendszerkép** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.
+Ebben az oktatóanyagban az Azure IoT Tools bővítmény használatával hoz létre egy modult, és létrehoz egy **tároló rendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.
 
-Minden olyan Docker-kompatibilis beállításjegyzéket a tárolólemezképek tárolására használható. Két népszerű Docker beállításjegyzék szolgáltatások [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja.
+A tároló-lemezképek tárolására bármelyik Docker-kompatibilis beállításjegyzéket használhatja. Két népszerű Docker-beállításjegyzék-szolgáltatás [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és a [Docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja.
 
-Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépésekkel hozzon létre egy új Azure-ban:
+Ha még nem rendelkezik tároló-beállításjegyzékkel, kövesse az alábbi lépéseket egy új Azure-beli létrehozásához:
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
 
 2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | ----- | ----- |
    | Beállításjegyzék neve | Egyedi nevet adjon meg. |
    | Előfizetés | A legördülő listából válasszon egy előfizetést. |
    | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
-   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
+   | Földrajzi egység | Válassza ki az Önhöz legközelebb eső helyet. |
    | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
-   | SKU | Válassza az **Alapszintű** lehetőséget. |
+   | SKU (Cikkszám) | Válassza az **Alapszintű** lehetőséget. |
 
-5. Kattintson a **Létrehozás** gombra.
+3. Kattintson a **Létrehozás** gombra.
 
-6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, majd válassza a **Hozzáférési kulcsok** elemet.
+4. Miután létrehozta a tároló-beállításjegyzéket, tallózással keresse meg, majd a bal oldali panelen válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen található menüből.
 
-7. Másolja le az értékeket a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó** , és mentse őket kényelmes valahol. Ezeket az értékeket az oktatóanyag során használja a tárolóregisztrációs adatbázis eléréséhez.
+5. Másolja a **bejelentkezési kiszolgáló**, a **Felhasználónév**és a **jelszó** értékeit, és mentse őket kényelmesen. Ezeket az értékeket az oktatóanyag során a tároló-beállításjegyzékhez való hozzáférés biztosításához használja.
 
-   ![Másolja ki a bejelentkezési kiszolgáló, a felhasználónevet és jelszót tároló-beállításjegyzékhez](./media/iot-edge-create-container-registry/registry-access-key.png)
+   ![A tároló-beállításjegyzék bejelentkezési kiszolgálójának, felhasználónevének és jelszavának másolása](./media/iot-edge-create-container-registry/registry-access-key.png)

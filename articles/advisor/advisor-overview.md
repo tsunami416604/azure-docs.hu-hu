@@ -1,21 +1,14 @@
 ---
-title: Bevezetés a Azure Advisorba | Microsoft Docs
+title: Bevezetés a Azure Advisorba
 description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443093"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés a Azure Advisorba
 
@@ -25,9 +18,9 @@ Ismerkedjen meg Azure Advisor főbb képességeivel, és választ kaphat a gyako
 Az Advisor egy személyre szabott felhőalapú tanácsadó, amely az Azure-beli üzembe helyezések optimalizálására szolgáló ajánlott eljárások követésében nyújt segítséget. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
 Az Advisor használatával a következőket teheti:
-* Proaktív, végrehajtható és személyre szabott ajánlott eljárások beszerzése. 
+* Proaktív, gyakorlatban hasznosítható és személyre szabott ajánlott eljárásokat kaphat. 
 * Az erőforrások teljesítményének, biztonságának és magas rendelkezésre állásának javítása a teljes Azure-kiadások csökkentése érdekében.
-* Javaslatok beszerzése a javasolt műveletekkel beágyazottan.
+* A javasolt műveleteket tartalmazó beágyazott javaslatokat kaphat.
 
 Az Advisor a [Azure Portal](https://aka.ms/azureadvisordashboard)keresztül érhető el. Jelentkezzen be a [portálra](https://portal.azure.com), keresse meg az **Advisor** parancsot a navigációs menüben, vagy keresse meg a **minden szolgáltatás** menüben.
 
@@ -70,7 +63,7 @@ A Azure Advisor a [Azure Security Center](https://docs.microsoft.com/azure/secur
 
 A javaslatok elhalasztásához vagy elvetéséhez kattintson az **elhalasztás** hivatkozásra. Megadhat egy elhalasztási időszakot, vagy kiválaszthatja, hogy **Soha ne** utasítsa el a javaslatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 

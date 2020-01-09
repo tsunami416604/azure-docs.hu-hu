@@ -3,16 +3,18 @@ title: Ajánlott eljárások a beállításjegyzék használatához
 description: Az ajánlott eljárások követésével megismerkedhet az Azure Container Registry leghatékonyabb használatával.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445791"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
 Az itt leírt ajánlott eljárások követésével a legjobb teljesítménnyel és költséghatékonysággal használhatja az Azure-ban található privát Docker regisztrációs adatbázist.
+
+Lásd még: [javaslatok a lemezképek címkézésére és verziószámozására](container-registry-image-tag-version.md) a beállításjegyzékben található rendszerképek címkézéséhez és verziószámozásához. 
 
 ## <a name="network-close-deployment"></a>Hálózatközeli központi telepítés
 
@@ -31,7 +33,7 @@ A georeplikáció használatának megismeréséhez tekintse meg háromrészes ú
 
 Az adattárnévterek használatával engedélyezheti egyetlen regisztrációs adatbázis megosztását több csoporttal a szervezeten belül. A regisztrációs adatbázisok több környezeten és csoporton keresztül is megoszthatók. Az Azure Container Registry támogatja a beágyazott névtereket, amelyekkel elkülöníthetők a csoportok.
 
-Vegyük példaként a következő tárolórendszerkép-címkéket. A teljes vállalat által használt rendszerképek (például `aspnetcore`) a gyökérnévtérbe kerülnek, a Termelés és a Marketing csoportok tulajdonában lévő rendszerképek pedig a saját névterüket használják.
+Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, például a `aspnetcore`hoz használt rendszerképek a legfelső szintű névtérbe kerülnek, míg a termékek és a marketing csoportok által birtokolt tároló lemezképek saját névtereket használnak.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0
@@ -46,11 +48,11 @@ Mivel a tároló-beállításjegyzékek olyan erőforrások, amelyeket több tá
 
 Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forgatókönyv fordulhat elő: az egyéni hitelesítés és a szolgáltatásos (vagy „távfelügyelt”) hitelesítés. A következő táblázat röviden bemutatja ezeket a forgatókönyveket és a hozzájuk fűződő ajánlott hitelesítési módokat.
 
-| Típus | Példaforgatókönyv | Javasolt módszer |
+| Type (Típus) | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
 | Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatás](container-registry-authentication.md#service-principal) |

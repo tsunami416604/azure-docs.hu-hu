@@ -2,19 +2,15 @@
 title: Runbookok kezelése Azure Automation
 description: Ez a cikk bemutatja, hogyan kezelheti a runbookok a Azure Automationban.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 42fbb224981123a7cb0f39f07c144b5d2ffbc587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417886"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -108,7 +104,7 @@ Az egyes [runbook-típusok](automation-runbook-types.md) tesztelésének eljár�
 
 Új runbook létrehozásakor vagy importálásakor a Futtatás előtt közzé kell tennie.  Az Automation minden runbook rendelkezik egy Piszkozatmal és egy közzétett verzióval. Kizárólag a Közzétett verziót lehet futtatni, és kizárólag a Piszkozat verzió szerkeszthető. A Közzétett verzióra nincsenek hatással a Piszkozat verzióban végrehajtott módosítások. Ha elérhetővé kell tenni a Piszkozat verzióját, akkor azt közzé kell tennie, amely felülírja a közzétett verziót a Piszkozat verziójával.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. Nyissa meg a runbook a Azure Portalban.
 2. Kattintson az **Edit** (Szerkesztés) gombra.

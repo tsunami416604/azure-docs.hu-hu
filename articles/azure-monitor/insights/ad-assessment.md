@@ -4,15 +4,15 @@ description: A Active Directory Health-ellenőrzési megoldással rendszeres id�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406140"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizálja Active Directory-környezetét az Active Directory Health-ellenőrzési megoldással Azure Monitor
 
@@ -36,7 +36,7 @@ A megoldás hozzáadása és az ellenőrzések befejezése után a fókusz terü
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Active Directory Health ellenőrzési megoldáshoz a .NET-keretrendszer 4.5.2-es vagy újabb verziójának támogatott verzióját kell telepítenie minden olyan számítógépen, amelyen telepítve van a Windows Log Analytics ügynöke (más néven a Microsoft monitoring Agent (MMA)).  Az ügynököt a System Center 2016-Operations Manager, Operations Manager 2012 R2 és Azure Monitor használja.
+* A Active Directory Health ellenőrzési megoldáshoz a .NET-keretrendszer 4.6.2 vagy újabb verziójának támogatott verzióját kell telepítenie minden olyan számítógépen, amelyen telepítve van a Windows Log Analytics ügynöke (más néven a Microsoft monitoring Agent (MMA)).  Az ügynököt a System Center 2016-Operations Manager, Operations Manager 2012 R2 és Azure Monitor használja.
 * A megoldás támogatja a Windows Server 2008 és a 2008 R2, a Windows Server 2012 és az 2012 R2, valamint a Windows Server 2016 rendszert futtató tartományvezérlőket.
 * Log Analytics munkaterület, amely az Azure Portal Azure Marketplace-en adja hozzá a Active Directory Health-ellenőrzési megoldást. Nincs szükség további konfigurációra.
 
@@ -49,7 +49,7 @@ A tartományhoz tartozó tartományvezérlők állapot-ellenőrzésének elvégz
 
 1. Telepítse a [Windows log Analytics Agent ügynököt,](../../azure-monitor/platform/agent-windows.md) ha a tartományvezérlőt még nem figyeli a System Center 2016-Operations Manager vagy a Operations Manager 2012 R2.
 2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitor-be, a tartományvezérlő több-is lehet az adatok gyűjtésére és a szolgáltatásba való továbbítására Azure Monitor, és továbbra is Operations Manager figyelése.  
-3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a következőben: munkaterület.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
 
 A tartományvezérlőn az ügynök, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
@@ -63,7 +63,7 @@ Active Directory állapot-ellenőrzési adatokat gyűjt a következő forrásokb
 - Eseménynapló
 - Active Directory szolgáltatási felületek (ADSI)
 - Windows PowerShell
-- Fájlinformációk
+- Fájladatok
 - Windows Management Instrumentation (WMI)
 - DCDIAG eszköz API
 - Fájlreplikációs szolgáltatás (NTFRS) API

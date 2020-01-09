@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883586"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657981"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Az SSL-lezárás és a végpontok közötti SSL áttekintése Application Gateway
 
@@ -42,15 +42,15 @@ Az SSL-kapcsolat működéséhez biztosítania kell, hogy az SSL-tanúsítvány 
 
 Az Application Gateway a következő típusú tanúsítványokat támogatja:
 
-- HITELESÍTÉSSZOLGÁLTATÓI (hitelesítésszolgáltató) tanúsítvány: A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány egy hitelesítésszolgáltató (CA) által kiadott digitális tanúsítvány
-- EV (bővített ellenőrző) tanúsítvány: Az EV-tanúsítvány az iparági szabványoknak megfelelő tanúsítványokra vonatkozó irányelvek. Ezzel bekapcsolja a böngésző lokátorának zöldjét, és közzéteszi a cég nevét is.
+- CA (hitelesítésszolgáltató) tanúsítvány: A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány egy hitelesítésszolgáltató (CA) által kiadott digitális tanúsítvány.
+- EV (bővített érvényesítés) tanúsítvány: az EV-tanúsítvány egy iparági szabványnak megfelelő tanúsítványra vonatkozó irányelv. Ezzel bekapcsolja a böngésző lokátorának zöldjét, és közzéteszi a cég nevét is.
 - Helyettesítő tanúsítvány: Ez a tanúsítvány a *. site.com alapján tetszőleges számú altartományt támogat, ahol az altartománya lecseréli a *-t. Ez azonban nem támogatja a site.com, így ha a felhasználók a "www" beírása nélkül férnek hozzá a webhelyhez, a helyettesítő karakteres tanúsítvány nem fedi le azt.
-- Önaláírt tanúsítványok: Az ügyféloldali böngészők nem bíznak a tanúsítványokban, és figyelmeztetik a felhasználót, hogy a virtuális szolgáltatás tanúsítványa nem része egy megbízhatósági láncnak. Az önaláírt tanúsítványok olyan tesztelési és környezeti környezetekben használhatók, ahol a rendszergazdák vezérelhetik az ügyfeleket, és biztonságosan kihagyhatják a böngésző biztonsági riasztásait. Az éles munkaterhelések soha nem használhatnak önaláírt tanúsítványokat.
+- Önaláírt tanúsítványok: az ügyfél böngészője nem bízik meg ezekkel a tanúsítványokkal, és figyelmezteti a felhasználót, hogy a virtuális szolgáltatás tanúsítványa nem része egy megbízhatósági láncnak. Az önaláírt tanúsítványok olyan tesztelési és környezeti környezetekben használhatók, ahol a rendszergazdák vezérelhetik az ügyfeleket, és biztonságosan kihagyhatják a böngésző biztonsági riasztásait. Az éles munkaterhelések soha nem használhatnak önaláírt tanúsítványokat.
 
 További információ: [az SSL-lezárás konfigurálása az Application Gateway használatával](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>A tanúsítvány mérete
-Az SSL-tanúsítvány maximális méretének megismeréséhez olvassa el a [Application Gateway határértékek](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) szakaszt.
+Az SSL-tanúsítvány maximális méretének megismeréséhez olvassa el a [Application Gateway határértékek](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) szakaszt.
 
 ## <a name="end-to-end-ssl-encryption"></a>Végpontok közötti SSL-titkosítás
 
@@ -72,7 +72,7 @@ Ha a háttérbeli készlet tagjainak tanúsítványait nem a jól ismert HITELES
 
 > [!NOTE] 
 >
-> A háttérrendszer-kiszolgálók hitelesítéséhez a háttérbeli **http** -beállításhoz hozzáadott tanúsítvány megegyező lehet, mint a **figyelőhöz** az Application gatewayben az SSL-lezáráshoz hozzáadott tanúsítvány, illetve a fokozott biztonság érdekében.
+> A háttérrendszer-kiszolgálók hitelesítéséhez a háttérbeli **http-beállításhoz** hozzáadott tanúsítvány megegyező lehet, mint a **figyelőhöz** az Application gatewayben az SSL-lezáráshoz hozzáadott tanúsítvány, illetve a fokozott biztonság érdekében.
 
 ![Teljes körű ssl eset][1]
 
@@ -104,12 +104,12 @@ A hitelesítési tanúsítványok elavultak, és a megbízható főtanúsítván
 > Az önaláírt tanúsítványnak egy tanúsítványlánc részét kell képeznie. A v2 SKU-ban nem támogatott egyetlen önaláírt tanúsítvány, amelynek nincs lánca.
 
 - A főtanúsítványok egyeztetése mellett a Application Gateway azt is ellenőrzi, hogy a háttérbeli http-beállításban megadott gazdagép-beállítás megegyezik-e a háttér-kiszolgáló SSL-tanúsítványa által megjelenített köznapi névvel (CN). Amikor SSL-kapcsolatot próbál létesíteni a háttérrel, Application Gateway beállítja a Kiszolgálónév jelzése (SNI) bővítményt a háttérbeli http-beállításban megadott gazdagépre.
-- Ha a háttérbeli http-beállításban a gazdagép mező helyett a kiválasztó **állomásnév elemet** választja, akkor a SNI fejléc mindig a háttérbeli készlet teljes tartománynevére van beállítva, és a háttér-kiszolgáló SSL-tanúsítványának CN elemének meg kell egyeznie a teljes tartománynévvel. Ebben a forgatókönyvben nem támogatottak a háttérbeli készlet tagjai az IP-címekkel.
+- Ha a háttérbeli http-beállításban a gazdagép mező helyett a **kiválasztó állomásnév elemet** választja, akkor a SNI fejléc mindig a háttérbeli készlet teljes tartománynevére van beállítva, és a háttér-kiszolgáló SSL-tanúsítványának CN elemének meg kell egyeznie a teljes tartománynévvel. Ebben a forgatókönyvben nem támogatottak a háttérbeli készlet tagjai az IP-címekkel.
 - A főtanúsítvány a háttér-kiszolgálói tanúsítványok Base64 kódolású főtanúsítványa.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A végpontok közötti SSL megismerése után nyissa meg a végpontok közötti [SSL konfigurálását az Application Gateway és a PowerShell használatával](application-gateway-end-to-end-ssl-powershell.md) , és hozzon létre egy Application Gateway-t a végpontok közötti SSL használatával.
+A végpontok közötti SSL megismerése után nyissa meg a [végpontok közötti SSL konfigurálását az Application Gateway és a PowerShell használatával](application-gateway-end-to-end-ssl-powershell.md) , és hozzon létre egy Application Gateway-t a végpontok közötti SSL használatával.
 
 <!--Image references-->
 

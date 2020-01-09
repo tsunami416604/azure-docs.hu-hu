@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor – az Azure Application Insights felülbírálja az alapértelmezett SDK-végpontokat | Microsoft Docs
-description: Az alapértelmezett Azure Application Insights SDK-végpontok módosítása olyan régiók esetében, mint a Azure Government.
+title: Azure Application Insights alapértelmezett SDK-végpontok felülbírálása
+description: Az alapértelmezett Azure Monitor Application Insights SDK-végpontok módosítása olyan régiók esetében, mint például a Azure Government.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677479"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432592"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
-Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, felül kell bírálnia az alapértelmezett végponti címeket. Az SDK-nak némileg eltérő módosításokra van szüksége, amelyek mindegyike a jelen cikkben szerepel. Ezek a változások szükségessé teszik a mintakód módosítását és a `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` és `Profile_Query_Endpoint_address` helyőrző értékeinek cseréjét az adott régió tényleges végpont-címeivel. A cikk végén a végpontok címeire mutató hivatkozások találhatók, ahol ez a konfiguráció szükséges.
+Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, felül kell bírálnia az alapértelmezett végponti címeket. Az SDK-nak némileg eltérő módosításokra van szüksége, amelyek mindegyike a jelen cikkben szerepel. Ezek a változások szükségessé teszik a mintakód módosítását és a `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`és `Profile_Query_Endpoint_address` helyőrző értékeinek cseréjét az adott régió tényleges végpont-címeivel. A cikk végén a végpontok címeire mutató hivatkozások találhatók, ahol ez a konfiguráció szükséges.
 
 ## <a name="sdk-code-changes"></a>Az SDK-kód módosításai
 

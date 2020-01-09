@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818282"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647169"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database-kiszolgálók és azok kezelése
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Mi az Azure SQL Database-kiszolgáló
 
-A SQL Database-kiszolgáló olyan logikai szerkezet, amely központi felügyeleti pontként szolgál több önálló vagy [készletezett](sql-database-elastic-pool.md) adatbázis, [Bejelentkezés](sql-database-manage-logins.md), [Tűzfalszabályok](sql-database-firewall-configure.md), [naplózási szabályok](sql-database-auditing.md), [veszélyforrások észlelési házirendjei](sql-database-threat-detection.md)és [ feladatátvételi csoportok](sql-database-auto-failover-group.md) a SQL Database-kiszolgáló lehet más régióban, mint az erőforráscsoport. Az Azure SQL Database létrehozása előtt a SQL Database-kiszolgálónak léteznie kell. SQL Database kiszolgáló által felügyelt összes adatbázis ugyanabban a régióban jön létre, mint a SQL Database-kiszolgáló.
+A SQL Database-kiszolgálók olyan logikai szerkezetek, amelyek központi felügyeleti pontként működnek több önálló vagy [készletezett](sql-database-elastic-pool.md) adatbázis, [Bejelentkezés](sql-database-manage-logins.md), [Tűzfalszabályok](sql-database-firewall-configure.md), [naplózási szabályok](sql-database-auditing.md), [veszélyforrások észlelési szabályzatok](sql-database-threat-detection.md)és [feladatátvételi csoportok](sql-database-auto-failover-group.md) számára, a SQL Database-kiszolgáló lehet más régióban, mint az erőforráscsoport. Az Azure SQL Database létrehozása előtt a SQL Database-kiszolgálónak léteznie kell. SQL Database kiszolgáló által felügyelt összes adatbázis ugyanabban a régióban jön létre, mint a SQL Database-kiszolgáló.
 
 A SQL Database-kiszolgáló különbözik egy olyan SQL Server-példánytól, amely a helyszíni világban is ismerős lehet. Pontosabban, a SQL Database szolgáltatás nem vállal garanciát az adatbázisok helyével kapcsolatban az azokat kezelő SQL Database-kiszolgálóval kapcsolatban, és nem tesz elérhetővé példány-szintű hozzáférést vagy szolgáltatást. Ezzel szemben a felügyelt példányban található példány-adatbázisok mind közösen helyezkednek el, ugyanúgy, mint a helyszíni világban SQL Server.
 
@@ -40,7 +40,7 @@ SQL Database kiszolgáló:
 - Kapcsolódási végpontot biztosít az adatbázis-hozzáféréshez (`<serverName>`.database.windows.net)
 - Egy master adatbázishoz való kapcsolódással hozzáférést biztosít a tárolt erőforrásokra vonatkozó metaadatokhoz a DMV-ken keresztül
 - Hatókört biztosít a felügyeleti házirendek számára, amelyek az adatbázisaira vonatkoznak – bejelentkezések, tűzfal, naplózás, veszélyforrások észlelése és hasonlók
-- A szülő-előfizetésben lévő kvóta korlátozza (alapértelmezés szerint hat kiszolgáló/előfizetés – [itt az előfizetési korlátok itt láthatók](../azure-subscription-service-limits.md))
+- A szülő-előfizetésben lévő kvóta korlátozza (alapértelmezés szerint hat kiszolgáló/előfizetés – [itt az előfizetési korlátok itt láthatók](../azure-resource-manager/management/azure-subscription-service-limits.md))
 - Az adatbázis-kvóta-és DTU-vagy virtuális mag-kvóta hatókörét biztosítja a benne található erőforrások számára (például 45 000 DTU).
 - A foglalt erőforrásokon engedélyezett funkciók verziószámozási hatóköre
 - Kiszolgálószintű rendszerbiztonsági tagként bejelentkezve a kiszolgáló minden adatbázisa felügyelhető.
@@ -148,7 +148,7 @@ Az Azure SQL Server, adatbázisok és tűzfalak a Transact-SQL használatával t
 
 | Parancs | Leírás |
 | --- | --- |
-|[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Létrehoz egy új adatbázist. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
+|[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|létrehoz egy új adatbázist; Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Módosítja egy Azure SQL Database-adatbázist. |
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Módosít egy Azure SQL Data Warehouse.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
@@ -190,7 +190,7 @@ Az Azure SQL Server, adatbázisok és tűzfalak létrehozásához és kezelésé
 |[Tűzfalszabályok – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
 |[Tűzfalszabályok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](sql-database-single-database-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

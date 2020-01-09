@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707984"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647679"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -39,11 +39,11 @@ A következő lépések azt ismertetik, hogyan történik a kapcsolatok létreho
 
 A Azure SQL Database a következő három lehetőséget támogatja egy SQL Database-kiszolgáló kapcsolatbiztonsági házirendjének beállításához:
 
-- **Átirányítás (ajánlott):** Az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz csatlakoznak, ami csökkenti a késést és a fejlesztést az egész során. Az ilyen üzemmódú ügyfeleket használó kapcsolatok esetén
+- **Átirányítás (ajánlott):** Az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz csatlakoznak, ami csökkenti a késést és a jobb teljesítményt. Az ilyen üzemmódú ügyfeleket használó kapcsolatok esetén
    - Engedélyezze a bejövő és kimenő kommunikációt az ügyfélről a régió összes Azure-beli IP-címére a 11000 11999 tartományba tartozó portokon.  
    - Engedélyezi a bejövő és kimenő kommunikációt az ügyféltől az 1433-es porton Azure SQL Database átjáró IP-címeire.
 
-- **Proxy:** Ebben a módban az összes kapcsolat a Azure SQL Database átjárón keresztül történik, ami nagyobb késést eredményez, és csökkenti az egészet. Az ilyen üzemmódú ügyfelek által használt kapcsolatok esetében engedélyezni kell a bejövő és kimenő kommunikációt az ügyféltől az 1433-es porton Azure SQL Database átjáró IP-címeinek eléréséhez.
+- **Proxy:** Ebben a módban az összes kapcsolat a Azure SQL Database-átjárón keresztül történik, ami növeli a késést és a kisebb átviteli sebességet. Az ilyen üzemmódú ügyfelek által használt kapcsolatok esetében engedélyezni kell a bejövő és kimenő kommunikációt az ügyféltől az 1433-es porton Azure SQL Database átjáró IP-címeinek eléréséhez.
 
 - **Alapértelmezett:** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási szabályzatot `Proxy` vagy `Redirect`. Az alapértelmezett házirend`Redirect` az Azure-ban (például egy Azure-beli virtuális gépről) származó összes ügyfélkapcsolat esetében, és `Proxy`az összes kívülről (például a helyi munkaállomásról származó kapcsolatokról).
 

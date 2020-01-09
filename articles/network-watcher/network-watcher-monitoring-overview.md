@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e6ff3e6798fadca89455790efa28891c02e9e459
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 45470733c9cfed104e39786be48a6edae20ad489
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996956"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645208"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
-Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit. Network Watcher úgy van kialakítva, hogy figyelje és javítsa a IaaS (infrastruktúra-szolgáltatás) olyan termékeit, mint például a Virtual Machines, a virtuális hálózatok, az Application Gateway, a Load Balancer stb. Megjegyzés: A rendszer nem a következő célokra szolgál, és nem fog működni a Pásti-figyeléshez vagy a webes elemzésekhez. 
+Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti a metrikáikat, és engedélyezheti vagy letiltja a naplóikat. Network Watcher úgy van kialakítva, hogy figyelje és javítsa a IaaS (infrastruktúra-szolgáltatás) olyan termékeit, mint például a Virtual Machines, a virtuális hálózatok, az Application Gateway, a Load Balancer stb. Megjegyzés: a rendszer nem a következő célokra szolgál, és nem fog működni a Pásti-figyeléshez vagy a webes elemzésekhez. 
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
 ### <a name = "connection-monitor"></a>Virtuális gépek és végpontok közötti kommunikáció monitorozása
 
@@ -77,15 +77,15 @@ A Network Watcher szolgáltatásból lekérheti az Azure-régiók közötti és 
 
 Egy hálózati adapter érvényben lévő biztonsági szabályai a hálózati adapteren, valamint az azon az alhálózaton alkalmazott összes biztonsági szabályból állnak, amelyen az adapter található.  A *biztonsági csoport nézet* képesség megmutatja a hálózati adapteren és az azon az alhálózaton alkalmazott összes biztonsági szabályt, amelyen az adapter található, majd összesíti ezeket. Miután megértette, hogy melyik szabályok vannak alkalmazva a hálózati adapteren, hozzáadhat, eltávolíthat és módosíthat szabályokat, ha azok nem a kívánt módon engedélyezik vagy tiltják le a forgalmat. További információ a [biztonsági csoport nézettel](network-watcher-security-group-view-overview.md) kapcsolatban.
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
-Az egy Azure-előfizetésen és -régión belül létrehozható hálózati erőforrások száma [korlátozott](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits). Ha eléri a korlátot, nem fog tudni további erőforrásokat létrehozni az előfizetésen vagy régión belül. A *hálózati előfizetés korlátja* funkció összegzést biztosít az egy előfizetésben és régióban üzembe helyezett hálózati erőforrások számáról, illetve az erőforrás korlátairól. Az alábbi képen az USA keleti régiójában üzembe helyezett hálózati erőforrások részleges kimenete látható egy példa-előfizetés esetében:
+Az egy Azure-előfizetésen és -régión belül létrehozható hálózati erőforrások száma [korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits). Ha eléri a korlátot, nem fog tudni további erőforrásokat létrehozni az előfizetésen vagy régión belül. A *hálózati előfizetés korlátja* funkció összegzést biztosít az egy előfizetésben és régióban üzembe helyezett hálózati erőforrások számáról, illetve az erőforrás korlátairól. Az alábbi képen az USA keleti régiójában üzembe helyezett hálózati erőforrások részleges kimenete látható egy példa-előfizetés esetében:
 
 ![Előfizetés korlátai](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
 Ez az információ hasznosnak bizonyulhat a későbbi erőforrások üzembe helyezésének tervezése során.
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Naplók
 
 ### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Egy hálózati biztonsági csoport be- és kimenő forgalmának elemzése
 
@@ -100,8 +100,8 @@ Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [
 Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplókat olyan eszközökkel tekintheti meg, mint a Microsoft Power BI és a Azure Monitor naplók. Ha többet szeretne megtudni az Azure hálózati diagnosztikai naplók elemzéséről, tekintse meg [Az Azure hálózati megoldásait Azure monitor-naplókban](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Automatikus engedélyezés Network Watcher
-Amikor létrehoz vagy frissít egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz a Virtual Network régiójában. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra. További információ: [Network Watcher Create](network-watcher-create.md).
+Amikor virtuális hálózatot hoz létre vagy módosít az előfizetésben, a Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra. További információ: [Network Watcher Create](network-watcher-create.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikk az Azure Network Watcherről nyújtott áttekintést. A Network Watcher használatának első lépéseként diagnosztizálja egy virtuális gép bejövő és kimenő kommunikációjának egy gyakori problémáját az IP-forgalom ellenőrzése funkcióval. Ennek ismertetését a [virtuális gépek hálózatiforgalom-szűrési problémájának diagnosztizálását](diagnose-vm-network-traffic-filtering-problem.md) ismertető rövid útmutatóban találja.

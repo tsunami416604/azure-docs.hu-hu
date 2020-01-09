@@ -8,48 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/10/2019
 ms.author: erhopf
-ms.openlocfilehash: f5929be58c5e2159e832005b0e0f8d01e014427e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379878"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
-A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi, hogy az alkalmazások, az eszközök vagy az eszközök természetes emberi – például szintetizált beszédbe alakítsanak szöveget. Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang 4 nyelven és területi beállításban érhető el. A teljes listát lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+A beszédfelismerési szolgáltatás szöveg-beszéd formátuma lehetővé teszi, hogy az alkalmazások, az eszközök vagy az eszközök szöveget alakítsanak át az emberi – például a szintetizált beszédbe. Válasszon a standard és a neurális hangok közül, vagy hozzon létre egyedi hangvételt a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang a kiválasztott számú nyelven és területi beállításban érhető el. A támogatott hangok, nyelvek és területi beállítások teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-A szövegről beszédre irányuló technológia lehetővé teszi, hogy a Content Creator különböző módokon kommunikáljon a felhasználóival. A szöveg és a beszéd közötti kommunikáció javíthatja a hozzáférést azáltal, hogy a felhasználók számára lehetővé teszi a tartalmak hallható módon történő használatát. Azt jelzi, hogy a felhasználó rendelkezik-e a vizualizációs fogyatékossággal, a tanulási fogyatékossággal vagy a navigációs információk megadásával, miközben a szöveg és a beszéd is javíthatja a meglévő felhasználói élményt. A szöveg és a beszéd is értékes kiegészítő funkció a hangvezérelt robotok és a hangsegédek számára.
+> [!NOTE]
+> A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Speech-t használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
+> - [Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba](how-to-migrate-from-bing-speech.md)
 
-A Speech szintézis Markup Language (SSML) használatával egy XML-alapú Markup Language, a szöveg-beszéd szolgáltatást használó fejlesztők megadhatják, hogy a bemeneti szöveg hogyan legyen konvertálva a szintetizált beszédbe. A SSML a Pitch, a kiejtés, a beszéd arány, a kötet és más beállítások állíthatók be. További információ: [SSML](#speech-synthesis-markup-language-ssml).
+## <a name="core-features"></a>Alapvető funkciók 
 
-### <a name="standard-voices"></a>Standard hangok
+* Beszédfelismerés – a [SPEECH SDK](quickstarts/text-to-speech-audio-file.md) vagy a [REST API](rest-text-to-speech.md) segítségével normál, neurális vagy egyéni hangok használatával alakíthatja át a szöveg-beszédet.
 
-A standard hangok statisztikai számszerű szintézis és/vagy összefűzési módszerek használatával jönnek létre. Ezek a hangok jól érthetőek és természetesek. Egyszerűen engedélyezheti, hogy alkalmazásai több mint 45 nyelven beszéljenek, számos hanglehetőséggel. Ezek a hangok magas kiejtési pontosságot biztosítanak, beleértve a rövidítések támogatását, a rövidítések, a dátum/idő értelmezését, a telefonokat és egyebeket. Az alkalmazások és szolgáltatások kisegítő lehetőségeinek kihasználása érdekében a normál hang használatával a felhasználók a tartalmat hallható módon kezelhetik.
+* A hosszú hang aszinkron szintézise – a [hosszú](long-audio-api.md) hangalapú API használatával aszinkron módon szintetizálhatja a szöveg-beszéd fájlokat 10 percnél hosszabb ideig (például Hangoskönyvek vagy előadások esetén). A Speech SDK vagy a beszéd – szöveg REST API használatával végrehajtott szintézistől eltérően a válaszokat nem valós időben adja vissza a rendszer. A várt érték az, hogy a kérelmeket aszinkron módon küldik el, a rendszer lekérdezi a válaszokat, és letölti a szintetizált hangot, amikor elérhetővé válik a szolgáltatásból. Csak a neurális hangok támogatottak.
 
-### <a name="neural-voices"></a>Neurális hangok
+* Standard hangok – statisztikai számszerű szintézis és/vagy összefűzési technikák használatával hozhatók létre. Ezek a hangok jól érthetőek és természetesek. Egyszerűen engedélyezheti, hogy alkalmazásai több mint 45 nyelven beszéljenek, számos hanglehetőséggel. Ezek a hangok magas kiejtési pontosságot biztosítanak, beleértve a rövidítések támogatását, a rövidítések, a dátum/idő értelmezését, a telefonokat és egyebeket. A standard hangok teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-A neurális hangok mély neurális hálózatokkal használják fel a hagyományos szöveg-beszéd rendszerek korlátait a stressz és a hanglejtés mintázatának, valamint a hangvételi egységeknek a számítógépes hangra való beépítésével. A standard szöveg – beszéd típusú bontás a prosody különböző nyelvi elemzési és akusztikai előrejelzési lépésekre bontja fel, amelyek független modellekre vonatkoznak, ami tompa hangszintézist eredményezhet. A neurális funkció egyszerre végzi a hangmértékek előrejelzését és a hangszintézist, ami folyékonyabb és természetesebbnek tetsző hangot eredményez.
+* Neurális hangok – a mély neurális hálózatokkal leküzdhető a hagyományos beszédfelismerés korlátai a hangsúlyt és a hanglejtést illetően a beszélt nyelven. A Prosody előrejelzése és a hangszintézis párhuzamosan történik, ami több folyadékot és természetes hangzású kimenetet eredményez. A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakciót természetesebb és vonzó, digitális szövegek, például e-könyvek hangoskönyvekbe való átalakítására és az autós navigációs rendszerek fejlesztésére. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál. A neurális hangok teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakcióra, így természetesebb és vonzó, digitális szövegeket, például e-könyveket készíthet hangoskönyvekbe, és hatékonyabbá teheti az autós navigációs rendszereket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál.
+* Speech szintézis Markup Language (SSML) – XML-alapú leíró nyelv, amely a beszédfelismerési kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [SSML](speech-synthesis-markup.md).
 
-A neurális hangok különböző stílusokat támogatnak, mint például a semleges és a vidám. Például a Jessa (en-US) hangja vidáman tud beszélni, ami meleg, boldog beszélgetésre van optimalizálva. A hangkimenetek, például a hang, a szurok és a sebesség a [beszédfelismerési leíró nyelv](speech-synthesis-markup.md)használatával állíthatók be. Az elérhető hangok teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+## <a name="get-started"></a>Az első lépések
 
-Ha többet szeretne megtudni a neurális hangok előnyeiről, tekintse meg a [Microsoft új neurális szöveg-beszéd szolgáltatását, amellyel a gépek hasonló személyeket beszélnek](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
+A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md)-n keresztül érhető el. Számos gyakori forgatókönyv érhető el, különböző nyelveken és platformokon:
 
-### <a name="custom-voices"></a>Egyéni hangok
+* [Beszéd szintetizálása hangfájlba](quickstarts/text-to-speech-audio-file.md)
+* [Beszéd szintetizálása egy beszélő számára](quickstarts/text-to-speech.md)
+* [A hosszú formátumú hang aszinkron szintetizálása](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-A hangtestreszabás lehetővé teszi a márka felismerhető, egyfajta hangjának létrehozását. Egyéni hangbetűkészlet létrehozásához készítse el a studiót, és töltse fel a társított parancsfájlokat a betanítási adatokba. A szolgáltatás ezután létrehoz egy egyedi hangmodellt a rögzítéshez. Ezt az egyéni hangbetűtípust használhatja a beszéd szintetizálása érdekében. További információ: [egyéni hangok](how-to-customize-voice-font.md).
+Ha szeretné, a szöveg és a beszéd közötti szolgáltatás a [Rest](rest-text-to-speech.md)-on keresztül érhető el.
 
-## <a name="speech-synthesis-markup-language-ssml"></a>Beszédszintézis-jelölőnyelv (SSML)
+## <a name="sample-code"></a>Mintakód
 
-A Speech szintézis Markup Language (SSML) egy XML-alapú Markup Language, amely lehetővé teszi a fejlesztők számára, hogy a szöveg-beszéd szolgáltatás segítségével hogyan konvertálja a bemeneti szöveget a szintetizált beszédbe. Az egyszerű szöveghez képest a SSML lehetővé teszi a fejlesztők számára a hangfelvétel, a kiejtés, a beszéd arány, a kötet és még több szöveg-beszéd típusú kimenet finomhangolását. Normál írásjelek, például egy időszak utáni felfüggesztés vagy a megfelelő hanglejtés használata, ha a mondatot kérdőjeltel végződik, automatikusan kezeli a rendszer.
+A szöveg és a beszéd mintája a GitHubon érhető el. Ezek a minták a legnépszerűbb programozási nyelvek szöveg-beszéd átalakítását fedik le.
 
-A szöveg-beszéd szolgáltatásnak eljuttatott összes szöveges bemenetet SSML-ként kell felépíteni. További információ: [Speech szintézis Markup Language](speech-synthesis-markup.md).
+- [Szöveg – beszéd minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Szöveg – beszéd minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-### <a name="pricing-note"></a>Díjszabási Megjegyzés
+## <a name="customization"></a>Testreszabás 
+
+A standard és a neurális hangokon kívül egyéni hangokat is létrehozhat és finomhangolással egyedivé teheti a termékét vagy márkáját. A kezdéshez mindössze néhány hangfájlt és a hozzá tartozó átírásokat kell használnia. További információ: Ismerkedés [az egyéni hanggal](how-to-custom-voice.md)
+
+## <a name="pricing-note"></a>Díjszabási Megjegyzés
 
 A szöveg-beszéd típusú szolgáltatás használatakor a rendszer minden, a beszédre konvertált karakter után számláz, beleértve a központozást is. Míg maga a SSML-dokumentum nem számlázható, a szöveg átalakításának módjára, például a fonémák és a Pitch formátumára szolgáló opcionális elemek számlázandó karakternek számítanak. Az alábbi lista tartalmazza a számlázható tartalmakat:
 
@@ -63,67 +72,12 @@ Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricin
 > [!IMPORTANT]
 > Minden kínai, Japán és koreai nyelvi karakter két karakternek számít a számlázáshoz.
 
-## <a name="core-features"></a>Alapvető funkciók
-
-Ez a táblázat a szöveg és a beszéd alapvető funkcióit sorolja fel:
-
-| Használati eset                                  | SDK | REST  |
-| ----------------------------------------- | --- | ----- |
-| Szöveg konvertálása beszédre                   | Igen | Igen   |
-| Adatkészletek feltöltése a hangalapú átalakításhoz.     | Nem  | Igen\* |
-| Hang betűkészlet-modelljeinek létrehozása és kezelése.      | Nem  | Igen\* |
-| Hangbetűkészletek központi telepítésének létrehozása és kezelése. | Nem  | Igen\* |
-| Hangos betűkészlet-tesztek létrehozása és kezelése.       | Nem  | Igen\* |
-| Előfizetések kezelése.                     | Nem  | Igen\* |
-
-\*_ezek a szolgáltatások az Cris.ai-végpont használatával érhetők el. Lásd a [hencegés referenciáját](https://westus.cris.ai/swagger/ui/index). Ezek az egyéni hangképzési és felügyeleti API-k olyan szabályozást valósítanak meg, amely 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket, míg a Speech szintézis API maga valósítja meg a szabályozást, amely lehetővé teszi a maximális 200-kérelmek másodpercenkénti számát. A szabályozás során a rendszer értesítést küld az üzenetek fejlécén keresztül._
-
-## <a name="get-started-with-text-to-speech"></a>Ismerkedés a szöveg és a beszéd között
-
-Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a tábla nyelv alapján rendezett szöveg-beszéd típusú rövid útmutatók listáját tartalmazza.
-
-### <a name="sdk-quickstarts"></a>SDK-gyors útmutatók
-
-| Gyors útmutató (SDK) | Platform | API-leírások |
-| ---------------- | -------- | ------------- |
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET-keretrendszer](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C#, Egység](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Tallózás](https://aka.ms/csspeech/cppref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Tallózás](https://aka.ms/csspeech/cppref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Tallózás](https://aka.ms/csspeech/javaref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
-| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Ablak, Linux, macOS | [Tallózás](https://aka.ms/csspeech/pythonref) |
-
-### <a name="rest-quickstarts"></a>REST-útmutató
-
-| Gyors útmutató (REST) | Platform | API-leírások |
-| ----------------- | -------- | ------------- |
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Ablak, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Ablak, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-
-## <a name="sample-code"></a>Mintakód
-
-A szöveg és a beszéd mintája a GitHubon érhető el. Ezek a minták a legnépszerűbb programozási nyelvek szöveg-beszéd átalakítását fedik le.
-
-- [Szöveg – beszéd minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Szöveg – beszéd minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-
 ## <a name="reference-docs"></a>Segédanyagok
 
-- [Beszéd SDK](speech-sdk-reference.md)
-- [Beszédfelismerési eszközök SDK](speech-devices-sdk.md)
-- [REST API: beszéd – szöveg](rest-speech-to-text.md)
+- [Beszéd SDK](speech-sdk.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
-- [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes beszédfelismerési szolgáltatás előfizetésének beszerzése](get-started.md)
-- [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)
+- [A Speech SDK beszerzése](speech-sdk.md)

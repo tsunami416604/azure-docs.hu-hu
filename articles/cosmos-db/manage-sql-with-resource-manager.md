@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB létrehozása és kezelése Azure Resource Manager-sablonokkal
+title: Azure Cosmos DB létrehozása és kezelése Resource Manager-sablonokkal
 description: Azure Resource Manager-sablonok használata az SQL (Core) API-hoz való Azure Cosmos DB létrehozásához és konfigurálásához
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 62c04fed03ad2346d0f548a4a8028f2d7d6b3486
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 95301efce4b2abe143ec8c8ea5e5ccc445191d3e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850465"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643797"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Cosmos DB SQL (Core) API-erőforrások kezelése Azure Resource Manager-sablonokkal
 
@@ -204,5 +204,5 @@ Néhány további információforrás:
 
 * [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
 * [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-* [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md)

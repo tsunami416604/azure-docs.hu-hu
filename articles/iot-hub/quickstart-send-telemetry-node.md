@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 92d6af41e55429f1b788de68940bc9b033c51ad6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: e37ce216bf1928785ef9052115599bbd4ab2a603
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167034"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690849"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (node. js)
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben a rövid útmutatóban futtatott két minta alkalmazás a Node. js-ben van megírva. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges.
+Az ebben a rövid útmutatóban futtatott két minta alkalmazás a Node. js-ben van megírva. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges. Ha a Azure Cloud Shell használja, ne frissítse a Node. js telepített verzióját. A Azure Cloud Shell már rendelkezik a Node. js legújabb verziójával.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -124,7 +124,7 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 1. Nyissa meg a **ReadDeviceToCloudMessages.js** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `connectionString` változó értékét a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **ReadDeviceToCloudMessages. js**fájlba.
+    Cserélje le a `connectionString` változó értékét arra a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **ReadDeviceToCloudMessages. js**fájlba.
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás futtatásához:
 

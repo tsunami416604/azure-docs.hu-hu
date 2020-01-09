@@ -1,17 +1,17 @@
 ---
-title: Változók létrehozása és kezelése az értékek tárolásához
-description: Értékek tárolása és kezelése változók használatával Azure Logic Apps
+title: Változók létrehozása és kezelése az értékek tárolásához és átadásához
+description: Megtudhatja, hogyan tárolhatja, kezelheti, használhatja és továbbíthatja az értékeket az automatizált feladatokban és a Azure Logic Apps használatával létrehozott munkafolyamatban található változók segítségével.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456693"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és kezelése a Azure Logic Apps változók használatával
 
@@ -55,7 +55,7 @@ Létrehozhat egy változót, és deklarálhatja az adattípusát és a kezdeti �
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Művelet felvétele](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a plusz jel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
@@ -195,7 +195,7 @@ Egy változó állandó értékkel *való növeléséhez vagy* növeléséhez ad
 
    Ez a logikai alkalmazás például már rendelkezik triggerrel és egy változót létrehozó művelettel. Ezért adjon hozzá egy új műveletet a következő lépésekben:
 
-   ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
+   ![Művelet felvétele](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a kapcsolódási nyíl fölé, hogy a pluszjel (+) megjelenjen. Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 

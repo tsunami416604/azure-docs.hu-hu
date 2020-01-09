@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 52695cca2fe49829705ac2283c9f083ada8ae0b0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448614"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API a Python használatával
 
@@ -31,7 +31,7 @@ Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszol
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz, a piachoz és a keresési lekérdezésekhez. A végpontot az Azure-irányítópulton találja.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz, a piachoz és a keresési lekérdezésekhez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```python
     import http.client, urllib.parse
@@ -138,7 +138,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)

@@ -1,6 +1,5 @@
 ---
-title: Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – Node.js Express alkalmazás létrehozása
-titleSuffix: Azure Cosmos DB
+title: Node. js Express-alkalmazás létrehozása Azure Cosmos DB API-MongoDB (part2)
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 2. része.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441129"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – Node.js Express alkalmazás létrehozása
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Node. js Express-alkalmazás létrehozása
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
 
 Az oktatóanyag 2. része a [bevezető részre](tutorial-develop-mongodb-nodejs.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -103,7 +102,7 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
     * Kiszolgál mindent, ami a dist mappában található, azaz a majdani statikus tartalmat
     * Kiszolgálja az alkalmazást, és szolgáltatja az index.html fájlt minden olyan GET kéréshez, amely nem a kiszolgálón található (mélyhivatkozások esetén)
     * Elindítja a kiszolgálót az app.listen használatával
-    * Egy nyíl függvényt használja, hogy működik-e a port e bejelentkezni
+    * Egy nyíl függvény használatával naplózza, hogy a port életben van-e
     
    ```node
    const express = require('express');
@@ -167,7 +166,7 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
     ![Postman képe a kéréssel és a válasszal](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

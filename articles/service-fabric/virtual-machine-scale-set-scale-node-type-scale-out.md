@@ -1,25 +1,14 @@
 ---
-title: Csomópont-típus hozzáadása Azure Service Fabric-fürthöz | Microsoft Docs
+title: Csomópont típusának hozzáadása Azure Service Fabric-fürthöz
 description: Megtudhatja, hogyan bővítheti Service Fabric-fürtöt egy virtuálisgép-méretezési csoport hozzáadásával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: atsenthi
-ms.openlocfilehash: 1414e656a358af1e258c823cc7ec747fefa986ba
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1e7bae89561d43d717eb4d15e95183761b077443
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463972"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Service Fabric-fürt méretezése virtuálisgép-méretezési csoport hozzáadásával
 Ez a cikk azt ismerteti, hogyan méretezhető egy Azure Service Fabric-fürt, ha új csomópont-típust ad hozzá egy meglévő fürthöz. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt úgy, hogy új csomópont-típust (virtuálisgép-méretezési csoport) ad hozzá egy meglévő fürthöz.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -63,7 +52,7 @@ Emellett ezt az új csomópont-típust is hozzá kell adnia a Service Fabric fü
 <snip>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [méretezheti fel az elsődleges csomópont típusát](service-fabric-scale-up-node-type.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.

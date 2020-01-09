@@ -2,13 +2,14 @@
 title: Erőforrás rendelkezésre állása régiónként
 description: A Azure Container Instances szolgáltatás számítási és memória-erőforrásainak rendelkezésre állása különböző Azure-régiókban.
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445844"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -25,24 +26,23 @@ További információ a központi telepítések kvótái és egyéb korlátairó
 
 A következő régiók és erőforrások elérhetők a Linux és a [támogatott](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-alapú tárolók számára.
 
-| Földrajzi egység | Operációs rendszer | CPU | Memória (GB) |
+| Térségek | Operációs rendszer | Maximális CPU | Maximális memória (GB) |
 | -------- | -- | :---: | :-----------: |
-| Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, USA nyugati | Linux | 4 | 16 |
-| Nyugat-Európa, USA 2. nyugati régiója | Linux | 4 | 14 |
+| Dél-Brazília, Közép-India, Közép-Kanada, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Nyugat-Európa, USA nyugati régiója, USA 2 | Linux | 4 | 16 |
 | Kelet-Ausztrália, Kelet-Japán | Linux | 2 | 8 |
-| USA északi középső régiója, Dél-India | Linux | 2 | 3.5 |
-| Nyugat-Európa | Windows | 4 | 16 |
+| USA északi középső régiója | Linux | 2 | 3.5 |
+| Dél-Brazília, Kelet-Japán, Nyugat-Európa | Windows | 4 | 16 |
 | USA keleti régiója, USA nyugati régiója | Windows | 4 | 14 |
-| Kelet-Ausztrália, Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA 2. keleti régiója, Kelet-Japán, Észak-Európa, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, USA nyugati régiója 2 | Windows | 2 | 3.5 |
+| Kelet-Ausztrália, Közép-Kanada, Közép-India, Közép-USA, Kelet-Ázsia, USA 2. keleti régiója, északi középső régió, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, USA 2. nyugati régiója | Windows | 2 | 3.5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Rendelkezésre állás – Windows Server 2019 LTSC, 1809 központi telepítések (előzetes verzió)
 
 A következő régiók és erőforrások elérhetők a Windows Server 2019-alapú tárolókkal (előzetes verzió) rendelkező tárolók csoportjai számára.
 
-| Földrajzi egység | Operációs rendszer | CPU | Memória (GB) |
+| Térségek | Operációs rendszer | Maximális CPU | Maximális memória (GB) |
 | -------- | -- | :---: | :-----------: |
-| Délkelet-Ázsia, Észak-Európa, Nyugat-Európa, USA középső régiója, USA keleti régiója, USA nyugati régiója, USA 2. nyugati régiója | Windows | 4 | 16 |
-| USA 2. keleti régiója | Windows | 2 | 3.5 |
+| Kelet-Ausztrália, Dél-Brazília, Közép-India, Közép-Kanada, az USA Kelet-Ázsia középső régiója, az USA keleti régiója, Kelet-Japán, északi középső régió, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Nyugat-Európa | Windows | 4 | 16 |
+| USA 2. keleti régiója, USA 2. nyugati régiója | Windows | 2 | 3.5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Rendelkezésre állás – virtuális hálózat központi telepítése (előzetes verzió)

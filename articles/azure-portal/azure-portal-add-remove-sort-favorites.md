@@ -1,23 +1,23 @@
 ---
 title: Kedvencek hozzáadása, eltávolítása és rendezése Azure Portalban | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el elemeket a Kedvencek listájából, és hogyan rendezheti az elemek sorrendjét
+description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el elemeket a Kedvencek listából, és hogyan rendezheti át az elemek sorrendjét
 services: azure-portal
-keywords: Kedvencek
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: Kedvencek, portál
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579583"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640567"
 ---
-# <a name="add-remove-and-sort-favorites"></a>Kedvencek hozzáadása, eltávolítása és rendezése
+# <a name="add-remove-and-rearrange-favorites"></a>Kedvencek hozzáadása, eltávolítása és átrendezése
 
 Hozzáadhat vagy eltávolíthat elemeket a **Kedvencek** listájából, így gyorsan elérheti a leggyakrabban használt szolgáltatásokat. Már hozzáadott néhány gyakori szolgáltatást a **Kedvencek** listájához, de valószínűleg testre szeretné szabni. Ön az egyetlen, aki látja a **kedvenceken**végzett módosításokat.
 
@@ -51,7 +51,7 @@ Mostantól közvetlenül a **Kedvencek** listából is eltávolíthat egy elemet
 
 2. Az információs kártyán válassza ki a csillagot úgy, hogy az a kitöltéstől kitöltve állapotba kerüljön. A szolgáltatás el lesz távolítva a **Kedvencek** listájából.
 
-## <a name="sort-favorites"></a>Kedvencek rendezése
+## <a name="rearrange-favorites"></a>Kedvencek átrendezése
 
 Módosíthatja a kedvenc szolgáltatásainak sorrendjét. Egyszerűen húzza át a menüelemet egy másik helyre a **Kedvencek**alatt.
 
@@ -63,7 +63,7 @@ Módosíthatja a kedvenc szolgáltatásainak sorrendjét. Egyszerűen húzza át
 
 1. Miközben továbbra is tart, húzza az elemet a **Kedvencek** tetejére, majd engedje el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Project-alapú munkaterület létrehozásával kapcsolatban lásd: [irányítópultok létrehozása és megosztása a Azure Portalban](../azure-portal/azure-portal-dashboards.md)
 * További tudnivalók a [Azure Portal útmutató videós sorozatáról](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)

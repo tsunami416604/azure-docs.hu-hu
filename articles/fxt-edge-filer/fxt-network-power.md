@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge Filer hálózati kapcsolatok és energiaellátás
+title: 'Oktatóanyag: Kábelek csatlakoztatása egy Azure FXT Edge Filer-hoz'
 description: Hálózati portok csatlakoztatása és az Azure FXT Edge Filer-hardver áramellátásának csatlakoztatása
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254856"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550944"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Oktatóanyag: hálózati kapcsolatok létrehozása és áramellátás az Azure FXT Edge Filer-csomóponthoz
 

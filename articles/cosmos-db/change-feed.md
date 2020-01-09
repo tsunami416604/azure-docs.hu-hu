@@ -1,6 +1,6 @@
 ---
 title: A módosítási hírcsatorna támogatásának használata Azure Cosmos DB
-description: A dokumentumok változásainak nyomon követéséhez és az eseményvezérelt feldolgozások (például triggerek) és a gyorsítótárak és az elemzési rendszerek naprakészen tartásához használja a Azure Cosmos DB módosítási csatorna támogatását.
+description: A Azure Cosmos DB módosítás-visszavételi támogatással nyomon követheti a dokumentumok, az eseményvezérelt feldolgozás, például az eseményindítók változásait, valamint naprakészen tarthatja a gyorsítótárait és az elemzési rendszereket.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689092"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445586"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB adatcsatorna módosítása – áttekintés
 

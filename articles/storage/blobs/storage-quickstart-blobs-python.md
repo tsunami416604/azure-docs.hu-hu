@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d589215cf79154bcc8aead1d6695bd4cf870fc0a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443740"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Pythonhoz
 
@@ -99,11 +99,11 @@ A projekt könyvtárából:
 
 1. Mentse az új fájlt *blob-Quickstart-v12.py* néven a *blob-Gyorsindítás-V12* könyvtárba.
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellnek vagy definíciónak, például szöveges vagy bináris adatoknak. A blob Storage háromféle típusú erőforrást kínál:
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A blob Storage háromféle típusú erőforrást kínál:
 
 * A Storage-fiók
 * Egy tároló a Storage-fiókban
@@ -119,7 +119,7 @@ A következő Python-osztályok használata az alábbi erőforrásokkal való in
 * [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): a `ContainerClient` osztály lehetővé teszi az Azure Storage-tárolók és a Blobok kezelését.
 * [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Azure Blob Storage ügyféloldali kódtára használatával:
 
@@ -139,11 +139,11 @@ Adja hozzá ezt a kódot a `try` blokkon belül:
 ```python
 # Retrieve the connection string for use with the application. The storage
 # connection string is stored in an environment variable on the machine
-# running the application called CONNECT_STR. If the environment variable is
+# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
 # created after the application is launched in a console or with Visual Studio,
 # the shell or application needs to be closed and reloaded to take the
 # environment variable into account.
-connect_str = os.getenv('CONNECT_STR')
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
 ### <a name="create-a-container"></a>Tároló létrehozása

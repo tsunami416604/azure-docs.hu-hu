@@ -1,23 +1,24 @@
 ---
-title: A folyamat nyomon követése egy Cloud Services alkalmazásban Azure Diagnostics | Microsoft Docs
+title: A folyamat nyomon követése Cloud Services alkalmazásban Azure Diagnostics
+titleSuffix: Azure Cloud Services
 description: Nyomkövetési üzenetek hozzáadása egy Azure-alkalmazáshoz a hibakereséshez, a teljesítmény méréséhez, a figyeléshez, a forgalom elemzéséhez és egyebekhez.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: gwallace
-ms.openlocfilehash: b8d195fba934ceae98af383b96a8c0d9a9b88c5f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.author: tagore
+ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386510"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Cloud Services alkalmazás folyamatának nyomon követése Azure Diagnostics
-A nyomkövetési módszer segítségével figyelheti az alkalmazás végrehajtását a futás közben. A [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), a [System. Diagnostics. debug](/dotnet/api/system.diagnostics.debug)és a [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) osztályok segítségével rögzítheti a hibákkal és az alkalmazások végrehajtásával kapcsolatos információkat a naplókban, szövegfájlokban vagy más eszközökben a későbbiekben elemzés. További információ a nyomkövetésről: [alkalmazások nyomon követése és](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)kialakítása.
+A nyomkövetési módszer segítségével figyelheti az alkalmazás végrehajtását a futás közben. A [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), a [System. Diagnostics. debug](/dotnet/api/system.diagnostics.debug)és a [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) osztályok segítségével rögzítheti a hibákkal és az alkalmazások végrehajtásával kapcsolatos információkat a naplókban, szövegfájlokban vagy más eszközökben későbbi elemzés céljából. További információ a nyomkövetésről: [alkalmazások nyomon követése és](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)kialakítása.
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Nyomkövetési utasítások és nyomkövetési kapcsolók használata
 Hajtsa végre a nyomkövetést a Cloud Services alkalmazásban úgy, hogy hozzáadja a [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) az alkalmazás konfigurációjához, és hívásokat kezdeményez a System. Diagnostics. Trace vagy System. Diagnostics. debug fájlhoz az alkalmazás kódjában. Használja a Configuration file *app. config* fájlt a feldolgozói szerepkörökhöz és a web *. config* webes szerepkörökhöz. Amikor egy Visual Studio-sablonnal hoz létre egy új üzemeltetett szolgáltatást, a rendszer automatikusan hozzáadja Azure Diagnostics a projekthez, és a DiagnosticMonitorTraceListener hozzáadja a megfelelő konfigurációs fájlhoz a hozzáadott szerepkörökhöz.
@@ -71,4 +72,7 @@ Miután elvégezte a figyelő hozzáadásának lépéseit, nyomkövetési utasí
     ```
 3. Adja meg azokat a nyomkövetési utasításokat, amelyekben adatokat szeretne rögzíteni az alkalmazás állapotáról. A nyomkövetési utasítás kimenetének formázásához többféle módszert is használhat. További információkért lásd [: útmutató: nyomkövetési utasítások hozzáadása az alkalmazás kódjához](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 4. Mentse a forrásfájlt.
+
+
+
 

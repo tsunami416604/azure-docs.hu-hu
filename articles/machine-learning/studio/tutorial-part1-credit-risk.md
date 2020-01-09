@@ -1,7 +1,7 @@
 ---
 title: '1\. Oktatóanyag: hitelkockázat előrejelzése'
 titleSuffix: ML Studio (classic) - Azure
-description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást a Azure Machine Learning Studio klasszikus verziójában. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat első része.  Bemutatja, hogyan hozhat létre munkaterületet, tölthet fel és hozhat létre egy kísérletet.
+description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást Azure Machine Learning Studio (klasszikus). Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat első része.  Bemutatja, hogyan hozhat létre munkaterületet, tölthet fel és hozhat létre egy kísérletet.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432244"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1\. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fej
 
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz a Azure Machine Learning Studio klasszikus verzióját és egy Machine Learning webszolgáltatást kell használnia.  
+A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz Azure Machine Learning Studio (klasszikus) és egy Machine Learning webszolgáltatást fog használni.  
 
 Ebben a három részből álló oktatóanyagban nyilvánosan elérhető hitelkockázat-adatforrásokkal kezdheti meg.  Ezután fejlesztheti és betaníthatja a prediktív modellt.  Végül üzembe helyezi a modellt webszolgáltatásként.
 
@@ -95,7 +95,7 @@ Ezt követően, ha a modell a nagy kockázatnak kitetten alacsony hitelkockázat
 
 ### <a name="convert-the-dataset-format"></a>Az adatkészlet formátumának konvertálása
 
-Az eredeti adatkészlet üres, elválasztott formátumot használ. A Machine Learning Studio klasszikus verziója jobban működik a vesszővel tagolt (CSV) fájlokkal, ezért az adathalmazt vesszővel kell helyettesíteni.  
+Az eredeti adatkészlet üres, elválasztott formátumot használ. A Machine Learning Studio (klasszikus) a vesszővel tagolt (CSV) fájlokkal jobban működik, ezért az adathalmazt vesszővel kell helyettesíteni.  
 
 Az ilyen típusú adatkonvertálás számos módon lehetséges. Az egyik módszer a következő Windows PowerShell-parancs használata:   
 
@@ -109,7 +109,7 @@ Mindkét esetben létrehozta az adatok vesszővel tagolt verzióját egy **néme
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Az adatkészlet feltöltése Machine Learning Studio (klasszikus)
 
-Az adatok CSV formátumba való konvertálása után fel kell töltenie azt a Machine Learning Studio klasszikus verziójába. 
+Miután az adatok CSV formátumra lettek konvertálva, fel kell töltenie Machine Learning Studioba (klasszikus). 
 
 1. Nyissa meg a Machine Learning Studio (klasszikus) kezdőlapját ([https://studio.azureml.net](https://studio.azureml.net)). 
 
@@ -145,7 +145,7 @@ A más típusú adatok kísérletbe való importálásával kapcsolatos további
 
 ## <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Az oktatóanyag következő lépése egy kísérlet létrehozása a Machine Learning Studio klasszikus verziójában, amely a feltöltött adatkészletet használja.  
+Az oktatóanyag következő lépése egy olyan Machine Learning Studio (klasszikus) kísérlet létrehozása, amely a feltöltött adatkészletet használja.  
 
 1. A Studio (klasszikus) területen kattintson az **+ új** elemre az ablak alján.
 1. Válassza a **kísérlet**, majd az "üres kísérlet" lehetőséget. 
@@ -173,7 +173,7 @@ Az oktatóanyag következő lépése egy kísérlet létrehozása a Machine Lear
 
 Megtekintheti az adatok első 100 sorát és a teljes adathalmazra vonatkozó statisztikai adatokat: kattintson az adatkészlet kimeneti portjára (alul lévő kis kör), majd válassza a **Megjelenítés**lehetőséget.  
 
-Mivel az adatfájl nem tartalmaz oszlopfejléceket, a Studio klasszikus verziója általános fejléceket (Col1, Col2 *stb.* ) adott meg. A megfelelő fejlécek nem elengedhetetlenek a modell létrehozásához, de megkönnyítik a kísérlet során felhasználható adatfeldolgozást. Emellett, amikor végül közzéteszi ezt a modellt egy webszolgáltatásban, a fejlécek segítenek azonosítani az oszlopokat a szolgáltatás felhasználójának.  
+Mivel az adatfájl nem tartalmaz oszlopfejléceket, a Studio (klasszikus) általános fejléceket (Col1, Col2 *stb.* ) adott meg. A megfelelő fejlécek nem elengedhetetlenek a modell létrehozásához, de megkönnyítik a kísérlet során felhasználható adatfeldolgozást. Emellett, amikor végül közzéteszi ezt a modellt egy webszolgáltatásban, a fejlécek segítenek azonosítani az oszlopokat a szolgáltatás felhasználójának.  
 
 Oszlopfejlécek hozzáadásához használhatja a [metaadatok szerkesztése][edit-metadata] modult.
 
@@ -191,7 +191,7 @@ A [metaadatok szerkesztésének][edit-metadata]használatához először meg kel
 
     ![Szerkesztési metaadatok hozzáadása](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    A piros felkiáltójel azt jelzi, hogy még nem állította be a modul tulajdonságait. Ezt a következő lépéssel teheti meg.
+    A piros felkiáltójel azt jelzi, hogy még nem állította be a modul tulajdonságait. Ezt a következő lépésben teheti meg.
 
     > [!TIP]
     > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. Ebben az esetben kattintson duplán a [metaadatok szerkesztése][edit-metadata] modulra, és írja be az "oszlopfejlécek hozzáadása" megjegyzést. A szövegmező bezárásához kattintson a vászonon bárhová máshol. A Megjegyzés megjelenítéséhez kattintson a modulban a lefelé mutató nyílra.
@@ -290,7 +290,7 @@ További információ az R-szkriptek kísérletekben való használatáról: [a 
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  

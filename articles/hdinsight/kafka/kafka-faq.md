@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 057c77d4ddb4a760e196c0dc8d508efe15e6699d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69520126"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530935"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Gyakori kérdések az Azure HDInsight Apache Kafka
 
@@ -30,7 +30,7 @@ A HDInsight Kafka-fürt a következő erőforrásokat tartalmazza:
 * Zookeeper-csomópontok
 * Közvetítő (Worker) csomópontok 
 * A Broker-csomópontokhoz csatolt Azure-Managed Disks
-* Az átjárócsomópontok
+* Átjáró-csomópontok
 
 Az összes ilyen erőforrást a [HDInsight díjszabási modellje](https://azure.microsoft.com/pricing/details/hdinsight/)alapján számítjuk fel, az átjáró-csomópontok kivételével. Az átjáró-csomópontok esetében nem számítunk fel díjat.
 
@@ -38,7 +38,7 @@ A különböző csomópont-típusok részletesebb ismertetését az [Azure HDIns
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Működik Apache Kafka API-k az HDInsight-mel?
 
-Igen, a HDInsight a natív Kafka API-kat használja. Az ügyfélalkalmazás kódját nem kell módosítania. Lásd [az oktatóanyagot: A Apache Kafka producer és fogyasztói API](./apache-kafka-producer-consumer-api.md) -k segítségével megtudhatja, hogyan használhatja a Java-alapú producer/fogyasztói API-kat a fürthöz.
+Igen, a HDInsight a natív Kafka API-kat használja. Az ügyfélalkalmazás kódját nem kell módosítania. Lásd [az oktatóanyagot: a Apache Kafka producer és a fogyasztói API](./apache-kafka-producer-consumer-api.md) -k segítségével megtudhatja, hogyan használhatja a Java-alapú producer/fogyasztói API-kat a fürttel.
 
 ## <a name="can-i-change-cluster-configurations"></a>Módosíthatom a fürtkonfiguráció beállításait?
 
@@ -46,7 +46,7 @@ Igen, a Ambari-portálon keresztül. A portál minden összetevője tartalmaz eg
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>Milyen típusú hitelesítést támogat a Apache Kafka HDInsight?
 
-A [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-architecture.md)használatával megtekintheti a Kafka-fürtök témakör szintű biztonságát. Lásd [az oktatóanyagot: A HDInsight Apache Kafka szabályzatait Enterprise Security Package (előzetes verzió)](../domain-joined/apache-domain-joined-run-kafka.md)beállítással konfigurálhatja további információért.
+A [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-architecture.md)használatával megtekintheti a Kafka-fürtök témakör szintű biztonságát. További információt az [oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)](../domain-joined/apache-domain-joined-run-kafka.md)című témakörben talál.
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Titkosítva vannak az adataim? Használhatom a saját kulcsokat?
 
@@ -58,13 +58,17 @@ Ahhoz, hogy Kafka-ügyfelek kommunikáljanak a Kafka-közvetítőkkal, el kell t
 
 * Ügyfelek csatlakoztatása egy másik Azure-VNet – a fürt VNet és az ügyfél VNet és a fürt konfigurálása az [IP-hirdetésekhez](apache-kafka-connect-vpn-gateway.md#configure-kafka-for-ip-advertising). Ha IP-hirdetést használ, a Kafka-ügyfeleknek a közvetítői IP-címeit kell használniuk a brókerekkel való csatlakozáshoz, a teljes tartománynevek (FQDN) helyett.
 
-* Helyszíni ügyfelek csatlakoztatása – VPN-hálózat és egyéni DNS-kiszolgálók beállítása az [Azure HDInsight virtuális hálózatának](../hdinsight-plan-virtual-network-deployment.md)megtervezése című témakörben leírtak szerint.
+* Helyszíni ügyfelek csatlakoztatása – VPN-hálózat és egyéni DNS-kiszolgálók beállítása az [Azure HDInsight virtuális hálózatának megtervezése](../hdinsight-plan-virtual-network-deployment.md)című témakörben leírtak szerint.
 
 * Nyilvános végpont létrehozása a Kafka szolgáltatás számára – ha a vállalati biztonsági követelmények lehetővé teszik, üzembe helyezhet egy nyilvános végpontot a Kafka-közvetítők számára, vagy egy saját felügyeletű, nyílt forráskódú REST-végpontot nyilvános végponttal.
 
 ## <a name="can-i-add-more-disk-space-on-an-existing-cluster"></a>Hozzáadhatok több lemezterületet egy meglévő fürthöz?
 
 A Kafka-üzenetek számára elérhető szabad terület növeléséhez növelheti a csomópontok számát. Jelenleg nem támogatott több lemez hozzáadása egy meglévő fürthöz.
+
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Használható a Kafka-fürt a Databricks? 
+
+Igen, a Kafka-fürtök működhetnek a Databricks, feltéve, hogy ugyanabban a VNet vannak. Ha egy Kafka-fürtöt a Databricks használatával szeretne használni, hozzon létre egy VNet egy HDInsight Kafka-fürttel, majd adja meg a VNet a Databricks-munkaterület létrehozásakor és a VNet-injektálás használatakor. További információ: [Azure Databricks üzembe helyezése az Azure-Virtual Network (VNet Injection)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). A Databricks-munkaterület létrehozásakor meg kell adnia a Kafka-fürt rendszerindítási átvitelszervező-nevét. A Kafka-közvetítő nevének beolvasásával kapcsolatos információkért lásd: [az Apache Zookeeper és a Broker-gazdagép információinak](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)beolvasása.
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Hogyan használhatom a maximális adattartósságot?
 
@@ -88,9 +92,9 @@ Jelenleg nem támogatott a helyi fürt verziófrissítésének frissítése. Ha 
 
 ## <a name="how-do-i-monitor-my-kafka-cluster"></a>Hogyan figyeli a Kafka-fürtöt?
 
-Az Azure monitor használatával elemezheti a [Kafka](./apache-kafka-log-analytics-operations-management.md)-naplókat.
+Az Azure monitor használatával elemezheti a [Kafka-naplókat](./apache-kafka-log-analytics-operations-management.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az SSL (SSL) titkosítás és a hitelesítés beállítása az Azure HDInsight Apache Kafkahoz](./apache-kafka-ssl-encryption-authentication.md)
 * [A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében](./apache-kafka-mirroring.md)

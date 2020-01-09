@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842407"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561150"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -36,6 +36,9 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
    - Többtényezős hitelesítés
    - Bejelentkezési kockázat-ellenőrzési
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
+
+> [!NOTE]
+> Ha engedélyezi ezt a funkciót, az Azure-beli Windows rendszerű virtuális gépek az Azure AD-vel lesznek csatlakoztatva. Nem csatlakoztatható más tartományhoz, például a Prem AD-hez vagy az Azure AD DShoz. Ha így tesz, le kell választania a virtuális gépet az Azure AD-bérlőről a bővítmény eltávolításával.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -79,7 +82,7 @@ Windows Server 2019 Datacenter rendszerű virtuális gép létrehozása az Azure
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)egy olyan fiókkal, amely hozzáfér a virtuális gépek létrehozásához, majd válassza az **+ erőforrás létrehozása**lehetőséget.
 1. Írja be a **Windows Server** kifejezést a piactér keresési sávjában.
    1. Kattintson a **Windows Server** lehetőségre, és válassza a **Windows Server 2019 Datacenter** elemet a szoftvercsomag kiválasztása listából.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 1. A "felügyelet" lapon engedélyezze a **HRE hitelesítő adatokkal (előzetes verzió) való bejelentkezést** a Azure Active Directory szakasz alatt, a ki és **be**lehetőségnél.
 1. Győződjön **meg**arról, hogy a **rendszerhez rendelt felügyelt identitás** az identitás szakaszban be értékre van állítva. A műveletnek automatikusan kell történnie, ha engedélyezi a bejelentkezést az Azure AD-beli hitelesítő adatokkal.
 1. Ugorjon végig a virtuális gép létrehozásának további tapasztalatain. Ebben az előzetes verzióban létre kell hoznia egy rendszergazdai felhasználónevet és jelszót a virtuális géphez.
@@ -200,7 +203,7 @@ A feltételes hozzáférési szabályzatok, például a többtényezős hiteles�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 
 > [!IMPORTANT]
-> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyekhez az Azure AD-hez csatlakoztatott vagy hibrid Azure AD csatlakozik **ugyanahhoz** a címtárhoz, mint a virtuális gép. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két RBAC szerepkör egyikéhez kell tartoznia, a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési adatait.
+> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyekhez az Azure AD-hez csatlakoztatott vagy hibrid Azure AD csatlakozik **ugyanahhoz** a címtárhoz, mint a virtuális gép. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két RBAC szerepkör egyikéhez kell tartoznia, a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési adatait. Jelenleg az Azure Bastion nem használható Azure Active Directory hitelesítéssel való bejelentkezésre az AADLoginForWindows bővítménnyel. Csak a közvetlen RDP használata támogatott.
 
 Bejelentkezés a Windows Server 2019 rendszerű virtuális gépre az Azure AD használatával: 
 

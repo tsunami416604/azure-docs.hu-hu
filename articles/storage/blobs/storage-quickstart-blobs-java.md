@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 477f13f58d9b630519faa79424f22cb1bb34918c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351262"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Javához
 
@@ -48,13 +48,13 @@ Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure Bl
 
 Hozzon létre egy *blob-Gyorsindítás-V12*nevű Java-alkalmazást.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) a Maven használatával hozzon létre egy új, *blob-Gyorsindítás-V12*nevű Console-alkalmazást. Írja be az alábbi **MVN** -parancsot egyetlen sorba, és hozzon létre egy egyszerű "Helló világ!" Java-projekt. A parancs itt jelenik meg több sorban az olvashatóság érdekében.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) a Maven használatával hozzon létre egy új, *blob-Gyorsindítás-V12*nevű Console-alkalmazást. Írja be a következő **MVN** -parancsot egy egyszerű "Helló világ!" létrehozásához. Java-projekt.
 
    ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart
-                          -DartifactId=blob-quickstart-v12
-                          -DarchetypeArtifactId=maven-archetype-quickstart
-                          -DarchetypeVersion=1.4
+   mvn archetype:generate -DgroupId=com.blobs.quickstart \
+                          -DartifactId=blob-quickstart-v12 \
+                          -DarchetypeArtifactId=maven-archetype-quickstart \
+                          -DarchetypeVersion=1.4 \
                           -DinteractiveMode=false
    ```
 
@@ -148,11 +148,11 @@ public class App
 }
 ```
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellnek vagy definíciónak, például szöveges vagy bináris adatoknak. A blob Storage háromféle típusú erőforrást kínál:
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A blob Storage háromféle típusú erőforrást kínál:
 
 * A Storage-fiók
 * Egy tároló a Storage-fiókban
@@ -170,7 +170,7 @@ A következő Java-osztályok használhatók az alábbi erőforrásokkal való k
 * [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
 * [Blobelemet](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): a `BlobItem` osztály a `listBlobsFlat`hívásával visszaadott blobokat jelöli.
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket az Azure Blob Storage ügyféloldali kódtára Javához:
 
@@ -192,11 +192,11 @@ System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable
 // is created after the application is launched in a console or with
 // Visual Studio, the shell or application needs to be closed and reloaded
 // to take the environment variable into account.
-String connectStr = System.getenv("CONNECT_STR");
+String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
 ### <a name="create-a-container"></a>Tároló létrehozása

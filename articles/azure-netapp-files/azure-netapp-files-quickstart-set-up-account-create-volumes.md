@@ -1,25 +1,18 @@
 ---
-title: Gyors útmutató – Azure NetApp Files beállítása és NFS-kötet létrehozása | Microsoft Docs
+title: 'Gyors útmutató: Azure NetApp Files és NFS-kötet beállítása'
 description: Rövid útmutató – útmutatást nyújt a Azure NetApp Files gyors beállításához és kötet létrehozásához.
-services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/01/2019
-ms.author: b-juche
-ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769846"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551641"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -49,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 > A regisztrációs folyamat hosszabb időt is igénybe vehet.
 >
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 A portál használatával történő regisztráció lépéseihez nyisson meg egy Cloud Shell-munkamenetet a fent jelzett módon, és kövesse az alábbi Azure CLI-lépéseket:
 
@@ -77,7 +70,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. A Azure Portal keresési mezőjébe írja be a **Azure NetApp Files** , majd a megjelenő listából válassza a **Azure NetApp Files** lehetőséget.
 
@@ -161,7 +154,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. A Azure NetApp Files-kezelés panelen válassza ki a NetApp-fiókját (**myaccount1**).
 
@@ -224,11 +217,11 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="create-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása a Azure NetApp Fileshoz
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. A NetApp-fiók Azure NetApp Files felügyelet paneljén kattintson a **kötetek**elemre.
 
-    ![Kattintson a kötetek elemre](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
+    ![Kattintson a Kötetek elemre](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
 
 2. Kattintson a **+ Kötet hozzáadása** gombra.
 
@@ -363,7 +356,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésének művelete visszafordíthatatlan.  
 

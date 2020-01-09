@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 06/19/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448566"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hírek keresése a Bing News Search API
 
@@ -107,7 +107,7 @@ Ha a Bing meg tudja határozni a cikk kategóriáját, a cikk tartalmazza a `cat
 
 ## <a name="get-todays-top-news"></a>A mai legfontosabb hírek beszerzése
 
-A legfrissebb hírek beszerzéséhez ugyanezt az általános híreket is elküldheti az előzőekben leírtak szerint `q` , miközben a paramétert nem lehet törölni.
+A legfrissebb hírek beszerzéséhez ugyanezt az általános híreket is elküldheti az előzőekben leírtak szerint, miközben a `q` paramétert nem lehet törölni.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-A legfontosabb hírek beszerzésére adott válasz majdnem ugyanaz, mint az általános hírek beszerzése. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy a `provider` mezőt a cikk attribútumára használja.
+A legfontosabb hírek beszerzésére adott válasz majdnem ugyanaz, mint az általános hírek beszerzése. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy a `provider` mezőt használja a cikk attribútumához.
 
 ## <a name="get-news-by-category"></a>Hírek beolvasása kategóriánként
 
@@ -261,7 +261,7 @@ Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clustere
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Lapok átBing News Search eredményeinek megjelenítése](../paging-news.md)

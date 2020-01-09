@@ -1,25 +1,16 @@
 ---
-title: Biztonságos szolgáltatás C# – távelérési kommunikáció az Azure Service Fabricban | Microsoft Docs
+title: Biztonságos szolgáltatás távelérésének kommunikációja aC#
 description: Megtudhatja, hogyan védheti meg az Azure C# Service Fabric-fürtön futó megbízható szolgáltatások távelérési szolgáltatáson alapuló kommunikációját.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: c252ec31a64fa3a11973db7a8de0a440d8eed6f5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166559"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609621"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Biztonságos szolgáltatás távelérési kommunikációja C# egy szolgáltatásban
 > [!div class="op_single_selector"]
@@ -32,7 +23,7 @@ A biztonság a kommunikáció egyik legfontosabb aspektusa. A Reliable Services 
 
 Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha C# a távelérési szolgáltatást használja a szolgáltatásokkal:
 
-1. Hozzon létre egy `IHelloWorldStateful` illesztőfelületet, amely meghatározza azokat a metódusokat, amelyek elérhetők lesznek a szolgáltatás távoli eljáráshívási hívásához. A szolgáltatás a `FabricTransportServiceRemotingListener` értéket fogja használni, amely a `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` névtérben van deklarálva. Ez egy `ICommunicationListener` implementáció, amely távelérési funkciókat biztosít.
+1. Hozzon létre egy felületet, `IHelloWorldStateful`, amely meghatározza azokat a metódusokat, amelyek elérhetők lesznek a szolgáltatás távoli eljáráshívási hívásához. A szolgáltatás `FabricTransportServiceRemotingListener`fogja használni, amely a `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` névtérben van deklarálva. Ez egy `ICommunicationListener` implementáció, amely távelérési funkciókat biztosít.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -99,7 +90,7 @@ Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha C# 
        ```
    2. Adja meg őket egy [konfigurációs csomag](service-fabric-application-and-service-manifests.md)használatával:
 
-       Adja hozzá a named `TransportSettings` szakaszt a Settings. xml fájlban.
+       Vegyen fel egy nevesített `TransportSettings` szakaszt a Settings. xml fájlban.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -129,7 +120,7 @@ Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha C# 
        }
        ```
 
-        Ha a Settings. xml fájlban `TransportSettings` szakaszt ad hozzá, akkor a (`FabricTransportRemotingListenerSettings`) alapértelmezés szerint a szakasz összes beállítását betölti.
+        Ha hozzáad egy `TransportSettings` szakaszt a Settings. xml fájlban, akkor a `FabricTransportRemotingListenerSettings` alapértelmezés szerint betölti a szakasz összes beállítását.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -150,7 +141,7 @@ Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha C# 
             };
         }
         ```
-3. Ha metódusokat hív meg egy biztonságos szolgáltatásban a távelérési verem használatával, ahelyett, hogy a `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` osztályt használja a szolgáltatás-proxy létrehozásához, használja a `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory` értéket. A `FabricTransportRemotingSettings` értéket adja meg, amely a `SecurityCredentials` értéket tartalmazza.
+3. Ha metódusokat hív meg egy biztonságos szolgáltatásban a távelérési verem használatával, ahelyett, hogy a `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` osztályt használja a szolgáltatás-proxy létrehozásához, használja a `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. A `SecurityCredentials`t tartalmazó `FabricTransportRemotingSettings`továbbítása.
 
     ```csharp
 
@@ -180,7 +171,7 @@ Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha C# 
 
     ```
 
-    Ha az ügyfél kódja egy szolgáltatás részeként fut, akkor a Settings. XML fájlból betöltheti a `FabricTransportRemotingSettings` értéket. Hozzon létre egy olyan HelloWorldClientTransportSettings szakaszt, amely hasonló a szolgáltatás kódjához, ahogy az a korábban látható. Hajtsa végre a következő módosításokat az ügyfél kódjában:
+    Ha az ügyfél kódja egy szolgáltatás részeként fut, akkor a Settings. XML fájlból `FabricTransportRemotingSettings` tölthető be. Hozzon létre egy olyan HelloWorldClientTransportSettings szakaszt, amely hasonló a szolgáltatás kódjához, ahogy az a korábban látható. Hajtsa végre a következő módosításokat az ügyfél kódjában:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -195,7 +186,7 @@ Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha C# 
 
     Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy client_name. Settings. xml fájlt ugyanazon a helyen, ahol a client_name. exe fájl található. Ezután hozzon létre egy TransportSettings szakaszt a fájlban.
 
-    A szolgáltatáshoz hasonlóan, ha hozzáad egy `TransportSettings` szakaszt az ügyfélbeállítások. XML/client_name. Settings. xml fájlban, a `FabricTransportRemotingSettings` alapértelmezés szerint betölti a szakasz összes beállítását.
+    A szolgáltatáshoz hasonlóan, ha hozzáad egy `TransportSettings` szakaszt az Client Settings. XML/client_name. Settings. xml fájlban, akkor a `FabricTransportRemotingSettings` alapértelmezés szerint betölti a szakasz összes beállítását.
 
     Ebben az esetben a korábbi kód még egyszerűbbé válik:  
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2430b5135a5d3f7ad1f9ef0bd17d9149bf48ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793450"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690782"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -61,8 +61,8 @@ Az SQL VM erőforrás-szolgáltató használatának előnyeiről a [channel9](ht
 
 A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a következőkre lesz szüksége: 
 
-- Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- A nyilvános felhőbe üzembe helyezett Azure-beli erőforrás-modell [SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md) . 
+- [Azure-előfizetés](https://azure.microsoft.com/free/).
+- A nyilvános vagy Azure Government felhőben üzembe helyezett Azure-beli erőforrás-modell [SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md) . 
 - Az [Azure CLI](/cli/azure/install-azure-cli) vagy a [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 
 ## <a name="management-modes"></a>Felügyeleti módok
@@ -91,7 +91,7 @@ A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinth
 
 A SQL Server VM az SQL VM erőforrás-szolgáltatóval való regisztrálásához először regisztrálnia kell az előfizetést az erőforrás-szolgáltatóval. Ezzel az SQL VM erőforrás-szolgáltató lehetővé teszi, hogy erőforrásokat hozzon létre az előfizetésében.  Ezt a Azure Portal, az Azure CLI vagy a PowerShell használatával teheti meg.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. Nyissa meg a Azure Portalt, és válassza a **minden szolgáltatás**lehetőséget. 
 1. Lépjen az **előfizetések** elemre, és válassza ki a kamat előfizetését.  
@@ -221,7 +221,7 @@ A SQL Server IaaS-ügynök aktuális módja a PowerShell használatával tekinth
 Az ügynök üzemmódjának teljes frissítése: 
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Nyissa meg az SQL-alapú [virtuális gépek](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) erőforrását. 
@@ -263,7 +263,7 @@ Futtassa a következő PowerShell-kódrészletet:
 ## <a name="verify-registration-status"></a>Regisztrációs állapot ellenőrzése
 A Azure Portal, az Azure CLI vagy a PowerShell használatával ellenőrizheti, hogy a SQL Server VM már regisztrálva van-e az SQL VM erőforrás-szolgáltatóban. 
 
-### <a name="azure-portal"></a>Azure Portal 
+### <a name="azure-portal"></a>Azure portál 
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 1. Lépjen a [SQL Server virtuális gépekre](virtual-machines-windows-sql-manage-portal.md).
@@ -286,8 +286,7 @@ Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az az CLI vag
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
-  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
-  -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
+  Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
   ```
 
 ---
@@ -301,7 +300,7 @@ Ha meg szeretné szüntetni a SQL Server VM regisztrációját az SQL VM erőfor
 
 Az SQL virtuális gép SQL VM erőforrás-szolgáltatóval való regisztrációjának törlése szükséges a felügyeleti mód teljes körű visszalépéséhez. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 A SQL Server VM az erőforrás-szolgáltatóval való regisztrációjának megszüntetéséhez a Azure Portal használatával hajtsa végre az alábbi lépéseket:
 
@@ -349,7 +348,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 Az SQL VM erőforrás-szolgáltató csak a következőket támogatja:
 - SQL Server a Azure Resource Manager üzembe helyezett virtuális gépeket. SQL Server a klasszikus modellen keresztül üzembe helyezett virtuális gépek nem támogatottak. 
-- SQL Server a nyilvános felhőbe telepített virtuális gépeket. A privát vagy kormányzati felhőbe való központi telepítések nem támogatottak. 
+- SQL Server a nyilvános vagy Azure Government felhőbe telepített virtuális gépeket. A többi magán-vagy kormányzati felhőbe való üzembe helyezés nem támogatott. 
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések 

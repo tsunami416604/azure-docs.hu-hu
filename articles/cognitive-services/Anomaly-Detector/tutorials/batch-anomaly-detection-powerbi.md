@@ -1,23 +1,23 @@
 ---
-title: Anomáliák vizualizálása kötegelt észlelés és a Power BI használatával
+title: 'Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával'
 titleSuffix: Azure Cognitive Services
-description: Az anomáliák Kiderítő API-val és a Power BI az idősorozat-adatain belüli rendellenességek megjelenítésére használható.
+description: Megtudhatja, hogyan használhatja az anomália-Kiderítő API-t és a Power BI az idősorozat-adatvesztések megjelenítéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448852"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: Anomáliák vizualizálása kötegelt észlelés és a Power BI használatával
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
 Ez az oktatóanyag egy idősorozat-adatkészletben lévő anomáliák megkeresésére használható kötegként. A Power BI Desktop használatával egy Excel-fájlt fog készíteni, előkészíti az adatvesztési detektor API-ját, és megjeleníti a statisztikai rendellenességeket az egészben.
 
@@ -52,7 +52,7 @@ A párbeszédpanel megjelenése után Navigáljon arra a mappára, ahová letöl
 
 ![A "navigátor" adatforrás képe Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI a rendszer az első oszlopban lévő időbélyegeket `Date/Time` adattípusra konvertálja. Ezeket az időbélyegeket szöveggé kell alakítani, hogy el lehessen elküldeni az anomália-detektor API-nak. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a kezdőlapon a **lekérdezések szerkesztése** elemre. 
+A Power BI az első oszlop időbélyegeit `Date/Time` adattípusra konvertálja. Ezeket az időbélyegeket szöveggé kell alakítani, hogy el lehessen elküldeni az anomália-detektor API-nak. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a kezdőlapon a **lekérdezések szerkesztése** elemre. 
 
 Kattintson az **átalakítás** menüszalagra a Power Query-szerkesztőben. A **bármely oszlop** csoportban nyissa meg az **adattípus:** legördülő menüt, és válassza a **text (szöveg**) lehetőséget.
 
@@ -68,7 +68,7 @@ Győződjön meg arról, hogy az új lekérdezés van kiválasztva, majd kattint
 
 ![A "Speciális szerkesztő" gomb képe a Power BI](../media/tutorials/advanced-editor-screen.png)
 
-A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bontsa ki az oszlopokat a táblából, és küldje el az API-nak. Ezt követően a lekérdezés létrehoz egy táblát a JSON-válaszból, és visszaküldi azt. Cserélje le a `apiKey` változót az érvényes anomália-érzékelő API-kulcsára, és `endpoint` a végponttal. Miután megadta a lekérdezést a Speciális szerkesztőban, kattintson a **kész**gombra.
+A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bontsa ki az oszlopokat a táblából, és küldje el az API-nak. Ezt követően a lekérdezés létrehoz egy táblát a JSON-válaszból, és visszaküldi azt. Cserélje le az `apiKey` változót az érvényes anomália-érzékelő API-kulcsára, és `endpoint` a végponttal. Miután megadta a lekérdezést a Speciális szerkesztőban, kattintson a **kész**gombra.
 
 ```M
 (table as table) => let
@@ -112,7 +112,7 @@ A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bo
  in results
 ```
 
-Hívja meg a lekérdezést az adatlapon úgy, hogy kijelöli a `Sheet1` értéket az **ENTER paraméternél**, majd kattintson a **meghívás**gombra. 
+Hívja meg a lekérdezést az adatlapon úgy, hogy kiválasztja `Sheet1` az **ENTER paramétert**, majd kattintson a **meghívás**gombra. 
 
 ![A "Speciális szerkesztő" gomb képe](../media/tutorials/invoke-function-screenshot.png)
 
@@ -143,7 +143,7 @@ A fő Power BI képernyőn kezdje el használni a fent létrehozott lekérdezés
 
 Adja hozzá a következő mezőket a **meghívott függvényből** a diagram **értékek** mezőjébe. A diagram létrehozásához használja az alábbi képernyőképet.
 
-    * Value
+    * Value (Díj)
     * UpperMargins
     * LowerMargins
     * ExpectedValues
@@ -160,7 +160,7 @@ A Power BI ablak jobb oldalán, a **mezők** ablaktábla alatt kattintson a jobb
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure.png)
 
-A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetőséget. **Alapértékének** beállítása a következőre: `Sum of Value`. Ezután húzza a `IsAnomaly` értéket a **meghívott függvény** mezőiből a **szűréshez**. Válassza a `True` elemet a **szűrő** legördülő menüből.
+A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetőséget. Adja meg az **alapértéket** `Sum of Value`. Ezután húzza `IsAnomaly` a **meghívott függvény** mezőiből a **szűréshez**. Válassza a `True` lehetőséget a **szűrő** legördülő menüből.
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure-2.png)
 
@@ -172,7 +172,7 @@ Színeket alkalmazhat a diagramra úgy, hogy a **Formátum** eszközre és az **
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/final-chart.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Adatfolyam-rendellenességek észlelése Azure Databricks](anomaly-detection-streaming-databricks.md)

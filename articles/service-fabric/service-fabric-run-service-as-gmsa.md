@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-szolgáltatás futtatása gMSA-fiókkal | Microsoft Docs
+title: Azure Service Fabric-szolgáltatás futtatása gMSA-fiókkal
 description: Megtudhatja, hogyan futtathat szolgáltatást gMSA egy Service Fabric Windows önálló fürtön.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: d00eceffebb222196191a389058c0feb496e169a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464257"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
 Egy Windows Server önálló fürtön futtathatja a szolgáltatást egy csoportosan felügyelt szolgáltatásfiók (gMSA) használatával futtató házirenddel.  Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. Az alkalmazások különböző fiókokban való futtatása, még egy megosztott környezetben is, biztonságosabbá teszi őket egymástól. Vegye figyelembe, hogy ez Active Directory a helyi tartományon belül, és nem Azure Active Directory (Azure AD). GMSA használatával nincs jelszó vagy titkosított jelszó az alkalmazás jegyzékfájljában.  A szolgáltatásokat [Active Directory felhasználóként vagy csoportként](service-fabric-run-service-as-ad-user-or-group.md)is futtathatja.
@@ -30,7 +21,7 @@ Előfeltételek:
 - A tartománynak szüksége van egy KDS-gyökér kulcsra.
 - A tartományban legalább egy Windows Server 2012 (vagy R2) tartományvezérlőnek kell lennie.
 
-1. Rendelkezzen egy Active Directory tartományi rendszergazdával, és hozzon létre egy csoportosan felügyelt szolgáltatásfiókot `New-ADServiceAccount` a `PrincipalsAllowedToRetrieveManagedPassword` parancsmagot, és győződjön meg arról, hogy az tartalmazza az összes Service Fabric-fürtcsomópont csomópontot. `AccountName`, `DnsHostName` és`ServicePrincipalName` egyedinek kell lennie.
+1. Active Directory tartományi rendszergazdával hozzon létre egy csoportosan felügyelt szolgáltatásfiókot a `New-ADServiceAccount` parancsmagot, és győződjön meg arról, hogy a `PrincipalsAllowedToRetrieveManagedPassword` tartalmazza az összes Service Fabric-fürtcsomópont csomópontot. a `AccountName`nak, `DnsHostName`nak és `ServicePrincipalName`nak egyedinek kell lennie.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$

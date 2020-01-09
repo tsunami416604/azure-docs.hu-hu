@@ -2,17 +2,17 @@
 title: Rövid útmutató – privát végpontok kezelése az Azure-ban
 description: Ismerje meg, hogyan hozhat létre privát végpontot a rövid útmutató Azure Portal használatával
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459934"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rövid útmutató: privát végpont létrehozása Azure Portal használatával
 
@@ -20,9 +20,6 @@ A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehe
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-
-> [!NOTE]
-> A magánhálózati végpont (ok) nem engedélyezett ugyanazon alhálózaton lévő szolgáltatási végpontokkal együtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

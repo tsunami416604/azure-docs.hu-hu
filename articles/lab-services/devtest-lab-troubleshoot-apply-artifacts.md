@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807887"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456987"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Az összetevők Azure DevTest Labs virtuális gépen való alkalmazásával kapcsolatos hibák elhárítása
 Az összetevők virtuális gépen való alkalmazása különböző okok miatt sikertelen lehet. Ez a cikk néhány, a lehetséges okok azonosítását megkönnyítő módszert ismertet.
@@ -69,7 +69,7 @@ Ha egy összetevő úgy tűnik, hogy lefagy, először határozza meg, hogy hol 
 - **Az összetevő futtatására tett kísérlet során**. Hálózati vagy tárolási problémákhoz vezethet. A részletekért tekintse meg a jelen cikk későbbi részében található megfelelő szakaszt. A szkript létrehozási módja miatt is előfordulhat. Példa:
     - Egy PowerShell-parancsfájl **kötelező paraméterekkel**rendelkezik, de az egyik nem tud értéket adni neki, mert lehetővé teszi, hogy a felhasználó üresen hagyja, vagy mert nem rendelkezik alapértelmezett értékkel a tulajdonsághoz az artifactfile. JSON definíciós fájlban. A szkript lefagy, mert a felhasználói bevitelre vár.
     - A PowerShell-parancsfájlok végrehajtásának részeként **felhasználói bevitelre van szükség** . A parancsfájlokat úgy kell írni, hogy a beavatkozás nélkül is csendesen működjenek.
-- **A virtuálisgép-ügynök hosszú ideig tart, hogy készen**álljon. A virtuális gép első indításakor, vagy ha az egyéni parancsfájl-bővítményt először telepíti az összetevők alkalmazására irányuló kérelem kiszolgálására, akkor a virtuális gépnek frissítenie kell a virtuálisgép-ügynököt, vagy várnia kell a virtuálisgép-ügynök inicializálására. Lehetnek olyan szolgáltatások, amelyeken a virtuálisgép-ügynök attól függ, hogy a rendszer mennyi időt vesz igénybe az inicializáláskor. Ilyen esetekben az [Azure Virtual Machine Agent áttekintése](/virtual-machines/extensions/agent-windows.md) című témakörben talál további hibaelhárítást.
+- **A virtuálisgép-ügynök hosszú ideig tart, hogy készen**álljon. A virtuális gép első indításakor, vagy ha az egyéni parancsfájl-bővítményt először telepíti az összetevők alkalmazására irányuló kérelem kiszolgálására, akkor a virtuális gépnek frissítenie kell a virtuálisgép-ügynököt, vagy várnia kell a virtuálisgép-ügynök inicializálására. Lehetnek olyan szolgáltatások, amelyeken a virtuálisgép-ügynök attól függ, hogy a rendszer mennyi időt vesz igénybe az inicializáláskor. Ilyen esetekben az [Azure Virtual Machine Agent áttekintése](../virtual-machines/extensions/agent-windows.md) című témakörben talál további hibaelhárítást.
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Annak ellenőrzése, hogy az összetevő megjelenik-e a parancsfájl miatt
 
@@ -101,7 +101,7 @@ Ha egy összetevő úgy tűnik, hogy lefagy, először határozza meg, hogy hol 
     Ebben a példában láthatja, hogy a virtuálisgép-ügynök indítási ideje 10 perc és 20 másodperc volt, mivel a szívverés elküldése megtörtént. Ebben az esetben az OOBE szolgáltatás hosszú időt vesz igénybe.
 
 > [!TIP]
-> Az Azure-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuálisgép-bővítmények és-funkciók](/virtual-machines/extensions/overview.md).
+> Az Azure-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuálisgép-bővítmények és-funkciók](../virtual-machines/extensions/overview.md).
 
 ## <a name="storage-errors"></a>Tárolási hibák
 A DevTest Labs-nek hozzáférést kell adni a labor Storage-fiókjához, amely az összetevők gyorsítótárazására lett létrehozva. Ha a DevTest Labs egy összetevőt alkalmaz, a rendszer beolvassa az összetevő-konfigurációt és a hozzá tartozó fájlokat a konfigurált adattárakból. Alapértelmezés szerint a DevTest Labs konfigurálja a **nyilvános**összetevő-tárházhoz való hozzáférést.

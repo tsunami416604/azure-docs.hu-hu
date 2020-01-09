@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706123"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561626"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -48,7 +48,7 @@ A függvény láncolása mintában a függvények sorrendje egy adott sorrendben
 
 Az alábbi példában látható módon az Durable Functions használatával végezheti el a függvény láncolási mintájának tömör megvalósítását.
 
-Ebben a példában a `F1`, `F2`, `F3`és `F4` értékek a Function alkalmazás más funkcióinak nevei. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A `try`/`catch`/`finally` blokkokban a hibák kezelésére szolgáló logika is felhasználható.
+Ebben a példában a `F1`, `F2`, `F3`és `F4` értékek az azonos Function alkalmazásban található egyéb függvények nevei. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A `try`/`catch`/`finally` blokkokban a hibák kezelésére szolgáló logika is felhasználható.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ Egy külső ügyfél a [beépített http API](durable-functions-http-api.md#rais
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Egy esemény is kiemelhető a tartós előkészítési ügyféllel egy másik függvényből:
+Egy esemény is kiemelhető a tartós összehangoló ügyféllel egy másik függvényből ugyanabban a Function alkalmazásban:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -518,7 +518,7 @@ A következő, a nyelvfüggő gyors útmutatók egyikének elvégzésével megke
 
 Mindkét rövid útmutatóban helyileg létrehozhatja és tesztelheti a "Hello World" tartós funkciót. Ezután közzéteheti a függvénykódot az Azure-ban. Az Ön által létrehozott függvény összehangolja és láncokba rendezi a más függvények hívásait.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>További információk
 
 Az alábbi videó a Durable Functions előnyeit mutatja be:
 

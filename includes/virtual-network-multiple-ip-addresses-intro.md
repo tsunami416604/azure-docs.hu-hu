@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 0c3bc3f2995131c7777bfc48269a17fceda33192
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179043"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646388"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
@@ -29,4 +29,4 @@ Egy Azure virtuális géphez (VM) egy vagy több hálózati adapter (NIC) van cs
 
 A virtuális géphez csatolt minden hálózati adapter egy vagy több hozzárendelt IP-konfigurációval rendelkezik. Az egyes konfigurációkhoz egy statikus vagy dinamikus magánhálózati IP-cím van hozzárendelve. Az egyes konfigurációkhoz egy nyilvános IP-cím erőforrás is hozzárendelhető. Egy nyilvános IP-cím erőforráshoz egy dinamikus vagy statikus nyilvános IP-cím van hozzárendelve. Ha többet szeretne megtudni az Azure-ban használt IP-címekről, olvassa el az [IP-címek az Azure-ban](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) című cikket. 
 
-Van korlát hány magánhálózati IP-címek rendelhetők egy hálózati adapterhez. Azure-előfizetésben használható hány nyilvános IP-címek korlátozva is van. A részletekért tekintse meg az [Azure korlátairól](../articles/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szóló cikket.
+A hálózati adapterekhez legfeljebb egy magánhálózati IP-cím rendelhető. Az Azure-előfizetésekben használható nyilvános IP-címek száma is korlátozott. A részletekért tekintse meg az [Azure korlátairól](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szóló cikket.

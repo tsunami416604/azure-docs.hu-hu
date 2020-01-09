@@ -1,18 +1,14 @@
 ---
 title: A tárolók Azure Monitorának engedélyezése | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 43016cfb72b90a74ce1313ad2d2316228d743f5f
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fce2699c18f0fe426b85c165656100c097e69598
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404322"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor engedélyezése tárolók számára
 
@@ -34,7 +30,7 @@ A tárolók Azure Monitor a következő támogatott módszerek használatával e
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
 
 - **Log Analytics munkaterület.**
 
@@ -68,7 +64,7 @@ A következő táblázatban található információk a tároló-ügynök által
 | *.blob.core.windows.net | 443 |
 | dc.services.visualstudio.com | 443 |
 | *.microsoftonline.com | 443 |
-| *.monitoring.azure.com | 443 |
+| *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
 Az alábbi táblázatban található információk az Azure China proxy-és tűzfal-konfigurációs információit ismertetik.
@@ -78,32 +74,32 @@ Az alábbi táblázatban található információk az Azure China proxy-és tűz
 | *. ods.opinsights.azure.cn | 443 | Adatfeldolgozás |
 | *. oms.opinsights.azure.cn | 443 | OMS bevezetése |
 | *.blob.core.windows.net | 443 | A kimenő kapcsolatok figyelésére szolgál. |
-| Microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
+| microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
 | dc.services.visualstudio.com | 443 | Az Azure Public Cloud Application Insightst használó ügynök telemetria. |
 
 Az alábbi táblázatban található információk az Azure US government proxy-és tűzfal-konfigurációs információit ismertetik.
 
 |Ügynök erőforrása|Portok |Leírás | 
 |--------------|------|-------------|
-| *.ods.opinsights.azure.us | 443 | Adatfeldolgozás |
-| *.oms.opinsights.azure.us | 443 | OMS bevezetése |
+| *. ods.opinsights.azure.us | 443 | Adatfeldolgozás |
+| *. oms.opinsights.azure.us | 443 | OMS bevezetése |
 | *.blob.core.windows.net | 443 | A kimenő kapcsolatok figyelésére szolgál. |
-| Microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
+| microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
 | dc.services.visualstudio.com | 443 | Az Azure Public Cloud Application Insightst használó ügynök telemetria. |
 
 ## <a name="components"></a>Összetevők
 
-A teljesítmény figyelésének lehetősége a tárolók számára kifejezetten a Azure Monitor a tárolók számára kifejlesztett, Log Analytics ügynökön alapul. A speciális ügynök teljesítmény- és esemény-adatokat gyűjt a fürt összes csomópontján, és az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület az üzembe helyezés során. Az ügynök verziója Microsoft/OMS: ciprod04202018 vagy újabb, és a következő formátumban egy dátum jelöli: *mmddyyyy*.
+A teljesítmény figyelésének lehetősége a tárolók számára kifejezetten a Azure Monitor a tárolók számára kifejlesztett, Log Analytics ügynökön alapul. Ez a speciális ügynök a fürt összes csomópontjának teljesítményét és eseményeit gyűjti, és az üzembe helyezés során a rendszer automatikusan telepíti és regisztrálja a megadott Log Analytics munkaterületet. Az ügynök verziója Microsoft/OMS: ciprod04202018 vagy újabb, és a következő formátumban egy dátum jelöli: *mmddyyyy*.
 
 >[!NOTE]
 >Az AK-hoz készült Windows Server-támogatás előzetes kiadásában a Windows Server-csomópontokkal rendelkező AK-fürthöz nincs telepítve ügynök az adatok összegyűjtésére és a Azure Monitor való továbbítására. Ehelyett a normál telepítés részeként automatikusan a fürtben üzembe helyezett Linux-csomópont gyűjti és továbbítja az adatokat Azure Monitor a fürt összes Windows-csomópontjának nevében.  
 >
 
-Az ügynök új verziójának kiadásakor, a rendszer automatikusan frissíti a felügyelt Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes fürtökön. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.
+Az ügynök új verziójának felszabadításakor a rendszer automatikusan frissíti az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.
 
 >[!NOTE]
->Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. A `kubectl` nem használható az ügynök frissítésére, törlésére, ismételt telepítésére vagy üzembe helyezésére.
->A sablonhoz telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel.
+>Ha már telepített egy AK-fürtöt, akkor az Azure CLI vagy egy megadott Azure Resource Manager sablon használatával engedélyezheti a figyelést, ahogyan azt a jelen cikk későbbi részében is mutatja. A `kubectl` nem használható az ügynök frissítésére, törlésére, ismételt telepítésére vagy üzembe helyezésére.
+>A sablont a fürttel azonos erőforráscsoporthoz kell telepíteni.
 
 A tárolók Azure Monitor a következő táblázatban leírt módszerek egyikével engedélyezheti.
 

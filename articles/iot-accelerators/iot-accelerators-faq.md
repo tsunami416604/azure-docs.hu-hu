@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826254"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647713"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakori kérdések a IoT-megoldási gyorssegédekről
 
@@ -23,10 +23,10 @@ Lásd még: a [csatlakoztatott gyárra vonatkozó gyakori kérdések](iot-accele
 
 A forráskód a következő GitHub-adattárakban tárolódik:
 
-* [A távoli monitorozási megoldásgyorsító (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [A távoli monitorozási megoldásgyorsító (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Prediktív karbantartás megoldásgyorsító](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [A csatlakoztatottgyár-alapú megoldásgyorsító](https://github.com/Azure/azure-iot-connected-factory)
+* [Távoli figyelési megoldás gyorsítása (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Távoli figyelési megoldás gyorsítása (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Prediktív karbantartási megoldás gyorsítása](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Csatlakoztatott gyári megoldás gyorsítása](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Mely SDK-kat használhatom megoldásgyorsítókhoz való eszközkliensek fejlesztésére?
 
@@ -82,7 +82,7 @@ Igen. A ma már meglévő megoldások továbbra is működnek az Azure-előfizet
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hány IoT Hub-példányt tudok kiépíteni egy előfizetésben?
 
-Alapértelmezés szerint [előfizetéssel 10 IoT hub-t](../azure-subscription-service-limits.md#iot-hub-limits)lehet kiépíteni. A korlát növeléséhez létrehozhat egy [Azure-támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . Ennek eredményeképpen, mivel minden megoldás-gyorsító új IoT Hub hoz létre, egy adott előfizetésben legfeljebb 10 megoldási gyorssegédet tud kiépíteni.
+Alapértelmezés szerint [előfizetéssel 10 IoT hub-t](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits)lehet kiépíteni. A korlát növeléséhez létrehozhat egy [Azure-támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . Ennek eredményeképpen, mivel minden megoldás-gyorsító új IoT Hub hoz létre, egy adott előfizetésben legfeljebb 10 megoldási gyorssegédet tud kiépíteni.
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Hány Azure Cosmos DB-példányt tudok kiépíteni egy előfizetésben?
 
@@ -103,7 +103,7 @@ Jelenleg nem hozható létre megoldás-gyorsító [Microsoft Azure a DreamSpark]
 
 Az [Azure ad-bérlő törlésével](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)kapcsolatban lásd: Eric golpe 's blog post (útmutató).
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 

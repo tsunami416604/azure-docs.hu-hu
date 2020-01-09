@@ -1,32 +1,24 @@
 ---
-title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool kiadás 7/2/2019 – Azure
 description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: jegeib
-ms.openlocfilehash: 44fd84af629fadfc96d738e81f2568359ee19d66
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d26ff015156f5d050a74733ff82c811ff5f1700a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219850"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548772"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool Update kiadás 7.1.60702.1-7/2/2019
 
 A Microsoft Threat Modeling Tool (TMT) 7.1.60702.1 verziójának kiadása 2 2019 júliusában történt, és a következő módosításokat tartalmazza:
 
-- A kisegítő lehetőségek fejlesztése
+- Javított kisegítő lehetőségek
 - Hibajavítások
 - Egy nyílt forráskódú közösség által megadott rajzsablon felvételének beállítása
 
@@ -51,6 +43,6 @@ A nyílt forráskódú közösség hozzájárult az orvostechnikai eszközök mo
 
 - A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

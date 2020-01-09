@@ -1,6 +1,6 @@
 ---
-title: Exportálja vagy törlése az Azure portál beállításai |} A Microsoft Docs
-description: Ismerje meg, hogyan exportálhatja, vagy törölje a felhasználói beállításokat, a privát irányítópultok és az egyéni beállítások az Azure Portalon.
+title: Azure Portal Beállítások exportálása vagy törlése | Microsoft Docs
+description: Megtudhatja, hogyan exportálhatja vagy törölheti a felhasználói beállításokat, a saját irányítópultokat és az egyéni beállításokat a Azure Portal.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.author: kfollis
-ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551667"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640176"
 ---
 # <a name="export-or-delete-user-settings"></a>Felhasználói beállítások exportálása vagy törlése
 
-Használhatja beállításainak és funkcióinak az Azure Portalon egyéni környezetet biztosít. Az egyéni beállításokkal kapcsolatos információkat az Azure-ban tárolt. Exportálja, vagy törölje a következő felhasználói adatokat:
+Egyéni felhasználói élmény létrehozásához használhatja a Azure Portal beállításait és funkcióit. Az egyéni beállításokkal kapcsolatos információkat az Azure tárolja. A következő felhasználói adatértékeket exportálhatja vagy törölheti:
 
-* Személyes irányítópultok az Azure Portalon
-* Felhasználói beállítások, például kedvenc előfizetéseket vagy címtárakat és utoljára bejelentkezett directory
-* Témák és az egyéb egyéni portál beállításai
+* Privát irányítópultok a Azure Portal
+* Felhasználói beállítások, például kedvenc előfizetések vagy címtárak, valamint az utolsó bejelentkezett címtár
+* Témák és egyéb egyéni portál beállítások
 
-Célszerű exportálhatja, és tekintse át a beállításokat, mielőtt törölné ezeket. Az irányítópultok újraépítése, vagy egyéni beállítások megismétlése időigényes lehet.
+A törlés előtt érdemes exportálni és áttekinteni a beállításait. Az irányítópultok újraépítése vagy az egyéni beállítások elvégzése időigényes lehet.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="export-or-delete-your-portal-settings"></a>Exportálja, vagy törölje a portál beállításait
+## <a name="export-or-delete-your-portal-settings"></a>A portál beállításainak exportálása vagy törlése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A portál a fejlécben, válassza ki a **beállítások**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. A portál fejlécében válassza a **Beállítások**lehetőséget.
 
-    ![A beállítások fogaskerék bemutató képernyőkép](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+    ![A portál beállítási fogaskerékét bemutató képernyőkép](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
 
-3. Válassza ki **az összes beállítás exportálása** vagy **törli az összes beállítás és saját irányítópult**.
+3. Válassza **az összes beállítás exportálása** vagy **az összes beállítás és privát irányítópultok törlése**lehetőséget.
 
-    ![Képernyőkép a portal exportálása és beállítások törlése](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![A portál exportálási és törlési beállításait bemutató képernyőkép](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
 
       A következő táblázat ismerteti ezeket a műveleteket.
 
       | Műveletek | Leírás |
       | --- | --- |
-      | **Az összes beállítás exportálása** | Létrehoz egy .JSON kiterjesztésű fájlt, amely tartalmazza a felhasználói beállítások, például a színtémát, a Kedvencek és a privát irányítópultok.|
-      | **Az összes beállítás és saját irányítópult törlése** | Személyes irányítópultok és egyéb egyéni beállítások a portálon végrehajtott mutató összes hivatkozást törli. |
+      | **Az összes beállítás exportálása** | Létrehoz egy. JSON fájlt, amely tartalmazza a felhasználói beállításokat, például a színes témát, a kedvenceket és a privát irányítópultokat.|
+      | **Az összes beállítás és a privát irányítópultok törlése** | Törli a privát irányítópultokra és a portálon végzett egyéb egyéni beállításokra mutató hivatkozásokat. |
 
 > [!NOTE]
-> Felhasználói beállítások dinamikus jellegét és az adatsérülés kockázatának miatt beállításokat nem lehet importálni a a .JSON kiterjesztésű fájlt.
+> A felhasználói beállítások dinamikus jellege és az adatsérülés kockázata miatt nem importálhatja a beállításokat a. JSON fájlból.
 >
 >
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-irányítópultok létrehozása és megosztása](azure-portal-dashboard-share-access.md)
-* [Hozzáadása, eltávolítása és rendezése a Kedvencek](azure-portal-add-remove-sort-favorites.md)
+* [Kedvencek hozzáadása, eltávolítása és rendezése](azure-portal-add-remove-sort-favorites.md)

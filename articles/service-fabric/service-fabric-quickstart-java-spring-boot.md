@@ -1,28 +1,19 @@
 ---
 title: 'Gyors útmutató: Spring boot-alkalmazás létrehozása az Azure Service Fabric'
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet Spring Boot-alkalmazást telepíteni az Azure Service Fabricre egy Spring Boot-mintaalkalmazás használatával.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464380"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure Service Fabric
+# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure-ban Service Fabric
 
 Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Java Spring boot-alkalmazást az Azure Service Fabricban. Az Azure Service Fabric egy elosztott rendszerplatform, amely mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
@@ -39,7 +30,7 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 1. A Service Fabric SDK és a Service Fabric parancssori felület (CLI) telepítése
 
@@ -90,7 +81,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. Adja hozzá a végpontok erőforrást a *GS-Spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml fájlban.*
+1. Adja hozzá a **végpontok** erőforrást a *GS-Spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest. xml fájlban.*
 
     ```xml 
         <Resources>
@@ -161,7 +152,7 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     ./install.sh
     ```
 
-1. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást az alkalmazáshoz `http://localhost:8080`való hozzáféréssel.
+1. Nyissa meg a kedvenc webböngészőjét, és a `http://localhost:8080`elérésével férhet hozzá az alkalmazáshoz.
 
     ![Spring boot Service Fabric minta](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
@@ -214,7 +205,7 @@ A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorer
 
     ![Service Fabric Explorer a csomópont újraindítása sikerült](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

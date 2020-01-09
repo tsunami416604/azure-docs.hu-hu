@@ -1,26 +1,15 @@
 ---
-title: Service Fabric-fürt skálázása az Azure-ban | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan méretezheti Service Fabric-fürtöt az Azure-ban.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Service Fabric-fürt méretezése az Azure-ban
+description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Service Fabric-fürt az Azure-ban és a-ben, és hogyan tisztítható fel a megmaradt erőforrások.
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177744"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639054"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
@@ -66,8 +55,8 @@ Egy Azure-fürt skálázásakor tartsa szem előtt a következő irányelveket:
 
 * Egyetlen Service Fabric csomópont típusa/méretezési csoport legfeljebb 100 csomópontot/virtuális gépet tartalmazhat.  A fürt 100 csomóponton túli méretezéséhez adjon hozzá további csomópont-típusokat.
 * Az éles munkaterheléseket futtató elsődleges csomópontok esetében az arany vagy ezüst [tartóssági szintnek][durability] kell lennie, és mindig legalább öt csomópontnak kell lennie.
-* Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
-* Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
+* az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
+* az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 * Az arany vagy ezüst [tartóssági szintjének][durability] minden csomópont-típusának mindig öt vagy több csomóponttal kell rendelkeznie.
 * Ha a (csomópontok eltávolítása a-ből) elsődleges csomópont típusúra történik, soha ne csökkentse a példányok számát a [megbízhatósági szinthez][reliability] szükségesnél kisebb értékre.
 
@@ -91,9 +80,9 @@ A be-és kiskálázás, illetve a horizontális skálázás a fürtben lévő cs
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha ebben az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának beállításához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount*és  *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
+[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának megadásához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount*és *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
 
-Így a *nt1InstanceCount* értékének frissítésével módosíthatja a csomópontok számát a második csomópont típusában.  Ne feledje, hogy a csomópont-típusok több mint 100 csomópontra nem méretezhetők.  Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia. Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
+Így a *nt1InstanceCount* értékének frissítésével módosíthatja a csomópontok számát a második csomópont típusában.  Ne feledje, hogy a csomópont-típusok több mint 100 csomópontra nem méretezhetők.  az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia. az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 
 Ha méretezést végez, távolítsa el a csomópontokat a ból, a bronz [tartóssági szint][durability] csomópont-típusát [manuálisan el kell távolítania a csomópontok állapotát](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Az ezüst és az arany tartóssági szinten ezeket a lépéseket a platform automatikusan végrehajtja.
 
@@ -116,7 +105,7 @@ Minden, az Azure-ban futó Service Fabric-fürtben definiált csomópont-típus 
 
 [Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  Ebben a szakaszban egy Resource Manager-sablon frissítésével és telepítésével adhat hozzá egy negyedik csomópont-típust. 
 
-Az új csomópont típusa mellett hozzá kell adnia a társított virtuálisgép-méretezési csoportot is (amely a virtuális hálózat különálló alhálózatán fut) és a hálózati biztonsági csoporttal együtt.  Dönthet úgy is, hogy új vagy meglévő nyilvános IP-címet és Azure Load Balancer-erőforrásokat ad hozzá az új méretezési csoporthoz.  Az új csomópont típusa az ezüst és a "standard D2 v2" méretének [tartóssági szintje][durability] .
+Az új csomópont típusa mellett hozzá kell adnia a társított virtuálisgép-méretezési csoportot is (amely a virtuális hálózat különálló alhálózatán fut) és a hálózati biztonsági csoporttal együtt.  Dönthet úgy is, hogy új vagy meglévő nyilvános IP-címet és Azure Load Balancer-erőforrásokat ad hozzá az új méretezési csoporthoz.  Az új csomópont típusa az ezüst és a "Standard_D2_V2" méretének [tartóssági szintje][durability] .
 
 A *template. JSON* fájlban adja hozzá a következő új paramétereket:
 ```json
@@ -387,6 +376,20 @@ A *template. JSON* fájlban vegyen fel új hálózati biztonsági csoportot és 
     },
     "properties": {
         "securityRules": [
+            {
+                "name": "allowSvcFabSMB",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "445",
+                    "direction": "Inbound",
+                    "priority": 3950,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
+                }
+            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -842,7 +845,7 @@ Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt cso
 
 [Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  
 
-A második csomópont típusú virtuális gépek mérete a *vmNodeType1Size* paraméterben van beállítva.  Módosítsa a *vmNodeType1Size* paraméter értékét a standard D2 v2 értékről a [standard D3 v2](/azure/virtual-machines/windows/sizes-general#dv2-series)értékre, amely megduplázza az egyes virtuálisgép-példányok erőforrásait.
+A második csomópont típusú virtuális gépek mérete a *vmNodeType1Size* paraméterben van beállítva.  Módosítsa a *vmNodeType1Size* paraméter értékét Standard_D2_V2ról [Standard_D3_V2ra](/azure/virtual-machines/windows/sizes-general#dv2-series), ami megduplázza az egyes virtuálisgép-példányok erőforrásait.
 
 Mindhárom csomóponthoz tartozó virtuálisgép-SKU a *vmImageSku* paraméterben van beállítva.  Ismét meg kell adni a csomópontok virtuálisgép-SKU-jának módosítását körültekintően, és az elsődleges csomópont típusa nem ajánlott.
 

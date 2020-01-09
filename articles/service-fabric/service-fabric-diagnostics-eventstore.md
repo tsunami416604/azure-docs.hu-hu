@@ -1,69 +1,60 @@
 ---
-title: Az Azure Service Fabric esemény Store |} A Microsoft Docs
-description: További tudnivalók az Azure Service Fabric EventStore
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric Event Store
+description: Ismerkedjen meg az Azure Service Fabric EventStore, amelyekkel bármikor megismerheti és figyelheti a fürt vagy a számítási feladatok állapotát.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449771"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645735"
 ---
-# <a name="eventstore-overview"></a>Az EventStore áttekintése
+# <a name="eventstore-overview"></a>A EventStore áttekintése
 
 >[!NOTE]
->Kezdődően a Service Fabric verziója 6.4. az EventStore API-k csak Azure-on futó Windows-fürtök csak érhetők el. Ez a funkció a Linux, valamint az önálló fürtök portolása dolgozunk.
+>A Service Fabric 6,4-es verziójának megfelelően. a EventStore API-k csak az Azure-on futó Windows-fürtök esetén érhetők el. Dolgozunk ezen funkciónak a Linuxon és a különálló fürtökön való portolása során.
 
 ## <a name="overview"></a>Áttekintés
 
-6\.2 verziójában bevezetett, a EventStore szolgáltatás az figyelési lehetőség, a Service Fabricben. Az EventStore lehetővé teszi a fürt vagy az adott számítási feladatok állapotának megjelenítése az idő.
-Az EventStore egy állapotalapú Service Fabric-szolgáltatás, amely fenntartja az események a fürtből. Az esemény a Service Fabric Explorert, REST és API-k keresztül érhetők el. EventStore lekérdezi a közvetlenül a diagnosztikai adatok gyorsan minden entitás, a fürtben a fürt, és könnyebben használható:
+Az 6,2-es verzióban bevezetett EventStore szolgáltatás egy figyelési lehetőség a Service Fabric. A EventStore lehetővé teszi a fürt vagy a számítási feladatok állapotának megértését egy adott időpontban.
+A EventStore olyan állapot-nyilvántartó Service Fabric szolgáltatás, amely az eseményeket a fürtből tartja karban. Az eseményt a Service Fabric Explorer, a REST és az API-k teszik elérhetővé. A EventStore közvetlenül lekérdezi a fürtöt a fürtben lévő bármely entitás diagnosztikai adataihoz, és a következő segítségére használható:
 
-* Fejlesztési vagy tesztelési időben diagnosztizálhatja a problémákat, vagy ahol a monitorozási folyamatban használni lehet, hogy
-* Győződjön meg arról, hogy felügyeleti műveleteket a fürtön készítésének feldolgozott megfelelően
-* "Pillanatkép" hogyan Service Fabric egy adott entitás implementálására beolvasása
+* A fejlesztési vagy tesztelési problémák diagnosztizálása, illetve a figyelési folyamat használata
+* Győződjön meg arról, hogy a fürtön végzett felügyeleti műveletek megfelelően vannak feldolgozva
+* Az Service Fabric egy adott entitással való interakciójának pillanatképe
 
 ![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
-Az EventStore elérhető események teljes listáját lásd: [Service Fabric-események](service-fabric-diagnostics-event-generation-operational.md).
+A EventStore elérhető események teljes listájának megjelenítéséhez tekintse meg a [Service Fabric eseményeket](service-fabric-diagnostics-event-generation-operational.md).
 
 >[!NOTE]
->Kezdődően a Service Fabric verziója 6.4. az EventStore API-k és a felhasználói felület általánosan elérhetők az Azure Windows-fürtök esetén. Ez a funkció a Linux, valamint az önálló fürtök portolása dolgozunk.
+>A Service Fabric 6,4-es verziójának megfelelően. a EventStore API-k és az UX általánosan elérhetők az Azure Windows-fürtökhöz. Dolgozunk ezen funkciónak a Linuxon és a különálló fürtökön való portolása során.
 
-Az EventStore szolgáltatás eseményeket, amelyek elérhetők minden entitáshoz és a fürt entitástípus lehet lekérdezni. Ez azt jelenti, hogy a következő szinteken események lekérdezhető:
-* Fürt: események (pl. fürt frissítése) magához a fürthöz adott
-* Csomópont: az összes csomópont szintű eseményeket
-* Csomópont: egy csomópont által azonosított adott események `nodeName`
-* Alkalmazások: az összes alkalmazásszintű események
-* Alkalmazás: események által azonosított egy alkalmazáshoz `applicationId`
-* Szolgáltatások: a fürtök összes szolgáltatásra eseményei
-* Szolgáltatás: egy adott szolgáltatás által azonosított események `serviceId`
-* Partíciók: az összes partíció események
-* Partíció: egy adott partíció által azonosított események `partitionId`
-* Partícióreplikák: az összes replika események / példányok által azonosított adott partíción belül `partitionId`
-* Címtárpartíció replikájának: események egy meghatározott replikáról / példány által azonosított `replicaId` és `partitionId`
+A EventStore szolgáltatás lekérdezhető olyan eseményekhez, amelyek elérhetők az egyes entitások és entitások típusához a fürtben. Ez azt jelenti, hogy az események lekérdezése a következő szinteken végezhető el:
+* Fürt: magához a fürthöz tartozó események (például a fürt frissítése)
+* Csomópontok: az összes csomópont szintű esemény
+* Csomópont: egy csomóponthoz tartozó, `nodeName` által azonosított események
+* Alkalmazások: az összes alkalmazás szintű esemény
+* Alkalmazás: egy `applicationId` által azonosított alkalmazáshoz tartozó események
+* Szolgáltatások: a fürtök összes szolgáltatásának eseményei
+* Szolgáltatás: `serviceId` által azonosított adott szolgáltatás eseményei
+* Partíciók: az összes partíció eseményei
+* Partition: az `partitionId` által azonosított adott partíció eseményei
+* Partíciós replikák: a `partitionId` által azonosított adott partíción belüli összes replika/példány eseményei
+* Partíciós replika: `replicaId` és `partitionId` által azonosított adott replika/példány eseményei
 
-Ismerje meg, további információt az API-t tekintse át a [EventStore API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Ha többet szeretne megtudni az API-ról, tekintse meg a [EVENTSTORE API-referenciát](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
-Az EventStore szolgáltatás is van lehetősége, a fürtben lévő események korrelációját. Megnézzük az eseményeket, amelyek egy időben a különböző entitások, amely hatással lehetett egymással készültek, az EventStore szolgáltatás nem tudja csatolni ezeket az eseményeket a fürtben lévő tevékenységek okainak azonosítása érdekében. Például ha egy, az alkalmazások a nem megfelelő állapotú, ez egy mesterségesen előidézett módosítása nélkül történik, az EventStore lesz az eseményeket is tekintse meg a platform által elérhetővé tett funkciót pedig hathatósabb sikerült Ez az egy `Error` vagy `Warning` esemény. Ez segít a gyorsabb, hibaészlelés, és az alapvető okok elemzése.
+A EventStore szolgáltatásnak lehetősége van a fürt eseményeinek összekapcsolására is. Ha olyan eseményeket vizsgál meg, amelyek a különböző entitásokból származnak, amelyek hatással lehetnek egymásra, a EventStore szolgáltatás össze tudja kapcsolni ezeket az eseményeket, hogy a fürt tevékenységeinek azonosításához segítséget nyújtson. Ha például az egyik alkalmazás nem megfelelő állapotba kerül, és az indukált változások nélkül is megtörténik, akkor a EventStore a platform által közzétett egyéb eseményeket is megtekintheti, és ezt egy `Error` vagy `Warning` eseménnyel is összekapcsolhatja. Ez segít a gyorsabb hibák észlelésében és a kiváltó okok elemzésében.
 
-## <a name="enable-eventstore-on-your-cluster"></a>Az EventStore engedélyezése a fürtön
+## <a name="enable-eventstore-on-your-cluster"></a>EventStore engedélyezése a fürtön
 
 ### <a name="local-cluster"></a>Helyi fürt
 
-A [a fürtben fabricSettings.json](service-fabric-cluster-fabric-settings.md), EventStoreService hozzáadása egy bővítmény szolgáltatásai és a fürt frissítésének végrehajtása.
+A [fürt fabricSettings. JSON](service-fabric-cluster-fabric-settings.md)fájljában adja hozzá a EventStoreService-t addOn-szolgáltatásként, és végezze el a fürt frissítését.
 
 ```json
     "addOnFeatures": [
@@ -71,11 +62,11 @@ A [a fürtben fabricSettings.json](service-fabric-cluster-fabric-settings.md), E
     ],
 ```
 
-### <a name="azure-cluster-version-65"></a>Az Azure fürtverzió 6.5-ös +
-Ha az Azure-fürthöz lekérdezi frissített 6.5-ös vagy újabb verzió, az EventStore automatikusan engedélyezve lesz a fürtön. Megfelelő, frissítenie fürtsablonhoz a következő:
+### <a name="azure-cluster-version-65"></a>Azure-fürt 6.5-ös vagy újabb verziója
+Ha az Azure-fürt a 6,5-es vagy újabb verzióra frissül, a EventStore automatikusan engedélyezve lesz a fürtön. A letiltáshoz frissítenie kell a fürtöt a következővel:
 
-* API-verziót használja `2019-03-01` vagy újabb 
-* Adja hozzá a következő kódot a Tulajdonságok szakaszának a fürtben
+* `2019-03-01` vagy újabb API-verziójának használata 
+* Adja hozzá a következő kódot a tulajdonságok szakaszához a fürtben
   ```json  
     "fabricSettings": [
       …
@@ -83,9 +74,9 @@ Ha az Azure-fürthöz lekérdezi frissített 6.5-ös vagy újabb verzió, az Eve
     "eventStoreServiceEnabled": false
   ```
 
-### <a name="azure-cluster-version-64"></a>6\.4 Azure fürt verziója
+### <a name="azure-cluster-version-64"></a>Azure-fürt 6,4-es verziója
 
-6\.4 verzióját használja, ha az Azure Resource Manager-sablon EventStore szolgáltatás bekapcsolása szerkesztheti. Ez történik, végrehajtásával egy [fürt konfiguráció frissítése](service-fabric-cluster-config-upgrade-azure.md) és adja hozzá az alábbi kódot, segítségével PlacementConstraints helyezi a replikákat a EventStore szolgáltatás egy adott NodeType például egy dedikált a rendszer szolgáltatások NodeType . A `upgradeDescription` szakaszban konfigurálja a config frissítés, kezdeményezzen újraindítást a csomópontokon. A szakasz egy másik frissítés távolíthatja el.
+Ha a 6,4-es verziót használja, szerkesztheti Azure Resource Manager-sablonját, hogy bekapcsolja a EventStore szolgáltatást. Ez a [fürt konfigurációs frissítésének](service-fabric-cluster-config-upgrade-azure.md) végrehajtásával és a következő kód hozzáadásával végezhető el, a PlacementConstraints segítségével a EventStore szolgáltatás replikáit egy adott NodeType helyezheti el, például a rendszerszolgáltatásokhoz dedikált NodeType. A `upgradeDescription` szakasz a konfiguráció frissítését konfigurálja úgy, hogy újraindítást indítson a csomópontokon. A szakasz egy másik frissítésből is eltávolítható.
 
 ```json
     "fabricSettings": [
@@ -131,9 +122,9 @@ Ha az Azure-fürthöz lekérdezi frissített 6.5-ös vagy újabb verzió, az Eve
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* Az EventStore API – első lépések [EventStore API-val az Azure Service Fabric-fürtök](service-fabric-diagnostics-eventstore-query.md)
-* További tudnivalók az események EventStore - által kínált [Service Fabric-események](service-fabric-diagnostics-event-generation-operational.md)
-* Figyelés és diagnosztika felderítése a Service Fabric - áttekintése [Monitorozás és diagnosztika a Service Fabrichez](service-fabric-diagnostics-overview.md)
-* API-hívások – teljes listájának megtekintéséhez [EventStore REST API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
-* A fürt monitorozásával kapcsolatos további információkért – [figyelése a fürt és a platform](service-fabric-diagnostics-event-generation-infra.md).
+## <a name="next-steps"></a>Következő lépések
+* Ismerkedés a EventStore API-val – [a EventStore API-k használata az Azure Service Fabric-fürtökben](service-fabric-diagnostics-eventstore-query.md)
+* További információ a EventStore- [Service Fabric események](service-fabric-diagnostics-event-generation-operational.md) által kínált események listájáról
+* A Service Fabric monitorozása és diagnosztika áttekintése [Service Fabric](service-fabric-diagnostics-overview.md)
+* Az API-hívások teljes listájának megtekintése – [EventStore REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* További információ a fürt monitorozásáról – [a fürt és a platform figyelése](service-fabric-diagnostics-event-generation-infra.md).

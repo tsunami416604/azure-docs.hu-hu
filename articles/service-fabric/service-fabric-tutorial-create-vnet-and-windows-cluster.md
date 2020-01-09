@@ -1,26 +1,15 @@
 ---
-title: Windows rendszerű Service Fabric-fürt létrehozása az Azure-ban | Microsoft Docs
+title: Windows rendszerű Service Fabric-fürt létrehozása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe Windows Service Fabric-fürtöt egy Azure-beli virtuális hálózatban és hálózati biztonsági csoportban a PowerShell használatával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177990"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551718"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszert futtató Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
 
@@ -112,6 +101,7 @@ Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Netwo
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
 * Ideiglenes porttartomány: 49152 – 65534 (legalább 256 portnak kell lennie).
 * alkalmazások által használható portok: 80 és 443,
@@ -153,7 +143,7 @@ Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/sec
 
 A [azuredeploy. Parameters. JSON][parameters] paraméterek fájlja deklarálja a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt számos értéket. A következő paramétereket kell módosítani a telepítéshez:
 
-**Paraméter** | **Példa értéke** | **Megjegyzések** 
+**Paraméter** | **Példaérték** | **Megjegyzések** 
 |---|---|---|
 |adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [A virtuális gép felhasználónévre vonatkozó követelményei](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [A virtuális gép jelszavára vonatkozó követelmények](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
@@ -177,7 +167,7 @@ A Service Fabric-fürtök több belépési pontot biztosítanak a felügyeleti f
 
 Ez a cikk azt feltételezi, hogy már létrehozott egy bérlőt. Ha még nem tette meg, először olvassa el a [Azure Active Directory bérlő beszerzését ismertető témakört](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Az Azure AD Service Fabric-fürttel való konfigurálásának lépéseinek egyszerűbbé tétele érdekében létrehoztunk egy Windows PowerShell-szkriptet. [Töltse le a szkripteket](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) a számítógépre.
+Az Azure AD Service Fabric-fürttel való konfigurálásának lépéseinek egyszerűbbé tétele érdekében létrehoztunk egy Windows PowerShell-szkriptet. [Töltse le a szkripteket](https://github.com/Azure-Samples/service-fabric-aad-helpers) a számítógépre.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD-alkalmazások létrehozása és felhasználók szerepkörökhöz rendelése
 Hozzon létre két Azure AD-alkalmazást a fürt elérésének vezérléséhez: egy webalkalmazást és egy natív alkalmazást. Miután létrehozta az alkalmazásokat a fürt képviseletére, rendelje hozzá a felhasználókat a [Service Fabric által támogatott szerepkörökhöz](service-fabric-cluster-security-roles.md): csak olvasható és rendszergazda.

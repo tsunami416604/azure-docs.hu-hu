@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl tároló | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl-tároló parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl tároló
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A tárolók parancsainak listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 13de6ff7b3e5a41eced5ca49a3af38fab60ba0a0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 316715e65af07176b3dc276d47979a5fa3dc1d6f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901299"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639139"
 ---
 # <a name="sfctl-container"></a>sfctl-tároló
 Tárolóval kapcsolatos parancsok futtatása fürtcsomóponton.

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: fd3d53dce398c445d309a19f1f58a8d298080c45
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ea526648b1b37919eb41953937d3afa72f7f39e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446257"
 ---
 <a name="HOLTop"></a>
 
@@ -21,7 +21,7 @@ ms.locfileid: "73750238"
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója.
+* A [Visual Studio ide](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -31,55 +31,32 @@ ms.locfileid: "73750238"
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-Egy konzolablak (például cmd, PowerShell vagy bash) használatával hozzon létre egy új, `text-analytics quickstart`nevű Console-alkalmazást a `dotnet new` paranccsal. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" projektet hoz létre egyetlen C# forrásfájlban: *program.cs*. 
+Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ez egy egyszerű ""Helló világ!"alkalmazás" projektet hoz létre egyetlen C# forrásfájl esetén: *program.cs*.
 
-```console
-dotnet new console -n text-analytics-quickstart
-```
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő lapon válassza a **Tallózás** lehetőséget, és keresse meg a `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`. Kattintson rá, majd **telepítse**a következőt:. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
-
-```console
-dotnet build
-```
-
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
-
-```console
-...
-Build succeeded.
- 0 Warning(s)
- 0 Error(s)
-...
-```
-
-A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` irányelveket:
+Nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` irányelveket:
 
 [!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
 
-Az alkalmazás `Program` osztályban hozzon létre változókat az erőforrás kulcsa és végpontja számára a korábban létrehozott környezeti változók alapján. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+Az alkalmazás `Program` osztályában hozzon létre változókat az erőforrás kulcsa és végpontja számára. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-csharp[initial variables](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=vars)]
+```csharp
+private static readonly string key = "<replace-with-your-text-analytics-key-here>";
+private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
+```
 
 Cserélje le az alkalmazás `Main` metódusát. Az itt megnevezett metódusokat később kell meghatároznia.
 
 [!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
 
-### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
-
-Az alkalmazás könyvtárában telepítse az Text Analytics .NET-hez készült ügyféloldali kódtárat a következő paranccsal:
-
-```console
-dotnet add package Microsoft.Azure.CognitiveServices.Language.TextAnalytics --version 4.0.0
-```
-
 ## <a name="object-model"></a>Objektummodell
 
 Az Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-dotnet) objektum, amely az Azure-ban hitelesíti magát a kulccsal, és lehetővé teszi, hogy a függvényeket egyetlen karakterláncként vagy batchként fogadja el. Az API-ra szinkron módon vagy aszinkron módon küldhet szöveget. A válasz objektum fogja tartalmazni az összes elküldött dokumentum elemzési információit. 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
@@ -99,7 +76,7 @@ Hozzon létre egy metódust a [TextAnalyticsClient](https://docs.microsoft.com/d
 
 A program `main()` metódusában hívja meg a hitelesítési módszert az ügyfél létrehozásához.
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 
 Hozzon létre egy új, `SentimentAnalysisExample()` nevű függvényt, amely a korábban létrehozott ügyfelet veszi át, és hívja meg a [hangulat ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment?view=azure-dotnet) függvényt. A visszaadott [SentimentResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult?view=azure-dotnet) objektum a `Score` sikerességét fogja tartalmazni, és ha nem, akkor `errorMessage`. 
 
@@ -155,7 +132,7 @@ Entities:
         Offset: 116,    Length: 11,     Score: 0.800
 ```
 
-## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
 Hozzon létre egy `KeyPhraseExtractionExample()` nevű új függvényt, amely a korábban létrehozott ügyfelet veszi fel, és hívja meg a [alkifejezések ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) függvényt. Ha a művelet sikeres, az eredmény tartalmazni fogja a `KeyPhrases` észlelt kulcsos kifejezéseket, és egy `errorMessage`, ha nem. Minden észlelt kulcs kifejezésének nyomtatása.
 

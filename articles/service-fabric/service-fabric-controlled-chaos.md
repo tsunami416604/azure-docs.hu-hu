@@ -1,81 +1,72 @@
 ---
-title: A Service Fabric-fürtök idéz elő a Chaos |} A Microsoft Docs
-description: Tartalék injektálással vagy a fürt Analysis Service API-k használatával káosz kezelésére a fürtben.
-services: service-fabric
-documentationcenter: .net
+title: A káosz indukálása Service Fabric-fürtökben
+description: A hibák befecskendezése és a cluster Analysis Service API-k használatával kezelheti a káoszt a fürtben.
 author: motanv
-manager: anmola
-editor: motanv
-ms.assetid: 2bd13443-3478-4382-9a5a-1f6c6b32bfc9
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 7a22b17d45218c2f78220f980605b3c211495606
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463165"
 ---
-# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Szabályozott káosz a Service Fabric-fürtök idéz elő
-Nagy méretű elosztott rendszerek, a felhőalapú infrastruktúrák rendszer természetüknél fogva nem megbízható. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy írja felett egy nem megbízható infrastruktúra megbízható elosztott szolgáltatásokat. Egy nem megbízható infrastruktúra épülő hatékony elosztott szolgáltatások írását, fejlesztőknek kell tesztelheti a szolgáltatásaik stabilitását, míg az alapul szolgáló megbízhatatlan infrastruktúra korszakát bonyolult állapotváltásra hibák miatt.
+# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Vezérelt káosz indukálása Service Fabric-fürtökben
+A nagy léptékű elosztott rendszerek, például a felhőalapú infrastruktúrák eleve megbízhatatlanok. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy megbízható elosztott szolgáltatásokat írjanak egy megbízhatatlan infrastruktúrán felül. Ahhoz, hogy megbízható, megbízható infrastruktúrán alapuló elosztott szolgáltatásokat lehessen írni, a fejlesztőknek képesnek kell lenniük a szolgáltatásaik stabilitásának tesztelésére, miközben a mögöttes megbízhatatlan infrastruktúra a hibák miatt bonyolult állapotú átmeneteken megy keresztül.
 
-A [hibabeszúrás és elemzési szolgáltatás](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (más néven a Fault Analysis Service) lehetővé teszi a fejlesztők az idéz elő hibákat szolgáltatásaik teszteléséhez. Megcélzott ezeket a hibákat, például szimulált [partíció újraindítása](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), gyakorolja a leggyakoribb állapotváltásra segítségével. Azonban célzott szimulált hibák definíció szerint vannak torzítatlan, és így előfordulhat, hogy hagyja ki hibák elhárítása a show mentése csak az állapotváltozási adat áramlik nehéz megjósolni, hosszúak és bonyolultak sorrendjét. Egy torzítatlan populáció tesztelési káosz is használhatja.
+A [hibák befecskendezése és a fürt Analysis Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (más néven a fault Analysis Service) lehetővé teszi a fejlesztők számára, hogy a szolgáltatásaik teszteléséhez hibákat idézzenek. Ezek a meghívott szimulált hibák, például a [partíciók újraindítása](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), segíthetnek a leggyakoribb állapot-váltások végrehajtásában. A megfogalmazott szimulált hibák azonban a definíciók szerint torzulnak, így a hibák kimaradnak, amelyek csak nehezen megjósolható, hosszú és bonyolult állapotú átmeneteket jeleznek. Elfogulatlan teszteléshez használhatja a káoszt.
 
-A Chaos időszakos, kihagyásos hibák (szabályos és végbemenjen) terjesszen a fürtön keresztül hosszabb ideig szimulálja. Egy szabályos tartalék Service Fabric API-hívások készlete áll, például újraindítás replika tartalék-e egy szabályos tartalék mivel ez egy nyitott követ egy replikát a Bezárás gombra. Távolítsa el a replika, helyezze át az elsődleges replika, és áthelyezése másodlagos replika a más, a Chaos gyakorolja sikeres-e hibák. A hibák végbemenjen folyamat kilép, indítsa újra a csomópontot, majd indítsa újra a kódcsomag. 
+A káosz szimulálja az időszakos, összekapcsolt hibákat (mind a kecses, mind a szégyenletes) a fürtben a hosszabb időtartamon belül. Egy kecses hiba Service Fabric API-hívásokból áll, például az újraindítási replika hibája egy kecses hiba, amelyet egy replikán nyitott meg. Távolítsa el a replikát, helyezze át az elsődleges replikát, és helyezze át a másodlagos replikát a káosz által gyakorolt egyéb kecses hibákra. A hibás hibák a folyamat bezárása, például a csomópont újraindítása és a Code csomag újraindítása. 
 
-Miután konfigurálta a Chaos sebessége és milyen típusú hibákat, elindíthatja a Chaos – C#, Powershell vagy a REST API létrehozása a hibák, a fürt és a szolgáltatások elindításához. Konfigurálható káosz szeretné futtatni a megadott időtartam során (például óránként), mely káosz leállítása után automatikusan, vagy (C#, Powershell vagy REST) bármikor leállíthatja a StopChaos API hívása.
+Miután konfigurálta a káoszt a díjszabással és a hibák típusával, elindíthatja a káoszt C#, a PowerShellt vagy a REST APIt, hogy elindítsa a hibákat a fürtben és a szolgáltatásaiban. Beállíthatja, hogy a káosz egy adott időszakra fusson (például egy órára), amely után a káosz automatikusan leáll, vagy meghívhatja a StopChaos API-C#t (, POWERSHELL vagy REST), hogy bármikor leállítsa.
 
 > [!NOTE]
-> A jelenlegi formájában az káosz kapott csak biztonságos hibák, ami azt jelenti, hogy külső hibák hiányában a kvórum elvesztése vagy adatvesztés soha nem történik.
+> A Chaos jelenleg csak biztonságos hibákat idéz elő, ami azt jelenti, hogy a külső hibák hiányában a kvórum elvesztése vagy az adatvesztés soha nem fordul elő.
 >
 
-A Chaos futása közben a különböző események abban a pillanatban a Futtatás állapotát rögzítő hoz létre. Például egy ExecutingFaultsEvent tartalmaz minden hibájával együtt, amely a Chaos úgy döntött, hogy hajtsa végre a, hogy az iteráció. Egy ValidationFailedEvent egy érvényesítési hiba (állapot vagy a stabilitás problémák), amely a fürt érvényesítése során található részleteit tartalmazza. A getchaosreport hívásban API (C#, a Powershell vagy REST) a jelentés megtekintése a Chaos futtatások hívhat meg. Ezek az események beolvasása megmaradjon az egy [megbízható szótárban](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), amely rendelkezik egy csonkolása házirend által rögzített két konfigurációt: **MaxStoredChaosEventCount** (alapértelmezett érték a 25000) és **StoredActionCleanupIntervalInSeconds** (alapértelmezett értéke 3600). Minden *StoredActionCleanupIntervalInSeconds* káosz ellenőrzések és az összes, de a legutóbbi *MaxStoredChaosEventCount* események, a megbízható szótárban a rendszer üríti ki.
+Amíg a káosz fut, különböző eseményeket hoz létre, amelyek rögzítik a Futtatás állapotát. Például egy ExecutingFaultsEvent tartalmazza az összes olyan hibát, amelyet a káosz úgy döntött, hogy az adott iterációban végrehajtja a végrehajtást. A ValidationFailedEvent a fürt érvényesítése során talált érvényesítési hibák (állapot vagy stabilitási problémák) részleteit tartalmazza. A GetChaosReport API (C#, POWERSHELL vagy REST) meghívásával lekérheti a káosz futtatásának jelentését. Ezek az események egy [megbízható szótárban](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)maradnak, amely a következő két konfiguráció által diktált csonkolt házirendtel rendelkezik: **MaxStoredChaosEventCount** (az alapértelmezett érték 25000) és a **StoredActionCleanupIntervalInSeconds** (az alapértelmezett érték a 3600). Minden *StoredActionCleanupIntervalInSeconds* , de a legutóbbi *MaxStoredChaosEventCount* -események törlődnek a megbízható szótárból.
 
-## <a name="faults-induced-in-chaos"></a>A Chaos okozta hibák
-A Chaos állít elő, a hibák a teljes Service Fabric-fürtön, és tömöríti, órákat, hónap vagy év láthatók a hibák. Összefűzéses hibák a magas laphibák aránya együttes használata, amelyek egyébként nem észlelnének esetekben keresi meg. Ebben a gyakorlatban a Chaos vezet a kód minőségének a jelentős fejlesztéseket tartalmaz.
+## <a name="faults-induced-in-chaos"></a>A káoszban kiváltott hibák
+A Chaos a teljes Service Fabric fürt hibáit állítja elő, és a hónapokban vagy években megtekintett hibákat néhány órára tömöríti. A magas hibatűrési aránnyal rendelkező, egymással megszakított hibák kombinációja olyan sarki eseteket talál, amelyek egyébként kihagyhatók. A káosz gyakorlása a szolgáltatás programkód-minőségének jelentős javulását eredményezi.
 
-A Chaos kapott hibákat a következő kategóriákban:
+A Chaos a következő kategóriákból származó hibákat idézi elő:
 
 * Csomópont újraindítása
-* Indítsa újra a központilag telepített kódcsomag
+* Telepített kód újraindítása
 * Replika eltávolítása
-* Indítsa újra a replika
-* Helyezze át egy elsődleges replika (konfigurálható)
-* Helyezze át egy másodlagos másodpéldány (konfigurálható)
+* Replika újraindítása
+* Elsődleges replika áthelyezése (konfigurálható)
+* Másodlagos replika áthelyezése (konfigurálható)
 
-A Chaos több iterációban futtatja. Minden egyes ismétléskor hibák és a megadott időszakon belül a fürtellenőrzés áll. Beállíthatja, hogy az idő stabilizálódhatnak a fürt és az érvényesítés sikeres legyen. Ha hiba található a fürt ellenőrzését, a Chaos állít elő, és továbbra is fennáll egy ValidationFailedEvent az UTC-időbélyeg és a hiba részletei. Vegyük példaként, amely három egyidejű hibák, mely legfeljebb egy órát futtatása Chaos egy példánya. A Chaos három hibákat kapott, és fürt állapotát ellenőrzi. Halad az előző lépést addig, amíg explicit módon leállt a StopChaosAsync API-n keresztül vagy óránként továbbítja. Ha a fürt akkor kerül sérült, az ismétlések (, nem stabilizálódhatnak vagy nem lesz kifogástalan állapotú, az átadott MaxClusterStabilizationTimeout belül), a Chaos egy ValidationFailedEvent állít elő. Az esemény azt jelzi, hogy probléma merült fel, és előfordulhat, hogy további vizsgálat szükséges.
+A káosz több iterációban fut. Minden iteráció a megadott időszakban hibákból és fürt-ellenőrzésből áll. Beállíthatja, hogy a fürt milyen ideig legyen stabilizálva, és az érvényesítés sikeres legyen. Ha a fürt érvényesítése során hiba található, a Chaos létrehoz és megtart egy ValidationFailedEvent az UTC időbélyeggel és a hiba részleteivel. Tegyük fel például, hogy a káosz egy olyan példánya, amely egy órára van beállítva, és legfeljebb három egyidejű hibával rendelkezik. A Chaos három hibát idéz elő, majd ellenőrzi a fürt állapotát. Az előző lépéssel közelíti meg, amíg a StopChaosAsync API-n vagy egy órás továbbításon keresztül explicit módon nem áll le. Ha a fürt sérült állapotba kerül bármilyen iterációban (azaz nem stabilizálódik, vagy nem lesz kifogástalan az átadott MaxClusterStabilizationTimeout belül), a Chaos létrehoz egy ValidationFailedEvent. Ez az esemény azt jelzi, hogy valamilyen hiba történt, és további vizsgálatra lehet szükség.
 
-Melyik káosz okozta hibák lekéréséhez használhatja a getchaosreport hívásban API (powershell, a C# vagy REST). Az API lekérdezi a következő szegmenst a Chaos jelentés, az átadott a folytatási token vagy az átadott-időtartomány alapján. Megadhatja a continuationtoken argumentumot használja, a következő szegmenst a Chaos jelentés beolvasni vagy megadhatja az időtartományt StartTimeUtc és EndTimeUtc, de nem adható meg mind a continuationtoken argumentumot használja, és az időtartományt az adott hívásban. Ha több mint 100 káosz események, a Chaos jelentés adja vissza a szegmensek Ha egy szegmens tartalmazza: 100-nál több káosz események.
+A GetChaosReport API (PowerShell, C#vagy REST) használatával megtekintheti, hogy milyen hibákat okoz a káosz. Az API beolvassa a Chaos-jelentés következő szegmensét az átadott folytatási jogkivonat vagy az átadott időtartomány alapján. Megadhatja a Continuationtoken argumentumot használja a Chaos-jelentés következő szegmensének beszerzéséhez, vagy megadhatja az időtartományt a StartTimeUtc és a EndTimeUtc, de nem adhatja meg egyszerre a Continuationtoken argumentumot használja és az időtartományt is ugyanabban a hívásban. Ha több mint 100 Chaos-eseményt talál, a rendszer a Chaos-jelentést olyan szegmensekben adja vissza, amelyekben a szegmensek nem tartalmaznak több mint 100 Chaos-eseményt.
 
-## <a name="important-configuration-options"></a>Fontos konfigurációs beállításai
-* **Timetorun érték**: Teljes futásakor a káosz, sikeres befejezése előtt. A Chaos előtt futott a timetorun érték időszakra vonatkozóan a StopChaos API-n keresztül is leállíthatja.
+## <a name="important-configuration-options"></a>Fontos konfigurációs beállítások
+* **TimeToRun**: a káosz futásának teljes ideje, mielőtt a művelet sikeresen befejeződik. Leállíthatja a káoszt, mielőtt a TimeToRun időszakra futtatná a StopChaos API-n keresztül.
 
-* **MaxClusterStabilizationTimeout**: A maximális mennyisége, és várja meg a fürt előtt egy ValidationFailedEvent előállító állapotúak lesznek. Ezt várja meg, hogy a fürt terhelésének csökkentése közben helyreállítása folyamatban van. Az elvégzett a következők:
-  * Ha a fürt állapota OK
-  * Ha a szolgáltatás állapota OK
-  * Ha a cél replika méretének beállítása érhető el a szolgáltatás partíció
-  * Hogy létezik-e nem található InBuild replikák
-* **MaxConcurrentFaults**: Minden egyes ismétléskor előidézett egyidejű hibák maximális száma. A magasabb az érték, annál több agresszív káosz és a feladatátvételeket, és az állapot átmenet kombinációit, amely végighalad a fürt összetettebbek is. 
+* **MaxClusterStabilizationTimeout**: az a maximális időtartam, ameddig a fürt Kifogástalan állapotba kerül, mielőtt ValidationFailedEvent hozna létre. Ez a várakozás a fürt terhelésének csökkentése a helyreállítás közben. A végrehajtott ellenőrzések a következők:
+  * Ha a fürt állapota rendben van
+  * Ha a szolgáltatás állapota rendben van
+  * Ha a megcélzott másodpéldány-készlet mérete elérhető a szolgáltatás partíciójában
+  * Nem léteznek inbuild replikák
+* **Timestamputcinticks**: az egyes iterációk által kiváltott egyidejű hibák maximális száma. Minél nagyobb a szám, annál agresszívebb a káosz, és a feladatátvétel és a fürt által áthaladó állapot-átmenet kombinációk is összetettebbek. 
 
 > [!NOTE]
-> Függetlenül attól a nagy értékű *MaxConcurrentFaults* rendelkezik, a Chaos garantálja a – külső hibákat – hiányában nem kvórum elvesztése vagy adatvesztés.
+> Függetlenül attól, hogy milyen magas a *timestamputcinticks* érték, a káosz garantálja – a külső hibák hiányában – nincs kvórum elvesztése vagy adatvesztés.
 >
 
-* **EnableMoveReplicaFaults**: Engedélyezheti vagy letilthatja a hibákat, amelyek az elsődleges vagy másodlagos replikák áthelyezése. Ezek a hibák alapértelmezés szerint engedélyezve vannak.
-* **WaitTimeBetweenIterations**: Az ismétlések közötti várakozási idő mennyisége. Azt jelenti mennyi ideig káosz szüneteltetni fogja a hibák és kellene a fürt állapota megfelelő érvényesítése befejeződött egy ciklikus végrehajtása után. A magasabb, az alacsonyabb érték átlagos tartalék injektálási sebessége.
-* **WaitTimeBetweenFaults**: Az egyetlen ismétléskor két egymást követő hibák közötti várakozás időtartama. A magasabb az érték, az alacsonyabb az egyidejűségi (vagy az átfedett) hibákat.
-* **ClusterHealthPolicy**: Fürt állapotházirend segítségével káosz ismétléseinek között a fürt állapotának ellenőrzése. Ha a fürt állapota hibás, vagy ha váratlan kivétel történt a tartalék végrehajtás során történik, a Chaos Várjon 30 percet, mielőtt a következő állapot-ellenőrzés – recuperate hosszabb időt biztosít a fürt.
-* **Környezet**: Gyűjteménye (karakterlánc, karakterlánc), írja be a kulcs-érték párokat. A térkép segítségével rögzíti a Chaos Futtatás kapcsolatos információt. Nem lehet több mint 100 ilyen párok, és mindegyik sztring (kulcs vagy érték), legfeljebb 4095 karakter hosszú lehet. Ezen a térképen az alapszintű, a káosz, futtassa a környezetben a meghatározott Futtatás tárolását állítja be.
-* **– Egyidejűleg**: Ez a szűrő segítségével cél káosz hibák csak egyes csomóponttípusok vagy csak egyes alkalmazáspéldányok. – Egyidejűleg nem használatos, ha a Chaos hibákat a fürt összes entitást. – Egyidejűleg használata esetén a Chaos hibákat csak azokat az entitásokat, amelyek megfelelnek a – egyidejűleg specifikációnak. A NodeTypeInclusionList is és az ApplicationInclusionList engedélyezése csak a union szemantikáját. Más szóval nincs lehetőség a NodeTypeInclusionList is és az ApplicationInclusionList metszetét adja meg. Ha például nincs lehetőség adja meg a "hiba az alkalmazás csak akkor, ha be van kapcsolva a csomópont típusa." Miután egy entitás tartalmazza a NodeTypeInclusionList vagy ApplicationInclusionList, entitás nem zárható ki – egyidejűleg használatával. Akkor is, ha az ApplicationInclusionList applicationX nem jelenik meg, néhány káosz ismétléskor applicationX is hibás történik a kell egy olyan csomópontján, amely megtalálható a NodeTypeInclusionList nodeTypeY, mert. Ha a NodeTypeInclusionList is és az ApplicationInclusionList is null értékű vagy üres, akkor egy ArgumentException lépett fel.
-    * **A NodeTypeInclusionList**: Hibák a Chaos foglalandó típusok listája. Minden típusú hibák (csomópont újraindítása, indítsa újra a codepackage, távolítsa el a replika, indítsa újra a replikát, helyezze át az elsődleges és másodlagos áthelyezése) a következő csomópont típusú csomópontok engedélyezve vannak. Ha egy NodeType csomóponttípus (például NodeTypeX) nem jelenik meg a NodeTypeInclusionList majd soha nem lesznek engedélyezve NodeTypeX csomópontjait csomópont szolgáltatói hibák (például NodeRestart), de a kód csomag és a replika hibákat továbbra is engedélyezhető a NodeTypeX, ha az alkalmazás a ApplicationInclusionList történik a NodeTypeX csomópontján találhatók. Legfeljebb 100 csomópont típusnevek felvehetők a listában, ezt a számot növelheti, a konfiguráció frissítése a MaxNumberOfNodeTypesInChaosTargetFilter konfigurációhoz szükség.
-    * **ApplicationInclusionList**: A kérelem URI-k hibák Chaos foglalandó listája. Ezekhez az alkalmazásokhoz, szolgáltatásokhoz tartozó összes replika replika hibák (újraindítás replika, távolítsa el a replika, áthelyezés elsődleges és áthelyezése másodlagos) káosz által kezelhető. A Chaos előfordulhat, hogy indítsa újra a egy kódcsomaghoz csak akkor, ha a kódcsomag replikák csak ezeket az alkalmazásokat futtatja. Ha egy alkalmazás nem jelenik meg ebben a listában, azt is továbbra is hibás néhány káosz ismétléskor, ha az alkalmazás egy olyan csomópontján, a csomópont típusa, amely megtalálható a NodeTypeInclusionList is említi. Azonban ha applicationX kötődik elhelyezési korlátozások és applicationX nodeTypeY hiányzik az ApplicationInclusionList és nodeTypeY hiányzik a NodeTypeInclusionList, majd applicationX soha nem hibás lesz. Legfeljebb 1000 alkalmazásnevek felvehetők a listában, ezt a számot növelheti, a konfiguráció frissítése a MaxNumberOfApplicationsInChaosTargetFilter konfigurációhoz szükség.
+* **EnableMoveReplicaFaults**: engedélyezheti vagy letilthatja azokat a hibákat, amelyek az elsődleges vagy másodlagos replikák áthelyezését okozzák. Ezek a hibák alapértelmezés szerint engedélyezve vannak.
+* **WaitTimeBetweenIterations**: az iterációk közötti várakozási idő. Ez azt az időtartamot mutatja, ameddig a káosz szünetel, miután elvégezte a hibák körét, és befejezte a fürt állapotának megfelelő érvényesítését. Minél nagyobb az érték, annál alacsonyabb az átlagos hibák befecskendezési sebessége.
+* **WaitTimeBetweenFaults**: a két egymást követő hiba közötti várakozási idő egyetlen iterációban. Minél nagyobb az érték, annál alacsonyabb a (vagy átfedésben lévő) hibák párhuzamossága.
+* **ClusterHealthPolicy**: a fürt állapotára vonatkozó házirend használatával ellenőrizhető a fürt állapota a Chaos iterációk között. Ha a fürt állapota hibát jelez, vagy ha váratlan kivétel történik a hibák végrehajtása során, akkor a Chaos a következő állapot-ellenőrzés előtt 30 perccel megvárja, hogy a fürt egy kis idő elteltével bekerüljön a helyreállításra.
+* **Környezet**: (karakterlánc, karakterlánc) típusú kulcs-érték párokat tartalmazó gyűjtemény. A Térkép használatával rögzítheti a káosz futtatásával kapcsolatos információkat. Nem lehet több mint 100 ilyen pár, és mindegyik sztring (kulcs vagy érték) legfeljebb 4095 karakter hosszúságú lehet. Ezt a leképezést a Chaos Run indítója állítja be, hogy opcionálisan tárolja a környezetet az adott futtatásról.
+* **ChaosTargetFilter**: Ez a szűrő felhasználható arra, hogy a Chaos-hibákat csak bizonyos csomópont-típusokra, vagy csak bizonyos alkalmazási példányokra célozza. Ha a ChaosTargetFilter nincs használatban, a Chaos hibát jelzett a fürt összes entitása esetében. Ha ChaosTargetFilter használ, a Chaos csak azokat az entitásokat használja, amelyek megfelelnek a ChaosTargetFilter specifikációjának. A Chaostargetfilter és a ApplicationInclusionList csak a Union szemantikai használatát teszi lehetővé. Más szóval nem lehet megadni a Chaostargetfilter és a ApplicationInclusionList metszetét. Például nem adható meg "az alkalmazás hibája csak akkor, ha az adott csomópont típusa van." Ha egy entitást a Chaostargetfilter vagy a ApplicationInclusionList tartalmaz, az entitás nem zárható ki a ChaosTargetFilter használatával. Ha a applicationX nem jelenik meg a ApplicationInclusionList-ben, néhány Chaos iterációs applicationX hibát okozhat, mert az a Chaostargetfilter részét képező nodeTypeY csomópontján történik. Ha a Chaostargetfilter és a ApplicationInclusionList egyaránt null értékű vagy üres, akkor egy ArgumentException kerül.
+    * **Chaostargetfilter**: a Chaos-hibákba foglalni kívánt csomópont-típusok listája. Minden típusú hiba (csomópont újraindítása, codepackage újraindítása, replika eltávolítása, replika újraindítása, elsődleges áthelyezése és másodlagos áthelyezés) engedélyezve van a csomópontok csomópontjain. Ha egy NodeType (Say NodeTypeX) nem jelenik meg a Chaostargetfilter, akkor a csomóponti szintű hibák (például a NodeRestart) soha nem lesznek engedélyezve a NodeTypeX csomópontjain, de a csomag-és replika-hibák továbbra is engedélyezhetők a NodeTypeX, ha egy alkalmazás a A ApplicationInclusionList a NodeTypeX csomópontján történik. Ezen a listán legfeljebb 100 csomópont típusú név szerepelhet, így a szám növeléséhez a MaxNumberOfNodeTypesInChaosTargetFilter konfigurálásához szükség van egy konfigurációs frissítésre.
+    * **ApplicationInclusionList**: a Chaos-hibákba foglalandó alkalmazás-URI azonosítók listája. Az alkalmazások szolgáltatásaihoz tartozó összes replika a replika hibáira (a replika újraindítására, a replika eltávolítására, az elsődleges áthelyezésre és a másodlagos áthelyezésre) irányul. A káosz csak akkor indítható el, ha a kód csak az alkalmazások replikáit tárolja. Ha egy alkalmazás nem jelenik meg ezen a listán, akkor is hibás lehet az egyes Chaos-iterációkban, ha az alkalmazás egy csomópont típusú csomóponton végződik, amely a Chaostargetfilter része. Ha azonban a applicationX az elhelyezési korlátozásokon keresztül nodeTypeY, és a applicationX hiányzik a ApplicationInclusionList, és a nodeTypeY hiányzik a chaostargetfilter, akkor a applicationX soha nem fog hibát okozni. Ebben a listában legfeljebb 1000 alkalmazás neve szerepelhet a MaxNumberOfApplicationsInChaosTargetFilter-konfigurációhoz szükséges konfigurációk frissítéséhez.
 
-## <a name="how-to-run-chaos"></a>A Chaos futtatása
+## <a name="how-to-run-chaos"></a>A káosz futtatása
 
 ```csharp
 using System;

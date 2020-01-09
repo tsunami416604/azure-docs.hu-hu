@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832711"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608720"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
@@ -105,7 +105,7 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 ### <a name="review-your-office-365-group-sharing-settings"></a>Tekintse át az Office 365 csoport megosztási beállításait
 
-- Ha az Office 365-csoportokat a külső felhasználók hozzáférési csomagjaiban szeretné felvenni, akkor győződjön **meg** arról, hogy a **felhasználók az új vendégek hozzáadása a szervezethez** beállítás be értékre van állítva a vendég hozzáférésének engedélyezéséhez. További információ: a [vendég hozzáférésének kezelése az Office 365-csoportokhoz](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups).
+- Ha az Office 365-csoportokat a külső felhasználók hozzáférési csomagjaiban szeretné felvenni, akkor győződjön **meg** arról, hogy a **felhasználók az új vendégek hozzáadása a szervezethez** beállítás be értékre van állítva a vendég hozzáférésének engedélyezéséhez. További információ: a [vendég hozzáférésének kezelése az Office 365-csoportokhoz](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
 - Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és az Office 365-csoporthoz kapcsolódó erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -143,9 +143,9 @@ Kiválaszthatja, hogy mi történjen, ha egy külső felhasználó, aki egy, a h
 
 1. Ha el szeretné távolítani a vendég felhasználói fiókot ebben a címtárban, beállíthatja, hogy hány nap elteltével távolítsa el a rendszer. Ha el szeretné távolítani a vendég felhasználói fiókot, amint elvesztik az utolsó hozzárendelését bármelyik hozzáférési csomaghoz, állítsa be a **napok számát, mielőtt eltávolítja a külső felhasználót a címtárból** **0-ra**.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md)
 - [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

@@ -3,18 +3,18 @@ title: A IoT Plug and Play előzetes verziójának bemutatása | Microsoft Docs
 description: További információ a IoT Plug and Play előzetes verzióról. A IoT Plug and Play egy nyílt modellezési nyelven alapul, amely lehetővé teszi a IoT-eszközök számára, hogy deklarálják képességeiket. A IoT-eszközök olyan felhőalapú megoldásokhoz csatlakoznak, mint például az Azure IoT Central vagy a partner alkalmazások. A felhőalapú megoldás ezután automatikusan megérti az eszközt, és megkezdheti a velük való interakciót anélkül, hogy kódot kellene írnia.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935396"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531162"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Mi a IoT Plug and Play előzetes verzió?
 
@@ -86,6 +86,6 @@ A nyilvános előzetes verzióban a IoT Plug and Play-eszközök külön üzenet
 
 Most, hogy áttekintette a IoT Plug and Play, a javasolt következő lépés az egyik rövid útmutató kipróbálása:
 
-- [Eszköz-képesség modell használata IoT Plug and Play eszköz létrehozásához](./quickstart-create-pnp-device.md)
-- [Eszköz csatlakoztatása IoT Hubhoz](./quickstart-connect-pnp-device.md)
-- [Kapcsolódás eszközhöz a megoldásban](./quickstart-connect-pnp-device-solution.md)
+- [Eszköz-képesség modell használata IoT Plug and Play eszköz létrehozásához](./quickstart-create-pnp-device-windows.md)
+- [Eszköz csatlakoztatása IoT Hubhoz](./quickstart-connect-pnp-device-c-windows.md)
+- [Kapcsolódás eszközhöz a megoldásban](./quickstart-connect-pnp-device-solution-node.md)

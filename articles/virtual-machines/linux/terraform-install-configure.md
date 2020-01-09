@@ -14,18 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02b6ddf723e47e4608e631aef96f8a12d5f68698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369015"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform telepítése és konfigurálása Azure-erőforrások kiépítéséhez
  
 A Terraform segítségével egyszerűen meghatározhatja, megtekintheti és üzembe helyezheti a felhőalapú infrastruktúrát egy [egyszerű sablonos nyelv](https://www.terraform.io/docs/configuration/syntax.html)használatával. Ez a cikk a Terraform Azure-beli erőforrások kiépítéséhez szükséges lépéseit ismerteti.
 
 Ha többet szeretne megtudni arról, hogyan használható az Terraform az Azure-ban, látogasson el az [Terraform hub](/azure/terraform)webhelyére.
+> [!NOTE]
+> A Terraform-specifikus támogatáshoz forduljon közvetlenül a Terraform a közösségi csatornák egyikének használatával:
+>
+>   • A közösségi portál [Terraform szakasza](https://discuss.hashicorp.com/c/terraform-core) kérdéseket, használati eseteket és hasznos mintákat tartalmaz.
+>
+>   • A szolgáltatóval kapcsolatos kérdésekért látogasson el a közösségi portál [Terraform-szolgáltatók](https://discuss.hashicorp.com/c/terraform-providers) szakaszára.
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

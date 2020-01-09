@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432327"
 ---
 # <a id="troubleshooting"></a>A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő útmutatást használhatja a hibák megoldásához:. Számos különböző oka lehet annak, hogy a pillanatképek miért nem jönnek létre. A pillanatkép állapotának ellenőrzését futtatva azonosíthatja a lehetséges gyakori okok némelyikét.
@@ -219,4 +219,4 @@ Ha továbbra sem jelenik meg kivétel a pillanatkép-AZONOSÍTÓval kapcsolatban
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy-vagy tűzfalszabályok szerkesztése
 
-Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy a szabályokat úgy kell módosítania, hogy az alkalmazás kommunikáljon a Snapshot Debugger szolgáltatással. Itt látható az [Snapshot Debugger által használt IP-címek és portok listája](../../azure-monitor/app/ip-addresses.md#snapshot-debugger).
+Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy a szabályokat úgy kell módosítania, hogy az alkalmazás kommunikáljon a Snapshot Debugger szolgáltatással. Az Snapshot Debugger által használt IP-címek szerepelnek a Azure Monitor szolgáltatás címkéjén.

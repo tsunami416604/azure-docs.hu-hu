@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816449"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608608"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -48,7 +48,7 @@ Ez a funkció jelenleg nem támogatott. Ha a szervezet erőforrásaihoz való ho
 Előfordulhat, hogy egy szervezet VÁLLALATKÖZI együttműködéssel rendelkező felhasználókat kíván hozzáadni, szükség szerint kiépíti őket az alkalmazásokhoz, majd elküldi a meghívókat. A B2B Collaboration Meghívási API segítségével testre szabhatja a bevezetési munkafolyamatot.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Elérhetővé tehetem vendég felhasználókat az Exchange globális címlistában?
-Igen. A vendég objektumok alapértelmezés szerint nem láthatók a szervezet globális címlistában (GAL), de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Lásd: [a vendég objektumokat láthatóvá tehetem a globális címlistában?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+Igen. A vendég objektumok alapértelmezés szerint nem láthatók a szervezet globális címlistában (GAL), de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Lásd: [a vendég objektumokat láthatóvá tehetem a globális címlistában?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Használhatok-e egy vendég felhasználót korlátozott rendszergazdaként?
 Abszolút. További információ: [vendég felhasználók hozzáadása szerepkörhöz](add-guest-to-role.md).
@@ -58,14 +58,14 @@ Ha egy felhasználó a korlátozott rendszergazda szerepkörhöz van rendelve, a
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Letilthatom a Azure Portal a vendég felhasználóinak hozzáférését?
 
-Igen! Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja az összes vendég és külső felhasználó hozzáférését a Azure Portalhoz. Ha beállítja ezt a házirendet, ügyeljen arra, hogy elkerülje a tagok és a rendszergazdák számára a hozzáférés véletlen blokkolását.
+Igen. Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja az összes vendég és külső felhasználó hozzáférését a Azure Portalhoz. Ha beállítja ezt a házirendet, ügyeljen arra, hogy elkerülje a tagok és a rendszergazdák számára a hozzáférés véletlen blokkolását.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) biztonsági rendszergazdaként vagy feltételes hozzáférésű rendszergazdaként.
 2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget. 
 3. A **kezelés**területen válassza a **Biztonság**elemet.
 4. A **védelem**területen válassza a **feltételes hozzáférés**lehetőséget. Válassza az **új szabályzat**lehetőséget.
 5. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét (például "a vendégek blokkolják a portál elérését").
-6. A **hozzárendelések**alatt válassza a **felhasználók és csoportok**lehetőséget.
+6. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
 7. A **beágyazás** lapon válassza a **felhasználók és csoportok kiválasztása**lehetőséget, majd válassza az **összes vendég és külső felhasználó (előzetes verzió)** lehetőséget.
 9. Válassza a **Done** (Kész) lehetőséget.
 10. Az **új** lap **hozzárendelések** területén válassza a **Cloud apps vagy műveletek**elemet.
@@ -125,7 +125,7 @@ Igen. Az Azure AD B2B együttműködés támogatja az engedélyezési és a leti
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Milyen licencekre van szükségünk az Azure AD B2B használatához?
 További információ a szervezet által az Azure AD B2B használatához szükséges licencekről: [Azure Active Directory B2B együttműködés licencelési útmutatója](licensing-guidance.md).
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 

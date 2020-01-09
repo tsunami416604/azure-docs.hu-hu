@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db58f94501590eb3150700d282377ec1b2378cea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3f56d55a08c46338fb7916664834b69005419e72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423752"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Webes API-kat meghívó mobil alkalmazás – webes API meghívása
 
@@ -134,7 +134,7 @@ Ha többször kell meghívnia ugyanazt az API-t, vagy ha több API-t kell meghí
 
 Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor a felhasználóhoz tartozó jogkivonat megszerzését követően elkerülhető, hogy a felhasználó a hitelesítő adatok többszöri megadásával kéri a token beszerzését `AcquireTokenSilent`.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -147,7 +147,7 @@ A beavatkozást igénylő esetek a következőket jelentik:
 - A felhasználó jóváhagyta az első API-t, de most hozzá kell járulnia további hatókörökhöz (növekményes hozzájárulás)
 - Az első API-nak nem volt szükség többtényezős hitelesítésre, de a következő lépés.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

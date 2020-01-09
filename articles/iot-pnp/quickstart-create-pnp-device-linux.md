@@ -3,19 +3,21 @@ title: Azure IoT-Plug and Play előnézeti eszköz létrehozása (Linux) | Micro
 description: Eszköz-képesség modell használata az eszköz kódjának létrehozásához. Ezután futtassa az eszköz kódját, és tekintse meg az eszközt a IoT Hubhoz való kapcsolódáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/10/2019
+ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ff8303b6af73605aae82bae4d70f9648154f9744
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: d2cc440572d6f33480972c15f5c498cc384cb2e3
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406236"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550482"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play Preview-eszköz (Linux) létrehozásához
+
+[!INCLUDE [iot-pnp-quickstarts-1-selector.md](../../includes/iot-pnp-quickstarts-1-selector.md)]
 
 Az _eszköz képességi modellje_ (DCM) ismerteti a IoT Plug and Play eszköz képességeit. A DCM gyakran társítva van egy termék SKU-hoz. A DCM-ben meghatározott képességek újrafelhasználható felületekbe vannak rendezve. A DCM-eszköz kódját létrehozhatja a DCM-ből. Ez a rövid útmutató bemutatja, hogyan használható a VS code on Ubuntu Linux egy IoT Plug and Play-eszköz a DCM használatával történő létrehozásához.
 
@@ -55,44 +57,7 @@ A _vállalati modell adattárának kapcsolati karakterláncát_ az [Azure Certif
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
-
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. Ha még nem rendelkezik IoT hub-használattal, a szakasz további részében hozzon létre egyet.
-
-Ha helyileg használja az Azure CLI-t, a `az` verziójának **2.0.75** vagy újabbnak kell lennie, a Azure Cloud Shell a legújabb verziót használja. A `az --version` parancs használatával keresse meg a számítógépen telepített verziót.
-
-A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-Az ebben a rövid útmutatóban szereplő lépések a bővítmény **0.8.5** vagy újabb verzióját igénylik. A `az extension list` parancs használatával ellenőrizze a telepített verziót, és szükség esetén frissítse a `az extension update` parancsot.
-
-Ha nem rendelkezik IoT-hubhoz, hozzon létre egyet az alábbi parancsokkal, és cserélje le a `<YourIoTHubName>`t a választott egyedi névre. Ha helyileg futtatja ezeket a parancsokat, először jelentkezzen be az Azure-előfizetésbe `az login`használatával. Ha ezeket a parancsokat az Azure Cloud shellben futtatja, a rendszer automatikusan bejelentkezett:
-
-  ```azurecli-interactive
-  az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name <YourIoTHubName> \
-    --resource-group pnpquickstarts_rg --sku S1
-  ```
-
-Az előző parancsok létrehoznak egy `pnpquickstarts_rg` nevű erőforráscsoportot és egy IoT hubot az USA középső régiójában.
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
-
-Futtassa a következő parancsot egy eszköz identitásának létrehozásához az IoT hub-ban. Cserélje le a **YourIoTHubName** és a **YourDeviceID** helyőrzőket a saját _IoT hub nevére_ és az Ön által választott _eszköz-azonosítóra_ .
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
-```
-
-Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez (később vegye fel a használatra).
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
@@ -216,13 +181,13 @@ Az eszköz-ügyfél mintájának elindítása után megtekintheti, hogy az Azure
 A következő parancs használatával megtekintheti a telemetria küldő eszközét. Előfordulhat, hogy várnia kell egy percet vagy kettőt, mielőtt bármilyen telemetria lát a kimenetben:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDeviceID>
 ```
 
 A következő parancs használatával tekintheti meg az eszköz által eljuttatott összes tulajdonságot:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
+az iot dt list-properties --device-id <YourDeviceID> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
 ```
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]

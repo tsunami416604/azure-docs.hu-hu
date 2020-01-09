@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456998"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
 
@@ -26,7 +26,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
 - A **Visual studio 2019 16,3** -es vagy újabb verziója, vagy a **visual Studio 2017 15,7** -es verziója, amelyen telepítve van a **webes fejlesztési** feladat. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- A Visual Studio 2017 esetében a ASP.NET (nem Core) esetében a .NET-keretrendszer 4.7.1 vagy újabb fejlesztői eszközeire van szükség, amelyek alapértelmezés szerint nem települnek. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**lehetőséget, majd válassza az **egyes összetevők**lehetőséget, majd a jobb oldalon bontsa ki a **ASP.net és a webes fejlesztés**elemet, és válassza a **.NET-keretrendszer 4.7.1-fejlesztői eszközök lehetőséget.** .
+- A Visual Studio 2017 esetében a ASP.NET (nem Core) esetében a .NET-keretrendszer 4.7.1 vagy újabb fejlesztői eszközeire van szükség, amelyek alapértelmezés szerint nem települnek. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**lehetőséget, majd válassza az **egyes összetevők**lehetőséget, majd a jobb oldalon bontsa ki a **ASP.net és a webes fejlesztés**elemet, és válassza a **.NET-keretrendszer 4.7.1-fejlesztői eszközök**lehetőséget.
 - Egy ASP.NET 4.7.1 vagy újabb, vagy ASP.NET Core 2,0 vagy újabb webes projekt nyitva van.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault támogatás hozzáadása a projekthez
@@ -112,7 +112,7 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. Ezután nyissa meg az egyik lapozófájlt, például a *index.cshtml.cs* , és írja be a következő kódot:
@@ -137,7 +137,7 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
        }
        ```
 
-   1. Frissítse a `OnGet` metódust. Frissítse az itt látható helyőrző értékét a fenti parancsokban létrehozott titkos névvel.
+   1. Frissítse a(z) `OnGet` metódust. Frissítse az itt látható helyőrző értékét a fenti parancsokban létrehozott titkos névvel.
 
        ```csharp
        public void OnGet()
@@ -184,7 +184,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a K
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a Key Vault a Visual studióba bejelentkezett másik Microsoft-fiók fut (például a Key Vault fut a munkahelyi fiókján, de a Visual Studio a saját fiókját használja), hibaüzenetet kap a Program.cs-fájlban. , hogy a Visual Studio nem fér hozzá a Key Vaulthoz. A probléma megoldásához:
+Ha a Key Vault a Visual studióba bejelentkezett másik Microsoft-fiók fut (például a Key Vault fut a munkahelyi fiókján, de a Visual Studio a saját fiókját használja), hibaüzenetet kap a Program.cs-fájlban. , hogy a Visual Studio nem fér hozzá a Key Vaulthoz. A probléma megoldása:
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) , és nyissa meg a Key Vault.
 
@@ -205,9 +205,9 @@ Ez a szakasz egy ASP.NET-projekt pontos módosításait mutatja be, amikor hozz�
 
 A Project file .NET-referenciákat és a NuGet-csomagok hivatkozásait érinti.
 
-| Típus | Leírások |
+| Type (Típus) | Leírások |
 | --- | --- |
-| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
+| NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>Hozzáadott fájlok ASP.NET Core
 
@@ -241,10 +241,10 @@ Ez a szakasz egy ASP.NET-projekt pontos módosításait mutatja be, amikor hozz�
 
 A Project file .NET-referenciákat és `packages.config` (NuGet-hivatkozásokat) érinti.
 
-| Típus | Leírások |
+| Type (Típus) | Leírások |
 | --- | --- |
-| NET NuGet | Microsoft.Azure.KeyVault |
-| NET NuGet | Microsoft.Azure.KeyVault.WebKey |
+| NET NuGet | Microsoft. Azure. kulcstartó |
+| NET NuGet | Microsoft. Azure. kulcstartó. WebKey |
 | NET NuGet | Microsoft.Rest.ClientRuntime |
 | NET NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
@@ -285,7 +285,7 @@ A Project file .NET-referenciákat és `packages.config` (NuGet-hivatkozásokat)
 - Létrehozott egy erőforráscsoportot (vagy használt egy meglévőt).
 - Létrehozott egy Key Vault a megadott erőforráscsoporthoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha követte ezt az oktatóanyagot, a Key Vault engedélyei a saját Azure-előfizetéssel való futtatásra vannak beállítva, de előfordulhat, hogy éles környezetben nem kívánatos. Létrehozhat egy felügyelt identitást, amellyel kezelheti Key Vault hozzáférését az alkalmazáshoz. Lásd: [Key Vault hitelesítés megadása felügyelt identitással](/azure/key-vault/managed-identity).
 

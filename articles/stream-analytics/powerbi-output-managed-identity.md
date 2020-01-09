@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459674"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI (előzetes verzió)
 
@@ -170,6 +170,29 @@ Most, hogy létrehozta a Stream Analytics feladatot, hozzáférést biztosíthat
 
    ![Stream Analytics-feladatok hozzáadása Power BI munkaterülethez](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>A Power BI PowerShell-parancsmagok használata
+
+1. Telepítse a Power BI `MicrosoftPowerBIMgmt` PowerShell-parancsmagokat.
+
+   > [!Important]
+   > Győződjön meg arról, hogy a parancsmagok 1.0.821 vagy újabb verzióját használja.
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Jelentkezzen be Power BIba.
+
+```powershell
+Login-PowerBI
+```
+
+3. Adja hozzá a Stream Analytics feladatot közreműködőként a munkaterülethez.
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>Használja a Power BI REST API
 
 A Stream Analytics feladatot felveheti közreműködőként a munkaterülethez a "felhasználói csoport hozzáadása" REST API közvetlen használatával. Az API teljes dokumentációja itt található: [csoportok – csoport hozzáadása felhasználó](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
@@ -198,7 +221,7 @@ A szolgáltatás korlátai a következők:
 
 - A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy nem tudja beírni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz kíván használni. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Irányítópult-integráció Power BI Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
 * [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)

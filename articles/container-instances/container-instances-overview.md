@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás az elkülönített táro
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533551"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552321"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
@@ -21,13 +21,19 @@ Az Azure Container Instances ideális megoldás minden olyan forgatókönyv eset
 
 A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel (VM-ekkel) szemben az indítás terén. Az Azure Container Instanceszel másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
 
-## <a name="public-ip-connectivity-and-dns-name"></a>Nyilvános IP-kapcsolat és DNS-név
+## <a name="container-access"></a>Tároló-hozzáférés
 
-Az Azure Container Instances használatával tárolóit közvetlenül is közzéteheti az interneten IP-cím és teljes tartománynév (FQDN) használatával. Tárolópéldány létrehozásakor egyéni DNS-névcímkét kell megadnia ahhoz, hogy az alkalmazás elérhető legyen a *customlabel*.*azureregion*.azurecontainer.io régióban.
+Azure Container Instances lehetővé teszi, hogy a tároló csoportok közvetlenül az interneten legyenek kitéve IP-címmel és teljes tartománynévvel (FQDN). Tárolópéldány létrehozásakor egyéni DNS-névcímkét kell megadnia ahhoz, hogy az alkalmazás elérhető legyen a *customlabel*.*azureregion*.azurecontainer.io régióban.
+
+A Azure Container Instances támogatja egy parancs futtatását egy futó tárolóban azáltal, hogy egy interaktív rendszerhéj segítségével segíti az alkalmazások fejlesztését és hibaelhárítását. A hozzáférés HTTPS-kapcsolaton keresztül történik, a TLS használatával biztosítva az ügyfélkapcsolatokat.
+
+> [!IMPORTANT]
+> 2020. január 13-án Azure Container Instances a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
 
 ## <a name="hypervisor-level-security"></a>Hipervizorszintű biztonság
 
 Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülönítési és erőforrás-szabályozási funkciót, azonban nem voltak eléggé megerősítve a rosszindulatú több-bérlős alkalmazásokhoz. Az Azure Container Instances használatakor az alkalmazások ugyanannyira el vannak különítve a tárolóban, mintha egy virtuális gépen futnának.
+
 
 ## <a name="custom-sizes"></a>Egyéni méretek
 
@@ -37,7 +43,7 @@ A nagy számítási igényű feladatok, például a gépi tanulás esetében a A
 
 ## <a name="persistent-storage"></a>Állandó tárolók
 
-Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzéséhez az [Azure-fájlmegosztások közvetlen csatolásának](container-instances-mounting-azure-files-volume.md) lehetőségét kínáljuk.
+Az Azure Container Instances-nal való lekéréséhez és megtartásához közvetlen csatlakoztatást biztosítunk az Azure Storage által támogatott [Azure Files-megosztásokhoz](container-instances-mounting-azure-files-volume.md) .
 
 ## <a name="linux-and-windows-containers"></a>Linux- és Windows-tárolók
 

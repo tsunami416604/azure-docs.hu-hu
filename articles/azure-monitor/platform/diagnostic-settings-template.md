@@ -5,69 +5,43 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200493"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531003"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
-Az Azure [platform-naplói](platform-logs-overview.md) részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk részletesen ismerteti, hogyan lehet [Azure Resource Manager sablont](../../azure-resource-manager/resource-group-authoring-templates.md) használni a diagnosztikai beállítások konfigurálásához, hogy különböző célhelyekre gyűjtsön platform-naplókat. Ez lehetővé teszi, hogy automatikusan elindítsa a platform-naplók gyűjtését egy erőforrás létrehozásakor.
+A Azure Monitor [diagnosztikai beállításai](diagnostic-settings.md) határozzák meg, hogy hová kell elküldeni az Azure-erőforrások által gyűjtött [platform-naplókat](platform-logs-overview.md) , valamint az Azure-platformtól függenek. Ez a cikk azokat a részleteket és példákat ismerteti, amelyekkel [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-authoring-templates.md) használatával hozhat létre és konfigurálhat diagnosztikai beállításokat a különböző célhelyekre gyűjtött platform-naplók összegyűjtéséhez. 
+
+> [!NOTE]
+> Mivel nem lehet [diagnosztikai beállítást létrehozni](diagnostic-settings.md) az Azure-beli tevékenység naplóhoz a PowerShell vagy a parancssori felület (például más Azure-erőforrások diagnosztikai beállításai) használatával, hozzon létre egy Resource Manager-sablont a műveletnapló számára a jelen cikkben található információk alapján, és telepítse a sablont a PowerShell vagy a parancssori felület használatával.
+
+## <a name="deployment-methods"></a>Üzembe helyezési módszerek
+A Resource Manager-sablonokat bármely érvényes módszerrel üzembe helyezheti, beleértve a PowerShellt és a parancssori felületet is. A műveletnapló diagnosztikai beállításait a CLI-hez vagy a PowerShell-hez való `New-AzDeployment` `az deployment create` használatával kell telepítenie egy előfizetésre. Az erőforrás-naplók diagnosztikai beállításainak üzembe helyezéséhez az `az group deployment create` parancssori felület vagy a PowerShell-`New-AzResourceGroupDeployment` használatával kell telepíteni az erőforráscsoportot. 
+
+További részletekért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) és [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md) . 
 
 
-## <a name="resource-manager-template"></a>Resource Manager-sablon
-A diagnosztikai beállítások létrehozásához a Resource Manager-sablon két részét kell szerkesztenie. Ezeket a szakaszokat a következő szakaszokban ismertetjük.
 
-### <a name="parameters"></a>Paraméterek
-A diagnosztikai beállítás [célhelyei](diagnostic-settings.md#destinations) alapján adja hozzá a paramétereket a Storage-fiók neve, az Event hub engedélyezési szabály azonosítója és log Analytics munkaterület-azonosító paramétereit tartalmazó blobhoz.
-   
-```json
-"settingName": {
-  "type": "string",
-  "metadata": {
-    "description": "Name for the diagnostic setting resource. Eg. 'archiveToStorage' or 'forSecurityTeam'."
-  }
-},
-"storageAccountName": {
-  "type": "string",
-  "metadata": {
-    "description": "Name of the Storage Account in which platform logs should be saved."
-  }
-},
-"eventHubAuthorizationRuleId": {
-  "type": "string",
-  "metadata": {
-    "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
-  }
-},
-"eventHubName": {
-  "type": "string",
-  "metadata": {
-    "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
-  }
-},
-"workspaceId":{
-  "type": "string",
-  "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
-  }
-}
-```
 
-### <a name="resources"></a>Segédanyagok és eszközök
-Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné hozni, adjon hozzá `[resource namespace]/providers/diagnosticSettings`típusú erőforrást. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
-   
+
+## <a name="resource-logs"></a>Erőforrásnaplók
+Erőforrás-naplók esetén adjon hozzá `<resource namespace>/providers/diagnosticSettings` típusú erőforrást a sablonhoz. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adjon meg egy `category` a begyűjteni kívánt erőforráshoz tartozó egyes kategóriákhoz tartozó `logs` szakaszban. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
+
+A következő egy olyan sablon, amely egy adott erőforráshoz tartozó erőforrás-napló kategóriát gyűjt egy Log Analytics munkaterületre, a Storage-fiókra és az Event hub-ra. 
+
 ```json
 "resources": [
   {
-    "type": "providers/diagnosticSettings",
-    "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
+    "type": "/<resource namespace>/providers/diagnosticSettings",
+    "name": "[concat(parameters('resourceName'),'/microsoft.insights/', parameters('settingName'))]",
     "dependsOn": [
-      "[/*resource Id for which resource logs will be enabled>*/]"
+      "[<resource Id for which resource logs will be enabled>]"
     ],
     "apiVersion": "2017-05-01-preview",
     "properties": {
@@ -78,22 +52,14 @@ Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné
       "workspaceId": "[parameters('workspaceId')]",
       "logs": [ 
         {
-          "category": "/* log category name */",
-          "enabled": true,
-          "retentionPolicy": {
-            "days": 0,
-            "enabled": false
-          }
+          "category": "<category name>",
+          "enabled": true
         }
       ],
       "metrics": [
         {
           "category": "AllMetrics",
-          "enabled": true,
-          "retentionPolicy": {
-            "enabled": false,
-            "days": 0
-          }
+          "enabled": true
         }
       ]
     }
@@ -103,137 +69,171 @@ Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné
 
 
 
-## <a name="example"></a>Példa
-Az alábbi példa egy logikai alkalmazást hoz létre, és olyan diagnosztikai beállítást hoz létre, amely lehetővé teszi az erőforrás-naplók adatfolyamként való továbbítását egy Event hub-ba és egy Storage-fiókba.
+### <a name="example"></a>Példa
+Az alábbi példa egy olyan diagnosztikai beállítást hoz létre, amely lehetővé teszi az erőforrás-naplók adatfolyamként való továbbítását egy Event hub, egy Storage-fiók és egy Log Analytics munkaterület számára.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "logicAppName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Logic App that will be created."
-      }
-    },
-    "testUri": {
-      "type": "string",
-      "defaultValue": "https://azure.microsoft.com/status/feed/"
-    },
-    "settingName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the setting. Name for the diagnostic setting resource. Eg. 'archiveToStorage' or 'forSecurityTeam'."
-      }
-    },
-    "storageAccountName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Storage Account in which resource logs should be saved."
-      }
-    },
-    "eventHubAuthorizationRuleId": {
-      "type": "string",
-      "metadata": {
-        "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
-      }
-    },
-    "eventHubName": {
-      "type": "string",
-      "metadata": {
-        "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
-      }
-    },
-    "workspaceId": {
-      "type": "string",
-      "metadata": {
-        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
-      }
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Logic/workflows",
-      "name": "[parameters('logicAppName')]",
-      "apiVersion": "2016-06-01",
-      "location": "[resourceGroup().location]",
-      "properties": {
-        "definition": {
-          "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-            "testURI": {
-              "type": "string",
-              "defaultValue": "[parameters('testUri')]"
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "autoscaleSettingName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the autoscale setting"
             }
-          },
-          "triggers": {
-            "recurrence": {
-              "type": "recurrence",
-              "recurrence": {
-                "frequency": "Hour",
-                "interval": 1
-              }
-            }
-          },
-          "actions": {
-            "http": {
-              "type": "Http",
-              "inputs": {
-                "method": "GET",
-                "uri": "@parameters('testUri')"
-              },
-              "runAfter": {}
-            }
-          },
-          "outputs": {}
         },
-        "parameters": {}
-      },
-      "resources": [
-        {
-          "type": "providers/diagnosticSettings",
-          "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
-          ],
-          "apiVersion": "2017-05-01-preview",
-          "properties": {
-            "name": "[parameters('settingName')]",
-            "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-            "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
-            "eventHubName": "[parameters('eventHubName')]",
-            "workspaceId": "[parameters('workspaceId')]",
-            "logs": [
-              {
-                "category": "WorkflowRuntime",
-                "enabled": true,
-                "retentionPolicy": {
-                  "days": 0,
-                  "enabled": false
-                }
-              }
-            ],
-            "metrics": [
-              {
-                "timeGrain": "PT1M",
-                "enabled": true,
-                "retentionPolicy": {
-                  "enabled": false,
-                  "days": 0
-                }
-              }
-            ]
-          }
+        "settingName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the diagnostic setting"
+            }
+        },
+        "workspaceId": {
+            "type": "string",
+            "metadata": {
+                "description": "ResourceIDl of the Log Analytics workspace in which resource logs should be saved."
+            }
+        },
+        "storageAccountId": {
+            "type": "string",
+            "metadata": {
+              "description": "ResourceID of the Storage Account in which resource logs should be saved."
+            }
+        },
+        "eventHubAuthorizationRuleId": {
+            "type": "string",
+            "metadata": {
+              "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
+            }
+        },
+        "eventHubName": {
+            "type": "string",
+            "metadata": {
+                "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
+            }
         }
+    },
+    "variables": {},
+    "resources": [
+    {
+      "type": "microsoft.insights/autoscalesettings/providers/diagnosticSettings",
+      "apiVersion": "2017-05-01-preview",
+      "name": "[concat(parameters('autoscaleSettingName'),'/microsoft.insights/', parameters('settingName'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Insights/autoscalesettings', parameters('autoscaleSettingName'))]"
       ],
-      "dependsOn": []
+      "properties": {
+        "workspaceId": "[parameters('workspaceId')]",
+        "storageAccountId": "[parameters('storageAccountId')]",
+        "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+        "eventHubName": "[parameters('eventHubName')]",
+        "logs": [
+          {
+            "category": "AutoscaleScaleActions",
+            "enabled": true
+          },
+          {
+            "category": "AutoscaleEvaluations",
+            "enabled": true
+          }
+        ]
+      }
     }
   ]
 }
+```
 
+## <a name="activity-log"></a>Tevékenységnapló
+Az Azure-tevékenység naplójában adjon hozzá egy `Microsoft.Insights/diagnosticSettings`típusú erőforrást. A rendelkezésre álló kategóriák a [tevékenység naplójának kategóriák részében](activity-log-view.md#categories-in-the-activity-log)vannak felsorolva. A következő egy olyan sablon, amely az összes műveletnapló-kategóriát összegyűjti egy Log Analytics munkaterületre, egy Storage-fiókra és az Event hub-ra.
+
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "settingName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the diagnostic setting"
+            }
+        },
+        "workspaceId": {
+            "type": "string",
+            "metadata": {
+                "description": "ResourceID of the Log Analytics workspace in which resource logs should be saved."
+            }
+        },
+        "storageAccountId": {
+            "type": "string",
+            "metadata": {
+              "description": "ResourceID of the Storage Account in which resource logs should be saved."
+            }
+        },
+        "eventHubAuthorizationRuleId": {
+            "type": "string",
+            "metadata": {
+              "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
+            }
+        },
+        "eventHubName": {
+            "type": "string",
+            "metadata": {
+                "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Insights/diagnosticSettings",
+            "apiVersion": "2017-05-01-preview",
+            "name": "[parameters('settingName')]",
+            "location": "global",
+            "properties": {
+                "workspaceId": "[parameters('workspaceId')]",
+                "storageAccountId": "[parameters('storageAccountId')]",
+                "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+                "eventHubName": "[parameters('eventHubName')]",
+                "logs": [
+                    {
+                        "category": "Administrative",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Security",
+                        "enabled": true
+                    },
+                    {
+                        "category": "ServiceHealth",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Alert",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Recommendation",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Policy",
+                        "enabled": true
+                    },
+                    {
+                        "category": "Autoscale",
+                        "enabled": true
+                    },
+                    {
+                        "category": "ResourceHealth",
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+    ]
+}
 ```
 
 

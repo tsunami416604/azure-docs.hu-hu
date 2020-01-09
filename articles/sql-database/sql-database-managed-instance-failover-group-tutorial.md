@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286759"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552763"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz
 
-SQL Database felügyelt példány hozzáadása egy feladatátvételi csoporthoz. Ez a cikk azt ismerteti, hogyan lehet:
+SQL Database felügyelt példány hozzáadása egy feladatátvételi csoporthoz. Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > - Elsődleges felügyelt példány létrehozása
@@ -31,6 +31,7 @@ SQL Database felügyelt példány hozzáadása egy feladatátvételi csoporthoz.
   > [!NOTE]
   > - Ha ezt az oktatóanyagot hajtja végre, győződjön meg arról, hogy az erőforrásokat a [felügyelt példányhoz tartozó feladatátvételi csoportok beállításának előfeltételei](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)szerint konfigurálja. 
   > - A felügyelt példányok létrehozása jelentős időt vehet igénybe. Ennek eredményeképpen ez az oktatóanyag több órát is igénybe vehet. További információ a kiépítési időszakokról: [felügyelt példányok kezelési műveletei](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - A feladatátvételi csoportban részt vevő felügyelt példányokhoz [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) vagy két csatlakoztatott VPN-átjáró szükséges. Ez az oktatóanyag a VPN-átjárók létrehozásának és csatlakoztatásának lépéseit ismerteti. Hagyja ki ezeket a lépéseket, ha már konfigurálta a ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -420,7 +421,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
 
    A következő táblázat a másodlagos virtuális hálózathoz szükséges értékeket mutatja be:
 
-    | **Mező** | Érték |
+    | **Mező** | Value (Díj) |
     | --- | --- |
     | **Name (Név)** |  A másodlagos felügyelt példány által használandó virtuális hálózat neve, például `vnet-sql-mi-secondary`. |
     | **Címtér** | A virtuális hálózat (például `10.128.0.0/16`) címterület. | 
@@ -459,7 +460,7 @@ Hozza létre a másodlagos felügyelt példányt a Azure Portal használatával.
 
    A következő táblázat a másodlagos felügyelt példányhoz szükséges értékeket tartalmazza:
  
-    | **Mező** | Érték |
+    | **Mező** | Value (Díj) |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Erőforráscsoport**| Az az erőforráscsoport, amelyben az elsődleges felügyelt példánya. |
@@ -728,7 +729,9 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 ---
 
 ## <a name="4---create-primary-gateway"></a>4 – elsődleges átjáró létrehozása 
-Két felügyelt példánynak a feladatátvételi csoportban való részvételhez a két felügyelt példány virtuális hálózatai között olyan átjárót kell konfigurálni, amely engedélyezi a hálózati kommunikációt. A Azure Portal használatával létrehozhatja az elsődleges felügyelt példány átjáróját. 
+Két felügyelt példánynak a feladatátvételi csoportban való részvételhez ExpressRoute vagy átjárót kell konfigurálnia a két felügyelt példány virtuális hálózatai között, hogy engedélyezze a hálózati kommunikációt. Ha úgy dönt, hogy [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) konfigurálja a két VPN-átjáró csatlakoztatása helyett, ugorjon a [7. lépésre](#7---create-a-failover-group).  
+
+Ez a cikk a két VPN-átjáró létrehozásának lépéseit és azok összekapcsolását ismerteti, de a feladatátvételi csoport létrehozásához a ExpressRoute konfigurálásakor ugorjon előre. 
 
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
@@ -749,7 +752,7 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
 
    Az alábbi táblázat az elsődleges felügyelt példány átjárója számára szükséges értékeket tartalmazza:
  
-    | **Mező** | Érték |
+    | **Mező** | Value (Díj) |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
     | **Name (Név)** | A virtuális hálózati átjáró neve, például `primary-mi-gateway`. | 
@@ -831,7 +834,7 @@ A Azure Portal használatával ismételje meg az előző szakaszban leírt lép�
 
    A következő táblázat a másodlagos felügyelt példány átjárója számára szükséges értékeket tartalmazza:
 
-   | **Mező** | Érték |
+   | **Mező** | Value (Díj) |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
    | **Name (Név)** | A virtuális hálózati átjáró neve, például `secondary-mi-gateway`. | 
@@ -1075,7 +1078,7 @@ Az erőforrások tisztításához először törölje a felügyelt példányt, m
 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com). 
-1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe annak megerősítéséhez, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végezte, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a tevékenység lapon a felügyelt példány törlésének megerősítéséhez. 
+1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe annak megerősítéséhez, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a tevékenység lapon a felügyelt példány törlésének megerősítéséhez. 
 1. A felügyelt példány törlése után törölje a *virtuális fürtöt* úgy, hogy kiválasztja az erőforráscsoportot, majd a **Törlés**lehetőséget választja. Írja be `yes` a szövegmezőbe annak megerősítéséhez, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. 
 1. Törölje a többi erőforrást. Írja be `yes` a szövegmezőbe annak megerősítéséhez, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. 
 1. Törölje az erőforráscsoportot az **erőforráscsoport törlése**elem kiválasztásával, írja be az erőforráscsoport nevét, `myResourceGroup`, majd válassza a **Törlés**lehetőséget. 

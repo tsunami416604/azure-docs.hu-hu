@@ -1,6 +1,6 @@
 ---
-title: Egy Azure Resource Manager méretezési csoport sablonjának használata felügyelt lemez konvertálása |} A Microsoft Docs
-description: Egy méretezési csoport sablonjának konvertálása a felügyelt lemezes méretezésicsoport-sablonná.
+title: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
+description: Azure Resource Manager virtuálisgép-méretezési csoport sablonjának átalakítása felügyelt lemezes méretezési csoport sablonba.
 keywords: virtuálisgép-méretezési csoportok
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,20 +16,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6419da8e87ac32e763e3e796bb49daa562d68030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359613"
 ---
-# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>A méretezési csoport sablonjának konvertálása a felügyelt lemezes méretezésicsoport-sablonná
+# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Méretezési csoport sablonjának átalakítása felügyelt lemezes méretezési csoport sablonba
 
-Előfordulhat, hogy nem használja a felügyelt lemezes méretezési létrehozására szolgáló Resource Manager-sablonnal rendelkező ügyfelek szeretne módosítsa úgy, hogy felügyelt lemez használatához. Ez a cikk bemutatja, hogyan használhatja a felügyelt lemezek, a lekéréses kérelem példaként használva a [Azure gyorsindítási sablonok](https://github.com/Azure/azure-quickstart-templates), a Közösség által készített-adattárat a mintául szolgáló Resource Manager-sablonok. Itt látható a teljes pull-kérelem: [ https://github.com/Azure/azure-quickstart-templates/pull/2998 ](https://github.com/Azure/azure-quickstart-templates/pull/2998), és a különbözeti vonatkozó részeinek az alábbi magyarázatok együtt:
+A felügyelt lemezeket nem használó méretezési csoport létrehozásához Resource Manager-sablonnal rendelkező ügyfelek módosíthatják azt a felügyelt lemez használatára. Ez a cikk bemutatja, hogyan használhatók a felügyelt lemezek, példaként egy lekéréses kérelem az Azure-beli [Gyorsindítás sablonokból](https://github.com/Azure/azure-quickstart-templates), egy közösségi adattár a Resource Manager-sablonokhoz. A teljes pull-kérést itt tekintheti meg: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998), és a diff megfelelő részei alább találhatók, valamint magyarázatokkal is rendelkeznek:
 
-## <a name="making-the-os-disks-managed"></a>Így a felügyelt operációsrendszer-lemezek
+## <a name="making-the-os-disks-managed"></a>Az operációsrendszer-lemezek felügyelt állapotba állítása
 
-A következő különbözeti, a storage-fiók és a lemez tulajdonságainak kapcsolatos számos változók el lesznek távolítva. Tárfiók típusa már nem szükséges (Standard_LRS az alapértelmezett érték), de megadhatja azt, ha szükséges. Felügyelt lemez csak Standard_LRS és Premium_LRS használata támogatott. Új storage-fiókkal utótagja egyedi karakterlánc-tömbben és sa száma is használja a régi sablon olyan tárfiókneveket generálni. Ezeket a változókat nem lesznek az új sablon a szükséges, mert a felügyelt lemezt automatikusan létrehozza a tárfiókokat az ügyfél nevében. Hasonlóképpen vhd-tároló nevének és operációsrendszer-lemez neve nem lesznek szükséges, mert a felügyelt lemezt automatikusan nevet az alapul szolgáló storage-blobtárolók és lemezek.
+A következő különbségekben a Storage-fiókkal és a lemez tulajdonságaival kapcsolatos számos változó törlődik. A Storage-fiók típusa már nem szükséges (Standard_LRS az alapértelmezett), de igény szerint megadható. A felügyelt lemezeken csak Standard_LRS és Premium_LRS támogatott. A rendszer a régi sablonban új Storage-fiók utótagját, egyedi karakterlánc-tömböt és SA Count értéket használta a Storage-fiókok nevének létrehozásához. Ezek a változók már nem szükségesek az új sablonban, mert a felügyelt lemez automatikusan létrehozza a Storage-fiókokat az ügyfél nevében. Hasonlóképpen, a VHD-tároló neve és az operációsrendszer-lemez neve már nem szükséges, mert a felügyelt lemez automatikusan a mögöttes tároló blob-tárolókat és lemezeket nevezi el.
 
 ```diff
    "variables": {
@@ -53,7 +53,7 @@ A következő különbözeti, a storage-fiók és a lemez tulajdonságainak kapc
 ```
 
 
-A következő különbözeti, a számítási API frissült a verzió 2016-04-30-preview, ez az a legkorábbi szükséges verzió a felügyelt lemezek támogatásához a méretezési csoportokkal. Az új API-verzióban a régi szintaxissal nem felügyelt lemezek használhatja, ha szükséges. Ha csak a számítási API-verzió frissítése, és nem módosítja a bármi más, a sablon továbbra is működnek, mint korábban.
+A következő eltérések esetén a számítási API-t a 2016-04-30-es verzióra frissíti a rendszer, amely a legkorábbi szükséges verzió a méretezési csoportokkal felügyelt lemezek támogatásához. Ha szükséges, a nem felügyelt lemezeket az új API-verzióban használhatja a régi szintaxissal. Ha csak a számítási API-verziót frissíti, és nem változtat semmi mást, a sablonnak továbbra is ugyanúgy kell működnie, mint korábban.
 
 ```diff
 @@ -86,7 +74,7 @@
@@ -67,7 +67,7 @@ A következő különbözeti, a számítási API frissült a verzió 2016-04-30-
    },
 ```
 
-A következő különbözeti, az a tárfiók típusú erőforrást távolítja el az erőforrások tömb teljesen. Az erőforrás már nem szükséges, a felügyelt lemezt automatikusan létrehozza őket.
+A következő különbségekben a Storage-fiók erőforrása teljesen el lesz távolítva az erőforrások tömbből. Az erőforrásra már nincs szükség, mert a felügyelt lemez automatikusan létrehozza azokat.
 
 ```diff
 @@ -113,19 +101,6 @@
@@ -92,7 +92,7 @@ A következő különbözeti, az a tárfiók típusú erőforrást távolítja e
        "location": "[resourceGroup().location]",
 ```
 
-A következő különbözeti, láthatjuk, hogy megszüntetjük a záradékot a méretezési csoportból, hozott létre a storage-fiókok hurok hivatkozó függ. A régi sablonban Ez biztosítja, hogy a storage-fiókok létrejöttek-e, mielőtt a méretezési létrehozása elkezdődött, de ehhez a záradékhoz már nem szükséges felügyelt lemezzel. A vhd-tárolók tulajdonság is törlődnek, és az operációs rendszer lemez név tulajdonság szerint ezek a tulajdonságok automatikusan kezeli a motorháztető alatt felügyelt lemez. Hozzáadhat `"managedDisk": { "storageAccountType": "Premium_LRS" }` a "osDisk" konfigurációban, ha prémium szintű operációsrendszer-lemezek. Csak egy nagybetűt rendelkező virtuális gépek vagy a kisbetűs "a virtuális Gépet a termékváltozat prémium szintű lemez is használható.
+A következő eltérések esetében láthatjuk, hogy a méretezési csoporttól a Storage-fiókokat létrehozó hurokra hivatkozó függő záradékot töröljük. A régi sablonban ez azt biztosítja, hogy a Storage-fiókok a méretezési csoport létrehozása előtt jöttek létre, de ez a záradék már nem szükséges a felügyelt lemezzel. A VHD-tárolók tulajdonságot is eltávolítja, az operációsrendszer-lemez neve tulajdonsággal együtt, mivel ezek a tulajdonságok a felügyelt lemez alapján automatikusan kezelhetők a motorháztető alatt. Ha prémium operációsrendszer-lemezeket szeretne, hozzáadhat `"managedDisk": { "storageAccountType": "Premium_LRS" }` a "osDisk" konfigurációhoz. A virtuális gép SKU-jának csak nagybetűs vagy kisbetűvel rendelkező virtuális gépek használhatják a prémium szintű lemezeket.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -121,12 +121,12 @@ A következő különbözeti, láthatjuk, hogy megszüntetjük a záradékot a m
 
 ```
 
-A méretezésicsoport-konfigurációt a felügyelt vagy nem felügyelt lemez használata nincs explicit tulajdonság szerepel. A méretezési tudja, hogy melyiket kívánja használni, amelyek szerepelnek a tárolóprofil tulajdonsága alapján. Ezért fontos, ha módosítja a sablon annak érdekében, hogy a megfelelő tulajdonságok a tárolási profilban, a méretezési.
+Nincs explicit tulajdonság a méretezési csoport konfigurációjában, hogy a felügyelt vagy nem felügyelt lemezt kívánja-e használni. A méretezési csoport tudja, hogy melyiket használja a tárolási profilban lévő tulajdonságok alapján. Ezért fontos, hogy a sablon módosításakor ügyeljen arra, hogy a megfelelő tulajdonságok a méretezési csoport tárolási profiljában legyenek.
 
 
 ## <a name="data-disks"></a>Adatlemezek
 
-A fenti változások a méretezési csoport felügyelt lemezeket használ az operációs rendszer a lemez, de mi a helyzet az adatlemezeket? Hozzáadhat adatlemezeket, adja hozzá a "dataDisks" tulajdonság "storageProfile" a "osDisk" ugyanazon a szinten. A tulajdonság értéke JSON objektumok listáját, tartoznak tulajdonságok "logikai" (amely egy adatlemezt a virtuális gép egyedinek kell lennie), "createOption" ("üres" jelenleg csak a támogatott lehetőség), és a "diskSizeGB" (gigabájtban; a lemez mérete nagyobbnak kell lennie 0 és legfeljebb 1024) az alábbi példában látható módon:
+A fenti módosításokkal a méretezési csoport felügyelt lemezeket használ az operációsrendszer-lemezhez, de mi az adatlemezek? Adatlemezek hozzáadásához adja hozzá a "storageProfile" alatt található "dataDisks" tulajdonságot a "osDisk" értékkel megegyező szinten. A tulajdonság értéke az objektumok JSON-listája, amelyek mindegyike a "LUN" tulajdonságokkal rendelkezik (amelynek egyedinek kell lennie adatlemezként egy virtuális gépen), a "createOption" ("Empty" jelenleg az egyetlen támogatott lehetőség) és a "diskSizeGB" (a lemez mérete gigabájtban; nagyobbnak kell lennie, mint 0 és kevesebb, mint 1024) az alábbi példában látható módon:
 
 ```
 "dataDisks": [
@@ -138,13 +138,13 @@ A fenti változások a méretezési csoport felügyelt lemezeket használ az ope
 ]
 ```
 
-Ha megad `n` a tömbben lévő lemezek a méretezési csoportban lévő mindegyik virtuális gép beállítása lekérdezi `n` adatlemezeket. Vegye figyelembe, azonban, hogy ezek az adatlemezeket nyers eszközökön. Ezek nem formázott. Csatlakoztassa a partíciót, és formázza a lemezeket a használatuk előtt az ügyfél esetén. Igény szerint is megadhatja `"managedDisk": { "storageAccountType": "Premium_LRS" }` az egyes adatobjektum lemez, adja meg, hogy legyen-e a prémium szintű adatlemezt. Csak egy nagybetűt rendelkező virtuális gépek vagy a kisbetűs "a virtuális Gépet a termékváltozat prémium szintű lemez is használható.
+Ha megadja `n` lemezeket ebben a tömbben, a méretezési csoport minden virtuális gépe `n` adatlemezeket kap. Ne feledje azonban, hogy ezek az adatlemezek nyers eszközök. Nincsenek formázva. Az ügyfél feladata a lemezek csatlakoztatása, particionálása és formázása a használatuk előtt. Megadhatja az egyes adatlemez-objektumok `"managedDisk": { "storageAccountType": "Premium_LRS" }` is, így meghatározhatja, hogy prémium szintű adatlemeznek kell lennie. A virtuális gép SKU-jának csak nagybetűs vagy kisbetűvel rendelkező virtuális gépek használhatják a prémium szintű lemezeket.
 
-Adatlemezek használata méretezési csoportokkal kapcsolatos további információkért lásd: [Ez a cikk](./virtual-machine-scale-sets-attached-disks.md).
+Ha többet szeretne megtudni a méretezési csoportokkal rendelkező adatlemezek használatáról, tekintse meg [ezt a cikket](./virtual-machine-scale-sets-attached-disks.md).
 
 
-## <a name="next-steps"></a>További lépések
-Például Resource Manager-sablonok használata a méretezési csoportokat, keressen rá a "vmss" kifejezésre a [Azure gyorsindítási sablonok GitHub-tárház](https://github.com/Azure/azure-quickstart-templates).
+## <a name="next-steps"></a>Következő lépések
+A méretezési csoportokkal rendelkező Resource Manager-sablonok esetében például keressen rá a "vmss" kifejezésre az [Azure Gyorsindítás sablonok GitHub](https://github.com/Azure/azure-quickstart-templates)-tárházában.
 
-További általános információkért tekintse meg a [kezdőlapja a méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+Általános információkért tekintse meg a [méretezési csoportok fő oldalát](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

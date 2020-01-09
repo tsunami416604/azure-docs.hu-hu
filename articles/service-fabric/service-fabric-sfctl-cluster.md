@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl-fürt | Microsoft Docs
-description: Ismerteti a CLI-sfctl Service Fabric.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl-fürt
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A fürtök kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: a42062f6f6b671d853f47e3f170b366799829a62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901487"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639156"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
 Service Fabric fürtök kiválasztása, kezelése és üzemeltetése.
@@ -31,16 +22,16 @@ Service Fabric fürtök kiválasztása, kezelése és üzemeltetése.
 | kód verziói | Lekéri a Service Fabric-fürtben kiépített háló-programkódok listáját. |
 | konfiguráció – verziók | Lekérdezi a Service Fabric-fürtben kiépített háló-konfigurációs verziók listáját. |
 | egészségügy | Lekéri egy Service Fabric-fürt állapotát. |
-| Nyilvánvaló | A Service Fabric-fürt jegyzékfájljának beolvasása. |
+| manifest | A Service Fabric-fürt jegyzékfájljának beolvasása. |
 | művelet – megszakítás | Egy felhasználó által okozott hiba műveletének megszakítása. |
 | művelet – lista | Lekéri a megadott bemenet alapján szűrt, felhasználó által kiváltott hibák listáját. |
 | rendelkezés | Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése. |
 | helyreállítás – System | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum elvesztésekor jelenleg beragadt rendszerszolgáltatások helyreállításával. |
 | jelentés – állapot | Állapotjelentés küldése a Service Fabric-fürtön. |
-| Válassza | Csatlakozás egy Service Fabric-fürt végponthoz. |
+| válassza az | Csatlakozás egy Service Fabric-fürt végponthoz. |
 | kapcsolat megjelenítése | Annak megjelenítése Service Fabric fürt, amelyhez ez a sfctl-példány csatlakozik. |
 | leépítése | Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése. |
-| Frissítés | A Service Fabric-fürt programkódjának vagy konfigurációs verziójának frissítése megkezdődött. |
+| frissítés | A Service Fabric-fürt programkódjának vagy konfigurációs verziójának frissítése megkezdődött. |
 | frissítés – folytatás | A fürt frissítésének áthelyezése a következő frissítési tartományba. |
 | frissítés – visszaállítás | Service Fabric-fürt frissítésének visszaállítása. |
 | frissítés – állapot | A fürt aktuális frissítésének előrehaladását kéri le. |

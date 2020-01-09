@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a19fdfaf70dffb7f0bcb8001475fee89b2d05086
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1213ab4c623cb1d475dff1d71e65439b1d08f5c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665814"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429439"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -21,7 +21,7 @@ Ha készen áll arra, hogy az IoT Edge-megoldást a fejlesztésből éles körny
 
 A cikkben szereplő információk nem egyenlőek. A rangsorolás elősegítése érdekében az egyes szakaszok a következő két szakaszra oszthatják meg a munkát: **fontos** , hogy elvégezze az éles környezetbe való bevezetést, vagy a **hasznos** tudnivalókat.
 
-## <a name="device-configuration"></a>Eszköz konfigurációja
+## <a name="device-configuration"></a>Eszközök konfigurálása
 
 IoT Edge az eszközök a málna PI-ből egy laptopra vagy egy kiszolgálón futó virtuális gépre is felhasználhatók. Lehet, hogy fizikailag vagy virtuális kapcsolaton keresztül fér hozzá az eszközhöz, vagy hosszabb ideig el lehet különíteni. Mindkét esetben meg kell győződnie arról, hogy a megfelelő működésre van konfigurálva. 
 
@@ -39,17 +39,17 @@ Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telep
 
 Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa szerepkörének megismeréséhez tekintse meg a [hogyan használja a Azure IoT Edge a tanúsítványokat](iot-edge-certs.md).
 
-Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a config. YAML fájlból, tekintse [meg az IoT Edge eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)működésre című témakört. A tanúsítványok konfigurálásának lépései megegyeznek attól, hogy az eszköz átjáróként fog-e használni. Ez a cikk parancsfájlokat biztosít a csak tesztelési célú tanúsítványok létrehozásához. Ezeket a tanúsítványokat ne használja éles környezetben. 
+Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a config. YAML fájlból, tekintse [meg az éles tanúsítványok telepítése IoT Edge eszközön](how-to-create-transparent-gateway.md)című témakört. 
 
 ### <a name="have-a-device-management-plan"></a>Eszközkezelés
 
 Mielőtt üzembe helyezi az eszközt az éles környezetben, tudnia kell, hogyan fogja kezelni a jövőbeli frissítéseket. Egy IoT Edge eszköz esetében a frissítendő összetevők listája a következőket tartalmazhatja:
 
-* Eszköz belső vezérlőprogramja
+* Az eszköz belső vezérlőprogramja
 * Operációs rendszer kódtárai
 * Tároló motor, például Moby
 * IoT Edge démon
-* HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok
+* CA-tanúsítványok
 
 További információ: [a IoT Edge futtatókörnyezet frissítése](how-to-update-iot-edge.md). A IoT Edge démon frissítésének jelenlegi módszerei fizikai vagy SSH-hozzáférést igényelnek a IoT Edge eszközhöz. Ha sok eszközt szeretne frissíteni, vegye fel a frissítési lépéseket egy parancsfájlba, vagy használjon olyan Automation-eszközt, mint például a Ansible.
 

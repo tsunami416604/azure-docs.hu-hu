@@ -1,25 +1,16 @@
 ---
-title: Az Azure Service Fabric Application design ajánlott eljárásai | Microsoft Docs
-description: Ajánlott eljárások Service Fabric alkalmazások fejlesztéséhez.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric alkalmazás-tervezési ajánlott eljárások
+description: Ajánlott eljárások és tervezési szempontok az alkalmazások és szolgáltatások Azure Service Fabric használatával történő fejlesztéséhez.
 author: markfussell
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: eec5daf0100d527886a508f5adbdb2b0e3010b09
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 755e3c1eb649bc6c8ecc084d18e9904cc90b1282
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262263"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551845"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric alkalmazás-tervezési ajánlott eljárások
 
@@ -55,9 +46,9 @@ Vegye fontolóra az állapot-nyilvántartó szolgáltatásokat abban az esetben,
 
 Döntse el az adatmegőrzési idő keretét:
 
-- **Gyorsítótárazott**adathalmazok. A gyorsítótárazást akkor használja, ha a külső tárolók késése probléma. Használjon állapot-nyilvántartó szolgáltatást saját adatgyorsítótárként, vagy vegye fontolóra a [nyílt forráskódú SoCreate Service Fabric elosztott gyorsítótár](https://github.com/SoCreate/service-fabric-distributed-cache)használatát. Ebben az esetben nem kell foglalkoznia a gyorsítótárban lévő összes adat elvesztésével.
+- **Gyorsítótárazott adathalmazok**. A gyorsítótárazást akkor használja, ha a külső tárolók késése probléma. Használjon állapot-nyilvántartó szolgáltatást saját adatgyorsítótárként, vagy vegye fontolóra a [nyílt forráskódú SoCreate Service Fabric elosztott gyorsítótár](https://github.com/SoCreate/service-fabric-distributed-cache)használatát. Ebben az esetben nem kell foglalkoznia a gyorsítótárban lévő összes adat elvesztésével.
 - **Időkorlátos adat**. Ebben az esetben a késéshez a számítási időszakhoz közel kell tartania az adatmennyiséget, de az adatok elvesznek a *katasztrófában*. Például sok IoT-megoldásban az adatoknak a számításokhoz kell megfelelniük, például az elmúlt néhány nap átlagos hőmérsékletének kiszámításakor, de ha ezek az adatok elvesznek, akkor a rögzített adatpontok nem fontosak. Emellett ebben a forgatókönyvben általában nem érdekli az egyes adatpontok biztonsági mentése. Csak a külső tárolóba rendszeresen írt számított átlagos értékeket kell biztonsági másolatot készíteni.  
-- **Hosszú távú adatfeldolgozás**. A megbízható gyűjtemények folyamatosan tárolják az adataikat. Ebben az esetben azonban [elő kell készítenie a](https://docs.microsoft.com/azure/service-fabric/service-fabric-disaster-recovery)vész-helyreállítást, beleértve a fürtök [rendszeres biztonsági mentési házirendjeinek konfigurálását](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup) is. Ezzel a beállítással megadhatja, hogy mi történjen, ha a fürt egy vészhelyzetben megsemmisül, ahol létre kell hoznia egy új fürtöt, és hogyan kell telepíteni az új alkalmazás-példányokat és a helyreállítást a legújabb biztonsági mentésből.
+- **Hosszú távú adatfeldolgozás**. A megbízható gyűjtemények folyamatosan tárolják az adataikat. Ebben az esetben azonban [elő kell készítenie a vész-helyreállítást](https://docs.microsoft.com/azure/service-fabric/service-fabric-disaster-recovery), beleértve a fürtök [rendszeres biztonsági mentési házirendjeinek konfigurálását](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup) is. Ezzel a beállítással megadhatja, hogy mi történjen, ha a fürt egy vészhelyzetben megsemmisül, ahol létre kell hoznia egy új fürtöt, és hogyan kell telepíteni az új alkalmazás-példányokat és a helyreállítást a legújabb biztonsági mentésből.
 
 Költségek megtakarítása és a rendelkezésre állás javítása:
 - Az állapot-nyilvántartó szolgáltatások segítségével csökkentheti a költségeket, mivel nem számít fel adathozzáférési és tranzakciós költségeket a távoli áruházból, és mivel nem kell más szolgáltatást használnia, például az Azure cache-t a Redis.
@@ -65,31 +56,31 @@ Költségek megtakarítása és a rendelkezésre állás javítása:
 - Más szolgáltatások függőségeinek eltávolításával javíthatja a szolgáltatás rendelkezésre állását. Ha az állapotot a fürttel együtt szeretné kezelni, elkülöníti Önt más szolgáltatás leállása vagy késési problémái miatt.
 
 ## <a name="how-to-work-with-reliable-services"></a>A Reliable Services használata
-Service Fabric Reliable Services segítségével egyszerűen hozhat létre állapot nélküli és állapot-nyilvántartó szolgáltatásokat. További információ: [Bevezetés](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)a Reliable Servicesba.
-- Mindig tartsa tiszteletben a lemondási `RunAsync()` jogkivonatot az állapot nélküli és állapot- `ChangeRole()` nyilvántartó szolgáltatások esetében, valamint az állapot-nyilvántartó szolgáltatások módszerét. [](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) Ha nem, Service Fabric nem tudja, hogy a szolgáltatás lezárható-e. Ha például nem tartja tiszteletben a lemondási tokent, sokkal több alkalmazás-frissítési idő merülhet fel.
+Service Fabric Reliable Services segítségével egyszerűen hozhat létre állapot nélküli és állapot-nyilvántartó szolgáltatásokat. További információ: [Bevezetés a Reliable Servicesba](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction).
+- Mindig tartsa tiszteletben a [lemondási jogkivonatot](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) a `RunAsync()` metódusban állapot nélküli és állapot-nyilvántartó szolgáltatások esetén, valamint az állapot-nyilvántartó szolgáltatások `ChangeRole()` módszerét. Ha nem, Service Fabric nem tudja, hogy a szolgáltatás lezárható-e. Ha például nem tartja tiszteletben a lemondási tokent, sokkal több alkalmazás-frissítési idő merülhet fel.
 -   A [kommunikációs figyelők](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) megnyitása és lezárása időben, és a lemondási jogkivonatok tiszteletben tartása.
--   Soha ne keverje aszinkron kóddal a szinkronizálási kódot. Például ne használja `.GetAwaiter().GetResult()` az aszinkron hívásokat. A hívási veremben használjon aszinkron *módon* .
+-   Soha ne keverje aszinkron kóddal a szinkronizálási kódot. Ne használja például a `.GetAwaiter().GetResult()`t az aszinkron hívásokban. A hívási veremben használjon aszinkron *módon* .
 
 ## <a name="how-to-work-with-reliable-actors"></a>A Reliable Actors használata
-A Service Fabric Reliable Actors lehetővé teszi az állapot-nyilvántartó, virtuális szereplők egyszerű létrehozását. További információ: [Bevezetés](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)a Reliable Actorsba.
+A Service Fabric Reliable Actors lehetővé teszi az állapot-nyilvántartó, virtuális szereplők egyszerű létrehozását. További információ: [Bevezetés a Reliable Actorsba](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction).
 
 - Komolyan fontolóra veheti a pub/sub üzenetküldést a szereplők között az alkalmazás méretezése érdekében. A szolgáltatást biztosító eszközök közé tartozik a [nyílt forráskódú SoCreate Service Fabric pub/sub](https://service-fabric-pub-sub.socreate.it/) és [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
-- A Actor állapotának lehető [](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)legrészletesebbnek kell lennie.
+- A Actor állapotának lehető [legrészletesebbnek](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)kell lennie.
 - A [színész életciklusának](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)kezelése. Ha nem fogja használni őket, törölje a szereplőket. A szükségtelen szereplők törlése különösen fontos, ha a [felejtő szolgáltatót](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#state-persistence-and-replication)használja, mert az összes állapotot a memóriában tárolja a rendszer.
 - Az egymásra [épülő Egyidejűség](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)miatt a szereplők a legjobban független objektumokként használatosak. Ne hozzon létre több résztvevőből álló, szinkron metódusú hívásokat (amelyek mindegyike valószínűleg külön hálózati hívás lesz), vagy hozzon létre körkörös színészi kéréseket. Ezek jelentős hatással lesznek a teljesítményre és a skálázásra.
 - Ne keverje aszinkron kóddal a szinkronizálási kódot. A teljesítménnyel kapcsolatos problémák elkerülése érdekében következetesen használja az aszinkron módon.
 - Ne tegyen hosszan futó hívásokat a szereplőkkel. A hosszan futó hívások letiltják az ugyanahhoz a szereplőhöz tartozó más hívásokat a turn-based Egyidejűség miatt.
-- Ha más szolgáltatásokkal kommunikál [Service Fabric a távoli](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) eljáráshívás `ServiceProxyFactory`használatával, és létrehozza a-t, hozza létre a gyárat a [Actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) szinten, és *ne* a színész szintjén.
+- Ha más szolgáltatásokkal kommunikál [Service Fabric távoli](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) eljáráshívás használatával, és létrehoz egy `ServiceProxyFactory`, hozza létre a gyárat a [Actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) szinten, és *ne* a színész szintjén.
 
 
 ## <a name="application-diagnostics"></a>Application Diagnostics
 Legyen alapos az [alkalmazások naplózásának](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) a szolgáltatási hívásokban való hozzáadásával kapcsolatban. Segít diagnosztizálni azokat a forgatókönyveket, amelyekben a szolgáltatások meghívja egymást. Ha például A "B" hívása C hívást hív meg, a hívás bárhol meghiúsulhat. Ha nem rendelkezik elegendő naplózással, a rendszer nehezen diagnosztizálja a hibákat. Ha a szolgáltatások a hívási kötetek miatt túl sokat jelentkeznek, ne felejtse el legalább a hibák és a figyelmeztetések naplózását.
 
 ## <a name="iot-and-messaging-applications"></a>IoT és üzenetkezelési alkalmazások
-Amikor az [azure IoT hub](https://docs.microsoft.com/azure/iot-hub/) vagy az [Azure Event Hubsról](https://docs.microsoft.com/azure/event-hubs/)olvas üzeneteket, használja a [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). A ServiceFabricProcessor integrálható Service Fabric Reliable Services, hogy megőrizze az Event hub-partíciók olvasásának állapotát, és az új üzeneteket leküldi a szolgáltatásoknak a `IEventProcessor::ProcessEventsAsync()` metódus segítségével.
+Amikor az [azure IoT hub](https://docs.microsoft.com/azure/iot-hub/) vagy az [Azure Event Hubsról](https://docs.microsoft.com/azure/event-hubs/)olvas üzeneteket, használja a [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor). A ServiceFabricProcessor integrálható Service Fabric Reliable Services, hogy megőrizze az Event hub-partíciók olvasásának állapotát, és az új üzeneteket a `IEventProcessor::ProcessEventsAsync()` metódus használatával leküldi a szolgáltatásainak.
 
 
 ## <a name="design-guidance-on-azure"></a>Tervezési útmutató az Azure-ban
-* Látogasson el az [Azure architektúra](https://docs.microsoft.com/azure/architecture/microservices/) központba, ahol tervezési útmutatást talál az Azure-beli [szolgáltatások létrehozásához](https://docs.microsoft.com/azure/architecture/microservices/).
+* Látogasson el az [Azure architektúra központba](https://docs.microsoft.com/azure/architecture/microservices/) , ahol tervezési útmutatást talál az Azure-beli [szolgáltatások létrehozásához](https://docs.microsoft.com/azure/architecture/microservices/).
 
-* Tekintse meg az [Azure for Gaming használatának első lépéseit](https://docs.microsoft.com/gaming/azure/) ismertető útmutatót a [Service Fabric in Gaming Servicesben](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)való használatáról.
+* Tekintse meg az [Azure for Gaming használatának első lépéseit](https://docs.microsoft.com/gaming/azure/) ismertető útmutatót a [Service Fabric in Gaming Servicesben való használatáról](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf).

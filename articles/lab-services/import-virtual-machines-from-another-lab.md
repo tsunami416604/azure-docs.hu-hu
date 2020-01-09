@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek importálhat egy másik tesztlabor az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Importálja a virtuális gépek egy másik tesztlabor az aktuális tesztkörnyezeti útmutató.
+title: Virtuális gépek importálása egy másik laborból Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan importálhat virtuális gépeket egy másik laborból a jelenlegi laborba.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0778759958e70c564779f5493d7cf8b646f6ced0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61322873"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644647"
 ---
-# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Virtuális gépek importálhat egy másik tesztlabor az Azure DevTest Labs szolgáltatásban
-Ez a cikk ismerteti, importálja a virtuális gépeket egy másik labor a labor.
+# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Virtuális gépek importálása egy másik laborból Azure DevTest Labs
+Ez a cikk azt ismerteti, hogyan lehet virtuális gépeket importálni egy másik laborból a laborba.
 
-## <a name="scenarios"></a>Forgatókönyvek
-Az alábbiakban néhány esetben, amikor importálja a virtuális gépek egy tesztkörnyezet egy másik labor kell:
+## <a name="scenarios"></a>Alkalmazási helyzetek
+Íme néhány forgatókönyv, amelyben virtuális gépeket kell importálnia egy másik laborba:
 
-- A csapat egyéni kerül át a vállalaton belül egy másik csoportot, és szeretné a fejlesztői asztali eltarthat, hogy az új csoport DevTest Labs szolgáltatásban.
-- A csoport eléri egy [előfizetés-szintű kvóta](../azure-subscription-service-limits.md) , és szeretné felosztani a máshogy néhány-előfizetéssel, a csapatok
-- A vállalat az Express Route (vagy valamilyen egyéb új hálózati topológia) kerül át, és a csapat szeretne a virtuális gépeket az új infrastruktúra használata
+- A csapaton belüli személy egy másik csoportba kerül át a vállalaton belül, és az új csapat DevTest Labs-be kívánja tenni a fejlesztői asztalt.
+- A csoport egy [előfizetési szintű kvótával](../azure-resource-manager/management/azure-subscription-service-limits.md) rendelkezik, és néhány előfizetésre szeretné osztani a csapatokat
+- A vállalat az expressz útvonalra (vagy más új hálózati topológiára) vált, és a csapat szeretné áthelyezni a Virtual Machines az új infrastruktúra használatára.
 
 ## <a name="solution-and-constraints"></a>Megoldás és megkötések
-Ez a funkció lehetővé teszi, hogy a virtuális gépek egy tesztkörnyezetben (forrás) importálása másik lab (cél). Igény szerint adhat új nevet a cél virtuális gép a folyamat során. Az importálási folyamat magában foglalja az összes függőségét, például a lemezek, ütemezéseket, hálózati beállításokat és így tovább.
+Ez a funkció lehetővé teszi, hogy a virtuális gépeket egy tesztkörnyezetben (forrás) egy másik laborba (cél) importálja. Megadhat egy új nevet a cél virtuális géphez a folyamatban. Az importálási folyamat magában foglalja az összes függőséget, például a lemezeket, az ütemterveket, a hálózati beállításokat és így tovább.
 
-A folyamat hosszabb időt is igénybe, és hatással van a következő tényezőket:
+A folyamat eltarthat egy ideig, és az alábbi tényezők befolyásolják:
 
-- (Mivel ez a másolási műveletek és a egy move művelet nem) a forrásgép csatolt a lemezek számát és méretét
-- Távolság a célhelyre (például USA keleti régiójában, Délkelet-Ázsia).
+- A forrásoldali géphez csatolt lemezek száma/mérete (mivel ez egy másolási művelet, nem pedig áthelyezési művelet)
+- Távolság a célhelytől (például az USA keleti régiója Délkelet-Ázsiában).
 
-A folyamat befejeződése után a a forrás virtuális gép leállítása és az új egyik fut-e a cél a lab-ben marad.
+A folyamat befejezése után a forrásként szolgáló virtuális gép leáll, és az újat a cél laborban futtatja.
 
-Nincsenek tisztában lenni egy tesztlabor a virtuális gépek importálhatja egy másik labor tervezése során két kulcsokra vonatkozó korlátozások:
+Két fontos korlátozást kell figyelembe vennie, amikor a virtuális gépeket egy laborból egy másik laborba importálja:
 
-- Virtuális gép import előfizetések és -régiók között támogatottak, de az előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz társított kell lennie.
-- Virtuális gépek nem igényelhető a forrás tesztkörnyezetben állapotban kell lennie.
-- Ön a tulajdonosa, a virtuális gép a forrás labor és a cél-tesztkörnyezetben a labor tulajdonosa.
-- Ez a funkció jelenleg csak a Powershell és a REST API használatával támogatott.
+- A virtuális gépek a különböző előfizetésekben és régiókban való importálása támogatott, de az előfizetéseket ugyanahhoz a Azure Active Directory bérlőhöz kell társítani.
+- A Virtual Machines nem lehet a forrás laborban található, igényelhető állapotban.
+- A virtuális gép tulajdonosa a tesztkörnyezetben, a laborban pedig a tesztkörnyezet tulajdonosa.
+- Jelenleg ez a funkció csak a PowerShell és a REST API használatával támogatott.
 
 ## <a name="use-powershell"></a>A PowerShell használata
-Töltse le a ImportVirtualMachines.ps1 fájlt a [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). A parancsfájl segítségével egyetlen virtuális gép vagy a forrás laborkörnyezetben található összes virtuális gép importálása a cél laborkörnyezetbe.
+Töltse le a ImportVirtualMachines. ps1 fájlt a [githubról](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). A parancsfájl használatával egyetlen virtuális gépet vagy a forrás laborban lévő összes virtuális gépet importálhatja a cél laborba.
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>Egyetlen virtuális gép importálása a PowerShell használatával
-A powershell-parancsprogram futtatása a forrásoldali virtuális gép és a cél labor azonosító, és opcionálisan biztosítja egy új nevet a cél gép igényel:
+Ennek a PowerShell-parancsfájlnak a végrehajtásához meg kell adnia a forrás virtuális gépet és a cél labort, és opcionálisan meg kell adni egy új nevet a célszámítógépen:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -61,8 +61,8 @@ A powershell-parancsprogram futtatása a forrásoldali virtuális gép és a cé
                             -DestinationVirtualMachineName "<Optional: specify a new name for the imported VM in the destination lab>"
 ```
 
-### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Importálja az összes virtuális gép a forrás lab-ben a PowerShell használatával
-Ha a forrás virtuális gép nincs megadva, a parancsfájl automatikusan importálja a DevTest Labs szolgáltatásban létrehozott összes virtuális gépet.  Példa:
+### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>A PowerShell használata az összes virtuális gép importálásához a forrás laborban
+Ha nincs megadva a forrásként szolgáló virtuális gép, a parancsfájl automatikusan importálja az összes virtuális gépet a DevTest Labs-ben.  Példa:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -72,7 +72,7 @@ Ha a forrás virtuális gép nincs megadva, a parancsfájl automatikusan import�
 ```
 
 ## <a name="use-http-rest-to-import-a-vm"></a>Virtuális gép importálása HTTP REST használatával
-A REST-hívást használata egyszerű. Engedélyezi a elegendő információt a forrás- és erőforrások azonosítására. Ne feledje, hogy a művelet a rendeltetési labor erőforráson történik.
+A REST-hívás egyszerű. Adjon meg elegendő információt a forrás-és a cél erőforrásainak azonosításához. Ne feledje, hogy a művelet a cél labor erőforráson történik.
 
 ```REST
 POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/resourceGroups/<DestinationResourceGroup>/providers/Microsoft.DevTestLab/labs/<DestinationLab>/ImportVirtualMachine?api-version=2017-04-26-preview
@@ -82,8 +82,8 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Tesztkörnyezet szabályzatainak beállítása](devtest-lab-get-started-with-lab-policies.md)
+- [Tesztkörnyezet szabályzatának beállítása](devtest-lab-get-started-with-lab-policies.md)
 - [Gyakori kérdések](devtest-lab-faq.md)

@@ -1,7 +1,7 @@
 ---
 title: '3\. Oktatóanyag: hitelkockázat-modell üzembe helyezése'
-titleSuffix: ML Studio (classic) - Azure
-description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást a Azure Machine Learning Studio klasszikus verziójában. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat harmadik része. Bemutatja, hogyan helyezhet üzembe egy modellt webszolgáltatásként.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást Azure Machine Learning Studio (klasszikus). Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat harmadik része. Bemutatja, hogyan helyezhet üzembe egy modellt webszolgáltatásként.
 keywords: hitelkockázat, prediktív elemzési megoldás, kockázatértékelés, üzembe helyezés, webszolgáltatás
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432204"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3\. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fej
 
 Tegyük fel, hogy előrejelzést kell készíteni egy személy hitelkockázatáról az általa kitöltött hitelkérelemben megadott adatok alapján.  
 
-A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz a Azure Machine Learning Studio klasszikus verzióját és egy Machine Learning webszolgáltatást kell használnia. 
+A hitelkockázat-értékelés összetett probléma, de ez az oktatóanyag egy kicsit egyszerűbbé válik. Példaként fogja használni, hogyan hozhat létre prediktív elemzési megoldást Microsoft Azure Machine Learning Studio (klasszikus) használatával. Ehhez a megoldáshoz Azure Machine Learning Studio (klasszikus) és egy Machine Learning webszolgáltatást fog használni. 
 
 Ebben a három részből álló oktatóanyagban nyilvánosan elérhető hitelkockázat-adatforrásokkal kezdheti meg.  Ezután fejlesztheti és betaníthatja a prediktív modellt.  Végül üzembe helyezi a modellt webszolgáltatásként.
 
@@ -36,7 +36,7 @@ Az oktatóanyag ezen részében:
 > [!div class="checklist"]
 > * Az üzembe helyezés előkészítése
 > * A webszolgáltatás üzembe helyezése
-> * Webszolgáltatás tesztelése
+> * A webszolgáltatás tesztelése
 > * Webszolgáltatás kezelése
 > * Hozzáférés a webszolgáltatáshoz
 
@@ -164,7 +164,7 @@ A webszolgáltatás teszteléséhez kattintson a **teszt** fülre (lásd az alá
 > 
 > 
 
-## <a name="test-the-web-service"></a>Webszolgáltatás tesztelése
+## <a name="test-the-web-service"></a>A webszolgáltatás tesztelése
 
 A webszolgáltatáshoz való hozzáféréskor a felhasználó **adatbevitele a webszolgáltatás bemeneti** modulján keresztül történik, ahol a rendszer átadja a [pontszám modell][score-model] modulnak, és lelőtte azt. A prediktív kísérlet beállításának módja, a modell az eredeti hitelkockázat-adatkészlettel megegyező formátumban várja az adatokat.
 Az eredményeket a webszolgáltatás **kimeneti** modulján keresztül adja vissza a rendszer a webszolgáltatásnak.
@@ -239,14 +239,14 @@ A webalkalmazás-sablonok használatával kapcsolatos további információkért
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el:
 
 > [!div class="checklist"]
 > * Az üzembe helyezés előkészítése
 > * A webszolgáltatás üzembe helyezése
-> * Webszolgáltatás tesztelése
+> * A webszolgáltatás tesztelése
 > * Webszolgáltatás kezelése
 > * Hozzáférés a webszolgáltatáshoz
 

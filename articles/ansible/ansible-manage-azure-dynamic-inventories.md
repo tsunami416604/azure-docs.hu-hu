@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti Azure-beli dinamikus leltározásait 
 keywords: Ansible, Azure, devops, bash, cloudshellben, dinamikus leltár
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442789"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Oktatóanyag: Azure-erőforrások dinamikus leltározásának konfigurálása az Ansible használatával
 
@@ -32,7 +32,7 @@ A Ansible használatával különböző forrásokból (például az Azure-ból) 
 
 ## <a name="create-the-test-vms"></a>A teszt virtuális gépek létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Nyissa meg a [Cloud Shellt](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -63,7 +63,7 @@ A Ansible használatával különböző forrásokból (például az Azure-ból) 
                      --image UbuntuLTS --generate-ssh-keys
         ```
 
-## <a name="tag-a-vm"></a>Virtuális gép címkézése
+## <a name="tag-a-vm"></a>Virtuális gépek címkézése
 
 A címkék használatával a felhasználó által definiált kategóriák szerint [rendezheti az Azure-erőforrásokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) . 
 
@@ -228,7 +228,7 @@ A címkék célja, hogy lehetővé tegye a virtuális gépek alcsoportjaival val
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     

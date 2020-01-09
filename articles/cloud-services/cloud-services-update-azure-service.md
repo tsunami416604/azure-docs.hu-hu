@@ -2,17 +2,17 @@
 title: Felhőalapú szolgáltatás frissítése | Microsoft Docs
 description: Ismerje meg, hogyan frissítheti a Cloud Servicest az Azure-ban. Megtudhatja, hogyan folytathatja a frissítését a felhőalapú szolgáltatásokban a rendelkezésre állás biztosítása érdekében.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: tagore
+ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360344"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Felhőalapú szolgáltatás frissítése
 
@@ -47,7 +47,7 @@ A következő táblázat a szolgáltatásnak a frissítés során engedélyezett
 
 | Az üzemeltetés, a szolgáltatások és a szerepkörök számára engedélyezett módosítások | Helyben történő frissítés | Előkészített (VIP swap) | Törlés és újbóli üzembe helyezés |
 | --- | --- | --- | --- |
-| Az operációs rendszer verziója |Igen |Igen |Igen |
+| Operációs rendszer verziója |Igen |Igen |Igen |
 | .NET megbízhatósági szint |Igen |Igen |Igen |
 | <sup>1</sup> . virtuális gép mérete |Igen<sup>2</sup> |Igen |Igen |
 | Helyi tárolási beállítások |Csak<sup>2</sup> |Igen |Igen |
@@ -99,12 +99,12 @@ A háló vezérlő 30 percet vár az egyes szerepkör-példányok elindítási �
 
 Ha a szolgáltatást egyetlen példányról több példányra frissíti, akkor a szolgáltatás a frissítés végrehajtása során leáll, miközben az Azure frissíti a szolgáltatásokat. A szolgáltatói szerződés garantálja a szolgáltatás rendelkezésre állását csak az egynél több példánnyal üzembe helyezett szolgáltatásokra vonatkozik. Az alábbi lista azt ismerteti, hogyan érinti az egyes meghajtókon tárolt információkat az egyes Azure-szolgáltatások frissítési forgatókönyvei:
 
-|Forgatókönyv|C Drive|D Drive|E meghajtó|
+|Alkalmazási helyzet|C meghajtó|D meghajtó|E meghajtó|
 |--------|-------|-------|-------|
-|Virtuális gép újraindítása|Megőrzi|Megőrzi|Megőrzi|
-|Portál újraindítása|Megőrzi|Megőrzi|Megsemmisül|
-|Portál rendszerképének alaphelyzetbe állítása|Megőrzi|Megsemmisül|Megsemmisül|
-|Helyben történő frissítés|Megőrzi|Megőrzi|Megsemmisül|
+|Virtuális gép újraindítása|Megőrzött|Megőrzött|Megőrzött|
+|Portál újraindítása|Megőrzött|Megőrzött|Megsemmisül|
+|Portál rendszerképének alaphelyzetbe állítása|Megőrzött|Megsemmisül|Megsemmisül|
+|Helyben történő frissítés|Megőrzött|Megőrzött|Megsemmisül|
 |Csomópont-áttelepítés|Megsemmisül|Megsemmisül|Megsemmisül|
 
 Vegye figyelembe, hogy a fenti listában az E: meghajtó a szerepkör legfelső szintű meghajtóját jelöli, és nem lehet rögzítetten kódolva. Ehelyett használja a **% RoleRoot%** környezeti változót a meghajtó megjelenítéséhez.
@@ -114,7 +114,7 @@ Az Egypéldányos szolgáltatás verziófrissítésének leállásának minimali
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Frissítés visszaállítása
-Az Azure rugalmasságot biztosít a szolgáltatások a frissítések során történő kezelésében azáltal, hogy további műveleteket kezdeményez a szolgáltatáson, miután az Azure Fabric-vezérlő elfogadja a kezdeti frissítési kérést. A visszaállítás csak akkor hajtható végre, ha egy frissítés (konfigurációs változás) vagy a frissítés **folyamatban** állapotban van a központi telepítésben. Egy frissítés vagy frissítés akkor tekinthető folyamatban lévőnek, ha a szolgáltatásnak legalább egy példánya még nem lett frissítve az új verzióra. Annak ellenőrzéséhez, hogy engedélyezett-e a visszaállítás, ellenőrizze a RollbackAllowed jelző értékét, amelyet a [telepítés](/previous-versions/azure/reference/ee460804(v=azure.100)) beolvasása és a [Cloud Service-tulajdonságok](/previous-versions/azure/reference/ee460806(v=azure.100)) beolvasása művelet ad vissza, igaz értékre van állítva.
+Az Azure rugalmasságot biztosít a szolgáltatások a frissítések során történő kezelésében azáltal, hogy további műveleteket kezdeményez a szolgáltatáson, miután az Azure Fabric-vezérlő elfogadja a kezdeti frissítési kérést. A visszaállítás csak akkor hajtható végre, ha egy frissítés (konfigurációs változás) vagy a frissítés **folyamatban** állapotban van a központi telepítésben. Egy frissítés vagy frissítés akkor tekinthető folyamatban lévőnek, ha a szolgáltatásnak legalább egy példánya még nem lett frissítve az új verzióra. Annak ellenőrzéséhez, hogy engedélyezett-e a visszaállítás, ellenőrizze a RollbackAllowed jelző értékét, amelyet a [telepítés beolvasása](/previous-versions/azure/reference/ee460804(v=azure.100)) és a [Cloud Service-tulajdonságok beolvasása](/previous-versions/azure/reference/ee460806(v=azure.100)) művelet ad vissza, igaz értékre van állítva.
 
 > [!NOTE]
 > A visszaállítást csak helyben végzett frissítéssel vagy frissítéssel kell meghívni, mert a VIP swap **-** frissítések a szolgáltatás egy teljes futó példányának cseréjét igénylik egy másikkal.
@@ -124,17 +124,17 @@ Az Azure rugalmasságot biztosít a szolgáltatások a frissítések során tör
 A folyamatban lévő frissítés visszaállítása a következő hatásokkal jár az üzemelő példányra:
 
 * Az új verzióra még nem frissített vagy frissített összes szerepkör-példány frissítése vagy frissítése nem történik meg, mert ezek a példányok már futtatják a szolgáltatás cél verzióját.
-* Minden olyan szerepkör-példány, amely már frissítve lett vagy frissítve lett a szervizcsomag (\*. cspkg) vagy a szolgáltatás konfigurációs (\*. cscfg) fájljának új verziójára (vagy mindkét fájlra), a rendszer visszaállította a fájlok verziófrissítés előtti verzióját.
+* Minden olyan szerepkör-példány, amely már frissítve lett vagy frissítve lett a szervizcsomag (\*. cspkg) fájljának vagy a szolgáltatás konfigurációs (\*. cscfg) fájljának (vagy mindkét fájlnak) új verziójára, visszaállnak a fájlok verziófrissítés előtti verziójára.
 
 Ezt a funkciót a következő funkciók biztosítják:
 
-* A [visszaállítás frissítési vagy frissítési](/previous-versions/azure/reference/hh403977(v=azure.100)) művelete, amely meghívható egy konfigurációs frissítésre (az [üzembe helyezési konfiguráció](/previous-versions/azure/reference/ee460809(v=azure.100))meghívásával) vagy a frissítésre (amelyet a [frissítési telepítés](/previous-versions/azure/reference/ee460793(v=azure.100))meghívásával indít el), feltéve, hogy legalább egy a szolgáltatás azon példánya, amely még nem lett frissítve az új verzióra.
-* A zárolt elem és a RollbackAllowed elem, amelyet a rendszer az [üzembe helyezés](/previous-versions/azure/reference/ee460804(v=azure.100)) és a [Cloud Service tulajdonságok](/previous-versions/azure/reference/ee460806(v=azure.100)) beolvasása művelet válasz törzsének részeként ad vissza:
+* A [visszaállítás frissítési vagy frissítési](/previous-versions/azure/reference/hh403977(v=azure.100)) művelete, amely meghívható egy konfigurációs frissítésre (az [üzembe helyezési konfiguráció](/previous-versions/azure/reference/ee460809(v=azure.100))meghívásával) vagy a frissítésre (amelyet a [frissítési telepítés](/previous-versions/azure/reference/ee460793(v=azure.100))meghívásával indít el), feltéve, hogy legalább egy példány van a szolgáltatásban, amely még nem lett frissítve az új verzióra.
+* A zárolt elem és a RollbackAllowed elem, amelyet a rendszer az [üzembe helyezés](/previous-versions/azure/reference/ee460804(v=azure.100)) és a [Cloud Service tulajdonságok beolvasása](/previous-versions/azure/reference/ee460806(v=azure.100)) művelet válasz törzsének részeként ad vissza:
 
   1. A zárolt elem lehetővé teszi annak észlelését, hogy egy adott központi telepítésnél hogyan hívható meg egy mutációs művelet.
   2. A RollbackAllowed elem lehetővé teszi annak észlelését, hogy a rendszer mikor hívja meg a [visszaállítási frissítést vagy a frissítési](/previous-versions/azure/reference/hh403977(v=azure.100)) műveletet egy adott központi telepítésben.
 
-  A visszaállítás végrehajtásához nem kell ellenőriznie a zárolt és a RollbackAllowed elemeket is. Ez elegendő annak megerősítéséhez, hogy a RollbackAllowed értéke TRUE (igaz). Ezeket az elemeket csak akkor adja vissza a rendszer, ha ezeket a metódusokat a kérelem fejlécének x-MS-Version értékre való beállításával hívja meg. 2011-10-01 "vagy újabb verzió. További információ a verziószámozási fejlécekről: a [Service Management verziószámozása](/previous-versions/azure/gg592580(v=azure.100)).
+  A visszaállítás végrehajtásához nem kell ellenőriznie a zárolt és a RollbackAllowed elemeket is. Ez elegendő annak megerősítéséhez, hogy a RollbackAllowed értéke TRUE (igaz). Ezeket az elemeket csak akkor adja vissza a rendszer, ha ezeket a metódusokat a kérelem fejlécének "x-MS-Version: 2011-10-01" vagy egy újabb verzióra való meghívásával hívja meg. További információ a verziószámozási fejlécekről: a [Service Management verziószámozása](/previous-versions/azure/gg592580(v=azure.100)).
 
 Vannak olyan helyzetek, amikor egy frissítés vagy frissítés visszaállítása nem támogatott, ezek a következők:
 
@@ -142,24 +142,24 @@ Vannak olyan helyzetek, amikor egy frissítés vagy frissítés visszaállítás
 * Kvóta korlátai – ha a frissítés leskálázási művelet volt, előfordulhat, hogy a visszaállítási művelet elvégzéséhez már nincs elegendő számítási kvóta. Minden Azure-előfizetéshez hozzá van rendelve egy kvóta, amely meghatározza az adott előfizetéshez tartozó összes üzemeltetett szolgáltatás által felhasználható magok maximális számát. Ha egy adott frissítés visszaállítását végrehajtja, akkor az előfizetést kvóta fölé helyezi, és a visszaállítás nem lesz engedélyezve.
 * Versenyhelyzet – ha a kezdeti frissítés befejeződött, a visszaállítás nem lehetséges.
 
-Egy példa arra, hogy ha a frissítés visszaállítását manuális módban használja, akkor hasznos lehet, [](/previous-versions/azure/reference/ee460793(v=azure.100)) ha az Azure által üzemeltetett szolgáltatásra történő helyszíni frissítés sebességét szeretné szabályozni.
+Egy példa arra, hogy ha a frissítés visszaállítását manuális módban használja, akkor hasznos lehet, [Ha az Azure](/previous-versions/azure/reference/ee460793(v=azure.100)) által üzemeltetett szolgáltatásra történő helyszíni frissítés sebességét szeretné szabályozni.
 
-A frissítés bevezetése során a [frissítés üzembe helyezését](/previous-versions/azure/reference/ee460793(v=azure.100)) manuális módban hívja meg, és kezdje el a frissítési tartományok elérését. Ha egy ponton, a frissítés figyelése közben megfigyelheti, hogy az első frissítési tartományban található egyes szerepkör-példányok nem válaszolnak, meghívhatja a [visszaállítási frissítést vagy a frissítési](/previous-versions/azure/reference/hh403977(v=azure.100)) műveletet a központi telepítésben, ami nem érinti a következőt: azokat a példányokat, amelyek még nem lettek frissítve, és visszaállította azokat a példányokat, amelyek frissítve lettek az előző szervizcsomagra és konfigurációra.
+A frissítés bevezetése során a [frissítés üzembe helyezését](/previous-versions/azure/reference/ee460793(v=azure.100)) manuális módban hívja meg, és kezdje el a frissítési tartományok elérését. Ha egy bizonyos ponton a frissítés figyelése után megfigyelheti, hogy az első frissítési tartományokban egyes szerepkör-példányok nem válaszolnak, meghívhatja a [visszaállítás frissítését vagy frissítési](/previous-versions/azure/reference/hh403977(v=azure.100)) műveletét a központi telepítésben, ami nem érinti azokat a példányokat, amelyek még nem lettek frissítve, és visszaállítják azokat a példányokat, amelyek az előző szervizcsomagra és konfigurációra frissültek.
 
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Több mutációs művelet kezdeményezése folyamatban lévő központi telepítésre
-Bizonyos esetekben előfordulhat, hogy több egyidejű mutációs műveletet szeretne kezdeményezni egy folyamatban lévő telepítésben. Előfordulhat például, hogy egy szolgáltatás frissítését hajtja végre, és a frissítés folyamatban van a szolgáltatásban, ezért módosítani kívánja a frissítést, például a frissítés visszadobásához, egy másik frissítés alkalmazásához, vagy akár az üzemelő példány törléséhez. Ha a szolgáltatás frissítése olyan hibás kódot tartalmaz, amely akkor fordulhat elő, amikor a frissítés egy frissített szerepkör-példányt használ, a rendszer ismételten összeomlást okoz. Ebben az esetben az Azure Fabric-vezérlő nem fog tudni előrehaladást végezni a frissítés alkalmazása során, mert a frissített tartományban a nem megfelelő számú példány kifogástalan állapotú. Ezt az állapotot beragadt *központi telepítésnek*nevezzük. A telepítés visszavonásához visszaállíthatja a frissítést, vagy alkalmazhat egy friss frissítést az egyik sikertelen művelet felett.
+Bizonyos esetekben előfordulhat, hogy több egyidejű mutációs műveletet szeretne kezdeményezni egy folyamatban lévő telepítésben. Előfordulhat például, hogy egy szolgáltatás frissítését hajtja végre, és a frissítés folyamatban van a szolgáltatásban, ezért módosítani kívánja a frissítést, például a frissítés visszadobásához, egy másik frissítés alkalmazásához, vagy akár az üzemelő példány törléséhez. Ha a szolgáltatás frissítése olyan hibás kódot tartalmaz, amely akkor fordulhat elő, amikor a frissítés egy frissített szerepkör-példányt használ, a rendszer ismételten összeomlást okoz. Ebben az esetben az Azure Fabric-vezérlő nem fog tudni előrehaladást végezni a frissítés alkalmazása során, mert a frissített tartományban a nem megfelelő számú példány kifogástalan állapotú. Ezt az állapotot *beragadt központi telepítésnek*nevezzük. A telepítés visszavonásához visszaállíthatja a frissítést, vagy alkalmazhat egy friss frissítést az egyik sikertelen művelet felett.
 
 Miután az Azure Fabric-vezérlő megkapta a szolgáltatás frissítésére vagy frissítésére vonatkozó kezdeti kérelmet, megkezdheti a további mutációs műveleteket. Ekkor nem kell megvárnia a kezdeti művelet befejeződését, mielőtt elkezdené egy másik mutációs műveletet.
 
 Egy második frissítési művelet kezdeményezése, miközben az első frissítés folyamatban van, hasonló lesz a visszaállítási művelethez. Ha a második frissítés automatikus módban van, az első frissítési tartomány azonnal frissülni fog, valószínűleg a több frissítési tartományból származó példányok is, amelyek offline állapotban vannak az adott időpontban.
 
-A mutációs műveletek a következők: [Módosítsa a központi telepítési konfigurációt](/previous-versions/azure/reference/ee460809(v=azure.100)), [frissítse](/previous-versions/azure/reference/ee460793(v=azure.100))az üzembe helyezést, [frissítse a központi](/previous-versions/azure/reference/ee460808(v=azure.100))telepítést, törölje a [telepítést](/previous-versions/azure/reference/ee460815(v=azure.100)), és állítsa vissza a [frissítést vagy a frissítést](/previous-versions/azure/reference/hh403977(v=azure.100)).
+A mutációs műveletek a következők: a [központi telepítés konfigurációjának módosítása](/previous-versions/azure/reference/ee460809(v=azure.100)) [, a telepítés frissítése](/previous-versions/azure/reference/ee460793(v=azure.100)), a [központi telepítés állapotának frissítése](/previous-versions/azure/reference/ee460808(v=azure.100)), a [központi telepítés törlése](/previous-versions/azure/reference/ee460815(v=azure.100)), valamint a [frissítés vagy](/previous-versions/azure/reference/hh403977(v=azure.100))a frissítés visszaállítása.
 
-Két művelet, [telepítés](/previous-versions/azure/reference/ee460804(v=azure.100)) beolvasása és [Cloud Service-tulajdonságok](/previous-versions/azure/reference/ee460806(v=azure.100))beolvasása: a zárolt jelzőt adja vissza, amely megvizsgálható annak megállapítására, hogy egy adott központi telepítésnél lehet-e egy mutációs műveletet meghívni.
+Két művelet, [telepítés beolvasása](/previous-versions/azure/reference/ee460804(v=azure.100)) és [Cloud Service-tulajdonságok beolvasása](/previous-versions/azure/reference/ee460806(v=azure.100)): a zárolt jelzőt adja vissza, amely megvizsgálható annak megállapítására, hogy egy adott központi telepítésnél lehet-e egy mutációs műveletet meghívni.
 
-Ha meg szeretné hívni ezen metódusok verzióját, amely a zárolt jelzőt adja vissza, akkor a kérelem fejlécét az "x-MS-Version: 2011-10-01 "vagy újabb. További információ a verziószámozási fejlécekről: a [Service Management verziószámozása](/previous-versions/azure/gg592580(v=azure.100)).
+A zárolt jelzőt visszaadó metódusok verziójának meghívásához a kérelem fejlécét az "x-MS-Version: 2011-10-01" vagy újabb értékre kell beállítani. További információ a verziószámozási fejlécekről: a [Service Management verziószámozása](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 
@@ -179,7 +179,10 @@ Az alábbi ábra azt szemlélteti, hogy a két szerepkört tartalmazó szolgált
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)  
 [A Cloud Services figyelése](cloud-services-how-to-monitor.md)  
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)  
+
+
+

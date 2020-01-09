@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901463"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452847"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -64,7 +64,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      | eventHubNamespaceName | A forrás-esemény központja névterét. |
      | eventHubName | A forrás-esemény hub neve. |
      | consumerGroupName | Annak a fogyasztói csoportnak a neve, amelyet a Time Series Insights szolgáltatás az Event hub adatainak beolvasásához használ majd. **Megjegyzés:** Az erőforrás-tartalom elkerüléséhez ezt a fogyasztói csoportot a Time Series Insights szolgáltatásnak kell elosztania, és nem kell más olvasókkal megosztania. |
-     | environmentName | A környezet neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`és bármely vezérlő karakter. Minden egyéb karakter engedélyezett.|
+     | EnvironmentName | A környezet neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`és bármely vezérlő karakter. Minden egyéb karakter engedélyezett.|
      | eventSourceName | Az eseményforrás alárendelt erőforrásának neve. A név nem tartalmazhatja a következőket: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`és bármely vezérlő karakter. Minden egyéb karakter engedélyezett. |
 
     <div id="optional-parameters"></div>
@@ -119,7 +119,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      }
      ```
   
-    * További információkért lásd a [paramétereket](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) ismertető cikket.
+    * További információkért lásd a [paramétereket](../azure-resource-manager/templates/parameter-files.md) ismertető cikket.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>A gyors üzembe helyezési sablon központi telepítése a PowerShell használatával
 
@@ -200,7 +200,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
-1. Az üzemelő példány ellenőrzése
+1. A telepítés ellenőrzése
 
     * Ha az erőforrások központi telepítése sikeresen megtörtént, a központi telepítés összegzése megjelenik a PowerShell-ablakban:
 

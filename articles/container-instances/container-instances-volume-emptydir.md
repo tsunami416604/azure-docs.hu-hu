@@ -3,16 +3,16 @@ title: EmptyDir-kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat egy emptyDir-kötetet a tárolók közötti adatmegosztáshoz Azure Container Instances
 ms.topic: article
 ms.date: 02/08/2018
-ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533233"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552457"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>EmptyDir-kötet csatlakoztatása Azure Container Instances
 
-Megtudhatja, hogyan csatlakoztathat egy *emptyDir* -kötetet a tárolók közötti adatmegosztáshoz Azure Container Instancesban.
+Megtudhatja, hogyan csatlakoztathat egy *emptyDir* -kötetet a tárolók közötti adatmegosztáshoz Azure Container Instancesban. A *emptyDir* -kötetek ideiglenes gyorsítótárként használhatók a tároló munkaterhelésekhez.
 
 > [!NOTE]
 > A *emptyDir* -kötet csatlakoztatása jelenleg csak Linux-tárolók számára engedélyezett. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, az [áttekintésben](container-instances-overview.md#linux-and-windows-containers)megtalálhatja az aktuális platformmal kapcsolatos különbségeket.
@@ -27,7 +27,7 @@ Néhány példa a *emptyDir* -kötetek használatára:
 * Ellenőrzőpont a hosszan futó feladatok során
 * Az oldalkocsis tároló által lekért és az alkalmazás-tároló által kiszolgált adattároló
 
-A *emptyDir* -kötetben lévő adatmennyiséget a tároló összeomlik. Az újraindított tárolók azonban nem garantáltak, hogy az *emptyDir* -köteten tárolt adatmennyiséget megőrzik.
+A *emptyDir* -kötetben lévő adatmennyiséget a tároló összeomlik. Az újraindított tárolók azonban nem garantáltak, hogy az *emptyDir* -köteten tárolt adatmennyiséget megőrzik. Ha leállítja a tároló csoportot, a *emptyDir* kötet nem marad meg.
 
 ## <a name="mount-an-emptydir-volume"></a>EmptyDir-kötet csatlakoztatása
 

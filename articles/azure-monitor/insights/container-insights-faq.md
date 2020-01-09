@@ -1,26 +1,63 @@
 ---
 title: Azure Monitor a tárolók gyakran ismételt kérdéseiről | Microsoft Docs
 description: A tárolók Azure Monitor egy olyan megoldás, amely figyeli az AK-fürtök állapotát, és Container Instances az Azure-ban. Ez a cikk a gyakori kérdésekre ad választ.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405072"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor a tárolók számára – gyakori kérdések
 
 Ez a Microsoft gyakori kérdések listája a Azure Monitor for containers szolgáltatással kapcsolatos gyakori kérdésekre mutat. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Nem látom a ContainerLog tábla lekérdezése során kitöltött képek és nevek tulajdonság értékét.
+
+Az ügynök verziójának ciprod12042019 és újabb verzióiban alapértelmezés szerint ez a két tulajdonság nem töltődik fel minden egyes naplófájlhoz, hogy csökkentse a begyűjtött naplózási adatokhoz felmerülő költségeket. Az alábbi két lehetőség közül választhat a tulajdonságokat tartalmazó tábla lekérdezéséhez:
+
+### <a name="option-1"></a>1\. lehetőség 
+
+Csatlakozás más táblákhoz, hogy ezek a tulajdonságértékek szerepeljenek az eredmények között.
+
+Módosítsa a lekérdezéseket úgy, hogy a ContainerID tulajdonsághoz való csatlakozással a rendszerkép és a ImageTag tulajdonságokat is tartalmazza a ```ContainerInventory``` táblából. A name ```ContainerLog``` (név) tulajdonságot belefoglalhatja a KubepodInventory tábla ContaineName mezőjéből a ContainerID tulajdonsághoz való csatlakozással. Ez az ajánlott lehetőség.
+
+A következő példa egy példaként szolgáló részletes lekérdezést tartalmaz, amely ismerteti, hogyan lehet beolvasni ezeket a mezőértékeket az illesztésekkel.
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>2\. lehetőség
+
+Engedélyezze újra a gyűjteményt ezen tulajdonságok esetében minden egyes tároló-naplófájlhoz.
+
+Ha az első lehetőség nem alkalmas a lekérdezési változások miatt, a mezők begyűjtését újra engedélyezheti, ha engedélyezi a ```log_collection_settings.enrich_container_logs``` az ügynök konfigurációs térképén, az [adatgyűjtés konfigurációs beállításai](./container-insights-agent-config.md)részben leírtak szerint.
+
+> [!NOTE]
+> A második lehetőség nem ajánlott olyan nagyméretű fürtök esetében, amelyek több mint 50 csomóponttal rendelkeznek, mivel az API-kiszolgáló hívásokat hoz létre a fürt minden csomópontján > a dúsítás végrehajtásához. Ez a beállítás az adatok méretét is növeli minden összegyűjtött naplófájl esetében.
+
 ## <a name="can-i-view-metrics-collected-in-grafana"></a>Megtekinthetem a Grafana összegyűjtött mérőszámokat?
 
-A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok való megjelenítéshez. 
+A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Megfigyelhető az AK-motor fürtje Azure Monitor for containers használatával?
 
@@ -86,6 +123,6 @@ Ha egy AK-fürthöz engedélyezte a Azure Monitort a tárolók számára, akkor 
 
 Tekintse meg a [hálózati tűzfalra vonatkozó követelményeket](container-insights-onboard.md#network-firewall-requirements) a proxy-és tűzfal-konfigurációs információkhoz, amelyek a tároló ügynökhöz szükségesek az Azure-ban, az Azure US governmentben és az Azure China felhőkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK-fürt figyelésének megkezdéséhez tekintse át az [Azure monitor a tárolók számára című témakört](container-insights-onboard.md) , és Ismerje meg a figyelés engedélyezésének követelményeit és rendelkezésre álló módszereit. 

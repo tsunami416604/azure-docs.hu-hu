@@ -1,28 +1,19 @@
 ---
-title: 'Service Fabric fürterőforrás-kezelő: szállítási díj | Microsoft Docs'
-description: Service Fabric szolgáltatások mozgási díjainak áttekintése
-services: service-fabric
-documentationcenter: .net
+title: 'Service Fabric fürterőforrás-kezelő: szállítási díj'
+description: Ismerje meg a Service Fabric-szolgáltatások szállítási költségeit, valamint azt, hogy hogyan lehet megadni az építészeti igényeknek megfelelően, beleértve a dinamikus konfigurációt is.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243018"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563343"
 ---
 # <a name="service-movement-cost"></a>Szolgáltatás-áthelyezési díj
-A Service Fabric fürterőforrás-kezelő tényezője azt vizsgálja, hogy a fürtön végrehajtott módosítások Milyen költségekkel járnak. A "Cost" fogalma ki van kapcsolva a fürt mennyiségének javítására. A költségek a szolgáltatások kiegyensúlyozásra, töredezettségmentesítésre és egyéb követelményekre való áthelyezésével kapcsolatosak. A cél az, hogy a legkevésbé zavaró vagy költséges módon teljesítse a követelményeket. 
+A Service Fabric fürterőforrás-kezelő tényezője azt vizsgálja, hogy a fürtön végrehajtott módosítások Milyen költségekkel járnak. A "Cost" fogalma ki van kapcsolva a fürt mennyiségének javítására. A költségek a szolgáltatások kiegyensúlyozásra, töredezettségmentesítésre és egyéb követelményekre való áthelyezésével kapcsolatosak. A cél az, hogy a legkevésbé zavaró vagy költséges módon teljesítse a követelményeket.
 
 A szolgáltatásoknak a minimális CPU-időt és a hálózati sávszélességet kell áthelyezniük. Az állapot-nyilvántartó szolgáltatások esetében szükség van a szolgáltatások állapotának másolására, így további memóriát és lemezt igényel. Az Azure Service Fabric fürterőforrás-kezelőhöz tartozó megoldások díjszabásának minimalizálása révén biztosítható, hogy a fürt erőforrásai ne legyenek feleslegesen kitöltöttek. Azonban nem szeretné figyelmen kívül hagyni azokat a megoldásokat, amelyek jelentősen javítják a fürt erőforrásainak kiosztását.
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor konfigurálása a containers Agent adatgyűjtéshez | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor for containers Agent az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405684"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók számára Azure Monitor
 
@@ -40,6 +36,7 @@ Az alábbi beállításokkal konfigurálhatja az adatgyűjtés vezérlését.
 |`[log_collection_settings.stderr] enabled =` |Logikai | true (igaz) vagy false (hamis) |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha `true` értékre van állítva, és a rendszer nem zárja ki az stdout log Collection (`log_collection_settings.stderr.exclude_namespaces` beállítás) névtereit, a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett érték `enabled = true`. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat. Ez a beállítás csak akkor érvényes, ha a `log_collection_settings.stdout.enabled` `true`ra van beállítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a környezeti változók gyűjteménye a fürt összes hüvelye/csomópontjai között, és az alapértelmezett érték `enabled = true`, ha nincs megadva a ConfigMaps. Ha a környezeti változók gyűjteménye globálisan engedélyezve van, letilthatja egy adott tárolóra vonatkozóan, ha a környezeti `AZMON_COLLECT_ENV` változót **hamis** értékre állítja, vagy egy Docker beállítással vagy az **env:** szakaszban található [Pod konfigurációs fájljában](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) . Ha a környezeti változók gyűjteménye globálisan le van tiltva, akkor a gyűjtemény nem engedélyezhető egy adott tárolónál (azaz a tároló szintjén alkalmazható egyetlen felülbírálás a gyűjtemény letiltása, ha az már engedélyezve van a globálisan.). |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Logikai | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a tároló naplójának bővítése, hogy feltöltse a ContainerLog táblába írt összes naplóbejegyzés nevét és képtulajdonságának értékét a fürt összes tároló-naplójába. Alapértelmezés szerint `enabled = false`, ha nincs megadva a ConfigMap. |
 
 A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMaps.
 

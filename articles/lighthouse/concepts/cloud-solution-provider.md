@@ -1,14 +1,14 @@
 ---
 title: A felhőszolgáltatói program megfontolandó szempontjai
 description: A CSP-partnerek esetében az Azure-beli delegált erőforrás-kezelés a részletes engedélyek engedélyezésével segíti a biztonságot és a szabályozást.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456911"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Az Azure Lighthouse és a Cloud Solution Provider program
 
@@ -34,9 +34,9 @@ A CSP programon keresztül létrehozott előfizetés bevezetése az [előfizeté
 ![Bérlői felügyelet az AOBO és az Azure által delegált erőforrás-kezelés használatával](../media/csp-2.jpg)
 
 > [!NOTE]
-> A [Azure Portal **saját ügyfelek** lapján](../how-to/view-manage-customers.md) már szerepel a **Cloud Solution Provider (előzetes verzió)** szakasz, amely megjeleníti a számlázási adatokat és erőforrásokat a [Microsoft ügyfél-szerződést (MCA) aláírt](https://docs.microsoft.com/partner-center/confirm-customer-agreement) CSP-ügyfelek számára, és az Azure-csomag alatt található. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](https://docs.microsoft.com/azure/billing/mpa-overview).
+> A [Azure Portal **saját ügyfelek** lapján](../how-to/view-manage-customers.md) már szerepel a **Cloud Solution Provider (előzetes verzió)** szakasz, amely megjeleníti a számlázási adatokat és erőforrásokat a [Microsoft ügyfél-szerződést (MCA) aláírt](https://docs.microsoft.com/partner-center/confirm-customer-agreement) CSP-ügyfelek számára, és [Az Azure-csomag alatt](https://docs.microsoft.com/partner-center/azure-plan-get-started)található. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../billing/mpa-overview.md).
 >
-> A CSP-ügyfelek ebben a szakaszban jelenhetnek meg, függetlenül attól, hogy az Azure-beli delegált erőforrás-kezelésre kerültek-e elő. Ha van, akkor a **Customers (ügyfelek** ) szakaszban is megjelennek az ügyfelek és a [delegált erőforrások megtekintése és kezelése](../how-to/view-manage-customers.md)című témakörben leírtak szerint.
+> A CSP-ügyfelek ebben a szakaszban jelenhetnek meg, függetlenül attól, hogy az Azure-beli delegált erőforrás-kezeléshez is bekerültek-e. Ha vannak, akkor az **ügyfelek** szakaszban is megjelennek az ügyfelek [és a delegált erőforrások megtekintése és kezelése](../how-to/view-manage-customers.md)című témakörben leírtak szerint. Hasonlóképpen, a CSP-ügyfélnek nem kell megjelennie az **ügyfelek** **felhőalapú megoldás-szolgáltató (előzetes verzió)** szakaszában, hogy az Azure-beli delegált erőforrás-kezeléshez be lehessen őket készíteni.
 
 ## <a name="next-steps"></a>Következő lépések
 

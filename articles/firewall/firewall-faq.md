@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 418fafdec9bd44fa3682e33cc53bbca9c716dcf2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ac8ec9a86c388f41493d60d79a21db28fbf2aa95
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167035"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646211"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -88,7 +88,7 @@ Lásd: [Azure Firewall díjszabása](https://azure.microsoft.com/pricing/details
 
 Használhatja Azure PowerShell felszabadítási és *lefoglalási* metódusokat.
 
-Például:
+Példa:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -113,7 +113,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>Milyen korlátozások vonatkoznak az ismert szolgáltatásokra?
 
-Azure Firewall szolgáltatási korlátokat az [Azure-előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md#azure-firewall-limits)című témakörben talál.
+Azure Firewall szolgáltatási korlátokat az [Azure-előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)című témakörben talál.
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Egy hub-alapú virtuális hálózatban Azure Firewall a hálózati forgalmat két küllős virtuális hálózat között?
 

@@ -1,49 +1,49 @@
 ---
-title: Használja az egyéni markdown csempe az Azure-irányítópultok
-description: Markdown csempe felvétele egy Azure-irányítópultra a statikus tartalom megjelenítése
+title: Egyéni Markdown csempe használata az Azure-irányítópultokon
+description: Megtudhatja, hogyan adhat hozzá Markdown-csempét egy Azure-irányítópulthoz a statikus tartalom megjelenítéséhez
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
+author: mblythe
+ms.author: mblythe
 ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d2e6d2d0bde76a35a18373fabf64ce36c6c320e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551590"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640142"
 ---
-# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Egyéni tartalom megjelenítéséhez használja az Azure-irányítópultok egy markdown-csempe
+# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown csempe használata az Azure-irányítópultokon egyéni tartalom megjelenítéséhez
 
-Markdown csempe az Azure-irányítópultok megjelenítése egyéni, a statikus tartalom is hozzáadhat. Megjelenítheti például alapvető útmutatás látható, kép vagy egy markdown-csempe hivatkozások csoportja.
+Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csempét az Azure-irányítópultokhoz. Megjelenítheti például az alapszintű utasításokat, a képeket vagy a Markdown csempével rendelkező hiperhivatkozásokat.
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>Markdown csempe hozzáadása az irányítópulthoz
 
-1. Válassza ki **irányítópult** az Azure portal oldalsávon. Bármilyen egyéni irányítópultok, irányítópult-nézet az létrehozott, ha használatával a listából válassza ki az irányítópultot, az egyéni markdown-csempe meg kell jelennie. A Szerkesztés ikonra nyissa meg a **Csempetárral**.
+1. Válassza ki az **irányítópultot** a Azure Portal oldalsávon. Ha létrehozta az egyéni irányítópultokat, az irányítópult nézetben a legördülő listából válassza ki azt az irányítópultot, amelyben az egyéni Markdown csempének kell megjelennie. Kattintson a Szerkesztés ikonra a **csempék gyűjteményének**megnyitásához.
 
-   ![Képernyőkép megjelenítő irányítópult szerkesztő nézete](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Az irányítópult szerkesztési nézetét bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-2. Az a **Csempetárral**, keresse meg a csempe nevű **Markdown** kattintson **Hozzáadás**. A csempe jelenik meg az irányítópultot és a **szerkesztése Markdown** panel nyílik meg.
+2. A **csempék gyűjteményében**keresse meg a **Markdown** nevű csempét, és kattintson a **Hozzáadás**gombra. Ekkor megjelenik a csempe az irányítópulton, és megnyílik a **Markdown szerkesztése** panel.
 
-1. Szerkessze a **cím**, **alcím**, és **tartalom** mezőket, testreszabása a csempe. Az itt látható példában a markdown-csempe megjelenítése egyéni információk az ügyfélszolgálatnak módosítva lett.
+1. Szerkessze a **cím**, az **alcím**és a **tartalom** mezőket a csempe testreszabásához. Az itt látható példában a Markdown csempe úgy lett szerkesztve, hogy az egyéni ügyfélszolgálat adatait jelenítse meg.
 
-   ![Markdown csempe Szerkesztés nézetben ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![A Markdown csempe szerkesztési nézetét bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 
-4. Válassza ki **kész** elvetése érdekében az **szerkesztése Markdown** ablaktáblán. A tartalom megjelenik a Markdown-csempe, amely majd a jobb alsó sarkában fogantyúját méretezhető.
+4. A **kész** gombra kattintva zárja be a **Markdown szerkesztése** panelt. A tartalom megjelenik a Markdown csempén, amelyet aztán a jobb alsó sarokban lévő fogantyú húzásával lehet átméretezni.
 
-   ![Bemutató egyéni markdown-csempe képernyőképe](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Az egyéni Markdown csempét ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
-## <a name="markdown-content-capabilities-and-limitations"></a>Markdown-tartalom képességei és korlátozásai
+## <a name="markdown-content-capabilities-and-limitations"></a>Markdown és korlátozások
 
-A markdown-csempe szövegként, a Markdown-szintaxis és a HTML-tartalom tetszőleges kombinációját használhatja. Az Azure Portalon használja egy nyílt forráskódú kódtár nevű _megjelölve_ HTML, amely a csempe jelenik meg a tartalom átalakításához. Által előállított HTML _megjelölve_ előre dolgozza fel a portál előtt így jelenik meg. Ezzel a lépéssel győződjön meg arról, hogy a testreszabás során nem érinti a biztonsági vagy a portál elrendezését. Bármely része a HTML-kódot, amely a potenciális fenyegetést jelent előtti a feldolgozás során a rendszer eltávolítja. A következő típusú tartalmat nem engedélyezett a portál által:
+A Markdown csempén bármilyen egyszerű szöveg, Markdown szintaxis és HTML-tartalom kombinációja használható. A Azure Portal egy _jelölt_ nevű nyílt forráskódú függvénytárat használ, amely a csempén látható HTML-re alakítja át a tartalmat. A _megjelöléssel_ létrehozott HTML-kódot a portál előre feldolgozta a Megjelenítés előtt. Ez a lépés segít meggyőződni arról, hogy a Testreszabás nem befolyásolja a portál biztonságát vagy elrendezését. Az előzetes feldolgozás során a HTML bármely olyan része törlődik, amely potenciális fenyegetést jelent. A portál a következő típusú tartalmakat nem engedélyezi:
 
-* JavaScript – `<script>` címkék és a beágyazott JavaScript értékelések törlődni fog.
-* IFRAME - `<iframe>` címkék törlődni fog.
-* Style - `<style>` címkék törlődni fog. Soron belüli HTML-elemek attribútumokat hivatalosan nem támogatottak. Előfordulhat, hogy néhány beágyazott prvky style munkára fogásához, de ha zavarják a portál elrendezését, sikerült leáll, bármikor dolgozhat. A Markdown-csempe a portál alapértelmezett stílusait használó, alapszintű, a statikus tartalom szól.
+* JavaScript – `<script>` címkék és beágyazott JavaScript-értékelések el lesznek távolítva.
+* iframe elemek – `<iframe>` címkék lesznek eltávolítva.
+* Style – a `<style>` címkék el lesznek távolítva. A HTML-elemekben található beágyazott stílusú attribútumok nem támogatottak hivatalosan. Előfordulhat, hogy néhány beágyazott stílusú elem működik Önnek, de ha a portál elrendezését zavarja, bármikor leállíthatja a munkát. A Markdown csempe olyan alapszintű, statikus tartalomhoz készült, amely a portál alapértelmezett stílusait használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egyéni irányítópult létrehozásával kapcsolatban lásd: [irányítópultok létrehozása és megosztása az Azure Portalon](../azure-portal/azure-portal-dashboards.md)
+* Egyéni irányítópult létrehozásához tekintse meg [az irányítópultok létrehozása és megosztása a Azure Portal](../azure-portal/azure-portal-dashboards.md)

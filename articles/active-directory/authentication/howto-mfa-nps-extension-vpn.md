@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425408"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -326,13 +326,13 @@ A hálózati házirend-kiszolgáló bővítmény konfigurációjának részekén
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-bérlő globális rendszergazdájaként.
 
-2. A bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. A Azure Portal menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
 
 3. Válassza ki a **Tulajdonságok** elemet.
 
 4. Az Azure AD-azonosító másolásához kattintson a **Másolás** gombra.
 
-    ![Azure AD-címtár azonosítója a Azure Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![Azure AD-címtár azonosítója a Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének telepítése
 

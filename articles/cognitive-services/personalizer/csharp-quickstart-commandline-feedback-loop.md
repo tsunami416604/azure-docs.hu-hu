@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: személyre szabott ügyféloldali kódtár a .NET-hez | Microsoft Docs'
+title: 'Gyors útmutató: személyre szabott ügyféloldali kódtár a .NET-hez'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedjen meg a .NET személyre szabott ügyféloldali kódtáraval egy tanulási hurok használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el az első lépéseket a .NET-hez készült ügyféloldali kódtárat egy tanulási ciklus használatával.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446391"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Gyors útmutató: személyre szabott ügyféloldali kódtár a .NET-hez
 
@@ -202,7 +202,7 @@ A rövid útmutató [forráskódja](https://github.com/Azure-Samples/cognitive-s
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -213,4 +213,3 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Mi az a személyre szabott?](what-is-personalizer.md)
 * [Hol használható a személyre szabás?](where-can-you-use-personalizer.md)
 * [hibaelhárítással](troubleshooting.md)
-

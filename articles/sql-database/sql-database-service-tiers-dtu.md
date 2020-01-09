@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 6dee7642ac7ac0544db5b88981483bd1ea0f745e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539313"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562119"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szintek a DTU-alapú vásárlási modellben
 
@@ -54,7 +54,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis-DTU és tárterület-korlátok
 
-A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tranzakciós egységek (Edtu-EK) adatbázis-tranzakciós egységei (DTU) alapján vannak kifejezve. A DTU és a Edtu szolgáltatással kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-purchase-models.md#dtu-based-purchasing-model)?
+A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tranzakciós egységek (Edtu-EK) adatbázis-tranzakciós egységei (DTU) alapján vannak kifejezve. A DTU és Edtu kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-purchase-models.md#dtu-based-purchasing-model).
 
 ||Basic|Standard|Prémium|
 | :-- | --: | --: | --: |
@@ -109,7 +109,7 @@ Az adatbázis méretezési tényezőn alapul. A méretezési tényező (SF-ként
 
 A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi táblázatban is látható. Minden tranzakció úgy van kialakítva, hogy kiemelje a rendszerjellemzők egy adott készletét az adatbázismotor és a rendszer hardverén, nagy kontraszttal a többi tranzakciótól. Ezzel a megközelítéssel könnyebben mérhetővé válik a különböző összetevők hatása a teljes teljesítményre. Például a "READ Heavy" tranzakció jelentős számú olvasási műveletet eredményez a lemezről.
 
-| Tranzakció típusa | Leírás |
+| Transaction Type (Tranzakció típusa) | Leírás |
 | --- | --- |
 | A Lite olvasása |Válassza memóriában tárolt; csak olvasható |
 | Adathordozó olvasása |Válassza többnyire a memóriában; csak olvasható |
@@ -125,7 +125,7 @@ A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi tábláza
 
 A tranzakciók véletlenszerűen vannak kiválasztva egy súlyozott eloszlásból a következő összesített kombinációval. A teljes kombináció körülbelül 2:1 olvasási/írási aránnyal rendelkezik.
 
-| Tranzakció típusa | Vegyes |
+| Transaction Type (Tranzakció típusa) | Vegyes |
 | --- | --- |
 | A Lite olvasása |35 |
 | Adathordozó olvasása |20 |

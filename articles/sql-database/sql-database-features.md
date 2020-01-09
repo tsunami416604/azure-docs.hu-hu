@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 33ecef4dde3787546afd28e5f5b31e8dd535fc7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790465"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646364"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkciók
 
@@ -83,7 +83,7 @@ A következő táblázat felsorolja a SQL Server főbb funkcióit, és informác
 | [Operátorok](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | A legtöbb esetben – lásd az egyes operátorokat |Igen – lásd: a [T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nem. Az Azure Blob Storage-ban elhelyezett fájlokban tárolt adatlekérdezéseket `OPENROWSET` függvénnyel végezheti el. | Nem. Az Azure Blob Storage-ban elhelyezett fájlokban tárolt adatlekérdezéseket `OPENROWSET` függvénnyel végezheti el. |
 | [Lekérdezési értesítések](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nem | Igen |
-| [R-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Igen, a [nyilvános előzetes](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) verzióban  | Nem |
+| [Machine learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)(_korábbi R szolgáltatások_)| Igen, a [nyilvános előzetes](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) verzióban  | Nem |
 | [Helyreállítási modellek](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Csak a magas rendelkezésre állást garantáló teljes helyreállítás támogatott. Az egyszerű és a tömegesen naplózott helyreállítási modellek nem érhetők el. | Csak a magas rendelkezésre állást garantáló teljes helyreállítás támogatott. Az egyszerű és a tömegesen naplózott helyreállítási modellek nem érhetők el. | 
 | [Erőforrás-kormányzó](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nem | Igen |
 | [VISSZAÁLLÍTÁSi utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nem | Igen, az Azure Blob Storageba helyezett biztonsági másolatok fájljainak kötelező `FROM URL` beállításaival. Lásd: [visszaállítási különbségek](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
@@ -119,19 +119,19 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | Automatikus méretezés | Igen, de csak [kiszolgáló nélküli modellben](sql-database-serverless.md). A nem kiszolgáló nélküli modellben a szolgáltatási réteg (virtuális mag, tárterület vagy DTU) változása gyors és online állapotú. A szolgáltatási rétegek változásához minimális vagy nem állásidő szükséges. | Nem, a fenntartott számítási és tárolási kapacitást kell választania. A szolgáltatási szintek (virtuális mag vagy maximális tárterület) módosítása online állapotú, és minimális vagy leállást igényel. |
 | [Automatikus biztonsági mentések](sql-database-automated-backups.md) | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. |
 | [Automatikus hangolás (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| Nem |
-| [Availability Zones](/azure/availability-zones/az-overview) | Igen | Nem |
+| [Rendelkezésre állási zónák](/azure/availability-zones/az-overview) | Igen | Nem |
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | Igen | Nem |
 | Biztonsági mentés megőrzése | Igen. 7 nap alapértelmezett, max. 35 nap. | Igen. 7 nap alapértelmezett, max. 35 nap. |
 | [Adatáttelepítési szolgáltatás (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Igen | Igen |
 | Fájlrendszer-hozzáférés | Nem. Alternatív megoldásként [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. | Nem. Alternatív megoldásként [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. |
 | [Geo-visszaállítás](sql-database-recovery-using-backups.md#geo-restore) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével |
 | [Nagy kapacitású architektúra](sql-database-service-tier-hyperscale.md) | Igen | Nem |
-| [Biztonsági másolatok hosszú távú megőrzése – LTR](sql-database-long-term-retention.md) | Igen, az automatikusan megtarthatja a biztonsági mentéseket akár 10 évig. | még nem. Ideiglenes megkerülő megoldásként használjon `COPY_ONLY` [manuális biztonsági mentést](sql-database-managed-instance-transact-sql-information.md#backup) . |
+| [Biztonsági másolatok hosszú távú megőrzése – LTR](sql-database-long-term-retention.md) | Igen, az automatikusan megtarthatja a biztonsági mentéseket akár 10 évig. | Jelenleg nem. Ideiglenes megkerülő megoldásként használjon `COPY_ONLY` [manuális biztonsági mentést](sql-database-managed-instance-transact-sql-information.md#backup) . |
 | Szüneteltetés/folytatás | Igen, [kiszolgáló nélküli modellben](sql-database-serverless.md) | Nem | 
 | [Házirend alapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
 | Nyilvános IP-cím | Igen. A hozzáférés tűzfal vagy szolgáltatási végpontok használatával korlátozható.  | Igen. Explicit módon engedélyezni kell, és engedélyezni kell a 3342-es portot a NSG-szabályokban. Ha szükséges, a nyilvános IP-cím is letiltható. További részletekért tekintse meg a [nyilvános végpontot](sql-database-managed-instance-public-endpoint-securely.md) . | 
 | [Időponthoz tartozó adatbázis-visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) | Igen – lásd: [SQL Database helyreállítás](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| Erőforrás-készletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Igen. Egyetlen felügyelt példány több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. Emellett több felügyelt példányt is telepíthet olyan példány- [készletekbe (előzetes verzió)](sql-database-instance-pools.md) , amelyek megoszthatják az erőforrásokat. |
+| Erőforráskészletek | Igen, [rugalmas készletekként](sql-database-elastic-pool.md) | Igen. Egyetlen felügyelt példány több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. Emellett több felügyelt példányt is telepíthet olyan példány- [készletekbe (előzetes verzió)](sql-database-instance-pools.md) , amelyek megoszthatják az erőforrásokat. |
 | Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. |
 | [SQL-alias](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nem, használjon [DNS-aliast](dns-alias-overview.md) | Nem, a [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) használatával állítson be aliast az ügyfélgépeken. |
 | [SQL-elemzés](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
@@ -149,7 +149,7 @@ Az Azure SQL Database különféle adateszközöket támogat, amelyek segítség
 
 | **Eszköz** | **Önálló adatbázisok és rugalmas készletek** | **Felügyelt példányok és példányok készletei** |
 | --- | --- | --- |
-| Azure Portal | Igen | Igen |
+| Azure portál | Igen | Igen |
 | Azure parancssori felület (CLI) | Igen | Igen|
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Igen | Igen |
 | Azure Powershell | Igen | Igen |

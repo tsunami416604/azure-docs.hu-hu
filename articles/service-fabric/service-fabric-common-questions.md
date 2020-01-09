@@ -1,27 +1,17 @@
 ---
-title: Microsoft Azure Service Fabric kapcsolatos gyakori kérdések | Microsoft Docs
-description: Gyakori kérdések a Service Fabric és a rájuk adott válaszokról
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Microsoft Azure Service Fabric kapcsolatos gyakori kérdések
+description: Gyakori kérdések a Service Fabricről, beleértve a képességeket, a használati eseteket és a gyakori forgatókönyveket.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481648"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614638"
 ---
-# <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések Service Fabric kérdésekről
+# <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
 
 Számos gyakran feltett kérdés arról, hogy mit tehet, és hogyan használható a Service Fabric. Ez a dokumentum ismerteti a gyakori kérdéseket és a rájuk adott válaszokat.
 
@@ -94,7 +84,7 @@ Ebben a háttérben vizsgáljuk meg a lehetséges fürtkonfiguráció-konfigurá
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Kikapcsolhatom a fürtöt éjjel/hétvégén a költségek megtakarítása érdekében?
 
-Általánosságban nem. Service Fabric a helyi, ideiglenes lemezeken tárolja az állapotot, ami azt jelenti, hogy ha a virtuális gépet egy másik gazdagépre helyezi át, akkor az nem helyezi át azokat. Normál működés esetén ez nem jelent problémát, mivel az új csomópontot más csomópontok hozzák naprakészen. Ha azonban az összes csomópontot leállítja és később újraindítja, akkor jelentős lehetőség van arra, hogy a csomópontok többsége új gazdagépeken induljon el, és a rendszer nem állítható helyre.
+Általában nem. Service Fabric a helyi, ideiglenes lemezeken tárolja az állapotot, ami azt jelenti, hogy ha a virtuális gépet egy másik gazdagépre helyezi át, akkor az nem helyezi át azokat. Normál működés esetén ez nem jelent problémát, mivel az új csomópontot más csomópontok hozzák naprakészen. Ha azonban az összes csomópontot leállítja és később újraindítja, akkor jelentős lehetőség van arra, hogy a csomópontok többsége új gazdagépeken induljon el, és a rendszer nem állítható helyre.
 
 Ha fürtöket szeretne létrehozni az alkalmazás üzembe helyezése előtt, javasoljuk, hogy dinamikusan hozza létre ezeket a fürtöket a [folyamatos integráció/folyamatos üzembe helyezési folyamat](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)részeként.
 
@@ -113,24 +103,24 @@ Nem. Az alacsony prioritású virtuális gépek nem támogatottak.
 
 | **Víruskereső által kizárt könyvtárak** |
 | --- |
-| Program Files\Microsoft a Service Fabric |
-| FabricDataRoot (a fürt konfiguráció) |
-| FabricLogRoot (a fürt konfiguráció) |
+| Program Files\Microsoft Service Fabric |
+| FabricDataRoot (a fürt konfigurációjától) |
+| FabricLogRoot (a fürt konfigurációjától) |
 
 | **Víruskereső által kizárt folyamatok** |
 | --- |
-| Fabric.exe |
-| FabricHost.exe |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe |
-| FabricDCA.exe |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe |
-| FileStoreService.exe |
+| Fabric. exe |
+| Hálóbeli. exe |
+| FabricInstallerService. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| ImageBuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| FileStoreService. exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazás a kulcstartóban a titkok beszerzéséhez?
 Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:

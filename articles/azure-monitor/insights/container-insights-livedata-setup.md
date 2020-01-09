@@ -1,24 +1,14 @@
 ---
 title: A tárolók élő adattárolásának Azure Monitor beállítása (előzetes verzió) | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet beállítani a tároló-naplók (StdOut/stderr) valós idejű nézetét és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404703"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) funkciójának beállítása
 
@@ -141,6 +131,6 @@ Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a 
 
 Az AK-fürt **ClusterRoleBinding**konfigurálásával kapcsolatos további segítségért lásd: [RBAC-kötés létrehozása](../../aks/azure-ad-integration-cli.md#create-rbac-binding).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a hitelesítést, a fürtből valós időben megtekintheti a [metrikákat](container-insights-livedata-metrics.md), a [központi telepítéseket](container-insights-livedata-deployments.md), valamint az [eseményeket és a naplókat](container-insights-livedata-overview.md) .

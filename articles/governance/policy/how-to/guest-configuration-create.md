@@ -1,14 +1,14 @@
 ---
 title: Vendég-konfigurációs szabályzatok létrehozása
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs szabályzatot Windows vagy Linux rendszerű virtuális gépekhez a Azure PowerShell használatával.
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873080"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608524"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
@@ -24,6 +24,9 @@ Az alábbi műveletek végrehajtásával hozhatja létre saját konfigurációj�
 ## <a name="add-the-guestconfiguration-resource-module"></a>A GuestConfiguration erőforrás-modul hozzáadása
 
 A vendég-konfigurációs szabályzat létrehozásához hozzá kell adni az erőforrás-modult. Ez az erőforrás-modul helyileg telepített PowerShell-lel, [Azure Cloud Shell](https://shell.azure.com)vagy az [Azure PowerShell Core Docker-lemezképpel](https://hub.docker.com/r/azuresdk/azure-powershell-core)használható.
+
+> [!NOTE]
+> Míg a **GuestConfiguration** modul a fenti környezetekben működik, a DSC-konfiguráció fordításának lépéseit a Windows PowerShell 5,1-ben kell végrehajtania.
 
 ### <a name="base-requirements"></a>Alapszintű követelmények
 
@@ -59,6 +62,12 @@ Ha a konfigurációban csak a vendég konfigurációs ügynök telepítésével 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>A vendég-konfiguráció egyéni erőforrásaira vonatkozó követelmények
 
 Amikor a vendég konfigurációja naplóz egy gépet, először a `Test-TargetResource` futtatja annak megállapításához, hogy a megfelelő állapotban van-e. A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager állapotának megfelelőnek vagy nem megfelelőnek kell lennie. Ha a logikai érték `$false` a konfigurációban lévő összes erőforráshoz, akkor a szolgáltató `Get-TargetResource`fog futni. Ha a logikai érték `$true`, akkor `Get-TargetResource` nincs meghívva.
+
+#### <a name="configuration-requirements"></a>Konfigurációs követelmények
+
+Az egyetlen követelmény, hogy a vendég konfiguráció egyéni konfigurációt használjon, hogy a konfiguráció neve mindenhol konzisztens legyen a használatban.  Ez magában foglalja a Content csomag. zip fájljának nevét, a Content csomagban tárolt MOF-fájlban található konfiguráció nevét, valamint az ARM-ben a vendég-hozzárendelés neveként használt konfiguráció nevét.
+
+#### <a name="get-targetresource-requirements"></a>A Get-TargetResource követelményei
 
 A `Get-TargetResource` függvény speciális követelményeket tartalmaz a Windows kívánt állapotának konfigurálásához nem szükséges vendég-konfigurációhoz.
 
@@ -96,7 +105,7 @@ A Linuxon futó vendég-konfiguráció DSC-konfigurációja a `ChefInSpecResourc
 
 Az alábbi példa létrehoz egy alapkonfigurációt, importálja a **GuestConfiguration** erőforrás-modult **, és**a `ChefInSpecResource` erőforrást használja az inspec definíciójának neveként a **Linux-patch-alapterv**értékre:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ A Azure Policy vendég konfigurációjának DSC-konfigurációját csak a vendé
 
 A következő példa létrehoz egy **AuditBitLocker**nevű konfigurációt, importálja a **GuestConfiguration** erőforrás-modult, és a `Service` erőforrást használja a futó szolgáltatás naplózásához:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 Linux-szabályzatok esetén a konfigurációban adja meg a **AttributesYmlContent** tulajdonságot, és ennek megfelelően írja felül az értékeket. A vendég konfigurációs ügynök automatikusan létrehozza a YaML-fájlt, amelyet az inspec az attribútumok tárolására használ. Tekintse meg az alábbi példát.
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ A Linux rendszerű gépekhez használható GPG-kulcsok létrehozásának jó ref
 
 A tartalom közzététele után fűzze hozzá a `GuestConfigPolicyCertificateValidation` nevű címkét és a Value `enabled` értéket minden olyan virtuális géphez, amelynél szükség van a kód aláírására. Ezt a címkét a Azure Policy használatával lehet méretezni. Lásd: [címke alkalmazása és az alapértelmezett érték](../samples/apply-tag-default-value.md) minta. A címke betartása után az `New-GuestConfigurationPolicy` parancsmag használatával generált házirend-definíció engedélyezi a követelményt a vendég konfigurációs bővítményen keresztül.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>ELŐNÉZET Vendég-konfigurációs szabályzatok hozzárendeléseinek hibaelhárítása
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>A vendég-konfigurációs házirend hozzárendeléseinek hibaelhárítása (előzetes verzió)
 
 Egy eszköz előzetes verzióban érhető el, amely segítséget nyújt az Azure Policy vendég konfigurációs hozzárendeléseinek hibaelhárításában. Az eszköz előzetes verzióban érhető el, és közzé lett téve a PowerShell-galéria mint modul neve [vendég konfigurációs hibakereső](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 

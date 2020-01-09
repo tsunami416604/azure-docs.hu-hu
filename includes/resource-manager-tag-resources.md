@@ -5,17 +5,17 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 01/03/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6d8f29e9272f3e05bb585c032240cce67c37d2bf
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451650"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665143"
 ---
-1. Egy adott erőforrás vagy erőforráscsoport címkéi megtekintéséhez az áttekintésben megkeresi a meglévő címkéket. Ha eddig még nem vett fel címkéket, a lista üres.
+1. Egy adott erőforrás vagy erőforráscsoport címkéi megtekintéséhez keresse meg a meglévő címkéket az áttekintésben. Ha eddig még nem vett fel címkéket, a lista üres.
    
      ![Erőforrás vagy erőforráscsoport címkéinak megtekintése](./media/resource-manager-tag-resources/view-tags.png)
 1. Címke hozzáadásához válassza a **címkék hozzáadásához kattintson ide**.
@@ -44,7 +44,7 @@ Címkék tömeges kiosztása több erőforráshoz:
 
 1. **Címkék hozzárendelésének** kiválasztása
 
-     ![Címkék kiosztása](./media/resource-manager-tag-resources/assign-tags.png)
+     ![Címkék hozzárendelése](./media/resource-manager-tag-resources/assign-tags.png)
 
 1. A név és az érték után válassza a **+** lehetőséget. Ha elkészült, válassza a **hozzárendelés**lehetőséget.
 
@@ -63,11 +63,3 @@ A címkével rendelkező összes erőforrás megtekintése:
 1. Megjelenik az adott címkével rendelkező összes erőforrás.
 
      ![Erőforrások megtekintése címke szerint](./media/resource-manager-tag-resources/view-resources-by-tag.png)
-
-1. A gyors hozzáférés érdekében rögzítse a nézetet az irányítópulton.
-
-     ![Rögzítés az irányítópulton](./media/resource-manager-tag-resources/pin-to-dashboard.png)
-
-1. A nézet elérhető az irányítópulton.
-
-     ![Irányítópult](./media/resource-manager-tag-resources/dashboard-with-view.png)

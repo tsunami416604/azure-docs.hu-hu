@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 8f6959eb6f9d17a368e7df7b95ecc511d0396f87
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621440"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646693"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -59,21 +59,21 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     **Felső szakasz**
 
-    | Tulajdonság|  Érték|
+    | Tulajdonság|  Value (Díj)|
     |---|---|
-    |Name (Név)| FwAppRule|
+    |Név| FwAppRule|
     |Prioritás|200|
     |Műveletek|Engedélyezés|
 
     **FQDN-címkék szakasz**
 
-    | Name (Név) | Forrás címe | FQDN címke | Megjegyzések |
+    | Név | Forrás címe | FQDN címke | Megjegyzések |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | A HDI-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynevek szakasz**
 
-    | Name (Név) | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Megjegyzések |
+    | Név | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Megjegyzések |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
@@ -93,15 +93,15 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **Felső szakasz**
 
-    | Tulajdonság|  Érték|
+    | Tulajdonság|  Value (Díj)|
     |---|---|
-    |Name (Név)| FwNetRule|
+    |Név| FwNetRule|
     |Prioritás|200|
     |Műveletek|Engedélyezés|
 
     **IP-címek szakasz**
 
-    | Name (Név) | Protokoll | Forrásoldali címek | Cél címei | Célportok | Megjegyzések |
+    | Név | Protocol (Protokoll) | Forrásoldali címek | Cél címei | Célportok | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
     | Rule_2 | Bármelyik | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
@@ -110,7 +110,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **A szolgáltatás címkéi szakasza**
 
-    | Name (Név) | Protokoll | Forráscímek | Szolgáltatás címkéi | Célport | Megjegyzések |
+    | Név | Protocol (Protokoll) | Forráscímek | Szolgáltatáscímkék | Célport | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Konfiguráljon egy hálózati szabályt az SQL-hez tartozó szolgáltatás-címkék szakaszban, amely lehetővé teszi az SQL-forgalom naplózását és naplózását, kivéve, ha a HDInsight alhálózaton a SQL Serverhoz konfigurált szolgáltatási végpontokat, ami megkerüli a tűzfalat. |
 
@@ -138,12 +138,12 @@ Ha például az útválasztási táblázatot az USA keleti régiójában létreh
 
 | Útvonal neve | Címelőtag | A következő ugrás típusa | A következő ugrás címe |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | n/a |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | n/a |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | n/a |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | n/a |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | n/a |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | n/a |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuális berendezés | 10.0.2.4 |
 
 Fejezze be az útválasztási táblázat konfigurációját:
@@ -178,7 +178,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 A Azure Firewall Azure Monitor naplókkal való integrálása akkor hasznos, amikor először kap egy alkalmazást, ha nem ismeri az összes alkalmazás-függőséget. További tudnivalókat Azure Monitor naplók [elemzése a naplózási adatokról Azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Ha többet szeretne megtudni a Azure Firewall méretezési korlátairól és a kérések növeléséről, tekintse meg [ezt](../azure-subscription-service-limits.md#azure-firewall-limits) a dokumentumot, vagy tekintse meg a [gyakori kérdéseket](../firewall/firewall-faq.md).
+Ha többet szeretne megtudni a Azure Firewall méretezési korlátairól és a kérések növeléséről, tekintse meg [ezt](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) a dokumentumot, vagy tekintse meg a [gyakori kérdéseket](../firewall/firewall-faq.md).
 
 ## <a name="access-to-the-cluster"></a>Hozzáférés a fürthöz
 
@@ -241,6 +241,6 @@ Az előző utasítások segítséget nyújtanak Azure Firewall konfigurálásáh
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

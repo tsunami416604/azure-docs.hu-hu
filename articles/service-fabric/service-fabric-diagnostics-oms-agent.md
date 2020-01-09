@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric – Teljesítményfigyelés Azure Monitor naplókkal | Microsoft Docs
+title: Teljesítményfigyelés Azure Monitor naplókkal
 description: Ismerje meg, hogyan állíthatja be a Log Analytics ügynököt az Azure Service Fabric-fürtökhöz tartozó tárolók és teljesítményszámlálók figyeléséhez.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 9ec68712c898eefc37a8f7b2fe2dbfdb119592de
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8c8978a0114caf57d01f7add0bd9357c5d0775dc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934006"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609944"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Teljesítményfigyelés Azure Monitor naplókkal
 

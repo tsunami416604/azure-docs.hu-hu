@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713835"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647441"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Azure Virtual Network-képességek használatának engedélyezése a tárolók számára
 
@@ -47,23 +47,23 @@ A podok egy virtuális hálózat részét képező virtuális gépeken jelennek 
 
 ![A tárolóalapú hálózatkezelés részletei](./media/container-networking/container-networking-detail.png)
 
-## <a name="internet-access"></a>Internetelérés
+## <a name="internet-access"></a>Internet-hozzáférés
 
 Ahhoz, hogy a podok elérhessék az internetet, a beépülő modul *iptables* szabályokat konfigurál, hogy lefordítsa a hálózati címeket (NAT) a podoktól az internet felé irányuló forgalomban. A rendszer a csomag forrás IP-címét a virtuális gép hálózati adapterén lévő elsődleges IP-címre fordítja le. A Windows rendszerű virtuális gépek automatikusan elvégzik a virtuális gép alhálózatán kívüli IP-címekre tartó forgalom forráshálózati címfordítását (SNAT). A rendszer általában a virtuális hálózat IP-címtartományán kívüli IP-címekre tartó összes forgalmat lefordítja.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Korlátozások
 
-A beépülő modul virtuális gépenként legfeljebb 250 podot, és virtuális hálózatonként legfeljebb 16 000 podot támogat. Ezek a korlátok az [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) esetében eltérőek.
+A beépülő modul virtuális gépenként legfeljebb 250 podot, és virtuális hálózatonként legfeljebb 16 000 podot támogat. Ezek a korlátok az [Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) esetében eltérőek.
 
 ## <a name="using-the-plug-in"></a>A beépülő modul használata
 
 A beépülő modul a következő módokon használható a podok vagy Docker-tárolók alapszintű virtuális hálózati csatolásához:
 
-- **Az Azure Kubernetes Service**: A beépülő modul az Azure Kubernetes Service (AKS) integrálva van, és használható kiválasztásával a *speciális hálózatkezelés* lehetőséget. A speciális hálózatkezeléssel Kubernetes-fürtöt helyezhet üzembe egy meglévő vagy új virtuális hálózaton. A speciális hálózatkezeléssel és annak beállítási lépéseivel kapcsolatos további információért lásd: [Hálózati konfiguráció az AKS-ben](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- **AKS-motor**: AKS-motor egy olyan eszköz, az Azure-ban hoz létre egy Azure Resource Manager-sablon egy Kubernetes-fürt központi telepítésére vonatkozóan. Részletes útmutatásért lásd: [AKS-motor – Kubernetes-fürtök a beépülő modul telepítése](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
-- **A saját Kubernetes-fürt létrehozása az Azure-ban**: A beépülő modul segítségével adja meg a Kubernetes-fürtök a Podok alapszintű hálózatkezelési központi telepítését, anélkül, hogy az AKS vagy eszközök, mint például az AKS-motor. Ebben az esetben a beépülő modul egy fürt összes virtuális gépén telepítve és engedélyezve lesz. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
-- **Virtuális hálózat csatlakoztatása az Azure-ban a Docker-tárolók**: Ha nem szeretne egy Kubernetes-fürtöt létrehozni, és szeretne létrehozni a Docker-tárolókat a virtuális hálózat csatlakoztatása, virtuális gépeken a beépülő modul is használható. Részletes információ: [Docker beépülő moduljának üzembe helyezése](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
+- **Azure Kubernetes Service**: A beépülő modul az Azure Kubernetes Service-be (AKS) van integrálva, és a *Speciális hálózatkezelés* lehetőség kiválasztásával használható. A speciális hálózatkezeléssel Kubernetes-fürtöt helyezhet üzembe egy meglévő vagy új virtuális hálózaton. A speciális hálózatkezeléssel és annak beállítási lépéseivel kapcsolatos további információért lásd: [Hálózati konfiguráció az AKS-ben](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **AK-motor**: AK-motor egy eszköz, amely létrehoz egy Azure Resource Manager sablont egy Kubernetes-fürt üzembe helyezéséhez az Azure-ban. Részletes útmutatásért lásd: [az AK-motor Kubernetes-fürtökhöz tartozó beépülő modul üzembe helyezése](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
+- **Saját Kubernetes-fürt létrehozása az Azure**-ban: a beépülő modul segítségével alapszintű hálózatkezelést biztosíthat a hüvelyek számára a saját maga által üzembe helyezett Kubernetes-fürtökben anélkül, hogy AK-ra kellene támaszkodnia, vagy eszközöket, például az AK-motort. Ebben az esetben a beépülő modul egy fürt összes virtuális gépén telepítve és engedélyezve lesz. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+- **Virtuális hálózat csatlakoztatása Docker-tárolókhoz az Azure-ban**: A beépülő modul olyan esetekben is használható, amikor nem Kubernetes-fürtöt, hanem inkább Docker-tárolókat szeretne létrehozni a virtuális gépeken virtuális hálózat csatlakoztatásával. Részletes információ: [Docker beépülő moduljának üzembe helyezése](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A beépülő modul üzembe helyezése](deploy-container-networking.md) Kubernetes-fürtökhöz vagy Docker-tárolókhoz

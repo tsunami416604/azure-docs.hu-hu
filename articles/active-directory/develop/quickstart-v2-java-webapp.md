@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920701"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549941"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -61,7 +61,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >    - Hagyja üresen az **átirányítási URI** -t, majd válassza a **regisztráció**lehetőséget.
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Az **átirányítási URI**-k területen adja hozzá a `http://localhost:8080/msal4jsamples/secure/aad` és `http://localhost:8080/msal4jsamples/graph/me`.
+>    - Az **átirányítási URI**-k területen adja hozzá a `http://localhost:8080/msal4jsample/secure/aad` és `http://localhost:8080/msal4jsample/graph/me`.
 >    - Kattintson a **Mentés** gombra.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
 >
@@ -121,7 +121,7 @@ Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keres
 
 1. A kezdőlapon kattintson a **Bejelentkezés** gombra a Azure Active Directory átirányításához, és kérje meg a felhasználót a hitelesítő adataik megadására.
 
-1. A felhasználó hitelesítése után a rendszer átirányítja *http://localhost:8080/msal4jsamples/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
+1. A felhasználó hitelesítése után a rendszer átirányítja *http://localhost:8080/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
     - *Kijelentkezés*: aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
     - *Felhasználói információk megjelenítése*: jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
 

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl káosz | Microsoft Docs
-description: Ismerteti a Service Fabric CLI-sfctl Chaos-parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl káosz
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A káosz kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: f48ef260ab05f98da99c3ae317d0c350d018119f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b91c11dfb9b1249420429bee20f12439fffa4853
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901763"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646177"
 ---
 # <a name="sfctl-chaos"></a>sfctl-káosz
 Indítsa el, állítsa le és jelentse a Chaos test Service-t.
@@ -33,9 +24,9 @@ Indítsa el, állítsa le és jelentse a Chaos test Service-t.
 |Parancs|Leírás|
 | --- | --- |
 | események | Beolvassa a Chaos-események következő szegmensét a folytatási jogkivonat vagy az időtartomány alapján. |
-| Get | A káosz állapotának beolvasása. |
+| elérés | A káosz állapotának beolvasása. |
 | start | Elindítja a káoszt a fürtben. |
-| állj | Leállítja a káoszt, ha fut a fürtben, és leállított állapotba helyezi a Chaos-ütemtervet. |
+| leállítás | Leállítja a káoszt, ha fut a fürtben, és leállított állapotba helyezi a Chaos-ütemtervet. |
 
 ## <a name="sfctl-chaos-events"></a>sfctl Chaos-események
 Beolvassa a Chaos-események következő szegmensét a folytatási jogkivonat vagy az időtartomány alapján.
@@ -86,14 +77,14 @@ A káosz állapotának lekérése, amely azt jelzi, hogy a káosz fut-e, a káos
 ## <a name="sfctl-chaos-start"></a>sfctl Chaos – első lépések
 Elindítja a káoszt a fürtben.
 
-Ha a káosz még nem fut a fürtben, elindul a káosz az átadott Chaos-paraméterekkel. Ha a káosz már fut a híváskor, a hívás sikertelen lesz a hibakód FABRIC_E_CHAOS_ALREADY_RUNNING. További részletekért tekintse meg a [Service Fabric-fürtök vezérelt káosz indukálása](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos) című cikket.
+Ha a káosz még nem fut a fürtben, elindul a káosz az átadott Chaos-paraméterekkel. Ha a káosz már fut a híváskor, a hívás sikertelen lesz, FABRIC_E_CHAOS_ALREADY_RUNNING hibakód. További részletekért tekintse meg a [Service Fabric-fürtök vezérelt káosz indukálása](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos) című cikket.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
 | --App-Type-Health-Policy-Map | JSON-kódolású lista, amely nem kifogástalan állapotú alkalmazásokat biztosít adott típusú alkalmazásokhoz. Az egyes bejegyzések kulcsként határozzák meg az alkalmazás típusának nevét és értékként egy egész számot, amely a megadott MaxPercentUnhealthyApplications százalékos arányát jelöli. <br><br> Egy olyan térképet határoz meg, amely a nem kifogástalan állapotú alkalmazásokat egy adott alkalmazás típusára vonatkozóan határozza meg. Minden egyes bejegyzés az alkalmazás típusának és értékének a kulcsát adja meg, amely a megadott MaxPercentUnhealthyApplications százalékos arányát jelöli. A fürt állapotának kiértékelése során a speciális alkalmazások típusának leírására használhatja az állapotfigyelő állapotra vonatkozó házirend-hozzárendelést. A térképen szereplő alkalmazások típusai a térképen megadott százalékos arányban vannak kiértékelve, és nem a fürt állapot-házirendjében definiált globális MaxPercentUnhealthyApplications. A térképen megadott alkalmazások típusai nem számítanak bele az alkalmazások globális készletéből. Ha például egy típus egyes alkalmazásai kritikus fontosságúak, akkor a fürt rendszergazdája hozzáadhat egy bejegyzést az adott alkalmazáshoz tartozó térképhez, és hozzárendelheti a 0%-os értéket (azaz nem tűri el a hibákat). Az összes többi alkalmazás 20%-ra kiértékelhető úgy, hogy a MaxPercentUnhealthyApplications több ezer alkalmazás-példányon is eltűrik. Az alkalmazás típusának állapotára vonatkozó házirend-leképezés csak akkor használható, ha a fürt jegyzékfájlja lehetővé teszi az alkalmazás típus állapotának kiértékelését a HealthManager/EnableApplicationTypeHealthEvaluation konfigurációs bejegyzésének használatával. |
-| --Chaos-Target-Filter | JSON-kódolású szótár két karakterlánc típusú kulccsal. A két kulcs a Chaostargetfilter és a ApplicationInclusionList. Mindkét kulcs értékei a sztringek listája. a chaos_target_filter meghatározza az összes szűrőt a megcélozott Káoszi hibákhoz, például csak bizonyos csomópont-típusokat, vagy csak bizonyos alkalmazások meghibásodását. <br><br> Ha a chaos_target_filter nincs használatban, a Chaos hibát jelzett a fürt összes entitása esetében. Ha chaos_target_filter használ, a Chaos csak azokat az entitásokat használja, amelyek megfelelnek a chaos_target_filter specifikációjának. A Chaostargetfilter és a ApplicationInclusionList csak a Union szemantikai használatát teszi lehetővé. Nem lehet megadni a Chaostargetfilter és a ApplicationInclusionList metszetét. Például nem adható meg "az alkalmazás hibája csak akkor, ha az adott csomópont típusa van." Ha egy entitást a Chaostargetfilter vagy a ApplicationInclusionList tartalmaz, az entitás nem zárható ki a ChaosTargetFilter használatával. Ha a applicationX nem jelenik meg a ApplicationInclusionList-ben, néhány Chaos iterációs applicationX hibát okozhat, mert az a Chaostargetfilter részét képező nodeTypeY csomópontján történik. Ha a Chaostargetfilter és a ApplicationInclusionList egyaránt üres, akkor egy ArgumentException kerül. A különböző típusú hibák (csomópont újraindítása, kód újraindítása, replika eltávolítása, replika újraindítása, elsődleges áthelyezése és másodlagos áthelyezés) engedélyezve vannak ezen csomópont-típusok csomópontjain. Ha a csomópont típusa (Say NodeTypeX) nem jelenik meg a Chaostargetfilter, akkor a csomópont-szintű hibák (például a NodeRestart) soha nem lesznek engedélyezve a NodeTypeX csomópontjain, de a kód-és replika-hibák továbbra is engedélyezhetők a NodeTypeX, ha a A ApplicationInclusionList a NodeTypeX csomópontján történik. Ezen a listán legfeljebb 100 csomópont típusú név szerepelhet, így a szám növeléséhez a MaxNumberOfNodeTypesInChaosEntityFilter konfigurálásához szükség van egy konfigurációs frissítésre. Az alkalmazások szolgáltatásaihoz tartozó összes replika a replika hibáira (a replika újraindítására, a replika eltávolítására, az elsődleges áthelyezésre és a másodlagos áthelyezésre) irányul. A káosz csak akkor indítható el, ha a kód csak az alkalmazások replikáit tárolja. Ha egy alkalmazás nem jelenik meg ezen a listán, akkor is hibás lehet az egyes Chaos-iterációkban, ha az alkalmazás egy csomópont típusú csomóponton végződik, amely a Chaostargetfilter része. Ha azonban a applicationX az elhelyezési korlátozásokon keresztül nodeTypeY, és a applicationX hiányzik a ApplicationInclusionList, és a nodeTypeY hiányzik a chaostargetfilter, akkor a applicationX soha nem fog hibát okozni. Ebben a listában legfeljebb 1000 alkalmazás neve szerepelhet a MaxNumberOfApplicationsInChaosEntityFilter-konfigurációhoz szükséges konfigurációk frissítéséhez. |
+| --Chaos-Target-Filter | JSON-kódolású szótár két karakterlánc típusú kulccsal. A két kulcs a Chaostargetfilter és a ApplicationInclusionList. Mindkét kulcs értékei a sztringek listája. chaos_target_filter meghatározza az összes szűrőt a megadott Káoszi hibákhoz, például csak bizonyos csomópont-típusokat, vagy csak bizonyos alkalmazások meghibásodását. <br><br> Ha chaos_target_filter nincs használatban, a Chaos hibát jelzett a fürt összes entitása esetében. Ha chaos_target_filter van használatban, a káosz csak azokat az entitásokat okozta, amelyek megfelelnek a chaos_target_filter specifikációnak. A Chaostargetfilter és a ApplicationInclusionList csak a Union szemantikai használatát teszi lehetővé. Nem lehet megadni a Chaostargetfilter és a ApplicationInclusionList metszetét. Például nem adható meg "az alkalmazás hibája csak akkor, ha az adott csomópont típusa van." Ha egy entitást a Chaostargetfilter vagy a ApplicationInclusionList tartalmaz, az entitás nem zárható ki a ChaosTargetFilter használatával. Ha a applicationX nem jelenik meg a ApplicationInclusionList-ben, néhány Chaos iterációs applicationX hibát okozhat, mert az a Chaostargetfilter részét képező nodeTypeY csomópontján történik. Ha a Chaostargetfilter és a ApplicationInclusionList egyaránt üres, akkor egy ArgumentException kerül. A különböző típusú hibák (csomópont újraindítása, kód újraindítása, replika eltávolítása, replika újraindítása, elsődleges áthelyezése és másodlagos áthelyezés) engedélyezve vannak ezen csomópont-típusok csomópontjain. Ha a csomópont típusa (Say NodeTypeX) nem jelenik meg a Chaostargetfilter, akkor a csomópont-szintű hibák (például a NodeRestart) soha nem lesznek engedélyezve a NodeTypeX csomópontjain, de a kód-és replika-hibák továbbra is engedélyezhetők a NodeTypeX, ha a A ApplicationInclusionList a NodeTypeX csomópontján történik. Ezen a listán legfeljebb 100 csomópont típusú név szerepelhet, így a szám növeléséhez a MaxNumberOfNodeTypesInChaosEntityFilter konfigurálásához szükség van egy konfigurációs frissítésre. Az alkalmazások szolgáltatásaihoz tartozó összes replika a replika hibáira (a replika újraindítására, a replika eltávolítására, az elsődleges áthelyezésre és a másodlagos áthelyezésre) irányul. A káosz csak akkor indítható el, ha a kód csak az alkalmazások replikáit tárolja. Ha egy alkalmazás nem jelenik meg ezen a listán, akkor is hibás lehet az egyes Chaos-iterációkban, ha az alkalmazás egy csomópont típusú csomóponton végződik, amely a Chaostargetfilter része. Ha azonban a applicationX az elhelyezési korlátozásokon keresztül nodeTypeY, és a applicationX hiányzik a ApplicationInclusionList, és a nodeTypeY hiányzik a chaostargetfilter, akkor a applicationX soha nem fog hibát okozni. Ebben a listában legfeljebb 1000 alkalmazás neve szerepelhet a MaxNumberOfApplicationsInChaosEntityFilter-konfigurációhoz szükséges konfigurációk frissítéséhez. |
 | --környezet | A JSON kódolású leképezése (karakterlánc, karakterlánc) típusú kulcs-érték párok. A Térkép használatával rögzítheti a káosz futtatásával kapcsolatos információkat. Nem lehet több mint 100 ilyen pár, és mindegyik sztring (kulcs vagy érték) legfeljebb 4095 karakter hosszúságú lehet. Ezt a leképezést a Chaos Run indítója állítja be, hogy opcionálisan tárolja a környezetet az adott futtatásról. |
 | – letiltás-Move-replika – hibák | Letiltja az elsődleges áthelyezést és a másodlagos hibák áthelyezését. |
 | --Max-cluster-stabilizáció | Az a maximális időtartam, ameddig az összes fürt entitása stabil és kifogástalan lesz.  Alapértelmezett\: 60. <br><br> A Chaos iterációkban hajtja végre az egyes iterációk állapotát, és ellenőrzi a fürt entitásait. Az érvényesítés során, ha egy fürtcsomópont nem stabil és kifogástalan állapotú a MaxClusterStabilizationTimeoutInSeconds belül, a Chaos egy érvényesítési sikertelen eseményt hoz létre. |

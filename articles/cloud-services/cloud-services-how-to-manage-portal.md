@@ -3,17 +3,17 @@ title: Gyakori Cloud Service-kezelési feladatok | Microsoft Docs
 description: Megtudhatja, hogyan kezelheti Cloud Services a Azure Portalban. Ezek a példák a Azure Portal használják.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360905"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése a Azure Portal
 A Azure Portal **Cloud Services** területén a következőket teheti:
@@ -83,7 +83,7 @@ Vegye figyelembe, hogy a vendég operációs rendszer frissítései és a szolg�
 
 **Felmerül a swap-állásidő az alkalmazásom esetében? Hogyan kezelhető?**
 
-Az előző szakaszban leírtaknak megfelelően a rendszer általában gyors üzembe helyezést végez, mert csak az Azure Load Balancer konfigurációjának változása. Bizonyos esetekben 10 vagy több másodpercet is igénybe vehet, és átmeneti csatlakoztatási hibákat eredményezhet. Az ügyfelekre gyakorolt hatás korlátozásához érdemes lehet megvalósítani az [ügyfél](../best-practices-retry-general.md)újrapróbálkozási logikáját.
+Az előző szakaszban leírtaknak megfelelően a rendszer általában gyors üzembe helyezést végez, mert csak az Azure Load Balancer konfigurációjának változása. Bizonyos esetekben 10 vagy több másodpercet is igénybe vehet, és átmeneti csatlakoztatási hibákat eredményezhet. Az ügyfelekre gyakorolt hatás korlátozásához érdemes lehet megvalósítani az [ügyfél újrapróbálkozási logikáját](../best-practices-retry-general.md).
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Központi telepítések és felhőalapú szolgáltatások törlése
 A felhőalapú szolgáltatások törléséhez minden meglévő telepítést törölnie kell.
@@ -100,7 +100,7 @@ A központi telepítés vagy a felhőalapú szolgáltatás törléséhez kövess
 
 3. A teljes felhőalapú szolgáltatás törléséhez jelölje be a **Cloud Service és a központi telepítések** jelölőnégyzetet. Vagy kiválaszthatja az **éles üzembe helyezést** vagy az **átmeneti üzembe helyezés** jelölőnégyzetet is.
 
-    ![Cloud Services Delete](./media/cloud-services-how-to-manage-portal/delete-blade.png)
+    ![Cloud Services törlés](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
 4. Válassza a **Törlés** elemet a lap alján.
 
@@ -119,8 +119,11 @@ Az **Áttekintés** panel tetején egy állapotsor található. Amikor kiválasz
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
-* Konfigurálja az [SSL](cloud-services-configure-ssl-certificate-portal.md)-tanúsítványokat.
+* Konfigurálja az [SSL-tanúsítványokat](cloud-services-configure-ssl-certificate-portal.md).
+
+
+

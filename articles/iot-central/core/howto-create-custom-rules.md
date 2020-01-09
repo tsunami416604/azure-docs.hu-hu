@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8c0328c1d82af5e96afca29f05a065450eab9ae4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435009"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával
 
@@ -41,14 +41,14 @@ Hozzon létre egy IoT Central alkalmazást az [Azure IoT Central Application Man
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | Fizetési terv | Utólagos, használatalapú fizetés |
-| Alkalmazássablon | Minta: Contoso |
+| Alkalmazássablon | Örökölt alkalmazás |
 | Alkalmazásnév | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját nevét |
 | URL-cím | Fogadja el az alapértelmezett értéket, vagy válassza ki a saját egyedi URL-előtagját |
 | Könyvtár | Azure Active Directory bérlő |
 | Azure-előfizetés | Az Azure-előfizetése |
-| Region (Régió) | USA keleti régiója |
+| Region (Régió) | Egyesült Államok |
 
-A jelen cikkben szereplő példák és képernyőképek az **USA keleti** régióját használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
+A cikkben szereplő példák és Képernyőképek a **Egyesült Államok** régiót használják. Válasszon egy helyet az Ön számára, és győződjön meg róla, hogy az összes erőforrást ugyanabban a régióban hozza létre.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 
@@ -67,7 +67,7 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 | Földrajzi egység | USA keleti régiója |
 | Adatkapacitás-egységek | 1 |
 
-### <a name="stream-analytics-job"></a>Stream Analytics feladatok
+### <a name="stream-analytics-job"></a>Stream Analytics-feladat
 
 A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) a következő beállításokkal:
 
@@ -90,9 +90,9 @@ A [Azure Portal használatával hozzon létre egy Function alkalmazást](https:/
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Operációs rendszer | Windows |
-| Üzemeltetési csomag | Használatalapú csomag |
+| Szolgáltatási csomag | Használatalapú csomag |
 | Földrajzi egység | USA keleti régiója |
-| Futásidejű verem | .NET |
+| Futtatókörnyezet verme | .NET |
 | Adattárolás | Új létrehozása |
 
 ### <a name="sendgrid-account"></a>SendGrid-fiók
@@ -318,13 +318,13 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
     | Eseményközpont | centralexport |
     | Mérések | Be |
     | Eszközök | Ki |
-    | Eszközök sablonjai | Ki |
+    | Eszközsablonok | Ki |
 
 ![Folyamatos adatexportálási konfiguráció](media/howto-create-custom-rules/cde-configuration.png)
 
 A folytatás előtt várjon, amíg az Exportálás állapota **fut** .
 
-## <a name="test"></a>Tesztelés
+## <a name="test"></a>Test
 
 A megoldás teszteléséhez letilthatja a folyamatos adatexportálást IoT Centralról szimulált leállított eszközökre:
 

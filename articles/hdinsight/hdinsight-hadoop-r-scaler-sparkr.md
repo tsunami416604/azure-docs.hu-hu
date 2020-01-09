@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077092"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500075"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
 
@@ -21,7 +21,7 @@ Ebből a dokumentumból megtudhatja, hogyan jósolhatja meg a repülési beérke
 
 Habár mindkét csomag a Apache Hadoop Spark-végrehajtó motorján fut, a memóriában tárolt adatok megosztása blokkolja őket, mivel Mindegyikhez saját Spark-munkamenet szükséges. Amíg ez a probléma nem kerül a ML Server következő verziójában, a megkerülő megoldás a nem átfedő Spark-munkamenetek fenntartása, valamint az adatcsere közbenső fájlokon keresztül. Ebben az útmutatóban látható, hogy ezek a követelmények egyszerűen elérhetők.
 
-Ezt a példát eredetileg a 2016-as számú előadásban osztották meg Mario inchios és Burd. Ebből a beszélgetésből megtudhatja, hogyan hozhat létre [egy skálázható adatelemzési platformot az R](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)használatával.
+Ezt a példát eredetileg a 2016-as számú előadásban osztották meg Mario inchios és Burd. Ebből a beszélgetésből megtudhatja, hogyan hozhat létre [egy skálázható adatelemzési platformot az R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop)használatával.
 
 A kód eredetileg az Azure-beli HDInsight-fürtön, a Sparkban futó ML Server lett írva. A Sparker és a méretező használatának koncepciója azonban egy parancsfájlban a helyszíni környezetek kontextusában is érvényes.
 
@@ -29,9 +29,9 @@ A jelen dokumentumban ismertetett lépések feltételezik, hogy az R-nek van egy
 
 ## <a name="the-airline-and-weather-datasets"></a>A légitársaság és az időjárási adatkészletek
 
-A repülési adatok az [Egyesült Államok kormányzati levéltárában](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)érhetők el. A [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)fájlból zip-ként is elérhető.
+A repülési adatok az [Egyesült Államok kormányzati levéltárában](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)érhetők el. Emellett zip-ként is elérhető a [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)fájlból.
 
-Az időjárási adatok zip-fájlként tölthetők le nyers formában, a [nemzeti óceáni és a légköri adminisztrációs tárházban](https://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában a május 2007 – december 2012. Az óránkénti adatfájlok és `YYYYMMMstation.txt` a fájlok használata az egyes zip-fájlokon belül. 
+Az időjárási adatok zip-fájlként tölthetők le nyers formában, a [nemzeti óceáni és a légköri adminisztrációs tárházban](https://www.ncdc.noaa.gov/orders/qclcd/). Ebben a példában a május 2007 – december 2012. Az óránkénti adatfájlok és a `YYYYMMMstation.txt` fájl használata az egyes zip-fájlok között.
 
 ## <a name="setting-up-the-spark-environment"></a>A Spark-környezet beállítása
 
@@ -80,7 +80,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Ezután adja hozzá `Spark_Home` az R-csomagok keresési elérési útját. Ha hozzáadja azt a keresési útvonalhoz, a Sparker használatát és a Sparker-munkamenet inicializálását is lehetővé teszi:
+Ezután adja hozzá `Spark_Home` az R-csomagok keresési elérési útjához. Ha hozzáadja azt a keresési útvonalhoz, a Sparker használatát és a Sparker-munkamenet inicializálását is lehetővé teszi:
 
 ```
 #..setup for use of SparkR  
@@ -109,12 +109,12 @@ Az időjárási adattípusok előkészítéséhez a modellezéshez szükséges o
 - "DryBulbCelsius"
 - "DewPointCelsius"
 - "RelativeHumidity"
-- "WindSpeed"
+- Szélsebesség
 - Magasságmérő
 
 Ezután vegyen fel egy, a meteorológiai állomáshoz társított reptéri kódot, és alakítsa át a méréseket helyi idő szerint UTC értékre.
 
-Először hozzon létre egy fájlt, amely az meteorológiai állomás (WBAN) információit egy repülőtéri kódra képezi le. A következő kód beolvassa az óránkénti nyers időjárási adatfájlokat, részhalmazokat a szükséges oszlopokra, egyesíti az meteorológiai állomás hozzárendelési fájlját, beállítja a mérések dátumának időpontját az UTC értékre, majd kiírja a fájl új verzióját:
+Először hozzon létre egy fájlt, amely az meteorológiai állomás (WBAN) információit egy repülőtéri kódra képezi le. A következő kód beolvassa az óránkénti nyers időjárási adatfájlokat, részhalmazokat a szükséges oszlopokra, egyesíti az meteorológiai állomás-hozzárendelési fájlt, beállítja a mérések dátumának időpontját az UTC értékre, majd kiírja a fájl új verzióját:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -349,7 +349,7 @@ rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 
 ## <a name="import-to-xdf-for-use-by-scaler"></a>Importálás a XDF a méretező használatával
 
-A beillesztett légitársaságok CSV-fájlját és az időjárási adatmennyiséget a modellezéshez a méretezési szöveg adatforrásán keresztül használhatja. Először is importáljuk a XDF, mivel ez hatékonyabb, ha több műveletet futtatnak az adatkészleten:
+A beillesztett légitársaságok CSV-fájlját és az időjárási adatmennyiséget a modellezéshez a méretezési szöveg adatforrásán keresztül használhatja. Először importáljuk a XDF, mivel ez hatékonyabb, ha több műveletet futtat az adatkészleten:
 
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Pontozás máshol
 
-A modellt egy másik platformon lévő adatpontozásra is használhatja. Mentse egy RDS-fájlba, majd vigye át és importálja az RDS-et egy cél pontozási környezetbe, például a MIcrosoft SQL Server R Servicesba. Fontos annak biztosítása, hogy az adatértékek szintjei megegyezzenek a modell felépítésével. Ez a megfeleltetés a modellezési adatokhoz a skálázási `rxCreateColInfo()` függvényen keresztül, majd az oszlop adatainak a bemeneti adatforrásba való alkalmazásával érhető el. A következő részekben a vizsgálati adatkészlet néhány sorát mentjük, majd kinyerjük és felhasználjuk az oszlop információit ebből a mintából az előrejelzési parancsfájlban:
+A modellt egy másik platformon lévő adatpontozásra is használhatja. Mentse egy RDS-fájlba, majd vigye át és importálja az RDS-et egy cél pontozási környezetbe, például a MIcrosoft SQL Server R Servicesba. Fontos meggyőződni arról, hogy az adatértékek pontszáma megegyezik a modell felépítésének szintjével. Ez a megfeleltetés a modellezési adatokhoz társított oszlop adatainak a méretezés `rxCreateColInfo()` függvénnyel történő kibontásával és mentésével érhető el, majd az oszlop információinak a bemeneti adatforrásra való alkalmazásával előrejelzést küld. A következő részekben a vizsgálati adatkészlet néhány sorát mentjük, majd kinyerjük és felhasználjuk az oszlop információit ebből a mintából az előrejelzési parancsfájlban:
 
 ```
 # save the model and a sample of the test dataset 
@@ -529,7 +529,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben bemutatjuk, hogyan lehet kombinálni a Sparker használatát az adatkezeléshez a Hadoop Spark modell-fejlesztéséhez. Ehhez a forgatókönyvhöz külön Spark-munkameneteket kell fenntartania, egyszerre csak egy munkamenetet kell futtatnia, és az adatcserét CSV-fájlok használatával kell megadnia. Habár egyértelmű, ennek a folyamatnak még egyszerűbbnek kell lennie egy közelgő ML-es szolgáltatási kiadásban, amikor a Sparker és a skálázás megoszthat egy Spark-munkamenetet, és megoszthatja a Spark DataFrames.
 

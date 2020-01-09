@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213030"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609196"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Hibaelhárítási hibák a szinkronizálás során
 Hibák merülhetnek fel, ha a rendszer a Windows Server Active Directory (AD DS) identitási adatait szinkronizálja a Azure Active Directory (Azure AD) szolgáltatásba. Ez a cikk áttekintést nyújt a különböző típusú szinkronizálási hibákról, a hibákat okozó lehetséges forgatókönyvekről és a hibák kijavításának lehetséges módjairól. Ez a cikk a gyakori hibákat tartalmazza, és nem feltétlenül fedi le az összes lehetséges hibát.
@@ -53,7 +53,7 @@ Azure Active Directory séma nem teszi lehetővé két vagy több objektum szám
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* ObjectId
+* ObjectId (Objektumazonosító)
 
 > [!NOTE]
 > Az [Azure ad attribútum duplikált attribútumának rugalmassági](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkcióját a Azure Active Directory alapértelmezett viselkedése is kivezeti.  Ez csökkenti a Azure AD Connect (és más szinkronizálási ügyfelek) által látott szinkronizálási hibák számát azáltal, hogy az Azure AD-t rugalmasabban kezeli a helyszíni AD-környezetekben található duplikált ProxyAddresses és UserPrincipalName attribútumok kezelése során. Ez a funkció nem javítja az ismétlődési hibákat. Így továbbra is rögzíteni kell az adatmennyiséget. Lehetővé teszi azonban az olyan új objektumok kiépített kihelyezését, amelyek egyébként le vannak tiltva az Azure AD-ben duplikált értékek miatt. Ez a művelet csökkenti a szinkronizációs ügyfélnek visszaküldött szinkronizálási hibák számát is.
@@ -171,7 +171,7 @@ A AttributeValueMustBeUnique hibájának leggyakoribb oka két olyan objektum, a
 #### <a name="description"></a>Leírás
 Azure Active Directory a különböző korlátozásokat kényszeríti az adatvédelemre, mielőtt engedélyezi, hogy a rendszer beírja az adott adatlemezt a könyvtárba. Ezek a korlátozások biztosítják, hogy a végfelhasználók a lehető legjobb élményt nyújtsanak az adatoktól függő alkalmazások használatakor.
 
-#### <a name="scenarios"></a>Forgatókönyvek
+#### <a name="scenarios"></a>Alkalmazási helyzetek
 a. A UserPrincipalName attribútum értéke érvénytelen/nem támogatott karaktereket tartalmaz.
 b. A UserPrincipalName attribútum nem követi a szükséges formátumot.
 
@@ -185,7 +185,7 @@ a. Győződjön meg arról, hogy a userPrincipalName attribútumnak támogatott 
 #### <a name="description"></a>Leírás
 Ez az eset **"FederatedDomainChangeError"** szinkronizálási hibát eredményez, ha egy felhasználó userPrincipalName utótagja egy összevont tartományból egy másik összevont tartományba módosul.
 
-#### <a name="scenarios"></a>Forgatókönyvek
+#### <a name="scenarios"></a>Alkalmazási helyzetek
 Szinkronizált felhasználó esetén a UserPrincipalName utótagot az egyik összevont tartományból egy másik összevont tartományra módosították a helyszínen. A *userPrincipalName = bob\@contoso.com* például a következőre változott: *UserPrincipalName = Bob\@fabrikam.com*.
 
 #### <a name="example"></a>Példa
@@ -194,7 +194,7 @@ Szinkronizált felhasználó esetén a UserPrincipalName utótagot az egyik öss
 3. A contoso.com és a fabrikam.com tartományok összevont tartományok Azure Active Directorykal.
 4. Bob userPrincipalName nem frissül, és "FederatedDomainChangeError" szinkronizálási hibát eredményez.
 
-#### <a name="how-to-fix"></a>A javítás módja
+#### <a name="how-to-fix"></a>A hiba kijavítása
 Ha a felhasználó UserPrincipalName-utótagjának frissítése bob@**contoso.com** -ből bob\@**fabrikam.com**-ra történt, ahol a **contoso.com** és a **fabrikam.com** is **összevont tartományok**, akkor a szinkronizálási hiba elhárításához kövesse az alábbi lépéseket.
 
 1. Frissítse a felhasználó UserPrincipalName az Azure AD-ben bob@contoso.comról bob@contoso.onmicrosoft.comre. A következő PowerShell-paranccsal használhatja az Azure AD PowerShell-modult: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
@@ -218,7 +218,7 @@ Ha egy attribútum túllépi a megengedett mérethatárt, a hosszúsági korlát
 3. A Active Directory Bob thumbnailPhoto-készlete túl nagy az Azure AD-ben való szinkronizáláshoz.
 4. A Active Directory ProxyAddresses attribútumának automatikus populációja során az objektum túl sok ProxyAddresses van hozzárendelve.
 
-### <a name="how-to-fix"></a>A javítás módja
+### <a name="how-to-fix"></a>A hiba kijavítása
 1. Győződjön meg arról, hogy a hibát okozó attribútum a megengedett korlátozáson belül van.
 
 ## <a name="existing-admin-role-conflict"></a>Meglévő rendszergazdai szerepkör ütközik
@@ -234,13 +234,13 @@ A Azure AD Connect nem lehet a helyszíni AD-ből származó felhasználói obje
 ![Meglévő rendszergazda](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>A javítás módja
-A probléma megoldásához tegye a következők egyikét:
+### <a name="how-to-fix"></a>A hiba kijavítása
+A probléma megoldásához tegye a következőket:
 
- - Távolítsa el az Azure AD-fiókot (tulajdonos) az összes rendszergazdai szerepkörből. 
- - **Törölje** a karanténba helyezett objektumot a felhőben. 
- - A következő szinkronizálási ciklus gondoskodik a helyszíni felhasználó Felhőbeli fiókkal való zökkenőmentes megfeleltetéséről (mivel a Felhőbeli felhasználó már nem globális GA). 
- - Állítsa vissza a tulajdonos szerepkör-tagságait. 
+1. Távolítsa el az Azure AD-fiókot (tulajdonos) az összes rendszergazdai szerepkörből. 
+2. **Törölje** a karanténba helyezett objektumot a felhőben. 
+3. A következő szinkronizálási ciklus gondoskodik a helyszíni felhasználó Felhőbeli fiókkal való zökkenőmentes megfeleltetéséről (mivel a Felhőbeli felhasználó már nem globális GA). 
+4. Állítsa vissza a tulajdonos szerepkör-tagságait. 
 
 >[!NOTE]
 >A rendszergazdai szerepkört a meglévő felhasználói objektumhoz is hozzárendelheti, miután a helyi felhasználói objektum és az Azure AD felhasználói objektum közötti lágy egyezés befejeződött.

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl Mesh Code-Package-log | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl Mesh Code-Package-log parancsokat.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl Mesh Code-Package-log
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A megadott programkódhoz tartozó naplók beszerzésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d1f0e34389a48b79c049f26e8b04c870f0f1a9a7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 78edc9bb36b711f72300942bc9900b0fde7c51d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901265"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646143"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh kódcsomagnaplója
 Szerezze be a naplófájlokat az adott szolgáltatás replikájának megadott csomagjának tárolójában.
@@ -28,7 +19,7 @@ Szerezze be a naplófájlokat az adott szolgáltatás replikájának megadott cs
 
 |Parancs|Leírás|
 | --- | --- |
-| Get | Lekéri a tárolóból a naplókat. |
+| elérés | Lekéri a tárolóból a naplókat. |
 
 ## <a name="sfctl-mesh-code-package-log-get"></a>sfctl Mesh Code-Package-log Get
 Lekéri a tárolóból a naplókat.

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl szolgáltatás | Microsoft Docs
-description: Ismerteti a CLI-sfctl szolgáltatás Service Fabric.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl szolgáltatás
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szolgáltatások, a szolgáltatások típusai és a szolgáltatási csomagok kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 63f901da3f64e62a55ab27904b8a38156957a7ee
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900990"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639071"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Szolgáltatás, szolgáltatások típusai és szolgáltatási csomagok létrehozása, törlése és kezelése.
@@ -39,12 +30,12 @@ Szolgáltatás, szolgáltatások típusai és szolgáltatási csomagok létrehoz
 | egészségügy | Lekéri a megadott Service Fabric szolgáltatás állapotát. |
 | információ | A Service Fabric alkalmazáshoz tartozó adott szolgáltatás információinak beolvasása. |
 | lista | Az alkalmazás-azonosító által megadott alkalmazáshoz tartozó összes szolgáltatás információinak beolvasása. |
-| Nyilvánvaló | Lekéri a szolgáltatás típusát leíró jegyzékfájlt. |
+| manifest | Lekéri a szolgáltatás típusát leíró jegyzékfájlt. |
 | csomag üzembe helyezése | A megadott szolgáltatási jegyzékfájlhoz társított csomagok letöltése a megadott csomóponton lévő rendszerkép-gyorsítótárba. |
 | csomag – állapot | Egy Service Fabric csomóponthoz és alkalmazáshoz telepített adott alkalmazáshoz tartozó szervizcsomag állapotával kapcsolatos információk beolvasása. |
 | csomag – információ | Egy Service Fabric csomóponton telepített szervizcsomagok listájának beolvasása pontosan a megadott névvel egyezően. |
 | csomagok listája | Lekéri a Service Fabric csomóponton telepített szervizcsomagok listáját. |
-| Visszaszerez | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálnia a megadott szolgáltatás helyreállítását, amely jelenleg a kvórum elvesztése miatt megakad. |
+| helyreállítás | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálnia a megadott szolgáltatás helyreállítását, amely jelenleg a kvórum elvesztése miatt megakad. |
 | jelentés – állapot | Állapotjelentést küld a Service Fabric szolgáltatásról. |
 | megoldásához | Service Fabric partíció feloldása. |
 | típus – lista | Beolvassa a Service Fabric-fürtben egy kiépített alkalmazás által támogatott szolgáltatási típusokkal kapcsolatos információkat tartalmazó listát. |

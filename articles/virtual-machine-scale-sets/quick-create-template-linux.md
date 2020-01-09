@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Linux virtuálisgép-méretezési csoport létrehozása Azure-sablonnal | Microsoft Docs
+title: Rövid útmutató – linuxos virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 description: Ismerje meg, hogyan hozhat létre gyorsan Linux virtuálisgép-méretezési csoportot egy mintaalkalmazást üzembe helyező és automatikus méretezési szabályokat konfiguráló Azure Resource Manager-sablonnal
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1aca6a1c47e486e0630e779c975b699a193d41
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 34cc269bc9355fa6744c7d31fff7e986baf1e049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351112"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Gyors útmutató: Linux virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Rövid útmutató: Linux virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást egy Azure Resource Manager-sablon használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -43,8 +43,8 @@ Méretezési csoport sablon alapján való létrehozásához definiálnia kell a
 | Tulajdonság                     | A tulajdonság leírása                                  | Példa sablonérték                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | A létrehozandó Azure-erőforrástípus                            | Microsoft.Compute/virtualMachineScaleSets |
-| name                         | A méretezési csoport neve                                       | myScaleSet                                |
-| location                     | A méretezési csoport létrehozásának helye                     | East US                                   |
+| név                         | A méretezési csoport neve                                       | myScaleSet                                |
+| location                     | A méretezési csoport létrehozásának helye                     | USA keleti régiója                                   |
 | sku.name                     | A méretezési csoport egyes példányainak virtuálisgép-mérete                  | Standard_A1                               |
 | sku.capacity                 | Az először létrehozandó virtuálisgép-példányok száma           | 2                                         |
 | upgradePolicy.mode           | A virtuálisgép-példányok frissítésének módja módosítás esetén              | Automatikus                                 |
@@ -174,7 +174,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útbemutatóban egy Linux rendszerű méretezési csoportot hoztunk létre egy Azure-sablonnal, valamint az egyéni szkriptbővítménnyel egy alapszintű Python-webkiszolgálót telepítettünk a VM-példányokon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]

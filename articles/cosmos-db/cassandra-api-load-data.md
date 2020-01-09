@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Mintaadatok betöltése az Azure Cosmos DB Cassandra API táblába Java-alkalmazás használatával'
-description: Ez az oktatóanyag bemutatja az Azure Cosmos DB Cassandra API táblához felhasználói mintaadatokat tölthet be a java-alkalmazás használatával.
+title: 'Oktatóanyag: Java-alkalmazás, amely a mintaadatok betöltését Cassandra API táblázatba Azure Cosmos DB'
+description: Ez az oktatóanyag bemutatja, hogyan tölthetők be a minta felhasználói adatai egy Cassandra API-táblába Azure Cosmos DB egy Java-alkalmazás használatával.
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -9,21 +9,21 @@ ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: e9fc96b9f26344045aa7e45fe7bdbe389e329377
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 66c292bcb02e3b2b215cabe4968fa30a45422cef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445649"
 ---
-# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Oktatóanyag: Mintaadatok betöltése az Azure Cosmos DB Cassandra API táblába
+# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Oktatóanyag: mintaadatok betöltése egy Cassandra API-táblába Azure Cosmos DB
 
-A fejlesztők lehetséges, hogy alkalmazásokat, amelyek használják a kulcs-érték párokat. Az Azure Cosmos DB Cassandra API-fiók használhatja, kulcs/érték-adatok tárolására és kezelésére. Ez az oktatóanyag bemutatja az Azure Cosmos DB Cassandra API-fiók egyik táblájába felhasználói mintaadatokat tölthet be a Java-alkalmazás használatával. A Java-alkalmazás használja a [Java illesztőprogram](https://github.com/datastax/java-driver) , és betölti a felhasználói adatok, például a felhasználói Azonosítóját, a felhasználónév és a felhasználó városa. 
+Fejlesztőként lehetnek olyan alkalmazások, amelyek kulcs/érték párokat használnak. A kulcs/érték típusú adathalmazok tárolásához és kezeléséhez használhatja Azure Cosmos DB Cassandra API fiókját. Ez az oktatóanyag bemutatja, hogyan tölthetők be a minta felhasználói adatai egy Cassandra API-fiókba Azure Cosmos DB egy Java-alkalmazás használatával. A Java-alkalmazás a [Java-illesztőprogramot](https://github.com/datastax/java-driver) használja, és betölti a felhasználói adatértékeket, például a felhasználói azonosítót, a felhasználónevet és a felhasználói várost. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Adatok betöltése az egy Cassandra-tábla
+> * Adatgyűjtés Cassandra-táblába
 > * Az alkalmazás futtatása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az adatok Cassandra API-táblába történő betöltéséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a "UserRepository.java" fájlt a "src\main\java\com\azure\cosmosdb\cassandra" mappában, és fűzze hozzá a kódot a USER_ID paraméter értékét, a felhasználónév és a user_bcity mezők beszúrni a táblába:
+1. Nyissa meg a "src\main\java\com\azure\cosmosdb\cassandra" mappában található "UserRepository. Java" fájlt, és fűzze hozzá a kódot, hogy beszúrja a user_id, user_name és user_bcity mezőket a táblába:
 
    ```java
    /**
@@ -62,7 +62,7 @@ Az adatok Cassandra API-táblába történő betöltéséhez hajtsa végre a kö
    }
    ```
  
-2. Nyissa meg a "UserProfile.java" fájlt a "src\main\java\com\azure\cosmosdb\cassandra" mappában. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat. Ezután fűzze hozzá a következő kódot, amely mintaadatokat illeszt a Cassandra API-táblába.
+2. Nyissa meg a "src\main\java\com\azure\cosmosdb\cassandra" mappában található "Profile. Java" fájlt. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat. Ezután fűzze hozzá a következő kódot, amely mintaadatokat illeszt a Cassandra API-táblába.
 
    ```java
    //Insert rows into user table
@@ -76,7 +76,7 @@ Az adatok Cassandra API-táblába történő betöltéséhez hajtsa végre a kö
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Nyisson meg egy parancssort vagy terminálablakot, és a mappa elérési utat módosítsa arra, ahol létrehozta a projektet. Futtassa a "mvn tiszta telepítés" parancsot a célmappában belül a cosmosdb-cassandra-examples.jar fájl létrehozásához, és futtassa az alkalmazást. 
+Nyisson meg egy parancssort vagy egy terminált, és módosítsa a mappa elérési útját a projekt létrehozásához. Futtassa a "MVN tiszta telepítés" parancsot a cosmosdb-Cassandra-examples. jar fájl létrehozásához a célmappán belül, és futtassa az alkalmazást. 
 
 ```bash
 cd "cassandra-demo"
@@ -88,9 +88,9 @@ java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.exa
 
 Ezután megnyithatja az Adatkezelőt az Azure Portalon, hogy ellenőrizze, hozzá lettek-e adva a felhasználói adatok a táblához.
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban már megismerkedett az Azure Cosmos DB Cassandra API-fiók a mintaadatok betöltését. Továbbléphet a következő cikkre:
+Ebben az oktatóanyagban megtanulta, hogyan tölthető be a mintaadatok egy Cassandra API-fiókba Azure Cosmos DB-ban. Továbbléphet a következő cikkre:
 
 > [!div class="nextstepaction"]
 > [Adatok lekérdezése egy Cassandra API-fiókból](cassandra-api-query-data.md)

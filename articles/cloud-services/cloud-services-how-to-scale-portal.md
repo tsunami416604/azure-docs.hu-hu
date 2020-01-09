@@ -2,17 +2,17 @@
 title: Felhőalapú szolgáltatás automatikus méretezése a portálon | Microsoft Docs
 description: Ebből a témakörből megtudhatja, hogyan konfigurálhat automatikus méretezési szabályokat a Cloud Service webes szerepkör vagy feldolgozói szerepkör számára az Azure-ban a portál használatával.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360837"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Felhőalapú szolgáltatás automatikus skálázásának konfigurálása a portálon
 
@@ -32,7 +32,7 @@ Az alkalmazás skálázásának konfigurálása előtt vegye figyelembe a követ
 
 * Az előfizetéshez társított egyéb erőforrásokat is méretezheti.
 
-* Az alkalmazás magas rendelkezésre állásának engedélyezéséhez győződjön meg arról, hogy az üzembe helyezése két vagy több szerepkör-példánnyal történik. További információ: szolgáltatói [szerződések](https://azure.microsoft.com/support/legal/sla/).
+* Az alkalmazás magas rendelkezésre állásának engedélyezéséhez győződjön meg arról, hogy az üzembe helyezése két vagy több szerepkör-példánnyal történik. További információ: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
 
 * Az automatikus méretezés csak akkor történik meg, ha minden szerepkör **kész** állapotban van.  
 
@@ -41,7 +41,7 @@ Az alkalmazás skálázásának konfigurálása előtt vegye figyelembe a követ
 A felhőalapú szolgáltatás kiválasztása után a Cloud Service panel látható.
 
 1. A Cloud Service panelen a **szerepkörök és példányok** csempén válassza ki a Cloud Service nevét.   
-   **FONTOS**: Győződjön meg arról, hogy a Cloud Service szerepkörre kattint, nem pedig a szerepkör alá tartozó szerepkör-példányra.
+   **Fontos**: Ügyeljen arra, hogy a Cloud Service szerepkörre ne a szerepkör alatt lévő szerepkör-példányra mutasson.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Válassza ki a **Méretezés** csempét.
@@ -51,7 +51,7 @@ A felhőalapú szolgáltatás kiválasztása után a Cloud Service panel láthat
 ## <a name="automatic-scale"></a>Automatikus méretezés
 A két mód **manuális** vagy **automatikus**beállításával konfigurálhatja a szerepkörök méretezési beállításait. A manuális a vártnál, a példányok abszolút száma állítható be. Az automatikus beállítás lehetővé teszi, hogy olyan szabályokat állítson be, amelyek meghatározzák, hogy mennyit és milyen mértékben kell méreteznie.
 
-Állítsa be  a skálázási lehetőséget az **ütemezett és**a teljesítményi szabályokra.
+Állítsa be a **skálázási** lehetőséget az **ütemezett és a teljesítményi szabályokra**.
 
 ![A Cloud Services méretezési beállításai a profil és a szabály szerint](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
@@ -66,7 +66,7 @@ Miután konfigurálta a profilt és a szabályokat, válassza a felső **Mentés
 #### <a name="profile"></a>Profil
 A profil meghatározza a skála minimális és maximális példányát, valamint azt is, hogy a méretezési tartomány aktív-e.
 
-* **Mindig**
+* **Always** (Mindig)
 
     Mindig tartsa meg az elérhető példányok számát.  
 
@@ -94,7 +94,7 @@ A szabály triggere a Cloud Service (CPU-használat, lemez tevékenység vagy h�
 A szabály konfigurálása után kattintson a szabály panel alján található **OK** gombra.
 
 ## <a name="back-to-manual-scale"></a>Vissza a manuális méretezéshez
-Navigáljon a [méretezési beállításokhoz](#where-scale-is-located) , és állítsa a méretezési lehetőséget a **manuálisan megadott példányszámra**.
+Navigáljon a [méretezési beállításokhoz](#where-scale-is-located) , és állítsa a **méretezési** lehetőséget a **manuálisan megadott példányszámra**.
 
 ![A Cloud Services méretezési beállításai a profil és a szabály szerint](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
@@ -105,3 +105,6 @@ Ezzel a beállítással eltávolíthatja az automatikus skálázást a szerepkö
 3. A szerepkör azon példányai, amelyek méretezése a következőre:.
 
 A méretezési beállítások konfigurálása után kattintson a felül található **Mentés** ikonra.
+
+
+

@@ -1,6 +1,5 @@
 ---
-title: Angular alkalmazás létrehozása az Azure Cosmos DB API a MongoDB - hozzáadása CRUD-függvényeket adhat az alkalmazáshoz
-titleSuffix: Azure Cosmos DB
+title: A MongoDB-hez Azure Cosmos DB API-val rendelkező szögletes alkalmazáshoz hozzáadhat szifilisz-függvényeket
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 6. része.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441104"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a MongoDB - hozzáadása CRUD-függvényeket adhat az alkalmazáshoz
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a szifilisz-függvények hozzáadása az alkalmazáshoz
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md). Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md). Az oktatóanyag 6. része az [5. részre](tutorial-develop-mongodb-nodejs-part5.md) épül, és az alábbi feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * Post, Put és Delete függvények létrehozása a főképszolgáltatáshoz
@@ -186,7 +185,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
     Ha frissíti az oldalt, a Hálózat lap a fő képek lekéréséhez szükséges időt mutatja. Bár az itt látható idők rövidek, rengeteg múlik azon, hogy az adatok a világ mely részén vannak tárolva, és hogy azokat a felhasználókhoz közeli helyekre tudja-e georeplikálni. A georeplikációról további információkat a nemsokára elérhető következő oktatóanyagban talál majd.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

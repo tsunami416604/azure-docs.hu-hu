@@ -1,24 +1,24 @@
 ---
 title: Az Azure-irányítópultok szerkezete | Microsoft Docs
-description: Ez a cikk az Azure-irányítópult JSON-szerkezetét ismerteti
+description: Végigvezeti egy Azure-irányítópult JSON-struktúráján egy példa irányítópult használatával. Az erőforrás-tulajdonságokra mutató hivatkozást tartalmaz.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 12/20/2019
+ms.author: mblythe
+ms.openlocfilehash: 18125e119e7ffdd2f8fa8ca3c5c1b12c8c9a94e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832799"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640363"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Az Azure-irányítópultok szerkezete
 Ez a dokumentum egy Azure-irányítópult szerkezetét mutatja be példaként a következő irányítópult használatával:
@@ -293,7 +293,7 @@ Mivel a közös [Azure-irányítópultok erőforrások](https://docs.microsoft.c
 
 Nézzük meg a JSON megfelelő részeit.  A legfelső szintű tulajdonságok, az __azonosító__, a __név__, a __típus__, a __hely__és a __címkék__ tulajdonság az összes Azure-erőforrástípus között meg van osztva. Tehát nem sok köze van az irányítópult tartalmához.
 
-### <a name="the-id-property"></a>Az id tulajdonság
+### <a name="the-id-property"></a>Az ID tulajdonság
 
 Az Azure-erőforrás azonosítója az Azure- [erőforrások elnevezési konvenciói alapján](/azure/architecture/best-practices/resource-naming). Amikor a portál létrehoz egy irányítópultot, általában egy GUID formátumú azonosítót választ, de a programozott módon történő létrehozáskor bármilyen érvényes nevet használhat. 
 
@@ -312,13 +312,13 @@ A címkék az Azure-erőforrások egyik gyakori funkciója, amely lehetővé tes
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>A tulajdonságok objektum
-A Properties objektum két tulajdonságot tartalmaz: a __lencséket__ és a __metaadatokat__. A __lencsék__ tulajdonság a csempék adatait tartalmazza (más néven részek) az irányítópulton.  A __metaadatok__ tulajdonság a lehetséges jövőbeli funkciókhoz tartozik.
+A Properties objektum két tulajdonságot tartalmaz: a __lencséket__ és a __metaadatokat__. Az __objektívek__ tulajdonság az irányítópulton lévő csempék adatait tartalmazza.  A __metaadatok__ tulajdonság a lehetséges jövőbeli funkciókhoz tartozik.
 
 ### <a name="the-lenses-property"></a>A lencsék tulajdonság
 Az __objektívek__ tulajdonság tartalmazza az irányítópultot. Vegye figyelembe, hogy a példában szereplő objektívek objektum egyetlen "0" nevű tulajdonságot tartalmaz. A lencsék olyan csoportosítási koncepciók, amelyek jelenleg nincsenek implementálva az irányítópultokon. Egyelőre az összes irányítópult ezt az egyetlen tulajdonságot az objektív objektumon, a "0" néven is elvégezte.
 
 ### <a name="the-lens-object"></a>Az objektív objektum
-A "0" alatti objektum két tulajdonságot, __sorrendet__ és __részt__tartalmaz.  Az irányítópultok aktuális verziójában a __sorrend__ mindig 0. A __részek__ tulajdonság olyan objektumot tartalmaz, amely meghatározza az egyes részeket (más néven csempék) az irányítópulton.
+A "0" alatti objektum két tulajdonságot, __sorrendet__ és __részt__tartalmaz.  Az irányítópultok aktuális verziójában a __sorrend__ mindig 0. A __részek__ tulajdonság olyan objektumot tartalmaz, amely meghatározza az irányítópulton az egyes részeket (más néven csempéket).
 
 A __részek__ objektum minden részhez tartalmaz egy tulajdonságot, ahol a tulajdonság neve szám. Ez a szám nem jelentős. 
 
@@ -344,7 +344,7 @@ Az egyes részek metaadat-tulajdonsággal rendelkeznek, egy objektumhoz csak egy
 A különböző típusú részek saját konfigurációval rendelkeznek. A lehetséges konfigurációs tulajdonságokat a __bemenetek__, a __Beállítások__és az __eszközök__nevezzük. 
 
 ### <a name="the-inputs-object"></a>A bemeneti objektum
-A bemeneti objektum általában olyan információt tartalmaz, amely egy csempe erőforrás-példányhoz kötését köti össze.  A minta irányítópultján található virtuálisgép-rész egyetlen olyan bemenetet tartalmaz, amely az Azure Resource id-t használja a kötés kifejezésére.  Ez az erőforrás-azonosító formátum konzisztens az összes Azure-erőforráson.
+A bemeneti objektum általában olyan információt tartalmaz, amely egy csempe erőforrás-példányhoz kötését köti össze.  A minta irányítópultján található virtuálisgép-rész egyetlen olyan bemenetet tartalmaz, amely az Azure Resource ID-t használja a kötés kifejezésére.  Ez az erőforrás-azonosító formátum konzisztens az összes Azure-erőforráson.
 
 ```json
 "inputs":

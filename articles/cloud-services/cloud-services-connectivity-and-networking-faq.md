@@ -1,5 +1,6 @@
 ---
-title: Kapcsolódási és Hálózatkezelési problémák Microsoft Azure Cloud Services GYIK-ban | Microsoft Docs
+title: Kapcsolatokkal és hálózatkezeléssel kapcsolatos problémák
+titleSuffix: Azure Cloud Services
 description: Ez a cikk a Microsoft Azure Cloud Services kapcsolatával és hálózatkezelésével kapcsolatos gyakori kérdéseket sorolja fel.
 services: cloud-services
 documentationcenter: ''
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386748"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolati és hálózatkezelési problémái: Gyakori kérdések (GYIK)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolódási és hálózatkezelési problémái: gyakori kérdések (GYIK)
 
 Ez a cikk az [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)kapcsolati és hálózatkezelési problémáival kapcsolatos gyakori kérdéseket tartalmazza. A mérettel kapcsolatos információkért tekintse meg a virtuálisgép- [méret Cloud Servicesét ismertető oldalt](cloud-services-sizes-specs.md).
 
@@ -64,14 +65,14 @@ A használt terjesztési algoritmus egy 5 rekordos (forrás IP-cím, forrásport
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hogyan lehet átirányítani a bejövő forgalmat a Cloud Service alapértelmezett URL-címére egy egyéni URL-címre?
 
-Az IIS URL-Újraírási moduljának használatával átirányíthatja a felhőalapú szolgáltatás (például \*. cloudapp.net) alapértelmezett URL-címére irányuló forgalmat egy egyéni névre vagy URL-címre. Mivel az URL-cím újraírása modul alapértelmezés szerint engedélyezve van a webes szerepkörökön, és a szabályai az alkalmazás Web. config fájljában vannak konfigurálva, a rendszer a újraindítások/rendszerképektől függetlenül mindig elérhető a virtuális gépen. További információt a következő témakörben talál:
+Az IIS URL-Újraírási moduljának használatával átirányíthatja a felhőalapú szolgáltatás alapértelmezett URL-címére (például \*. cloudapp.net) irányuló forgalmat egy egyéni névre vagy URL-címre. Mivel az URL-cím újraírása modul alapértelmezés szerint engedélyezve van a webes szerepkörökön, és a szabályai az alkalmazás Web. config fájljában vannak konfigurálva, a rendszer a újraindítások/rendszerképektől függetlenül mindig elérhető a virtuális gépen. További információt a következő témakörben talál:
 
 - [Újraírási szabályok létrehozása az URL-átírási modulhoz](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Alapértelmezett hivatkozás eltávolítása](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére?
 
-Megakadályozhatja a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére/nevére (például \*. cloudapp.net). Állítsa a gazdagép fejlécét egy egyéni DNS-névre (például a www\.MyCloudService.com) a hely kötési konfigurációja területen a Cloud Service Definition (*. csdef) fájlban, a jelzett módon:
+Megakadályozhatja a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére/nevére (például \*. cloudapp.net). Állítsa a gazdagép fejlécét egy egyéni DNS-névre (például a www\.MyCloudService.com) a hely kötésének konfigurációja területen a Cloud Service Definition (*. csdef) fájlban, a jelzett módon:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

@@ -3,24 +3,24 @@ title: IoT-Plug and Play előnézeti eszköz használata Azure IoT-megoldásból
 description: Megoldás fejlesztőként megtudhatja, hogyan használhatja a Service SDK-t a IoT Plug and Play-eszközök használatához.
 author: Philmea
 ms.author: philmea
-ms.date: 07/24/2019
+ms.date: 12/26/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 485b17ff236de32eab5388629c1bb6044ba19197
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977590"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531343"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Kapcsolódás IoT Plug and Play előnézeti eszközhöz
 
 Ez az útmutató bemutatja, hogyan használhatók a Node Service SDK-ban található minták, amelyek bemutatják, hogyan kezelhetik a IoT-megoldás a IoT Plug and Play előnézeti eszközökkel.
 
-Ha még nem fejezte be a [IoT Plug and Play eszköz csatlakoztatása a megoldáshoz](quickstart-connect-pnp-device-solution.md) – rövid útmutató, ezt most végezze el. A rövid útmutató bemutatja, hogyan töltheti le és telepítheti az SDK-t, és hogyan futtathat néhány mintát.
+Ha még nem fejezte be a [IoT Plug and Play eszköz csatlakoztatása a megoldáshoz](quickstart-connect-pnp-device-solution-node.md) – rövid útmutató, ezt most végezze el. A rövid útmutató bemutatja, hogyan töltheti le és telepítheti az SDK-t, és hogyan futtathat néhány mintát.
 
 A szolgáltatási minták futtatása előtt nyisson meg egy új terminált, nyissa meg a klónozott tárház gyökérkönyvtárát, lépjen a **digitaltwins/Gyorsindítás/szolgáltatás** mappába, majd futtassa a következő parancsot a függőségek telepítéséhez:
 

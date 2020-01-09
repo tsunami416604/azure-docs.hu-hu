@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460494"
 ---
-Az RBAC-szerepkört rendel egy rendszerbiztonsági tag, mielőtt határozza meg, hogy a rendszerbiztonsági tagot kell hozzáférés hatókörét. Ajánlott eljárások szabályozzák, hogy minden esetben célszerű csak a minimális lehetséges hatókör megadása.
+Mielőtt RBAC-szerepkört rendeljen egy rendszerbiztonsági tag számára, határozza meg a rendszerbiztonsági tag hozzáférésének hatókörét. Az ajánlott eljárások azt diktálják, hogy mindig csak a lehető legszűkebb hatókört adja meg.
 
-Az alábbi lista ismerteti a szintek milyen gazdagépcsoportjaira az Azure blob és üzenetsor erőforrásokhoz való hozzáférés a minimális hatókör kezdve:
+Az alábbi lista azokat a szinteket ismerteti, amelyekkel az Azure Blob és a várólista erőforrásaihoz férhet hozzá, a legszűkebb hatókörtől kezdve:
 
-- **Tároló.** Ebben a hatókörben szerepkör-hozzárendelés minden a blobokat a tárolóba, valamint a tároló tulajdonságainak és metaadatainak vonatkozik.
-- **Az egyes üzenetsorába.** Ebben a hatókörben szerepkör-hozzárendelés üzeneteket az üzenetsor, valamint a várólista-tulajdonságok és metaadatok vonatkozik.
-- **A storage-fiók.** Ebben a hatókörben a szerepkör-hozzárendelés a blobok és az összes tárolót, vagy valamennyi üzenetsorok és az üzenetek vonatkozik.
-- **Az erőforráscsoport.** Ebben a hatókörben szerepkör-hozzárendelés minden, a tárolók és a tárfiókot az erőforráscsoportban lévő összes üzenetsor vonatkozik.
-- **Az előfizetés.** Ebben a hatókörben szerepkör-hozzárendelés minden, a tárolók és az összes a tárfiókok minden előfizetésben az erőforráscsoportok a várólisták vonatkozik.
+- **Egy adott tároló.** Ezen a hatókörön a szerepkör-hozzárendelés a tároló összes blobján, valamint a tároló tulajdonságain és metaadatain is érvényes.
+- **Egy külön üzenetsor.** Ezen a hatókörön a szerepkör-hozzárendelés a várólistán lévő üzenetekre, valamint a várólista tulajdonságaira és metaadataira vonatkozik.
+- **A Storage-fiók.** Ezen a hatókörön a szerepkör-hozzárendelés minden tárolóra és a blobokra, illetve az összes várólistára és azok üzeneteire vonatkozik.
+- **Az erőforráscsoport.** Ezen a hatókörön a szerepkör-hozzárendelés az erőforráscsoport összes tárolási fiókjának összes tárolóján vagy várólistáján érvényes.
+- **Az előfizetés.** Ezen a hatókörön a szerepkör-hozzárendelés az előfizetésben lévő összes erőforráscsoport összes tárolóján vagy várólistáján érvényes.
 
 > [!IMPORTANT]
-> Ha az előfizetése tartalmazza az Azure DataBricks-névtér, az előfizetések szintjén hozzárendelt szerepkörök blokkolva lesz a blob és üzenetsor-adatokhoz való hozzáférést.
+> Ha az előfizetése tartalmaz egy Azure DataBricks-névteret, az előfizetésre hatókörbe tartozó szerepkörök nem biztosítanak hozzáférést a blob és a üzenetsor adataihoz. A hatókör szerepkörei az erőforráscsoport, a Storage-fiók vagy a tároló vagy a várólista számára.     

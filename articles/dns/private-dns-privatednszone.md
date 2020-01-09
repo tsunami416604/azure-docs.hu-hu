@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 462c873221a4bdc622a9b118b6699a9719a5f88d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961184"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646795"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Mi az a privát Azure DNS zóna?
 
@@ -23,16 +23,16 @@ A magánhálózati DNS-zónában található rekordok nem oldhatók fel az inter
 A [virtuális hálózati kapcsolatok](./private-dns-virtual-network-links.md)létrehozásával összekapcsolhatja a magánhálózati DNS-zónákat egy vagy több virtuális hálózattal.
 Engedélyezheti az [automatikus regisztrálás](./private-dns-autoregistration.md) funkciót is, amellyel automatikusan kezelheti a virtuális hálózatban üzembe helyezett virtuális gépek DNS-rekordjainak életciklusát.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
-Ha szeretné megismerni, hogy hány privát DNS-zóna hozható létre egy előfizetésben, és hány rekordhalmaz támogatott a privát DNS-zónában, tekintse meg a [Azure DNS határértékeket](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Ha szeretné megismerni, hogy hány privát DNS-zóna hozható létre egy előfizetésben, és hány rekordhalmaz támogatott a privát DNS-zónában, tekintse meg a [Azure DNS határértékeket](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="restrictions"></a>Korlátozások
 
 * Az egycímkével ellátott privát DNS-zónák nem támogatottak. A privát DNS-zónának két vagy több címkével kell rendelkeznie. Például a contoso.com két címkéje van, és egy pont választja el egymástól. A privát DNS-zónák legfeljebb 34 címkével rendelkezhetnek.
 * A zóna-delegálások (NS-rekordok) nem hozhatók létre egy privát DNS-zónában. Ha gyermektartomány használatát kívánja használni, közvetlenül is létrehozhatja a tartományt magánhálózati DNS-zónáként, és összekapcsolhatja azt a virtuális hálózattal anélkül, hogy a szülő zónából névszerver-delegálást kellene beállítania.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNSban [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

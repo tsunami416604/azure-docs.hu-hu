@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 54aadd22b8f2bbccaa4c5e4f1444aa08279a4773
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: eaaa6ea7c5986a71f298119b5074ae32504ab73b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446267"
 ---
 <a name="HOLTop"></a>
 
@@ -44,11 +44,14 @@ Hozzon létre egy `index.js` nevű fájlt, és adja hozzá a következő könyvt
 
 [!code-javascript[Const statements](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=constStatements)]
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és előfizetési kulcsának létrehozásához. Szerezze be ezeket az értékeket a környezeti változók `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT`. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+Hozzon létre változókat az erőforrás Azure-végpontjának és előfizetési kulcsának létrehozásához.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-javascript[Key and endpoint vars](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyVars)]
+```javascript
+const subscription_key = '<paste-your-text-analytics-key-here>';
+const endpoint = `<paste-your-text-analytics-endpoint-here>`;
+```
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
@@ -68,7 +71,7 @@ A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a haszn
 
 A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
@@ -84,7 +87,7 @@ Hozzon létre egy új [TextAnalyticsClient](https://docs.microsoft.com/javascrip
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="sentiment-analysis"></a>Véleményelemzés
 
 Hozzon létre egy listát az elemezni kívánt dokumentumokat tartalmazó szótár-objektumok listájáról. Hívja meg az ügyfél [hangulati ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) metódusát, és szerezze be a visszaadott [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Ismételje meg az eredmények listáját, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és hangulati pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
@@ -155,7 +158,7 @@ Document ID: 2
     Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
 
 Hozza létre a dokumentumokat tartalmazó objektumok listáját. Hívja meg az ügyfél [()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) metódusát, és kérje le a visszaadott [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) objektumot. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt legfontosabb kifejezéseket.
 

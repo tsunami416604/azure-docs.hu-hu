@@ -3,18 +3,18 @@ title: IoT-Plug and Play előnézeti eszköz létrehozása, amely készen áll a
 description: Az eszköz fejlesztőinek megtudhatja, hogyan hozhat létre olyan IoT-Plug and Play előnézeti eszközt, amely készen áll a minősítésre.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569642"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550266"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Packhez
 
-Szüksége lesz a IoT Plug and Play eszközre is, amelyet a rövid útmutatóban hoz létre [: eszköz-képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device.md).
+Szüksége lesz a IoT Plug and Play eszközre is, amelyet a rövid útmutatóban hoz létre [: eszköz-képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device-windows.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Képesség-modell és felületek tárolása
 
@@ -58,7 +58,7 @@ A minősítési folyamat átadásához be kell vonnia és végre kell hajtania a
 ```
 
 > [!NOTE]
-> Ha elvégezte a gyors üzembe helyezést: eszköz- [képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device.md), a modellben már szerepel az **eszköz információi** felülete.
+> Ha elvégezte a gyors üzembe helyezést: eszköz- [képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device-windows.md), a modellben már szerepel az **eszköz információi** felülete.
 
 Az **eszköz adatai** felületének az eszköz modelljébe való felvételéhez adja hozzá az interfész azonosítóját a képesség modell `implements` tulajdonságához:
 
@@ -141,7 +141,7 @@ Példaként használhatja a [Linux](https://github.com/Azure/azure-iot-sdk-c/tre
 
 A minősítés során az eszköz programozott módon van tesztelve, hogy biztosítsa a felületén definiált képességek megvalósítását. Az 501-as HTTP-állapotkód használatával válaszoljon az írási és olvasási tulajdonságra, és ha az eszköz nem valósítja meg az eszközt, a parancs kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már létrehozott egy IoT Plug and Play eszközre készen áll a minősítésre, a javasolt következő lépés:
 

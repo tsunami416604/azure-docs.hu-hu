@@ -4,12 +4,12 @@ description: Az Azure Blockchain-tokenek a tokenek kiállításához és felügy
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387173"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Mi az Azure Blockchain Tokens?
 
@@ -25,7 +25,7 @@ Az Azure Blockchain-tokenek használatával kiválaszthat egy előre elkészíte
 
 Az Azure Blockchain tokens-sablonokkal kapcsolatos további információkért lásd: [Azure Blockchain tokens sablonok](templates.md).
 
-## <a name="management"></a>Kezelés
+## <a name="management"></a>Felügyelet
 
 Az Azure Blockchain-tokenek Azure Portal felügyeletet és API-kat biztosítanak egy meglévő Blockchain-hálózathoz való kapcsolódáshoz. Jelenleg kapcsolódhat az [Azure Blockchain szolgáltatáshoz](../service/overview.md) vagy egy másik Ethereum Family Blockchain.
 
@@ -40,6 +40,14 @@ Az Azure Blockchain tokenek Fiókkezelés szolgáltatásával kapcsolatos továb
 ## <a name="token-taxonomy-framework"></a>Jogkivonat-besorolási keretrendszer
 
 Az Azure Blockchain-tokenek a jogkivonat-taxonómiai keretrendszer (TTF) nevű szabványon alapuló alapra épülnek. A TTF a [jogkivonat-taxonómiai kezdeményezés](https://entethalliance.org/participate/token-taxonomy-initiative/) (tti) token munkacsoportból létrehozott végtermékek összessége. A TTI Working Group a tokenek és az azokhoz tartozó viselkedések üzleti besorolását határozza meg, amelyek az összes jelentősebb főkönyvre alkalmazhatók, beleértve a Ethereum, a kvórum, a Corda és a Hyperledger-hálót is. A munkacsoport célja, hogy olyan keretrendszert hozzon létre, amely szabványosítja a jogkivonatok üzleti szempontból való használatát, így egyszerűsítve és demokratizálni a jogkivonat-alapú fejlesztést. Azáltal, hogy az iparág definiálja ezeket a jogkivonatokat és azok viselkedését az üzleti szinten, a jogkivonatok részletes megvalósítása a jogkivonatokat kezelő üzleti logikától el lesz távolítva.
+
+## <a name="support-and-feedback"></a>Támogatás és visszajelzés
+
+Az Azure Blockchain híreket az Azure [Blockchain blogon](https://azure.microsoft.com/blog/topics/blockchain/) tekintheti meg, ahol naprakészen tarthatja a Blockchain szolgáltatás ajánlatait és az Azure Blockchain Engineering csapata információit.
+
+Az Azure Blockchain-tokenek előzetes verziójának eléréséhez [forduljon az Azure Blockchain tokens csapatához](https://aka.ms/PreviewForm).
+
+Ha visszajelzést szeretne küldeni a termékről, vagy új funkciókat szeretne kérni, szavazzon a [blockchain készült Azure visszajelzési fórumán](https://aka.ms/blockchainuservoice)keresztül.
 
 ## <a name="next-steps"></a>Következő lépések
 

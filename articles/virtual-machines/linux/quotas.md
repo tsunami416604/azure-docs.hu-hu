@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 04ab96058650e6165a745b48f4c0fc213c2f9412
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8ff245d851f83031d40cfcb8672d42b4dce1e108
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035190"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646676"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gépek vCPU-kvótái
 
@@ -34,7 +34,7 @@ A kvóta használatát az [az VM List-használat](/cli/azure/vm)használatával 
 az vm list-usage --location "East US" -o table
 ```
 
-A kimenet következőhöz hasonlóan kell kinéznie:
+Ezután a következőhöz hasonló eredményt kell kapnia:
 
 
 ```
@@ -68,4 +68,4 @@ Ha egy előfizetési RI megvásárlásához kvóta-növelésre van szükség, ak
 
 ## <a name="next-steps"></a>Következő lépések
 
-A számlázással és a kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
+A számlázással és a kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767705"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552202"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a HDInsight-beli Kafka-vel kapcsolatos témakörök Apache Kafka replikálásához
 
@@ -86,36 +86,41 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
         ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. IP-hirdetés konfigurálása:
-    1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Válassza a **szolgáltatások** > **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
-    1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
+### <a name="configure-ip-advertising"></a>IP-hirdetés konfigurálása
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett a Broker IP-címeivel kapcsolódjon.
 
-    1. Írjon be egy megjegyzést a **konfiguráció mentése** képernyőn, majd kattintson a **Mentés**gombra.
-    1. Ha a rendszer konfigurációs figyelmeztetést kér, kattintson a **Folytatás**gombra.
-    1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése**elemre.
-    1. Válassza **az újraindítás > ** az újraindítás **szükséges** értesítésben az **összes érintett újraindítása** lehetőséget. Válassza **az összes újraindításának megerősítése**lehetőséget.
+1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+1. Válassza a **szolgáltatások** > **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
+1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
 
-        ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. A Kafka beállítása az összes hálózati adapter figyelésére.
-    1. Maradjon a **konfigurációk** lapon a > **Kafka** **szolgáltatások** területen. A **Kafka-közvetítő** szakaszban állítsa be a **figyelők** tulajdonságot `PLAINTEXT://0.0.0.0:9092`ra.
-    1. Kattintson a **Mentés** gombra.
-    1. Válassza az **Újraindítás**lehetőséget, és **erősítse meg az összes újraindítását**.
+1. Írjon be egy megjegyzést a **konfiguráció mentése** képernyőn, majd kattintson a **Mentés**gombra.
+1. Ha a rendszer konfigurációs figyelmeztetést kér, kattintson a **Folytatás**gombra.
+1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése**elemre.
+1. Válassza **az újraindítás > ** az újraindítás **szükséges** értesítésben az **összes érintett újraindítása** lehetőséget. Válassza **az összes újraindításának megerősítése**lehetőséget.
 
-1. A Broker IP-címeinek és Zookeeper címeinek rögzítése az elsődleges fürthöz.
-    1. Válassza a **gazdagépek** lehetőséget a Ambari irányítópultján.
-    1. Jegyezze fel a közvetítők és a Zookeeperek IP-címeit. A közvetítő csomópontok az állomásnév első két betűje szerint **lefelé** , a Zookeeper-csomópontok pedig az **ZK** első két betűjét jelölik.
+    ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![Apache Ambari-nézet csomópontjának IP-címei](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>A Kafka beállítása az összes hálózati adapter figyelésére.
+    
+1. Maradjon a **konfigurációk** lapon a > **Kafka** **szolgáltatások** területen. A **Kafka-közvetítő** szakaszban állítsa be a **figyelők** tulajdonságot `PLAINTEXT://0.0.0.0:9092`ra.
+1. Kattintson a **Mentés** gombra.
+1. Válassza az **Újraindítás**lehetőséget, és **erősítse meg az összes újraindítását**.
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>A Broker IP-címeinek és Zookeeper címeinek rögzítése az elsődleges fürthöz.
+
+1. Válassza a **gazdagépek** lehetőséget a Ambari irányítópultján.
+1. Jegyezze fel a közvetítők és a Zookeeperek IP-címeit. A közvetítő csomópontok az állomásnév első két betűje szerint **lefelé** , a Zookeeper-csomópontok pedig az **ZK** első két betűjét jelölik.
+
+    ![Apache Ambari-nézet csomópontjának IP-címei](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Ismételje meg az előző három lépést a második, **Kafka-másodlagos fürthöz**: konfigurálja az IP-hirdetéseket, állítson be figyelőket, és jegyezze fel a közvetítő és a Zookeeper IP-címét.
 

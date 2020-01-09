@@ -4,15 +4,15 @@ description: A Active Directory Replication Status Solution Pack minden repliká
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 04112042c871f5268c64bda374f040f1bba92969
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406092"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replikáció állapotának figyelése Azure Monitor
 
@@ -20,12 +20,19 @@ ms.locfileid: "72931356"
 
 Active Directory a vállalati informatikai környezet kulcsfontosságú összetevője. A magas rendelkezésre állás és a nagy teljesítmény biztosítása érdekében minden tartományvezérlő saját másolattal rendelkezik a Active Directory adatbázisáról. A tartományvezérlők egymással replikálódnak, hogy propagálják a módosításokat a vállalaton belül. A replikálási folyamat hibái számos problémát okozhatnak a vállalaton belül.
 
-A AD Replication Status Solution Pack minden replikációs hiba esetén rendszeresen figyeli a Active Directory környezetet.
+A AD Replication Status megoldás rendszeresen figyeli a Active Directory környezetet bármilyen replikációs hiba esetén.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
+
+### <a name="prerequisites"></a>Előfeltételek
+
+* A AD Replication Status megoldáshoz a .NET-keretrendszer 4.6.2 vagy újabb verziójának támogatott verzióját kell telepítenie minden olyan számítógépen, amelyen telepítve van a Windows Log Analytics ügynöke (más néven a Microsoft monitoring Agent (MMA)).  Az ügynököt a System Center 2016-Operations Manager, Operations Manager 2012 R2 és Azure Monitor használja.
+* A megoldás támogatja a Windows Server 2008 és a 2008 R2, a Windows Server 2012 és az 2012 R2, valamint a Windows Server 2016 rendszert futtató tartományvezérlőket.
+* Log Analytics munkaterület, amely az Azure Portal Azure Marketplace-en adja hozzá a Active Directory Health-ellenőrzési megoldást. Nincs szükség további konfigurációra.
+
 
 ### <a name="install-agents-on-domain-controllers"></a>Ügynökök telepítése tartományvezérlőkön
 Az ügynököket olyan tartományvezérlőkön kell telepíteni, amelyek kiértékelése a tartomány tagjai. Másik lehetőségként telepítenie kell az ügynököket a tagkiszolgálókon, és konfigurálnia kell az ügynököket, hogy az AD-replikációs adatszolgáltatásokat a Azure Monitor küldje el. A Windows rendszerű számítógépek Azure Monitorhoz való kapcsolódásának megismeréséhez lásd: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../../azure-monitor/platform/agent-windows.md). Ha a tartományvezérlő már része egy meglévő System Center Operations Manager-környezetnek, amelyhez csatlakozni szeretne Azure Monitorhoz, tekintse meg a [Operations Manager Azure monitorhoz való kapcsolódását](../../azure-monitor/platform/om-agents.md)ismertető témakört.
@@ -35,7 +42,7 @@ Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure M
 
 1. Győződjön meg arról, hogy a számítógép a AD Replication Status megoldás használatával figyelni kívánt tartomány tagja.
 2. Ha még nincs csatlakoztatva, [csatlakoztassa a Windows rendszerű számítógépet Azure monitor](../../azure-monitor/platform/om-agents.md) vagy [csatlakoztassa a meglévő Operations Manager-környezettel Azure monitorhoz](../../azure-monitor/platform/om-agents.md).
-3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management-csoportok\<ManagementGroupName > \Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **true**
+3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\healthservice\parameters\management-csoportok\<ManagementGroupName > \Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **true**
 
    > [!NOTE]
    > Ezek a módosítások addig nem lépnek érvénybe, amíg újra nem indítja a Microsoft monitoring Agent szolgáltatást (HealthService. exe).
@@ -46,7 +53,7 @@ Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure M
 ## <a name="ad-replication-status-data-collection-details"></a>AD Replication Status adatgyűjtési adatok
 Az alábbi táblázat az adatgyűjtés módszereit és a AD Replication Status adatok gyűjtésének egyéb részleteit mutatja be.
 
-| Platform | Közvetlen ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
+| platform | Közvetlen ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |minden öt nap |
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674729"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644698"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory GYIK
 Ez a cikk a Azure Data Factoryával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.  
@@ -72,7 +72,7 @@ Ha át szeretné helyezni a SSIS számítási feladatait, létrehozhat egy Data 
 ### <a name="sdks"></a>SDK-k
 Ha Ön fejlett felhasználó, és egy programozott felületet keres, a Data Factory az SDK-k széles választékát kínálja, amelyeket a folyamatok létrehozásához, kezeléséhez vagy monitorozásához használhat a kedvenc IDE használatával. A nyelvi támogatás magában foglalja a .NET, a PowerShell, a Python és a REST használatát.
 
-### <a name="monitoring"></a>Figyelés
+### <a name="monitoring"></a>Monitoring
 A böngésző felhasználói felületén a PowerShell, az SDK vagy a vizuális monitorozási eszközök segítségével figyelheti az adatgyárait. Hatékony és hatékony módon figyelheti és kezelheti az igény szerinti, trigger-és órajel-alapú egyéni folyamatokat. Szakítsa meg a meglévő feladatokat, tekintse meg a hibák áttekintését, a részletes hibaüzenetek lekérését és a problémák hibakeresését, mindezt egyetlen panelről, háttérbeli váltás nélkül, vagy navigáljon a képernyők között. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>A SSIS új szolgáltatásai Data Factory
@@ -82,7 +82,7 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 -   SQL Database virtuális hálózati szolgáltatásbeli végpontokkal
 -   Felügyelt példány
 -   Rugalmas készlet
--   A klasszikus virtuális hálózatok Azure Resource Manager virtuális hálózatának támogatása a jövőben elavulttá válik, ami lehetővé teszi az Azure-SSIS integrációs modul beléptetését vagy csatlakoztatását a virtuális hálózati szolgáltatással SQL Database konfigurált virtuális hálózathoz. végpontok/MI/helyszíni adathozzáférés. További információkért lásd még: [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
+-   Egy klasszikus virtuális hálózatra épülő Azure Resource Manager virtuális hálózat támogatása a jövőben elavulttá válik, ami lehetővé teszi az Azure-SSIS integrációs modul beléptetését vagy csatlakoztatását egy, a virtuális hálózati szolgáltatás végpontokkal/MI/helyszíni adateléréssel SQL Database konfigurált virtuális hálózathoz. További információkért lásd még: [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
 -   Azure Active Directory-(Azure AD-) hitelesítés és SQL-hitelesítés támogatása a SSISDB való kapcsolódáshoz, az Azure AD-hitelesítés engedélyezése a Data Factory felügyelt identitásával az Azure-erőforrásokhoz
 -   A saját helyszíni SQL Server licencének támogatásával jelentős költségmegtakarítást érhet el az Azure Hybrid Benefit lehetőséggel
 -   Az Azure-SSIS integrációs modul Enterprise kiadásának támogatása, amely lehetővé teszi a speciális/prémium funkciók használatát, egy egyéni telepítési felületet a további összetevők/bővítmények és a partnerek ökoszisztémájának telepítéséhez. További információ: [Enterprise Edition, Custom Setup és harmadik féltől származó bővíthetőség a SSIS-hez az ADF-ben](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
@@ -101,18 +101,18 @@ Az integrációs modul egy vagy több példányát is telepítheti az adatáthel
 További információkért lásd: [Integrációs modul az Azure Data Factoryban](concepts-integration-runtime.md).
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Mi a korlátja az integrációs modulok számának?
-Az Integration Runtime-példányok száma nincs korlátozva az adatelőállítóban. Az integrációs modul által az SSIS-csomag végrehajtásához felhasználható virtuálisgép-magok száma azonban korlátozott. További információ: [Data Factory korlátok](../azure-subscription-service-limits.md#data-factory-limits).
+Az Integration Runtime-példányok száma nincs korlátozva az adatelőállítóban. Az integrációs modul által az SSIS-csomag végrehajtásához felhasználható virtuálisgép-magok száma azonban korlátozott. További információ: [Data Factory korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Mik a Azure Data Factory legfelső szintű fogalmai?
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. A Azure Data Factory négy fő összetevőt tartalmaz, amelyek együtt működnek olyan platformként, amelyen adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezési és-átalakítási lépésekkel.
 
-### <a name="pipelines"></a>Folyamatok
+### <a name="pipelines"></a>Adatcsatornák
 A data factory egy vagy több folyamattal rendelkezhet. A folyamat a tevékenységek logikai csoportosítása a Munkaegységek elvégzéséhez. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek egy Azure-blobból töltenek le adatot, majd egy HDInsight-fürtön futtatnak egy kaptár-lekérdezést az adatok particionálásához. Ennek az az előnye, hogy egy folyamattal kezelheti a tevékenységeket készletként ahelyett, hogy az egyes tevékenységeket külön kell kezelnie. Egy folyamaton belül összekapcsolhatja a tevékenységeket, hogy azok egymás után is működjenek, vagy egymástól függetlenül, párhuzamosan is működhetnek.
 
-### <a name="data-flows"></a>Adatforgalom
+### <a name="data-flows"></a>Adatfolyamok
 Az adatfolyamatok olyan objektumok, amelyeket vizuálisan hozhat létre Data Factory, amelyek a háttérbeli Spark-szolgáltatásokban nagy mennyiségű adatátalakítást végeznek. Nincs szükség a programozás vagy a Spark belső elemeinek megismerésére. Egyszerűen tervezze meg az Adatátalakítási szándékot gráfok (leképezések) vagy számolótáblák (huzavona-EK) használatával.
 
-### <a name="activities"></a>Tevékenységek
+### <a name="activities"></a>Activities (Tevékenységek)
 Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. A másolási tevékenység használatával például az adatok egy adattárból egy másik adattárba másolhatók. Ehhez hasonlóan használhat egy kaptár-tevékenységet is, amely egy Azure HDInsight-fürtön futó kaptár-lekérdezést futtat az adatai átalakításához vagy elemzéséhez. A Data Factory három típusú tevékenységet támogat: az adattovábbítási tevékenységeket, az adat-átalakítási tevékenységeket és a vezérlési tevékenységeket.
 
 ### <a name="datasets"></a>Adathalmazok
@@ -201,7 +201,7 @@ A saját üzemeltetésű integrációs modul egy ADF-alapú folyamat-összeáll�
 
 A huzavona-adatfolyam jelenleg támogatott a következő régiókban létrehozott adatüzemekben:
 
-* Kelet-Ausztrália
+* Ausztrália keleti régiója
 * Közép-Kanada
 * Közép-India
 * USA középső régiója
@@ -246,7 +246,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 
 * rövid
 * double
-* valós
+* real
 * lebegőpontos
 * char
 * NCHAR
@@ -254,7 +254,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * nvarchar
 * egész szám
 * int
-* bites
+* bit
 * logikai
 * smallint
 * tinyint
@@ -271,7 +271,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 
 A jövőben más adattípusok is támogatottak lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adat-előállító létrehozásával kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
 - [Gyors útmutató: adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md)

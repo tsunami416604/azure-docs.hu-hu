@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fc859625be0706dd130cf7714d0fabf196740e91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381001"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
 
@@ -34,28 +34,28 @@ Ebben a cikkben a paraméterekkel bővítjük ezt az alkalmazást, hogy kezelni 
    > [!div class="mx-imgBorder"]
    > ![paraméter létrehozása](media/custom-speech-commands/create-on-off-parameter.png)
 
-   | Beállítás            | Ajánlott érték | Leírás                                                                                               |
-   | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | Név               | Javítás OnOff           | A paraméter leíró neve                                                                     |
-   | Globális          | Nincs bejelölve       | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
-   | Szükséges           | ellenőrizni         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
-   | Válasz sablonja  | Be-vagy kikapcsolva?      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
-   | Type (Típus)               | Sztring          | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
-   | Konfiguráció      | Karakterlánc-lista     | Karakterláncok esetén a sztringek listája a lehetséges értékek egy halmazára korlátozza a bemeneteket                                      |
-   | Karakterlánc-lista értékei | be, ki         | Karakterlánc-lista paraméter esetén a lehetséges értékek és azok szinonimáik halmaza                                |
+   | Beállítás            | Ajánlott érték     | Leírás                                                                                               |
+   | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Név               | Javítás OnOff               | A paraméter leíró neve                                                                     |
+   | Globális          | nincs bejelölve           | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
+   | Szükséges           | ellenőrizni             | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
+   | Válasz sablonja  | "-Be vagy ki?"      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
+   | Type (Típus)               | Sztring              | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
+   | Konfiguráció      | Karakterlánc-lista         | Karakterláncok esetén a sztringek listája a lehetséges értékek egy halmazára korlátozza a bemeneteket                                      |
+   | Karakterlánc-lista értékei | be, ki             | Karakterlánc-lista paraméter esetén a lehetséges értékek és azok szinonimáik halmaza                                |
 
    - Ezután válassza a `+` ikont egy második paraméter hozzáadásához, amely az eszközök nevét jelöli. Ebben a példában egy TV és egy ventilátor
 
-   | Beállítás            | Ajánlott érték   | Leírás                                                                                               |
-   | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | Név               | SubjectDevice     | A paraméter leíró neve                                                                     |
-   | Globális          | Nincs bejelölve         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
-   | Szükséges           | ellenőrizni           | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
-   | Válasz sablonja  | Melyik eszköz?     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
-   | Type (Típus)               | Sztring            | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
-   | Konfiguráció      | Karakterlánc-lista       | Karakterláncok esetén a sztringek listája a lehetséges értékek egy halmazára korlátozza a bemeneteket                                      |
-   | Karakterlánc-lista értékei | TV, ventilátor           | Karakterlánc-lista paraméter esetén a lehetséges értékek és azok szinonimáik halmaza                                |
-   | Szinonimák (TV)      | televízió, Teller | A string List paraméter minden lehetséges értékének választható szinonimái                                      |
+   | Beállítás            | Ajánlott érték       | Leírás                                                                                               |
+   | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Név               | SubjectDevice         | A paraméter leíró neve                                                                     |
+   | Globális          | nincs bejelölve             | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
+   | Szükséges           | ellenőrizni               | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
+   | Válasz sablonja  | "– Melyik eszköz?"     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
+   | Type (Típus)               | Sztring                | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
+   | Konfiguráció      | Karakterlánc-lista           | Karakterláncok esetén a sztringek listája a lehetséges értékek egy halmazára korlátozza a bemeneteket                                      |
+   | Karakterlánc-lista értékei | TV, ventilátor               | Karakterlánc-lista paraméter esetén a lehetséges értékek és azok szinonimáik halmaza                                |
+   | Szinonimák (TV)      | televízió, Teller     | A string List paraméter minden lehetséges értékének választható szinonimái                                      |
 
 ## <a name="add-sample-sentences"></a>Minta mondatok hozzáadása
 
@@ -112,4 +112,3 @@ Nyissa meg a teszt csevegés panelt, és próbálkozzon néhány interakcióval.
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Kapcsolódás egyéni parancssori alkalmazáshoz a Speech SDK-val (előzetes verzió)](./quickstart-custom-speech-commands-speech-sdk.md)
-

@@ -3,7 +3,7 @@ title: Azure Monitor naplók használatának és költségeinek kezelése | Micr
 description: Megtudhatja, hogyan módosíthatja a díjszabási tervet, és hogyan kezelheti a Log Analytics munkaterület adatmennyiségét és adatmegőrzési szabályzatát Azure Monitorben.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: magoedte
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f60b0b9294fa3f11889613a7d63f21e87fbea201
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894113"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658019"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -90,7 +90,7 @@ Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application 
 
 A 2016. április előtt létrehozott munkaterületek az eredeti **standard** és **prémium** szintű díjszabáshoz is hozzáférnek, amely a 30 és 365 nap rögzített adatmegőrzéssel rendelkezik. Nem hozhatók létre új munkaterületek a **standard** vagy a **prémium** szintű díjszabásban, és ha a munkaterületet kihelyezték ezekből a rétegekből, nem helyezhető vissza. 
 
-Az árképzési szintek korlátozásait [itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)találja.
+Az árképzési szintek korlátozásait [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)találja.
 
 > [!NOTE]
 > A OMS E1 Suite, OMS E2 Suite vagy OMS-bővítmény a System Center rendszerhez szolgáltatásból származó jogosultságok használatához válassza az Log Analytics a *csomópontok* díjszabási szintjein.
@@ -438,7 +438,7 @@ Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mi
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
    - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
-   - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
+   - **A riasztás logikája** az *eredmények* és a **feltétel** **alapján** *meghaladja* a *0* **küszöbértéket**
    - Az **Időszak** értékét állítsa *1440* percre, a **Riasztási időköz** pedig legyen *60* perc, mivel a használati adatok csak óránként frissülnek.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
    - A **Név** legyen *Több mint 100 GB adatmennyiség 24 órán belül*
@@ -452,7 +452,7 @@ A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több 
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
    - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
+   - **A riasztás logikája** az *eredmények* és a **feltétel** **alapján** *meghaladja* a *0* **küszöbértéket**
    - Az **Időszak** értékét állítsa *180* percre, a **Riasztási időköz** pedig legyen *60* perc, mivel a használati adatok csak óránként frissülnek.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
    - A **Név** legyen *Több mint 100 GB várható adatmennyiség 24 órán belül*
@@ -487,7 +487,7 @@ Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *n
 
 ## <a name="limits-summary"></a>Korlátok összegzése
 
-Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket [itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)dokumentáljuk.
+Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)dokumentáljuk.
 
 
 ## <a name="next-steps"></a>Következő lépések

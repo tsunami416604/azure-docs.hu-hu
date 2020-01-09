@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple-Private Cloud VMware Components
+title: Private Cloud VMware-összetevők
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Leírja, hogyan vannak telepítve a VMware-összetevők a privát felhőben
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452321"
 ---
 # <a name="private-cloud-vmware-components"></a>Private Cloud VMware-összetevők
 
@@ -28,12 +29,12 @@ A privát felhő egy elszigetelt VMware stack (ESXi gazdagépek, vCenter, vSAN �
 
 A Private Cloud VMware stack a következő szoftverrel van üzembe helyezve.
 
-| Összetevő | Version | Licencelt verzió |
+| Component (Összetevő) | Verzió | Licencelt verzió |
 |-----------|---------|------------------|
 | ESXi | 6.7 U2 | Enterprise Plus |
-| vCenter | 6.7 U2 | vCenter Standard |
-| vSAN | 6.7 | Vállalati |
-| NSX Data Center | 2.4.1 | Speciális |
+| vCenter | 6.7 U2 | vCenter standard |
+| vSAN | 6.7 | Enterprise |
+| NSX adatközpont | 2.4.1 | Extra szintű |
 
 ## <a name="esxi"></a>ESXi
 
@@ -47,7 +48,7 @@ a vCenter Server Appliance (VCSA) a CloudSimple által biztosított VMware-megol
 
 ### <a name="vcenter-single-sign-on"></a>vCenter egyszeri bejelentkezés
 
-A VCSA Embedded platform Services-vezérlője egy **vCenter egyszeri bejelentkezési tartománnyal**van társítva.  A tartománynév a **cloudsimple. local**nevet adja meg.  A rendszer létrehoz **CloudOwner@cloudsimple.com** egy alapértelmezett felhasználót a vCenter eléréséhez.  Felveheti a helyszíni/Azure Active Directory [Identity sources for vCenter](set-vcenter-identity.md).
+A VCSA Embedded platform Services-vezérlője egy **vCenter egyszeri bejelentkezési tartománnyal**van társítva.  A tartománynév a **cloudsimple. local**nevet adja meg.  A rendszer létrehoz egy alapértelmezett felhasználói **CloudOwner@cloudsimple.com** a vCenter eléréséhez.  Felveheti a helyszíni/Azure Active Directory [Identity sources for vCenter](set-vcenter-identity.md).
 
 ## <a name="vsan-storage"></a>vSAN-tároló
 
@@ -64,7 +65,7 @@ Az alábbi táblázat a vSAN alapértelmezett tárolási házirendjének paramé
 | 3 és 4 csomópont | 1 | RAID 1 (Tükrözés) – 2 másolat létrehozása |
 | 5 – 16 csomópont | 2 | RAID 1 (Tükrözés) – 3 másolat létrehozása |
 
-## <a name="nsx-data-center"></a>NSX Data Center
+## <a name="nsx-data-center"></a>NSX adatközpont
 
 A NSX adatközpont hálózati virtualizációs, mikro-szegmentálási és hálózati biztonsági képességeket biztosít a saját felhőben.  A NSX adatközpont által támogatott összes szolgáltatást a NSX használatával konfigurálhatja a privát felhőben.  Privát felhő létrehozásakor a következő NSX-összetevők vannak telepítve és konfigurálva.
 
@@ -81,11 +82,11 @@ A NSX adatközpont hálózati virtualizációs, mikro-szegmentálási és háló
 
 ## <a name="vsphere-cluster"></a>vSphere-fürt
 
-Az ESXi-gazdagépek fürtként vannak konfigurálva, hogy magas rendelkezésre állást biztosítsanak a privát felhő számára.  Privát felhő létrehozásakor a rendszer az első fürtön telepíti a vSphere felügyeleti összetevőit.  Létrejön egy erőforráskészlet a felügyeleti összetevőkhöz, és az összes felügyeleti virtuális gép üzembe van hozva ebben az erőforráskészletban. Az első fürtöt nem lehet törölni a privát felhő összezsugorodása érdekében.  a vSphere-fürt magas rendelkezésre állást biztosít a **vSphere**-t használó virtuális gépek számára.  A tolerálható hibák a fürtben elérhető csomópontok számától függenek.  Használhatja azt a képletet ```Number of nodes = 2N+1``` , ```N``` ahol a a fellépő hibák száma.
+Az ESXi-gazdagépek fürtként vannak konfigurálva, hogy magas rendelkezésre állást biztosítsanak a privát felhő számára.  Privát felhő létrehozásakor a rendszer az első fürtön telepíti a vSphere felügyeleti összetevőit.  Létrejön egy erőforráskészlet a felügyeleti összetevőkhöz, és az összes felügyeleti virtuális gép üzembe van hozva ebben az erőforráskészletban. Az első fürtöt nem lehet törölni a privát felhő összezsugorodása érdekében.  a vSphere-fürt magas rendelkezésre állást biztosít a **vSphere**-t használó virtuális gépek számára.  A tolerálható hibák a fürtben elérhető csomópontok számától függenek.  Használhatja a ```Number of nodes = 2N+1``` képletet, ahol ```N``` az elviselni kívánt hibák száma.
 
 ### <a name="vsphere-cluster-limits"></a>vSphere-fürt korlátai
 
-| Resource | Korlát |
+| Erőforrás | Korlát |
 |----------|-------|
 | A privát felhő létrehozásához szükséges csomópontok minimális száma (első vSphere-fürt) | 3 |
 | VSphere-fürt csomópontjainak maximális száma privát felhőben | 16 |
@@ -116,6 +117,6 @@ A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérh
 
 A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [CloudSimple-karbantartás és-frissítések](cloudsimple-maintenance-updates.md)

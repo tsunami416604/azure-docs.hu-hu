@@ -3,17 +3,17 @@ title: Eszköz csatlakoztatása az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure-beli eszközök csatlakoztatásával kapcsolatos főbb fogalmakat IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ef0e4c9070733266349a37e863c48901eae90c16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 412a678465589da87c713a55a7b67193b254bf96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434935"
 ---
 # <a name="get-connected-to-azure-iot-central-preview-features"></a>Csatlakozás az Azure IoT Centralhoz (előzetes verziójú funkciók)
 
@@ -177,7 +177,7 @@ Alább látható az eszköz által a DPS regisztrációs hívás során elküld�
 > [!NOTE]
 > Vegye figyelembe, hogy az automatikus jóváhagyás beállítást engedélyezni kell az eszközök automatikus csatlakoztatásához, a modell felderítéséhez és az adatok küldésének megkezdéséhez.
 
-## <a name="device-status"></a>Eszköz állapota
+## <a name="device-status"></a>Eszközállapot
 
 Ha egy valós eszköz csatlakozik a IoT Central alkalmazáshoz, az eszköz állapota a következőképpen változik:
 
@@ -217,7 +217,7 @@ Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkció
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Mérték: telemetria | Eszközről a felhőbe irányuló üzenetkezelés |
+| Mérték: telemetria | Eszközről-a-felhőbe típusú üzenetek |
 | Eszköztulajdonságok | Eszköz kettős jelentett tulajdonságai |
 | Beállítások | Az eszköz Twin kívánt és jelentett tulajdonságai |
 
@@ -239,7 +239,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, az Azure IoT Edg
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az eszköz kapcsolatát az Azure IoT Centralban, a következő lépéseket javasoljuk:
 

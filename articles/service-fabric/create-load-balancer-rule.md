@@ -1,24 +1,14 @@
 ---
 title: Azure Load Balancer szabály létrehozása fürthöz
 description: Azure Load Balancer konfigurálása az Azure Service Fabric-fürthöz tartozó portok megnyitásához.
-services: service-fabric
-documentationcenter: na
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351482"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric-fürt portjainak megnyitása
 
@@ -44,7 +34,7 @@ Load Balancer szabály létrehozásához a következő információkat kell öss
 - Külső port.
 - Belső port.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 Csak egyetlen paranccsal hozható létre terheléselosztó-szabály az **Azure CLI**-vel. Új szabály létrehozásához csak a terheléselosztó és az erőforráscsoport nevét kell ismernie.
 
 >[!NOTE]
@@ -103,11 +93,11 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-A parancshoz `-FrontendPort` tartozó érték azt a portot jelöli, amelyet a terheléselosztó a `-BackendPort` külső kapcsolatok számára tesz elérhetővé, és azt a portot jelöli, amelyen a Service Fabric-alkalmazás figyeli a szolgáltatást. `New-AzLoadBalancerRuleConfig`
+A `New-AzLoadBalancerRuleConfig` parancsra vonatkozóan a `-FrontendPort` azt a portot jelöli, amelyet a terheléselosztó a külső kapcsolatok számára tesz elérhetővé, és a `-BackendPort` a Service Fabric-alkalmazás által figyelt portot jelöli.
 
 >[!NOTE]
 >A terheléselosztó PowerShell-lel történő létrehozásával kapcsolatos további információkért lásd: [Load Balancer létrehozása a PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)-lel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Service Fabric hálózatkezeléséről](service-fabric-patterns-networking.md).

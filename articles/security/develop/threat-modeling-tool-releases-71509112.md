@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool kiadás 9/12/2018 – Azure
 description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ad489d6de222380e85a962c7b50c63a5c2122c72
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928118"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548802"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA kiadás 7.1.50911.2-9/12/2018
 
-Örömmel jelentjük be, hogy a Microsoft Threat Modeling Tool mostantól támogatott általánosan elérhető (GA) kiadásként tölthető le. Ez a kiadás fontos adatvédelmi és biztonsági frissítéseket, valamint hibajavításokat, szolgáltatás-frissítéseket és stabilitási javításokat tartalmaz. A rendszer a 2017 előzetes verziójának meglévő felhasználóinak frissítését kéri a ClickOnce-technológián keresztül a-ügyfél megnyitását követően. Az eszköz új felhasználói számára [kattintson ide a-ügyfél letöltéséhez](https://aka.ms/threatmodelingtool).
+Örömmel jelentjük be, hogy a Microsoft Threat Modeling Tool mostantól támogatott általánosan elérhető (GA) kiadásként tölthető le. Ez a kiadás fontos adatvédelmi és biztonsági frissítéseket, valamint hibajavításokat, szolgáltatás-frissítéseket és stabilitási javításokat tartalmaz. A rendszer a 2017 előzetes verziójának meglévő felhasználóinak frissítését kéri a ClickOnce-technológián keresztül a-ügyfél megnyitását követően. Az eszköz új felhasználói számára [letöltheti az ügyfelet](https://aka.ms/threatmodelingtool).
 
 Ebben a kiadásban a 2017 előzetes verziójának támogatása megszűnik, és az előzetes frissítés összes felhasználóját ajánljuk a GA kiadásra. Az 15 2018-as vagy későbbi verziókban a Threat Modeling Tool minimálisan szükséges ClickOnce-verzióját állítja be, és a frissítéshez minden előzetes verziójú ügyfélre szükség lesz.
 
@@ -46,11 +38,11 @@ A "Mentés a OneDrive", a "Megnyitás a OneDrive" és a "hivatkozás megosztása
 
 ### <a name="in-tmt-preview-the-tool-crashes-when-using-the-standard-template"></a>A TMT előzetes verziójában az eszköz összeomlik a standard sablon használatakor
 
-- Ha egy általános rajzsablon (például "általános adatfolyam") bekerül a rajzolási felületre, és fenyegetéseket hoz létre, akkor az eszköz összeomlhat. Ez a probléma megoldódott.
+- Ha egy általános rajzsablon (például "általános adatfolyam") bekerül a rajzolási felületre, és fenyegetéseket hoz létre, akkor az eszköz összeomlhat. A probléma kijavítva.
 
 ### <a name="in-tmt-preview-when-i-save-a-report-or-copy-the-threats-the-risk-levels-are-incorrect"></a>A TMT előzetes verziójában a jelentések mentésekor vagy a fenyegetések másolásakor a kockázati szintek helytelenek.
 
-- Ha a felhasználó módosítja az adott fenyegetések kockázati szintjét, majd menti a jelentést, vagy átmásolja a kockázatokat, a kockázati szint visszatérhet a "magas" értékre. Ez a probléma megoldódott.
+- Ha a felhasználó módosítja az adott fenyegetések kockázati szintjét, majd menti a jelentést, vagy átmásolja a kockázatokat, a kockázati szint visszatérhet a "magas" értékre. A probléma kijavítva.
 
 ## <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
 
@@ -99,6 +91,6 @@ Igen, lehet! Az [Azure stencil-készlet a githubon érhető el](https://github.c
 
 - A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

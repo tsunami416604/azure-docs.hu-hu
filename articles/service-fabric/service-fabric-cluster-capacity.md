@@ -1,25 +1,15 @@
 ---
-title: A Service Fabric-fürt kapacitásának megtervezése | Microsoft Docs
+title: A Service Fabric-fürt kapacitásának megtervezése
 description: Service Fabric a fürt kapacitásának tervezési szempontjait. Nodetypes, üzemeltetés, tartósság és megbízhatósági szintek
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463308"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 Az éles üzembe helyezéshez a kapacitás megtervezése fontos lépés. Íme néhány olyan elem, amelyet a folyamat részeként kell figyelembe vennie.
@@ -62,7 +52,7 @@ A Service Fabric rendszerszolgáltatások (például a Fürtfelügyelő szolgál
 * Az elsődleges csomópont típusához tartozó **virtuális gépek minimális méretét** a választott **tartóssági szint** határozza meg. Az alapértelmezett tartóssági szintje bronz. További részletekért tekintse meg a [fürt tartóssági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) .  
 * Az elsődleges csomópont típusához tartozó **virtuális gépek minimális számát** a választott **megbízhatósági szint** határozza meg. Az alapértelmezett megbízhatósági szintek az ezüst. További részletekért tekintse meg a [fürt megbízhatósági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .  
 
-A Azure Resource Manager sablonban az elsődleges csomópont típusa a `isPrimary` attribútummal van konfigurálva a [csomópont típusa definíciójában](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+A Azure Resource Manager sablonban az elsődleges csomópont típusa az `isPrimary` attribútummal van konfigurálva a [csomópont típusa definíciójában](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
 
 ### <a name="non-primary-node-type"></a>Nem elsődleges csomópont típusa
 
@@ -109,7 +99,7 @@ Használja az ezüst vagy a arany tartósságot az összes olyan csomópont-típ
 
 - Mindig kifogástalan állapotban tarthatja a fürtjét és az alkalmazásait, és gondoskodhat arról, hogy az alkalmazások az összes [szolgáltatás-replika életciklus-eseményre](service-fabric-reliable-services-lifecycle.md) válaszoljanak (például a buildben található replika beragadva).
 - A virtuális gép SKU-jának módosításának biztonságosabbá tétele (vertikális felskálázás): a virtuálisgép-méretezési csoport VM SKU-jának módosítása számos lépést és szempontot igényel. Itt látható a gyakori problémák elkerülésére szolgáló folyamat.
-    - **Nem elsődleges csomópontok típusai esetén:** Javasoljuk, hogy hozzon létre új virtuálisgép-méretezési készletet, módosítsa a szolgáltatás elhelyezésére vonatkozó korlátozást, hogy tartalmazza az új virtuálisgép-méretezési csoport/csomópont típusát, majd csökkentse a régi virtuálisgép-méretezési csoport példányainak darabszámát nulla értékre, egyszerre egy csomópontra (ez a következő: Győződjön meg arról, hogy a csomópontok eltávolítása nem befolyásolja a fürt megbízhatóságát).
+    - **Nem elsődleges csomópontok típusai esetén:** Javasoljuk, hogy hozzon létre új virtuálisgép-méretezési készletet, módosítsa a szolgáltatás elhelyezésére vonatkozó korlátozást, hogy tartalmazza az új virtuálisgép-méretezési csoport/csomópont-típust, majd csökkentse a régi virtuálisgép-méretezési csoport példányainak számát nulla értékre, egyszerre egy csomópontra (ez biztosítja, hogy a csomópontok eltávolítása ne befolyásolja a fürt megbízhatóságát).
     - **Az elsődleges csomópont típusa:** Ha a kiválasztott virtuálisgép-SKU kapacitással rendelkezik, és egy nagyobb virtuálisgép-SKU-ra szeretne váltani, kövesse az [elsődleges csomópont típusának vertikális skálázásra vonatkozó](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)útmutatását. 
 
 - Legalább öt csomópontot kell fenntartania minden olyan virtuálisgép-méretezési csoportnál, amelynél a tartóssági szint (arany vagy ezüst) engedélyezve van.
@@ -160,8 +150,8 @@ Mivel a fürt kapacitási igényeit a fürtben futtatni kívánt számítási fe
 Éles munkaterhelések esetén: 
 
 - Javasoljuk, hogy a fürtök elsődleges NodeType a rendszerszolgáltatásokra fordítsa, és használja az elhelyezési korlátozásokat az alkalmazás másodlagos NodeTypes való üzembe helyezéséhez.
-- Az ajánlott VM-SKU standard D2_V2, vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel.
-- A minimálisan támogatott virtuálisgép-SKU a standard D2 v3 vagy a standard D1_V2, vagy azzal egyenértékű, amely legalább 50 GB helyi SSD-t használ. 
+- Az ajánlott VM-SKU standard D2_V2 vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel.
+- A minimálisan támogatott virtuális gép SKU Standard_D2_V3 vagy standard D1_V2, vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel. 
 - A Javaslatunk legalább 50 GB. A számítási feladatokhoz – különösen a Windows-tárolók futtatásakor – nagyobb lemezek szükségesek. 
 - A részleges Core virtuális gépek, például a standard a0 nem támogatottak az éles számítási feladatokhoz.
 - Az adatsorozatos virtuális gépek nem támogatottak a teljesítmény szempontjából a termelési számítási feladatok esetében.
@@ -182,8 +172,8 @@ Az éles munkaterhelések esetében tehát a minimálisan ajánlott nem elsődle
 
 Éles számítási feladatokhoz 
 
-- Az ajánlott VM-SKU standard D2_V2, vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel.
-- A minimálisan támogatott virtuálisgép-SKU a standard D2 v3 vagy a standard D1_V2, vagy azzal egyenértékű, amely legalább 50 GB helyi SSD-t használ. 
+- Az ajánlott VM-SKU standard D2_V2 vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel.
+- A minimálisan támogatott virtuális gép SKU Standard_D2_V3 vagy standard D1_V2, vagy azzal egyenértékű, legalább 50 GB helyi SSD-vel. 
 - A részleges Core virtuális gépek, például a standard a0 nem támogatottak az éles számítási feladatokhoz.
 - Az adatsorozatos virtuális gépek nem támogatottak a teljesítmény szempontjából a termelési számítási feladatok esetében.
 

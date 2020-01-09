@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure FXT Edge Filer-fürt konfigurációja – csomópontok hozzáadása
+title: 'Oktatóanyag: csomópontok hozzáadása egy Azure FXT Edge Filer-fürthöz'
 description: Csomópontok hozzáadása az Azure FXT Edge Filer Storage cache-hez
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254930"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551947"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>Oktatóanyag: fürtcsomópontok hozzáadása 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: fürtcsomópontok hozzáadása egy Azure FXT Edge Filer-fürthöz
 
 Egy új Azure FXT Edge Filer-fürt csak egy csomóponttal hozható létre. További konfiguráció előtt legalább két csomópontot kell hozzáadnia, és magas rendelkezésre állást kell engedélyeznie. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: 352e31e2a2f1a88a33e82134460e6df0911dbd2e
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 33dc415e06b7f49f75697abb05248750444fea7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432640"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>A .NET/.NET Core és a Python nyomkövetési naplók megismerése Application Insights
 
@@ -65,7 +65,7 @@ Ezt a módszert akkor használja, ha a projekt típusát nem támogatja a Applic
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
    - [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 [![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 A NuGet csomag telepíti a szükséges szerelvényeket, és módosítja a web. config vagy az app. config fájlt, ha az alkalmazható.
@@ -135,14 +135,14 @@ Az egyes forrásokhoz a következő paramétereket állíthatja be:
 ## <a name="use-the-trace-api-directly"></a>A nyomkövetési API közvetlen használata
 Közvetlenül is meghívhatja a Application Insights nyomkövetési API-t. A naplózási adapterek ezt az API-t használják.
 
-Például:
+Példa:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 A TrackTrace előnye, hogy viszonylag hosszú adatmennyiséget helyezhet el az üzenetben. Például elvégezheti az adatposták küldését.
 
-Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóan a különböző nyomkövetési csoportok szűréséhez és kereséséhez is hozzáadhat tulajdonságértékeket. Például:
+Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóan a különböző nyomkövetési csoportok szűréséhez és kereséséhez is hozzáadhat tulajdonságértékeket. Példa:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",

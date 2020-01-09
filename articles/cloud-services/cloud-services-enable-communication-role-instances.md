@@ -3,18 +3,18 @@ title: Kommunikáció a Cloud Services szerepköreiben | Microsoft Docs
 description: A Cloud Servicesban lévő szerepkör-példányok rendelkezhetnek olyan végpontokkal (http, HTTPS, TCP, UDP), amelyek a külső vagy más szerepkör-példányok közötti kommunikációhoz vannak meghatározva.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: gwallace
-ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386340"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure-beli szerepkör-példányok kommunikációjának engedélyezése
 A felhőalapú szolgáltatás szerepkörei belső és külső kapcsolatokon keresztül kommunikálnak. A külső kapcsolatokat **bemeneti végpontoknak** nevezzük, a belső kapcsolatokat pedig **belső végpontoknak**nevezzük. Ez a témakör azt ismerteti, hogyan módosíthatja a [szolgáltatás definícióját](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
@@ -73,7 +73,7 @@ A portok tartományát is használhatja.
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>Feldolgozói szerepkörök és Webes szerepkörök
+## <a name="worker-roles-vs-web-roles"></a>Feldolgozói szerepkörök és webes szerepkörök
 A munkavégző és a webes szerepkörök használata esetén a végpontokkal kapcsolatban egyetlen kisebb különbség van. A webes szerepkörnek legalább egyetlen bemeneti végponttal kell rendelkeznie a **http** protokoll használatával.
 
 ```xml
@@ -255,7 +255,7 @@ A következő kódrészlet az előző ábrán látható szerepkörökhöz tartoz
 
 Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy **NetworkTrafficRules** elemet a **ServiceDefinition** elemhez a szolgáltatás definíciós fájljában.
 
-### <a name="scenario-1"></a>1\. forgatókönyv
+### <a name="scenario-1"></a>1\. eset
 Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom engedélyezése.
 
 ```xml
@@ -323,7 +323,7 @@ A csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalmat 
 ```
 
 ### <a name="scenario-4"></a>4\. forgatókönyv
-A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** és a **WorkerRole1** közötti hálózati forgalmat engedélyezi a **WorkerRole2**.
+A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** **és a** **WorkerRole1** közötti hálózati forgalmat engedélyezi a **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -365,6 +365,9 @@ A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** és a **Worker
 
 [Itt](/previous-versions/azure/reference/gg557551(v=azure.100))talál egy XML-séma-referenciát a fent használt elemekhez.
 
-## <a name="next-steps"></a>További lépések
-Tudjon meg többet a Cloud Service [](cloud-services-model-and-package.md)-modellről.
+## <a name="next-steps"></a>Következő lépések
+Tudjon meg többet a Cloud Service- [modellről](cloud-services-model-and-package.md).
+
+
+
 

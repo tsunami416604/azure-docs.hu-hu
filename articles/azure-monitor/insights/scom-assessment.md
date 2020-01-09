@@ -4,15 +4,15 @@ description: A System Center Operations Manager Health Check megoldással rendsz
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402869"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
@@ -34,7 +34,7 @@ A megoldás hozzáadása és az értékelés elvégzése után a fókusz terüle
 
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 
-A megoldás együttműködik a Microsoft System Center 2012 Operations Manager 1. szervizcsomaggal, a Microsoft System Center 2012 R2 Operations Manager, a Microsoft System Center 2016 Operations Manager, a Microsoft System Center 2016 Operations Manager és a Microsoft System Center Operations Manager 1807
+A megoldás együttműködik a Microsoft System Center 2012 Operations Manager 1. szervizcsomaggal, a Microsoft System Center 2012 R2 Operations Manager, a Microsoft System Center 2016 Operations Manager, a Microsoft System Center 2016 Operations Manager és a Microsoft System Center Operations Manager 1807. A .NET-keretrendszer 4.6.2 egy támogatott verzióját kell telepíteni az egyes felügyeleti kiszolgálókon.
 
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
@@ -58,7 +58,7 @@ A System Center Operations Manager Health Check-megoldás az alábbi forrásokb�
 * Registry
 * Windows Management Instrumentation (WMI)
 * Eseménynapló
-* Fájlinformációk
+* Fájladatok
 * Közvetlenül a Operations Manager PowerShell-és SQL-lekérdezések használatával a megadott felügyeleti kiszolgálóról.  
 
 Az adatok gyűjtése a felügyeleti kiszolgálón történik, és hét naponta Log Analytics továbbítva.  
@@ -83,7 +83,7 @@ A folytatás előtt a futtató fióknak a következő követelményeknek kell me
 4. Az **Általános tulajdonságok** lapon válassza a **Windows** lehetőséget a **futtató fiók típusa:** listában.
 5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább**gombra.
 6. A **terjesztés biztonsága** **lapon válassza a biztonságosabb lehetőséget**.
-7. Kattintson a  **Create** (Létrehozás) gombra.  
+7. Kattintson a **Create** (Létrehozás) gombra.  
 
 Most, hogy létrejött a futtató fiók, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált futtató profilhoz kell rendelni, hogy a munkafolyamatok a hitelesítő adatok használatával fussanak.  
 
@@ -148,7 +148,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
 
-Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Kövesse az alábbi lépéseket.
+Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Hajtsa végre a következő lépéseket.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Egy adott felügyeleti kiszolgáló szabályának engedélyezése
 

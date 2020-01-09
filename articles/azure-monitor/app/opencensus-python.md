@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432490"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -353,7 +353,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
     logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
     ```
 
-7. A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
+7. A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
 
 ## <a name="view-your-data-with-queries"></a>Az adataikat a lekérdezésekkel tekintheti meg
 

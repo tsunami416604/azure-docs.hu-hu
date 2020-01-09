@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824277"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665374"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Gyakran ismételt kérdések (GYIK) a Azure Filesról
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -24,7 +24,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 * <a id="why-files-useful"></a>
   **hogyan Azure Files hasznos?**  
    A Azure Files használatával hozhat létre fájlmegosztást a felhőben anélkül, hogy a felelős a fizikai kiszolgáló, eszköz vagy berendezés terhelésének kezeléséért. Az Ön számára monoton munkát végezünk, beleértve az operációs rendszer frissítéseinek alkalmazását és a hibás lemezek cseréjét. Ha többet szeretne megtudni azokról a forgatókönyvekről, amelyeket a Azure Files segíthetnek, tekintse meg a [miért Azure Files hasznos](storage-files-introduction.md#why-azure-files-is-useful).
@@ -127,20 +127,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="afs-files-excluded"></a>
   , **hogy mely fájlokat és mappákat Azure file Sync automatikusan kizárja a rendszer?**  
-    Alapértelmezés szerint a Azure File Sync kizárja a következő fájlokat:
-  * Desktop. ini
-  * Thumbs. db
-  * ehthumbs.db
-  * ~$\*.\*
-  * \*.laccdb
-  * \*. tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    Alapértelmezés szerint a következő mappák is ki vannak zárva:
-
-  * \System-kötet adatai
-  * \$RECYCLE.BIN
-  * \SyncShareState
+  Lásd: [fájlok kihagyva](storage-sync-files-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   használhatok **Azure file Sync a Windows Server 2008 R2, a Linux vagy a My Network-Attached Storage (NAS) eszközzel?**  
@@ -252,7 +239,7 @@ az **Azure ExpressRoute-t kell használnia a Azure Fileshoz való kapcsolódásh
 
     A fájlmegosztást az SMB protokoll használatával csatlakoztathatja, ha a 445-as (TCP kimenő) port meg van nyitva, és az ügyfél támogatja az SMB 3,0 protokollt (például ha Windows 10 vagy Windows Server 2016 rendszert használ). Ha a szervezet házirendje vagy az INTERNETSZOLGÁLTATÓja blokkolja a 445-as portot, a Azure File Sync használatával férhet hozzá az Azure-fájlmegosztás eléréséhez.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 * <a id="backup-share"></a>
 **hogyan az Azure-fájlmegosztás biztonsági mentését?**  
     A véletlen törlések elleni védelemhez használhat rendszeres [megosztási pillanatképeket](storage-snapshots-files.md) . Használhatja a AzCopy, a Robocopy vagy egy külső gyártótól származó biztonsági mentési eszközt is, amely képes biztonsági másolatot készíteni egy csatlakoztatott fájlmegosztásról. A Azure Backup Azure Files biztonsági mentését kínálja. További információ az [Azure-fájlmegosztás Azure Backup általi biztonsági mentéséről](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -384,7 +371,7 @@ beállíthat **beágyazott megosztásokat? Más szóval egy megosztás alatt tal
 **hogyan az Azure Files az IBM MQ-val?**  
     Az IBM kiadott egy olyan dokumentumot, amely segítséget nyújt az IBM MQ-ügyfeleknek az IBM szolgáltatással való Azure Files konfigurálásában. További információ: az [IBM MQ többpéldányos üzenetsor-kezelő beállítása Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Az Azure File Sync hibaelhárítása](storage-sync-files-troubleshoot.md)

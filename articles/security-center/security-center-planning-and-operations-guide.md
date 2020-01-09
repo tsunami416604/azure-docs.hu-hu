@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462452"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -83,6 +83,10 @@ Az előző ábrán felsorolt személyek esetében a következő szerepköralapú
 
 * Erőforráscsoport tulajdonosa/közreműködői
 
+**Eszter (adatvédelmi felelős/számítástechnikai felelős)**
+
+* Előfizetés-tulajdonos/közreműködő vagy biztonsági rendszergazda
+
 **András (számítástechnikai biztonsági felelős)**
 
 * Előfizetés-tulajdonos/közreműködő vagy biztonsági rendszergazda
@@ -150,7 +154,7 @@ A Microsoft Monitoring Agentből (az Azure Security Center nevében) gyűjtött 
 
 Az Azure Portalon megkeresheti a Log Analytics munkaterületeinek listáját, beleértve azokat is, amelyeket az Azure Security Center hozott létre. Egy kapcsolódó erőforráscsoport jön létre az új munkaterületek számára. Mindkettő ezt az elnevezési konvenciót követi:
 
-* Munkaterület *DefaultWorkspace-[subscription-ID]-[geo]*
+* Munkaterület: *DefaultWorkspace-[subscription-ID]-[geo]*
 * Erőforráscsoport: *DefaultResourceGroup-[geo]*
 
 Az Azure Security Center által létrehozott munkaterületek adatait 30 napig őrzi meg a rendszer. A meglévő munkaterületeknél a megőrzési idő a munkaterület tarifacsomagjától függ. Ha szeretné, használhat egy létező munkaterületet is.
@@ -208,7 +212,7 @@ A biztonsági folyamatai részeként érdemes bevezetnie megelőző intézkedés
 Az [adaptív alkalmazások vezérlői](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) segítségével korlátozhatja, hogy mely alkalmazások futhatnak az Azure-ban található virtuális gépeken. Más előnyök mellett ez segít megerősíteni a virtuális gépeket a kártevők ellen. A gépi tanulás használatával a Security Center elemzi a virtuális gépen futó folyamatokat, hogy segítsen az engedélyezési szabályok létrehozásában.
 
 
-## <a name="incident-response"></a>Incidensmegoldás
+## <a name="incident-response"></a>Incidensek kezelése
 A Security Center észleli az előforduló fenyegetéseket, és riasztást küld róluk. Javasoljuk, hogy mindig kövesse figyelemmel az új biztonsági riasztásokat, és tegye meg a szükséges lépéseket a támadás alaposabb kivizsgálása vagy következményeinek elhárítása érdekében. A Security Center fenyegetések észlelésének működésével kapcsolatos további információkért olvassa el, [Hogyan észleli és reagáljon a Azure Security Center a fenyegetésekre](security-center-alerts-overview.md#detect-threats).
 
 Bár ez a cikk nem nyújt segítséget a saját incidensmegoldási tervének kidolgozásához, a Microsoft Azure Security Response szolgáltatást fogjuk használni a felhő életciklusában az incidensmegoldási szakaszok alapjaként. Ezek a szakaszok a következő ábrán láthatók:
@@ -244,7 +248,7 @@ Az [incidensekre adott válaszokkal kapcsolatos videók Azure Security Center & 
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)

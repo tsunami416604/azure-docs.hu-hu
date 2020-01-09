@@ -3,17 +3,17 @@ title: Felhőalapú szolgáltatás konfigurálása (portál) | Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja a Cloud Servicest az Azure-ban. Ismerje meg, hogyan frissítheti a Cloud Service-konfigurációt, és hogyan konfigurálhat távoli hozzáférést a szerepkör-példányokhoz. Ezek a példák a Azure Portal használják.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: gwallace
-ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361007"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services konfigurálása
 
@@ -21,7 +21,7 @@ A felhőalapú szolgáltatás leggyakrabban használt beállításait a Azure Po
 
 A felhőalapú szolgáltatás szerepköreinek példányait vagy a Távoli asztalt is kezelheti.
 
-Az Azure a konfigurációs frissítések során csak a 99,95%-os rendelkezésre állást biztosíthatja, ha minden szerepkörhöz legalább két szerepkör-példány tartozik. Ez lehetővé teszi, hogy az egyik virtuális gép feldolgozza az ügyfelek kérelmeit, miközben a másik frissítése folyamatban van. További információ: szolgáltatói [szerződések](https://azure.microsoft.com/support/legal/sla/).
+Az Azure a konfigurációs frissítések során csak a 99,95%-os rendelkezésre állást biztosíthatja, ha minden szerepkörhöz legalább két szerepkör-példány tartozik. Ez lehetővé teszi, hogy az egyik virtuális gép feldolgozza az ügyfelek kérelmeit, miközben a másik frissítése folyamatban van. További információ: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="change-a-cloud-service"></a>Felhőalapú szolgáltatás módosítása
 
@@ -29,7 +29,7 @@ A [Azure Portal](https://portal.azure.com/)megnyitása után navigáljon a felh�
 
 ![Beállítások lap](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-A **Beállítások** vagy **az összes beállítás** hivatkozás olyan **beállításokat** nyit meg, ahol módosíthatja a **tulajdonságokat**, módosíthatja a **konfigurációt**, kezelheti a **tanúsítványokat**, beállíthatja a riasztási **szabályokat**, és kezelheti a **felhasználókat** kik férhetnek hozzá ehhez a felhőalapú szolgáltatáshoz.
+A **Beállítások** vagy **az összes beállítás** hivatkozás olyan **beállításokat** nyit meg, ahol módosíthatja a **tulajdonságokat**, módosíthatja a **konfigurációt**, kezelheti a **tanúsítványokat**, beállíthatja a **riasztási szabályokat**, és kezelheti azokat a **felhasználókat** , akik hozzáféréssel rendelkeznek ehhez a felhőalapú szolgáltatáshoz.
 
 ![Azure Cloud Service-beállítások](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -44,16 +44,16 @@ Ha egy adott operációsrendszer-verziót kell megcéloznia, beállíthatja a **
 >[!IMPORTANT]
 > Egy adott operációsrendszer-verzió kiválasztásával letilthatja az operációs rendszer frissítéseinek automatikus telepítését, és javíthatja a felelősségét. Győződjön meg arról, hogy a szerepkör-példányok frissítéseket kapnak, vagy az alkalmazást biztonsági rések számára teheti elérhetővé.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
-Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások** > **riasztási szabályok** > riasztás**hozzáadása**elemre.
+Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **beállítások** > **riasztási szabályok** > **riasztás hozzáadása**lehetőségre.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 Itt beállíthatja a riasztást. A **metrika** legördülő lista használatával riasztást állíthat be a következő típusú adatokhoz.
 
-* Lemezolvasás
-* Lemezírás
+* Lemez olvasása
+* Lemez írása
 * bejövő hálózati forgalom
 * kimenő hálózati forgalom
 * Processzorhasználat (%)
@@ -62,7 +62,7 @@ Itt beállíthatja a riasztást. A **metrika** legördülő lista használatáva
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Figyelés beállítása metrikai csempéről
 
-A **Beállítások** > **riasztási szabályainak**használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám-csempére kattinthat.
+A **beállítások** > a **riasztási szabályok**használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám csempére kattinthat.
 
 ![Cloud Service-figyelés](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -98,9 +98,12 @@ Előfordulhat, hogy újra kell konfigurálnia a felhőalapú szolgáltatást a [
     ![Feltöltés](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Válassza ki a. cscfg fájlt, majd kattintson **az OK**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
 * [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).
-* Konfigurálja az [SSL](cloud-services-configure-ssl-certificate-portal.md)-tanúsítványokat.
+* Konfigurálja az [SSL-tanúsítványokat](cloud-services-configure-ssl-certificate-portal.md).
+
+
+

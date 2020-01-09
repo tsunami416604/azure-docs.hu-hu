@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése adott Android-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
+title: Leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
 description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387422"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531122"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
 
@@ -47,7 +47,7 @@ Fejezze be az [oktatóanyagot: leküldéses értesítések az Android-eszközök
 
 A következő lépés az oktatóanyagban létrehozott Android-alkalmazás frissítése [: leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-1. Nyissa meg `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
+1. Nyissa meg a `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
 
     Új EditText vezérlőket ad hozzá a felhasználóként való bejelentkezéshez. Egy felhasználónév-címke számára kijelölt mezőt is hozzáad, amely szerepelni fog az elküldött értesítésekben:
 
@@ -138,7 +138,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
         />
     </RelativeLayout>
     ```
-2. Nyissa meg `res/values/strings.xml` fájlt, és cserélje le a `send_button` definíciót a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button` számára, és karakterláncokat adhat hozzá a többi vezérlőhöz:
+2. Nyissa meg `res/values/strings.xml` fájlt, és cserélje le a `send_button` definícióját a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button`hoz, és a többi vezérlő sztringjét adja hozzá:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -152,7 +152,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
     A `main_activity.xml` grafikus elrendezésnek most a következő képhez hasonlóan kell kinéznie:
 
     ![][A1]
-3. Hozzon létre egy `RegisterClient` nevű új osztályt ugyanabban a csomagban, mint a `MainActivity` osztály. Használja az alábbi kódot az új osztályfájlhoz.
+3. Hozzon létre egy új, `RegisterClient` nevű osztályt a `MainActivity` osztálysal megegyező csomagban. Használja az alábbi kódot az új osztályfájlhoz.
 
     ```java
   
@@ -261,7 +261,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
     ```
 
     Ez az összetevő azokat a REST-hívásokat valósítja meg, amelyek szükségesek ahhoz, hogy a leküldéses értesítések regisztrálásához kapcsolatba lépjenek az alkalmazás- Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A **Bejelentkezés** gombra kattintva a helyi tárolóban tárolt engedélyezési jogkivonatot használja.
-4. A `MainActivity` osztályban, és adjon hozzá egy mezőt a `RegisterClient` osztályhoz és egy karakterláncot a ASP.NET-háttér végpontjának. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
+4. A `MainActivity` osztályban, és adjon hozzá egy mezőt a `RegisterClient` osztályhoz, valamint egy karakterláncot a ASP.NET-háttér végpontjának. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -412,7 +412,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
     }
     ```
 
-    A **bejelentkezési** gomb `login` kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelképezi), majd a `RegisterClient` használatával hívja meg a háttér-használatot a regisztrációhoz.
+    A **bejelentkezési** gomb `login` kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti felhasználónévvel és jelszóval (ez a hitelesítési séma által használt bármely tokent jelképezi), majd a `RegisterClient` használatával hívja meg a háttérbeli regisztrációt.
 
     A `sendPush` metódus a háttérrendszer meghívásával aktiválja egy biztonságos értesítés küldését a felhasználónak a felhasználói címke alapján. A `sendPush` által megcélzott platformértesítési szolgáltatás az átadott `pns` sztringtől függ.
 
@@ -472,7 +472,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Ha az alkalmazás a 28-as (Android 9,0-as) API-szintet célozza meg, akkor a következő deklarációt kell tartalmaznia a `AndroidManifest.xml` `<application>` elemén belül.
+13. Ha az alkalmazás a 28-as (Android 9,0-as) API-szintet célozza meg, a következő deklarációt kell tartalmaznia `AndroidManifest.xml``<application>` elemében.
 
     ```xml
     <uses-library

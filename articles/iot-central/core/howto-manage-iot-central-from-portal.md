@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c86df7c50e59309f921c60738870407e74a23219
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 60c1109d0f540c8301cc536c2079537dca5115f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435015"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central kezelése a Azure Portal
 
@@ -41,7 +41,7 @@ Most válassza a **Létrehozás**lehetőséget.
 
 Töltse ki az űrlap összes mezőjét. Ez az űrlap hasonló az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén az alkalmazások létrehozásához kitöltött űrlaphoz. További információt az [IoT Central-alkalmazás létrehozása](quick-deploy-iot-central.md) című témakörben talál.
 
-Az általánosan elérhető funkciókkal rendelkező IoT Central alkalmazást a **contoso**, **egyéni alkalmazás** és **minta Devkits** használatával hozhatja létre, és az összes többi alkalmazás-sablon nyilvános előzetes verziójú funkciókat is tartalmaz.
+Az általánosan elérhető szolgáltatásokkal IoT Central alkalmazást az **örökölt alkalmazás** sablonként való kiválasztásával hozhatja létre, és az összes többi alkalmazás-sablon nyilvános előzetes verziójú funkciókat is használ.
 
 ![IoT Central űrlap létrehozása](media/howto-manage-iot-central-from-portal/image6a.png)
 

@@ -1,28 +1,19 @@
 ---
-title: Az Azure Service Fabricban aktorok enumerálása |} A Microsoft Docs
-description: További tudnivalók a Reliable Actors és azok metaadatainak számbavétele.
-services: service-fabric
-documentationcenter: .net
+title: Az Azure Service Fabric szereplőinek számbavétele
+description: Példák a Reliable Actors és azok metaadatainak enumerálására egy Azure Service Fabric-alkalmazásban példák használatával.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729137"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645599"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors számbavétele
-A Reliable Actors-szolgáltatás lehetővé teszi, hogy egy ügyfél metaadatait, a szereplők a szolgáltatást üzemeltető számbavétele. Mivel az aktorszolgáltatás particionált az állapotalapú szolgáltatások, a enumerálás partíciónként történik. Mindegyik partíció tartalmazhat számos actors, mert az enumerálás sorozataként lapokra bontott eredményeket adja vissza. A lapok vannak beállításpanelen keresztül, addig, amíg az összes olvasható. Az alábbi példa bemutatja, hogyan hozhat létre az összes aktív szereplők listáját egyik partíciójában, az aktorszolgáltatás:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric enumerálása Reliable Actors
+A Reliable Actors szolgáltatás lehetővé teszi, hogy az ügyfél a szolgáltatás által üzemeltetett szereplők metaadatait enumerálja. Mivel a Actors szolgáltatás particionált állapot-nyilvántartó szolgáltatás, a számbavétel egy partíción történik. Mivel az egyes partíciók több résztvevőt is tartalmazhatnak, a számbavétel a lapozható eredmények halmazát adja vissza. A lapokat a rendszer az összes oldal beolvasása után összehurkolja. Az alábbi példa bemutatja, hogyan hozhatja létre az összes aktív szereplő listáját a Actors szolgáltatás egy partíciójában:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -67,11 +58,11 @@ while (continuationToken != null);
 
 
 
-## <a name="next-steps"></a>További lépések
-* [Aktor állapotkezelés](service-fabric-reliable-actors-state-management.md)
-* [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
-* [Aktorok API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+## <a name="next-steps"></a>Következő lépések
+* [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
+* [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
+* [A Actors API-dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

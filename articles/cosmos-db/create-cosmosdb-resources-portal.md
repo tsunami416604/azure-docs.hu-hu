@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure Cosmos-adatbázis létrehozása a Azure Portal
+title: Rövid útmutató – Azure Cosmos DB erőforrások létrehozása a Azure Portal
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Cosmos-adatbázist,-tárolót és-elemeket a Azure Portal használatával.
 author: SnehaGunda
 ms.author: sngun
@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 9b563f7546710b0cb07573d32b2f3939d8e64085
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58fa891503342ac0ec9d41e9c458a71d18e58161
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445598"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](create-cosmosdb-resources-portal.md)
+> * [Azure Portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -73,7 +73,7 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 1. A **adatkezelő**bontsa ki a **ToDoList** -adatbázist, és bontsa ki az **elemek** tárolót. Ezután válassza az **elemek elemet**, majd válassza az **új elem elemet**. 
    
-   ![Új dokumentumok létrehozása az Adatkezelővel az Azure Portalon](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
 1. Adja hozzá a következő struktúrát a dokumentumhoz a **dokumentumok** ablaktábla jobb oldalán:
 

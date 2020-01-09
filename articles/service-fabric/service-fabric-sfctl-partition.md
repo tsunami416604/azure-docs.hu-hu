@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl partíció | Microsoft Docs
-description: A CLI-sfctl partíciós parancsok Service Fabric ismerteti.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl partíció
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szolgáltatáshoz tartozó partíciók kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 2c2ebb7cb08cb6b6b2130290c81fa9e07766b5e2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901079"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646058"
 ---
 # <a name="sfctl-partition"></a>sfctl-partíció
 Bármely szolgáltatás partícióinak lekérdezése és kezelése.
@@ -37,7 +28,7 @@ Bármely szolgáltatás partícióinak lekérdezése és kezelése.
 | betöltés – alaphelyzetbe állítás | Visszaállítja egy Service Fabric partíció aktuális terhelését. |
 | kvórum – veszteség | Egy adott állapot-nyilvántartó szolgáltatásbeli partíció Kvórumának elvesztését okozhatja. |
 | kvórum – veszteség – állapot | Lekérdezi a kvórum elvesztése műveletének előrehaladását a StartQuorumLoss API használatával megkezdett partíción. |
-| Visszaszerez | Azt jelzi, hogy a Service Fabric-fürtön olyan adott partíciót kell helyreállítani, amely jelenleg a kvórum elvesztése miatt beragadt. |
+| helyreállítás | Azt jelzi, hogy a Service Fabric-fürtön olyan adott partíciót kell helyreállítani, amely jelenleg a kvórum elvesztése miatt beragadt. |
 | összes helyreállítása | Azt jelzi, hogy a Service Fabric-fürtön olyan szolgáltatásokat (beleértve a rendszerszolgáltatásokat is) kell helyreállítani, amelyek jelenleg a kvórum elvesztése miatt megakadnak. |
 | jelentés – állapot | Állapotjelentés küldése a Service Fabric partíción. |
 | restart | Ez az API újraindítja a megadott partíció néhány vagy összes replikáját vagy példányát. |

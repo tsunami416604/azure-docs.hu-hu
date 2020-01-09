@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227021"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562051"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions diagnosztika áttekintése
 
@@ -30,7 +30,7 @@ Azure Functions diagnosztika elérése:
 
 ## <a name="use-the-interactive-interface"></a>Az interaktív felület használata
 
-Miután kiválasztott egy olyan Kezdőlap kategóriát, amely a legjobban megfelel a Function app problémájának, Azure Functions Diagnostics interaktív felülete, a Genie, végigvezeti Önt az alkalmazás problémáinak diagnosztizálásán és megoldásán. A Genie által biztosított csempe-parancsikonok használatával megtekintheti az Önt érdeklő probléma kategóriájának teljes diagnosztikai jelentését. A csempék parancsikonjai közvetlen módot biztosítanak a diagnosztikai metrikák elérésére.
+Miután kiválasztott egy olyan Kezdőlap kategóriát, amely a legjobban megfelel a Function app problémájának, Azure Functions Diagnostics interaktív felülete, a Genie, végigvezeti Önt az alkalmazás problémáinak diagnosztizálásán és megoldásán. A Genie által biztosított csempe-parancsikonok segítségével megtekintheti a problémás kategória teljes diagnosztikai jelentését, amelyre kíváncsi. A csempék parancsikonjai közvetlen módot biztosítanak a diagnosztikai metrikák elérésére.
 
 ![Genie](./media/functions-diagnostics/genie.png)
 
@@ -40,11 +40,11 @@ A csempék kiválasztása után megtekintheti a csempén bemutatott problémáva
 
 ## <a name="view-a-diagnostic-report"></a>Diagnosztikai jelentés megtekintése
 
-Miután kiválasztott egy témakört, megtekintheti a Function alkalmazásra jellemző diagnosztikai jelentést. A diagnosztikai jelentések állapotjelző ikonokkal jelzik, hogy az alkalmazáshoz kapcsolódó esetleges problémákra van-e állítva. Megtekintheti a probléma részletes leírását, az ajánlott műveleteket, a kapcsolódó mérőszámokat és a hasznos dokumentumokat. A rendszer a testreszabott diagnosztikai jelentéseket a Function alkalmazásban futó ellenőrzések sorozatából hozza létre. A diagnosztikai jelentések hasznos eszköz lehet a Function-alkalmazásban felmerülő problémák azonosításához és a probléma megoldásához.
+Miután kiválasztott egy témakört, megtekintheti a Function alkalmazásra jellemző diagnosztikai jelentést. A diagnosztikai jelentések állapotjelző ikonokkal jelzik, hogy van-e konkrét probléma az alkalmazással kapcsolatban. Megtekintheti a probléma részletes leírását, az ajánlott műveleteket, a kapcsolódó mérőszámokat és a hasznos dokumentumokat. A rendszer a testreszabott diagnosztikai jelentéseket a Function alkalmazásban futó ellenőrzések sorozatából hozza létre. A diagnosztikai jelentések hasznos eszköz lehet a Function-alkalmazásban felmerülő problémák azonosításához és a probléma megoldásához.
 
 ## <a name="find-the-problem-code"></a>A probléma kódjának megkeresése 
 
-A parancsfájl-alapú függvények esetében a **függvény végrehajtása** és a **hibák függvényalkalmazás legördülő menüben, illetve a hibák bejelentése** a kódban a kivételeket vagy hibákat okozó sorokra szűkíthető. Ez a funkció hasznos eszköz lehet a kiváltó ok beszerzéséhez és a hibák adott kódból való kijavításához. Ez a beállítás nem érhető el előre C# lefordított és Java-függvényekhez.
+A parancsfájl-alapú függvények esetében a **függvény végrehajtása** és a **hibák** **függvényalkalmazás legördülő menüben, illetve a hibák bejelentése** a kódban a kivételeket vagy hibákat okozó sorokra szűkíthető. Ez a funkció hasznos eszköz lehet a kiváltó ok beszerzéséhez és a hibák adott kódból való kijavításához. Ez a beállítás nem érhető el előre C# lefordított és Java-függvényekhez.
 
 ![Diagnosztikai jelentés a függvények végrehajtásával kapcsolatos hibákról](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

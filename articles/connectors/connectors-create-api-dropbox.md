@@ -1,18 +1,18 @@
 ---
 title: Kapcsolódás a Dropboxhoz
-description: Fájlok feltöltése és kezelése a Dropbox REST API-kkal és Azure Logic Apps
+description: Automatizálja a Dropboxban lévő fájlokat feltöltő és kezelő feladatokat és munkafolyamatokat a Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789821"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665751"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Fájlok feltöltése és kezelése a Dropboxban Azure Logic Apps használatával
 
@@ -43,7 +43,7 @@ Az eseményindítók listából válassza ki ezt az eseményindítót: **fájl l
 
    Ebben a példában válassza ki azt a mappát, ahol nyomon szeretné követni a fájl létrehozását. A mappák tallózásához válassza a **mappa mező** melletti mappa ikont.
 
-## <a name="add-action"></a>Művelet hozzáadása
+## <a name="add-action"></a>Művelet felvétele
 
 Most adjon hozzá egy műveletet, amely minden új fájlból lekéri a tartalmat.
 
@@ -64,7 +64,7 @@ A műveletek listából válassza a következő műveletet: **fájl tartalmának
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/dropbox/).
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/dropbox/).
 
 ## <a name="next-steps"></a>Következő lépések
 

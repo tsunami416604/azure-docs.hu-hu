@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Linux-készletek a Batch szolgáltatásban | Microsoft Docs
-description: Azure CLI-példaszkript – Linux-készletek létrehozása és kezelése a Batch szolgáltatásban
+title: Azure CLI parancsfájl-példa – Linux-készlet a Batch-ben
+description: Ez a szkript az Azure CLI-ben elérhető egyes parancsokat mutatja be, hogy a Linux számítási csomópontok készletét hozza létre és felügyelje Azure Batchban.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: a0e78ec35ff001b6a4ee59794a002cb3a74e90cb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 33f66da1911bdefee298f3de949937bbc52d8fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390222"
 ---
-# <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-példa: Linux-készlet létrehozása és kezelése Azure Batch
+# <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-példa: Linux-készlet létrehozása és kezelése az Azure Batch szolgáltatásban
 
-A szkript bemutat az Azure CLI elérhető parancsai közül néhányat, amelyekkel létrehozható és kezelhető egy Linux-készlet az Azure Batch szolgáltatásban.
+Ez a szkript az Azure CLI-ben elérhető egyes parancsokat mutatja be, hogy a Linux számítási csomópontok készletét hozza létre és felügyelje Azure Batchban.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -59,6 +59,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-delete) | Törli a felsorolt csomópontokat a megadott készletből.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).

@@ -1,6 +1,6 @@
 ---
 title: Azure rövid útmutató – Batch-feladat futtatása – .NET
-description: Batch-feladatok és -tevékenységek gyors futtatása a Batch .NET ügyfélkódtárával.
+description: A Batch .NET ügyféloldali függvénytárával gyorsan futtathat egy Azure Batch C# -minta feladatot és feladatot egy alkalmazásból.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390319"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Gyors útmutató: Az első Azure Batch-feladatok futtatása a .NET API-val
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
 
 Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch .NET API-ra épülő C#-alkalmazásból. Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló *készletet*. Ezután létrehoz egy minta*feladatot*, amely *tevékenységek* futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 
@@ -64,7 +64,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-A Batch-munkafolyamat működésének megtekintéséhez hozza létre és futtassa az alkalmazást a Visual Studióban, vagy a parancssorból a `dotnet build` és `dotnet run` parancsokat. Az alkalmazás futtatása után tekintse át a kódot annak megismerése érdekében, hogy mit csinálnak az alkalmazás egyes részei. A Visual Studióban például:
+A Batch-munkafolyamat működésének megtekintéséhez hozza létre és futtassa az alkalmazást a Visual Studióban, vagy a parancssorból a `dotnet build` és `dotnet run` parancsokat. Az alkalmazás futtatása után tekintse át a kódot annak megismerése érdekében, hogy mit csinálnak az alkalmazás egyes részei. Ha például a Visual Studióban:
 
 * Kattintson a jobb gombbal a megoldásra a Solution Explorerben (Megoldáskezelő), és kattintson a **Build Solution** (Megoldás fordítása) elemre. 
 
@@ -248,7 +248,7 @@ Az alkalmazás automatikusan törli a létrehozott Storage-tárolót, és felkí
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez az Azure Portalon válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy, a Batch .NET API-val létrehozott kisméretű alkalmazást futtatott egy Batch-készlet és egy Batch-feladat létrehozásához. A feladat mintatevékenységeket futtatott, és letöltötte a csomópontokon létrehozott kimeneteket. Most, hogy megismerkedett a Batch szolgáltatás fő fogalmaival, készen áll a Batch szolgáltatás realisztikusabb számítási feladatokkal, nagyobb léptékben történő kipróbálására. Ha többet szeretne megtudni az Azure Batch szolgáltatásról, és végig szeretne nézni egy párhuzamos számítási feladatot egy valós alkalmazással, folytassa a Batch .NET oktatóanyaggal.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848136"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608754"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -30,9 +30,6 @@ Ezen a lapon a kiszolgáló új telepítését és helyszíni Active Directoryva
 > 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
 
 ## <a name="plan-your-deployment"></a>Az üzembe helyezés megtervezése
-
-> [!WARNING]
-> A 2019 MFA-kiszolgáló letöltésének kezdete csak a fizetős bérlők számára érhető el. Az ingyenes/próbaverziós bérlők többé nem tudják letölteni és használni az aktiválási hitelesítő adatokat.
 
 Az Azure Multi-Factor Authentication-kiszolgáló letöltése előtt fontolja meg, milyen terhelési és magas rendelkezésre állási követelményekkel rendelkezik. Ezen információ alapján döntse el, hogyan és hol szeretné üzembe helyezni.
 
@@ -57,7 +54,7 @@ Győződjön meg róla, hogy az Azure Multi-Factor Authenticationhöz használt 
 | Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
 |:--- |:--- |
 | Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
-| Szoftver |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
+| Szoftverek |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
 | Engedélyek | Tartományi rendszergazda vagy vállalati rendszergazdai fiók Active Directoryhoz való regisztráláshoz |
 
 ### <a name="azure-mfa-server-components"></a>Az Azure MFA-kiszolgáló összetevői
@@ -96,9 +93,6 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 
 ## <a name="download-the-mfa-server"></a>Az MFA-kiszolgáló letöltése
 
-> [!WARNING]
-> A 2019 MFA-kiszolgáló letöltésének kezdete csak a fizetős bérlők számára érhető el. Az ingyenes/próbaverziós bérlők többé nem tudják letölteni és használni az aktiválási hitelesítő adatokat.
-
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
@@ -122,6 +116,9 @@ Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt. Győz
    ![Kihagyás a hitelesítési konfiguráció varázsló használatával](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Azon az oldalon, ahonnan letöltötte a kiszolgálót, kattintson az **Aktiváló hitelesítő adatok előállítása** gombra. Másolja ezt az információt az Azure MFA-kiszolgálón a megfelelő mezőkbe, majd kattintson az **Aktiválás** lehetőségre.
+
+> [!NOTE]
+> Csak a globális rendszergazdák képesek az aktiválási hitelesítő adatok előállítására a Azure Portalban.
 
 ## <a name="send-users-an-email"></a>E-mail küldése a felhasználóknak
 

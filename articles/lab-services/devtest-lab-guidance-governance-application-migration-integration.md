@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560649"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644886"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs infrastruktúra irányítása – alkalmazások áttelepítése és integrációja
 A fejlesztési/tesztelési labor környezet létrehozása után a következő kérdésekre kell gondolnia:
@@ -93,7 +93,7 @@ Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez 
 ### <a name="answer"></a>Válasz
 Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, érdemes megfontolnia, hogy a DevTest Labs-környezetben meglévő virtuális hálózatot használjon. Emellett, ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben használt IP-címtartomány ne legyen kiosztva. Érdemes megfontolni a VNet-társítási minta használatát is (sugaras modell). Ez a megközelítés lehetővé teszi, hogy az egyes régiókban lévő előfizetések között vnet/alhálózati kommunikációt lehessen biztosítani, bár a régiók közötti együttműködés az Azure-hálózatkezelés egyik feltörekvő funkciója.
 
-Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal. Vegye figyelembe azonban, hogy az előfizetéshez tartozó virtuális hálózatok száma [korlátozott](../azure-subscription-service-limits.md) . Az alapértelmezett érték 50, de ez a korlát 100-re is kiemelhető.
+Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal. Vegye figyelembe azonban, hogy az előfizetéshez tartozó virtuális hálózatok száma [korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md) . Az alapértelmezett érték 50, de ez a korlát 100-re is kiemelhető.
 
 ## <a name="shared-public-or-private-ip"></a>Megosztott, nyilvános vagy magánhálózati IP-cím
 
@@ -117,7 +117,7 @@ Van olyan szabály, amely azt határozza meg, hogy hány virtuális gépet kell 
 Ha a virtuális gépek száma felhasználónként vagy laborban történik, három fő szempontot kell figyelembe venni:
 
 - A csapat által az erőforrásokra fordított **teljes költség** a laborban. Könnyedén elindíthat sok gépet. A költségek szabályozása érdekében az egyik mechanizmus a virtuális gépek számának korlátozása felhasználónként és/vagy tesztkörnyezetben
-- A laborban található virtuális gépek teljes számát a rendelkezésre álló [előfizetési szint kvótái](../azure-subscription-service-limits.md) befolyásolják. Az egyik felső határérték 800 erőforráscsoport. A DevTest Labs jelenleg minden virtuális géphez létrehoz egy új erőforráscsoportot (kivéve, ha megosztott nyilvános IP-címek vannak használatban). Ha 10 Labs van egy előfizetésben, a Labs az egyes laborokban körülbelül 79 virtuális gépet fér hozzá (800 felső korlát – 10 erőforráscsoport a 10 Labs számára) = 79 virtuális gépek/labor.
+- A laborban található virtuális gépek teljes számát a rendelkezésre álló [előfizetési szint kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md) befolyásolják. Az egyik felső határérték 800 erőforráscsoport. A DevTest Labs jelenleg minden virtuális géphez létrehoz egy új erőforráscsoportot (kivéve, ha megosztott nyilvános IP-címek vannak használatban). Ha 10 Labs van egy előfizetésben, a Labs az egyes laborokban körülbelül 79 virtuális gépet fér hozzá (800 felső korlát – 10 erőforráscsoport a 10 Labs számára) = 79 virtuális gépek/labor.
 - Ha a tesztkörnyezet az expressz útvonalon keresztül csatlakozik a helyszíni környezethez (például), a VNet/alhálózat számára **meghatározott IP-címek állnak rendelkezésre** . Annak biztosítása érdekében, hogy a laborban lévő virtuális gépek ne jöjjenek létre (hiba: nem lehet lekérni az IP-címet), a labor tulajdonosai megadhatják a laborok maximális számát az elérhető IP-címtartomány szerint.
 
 ## <a name="use-resource-manager-templates"></a>Erőforrás-kezelői sablonok használata

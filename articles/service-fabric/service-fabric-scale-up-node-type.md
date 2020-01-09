@@ -1,25 +1,14 @@
 ---
-title: Azure-Service Fabric csomópont-típus vertikális felskálázása | Microsoft Docs
+title: Azure Service Fabric csomópont-típus vertikális felskálázása
 description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy virtuálisgép-méretezési csoport hozzáadásával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: atsenthi
-ms.openlocfilehash: 272bc571a0ea71fd6e7bd45a426460d2e0faf1d7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464224"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomópont-típusának vertikális felskálázása
 Ez a cikk azt ismerteti, hogyan lehet a virtuális gépek erőforrásainak növelésével bővíteni egy Service Fabric-fürt elsődleges csomópontjának típusát. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -34,12 +23,12 @@ Ez a cikk azt ismerteti, hogyan lehet a virtuális gépek erőforrásainak növe
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Az elsődleges csomópont típusú virtuális gépek méretének és operációs rendszerének frissítése
-Az alábbi folyamat a virtuális gépek méretének és operációs rendszerének frissítését írja le.  A frissítés után az elsődleges csomópont típusú virtuális gépek szabványos D4_V2, és a Windows Server 2016 Datacenter tárolókkal futnak.
+Az alábbi folyamat a virtuális gépek méretének és operációs rendszerének frissítését írja le.  A frissítés után az elsődleges csomópont típusú virtuális gépek szabványos D4_V2 és a Windows Server 2016 Datacenter tárolókkal futnak.
 
 > [!WARNING]
 > Az eljárás üzemi fürtön való megkísérlése előtt javasoljuk, hogy tanulmányozza a minta sablonokat, és ellenőrizze a folyamatot egy tesztelési fürtön. A fürt egy időre sem érhető el. Párhuzamosan nem lehet módosítani több VMSS, amelyek ugyanabban a NodeType vannak deklarálva; külön üzembe helyezési műveleteket kell végrehajtania, hogy az egyes NodeType-VMSS módosításokat alkalmazzon.
 
-1. Telepítse a kezdeti fürtöt két csomópont-típussal és két méretezési csoporttal (egy csomópont típusú méretezési csoport) a minta [sablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) és a [Paraméterek](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) fájljainak használatával.  Mindkét méretezési csoport szabványos D2_V2 és Windows Server 2012 R2 Datacenter rendszert futtat.  Várjon, amíg a fürt befejezi az alapkonfiguráció frissítését.   
+1. Telepítse a kezdeti fürtöt két csomópont-típussal és két méretezési csoporttal (egy csomópont típusú méretezési csoport) a minta [sablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) és a [Paraméterek](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) fájljainak használatával.  Mindkét méretezési csoport mérete standard D2_V2, és a Windows Server 2012 R2 Datacenter fut.  Várjon, amíg a fürt befejezi az alapkonfiguráció frissítését.   
 2. Opcionális – állapot-nyilvántartó minta üzembe helyezése a fürtön.
 3. Miután eldöntötte, hogy frissítette az elsődleges csomópont típusú virtuális gépeket, adjon hozzá egy új méretezési csoportot az elsődleges csomópont-típushoz a minta [sablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) és a [Parameters](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) fájlok használatával, hogy az elsődleges csomópont típusa most két méretezési csoporttal rendelkezik.  A rendszerszolgáltatások és a felhasználói alkalmazások áttelepíthetők a két különböző méretezési csoportba tartozó virtuális gépek között.  Az új méretezési csoport virtuális gépei standard szintű D4_V2, és Windows Server 2016 Datacenter-t futtatnak tárolókkal.  Az új méretezési csoporttal új terheléselosztó és nyilvános IP-cím is hozzá lesz adva.  
     A sablonban található új méretezési csoport megkereséséhez keresse meg a *vmNodeType2Name* paraméter által megnevezett "Microsoft. számítási/virtualMachineScaleSets" erőforrást.  Az új méretezési csoport hozzá lesz adva az elsődleges csomópont-típushoz a Properties-> virtualMachineProfile-> extensionProfile-> Extensions-> Properties-> Settings-> nodeTypeRef-beállítás használatával.
@@ -160,7 +149,7 @@ foreach($name in $nodeNames){
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [adhat hozzá csomópont-típust fürthöz](virtual-machine-scale-set-scale-node-type-scale-out.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.

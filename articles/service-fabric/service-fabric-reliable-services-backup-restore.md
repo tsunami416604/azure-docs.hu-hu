@@ -1,75 +1,66 @@
 ---
-title: Service Fabric biztonsági mentése és visszaállítása |} A Microsoft Docs
-description: A Service Fabric biztonsági mentési és visszaállítási fogalmi dokumentációja
-services: service-fabric
-documentationcenter: .net
+title: Biztonsági mentés és visszaállítás Service Fabric
+description: Elméleti dokumentáció Service Fabric biztonsági mentéshez és visszaállításhoz, a megbízható állapot-nyilvántartó szolgáltatások és Reliable Actors biztonsági mentésének konfigurálására szolgáló szolgáltatás.
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723850"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645548"
 ---
-# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Biztonsági mentését és visszaállítását a Reliable Services és Reliable Actors
-Az Azure Service Fabric egy magas rendelkezésre állású platform, amely az állapot replikál a magas rendelkezésre állás fenntartása érdekében több csomópontra.  Ily módon még akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatások továbbra is elérhető. Bár ez a platform által biztosított beépített redundancia néhány elegendő, bizonyos esetekben célszerű a szolgáltatás számára az adatok biztonsági másolatát (egy külső tároló).
+# <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services és Reliable Actors biztonsági mentése és visszaállítása
+Az Azure Service Fabric egy magas rendelkezésre állású platform, amely a magas rendelkezésre állás fenntartása érdekében replikálja az állapotot több csomópont között.  Így még akkor is, ha a fürt egyik csomópontja meghibásodik, a szolgáltatások továbbra is elérhetők maradnak. Habár a platform által biztosított beépített redundancia elegendő lehet bizonyos esetekben, bizonyos esetekben kívánatos, hogy a szolgáltatás biztonsági másolatot készíteni (külső tárolóba).
 
 > [!NOTE]
-> Kritikus fontosságú biztonsági mentését és visszaállítását (és tesztelése a várt módon működik), a helyreállítható adatok elvesztése esetén.
+> Kritikus fontosságú az adatok biztonsági mentése és visszaállítása (és az elvárt módon történő ellenőrzés), hogy az adatvesztési forgatókönyvek alapján helyreállítható legyen.
 > 
 
 > [!NOTE]
-> A Microsoft azt javasolja, használandó [rendszeres biztonsági mentés és visszaállítás](service-fabric-backuprestoreservice-quickstart-azurecluster.md) Reliable Stateful services és Reliable actors – adatok biztonsági másolatának konfigurálásához. 
+> A Microsoft azt javasolja, hogy [rendszeres biztonsági mentést és visszaállítást](service-fabric-backuprestoreservice-quickstart-azurecluster.md) használjon a megbízható állapot-nyilvántartó szolgáltatások és Reliable Actors biztonsági mentésének konfigurálásához. 
 > 
 
 
-Például egy szolgáltatást érdemes adatok biztonsági mentéséhez a következő esetekben a védelme érdekében:
+Előfordulhat például, hogy egy szolgáltatás biztonsági másolatot szeretne készíteni az adatokról, hogy megvédje a következő helyzetekben:
 
-- Ha egy egész Service Fabric-fürt állandó elvesztését.
-- A szolgáltatás partíció replikák többségi végleges adatvesztést
-- Felügyeleti hibák, amellyel az állapot véletlenül lekérdezi törölték vagy sérült állapotba kerül. Például ennek oka lehet egy megfelelő jogosultsággal rendelkező rendszergazda hibásan törli a szolgáltatást.
-- Hibák a szolgáltatásban, amely adatsérülést okozhat. Ez például akkor fordulhat elő, a kód frissítése az írás a hibás egy megbízható gyűjteményben indításakor. Ebben az esetben a kódot és az adatok is előfordulhat alakítható vissza egy korábbi állapotba.
-- Offline adatok feldolgozása. Érdemes lehet kényelmes szeretné, hogy a kapcsolat nélküli adatfeldolgozást az üzleti intelligenciát, amely a szolgáltatás, amely létrehozza az adatok külön-külön történik.
+- Egy teljes Service Fabric-fürt végleges elvesztése esetén.
+- Egy szolgáltatás-partíció replikái többségének végleges elvesztése
+- Rendszergazdai hibák, amelyek miatt az állapot véletlenül törölve vagy sérült. Ez például akkor fordulhat elő, ha egy megfelelő jogosultsággal rendelkező rendszergazda hibásan törli a szolgáltatást.
+- A szolgáltatásban az adatsérülést okozó hibák. Ez például akkor fordulhat elő, ha egy szolgáltatási kód frissítése megkezdi a hibás adatgyűjtést egy megbízható gyűjteménybe. Ilyen esetben a kódnak és az adatfájlnak is korábbi állapotra kell visszaállítania.
+- Offline adatfeldolgozás. Előfordulhat, hogy az üzleti intelligenciához tartozó adatok offline feldolgozását az adatok előállítására szolgáló szolgáltatástól függetlenül kell megtenni.
 
-A biztonsági mentési és visszaállítási funkció lehetővé teszi, hogy a szolgáltatások hozhat létre és biztonsági másolatokat állíthatja vissza a Reliable Services API épül. A platform által biztosított biztonsági mentési API-k lehetővé teszik a biztonsági másolat szolgáltatás partíció állapot nélküli blokkoló olvasási vagy írási műveleteket. A visszaállítási API-k engedélyezése a szolgáltatás partíció állapot vissza kell állítani a kiválasztott biztonsági másolatból.
+A Backup/Restore funkció lehetővé teszi, hogy a Reliable Services API-ra épülő szolgáltatások biztonsági másolatokat hozzanak létre és állítsanak vissza. A platform által biztosított biztonsági mentési API-k lehetővé teszik a szolgáltatás-partíció állapotának biztonsági mentését az olvasási vagy írási műveletek blokkolása nélkül. A visszaállítási API-k lehetővé teszik a szolgáltatás partíciójának állapotát a kiválasztott biztonsági másolatból való visszaállításra.
 
-## <a name="types-of-backup"></a>Biztonsági mentés típusai
-Kétféle biztonsági mentés: Teljes és növekményes.
-Egy teljes biztonsági mentés egy biztonsági mentés állapota a replika újbóli létrehozásához szükséges összes adatot tartalmazó: ellenőrzőpontokat, és minden napló rögzíti.
-Mivel az ellenőrzőpontokat, és a napló rendelkezik, egy teljes biztonsági mentés önmagában állíthatók vissza.
+## <a name="types-of-backup"></a>A biztonsági mentés típusai
+Két biztonsági mentési lehetőség létezik: teljes és növekményes.
+A teljes biztonsági mentés egy olyan biztonsági másolat, amely tartalmazza a replika állapotának újbóli létrehozásához szükséges összes adatát: ellenőrzőpontok és az összes naplózási rekord.
+Mivel az ellenőrzőpontokkal és a naplóval rendelkezik, a teljes biztonsági mentést saját maga állíthatja vissza.
 
-A teljes biztonsági mentések probléma merült fel merül fel, amikor nagyok az ellenőrzőpontokat.
-Például egy replikát, amelynek állapota 16 GB lesz, amely hozzá ellenőrzőpontokat körülbelül legfeljebb 16 GB.
-Ha a helyreállítási időkorlátot öt perc alatt van, a replika kell öt percenként kell készíteni.
-Minden alkalommal, amikor biztonsági mentést készít kell másolni az ellenőrzőpontok mellett 50 MB-ot 16 GB (konfigurálható használatával `CheckpointThresholdInMB`) adatot dolgoztak fel naplók.
+A teljes biztonsági mentéssel kapcsolatos probléma akkor fordul elő, ha az ellenőrzőpontok nagy méretűek.
+Egy 16 GB-nyi állapotú replika például ellenőrzőpontokkal fog rendelkezni, amelyek körülbelül 16 GB-ot vesznek fel.
+Ha öt perces helyreállítási pontra vonatkozó célkitűzéssel rendelkezik, a replikát öt percenként kell biztonsági másolatot készíteni.
+Minden alkalommal, amikor biztonsági mentést készít, 16 GB-os ellenőrzőpontot másol a 50 MB (`CheckpointThresholdInMB`) értékű naplók használatával.
 
-![A példában teljes biztonsági mentés.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
+![Teljes biztonsági mentési példa.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
 
-A megoldás erre a problémára, a növekményes biztonsági mentések, ahol biztonsági mentése csak a módosított naplófájl rekordokat tartalmazza a legutóbbi biztonsági mentés óta.
+A probléma megoldása a növekményes biztonsági mentések, ahol a biztonsági mentés csak a legutóbbi biztonsági mentés óta a módosított naplókat tartalmazza.
 
-![A növekményes biztonsági mentési példa.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
+![Növekményes biztonsági mentés – példa.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
 
-Mivel a növekményes biztonsági mentések csak a változásokat a legutóbbi biztonsági mentés (nem tartalmazza az ellenőrzőpontok) óta, általában gyorsabb, de azok nem állítható vissza, a saját.
-A növekményes biztonsági mentés visszaállításához szükség a teljes biztonsági mentési láncolatát.
-A biztonsági mentési láncolatát egy láncot, a biztonsági mentések teljes biztonsági mentés kezdve, és egymást követő növekményes biztonsági mentések egy szám követ.
+Mivel a növekményes biztonsági mentések csak a legutóbbi biztonsági mentés óta változnak (nem tartalmazza az ellenőrzőpontokat), általában gyorsabbak, de nem állíthatók vissza a helyükön.
+A növekményes biztonsági mentés visszaállításához a teljes biztonsági mentési láncra van szükség.
+A biztonsági mentési lánc egy teljes biztonsági mentéssel kezdődő biztonsági másolatok lánca, amelyet számos összefüggő növekményes biztonsági mentés követ.
 
-## <a name="backup-reliable-services"></a>A Reliable Services biztonsági mentési
-A szolgáltatás Szerző el, hogy a biztonsági mentések és a biztonsági mentések tárolására szolgáló teljes körű vezérléssel rendelkezik.
+## <a name="backup-reliable-services"></a>Biztonsági másolat Reliable Services
+A szolgáltatás szerzője teljes körű irányítást biztosít a biztonsági másolatok készítéséhez és a biztonsági mentések tárolásához.
 
-A biztonsági mentést elindítani a szolgáltatást kell az örökölt tag függvény hívása `BackupAsync`.  
-Biztonsági másolatok lehet tenni, csak az elsődleges replikára, és írási állapot nyújtott van szükségük.
+A biztonsági mentés elindításához a szolgáltatásnak meg kell hívnia az örökölt tag függvényt `BackupAsync`.  
+A biztonsági mentések csak az elsődleges replikából készíthetők, és az írási állapot megadása kötelező.
 
-Az alábbi módon `BackupAsync` vesz egy `BackupDescription` objektumot, ahol egy megadható egy teljes és növekményes biztonsági mentést, valamint egy visszahívási függvény, `Func<< BackupInfo, CancellationToken, Task<bool>>>` , amelyek akkor aktiválódnak, ha a biztonsági mentési mappa helyileg létrehozott, és készen áll a egyes helyezhető külső tárterület.
+Ahogy az alábbi ábrán is látható, `BackupAsync` egy `BackupDescription` objektumba kerül, ahol megadhat egy teljes vagy növekményes biztonsági mentést, valamint egy visszahívási függvényt, `Func<< BackupInfo, CancellationToken, Task<bool>>>`, amely akkor jelenik meg, ha a biztonsági mentési mappát helyileg hozták létre, és készen áll arra, hogy egy külső tárhelyre lehessen áthelyezni.
 
 ```csharp
 
@@ -79,19 +70,19 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-Egy növekményes biztonsági mentés irányuló kérelem sikertelen lehet a `FabricMissingFullBackupException`. Ez a kivétel azt jelzi, hogy a következő dolog történik:
+A növekményes biztonsági mentés elvégzésére irányuló kérelem sikertelen lehet a `FabricMissingFullBackupException`. Ez a kivétel azt jelzi, hogy a következők egyike történik:
 
-- a replika soha nem vette egy teljes biztonsági mentés óta vált, elsődleges,
-- a naplórekordok, mivel a rendszer csonkolta a legutóbbi biztonsági mentés némelyike vagy
-- az átadott replika a `MaxAccumulatedBackupLogSizeInMB` korlátot.
+- a replika soha nem készített teljes biztonsági mentést, mert az elsődleges,
+- néhány naplózási rekord a legutóbbi biztonsági mentés óta csonkolt vagy
+- a replika átadta a `MaxAccumulatedBackupLogSizeInMB` korlátot.
 
-Felhasználók növelheti annak esélyét, hogy hajtsa végre a növekményes biztonsági mentések konfigurálásával `MinLogSizeInMB` vagy `TruncationThresholdFactor`.
-Ezek növekvő értékei növeli a lemezhasználat replika száma.
-További információkért lásd: [Reliable Services-konfiguráció](service-fabric-reliable-services-configuration.md)
+A felhasználók a `MinLogSizeInMB` vagy `TruncationThresholdFactor`konfigurálásával növelhetik a növekményes biztonsági mentések lehetséges valószínűségét.
+Ezeknek az értékeknek a növelése növeli a replikák lemezterület-használatát.
+További információ: [Reliable Services konfiguráció](service-fabric-reliable-services-configuration.md)
 
-`BackupInfo` a biztonsági mentés, például a mappát, ahol a futtatókörnyezet a biztonsági másolat helye kapcsolatos információkat biztosít (`BackupInfo.Directory`). A visszahívási függvény áthelyezheti a `BackupInfo.Directory` egy külső tároló vagy egy másik helyre.  Ez a funkció is, amely jelzi, hogy volt képes sikeresen célhelye helyezze át a biztonsági mentési mappát egy logikai adja vissza.
+`BackupInfo` a biztonsági mentéssel kapcsolatos információkat tartalmaz, beleértve annak a mappának a helyét, amelyben a futtatókörnyezet mentette a biztonsági másolatot (`BackupInfo.Directory`). A visszahívási függvény áthelyezheti a `BackupInfo.Directory`t egy külső tárolóba vagy egy másik helyre.  Ez a függvény egy logikai értéket is ad vissza, amely azt jelzi, hogy sikerült-e sikeresen áthelyezni a biztonsági mentési mappát a célhelyre.
 
-A következő kód bemutatja, hogyan a `BackupCallbackAsync` módszer használható a biztonsági mentés feltölteni az Azure Storage:
+A következő kód bemutatja, hogyan használható a `BackupCallbackAsync` módszer a biztonsági mentés Azure Storage-ba történő feltöltésére:
 
 ```csharp
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -104,34 +95,34 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-Az előző példában `ExternalBackupStore` a minta osztály, amely a használható felület az Azure Blob storage, és `UploadBackupFolderAsync` a metódus tömöríti a mappát, és elhelyezi azt az Azure Blob-tároló.
+Az előző példában `ExternalBackupStore` az Azure Blob Storage-hoz való kapcsolódáshoz használt minta osztály, és `UploadBackupFolderAsync` az a módszer, amely tömöríti a mappát, és elhelyezi az Azure Blob-tárolóban.
 
 Vegye figyelembe:
 
-  - Lehetnek csak egy biztonsági mentési művelet replikánként átvitel közben az adott időpontban. Egynél több `BackupAsync` egyszerre a hívás kivételt fogja kijelezni `FabricBackupInProgressException` megszakít biztonsági mentések egyik korlátozása.
-  - Ha egy replika feladatátadást hajt végre, amíg folyamatban van egy biztonsági mentés, a biztonsági mentés lehetséges, hogy nem fejeződtek be. Így, miután a feladatátvétel befejezését követően feladata a szolgáltatás a biztonsági mentés újraindítása meghívásával `BackupAsync` szükség szerint.
+  - Egy adott időpontban csak egy biztonsági mentési művelet helyezhető el a repüléshez. Egyszerre több `BackupAsync` hívása is `FabricBackupInProgressException` a fedélzeti biztonsági mentések egyra való korlátozásához.
+  - Ha egy replika feladatátvétel közben egy biztonsági mentés folyamatban van, előfordulhat, hogy a biztonsági mentés nem fejeződött be. Így a feladatátvétel befejeződése után a szolgáltatás feladata a biztonsági mentés újraindítása a `BackupAsync` szükség szerinti meghívásával.
 
-## <a name="restore-reliable-services"></a>A Reliable Services-visszaállítás
-Általában az esetekben, amikor szüksége lehet, hogy a visszaállítási művelet végrehajtásához az alábbi kategóriák valamelyikébe tartoznak:
+## <a name="restore-reliable-services"></a>Reliable Services visszaállítása
+Általánosságban elmondható, hogy a visszaállítási művelet elvégzéséhez a következő kategóriák valamelyikébe tartozik:
 
-  - A szolgáltatás az elveszett adatok particionálásához. Például a lemez ki, a három replikák egy partícióhoz (többek között az elsődleges replika) lekérdezi sérült, vagy tartalmának végleges törléséig. Adatok visszaállítása biztonsági másolatból az új elsődleges szükségessé.
-  - A teljes szolgáltatás megszakad. Például a rendszergazda törli a teljes szolgáltatás, és így a szolgáltatás, és az adatok kell állítani.
-  - A szolgáltatás replikált sérült alkalmazás adatokat (például egy alkalmazás hiba) miatt. Ebben az esetben a szolgáltatás később frissített vagy állítja vissza a rendszer eltávolítja a meghibásodás okát, pedig nem sérült adatokat vissza kell állítani.
+  - A szolgáltatás partíciója elvesztette az adatvesztést. Például a partíciók három másodpéldánya (beleértve az elsődleges replikát is) esetében a lemez megsérül vagy törölve lesz. Előfordulhat, hogy az új elsődleges biztonsági másolatból kell visszaállítani az adatait.
+  - A teljes szolgáltatás elvész. A rendszergazda például eltávolítja a teljes szolgáltatást, és így a szolgáltatást és az adatkészletet is vissza kell állítani.
+  - A szolgáltatás replikálta a sérült alkalmazásadatok (például egy alkalmazás hibája miatt). Ebben az esetben a szolgáltatást frissíteni kell, vagy vissza kell állítania, hogy eltávolítsa a sérülés okát, és a nem sérült adatmennyiséget vissza kell állítani.
 
-Számos különböző módszer lehetséges, amelyek használatával kapcsolatos példákat biztosítunk `RestoreAsync` a fenti helyzetek helyreállíthatók.
+Habár számos módszer lehetséges, néhány példát is kínálunk a `RestoreAsync` használatára a fenti forgatókönyvek helyreállításához.
 
-## <a name="partition-data-loss-in-reliable-services"></a>A Reliable Services partíció adatvesztés
-Ebben az esetben a futtatókörnyezet szeretné automatikusan észleli az adatvesztés és meghívása a `OnDataLossAsync` API-t.
+## <a name="partition-data-loss-in-reliable-services"></a>Adatvesztés Reliable Services
+Ebben az esetben a futtatókörnyezet automatikusan felismeri az adatvesztést, és meghívja a `OnDataLossAsync` API-t.
 
-A szolgáltatás Szerző kell végeznie a következő helyre:
+A szolgáltatás szerzőjének a következőket kell elvégeznie a helyreállításhoz:
 
-  - Bírálja felül a virtuális alaposztály metódusának `OnDataLossAsync`.
-  - A legújabb biztonsági mentés található a külső helyre, amely tartalmazza a szolgáltatás biztonsági mentéseket.
-  - Töltse le a legújabb biztonsági mentés (és bontsa ki a biztonsági mentés a biztonsági mentési mappába, ha azt tömörítették).
-  - A `OnDataLossAsync` módszert biztosít a `RestoreContext`. Hívja a `RestoreAsync` API a megadott `RestoreContext`.
-  - Igaz értéket ad vissza, ha a visszaállítás sikeres.
+  - Bírálja felül a virtuális alaposztály metódusát `OnDataLossAsync`.
+  - Keresse meg a legújabb biztonsági mentést a szolgáltatás biztonsági másolatait tartalmazó külső helyen.
+  - Töltse le a legújabb biztonsági mentést (és bontsa ki a biztonsági mentést a biztonsági mentési mappába, ha tömörítve volt).
+  - A `OnDataLossAsync` metódus `RestoreContext`biztosít. Hívja meg a `RestoreAsync` API-t a megadott `RestoreContext`.
+  - Igaz értéket ad vissza, ha a visszaállítás sikeres volt.
 
-Az alábbiakban egy példa megvalósítását a a `OnDataLossAsync` módszer:
+A következő példa a `OnDataLossAsync` módszer megvalósítását szemlélteti:
 
 ```csharp
 protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
@@ -146,44 +137,44 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription` az átadott a `RestoreContext.RestoreAsync` hívást tartalmaz a tag `BackupFolderPath`.
-Egy egyszeri teljes biztonsági mentés visszaállítása során ez `BackupFolderPath` kell állítani a helyi mappa elérési útját, amely tartalmazza a teljes biztonsági mentés.
-Egy teljes biztonsági mentés és a egy növekményes biztonsági másolatok száma visszaállításához `BackupFolderPath` kell állítani a helyi mappa elérési útját, amely csak nem tartalmazza a teljes biztonsági mentés, de is összes növekményes biztonsági mentés.
-`RestoreAsync` hívás nagyvállalat `FabricMissingFullBackupException` Ha a `BackupFolderPath` megadott egy teljes biztonsági mentés nem tartalmazza.
-Azt is nagyvállalat `ArgumentException` Ha `BackupFolderPath` növekményes biztonsági mentések hibás lánca.
-Például, ha a teljes biztonsági mentést tartalmaz az első növekményes és a harmadik növekményes biztonsági mentés, de nem a második növekményes biztonsági mentés.
+a `RestoreContext.RestoreAsync` hívásba átadott `RestoreDescription` egy `BackupFolderPath`nevű tagot tartalmaz.
+Egyetlen teljes biztonsági mentés visszaállításakor ezt a `BackupFolderPath` a teljes biztonsági mentést tartalmazó mappa helyi elérési útjára kell beállítani.
+A teljes biztonsági mentés és a növekményes biztonsági másolatok számának visszaállításakor `BackupFolderPath`t a mappa helyi elérési útjára kell beállítani, amely nem csak a teljes biztonsági mentést tartalmazza, hanem az összes növekményes biztonsági mentést is.
+Ha a megadott `BackupFolderPath` nem tartalmaz teljes biztonsági mentést, akkor a `RestoreAsync` hívása `FabricMissingFullBackupException` dobni.
+Azt is eldöntheti, `ArgumentException`, ha `BackupFolderPath` a növekményes biztonsági mentések hibás láncával rendelkezik.
+Ha például tartalmazza a teljes biztonsági mentést, az első növekményes és a harmadik növekményes biztonsági mentést, de a második növekményes biztonsági mentést.
 
 > [!NOTE]
-> Alapértelmezés szerint a RestorePolicy biztonságos van beállítva.  Ez azt jelenti, hogy a `RestoreAsync` API-ArgumentException sikertelen lesz, ha azt észleli, hogy a biztonsági mentési mappát tartalmaz olyan állapotban, amely régebbi, mint vagy egyenlő, mint az állapot, a replika található.  `RestorePolicy.Force` a biztonsági ellenőrzés kihagyására használható. Ennek részeként megadott `RestoreDescription`.
+> A RestorePolicy alapértelmezés szerint biztonságos értékre van állítva.  Ez azt jelenti, hogy a `RestoreAsync` API a ArgumentException sikertelen lesz, ha azt észleli, hogy a biztonsági mentési mappa olyan állapotot tartalmaz, amely régebbi vagy egyenlő, mint a replikában található állapot.  ezt a biztonsági ellenőrzés kihagyása `RestorePolicy.Force` használható. Ez a `RestoreDescription`részeként van megadva.
 > 
 
-## <a name="deleted-or-lost-service"></a>A törölt vagy elveszett szolgáltatás
-Ha eltávolít egy szolgáltatás, kell először újra a szolgáltatás létrehozása előtt az adatok visszaállíthatók.  Fontos, ugyanazt a konfigurációt, például a particionálási sémát, hogy az adatokat zökkenőmentesen visszaállíthatók szolgáltatás létrehozásához.  A szolgáltatás működik, az API-t az adat-visszaállítás után (`OnDataLossAsync` fent) meg kell hívni a szolgáltatás minden egyes partíción van. Egyik módszere e használatával [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) minden partícióján.  
+## <a name="deleted-or-lost-service"></a>Törölt vagy elveszett szolgáltatás
+Ha eltávolít egy szolgáltatást, először újra létre kell hoznia a szolgáltatást az adatgyűjtés előtt.  Fontos, hogy a szolgáltatást ugyanazzal a konfigurációval hozza létre, mint például a particionálási séma, így az Adathelyreállítás zökkenőmentesen visszaállítható.  A szolgáltatás bekapcsolása után a szolgáltatás minden partícióján meg kell hívni az API-t, amelyről vissza kell állítani az adatvisszaállítást (`OnDataLossAsync`). Ennek a megvalósításának egyik módja a [FabricClient. TestManagementClient. StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) használata minden partíción.  
 
-Ettől kezdve a megvalósítás ugyanaz, mint a fenti forgatókönyv. Mindegyik partíció kell a legújabb fontos biztonsági másolat visszaállítása a külső tárolóból. Egyik kikötés az, hogy a Partícióazonosító előfordulhat, hogy most már megváltoztak, mivel a runtime partíciót hoz létre azonosítók dinamikusan. Így a szolgáltatás kell tárolnia a megfelelő partíció információ és a szolgáltatás neve helyes legutóbbi biztonsági másolatból történő visszaállítását az egyes partíciók azonosítására.
+Ettől a ponttól kezdve a megvalósítás ugyanaz, mint a fenti forgatókönyv. Minden partíciónak vissza kell állítania a biztonsági mentést a külső tárolóból. Ennek egyik kikötése, hogy a partíció-azonosító mostantól módosult, mivel a futtatókörnyezet dinamikusan hozza létre a partíciós azonosítókat. Ennek megfelelően a szolgáltatásnak meg kell tárolnia a megfelelő partíciós adatokat és a szolgáltatás nevét, hogy azonosítsa a megfelelő legutóbbi biztonsági mentést, amelyet az egyes partíciók esetében vissza kell állítani.
 
 > [!NOTE]
-> Nem javasoljuk, hogy használjon `FabricClient.ServiceManager.InvokeDataLossAsync` az egyes partíciókon az egész szolgáltatás óta, előfordulhat, hogy sérült a fürt állapota visszaállítására.
+> A teljes szolgáltatás visszaállításához nem ajánlott a `FabricClient.ServiceManager.InvokeDataLossAsync` használata az egyes partíciók esetében, mivel ez megsértheti a fürt állapotát.
 > 
 
-## <a name="replication-of-corrupt-application-data"></a>Sérült alkalmazás-adatok replikálása
-Ha az újonnan üzembe helyezett alkalmazás frissítése egy hiba, amely az adatok sérülését okozhatja. Alkalmazásfrissítések például indítson el egy megbízható szótárban tároló minden telefon száma rekord frissítése egy érvénytelen körzetszámmal együtt.  Ebben az esetben az érvénytelen telefonszámmal replikálja, mivel a Service Fabric még nem ismeri, hogy az adatokat tárol.
+## <a name="replication-of-corrupt-application-data"></a>Sérült alkalmazásadatok replikálása
+Ha az újonnan telepített alkalmazás frissítése hibát tartalmaz, az adatsérülést eredményezhet. Előfordulhat például, hogy egy alkalmazás frissítése megkezdi az összes telefonszám rekordjának frissítését egy olyan megbízható szótárban, amely érvénytelen körzetszámmal rendelkezik.  Ebben az esetben a rendszer replikálja az érvénytelen telefonszámokat, mivel Service Fabric nem ismeri a tárolt adatok természetét.
 
-Az első teendő után, például egy súlyos hiba adatsérülést okozó észleli, hogy a szolgáltatást az alkalmazás szintjén rögzítése, és ha lehetséges, frissítse a verzióra, az alkalmazás-szabályzat, amely nem rendelkezik a bejelentett hiba.  Azonban akkor is, a webszolgáltatás kódjához rögzített, az adatok továbbra is lehetséges sérült, és így előfordulhat, hogy kell az adatokat vissza kell állítani.  Ezekben az esetekben nem elegendő lehet visszaállítani a legújabb biztonsági mentés óta a legújabb biztonsági mentések is valószínűleg sérült.  Így hogy keresse meg a legutóbbi biztonsági mentés előtt az adatok sérültek van végrehajtott.
+Az ilyen, az adatsérülést okozó kirívó hibák észlelése után az első teendő a szolgáltatás alkalmazási szinten történő rögzítése, és ha lehetséges, az alkalmazás kódjának olyan verziójára kell frissítenie, amely nem rendelkezik a hibával.  Azonban még a szolgáltatási kód rögzítése után is előfordulhat, hogy az adatmennyiség sérült, és így előfordulhat, hogy vissza kell állítani az adatmennyiséget.  Ilyen esetekben előfordulhat, hogy nem elegendő a legújabb biztonsági mentés visszaállítása, mert a legújabb biztonsági másolatok is sérültek lehetnek.  Ezért meg kell találnia az utolsó biztonsági mentést, amelyet az adatvesztés előtt hozott létre.
 
-Ha nem biztos abban, hogy melyik biztonsági mentések sérültek, sikerült új Service Fabric-fürt üzembe helyezése és az érintett partíciók csakúgy, mint a fenti biztonsági mentések visszaállítása "Törölt vagy elveszett szolgáltatás" forgatókönyv.  Minden egyes partíción elindítani a biztonsági mentésekből a legutóbbi, a legkevésbé. Miután megtalálta a sérülés nem rendelkező biztonsági másolat, áthelyezés/törlése minden biztonsági mentés a partíció, amely újabb (mint a biztonsági mentés) is. Ismételje meg ezt a folyamatot mindegyik partíció. Most, hogy amikor `OnDataLossAsync` nevezzük az éles fürtöt a partíción a legutóbbi biztonsági mentés található a külső tárban kell figyelembe venni a fenti eljárás szerint.
+Ha nem tudja biztosan, hogy mely biztonsági másolatok sérültek, telepíthet egy új Service Fabric fürtöt, és visszaállíthatja az érintett partíciók biztonsági másolatait ugyanúgy, mint a fenti "törölt vagy elveszett szolgáltatás" forgatókönyvet.  Minden partíció esetében indítsa el a legutóbbi biztonsági másolatok visszaállítását a legutóbb a legkevésbé. Ha olyan biztonsági mentést talál, amely nem rendelkezik a sérüléssel, helyezze át vagy törölje a partíció összes olyan biztonsági másolatát, amely ennél frissebb (a biztonsági mentéstől számítva). Ismételje meg ezt a folyamatot az egyes partíciók esetében. Ha a `OnDataLossAsync` az éles fürtben található partíción hívja meg, akkor a fenti folyamat a külső tárolóban található utolsó biztonsági mentést fogja kiválasztani.
 
-A lépéseket, a "törölt vagy elveszett szolgáltatás" szakasz a szolgáltatás állapotát a állapotának visszaállításához, mielőtt a buggy kód sérült állapota használható.
+A "törölt vagy elveszett szolgáltatás" szakaszban leírt lépések segítségével visszaállíthatja a szolgáltatás állapotát az állapotba, mielőtt a hibás kód megsérült az állapot.
 
 Vegye figyelembe:
 
-  - Visszaállításkor, esetén megvan az esélye, hogy a visszaállítandó biztonsági másolat régebbi, mint a partíció állapota-e előtt az adatok elvesznek. Ez az oka állítsa vissza a lehető legtöbb adatot helyreállítása végső megoldásként csak.
-  - Lehet, hogy a karakterlánc, amely a biztonsági mentési mappa elérési útjának és az olyan fájlok elérési útjait a biztonsági mentési mappába függően FabricDataRoot elérési útjának és az alkalmazástípus nevének hossza 255 karakternél. Egy .NET-metódusokat, ez okozhat, például `Directory.Move`állíthatunk munkába, a `PathTooLongException` kivétel. Egy megkerülő megoldás az, hogy közvetlenül hívó kernel32 API-k, például `CopyFile`.
+  - A visszaállítás során előfordulhat, hogy a visszaállítani kívánt biztonsági mentés régebbi, mint a partíció állapota az adatvesztés előtt. Emiatt csak a lehető legkevesebb adattal állíthatja helyre a helyreállítást.
+  - A biztonsági mentési mappa elérési útját és a biztonsági mentési mappában található fájlok elérési útját jelölő karakterlánc 255 karakternél hosszabb lehet a FabricDataRoot elérési útjának és az alkalmazás típusának nevétől függően. Ez néhány .NET-metódust (például `Directory.Move`) okozhat a `PathTooLongException` kivétel eldobásához. Az egyik megkerülő megoldás az, hogy közvetlenül hívja a Kernel32 API-kat, például a `CopyFile`.
 
-## <a name="back-up-and-restore-reliable-actors"></a>Biztonsági mentése és visszaállítása a Reliable Actors
+## <a name="back-up-and-restore-reliable-actors"></a>Biztonsági mentés és visszaállítás Reliable Actors
 
 
-A Reliable Actors-keretrendszer Reliable Services épül. A ActorService, amely a actor(s) egy állapotalapú megbízható szolgáltatást. Ezért a biztonsági mentési és helyreállítási funkciókat a Reliable Services elérhető is rendelkezésre áll a Reliable Actors (kivéve, amelyek adott állapotszolgáltató viselkedések). Mivel a biztonsági másolatokat partíciónkénti alapon, állapotai összes szereplő, hogy a partíció készül biztonsági másolat (visszaállítás hasonló, és partíciónkénti alapon történik). Biztonsági mentési és visszaállítási végre, a szolgáltatás tulajdonosa hozzon létre egy egyéni aktor service osztályt, amely ActorService osztályból származik kell, és tegye hasonló az előző szakaszokban fentieknek megfelelően a Reliable Services biztonsági mentési és visszaállítási.
+A Reliable Actors-keretrendszer Reliable Servicesra épül. A ActorService, amely a színész (eke) t tárolja, egy állapot-nyilvántartó megbízható szolgáltatás. Ezért a Reliable Services elérhető összes biztonsági mentési és visszaállítási funkció elérhető a Reliable Actors számára is (kivéve az állami szolgáltató által meghatározott viselkedéseket). Mivel a biztonsági mentések particionálás alapján történnek, a partíción lévő összes szereplő állapotáról biztonsági mentés készül (és a visszaállítás hasonló, és a partíciók alapján történik). A biztonsági mentés/visszaállítás végrehajtásához a szolgáltatás tulajdonosának létre kell hoznia egy egyéni Actor Service osztályt, amely a ActorService osztályból származik, majd az előző szakaszokban leírtak szerint a Reliable Services hasonló biztonsági mentést/visszaállítást végez.
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -199,14 +190,14 @@ class MyCustomActorService : ActorService
 }
 ```
 
-Amikor létrehoz egy egyéni aktor service osztályt, szeretne regisztrálni, amely, valamint az aktor regisztrálásakor.
+Egyéni színészi szolgáltatási osztály létrehozásakor regisztrálnia kell azt is a színész regisztrálása során.
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
     (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
-Az alapértelmezett állapotba szolgáltató a Reliable actors `KvsActorStateProvider`. Alapértelmezés szerint nincs engedélyezve a növekményes biztonsági mentés `KvsActorStateProvider`. Engedélyezheti a növekményes biztonsági mentés létrehozásával `KvsActorStateProvider` a megfelelő beállítás a konstruktorban és átadásával ActorService konstruktor az alábbi kódrészletben látható módon:
+Az Reliable Actors alapértelmezett állapot-szolgáltatója `KvsActorStateProvider`. A növekményes biztonsági mentés alapértelmezés szerint nincs engedélyezve a `KvsActorStateProvider`számára. A növekményes biztonsági mentést úgy is engedélyezheti, ha `KvsActorStateProvider` létrehozásával létrehozza a megfelelő beállítást a konstruktorában, majd átadja azt a ActorService konstruktornak a következő kódrészletben látható módon:
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -222,51 +213,51 @@ class MyCustomActorService : ActorService
 }
 ```
 
-A növekményes biztonsági mentés engedélyezése után a növekményes biztonsági mentés FabricMissingFullBackupException az alábbi okok egyike sikertelen lehet, és egy teljes biztonsági mentési igénybe véve a növekményes biztonsági másolat előtt kell:
+A növekményes biztonsági mentés engedélyezése után a növekményes biztonsági mentés a következő okok egyike miatt meghiúsulhat a FabricMissingFullBackupException, és teljes biztonsági mentést kell készítenie a növekményes biztonsági mentés (ok) készítése előtt:
 
-  - A replika elsődleges vált, mert soha nem tartott egy teljes biztonsági mentés.
-  - A naplórekordok némelyike csonkolt óta a legutóbbi biztonsági mentés készült.
+  - A replika soha nem készített teljes biztonsági mentést, mert az elsődleges volt.
+  - A naplózási rekordok némelyike a legutóbbi biztonsági mentés óta csonkítva lett.
 
-Ha engedélyezve van a növekményes biztonsági mentést, `KvsActorStateProvider` a napló-rekordok kezelése nem használ. kör alakú puffer, és rendszeres időközönként csonkolja azt. Ha nincs biztonsági mentés készül a felhasználó egy időszak 45 perc, a rendszer automatikusan levágja a rekordok naplózása. Ez az időtartam alatt megadásával konfigurálható `logTruncationIntervalInMinutes` a `KvsActorStateProvider` konstruktor (hasonlóan a növekményes biztonsági mentés engedélyezése). Ha az elsődleges replikának továbbítania kell egy másik replikára készítését minden adat küldése a rekordok naplózása is első csonkolva.
+Ha a növekményes biztonsági mentés engedélyezve van, `KvsActorStateProvider` nem használ körkörös puffert a naplók kezeléséhez, és rendszeresen csonkolja azt. Ha a felhasználó nem készít biztonsági másolatot a 45 perces időszakra, a rendszer automatikusan csonkolja a napló rekordjait. Ezt az időközt úgy konfigurálhatja, hogy a `KvsActorStateProvider` konstruktorban `logTruncationIntervalInMinutes` megadásával (a növekményes biztonsági mentés engedélyezésekor). A naplóbejegyzések akkor is lerövidítve jelenhetnek meg, ha az elsődleges replika egy újabb replikát kell létrehoznia az összes adatai elküldésével.
 
-Egy biztonsági mentési láncolatát való visszaállítása során, a Reliable Services hasonló a BackupFolderPath tartalmaznia kell a teljes biztonsági mentés és mások tartalmazó alkönyvtárakat, amely tartalmazza a növekményes biztonsági másolat egy alkönyvtár alkönyvtárak. A visszaállítási API FabricException váltja a megfelelő hibaüzenet jelenik meg, ha a biztonsági mentési láncolatát érvényesítése sikertelen. 
-
-> [!NOTE]
-> `KvsActorStateProvider` jelenleg figyelmen kívül hagyja a beállítást RestorePolicy.Safe. Ez a funkció támogatása tervezünk egy soron következő kiadásban.
-> 
-
-## <a name="testing-back-up-and-restore"></a>Tesztelés biztonsági mentése és visszaállítása
-Fontos győződjön meg arról, hogy a kritikus fontosságú adatokat készül biztonsági másolat, és a vissza tudja állítani. Ezt megteheti meghívásával a `Start-ServiceFabricPartitionDataLoss` parancsmagot a PowerShellben, amely egy adott partíció annak megállapítására, hogy az adatok biztonsági mentése és visszaállítása funkciók esetében a szolgáltatás elvárt működésének adatvesztés lehet szükség.  Egyben lehetővé teszi a programozott módon adatvesztés előidézése és visszaállítása, valamint a kapcsolódó eseményre.
+A Reliable Serviceshoz hasonló biztonsági mentési láncból történő visszaállításkor a BackupFolderPath a teljes biztonsági mentést tartalmazó alkönyvtárral és a növekményes biztonsági mentés (eke) t tartalmazó alkönyvtárakkal rendelkező alkönyvtárakat is tartalmaznia kell. Ha a biztonsági mentési lánc ellenőrzése sikertelen, a Restore API a megfelelő hibaüzenettel ellátott FabricException fog dobni. 
 
 > [!NOTE]
-> Keresse meg a biztonsági mentés egy minta megvalósítását, és a GitHub webes hivatkozás alkalmazásban funkciójának helyreállításához. Tekintse meg a `Inventory.Service` szolgáltatás további részletekért.
+> `KvsActorStateProvider` jelenleg figyelmen kívül hagyja a RestorePolicy. Safe beállítást. A szolgáltatás támogatását egy közelgő kiadásban tervezték meg.
+> 
+
+## <a name="testing-back-up-and-restore"></a>A biztonsági mentés és a visszaállítás tesztelése
+Fontos ellenőrizni, hogy a kritikus fontosságú adatok biztonsági mentése folyamatban van-e, és a rendszerből állítható vissza. Ezt úgy teheti meg, hogy a PowerShellben meghívja a `Start-ServiceFabricPartitionDataLoss` parancsmagot, amely adatvesztést okozhat egy adott partíción annak ellenőrzéséhez, hogy a szolgáltatás adatbiztonsági mentési és visszaállítási funkciója a várt módon működik-e.  Az is lehetséges, hogy programozott módon meghívja az adatvesztést és a visszaállítást az adott eseményből is.
+
+> [!NOTE]
+> Megtalálhatja a biztonsági mentési és visszaállítási funkciók megvalósítását a GitHubon elérhető webes hivatkozás alkalmazásban. További részletekért tekintse meg a `Inventory.Service` szolgáltatást.
 > 
 > 
 
-## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Technikai részletek: további részleteket a biztonsági mentés és visszaállítás
-Íme néhány további részleteket a biztonsági mentés és visszaállítás.
+## <a name="under-the-hood-more-details-on-backup-and-restore"></a>A motorháztető alatt: további részletek a biztonsági mentésről és a visszaállításról
+Íme néhány további információ a biztonsági mentésről és a visszaállításról.
 
-### <a name="backup"></a>Backup
-A Reliable State Manager lehetővé teszi az alkalmazáskonzisztens biztonsági másolatok létrehozása hogy nem minden olvasási vagy írási műveleteket. Ehhez használja egy ellenőrzőpont- és naplófájlok mechanizmus.  A Reliable State Manager intelligens (egyszerűsített) ellenőrzőpontok bizonyos időpontokban, a tranzakciós napló kiürítése informatikusokra és javíthatják a visszaállítási időt vesz igénybe.  Amikor `BackupAsync` nevezzük, a Reliable State Manager az összes megbízható objektumok arra utasítja a legújabb ellenőrzőpont-fájlok másolása egy helyi biztonsági mentési mappába.  Ezt követően a Reliable State Manager másolja át az összes naplófájl rögzíti, kezdve a "kezdő"mutatót a legújabb naplórekord a biztonsági mentési mappába.  Legfeljebb legújabb naplórekord naplórekordok szerepelnek a biztonsági mentés és a Reliable State Manager megőrzi az írási előre naplózást, mivel a Reliable State Manager garantálja a összes tranzakciók, amelyek véglegesített (`CommitAsync` sikeresen adott vissza ) a biztonsági mentés szerepelnek.
+### <a name="backup"></a>Biztonsági mentés
+A megbízható állapot-kezelő lehetővé teszi, hogy konzisztens biztonsági másolatokat hozzon létre az olvasási vagy írási műveletek blokkolása nélkül. Ehhez az ellenőrzőpont-és a naplózási adatmegőrzési mechanizmust használja.  A megbízható állapot-kezelő olyan homályos (könnyűsúlyú) ellenőrzőpontokat tart bizonyos pontokon, amelyekkel a tranzakciós naplóból kikényszerítheti a nyomást, és javíthatja a helyreállítási időpontokat.  `BackupAsync` hívásakor a megbízható State Manager arra utasítja az összes megbízható objektumot, hogy a legújabb ellenőrzőpont-fájljaikat egy helyi biztonsági mentési mappába másolja.  Ezután a megbízható állapot-kezelő az összes naplózási rekordot átmásolja, a "Start" mutatótól kezdve a legújabb naplóig a biztonsági mentési mappába.  Mivel a biztonsági mentés tartalmazza az összes naplózási rekordot a legutóbbi naplóba, és a megbízható állapot kezelője megőrzi a szükséges írási naplózást, a megbízható állapot-kezelő garantálja, hogy a biztonsági mentés tartalmazza az összes véglegesített tranzakciót (`CommitAsync` sikeresen visszaadott).
 
-Bármely tranzakció, amely után `BackupAsync` május lett meghívva, vagy nem lehet a biztonsági mentéshez.  Ha a helyi biztonsági mentési mappa feltöltődtek a Platform (vagyis helyi biztonsági másolat befejeződött futásidőben), a szolgáltatás biztonsági mentési visszahívási meghívásainak.  A visszahívási felelős a biztonsági mentési mappa áthelyezése – például az Azure Storage külső helyre.
+Minden olyan tranzakció, amely a `BackupAsync` után véglegesítve lett, vagy nem lehet a biztonsági másolatban.  Miután a platform kitöltötte a helyi biztonsági mentési mappát (azaz a helyi biztonsági mentést a futtatókörnyezet végezte el), a rendszer meghívja a szolgáltatás biztonsági mentési visszahívását.  A visszahívás feladata, hogy a biztonsági mentési mappát egy külső helyre, például az Azure Storage-ba helyezze át.
 
 ### <a name="restore"></a>Visszaállítás
-A Reliable State Manager lehetővé teszi a használatával állítsa vissza biztonsági másolatból a `RestoreAsync` API-t.  
-A `RestoreAsync` metódust `RestoreContext` csak belül nem hívható a `OnDataLossAsync` metódust.
-A logikai által visszaadott `OnDataLossAsync` azt jelzi, hogy a szolgáltatás állapotában visszaállítása egy külső forrásból.
-Ha a `OnDataLossAsync` igaz értéket ad vissza, a Service Fabric újra létrehozza az összes többi az elsődleges replika. A Service Fabric biztosítja, hogy replikákat, amelyek megkapják `OnDataLossAsync` elsődleges szerepkörre váltson első hívás, de állapota nem biztosított olvassa vagy állapotának írása.
-Ez azt jelenti, hogy a statefulservice-ből szolgáltatást bevezetők részére, `RunAsync` nem lesz meghívva, amíg `OnDataLossAsync` sikeresen befejeződik.
-Ezt követően `OnDataLossAsync` az új elsődleges akkor kell meghívni.
-Mindaddig, amíg a szolgáltatás fejezheti be ez az API sikeresen (IGAZ vagy hamis értéket visszaadó), és végül a releváns újrakonfigurálása, az API-t fog tartani hívott egyenként.
+A megbízható állapot-kezelő lehetővé teszi a biztonsági másolatból való visszaállítást a `RestoreAsync` API használatával.  
+A `RestoreContext` `RestoreAsync` metódusa csak a `OnDataLossAsync` metódusban hívható meg.
+A `OnDataLossAsync` által visszaadott logikai érték azt jelzi, hogy a szolgáltatás visszaállította-e az állapotát egy külső forrásból.
+Ha a `OnDataLossAsync` igaz értéket ad vissza, akkor Service Fabric újraépíti az összes többi replikát ebből az elsődlegesből. Service Fabric biztosítja, hogy a rendszer `OnDataLossAsync` hívja az elsődleges szerepkörre, de ne kapjon olvasási állapotot vagy írási állapotot.
+Ez azt jelenti, hogy az StatefulService-végrehajtók esetében a `RunAsync` nem lesz meghívva, amíg a `OnDataLossAsync` sikeresen be nem fejeződik.
+Ezt követően a rendszer meghívja a `OnDataLossAsync` az új elsődlegesen.
+Amíg egy szolgáltatás sikeresen befejezi ezt az API-t (igaz vagy hamis értéket ad vissza), és befejezi a megfelelő újrakonfigurálást, az API-t a rendszer egyszerre fogja hívni.
 
-`RestoreAsync` először az elsődleges replika, a hívott teljes meglévő állapota miatt növekedhet. A Reliable State Manager ezután a megbízható objektumok, amelyek szerepelnek a biztonsági mentési mappát hoz létre. Ezt követően a megbízható objektumok visszaállítása az ellenőrzőpontok a biztonsági mentési mappában vannak utasította. Végül a Reliable State Manager állítja helyre a saját állapota a biztonsági mentési mappa log rekordjai és helyreállítást hajt végre. A helyreállítási folyamat részeként a sértették meg a biztonsági mentési mappa rekordok naplózása "kiindulási pontot" kezdve műveletek megbízható objektumokhoz játssza vissza. Ez a lépés biztosítja, hogy a helyreállított állapot nem konzisztens.
+`RestoreAsync` először a meghívott elsődleges replika összes meglévő állapotát eldobja. Ezután a megbízható állapot-kezelő létrehozza a biztonsági mentési mappában található összes megbízható objektumot. Ezután a megbízható objektumokat a rendszer arra utasítja, hogy a biztonsági mentési mappában lévő ellenőrzőpontok alapján állítsa vissza. Végül a megbízható állapot-kezelő a biztonsági mentési mappában található naplókból helyreállítja a saját állapotát, és végrehajtja a helyreállítást. A helyreállítási folyamat részeként a rendszer a biztonsági mentési mappában lévő véglegesített naplókat tartalmazó "kezdőpont" kezdetű műveleteket a megbízható objektumokra játssza újra. Ez a lépés biztosítja, hogy a helyreállított állapot konzisztens legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
   - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
-  - [A Reliable Services a rövid útmutató](service-fabric-reliable-services-quick-start.md)
-  - [A Reliable Services-értesítések](service-fabric-reliable-services-notifications.md)
-  - [A Reliable Services-konfiguráció](service-fabric-reliable-services-configuration.md)
-  - [A Reliable Collections – fejlesztői referencia](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
+  - [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
+  - [Reliable Services konfiguráció](service-fabric-reliable-services-configuration.md)
+  - [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   - [Rendszeres biztonsági mentés és visszaállítás az Azure Service Fabricben](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

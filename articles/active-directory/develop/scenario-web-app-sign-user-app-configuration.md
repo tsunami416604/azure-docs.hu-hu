@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fe845fca4a50828cabbf6c360cb9bc65dd20ae7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423529"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -34,8 +34,8 @@ A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a k
 | Platform | Részletes ismertetés | Leírás |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Microsoft Authentication Library (MSAL) a Javához. Jelenleg nyilvános előzetes verzióban érhető el. |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL a Pythonhoz. Jelenleg nyilvános előzetes verzióban érhető el. |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python-webalkalmazások támogatása |
 
 Válassza ki az Önt érdeklő platformhoz tartozó lapot:
 
@@ -210,7 +210,7 @@ Az inicializálási kód a platformtól függően eltérő. ASP.NET Core és ASP
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert `[Authorize]` attribútuma van a vezérlőkön vagy a vezérlő műveletein. Ez az attribútum ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e. Az alkalmazást inicializáló kód a Startup.cs fájlban található. 
+ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert `[Authorize]` attribútuma van a vezérlőkön vagy a vezérlő műveletein. Ez az attribútum ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e. Az alkalmazást inicializáló kód a Startup.cs fájlban található.
 
 A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával történő hitelesítés hozzáadásához hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
 
@@ -221,7 +221,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
 
 A következő kód érhető el a [Startup. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34).
 
-```CSharp
+```csharp
 public class Startup
 {
  ...
@@ -256,7 +256,7 @@ A konfiguráció mellett a `AddMicrosoftIdentityPlatformAuthentication`hívásak
 
 Az OpenId Connect middleware-események nyomon követése segíthet a webalkalmazások hibakeresésében, ha a hitelesítés nem működik. A `true` `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` beállítása megmutatja, hogyan történik az információk kifejlesztése a ASP.NET Core köztes middleware-készlet alapján, mivel a HTTP-válaszból a `HttpContext.User`felhasználó identitására kerül sor.
 
-```CSharp
+```csharp
 /// <summary>
 /// Add authentication with the Microsoft identity platform.
 /// This method expects the configuration file to have a section named "AzureAd" with the necessary settings to initialize authentication options.
@@ -321,7 +321,7 @@ A `AadIssuerValidator` osztály lehetővé teszi, hogy a jogkivonat kiállítój
 
 A ASP.NET webalkalmazás és webes API-k hitelesítéséhez kapcsolódó kód a [App_Start/Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61) fájlban található.
 
-```CSharp
+```csharp
  public void ConfigureAuth(IAppBuilder app)
  {
   app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -345,7 +345,7 @@ A ASP.NET webalkalmazás és webes API-k hitelesítéséhez kapcsolódó kód a 
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert egy szűrőt valósít meg, amely elfogja az egyes HTTP-válaszokat. A Java-webalkalmazások rövid útmutatójában ez a szűrő `AuthFilter` `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`. 
+A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert egy szűrőt valósít meg, amely elfogja az egyes HTTP-válaszokat. A Java-webalkalmazások rövid útmutatójában ez a szűrő `AuthFilter` `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`.
 
 A szűrő feldolgozza a OAuth 2,0 engedélyezési kód folyamatát, és ellenőrzi, hogy a felhasználó hitelesítve van-e (`isAuthenticated()` metódus). Ha a felhasználó nincs hitelesítve, kiszámítja az Azure AD-engedélyezési végpontok URL-címét, és átirányítja a böngészőt erre az URI-ra.
 

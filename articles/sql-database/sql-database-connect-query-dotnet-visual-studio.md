@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: b9bc7d077acd3e6e3716cf0a012205e6de54a4b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/31/2019
+ms.openlocfilehash: b37430ed7f23088c9bcacd555d68e484310de700
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827055"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562153"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rövid útmutató: a .NET C# és a Visual Studio használata Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
 
@@ -101,7 +101,6 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
                        Console.WriteLine("\nQuery data example:");
                        Console.WriteLine("=========================================\n");
                        
-                       connection.Open();       
                        StringBuilder sb = new StringBuilder();
                        sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
                        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
@@ -111,6 +110,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
    
                        using (SqlCommand command = new SqlCommand(sql, connection))
                        {
+                           connection.Open();
                            using (SqlDataReader reader = command.ExecuteReader())
                            {
                                while (reader.Read())
@@ -136,7 +136,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 1. Az alkalmazás futtatásához válassza a **hibakeresés** > a **hibakeresés elindítása**lehetőséget, vagy kattintson az eszköztáron az **Indítás** gombra, vagy nyomja le az **F5**billentyűt.
 1. Győződjön meg arról, hogy az adatbázisból az első 20 kategória/termék sor van visszaadva, majd az alkalmazás ablakának bezárásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [csatlakozhat egy Azure SQL Database-adatbázishoz a .net Core használatával](sql-database-connect-query-dotnet-core.md) Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).

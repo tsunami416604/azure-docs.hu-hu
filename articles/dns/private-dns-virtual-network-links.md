@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961198"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646761"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Mi az a virtuális hálózati kapcsolat?
 
@@ -31,9 +31,9 @@ Egy privát DNS-zónának több regisztrációs virtuális hálózata is lehet, 
 Ha egy magánhálózati DNS-zónában hoz létre virtuális hálózati kapcsolatot, és nem engedélyezi a DNS-rekordok automatikus regisztrálását, a virtuális hálózatot csak feloldási virtuális hálózatként kezeli a rendszer. Az ilyen hálózatokban üzembe helyezett virtuális gépek DNS-rekordjait a rendszer nem hozza létre automatikusan a csatolt privát DNS-zónában. Az ilyen hálózatban üzembe helyezett virtuális gépek azonban sikeresen le tudják kérdezni a DNS-rekordokat a magánhálózati DNS-zónából. Ezek a rekordok manuálisan hozhatók létre, vagy más virtuális hálózatokból is feltölthetők, amelyek regisztrációs hálózatként vannak csatolva a magánhálózati DNS-zónával.
 Egy privát DNS-zónának több feloldási virtuális hálózata lehet, és a virtuális hálózat több feloldási zónával is rendelkezhet.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
-Ha meg szeretné tudni, hogy hány regisztrációs és feloldási hálózattal rendelkezik, a magánhálózati DNS-zónákra mutató hivatkozásokat lásd: [Azure DNS korlátok](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Ha meg szeretné tudni, hogy hány regisztrációs és feloldási hálózattal rendelkezik, a magánhálózati DNS-zónákra mutató hivatkozásokat lásd: [Azure DNS korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 
@@ -47,7 +47,7 @@ Ha meg szeretné tudni, hogy hány regisztrációs és feloldási hálózattal r
 
 * Ha töröl egy virtuális hálózatot, a rendszer a különböző privát DNS-zónákban lévő összes virtuális hálózati kapcsolatot és automatikusan regisztrált DNS-rekordot automatikusan törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan kapcsolhat egy virtuális hálózatot egy magánhálózati DNS-zónához [Azure Portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) használatával
 

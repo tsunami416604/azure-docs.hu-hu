@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c1d7c8cc4b50682a74ac88b2113f0d44ebc55199
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595709"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644715"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Kvóták és korlátok módosítása a Azure Data Lake Analyticsban
 
@@ -58,7 +58,7 @@ A fiókban egyszerre futtatható feladatok maximális száma. Ezen érték felet
 
 ## <a name="increase-maximum-quota-limits"></a>Maximális kvóták korlátozása
 
-Az Azure-korlátokkal kapcsolatos további információkért tekintse meg az [Azure-szolgáltatásokra vonatkozó korlátozások dokumentációját](../azure-subscription-service-limits.md#data-lake-analytics-limits).
+Az Azure-korlátokkal kapcsolatos további információkért tekintse meg az [Azure-szolgáltatásokra vonatkozó korlátozások dokumentációját](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-analytics-limits).
 
 1. Nyisson meg egy támogatási kérést Azure Portalban.
 

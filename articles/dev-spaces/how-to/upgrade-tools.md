@@ -3,14 +3,14 @@ title: Az Azure dev Spaces-eszközök frissítése
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ismerje meg, hogyan frissítheti az Azure dev Spaces parancssori eszközeit, a Visual Studo-kódokat és a Visual Studio-bővítményt
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: 6ad28a5da05cf77cfaa834ed9752daefeb5f4fdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 07d55689ac94a865527f4b595765d67b28ddb97a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438418"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Az Azure dev Spaces-eszközök frissítése
 
@@ -41,6 +41,6 @@ A többi bővítményhez és frissítéshez hasonlóan a Visual Studio is értes
 
 Az eszközök a Visual Studióban való frissítéséhez válassza az **eszközök > bővítmények és frissítések** menüpontot, és a bal oldalon válassza a **frissítések**lehetőséget. Keresse meg a **Kubernetes Visual Studio-eszközöket** , és kattintson a **frissítés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az új eszközöket új fürt létrehozásával. Próbálja ki a gyors útmutatókat és oktatóanyagokat az [Azure dev Spaces](/azure/dev-spaces)webhelyen.

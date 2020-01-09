@@ -1,25 +1,16 @@
 ---
-title: Service Fabric szolgáltatások skálázhatósága | Microsoft Docs
-description: A Service Fabric szolgáltatások méretezésének ismertetése
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric szolgáltatások skálázhatósága
+description: Ismerje meg az Azure Service Fabric skálázását, valamint az alkalmazások méretezésének különböző módszereit.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035925"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610012"
 ---
 # <a name="scaling-in-service-fabric"></a>Méretezés Service Fabric
 Az Azure Service Fabric használatával könnyedén méretezhető alkalmazások hozhatók létre egy fürt csomópontjain található szolgáltatások, partíciók és replikák kezelésével. Számos számítási feladat ugyanazon a hardveren való futtatása lehetővé teszi az erőforrások maximális kihasználtságát, azonban rugalmasságot is biztosít a munkaterhelések skálázása szempontjából. Ez a Channel 9 videó azt ismerteti, hogyan hozhat létre méretezhető Service-alkalmazásokat:
@@ -36,7 +27,7 @@ A méretezés Service Fabric számos különböző módon valósítható meg:
 6. Skálázás a fürterőforrás-kezelő metrikái használatával
 
 ## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Skálázás állapot nélküli szolgáltatási példányok létrehozásával vagy eltávolításával
-A Service Fabricon belüli méretezésének egyik legegyszerűbb módja az állapot nélküli szolgáltatások. Állapot nélküli szolgáltatás létrehozásakor lehetőség van a definiálására `InstanceCount`. `InstanceCount`meghatározza, hogy az adott szolgáltatás kódjának hány futó példánya legyen létrehozva a szolgáltatás indításakor. Tegyük fel például, hogy a fürtben 100 csomópont található. Azt is tegyük fel `InstanceCount` , hogy a szolgáltatás 10-mel lett létrehozva. A Futtatás során a kód 10 futó példánya túlságosan elfoglalt lehet (vagy nem elég elfoglalt). A számítási feladatok méretezésének egyik módja a példányok számának módosítása. Előfordulhat például, hogy egyes figyelési vagy felügyeleti kód a meglévő példányok számát 50-re vagy 5-re módosítja, attól függően, hogy a munkaterhelés a terhelés alapján kell-e méreteznie vagy kifogynia. 
+A Service Fabricon belüli méretezésének egyik legegyszerűbb módja az állapot nélküli szolgáltatások. Állapot nélküli szolgáltatás létrehozásakor lehetősége van egy `InstanceCount`definiálására. `InstanceCount` azt határozza meg, hogy a szolgáltatás hány futó példánya legyen létrehozva a szolgáltatás indításakor. Tegyük fel például, hogy a fürtben 100 csomópont található. Azt is tegyük fel, hogy egy szolgáltatás a 10 `InstanceCount`ával jön létre. A Futtatás során a kód 10 futó példánya túlságosan elfoglalt lehet (vagy nem elég elfoglalt). A számítási feladatok méretezésének egyik módja a példányok számának módosítása. Előfordulhat például, hogy egyes figyelési vagy felügyeleti kód a meglévő példányok számát 50-re vagy 5-re módosítja, attól függően, hogy a munkaterhelés a terhelés alapján kell-e méreteznie vagy kifogynia. 
 
 C#:
 
@@ -46,7 +37,7 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-PowerShell
+PowerShell:
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
@@ -63,7 +54,7 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-PowerShell
+PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
@@ -72,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Méretezés új nevesített szolgáltatások létrehozásával vagy eltávolításával
 Az elnevezett szolgáltatás-példány egy szolgáltatástípus egy adott példánya (lásd: [Service Fabric alkalmazás életciklusa](service-fabric-application-lifecycle.md)) a fürt egyes megnevezett alkalmazási példányain belül. 
 
-Az új elnevezett szolgáltatási példányok létrehozhatók (vagy eltávolíthatók), mivel a szolgáltatások egyre vagy kevesebben vannak elfoglalva. Ez lehetővé teszi, hogy a kérelmek több szolgáltatási példányon is elterjednek, ami általában lehetővé teszi a meglévő szolgáltatások terhelésének csökkenését. Szolgáltatások létrehozásakor a Service Fabric fürterőforrás-kezelő elosztott módon helyezi el a szolgáltatásokat a fürtben. A pontos döntéseket a fürt metrikái és [](service-fabric-cluster-resource-manager-metrics.md) egyéb elhelyezési szabályok szabályozzák. A szolgáltatások számos különböző módon hozhatók létre, de a leggyakoribbak vagy olyan rendszergazdai műveletek [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), mint például valaki, vagy a kód meghívásával. [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) `CreateServiceAsync`akár a fürtben futó más szolgáltatásokból is meghívható.
+Az új elnevezett szolgáltatási példányok létrehozhatók (vagy eltávolíthatók), mivel a szolgáltatások egyre vagy kevesebben vannak elfoglalva. Ez lehetővé teszi, hogy a kérelmek több szolgáltatási példányon is elterjednek, ami általában lehetővé teszi a meglévő szolgáltatások terhelésének csökkenését. Szolgáltatások létrehozásakor a Service Fabric fürterőforrás-kezelő elosztott módon helyezi el a szolgáltatásokat a fürtben. A pontos döntéseket a fürt [metrikái](service-fabric-cluster-resource-manager-metrics.md) és egyéb elhelyezési szabályok szabályozzák. A szolgáltatások számos különböző módon hozhatók létre, de a leggyakoribbak olyan felügyeleti műveletek, mint például a [`New-ServiceFabricService`t ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)hívó vagy a [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)kód hívása. a `CreateServiceAsync` a fürtben futó más szolgáltatásokból is meghívható.
 
 A szolgáltatások dinamikusan hozhatók létre a különféle helyzetekben, és egy közös minta. Vegyünk például egy olyan állapot-nyilvántartó szolgáltatást, amely egy adott munkafolyamatot jelöl. A munkát képviselő hívások megjelennek a szolgáltatásban, és ez a szolgáltatás végrehajtja a munkafolyamat lépéseit és a rekord előrehaladását. 
 
@@ -103,18 +94,18 @@ Vegyünk fontolóra egy olyan szolgáltatást, amely egy 0. alacsony kulccsal re
 
 <center>
 
-![Partíciós elrendezés három csomóponttal](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+![partíciós elrendezés három csomóponttal](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 Ha növeli a csomópontok számát, Service Fabric áthelyezi a meglévő replikákat. Tegyük fel például, hogy a csomópontok száma négyre nő, és a replikák újraelosztásra kerülnek. A szolgáltatás most már három replikát futtat az egyes csomópontokon, amelyek mindegyike különböző partíciókhoz tartozik. Ez lehetővé teszi a jobb erőforrás-használatot, mivel az új csomópont nem hideg. A teljesítmény általában úgy is javítja a teljesítményt, mivel az egyes szolgáltatásokhoz több erőforrás áll rendelkezésre.
 
 <center>
 
-![Partíciós elrendezés négy csomóponttal](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![partíciós elrendezés négy csomóponttal](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Skálázás a Service Fabric fürterőforrás-kezelő és metrikák használatával
-[](service-fabric-cluster-resource-manager-metrics.md) A metrikák azt ismertetik, hogy a szolgáltatások hogyan fejezik ki az erőforrások felhasználását Service Fabric. A metrikák használatával a fürterőforrás-kezelő lehetővé teszi a fürt elrendezésének átszervezését és optimalizálását. Előfordulhat például, hogy sok erőforrás van a fürtben, de előfordulhat, hogy a jelenleg munkát végző szolgáltatásoknak nem vannak lefoglalva. A metrikák használatával a fürterőforrás-kezelő átrendezheti a fürtöt, így biztosítva, hogy a szolgáltatások hozzáférhessenek a rendelkezésre álló erőforrásokhoz. 
+A [metrikák](service-fabric-cluster-resource-manager-metrics.md) azt ismertetik, hogy a szolgáltatások hogyan fejezik ki az erőforrások felhasználását Service Fabric. A metrikák használatával a fürterőforrás-kezelő lehetővé teszi a fürt elrendezésének átszervezését és optimalizálását. Előfordulhat például, hogy sok erőforrás van a fürtben, de előfordulhat, hogy a jelenleg munkát végző szolgáltatásoknak nem vannak lefoglalva. A metrikák használatával a fürterőforrás-kezelő átrendezheti a fürtöt, így biztosítva, hogy a szolgáltatások hozzáférhessenek a rendelkezésre álló erőforrásokhoz. 
 
 
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Skálázás a fürt csomópontjainak hozzáadásával és eltávolításával 
@@ -129,7 +120,7 @@ Az operációs rendszerek közötti implementációs különbségek miatt a Wind
 ## <a name="putting-it-all-together"></a>Végső összeállítás
 Nézzük meg az itt ismertetett ötleteket, és ismerkedjen meg egy példával. Vegye figyelembe a következő szolgáltatást: olyan szolgáltatást próbál létrehozni, amely címjegyzékként működik, és a neveket és a kapcsolattartási adatokat használja. 
 
-A jobb oldalon van egy csomó kérdés a skálával kapcsolatban: Hány felhasználóra lesz szüksége? Hány partner fog tárolni az egyes felhasználók? Ha az első alkalommal nem áll készen a szolgáltatás kiértékelésére, akkor nehéz lenne megállapítani. Tegyük fel, hogy egy adott partíciók számával rendelkező, egyetlen statikus szolgáltatással fog járni. A helytelen partíciók számának kiválasztásának következményei miatt később méretezési problémák merülhetnek fel. Hasonlóképpen, még akkor is, ha kiválasztja a megfelelő számú információt, előfordulhat, hogy nem rendelkezik a szükséges információkkal. Azt is megteheti, hogy a fürt alapértékét a csomópontok számának és méretének megfelelően kell eldöntenie. Általában nehéz megjósolni, hogy hány erőforrást fog használni a szolgáltatás az élettartama során. Azt is nehéz megismerni, hogy a szolgáltatás ténylegesen milyen forgalmi mintát lát. Előfordulhat például, hogy az emberek csak az első dologban veszik fel és távolítják el a kapcsolataikat, vagy lehet, hogy a nap folyamán egyenletesen oszlanak el. Ennek alapján lehetséges, hogy dinamikusan kell felskálázást végeznie. Lehet, hogy megtudhatja, hogy mikor kell felskálázást végeznie, de az is előfordulhat, hogy a szolgáltatás által használt erőforrás-felhasználás változására kell reagálnia. Ez magában foglalhatja a fürt méretének módosítását, hogy több erőforrást biztosítson, ha a meglévő erőforrások használatának átszervezése nem elég. 
+A jobb oldalon van egy csomó kérdés a skálával kapcsolatban: hány felhasználóra lesz szüksége? Hány partner fog tárolni az egyes felhasználók? Ha az első alkalommal nem áll készen a szolgáltatás kiértékelésére, akkor nehéz lenne megállapítani. Tegyük fel, hogy egy adott partíciók számával rendelkező, egyetlen statikus szolgáltatással fog járni. A helytelen partíciók számának kiválasztásának következményei miatt később méretezési problémák merülhetnek fel. Hasonlóképpen, még akkor is, ha kiválasztja a megfelelő számú információt, előfordulhat, hogy nem rendelkezik a szükséges információkkal. Azt is megteheti, hogy a fürt alapértékét a csomópontok számának és méretének megfelelően kell eldöntenie. Általában nehéz megjósolni, hogy hány erőforrást fog használni a szolgáltatás az élettartama során. Azt is nehéz megismerni, hogy a szolgáltatás ténylegesen milyen forgalmi mintát lát. Előfordulhat például, hogy az emberek csak az első dologban veszik fel és távolítják el a kapcsolataikat, vagy lehet, hogy a nap folyamán egyenletesen oszlanak el. Ennek alapján lehetséges, hogy dinamikusan kell felskálázást végeznie. Lehet, hogy megtudhatja, hogy mikor kell felskálázást végeznie, de az is előfordulhat, hogy a szolgáltatás által használt erőforrás-felhasználás változására kell reagálnia. Ez magában foglalhatja a fürt méretének módosítását, hogy több erőforrást biztosítson, ha a meglévő erőforrások használatának átszervezése nem elég. 
 
 De miért is érdemes egyetlen partíciós sémát kiválasztania az összes felhasználó számára? Miért korlátozza magát egy szolgáltatásra és egy statikus fürtre? A valós helyzet általában dinamikusabb. 
 
@@ -149,7 +140,7 @@ Ez a dinamikus létrehozási minta számos előnnyel jár:
   - Nem futtat olyan szolgáltatási példányokat vagy replikákat, amelyek az ügyfelek számára való várakozás közben vannak
   - Ha egy ügyfél még mindig elhagyja a szolgáltatást, a szolgáltatásból eltávolíthatja az adatait, és a kezelő törli az általa létrehozott szolgáltatást vagy alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457434"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2 Storage-fiókra
 
@@ -24,7 +24,7 @@ Egy általános célú v2-es Storage-fiókra való frissítés az általános c�
 > [!IMPORTANT]
 > Az általános célú v1-vagy blob Storage-fiókok általános célú v2-re való frissítése végleges, és nem vonható vissza.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Nyissa meg a tárfiókot.
@@ -154,7 +154,7 @@ A GPv1-tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell
 
 Bár a tároló elemzése nem jelzi a tárfiókból olvasott és a tárfiókba írt adatok mennyiségét, a tranzakciók mérőszámának táblája alapján lehetőség van megközelítőleges becslésre. A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalIngress”* összege mutatja az adott API bejövő adatainak teljes mennyiségét bájtban. Hasonlóképpen a *„TotalEgress”* összege a kimenő adatok teljes mennyiségét mutatja bájtban.
 
-A Blob Storage-tárfiókok adathozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
+A Blob Storage-tárfiókok adat-hozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
 
 * A tárfiókból lekért adatok mennyisége a *„TotalEgress”* összegéből becsülhető meg, elsődlegesen a *„GetBlob”* és a *„CopyBlob”* művelet alapján.
 
@@ -168,4 +168,3 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 ## <a name="next-steps"></a>Következő lépések
 
 * [Tárfiók létrehozása](storage-quickstart-create-account.md)
-* [Azure Storage-fiókok kezelése](storage-account-manage.md)

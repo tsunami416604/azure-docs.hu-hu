@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425191"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>A kombinált biztonsági információk regisztrálásának engedélyezése (előzetes verzió)
 
@@ -39,10 +39,10 @@ Az új felület engedélyezése előtt tekintse át a [kombinált biztonsági in
 A következő lépések végrehajtásával engedélyezheti a kombinált regisztrációt:
 
 1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként vagy globális rendszergazdaként.
-2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > **a hozzáférési panel előzetes verziójának beállításainak kezelése lehetőséget**.
-3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez használható előzetes funkciókat használhatják – a frissítés**lehetőséget választva engedélyezheti **a felhasználók** vagy az **összes** felhasználó csoportját.
+2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > a **felhasználói szolgáltatások előnézeti beállításainak kezelése**lehetőséget.
+3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez**használhatják az előzetes verziójú funkciókat, így a **kiválasztott** felhasználók vagy az **összes** felhasználó számára engedélyezhető.
 
-   ![A kombinált biztonsági információk előzetes verziójának használatának engedélyezése az összes felhasználó számára](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![A kombinált biztonsági információk előzetes verziójának használatának engedélyezése az összes felhasználó számára](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > Az 2019-as naptól kezdve a telefonhívási lehetőségek nem lesznek elérhetők az ingyenes/próbaverziós Azure AD-bérlők Multi-Factor Authentication és SSPR. Ez a változás nem érinti az SMS-üzeneteket. A telefonos hívási lehetőségek továbbra is elérhetők lesznek a fizetős Azure AD-bérlők felhasználói számára.
@@ -64,9 +64,9 @@ Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállí
 
 A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a közös regisztrációs élmény használatával próbálnak regisztrálni, és blokkolja a hozzáférést, kivéve, ha egy megbízható hálózatként megjelölt helyről csatlakoznak.
 
-![HITELESÍTÉSSZOLGÁLTATÓI szabályzat létrehozása a biztonsági adatok regisztrálásának vezérléséhez](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![HITELESÍTÉSSZOLGÁLTATÓI szabályzat létrehozása a biztonsági adatok regisztrálásának vezérléséhez](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. A **Azure Portal**tallózással keresse meg **Azure Active Directory** > **feltételes hozzáférés**
+1. A **Azure Portal**keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**
 1. Válassza az **Új szabályzat** lehetőséget.
 1. A név mezőben adja meg a szabályzat nevét. Például **a megbízható hálózatokon található kombinált biztonsági adatok regisztrálása**
 1. A **hozzárendelések**területen kattintson a **felhasználók és csoportok**elemre, és válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a szabályzatot

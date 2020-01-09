@@ -1,47 +1,40 @@
 ---
-title: Az Azure Service Fabric környezeti változók |} A Microsoft Docs
-description: A környezeti változók a Service Fabric dokumentációja
-documentationcenter: .net
+title: Azure Service Fabric környezeti változók
+description: Ismerje meg az Azure Service Fabric környezeti változóit. A változók és azok felhasználási feladatait tartalmazó teljes lista hivatkozását tartalmazza.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946722"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645684"
 ---
-# <a name="service-fabric-environment-variables"></a>A Service Fabric környezeti változók
+# <a name="service-fabric-environment-variables"></a>Service Fabric környezeti változók
 
-A Service Fabric beépített környezeti változók beállítása minden szolgáltatáspéldány van. A környezeti változók teljes listája alatt van:
+Service Fabric beépített környezeti változók vannak beállítva az egyes szolgáltatási példányokhoz. A környezeti változók teljes listája alább látható:
 
 | Környezeti változó                         | Leírás                                                            | Példa                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
-| Fabric_ApplicationName                       | A fabric URI-t az alkalmazás neve                                 | fabric: / MyApplication                                                |
-| Fabric_CodePackageName                       | A kód csomag, amelyhez tartozik a folyamat neve              | Kód                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | Az ip-cím vagy teljes Tartománynevét a végpont                                 | 10.0.0.1                                                     |
-| Fabric\_Endpoint\_*ServiceEndpointName*              | A végponti port száma                                  | 8234                                                                 |
-| Fabric_Folder_App_Log                        | Log mappában                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
-| Fabric_Folder_App_Temp                       | Ideiglenes mappa létrehozása                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
-| Fabric_Folder_App_Work                       | Munkahelyi mappák                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |
-| Fabric_Folder_Application                    | Az alkalmazások kezdőmappa                                           | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
-| Fabric_IsContainerHost                       | Adja meg, hogy-e a folyamat egy tároló egy logikai                   | false                                                                |
-| Fabric_NodeId                                | A csomópont-azonosító, a csomópont a folyamat futtatása                            | bf865279ba277deb864a976fbf4c200e                                     |
-| Fabric_NodeIPOrFQDN                          | A IP vagy FQDN-jének a csomópontot a fürthöz megadott jegyzékfájl. | localhost vagy 10.0.0.1                                                |
-| Fabric_NodeName                              | A csomópont nevét, a csomópont a folyamat futtatása                          | _Node_0                                                              |
-| Fabric_ServiceName                           | A szolgáltatást, ha ExclusiveProcess módban lévő üzemeltetett service fabric uri neve. A változó értéke csak akkor használható, ha a szolgáltatás ServicePackageActivationMode ExclusiveProcess hoz létre.  | fabric:/MyApplication/MyService                                               |
-| Fabric_ServicePackageActivationId            | The ServicePackageActivationId                                         | EGY GUID AZONOSÍTÓT                                                               |
-| Fabric_ServicePackageName                    | A folyamat service-csomag neve része                     | Web1Pkg                                                              |
+| Fabric_ApplicationName                       | Az alkalmazás háló URI-neve                                 | háló:/MyApplication                                                |
+| Fabric_CodePackageName                       | Annak a kódnak a neve, amelyhez a folyamat tartozik              | Kód                                                                 |
+| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | A végpont IP-címe vagy teljes tartományneve                                 | 10.0.0.1                                                     |
+| Háló\_végpont\_*ServiceEndpointName*              | A végpont portszáma                                  | 8234                                                                 |
+| Fabric_Folder_App_Log                        | Napló mappája                                                             | C:\\\\\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
+| Fabric_Folder_App_Temp                       | Temp mappa                                                            | C:\\\\az\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\Temp     |
+| Fabric_Folder_App_Work                       | Munkahelyi mappa                                                            | C:\\\\az\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\működik     |
+| Fabric_Folder_Application                    | Az alkalmazások kezdőmappa                                           | C:\\\\az\\\\_App\\\\_Node_0\\\\MyApplicationType_App12             |
+| Fabric_IsContainerHost                       | Logikai érték, amely azt határozza meg, hogy a folyamat tároló-e                   | false                                                                |
+| Fabric_NodeId                                | A folyamatot futtató csomóponthoz tartozó csomópont-azonosító                            | bf865279ba277deb864a976fbf4c200e                                     |
+| Fabric_NodeIPOrFQDN                          | A csomópont IP-címe vagy teljes tartományneve a fürt jegyzékfájljában megadott módon. | localhost vagy 10.0.0.1                                                |
+| Fabric_NodeName                              | A folyamatot futtató csomópont csomópontjának neve                          | _Node_0                                                              |
+| Fabric_ServiceName                           | A szolgáltatás háló URI-neve, ha a szolgáltatás ExclusiveProcess módban van tárolva. Ez a változó csak akkor érhető el, ha a szolgáltatást a ServicePackageActivationMode ExclusiveProcess hozza létre.  | háló:/MyApplication/MyService                                               |
+| Fabric_ServicePackageActivationId            | A ServicePackageActivationId                                         | EGY GUID                                                               |
+| Fabric_ServicePackageName                    | A folyamat részét képező szolgáltatáscsomag neve                     | Web1Pkg                                                              |
 
-Service Fabric-futtatókörnyezet által használt belső környezeti változókat:
+Service Fabric futtatókörnyezet által használt belső környezeti változók:
 
 - Fabric_ApplicationHostId
 - Fabric_ApplicationHostType

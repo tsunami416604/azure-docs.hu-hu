@@ -1,27 +1,18 @@
 ---
-title: Önálló Azure Service Fabric-fürt létrehozása | Microsoft Docs
+title: Önálló Azure Service Fabric-fürt létrehozása
 description: Hozzon létre egy Azure Service Fabric-fürtöt bármely olyan gépen (fizikai vagy virtuális gépen), amely Windows Server rendszert futtat, akár helyszíni, akár bármilyen felhőben.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554650"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463238"
 ---
-# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó önálló fürt létrehozása
+# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások.
 
 Ez a cikk végigvezeti a Service Fabric önálló fürt létrehozásának lépésein.
@@ -153,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3\. lépés: a fürt megjelenítése a Service Fabric Explorer használatával
-A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a [http://localhost:19080/Explorer hoz](http://localhost:19080/Explorer).
+A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a [http://localhost:19080/Explorer hoz ](http://localhost:19080/Explorer).
 
 A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását. A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton.
 
@@ -181,7 +172,7 @@ Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzá
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Telemetria gyűjtött adatok és az onnan való leiratkozás
-Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. A telepítés részeként futó ajánlott eljárásokat elemző eszköz a [https://vortex.data.microsoft.com/collect/v1 hoz](https://vortex.data.microsoft.com/collect/v1)való kapcsolódást ellenőrzi. Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
+Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. A telepítés részeként futó ajánlott eljárásokat elemző eszköz a [https://vortex.data.microsoft.com/collect/v1 hoz ](https://vortex.data.microsoft.com/collect/v1)való kapcsolódást ellenőrzi. Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
 
 1. A telemetria folyamat naponta egyszer megpróbálja [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) a következő adatok feltöltését. Ez a legjobb feltöltés, és nincs hatással a fürt működésére. A telemetria csak a Feladatátvevőfürt-kezelőt futtató csomópontról lesz elküldve. Más csomópontok nem küldenek telemetria.
 2. A telemetria a következőkből áll:

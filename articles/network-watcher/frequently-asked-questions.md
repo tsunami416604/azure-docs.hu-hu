@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598223"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647288"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános
 
-### <a name="what-is-network-watcher"></a>Mi az Network Watcher?
+### <a name="what-is-network-watcher"></a>Mi az a Network Watcher?
 Network Watcher úgy van kialakítva, hogy figyelje és javítsa a IaaS (infrastruktúra-szolgáltatás) összetevőinek hálózati állapotát, beleértve a Virtual Machines, a virtuális hálózatokat, az alkalmazás-átjárókat, a terheléselosztó és az Azure-beli virtuális hálózatok egyéb erőforrásait. Nem megoldás a Péter (platform-szolgáltatás) infrastruktúrájának figyelésére, vagy a web/mobil Analitika beszerzésére.
 
 ### <a name="what-tools-does-network-watcher-provide"></a>Milyen eszközöket biztosít a Network Watcher?
@@ -51,14 +51,20 @@ További részletekért tekintse meg az [Network Watcher áttekintése lapot](ht
 ### <a name="how-does-network-watcher-pricing-work"></a>Hogyan működik a Network Watcher díjszabása?
 Látogasson el a Network Watcher-összetevők [díjszabási oldalára](https://azure.microsoft.com/pricing/details/network-watcher/) , valamint azok díjszabására.
 
-### <a name="which-regions-is-network-watcher-available-in"></a>Mely régiókban Network Watcher érhető el?
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Mely régiók Network Watcher támogatott/elérhető?
 Az [Azure szolgáltatás rendelkezésre állási lapján](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) megtekintheti a legújabb regionális elérhetőséget.
 
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Mik a Network Watcher erőforrás-korlátai?
-Tekintse meg az összes korlátot a [szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) lapon.  
+Tekintse meg az összes korlátot a [szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) lapon.  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Miért csak egyetlen példányban engedélyezett Network Watcher régiónként?
 Network Watcher csak egyszer kell engedélyezni ahhoz, hogy az előfizetése működjön, ez a szolgáltatás nem megengedett.
+
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Miért kell telepíteni a Network Watcher bővítményt? 
+A Network Watcher-bővítményt minden olyan szolgáltatáshoz meg kell adni, amely egy virtuális gépről érkező forgalmat kell előállítani vagy feltartóztatni. 
+
+### <a name="which-features-require-the-network-watcher-extension"></a>Mely szolgáltatásokhoz szükséges a Network Watcher bővítmény?
+Csak a csomagok rögzítése, a kapcsolati hibák és a kapcsolat figyelője szükséges a Network Watcher kiterjesztésének megjelenni.
 
 ## <a name="nsg-flow-logs"></a>NSG
 

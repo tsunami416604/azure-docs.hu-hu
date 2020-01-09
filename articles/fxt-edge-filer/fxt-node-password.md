@@ -1,17 +1,17 @@
 ---
-title: Hardver-Microsoft Azure FXT Edge Filer inicializálása
+title: 'Oktatóanyag: hardver inicializálása – Azure FXT Edge Filer'
 description: Kezdeti jelszó beállítása az Azure FXT Edge Filer-csomópontjain
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256010"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550891"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Oktatóanyag: hardveres jelszavak beállítása
 
@@ -80,7 +80,7 @@ A beírt jelszó két dolgot használ:
 
 * Ez az Azure FXT Edge Filer-csomópontjának ideiglenes legfelső szintű jelszava. 
 
-  Ez a jelszó akkor változik, amikor létrehoz egy fürtöt a csomópont használatával, vagy ha hozzáadja ezt a csomópontot a fürthöz. A fürt összes csomópontja számára a Fürtfelügyelő jelszava (a ``admin`` felhasználóhoz társítva) is a gyökér jelszava.
+  Ez a jelszó akkor változik, amikor létrehoz egy fürtöt a csomópont használatával, vagy ha hozzáadja ezt a csomópontot a fürthöz. A fürt összes csomópontja számára a Fürtfelügyelő jelszava (a felhasználó ``admin``hoz társítva) is a legfelső szintű jelszó.
 
 * Ez a iDRAC/IPMI hardveres felügyeleti port hosszú távú jelszava.
 
@@ -94,11 +94,11 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-A jelszó megadása után a rendszer folytatja a rendszerindítást. Ha ez befejeződik, ``login:`` promptot ad meg. 
+A jelszó megadása után a rendszer folytatja a rendszerindítást. Ha ez befejeződik, egy ``login:`` promptot ad meg. 
 
 ## <a name="sign-in-as-root"></a>Bejelentkezés root-ként
 
-Jelentkezzen be ``root`` néven az imént beállított jelszóval. 
+Jelentkezzen be ``root``ként az imént beállított jelszóval. 
 
 ```
 login: root

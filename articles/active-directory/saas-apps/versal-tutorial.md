@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zményes |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Zményes között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Verstel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és fordítva.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,193 +13,151 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 837ba4043fe27c15f75c4d401878dfdb3328b82f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e5e5a3f8070829916b228e9bc68e37156ddf5f6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087594"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561781"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-versal"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zményes
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-versal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrációja a Verstel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Zményes integrálása az Azure Active Directory (Azure AD).
-Zményes integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a sokoldalú integrációt Azure Active Directory (Azure AD) használatával. Az Azure AD-vel való integrációt követően a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá Zményes Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Zményes (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Vezérlés az Azure AD-ben, aki a megfordítható hozzáféréssel rendelkezik.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Zményes az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Versal egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Fordított egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Versal támogatja **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="adding-versal-from-the-gallery"></a>Zményes hozzáadása a katalógusból
+* A verse támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-Az Azure ad-ben Zményes integráció konfigurálásához, hozzá kell Zményes a galériából a felügyelt SaaS-alkalmazások listájára.
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
-**Zményes hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+## <a name="adding-versal-from-the-gallery"></a>Versek hozzáadása a katalógusból
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+Az Azure AD-ba való beilleszkedésének konfigurálásához a katalógusból a felügyelt SaaS-alkalmazások listájára kell felvennie a modult.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt a keresőmezőbe: **verses** .
+1. Válassza a **megfordítva** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-versal"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése fordítva
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+Konfigurálja és tesztelje az Azure AD SSO-t fordítva a " **B. Simon**" nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Ha az Azure AD SSO-t a fordítva szeretné konfigurálni és tesztelni, hajtsa végre a következő építőelemeket:
 
-4. A Keresés mezőbe írja be a **Zményes**válassza **Zményes** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A fordított **[egyszeri bejelentkezés konfigurálása](#configure-versal-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre egy fordított szintű tesztelési felhasználót](#create-versal-test-user)** – ha a felhasználó Azure ad-képviseletéhez csatolt B. Simon párja van.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-     ![Az eredmények listájában bejárás](common/search-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Zményes nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Zményes hivatkozás kapcsolata kell létrehozni.
+1. A [Azure Portal](https://portal.azure.com/)a **megfordítható** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-Az Azure AD egyszeri bejelentkezés az Zményes tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Zményes egyszeri bejelentkezés konfigurálása](#configure-versal-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Zményes tesztfelhasználót](#create-versal-test-user)**  – egy megfelelője a Britta Simon Zményes, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    a. Az **azonosító** szövegmezőbe írja be a következő URL-címet: `VERSAL`
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
-
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zményes, hajtsa végre az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Zményes** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
-
-    ![Versal tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
-
-    a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `VERSAL`
-
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://versal.com/sso/saml/orgs/<organization_id>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://versal.com/sso/saml/orgs/<organization_id>`
 
     > [!NOTE]
-    > A válasz URL-cím értéke nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [Zményes ügyfél-támogatási csapatának](https://support.versal.com/hc/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az értékek megszerzéséhez lépjen kapcsolatba a [verstel ügyfél-támogatási csapattal](https://support.versal.com/hc/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Versal alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Versal alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa az attribútum leképezés.
+1. A sokoldalú alkalmazás megadott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A sokoldalú alkalmazás a **User. mail**használatával rendeli hozzá a **NameIdentifier** , ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. Az a **Zményes beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. A **set up (megfordítva** ) szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    b. Azure AD-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="configure-versal-single-sign-on"></a>Zményes egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Az egyszeri bejelentkezés konfigurálása **Zményes** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Zményes támogatási csapatának](https://support.versal.com/hc/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a megfordítható eléréséhez.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **fordítva**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![Új felhasználó gomb](common/new-user.png)
+## <a name="configure-versal-sso"></a>Fordított egyszeri bejelentkezés konfigurálása
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+Az egyszeri bejelentkezés egyidejű konfigurálásához el kell küldenie **a letöltött** **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [verses támogatási csapatba](https://support.versal.com/hc/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+### <a name="create-versal-test-user"></a>Megfordítható tesztelési felhasználó létrehozása
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a versen. Az [SAML-teszt felhasználói](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) támogatási útmutató létrehozásával hozza létre a B. Simon felhasználót a szervezeten belül. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+Ebben a szakaszban tesztelheti az Azure AD egyszeri bejelentkezési konfigurációját egy, a webhelyén beágyazott, a saját webhelyén lévő tanfolyam használatával.
+Az Azure AD egyszeri bejelentkezés támogatásával megtudhatja, hogyan ágyazhat be egy sokoldalú tanfolyamot a [beágyazási szervezeti tanfolyamok](https://support.versal.com/hc/articles/203271866-Embedding-organizational-courses) **SAML egyszeri bejelentkezés** támogatási útmutatójában. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Zményes Azure egyszeri bejelentkezés használatára.
-
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Zményes**.
-
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában jelölje ki a **Zményes**.
-
-    ![Az alkalmazások listáját a Zményes hivatkozásra](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-versal-test-user"></a>Zményes tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy felhasználói Britta Simon nevű Zményes hoz létre. Kövesse a [tesztfelhasználó létrehozása egy SAML](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) támogatási útmutató Britta Simon a szervezetben lévő felhasználó létrehozásához. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt Zményes aktiválva. 
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a webhelyre beágyazva Zményes tanfolyam segítségével tesztelnie.
-Tekintse át a [szervezeti tanfolyamok beágyazás](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML egyszeri bejelentkezés** támogatása az útmutató utasításokat Zményes tanfolyam beágyazásával támogatásával az Azure ad egyszeri bejelentkezés. 
-
-Szüksége lesz egy tanfolyam létrehozása, a szervezet többi tagjával is megoszthat és tanfolyam beágyazás teszteléséhez tegye közzé. Lásd: [tanfolyam létrehozása](https://support.versal.com/hc/en-us/articles/203722528-Create-a-course), [tanfolyam közzétételi](https://support.versal.com/hc/en-us/articles/203753398-Publishing-a-course), és [tanfolyam és learner felügyeleti](https://support.versal.com/hc/en-us/articles/206029467-Course-and-learner-management) további információt.
+Létre kell hoznia egy tanfolyamot, meg kell osztania a szervezettel, és közzé kell tennie a tanfolyam beágyazásának teszteléséhez. További információkért tekintse meg [a kurzus létrehozását](https://support.versal.com/hc/articles/203722528-Create-a-course), [a kurzusok közzétételét](https://support.versal.com/hc/articles/203753398-Publishing-a-course), valamint a tanfolyam [és a tanulók felügyeletét](https://support.versal.com/hc/articles/206029467-Course-and-learner-management) ismertető témakört.
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Próbálkozzon fordítva az Azure AD-vel](https://aad.portal.azure.com/)
 

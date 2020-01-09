@@ -1,5 +1,5 @@
 ---
-title: A Windows rendszerű virtuális gépek méretezhetőségének és teljesítményének céljai – Microsoft Azure
+title: Méretezhetőség és teljesítménybeli célok a Windows rendszerű virtuális gépek lemezei esetében
 description: Ismerje meg a Windows rendszerű virtuális gépekhez csatlakoztatott virtuálisgép-lemezek méretezhetőségét és teljesítménybeli céljait.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: c525ec4becbfda305343a3c7244d5975d60604a3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039761"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645157"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Méretezhetőség és teljesítménybeli célok a Windows rendszerű virtuális gépek lemezei esetében
 
@@ -31,6 +31,6 @@ A csillaggal jelölt méretek jelenleg előzetes verzióban érhetők el. Tekint
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-[Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-subscription-service-limits)
+[Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

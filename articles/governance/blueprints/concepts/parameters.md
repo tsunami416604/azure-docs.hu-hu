@@ -3,12 +3,12 @@ title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, valamint azt, hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128934"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644970"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
@@ -40,7 +40,7 @@ Ha a terv **-hozzárendelés rendszer által hozzárendelt felügyelt identitás
 Ha a terv-hozzárendelés **felhasználó által hozzárendelt felügyelt identitást**használ, _akkor_ a hivatkozott Key Vault központi előfizetésben létezhet. A felügyelt identitásnak megfelelő jogosultságokat kell biztosítania a Key Vault a terv hozzárendelése előtt.
 
 > [!IMPORTANT]
-> Mindkét esetben a Key Vaultnak engedélyeznie kell a hozzáférést a Azure Resource Manager számára a **hozzáférési házirendek** lapon konfigurált **sablonok telepítéséhez** . A szolgáltatás engedélyezésével kapcsolatos útmutatásért lásd: [Key Vault – a sablonok telepítésének engedélyezése](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> Mindkét esetben a Key Vaultnak engedélyeznie kell a hozzáférést a Azure Resource Manager számára a **hozzáférési házirendek** lapon konfigurált **sablonok telepítéséhez** . A szolgáltatás engedélyezésével kapcsolatos útmutatásért lásd: [Key Vault – a sablonok telepítésének engedélyezése](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
 További információ a Azure Key Vaultről: [Key Vault áttekintése](../../../key-vault/key-vault-overview.md).
 
@@ -52,7 +52,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statikus paraméterek beállítása a portálon
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
@@ -169,7 +169,7 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Dinamikus paraméterek beállítása a portálon
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
@@ -232,7 +232,7 @@ A **dinamikus paraméterek** a hozzárendelés során történő beállítása k
   }
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [terv függvények](../reference/blueprint-functions.md)listáját.
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).

@@ -1,28 +1,19 @@
 ---
-title: 'Gyors útmutató: Java-alkalmazás létrehozása az Azure Service Fabric'
+title: 'Gyors útmutató: Java-alkalmazás létrehozása az Azure-ban Service Fabric'
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet Java-alkalmazást létrehozni az Azure-ban a Service Fabric Reliable Services mintaalkalmazásának használatával.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ef0db5f72f5849942bb043261f1166cf7c046b1
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 257fd02c2f7ec2aff9d55b91b2cbd54b6eb55431
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464401"
 ---
-# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Gyors útmutató:  Java-alkalmazás üzembe helyezése az Azure Service Fabric Linuxon
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Gyors útmutató: Java-alkalmazás üzembe helyezése az Azure Service Fabric Linuxon
 
 Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe az első Java-alkalmazását az Azure Service Fabric-ban az Eclipse IDE használatával egy linuxos fejlesztői gépen. Az útmutató elvégzése után rendelkezni fog egy Java webes kezelőfelületes szavazóalkalmazással, amely egy a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat.
 
@@ -38,7 +29,7 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 1. [A Service Fabric SDK és a Service Fabric parancssori felület (CLI) telepítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 2. [A Git telepítése](https://git-scm.com/)
@@ -65,8 +56,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![Az Azure Service Fabric Explorer kifogástalan állapotú csomópontokat jelenít meg](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. Nyissa meg az Eclipse környezetet.
-3. Válassza **a fájl** > **importálása** > Gradlemeglévő > Gradle-**projekt** lehetőséget, és kövesse a varázslót.
-4. Válassza a **címtár** lehetőséget, `Voting` majd válassza ki `service-fabric-java-quickstart` a könyvtárat a githubról klónozott mappából. Válassza a **Finish** (Befejezés) elemet.
+3. Válassza a **fájl** > **importálás** > **Gradle** > **meglévő Gradle-projekt** elemet, és kövesse a varázslót.
+4. Válassza a **könyvtár** lehetőséget, majd válassza ki a `Voting` könyvtárat a githubról klónozott `service-fabric-java-quickstart` mappából. Válassza a **Finish** (Befejezés) elemet.
 
     ![Gradle-projekt importálása az Eclipse-be](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
@@ -75,7 +66,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
     ![Azure Service Fabric helyi JSON közzététele](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
-7. Nyissa meg a kedvenc webböngészőjét, és nyissa meg az alkalmazást az alkalmazáshoz `http://localhost:8080`való hozzáféréssel.
+7. Nyissa meg a kedvenc webböngészőjét, és a `http://localhost:8080`elérésével férhet hozzá az alkalmazáshoz.
 
     ![Azure Service Fabric helyi gazdagép](./media/service-fabric-quickstart-java/service-fabric-local-host.png)
 
@@ -105,7 +96,7 @@ A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos tudni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány elinduljon a fürtben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

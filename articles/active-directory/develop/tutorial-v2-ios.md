@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az iOS & macOS rendszerrel – Microsoft Identity platform | Azure
-description: IOS-és macOS-(Swift-) alkalmazások hívhatnak olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform használatával
+title: MSAL for iOS & macOS oktatóanyag – Microsoft Identity platform | Azure
+description: Ismerje meg, hogy az iOS és macOS (Swift) alkalmazások hogyan hívhatnak meg olyan API-t, amelyhez hozzáférési tokenek szükségesek a Microsoft Identity platform használatával
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423406"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 

@@ -3,18 +3,18 @@ title: Node.js – Első lépések útmutató
 description: Megtudhatja, hogyan lehet létrehozni egy egyszerű Node.js webalkalmazást, és hogyan telepítheti azt egy Azure-felhőszolgáltatásban.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 81ad3bce6c7e331fd67fba60b35de6b8a37c5da9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386187"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
 
@@ -55,8 +55,8 @@ Hajtsa végre az alábbi feladatokat egy új Azure Cloud Service-projekt létreh
 
     A parancsmag a következő fájlokat hozza létre:
 
-   * **ServiceConfiguration. Cloud. cscfg**, **ServiceConfiguration. local. cscfg** és **ServiceDefinition. csdef**: Az alkalmazás közzétételéhez szükséges Azure-specifikus fájlok. További információkért lásd: [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés].
-   * **deploymentSettings.json**: A Azure PowerShell telepítési parancsmagok által használt helyi beállításokat tárolja.
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** és **ServiceDefinition.csdef**: az alkalmazás közzétételéhez szükséges Azure-specifikus fájlok. További információkért lásd: [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés].
+   * **deploymentSettings.json**: Az Azure PowerShell telepítési parancsmagok által használt helyi beállításokat tárolja.
 4. Új webes szerepkör hozzáadásához adja meg az alábbi parancsot:
 
        Add-AzureNodeWebRole
@@ -154,7 +154,7 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
    > [!NOTE]
    > A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. Ha a tárterületet semmi más nem használja, megfontolhatja a törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk: [Node.js fejlesztői központ].
 
 <!-- URL List -->
@@ -177,3 +177,6 @@ További információk: [Node.js fejlesztői központ].
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+
+
+

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7d4a400681113736c52046fb6aa5c04098ddda
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: fe08f1523b4b61653d89a9b3472355dd3eeaf69f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893229"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SmartDraw
 
@@ -44,13 +43,8 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-
-
 * A SmartDraw támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 * A SmartDraw **csak időben támogatja a** felhasználók kiépítési folyamatát
-
-> [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>SmartDraw hozzáadása a gyűjteményből
 
@@ -63,7 +57,6 @@ A SmartDraw Azure AD-be való integrálásának konfigurálásához hozzá kell 
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **SmartDraw** kifejezést a keresőmezőbe.
 1. Válassza ki a **SmartDraw** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a SmartDraw
 
 Konfigurálja és tesztelje az Azure AD SSO-t a SmartDraw a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SmartDraw-ben.
@@ -71,10 +64,10 @@ Konfigurálja és tesztelje az Azure AD SSO-t a SmartDraw a **B. Simon**nevű te
 Az Azure AD SSO és a SmartDraw konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. **[SMARTDRAW SSO konfigurálása](#configure-smartdraw-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre SmartDraw-teszt felhasználót](#create-smartdraw-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-SmartDraw rendelkezik.
+    * **[Hozzon létre SmartDraw-teszt felhasználót](#create-smartdraw-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-SmartDraw rendelkezik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -87,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **mentés** gombra kattintva.
+1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -96,11 +89,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. A bejelentkezési URL-címet a tényleges bejelentkezési URL-címmel fogja frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
+1. Kattintson a **Mentés** gombra.
+
 1. A SmartDraw alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. A fentiek mellett a SmartDraw alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
+1. A fentiek mellett a SmartDraw alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
     | Név | Forrás attribútum|
     | ---------------| --------------- |
@@ -117,7 +112,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
@@ -128,7 +122,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -150,20 +144,28 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-smartdraw-sso"></a>SmartDraw SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a SmartDraw rendszergazdaként.
+1. A SmartDraw belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-2. Kattintson az **egyszeri bejelentkezés** lehetőségre a SmartDraw-licenc kezelése területen.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **SmartDraw beállítása** elemre, majd a SmartDraw alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a SmartDraw való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a SmartDraw, nyisson meg egy új böngészőablakot, és jelentkezzen be a SmartDraw vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+1. Kattintson az **egyszeri bejelentkezés** lehetőségre a SmartDraw-licenc kezelése területen.
 
     ![SmartDraw-konfiguráció](./media/smartdraw-tutorial/configure01.png)
 
-3. A konfiguráció lapon hajtsa végre a következő lépéseket:
+1. A konfiguráció lapon hajtsa végre a következő lépéseket:
 
     ![SmartDraw-konfiguráció](./media/smartdraw-tutorial/configure02.png)
 
     a. A **saját tartományában (például Acme.com)** szövegmezőbe írja be a tartományt.
 
     b. Másolja be az **SP által kezdeményezett bejelentkezési URL-címet** a példányhoz, és illessze be a bejelentkezési URL szövegmezőbe a **SAML Alapszintű konfigurációjában** Azure Portal.
-    
+
     c. A SmartDraw-hozzáférési szövegmezőt **engedélyező biztonsági csoportok** mezőbe írja be a következőt: **mindenki**.
 
     d. A **saját SAML-kiállító URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
@@ -174,9 +176,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ### <a name="create-smartdraw-test-user"></a>SmartDraw-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a SmartDraw-ben. A SmartDraw támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a SmartDraw-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a SmartDraw-ben. A SmartDraw támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a SmartDraw-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
@@ -191,4 +193,3 @@ Ha a hozzáférési panelen a SmartDraw csempére kattint, automatikusan be kell
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A SmartDraw kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-

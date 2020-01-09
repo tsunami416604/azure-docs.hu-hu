@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226796"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561932"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -28,12 +28,12 @@ A Function apps több módon is üzemeltethető:
 
 ## <a name="matrix-of-networking-features"></a>Hálózati szolgáltatások mátrixa
 
-|                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium csomag](functions-scale.md#premium-plan)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
+|                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium csomag](functions-scale.md#premium-plan)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Bejövő IP-korlátozások & Private site Access](#inbound-ip-restrictions)|✅igen|✅igen|✅igen|✅igen|
 |[Virtuális hálózat integrációja](#virtual-network-integration)|❌nem|✅igen (regionális)|✅igen (regionális és átjáró)|✅igen|
-|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌nem| ❌nem|✅igen|✅igen|
-|[Hibrid kapcsolatok](#hybrid-connections)|❌nem|✅igen|✅igen|✅igen|
+|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌nem| ✅igen |✅igen|✅igen|
+|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌nem|✅igen|✅igen|✅igen|
 |[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌nem| ❌nem|❌nem|✅igen|
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
@@ -79,7 +79,7 @@ Egyik funkció sem teszi lehetővé a nem RFC 1918-címek elérését a ExpressR
 
 A regionális virtuális hálózati integráció használata nem kapcsolja össze a virtuális hálózatot a helyszíni végpontokkal, vagy konfigurálja a szolgáltatási végpontokat. Ez egy különálló hálózati konfiguráció. A regionális virtuális hálózatok integrációja egyszerűen lehetővé teszi, hogy az alkalmazás hívásokat hajtson végre a kapcsolati típusok között.
 
-A használt verziótól függetlenül a Virtual Network Integration lehetővé teszi, hogy az alkalmazás hozzáférjen a virtuális hálózatban található erőforrásokhoz, de a virtuális hálózatról nem biztosít privát helyet a Function alkalmazáshoz. A privát webhelyek hozzáférése azt jelenti, hogy az alkalmazás csak olyan magánhálózathoz érhető el, mint egy Azure Virtual Network. a virtuális hálózat integrációja csak az alkalmazásból a virtuális hálózatra irányuló kimenő hívásokat teszi.
+A használt verziótól függetlenül a Virtual Network Integration lehetővé teszi, hogy az alkalmazás hozzáférjen a virtuális hálózatban található erőforrásokhoz, de a virtuális hálózatról nem biztosít privát helyet a Function alkalmazáshoz. A privát webhelyek hozzáférése azt jelenti, hogy az alkalmazás csak olyan magánhálózathoz érhető el, mint egy Azure Virtual Network. A virtuális hálózat integrációja csak az alkalmazásból a virtuális hálózatra irányuló kimenő hívásokat teszi.
 
 A Virtual Network integrációs funkciója:
 
@@ -123,19 +123,51 @@ A [Key Vault-hivatkozások](../app-service/app-service-key-vault-references.md) 
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuális hálózati eseményindítók (nem HTTP)
 
-Ha a HTTP-n kívül más függvényeket is használni szeretne egy virtuális hálózaton belül, a Function alkalmazást egy App Service csomagban vagy egy App Service Environment kell futtatnia.
+Jelenleg a nem HTTP-trigger függvények a következő két módszer egyikével használhatók a virtuális hálózaton belül: 
++ Futtassa a Function alkalmazást egy prémium szintű csomagban, és engedélyezze a virtuális hálózatok triggerének támogatását.
++ A Function alkalmazást App Service csomagban vagy App Service Environment futtathatja.
 
-Tegyük fel például, hogy úgy szeretné konfigurálni a Azure Cosmos DBt, hogy csak egy virtuális hálózatról fogadja a forgalmat. A Function alkalmazást olyan app Service-csomagban kell telepíteni, amely virtuális hálózati integrációt biztosít a virtuális hálózattal az adott erőforrásból Azure Cosmos DB eseményindítók konfigurálásához. Az előzetes verzióban a virtuális hálózati integráció konfigurálása nem teszi lehetővé, hogy a Prémium csomag kikapcsolja az Azure Cosmos DB erőforrást.
+### <a name="premium-plan-with-virtual-network-triggers"></a>Prémium csomag virtuális hálózati eseményindítókkal
 
-Tekintse meg [ezt a listát az összes nem http-eseményindítóról](./functions-triggers-bindings.md#supported-bindings) , ha duplán szeretné megtekinteni a támogatottak listáját.
+Ha prémium szintű csomagban fut, a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **virtuális hálózat triggerének támogatása** beállítás a [Azure Portal](https://portal.azure.com) a **Function app Settings**elem alatt található.
+
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+
+A virtuális hálózati eseményindítókat a következő Azure CLI-parancs használatával is engedélyezheti:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+A virtuális hálózati eseményindítók a functions futtatókörnyezet 2. x vagy újabb verziójában támogatottak. A következő nem HTTP típusú triggerek támogatottak:
+
+| Mellék | Minimális verzió |
+|-----------|---------| 
+|[Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 vagy újabb |
+|[Microsoft. Azure. webjobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 vagy újabb|
+|[Microsoft. Azure. webjobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 vagy újabb verzió|
+|[Microsoft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 vagy újabb|
+|[Microsoft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 vagy újabb|
+
+> [!IMPORTANT]
+> A virtuális hálózati trigger támogatásának engedélyezésekor csak a fenti trigger-típusok dinamikusan méretezhetők az alkalmazással. Továbbra is használhatja a fentiekben nem felsorolt eseményindítókat, azonban azok nem méretezhetők az előre bemelegítő példányok száma után. Az eseményindítók teljes listáját az [Eseményindítók és kötések](./functions-triggers-bindings.md#supported-bindings) című témakörben tekintheti meg.
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service csomag és App Service Environment virtuális hálózati eseményindítókkal
+
+Ha a Function alkalmazás egy App Service vagy egy App Service Environment fut, akkor a nem HTTP-trigger függvényeket is használhatja. Ahhoz, hogy a függvények helyesen legyenek kiváltva, csatlakoznia kell egy olyan virtuális hálózathoz, amely hozzáfér az trigger-kapcsolatban definiált erőforráshoz. 
+
+Tegyük fel például, hogy úgy szeretné konfigurálni a Azure Cosmos DBt, hogy csak egy virtuális hálózatról fogadja a forgalmat. Ebben az esetben telepítenie kell a Function alkalmazást egy olyan App Service tervbe, amely virtuális hálózati integrációt biztosít a virtuális hálózattal. Ez lehetővé teszi, hogy a függvényt az adott Azure Cosmos DB erőforrás aktiválja. 
 
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
-[Hibrid kapcsolatok](../service-bus-relay/relay-hybrid-connections-protocol.md) az Azure Relay szolgáltatása, amellyel más hálózatokban is elérheti az alkalmazás erőforrásait. Hozzáférést biztosít az alkalmazástól az alkalmazások végpontja számára. Nem használhatja az alkalmazást az alkalmazás elérésére. A Hibrid kapcsolatok az összes, de a felhasználási tervben futó függvények számára elérhető.
+[Hibrid kapcsolatok](../service-bus-relay/relay-hybrid-connections-protocol.md) az Azure Relay szolgáltatása, amellyel más hálózatokban is elérheti az alkalmazás erőforrásait. Hozzáférést biztosít az alkalmazástól az alkalmazások végpontja számára. Nem használhatja az alkalmazást az alkalmazás elérésére. A Hibrid kapcsolatok a Windows rendszeren futó függvények számára is elérhető a használati tervben.
 
 A Azure Functionsban használt módon minden hibrid csatlakozás egyetlen TCP-gazdagéphez és porthoz kapcsolódik. Ez azt jelenti, hogy a hibrid kapcsolatok végpontja bármely operációs rendszeren és alkalmazáson is lehet, ha a TCP-figyelési porthoz fér hozzá. A Hibrid kapcsolatok funkció nem tudja, vagy érdekli az alkalmazás protokollja, vagy hogy mi az, amit elér. Csak hálózati hozzáférést biztosít.
 
 További információt a [Hibrid kapcsolatok app Service dokumentációjában](../app-service/app-service-hybrid-connections.md)talál. Ugyanezek a konfigurációs lépések támogatják a Azure Functions.
+
+>[!IMPORTANT]
+> Hibrid kapcsolatok csak Windows-csomagok esetén támogatott. A Linux nem támogatott
 
 ## <a name="outbound-ip-restrictions"></a>Kimenő IP-korlátozások
 

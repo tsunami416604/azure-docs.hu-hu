@@ -1,145 +1,137 @@
 ---
-title: Az Azure Service Fabric önálló fürt üzembe helyezés előkészítése |} A Microsoft Docs
-description: A környezet előkészítése és a egy éles számítási feladatok kezelésére szánt-fürt üzembe helyezése előtt figyelembe kell venni a fürtkonfiguráció létrehozása kapcsolódó dokumentációt.
-services: service-fabric
-documentationcenter: .net
+title: Önálló fürt üzembe helyezésének előkészítése
+description: A környezet előkészítéséhez és a fürtkonfiguráció létrehozásához kapcsolódó dokumentáció, amely az éles számítási feladatok kezelésére szolgáló fürt üzembe helyezése előtt megfontolandó.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 8b9f659098e563a3dc0692530ad798a5c763551f
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133402"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610063"
 ---
-# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Megtervezheti és előkészítheti a Service Fabric önálló fürtök üzembe helyezése
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>A Service Fabric önálló fürt üzembe helyezésének megtervezése és előkészítése
 
 <a id="preparemachines"></a>A fürt létrehozása előtt hajtsa végre a következő lépéseket.
 
-## <a name="plan-your-cluster-infrastructure"></a>A fürt-infrastruktúra megtervezése
-Ön egy Service Fabric-fürtöt létrehozni a gépeken "saját", így eldöntheti, milyen típusú hibák azt szeretné, a fürt stabilitást biztosít. Például tegye meg kell külön power vonalak vagy hálózati kapcsolatok használata esetén ezek a gépek megadott? Ezenkívül fontolja meg ezek a gépek fizikai biztonságát. Hol találhatók a gépek, és ki kell őket a hozzáférést? Ezek a döntések után logikailag leképezheti a gépek különböző tartalék tartományokra (lásd a következő lépés). Az infrastruktúra tervezésének éles fürtök esetén a bonyolultabb, mint a tesztfürtök esetében.
+## <a name="plan-your-cluster-infrastructure"></a>A fürt infrastruktúrájának megtervezése
+Arra készül, hogy létrehoz egy Service Fabric-fürtöt a "saját" számítógépeken, így eldöntheti, hogy a fürt milyen hibákat szeretne túlélni. Szükség van-e például külön hálózati vonalakra vagy internetkapcsolatra a gépekhez? Emellett vegye figyelembe a gépek fizikai biztonságát is. Hol találhatók a gépek, és kinek van szüksége hozzájuk? A döntések elvégzése után logikailag leképezheti a gépeket a különböző tartalék tartományokra (lásd a következő lépést). A termelési fürtök infrastruktúra-tervezése nagyobb szerepet játszik, mint a tesztelési fürtök esetében.
 
-## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Tartalék tartományok számának meghatározása és a frissítési tartományok
-A [ *tartalék tartomány* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) fizikai egységek hiba, és közvetlenül kapcsolódik az Adatközpont fizikai infrastruktúráját. Tartalék tartomány áll hardverösszetevők (számítógépek, kapcsolók, hálózatok és egyéb), amelyek egy meghibásodási pont. Bár a tartalék tartományok és állványok közötti nincs 1:1 leképezés, lazán beszélni, minden állványban lehessen venni egy tartalék tartományt.
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>A tartalék tartományok és a frissítési tartományok számának meghatározása
+A tartalék [ *tartomány* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) a meghibásodás fizikai egysége, és közvetlenül kapcsolódik az adatközpontok fizikai infrastruktúrához. A tartalék tartományok olyan hardver-összetevőkből (számítógépek, kapcsolók, hálózatok stb.) állnak, amelyek egyetlen meghibásodási ponton osztoznak. Bár a tartalék tartományok és az állványok között nincs 1:1-es leképezés, az egyes állványok meghibásodási tartománynak tekinthetők.
 
-Tartalék tartományok között ClusterConfig.json ad meg, ha minden egyes FD neve választhat. A Service Fabric támogatja a hierarchikus tartalék tartományok között, így az infrastruktúra-topológiát bennük tükrözhetők.  Ha például a következő tartalék érvényesek:
+Ha tartalék ad meg a ClusterConfig. JSON fájlban, kiválaszthatja az egyes FD-nevek nevét. Service Fabric támogatja a hierarchikus tartalék, így az infrastruktúra-topológiát is tükrözheti bennük.  Például a következő tartalék érvényesek:
 
-* "faultDomain": "fd: / Room1/Rack1/Machine1"
-* "faultDomain": "fd: / FD1"
-* "faultDomain": "fd: / Room1/Rack1/PDU1/M1"
+* "faultDomain": "FD:/Room1/Rack1/Machine1"
+* "faultDomain": "FD:/FD1"
+* "faultDomain": "FD:/Room1/Rack1/PDU1/M1"
 
-Egy *frissítési tartomány* (UD) egy logikai egységet a csomópontok. A Service Fabric vezényelt rendszerre (egy alkalmazás frissítése vagy a fürt frissítése) egy UD minden csomópontján csomópontja más frissítési tartománnyal továbbra is elérhetők kiszolgálni a kérelmeket a frissítés végrehajtásához álló alkotásait. A belső vezérlőprogram-frissítéseket, a gépek hajt végre nem fogadja el a frissítési tartománnyal, ezért meg kell tennie őket egy gépi egyszerre.
+A *frissítési tartomány* (UD) a csomópontok logikai egysége. Service Fabric összehangolt frissítések (egy alkalmazás frissítése vagy egy fürt frissítése) során a rendszer az UD-ben lévő összes csomópontot leállítja a frissítés végrehajtásához, miközben a más frissítési lévő csomópontok továbbra is elérhetők lesznek a kérelmek kiszolgálásához. A gépeken végrehajtott belső vezérlőprogram-frissítés nem tartja tiszteletben a frissítési, ezért egyszerre csak egy gépet kell végrehajtania.
 
-A legegyszerűbben úgy gondolja, hogy ezekkel a fogalmakkal, hogy fontolja meg a tartalék tartományok között tervezett karbantartás egységet nem tervezett hibák és frissítési tartománnyal egységet.
+Ezeknek az elképzeléseknek a legegyszerűbb módja, ha úgy gondolja, hogy tartalék, mint a nem tervezett meghibásodások egysége és a tervezett karbantartás frissítési.
 
-Frissítési tartománnyal ClusterConfig.json ad meg, amikor kiválaszthatja az egyes UD nevét. Ha például a következő neveket érvényesek:
+Ha frissítési ad meg a ClusterConfig. JSON fájlban, kiválaszthatja az egyes UD-nevek nevét. Például a következő nevek érvényesek:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
 * "upgradeDomain": "Blue"
 
-További részletes információ a tartalék és frissítési tartománnyal,: [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md).
+A tartalék és a frissítési kapcsolatos részletes információkért lásd: [Service Fabric-fürt leírása](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Egy éles fürtöt kell span legalább három tartalék tartományok között annak érdekében, hogy a támogatott az éles környezetben, ha a karbantartási és a felügyeleti csomópont feletti teljes hozzáféréssel rendelkezik, vagyis Ön felelős frissítése, és cserélje le a gépek. Környezetekben (azt jelenti, az Amazon Web Services Virtuálisgép-példányok) fut, ha nem rendelkezik teljes hozzáféréssel a gépek fürtök esetén a fürt kell rendelkeznie legalább öt tartalék tartományok között. Minden egyes FD rendelkezhet egy vagy több csomópontot. Ez a gép frissítések és verziófrissítések, amelyek attól függően, hogy időzítési megzavarhatja a futó alkalmazások és szolgáltatások a fürtök által okozott problémák elkerülése érdekében.
+Az éles környezetben üzemelő fürtöknek legalább három tartalék kell kiterjedniük ahhoz, hogy éles környezetben is támogatni lehessen őket, ha teljes mértékben kézben tarthatja a csomópontok karbantartását és felügyeletét, vagyis Ön felelős a gépek frissítéséhez és lecseréléséhez. Olyan környezetekben futó fürtök esetén (azaz Amazon Web Services VM-példányok), ahol nincs teljes hozzáférése a gépekhez, legalább öt tartalék kell lennie a fürtben. Mindegyik FD rendelkezhet egy vagy több csomóponttal is. Ennek célja, hogy megakadályozza a gépek frissítései és frissítései által okozott problémákat, ami az Időzítéstől függően zavarhatja a fürtökben lévő alkalmazások és szolgáltatások futtatását.
 
-## <a name="determine-the-initial-cluster-size"></a>A kezdeti csomópont mérete határozza meg
+## <a name="determine-the-initial-cluster-size"></a>A fürt kezdeti méretének meghatározása
 
-Általában a fürtben található csomópontok számát határozza meg, amely üzleti igényeinek, hány szolgáltatások és a tárolók fog futni a fürtön, és hány erőforrások van szüksége a számítási feladatok fenntartására. Éles fürtök esetén célszerű megadnia, hogy legalább öt csomópont a fürt 5 tartalék átfedés. Azonban a fentiekben ismertetettek szerint, ha a csomópontok teljes körű irányítását, és három tartalék tartományok között is kiterjedhet majd három csomópont is érdemes megtenni a feladatot.
+Általában a fürtben lévő csomópontok száma az üzleti igényeknek megfelelően van meghatározva, vagyis azt, hogy hány szolgáltatás és tároló fut a fürtön, és hány erőforrásra van szükség a számítási feladatok fenntartásához. Éles fürtök esetében javasoljuk, hogy a fürtben legalább öt csomóponttal lássa el az 5 tartalék. Ha azonban a fentiekben leírtak szerint teljes mértékben szabályozhatja a csomópontjait, és három tartalék is kiterjedhet, akkor három csomópontnak is el kell végeznie a feladatot.
 
-Állapotalapú alkalmazások és szolgáltatások futtatása tesztfürtök kell három csomópont van, mivel csak a futó állapot nélküli munkaterhelés csak tesztelési fürtökhöz szükséges egy csomópontot. Emellett Megjegyzendő, hogy fejlesztési célokra, rendelkezhet több csomópont az adott számítógépen. Éles környezetben azonban a Service Fabric támogatja a fizikai vagy virtuális gép csak egy csomópontonkénti.
+Az állapot-nyilvántartó számítási feladatokat futtató fürtökön három csomópontnak kell lennie, míg a csak állapot nélküli munkaterheléseket futtató tesztelési fürtökön csak egy csomópontra van szükség. Azt is meg kell jegyezni, hogy a fejlesztési célokra több csomópont is tartozhat egy adott gépen. Éles környezetben azonban a Service Fabric fizikai vagy virtuális gépenként csak egy csomópontot támogat.
 
-## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Készítse elő a gépek csomópontok erre a célra
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>A csomópontként szolgáló gépek előkészítése
 
-Az alábbiakban néhány javasolt adatait tartalmazza az egyes gépek, a fürthöz hozzáadni kívánt:
+Íme néhány ajánlott specifikáció minden olyan géphez, amelyet hozzá szeretne adni a fürthöz:
 
-* Egy legalább 16 GB RAM
+* Legalább 16 GB RAM
 * Legalább 40 GB szabad lemezterület
-* Egy 4 mag, vagy nagyobb CPU
-* Kapcsolat egy biztonságos hálózati vagy a hálózatok minden gép
+* 4 mag vagy nagyobb CPU
+* Kapcsolat biztonságos hálózattal vagy hálózattal az összes géphez
 * Telepített Windows Server operációs rendszer (érvényes verziók: 2012 R2, 2016, 1709 vagy 1803). Service Fabric a 6.4.654.9590 és újabb verziója is támogatja a 2019-es és a 1809-es kiszolgálót.
-* [.NET-keretrendszer 4.5.1-es vagy újabb](https://www.microsoft.com/download/details.aspx?id=40773), teljes verzióként
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* A [RemoteRegistry szolgáltatás](https://technet.microsoft.com/library/cc754820) minden gépen kell futnia
+* [.NET-keretrendszer 4.5.1 vagy újabb](https://www.microsoft.com/download/details.aspx?id=40773), teljes telepítés
+* [Windows PowerShell 3,0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
+* A [RemoteRegistry szolgáltatásnak](https://technet.microsoft.com/library/cc754820) az összes gépen futnia kell
 * Service Fabric telepítési meghajtójának NTFS fájlrendszerrel kell rendelkeznie
 
-Rendelkeznie kell a fürt rendszergazdája központi telepítését és konfigurálását a fürt [rendszergazdai jogosultságokkal](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) az egyes gépek. A Service Fabric tartományvezérlőn nem telepíthető.
+A fürt telepítéséhez és konfigurálásához a fürtnek [rendszergazdai jogosultságokkal](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) kell rendelkeznie az egyes gépeken. A Service Fabric tartományvezérlőn nem telepíthető.
 
-## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Töltse le a Service Fabric különálló csomag a Windows Server
-[Töltse le a Windows Server - Service Fabric önálló csomag - hivatkozás](https://go.microsoft.com/fwlink/?LinkId=730690) , és tömörítse ki a csomagot, vagy egy üzembe helyezési géphez, amely nem része a fürtnek, vagy egy, a gép, amely egy fürt tagja lesz.
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>A Windows Serverhez készült Service Fabric önálló csomag letöltése
+[Töltse le a hivatkozást – Service Fabric önálló csomagot – a Windows Servert](https://go.microsoft.com/fwlink/?LinkId=730690) és csomagolja ki a csomagot egy olyan központi telepítési gépre, amely nem része a fürtnek, vagy a fürt részét képező gépek egyikének.
 
 ## <a name="modify-cluster-configuration"></a>Fürt konfigurációjának módosítása
-Önálló fürt létrehozása akkor hozzon létre egy önálló fürt konfigurációs ClusterConfig.json fájlt, amely a fürt meghatározását ismerteti. A sablonokkal címen található a konfigurációs fájl alapján is az alábbi hivatkozásra. <br>
-[Önálló fürtkonfiguráció](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+Önálló fürt létrehozásához létre kell hoznia egy önálló fürtkonfiguráció ClusterConfig. JSON fájlt, amely leírja a fürt specifikációját. A konfigurációs fájlt a lenti hivatkozásban található sablonok alapján alapozhatja. <br>
+[Önálló fürt konfigurációi](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-A szakaszok ezt a fájlt a részletekért lásd: [különálló Windows-fürt konfigurációs beállításainak](service-fabric-cluster-manifest.md).
+További információ a fájl fejezeteiről: [önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md).
 
-Nyissa meg a letöltött csomag egy ClusterConfig.json fájlt, és módosítsa az alábbi beállításokat:
+Nyisson meg egy ClusterConfig. JSON fájlt a letöltött csomagból, és módosítsa a következő beállításokat:
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
-| **NodeType** |A csomóponttípusok lehetővé teszik különböző csoportokba rendezheti a fürtcsomópontokat. A fürt legalább egy NodeType csomóponttípust kell rendelkeznie. Egy csoport összes csomópontja a következő közös jellemzőkkel rendelkeznek: <br> **Név** – Ez az a csomóponttípus neve. <br>**Végpontportokat** – ezek a különböző nevesített végpontok (portot képes) ennek a csomóponttípusnak társított. Használhat bármilyen szeretne, mindaddig, amíg azok nem ütköznek a bármi más, a jegyzékfájlban és még nem más, a számítógép vagy virtuális gépen futó alkalmazás által használt port számát. <br> **Elhelyezési tulajdonságok** – ezek a helyrendszeri szolgáltatások vagy a szolgáltatások elhelyezési korlátozások használni csomópont típus tulajdonságait írják le. Ezek a tulajdonságok akkor a felhasználó által definiált kulcs-érték párok, amelyek további metaadatok biztosítanak egy adott csomópont. Példák a csomópont tulajdonságait lehet rendelkezik-e a csomópont a merevlemez-meghajtóra vagy grafikus kártyát, a merevlemez-meghajtóról, magok és más fizikai tulajdonságok forgórészek száma. <br> **Kapacitások** -fürt(ök) adható meg neve és a egy adott erőforrás mennyiségét, hogy egy adott csomópont felhasználható rendelkezik. Például egy csomópontot adhat meg, hogy rendelkezik-e "MemoryInMb" nevű metrika a kapacitása és arról, hogy vannak-e rendelkezésre álló 2048 MB-ot alapértelmezés szerint. Ezek a kapacitások használhatók futásidőben győződjön meg arról, hogy az adott mennyiségű erőforrást igénylő szolgáltatások kerüljenek-e a csomópontokon, hogy ezek az erőforrások a szükséges mennyiségben érhető el.<br>**IsPrimary** – Ha győződjön meg arról, hogy csak az egyik értéke az elsődleges, a következő értékkel definiált egynél több NodeType *igaz*, amely az cég, ahol a rendszer futtassa. Minden más csomóponttípusok értékre kell állítani *false (hamis)* |
-| **Csomópontok** |Ezek azok a csomópontok (csomópont típusa, csomópont nevét, IP-cím, tartalék tartomány és frissítési tartomány a csomópont) a fürt részét képező részleteit. A gépek azt szeretné, a fürt IP-címeit az itt felsorolt kell létrehozni. <br> Ha minden csomóponton ugyanaz az IP-címet használ, majd egy beépített fürt létrehozása, amely tesztelési célokra használható. Ne használja az éles számítási feladatok üzembe helyezése beépített fürtök. |
+| **NodeTypes** |A csomópont-típusok lehetővé teszik a fürtcsomópontok különböző csoportokba való elkülönítését. A fürtnek rendelkeznie kell legalább egy NodeType. A csoport összes csomópontja a következő általános jellemzőkkel rendelkezik: <br> **Név** – ez a csomópont típusának neve. <br>**Végponti portok** – ezek különböző elnevezett végpontok (portok), amelyek ehhez a csomópont-típushoz vannak társítva. Tetszőleges portszámot használhat, ha nem ütköznek a jegyzékfájlban található minden más alkalmazással, és a gép/virtuális gépen futó más alkalmazások még nem használják azokat. <br> **Elhelyezési tulajdonságok** – a csomópont azon típusának tulajdonságait írja le, amelyet elhelyezési megkötésként használ a rendszerszolgáltatások vagy a szolgáltatások számára. Ezek a tulajdonságok olyan felhasználó által definiált kulcs/érték párok, amelyek egy adott csomópontra vonatkozóan extra metaadatokat biztosítanak. Csomópont-tulajdonságok például az, hogy a csomópont rendelkezik-e merevlemezzel vagy grafikus kártyával, a merevlemezen, a magokon és egyéb fizikai tulajdonságoknál található orsók számával. <br> **Kapacitások** – a csomóponti kapacitások határozzák meg egy adott erőforrás nevét és mennyiségét, amelyet egy adott csomópont felhasználhat a felhasználáshoz. Egy csomópont például meghatározhat egy "MemoryInMb" nevű metrikai kapacitást, és alapértelmezés szerint 2048 MB érhető el. Ezek a kapacitások futásidőben használhatók annak biztosítására, hogy bizonyos mennyiségű erőforrást igénylő szolgáltatások a szükséges mennyiségeken elérhetők legyenek az adott erőforrásokkal rendelkező csomópontokon.<br>**IsPrimary** – ha egynél több NodeType van meghatározva, győződjön meg arról, hogy csak egy az *igaz*értékre van beállítva, amely a rendszerszolgáltatások futtatásának helye. Minden más csomópont-típust *false* értékre kell beállítani |
+| **Csomópontok** |Ezek a fürt részét képező csomópontok (csomópont típusa, csomópont neve, IP-cím, tartalék tartomány és a csomópont frissítési tartománya) részletei. Azokat a gépeket, amelyekhez létre szeretné hozni a fürtöt, itt fel kell vennie az IP-címüket. <br> Ha ugyanazt az IP-címet használja az összes csomóponthoz, akkor létrejön egy egyablakos fürt, amely tesztelési célokra használható. Ne használjon egydobozos fürtöket éles számítási feladatok telepítéséhez. |
 
-Miután a fürt konfigurációját volt-e a környezet konfigurálva minden beállítás, megbízhatósága a fürt környezetre (7. lépés).
+Miután a fürtkonfiguráció minden beállítást beállított a környezethez, a rendszer tesztelheti a fürt környezetét (7. lépés).
 
 <a id="environmentsetup"></a>
 
 ## <a name="environment-setup"></a>A környezet beállítása
 
-Amikor a fürt rendszergazdája konfigurálja a különálló Service Fabric-fürtön, a környezetet kell állítani a következő feltételek: <br>
-1. A fürtöt létrehozó felhasználónak számítanak csomópontnak a fürt konfigurációs fájlban felsorolt összes gép biztonsági rendszergazdai jogosultsággal kell rendelkeznie.
-2. A gép, amelyről a fürt létrehozása, valamint minden egyes fürt csomópontját működtető kell:
-   * Service Fabric SDK eltávolítása után
-   * Rendelkezik a Service Fabric-futtatókörnyezet eltávolítása
-   * A Windows tűzfalszolgáltatást (mpssvc) engedélyezve van
-   * A távoli beállításjegyzék szolgáltatás (a távoli beállításjegyzék) engedélyezve van
-   * Fájl megosztási (SMB) engedélyezve van
-   * Rendelkezik a szükséges portokat lett megnyitva, a fürt konfiguráció portok alapján
-   * Rendelkezik a szükséges, a Windows az SMB és a távoli beállításjegyzék szolgáltatás megnyitott portok: 135-ös, 137-es, 138, 139-es és a 445-ös
-   * Egy másik hálózati kapcsolat
-3. A fürt csomópont gépek egyike egy tartományvezérlő legyen.
-4. Ha a fürt üzembe lesz helyezve egy biztonságos fürt, ellenőrizze a szükséges biztonsági előfeltételeket helyezze el, és megfelelően van konfigurálva a konfiguráció alapján.
-5. Ha a fürt gépek nem internetről elérhető, a fürt konfigurációját a állítsa be a következőket:
-   * Telemetria letiltása: alatt *tulajdonságok* beállítása *"enableTelemetry": hamis*
-   * Tiltsa le az automatikus Fabric verzió letöltése és értesítések, hogy az aktuális fürt verziója van-e hamarosan megszűnik a támogatás: alatt *tulajdonságok* beállítása *"fabricClusterAutoupgradeEnabled": hamis*
-   * Azt is megteheti, ha hálózati internet-hozzáférés korlátozott fehér felsorolt tartományokhoz, az alábbi tartományok szükségesek az automatikus frissítés: go.microsoft.com jövőben a Microsoft
+Ha egy fürt rendszergazdája Service Fabric önálló fürtöt konfigurál, a környezetet a következő feltételekkel kell beállítani: <br>
+1. A fürtöt létrehozó felhasználónak rendszergazdai szintű biztonsági jogosultságokkal kell rendelkeznie minden olyan gépen, amely csomópontként szerepel a fürt konfigurációs fájljában.
+2. Az a gép, amelyről a fürtöt létrehozták, valamint a fürt csomópontjainak a következőket kell tennie:
+   * Service Fabric SDK eltávolítása megtörtént
+   * Service Fabric futtatókörnyezet eltávolítása
+   * Engedélyezve van-e a Windows tűzfal szolgáltatás (MpsSvc)
+   * Engedélyezve van-e a távoli beállításjegyzék szolgáltatás (távoli beállításjegyzék)
+   * Engedélyezve van a fájlmegosztás (SMB)
+   * Szükséges portok megnyitva a fürt konfigurációs portjai alapján
+   * Meg kell nyitni a Windows SMB és a távoli beállításjegyzék szolgáltatáshoz szükséges portokat: 135, 137, 138, 139 és 445
+   * Hálózati kapcsolattal rendelkezik egymással
+3. A fürtcsomópont-gépek egyikének sem kell tartományvezérlőnek lennie.
+4. Ha a telepítendő fürt egy biztonságos fürt, ellenőrizze a szükséges biztonsági előfeltételeket, és helyesen vannak konfigurálva a konfiguráción.
+5. Ha a fürtben lévő gépek nem érhetők el az internetről, állítsa be a következőt a fürt konfigurációjában:
+   * Telemetria letiltása: a "EnableTelemetry" *tulajdonságban* állítsa be a *következőt: false*
+   * Letilthatja az automatikus háló verziójának letöltését & értesítéseket arról, hogy a fürt aktuális verziója hamarosan megszűnik a támogatás vége: a *"fabricClusterAutoupgradeEnabled"* *tulajdonság* beállítása alatt: false
+   * Ha a hálózati internet-hozzáférés a felsorolt tartományokra korlátozódik, az alábbi tartományokra van szükség az automatikus frissítéshez: go.microsoft.com download.microsoft.com
 
-6. Állítsa be a megfelelő Service Fabric víruskereső – kizárások:
+6. A megfelelő Service Fabric Antivirus-kizárások beállítása:
 
-| **A víruskereső kizárt könyvtárak** |
+| **Víruskereső által kizárt könyvtárak** |
 | --- |
-| Program Files\Microsoft a Service Fabric |
-| FabricDataRoot (a fürt konfiguráció) |
-| FabricLogRoot (a fürt konfiguráció) |
+| Program Files\Microsoft Service Fabric |
+| FabricDataRoot (a fürt konfigurációjától) |
+| FabricLogRoot (a fürt konfigurációjától) |
 
-| **A víruskereső kizárt folyamatok** |
+| **Víruskereső által kizárt folyamatok** |
 | --- |
-| Fabric.exe |
-| FabricHost.exe |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe |
-| FabricDCA.exe |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe |
-| FileStoreService.exe |
+| Fabric. exe |
+| Hálóbeli. exe |
+| FabricInstallerService. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| ImageBuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| FileStoreService. exe |
 
-## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration parancsfájl-környezet ellenőrzése
-A TestConfiguration.ps1 parancsfájlt a különálló csomag található. Mint egy ajánlott eljárásokat elemző eszköz ellenőrzésére szolgál a fenti feltételek közül néhányat, és megerősítést ellenőrzése ellenőrzése, hogy egy fürtöt is üzembe helyezhetők az adott környezetben használható. Bármilyen hiba esetén tekintse meg a lista [környezet beállítása](service-fabric-cluster-standalone-deployment-preparation.md) hibaelhárításhoz.
+## <a name="validate-environment-using-testconfiguration-script"></a>Környezet ellenőrzése a TestConfiguration parancsfájl használatával
+A TestConfiguration. ps1 parancsfájl az önálló csomagban található. A rendszer az ajánlott eljárásokat elemző eszközként használja a fenti feltételek némelyikének ellenőrzéséhez, és az alapértékként ellenőrzi, hogy egy fürt üzembe helyezhető-e egy adott környezetben. Ha hiba lép fel, a hibaelhárításhoz tekintse meg a [környezet beállítása](service-fabric-cluster-standalone-deployment-preparation.md) szakaszban található listát.
 
-Ezt a parancsfájlt minden olyan gép, amely számítanak csomópontnak a fürt konfigurációs fájlban felsorolt összes gép rendszergazdai hozzáféréssel rendelkezik. Ez a szkript futtatott a gép nem rendelkezik a fürt részeként.
+Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzáféréssel rendelkezik az összes olyan géphez, amely csomópontként szerepel a fürt konfigurációs fájljában. A parancsfájl futtatásához használt gépnek nem kell a fürt részét képeznie.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
@@ -160,12 +152,12 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-Ez a konfiguráció tesztelési modul jelenleg nem érvényesíti a biztonsági beállítások tehát ez egymástól függetlenül hajtható végre.
+Ez a konfigurációs tesztelési modul jelenleg nem ellenőrzi a biztonsági beállításokat, így azt egymástól függetlenül kell elvégezni.
 
 > [!NOTE]
-> Folyamatosan igyekszünk fejlesztései, hogy ez a modul még robusztusabbá, így ha egy hibás vagy hiányzó eset úgy gondolja, amely nem jelenleg TestConfiguration által észlelt, tudassa velünk keresztül a [támogatási csatornákat](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+> Folyamatosan fejlesztjük ezt a modult, így ha van olyan hibás vagy hiányzó eset, amelyet a TestConfiguration jelenleg nem észlel, kérjük, tudassa velünk a [támogatási csatornákon](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)keresztül.
 >
 >
 
-## <a name="next-steps"></a>További lépések
-* [A Windows Server rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
+## <a name="next-steps"></a>Következő lépések
+* [Windows Serveren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)

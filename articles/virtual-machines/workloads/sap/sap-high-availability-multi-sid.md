@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff01bd0d6586cf75dcfdb7277c34120c6ec22894
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078152"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647492"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver multi-SID konfiguráció létrehozása
 
@@ -33,7 +33,7 @@ ms.locfileid: "70078152"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -88,11 +88,11 @@ A két magas rendelkezésre állású SAP-rendszerrel rendelkező teljes környe
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 Az infrastruktúra előkészítéséhez telepítsen egy további SAP ASCS/SCS-példányt a következő paraméterekkel:
 
-| Paraméternév | Value |
+| Paraméter neve | Value (Díj) |
 | --- | --- |
-| SAP ASCS/SCS SID |PR1-LB – ASCs |
+| SAP-ASCS/SCS SID |PR1-LB – ASCs |
 | SAP adatbázis-kezelő belső terheléselosztó | PR5 |
-| SAP virtuális gazdagép neve | pr5-sap-cl |
+| SAP virtuális gazdagép neve | PR5 – SAP-CL |
 | SAP ASCS/SCS virtuális gazdagép IP-címe (további Azure Load Balancer IP-cím) | 10.0.0.50 |
 | SAP-ASCS/SCS-példány száma | 50 |
 | ILB mintavételi port további SAP ASCS/SCS-példányhoz | 62350 |
@@ -107,7 +107,7 @@ További SAP ASCS/SCS-példányokat is telepíthet a meglévő WSFC-fürtbe két
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Statikus IP-cím |
 | --- | --- | --- |
 | 1\. ASCS/SCS-példányhoz tartozó fürtcsomópont |PR1-ASCs-0 |10.0.0.10 |
-| 2\. ASCS/SCS-példányhoz tartozó fürtcsomópont |PR1-ASCs-1 |10.0.0.9 |
+| 2\. ASCS/SCS-példányhoz tartozó fürtcsomópont |PR1-ASCs-1 |10.0.0.9 címek |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz a DNS-kiszolgálón
 
@@ -115,13 +115,13 @@ A következő paraméterek használatával létrehozhat egy DNS-bejegyzést a AS
 
 | Új SAP ASCS/SCS virtuális gazdagép neve | Társított IP-cím |
 | --- | --- |
-|pr5-sap-cl |10.0.0.50 |
+|PR5 – SAP-CL |10.0.0.50 |
 
 Az új állomásnév és IP-cím a DNS-kezelőben jelenik meg, az alábbi képernyőképen látható módon:
 
 ![A DNS-kezelő listája kiemelve a megadott DNS-bejegyzést az új SAP ASCS/SCS-fürt virtuális neve és TCP/IP-címe számára][sap-ha-guide-figure-6004]
 
-A DNS-bejegyzések létrehozásához szükséges eljárást a [Windows rendszerű virtuális gépeken a magas rendelkezésre állású SAP NetWeaver][sap-ha-guide-9.1.1]fő útmutatójában is részletesen ismertetjük.
+A DNS-bejegyzések létrehozásához szükséges eljárást a [Windows rendszerű virtuális gépeken a magas rendelkezésre állású SAP NetWeaver fő útmutatójában][sap-ha-guide-9.1.1]is részletesen ismertetjük.
 
 > [!NOTE]
 > A további ASCS/SCS-példány virtuális állomásnevét hozzárendelt új IP-címnek meg kell egyeznie az SAP Azure Load Balancerhez rendelt új IP-címmel.
@@ -237,12 +237,12 @@ A második SAP-rendszer infrastruktúra-előkészítésének befejezéséhez teg
 
 ## <a name="install-the-second-sap-sid2-netweaver-system"></a>A második SAP SID2 NetWeaver-szolgáltatás telepítése
 
-A második SAP SID2 rendszer telepítésének teljes folyamatát a Windows rendszerű [virtuális gépek magas rendelkezésre állású SAP NetWeaver][sap-ha-guide-9]fő útmutatója ismerteti.
+A második SAP SID2 rendszer telepítésének teljes folyamatát a Windows rendszerű [virtuális gépek magas rendelkezésre állású SAP NetWeaver fő útmutatója][sap-ha-guide-9]ismerteti.
 
 A magas szintű eljárás a következő:
 
-1. [Telepítse az SAP első fürtcsomópont][sap-ha-guide-9.1.2]-csomópontját.  
- Ebben a lépésben telepíti az SAP-t egy magas rendelkezésre állású ASCS/SCS-példánnyal a **meglévő WSFC-fürt 1**. csomópontján.
+1. [Telepítse az SAP első fürtcsomópont-csomópontját][sap-ha-guide-9.1.2].  
+ Ebben a lépésben telepíti az SAP-t egy magas rendelkezésre állású ASCS/SCS-példánnyal a **meglévő WSFC-fürt 1. csomópontján**.
 
 2. [Módosítsa az ASCS/SCS-példány SAP-profilját][sap-ha-guide-9.1.3].
 
@@ -267,7 +267,7 @@ A magas szintű eljárás a következő:
 
 10. [Tesztelje az SAP ASCS/SCS instance feladatátvételi és SIOS replikációját][sap-ha-guide-10].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több VIP Azure Load Balancer][load-balancer-multivip-overview]

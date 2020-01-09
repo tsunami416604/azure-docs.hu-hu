@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl Chaos-ütemterv | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl Chaos Schedule parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl Chaos-ütemterv
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A Chaos-ütemezéshez tartozó parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897543"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639173"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl-káosz ütemterv
 A Chaos-ütemterv beolvasása és beállítása.
@@ -28,7 +19,7 @@ A Chaos-ütemterv beolvasása és beállítása.
 
 |Parancs|Leírás|
 | --- | --- |
-| Get | Szerezze be a káosz-ütemtervet, amely meghatározza, hogy mikor és hogyan kell futtatni a káoszt. |
+| elérés | Szerezze be a káosz-ütemtervet, amely meghatározza, hogy mikor és hogyan kell futtatni a káoszt. |
 | halmaz | Állítsa be a káosz által használt ütemtervet. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl Chaos-ütemterv Get

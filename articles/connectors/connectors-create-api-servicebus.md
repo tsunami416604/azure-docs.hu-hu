@@ -1,18 +1,18 @@
 ---
 title: Exchange-üzenetek Azure Service Bus
-description: Üzenetek küldése és fogadása Azure Service Bus használatával Azure Logic Apps
+description: Automatikus feladatok és munkafolyamatok létrehozása, amelyek üzeneteket küldenek és fogadnak a Azure Logic Apps Azure Service Bus használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445894"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 

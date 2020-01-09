@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 59854d7d46f533510bea97a6845554fc0ce83dbb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328345"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646744"
 ---
-# <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
+# <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
 
 A virtuális hálózatok társításával zökkenőmentesen csatlakoztathatók az [Azure Virtual Network](virtual-networks-overview.md)-beli hálózatok. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
 
@@ -39,7 +39,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolódás
 
 A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
 
@@ -91,7 +91,7 @@ A következő megkötések csak akkor érvényesek, ha a virtuális hálózatok 
 * Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni egy alapszintű belső Load Balancer (ILB) előtér-IP-címével egy globálisan összetartozó virtuális hálózaton.
 * Az alapszintű Load balancert használó szolgáltatások nem működnek a globális virtuális hálózati kapcsolaton keresztül. További információ: [Mik a globális VNet-társítással és-terheléselosztóokkal kapcsolatos korlátozások?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-További információ: [követelmények és megkötések](virtual-network-manage-peering.md#requirements-and-constraints). Ha többet szeretne megtudni a támogatott számú társáról, tekintse meg a [hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)című témakört.
+További információ: [követelmények és megkötések](virtual-network-manage-peering.md#requirements-and-constraints). Ha többet szeretne megtudni a támogatott számú társáról, tekintse meg a [hálózati korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)című témakört.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -110,7 +110,7 @@ Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé tesz
 
 * Két virtuális hálózat közötti társítást hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez tartozhatnak ugyanabban az előfizetésben, vagy eltérő előfizetésekben is. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | Előfizetést  |
+    |Azure üzembehelyezési modell             | Előfizetés  |
     |---------                          |---------|
     |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Különböző](create-peering-different-subscriptions.md)|

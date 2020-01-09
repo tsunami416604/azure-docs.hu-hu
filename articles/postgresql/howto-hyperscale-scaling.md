@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 9/17/2019
-ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977556"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453055"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Nagy kapacitású-(Citus-) kiszolgálócsoport méretezése
 
-A Azure Database for PostgreSQL-nagy kapacitású (Citus) önkiszolgáló skálázást biztosít a megnövekedett terhelés kezelésére. A Azure Portal megkönnyíti az új munkavégző csomópontok hozzáadását és a meglévő csomópontok kapacitásának növelését.
+A Azure Database for PostgreSQL-nagy kapacitású (Citus) önkiszolgáló skálázást biztosít a megnövekedett terhelés kezelésére. A Azure Portal megkönnyíti az új munkavégző csomópontok hozzáadását és a meglévő csomópontok virtuális mag növelését.
 
 ## <a name="add-worker-nodes"></a>Munkavégző csomópontok hozzáadása
 
@@ -38,9 +38,9 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 A `rebalance_table_shards` függvény a (z) argumentumban található tábla együttes [elhelyezés](concepts-hyperscale-colocation.md) csoportjában lévő összes táblát újraegyenlíti. Így nem kell minden elosztott táblához meghívnia a függvényt, csak egy reprezentatív táblán kell meghívnia az egyes közös helyek csoportjából.
 
-## <a name="increase-vcores-or-storage-space"></a>Növelje a virtuális mag vagy a tárolóhelyet
+## <a name="increase-vcores"></a>Virtuális mag javítása
 
-Az új csomópontok hozzáadásán kívül növelheti a meglévő csomópontok képességeit is. Nyissa meg a **configure (Konfigurálás** ) fület a nagy kapacitású (Citus), és húzza a **virtuális mag** és **Storage** csúszkát az összes munkavégző csomópontra vonatkozó értékek módosításához. Ügyeljen rá, hogy a módosítások alkalmazásához kattintson a **Mentés** gombra.
+Az új csomópontok hozzáadásán kívül növelheti a meglévő csomópontok képességeit is. Ez a funkció jelenleg előzetes verzióban érhető el – Ha nagyobb virtuális mag szeretne kérni a kiszolgálócsoport csomópontjaihoz, vegye [fel a kapcsolatot az Azure ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Következő lépések
 

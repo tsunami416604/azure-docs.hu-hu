@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381052"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Nyelvi és területi támogatás a Speech Service-hez
 
@@ -81,7 +81,7 @@ A neurális szövegek és a beszédek egy új, mély neurális hálózatok álta
 
 A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakcióra, így természetesebb és vonzó, digitális szövegeket, például e-könyveket készíthet hangoskönyvekbe, és hatékonyabbá teheti az autós navigációs rendszereket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelési fáradtságot, amikor a felhasználók interakcióba lépnek az AI-rendszerekkel.
 
-A neurális hangok és a regionális elérhetőség teljes listájáért lásd: [régiók](regions.md#standard-and-neural-voices).
+További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
 Területi beállítás | Nyelv | Nem | Teljes szolgáltatásnév-hozzárendelés | Rövid hang neve
 --------|----------|--------|---------|------------
@@ -90,6 +90,8 @@ Területi beállítás | Nyelv | Nem | Teljes szolgáltatásnév-hozzárendelés
 `en-US` | Angol (Egyesült Államok) | Nő | "Microsoft Server Speech Text to Speech hang (en-US, JessaNeural)" | "en-US-JessaNeural"
 `it-IT` | Olasz (Olaszország) | Nő |"Microsoft Server Speech Text to Speech hang (IT-IT, ElsaNeural)" | "IT-IT-ElsaNeural"
 `zh-CN` | Kínai (anyaország) | Nő | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
+
+Ha szeretné megtudni, hogyan konfigurálhatja és módosíthatja a neurális hangokat, tekintse meg a [Speech szintézis Markup Language](speech-synthesis-markup.md#adjust-speaking-styles)című témakört.
 
 > [!NOTE]
 > A beszédfelismerési kérelmekben a teljes szolgáltatásnév-hozzárendelést vagy a rövid hangnevet használhatja.
@@ -210,7 +212,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Kantoni (hagyományos)      | `yue`          |
 | katalán      | `ca`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
-| kínai (hagyományos)      | `zh-Hant`          |
+| Kínai (hagyományos)      | `zh-Hant`          |
 | horvát      | `hr`          |
 | Cseh      | `cs`          |
 | dán      | `da`          |

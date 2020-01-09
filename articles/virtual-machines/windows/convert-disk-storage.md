@@ -1,5 +1,5 @@
 ---
-title: Azure Managed Disks Storage konvertálása standard csomagról prémium vagy prémium szintre
+title: Felügyelt lemezek tárterületének konvertálása a standard és a prémium szintű SSD között
 description: Az Azure Managed Disks standard szintűről prémiumra vagy prémium szintűre való konvertálása Azure PowerShell használatával.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033923"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563309"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Felügyelt lemez tárolási típusának frissítése
 
@@ -113,7 +113,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Kövesse az alábbi lépéseket:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a portálon a **virtuális gépek** listájából.
 3. Ha a virtuális gép nem áll le, válassza a **Leállítás** lehetőséget a virtuális gép **áttekintése** panel tetején, és várjon, amíg a virtuális gép leáll.
 3. A virtuális gép ablaktábláján válassza a menü **lemezek** elemét.
@@ -122,7 +122,7 @@ Kövesse az alábbi lépéseket:
 6. Módosítsa a **fiók típusát** **standard HDDról** **prémium SSDra**.
 7. Kattintson a **Save (Mentés**) gombra, és zárjuk be a lemez panelt.
 
-A lemez típusának átalakítása azonnali. Az átalakítás után újraindíthatja a virtuális gépet.
+A lemez típusának átalakítása azonnali. Az átalakítás után elindíthatja a virtuális gépet.
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Felügyelt lemezek váltása standard HDD és standard SSD között 
 

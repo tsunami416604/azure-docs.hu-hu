@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229319"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552678"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integráció a Security Center (előzetes verzió)
 
 A Azure Container Registry (ACR) egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely egy központi beállításjegyzékben tárolja és kezeli az Azure-beli központi telepítésekhez tartozó tároló lemezképeit. Ez a nyílt forráskódú Docker beállításjegyzék 2,0-es adatbázisán alapul.
 
-A beállításjegyzék és a lemezképek biztonsági réseinak mélyebb láthatósága érdekében a Azure Security Center Standard csomagjának felhasználói lehetővé teszik a választható tárolói kibocsátásiegység-forgalmi csomagokat. További információt a [díjszabás](security-center-pricing.md) tartalmaz. Ha a köteg engedélyezve van, Security Center automatikusan megkeresi a beállításjegyzékben lévő lemezképeket, amikor egy rendszerképet küld a beállításjegyzékbe.
+A beállításjegyzék és a lemezképek biztonsági réseinak mélyebb láthatósága érdekében a Azure Security Center Standard csomagjának felhasználói lehetővé teszik a választható tárolói kibocsátásiegység-forgalmi csomagokat. A szolgáltatás használatára vonatkozó költséget képarányban, nem pedig vizsgálaton keresztül számítjuk fel. További információt a [díjszabás](security-center-pricing.md) tartalmaz. Ha a köteg engedélyezve van, Security Center automatikusan megkeresi a beállításjegyzékben lévő lemezképeket, amikor egy rendszerképet küld a beállításjegyzékbe.
 
 > [!NOTE]
 > Security Center a beállításjegyzék első vizsgálata csak azt követően történik meg, hogy engedélyezve van-e a Container registrys csomag, és a rendszerképet leküldi a beállításjegyzékbe.

@@ -4,19 +4,19 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 653c175a559f5c0b7dc551b396e91276332df20a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466826"
 ---
-Az eszköz kapcsolódik egy storage-fiókot, amely az adatok az Azure-ban egy célhelyként szolgál. A tárfiókhoz való hozzáférést vezérlik az előfizetést és a két 512 bites tárelérési eléréséhez a storage-fiókhoz társított kulcsokat.
+Az eszköz egy olyan Storage-fiókhoz van társítva, amelyet az Azure-ban tárolt adataihoz célként használt. A Storage-fiókhoz való hozzáférést az előfizetés és az ehhez a Storage-fiókhoz tartozó 2 512 bites tárterület-hozzáférési kulcsok vezérlik.
 
-A kulcsok egyikét a hitelesítéshez során használatos a Data Box peremhálózati eszköz hozzáfér a tárfiókhoz. A másik hívóbetűt tárolt fenntartott, ezért a kulcsok rendszeres időközönként elfordításával.
+A kulcsok egyike a hitelesítéshez használatos, amikor a Data Box Edge eszköz hozzáfér a Storage-fiókhoz. A másik kulcs a tartalékban van tárolva, így a kulcsok rendszeres elforgatása is megtörténik.
 
-Biztonsági okokból a sok adatközpontok kulcsrotálás szükséges. Javasoljuk, hogy kövesse az ajánlott eljárások kulcsrotálás:
+Biztonsági okokból számos adatközponthoz kulcsfontosságú rotáció szükséges. Javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat a Key rotációhoz:
 
-- A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Alaposan a fiókja kulcsának védelmére. Nem terjesztheti más felhasználók jelszavát, keményen code, vagy mentse azt bárhol, hogy mások számára elérhető egyszerű szöveges.
-- [A fiók kulcsának újragenerálásával](../articles/storage/common/storage-account-manage.md#regenerate-access-keys) keresztül az Azure Portalon, ha úgy véli, sérülhet.
-- Az Azure-rendszergazdai rendszeres időközönként kell módosítani vagy az elsődleges vagy másodlagos kulcsának újragenerálása: közvetlenül hozzáférni a tárfiókhoz a Storage szakaszban az Azure Portal használatával.
+- A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. A fiók kulcsa körültekintően védhető. Ne ossza meg a jelszót más felhasználók számára, vagy jegyezze fel a kódot, vagy mentse a többi felhasználó számára elérhető egyszerű szövegbe.
+- Ha úgy gondolja, hogy sérült, akkor a fiók kulcsát a Azure Portal használatával újra létrehozhatja. További információ: a [Storage-fiók elérési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
+- Az Azure-rendszergazdának rendszeresen módosítania vagy újra kell generálnia az elsődleges vagy másodlagos kulcsot a Azure Portal Storage szakaszának használatával, hogy közvetlenül hozzáférhessen a Storage-fiókhoz.

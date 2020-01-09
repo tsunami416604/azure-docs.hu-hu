@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl SA-cluster | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl önálló fürtjének parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl SA-cluster
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az önálló fürtök kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901017"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646024"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-fürt
 Önálló Service Fabric-fürtök kezelése.

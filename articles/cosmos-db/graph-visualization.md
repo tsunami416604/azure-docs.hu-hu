@@ -1,53 +1,53 @@
 ---
-title: Az Azure Cosmos DB Gremlin API-diagram adatok megjelenítése
-description: Ismerje meg az Azure Cosmos DB graph adatok integrálása a Vizualizáció megoldások (Linkurious Enterprise, Cambridge intelligencia).
+title: A Graph-beli adataik megjelenítése Azure Cosmos DB Gremlin API-ban
+description: Ismerje meg, hogyan integrálhatja Azure Cosmos DB Graph-adatok vizualizációs megoldásokkal (Linkurious Enterprise, Cambridge intelligencia) való integrálásával.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.openlocfilehash: efe47cc5453a7259da37dcb3c33edcdfbea6d8c8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672643"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500027"
 ---
-# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Az Azure Cosmos DB Gremlin API tárolja és vizualizációs megoldások a grafikon adatainak megjelenítése
+# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Az adatvizualizációs megoldásokkal Azure Cosmos DB Gremlin API-ban tárolt gráf-adathalmazok megjelenítése
 
-Az Azure Cosmos DB Gremlin API használatával különféle képi megjelenítés megoldások tárolt adatok jelenítheti meg. A következő megoldások által ajánlott a [Apache Tinkerpop közösségi](http://tinkerpop.apache.org/#poweredby) graph adatmegjelenítéshez.
+A Azure Cosmos DB Gremlin API-ban tárolt adatmegjelenítés különféle adatvizualizációs megoldásokkal végezhető el. Az [Apache Tinkerpop-Közösség](https://tinkerpop.apache.org/#poweredby) az alábbi megoldásokat ajánlja a Graph adatvizualizációhoz.
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
 ![Linkurious embléma](./media/graph-visualization/linkurious-logo.jpg)
 
-[Linkurious vállalati](https://linkurio.us/product/) használ graph technológiával és adatmegjelenítés kapcsolni az összetett adatkészletek interaktív vizuális hálózatokba. A platform az adatforrásokhoz csatlakozik, és lehetővé teszi, hogy kutató több milliárd entitások és kapcsolatok zökkenőmentesen navigálhat. Ez egy új lehetőség anélkül, hogy a lekérdezések vagy táblák munkaórák gyanús kapcsolatok észlelése.
+A [Linkurious Enterprise](https://linkurio.us/product/) gráf-technológiát és adatvizualizációt használ az összetett adatkészletek interaktív vizualizációs hálózatokba való bekapcsolásához. A platform csatlakozik az adatforrásokhoz, és lehetővé teszi a nyomozók számára, hogy zökkenőmentesen navigáljon több milliárd entitás és kapcsolat között. Az eredmény egy új lehetőség a gyanús kapcsolatok észlelésére lekérdezésekkel vagy táblázatokkal való zsonglőrködés nélkül.
 
-Az interaktív felületét a Linkurious vállalati vizsgálja meg az összetett egyszerű megoldást kínál. Keresse meg az adott entitásokhoz, bontsa ki a kapcsolatok elvégzésével nyújt betekintést a rejtett kapcsolatokat és a alkalmazni, összetett hálózatok untangle tetszőleges elrendezések. Linkurious vállalati már kompatibilis az Azure Cosmos DB Gremlin API-hoz. Teljes körű graph Vizualizáció szituációkra, és támogatja az írási és olvasási képességek a felhasználói felületen. Kérheti egy [bemutatót az Azure Cosmos DB-vel Linkurious](https://linkurio.us/contact/)
+A Linkurious Enterprise interaktív felülete egyszerű módszert kínál az összetett adatmennyiség kivizsgálására. Megkeresheti az egyes entitásokat, kibonthatja a kapcsolatokat a rejtett kapcsolatok felfedéséhez, és tetszőleges elrendezést alkalmazhat az összetett hálózatokra. A Linkurious Enterprise mostantól kompatibilis a Azure Cosmos DB Gremlin API-val. Ez alkalmas a végpontok közötti gráf-vizualizációs forgatókönyvekhez, és támogatja a felhasználói felületről származó olvasási és írási képességeket. A [Linkurious bemutatóját a Azure Cosmos db](https://linkurio.us/contact/) használatával kérheti le
 
 ![Linkurious bemutató](./media/graph-visualization/linkurious-demo.gif)
 
-## <a name="cambridge-intelligence"></a>Cambridge intelligencia
+## <a name="cambridge-intelligence"></a>Cambridge-i intelligencia
 
-![Cambridge üzletiintelligencia-embléma](./media/graph-visualization/ci-logo.png)
+![Cambridge Intelligence embléma](./media/graph-visualization/ci-logo.png)
 
-[Cambridge intelligencia](https://cambridge-intelligence.com/products/) graph Vizualizáció eszközkészleteket mostantól támogatják az Azure Cosmos DB-hez. A következő két Vizualizáció eszközkészlettel az Azure Cosmos DB támogatja:
+[A Cambridge intelligencia](https://cambridge-intelligence.com/products/) Graph vizualizációs eszközkészletei mostantól támogatják a Azure Cosmos db. A Azure Cosmos DB a következő két vizualizációs eszközkészletet támogatja:
 
-- [A JavaScript-fejlesztőinek KeyLines](https://cambridge-intelligence.com/keylines/)
+- [A JavaScript-fejlesztők számára készült parancssorok](https://cambridge-intelligence.com/keylines/)
 
-- [Újra Graph React-fejlesztőknek](https://cambridge-intelligence.com/regraph/)
+- [Újragráf a fejlesztők Reagálásához](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge üzletiintelligencia-bemutató](./media/graph-visualization/ci-demo-2.gif)
+![Cambridge Intelligence-bemutató](./media/graph-visualization/ci-demo-2.gif)
 
-Ezek eszközkészleteket lehetővé teszi nagy teljesítményű graph vizualizációt és a használati esetekhez elemző alkalmazások tervezéséhez. Ezek kiaknázhatják hatékony webes grafikus Library(WebGL) renderelési és a gondosan megfogalmazott kód egy gyors és informatív vizualizációs megoldást biztosít a felhasználóknak. Ezek az eszközök bármely böngészőben, eszköz, kiszolgáló vagy adatbázis kompatibilis, és lépésről lépésre haladó oktatóanyagok, a teljes körű dokumentációval rendelkező API-k és az interaktív bemutatók kapható.
+Ezek az eszközkészletek lehetővé teszik a nagy teljesítményű Graph vizualizációs és elemzési alkalmazások kialakítását a használati esetekhez. Nagy teljesítményű web Graphics Library-(WebGL-) renderelést és gondosan elkészített kódokat biztosítanak a felhasználók számára a gyors és éleslátó vizualizációs élmény érdekében. Ezek az eszközök kompatibilisek a böngészővel, az eszközzel, a kiszolgálóval vagy az adatbázissal, és részletes oktatóanyagokkal, teljes körű dokumentált API-kkal és interaktív bemutatókkal rendelkeznek.
 
-![Cambridge üzletiintelligencia-bemutató](./media/graph-visualization/ci-demo-1.gif)
+![Cambridge Intelligence-bemutató](./media/graph-visualization/ci-demo-1.gif)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
-- [Próbálja ki az eszközökre](https://cambridge-intelligence.com/try/)
-- [KeyLines technológiai áttekintés](https://cambridge-intelligence.com/keylines/technology/)
-- [Újra Graph-technológiai áttekintés](https://cambridge-intelligence.com/regraph/technology/)
-- [Graph-Vizualizáció használati esetek](https://cambridge-intelligence.com/use-cases/)
+- [Az eszközkészlet kipróbálása](https://cambridge-intelligence.com/try/)
+- [A parancssori technológiák áttekintése](https://cambridge-intelligence.com/keylines/technology/)
+- [Az újragráf technológiájának áttekintése](https://cambridge-intelligence.com/regraph/technology/)
+- [Graph vizualizáció használati esetei](https://cambridge-intelligence.com/use-cases/)

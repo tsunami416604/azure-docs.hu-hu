@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008033"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608380"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Active Directory-naplók integrálása a ArcSight a Azure Monitor használatával
 
@@ -36,7 +36,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 * A ArcSight syslog NG Daemon SmartConnector (SmartConnector) vagy a ArcSight Load Balancer konfigurált példánya. Ha az eseményeket a ArcSight-Load Balancer küldik, a rendszer Következésképpen a Load Balancer továbbítja azokat a SmartConnector.
 
-Töltse le és nyissa meg az [Azure monitor Event hub ArcSight-SmartConnector tartozó konfigurációs útmutatót](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf). Ez az útmutató a Azure Monitor ArcSight-SmartConnector telepítéséhez és konfigurálásához szükséges lépéseket tartalmazza. 
+Töltse le és nyissa meg az [Azure monitor Event hub ArcSight-SmartConnector tartozó konfigurációs útmutatót](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Ez az útmutató a Azure Monitor ArcSight-SmartConnector telepítéséhez és konfigurálásához szükséges lépéseket tartalmazza. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD-naplók integrálása a ArcSight
 
@@ -59,4 +59,4 @@ Töltse le és nyissa meg az [Azure monitor Event hub ArcSight-SmartConnector ta
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Konfigurációs útmutató a Azure Monitor Event hub-hoz készült ArcSight-SmartConnector](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Konfigurációs útmutató a Azure Monitor Event hub-hoz készült ArcSight-SmartConnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f6a7f3e4e1470bc3788ceae68f035f68f05ae449
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919463"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423535"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás – jogkivonat beszerzése az alkalmazáshoz
 
@@ -33,7 +33,7 @@ Most, hogy létrehozta az ügyfélalkalmazás-objektumot, felhasználhatja egy, 
 
 A vezérlő módszereit egy `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. Itt látható a Microsoft Graph meghívására szolgáló kód.
 
-```CSharp
+```csharp
 [Authorize]
 public class HomeController : Controller
 {
@@ -54,7 +54,7 @@ A `ITokenAcquisition` szolgáltatást a ASP.NET a függőségek befecskendezés�
 
 Itt látható a HomeController műveletének egyszerűsített kódja, amely lekéri a tokent a Microsoft Graph meghívásához.
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token
@@ -153,7 +153,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 A Python-mintában a Microsoft Graphot hívó kód az [app. a # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-Kísérletet tesz a jogkivonat-gyorsítótárból való lekérésre, majd az engedélyezési fejléc beállítása után meghívja az EB API-t. Ha nem, akkor újra aláírja a felhasználót.
+Megkísérli lekérni a tokent a jogkivonat-gyorsítótárból, majd meghívja a webes API-t az engedélyezési fejléc beállítása után. Ha nem, akkor újra aláírja a felhasználót.
 
 ```python
 @app.route("/graphcall")

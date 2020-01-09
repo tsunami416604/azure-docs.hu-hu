@@ -1,76 +1,67 @@
 ---
-title: Az Azure Service Fabric actors KVSActorStateProvider beállításainak módosítása |} A Microsoft Docs
-description: Ismerje meg az Azure Service Fabric állapotalapú actors KVSActorStateProvider típusú konfigurálása.
-services: Service-Fabric
-documentationcenter: .net
+title: KVSActorStateProvider beállításainak módosítása
+description: Ismerje meg, hogyan konfigurálhatja az Azure-Service Fabric állapot-nyilvántartó KVSActorStateProvider típust.
 author: sumukhs
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8b10ef18fd389179a4f5422783606c45fa2e0d32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60728049"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609774"
 ---
-# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>A Reliable Actors – KVSActorStateProvider konfigurálása
-A Microsoft Visual Studio csomag gyökerében a Config mappában jön létre a megadott aktor settings.xml fájl módosításával módosíthatja a KVSActorStateProvider használható alapértelmezett konfigurációt.
+# <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors konfigurálása – KVSActorStateProvider
+A KVSActorStateProvider alapértelmezett konfigurációját módosíthatja úgy, hogy módosítja a Microsoft Visual Studio-csomag gyökerében létrehozott Settings. xml fájlt a megadott szereplő konfigurációs mappájában.
 
-Az Azure Service Fabric-futtatókörnyezet előre definiált nevek a settings.xml fájlban keres, és felhasználja a konfigurációs értékeket az alapul szolgáló futásidejű összetevők létrehozása során.
+Az Azure Service Fabric Runtime a Settings. xml fájlban előre definiált szakaszokat keres, és a konfigurációs értékeket használja az alapul szolgáló futásidejű összetevők létrehozásakor.
 
 > [!NOTE]
-> Tegye **nem** törölni vagy módosítani a szakaszneveket, a következő konfigurációk jön létre a Visual Studio-megoldásban settings.xml fájlban.
+> A Visual Studio-megoldásban létrehozott Settings. xml fájlban **ne** törölje vagy módosítsa a következő konfigurációk szakaszának nevét.
 > 
 > 
 
-## <a name="replicator-security-configuration"></a>A replikáló biztonsági konfiguráció
-A replikáló biztonsági konfigurációk szolgálnak a replikáció során használt kommunikációs csatornát. Ez azt jelenti, hogy a szolgáltatások nem látja a többi összes replikációs forgalmat, amely biztosítja, hogy az adatok magas rendelkezésre állású legyen is biztonságos.
-Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadályozza, hogy a replikációs biztonságot.
+## <a name="replicator-security-configuration"></a>Replikátor biztonsági konfigurációja
+A replikátor biztonsági beállításai a replikálás során használt kommunikációs csatorna biztonságossá tételére szolgálnak. Ez azt jelenti, hogy a szolgáltatások nem látják egymás replikációs forgalmát, így biztosítva, hogy a kiemelten elérhető adatok is biztonságosak legyenek.
+Alapértelmezés szerint a biztonsági konfiguráció üres szakasza megakadályozza a replikálás biztonságát.
 
 > [!IMPORTANT]
-> A Linux-csomópontokat a tanúsítványok kell PEM-formátumú. További információk megkeresése és tanúsítványok konfigurálása Linux kapcsolatban lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
+> Linux-csomópontokon a tanúsítványoknak PEM formátumúnak kell lenniük. Ha többet szeretne megtudni a Linux-tanúsítványok kereséséről és konfigurálásáról, tekintse meg [a tanúsítványok konfigurálása Linuxon](./service-fabric-configure-certificates-linux.md)című témakört. 
 > 
 
-### <a name="section-name"></a>A szakasz nevét
+### <a name="section-name"></a>Szakasz neve
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-## <a name="replicator-configuration"></a>Replikációs konfiguráció
-A replikáló konfigurációk a replikátor, amely feladata, hogy az Aktor Riasztásiállapot-szolgáltató állapota magas megbízhatóságú konfigurálása.
-Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott és elegendőnek kell lennie. Ez a szakasz ismerteti a replikátor finomhangolása elérhető további konfigurációs.
+## <a name="replicator-configuration"></a>Replikátor konfigurációja
+A replikátor-konfigurációk olyan replikátort állítanak be, amely felelős a szereplők állami szolgáltatói állapotának nagyfokú megbízhatóságának kialakításához.
+Az alapértelmezett konfigurációt a Visual Studio-sablon hozza létre, és ennek elegendőnek kell lennie. Ez a szakasz a replikátor finomhangolásához elérhető további konfigurációkról beszél.
 
-### <a name="section-name"></a>A szakasz nevét
+### <a name="section-name"></a>Szakasz neve
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Name (Név) | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
+| Név | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |másodperc |0.015 |Adott időszakban, amelyhez a replikátor, miután kapott egy művelet, mielőtt elküldené a másodlagos vár az elsődleges biztonsági nyugtázást. Bármely más nyugtázás a intervallumon belül feldolgozott műveletek kell elküldeni, egy választ kapnak. |
-| ReplicatorEndpoint |– |Alapértelmezett – kötelező paraméter |IP-cím és az elsődleges és másodlagos replikátor kommunikálni más gyártóitól a replika által használt port megadása A TCP-erőforrás végpontjának a szolgáltatásjegyzékben ez kell hivatkoznia. Tekintse meg [szolgáltatásjegyzéki erőforrások](service-fabric-service-manifest-resources.md) további végpont erőforrások meghatározása szolgáltatásjegyzékben kapcsolatban. |
-| retryInterval |másodperc |5 |Az időszak, amely után a replikátor újra továbbítja az üzenet Ha nem kapja meg egy művelet nyugtázása. |
-| MaxReplicationMessageSize |Bájt |50 MB |Egy üzenet továbbítható replikációs adatok maximális mérete. |
-| MaxPrimaryReplicationQueueSize |Műveletek száma |1024 |Az elsődleges üzenetsor-műveletek maximális száma. Egy műveletet a fel nem szabadul, miután az elsődleges replikátor nyugtázást fogad az összes másodlagos gyártóitól. Ez az érték nagyobb, mint 64 és 2 hatványának kell lennie. |
-| MaxSecondaryReplicationQueueSize |Műveletek száma |2048 |A másodlagos üzenetsor-műveletek maximális száma. Egy művelet fel nem szabadul, az állapot megőrzése révén magas rendelkezésre állású elvégzése után. Ez az érték nagyobb, mint 64 és 2 hatványának kell lennie. |
+| BatchAcknowledgementInterval |másodperc |0,015 |Az az időszak, ameddig a másodlagos megvárja a műveletet a művelet fogadása után, mielőtt visszaküldi a nyugtát az elsődlegesnek. Az ezen az intervallumon belül feldolgozott műveletekhez küldendő összes más nyugtát egyetlen válaszként kell elküldeni. |
+| ReplicatorEndpoint |– |Nincs alapértelmezett – kötelező paraméter |Az az IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikákkal való kommunikációhoz fog használni. Ennek a szolgáltatás jegyzékfájljában a TCP-erőforrás végpontra kell hivatkoznia. A szolgáltatási jegyzékfájlban található végponti erőforrások definiálásával kapcsolatos további információkért tekintse meg a [szolgáltatás jegyzékfájljának erőforrásai](service-fabric-service-manifest-resources.md) című témakört. |
+| retryInterval |másodperc |5 |Az az időtartam, amely után a replikátor újraküld egy üzenetet, ha nem kap nyugtát egy művelethez. |
+| MaxReplicationMessageSize |Bájt |50 MB |Egyetlen üzenetben továbbítható replikációs adatok maximális mérete. |
+| MaxPrimaryReplicationQueueSize |Műveletek száma |1024 |Az elsődleges várólistában lévő műveletek maximális száma. Egy művelet akkor szabadítható fel, ha az elsődleges replikátor nyugtát kap az összes másodlagos replikáló közül. Ennek az értéknek nagyobbnak kell lennie, mint 64, és a 2 hatványa. |
+| MaxSecondaryReplicationQueueSize |Műveletek száma |2048 |A műveletek maximális száma a másodlagos várólistában. A művelet a kitartás után az állapotának nagyfokú rendelkezésre állása után szabadítható fel. Ennek az értéknek nagyobbnak kell lennie, mint 64, és a 2 hatványa. |
 
-## <a name="store-configuration"></a>Store konfiguráció
-Store konfigurációk segítségével konfigurálhatja a helyi tároló, amely továbbra is fennáll az állapot, az épp replikált szolgál.
-Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott és elegendőnek kell lennie. Ez a szakasz ismerteti a helyi tároló finomhangolása elérhető további konfigurációs.
+## <a name="store-configuration"></a>Tároló konfigurációja
+Az áruházi konfigurációk a replikált állapot megőrzésére szolgáló helyi tároló konfigurálására szolgálnak.
+Az alapértelmezett konfigurációt a Visual Studio-sablon hozza létre, és ennek elegendőnek kell lennie. Ez a szakasz a helyi tároló finomhangolásához elérhető további konfigurációkról beszél.
 
-### <a name="section-name"></a>A szakasz nevét
+### <a name="section-name"></a>Szakasz neve
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Name (Név) | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
+| Név | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
-| MaxAsyncCommitDelayInMilliseconds |Ezredmásodperc |200 |A maximálisan engedélyezett kötegelési időköz tartós helyi tároló véglegesítések állítja. |
-| MaxVerPages |Oldalak száma |16384 |A helyi verziója oldalak maximális számát az adatbázisban tárolja. Meghatározza, hogy a szálankénti függőben lévő tranzakciók maximális számát. |
+| MaxAsyncCommitDelayInMilliseconds |Ezredmásodperc |200 |Beállítja a tartós helyi tárolók végrehajtásának maximális időtartamát. |
+| MaxVerPages |Lapok száma |16384 |A helyi tároló adatbázisában lévő verziók maximális száma. Meghatározza a függőben lévő tranzakciók maximális számát. |
 
 ## <a name="sample-configuration-file"></a>Minta konfigurációs fájl
 ```xml
@@ -95,6 +86,6 @@ Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott é
 </Settings>
 ```
 ## <a name="remarks"></a>Megjegyzések
-A BatchAcknowledgementInterval a paraméterrel állítható be replikáció késése. "0" értéket eredményez a lehető legkisebb késleltetést, átviteli sebesség cserébe (a nyugtázó további üzenetek küldhetők és feldolgozott kevesebb nyugtázás tartalmazó kell).
-BatchAcknowledgementInterval minél nagyobb az értéke, annál az általános replikációs átviteli sebességet, cserébe magasabb. műveleti késés. Ez közvetlenül a rendszer lefordítja arra a tranzakció-véglegesítések késését.
+A BatchAcknowledgementInterval paraméter a replikációs késést vezérli. A (z) "0" érték a lehető legalacsonyabb késést eredményezi az átviteli sebességnél (mivel több nyugtázási üzenetet kell elküldeni és feldolgozni, ami kevesebb nyugtát tartalmaz).
+Minél nagyobb a BatchAcknowledgementInterval, annál nagyobb a replikálás teljes átviteli sebessége, a magasabb működési késés díja. Ez közvetlenül a tranzakciós véglegesítés késésével van lefordítva.
 

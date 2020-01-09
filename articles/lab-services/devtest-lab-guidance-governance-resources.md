@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561646"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644868"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs infrastruktúra irányítása – erőforrások
 Ez a cikk a szervezeten belüli DevTest Labs erőforrásainak igazítását és kezelését ismerteti. 
@@ -44,7 +44,7 @@ A **második ajánlott eljárás** az DevTest-előfizetés engedélyezése az Az
 
 Ez a modell lehetővé teszi a szervezet számára, hogy rugalmasan helyezzen üzembe Azure DevTest Labs a skálán. Egy szervezet több száz labort támogat a különböző üzleti egységek számára, párhuzamosan futó 100 – 1000 virtuális gépekkel. Egy központosított vállalati tesztkörnyezet fogalmát is támogatja, amely megoszthatja a konfiguráció-felügyeleti és biztonsági vezérlőkkel azonos alapelveket.
 
-Ez a modell azt is biztosítja, hogy a szervezet Ne merítse ki az Azure-előfizetéséhez kapcsolódó erőforrás-korlátozásokat. Az előfizetési és a szolgáltatási korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-subscription-service-limits.md). A DevTest Labs kiépítési folyamata nagy számú erőforráscsoportot használhat fel. Az Azure DevTest-előfizetésben támogatási kéréssel megnövelheti a korlátokat. Az éles előfizetésben lévő erőforrásokat nem érinti a rendszer, mivel a fejlesztési előfizetés használatban van. A DevTest Labs méretezésével kapcsolatos további információkért lásd: [kvóták és korlátozások méretezése a DevTest Labs-ben](devtest-lab-scale-lab.md).
+Ez a modell azt is biztosítja, hogy a szervezet Ne merítse ki az Azure-előfizetéséhez kapcsolódó erőforrás-korlátozásokat. Az előfizetési és a szolgáltatási korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md). A DevTest Labs kiépítési folyamata nagy számú erőforráscsoportot használhat fel. Az Azure DevTest-előfizetésben támogatási kéréssel megnövelheti a korlátokat. Az éles előfizetésben lévő erőforrásokat nem érinti a rendszer, mivel a fejlesztési előfizetés használatban van. A DevTest Labs méretezésével kapcsolatos további információkért lásd: [kvóták és korlátozások méretezése a DevTest Labs-ben](devtest-lab-scale-lab.md).
 
 Általános előfizetési szint korlátja, amelyet figyelembe kell venni, hogy a hálózati IP-címtartomány hozzárendelései hogyan vannak lefoglalva a termelési és fejlesztési előfizetések támogatásához. Ezeknek a hozzárendeléseknek figyelembe kell venniük a növekedést az idő múlásával (feltéve, hogy a helyszíni kapcsolatot vagy egy másik hálózati topológiát igényelnek, amely megköveteli, hogy a vállalat az Azure implementációja helyett a hálózati verem kezelését hajtsa végre). Az ajánlott eljárás az, hogy néhány olyan virtuális hálózattal rendelkezzen, amely nagyméretű IP-címmel rendelkezik, és több nagy alhálózattal van elosztva, nem pedig több, kisebb alhálózattal rendelkező virtuális hálózattal. 10 előfizetéssel például megadhat 10 virtuális hálózatot (egyet az egyes előfizetésekhez). Az elkülönítést nem igénylő laborok ugyanazt az alhálózatot tudják megosztani az előfizetés vnet.
 

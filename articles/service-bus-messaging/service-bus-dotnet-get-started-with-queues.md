@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561615"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563394"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -74,7 +74,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
 
     `ServiceBusConnectionString` változóként adja meg a névtérhez tartozó kapcsolatok karakterláncát. Adja meg a várólista nevét.
 
-1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a SendMessagesAsync metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
+1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a `SendMessagesAsync()` metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
 
     ```csharp
     public static async Task Main(string[] args)

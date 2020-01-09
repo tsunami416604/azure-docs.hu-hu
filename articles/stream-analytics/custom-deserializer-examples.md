@@ -1,25 +1,24 @@
 ---
-title: .NET-deszerializálók használata Azure Stream Analytics feladatokhoz
+title: A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával Azure Stream Analytics
 description: Ez a cikk ismerteti a szerializálási formátumot, valamint azokat az interfészeket, amelyek egyéni .NET-deszerializálók definiálását Azure Stream Analytics Felhőbeli és peremhálózati feladatok számára.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024940"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553018"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>.NET-deszerializálók használata Azure Stream Analytics feladatokhoz
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
 
-Az egyéni .NET-deszerializálók lehetővé teszik, hogy az Azure Stream Analytics-feladatok a három [beépített adatformátumon](stream-analytics-parsing-json.md)kívülről is olvassák az adatformátumokat. Ez a cikk ismerteti a szerializálási formátumot, valamint azokat az interfészeket, amelyek egyéni .NET-deszerializálók definiálását Azure Stream Analytics Felhőbeli és peremhálózati feladatok számára. A protokoll-és CSV-formátumhoz is vannak példa deszerializálók.
+A .NET-alapú egyéni deszerializálók lehetővé teszik, hogy az Azure Stream Analytics-feladatok a három [beépített adatformátumon](stream-analytics-parsing-json.md)kívülről is olvassák az adatformátumokat. Ez a cikk ismerteti a szerializálási formátumot, valamint azokat a csatolókat, amelyek meghatározzák a .NET-alapú egyéni deszerializálók Azure Stream Analytics a felhő és a peremhálózati feladatok számára. A protokoll-és CSV-formátumhoz is vannak példa deszerializálók.
 
-## <a name="custom-net-deserializer"></a>Egyéni .NET deszerializáló
+## <a name="net-custom-deserializer"></a>.NET egyéni deszerializáló
 
 A következő kódrészletek az egyéni deszerializáló definiáló felületek, valamint a `StreamDeserializer<T>`implementálása.
 
@@ -226,12 +225,12 @@ a `serializationClassName` `StreamDeserializer<T>`t megvalósító osztálynak k
 
 Ez a funkció a következő régiókban érhető el:
 
-* USA nyugati középső régiója (elérhető)
-* Észak-Európa (elérhető)
-* USA keleti régiója (elérhető)
-* USA nyugati régiója (hamarosan elérhető)
-* USA 2. keleti régiója (hamarosan kivezetve)
-* Nyugat-Európa (hamarosan kivezetve)
+* USA nyugati középső régiója
+* Észak-Európa
+* USA keleti régiója
+* USA nyugati régiója
+* USA 2. keleti régiója
+* Nyugat-Európa
 
 További régiók [támogatását is kérheti](https://aka.ms/ccodereqregion) .
 
@@ -239,7 +238,7 @@ További régiók [támogatását is kérheti](https://aka.ms/ccodereqregion) .
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Mikor lesz elérhető ez a szolgáltatás az összes Azure-régióban?
 
-Ez a funkció 6 régióban érhető el (#region támogatással). Ha egy másik régióban szeretné használni ezt a funkciót, [elküldhet egy kérelmet](https://aka.ms/ccodereqregion). Az összes Azure-régió támogatása az ütemterv szerint történik.
+Ez a funkció [6 régióban](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)érhető el. Ha egy másik régióban szeretné használni ezt a funkciót, [elküldhet egy kérelmet](https://aka.ms/ccodereqregion). Az összes Azure-régió támogatása az ütemterv szerint történik.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Hozzáférhetek a MetadataPropertyValue a saját bemenetekhez a GetMetadataPropertyValue függvényhez hasonló módon?
 
@@ -251,4 +250,4 @@ A deszerializáló megvalósítását követően a Közösséggel megoszthatja m
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Egyéni .NET-deszerializálók Azure Stream Analytics felhőalapú feladatokhoz](custom-deserializer.md)
+* [.NET-alapú egyéni deszerializálók Azure Stream Analytics felhőalapú feladatokhoz](custom-deserializer.md)

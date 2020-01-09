@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure IoT Hub (.NET) sablon használatával |} A Microsoft Docs
-description: Hogyan lehet egy Azure Resource Manager-sablon használatával hozzon létre egy IoT hubra C#-program.
+title: Azure-IoT Hub létrehozása sablon (.NET) használatával | Microsoft Docs
+description: Azure Resource Manager sablon használata egy IoT Hub C# programhoz való létrehozásához.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,44 +9,44 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457033"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Hozzon létre egy IoT hub (.NET) az Azure Resource Manager-sablon használatával
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>IoT hub létrehozása Azure Resource Manager sablon használatával (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Használhatja az Azure Resource Manager hozhat létre, és az Azure IoT hubs programozással felügyelheti. Az oktatóanyag bemutatja, hogyan hozzon létre egy IoT hubra a C#-program Azure Resource Manager-sablon használatával.
+A Azure Resource Manager használatával programozott módon hozhat létre és kezelhet Azure IoT-hubokat. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy IoT hubot egy Azure Resource Manager sablonnal egy C# programból.
 
 > [!NOTE]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Az Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk ismerteti az Azure Resource Manager üzemi modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Azure Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk a Azure Resource Manager üzembe helyezési modell használatát ismerteti.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Visual Studio.
-* Aktív Azure-fiók. <br/>Ha nincs fiókja, néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial].
-* Egy [Azure Storage-fiók] [ lnk-storage-account] az Azure Resource Manager-sablon fájlok tárolására szolgál.
-* [Az Azure PowerShell 1.0] [ lnk-powershell-install] vagy újabb.
+* Aktív Azure-fiók. <br/>Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial] .
+* Egy [Azure Storage-fiók][lnk-storage-account] , amely a Azure Resource Manager sablonfájlokat tárolja.
+* [Azure PowerShell 1,0][lnk-powershell-install] vagy újabb.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
-## <a name="prepare-your-visual-studio-project"></a>A Visual Studio-projektek előkészítése
+## <a name="prepare-your-visual-studio-project"></a>A Visual Studio-projekt előkészítése
 
-1. A Visual Studióban hozzon létre egy Visual C# Windows klasszikus Asztalialkalmazás-projektet az a **Console App (.NET Framework)** projektsablonnal. Adja a projektnek **CreateIoTHub**.
+1. A Visual Studióban hozzon létre C# egy Visual Windows klasszikus asztali projektet a **Console app (.NET-keretrendszer)** projekt sablon használatával. Nevezze el a projekt **CreateIoTHub**.
 
-2. A Megoldáskezelőben kattintson a jobb gombbal a projektre, és kattintson a **NuGet-csomagok kezelése**.
+2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd kattintson a **NuGet-csomagok kezelése**elemre.
 
-3. Ellenőrizze a NuGet Package Manager **Include prerelease**, és az a **Tallózás** lapon keresse meg **Microsoft.Azure.Management.ResourceManager**. Válassza ki a csomagot, kattintson a **telepítése**, a **változások áttekintése** kattintson **OK**, majd kattintson **elfogadom** fogadására a licenceket.
+3. A NuGet csomagkezelő területén tekintse meg az **előzetes kiadást**, majd a **Tallózás** oldalon keresse meg a **Microsoft. Azure. Management. erőforráskezelő**. Válassza ki a csomagot, kattintson a **telepítés**gombra, a **változások áttekintése** **elemre**, majd kattintson az **Elfogadom** gombra a licencek elfogadásához.
 
-4. A NuGet-Csomagkezelőt, keressen **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Kattintson a **telepítése**, a **változások áttekintése** kattintson **OK**, majd kattintson a **elfogadom** elfogadásához.
+4. A NuGet csomagkezelő eszközben keressen rá a **Microsoft. IdentityModel. clients. ActiveDirectory**kifejezésre.  Kattintson a **telepítés**gombra, a **változások áttekintése** lapon kattintson **az OK**gombra, majd kattintson az **Elfogadom** gombra a licenc elfogadásához.
 
-5. A program.cs fájlban cserélje le a meglévő **használatával** utasítások a következő kóddal:
+5. A Program.cs-ben cserélje le a meglévő **using** utasításokat a következő kódra:
 
     ```csharp
     using System;
@@ -56,7 +56,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
     using Microsoft.Rest;
     ```
 
-6. A program.cs fájlban adja hozzá a következő statikus változókat, és cserélje le a helyőrző értékeket. Jegyezze fel végzett **ApplicationId**, **SubscriptionId**, **TenantId**, és **jelszó** Ez az oktatóanyag korábbi. **Az Azure Storage-fiók neve** az Azure Storage-fiók neve, ahol az Azure Resource Manager-sablon fájlokat tárolja. **Erőforráscsoport neve** használhatja az IoT hub létrehozásakor az erőforráscsoport neve. A név lehet egy már meglévő vagy új erőforráscsoportot. **A központi telepítés neve** el például egy nevet a központi telepítéshez **Deployment_01**.
+6. A Program.cs-ben adja hozzá a következő statikus változókat a helyőrző értékeinek cseréjéhez. Az oktatóanyag korábbi részében az **ApplicationId**, a **SubscriptionId**, a **TenantId**és a **Password** megjegyzését készítettük. Az **Azure Storage-fiók neve** annak az Azure Storage-fióknak a neve, ahol a Azure Resource Manager sablonfájlokat tárolja. Az **erőforráscsoport neve** az IoT hub létrehozásakor használt erőforráscsoport neve. A név lehet egy már meglévő vagy egy új erőforráscsoport. A **központi telepítés neve** a központi telepítés neve, például **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -70,13 +70,13 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="submit-a-template-to-create-an-iot-hub"></a>IoT hub létrehozása sablon beküldése
+## <a name="submit-a-template-to-create-an-iot-hub"></a>Sablon elküldése egy IoT hub létrehozásához
 
-Egy JSON-sablonnal és paraméterfájlokkal fájl használatával hozzon létre egy IoT hubot az erőforráscsoportban. Az Azure Resource Manager-sablonok segítségével módosíthatja egy meglévő IoT hubbal.
+A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot az erőforráscsoporthoz. A meglévő IoT hub-t egy Azure Resource Manager sablonnal is módosíthatja.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, és kattintson a **új elem**. Adjon hozzá egy JSON-fájlt nevű **template.json** a projekthez.
+1. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Vegyen fel egy **template. JSON** nevű JSON-fájlt a projektbe.
 
-2. Egy standard szintű IoT hubot az hozzáadása a **USA keleti Régiójában** régió, cserélje le a tartalmát **template.json** a következő erőforrás-definícióval. A régiók, amelyek támogatják az IoT Hub aktuális listáját lásd: [Azure állapotlapján][lnk-status]:
+2. Ha standard IoT hub-t szeretne felvenni az **USA keleti** régiójába, cserélje le a **template. JSON** tartalmát a következő erőforrás-definícióval. Az IoT Hubt támogató régiók aktuális listájának megtekintéséhez tekintse meg az [Azure status][lnk-status]:
 
     ```json
     {
@@ -112,9 +112,9 @@ Egy JSON-sablonnal és paraméterfájlokkal fájl használatával hozzon létre 
     }
     ```
 
-3. A Megoldáskezelőben kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, és kattintson a **új elem**. Adjon hozzá egy JSON-fájlt nevű **parameters.json** a projekthez.
+3. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Adjon hozzá egy **Parameters. JSON** nevű JSON-fájlt a projekthez.
 
-4. Cserélje le a tartalmát **parameters.json** a következő adatokkal paraméter, amely egy nevet az új IoT hub például **{saját monogramjával} mynewiothub**. Az IoT hub nevének globálisan egyedinek kell lennie, így tartalmaznia kell a név vagy initials:
+4. Cserélje le a **Parameters. JSON** fájl tartalmát a következő paraméter-információra, amely az új IoT hub nevét állítja be, például **{a Initials} mynewiothub**. Az IoT hub nevének globálisan egyedinek kell lennie, ezért tartalmaznia kell a nevét vagy a monogramját:
 
     ```json
     {
@@ -127,15 +127,15 @@ Egy JSON-sablonnal és paraméterfájlokkal fájl használatával hozzon létre 
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. A **Server Explorer**, az Azure-előfizetéshez csatlakozzon, és nevű tároló létrehozása az Azure Storage-fiókban **sablonok**. Az a **tulajdonságok** panelen, és állítsa a **nyilvános olvasási hozzáférés** engedélyeit a **sablonok** tároló **Blob**.
+5. A **Server Explorerben**kapcsolódjon az Azure-előfizetéséhez, és az Azure Storage-fiókban hozzon létre egy **templates**nevű tárolót. A **Tulajdonságok** panelen állítsa a **sablonok** tárolóhoz tartozó **nyilvános olvasási hozzáférési** engedélyeket a **blob**elemre.
 
-6. A **Server Explorer**, kattintson a jobb gombbal a **sablonok** tárolót, majd kattintson **nézet Blobtároló**. Kattintson a **Blob feltöltése** gombra, válassza ki a két fájlt **parameters.json** és **templates.json**, és kattintson a **nyílt** feltölteni a JSON-fájlokat a **sablonok** tároló. A blobok JSON-adatokat tartalmazó URL-címei a következők:
+6. A **Server Explorerben**kattintson a jobb gombbal a **sablonok** tárolóra, majd kattintson a **blob-tároló megtekintése**elemre. Kattintson a **blob feltöltése** gombra, válassza ki a két fájlt, a **Parameters. JSON** és a **templates. JSON**fájlt, majd kattintson a **Megnyitás** gombra, és töltse fel a JSON-fájlokat a **sablonok** tárolóba. A JSON-fájlokat tartalmazó Blobok URL-címei a következők:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. A program.cs fájlhoz adja hozzá a következő metódust:
+7. Adja hozzá a következő metódust a Program.cs:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)
@@ -144,7 +144,7 @@ Egy JSON-sablonnal és paraméterfájlokkal fájl használatával hozzon létre 
     }
     ```
 
-8. Adja hozzá a következő kódot a **CreateIoTHub** metódust az Azure Resource Manager sablonnal és paraméterfájlokkal fájlok küldje el:
+8. Adja hozzá a következő kódot a **CreateIoTHub** metódushoz a sablon és a paraméter fájljainak a Azure Resource Managerba való elküldéséhez:
 
     ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -167,7 +167,7 @@ Egy JSON-sablonnal és paraméterfájlokkal fájl használatával hozzon létre 
         });
     ```
 
-9. Adja hozzá a következő kódot a **CreateIoTHub** metódushoz, amely az állapot és a kulcsokat, új IoT hub jeleníti meg:
+9. Adja hozzá a következő kódot a **CreateIoTHub** metódushoz, amely megjeleníti az új IoT hub állapotát és kulcsait:
 
     ```csharp
     string state = createResponse.Properties.ProvisioningState;
@@ -180,41 +180,41 @@ Egy JSON-sablonnal és paraméterfájlokkal fájl használatával hozzon létre 
     Console.WriteLine(createResponse.Properties.Outputs);
     ```
 
-## <a name="complete-and-run-the-application"></a>Írja be az alkalmazás futtatása
+## <a name="complete-and-run-the-application"></a>Az alkalmazás befejezése és futtatása
 
-Az alkalmazás meghívásával már végrehajthatók a **CreateIoTHub** módszer előtt felépíti és futtatja azt.
+Most már elvégezheti az alkalmazást úgy, hogy meghívja a **CreateIoTHub** metódust a létrehozása és futtatása előtt.
 
-1. Adja hozzá a következő kódot végéhez a **fő** módszer:
+1. Adja hozzá a következő kódot a **Main** metódus végéhez:
 
     ```csharp
     CreateIoTHub(client);
     Console.ReadLine();
     ```
 
-2. Kattintson a **összeállítása** , majd **megoldás**. Javítsa az esetleges hibákat.
+2. Kattintson a **Létrehozás** , majd a **megoldás létrehozása**lehetőségre. Javítsa ki az esetleges hibákat.
 
-3. Kattintson a **Debug** , majd **Start Debugging** az alkalmazás futtatásához. Futtassa az üzembe helyezés több percig is eltarthat.
+3. Kattintson a **hibakeresés** elemre, majd **indítsa el a hibakeresést** az alkalmazás futtatásához. A központi telepítés futtatása több percet is igénybe vehet.
 
-4. Annak ellenőrzéséhez, hogy az alkalmazás hozzá az új IoT hubot, látogasson el a [az Azure portal] [ lnk-azure-portal] és erőforrások listájának megtekintése. Másik megoldásként használhatja a **Get-AzResource** PowerShell-parancsmagot.
+4. Ha ellenőrizni szeretné, hogy az alkalmazás hozzáadta-e az új IoT hubot, látogasson el a [Azure Portalra][lnk-azure-portal] , és tekintse meg az erőforrások listáját. Másik megoldásként használja a **Get-AzResource** PowerShell-parancsmagot.
 
 > [!NOTE]
-> Ez a példa az alkalmazás hozzáadása egy S1 Standard IoT hubot, amelyhez számítunk fel díjat. Törölheti az IoT hubon keresztül a [az Azure portal] [ lnk-azure-portal] vagy a **Remove-AzResource** PowerShell-parancsmagot, ha elkészült.
+> Ez az alkalmazás egy S1 szabványú IoT Hub hoz létre, amelynek számlázása. Az IoT hub törölhető a [Azure Portal][lnk-azure-portal] vagy a **Remove-AzResource PowerShell-** parancsmag használatával, ha elkészült.
 
-## <a name="next-steps"></a>További lépések
-Most egy IoT hubra C#-program az Azure Resource Manager-sablon használatával telepített, akkor érdemes vizsgálódáshoz:
+## <a name="next-steps"></a>Következő lépések
+Most már üzembe helyezett egy IoT hub-t egy Azure Resource Manager sablonnal egy C# program használatával, érdemes megvizsgálnia a következőket:
 
-* Olvassa el a képességeit a [az IoT Hub erőforrás-szolgáltató REST API-val][lnk-rest-api].
-* Olvasási [Azure Resource Manager áttekintése] [ lnk-azure-rm-overview] további információ ezekről a képességekről az Azure Resource Manager.
-* A JSON-szintaxist és a sablonok tulajdonságait: [Microsoft.Devices erőforrástípusok](/azure/templates/microsoft.devices/iothub-allversions).
+* További információ a [IoT hub erőforrás-szolgáltató REST API][lnk-rest-api]képességeiről.
+* A Azure Resource Manager képességeinek megismeréséhez olvassa el [Azure Resource Manager áttekintést][lnk-azure-rm-overview] .
+* A sablonokban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Devices erőforrástípusok](/azure/templates/microsoft.devices/iothub-allversions).
 
-Az IoT Hub fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg a következő cikkeket:
 
-* [Bevezetés a C SDK-t][lnk-c-sdk]
-* [Az Azure IoT SDK-k][lnk-sdks]
+* [A C SDK bemutatása][lnk-c-sdk]
+* [Azure IoT SDK-k][lnk-sdks]
 
-Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
+* [AI üzembe helyezése az Edge-eszközökön Azure IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -222,7 +222,7 @@ Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

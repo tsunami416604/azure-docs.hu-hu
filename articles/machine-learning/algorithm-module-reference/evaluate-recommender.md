@@ -1,7 +1,7 @@
 ---
 title: 'Az ajánló értékelése: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatás kiértékelése az Ajánlói modult az Ajánlói modellek előrejelzésének pontosságának kiértékeléséhez.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használhatja az Azure Machine Learning kiértékelése modult az Ajánlói modellre vonatkozó előrejelzések pontosságának kiértékeléséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9a80fce04aa939895d1dc9572714046d9203bad7
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428537"
 ---
-# <a name="evaluate-recommender"></a>Az ajánló kiértékelése
+# <a name="evaluate-recommender"></a>Ajánló értékelése
 
 Ez a cikk azt ismerteti, hogyan használható a kiértékelési ajánló modul a Azure Machine Learning Designerben (előzetes verzió). A cél az, hogy megmérjük a javaslati modell által készített előrejelzések pontosságát. A modul használatával különböző típusú ajánlásokat lehet kiértékelni:  
   
@@ -25,8 +25,8 @@ Ez a cikk azt ismerteti, hogyan használható a kiértékelési ajánló modul a
   
 Ha egy javaslati modell használatával hoz létre előrejelzéseket, a rendszer némileg eltérő eredményt ad vissza minden egyes támogatott előrejelzési típushoz. Az értékelést ajánló modul a pontozásos adathalmaz oszlopainak formátumát határozza meg. A pontszámmal rendelkező adatkészlet például a következőket tartalmazhatja:
 
-- felhasználói elemek minősítésének háromszorosa
-- felhasználók és az ajánlott elemek
+- Felhasználói elemek minősítésének háromszorosa
+- Felhasználók és az ajánlott elemek
 
 A modul a megfelelő teljesítmény-mérőszámokat is alkalmazza az előrejelzés típusa alapján. 
 
@@ -52,7 +52,7 @@ A második adatkészlet oszlopai a pontozási folyamat során végrehajtott elő
 - Azok a felhasználók, elemek és minősítések, amelyeket a felhasználó valószínűleg az elemhez adna
 - A felhasználók és az azokhoz ajánlott elemek listája 
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 A modell teljesítmény-metrikái a bemenet típusa alapján jönnek létre. A következő fejezetekben részletes információkat talál.
 
@@ -88,6 +88,6 @@ Az ajánló kiértékelésével kiszámítja a normalizált diszkontált összes
 Mivel az ajánlott elemek esetében nem lehetséges a tényleges "alapvető igazság", értékelje ki a felhasználó-elem minősítéseket a tesztelési adatkészletben a NDCG kiszámítása során. A kiértékeléshez az Ajánlói pontozási modulnak csak a "alapvető igazság" minősítéssel rendelkező elemekre vonatkozó javaslatokat kell létrehoznia (a tesztelési adatkészletben).  
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

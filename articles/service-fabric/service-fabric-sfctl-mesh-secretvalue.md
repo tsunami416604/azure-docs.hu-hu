@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl Mesh secretvalue | Microsoft Docs
-description: Ismerteti a Service Fabric CLI sfctl Mesh secretvalue parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl Mesh secretvalue
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A Service Fabric Mesh secretvalue erőforrásainak beolvasására és törlésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a29d32dff9ad51942acb30dd834ad6fbd362ac65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901180"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646109"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh titkos kódjának értéke
 Háló secretvalue erőforrásainak beolvasása és törlése.
@@ -30,7 +21,7 @@ Háló secretvalue erőforrásainak beolvasása és törlése.
 | --- | --- |
 | delete | Törli a névvel ellátott titkos erőforrás megadott értékét. |
 | lista | A megadott titkos erőforrás összes értékének listázása. |
-| megjelenítése | A titkos erőforrás megadott értékét listázza. |
+| megjelenítés | A titkos erőforrás megadott értékét listázza. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl Mesh secretvalue törlése
 Törli a névvel ellátott titkos erőforrás megadott értékét.

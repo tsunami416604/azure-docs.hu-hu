@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl csomópont | Microsoft Docs
-description: Ismerteti a CLI-sfctl Service Fabric csomópontjának parancsait.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl csomópont
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A fürtcsomópontok kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 29a66beb354edc96a9ece2bb37766dbde6a9fe49
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901103"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645293"
 ---
 # <a name="sfctl-node"></a>sfctl-csomópont
 A fürtöt alkotó csomópontok kezelése.
@@ -28,8 +19,8 @@ A fürtöt alkotó csomópontok kezelése.
 
 |Parancs|Leírás|
 | --- | --- |
-| Megbénít | Egy Service Fabric fürtcsomópont inaktiválása a megadott inaktiválási szándékkal. |
-| Engedélyezése | A jelenleg inaktivált Service Fabric fürtcsomópont aktiválása. |
+| letiltás | Egy Service Fabric fürtcsomópont inaktiválása a megadott inaktiválási szándékkal. |
+| engedélyezés | A jelenleg inaktivált Service Fabric fürtcsomópont aktiválása. |
 | egészségügy | Egy Service Fabric csomópont állapotának beolvasása. |
 | információ | Lekérdezi a Service Fabric fürt egy adott csomópontjának adatait. |
 | lista | Lekéri a Service Fabric fürt csomópontjainak listáját. |

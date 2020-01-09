@@ -2,38 +2,38 @@
 title: Tömeges betöltés Apache Phoenix a psql használatával – Azure HDInsight
 description: A psql eszközzel tömeges betöltési adatmennyiségeket tölthet be Apache Phoenix táblákba az Azure HDInsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/10/2017
-ms.author: ashishth
-ms.openlocfilehash: f00f6bcf07cbdc5aeaeb04aeccf7e88cf4822dbf
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311705"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552610"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Adatok tömeges betöltése az Apache Phoenixbe a psql használatával
 
-A [Apache Phoenix](https://phoenix.apache.org/) egy [Apache HBase](../hbase/apache-hbase-overview.md)-ra épülő, nyílt forráskódú, nagymértékben párhuzamos, összehasonlítható, integrált adatbázis. A Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en keresztül. A Phoenix a JDBC-illesztőprogramokat használva lehetővé teszi a felhasználók számára az SQL-táblák,-indexek,-nézetek és-folyamatok létrehozását, törlését és módosítását, valamint a upsert-sorok egyenkénti és tömeges megváltoztatását. A Phoenix noSQL natív fordítást használ ahelyett, hogy a MapReduce-t használja a lekérdezések fordításához, hogy alacsony késleltetésű alkalmazásokat hozzon létre a HBase-on. A Phoenix közös processzorokkal támogatja az ügyfél által megadott kód futtatását a-kiszolgáló címterület használatával, amely az adathalmazban található kódot hajtja végre. Ez lekicsinyíti az ügyfél/kiszolgáló adatátvitelt.  Ha az HDInsight-ben Phoenix használatával szeretne dolgozni az adataival, először hozzon létre táblákat, majd töltse be őket.
+A [Apache Phoenix](https://phoenix.apache.org/) egy [Apache HBase](../hbase/apache-hbase-overview.md)-ra épülő, nyílt forráskódú, nagymértékben párhuzamos, összehasonlítható, integrált adatbázis. A Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en keresztül. A Phoenix a JDBC-illesztőprogramokat használva lehetővé teszi a felhasználók számára az SQL-táblák,-indexek,-nézetek és-folyamatok létrehozását, törlését és módosítását, valamint a upsert-sorok egyenkénti és tömeges megváltoztatását. A Phoenix noSQL natív fordítást használ ahelyett, hogy a MapReduce-t használja a lekérdezések fordításához, hogy alacsony késleltetésű alkalmazásokat hozzon létre a HBase-on. A Phoenix felhasználja az ügyfél által megadott kód futtatásának támogatását a kiszolgáló címterület részeként, és a kód végrehajtásával az adott helyen található. Ez lekicsinyíti az ügyfél/kiszolgáló adatátvitelt.  Ha az HDInsight-ben Phoenix használatával szeretne dolgozni az adataival, először hozzon létre táblákat, majd töltse be őket.
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Tömeges betöltés Apache Phoenix
 
-Több módon is beszerezhetők az adatok a HBase-be, például az ügyféloldali API-k, a MapReduce-feladatok és a TableOutputFormat használatával, illetve az adatok manuális bevitele a HBase-rendszerhéj használatával. A Phoenix két módszert biztosít a CSV-adatmennyiségek Phoenix-táblákba való betöltéséhez: egy `psql` nevű ügyfél-betöltési eszköz és egy MapReduce-alapú tömeges betöltési eszköz.
+Több módon is beszerezhetők az adatok a HBase-be, például az ügyféloldali API-k, a MapReduce-feladatok és a TableOutputFormat használatával, illetve az adatok manuális bevitele a HBase-rendszerhéj használatával. A Phoenix két módszert biztosít a CSV-adatmennyiségek Phoenix-táblákba való betöltéséhez: egy `psql`nevű ügyfél-betöltési eszköz és egy MapReduce-alapú tömeges betöltési eszköz.
 
-A `psql` eszköz egyszálas, és a legjobb, ha megabájt vagy gigabájt adat betöltésére alkalmas. A betöltendő CSV-fájloknak a ". csv" kiterjesztéssel kell rendelkezniük.  Az SQL-parancsfájlokat a `psql` parancssorban is megadhatja az ". SQL" fájlkiterjesztés használatával.
+A `psql` eszköz egyszálas, és a legmegfelelőbb a megabájt vagy gigabájt adat betöltéséhez. A betöltendő CSV-fájloknak a ". csv" kiterjesztéssel kell rendelkezniük.  Az SQL-parancsfájlokat a `psql` parancssorban is megadhatja az ". SQL" fájlkiterjesztés használatával.
 
 A tömeges betöltés a MapReduce használatával sokkal nagyobb adatmennyiségekhez használatos, jellemzően éles környezetben, mivel a MapReduce több szálat használ.
 
-Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve van-e, és hogy a lekérdezés időtúllépési beállításai a vártak.  Nyissa meg a HDInsight-fürt [Apache Ambari](https://ambari.apache.org/) irányítópultját, válassza a HBase, majd a konfiguráció lapot.  Görgessen lefelé, és ellenőrizze, hogy a Apache Phoenix `enabled` értékre van-e állítva, ahogy az látható:
+Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve van-e, és hogy a lekérdezés időtúllépési beállításai a vártak.  Nyissa meg a HDInsight-fürt [Apache Ambari](https://ambari.apache.org/) irányítópultját, válassza a HBase, majd a konfiguráció lapot.  Görgessen lefelé, és ellenőrizze, hogy a Apache Phoenix `enabled` van-e beállítva a következő módon:
 
 ![Apache Phoenix HDInsight](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
-### <a name="use-psql-to-bulk-load-tables"></a>@No__t-0 használata tömeges betöltési táblákhoz
+### <a name="use-psql-to-bulk-load-tables"></a>`psql` használata a táblázatok tömeges betöltéséhez
 
-1. Hozzon létre egy új táblát, majd mentse a lekérdezést `createCustomersTable.sql` fájlnévvel.
+1. Hozzon létre egy `createCustomersTable.sql`nevű fájlt, és másolja az alábbi kódot a fájlba. Mentse és zárja be a fájlt.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,77 +44,118 @@ Az adattöltés megkezdése előtt ellenőrizze, hogy a Phoenix engedélyezve va
         Country varchar);
     ```
 
-2. Másolja a CSV-fájlt (például a megjelenített tartalmakat) `customers.csv`-ként egy `/tmp/` könyvtárba az újonnan létrehozott táblázatba való betöltéshez.  A `hdfs` parancs használatával másolja a CSV-fájlt a kívánt forrás helyére.
+1. Hozzon létre egy `listCustomers.sql`nevű fájlt, és másolja az alábbi kódot a fájlba. Mentse és zárja be a fájlt.
 
+    ```sql
+    SELECT * from Customers;
     ```
+
+1. Hozzon létre egy `customers.csv`nevű fájlt, és másolja az alábbi kódot a fájlba. Mentse és zárja be a fájlt.
+
+    ```txt
     1,Samantha,260000.0,18,US
     2,Sam,10000.5,56,US
-    3,Anton,550150.0,Norway
-    ... 4997 more rows 
+    3,Anton,550150.0,42,Norway
     ```
 
-    ```bash
-    hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
+1. Hozzon létre egy `customers2.csv`nevű fájlt, és másolja az alábbi kódot a fájlba. Mentse és zárja be a fájlt.
+
+    ```txt
+    4,Nicolle,180000.0,22,US
+    5,Kate,210000.5,24,Canada
+    6,Ben,45000.0,32,Poland
     ```
 
-3. Hozzon létre egy SQL SELECT lekérdezést a bemeneti adatok megfelelő betöltésének ellenőrzéséhez, majd mentse a lekérdezést `listCustomers.sql` fájlnévvel. Bármilyen SQL-lekérdezést használhat.
-     ```sql
-    SELECT Name, Income from Customers group by Country;
+1. Nyisson meg egy parancssort, és módosítsa a könyvtárat az újonnan létrehozott fájlok helyére. A lenti CLUSTERNAME cserélje le a HBase-fürt tényleges nevére. Ezután hajtsa végre a kódot, hogy feltöltse a fájlokat a fürt átjárócsomóponthoz:
+
+    ```cmd
+    scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-4. Az *új* Hadoop-parancssorablak megnyitásával tömeges betöltéssel töltheti le az adatmennyiséget. Először váltson a végrehajtási könyvtár helyére a `cd` paranccsal, majd használja a `psql` eszközt (Python `psql.py` parancs). 
+1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
-    A következő példa azt várja, hogy a `customers.csv` fájlt egy Storage-fiókból a helyi Temp könyvtárba másolta a fenti 2. lépésben leírtak szerint `hdfs` értékkel.
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. Az SSH-munkamenetből módosítsa a könyvtárat a **psql** eszköz helyére. Hajtsa végre az alábbi parancsot:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
-
-    python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE]   
-    > A `ZookeeperQuorum` név meghatározásához keresse meg a [Apache ZooKeeper](https://zookeeper.apache.org/) kvórum karakterláncot a (z) `/etc/hbase/conf/hbase-site.xml` nevű fájlban `hbase.zookeeper.quorum` nevű tulajdonsággal.
+1. Az adatmennyiség tömeges betöltése. Az alábbi kód a **Customers** táblát fogja létrehozni, majd feltölti az adatokkal.
 
-5. A `psql` művelet befejezését követően a következő üzenet jelenik meg a parancsablakban:
-
+    ```bash
+    python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
-    CSV Upsert complete. 5000 rows upserted
-    Time: 4.548 sec(s)
+
+    A `psql` művelet befejezését követően a következőhöz hasonló üzenetnek kell megjelennie:
+
+    ```output
+    csv columns from database.
+    CSV Upsert complete. 3 rows upserted
+    Time: 0.081 sec(s)
+    ```
+
+1. Továbbra is használhatja a `psql`-t a Customers tábla tartalmának megtekintéséhez. Hajtsa végre az alábbi kódot:
+
+    ```bash
+    python psql.py /tmp/listCustomers.sql
+    ```
+
+    Azt is megteheti, hogy a [HBase Shell](./query-hbase-with-hbase-shell.md)vagy az [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md) használatával kérdezi le az adatlekérdezéseket.
+
+1. További adatok feltöltése. Most, hogy a tábla már létezik, a parancs megadja a táblát. Hajtsa végre az alábbi parancsot:
+
+    ```bash
+    python psql.py -t CUSTOMERS /tmp/customers2.csv
     ```
 
 ## <a name="use-mapreduce-to-bulk-load-tables"></a>MapReduce használata tömeges betöltési táblákhoz
 
 A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez használja a MapReduce Load eszközt. Ez a betöltő először átalakítja az összes adatmennyiséget a HFiles, majd a létrehozott HFiles a HBase.
 
-1. Indítsa el a CSV-MapReduce betöltőjét a `hadoop` paranccsal a Phoenix Client jar használatával:
+1. Ez a szakasz az SSH-munkamenetet és a korábban létrehozott objektumokat is folytatja. Hozza létre a **Customers** táblát és a **customers. csv** fájlt szükség szerint a fenti lépések alapján. Szükség esetén hozza létre újra az SSH-kapcsolatot.
+
+1. A **Customers** tábla tartalmának csonkítása. Az Open SSH-munkamenetből hajtsa végre az alábbi parancsokat:
 
     ```bash
-    hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
+    hbase shell
+    truncate 'CUSTOMERS'
+    exit
     ```
 
-2. Hozzon létre egy új táblázatot egy SQL-utasítással, mint az előző 1. lépésben `CreateCustomersTable.sql` értékkel.
-
-3. A tábla sémájának ellenőrzéséhez futtassa a `!describe inputTable` parancsot.
-
-4. Határozza meg a bemeneti adatok helyének elérési útját, például `customers.csv` fájlt. Előfordulhat, hogy a bemeneti fájlok a WASB/ADLS Storage-fiókban találhatók. Ebben a példában a bemeneti fájlok a `<storage account parent>/inputFolderBulkLoad` könyvtárban vannak.
-
-5. Váltson a MapReduce tömeges betöltési parancs végrehajtási könyvtárába:
+1. Másolja a `customers.csv` fájlt a átjárócsomóponthoz az Azure Storage-ba.
 
     ```bash
-    cd /usr/hdp/current/phoenix-client/bin
+    hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv
     ```
 
-6. Keresse meg a `ZookeeperQuorum` értéket `/etc/hbase/conf/hbase-site.xml` értékben a (z) `hbase.zookeeper.quorum` nevű tulajdonsággal.
-
-7. Állítsa be a osztályútvonal, és futtassa a `CsvBulkLoadTool` eszköz parancsot:
+1. Váltson a MapReduce tömeges betöltési parancs végrehajtási könyvtárába:
 
     ```bash
-    /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
-
-    org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
+    cd /usr/hdp/current/phoenix-client
     ```
 
-8. Ha a MapReduce-t a Azure Data Lake Storage használatával szeretné használni, keresse meg a Data Lake Storage gyökérkönyvtárat, amely a `hbase.rootdir` értéket `hbase-site.xml` értékben. A következő parancsban a Data Lake Storage gyökérkönyvtára `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg a bemeneti és kimeneti mappák Data Lake Storage paraméterként:
+1. Indítsa el a CSV-MapReduce betöltőjét az `hadoop` paranccsal a Phoenix Client jar használatával:
+
+    ```bash
+    HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar phoenix-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /tmp/customers.csv
+    ```
+
+    A feltöltés befejeződése után a következőhöz hasonló üzenetnek kell megjelennie:
+
+    ```output
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing master protocol: MasterService
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing zookeeper sessionid=0x26f15dcceff02c3
+    19/12/18 18:30:57 INFO zookeeper.ZooKeeper: Session: 0x26f15dcceff02c3 closed
+    19/12/18 18:30:57 INFO zookeeper.ClientCnxn: EventThread shut down
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Incremental load complete for table=CUSTOMERS
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Removing output directory /tmp/50254426-aba6-400e-88eb-8086d3dddb6
+    ```
+
+1. Ha a MapReduce-t a Azure Data Lake Storage használatával szeretné használni, keresse meg a Data Lake Storage gyökérkönyvtárat, amely a `hbase-site.xml``hbase.rootdir` értéke. A következő parancsban a Data Lake Storage gyökérkönyvtára `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Ebben a parancsban adja meg a bemeneti és kimeneti mappák Data Lake Storage paraméterként:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -124,9 +165,11 @@ A fürtön keresztül terjesztett nagyobb átviteli sebességű betöltéshez ha
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
 
+1. Az **psql** a korábban leírtak szerint lehet lekérdezni és megtekinteni. Használhatja a [HBase shellt](./query-hbase-with-hbase-shell.md)vagy az [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md)-t is.
+
 ## <a name="recommendations"></a>Ajánlatok
 
-* Ugyanazt a tárolóeszközt használja a bemeneti és a kimeneti mappákhoz, vagy az Azure Storage (WASB) vagy a Azure Data Lake Storage (ADL) számára. Az adatok Azure Storage-ból Data Lake Storageba való átviteléhez használhatja a `distcp` parancsot:
+* Ugyanazt a tárolóeszközt használja a bemeneti és a kimeneti mappákhoz, vagy az Azure Storage (WASB) vagy a Azure Data Lake Storage (ADL) számára. Az Azure Storage-ból a Data Lake Storageba való adatátvitelhez használhatja a `distcp` parancsot:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder

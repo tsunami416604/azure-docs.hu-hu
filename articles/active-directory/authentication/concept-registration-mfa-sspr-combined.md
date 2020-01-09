@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425349"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági információk regisztrálása (előzetes verzió)
 
@@ -108,7 +108,7 @@ Ez a folyamatábra azt ismerteti, hogy mely metódusok jelennek meg a felhaszná
 
 Ha a Multi-Factor Authentication és a SSPR is engedélyezve van, javasoljuk, hogy érvényesítse Multi-Factor Authentication regisztrációját.
 
-Ha a SSPR-szabályzat megköveteli, hogy a felhasználók rendszeres időközönként vizsgálják felül a biztonsági adataikat, a rendszer a bejelentkezés során megszakítja a felhasználókat, és megjeleníti az összes regisztrált módszerét. Megerősítik az aktuális információt, ha naprakészek, vagy ha szükséges, módosításokat végezhetnek.
+Ha a SSPR-szabályzat megköveteli, hogy a felhasználók rendszeres időközönként vizsgálják felül a biztonsági adataikat, a rendszer a bejelentkezés során megszakítja a felhasználókat, és megjeleníti az összes regisztrált módszerét. Megerősítik az aktuális információt, ha naprakészek, vagy ha szükséges, módosításokat végezhetnek. Ezen oldal elérésekor a felhasználóknak többtényezős hitelesítést kell végezniük.
 
 ### <a name="manage-mode"></a>Kezelés módja
 

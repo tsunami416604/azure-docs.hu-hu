@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582229"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646727"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Az Azure Blob Storage-ba irányuló adatáthelyezés
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan helyezhetők át a blob Storage-ba az Azure HPC 
 
 Tartsa szem előtt ezeket a tényeket:
 
-* Az Azure HPC cache egy speciális tárolási formátumot használ a blob Storage-ban tárolt adatrendszerezéshez. Ezért a blob Storage-tárolónak egy új, üres tárolónak vagy egy korábban az Azure HPC gyorsítótár-adateléréséhez használt BLOB-tárolónak kell lennie. ([A avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) ezt a felhőalapú fájlrendszert is használja.)
+* Az Azure HPC cache egy speciális tárolási formátumot használ a blob Storage-ban tárolt adatrendszerezéshez. Ezért a blob Storage-tárolónak egy új, üres tárolónak vagy egy korábban az Azure HPC gyorsítótár-adateléréséhez használt BLOB-tárolónak kell lennie. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * Ha több ügyfelet és párhuzamos műveletet használ, az adatok másolása az Azure HPC-gyorsítótárból a háttérbeli tárolási célra hatékonyabb. Az egyik ügyfél egyszerű másolási parancsa lassan áthelyezi az adatátvitelt.
 
@@ -31,7 +31,7 @@ Ha nem kívánja használni a betöltési segédprogramot, vagy ha tartalmat sze
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>A blob Storage-ban tárolt előzetes betöltés a CLFSLoad-mel
 
-Használhatja a <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> A avere CLFSLoad segédprogrammal az új blob Storage-tárolóba másolhatja az Adatmásolást, mielőtt hozzáadja azt tárolási célként. Ez a segédprogram egyetlen Linux rendszeren fut, és az Azure HPC cache számára szükséges saját formátumban írja az adatot. A CLFSLoad a leghatékonyabb módszer a blob Storage-tárolók feltöltésére a gyorsítótárral való használatra.
+A <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> A avere CLFSLoad segédprogrammal az új blob Storage-tárolóba másolhatja az Adatmásolást, mielőtt hozzáadja azt tárolási célként. Ez a segédprogram egyetlen Linux rendszeren fut, és az Azure HPC cache számára szükséges saját formátumban írja az adatot. A CLFSLoad a leghatékonyabb módszer a blob Storage-tárolók feltöltésére a gyorsítótárral való használatra.
 
 Az avere CLFSLoad segédprogram az Azure HPC cache csapatának kérésére érhető el. Kérje meg a csapat kapcsolattartóját, vagy nyisson meg egy [támogatási jegyet](hpc-cache-support-ticket.md) a segítség kéréséhez.
 
@@ -60,11 +60,11 @@ Ha nem szeretné a avere CLFSLoad segédprogramot használni, vagy ha nagy menny
 
 ![Több ügyfélből álló, többszálas adatáthelyezést ábrázoló diagram: a bal felső sarokban a helyszíni hardveres tárterület ikonja több nyílból származik. A nyilak négy ügyfélszámítógépre mutatnak. Az egyes ügyfélgépekről három nyíl mutat az Azure HPC cache felé. Az Azure HPC-gyorsítótárból több nyíl mutat a blob Storage-hoz.](media/hpc-cache-parallel-ingest.png)
 
-A ``cp`` vagy ``copy`` parancs, amelyet általában az adatok egyik tárolási rendszerből egy másikba való átvitelére használ, egyetlen szálból álló folyamatok, amelyek egyszerre csak egy fájlt másolnak. Ez azt jelenti, hogy a fájlkiszolgáló egyszerre csak egy fájlt tölt be – ez a gyorsítótár erőforrásainak hulladéka.
+Az olyan ``cp`` vagy ``copy`` parancsok, amelyek általában az egyik tárolási rendszerből a másikba történő adatátvitelhez használhatók, egyetlen szálból álló folyamatok, amelyek egyszerre csak egy fájlt másolnak. Ez azt jelenti, hogy a fájlkiszolgáló egyszerre csak egy fájlt tölt be – ez a gyorsítótár erőforrásainak hulladéka.
 
 Ez a szakasz a több ügyfelet tartalmazó, többszálas fájlmásolási rendszer létrehozására szolgáló stratégiákat ismerteti az adatok blob Storage-ba való áthelyezéséhez az Azure HPC cache használatával. Ismerteti a fájlátviteli fogalmakat és a döntési pontokat, amelyek segítségével több ügyfél és egyszerű másolási parancs használatával hatékony Adatmásolást lehet használni.
 
-Emellett ismerteti azokat a segédprogramokat is, amelyek segíthetnek. A ``msrsync`` segédprogram használatával részben automatizálható az adathalmazok gyűjtővé való osztása és az rsync-parancsok használata. A ``parallelcp`` szkript egy másik segédprogram, amely beolvassa a forrás könyvtárat, és automatikusan kiadja a másolási parancsokat.
+Emellett ismerteti azokat a segédprogramokat is, amelyek segíthetnek. Az ``msrsync`` segédprogram használatával részben automatizálható az adathalmazok gyűjtővé való osztása és az rsync-parancsok használata. A ``parallelcp`` szkript egy másik segédprogram, amely beolvassa a forrás könyvtárat, és automatikusan kiadja a másolási parancsokat.
 
 ### <a name="strategic-planning"></a>Stratégiai tervezés
 
@@ -83,7 +83,7 @@ Az Azure HPC cache-vel való párhuzamos adatfeldolgozási stratégiák a követ
 
 * Parancsfájlba foglalt másolás a ``parallelcp`` használatával – megtudhatja, hogyan hozhat létre és futtathat párhuzamos másolási parancsfájlokat az [Azure HPC cache-adatfeldolgozással párhuzamos másolási parancsfájl-metódussal](hpc-cache-ingest-parallelcp.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tárterület beállítása után megismerheti, hogyan csatlakoztathatók az ügyfelek a gyorsítótárhoz.
 

@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561921"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608737"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -112,5 +112,5 @@ Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, ak
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hozzáférés szabályozása külső felhasználók számára](entitlement-management-organization.md)
+- [Hozzáférés szabályozása külső felhasználók számára](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
 - [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c942661beea34e7a49223f4a8e4a4d6c0eb66e1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440618"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
 
@@ -208,63 +208,6 @@ A következő tulajdonságok támogatottak a HTTP-n belül `location` beállít�
 }
 ```
 
-### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
-
->[!NOTE]
->A következő adatkészlet-modell továbbra is támogatott, ha visszafelé kompatibilis. Javasoljuk, hogy használja a fenti szakaszban említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
-
-| Tulajdonság | Leírás | Szükséges |
-|:--- |:--- |:--- |
-| type | Az adatkészlet **Type** tulajdonságát **HttpFile**értékre kell állítani. | Igen |
-| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. | Nem |
-| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
-| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| requestBody | A HTTP-kérelem törzse. | Nem |
-| formátum | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Formátum**alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs.md#parquet-format). |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek: **optimális** és **leggyorsabb**. |Nem |
-
-> [!NOTE]
-> A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
-
-**1. példa: a Get metódus használata (alapértelmezett)**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        }
-    }
-}
-```
-
-**2. példa: a post metódus használata**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST HTTP request>"
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
 Ez a szakasz a HTTP-forrás által támogatott tulajdonságok listáját tartalmazza.
@@ -282,7 +225,7 @@ A következő tulajdonságok támogatottak a HTTP-n belül `storeSettings` beál
 | type                     | A `storeSettings` alatti Type tulajdonságot **HttpReadSetting**értékre kell állítani. | Igen      |
 | requestMethod            | A HTTP-metódus. <br>Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem       |
 | addtionalHeaders         | További HTTP-kérelmek fejlécei.                             | Nem       |
-| requestBody              | A HTTP-kérelem törzse.                               | Nem       |
+| RequestBody              | A HTTP-kérelem törzse.                               | Nem       |
 | httpRequestTimeout           | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**. | Nem       |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem       |
 
@@ -327,10 +270,70 @@ A következő tulajdonságok támogatottak a HTTP-n belül `storeSettings` beál
 ]
 ```
 
-#### <a name="legacy-source-model"></a>Örökölt forrás modell
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
+## <a name="legacy-models"></a>Örökölt modellek
 
 >[!NOTE]
->A következő másolási forrás modell továbbra is támogatott, ha visszafelé kompatibilis. Azt javasoljuk, hogy használja a fentiekben említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
+>A következő modellek továbbra is támogatottak a visszamenőleges kompatibilitás érdekében. Azt javasoljuk, hogy használja a fenti szakaszban említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
+
+### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |
+| type | Az adatkészlet **Type** tulajdonságát **HttpFile**értékre kell állítani. | Igen |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. | Nem |
+| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
+| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
+| RequestBody | A HTTP-kérelem törzse. | Nem |
+| formátum | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Formátum**alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nem |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek: **optimális** és **leggyorsabb**. |Nem |
+
+> [!NOTE]
+> A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
+
+**1. példa: a Get metódus használata (alapértelmezett)**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        }
+    }
+}
+```
+
+**2. példa: a post metódus használata**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "requestMethod": "Post",
+            "requestBody": "<body for POST HTTP request>"
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>Örökölt másolási tevékenység forrásának modellje
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -368,11 +371,6 @@ A következő tulajdonságok támogatottak a HTTP-n belül `storeSettings` beál
     }
 ]
 ```
-
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
-
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
-
 
 ## <a name="next-steps"></a>Következő lépések
 

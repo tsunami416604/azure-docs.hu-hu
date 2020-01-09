@@ -1,25 +1,16 @@
 ---
-title: Biztonsági mentés visszaállítása az Azure Service Fabricban | Microsoft Docs
+title: Biztonsági mentés visszaállítása az Azure-ban Service Fabric
 description: Használja az Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját az alkalmazásadatok biztonsági másolatából származó adatok visszaállításához.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377905"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Biztonsági mentés visszaállítása az Azure-ban Service Fabric
 
@@ -326,13 +317,13 @@ A visszaállítási kérelem a következő sorrendben halad:
 
 ## <a name="automatic-restore"></a>Automatikus visszaállítás
 
-A Service Fabric-fürtben megbízható állapot-nyilvántartó szolgáltatás és Reliable Actors partíciók állíthatók be az _automatikus visszaállításhoz_. A biztonsági mentési szabályzatban `AutoRestore` értéke _true (igaz_). Az _automatikus visszaállítás_ engedélyezése automatikusan visszaállítja az adatok biztonsági mentését a legutóbbi partícióról az adatvesztés jelentésekor. További információkért lásd:
+A Service Fabric-fürtben megbízható állapot-nyilvántartó szolgáltatás és Reliable Actors partíciók állíthatók be az _automatikus visszaállításhoz_. A biztonsági mentési szabályzatban `AutoRestore` értéke _true (igaz_). Az _automatikus visszaállítás_ engedélyezése automatikusan visszaállítja az adatok biztonsági mentését a legutóbbi partícióról az adatvesztés jelentésekor. További információ eléréséhez lásd:
 
 - [Automatikus visszaállítás engedélyezése a biztonsági mentési házirendben](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [RestorePartition API-referenciák](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
 - [GetPartitionRestoreProgress API-referenciák](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Biztonsági mentés visszaállítása REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 

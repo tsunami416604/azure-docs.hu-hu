@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435240"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights telemetria-naplók elemzése a HDInsight Apache Spark
 
@@ -41,16 +41,16 @@ A következő ábra a példa szolgáltatási architektúráját szemlélteti:
 
 ![Application Insightsról a blob Storage-ba áramló adatok, majd a Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
-### <a name="azure-storage"></a>Azure Storage tárterület
+### <a name="azure-storage"></a>Azure Storage
 
 A Application Insights konfigurálható úgy, hogy folyamatosan exportálja a telemetria-adatokat a blobokra. A HDInsight ezután olvasni tudják a blobokban tárolt adatfájlokat. Vannak azonban néhány követelmény, amelyeket követnie kell:
 
-* **Hely**: Ha a Storage-fiók és a HDInsight különböző helyen találhatók, akkor ez megnövelheti a késést. Emellett növeli a költségeket is, mivel a kimenő költségek a régiók közötti adatforgalomra vonatkoznak.
+* **Hely**: Ha a Storage-fiók és a HDInsight különböző helyen vannak, akkor ez megnövelheti a késést. Emellett növeli a költségeket is, mivel a kimenő költségek a régiók közötti adatforgalomra vonatkoznak.
 
     > [!WARNING]  
     > A HDInsight eltérő helyen lévő Storage-fiók használata nem támogatott.
 
-* **Blob típusa**: A HDInsight csak blokkblobokat támogat. Application Insights alapértelmezett értéke a blokk Blobok használata, ezért a HDInsight alapértelmezés szerint működnie kell.
+* **Blob típusa**: a HDInsight csak a blokk blobokat támogatja. Application Insights alapértelmezett értéke a blokk Blobok használata, ezért a HDInsight alapértelmezés szerint működnie kell.
 
 A tárolók meglévő fürthöz való hozzáadásával kapcsolatos információkért lásd a [további Storage-fiókok hozzáadása](../hdinsight-hadoop-add-storage.md) dokumentumot.
 
@@ -70,9 +70,7 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
 ## <a name="analyze-the-data-pyspark"></a>Az adatgyűjtés elemzése: PySpark
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a Spark on HDInsight-fürtöt. A **Gyorshivatkozások** szakaszban válassza ki a **fürt irányítópultok**elemet, majd válassza a **Jupyter notebook** lehetőséget a fürt Dashboard__ szakaszában.
-
-    ![Azure Portal-fürt irányítópultjának pyspark](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter`, ahol a CLUSTERNAME a fürt neve.
 
 2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **PySpark**lehetőséget. Megnyílik egy új, Python-alapú Jupyter Notebookt tartalmazó böngésző lap.
 
@@ -82,9 +80,9 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló `/{telemetry type}/YYYY-MM-DD/{##}/`címtár-struktúrába van naplózva:.
+    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a `/{telemetry type}/YYYY-MM-DD/{##}/`hoz hasonló címtár-struktúrába van naplózva.
 
-4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a "\*" szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
+4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha befejeződik, a "\*" érték módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
 
         Creating SparkContext as 'sc'
 
@@ -93,24 +91,25 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. Cserélje `CONTAINER` le `STORAGEACCOUNT` az és az attribútumot az Azure Storage-fiók nevére és a blob-tároló nevére, amely Application Insights-adathalmazt tartalmaz.
+
+5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. Cserélje le a `CONTAINER` és az `STORAGEACCOUNT`t az Azure Storage-fiók nevére és a blob-tároló nevére, amely Application Insights-adathalmazt tartalmaz.
 
    ```python
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     A cella végrehajtásához használja a **SHIFT + ENTER** billentyűkombinációt. A következő szöveghez hasonló eredmény jelenik meg:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    A visszaadott wasb útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a cella vonalátavisszaadottwasbelérésiúthasználatára,majdaSHIFT+ENTERbillentyűkombinációvalfuttassaújraacellát`hdfs dfs -ls` . Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
+    A visszaadott wasbs útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a cella `hdfs dfs -ls` sorát a visszaadott wasbs elérési út használatára, majd a **SHIFT + ENTER** billentyűkombinációval futtassa újra a cellát. Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
 
    > [!NOTE]  
-   > Az ebben a szakaszban szereplő lépések hátralévő részében a `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. A címtár szerkezete eltérő lehet.
+   > A jelen szakasz lépéseinek hátralévő részében a `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. A címtár szerkezete eltérő lehet.
 
-6. A következő cellában adja meg a következő kódot: Cserélje `WASB_PATH` le az elemet az előző lépésből származó elérési útra.
+6. A következő cellában adja meg a következő kódot: cserélje le a `WASB_PATH` az előző lépés elérési útjára.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -124,7 +123,7 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    jsonData.printSchema()
    ```
 
-    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az `Requests` alkönyvtárban tárolt adattartalom):
+    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (a `Requests` alkönyvtárban tárolt adattartalom):
 
         root
         |-- context: struct (nullable = true)
@@ -186,6 +185,7 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. A következő paranccsal regisztrálja a dataframe ideiglenes táblaként, és futtasson lekérdezést az adatkezeléshez:
 
    ```python
@@ -211,22 +211,21 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
         ...
         +---------+
 
-## <a name="analyze-the-data-scala"></a>Az adatgyűjtés elemzése: Scala
+## <a name="analyze-the-data-scala"></a>Az adatelemzés: Scala
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a Spark on HDInsight-fürtöt. A **Gyorshivatkozások** szakaszban válassza ki a **fürt irányítópultok**elemet, majd válassza a **Jupyter notebook** lehetőséget a fürt Dashboard__ szakaszában.
-
-    ![Azure Portal cluster irányítópult Scala](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter`, ahol a CLUSTERNAME a fürt neve.
 
 2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **Scala**lehetőséget. Megjelenik egy új, a Scala-alapú Jupyter Notebook tartalmazó böngésző lap.
+
 3. Az oldal első mezőjében ( **cella**neve) írja be a következő szöveget:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a következőhöz hasonló `/{telemetry type}/YYYY-MM-DD/{##}/`címtár-struktúrába van naplózva:.
+    Ez a kód úgy konfigurálja a Sparkot, hogy a bemeneti adatokhoz való rekurzív módon hozzáférhessen a címtár struktúrájához. Application Insights telemetria a `/{telemetry type}/YYYY-MM-DD/{##}/`hoz hasonló címtár-struktúrába van naplózva.
 
-4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" szöveg jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha a művelet befejeződött, a "\*" szám módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
+4. A kód futtatásához használja a **SHIFT + ENTER** billentyűkombinációt. A cella bal oldalán egy "\*" jelenik meg a zárójelek között, hogy jelezze, hogy a cellában lévő kód végrehajtása folyamatban van. Ha befejeződik, a "\*" érték módosul, és az alábbi szöveghez hasonló kimenet jelenik meg a cella alatt:
 
         Creating SparkContext as 'sc'
 
@@ -235,24 +234,25 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. A `CONTAINER` és`STORAGEACCOUNT` az helyére írja be az Azure Storage-fiók nevét és a blob-tároló nevét, amely Application Insights naplókat tartalmaz.
+
+5. Az első egy új cella jön létre. Adja meg a következő szöveget az új cellában. Cserélje le a `CONTAINER` és az `STORAGEACCOUNT`t az Azure Storage-fiók nevére és a blob-tároló nevére, amely Application Insights naplókat tartalmaz.
 
    ```scala
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     A cella végrehajtásához használja a **SHIFT + ENTER** billentyűkombinációt. A következő szöveghez hasonló eredmény jelenik meg:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    A visszaadott wasb útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a cella vonalátavisszaadottwasbelérésiúthasználatára,majdaSHIFT+ENTERbillentyűkombinációvalfuttassaújraacellát`hdfs dfs -ls` . Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
+    A visszaadott wasbs útvonal a Application Insights telemetria-adatmennyiség helye. Módosítsa a cella `hdfs dfs -ls` sorát a visszaadott wasbs elérési út használatára, majd a **SHIFT + ENTER** billentyűkombinációval futtassa újra a cellát. Ezúttal az eredményeknek meg kell jelennie a telemetria tartalmazó címtárakban.
 
    > [!NOTE]  
-   > Az ebben a szakaszban szereplő lépések hátralévő részében a `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. Előfordulhat, hogy ez a könyvtár nem létezik, kivéve, ha a telemetria-adatai egy webalkalmazáshoz készültek.
+   > A jelen szakasz lépéseinek hátralévő részében a `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` könyvtárat használták. Előfordulhat, hogy ez a könyvtár nem létezik, kivéve, ha a telemetria-adatai egy webalkalmazáshoz készültek.
 
-6. A következő cellában adja meg a következő kódot: Cserélje `WASB\_PATH` le az elemet az előző lépésből származó elérési útra.
+6. A következő cellában adja meg a következő kódot: cserélje le a `WASB\_PATH` az előző lépés elérési útjára.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -268,7 +268,7 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
    jsonData.printSchema
    ```
 
-    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (az `Requests` alkönyvtárban tárolt adattartalom):
+    Az egyes telemetria sémája eltér. A következő példa a webes kérelmekhez létrehozott séma (a `Requests` alkönyvtárban tárolt adattartalom):
 
         root
         |-- context: struct (nullable = true)
@@ -335,15 +335,13 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
    ```scala
    jsonData.registerTempTable("requests")
-   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city isn't null limit 10").show()
    ```
 
     Ez a lekérdezés az első 20 rekord városának adatait adja vissza, ahol a Context. location. City nem null értékű.
 
    > [!NOTE]  
    > A környezeti struktúra a Application Insights által naplózott összes telemetria megtalálható. A város elem nem tölthető fel a naplókban. A sémával azonosíthatja azokat a más elemeket, amelyeket a naplók adatait tartalmazó lekérdezéshez használhat.
-   >
-   >
 
     Ez a lekérdezés az alábbi szöveghez hasonló adatokat ad vissza:
 
@@ -357,13 +355,13 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
         ...
         +---------+
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további példákat szeretne használni a Apache Spark használatára az Azure-beli adatkezelési és-szolgáltatásokkal kapcsolatban, tekintse meg a következő dokumentumokat:
 
-* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 
 A Spark-alkalmazások létrehozásával és futtatásával kapcsolatos információkért tekintse meg a következő dokumentumokat:

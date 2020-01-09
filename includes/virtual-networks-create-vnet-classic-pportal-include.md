@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: ac5599a38c3fcbc4a6c331d2b14c6b6c55c31d82
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8d13d5d93dba66fa0dce08ffbf569164fb03398d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850377"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469899"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Klasszikus VNet létrehozása a Azure Portalban
 Az előző forgatókönyv alapján klasszikus VNet létrehozásához kövesse az alábbi lépéseket.
@@ -25,7 +25,7 @@ Az előző forgatókönyv alapján klasszikus VNet létrehozásához kövesse az
 4. A **virtuális hálózat** panelen írja be a VNet **nevét** , majd kattintson a **címterület**elemre. Konfigurálja a Címterület beállításait a VNet és az első alhálózatra, majd kattintson **az OK**gombra. A következő ábra a CIDR blokk beállításait mutatja be a forgatókönyvhöz.
    
     ![Címterület ablaktábla](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-5. Kattintson az **erőforráscsoport** elemre, és válasszon ki egy erőforráscsoportot a VNet hozzáadásához, vagy kattintson az **Új erőforráscsoport létrehozása** lehetőségre a VNet új erőforráscsoporthoz való hozzáadásához. Az alábbi ábrán egy **TestRG**nevű új erőforráscsoport erőforráscsoport-beállításai láthatók. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
+5. Kattintson az **erőforráscsoport** elemre, és válasszon ki egy erőforráscsoportot a VNet hozzáadásához, vagy kattintson az **Új erőforráscsoport létrehozása** lehetőségre a VNet új erőforráscsoporthoz való hozzáadásához. Az alábbi ábrán egy **TestRG**nevű új erőforráscsoport erőforráscsoport-beállításai láthatók. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
    
     ![Erőforráscsoport ablaktábla létrehozása](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 6. Szükség esetén módosítsa a VNethez tartozó **Előfizetés** és **Hely** beállításokat. 

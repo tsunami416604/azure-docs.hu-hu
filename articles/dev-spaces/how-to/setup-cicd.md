@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ismerje meg, hogyan állíthat be folyamatos integrációt/folyamatos üzembe helyezést az Azure DevOps és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438451"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD használata az Azure dev Spaces használatával
 
@@ -99,7 +99,7 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. Az **alapértelmezett verziónál**válassza **a legutóbbi lehetőséget a build folyamat alapértelmezett ága címkékkel**.
 1. Hagyja üresen a **címkéket** .
 1. Állítsa a **forrás aliast** `drop`értékre. A **forrás alias** értékét az előre meghatározott kiadási feladatok használják, így azt be kell állítani.
-1. Kattintson az **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás** parancsra.
 1. Most kattintson a villám ikonra az újonnan létrehozott `drop` összetevő forrásán, az alábbi ábrán látható módon:
 
     ![Kiadási összetevő folyamatos üzembe helyezésének beállítása](../media/common/release-artifact-cd-setup.png)
@@ -119,7 +119,7 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. Kattintson a jobb felső sarokban található **Mentés** elemre, majd **az OK gombra**.
 1. Kattintson a **+ kiadás** elemre (a Mentés gomb mellett), és **hozzon létre egy kiadást**.
 1. Az összetevők területen **ellenőrizze, hogy ki van-e**választva a build-folyamat legújabb buildje.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 Az automatizált kiadási folyamat most elindul, üzembe helyezi a *mywebapi* és a *webfrontend* -diagramokat a Kubernetes-fürtön a _fejlesztői_ legfelső szintű helyen. A kiadás előrehaladását az Azure DevOps webes portálján követheti nyomon:
 

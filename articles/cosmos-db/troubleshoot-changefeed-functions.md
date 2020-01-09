@@ -1,5 +1,5 @@
 ---
-title: Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
+title: Hibák elhárítása Azure Functions trigger használatakor Cosmos DB
 description: Gyakori problémák, megkerülő megoldások és diagnosztikai lépések a Azure Functions trigger használatakor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441126"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 
@@ -66,7 +66,7 @@ Ennek a forgatókönyvnek több oka is lehet, és mindegyiket ellenőrizni kell:
 
 1. Azure-függvénye ugyanabban a régióban található, mint az Azure Cosmos-fiókja? Az optimális késéshez az Azure-függvénynek és az Azure Cosmos-fióknak ugyanabban az Azure-régióban kell lennie.
 2. A változások folyamatosan vagy szórványosan történnek az Azure Cosmos-tárolójában?
-Ha ez utóbbi, akkor késés fordulhat elő a módosítások tárolása és azok az Azure-függvény általi felvétele között. Ez azért van így, mert belsőleg, amikor az eseményindító ellenőrzi az Azure Cosmos-tároló változásait, és nem talál függőben lévő elemet, egy személyre szabható ideig (alapértelmezés szerint 5 másodpercig) alvó módban lesz a következő ellenőrzésig (a magas RU-használat elkerülése végett). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
+Ha ez utóbbi, akkor késés fordulhat elő a módosítások tárolása és azok az Azure-függvény általi felvétele között. Ez azért van így, mert belsőleg, amikor az eseményindító ellenőrzi az Azure Cosmos-tároló változásait, és nem talál függőben lévő elemet, egy személyre szabható ideig (alapértelmezés szerint 5 másodpercig) alvó módban lesz a következő ellenőrzésig (a magas RU-használat elkerülése végett). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)`FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
 3. Előfordulhat, hogy az Azure Cosmos [-tárolók száma korlátozott](./request-units.md).
 4. A trigger `PreferredLocations` attribútumával megadhatja az Azure-régiók vesszővel tagolt listáját az egyéni előnyben részesített kapcsolódási sorrend meghatározásához.
 
@@ -78,12 +78,12 @@ Amikor az Azure-függvény megkapja a módosításokat, gyakran dolgozza fel ők
 
 Ha néhány módosítás hiányzik a célhelyről, ez azt jelentheti, hogy hiba történt az Azure-függvény végrehajtása során a módosítások fogadása után.
 
-Ebben az esetben a legjobb megoldás az, ha `try/catch` blokkokat ad hozzá a kódban, és azon a hurkon belül, amelyik feldolgozhatja a módosításokat, hogy észlelje az elemek adott részhalmazával kapcsolatos esetleges hibát, és ennek megfelelően kezeli őket (küldje el őket egy másik tárolóba további elemzés vagy újrapróbálkozás). 
+Ebben az esetben a legjobb megoldás az, ha `try/catch` blokkokat ad hozzá a kódban, és azon a hurkon belül, amely a módosításokat feldolgozhatja, hogy észlelje az elemek adott részhalmazának hibáit, és ennek megfelelően kezelje őket (további elemzés vagy újrapróbálkozás céljából küldje el őket egy másik tárolóba). 
 
 > [!NOTE]
 > A Cosmos DB Azure Functions-triggere alapértelmezés szerint nem próbálkozik újra egy köteg változásával, ha nem kezelt kivétel történt a kód végrehajtása során. Ez azt jelenti, hogy a módosítások nem érkeznek meg a célhelyre, mert nem kell feldolgoznia azokat.
 
-Ha azt tapasztalja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely helyileg fut egy fejlesztői gépen, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanaz a figyelt és a bérlet tároló), és ez az Azure-függvény ellopja a módosítások egy részhalmazát. várhatóan feldolgozza az Azure-függvényt.
+Ha azt tapasztalja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
 
 Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérletek számát a n belül, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint ismert Azure-függvényalkalmazáspéldány, az azt jelenti, hogy ezek a további tulajdonosok „lopják” a módosításokat.
 
@@ -106,7 +106,7 @@ Ennek a helyzetnek a megkerülő megoldásához távolítsa el a hozzáadott man
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Az Azure-függvény lekérdezési intervallumának módosítása a változások észleléséhez
 
-Ahogy azt fentebb említettük, hogy a [módosítások túl sokáig tartanak](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), az Azure Function (alapértelmezés szerint 5 másodperc) az új módosítások ellenőrzése előtt alvó állapotba lép (a magas ru-használat elkerüléséhez). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
+Ahogy azt fentebb említettük, hogy a [módosítások túl sokáig tartanak](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), az Azure Function (alapértelmezés szerint 5 másodperc) az új módosítások ellenőrzése előtt alvó állapotba lép (a magas ru-használat elkerüléséhez). Ezt a szüneteltetési időt az eseményindító [konfigurációjának](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)`FeedPollDelay/feedPollDelay` beállításában adhatja meg (ezredmásodpercben).
 
 ## <a name="next-steps"></a>Következő lépések
 

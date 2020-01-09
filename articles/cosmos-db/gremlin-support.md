@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 0c1ca054f9d28bb81c6f8acf6c0f43b134a596ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293791"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75499994"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
 Azure Cosmos DB támogatja az [Apache Tinkerpop](https://tinkerpop.apache.org) Graph bejárási nyelvét, amely [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)néven ismert. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
@@ -48,7 +48,7 @@ Az alábbi táblázat a TinkerPop azon funkcióit sorolja fel, amelyeket az Azur
 
 ## <a name="gremlin-wire-format-graphson"></a>A Gremlin átviteli formátuma: GraphSON
 
-Az Azure Cosmos DB a [GraphSON formátum](http://tinkerpop.apache.org/docs/current/reference/#graphson) használatával adja vissza a Gremlin-műveletek eredményeit. A Azure Cosmos DB jelenleg a "GraphSONv2" verziót támogatja. A GraphSON a Gremlin szabványos formátuma a csúcspontok, élek és tulajdonságok (egy- és többértékű tulajdonságok) jelöléséhez a JSON használatával.
+Az Azure Cosmos DB a [GraphSON formátum](https://tinkerpop.apache.org/docs/current/reference/#graphson) használatával adja vissza a Gremlin-műveletek eredményeit. A Azure Cosmos DB jelenleg a "GraphSONv2" verziót támogatja. A GraphSON a Gremlin szabványos formátuma a csúcspontok, élek és tulajdonságok (egy- és többértékű tulajdonságok) jelöléséhez a JSON használatával.
 
 Az alábbi kódrészletben például az Azure Cosmos DB-ből *az ügyfél számára visszaadott* csúcspont GraphSON-jelölése látható. 
 
@@ -93,7 +93,7 @@ A GraphSON által a csúcspontokhoz használt tulajdonságokat az alábbiakban i
 
 | Tulajdonság | Leírás | 
 | --- | --- | --- |
-| `id` | A csúcspont azonosítója. Egyedinek kell lennie (a `_partition` értékkel együtt, ha van ilyen). Ha nincs megadva érték, a rendszer automatikusan GUID azonosítóval fogja ellátni | 
+| `id` | A csúcspont azonosítója. Egyedinek kell lennie (a `_partition` értékével együtt, ha van ilyen). Ha nincs megadva érték, a rendszer automatikusan GUID azonosítóval fogja ellátni | 
 | `label` | A csúcspont címkéje. Ez a tulajdonság az entitás típusának leírására szolgál. |
 | `type` | A használatával megkülönböztethetők a csúcspontok a nem gráfdokumentumoktól. |
 | `properties` | A csúcsponthoz tartozó, felhasználó által megadott tulajdonságok összessége. Minden tulajdonságnak több értéke is lehet. |
@@ -104,7 +104,7 @@ Az él pedig a következő információkat tartalmazza, ezzel segítve a gráf t
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| `id` | Az él azonosítója. Egyedinek kell lennie (a `_partition` értékkel együtt, ha van ilyen) |
+| `id` | Az él azonosítója. Egyedinek kell lennie (a `_partition` értékével együtt, ha van ilyen) |
 | `label` | Az él címkéje. Ezt a tulajdonságot nem kötelező megadni, és a kapcsolat típusának leírására használható. |
 | `inV` | Ez a tulajdonság egy Edge-csúcsok listáját tartalmazza. Az élek szomszédsági adatainak tárolása lehetővé teszi a bejárások gyors végrehajtását. A csúcspontok a címkéik alapján vannak csoportosítva. |
 | `properties` | Az élhez tartozó, felhasználó által megadott tulajdonságok összessége. Minden tulajdonságnak több értéke is lehet. |
@@ -150,12 +150,12 @@ Most pedig tekintsük át az Azure Cosmos DB által támogatott Gremlin-lépése
 | `sample` | Mintát vesz a bejárás eredményeiből. | [sample lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Megjeleníti a bejárás eredményeit. |  [select lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Nem blokkoló összesítéseket hajt végre a bejárásból. | [store lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény a `has()` lépés predikátuma, amely egy adott sztring elejével egyező tulajdonsággal egyezik meg. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Karakterlánc-szűrési függvény Ez a függvény a `has()` lépés predikátuma, amely egy adott karakterlánc végével rendelkező tulajdonsághoz igazodik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Karakterlánc-szűrési függvény Ez a függvény a `has()` lépés predikátuma, amely egy adott sztring tartalmával egyező tulajdonságot használ | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként használható a `has()` lépéshez, hogy megfeleljen egy olyan tulajdonságnak, amely nem egy adott karakterlánccal kezdődik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként használható a `has()` lépéshez, hogy megfeleljen egy olyan tulajdonságnak, amely nem egy adott karakterlánccal végződik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként használható a `has()` lépéshez, hogy megfeleljen egy olyan tulajdonságnak, amely nem tartalmaz megadott karakterláncot. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy megfeleljen egy adott sztring kezdetét megadó tulajdonságnak. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy egyezzen egy adott karakterlánc végével rendelkező tulajdonsággal. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy megfeleljen egy adott sztring tartalmával rendelkező tulajdonságnak | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy egyezzen egy olyan tulajdonsággal, amely nem egy adott karakterlánccal kezdődik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy egyezzen egy olyan tulajdonsággal, amely nem egy adott karakterlánccal végződik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy egyezzen egy olyan tulajdonsággal, amely nem tartalmaz megadott karakterláncot. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Egy fában összesíti a csúcspontból induló útvonalakat. | [tree lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Visszaalakít egy iterátort egy lépésként.| [unfold lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Egyesíti több bejárás eredményeit.| [union lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

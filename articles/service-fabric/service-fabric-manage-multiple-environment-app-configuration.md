@@ -1,63 +1,54 @@
 ---
-title: Alkalmazások kezelése több környezethez az Azure Service Fabricben |} A Microsoft Docs
-description: Az Azure Service Fabric-alkalmazások futtatható fürtökön tartományban lévő méretű egyik gépről ezer gépre. Bizonyos esetekben célszerű az alkalmazás másképp változatos szkriptjét konfigurálása. Ez a cikk bemutatja, hogyan környezetenként különböző alkalmazás-paraméterek megadásához.
-services: service-fabric
-documentationcenter: .net
+title: Alkalmazások kezelése több környezethez
+description: Az Azure Service Fabric-alkalmazások olyan fürtökön is futtathatók, amelyek mérete egy gépről több ezer gépre terjed ki. Bizonyos esetekben a különböző környezetekben különbözőképpen kell konfigurálnia az alkalmazást. Ez a cikk bemutatja, hogyan határozhat meg különböző alkalmazási paramétereket környezetekben.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719226"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609842"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Alkalmazások kezelése több környezethez
 
-Az Azure Service Fabric-fürtöket hozhat létre fürtöket egy és több ezer bárhol használatával engedélyezése gépek. A legtöbb esetben észre magát az alkalmazás telepítése több fürtkonfigurációk között kellene: a helyi fejlesztési fürt, egy közös fejlesztési fürtöt és az éles fürtöt. Ezek a fürtök összes minősülnek különböző környezetekben a kód futtatása rendelkezik. Alkalmazás bináris fájljainak módosítás nélkül is futtathatja a széles skáláját, de gyakran konfigurálni szeretné az alkalmazás eltérő.
+Az Azure Service Fabric-fürtök lehetővé teszik fürtök létrehozását egy vagy több ezer gép között bárhol. A legtöbb esetben azt látja, hogy az alkalmazást több fürtkonfiguráció között kell üzembe helyeznie: a helyi fejlesztési fürttel, egy megosztott fejlesztési fürttel és az üzemi fürttel. Az összes ilyen fürt más környezetnek minősül, amelyet a kódnak futtatnia kell. Az alkalmazás bináris fájljai ezen a széles spektrumon való módosítás nélkül is futtathatók, de általában másképpen kell konfigurálni az alkalmazást.
 
-Két egyszerű példa, vegye figyelembe:
-  - a szolgáltatás egy meghatározott portot figyeli, de van szüksége erre a portra kell lennie a környezetek között
-  - meg kell adnia a másik kötés hitelesítő adatokat egy adatbázis a környezetek között
+Vegyünk két egyszerű példát:
+  - a szolgáltatás egy meghatározott porton figyel, de a portnak a környezetek között eltérőnek kell lennie
+  - különböző kötési hitelesítő adatokat kell megadnia egy adatbázishoz a környezetek között
 
-## <a name="specifying-configuration"></a>Konfiguráció megadása
+## <a name="specifying-configuration"></a>Konfiguráció meghatározása
 
-Azt adja meg a konfiguráció két kategóriába oszthatók:
+Az Ön által megadott konfiguráció két kategóriába osztható:
 
-- Konfigurációt, amely érvényes a szolgáltatások futtatásának módját
-  - Ha például a portnak a számát egy végpontot, illetve egy szolgáltatás példányainak számát
-  - Ez a konfiguráció van megadva, az alkalmazás vagy szolgáltatás Alkalmazásjegyzék-fájl
-- Konfigurációt, amely az alkalmazás kódja érvényes
-  - Egy adatbázis például kötési információ
-  - Ezt a konfigurációt vagy konfigurációs fájlok vagy a környezeti változók adható meg
+- A szolgáltatások futtatásának módjára vonatkozó konfiguráció
+  - Például egy végpont portszáma vagy egy szolgáltatás példányainak száma
+  - Ez a konfiguráció az alkalmazás vagy szolgáltatás jegyzékfájljában van megadva.
+- Az alkalmazás kódjára érvényes konfiguráció
+  - Például egy adatbázishoz tartozó kötési információ
+  - Ez a konfiguráció konfigurációs fájlokon vagy környezeti változókon keresztül is biztosítható
 
 > [!NOTE]
-> Nem minden attribútumokat az alkalmazás és a service manifest fájlparaméterek támogatása.
-> Ezekben az esetekben kell karakterláncok helyettesítse az üzembe helyezést megvalósító munkafolyamat részeként támaszkodnak. Az Azure DevOps használhatja például a jogkivonatok cserélje le egy bővítmény: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens vagy a jenkins kifejezést cserélje le az értékeket egy parancsfájl feladat futtatásával.
+> Nem minden attribútum szerepel az alkalmazás-és szolgáltatás jegyzékfájl-fájljában.
+> Ezekben az esetekben a karakterláncokat a telepítési munkafolyamat részeként kell kicserélni. Az Azure DevOps olyan bővítményeket használhat, mint például a tokenek cseréje: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens vagy a Jenkins-ben futtathat egy parancsfájl-feladatot az értékek cseréjéhez.
 >
 
-## <a name="specifying-parameters-during-application-creation"></a>Alkalmazás létrehozása során paramétereinek megadása
+## <a name="specifying-parameters-during-application-creation"></a>Paraméterek megadása az alkalmazás létrehozása során
 
-Amikor a Service Fabric egy elnevezett alkalmazáspéldányok hoz létre, lehetősége van átadni a paraméterek. Ezt megteheti módja attól függ, hogyan hoz létre az alkalmazáspéldány.
+Elnevezett alkalmazás-példányok Service Fabricban való létrehozásakor lehetősége van átadni a paramétereket. Ennek módja attól függ, hogyan hozza létre az alkalmazás példányát.
 
-  - A PowerShell a [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmagnál az alkalmazás paramétereit egy kivonattáblát.
-  - Sfctl, használja a [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) parancs paraméter szükséges, egy JSON-karakterláncot. A szkript install.sh sfctl.
-  - A Visual Studio tartalmaz, amelyek paraméter-fájlokat a projekt paraméterek mappájában. Közzététel a Visual Studióból az Azure DevOps-szolgáltatásokkal vagy Team Foundation Server használata esetén ezek paraméter fájljait használja. A Visual Studióban a paraméterfájlok alatt pedig továbbítva lesznek az üzembe helyezés – FabricApplication.ps1 parancsfájl.
+  - A PowerShellben a [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag szórótábla-ként veszi át az alkalmazás paramétereit.
+  - A sfctl használatával a [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) parancs JSON-karakterláncként fogadja a paramétereket. A install.sh parancsfájl a sfctl-t használja.
+  - A Visual Studio az alkalmazás projekt parameters (paraméterek) mappájában található paramétereket tartalmazó fájlok készletét biztosítja. Ezeket a paramétereket a Visual studióból való közzétételkor, az Azure DevOps Services vagy a Team Foundation Server használatával lehet használni. A Visual Studióban a rendszer a Deploy-FabricApplication. ps1 parancsfájlba továbbítja a fájlok paramétereit.
 
-## <a name="next-steps"></a>További lépések
-A következő cikkek bemutatják, hogyan használhatja néhány ismertetett alapfogalmak itt:
+## <a name="next-steps"></a>Következő lépések
+A következő cikkek bemutatják, hogyan használhatja az itt ismertetett fogalmakat:
 
-- [A Service Fabric Services környezeti változók megadása](service-fabric-how-to-specify-environment-variables.md)
-- [A port számát, a paraméterek használatával a Service Fabric szolgáltatás megadása](service-fabric-how-to-specify-port-number-using-parameters.md)
-- [Hogyan lehet paraméterezni a konfigurációs fájlok](service-fabric-how-to-parameterize-configuration-files.md)
+- [Környezeti változók megadása a Service Fabric szolgáltatásaihoz](service-fabric-how-to-specify-environment-variables.md)
+- [Szolgáltatás portszámának megadása a Service Fabric paramétereinek használatával](service-fabric-how-to-specify-port-number-using-parameters.md)
+- [Konfigurációs fájlok parametrizálja](service-fabric-how-to-parameterize-configuration-files.md)
 
-- [Környezeti változó hivatkozás](service-fabric-environment-variables-reference.md)
+- [Környezeti változó referenciája](service-fabric-environment-variables-reference.md)

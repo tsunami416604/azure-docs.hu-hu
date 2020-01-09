@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: A Microsoft Threat Modeling Tool funkcióinak áttekintése – Azure
 description: További információ a Threat Modeling Tool elérhető funkcióiról
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728524"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552117"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>A Threat Modeling Tool funkcióinak áttekintése
 
@@ -37,7 +29,7 @@ Az eszközben jelenleg elérhető funkciók megtekintéséhez használja az [els
 
 ![Alapszintű veszélyforrások modellje](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-## <a name="navigation"></a>Navigálás
+## <a name="navigation"></a>Navigáció
 
 Mielőtt megbeszéljük a beépített funkciókat, tekintsük át az eszköz fő összetevőit.
 
@@ -50,24 +42,24 @@ A felhasználói élmény hasonló más Microsoft-termékekhez. Tekintsük át a
 | Címke                               | Részletek      |
 | --------------------------------------- | ------------ |
 | **Fájl** | <ul><li>Fájlok megnyitása, mentése és lezárása</li><li>Jelentkezzen be, és jelentkezzen ki a OneDrive-fiókok közül.</li><li>Hivatkozások megosztása (megtekintés és szerkesztés).</li><li>A fájl adatainak megtekintése.</li><li>Új sablon alkalmazása meglévő modellekre.</li></ul> |
-| **Szerkesztése** | Visszavonhatja és megismételheti a műveleteket, valamint a másolás, beillesztés és törlés műveletet. |
-| **Megtekintése** | <ul><li>Váltás az **elemzési** és a **tervezési** nézetek között.</li><li>Nyissa meg a bezárt Windows (például a rajzsablonok, az elemek tulajdonságai és az üzenetek) elemet.</li><li>Az elrendezés alaphelyzetbe állítása az alapértelmezett beállításokra.</li></ul> |
+| **Szerkesztés** | Visszavonhatja és megismételheti a műveleteket, valamint a másolás, beillesztés és törlés műveletet. |
+| **Nézet** | <ul><li>Váltás az **elemzési** és a **tervezési** nézetek között.</li><li>Nyissa meg a bezárt Windows (például a rajzsablonok, az elemek tulajdonságai és az üzenetek) elemet.</li><li>Az elrendezés alaphelyzetbe állítása az alapértelmezett beállításokra.</li></ul> |
 | **Diagram** | Diagramokat adhat hozzá és törölhet, valamint diagramokat helyezhet át lapokon. |
 | **Jelentések** | HTML-jelentések létrehozása másokkal való megosztáshoz. |
-| **segítség** | Útmutatást talál az eszköz használatának megkönnyítéséhez. |
+| **Súgó** | Útmutatást talál az eszköz használatának megkönnyítéséhez. |
 
 A szimbólumok a legfelső szintű menük parancsikonjai:
 
 | Szimbólum                               | Részletek      |
 | --------------------------------------- | ------------ |
-| **Nyissa meg** | Új fájl megnyitása. |
+| **Open** | Új fájl megnyitása. |
 | **Mentés** | Az aktuális fájl mentése. |
-| **Tervezési** | Megnyitja a **tervezési** nézetet, ahol létrehozhat modelleket. |
+| **Kialakítás** | Megnyitja a **tervezési** nézetet, ahol létrehozhat modelleket. |
 | **Elemzés** | Megjeleníti a generált fenyegetéseket és azok tulajdonságait. |
 | **Diagram hozzáadása** | Új diagramot szúr be (az Excel új lapjaihoz hasonlóan). |
 | **Diagram törlése** | Törli az aktuális diagramot. |
 | **Másolás/kivágás/beillesztés** | Elemek másolása, darabolása és beillesztése. |
-| **Undo/Redo** | Visszafejti és végrehajtja a műveleteket. |
+| **Visszavonás/ismétlés** | Visszafejti és végrehajtja a műveleteket. |
 | **Nagyítás/kicsinyítés** | A diagram nagyítása és kicsinyítése jobb nézetben. |
 | **Visszajelzés** | Az MSDN-fórum megnyitása. |
 
@@ -97,7 +89,7 @@ A kiválasztott sablon alapján megkeresheti az összes használható rajzsablon
 
 ### <a name="notesmessages"></a>Megjegyzések/üzenetek
 
-| Összetevő                               | Részletek      |
+| Component (Összetevő)                               | Részletek      |
 | --------------------------------------- | ------------ |
 | **Üzenetek** | Belső eszköz logikája, amely riasztást küld a felhasználóknak a hibákról, például az elemek közötti adatforgalomról. |
 | **Megjegyzések** | A manuális megjegyzések a tervezési és felülvizsgálati folyamat során az Engineering Teams használatával adhatók hozzá a fájlhoz. |
@@ -108,7 +100,7 @@ Az elem tulajdonságai a kiválasztott elemektől függően változnak. A megbí
 
 | Elem tulajdonsága                               | Részletek      |
 | --------------------------------------- | ------------ |
-| **Name** | Hasznos lehet a folyamatok, a tárolók, a reaktorok és a folyamatok elnevezéséhez, hogy azok könnyen felismerhetők legyenek. |
+| **Name (Név)** | Hasznos lehet a folyamatok, a tárolók, a reaktorok és a folyamatok elnevezéséhez, hogy azok könnyen felismerhetők legyenek. |
 | **Hatókörön kívül** | Ha be van jelölve, a rendszer kiveszi az elemet a fenyegetést generáló mátrixból (nem ajánlott). |
 | **Hatókörön kívüli ok** | Indoklási mező, amely lehetővé teszi a felhasználóknak, hogy a hatókör kiválasztásának miért van kiválasztva. |
 
@@ -120,7 +112,7 @@ Az alkalmazás megnyitásakor megjelenik az **üdvözlőképernyő** .
 
 ### <a name="open-a-model"></a>Modell megnyitása
 
-Két lehetőség megjelenítéséhez vigye a kurzort a **nyílt modell** fölé: **Nyissa meg a számítógépről** , és **nyissa meg a OneDrive**. Az első lehetőség megnyitja a **fájl megnyitása** képernyőt. A második lehetőség végigvezeti a bejelentkezési folyamaton a OneDrive. A sikeres hitelesítés után kiválaszthatja a mappákat és a fájlokat.
+Két lehetőség megjelenítéséhez vigye a kurzort a **nyílt modell** fölé, és nyissa meg **ezt a számítógépet** , és **nyissa**meg a OneDrive. Az első lehetőség megnyitja a **fájl megnyitása** képernyőt. A második lehetőség végigvezeti a bejelentkezési folyamaton a OneDrive. A sikeres hitelesítés után kiválaszthatja a mappákat és a fájlokat.
 
 ![Modell megnyitása](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -140,27 +132,27 @@ Ha a **visszajelzések, javaslatok és problémák**lehetőségre kattint, az MS
 
 A rácson a következő két módon adhat hozzá elemeket:
 
-- **Drag and drop**: Húzza a kívánt elemet a rácsra. Ezután használja az elem tulajdonságait további információk megadásához.
-- **Kattintson a jobb gombbal**: Kattintson a jobb gombbal a rács tetszőleges pontjára, és válassza az elemek elemet a legördülő menüből. A képernyőn megjelenik a kiválasztott elem általános ábrázolása.
+- **Drag and drop**: húzza a kívánt elemet a rácsra. Ezután használja az elem tulajdonságait további információk megadásához.
+- **Kattintson a jobb**gombbal: kattintson a jobb gombbal a rács tetszőleges pontjára, és válassza az elemek elemet a legördülő menüből. A képernyőn megjelenik a kiválasztott elem általános ábrázolása.
 
 ### <a name="connect-elements"></a>Elemek összekapcsolása
 
 Az elemek kétféleképpen is csatlakoztathatók:
 
-- **Drag and drop**: Húzza a kívánt adatfolyam a rácsra, és kapcsolja mindkét végpontot a megfelelő elemekhez.
-- **Kattintson a + SHIFT gombra**: Kattintson az első elemre (adatok küldése), nyomja le és tartsa lenyomva a SHIFT billentyűt, majd válassza ki a második elemet (adatok fogadása). Kattintson a jobb gombbal, majd válassza a **kapcsolat**lehetőséget. Ha kétirányú adatfolyamot használ, a sorrend nem annyira fontos.
+- **Drag and drop**: húzza a kívánt adatfolyam a rácsra, és mindkét végpontot a megfelelő elemekhez kapcsolja.
+- **Kattintson a + SHIFT**gombra: kattintson az első elemre (adatok küldése), nyomja le és tartsa lenyomva a SHIFT billentyűt, majd válassza ki a második elemet (adatok fogadása). Kattintson a jobb gombbal, majd válassza a **kapcsolat**lehetőséget. Ha kétirányú adatfolyamot használ, a sorrend nem annyira fontos.
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
  A rajzsablonon módosítható tulajdonságok megtekintéséhez válassza ki a rajzsablont, és az adatok ennek megfelelően töltődnek fel. Az alábbi példa azt mutatja, hogy az **adatbázis** -rajzsablon előtt és után a diagramra van húzva:
 
-#### <a name="before"></a>Korábban, mint
+#### <a name="before"></a>Előtte
 
-![Korábban, mint](./media/threat-modeling-tool-feature-overview/properties1.png)
+![Előtte](./media/threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>Később, mint
+#### <a name="after"></a>Utána
 
-![Később, mint](./media/threat-modeling-tool-feature-overview/properties2.png)
+![Utána](./media/threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>Üzenetek
 
@@ -182,11 +174,11 @@ A diagram összeállítását követően válassza ki az **elemzési** szimbólu
 
 Amikor kijelöl egy fenyegetést, három különböző függvényt használhat:
 
-| Funkció                               | Information      |
+| Szolgáltatás                               | Információ      |
 | --------------------------------------- | ------------ |
 | **Olvasási kijelző** | <p>A fenyegetés olvasottként van megjelölve, így nyomon követheti az áttekintett elemeket.</p><p>![Olvasási/olvasatlan kijelző](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interakciós fókusz** | <p>A fenyegetéshez tartozó diagramon lévő interakció ki van emelve.</p><p>![Interakciós fókusz](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Fenyegetés tulajdonságai** | <p>A fenyegetéssel kapcsolatos további információk a **fenyegetés tulajdonságai** ablakban láthatók.</p><p>![Fenyegetés tulajdonságai](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Fenyegetés tulajdonságai** | <p>A fenyegetéssel kapcsolatos további információk a **fenyegetés tulajdonságai** ablakban láthatók.</p><p>![veszélyforrás tulajdonságai](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Prioritás módosítása
 
@@ -202,11 +194,11 @@ Ahogy az előző képen is látható, módosíthatja az eszköz által létrehoz
 
 ## <a name="reports"></a>Jelentések
 
-Miután befejezte a prioritások módosítását és az egyes generált fenyegetések állapotának frissítését, mentheti a fájlt, és/vagy kinyomtathatja a jelentést. Nyissa meg a **jelentés** > **létrehozása teljes jelentést**. Nevezze el a jelentést, és az alábbi képhez hasonlóan kell megjelennie:
+Miután befejezte a prioritások módosítását és az egyes generált fenyegetések állapotának frissítését, mentheti a fájlt, és/vagy kinyomtathatja a jelentést. Ugrás a **jelentésre** > **teljes jelentés létrehozása**. Nevezze el a jelentést, és az alábbi képhez hasonlóan kell megjelennie:
 
 ![Jelentés](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Küldje el kérdéseit, megjegyzéseit és tmtextsupport@microsoft.comproblémáit. A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.
+- Kérdéseit, megjegyzéseit és problémáit tmtextsupport@microsoft.com. A kezdéshez **[töltse le](https://aka.ms/threatmodelingtool)** a Threat Modeling Tool.
 - A sablon a Közösséghez való hozzájárulásához lépjen a [GitHub](https://github.com/Microsoft/threat-modeling-templates) oldalra.

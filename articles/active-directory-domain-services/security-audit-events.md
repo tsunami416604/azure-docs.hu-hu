@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848891"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425370"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -70,7 +70,7 @@ Az alábbi táblázat az egyes forrásokhoz tartozó erőforrás-típusokra vona
 
 | Cél erőforrás | Alkalmazási helyzet |
 |:---|:---|
-|Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. Mielőtt engedélyezi az Azure AD DS biztonsági naplózási eseményeit, először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md).|
 |Azure Event Hubs-eseményközpontok| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics munkaterület| Ezt a célt akkor érdemes használni, ha az elsődleges szükséglet a Azure Portal közvetlen biztonságos naplózásának elemzése és ellenőrzése. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy log Analytics munkaterületet a Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 

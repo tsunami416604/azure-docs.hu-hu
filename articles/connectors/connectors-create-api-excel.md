@@ -1,22 +1,22 @@
 ---
-title: Kapcsolódás az Excel online-hoz
-description: Adatok kezelése az Excel online REST API-kkal és Azure Logic Apps
+title: Az Excel online-ban kezelheti az adatkezelési, munkalapokat és táblázatokat
+description: A munkalapokon és a táblákban lévő, az Excel online-ban vagy az Excel online-ban található OneDrive Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445882"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Excel online-beli adatkezelési Azure Logic Apps
 
-A Azure Logic Apps és az Excel Online Connector használatával automatizált feladatokat és munkafolyamatokat hozhat létre az Excel Online for Business vagy a OneDrive adatai alapján. Ez az összekötő olyan műveleteket biztosít, amelyek segítségével dolgozhat az adataival, és kezelheti a számolótáblákat, például:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Excel Online for Business](/connectors/excelonlinebusiness/) Connector vagy az [Excel Online for OneDrive](/connectors/excelonline/) -összekötő használatával automatizált feladatokat és munkafolyamatokat hozhat létre az Excel Online for Business vagy a OneDrive adatai alapján. Ez az összekötő olyan műveleteket biztosít, amelyek segítségével dolgozhat az adataival, és kezelheti a számolótáblákat, például:
 
 * Hozzon létre új munkalapokat és táblákat.
 * Munkalapok, táblák és sorok beolvasása és kezelése.

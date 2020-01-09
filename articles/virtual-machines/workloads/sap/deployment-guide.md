@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066870"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645854"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -77,8 +77,8 @@ ms.locfileid: "71066870"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md (Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz)
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (Virtuális gépek és virtuális merevlemezek gyorsítótárazása)
@@ -234,7 +234,7 @@ ms.locfileid: "71066870"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Tárolás: Microsoft Azure Storage és adatlemezek)
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]: https://support.sap.com/pam (SAP-termék rendelkezésre állási mátrixa)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -253,7 +253,7 @@ ms.locfileid: "71066870"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -361,7 +361,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információk: [Azure Resource Manager overview][resource-group-overview] (Az Azure Resource Manager áttekintése).
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Segédanyagok és eszközök
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -420,7 +420,7 @@ Az Azure Marketplace-ről rendszerképpel rendelkező új virtuális gép létre
 
 A varázsló végigvezeti a virtuális gép létrehozásához szükséges paraméterek beállításán, az összes szükséges erőforráson, például a hálózati adaptereken és a Storage-fiókokon kívül. A paraméterek némelyike a következő:
 
-1. **Alapvető beállítások**:
+1. **Alapismeretek**:
    * **Name (név**): az erőforrás neve (a virtuális gép neve).
    * **VM-lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
    * **Felhasználónév és jelszó** vagy **nyilvános SSH-kulcs**: adja meg a kiépítés során létrehozott felhasználó felhasználónevét és jelszavát. Linux rendszerű virtuális gépek esetében megadhatja a számítógépbe való bejelentkezéshez használt nyilvános Secure Shell-(SSH-) kulcsot.
@@ -432,7 +432,7 @@ A varázsló végigvezeti a virtuális gép létrehozásához szükséges param�
      A támogatott virtuálisgép-típusok listáját lásd: SAP-Megjegyzés [1928533]. Ügyeljen arra, hogy a megfelelő virtuálisgép-típust válassza, ha az Azure Premium Storaget szeretné használni. Nem minden VM-típus támogatja a Premium Storage. További információt a [Storage: Microsoft Azure Storage és adatlemezek][planning-guide-storage-microsoft-azure-storage-and-data-disks] , valamint az Azure [Premium Storage][planning-guide-azure-premium-storage] az [Azure Virtual Machines az SAP NetWeaver tervezése és implementálása][planning-guide]című témakörben talál.
 
 1. **Beállítások**:
-   * **Tárolás**
+   * **Storage**
      * **Lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
      * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks][planning-guide-managed-disks] a tervezési útmutatóban.
      * **Storage-fiók**: válasszon egy meglévő Storage-fiókot, vagy hozzon létre egy újat. Nem minden tárolási típus működik az SAP-alkalmazások futtatásához. További információ a tárolási típusokról: [virtuális gép tárolási szerkezete RDBMS üzemelő példányokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
@@ -471,7 +471,7 @@ Létrehozhat egy virtuális gépet az [Azure-Gyorsindítás-templates GitHub-tá
 
 A Azure Portal adja meg a következő paramétereket a sablonhoz:
 
-1. **Alapvető beállítások**:
+1. **Alapismeretek**:
    * **Előfizetés**: a sablon üzembe helyezéséhez használt előfizetés.
    * **Erőforráscsoport**: a sablon üzembe helyezéséhez használt erőforráscsoport. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy meglévő erőforráscsoportot is az előfizetésben.
    * **Hely**: a sablon üzembe helyezésének helye. Ha kiválasztott egy meglévő erőforráscsoportot, az adott erőforráscsoport helyét fogja használni.
@@ -545,7 +545,7 @@ A Linux rendszerhez készült privát rendszerképeket különböző lépésekke
 >
 
 ---
-Előkészítheti és létrehozhatja az egyéni rendszerképeket, majd a használatával több új virtuális gépet is létrehozhat. Ez az [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása][planning-guide]című témakörben található. Állítsa be az adatbázis tartalmát az SAP szoftver-kiépítési kezelővel egy új SAP-rendszer telepítéséhez (visszaállítja egy adatbázis biztonsági mentését a virtuális géphez csatlakoztatott lemezről), vagy az adatbázis biztonsági másolatának közvetlen visszaállítását az Azure Storage-ból, ha az adatbázis-KEZELŐje támogatja azt. További információkért lásd: [SAP NetWeaver az Azure Virtual Machines DBMS üzembe][dbms-guide]. Ha már telepített egy SAP-rendszert a helyszíni virtuális gépen (különösen a kétrétegű rendszerek esetében), az SAP-rendszerbeállításokat az Azure-beli virtuális gép üzembe helyezése után az SAP szoftver kiépítési kezelője által támogatott rendszer-átnevezési eljárással módosíthatja (SAP-Megjegyzés [1619720]). Ellenkező esetben az Azure-beli virtuális gép üzembe helyezése után is telepítheti az SAP szoftvert.
+Előkészítheti és létrehozhatja az egyéni rendszerképeket, majd a használatával több új virtuális gépet is létrehozhat. Ez az [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása][planning-guide]című témakörben található. Állítsa be az adatbázis tartalmát az SAP szoftver-kiépítési kezelővel egy új SAP-rendszer telepítéséhez (visszaállítja egy adatbázis biztonsági mentését a virtuális géphez csatlakoztatott lemezről), vagy az adatbázis biztonsági másolatának közvetlen visszaállítását az Azure Storage-ból, ha az adatbázis-KEZELŐje támogatja azt. További információ: [Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára][dbms-guide]. Ha már telepített egy SAP-rendszert a helyszíni virtuális gépen (különösen a kétrétegű rendszerek esetében), az SAP-rendszerbeállításokat az Azure-beli virtuális gép üzembe helyezése után az SAP szoftver kiépítési kezelője által támogatott rendszer-átnevezési eljárással módosíthatja (SAP-Megjegyzés [1619720]). Ellenkező esetben az Azure-beli virtuális gép üzembe helyezése után is telepítheti az SAP szoftvert.
 
 A következő folyamatábra a virtuális gép egyéni rendszerképből történő üzembe helyezéséhez szükséges SAP-specifikus lépések listáját mutatja be:
 
@@ -560,7 +560,7 @@ Az új virtuális gép felügyelt lemezképből való létrehozásának legegysz
 
 A varázsló végigvezeti a virtuális gép létrehozásához szükséges paraméterek beállításán, az összes szükséges erőforráson, például a hálózati adaptereken és a Storage-fiókokon kívül. A paraméterek némelyike a következő:
 
-1. **Alapvető beállítások**:
+1. **Alapismeretek**:
    * **Name (név**): az erőforrás neve (a virtuális gép neve).
    * **VM-lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
    * **Felhasználónév és jelszó** vagy **nyilvános SSH-kulcs**: adja meg a kiépítés során létrehozott felhasználó felhasználónevét és jelszavát. Linux rendszerű virtuális gépek esetében megadhatja a számítógépbe való bejelentkezéshez használt nyilvános Secure Shell-(SSH-) kulcsot.
@@ -572,7 +572,7 @@ A varázsló végigvezeti a virtuális gép létrehozásához szükséges param�
      A támogatott virtuálisgép-típusok listáját lásd: SAP-Megjegyzés [1928533]. Ügyeljen arra, hogy a megfelelő virtuálisgép-típust válassza, ha az Azure Premium Storaget szeretné használni. Nem minden VM-típus támogatja a Premium Storage. További információt a [Storage: Microsoft Azure Storage és adatlemezek][planning-guide-storage-microsoft-azure-storage-and-data-disks] , valamint az Azure [Premium Storage][planning-guide-azure-premium-storage] az [Azure Virtual Machines az SAP NetWeaver tervezése és implementálása][planning-guide]című témakörben talál.
 
 1. **Beállítások**:
-   * **Tárolás**
+   * **Storage**
      * **Lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
      * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks][planning-guide-managed-disks] a tervezési útmutatóban.
    * **Hálózat**
@@ -610,7 +610,7 @@ A következő SAP-sablonok egyikével hozzon létre egy központi telepítést a
 
 A Azure Portal adja meg a következő paramétereket a sablonhoz:
 
-1. **Alapvető beállítások**:
+1. **Alapismeretek**:
    * **Előfizetés**: a sablon üzembe helyezéséhez használt előfizetés.
    * **Erőforráscsoport**: a sablon üzembe helyezéséhez használt erőforráscsoport. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy meglévő erőforráscsoportot az előfizetésben.
    * **Hely**: a sablon üzembe helyezésének helye. Ha kiválasztott egy meglévő erőforráscsoportot, az adott erőforráscsoport helyét fogja használni.
@@ -705,7 +705,7 @@ Ha a Azure Portal használatával szeretne létrehozni egy központi telepítés
 
 A Azure Portal adja meg a következő paramétereket a sablonhoz:
 
-1. **Alapvető beállítások**:
+1. **Alapismeretek**:
    * **Előfizetés**: a sablon üzembe helyezéséhez használt előfizetés.
    * **Erőforráscsoport**: a sablon üzembe helyezéséhez használt erőforráscsoport. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy meglévő erőforráscsoportot az előfizetésben.
    * **Hely**: a sablon üzembe helyezésének helye. Ha kiválasztott egy meglévő erőforráscsoportot, az adott erőforráscsoport helyét fogja használni.
@@ -912,7 +912,7 @@ A proxybeállítások a \\ban, például\\waagent. conf fájl a szükséges virt
 
   Emellett útvonalakat is hozzá kell adnia az \\-ban felsorolt IP-címekhez, például\\regionserverclnt. cfg. Az alábbi ábrán egy példa látható:
 
-  ![Alagúthasználat kényszerítése][deployment-guide-figure-50]
+  ![Kényszerített bújtatás][deployment-guide-figure-50]
 
 
 * **RHEL**
@@ -947,7 +947,7 @@ Az Azure-bővítmény telepítése az SAP-hez a PowerShell használatával:
     Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
-A fiókadatok megadása és az Azure-beli virtuális gép azonosítása után a parancsfájl telepíti a szükséges bővítményeket, és engedélyezi a szükséges szolgáltatásokat. Ez több percet is igénybe vehet.
+A fiókadatok megadása és az Azure-beli virtuális gép azonosítása után a parancsfájl telepíti a szükséges bővítményeket, és engedélyezi a szükséges szolgáltatásokat. Ez néhány percig tarthat.
 További információ a `Set-AzVMAEMExtension`ról: [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
 ![Az SAP-specifikus Azure-parancsmag-AzVMAEMExtension sikeres végrehajtása][deployment-guide-figure-900]

@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438061"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
@@ -36,7 +36,7 @@ Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
 Az alábbi táblázat az egyes attribútumokat ismerteti:
 
-| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
+| Attribútum | Név | Szükséges | Type (Típus) | Leírás |
 | --- | --- | --- | --- | --- |
 | Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
 | objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId a `“@”` karakterrel kell kezdődnie. |
@@ -163,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Paraméter értéke** | **Kötelező** |  **Típus** |  **Leírás** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True (Igaz) | Sztring |   A UserId-objectIdType objectId. |
-| YOUR_PATH | True (Igaz) | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
-| YOUR_ACCESS_TYPE |  True (Igaz) | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
-| YOUR_RESOURCE_TYPE | True (Igaz) | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*, *definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *rendszer*,  *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
+| YOUR_USER_ID |  Igaz | Sztring |   A UserId-objectIdType objectId. |
+| YOUR_PATH | Igaz | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
+| YOUR_ACCESS_TYPE |  Igaz | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
+| YOUR_RESOURCE_TYPE | Igaz | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*, *definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *rendszer*,  *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
 
 Egy sikeres kérelem logikai `true` vagy `false`t ad vissza, amely jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
 
@@ -178,7 +178,7 @@ Egy elérési útra vonatkozó összes szerepkör-hozzárendelés beszerzéséhe
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | YOUR_PATH | A terület teljes elérési útja |
 

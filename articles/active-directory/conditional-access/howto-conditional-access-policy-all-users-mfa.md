@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424936"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: MFA megkövetelése minden felhasználó számára
 
@@ -57,8 +57,24 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
+### <a name="named-locations"></a>Nevesített helyek
+
+A szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatoknak **nevezett helyként** ismert hálózati helyet foglalnak magukban. Ezek a nevesített helyek olyan megbízható IPv4-hálózatokat tartalmazhatnak, mint a Főiroda helyének. Az elnevezett helyek konfigurálásával kapcsolatos további információkért tekintse [meg a feltételes hozzáférés Azure Active Directory a hely feltételeit](location-condition.md) ismertető cikket.
+
+A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem igényli a többtényezős hitelesítést, ha a vállalati hálózatról fér hozzá a felhőalapú alkalmazásokhoz. Ebben az esetben a következő konfigurációt vehetik fel a szabályzatba:
+
+1. A **hozzárendelések**területen válassza a **feltételek** > a **telephelyek**lehetőséget.
+   1. Konfigurálja az **Igen értéket**.
+   1. Adjon meg **bármilyen helyet**.
+   1. **Az összes megbízható helyszín**kizárása.
+   1. Válassza a **Done** (Kész) lehetőséget.
+1. Válassza a **Done** (Kész) lehetőséget.
+1. **Mentse** a szabályzat módosításait.
+
 ## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
+
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

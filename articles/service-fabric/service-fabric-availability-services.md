@@ -1,50 +1,41 @@
 ---
-title: Service Fabric-szolgáltatások rendelkezésre állása |} A Microsoft Docs
-description: Hibák észlelése, a feladatátvétel és a recovery Services ismerteti
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric szolgáltatások rendelkezésre állása
+description: A szolgáltatás hibakeresését, feladatátvételét és helyreállítását ismerteti egy Azure Service Fabric alkalmazásban.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 279ba4a4-f2ef-4e4e-b164-daefd10582e4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: dd10af0d3c8a57168a27a039286ea0ec4c1dad02
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310944"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551862"
 ---
-# <a name="availability-of-service-fabric-services"></a>Service Fabric-szolgáltatások rendelkezésre állása
-Ez a cikk áttekintést nyújt, hogyan kezeli az Azure Service Fabric a egy szolgáltatás rendelkezésre állását.
+# <a name="availability-of-service-fabric-services"></a>Service Fabric szolgáltatások rendelkezésre állása
+Ez a cikk áttekintést nyújt arról, hogyan kezeli az Azure Service Fabric egy szolgáltatás rendelkezésre állását.
 
-## <a name="availability-of-service-fabric-stateless-services"></a>A Service Fabric állapotmentes szolgáltatások rendelkezésre állása
-Service Fabric-szolgáltatások lehet állapot nélküli vagy állapotalapú. Állapotmentes szolgáltatás egy alkalmazás szolgáltatása, amely nem rendelkezik egy [helyi állapotot](service-fabric-concepts-state.md) , kell lennie a magas rendelkezésre álló vagy megbízható.
+## <a name="availability-of-service-fabric-stateless-services"></a>Service Fabric állapot nélküli szolgáltatások rendelkezésre állása
+Service Fabric szolgáltatások lehetnek állapot-nyilvántartó vagy állapot nélküliek. Az állapot nélküli szolgáltatás olyan alkalmazás-szolgáltatás, amely nem rendelkezik olyan [helyi állapottal](service-fabric-concepts-state.md) , amely nem igényel jelentős rendelkezésre állást vagy megbízhatóságot.
 
-Állapotmentes szolgáltatás létrehozásához szükséges meghatározása egy `InstanceCount`. A példányok száma határozza meg, amely futnia kell a fürtben lévő alkalmazáslogika az állapotmentes szolgáltatás példányainak számát. Példányok számának növelése az állapotmentes szolgáltatás kiterjesztése ajánlott módja.
+Az állapot nélküli szolgáltatások létrehozásához meg kell határozni egy `InstanceCount`. A példányszám határozza meg az állapot nélküli szolgáltatás alkalmazás-logikájának azon példányainak számát, amelyeknek futniuk kell a fürtben. A példányok számának növelésével az állapot nélküli szolgáltatások horizontális felskálázásának ajánlott módja.
 
-Ha nem sikerül egy állapot nélküli nevű-szolgáltatás egy példányát, egy új példányt egy jogosult csomóponton a fürtben jön létre. Például állapotmentes szolgáltatáspéldány sikertelen lehet a csomópont1, és újra létrehozni a Csomópont5 számítógépre.
+Ha egy állapot nélküli névvel ellátott szolgáltatás egy példánya meghibásodik, egy új példány jön létre egy jogosult csomóponton a fürtben. Előfordulhat például, hogy egy állapot nélküli szolgáltatási példány meghiúsul a Csomópont1, és újra létre kell hozni a Csomópont5 számítógépre.
 
-## <a name="availability-of-service-fabric-stateful-services"></a>A Service Fabric állapotalapú szolgáltatások rendelkezésre állása
-Az állapotalapú szolgáltatások egy hozzá társított állapottal rendelkezik. A Service Fabric az állapotalapú szolgáltatások replikák csoportként van modellezve. Minden egyes replikának egy futó példányával, a kód a szolgáltatás. A replika is tartalmaz az állam, hogy a szolgáltatás egy példányát. Olvasási és írási műveleteket egy replika nevű, a *elsődleges*. Állapot módosítása írási műveletek a következők *replikált* a többi replikához a replika, nevű *aktív másodlagos példány hozható létre*, és a alkalmazni. 
+## <a name="availability-of-service-fabric-stateful-services"></a>Service Fabric állapot-nyilvántartó szolgáltatások rendelkezésre állása
+Az állapot-nyilvántartó szolgáltatáshoz társítva van egy állapot. Service Fabric egy állapot-nyilvántartó szolgáltatás replikák készletként van modellezve. Minden replika a szolgáltatás kódjának futó példánya. A replika a szolgáltatás állapotának másolatát is tartalmazhatja. Az olvasási és írási műveleteket egy, az *elsődlegesnek*nevezett replikán hajtja végre. Az írási műveletek állapotának módosításait a rendszer az *aktív formátumú másodlagos zónák*nevű replikakészlet más replikáinak *replikálja* , és alkalmazza. 
 
-Csak egy elsődleges replika is lehet, de több aktív másodlagos replika is lehet. Aktív másodlagos replikák száma konfigurálható, és replikák megnövelt számú tűri egyidejű szoftverek és a hardveres hibák esetén nagyobb számú.
+Csak egy elsődleges replika lehet, de több aktív másodlagos replika is lehet. Az aktív másodlagos replikák száma konfigurálható, és a replikák nagyobb száma több párhuzamos szoftver és hardverhiba esetén is elfogadható.
 
-Ha az elsődleges replika leáll, a Service Fabric biztosítja, aktív másodlagos replikára az új elsődleges replika. Az aktív másodlagos replika már rendelkezik az állapot, a frissített verzió keresztül *replikációs*, és további olvasási és írási műveletek feldolgozása továbbra is. Ez a folyamat más néven *újrakonfigurálás* , és az erről a [újrakonfigurálás](service-fabric-concepts-reconfiguration.md) cikk.
+Ha az elsődleges replika leáll, Service Fabric teszi az új elsődleges replikát az egyik aktív másodlagos replikára. Ez az aktív másodlagos replika már rendelkezik az állapot frissített verziójával a *replikáláson*keresztül, és folytathatja a további írási/olvasási műveletek feldolgozását. Ez a folyamat *újrakonfigurálás* néven ismert, és az [újrakonfigurálási](service-fabric-concepts-reconfiguration.md) cikkben további útmutatást talál.
 
-Folyamatban van egy elsődleges vagy másodlagos aktív replika fogalma más néven a *replika szerepkör*. Ezek a replikák olyan további a [replikák és példányok](service-fabric-concepts-replica-lifecycle.md) cikk. 
+A replika fogalma elsődleges vagy aktív másodlagos, azaz *replika szerepkör*. Ezeket a replikákat a [replikák és példányok](service-fabric-concepts-replica-lifecycle.md) című cikkben találja. 
 
-## <a name="next-steps"></a>További lépések
-A Service Fabric fogalmakról további információkért tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>Következő lépések
+Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Service Fabric-szolgáltatások méretezése](service-fabric-concepts-scalability.md)
-- [Service Fabric-szolgáltatások particionálása](service-fabric-concepts-partitioning.md)
-- [Állapot definiálása és kezelése](service-fabric-concepts-state.md)
+- [Service Fabric szolgáltatások skálázása](service-fabric-concepts-scalability.md)
+- [Service Fabric szolgáltatások particionálása](service-fabric-concepts-partitioning.md)
+- [Állapot meghatározása és kezelése](service-fabric-concepts-state.md)
 - [Reliable Services](service-fabric-reliable-services-introduction.md)
 

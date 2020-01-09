@@ -1,6 +1,6 @@
 ---
-title: Azure-beli biztonsági termékek integrációja Azure Security Center
-description: Ez a témakör a Azure Security Center integrált Azure biztonsági termékeket ismerteti.
+title: Fenyegetések észlelése az Azure biztonsági termékekhez Azure Security Center
+description: Ez a témakör azokat az Azure-beli biztonsági termékeket mutatja be, amelyek esetében a Azure Security Center fenyegetések észlelését is lehetővé teszi
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278334"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665720"
 ---
-# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Az Azure biztonsági termékek integrálása a Azure Security Centerban
+# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Az Azure WAF és Azure DDoS Protection fenyegetésészlelése
 
-A Azure Security Center további Microsoft-licenceket biztosít a következő biztonsági termékekkel való együttműködéshez:
+A Azure Security Center a következő Azure biztonsági termékek fenyegetések észlelését teszi lehetővé (az egyes termékekhez külön licenc szükséges):
 
 * [Azure-WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
@@ -38,12 +38,4 @@ A DDoS-támadások megpróbálják kimeríteni az alkalmazás erőforrásait, el
 
 Azure DDoS Protection az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben. A DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection Overview (áttekintés](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)).
 
-DDoS Protection a standard a következő típusú támadásokat csökkentheti:
-
-> [!div class="mx-tableFixed"]
-
-|Riasztás|Leírás|
-|---|---|
-|**Térfogatos támadás észlelhető**|Ennek a támadásnak a célja, hogy elárasztsa a hálózati réteget, amely jelentős mennyiségű látszólag megbízható adatforgalommal rendelkezik. Ide tartozik az UDP-árvizek, az erősítési árvizek és a hamis csomagokra vonatkozó egyéb áradások. A DDoS Protection standard csökkenti ezeket a lehetséges többgigabájtos támadásokat azáltal, hogy a globális hálózati méretezéssel automatikusan befogadja és súrolja őket.|
-|**A protokoll támadása észlelve**|Ezek a támadások nem hozzáférhetővé teszik a célt, ha kihasználják a 3. és a 4. rétegbeli protokollok gyenge pontjait. A szolgáltatás magában foglalja az SYN FLOOD támadásokat, a reflexiós támadásokat és más protokollok elleni támadásokat. A DDoS Protection standard csökkenti ezeket a támadásokat, megkülönbözteti a kártékony és a legitim forgalmat, az ügyféllel való interakcióval és a rosszindulatú forgalom blokkolásával.|
-|**Az erőforrás (alkalmazás) rétegbeli támadás észlelhető**|Ezek a támadások a webalkalmazási csomagokat célozzák meg a gazdagépek közötti adatátvitel megzavarásához. A támadások közé tartoznak a HTTP-protokollok megsértése, az SQL-injektálás, a helyközi parancsfájlkezelés és a 7. rétegbeli támadások. Az Azure Application Gateway WAF DDoS Protection standard szintű használatával védekezhet a támadásokkal szemben. Az Azure Marketplace-en elérhetők a harmadik féltől származó WAF ajánlatok is.|
+A Azure DDoS Protection riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureddos)tekintheti meg.

@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 2a74df3aaf70270353b10f757cf3a61e8f479d74
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: c5b7f4eaac91e79dde625ea00bfb6b1ea8782b31
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052992"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530612"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Adatelemzési Virtual Machines megosztott készletének létrehozása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre az adatelemzési Virtual Machines (Dsvm) megosztott készletét egy csapat számára. A megosztott készlet használatának előnyei közé tartozik a jobb erőforrás-használat, a könnyebb megosztás és együttműködés, valamint a DSVM erőforrások hatékonyabb kezelése.
 
-Számos módszert és technológiát használhat a Dsvm készletének létrehozásához. Ez a cikk az interaktív virtuális gépek (VM-EK) készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információ: [számítási célok beállítása](../service/how-to-set-up-training-targets.md#amlcompute).
+Számos módszert és technológiát használhat a Dsvm készletének létrehozásához. Ez a cikk az interaktív virtuális gépek (VM-EK) készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információ: [számítási célok beállítása](../how-to-set-up-training-targets.md#amlcompute).
 
 ## <a name="interactive-vm-pool"></a>Interaktív virtuálisgép-készlet
 

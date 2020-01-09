@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e551159ad2d41af37b1f400e91680c49117498d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423632"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webalkalmazás – kód konfigurálása
 
@@ -38,8 +38,8 @@ A webalkalmazások engedélyezési kódját támogató kódtárak a következők
 | MSAL-könyvtár | Leírás |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A támogatott platformok a .NET-keretrendszer és a .NET Core platform (a UWP, a Xamarin. iOS és a Xamarin. Android), mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Fejlesztés folyamatban – nyilvános előzetes verzió |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Fejlesztés folyamatban – nyilvános előzetes verzió |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python-webalkalmazások támogatása |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java-webalkalmazások támogatása |
 
 Válassza ki az Önt érdeklő platformhoz tartozó fület:
 
@@ -92,7 +92,7 @@ A gyakorlatban a [ASP.net Core webalkalmazás-oktatóanyag](https://github.com/A
 
 Itt látható a [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) kód, amely a webalkalmazáshoz való hitelesítést `AddMsal` és a webes API-k meghívásához szükséges képességet biztosító `AddMicrosoftIdentityPlatformAuthentication` metódus meghívását adja meg. A `AddInMemoryTokenCaches` hívása a jogkivonat-gyorsítótár implementációjának kiválasztására vonatkozik a lehetséges lehetőségek közül:
 
-```CSharp
+```csharp
 public class Startup
 {
   // Code not show here
@@ -112,7 +112,7 @@ public class Startup
 
 a `Constants.ScopeUserRead` Konstansokban van definiálva [. cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
-```CSharp
+```csharp
 public static class Constants
 {
     public const string ScopeUserRead = "User.Read";
@@ -125,7 +125,7 @@ Már tanulmányozta `AddMicrosoftIdentityPlatformAuthentication` tartalmát a [w
 
 `AddMsal` kódja a [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)helyen található.
 
-```CSharp
+```csharp
 
 /// <summary>
 /// Extensions for IServiceCollection for startup initialization.
@@ -253,7 +253,7 @@ ASP.NET Core a bizalmas ügyfélalkalmazás felépítése a HttpContext találha
 
 A `GetOrBuildConfidentialClientApplication()` metódus kódja a [Microsoft. Identity. Web/TokenAcquisition. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333). Olyan tagokat használ, amelyek függőségi befecskendezéssel lettek bevezetve (a [Microsoft. Identity. Web/TokenAcquisition. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59)) a TokenAcquisition konstruktorában lett átadva.
 
-```CSharp
+```csharp
 public class TokenAcquisition : ITokenAcquisition
 {
   // Code omitted here for clarity
@@ -322,7 +322,7 @@ Az összegzéshez `AcquireTokenByAuthorizationCode` valóban beváltja a ASP.NET
 
 A ASP.NET által kezelt dolgok ugyanúgy hasonlítanak a ASP.NET Corehoz, azzal a különbséggel, hogy az [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban a OpenIdConnect konfigurációja és az `OnAuthorizationCodeReceived` eseményre való előfizetés történik. Hasonló fogalmakat talál, mint a ASP.NET Coreban, a ASP.NET azonban meg kell adnia a RedirectUri a [web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint amit a ASP.NET Core végez, mivel az alkalmazás telepítésekor módosítania kell azt.
 
-```CSharp
+```csharp
 public partial class Startup
 {
   public void ConfigureAuth(IAppBuilder app)

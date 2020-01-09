@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997139"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552916"
 ---
 # <a name="protect-your-network-resources"></a>A hálózati erőforrások megóvása
 Azure Security Center folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
-Ez a cikk ismerteti a Azure Security Center erőforrás-biztonsági szakaszának **hálózatkezelés** lapját, valamint néhány olyan javaslatot, amelyet itt láthat.
+Ez a cikk a Security Center erőforrás-biztonsági szakaszának **hálózatkezelés** lapját ismerteti.
 
-A hálózatkezeléssel kapcsolatos javaslatok teljes listáját lásd: [hálózatkezelési javaslatok](recommendations-network.md).
+A hálózatkezeléssel kapcsolatos javaslatok teljes listáját lásd: [hálózatkezelési javaslatok](recommendations-reference.md#recs-network).
 
 Ez a cikk az Azure-erőforrásokra vonatkozó ajánlásokat tárgyalja a hálózati biztonsági szempontból. Hálózatkezelési javaslatok központ a következő generációs tűzfalak, hálózati biztonsági csoportok, JIT VM-hozzáférés, túlzottan megengedhető bejövő forgalmi szabályok és egyéb funkciók köré. A hálózati javaslatok és a javítási műveletek listáját lásd: [biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md).
 
@@ -40,7 +40,7 @@ A **hálózatkezelés** oldal áttekintést nyújt azokról a részekről, amely
 - Hálózatkezelési biztonsági javaslatok.
 - Örökölt **hálózatkezelés** panel (az előző hálózatkezelés panel) 
  
-![Hálózatkezelés panel](./media/security-center-network-recommendations/networking-pane.png)
+[![hálózatkezelés panel](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>Hálózati Térkép
 Az interaktív hálózati Térkép grafikus nézetet biztosít a biztonsági átfedésekkel, így javaslatokat és bepillantást nyerhet a hálózati erőforrások megerősítéséhez. A Térkép használatával megtekintheti az Azure-beli számítási feladatok hálózati topológiáját, a virtuális gépek és az alhálózatok közötti kapcsolatokat, valamint a térképről adott erőforrásokra és az ezekre az erőforrásokra vonatkozó javaslatokkal való részletezés lehetőségét.
@@ -59,11 +59,11 @@ A topológiai Térkép alapértelmezett nézete a következőket jeleníti meg:
 - Internet felé irányuló erőforrások
 - A Térkép az Azure-ban kiválasztott előfizetésekhez van optimalizálva. Ha módosítja a kijelölést, a rendszer az új beállítások alapján újraszámítja és újraoptimalizálja a térképet.  
 
-![Hálózati topológia térképe](./media/security-center-network-recommendations/network-map-info.png)
+[![hálózati topológia térképe](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>A hálózati Térkép ismertetése
 
-A hálózati Térkép az Azure-erőforrásokat **topológiai** nézetben és **forgalmi** nézetben jelenítheti meg.
+A hálózati Térkép az Azure-erőforrásokat **topológiai** nézetben és **forgalmi** nézetben jelenítheti meg. 
 
 ### <a name="the-topology-view"></a>A topológia nézet
 
@@ -111,7 +111,8 @@ Erőforrások részletezése:
 
 **Ezek az információk a hálózati biztonsági csoportok és a speciális gépi tanulási algoritmusok elemzésén alapulnak, amelyek több szabályt elemeznek a crossover-és interakciók megismerése érdekében.** 
 
-![Hálózati forgalom térképe](./media/security-center-network-recommendations/network-map-traffic.png)
+[![hálózati forgalom térképe](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+
 
 ## Örökölt hálózatkezelés<a name ="legacy-networking"></a>
 
@@ -119,7 +120,7 @@ Ha nem rendelkezik Security Center standard szintű csomaggal, ez a szakasz az i
 
 Ezen információk eléréséhez a hálózatkezelés panelen kattintson a **régi hálózatkezelés megtekintése**elemre. 
 
-![Örökölt hálózatkezelés](./media/security-center-network-recommendations/legacy-networking.png)
+[Örökölt hálózatkezelés ![](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>Internet facing endpoints (Internet felé néző végpontok) szakasz
 Az **internetre irányuló végpontok** szakaszban megtekintheti azokat a virtuális gépeket, amelyek jelenleg egy internetkapcsolattal rendelkező végponttal és annak állapotával vannak konfigurálva.
@@ -135,7 +136,8 @@ Ebben a topológia nézetben az első szint a virtuális hálózatok jeleníti m
 
 A harmadik szint a korábban leírthoz hasonló virtuális gépeket jelenít meg. Az erőforrásokra kattintva további információkat kaphat, vagy alkalmazhatja a szükséges biztonsági vezérlést vagy konfigurációt.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>Következő lépések
+
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következőket:
 
 * [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)

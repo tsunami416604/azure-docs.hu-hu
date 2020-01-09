@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8379b7f48e7e494370f3fdba81676d34821d7b6f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792687"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563377"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure jelenleg a következő két típusú várólista közötti különbségeket és hasonlóságokat elemzi: Storage Queues és Service Bus Queues. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Az Azure két típusú várólista-mechanizmust támogat: a **tárolási várólistákat** és a **Service Bus várólistákat**.
 
 Az [Azure Storage](https://azure.microsoft.com/services/storage/) -infrastruktúra részét képező **tárolási várólisták**egy egyszerű REST-alapú Get/Put/Peek felületet biztosítanak, amely megbízható, állandó üzenetküldést tesz lehetővé a szolgáltatások között és azok között.
@@ -55,11 +55,11 @@ Megoldás-építészként/fejlesztőként érdemes **megfontolni Service Bus vá
 * A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információkért tekintse át a következő cikkeket:
     - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)
     - [Hitelesítés alkalmazásból](authenticate-application.md)
-* A várólista mérete nem növekszik 80 GB-nál nagyobb mértékben.
+* Az üzenetsor mérete nem nő 80 GB-nál nagyobbra.
 * A AMQP 1,0 szabványokon alapuló üzenetküldési protokollt kívánja használni. További információ a AMQP: [Service Bus AMQP áttekintése](service-bus-amqp-overview.md).
 * A várólista-alapú pont-pont típusú kommunikációból egy olyan üzenetváltási mintára vonatkozó végleges áttelepítést készíthet, amely lehetővé teszi a további fogadók (előfizetők) zökkenőmentes integrálását, amelyek mindegyike független másolatokat fogad a várólistába küldött üzenetek. Az utóbbi a Service Bus által natív módon nyújtott közzétételi/előfizetési képességre hivatkozik.
 * Az üzenetkezelési megoldásnak képesnek kell lennie támogatni a "legfeljebb egyszeri" kézbesítési garanciát anélkül, hogy létre kellene hoznia a további infrastruktúra-összetevőket.
-* Szeretné közzétenni és felhasználni az üzenetek kötegeit.
+* Közzé szeretne tenni és fel szeretne használni üzenettömböket.
 
 ## <a name="comparing-storage-queues-and-service-bus-queues"></a>A tárolási várólisták és a Service Bus várólisták összehasonlítása
 A következő szakaszokban szereplő táblázatok a várólista-funkciók logikai csoportosítását teszik lehetővé, és összehasonlíthatja az Azure Storage-várólistákban és a Service Bus-várólistákban elérhető képességeket.
@@ -108,7 +108,7 @@ Ez a szakasz a tárolási várólisták és a Service Bus várólisták speciál
 | Helyben történő frissítés |**Igen** |**Igen** |
 | Kiszolgálóoldali tranzakciónapló |**Igen** |**Nem** |
 | Tárolási metrikák |**Igen**<br/><br/>**Perc mérőszámok**: valós idejű mérőszámokat biztosít a rendelkezésre álláshoz, a TPS, az API-hívások számait, a hibák számát és egyebeket, mindezt valós időben (percenként összesítve), és néhány percen belül jelentést készített az éles környezetben történtek közül. További információ: [a Storage Analytics mérőszámok ismertetése](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Igen**<br/><br/>(tömeges lekérdezések a [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)meghívásával) |
-| Állapotkezelés |**Nem** |**Igen**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. letiltva](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [ Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Állapotkezelés |**Nem** |**Igen**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. letiltva](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Üzenet automatikus továbbítása |**Nem** |**Igen** |
 | Várólista-törlési függvény |**Igen** |**Nem** |
 | Üzenetek csoportjai |**Nem** |**Igen**<br/><br/>(üzenetküldési munkamenetek használatával) |
@@ -121,7 +121,7 @@ Ez a szakasz a tárolási várólisták és a Service Bus várólisták speciál
 * Mindkét üzenetsor-kezelő technológia lehetővé teszi, hogy egy későbbi időpontban ütemezhető legyen az üzenet kézbesítése.
 * Az üzenetsor automatikus továbbítása lehetővé teszi, hogy több ezer várólista automatikusan továbbítsa az üzeneteket egyetlen várólistába, amelyből a fogadó alkalmazás felhasználja az üzenetet. Ezt a mechanizmust használhatja a biztonság, a vezérlési folyamat és a tárolók elkülönítésére az egyes üzenetek közzétevői között.
 * A tárolási várólisták támogatást nyújtanak az üzenetek tartalmának frissítéséhez. Ezzel a funkcióval megtarthatja az állapotadatokat és a növekményes előrehaladási frissítéseket az üzenetbe, hogy az utolsó ismert ellenőrzőpontról feldolgozható legyen, és ne a semmiből kellene kezdenie. Service Bus várólistákkal ugyanezt a forgatókönyvet is engedélyezheti az üzenet-munkamenetek használatával. A munkamenetek lehetővé teszik az alkalmazások feldolgozási állapotának mentését és beolvasását (a [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) és a [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)használatával).
-* A csak Service Bus várólisták által támogatott [Kézbesítetlen](service-bus-dead-letter-queues.md)levelek esetében hasznos lehet a fogadó alkalmazás által nem feldolgozható üzenetek elkülönítése, vagy ha egy lejárt élettartam (TTL) miatt nem lehet elérni a célhelyet. tulajdonság. A TTL érték azt határozza meg, hogy mennyi ideig marad az üzenet a várólistán. Service Bus esetén az üzenet egy $DeadLetterQueue nevű speciális várólistába kerül, amikor a TTL-időszak lejár.
+* A csak Service Bus várólisták által támogatott [Kézbesítetlen](service-bus-dead-letter-queues.md)levelek esetében hasznos lehet a fogadó alkalmazás által nem feldolgozható üzenetek elkülönítése, vagy ha egy lejárt élettartam (TTL) tulajdonság miatt nem lehet elérni a célját. A TTL érték azt határozza meg, hogy mennyi ideig marad az üzenet a várólistán. Service Bus esetén az üzenet egy $DeadLetterQueue nevű speciális várólistába kerül, amikor a TTL-időszak lejár.
 * Ha meg szeretné keresni a "méreg" üzeneteket a tárolási várólistákban, amikor egy üzenet dequeuing üzenetet küld, az alkalmazás megvizsgálja az üzenet [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) tulajdonságát. Ha a **DequeueCount** nagyobb, mint egy megadott küszöbérték, az alkalmazás áthelyezi az üzenetet egy alkalmazás által definiált "kézbesítetlen levél" várólistára.
 * A tárolási várólisták lehetővé teszik a várólistán végrehajtott összes tranzakció részletes naplójának, valamint az összesített mérőszámok beszerzését. Mindkét lehetőség hasznos lehet a hibakereséshez és annak megismeréséhez, hogy az alkalmazás hogyan használja a tárolási várólistákat. Hasznosak továbbá az alkalmazások teljesítményének finomhangolásához és a várólisták használatának költségeinek csökkentéséhez.
 * A Service Bus által támogatott "üzenet-munkamenetek" fogalma lehetővé teszi, hogy egy adott logikai csoporthoz tartozó üzenetek egy adott fogadóhoz legyenek társítva, ami viszont az üzenetek és a hozzájuk tartozó fogadók közötti kapcsolati affinitást hoz létre. Ezt a speciális funkciót a Service Busban engedélyezheti egy üzenetben a [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) -azonosító tulajdonság beállításával. A fogadók ezt követően egy adott munkamenet-azonosítót és a megadott munkamenet-azonosítót megosztó üzeneteket fogadhatnak.
@@ -186,7 +186,7 @@ Ez a szakasz a tárolási várólisták és Service Bus várólisták által tá
 ## <a name="conclusion"></a>Összegzés
 A két technológia mélyebb megismerése révén jobban tájékozott döntést hozhat, hogy melyik üzenetsor-technológiát használja, és mikor. A tárolási várólisták vagy Service Bus-várólisták használatára vonatkozó döntés egyértelműen több tényezőtől függ. Ezek a tényezők nagy mértékben befolyásolhatják az alkalmazás és az architektúrájuk egyedi igényeit. Ha az alkalmazás már a Microsoft Azure alapvető képességeit használja, érdemes lehet a tárolási várólistákat választania, különösen akkor, ha alapszintű kommunikációt és üzenetküldést igényel a szolgáltatások között, vagy olyan várólistákra van szüksége, amelyek mérete nagyobb, mint 80 GB.
 
-Mivel a Service Bus Queues számos speciális funkciót biztosít, például a munkameneteket, a tranzakciókat, a duplikált észlelést, az automatikus kézbesítetlen levelek használatát és a tartós közzétételi/előfizetési képességeket, érdemes választani, ha hibrid alkalmazásra, vagy ha az alkalmazás egyébként megköveteli ezeket a funkciókat.
+Mivel a Service Bus Queues számos speciális funkciót biztosít, például a munkameneteket, a tranzakciókat, a duplikált észlelést, az automatikus kézbesítetlen közzétételt és a tartós közzétételi/előfizetési képességeket, érdemes választani, ha hibrid alkalmazást készít, vagy ha az alkalmazása más funkciókat is igényel.
 
 ## <a name="next-steps"></a>Következő lépések
 A következő cikkek további útmutatást és információkat nyújtanak a tárolási várólisták vagy Service Bus várólisták használatával kapcsolatban.
@@ -194,7 +194,7 @@ A következő cikkek további útmutatást és információkat nyújtanak a tár
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [Az Queue Storage szolgáltatás használata](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Ajánlott eljárások a teljesítmény növeléséhez Service Bus felügyelt üzenetkezelés használatával](service-bus-performance-improvements.md)
-* [A Azure Service Bus várólistáinak és témaköreinek bemutatása (blogbejegyzés)](https://www.code-magazine.com/article.aspx?quickid=1112041)
+* [A Azure Service Bus várólistáinak és témaköreinek bemutatása (blogbejegyzés)](https://www.serverless360.com/blog/azure-service-bus-queues-vs-topics)
 * [A Service Bus fejlesztői útmutatója](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
 * [Az Azure-beli üzenetsor-kezelő szolgáltatás használata](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 

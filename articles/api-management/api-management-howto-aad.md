@@ -1,5 +1,6 @@
 ---
-title: Fejlesztői fiókok engedélyezése Azure Active Directory-Azure API Management használatával | Microsoft Docs
+title: Fejlesztői fiókok engedélyezése Azure Active Directory használatával
+titleSuffix: Azure API Management
 description: Megtudhatja, hogyan engedélyezheti a felhasználókat a API Management Azure Active Directory használatával.
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 067d4488b064ede572a4b3ad94c94fb1552c827d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442797"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure-beli Azure Active Directory használatával API Management
 
@@ -32,7 +33,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD használatával
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 2. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
 3. Írja be az **API** kifejezést a keresőmezőbe.
 4. Válassza ki **API Management szolgáltatásokat**.
@@ -49,7 +50,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
    ![Az identitás-szolgáltató hozzáadásának lépései a Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Nyisson meg egy másik lapot a böngészőben. 
 11. A [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) gombra kattintva regisztrálhat egy alkalmazást a Active Directoryban.
-12. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+12. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 13. Válassza az **új regisztráció**lehetőséget. Az **alkalmazás regisztrálása** lapon állítsa be az értékeket az alábbiak szerint:
     
 * Adjon **nevet** egy értelmes névnek. például: *Developer-Portal*
@@ -73,7 +74,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 > [!NOTE]
 > Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Lépjen a `https://<URL of your developer portal>/aadadminconsent`ra (például https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Írja be annak az Azure AD-bérlőnek a tartománynevét, amelyhez hozzáférést szeretne biztosítani.
-> c. Válassza a **Küldés**lehetőséget. 
+> c. Válassza a **Küldés** lehetőséget. 
 
 20.  A kívánt konfiguráció megadása után válassza a **Hozzáadás**lehetőséget.
 

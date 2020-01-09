@@ -1,6 +1,7 @@
 ---
-title: Az ismert problémákkal/áttelepítési korlátozásokkal kapcsolatos cikk a PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra történő online áttelepítéssel | Microsoft Docs
-description: Ismerje meg a PostgreSQL-ről a Azure Database for PostgreSQLra való online áttelepítéssel kapcsolatos ismert problémákat/áttelepítési korlátozásokat.
+title: 'Ismert problémák: a PostgreSQL-ből való online áttelepítés Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
+description: Ismerje meg a PostgreSQL-ről online áttelepítéssel kapcsolatos ismert problémákat és áttelepítési korlátozásokat a Azure Database Migration Service használatával Azure Database for PostgreSQL-egyetlen kiszolgálóra.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 10/27/2019
-ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437859"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online Migrálás és az Azure DB for PostgreSQL – egyetlen kiszolgáló között
 
@@ -34,9 +37,9 @@ A PostgreSQL-ről Azure Database for PostgreSQL – egyetlen kiszolgálóra tör
   - **wal_level** = logikai
   - **max_replication_slots** = [az adatbázisok maximális száma az áttelepítéshez]; Ha négy adatbázist szeretne áttelepíteni, állítsa az értéket 4 értékre.
   - **max_wal_senders** = [egyidejűleg futó adatbázisok száma]; a javasolt érték 10
-- A DMS-ügynök IP-címének hozzáadása a forrás PostgreSQL pg_hba. conf fájlhoz
+- DMS-ügynök IP-címének hozzáadása a forrás PostgreSQL pg_hba. conf
   1. Jegyezze fel a DMS IP-címét, miután befejezte a DMS-példány üzembe helyezését.
-  2. Adja hozzá az IP-címet az pg_hba. conf fájlhoz az alábbiak szerint:
+  2. Adja hozzá az IP-címet a pg_hba. conf fájlhoz az alábbiak szerint:
 
         az összes 172.16.136.18/10 MD5 gazdagép replikációs postgres 172.16.136.18/10 MD5
 
@@ -113,7 +116,7 @@ A nagyméretű objektumok (LOB) oszlopai olyan oszlopok, amelyek nagy mennyiség
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 megkerülő megoldás
 
-A PostgreSQL 10. x különböző módosításokat végez a pg_xlog, így az áttelepítés nem a várt módon fut. Ha a PostgreSQL 10. x verzióról Azure Database for PostgreSQL 10,3-re végez áttelepítést, hajtsa végre a következő parancsfájlt a forrás PostgreSQL-adatbázison, és hozzon létre burkoló függvényt a pg_xlog függvények köré.
+A PostgreSQL 10. x különböző módosításokat hajt végre pg_xlog mappanevek esetében, így az áttelepítés nem a várt módon fut. Ha a PostgreSQL 10. x verzióról Azure Database for PostgreSQL 10,3-re végez áttelepítést, hajtsa végre a következő parancsfájlt a forrás PostgreSQL-adatbázison, és hozzon létre burkoló függvényt a pg_xlog függvények köré.
 
 ```
 BEGIN;

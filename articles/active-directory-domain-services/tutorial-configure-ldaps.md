@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703720"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549448"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -63,7 +63,7 @@ A kért vagy létrehozott tanúsítványnak meg kell felelnie az alábbi követe
 
 * **Megbízható kiállító** – a tanúsítványt a felügyelt tartományhoz csatlakozó számítógépeknek megbízható LDAP használatával kell kibocsátania. Ez a hatóság lehet egy nyilvános HITELESÍTÉSSZOLGÁLTATÓ vagy egy, a számítógépek által megbízhatónak minősített vállalati HITELESÍTÉSSZOLGÁLTATÓ.
 * **Élettartam** – a tanúsítványnak érvényesnek kell lennie legalább a következő 3-6 hónapra. Secure LDAP a felügyelt tartományhoz való hozzáférés megszakad, ha a tanúsítvány lejár.
-* **Tulajdonos neve** – a tanúsítvány tulajdonosának neve csak a felügyelt tartomány lehet. Ha például a tartomány neve *aadds.contoso.com*, a tanúsítvány tulajdonosának neve **aadds.contoso.com*kell lennie.
+* **Tulajdonos neve** – a tanúsítvány tulajdonosának neve csak a felügyelt tartomány lehet. Ha például a tartomány neve *aadds.contoso.com*, a tanúsítvány tulajdonosának a következőnek kell lennie: * *. aadds.contoso.com*.
     * A tanúsítvány DNS-nevének vagy tulajdonosának alternatív nevének helyettesítő tanúsítványnak kell lennie ahhoz, hogy a biztonságos LDAP megfelelően működjön a Azure AD Domain Services. A tartományvezérlők véletlenszerű neveket használnak, és eltávolíthatók vagy hozzáadhatók, így biztosítható, hogy a szolgáltatás továbbra is elérhető maradjon.
 * **Kulcshasználat** – a tanúsítványt a *digitális aláírásokhoz* és a *kulcsfontosságú titkosítási*kell konfigurálni.
 * **Tanúsítvány célja** – a tanúsítványnak érvényesnek kell lennie az SSL-kiszolgáló hitelesítéséhez.

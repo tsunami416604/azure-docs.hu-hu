@@ -1,5 +1,5 @@
 ---
-title: IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
+title: A klasszikusról Azure Resource Managerre való Migrálás megtervezése
 description: IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 8dc1ee85b9d17824898de80562ea5bfb251a2c41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4c7bdf33ed1a35e7b27eed8baa3b96066d25dd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369025"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 Míg Azure Resource Manager sok csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát. 
@@ -105,7 +105,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
 
 - **Rendelkezésre állási készletek** – a virtuális hálózatok (vNet) Azure Resource Managerba való áttelepítéséhez a klasszikus üzembe helyezés (azaz a felhőalapú szolgáltatás) egy rendelkezésre állási csoportba kell tartoznia, vagy a virtuális gépeknek nem szabad egyetlen rendelkezésre állási csoportba esniük. Ha egynél több rendelkezésre állási csoport van a felhőalapú szolgáltatásban, Azure Resource Manager nem kompatibilis, és a rendszer leállítja az áttelepítést.  Emellett a rendelkezésre állási csoportokban nem lehetnek olyan virtuális gépek, amelyek nem egy rendelkezésre állási csoportba tartozó virtuális gépek. Ennek megoldásához javítania kell a Cloud Service-t, vagy újra kell keverni.  Ennek megfelelően tervezze meg az időt. 
 
-- **Webes/feldolgozói szerepkör telepítései** – a webes és feldolgozói szerepköröket tartalmazó Cloud Services nem telepíthetők át Azure Resource Managerre. A webes és feldolgozói szerepköröket először el kell távolítani a virtuális hálózatról az áttelepítés megkezdése előtt.  Egy tipikus megoldás a webes/feldolgozói szerepkör példányainak áthelyezése egy különálló klasszikus virtuális hálózatra, amely egy ExpressRoute-áramkörhöz is csatolva van, vagy a kód áttelepítésére az újabb Pásti App Services (ez a vita meghaladja a dokumentum hatókörét). Az előző újratelepítési esetben hozzon létre egy új klasszikus virtuális hálózatot, helyezze át/telepítse újra a webes/feldolgozói szerepköröket az új virtuális hálózatra, majd törölje a központi telepítéseket az áthelyezett virtuális hálózatról. Nincs szükség kód módosítására. Az új [Virtual Network](../../virtual-network/virtual-network-peering-overview.md) -társítási képesség használható a webes/feldolgozói szerepköröket és más virtuális hálózatokat tartalmazó klasszikus virtuális hálózat összekapcsolására ugyanabban az Azure-régióban, például az áttelepített virtuális hálózaton (a**virtuális hálózat után). a Migrálás nem telepíthető át, mert a rendszer nem tudja áttelepíteni az áttelepítést**, ezért a teljesítmény elvesztése nélkül, valamint a késési/sávszélességi szankciók nélkül biztosítja a teljesítményt. A [Virtual Network](../../virtual-network/virtual-network-peering-overview.md)-társítás hozzáadásával a webes/feldolgozói szerepkör telepítései könnyedén csökkenthetők, és nem letilthatják az áttelepítést Azure Resource Managerre.
+- **Webes/feldolgozói szerepkör telepítései** – a webes és feldolgozói szerepköröket tartalmazó Cloud Services nem telepíthetők át Azure Resource Managerre. A webes és feldolgozói szerepköröket először el kell távolítani a virtuális hálózatról az áttelepítés megkezdése előtt.  Egy tipikus megoldás a webes/feldolgozói szerepkör példányainak áthelyezése egy különálló klasszikus virtuális hálózatra, amely egy ExpressRoute-áramkörhöz is csatolva van, vagy a kód áttelepítésére az újabb Pásti App Services (ez a vita meghaladja a dokumentum hatókörét). Az előző újratelepítési esetben hozzon létre egy új klasszikus virtuális hálózatot, helyezze át/telepítse újra a webes/feldolgozói szerepköröket az új virtuális hálózatra, majd törölje a központi telepítéseket az áthelyezett virtuális hálózatról. Nincs szükség kód módosítására. Az új [Virtual Network](../../virtual-network/virtual-network-peering-overview.md) -társítási képesség a webes/feldolgozói szerepköröket és az ugyanazon az Azure-régióban lévő más virtuális hálózatokat tartalmazó klasszikus virtuális hálózat összevonására használható (a virtuális hálózat migrálása a**virtuális hálózatok áttelepítése után nem telepíthető át**), így a teljesítmény elvesztése nélkül, valamint a késési/sávszélességre vonatkozó szankciók nélkül is biztosíthatja ugyanazt a képességet. A [Virtual Network](../../virtual-network/virtual-network-peering-overview.md)-társítás hozzáadásával a webes/feldolgozói szerepkör telepítései könnyedén csökkenthetők, és nem letilthatják az áttelepítést Azure Resource Managerre.
 
 - **Azure Resource Manager kvóták** – az Azure-régiók külön kvótával/korlátokkal rendelkeznek a klasszikus és a Azure Resource Manager esetében is. Bár az áttelepítési forgatókönyvben az új hardver nem használatos *(a meglévő virtuális gépeket a Klasszikusból a Azure Resource Managerra cseréljük)* , Azure Resource Manager kvótákat még az áttelepítés megkezdése előtt elegendő kapacitással kell meghozni. Az alább felsorolt főbb korlátokat az észlelt problémák okozzák.  A határértékek növeléséhez nyisson meg egy kvóta-támogatási jegyet. 
 
@@ -118,7 +118,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
   - Nyilvános IP-címek
   - Statikus nyilvános IP-címek
   - Processzormagok
-  - Network Security Groups (Hálózati biztonsági csoportok)
+  - Hálózati biztonsági csoportok
   - Útvonaltáblák
 
     A jelenlegi Azure Resource Manager kvótákat a következő parancsokkal tekintheti meg az Azure CLI legújabb verziójának használatával.
@@ -179,7 +179,7 @@ A nem teljes körű tesztelés problémát okozhat, és késleltetheti az áttel
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technikai megfontolások és kompromisszumok
 
-Most, hogy Azure Resource Manager, maximalizálja a platformot.  További előnyökért tekintse meg az [Azure Resource Manager áttekintése című témakört](../../azure-resource-manager/resource-group-overview.md) .
+Most, hogy Azure Resource Manager, maximalizálja a platformot.  További előnyökért tekintse meg az [Azure Resource Manager áttekintése című témakört](../../azure-resource-manager/management/overview.md) .
 
 Megfontolandó szempontok:
 

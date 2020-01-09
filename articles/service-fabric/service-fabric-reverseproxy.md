@@ -1,171 +1,162 @@
 ---
-title: Az Azure Service Fabric fordított proxyja |} A Microsoft Docs
-description: A Service Fabric fordított proxy használata belül és kívül a fürt a mikroszolgáltatások való kommunikációhoz.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric fordított proxy
+description: Használja Service Fabric fordított proxyját a fürtön belüli és kívüli szolgáltatásokhoz való kommunikációhoz.
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464293"
 ---
-# <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
-Az Azure Service Fabric épített fordított proxy segítségével Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat.
+# <a name="reverse-proxy-in-azure-service-fabric"></a>Fordított proxy az Azure-ban Service Fabric
+Az Azure Service Fabric beépített fordított proxy segít felderíteni a Service Fabric-fürtökön futó és a http-végpontokat használó más szolgáltatásokkal való kommunikációt.
 
-## <a name="microservices-communication-model"></a>Mikroszolgáltatás-alapú modellt
-A Service Fabricben Mikroszolgáltatásokat fut a fürtben található csomópontok egy része, és különböző okok miatt a csomópontok között telepíthet át. Ennek eredményeképpen a végpontok a mikroszolgáltatásokat dinamikusan módosításához. Fedezze fel, és a fürt más szolgáltatásokkal kommunikálni, mikroszolgáltatás haladjon végig a következő lépéseket:
+## <a name="microservices-communication-model"></a>A szolgáltatások kommunikációs modellje
+A Service Fabric a fürt csomópontjainak egy részhalmazán futnak, és különböző okok miatt áttelepíthetők a csomópontok között. Ennek eredményeképpen a webszolgáltatás-végpontok dinamikusan megváltozhatnak. A következő lépésekkel derítheti fel és kommunikálhat a fürt többi szolgáltatásával:
 
-1. Oldja meg a szolgáltatás helyét az elnevezési szolgáltatáson keresztül.
-2. Csatlakozzon a szolgáltatáshoz.
-3. Az előző lépések burkolása hurokba került, amely megvalósítja a névfeloldási szolgáltatást, és ismételje meg a házirendek a alkalmazni a csatlakozási hibák
+1. Oldja meg a szolgáltatás helyét a névadási szolgáltatáson keresztül.
+2. Kapcsolódjon a szolgáltatáshoz.
+3. Az előző lépések becsomagolása egy olyan hurokban, amely megvalósítja a szolgáltatás feloldását, és újrapróbálkozási szabályzatokat alkalmaz a kapcsolódási hibákra
 
-További információkért lásd: [csatlakozás és a kommunikáció a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md).
+További információ: [kapcsolat és kommunikáció a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md).
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>Kommunikáció fordított proxy használatával
-Fordított proxy egy szolgáltatása, amely minden csomóponton fut, és kezeli az endpoint névfeloldást, automatikus újrapróbálkozás, és más szolgáltatások ügyfél nevében kapcsolati hibák. Fordított proxy konfigurálható különböző szabályzatok alkalmazására, a szolgáltatások ügyfél kéréseit kezeli. Fordított proxy használatával lehetővé teszi, hogy az ügyfélszolgáltatás bármely ügyféloldali HTTP való kommunikációra való kódtárak és nem igényelnek speciális megoldási majd újrapróbálkozási logika, a szolgáltatásban. 
+A fordított proxy egy olyan szolgáltatás, amely minden csomóponton fut, és a végpontok feloldását, az automatikus újrapróbálkozást és az egyéb csatlakozási hibákat kezeli az ügyfélszolgáltatás nevében. A fordított proxy konfigurálható úgy, hogy különböző házirendeket alkalmazzon, miközben az ügyfél-szolgáltatásokból érkező kéréseket kezeli. A fordított proxy használata lehetővé teszi, hogy az ügyfélszolgáltatás bármilyen ügyféloldali HTTP kommunikációs kódtárat használjon, és nem igényel speciális feloldási és újrapróbálkozási logikát a szolgáltatásban. 
 
-Fordított proxy más szolgáltatásokba irányuló kérelmek küldéséhez használt ügyfél-szolgáltatások helyi csomóponton egy vagy több végpontot tesz közzé.
+A fordított proxy egy vagy több végpontot tesz elérhetővé a helyi csomóponton olyan ügyfélszolgáltatás számára, amelyet más szolgáltatásoknak küldött kérések küldésére használhat.
 
-![Belső kommunikációs][1]
+![Belső kommunikáció][1]
 
 > [!NOTE]
-> **A támogatott platformok**
+> **Támogatott platformok**
 >
-> A Service Fabric fordított proxy jelenleg a következő platformokat támogatja
-> * *Windows-fürt*: Windows 8 és újabb vagy Windows Server 2012 és újabb verziók
-> * *Linux-fürt*: Fordított Proxy nem érhető el jelenleg a Linux-fürtökre
+> A fordított proxy Service Fabric jelenleg a következő platformokat támogatja
+> * *Windows-fürt*: Windows 8 és újabb, vagy windows Server 2012 és újabb verziók
+> * *Linux-fürt*: a fordított proxy jelenleg nem érhető el Linux-fürtökhöz
 >
 
-## <a name="reaching-microservices-from-outside-the-cluster"></a>A mikroszolgáltatások a fürtön kívülről elérése
-Az alapértelmezett külső kommunikációs modellt a mikroszolgáltatásokat egy választható modell, ahol minden szolgáltatás nem érhető el közvetlenül a külső ügyfeleknek. [Az Azure Load Balancer](../load-balancer/load-balancer-overview.md), mikroszolgáltatások és a külső ügyfelek közötti hálózati határok hálózati címfordítás hajt végre, amely továbbítja a külső, belső IP:port-végpontokra irányuló kéréseket. Ahhoz, hogy egy mikroszolgáltatás-végpont el közvetlenül a külső ügyfeleknek, először konfigurálnia kell a terheléselosztó továbbítja a forgalmat a szolgáltatás által használt a fürt minden egyes porthoz. Emellett a legtöbb mikroszolgáltatások, különösen az állapotalapú mikroszolgáltatások, nem élő a fürt összes csomópontján. A mikroszolgáltatások helyezheti át a feladatátvételi csomópontok között. Ezekben az esetekben a Load Balancer hatékonyan nem tudja megállapítani a replikákról, amelyhez továbbítsa a forgalmat a célcsomópont helyét.
+## <a name="reaching-microservices-from-outside-the-cluster"></a>A nem a fürtön kívüli szolgáltatások elérése
+Az alapértelmezett külső kommunikációs modell egy olyan opt-in modell, amelyben az egyes szolgáltatások nem érhetők el közvetlenül a külső ügyfelektől. [Azure Load Balancer](../load-balancer/load-balancer-overview.md), amely a hálózat és a külső ügyfelek közötti hálózati határ, végrehajtja a hálózati címfordítást, és külső kéréseket továbbít a belső IP-címekre: Port végpontok. Ahhoz, hogy a szolgáltatás végpontja közvetlenül elérhető legyen a külső ügyfelek számára, először be kell állítania Load Balancert, hogy továbbítsa a forgalmat a fürt által használt összes portra. Emellett a legtöbb webszolgáltatás, különösen az állapot-nyilvántartó szolgáltatás, nem a fürt összes csomópontján él. A szolgáltatások a feladatátvételi csomópontok között válthatnak. Ilyen esetekben Load Balancer nem tudja hatékonyan meghatározni azon replikák célhelyét, amelyeknek továbbítania kell a forgalmat.
 
-### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Mikroszolgáltatások a fürtön kívülről származó fordított proxyn keresztül éri el
-Helyett egy adott szolgáltatás portszámát konfigurálása a Load Balancer, konfigurálhatja a Load Balancer csak a fordított proxy portjával. Ez a konfiguráció lehetővé teszi az ügyfelek számára a fürtön kívülről a fürtön belüli szolgáltatások eléréséhez további konfiguráció nélkül a fordított proxy használatával.
+### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>A-szolgáltatások elérése a fürtön kívülről fordított proxyn keresztül
+Ahelyett, hogy a Load Balancer egy különálló szolgáltatás portját konfigurálja, beállíthatja, hogy csak a fordított proxy portját Load Balancer. Ez a konfiguráció lehetővé teszi, hogy a fürtön kívüli ügyfelek a fürtön belül elérjék a fordított proxyt a további konfigurálás nélkül.
 
 ![Külső kommunikáció][0]
 
 > [!WARNING]
-> A fordított proxy portjával Load balancerben konfigurálásakor, amely közzétenni egy HTTP-végpontot a fürt összes mikroszolgáltatások a fürtön kívülről címezhető. Ez azt jelenti, hogy rosszindulatú felhasználók által felderíthető lehet-e a mikroszolgáltatás-alapú szinkronban kell lennie a belső. Ez potenciálisan megadja súlyos biztonsági réseket, hogy azokat kihasználnák; Példa:
+> Ha a fordított proxy portját Load Balancerban konfigurálja, a fürtben lévő összes olyan szolgáltatás, amely a HTTP-végpontot teszi elérhetővé, a fürtön kívülről is címezhető. Ez azt jelenti, hogy a belső használatra szánt szolgáltatásokhoz egy meghatározott kártevő felhasználó is felderíthető. Ez potenciálisan súlyos biztonsági réseket jelenthet, amelyeket kihasználhat. például:
 >
-> * Egy rosszindulatú felhasználó egy szolgáltatásmegtagadási támadást indíthatnak ismételten meghívásával egy belső szolgáltatás, amely nem rendelkezik egy eléggé támadási felületét.
-> * Egy rosszindulatú felhasználó előfordulhat, hogy helytelenül formázott csomagok továbbítására az egy belső szolgáltatás nem kívánt viselkedést eredményez.
-> * Szinkronban kell lennie a belső szolgáltatás nem célja, hogy ki vannak téve a szolgáltatások a fürtön, így is közzéteheti a bizalmas adatokat egy rosszindulatú felhasználó kívül titkos vagy bizalmas információkat adhatnak vissza. 
+> * Egy rosszindulatú felhasználó egy olyan belső szolgáltatás ismételt meghívásával indíthat el szolgáltatásmegtagadási támadást, amely nem rendelkezik megfelelően megerősített támadási felülettel.
+> * Előfordulhat, hogy egy rosszindulatú felhasználó helytelenül formázott csomagokat kézbesít egy belső szolgáltatásnak, ami nem szándékolt viselkedést eredményez.
+> * A belsőnek szánt szolgáltatás olyan magánjellegű vagy bizalmas adatokat ad vissza, amelyeket nem lehet a fürtön kívüli szolgáltatásoknak kitenni, így ez a bizalmas információ rosszindulatú felhasználónak is kikerül. 
 >
-> Ellenőrizze, hogy teljes mértékben tudomásul veszi és csökkentheti a potenciális biztonsági vonatkozásai annak a fürthöz, és azt, mielőtt a fordított proxy portjával nyilvános futó alkalmazások. 
+> Győződjön meg arról, hogy teljes mértékben megértette és enyhítse a fürt és a rajta futó alkalmazások potenciális biztonsági következményeit, mielőtt a fordított proxy nyilvános portját tenné. 
 >
 
 
-## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>A fordított proxy használatával szolgáltatások címzéshez URI-formátum
-A fordított proxy azonosíthatja a szolgáltatás partíció, amelyhez kell továbbítani a beérkező kérelmet egy adott egységes erőforrás-azonosítója (URI) formátumot használja:
+## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>URI-formátum a szolgáltatások címzéséhez fordított proxy használatával
+A fordított proxy egy adott egységes erőforrás-azonosító (URI) formátumot használ annak a szolgáltatás-partíciónak az azonosításához, amelyhez a bejövő kérelmet továbbítani kell:
 
 ```
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http(s):** A fordított proxy HTTP vagy HTTPS-forgalom fogadására konfigurálhatók. HTTPS-továbbítást, tekintse meg a [Csatlakozás biztonságos szolgáltatás, amely a fordított proxy](service-fabric-reverseproxy-configure-secure-communication.md) szerint HTTPS a fordított proxy beállítása után.
-* **Fürt teljes minősített tartománynevét (FQDN) |} belső IP-címe:** A külső ügyfelek esetében beállíthatja, hogy a fürt tartományával, például mycluster.eastus.cloudapp.azure.com keresztül elérhető legyen a fordított proxy. A fordított proxy alapértelmezés szerint minden csomóponton fut. Belső forgalom esetében a fordított proxy érhető el a localhost vagy bármely belső IP-Címét, például a 10.0.0.1.
-* **Port:** Ez az a port, pl. 19081., a fordított proxyhoz megadott.
-* **ServiceInstanceName:** Ez az, hogy a telepített szolgáltatáspéldány nélkül elérni próbált teljes nevét a "fabric: /" sémát. Ha például el a *fabric: / myapp/myservice/* szolgáltatást, használja *myapp/myservice*.
+* **http (s):** A fordított proxy beállítható úgy, hogy fogadja a HTTP-vagy HTTPS-forgalmat. HTTPS-továbbítás esetén tekintse meg a [biztonságos szolgáltatáshoz való csatlakozást a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md) , miután megfordította a proxy beállítását a https-figyeléshez.
+* **Fürt teljes tartományneve (FQDN) | belső IP-cím:** Külső ügyfelek esetében beállíthatja a fordított proxyt úgy, hogy az elérhető legyen a fürt tartományán keresztül, például mycluster.eastus.cloudapp.azure.com. A fordított proxy alapértelmezés szerint minden csomóponton fut. A belső forgalom esetében a fordított proxy a localhost vagy a belső csomópontok IP-címén, például a 10.0.0.1 érhető el.
+* **Port:** Ez a fordított proxyhoz megadott port, például 19081.
+* **Szolgáltatáspéldány neve:** Ez a telepített Service-példány teljesen minősített neve, amelyet a "Fabric:/" nélkül szeretne elérni séma. Például a *Fabric:/SajátPr/myservice/* szolgáltatás eléréséhez használja a *SajátPr/myservice*.
 
-    A szolgáltatás-példány nevét a kis-és nagybetűket. Egy eltérő kis-és a szolgáltatás neve az URL-címben rendelkezik, a kérelem a 404 (nem található) sikertelen.
-* **Utótag elérési útja:** Ez az a tényleges URL-cím, mint például a *myapi/értékek/hozzáadása/3*, a szolgáltatás, amelyhez csatlakozni kíván.
-* **PartitionKey:** Egy particionált szolgáltatás esetén ez a számított partíciókulcs a partíció, amely szeretne elérni. Vegye figyelembe, hogy ez a *nem* a partíció GUID azonosítója. Ez a paraméter nem szükséges a singleton partícióséma használó szolgáltatások.
-* **PartitionKind:** Ez az a szolgáltatás partíciósémájának. Ez akkor lehet "Int64Range" vagy "Nevű". Ez a paraméter nem szükséges a singleton partícióséma használó szolgáltatások.
-* **ListenerName** a végpontok a szolgáltatás a következő formában vannak {"Végpontok": {"Listener1": "Endpoint1", "Listener2": "Típusú Endpoint2" …}}. Ha a szolgáltatás több végpontot tesz közzé, ez azonosítja a végpont, amelyet az ügyfél kérése továbbítani kell. Ez nem hagyható, ha a szolgáltatás csak egy figyelőt.
-* **TargetReplicaSelector** azt határozza meg, hogy a cél replika- vagy be kell jelölni.
-  * Ha a célként megadott szolgáltatás állapot-nyilvántartó, a TargetReplicaSelector lehet az alábbi lehetőségek közül:  'PrimaryReplica', "RandomSecondaryReplica" vagy "RandomReplica". Ha ez a paraméter nincs megadva, az alapértelmezett érték "PrimaryReplica".
-  * Ha a célszolgáltatás állapot nélküli, fordított proxy választja, a szolgáltatás partíciót továbbítja a kérést egy véletlenszerű példányát.
-* **Időkorlát:**  Megadja a fordított proxy a szolgáltatás nevében az ügyfél kérése által létrehozott a HTTP-kérelem időtúllépés. Az alapértelmezett értéke 60 másodperc. Ez egy nem kötelező paraméter.
+    A szolgáltatás példányának neve megkülönbözteti a kis-és nagybetűket. Ha az URL-címben a szolgáltatási példány neveként egy másik burkolatot használ, a kérések sikertelenek lesznek, 404 (nem található).
+* **Utótag elérési útja:** Ez az URL-cím tényleges elérési útja (például *myapi/Values/Add/3*) ahhoz a szolgáltatáshoz, amelyhez csatlakozni szeretne.
+* **PartitionKey:** Particionált szolgáltatás esetén ez az elérni kívánt partíció számított partíciós kulcsa. Vegye figyelembe, hogy ez *nem* a Partition ID GUID azonosítója. Ez a paraméter nem szükséges az egyedi partíciós sémát használó szolgáltatásokhoz.
+* **PartitionKind:** Ez a szolgáltatás partíciós sémája. Ez lehet "Int64Range" vagy "named". Ez a paraméter nem szükséges az egyedi partíciós sémát használó szolgáltatásokhoz.
+* **ListenerName** A szolgáltatáshoz tartozó végpontok {"endpoints": {"Listener1": "Endpoint1", "Listener2": "Endpoint2"...}} formátumúak. Ha a szolgáltatás több végpontot tesz elérhetővé, ez azonosítja azt a végpontot, amelyre az ügyfél kérelmét továbbítani kell. Ez akkor hagyható el, ha a szolgáltatás csak egy figyelővel rendelkezik.
+* **TargetReplicaSelector** Ez határozza meg a cél replikájának vagy példányának kiválasztásának módját.
+  * Ha a cél szolgáltatás állapot-nyilvántartó, a TargetReplicaSelector a következők egyike lehet: "PrimaryReplica", "RandomSecondaryReplica" vagy "RandomReplica". Ha ez a paraméter nincs megadva, az alapértelmezett érték a "PrimaryReplica".
+  * Ha a cél szolgáltatás állapota nem megfelelő, a fordított proxy a szolgáltatás partíciójának véletlenszerűen kiválasztott példányát választja, hogy továbbítsa a kérést.
+* **Időtúllépés:**  Ezzel a beállítással adható meg a fordított proxy által a szolgáltatáshoz az ügyfél-kérelem nevében létrehozott HTTP-kérelem időtúllépése. Az alapértelmezett érték 60 másodperc. Ez egy opcionális paraméter.
 
 ### <a name="example-usage"></a>Példa a használatra
-Példaként nézzük a *fabric: / MyApp/MyService* szolgáltatás, amely megnyitja a HTTP-figyelő a következő URL-címen:
+Vegyük például a *Fabric:/SajátPr/MyService* szolgáltatást, amely a következő URL-címen nyit meg egy http-figyelőt:
 
 ```
 http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 
-Az alábbiakban az erőforrásokat a szolgáltatáshoz:
+A szolgáltatás erőforrásai a következők:
 
 * `/index.html`
 * `/api/users/<userId>`
 
-Ha a szolgáltatás a singleton particionálási sémát, használja a *PartitionKey* és *PartitionKind* lekérdezési karakterlánc paraméterei nem szükséges, és a szolgáltatás elérhető, az átjáró használatával:
+Ha a szolgáltatás az egyedi particionálási sémát használja, a *PartitionKey* és a *PartitionKind* lekérdezési karakterlánc paraméterei nem szükségesek, és a szolgáltatás az átjáró használatával érhető el:
 
 * Külsőleg: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Belső használatra: `http://localhost:19081/MyApp/MyService`
+* Belsőleg: `http://localhost:19081/MyApp/MyService`
 
-Ha a szolgáltatás egységes Int64 particionálási sémát, használja a *PartitionKey* és *PartitionKind* lekérdezési karakterlánc paraméterei kell használni a szolgáltatás partíciójának elérni:
+Ha a szolgáltatás az egységes Int64 particionálási sémát használja, a *PartitionKey* és a *PartitionKind* lekérdezési karakterlánc paramétereit kell használni a szolgáltatás egy partíciójának eléréséhez:
 
 * Külsőleg: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Belső használatra: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Belsőleg: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-Szeretné elérni, amely a szolgáltatás elérhetővé teszi az erőforrások, egyszerűen helyezze el az erőforrás elérési útja a szolgáltatás neve, az URL-cím után:
+A szolgáltatás által elérhetővé tenni kívánt erőforrások eléréséhez egyszerűen helyezze el az erőforrás elérési útját a szolgáltatás neve után az URL-címen:
 
 * Külsőleg: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Belső használatra: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Belsőleg: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
-Az átjáró ezután továbbítja ezeket a kérelmeket a szolgáltatás URL-címe:
+Az átjáró ezután továbbítja ezeket a kéréseket a szolgáltatás URL-címére:
 
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## <a name="special-handling-for-port-sharing-services"></a>Különleges kezelést port megosztási szolgáltatások
-A Service Fabric fordított proxy megkísérli újra feloldani egy szolgáltatás-címet, és ismételje meg a kérelmet, ha a szolgáltatás nem érhető el. Általában a szolgáltatás nem érhető el, ha a szolgáltatáspéldány vagy replika át lett helyezve egy másik csomópont, a normál életciklusának. Ha ez történik, a fordított proxy jelzi, hogy a végpont már nem meg van nyitva az eredetileg feloldott címet a hálózati kapcsolati hiba jelenhet meg.
+## <a name="special-handling-for-port-sharing-services"></a>Speciális kezelési szolgáltatások a portok megosztásához
+A Service Fabric fordított proxy megkísérli újból feloldani a szolgáltatási címeket, és újra próbálkozik a kéréssel, ha egy szolgáltatás nem érhető el. Általában, ha egy szolgáltatás nem érhető el, a szolgáltatási példány vagy a replika egy másik csomópontra került át a normál életciklusa során. Ebben az esetben a fordított proxy hálózati kapcsolódási hibát jelez, amely azt jelzi, hogy egy végpont már nem nyílik meg az eredetileg megoldott címen.
 
-Azonban replikák, illetve szolgáltatáspéldányok megoszthat egy gazdafolyamaton, és előfordulhat, hogy is megoszthatja a port, a http.sys-alapú kiszolgáló által üzemeltetett többek között:
+A replikák és a szolgáltatási példányok azonban megoszthatnak egy gazdagépet, és egy http. sys-alapú webkiszolgáló által üzemeltetett portot is megoszthatnak, többek között a következő esetekben:
 
-* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [ASP.NET Core webfigyelő](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-Ebben az esetben valószínű, hogy a webkiszolgáló érhető el a gazdagép-folyamat, és válaszol a kérelmekre, de a feloldott szolgáltatáspéldány vagy a replika már nem érhető el a gazdagépen. Azt jelzi, ebben az esetben az átjáró kap-e a webkiszolgáló HTTP 404-es választ. Így a HTTP 404-es választ rendelkezhet két különböző leírt jelentésekkel bírnak:
+Ebben az esetben valószínű, hogy a webkiszolgáló elérhető a gazdagépen, és válaszol a kérelmekre, de a megoldott szolgáltatási példány vagy replika már nem érhető el a gazdagépen. Ebben az esetben az átjáró HTTP 404 választ fog kapni a webkiszolgálótól. Így a HTTP 404-válasz két különböző jelentésből állhat:
 
-- #1. eset: A szolgáltatás címének helyességét, de a felhasználónak a kért erőforrás nem létezik.
-- #2. eset: A szolgáltatás címének helytelen, és az erőforrást, a felhasználó azt kérte, előfordulhat, hogy létezik egy másik csomóponton.
+- Case #1: a szolgáltatás címe helyes, de a felhasználó által kért erőforrás nem létezik.
+- Case #2: a szolgáltatás címe helytelen, és a felhasználó által kért erőforrás egy másik csomóponton is létezhet.
 
-Az első esetben egy normál HTTP 404-es, amely számít felhasználói hiba történt. Azonban a második esetben a felhasználó által kért egy erőforrást, amely létezik. A fordított proxy nem tudta megtalálható lesz, mert a szolgáltatás át lett helyezve. A fordított proxy kell újra feloldani a címét, és ismételje meg a kérelmet.
+Az első eset egy normál HTTP 404, amely felhasználói hibának számít. A második esetben azonban a felhasználó olyan erőforrást kért, amely létezik. A fordított proxy nem találta meg, mert maga a szolgáltatás áthelyezte. A fordított proxynak újra fel kell oldania a címeket, majd újra kell próbálkoznia a kéréssel.
 
-A fordított proxy így megkülönböztetni a két esetben úgy kell. Ahhoz, hogy a különbséget, egy mutatót a kiszolgáló megadása kötelező.
+A fordított proxynak így különbséget kell tennie a két eset között. Ennek a különbségtételnek a megtétele, hogy a kiszolgáló egy tippet igényel.
 
-* Alapértelmezés szerint a fordított proxy #2. eset azt feltételezi, és megkísérli feloldani, és adja ki újra a kérelmet.
-* Annak jelzésére, és a fordított proxy #1. eset, a szolgáltatás a következő HTTP-válaszfejléc kell visszaadnia:
+* Alapértelmezés szerint a fordított proxy a Case #2t feltételezi, és megkísérli feloldani és kiadni a kérést.
+* Ha meg szeretné jelölni a Case #1t a fordított proxyhoz, a szolgáltatásnak a következő HTTP-válasz fejlécet kell visszaadnia:
 
   `X-ServiceFabric : ResourceNotFound`
 
-A HTTP-válaszfejléc azt jelzi, hogy egy normál HTTP 404-es helyzet, amelyben a kért erőforrás nem létezik, és a fordított proxy nem próbálja meg újra a szolgáltatás címének feloldására.
+Ez a HTTP-válasz fejléce olyan normál HTTP 404-helyzetet jelez, amelyben a kért erőforrás nem létezik, és a fordított proxy nem próbálja meg újból feloldani a szolgáltatási címeket.
 
-## <a name="special-handling-for-services-running-in-containers"></a>Különleges kezelést tárolókban futó szolgáltatásokhoz
+## <a name="special-handling-for-services-running-in-containers"></a>A tárolókban futó szolgáltatások speciális feldolgozása
 
-A tárolókon belül futó szolgáltatások esetében is használhatja a környezeti változó `Fabric_NodeIPOrFQDN` létrehozására a [fordított proxy URL-címe](#uri-format-for-addressing-services-by-using-the-reverse-proxy) hasonlóan az alábbi kódot:
+A tárolók belsejében futó szolgáltatások esetében használhatja a környezeti változót, `Fabric_NodeIPOrFQDN` a [fordított proxy URL-címének](#uri-format-for-addressing-services-by-using-the-reverse-proxy) létrehozásához a következő kódban látható módon:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-A helyi fürt `Fabric_NodeIPOrFQDN` alapértelmezés szerint a "localhost" van beállítva. A helyi fürt elindításához a `-UseMachineName` ellenőrizze, hogy a tárolók elérheti a csomóponton futó fordított proxy paramétert. További információkért lásd: [konfigurálja a fejlesztői környezetet, a tárolók debug](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+A helyi fürt esetében a `Fabric_NodeIPOrFQDN` alapértelmezés szerint a "localhost" értékre van állítva. Indítsa el a helyi fürtöt a `-UseMachineName` paraméterrel, és győződjön meg arról, hogy a tárolók elérik a csomóponton futó fordított proxyt. További információ: [a fejlesztői környezet konfigurálása a tárolók hibakereséséhez](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
-Tárolók Docker Compose belül futó Service Fabric-szolgáltatások igényelnek speciális docker-compose.yml *szakasz portok* http: vagy https: konfiguráció. További információkért lásd: [az Azure Service Fabric üzembe helyezési támogatás a Docker Compose](service-fabric-docker-compose.md).
+Service Fabric Docker-összeállítási tárolókban futó szolgáltatások speciális Docker-compose igényelnek. a YML- *portok szakasz* http: vagy https: Configuration. További információ: [Docker-összeállítás támogatása az Azure Service Fabricban](service-fabric-docker-compose.md).
 
-## <a name="next-steps"></a>További lépések
-* [Állítsa be, és a fordított proxy konfigurálása egy fürtön](service-fabric-reverseproxy-setup.md).
-* [A fordított proxy-továbbítást a biztonságos HTTP-szolgáltatás beállítása](service-fabric-reverseproxy-configure-secure-communication.md)
+## <a name="next-steps"></a>Következő lépések
+* [Állítsa be és konfigurálja a fordított proxyt egy fürtön](service-fabric-reverseproxy-setup.md).
+* [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Fordított proxy események diagnosztizálása](service-fabric-reverse-proxy-diagnostics.md)
-* Tekintse meg a szolgáltatások közötti HTTP-kommunikációt egy példát egy [mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [A Reliable Services-táveléréssel kezdeményezett távoli eljáráshívások](service-fabric-reliable-services-communication-remoting.md)
-* [A Reliable Services OWIN használó webes API](service-fabric-reliable-services-communication-webapi.md)
-* [WCF-kommunikáció a Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)
+* Tekintse [meg a githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)található, a szolgáltatások közötti http-kommunikáció példáját.
+* [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
+* [OWIN-t használó webes API Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

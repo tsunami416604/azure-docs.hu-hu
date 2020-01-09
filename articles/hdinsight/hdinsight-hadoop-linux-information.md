@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150054"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644953"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -52,7 +52,7 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja a szolgáltatást, m
 
 ## <a name="remote-access-to-services"></a>Távoli hozzáférés a szolgáltatásokhoz
 
-* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - `https://CLUSTERNAME.azurehdinsight.net`
 
     A hitelesítéshez használja a Fürtfelügyelő felhasználóját és jelszavát, majd jelentkezzen be a Ambari-be.
 
@@ -63,14 +63,14 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja a szolgáltatást, m
     >
     > A Ambari webes felhasználói felületének teljes funkcionalitásához használjon SSH-alagutat a webes forgalom a fürt fő csomópontjára való kiosztásához. Lásd: [az SSH Tunneling használata az Apache Ambari webes felhasználói felület, a erőforráskezelő, a JobHistory, a NameNode, a Oozie és más webes felület eléréséhez](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > A hitelesítést a Fürtfelügyelő felhasználójának és jelszavának használatával végezze el.
     >
     > A hitelesítés egyszerű szöveges – a HTTPS használatával mindig biztosítható a kapcsolat biztonsága.
 
-* **Webhcaten (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **Webhcaten (Templeton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > A hitelesítést a Fürtfelügyelő felhasználójának és jelszavának használatával végezze el.
@@ -84,7 +84,7 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja a szolgáltatást, m
 
 További információ: [Apache Hadoop Services által használt portok a HDInsight](hdinsight-hadoop-port-settings-for-services.md) -dokumentumban.
 
-## <a name="file-locations"></a>Fájlok helye
+## <a name="file-locations"></a>Fájlhelyek
 
 A Hadoop kapcsolatos fájlok megtalálhatók a fürtcsomópontokon a következő helyen: `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmazza:
 
@@ -195,7 +195,7 @@ Ha az __Azure Storage__-t használja, tekintse meg a következő hivatkozásokat
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [Tárolási REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
 __Azure Data Lake Storage__használata esetén tekintse meg az alábbi hivatkozásokat az adatai eléréséhez:
 
@@ -203,7 +203,7 @@ __Azure Data Lake Storage__használata esetén tekintse meg az alábbi hivatkoz�
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [A Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [A Visual studióhoz készült Data Lake eszközök](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
@@ -278,9 +278,9 @@ Ha egy összetevő más verzióját szeretné használni, töltse fel a szüksé
 > [!IMPORTANT]
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak, és Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.orgon ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.org on ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari REST API használatával](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)

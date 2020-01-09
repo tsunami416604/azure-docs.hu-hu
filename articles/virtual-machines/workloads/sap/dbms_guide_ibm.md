@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b53207802b84e63f08c26de254ccd86a6b4620e2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 679e033418fba34eddddd21ddca66b1d9bb2fd48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100007"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645888"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -77,8 +77,8 @@ ms.locfileid: "70100007"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +236,7 @@ ms.locfileid: "70100007"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +250,7 @@ ms.locfileid: "70100007"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -359,11 +359,11 @@ Azt is megteheti, hogy a Windows Storage-készleteket (csak a Windows Server 201
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. A Windows Storage-készletek használatakor manuálisan kell létrehoznia a Storage-készleteket parancssori felületen keresztül a `-LogicalSectorSizeDefault`paraméter használatával. További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. A Windows Storage-készletek használatakor manuálisan kell létrehoznia a Storage-készleteket parancssori felületen keresztül a `-LogicalSectorSizeDefault`paraméter használatával. For more information, see <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
-### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
+### <a name="backuprestore"></a>Biztonsági mentés / visszaállítás
 A LUW IBM DB2 biztonsági mentési/helyreállítási funkciója ugyanúgy támogatott, mint a normál Windows Server operációs rendszereken és a Hyper-V-ben.
 
 Győződjön meg arról, hogy érvényes adatbázis-biztonsági mentési stratégia van érvényben. 
@@ -382,7 +382,7 @@ A megjelenő célok számának növeléséhez két lehetőség is használható/
 >[!NOTE]
 >A DB2 on Windows rendszeren nem támogatott a Windows VSS technológiája. Ennek eredményeképpen a Azure Backup szolgáltatás konzisztens virtuálisgép-biztonsági mentése nem használható olyan virtuális gépek számára, amelyeken a DB2-adatbázis telepítve van.
 
-### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vész-helyreállítás
+### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vészhelyreállítás
 A Microsoft Cluster Server (MSCS) nem támogatott.
 
 A DB2 magas rendelkezésre állású vész-helyreállítási (HADR) használata támogatott. Ha a HA-konfiguráció virtuális gépei működnek a névfeloldással, az Azure-beli beállítás nem különbözik a helyszínen végzett telepítéstől. Nem ajánlott kizárólag az IP-feloldásra támaszkodni.

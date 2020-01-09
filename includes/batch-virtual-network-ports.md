@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98f5269c27643e7ce6c0aaf9b359503a124d9232
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322657"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663192"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -46,9 +46,9 @@ A virtuális hálózat további követelményei eltérhetnek attól függően, h
 
 **Engedélyek** – Ellenőrizze, hogy a virtuális hálózat előfizetésén vagy erőforráscsoportján lévő biztonsági szabályzatok vagy zárolások korlátozzák-e egy felhasználó virtuális hálózat kezelésére vonatkozó engedélyét.
 
-**További hálózati erőforrások** – A Batch automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoportban. Minden 50 dedikált csomóponthoz (vagy 20 alacsony prioritású csomóponthoz) a Batch foglalásai: 1 hálózati biztonsági csoport (NSG), 1 nyilvános IP-cím és 1 Load Balancer. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
+**További hálózati erőforrások** – A Batch automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoportban. Minden 50 dedikált csomóponthoz (vagy minden 20 alacsony prioritású csomóponthoz) a Batch lefoglal 1 hálózati biztonsági csoportot (NSG-t), 1 nyilvános IP-címet és 1 terheléselosztót. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
 
-#### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+#### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
 Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal. A virtuálisgép-konfigurációban lévő készletekhez a Batch az NSG-ket a virtuális gépekhez kapcsolt hálózati adapterek (NIC-k) szintjén adja hozzá. Ezek az NSG-k automatikusan konfigurálnak bejövő és kimenő szabályokat a következő forgalom engedélyezéséhez:
 
@@ -64,16 +64,16 @@ Nem kell megadnia NSG-t az alhálózat szintjén, mert a Batch konfigurálja a s
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrás-szolgáltatáscímke | Forrásportok | Cél | Célportok | Protocol | Action |
+| Forrás IP-címek | Forrásszolgáltatás-címke | Forrásportok | Cél | Célportok | Protocol (Protokoll) | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | `BatchNodeManagement`[Szolgáltatás címkéje](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876-29877 | TCP | Allow |
-| Felhasználói forrás IP-címei a számítási csomópontok és/vagy a számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladataihoz, ha szükséges. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
+| – | `BatchNodeManagement` [szolgáltatás címkéje](../articles/virtual-network/security-overview.md#service-tags) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
+| Felhasználói forrás IP-címei a számítási csomópontok és/vagy a számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladataihoz, ha szükséges. | – | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
 
 **Kimenő biztonsági szabályok**
 
-| Source | Forrásportok | Cél | Cél-szolgáltatáscímke | Célportok | Protocol | Action |
+| Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Célportok | Protocol (Protokoll) | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| Any | * | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(ugyanabban a régióban, mint a Batch-fiók és a VNet) | 443 | TCP | Allow |
+| Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (a Batch-fiókkal és a VNet azonos régióban) | 443 | TCP | Engedélyezés |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Készletek a Cloud Services konfigurációjában
 
@@ -87,7 +87,7 @@ Nem kell megadnia NSG-t az alhálózat szintjén, mert a Batch konfigurálja a s
 
 **Engedélyek** – A `Microsoft Azure Batch` szolgáltatásnévnek rendelkeznie kell a `Classic Virtual Machine Contributor` szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton.
 
-#### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+#### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
 Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal.
 
@@ -97,13 +97,13 @@ Konfigurálja a bejövő forgalmat a Windows 3389-es portján, ha engedélyeznie
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrásportok | Cél | Célportok | Protocol | Action |
+| Forrás IP-címek | Forrásportok | Cél | Célportok | Protocol (Protokoll) | Műveletek |
 | --- | --- | --- | --- | --- | --- |
-Any <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás minden egyes csomópont szintjén alkalmaz egy ACL-szabályt, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * | Any | 10100, 20100, 30100 | TCP | Allow |
-| Nem kötelező, ha engedélyezni szeretné a számítási csomópontok RDP-hozzáférését. | * | Any | 3389 | TCP | Allow |
+Bármelyik <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás minden egyes csomópont szintjén alkalmaz egy ACL-szabályt, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * | Bármelyik | 10100, 20100, 30100 | TCP | Engedélyezés |
+| Nem kötelező, ha engedélyezni szeretné a számítási csomópontok RDP-hozzáférését. | * | Bármelyik | 3389 | TCP | Engedélyezés |
 
 **Kimenő biztonsági szabályok**
 
-| Source | Forrásportok | Cél | Célportok | Protocol | Action |
+| Forrás | Forrásportok | Cél | Célportok | Protocol (Protokoll) | Műveletek |
 | --- | --- | --- | --- | --- | --- |
-| Any | * | Any | 443  | Any | Allow |
+| Bármelyik | * | Bármelyik | 443  | Bármelyik | Engedélyezés |

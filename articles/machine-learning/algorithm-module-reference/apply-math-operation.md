@@ -1,7 +1,7 @@
 ---
 title: Matematikai művelet alkalmazása
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a matematikai művelet alkalmazása a Azure Machine Learning szolgáltatásban egy matematikai művelet a folyamat oszlopainak értékeire való alkalmazásához.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan használható a matematikai műveleti modul alkalmazása a Azure Machine Learningban egy matematikai művelet a folyamat oszlopainak értékeire való alkalmazásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428609"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
 
@@ -88,12 +88,12 @@ A modul minden példánya egyszerre csak egy típusú műveletet tud végrehajta
   
 1.  A folyamat futtatása.  
   
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Ha a **Hozzáfűzés** vagy a **ResultOnly** lehetőség használatával hoz eredményt, a visszaadott adatkészlet oszlopai a művelet és a használt oszlopok láthatók. Ha például összehasonlítja két oszlopot az **EQUAL** operátor használatával, az eredmények a következőképpen néznek ki:  
   
--   **Egyenlő (Col2_Col1)** , amely azt jelzi, hogy a Col2 a Col1 ellen tesztelte.  
--   **Egyenlő (Col2_ $10)** , amely azt jelzi, hogy összehasonlítja a 2. oszlopot a konstans 10 értékkel.  
+-   **Egyenlő (Col2_Col1)** , amely azt jelzi, hogy tesztelte a Col2 a Col1.  
+-   **Egyenlő (Col2_ $10)** , amely azt jelzi, hogy a 2. oszlopot összehasonlítja a konstans 10 értékkel.  
 
 A forrásadatok nem törlődnek és nem módosulnak, még akkor is, ha a **inplace** kapcsolót használja. az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
     
@@ -103,7 +103,7 @@ Az **alapszintű** kategóriában lévő függvények általában egyetlen ért�
   
  A Azure Machine Learning az **alapszintű** kategóriában a következő függvényeket támogatja:  
 
-### <a name="abs"></a>ABS
+### <a name="abs"></a>Abs
 
 A kijelölt oszlopok abszolút értékét adja vissza.  
   
@@ -148,13 +148,13 @@ Ha például a szorzóhoz és a kitevőhöz {0,1,2,3,4,5} értékeket tartalmaz�
 
 A kijelölt oszlopban szereplő értékek negatív kitevőjét adja vissza.  
 
-### <a name="factorial"></a>Faktoriálisát
+### <a name="factorial"></a>Faktoriális
 A kijelölt oszlopban lévő értékek faktoriálisát adja vissza.  
 
 ### <a name="hypotenuse"></a>Átfogó
 Kiszámítja egy olyan háromszög átfogó, amelyben az egyik oldalon az értékek oszlopa van megadva, a második oldal hossza pedig állandó vagy két oszlopként van megadva.  
 
-### <a name="ln"></a>Ln
+### <a name="ln"></a>Természetes logaritmus
 
 A kijelölt oszlopban lévő értékek természetes alapú logaritmusát adja vissza.  
 
@@ -253,12 +253,12 @@ A felosztás és a kivonás oszlopainak kiválasztásának sorrendje a következ
 
 Művelet|Num1|Num2|Eredmény oszlop|Eredmény értéke|
 ----|----|----|----|----
-|Mellett|1|5|Hozzáadás (Num2_Num1)| 4|
+|Összeadás|1|5|Hozzáadás (Num2_Num1)| 4|
 |Szorzás|1|5|Több (Num2_Num1)|5|
-|Kivonási|1|5|Kivonás (Num2_Num1)|4|
-|Kivonási|0|1|Kivonás (Num2_Num1)|0|
-|Osztály|1|5|Osztás (Num2_Num1)|5|
-|Osztály|0|1|Osztás (Num2_Num1)|Infinity|
+|Kivonás|1|5|Kivonás (Num2_Num1)|4|
+|Kivonás|0|1|Kivonás (Num2_Num1)|0|
+|Osztás|1|5|Osztás (Num2_Num1)|5|
+|Osztás|0|1|Osztás (Num2_Num1)|Infinity|
 
 ### <a name="add"></a>Hozzáadás
 
@@ -266,7 +266,7 @@ Adja meg a forrás oszlopokat a **set oszlop**használatával, majd adja hozzá 
 
 Ha két oszlopban szeretné felvenni az értékeket, válasszon ki egy oszlopot vagy oszlopot az **oszlop készlet**használatával, majd válasszon egy második oszlopot a **második argumentum**használatával.  
 
-### <a name="divide"></a>Osztani
+### <a name="divide"></a>Osztás
 
 Az **oszlop** értékeit állandó vagy a **második argumentumban**definiált oszlopok értékei alapján osztja el.  Más szóval először az osztót kell kiválasztani, majd az osztalékot. A kimeneti érték a hányados.
 
@@ -274,7 +274,7 @@ Az **oszlop** értékeit állandó vagy a **második argumentumban**definiált o
 
 A megadott konstans vagy oszlop értékeit tartalmazó oszlop értékeinek szorzatát **adja meg** .  
 
-### <a name="subtract"></a>Kivonása
+### <a name="subtract"></a>Subtract
 
 Adja meg a működéshez használni kívánt értékek oszlopát (a *kisebbítendőt*) egy másik oszlop kiválasztásával az **oszlop beállítása** beállítással. Ezután adja meg a kivonni kívánt számot (a *kivonandó*) a **második argumentum** legördülő lista használatával. Kiválaszthatja az értékek állandó vagy oszlopát is.
 
@@ -298,11 +298,11 @@ Az **oszlop**értékeinek négyzetes felső határát adja vissza.
 
 A megadott pontosságú **oszlop**értékeinek a padlóját adja vissza.  
 
-### <a name="mod"></a>mod
+### <a name="mod"></a>Mod
 
 A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
 
-### <a name="quotient"></a>Hányadosát
+### <a name="quotient"></a>Hányados
 
 A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
 
@@ -314,7 +314,7 @@ Az **oszlop**értékeinek maradékát adja vissza.
 
 A megadott számú számjegyre kerekítve adja vissza az **oszlop**értékeit az 4/5-szabály alapján.  
 
-### <a name="rounddown"></a>Kerek
+### <a name="rounddown"></a>RoundDown
 
 A **beállított oszlopban**szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
 
@@ -461,7 +461,7 @@ Kiszámítja az oszlopok értékeinek arcsecant fokban megadva.
 
 Kiszámítja az oszlop értékeinek hiperbolikus arcsecant.  
 
-### <a name="asin"></a>ASIN
+### <a name="asin"></a>Asin
 
 Kiszámítja az oszlopok értékeinek arkusz szinuszát.  
 
@@ -497,7 +497,7 @@ Kiszámítja az oszlop értékeinek koszinuszát fokban megadva.
 
 Kiszámítja az oszlopok értékeinek koszinusz hiperbolikusát.  
 
-### <a name="cot"></a>COT
+### <a name="cot"></a>Cot
 
 Kiszámítja az oszlop értékeinek tangensét.  
 
@@ -522,9 +522,9 @@ Kiszámítja az oszlop értékeinek hiperbolikus koszekáns.
 
 ### <a name="degreestoradians"></a>DegreesToRadians
 
-A fok és a radián közötti értéket alakítja át.  
+Fokot radiánná alakít.  
 
-### <a name="sec"></a>SEC
+### <a name="sec"></a>Másodlagos
 
 Kiszámítja az oszlopok értékeinek szekáns.  
 
@@ -536,7 +536,7 @@ Kiszámítja az oszlopok értékeinek szekáns fokban megadva.
 
 Kiszámítja az oszlop értékeinek hiperbolikus szekáns.  
 
-### <a name="sign"></a>Jel
+### <a name="sign"></a>Aláírás
 
 Az oszlop értékeinek előjelét adja vissza.  
 
@@ -588,6 +588,6 @@ Azt is megteheti, hogy az alábbi modulok egyikével végrehajtja az összes sz�
 + [Python-szkript végrehajtása](execute-python-script.md)
 + [SQL-transzformáció alkalmazása](apply-sql-transformation.md)   
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

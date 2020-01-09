@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038952"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641468"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba Azure PowerShell használatával
 
@@ -32,7 +32,7 @@ Az Azure biztonsági csoportjai nem helyezhetők át egyik régióból a másikb
 
 - Győződjön meg arról, hogy az Azure-előfizetése lehetővé teszi, hogy NSG hozzon létre a használt célcsoportban. A szükséges kvóta engedélyezéséhez vegye fel a kapcsolatot az ügyfélszolgálattal.
 
-- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a folyamat NSG hozzáadásának támogatásához.  Tekintse meg a következőt: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a folyamat NSG hozzáadásának támogatásához.  Tekintse meg a következőt: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Előkészítés és áthelyezés
@@ -61,7 +61,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg az  **\<erőforrás-csoport-név >. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a **\<Resource-Group-name >. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     Get-AzLocation | format-table
     
     ```
-8. **Az\<erőforrás-csoport neve >. JSON** fájlban más paramétereket is megadhat, ha Ön úgy dönt, hogy a követelményektől függően nem kötelező:
+8. Más paramétereket is megváltoztathat a **\<Resource-Group-name >. JSON** fájlban, és a követelményektől függően választható:
 
-    * **Biztonsági szabályok** – szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG a szabályok hozzáadásával vagy eltávolításával a **securityRules** szakaszhoz az  **\<erőforrás-csoport neve >. JSON** fájlban:
+    * **Biztonsági szabályok** – a cél NSG való központi telepítéshez a szabályok hozzáadásával vagy eltávolításával módosíthatja a **securityRules** szakasz szabályait a **\<resource-Group-Name >. JSON** fájlban:
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             
         ```
 
-        A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez az alábbi példa formátumban az  **\<erőforrás-csoport neve >. JSON** fájl végén található egyéni szabályok típusait is szerkesztenie kell:
+        A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez az **\<Resource-Group-name >. JSON** fájl végén lévő egyéni szabálytípuseket is szerkesztenie kell az alábbi példa formátumában:
 
         ```json
            {
@@ -171,7 +171,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
         ```
 
-9. Mentse az  **\<erőforrás-csoport neve >. JSON** fájlt.
+9. Mentse a **\<erőforrás-csoport neve >. JSON** fájlt.
 
 10. Hozzon létre egy erőforráscsoportot a cél régióban a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő NSG:
     
@@ -179,7 +179,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Telepítse a szerkesztett  **\<erőforrás-csoport neve >. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<Resource-Group-name >. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -227,7 +227,7 @@ Remove-AzNetworkSecurityGroup -Name <source-nsg-name> -ResourceGroupName <source
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli hálózati biztonsági csoportot helyezett át az egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 

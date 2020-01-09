@@ -1,17 +1,17 @@
 ---
-title: Háttérbeli tároló hozzáadása az Microsoft Azure FXT Edge Filer-fürthöz
+title: 'Oktatóanyag: tár hozzáadása Azure FXT Edge Filer-fürthöz'
 description: A háttérbeli tárolás és az ügyfélre vonatkozó pseudonamespace konfigurálása az Azure FXT Edge Filer-hoz
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: ecc246368cae74440ada782940931b3588193975
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256062"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551964"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása 
 
@@ -55,7 +55,7 @@ Az alapszintű Filer hozzáadása után frissítheti a beállításait az alapsz
 
 ## <a name="add-a-core-filer"></a>Alapvető Filer hozzáadása
 
-Definiáljon egy alapszintű filert az **alapszintű filer** >  alapkonfigurációk**kezelése** lapján a **Létrehozás** gombra kattintva.
+Adjon meg egy alapvető Filer-t az **alapszintű filer** > a Core filers beállítások **kezelése** lapon a **Létrehozás** gombra kattintva.
 
 ![Kattintson a Create (létrehozás) gombra az alapszintű filers lista felett a Core filers kezelése lapon.](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -79,7 +79,7 @@ Az alfeladatok a következők:
 
   ![A Cloud Core Filer információi az új Core Filer varázslóban](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
-  Ha a fürthöz már hozzáadta a Felhőbeli hozzáférési hitelesítő adatokat, azok megjelennek a listában. Frissítse és adja hozzá a hitelesítő adatokat a **fürt** > **Felhőbeli hitelesítő adatok** beállításai lapon. 
+  Ha a fürthöz már hozzáadta a Felhőbeli hozzáférési hitelesítő adatokat, azok megjelennek a listában. Frissítse és adja hozzá a hitelesítő adatokat a **fürt** > a **Felhőbeli hitelesítő adatok** beállításai lapon. 
 
 Miután kitöltötte a varázsló összes szükséges beállítását, kattintson a **Filer hozzáadása** gombra a módosítás elküldéséhez.
 
@@ -129,7 +129,7 @@ Szüksége van legalább egy VServer a fürthöz.
 
 * Ha a hálózata VLAN-okat tartalmaz, melyik VLAN-t használja ehhez a VServer
 
-Egy új VServer létrehozásához használja a **VServer** >  VServers-beállítások**kezelése** lapot. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában. 
+Új VServer létrehozásához használja a **VServer** > VServers-beállítások **kezelése** lapot. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában. 
 
 ![új VServer létrehozásának előugró ablaka](media/fxt-cluster-config/new-vserver.png)
 
@@ -151,7 +151,7 @@ A VServer és a Core Filer együttes használata után testre kell szabnia az ex
 
 Először használja a **VServer** > **exportálási szabályok** lapot új szabályok hozzáadásához, az alapértelmezett házirend módosításához vagy a saját egyéni exportálási szabályzat létrehozásához.
 
-Másodszor, a **VServer** > **exportálási házirendek** lapon alkalmazza a testreszabott házirendet az alapszintű Filer exportálására, amikor az a VServer keresztül érhető el.
+Másodszor, a **VServer** > **exportálási házirendek** lapon alkalmazza a testreszabott szabályzatot az alapvető Filer exportálására, amikor az a VServer keresztül érhető el.
 
 A részletekért tekintse meg a következő témakört: az [alapvető Filer-exportálásokhoz való hozzáférés szabályozása](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) című cikk.
 

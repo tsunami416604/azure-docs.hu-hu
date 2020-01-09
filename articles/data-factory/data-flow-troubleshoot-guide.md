@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443954"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory adatfolyamatok hibáinak megoldása
 
@@ -92,8 +92,18 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 
 - **OK**: az összekapcsolt adatfolyamok közös oszlopnevek
 
-- **Megoldás**: vegyen fel egy Select Transforamtion a csatlakozás után, és válassza az "ismétlődő oszlopok eltávolítása" lehetőséget a bemenethez és a kimenethez.
+- **Megoldás**: vegyen fel egy Select transzformációt a csatlakozás után, és válassza az "ismétlődő oszlopok eltávolítása" lehetőséget a bevitelhez és a kimenethez.
 
+### <a name="error-message-possible-cartesian-product"></a>Hibaüzenet: lehetséges Descartes-féle termék
+
+- **Tünetek**: a csatlakozás vagy a keresési transzformáció lehetséges Descartes-féle terméket észlelt az adatfolyam végrehajtásakor
+
+- **OK**: Ha nincs explicit módon átirányítani az ADF-t a Cross JOIN használatára, az adatfolyam sikertelen lehet
+
+- **Megoldás**: változtassa meg a keresést, vagy csatlakoztassa az átalakítást egy illesztéshez egyéni kereszt-illesztéssel, és adja meg a keresési vagy csatlakozási feltételt a kifejezés-szerkesztőben. Ha explicit módon szeretne létrehozni egy teljes Descartes-szorzatot, használja a két független adatfolyamban található származtatott oszlop-átalakítást, mielőtt a JOIN (szintetikus) kulcsot létre szeretne hozni az egyeztetéshez. Hozzon létre például egy új oszlopot a származtatott oszlopban a ```SyntheticKey``` nevű adatfolyamban, és állítsa ```1```értékkel egyenlőre. Ezután használja a ```a.SyntheticKey == b.SyntheticKey```t egyéni illesztési kifejezésként.
+
+> [!NOTE]
+> Ügyeljen arra, hogy a bal és a jobb oldali kapcsolat mindegyik oldaláról legalább egy oszlopot tartalmazzon egy egyéni kereszt-illesztésben. Az egyes oldalokból származó oszlopok helyett a statikus értékekkel történő kereszthivatkozások végrehajtása a teljes adathalmaz teljes vizsgálatát eredményezi, így az adatfolyam nem fog megfelelően elvégezni.
 
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 

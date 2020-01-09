@@ -1,45 +1,47 @@
 ---
-title: Jelentkezzen be az Azure notebookok
-description: Konfigurálja a felhasználói fiók Azure notebookokhoz Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókot.
-ms.topic: article
+title: Bejelentkezés Azure Notebooks előzetes verzióra
+description: A Azure Notebooks felhasználói fiókjának konfigurálása Microsoft-fiók vagy munkahelyi/iskolai fiók használatával.
+ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: a2d8c8180dfb5dc31e273c7953a57f40cf31238d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277627"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646296"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>A felhasználói fiók Azure-notebookokhoz
+# <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks előzetes verziójának felhasználói fiókja
 
-Az Azure-jegyzetfüzeteket is használhatja, vagy egy felhasználói fiókkal történő bejelentkezés nélkül:
+A Azure Notebooks a felhasználói fiókkal való bejelentkezéssel vagy anélkül is használhatja:
 
-- Bejelentkezés nélkül is létrehozhat és futtathat jegyzetfüzeteket, de nem ürítheti a jegyzetfüzet vagy adatfájlok projektek részeként. Felhasználók, akik az Azure-jegyzetfüzetnek hivatkozást kap például élvezheti a notebook anélkül, hogy jelentkezzen be.
-- Miután bejelentkezett, Azure notebookok megőrzi a fiókjához a projektek. Bejelentkezett felhasználók is egy felhasználói Azonosítót, amely lehetővé teszi, hogy a projektek és jegyzetfüzetek oszthatja meg másokkal.
-  - Azure notebookokhoz használt fiókot is az Azure-előfizetéssel társítva, révén a további előnyökkel, például a hatékonyabb kiszolgálókon, jegyzetfüzetek futtatása személyes jegyzetfüzet létrehozása és ad engedélyt a notebookok egyéni felhasználók számára.
+- Bejelentkezés nélkül létrehozhat és futtathat jegyzetfüzeteket, de nem tudja megőrizni a jegyzetfüzeteket és az adatfájlokat a projektek részeként. Azok a felhasználók, akik egy Azure-jegyzetfüzetre mutató hivatkozást kapnak, így nem kell bejelentkezniük a jegyzetfüzetbe.
+- Ha bejelentkezett, Azure Notebooks megőrzi az összes projektet a fiókjával. A bejelentkezett felhasználóknak olyan felhasználói AZONOSÍTÓjuk is van, amely lehetővé teszi, hogy másokkal is megosszák a projektjeiket és a jegyzetfüzeteket.
+- Ha a Azure Notebookshez használt fiók egy Azure-előfizetéshez is társítva van, akkor további előnyökkel jár, mint például a jegyzetfüzetek futtatása nagyobb teljesítményű kiszolgálókon, privát jegyzetfüzetek létrehozása és engedélyek engedélyezése a jegyzetfüzetekhez az egyes felhasználók számára.
 
-Notebookok Azure-ba történő bejelentkezéskor kell a Microsoft Account vagy egy "Munkahelyi vagy iskolai" fiók. A rendszer a jegyzetfüzetek oldal jobb felső sarkában található **Bejelentkezés** parancs kiválasztásakor kéri a fiókját:
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-![Jelentkezzen be a parancs Azure notebookokhoz](media/accounts/sign-in-command.png)
+Az Azure Notebooksba való bejelentkezéshez Microsoft-fiókra vagy munkahelyi vagy iskolai fiókra van szükség. A rendszer a jegyzetfüzetek oldal jobb felső sarkában található **Bejelentkezés** parancs kiválasztásakor kéri a fiókját:
 
-Az Azure-jegyzetfüzetek teheti meg az összes munkahelyi társítva a bejelentkezéshez használt fióknak. Minden fióknak egyedi felhasználói AZONOSÍTÓval kell rendelkeznie a [felhasználói profilban](azure-notebooks-user-profile.md). Ennek eredményeképpen jelentkezhet be Azure-jegyzetfüzetek különböző fiókokkal Ha külön csoportok projektek és különálló biztosítani kell a. Egy data science csapat minden tagjának például előfordulhat mellett egyéni fiókot is használnak munkahelyi jelenleg a vállalat kívüli személyeknek megosztott csoport fiókként. Oktatók, hasonlóan egy olyan fiókkal, amely eltér a külső helyét, vagy a nyílt forráskódú használt fiók oktatási szerepkörük előfordulhat, hogy fenn.
+![Bejelentkezési parancs a Azure Notebooks](media/accounts/sign-in-command.png)
 
-## <a name="microsoft-accounts"></a>A Microsoft-fiókok
+A Azure Notebooksben végzett összes művelet társítva van a bejelentkezéshez használt fiókkal. Minden fióknak egyedi felhasználói AZONOSÍTÓval kell rendelkeznie a [felhasználói profilban](azure-notebooks-user-profile.md). Ennek eredményeképpen különböző fiókokkal is bejelentkezhet Azure Notebooksba, ha különálló projekteket és különálló identitásokat kell fenntartania. Előfordulhat például, hogy egy adatelemzési csapat minden tagja külön fiókkal rendelkezik, mint egy megosztott csoportfiók, amelyet a vállalaton kívüli személyek számára a munkájuk bemutatására használnak. Az oktatók hasonlóan, a külső tanácsadásban és a nyílt forráskódú munkában használt fióktól eltérő oktatási szerepkörhöz is tarthatnak egy fiókot.
 
-Jelentkezzen be Microsoft-termékek és szolgáltatások, például Windows, Azure, outlook.com, onedrive vállalati verzió és az XBox Live tetszőleges számú Microsoft-fiókok segítségével. Ha használja ezeket a szolgáltatásokat, valószínű, hogy már rendelkezik egy Microsoft Account, amely az Azure-jegyzetfüzeteket is használhatja.
+## <a name="microsoft-accounts"></a>Microsoft-fiókok
 
-Ha nem biztos abban, hogy a fiók **létrehozása** parancsra kattint, válassza a létrehozás lehetőséget. Létrehozhat egy új Microsoft-fiók összes e-mail-címmel a bármely szolgáltatónál.
+A Microsoft-fiókok segítségével tetszőleges számú Microsoft-termék és-szolgáltatásba jelentkezhet be, például a Windows, az Azure, a outlook.com, a OneDrive és az XBox Live rendszerbe. Ha bármelyik szolgáltatást használja, akkor valószínű, hogy már rendelkezik egy Microsoft-fiókkal, amelyet a Azure Notebooks használhat.
 
-![A parancs egy új Microsoft-fiók létrehozása](media/accounts/create-new-microsoft-account.png)
+Ha nem biztos abban, hogy a fiók **létrehozása** parancsra kattint, válassza a létrehozás lehetőséget. Létrehozhat egy új Microsoft-fiók bármely szolgáltatótól származó e-mail-cím használatával.
+
+![Új Microsoft-fiók létrehozására szolgáló parancs](media/accounts/create-new-microsoft-account.png)
 
 > [!Note]
 > Ha olyan e-mail-címmel próbál meg létrehozni egy új fiókot, amelyhez már tartozik fiók társítva, akkor a következő üzenet jelenhet meg: "nem lehet regisztrálni egy munkahelyi vagy iskolai e-mail-címmel. Használjon személyes e-maileket, például a Gmailt vagy a Yahoo!-t, vagy szerezzen be egy új Outlook e-mail címet. " Ebben az esetben próbáljon meg bejelentkezni a munkahelyi e-mail-címmel új fiók létrehozása nélkül.
 
-Gyermek-fiókok esetében a hozzáférést az Azure-jegyzetfüzetek alapértelmezés szerint le van tiltva. A gyermek fiókkal történő bejelentkezés alább látható hibaüzenetet jeleníti meg:
+A alárendelt fiókok esetében a Azure Notebooks alapértelmezés szerint le van tiltva. Az alárendelt fiókkal való bejelentkezéskor az alábbi hibaüzenet jelenik meg:
 
-![Hiba történt, amikor gyermek fiókkal próbál: Hiba történt, szülője letiltotta a hozzáférést](media/accounts/child-account-error.png)
+![Hiba történt egy alárendelt fiókkal való bejelentkezéskor: hiba történt, a szülő letiltotta a hozzáférést](media/accounts/child-account-error.png)
 
-Hozzáférés engedélyezése egy szülő a következő lépéseket kell tennie:
+A hozzáférés engedélyezéséhez a szülőnek a következő lépéseket kell elvégeznie:
 
 1. Látogasson el `https://account.live.com/mk`re, és jelentkezzen be egy fölérendelt fiókkal.
 1. A kérdéses gyermek szakaszban válassza a **gyermek hozzáférésének kezelése harmadik féltől származó alkalmazásokhoz**lehetőséget.
@@ -47,17 +49,17 @@ Hozzáférés engedélyezése egy szülő a következő lépéseket kell tennie:
 1. Ha a alárendelt fiók a Azure Notebooksba való bejelentkezéshez használatos, válassza az **Igen** lehetőséget a megjelenő engedélyek megadásával.
 
 > [!Warning]
-> Harmadik felek alkalmazásaihoz való hozzáférés engedélyezése az Azure-jegyzetfüzeteket is lehetővé teszi, hogy minden más külső alkalmazás hozzáférését. Szülők javasolja, hogy saját belátása szerint értékeli használja, amikor engedélyezi az eléréséhez, és előfordulhat, hogy azok gyermektevékenységet jobban figyelni szeretné.
+> A harmadik féltől származó alkalmazásokhoz való hozzáférés engedélyezése Azure Notebooks is lehetővé teszi a hozzáférést minden más külső alkalmazáshoz. A szülők számára javasolt a hozzáférés engedélyezése, és a gyermek tevékenységének alaposabb figyelése.
 
 ## <a name="work-or-school-accounts"></a>Munkahelyi vagy iskolai fiókok
 
-Munkahelyi vagy iskolai fiók engedélyezése a Microsoft felhőszolgáltatásai, például az Office 365, valamint olyan fiókkal jelentkezzen be Windows-tartományhoz csatlakoztatott számítógépen való eléréséhez a szervezet tagja a szervezet rendszergazdája által jön létre. A munkahelyi vagy iskolai fiók jellemzően szervezeti e-mail-címet használ, például any-user@contoso.com.
+A szervezet rendszergazdája létrehoz egy munkahelyi vagy iskolai fiókot, amely lehetővé teszi, hogy a szervezet egy tagja hozzáférhessen a Microsoft Cloud Services, például az Office 365, valamint egy olyan fiókhoz, amellyel a Windowsba bejelentkezhetnek a tartományhoz csatlakoztatott számítógépeken. A munkahelyi vagy iskolai fiók jellemzően szervezeti e-mail-címet használ, például any-user@contoso.com.
 
-Azure notebookok bejelentkezik egy munkahelyi vagy iskolai fiókkal lehet szükség rendszergazdai jóváhagyást, mert Azure notebookok gyűjti, vagy használja (de nem hozza nyilvánosságra) például a fiókhoz tartozó e-mail cím és a felhasználó böngészőben információkat. (Böngészési adatok segítségével optimalizálhatják a funkciókat népszerű használat alapján.)
+A munkahelyi vagy iskolai fiókkal való Azure Notebooks bejelentkezéshez rendszergazdai jogosultságra lehet szükség, mert a Azure Notebooks gyűjti vagy használja (de nem fedi le) az adatokat, például a fiók e-mail-címét és a felhasználó böngésző-információit. (A böngésző adatait a funkciók népszerű használat szerint történő optimalizálására használják.)
 
-Szervezeti fiók rendszergazdája kell megadnia a jóváhagyás a felhasználó nevében, ha a felhasználók korlátozva vannak a küldőnek külön-külön. Ebben az esetben felhasználók az "Ez az alkalmazás nem tud hozzáférni" üzenet jelenik meg:
+A szervezeti fiók rendszergazdájának a felhasználók nevében kell megadnia a beleegyezést, ha a felhasználók nem rendelkeznek külön hozzájárulással. Ebben az esetben a felhasználók "nem férhetnek hozzá ehhez az alkalmazáshoz" üzenet jelenik meg:
 
-!["Az alkalmazás nem tud hozzáférni" jelenik meg, amikor egy munkahelyi vagy iskolai fiókkal](media/accounts/consent-permissions-denied.png)
+!["Az alkalmazás nem érhető el" üzenet munkahelyi vagy iskolai fiók használata esetén](media/accounts/consent-permissions-denied.png)
 
 Ha rendszergazdai jogosultságot szeretne biztosítani, használja a [rendszergazdai jogosultságok lapot](https://notebooks.azure.com/account/adminConsent), amely végigvezeti a folyamaton.
 

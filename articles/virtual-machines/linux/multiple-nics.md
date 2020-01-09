@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b4ab46a59bd83bf2d1c08e3a238df3c59797f3e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3fed0d14908dff346fa6134a91096c757c6d9fab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463826"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártya használatával
 
@@ -164,7 +164,7 @@ az vm start --resource-group myResourceGroup --name myVM
 
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Több hálózati adapter létrehozása Resource Manager-sablonok használatával
-Azure Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környezet definiálásához. [A Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)olvasható. A Resource Manager-sablonok lehetővé teszik az erőforrások több példányának létrehozását az üzembe helyezés során, például több hálózati adapter létrehozását. A *Másolás* használatával megadhatja a létrehozandó példányok számát:
+Azure Resource Manager-sablonok deklaratív JSON-fájlokat használnak a környezet definiálásához. [A Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)olvasható. A Resource Manager-sablonok lehetővé teszik az erőforrások több példányának létrehozását az üzembe helyezés során, például több hálózati adapter létrehozását. A *Másolás* használatával megadhatja a létrehozandó példányok számát:
 
 ```json
 "copy": {

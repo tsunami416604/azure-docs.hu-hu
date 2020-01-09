@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466547"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459503"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
 
@@ -25,7 +25,9 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 > * Rendelje hozzá a TenantCreator-alkalmazás szerepkört a Azure Active Directory bérlő egyik felhasználója számára.
 > * Hozzon létre egy Windows rendszerű virtuális asztali bérlőt.
 
-A következőképpen kell beállítania a Windows rendszerű virtuális asztali bérlőt:
+## <a name="what-you-need-to-set-up-a-tenant"></a>Mire van szükség a bérlő beállításához
+
+Mielőtt elkezdené a Windows rendszerű virtuális asztali bérlő beállítását, győződjön meg róla, hogy rendelkezik a következőkkel:
 
 * A [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) bérlő azonosítója a Windows rendszerű virtuális asztali felhasználók számára.
 * Globális rendszergazdai fiók a Azure Active Directory bérlőn belül.
@@ -33,6 +35,8 @@ A következőképpen kell beállítania a Windows rendszerű virtuális asztali 
    * A rendszergazdai fióknak a Azure Active Directory bérlőtől kell származnia, amelyben létre kívánja hozni a Windows rendszerű virtuális asztali bérlőt. Ez a folyamat nem támogatja Azure Active Directory B2B-(vendég-) fiókokat.
    * A rendszergazdai fióknak munkahelyi vagy iskolai fióknak kell lennie.
 * Azure-előfizetés.
+
+Ahhoz, hogy az oktatóanyagban ismertetett folyamat megfelelően működjön, rendelkeznie kell a bérlői AZONOSÍTÓval, a globális rendszergazdai fiókkal és az Azure-előfizetéssel.
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Engedélyek megadása a Windows rendszerű virtuális asztal számára
 
@@ -135,6 +139,12 @@ Cserélje le a zárójelben lévő értékeket a szervezete és a bérlője szem
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
+```
+
+Javasoljuk, hogy rendszergazdai hozzáférést rendeljen hozzá egy második felhasználóhoz abban az esetben, ha a fiókja kizárta magát, vagy ha a vakációra van szüksége, és szeretné, hogy valaki a bérlői rendszergazdaként működjön a távollétében. Ha rendszergazdai hozzáférést szeretne hozzárendelni egy második felhasználóhoz, futtassa a következő parancsmagot `<TenantName>` és `<Upn>` a nevét és a második felhasználó egyszerű felhasználónevét.
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Következő lépések

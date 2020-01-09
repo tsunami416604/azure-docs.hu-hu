@@ -1,25 +1,14 @@
 ---
-title: Megbízható gyűjteményi objektumok szerializálása az Azure Service Fabricban | Microsoft Docs
-description: Azure Service Fabric megbízható gyűjtemények objektum szerializálás
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Megbízható gyűjtemények objektumainak szerializálása
+description: Ismerkedjen meg az Azure Service Fabric megbízható gyűjtemények objektumainak szerializálásával, beleértve az alapértelmezett stratégiát és az egyéni szerializálás definiálásának módját.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599310"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639547"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Megbízható gyűjteményi objektumok szerializálása az Azure-ban Service Fabric
 A megbízható gyűjtemények replikálják és megőrzik az elemeiket, így biztosítva, hogy a számítógépek meghibásodása és az áramkimaradások között tartósak legyenek.
@@ -34,19 +23,19 @@ A megbízható State Manager tartalmaz beépített szerializáló néhány gyako
 A beépített szerializálók hatékonyabbak, mert tudják, hogy a típusok nem változnak, és nem kell tartalmazniuk a típushoz hasonló információkat.
 
 A megbízható State Manager a következő típusokhoz tartalmaz beépített szerializáló: 
-- Guid
-- bool
-- bájt
+- GUID
+- logikai
+- byte
 - sbyte érték
 - bájt []
 - char
-- Karakterlánc
+- sztring
 - tizedes tört
 - double
-- float
+- lebegőpontos
 - int
 - uint
-- long
+- hosszú
 - ulong
 - rövid
 - ushort
@@ -55,7 +44,7 @@ A megbízható State Manager a következő típusokhoz tartalmaz beépített sze
 
 Az egyéni szerializálók általában a teljesítmény növeléséhez, illetve a vezetékes és a lemezeken tárolt adattitkosításhoz használatosak. Többek között az egyéni szerializálók általában hatékonyabbak, mint az általános szerializáló, mivel nem kell a típussal kapcsolatos információkat szerializálni. 
 
-A [IReliableStateManager.\<TryAddStateSerializer T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) az adott típushoz tartozó egyéni szerializáló regisztrálására szolgál. Ennek a regisztrációnak a StatefulServiceBase szerkezetében kell történnie annak biztosítása érdekében, hogy a helyreállítás megkezdése előtt minden megbízható gyűjtemény hozzáférhessen a megfelelő szerializáló adataihoz, hogy beolvassa a megőrzött adatokat.
+A [IReliableStateManager. TryAddStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) az adott típushoz tartozó egyéni szerializáló regisztrálására szolgál. Ennek a regisztrációnak a StatefulServiceBase szerkezetében kell történnie annak biztosítása érdekében, hogy a helyreállítás megkezdése előtt minden megbízható gyűjtemény hozzáférhessen a megfelelő szerializáló adataihoz, hogy beolvassa a megőrzött adatokat.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +62,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Egyéni szerializáló implementálása
 
-Az egyéni szerializáló végre kell hajtania a [\<IStateSerializer T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) felületét.
+Az egyéni szerializáló a [IStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) felületét kell megvalósítani.
 
 > [!NOTE]
-> A\<IStateSerializer T > olyan írási és olvasási túlterhelést tartalmaz, amely egy további T nevű alapértéket vesz igénybe. Ez az API a differenciális szerializáláshoz szükséges. A jelenleg különbözeti szerializálási funkció nincs kitéve. Ezért a rendszer nem hívja meg ezt a két túlterhelést, amíg a különbözeti szerializálás fel nem áll és engedélyezve van.
+> A IStateSerializer\<T > olyan írási és olvasási túlterhelést tartalmaz, amely egy további T nevű alapértéket vesz igénybe. Ez az API a differenciális szerializáláshoz szükséges. A jelenleg különbözeti szerializálási funkció nincs kitéve. Ezért a rendszer nem hívja meg ezt a két túlterhelést, amíg a különbözeti szerializálás fel nem áll és engedélyezve van.
 
 A következő példa egy OrderKey nevű egyéni típust tartalmaz, amely négy tulajdonságot tartalmaz
 
@@ -148,7 +137,7 @@ Az egyéni szerializálási felhasználóknak meg kell felelniük az általa has
 Az összes verzió támogatásának gyakori módja a méretre vonatkozó információk hozzáadása az elején, és csak opcionális tulajdonságok hozzáadása.
 Így az egyes verziók ugyanúgy olvashatók, mint a stream hátralévő része.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
   * [Szerializálás és frissítés](service-fabric-application-upgrade-data-serialization.md)
   * [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   * [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.

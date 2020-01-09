@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230745"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562034"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven használatával
 
@@ -68,7 +68,7 @@ mvn archetype:generate ^
 
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse. Ha a rendszer kéri, adja meg a következő értékeket:
 
-| Érték | Leírás |
+| Value (Díj) | Leírás |
 | ----- | ----------- |
 | **groupId** | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. Az ebben a rövid útmutatóban szereplő példák a `com.fabrikam.functions`t használják. |
 | **artifactId** | Egy érték, amely a jar neve, verziószám nélkül. Az ebben a rövid útmutatóban szereplő példák a `fabrikam-functions`t használják. |
@@ -76,13 +76,16 @@ A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának bef
 | **csomag** | Egy érték, amely a generált függvény kódjához tartozó Java-csomag. Használja az alapértelmezettet. Az ebben a rövid útmutatóban szereplő példák a `com.fabrikam.functions`t használják. |
 | **appName** | Globálisan egyedi név, amely azonosítja az új Function alkalmazást az Azure-ban. Használja az alapértelmezett értéket, amely a _artifactId_ hozzáfűzése véletlenszerű számmal. Jegyezze fel ezt az értéket, ezért később szüksége lesz rá. |
 | **appRegion** | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. A mező alapértelmezett értéke: `westus`. Futtassa ezt az [Azure CLI] -parancsot az összes régió listájának lekéréséhez:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | Az új [erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve, amelyben létre szeretné hozni a Function alkalmazást. Használja a `myResourceGroup`, amelyet a jelen rövid útmutató példákban használ. Az erőforráscsoporthoz egyedinek kell lennie az Azure-előfizetésében.|
+| **resourceGroup** | Az új [erőforráscsoport](../azure-resource-manager/management/overview.md) neve, amelyben létre szeretné hozni a Function alkalmazást. Használja a `myResourceGroup`, amelyet a jelen rövid útmutató példákban használ. Az erőforráscsoporthoz egyedinek kell lennie az Azure-előfizetésében.|
 
 A megerősítéshez írja be `Y` vagy nyomja le az ENTER billentyűt.
 
 A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában `fabrikam-functions`. 
 
 Nyissa meg az új function. Java fájlt egy szövegszerkesztőben a *src/Main/Java* elérési útról, és tekintse át a generált kódot. Ez a kód egy [http által aktivált](functions-bindings-http-webhook.md) függvény, amely megismétli a kérelem törzsét. 
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) nem szükséges. A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
 A Function alkalmazást és a kapcsolódó erőforrásokat az Azure-ban hozza létre a rendszer az első üzembe helyezéskor. Az üzembe helyezés előtt az az [login](/cli/azure/authenticate-azure-cli) Azure CLI-paranccsal jelentkezzen be az Azure-előfizetésbe. 
@@ -146,6 +152,9 @@ Ez a `azure-functions:deploy` Maven-cél a következő erőforrásokat hozza lé
 Az üzemelő példány a Project fájljait is becsomagolja, és az új Function alkalmazásba telepíti a [zip-telepítést](functions-deployment-technologies.md#zip-deploy), és engedélyezve van a csomagon belüli mód.
 
 Az üzembe helyezés befejezése után megjelenik az URL-cím, amellyel elérheti a Function app-végpontokat. Mivel a közzétett HTTP-trigger `authLevel = AuthorizationLevel.FUNCTION`használ, le kell kérnie a Function-végpontot a HTTP protokollon keresztül. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portal].
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>HTTP-trigger URL-címének beolvasása
 
@@ -176,6 +185,9 @@ Ez POST-kérést küld a függvény végpontjának `AzureFunctions` a kérelem t
 ```Output
 Hello AzureFunctions!
 ```
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
 
 ## <a name="next-steps"></a>Következő lépések
 

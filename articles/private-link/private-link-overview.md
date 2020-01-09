@@ -2,17 +2,17 @@
 title: Mi az az Azure privát kapcsolat?
 description: Ismerje meg, hogyan használhatja az Azure Private-hivatkozást az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérésére a virtuális hálózat privát végpontján keresztül.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671545"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647356"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
@@ -65,7 +65,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 Gyakori kérdések: [Azure Private link – gyakori kérdések](private-link-faq.md).
  
 ## <a name="limits"></a>Korlátozások  
-A korlátokat lásd: [Azure Private link Limits](../azure-subscription-service-limits.md#private-link-limits).
+A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Következő lépések
 - [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)

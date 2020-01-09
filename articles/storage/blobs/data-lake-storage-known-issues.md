@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793361"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689143"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -50,12 +50,13 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 ## <a name="filesystem-support-in-sdks"></a>Fájlrendszer-támogatás SDK-k esetén
 
-- A .NET, a Java és a Python nyilvános előzetes verzióban érhető el. Más SDK-k jelenleg nem támogatottak.
-- Az ACL-ek lekérése és beállítása jelenleg nem rekurzív.
+- A [.net](data-lake-storage-directory-file-acl-dotnet.md), a [Java](data-lake-storage-directory-file-acl-java.md) és a [Python](data-lake-storage-directory-file-acl-python.md) támogatás nyilvános előzetes verzióban érhető el. Más SDK-k jelenleg nem támogatottak.
+- Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Fájlrendszer-támogatás a PowerShellben és az Azure CLI-ben
 
-Az ACL-ek lekérése és beállítása jelenleg nem rekurzív.
+- A [PowerShell](data-lake-storage-directory-file-acl-powershell.md) és az [Azure CLI](data-lake-storage-directory-file-acl-cli.md) támogatása nyilvános előzetes verzióban érhető el.
+- Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
 
 ## <a name="support-for-other-blob-storage-features"></a>Más Blob Storage-funkciók támogatása
 
@@ -63,6 +64,7 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 
 | Szolgáltatás/eszköz    | További információ    |
 |--------|-----------|
+| **Fiók feladatátvétele** |Még nem támogatott|
 | **AzCopy** | Verzió-specifikus támogatás <br><br>Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.|
 | **Azure Blob Storage életciklus-kezelési szabályzatok** | Az életciklus-kezelési házirendek támogatottak (előzetes verzió).  Minden hozzáférési szintet támogat. Az archív hozzáférési szint jelenleg előzetes verzióban érhető el. A blob-Pillanatképek törlése még nem támogatott. <br><br> Jelenleg vannak olyan hibák, amelyek hatással vannak az életciklus-kezelési házirendekre és az archív hozzáférési szintre.  Regisztráljon az életciklus-kezelési szabályzatok előzetes verziójára, és archiválja a hozzáférési szintet [itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
 | **Azure Content Delivery Network (CDN)** | Még nem támogatott|

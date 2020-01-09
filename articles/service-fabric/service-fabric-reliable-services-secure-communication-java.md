@@ -1,37 +1,29 @@
 ---
-title: Az Azure Service Fabric Java-szolgáltatás távelérésének lehetővé tétele kommunikáció biztonságossá tételéhez |} A Microsoft Docs
-description: 'Útmutató: Java reliable Services, Azure Service Fabric-fürtben futó szolgáltatás távelérésének lehetővé tétele a-alapú kommunikáció biztonságossá tételére.'
-services: service-fabric
-documentationcenter: java
+title: Biztonságos szolgáltatás távelérésének távoli kommunikációja Javával
+description: Megtudhatja, hogyan védheti meg az Azure Service Fabric-fürtön futó Java-alapú megbízható szolgáltatások távelérési szolgáltatásának távoli kommunikációját.
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773349"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609638"
 ---
-# <a name="secure-service-remoting-communications-in-a-java-service"></a>Szolgáltatás távelérésének lehetővé tétele kommunikáció egy Java service-ben
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Biztonságos szolgáltatás távelérésének kommunikációja Java-szolgáltatásokban
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-secure-communication.md)
 > * [Java Linuxon](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Biztonsági az egyik legfontosabb szempontja kommunikáció. A Reliable Services alkalmazási keretrendszer tartalmaz néhány előre létrehozott kommunikációs implementációt, eszközök, amelyek a biztonság növelése érdekében használhatja. Ez a cikk leírja, hogyan egy Java-szolgáltatás használatakor szolgáltatás távelérésének lehetővé tétele a biztonság növelése érdekében. Egy meglévő épül [példa](service-fabric-reliable-services-communication-remoting-java.md) , amely azt ismerteti, hogyan reliable Services Java nyelven írt távoli eljáráshívást beállítani. 
+A biztonság a kommunikáció egyik legfontosabb aspektusa. A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ez a cikk azt ismerteti, hogyan javíthatja a biztonságot, ha a szolgáltatásban a távoli eljáráshívás szolgáltatást Java-szolgáltatásban használja. Egy meglévő [példára](service-fabric-reliable-services-communication-remoting-java.md) épül, amely elmagyarázza, hogyan állíthatja be a távelérést a Java-ban írt megbízható szolgáltatásokhoz. 
 
-Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások használatakor szolgáltatás védelme érdekében kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve biztonságossá teheti a szolgáltatást, ha a távelérési szolgáltatást a Java-szolgáltatásokkal együtt használja:
 
-1. Hozzon létre egy adaptert `HelloWorldStateless`, amely meghatározza, hogy a módszereket, a távoli eljáráshívás a szolgáltatás számára elérhetők. A szolgáltatás által használt `FabricTransportServiceRemotingListener`, amely van deklarálva a `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` csomagot. Ez egy `CommunicationListener` megvalósítása, amely távoli eljáráshívás képességeket biztosít.
+1. Hozzon létre egy felületet, `HelloWorldStateless`, amely meghatározza azokat a metódusokat, amelyek elérhetők lesznek a szolgáltatás távoli eljáráshívási hívásához. A szolgáltatás `FabricTransportServiceRemotingListener`fogja használni, amely a `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` csomagban van deklarálva. Ez egy `CommunicationListener` implementáció, amely távelérési funkciókat biztosít.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -53,15 +45,15 @@ Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások hasz
         }
     }
     ```
-2. Adja hozzá a figyelő beállításai és biztonsági hitelesítő adatokat.
+2. Figyelő-beállítások és biztonsági hitelesítő adatok hozzáadása.
 
-    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. A linuxon futó szolgáltatások esetében a tanúsítványt a PEM-formmatted fájlként elérhetőnek kell lennie vagy egy `.pem` a tanúsítványt és titkos kulcsot tartalmazó fájl, vagy egy `.crt` fájlt, amely tartalmazza a tanúsítványt és a egy `.key` a titkos kulcsot tartalmazó fájlt. További tudnivalókért lásd: [helyét és a Linux-csomópontokat az X.509-tanúsítványokat formátumát](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    Győződjön meg arról, hogy a szolgáltatás kommunikációjának biztonságossá tételéhez használni kívánt tanúsítvány telepítve van a fürt összes csomópontján. A Linux rendszeren futó szolgáltatások esetében a tanúsítványnak PEM-formmatted-fájlként kell elérhetőnek lennie; egy `.pem` fájl, amely tartalmazza a tanúsítványt és a titkos kulcsot tartalmazó `.crt`-fájlt, valamint egy `.key` fájlt, amely tartalmazza a tanúsítványt. További információért lásd: [X. 509 tanúsítványok helye és formátuma Linux-csomópontokon](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
     
-    Két módon, hogy megadhat figyelő beállításai és biztonsági hitelesítő adatokat:
+    Kétféle módon biztosíthat figyelő-beállításokat és biztonsági hitelesítő adatokat:
 
-   1. Adja meg azokat a egy [konfigurációs csomag](service-fabric-application-and-service-manifests.md):
+   1. Adja meg őket egy [konfigurációs csomag](service-fabric-application-and-service-manifests.md)használatával:
 
-       Adjon hozzá egy elnevezett `TransportSettings` szakaszt az settings.xml fájlban.
+       Vegyen fel egy nevesített `TransportSettings` szakaszt a Settings. xml fájlban.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -76,7 +68,7 @@ Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások hasz
 
        ```
 
-       Ebben az esetben a `createServiceInstanceListeners` módszert fog kinézni:
+       Ebben az esetben a `createServiceInstanceListeners` metódus a következőhöz hasonlóan fog kinézni:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -88,7 +80,7 @@ Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások hasz
         }
        ```
 
-        Ha hozzáad egy `TransportSettings` az összes előtag nélkül settings.xml fájl `FabricTransportListenerSettings` betölti alapértelmezés szerint ez a szakasz az összes beállítás.
+        Ha előtag nélkül ad hozzá `TransportSettings` szakaszt a Settings. xml fájlban `FabricTransportListenerSettings`, akkor a rendszer alapértelmezés szerint betölti a szakasz összes beállítását.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -96,7 +88,7 @@ Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások hasz
             ...
         </Section>
         ```
-        Ebben az esetben a `CreateServiceInstanceListeners` módszert fog kinézni:
+        Ebben az esetben a `CreateServiceInstanceListeners` metódus a következőhöz hasonlóan fog kinézni:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -107,9 +99,9 @@ Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások hasz
             return listeners;
         }
        ```
-3. Meghívásakor módszer a biztonságos service használata helyett a távoli eljáráshívás stack használatával a `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` osztály egy szolgáltatási proxy létrehozásához, `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
+3. Ha metódusokat hív meg egy biztonságos szolgáltatásban a távelérési verem használatával, ahelyett, hogy a `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` osztályt használja a szolgáltatás-proxy létrehozásához, használja a `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
 
-    Ha az Ügyfélkód egy szolgáltatás részeként fut, akkor betöltheti `FabricTransportSettings` settings.xml fájlból. Hozzon létre egy TransportSettings szakaszt, amely hasonlít a szolgáltatás kódot, ahogy ezt korábban. Az Ügyfélkód hajtsa végre a következő módosításokat:
+    Ha az ügyfél kódja egy szolgáltatás részeként fut, akkor a Settings. XML fájlból `FabricTransportSettings` tölthető be. Hozzon létre egy olyan TransportSettings szakaszt, amely hasonló a szolgáltatás kódjához, ahogy az a korábban látható. Hajtsa végre a következő módosításokat az ügyfél kódjában:
 
     ```java
 

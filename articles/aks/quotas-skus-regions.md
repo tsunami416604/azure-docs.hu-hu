@@ -1,24 +1,24 @@
 ---
-title: Kvóták, SKU-k és régiók rendelkezésre állása az Azure Kubernetes Service (AKS)
-description: Ismerje meg az alapértelmezett kvótákat, korlátozott csomópont Virtuálisgép-Termékváltozat-méretek és régiók rendelkezésre állása az Azure Kubernetes Service (AKS).
+title: Kvóták, SKU-EK és régiók elérhetősége az Azure Kubernetes szolgáltatásban (ak)
+description: Ismerje meg az alapértelmezett kvótákat, a korlátozott csomópontú virtuális gépek SKU-méreteit és az Azure Kubernetes szolgáltatás (ak) régiójának rendelkezésre állását.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mlearned
-ms.openlocfilehash: 318846cddecdf020e2e751d3a0b9e05fc83bba73
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8b561780e2e81499d211252648aeef86561cb9b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614546"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658508"
 ---
-# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóták, korlátozások a virtuális gép mérete és régiók rendelkezésre állása az Azure Kubernetes Service (AKS)
+# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóták, virtuális gépek méretére vonatkozó korlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (ak)
 
-Az összes Azure-szolgáltatások beállítása az alapértelmezett korlátok és kvóták az erőforrások és szolgáltatások. Egyes virtuális gép (VM) termékváltozatok a következők is korlátozott, használatra.
+Az összes Azure-szolgáltatás alapértelmezett korlátokat és kvótákat állít be az erőforrásokhoz és a szolgáltatásokhoz. Bizonyos virtuálisgép-(VM-) SKU-ket is korlátozni kell a használatra.
 
-Ez a cikk részletesen az alapértelmezett erőforráskorlátok Azure Kubernetes Service (AKS)-erőforrások és az Azure-régióban AKS rendelkezésre állását.
+Ez a cikk az Azure Kubernetes-szolgáltatás (ak) erőforrásainak alapértelmezett erőforrás-korlátait és az AK-ban található AK-régiók elérhetőségét részletezi.
 
 ## <a name="service-quotas-and-limits"></a>Szolgáltatási kvóták és korlátok
 
@@ -26,14 +26,14 @@ Ez a cikk részletesen az alapértelmezett erőforráskorlátok Azure Kubernetes
 
 ## <a name="provisioned-infrastructure"></a>Üzembe helyezett infrastruktúra
 
-Az üzembe helyezett infrastruktúrára minden egyéb hálózati, számítási és tárterületi korlátozás érvényes. A korlátozásokkal, lásd: [Azure-előfizetés- és Szolgáltatáskorlátok](../azure-subscription-service-limits.md).
+Az üzembe helyezett infrastruktúrára minden egyéb hálózati, számítási és tárterületi korlátozás érvényes. A vonatkozó korlátokat az [Azure-előfizetések és-szolgáltatások korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md)című témakörben tekintheti meg.
 
 > [!IMPORTANT]
-> Amikor frissít egy AKS-fürtöt, a további erőforrások átmenetileg használja fel. Ilyen erőforrások többek között a rendelkezésre álló IP-címek egy virtuális hálózat alhálózatához, vagy a virtuális gép vCPU-kvóta. Ha Windows Server-tárolók (jelenleg előzetes verzióban érhető el az aks-ben) használ, az egyetlen támogatott megközelítést alkalmazza a legújabb frissítéseket a csomópontok egy frissítési művelet végrehajtásához. A sikertelen fürtfrissítési folyamat azt jelezheti, hogy nem rendelkezik a rendelkezésre álló IP cím terület vagy vCPU kvótát ideiglenes ezeket az erőforrásokat kezelni. A Windows Server-csomópont frissítési folyamat további információkért lásd: [frissítése az aks-ben csomópontkészletek][nodepool-upgrade].
+> Ha egy AK-fürtöt frissít, a további erőforrásokat átmenetileg felhasználjuk. Ezek az erőforrások a virtuális hálózati alhálózaton vagy a virtuális gép vCPU kvótájában elérhető IP-címeket foglalják magukban. Ha Windows Server-tárolókat használ (jelenleg előzetes verzióban érhető el), az egyetlen támogatott módszer a csomópontok legújabb frissítéseinek alkalmazására a frissítési művelet elvégzéséhez. A fürt sikertelen frissítési folyamata azt jelezheti, hogy nem rendelkezik a rendelkezésre álló IP-címtartomány vagy vCPU kvóta az ideiglenes erőforrások kezeléséhez. További információ a Windows Server-csomópont frissítési folyamatáról: [Node-készlet frissítése az AK-ban][nodepool-upgrade].
 
-## <a name="restricted-vm-sizes"></a>Korlátozott Virtuálisgép-méretek
+## <a name="restricted-vm-sizes"></a>Korlátozott virtuálisgép-méretek
 
-AKS-fürt egyes csomópontjaihoz például vCPU- és memóriahasználatot számítási erőforrásokon rögzített tartalmazza. Ha egy AKS-csomópont nem elegendő számítási erőforrásokat tartalmaz, a podok megfelelő működéséhez meghiúsulhat. Annak érdekében, hogy a szükséges *kube rendszer* podok és alkalmazások megbízható ütemezhető, ne használja a következő virtuális gépek Termékváltozatait az aks-ben:
+Az AK-fürtök mindegyik csomópontja rögzített mennyiségű számítási erőforrást (például vCPU és memóriát) tartalmaz. Ha egy AK-csomópont nem elegendő számítási erőforrást tartalmaz, előfordulhat, hogy a hüvelyek nem fognak megfelelően futni. Annak érdekében, hogy a szükséges *Kube* hüvelyek és az alkalmazásai megbízhatóan ütemezhetők legyenek, ne használja a következő virtuálisgép-SKU-ket az AK-ban:
 
 - Standard_A0
 - Standard_A1
@@ -43,15 +43,15 @@ AKS-fürt egyes csomópontjaihoz például vCPU- és memóriahasználatot szám�
 - Standard_F1
 - Standard_F1s
 
-További információ a Virtuálisgép-típusok és a számítási erőforrások: [az Azure-beli virtuális gépek méretei][vm-skus].
+A virtuálisgép-típusokkal és a számítási erőforrásokkal kapcsolatos további információkért lásd: [virtuális gépek méretei az Azure-ban][vm-skus].
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A teljes lista arról, hova üzembe helyezése és futtatása a fürtök, lásd: [AKS-régiók rendelkezésre állása][region-availability].
+A fürtök üzembe helyezésének és futtatásának legújabb listáját lásd: az [AK-régiók rendelkezésre állása][region-availability].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás támogatja-e növelését, növelésére keresztül egy [Azure-támogatási kérést][azure-support] (a **Problématípus**, jelölje be **kvóta**).
+Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás támogatja a növekedést, kérje a növelést egy [Azure-támogatási kérelemben][azure-support] (a **probléma típusa**beállításnál válassza a **kvóta**lehetőséget).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

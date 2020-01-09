@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448765"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Oktatóanyag: keresési javaslatok beszerzése weblapokon
 
@@ -118,7 +118,7 @@ A getSubscriptionKeyLocalStorage segítő függvény először megpróbálja lek
     }
 ```
 
-A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** (érvénytelenítés) szükséges. Ha az **invalidate** értéke **true** (igaz), a getSubscriptionKey törli a Bing Autosuggest API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false** (hamis), a getSubscriptionKey visszaadja a Bing Autosuggest API kulcsának értékét.
+A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** szükséges. Ha az **invalidate** értéke **true** (igaz), a getSubscriptionKey törli a Bing Autosuggest API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false** (hamis), a getSubscriptionKey visszaadja a Bing Autosuggest API kulcsának értékét.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -148,7 +148,7 @@ Adja vissza a getSubscriptionKey segítő függvényt a külső getSubscriptionK
 
 ## <a name="helper-functions"></a>Segítő függvények
 
-A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címkével előre formázott adott szöveget.
+A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címke segítségével előre formázott, megadott szöveget.
 
 ```html
 function pre(text) {
@@ -164,7 +164,7 @@ function renderSearchResults(results) {
 }
 ```
 
-A renderErrorMessage függvény az adott hibaüzenetet és hibakódot jeleníti meg.
+A renderErrorMessage függvény a megadott hibaüzenetet és a hibakódot jeleníti meg.
 
 ```html
 function renderErrorMessage(message, code) {
@@ -184,7 +184,7 @@ Ehhez két paraméterre van szüksége: a HTML-űrlap mezőjének tartalmára é
 function bingAutosuggest(query, key) {
 ```
 
-Adja meg a Bing Autosuggest API-végpontot, és deklaráljon egy XMLHttpRequest objektumot, amelyet arra fog használni, hogy kéréseket küldjön a végpontnak.
+Határozza meg a Bing Autosuggest API végpontot, és deklaráljon egy XMLHttpRequest-objektumot, amelyet a rendszer a kérelmek küldésére használ. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";
@@ -283,7 +283,7 @@ Mentse a fájlt.
 
 ## <a name="display-results"></a>Eredmények megjelenítése
 
-Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing Autosuggest API előfizetői azonosítóját. Ezután írjon be egy lekérdezést (például „sail”, vitorlás) az **Autosuggest** szövegmezőbe. A gépelés során a weboldal automatikusan frissül az automatikus kiegészítés eredményeinek megjelenítéséhez.
+Nyissa meg a weboldalt a böngészőben. Ha a rendszer kéri, adja meg a Bing Autosuggest API előfizetői azonosítóját. Ezután írjon be egy lekérdezést (például „sail”, vitorlás) az **Autosuggest** szövegmezőbe. A gépelés során a weboldal automatikusan frissül az automatikus kiegészítés eredményeinek megjelenítéséhez.
 
 ```json
 {
@@ -349,7 +349,7 @@ Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Használati és megjelenítési követelmények](../UseAndDisplayRequirements.md)

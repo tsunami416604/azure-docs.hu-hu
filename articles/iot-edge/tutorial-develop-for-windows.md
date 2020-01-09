@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 55ae542ed0490248d501cd7c4f50c0a7ba32091a
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707088"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665202"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Windows-eszközökhöz
 
@@ -75,7 +75,7 @@ IoT Edge modulok tárolóként vannak csomagolva, ezért a tárolók létrehozá
 
 Telepítse a Docker dokumentációját a fejlesztői gépre való telepítéshez: 
 
-* [A Windows rendszerhez készült Docker Desktop telepítése](https://docs.docker.com/docker-for-windows/install/)
+* [A Windows rendszerhez készült Docker asztali verziójának telepítése](https://docs.docker.com/docker-for-windows/install/)
 
   * A Windows rendszerhez készült Docker Desktop telepítésekor megkérdezi, hogy Linux-vagy Windows-tárolókat kíván-e használni. Ebben az oktatóanyagban használja a **Windows-tárolókat**. További információ: váltás a [Windows és a Linux rendszerű tárolók között](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
@@ -91,7 +91,7 @@ Ez az oktatóanyag a Visual Studio 2019 fejlesztési lépéseit tanítja. Ha a V
    * Ha még nem rendelkezik a Visual Studióval a fejlesztői gépen, [telepítse a Visual studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) -et a következő munkaterhelésekkel: 
 
       * Azure-fejlesztés
-      * Asztali fejlesztés aC++
+      * Asztali fejlesztés a C++ segítségével
       * .NET Core platformfüggetlen fejlesztés
 
    * Ha már rendelkezik a Visual Studio 2019-rel a fejlesztői gépen, kövesse a [Visual Studio módosítása](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) a szükséges számítási feladatok hozzáadásához című témakör lépéseit.
@@ -158,7 +158,7 @@ A IoT Edge futtatókörnyezetnek szüksége van a beállításjegyzékbeli hitel
 
 1. Nyissa meg a **Deployment. template. JSON** fájlt a modul-megoldásban.
 
-1. Keresse meg a **registryCredentials** tulajdonságot a kívánt $edgeAgent tulajdonságok között, és ellenőrizze, hogy a megfelelő információkat tartalmazza-e.
+1. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Példa: 
 
    ```json
    "registryCredentials": {

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868490"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552661"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
@@ -32,9 +32,9 @@ Ez a cikk bemutatja, hogyan fejlesztheti, figyelheti és kezelheti a tárolók �
 [![Azure Security Center tárolójának biztonsági lapja](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Biztonsági rések kezelése – tároló lemezképek ellenőrzése (előzetes verzió)
-A Azure Container Registry figyeléséhez győződjön meg arról, hogy a Security Center standard szintű csomagjában van (lásd: [díjszabás](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Ezután engedélyezze a választható tároló-beállításjegyzékek köteget. Új rendszerképek leküldésekor Security Center megvizsgálja a képet a piacvezető sebezhetőség-ellenőrzési szállítótól, a Qualys.
+A Azure Container Registry figyeléséhez győződjön meg arról, hogy a Security Center standard szintű csomagjában van (lásd: [díjszabás](/azure/security-center/security-center-pricing)). Ezután engedélyezze a választható tároló-beállításjegyzékek köteget. Új rendszerképek leküldésekor Security Center megvizsgálja a képet a piacvezető sebezhetőség-ellenőrzési szállítótól, a Qualys.
 
-Ha problémák merülnek fel, a Qualys vagy a Security Center – értesítést kap a Security Center irányítópulton. Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. A Security Center javaslataival kapcsolatos részletekért tekintse meg a javaslatok [listáját.](recommendations-compute-and-apps.md)
+Ha problémák merülnek fel, a Qualys vagy a Security Center – értesítést kap a Security Center irányítópulton. Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. Security Center javaslatairól a [javaslatok hivatkozási listájában](recommendations-reference.md)talál további információt.
 
 ## <a name="environment-hardening"></a>Környezet megerősítése
 

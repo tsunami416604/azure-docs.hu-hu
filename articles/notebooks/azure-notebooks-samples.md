@@ -1,25 +1,27 @@
 ---
-title: Mintául szolgáló Jupyter notebookok Azure notebookokhoz
-description: Minták nagyszerű módját az ingyenes Azure-jegyzetfüzetekben fut a cloud services, a Jupyter notebookok tapasztalhat.
-ms.topic: article
+title: Minta Jupyter-jegyzetfüzetek Azure Notebooks előzetes verzióhoz
+description: A minták nagyszerű megoldást nyújtanak az ingyenes Azure Notebooks Cloud Services szolgáltatásban futó Jupyter-jegyzetfüzetek megtapasztalása érdekében.
+ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: cd615777adb28af6528afd2b95bc853372e799e8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277656"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646313"
 ---
-# <a name="discover-and-use-sample-notebooks"></a>Fedezze fel, és a minta notebookok használata
+# <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Minta-jegyzetfüzetek felderítése és használata Azure Notebooks előzetes verzióban
 
-Az interneten van egyszerűen beemelése Azure notebookok érdekes és hasznos Jupyter notebookok számos gyűjteményei. Ez a cikk jelentős minták listáját tartalmazza.
+Az Internet számos érdekes és hasznos Jupyter-jegyzetfüzetet tartalmaz, amelyeket egyszerűen beépíthet Azure Notebooksba. Ez a cikk a jelentős példák listáját tartalmazza.
 
-Ismerje meg, szeretné jegyzetfüzet azonosítása, után az alábbiakban néhány adatra megértéséhez érdemes:
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Miután azonosította a megtekinteni kívánt jegyzetfüzeteket, néhány részletet érdemes megismernie:
 
 - Ha egy jegyzetfüzet már Azure Notebooksban van, a projekt irányítópultján található **klónozás** gombra kattintva készítsen másolatot a projektről a saját fiókjában.
-- Néhány notebookok adott csomagjainak futtatásához szükséges. Habár `!pip install` (Python) vagy `install.packages` (R) használatával is telepíthet csomagokat egy jegyzetfüzetből, [a megfelelő környezettel konfigurálhat egy Azure Notebooks projektet](configure-manage-azure-notebooks-projects.md)is.
+- Egyes jegyzetfüzetekhez meghatározott csomagok futtatására van szükség. Habár `!pip install` (Python) vagy `install.packages` (R) használatával is telepíthet csomagokat egy jegyzetfüzetből, [a megfelelő környezettel konfigurálhat egy Azure Notebooks projektet](configure-manage-azure-notebooks-projects.md)is.
 
-## <a name="great-sample-notebooks"></a>Nagyszerű mintafüzetek
+## <a name="great-sample-notebooks"></a>Nagyszerű minta notebookok
 
 - A [Azure Notebooks Starter set](https://notebooks.azure.com/#sample-redirect) a Python, az R és F#a, valamint az adathozzáférést bemutató jegyzetfüzetekkel, valamint a Azure Machine learning és néhány adatelemzési gyakorlattal is rendelkezik.
 - [A Jupyter notebookok bemutatása](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)

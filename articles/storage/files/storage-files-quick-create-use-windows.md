@@ -1,5 +1,5 @@
 ---
-title: Azure rövid útmutató – Azure Files megosztás létrehozása és használata Windows rendszerű virtuális gépeken | Microsoft Docs
+title: Azure Files megosztás létrehozása és használata Windows rendszerű virtuális gépeken
 description: Ebben a rövid útmutatóban egy Azure Files-megosztást állít be a Azure Portal, és csatlakoztatva van egy Windows rendszerű virtuális géphez. Kapcsolódjon a fájlmegosztás fájlhoz, töltse fel a fájlokat a megosztásba. Ezután pillanatképet készít a fájlmegosztás fájlról, módosítja a fájlokat a megosztásban, és visszaállítja a fájlmegosztás korábbi pillanatképét.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463914"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rövid útmutató: Azure Files megosztás létrehozása és kezelése Windows rendszerű virtuális gépekkel
 
@@ -22,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 

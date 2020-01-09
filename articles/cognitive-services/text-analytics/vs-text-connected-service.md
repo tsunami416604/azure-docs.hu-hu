@@ -1,21 +1,21 @@
 ---
 title: 'Oktatóanyag: csatlakozás a Text Analytics szolgáltatáshoz csatlakoztatott szolgáltatásokkal a Visual Studióban'
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatási funkcióját a Text Analytics Service esetében felhasználni.
+description: Ismerje meg, hogyan használhatja a Visual Studio Connected Service szolgáltatást a Text Analytics szolgáltatáshoz.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 317a5f4ae642dc2306ae84c42a042206b9059ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446143"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Oktatóanyag: csatlakozás a Text Analytics szolgáltatáshoz csatlakoztatott szolgáltatásokkal a Visual Studióban
 
@@ -43,7 +43,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
 
    ![A csatlakoztatott szolgáltatások képernyőjének képe](./media/vs-text-connected-service/Cog-Text-Connected-Service-0.PNG)
 
-   Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában.
+   Ha már bejelentkezett a Visual Stúdióba, és rendelkezik a fiókhoz társított Azure-előfizetéssel, akkor megjelenik egy oldal az előfizetéseit tartalmazó legördülő listával.
 
    ![A Text Analytics csatlakoztatott szolgáltatás képernyőjének képe](media/vs-text-connected-service/Cog-Text-Connected-Service-1.PNG)
 
@@ -51,7 +51,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
 
    ![Az erőforráscsoport és a tarifacsomag mezők képernyőképe](media/vs-text-connected-service/Cog-Text-Connected-Service-2.PNG)
 
-   A tarifacsomagok részleteiért kövesse a hivatkozást.
+   A tarifacsomagokkal kapcsolatban kövesse a hivatkozást.
 
 1. Válassza a **Hozzáadás** gombot a csatlakoztatott szolgáltatáshoz támogatás hozzáadásához.
    A Visual Studio módosítja a projektet a NuGet-csomagok, a konfigurációs fájl bejegyzések és egyéb a Text Analytics Service projekthez adásához szükséges módosítások hozzáadásával. A **kimeneti ablak** naplózza, hogy mi történik a projekttel. A kimenetnek az alábbihoz hasonlóan kell kinéznie:
@@ -69,7 +69,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual 
  
 ## <a name="use-the-text-analytics-service-to-detect-the-language-for-a-text-sample"></a>A Text Analytics Service szolgáltatás használatával detektálja egy mintaszöveg nyelvét.
 
-1. Adja hozzá a következő „using” utasításokat a Startup.cs fájlhoz.
+1. Adja hozzá a következőket utasításokkal a Startup.cs fájlba.
  
    ```csharp
    using System.IO;
@@ -265,6 +265,6 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Text Analytics szolgáltatásról: [Text Analytics szolgáltatás dokumentációja](index.yml).

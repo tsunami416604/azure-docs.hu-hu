@@ -4,17 +4,17 @@ description: Az Azure Storage védi az adatait úgy, hogy automatikusan titkosí
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 12/05/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895134"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665437"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
 
@@ -62,7 +62,7 @@ Alapértelmezés szerint a Storage-fiók a Microsoft által felügyelt titkosít
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok Azure Key Vault
 
-A Storage-fiók szintjén a saját kulcsaival kezelheti az Azure Storage-titkosítást. Ha ügyfél által felügyelt kulcsot ad meg a Storage-fiók szintjén, akkor a rendszer a Storage-fiókban lévő összes blob és fájl adatai titkosítására és visszafejtésére használja a kulcsot. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
+A Storage-fiók szintjén a saját kulcsaival kezelheti az Azure Storage-titkosítást. Ha ügyfél által felügyelt kulcsot ad meg a Storage-fiók szintjén, a rendszer a kulcs használatával védi és szabályozza a hozzáférést a Storage-fiókhoz tartozó gyökérszintű titkosítási kulcshoz, amely viszont az összes blob és fájl adatainak titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
 
 Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a Key vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben is lehetnek. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
 
@@ -80,9 +80,11 @@ Az alábbi lista a diagram számozott lépéseit ismerteti:
 
 ### <a name="enable-customer-managed-keys-for-a-storage-account"></a>Ügyfél által felügyelt kulcsok engedélyezése egy Storage-fiókhoz
 
-Ha az ügyfél által felügyelt kulcsokkal engedélyezi a titkosítást egy Storage-fiókhoz, az Azure Storage a társított kulcstartóban lévő ügyfél kulcsával csomagolja ki a fiók titkosítási kulcsát. Az ügyfél által felügyelt kulcsok engedélyezése nem befolyásolja a teljesítményt, és a fiók azonnal, késedelem nélkül titkosítva lesz az új kulccsal.
+Ha az ügyfél által felügyelt kulcsokkal engedélyezi a titkosítást egy Storage-fiókhoz, az Azure Storage a társított kulcstartóban becsomagolja a fiók titkosítási kulcsát a felhasználó által felügyelt kulccsal. Az ügyfél által felügyelt kulcsok engedélyezése nem befolyásolja a teljesítményt, és a fiók azonnal, késedelem nélkül titkosítva lesz az új kulccsal.
 
 Az új Storage-fiók mindig a Microsoft által felügyelt kulcsokkal van titkosítva. A fiók létrehozásakor nem lehet engedélyezni az ügyfél által felügyelt kulcsokat. Az ügyfél által felügyelt kulcsok Azure Key Vault tárolódnak, és a kulcstárolót olyan hozzáférési házirendekkel kell kiépíteni, amelyek kulcsfontosságú engedélyeket biztosítanak a Storage-fiókhoz társított felügyelt identitásnak. A felügyelt identitás csak a Storage-fiók létrehozása után érhető el.
+
+Ha módosítja az Azure Storage-titkosításhoz használt kulcsot az ügyfél által felügyelt kulcsok engedélyezésével vagy letiltásával, a kulcs verziójának frissítésével, illetve egy másik kulcs megadásával, akkor a legfelső szintű kulcs megváltozásakor, de az Azure Storage-fiókban lévő adatai nem újra kell titkosítani.
 
 Az alábbi cikkekből megtudhatja, hogyan használhatók az ügyfelek által felügyelt kulcsok Azure Key Vault Azure Storage-titkosításhoz:
 
@@ -96,6 +98,8 @@ Az alábbi cikkekből megtudhatja, hogyan használhatók az ügyfelek által fel
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása Azure Key Vault
 
 Az ügyfél által felügyelt kulcsok Storage-fiókban való engedélyezéséhez Azure Key Vault kell használnia a kulcsok tárolásához. Engedélyeznie kell a **Soft delete** és a No **Purge** tulajdonságot a Key vaulton.
+
+Az Azure Storage-titkosítás csak a 2048 méretű RSA-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
 A Key vaultnak ugyanabban az előfizetésben kell lennie, mint a Storage-fióknak. Az Azure Storage felügyelt identitásokat használ az Azure-erőforrások számára a titkosítási és visszafejtési műveletek Key vaultba való hitelesítéséhez. A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket.
 

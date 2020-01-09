@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool kiadások – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool kiadás 4/9/2019 – Azure
 description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jegeib
-ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 488168b1a17d3f5fac1ae7cca0a37676063bfe03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934791"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552066"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool Update kiadás 7.1.60408.1-4/9/2019
 
@@ -47,7 +39,7 @@ A könnyű elérés érdekében a Threat Modeling Tool ügyfél-verziója mostan
 
 ### <a name="support-links-have-been-updated"></a>A támogatási hivatkozások frissítve lettek
 
-Az eszközön belüli összes támogatási hivatkozás frissítve lett, és [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) nem MSDN-fórumként irányítja a felhasználókat.
+Az eszközön belüli összes támogatási hivatkozás frissítve lett, így a felhasználók nem egy MSDN-fórum helyett [tmtextsupport@microsoft.comnak](mailto:tmtextsupport@microsoft.com) .
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
@@ -62,6 +54,6 @@ Az eszközön belüli összes támogatási hivatkozás frissítve lett, és [tmt
 
 - A Threat Modeling Tool dokumentációja a [docs.microsoft.com](threat-modeling-tool.md)található, és [az eszköz használatával](threat-modeling-tool-getting-started.md)kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

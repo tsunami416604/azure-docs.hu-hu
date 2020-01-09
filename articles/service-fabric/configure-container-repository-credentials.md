@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric – tároló-adattár hitelesítő adatainak konfigurálása | Microsoft Docs
+title: Azure Service Fabric – tároló-adattár hitelesítő adatainak konfigurálása
 description: Adattár hitelesítő adatainak konfigurálása a lemezképek a tároló beállításjegyzékből való letöltéséhez
-services: service-fabric
-documentationcenter: .net
 author: arya
-manager: gkhanna
-ms.assetid: b93d31e5-9e4c-4405-b266-c0efa4643d97
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
-ms.date: 8/1/2019
+ms.date: 12/09/2019
 ms.author: arya
-ms.openlocfilehash: c415739934e2318ea5287d5eed9f8235029b666f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 25fe3c69b19d397137d1e1802e941e0433a1b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351661"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Az alkalmazás adattárbeli hitelesítő adatainak konfigurálása a tároló lemezképének letöltéséhez
 
@@ -60,7 +52,7 @@ Ez a funkció engedélyezhető vagy letiltható úgy, hogy hozzáadja a `UseDefa
 
 Service Fabric ezután az alapértelmezett adattár hitelesítő adatait használja, amelyek a `Hosting` szakaszban megadhatók a ClusterManifest.  Ha `UseDefaultRepositoryCredentials` `true`, a Service Fabric a következő értékeket olvassa be a ClusterManifest:
 
-* DefaultContainerRepositoryAccountName (string)
+* DefaultContainerRepositoryAccountName (karakterlánc)
 * DefaultContainerRepositoryPassword (karakterlánc)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * A DefaultContainerRepositoryPasswordType (string)---a 6,4 futtatókörnyezettől kezdődően támogatott

@@ -1,19 +1,14 @@
 ---
-title: Az Azure-előfizetések működési Uram fejlesztése a Azure Advisorkal | Microsoft Docs
-description: Az Advisor használatával optimalizálhatja és kihasználhatja az Azure-előfizetések működési kiválóságát.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: Az Azure-előfizetések működési Uram javítása Azure Advisor
+description: Az Advisor használatával optimalizálhatja és kihasználhatja az Azure-előfizetések működési kiválóságát
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033289"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443079"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor
 
@@ -37,12 +32,12 @@ Azure Advisor felismeri azokat a riasztási szabályokat, amelyek érvénytelen 
 
 ## <a name="follow-best-practices-using-azure-policy"></a>Az ajánlott eljárások követése Azure Policy használatával
 
-Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatokat hozhat létre, rendelhet hozzá és kezelhet. Ezek a szabályzatok különböző szabályokat és hatásokat kényszerítenek az erőforrásokra. Az alábbi Azure Policy-javaslatok segítenek a működési Uram elérésében: 
-1. Címkék kezelése Azure Policy használatával: Ez a házirend minden erőforrás létrehozásakor vagy frissítésekor hozzáadja vagy lecseréli a megadott címkét és értéket. A meglévő erőforrások javíthatók egy szervizelési feladat elindításával. Emellett ez nem módosítja az erőforráscsoportok címkéit.
+Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatokat hozhat létre, rendelhet hozzá és kezelhet. Ezek a szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon. Az alábbi Azure Policy-javaslatok segítenek a működési Uram elérésében: 
+1. Címkék kezelése Azure Policy használatával: Ez a házirend minden erőforrás létrehozásakor vagy frissítésekor hozzáadja vagy lecseréli a megadott címkét és értéket. A meglévő erőforrások egy javítási feladat indításával javíthatók. Emellett ez nem módosítja az erőforráscsoportok címkéit.
 2. Geo-megfelelőségi követelmények betartatása Azure Policy használatával: a szabályzat lehetővé teszi, hogy korlátozza a szervezet által megadható helyet az erőforrások telepítésekor. 
 3. Az engedélyezett virtuálisgép-SKU-ket adja meg a központi telepítésekhez: Ez a szabályzat lehetővé teszi, hogy a szervezet által üzembe helyezhető virtuálisgép-SKU-készletet határozzon meg.
 4. Felügyelt lemezeket nem használó virtuális gépek naplózása az Azure Policy használatával
-5. A "címke öröklése az erőforrás-csoportokból" az Azure Policy használatával: a házirend hozzáadja vagy lecseréli a megadott címkét és értéket a szülő erőforráscsoporthoz bármely erőforrás létrehozásakor vagy frissítésekor. A meglévő erőforrások javíthatók egy szervizelési feladat elindításával.
+5. A "címke öröklése az erőforrás-csoportokból" az Azure Policy használatával: a házirend hozzáadja vagy lecseréli a megadott címkét és értéket a szülő erőforráscsoporthoz bármely erőforrás létrehozásakor vagy frissítésekor. A meglévő erőforrások egy javítási feladat indításával javíthatók.
 
 ## <a name="next-steps"></a>Következő lépések
 

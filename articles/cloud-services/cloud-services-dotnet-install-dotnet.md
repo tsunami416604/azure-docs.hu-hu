@@ -3,19 +3,19 @@ title: A .NET telepítése Azure Cloud Services-szerepkörökön | Microsoft Doc
 description: Ez a cikk azt ismerteti, hogyan telepítheti manuálisan a .NET-keretrendszert a Cloud Service webes és feldolgozói szerepkörein
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
-ms.author: gwallace
-ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360990"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése Azure Cloud Services-szerepkörökre
 Ez a cikk azt ismerteti, hogyan telepíthet olyan .NET-keretrendszer-verziókat, amelyek nem az Azure vendég operációs rendszerhez tartoznak. A .NET-kiszolgáló és a feldolgozói szerepkörök konfigurálásához használhatja a .NET-et a vendég operációs rendszeren.
@@ -35,16 +35,16 @@ A .NET-keretrendszerhez készült web Installer letöltéséhez válassza ki a t
 * [.NET 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
 A telepítő hozzáadása *webes* szerepkörhöz:
-  1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza az**új mappa** **hozzáadása** > lehetőséget. Hozzon létre egy **bin**nevű mappát.
-  2. Kattintson a jobb gombbal a Bin mappára,  > és válassza a**meglévő elem hozzáadása elemet**. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
+  1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza a > **új mappa** **hozzáadása** lehetőséget. Hozzon létre egy **bin**nevű mappát.
+  2. Kattintson a jobb gombbal a Bin mappára, és válassza a > **meglévő elem** **hozzáadása** elemet. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
   
-A telepítő hozzáadása feldolgozói  szerepkörhöz:
-* Kattintson a jobb gombbal  a feldolgozói szerepkörre, és válassza a**meglévő elem** **hozzáadása** > lehetőséget. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
+A telepítő hozzáadása *feldolgozói* szerepkörhöz:
+* Kattintson a jobb gombbal a *feldolgozói* szerepkörre, és válassza a > **meglévő elem** **hozzáadása** elemet. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
 
 Ha a fájlokat így hozzáadja a szerepkör-tartalom mappájához, azok automatikusan hozzáadódnak a Cloud Service-csomaghoz. Ezután a rendszer a virtuális gép egy konzisztens helyére telepíti a fájlokat. Ismételje meg ezt a folyamatot a felhőalapú szolgáltatás minden webes és feldolgozói szerepköre esetében, hogy minden szerepkör rendelkezik a telepítő másolatával.
 
 > [!NOTE]
-> A .NET-4.6.2 akkor is telepítenie kell a Cloud Service-szerepkörbe, ha az alkalmazás a .NET 4,6-et célozza meg. A vendég operációs rendszer tartalmazza a Tudásbázis [3098779](https://support.microsoft.com/kb/3098779) -es frissítését és a 3097997-es [frissítést](https://support.microsoft.com/kb/3097997). A .NET-alkalmazások futtatásakor problémák léphetnek fel, ha a .NET 4,6 telepítve van a Tudásbázis frissítésein. Ezen problémák elkerülése érdekében telepítse a .NET 4.6.2-et a 4,6-es verzió helyett. További információt a [tudásbázis 3118750](https://support.microsoft.com/kb/3118750) -es és [4340191](https://support.microsoft.com/kb/4340191)-es cikkében talál.
+> A .NET-4.6.2 akkor is telepítenie kell a Cloud Service-szerepkörbe, ha az alkalmazás a .NET 4,6-et célozza meg. A vendég operációs rendszer tartalmazza a Tudásbázis [3098779-es frissítését](https://support.microsoft.com/kb/3098779) és a 3097997-es [frissítést](https://support.microsoft.com/kb/3097997). A .NET-alkalmazások futtatásakor problémák léphetnek fel, ha a .NET 4,6 telepítve van a Tudásbázis frissítésein. Ezen problémák elkerülése érdekében telepítse a .NET 4.6.2-et a 4,6-es verzió helyett. További információt a [tudásbázis 3118750](https://support.microsoft.com/kb/3118750) -es és [4340191](https://support.microsoft.com/kb/4340191)-es cikkében talál.
 > 
 > 
 
@@ -73,7 +73,7 @@ Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdés
     </Startup>
     ```
    
-    Az előző konfiguráció a konzol parancsát `install.cmd` rendszergazdai jogosultságokkal futtatja a .NET-keretrendszer telepítéséhez. A konfiguráció emellett létrehoz egy **NETFXInstall**nevű **LocalStorage** elemet is. Az indítási parancsfájl beállítja a Temp mappát a helyi tárolási erőforrás használatára. 
+    Az előző konfiguráció futtatja a konzol parancsát `install.cmd` rendszergazdai jogosultságokkal a .NET-keretrendszer telepítéséhez. A konfiguráció emellett létrehoz egy **NETFXInstall**nevű **LocalStorage** elemet is. Az indítási parancsfájl beállítja a Temp mappát a helyi tárolási erőforrás használatára. 
     
     > [!IMPORTANT]
     > A keretrendszer helyes telepítésének biztosításához állítsa az erőforrás méretét legalább 1 024 MB-ra.
@@ -197,7 +197,7 @@ Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdés
    EXIT /B 0
    ```
 
-3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz**meglévő elem** **hozzáadása** >  **megoldáskezelő** a témakör korábbi részében leírtak szerint. 
+3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz, ha a jelen témakör korábbi részében leírtak szerint > **meglévő elem** **hozzáadása** a **megoldáskezelő** . 
 
     A lépés befejezése után az összes szerepkörnek rendelkeznie kell a .NET Installer-fájllal és a install. cmd fájllal.
 
@@ -234,3 +234,6 @@ A Cloud Service üzembe helyezésekor az indítási feladatok telepítik a .NET-
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

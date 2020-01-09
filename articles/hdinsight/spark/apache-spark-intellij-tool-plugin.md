@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 1790a7806b1abbe4d537f309f33dee686e30662b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533919"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645038"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -232,13 +232,13 @@ A Scala-alkalmazás létrehozása után elküldheti azt a fürtnek.
     |Spark-fürtök (csak Linux)|Válassza ki azt a HDInsight Spark-fürtöt, amelyen futtatni szeretné az alkalmazást.|
     |Válassza ki a elküldeni kívánt összetevőt|Hagyja meg az alapértelmezett beállítást.|
     |Fő osztály neve|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont ( **..** .) lehetőség kiválasztásával módosíthatja.  és válasszon másik osztályt.|
-    |Feladatok konfigurációi|Módosíthatja az alapértelmezett kulcsokat és/vagy értékeket. További információ: [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
+    |Feladatok konfigurációi|Módosíthatja az alapértelmezett kulcsokat és/vagy értékeket. További információ: [Apache Livy REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html).|
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
     |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Tallózással is tallózhat az Azure-beli virtuális fájlrendszerben, amely jelenleg csak a ADLS Gen 2 fürtöt támogatja. További információ: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Lásd még: [erőforrások feltöltése a fürtbe](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
-    |Tárolási típus|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
+    |Tárhelytípusa|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
     |Tárfiók|Adja meg a Storage-fiókját.|
-    |Storage-kulcs|Adja meg a tárolási kulcsot.|
+    |Tárkulcs|Adja meg a tárolási kulcsot.|
     |Storage-tároló|A Storage- **fiók** és a **Storage-kulcs** megadása után válassza ki a tárolót a legördülő listából.|
 
     ![A Spark beküldése párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)

@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425082"
 ---
-# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhő kiépítés egy meglévő szinkronizált AD-erdőhöz 
+# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
 Ez az oktatóanyag végigvezeti egy olyan tesztelési célú felhőalapú kiépítési folyamaton, Active Directory erdőben, amely már szinkronizálva van a Azure Active Directory (Azure AD) csatlakozási szinkronizálás használatával.
 
@@ -133,21 +133,6 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
 
 7. Miután a művelet befejeződik, meg kell jelennie arról, hogy **a sikeres ellenőrzést** észlelte.  Kattintson a **Kilépés**lehetőségre.</br>
 ![Üdvözlőképernyő](media/how-to-install/install5.png)</br>
-8. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás**. 1 gombra. Jelentkezzen be a-kiszolgálóra, amelyet a vállalati rendszergazdai engedélyekkel fog használni.
-2. Töltse le az Azure AD Connect Cloud kiépítési ügynököt [itt](https://go.microsoft.com/fwlink/?linkid=2109037).
-3. Az Azure AD Connect Cloud kiépítés (AADConnectProvisioningAgent. Installer) futtatása
-3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
-![Üdvözlőképernyő](media/how-to-install/install1.png)</br>
-
-4. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.
-5. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory rendszergazdai fiókjával.  Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.</br>
-![Üdvözlőképernyő](media/how-to-install/install3.png)</br>
-
-6. A **konfiguráció kész** képernyőn kattintson a **Confirm (megerősítés**) gombra.  Ez a művelet regisztrálja és újraindítja az ügynököt.</br>
-![Üdvözlőképernyő](media/how-to-install/install4.png)</br>
-
-7. Miután a művelet befejeződik, meg kell jelennie arról, hogy **a sikeres ellenőrzést** észlelte.  Kattintson a **Kilépés**lehetőségre.</br>
-![Üdvözlőképernyő](media/how-to-install/install5.png)</br>
 8. Ha továbbra is megjelenik a kezdeti splash képernyő, kattintson a **Bezárás**gombra.
 
 ## <a name="verify-agent-installation"></a>Ügynök telepítésének ellenőrzése
@@ -158,7 +143,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azu
 
 1. Jelentkezzen be az Azure portálra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
-![Azure Portalra](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install6.png)</br>
 
 3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése**elemre.
 Azure AD-kiépítés ![](media/how-to-install/install7.png)</br>

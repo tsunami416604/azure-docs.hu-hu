@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric gyakori forgatókönyvek diagnosztizálása | Microsoft Docs
-description: Ismerje meg, hogyan lehet elhárítani az Azure-Service Fabric gyakori forgatókönyveit
-services: service-fabric
-documentationcenter: .net
+title: Az Azure Service Fabric gyakori forgatókönyvek diagnosztizálására
+description: Ismerje meg az Azure Service Fabric-alkalmazásokon belüli általános figyelési és diagnosztikai forgatókönyvek hibaelhárítását.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60394209"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645786"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Gyakori forgatókönyvek diagnosztizálása Service Fabric
 
-Ez a cikk bemutatja, hogyan fordul elő a felhasználók a monitorozás és a diagnosztika területén a Service Fabric. A bemutatott forgatókönyvek a Service Fabric 3 rétegét fedik le: Alkalmazás, fürt és infrastruktúra. Mindegyik megoldás Application Insights és Azure Monitor naplókat, Azure monitoring-eszközöket használ az egyes forgatókönyvek teljesítéséhez. Az egyes megoldásokban szereplő lépések bemutatják, hogyan használhatók a Application Insights és az Azure Monitor naplók a Service Fabric környezetében.
+Ez a cikk bemutatja, hogyan fordul elő a felhasználók a monitorozás és a diagnosztika területén a Service Fabric. A bemutatott forgatókönyvek a Service Fabric 3 rétegét fedik le: alkalmazás, fürt és infrastruktúra. Mindegyik megoldás Application Insights és Azure Monitor naplókat, Azure monitoring-eszközöket használ az egyes forgatókönyvek teljesítéséhez. Az egyes megoldásokban szereplő lépések bemutatják, hogyan használhatók a Application Insights és az Azure Monitor naplók a Service Fabric környezetében.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -56,7 +47,7 @@ A cikkben szereplő megoldások a következő eszközöket fogják használni. J
 1. Ugyanebben a Application Insights erőforrásban a kivételek helyett a "kérések" lehetőségre szűrhet, és az összes kérelem megtekintése
 2. Ha a Service Fabric Application Insights SDK-t használja, láthatja a szolgáltatásainak vizuális megjelenítését egymáshoz, valamint a sikeres és sikertelen kérések számát. A bal oldalon kattintson az "alkalmazás-hozzárendelés" elemre.
 
-    ![AI app Map](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![panel AI-alkalmazás térképe](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI app Map panel](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI-alkalmazás térképe](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Az alkalmazás-hozzárendeléssel kapcsolatos további információkért tekintse meg az [alkalmazás-Térkép dokumentációját](../azure-monitor/app/app-map.md) .
 
@@ -92,12 +83,12 @@ A cikkben szereplő megoldások a következő eszközöket fogják használni. J
 
 ## <a name="how-do-i-see-container-metrics"></a>Hogyan lásd a tároló metrikáit?
 
-Az összes gráftal azonos nézetben látni fogja a tárolók teljesítményéhez tartozó csempéket. A csempék feltöltéséhez szükség van a Log Analytics ügynökre és a [tároló](service-fabric-diagnostics-oms-containers.md) -figyelési megoldásra.
+Az összes gráftal azonos nézetben látni fogja a tárolók teljesítményéhez tartozó csempéket. A csempék feltöltéséhez szükség van a Log Analytics ügynökre és a [tároló-figyelési megoldásra](service-fabric-diagnostics-oms-containers.md) .
 
 ![Log Analytics tároló Metrikái](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
 
 >[!NOTE]
->Ahhoz, hogy a telemetria a tárolóból, hozzá kell adnia a [Application Insights nuget csomagot a](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios)tárolók számára.
+>Ahhoz, **hogy a telemetria** a tárolóból, hozzá kell adnia a [Application Insights nuget csomagot a](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios)tárolók számára.
 
 ## <a name="how-can-i-monitor-performance-counters"></a>Hogyan figyelhetők a teljesítményszámlálók?
 
@@ -139,9 +130,9 @@ Az alkalmazások Reliable Services vagy szereplőinek teljesítményének nyomon
 * `Service Fabric Actor(*)\\Average milliseconds per request`
 * `Service Fabric Actor Method(*)\\Invocations/Sec`
 
-A megbízható szolgáltatásokkal és [szereplőkkel](service-fabric-reliable-actors-diagnostics.md) kapcsolatos teljesítményszámlálók teljes listájáért olvassa [](service-fabric-reliable-serviceremoting-diagnostics.md) el a következő hivatkozásokat:
+A megbízható [szolgáltatásokkal](service-fabric-reliable-serviceremoting-diagnostics.md) és [szereplőkkel](service-fabric-reliable-actors-diagnostics.md) kapcsolatos teljesítményszámlálók teljes listájáért olvassa el a következő hivatkozásokat:
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Riasztások beállítása az AI-ben](../azure-monitor/app/alerts.md) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) az AI által küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákra

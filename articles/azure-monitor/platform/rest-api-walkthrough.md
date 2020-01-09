@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363506"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
@@ -97,7 +97,7 @@ A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a
 
 **Metódus**: Get
 
-**Kérelem URI-ja**: https: \/ \/management. Azure.com/Subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourcename}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Kérelem URI-ja**: https:\/\/Management.Azure.com/Subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourcename}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Ha például egy Azure Storage-fiók metrika-definícióit szeretné lekérni, a kérelem a következőképpen fog megjelenni:
 
@@ -241,7 +241,7 @@ A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez
 
 **Metódus**: Get
 
-**Kérelem URI-ja**: https \://Management.Azure.com/Subscriptions/ *{előfizetés-azonosító}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{erőforrás-szolgáltató-névtér}* / *{erőforrás-típus}* / *{Resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{metrika}* & TimeSpan = *{kezdő időpont/Befejezés}* & $Filter = *{Filter}* & resultType = metaadatok & API-Version = *{ apiVersion}*
+**Kérelem URI-ja**: https\://Management.Azure.com/Subscriptions/ *{előfizetés-azonosító}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{erőforrás-szolgáltató-névtér}* / *{erőforrás-típus}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{metrikus}* & timespan = *{kezdő időpont/Befejezés}* & $Filter = *{Filter}* & resultType = metaadatok & API-Version = *{ apiVersion}*
 
 Ha például le szeretné kérdezni a "Transactions" metrika "API-név dimenziója" számára kibocsátott dimenzióértékeket, ahol a GeoType dimenzió = "elsődleges" érték szerepel a megadott időtartományban, a kérelem a következő lesz:
 
@@ -314,7 +314,7 @@ A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez
 
 **Metódus**: Get
 
-**Kérelem URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}* /resourceGroups/ *{Erőforrás-csoport neve}* /Providers/ *{erőforrás-szolgáltató-névtér}* / *{Resource-Type}* / *{Resource-Name}* /Providers/ Microsoft. bepillantások/mérőszámok? metricnames = *{metrika}* & TimeSpan = *{kezdő időpont/befejezés}* & $Filter = *{Filter}* & intervallum = *{timeGrain}* & összesítés = *{aggreation}* & API-Version = *{apiVersion}*
+**Kérelem URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{erőforrás-szolgáltató-névtér}* / *{Resource-Type* }/ *{resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{metrikus}* & TimeSpan = *{Kezdés/Befejezés}* & $Filter = *{Filter}* & időköz = *{timeGrain}* & összesítés = *{aggreation}* & API-Version = *{apiVersion}*
 
 Ha például az első 3 API-t csökkenő értékben szeretné lekérdezni, a "tranzakciók" száma egy 5 perces tartományban, ahol a GeotType "elsődleges" volt, a kérelem a következő lesz:
 
@@ -393,7 +393,7 @@ A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a
 
 **Metódus**: Get
 
-**Kérelem URI-ja**: https: \/ \/management. Azure.com/Subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourcename}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Kérelem URI-ja**: https:\/\/Management.Azure.com/Subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourcename}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Ha például egy Azure logikai alkalmazás metrika-definícióit szeretné lekérni, a kérelem a következőképpen fog megjelenni:
 
@@ -466,7 +466,7 @@ Ha a rendelkezésre álló metrika-definíciók ismertek, akkor lehetséges, hog
 
 **Metódus**: Get
 
-**Kérelem URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}* /resourceGroups/ *{Erőforrás-csoport neve}* /Providers/ *{erőforrás-szolgáltató-névtér}* / *{Resource-Type}* / *{Resource-Name}* /Providers/ Microsoft. bepillantások/mérőszámok? $filter = *{Filter}* & API-Version = *{apiVersion}*
+**Kérelem URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}* /resourceGroups/ *{Erőforrás-csoport neve}* /Providers/ *{erőforrás-szolgáltató-névtér}* / *{Resource-Type}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
 
 Ha például a megadott időtartományhoz tartozó RunsSucceeded metrikai adatpontokat szeretné lekérni, és egy órán belül egy órát, akkor a kérelem a következő lesz:
 
@@ -620,7 +620,7 @@ A kívánt erőforrás erőforrás-AZONOSÍTÓjának megkereséséhez az egyik h
 
 ![ALT "Azure Erőforrás-kezelő"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 Az erőforrás-azonosító a Azure Portal is beszerezhető. Ehhez keresse meg a kívánt erőforrást, majd válassza a tulajdonságok lehetőséget. Az erőforrás-azonosító a tulajdonságok szakaszban jelenik meg, ahogy az alábbi képernyőképen látható:
 

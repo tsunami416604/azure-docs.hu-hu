@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098699"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643253"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,9 +34,9 @@ ms.locfileid: "70098699"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 
 
@@ -199,7 +199,7 @@ ms.locfileid: "70098699"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -222,7 +222,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepíté
 >Az egyes WSFC-fürtökben lévő SAP ASCS/SCS-példányok maximális száma megegyezik az egyes Azure-beli belső terheléselosztó számára elérhető saját előtér-IP-címek maximális számával.
 >
 
-A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg [a hálózati korlátok a "privát előtéri IP-cím/terheléselosztó" című szakaszt: Azure Resource Manager][networking-limits-azure-resource-manager].
+A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg a [hálózatkezelési korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]a "privát ELŐTÉR-IP/terheléselosztó" című szakaszt.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -244,7 +244,7 @@ A cél az, hogy több SAP ABAP ASCS vagy SAP Java SCS fürtözött példányt te
 
 ![Több SAP ASCS/SCS fürtözött példány az Azure-ban][sap-ha-guide-figure-6002]
 
-A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg [a hálózati korlátok a "privát előtéri IP-cím/terheléselosztó" című szakaszt: Azure Resource Manager][networking-limits-azure-resource-manager].
+A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg a [hálózatkezelési korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]a "privát ELŐTÉR-IP/terheléselosztó" című szakaszt.
 
 A két magas rendelkezésre állású SAP-rendszerrel rendelkező teljes környezet a következőképpen fog kinézni:
 
@@ -254,11 +254,11 @@ A két magas rendelkezésre állású SAP-rendszerrel rendelkező teljes környe
 
 Az infrastruktúra előkészítéséhez telepítsen egy további SAP ASCS/SCS-példányt a következő paraméterekkel:
 
-| Paraméternév | Value |
+| Paraméter neve | Value (Díj) |
 | --- | --- |
-| SAP ASCS/SCS SID |PR1-LB – ASCs |
+| SAP-ASCS/SCS SID |PR1-LB – ASCs |
 | SAP adatbázis-kezelő belső terheléselosztó | PR5 |
-| SAP virtuális gazdagép neve | pr5-sap-cl |
+| SAP virtuális gazdagép neve | PR5 – SAP-CL |
 | SAP ASCS/SCS virtuális gazdagép IP-címe (további Azure Load Balancer IP-cím) | 10.0.0.50 |
 | SAP-ASCS/SCS-példány száma | 50 |
 | ILB mintavételi port további SAP ASCS/SCS-példányhoz | 62350 |
@@ -273,7 +273,7 @@ További SAP ASCS/SCS-példányokat is telepíthet a meglévő WSFC-fürtbe két
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Statikus IP-cím |
 | --- | --- | --- |
 | Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |10.0.0.10 |
-| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |10.0.0.9 |
+| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |10.0.0.9 címek |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Virtuális állomásnév létrehozása a fürtözött SAP ASCS/SCS-példányhoz a DNS-kiszolgálón
 
@@ -281,7 +281,7 @@ A következő paraméterek használatával létrehozhat egy DNS-bejegyzést a AS
 
 | Új SAP ASCS/SCS virtuális gazdagép neve | Társított IP-cím |
 | --- | --- |
-|pr5-sap-cl |10.0.0.50 |
+|PR5 – SAP-CL |10.0.0.50 |
 
 Az új állomásnév és IP-cím a DNS-kezelőben jelenik meg, az alábbi képernyőképen látható módon:
 
@@ -434,7 +434,7 @@ A magas szintű eljárás a következő:
 
 10. [Tesztelje az SAP ASCS/SCS instance feladatátvételi és SIOS replikációját][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több VIP Azure Load Balancer][load-balancer-multivip-overview]

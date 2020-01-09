@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359960"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -169,7 +169,7 @@ Az Azure-lemezek foglalása egy adott régióra és SKU-ra (például az USA 2. 
 **Mi történik, ha az Azure-lemezek foglalása lejár?**
 Az e-mail-értesítéseket a lejárat előtt 30 nappal, a lejárati dátum után pedig újra megkapja. Ha a foglalás lejár, a telepített lemezek továbbra is futni fognak, és az utólagos elszámolású [díjszabással](https://azure.microsoft.com/pricing/details/managed-disks/)számolunk fel díjat.
 
-## <a name="ultra-disks"></a>Ultra-lemezek
+## <a name="ultra-disks"></a>Ultralemezek
 
 **Mire kell beállítani az ultra Disk átviteli sebességét?**
 Ha nem biztos abban, hogy mit kell beállítania a lemez átviteli sebességének beállításához, javasoljuk, hogy először a 16 KiB i/o-méretet adja meg, és az alkalmazás figyelése után állítsa be a teljesítményt. A képlet a következő: átviteli sebesség (MB/s) = IOPS * 16/1000.
@@ -398,7 +398,7 @@ Nem, a standard SSD által felügyelt lemezek bármilyen méretűek, nem haszná
 
 **Mi a legnagyobb felügyelt lemez mérete az operációs rendszer és az adatlemezek esetében?**
 
-Az Azure által az operációsrendszer-lemezre támogatott partíció típusa a fő rendszertöltő rekord (MBR). Az MBR formátuma legfeljebb 2 TiB méretű lemez használatát támogatja. Az Azure által az operációsrendszer-lemez számára támogatott legnagyobb méret 2 TiB. Az Azure a globális Azure-ban, 4 TiB-ban, az Azure szuverén felhőkben akár 32 TiB-t is támogat a felügyelt adatlemezekhez.
+Az Azure által az operációsrendszer-lemezre támogatott partíció típusa a fő rendszertöltő rekord (MBR). Az MBR formátuma legfeljebb 2 TiB méretű lemez használatát támogatja. Az Azure által az operációsrendszer-lemez számára támogatott legnagyobb méret 2 TiB. Az Azure a felügyelt adatlemezek esetében akár 32 TiB-t is támogat.
 
 **Mi az operációs rendszer és az adatlemezek esetében támogatott legnagyobb, nem felügyelt lemez mérete?**
 
@@ -441,7 +441,7 @@ A Azure Backup és Azure Site Recovery szolgáltatás által támogatott legnagy
 
 **Az optimalizált lemezes IOPS és a sávszélesség eléréséhez az ajánlott virtuálisgép-méretek (> 4 TiB) standard SSD és standard HDD lemezek esetében**
 
-A standard SSD lemez átviteli sebességének eléréséhez, valamint a nagy méretű (> 4 TiB-os), 500 IOPS és 60 MiB/s méreteken túli standard HDD a teljesítmény optimalizálása érdekében javasoljuk, hogy helyezzen üzembe egy új virtuális gépet a következő virtuálisgép-méretek közül: B-sorozat, DSv2 sorozat, Dsv3 sorozat, ESv3 sorozat , FS sorozat, Fsv2 sorozat, M-sorozat, GS-sorozat, NCv2-sorozat, NCv3-sorozat vagy ls-sorozatú virtuális gépek. Ha nagyméretű lemezeket csatlakoztat a meglévő virtuális gépekhez vagy olyan virtuális gépekhez, amelyek nem a fentiekben javasolt méreteket használják, alacsonyabb teljesítményt tapasztalhatnak.
+A standard SSD lemez átviteli sebességének eléréséhez és a nagy méretű lemezek standard HDD (> 4 TiB) a 500 IOPS és a 60 MiB/s felett javasoljuk, hogy a következő virtuálisgép-méretek egyikével telepítsen egy új virtuális gépet a teljesítmény optimalizálása érdekében: B sorozat, DSv2 sorozat, Dsv3 sorozat, ESv3 sorozat, FS sorozat, Fsv2 sorozat, M sorozat, GS-sorozat, NCv2 sorozat, NCv3 sorozat vagy ls sorozatú virtuális gépek. Ha nagyméretű lemezeket csatlakoztat a meglévő virtuális gépekhez vagy olyan virtuális gépekhez, amelyek nem a fentiekben javasolt méreteket használják, alacsonyabb teljesítményt tapasztalhatnak.
 
 **Hogyan frissíthetem a lemezeket (> 4 TiB), amelyek a nagyobb méretű lemezes méretek előzetes verziójában lettek telepítve, hogy a magasabb IOPS & sávszélességet a GA-ban?**
 

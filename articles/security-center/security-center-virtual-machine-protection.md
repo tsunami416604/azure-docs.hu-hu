@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 4a6d733b490edd892136f6febcc90c29a5a865e1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766803"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553001"
 ---
 # <a name="protect-your-machines-and-applications"></a>A gépek és az alkalmazások elleni védelem
-Ha a Security Center felismeri a lehetséges biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán. 
+Ha Azure Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
-Ez a cikk a Azure Security Center erőforrás-biztonsági szakaszának **számítási és alkalmazások** lapját ismerteti. Emellett ismerteti azokat a javaslatokat, amelyeket itt láthat.
+Ez a cikk a Security Center erőforrás-biztonsági szakaszának **számítási és alkalmazások** lapját ismerteti.
 
-A számítási és az App Services-javaslatok teljes listáját a [számítás és az alkalmazás javaslataiban](recommendations-compute-and-apps.md)találhatja meg.
+Az ezen a lapon megjelenő javaslatok teljes listáját az [adatkezelési és tárolási javaslatok](recommendations-reference.md#recs-computeapp)című cikkben tekintheti meg.
+
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>A számítási és alkalmazási erőforrások biztonságának megtekintése
 
-![A Security Center irányítópultja](./media/security-center-virtual-machine-recommendations/overview.png)
+[![Security Center irányítópult](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
 
 A számítási és alkalmazási erőforrások állapotának megtekintéséhez válassza a Security Center Sidebarban az **erőforrások** területen a **számítási & alkalmazások** elemet. A következő lapok érhetők el:
 
@@ -74,7 +75,8 @@ Az egyes javaslatok alatt megjelenő ikon segíti a virtuális gép és a beavat
 
 Az egyes virtuális gépek biztonsági javaslatainak részletezéséhez kattintson a virtuális gépre.
 Itt láthatja a virtuális gép vagy a számítógép biztonsági részleteit. Alul a javasolt művelet és az egyes problémák súlyossága látható.
-![Felhőszolgáltatások](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
+
+[Cloud Services ![](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 ### <a name="cloud-services"></a>Cloud Services
 A Cloud Services esetében egy javaslat jön létre, ha az operációs rendszer verziója elavult.
@@ -141,6 +143,7 @@ Ha az összes meglévő méretezési csoportot be szeretné állítani a Microso
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következő cikkeket:
 
+* [Azure Security Center biztonsági javaslatainak teljes listája](recommendations-reference.md)
 * [Identitás és hozzáférés figyelése az Azure Security Centerben](security-center-identity-access.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 * [Az Azure SQL-szolgáltatás védelme Azure Security Center](security-center-sql-service-recommendations.md)

@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD-bérlő alkalmazásaihoz tartozó jogcímek testreszabása
+title: Azure AD-bérlői alkalmazás jogcímeinek testreszabása (PowerShell)
 titleSuffix: Microsoft identity platform
 description: Ez az oldal ismerteti Azure Active Directory jogcímek leképezését.
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918423"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531071"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -60,7 +60,7 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | access_token |
 | account_type |
 | acr |
-| Színész |
+| színész |
 | actortoken |
 | AIO |
 | altsecid |
@@ -328,7 +328,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
 | alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
 | alkalmazás, erőforrás, célközönség | kifogásolta | ObjectID |
-| alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatásnév címkéje |
+| alkalmazás, erőforrás, célközönség | címkét | Egyszerű szolgáltatásnév címkéje |
 | Cég | tenantcountry | Bérlő országa |
 
 **TransformationID:** A TransformationID elemet csak akkor kell megadni, ha a forrásoldali elem "átalakítás" értékre van állítva.
@@ -361,8 +361,8 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 |TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
 |-----|-----|-----|-----|
-|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "Sandbox", elválasztó: "." eredmény a következő outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|e-mail|outputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" a outputClaim: "foo" eredményt eredményez. Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
+|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|OutputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "Sandbox", elválasztó: "." eredmény a következő outputClaim: "foo@bar.com.sandbox"|
+|ExtractMailPrefix|e-mail|OutputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" a outputClaim: "foo" eredményt eredményez. Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
 
 **Szabályzattípushoz:** Egy Szabályzattípushoz elem használatával továbbíthatja az adatok átadását a jogcím-séma bejegyzéseiből egy átalakításba. Két attribútummal rendelkezik: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
@@ -416,7 +416,13 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 ### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
 
-A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől.  Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, egy speciális URI-t kell megadniuk a jogkivonat-aláíró kulcsaihoz az [OpenID Connect metaadat-kérelmekhez](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)való `appid={client_id}` Hozzáfűzés  
+A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a `new-azureadapplicationkeycredential` Azure PowerShell-parancsmaggal hozhat létre szimmetrikus kulcsú hitelesítő adatokat az alkalmazás objektumához. Az Azure PowerShell-parancsmaggal kapcsolatos további információkért kattintson [ide](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+
+Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, meg kell adniuk a jogkivonat-aláíró kulcsaikat az [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)`appid={client_id}` hozzáfűzésével Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell: 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>Több-bérlős forgatókönyvek
 

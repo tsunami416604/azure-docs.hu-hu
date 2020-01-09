@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429492"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -36,9 +36,13 @@ Ha a bejelentkezés sikertelen, akkor a hibának megfelelő hibakód jelenik meg
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Hogyan tudom megjeleníteni a sikertelen bejelentkezéseket? 
 
-Navigáljon a [Azure Portalban](https://portal.azure.com)található [bejelentkezési jelentésre](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) .
+A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory**lehetőséget, vagy keresse meg és válassza ki az **Azure Active Directory** elemet bármelyik oldalon.
 
-![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/61.png "Bejelentkezési tevékenység")
+![Azure Active Directory kiválasztása](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+A **figyelés**területen válassza a **bejelentkezések** lehetőséget a [bejelentkezések jelentés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)megnyitásához.
+
+![Bejelentkezési tevékenység](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "Bejelentkezési tevékenység")
 
 Szűrje a jelentést úgy, hogy az összes sikertelen bejelentkezés megjelenjen, ha a **bejelentkezési állapot** legördülő listából kiválasztja a **hiba** lehetőséget.
 
@@ -179,7 +183,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |90010|A kérés különböző okokból nem támogatott. A kérést például nem támogatott kérési módszer használatával (csak a POST metódus támogatott) vagy a kért jogkivonat-aláírási algoritmus nem támogatja. Lépjen kapcsolatba az alkalmazás fejlesztőjével.|
 |90014| A protokoll üzeneteihez kötelező mező hiányzik, lépjen kapcsolatba az alkalmazás tulajdonosával. Ha Ön az alkalmazás tulajdonosa, ellenőrizze, hogy rendelkezik-e az összes szükséges paraméterrel a bejelentkezési kéréshez. |
 |90051| Érvénytelen delegálási jogkivonat. Érvénytelen nemzeti felhő-azonosító ({cloudId}) van megadva.|
-|90072| Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
+|90072| Előbb a bérlőn külső felhasználóként hozzá kell adni a fiókot. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
 |90094| A támogatáshoz rendszergazdai engedélyek szükségesek. Kérje meg a bérlői rendszergazdát, hogy adja meg az alkalmazáshoz való hozzájárulásukat.|
 |500011| Az <site address> nevű egyszerű erőforrás nem található a (z) <tenant ID>nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
 |500021| A bérlőt a vállalati proxy korlátozza. Az erőforrás-hozzáférés megtagadása.|

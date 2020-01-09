@@ -1,33 +1,29 @@
 ---
 title: Mi az Azure Service Health?
-description: Személyre szabott információk az Azure-alkalmazások az Azure szolgáltatás jelenlegi és jövőbeli problémák és a karbantartás által érintett módját.
-author: stephbaron
-ms.author: stbaron
-services: service-health
-ms.service: service-health
+description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: 058a171766680f09eaf4de14ddd25235020b1ba4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d9d9dcb4db483b524cb7be8e006ba12edcc8442
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463955"
 ---
 # <a name="what-is-azure-service-health"></a>Mi az Azure Service Health?
 
-Az Azure számos Önt folyamatosan értesíteni a felhőbeli erőforrások állapotára vonatkozó élményt biztosít. Ezen információk közé tartozik például a szolgáltatást érintő események, a tervezett karbantartás és az egyéb módosítások, amelyek befolyásolhatják a rendelkezésre állási jelenlegi és jövőbeli problémák.
+Az Azure számos lehetőséget kínál a felhőalapú erőforrások állapotának folyamatos tájékoztatására. Ezek az információk olyan aktuális és jövőbeli problémákat foglalnak magukban, mint például a szolgáltatás befolyásoló eseményei, a tervezett karbantartás és a rendelkezésre állást esetlegesen befolyásoló egyéb változások.
 
-Azure Service Health egy három külön kisebb szolgáltatások olyan kombinációját.
+A Azure Service Health három külön kisebb szolgáltatás kombinációja.
 
-[Az Azure állapota](azure-status-overview.md) tájékoztatja a szolgáltatáskimaradások az Azure-ban a  **[Azure állapotlapján](https://status.azure.com)** . Az oldal összes Azure-szolgáltatások állapotának globális nézet készítése az összes Azure-régióban. Az állapotlapon útmutatással incidensekhez széleskörű hatással van, de erősen ajánlott, hogy a jelenlegi Azure-felhasználók azonnali tájékozódás az Azure az incidensek és a karbantartás az Azure service Health irányítópultján használhatja.
+Az Azure [status](azure-status-overview.md) szolgáltatás az Azure-ban az Azure Status (állapot) **[lapján](https://status.azure.com)** értesíti a szolgáltatások leállásáról. A lap az összes Azure-régióban az összes Azure-szolgáltatás állapotának globális nézetét jeleníti meg. Az állapot lap jól használható az incidensek széles körű hatásával kapcsolatban, de határozottan azt javasoljuk, hogy az Azure-beli felhasználók az Azure szolgáltatás állapotát használják az Azure-incidensek és-karbantartás tekintetében.
 
-[Az Azure service health](service-health-overview.md) személyre szabott Azure-szolgáltatások és régiók használ állapotát jeleníti meg. Ez a legjobb hely a szolgáltatások működését befolyásoló kommunikáció követéséhez szolgáltatáskimaradások, tervezett karbantartási tevékenységek és az egyéb, állapottal kapcsolatos tanácsadási információkhoz, mivel a hitelesített Azure Service Health szolgáltatás számon tartja az Ön által aktuálisan használt szolgáltatásokat és erőforrásokat. A Service Health használatának legjobb módja az, ha Service Health-riasztásokat állít be, amelyek a választott kommunikációs csatornákon értesítik Önt az Ön által használt Azure-szolgáltatások és -régiók működését befolyásoló hibákról, tervezett karbantartásokról és egyéb változásokról.
+Az [Azure Service Health](service-health-overview.md) személyre szabott áttekintést nyújt az Ön által használt Azure-szolgáltatások és-régiók állapotáról. Ez a legjobb hely a szolgáltatások működését befolyásoló kommunikáció követéséhez szolgáltatáskimaradások, tervezett karbantartási tevékenységek és az egyéb, állapottal kapcsolatos tanácsadási információkhoz, mivel a hitelesített Azure Service Health szolgáltatás számon tartja az Ön által aktuálisan használt szolgáltatásokat és erőforrásokat. A Service Health használatának legjobb módja az, ha Service Health-riasztásokat állít be, amelyek a választott kommunikációs csatornákon értesítik Önt az Ön által használt Azure-szolgáltatások és -régiók működését befolyásoló hibákról, tervezett karbantartásokról és egyéb változásokról.
 
-[Az Azure resource health](resource-health-overview.md) az egyes felhőalapú erőforrások, például egy adott virtuálisgép-példány állapotával kapcsolatos információkat biztosít. Az Azure Monitor használatával a riasztásokat úgy is konfigurálhatja, hogy az Ön által használt felhőerőforrások rendelkezésre állásával kapcsolatos változásokról küldjön értesítést. Az Azure Resource Health szolgáltatás és az Azure Monitor értesítéseinek használatával percenként frissülő, teljes körű információkkal rendelkezhet az erőforrások rendelkezésre állására vonatkozóan, és gyorsan felmérheti, hogy egy adott hibát az Ön oldalán felmerülő probléma vagy valamelyik Azure-platform eseménye okoz.
+Az [Azure Resource Health](resource-health-overview.md) információt nyújt az egyes felhőalapú erőforrások, például egy adott virtuálisgép-példány állapotáról. Az Azure Monitor használatával a riasztásokat úgy is konfigurálhatja, hogy az Ön által használt felhőerőforrások rendelkezésre állásával kapcsolatos változásokról küldjön értesítést. Az Azure Resource Health szolgáltatás és az Azure Monitor értesítéseinek használatával percenként frissülő, teljes körű információkkal rendelkezhet az erőforrások rendelkezésre állására vonatkozóan, és gyorsan felmérheti, hogy egy adott hibát az Ön oldalán felmerülő probléma vagy valamelyik Azure-platform eseménye okoz.
 
 Ezek a szolgáltatások együttesen átfogó képet nyújtanak az Azure állapotáról, az Ön igényeinek legjobban megfelelő részletességgel.
 
-**Tekintse meg az Azure állapota lap, az Azure Service Health és az Azure Resource Health áttekintése**
+**Tekintse meg az Azure status oldal, a Azure Service Health és a Azure Resource Health áttekintését**
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]

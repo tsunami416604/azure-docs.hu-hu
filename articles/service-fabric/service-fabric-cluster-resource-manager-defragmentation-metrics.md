@@ -1,73 +1,64 @@
 ---
-title: A mérőszámok az Azure Service Fabric töredezettségmentesítését |} A Microsoft Docs
-description: Töredezettségmentesítési használatával, vagy a Service Fabric metrikákhoz stratégiánk csomagolás áttekintése
-services: service-fabric
-documentationcenter: .net
+title: A metrikák töredezettségmentesítését az Azure Service Fabric
+description: Ismerkedjen meg a töredezettségmentesítéssel vagy a csomagolással a Service Fabric mérőszámait tartalmazó stratégia segítségével. Ez a módszer nagyon nagy szolgáltatások esetén hasznos.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844397"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563360"
 ---
-# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Lemeztöredezettség-mentesítés metrikái és betöltése a Service Fabricben
-A Service Fabric fürt Resource Manager alapértelmezett stratégiát terhelési mérőszámok a fürt kezelésére szolgáló, hogy a terhelés. Annak biztosítása, hogy a csomópontok egyenletesen felhasználtuk elkerülhető a gyakran és ritkán használt kritikus pontok elkerülése érdekében, hogy a versengés és az elpazarolt erőforrások mennyisége is. Terjesztése a számítási feladatokat a fürt akkor is a legbiztonságosabb fennmaradó hibák, mivel biztosítja, hogy a hiba nem használ egy adott számítási feladatok nagy részét meg tekintetében. 
+# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>A metrikák és a betöltések töredezettségmentesítését Service Fabric
+A Service Fabric fürterőforrás-kezelő alapértelmezett stratégiája a terhelési metrikák kezeléséhez a fürtben a terhelés elosztását végzi. Annak biztosítása, hogy a csomópontok egyenletesen legyenek kihasználva, így elkerülhetők a gyors és a ritka elérésű foltok is, amelyek mind a versengő, mind a kárba A munkaterhelések fürtben való elosztása szintén a legbiztonságosabb a túlélő meghibásodások szempontjából, mivel biztosítja, hogy a hiba nem veszi figyelembe az adott munkaterhelés nagy hányadát. 
 
-A Service Fabric-fürt Resource Manager támogatja a más stratégiával terhelés, amely töredezettségmentesítési kezeléséhez. Lemeztöredezettség-mentesítés azt jelenti, hogy a fürt között oszthatja el a metrika felhasználása helyett, konszolidált. Összevonás az alapértelmezett terheléselosztás stratégia – minimalizálja a metrika terhelés átlagos szórását helyett csak egy invertálásának, a növeléséhez, megpróbálja a fürterőforrás-kezelő.
+A Service Fabric fürterőforrás-kezelője más stratégiát támogat a terhelés kezeléséhez, ami a töredezettségmentesítés. A töredezettségmentesítés azt jelenti, hogy ahelyett, hogy egy metrika kihasználtságát a fürtön keresztül kellene terjeszteni, a rendszer konszolidálja. Az összevonás csak az alapértelmezett kiegyensúlyozási stratégia inverziója – a metrikus terhelések átlagos szórásának minimalizálása helyett a fürterőforrás-kezelő megkísérli a növelést.
 
-## <a name="when-to-use-defragmentation"></a>Mikor érdemes használni a töredezettségmentesítése
-A fürt a terhelés elosztása néhány, minden egyes csomóponton erőforrást használ fel. Bizonyos munkaterhelések kivételesen nagy és felhasználását a legtöbb vagy az összes csomópont szolgáltatások létrehozása. Ebben az esetben is lehet, hogy ha első hoz létre, amely nagy mennyiségű számítási feladatok nincs elég hely az üzemeltetésükre bármely csomópontján. Nagy méretű számítási feladatok nem Service Fabric; hiba Ezekben az esetekben a fürterőforrás-kezelő azt határozza meg, hogy a fürt, hogy helyet biztosítson a nagy számítási átszervezése kell. Azonban addig adott számítási feladathoz tartozik várnia kell ütemezni a fürtben.
+## <a name="when-to-use-defragmentation"></a>Mikor kell használni a töredezettségmentesítést
+A fürt terhelésének elosztása az egyes csomópontokon lévő erőforrásokat használja fel. Bizonyos munkaterhelések olyan szolgáltatásokat hoznak létre, amelyek kivételesen nagy méretűek, és a legtöbb vagy az összes csomópontot használják. Ezekben az esetekben előfordulhat, hogy ha nagy méretű munkaterhelések jönnek létre, és nincs elég hely a csomópontokon a futtatásához. A nagyméretű munkaterhelések nem jelentenek problémát a Service Fabricban; Ezekben az esetekben a fürterőforrás-kezelő megállapítja, hogy át kell szerveznie a fürtöt, hogy helyet szabadítson fel ehhez a nagy számítási feladathoz. Addig azonban, amíg a munkaterhelésnek várnia kell a fürtben való ütemezésre.
 
-Ha sok szolgáltatás és Navigálás állapotra, majd azt sikerült időbe telik a nagy terheléshez, el kell helyezni a fürt. Ez akkor nagyobb valószínűséggel, ha a fürt más számítási feladatok is nagy, és így hosszabb időt vesz igénybe átrendezéséhez. A Service Fabric csapata mért létrehozási alkalommal szimulációt is ebben a forgatókönyvben. Úgy találtuk, hogy nagyméretű szolgáltatások létrehozásáról sokkal tovább tartott, amint az 50 %-a 30 % felett van fürtkihasználtság. Ebben a forgatókönyvben kezelése érdekében a lemeztöredezettség-mentesítés terheléselosztási stratégiánk bevezettünk. Úgy találtuk, hogy nagy számítási feladatokhoz, különösen azokról, ahol létrehozáskor volt fontos töredezettségmentesítési valóban segítségével új számítási feladatok beolvasása ütemezve a fürtben.
+Ha sok szolgáltatás és állapot mozog, akkor hosszú időt is igénybe vehet, amíg a nagy számítási feladatok a fürtbe kerülnek. Ez nagyobb valószínűséggel, ha a fürtben lévő más munkaterhelések is nagy méretűek, ezért az átrendezés hosszabb időt vesz igénybe. A Service Fabric csapat a forgatókönyv szimulálása során mérte a létrehozási időpontokat. Azt találtuk, hogy a nagyméretű szolgáltatások létrehozása sokkal több időt vett igénybe, amint a fürt kihasználtsága 30% és 50% között van. Ennek a forgatókönyvnek a kezeléséhez a töredezettségmentesítést terheléselosztási stratégiaként vezették be. Azt találtuk, hogy a nagy számítási feladatokhoz, különösen azokhoz, ahol a létrehozási idő fontos volt, a töredezettségmentesítés nagyon segítette a fürtben ütemezett új számítási feladatok beszerzését.
 
-Töredezettségmentesítési metrikák a fürterőforrás-kezelő proaktív módon próbálja a terhelést a szolgáltatások sűrítse kevesebb csomópontot be, hogy konfigurálhatja. Ezzel biztosíthatja, hogy van-e szinte mindig nagyméretű szolgáltatásokhoz anélkül, hogy a fürt átrendezése hely. Nem rendelkezik a fürt átszervezése lehetővé teszi a nagy méretű számítási feladatok gyors létrehozása.
+A Lemeztöredezettség-mentesítő metrikák konfigurálásával beállíthatja, hogy a fürterőforrás-kezelő proaktívan próbálja megismételni a szolgáltatások terhelését kevesebb csomópontra. Így biztosítható, hogy a fürt átrendezése nélkül szinte mindig legyen nagy a szolgáltatás. A fürt átrendezésének mellőzése lehetővé teszi a nagy méretű munkaterhelések gyors létrehozását.
 
-A legtöbb ember töredezettségmentesítési nem szükséges. Szolgáltatások általában kell kicsi, így nem nehéz megtalálni a hely számára őket a fürt. Ha átszervezési lehetséges, kerül, újra, mert a legtöbb szolgáltatások kicsik, és gyorsan és párhuzamosan is áthelyezhetők. Azonban ha nagy szolgáltatásokat, és szükség van rájuk a létrehozott majd gyorsan a lemeztöredezettség-mentesítés stratégia Önnek szól. Szó lesz a hátrányairól töredezettségmentesítési használata mellett. 
+A legtöbb embernek nincs szüksége töredezettségmentesítésre. A szolgáltatások általában kicsik, ezért nem nehéz megtalálni a helyet a fürtben. Ha az átszervezés lehetséges, gyorsan, újra bekerül, mivel a legtöbb szolgáltatás kicsi, és gyorsan és párhuzamosan helyezhető el. Ha azonban nagyméretű szolgáltatásokkal rendelkezik, és gyorsan kell őket létrehozni, akkor a töredezettségmentesítés stratégia az Ön számára. A Lemeztöredezettség-mentesítő használatának kompromisszumait a következő témakörben ismertetjük. 
 
-## <a name="defragmentation-tradeoffs"></a>Lemeztöredezettség-mentesítés kompromisszumot kínál a
-Lemeztöredezettség-mentesítés növelheti impactfulness hibák, mivel további szolgáltatások, amelyek nem csomópontokon futnak. Töredezettségmentesítési is növelheti a költségeket, mivel a fürtben lévő erőforrásokat kell tartani a tartalék, a nagy méretű számítási feladatok létrehozására vár.
+## <a name="defragmentation-tradeoffs"></a>Töredezettségmentesítési kompromisszumok
+A Lemeztöredezettség-mentesítő növelheti a hibák impactfulness, mivel további szolgáltatások futnak a sikertelen csomópontokon. A töredezettségmentesítés is növelheti a költségeket, mivel a fürtben lévő erőforrásokat tartalékban kell tárolni, és a nagy számítási feladatok létrehozására kell várni.
 
-Az alábbi ábrán két fürt vizuális ábrázolását, amely töredezettségmentesíteni van, és nem biztosít. 
+Az alábbi ábrán két fürt vizuális ábrázolása látható, amelyek közül az egyik a töredezettségmentesítése, a másik pedig nem. 
 
 <center>
 
-![Összehasonlítása az elosztott terhelésű, és a fürt töredezettségmentesítése][Image1]
+![összehasonlítja a kiegyensúlyozott és a detöredezett fürtöket][Image1]
 </center>
 
-Az elosztott terhelésű esetben fontolja meg a szükséges elhelyezni az egyik legnagyobb service objektum típusú áthelyezések száma. A töredezettségmentesített fürtben a nagy számítási sikerült elhelyezni négy vagy öt csomópont nem kell megvárnia áthelyezése bármely más szolgáltatásokhoz.
+A kiegyensúlyozott esetben vegye figyelembe, hogy hány mozgásra lenne szükség a legnagyobb szolgáltatási objektumok egyikének elhelyezéséhez. A detöredezett fürtben a nagy munkaterhelés a négy vagy öt csomópontra helyezhető anélkül, hogy várnia kellene bármely más szolgáltatás áthelyezésére.
 
-## <a name="defragmentation-pros-and-cons"></a>Lemeztöredezettség-mentesítés és hátrányai
-Ezért Mik ezek más fogalmi kompromisszumot kínál a? A következő gyors tábláját gondolja át az alábbiakkal:
+## <a name="defragmentation-pros-and-cons"></a>Töredezettségmentesítés előnyei és hátrányai
+Mi is az egyéb fogalmi kompromisszumok? Íme egy gyors táblázat, amely a következőkre gondol:
 
-| Lemeztöredezettség-mentesítés szakemberek számára | Lemeztöredezettség-mentesítés hátrányai |
+| Lemeztöredezettség-mentesítő profik | Töredezettségmentesítés hátrányai |
 | --- | --- |
-| Lehetővé teszi, hogy a nagyméretű szolgáltatások gyorsabb létrehozása |Koncentrátumok kevesebb csomópontot, a versengés növelése az alakzatot betöltése |
-| Lehetővé teszi, hogy alacsonyabb adatáthelyezés létrehozása során |Hibák is hatással van a további szolgáltatások és a további adatforgalom miatt |
-| Lehetővé teszi a követelmények részletes leírását és a terület-visszaigénylést |Összetettebb teljes erőforrás-kezelés konfigurálása |
+| Lehetővé teszi a nagyméretű szolgáltatások gyorsabb létrehozását |A terhelést kevesebb csomópontra koncentrálja, ezzel növelve a tartalmat |
+| Csökkenti az adatáthelyezést a létrehozás során |A hibák nagyobb mértékben befolyásolhatják a szolgáltatásokat, és nagyobb adatforgalomhoz vezethetnek |
+| Lehetővé teszi a követelmények részletes leírását és a hely visszanyerését |Összetettebb általános erőforrás-kezelési konfiguráció |
 
-Ugyanazon fürt töredezettségmentesített és normál metrikák kombinálhatja. A fürterőforrás-kezelő megpróbálja a lehető legnagyobb mértékben közben terjedhetnek ki a többi töredezettségmentesítési metrikák összesítése. Az eredmények töredezettségmentesítése és terheléselosztási stratégiák attól függ, hogy számos tényező befolyásolja, többek között:
-  - a metrikák töredezettségmentesítési metrikák száma és terheléselosztási száma
-  - Minden olyan szolgáltatást használ-e mindkét típusú metrikák 
-  - a metrika súlyok
-  - a mérőszám aktuális tölt be
+A detöredezett és a normál metrikákat is összekeverheti ugyanabban a fürtben. A fürterőforrás-kezelő a lehető legnagyobb mértékben megpróbálja összevonni a Lemeztöredezettség-mentesítési metrikákat, miközben kiterjeszti a többiet. A töredezettségmentesítés és az elosztási stratégiák keverésének eredményei több tényezőtől függnek, többek között:
+  - a kiegyenlítő metrikák száma és a Lemeztöredezettség-mentesítő metrikák száma
+  - Azt határozza meg, hogy bármely szolgáltatás mindkét típusú metrikát használja-e 
+  - a metrikák súlyozása
+  - aktuális metrika betöltése
   
-Kísérletezési határozza meg a pontos szükséges konfiguráció szükséges. Javasoljuk, hogy a számítási feladatok alapos mérése éles környezetben töredezettségmentesítési metrikák engedélyezése előtt. Ez akkor különösen igaz olyankor, amikor keverése töredezettségmentesítése és az elosztott terhelésű metrikák belül ugyanazt a szolgáltatást. 
+A pontos konfiguráció meghatározásához kísérletezésre van szükség. Javasoljuk a számítási feladatok alapos mérését, mielőtt engedélyezi a töredezettségmentesítés-metrikákat az éles környezetben. Ez különösen akkor igaz, ha a töredezettségmentesítést és a kiegyensúlyozott mérőszámokat ugyanazon a szolgáltatáson belül keverik. 
 
-## <a name="configuring-defragmentation-metrics"></a>Lemeztöredezettség-mentesítés metrikák konfigurálása
-Töredezettségmentesítési mérőszámok konfigurálását a fürt egy globális döntés, és egyéni metrikákat is kijelölhető töredezettségmentesítéshez. Az alábbi konfigurációs kódrészletek bemutatják, hogyan konfigurálhatja a lemeztöredezettség-mentesítés metrikáit. Ebben az esetben "Metric1" van konfigurálva, töredezettségmentesítési metrikát, míg a "Metric2" továbbra is egyenletesen eloszlik a szokásos módon. 
+## <a name="configuring-defragmentation-metrics"></a>A Lemeztöredezettség-mentesítő metrikáinak konfigurálása
+A Lemeztöredezettség-mentesítő metrikák konfigurálása globális döntés a fürtben, és egyéni metrikák is kiválaszthatók a töredezettségmentesítéshez. A következő konfigurációs kódrészletek bemutatják, hogyan konfigurálhatja a töredezettségmentesítés mérőszámait. Ebben az esetben a "Metric1" a Lemeztöredezettség-mentesítési metrikaként van konfigurálva, míg a "Metric2" általában továbbra is egyensúlyban marad. 
 
-ClusterManifest.xml:
+ClusterManifest. XML:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -76,7 +67,7 @@ ClusterManifest.xml:
 </Section>
 ```
 
-az önálló verziója telepítéseinek ClusterConfig.json vagy Template.json az Azure-ban futó fürtök:
+a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
 
 ```json
 "fabricSettings": [
@@ -97,8 +88,8 @@ az önálló verziója telepítéseinek ClusterConfig.json vagy Template.json az
 ```
 
 
-## <a name="next-steps"></a>További lépések
-- A fürterőforrás-kezelő rendelkezik a fürt leíró man lehetőségei. A velük kapcsolatos további információért tekintse meg a cikk a [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
-- Metrikák, hogyan kezeli a Service Fabric-fürt erőforrás-kezelő a használat és a kapacitás a fürtben. Metrikák és a konfigurálásukról kapcsolatos további információkért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)
+## <a name="next-steps"></a>Következő lépések
+- A fürterőforrás-kezelő rendelkezik a fürt leírására szolgáló Man-beállításokkal. Ha többet szeretne megtudni róluk, tekintse meg ezt a cikket a [Service Fabric-fürt leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) cikkben.
+- A metrikák azt jelentik, hogyan kezeli a Service Fabric fürterőforrás-kezelő a fürtben a felhasználást és a kapacitást. A metrikákkal és azok konfigurálásával kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

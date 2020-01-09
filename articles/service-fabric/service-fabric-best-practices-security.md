@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric – ajánlott biztonsági eljárások | Microsoft Docs
-description: Az Azure Service Fabric biztonsággal kapcsolatos ajánlott eljárások.
-services: service-fabric
-documentationcenter: .net
+title: Az Azure Service Fabric ajánlott biztonsági eljárásai
+description: Ajánlott eljárások és kialakítási szempontok az Azure Service Fabric-fürtök és-alkalmazások biztonságának megőrzéséhez.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807442"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551760"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 

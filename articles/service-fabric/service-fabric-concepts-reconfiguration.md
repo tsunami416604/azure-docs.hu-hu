@@ -1,64 +1,55 @@
 ---
-title: Az Azure Service Fabric újrakonfigurálási |} A Microsoft Docs
-description: A partíciók a Service Fabric újrakonfigurálási ismertetése
-services: service-fabric
-documentationcenter: .net
+title: Újrakonfigurálás az Azure Service Fabric
+description: Ismerje meg az állapot-nyilvántartó szolgáltatás replikáinak konfigurációit, valamint azt, hogy a módosítás során a rendszer hogyan dolgozza fel az újrakonfigurálási Service Fabric a konzisztencia és a rendelkezésre állás fenntartásához.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882197"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609995"
 ---
-# <a name="reconfiguration-in-azure-service-fabric"></a>Az Azure Service Fabric újrakonfigurálási
-A *konfigurációs* számít, ha a replikák és a egy partíció egy állapotalapú szolgáltatás szerepük.
+# <a name="reconfiguration-in-azure-service-fabric"></a>Újrakonfigurálás az Azure Service Fabric
+A *konfiguráció* egy állapot-nyilvántartó szolgáltatás partíciójának replikái és szerepköreiként van definiálva.
 
-A *újrakonfigurálás* egy konfigurációs áthelyezése egy másik konfigurációs folyamata. Ez módosítja a partíció egy állapotalapú szolgáltatás replikakészletének. A régi konfigurációt nevezzük a *korábbi konfigurációt (számítógép)* , és az új konfigurációt nevezzük a *aktuális konfigurációját (CC)* . Az Azure Service Fabric az újrakonfigurálás protokoll konzisztencia megőrzi, és fenntartja a rendelkezésre állási módosítania kellene a replikakészlethez során.
+Az *újrakonfigurálás* az egyik konfiguráció másik konfigurációba való áthelyezésének folyamata. Egy állapot-nyilvántartó szolgáltatás partíciójának replikáját módosítja. A régi konfiguráció neve *korábbi konfiguráció (PC)* , az új konfiguráció pedig az *aktuális konfiguráció (CC)* . Az Azure-ban az újrakonfigurálási protokoll Service Fabric megőrzi az egységességet, és fenntartja a rendelkezésre állást a replikakészlet változásai során.
 
-Feladatátvevőfürt-kezelő a rendszer különböző eseményekre reagáló reconfigurations kezdeményezi. Például ha az elsődleges nem tud majd egy újrakonfigurálás kezdeményezték egy aktív másodlagos elsődleges előléptetése. Egy másik példa esetén alkalmazásfrissítések válaszul annak érdekében, hogy frissítse a csomópontot az elsődleges áthelyezése másik csomópontra szükség lehet.
+Feladatátvételi felügyelő újrakonfigurálást kezdeményez a rendszeren lévő különböző eseményekre adott válaszként. Ha például az elsődleges művelet meghiúsul, akkor a rendszer újrakonfigurálást kezdeményez egy aktív másodlagos elsődlegesre való előléptetéséhez. Egy másik példa az alkalmazások frissítéseire is reagál, amikor szükség lehet arra, hogy az elsődlegeset egy másik csomópontra helyezze át a csomópont frissítése érdekében.
 
-## <a name="reconfiguration-types"></a>Az újrakonfigurálás típusok
-Reconfigurations két kategóriába sorolhatók:
+## <a name="reconfiguration-types"></a>Újrakonfigurálási típusok
+Az újrakonfigurálások két típusba sorolhatók:
 
-- Ha megváltoztatja az elsődleges reconfigurations:
-    - **Feladatátvétel**: Folyamatban lévő feladatátvételi teszteket reconfigurations válaszul a hiba a futó elsődleges.
-    - **SwapPrimary**: Cseréje, ahol a Service Fabric kell áthelyezni egy futó elsődleges egyik csomópontról a másikra, a terheléselosztás általában válasz reconfigurations vagy a verziófrissítésre.
+- Újrakonfigurálások, ahol az elsődleges változó:
+    - **Feladatátvétel**: a feladatátvételek a futó elsődleges hiba miatti újrakonfigurálások.
+    - **SwapPrimary**: a swap-konfigurációk olyan újrakonfigurálások, ahol Service Fabric a futó elsődlegest egy csomópontról egy másikra kell áthelyeznie, általában a terheléselosztásra vagy a frissítésre válaszul.
 
-- Reconfigurations, ahol az elsődleges nem módosul.
+- Újrakonfigurálások, amelyek esetében az elsődleges nem változik.
 
-## <a name="reconfiguration-phases"></a>Konfigurálás fázisai
-Egy újrakonfigurálás onnantól több fázisban történik:
+## <a name="reconfiguration-phases"></a>Újrakonfigurálási fázisok
+Az újrakonfigurálás több fázisban is folytatódik:
 
-- **Phase0**: Ebben a fázisban történik, ha az aktuális elsődleges továbbítja az új elsődleges és a tér át, aktív másodlagos állapotában lapozófájl-kapacitás elsődleges reconfigurations.
+- **Phase0**: Ez a fázis olyan swap-elsődleges újrakonfigurációknál fordul elő, ahol az aktuális elsődleges az új elsődleges és az aktív másodlagos állapotra vált.
 
-- **Phase1**: Ebben a fázisban történik, ahol az elsődleges módosul reconfigurations során. Ebben a fázisban a Service Fabric azonosítja a megfelelő elsődleges az aktuális replika között. Ebben a fázisban nem szükséges lapozófájl-kapacitás elsődleges reconfigurations során, mert az új elsődleges már ki lett választva. 
+- **Phase1**: Ez a fázis olyan újrakonfigurálások során fordul elő, ahol az elsődleges változó. Ebben a fázisban Service Fabric azonosítja a megfelelő elsődlegest az aktuális replikák között. Ez a fázis nem szükséges a swap-primer újrakonfigurálások során, mert az új elsődleges már ki van választva. 
 
-- **Phase2**: Ebben a fázisban a Service Fabric biztosítja, hogy az összes adat érhető el a replikákat a jelenlegi konfiguráció a legtöbb.
+- **Phase2**: ebben a fázisban Service Fabric biztosítja, hogy az összes érték az aktuális konfiguráció replikáinak többségében elérhető legyen.
 
-Nincsenek számos más fázison megy keresztül, amelyek csak belső használatra.
+Több más fázis is van, amelyek csak belső használatra szolgálnak.
 
-## <a name="stuck-reconfigurations"></a>Elakadt reconfigurations
-Beszerezheti a reconfigurations *elakadt* különböző okok miatt. A leggyakoribb okai a következők:
+## <a name="stuck-reconfigurations"></a>Beragadt újrakonfigurálások
+Az újrakonfigurálás számos okból *elakadhat* . A leggyakoribb okok a következők:
 
-- **Replikák lefelé**: Néhány újrakonfigurálás fázisok, akár a konfigurációban a replikák többsége szükséges.
-- **Hálózati vagy a kommunikációs problémák**: Reconfigurations csomópontjai közötti hálózati kapcsolat szükséges.
-- **API-hibák**: Az újrakonfigurálás protokoll szükséges, hogy a szolgáltatásból Befejezés bizonyos API-k. Például egy reliable service-ben a megszakítás token nem érvényesítenie okoz SwapPrimary reconfigurations elakad.
+- **Replikák**: egyes újrakonfigurálási fázisok esetében a konfigurációban szereplő replikák többségét meg kell adni.
+- **Hálózati vagy kommunikációs problémák**: az újrakonfigurálások hálózati kapcsolatot igényelnek a különböző csomópontok között.
+- **API-hibák**: az újrakonfigurálási protokoll megköveteli, hogy a szolgáltatás implementációi bizonyos API-kat fejezzenek be. Ha például egy megbízható szolgáltatásban nem tartja tiszteletben a lemondási tokent, a SwapPrimary újrakonfigurálást eredményez a beragadás érdekében.
 
-Használja a rendszer összetevőinek rendszerállapot-jelentések, például System.FM, System.RA és System.RAP, diagnosztizálásához, ahol egy újrakonfigurálás elakadt. A [rendszer állapota jelentésoldal](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) ismerteti ezeket a rendszerállapot-jelentések.
+A rendszerösszetevőktől, például a System.FM, a System. RA és a System. RAP szolgáltatásból származó állapotadatok használatával diagnosztizálhatja, hogy az újrakonfigurálás hol ragadt meg. A [rendszerállapot-jelentés lap](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) ismerteti ezeket az állapot-jelentéseket.
 
-## <a name="next-steps"></a>További lépések
-A Service Fabric fogalmakról további információkért tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>Következő lépések
+Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
 - [Rendszerállapot-jelentések](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)

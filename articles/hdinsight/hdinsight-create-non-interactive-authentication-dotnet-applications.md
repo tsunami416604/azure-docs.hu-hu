@@ -1,22 +1,23 @@
 ---
 title: Nem interaktív hitelesítéssel rendelkező .NET-alkalmazás – Azure HDInsight
 description: Ismerje meg, hogyan hozhat létre nem interaktív hitelesítési Microsoft .NET alkalmazásokat az Azure HDInsight.
-ms.reviewer: jasonh
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0781d9fd58e079517b3f3dc8fba06fb448a8fa19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 12/23/2019
+ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494917"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500126"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Nem interaktív hitelesítéssel rendelkező .NET HDInsight-alkalmazás létrehozása
-A Microsoft .NET Azure HDInsight alkalmazást futtathatja az alkalmazás saját identitása (nem interaktív) vagy az alkalmazás bejelentkezett felhasználójának identitása alatt (interaktív). Ez a cikk bemutatja, hogyan hozhat létre egy nem interaktív hitelesítési .NET-alkalmazást az Azure-hoz való kapcsolódáshoz és a HDInsight kezeléséhez. Egy interaktív alkalmazás mintája: [Kapcsolódás az Azure HDInsight-hoz](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
+
+Futtassa a Microsoft .NET Azure HDInsight alkalmazást az alkalmazás saját identitása (nem interaktív) vagy az alkalmazás bejelentkezett felhasználójának identitása alatt (interaktív). Ez a cikk bemutatja, hogyan hozhat létre egy nem interaktív hitelesítési .NET-alkalmazást az Azure-hoz való kapcsolódáshoz és a HDInsight kezeléséhez. Egy interaktív alkalmazás mintája: [Kapcsolódás az Azure HDInsight-hoz](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight).
 
 A nem interaktív .NET-alkalmazásból a következőkre lesz szüksége:
 
@@ -25,20 +26,21 @@ A nem interaktív .NET-alkalmazásból a következőkre lesz szüksége:
 * Az Azure AD-alkalmazás titkos kulcsa. Lásd: [alkalmazás hitelesítési kulcsának beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* An méretű HDInsight-fürt. Tekintse meg az [első lépéseket ismertető oktatóanyagot](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+
+An méretű HDInsight-fürt. Tekintse meg az [első lépéseket ismertető oktatóanyagot](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Szerepkör társítása az Azure AD-alkalmazáshoz
-Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.md)az Azure ad-alkalmazáshoz, hogy engedélyeket adjon a műveletekhez. Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein lesznek örökölve. (Ha például egy erőforráscsoport olvasó szerepköréhez ad hozzá egy alkalmazást, az azt jelenti, hogy az alkalmazás elolvashatja az erőforráscsoportot és a benne lévő erőforrásokat.) Ebben a cikkben a hatókört az erőforráscsoport szintjén állíthatja be. További információkért lásd: [szerepkör-hozzárendelések használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).
+
+Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.md)az Azure ad-alkalmazáshoz, hogy engedélyeket adjon a műveletekhez. Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein lesznek örökölve. Ha például hozzáad egy alkalmazást egy erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy az alkalmazás elolvashatja az erőforráscsoportot és a benne lévő erőforrásokat. Ebben a cikkben a hatókört az erőforráscsoport szintjén állíthatja be. További információkért lásd: [szerepkör-hozzárendelések használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).
 
 **A tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazáshoz**
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben válassza az **Erőforráscsoportok** elemet.
-3. Válassza ki azt az erőforráscsoportot, amelyen a HDInsight-fürt található, amelyen a jelen cikk későbbi részében futtatni fogja a kaptár-lekérdezést. Ha nagy számú erőforráscsoportot használ, a szűrőt használva megkeresheti a kívánt csoportot.
-4. Az erőforráscsoport menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
-5. Válassza ki a **szerepkör-hozzárendelések** lapot az aktuális szerepkör-hozzárendelések megtekintéséhez.
-6. A lap tetején válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
-7. Kövesse az utasításokat, és adja hozzá a tulajdonosi szerepkört az Azure AD-alkalmazáshoz. Miután sikeresen hozzáadta a szerepkört, az alkalmazás megjelenik a tulajdonos szerepkör alatt. 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Navigáljon ahhoz a HDInsight-fürthöz tartozó erőforráscsoporthoz, amelyen a kaptár-lekérdezést a cikk későbbi részében futtatni fogja. Ha nagy számú erőforráscsoportot használ, a szűrőt használva megkeresheti a kívánt csoportot.
+1. Az erőforráscsoport menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Válassza ki a **szerepkör-hozzárendelések** lapot az aktuális szerepkör-hozzárendelések megtekintéséhez.
+1. A lap tetején válassza a **+ Hozzáadás**lehetőséget.
+1. Kövesse az utasításokat, és adja hozzá a tulajdonosi szerepkört az Azure AD-alkalmazáshoz. Miután sikeresen hozzáadta a szerepkört, az alkalmazás megjelenik a tulajdonos szerepkör alatt.
 
 ## <a name="develop-an-hdinsight-client-application"></a>HDInsight-ügyfélalkalmazás fejlesztése
 
@@ -117,8 +119,8 @@ Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.m
     }
     ```
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
 * [Hozzon létre egy Azure Active Directory alkalmazást és szolgáltatásnevet a Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 * Megtudhatja, hogyan [hitelesítheti az egyszerű szolgáltatásokat Azure Resource Managerokkal](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 * Ismerje meg az [Azure szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)című témakört.

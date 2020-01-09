@@ -1,6 +1,6 @@
 ---
-title: Részletes technikai útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
-description: Ez a cikk részletesen ismerteti az erőforrások platform által támogatott áttelepítését a klasszikusról Azure Resource Manager
+title: Klasszikus – Azure Resource Manager áttelepítési technikai Deep Dive
+description: Technikai részletes információk a platform által támogatott áttelepítéshez a klasszikus üzemi modellből a Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: bf077758b24da4d4a80f1fed7eab2a0711d201ef
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e2774d8b45432ead621cef09af797effc86d73b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369116"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes technikai útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 

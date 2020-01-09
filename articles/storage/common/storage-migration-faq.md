@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351280"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Gyakori kérdések az Azure Storage áttelepítésével kapcsolatban
 
@@ -259,7 +259,7 @@ Más személyek számára a tárolási erőforrásokhoz való hozzáférés bizt
 
 -   Egy megosztott hozzáférés-aláírási (SAS-) token használatával biztosíthatja az erőforrásokhoz való hozzáférést. 
 
--   Adjon meg egy felhasználót a Storage-fiók elsődleges vagy másodlagos kulcsával. További információkért lásd: [a Storage-fiók kezelése](storage-account-manage.md#access-keys).
+-   Adjon meg egy felhasználót a Storage-fiók elsődleges vagy másodlagos kulcsával. További információ: a [Storage-fiók elérési kulcsainak kezelése](storage-account-keys-manage.md).
 
 -   Módosítsa a hozzáférési házirendet a névtelen hozzáférés engedélyezéséhez. További információ: [névtelen felhasználók engedélyeinek engedélyezése tárolók és Blobok](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)számára.
 
@@ -275,7 +275,7 @@ Más személyek számára a tárolási erőforrásokhoz való hozzáférés bizt
 
 -   Ha zóna-redundáns tárolást vagy földrajzilag redundáns tárolást használ, nem férhet hozzá az adatokhoz a másodlagos régióból, kivéve, ha feladatátvételt kezdeményez az adott régióban. A feladatátvételi folyamattal kapcsolatos további információkért lásd: vész- [helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
 
--   Ha olvasási hozzáférésű geo-redundáns tárolót használ, bármikor elérheti a másodlagos régió adatait. Használja az alábbi módszerek egyikét:  
+-   Ha olvasási hozzáférésű geo-redundáns tárolót használ, bármikor elérheti a másodlagos régió adatait. Kövesse az alábbi eljárások egyikét:  
       
     - **AzCopy**: Hozzáfűzés **– másodlagos** a Storage-fiók neve az URL-címben a másodlagos végpont eléréséhez. Példa:  
      

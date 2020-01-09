@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930342"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644756"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -25,11 +25,14 @@ Az adatforgalom leképezése jelenleg öt különböző illesztési típust tám
 
 ### <a name="inner-join"></a>Belső illesztés
 
-A belső illesztés csak a táblákkal egyező értékeket tartalmazó sorok kimenetét jeleníti meg.
+A belső illesztés csak a két táblában egyező értékeket tartalmazó sorokat jeleníti meg.
 
 ### <a name="left-outer"></a>Bal oldali külső
 
 A bal oldali külső illesztés visszaadja az összes sort a bal oldali adatfolyamból, és a megfelelő streamből egyeztetett rekordokat. Ha a bal oldali adatfolyamból egy sor nem egyezik, a jobb oldali adatfolyamból származó kimeneti oszlopok NULL értékre vannak állítva. A kimenet a belső illesztés és a bal oldali adatfolyam nem egyező sorai által visszaadott sorokból áll.
+
+> [!NOTE]
+> Az adatfolyamatok által használt Spark-motor esetenként Descartes-féle termékeket is használhat az illesztési feltételekben. Ha ez az eset áll fenn, átválthat egy egyéni keresztre, és manuálisan is megadhatja az illesztési feltételt. Ez lassabb teljesítményt eredményezhet az adatforgalomban, mivel a végrehajtó motornak ki kell számítania az összes sort a kapcsolat mindkét oldaláról, majd szűrnie kell a sorokat.
 
 ### <a name="right-outer"></a>Jobb oldali külső
 
@@ -39,9 +42,16 @@ A jobb oldali külső illesztés a jobb oldali adatfolyamból származó összes
 
 A teljes külső illesztés kimenete a két oldalról származó összes oszlopot és sort a nem egyező oszlopok esetében NULL értékekkel adja vissza.
 
-### <a name="cross-join"></a>Keresztillesztés
+### <a name="custom-cross-join"></a>Egyéni keresztbe illesztés
 
-A Cross JOIN egy feltétel alapján a két stream termékeit adja vissza. Ha olyan feltételt használ, amely nem egyenlő, adja meg az egyéni kifejezést a kereszt illesztési feltételként. A kimeneti adatfolyam az illesztési feltételnek megfelelő összes sor lesz. Ha olyan Descartes-szorzatot szeretne létrehozni, amely minden sor kombinációját kiírja, adja meg a `true()` csatlakoztatási feltételként.
+A Cross JOIN egy feltétel alapján a két stream termékeit adja vissza. Ha olyan feltételt használ, amely nem egyenlő, adja meg az egyéni kifejezést a kereszt illesztési feltételként. A kimeneti adatfolyam az illesztési feltételnek megfelelő összes sor lesz.
+
+Ezt a csatlakoztatási típust használhatja a nem illesztési és a ```OR``` feltételekhez.
+
+Ha explicit módon szeretne létrehozni egy teljes Descartes-szorzatot, használja a két független adatfolyamban található származtatott oszlop-átalakítást, mielőtt a JOIN (szintetikus) kulcsot létre szeretne hozni az egyeztetéshez. Hozzon létre például egy új oszlopot a származtatott oszlopban a ```SyntheticKey``` nevű adatfolyamban, és állítsa ```1```értékkel egyenlőre. Ezután használja a ```a.SyntheticKey == b.SyntheticKey```t egyéni illesztési kifejezésként.
+
+> [!NOTE]
+> Ügyeljen arra, hogy a bal és a jobb oldali kapcsolat mindegyik oldaláról legalább egy oszlopot tartalmazzon egy egyéni kereszt-illesztésben. Az egymáshoz tartozó oszlopok helyett a statikus értékekkel való összekapcsolások végrehajtása a teljes adatkészlet teljes vizsgálatát eredményezi, így az adatfolyamatok nem tudnak megfelelően elvégezni.
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>Példa a többhöz való csatlakozásra
+### <a name="custom-cross-join-example"></a>Példa az egyéni keresztbe való csatlakozásra
 
-Az alábbi példa egy `CartesianProduct` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át. Ez a transzformáció két streamet vesz igénybe, és a soraik Descartes szorzatát adja vissza. Az illesztési feltétel `true()`, mert egy teljes Descartes-szorzatot eredményez. A `joinType` `cross`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
+Az alábbi példa egy `JoiningColumns` nevű összekapcsolási átalakítás, amely a stream `LeftStream` és a jobb oldali stream `RightStream`t veszi át. Ez az átalakítás két adatfolyamot vesz igénybe, és összekapcsolja az összes olyan sort, ahol az oszlop `leftstreamcolumn` nagyobb, mint az oszlop `rightstreamcolumn`. A `joinType` `cross`. A szórás nincs engedélyezve `broadcast` értéke `'none'`.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -115,12 +125,12 @@ Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki
 Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
 ## <a name="next-steps"></a>Következő lépések

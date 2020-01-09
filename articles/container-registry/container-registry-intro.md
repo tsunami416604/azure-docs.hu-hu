@@ -3,19 +3,19 @@ title: Felügyelt tárolói nyilvántartások
 description: Bevezetés az Azure Container Registry szolgáltatásba, amely felhőalapú, felügyelt és magán Docker-beállításjegyzékeket biztosít.
 author: stevelas
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 12/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892974"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445733"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
-A Azure Container Registry egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely a nyílt forráskódú Docker beállításjegyzék 2,0-es számán alapul. Létrehozhatja és karbantarthatja az Azure Container-nyilvántartásokat a privát Docker-tárolók rendszerképeinek tárolásához és kezeléséhez.
+A Azure Container Registry egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely a nyílt forráskódú Docker beállításjegyzék 2,0-es számán alapul. Azure-beli tároló-beállításjegyzékek létrehozása és karbantartása a privát Docker-tárolók rendszerképeinek és a kapcsolódó összetevők tárolásához és kezeléséhez.
 
 Az Azure Container-jegyzékeket meglévő tároló-fejlesztési és üzembe helyezési folyamataival használhatja, vagy Azure Container Registry feladatok használatával készíthet tároló-lemezképeket az Azure-ban. Igény szerint építhető, vagy teljesen automatizálható az eseményindítók, például a forráskód-véglegesítés és az alaprendszerkép frissítései.
 
@@ -38,11 +38,18 @@ Az Azure olyan eszközöket biztosít, mint az Azure parancssori felület, a Azu
 
 * **Beállításjegyzékbeli SKU** – hozzon létre egy vagy több tároló-beállításjegyzéket az Azure-előfizetésében. A beállításjegyzékek három SKU-ban érhetők el: [alapszintű, standard és prémium](container-registry-skus.md), amelyek mindegyike támogatja a webhook-integrációt, a beállításjegyzék hitelesítését Azure Active Directory és a törlési funkciót. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. Haladó szintű replikációs és tárolórendszerkép-elosztási forgatókönyvekhez használja a Prémium szintű beállításjegyzékek [georeplikációs](container-registry-geo-replication.md) funkcióját. 
 
-  Egy tároló-beállításjegyzékhez való hozzáférést egy Azure-identitás, egy Azure Active Directory-alapú [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md)vagy egy megadott rendszergazdai fiók használatával [szabályozhatja](container-registry-authentication.md) . Jelentkezzen be a beállításjegyzékbe az Azure CLI vagy a standard `docker login` parancs használatával.
+* **Biztonság és hozzáférés** – jelentkezzen be egy beállításjegyzékbe az Azure CLI vagy a standard `docker login` parancs használatával. Azure Container Registry a tároló lemezképeit HTTPS-kapcsolaton keresztül továbbítja, és támogatja a TLS-t az ügyfélkapcsolatok biztonságossá tételéhez. 
+
+  > [!IMPORTANT]
+  > 2020. január 13-án Azure Container Registry a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
+
+  Egy tároló-beállításjegyzékhez való hozzáférést egy Azure-identitás, egy Azure Active Directory-alapú [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md)vagy egy megadott rendszergazdai fiók használatával [szabályozhatja](container-registry-authentication.md) . Szerepköralapú hozzáférés-vezérlés (RBAC) használatával felhasználók vagy rendszerek részletes engedélyeit rendelheti hozzá egy beállításjegyzékhez.
+
+  A prémium SKU biztonsági funkciói közé tartozik a Képcímke-aláírás [megbízhatósága](container-registry-content-trust.md) , valamint a [tűzfalak és virtuális hálózatok (előzetes verzió)](container-registry-vnet.md) a beállításjegyzékhez való hozzáférés korlátozása érdekében. Azure Security Center opcionálisan integrálható a Azure Container Registry a [rendszerképek vizsgálatára](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) , amikor egy lemezképet egy beállításjegyzékbe küldenek.
 
 * **Támogatott lemezképek és** összetevők – egy adattárba csoportosítva minden rendszerkép egy Docker-kompatibilis tároló írásvédett pillanatképe. Az Azure tároló-beállításjegyzékek Windows- és Linux-rendszerképeket is tartalmazhatnak. A rendszerképek neveit Ön határozza meg mindegyik tárolókörnyezetben. A rendszerképek szabványos [Docker-parancsokkal](https://docs.docker.com/engine/reference/commandline/) küldhetők le egy adattárba, vagy hívhatók elő onnan. A Docker-tároló rendszerképein kívül a Azure Container Registry a [kapcsolódó tartalom formátumait](container-registry-image-formats.md) , például [Helm-diagramokat](container-registry-helm-repos.md) és rendszerképeket is tartalmaz, amelyek az [Open Container Initiative (OCI) képformátum-specifikációra](https://github.com/opencontainers/image-spec/blob/master/spec.md)épülnek.
 
-* **Azure Container Registry feladatok** – a lemezképek Azure-ban való létrehozásának, tesztelésének, leküldésének és üzembe helyezésének egyszerűsítése [Azure Container Registry feladatok](container-registry-tasks-overview.md) (ACR-feladatok) használatával. Az ACR-feladatok segítségével például kiterjesztheti a fejlesztési belső hurkot a felhőbe `docker build` műveletek Azure-ba való kiszervezésével. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
+* **Automatizált rendszerkép-buildek** – [Azure Container Registry feladatok](container-registry-tasks-overview.md) (ACR-feladatok) használatával egyszerűsítheti a lemezképek létrehozását, tesztelését, leküldését és üzembe helyezését az Azure-ban. Az ACR-feladatok segítségével például kiterjesztheti a fejlesztési belső hurkot a felhőbe `docker build` műveletek Azure-ba való kiszervezésével. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
 
   A [többlépéses tevékenységek](container-registry-tasks-overview.md#multi-step-tasks) a Felhőbeli tároló-lemezképek létrehozásához, teszteléséhez és javításához szükséges lépéseken alapuló feladatok meghatározását és végrehajtását teszik lehetővé. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 811fc7a4fc5d8ffba894bad837e95d6b27ecc8c3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964319"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689415"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -35,12 +35,12 @@ Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás p
 
 > [!NOTE]
 >
-> - A Microsoft Identity platform végpontja nem támogatja az összes forgatókönyvet és funkciót. Annak megállapításához, hogy a Microsoft Identity platform-végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt. Az ismert ügyfélalkalmazások nem támogatottak a Microsoft-fiók (MSA) és az Azure AD-célközönséget használó alkalmazások esetében. Ezért az OBO közös engedélyezési mintája nem fog működni a személyes és munkahelyi vagy iskolai fiókokat használó ügyfelek számára. Ha többet szeretne megtudni a folyamat ezen lépésének kezeléséről, olvassa el a következő témakört: a [középső rétegbeli alkalmazás](#gaining-consent-for-the-middle-tier-application)beszerzésének megszerzése.
+> - A Microsoft Identity platform végpontja nem támogatja az összes forgatókönyvet és funkciót. Annak megállapításához, hogy a Microsoft Identity platform-végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](active-directory-v2-limitations.md)ismertetőt. 
 > - A 2018-as számú, implicit folyamatból származtatott `id_token` nem használható az OBO flow-hoz. Az egyoldalas alkalmazások (Gyógyfürdők) **hozzáférési** jogkivonatot továbbítanak egy közepes szintű bizalmas ügyfélnek az OBO-folyamatok elvégzéséhez. További információ arról, hogy mely ügyfelek végezhetnek OBO-hívásokat: [korlátozások](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
-Tegyük fel, hogy a felhasználó hitelesítése megtörtént egy olyan alkalmazáson, amely a [OAuth 2,0 engedélyező kód engedélyezési folyamatát](v2-oauth2-auth-code-flow.md)használja. Ezen a ponton az alkalmazás rendelkezik egy hozzáférési jogkivonattal *az API* -hoz (A token a) a felhasználó jogcímeivel és a középső rétegbeli webes API (a API) eléréséhez szükséges engedélyekkel. Most az API-nak hitelesített kérést kell tennie az alárendelt webes API-nak (B API).
+Tegyük fel, hogy a felhasználó hitelesítése megtörtént egy olyan alkalmazáson, amely a [OAuth 2,0 engedélyező kódot](v2-oauth2-auth-code-flow.md) vagy egy másik bejelentkezési folyamatot használ. Ezen a ponton az alkalmazás rendelkezik egy hozzáférési jogkivonattal *az API* -hoz (A token a) a felhasználó jogcímeivel és a középső rétegbeli webes API (a API) eléréséhez szükséges engedélyekkel. Most az API-nak hitelesített kérést kell tennie az alárendelt webes API-nak (B API).
 
 A követendő lépések az OBO-folyamatot alkotják, és az alábbi ábra segítségével magyarázható.
 
@@ -48,9 +48,9 @@ A követendő lépések az OBO-folyamatot alkotják, és az alábbi ábra segít
 
 1. Az ügyfélalkalmazás kérelmet küld az a API-nak az a token (az a API `aud` jogcímével).
 1. Az API A hitelesíti a Microsoft Identity platform jogkivonat-kiállítási végpontját, és tokent kér a B API eléréséhez.
-1. A Microsoft Identity platform jogkivonat-kiállítási végpontja ellenőrzi az a API hitelesítő adatait az A jogkivonattal, és kiadja a B API (token B) hozzáférési jogkivonatát.
-1. A B jogkivonat a kérelem engedélyezési fejlécében van beállítva a B API-hoz.
-1. A biztonságos erőforrás adatait a B API adja vissza.
+1. A Microsoft Identity platform token kiállítási végpontja ellenőrzi az API A hitelesítő adatait az A jogkivonattal együtt, és kiadja a B API (token B) hozzáférési jogkivonatát az A API-nak.
+1. A "B" tokent az API-nak a B API-ra irányuló kérelem engedélyezési fejlécében a következő értékre állítja be.
+1. A biztonságos erőforrás adatait a B API adja vissza az A API-hoz, és onnan az ügyfélnek.
 
 > [!NOTE]
 > Ebben az esetben a középső rétegbeli szolgáltatás nem rendelkezik felhasználói beavatkozással, hogy a felhasználó beleegyezik az alsóbb rétegbeli API eléréséhez. Ezért az alsóbb rétegbeli API-hoz való hozzáférés engedélyezésének lehetősége előzetesen megjelenik a jóváhagyás lépés részeként a hitelesítés során. Ha meg szeretné tudni, hogyan állíthatja be ezt az alkalmazásra, tekintse meg [a a középső rétegbeli alkalmazáshoz](#gaining-consent-for-the-middle-tier-application)való hozzájárulások beszerzése című témakört.
@@ -74,7 +74,7 @@ Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáf
 | `grant_type` | Szükséges | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek `urn:ietf:params:oauth:grant-type:jwt-bearer`nak kell lennie. |
 | `client_id` | Szükséges | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
 | `client_secret` | Szükséges | Az Azure Portal-Alkalmazásregisztrációk lapon az alkalmazáshoz generált ügyfél-titkos kulcs. |
-| `assertion` | Szükséges | A kérelemben használt jogkivonat értéke. |
+| `assertion` | Szükséges | A kérelemben használt jogkivonat értéke.  Ennek a tokennek rendelkeznie kell az ehhez az OBO-kérelemhez tartozó alkalmazás célközönségével (ezt az alkalmazást a `client-id` mező jelöli). |
 | `scope` | Szükséges | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md). |
 | `requested_token_use` | Szükséges | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket `on_behalf_of`értékre kell beállítani. |
 
@@ -161,7 +161,7 @@ Az alábbi példa egy, a https://graph.microsoft.com webes API hozzáférési jo
 ```
 
 > [!NOTE]
-> A fenti hozzáférési jogkivonat egy v 1.0-formázott jogkivonat. Ennek az az oka, hogy a token az elérni kívánt erőforrás alapján van megadva. A Microsoft Graph a 1.0-s verziójú jogkivonatokat kéri, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek nem kell megvizsgálniuk azokat.
+> A fenti hozzáférési jogkivonat egy v 1.0-formázott jogkivonat. Ennek az az oka, hogy a token az elérni kívánt **erőforrás** alapján van megadva. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek **nem kell** megvizsgálniuk azokat.
 
 ### <a name="error-response-example"></a>Hiba-válasz példa
 
@@ -193,29 +193,24 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Beleegyezik a középső rétegbeli alkalmazásra
 
-Az alkalmazás célközönsége alapján különböző stratégiákat tekinthet meg az OBO-folyamat sikerességének biztosításához. Minden esetben a végső cél az, hogy megfelelő beleegyezett. A probléma azonban attól függ, hogy az alkalmazás mely felhasználókat támogatja.
+Az alkalmazás architektúrájának vagy használati módjától függően különböző stratégiákat tekinthet meg az OBO-folyamat sikerességének biztosításához. Minden esetben a végső cél a megfelelő hozzájárulás biztosítása, hogy az ügyfélalkalmazás meghívja a középső rétegbeli alkalmazást, és a középső rétegbeli alkalmazás jogosult legyen a háttérbeli erőforrás meghívására. 
 
-### <a name="consent-for-azure-ad-only-applications"></a>Beleegyezett az Azure AD-alapú alkalmazásokhoz
+> [!NOTE]
+> Korábban a Microsoft-fiók rendszer (személyes fiókok) nem támogatta az "ismert ügyfélalkalmazás" mezőt, és nem tudta megjeleníteni a kombinált hozzájárulásukat.  Ez a szolgáltatás hozzáadva, és a Microsoft Identity platformon futó összes alkalmazás használhatja az gettign-beleegyezett az OBO-hívásokhoz. 
 
-#### <a name="default-and-combined-consent"></a>/.default és kombinált engedély
+### <a name="default-and-combined-consent"></a>/.default és kombinált engedély
 
-Azon alkalmazások esetében, amelyeknek csak munkahelyi vagy iskolai fiókkal kell bejelentkezniük, a hagyományos "ismert ügyfélalkalmazások" megközelítés elegendő. A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platform végpontján ez a [`/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások és `/.default`használatával indítja el a beleegyezési képernyőt, a beleegyezési képernyő a középső rétegbeli API-ra vonatkozó engedélyeket is megjeleníti, valamint a középső rétegbeli API számára szükséges engedélyeket is kéri. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
+A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platform végpontján ez a [`/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások és `/.default`használatával indítja el a beleegyezési képernyőt, a beleegyezési képernyő a középső rétegbeli API- **ra vonatkozó engedélyeket** is megjeleníti, valamint a középső rétegbeli API számára szükséges engedélyeket is kéri. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
 
-Jelenleg a személyes Microsoft-fiók rendszer nem támogatja a kombinált beleegyezik, így ez a módszer nem működik olyan alkalmazások esetében, amelyek kifejezetten személyes fiókokat kívánnak bejelentkezni. Az Azure AD rendszer használatával kezelik a bérlők vendég fiókjaiként használt személyes Microsoft-fiókokat, és az együttes beleegyező beleegyezik.
+### <a name="pre-authorized-applications"></a>Előzetesen jóváhagyott alkalmazások
 
-#### <a name="pre-authorized-applications"></a>Előzetesen jóváhagyott alkalmazások
+Az erőforrások azt jelezhetik, hogy egy adott alkalmazásnak mindig van engedélye bizonyos hatókörök fogadására. Ez elsősorban akkor hasznos, ha az előtér-ügyfél és a háttérbeli erőforrás közötti kapcsolat zökkenőmentesebb. Egy erőforrás több előre engedélyezett alkalmazást is deklarálhat – bármely ilyen alkalmazás kérheti ezeket az engedélyeket egy OBO-folyamatba, és a felhasználó belefoglalása nélkül fogadhatja azokat.
 
-Az alkalmazás-portál egyik funkciója az "előzetesen jóváhagyott alkalmazások". Ily módon egy erőforrás jelezheti, hogy egy adott alkalmazásnak mindig van engedélye bizonyos hatókörök fogadására. Ez elsősorban akkor hasznos, ha az előtér-ügyfél és a háttérbeli erőforrás közötti kapcsolat zökkenőmentesebb. Egy erőforrás több előre engedélyezett alkalmazást is deklarálhat – bármely ilyen alkalmazás kérheti ezeket az engedélyeket egy OBO-folyamatba, és a felhasználó belefoglalása nélkül fogadhatja azokat.
-
-#### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
+### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 
 A bérlői rendszergazda garantálhatja, hogy az alkalmazások jogosultak legyenek a szükséges API-k meghívására a középső szintű alkalmazás rendszergazdai beleegyezésének biztosításával. Ehhez a rendszergazda megkeresheti a középső rétegű alkalmazást a bérlőben, megnyithatja a szükséges engedélyek lapot, és engedélyt adhat az alkalmazás számára. Ha többet szeretne megtudni a rendszergazdai jogosultságokról, tekintse meg a [beleegyezett és az engedélyek dokumentációját](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Beleegyezett az Azure AD + Microsoft-fiók alkalmazásokba
-
-A személyes fiókokra vonatkozó engedélyek modell korlátozásai miatt, valamint a kormányzó bérlő hiánya esetén a személyes fiókokra vonatkozó engedélyezési követelmények egy kicsit eltérnek az Azure AD-től. Nincs bérlőre kiterjedő, a teljes bérlői beleegyezett megállapodás, és nem áll rendelkezésre a kombinált beleegyezett. Így más stratégiák is jelen vannak – vegye figyelembe, hogy ezek a munkák olyan alkalmazásokhoz szükségesek, amelyeknek csak az Azure AD-fiókok támogatására van szükségük.
-
-#### <a name="use-of-a-single-application"></a>Egyetlen alkalmazás használata
+### <a name="use-of-a-single-application"></a>Egyetlen alkalmazás használata
 
 Bizonyos helyzetekben csak a középső rétegbeli és az előtér-ügyfél egyetlen párosítása lehet. Ebben a forgatókönyvben könnyebben lehet ezt egy alkalmazást létrehozni, és nem kell megtagadni a középső rétegbeli alkalmazás szükségességét. Az előtér-és a webes API-k közötti hitelesítéshez használhat cookie-kat, id_token vagy az alkalmazáshoz igényelt hozzáférési tokent. Ezt követően a kérelem beleegyezik az adott alkalmazástól a háttér-erőforráshoz.
 

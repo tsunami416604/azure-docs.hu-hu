@@ -1,18 +1,22 @@
 ---
-title: Konfigurálhatja és kezelheti az Azure-jegyzetfüzet-projektek
-description: Hogyan kezelheti a projekt metaadatok, soubory projektu, a projekt környezet és a beállítási lépéseket az Azure notebookok felhasználói felület és a terminál közvetlen hozzáférést.
-ms.topic: article
+title: Azure Notebooks előzetes verziójának konfigurálása és kezelése
+description: Megtudhatja, hogyan kezelheti a projekt metaadatait, a projektfájlok, a projekt környezetét és a telepítési lépéseket a Azure Notebooks felhasználói felületen és a közvetlen terminál-hozzáférésen keresztül.
+ms.topic: how-to
 ms.date: 05/13/2019
-ms.openlocfilehash: 56c265122894412e79b3d5a7b256964c49ab81a6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5c97372133315e6f0bcd3b854793b6b4746b5ba5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277642"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646262"
 ---
-# <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
+# <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks előzetes verzióban felügyelheti és konfigurálhatja a projekteket
 
-A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális gép, amelyben Jupyter notebookok futtatja, a fájl mappa és a leíró metaadatok együtt egy konfigurációs. Az Azure-jegyzetfüzetekben projekt-irányítópult lehetővé teszi a fájlok kezelése és egyéb konfigurálása a projekt jellemzői:
+Azure Notebooks előzetes verzióban a projekt lényegében a mögöttes linuxos virtuális gép konfigurációja, amelyben a Jupyter-jegyzetfüzetek futnak, valamint egy fájl mappájával és a leíró metaadatokkal. 
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+A Azure Notebooks a projekt irányítópultja lehetővé teszi a fájlok kezelését, és egyéb módon konfigurálja a projekt jellemzőit:
 
 - A projekt futtatásának számítási szintje, amely lehet az ingyenes vagy az Azure-beli virtuális gép.
 - A projekt metaadatai, beleértve a nevet, a leírást, a projekt megosztásakor használt azonosítót, valamint azt, hogy a projekt nyilvános vagy privát.
@@ -23,7 +27,7 @@ A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális
 > [!Note]
 > Az itt ismertetett kezelési és konfigurációs funkciók csak a projekt tulajdonosa számára érhetők el, aki eredetileg létrehozta a projektet. A projektet azonban saját fiókjába is bemásolhatja, ebben az esetben Ön lesz a tulajdonos, és igény szerint konfigurálhatja a projektet.
 
-Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgálót bármikor leállíthatja a **leállítási** parancs használatával (billentyűparancs: h).
+Azure Notebooks elindítja a mögöttes virtuális gépet, amikor egy jegyzetfüzetet vagy más fájlt futtat. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgálót bármikor leállíthatja a **leállítási** parancs használatával (billentyűparancs: h).
 
 ## <a name="compute-tier"></a>Számítási szintek
 
@@ -31,98 +35,98 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 
-A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza az **információ** fület, amely tartalmazza a projekt metaadatait a következő táblázatban leírtak szerint. Projekt metaadatok bármikor módosíthatja.
+A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza az **információ** fület, amely tartalmazza a projekt metaadatait a következő táblázatban leírtak szerint. Bármikor módosíthatja a projekt metaadatait.
 
 | Beállítás | Leírás |
 | --- | --- |
-| Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Például "Hello World a Python". |
-| Projektazonosító | Egyéni azonosítója, amely a projekt megosztása használatával URL-cím részévé válik. Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
-| Nyilvános projekt | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
-| Klónok elrejtése | Ha a beállított, más felhasználók nem látják, amelyek a projekt klónok listáját. Elrejtés klónok akkor hasznos, ha sok számára, akiknek nem részei ugyanazon a szervezeten belül, például megosztott projektek a pedagógiai osztály a notebook használatakor. |
+| Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: ""Helló világ!"alkalmazás a Pythonban". |
+| Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik. Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
+| Nyilvános projekt | Ha be van állítva, lehetővé teszi, hogy bárki hozzáférjen a projekthez. Privát projekt létrehozásakor törölje ezt a beállítást. |
+| Klónok elrejtése | Ha be van állítva, a többi felhasználó nem láthatja a projekthez készült klónok listáját. A klónok elrejtése olyan projektek esetében lehet hasznos, amelyek sok felhasználóval vannak megosztva, akik nem ugyanahhoz a szervezethez tartoznak, például egy osztály tanításához notebook használata esetén. |
 
 > [!Important]
 >
-> A projekt Azonosítóját módosítása érvényteleníti a projektet, előfordulhat, hogy megosztott korábban mutató hivatkozásokat.
+> A projekt AZONOSÍTÓjának módosítása érvényteleníti a korábban megosztott projektre mutató hivatkozásokat.
 
-## <a name="manage-project-files"></a>Soubory projektu kezelése
+## <a name="manage-project-files"></a>Projektfájlok kezelése
 
-A projekt irányítópultján a projekt mapparendszer tartalmát jeleníti meg. Különböző parancsok segítségével kezelheti ezeket a fájlokat.
+A projekt irányítópultja a projekt mappa rendszerének tartalmát jeleníti meg. Ezeket a fájlokat különböző parancsokkal kezelheti.
 
 ### <a name="create-new-files-and-folders"></a>Új fájlok és mappák létrehozása
 
 Az **+ új** parancs (billentyűparancs: n) új fájlokat vagy mappákat hoz létre. A parancs használatakor először válassza ki a létrehozandó elem típusát:
 
-| Elemtípus | Leírás | A parancs viselkedését |
+| Elemtípus | Leírás | Parancs viselkedése |
 | --- | --- | --- |
-| **Notebook** | Jupyter notebook | Egy előugró ablak, amelyben adja meg a notebook fájlnévvel és a nyelvet jeleníti meg. |
-| **Mappa** | Almappa | Létrehoz egy szerkesztőmezőben, amelybe, adja meg a mappa nevét a projekt-fájlok listája. |
-| **Üres fájl** | Egy fájlt, amelybe tárolhatja bármilyen tartalmat, például szöveg, adatok, stb. | Létrehoz egy szerkesztőmezőben, amelybe a fájlnév megadása a projekt-fájlok listája. |
-| **Markdown** | Egy Markdown-fájlt. | Létrehoz egy szerkesztőmezőben, amelybe a fájlnév megadása a projekt-fájlok listája. |
+| **Notebook** | Egy Jupyter notebook | Megjeleníti azt a felugró ablakot, amelyben megadja a notebook fájlnevét és nyelvét. |
+| **Mappa** | Egy almappa | Létrehoz egy szerkesztési mezőt a projekt fájljának listájában, amelyben megadja a mappa nevét. |
+| **Üres fájl** | Olyan fájl, amelybe bármilyen tartalmat, például szöveget, adatokat és más tartalmakat tárolhat. | Létrehoz egy szerkesztési mezőt a projekt fájljának listájában, amelyben megadja a fájlnevet. |
+| **Markdown** | Egy Markdown-fájl. | Létrehoz egy szerkesztési mezőt a projekt fájljának listájában, amelyben megadja a fájlnevet. |
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
 A **feltöltési** parancs két lehetőséget kínál az adatok más helyekről történő importálására: **az URL** -címről és **a számítógépről**. További információ: [adatfájlok használata az Azure notebook projects](work-with-project-data-files.md)szolgáltatásban.
 
-### <a name="select-file-specific-commands"></a>Válassza ki a fájl-specifikus parancsok
+### <a name="select-file-specific-commands"></a>Fájlra vonatkozó parancsok kiválasztása
 
-A projekt fájl lista minden eleme egy kattintson a jobb gombbal a helyi menü keresztül parancsokat kínálja:
+A projekthez tartozó fájllista minden eleme parancsokat biztosít a jobb gombbal a helyi menüben:
 
-![Egy fájl helyi menü parancsai](media/project-file-commands.png)
+![Parancsok egy fájl helyi menüjében](media/project-file-commands.png)
 
 | Parancs | Billentyűparancs | Műveletek |
 | --- | --- | --- |
-| Futtassa a következőt: | az r (vagy kattintson) | A notebook fájl fut. Más fájltípusok megtekintésre nyílnak meg.  |
-| Hivatkozás másolása | y | Másolja a vágólapra a fájl egy hivatkozást. |
-| Futtatása a Jupyter-tesztkörnyezet | J | Fut egy jegyzetfüzetet JupyterLab, azaz Jupyter általában biztosít, mint egy több fejlesztő-orientált felületet. |
-| Előzetes verzió | p | Megnyílik egy HTML-előnézetet a fájl; az előzetes verzió notebookokat, a jegyzetfüzet egy csak olvasható leképezési. További információ: [előnézet](#preview) szakasz. |
-| Fájl szerkesztése | I | Megnyitja a fájlt szerkesztésre. |
-| Letöltés | d | Letölti a fájl vagy mappa tartalmát tartalmazó zip-fájlt. |
-| Átnevezés | a | Egy új nevet a fájlhoz vagy mappához tartozó utasításokat. |
-| Törlés | x | Megerősítést kér, majd véglegesen eltávolítja a fájlt a projektben. Törlés nem vonható vissza. |
-| Áthelyezés | p | A fájl ugyanabban a projektben egy másik mappába helyezi át. |
+| Futtatás | r (vagy kattintson a) | Egy jegyzetfüzet-fájlt futtat. A rendszer megnyit más fájltípusokat a megtekintéshez.  |
+| Hivatkozás másolása | y | A fájlra mutató hivatkozást másol a vágólapra. |
+| Futtatás a Jupyter Lab-ban | j | Futtat egy jegyzetfüzetet a JupyterLab-ben, ami egy fejlesztő-orientált felület, mint a Jupyter. |
+| Előzetes verzió | p | Megnyitja a fájl HTML-előnézetét; a jegyzetfüzetek esetében az előnézet a jegyzetfüzet írásvédett megjelenítése. További információ: [előnézet](#preview) szakasz. |
+| Fájl szerkesztése | i | Megnyitja a fájlt szerkesztésre. |
+| Letöltés | d | Letölt egy zip-fájlt, amely a fájlt vagy egy mappa tartalmát tartalmazza. |
+| Átnevezés | a | A fájl vagy mappa új nevének megadását kéri. |
+| Törlés | x | Megerősítést kér, majd véglegesen eltávolítja a fájlt a projektből. A törlések nem vonhatók vissza. |
+| Áthelyezés | p | Egy fájlt egy másik mappába helyez át ugyanabban a projektben. |
 
 #### <a name="preview"></a>Előzetes verzió
 
-Előzetes verziója egy fájl vagy a jegyzetfüzet; tartalma írásvédett nézete notebook cellák fut le van tiltva. Mindenki számára, aki rendelkezik a fájl vagy a jegyzetfüzet mutató hivatkozást, de nem jelentkezett be az Azure-jegyzetfüzetek előnézete látható. Miután bejelentkezett, a felhasználó a saját fiókhoz a notebookot klónozhat, vagy a jegyzetfüzet letölthetik a helyi számítógépre.
+Egy fájl vagy jegyzetfüzet előnézete a tartalom írásvédett nézete. a jegyzetfüzet-cellák futtatása le van tiltva. Megjelenik egy előzetes verzió, amely a fájlra vagy jegyzetfüzetre mutató hivatkozással rendelkezik, de nem jelentkezett be a Azure Notebooksba. A bejelentkezést követően a felhasználók a saját fiókba is bejelentkezhetnek a jegyzetfüzetbe, vagy letölthetik a notebookot a helyi számítógépre.
 
-Az előzetes verziójú szolgáltatásainak weblapján különböző eszköztár parancsokat a billentyűparancsok használatát támogatja:
+Az előnézet oldalon számos, billentyűparancsokkal ellátott eszköztár-parancs támogatott:
 
 | Parancs | Billentyűparancs | Műveletek |
 | --- | --- | --- |
-| Megosztás | s | Megjeleníti a megosztási előugró ablak, amelyről hivatkozás beszerzése, közösségi megosztás, HTML beszerzése a beágyazáshoz és e-mail küldése. |
-| Klónozás | c  | Klónozza a fiókhoz a notebookot. |
-| Futtassa a következőt: | R | Ha Ön jogosult-e ehhez a notebook fut. |
-| Letöltés | d | A notebook másolatát tölti le. |
+| Megosztás | s | Megjeleníti a megosztási felugró ablakát, amelyből megszerezhet egy hivatkozást, megoszthatja a közösségi médiát, HTML-t szerezhet be beágyazáshoz, és e-mailt küldhet. |
+| Klónozás | c  | A notebook klónozása a fiókjába. |
+| Futtatás | r | Ha ezt engedélyezi, futtatja a jegyzetfüzetet. |
+| Letöltés | d | Letölti a jegyzetfüzet egy példányát. |
 
-## <a name="configure-the-project-environment"></a>A project-környezet konfigurálása
+## <a name="configure-the-project-environment"></a>A Project Environment konfigurálása
 
-A mögöttes virtuális gép saját jegyzetfüzetek futtatásához, amelyben a környezet beállításához három módja van:
+Az alapul szolgáló virtuális gép környezetét háromféleképpen állíthatja be, amelyben a jegyzetfüzetek futnak:
 
-- Egy egyszeri inicializációs szkriptet tartalmazza.
-- A projekt környezeti beállítások segítségével adja meg a beállítási lépéseket
-- Egy terminál keresztül érik el a virtuális gépet.
+- Egyszeri inicializálási parancsfájl belefoglalása
+- A projekt környezeti beállításai segítségével adhatja meg a telepítési lépéseket
+- Egy terminálon keresztül érheti el a virtuális gépet.
 
-A projektkonfiguráció minden formája, amikor a virtuális gép elindul, és így hatással van az összes jegyzetfüzet a projekten belül érvényesek.
+A rendszer a projekt konfigurációjának összes formáját alkalmazza a virtuális gép indításakor, és így hatással van a projekten belüli összes jegyzetfüzetre.
 
-### <a name="one-time-initialization-script"></a>Egyszeri inicializálási parancsfájlja
+### <a name="one-time-initialization-script"></a>Egyszeri inicializálási parancsfájl
 
 Az első Azure Notebooks létrehoz egy kiszolgálót a projekthez, amely a *aznbsetup.sh*nevű projektben keres egy fájlt. Ha a fájl megtalálható, Azure Notebooks futtatja. A parancsfájl kimenetét a Project mappában, a *. aznbsetup. log*néven tárolja a rendszer.
 
-### <a name="environment-setup-steps"></a>Környezet beállítási lépéseket
+### <a name="environment-setup-steps"></a>Környezet beállítási lépései
 
-A projekt környezeti beállítások segítségével hozzon létre az egyes lépések, amelyek a környezet beállításához.
+A projekt környezeti beállításait a környezet konfigurálására szolgáló egyedi lépések létrehozására használhatja.
 
 A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza a **környezet** fület a projekt telepítési lépéseinek hozzáadásához, eltávolításához és módosításához:
 
-![Projekt beállítások felugró kiválasztott környezet lap](media/project-settings-environment-steps.png)
+![A Project Settings előugró ablak a környezet lapon van kijelölve](media/project-settings-environment-steps.png)
 
 Lépés hozzáadásához először válassza a **+ Hozzáadás**lehetőséget, majd válassza ki a lépés típusát a **művelet** legördülő listában:
 
-![Az új környezet beállítása lépés műveletet-választó](media/project-settings-environment-details.png)
+![Új környezet telepítési lépésének műveleti választója](media/project-settings-environment-details.png)
 
-Az adatokat, majd a projekt választott művelet típusától függ:
+Az Ön által megadott adatok a választott művelet típusától függenek:
 
-- **Követelmények. txt**: a második legördülő listában válasszon ki egy, a projektben már szereplő *követelmény. txt* fájlt. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. A *követelmények. txt* fájl használatával Azure Notebooks a notebook-kiszolgáló indításakor a *követelmények. txt* fájllal futtatja a `pip install -r`. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
+- **Követelmények. txt**: a második legördülő listában válasszon ki egy, a projektben már szereplő *követelmény. txt* fájlt. Ezután válasszon ki egy Python-verziót a megjelenő harmadik legördülő listából. A *követelmények. txt* fájl használatával Azure Notebooks a notebook-kiszolgáló indításakor a *követelmények. txt* fájllal futtatja a `pip install -r`. Nem kell explicit módon telepítenie a csomagokat a notebookon belülről.
 
 - **Rendszerhéj-parancsfájl**: a második legördülő listában válasszon ki egy bash rendszerhéj-parancsfájlt a projektben (jellemzően egy *. sh* kiterjesztésű fájl), amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza.
 
@@ -132,18 +136,18 @@ Ha végzett a lépések hozzáadásával, válassza a **Mentés**lehetőséget.
 
 ### <a name="use-the-terminal"></a>A terminál használata
 
-A projekt irányítópultján a **Terminal** parancs egy Linux-terminált nyit meg, amely közvetlen hozzáférést biztosít a kiszolgálóhoz. A terminálban belül, is adatok letöltése, szerkesztése vagy fájlok kezelése, vizsgálja meg a folyamatok és is használhatja, vi és nano.
+A projekt irányítópultján a **Terminal** parancs egy Linux-terminált nyit meg, amely közvetlen hozzáférést biztosít a kiszolgálóhoz. A terminálon az adatletöltést, a fájlok szerkesztését és kezelését, a folyamatok vizsgálatát, valamint a VI és a nano eszközt is használhatja.
 
 > [!Note]
-> Ha az indítási parancsfájlok a projekt környezetében, nyissa meg a terminált megjeleníthetnek egy üzenetet, jelezve, hogy a telepítő még folyamatban van.
+> Ha a projekt környezetében indítási parancsfájlok vannak, a terminál megnyitásával megjeleníthető egy üzenet, amely jelzi, hogy a telepítés még folyamatban van.
 
-Minden standard szintű Linux-parancsok billentyűparancsot a terminálon adhat ki. A Kezdőlap mappában található `ls` is megtekintheti a virtuális gépen létező különböző környezeteket, például a *anaconda2_501*, a *anaconda3_420*, a *anaconda3_501*, a *IfSharp*és az *R*-t, valamint a projektet tartalmazó *Project* mappát:
+A terminálon bármilyen szabványos Linux-parancsot kiadhat. A Kezdőlap mappában található `ls` is megtekintheti a virtuális gépen létező különböző környezeteket, például a *anaconda2_501*, a *anaconda3_420*, a *anaconda3_501*, a *IfSharp*és az *R*-t, valamint a projektet tartalmazó *Project* mappát:
 
-![Projekt Terminálszolgáltatások Azure-jegyzetfüzetekben](media/project-terminal.png)
+![Projekt-terminál Azure Notebooks](media/project-terminal.png)
 
-Befolyásolják egy adott környezetben, módosítsa a könyvtárakat a környezet mappába először.
+Egy adott környezet befolyásolásához először módosítsa a könyvtárakat erre a környezeti mappába.
 
-A Python-környezetek esetében az egyes környezetekhez tartozó *bin* mappában `pip` és `conda` található. Beépített aliasok a környezetek esetében is használhatja:
+A Python-környezetek esetében az egyes környezetekhez tartozó *bin* mappában `pip` és `conda` található. A környezetekhez beépített aliasokat is használhat:
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27
@@ -161,11 +165,11 @@ A kiszolgálón végrehajtott módosítások csak az aktuális munkamenetre érv
 > [!Note]
 > Ha `python` vagy `python3`használ, meghívja a Python rendszer telepített verzióit, amelyek nem használatosak jegyzetfüzetekhez. Nincs engedélye olyan műveletekhez, mint a `pip install` vagy, ezért ügyeljen arra, hogy a verzióra vonatkozó aliasokat használja.
 
-## <a name="access-notebook-logs"></a>A jegyzetfüzet-naplók elérése
+## <a name="access-notebook-logs"></a>Jegyzetfüzet-naplók elérése
 
 Ha a jegyzetfüzetek futtatása során problémákba ütközik, a Jupyter kimenetét egy *. NB. log*nevű mappában tárolja a rendszer. Ezeket a naplókat a **Terminal** parancs vagy a projekt irányítópultja segítségével érheti el.
 
-Általában amikor helyileg futtatja a Jupyter, előfordulhat, hogy megkezdte azt egy terminálablakból. A terminálablakban látható kimenet például a kernel állapotát.
+Általában a Jupyter helyi futtatásakor előfordulhat, hogy egy terminál-ablakból indította el. A terminálablak megjeleníti a kimenetet, például a kernel állapotát.
 
 A naplók megtekintéséhez használja a következő parancsot a terminálon:
 
@@ -173,7 +177,7 @@ A naplók megtekintéséhez használja a következő parancsot a terminálon:
 cat .nb.log
 ```
 
-A parancs egy Python-jegyzetfüzetet egyik kódcellájába is használja:
+A parancsot egy Python-jegyzetfüzetben található kód cellából is használhatja:
 
 ```bash
 !cat .nb.log

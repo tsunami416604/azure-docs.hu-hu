@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: az idősoros adatvesztések észlelése a (z) .NET-beli anomália-detektor ügyféloldali kódtára használatával'
 titleSuffix: Azure Cognitive Services
-description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességeket kötegként vagy adatfolyamként lehet érzékelni.
+description: Ez a rövid útmutató bemutatja, hogyan használható a rendellenesség-Kiderítő API az adatsorozatokban lévő rendellenességek észleléséhez kötegként vagy adatfolyamként.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 62cf9a03960e895f403ec8fa09407ff61252ecb2
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: abc2e2371368f01c96eb0b4d2f0a777952ebacf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448917"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>Gyors útmutató: anomália-Kiderítő ügyféloldali kódtára a .NET-hez
 
@@ -88,7 +88,7 @@ Az idősorozat-információk küldése egy [kérelem](https://docs.microsoft.com
 
 Az anomália-detektor válasza egy [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse) vagy [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse) objektum, a használt módszertől függően. 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a következőhöz: az anomália-detektor .NET-hez készült ügyféloldali kódtára:
 

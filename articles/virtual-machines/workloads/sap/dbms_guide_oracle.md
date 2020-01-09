@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099990"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645844"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -77,8 +77,8 @@ ms.locfileid: "70099990"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "70099990"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "70099990"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -357,7 +357,7 @@ Csak az NTFS fájlrendszerű lemezeket használó egypéldányos Oracle támogat
 
 Erősen ajánlott az [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)használata. Javasoljuk továbbá a [prémium SSD](../../windows/disks-types.md) -k használatát a Oracle Database üzemelő példányokhoz.
 
-A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkért lásd:
+A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információ eléréséhez lásd:
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -372,7 +372,7 @@ A támogatott Azure-beli virtuálisgép-típusok azonosításához lásd: SAP-Me
 
 A minimális konfiguráció a következő: 
 
-| Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
+| Component (Összetevő) | Lemez | Gyorsítótárazás | Tárolókészlet |
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA & mirrlogB | Prémium | None | Nem szükséges |
 | \oracle\<SID > \origlogaB & mirrlogA | Prémium | None | Nem szükséges |
@@ -385,14 +385,14 @@ Az online visszaállítási naplók futtatásához szükséges lemezeket IOPs k�
 
 A teljesítmény konfigurációja a következő:
 
-| Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
+| Component (Összetevő) | Lemez | Gyorsítótárazás | Tárolókészlet |
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA | Prémium | None | Használható  |
 | \oracle\<SID > \origlogaB | Prémium | None | Használható |
 | \oracle\<SID > \mirrlogAB | Prémium | None | Használható |
 | \oracle\<SID > \mirrlogBA | Prémium | None | Használható |
 | \oracle\<SID > \sapdata1... n | Prémium | Csak olvasás | Ajánlott  |
-| \oracle\SID\sapdata(n+1)* | Prémium | None | Használható |
+| \oracle\SID\sapdata (n + 1) * | Prémium | None | Használható |
 | \oracle\<SID > \oraarch * | Prémium | None | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
@@ -448,7 +448,7 @@ Oracle Linux UEK kernelek esetében az [Azure Premium SSD](https://docs.microsof
 
 Erősen ajánlott az [Azure Managed Disks](../../windows/managed-disks-overview.md)használata. Azt is javasoljuk, hogy az [Azure Premium SSD](../../windows/disks-types.md) -ket a Oracle Database üzemelő példányokhoz is használja.
 
-A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információt a következő témakörben talál: 
+A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkért tekintse át a következőket: 
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -462,7 +462,7 @@ A támogatott Azure-beli virtuálisgép-típusok azonosításához lásd: SAP-Me
 
 Minimális konfiguráció:
 
-| Összetevő | Lemez | Gyorsítótárazás | Csíkot |
+| Component (Összetevő) | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
 | /Oracle/\<SID >/origlogaA & mirrlogB | Prémium | None | Nem szükséges |
 | /Oracle/\<SID >/origlogaB & mirrlogA | Prémium | None | Nem szükséges |
@@ -476,7 +476,7 @@ Az Oracle online visszaállítási naplóinak üzemeltetéséhez szükséges lem
 
 Teljesítmény konfigurációja:
 
-| Összetevő | Lemez | Gyorsítótárazás | Csíkot |
+| Component (Összetevő) | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
 | /Oracle/\<SID >/origlogaA | Prémium | None | Használható  |
 | /Oracle/\<SID >/origlogaB | Prémium | None | Használható |

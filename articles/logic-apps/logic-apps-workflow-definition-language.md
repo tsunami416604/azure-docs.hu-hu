@@ -1,17 +1,17 @@
 ---
-title: Séma a munkafolyamat-definíciós nyelvhez
-description: Séma-referenciák a munkafolyamat-definíciós nyelvhez Azure Logic Apps
+title: Munkafolyamat-definíció nyelvi sémájának referenciája
+description: Útmutató a JSON-sémához és a munkafolyamat-definíciós nyelv szintaxisához, amely leírja a munkafolyamatokat Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428664"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Séma-útmutató a munkafolyamat-definíciós nyelvhez Azure Logic Apps
 
@@ -83,7 +83,7 @@ A paraméterek definíciójának általános szerkezete:
 | <*paraméter – leírás*> | Nem | JSON-objektum | Egyéb paraméterek részletei, például a paraméter leírása |
 ||||
 
-Ezután hozzon létre egy [Azure Resource Manager sablont](../azure-resource-manager/resource-group-overview.md) a munkafolyamat-definícióhoz, definiálja a központi telepítésben használni kívánt értékeket elfogadó sablon paramétereit, cserélje le a hardcoded értékeket a sablonra vagy a munkafolyamat-definíció paramétereinek megfelelő értékekre, és tárolja a telepítéskor használandó értékeket egy külön [paraméter fájljában](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Így a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket a paraméter fájlján keresztül. A bizalmas vagy biztonságossá tett információk, például a felhasználónevek, a jelszavak és a titkos kulcsok esetében Azure Key Vault tárolhatja ezeket az értékeket, és a paraméter-fájllal lekérheti ezeket az értékeket a kulcstartóból. További információk és példák a paraméterek definiálására a sablon és a munkafolyamat-definíció szintjein: [Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Ezután hozzon létre egy [Azure Resource Manager sablont](../azure-resource-manager/templates/overview.md) a munkafolyamat-definícióhoz, definiálja a központi telepítésben használni kívánt értékeket elfogadó sablon paramétereit, cserélje le a hardcoded értékeket a sablonra vagy a munkafolyamat-definíció paramétereinek megfelelő értékekre, és tárolja a telepítéskor használandó értékeket egy külön [paraméter fájljában](../azure-resource-manager/templates/parameter-files.md). Így a logikai alkalmazás frissítése és újbóli üzembe helyezése nélkül is könnyebben módosíthatja ezeket az értékeket a paraméter fájlján keresztül. A bizalmas vagy biztonságossá tett információk, például a felhasználónevek, a jelszavak és a titkos kulcsok esetében Azure Key Vault tárolhatja ezeket az értékeket, és a paraméter-fájllal lekérheti ezeket az értékeket a kulcstartóból. További információk és példák a paraméterek definiálására a sablon és a munkafolyamat-definíció szintjein: [Áttekintés: az üzembe helyezés automatizálása a Logic apps alkalmazásokhoz Azure Resource Manager-sablonokkal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 

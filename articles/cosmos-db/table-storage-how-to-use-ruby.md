@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
+title: Azure Cosmos DB Table API és az Azure Table Storage használata a Ruby használatával
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0a2649db7639338b7b2714181b8caf670306f987
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441156"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -26,7 +26,7 @@ Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az 
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
@@ -56,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 Ezeket az értékeket a következőképp kérheti le egy klasszikus vagy Resource Manager-tárfiókból az Azure Portalon:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Lépjen a használni kívánt tárfiókra.
 3. A jobb oldali Beállítások panelen kattintson az **Hozzáférési kulcsok** lehetőségre.
 4. A megjelenő Hozzáférési kulcsok panelen láthatja az 1. és a 2. hozzáférési kulcsot. Ezek bármelyikét használhatja.
@@ -94,10 +94,10 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>Entitás frissítése
 Több metódus is rendelkezésre áll a meglévő entitások frissítéséhez:
 
-* **update_entity():** Cserélje ki egy létező entitásba frissítéséhez.
-* **merge_entity():** Frissíti egy meglévő entitásra úgy, hogy új tulajdonságértékeket egyesítjük a már létező entitásba.
-* **insert_or_merge_entity():** Frissíti egy meglévő entitásra, lecserélésével. Ha még nincsen entitás, beszúr egy újat:
-* **insert_or_replace_entity():** Frissíti egy meglévő entitásra úgy, hogy új tulajdonságértékeket egyesítjük a már létező entitásba. Ha még nincsen entitás, beszúr egy újat.
+* **update_entity():** Egy meglévő entitást frissít azáltal, hogy másikra cseréli.
+* **merge_entity():** – Egy meglévő entitást frissít azáltal, hogy új tulajdonságértékeket kapcsol hozzá.
+* **insert_or_merge_entity():** Egy meglévő entitást frissít azáltal, hogy másikra cseréli. Ha még nincsen entitás, beszúr egy újat:
+* **insert_or_replace_entity():** Egy meglévő entitást frissít azáltal, hogy új tulajdonságértékeket kapcsol hozzá. Ha még nincsen entitás, beszúr egy újat.
 
 Az alábbi példa azt mutatja be, hogyan frissítheti az entitásokat az **update_entity()** használatával:
 
@@ -166,7 +166,7 @@ Egy entitás törléséhez használja a **delete_table()** metódust, majd adja 
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Ruby fejlesztői központ](https://azure.microsoft.com/develop/ruby/)

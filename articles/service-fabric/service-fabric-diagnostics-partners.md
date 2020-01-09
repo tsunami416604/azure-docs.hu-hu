@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric-figyelő partnerek | Microsoft Docs
-description: Ismerje meg, hogyan figyelhetők meg az Azure Service Fabric partner-figyelési megoldásokkal
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-figyelési partnerek
+description: Ismerje meg, hogyan figyelhetők meg az Azure Service Fabric-alkalmazások,-fürtök és-infrastruktúra a partner-figyelési megoldásokkal.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232450"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645718"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric-figyelési partnerek
 
@@ -37,17 +28,17 @@ A datadoggal a Windows-és Linux-példányok esetében a VMSS bővítményt is t
 
 A AppDynamics Service Fabric integrációja az alkalmazás szintjén történik. A környezeti változók frissítésével és az alkalmazás-Dynamics Nuget használatával a telemetria a AppDynamics-be küldheti. A .NET Service Fabric-alkalmazások AppDynamics való integrálásával kapcsolatban itt talál [útmutatást](https://docs.appdynamics.com/display/AZURE/Install+AppDynamics+for+Azure+Service+Fabric) .
 
-## <a name="new-relic"></a>New Relic
+## <a name="new-relic"></a>A New Relic-bővítmény
 
 Az új ereklye egy másik alkalmazás-Teljesítményfigyelő eszköz, amely Service Fabric alkalmazásokkal jól integrálható. Telepítheti az új ereklye NuGet-csomagokat, és meghatározott környezeti változókat adhat hozzá a jegyzékfájlokhoz, hogy az alkalmazás telemetria az új ereklye számára küldje el. Tekintse meg ezeket az [utasításokat](https://docs.newrelic.com/docs/agents/net-agent/azure-installation/install-net-agent-azure-service-fabric) , hogy engedélyezze az új ereklye telemetria a .net Service Fabric alkalmazásaihoz.
 
 ## <a name="elk"></a>ELK 
 
-A ELK stack nyílt forráskódú technológiák gyűjteménye: Elasticsearch, Logstash és Kibana. Ezek együttes használatával összegyűjtheti, tárolhatja és elemezheti Service Fabric monitorozási és diagnosztikai adatait. Ebben az oktatóanyagban megtudhatja, hogyan teheti ezt Service Fabric natív Java [-alkalmazásokkal](service-fabric-tutorial-java-elk.md). 
+A ELK stack nyílt forráskódú technológiák gyűjteménye: Elasticsearch, Logstash és Kibana. Ezen technológiák együttes használatával összegyűjtheti, tárolhatja és elemezheti Service Fabric monitorozási és diagnosztikai adatait. Ebben az oktatóanyagban megtudhatja, hogyan teheti ezt Service Fabric natív Java [-alkalmazásokkal](service-fabric-tutorial-java-elk.md). 
 
 ## <a name="humio"></a>Humio
 
-A Humio egy olyan naplózási szolgáltatás, amely a felhőben vagy a helyszínen valós időben Service Fabric a naplókat az alkalmazásokból és az eseményekről. Az élő Megfigyelhetőség mellett a Humio olyan korszerű elemzési és vizualizációs lehetőségeket kínál, amelyekkel megtekintheti és begyűjtheti a diagnosztikai eredményeket. A Humio költséghatékony díjszabási terveket tartalmaz, és a méretezési folyamat megtartása mellett a gyors gyorsaságot is megőrzi. Közvetlenül integrálható Service Fabric platform eseményeivel és az alkalmazás telemetria. A Humio és a Service Fabric integrációról [itt](https://github.com/humio/service-fabric-humio)olvashat bővebben.
+A Humio egy olyan naplózási szolgáltatás, amely a felhőben vagy a helyszínen valós időben Service Fabric a naplókat az alkalmazásokból és az eseményekről. Az élő megfigyelésen kívül a Humio legkorszerűbb elemzési és vizualizációs funkciókat kínál a diagnosztika adatainak megtekintésére és gyűjtésére. A Humio költséghatékony díjszabási terveket tartalmaz, és a méretezési folyamat megtartása mellett a gyors gyorsaságot is megőrzi. Közvetlenül integrálható Service Fabric platform eseményeivel és az alkalmazás telemetria. A Humio és a Service Fabric integrációról [itt](https://github.com/humio/service-fabric-humio)olvashat bővebben.
 
 ## <a name="next-steps"></a>Következő lépések
 

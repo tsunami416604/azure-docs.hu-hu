@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: a Microsoft Threat Modeling Tool főoldala, amely információkat tartalmaz az eszköz első lépéseiről, beleértve a veszélyforrások modellezésének folyamatát is
-services: security
-documentationcenter: na
+title: Microsoft Threat Modeling Tool áttekintése – Azure
+description: A Microsoft Threat Modeling Tool áttekintése, amely az eszköz használatának első lépéseivel kapcsolatos információkat tartalmazza, beleértve a veszélyforrások modellezésének folyamatát is.
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: jegeib
-ms.openlocfilehash: 47ae7661874bec211935315679e6e2c79e6d59ef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727821"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548747"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -34,18 +26,18 @@ Az eszköz a következőket teszi lehetővé:
 
 Íme néhány szerszámozási képesség és innováció, csak hogy néhányat említsünk:
 
-* **Automatizálás**: Útmutató és visszajelzés a modell rajzolásához
-* **LÉPÉSHOSSZ/elem:** Fenyegetések és enyhítések irányított elemzése
-* **Jelentési** Biztonsági tevékenységek és tesztelés az ellenőrzési fázisban
+* **Automatizálás:** Útmutató és visszajelzés a modell rajzolásához
+* **Lépéshossz/elem:** Fenyegetések és enyhítések irányított elemzése
+* **Jelentéskészítés:** Biztonsági tevékenységek és tesztelés az ellenőrzési fázisban
 * **Egyedi módszertan:** Lehetővé teszi a felhasználók számára a fenyegetések jobb megjelenítését és megértését
-* **Fejlesztőknek és szoftvereknek** szánt központilag: számos megközelítés az eszközökön vagy a támadón alapul. A szoftvereket középpontba vesszük. Olyan tevékenységekre építünk, amelyeket a szoftverfejlesztők és az építészek is ismernek – például képek rajzolásához a szoftver architektúrája számára
+* **Fejlesztőknek és szoftvereknek szánt központilag:** számos megközelítés az eszközökön vagy a támadón alapul. A szoftvereket középpontba vesszük. Olyan tevékenységekre építünk, amelyeket a szoftverfejlesztők és az építészek is ismernek – például képek rajzolásához a szoftver architektúrája számára
 * **Tervezési elemzésre összpontosít:** A "fenyegetések modellezése" kifejezés a követelményekre vagy egy tervezési elemzési módszerre is utalhat. Időnként a kettő összetett keverékére hivatkozik. A veszélyforrások modellezésének Microsoft SDL megközelítése egy célirányos kialakítású elemzési módszer
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi táblázat a Threat Modeling Tool első lépéseihez tartalmaz fontos hivatkozásokat:
 
-| Lépés  | Leírás                                                                                   |
+| Lépés:  | Leírás                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [A Threat Modeling Tool letöltése](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Olvassa el az első lépéseket ismertető útmutatót](threat-modeling-tool-getting-started.md)    |
@@ -53,11 +45,11 @@ Az alábbi táblázat a Threat Modeling Tool első lépéseihez tartalmaz fontos
 | **4** | [A generált veszélyforrások kategóriáinak megismerése](threat-modeling-tool-threats.md)   |
 | **5** | [A generált fenyegetések enyhítésének megkeresése](threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Segédanyagok és eszközök
 
 Íme néhány régebbi, a veszélyforrások modellezésével kapcsolatos cikk még ma:
 
-* [Cikk a veszélyforrások modellezésének fontosságáról](https://msdn.microsoft.com/magazine/dd347831.aspx)
+* [Cikk a veszélyforrások modellezésének fontosságáról](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Megbízható számítástechnika által közzétett képzés](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Ismerkedjen meg néhány Threat Modeling Tool szakértővel:

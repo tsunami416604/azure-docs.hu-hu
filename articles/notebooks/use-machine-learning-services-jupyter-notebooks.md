@@ -1,35 +1,37 @@
 ---
-title: Azure Machine Learning használata Azure Notebooks
-description: A Azure Notebooks használatával használható Azure Machine Learning minta notebookok áttekintése.
-ms.topic: article
+title: Azure Machine Learning használata Azure Notebooks előzetes verzióban
+description: A Azure Notebooks Preview-val használható Azure Machine Learning minta notebookok áttekintése.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e3c4fbdf35bf7ea1f4dddbceb9d7235c67ed13a4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277458"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646952"
 ---
-# <a name="use-azure-machine-learning-in-a-notebook"></a>Azure Machine Learning használata jegyzetfüzetben
+# <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>Azure Machine Learning használata Azure Notebooks előzetes verzióban
 
-Azure Notebooks előre konfigurálva van a szükséges környezettel, hogy működjön a [Azure Machine Learningval](/azure/machine-learning/service/). A mintaprojekt az jegyzetfüzet-fiókba való ismerkedés a Machine Learning forgatókönyvek széles könnyedén klónozhat.
+Azure Notebooks előre konfigurálva van a szükséges környezettel, hogy működjön a [Azure Machine Learningval](/azure/machine-learning/service/). A különböző Machine Learning forgatókönyvek megismeréséhez könnyedén klónozott minta-projekteket telepíthet notebook-fiókjába.
 
-## <a name="clone-the-sample-into-your-account"></a>A fiók a minta klónozása
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+## <a name="clone-the-sample-into-your-account"></a>A minta klónozása a fiókba
 
 1. Jelentkezzen be [Azure Notebooksba](https://notebooks.azure.com/).
 1. Válassza a **saját projektek** elemet a projektek irányítópultra való ugráshoz.
 1. Válassza a **GitHub** -tárház feltöltése (a felfelé mutató nyíl) gombot a **GitHub-adattár** felugró ablakának megnyitásához.
 1. A felugró ablakban adja meg `Azure/MachineLearningNotebooks` **a GitHub-tárházban**, adjon meg egy nevet a projektnek a projekt **neve** mezőben (például "Azure Machine learning"), adjon meg egy azonosítót a **projekt azonosítójában**, törölje a **nyilvános** elemet, ha kívánja, majd válassza az **Importálás**lehetőséget.
 
-    ![A jegyzetfüzet-fiókba az Azure Machine Learning Notebook minta importálása](media/azureml-import-project.png)
+    ![Azure Machine Learning notebook-minta importálása notebook-fiókjába](media/azureml-import-project.png)
 
-1. Miután egy-két percen belül Azure notebookok automatikusan megnyílik az új projekt-irányítópult.
+1. Egy-két perc után Azure Notebooks automatikusan elvégzi az új projekt irányítópultját.
 
-## <a name="run-a-sample-notebook"></a>Egy minta-jegyzetfüzet futtatása
+## <a name="run-a-sample-notebook"></a>Minta jegyzetfüzet futtatása
 
 1. Válassza a **00-Configuration. ipynb** elemet a jegyzetfüzet konfigurációs szakaszának elindításához, és kövesse az utasításait Azure Machine learning-munkaterület létrehozásához.
 
-    - Azure-jegyzetfüzetek már tartalmazza a szükséges Python-csomagokat, mert csak futtathatja a kódrészletet az Előfeltételek ellenőrzése az Azure Machine Learning SDK-verziójának 2. lépésben.
+    - Mivel Azure Notebooks már tartalmazza a szükséges Python-csomagokat, egyszerűen futtathatja az előfeltételek 2. lépésében található kódrészletet az Azure ML SDK verziójának ellenőrzéséhez.
 
 1. A konfiguráció befejezése után válassza az **01. első lépések** lehetőséget a tizenhárom különböző minta jegyzetfüzetet tartalmazó mappa megnyitásához, amelyek mindegyike magától értetődő.
 

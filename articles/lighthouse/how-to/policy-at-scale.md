@@ -3,22 +3,22 @@ title: Azure Policy üzembe helyezése a delegált előfizetések számára nagy
 description: Ismerje meg, hogy az Azure-beli delegált erőforrás-kezelés lehetővé teszi a szabályzat-definíciók és a házirendek hozzárendelésének telepítését több bérlőn keresztül.
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463866"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456839"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
 
 Szolgáltatóként több ügyfél-bérlőt is felkészített az Azure-beli delegált erőforrás-kezeléshez. Az [Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számára, hogy egyszerre több bérlőn is elvégezzék a műveleteket, így hatékonyabbá téve a felügyeleti feladatokat.
 
-Ebből a témakörből megtudhatja, hogyan használhatók a [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) egy házirend-definíció és egy házirend-hozzárendelés több bérlőn való üzembe helyezésére a PowerShell-parancsok használatával. Ebben a példában a házirend-definíció biztosítja, hogy a rendszer csak HTTPS-forgalmat engedélyezzen a Storage-fiókok biztonságossá tételéhez.
+Ebből a témakörből megtudhatja, hogyan használhatók a [Azure Policy](../../governance/policy/index.yml) egy házirend-definíció és egy házirend-hozzárendelés több bérlőn való üzembe helyezésére a PowerShell-parancsok használatával. Ebben a példában a házirend-definíció biztosítja, hogy a rendszer csak HTTPS-forgalmat engedélyezzen a Storage-fiókok biztonságossá tételéhez.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Az Azure Resource Graph használata az ügyfél-bérlők lekérdezéséhez
 
-Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) segítségével lekérdezheti a kezelt ügyfél-bérlő összes előfizetését. Ebben a példában olyan Storage-fiókokat fogunk azonosítani ezekben az előfizetésekben, amelyek jelenleg nem igényelnek HTTPS-forgalmat.  
+Az [Azure Resource Graph](../../governance/resource-graph/index.yml) segítségével lekérdezheti a kezelt ügyfél-bérlő összes előfizetését. Ebben a példában olyan Storage-fiókokat fogunk azonosítani ezekben az előfizetésekben, amelyek jelenleg nem igényelnek HTTPS-forgalmat.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)megismerése.
+- A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

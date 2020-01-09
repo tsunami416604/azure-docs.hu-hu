@@ -1,23 +1,14 @@
 ---
 title: Azure Monitor a containers Health Monitors konfigurációjában | Microsoft Docs
 description: Ez a cikk az Azure Monitor for containers állapot-figyelők részletes konfigurációját ismertető tartalmat tartalmaz.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405039"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Azure Monitor a containers Health Monitor konfigurációs útmutatója
 
@@ -29,15 +20,15 @@ A figyelők a tárolók állapotának méréséhez és Azure Monitor hibák ész
 
 ## <a name="monitors"></a>Monitorozások
 
-A figyelő egy felügyelt objektum bizonyos aspektusának állapotát méri. A figyelők kettő vagy három állapottal rendelkeznek. Egy figyelő egy adott időpontban csak egy lehetséges állapotában lesz. A tároló ügynök által betöltött figyelő esetén a rendszer Kifogástalan állapotba inicializálja azt. Az állapot csak akkor változik, ha egy másik állapothoz megadott feltételek észlelhetők.
+A figyelő a felügyelt objektum bizonyos elemeinek állapotát méri. A figyelők két vagy három állapottal rendelkeznek. Adott figyelő minden egyes időpontban mindig egy, és csakis egy lehetséges állapottal rendelkezhet. A tároló ügynök által betöltött figyelő esetén a rendszer Kifogástalan állapotba inicializálja azt. Az állapot csak akkor változik, ha egy másik állapothoz megadott feltételek észlelhetők.
 
-Egy adott objektum általános állapota az egyes figyelők állapota alapján van meghatározva. Ez a hierarchia a tárolók Azure Monitor állapot-hierarchia paneljén látható. Az állapot összesítésének házirendje az összesítő figyelők konfigurációjának része.
+Adott objektum általános állapotát a hozzá tartozó egyes figyelők állapotai határozzák meg. Ez a hierarchia a tárolók Azure Monitor állapot-hierarchia paneljén látható. Az állapot összesítésének házirendje az összesítő figyelők konfigurációjának része.
 
 ## <a name="types-of-monitors"></a>Figyelők típusai
 
 |Figyelés | Leírás | 
 |--------|-------------|
-| Egység figyelője |Az egység-figyelő egy erőforrás vagy alkalmazás bizonyos aspektusait méri. Lehetséges, hogy az erőforrás teljesítményének és rendelkezésre állásának megállapításához a teljesítményszámláló ellenőrzése szükséges. |
+| Egységfigyelő |Az egység-figyelő egy erőforrás vagy alkalmazás bizonyos aspektusait méri. Lehetséges, hogy az erőforrás teljesítményének és rendelkezésre állásának megállapításához a teljesítményszámláló ellenőrzése szükséges. |
 |Összesítő figyelő | Az összesített figyelők csoport több figyelőt biztosít egyetlen állapot összesített állapotának biztosításához. Az egység figyelők általában egy adott összesítő figyelő alatt vannak konfigurálva. A Node összesítő figyelő például összesíti a csomópont CPU-kihasználtságát, a memória kihasználtságát és a csomópont állapotát.
  |
 
@@ -65,13 +56,13 @@ A tárolók Azure Monitor számos kulcsfontosságú figyelési forgatókönyvet 
 
 |**Figyelő neve** | Figyelő típusa | **Leírás** | **Paraméter** | **Érték** |
 |-----------------|--------------|-----------------|---------------|-----------|
-|Node memória kihasználtsága |Egység figyelője |Ez a figyelő percenként kiértékeli a csomópontok memóriájának kihasználtságát, a cadvisor jelentett adat használatával. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|Node memória kihasználtsága |Egységfigyelő |Ez a figyelő percenként kiértékeli a csomópontok memóriájának kihasználtságát, a cadvisor jelentett adat használatával. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Csomópont CPU-kihasználtsága |Egység figyelője |Ez a figyelő percenként ellenőrzi a csomópont CPU-kihasználtságát, a cadvisor jelentett adat használatával. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
-|Csomópont állapota |Egység figyelője |Ez a figyelő ellenőrzi a Kubernetes által jelentett csomóponti feltételeket.<br> Jelenleg a következő csomópont-feltételek vannak bejelölve: lemezes nyomás, memória-nyomás, PID-nyomás, a lemez, a hálózat nem érhető el, üzemkész állapot a csomóponthoz.<br> A fenti feltételektől **függetlenül, ha**a *lemez vagy a* *hálózat nem érhető* el, a figyelő **kritikus** állapotra vált.<br> Ha bármilyen más feltétel **igaz**, a **kész** állapottól eltérő, a figyelő **Figyelmeztetési** állapotba vált. | NodeConditionTypeForFailedState | outofdisk,networkunavailable ||
-|Tároló memóriájának kihasználtsága |Egység figyelője |Ez a figyelő a tároló példányainak memória-kihasználtsága (RSS) összesített állapotát jelenti.<br> Egy egyszerű összehasonlítást végez, amely összehasonlítja az egyes mintákat egyetlen küszöbértékkel, és a **ConsecutiveSamplesForStateTransition**konfigurációs paraméterrel van megadva.<br> Az állapota a tároló (StateThresholdPercentage) példányainak legrosszabb 90%-ában van kiszámítva, a tároló állapotának súlyossága csökkenő sorrendbe rendezve (azaz kritikus, figyelmeztetés, kifogástalan).<br> Ha egy tároló-példány nem kap rekordot, akkor a rendszer **ismeretlenként**jelenti a tároló példányának állapotát, és a rendezési sorrend magasabb prioritással rendelkezik a **kritikus** állapotra vonatkozóan.<br> A rendszer minden egyes tároló-példány állapotát a konfigurációban megadott küszöbértékek alapján számítja ki. Ha a használat meghaladja a kritikus küszöbértéket (90%), akkor a példány **kritikus** állapotban van, ha az kisebb, mint a kritikus küszöbérték (90%) de nagyobb a figyelmeztetési küszöbértéknél (80%), a példány **Figyelmeztetési** állapotban van. Ellenkező esetben **kifogástalan** állapotban van. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
-|Tároló CPU-kihasználtsága |Egység figyelője |Ez a figyelő a tároló példányainak CPU-kihasználtságának összesített állapotát jelenti.<br> Egy egyszerű összehasonlítást végez, amely összehasonlítja az egyes mintákat egyetlen küszöbértékkel, és a **ConsecutiveSamplesForStateTransition**konfigurációs paraméterrel van megadva.<br> Az állapota a tároló (StateThresholdPercentage) példányainak legrosszabb 90%-ában van kiszámítva, a tároló állapotának súlyossága csökkenő sorrendbe rendezve (azaz kritikus, figyelmeztetés, kifogástalan).<br> Ha egy tároló-példány nem kap rekordot, akkor a rendszer **ismeretlenként**jelenti a tároló példányának állapotát, és a rendezési sorrend magasabb prioritással rendelkezik a **kritikus** állapotra vonatkozóan.<br> A rendszer minden egyes tároló-példány állapotát a konfigurációban megadott küszöbértékek alapján számítja ki. Ha a használat meghaladja a kritikus küszöbértéket (90%), akkor a példány **kritikus** állapotban van, ha az kisebb, mint a kritikus küszöbérték (90%) de nagyobb a figyelmeztetési küszöbértéknél (80%), a példány **Figyelmeztetési** állapotban van. Ellenkező esetben **kifogástalan** állapotban van. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
-|A rendszerterhelési hüvelyek készen állnak |Egység figyelője |Ez a figyelő a hüvelyek százalékos arányán alapuló, üzemkész állapotban lévő állapotot jeleníti meg egy adott munkaterhelés esetében. Az állapota **kritikus** értékre van állítva, ha a hüvelyek kevesebb mint 100%-a **kifogástalan** állapotban van |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage |2<br> 100 ||
-|Kube API-állapot |Egység figyelője |Ez a figyelő a Kube API szolgáltatás állapotát jelzi. A figyelő kritikus állapotban van abban az esetben, ha a Kube API-végpont nem érhető el. Ennél a Figyelőnél az állapotot a Kube-API-kiszolgáló "csomópontok" végpontjának lekérdezésével határozzák meg. Minden más, mint egy OK válasz kódja **kritikus** állapotra változtatja a figyelőt. | Nincsenek konfigurációs tulajdonságok |||
+|Csomópont állapota |Egységfigyelő |Ez a figyelő ellenőrzi a Kubernetes által jelentett csomóponti feltételeket.<br> Jelenleg a következő csomópont-feltételek vannak bejelölve: lemezes nyomás, memória-nyomás, PID-nyomás, a lemez, a hálózat nem érhető el, üzemkész állapot a csomóponthoz.<br> A fenti feltételektől **függetlenül, ha**a *lemez vagy a* *hálózat nem érhető* el, a figyelő **kritikus** állapotra vált.<br> Ha bármilyen más feltétel **igaz**, a **kész** állapottól eltérő, a figyelő **Figyelmeztetési** állapotba vált. | NodeConditionTypeForFailedState | outofdisk,networkunavailable ||
+|Tároló memóriájának kihasználtsága |Egységfigyelő |Ez a figyelő a tároló példányainak memória-kihasználtsága (RSS) összesített állapotát jelenti.<br> Egy egyszerű összehasonlítást végez, amely összehasonlítja az egyes mintákat egyetlen küszöbértékkel, és a **ConsecutiveSamplesForStateTransition**konfigurációs paraméterrel van megadva.<br> Az állapota a tároló (StateThresholdPercentage) példányainak legrosszabb 90%-ában van kiszámítva, a tároló állapotának súlyossága csökkenő sorrendbe rendezve (azaz kritikus, figyelmeztetés, kifogástalan).<br> Ha egy tároló-példány nem kap rekordot, akkor a rendszer **ismeretlenként**jelenti a tároló példányának állapotát, és a rendezési sorrend magasabb prioritással rendelkezik a **kritikus** állapotra vonatkozóan.<br> A rendszer minden egyes tároló-példány állapotát a konfigurációban megadott küszöbértékek alapján számítja ki. Ha a használat meghaladja a kritikus küszöbértéket (90%), akkor a példány **kritikus** állapotban van, ha az kisebb, mint a kritikus küszöbérték (90%) de nagyobb a figyelmeztetési küszöbértéknél (80%), a példány **Figyelmeztetési** állapotban van. Ellenkező esetben **kifogástalan** állapotban van. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|Tároló CPU-kihasználtsága |Egységfigyelő |Ez a figyelő a tároló példányainak CPU-kihasználtságának összesített állapotát jelenti.<br> Egy egyszerű összehasonlítást végez, amely összehasonlítja az egyes mintákat egyetlen küszöbértékkel, és a **ConsecutiveSamplesForStateTransition**konfigurációs paraméterrel van megadva.<br> Az állapota a tároló (StateThresholdPercentage) példányainak legrosszabb 90%-ában van kiszámítva, a tároló állapotának súlyossága csökkenő sorrendbe rendezve (azaz kritikus, figyelmeztetés, kifogástalan).<br> Ha egy tároló-példány nem kap rekordot, akkor a rendszer **ismeretlenként**jelenti a tároló példányának állapotát, és a rendezési sorrend magasabb prioritással rendelkezik a **kritikus** állapotra vonatkozóan.<br> A rendszer minden egyes tároló-példány állapotát a konfigurációban megadott küszöbértékek alapján számítja ki. Ha a használat meghaladja a kritikus küszöbértéket (90%), akkor a példány **kritikus** állapotban van, ha az kisebb, mint a kritikus küszöbérték (90%) de nagyobb a figyelmeztetési küszöbértéknél (80%), a példány **Figyelmeztetési** állapotban van. Ellenkező esetben **kifogástalan** állapotban van. |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|A rendszerterhelési hüvelyek készen állnak |Egységfigyelő |Ez a figyelő a hüvelyek százalékos arányán alapuló, üzemkész állapotban lévő állapotot jeleníti meg egy adott munkaterhelés esetében. Az állapota **kritikus** értékre van állítva, ha a hüvelyek kevesebb mint 100%-a **kifogástalan** állapotban van |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage |2<br> 100 ||
+|Kube API-állapot |Egységfigyelő |Ez a figyelő a Kube API szolgáltatás állapotát jelzi. A figyelő kritikus állapotban van abban az esetben, ha a Kube API-végpont nem érhető el. Ennél a Figyelőnél az állapotot a Kube-API-kiszolgáló "csomópontok" végpontjának lekérdezésével határozzák meg. Minden más, mint egy OK válasz kódja **kritikus** állapotra változtatja a figyelőt. | Nincsenek konfigurációs tulajdonságok |||
 
 ### <a name="aggregate-monitors"></a>Összesített figyelők
 
