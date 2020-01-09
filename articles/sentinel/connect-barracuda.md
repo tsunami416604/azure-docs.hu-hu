@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 12/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 97f10058038e3bf4fbcca2cf86d074869ffefed4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72284661"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610692"
 ---
 # <a name="connect-your-barracuda-appliance"></a>A Barracuda-berendezés összekötése 
 
@@ -50,4 +50,6 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 Ebben a dokumentumban megtanulta, hogyan csatlakoztathatók a Barracuda-készülékek az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+
 

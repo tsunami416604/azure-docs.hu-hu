@@ -1,25 +1,14 @@
 ---
-title: Azure Active Directory beállítása Service Fabric ügyfél-hitelesítéshez | Microsoft Docs
+title: Azure Active Directory beállítása az ügyfél-hitelesítéshez
 description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure AD) a Service Fabric-fürtökhöz tartozó ügyfelek hitelesítéséhez.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/28/2019
-ms.author: atsenthi
-ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901505"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614689"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
@@ -31,6 +20,11 @@ A Service Fabric-fürtök több belépési pontot biztosítanak a felügyeleti f
 
 > [!NOTE]
 > Linux rendszeren a fürt létrehozása előtt végre kell hajtania a következő lépéseket. Windows rendszeren lehetősége van az [Azure ad-hitelesítés konfigurálására is egy meglévő fürthöz](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md).
+
+> [!NOTE]
+> [Ismert probléma](https://github.com/microsoft/service-fabric/issues/399) , hogy a Linux HRE-kompatibilis fürtökön futó alkalmazások és csomópontok nem tekinthetők meg az Azure Portalon.
+
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy már létrehozott egy bérlőt. Ha nem, először olvassa el [Azure Active Directory bérlő beszerzését ismertető témakört][active-directory-howto-tenant].

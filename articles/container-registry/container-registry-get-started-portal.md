@@ -4,12 +4,12 @@ description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Docker-beáll
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c5e6de0fdb7d0e46fa9be28483fd894289baf1a3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455219"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611236"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rövid útmutató: saját tároló-beállításjegyzék létrehozása a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registr
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-01]
 
-Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkben. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `West US` nevű új erőforráscsoportot az `myResourceGroup` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget. Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
+Adjon meg értékeket az **Adatbázis neve** és **Erőforráscsoport** mezőkben. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Ebben a rövid útmutatóban hozzon létre egy `myResourceGroup` nevű új erőforráscsoportot az `West US` nevű helyen, majd a **Termékváltozat** mezőben válassza az „Alapszintű” lehetőséget. Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
 
 ![Tároló-beállításjegyzék létrehozása a Azure Portal][qs-portal-03]
 
@@ -43,7 +43,7 @@ Jegyezze fel a **bejelentkezési kiszolgáló**értékét. Ezt az értéket a k�
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
-A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-példányba. Nyisson meg egy parancssori felületet az operációs rendszeren, és használja az az [ACR login][az-acr-login] parancsot az Azure CLI-ben.
+A tárolórendszerképek mozgatásához először be kell jelentkeznie az ACR-példányba. Nyisson meg egy parancssori felületet az operációs rendszeren, és használja az az [ACR login][az-acr-login] parancsot az Azure CLI-ben. (Csak a tároló nevét adja meg. Ne tartalmazza a "azurecr.io"
 
 ```azurecli
 az acr login --name <acrName>

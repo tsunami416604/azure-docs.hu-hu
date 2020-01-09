@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a6b463c4a1d0e640cc6c2a380ee978fcafa2877e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0bb928fe23fcfc3580b0c3951c48f2636ab86c81
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670338"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526702"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési feladatok végrehajtása: feltárás, modellezés és üzembe helyezés
 
-A tipikus adatelemzési feladatok közé tartozik az adatok feltárása, modellezése és üzembe helyezése. Ez a cikk bemutatja, hogyan használható az **interaktív adatelemzési, elemzési és jelentéskészítési (ideaer-)** és **automatizált modellezési és jelentéskészítési (a)** segédprogramok számos olyan általános adatelemzési feladat végrehajtásához, mint például az interaktív adatok feltárása, adatok elemzés, jelentéskészítés és modell létrehozása. Emellett számos eszközkészlet és adatplatform használatával ismerteti a modellek éles környezetbe történő üzembe helyezésének lehetőségeit, például az alábbiakat:
+A tipikus adatelemzési feladatok közé tartozik az adatok feltárása, modellezése és üzembe helyezése. Ez a cikk bemutatja, hogyan használható az interaktív adatelemzési **, elemzési és jelentéskészítési (ideaer-)** és **automatizált modellezési és jelentéskészítési (-)** segédprogramok számos olyan általános adatelemzési feladat végrehajtásához, mint például az interaktív adatok feltárása, az adatok elemzése, a jelentéskészítés és a modellek létrehozása. Emellett számos eszközkészlet és adatplatform használatával ismerteti a modellek éles környezetbe történő üzembe helyezésének lehetőségeit, például az alábbiakat:
 
 - [Azure Machine Learning](../index.yml)
 - [SQL-Server ML-szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
@@ -86,7 +86,7 @@ Az éles környezetbe állítás lehetővé teszi, hogy egy modell aktív szerep
 A modellek éles környezetben való üzembe helyezéséhez különböző megközelítések és platformok tartoznak. Íme néhány lehetőség:
 
 
-- [Modell üzembe helyezése Azure Machine Learning](../service/how-to-deploy-and-where.md)
+- [Modell üzembe helyezése Azure Machine Learning](../how-to-deploy-and-where.md)
 - [Modell üzembe helyezése az SQL-Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -102,11 +102,11 @@ További példákat talál az útmutatókban, amelyek a folyamat összes lépés
 >
 >
 
-### <a name="ab-testing"></a>A/B tesztelés
+### <a name="ab-testing"></a>A/B-tesztelés
 Ha több modell van éles környezetben, hasznos lehet a [/B teszt](https://en.wikipedia.org/wiki/A/B_testing) végrehajtása a modellek teljesítményének összehasonlításához. 
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatelemzési [projektek előrehaladásának követésével](track-progress.md) megtudhatja, hogy az adattudós hogyan követheti nyomon az adatelemzési projekt állapotát.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240625"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610403"
 ---
 # <a name="connect-windows-firewall"></a>A Windows tűzfal csatlakoztatása
 
@@ -30,7 +30,8 @@ A Windows tűzfal-összekötő segítségével könnyedén csatlakoztathatja a W
 
 
 > [!NOTE]
-> Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
+> - Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
+> - Ha az Azure Sentinel és a Azure Security Center összegyűjtése ugyanarra a munkaterületre történik, nem szükséges engedélyezni a Windows tűzfal megoldását ezen az összekötőn keresztül. Ha ezt az állapotot engedélyezte, akkor a duplikált adatértékeket nem okoz. 
 
 ## <a name="enable-the-connector"></a>Az összekötő engedélyezése 
 
@@ -56,7 +57,7 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Windows tűzfal az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

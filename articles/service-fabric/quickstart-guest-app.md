@@ -1,25 +1,14 @@
 ---
-title: Meglévő alkalmazás gyors üzembe helyezése egy Azure Service Fabric-fürtön
+title: Meglévő alkalmazás gyors üzembe helyezése fürtön
 description: Meglévő Node.js-alkalmazás üzemeltetése egy Azure Service Fabric-fürtön a Visual Studio használatával.
-services: service-fabric
-documentationcenter: nodejs
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592452"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614842"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
 
@@ -52,7 +41,7 @@ A következő párbeszédpanelen bármilyen típusú Service Fabric-szolgáltat�
 
 Adja a **MyGuestService** nevet a szolgáltatásnak, adja meg a következő értékeket a jobb oldali beállításokhoz:
 
-| Beállítás                   | Érték |
+| Beállítás                   | Value (Díj) |
 | ------------------------- | ------ |
 | Kódcsomag mappája       | _&lt;a mappa, ahol a Node.js-alkalmazás található&gt;_ |
 | Kódcsomag viselkedése     | A mappa tartalmának másolása a projektbe |
@@ -83,7 +72,7 @@ A szolgáltatási projekt tartalmának áttekintéséhez lásd: [Bevezetés a Re
 
 A példában üzembe helyezett Node.js-alkalmazás a **80**-as portot használja, és a Service Fabricnak tudnia kell, hogy ennek a portnak elérhetőnek kell lennie.
 
-Nyissa meg a **ServiceManifest.xml** fájlt a projektben. A jegyzékfájl alján van egy `<Resources> \ <Endpoints>` már definiált bejegyzés. Módosítsa ezt a bejegyzést a `Port`, a `Protocol` és a `Type` hozzáadásával. 
+Nyissa meg a **ServiceManifest.xml** fájlt a projektben. A jegyzékfájl alján van egy `<Resources> \ <Endpoints>` egy már definiált bejegyzéssel. Módosítsa ezt a bejegyzést a `Port`, a `Protocol` és a `Type` hozzáadásával. 
 
 ```xml
   <Resources>
@@ -108,7 +97,7 @@ Válassza ki a **PublishProfiles\Cloud.xml** célprofilt.
 
 Ha korábban még nem tette meg, válassza ki az üzembe helyezés céljaként szolgáló Azure-fiókot. Ha még nem rendelkezik ilyennel, [regisztráljon egyet][create-account].
 
-A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza az **&lt;új fürt létrehozása... lehetőséget. ekkor&gt;** megnyílik a webböngésző ablaka a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza a **&lt;új fürt létrehozása...&gt;** , amely megnyitja a webböngésző ablakát a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 A Service Fabric-fürt létrehozásakor ügyeljen rá, hogy az **Egyéni végpontok** beállítás értéke **80** legyen.
 
@@ -130,13 +119,13 @@ Ellenőrizze a szolgáltatás címének Áttekintés paneljét. Használja az _�
 
 ![A Service Fabric áttekintési panelje az Azure Portalon][overview]
 
-Navigáljon erre a címre, ahol megjelenik a `HELLO WORLD` válasz.
+Navigáljon erre a címre, ahol a `HELLO WORLD` választ fogja látni.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
 Ne felejtse el törölni az ehhez a rövid útmutatóhoz létrehozott összes erőforrást, mivel ezekért az erőforrásokért kell fizetnie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

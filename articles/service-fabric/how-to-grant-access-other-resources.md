@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric – más Azure-erőforrásokhoz való hozzáférés biztosítása Service Fabric alkalmazás számára | Microsoft Docs
+title: Alkalmazás-hozzáférés biztosítása más Azure-erőforrásokhoz
 description: Ez a cikk azt ismerteti, hogyan biztosítható a felügyelt identitást támogató Service Fabric alkalmazásokhoz való hozzáférés más Azure-erőforrásokhoz Azure Active Directory-alapú hitelesítés támogatásával.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 467b202cf6b981969316a2646aac99f788f7a2f4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2019
+ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091183"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614793"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric alkalmazás felügyelt identitás-hozzáférésének megadása az Azure-erőforrásokhoz (előzetes verzió)
 
@@ -29,18 +24,18 @@ Az adatok Azure Storage-blobból való lekéréséhez használhatja a Service Fa
 3. választható Meglévő hozzáférés ellenőrzése: válassza a rendszer vagy a felhasználó által hozzárendelt felügyelt identitás elemet a keresés vezérlőelemben; Válassza ki a megfelelő identitást az eredményül kapott eredmények listájából
 4. Kattintson a + szerepkör-hozzárendelés hozzáadása lehetőségre az oldal tetején egy új szerepkör-hozzárendelés hozzáadásához az alkalmazás identitásához.
 A szerepkör alatt a legördülő listából válassza a Storage blob-Adatolvasó lehetőséget.
-5. A következő legördülő menüben válassza a hozzáférés társítása elemet `User assigned managed identity`.
+5. A következő legördülő menüben, a hozzáférés társítása területen válassza a `User assigned managed identity`lehetőséget.
 6. Ezután győződjön meg arról, hogy a megfelelő előfizetés szerepel az előfizetés legördülő listájában, majd állítsa be az erőforráscsoportot az összes erőforráscsoporthoz.
 7. A kiválasztás területen válassza ki a Service Fabric alkalmazásnak megfelelő UAI, majd kattintson a Mentés gombra.
 
-A rendszer által hozzárendelt Service Fabric felügyelt identitások támogatása nem tartalmazza a Azure Portal integrációját; Ha az alkalmazás rendszer által hozzárendelt identitást használ, először meg kell keresnie az alkalmazás identitásának ügyfél-azonosítóját, majd újra meg kell ismételnie a fenti lépéseket, `Azure AD user, group, or service principal` de a keresés vezérlőelemben is ki kell választania a lehetőséget.
+A rendszer által hozzárendelt Service Fabric felügyelt identitások támogatása nem tartalmazza a Azure Portal integrációját; Ha az alkalmazás rendszer által hozzárendelt identitást használ, először meg kell keresnie az alkalmazás identitásának ügyfél-AZONOSÍTÓját, majd újra meg kell ismételnie a fenti lépéseket, de a keresés vezérlőelemben a `Azure AD user, group, or service principal` lehetőséget kell választania.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Hozzáférés biztosítása Azure Key Vault
 A tárterület eléréséhez hasonlóan kihasználhatja egy Service Fabric alkalmazás felügyelt identitását az Azure Key Vault eléréséhez. A hozzáférés megadásának lépései a Azure Portalban hasonlóak a fent felsoroltak esetében, és itt nem ismétlődik meg. A különbségeket az alábbi képen tekintheti meg.
 
 ![Hozzáférési szabályzat Key Vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-Az alábbi példa azt szemlélteti, hogyan lehet hozzáférést biztosítani a tárolóhoz egy sablon központi telepítése révén; adja hozzá az alábbi kódrészlet (eke) t a sablon `resources` eleme alá tartozó másik bejegyzéshez. A minta azt mutatja be, hogy a hozzáférés megadására a felhasználó által hozzárendelt és a rendszer által hozzárendelt identitások típusai is érvényesek, vagy válassza ki a megfelelőt.
+Az alábbi példa azt szemlélteti, hogyan lehet hozzáférést biztosítani a tárolóhoz egy sablon központi telepítése révén; adja hozzá az alábbi kódrészlet (eke) t a sablon `resources` eleméhez tartozó másik bejegyzéshez. A minta azt mutatja be, hogy a hozzáférés megadására a felhasználó által hozzárendelt és a rendszer által hozzárendelt identitások típusai is érvényesek, vagy válassza ki a megfelelőt.
 
 ```json
     # under 'variables':
@@ -109,6 +104,6 @@ Az alábbi példa azt szemlélteti, hogyan lehet hozzáférést biztosítani a t
 
 További részletekért lásd: tárolók [– frissítési hozzáférési szabályzat](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 8ab4cb6b06f0f023a8f6368dac633a97afe29fd4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.openlocfilehash: 55bcefc19723dc275cc8b421d5620c5dfe2c96e7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390022"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614956"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>A várólista tárolásának teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -25,7 +25,7 @@ Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a 
 
 Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olyan ellenőrzőlista számára, amelyet követheti a várólista-tároló alkalmazás fejlesztése során.
 
-| Kész | Kategória | Tervezési szempont |
+| Kész | Kategória | Kialakítási szempont |
 | --- | --- | --- |
 | &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
@@ -51,7 +51,7 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olya
 
 Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#azure-queue-storage-scale-targets).
+További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
@@ -194,5 +194,5 @@ A várólisták segítségével méretezhetővé teheti az alkalmazás architekt
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókok esetében](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Az Azure Storage a tárfiókokra vonatkozó skálázhatósági és teljesítménycéljai](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

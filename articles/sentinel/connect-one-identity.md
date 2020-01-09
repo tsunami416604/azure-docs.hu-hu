@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 06c1415b07b1ed9ce4d0b4900510465496b9dbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514107"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610505"
 ---
 # <a name="connect-one-identity-safeguard"></a>Egy Identity-védelem összekötése
 Az egyetlen Identity védzáradék-összekötő fokozza a standard Common Event Format (CEF) összekötőt, amely védelmet biztosít a Kiemelt munkamenetek-specifikus irányítópultok számára. Ezzel az összekötővel egyszerűen megkezdheti az eszköz vizualizációk, riasztások, nyomozások és egyéb események által generált eseményeinek használatát.
@@ -38,8 +38,10 @@ Az egyetlen Identity védzáradék-összekötő fokozza a standard Common Event 
 3. Kövesse az **egyetlen Identity védelme** oldalon található utasításokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat az Azure Sentinelhez egy Identity-védelem. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+
 
