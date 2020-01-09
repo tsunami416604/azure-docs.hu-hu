@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447715"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -28,10 +28,10 @@ A QnA Maker szolgáltatás két típusú kulccsal foglalkozik: az **előfizetés
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Név|Hely|Cél|
+|Név|Földrajzi egység|Rendeltetés|
 |--|--|--|
 |Előfizetői azonosító|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
-|Végpont kulcsa|[QnA Maker portál](http://www.qnamaker.ai)|Ezek a kulcsok a közzétett Tudásbázis-végpont elérésére szolgálnak, így választ kaphat a felhasználó kérdéseire. Ezt a végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
+|Végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezek a kulcsok a közzétett Tudásbázis-végpont elérésére szolgálnak, így választ kaphat a felhasználó kérdéseire. Ezt a végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
 
 ## <a name="create-a-new-qna-maker-service"></a>Új QnA Maker szolgáltatás létrehozása
 
@@ -63,7 +63,7 @@ Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szüksége
 
     * Adja meg, hogy szeretné-e engedélyezni **Application Insights**. Ha a **Application Insights** engedélyezve van, QnA Maker gyűjti a telemetria a forgalom, a csevegési naplók és a hibák alapján.
     * Válassza ki azt az **alkalmazás-bepillantást** , ahol a Application Insights erőforrást telepíteni fogja.
-    * A költségmegtakarítási mértékek esetében [megoszthat](#share-existing-services-with-qna-maker) néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást. 
+    * A költségmegtakarítási mértékek esetében [megoszthat](#share-existing-services-with-qna-maker) néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást.
 
 1. Miután az összes mezőt érvényesíti, válassza a **Létrehozás**lehetőséget. A folyamat eltarthat néhány percig.
 
@@ -187,7 +187,7 @@ Jelenleg nem végezhető el az Azure Search SKU helyben történő frissítése.
 
 Az QnAMaker Runtime a Azure App Service példány része, amelyet akkor telepítenek, amikor [létrehoz egy QnAMaker szolgáltatást](./set-up-qnamaker-service-azure.md) a Azure Portal. A rendszer rendszeresen frissíti a frissítéseket a futtatókörnyezetben. A QnA Maker App Service példánya automatikus frissítési módban van az április 2019-es hely kiterjesztésének kiadása után (5. verzió +). Ez a frissítés úgy lett kialakítva, hogy a frissítések során ne legyenek nulla állásidő.
 
-Az aktuális verziót https://www.qnamaker.ai/UserSettingscímen tekintheti meg. Ha a verziószáma 5. x verziónál régebbi, a legújabb frissítések alkalmazásához újra kell indítania App Servicet:
+Az aktuális verziót https://www.qnamaker.ai/UserSettings címen tekintheti meg. Ha a verziószáma 5. x verziónál régebbi, a legújabb frissítések alkalmazásához újra kell indítania App Servicet:
 
 1. Lépjen a QnAMaker szolgáltatásra (erőforráscsoport) a [Azure Portal](https://portal.azure.com).
 
@@ -205,7 +205,7 @@ Az aktuális verziót https://www.qnamaker.ai/UserSettingscímen tekintheti meg.
 
 QnA Maker felügyeleti szolgáltatása csak a QnA Maker portál és a kezdeti adatfeldolgozás esetében használatos. Ez a szolgáltatás csak az USA nyugati régiójában érhető el. Ebben a Nyugat-amerikai szolgáltatásban nem tárolunk ügyféladatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 

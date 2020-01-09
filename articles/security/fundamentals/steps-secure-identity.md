@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353237"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -112,9 +112,14 @@ A saját örökölt módszereiket használó alkalmazások az Azure AD-vel való
 
 A szabálysértések megsértésének feltételezésével csökkentheti a feltört felhasználói hitelesítő adatok következményeit, amikor azok történnek. A környezetben lévő minden alkalmazás esetében tekintse meg a következő érvényes használati eseteket: mely csoportok, mely hálózatok, mely eszközök és egyéb elemek engedélyezettek –, majd tiltsa le a többiet. Az [Azure ad feltételes hozzáférésével](../../active-directory/conditional-access/overview.md)szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá az alkalmazásaihoz és erőforrásaihoz az Ön által megadott feltételek alapján.
 
-### <a name="block-end-user-consent"></a>Végfelhasználói engedély letiltása
+### <a name="restrict-user-consent-operations"></a>Felhasználói engedélyezési műveletek korlátozása
 
-Alapértelmezés szerint az Azure AD minden felhasználója engedélyezheti, hogy az OAuth 2,0-et használó alkalmazások és a Microsoft Identity [engedélyezési keretrendszer](../../active-directory/develop/consent-framework.md) engedélyei hozzáférjenek a vállalati adatokhoz. Míg a hozzájárulás lehetővé teszi, hogy a felhasználók könnyen beszerezzék a Microsoft 365 és az Azure-ba integrált hasznos alkalmazásokat, a kockázatokat jelenthetik, ha nem használják és nem figyelik körültekintően. Az [összes jövőbeli felhasználói beleegyező művelet letiltásával](../../active-directory/manage-apps/methods-for-removing-user-access.md) csökkentheti a felületi területet, és enyhítheti a kockázatot. Ha a végfelhasználói hozzájárulás le van tiltva, a rendszer továbbra is tiszteletben tartja az előző hozzájárulási támogatást, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A funkció letiltása előtt azt javasoljuk, hogy a felhasználók tisztában legyenek azzal, hogyan kérheti le az új alkalmazások rendszergazdai jóváhagyását; Ennek segítségével csökkentheti a felhasználók súrlódását, minimalizálhatja a támogatás mennyiségét, és gondoskodhat arról, hogy a felhasználók ne regisztráljanak a nem Azure AD hitelesítő adatokat használó alkalmazásokra.
+Fontos megérteni a különböző [Azure ad-alkalmazásokhoz való beleegyezési tapasztalatokat](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), az [engedélyek és a beleegyezés típusát](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent), valamint a szervezet biztonsági helyzetére gyakorolt hatásukat. Alapértelmezés szerint az Azure AD minden felhasználója biztosíthat olyan alkalmazásokat, amelyek kihasználják a Microsoft Identity platformot a szervezet adatainak eléréséhez. A felhasználók saját maguk is engedélyezhetik, hogy a felhasználók egyszerűen beszerezzék a Microsoft 365-, Azure-és egyéb szolgáltatásokkal integrálható hasznos alkalmazásokat, és ez kockázatot jelenthet, ha nem használatos és nem figyeli őket körültekintően.
+
+A Microsoft javasolja a [jövőbeli felhasználói engedélyezési műveletek letiltását](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) a felület csökkentése és a kockázat enyhítése érdekében. Ha a végfelhasználói hozzájárulás le van tiltva, a rendszer továbbra is tiszteletben tartja a korábbi hozzájárulási engedélyeket, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A rendszergazdáknak az integrált [rendszergazdai engedélyezési kérelem munkafolyamatán](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) vagy a saját támogatási folyamatain keresztül kérhetik a rendszergazdai jogosultságokat. A funkció letiltása előtt javasoljuk, hogy tekintse át a naplót annak megértéséhez, hogy mely alkalmazások a felhasználók hozzájárulnak a módosításhoz, és tervezze meg ennek megfelelően a változást. Azon alkalmazások esetében, amelyek számára engedélyezni szeretné az összes felhasználó hozzáférését, fontolóra kell vennie az [összes felhasználó nevében való hozzájárulást](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), így biztosítva, hogy a korábban még nem beleegyezett felhasználók hozzáférhessenek az alkalmazáshoz. Ha nem szeretné, hogy ezek az alkalmazások minden esetben elérhetők legyenek az összes felhasználó számára, használja az [alkalmazás-hozzárendelést](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) és a [feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) az alkalmazások felhasználói hozzáférésének korlátozásához.
+
+Győződjön meg arról, hogy a felhasználók az új alkalmazások számára rendszergazdai jóváhagyást kérhetnek a felhasználói súrlódás csökkentése érdekében, minimálisra csökkentik a kötetek támogatását, és megakadályozhatják, hogy a felhasználók nem Azure AD-beli hitelesítő adatokkal regisztráljanak. A hozzájárulási műveletek szabályozása után a rendszergazdáknak rendszeresen be kell jelentkezniük az alkalmazásra és a beleegyezési engedélyekre.
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management implementálása
 
@@ -173,7 +178,9 @@ Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshe
 
 ### <a name="audit-apps-and-consented-permissions"></a>Az alkalmazások és a beleegyezett engedélyek naplózása
 
-A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket.
+A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket, vagy le kell tiltaniuk, hogy a felhasználók alapértelmezés szerint megadják a hozzájárulásukat. 
+
+A felhasználók által megadott engedélyek naplózása mellett a szolgáltatás a prémium szintű környezetek számára elérhetővé teszi a [kockázatos vagy nemkívánatos OAuth-alkalmazások](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)kipróbálását és konkrét megkeresését.
 
 ## <a name="step-5---enable-end-user-self-service"></a>5\. lépés – a végfelhasználói önkiszolgáló engedélyezése
 

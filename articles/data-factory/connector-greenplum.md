@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 327891f16e3a41b49d43dabed42e8ab55a85fc92
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 682d3f569d2bc3f2ab6793ce99c20b81a76fbbc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929390"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444285"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Adatok másolása a Greenplum a Azure Data Factory használatával
 
@@ -37,7 +37,7 @@ A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat en
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,7 +50,7 @@ A Greenplum társított szolgáltatás a következő tulajdonságokat támogatja
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Greenplum** | Igen |
-| connectionString | ODBC-kapcsolati sztring a Greenplum való kapcsolódáshoz. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectionString | ODBC-kapcsolati sztring a Greenplum való kapcsolódáshoz. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa**
@@ -61,10 +61,7 @@ A Greenplum társított szolgáltatás a következő tulajdonságokat támogatja
     "properties": {
         "type": "Greenplum",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "HOST=<server>;PORT=<port>;DB=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "HOST=<server>;PORT=<port>;DB=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -82,10 +79,7 @@ A Greenplum társított szolgáltatás a következő tulajdonságokat támogatja
     "properties": {
         "type": "Greenplum",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "HOST=<server>;PORT=<port>;DB=<database>;UID=<user name>;"
-            },
+            "connectionString": "HOST=<server>;PORT=<port>;DB=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

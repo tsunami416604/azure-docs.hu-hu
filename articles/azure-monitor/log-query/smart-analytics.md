@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 03a4b8df24a0ab1dbe3cfabd3ccf207005b0e186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397616"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Intelligens elemzési példák Log Analytics
 Ez a cikk olyan példákat tartalmaz, amelyek a Log Analytics Smart Analytics-függvényeit használják a felhasználói tevékenységek elemzésének végrehajtásához. Ezekkel a példákkal elemezheti Application Insights által figyelt saját alkalmazásait, vagy használhatja az ezekben a lekérdezésekben szereplő fogalmakat a hasonló elemzésekhez más adatain. 
@@ -184,7 +184,7 @@ Ebből a példából megtudhatja, hogyan hozhat létre automatikus detektort a s
 A szolgáltatás állapotának kiértékelésére két módszer használható a nyomkövetési naplókból származó adat alapján:
 
 - A [make-sorozat](/azure/kusto/query/make-seriesoperator) használatával a félig strukturált szöveges nyomkövetési naplókat egy olyan mérőszámba alakíthatja át, amely a pozitív és negatív nyomkövetési sorok arányát jelöli.
-- A [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) és a [series_fit_line](/azure/kusto/query/series-fit-linefunction) használatával speciális lépésenkénti észlelést végezhet az idősorozat-elemzés és a 2 soros lineáris regresszió használatával.
+- A [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) és [series_fit_line](/azure/kusto/query/series-fit-linefunction) használatával speciális lépésenkénti észlelést végezhet az idősorozat-elemzés és a 2 soros lineáris regresszió használatával.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354820"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Azure Data Lake Storage Gen2i adatelemzés Power BI használatával
 
@@ -26,8 +26,9 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 > * Hierarchikus névtérrel rendelkező Storage-fiók. Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
-> Ez a cikk azt feltételezi, hogy létrehozott egy nevű `myadlsg2`fiókot.
-> * A Storage-fiókban `Drivers.txt` található minta nevű adatfájl.
+> Ez a cikk azt feltételezi, hogy létrehozott egy `myadlsg2`nevű fiókot.
+> * A következő szerepkörök egyike adható meg a Storage-fiókhoz: **blob-Adatolvasó**, **blob-adat közreműködői**vagy **blob-adat tulajdonosa**.
+> * Egy `Drivers.txt` nevű minta adatfájl, amely a Storage-fiókban található.
 > Ezt a mintát [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)töltheti le, majd feltöltheti a fájlt a Storage-fiókjába.
 > * **Power bi Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331). 
 
@@ -39,13 +40,13 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     ![Adatlekérdezés lap](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. A **Azure Data Lake Storage Gen2** párbeszédpanelen megadhatja az Azure Data Lake Storage Gen2-fiók, a fájlrendszer vagy az almappa URL-címét a tároló végpontjának formátuma alapján. A Data Lake Storage Gen2 URL-címei rendelkeznek a `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` következő mintával, majd az **OK**gombra.
+4. A **Azure Data Lake Storage Gen2** párbeszédpanelen megadhatja az Azure Data Lake Storage Gen2-fiók, a fájlrendszer vagy az almappa URL-címét a tároló végpontjának formátuma alapján. A Data Lake Storage Gen2 URL-címei rendelkeznek a következő mintával `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>`, majd kattintson **az OK**gombra.
 
-    ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
+    ![URL-cím](media/data-lake-storage-use-power-bi/adls-url.png)
 
 5. A következő párbeszédpanelen kattintson a Bejelentkezés gombra a Storage **-** fiókba való bejelentkezéshez. A rendszer átirányítja a szervezet bejelentkezési oldalára. Az utasításokat követve jelentkezzen be a fiókba.
 
-    ![Bejelentkezési lap](media/data-lake-storage-use-power-bi/sign-in.png)
+    ![Bejelentkezés lap](media/data-lake-storage-use-power-bi/sign-in.png)
 
 6. Miután sikeresen bejelentkezett, kattintson a **kapcsolat**gombra.
 
@@ -71,7 +72,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 10. A **Lekérdezés-szerkesztő** **tartalom** oszlopában kattintson a **bináris**elemre. A rendszer automatikusan CSV-fájlként észleli a fájlt, és az alább látható kimenet jelenik meg. Az adatai mostantól a vizualizációk létrehozásához használható formátumban érhetők el.
 
-    ![Output](media/data-lake-storage-use-power-bi/binary.png)
+    ![Kimenet](media/data-lake-storage-use-power-bi/binary.png)
 
 11. A menüszalag **kezdőlapján** kattintson a **Bezárás** gombra, majd kattintson a **Bezárás** **gombra, és**válassza az **alkalmaz**lehetőséget.
 
@@ -95,7 +96,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     ![Tortadiagram](media/data-lake-storage-use-power-bi/pie-chart.png)
 
-14. Ha kijelöl egy adott országot az oldal szintjének szűrők közül, láthatja az illesztőprogramok számát a kiválasztott ország minden városában. Például a vizualizációk lap **oldal szintű szűrők**területén válassza a **Brazília**elemet.
+14. Ha kijelöl egy adott országot az oldal szintjének szűrők közül, láthatja az illesztőprogramok számát a kiválasztott ország minden városában. Például a **vizualizációk** lap **oldal szintű szűrők**területén válassza a **Brazília**elemet.
 
     ![Oldal szűrők](media/data-lake-storage-use-power-bi/page-filters.png)
 

@@ -1,19 +1,19 @@
 ---
 title: Az eszközök csatlakoztatása és a telemetria bejövő állapota – Azure digitális Twins | Microsoft Docs
-description: Megtudhatja, hogyan csatlakozhat egy eszközhöz az Azure digitális Twins-n belül.
+description: Megtudhatja, hogyan csatlakozhat, és hogyan küldhet telemetria egy IoT-eszközről az Azure digitális Twins szolgáltatásban.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 01/03/2020
+ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010129"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660341"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -67,11 +67,11 @@ Testre szabhatja az eszköz üzenetének formátumát és a hasznos adatokat, ho
 
  Az **üzenetek** hasznos adatai akár 256 KB-os méretig is lehetnek tetszőleges adattartalom. A [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típus tulajdonságainál néhány követelménynek kell szerepelnie. A táblázat a rendszer által támogatott kötelező és választható tulajdonságokat jeleníti meg.
 
-| Tulajdonság neve | Érték | Kötelező | Leírás |
+| Tulajdonság neve | Value (Díj) | Szükséges | Leírás |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
+| **DigitalTwins – telemetria** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az **üzenetet**küldő érzékelő egyedi azonosítója. Ennek az értéknek meg kell egyeznie egy objektum **HardwareId** tulajdonságával, hogy a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Nem | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formázott dátum sztring, amely azonosítja a hasznos adatok mintavételi idejét. Például: `2018-09-20T07:35:00.8587882-07:00`. |
+| **CreationTimeUtc** | `string` | Nem | [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formázott dátum sztring, amely azonosítja a hasznos adatok mintavételi idejét. Például: `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nem | Egy UUID, amely a rendszer eseményeinek nyomon követésére szolgál. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Üzenet küldése a digitális ikreknek

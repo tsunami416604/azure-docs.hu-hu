@@ -1,38 +1,38 @@
 ---
-title: Térinformatikai adatok az Azure Cosmos DB SQL API-fiók
-description: Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és az SQL API térbeli objektum lekérdezése.
+title: Térinformatikai adatbázis használata Azure Cosmos DB SQL API-fiókban
+description: Megtudhatja, hogyan hozhat létre, indexelheti és lekérdezheti a térbeli objektumokat Azure Cosmos DB és az SQL API-val.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441884"
 ---
-# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON-helyadatok használata Azure Cosmos DB SQL API-fiókkal
 
-Ez a cikk az Azure Cosmos DB a térinformatikai funkciókat bemutató. Csak a Cosmos DB SQL API-fiókok jelenleg tárolásához, és a földrajzi adatok eléréséhez támogatja. Ez a cikk elolvasása után fogja tudni a következő kérdések megválaszolásával:
+Ez a cikk a Azure Cosmos DB térinformatikai funkciójának bevezetését ismerteti. Jelenleg csak Cosmos DB SQL API-fiókok támogatják a térinformatikai adatok tárolását és elérését. A cikk elolvasása után a következő kérdésekre tud válaszolni:
 
-* Hogyan térbeli adatok tárolása az Azure Cosmos DB?
-* Hogyan lekérdezheti az Azure Cosmos DB az SQL és a LINQ térinformatikai adatok?
-* Hogyan engedélyezése vagy letiltása az Azure Cosmos DB kifejezéséhez?
+* Hogyan a térbeli adatainak tárolása Azure Cosmos DB-ben?
+* Hogyan lehet lekérdezni a térinformatikai adatAzure Cosmos DB az SQL és a LINQ szolgáltatásban?
+* Hogyan engedélyezheti vagy letilthatja a térbeli indexelést a Azure Cosmos DBban?
 
-Ez a cikk bemutatja, hogyan használható a térbeli adatok az SQL API-val. Ez [GitHub-projekt](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) kódpéldákat.
+Ez a cikk bemutatja, hogyan használható a térbeli adatmennyiség az SQL API-val. Tekintse meg a [GitHub-projektet](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) a kód mintáinak megtekintéséhez.
 
-## <a name="introduction-to-spatial-data"></a>Bevezetés a térbeli adatok
-Térbeli adatok pozíció és objektumok terület alakja ismerteti. A legtöbb alkalmazásban ezek felel meg az objektumok a föld és a földrajzi adatok. Térbeli adatok segítségével egy személy, egy helyen a lényeges vagy a város vagy egy lake határait helyét jelölik. Gyakori alkalmazási helyzetek gyakran közelségi lekérdezések, például olyan, "minden kávézóban található a jelenlegi tartózkodási közel." 
+## <a name="introduction-to-spatial-data"></a>A térbeli adatainak bemutatása
+A térbeli adatmennyiségek a térben lévő objektumok helyzetét és alakját ismertetik. A legtöbb alkalmazásban ezek a föld és a térinformatikai adat objektumainak felelnek meg. A térbeli adat használható egy személy, egy hely vagy egy város határának, illetve egy-tó helyének a jelölésére. Gyakori használati esetek gyakran tartalmaznak közelségi lekérdezéseket, például "az aktuális hely közelében található összes kávézó megkeresése". 
 
-### <a name="geojson"></a>A GeoJSON
-Az Azure Cosmos DB támogatja az indexelést és a használatával van megjeleníthető földrajzi pont adatok lekérdezése a [GeoJSON specifikációnak](https://tools.ietf.org/html/rfc7946). GeoJSON datové struktury mindig érvényes JSON-objektumok, így azok is tárolhatók, és az Azure Cosmos DB által kibocsátott speciális eszközök és kódtárak nélkül megkérdezi. Az Azure Cosmos DB SDK segítőosztályokkal és a módszereket, amelyek megkönnyítik a térbeli adatok biztosítanak. 
+### <a name="geojson"></a>GeoJSON
+Azure Cosmos DB támogatja a [GeoJSON-specifikáció](https://tools.ietf.org/html/rfc7946)alapján megjelenített térinformatikai pont adatok indexelését és lekérdezését. A GeoJSON-adatstruktúrák mindig érvényes JSON-objektumok, így a Azure Cosmos DB a speciális eszközök vagy könyvtárak nélkül tárolhatók és lehívhatók. A Azure Cosmos DB SDK-k olyan segítő osztályokat és metódusokat biztosítanak, amelyek megkönnyítik a térbeli információkkal való munkavégzést. 
 
-### <a name="points-linestrings-and-polygons"></a>Pontok, Linestring, és poligonok
-A **pont** azt jelzi, hogy a hely egyetlen pozíciója. A térinformatikai adatok egy pont, amely egy címe pékséglánc áruházbeli, a teljes képernyős, egy autó vagy város lehet pontos helyét jelöli.  A GeoJSON (és az Azure Cosmos DB) használatával a koordináta pár vagy szélességi és hosszúsági egy pont jelzi. Íme egy példa JSON pont.
+### <a name="points-linestrings-and-polygons"></a>Pontok, Linestring és sokszögek
+Egy **pont** egyetlen helyet jelöl a térben. A térinformatikai adatokat tartalmazó pont a pontos helyet jelöli, amely egy élelmiszerbolt, egy kioszk, egy autó vagy egy város utcanév-címe lehet.  A pontok a GeoJSON (és Azure Cosmos DB) jelennek meg a koordináta-pár vagy a hosszúság és a földrajzi szélesség használatával. Íme egy példa JSON egy ponthoz.
 
-**Az Azure Cosmos DB pontok**
+**Azure Cosmos DBi pontok**
 
 ```json
 {
@@ -42,15 +42,15 @@ A **pont** azt jelzi, hogy a hely egyetlen pozíciója. A térinformatikai adato
 ```
 
 > [!NOTE]
-> A GeoJSON specifikációnak megadja a hosszúsági első és szélességi második. Például a többi leképezési alkalmazások, a szélességi és hosszúsági szögek és fok formájában jelennek meg. Hosszúsági értékeket mért vannak a szélességi és-180 fok és 180.0 fok közé, és szélességi értékek vannak az Egyenlítőtől mért-90.0 fok és 90.0 fok közé. 
+> A GeoJSON-specifikáció meghatározza az első és a szélességi hosszúságot. A többi leképezési alkalmazáshoz hasonlóan a hosszúsági és a szélességi fok is szögben jelenik meg. A hosszúsági értékeket a Prime Meridian-ből mérjük, és 180 fok és 180,0 fok között kell mérni, a szélességi értékeket pedig az-90,0 fok és a 90,0 fok közé kell mérni. 
 > 
-> Az Azure Cosmos DB értelmezi a koordináták a WGS-84. referenciarendszer egy határozzák meg. Koordináta referencia-rendszerekkel kapcsolatos további részletekért lásd az alábbi.
+> Azure Cosmos DB értelmezi a WGS-84 hivatkozási rendszeren ábrázolt koordinátákat. A koordináta-hivatkozási rendszerek részletes ismertetését alább találja.
 > 
 > 
 
-Ez úgy szúrhat be egy Azure Cosmos DB-dokumentumot tartalmazó adatok a felhasználói profil ebben a példában látható módon:
+Ez egy Azure Cosmos DB-dokumentumba ágyazható be, ahogy az a következő példában látható: helyadatok tartalmazó felhasználói profil:
 
-**Profil használata az Azure Cosmos DB tárolási helye**
+**Azure Cosmos DBban tárolt hellyel rendelkező profil használata**
 
 ```json
 {
@@ -65,9 +65,9 @@ Ez úgy szúrhat be egy Azure Cosmos DB-dokumentumot tartalmazó adatok a felhas
 }
 ```
 
-Pontok mellett GeoJSON is támogatja a Linestring és poligonok. **Linestring** jelentenek a hely és a sor szegmenset, amely a csatlakoztathatja őket a két vagy több pontok. A térinformatikai adatok Linestring gyakran használják autópályák vagy folyókat ábrázolásához. A **sokszög** egy határ csatlakoztatott pontok zárt LineString alkotó. Sokszög Lake például természetes kialakításokat vagy politikai, mint például a város és állam bíróságainak gyakran használják. Íme egy példa az Azure Cosmos DB egy sokszög. 
+A pontok mellett a GeoJSON a Linestring és a sokszögeket is támogatja. A **linestring** két vagy több pontból álló sorozatot jelöl, és az azokat összekapcsolási szegmenseket. A térinformatikai Linestring általában az autópályák és a folyók ábrázolására használják. A **sokszög** a csatlakoztatott pontok határa, amelyek egy lezárt LineString alkotnak. A sokszögeket általában olyan természetes formák ábrázolására használják, mint a tavak vagy a politikai illetékességek, például a városok és az Államok. Íme egy példa egy sokszögre Azure Cosmos DB. 
 
-**A GeoJSON sokszögek**
+**Sokszögek a GeoJSON**
 
 ```json
 {
@@ -83,23 +83,23 @@ Pontok mellett GeoJSON is támogatja a Linestring és poligonok. **Linestring** 
 ```
 
 > [!NOTE]
-> A GeoJSON specifikációnak megköveteli, hogy érvényes sokszögek, a megadott utolsó koordináta pár legyen ugyanaz, mint az első zárt alakzatot hozhat létre.
+> A GeoJSON-specifikáció megköveteli, hogy érvényes sokszögek esetén a megadott koordináta-pároknak meg kell egyezniük az elsővel, hogy egy bezárt alakzatot hozzon létre.
 > 
-> Sokszög belül pontok óramutató járásával ellentétes irányban sorrendben kell adni. Egy megadott óramutató sorrendben sokszög benne a régió inverzét jelöli.
+> A sokszögben lévő pontokat a megfelelő sorrendben kell megadni. A megegyező sorrendben megadott sokszög a régió inverzét jelöli.
 > 
 > 
 
-Pont, LineString, és sokszög kívül GeoJSON is meghatározza a ábrázolását több földrajzi helyek csoportosítása, valamint tetszőleges tulajdonságok társítása földrajzi hely szerint egy **funkció**. Mivel ezek az objektumok érvényes JSON, azokat is az összes tárolhatók és feldolgozhatók, az Azure Cosmos DB-ben. Azonban az Azure Cosmos DB csak támogatja pontok automatikus indexelés.
+A Point, a LineString és a sokszög mellett a GeoJSON azt is meghatározza, hogyan kell csoportosítani a több térinformatikai helyet, valamint azt, hogy hogyan társítható tetszőleges tulajdonságok a térinformatikai **szolgáltatáshoz**. Mivel ezek az objektumok érvényesek a JSON-ra, a Azure Cosmos DB tárolhatók és feldolgozhatók. A Azure Cosmos DB azonban csak a pontok automatikus indexelését támogatja.
 
-### <a name="coordinate-reference-systems"></a>Koordináta referencia rendszerek
-Mivel a föld alakját szabálytalan, számos rendszerben koordináta hivatkozás (CRS), amelyek mindegyike saját keretek hivatkozási és a mértékegységet koordinátáját földrajzi adatok jelennek meg. Ha például a "nemzeti rács-Britannia" hivatkozást a rendszer pontos-e az Egyesült Királyság, de nem azon kívül jelenik meg. 
+### <a name="coordinate-reference-systems"></a>Koordináta-rendszerek
+Mivel a föld alakja szabálytalan, a térinformatikai adathalmazok számos koordináta-hivatkozási rendszerben (CRS) jelennek meg, amelyek mindegyike saját hivatkozási kerettel és mértékegységgel rendelkezik. Például a "Britain országos hálózata" egy hivatkozási rendszer, amely az Egyesült Királyság számára pontos, de nem azon kívül. 
 
-A legnépszerűbb CRS használatban jelenleg a világ geodéziai rendszer szolgáltatás [WGS-84](http://earth-info.nga.mil/GandG/wgs84/). A GPS-eszközök és a sok leképezés-szolgáltatással, például a Google térkép alkalmazásban és a Bing térképek API-t használja a WGS-84. Az Azure Cosmos DB támogatja az indexelést és a térinformatikai adatok használata csak a WGS-84 CRS lekérdezését. 
+A jelenleg használatban lévő legnépszerűbb CRS a [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)globális geodéziai rendszer. A GPS-eszközök és számos leképezési szolgáltatás, például a Google Maps és a Bing Maps API-k a WGS-84-et használják. A Azure Cosmos DB csak a WGS-84 CRS használatával támogatja a térinformatikai adatai indexelését és lekérdezését. 
 
-## <a name="creating-documents-with-spatial-data"></a>Térbeli adatokat tartalmazó dokumentumok létrehozása
-Amikor GeoJSON értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan indexelt térbeli indexszel rendelkező nevezhetnek, a tároló az indexelési házirendet. Ha egy Azure Cosmos DB SDK dinamikusan gépelt például a Python- vagy Node.js nyelven dolgozik, érvényes GeoJSON kell létrehoznia.
+## <a name="creating-documents-with-spatial-data"></a>Dokumentumok létrehozása térbeli adattal
+Ha GeoJSON-értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan egy térbeli indextel lesznek indexelve a tároló indexelési házirendjének megfelelően. Ha egy Azure Cosmos DB SDK-val dolgozik egy dinamikusan gépelt nyelven (például Python vagy Node. js), akkor érvényes GeoJSON kell létrehoznia.
 
-**Térinformatikai adatok használata a Node.js dokumentum létrehozása**
+**Dokumentum létrehozása térinformatikai adattal a Node. js-ben**
 
 ```json
 var userProfileDocument = {
@@ -115,9 +115,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Az SQL API-k használata, ha a `Point` és `Polygon` belül osztályokat a `Microsoft.Azure.Documents.Spatial` névtér ágyazhat be az alkalmazás az objektumok helyadatokhoz. Ezeket az osztályokat segítségével egyszerűsítheti a szerializálási és a térbeli adatok deszerializálása GeoJSON be.
+Ha az SQL API-kkal dolgozik, a `Microsoft.Azure.Documents.Spatial` névtérben lévő `Point` és `Polygon` osztályok segítségével ágyazhatja be a hely adatait az alkalmazásobjektumok között. Ezek az osztályok segítenek leegyszerűsíteni a térbeli adatainak szerializálását és deszerializálását a GeoJSON.
 
-**Dokumentum létrehozása a .NET-ben a földrajzi adatokkal**
+**Dokumentum létrehozása térinformatikai adattal a .NET-ben**
 
 ```json
 using Microsoft.Azure.Documents.Spatial;
@@ -142,23 +142,23 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További tudnivalók a Bing térképek geokódolás [Itt](https://msdn.microsoft.com/library/ff701713.aspx).
+Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További információ a Bing Maps helymeghatározáshoz [itt](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="querying-spatial-types"></a>Térbeli típusok lekérdezése
-Most, hogy készített egy pillantást a földrajzi adatok beszúrása, vessünk egy pillantást az Azure Cosmos DB SQL és a LINQ használatával az adatok lekérdezésére.
+Most, hogy áttekintette a térinformatikai adatbevitelt, vessünk egy pillantást arra, hogyan lehet lekérdezni ezeket az adatAzure Cosmos DBt az SQL és a LINQ használatával.
 
 ### <a name="spatial-sql-built-in-functions"></a>Térbeli SQL beépített függvények
-Az Azure Cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. A beépített függvény az SQL-nyelv, minden további információkért lásd: [Azure Cosmos DB lekérdezése](how-to-sql-query.md).
+A Azure Cosmos DB a következő Nyílt térinformatikai konzorcium (OGC) beépített függvényeket támogatja a térinformatikai lekérdezésekhez. Az SQL nyelv beépített funkcióinak teljes készletével kapcsolatos további információkért lásd: [lekérdezés Azure Cosmos db](how-to-sql-query.md).
 
 |**Használat**|**Leírás**|
 |---|---|
-| ST_DISTANCE (spatial_expr, spatial_expr) | A két GeoJSON-pont, Polygon vagy LineString kifejezések között adja vissza a távolságot.|
-|ST_WITHIN (spatial_expr, spatial_expr) | Egy logikai kifejezés, amely azt jelzi, hogy a második GeoJSON-objektum (pont, Polygon vagy LineString) belül van-e az első GeoJSON-objektumot (pont, Polygon vagy LineString) adja vissza.|
-|ST_INTERSECTS (spatial_expr, spatial_expr)| Egy logikai kifejezés jelzi, hogy a két megadott GeoJSON objektum (pont, Polygon vagy LineString) átfedésben adja vissza.|
-|ST_ISVALID| Jelzi, hogy a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen egy logikai értéket ad vissza.|
-| ST_ISVALIDDETAILED| Egy JSON-értéket tartalmazó logikai értéket, ha a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen, és ha érvénytelen értéket ad vissza, továbbá egy olyan karakterláncértéket, az oka.|
+| ST_DISTANCE (spatial_expr, spatial_expr) | A két GeoJSON pont, a sokszög vagy a LineString kifejezés közötti távolságot adja vissza.|
+|ST_WITHIN (spatial_expr, spatial_expr) | Egy logikai kifejezést ad vissza, amely azt jelzi, hogy az első GeoJSON objektum (pont, sokszög vagy LineString) a második GeoJSON objektumon (pont, sokszög vagy LineString) belül van-e.|
+|ST_INTERSECTS (spatial_expr, spatial_expr)| Egy logikai kifejezést ad vissza, amely azt jelzi, hogy a két megadott GeoJSON-objektum (pont, sokszög vagy LineString) metszve van-e.|
+|ST_ISVALID| Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott GeoJSON pont, sokszög vagy LineString kifejezés érvényes-e.|
+| ST_ISVALIDDETAILED| Egy logikai értéket tartalmazó JSON-értéket ad vissza, ha a megadott GeoJSON pont, sokszög vagy LineString kifejezés érvényes, és ha az érték érvénytelen, akkor a karakterlánc értékét is adja meg.|
 
-Térbeli funkciók térbeli adatokon közelségi lekérdezések végrehajtásához használható. Ha például Íme egy lekérdezést, amely visszaadja az összes családi dokumentumot, amelyek 30 km-re, a ST_DISTANCE beépített függvény használatával a megadott helyen belül. 
+A térbeli függvények használatával közelségi lekérdezéseket végezhet a térbeli adatokon. Például egy olyan lekérdezés, amely az összes olyan családi dokumentumot adja vissza, amely a megadott hely 30 km-n belül található a ST_DISTANCE beépített függvény használatával. 
 
 **Lekérdezés**
 
@@ -172,11 +172,11 @@ Térbeli funkciók térbeli adatokon közelségi lekérdezések végrehajtásáh
       "id": "WakefieldFamily"
     }]
 
-Ha is kifejezéséhez az indexelési házirendet, majd "distance lekérdezések" fog hatékonyan kiszolgálható keresztül az index. Kifejezéséhez szóló további információkért lásd a lenti. Ha nem rendelkezik a megadott elérési utak a egy térbeli index, is továbbra is végezhet térinformatikai lekérdezéseket megadásával `x-ms-documentdb-query-enable-scan` kérelemfejlécet a beállított érték "true". A .NET-ben, ezt megteheti a választható átadásával **FeedOptions** lekérdezések argumentumának [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) igaz értékre kell állítani. 
+Ha a térbeli indexelést az indexelési házirend tartalmazza, akkor a "távolsági lekérdezések" hatékonyan lesznek kézbesítve az indexen keresztül. A térbeli indexeléssel kapcsolatos további információkért tekintse meg az alábbi szakaszt. Ha nem rendelkezik térbeli indexszel a megadott elérési utakhoz, a térbeli lekérdezéseket továbbra is végrehajthatja `x-ms-documentdb-query-enable-scan` kérelem fejlécének megadásával, amelynek értéke "true" (igaz) értékre van állítva. A .NET-ben ezt úgy teheti meg, hogy a választható **FeedOptions** argumentumot átadja a [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) beállítással az igaz értékre. 
 
-Ellenőrizze, hogy ha egy pont esik-e a sokszög ST_WITHIN használható. Sokszög gyakran határokat, például az irányítószámok, állam határok vagy természetes kialakításokat képviselő szolgálnak. Újra Ha is kifejezéséhez az indexelési házirendet, majd "belül" lekérdezések fog hatékonyan kiszolgálható keresztül az index. 
+A ST_WITHIN használatával ellenőrizhető, hogy egy pont egy Sokszögen belül található-e. A gyakran használt sokszögek olyan határokat jelölnek, mint például a zip-kódok, az állami határok vagy a természetes képződmények. Ha a térbeli indexelést is tartalmazza az indexelési házirendben, a "belül" lekérdezéseket a rendszer hatékonyan kézbesíti az indexen keresztül. 
 
-Sokszög argumentumainak ST_WITHIN tartalmazhat csak egyetlen kör, azt jelenti, a poligonok nem tartalmazhat lyuk bennük. 
+A ST_WITHINban található sokszög argumentumok csak egyetlen gyűrűt tartalmazhatnak, azaz a sokszögek nem tartalmazhatnak lyukakat bennük. 
 
 **Lekérdezés**
 
@@ -194,11 +194,11 @@ Sokszög argumentumainak ST_WITHIN tartalmazhat csak egyetlen kör, azt jelenti,
     }]
 
 > [!NOTE]
-> Ha a hely értéket megadva a vagy argumentum helytelen formátumú vagy érvénytelen, akkor az eredmény az Azure Cosmos DB lekérdezéssel, hogyan nem egyező típusok munkahelyi hasonló **nem definiált** és a lekérdezés eredményeit a rendszer kihagyja a kiértékelt dokumentumot. Ha a lekérdezés eredménytelen, futtassa a ST_ISVALIDDETAILED a hibakeresési miért a térbeli típusa érvénytelen.     
+> Hasonlóan ahhoz, ahogyan a nem egyező típusok működnek Azure Cosmos DB lekérdezésekben, ha az argumentumban megadott Helykód helytelen formátumú vagy érvénytelen, akkor a rendszer nem **definiált** értékre értékeli, és a kiértékelt dokumentumot kihagyja a lekérdezés eredményeiből. Ha a lekérdezés nem ad vissza találatot, a ST_ISVALIDDETAILED futtatásával ellenőrizze, hogy a térbeli típus érvénytelen-e.     
 > 
 > 
 
-Az Azure Cosmos DB is támogatja a más néven inverz lekérdezések végrehajtásához, index poligonok vagy az Azure Cosmos DB sorokat, majd lekérdezni a területeken, amelyek tartalmaznak egy adott pont a. Ez a minta általában arra használják, a logisztika azonosítását, például amikor egy teherautó be- vagy egy erre kijelölt területen. 
+A Azure Cosmos DB támogatja az inverz lekérdezések végrehajtását is, azaz a sokszögeket vagy vonalakat indexelheti Azure Cosmos DB, majd lekérdezheti a megadott pontot tartalmazó területeket. Ezt a mintát gyakran használják a logisztikában annak azonosítására, hogy például egy teherautó belép vagy kilép egy kijelölt régióból. 
 
 **Lekérdezés**
 
@@ -217,7 +217,7 @@ Az Azure Cosmos DB is támogatja a más néven inverz lekérdezések végrehajt�
       }
     }]
 
-ST_ISVALID és ST_ISVALIDDETAILED használható annak ellenőrzésére, ha egy térbeli objektum érvénytelen. A következő lekérdezés például kívüli tartományértéke szélesség (-132.8) rendelkező pontok érvényességét ellenőrzi. ST_ISVALID csak egy logikai értéket ad vissza, és ST_ISVALIDDETAILED adja vissza, a logikai és az az oka, hogy miért minősül érvénytelen tartalmazó karakterlánc.
+ST_ISVALID és ST_ISVALIDDETAILED használatával ellenőrizhető, hogy a térbeli objektum érvényes-e. Például a következő lekérdezés ellenőrzi egy pont érvényességét egy tartományon kívüli szélességi értékkel (-132,8). ST_ISVALID csak egy logikai értéket ad vissza, és a ST_ISVALIDDETAILED a logikai azonosítót és egy olyan karakterláncot ad vissza, amely az érvénytelennek minősülő okot adja meg.
 
 **Lekérdezés**
 
@@ -229,7 +229,7 @@ ST_ISVALID és ST_ISVALIDDETAILED használható annak ellenőrzésére, ha egy t
       "$1": false
     }]
 
-Ezek a függvények is használható poligonok ellenőrzése. Például itt használjuk ST_ISVALIDDETAILED egy nem lezárt sokszög ellenőrzése. 
+Ezek a függvények a sokszögek ellenőrzéséhez is használhatók. Például itt használjuk a ST_ISVALIDDETAILEDt egy nem lezárt sokszög ellenőrzéséhez. 
 
 **Lekérdezés**
 
@@ -246,12 +246,12 @@ Ezek a függvények is használható poligonok ellenőrzése. Például itt hasz
           }
     }]
 
-### <a name="linq-querying-in-the-net-sdk"></a>A LINQ lekérdezése a .NET SDK-ban
-Az SQL .NET SDK-t is a szolgáltatók helyettes módszerek `Distance()` és `Within()` LINQ kifejezés belüli használathoz. Az SQL LINQ-szolgáltató fordítja le ezt a módszert a megfelelő SQL beépített függvényhívások-hívások (ST_DISTANCE és ST_WITHIN jelölik). 
+### <a name="linq-querying-in-the-net-sdk"></a>LINQ-lekérdezés a .NET SDK-ban
+Az SQL .NET SDK emellett a következő, `Distance()` és `Within()` a LINQ-kifejezéseken belüli használatra szolgáló helyettes metódusokat is tartalmazza. Az SQL LINQ-szolgáltató lefordítja ezt a metódust a megfelelő SQL beépített függvények hívására (ST_DISTANCE és ST_WITHIN, illetve). 
 
 Íme egy példa egy LINQ-lekérdezésre, amely megkeresi az Azure Cosmos-tárolóban található összes olyan dokumentumot, amelynek "helye" értéke a megadott pont 30 km-es sugarán belül van a LINQ használatával.
 
-**Távolság a LINQ-lekérdezésekre**
+**LINQ-lekérdezés távolsághoz**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
         .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
@@ -259,9 +259,9 @@ Az SQL .NET SDK-t is a szolgáltatók helyettes módszerek `Distance()` és `Wit
         Console.WriteLine("\t" + user);
     }
 
-Ehhez hasonlóan az itt a lekérdezés összes dokumentumot, amelynek "hely" megfelel a megadott box sokszög kereséséhez. 
+Hasonlóképpen, az alábbi lekérdezéssel megtalálhatja az összes olyan dokumentumot, amelynek "helye" a megadott dobozban/sokszögben található. 
 
-**LINQ kérdezheti le az**
+**LINQ-lekérdezés a következőn belül:**
 
     Polygon rectangularArea = new Polygon(
         new[]
@@ -282,23 +282,23 @@ Ehhez hasonlóan az itt a lekérdezés összes dokumentumot, amelynek "hely" meg
     }
 
 
-Most, hogy hogyan kérdezhet le "LINQ to" és az SQL-dokumentumok tekintse meg a Microsoft készített, vessünk egy pillantást az Azure Cosmos DB konfigurálása kifejezéséhez.
+Most, hogy megvizsgáljuk, hogyan lehet dokumentumokat lekérdezni a LINQ és az SQL használatával, vessünk egy pillantást a térbeli indexelés Azure Cosmos DB konfigurálására.
 
 ## <a name="indexing"></a>Indexelés
-Hogy leírtak szerint a [séma független indexelése az Azure Cosmos DB](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) a papír alakítottuk ki az Azure Cosmos DB-adatbázismotor kell valódi sémafüggetlen JSON első osztályú támogatást nyújthassunk és. Az Azure Cosmos DB írásra optimalizált adatbázismotort a GeoJSON szabványos jelölt térbeli adatok (pontok poligonok és vonalak) natív módon megért.
+Ahogy azt a [séma agnosztikus indexelésének Azure Cosmos db](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papírt is ismertetjük, úgy terveztük, hogy a Azure Cosmos db adatbázis-motorja valóban séma-független legyen, és első osztályú támogatást biztosít a JSON-hoz. A Azure Cosmos DB írásra optimalizált adatbázismotor natív módon megérti a GeoJSON standardban ábrázolt térbeli adatok (pontok, sokszögek és vonalak) ismereteit.
 
-Legnépszerűbb, a geometry geodéziai koordináták 2D adatsík az alakzatot a tervezett, akkor cellák fokozatosan osztva egy **quadtree**. E cellák 1D belül cella helye alapján vannak leképezve egy **Hilbert terület töltési görbe**, amely megőrzi a pontok helye. Emellett a helyadatok indexelésekor, halad végig néven ismert folyamat **tesszellációs**, azt jelenti, egy helyen metsző összes cellát és azonosított tárolt és kulcsok az Azure Cosmos DB-index. Lekérdezéskor például a pontok és poligonok argumentumok is Csempézett, bontsa ki a megfelelő azonosító cellatartományokról, akkor az indexből adatok lekérésére használt.
+Dióhéjban a geometria a geodéziai Koordinátákból egy 2D-síkra van kialakítva, majd fokozatosan, egy **quadtree**használatával osztva a cellákba. Ezek a cellák az 1D-re vannak leképezve a cella helye alapján a Hilbert belül, amely megőrzi a pontok helyi **kitöltését**. Emellett, ha a helyadatok indexelve lettek, egy **mozaikként**ismert folyamaton halad át, azaz az adott helyet keresztező összes cella azonosítható és kulcsként tárolódik a Azure Cosmos db indexben. A lekérdezés időpontjában az argumentumok, például a pontok és a sokszögek a megfelelő cella-azonosító tartományok kinyerésére szolgálnak, majd az adatok az indexből való lekéréséhez használatosak.
 
-Ha megad egy indexelési házirendet, amely tartalmazza a térbeli index / * (minden elérési út), majd a hatékony térinformatikai lekérdezéseket (ST_WITHIN és ST_DISTANCE) található a gyűjteményben lévő összes pontok vannak indexelve. A térbeli indexek nem értéke pontosságú, és mindig használja az alapértelmezett értéke pontosságú.
+Ha olyan indexelési házirendet ad meg, amely tartalmazza a/* (minden elérési út) térbeli indexét, akkor a gyűjteményben található összes pont indexelve lesz a hatékony térbeli lekérdezésekhez (ST_WITHIN és ST_DISTANCE). A térbeli indexek nem rendelkeznek precíziós értékkel, és mindig az alapértelmezett pontossági értéket használják.
 
 > [!NOTE]
-> Az Azure Cosmos DB támogatja az automatikus indexelését, Linestring, pontok és poligonok
+> Azure Cosmos DB támogatja a pontok, sokszögek és Linestring automatikus indexelését
 > 
 > 
 
-A következő JSON-kódrészletben látható, az indexelési házirendet kifejezéséhez engedélyezve van, vagyis, index bármely GeoJSON-pont térbeli lekérdezése a dokumentumokon belül található. Ha módosítja az indexelési házirendet az Azure portal használatával, a következő JSON indexelési szabályzat engedélyezéséhez térbeli a gyűjtemény az indexelő is megadhat.
+A következő JSON-kódrészlet egy indexelési házirendet mutat be, amelyen engedélyezve van a térbeli indexelés, azaz indexelhető minden GeoJSON pont a dokumentumok között a térbeli lekérdezésekhez. Ha az indexelési házirendet a Azure Portal használatával módosítja, megadhatja a következő JSON-t az indexelési házirend számára, hogy engedélyezze a térbeli indexelést a gyűjteményen.
 
-**Gyűjtemény indexelési szabályzat JSON-t Spatial pontok és poligonok engedélyezve**
+**A gyűjtemény indexeli a JSON-t a pontok és a sokszögek térbeli beállításával**
 
     {
        "automatic":true,
@@ -332,17 +332,17 @@ A következő JSON-kódrészletben látható, az indexelési házirendet kifejez
        ]
     }
 
-Itt láthat egy kódrészletet a .NET-ben, amely bemutatja, hogyan hozzon létre gyűjteményt kifejezéséhez engedélyezve van a pontokat tartalmazó összes elérési utat. 
+Itt található egy kódrészlet a .NET-ben, amely bemutatja, hogyan hozhat létre térbeli indexeléssel rendelkező gyűjteményt a pontokat tartalmazó összes elérési útra. 
 
-**Hozzon létre gyűjteményt kifejezéséhez**
+**Gyűjtemény létrehozása térbeli indexeléssel**
 
     DocumentCollection spatialData = new DocumentCollection()
     spatialData.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point)); //override to turn spatial on by default
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), spatialData);
 
-És Íme, hogyan módosíthatja egy meglévő gyűjtemény felülírja a dokumentumokon belül tárolt pontokat kifejezéséhez előnyeinek kihasználása érdekében.
+A következőképpen módosíthatja egy meglévő gyűjteményt, hogy kihasználhassa a térbeli indexelés előnyeit a dokumentumokban tárolt bármely pontnál.
 
-**Egy meglévő gyűjtemény kifejezéséhez módosítása**
+**Meglévő gyűjtemény módosítása térbeli indexeléssel**
 
     Console.WriteLine("Updating collection with spatial indexing enabled in indexing policy...");
     collection.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point));
@@ -359,17 +359,17 @@ Itt láthat egy kódrészletet a .NET-ben, amely bemutatja, hogyan hozzon létre
     }
 
 > [!NOTE]
-> Ha a hely a dokumentum GeoJSON érték helytelen formátumú vagy érvénytelen, majd, nem get indexelve a térbeli lekérdezéséhez. Hely értékek ST_ISVALID és ST_ISVALIDDETAILED használatával ellenőrizheti.
+> Ha a hely GeoJSON értéke helytelen formátumú vagy érvénytelen, akkor nem lesz indexelve a térbeli lekérdezésekhez. A hely értékeit ST_ISVALID és ST_ISVALIDDETAILED használatával ellenőrizheti.
 > 
-> Ha a gyűjtemény definíciót tartalmaz egy partíciókulcsot, az indexelés átalakítási folyamat nem készül jelentés. 
+> Ha a gyűjtemény definíciója tartalmaz egy partíciós kulcsot, az indexelés átalakításának folyamata nem jelent meg. 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
-Most, hogy megtanulhatta, hogyan kezdheti el a földrajzi támogatásával az Azure Cosmos DB, ezután is:
+## <a name="next-steps"></a>Következő lépések
+Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 
-* A kódírás a [térinformatikai .NET platformra írt kódmintái a Githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* Ismerkedés a térinformatikai lekérdezések a [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo#geospatial)
-* Tudjon meg többet [Azure Cosmos DB-lekérdezés](how-to-sql-query.md)
-* Tudjon meg többet [Azure Cosmos DB-indexelő házirendek](index-policy.md)
+* A kódolás megkezdése a [térinformatikai .net-kód mintáinak használatával a githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
+* A Azure Cosmos DB a térinformatikai lekérdezésekkel kapcsolatban [lekérdezési demókörnyezet](https://www.documentdb.com/sql/demo#geospatial)
+* További információ a [Azure Cosmos db lekérdezésről](how-to-sql-query.md)
+* További információ az [Azure Cosmos db indexelési házirendekről](index-policy.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 340c9192b43cbcf2daacfb791d85135518dd970c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425886"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alhálózati delegálás hozzáadása vagy eltávolítása
 
@@ -36,13 +36,13 @@ Ebben a szakaszban létrehoz egy virtuális hálózatot és azt az alhálózatot
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **virtuális hálózat**lehetőséget.
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.0.0.0/16*értéket. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Hely | Válassza a **EastUS**lehetőséget.|
+    | Földrajzi egység | Válassza a **EastUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.0.0.0/24*értéket. |
     |||
@@ -70,13 +70,13 @@ Ebben a szakaszban az előző szakaszban létrehozott alhálózatot delegálja e
 3. Válassza az **alhálózatok**lehetőséget, a **Beállítások**területen, majd válassza a **mySubnet**lehetőséget.
 4. A *mySubnet* lapon az **alhálózati delegálás** listához válassza a **nincs** lehetőséget az **alhálózat delegálása szolgáltatásban**listában felsorolt szolgáltatások közül. 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version`. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **EastUS** helyen:
@@ -90,7 +90,7 @@ A következő példában létrehozunk egy **myResourceGroup** nevű erőforrásc
 ```
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Az **az network vnet create** paranccsal hozzon létre a **myResourceGroup** erőforráscsoportban egy **myVnet** nevű virtuális hálózatot egy [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) nevű alhálózattal.
+Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) paranccsal hozzon létre a **myResourceGroup** erőforráscsoportban egy **myVnet** nevű virtuális hálózatot egy **mySubnet** nevű alhálózattal.
 
 ```azurecli-interactive
   az network vnet create \
@@ -124,7 +124,7 @@ Az [az Network vnet subnet Update](https://docs.microsoft.com/cli/azure/network/
 A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ellenőrizze, hogy a szolgáltatás delegálva van-e az alhálózatnak a **szolgáltatásnév**tulajdonság alatt:
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet
@@ -183,7 +183,7 @@ A parancs kimenete null értékű zárójel:
   Connect-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group). Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
@@ -252,5 +252,5 @@ A [Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [kezelheti az alhálózatokat az Azure-ban](virtual-network-manage-subnet.md).

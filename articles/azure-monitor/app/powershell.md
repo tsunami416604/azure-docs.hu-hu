@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 75490edfd30541aa641656a2ccc17a259bfbe927
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f9a04d767ffeb5112e2b06ed319a3c28f3b7f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406514"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -164,7 +164,8 @@ Hozzon létre egy új. JSON fájlt – hívjuk meg `template1.json` ebben a pél
                 "location": "[parameters('appLocation')]",
                 "tags": {},
                 "properties": {
-                    "ApplicationId": "[parameters('appName')]"
+                    "ApplicationId": "[parameters('appName')]",
+                    "retentionInDays": "[parameters('retentionInDays')]"
                 },
                 "dependsOn": []
             },
@@ -178,7 +179,6 @@ Hozzon létre egy új. JSON fájlt – hívjuk meg `template1.json` ebben a pél
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -394,7 +394,7 @@ Bármilyen más erőforrás létrehozásának automatizálásához hozzon létre
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>A sablon parametrizálja
-Most le kell cserélnie az adott neveket paraméterekkel. [Egy sablon parametrizálja](../../azure-resource-manager/resource-group-authoring-templates.md)a kifejezéseket [segítő függvények](../../azure-resource-manager/resource-group-template-functions.md)használatával írhatja be. 
+Most le kell cserélnie az adott neveket paraméterekkel. [Egy sablon parametrizálja](../../azure-resource-manager/templates/template-syntax.md)a kifejezéseket [segítő függvények](../../azure-resource-manager/resource-group-template-functions.md)használatával írhatja be. 
 
 A karakterláncok csak egy részét parametrizálja, ezért a karakterláncok létrehozásához használja a `concat()`.
 

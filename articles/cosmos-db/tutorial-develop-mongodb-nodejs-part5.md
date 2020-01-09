@@ -1,6 +1,5 @@
 ---
-title: Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
-titleSuffix: Azure Cosmos DB
+title: A szögletes alkalmazás összekötése Azure Cosmos DB API-MongoDB a mongúz használatával
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy Node. js-alkalmazást szögletes és expressz használatával a Cosmos DBban tárolt adat kezeléséhez. Ebben a részben az mongúz használatával csatlakozik Azure Cosmos DBhoz.
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444706"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
 
@@ -88,7 +87,7 @@ A mongúz egy Object adatmodellezési (ODM) függvénytár a MongoDB és a Node.
     
 1. Az Explorer ablaktábla **kiszolgáló**területén hozzon létre egy **környezet**nevű mappát. A **környezet** mappában hozzon létre egy **Environment. js**nevű fájlt.
 
-1. A Mongo. js fájlból a `dbName`, a `key` és a `cosmosPort` paraméterek értékét is meg kell adni. Másolja a következő kódot a **Environment. js** fájlba:
+1. A Mongo. js fájlból a `dbName`, a `key`és a `cosmosPort` paraméterek értékét is meg kell adni. Másolja a következő kódot a **Environment. js** fájlba:
 
     ```javascript
     // TODO: replace if yours are different
@@ -232,7 +231,7 @@ Egy perc alatt áttekintheti az előző kódot, és elvégezheti az átjárást.
 
 Ezután futtassa az alkalmazást az alábbi lépések végrehajtásával:
 
-1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza a **hibakeresés** gomb ![Debug ikont a Visual Studio Code-ban ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png), majd kattintson a **hibakeresés indítása** gombra ![Debug ikon a Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)ban.
+1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon kattintson a **hibakeresés** gombra ![hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png), majd kattintson a **hibakeresés indítása** gombra ![hibakeresés ikon a Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)ban.
 
 1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot**. Nyissa meg a `http://localhost:3000`t, és itt láthatja az alkalmazást.
 

@@ -1,31 +1,30 @@
 ---
 title: SQL Database-referenciák használata Azure Stream Analytics feladatokban
 description: Ez a cikk azt ismerteti, hogyan használhatók a SQL Database a Azure Stream Analytics feladatokhoz a Azure Portal és a Visual Studióban.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426503"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics feladatokhoz tartozó SQL Database hivatkozási adatainak használata
 
 Azure Stream Analytics támogatja a Azure SQL Database a hivatkozási adatok forrásaként. A Azure Portal és a Visual Studióban Stream Analytics eszközökkel SQL Database is használhatja a Stream Analytics feladatokra vonatkozó hivatkozási adatként. Ez a cikk bemutatja, hogyan végezheti el mindkét módszert.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portál
 
 A következő lépésekkel adhat hozzá Azure SQL Database hivatkozásként megadott bemeneti forrásként a Azure Portal használatával:
 
 ### <a name="portal-prerequisites"></a>A portál előfeltételei
 
-1. Hozzon létre egy Stream Analytics feladatot.
+1. Stream Analytics-feladat létrehozása.
 
 2. Hozzon létre egy Storage-fiókot, amelyet a Stream Analytics feladatokhoz szeretne használni.
 

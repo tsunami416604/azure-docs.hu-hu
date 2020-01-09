@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439752"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Több tárolóból származó fájlok másolása Azure Data Factory
 
@@ -34,9 +34,11 @@ A sablon három tevékenységet tartalmaz:
 - A **foreach** lekéri a **GetMetaData** tevékenységből a tárolók listáját, majd megismétli a listát, és átadja az egyes tárolókat a másolási tevékenységnek.
 - **Másolja** az egyes tárolókat a forrásként szolgáló tárolóból a célhelyre.
 
-A sablon két paramétert határoz meg:
-- A *SourceFilePath* az adatforrás-tároló elérési útja, ahol lekérheti a tárolók listáját. A legtöbb esetben az elérési út a gyökérkönyvtár, amely több tároló-mappát tartalmaz. A paraméter alapértelmezett értéke `/`.
-- A *DestinationFilePath* az az elérési út, ahová a rendszer átmásolja a fájlokat a célhely-tárolóba. A paraméter alapértelmezett értéke `/`.
+A sablon a következő paramétereket definiálja:
+- A *SourceFileFolder* az adatforrás-tároló mappa elérési útja, ahol lekérheti a tárolók listáját. Az elérési út a gyökérkönyvtár, amely több tároló-mappát tartalmaz. A paraméter alapértelmezett értéke `sourcefolder`.
+- A *SourceFileDirectory* az adatforrás-tároló gyökérkönyvtára alatti almappa elérési útja. A paraméter alapértelmezett értéke `subfolder`.
+- A *DestinationFileFolder* az a mappa elérési útja, ahová a rendszer a fájlokat másolja a célhely-tárolóba. A paraméter alapértelmezett értéke `destinationfolder`.
+- A *DestinationFileDirectory* az az almappa elérési útja, ahová a rendszer a fájlokat másolja a célhely-tárolóba. A paraméter alapértelmezett értéke `subfolder`.
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 

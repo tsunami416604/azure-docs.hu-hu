@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: e3ccc5a48251af181983624f0c8d0eed68c241da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439297"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 
@@ -237,7 +237,7 @@ END
 
 3. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **ADFMultiIncCopyTutorialDF**. 
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha egy piros felkiáltójelet lát a következő hibaüzenettel, változtassa meg az adat-előállító nevét (például a következőre: sajátneveADFIncCopyTutorialDF), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
@@ -246,10 +246,10 @@ END
      
     - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
     - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
-    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a  **Create** (Létrehozás) gombra.      
+8. Kattintson a **Create** (Létrehozás) gombra.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -288,7 +288,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
 
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra. 
 
-1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
+1. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőben adja meg az **SqlServerLinkedService** értéket. 
     1. Válassza a **MySelfHostedIR** elemet a **Connect via integration runtime** (Csatlakozás integrációs modulon keresztül) lehetőségnél. Ez egy **fontos** lépés. Az alapértelmezett integrációs modul nem tud csatlakozni a helyszíni adattárakhoz. Használja a korábban létrehozott saját üzemeltetésű integrációs modult. 
@@ -305,7 +305,7 @@ Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekap
 
 1. A **Connections** (Kapcsolatok) ablakban váltson az **Integration Runtimes** (Integrációs modulok) lapról a **Linked Services** (Társított szolgáltatások) lapra, és kattintson a **+ New** (+ Új) elemre.
 1. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
-1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
+1. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet. 
     1. A **Server name** (Kiszolgáló neve) mezőben válassza ki az Azure SQL Server-kiszolgáló nevét a legördülő listából. 

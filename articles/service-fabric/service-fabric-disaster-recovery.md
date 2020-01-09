@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric vész-helyreállítás | Microsoft Docs
+title: Azure Service Fabric vész-helyreállítás
 description: Az Azure Service Fabric az összes típusú katasztrófa kezeléséhez szükséges képességeket biztosítja. Ez a cikk az esetlegesen felmerülő katasztrófák típusait és azok kezelését ismerteti.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1be891d38eb918d65cd8efda86e9a81fa629cf38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f23624dd0be1e700731e3f5a63c8cd7a00ec4e16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458057"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vész-helyreállítás az Azure Service Fabric
 A magas rendelkezésre állás megvalósításának kritikus része annak biztosítása, hogy a szolgáltatások képesek legyenek túlélni az összes különböző típusú hibát. Ez különösen fontos a nem tervezett és a vezérlőn kívüli hibák esetén. Ez a cikk néhány olyan gyakori meghibásodási módot ismertet, amely katasztrófák esetén is lehetséges, ha nem modellezhető és nem megfelelően kezeli őket. Azt is tárgyalja, hogy a rendszer miért történt meg a vészhelyzetek esetén. A cél az állásidő vagy az adatvesztés kockázatának korlátozása vagy megszüntetése, ha hiba történik, tervezett vagy egyéb módon történik.
@@ -136,7 +127,7 @@ Service Fabric a vetőmag-csomópontok fogalmával rendelkezik. Ezek olyan csom�
 
 Az önálló Service Fabric-fürtökben és az Azure-ban az "elsődleges csomópont típusa" a magok futtatásának egyike. Az elsődleges csomópont típusának meghatározásakor a Service Fabric automatikusan kihasználja a csomópontok számát, amelyet akár 9 mag csomópont létrehozásával, mind a rendszerszolgáltatások 7 replikájának létrehozásával biztosít. Ha a rendszerszolgáltatás-replikák egy csoportját egyszerre hajtják végre, a rendszerszolgáltatások a fent ismertetett kvórum elvesztését fogják megadni. Ha a vetőmag-csomópontok többsége elveszik, akkor a fürt hamarosan leáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan szimulálhat különböző hibákat a [tesztelési keretrendszer](service-fabric-testability-overview.md) használatával
 - További katasztrófa-helyreállítási és magas rendelkezésre állású erőforrások olvasása. A Microsoft nagy mennyiségű útmutatót tett közzé ezekkel a témakörökkel kapcsolatban. A dokumentumok némelyike a más termékekben való használatra adott technikákra vonatkozik, és számos általános ajánlott gyakorlatot tartalmaz, amelyeket a Service Fabric kontextusban is alkalmazhat:
   - [Rendelkezésre állási ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)

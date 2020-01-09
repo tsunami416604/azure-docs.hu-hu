@@ -4,16 +4,16 @@ description: Telemetria-csatornák testreszabása az Azure Application Insights 
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cef8a06fb7e4cfb713d6531f23df9ae9c5836b68
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cef35ae5cb2b66385332a3b1f9ebe177ea26a3e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406362"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
 
@@ -146,7 +146,7 @@ A rövid válasz az, hogy a beépített csatornák egyike sem nyújt tranzakció
 
 1. Az alkalmazás összeomlása esetén a memóriában lévő elemek elvesznek.
 
-1. A telemetria megszakadt a hálózati problémák hosszabb időtartama alatt. A telemetria helyi lemezre van tárolva a hálózati kimaradások során, vagy ha problémák merülnek fel a Application Insights háttérrel. A 24 óránál régebbi elemeket azonban elveti a rendszer.
+1. A telemetria megszakadt a hálózati problémák hosszabb időtartama alatt. A telemetria helyi lemezre van tárolva a hálózati kimaradások során, vagy ha problémák merülnek fel a Application Insights háttérrel. Az 48 óránál régebbi elemek azonban el lesznek vetve.
 
 1. A Windows telemetria tárolásának alapértelmezett helye a következő:% LOCALAPPDATA% vagy% TEMP%. Ezek a helyek általában helyiek a gépen. Ha az alkalmazás fizikailag áttelepíti az egyik helyről a másikra, az eredeti helyen tárolt összes telemetria elvész.
 
@@ -165,7 +165,7 @@ Windows rendszerek esetében az SDK automatikusan létrehoz egy ideiglenes helyi
 A Windows rendszertől eltérő rendszerek esetén az SDK nem hozza létre automatikusan a helyi tárterületet, így alapértelmezés szerint nem tárolja az adattárolást. Saját maga is létrehozhat egy tárolási könyvtárat, és beállíthatja a csatornát a használatára. Ebben az esetben Ön a felelős a címtár biztonságának biztosításáért.
 További információ az adatvédelem [és az adatvédelem terén](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
-## <a name="open-source-sdk"></a>Open-source SDK
+## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 A Application Insights összes SDK-hoz hasonlóan a csatornák is nyílt forráskódúak. Olvassa el és járuljon hozzá a kód vagy a jelentéssel kapcsolatos problémákhoz [a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet)-tárházban.
 
 ## <a name="next-steps"></a>Következő lépések

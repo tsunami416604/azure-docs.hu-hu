@@ -1,26 +1,15 @@
 ---
-title: Az API Management integrálása a Service Fabrickel az Azure-ban | Microsoft Docs
+title: API Management integrálása az Azure Service Fabricával
 description: Megtudhatja, hogyan kezdheti meg gyorsan az Azure API Managementét, és hogyan irányíthatja át a forgalmat a Service Fabric háttérbeli szolgáltatásával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465358"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>API Management integrálása az Azure Service Fabricával
 
@@ -31,23 +20,23 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az [Azure API Managementt]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 > [!IMPORTANT]
 > Ez a funkció a szükséges virtuális hálózatok támogatásának köszönhetően a API Management **prémium** és **fejlesztői** szintjein érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előkészületek:
+Előzetes teendők
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
-* Hozzon létre egy biztonságos [Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) -fürtöt egy hálózati biztonsági csoportban.
+* Hozzon létre egy biztonságos [Windows-fürtöt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) egy hálózati biztonsági csoportban.
 * Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2019](https://www.visualstudio.com) -es és az **Azure development**, a **ASP.net és a Web Development**, valamint a **.net Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Hálózati topológia
 
-Most, hogy rendelkezik egy biztonságos [Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) -fürttel az Azure-ban, telepítse API Managementt a virtuális hálózatra (VNET) a API Management számára kijelölt alhálózatban és NSG. Ebben a cikkben a API Management Resource Manager-sablon előre konfigurálva van a [Windows-fürt oktatóanyagában](service-fabric-tutorial-create-vnet-and-windows-cluster.md) beállított VNET, alhálózatok és NSG nevének használatára. Ez a cikk a következő topológiát helyezi üzembe az Azure-ban, amelyben API Management és Service Fabric azonos Virtual Network alhálózatokban találhatók:
+Most, hogy rendelkezik egy biztonságos [Windows-fürttel](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban, telepítse API Managementt a virtuális hálózatra (VNET) a API Management számára kijelölt alhálózatban és NSG. Ebben a cikkben a API Management Resource Manager-sablon előre konfigurálva van a [Windows-fürt oktatóanyagában](service-fabric-tutorial-create-vnet-and-windows-cluster.md) beállított VNET, alhálózatok és NSG nevének használatára. Ez a cikk a következő topológiát helyezi üzembe az Azure-ban, amelyben a API Management és a Service Fabric azonos Virtual Network alhálózatokban találhatók:
 
  ![Képfelirat][sf-apim-topology-overview]
 
@@ -145,7 +134,7 @@ A [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagemen
 
 * A **displayName** (megjelenített név) bármilyen, az API-t jelölő név lehet. Ebben a cikkben a "Service Fabric alkalmazás" kifejezést használhatja.
 * A **name** (név) egyedi és leíró nevet biztosít az API-nak, például: „service-fabric-app”. A fejlesztői és közzétevői portálon jelenik meg.
-* A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ehhez a cikkhez például "http:\//servicefabric".
+* A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ehhez a cikkhez például a "http:\//servicefabric".
 * A **path** (útvonal) értéke az API Management szolgáltatás kiindulási URL-címéhez lesz hozzáfűzve. A kiindulási URL-cím egy API Management-szolgáltatáspéldány által üzemeltetett mindegyik API esetében megegyezik. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.
 * A **protocols** (protokollok) határozza meg, mely protokollok révén lehet hozzáférni az API-hoz. Ebben a cikkben a **http** és a **https**lista szerepel.
 * A **path** (útvonal) az API utótagja. Ehhez a cikkhez használja a "SajátPr" kifejezést.
@@ -157,8 +146,8 @@ A [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagemen
 Egy előtér-API művelet hozzáadásához töltse ki a következő értékeket:
 
 * A **displayName** (megjelenített név) és a **description** (leírás) írják le a műveletet. Ehhez a cikkhez használja az "értékek" kifejezést.
-* A **method** (metódus) határozza meg a HTTP-műveletet.  Ehhez a cikkhez válasszaa beolvasás.
-* A **urlTemplate** (URL-sablon) értéke az API kiindulási URL-címéhez lesz hozzáfűzve, és egyetlen HTTP-műveletet határoz meg.  Ehhez a cikkhez használja `/api/values` a .net-háttérrendszer vagy `getMessage` a Java-háttér szolgáltatás hozzáadásakor.  Alapértelmezés szerint az itt megadott URL-útvonal a Service Fabric-háttérszolgáltatásnak küldött URL-címnek felel meg. Ha ugyanazt az URL-címet használja itt, amelyet a szolgáltatása is használ – például „/api/values” –, a művelet további módosítások nélkül is működni fog. Megadhat a Service Fabric-háttérszolgáltatás által használt URL-címtől eltérő URL-címet is, amely esetben a művelet szabályzatában később útvonal-újraírást is meg kell adnia.
+* A **method** (metódus) határozza meg a HTTP-műveletet.  Ehhez a cikkhez válassza a **beolvasás**.
+* A **urlTemplate** (URL-sablon) értéke az API kiindulási URL-címéhez lesz hozzáfűzve, és egyetlen HTTP-műveletet határoz meg.  Ehhez a cikkhez használja a `/api/values`, ha hozzáadta a .NET-háttér-szolgáltatást, vagy `getMessage`, ha hozzáadta a Java háttér-szolgáltatást.  Alapértelmezés szerint az itt megadott URL-útvonal a Service Fabric-háttérszolgáltatásnak küldött URL-címnek felel meg. Ha ugyanazt az URL-címet használja itt, amelyet a szolgáltatása is használ – például „/api/values” –, a művelet további módosítások nélkül is működni fog. Megadhat a Service Fabric-háttérszolgáltatás által használt URL-címtől eltérő URL-címet is, amely esetben a művelet szabályzatában később útvonal-újraírást is meg kell adnia.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -197,7 +186,7 @@ A Service Fabric-háttérszabályzat attribútumainak teljes listája az [API Ma
 
 Töltse ki az *apim.parameters.json* fájl következő üres paramétereit az üzembe helyezéshez.
 
-|Paraméter|Érték|
+|Paraméter|Value (Díj)|
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
@@ -300,7 +289,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [API Management](/azure/api-management/import-and-publish)használatáról.
 
@@ -314,7 +303,7 @@ További információ a [API Management](/azure/api-management/import-and-publis
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-vice-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim.parameters.jsonn
+Vice-Fabric-Scripts-and-templates/blob/Master/templates/Service-Integration/Network-APIM. Parameters. JSONn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

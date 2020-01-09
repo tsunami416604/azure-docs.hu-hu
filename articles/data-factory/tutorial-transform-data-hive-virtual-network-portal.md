@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439270"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 
@@ -71,7 +71,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).    
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
 2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
@@ -79,7 +79,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
       
      ![Új adat-előállító lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -88,18 +88,18 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
    - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a  **Create** (Létrehozás) gombra.
+7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
     ![Data factory kezdőlap](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson az **Author & Monitor** (Létrehozás és monitorozás) csempére.
 11. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható: 
 
     ![Szerkesztés lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
@@ -160,13 +160,13 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
 2. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre. 
 
    ![Select Azure Blob Storage](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
+3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet.
     2. Válassza a **MySelfHostedIR** elemet a **Connect via integration runtime** (Csatlakozás integrációs modulon keresztül) lehetőségnél.
     3. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját. 
     4. Ha tesztelni szeretné a tárfiókkal létrejövő kapcsolatot, kattintson a **Test connection** (Kapcsolat tesztelése) lehetőségre.
-    5. Kattintson a **Save** (Mentés) gombra.
+    5. Kattintson a **Mentés** gombra.
    
         ![Azure Blob Storage-fiók megadása](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -178,7 +178,7 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
 2. A **Compute** (Számítás) lapon válassza az **Azure HDInsight** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra.
 
     ![Az Azure HDInsight kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
+3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Name** (Név) mezőben adja meg a következőt: **AzureHDInsightLinkedService**.
     2. Válassza a **Bring your own HDInsight** (Saját HDInsight használata) lehetőséget. 

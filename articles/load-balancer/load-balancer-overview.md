@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 50cb61394043bb8d0e67cae2aea8be4285f3432c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926265"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660212"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -71,7 +71,7 @@ A Load Balancer az alapszintű és a standard SKU-t is támogatja. Ezek az SKU-k
 A teljes forgatókönyv konfigurálása az SKU-tól függően némileg eltérő lehet. A Load Balancer dokumentációjában jelölve van, ha egy cikk csak egy adott termékváltozatra érvényes. A különbségek összehasonlításához és megértéséhez lásd az alábbi táblázatot. További információ: az [Azure standard Load Balancer áttekintése](load-balancer-standard-overview.md).
 
 >[!NOTE]
-> A Microsoft reccomends standard Load Balancer.
+> A Microsoft javasolja standard Load Balancer.
 Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Virtual Machine Scale-készleteket csak egy termékváltozathoz csatlakoztathatja, sosem kettőhöz egyszerre. A Load Balancer és a nyilvános IP-cím SKU-nak egyeznie kell, ha nyilvános IP-címekkel használja őket. A Load Balancer és a nyilvános IP-címek nem változtathatók meg.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]

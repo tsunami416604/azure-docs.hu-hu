@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f6740076600854f612cfdd6324d93325f0cd5c05
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766599"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667515"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
 
@@ -63,8 +63,8 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne ugorjon a
 
 Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytassa az [Insights-szolgáltató regisztrálása](#register-insights-provider) szakasszal.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik az eredmények között, válassza ki.
-2. Válassza a **Régiók** elemet a kibontásához, majd válassza az **USA keleti régiója** elem jobb oldalán található **...** lehetőséget az alábbi ábrán látható módon:
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+2. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
 
@@ -93,11 +93,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
     | Földrajzi egység       | Válassza az **USA keleti régiója** lehetőséget.                                           |
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
 
-    A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett). A Storage-fióknak minden esetben ugyanabban a régióban kell lennie, mint a NSG. 
-    
-    > [!NOTE]
-    > Noha a Microsoft. Insight és a Microsoft. Network szolgáltatók jelenleg [megbízható Microsoft-szolgáltatásokként támogatottak az Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)-ban, a NSG-adatforgalmi naplók még nem teljes körűen bevezetésre kerülnek. A NSG-naplózás engedélyezéséhez az **összes hálózatot** ki kell választani a fent említettek szerint.
-    
+    A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett). A Storage-fióknak minden esetben ugyanabban a régióban kell lennie, mint a NSG.     
 4. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 5. A **NAPLÓK** területen válassza az **NSG-folyamatnaplók** lehetőséget, ahogyan az a következő képen látható:
 
@@ -116,8 +112,6 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
    > * A Storage-fiókokhoz engedélyezve van a [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
 1. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 10. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
-    > [!IMPORTANT]
-    > Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Ha meglévő, nem nulla adatmegőrzési szabályzattal rendelkezik, javasoljuk, hogy rendszeresen törölje a megőrzési időtartamon felüli tárolási blobokat a felmerülő költségek elkerülése érdekében. További információ a NSG flow log-tárolási blog törléséről: [NSG flow log Storage-Blobok törlése](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="download-flow-log"></a>Folyamatnapló letöltése
 
@@ -130,7 +124,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 4. A **blob Service**területen válassza a **tárolók**lehetőséget, majd válassza ki az elemzések **– naplók-networksecuritygroupflowevent** tárolót.
 5. A tárolóban navigáljon a mappa-hierarchiába, amíg nem kap egy PT1H. JSON fájlt, ahogy az a következő képen is látható. A naplófájlokat a rendszer a következő elnevezési konvenciót követő mappa-hierarchiába írja: https://{storageAccountName}. blob. Core. Windows. net/elemzések-naplók-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {hónap}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
-   ![Folyamat naplója](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
+   ![A folyamat naplója](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Válassza a PT1H.json fájl jobb oldalán található **...** elemet, majd a **Letöltés** lehetőséget.
 

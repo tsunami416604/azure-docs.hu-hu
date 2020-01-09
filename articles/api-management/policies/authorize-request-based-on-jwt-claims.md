@@ -1,5 +1,6 @@
 ---
-title: Azure API Management Policy minta – hozzáférés engedélyezése JWT-jogcímek alapján | Microsoft Docs
+title: Példa API Management-szabályzat – hozzáférés engedélyezése JWT jogcímek alapján
+titleSuffix: Azure API Management
 description: Azure API Management-szabályzat – példa – bemutatja, hogyan lehet engedélyezni az adott HTTP-metódusokhoz való hozzáférést az JWT jogcímek alapján.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: dd99d9ed3eebe6ada60511b3f16c53b0d57a65d6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422188"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>Hozzáférés engedélyezése JWT jogcímek alapján
 
@@ -29,7 +30,7 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 

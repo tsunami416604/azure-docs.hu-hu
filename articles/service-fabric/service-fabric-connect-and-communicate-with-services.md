@@ -1,82 +1,73 @@
 ---
-title: Csatlakozás és a kommunikáció a szolgáltatásokkal az Azure Service Fabricben |} A Microsoft Docs
-description: Ismerje meg, hogyan oldja meg, csatlakozzon, és a kommunikáció a szolgáltatásokkal a Service Fabricben.
-services: service-fabric
-documentationcenter: .net
+title: Kapcsolódjon és kommunikáljon az Azure-beli szolgáltatásokkal Service Fabric
+description: Megtudhatja, hogyan oldható fel, csatlakozhat és kommunikálhat a szolgáltatásokkal Service Fabric.
 author: vturecek
-manager: chackdan
-editor: msfussell
-ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458239"
 ---
-# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Csatlakozás és a kommunikáció a szolgáltatásokkal a Service Fabricben
-A Service Fabric-szolgáltatás fut valahol a Service Fabric-fürt, általában elosztva a több virtuális gép. Azt is áthelyezhető egyetlen helyről a másikra, a szolgáltatás tulajdonosa, vagy automatikusan a Service Fabric. Szolgáltatások statikusan nem kapcsolódnak egy adott géphez vagy a cím.
+# <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
+Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Áthelyezhető az egyik helyről a másikra, akár a szolgáltatás tulajdonosa, akár a Service Fabric automatikusan. A szolgáltatások nem statikusan vannak társítva egy adott géphez vagy címhez.
 
-Service Fabric-alkalmazások általában számos különböző szolgáltatásokat, ahol minden szolgáltatás hajt végre egy specializált feladat tevődik össze. Ezek a szolgáltatások is kommunikálnak egymással egy teljes funkciót, például egy webes alkalmazás különböző részei megjelenítési űrlap. Is találhatók, amely csatlakozik, és a kommunikáció a szolgáltatásokkal ügyfélalkalmazások számára. Ez a dokumentum- és a Service fabric-szolgáltatások közötti kommunikáció beállítását ismerteti.
+A Service Fabric alkalmazások általában számos különböző szolgáltatásból állnak, ahol minden szolgáltatás egy speciális feladatot hajt végre. Ezek a szolgáltatások kommunikálhatnak egymással egy teljes függvény létrehozásához, például egy webalkalmazás különböző részeinek megjelenítéséhez. Vannak olyan ügyfélalkalmazások is, amelyek a szolgáltatásokkal csatlakoznak és kommunikálnak. Ebből a dokumentumból megtudhatja, hogyan állíthatja be a szolgáltatásait a és a között a Service Fabricban.
 
-## <a name="bring-your-own-protocol"></a>A saját protokoll használata
-A Service Fabric segítségével felügyelheti a szolgáltatásokat, de azt nem döntéseket hoz a szolgáltatások tegye. Ez magában foglalja a kommunikációt. A szolgáltatás a Service Fabric már meg van nyitva, amikor ez a szolgáltatás lehetőséget, hogy a bejövő kérelmeket, bármilyen kívánt protokoll vagy a kommunikációs verem használata végpont beállítása. A szolgáltatás figyelni fogja a normál **IP:port** használatával bármilyen címzési séma, például egy URI-cím. Több szolgáltatáspéldány vagy replikák megoszthatja a gazdafolyamatokon ebben az esetben sem kell eltérő portok használatára, vagy használjon egy port-megosztási módszerrel, például a http.sys kernel-illesztőprogram a Windows. Mindkét esetben minden szolgáltatáspéldány vagy a replika egy gazdagép folyamatban kell lennie egyedileg címezhetővé válnak.
+## <a name="bring-your-own-protocol"></a>Saját protokoll használata
+Service Fabric segít a szolgáltatások életciklusának kezelésében, de nem tesz döntéseket a szolgáltatásaival kapcsolatban. Ez magában foglalja a kommunikációt. Ha a szolgáltatást a Service Fabric nyitotta meg, akkor a szolgáltatás lehetőséget ad a bejövő kérelmek végpontjának beállítására, bármilyen protokoll vagy kommunikációs verem használatával. A szolgáltatás minden címzési sémával, például egy URI-val figyeli a normál **IP-címet: portszámot** . Több szolgáltatás-példány vagy-replika is megoszthatja a gazdagépeket, ebben az esetben eltérő portokat kell használnia, vagy egy port-megosztási mechanizmust kell használnia, például a http. sys kernel illesztőprogramját a Windowsban. Mindkét esetben a gazdagép-folyamat minden egyes szolgáltatás-példányának vagy replikájának egyedi címzéssel kell rendelkeznie.
 
-![Szolgáltatásvégpontok][1]
+![szolgáltatási végpontok][1]
 
-## <a name="service-discovery-and-resolution"></a>Szolgáltatásészlelés és megoldás szerint
-Az elosztott rendszerekben szolgáltatások előfordulhat, hogy áthelyezése egyik gépről egy másik idővel. Ez akkor fordulhat elő, beleértve a terheléselosztást, a frissítések, feladatátvétel vagy horizontális felskálázás erőforrás különböző okok miatt. Ez azt jelenti, hogy szolgáltatásvégpont-címeit módosítani, mert a szolgáltatás különböző IP-címekkel rendelkező csomópontok helyezi át, és a különböző portokat is megnyithatja, ha a szolgáltatás dinamikusan kiválasztott portot használ.
+## <a name="service-discovery-and-resolution"></a>Szolgáltatás felderítése és feloldása
+Az elosztott rendszerekben a szolgáltatások az egyik gépről a másikra az idő múlásával átléphetnek. Ez különböző okok miatt fordulhat elő, többek között az erőforrások kiegyensúlyozásához, a frissítésekhez, a feladatátvételekhez vagy a kibővítéshez. Ez azt jelenti, hogy a szolgáltatási végpontok címei változnak, mivel a szolgáltatás eltérő IP-címekkel rendelkező csomópontokra vált, és ha a szolgáltatás dinamikusan kiválasztott portot használ, más portokon is megnyitható.
 
-![Terjesztésipont-szolgáltatások][7]
+![Szolgáltatások eloszlása][7]
 
-A Service Fabric neve az elnevezési szolgáltatás felderítési és névfeloldási szolgáltatást nyújt. Az elnevezési szolgáltatás fenntart egy táblát, amely leképezi nevű szolgáltatás példányainak, figyeljen a végpont-címekre. A Service Fabric minden elnevezett szolgáltatáspéldányok kiszolgálókként URI-k, például egyedi nevük legyen `"fabric:/MyApplication/MyService"`. A szolgáltatás neve nem változik a szolgáltatás élettartama során, hogy csak a módosíthatja, ha a szolgáltatások végponti címeket. Ez a hasonló webhelyek, amelyek állandó URL-címek, de ha az IP-cím változhat. És a weben, amely a webhely URL-címek feloldása egy olyan IP-címek, DNS-hez hasonló a Service Fabric-regisztráló, amely szolgáltatásnevek végpont-címére van leképezve.
+Service Fabric egy elnevezési szolgáltatás nevű felderítési és feloldási szolgáltatást biztosít. A elnevezési szolgáltatás egy olyan táblát tart fenn, amely elnevezett szolgáltatási példányokat képez le a végponti címekre, amelyeket figyelnek. A Service Fabric összes elnevezett szolgáltatás-példányában egyedi nevek szerepelnek URI-ként (például `"fabric:/MyApplication/MyService"`). A szolgáltatás neve nem változik a szolgáltatás élettartama során, hanem csak azok a végpont-címek, amelyek megváltoztathatják a szolgáltatások áthelyezésekor. Ez hasonló olyan webhelyekhez, amelyek állandó URL-címekkel rendelkeznek, de az IP-cím változhat. És hasonló a webes DNS-hez, amely feloldja a webhely URL-címeit az IP-címekre, Service Fabric rendelkezik egy regisztrátorral, amely a szolgáltatás nevét a végpont címére képezi le.
 
-![Szolgáltatásvégpontok][2]
+![szolgáltatási végpontok][2]
 
-Feloldását és -szolgáltatásokhoz való csatlakozás magában foglalja egy hurokba, és futtassa az alábbi lépéseket:
+A szolgáltatások feloldásához és a szolgáltatáshoz való csatlakozáshoz a következő lépések futnak egy hurokban:
 
-* **Oldja meg**: A végpont, amely egy szolgáltatás közzétette le az elnevezési szolgáltatásban.
-* **Csatlakozás**: Függetlenül az, hogy a végpont használ protokollon keresztül csatlakozni a szolgáltatáshoz.
-* **Ismételje meg**: Kapcsolódási kísérlet sikertelenek lehetnek, számtalan esetében például, ha a szolgáltatás át lett helyezve, mivel a legutóbbi végpontcím lett feloldva. Ebben az esetben az előző megoldásához, és megpróbálja újból végrehajtani a lépéseket kell csatlakozni, és ez a ciklus ismétlődik mindaddig, amíg a kapcsolat sikeresen létrejön.
+* **Megoldás**: szerezze be azt a végpontot, amelyet a szolgáltatás közzétett a elnevezési szolgáltatás.
+* **Kapcsolódás**: kapcsolódjon a szolgáltatáshoz az adott végponton használt bármely protokollon keresztül.
+* **Újrapróbálkozás**: a kapcsolódási kísérlet tetszőleges számú okból meghiúsulhat, például akkor, ha a szolgáltatás a végponti címek legutóbbi feloldása óta elmozdult. Ebben az esetben a fenti feloldási és csatlakozási lépéseket újra kell próbálni, és ez a ciklus addig ismétlődik, amíg a kapcsolat sikeresen be nem fejeződik.
 
-## <a name="connecting-to-other-services"></a>Kapcsolódás más szolgáltatásokhoz
-Szolgáltatások csatlakozik egymáshoz egy fürtben általában közvetlenül hozzáférhet a végpontok az más szolgáltatások, mert a fürt csomópontjainak azonos helyi hálózatra. Győződjön meg arról, hogy csatlakoztathatók a szolgáltatások közötti, a Service Fabric további szolgáltatásokat, melyek az elnevezési szolgáltatást biztosít. A DNS-szolgáltatás és a egy fordított proxy szolgáltatás.
+## <a name="connecting-to-other-services"></a>Csatlakozás más szolgáltatásokhoz
+A fürtön belül egymáshoz csatlakozó szolgáltatások általában közvetlenül hozzáférhetnek más szolgáltatások végpontjait, mert a fürt csomópontjai ugyanazon a helyi hálózaton találhatók. Ahhoz, hogy könnyebb legyen csatlakozni a szolgáltatásokhoz, Service Fabric a elnevezési szolgáltatást használó további szolgáltatásokat nyújt. Egy DNS-szolgáltatás és egy fordított proxy szolgáltatás.
 
 
 ### <a name="dns-service"></a>DNS-szolgáltatás
-Számos szolgáltatás óta különösen tárolóalapú szolgáltatásokat is rendelkezik egy meglévő URL-címet, folyamatban tudja oldani ezeket a szabványos DNS-sel protokoll (helyett az elnevezési szolgáltatásban protokoll) nagyon hasznos, különösen az alkalmazások "átemelése" forgatókönyvek. Ez a pontosan, a DNS-szolgáltatás leírása. Lehetővé teszi, hogy a DNS-név leképezése a szolgáltatás nevét, és ezért a végpont IP-címek feloldása. 
+Mivel számos szolgáltatás, különösen a tároló szolgáltatások, rendelkezhetnek meglévő URL-névvel, a szabványos DNS protokoll használatával (a elnevezési szolgáltatás protokoll helyett), különösen az alkalmazás "lift and SHIFT" forgatókönyvekben. Pontosan ez a DNS-szolgáltatás. Lehetővé teszi a DNS-nevek hozzárendelését a szolgáltatás neveként, így a végponti IP-címek feloldását. 
 
-Az alábbi ábrán látható, a DNS-szolgáltatás, a Service Fabric-fürtön futó DNS-nevek szolgáltatásnevek, amely ezután az elnevezési szolgáltatás kapcsolódni a végponthoz címek feloldása rendeli hozzá. A szolgáltatás DNS-nevét a létrehozás időpontjában van megadva. 
+Ahogy az a következő ábrán is látható, a Service Fabric-fürtön futó DNS-szolgáltatás leképezi a DNS-neveket a szolgáltatás neveként, amelyeket a elnevezési szolgáltatás feloldott a végpontok címeinek a kapcsolódáshoz való visszaadásához. A szolgáltatás DNS-neve a létrehozás időpontjában van megadva. 
 
-![Szolgáltatásvégpontok][9]
+![szolgáltatási végpontok][9]
 
-A DNS használatával további részletekért lásd: Service [DNS-szolgáltatás az Azure Service Fabric](service-fabric-dnsservice.md) cikk.
+További információ a DNS szolgáltatás használatáról: [DNS szolgáltatás az Azure-ban Service Fabric](service-fabric-dnsservice.md) cikkben.
 
 ### <a name="reverse-proxy-service"></a>Fordított proxy szolgáltatás
-A fordított proxy-címek szolgáltatások a fürtben, amely elérhetővé teszi a HTTP-végpontokat, beleértve a HTTPS. A fordított proxy jelentősen leegyszerűsíti a más szolgáltatások és a módszereket hívása által egy adott URI-formátum, és a megoldása kezeli, csatlakozás, próbálkozzon újra egy szolgáltatást egy másik az elnevezési szolgáltatással folytatott kommunikációhoz szükséges lépéseket. Más szóval elrejti az elnevezési szolgáltatásban, más szolgáltatások azáltal, hogy ez egyszerűen hívása egy URL-cím hívásakor.
+A fordított proxy a fürtben olyan HTTP-végpontokat tesz elérhetővé, amelyek a HTTPS-t is beleértve. A fordított proxy nagy mértékben leegyszerűsíti az egyéb szolgáltatások és azok módszereinek meghívását egy adott URI-formátummal, és kezeli a feloldási, csatlakozási és újrapróbálkozási lépéseket, amelyek ahhoz szükségesek, hogy az egyik szolgáltatás kommunikáljon a elnevezési szolgáltatás használatával. Más szóval elrejti a elnevezési szolgáltatás, amikor más szolgáltatásokat hív meg, így egyszerűvé teheti az URL-cím meghívását.
 
-![Szolgáltatásvégpontok][10]
+![szolgáltatási végpontok][10]
 
-További információ a fordított proxy szolgáltatás használatával: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md) cikk.
+További információ a fordított proxy szolgáltatás használatáról: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md) cikkben.
 
-## <a name="connections-from-external-clients"></a>Külső ügyfelek kapcsolódását
-Szolgáltatások csatlakozik egymáshoz egy fürtben általában közvetlenül hozzáférhet a végpontok az más szolgáltatások, mert a fürt csomópontjainak azonos helyi hálózatra. Bizonyos környezetekben előfordulhat azonban, a fürt, amely egy korlátozott számú portok külső bejövő forgalmat irányítja egy terheléselosztó mögé. Ezekben az esetekben szolgáltatások továbbra is kommunikálni egymással és az elnevezési szolgáltatás használatával címeket feloldani, de további lépéseket kell tenni, hogy a külső ügyfelek serviceshez való csatlakozáshoz.
+## <a name="connections-from-external-clients"></a>Külső ügyfelek kapcsolatai
+A fürtön belül egymáshoz csatlakozó szolgáltatások általában közvetlenül hozzáférhetnek más szolgáltatások végpontjait, mert a fürt csomópontjai ugyanazon a helyi hálózaton találhatók. Bizonyos környezetekben azonban előfordulhat, hogy egy fürt egy olyan terheléselosztó mögött található, amely a külső bejövő forgalmat a portok korlátozott készletén keresztül irányítja. Ezekben az esetekben a szolgáltatások továbbra is kommunikálhatnak egymással, és a elnevezési szolgáltatás használatával oldják fel a címeket, de további lépéseket kell végrehajtani ahhoz, hogy a külső ügyfelek csatlakozhassanak a szolgáltatásokhoz.
 
-## <a name="service-fabric-in-azure"></a>A Service Fabric az Azure-ban
-Az Azure Service Fabric-fürtön az Azure Load Balancerhez mögé kerül. A fürt összes külső forgalom meg kell felelnie a terheléselosztón keresztül. A load balancer automatikusan továbbítja a forgalmat, egy véletlenszerű egy adott porton bejövő *csomópont* , amely rendelkezik a nyissa meg a portot. Az Azure Load Balancer csak a nyitott portokkal kapcsolatos tudja a *csomópontok*, nem tudja információk személy által megnyitott portok *szolgáltatások*.
+## <a name="service-fabric-in-azure"></a>Service Fabric az Azure-ban
+Az Azure-beli Service Fabric-fürt egy Azure Load Balancer mögé kerül. A fürtön lévő összes külső forgalomnak át kell haladnia a terheléselosztó használatával. A terheléselosztó automatikusan továbbítja a bejövő forgalmat egy adott porton egy véletlenszerű *csomópontra* , amelynek a portja meg van nyitva. A Azure Load Balancer csak a *csomópontokon*megnyitott portokat ismeri, nem ismeri az egyes *szolgáltatások*által megnyitott portokat.
 
-![Az Azure Load Balancer és a Service Fabric-topológia][3]
+![Azure Load Balancer és Service Fabric topológia][3]
 
-Például ahhoz, hogy fogadja el a külső forgalmat porton **80-as**, konfigurálni kell az alábbiakat:
+Ha például a **80**-es porton el szeretné fogadni a külső forgalmat, a következő műveleteket kell konfigurálni:
 
-1. Írjon egy szolgáltatás, amely a 80-as portot figyeli. A szolgáltatás ServiceManifest.xml 80-as portot konfigurálja, és nyissa meg a figyelő a szolgáltatásban, például egy helyi webkiszolgálót.
+1. Írjon egy olyan szolgáltatást, amely a 80-es portot figyeli. Konfigurálja a 80-es portot a szolgáltatás ServiceManifest. XML fájljában, és nyisson meg egy figyelőt a szolgáltatásban, például egy saját üzemeltetésű webkiszolgálón.
 
     ```xml
     <Resources>
@@ -156,30 +147,30 @@ Például ahhoz, hogy fogadja el a külső forgalmat porton **80-as**, konfigur�
             ...
         }
     ```
-2. Service Fabric-fürt létrehozása az Azure-ban, és adja meg a port **80-as** a csomópont-típus, amely üzemelteti a szolgáltatást egyéni végpont-portjaként működik. Ha egynél több csomópont típusa, beállíthat egy *elhelyezési korlátozás* a szolgáltatás csak akkor fog futni, amely rendelkezik az egyéni végponti port megnyitása typu uzlu biztosításához.
+2. Hozzon létre egy Service Fabric fürtöt az Azure-ban, és az **80** -es portot adja meg egyéni végpontként a szolgáltatást futtató csomópont-típushoz. Ha több csomópont-típussal rendelkezik, beállíthatja az *elhelyezési korlátozást* a szolgáltatásban, hogy az csak az egyéni végponti portot tartalmazó csomópont-típuson fusson.
 
-    ![Nyisson meg egy portot a csomópont típusa][4]
-3. A fürt létrehozása után konfigurálja az Azure Load Balancer továbbítja a forgalmat a 80-as porton a fürt erőforráscsoportban. Az Azure Portalon keresztül a fürt létrehozásakor ez van beállítva automatikusan minden konfigurált egyéni végponti port.
+    ![Port megnyitása csomópont-típuson][4]
+3. Miután létrehozta a fürtöt, konfigurálja a Azure Load Balancer a fürt erőforráscsoporthoz, hogy továbbítsa a forgalmat az 80-as porton. Amikor a Azure Portalon keresztül hoz létre fürtöt, a rendszer automatikusan beállítja a konfigurált egyéni végpontok portját.
 
-    ![Továbbítsa a forgalmat az Azure Load balancerben][5]
-4. Az Azure Load Balancer mintavétel használja-e küldeni a forgalmat egy adott csomópont a meghatározásához. A mintavétel rendszeresen ellenőrzi minden egyes csomóponton meghatározni, hogy a csomópont válaszol-e a végpont. Ha a mintavétel a válasz megérkezése után a konfigurált számú alkalommal sikertelen, a terheléselosztó nem irányít forgalmat küld a csomóponton. Az Azure Portalon keresztül a fürt létrehozásakor a mintavétel van automatikus beállítása minden konfigurált egyéni végponti port.
+    ![Forgalom továbbítása a Azure Load Balancerban][5]
+4. A Azure Load Balancer mintavételt használ annak megállapítására, hogy egy adott csomópontra küld-e forgalmat. A mintavétel időszakonként ellenőrzi a végpontokat az egyes csomópontokon annak megállapítása érdekében, hogy a csomópont válaszol-e. Ha a mintavétel a beállított számú alkalommal nem tud választ kapni, a terheléselosztó nem küld forgalmat a csomópontnak. Amikor a Azure Portalon keresztül hoz létre fürtöt, a rendszer automatikusan beállítja a mintavételt a konfigurált egyéni végponti portokhoz.
 
-    ![Továbbítsa a forgalmat az Azure Load balancerben][8]
+    ![Forgalom továbbítása a Azure Load Balancerban][8]
 
-Fontos megjegyezni, hogy a mintavétel, valamint az Azure Load Balancer csak ismernie a *csomópontok*, nem a *szolgáltatások* a csomópontokon futó. Az Azure Load Balancer mindig akkor küld forgalmat, hogy a mintavétel válaszolni, így ügyelni kell arra szolgáltatások elérhetők a csomópontokon, amelyek képesek reagálni a mintavétel csomópontok.
+Fontos megjegyezni, hogy a Azure Load Balancer és a mintavétel csak a *csomópontokon*található, nem pedig a csomópontokon futó *szolgáltatásokkal* kapcsolatos. A Azure Load Balancer mindig forgalmat küld a mintavételre válaszoló csomópontoknak, ezért ügyelni kell arra, hogy a szolgáltatások elérhetők legyenek azokon a csomópontokon, amelyek képesek válaszolni a mintavételre.
 
-## <a name="reliable-services-built-in-communication-api-options"></a>A Reliable Services: Beépített kommunikációs API lehetőségek
-A Reliable Services-keretrendszert tartalmaz számos előre elkészített kommunikációs beállítások. A döntést arról, hogy mely egyik működhet a legjobban az Ön számára a programozási modellel, a kommunikáció keretrendszer és a programozási nyelv, a szolgáltatások írt típustól függ.
+## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: beépített kommunikációs API-beállítások
+A Reliable Services-keretrendszer számos előre elkészített kommunikációs lehetőséggel rendelkezik. Arról, hogy melyik az Ön számára legmegfelelőbb, a programozási modell, a kommunikációs keretrendszer, valamint a szolgáltatások által írt programozási nyelv típusától függ.
 
-* **Nincs konkrét protokoll:**  Nem kell egy adott választott kommunikációs keretrendszer, de ismerkedhet meg valami fel, és gyorsan, akkor a ideális megoldás a beállítás, az Ön számára [szolgáltatás távelérésének lehetővé tétele](service-fabric-reliable-services-communication-remoting.md), amely lehetővé teszi a távoli eljáráshívás szigorú típusmegadású hívásainak A Reliable Services és Reliable Actors. Ez az első lépések a szolgáltatások közötti kommunikáció a legkönnyebb és leggyorsabb módja. Szolgáltatás távelérésének lehetővé tétele a szolgáltatás-címére, kapcsolat, újrapróbálkozási és hibakezelés feloldása kezeli. Ez a lehetőség is C# és Java-alkalmazások.
-* **HTTP**: Nyelvfüggetlen kommunikációhoz HTTP biztosít egy iparági szabványnak megfelelő által választott eszközökkel és a rendelkezésre álló számos különböző nyelveken, Service Fabric által támogatott HTTP-kiszolgáló. Szolgáltatások a érhető el, beleértve a HTTP szoftverkörnyezettől [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) a C# alkalmazásokat. Ügyfelek nyelven írt C# kihasználhatják a `ICommunicationClient` és `ServicePartitionClient` osztályokat, mivel a Java használata a `CommunicationClient` és `FabricServicePartitionClient` osztályok, [névfeloldási szolgáltatást, HTTP-kapcsolatokat és újrapróbálkozási hurkok](service-fabric-reliable-services-communication.md).
-* **WCF**: Ha a meglévő kódot, amely WCF használ a kommunikációs keretrendszer van, akkor is használhatja a `WcfCommunicationListener` a kiszolgálóoldali és `WcfCommunicationClient` és `ServicePartitionClient` osztályok az ügyfél. Ez azonban csak akkor C# alkalmazások a Windows-alapú fürtökhöz. További részletekért lásd: Ez a cikk [WCF-alapú megvalósítását a kommunikációs verem](service-fabric-reliable-services-communication-wcf.md).
+* **Nincs konkrét protokoll:**  Ha nem rendelkezik egy adott kommunikációs keretrendszerrel, de gyorsan szeretne lekérdezni, akkor az ideális megoldás a [szolgáltatás távelérése](service-fabric-reliable-services-communication-remoting.md), amely lehetővé teszi a nagymértékben begépelt távoli eljáráshívás használatát Reliable Services és Reliable Actors. Ez a legegyszerűbb és leggyorsabb módszer a szolgáltatásokkal való kommunikáció megkezdéséhez. A szolgáltatás távelérési szolgáltatása kezeli a szolgáltatási címek, a kapcsolatok, az újrapróbálkozások és a hibakezelés feloldását. Ez mind a, mind C# a Java-alkalmazásokhoz elérhető.
+* **Http**: a Language-agnosztikus kommunikációhoz a http egy iparági szabványnak megfelelő választási lehetőséget biztosít, amely számos különböző nyelven elérhető eszközöket és http-kiszolgálókat tartalmaz, amelyeket Service Fabric támogat. A szolgáltatások bármilyen elérhető HTTP-veremet használhatnak, beleértve az C# alkalmazások [ASP.net webes API](service-fabric-reliable-services-communication-webapi.md) -ját is. A-ben C# írt ügyfelek kihasználhatják a `ICommunicationClient` és `ServicePartitionClient` osztályokat, míg a Javához a `CommunicationClient` és `FabricServicePartitionClient` osztályokat, [a szolgáltatások feloldásához, a http-kapcsolatokhoz és az újrapróbálkozási hurkokat](service-fabric-reliable-services-communication.md).
+* **WCF**: Ha már létezik olyan kód, amely a WCF-t használja kommunikációs keretrendszerként, akkor használhatja a `WcfCommunicationListener` a kiszolgáló oldalára, és `WcfCommunicationClient` és `ServicePartitionClient` osztályokat az ügyfélhez. Ez azonban csak Windows-alapú C# fürtökön futó alkalmazásokhoz érhető el. További részletekért tekintse meg [a kommunikációs verem WCF-alapú implementációját](service-fabric-reliable-services-communication-wcf.md)ismertető cikket.
 
-## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és más kommunikációs keretrendszerek használatával
-Szolgáltatások a bármely protokoll vagy keretrendszer közötti kommunikáció, hogy TCP szoftvercsatorna, vagy az események streamelése keresztül felett, egy egyéni bináris protokoll [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). A Service Fabric biztosítja a kommunikációt API-kat is csatlakoztathatja a kommunikációs verem be, amíg megismerését és elérését a munka kiveszik a véleményét. Ebben a cikkben megtekintheti a [Reliable Services modellt](service-fabric-reliable-services-communication.md) további részletekért.
+## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használata
+A szolgáltatások bármilyen protokollt vagy keretrendszert használhatnak a kommunikációhoz, függetlenül attól, hogy ez egy egyéni bináris protokoll TCP-szoftvercsatornán keresztül, vagy az [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/)használatával folyó események. A Service Fabric kommunikációs API-kat biztosít, amelyekkel összekapcsolhatja a kommunikációt. További részletekért tekintse meg ezt a cikket a [megbízható szolgáltatásokkal kapcsolatos kommunikációs modellről](service-fabric-reliable-services-communication.md) .
 
-## <a name="next-steps"></a>További lépések
-További információ a fogalmakat és lévő API-kat a [Reliable Services modellt](service-fabric-reliable-services-communication.md), majd gyors használatbavétele [szolgáltatás távelérésének lehetővé tétele](service-fabric-reliable-services-communication-remoting.md) vagy nyissa meg a részletes megtudhatja, hogyan írhat a kommunikáció figyelő használatával [webes API-hoz integrációsmodul OWIN](service-fabric-reliable-services-communication-webapi.md).
+## <a name="next-steps"></a>Következő lépések
+Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](service-fabric-reliable-services-communication-webapi.md)önkiszolgáló használatával.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

@@ -1,5 +1,5 @@
 ---
-title: Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal – Azure Active Directory | Microsoft Docs
+title: Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal – Azure AD
 description: Megtudhatja, hogyan kezelhetők a felhasználói hozzáférések csoporttagságként vagy alkalmazáshoz való hozzárendelésként az Azure Active Directory hozzáférési felülvizsgálatokkal
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70b6d925772548e6703b57c265ebacf6b7f3f4c9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57956573dfe913828fb20db08397fac52528403d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422439"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -32,7 +32,7 @@ Az Azure Active Directoryval (Azure AD) könnyedén biztosíthatja a felhasznál
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
+- Prémium szintű Azure AD P2
 
 További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
 
@@ -48,14 +48,14 @@ A hozzáférési felülvizsgálatokban egy vagy több felhasználó is szerepelh
 
 4. Hozza létre a hozzáférési felülvizsgálatot. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 
-5. Ha a hozzáférési felülvizsgálat elindul, kérje meg a véleményezőket, hogy adja meg a bemenetet. Alapértelmezés szerint ezek mindegyike egy, a hozzáférési panelre mutató hivatkozást tartalmazó e-mailt kap az Azure AD-től, ahol áttekintik a [csoportokhoz vagy alkalmazásokhoz való hozzáférést](perform-access-review.md).
+5. Ha a hozzáférési felülvizsgálat elindul, kérje meg a véleményezőket, hogy adja meg a bemenetet. Alapértelmezés szerint ezek mindegyike egy, a hozzáférési panelre mutató hivatkozást tartalmazó e-mailt kap az Azure AD-től, ahol [áttekintik a csoportokhoz vagy alkalmazásokhoz való hozzáférést](perform-access-review.md).
 
 6. Ha a felülvizsgálók nem végezték el a felülvizsgálatot, az Azure AD-n keresztül emlékeztetőt is küldhet nekik. Alapértelmezés szerint az Azure AD a rendelkezésre álló idő felénél automatikusan emlékeztetőt küld azoknak a felülvizsgálóknak, akik még nem tettek eleget a kérésnek.
 
 7. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 

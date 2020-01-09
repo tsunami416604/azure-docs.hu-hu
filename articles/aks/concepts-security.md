@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422287"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá t
 
 - [Fő összetevők biztonsága](#master-security)
 - [Csomópont biztonsága](#node-security)
-- [Fürt frissítése](#cluster-upgrades)
+- [Fürt frissítései](#cluster-upgrades)
 - [Hálózati biztonság](#network-security)
 - [Kubernetes titkai](#kubernetes-secrets)
 
@@ -65,7 +65,7 @@ További információ: AK- [fürt frissítése][aks-upgrade-cluster].
 
 A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az AK-fürtöt meglévő Azure-beli virtuális hálózati alhálózatokra is telepítheti. Ezek a virtuális hálózatok rendelkezhetnek Azure-helyek közötti VPN-vagy Express Route-kapcsolattal a helyszíni hálózathoz. A Kubernetes bemenő vezérlőket privát, belső IP-címekkel lehet meghatározni, hogy a szolgáltatások csak ezen a belső hálózati kapcsolaton keresztül legyenek elérhetők.
 
-### <a name="azure-network-security-groups"></a>Azure hálózati biztonsági csoportok
+### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
 
 A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. Amikor terheléselosztó, port-hozzárendelés vagy bejövő útvonalak használatával hoz létre szolgáltatásokat, az AK automatikusan módosítja a hálózati biztonsági csoportot a megfelelő forgalomra.
 
@@ -75,11 +75,11 @@ A *titkos* Kubernetes a bizalmas adatok hüvelybe való beadására, például a
 
 A titkok használata csökkenti a pod vagy a Service YAML-jegyzékben definiált bizalmas adatokat. Ehelyett a Kubernetes API-kiszolgálón tárolt titkos kulcsot a YAML-jegyzék részeként kell megkérnie. Ez a megközelítés csak a titkos kulcshoz megadott Pod-hozzáférést biztosítja. Megjegyzés: a titkos titkos jegyzékfájl fájljai Base64 formátumban tartalmazzák a titkos adatokat (további részleteket a [hivatalos dokumentációban][secret-risks] talál). Ezért ezt a fájlt bizalmas információként kell kezelni, és soha nem kell véglegesíteni a verziókövetés előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK-fürtök biztonságossá tételének megkezdéséhez tekintse meg [az AK-fürt frissítését][aks-upgrade-cluster]ismertető témakört.
 
-A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a fürt biztonságához és a frissítésekhez az AK-ban][operator-best-practices-cluster-security].
+A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a fürt biztonságához és a frissítésekhez az AK][operator-best-practices-cluster-security] -ban, valamint [ajánlott eljárások a pod BIZTONSÁGhoz az AK-ban][developer-best-practices-pod-security].
 
 Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -105,4 +105,5 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 19a65e688d66738db0b6e4dcca383c6e4abed262
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974401"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691044"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)
 
@@ -55,7 +55,7 @@ A módosítások rögzítésének és rögzítésének megkezdéséhez engedély
 > [!IMPORTANT]
 > A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és a **westcentralus** és **westus2** régiókban is elérhető. Tekintse meg a jelen cikk [feltételek](#conditions) című szakaszát. Az előzetes verzióra való regisztráláshoz tekintse meg a jelen cikk [előfizetés regisztrálása](#register) című szakaszát. Regisztrálnia kell az előfizetését, mielőtt engedélyezi a módosítási csatornát a Storage-fiókokon.
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 A Azure Portal használatával engedélyezze a Storage-fiók módosítási csatornájának használatát:
 
@@ -96,7 +96,7 @@ A módosítási hírcsatorna engedélyezése a PowerShell használatával:
 5. A Storage-fiók módosítási csatornájának engedélyezése.
 
    ```powershell
-   Update-AzStorageBlobServiceProperty -ResourceGroupName -StorageAccountName -EnableChangeFeed $true
+   Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
 ### <a name="templatetabtemplate"></a>[Sablon](#tab/template)

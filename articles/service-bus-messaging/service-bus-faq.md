@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352875"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -51,7 +51,7 @@ Az üzenetek küldéséhez és fogadásához a következő protokollokat haszná
 
 Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
 
-| Protokoll | Portok | Részletek | 
+| Protocol (Protokoll) | Portok | Részletek | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -113,7 +113,7 @@ Az adott Azure-régión belüli adatforgalom díjmentesen, valamint a bejövő a
 Nem, Service Bus a tárterületért nem számítunk fel díjat. Van azonban egy kvóta, amely korlátozza a várólistára vagy témakörre vonatkozó maximálisan megőrzött adatmennyiséget. Tekintse meg a következő gyakori kérdéseket.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus standard névtérrel rendelkezem. Miért jelenik meg a díjak a (z) $system erőforráscsoport alatt?
-Azure Service Bus nemrég frissítettük a számlázási összetevőket. Ennek következtében, ha Service Bus standard szintű névtérrel rendelkezik, akkor a "/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" erőforráscsoport "$ System ".
+Azure Service Bus nemrég frissítettük a számlázási összetevőket. Ennek következtében, ha Service Bus standard szintű névtérrel rendelkezik, akkor a "$system" erőforráscsoport alatt a "/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" erőforráshoz tartozó sorok jelennek meg.
 
 Ezek a díjak az Azure-előfizetések által Service Bus standard névteret kiépített alapdíj alapján jelennek meg. 
 
@@ -150,7 +150,7 @@ A névteret áthelyezheti egyik Azure-előfizetésből egy másikba, a [Azure Po
 
 #### <a name="portal"></a>Portál
 
-Ha a Azure Portal segítségével szeretné áttelepíteni Service Bus névtereket egy másik előfizetésbe, kövesse az [alábbi](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)utasításokat. 
+Ha a Azure Portal segítségével szeretné áttelepíteni Service Bus névtereket egy másik előfizetésbe, kövesse az [alábbi](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)utasításokat. 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -167,7 +167,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
 * [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

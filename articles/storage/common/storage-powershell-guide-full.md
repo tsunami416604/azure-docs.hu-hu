@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465090"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
+# <a name="using-azure-powershell-with-azure-storage"></a>Az Azure PowerShell és az Azure Storage együttes használata
 
 Azure PowerShell az Azure-erőforrások PowerShell-parancssorból vagy parancsfájlokból való létrehozására és kezelésére szolgál. Az Azure Storage esetében ezek a parancsmagok két kategóriába sorolhatók – a vezérlési síkon és az adatsíkon. A vezérlő síkja parancsmagok a Storage-fiók kezelésére szolgálnak – a Storage-fiókok létrehozásához, a tulajdonságok beállításához, a tárolási fiókok törléséhez, a hozzáférési kulcsok elforgatásához stb. Az adatsík-parancsmagok segítségével kezelheti a Storage *-* fiókban tárolt adattárakat. Például Blobok feltöltése, fájlmegosztás létrehozása és üzenetek hozzáadása egy várólistához.
 
@@ -161,7 +161,7 @@ A másik kulcs újralétrehozásához használja a `key2` nevet `key1`helyett a 
 Egy kulcs újragenerálása, majd az új érték megjelenítéséhez újra lekéri.
 
 > [!NOTE]
-> Körültekintő tervezést kell végrehajtania, mielőtt újragenerálja a kulcsot egy éles Storage-fiókhoz. Egy vagy mindkét kulcs újragenerálása érvényteleníti a hozzáférését bármely alkalmazáshoz az újragenerált kulcs használatával. További információ eléréséhez lásd: [Hozzáférési kulcsok](storage-account-manage.md#access-keys).
+> Körültekintő tervezést kell végrehajtania, mielőtt újragenerálja a kulcsot egy éles Storage-fiókhoz. Egy vagy mindkét kulcs újragenerálása érvényteleníti a hozzáférését bármely alkalmazáshoz az újragenerált kulcs használatával. További információ: a [Storage-fiók elérési kulcsainak kezelése](storage-account-keys-manage.md).
 
 
 ### <a name="delete-a-storage-account"></a>Tárfiók törlése
@@ -182,7 +182,7 @@ Alapértelmezés szerint az összes Storage-fiók minden olyan hálózat számá
 
 A cikk bemutatja, hogyan kezelheti ezeket a beállításokat a következő PowerShell-parancsmagok használatával:
 * [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
-* [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Frissítés – AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>A Storage Analytics használata
@@ -235,7 +235,7 @@ Ha létrehozott egy új erőforráscsoportot és egy Storage-fiókot ehhez a gya
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a felügyeleti sík parancsmagokat használó általános műveleteket ismerteti a Storage-fiókok kezeléséhez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

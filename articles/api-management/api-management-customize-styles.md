@@ -1,5 +1,6 @@
 ---
-title: Az oldal stílusának testreszabása az Azure API Management örökölt fejlesztői portálon | Microsoft Docs
+title: Az oldal stílusainak testreszabása API Management örökölt fejlesztői portálon
+titleSuffix: Azure API Management
 description: Ennek a rövid útmutatónak a lépéseit követve szabhatja testre az elemek stílusát az Azure API Management fejlesztői portálon.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430729"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalai stílusának testreszabása
 

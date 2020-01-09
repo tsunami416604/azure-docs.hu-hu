@@ -1,17 +1,17 @@
 ---
-title: Azure Resource Manager sablonok a Azure Cosmos DB Gremlin API-hoz
+title: Resource Manager-sablonok a Azure Cosmos DB Gremlin API-hoz
 description: Azure Cosmos DB Gremlin API létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: c5ddea40c384496f2790ae4ab7c88888f1e9120a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 857af7ecd9ff3d7b3c771d048a802c6d3c1e5e4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441648"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Gremlin API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 
@@ -55,7 +55,7 @@ Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jele
 
 ## <a name="next-steps"></a>Következő lépések
 
-Íme néhány további erőforrás:
+Néhány további információforrás:
 
 - [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
 - [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)

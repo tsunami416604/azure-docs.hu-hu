@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383089"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a PHP és a Bing News Search használatával REST API
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a PHP használatával és a Bing News Search REST API
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
@@ -30,7 +30,7 @@ Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amel
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -40,6 +40,7 @@ A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices-b
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
 4. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+5. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 5. Futtassa a programot.
 
 ```php
@@ -197,7 +198,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

@@ -14,20 +14,22 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357849"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ra
 
-SQL Server 2008 és SQL Server 2008 R2 egyaránt a [támogatási (EOS) életciklusának végére](https://www.microsoft.com/sql-server/sql-server-2008)közeledik. Mivel számos ügyfél továbbra is mindkét verziót használja, több lehetőséget biztosítunk a támogatás folytatására. Áttelepítheti a helyszíni SQL Server példányait az Azure Virtual Machines szolgáltatásba (VM), áttelepítheti Azure SQL Database, vagy megtarthatja a helyszíni és a bővített biztonsági frissítéseket.
+A SQL Server 2008 és SQL Server 2008 R2 egyaránt elérte a [támogatási (EOS) életciklusának végét](https://www.microsoft.com/sql-server/sql-server-2008). Mivel számos ügyfél továbbra is mindkét verziót használja, több lehetőséget biztosítunk a támogatás folytatására. Áttelepítheti a helyszíni SQL Server példányait az Azure Virtual Machines szolgáltatásba (VM), áttelepítheti Azure SQL Database, vagy megtarthatja a helyszíni és a bővített biztonsági frissítéseket.
 
 A felügyelt példányokkal ellentétben az Azure-beli virtuális gépekre való Migrálás nem igényli az alkalmazások újbóli hitelesítését. A helyszíni tartózkodástól eltérően az Azure-beli virtuális gépekre való Migrálás után ingyenes kibővített biztonsági javítások is megjelenhetnek.
 
 A cikk további részében a SQL Server példány Azure-beli virtuális gépre való áttelepítésével kapcsolatos szempontokat ismertetjük.
+
+További információ a támogatási lehetőségek megszűnéséről: [a támogatás vége](/sql/sql-server/end-of-support/sql-server-end-of-life-overview).
 
 ## <a name="provisioning"></a>Kiépítés
 
@@ -40,7 +42,7 @@ Az Azure Marketplace-en keresztül üzembe helyezett lemezképek előre telepít
 > [!NOTE]
 > Bár a SQL Server- **létrehozási** és- **kezelési** lapok a Azure Portal SQL Server 2008 R2 rendszerképpel működnek együtt, a következő funkciók _nem támogatottak_: automatikus biztonsági mentések, Azure Key Vault integráció, R-szolgáltatások és tárolási konfiguráció.
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 Az utólagos elszámolású SQL Server 2008 R2-es üzemelő példányok [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-benefit/)konvertálhatók.
 
 Ha frissítési garanciát (SA) alapuló licencet szeretne átváltani, az ügyfélnek regisztrálnia kell az SQL VM erőforrás- [szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). A regisztráció után az SQL-licenc típusa Azure Hybrid Benefit és utólagos elszámolású.
@@ -74,7 +76,7 @@ SQL Server virtuális gépek bővített biztonsági frissítései a Microsoft Up
 Az *Automatikus javítás* alapértelmezés szerint engedélyezve van. Az automatizált javítás lehetővé teszi, hogy az Azure automatikus javításokat alkalmazzon az SQL Serveren és az operációs rendszeren. Megadhatja a hét egy napját, az időpontot és az időtartamot a karbantartási időszakra vonatkozóan, ha a SQL Server IaaS bővítmény telepítve van. Az Azure ebben a karbantartási időszakban végzi el a javításokat. A karbantartási időszak ütemezése a virtuális gép területi beállítása szerinti időt használja.  További információ: [SQL Server automatikus javítása az Azure Virtual Machines-on](virtual-machines-windows-sql-automated-patching.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 SQL Server VM migrálása az Azure-ba:
 
@@ -87,3 +89,7 @@ Ismerkedjen meg az Azure Virtual Machines SQL Serverával:
 Választ kaphat a SQL Server virtuális gépekkel kapcsolatos gyakori kérdésekre:
 
 * [Az Azure-SQL Server kapcsolatos gyakori kérdések Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)
+
+További információ a támogatási lehetőségek megszűnéséről és a bővített biztonsági frissítésekről:
+
+* [A támogatás befejezése](/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [kiterjesztett biztonsági frissítések](/sql/sql-server/end-of-support/sql-server-extended-security-updates)

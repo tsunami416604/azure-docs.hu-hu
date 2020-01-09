@@ -1,20 +1,19 @@
 ---
 title: Több HDInsight-fürt & egy Azure Data Lake Storage fiókot
 description: Megtudhatja, hogyan használhat egynél több HDInsight-fürtöt egyetlen Data Lake Storage-fiókkal
-keywords: hdinsight tárolás, hdfs, strukturált adat, strukturálatlan adat, adat-Lake Store
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498184"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495748"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
 
@@ -23,22 +22,21 @@ Data Lake Storage támogatja a korlátlan tárhelyet, amely nem csak nagy mennyi
 
 Ez a cikk ajánlásokat nyújt a Data Lake Storage rendszergazdának egy olyan önálló és megosztott Data Lake Storage-fiók beállításához, amely több **aktív** HDInsight-fürtön is felhasználható. Ezek az ajánlások több biztonságos és nem biztonságos Apache Hadoop-fürtök üzemeltetésére vonatkoznak egy megosztott Data Lake Storage-fiókon.
 
-
 ## <a name="data-lake-storage-file-and-folder-level-acls"></a>Data Lake Storage fájl-és mappa szintű ACL-ek
 
 A cikk további része feltételezi, hogy jól ismeri a fájl-és mappa szintű ACL-eket a Azure Data Lake Storageban, amely részletesen ismerteti a [Azure Data Lake Storage hozzáférés-vezérlésének](../data-lake-store/data-lake-store-access-control.md)részleteit.
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Több HDInsight-fürt Data Lake Storage beállítása
+
 Hozzon létre egy kétszintű mappa-hierarchiát, amely ismerteti a több HDInsight-fürt Data Lake Storage-fiókkal való használatának javaslatait. Vegye figyelembe, hogy rendelkezik egy Data Lake Storage-fiókkal a mappastruktúrát **/Clusters/Finance**. Ezzel a struktúrával a pénzügyi szervezet által igényelt összes fürt a/Clusters/Finance-t használhatja tárolási helyként. A jövőben, ha egy másik szervezet, a marketing, a HDInsight-fürtöket ugyanazzal a Data Lake Storage fiókkal szeretné létrehozni, létrehozhatnak/Clusters/marketing. Egyelőre csak használjuk a **/Clusters/Finance**-t.
 
-Annak engedélyezéséhez, hogy a HDInsight-fürtök hatékonyan használják a mappastruktúrát, a Data Lake Storage rendszergazdának hozzá kell rendelnie a megfelelő engedélyeket a táblázatban leírtak szerint. A táblázatban megjelenő engedélyek hozzáférés-ACL-ek, és nem alapértelmezett ACL-ek. 
-
+Annak engedélyezéséhez, hogy a HDInsight-fürtök hatékonyan használják a mappastruktúrát, a Data Lake Storage rendszergazdának hozzá kell rendelnie a megfelelő engedélyeket a táblázatban leírtak szerint. A táblázatban megjelenő engedélyek hozzáférés-ACL-ek, és nem alapértelmezett ACL-ek.
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Megnevezett felhasználó | Elnevezett felhasználói engedélyek | Elnevezett csoport | Névvel ellátott csoport engedélyei |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Felügyeleti |Felügyeleti  |Egyszerű szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |Felügyeleti |Felügyeleti |Egyszerű szolgáltatásnév |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |Felügyeleti |FINGRP  |Egyszerű szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |rendszergazda |rendszergazda  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |rendszergazda |rendszergazda |Szolgáltatásnév |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |rendszergazda |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
 
 A táblázatban
 
@@ -57,9 +55,7 @@ Néhány fontos szempontot figyelembe kell venni.
 
     |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Megnevezett felhasználó | Elnevezett felhasználói engedélyek | Elnevezett csoport | Névvel ellátott csoport engedélyei |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |Szolgáltatásnév |FINGRP  |- |-  |-   |-  | 
-   
-
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |Szolgáltatásnév |FINGRP  |- |-  |-   |-  |
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>A feladatok bemeneti és kimeneti adataira vonatkozó javaslatok
 
@@ -85,12 +81,13 @@ Ezek a beállítások a 247-as [fonalban](https://hwxmonarch.atlassian.net/brows
 
     Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
 
-Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása közben, a Localizer ellenőrzi, hogy az összes kért erőforrás valóban nyilvános-e, ha ellenőrzi a távoli fájlrendszerre vonatkozó engedélyeiket. Minden olyan LocalResource, amely nem fér el ehhez a feltételhez, elutasítja a honosítást. Az engedélyek keresése, a "mások" számára olvasási hozzáférés a fájlhoz. Ez a forgatókönyv nem működik, ha a HDInsight-fürtöket Azure Data Lakeon futtatja, mivel Azure Data Lake megtagadja a hozzáférést a "mások" számára a gyökérmappa szintjén.
+Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása közben, a Localizer ellenőrzi, hogy az összes kért erőforrás valóban nyilvános-e, ha ellenőrzi a távoli fájlrendszerre vonatkozó engedélyeiket. Minden olyan LocalResource, amely nem fér el ehhez a feltételhez, elutasítja a honosítást. Az engedélyek keresése, a "mások" számára olvasási hozzáférés a fájlhoz. Ez a forgatókönyv a HDInsight-fürtök Azure Data Lake-on való üzemeltetése során nem működik, mert a Azure Data Lake megtagadja a "mások" hozzáférését a gyökérmappa szintjén.
 
 #### <a name="workaround"></a>Áthidaló megoldás
+
 Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például: **/** , **/Clusters** és **/Clusters/Finance** , ahogyan az a fenti táblázatban látható.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-* [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Rövid útmutató: Fürtök beállítása a HDInsightban](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-storage-gen2.md)

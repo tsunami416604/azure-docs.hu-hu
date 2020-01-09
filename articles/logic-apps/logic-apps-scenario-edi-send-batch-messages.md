@@ -1,20 +1,20 @@
 ---
 title: Kötegelt feldolgozás – EDI-üzenetek csoportként
-description: EDI-üzenetek küldése és fogadása kötegként, csoportként vagy gyűjteményként Azure Logic Apps
+description: EDI-üzenetek küldése és fogadása kötegként, csoportként vagy gyűjteményekként a kötegelt feldolgozás használatával Azure Logic Apps
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793000"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666669"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-üzenetek küldése kötegekben kereskedelmi partnereknek Azure Logic Apps
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Exchange EDI-üzenetek kötegként vagy a kereskedelmi partnerek közötti csoportok között Azure Logic Apps
 
 A vállalati és üzleti (B2B) forgatókönyvekben a partnerek gyakran üzeneteket cserélnek a csoportokban vagy *kötegekben*. Ha Logic Apps használatával hoz létre batch-megoldást, üzeneteket küldhet a kereskedelmi partnereknek, és feldolgozhatja ezeket az üzeneteket kötegekben. Ebből a cikkből megtudhatja, hogyan dolgozza fel az EDI-üzeneteket az X12 használatával példaként egy "batch-feladó" logikai alkalmazás és egy "batch-fogadó" logikai alkalmazás létrehozásával. 
 
@@ -66,12 +66,12 @@ Ehhez a Batch-fogadóhoz meg kell adnia a Batch-módot, a nevet, a kiadási felt
 
    | Tulajdonság | Value (Díj) | Megjegyzések | 
    |----------|-------|-------|
-   | **Batch mód** | Inline |  |  
+   | **Batch mód** | Beágyazott |  |  
    | **Köteg neve** | TestBatch | Csak **beágyazott** batch-módban érhető el | 
    | **Kiadási feltételek** | Üzenetek száma alapján, ütemterv alapján | Csak **beágyazott** batch-módban érhető el | 
    | **Üzenetek száma** | 10 | Csak az **üzenetek számán alapuló** kiadási feltételekkel érhető el | 
    | **Intervallum** | 10 | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
-   | **Gyakoriság** | percenként | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
+   | **Gyakoriság** | minute | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
    ||| 
 
    ![Batch-trigger részleteinek megadása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)

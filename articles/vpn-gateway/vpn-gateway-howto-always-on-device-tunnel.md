@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425670"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>AlwaysOn VPN-eszközalagút konfigurálása
 
@@ -37,7 +37,7 @@ Konfigurálja úgy a VPN-átjárót, hogy a IKEv2 és a tanúsítványalapú hit
 
 Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell teljesülniük:
 
-* Az eszköznek olyan tartományhoz csatlakoztatott számítógépnek kell lennie, amely a Windows 10 Enterprise vagy az Education 1709-es vagy újabb verzióját futtatja.
+* Az eszköznek olyan tartományhoz csatlakoztatott számítógépnek kell lennie, amely a Windows 10 Enterprise vagy az Education 1809-es vagy újabb verzióját futtatja.
 * Az alagút csak a Windows beépített VPN-megoldásához állítható be, és a IKEv2 használatával a számítógép-Tanúsítványos hitelesítéssel van létrehozva. 
 * Eszközönként csak egy eszköz-alagút állítható be.
 
@@ -139,15 +139,15 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
 1. A rendszergazda parancssorból indítsa el a PowerShellt a következő parancs futtatásával:
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![PowerShell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+   ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. A PowerShellben váltson arra a mappára, ahol a **devicecert. ps1** és az **VPNProfile. xml fájl** található, és futtassa a következő parancsot:
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
@@ -165,6 +165,6 @@ A profil eltávolításához futtassa a következő parancsot:
 
 ![Felesleges tartalmak törlése](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hibaelhárítási információkért lásd: [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)

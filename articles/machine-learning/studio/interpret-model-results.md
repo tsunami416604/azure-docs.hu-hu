@@ -10,23 +10,23 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454700"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
 Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejelzési eredményeket Azure Machine Learning Studio (klasszikus). Miután betanított egy modellt, és elvégezte az előrejelzések megtételét ("a modell értékelése"), meg kell ismernie és el kell értelmezni az előrejelzés eredményét.
 
 
 
-A Azure Machine Learning Studio klasszikus verziójában négy fő gépi tanulási modell létezik:
+A gépi tanulási modellek négy fő típusa Azure Machine Learning Studio (klasszikus):
 
 * Osztályozás
-* Fürtszolgáltatás
-* regressziós
+* Fürtözés
+* Regresszió
 * Ajánló rendszerek
 
 Az ezen modellek alapján történő előrejelzéshez használt modulok a következők:
@@ -39,7 +39,7 @@ Ez a dokumentum ismerteti, hogyan értelmezhető az egyes modulok előrejelzési
 
 Ez a témakör az előrejelzési értelmezést, de a modell kiértékelését nem tartalmazza. További információ a modell kiértékeléséről: [modell teljesítményének kiértékelése Azure Machine learning Studio (klasszikus)](evaluate-model-performance.md).
 
-Ha még nem ismeri a Azure Machine Learning Studio klasszikus verzióját, és segítségre van szüksége az első lépések megtételéhez, tekintse meg az [egyszerű kísérlet létrehozása Azure Machine learning Studio (klasszikus)](create-experiment.md)című témakört.
+Ha új Azure Machine Learning Studio (klasszikus), és segítségre van szüksége egy egyszerű kísérlet létrehozásához az első lépésekhez, tekintse meg [a Azure Machine learning Studio (klasszikus) egyszerű kísérlet létrehozása](create-experiment.md)című témakört.
 
 ## <a name="classification"></a>Osztályozás
 A besorolási problémák két alkategóriája van:
@@ -52,7 +52,7 @@ A Azure Machine Learning Studio (klasszikus) különböző modulokat tartalmaz a
 ### <a name="two-class-classification"></a>Kétosztályos besorolás
 **Példa kísérletre**
 
-A kétosztályos besorolási probléma példája az írisz virágok besorolása. A feladat az írisz-virágok osztályozása a funkcióik alapján. A Azure Machine Learning Studio klasszikus verziójában megadott Iris-adathalmaz a népszerű [Iris-adathalmaz](https://en.wikipedia.org/wiki/Iris_flower_data_set) egy részhalmaza, amely csak két virágos fajt tartalmaz (0. és 1. osztály). Az egyes virágoknak négy funkciója van (a SEPA hossza, a SEPA szélessége, a szirom hossza és a szirom szélessége).
+A kétosztályos besorolási probléma példája az írisz virágok besorolása. A feladat az írisz-virágok osztályozása a funkcióik alapján. A Azure Machine Learning Studio (klasszikus) által megadott Iris-adathalmaz a népszerű [Iris-adathalmaz](https://en.wikipedia.org/wiki/Iris_flower_data_set) egy részhalmaza, amely csak két virágos fajt tartalmaz (0 és 1. osztály). Az egyes virágoknak négy funkciója van (a SEPA hossza, a SEPA szélessége, a szirom hossza és a szirom szélessége).
 
 ![Az írisz-kísérlet képernyőképe](./media/interpret-model-results/1.png)
 
@@ -137,7 +137,7 @@ Miután közzétette és futtatta a webszolgáltatást, és megadta a bemeneti s
 
 10. ábra A többosztályos besorolás webszolgáltatás-eredménye
 
-## <a name="regression"></a>regressziós
+## <a name="regression"></a>Regresszió
 A regressziós problémák eltérnek a besorolási problémáktól. Besorolási probléma esetén olyan diszkrét osztályokat próbál meg megjósolni, mint például az, hogy az írisz virág melyik osztályhoz tartozik. De ahogy az alábbi példában is látható egy regressziós problémára, egy folytonos változót próbál meg előre jelezni, például egy autó árát.
 
 **Példa kísérletre**
@@ -174,7 +174,7 @@ A webszolgáltatás futtatásakor a visszaadott eredmény a 14. ábrára hasonl�
 
 14. ábra. Webszolgáltatás-ár regressziós problémájának webszolgáltatási eredménye
 
-## <a name="clustering"></a>Fürtszolgáltatás
+## <a name="clustering"></a>Fürtözés
 **Példa kísérletre**
 
 Hozzon létre egy fürtszolgáltatási kísérletet a szivárványhártya-adathalmaz használatával. Itt kiszűrheti az adatkészletben szereplő címkéket, így csak funkciókkal rendelkezhet, és fürtözéshez is használható. Ebben az írisz-használati esetben a betanítási folyamat során a két fürt számát kell megadnia, ami azt jelenti, hogy a virágok két osztályba csoportosulnak. A kísérlet a 15. ábrán látható.
@@ -224,9 +224,9 @@ Az ajánló rendszerek esetében példaként használhatja az éttermi javaslatt
 
 * Éttermek minősítése az ügyfelektől
 * Az ügyfél funkcióinak adatszolgáltatása
-* Az éttermi funkciókról
+* Éttermi szolgáltatási adatok
 
-A Azure Machine Learning Studio klasszikus verziójában számos dolgot tehetünk a [Train Matchbox ajánló][train-matchbox-recommender] modullal:
+A Azure Machine Learning Studio (klasszikus) [Matchbox ajánló][train-matchbox-recommender] modullal több dolog is elvégezhető:
 
 * Egy adott felhasználó és tétel minősítésének előrejelzése
 * Elemek ajánlása egy adott felhasználónak

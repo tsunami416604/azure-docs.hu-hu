@@ -2,13 +2,14 @@
 title: Tároló csoport üzembe helyezése az Azure Virtual Networkben
 description: Megtudhatja, hogyan helyezhet üzembe tároló csoportokat egy új vagy meglévő Azure-beli virtuális hálózaton.
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533271"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442248"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tároló-példányok üzembe helyezése Azure-beli virtuális hálózatban
 
@@ -45,8 +46,8 @@ A tárolók erőforrásainak korlátai eltérőek lehetnek a nem hálózati tár
 ### <a name="unsupported-networking-scenarios"></a>Nem támogatott hálózatkezelési forgatókönyvek 
 
 * **Azure Load Balancer** – a hálózati tárolóban található tároló példányai előtt egy Azure Load Balancer elhelyezése nem támogatott
-* **Virtuális hálózati** társítás – nem lehet társ olyan virtuális hálózat, amely egy másik virtuális hálózat Azure Container instances delegált alhálózatot tartalmaz
-* **Útválasztási táblák** – a felhasználó által megadott útvonalak nem állíthatók be a Azure Container instances delegált alhálózaton
+* A **virtuális hálózat** VNet-társítása nem fog működni az ACI-ban, ha a hálózat, amelyre az ACI-VNet nyilvános IP-címet használ. A társ hálózatnak egy RFC1918 magánhálózati IP-tárterületre van szüksége ahhoz, hogy a társítás működjön. Emellett jelenleg csak egy másik VNet lehet VNet.
+* **Virtuális hálózati forgalom útválasztása** – az ügyfél útvonalak nem állíthatók be nyilvános IP-címek köré. Útvonalakat lehet beállítani azon delegált alhálózat magánhálózati IP-címén belül, amelyben az ACI-erőforrások telepítve vannak 
 * **Hálózati biztonsági csoportok** – a nsg egy Azure Container instances delegált alhálózatra alkalmazott kimenő biztonsági szabályok jelenleg nincsenek kényszerítve 
 * A virtuális hálózatra telepített **nyilvános IP-cím vagy DNS** -tároló csoportok jelenleg nem támogatják a tárolók közvetlen közzétételét nyilvános IP-címmel vagy teljes tartománynévvel.
 * **Belső névfeloldás** – a virtuális hálózatban lévő Azure-erőforrások névfeloldása belső Azure DNS használatával nem támogatott

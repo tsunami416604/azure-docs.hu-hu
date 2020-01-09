@@ -9,43 +9,38 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381562"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
 
-Ebben az oktatóanyagban egy egyéni alkalmazást hoz létre, amely megjósolja a felhasználó szándékát a Kimondás (szöveg) alapján. 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+Ebben az oktatóanyagban egy egyéni alkalmazást hoz létre, amely megjósolja a felhasználó szándékát a Kimondás (szöveg) alapján.
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Új alkalmazás létrehozása 
+> * Új alkalmazás létrehozása
 > * Szándékok létrehozása
 > * Példa kimondott szövegek hozzáadása
 > * Alkalmazás betanítása
 > * Alkalmazás közzététele
 > * Leképezési előrejelzés beolvasása a végpontról
 
-
-[!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
 ## <a name="user-intentions-as-intents"></a>Felhasználói szándékok
 
-Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékának meghatározása: 
+Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékának meghatározása:
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-Ezek különféle **szándékokként** vannak csoportosítva. 
+Ezek különféle **szándékokként** vannak csoportosítva.
 
-|Szándék|Cél|
+|Szándék|Rendeltetés|
 |--|--|
 |`ModifyOrder`|Határozza meg a felhasználó pizzájának sorrendjét.|
 |`Greeting`|Kezdje el a bot-beszélgetést.|
@@ -56,11 +51,11 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
-## <a name="create-a-new-intent"></a>Új szándék létrehozása 
+## <a name="create-a-new-intent"></a>Új szándék létrehozása
 
 1. A portálon az alkalmazás **összeállítás** szakaszában válassza a **+ Létrehozás**elemet. Adja meg az új leképezés nevét, `OrderPizza`, majd válassza a **kész**lehetőséget.
 
-    A `OrderPizza` célja a következő: Ha a felhasználó egy pizzát szeretne rendelni. 
+    A `OrderPizza` célja a következő: Ha a felhasználó egy pizzát szeretne rendelni.
 
 1. Vegyen fel több példát a hosszúságú kimondott szöveg erre a célra, ha a felhasználó a következőt kéri:
 
@@ -74,9 +69,9 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
     ![Példa kimondott szövegek hozzáadása](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Ha _például hosszúságú kimondott szöveg_-t használ, akkor a Luis betanítása arról nyújt segítséget, hogy milyen hosszúságú kimondott szöveg kell előre jelezni. 
+    Ha _például hosszúságú kimondott szöveg_-t használ, akkor a Luis betanítása arról nyújt segítséget, hogy milyen hosszúságú kimondott szöveg kell előre jelezni.
 
-    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Hátralévő leképezések létrehozása
 
@@ -90,7 +85,7 @@ Ezek különféle **szándékokként** vannak csoportosítva.
     |`Start`|
     |`Begin`|
 
-1. Hozza létre a `Confirm` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a szándék annak megállapítására, hogy a felhasználó megrendelése megtörtént-e, és elfogadja-e a rendelés részleteit. 
+1. Hozza létre a `Confirm` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a szándék annak megállapítására, hogy a felhasználó megrendelése megtörtént-e, és elfogadja-e a rendelés részleteit.
 
     |`Confirm` példa hosszúságú kimondott szöveg|
     |--|
@@ -104,13 +99,13 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
-## <a name="train-the-app"></a>Az alkalmazás betanítása 
+## <a name="train-the-app"></a>Az alkalmazás betanítása
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Az alkalmazás közzététele 
+## <a name="publish-the-app"></a>Az alkalmazás közzététele
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-prediction"></a>Leképezési előrejelzés beolvasása
 
@@ -118,11 +113,11 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 
 1. Lépjen az URL-cím végére a címsorban, és írja be a következőt:
 
-    `get a medium vegetarian pizza for delivery` 
+    `get a medium vegetarian pizza for delivery`
 
     Ez nem pontosan ugyanaz, mint a Kimondás, ezért jó tesztet talál, hogy a LUIS megtudja, mit kell megjósolni ezzel a szándékkal.
 
-    Az utolsó lekérdezésisztring-paraméter a `query`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `OrderPizza` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
+    Az utolsó lekérdezésisztring-paraméter a `query`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `OrderPizza` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként.
 
     ```JSON
     {
@@ -148,15 +143,15 @@ Ezek különféle **szándékokként** vannak csoportosítva.
     }
     ```
 
-    Az entitások tömb üres, mert az alkalmazás jelenleg nem rendelkezik entitásokkal (az adategységek a kinyerési adatokon belül). 
+    Az entitások tömb üres, mert az alkalmazás jelenleg nem rendelkezik entitásokkal (az adategységek a kinyerési adatokon belül).
 
-    A JSON-eredmény a **`prediction.topIntent`** tulajdonságként azonosítja a legmagasabb pontszámot elérő szándékot. Az összes pontszám 1 és 0 közé esik, a jobb pontszám pedig az 1 értékhez közeledik. 
+    A JSON-eredmény a **`prediction.topIntent`** tulajdonságként azonosítja a legmagasabb pontszámot elérő szándékot. Az összes pontszám 1 és 0 közé esik, a jobb pontszám pedig az 1 értékhez közeledik.
 
 1. Módosítsa az URL- **lekérdezési** paramétert az **üdvözlési** szándék megcélzásához:
 
     `Howdy`
 
-    Ez nem pontosan ugyanaz, mint a Kimondás, ezért jó tesztet talál, hogy a LUIS megtudja, mit kell megjósolni ezzel a szándékkal. 
+    Ez nem pontosan ugyanaz, mint a Kimondás, ezért jó tesztet talál, hogy a LUIS megtudja, mit kell megjósolni ezzel a szándékkal.
 
     ```json
     {
@@ -179,21 +174,21 @@ Ezek különféle **szándékokként** vannak csoportosítva.
             },
             "entities": {}
         }
-    }    
+    }
     ```
- 
-    Ennek az előrejelzésnek a 44%-os megbízhatósági pontszáma van. A megbízhatósági pontszám növeléséhez adjon hozzá 15 és 30 közötti példa hosszúságú kimondott szöveg.  
+
+    Ennek az előrejelzésnek a 44%-os megbízhatósági pontszáma van. A megbízhatósági pontszám növeléséhez adjon hozzá 15 és 30 közötti példa hosszúságú kimondott szöveg.
 
 ## <a name="client-application-next-steps"></a>Ügyfél – alkalmazás következő lépései
 
-Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. A beszélgetés utáni nyomon követést az ügyfélalkalmazás, például egy Azure bot nyújtja. 
+Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. A beszélgetés utáni nyomon követést az ügyfélalkalmazás, például egy Azure bot nyújtja.
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Entitások típusai](luis-concept-entity-types.md)
+* [Az entitások típusai](luis-concept-entity-types.md)
 * [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
@@ -202,7 +197,7 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag létrehozta a LUIS-alkalmazást, létrehozta a leképezéseket, felvette például az egyes szándékok hosszúságú kimondott szöveg, felvettük egy példát a hosszúságú kimondott szöveg, a kitanított, közzétett és tesztelt végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései. 
+Ez az oktatóanyag létrehozta a LUIS-alkalmazást, létrehozta a leképezéseket, felvette például az egyes szándékok hosszúságú kimondott szöveg, felvettük egy példát a hosszúságú kimondott szöveg, a kitanított, közzétett és tesztelt végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései.
 
 > [!div class="nextstepaction"]
 > [Felbomló entitás hozzáadása az alkalmazáshoz](tutorial-machine-learned-entity.md)

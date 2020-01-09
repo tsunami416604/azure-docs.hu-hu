@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397840"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Illesztések Azure Monitor log lekérdezésekben
 
@@ -40,7 +40,7 @@ SecurityEvent
 
 Ebben a példában az első adatkészlet szűri az összes bejelentkezési eseményt. Ez egy második adatkészlettel van csatlakoztatva, amely az összes kijelentkezési eseményt szűri. A tervezett oszlopok a _számítógép_, a _fiók_, a _TargetLogonId_és a _TimeGenerated_. Az adatkészleteket egy megosztott oszlop ( _TargetLogonId_) korrelálja. A kimenet egy korreláción belüli egyetlen rekord, amely a bejelentkezési és a kijelentkezési időt is tartalmazhatja.
 
-Ha mindkét adatkészlet azonos nevű oszlopokkal rendelkezik, akkor a jobb oldali adatkészlet oszlopai egy indexet kapnak, így ebben a példában az eredmények a bal oldali tábla és a _TargetLogonId1_ értékeit tartalmazó _TargetLogonId_ jelenítik meg. a jobb oldali táblából. Ebben az esetben a második _TargetLogonId1_ oszlop el lett távolítva a `project-away` operátor használatával.
+Ha mindkét adatkészlet azonos nevű oszlopokkal rendelkezik, akkor a jobb oldali adatkészlet oszlopai egy indexet kapnak, így ebben a példában az eredmények a bal oldali táblából származó értékekkel _és a_ jobb oldali tábla értékeit tartalmazó _TargetLogonId_ jelennek meg. Ebben az esetben a második _TargetLogonId1_ oszlop el lett távolítva a `project-away` operátor használatával.
 
 > [!NOTE]
 > A teljesítmény javítása érdekében a `project` operátor használatával csak a csatlakoztatott adatkészletek megfelelő oszlopait tartsa meg.
@@ -80,7 +80,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Összekapcsolási típus
 Adja meg a _Kind_ argumentummal való illesztés típusát. Mindegyik típus a következő táblázatban leírtak szerint eltérő egyezést hajt végre az adott táblák rekordjai között.
 
-| Csatlakozás típusa | Leírás |
+| Összekapcsolás típusa | Leírás |
 |:---|:---|
 | innerunique | Ez az alapértelmezett csatlakozási mód. Először a bal oldali tábla egyező oszlopának értékei találhatók, és az ismétlődő értékek törlődnek.  Ezután az egyedi értékek halmaza illeszkedik a jobb oldali táblához. |
 | belső | A rendszer csak a mindkét táblában lévő rekordokat tartalmazza az eredmények között. |

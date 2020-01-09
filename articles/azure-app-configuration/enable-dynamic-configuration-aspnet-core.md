@@ -1,5 +1,6 @@
 ---
-title: Oktatóanyag az Azure-alkalmazások konfigurációjának dinamikus konfigurációjának használatához egy ASP.NET Core alkalmazásban | Microsoft Docs
+title: 'Oktatóanyag: az alkalmazás konfigurációjának dinamikus konfigurálása a ASP.NET Coreban'
+titleSuffix: Azure App Configuration
 description: Ez az oktatóanyag azt ismerteti, hogyan lehet dinamikusan frissíteni a ASP.NET Core-alkalmazások konfigurációs információit
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433709"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
 
@@ -33,7 +34,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfiguráci
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) egy kiváló lehetőség, amely a Windows, MacOS és Linux platformokon érhető el.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Állítsa be úgy az alkalmazást, hogy frissítse a konfigurációját az alkalmazás konfigurációs tárolójában történt változásokra reagálva.
@@ -195,15 +196,15 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+4. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
 5. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcsok értékeit:
 
-    | Paraméter | Érték |
+    | Jelmagyarázat | Value (Díj) |
     |---|---|
-    | TestApp:Settings:BackgroundColor | zöld |
-    | TestApp:Settings:FontColor | lightGray |
-    | TestApp:Settings:Message | Adatok az Azure app Configuration szolgáltatásból – mostantól élő frissítésekkel! |
+    | TestApp: beállítások: BackgroundColor | zöld |
+    | TestApp: beállítások: FontColor | lightGray |
+    | TestApp: beállítások: üzenet | Adatok az Azure app Configuration szolgáltatásból – mostantól élő frissítésekkel! |
 
 6. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat. A változtatások megjelenítéséhez a böngésző lapja több frissítése is szükséges lehet.
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462197"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Szerepkör-hozzárendelések hozzáadása az Azure RBAC és a Azure Resource Manager sablonok használatával
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] a Azure PowerShell vagy az Azure CLI használata mellett a szerepköröket [Azure Resource Manager sablonok](../azure-resource-manager/resource-group-authoring-templates.md)használatával is hozzárendelheti. A sablonok akkor lehetnek hasznosak, ha az erőforrásokat következetesen és ismételten kell telepíteni. Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket sablonok használatával.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] a Azure PowerShell vagy az Azure CLI használata mellett a szerepköröket [Azure Resource Manager sablonok](../azure-resource-manager/templates/template-syntax.md)használatával is hozzárendelheti. A sablonok akkor lehetnek hasznosak, ha az erőforrásokat következetesen és ismételten kell telepíteni. Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket sablonok használatával.
 
 ## <a name="get-object-ids"></a>Objektum-azonosítók beolvasása
 
@@ -362,6 +362,6 @@ Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be eg
 ## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
 - [Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../azure-resource-manager/deploy-to-subscription.md)
 - [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus elosztott nyomkövetés helyi továbbítója (előzetes verzió) | Microsoft docs
+title: Azure Application Insights OpenCensus helyi továbbító (előzetes verzió)
 description: Továbbítsa a OpenCensus elosztott nyomkövetéseit, és a Pythonhoz hasonló nyelveket és az Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406608"
 ---
 # <a name="local-forwarder-preview"></a>Helyi továbbító (előzetes verzió)
 
@@ -105,7 +105,7 @@ Számos Linux-felhasználó szeretné futtatni a helyi továbbítót démonként
 Tegyük fel például, hogy létrehozunk egy Daemon-szolgáltatást a rendszerszintű használatával. A keretrendszer függő verzióját fogjuk használni, de ugyanezt is elvégezheti egy önálló is.
 
 * hozza létre a következő *localforwarder. Service* nevű szolgáltatásfiókot, és helyezze a */lib/systemd/System*-be.
-Ez a példa feltételezi, hogy a felhasználónevét SAMPLE_USER, és a helyi továbbító Framework-függő bináris fájljait ( */ConsoleHost/publish*) a */Home/SAMPLE_USER/LOCALFORWARDER_DIR*-be másolta.
+Ez a példa feltételezi, hogy a Felhasználónév SAMPLE_USER, és a helyi továbbító keretrendszer függő bináris fájljait (a */ConsoleHost/publish*-ből) átmásolta a */home/SAMPLE_USER/LOCALFORWARDER_DIR*.
 
 ```
 # localforwarder.service

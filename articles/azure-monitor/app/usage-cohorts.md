@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d6762ac9253c838f715588451441aa9aa467f673
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406321"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -106,7 +106,7 @@ Az előző két kohorsz a legördülő listák használatával lett meghatározv
 
    * Egy lekérdezési szakasz, ahol a kohorszt analitikai lekérdezéssel definiálhatja.
 
-     A lekérdezési szakaszban [egy elemzési lekérdezést kell írnia](/azure/kusto/query). A lekérdezés kiválasztja a definiálni kívánt kohorszot leíró sorok bizonyos készletét. A Kohorszs eszköz implicit módon hozzáadja a következőt: "| összefoglalás a user_Id "záradékkal a lekérdezéshez. Ezek az adatnézetek egy tábla lekérdezése alatt tekinthetők meg, így biztos lehet benne, hogy a lekérdezés az eredményeket adja vissza.
+     A lekérdezési szakaszban [egy elemzési lekérdezést kell írnia](/azure/kusto/query). A lekérdezés kiválasztja a definiálni kívánt kohorszot leíró sorok bizonyos készletét. A Kohorszs eszköz implicit módon hozzáadja a következőt: "| összefoglalja user_Id "záradékot a lekérdezéshez. Ezek az adatnézetek egy tábla lekérdezése alatt tekinthetők meg, így biztos lehet benne, hogy a lekérdezés az eredményeket adja vissza.
 
      > [!NOTE]
      > Ha nem látja a lekérdezést, próbálja meg átméretezni a szakaszt, hogy az magasabb legyen, és láthatóvá tegye a lekérdezést. A szakasz elején található animált. gif az átméretezési viselkedést szemlélteti.
@@ -118,7 +118,7 @@ Az előző két kohorsz a legördülő listák használatával lett meghatározv
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Válassza a **lekérdezés futtatása**lehetőséget. Ha nem látja a felhasználói azonosítókat a táblázatban, váltson arra az országra/régióra, ahol az alkalmazás felhasználókkal rendelkezik.
+3. Válassza a **Lekérdezés futtatása** lehetőséget. Ha nem látja a felhasználói azonosítókat a táblázatban, váltson arra az országra/régióra, ahol az alkalmazás felhasználókkal rendelkezik.
 
 4. Mentse és nevezze el az kohorszt.
 
@@ -131,7 +131,7 @@ A kohorszok és a szűrők eltérőek. Tegyük fel, hogy az Egyesült Királysá
 * A kohorsz verziója az aktuális időtartományban az Egyesült Királyságból érkező, egy vagy több eseményt küldő felhasználók összes eseményét jeleníti meg. Ha ország vagy régió szerint osztja szét, valószínűleg sok országot és régiót láthat.
 * A szűrők verziója csak az Egyesült Királyságból származó eseményeket mutatja. Ha azonban ország vagy régió szerint bontotta, akkor csak az Egyesült Királyság jelenik meg.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>További információk
 
 * [Elemzési lekérdezés nyelve](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Felhasználók, munkamenetek, események](usage-segmentation.md)

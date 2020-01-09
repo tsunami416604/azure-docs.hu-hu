@@ -3,12 +3,12 @@ title: Titkosított Azure-beli virtuális gépek biztonsági mentése és vissza
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449971"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
 
@@ -27,8 +27,8 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását A
 
 **Virtuális merevlemez típusa** | **ADE (BEK/dm-crypt)** | **ADE és KEK**
 --- | --- | ---
-**Unmanaged** | Igen | Igen
-**Managed**  | Igen | Igen
+**Felügyelt** | Igen | Igen
+**Felügyelt**  | Igen | Igen
 
 - További információ az [ade](../security/azure-security-disk-encryption-overview.md), a [Key Vault](../key-vault/key-vault-overview.md)és a [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Olvassa el az Azure-beli virtuális gép lemezének titkosításával kapcsolatos [gyakori kérdéseket](../security/azure-security-disk-encryption-faq.md) .
@@ -136,10 +136,10 @@ Engedélyek beállítása:
 A titkosított virtuális gépeket a következőképpen állíthatja vissza:
 
 1. [Állítsa vissza a virtuális gép lemezét](backup-azure-arm-restore-vms.md#restore-disks).
-2. Ezután tegye a következők egyikét:
-    - A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [Részletek](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    - Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [Részletek](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
-    - Linux rendszerű virtuális gépek esetén állítsa alaphelyzetbe az ADE-bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek.
+2. Hozza létre újból a virtuálisgép-példányt a következők egyikével:
+    1. A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [További információk](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információk](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+3. Linux rendszerű virtuális gépek esetén telepítse újra az ADE bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek.
 
 ## <a name="next-steps"></a>Következő lépések
 

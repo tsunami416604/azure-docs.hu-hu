@@ -1,46 +1,37 @@
 ---
-title: Az Azure Service Fabric Application szint figyelése |} A Microsoft Docs
-description: Tudnivalók az alkalmazás és szolgáltatás események és naplók monitorozása és diagnosztizálása az Azure Service Fabric-fürtökkel használt.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric alkalmazások szintjének figyelése
+description: Ismerje meg az Azure Service Fabric-fürtök figyelésére és diagnosztizálására szolgáló alkalmazás-és szolgáltatási szintű eseményeket és naplókat.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 613faf5bbc9498b82bc04460d30b2e94c30340db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464720"
 ---
 # <a name="application-logging"></a>Alkalmazásnaplózás
 
-A kód szándékkal, nem csak úgy juthat hozzá a felhasználók számára, hanem csak úgy is tudja, hogy valami nem megfelelő, az alkalmazásban, és diagnosztizálhatja a javításra szorul. Bár technikailag lehetséges szolgáltatáshoz való csatlakozáshoz hibakeresőt egy éles környezetben, akkor sem gyakori eljárásnak számít. Tehát hogy részletes rendszerállapot-adatok fontos.
+A kód kialakítása nem csupán a felhasználókra vonatkozó elemzések megszerzésének módja, de az egyetlen lehetőség, hogy megtudja, van-e probléma az alkalmazásban, és hogy mit kell megjavítani. Habár technikailag lehetséges, hogy a hibakeresőt egy éles szolgáltatáshoz is összekapcsolhatják, nem általános gyakorlat. Ezért fontos a részletes rendszerállapot-információk használata.
 
-Egyes termékek automatikusan a kód alkalmazásáról. Bár ezek a megoldások a is megfelelően működjön, manuális instrumentation szinte mindig szükséges hozhat létre az üzleti logikát. A végén rendelkeznie kell az alkalmazás forensically hibakeresése elegendő információt. Service Fabric-alkalmazásokat bármely naplózási keretrendszer használatával is lesznek tagolva. Ez a dokumentum azt ismerteti, néhány más megközelítést szándékkal, a kód és a egy megközelítést választani egy másikkal szemben. 
+Egyes termékek automatikusan kialakítják a kódot. Habár ezek a megoldások jól működhetnek, a manuális rendszerállapotot szinte mindig az üzleti logikára kell megadni. A végén elegendő információval kell rendelkeznie az alkalmazás kriminalisztikai hibakereséséhez. Service Fabric alkalmazások bármilyen naplózási keretrendszerrel rendelkezhetnek. Ez a dokumentum néhány különböző megközelítést ismertet a kód kivezetéséhez, és ha egy másik megközelítést választ ki. 
 
-Ezek a javaslatok használati példák: [naplózás hozzáadása a Service Fabric-alkalmazás](service-fabric-how-to-diagnostics-log.md).
+A javaslatok használatáról a következő témakörben talál példákat: [naplózás hozzáadása a Service Fabric alkalmazáshoz](service-fabric-how-to-diagnostics-log.md).
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Az Application Insights-integrációja révén a Service Fabric beépített rendelkezik. Felhasználók hozzáadása az AI Service Fabric nuget-csomagok és fogadásához, adatok és a létrehozott naplók és a gyűjtött, az Azure Portalon. Emellett tanácsos adja hozzá a saját telemetriát, diagnosztizálása és keresése a saját alkalmazások és szolgáltatások és az alkalmazás részei, amelyek nyomon követése érdekében a leggyakrabban használt. A [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) osztályt az SDK szolgáltatással számos módon nyomon követéséhez az alkalmazások telemetriai adatokat. Tekintse meg a példa bemutatja, hogyan alakítsa ki, és adja hozzá az application insights az alkalmazáshoz a jelen oktatóanyagban szereplő [figyelése és diagnosztizálása a .NET-alkalmazás](service-fabric-tutorial-monitoring-aspnet.md)
+A Application Insights gazdag integrációval rendelkezik Service Fabric a dobozból. A felhasználók hozzáadhatják az AI Service Fabric nuget-csomagokat, és megkapják a Azure Portalban megtekinthető és gyűjtött adatokat és naplókat. Emellett a felhasználóknak javasoljuk saját telemetria hozzáadását az alkalmazások diagnosztizálásához és hibakereséséhez, és nyomon követni, hogy az alkalmazás mely szolgáltatásokat és részeit használja. Az SDK [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) osztálya számos módszert kínál az alkalmazások telemetria nyomon követésére. Tekintse meg, hogyan helyezhet el és adhat hozzá Application bepillantást az alkalmazásához az oktatóanyagban [egy .NET-alkalmazás monitorozásához és diagnosztizálásához](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="eventsource"></a>EventSource
 
-Ha a Visual Studióban, egy sablonból hoz létre egy Service Fabric megoldást egy **EventSource**-származtatott osztály (**ServiceEventSource** vagy **ActorEventSource**) jön létre, . Sablon létrehozása, amelyben az alkalmazás vagy szolgáltatás eseményeket adhat hozzá. A **EventSource** neve **kell** egyedinek lennie, és érdemes lehet átnevezheti az alapértelmezett sablon karakterlánc értéket –&lt;megoldás&gt;-&lt;projekt &gt;. Több kellene **EventSource** tulajdonságdefiníciót használja ugyanazt a nevet egy problémát okoz a futási időben. Minden egyes megadott eseményének rendelkeznie kell egy egyedi azonosítója. Ha egy azonosító nem egyedi, futásidejű hiba történik. Egyes szervezetek külön fejlesztői csapatok közötti ütközések elkerülésével azonosítók értéktartományokat preassign. További információkért lásd: [előlegbekérő 's blog](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) vagy a [MSDN-dokumentáció](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Amikor létrehoz egy Service Fabric megoldást egy sablonból a Visual Studióban, létrejön egy **EventSource**származtatott osztály (**ServiceEventSource** vagy **ActorEventSource**). Létrejön egy sablon, amelyben eseményeket adhat hozzá az alkalmazáshoz vagy szolgáltatáshoz. A **EventSource** nevének **egyedinek kell** lennie, és átnevezni kell az alapértelmezett sablon sztring sajátvállalat-&lt;megoldás&gt;-&lt;Project&gt;. Ha több olyan **EventSource** -definíció is van, amelyek ugyanazt a nevet használják, a probléma futás közben is hibát okoz. Minden meghatározott eseménynek egyedi azonosítóval kell rendelkeznie. Ha egy azonosító nem egyedi, futásidejű hiba történik. Egyes szervezetek a különböző fejlesztői csapatok közötti ütközések elkerülése érdekében előrendelik az azonosítók tartományait. További információ: a [Vance blogja](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) vagy az [MSDN dokumentációja](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
-## <a name="aspnet-core-logging"></a>ASP.NET Core-naplózás
+## <a name="aspnet-core-logging"></a>ASP.NET Core naplózás
 
-Fontos alapos megtervezéséről, hogyan fogja a kód alkalmazásáról. A jobb oldali kialakítási terv segítségével elkerülhető a potenciálisan destabilizing a kódbázis, és ezután a kód reinstrument kellene. Kockázat csökkentéséhez, választhat egy rendszerállapot-tára például [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), amely a Microsoft ASP.NET Core része. ASP.NET Core rendelkezik egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) felület, amely a kiválasztott szolgáltatóval minimalizálhatók a hatása a meglévő kódot használhatja. Az ASP.NET Core Windows és Linux rendszereken is használhatja a kódot, és a teljes .NET-keretrendszer, ezért a kialakítási kódja szabványosított.
+Fontos, hogy alaposan megtervezze, hogyan fogja kiépíteni a kódot. A megfelelő kialakítási terv segít elkerülni a kód alapjainak esetleges destabilizálása, majd a kód visszavonása szükséges. A kockázat csökkentése érdekében olyan rendszerállapot-függvénytárat választhat, mint például a Microsoft [. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), amely a Microsoft ASP.net Core része. ASP.NET Core rendelkezik egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) -felülettel, amely a választott szolgáltatóval használható, és minimalizálja a meglévő kódra gyakorolt hatást. A kódot a Windows-és Linux-ASP.NET Coreon, a teljes .NET-keretrendszerben is használhatja, így a rendszerállapot-kódok szabványosítva vannak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután kiválasztotta a naplózás szolgáltatót, hogy az alkalmazások és szolgáltatások kialakítása, a naplók és események összesíteni kell, mielőtt azok bármely elemzési platform elküldött kell. További információ [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) és [eventflow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md) jobb megértése érdekében az Azure Monitor, az ajánlott beállítások némelyike.
+Miután kiválasztotta a naplózási szolgáltatót az alkalmazások és szolgáltatások kiválasztásához, a naplókat és az eseményeket összesíteni kell, mielőtt bármilyen Analysis platformba el lehetne őket juttatni. A Azure Monitor ajánlott lehetőségek megismeréséhez olvassa el a [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) és a [EventFlow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md) című témakört.

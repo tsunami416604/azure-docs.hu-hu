@@ -1,5 +1,5 @@
 ---
-title: Böngészők használata a MSAL.NET | Azure
+title: Böngészők használata (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
@@ -14,14 +14,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424176"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>Böngészők használata a MSAL.NET-ben
+# <a name="using-web-browsers-msalnet"></a>Böngészők használata (MSAL.NET)
+
 Az interaktív hitelesítéshez böngészők szükségesek. Alapértelmezés szerint a MSAL.NET támogatja a [rendszerböngészőt](#system-web-browser-on-xamarinios-xamarinandroid) a Xamarin. iOS és a Xamarin. Android rendszeren. A [beágyazott webböngészőt](#enable-embedded-webviews-on-ios-and-android) azonban a követelményektől függően (UX, egyszeri bejelentkezésre (SSO), biztonságra) is engedélyezheti a [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) alkalmazásokban. Emellett azt is megteheti, hogy [dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) használja azt a böngészőt, amelyet a Chrome vagy az Android rendszerű egyéni Chrome-lapokat támogató böngésző jelenléte alapján használ. A MSAL.NET csak a rendszerböngészőt támogatja a .NET Core Desktop-alkalmazásokban.
 
 ## <a name="web-browsers-in-msalnet"></a>Böngészők a MSAL.NET
@@ -149,7 +150,7 @@ A MSAL.NET beágyazott webnézete és rendszerböngészője között néhány vi
 
 **Interaktív bejelentkezés a MSAL.NET a beágyazott webnézet használatával:**
 
-![beágyazott](media/msal-net-web-browsers/embedded-webview.png)
+![beágyazva](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktív bejelentkezés a MSAL.NET a rendszerböngésző használatával:**
 

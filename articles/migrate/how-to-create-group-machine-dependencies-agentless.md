@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454661"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Az ügynök nélküli függőségi vizualizáció beállítása az értékeléshez
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az ügynök nélküli függősé
 
 > [!IMPORTANT]
 > Az ügynök nélküli függőségi vizualizáció jelenleg előzetes verzióban érhető el egy Azure Migrate berendezés használatával felderített Azure VMware virtuális gépek számára.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. Ezt az előzetes verziót az ügyfélszolgálat támogatja, és az éles számítási feladatokhoz is használható.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="about-dependency-mapping"></a>Függőségek leképezése
@@ -53,7 +53,7 @@ Az ügynök nélküli függőségi vizualizációk nem igénylik a gépeken lév
 - Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
 - Az ügynök nélküli függőség elemzése jelenleg csak a VMware rendszerű gépek esetében érhető el.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Győződjön meg arról, hogy felderítette a VMware-gépeket a Azure Migrate; Ezt úgy teheti meg, hogy létrehoz egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [Részletek](migrate-appliance.md).
+- Győződjön meg arról, hogy felderítette a VMware-gépeket a Azure Migrate; Ezt úgy teheti meg, hogy létrehoz egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
 - Győződjön meg arról, hogy a VMware virtuális gépek az ügynök nélküli függőségi vizualizációk esetében támogatottak, az alábbi táblázatban foglaltak szerint.
 
 
@@ -85,7 +85,7 @@ Adja hozzá a fiókot a következő módon:
 3. Válassza ki az **operációs rendszert**.
 4. Adja meg a fiók rövid nevét.
 5. Adja meg a **felhasználónevet** és a **jelszót**
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
 
     ![VM-felhasználói fiók hozzáadása](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)

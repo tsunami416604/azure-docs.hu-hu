@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés-vezérlés Azure Service Bus közös hozzáférésű aláírásokkal | Microsoft Docs
+title: Azure Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 description: A Service Bus hozzáférés-vezérlésének áttekintése a közös hozzáférési aláírások használatával – áttekintés, a SAS-engedélyezéssel kapcsolatos részletek Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462078"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
-*Közös hozzáférésű aláírások* A (SAS) az Service Bus üzenetkezelés elsődleges biztonsági mechanizmusa. Ez a cikk az SAS-t, a működésük módját és a platform-független módon való használatát ismerteti.
+A *közös hozzáférésű aláírások* (SAS) a Service Bus üzenetkezelés elsődleges biztonsági mechanizmusa. Ez a cikk az SAS-t, a működésük módját és a platform-független módon való használatát ismerteti.
 
 Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek a névterek vagy üzenetküldési entitások (Relay, üzenetsor vagy témakör) szerint vannak konfigurálva. Az engedélyezési szabályok névvel rendelkeznek, bizonyos jogokkal vannak társítva, és egy pár titkosítási kulcsot is végrehajt. A szabály nevét és kulcsát a Service Bus SDK-n vagy a saját kódjában használhatja SAS-token létrehozásához. Az ügyfél ezután átadhatja a jogkivonatot a Service Busnak, hogy igazolja a kért művelet engedélyezését.
 
@@ -37,15 +37,15 @@ Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek
 
 A közös hozzáférésű aláírások egy egyszerű tokeneket használó jogcím-alapú engedélyezési mechanizmus. A SAS használatával a kulcsok soha nem lesznek átadva a huzalon. A kulcsok a szolgáltatás által később ellenőrizhető információk titkosítására szolgálnak. Az SAS a Felhasználónév és a jelszó sémához hasonló módon használható, ahol az ügyfél azonnal rendelkezik egy engedélyezési szabály nevével és egy hozzá tartozó kulccsal. Az SAS az összevont biztonsági modellhez hasonlóan is használható, ahol az ügyfél időkorlátos és aláírt hozzáférési jogkivonatot kap a biztonsági jogkivonat szolgáltatástól anélkül, hogy az aláírási kulcs birtokában lenne.
 
-A Service Bus SAS-hitelesítése olyan [megosztott hozzáférés-engedélyezési szabályokkal](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) van konfigurálva, amelyek hozzáférési jogosultságokkal rendelkeznek, valamint az elsődleges és másodlagos titkosítási kulcsok párja. A kulcsok 256 bites értékek Base64-ábrázolásban. Megadhatja a szabályokat a névtér szintjén, Service Bus- [](../service-bus-relay/relay-what-is-it.md)továbbítókat [](service-bus-messaging-overview.md#queues), várólistákat [](service-bus-messaging-overview.md#topics)és témaköröket.
+A Service Bus SAS-hitelesítése olyan [megosztott hozzáférés-engedélyezési szabályokkal](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) van konfigurálva, amelyek hozzáférési jogosultságokkal rendelkeznek, valamint az elsődleges és másodlagos titkosítási kulcsok párja. A kulcsok 256 bites értékek Base64-ábrázolásban. Megadhatja a szabályokat a névtér szintjén [, Service Bus-továbbítókat,](../service-bus-relay/relay-what-is-it.md) [várólistákat](service-bus-messaging-overview.md#queues)és [témaköröket](service-bus-messaging-overview.md#topics).
 
-A [közös hozzáférésű aláírási](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) jogkivonat tartalmazza a kiválasztott engedélyezési szabály nevét, az elérni kívánt erőforrás URI-ját, a lejárati pillanatot, valamint a HMAC-sha256 titkosítási aláírást, amely az elsődleges vagy a a kiválasztott engedélyezési szabály másodlagos titkosítási kulcsa.
+A [közös hozzáférésű aláírási](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) jogkivonat tartalmazza a kiválasztott engedélyezési szabály nevét, az elérni kívánt erőforrás URI-ját, a lejárati pillanatot, valamint a HMAC-sha256 titkosítási aláírást, amely a kiválasztott engedélyezési szabály elsődleges vagy másodlagos titkosítási kulcsa alapján lett kiszámítva.
 
 ## <a name="shared-access-authorization-policies"></a>Megosztott hozzáférés engedélyezési házirendjei
 
 Minden Service Bus névtérnek és minden Service Bus entitásnak van egy közös hozzáférési engedélyezési szabályzata, amely szabályokból áll. A névtér szintjén lévő szabályzat a névtéren belüli összes entitásra vonatkozik, függetlenül az egyes házirend-konfigurációtól.
 
-Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: **név**, **hatókör**és **jogosultságok**. A **név** csak az; a hatókörön belüli egyedi név. A hatókör elég egyszerű: Ez a kérdéses erőforrás URI-ja. Service Bus névtér esetében a hatókör a teljes tartománynév (FQDN), például `https://<yournamespace>.servicebus.windows.net/`:.
+Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: **név**, **hatókör**és **jogosultságok**. A **név** csak az; a hatókörön belüli egyedi név. A hatókör elég egyszerű: Ez a kérdéses erőforrás URI-ja. Service Bus névtér esetében a hatókör a teljes tartománynév (FQDN), például a `https://<yournamespace>.servicebus.windows.net/`.
 
 A házirend-szabály által biztosított jogok a következőket foglalhatják magukban:
 
@@ -59,15 +59,15 @@ A névtér vagy az entitások házirendje legfeljebb 12 közös hozzáférési e
 
 Az engedélyezési szabályokhoz egy *elsődleges kulcs* és egy *másodlagos kulcs*van rendelve. Ezek kriptográfiai szempontból erős kulcsok. Ne veszítse el őket, vagy ne szivárogjon rájuk – mindig a [Azure Portal][Azure portal]lesznek elérhetők. A generált kulcsok bármelyikét használhatja, és bármikor újragenerálhatja őket. Ha újra létrehoz vagy módosít egy kulcsot a házirendben, az adott kulcson alapuló, korábban kiadott jogkivonatok azonnal érvénytelenné válnak. Az ilyen jogkivonatok alapján létrehozott folyamatban lévő kapcsolatok azonban továbbra is működni fognak, amíg a jogkivonat le nem jár.
 
-Service Bus névtér létrehozásakor a rendszer automatikusan létrehoz egy **RootManageSharedAccessKey** nevű házirend-szabályt a névtérhez. Ez a szabályzat a teljes névtérre vonatkozó engedélyeket kezeli. Javasoljuk, hogy ezt a szabályt rendszergazdai főfiókként kezelje, és ne használja az alkalmazásban. A portálon, a PowerShell vagy az Azure CLI használatával további szabályzatokat hozhat létre a névtér **configure (Konfigurálás** ) lapján.
+Service Bus névtér létrehozásakor a rendszer automatikusan létrehoz egy **RootManageSharedAccessKey** nevű házirend-szabályt a névtérhez. Ez a szabályzat a teljes névtérre vonatkozó engedélyeket kezeli. Javasoljuk, hogy ezt a szabályt rendszergazdai **főfiókként** kezelje, és ne használja az alkalmazásban. A portálon, a PowerShell vagy az Azure CLI használatával további szabályzatokat hozhat létre a névtér **configure (Konfigurálás** ) lapján.
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>A közös hozzáférésű aláírások hitelesítésének konfigurációja
 
-A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) szabályt Service Bus névterek, várólisták vagy témakörök esetében is konfigurálhatja. A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) Service Bus-előfizetésre való konfigurálása jelenleg nem támogatott, de a névtéren vagy témakörben konfigurált szabályokkal biztonságossá teheti az előfizetésekhez való hozzáférést. Az eljárást bemutató munkaminta esetében tekintse meg a [közös hozzáférésű aláírás (SAS) hitelesítés használata Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) előfizetések mintáját.
+A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) szabályt Service Bus névterek, várólisták vagy témakörök esetében is konfigurálhatja. A [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) Service Bus-előfizetésre való konfigurálása jelenleg nem támogatott, de a névtéren vagy témakörben konfigurált szabályokkal biztonságossá teheti az előfizetésekhez való hozzáférést. Az eljárást bemutató munkaminta esetében tekintse meg a [közös hozzáférésű aláírás (SAS) hitelesítés használata Service Bus előfizetések](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) mintáját.
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-Ebben az ábrán a *manageRuleNS*, a *SendRuleNS*és a *listenRuleNS* engedélyezési szabályok a Q1-es és a T1-es témakörre egyaránt érvényesek, míg a *listenRuleQ* és a *sendRuleQ* csak a Q1-es és a *sendRuleT* -ra vonatkozik a T1 témakörhöz.
+Ebben az ábrán a *manageRuleNS*, a *SendRuleNS*és a *listenRuleNS* engedélyezési szabályok mind a "Q1", mind a "T1" témakörre érvényesek, míg a *listenRuleQ* és a *sendRuleQ* csak a Q1-es és a sendRuleT-re vonatkozik, és a csak a (
 
 ## <a name="generate-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása
 
@@ -77,12 +77,12 @@ Minden olyan ügyfél létrehozhat egy SAS-jogkivonatot, amely egy engedélyezé
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`** -A jogkivonat lejárati ideje azonnali. Az egész szám, amely a ( `00:00:00 UTC` z) 1970. január 1-jén (UNIX-kor), a jogkivonat lejárati idejének lejárta óta.
-* **`skn`** – Az engedélyezési szabály neve.
-* **`sr`** -Az elérni kívánt erőforrás URI-ja.
-* **`sig`** Aláírás.
+* **`se`** – a jogkivonat lejárati ideje azonnali. Az egész szám, amely a (z) 1970. január 1-én, a jogkivonat lejárata után másodpercben `00:00:00 UTC`.
+* **`skn`** – az engedélyezési szabály neve.
+* **`sr`** – az elérni kívánt erőforrás URI-ja.
+* **`sig`** – aláírás.
 
-Az az SHA-256 kivonat, amely az erőforrás URI-ja alapján lettkiszámítva(azelőzőszakaszbanleírtakszerint),ésajogkivonatlejáratánakkarakterláncosábrázolásaaCRLFelválasztva`signature-string` .
+A `signature-string` az erőforrás URI-ja alapján kiszámított SHA-256 kivonat **(az** előző szakaszban leírtak szerint), valamint a jogkivonat lejárati CRLF által elválasztott karakterlánc-ábrázolása.
 
 A kivonatoló számítás a következő pszeudo-kódhoz hasonlóan néz ki, és egy 256 bites/32 bájtos kivonatoló értéket ad vissza.
 
@@ -92,13 +92,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kiszámíthatja a kivonatot ugyanazzal a paraméterekkel, és ellenőrizheti, hogy a kiállító rendelkezik-e érvényes aláíró kulccsal.
 
-Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például `http://<namespace>.servicebus.windows.net/<entityPath>` : vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`;, azaz, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`; Ez a `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
 
 **Az URI-nak [százalékos kódolással](https://msdn.microsoft.com/library/4fkewx0t.aspx)kell rendelkeznie.**
 
-Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. `http://contoso.servicebus.windows.net/contosoTopics/T1` Például vagy `http://contoso.servicebus.windows.net` az előző példában.
+Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például `http://contoso.servicebus.windows.net/contosoTopics/T1` vagy `http://contoso.servicebus.windows.net` az előző példában.
 
-Az SAS `<resourceURI>` `signature-string`-token érvényes minden olyan erőforráshoz, amelyet a-ben használt.
+A SAS-token érvényes minden olyan erőforráshoz, amelyet a `signature-string`használt `<resourceURI>`hoz előre rögzítettek.
 
 ## <a name="regenerating-keys"></a>Kulcsok újragenerálása
 
@@ -110,11 +110,11 @@ Ha ismeri vagy gyanítja, hogy a kulcs biztonsága sérül, és vissza kell vonn
 
 Az alábbi forgatókönyvek az engedélyezési szabályok konfigurálását, az SAS-jogkivonatok létrehozását és az ügyfél-engedélyezést tartalmazzák.
 
-A konfigurációt bemutató és SAS-hitelesítést használó Service Bus alkalmazás teljes munkamintája: a [közös hozzáférésű aláírások hitelesítése Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)használatával. A névtéreken konfigurált SAS-engedélyezési szabályok és a Service Bus-előfizetések biztonságossá tételére szolgáló kapcsolódó minta itt érhető el: [Közös hozzáférésű aláírási (SAS-) hitelesítés használata Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)előfizetésekkel.
+A konfigurációt bemutató és SAS-hitelesítést használó Service Bus alkalmazás teljes munkamintája: a [közös hozzáférésű aláírások hitelesítése Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)használatával. Az Service Bus-előfizetések biztonságossá tételéhez a névtereken vagy témakörökben konfigurált SAS-engedélyezési szabályok használatát bemutató kapcsolódó minta itt érhető el: [közös hozzáférésű aláírás (SAS) hitelesítés használata Service Bus előfizetésekkel](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Megosztott hozzáférés engedélyezési szabályainak elérése egy entitáson
 
-A Service Bus .NET-keretrendszer könyvtáraival elérheti egy Service Bus-várólistán vagy-témakörön konfigurált [Microsoft. ServiceBus. Messaging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektumot [](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) a megfelelő [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription).
+A Service Bus .NET-keretrendszer könyvtáraival a megfelelő [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription)a [engedélyezési szabályok](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) -gyűjteményen keresztül érheti el a [Microsoft. ServiceBus. Messaging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) objektumot, amely egy Service Bus-várólistán vagy-témakörön van konfigurálva.
 
 A következő kód bemutatja, hogyan adhat hozzá egy üzenetsor engedélyezési szabályait.
 
@@ -191,7 +191,7 @@ Az előző szakaszban megtudhatta, hogyan használhatja az SAS-tokent egy HTTP P
 
 Mielőtt megkezdené az adatküldést a Service Busba, a közzétevőnek az SAS-jogkivonatot egy **$CBS** nevű, jól DEFINIÁLt AMQP-csomópontra kell küldenie egy AMQP (a szolgáltatás által az összes sas-token beszerzéséhez és ellenőrzéséhez használt "speciális" üzenetsorként jelenik meg). A közzétevőnek meg kell adnia a **ReplyTo** MEZŐT a AMQP üzenetben; Ez az a csomópont, amelyben a szolgáltatás a jogkivonatok érvényesítésének eredményeképpen válaszol a közzétevőnek (egyszerű kérelem/válasz minta a közzétevő és a szolgáltatás között). Ez a válasz-csomópont "menet közben" jön létre, amely a "távoli csomópont dinamikus létrehozására" szól a AMQP 1,0 specifikációban leírtak szerint. Miután ellenőrizte, hogy az SAS-jogkivonat érvényes-e, a közzétevő mehet előre, és megkezdheti az adatküldést a szolgáltatásnak.
 
-A következő lépések bemutatják, hogyan küldheti el az SAS-tokent a AMQP protokollal a [AMQP.net Lite](https://github.com/Azure/amqpnetlite) Library használatával. Ez akkor hasznos, ha nem használhatja a (z) C\#platformon fejleszthető hivatalos Service Bus SDK-t (például WinRT, .net kompakt keretrendszer, .net Micro Framework és mono). Természetesen ez a könyvtár hasznos lehet annak megértésében, hogyan működik a jogcímek biztonsága a AMQP szinten, ahogy látta, hogyan működik a HTTP-szinten (HTTP POST-kéréssel és az "engedélyezés" fejlécben küldött SAS-tokenrel). Ha nincs szüksége ilyen mélyre az AMQP-ről, a hivatalos Service Bus SDK-val .NET-keretrendszerbeli alkalmazásokkal is elvégezheti a használatát.
+A következő lépések bemutatják, hogyan küldheti el az SAS-tokent a AMQP protokollal a [AMQP.net Lite](https://github.com/Azure/amqpnetlite) Library használatával. Ez akkor hasznos, ha nem tudja használni a hivatalos Service Bus SDK-t (például WinRT, .NET kompakt keretrendszer, .NET Micro Framework és mono) a C\#ban. Természetesen ez a könyvtár hasznos lehet annak megértésében, hogyan működik a jogcímek biztonsága a AMQP szinten, ahogy látta, hogyan működik a HTTP-szinten (HTTP POST-kéréssel és az "engedélyezés" fejlécben küldött SAS-tokenrel). Ha nincs szüksége ilyen mélyre az AMQP-ről, a hivatalos Service Bus SDK-val .NET-keretrendszerbeli alkalmazásokkal is elvégezheti a használatát.
 
 ### <a name="c35"></a>C&#35;
 
@@ -244,7 +244,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-A `PutCbsToken()` metódus fogadja a *kapcsolat* (AMQP-kapcsolati osztály példányát, amelyet a [AMQP .net Lite Library](https://github.com/Azure/amqpnetlite)adott meg), amely a szolgáltatás TCP-kapcsolatát és a *sasToken* paramétert jelöli, amely a küldendő sas-jogkivonat.
+A `PutCbsToken()` metódus fogadja a *kapcsolódást* (a AMQP a [AMQP .net Lite-függvénytár](https://github.com/Azure/amqpnetlite)által megadott módon), amely a szolgáltatás TCP-kapcsolatát és a *sasToken* paramétert jelöli, amely a küldendő sas-jogkivonat.
 
 > [!NOTE]
 > Fontos, hogy a kapcsolat **SASL hitelesítési mechanizmussal** legyen létrehozva névtelen (és nem az alapértelmezett egyszerű felhasználónévvel és jelszóval, amelyet akkor használ, ha nem kell ELKÜLDENI az SAS-jogkivonatot).
@@ -253,7 +253,7 @@ A `PutCbsToken()` metódus fogadja a *kapcsolat* (AMQP-kapcsolati osztály péld
 
 Ezután a közzétevő két AMQP-hivatkozást hoz létre az SAS-token küldéséhez és a válasz fogadásához (jogkivonat-érvényesítési eredmény) a szolgáltatástól.
 
-A AMQP-üzenet tulajdonságok készletét és további információkat tartalmaz, mint egy egyszerű üzenet. Az SAS-token az üzenet törzse (a konstruktorának használatával). A **"ReplyTo"** tulajdonság értéke a csomópont neve, amely a fogadó hivatkozáson keresztül fogadja az érvényesítési eredményt (ha szeretné, módosíthatja a nevét, és a szolgáltatás dinamikusan létrehozza azt). A szolgáltatás az utolsó három alkalmazást/egyéni tulajdonságot használja arra, hogy jelezze, milyen műveletet kell végrehajtania. A CBS-draft specifikációjának megfelelően a **művelet neve** ("Put-token"), a **jogkivonat típusa** (ebben az `servicebus.windows.net:sastoken`esetben a) és annak a célközönségnek a **neve** , amelyre a jogkivonat vonatkozik (a teljes entitás).
+A AMQP-üzenet tulajdonságok készletét és további információkat tartalmaz, mint egy egyszerű üzenet. Az SAS-token az üzenet törzse (a konstruktorának használatával). A **"ReplyTo"** tulajdonság értéke a csomópont neve, amely a fogadó hivatkozáson keresztül fogadja az érvényesítési eredményt (ha szeretné, módosíthatja a nevét, és a szolgáltatás dinamikusan létrehozza azt). A szolgáltatás az utolsó három alkalmazást/egyéni tulajdonságot használja arra, hogy jelezze, milyen műveletet kell végrehajtania. A CBS-draft specifikációjának megfelelően a **művelet neve** ("Put-token"), a **token típusa** (ebben az esetben a `servicebus.windows.net:sastoken`) és annak a **célközönségnek a neve** , amelyre a jogkivonat vonatkozik (a teljes entitás).
 
 Miután elküldte az SAS-tokent a küldő hivatkozáson, a közzétevőnek el kell olvasnia a választ a fogadó hivatkozáson. A válasz egy egyszerű AMQP üzenet, amely egy **"Status-Code"** nevű Application tulajdonságot tartalmaz, amely ugyanazokat az értékeket tartalmazza, mint a http-állapotkód.
 
@@ -264,17 +264,17 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Művelet | Jogcím szükséges | Jogcím hatóköre |
 | --- | --- | --- |
 | **Névtér** | | |
-| Engedélyezési szabály konfigurálása névtérben |Felügyelet |Bármely névtér címe |
-| **Service Registry** | | |
-| Privát szabályzatok enumerálása |Felügyelet |Bármely névtér címe |
+| Engedélyezési szabály konfigurálása névtérben |Kezelés |Bármely névtér címe |
+| **Szolgáltatás beállításjegyzéke** | | |
+| Privát szabályzatok enumerálása |Kezelés |Bármely névtér címe |
 | Névtér figyelésének megkezdése |Figyelés |Bármely névtér címe |
 | Üzenetek küldése egy figyelőnek egy névtérben |Küldés |Bármely névtér címe |
-| **Várólista** | | |
-| Üzenetsor létrehozása |Felügyelet |Bármely névtér címe |
-| Üzenetsor törlése |Felügyelet |Bármely érvényes várólista-címe |
-| Várólisták enumerálása |Felügyelet |/$Resources/Queues |
-| A várólista leírásának beolvasása |Felügyelet |Bármely érvényes várólista-címe |
-| A várólista engedélyezési szabályának konfigurálása |Felügyelet |Bármely érvényes várólista-címe |
+| **Üzenetsor** | | |
+| Üzenetsor létrehozása |Kezelés |Bármely névtér címe |
+| Üzenetsor törlése |Kezelés |Bármely érvényes várólista-címe |
+| Várólisták enumerálása |Kezelés |/$Resources/Queues |
+| A várólista leírásának beolvasása |Kezelés |Bármely érvényes várólista-címe |
+| A várólista engedélyezési szabályának konfigurálása |Kezelés |Bármely érvényes várólista-címe |
 | Küldés a várólistába |Küldés |Bármely érvényes várólista-címe |
 | Üzenetek fogadása egy várólistából |Figyelés |Bármely érvényes várólista-címe |
 | Üzenetek megszakítása vagy befejezése az üzenet betekintés-zárolási módban való fogadása után |Figyelés |Bármely érvényes várólista-címe |
@@ -283,34 +283,34 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Az üzenetsor-munkamenethez társított állapot beolvasása |Figyelés |Bármely érvényes várólista-címe |
 | Az üzenetsor-munkamenethez társított állapot beállítása |Figyelés |Bármely érvényes várólista-címe |
 | A későbbi kézbesítésre vonatkozó üzenet beütemezett időpontja például: [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Figyelés | Bármely érvényes várólista-címe
-| **A témakör** | | |
-| Üzenettémakör létrehozása |Felügyelet |Bármely névtér címe |
-| Témakör törlése |Felügyelet |Bármely érvényes témakör címe |
-| Témakörök enumerálása |Felügyelet |/$Resources/topics |
-| A témakör leírásának beolvasása |Felügyelet |Bármely érvényes témakör címe |
-| Egy témakör engedélyezési szabályának konfigurálása |Felügyelet |Bármely érvényes témakör címe |
+| **Témakör** | | |
+| Üzenettémakör létrehozása |Kezelés |Bármely névtér címe |
+| Témakör törlése |Kezelés |Bármely érvényes témakör címe |
+| Témakörök enumerálása |Kezelés |/$Resources/topics |
+| A témakör leírásának beolvasása |Kezelés |Bármely érvényes témakör címe |
+| Egy témakör engedélyezési szabályának konfigurálása |Kezelés |Bármely érvényes témakör címe |
 | Küldés a következő témakörbe |Küldés |Bármely érvényes témakör címe |
 | **Előfizetés** | | |
-| Előfizetés létrehozása |Felügyelet |Bármely névtér címe |
-| Előfizetés törlése |Felügyelet |../myTopic/Subscriptions/mySubscription |
-| Előfizetések számbavétele |Felügyelet |../myTopic/Subscriptions |
-| Előfizetés lekérése – Leírás |Felügyelet |../myTopic/Subscriptions/mySubscription |
-| Üzenetek megszakítása vagy befejezése az üzenet betekintés-zárolási módban való fogadása után |Figyelés |../myTopic/Subscriptions/mySubscription |
-| Üzenet késleltetése későbbi lekéréshez |Figyelés |../myTopic/Subscriptions/mySubscription |
-| Üzenet kézbesítetlen levelek |Figyelés |../myTopic/Subscriptions/mySubscription |
-| A témakör-munkamenethez társított állapot beolvasása |Figyelés |../myTopic/Subscriptions/mySubscription |
-| Témakör-munkamenethez társított állapot beállítása |Figyelés |../myTopic/Subscriptions/mySubscription |
+| Előfizetés létrehozása |Kezelés |Bármely névtér címe |
+| Előfizetés törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Előfizetések számbavétele |Kezelés |.. /myTopic/Subscriptions |
+| Előfizetés lekérése – Leírás |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Üzenetek megszakítása vagy befejezése az üzenet betekintés-zárolási módban való fogadása után |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Üzenet késleltetése későbbi lekéréshez |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Üzenet kézbesítetlen levelek |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| A témakör-munkamenethez társított állapot beolvasása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
+| Témakör-munkamenethez társított állapot beállítása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | **Szabályok** | | |
-| Szabály létrehozása |Felügyelet |../myTopic/Subscriptions/mySubscription |
-| Szabály törlése |Felügyelet |../myTopic/Subscriptions/mySubscription |
-| Szabályok enumerálása |Kezelés vagy figyelés |../myTopic/Subscriptions/mySubscription/Rules
+| Szabály létrehozása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Szabályok számbavétele |Kezelés vagy figyelés |.. /myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
-* [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
+* [A Service Bus-üzenetsorok használata](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Azure portal]: https://portal.azure.com

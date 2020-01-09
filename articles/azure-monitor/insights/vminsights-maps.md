@@ -4,15 +4,15 @@ description: A Térkép a Azure Monitor for VMs egyik funkciója. A szolgáltat�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450707"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Az alkalmazás-összetevők megismeréséhez használja a Azure Monitor for VMs (előzetes verzió) funkcióját
 Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 
@@ -115,7 +115,7 @@ Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné m
 ![A virtuális gép térképének áttekintése](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->A virtuálisgép-méretezési csoport **példányok** nézetében egy adott példányhoz is elérheti a leképezést. A beállítások szakaszban válassza a **példányok**  >  a**bepillantások (előzetes verzió)** **lehetőséget** .
+>A virtuálisgép-méretezési csoport **példányok** nézetében egy adott példányhoz is elérheti a leképezést. A beállítások szakaszban válassza a **példányok** > a **bepillantások (előzetes verzió)** **lehetőséget** .
 
 ## <a name="view-a-map-from-azure-monitor"></a>Térkép megtekintése Azure Monitor
 

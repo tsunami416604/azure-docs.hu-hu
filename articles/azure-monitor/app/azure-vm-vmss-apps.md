@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli virtuális gépen és az Azure-beli virtuálisgép-méretezési csoportokban tárolt alkalmazások teljesítményének figyelése | Microsoft Docs
+title: Azure-beli virtuális gépek teljesítményének figyelése – Azure Application Insights
 description: Alkalmazások teljesítményének figyelése Azure-beli virtuális gépekhez és Azure-beli virtuálisgép-méretezési csoportokhoz. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 248dfb83c26d3f49fb492272ee3bd87d1e34fefa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161477"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407340"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban
 
@@ -50,7 +50,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure Virtual 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Azure-beli virtuális gépeken futó .NET-alkalmazások Application Insights ügynökének kezelése a PowerShell használatával
 
 > [!NOTE]
-> A Application Insights-ügynök telepítése előtt szüksége lesz egy kialakítási kulcsra. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) , vagy másolja a kialakítási kulcsot egy meglévő Application ininsight-erőforrásból.
+> A Application Insights-ügynök telepítése előtt szüksége lesz egy kapcsolódó karakterláncra. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) , vagy másolja a kapcsolatok karakterláncát egy meglévő Application ininsight-erőforrásból.
 
 > [!NOTE]
 > Újdonság a PowerShellben? Tekintse meg az [első lépéseket ismertető útmutatót](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
@@ -65,8 +65,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -105,7 +106,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 A telepített bővítmények a portál Azure-beli [virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) paneljén is megtekinthetők.
 
 > [!NOTE]
-> A telepítés ellenőrzéséhez kattintson Élő metrikastreamre a Application Insights ügynök bővítményének telepítéséhez használt rendszerállapot-kulcshoz tartozó Application Insights erőforrásban. Ha több Virtual Machinesról küld adatokat, válassza ki a cél Azure-beli virtuális gépeket a kiszolgáló neve alatt. Az adatforgalom megkezdése akár egy percet is igénybe vehet.
+> A telepítés ellenőrzéséhez kattintson a Élő metrikastream elemre az Application Insights-ügynök bővítményének telepítéséhez használt kapcsolódási karakterlánchoz tartozó Application Insights erőforráson belül. Ha több Virtual Machinesról küld adatokat, válassza ki a cél Azure-beli virtuális gépeket a kiszolgáló neve alatt. Az adatforgalom megkezdése akár egy percet is igénybe vehet.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>.NET-alkalmazások Application Insights ügynökének kezelése Azure-beli virtuálisgép-méretezési csoportokkal a PowerShell használatával
 
@@ -119,8 +120,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )
@@ -165,7 +167,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions/ApplicationMonitoringWindows
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Hibaelhárítási tippek az Azure-beli virtuális gépeken és virtuálisgép-méretezési csoportokon futó .NET-alkalmazások Application Insights monitorozási ügynökének bővítményéhez.
 

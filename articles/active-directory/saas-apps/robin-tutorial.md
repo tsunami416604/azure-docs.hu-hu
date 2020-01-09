@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a Robintal | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Robintal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Robin között.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8278f9c0b478d940a629d3308fd73ea474a4aa
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 964ba7ba9ebac84e2895e5a50f3fa31f1dbdd874
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081664"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659695"
 ---
-# <a name="tutorial-integrate-robin-with-azure-active-directory"></a>Oktatóanyag: a Robin integrálása Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Robintal
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Robint Azure Active Directory (Azure AD-val). A Robin és az Azure AD integrálásával a következőket teheti:
 
@@ -47,6 +46,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A Robin támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO
 * A Robin a felhasználók üzembe helyezésének **időpontját is** támogatja
 
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
 ## <a name="adding-robin-from-the-gallery"></a>Robin hozzáadása a katalógusból
 
 A Robin Azure AD-ba való integrálásának konfigurálásához hozzá kell adnia a Robin elemet a katalógusból a felügyelt SaaS-alkalmazások listájához.
@@ -58,20 +60,20 @@ A Robin Azure AD-ba való integrálásának konfigurálásához hozzá kell adni
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Robin** kifejezést a keresőmezőbe.
 1. Válassza ki a **Robin** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-robin"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Robinhoz
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Robin használatával egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Robinban.
 
 Az Azure AD SSO és a Robin használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. A **[Robin SSO konfigurálása](#configure-robin-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre egy Robin test felhasználót](#create-robin-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli párja van.
+    1. **[Hozzon létre egy Robin test felhasználót](#create-robin-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli párja van.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -81,9 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
-
-    ![A Robin domain és az URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
+1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **mentés** gombra kattintva.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -93,36 +93,35 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![image](common/default-attributes.png)
 
-1. A fentieken kívül a Robin Application néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A fentieken kívül a Robin Application néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum|
-    | ---------------|  --------- |
-    | E-mail | user.userprincipalname |
-    | FirstName |  User. givenName |
-    | LastName |  felhasználó. vezetéknév |
-
+    | Név | Forrás attribútum|
+    | ---------------| --------- |
+    | Keresztnév | User. givenName |
+    | Vezetéknév | felhasználó. vezetéknév |
+    | E-mail cím | User. mail |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
 1. A **vörösbegy beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a Robinhoz való hozzáférés biztosításával.
 
@@ -130,7 +129,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **Robin**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -142,15 +141,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-robin-sso"></a>Robin SSO konfigurálása
 
-Az egyszeri bejelentkezés **Robin** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portalról a [Robin támogatási csapatához](mailto:support@robinpowered.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés **Robin** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portalról a [Robin támogatási csapatához](mailto:support@robinpowered.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-robin-test-user"></a>Robin test-felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Robinban. A Robin az igény szerinti felhasználói üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik a Robinban, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Robinban. A Robin az igény szerinti felhasználói üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik a Robinban, a rendszer egy újat hoz létre a hitelesítés után.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Amikor a hozzáférési panelen a Robin csempére kattint, automatikusan be kell jelentkeznie arra a Vörösbegyre, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -163,3 +162,4 @@ Amikor a hozzáférési panelen a Robin csempére kattint, automatikusan be kell
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A Robin kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+

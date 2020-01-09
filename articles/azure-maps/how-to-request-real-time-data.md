@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432973"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Valós idejű adatkérés a Azure Maps mobilitási szolgáltatás használatával
 
@@ -29,7 +29,8 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha bármilyen hívást szeretne tenni a Azure Maps nyilvános átviteli API-khoz, szüksége van egy Maps-fiókra és egy kulcsra. A fiókok létrehozásával kapcsolatos információkért kövesse a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) című témakör útmutatását, és kövesse az [elsődleges kulcs lekérése](./tutorial-search-location.md#getkey) a fiókhoz elsődleges előfizetési kulcs lekéréséhez című témakör lépéseit.
+Ha bármilyen hívást szeretne tenni a Azure Maps nyilvános átviteli API-khoz, szüksége van egy Maps-fiókra és egy kulcsra. A fiókok létrehozásával és a kulcsok lekérésével kapcsolatos információkért kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör útmutatását, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című részben leírt lépéseket. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+
 
 Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a REST-hívások létrehozásához. Bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
@@ -129,7 +130,7 @@ Ahhoz, hogy kérést kapjon a tranzit Dock info API-hoz, szüksége lesz az adot
 
 A **dockID**beszerzéséhez kövesse az alábbi lépéseket, hogy kérést kapjon a közeli tranzit API-hoz:
 
-1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze el a **Dock ID**-t.
+1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és NEVEZZE el a **Dock ID**-t.
 
 2.  A Builder (szerkesztő) lapon válassza a http **beolvasása** metódust, adja meg a kérelem URL-címét, majd kattintson a **Küldés**gombra.
  
@@ -178,7 +179,7 @@ A **dockID**beszerzéséhez kövesse az alábbi lépéseket, hogy kérést kapjo
 
 Az alábbi lépésekkel kérheti le a tranzit Dock info API beszerzését, hogy valós idejű adatokat kapjon a kiválasztott dockhoz.
 
-1. A Poster területen kattintson az **új kérelem** | Get kérelem elemre, és nevezze el a **valós idejű Dock-** **adatkérést** .
+1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze el a **valós idejű Dock-** adatkérést.
 
 2.  A Builder (szerkesztő) lapon válassza a http **beolvasása** metódust, adja meg a kérelem URL-címét, majd kattintson a **Küldés**gombra.
  
@@ -205,7 +206,7 @@ Az alábbi lépésekkel kérheti le a tranzit Dock info API beszerzését, hogy 
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
 

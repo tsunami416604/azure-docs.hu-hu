@@ -3,14 +3,14 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: f76054c7c78c55a9754975267ee4fa3caab968a3
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390629"
 ---
-# <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>SAP HANA adatbázisok biztonsági mentésének kezelése és figyelése
+# <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
 Ez a cikk az Azure-beli virtuális gépen (VM) futó SAP HANA adatbázisok felügyeletének és figyelésének általános feladatait ismerteti, amelyek biztonsági mentése a [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) szolgáltatás által Azure Backup Recovery Services-tárolóba történik. Megismerheti a feladatok és a riasztások figyelését, az igény szerinti biztonsági mentés elindítását, a házirendek szerkesztését, az adatbázis-védelem leállítását és folytatását, valamint a virtuális gépek biztonsági másolatokból való regisztrációját.
 
@@ -22,7 +22,7 @@ Azure Backup megjeleníti az összes manuálisan aktivált feladatot a Azure Por
 
 ![Biztonsági mentési feladatok szakasz](./media/sap-hana-db-manage/backup-jobs.png)
 
-A portálon megjelenő feladatok közé tartozik az adatbázis-felderítés és a regisztrálás, valamint a biztonsági mentési és visszaállítási műveletek. Az ütemezett feladatok, beleértve a naplók biztonsági mentését, nem jelennek meg ebben a szakaszban. A SAP HANA natív ügyfelektől (Studio/cockpit/DBA pilótafülke) manuálisan indított biztonsági mentések itt nem jelennek meg.
+A portálon megjelenő feladatok közé tartozik az adatbázis-felderítés és a regisztrálás, valamint a biztonsági mentési és visszaállítási műveletek. Az ütemezett feladatok, beleértve a naplók biztonsági mentését, nem jelennek meg ebben a szakaszban. A SAP HANA natív ügyfelekről (Studio/cockpit/DBA pilótafülke) manuálisan indított biztonsági mentéseket még nem jeleníti meg.
 
 ![Biztonsági mentési feladatok listája](./media/sap-hana-db-manage/backup-jobs-list.png)
 
@@ -32,7 +32,7 @@ A figyeléssel kapcsolatos további információkért tekintse meg [a Azure Port
 
 A riasztások a SAP HANA adatbázisok biztonsági mentésének egyszerű figyelését jelentik. A riasztások segítséget nyújtanak a lehető legtöbbet a biztonsági másolatok által generált események sokaságának elvesztése nélkül. Azure Backup lehetővé teszi a riasztások beállítását, és a következőképpen figyelhetők:
 
-* Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 * A tároló irányítópultján válassza a **biztonsági mentési riasztások**lehetőséget.
 
   ![Biztonsági mentési riasztások a tároló irányítópultján](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -75,25 +75,38 @@ Ha helyi biztonsági mentést szeretne készíteni (a HANA Studio/cockpit haszn�
 3. Ehhez kattintson duplán a **systemdb** > **konfiguráció** > válassza az **adatbázis** > **szűrő (napló)** lehetőséget.
 4. A **enable_auto_log_backup** beállítása **nem**értékre.
 5. **Log_backup_using_backint** beállítása **hamis**értékre.
-6. Készítsen ad hoc teljes biztonsági mentést az adatbázisról.
+6. Igény szerint készítsen teljes biztonsági mentést az adatbázisról.
 7. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
 8. A korábbi beállítások visszaállítása az Azure-ba:
    * Állítsa a Enable_auto_log_backup **értéket igen**értékre.
    * A **log_backup_using_backint** beállítása **igaz**értékre.
 
-### <a name="edit-underlying-policy"></a>Alapul szolgáló szabályzat szerkesztése
+### <a name="change-policy"></a>Házirend módosítása
 
-Házirend módosítása a biztonsági mentési gyakoriság vagy a megőrzési tartomány módosításához:
+Megváltoztathatja egy SAP HANA biztonsági másolati elem alapjául szolgáló házirendet.
 
-* A tároló irányítópultján lépjen a > **biztonsági mentési szabályzatok** **kezelése** elemre.
+* A tároló irányítópultján lépjen a **biztonsági másolati elemek elemre**:
 
-  ![Biztonsági mentési szabályzatok a tároló irányítópultján](./media/sap-hana-db-manage/backup-policies-dashboard.png)
+  ![Biztonsági másolati elemek kiválasztása](./media/sap-hana-db-manage/backup-items.png)
 
-* Válassza ki a szerkeszteni kívánt szabályzatot:
+* **SAP HANA kiválasztása az Azure-beli virtuális gépen**
 
-  ![Biztonsági mentési szabályzatok listája](./media/sap-hana-db-manage/backup-policies-list.png)
+  ![SAP HANA kiválasztása az Azure-beli virtuális gépen](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
-  ![Biztonsági mentési szabályzat részletei](./media/sap-hana-db-manage/backup-policy-details.png)
+* Válassza ki azt a biztonsági mentési elemet, amelynek a mögöttes szabályzatát módosítani szeretné
+* Kattintson a meglévő biztonsági mentési szabályzatra
+
+  ![Meglévő biztonsági mentési házirend kiválasztása](./media/sap-hana-db-manage/existing-backup-policy.png)
+
+* Módosítsa a szabályzatot, és válassza ki a listából. Szükség esetén [hozzon létre egy új biztonsági mentési szabályzatot](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) .
+
+  ![Válassza ki a szabályzatot a legördülő listából](./media/sap-hana-db-manage/choose-backup-policy.png)
+
+* A módosítások mentése
+
+  ![A módosítások mentése](./media/sap-hana-db-manage/save-changes.png)
+
+* A szabályzat módosítása hatással lesz az összes kapcsolódó biztonsági mentési elemre, és elindítja a megfelelő **Konfigurálás-védelmi** feladatokat.
 
 >[!NOTE]
 > A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
@@ -175,4 +188,3 @@ A védelem letiltása, de a tár törlése előtt törölje a SAP HANA példány
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogy miként lehet [elhárítani a SAP HANA adatbázisok biztonsági mentése során felmerülő gyakori problémákat.](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)
-

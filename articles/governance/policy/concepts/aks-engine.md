@@ -3,16 +3,16 @@ title: Ismerkedjen meg Azure Policy az AK-motorral
 description: Megtudhatja, hogyan használja a Azure Policy a CustomResourceDefinitions-t és a házirend-ügynököt a forgalomirányító v3-mel a fürtök és az AK-motor
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267254"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436422"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Az AK-motor Azure Policy ismertetése
 
-A Azure Policy az [AK-motorral](https://github.com/Azure/aks-engine/blob/master/docs/README.md), egy olyan rendszerrel, amely kényelmes eszközöket biztosít az Azure-beli önálló felügyelt Kubernetes-fürtök gyors elindításához. Ez az integráció lehetővé teszi, hogy központosított, konzisztens módon kezelje a saját AK-beli motorja által felügyelt fürtöket. Azáltal, hogy kiterjeszti a [nyílt házirendügynök](https://www.openpolicyagent.org/) (OPA) [forgalomirányító](https://github.com/open-policy-agent/gatekeeper) v3 (bétaverzió), a Kubernetes-hez készült _belépésvezérlés webhook_ használatát, Azure Policy lehetővé teszi az Azure-erőforrások és az AK-motor megfelelőségi állapotának kezelését és jelentését önálló felügyelt fürtök egy helyről.
+A Azure Policy az [AK-motorral](https://github.com/Azure/aks-engine/blob/master/docs/README.md), egy olyan rendszerrel, amely kényelmes eszközöket biztosít az Azure-beli önálló felügyelt Kubernetes-fürtök gyors elindításához. Ez az integráció lehetővé teszi, hogy központosított, konzisztens módon kezelje a saját AK-beli motorja által felügyelt fürtöket. Azáltal, hogy kiterjeszti a [nyílt házirendügynök](https://www.openpolicyagent.org/) (OPA) [forgalomirányító](https://github.com/open-policy-agent/gatekeeper) v3 (bétaverzió), a Kubernetes-hez készült _belépésvezérlés webhookot_ , a Azure Policy lehetővé teszi az Azure-erőforrások és az egyhelyes motorral rendelkező önálló felügyelt fürtök megfelelőségi állapotának kezelését és jelentését.
 
 > [!NOTE]
 > Az AK-motor Azure Policy nyilvános előzetes verzióban érhető el, és nem rendelkezik SLA-val. A forgalomirányító v3 béta-verzióban érhető el, és a nyílt forráskódú Közösség támogatja. A szolgáltatás csak a beépített szabályzat-definíciókat és egyetlen AK-beli motor-fürtöt támogat minden egyszerű szolgáltatással konfigurált erőforráscsoport számára.
@@ -33,9 +33,9 @@ Az alábbi műveletek végrehajtásával engedélyezheti és használhatja a Azu
 
 A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. PolicyInsights** erőforrás-szolgáltatót, és létre kell hoznia egy szerepkör-hozzárendelést a fürtszolgáltatási rendszerbiztonsági tag számára. 
 
-1. Az erőforrás-szolgáltató engedélyezéséhez kövesse az erőforrás- [szolgáltatók és-típusok](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) lépéseit, vagy futtassa az Azure CLI vagy a Azure PowerShell parancsot:
+1. Az erőforrás-szolgáltató engedélyezéséhez kövesse az erőforrás- [szolgáltatók és-típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) lépéseit, vagy futtassa az Azure CLI vagy a Azure PowerShell parancsot:
 
-   - Azure CLI
+   - Azure parancssori felület (CLI)
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -233,7 +233,7 @@ Ha el szeretné távolítani a Azure Policy-bővítményt és a forgalomirányí
 
   1. Régi korlátozások eltávolítása
 
-     Jelenleg az eltávolítási mechanizmus csak a forgalomirányító rendszer eltávolítását végzi, nem távolítja el a felhasználó által létrehozott _ConstraintTemplate_, _korlátozásokat_vagy _konfigurációs_ erőforrásokat, és nem távolítja el a kapcsolódó _CRDs_ .
+     Jelenleg az eltávolítási mechanizmus csak a forgalomirányító rendszer eltávolítását végzi, nem távolítja el a felhasználó által létrehozott _ConstraintTemplate_, _korlátozásokat_vagy _konfigurációs_ erőforrásokat, és nem távolítja el a kapcsolódó _CRDs_.
 
      Ha a forgalomirányító fut, lehetséges, hogy a következő módon távolíthatja el a nemkívánatos korlátozásokat:
 

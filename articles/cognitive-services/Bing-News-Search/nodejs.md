@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Hírek keresése a Node. js-Bing News Search REST API'
+title: 'Gyors útmutató: Hírek keresése a Node. js-ben – Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval kérelmet küldhet a Bing News Search REST API Node. js használatával, és egy JSON-választ kap.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423726"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383132"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Node. js és a Bing News Search használatával REST API
 
@@ -34,8 +34,6 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
 1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE-környezetében vagy szerkesztőjében, és állítsa be a szigorúságot, a https-követelményeket.
@@ -45,7 +43,8 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     let https = require('https');
     ```
 
-2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit.
+2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot. 
+
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';
@@ -181,7 +180,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

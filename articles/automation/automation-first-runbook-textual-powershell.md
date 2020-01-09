@@ -3,19 +3,15 @@ title: Az első PowerShell-runbook Azure Automation
 description: Ez az oktatóanyag bemutatja egy egyszerű PowerShell-forgatókönyv létrehozását, tesztelését és közzétételét.
 keywords: azure powershell, powershell-szkript oktatóanyag, powershell automation
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07be9aa9ab576845c5b2ad94b1a2b3fb828ea514
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366396"
 ---
 # <a name="my-first-powershell-runbook"></a>Az első PowerShell-forgatókönyvem
 
@@ -34,7 +30,7 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-fiók](automation-quickstart-create-account.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 * Egy Azure virtuális gép. a gép leállítása és elindítása így nem lehet éles virtuális gép.
-* Előfordulhat, hogy az Ön által használt parancsmagok alapján [frissítenie kell az Azure-modulokat](automation-update-azure-modules.md) .
+* Előfordulhat, hogy [importálnia](shared-resources/modules.md) kell/[frissítenie kell az Azure-modulokat](automation-update-azure-modules.md) a használt parancsmagok alapján.
 
 ## <a name="create-new-runbook"></a>Új runbook létrehozása
 
@@ -82,7 +78,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 1. Görgessen vissza jobbra a **MyFirstRunbook-PowerShell** panel megtekintéséhez.
    A felül látható lehetőségekkel elindíthatjuk és megtekinthetjük a runbookot, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a runbook egy HTTP-hívással.
 1. El szeretné indítani a runbook, kattintson a **Start** gombra, majd kattintson az **OK** gombra a runbook indítása Lap megnyitásakor.
-1. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok lapja. lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
+1. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok lapja. Lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
 1. A feladatok állapota megjelenik a **feladatok összegzése** területen, és megfelel a runbook tesztelésekor megtekintett állapotoknak.
 
    ![Feladat összegzése](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)

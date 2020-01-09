@@ -1,5 +1,5 @@
 ---
-title: Virtuális gép és tárfiók létrehozása egy méretezhető alkalmazás számára az Azure-ban | Microsoft Docs
+title: Virtuálisgép-és Storage-fiók létrehozása méretezhető alkalmazáshoz az Azure-ban
 description: Ismerkedjen meg a skálázható alkalmazások futtatására szolgáló virtuális gépek üzembe helyezésével az Azure Blob Storage használatával
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 49689585b3f52bbee300ff68d2c2653f5e7ff8d0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372244"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Virtuális gép és tárfiók létrehozása egy méretezhető alkalmazás számára
 
@@ -21,7 +21,7 @@ Ez az oktatóanyag egy sorozat első része. Ez az oktatóanyag egy olyan alkalm
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Tárfiók létrehozása
+> * Create a storage account
 > * Virtuális gép létrehozása
 > * Egyéni szkriptbővítmény konfigurálása
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul az 0,7-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -41,7 +41,7 @@ Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
  
 A minta 50 nagy méretű fájlt tölt fel egy Azure Storage-fiókban lévő blobtárolóba. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. Hozzon létre egy Storage-fiókot a [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount) parancs használatával létrehozott erőforráscsoporthoz.
 
@@ -121,12 +121,12 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
     -Name DemoScriptExtension
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat első részében megismerkedett a tárfiókok létrehozásával, a virtuális gépek üzembe helyezésével, illetve a virtuális gépnek az előírt előfeltételek szerinti konfigurálásával, például a következőkkel:
 
 > [!div class="checklist"]
-> * Tárfiók létrehozása
+> * Create a storage account
 > * Virtuális gép létrehozása
 > * Egyéni szkriptbővítmény konfigurálása
 

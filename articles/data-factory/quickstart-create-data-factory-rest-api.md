@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6e46965442e3f95c98a7d55a645b237c22740ff4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bfe786405ad32f68af33fcea1131fe856c9f38d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440049"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Gyors útmutató: Azure-beli adatfeldolgozó és-folyamat létrehozása a REST API használatával
 
@@ -40,11 +40,11 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 * **Azure Storage-fiók** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket.
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
 * Telepítse az **Azure PowerShellt**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat. Ez a rövid útmutató a PowerShellt használja REST API-hívások indítására.
-* **Egy alkalmazás létrehozása az Azure Active Directoryban** [ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő, a későbbi lépésekben használt értékeket: **Application ID**, **CLIENTSECRETS**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
+* **Egy alkalmazás létrehozása az Azure Active Directoryban**[ennek az útmutatónak](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő, a későbbi lépésekben használt értékeket: **Application ID**, **CLIENTSECRETS**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz.
 
 ## <a name="set-global-variables"></a>Globális változók beállítása
 
-1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
+1. Indítsa el a **PowerShellt**. Az Azure PowerShellt hagyja megnyitva a rövid útmutató végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
 
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
     
@@ -494,7 +494,7 @@ Itt látható a minta kimenete:
 Az Azure Storage Explorer használatával tekintse át a fájlt a "inputPath" fájlból "outputPath" értékre, amikor a folyamat futásának létrehozásakor meg van adva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.
+Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.
 
 Az alábbi parancsot futtassa a teljes erőforráscsoport törléséhez:
 ```powershell

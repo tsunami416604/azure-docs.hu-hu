@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033111"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371411"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális géphez a Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -73,7 +73,7 @@ Az utolsó lépés a hálózati biztonsági csoport társítása egy alhálózat
 
     Az alhálózathoz csatlakoztatott virtuális gépek mostantól elérhetők az 80-es porton.
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
 [A cikkben ismertetett lépéseket a Azure PowerShell használatával is végrehajthatja](nsg-quickstart-powershell.md).
 
@@ -85,5 +85,5 @@ A magasan elérhető webalkalmazások esetében érdemes lehet egy Azure Load Ba
 Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, létrehozott egy bejövő szabályt, amely engedélyezi a HTTP-forgalmat az 80-as porton, majd hozzárendeli a szabályt egy alhálózathoz. 
 
 A részletesebb környezetek létrehozásáról a következő cikkekben talál információt:
-- [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)
+- [Az Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)
 - [Biztonsági csoportok](../../virtual-network/security-overview.md)

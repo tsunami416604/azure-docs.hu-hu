@@ -1,19 +1,15 @@
 ---
 title: Gyakori metrikák autoskálázása
 description: Megtudhatja, hogy mely metrikákat használják általában a Cloud Services, Virtual Machines és Web Apps automatikus skálázásához.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364594"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
 
@@ -26,13 +22,13 @@ Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.micro
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>A Resource Manager-alapú virtuális gépek számítási mérőszámai
 Alapértelmezés szerint a Resource Manager-alapú Virtual Machines és Virtual Machine Scale Sets alapszintű (gazdagép szintű) mérőszámokat bocsát ki. Emellett az Azure-beli virtuális gépek és VMSS diagnosztikai adatgyűjtésének konfigurálásakor az Azure diagnosztikai bővítmény a vendég-operációsrendszer-teljesítményszámlálók (általában "Vendég-OS mérőszámok") kitöltésére is lehetőséget nyújt.  Ezeket a metrikákat az autoskálázási szabályokban használhatja.
 
-Az `Get MetricDefinitions` API/PoSH/CLI használatával megtekintheti a VMSS-erőforráshoz elérhető metrikákat.
+A VMSS-erőforráshoz elérhető metrikák megtekintéséhez használhatja a `Get MetricDefinitions` API/PoSH/CLI-t.
 
 Ha virtuálisgép-méretezési csoportokat használ, és nem jelenik meg egy adott metrika, akkor a diagnosztika bővítmény valószínűleg *le lesz tiltva* .
 
 Ha egy adott metrika nem mintavételezés alatt áll, vagy a kívánt gyakorisággal kerül át, akkor frissítheti a diagnosztikai konfigurációt.
 
-Ha az előző eset értéke TRUE (igaz), akkor tekintse át a [PowerShell használata a Windows rendszerű virtuális gépeken](../../virtual-machines/extensions/diagnostics-windows.md) a PowerShell használatával történő Azure Diagnosticsának engedélyezéséhez és frissítéséhez az Azure VM Diagnostics bővítményt a metrika engedélyezéséhez. Ez a cikk egy példa diagnosztikai konfigurációs fájlt is tartalmaz.
+Ha az előző eset értéke TRUE (igaz), akkor tekintse át a [PowerShell használata a Windows rendszerű virtuális gépeken a PowerShell használatával történő Azure Diagnosticsának engedélyezéséhez](../../virtual-machines/extensions/diagnostics-windows.md) és frissítéséhez az Azure VM Diagnostics bővítményt a metrika engedélyezéséhez. Ez a cikk egy példa diagnosztikai konfigurációs fájlt is tartalmaz.
 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái
 Az Azure-beli virtuális gép és a VMSS esetében alapértelmezés szerint a következő gazdagép-szintű metrikák vannak kibocsátva Windows-és Linux-példányokban. Ezek a metrikák írják le az Azure-beli virtuális gépet, de az Azure VM-gazdagépről gyűjtik, nem pedig a vendég virtuális gépen telepített ügynökön keresztül. Ezeket a metrikákat az automatikus skálázási szabályokban használhatja.
@@ -53,33 +49,33 @@ Riasztást a következő mérőszámokhoz hozhat létre:
 
 | Metrika neve | Unit (Egység) |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \Processor (összesen)\% – Kiemelt idő |Percent |
-| \Processor (összesen)\% felhasználói idő |Percent |
-| \Processor-információ (összesen) \Processor gyakorisága |Count |
-| \System\Processes |Count |
-| \Process (összesen) \Thread száma |Count |
-| \Process (összesen) \Handle száma |Count |
-| \Memory\% előjegyzett bájtok használatban |Percent |
+| \Processor(_Total)\% Processor Time |Százalék |
+| \Processor (_Total)\% rendszerjogosultságú idő |Százalék |
+| \Processor (_Total)\% felhasználói idő |Százalék |
+| \Processor információ (_Total) \Processor gyakorisága |Mennyiség |
+| \System\Processes |Mennyiség |
+| \Process (_Total) \Thread száma |Mennyiség |
+| \Process (_Total) \Handle száma |Mennyiség |
+| \Memory\% előjegyzett bájtok használatban |Százalék |
 | \Memory\Available Bytes |Bájt |
 | \Memory\Committed bájtok |Bájt |
 | \Memory\Commit korlátja |Bájt |
 | \Memory\Pool lapozható bájtok |Bájt |
 | \Memory\Pool, nem lapozható bájtok |Bájt |
-| \PhysicalDisk (összesen)\% lemez ideje |Percent |
-| \PhysicalDisk (összesen)\% lemez olvasási ideje |Percent |
-| \PhysicalDisk (összesen)\% lemez írási ideje |Percent |
-| \PhysicalDisk(_Total)\Disk Transfers/sec |Egység/s |
-| \PhysicalDisk (összesen) \ olvasás/mp |Egység/s |
-| \PhysicalDisk (összesen) \ (írás/mp) |Egység/s |
-| \PhysicalDisk (összesen) \ átviteli sebessége (bájt/s) |BytesPerSecond |
-| \PhysicalDisk (összesen) \ olvasási sebesség (bájt/s) |BytesPerSecond |
-| \PhysicalDisk (összesen) \ írási sebesség (bájt/s) |BytesPerSecond |
-| \PhysicalDisk(_Total)\Avg. Lemezvárólista hossza |Count |
-| \PhysicalDisk(_Total)\Avg. Lemez olvasási várólistájának hossza |Count |
-| \PhysicalDisk(_Total)\Avg. Lemez írási várólistájának hossza |Count |
-| \Logikai lemez (összesen)\% szabad terület |Percent |
-| \Logikai lemez (összesen) \Szabad hely (MB) |Count |
+| \PhysicalDisk (_Total)\% a lemez ideje |Százalék |
+| \PhysicalDisk (_Total)\% lemez olvasási ideje |Százalék |
+| \PhysicalDisk (_Total)\% lemez írási ideje |Százalék |
+| \PhysicalDisk (_Total) \ átvitel másodpercenként |CountPerSecond |
+| \PhysicalDisk (_Total) \ Olvasás gyakorisága másodpercenként |CountPerSecond |
+| \PhysicalDisk (_Total) \ írás gyakorisága (művelet/mp) |CountPerSecond |
+| \PhysicalDisk (_Total) \ sebesség (bájt/s) |BytesPerSecond |
+| \PhysicalDisk (_Total) \ olvasási sebesség (bájt/s) |BytesPerSecond |
+| \PhysicalDisk (_Total) \ írási sebesség (bájt/s) |BytesPerSecond |
+| \PhysicalDisk (_Total) \ átlagos a lemez várólistájának hossza |Mennyiség |
+| \PhysicalDisk (_Total) \ átlagos lemez olvasási várólistájának hossza |Mennyiség |
+| \PhysicalDisk (_Total) \ átlagos lemez írási várólistájának hossza |Mennyiség |
+| \Logikai lemez (_Total)\% szabad terület |Százalék |
+| \Logikai lemez (_Total) \Szabad hely (MB) |Mennyiség |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Vendég operációs rendszer mérőszámai Linux rendszerű virtuális gépek
 Amikor létrehoz egy virtuális gépet az Azure-ban, a diagnosztika alapértelmezés szerint engedélyezve van a diagnosztikai bővítmény használatával.
@@ -95,43 +91,43 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Metrika neve | Unit (Egység) |
 | --- | --- |
 | \Memory\AvailableMemory |Bájt |
-| \Memory\PercentAvailableMemory |Percent |
+| \Memory\PercentAvailableMemory |Százalék |
 | \Memory\UsedMemory |Bájt |
-| \Memory\PercentUsedMemory |Percent |
-| \Memory\PercentUsedByCache |Percent |
-| \Memory\PagesPerSec |Egység/s |
-| \Memory\PagesReadPerSec |Egység/s |
-| \Memory\PagesWrittenPerSec |Egység/s |
+| \Memory\PercentUsedMemory |Százalék |
+| \Memory\PercentUsedByCache |Százalék |
+| \Memory\PagesPerSec |CountPerSecond |
+| \Memory\PagesReadPerSec |CountPerSecond |
+| \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |Bájt |
-| \Memory\PercentAvailableSwap |Percent |
+| \Memory\PercentAvailableSwap |Százalék |
 | \Memory\UsedSwap |Bájt |
-| \Memory\PercentUsedSwap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\PercentUsedSwap |Százalék |
+| \Processor\PercentIdleTime |Százalék |
+| \Processor\PercentUserTime |Százalék |
+| \Processor\PercentNiceTime |Százalék |
+| \Processor\PercentPrivilegedTime |Százalék |
+| \Processor\PercentInterruptTime |Százalék |
+| \Processor\PercentDPCTime |Százalék |
+| \Processor\PercentProcessorTime |Százalék |
+| \Processor\PercentIOWaitTime |Százalék |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\TransfersPerSecond |Egység/s |
-| \PhysicalDisk\ReadsPerSecond |Egység/s |
-| \PhysicalDisk\WritesPerSecond |Egység/s |
-| \PhysicalDisk\AverageReadTime |Másodperc |
-| \PhysicalDisk\AverageWriteTime |Másodperc |
-| \PhysicalDisk\AverageTransferTime |Másodperc |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\TransfersPerSecond |CountPerSecond |
+| \PhysicalDisk\ReadsPerSecond |CountPerSecond |
+| \PhysicalDisk\WritesPerSecond |CountPerSecond |
+| \PhysicalDisk\AverageReadTime |másodperc |
+| \PhysicalDisk\AverageWriteTime |másodperc |
+| \PhysicalDisk\AverageTransferTime |másodperc |
+| \PhysicalDisk\AverageDiskQueueLength |Mennyiség |
 | \NetworkInterface\BytesTransmitted |Bájt |
 | \NetworkInterface\BytesReceived |Bájt |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Mennyiség |
+| \NetworkInterface\PacketsReceived |Mennyiség |
 | \NetworkInterface\BytesTotal |Bájt |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Mennyiség |
+| \NetworkInterface\TotalTxErrors |Mennyiség |
+| \NetworkInterface\TotalCollisions |Mennyiség |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Gyakran használt web (kiszolgálófarm) metrikák
 Az autoskálázást a gyakori webkiszolgáló-metrikák, például a http-várólista hossza alapján is elvégezheti. A metrika neve **HttpQueueLength**.  A következő szakasz felsorolja a rendelkezésre álló kiszolgálófarm (Web Apps) mérőszámait.
@@ -147,10 +143,10 @@ Ezeket a metrikákat riasztással vagy méretezhetővé teheti.
 
 | Metrika neve | Unit (Egység) |
 | --- | --- |
-| CpuPercentage |Percent |
-| MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| CpuPercentage |Százalék |
+| MemoryPercentage |Százalék |
+| DiskQueueLength |Mennyiség |
+| HttpQueueLength |Mennyiség |
 | BytesReceived |Bájt |
 | BytesSent |Bájt |
 

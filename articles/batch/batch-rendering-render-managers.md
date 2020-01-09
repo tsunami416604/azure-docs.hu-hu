@@ -1,18 +1,18 @@
 ---
 title: Render Manager támogatása – Azure Batch
-description: Az Azure használata rendereléshez Azure Batch Render Manager-integráció használatával
+description: A Azure Batch Render Manager integrációjának használata. Ismerkedjen meg a népszerű Render managerek beépített támogatásával vagy bővítményeivel.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449686"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch használata a render Farm Managerrel
 
@@ -26,7 +26,7 @@ A következő Render managerek támogatottak:
 * [Royal Render](https://www.royalrender.de/)
 * [Thinkbox határideje](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Azure Render hub
+## <a name="azure-render-hub"></a>Azure Render Hub
 
 Az Azure Render hub leegyszerűsíti az Azure Render-farmok létrehozását és felügyeletét.  A render hub natív módon támogatja a PipelineFx Qube és a 10. határidőt.  További információkért és részletes utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
@@ -46,6 +46,6 @@ Az Azure-integrációt használó Royal Render-ügyfélre például a medúza- [
 
 Az Azure Render hub támogatja a népszerű Render managereket, beleértve a határidőt is.  A render hub üzembe helyezésével és használatával kapcsolatos utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a render Manager Azure Batch integrációját a megfelelő beépülő modullal és a GitHubon megjelenő utasításokkal, ahol lehetséges.

@@ -3,12 +3,12 @@ title: Azure-beli virtuális gép biztonsági mentése a virtuális gép beáll�
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy egyedi Azure-beli vagy több Azure-beli virtuális gépről a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391437"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
 
@@ -31,7 +31,7 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
 
 ## <a name="back-up-from-azure-vm-settings"></a>Biztonsági mentés az Azure-beli virtuális gép beállításaiból
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Kattintson a **minden szolgáltatás** elemre, majd a szűrő mezőbe írja be a **virtuális gépeket**, majd kattintson a **virtuális gépek**elemre.
 3. A virtuális gépek listájából válassza ki azt a virtuális gépet, amelyről biztonsági másolatot szeretne készíteni.
 4. A virtuális gép menüben kattintson a **biztonsági mentés**elemre.
@@ -61,10 +61,6 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
 10. A biztonsági mentés engedélyezése után a rendszer egy kezdeti biztonsági mentést futtat. A kezdeti biztonsági mentést azonnal elindíthatja, vagy megvárhatja, amíg a biztonsági mentési ütemezésnek megfelelően elindul.
     - A kezdeti biztonsági mentés befejezéséig a **legutóbbi biztonsági mentés állapota** **Figyelmeztetés (kezdeti biztonsági mentés függőben)** .
     - Ha meg szeretné tekinteni, hogy mikor fog futni a következő ütemezett biztonsági mentés, kattintson a biztonsági mentési szabályzat nevére.
-
-> [!NOTE]
-> Azure Backup a szolgáltatás egy külön erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) hoz létre a pillanatkép tárolásához, a névadási formátum **AzureBackupRG_geography_number** (például: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési házirendjének "az azonnali helyreállítási pillanatkép megtartása" szakaszában megadott időtartam alatt lesznek tárolva. Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet.<br>
-Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
 
 ## <a name="run-a-backup-immediately"></a>Biztonsági mentés azonnali futtatása
 

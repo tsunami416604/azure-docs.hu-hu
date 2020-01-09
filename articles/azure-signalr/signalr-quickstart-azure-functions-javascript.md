@@ -5,16 +5,16 @@ author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: fd935ffda7d16988781d5debce9333ccf2adb16f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450262"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Gyors útmutató: Csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a JavaScript használatával
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Rövid útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR szolgáltatás használatával JavaScript nyelven.
 
 Az Azure SignalR szolgáltatás használatával egyszerűen adhat hozzá valós idejű funkciókat az alkalmazásához. Az Azure Functions egy kiszolgáló nélküli platform, amellyel infrastruktúra kezelése nélkül futtathat kódokat. Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan készíthet kiszolgáló nélküli, valós idejű csevegőalkalmazást a SignalR szolgáltatás és a Functions használatával.
 
@@ -24,11 +24,9 @@ Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 Ellenőrizze, hogy van-e telepítve valamilyen kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/).
 
-Telepítse az [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) eszközkészletet az Azure-függvényalkalmazások helyi futtatásához.
+Telepítse a [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (2-es vagy újabb verzió) az Azure Function apps helyi futtatásához.
 
-Azure Functions a [Node. js](https://nodejs.org/en/download/) 8-as vagy 10-es verzióját igényli.
-
-A bővítmények telepítéséhez az Azure Functions Core Tools jelenleg igényli, hogy a [.NET Core SDK](https://www.microsoft.com/net/download) telepítve legyen. A JavaScript-alapú Azure-függvényalkalmazások létrehozásához azonban nem szükséges a .NET ismerete.
+Ez a rövid útmutató a [Node. js](https://nodejs.org/en/download/) 10. x verziót használja, de más verziókkal is működnie kell. A támogatott Node. js-verziókkal kapcsolatos további információkért tekintse meg a [Azure functions Runtime Versions dokumentációját](../azure-functions/functions-versions.md#languages) .
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,13 +61,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
 
-1. A terminálon győződjön meg arról, hogy a *src/chat/JavaScript* mappában található. Az Azure Functions Core Tools segítségével telepítse az alkalmazás futtatásához szükséges bővítményeket.
-
-    ```bash
-    func extensions install
-    ```
-
-1. Futtassa a függvényalkalmazást.
+1. A terminálon győződjön meg arról, hogy a *src/chat/JavaScript* mappában található. Futtassa a függvényalkalmazást.
 
     ```bash
     func start
@@ -81,7 +73,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 

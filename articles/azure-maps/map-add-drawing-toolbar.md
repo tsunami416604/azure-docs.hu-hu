@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6bc754c9a4f333da85e57c5ad9780da8df93e895
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ed16d8797e541ee474b4f52f3d4379721922a734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432873"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Rajzolási eszközök eszköztárának hozzáadása térképhez
 
@@ -38,7 +38,7 @@ Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási eszköztár hozzáadása" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Rajzolás eszköztár hozzáadásával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Rajzolás eszköztár hozzáadásával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -62,7 +62,7 @@ Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög rajzolási eszköz hozzáadása" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>sokszög rajzolási eszköz hozzáadása</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>rajzolási eszköz hozzáadása</a> a <a href='https://codepen.io'>CodePen</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört.
 </iframe>
 
 
@@ -94,11 +94,22 @@ Alább látható a fenti funkciók teljes futtatására szolgáló kód mintája
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolási renderelési stílus módosítása" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>módosításának rajzolási stílusát</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>módosítása rajzolási stílusát</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+Megtudhatja, hogyan használhatja a rajzolási eszközök modul további funkcióit:
+
+> [!div class="nextstepaction"]
+> [Alakzatadatok beolvasása](map-get-shape-data.md)
+
+> [!div class="nextstepaction"]
+> [Reagálás a rajzolási eseményekre](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Interakció típusa és billentyűparancsok](drawing-tools-interactions-keyboard-shortcuts.md)
 
 További információ a cikkben használt osztályokról és módszerekről:
 

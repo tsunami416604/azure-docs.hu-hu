@@ -1,5 +1,5 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazás konfigurálása – Microsoft Identity platform | Azure
+title: Webes API-kat meghívó asztali alkalmazások konfigurálása – Microsoft Identity platform | Azure
 description: Útmutató a webes API-kat meghívó asztali alkalmazások kódjának konfigurálásához
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423898"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó asztali alkalmazás – kód konfigurálása
 
@@ -33,8 +33,8 @@ Az asztali alkalmazásokat támogató Microsoft-kódtárak a következők:
   MSAL-könyvtár | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások létrehozását több platformon – Linux, Windows és MacOS
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását. Fejlesztés folyamatban – nyilvános előzetes verzió
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A támogatja az asztali alkalmazások több platformon történő összeállítását. Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A támogatja az asztali alkalmazások több platformon történő összeállítását.
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Csak macOS rendszeren futó asztali alkalmazások támogatása
 
 ## <a name="public-client-application"></a>Nyilvános ügyfélalkalmazás
@@ -51,14 +51,14 @@ Létre kell hoznia és módosítania kell a MSAL.NET `IPublicClientApplication`.
 
 A következő kód egy nyilvános ügyfélalkalmazás, a Microsoft Azure nyilvános felhőben, munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiók való beléptetését hozza létre a felhasználók számára.
 
-```CSharp
+```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
 Ha az interaktív hitelesítést vagy az eszköz kódját szeretné használni, a fentiekben leírtak szerint a `.WithRedirectUri` módosítót kell használnia:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -69,7 +69,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 A következő kód egy nyilvános ügyfélalkalmazás példányát hozza létre egy konfigurációs objektumból, amely programozott módon kitölthető vagy egy konfigurációs fájlból is beolvasható
 
-```CSharp
+```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
         .WithDefaultRedirectUri()
@@ -80,7 +80,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 Az alkalmazás kiépítése több módosítóval is kiegészíthető. Ha például azt szeretné, hogy az alkalmazása több-bérlős alkalmazás legyen egy nemzeti felhőben (itt az USA kormánya), akkor a következőket írhatja:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -91,7 +91,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 A MSAL.NET az ADFS 2019 módosítóját is tartalmazza:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithAdfsAuthority("https://consoso.com/adfs")
@@ -100,14 +100,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Végül, ha jogkivonatokat szeretne beszerezni egy Azure AD B2C bérlő számára, megadhatja a bérlőt az alábbi kódrészletben látható módon:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
         .Build();
 ```
 
-### <a name="learn-more"></a>További információ
+### <a name="learn-more"></a>További információk
 
 További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 
@@ -134,7 +134,7 @@ Képzeljen el egy olyan .NET Core Console-alkalmazást, amely a következő `app
 
 A fájlnak a .NET által megadott konfigurációs keretrendszer használatával történő olvasásához kevés a kód.
 
-```CSharp
+```csharp
 public class SampleConfiguration
 {
  /// <summary>
@@ -177,7 +177,7 @@ public class SampleConfiguration
 
 Az alkalmazás létrehozásához most csak a következő kódot kell megírnia:
 
-```CSharp
+```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .WithDefaultRedirectUri()

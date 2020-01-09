@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107057"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432809"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -79,7 +79,7 @@ Az alábbi ábra a kék és a bérelt jármű útvonalán zöld vonalként jelö
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy erőforráscsoportot a Azure Portal. Erőforráscsoport létrehozásához kövesse az alábbi lépéseket:
 
@@ -104,7 +104,8 @@ Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy er
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
 
-Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Azure Maps fiók előfizetése S1 árképzési szinten való létrehozásához című témakör útmutatását, és kövesse az [elsődleges kulcs beolvasása](./tutorial-search-location.md#getkey) a fiókhoz tartozó elsődleges előfizetési kulcs beszerzéséhez című témakör lépéseit.
+Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+
 
 
 ### <a name="create-a-storage-account"></a>Create a storage account
@@ -167,7 +168,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket a geokerí
     
     Az URL-cím `dataFormat` paraméteréhez tartozó "geojson" érték a feltöltött adatformátumot jelöli.
 
-3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps elsődleges előfizetési kulcsára.
+3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps kulcsra.
    
     ![Kulcs-érték paraméterek Poster](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 

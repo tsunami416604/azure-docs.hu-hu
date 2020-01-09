@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Tudásbázis létrehozása – REST, C# -QnA Maker'
+title: 'Rövid útmutató: Tudásbázis létrehozása – REST, C# – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Ez a C# REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
@@ -9,37 +9,57 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: a7114044f5e29af4bbf8e7c38b390b833ac818ec
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2b3ec7611fec779fcd387f45204f2e1cada1161c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447659"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Gyors útmutató: Tudásbázis létrehozása QnA Maker használatávalC#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker-ban C# a REST használatával
 
-Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán és közzétételén. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
+Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán és közzétételén. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja.
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
-* [Tudásbázis létrehozása](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
-* [Közzététel](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
+
+[Hivatkozási dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [ C# minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Legújabb [**Visual Studio Community kiadás**](https://www.visualstudio.com/downloads/).
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal. 
+* A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
+* Rendelkeznie kell [QnA Maker erőforrással](../How-To/set-up-qnamaker-service-azure.md). Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 
-> [!NOTE] 
-> A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)érhetők el.
+### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
-## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
+Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
 
-[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+Egy konzolablak (például cmd, PowerShell vagy bash) használatával hozzon létre egy új, `qna-maker-quickstart`nevű Console-alkalmazást a `dotnet new` paranccsal. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+
+```dotnetcli
+dotnet new console -n qna-maker-quickstart
+```
+
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+
+```dotnetcli
+dotnet build
+```
+
+A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
+
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
@@ -49,7 +69,12 @@ A Program.cs tetején cserélje le az önálló using utasítást a következő 
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-A Program osztály tetején adja hozzá a következő konstansokat a QnA Maker elérése érdekében:
+A program osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez.
+
+Adja meg a következő értékeket a környezeti változókban:
+
+* `QNA_MAKER_SUBSCRIPTION_KEY` – a **kulcs** egy 32 karakterből álló karakterlánc, amely a QnA Maker erőforrás Azure Portal, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
+* `QNA_MAKER_ENDPOINT` – a **végpont** a szerzői URL-cím, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`formátumban. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 
@@ -72,7 +97,7 @@ A következő kód egy HTTPS-kérést küld a QnA Maker API-ra egy tudásbázis 
 
 [!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=101-122 "Add a POST request to create KB")]
 
-Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e. 
+Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e.
 
 ```JSON
 {
@@ -92,7 +117,7 @@ Ellenőrizze a művelet állapotát.
 
 [!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=124-143 "Add GET request to determine creation status")]
 
-Az API-hívás egy JSON-választ ad vissza, amely tartalmazza a művelet állapotát: 
+Az API-hívás egy JSON-választ ad vissza, amely tartalmazza a művelet állapotát:
 
 ```JSON
 {
@@ -104,7 +129,7 @@ Az API-hívás egy JSON-választ ad vissza, amely tartalmazza a művelet állapo
 }
 ```
 
-Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul: 
+Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 
 ```JSON
 {
@@ -119,7 +144,7 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 
 ## <a name="add-createkb-method"></a>CreateKB metódus hozzáadása
 
-A következő metódus létrehozza a tudásbázist, és megismétli az állapotellenőrzést.  A _létrehozás_ **műveletazonosítót** a rendszer a POST-válasz **Hely** fejlécmezőjében adja vissza, majd a GET-kérésben az útvonal részeként használja. Mivel a tudásbázis létrehozása eltarthat egy ideig, előfordulhat, hogy többször is meg kell ismételnie az állapot-ellenőrző hívásokat, amíg az állapot sikeresnek vagy sikertelennek nem bizonyul. Ha a művelet sikeres, a tudásbázis azonosítóját adja vissza a **resourceLocation** változóban. 
+A következő metódus létrehozza a tudásbázist, és megismétli az állapotellenőrzést.  A _létrehozási_ **művelet azonosítója** a post Response (válasz) fejléc mezőjének **helyére**kerül, majd a Get kérelemben az útvonal részeként használatos. Mivel a tudásbázis létrehozása eltarthat egy ideig, előfordulhat, hogy többször is meg kell ismételnie az állapot-ellenőrző hívásokat, amíg az állapot sikeresnek vagy sikertelennek nem bizonyul. Ha a művelet sikeres, a tudásbázis azonosítóját adja vissza a **resourceLocation** változóban.
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=189-254 "Add CreateKB method")]
 
@@ -133,12 +158,12 @@ A Main metódus módosítása a CreateKB metódus meghívására:
 
 Hozza létre és futtassa a programot. A parancs automatikusan egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Mindegyik válasz megjelenik a konzolablakban.
 
-A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Saját tudásbázisok) lapon tekintheti meg azt. 
+A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge bases](https://www.qnamaker.ai/Home/MyServices) (Saját tudásbázisok) lapon tekintheti meg azt.
 
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

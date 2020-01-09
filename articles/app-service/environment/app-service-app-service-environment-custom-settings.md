@@ -4,15 +4,15 @@ description: Konfigurálja a teljes Azure App Service környezetre vonatkozó be
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 36208b4662242b37c135eaffc745a819c11fa015
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430492"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service környezetek egyéni konfigurációs beállításai
 ## <a name="overview"></a>Áttekintés
@@ -56,6 +56,19 @@ Azt is megteheti, hogy a [Azure erőforrás-kezelő](https://resources.azure.com
 
 A módosítás elküldése azonban körülbelül 30 percet vesz igénybe, és megszorozza a változás életbe léptetéséhez szükséges App Service Environment számával.
 Ha például egy App Service Environment négy előtérrel rendelkezik, a konfigurációs frissítés befejezéséhez körülbelül két órát vesz igénybe. A konfiguráció változása közben a rendszer nem végez más skálázási vagy konfigurációs módosítási műveletet a App Service Environment.
+
+## <a name="enable-internal-encryption"></a>Belső titkosítás engedélyezése
+
+A App Service Environment fekete Box-rendszerként működik, ahol a belső összetevők vagy a rendszeren belüli kommunikáció nem látható. A nagyobb átviteli sebesség engedélyezéséhez a titkosítás alapértelmezés szerint nincs engedélyezve a belső összetevők között. A rendszer biztonságban van, mivel a forgalom teljesen elérhetetlenné válik a figyeléshez vagy a hozzáféréshez. Ha a megfelelőségi követelmény azonban az, hogy az adatok elérési útja teljes titkosítást igényel a végponttól a végéig, a clusterSetting lehetővé teszi ezt a lehetőséget.  
+
+        "clusterSettings": [
+            {
+                "name": "InternalEncryption",
+                "value": "1"
+            }
+        ],
+ 
+A InternalEncryption-clusterSetting engedélyezése után hatással lehet a rendszer teljesítményére. Ha a módosítást engedélyezi a InternalEncryption engedélyezéséhez, a beadása instabil állapotban lesz, amíg a változást teljes mértékben nem propagálja. A változtatások teljes propagálása eltarthat néhány óráig, attól függően, hogy hány példányt használ a központilag. Kifejezetten javasoljuk, hogy ezt a szolgáltatást a szolgáltatón kívül ne engedélyezze. Ha ezt egy aktívan használt benyújtó eszközön kell engedélyeznie, javasoljuk, hogy a művelet befejeződése előtt irányítsa át a forgalmat egy biztonsági mentési környezetbe. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>A TLS 1,0 és a TLS 1,1 letiltása
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: 11144b1595370f9eb17afce71e0302a63468a089
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: dd1d930fa09e3e53a4ac67e513ba1bff77ee1376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373357"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Hozzon létre egy virtuális hálózati társ-erőforrás-kezelőt, különböző előfizetéseket
 
@@ -33,7 +33,7 @@ A virtuális hálózati társítások létrehozásának lépései eltérőek, at
 
 Nem hozható létre virtuális hálózati társítás a klasszikus üzemi modellen keresztül üzembe helyezett két virtuális hálózat között. Ha a klasszikus üzemi modellel létrehozott virtuális hálózatokat is össze kell kapcsolni, használhat Azure- [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a virtuális hálózatok összekapcsolásához.
 
-Ez az oktatóanyag az azonos régióban található virtuális hálózatokat ismerteti. A különböző [támogatott régiókban](virtual-network-manage-peering.md#cross-region)lévő egyenrangú virtuális hálózatokat is használhatja. Javasoljuk, hogy ismerkedjen meg a társítási [követelményekkel és](virtual-network-manage-peering.md#requirements-and-constraints) a megkötésekkel a virtuális hálózatok társítása előtt.
+Ez az oktatóanyag az azonos régióban található virtuális hálózatokat ismerteti. A különböző [támogatott régiókban](virtual-network-manage-peering.md#cross-region)lévő egyenrangú virtuális hálózatokat is használhatja. Javasoljuk, hogy ismerkedjen meg a társítási [követelményekkel és a megkötésekkel](virtual-network-manage-peering.md#requirements-and-constraints) a virtuális hálózatok társítása előtt.
 
 A virtuális hálózati társítás létrehozásához használhatja a [Azure Portal](#portal), az Azure [parancssori felületét](#cli) (CLI), az Azure [PowerShellt](#powershell)vagy egy [Azure Resource Manager sablont](#template) . Válassza ki bármelyik előző eszköz hivatkozását, hogy közvetlenül a virtuális hálózati társítások létrehozásához szükséges lépésekhez lépjen a választott eszköz használatával.
 
@@ -52,9 +52,9 @@ Az alábbi lépések különböző fiókokat használnak az egyes előfizetések
     - **Címterület**: *10.0.0.0/16*
     - **Alhálózat neve**: *default*
     - **Alhálózati címtartomány**: *10.0.0.0/24*
-    - **Előfizetés**: Válassza az A előfizetést.
-    - **Erőforráscsoport**: Válassza az **új létrehozása** elemet, és adja meg a *myResourceGroupA*
-    - **Hely**: *USA keleti régiója*
+    - **Előfizetés**: válassza az A előfizetést.
+    - **Erőforráscsoport**: válassza az **új létrehozása** elemet, és adja meg a *myResourceGroupA*
+    - Hely: *USA keleti* **régiója**
 4. A portál tetején található **erőforrások keresése** mezőben írja be a következőt: *myVnetA*. Válassza ki a **myVnetA** , amikor megjelenik a keresési eredmények között. 
 5. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a bal oldalon található beállítások függőleges listájában.
 6. A **myVnetA-hozzáférés-vezérlés (iam)** területen válassza a **+ szerepkör-hozzárendelés hozzáadása**elemet.
@@ -69,13 +69,13 @@ Az alábbi lépések különböző fiókokat használnak az egyes előfizetések
     - **Címterület**: *10.1.0.0/16*
     - **Alhálózat neve**: *default*
     - **Alhálózati címtartomány**: *10.1.0.0/24*
-    - **Előfizetés**: Válassza a B előfizetést.
-    - **Erőforráscsoport**: Válassza az **új létrehozása** elemet, és adja meg a *myResourceGroupB*
-    - **Hely**: *USA keleti régiója*
+    - **Előfizetés**: válassza a B előfizetést.
+    - **Erőforráscsoport**: válassza az **új létrehozása** elemet, és adja meg a *myResourceGroupB*
+    - Hely: *USA keleti* **régiója**
 
 13. A portál tetején található **erőforrások keresése** mezőben írja be a következőt: *myVnetB*. Válassza ki a **myVnetB** , amikor megjelenik a keresési eredmények között.
 14. A **myVnetB**területen válassza a **Tulajdonságok** lehetőséget a bal oldalon található beállítások függőleges listájában. Másolja ki az **erőforrás-azonosítót**, amelyet egy későbbi lépésben használ. Az erőforrás-azonosító a következő példához hasonló: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`.
-15. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a **myVnetB**területen, majd hajtsa végre a myVnetB 5-10 **-es lépéseket** a 8. lépésben.
+15. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a **myVnetB**területen, majd hajtsa végre a myVnetB 5-10 **-es lépéseket a 8** . lépésben.
 16. Jelentkezzen ki a portálról Felhasználób, és jelentkezzen be felhasználóként.
 17. A portál tetején található **erőforrások keresése** mezőben írja be a következőt: *myVnetA*. Válassza ki a **myVnetA** , amikor megjelenik a keresési eredmények között.
 18. Válassza a **myVnetA**lehetőséget.
@@ -83,23 +83,23 @@ Az alábbi lépések különböző fiókokat használnak az egyes előfizetések
 20. A **myVnetA**alatt válassza a **+ Hozzáadás** lehetőséget.
 21. A társítás **hozzáadása**területen adja meg vagy válassza ki a következő beállításokat, majd kattintson **az OK gombra**:
      - **Név**: *myVnetAToMyVnetB*
-     - **Virtuális hálózat telepítési modellje**:  Válassza a **Resource Manager** lehetőséget.
-     - **Ismerem az erőforrás-azonosítót**: Jelölje be ezt a jelölőnégyzetet.
-     - **Erőforrás-azonosító**: Adja meg a 14. lépés erőforrás-AZONOSÍTÓját.
+     - **Virtuális hálózat telepítési modellje**: válassza a **Resource Manager**lehetőséget.
+     - **Ismerem az erőforrás-azonosítót**: jelölje be ezt a jelölőnégyzetet.
+     - **Erőforrás-azonosító**: adja meg a 14. lépés erőforrás-azonosítóját.
      - **Virtuális hálózati hozzáférés engedélyezése:** Győződjön meg arról, hogy az **engedélyezve** beállítás be van jelölve.
     Ebben az oktatóanyagban más beállítások nem használhatók. Az összes egyenrangú beállítás megismeréséhez olvassa el a [virtuális hálózati](virtual-network-manage-peering.md#create-a-peering)társítások kezelése című témakört.
-22. A létrehozott társítás megjelenik egy rövid várakozás után, miután az előző lépésben kiválasztja az **OK gombot** . A kezdeményezve érték szerepel a létrehozott **MyVnetAToMyVnetB** -társítás **egyenrangú állapot** oszlopában. MyVnetA a myVnetB, de most már egyenrangú myVnetB kell a myVnetA. A társítást mindkét irányban létre kell hozni ahhoz, hogy a virtuális hálózatok erőforrásai kommunikálhassanak egymással.
+22. A létrehozott társítás megjelenik egy rövid várakozás után, miután az előző lépésben kiválasztja az **OK gombot** . A **kezdeményezve** érték szerepel a létrehozott **MyVnetAToMyVnetB** -társítás **egyenrangú állapot** oszlopában. MyVnetA a myVnetB, de most már egyenrangú myVnetB kell a myVnetA. A társítást mindkét irányban létre kell hozni ahhoz, hogy a virtuális hálózatok erőforrásai kommunikálhassanak egymással.
 23. Jelentkezzen ki a portálról felhasználóként, és jelentkezzen be Felhasználób néven.
 24. Hajtsa végre ismét a 17-21 lépést a myVnetB. A 21. lépésben adja meg a társ- *myVnetBToMyVnetA*nevet, válassza a *MyVnetA* lehetőséget a **virtuális hálózat**számára, majd írja be az azonosítót a 10. lépésből az **erőforrás-azonosító** mezőbe.
 25. Néhány másodpercet követően, miután az **OK gombra** kattintott a myVnetB való társítás létrehozásához, az imént létrehozott **myVnetBToMyVnetA** -TÁRSÍTÁS a társítási **állapot** oszlopban található **kapcsolattal** jelenik meg.
 26. Jelentkezzen ki a portálról Felhasználób, és jelentkezzen be felhasználóként.
 27. Hajtsa végre ismét a 17-19 lépést. A **myVnetAToVNetB** -társítás társítási **állapota** mostantól szintén **csatlakoztatva**van. A rendszer sikeresen létrehozta a társítást, miután a társítás **állapota** oszlopban mindkét virtuális hálózat esetében megjelenik a **Csatlakozás** . A virtuális hálózatban létrehozott Azure-erőforrások mostantól képesek kommunikálni egymással az IP-címükkel. Ha a virtuális hálózatok alapértelmezett Azure-névfeloldását használja, a virtuális hálózatokban lévő erőforrások nem tudják feloldani a neveket a virtuális hálózatok között. Ha egy társon belül szeretné feloldani a neveket a virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgálóját. Megtudhatja, hogyan állíthatja be a névfeloldást [a saját DNS-kiszolgálójának használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
-28. Nem **kötelező**: Habár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
-29. Nem **kötelező**: Az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete-portal) című szakaszának lépéseit.
+28. Nem **kötelező**: bár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
+29. Nem **kötelező**: az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete-portal) című szakaszának lépéseit.
 
 ## <a name="cli"></a>Peering létrehozása – Azure CLI
 
-Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. Ha olyan fiókot használ, amely mindkét előfizetéshez rendelkezik engedéllyel, használhatja ugyanazt a fiókot az összes lépéshez, ugorja át az Azure-ba való kijelentkezés lépéseit, és távolítsa el a felhasználói szerepkör-hozzárendeléseket létrehozó parancsfájl sorait. Cserélje UserA@azure.com le UserB@azure.com az és az összes következő parancsfájlt a felhasználó és a felhasználób használt felhasználónevek közül. 
+Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. Ha olyan fiókot használ, amely mindkét előfizetéshez rendelkezik engedéllyel, használhatja ugyanazt a fiókot az összes lépéshez, ugorja át az Azure-ba való kijelentkezés lépéseit, és távolítsa el a felhasználói szerepkör-hozzárendeléseket létrehozó parancsfájl sorait. Cserélje le a UserA@azure.comt, és UserB@azure.com az összes alábbi parancsfájlban a felhasználó és a Felhasználób használt felhasználónevek közül. 
 
 A következő parancsfájlok:
 
@@ -108,8 +108,8 @@ A következő parancsfájlok:
 
 A CLI és a hozzá tartozó függőségek telepítése helyett használhatja a Azure Cloud Shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi szkriptben a **TRY IT (kipróbálás** ) gombot, amely meghívja a Cloud shell, amelybe be tud jelentkezni az Azure-fiókjába.
 
-1. Nyisson meg egy CLI-munkamenetet, és jelentkezzen be az Azure `azure login` -ba felhasználóként a parancs használatával. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
-2. Másolja a következő parancsfájlt egy szövegszerkesztőbe a számítógépén, cserélje `<SubscriptionA-Id>` le az előfizetést azonosítóra, majd másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe `Enter`, majd nyomja meg a gombot. Ha nem ismeri az előfizetés-azonosítóját, írja `az account show` be a parancsot. A kimenetben lévő **azonosító** értéke az előfizetés azonosítója.
+1. Nyisson meg egy CLI-munkamenetet, és jelentkezzen be az Azure-ba felhasználóként a `azure login` parancs használatával. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
+2. Másolja a következő parancsfájlt egy szövegszerkesztőbe a SZÁMÍTÓGÉPén, cserélje le a `<SubscriptionA-Id>`t az előfizetés-AZONOSÍTÓra, majd másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe, majd nyomja meg az `Enter`gombot. Ha nem ismeri az előfizetés-azonosítóját, írja be a `az account show` parancsot. A kimenetben lévő **azonosító** értéke az előfizetés azonosítója.
 
     ```azurecli-interactive
     # Create a resource group.
@@ -131,10 +131,10 @@ A CLI és a hozzá tartozó függőségek telepítése helyett használhatja a A
       --scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
 
-3. Jelentkezzen ki az Azure-ból felhasználóként `az logout` a parancs használatával, majd jelentkezzen be az Azure-ba felhasználób. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
-4. Hozzon létre myVnetB. Másolja a 2. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje `<SubscriptionA-Id>` le a helyére a SubscriptionB azonosítóját. Módosítsa a 10.0.0.0/16 – 10.1.0.0/16 változót, módosítsa az összeset a B értékre, és az összes BS-et A-re. másolja a módosított parancsfájlt `Enter`, ILLESSZE be a CLI-munkamenetbe, majd nyomja meg a gombot.
+3. Jelentkezzen ki az Azure-ból felhasználóként a `az logout` parancs használatával, majd jelentkezzen be az Azure-ba Felhasználób. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
+4. Hozzon létre myVnetB. Másolja a 2. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje le a `<SubscriptionA-Id>`t a SubscriptionB azonosítójával. Módosítsa a 10.0.0.0/16 10.1.0.0/16 értékre, módosítsa az összest a B értékre, és az összes BS-et A-re. másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe, majd nyomja meg a `Enter`gombot.
 5. Jelentkezzen ki az Azure-ból Felhasználób, és jelentkezzen be az Azure-ba felhasználóként.
-6. Hozzon létre egy virtuális hálózati társat a myVnetA-ből a myVnetB-be. Másolja a következő parancsfájl tartalmát egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje `<SubscriptionB-Id>` le a helyére a SubscriptionB azonosítóját. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe, majd nyomja le az ENTER billentyűt.
+6. Hozzon létre egy virtuális hálózati társat a myVnetA-ből a myVnetB-be. Másolja a következő parancsfájl tartalmát egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje le a `<SubscriptionB-Id>`t a SubscriptionB azonosítójával. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe, majd nyomja le az ENTER billentyűt.
 
     ```azurecli-interactive
         # Get the id for myVnetA.
@@ -164,14 +164,14 @@ A CLI és a hozzá tartozó függőségek telepítése helyett használhatja a A
     Az állapot **kezdeményezve**. Ha a társítást a myVnetB-ből a myVnetA-ből hozza létre, akkor a **kapcsolat a csatlakozás** után módosul.
 
 8. Jelentkezzen ki a felhasználótól az Azure-ból, és jelentkezzen be az Azure-ba Felhasználób.
-9. Hozza létre a társítást a myVnetB-ből a myVnetA-be. Másolja a 6. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje `<SubscriptionB-Id>` le az azonosítót az előfizetés-azonosítóra, és módosítsa az összest a B és az összes BS értékre a értékre. A módosítások elvégzése után másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe, majd `Enter`nyomja meg a gombot.
-10. Tekintse meg a myVnetB egyenrangú állapotát. Másolja a 7. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Módosítsa az A – B nevet az erőforráscsoport és a virtuális hálózati nevek számára, másolja a parancsfájlt, illessze be a módosított parancsfájlt a CLI-munkamenetbe, majd nyomja meg a gombot `Enter`. A társítási állapot **csatlakoztatva**van. A myVnetA társítási állapota akkor változik, ha a myVnetB-ről a myVnetA-re való társítást követően létrehozta a **kapcsolatot** . Visszaállíthatja a felhasználót az Azure-ba, és újra elvégezheti a 7. lépést a myVnetA társ-állapotának ellenőrzéséhez. 
+9. Hozza létre a társítást a myVnetB-ből a myVnetA-be. Másolja a 6. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje le a `<SubscriptionB-Id>`t az előfizetés-AZONOSÍTÓra, és módosítsa az összest a B és az összes BS értékre. A módosítások elvégzése után másolja a módosított parancsfájlt, illessze be a CLI-munkamenetbe, majd nyomja meg a `Enter`gombot.
+10. Tekintse meg a myVnetB egyenrangú állapotát. Másolja a 7. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Módosítsa az A – B értékre az erőforráscsoportot és a virtuális hálózatok nevét, másolja a parancsfájlt, illessze be a módosított parancsfájlt a CLI-munkamenetbe, majd nyomja le az `Enter`gombot. A társítási állapot **csatlakoztatva**van. A myVnetA társítási állapota akkor változik, ha a myVnetB-ről a myVnetA-re való társítást követően létrehozta a **kapcsolatot** . Visszaállíthatja a felhasználót az Azure-ba, és újra elvégezheti a 7. lépést a myVnetA társ-állapotának ellenőrzéséhez. 
 
     > [!NOTE]
     > A rendszer nem hozza meg a társítást, amíg a társítási állapot nem **csatlakozik** mindkét virtuális hálózathoz.
 
-11. Nem **kötelező**: Habár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
-12. Nem **kötelező**: Az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete-cli) című részében ismertetett lépéseket.
+11. Nem **kötelező**: bár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
+12. Nem **kötelező**: az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete-cli) című részében ismertetett lépéseket.
 
 A virtuális hálózatban létrehozott Azure-erőforrások mostantól képesek kommunikálni egymással az IP-címükkel. Ha a virtuális hálózatok alapértelmezett Azure-névfeloldását használja, a virtuális hálózatokban lévő erőforrások nem tudják feloldani a neveket a virtuális hálózatok között. Ha egy társon belül szeretné feloldani a neveket a virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgálóját. Megtudhatja, hogyan állíthatja be a névfeloldást [a saját DNS-kiszolgálójának használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
@@ -179,12 +179,12 @@ A virtuális hálózatban létrehozott Azure-erőforrások mostantól képesek k
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. Ha olyan fiókot használ, amely mindkét előfizetéshez rendelkezik engedéllyel, használhatja ugyanazt a fiókot az összes lépéshez, ugorja át az Azure-ba való kijelentkezés lépéseit, és távolítsa el a felhasználói szerepkör-hozzárendeléseket létrehozó parancsfájl sorait. Cserélje UserA@azure.com le UserB@azure.com az és az összes következő parancsfájlt a felhasználó és a felhasználób használt felhasználónevek közül.
+Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. Ha olyan fiókot használ, amely mindkét előfizetéshez rendelkezik engedéllyel, használhatja ugyanazt a fiókot az összes lépéshez, ugorja át az Azure-ba való kijelentkezés lépéseit, és távolítsa el a felhasználói szerepkör-hozzárendeléseket létrehozó parancsfájl sorait. Cserélje le a UserA@azure.comt, és UserB@azure.com az összes alábbi parancsfájlban a felhasználó és a Felhasználób használt felhasználónevek közül.
 
-1. Győződjön meg róla, hogy Azure PowerShell a 1.0.0 vagy újabb verzió van telepítve. Ehhez futtassa `Get-Module -Name Az` a következőt: telepítse [a PowerShell legújabb](/powershell/azure/install-az-ps)verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+1. Győződjön meg róla, hogy Azure PowerShell a 1.0.0 vagy újabb verzió van telepítve. Ezt úgy teheti meg, hogy a `Get-Module -Name Az` futtatásával azt javasoljuk, hogy telepítse a PowerShell legújabb verzióját az [modulban](/powershell/azure/install-az-ps). Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 2. Indítsa el a PowerShell-munkamenetet.
-3. A PowerShellben jelentkezzen be a felhasználóként az Azure-ba `Connect-AzAccount` a parancs beírásával. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
-4. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot. másolja a következő parancsfájlt a számítógép egy szövegszerkesztőbe. A `<SubscriptionA-Id>` helyére írja be az előfizetés azonosítóját. Ha nem ismeri az előfizetés-azonosítóját, írja `Get-AzSubscription` be a parancsot a megtekintéséhez. A visszaadott kimenetben lévő **azonosító** értéke az előfizetés azonosítója. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja le `Enter`a gombot.
+3. A PowerShellben jelentkezzen be az Azure-ba felhasználóként a `Connect-AzAccount` parancs beírásával. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
+4. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot. másolja a következő parancsfájlt a számítógép egy szövegszerkesztőbe. Cserélje le a `<SubscriptionA-Id>`t az előfizetés-AZONOSÍTÓra. Ha nem ismeri az előfizetés-azonosítóját, a `Get-AzSubscription` parancs megadásával megtekintheti. A visszaadott kimenetben lévő **azonosító** értéke az előfizetés azonosítója. A parancsfájl végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja le az `Enter`gombot.
 
     ```powershell
     # Create a resource group.
@@ -207,9 +207,9 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
     ```
 
 5. Jelentkezzen ki a felhasználótól az Azure-ból, és jelentkezzen be a Felhasználób. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
-6. Másolja a 4. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje `<SubscriptionA-Id>` le az azonosítót a B előfizetés azonosítójával. módosítsa a 10.0.0.0/16 10.1.0.0/16 értékre. Módosítsa az összeset a B és az összes BS értékre A következőre:. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd `Enter`nyomja meg a gombot.
+6. Másolja a 4. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje le a `<SubscriptionA-Id>`t a B előfizetés azonosítójával. módosítsa a 10.0.0.0/16 10.1.0.0/16 értékre. Módosítsa az összeset a B és az összes BS értékre A következőre:. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja le az `Enter`gombot.
 7. Jelentkezzen ki a Felhasználób az Azure-ból, és jelentkezzen be a felhasználóval.
-8. Hozza létre a társítást a myVnetA-ből a myVnetB-be. Másolja a következő szkriptet egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. A `<SubscriptionB-Id>` helyére írja be a B előfizetés azonosítóját. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja `Enter`meg a gombot.
+8. Hozza létre a társítást a myVnetA-ből a myVnetB-be. Másolja a következő szkriptet egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje le a `<SubscriptionB-Id>`t a B előfizetés azonosítójával. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja le az `Enter`gombot.
 
    ```powershell
    # Peer myVnetA to myVnetB.
@@ -232,21 +232,21 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
     Az állapot **kezdeményezve**. Ha a társítást a myVnetB-ből a myVnetA-be állítja be, a rendszer a **csatlakoztatott** állapotra vált.
 
 10. Jelentkezzen ki a felhasználótól az Azure-ból, és jelentkezzen be a Felhasználób.
-11. Hozza létre a társítást a myVnetB-ből a myVnetA-be. Másolja a 8. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. A `<SubscriptionB-Id>` helyére írja be az a-előfizetés azonosítóját, és módosítsa az összest a B és az összes BS értékre. A szkript végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja le `Enter`a gombot.
-12. Tekintse meg a myVnetB egyenrangú állapotát. Másolja a 9. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Módosítsa az A – B értékre az erőforráscsoportot és a virtuális hálózatok nevét. A szkript végrehajtásához illessze be a módosított parancsfájlt a PowerShellbe, majd `Enter`nyomja meg a gombot. Az állapot **csatlakoztatva**van. A **myVnetA** társítási állapota akkor változik, ha a **myVnetB** -ről a **myVnetA**-re való társítást követően létrehozta a **kapcsolatot** . Visszaállíthatja a felhasználót az Azure-ba, és elvégezheti a 9. lépést újra a myVnetA társítási állapotának ellenőrzéséhez.
+11. Hozza létre a társítást a myVnetB-ből a myVnetA-be. Másolja a 8. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Cserélje le a `<SubscriptionB-Id>`t az "a" előfizetés-AZONOSÍTÓra, és módosítsa az összest a B és az összes BS értékre. A parancsfájl végrehajtásához másolja a módosított parancsfájlt, illessze be a PowerShellbe, majd nyomja le az `Enter`gombot.
+12. Tekintse meg a myVnetB egyenrangú állapotát. Másolja a 9. lépésben szereplő parancsfájl tartalmát a számítógép egy szövegszerkesztőbe. Módosítsa az A – B értékre az erőforráscsoportot és a virtuális hálózatok nevét. A szkript végrehajtásához illessze be a módosított parancsfájlt a PowerShellbe, majd nyomja le az `Enter`gombot. Az állapot **csatlakoztatva**van. A **myVnetA** társítási állapota akkor változik, ha a **myVnetB** -ről a **myVnetA**-re való társítást követően létrehozta a **kapcsolatot** . Visszaállíthatja a felhasználót az Azure-ba, és elvégezheti a 9. lépést újra a myVnetA társítási állapotának ellenőrzéséhez.
 
     > [!NOTE]
     > A rendszer nem hozza meg a társítást, amíg a társítási állapot nem **csatlakozik** mindkét virtuális hálózathoz.
 
     A virtuális hálózatban létrehozott Azure-erőforrások mostantól képesek kommunikálni egymással az IP-címükkel. Ha a virtuális hálózatok alapértelmezett Azure-névfeloldását használja, a virtuális hálózatokban lévő erőforrások nem tudják feloldani a neveket a virtuális hálózatok között. Ha egy társon belül szeretné feloldani a neveket a virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgálóját. Megtudhatja, hogyan állíthatja be a névfeloldást [a saját DNS-kiszolgálójának használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-13. Nem **kötelező**: Habár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
-14. Nem **kötelező**: Az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete-powershell) című részében ismertetett lépéseket.
+13. Nem **kötelező**: bár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
+14. Nem **kötelező**: az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete-powershell) című részében ismertetett lépéseket.
 
 ## <a name="template"></a>Egyenrangú – Resource Manager-sablon létrehozása
 
-1. Virtuális hálózat létrehozásához és a megfelelő [engedélyek](virtual-network-manage-peering.md#permissions)kiosztásához hajtsa végre a jelen [](#portal)cikk portálon, az [Azure CLI](#cli)-ben vagy a [PowerShellben](#powershell) ismertetett lépéseket.
-2. Mentse a következő szöveget a helyi számítógép egyik fájljába. Cserélje `<subscription ID>` le a felhasználót az előfizetés-azonosítóra. Előfordulhat, hogy a fájlt vnetpeeringA. JSON néven menti, például:.
+1. Virtuális hálózat létrehozásához és a megfelelő [engedélyek](virtual-network-manage-peering.md#permissions)kiosztásához hajtsa végre a jelen cikk [portálon](#portal), az [Azure CLI](#cli)-ben vagy a [PowerShellben](#powershell) ismertetett lépéseket.
+2. Mentse a következő szöveget a helyi számítógép egyik fájljába. Cserélje le a `<subscription ID>`t a felhasználó előfizetés-azonosítójával. Előfordulhat, hogy a fájlt vnetpeeringA. JSON néven menti, például:.
 
    ```json
    {
@@ -276,13 +276,13 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
    }
    ```
 
-3. Jelentkezzen be az Azure-ba felhasználóként, és telepítse a sablont a [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), a [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)vagy az [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)használatával. Adja meg azt a fájlnevet, amelyet a 2. lépésben a JSON-szöveg mentett.
+3. Jelentkezzen be az Azure-ba felhasználóként, és telepítse a sablont a [portál](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), a [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)vagy az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)használatával. Adja meg azt a fájlnevet, amelyet a 2. lépésben a JSON-szöveg mentett.
 4. Másolja a példában szereplő JSON-t a 2. lépésben a számítógép egyik fájljába, és hajtsa végre a következővel kezdődő sorokat:
-   - **név**: Módosítsa a *myVnetA/myVnetAToMyVnetB* a *myVnetB/myVnetBToMyVnetA*értékre.
-   - **azonosító**: Cserélje `<subscription ID>` le a felhasználób előfizetés-azonosítóját, és módosítsa a *myVnetB* a *myVnetA*értékre.
+   - **név**: módosítsa a *myVnetA/myVnetAToMyVnetB* a *myVnetB/myVnetBToMyVnetA*értékre.
+   - **azonosító**: cserélje le a `<subscription ID>`t a felhasználób előfizetés-azonosítójával, és módosítsa a *myVnetB* a *myVnetA*értékre.
 5. Fejezze be a 3. lépést újra, jelentkezzen be az Azure-ba Felhasználób néven.
-6. Nem **kötelező**: Habár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
-7. Nem **kötelező**: Az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete) című szakaszának lépéseit a Azure Portal, a PowerShell vagy az Azure CLI használatával.
+6. Nem **kötelező**: bár a virtuális gépek létrehozása nem szerepel ebben az oktatóanyagban, létrehozhat egy virtuális gépet az egyes virtuális hálózatokban, és csatlakozhat az egyik virtuális gépről a másikra a kapcsolat ellenőrzéséhez.
+7. Nem **kötelező**: az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a jelen cikk [erőforrások törlése](#delete) című szakaszának lépéseit a Azure Portal, a POWERSHELL vagy az Azure CLI használatával.
 
 ## <a name="delete"></a>Erőforrások törlése
 Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban létrehozott erőforrásokat, így nem számítunk fel használati díjakat. Egy erőforráscsoport törlésekor az erőforráscsoport összes erőforrása is törlődik.
@@ -326,8 +326,8 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
    Remove-AzResourceGroup -Name myResourceGroupB -force
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Alaposan megismerheti a fontos [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints) társítási korlátozásokat és a viselkedést, mielőtt létrehozza a virtuális hálózatokat az éles környezetben való használatra.
+- Alaposan megismerheti a fontos [virtuális hálózati társítási korlátozásokat és a viselkedést](virtual-network-manage-peering.md#requirements-and-constraints) , mielőtt létrehozza a virtuális hálózatokat az éles környezetben való használatra.
 - További információ az összes [virtuális hálózati társ](virtual-network-manage-peering.md#create-a-peering)-összevonási beállításról.
 - Megtudhatja, hogyan [hozhat létre egy sugaras hálózati topológiát](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) a virtuális hálózati társítással.

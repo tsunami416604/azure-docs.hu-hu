@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375015"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Hálózatkezelési megfontolások App Service Environment #
 
@@ -84,7 +84,7 @@ A kimenő hozzáféréshez a kiszervezet több külső rendszertől függ. A ren
 
 A beadás a következő portokon keresztül kommunikál az internettel elérhető címekkel:
 
-| Felhasználások | Portok |
+| Használati területek | Portok |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
@@ -108,9 +108,9 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 
 A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
--   Webes feladatok
+-   WebJobs
 -   Functions
--   Naplózási adatfolyam
+-   Naplóstreamelés
 -   Kudu
 -   Bővítmények
 -   Process Explorer
@@ -244,7 +244,7 @@ Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal re
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

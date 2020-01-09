@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 996db9690d19cc40c3963922d4edb3b59469752b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382999"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
 A Bing Spell Check API lehetővé teszi a szöveg kontextusbeli nyelvtanának és helyesírás-ellenőrzésének elvégzését. Habár a legtöbb helyesírás-ellenőrző szótár alapú szabálykészlet alapján használható, a Bing helyesírás-ellenőrzője a gépi tanulást és a statisztikai gépi fordítást használja a pontos és a kontextusbeli javítások biztosításához. 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 
 |  |  |
@@ -39,8 +39,10 @@ A Bing Spell Check API könnyen hívható bármely programozási nyelvről, amel
 2. Kérelem küldése a Bing Web Search APInak.
 3. A JSON-válasz elemzése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Először is próbálja ki a Bing Spell Check Search API [interaktív bemutatóját](https://azure.microsoft.com/services/cognitive-services/spell-check/) , és tekintse meg, hogyan ellenőrizhetők a különböző szövegek.
 
 Amikor kész meghívni az API-t, hozzon létre egy [Cognitive Services API-fiókot](../../cognitive-services/cognitive-services-apis-create-account.md). Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+
+A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/search-the-web.md) is.

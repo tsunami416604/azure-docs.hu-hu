@@ -1,17 +1,17 @@
 ---
-title: Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
+title: Az adatmegőrzés konfigurálása – prémium szintű Azure cache a Redis-hez
 description: Ismerje meg, hogyan konfigurálhatja és kezelheti az adatmegőrzést a prémium szintű Azure cache Redis-példányok esetében
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: yegu
-ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412824"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótárazási ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk bemutatja, hogyan konfigurálhatja az adatmegőrzést egy prémium szintű Azure cache-ben a Redis-példány esetében.
@@ -160,7 +160,7 @@ A skálázással kapcsolatos további információkért lásd: [Mi történik, h
 
 A AOF-fájlokban tárolt adatmennyiségek csomóponton több blobra vannak osztva, így növelhetik az adattárolóba való mentés teljesítményét. Az alábbi táblázat azt mutatja, hogy az egyes díjszabási szintek hány oldal blobot használnak:
 
-| Premium szintű csomag | Blobok |
+| Premium szint | Blobok |
 |--------------|-------|
 | P1           | 4/szilánk    |
 | P2           | 8/szilánk    |
@@ -172,7 +172,7 @@ Ha a fürtözés engedélyezve van, a gyorsítótárban lévő összes szegmens 
 Az újraírást követően két AOF-fájl létezik a tárolóban. Az újraírások a háttérben történnek, és a rendszer hozzáfűzi a fájlok első készletéhez, míg a gyorsítótárba az újraírás során elküldett műveleteket a második készlethez adja meg. Hiba esetén a rendszer átmenetileg tárolja a biztonsági mentést, de az újraírás befejeződése után azonnal törölve lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a prémium szintű gyorsítótár-funkciók használatáról.
 
 * [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)

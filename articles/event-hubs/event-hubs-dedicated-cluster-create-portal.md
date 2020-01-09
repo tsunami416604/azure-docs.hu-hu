@@ -1,5 +1,5 @@
 ---
-title: Azure rövid útmutató – Event Hubs dedikált fürt létrehozása a Azure Portal használatával
+title: Event Hubs dedikált fürt létrehozása a Azure Portal használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Event Hubs-fürtöt a Azure Portal használatával.
 services: event-hubs
 documentationcenter: ''
@@ -8,14 +8,14 @@ manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: xurui
-ms.openlocfilehash: bde6844962561232e4af51f2b4e803d49bf5398e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437212"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rövid útmutató: dedikált Event Hubs-fürt létrehozása Azure Portal használatával 
 Event Hubs-fürtök egybérlős üzemelő példányokat biztosítanak a legigényesebb folyamatos átviteli igényű ügyfelek számára. Ez az ajánlat garantált 99,99%-os SLA-val rendelkezik, és csak a dedikált díjszabási szinten érhető el. Egy [Event Hubs fürt](event-hubs-dedicated-overview.md) másodpercenként több millió eseményt tud befogadni a garantált kapacitással és a másodpercenkénti késéssel. A fürtön belül létrehozott névterek és az Event hubok a standard ajánlat összes funkcióját tartalmazzák, többek között a bejövő korlátok nélkül. A dedikált ajánlat további díj nélkül tartalmazza a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) szolgáltatást, amely lehetővé teszi, hogy automatikusan batch-és naplózza az adatstreameket az [Azure-Blob Storage](../storage/blobs/storage-blobs-introduction.md) vagy az [1. generációs Azure Data Lake Storage](../data-lake-store/data-lake-store-overview.md).
@@ -65,9 +65,9 @@ Ha a Azure Portal használatával szeretne fürtöt létrehozni az erőforráscs
 2. A névtér létrehozása oldalon hajtsa végre a következő lépéseket:
     1. Adja meg **a névtér nevét**.  A rendszer ellenőrzi, hogy a név elérhető-e.
     2. A névtér örökli a következő tulajdonságokat:
-        1. Előfizetés azonosítója
+        1. Subscription ID (Előfizetés azonosítója)
         2. Erőforráscsoport
-        3. Hely
+        3. Földrajzi egység
         4. Fürt neve
     3. A névtér létrehozásához válassza a **Létrehozás** elemet. Most már kezelheti a fürtöt.  
 
@@ -103,7 +103,7 @@ Ha módosítani szeretné a fürt méretét a létrehozás után, vagy ha az el�
     ![Fürt törlése lap](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy Event Hubs-fürtöt hozott létre. Az Event hub eseményeinek küldésére és fogadására, valamint az események Azure Storage-ba vagy Azure Data Lake Storeba való rögzítésére vonatkozó részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
 - [Események küldése és fogadása a .NET Core-ban](event-hubs-dotnet-standard-getstarted-send.md)

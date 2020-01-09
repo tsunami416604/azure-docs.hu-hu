@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439456"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -133,7 +133,7 @@ C# .Net-konzol alkalmazás létrehozása:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Adja hozzá a következő kódot a(z) `Main` metódushoz. Ez a kód `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
+1. Adja hozzá a következő kódot a `Main` metódushoz: Ez a kód `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -270,7 +270,7 @@ Figyelje meg a *FolderPath*paramétereinek használatát. `sourceBlobContainer` 
 
 A C# projektben hozzon létre egy `EmailRequest`nevű osztályt. Ez az osztály határozza meg, hogy a folyamat milyen tulajdonságokat küldjön a törzs kérelmében e-mailben. Ebben az oktatóanyagban a folyamat négy tulajdonságot küld a folyamatból az e-mailbe:
 
-* üzenetet. Az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a megírt adatmennyiséget. Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
+* Üzenetet. Az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a megírt adatmennyiséget. Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
 * Az adatelőállító neve. Az adatelőállító neve.
 * A folyamat neve. A folyamat neve.
 * Fogadó. A paraméter, amely áthalad. Ez a tulajdonság adja meg az e-mail fogadóját.
@@ -490,7 +490,7 @@ A webes tevékenység lehetővé teszi a REST-végpontok hívását. További in
 
 A `Url` tulajdonságban illessze be a **http post URL-** végpontokat a Logic apps munkafolyamatokból. A `Body` tulajdonságban adja át a `EmailRequest` osztály egy példányát. Az e-mail-kérelem a következő tulajdonságokat tartalmazza:
 
-* üzenetet. `@{activity('CopyBlobtoBlob').output.dataWritten`értékének átadása. Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a `dataWritten`értékét. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
+* Üzenetet. `@{activity('CopyBlobtoBlob').output.dataWritten`értékének átadása. Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a `dataWritten`értékét. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
 * Data Factory neve. `@{pipeline().DataFactory}` értékének átadása ez a rendszerváltozó lehetővé teszi a megfelelő adatelőállító-név elérését. A rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)részben tekintheti meg.
 * A folyamat neve. `@{pipeline().Pipeline}`értékének átadása. Ez a rendszerváltozó lehetővé teszi a megfelelő folyamat nevének elérését.
 * Fogadó. `"@pipeline().parameters.receiver"`értékének átadása. A folyamat paramétereinek elérése.
@@ -551,7 +551,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>Folyamat futásának monitorozása
 
-1. Adja hozzá a következő kódot az `Main` metódushoz:
+1. Adja hozzá a következő kódot a `Main` metódushoz:
 
     ```csharp
     // Monitor the pipeline run
@@ -608,10 +608,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...

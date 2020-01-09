@@ -14,19 +14,19 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9aa2bf2bb2e77f5e543b53b583ddeeacd46de243
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915672"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424192"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
 A .NET-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) is az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL használata:
 
 - a Microsoft Identity platform végpontjának használatával a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét hitelesítheti.
-- A felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
+- a felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
 - az alkalmazás lehetővé teszi a növekményes hozzáférés engedélyezését, és egyszerűbben támogatja a feltételes hozzáférést.
 - élvezheti az innováció előnyeit.
 
@@ -122,7 +122,7 @@ A ADAL.NET és a MSAL.NET által támogatott támogatás asztali és mobil alkal
 Engedély | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interaktív | [Interaktív hitelesítés](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [A jogkivonatok interaktív beszerzése a MSAL.NET-ben](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
-Beépített Windows-hitelesítés | [Integrált hitelesítés Windows rendszeren (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication)
+Integrált Windows-hitelesítés | [Integrált hitelesítés Windows rendszeren (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Integrált Windows-hitelesítés](msal-authentication-flows.md#integrated-windows-authentication)
 Felhasználónév/jelszó | [Tokenek beszerzése felhasználónévvel és jelszóval](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [Felhasználónév jelszavas hitelesítés](msal-authentication-flows.md#usernamepassword)
 Eszköz kódjának folyamata | [Webböngészőt nem tartalmazó eszközökhöz tartozó eszköz profilja](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [Eszköz kódjának folyamata](msal-authentication-flows.md#device-code)
 
@@ -223,7 +223,7 @@ A MSAL.NET nem teszi elérhetővé a frissítési jogkivonatokat biztonsági oko
 
 Szerencsére a MSAL.NET mostantól egy olyan API-val rendelkezik, amely lehetővé teszi az előző frissítési tokenek (ADAL-ben szerzett) áttelepíthetők a `IConfidentialClientApplication`ba:
 
-```CSharp
+```csharp
 /// <summary>
 /// Acquires an access token from an existing refresh token and stores it and the refresh token into 
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.

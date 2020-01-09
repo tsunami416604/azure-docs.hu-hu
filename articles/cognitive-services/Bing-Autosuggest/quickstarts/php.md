@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel'
+title: 'Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API valós időben.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7c9c12cd1097ab4a2b7138efd169e4e7a7f03720
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384719"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Gyors útmutató: Keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel
 
 Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű PHP-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
@@ -32,7 +32,8 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
 3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+4. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+5. Futtassa a programot.
 
 ```php
 <?php
@@ -147,12 +148,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

@@ -1,23 +1,23 @@
 ---
 title: 'Oktatóanyag: Egyoldalas Bing Video Search-alkalmazás létrehozása'
 titleSuffix: Azure Cognitive Services
-description: Azt ismerteti, hogyan használható a Bing Video Search API egy egyoldalas webalkalmazásban.
+description: Ez az oktatóanyag azt ismerteti, hogyan használható a Bing Video Search API egy egyoldalas webalkalmazásban.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382463"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search alkalmazás
+# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
 A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -141,7 +141,7 @@ function bingSearchOptions(form) {
 A `SafeSearch` paraméter értéke például egy tényleges API-hívásban `strict`, `moderate` vagy `off` lehet. Ezek közül a `moderate` az alapértelmezett. A mi űrlapunk viszont egy jelölőnégyzetet használ, amelynek csak két állapota van. A JavaScript-kód ezt a beállítást `strict` vagy `off` értékké alakítja (a `moderate` nem használatos).
 
 ## <a name="performing-the-request"></a>A kérés végrehajtása
-A lekérdezés, a beállítási sztring és az API-kulcs ismeretében a `BingWebSearch` függvény egy `XMLHttpRequest` objektumot használ arra, hogy kérést intézzen a Bing Search-végponthoz.
+A lekérdezés, a beállítási sztring és az API-kulcs ismeretében a `BingWebSearch` függvény egy `XMLHttpRequest` objektumot használ arra, hogy kérést intézzen a Bing Search-végponthoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -190,7 +190,7 @@ function bingWebSearch(query, options, key) {
     return false;
 }
 ```
-A HTTP-kérés sikeres befejezése esetén a JavaScript meghívja a `load` `handleOnLoad()` eseménykezelőjét, hogy kezeljen egy, az API-hoz intézett sikeres HTTP GET kérést. 
+A HTTP-kérés sikeres befejezése esetén a JavaScript meghívja a `load``handleOnLoad()` eseménykezelőjét, hogy kezeljen egy, az API-hoz intézett sikeres HTTP GET kérést. 
 
 ```javascript
 // handle Bing search request results
@@ -261,7 +261,7 @@ Egy sikeres HTTP-kérés *nem* feltétlenül jelenti azt, hogy maga a keresés i
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Fázis|Lehetséges hiba vagy hibák|Kezelő|
+|Szakasz|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
 |A JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
 |Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
@@ -308,7 +308,7 @@ A JSON-válasz a keresési eredményeket a legfelső szintű `value` objektumké
 
 A Bing News Search API legfeljebb négy különböző típusú kapcsolódó eredményt ad vissza, mindegyiket a saját legfelső szintű objektumában. Ezek a következők:
 
-|Kapcsolat|Leírás|
+|Kapcsolat típusa|Leírás|
 |-|-|
 |`pivotSuggestions`|Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat.|
 |`queryExpansions`|Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.|
@@ -373,7 +373,7 @@ A leképező függvény:
 > * Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
-A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing pontosan ezt [](../bing-web-search/resize-and-crop-thumbnails.md) a méretet tartalmazó miniatűrt ad vissza.
+A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing pontosan ezt a méretet tartalmazó [miniatűrt](../bing-web-search/resize-and-crop-thumbnails.md) ad vissza.
 
 ## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
@@ -389,7 +389,7 @@ A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a Jav
 > [!NOTE]
 > Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott `Access-Control-Expose-Headers` válasz fejléce lehetővé teszi a válaszok fejléceit, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely lehetővé teszi a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
@@ -405,6 +405,6 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Bing Video Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

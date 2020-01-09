@@ -1,57 +1,53 @@
 ---
-title: Az Azure Advisor engedélyek
-description: Advisor engedélyeket, és hogyan lehet, hogy blokkolja előfizetések konfigurálása vagy elhalaszthatja vagy javaslatok elvetése képességét.
-services: advisor
-author: kasparks
-ms.service: advisor
+title: Engedélyek Azure Advisor
+description: Az Advisor engedélyei, valamint az, hogy miként lehet letiltani az előfizetések konfigurálását, illetve elhalasztani vagy elvetheti az ajánlásokat.
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422320"
 ---
-# <a name="permissions-in-azure-advisor"></a>Az Azure Advisor engedélyek
+# <a name="permissions-in-azure-advisor"></a>Engedélyek Azure Advisor
 
-Az Azure Advisor ajánlásokkal használatának és az Azure-erőforrások és-előfizetések konfigurációja alapján. Az Advisor használja a [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) által biztosított [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) vonatkozó javaslatok és az Advisor szolgáltatást a hozzáférés kezelésére. 
+A Azure Advisor az Azure-erőforrások és-előfizetések használata és konfigurációja alapján nyújt javaslatokat. Az Advisor a [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) által biztosított [beépített szerepköröket](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) használja a javaslatok és az Advisor-funkciók hozzáférésének kezeléséhez. 
 
-## <a name="roles-and-their-access"></a>Szerepkörök és a hozzáférésüket
+## <a name="roles-and-their-access"></a>Szerepkörök és a hozzájuk tartozó hozzáférés
 
-Az alábbi táblázat a szerepkörök és a hozzáférést, az Advisor belül határozza meg:
+A következő táblázat az Advisoron belüli szerepköröket és hozzáféréseket határozza meg:
 
-| **Szerepkör** | **Javaslatok megtekintése** | **Szabályok szerkesztése** | **Előfizetés-konfiguráció szerkesztése** | **Szerkessze a fürterőforrás-csoport konfigurálása**| **Zárja be és ajánlások elhalasztása**|
+| **Szerepkör** | **Javaslatok megtekintése** | **Szabályok szerkesztése** | **Előfizetés konfigurációjának szerkesztése** | **Erőforráscsoport konfigurációjának szerkesztése**| **Javaslatok bezárása és elhalasztása**|
 |---|:---:|:---:|:---:|:---:|:---:|
 |Előfizetés tulajdonosa|**X**|**X**|**X**|**X**|**X**|
-|Előfizetés Közreműködője|**X**|**X**|**X**|**X**|**X**|
-|Előfizetés: olvasó|**X**|--|--|--|--|
+|Előfizetés közreműködői|**X**|**X**|**X**|**X**|**X**|
+|Előfizetés-olvasó|**X**|--|--|--|--|
 |Erőforráscsoport tulajdonosa|**X**|--|--|**X**|**X**|
-|Erőforráscsoport közreműködő|**X**|--|--|**X**|**X**|
+|Erőforráscsoport közreműködői|**X**|--|--|**X**|**X**|
 |Erőforráscsoport-olvasó|**X**|--|--|--|--|
-|Erőforrás tulajdonosának|**X**|--|--|--|**X**|
+|Erőforrás tulajdonosa|**X**|--|--|--|**X**|
 |Erőforrás-közreműködő|**X**|--|--|--|**X**|
 |Erőforrás-olvasó|**X**|--|--|--|--|
 
 > [!NOTE]
-> Ajánlás megtekintése a hozzáférést az adott nyelvtől függ a hozzáférést a javaslat érintett erőforráshoz.
+> A javaslatok megtekintésére való hozzáférés attól függ, hogy milyen hatással van az ajánlás érintett erőforrására.
 
-## <a name="permissions-and-unavailable-actions"></a>Engedélyek és a műveletek nem érhető el
+## <a name="permissions-and-unavailable-actions"></a>Engedélyek és nem elérhető műveletek
 
-Megfelelő engedélyek hiánya képes blokkolni a hajthatnak végre műveleteket az Advisor. Az alábbiakban néhány gyakori problémát.
+A megfelelő engedélyek hiánya letilthatja a műveletek végrehajtását az Advisorban. Az alábbiakban néhány gyakori problémát ismertetünk.
 
-### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Nem sikerült beállítani a előfizetések vagy erőforráscsoportok
+### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Nem lehet konfigurálni az előfizetéseket vagy az erőforráscsoportokat
 
-Előfizetések vagy erőforráscsoportok konfigurálása az Advisor kísérli meg, láthatja, hogy a bevonhat vagy kizárhat le van tiltva. Ez az állapot azt jelzi, hogy nincs megfelelő engedélye az adott erőforráscsoportba vagy előfizetésbe szintet. A probléma megoldásához, megtudhatja, hogyan [felhasználói hozzáférésének biztosítása](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Ha előfizetéseket vagy erőforráscsoportokat próbál konfigurálni az Advisorban, láthatja, hogy a Belefoglalás vagy a kizárás lehetőség le van tiltva. Ez az állapot azt jelzi, hogy nem rendelkezik megfelelő szintű engedéllyel az adott erőforráscsoporthoz vagy előfizetéshez. A probléma megoldásához tekintse át [a felhasználói hozzáférés megadásának](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)módját.
 
-### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Nem lehet elhalaszthatja vagy javaslat bezárása
+### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Nem lehet elhalasztani vagy elvetni egy javaslatot
 
-Elhalaszthatja vagy bezárása egy javaslatot tett kísérlet során hibaüzenetet kap, ha lehetséges, hogy nem rendelkezik megfelelő engedélyekkel. Győződjön meg arról, hogy rendelkezik-e legalább közreműködői hozzáféréssel az ajánlás elhalasztása vagy elvetése, akkor az érintett erőforrás. A probléma megoldásához, megtudhatja, hogyan [felhasználói hozzáférésének biztosítása](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Ha a javaslat elhalasztása vagy elutasítása során hibaüzenetet kap, előfordulhat, hogy nem rendelkezik a megfelelő engedélyekkel. Győződjön meg arról, hogy legalább közreműködői hozzáférése van az elhalasztott vagy elutasított javaslat érintett erőforrásához. A probléma megoldásához tekintse át [a felhasználói hozzáférés megadásának](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)módját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk adott felvázoljuk, hogyan Advisor használja a felhasználói hozzáférést RBAC és kapcsolatos gyakori problémák megoldását. Az Advisor kapcsolatos további információkért lásd:
+Ez a cikk áttekintést nyújt arról, hogy az Advisor hogyan használja a RBAC a felhasználói engedélyek vezérléséhez és a gyakori problémák megoldásához. Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 - [Mi az Azure Advisor?](https://docs.microsoft.com/azure/advisor/advisor-overview)
-- [Az Azure Advisor használatának első lépései](https://docs.microsoft.com/azure/advisor/advisor-get-started)
+- [Ismerkedés a Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-get-started)

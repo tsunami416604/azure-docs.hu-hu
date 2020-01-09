@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900436"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426953"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Gyors útmutató: Azure Sentinel
 
@@ -41,12 +41,14 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
  
 ## Az Azure Sentinel engedélyezése<a name="enable"></a>
 
-1. Lépjen be a Azure Portalba.
-2. Győződjön meg arról, hogy az az előfizetés, amelyben az Azure Sentinel létrejött, be van jelölve. 
-3. Keressen rá az Azure Sentinel kifejezésre. 
-   ![keresési](./media/quickstart-onboard/search-product.png)
+1. Jelentkezzen be az Azure portálra. Győződjön meg arról, hogy az Azure Sentinel-t létrehozó előfizetés van kiválasztva.
 
-1. Kattintson a **+ Hozzáadás**gombra.
+1. Keresse meg és válassza ki az **Azure Sentinel**elemet.
+
+   ![keresés](./media/quickstart-onboard/search-product.png)
+
+1. Válassza a **Hozzáadás** lehetőséget.
+
 1. Válassza ki a használni kívánt munkaterületet, vagy hozzon létre egy újat. Az Azure Sentinel több munkaterületen is futtatható, de az adategység egyetlen munkaterületre van elkülönítve.
 
    ![keresés](./media/quickstart-onboard/choose-workspace.png)
@@ -55,7 +57,7 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
    > - A Azure Security Center által létrehozott alapértelmezett munkaterületek nem jelennek meg a listában; Az Azure Sentinel nem telepíthető rajtuk.
    > - Az Azure Sentinel [log Analytics bármely GA régiójában](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) futtatható munkaterületeken, kivéve a kínai, a németországi és a Azure Government régiókat. Az Azure Sentinel által létrehozott adatok (például az incidensek, a könyvjelzők és a riasztási szabályok, amelyek tartalmazhatnak néhány ügyfél-adatforrást ezekből a munkaterületekről) a Nyugat-Európában (az Európában található munkaterületek esetében) vagy az USA keleti régiójában (az összes USA-beli munkaterülethez, valamint minden más régió, kivéve Európa).
 
-6. Kattintson az **Azure Sentinel hozzáadása**lehetőségre.
+1. Válassza az **Azure Sentinel hozzáadása**lehetőséget.
   
 
 ## <a name="connect-data-sources"></a>Adatforrások csatlakoztatása

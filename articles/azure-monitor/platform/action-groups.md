@@ -2,18 +2,16 @@
 title: Műveleti csoportok létrehozása és kezelése a Azure Portal
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423848"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659831"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -72,17 +70,17 @@ Miután létrehozta a műveleti csoportot, a **figyelő** ablaktábla **művelet
 ## <a name="action-specific-information"></a>Műveletre vonatkozó információk
 
 > [!NOTE]
-> Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
+> Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
 
-### <a name="automation-runbook"></a>Automation-Runbook
-Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
+### <a name="automation-runbook"></a>Automation-forgatókönyv
+Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-resource-manager/management/azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
 
 A műveleti csoportban korlátozott számú Runbook művelet lehet. 
 
 ### <a name="azure-app-push-notifications"></a>Azure-alkalmazás leküldéses értesítései
 Előfordulhat, hogy egy műveleti csoportban korlátozott számú Azure-alkalmazási művelet van.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>E-mail cím
 A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mail-szűrés megfelelően van konfigurálva
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -90,7 +88,7 @@ A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg ar
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
-### <a name="email-azure-resource-manager-role"></a>E-mail-Azure Resource Manager szerepkör
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager-szerepkör küldése e-mailben
 E-mail küldése az előfizetés szerepkörének tagjainak.
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
@@ -105,10 +103,10 @@ A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre
 
 A műveleti csoportban korlátozott számú ITSM művelet lehet. 
 
-### <a name="logic-app"></a>Logikai alkalmazás
+### <a name="logic-app"></a>Logic App
 A műveleti csoportban korlátozott számú Logic app-művelet lehet.
 
-### <a name="secure-webhook"></a>Secure Webhook
+### <a name="secure-webhook"></a>Biztonságos webhook
 **A biztonságos webhook funkció jelenleg előzetes verzióban érhető el.**
 
 A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
@@ -204,7 +202,7 @@ További fontos információk: az információk és az [SMS-riasztások viselked
 
 A műveleti csoportban korlátozott számú SMS-művelet lehet.  
 
-### <a name="voice"></a>Hang
+### <a name="voice"></a>Beszédhang
 Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
 A műveleti csoportban korlátozott számú hangművelet lehet.

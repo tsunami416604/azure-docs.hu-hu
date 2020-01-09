@@ -1,261 +1,252 @@
 ---
-title: Az Azure Service Fabric eseménylista |} A Microsoft Docs
-description: Fürtök figyelése az Azure Service Fabric által biztosított események átfogó listája.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-események listája
+description: Az Azure Service Fabric által biztosított események átfogó listája a fürtök figyeléséhez.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: cde0464985f756132c60453c4e79ffefd4a1dd2c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65788598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451763"
 ---
-# <a name="list-of-service-fabric-events"></a>A Service Fabric-események listája 
+# <a name="list-of-service-fabric-events"></a>Service Fabric események listája 
 
-A Service Fabric megjelenít egy elsődleges Fürtesemények tájékoztatja, mint a fürt állapotának [Service Fabric-események](service-fabric-diagnostics-events.md). Ezek a csomópontok és a fürt Service Fabric által végrehajtott műveletek vagy a fürt tulajdonosa vagy operátor által végzett kezelési döntést alapulnak. Ezek az események hozzáférhető konfigurálása a különféle módokon, például a konfigurálás [Azure Monitor naplózza a fürttel](service-fabric-diagnostics-oms-setup.md), vagy a lekérdezése a [EventStore](service-fabric-diagnostics-eventstore.md). Windows-gépeken ezeket az eseményeket az Eseménynapló - be vannak adatkéréseket így láthatja a Service Fabric-események az eseménynaplóban. 
+A Service Fabric lehetővé teszi, hogy a fürt állapotáról [Service Fabric eseményként](service-fabric-diagnostics-events.md)tájékoztassa a fürt állapotát. Ezek a csomópontok Service Fabric által végrehajtott műveletek, valamint a fürt tulajdonosai vagy kezelője által a fürthöz vagy a felügyeleti döntésekhez kapcsolódó döntések alapján történnek. Ezek az események számos módon érhetők el, többek között a [Azure monitor naplók konfigurálása a fürthöz](service-fabric-diagnostics-oms-setup.md), vagy a [EventStore](service-fabric-diagnostics-eventstore.md)lekérdezése. Windows rendszerű gépeken ezek az események bekerülnek az eseménynaplóba – így megtekintheti a Eseménynapló Service Fabric eseményeit. 
 
-Az alábbiakban néhány ezeket az eseményeket jellemzői
-* Minden egyes esemény egy adott entitás a fürt van kötve. példa: alkalmazás, szolgáltatás, csomópontot, replika.
-* Minden egyes esemény egy általános mezők készletét tartalmazza: EventInstanceId EventName és kategória.
-* Minden esemény lehessen vonni az eseményt az entitást, melyhez hozzá van rendelve mezőket tartalmaz. Például a ApplicationCreated esemény kellene mezőket, amelyek azonosítják a létrehozott alkalmazás nevét.
-* Események struktúrája úgy, hogy azok használhatók fel az eszközök ehhez számos további elemzés. Ezenkívül az esemény részleteinek vonatkozó hosszú karakterlánc helyett külön tulajdonságok vannak meghatározva. 
-* Események által írt különböző alrendszereket, a Service Fabricben az alábbi Source(Task) azonosítja. További információ érhető el a alrendszereket [Service Fabric-architektúra](service-fabric-architecture.md) és [a Service Fabric technikai áttekintése](service-fabric-technical-overview.md).
+Íme néhány jellemző ezekről az eseményekről
+* Minden esemény a fürt egy adott entitásához van kötve, például: alkalmazás, szolgáltatás, csomópont, replika.
+* Minden esemény a következő általános mezőket tartalmazza: EventInstanceId, EventName és category.
+* Minden esemény olyan mezőket tartalmaz, amelyek az eseményt a hozzá társított entitáshoz köti. Például a ApplicationCreated esemény olyan mezőket tartalmaz, amelyek meghatározzák a létrehozott alkalmazás nevét.
+* Az események úgy vannak strukturálva, hogy több eszközön is felhasználhatók legyenek további elemzés céljából. Emellett az eseményekre vonatkozó információk külön tulajdonságokként vannak definiálva, a hosszú karakterláncok helyett. 
+* Az eseményeket a Service Fabric különböző alrendszerei írják a forrás (feladat) alapján. A [Service Fabric architektúrában](service-fabric-architecture.md) további információk érhetők el, és a [technikai áttekintés Service Fabric](service-fabric-technical-overview.md).
 
-Itt látható ezen entitás szerint vannak rendezve a Service Fabric-események listája.
+Itt látható az entitások által rendezett Service Fabric események listája.
 
 ## <a name="cluster-events"></a>Fürtesemények
 
-**A fürt frissítési események**
+**Fürt frissítési eseményei**
 
-További információt a fürtfrissítések [Itt](service-fabric-cluster-upgrade-windows-server.md).
+A fürt frissítéseivel kapcsolatos további részletek [itt](service-fabric-cluster-upgrade-windows-server.md)találhatók.
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | --- | --- | --- | --- | 
-| 29627 | ClusterUpgradeStarted | Frissítés | Fürt frissítése megkezdődött. | CM | Tájékoztató |
-| 29628 | ClusterUpgradeCompleted | Frissítés | Fürt frissítése befejeződött | CM | Tájékoztató | 
-| 29629 | ClusterUpgradeRollbackStarted | Frissítés | Fürt frissítése megkezdődött a visszaállítás  | CM | Figyelmeztetés | 
-| 29630 | ClusterUpgradeRollbackCompleted | Frissítés | Fürt frissítése befejeződött, visszaállítása | CM | Figyelmeztetés | 
-| 29631 | ClusterUpgradeDomainCompleted | Frissítés | A frissítési tartomány véget ért, a frissítés során a fürt frissítése | CM | Tájékoztató | 
+| 29627 | ClusterUpgradeStarted | Frissítés | A fürt frissítése megkezdődött | CM | Tájékoztató |
+| 29628 | ClusterUpgradeCompleted | Frissítés | A fürt frissítése befejeződött | CM | Tájékoztató | 
+| 29629 | ClusterUpgradeRollbackStarted | Frissítés | A fürt frissítése megkezdődött a visszaállításhoz  | CM | Figyelmeztetés | 
+| 29630 | ClusterUpgradeRollbackCompleted | Frissítés | A fürt frissítése befejezte a visszaállítást | CM | Figyelmeztetés | 
+| 29631 | ClusterUpgradeDomainCompleted | Frissítés | A frissítési tartomány frissítése befejeződött a fürt frissítése során | CM | Tájékoztató | 
 
-## <a name="node-events"></a>Csomópont-események
+## <a name="node-events"></a>Csomópont eseményei
 
-**Csomópont életciklussal kapcsolatos események** 
+**Csomópont-Életciklus eseményei** 
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint |
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint |
 | --- | --- | ---| --- | --- | --- | 
-| 18602 | NodeDeactivateCompleted | StateTransition | A csomópont inaktiválása befejeződött | FM | Tájékoztató | 
-| 18603 | NodeUp | StateTransition | A fürt észlelt egy csomópont van elindítva | FM | Tájékoztató | 
-| 18604 | NodeDown | StateTransition | A fürt észlelt egy csomópont le lett állítva. Egy csomópont újraindítását során látni fogja a egy követett NodeUp esemény NodeDown esemény |  FM | Hiba | 
-| 18605 | NodeAddedToCluster | StateTransition |  Új csomóponttal bővült a fürt és a Service Fabric ezt a csomópontot alkalmazásokat helyezhet üzembe. | FM | Tájékoztató | 
-| 18606 | NodeRemovedFromCluster | StateTransition |  A csomópont el lett távolítva a fürtből. A Service Fabric már nem az ebben a csomópontban az alkalmazások központi telepítése | FM | Tájékoztató | 
-| 18607 | NodeDeactivateStarted | StateTransition |  A csomópont inaktiválása megkezdődött | FM | Tájékoztató | 
-| 25621 | NodeOpenSucceeded | StateTransition |  Egy csomópont sikeresen elindult | FabricNode | Tájékoztató | 
-| 25622 | NodeOpenFailed | StateTransition |  Egy csomópont nem sikerült elindítani, és csatlakozzon a kör | FabricNode | Hiba | 
-| 25624 | NodeClosed | StateTransition |  A csomópont leállítása sikeresen megtörtént | FabricNode | Tájékoztató | 
-| 25626 | NodeAborted | StateTransition |  Egy csomópont ungracefully le lett állítva | FabricNode | Hiba | 
+| 18602 | NodeDeactivateCompleted | Statetransition sablontípus | A csomópont inaktiválása befejeződött | FM | Tájékoztató | 
+| 18603 | NodeUp | Statetransition sablontípus | A fürt egy olyan csomópontot észlelt, amely elindult | FM | Tájékoztató | 
+| 18604 | NodeDown | Statetransition sablontípus | A fürt észlelt egy csomópontot. A csomópontok újraindításakor egy NodeDown eseményt fog látni, amelyet egy NodeUp esemény követ |  FM | Hiba | 
+| 18605 | NodeAddedToCluster | Statetransition sablontípus |  Új csomópont lett hozzáadva a fürthöz, és Service Fabric alkalmazásokat telepíthet erre a csomópontra. | FM | Tájékoztató | 
+| 18606 | NodeRemovedFromCluster | Statetransition sablontípus |  Egy csomópont el lett távolítva a fürtből. Service Fabric többé nem fog alkalmazásokat telepíteni erre a csomópontra | FM | Tájékoztató | 
+| 18607 | NodeDeactivateStarted | Statetransition sablontípus |  A csomópont inaktiválása megkezdődött | FM | Tájékoztató | 
+| 25621 | NodeOpenSucceeded | Statetransition sablontípus |  Egy csomópont sikeresen elindult | FabricNode | Tájékoztató | 
+| 25622 | NodeOpenFailed | Statetransition sablontípus |  Egy csomópont nem tudott elindulni és csatlakoztatni a gyűrűt | FabricNode | Hiba | 
+| 25624 | NodeClosed | Statetransition sablontípus |  Egy csomópont leállítása sikerült | FabricNode | Tájékoztató | 
+| 25626 | NodeAborted | Statetransition sablontípus |  Egy csomópontot nem sikerült leállítani | FabricNode | Hiba | 
 
-## <a name="application-events"></a>Alkalmazásesemények
+## <a name="application-events"></a>Alkalmazás eseményei
 
-**Alkalmazások életciklus-események**
+**Alkalmazás-Életciklus eseményei**
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | --- | --- | --- | --- | 
-| 29620 | ApplicationCreated | Életciklus | Új alkalmazás létrehozása | CM | Tájékoztató | 
-| 29625 | ApplicationDeleted | Életciklus | Egy meglévő alkalmazás törölve lett | CM | Tájékoztató | 
-| 23083 | ApplicationProcessExited | Életciklus | Az alkalmazáson belül a folyamat kilépett. | Hosting | Tájékoztató | 
+| 29620 | ApplicationCreated | Életciklus | Új alkalmazás lett létrehozva | CM | Tájékoztató | 
+| 29625 | ApplicationDeleted | Életciklus | Meglévő alkalmazás törölve | CM | Tájékoztató | 
+| 23083 | ApplicationProcessExited | Életciklus | Egy alkalmazáson belüli folyamat kilépett | Üzemeltetés | Tájékoztató | 
 
-**Frissítési alkalmazásesemények**
+**Alkalmazás-frissítési események**
 
-További részleteket az alkalmazásfrissítések található [Itt](service-fabric-application-upgrade.md).
+Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)talál további információt.
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | ---| --- | --- | --- | 
-| 29621 | ApplicationUpgradeStarted | Frissítés | Egy alkalmazás frissítése megkezdődött. | CM | Tájékoztató | 
+| 29621 | ApplicationUpgradeStarted | Frissítés | Egy alkalmazás frissítése megkezdődött | CM | Tájékoztató | 
 | 29622 | ApplicationUpgradeCompleted | Frissítés | Egy alkalmazás frissítése befejeződött | CM | Tájékoztató | 
-| 29623 | ApplicationUpgradeRollbackStarted | Frissítés | Egy alkalmazás frissítése megkezdődött a visszaállítás |CM | Figyelmeztetés | 
-| 29624 | ApplicationUpgradeRollbackCompleted | Frissítés | Egy alkalmazás frissítése befejeződött, visszaállítása | CM | Figyelmeztetés | 
-| 29626 | ApplicationUpgradeDomainCompleted | Frissítés | A frissítési tartomány véget ért a frissítés során egy alkalmazás frissítése | CM | Tájékoztató | 
+| 29623 | ApplicationUpgradeRollbackStarted | Frissítés | Egy alkalmazás frissítése megkezdődött a visszaállításhoz |CM | Figyelmeztetés | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Frissítés | Egy alkalmazás frissítése befejezte a visszaállítást | CM | Figyelmeztetés | 
+| 29626 | ApplicationUpgradeDomainCompleted | Frissítés | Egy frissítési tartomány befejezte a frissítést az alkalmazás frissítése során | CM | Tájékoztató | 
 
-## <a name="service-events"></a>Szolgáltatás-események
+## <a name="service-events"></a>Szolgáltatási események
 
-**Service-életciklusesemények**
+**Szolgáltatás-Életciklus eseményei**
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | Életciklus | Egy új szolgáltatás létrehozása | FM | Tájékoztató | 
-| 18658 | ServiceDeleted | Életciklus | Egy meglévő szolgáltatás törlése | FM | Tájékoztató | 
+| 18657 | ServiceCreated | Életciklus | Új szolgáltatás lett létrehozva | FM | Tájékoztató | 
+| 18658 | ServiceDeleted | Életciklus | Meglévő szolgáltatás törölve | FM | Tájékoztató | 
 
-## <a name="partition-events"></a>Partíció események
+## <a name="partition-events"></a>Partíciós események
 
-**Partíció áthelyezési események**
+**Partíciók áthelyezése események**
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | Életciklus | A partíció újrakonfigurálása befejeződött | RA | Tájékoztató | 
 
-## <a name="replica-events"></a>Replika események
+## <a name="replica-events"></a>Replika eseményei
 
-**Replika életciklussal kapcsolatos események**
+**Replika életciklusával kapcsolatos események**
 
-| EventId | Name (Név) | Category | Leírás |Forrás (feladat) | Szint |
+| Napszállta | Név | Kategória | Leírás |Forrás (feladat) | Szint |
 | --- | --- | ---| --- | --- | --- |
-| 61701 | ReliableDictionaryOpened | Életciklus | Megbízható szótárban nyitotta meg | DistributedDictionary | Tájékoztató |
-| 61702 | ReliableDictionaryClosed | Életciklus | Megbízható szótárban be van zárva. | DistributedDictionary | Tájékoztató |
-| 61703 | ReliableDictionaryCheckpointRecovered | Életciklus | Megbízható szótárban helyreállt az ellenőrzőpont | DistributedDictionary | Tájékoztató |
-| 61704 | ReliableDictionaryCheckpointFilesSent | Életciklus | Replika megbízható szótárban ellenőrzőpontfájlok küldött | DistributedDictionary | Tájékoztató |
-| 61705 | ReliableDictionaryCheckpointFilesReceived | Életciklus | Replika megbízható szótárban ellenőrzőpontfájlok kapott. | DistributedDictionary | Tájékoztató |
-| 61963 | ReliableQueueOpened | Életciklus | Megbízható várólista nyitotta meg | DistributedQueue | Tájékoztató |
-| 61964 | ReliableQueueClosed | Életciklus | Megbízható várólista be van zárva. | DistributedQueue | Tájékoztató |
-| 61965 | ReliableQueueCheckpointRecovered | Életciklus | Megbízható várólista helyreállt az ellenőrzőpont | DistributedQueue | Tájékoztató |
-| 61966 | ReliableQueueCheckpointFilesSent | Életciklus | Replika megbízható várólista ellenőrzőpontfájlok küldött | DistributedQueue | Tájékoztató |
-| 63647 | ReliableQueueCheckpointFilesReceived | Életciklus | Replika megbízható várólista ellenőrzőpontfájlok kapott. | DistributedQueue | Tájékoztató |
-| 63648 | ReliableConcurrentQueueOpened | Életciklus | Megbízható egyidejű várólista nyitotta meg | ReliableConcurrentQueue | Tájékoztató |
-| 63649 | ReliableConcurrentQueueClosed | Életciklus | Megbízható egyidejű várólista be van zárva. | ReliableConcurrentQueue | Tájékoztató |
-| 63650 | ReliableConcurrentQueueCheckpointRecovered | Életciklus | Megbízható egyidejű várólista helyreállt az ellenőrzőpont | ReliableConcurrentQueue | Tájékoztató |
-| 61687 | TStoreError | Hiba | Megbízható gyűjtemény váratlan hibaüzenetet kapott. | TStore | Hiba |
-| 63831 | PrimaryFullCopyInitiated | Életciklus | Elsődleges replika kezdeményezte egy teljes másolatot | TReplicator | Tájékoztató |
-| 63832 | PrimaryPartialCopyInitiated | Életciklus | Elsődleges replika kezdeményezte a részleges másolata | TReplicator | Tájékoztató |
-| 16831 | BuildIdleReplicaStarted | Életciklus | Elsődleges replika inaktív replika készítése elindult | Replikáció | Tájékoztató |
-| 16832 | BuildIdleReplicaCompleted | Életciklus | Elsődleges replika inaktív replika létrehozása befejeződött | Replikáció | Tájékoztató |
-| 16833 | BuildIdleReplicaFailed | Életciklus | Elsődleges replika inaktív replika létrehozása nem sikerült | Replikáció | Figyelmeztetés |
-| 16834 | PrimaryReplicationQueueFull | Állapot | Elsődleges replika replikációs sor megtelt | Replikáció | Figyelmeztetés |
-| 16835 | PrimaryReplicationQueueWarning | Állapot | Elsődleges replika replikációs várólistán van közel teljes | Replikáció | Figyelmeztetés |
-| 16836 | PrimaryReplicationQueueWarningMitigated | Állapot | Elsődleges replika replikációs várólistában lévő rendben. | Replikáció | Tájékoztató |
-| 16837 | SecondaryReplicationQueueFull | Állapot | Másodlagos replika replikációs sor megtelt | Replikáció | Figyelmeztetés |
-| 16838 | SecondaryReplicationQueueWarning | Állapot | Másodlagos replika replikációs várólistán van közel teljes | Replikáció | Figyelmeztetés |
-| 16839 | SecondaryReplicationQueueWarningMitigated | Állapot | Másodlagos replika replikációs várólistában lévő rendben. | Replikáció | Tájékoztató |
-| 16840 | PrimaryFaultedSlowSecondary | Állapot | Elsődleges replika lassú másodlagos replika hibába ütközött. | Replikáció | Figyelmeztetés |
-| 16841 | ReplicatorFaulted | Állapot | Replika hibába ütközött. | Replikáció | Figyelmeztetés |
+| 61701 | ReliableDictionaryOpened | Életciklus | Megbízható szótár megnyitva | DistributedDictionary | Tájékoztató |
+| 61702 | ReliableDictionaryClosed | Életciklus | A megbízható szótár bezárult | DistributedDictionary | Tájékoztató |
+| 61703 | ReliableDictionaryCheckpointRecovered | Életciklus | A megbízható szótár visszaállította az ellenőrzőpontot | DistributedDictionary | Tájékoztató |
+| 61704 | ReliableDictionaryCheckpointFilesSent | Életciklus | A replika megbízható szótár ellenőrzőpont-fájljait elküldtük | DistributedDictionary | Tájékoztató |
+| 61705 | ReliableDictionaryCheckpointFilesReceived | Életciklus | A replika megbízható szótár ellenőrzőpont-fájljait kapta | DistributedDictionary | Tájékoztató |
+| 61963 | ReliableQueueOpened | Életciklus | Megbízható várólista megnyitva | DistributedQueue | Tájékoztató |
+| 61964 | ReliableQueueClosed | Életciklus | A megbízható üzenetsor bezárult | DistributedQueue | Tájékoztató |
+| 61965 | ReliableQueueCheckpointRecovered | Életciklus | A megbízható üzenetsor visszaállította az ellenőrzőpontot | DistributedQueue | Tájékoztató |
+| 61966 | ReliableQueueCheckpointFilesSent | Életciklus | A replika megbízható várólista ellenőrzőpont-fájljait elküldtük | DistributedQueue | Tájékoztató |
+| 63647 | ReliableQueueCheckpointFilesReceived | Életciklus | A replika megbízható várólista ellenőrzőpont-fájljait fogadta | DistributedQueue | Tájékoztató |
+| 63648 | ReliableConcurrentQueueOpened | Életciklus | A megbízható párhuzamos üzenetsor megnyitotta | Megbízható párhuzamos várólista | Tájékoztató |
+| 63649 | ReliableConcurrentQueueClosed | Életciklus | A megbízható párhuzamos üzenetsor bezárult | Megbízható párhuzamos várólista | Tájékoztató |
+| 63650 | ReliableConcurrentQueueCheckpointRecovered | Életciklus | A megbízható párhuzamos üzenetsor visszaállította az ellenőrzőpontot | Megbízható párhuzamos várólista | Tájékoztató |
+| 61687 | TStoreError | Hiba | A megbízható gyűjtemény váratlan hibát kapott | TStore | Hiba |
+| 63831 | PrimaryFullCopyInitiated | Életciklus | Az elsődleges replika teljes másolatot kezdeményezett | TReplicator | Tájékoztató |
+| 63832 | PrimaryPartialCopyInitiated | Életciklus | Az elsődleges replika részleges másolatot kezdeményezett | TReplicator | Tájékoztató |
+| 16831 | BuildIdleReplicaStarted | Életciklus | Az elsődleges replika megkezdte a tétlen replika kiépítése | Replikáció | Tájékoztató |
+| 16832 | BuildIdleReplicaCompleted | Életciklus | Az elsődleges replika befejezte az üresjárati replika kiépítése | Replikáció | Tájékoztató |
+| 16833 | BuildIdleReplicaFailed | Életciklus | Az elsődleges replika nem tudta felépíteni a tétlen replikát | Replikáció | Figyelmeztetés |
+| 16834 | PrimaryReplicationQueueFull | Egészségügy | Az elsődleges replika replikációs várólistája megtelt | Replikáció | Figyelmeztetés |
+| 16835 | PrimaryReplicationQueueWarning | Egészségügy | Az elsődleges replika replikációs várólistája majdnem megtelt | Replikáció | Figyelmeztetés |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Egészségügy | Az elsődleges replika replikációs várólistája rendben van | Replikáció | Tájékoztató |
+| 16837 | SecondaryReplicationQueueFull | Egészségügy | A másodlagos replika replikációs várólistája megtelt | Replikáció | Figyelmeztetés |
+| 16838 | SecondaryReplicationQueueWarning | Egészségügy | A másodlagos replika replikációs várólistája majdnem megtelt | Replikáció | Figyelmeztetés |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Egészségügy | A másodlagos replika replikációs várólistája rendben van | Replikáció | Tájékoztató |
+| 16840 | PrimaryFaultedSlowSecondary | Egészségügy | Az elsődleges replika meghibásodott egy lassú másodlagos replika | Replikáció | Figyelmeztetés |
+| 16841 | ReplicatorFaulted | Egészségügy | A replika hibát jelzett | Replikáció | Figyelmeztetés |
 
-## <a name="container-events"></a>Tárolóesemények
+## <a name="container-events"></a>Tároló eseményei
 
-**Tároló életciklus-események** 
+**Tároló életciklusával kapcsolatos események** 
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerActivated | A tároló elindult | Hosting | Tájékoztató | 1 |
-| 23075 | ContainerDeactivated | Egy tároló leállt | Hosting | Tájékoztató | 1 |
-| 23082 | ContainerExited | Egy tároló kilépett – ellenőrizze a UnexpectedTermination jelző | Hosting | Tájékoztató | 1 |
+| 23074 | ContainerActivated | Egy tároló elindult | Üzemeltetés | Tájékoztató | 1 |
+| 23075 | ContainerDeactivated | Egy tároló leállt | Üzemeltetés | Tájékoztató | 1 |
+| 23082 | ContainerExited | Egy tároló kilépett – jelölje be a UnexpectedTermination jelzőt. | Üzemeltetés | Tájékoztató | 1 |
 
-## <a name="health-reports"></a>Rendszerállapot-jelentések
+## <a name="health-reports"></a>Állapotjelentés
 
-A [Service Fabric Állapotmodell](service-fabric-health-introduction.md) biztosít egy gazdag, rugalmas és bővíthető állapotának kiértékelését és a jelentéskészítés. A Service Fabric verziója 6.2-től kezdődően állapotadatok kiírt Platform az eseményeket az egészségügyi korábbi rekordjait tartalmazzák. Tartani egészségügyi események mennyisége alacsony, a következő, a Service Fabric-események csak írható:
+A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldalú, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést biztosít. A Service Fabric 6,2-es verziójának elindítása után az állapotadatok platform-eseményekként vannak beírva, hogy a korábbi adatokat szolgáltassanak. Az állapot-események alacsony mennyiségének megőrzése érdekében csak a következőket írunk Service Fabric eseményekként:
 
-* Az összes `Error` vagy `Warning` rendszerállapot-jelentések
-* `Ok` rendszerállapot-jelentések átmenetek során
-* Ha egy `Error` vagy `Warning` állapotesemény lejár. Ez határozza meg, hogy mennyi ideig egy entitás: nem megfelelő állapotú használható
+* Az összes `Error` vagy `Warning` Health-jelentés
+* `Ok` állapot-jelentések az átmenetek során
+* Ha egy `Error` vagy `Warning` állapot esemény lejár. Ezzel határozható meg, hogy az entitás mennyi ideig volt sérült
 
-**A fürt jelentés állapotesemények**
+**Fürt állapotáról szóló jelentés eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | --- | --- | --- | --- |
-| 54428 | ClusterNewHealthReport | Új fürt egészségügyi jelentés érhető el | HM | Tájékoztató | 1 |
-| 54437 | ClusterHealthReportExpired | Meglévő fürt egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
+| 54428 | ClusterNewHealthReport | Új fürt állapot-jelentés érhető el | HM | Tájékoztató | 1 |
+| 54437 | ClusterHealthReportExpired | Egy meglévő fürterőforrás-jelentés lejárt | HM | Tájékoztató | 1 |
 
-**Csomópont jelentés állapotesemények**
+**Csomópont állapotáról szóló jelentés eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 54423 | NodeNewHealthReport | Egy új csomópont jelentés érhető el | HM | Tájékoztató | 1 |
-| 54432 | NodeHealthReportExpired | Meglévő csomópont egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
+| 54423 | NodeNewHealthReport | Új Node Health-jelentés érhető el | HM | Tájékoztató | 1 |
+| 54432 | NodeHealthReportExpired | Egy meglévő Node Health-jelentés lejárt | HM | Tájékoztató | 1 |
 
-**Alkalmazásesemények egészségügyi jelentés**
+**Az alkalmazás állapotáról szóló jelentés eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 54425 | ApplicationNewHealthReport | Egy alkalmazás új jelentés létrehozása. Ez a nem telepített alkalmazásokat. | HM | Tájékoztató | 1 |
-| 54426 | DeployedApplicationNewHealthReport | Egy üzembe helyezett alkalmazás új jelentés létrehozása | HM | Tájékoztató | 1 |
-| 54427 | DeployedServicePackageNewHealthReport | Egy telepített szolgáltatást új állapotjelentés létrehozása | HM | Tájékoztató | 1 |
-| 54434 | ApplicationHealthReportExpired | Meglévő alkalmazás egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
-| 54435 | DeployedApplicationHealthReportExpired | Egy meglévő üzembe helyezett alkalmazás egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
-| 54436 | DeployedServicePackageHealthReportExpired | Egy meglévő üzemelő szolgáltatás egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
+| 54425 | ApplicationNewHealthReport | Új alkalmazás-állapotjelentés lett létrehozva. Ez a nem telepített alkalmazások esetében használható. | HM | Tájékoztató | 1 |
+| 54426 | DeployedApplicationNewHealthReport | A rendszer létrehozta egy új, központilag telepített Application Health-jelentést | HM | Tájékoztató | 1 |
+| 54427 | DeployedServicePackageNewHealthReport | A rendszer létrehozta az új központilag telepített Service Health-jelentést | HM | Tájékoztató | 1 |
+| 54434 | ApplicationHealthReportExpired | Egy meglévő alkalmazás állapotáról szóló jelentés lejárt | HM | Tájékoztató | 1 |
+| 54435 | DeployedApplicationHealthReportExpired | Egy meglévő telepített alkalmazás állapotáról szóló jelentés lejárt | HM | Tájékoztató | 1 |
+| 54436 | DeployedServicePackageHealthReportExpired | Egy meglévő telepített szolgáltatás állapotáról szóló jelentés lejárt | HM | Tájékoztató | 1 |
 
-**A Szolgáltatásállapot-események jelentés**
+**Szolgáltatás állapotáról szóló jelentés eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 54424 | ServiceNewHealthReport | Service health új jelentés létrehozása | HM | Tájékoztató | 1 |
-| 54433 | ServiceHealthReportExpired | Service health meglévő jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
+| 54424 | ServiceNewHealthReport | Új szolgáltatás-állapotjelentés lett létrehozva | HM | Tájékoztató | 1 |
+| 54433 | ServiceHealthReportExpired | Egy meglévő Service Health-jelentés lejárt | HM | Tájékoztató | 1 |
 
-**Partíció jelentés állapotesemények**
+**Partíciós állapot jelentésének eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 54422 | PartitionNewHealthReport | Új partíció egészségügyi jelentés létrehozása | HM | Tájékoztató | 1 |
-| 54431 | PartitionHealthReportExpired | Meglévő partíció egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
+| 54422 | PartitionNewHealthReport | Új Partition Health-jelentés lett létrehozva | HM | Tájékoztató | 1 |
+| 54431 | PartitionHealthReportExpired | Egy meglévő Partition Health-jelentés lejárt | HM | Tájékoztató | 1 |
 
-**Replika jelentés állapotesemények**
+**Replika állapotáról szóló jelentés eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 54429 | StatefulReplicaNewHealthReport | Egy állapot-nyilvántartó replika egészségügyi jelentés létrehozása | HM | Tájékoztató | 1 |
-| 54430 | StatelessInstanceNewHealthReport | Állapot nélküli példány állapotának új jelentés létrehozása | HM | Tájékoztató | 1 |
-| 54438 | StatefulReplicaHealthReportExpired | Egy meglévő állapot-nyilvántartó replika egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
-| 54439 | StatelessInstanceHealthReportExpired | Egy meglévő állapotmentes példány egészségügyi jelentés érvényessége lejárt | HM | Tájékoztató | 1 |
+| 54429 | StatefulReplicaNewHealthReport | Állapot-nyilvántartó replika állapotáról készült jelentés létrehozva | HM | Tájékoztató | 1 |
+| 54430 | StatelessInstanceNewHealthReport | Új állapot nélküli példány állapotára vonatkozó jelentés lett létrehozva. | HM | Tájékoztató | 1 |
+| 54438 | StatefulReplicaHealthReportExpired | Egy meglévő állapot-nyilvántartó replika állapotáról szóló jelentés lejárt | HM | Tájékoztató | 1 |
+| 54439 | StatelessInstanceHealthReportExpired | Egy meglévő állapot nélküli példány állapotáról szóló jelentés lejárt | HM | Tájékoztató | 1 |
 
-## <a name="chaos-testing-events"></a>A Chaos tesztelési események 
+## <a name="chaos-testing-events"></a>Chaos-tesztelési események 
 
-**A Chaos munkamenet eseményei**
+**Chaos-munkamenet eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 50021 | ChaosStarted | A Chaos tesztelése a munkamenet megkezdése | Testability | Tájékoztató | 1 |
-| 50023 | ChaosStopped | A Chaos tesztelési munkamenetet leállt | Testability | Tájékoztató | 1 |
+| 50021 | ChaosStarted | A Chaos-tesztelési munkamenet elindult | Testability | Tájékoztató | 1 |
+| 50023 | ChaosStopped | A káosz tesztelési munkamenete leállt | Testability | Tájékoztató | 1 |
 
-**A Chaos csomópont események**
+**Chaos Node-események**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 50033 | ChaosNodeRestartScheduled | Egy csomópont újraindítását a Chaos tesztelés munkamenet részeként van ütemezve. | Testability | Tájékoztató | 1 |
-| 50087 | ChaosNodeRestartCompleted | Csomópont újraindítása a Chaos tesztelés munkamenet részeként befejeződött | Testability | Tájékoztató | 1 |
+| 50033 | ChaosNodeRestartScheduled | Egy csomópont egy Chaos-tesztelési munkamenet részeként ütemezett újraindításra van ütemezve | Testability | Tájékoztató | 1 |
+| 50087 | ChaosNodeRestartCompleted | Egy csomópont befejezte az újraindítást egy Chaos-tesztelési munkamenet részeként | Testability | Tájékoztató | 1 |
 
-**A Chaos alkalmazásesemények**
+**Chaos-alkalmazás eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 50053 | ChaosCodePackageRestartScheduled | Kód csomag újraindításra van ütemezve egy káosz munkamenet tesztelése során | Testability | Tájékoztató | 1 |
-| 50101 | ChaosCodePackageRestartCompleted | Kód csomag újraindítás befejeződött, a Chaos munkamenet tesztelése során | Testability | Tájékoztató | 1 |
+| 50053 | ChaosCodePackageRestartScheduled | A rendszer újraindítást végez egy Chaos-tesztelési munkamenet során. | Testability | Tájékoztató | 1 |
+| 50101 | ChaosCodePackageRestartCompleted | A kód-csomag újraindítása a Chaos-tesztelési munkamenet során befejeződött | Testability | Tájékoztató | 1 |
 
-**A Chaos partíció események**
+**Chaos Partition-események**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 50069 | ChaosPartitionPrimaryMoveScheduled | Elsődleges partíció van ütemezve egy tesztelési munkamenetet káosz részeként áthelyezése | Testability | Tájékoztató | 1 |
-| 50077 | ChaosPartitionSecondaryMoveScheduled | Egy másodlagos partíció van ütemezve egy tesztelési munkamenetet káosz részeként áthelyezése | Testability | Tájékoztató | 1 |
-| 65003 | PartitionPrimaryMoveAnalysis | Az elsődleges partíció áthelyezési mélyebb elemzésre érhető el | Testability | Tájékoztató | 1 |
+| 50069 | ChaosPartitionPrimaryMoveScheduled | Egy elsődleges partíció egy Chaos-tesztelési munkamenet részeként van ütemezve. | Testability | Tájékoztató | 1 |
+| 50077 | ChaosPartitionSecondaryMoveScheduled | Egy másodlagos partíció egy Chaos-tesztelési munkamenet részeként van ütemezve. | Testability | Tájékoztató | 1 |
+| 65003 | PartitionPrimaryMoveAnalysis | Az elsődleges partíció mozgatásának mélyebb elemzése elérhető | Testability | Tájékoztató | 1 |
 
-**A Chaos replika események**
+**Chaos replika eseményei**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 50047 | ChaosReplicaRestartScheduled | Replika újraindításra van ütemezve egy tesztelési munkamenetet káosz részeként | Testability | Tájékoztató | 1 |
-| 50051 | ChaosReplicaRemovalScheduled | Egy replika eltávolítása a rendszer ütemezte a Chaos tesztelés munkamenet részeként | Testability | Tájékoztató | 1 |
-| 50093 | ChaosReplicaRemovalCompleted | A Chaos tesztelés munkamenet részeként befejeződött egy replika eltávolítása | Testability | Tájékoztató | 1 |
+| 50047 | ChaosReplicaRestartScheduled | A replika újraindítása a Chaos-tesztelési munkamenet részeként lett ütemezve | Testability | Tájékoztató | 1 |
+| 50051 | ChaosReplicaRemovalScheduled | A replika eltávolítása egy Chaos-tesztelési munkamenet részeként lett ütemezve | Testability | Tájékoztató | 1 |
+| 50093 | ChaosReplicaRemovalCompleted | A replika eltávolítása egy Chaos-tesztelési munkamenet részeként fejeződött be | Testability | Tájékoztató | 1 |
 
 ## <a name="other-events"></a>Egyéb események
 
 **Korrelációs események**
 
-| EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Version |
+| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 65011 | CorrelationOperational | Korreláció észlelt | Testability | Tájékoztató | 1 |
+| 65011 | CorrelationOperational | A rendszer korrelációt észlelt | Testability | Tájékoztató | 1 |
 
-## <a name="events-prior-to-version-62"></a>6\.2 verziónál régebbi események
+## <a name="events-prior-to-version-62"></a>Az 6,2-es verzió előtti események
 
-A következő események 6.2 verzió előtt a Service Fabric által biztosított átfogó listája.
+Itt látható a 6,2-es verzió előtti Service Fabric által biztosított események átfogó listája.
 
-| EventId | Name (Név) | Forrás (feladat) | Szint |
+| Napszállta | Név | Forrás (feladat) | Szint |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Tájékoztató |
 | 25621 | NodeOpenedSuccess | FabricNode | Tájékoztató |
@@ -269,8 +260,8 @@ A következő események 6.2 verzió előtt a Service Fabric által biztosított
 | 29629 | ClusterUpgradeRollback | CM | Tájékoztató |
 | 29630 | ClusterUpgradeRollbackComplete | CM | Tájékoztató |
 | 29631 | ClusterUpgradeDomainComplete | CM | Tájékoztató |
-| 23074 | ContainerActivated | Hosting | Tájékoztató |
-| 23075 | ContainerDeactivated | Hosting | Tájékoztató |
+| 23074 | ContainerActivated | Üzemeltetés | Tájékoztató |
+| 23075 | ContainerDeactivated | Üzemeltetés | Tájékoztató |
 | 29620 | ApplicationCreated | CM | Tájékoztató |
 | 29621 | ApplicationUpgradeStart | CM | Tájékoztató |
 | 29622 | ApplicationUpgradeComplete | CM | Tájékoztató |
@@ -281,9 +272,9 @@ A következő események 6.2 verzió előtt a Service Fabric által biztosított
 | 18566 | ServiceCreated | FM | Tájékoztató |
 | 18567 | ServiceDeleted | FM | Tájékoztató |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Áttekintheti a [Service Fabric-diagnosztika](service-fabric-diagnostics-overview.md)
-* További információ az EventStore a [a Service Fabric az Eventstore áttekintése](service-fabric-diagnostics-eventstore.md)
-* Módosítása a [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) konfigurációját, és további naplók összegyűjtése
-* [Az Application Insights beállítása](service-fabric-diagnostics-event-analysis-appinsights.md) a műveleti naplók channel megtekintéséhez
+* A [diagnosztika áttekintése Service Fabric](service-fabric-diagnostics-overview.md)
+* További információ a EventStore [Service Fabric EventStore – áttekintés](service-fabric-diagnostics-eventstore.md)
+* [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) konfiguráció módosítása további naplók gyűjtéséhez
+* A [Application Insights beállítása](service-fabric-diagnostics-event-analysis-appinsights.md) az operatív csatorna naplófájljainak megtekintéséhez

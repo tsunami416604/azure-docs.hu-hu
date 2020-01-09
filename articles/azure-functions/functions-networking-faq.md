@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409531"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 
@@ -51,9 +51,7 @@ A Virtual Network Integration használatával elérheti a szolgáltatás-végpon
 
 Lehetővé teszi, hogy a HTTP-eseményindítók a [szolgáltatási végpontok](./functions-networking-options.md#private-site-access)használatával legyenek meghívva egy virtuális hálózatból. 
 
-A függvényt egy virtuális hálózatban lévő erőforrásból is aktiválhatja, ha a Function alkalmazást egy App Service Environment helyezi üzembe. App Service Environment használatáról további információt a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)című témakörben talál.
-
-A prémium és App Service csomag támogatja a virtuális hálózatok HTTP-eseményindítóit, de csak egy App Service-környezet támogatja az összes többi függvény eseményindító-típust egy virtuális hálózaton keresztül.
+A függvényt a virtuális hálózat minden más erőforrásáról is aktiválhatja, ha a Function alkalmazást egy prémium csomagra, App Service csomagra vagy App Service Environmentra telepíti. További információ: [nem http virtuális hálózati eseményindítók](./functions-networking-options.md#virtual-network-triggers-non-http)
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hogyan helyezhetem üzembe a Function alkalmazást egy virtuális hálózaton?
 

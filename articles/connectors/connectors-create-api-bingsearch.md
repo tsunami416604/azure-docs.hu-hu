@@ -1,20 +1,20 @@
 ---
 title: Kapcsolódás Bing Searchhoz
-description: Hírek keresése Bing Search REST API-kkal és Azure Logic Apps
+description: Automatizálja a feladatokat és munkafolyamatokat, amelyek megkeresik az eredményeket a Bing Search Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789950"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665887"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Hírek keresése Bing Search és Azure Logic Apps
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Találatok keresése a Bing Searchban Azure Logic Apps használatával
 
 Ez a cikk bemutatja, hogyan találhatja meg a híreket, videókat és egyéb elemeket a Bing Search egy logikai alkalmazáson belül a Bing Search-összekötő használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják a feladatokat és munkafolyamatokat a keresési eredmények feldolgozásához, és elérhetővé teszik ezeket az elemeket más műveletekhez. 
 
@@ -83,7 +83,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
    **Bing Search – új hírekre vonatkozó cikk**
 
-   ![Művelet hozzáadása](./media/connectors-create-api-bing-search/add-action.png)
+   ![Művelet felvétele](./media/connectors-create-api-bing-search/add-action.png)
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. 
    Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
@@ -121,7 +121,7 @@ A műveletek listából válassza ki a kívánt műveletet.
 
    2. A függvények listából válassza a **tartalmaz ()** függvényt, amely ezután megjelenik a kifejezés mezőben. Kattintson a **dinamikus tartalom** lehetőségre, hogy a mezőlista újra megjelenjen, de győződjön meg arról, hogy a kurzor a zárójelben marad.
 
-      ![Válasszon függvényt](./media/connectors-create-api-bing-search/expression-select-function.png)
+      ![Függvény kiválasztása](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. A mezőlista listából válassza ki a **kategóriát**, amely egy paraméterre konvertál. 
    Adjon hozzá egy vesszőt az első paraméter után, és a vessző után adja hozzá a következő szót: `'tech'` 
@@ -152,7 +152,7 @@ A műveletek listából válassza ki a kívánt műveletet.
    |----------|----------|-------|-------------|
    | Kapcsolat neve | Igen | <a *kapcsolatok neve*> | A kapcsolódáshoz létrehozandó név |
    | API-verzió | Igen | <*API-version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
-   | API-kulcs | Igen | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | API-azonosító | Igen | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Példa:
@@ -163,7 +163,7 @@ A műveletek listából válassza ki a kívánt műveletet.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő OpenAPI (korábban hencegő) fájljában leírtak szerint tekintse [meg az összekötő hivatkozási oldalát](/connectors/bingsearch/).
+A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/bingsearch/).
 
 ## <a name="next-steps"></a>Következő lépések
 

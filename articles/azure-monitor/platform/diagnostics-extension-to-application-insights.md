@@ -4,15 +4,15 @@ description: A Azure Diagnostics nyilvános konfigurációjának frissítése az
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b89e7d93113990e032f526d1f32e4e6acddffa75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450583"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatbázis küldése Application Insights
 A Cloud Services, a Virtual Machines, a Virtual Machine Scale Sets és a Service Fabric mind a Azure Diagnostics bővítményt használja az adatok gyűjtéséhez.  Az Azure Diagnostics adatokat küld az Azure Storage-táblákba.  Az Azure Diagnostics Extension 1,5-es vagy újabb verziójának használatával azonban az összes vagy egy részhalmazát is áthelyezheti más helyszínekre.
@@ -66,7 +66,7 @@ Példa a fogadó Application Insightsra való konfigurálására:
 - A **channels** elem egy vagy több csatorna **elemet tartalmaz** .
     - A *Name* attribútum egyedi módon hivatkozik erre a csatornára.
     - A *naplózási szint* attribútum lehetővé teszi a csatorna által engedélyezett naplózási szint megadását. A rendelkezésre álló naplózási szintek a legkevesebb információt a következő sorrendben használják:
-        - Részletes
+        - Részletezés
         - Információ
         - Figyelmeztetés
         - Hiba
@@ -213,7 +213,7 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 - **Egy csatorna naplózási szintje nem haladhatja meg az Azure Diagnostics által összegyűjtött naplózási szintet.** Nem gyűjthet például az alkalmazásnapló-hibákat a naplók elemben, és megpróbálhatja részletes naplókat küldeni az alkalmazás Insight fogadójának. A *scheduledTransferLogLevelFilter* attribútumnak mindig egyenlő vagy annál több naplót kell összegyűjtenie, mint amennyit a fogadónak elküldeni próbált naplók.
 - **Az Azure Diagnostics bővítmény által gyűjtött blob-adatok nem küldhetők Application Insights.** Például a *címtárak* csomópontban megadott minden adat. Az összeomlási memóriaképek esetében a rendszer a tényleges összeomlási memóriaképet küldi el a blob Storage-nak, és csak egy értesítést küld a rendszer az összeomlási memóriakép létrejöttéről Application Insights.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [tekintheti meg az Azure diagnosztikai adatait](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) Application Insightsban.
 * A [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) használatával engedélyezze az Azure Diagnostics bővítményt az alkalmazáshoz.
 * A [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) használata az Azure Diagnostics bővítmény engedélyezéséhez az alkalmazáshoz

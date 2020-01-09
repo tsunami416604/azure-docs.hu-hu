@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454276"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
-A hálózati biztonsági csoport (NSG) folyamatábrái a Network Watcher szolgáltatása, amely lehetővé teszi a bejövő és kimenő IP-forgalomra vonatkozó információk megtekintését egy NSG keresztül. A flow-naplók JSON formátumban vannak írva, és a kimenő és bejövő folyamatok megjelenítése egy szabály alapján történik, a folyamathoz tartozó hálózati adapter (NIC), 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/célport és protokoll), ha a forgalom engedélyezett vagy megtagadott, valamint a 2. verzióban az átviteli sebesség (bájtok és csomagok).
+A hálózati biztonsági csoport (NSG) forgalomnaplózása a Network Watcher szolgáltatása, amellyel megtekintheti az NSG-n keresztül bejövő és kimenő IP-forgalom adatait. A folyamatnaplók JSON formátumban vannak megírva, és szabályonként jelenítik meg a kimenő és bejövő forgalmat, a forgalom esetében érintett hálózati adaptert (NIC), a forgalomhoz tartozó ötféle információt (forrás/cél IP, forrás-/célport és protokoll), hogy a forgalmat a rendszer engedélyezte vagy elutasította, valamint a 2. verzióban az átviteli sebességre vonatkozó adatokat is (bájtok és csomagok).
 
 
 ![a flow naplói – áttekintés](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
@@ -36,7 +36,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 A [Traffic Analytics](traffic-analytics.md)segítségével elemezheti a folyamat naplóit, és betekintést nyerhet a hálózati forgalomba.
 
-A más naplókra vonatkozó adatmegőrzési szabályzatok a folyamat naplófájljaira is érvényesek. A naplózási adatmegőrzési szabályzatot 1 napról 2147483647 napra állíthatja be. Ha nincs beállítva adatmegőrzési szabály, a naplók megőrzése korlátlan időre szól.
+A más naplókra vonatkozó adatmegőrzési szabályzatok a folyamat naplófájljaira is érvényesek. A naplózási adatmegőrzési szabályzatot 1 napról 365 napra állíthatja be. Ha nincs beállítva adatmegőrzési szabály, a naplók megőrzése korlátlan időre szól.
 
 > [!NOTE] 
 > A NSG adatmegőrzési házirend funkciójának használata nagy mennyiségű tárolási műveletet eredményezhet, és a kapcsolódó költségeket is. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre.
@@ -93,16 +93,15 @@ A **Storage-fiókkal kapcsolatos megfontolások**:
 1. Hely: a használt Storage-fióknak ugyanabban a régióban kell lennie, mint a NSG.
 2. Nincs tűzfal: a NSG-adatforgalmi naplók nem [megbízható Microsoft-szolgáltatásként készültek az Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)-hoz. Lásd: [hogyan a tűzfal letiltása a Storage-fiókomban?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) a tűzfal letiltásához. 
 3. Nincsenek szolgáltatási végpontok: a jelenlegi korlátozás miatt a naplókat csak a Storage-fiókok számára lehet közvetlenül kiadni, és nem a szolgáltatási végpontokon keresztül. Lásd: [Hogyan NSG flow-naplók használata szolgáltatási végpontokkal?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) segítség a meglévő szolgáltatási végpontok eltávolításához.
-4. A kulcs önálló kezelése: Ha módosítja vagy elforgatja a hozzáférési kulcsokat a Storage-fiókhoz, a NSG-naplók nem fognak működni. Ennek kijavításához le kell tiltania, majd újra engedélyeznie kell a NSG folyamat naplóit.
+4. A kulcs önálló kezelése: Ha módosítja vagy elforgatja a hozzáférési kulcsokat a Storage-fiókhoz, a NSG-naplók nem fognak működni. A probléma megoldásához le kell tiltania, majd újra engedélyeznie kell a NSG folyamat naplóit.
 
-**NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Olyan helyzetekben, ahol több NSG van használatban, javasoljuk, hogy a NSG flow naplózása engedélyezve legyen minden olyan NSG, amely az erőforrás alhálózatát vagy hálózati adapterét alkalmazza az összes forgalom rögzítésének biztosításához. A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [forgalom kiértékelésének módját](../virtual-network/security-overview.md#how-traffic-is-evaluated) . 
+**NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Olyan helyzetekben, ahol több NSG van használatban, javasoljuk, hogy a NSG flow naplózása engedélyezve legyen minden olyan NSG, amely az erőforrás alhálózatát vagy hálózati adapterét alkalmazza az összes forgalom rögzítésének biztosításához. További információ: a [forgalom kiértékelése](../virtual-network/security-overview.md#how-traffic-is-evaluated) a hálózati biztonsági csoportokban.
 
-A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozott naplók mennyiségétől függ. A nagy forgalmú kötetek nagy flow-naplózási kötetet és a hozzájuk kapcsolódó költségeket okozhatják. A NSG-forgalmi napló díjszabása nem tartalmazza a tárterület alapjául szolgáló költségeket. A NSG adatmegőrzési házirend funkciójának használata nagy mennyiségű tárolási műveletet eredményezhet, és a kapcsolódó költségeket is. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre. További részletekért tekintse meg a [Network Watcher díjszabását](https://azure.microsoft.com/pricing/details/network-watcher/) és az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) .
-
-> [!IMPORTANT]
-> Jelenleg hiba történt a [hálózati biztonsági csoport (NSG) Network Watcher adatforgalmának naplózása](network-watcher-nsg-flow-logging-overview.md) során, ezért a rendszer nem törli automatikusan a blob Storage-ból a megőrzési házirend beállításai alapján. Ha meglévő, nem nulla adatmegőrzési szabályzattal rendelkezik, javasoljuk, hogy rendszeresen törölje a megőrzési időtartamon felüli tárolási blobokat a felmerülő költségek elkerülése érdekében. További információ a NSG flow log-tárolási blog törléséről: [NSG flow log Storage-Blobok törlése](network-watcher-delete-nsg-flow-log-blobs.md).
+A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozott naplók mennyiségétől függ. A nagy forgalmú kötetek nagy flow-naplózási kötetet és a hozzájuk kapcsolódó költségeket okozhatják. A NSG-forgalmi napló díjszabása nem tartalmazza a tárterület alapjául szolgáló költségeket. A NSG adatmegőrzési házirend funkciójának használata nagy mennyiségű tárolási műveletet eredményezhet, és a kapcsolódó költségeket is. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre. További információkért tekintse meg a [Network Watcher díjszabását](https://azure.microsoft.com/pricing/details/network-watcher/) és az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető témakört.
 
 Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
+
+**Az állapot nélküli folyamatok esetében helytelen a bájt és a csomagok száma**: a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapot-nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. A forgalom áramlását szabályozó alapértelmezett/belső szabályok azonban állapot nélküli módon lesznek implementálva. A platformok korlátai miatt a rendszer nem rögzíti a bájtok és a csomagok számát az állapot nélküli folyamatok esetében (azaz az állapot nélküli szabályokon keresztüli forgalom), csak állapot-nyilvántartó folyamatokban lesznek rögzítve. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma eltérő lehet a tényleges folyamatokban. Ezt a korlátozást az ütemezi, hogy a 2020-es időpontban rögzítettek legyenek.
 
 ## <a name="sample-log-records"></a>Minta napló rekordjai
 

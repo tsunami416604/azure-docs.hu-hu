@@ -1,30 +1,21 @@
 ---
-title: Oktatóanyag – Az Azure Service Fabric Meshben futó alkalmazások frissítése | Microsoft Docs
+title: Oktatóanyag – az Azure Service Fabric Meshban futó alkalmazások frissítése
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan lehet frissíteni a Service Fabric Meshben futó Service Fabric-alkalmazások szolgáltatásait.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351728"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Oktatóanyag: Service Fabric-háló-ban futó Service Fabric-alkalmazás frissítése
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Oktatóanyag: A Service Fabric Meshben futó Service Fabric-alkalmazások frissítése
 
-Ez az oktatóanyag egy sorozat harmadik része. Elsajátíthatja, hogyan frissíthet [korábban a Service Fabric Meshben üzembe helyezett](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric-alkalmazásokat a lefoglalt CPU-erőforrások mennyiségének növelésével.  Ha elkészült, rendelkezni fog egy webes előtér-szolgáltatás fut, a magasabb CPU-erőforrásokkal.
+Ez az oktatóanyag egy sorozat harmadik része. Elsajátíthatja, hogyan frissíthet [korábban a Service Fabric Meshben üzembe helyezett](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric-alkalmazásokat a lefoglalt CPU-erőforrások mennyiségének növelésével.  Ha elkészült, a webes előtér-szolgáltatás nagyobb CPU-erőforrásokkal fut.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
@@ -59,7 +50,7 @@ Ez az oktatóanyag az [előzőleg telepített](service-fabric-mesh-tutorial-temp
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-Az alkalmazás erőforrásának üzembehelyezési sablonjában mindegyik szolgáltatás rendelkezik egy *cpu* tulajdonsággal, amellyel megadhatja a használni kívánt CPU-erőforrásokat. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *cpu* beállítással rendelkezik, amelyeket a rendszer együtt helyez üzembe és kezel. Annak érdekében, hogy a webes kezelőfelületi szolgáltatás CPU-erőforrások növelése érdekében módosítsa a *cpue* a központi telepítési sablon és paraméterek fájlban.  Ezt követően frissítse az alkalmazást.
+Az alkalmazás erőforrásának üzembehelyezési sablonjában mindegyik szolgáltatás rendelkezik egy *cpu* tulajdonsággal, amellyel megadhatja a használni kívánt CPU-erőforrásokat. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *cpu* beállítással rendelkezik, amelyeket a rendszer együtt helyez üzembe és kezel. A webes előtér-szolgáltatás CPU-erőforrásainak növeléséhez módosítsa a *cpue* értéket a telepítési sablonban vagy a Parameters fájlban.  Ezt követően frissítse az alkalmazást.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Az üzembehelyezési sablon paramétereinek módosítása
 
@@ -77,7 +68,7 @@ Nyissa meg helyileg a [mesh_rp.windows.parameter.json](https://github.com/Azure-
 
 Mentse a paraméterfájl módosításait.  
 
-A *frontEndCpu* paraméter a [mesh_rp.windows.json üzembehelyezési sablon](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) *paraméterek* szakaszában van deklarálva:
+A *frontEndCpu* paraméter a [mesh_rp.windows.json üzembehelyezési sablon](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)*paraméterek* szakaszában van deklarálva:
 
 ```json
 "frontEndCpu": {
@@ -133,7 +124,7 @@ Ekkor elindul az alkalmazás működés közbeni frissítése, és néhány perc
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

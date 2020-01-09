@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444501"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -21,7 +21,7 @@ Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure D
 
 Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nem igényel kódolást. Az adatfolyamatok a saját végrehajtási fürtön futnak a kibővíthető adatfeldolgozáshoz. Azure Data Factory kezeli az adatáramlási feladatok összes fordítását, az elérési út optimalizálását és végrehajtását.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 Az adatfolyamatok létrehozásához jelölje ki a **gyári erőforrások**területen a plusz jelre, majd válassza az **adatfolyam**lehetőséget. 
 
@@ -60,6 +60,8 @@ A fürt erőforrásainak (VM-EK) készletének fenntartásához az ADF-et kell m
 Ha párhuzamosan hajtja végre az adatfolyamatokat, az ADF külön Azure Databricks fürtöket helyez el minden tevékenység végrehajtásához az egyes tevékenységekhez csatolt Azure Integration Runtime beállításai alapján. Az ADF-folyamatok párhuzamos végrehajtásának kialakításához adja hozzá az adatfolyam-tevékenységeket a felhasználói felület elsőbbségi korlátozásai nélkül.
 
 Ebből a három lehetőségből ez a lehetőség valószínűleg a lehető legrövidebb idő alatt fog megjelenni. Azonban az egyes párhuzamos adatfolyamok külön fürtökön lesznek végrehajtva, így az események rendezése nem determinisztikus.
+
+Ha a folyamatokon belül párhuzamosan hajtja végre az adatfolyam-tevékenységeket, azt javasoljuk, hogy ne használja az ÉLETTARTAMot. Ennek az az oka, hogy az adatforgalom párhuzamos végrehajtása ugyanazon Azure Integration Runtime használatával egyszerre több meleg készlet-példányt eredményez az adatelőállító számára.
 
 ##### <a name="overload-single-data-flow"></a>Egyetlen adatfolyam túlterhelése
 

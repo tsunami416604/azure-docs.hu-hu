@@ -1,46 +1,45 @@
 ---
-title: Az Azure Stream Analytics bemenetek ismertetése
-description: Ez a cikk ismerteti a bemeneti adatokat az Azure Stream Analytics-feladat, referenciaadat-bemenetek bemeneti adatfolyam összehasonlításával fogalmát.
-services: stream-analytics
+title: Azure Stream Analytics-bemenetek ismertetése
+description: Ez a cikk ismerteti a bemenetek fogalmát egy Azure Stream Analytics feladatban, összehasonlítva a streaming inputot a hivatkozott adatok beviteléhez.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426434"
 ---
-# <a name="understand-inputs-for-azure-stream-analytics"></a>Az Azure Stream Analytics bemenetek ismertetése
+# <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics-bemenetek ismertetése
 
-Az Azure Stream Analytics-feladatok egy vagy több streamadat típusú bemenetek csatlakozni. Minden egyes bemenet egy kapcsolat egyik létező adatforrásához határozza meg. Stream Analytics eseményforrások, beleértve az Event Hubs, az IoT Hub és a Blob storage számos típusú adatok bejövő fogad el. A bemeneti adatok neve, amely az egyes feladatokhoz ír streamelési SQL-lekérdezés által hivatkozott. A lekérdezés kombinálhatja az adatokat, és összevetheti a referenciaadatok keresés streamelési adatok több bemenet csatlakozzon, és adja át az eredményeket a kimenetek. 
+Azure Stream Analytics feladatok egy vagy több adatbemenethez csatlakoznak. Minden bemenet definiál egy meglévő adatforráshoz való kapcsolódást. Stream Analytics fogadja a különböző típusú eseményforrás bejövő adatait, beleértve a Event Hubs, a IoT Hub és a blob Storage-ot. A bemeneteket az egyes feladatokhoz írt streaming SQL-lekérdezés neve szerint hivatkozik. A lekérdezésben több bemenet is csatlakoztatható az adatokhoz, illetve összehasonlíthatja a folyamatos adatátviteli adatokat, és átadhatja az eredményeket a kimeneteknek. 
 
-Stream Analytics bemenetként három típusú erőforrásokhoz első osztályú integrálva van:
+A Stream Analytics az első osztályú, háromféle erőforrással rendelkező integrációt tartalmaz bemenetként:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
-Ezeket az erőforrásokat a bemeneti is élő Azure-előfizetéshez, a Stream Analytics-feladatot, vagy egy másik előfizetésben található.
+Ezek a bemeneti erőforrások ugyanabban az Azure-előfizetésben, mint a Stream Analytics-feladatban, vagy egy másik előfizetésben is elérhetők.
 
-Használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), és [Visual Studio](stream-analytics-tools-for-visual-studio-install.md)létrehozása, szerkesztése és tesztelése a Stream Analytics-feladat bemenetek.
+A [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), a [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), a [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)és a [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) segítségével stream Analytics feladatok bemeneteit hozhatja létre, szerkesztheti és tesztelheti.
 
-## <a name="stream-and-reference-inputs"></a>Stream- és referenciainformációkat bemenetek
-Az adatok leküldésekor egy adatforrásba, a Stream Analytics-feladat által használt, és valós idejű feldolgozásra. Bemenetei között meg vannak osztva a két típus: adatok streamelése bemenetei között, és streamadat típusú bemenetek hivatkoznak.
+## <a name="stream-and-reference-inputs"></a>Stream-és hivatkozási bemenetek
+Ahogy az adatok egy adatforrásba kerülnek, a Stream Analytics feladatainak felhasználása és valós idejű feldolgozása történik. A bemenetek két típusra oszthatók: adatstream-bemenetekre és referenciaadat-bemenetekre.
 
-### <a name="data-stream-input"></a>Adatfolyam-bemenet
-Egy adatfolyama korlátlan streameken működő eseménysorozatát idővel. Stream Analytics-feladatok tartalmaznia kell legalább egy adatfolyam-bemenetre. Az Event Hubs, az IoT Hub és a Blob storage adatforrások stream bemeneti támogatottak. Az Event Hubs segítségével több eszközökön és szolgáltatásokon szolgáltatásból. Ezekbe az adatfolyamokba tartalmazhatnak, közösségi hírcsatornákról tevékenység, tőzsdei kereskedelmi adatokat vagy érzékelők adatait. IoT-központok adatokat gyűjteni az eszközök internetes hálózata (IoT) csatlakozó eszközök vannak optimalizálva.  Adatok kötegelt feldolgozására adatfolyamként, például a naplófájlok a BLOB storage használható egy bemeneti forrásaként.  
+### <a name="data-stream-input"></a>Adatfolyam bemenete
+Az adatfolyamok az események nem kötött sorozatából állnak az idő múlásával. A Stream Analytics-feladatoknak tartalmazniuk kell legalább egy adatstream-bemenetet. A támogatott adatstream-bemeneti források az Event Hubs, az IoT Hub és a Blob Storage. Event Hubs a több eszközről és szolgáltatásból származó esemény-adatfolyamok gyűjtésére szolgál. Ezek a streamek lehetnek a közösségi média tevékenységi hírcsatornái, a tőzsdei információk vagy az érzékelőkből származó adatok. A IoT hubok a csatlakoztatott eszközökről eszközök internetes hálózata (IoT) forgatókönyvekben gyűjtött adatok gyűjtésére vannak optimalizálva.  A blob Storage használható bemeneti forrásként a tömeges adatok adatfolyamként való betöltéséhez, például a naplófájlokhoz.  
 
-Streamadat típusú bemenetek kapcsolatos további információkért lásd: [data Stream bemeneti Stream analyticsbe](stream-analytics-define-inputs.md)
+További információ a streaming adatbevitelekről: [stream-adatok bevitele stream Analyticsba](stream-analytics-define-inputs.md)
 
-### <a name="reference-data-input"></a>Referenciaadat-bemenetek
-Stream Analytics is támogatja a bemeneti néven *referenciaadatok*. Referenciaadatok, vagy teljesen statikus vagy lassan módosításokat. Általában összefüggések keresésére és keresések végrehajtására szolgál. Például előfordulhat, hogy csatlakozik a szolgáltatáshoz data az adatok a referenciaadatok az adatfolyam-bemenetre akár egy SQL összekapcsolás statikus értékek keresse ki kell elvégeznie. Az Azure Blob storage és az Azure SQL Database jelenleg támogatott a referenciaadatoknál bemeneti forrásként. A referenciaadat blobok forrás mérete, a lekérdezés összetettségétől függően akár 300 MB legfeljebb és folyamatos átviteli egységek lefoglalt (lásd a [korlátozás méretezés](stream-analytics-use-reference-data.md#size-limitation) szakaszában az adatok dokumentációja további részletekért).
+### <a name="reference-data-input"></a>Hivatkozási adatok bevitele
+A Stream Analytics a *hivatkozási adatok*néven ismert bemenetet is támogatja. A hivatkozási adatértékek teljesen statikusak vagy lassan változnak. Általában a korrelációk és a keresések végrehajtásához használatos. Előfordulhat például, hogy az adatfolyam bemenetében lévő adatokat a hivatkozási adatokban lévő adatokhoz csatlakoztatja, ugyanúgy, mint az SQL Joint a statikus értékek kereséséhez. Az Azure Blob Storage és a Azure SQL Database jelenleg a hivatkozási adatok bemeneti forrásaként használhatók. A hivatkozás adatforrása Blobok legfeljebb 300 MB méretűek lehetnek, a lekérdezés bonyolultsága és a lefoglalt folyamatos átviteli egységek függvényében (további részletekért lásd a hivatkozási adatok dokumentációjának [méret korlátozása](stream-analytics-use-reference-data.md#size-limitation) című szakaszát).
 
-Referenciaadat típusú bemenetek kapcsolatos további információkért lásd: [a referenciaadatok a Stream Analytics keresések](stream-analytics-use-reference-data.md)
+További információ a hivatkozásokat használó adatbevitelekről: a [stream Analyticsban lévő keresések hivatkozási adatainak használata](stream-analytics-use-reference-data.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
+> [Gyors útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)

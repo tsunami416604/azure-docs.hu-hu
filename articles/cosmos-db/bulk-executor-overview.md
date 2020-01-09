@@ -1,5 +1,5 @@
 ---
-title: A tömeges importálás és a Azure Cosmos DB adatai frissítése a tömeges végrehajtó kódtár használatával
+title: A Azure Cosmos DB tömeges végrehajtó függvénytárának áttekintése
 description: Tömeges műveleteket hajthat végre Azure Cosmos DB a tömeges importálási és tömeges frissítési API-k használatával, amelyet a tömeges végrehajtó függvénytár kínál.
 author: tknandu
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442157"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>A Azure Cosmos DB tömeges végrehajtó függvénytárának áttekintése
  
@@ -46,7 +46,7 @@ Ha a dokumentumok importálására vagy frissítésére szolgáló tömeges műv
 
 A tömeges végrehajtó könyvtára gondoskodik a gyűjteményhez lefoglalt átviteli sebesség maximális kihasználásáról. Egy [AIMD stílusú torlódás-vezérlési mechanizmust](https://tools.ietf.org/html/rfc5681) használ minden Azure Cosmos db partíciós kulcs tartományához, így hatékonyan kezelheti a díjszabást és az időtúllépéseket. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
   
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása.  
 * Tekintse meg a tömeges végrehajtó SDK-információkat, valamint a [.net](sql-api-sdk-bulk-executor-dot-net.md) és a [Java](sql-api-sdk-bulk-executor-java.md)kiadási megjegyzéseit.

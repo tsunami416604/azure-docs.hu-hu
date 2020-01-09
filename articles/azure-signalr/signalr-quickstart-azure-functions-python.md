@@ -5,14 +5,14 @@ author: anthonychu
 ms.service: signalr
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/14/2019
 ms.author: antchu
-ms.openlocfilehash: 728111548176a0a3212b1677eeb192ccdc47fe88
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392156"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Gyors útmutató: csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Python használatával
 
@@ -24,11 +24,9 @@ Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 Ellenőrizze, hogy van-e telepítve valamilyen kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/).
 
-Telepítse a [Azure functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) (2.7.1505 vagy újabb verziót) a Python Azure Function apps helyi futtatásához.
+Telepítse a [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (2.7.1505 vagy újabb verziót) a Python Azure Function apps helyi futtatásához.
 
-Azure Functions a [Python 3,6](https://www.python.org/downloads/)-es verzióra van szükség.
-
-A bővítmények telepítéséhez az Azure Functions Core Tools jelenleg igényli, hogy a [.NET Core SDK](https://www.microsoft.com/net/download) telepítve legyen. Azonban a Python Azure Function-alkalmazások létrehozásához nem szükséges a .NET ismerete.
+A Azure Functions [Python 3,6 vagy 3,7](https://www.python.org/downloads/)szükséges.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -54,19 +52,19 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. A Kódszerkesztő alkalmazásban nyissa meg a *src/chat/Python* mappát a klónozott tárházban.
 
-1. A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6-környezetben kell dolgoznia. Futtassa a következő parancsokat, létrehozása és aktiválása nevű virtuális környezetet `.venv`.
+1. A Python-függvények helyi fejlesztéséhez és teszteléséhez Python 3,6 vagy 3,7 környezetben kell dolgoznia. Futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához.
 
     **Linux vagy macOS:**
 
     ```bash
-    python3.6 -m venv .venv
+    python3.7 -m venv .venv
     source .venv/bin/activate
     ```
 
     **Windows:**
 
     ```powershell
-    py -3.6 -m venv .venv
+    py -3.7 -m venv .venv
     .venv\scripts\activate
     ```
 
@@ -79,10 +77,10 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
 
-1. A terminálon győződjön meg arról, hogy a *src/chat/Python* mappában található. Az Azure Functions Core Tools segítségével telepítse az alkalmazás futtatásához szükséges bővítményeket.
+1. Az aktivált virtuális környezettel rendelkező terminálon győződjön meg arról, hogy a *src/chat/Python* mappában található. Telepítse a szükséges Python-csomagokat a PIP használatával.
 
     ```bash
-    func extensions install
+    python -m pip install -r requirements.txt
     ```
 
 1. Futtassa a függvényalkalmazást.

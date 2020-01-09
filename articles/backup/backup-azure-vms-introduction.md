@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás hogyan készít biztonsági másolatot az Azure Virtual Machines szolgáltatásról, és hogyan követi az ajánlott eljárásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391894"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
@@ -109,7 +109,6 @@ Ha virtuális gépek biztonsági mentését konfigurálja, javasoljuk, hogy köv
 - Módosíthatja a házirendben beállított alapértelmezett ütemezett időpontokat. Ha például a házirendben az alapértelmezett idő 12:00, az időzítést több percen belül növelni kell, hogy az erőforrások optimálisan használhatók legyenek.
 - Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage-fiókokat](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
 - A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
-- Az általános célú v1 tárolási réteg (snapshot) visszaállítása percek alatt elvégezhető, mivel a pillanatkép ugyanabban a Storage-fiókban található. Az általános célú v2 tárolási rétegből (tárolóból) való visszaállítás akár órákig is elvégezhető. Azokban az esetekben, amikor az adat elérhető az általános célú v1-tárolóban, javasoljuk, hogy az azonnali visszaállítás funkciót használja a gyorsabb [visszaállításhoz](backup-instant-restore-capability.md) . (Ha az adatok visszaállítását egy tárolóból kell visszaállítani, a rendszer több időt vesz igénybe.)
 - A lemezek tárolási fiókra vonatkozó korlátozása attól függ, hogy milyen mértékben fér hozzá a lemezek a szolgáltatásként szolgáló infrastruktúra-(IaaS-) virtuális gépen futó alkalmazások számára. Általános gyakorlatként, ha 5 – 10 lemez vagy több van jelen egyetlen Storage-fiókban, akkor a terhelést úgy egyenlítheti ki, hogy egyes lemezeket külön Storage-fiókokra helyez át.
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek
@@ -124,14 +123,14 @@ A védett példány méretének kiszámítása a virtuális gép *tényleges* m�
 
 Hasonlóképpen, a biztonsági mentési tár a Azure Backup tárolt adatok mennyisége alapján történik, amely az egyes helyreállítási pontokban lévő tényleges adatok összege.
 
-Tegyük fel például, hogy egy olyan a2-es szabványú virtuális gép, amely két további adatlemezt tartalmaz, amelyek maximális mérete 4 TB. A következő táblázat az egyes lemezeken tárolt tényleges adatokat mutatja be:
+Tegyük fel például, hogy egy olyan a2-es szabványú virtuális gép, amely két további adatlemezt tartalmaz, amelyek maximális mérete 32 TB. A következő táblázat az egyes lemezeken tárolt tényleges adatokat mutatja be:
 
 **Lemez** | **Maximális méret** | **Tényleges adatok jelennek meg**
 --- | --- | ---
-Operációsrendszer-lemez | 4095 GB | 17 GB
+Operációsrendszer-lemez | 32 TB | 17 GB
 Helyi/ideiglenes lemez | 135 GB | 5 GB (nem tartalmazza a biztonsági mentést)
-Adatlemez 1 | 4095 GB | 30 GB
-2\. adatlemez | 4095 GB | 0 GB
+Adatlemez 1 | 32 TB| 30 GB
+2\. adatlemez | 32 TB | 0 GB
 
 Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 GB. Ez a védett példány mérete (47 GB) lesz a havi számla alapja. Ahogy a virtuális gépen lévő adatmennyiség növekszik, a számlázáshoz használt védett példány mérete megegyezik.
 

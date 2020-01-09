@@ -1,21 +1,21 @@
 ---
-title: Az erőforrás-telepítés automatizálása Azure Functionsban található Function alkalmazáshoz
+title: Function app-erőforrás üzembe helyezésének automatizálása az Azure-ban
 description: Megtudhatja, hogyan hozhat létre olyan Azure Resource Manager sablont, amely üzembe helyezi a Function alkalmazást.
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9c222937831c0e8017a390b16ef192783e9e564a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10efe5d09771f4c5f3a2564ef99ff9cae8cf06c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433142"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
 Egy Azure Resource Manager sablon használatával üzembe helyezhet egy Function alkalmazást. Ez a cikk a szükséges erőforrásokat és paramétereket ismerteti. Előfordulhat, hogy további erőforrásokat kell telepítenie a Function alkalmazásban lévő [Eseményindítók és kötések](functions-triggers-bindings.md) függvényében.
 
-További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)készítése.
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md)készítése.
 
 A példákat lásd:
 - [Function alkalmazás a használati tervben]
@@ -27,9 +27,9 @@ Az Azure Functions üzemelő példányok általában az alábbi erőforrásokbó
 
 | Erőforrás                                                                           | Követelmény | Szintaxis és tulajdonságok – hivatkozás                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Function-alkalmazás                                                                     | Kötelező    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure Storage](../storage/index.yml) -fiók                                   | Kötelező    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Optional    | [Microsoft. bepillantások/összetevők](/azure/templates/microsoft.insights/components)         |   |
+| Function-alkalmazás                                                                     | Szükséges    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure Storage](../storage/index.yml) -fiók                                   | Szükséges    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Választható    | [Microsoft. bepillantások/összetevők](/azure/templates/microsoft.insights/components)         |   |
 | [Üzemeltetési csomag](./functions-scale.md)                                             | Opcionális<sup>1</sup>    | [Microsoft. Web/kiszolgálófarmok](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> A szolgáltatási csomagra csak akkor van szükség, ha úgy dönt, hogy a Function alkalmazást egy [prémium szintű csomagra](./functions-premium-plan.md) (előzetes verzióban) vagy egy [app Service csomagra](../app-service/overview-hosting-plans.md)szeretné futtatni.
@@ -139,7 +139,7 @@ A Function alkalmazásnak tartalmaznia kell ezeket az Alkalmazásbeállítások:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Egy olyan Storage-fiókhoz tartozó kapcsolódási karakterlánc, amelyet a belső üzenetsor-kezelési funkciók futtatókörnyezete biztosít | Lásd: [Storage-fiók](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Az Azure Functions futtatókörnyezet verziója                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`, `java`vagy `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`, `java` vagy `python` |
 | WEBSITE_NODE_DEFAULT_VERSION | Csak akkor szükséges, ha a `node` nyelvi verem használatával adja meg a használni kívánt verziót              | `10.14.1`                             |
 
 Ezek a tulajdonságok a `siteConfig` tulajdonság `appSettings` gyűjteményében vannak megadva:
@@ -462,7 +462,7 @@ Egy App Service-csomagban lévő Function alkalmazásnak rendelkeznie kell a kor
 
 A Linux-alkalmazásoknak tartalmaznia kell egy `linuxFxVersion` tulajdonságot is `siteConfig`alatt. Ha csak a kód üzembe helyezését végzi, az értéket a kívánt futtatókörnyezeti verem határozza meg:
 
-| Stack            | Példaérték                                         |
+| Verem            | Példaérték                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

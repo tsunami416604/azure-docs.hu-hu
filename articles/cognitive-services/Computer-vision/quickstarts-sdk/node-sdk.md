@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
-description: Ismerkedés a Computer Vision ügyféloldali kódtár a Node. js-hez...
+title: 'Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár Computer Vision'
+description: Ismerkedés a Node. js-hez készült Computer Vision ügyféloldali kódtár ezzel a rövid útmutatóval
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 199ead07e499575de21c6878cd348e648f604171
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05bc30fb8401597695848290a3d4f6c0d10ce836
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382242"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Rövid útmutató: a Node. js-hez készült ügyféloldali kódtár Computer Vision
 
@@ -258,7 +258,7 @@ node index.js
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Következő lépések

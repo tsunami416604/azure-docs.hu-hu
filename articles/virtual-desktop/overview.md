@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348808"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -35,7 +35,7 @@ Ismerje meg a Windows rendszerű virtuális asztalt, hogy miért egyedi, és mi 
 
 További videók a Windows rendszerű virtuális asztalról: [lejátszási lista](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
-## <a name="key-capabilities"></a>Főbb funkciók
+## <a name="key-capabilities"></a>Főbb képességek
 
 A Windows virtuális asztal használatával méretezhető és rugalmas környezetet állíthat be:
 
@@ -110,8 +110,11 @@ Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálóz
 
 A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuális asztalt:
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows](connect-windows-7-and-10.md)
+* [Web](connect-web.md)
+* [Mac](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android (előzetes verzió)](connect-android.md)
 
 ## <a name="supported-virtual-machine-os-images"></a>Támogatott virtuális gépek operációsrendszer-lemezképei
 

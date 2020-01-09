@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7706fba1efad1bd0ce7110e129dcf113689af9a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432827"
 ---
-# <a name="get-shape-data"></a>Alakzatadatok beolvasása
+# <a name="get-shape-data"></a>Formázott adatok lekérése
 
 Ebből a cikkből megtudhatja, hogyan kérhet le a térképen rajzolt alakzatokat a [Draw Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) **drawingManager. getSource ()** függvény használatával. Különböző forgatókönyvek lehetnek, amelyekben érdemes kinyerni egy rajzolt alakzat geojson-mennyiségét, és azt máshol is használni.  
 
@@ -36,11 +36,19 @@ Az alábbiakban a teljes futó kód minta látható, ahol rajzolhat egy alakzato
 
 <br/>
 
-<iframe height="686" title="Alakzatadatok beolvasása" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>a tollat</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height="686" title="Formázott adatok lekérése" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>a tollat</a> a <a href='https://codepen.io'>CodePen</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>).
 </iframe>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+Megtudhatja, hogyan használhatja a rajzolási eszközök modul további funkcióit:
+
+> [!div class="nextstepaction"]
+> [Reagálás a rajzolási eseményekre](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Interakció típusa és billentyűparancsok](drawing-tools-interactions-keyboard-shortcuts.md)
 
 További információ a cikkben használt osztályokról és módszerekről:
 

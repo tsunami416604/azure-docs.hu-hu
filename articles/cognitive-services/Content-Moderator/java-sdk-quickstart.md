@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Content Moderator a Javához készült ügyféloldali kódtár'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan kezdheti el az Azure Cognitive Services Content Moderator Javához készült ügyféloldali kódtárat.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el az Azure Cognitive Services Content Moderator Javához készült ügyféloldali kódtárat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 53ac5c10672c433cb16d9ad326d936affe82a8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381936"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Gyors útmutató: Content Moderator a Javához készült ügyféloldali kódtár
 
@@ -103,7 +103,7 @@ A következő osztályok a Content Moderator Java SDK főbb funkcióit kezelik.
 |[Értékelés](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|Ez az osztály a felülvizsgálati API-k funkcionalitását biztosítja, beleértve a feladatok létrehozására, az egyéni munkafolyamatokra és az emberi felülvizsgálatokra vonatkozó módszereket is.|
 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült Content Moderator ügyféloldali kódtár használatával:
 
@@ -197,7 +197,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moderator Java-függvénytárat moderálási feladatok végrehajtásához. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

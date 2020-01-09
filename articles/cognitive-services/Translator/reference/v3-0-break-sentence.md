@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835884"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446702"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>API-Version</td>
+    <td>api-verzió</td>
     <td>*Szükséges lekérdezési paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`nak kell lennie.</td>
   </tr>
   <tr>
@@ -60,7 +60,7 @@ A kérelem fejlécei a következők:
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
   </tr>
   <tr>
-    <td>Content-Type</td>
+    <td>Tartalomtípus</td>
     <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json`.</td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy `Text`nevű karakterlá
 ]
 ```
 
-A következő korlátozások érvényesek:
+Az alábbi korlátozások érvényesek:
 
 * A tömb legfeljebb 100 elemet tartalmazhat.
 * Egy tömb elemének szöveges értéke nem lehet hosszabb 10 000 karakternél, beleértve a szóközöket is.
@@ -109,7 +109,7 @@ Példa JSON-válaszra:
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -118,7 +118,7 @@ Példa JSON-válaszra:
 ]
 ```
 
-## <a name="response-headers"></a>Válasz fejlécei
+## <a name="response-headers"></a>Válaszfejlécek
 
 <table width="100%">
   <th width="20%">Fejlécek</th>

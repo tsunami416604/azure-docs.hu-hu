@@ -1,5 +1,5 @@
 ---
-title: Automatizálja az Azure Application Insights folyamatait Logic Apps használatával.
+title: Az Azure Application Insights folyamatainak automatizálása Logic Apps használatával
 description: Megtudhatja, hogyan automatizálható a megismételhető folyamatok gyors automatizálásához, ha hozzáadja a Application Insights-összekötőt a logikai alkalmazáshoz.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407522"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights folyamatok automatizálása Logic Apps használatával
 
@@ -63,7 +63,7 @@ Adja meg a kapcsolatok nevét, az alkalmazás AZONOSÍTÓját és az API-kulcsot
 ![A Logic app Designer folyamatának összekapcsolási ablaka](./media/automate-with-logic-apps/7connection.png)
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. lépés: az elemzési lekérdezés és a diagram típusának megadása
-A következő példában a lekérdezés kijelöli a sikertelen kérelmeket az elmúlt napon belül, és korrelálja azokat a művelet részeként előforduló kivételekkel. Az elemzések a Műveletazonosítója azonosítója alapján korrelálják a sikertelen kérelmeket. A lekérdezés ezután az autocluster algoritmus használatával csoportosítja az eredményeket. 
+A következő példában a lekérdezés kijelöli a sikertelen kérelmeket az elmúlt napon belül, és korrelálja azokat a művelet részeként előforduló kivételekkel. Az elemzés a operation_Id azonosítója alapján korrelálja a sikertelen kérelmeket. A lekérdezés ezután az autocluster algoritmus használatával csoportosítja az eredményeket. 
 
 Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően működnek-e az Analyticsben, mielőtt hozzáadja azt a folyamathoz.
 
@@ -119,7 +119,7 @@ Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően műk�
       ![Office 365 e-mail konfigurációs képernyő](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7\. lépés: a logikai alkalmazás mentése és tesztelése
-* A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+* Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 Megvárhatja, hogy a trigger futtassa a logikai alkalmazást, vagy azonnal futtathatja a logikai alkalmazást a **Futtatás**lehetőség kiválasztásával.
 

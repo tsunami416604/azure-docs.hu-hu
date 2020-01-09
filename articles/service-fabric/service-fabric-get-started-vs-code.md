@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric VS Code Első lépések | Microsoft Docs
+title: Azure Service Fabric VS Code-Első lépések
 description: Ez a cikk áttekintést nyújt Service Fabric alkalmazások Visual Studio Code használatával történő létrehozásáról.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457860"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
 
@@ -58,26 +50,26 @@ A .NET Core/C# Development szolgáltatáshoz a következő előfeltételeket kel
 * [.Net Core](https://www.microsoft.com/net/learn/get-started) (2.0.0 vagy újabb verzió)
 * [Visual Studio Code (OmniSharp-alapú) vs Code-bővítmény C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) A szolgáltatások hibakereséséhez C# szükséges. A-t a VS Code **tevékenység sávján** található Extensions (bővítmények) ikonra kattintva telepítheti, és megkeresheti a bővítményt, vagy a vs Code piactéren is.
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
 1. Nyissa meg a VS Code-ot.
 2. Kattintson a VS Code bal oldalán található **Activity sávban** a bővítmények ikonra. Keressen rá a "Service Fabric" kifejezésre. Kattintson a **telepítés** elemre a Service Fabric Reliable Services bővítményhez.
 
 ## <a name="commands"></a>Parancsok
-A VS Code Service Fabric Reliable Services bővítménye számos parancsot biztosít a fejlesztők számára Service Fabric projektek létrehozásához és üzembe helyezéséhez. A parancsok a parancssorból való meghívásához nyomja `(Ctrl + Shift + p)`le a parancsot, írja be a parancs nevét a bemeneti sávra, majd válassza ki a kívánt parancsot a prompt listából. 
+A VS Code Service Fabric Reliable Services bővítménye számos parancsot biztosít a fejlesztők számára Service Fabric projektek létrehozásához és üzembe helyezéséhez. A **parancssorból** hívhat parancsokat a `(Ctrl + Shift + p)`megnyomásával, beírhatja a parancs nevét a bemeneti sávra, majd a kívánt parancsot kiválaszthatja a prompt listából. 
 
-* Service Fabric: Alkalmazás létrehozása 
-* Service Fabric: Alkalmazás közzététele 
-* Service Fabric: Alkalmazás üzembe helyezése 
-* Service Fabric: Alkalmazás eltávolítása  
-* Service Fabric: Alkalmazás összeállítása 
-* Service Fabric: Alkalmazás tisztítása 
+* Service Fabric: alkalmazás létrehozása 
+* Service Fabric: alkalmazás közzététele 
+* Service Fabric: alkalmazás üzembe helyezése 
+* Service Fabric: alkalmazás eltávolítása  
+* Service Fabric: alkalmazás összeállítása 
+* Service Fabric: tiszta alkalmazás 
 
-### <a name="service-fabric-create-application"></a>Service Fabric: Alkalmazás létrehozása
+### <a name="service-fabric-create-application"></a>Service Fabric: alkalmazás létrehozása
 
-A **Service Fabric: Az alkalmazás** létrehozása parancs létrehoz egy új Service Fabric alkalmazást az aktuális munkaterületen. Attól függően, hogy mely Yeoman-generátorok vannak telepítve a fejlesztői gépen, többféle Service Fabric alkalmazást hozhat létre, beleértve a Java- C#, a tároló-és a vendég-projekteket is. 
+A **Service Fabric: Create Application** parancs létrehoz egy új Service Fabric alkalmazást az aktuális munkaterületen. Attól függően, hogy mely Yeoman-generátorok vannak telepítve a fejlesztői gépen, többféle Service Fabric alkalmazást hozhat létre, beleértve a Java- C#, a tároló-és a vendég-projekteket is. 
 
-1.  Válassza ki **a Service Fabric: Szolgáltatás** hozzáadása parancs
+1.  Válassza ki a **Service Fabric: szolgáltatás hozzáadása** parancsot
 2.  Válassza ki az új Service Fabric alkalmazás típusát. 
 3.  Adja meg a létrehozni kívánt alkalmazás nevét
 3.  Válassza ki a Service Fabric alkalmazáshoz hozzáadni kívánt szolgáltatás típusát. 
@@ -85,54 +77,54 @@ A **Service Fabric: Az alkalmazás** létrehozása parancs létrehoz egy új Ser
 5.  Az új Service Fabric alkalmazás megjelenik a munkaterületen.
 6.  Nyissa meg az új alkalmazás mappáját, hogy az a munkaterület legfelső mappájába kerüljön. Innen továbbra is végrehajthat parancsokat.
 
-### <a name="service-fabric-add-service"></a>Service Fabric: Szolgáltatás hozzáadása
-A **Service Fabric: A szolgáltatás** hozzáadása parancs új szolgáltatást ad hozzá egy meglévő Service Fabric alkalmazáshoz. A szolgáltatáshoz hozzáadni kívánt alkalmazásnak a munkaterület gyökérkönyvtárának kell lennie. 
+### <a name="service-fabric-add-service"></a>Service Fabric: szolgáltatás hozzáadása
+A **Service Fabric: Add Service** parancs új szolgáltatást ad hozzá egy meglévő Service Fabric alkalmazáshoz. A szolgáltatáshoz hozzáadni kívánt alkalmazásnak a munkaterület gyökérkönyvtárának kell lennie. 
 
-1.  Válassza ki **a Service Fabric: Adja hozzá** a Service parancsot.
+1.  Válassza ki a **Service Fabric: Add Service** parancsot.
 2.  Válassza ki a jelenlegi Service Fabric alkalmazás típusát. 
 3.  Válassza ki a Service Fabric alkalmazáshoz hozzáadni kívánt szolgáltatás típusát. 
 4.  A szolgáltatás nevének megadásához kövesse az utasításokat. 
 5.  Az új szolgáltatás megjelenik a projekt címtárában. 
 
-### <a name="service-fabric-publish-application"></a>Service Fabric: Alkalmazás közzététele
-A **Service Fabric: Az alkalmazás** közzététele parancs üzembe helyezi a Service Fabric alkalmazást egy távoli fürtön. A célként megadott fürt biztonságos vagy nem biztonságos fürt lehet. Ha a paraméterek nincsenek beállítva a Cloud. JSON fájlban, az alkalmazás a helyi fürtre lesz telepítve.
+### <a name="service-fabric-publish-application"></a>Service Fabric: alkalmazás közzététele
+A **Service Fabric: Application publish** parancs üzembe helyezi a Service Fabric alkalmazást egy távoli fürtön. A célként megadott fürt biztonságos vagy nem biztonságos fürt lehet. Ha a paraméterek nincsenek beállítva a Cloud. JSON fájlban, az alkalmazás a helyi fürtre lesz telepítve.
 
 1.  Az alkalmazás első felépítésekor a rendszer létrehoz egy Cloud. JSON fájlt a projekt könyvtárában.
 2.  Adja meg annak a fürtnek az értékeit, amelyhez csatlakozni szeretne a Cloud. JSON fájlban.
-3.  Válassza ki **a Service Fabric: Alkalmazás** közzététele parancs.
+3.  Válassza ki a **Service Fabric: Application publish (alkalmazás közzététele** ) parancsot.
 4.  Service Fabric Explorer megtekintheti a célként megadott fürtöt, és ellenőrizheti, hogy az alkalmazás telepítve van-e. 
 
-### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric: Alkalmazás üzembe helyezése (localhost)
-A **Service Fabric: Az alkalmazás** telepítése parancs üzembe helyezi a Service Fabric alkalmazást a helyi fürtön. A parancs használata előtt győződjön meg arról, hogy a helyi fürt fut. 
+### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric: alkalmazás üzembe helyezése (localhost)
+A **Service Fabric: alkalmazás telepítése** parancs üzembe helyezi a Service Fabric alkalmazást a helyi fürtön. A parancs használata előtt győződjön meg arról, hogy a helyi fürt fut. 
 
-1. Válassza ki **a Service Fabric: Alkalmazás** üzembe helyezése parancs
-2. A helyi fürtöt Service Fabric Explorer (http:\//localhost: 19080/Explorer) megtekintve ellenőrizheti, hogy telepítve van-e az alkalmazás. Ez eltarthat egy ideig, így türelmesnek kell lennie.
-3. A Service Fabric is használhatja **: Egy helyi** fürtre történő központi telepítéshez a Cloud. JSON fájlban beállított paraméterek nélkül tegye közzé az Application parancsot.
+1. Válassza ki a **Service Fabric: alkalmazás telepítése** parancs
+2. Tekintse meg a helyi fürtöt Service Fabric Explorer (http:\//localhost: 19080/Explorer) annak ellenőrzéséhez, hogy az alkalmazás telepítve van-e. Ez eltarthat egy ideig, így türelmesnek kell lennie.
+3. A helyi fürtre történő központi telepítéshez a Cloud. JSON fájlban található paraméterek nélkül is használhatja a **Service Fabric: Application publish (alkalmazás közzététele** ) parancsot.
 
 > [!NOTE]
 > A Java-alkalmazások helyi fürtön történő üzembe helyezése Windows rendszerű gépeken nem támogatott.
 
-### <a name="service-fabric-remove-application"></a>Service Fabric: Alkalmazás eltávolítása
-A **Service Fabric: Az alkalmazás** eltávolítása parancs eltávolít egy Service Fabric alkalmazást a fürtből, amelyet korábban a vs Code bővítmény használatára telepített. 
+### <a name="service-fabric-remove-application"></a>Service Fabric: alkalmazás eltávolítása
+A **Service Fabric: Remove Application** parancs eltávolít egy Service Fabric alkalmazást a fürtből, amelyet korábban a vs Code bővítmény használatára telepített. 
 
-1.  Válassza ki **a Service Fabric: Alkalmazás** eltávolítása parancs.
+1.  Válassza ki a **Service Fabric: alkalmazás eltávolítása** parancsot.
 2.  Tekintse meg a fürtöt a Service Fabric Explorer segítségével annak ellenőrzéséhez, hogy az alkalmazás el lett-e távolítva. Ez eltarthat egy ideig, így türelmesnek kell lennie.
 
-### <a name="service-fabric-build-application"></a>Service Fabric: Alkalmazás összeállítása
-A **Service Fabric: Az alkalmazás** létrehozása parancs Java-vagy Service Fabric C# -alkalmazásokat hozhat létre. 
+### <a name="service-fabric-build-application"></a>Service Fabric: alkalmazás összeállítása
+A **Service Fabric: build Application** parancs Java-vagy Service Fabric- C# alkalmazásokat hozhat létre. 
 
 1.  A parancs végrehajtása előtt győződjön meg arról, hogy az alkalmazás gyökérkönyvtárában van. A parancs azonosítja az alkalmazás típusát (C# vagy Java-t), és ennek megfelelően építi fel az alkalmazást.
-2.  Válassza ki **a Service Fabric: Alkalmazás** létrehozása parancs.
+2.  Válassza ki a **Service Fabric: build Application (alkalmazás létrehozása** ) parancsot.
 3.  Az összeállítási folyamat kimenete az integrált terminálba íródik.
 
-### <a name="service-fabric-clean-application"></a>Service Fabric: Alkalmazás tisztítása
-A **Service Fabric: A Clean** Application parancs törli a Build által generált összes jar-fájlt és natív kódtárat. Csak Java-alkalmazásokhoz használható. 
+### <a name="service-fabric-clean-application"></a>Service Fabric: tiszta alkalmazás
+A **Service Fabric: Clean Application** parancs törli a Build által generált összes jar-fájlt és natív kódtárat. Csak Java-alkalmazásokhoz használható. 
 
 1.  A parancs végrehajtása előtt győződjön meg arról, hogy az alkalmazás gyökérkönyvtárában van. 
-2.  Válassza ki **a Service Fabric: Az alkalmazás** tisztítása parancs.
+2.  Válassza a **Service Fabric: Clean Application (alkalmazás tisztítása** ) parancsot.
 3.  A tiszta folyamat kimenete az integrált terminálba íródik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [fejleszthet C# és kereshet Service FABRIC alkalmazásokat a vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md)használatával.
 * Ismerje meg, hogyan [fejleszthet és kereshet Java Service Fabric-alkalmazásokat a vs Code](./service-fabric-develop-java-applications-with-vs-code.md)használatával.

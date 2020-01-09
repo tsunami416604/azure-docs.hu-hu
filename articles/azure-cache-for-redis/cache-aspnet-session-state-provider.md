@@ -1,19 +1,19 @@
 ---
 title: Gyorsítótár ASP.NET munkamenet-szolgáltatója
-description: Megtudhatja, hogyan tárolhatja a ASP.NET munkamenet-állapotát az Azure cache for Redis használatával
+description: Megtudhatja, hogyan tárolhatja a memóriában tárolt ASP.NET munkamenet-állapotot az Azure cache for Redis használatával.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.author: yegu
-ms.openlocfilehash: cfcad48060a3cf33da80c09c3900ce4322b947da
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5c9af862ca2df3d812384c0f4ab660730aece872
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433561"
 ---
-# <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-munkamenet-szolgáltató az Azure cache-hez a Redis
+# <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
 
 A Redis készült Azure cache olyan munkamenet-szolgáltatót biztosít, amellyel a memóriában tárolt munkamenet-állapotot SQL Server-adatbázis helyett az Azure cache használatával tárolhatja a Redis. A gyorsítótárazási munkamenet-állapot szolgáltatójának használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET-alkalmazást a gyorsítótárhoz az Azure cache használatával a Redis munkamenet-állapot NuGet csomagjához.
 
@@ -126,6 +126,6 @@ A lépések végrehajtása után az alkalmazás úgy van konfigurálva, hogy az 
 
 A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos további információkért lásd: [Webfejlesztés – ajánlott eljárások (valós felhőalapú alkalmazások készítése az Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)-ban).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [Azure Cache ASP.NET kimeneti gyorsítótár-szolgáltatóját a Redis](cache-aspnet-output-cache-provider.md).

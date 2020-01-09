@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438616"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
 A Microsoft Azure Data Box hibrid megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi adatot az Azure-ba egy átviteli eszköz segítségével. A gyakori kérdések a Data Box Azure Portalon történő használatával kapcsolatban esetlegesen felmerülő kérdésekre adnak választ. 
 
@@ -24,7 +24,7 @@ A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosított
 - Tudnivalók a szolgáltatásról
 - Eszköz rendelése
 - Konfigurálás és csatlakoztatás 
-- Állapotkövetés
+- Állapot nyomon követése
 - Adatok másolása 
 - Eszköz kiszállítása
 - Adatok ellenőrzése és feltöltése 
@@ -89,7 +89,7 @@ A. Lehetősége van klónozni az előző megrendelését. A klónozással létre
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>K. Hogyan oldhatom fel a Data Box zárolását? 
-A.  Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Eszköz részleteit**. Másolja ki a zárolásfeloldási jelszót. Jelentkezzen be ezzel a jelszóval a Data Box helyi webes felhasználói felületére. További információkért keresse fel az [oktatóanyagot: Csomagolja ki, csatlakoztassa a Azure Data Box](data-box-deploy-set-up.md).
+A.  Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Eszköz részleteit**. Másolja ki a zárolásfeloldási jelszót. Jelentkezzen be ezzel a jelszóval a Data Box helyi webes felhasználói felületére. További információt [az Azure Data Box kicsomagolását, illetve a kábelek és az eszköz csatlakoztatását](data-box-deploy-set-up.md) ismertető oktatóanyagban talál.
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>K. Használhatok linuxos gazdaszámítógépet a Data Box csatlakoztatásához és az adatok másolásához?
 A.  Igen. A Data Box-eszközökkel SMB- és NFS-ügyfelekhez is csatlakozhat. További információkért tekintse meg a gazdaszámítógépre vonatkozó [Támogatott operációs rendszerek](data-box-system-requirements.md) listáját.
@@ -98,10 +98,10 @@ A.  Igen. A Data Box-eszközökkel SMB- és NFS-ügyfelekhez is csatlakozhat. To
 A.  A rendelést csak annak feladását követően, de még a feldolgozását megelőzően vonhatja vissza. Ha a Data Box-megrendelés feldolgozása már megtörtént, nem mondhatja le a rendelést. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>K. Csatlakoztathatok egy Data Boxot egyszerre több gazdaszámítógéphez adatátvitel céljából?
-A. Igen. Egy Data Boxhoz egyszerre több gazdaszámítógép is csatlakoztatható, és párhuzamosan több másolási feladat is futtatható. További információkért keresse fel az [oktatóanyagot: Adatmásolás Azure Data Boxba](data-box-deploy-copy-data.md).
+A. Igen. Egy Data Boxhoz egyszerre több gazdaszámítógép is csatlakoztatható, és párhuzamosan több másolási feladat is futtatható. További információt [az adatok az Azure Data Boxra történő másolását](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>K. Csatlakozhatok a Data Box 10 GbE felületéhez is az adatok átviteléhez?
-A. Igen. A GbE interfészek is csatlakoztathatók a Data Box az Adatmásolás közben. Az adatok másolásával kapcsolatos további információkért nyissa meg az [oktatóanyagot: Adatmásolás Azure Data Boxba](data-box-deploy-copy-data.md).
+A. Igen. A GbE interfészek is csatlakoztathatók a Data Box az Adatmásolás közben. Az adatok másolásával kapcsolatos további információkért nyissa meg az [oktatóanyag: adatok másolása Azure Data Boxre](data-box-deploy-copy-data.md)című témakört.
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -124,7 +124,7 @@ A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Porta
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>K. Támogatott-e a Data Box a port csatorna konfigurációja? Az MPIO ismertetése
 A. A port Channel-konfiguráció, a többutas i/o (MPIO) konfigurációja vagy a vLAN-konfiguráció nem támogatott Data Boxon.
 
-## <a name="track-status"></a>Állapotkövetés
+## <a name="track-status"></a>Állapot nyomon követése
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>K. Hogyan tudom nyomon követni a Data Boxot a megrendelésem feladásától kezdve egészen az eszköz visszaküldéséig? 
 A.  A Data Box-megrendelésének állapotát az Azure Portalon követheti nyomon. A megrendelés létrehozásakor a rendszer egy értesítési e-mail-cím megadását is kéri. Ha adott meg ilyen e-mail-címet, akkor a megrendelés állapotváltozásairól e-mailben is értesíteni fogjuk. További információ az [Értesítési e-mailek beállítása](data-box-portal-ui-admin.md#edit-notification-details) témában.
@@ -135,13 +135,13 @@ A.  A Microsoft megjelenít egy fuvarlevélcímkét az E-ink-megjelenítőn. Ha 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>K. Kaptam egy e-mail-értesítést, hogy az eszközöm elért az Azure-adatközpontba. Hogyan deríthetem ki, hogy az adatok felöltése folyamatban van-e?
 A. Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Áttekintést**. Ha az adatok feltöltése már megkezdődött, a jobb oldali panelen látható a másolás folyamatának előrehaladása. 
 
-## <a name="migrate-data"></a>Adatok migrálása
+## <a name="migrate-data"></a>Adatok áttelepítése
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>K. Legfeljebb mekkora mennyiségű adat esetén használható a Data Box?  
 A.  A Data Box hasznos tárolókapacitása 80 TB. Egyetlen Data Box-eszközön 40 TB és 80 TB közti mennyiségű adatot tárolhat. Akár 500 TB-ig nagyobb adatméretek esetén több Data Box eszközt is rendelhet. Az 500 TB-ot meghaladó adatmennyiségek esetén regisztráljon a Data Box Heavy szolgáltatásba.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>K. Mekkora a Data Box-eszközökön támogatott legnagyobb blokkblob és lapblob mérete? 
-A.  A legnagyobb méreteket az Azure Storage tárhelykorlátai határozzák meg. A legnagyobb blokkblob mérete körülbelül 4,768 TiB, a legnagyobb lapblob mérete pedig 8 TiB. További információkért lásd: [Azure Storage Scalability and Performance Targets](../storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai). 
+A.  A legnagyobb méreteket az Azure Storage tárhelykorlátai határozzák meg. A legnagyobb blokkblob mérete körülbelül 4,768 TiB, a legnagyobb lapblob mérete pedig 8 TiB. További információkért lásd [a blob Storage skálázhatósági és teljesítménybeli céljait](../storage/blobs/scalability-targets.md)ismertető témakört.
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>K. Honnan tudhatom, hogy az átvitel során az adataim biztonságban vannak? 
 A. Több biztonsági funkció is gondoskodik a Data Box biztonságáról az átvitel során. Ezek közé tartozik az illetéktelen hozzáférést megakadályozó burkolat, az illetéktelen hardver- vagy szoftverhozzáférést észlelő megoldások, vagy az eszköz zárolásának feloldására szolgáló jelszó. További információt [az Azure Data Box biztonsági és adatvédelmi szolgáltatásait](data-box-security.md) ismertető cikkben talál.
@@ -151,12 +151,12 @@ A.  Ha SMB-ügyfelet használ, az adatokat egy SMB-másolóeszköz, például a 
 
 Ha NFS-ügyfelet használ, akkor az [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy [Ultracopier](https://ultracopier.first-world.info/) alkalmazást használhatja. 
 
-További információkért keresse fel az [oktatóanyagot: Adatmásolás Azure Data Boxba](data-box-deploy-copy-data.md).
+További információt [az adatok az Azure Data Boxra történő másolását](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancs használatáról [további információt a következő oktatóanyagban olvashat: Adatok másolása az Azure Data Boxra, majd ellenőrzése](data-box-deploy-copy-data.md) lépéseit.
+- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A konkrét parancsokkal kapcsolatban további információt [az adatok az Azure Data Boxra másolását és ellenőrzését](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyhez a Data Boxot csatlakoztatja.
 - Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
@@ -264,7 +264,7 @@ A.  A futárcégek nyomkövetési naplóit a Data Box rendelési előzményei ta
 A.  Nem. Az Azure-adatközpont jelenleg nem fogadja el a Data Box az ügyfelektől vagy a UPS-től eltérő szállítóktól.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

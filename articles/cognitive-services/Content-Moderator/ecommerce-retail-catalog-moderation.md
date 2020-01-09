@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: mérsékelt e-kereskedelmi termék lemezképei – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Beállíthat egy alkalmazást, amellyel elemezheti és osztályozhatja a termék lemezképeit a megadott címkékkel (az Azure Computer Vision és Custom Vision használatával). A kifogásolt képek címkézése további felülvizsgálatra kerül (az Azure Content Moderator használatával).
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy alkalmazást a termékek rendszerképeinek a megadott címkékkel való elemzéséhez és besorolásához (az Azure Computer Vision és Custom Vision használatával). A kifogásolt képek címkézése további felülvizsgálatra kerül (az Azure Content Moderator használatával).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382157"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: az e-kereskedelmi termékkel foglalkozó közepesen súlyos rendszerképek az Azure Content Moderator
 

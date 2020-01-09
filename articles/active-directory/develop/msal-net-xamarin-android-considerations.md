@@ -3,7 +3,7 @@ title: Xamarin Android-megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat.
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424153"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus megfontolások a MSAL.NET
 Ez a cikk a Xamarin Android és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatára vonatkozó szempontokat ismerteti.
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 Ezt a PublicClientApplication szintjén (MSAL 4.2 +) is beállíthatja egy visszahívás használatával.
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 Javasoljuk, hogy a CurrentActivityPlugin használja [itt](https://github.com/jamesmontemagno/CurrentActivityPlugin).  Ezt követően a PublicClientApplication Builder-kód így fog kinézni:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -83,6 +83,23 @@ A `AndroidManifest.xml`nak a következő értékeket kell tartalmaznia:
 </activity>
 ```
 
+Vagy [a tevékenység a kódban is létrehozható](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) , és nem lehet kézzel szerkeszteni `AndroidManifest.xml`. Ehhez létre kell hoznia egy olyan osztályt, amely a `Activity` és a `IntentFilter` attribútummal rendelkezik. A fenti XML-hez hasonló értékeket képviselő osztály a következő lesz:
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X jegyzékfájl
+
+A XamarinForms 4.3. x által generált kód a `package` attribútumot állítja be `com.companyname.{appName}`ra a `AndroidManifest.xml`. Előfordulhat, hogy az értéket a `MainActivity.cs` névterével megegyezőre szeretné módosítani, ha a `DataScheme`t `msal{client_id}`ként használja.
+
 ## <a name="use-the-embedded-web-view-optional"></a>A beágyazott webes nézet használata (nem kötelező)
 
 Alapértelmezés szerint a MSAL.NET a rendszerböngészőt használja, amely lehetővé teszi az egyszeri bejelentkezést a webalkalmazásokkal és más alkalmazásokkal. Bizonyos ritkán előforduló esetekben érdemes megadnia, hogy a beágyazott webes nézetet kívánja használni. További információ: [a MSAL.net webböngészőt](msal-net-web-browsers.md) és [Android rendszerű böngészőt](msal-net-system-browser-android-considerations.md)használ.
@@ -96,7 +113,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 Ha létrehoz egy új Xamarin. Forms alkalmazást, és felvesz egy hivatkozást a MSAL.Net NuGet-csomagra, akkor ez csak működni fog.
 Ha azonban egy meglévő Xamarin. Forms alkalmazást szeretne frissíteni a MSAL.NET Preview 1.1.2 vagy újabb verziójára, előfordulhat, hogy felmerülő problémák merülhetnek fel.
 

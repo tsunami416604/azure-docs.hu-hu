@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381987"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. Először hozza létre az alkalmazás, a **szándékok**és az **entitások**alapvető részeit. Ezt követően tesztelheti az alkalmazást úgy, hogy az interaktív tesztelési panelen megadta a minta felhasználótól az előre jelzett szándékot.
 
@@ -35,10 +33,10 @@ Az alkalmazások létrehozása ingyenes, és nem igényel Azure-előfizetést. H
 
 1. Az előugró ablakban konfigurálja az alkalmazást a következő beállításokkal, majd válassza a **kész**lehetőséget.
 
-   |Beállítás neve| Érték | Cél|
+   |Beállítás neve| Value (Díj) | Rendeltetés|
    |--|--|--|
-   |Name (Név)|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>szükséges|
-   |Kulturális környezet|**angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>szükséges|
+   |Név|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
+   |Kulturális környezet|**angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>kötelező|
    |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
    |Előrejelzési erőforrás (nem kötelező) |-  |Ne válassza a lehetőséget. A LUIS egy alapszintű kulcsot biztosít a szerzői műveletek és a 1 000-es előrejelzési végpontokra vonatkozó kérések használatához. |
 
@@ -66,7 +64,7 @@ A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
 1. Adja meg a leképezés nevét, `FindForm`, majd válassza a **kész**lehetőséget.
 
-## <a name="add-an-example-utterance"></a>Adjon hozzá egy példa utterance (kifejezés)
+## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
 
 A leképezések létrehozása után példaként adja hozzá a hosszúságú kimondott szöveg. Például a hosszúságú kimondott szöveg olyan szöveg, amelyet a felhasználó egy csevegési robotba vagy más ügyfélalkalmazásba ír. A felhasználó szövegének szándékát egy LUIS-szándékra képezik le.
 

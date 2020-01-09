@@ -3,12 +3,12 @@ title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehoz�
 description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-beli virtuális gépet hoz létre Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f34c5dd8cfdc94775b9bd9a896b4cfbe4154ecf8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449910"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -48,8 +48,22 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](htt
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-during-vm-creation/daily-policy.png)
 
-> [!NOTE]
-> Azure Backup a szolgáltatás egy külön erőforráscsoportot (a virtuálisgép-erőforráscsoport kivételével) hoz létre a pillanatkép tárolásához, a névadási formátum **AzureBackupRG_geography_number** (például: AzureBackupRG_northeurope_1). Az ebben az erőforráscsoportban található adatok az Azure-beli virtuális gép biztonsági mentési szabályzatának az *azonnali helyreállítási pillanatkép megtartása* szakaszában megadott időtartam alatt lesznek tárolva.  Az erőforráscsoport zárolásának alkalmazása biztonsági mentési hibákhoz vezethet. <br> Ezt az erőforráscsoportot ki kell zárni bármely név/címke korlátozásból, mivel a korlátozási szabályzat letilthatja az erőforrás-pont gyűjtemények létrehozását a biztonsági mentési hibák miatt.
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines Azure Backup erőforráscsoport
+
+A Backup szolgáltatás egy külön erőforráscsoportot (RG) hoz létre, amely eltér a virtuális gép erőforráscsoporthoz, amely a visszaállítási pontok gyűjteményét (RPC) tárolja. Az RPC a felügyelt virtuális gépek azonnali helyreállítási pontjait üzemelteti. A Backup szolgáltatás által létrehozott erőforráscsoport alapértelmezett elnevezési formátuma a: `AzureBackupRG_<Geo>_<number>`. Például: *AzureBackupRG_northeurope_1*. Most testreszabhatja Azure Backup által létrehozott erőforráscsoport-nevet.
+
+Megjegyzés:
+
+1. Használhatja a RG alapértelmezett nevét, vagy szerkesztheti a vállalati követelmények szerint.
+2. Adja meg a RG neve mintát bemenetként a virtuális gép biztonsági mentési szabályzatának létrehozásakor. A RG nevének a következő formátumúnak kell lennie: `<alpha-numeric string>* n <alpha-numeric string>`. az "n" kifejezés egy egész számmal (1-től kezdődően) van lecserélve, és az első RG megtelte esetén felskálázásra szolgál. Egy RG jelenleg legfeljebb 600 távoli eljáráshívások lehet.
+              ![válassza a név lehetőséget a házirend létrehozásakor](./media/backup-during-vm-creation/create-policy.png)
+3. A mintában az alábbi RG-elnevezési szabályoknak kell szerepelnie, és a teljes hossz nem haladhatja meg a maximálisan megengedett RG-név hosszát.
+    1. Az erőforráscsoportok nevei csak alfanumerikus karaktereket, pontokat, aláhúzást, kötőjelet és zárójelet tartalmazhatnak. Nem végződhet ponttal.
+    2. Az erőforráscsoportok nevei legfeljebb 74 karaktert tartalmazhatnak, beleértve a RG nevét és az utótagot is.
+4. Az első `<alpha-numeric-string>` kötelező, míg a második az "n" után nem kötelező. Ez csak akkor érvényes, ha a testreszabott nevet adja meg. Ha nem ad meg semmit a szövegmezők egyikében sem, a rendszer az alapértelmezett nevet használja.
+5. A RG nevét szerkesztheti a szabályzat módosításával, ha szükséges. Ha a név minta módosul, a rendszer az új RPs-t hozza létre az új RG-ban. A régi RPs azonban továbbra is a régi RG-ban marad, és nem helyezhető át, mivel az RP-gyűjtemény nem támogatja az erőforrás-áthelyezést. Végül az RPs a pontok lejárata után begyűjti a szemetet.
+a házirend módosításakor ![a név módosítása](./media/backup-during-vm-creation/modify-policy.png)
+6. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Biztonsági mentés indítása a virtuális gép létrehozása után
 

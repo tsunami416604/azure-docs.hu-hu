@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671962"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666183"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -21,7 +21,11 @@ Ez a témakör azt ismerteti, hogyan konfigurálható a webalkalmazások, a mobi
 
 App Service az Alkalmazásbeállítások a környezeti változókként átadott változók az alkalmazás kódjába. A Linux-alkalmazások és az egyéni tárolók esetében App Service az alkalmazás beállításait a tárolóban lévő környezeti változó beállításához a `--env` jelző használatával adja át.
 
-A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás bal oldali menüjében kattintson a **konfiguráció** > **Alkalmazásbeállítások**elemre.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. 
+
+![App Services keresése](./media/configure-common/search-for-app-services.png)
+
+Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **Alkalmazásbeállítások**elemet.
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
@@ -82,7 +86,7 @@ Az Alkalmazásbeállítások a következő JSON-formátummal rendelkeznek:
 
 ## <a name="configure-connection-strings"></a>Csatlakozási sztringek konfigurálása
 
-A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás bal oldali menüjében kattintson a **konfiguráció** > **Alkalmazásbeállítások**elemre.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **Alkalmazásbeállítások**elemet.
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
@@ -153,7 +157,7 @@ A kapcsolatok sztringje a következő JSON-formátummal rendelkezik:
 
 ## <a name="configure-general-settings"></a>Általános beállítások konfigurálása
 
-A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás bal oldali menüjében kattintson a **konfiguráció** > **Alkalmazásbeállítások**elemre.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **általános beállítások**elemet.
 
 ![Általános beállítások](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beá
 
 Ez a beállítás csak Windows-alkalmazásokhoz használható.
 
-A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás bal oldali menüjében kattintson a **konfiguráció** > **alapértelmezett dokumentumok**elemre.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **alapértelmezett dokumentumok**elemet.
 
-![Általános beállítások](./media/configure-common/open-documents.png)
+![Alapértelmezett dokumentumok](./media/configure-common/open-documents.png)
 
 Az alapértelmezett dokumentum a webhely gyökerének URL-címében megjelenő weblap. A rendszer a lista első megfelelő fájlját használja. Új alapértelmezett dokumentum hozzáadásához kattintson az **új dokumentum**elemre. Ne felejtse el a **Mentés**gombra kattintani.
 
@@ -186,9 +190,9 @@ Ha az alkalmazás olyan modulokat használ, amelyek az URL-cím alapján statiku
 
 ## <a name="configure-path-mappings"></a>Elérésiút-megfeleltetések konfigurálása
 
-A [Azure Portal]navigáljon az alkalmazás felügyeleti lapjára. Az alkalmazás bal oldali menüjében kattintson a **konfiguráció** > **útvonal-hozzárendelések**elemre.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **útvonal-hozzárendelések**lehetőséget.
 
-![Általános beállítások](./media/configure-common/open-path.png)
+![Elérésiút-hozzárendelések](./media/configure-common/open-path.png)
 
 Az **elérési út leképezése** lapon az operációs rendszer típusa alapján különböző dolgok láthatók.
 

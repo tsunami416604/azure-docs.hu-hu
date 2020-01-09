@@ -1,25 +1,16 @@
 ---
-title: Igény szerinti biztonsági mentés az Azure Service Fabricban | Microsoft Docs
+title: Igény szerinti biztonsági mentés az Azure Service Fabric
 description: Használja a Service Fabric biztonsági mentési és visszaállítási funkcióját az alkalmazásadatok igény szerinti biztonsági mentéséhez.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 88698a7a0f78987dc96bf7f39831ec1a7560a359
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458416"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Igény szerinti biztonsági mentés az Azure Service Fabric
 
@@ -190,7 +181,7 @@ Az igény szerinti biztonsági mentési kérelmek a következő állapotokban le
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [BackupRestore REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

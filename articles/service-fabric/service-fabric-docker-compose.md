@@ -1,29 +1,18 @@
 ---
 title: Azure Service Fabric Docker-összeállítás – előzetes verzió
 description: Az Azure Service Fabric a Docker-összeállítás formátumát, így megkönnyíti a meglévő tárolók összehangolása Service Fabric használatával. Ez a támogatás jelenleg előzetes verzióban érhető el.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6dd45e81a0db06cbaa75da3f94b9e7624b0acd69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458049"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-összeállítás támogatása az Azure Service Fabric (előzetes verzió)
 
-A Docker a [Docker-compose. YML](https://docs.docker.com/compose) fájlt használja több tárolós alkalmazások definiálásához. Annak érdekében, hogy az ügyfelek könnyen megismerjék a Docker-t, hogy az Azure-Service Fabric meglévő tároló-alkalmazásaikat hangolják össze, a platformon natív módon elérhetővé tettük a Docker-összeállítás üzembe helyezésének előzetes támogatását. A Service Fabric a `docker-compose.yml` fájlokhoz tartozó 3. és újabb verziókat is elfogadhatja. 
+A Docker a [Docker-compose. YML](https://docs.docker.com/compose) fájlt használja több tárolós alkalmazások definiálásához. Annak érdekében, hogy az ügyfelek könnyen megismerjék a Docker-t, hogy az Azure-Service Fabric meglévő tároló-alkalmazásaikat hangolják össze, a platformon natív módon elérhetővé tettük a Docker-összeállítás üzembe helyezésének előzetes támogatását. A Service Fabric a `docker-compose.yml` fájlok 3. vagy újabb verzióját is elfogadhatja. 
 
 Mivel ez a támogatás előzetes verzióban érhető el, csak az összeállítási irányelvek egy részhalmaza támogatott.
 
@@ -35,7 +24,7 @@ Az előzetes verzió használatához hozza létre a 5,7-es vagy újabb verziój�
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Docker-összeállítási fájl üzembe helyezése Service Fabric
 
-A következő parancsok létrehoznak egy Service Fabric alkalmazást (`fabric:/TestContainerApp` nevű), amelyet a többi Service Fabric alkalmazáshoz hasonlóan figyelheti és kezelheti. Használhatja a megadott alkalmazásnév állapot-lekérdezéseket.
+A következő parancsok létrehoznak egy Service Fabric alkalmazást (`fabric:/TestContainerApp`nevű), amelyet a többi Service Fabric alkalmazáshoz hasonlóan figyelheti és kezelheti. Használhatja a megadott alkalmazásnév állapot-lekérdezéseket.
 Service Fabric felismeri a "DeploymentName" kifejezést az összeállítási telepítés azonosítójaként.
 
 ### <a name="use-powershell"></a>A PowerShell használata
@@ -46,7 +35,7 @@ Hozzon létre egy Service Fabric összeállítási telepítést egy Docker-compo
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` és `RegistryPassword` a tároló beállításjegyzékének felhasználónevét és jelszavát olvassa. Az üzembe helyezés befejezése után a következő paranccsal ellenőrizhető az állapota:
+`RegistryUserName` és `RegistryPassword` tekintse meg a tároló beállításjegyzékének felhasználónevét és jelszavát. Az üzembe helyezés befejezése után a következő paranccsal ellenőrizhető az állapota:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp

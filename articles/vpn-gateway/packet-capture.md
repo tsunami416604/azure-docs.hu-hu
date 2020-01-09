@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353517"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>A csomagok rögzítésének konfigurálása a VPN-átjárók számára
 
@@ -24,11 +24,13 @@ Vannak általánosan elérhető eszközök a csomagok rögzítéséhez. Ha azonb
 
 A VPN Gateway-csomagok rögzítése az ügyfél igényeitől függően az átjárón vagy egy adott kapcsolaton is futtatható. A csomagok rögzítését egyszerre több alagúton is futtathatja. A VPN-átjárón való szűrés mellett egyetlen vagy kétirányú forgalmat, IKE-és ESP-forgalmat, valamint belső csomagokat is rögzíthet.
 
-Az 5 rekordok-szűrő (forrás alhálózat, célként használt alhálózat, forrásport, célport, protokoll) és a TCP-jelzők (SYN, ACK, FIN, URG, PSH, első) használata hasznos lehet a nagy mennyiségű forgalom problémáinak elkülönítéséhez.
+Az 5 rekordok szűrő (forrásoldali alhálózat, célként használt alhálózat, forrásport, célport, protokoll) és a TCP-jelzők (SYN, ACK, FIN, URG, PSH, első) használata hasznos lehet a nagy mennyiségű forgalom problémáinak elkülönítéséhez.
+
+A csomagok rögzítésének futtatásakor csak egy lehetőséget használhat tulajdonságként.
 
 ## <a name="setup-packet-capture-using-powershell"></a>Csomagok rögzítésének beállítása a PowerShell használatával
 
-A csomagok rögzítésének elindításához és leállításához tekintse meg az alábbi példákat a PowerShell-parancsokhoz. A paraméterek beállításaival kapcsolatos további információkért (például szűrők létrehozásához) tekintse meg ezt a PowerShell- [dokumentumot](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+A csomagok rögzítésének elindításához és leállításához tekintse meg az alábbi példákat a PowerShell-parancsokhoz. A paraméter beállításaival kapcsolatos további információkért (például a szűrő létrehozásához) tekintse meg ezt a PowerShell- [dokumentumot](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>A csomagok rögzítésének elindítása VPN-átjáró esetén
 
@@ -36,7 +38,7 @@ A csomagok rögzítésének elindításához és leállításához tekintse meg 
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Nem kötelező paraméter **– a FilterData** a szűrők alkalmazására használható.
+Opcionális paraméter **– a FilterData** használható a szűrő alkalmazásához.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>A csomagok rögzítésének leállítása a VPN-átjárón
 
@@ -50,7 +52,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Nem kötelező paraméter **– a FilterData** a szűrők alkalmazására használható.
+Opcionális paraméter **– a FilterData** használható a szűrő alkalmazásához.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>A csomagok rögzítésének leállítása a VPN Gateway-kapcsolaton
 
@@ -62,8 +64,8 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - A csomagok rögzítésének futtatása hatással lehet a teljesítményre. Ne felejtse el leállítani a csomagok rögzítését, ha nincs rá szükség.
 - A csomagok minimális rögzítési időtartama 600 másodperc. Előfordulhat, hogy a csomagok rögzítésének rövidebb időtartama nem biztosít teljes körű adatmennyiséget, mert az elérési út több összetevője között szinkronizálja a problémákat.
-- A csomag-rögzítési adatfájlok PCAP vagy ETL formátumban jönnek létre. Előfordulhat, hogy a netmon-elemzőnek szüksége van az adatelemzésre.
+- A csomag-rögzítési adatfájlok PCAP formátumban jönnek létre. A PCAP-fájlok megnyitásához használjon Wireshark vagy más általánosan elérhető alkalmazásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a VPN Gatewayről: [about VPN Gateway](vpn-gateway-about-vpngateways.md)

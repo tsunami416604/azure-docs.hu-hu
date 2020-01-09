@@ -2,19 +2,15 @@
 title: Dinamikus csoportok használata az Azure Update Management
 description: Ez a cikk azt ismerteti, hogyan működnek a dinamikus csoportok a Azure Automation Update Managementokkal.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 022c2061febb54666acee1cfed4ec595421660a3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 678b3f361e4456a2c482896f7d7dc20d530b917b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420403"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dinamikus csoportok használata az Update Managementtel
 
@@ -24,9 +20,9 @@ A Update Management lehetővé teszi az Azure-beli vagy nem Azure-beli virtuáli
 
 Ezeket a csoportokat egy lekérdezés határozza meg, amikor a frissítés központi telepítése megkezdődik, a rendszer kiértékeli a csoport tagjait. A dinamikus csoportok nem működnek a klasszikus virtuális gépekkel. A lekérdezés meghatározásakor a következő elemek használhatók együtt a dinamikus csoport feltöltéséhez:
 
-* Előfizetést
+* Előfizetés
 * Erőforráscsoportok
-* Helyek
+* Földrajzi egységek
 * Címkék
 
 ![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)

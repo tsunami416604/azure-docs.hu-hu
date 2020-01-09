@@ -1,6 +1,6 @@
 ---
-title: Adaptív alkalmazásvezérlők az Azure Security Centerben | Microsoft Docs
-description: Ebből a dokumentumból megismerheti, hogyan használható az adaptív alkalmazásvezérlés az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez.
+title: Adaptív alkalmazásvezérlők az Azure Security Centerben
+description: Ez a dokumentum segít az adaptív alkalmazások vezérlésének használatában a Azure Security Center az Azure-gépeken futó alkalmazások engedélyezési listájának használatához.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2019
+ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 46ab2fc5c796d960de8b1c5e3391a6356563b50a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202814"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353446"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben
+# <a name="adaptive-application-controls"></a>Adaptív alkalmazásvezérlés
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Mire szolgálnak a Security Center adaptív alkalmazásvezérlői?
-Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű megoldás a Azure Security Center, amely segítségével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban és a nem Azure-beli virtuális gépeken (Windows és Linux). Más előnyök mellett ez segít megerősíteni a virtuális gépeket a kártevők ellen. Security Center a gépi tanulás használatával elemzi a virtuális gépeken futó alkalmazásokat, és létrehoz egy engedélyezési listát ebből az intelligenciával. Ez a funkció nagy mértékben leegyszerűsíti az alkalmazások engedélyezési listájának szabályzatának konfigurálását és karbantartását, így lehetővé teszi a következőket:
+Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű megoldás a Azure Security Center, amely segítségével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-beli és nem Azure-beli gépeken (Windows és Linux). Más előnyök mellett ez segít megerősíteni a gépeket a kártevők ellen. Security Center a gépi tanulás segítségével elemzi a gépen futó alkalmazásokat, és létrehoz egy engedélyezési listát ebből az intelligenciával. Ez a funkció nagy mértékben leegyszerűsíti az alkalmazások engedélyezési listájának szabályzatának konfigurálását és karbantartását, így lehetővé teszi a következőket:
 
 - A kártékony alkalmazások futtatására tett kísérletek blokkolása vagy riasztása, beleértve azokat is, amelyeket antimalware-megoldások okozhatnak.
 - A cég vagy szervezet biztonsági házirendjének való megfelelést, amely csak a licencelt szoftverek használatát engedélyezi.
@@ -34,19 +34,21 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 - Azt, hogy az informatikai részleg szabályozhassa a bizalmas adatokhoz való hozzáférést az alkalmazások használata során.
 
 > [!NOTE]
-> Nem Azure-és Linux-alapú virtuális gépek esetén az adaptív alkalmazás-vezérlőelemek csak naplózási módban támogatottak.
+> A nem Azure-és Linux-alapú gépek esetében az adaptív alkalmazások vezérlői csak naplózási módban támogatottak.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Az adaptív alkalmazásvezérlők engedélyezése
-Az adaptív alkalmazás-vezérlők segítségével meghatározhatja azokat az alkalmazásokat, amelyek számára engedélyezett a virtuális gépek konfigurált csoportjain való futtatás. Ez a funkció az Azure és a nem Azure-beli Windows (minden verzió, klasszikus vagy Azure Resource Manager), valamint a Linux rendszerű virtuális gépek és kiszolgálók esetében érhető el. Az alkalmazás engedélyezési listája a következő lépésekkel konfigurálható:
+
+Az adaptív alkalmazás-vezérlők segítségével meghatározhatja azokat az alkalmazásokat, amelyek számára engedélyezett a konfigurált számítógépcsoportok futtatása. Ez a szolgáltatás az Azure-ban és a nem Azure-beli Windowsban (minden verzió, klasszikus vagy Azure Resource Manager) és linuxos gépen is elérhető. Az alkalmazás engedélyezési listája a következő lépésekkel konfigurálható:
 
 1. Nyissa meg a **Security Center** irányítópultját.
-2. A bal oldali panelen válassza ki az **Advanced cloud defense** (Speciális felhővédelem) szakaszban található **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
 
-    ![Védelem](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+1. A bal oldali panelen válassza ki az **Advanced cloud defense** (Speciális felhővédelem) szakaszban található **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
+
+    [![Defense](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
 
 Megjelenik az **Adaptív alkalmazásvezérlők** oldal.
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![vezérlők](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
 A **Virtuális gépek csoportjai** szakaszban három lap található:
 
@@ -60,20 +62,21 @@ A **Virtuális gépek csoportjai** szakaszban három lap található:
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>Új alkalmazásvezérlési szabályzat konfigurálása
-1. Kattintson a **Recommended** (Ajánlott) lapra azon csoportok listájáért, amelyeken javasolt bevezetni az alkalmazásvezérlést:
+
+1. Válassza az **ajánlott** lapot az alkalmazás-vezérléssel kapcsolatos javaslatokat tartalmazó csoportok listájához:
 
    ![Ajánlott](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    A lista a következőket tartalmazza:
 
-   - **Csoport neve**: Az előfizetés és a csoport neve
-   - **Virtuális gépek és számítógépek**: A csoportban lévő virtuális gépek száma
+   - **Csoport neve**: az előfizetés és a csoport neve
+   - Virtuális gépek **és számítógépek**: a csoportban lévő virtuális gépek száma
    - **Állapot**: a javaslatok állapota
    - **Súlyosság**: a javaslatok súlyossági szintje
 
 2. Kattintson egy csoportra az alkalmazás- **vezérlési szabályok létrehozása** lehetőség megnyitásához.
 
-   ![Alkalmazásvezérlési szabályok](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   [![alkalmazás-vezérlési szabályok](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
 
 3. A **virtuális gépek kiválasztása lapon**tekintse át az ajánlott virtuális gépek listáját, és törölje a jelölést, ha nem kívánja alkalmazni az alkalmazás engedélyezési szabályzatát a következőre:. Ezután két lista jelenik meg:
 
@@ -106,7 +109,7 @@ A **Virtuális gépek csoportjai** szakaszban három lap található:
 
    - **Csoport neve**: az előfizetés és a csoport neve
    - Virtuális gépek **és számítógépek**: a csoportban lévő virtuális gépek száma
-   - **Mód**: A naplózási mód naplózza az engedélyezési listán nem szereplő alkalmazások futtatására tett kísérleteket; A kikényszerítés nem teszi lehetővé az alkalmazások futtatását, hacsak nem az engedélyezési listán vannak
+   - **Mode**: a naplózási mód naplózza az engedélyezési listán nem szereplő alkalmazások futtatási kísérleteit; A kikényszerítés nem teszi lehetővé az alkalmazások futtatását, hacsak nem az engedélyezési listán vannak
    - **Riasztások**: az aktuális szabálysértések
 
 2. Kattintson egy csoportra az **alkalmazás-ellenőrzési házirend szerkesztése** lapon végzett módosítások végrehajtásához.
@@ -119,7 +122,7 @@ A **Virtuális gépek csoportjai** szakaszban három lap található:
    - **Enforce** (Kényszerítés): ebben a módban az alkalmazásvezérlési megoldás kikényszeríti a szabályokat, és gondoskodik róla, hogy blokkolva legyenek azok az alkalmazások, amelyeknek a futtatása nem engedélyezett.
 
    > [!NOTE]
-   > -  A védelmi mód betartatása a további értesítésig le van tiltva.
+   > -  A védelmi mód **betartatása** a további értesítésig le van tiltva.
    > - Amint azt fent említettük, az új alkalmazásvezérlési szabályzatok alapértelmezés szerint minden esetben *Felügyelet* módban lesznek konfigurálva. 
    >
 
@@ -131,9 +134,9 @@ A **Virtuális gépek csoportjai** szakaszban három lap található:
 
 6. A **kiadói engedélyezési szabályok**, az **elérésiút-engedélyezési szabályok**és a **kivonatoló engedélyezési** szabályok szakaszban megtekintheti, hogy mely alkalmazás-engedélyezési szabályok vannak konfigurálva a csoporton belüli virtuális gépeken a szabály gyűjtemény típusa alapján. Az egyes szabályokhoz a következőket láthatja:
 
-   - **Szabály**: Azok a paraméterek, amelyek alapján az AppLocker megvizsgálja az alkalmazást, hogy az alkalmazás futtatható-e.
-   - **Fájl típusa**: Egy adott szabály által lefedett fájltípusok. Ez a következők bármelyike lehet: EXE, parancsfájl, MSI vagy bármely ilyen fájltípus.
-   - **Felhasználók**: Azon felhasználók neve vagy száma, akik számára engedélyezett az alkalmazás engedélyezési szabálya által érintett alkalmazás futtatása.
+   - **Szabály**: az a konkrét paraméterek, amely alapján az AppLocker megvizsgálja az alkalmazást, hogy az alkalmazás futtatható-e.
+   - **File Type (fájltípus**): azok a fájltípusok, amelyekre egy adott szabály vonatkozik. Ez a következők bármelyike lehet: EXE, szkript, MSI vagy bármely permutáció.
+   - **Felhasználók**: olyan felhasználók neve vagy száma, akik számára engedélyezett az alkalmazás engedélyezési szabálya által érintett alkalmazás futtatása.
 
    ![Engedélyezési szabályok](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 
@@ -170,7 +173,7 @@ Azure Security Center lehetővé teszi az alkalmazás engedélyezési szabályza
  > [!NOTE]
 > A **számítógép áthelyezése**gombra kattintás után kattintson a **Mentés** gombra. Ha nem kattint a **Save (Mentés**) gombra, akkor a számítógép nem lesz áthelyezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-ban és a nem Azure-beli virtuális gépeken futó alkalmazások engedélyezési listájának használatához. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

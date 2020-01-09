@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433283"
 ---
 # <a name="http-features"></a>HTTP-funkciók
 
@@ -32,7 +32,8 @@ A következő beépített HTTP API-k támogatottak.
 * [Külső esemény küldése egy előkészítési folyamatnak](durable-functions-http-api.md#raise-event)
 * [Előkészítési előzmények törlése](durable-functions-http-api.md#purge-single-instance-history)
 * [Műveleti esemény küldése egy entitásnak](durable-functions-http-api.md#signal-entity)
-* [Entitás állapotának lekérdezése](durable-functions-http-api.md#query-entity)
+* [Entitás állapotának beolvasása](durable-functions-http-api.md#get-entity)
+* [Az entitások listájának lekérdezése](durable-functions-http-api.md#list-entities)
 
 A Durable Functions bővítmény által elérhető beépített HTTP API-k teljes leírását a [http API](durable-functions-http-api.md) -k című cikkben találja.
 
@@ -52,7 +53,7 @@ A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-cl
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function.json
+#### <a name="functionjson"></a>Function. JSON
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
@@ -178,7 +179,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-Az előző példában a `tokenSource` paraméter úgy van konfigurálva, hogy [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)Azure ad-jogkivonatokat szerezzen be. A jogkivonatokat az erőforrás URI-ja `https://management.core.windows.net`azonosítja. A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A helyi identitást vagy a felügyelt identitást feltételezi, hogy jogosult a virtuális gépek kezelésére a megadott erőforráscsoport `myRG`.
+Az előző példában a `tokenSource` paraméter úgy van konfigurálva, hogy [Azure Resource Manager](../../azure-resource-manager/management/overview.md)Azure ad-jogkivonatokat szerezzen be. A jogkivonatokat az erőforrás URI-ja `https://management.core.windows.net`azonosítja. A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A helyi identitást vagy a felügyelt identitást feltételezi, hogy jogosult a virtuális gépek kezelésére a megadott erőforráscsoport `myRG`.
 
 Futásidőben a konfigurált jogkivonat-forrás automatikusan egy OAuth 2,0 hozzáférési tokent ad vissza. A forrás Ezután hozzáadja a jogkivonatot tulajdonosi jogkivonatként a kimenő kérelem engedélyezési fejlécébe. Ez a modell a következő okok miatt javítja az engedélyezési fejlécek manuális hozzáadását a HTTP-kérelmekhez:
 

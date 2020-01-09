@@ -1,5 +1,6 @@
 ---
-title: Privát Felhőbeli jogosultságok kiterjesztve – Azure VMware-megoldás a CloudSimple
+title: Privát Felhőbeli jogosultságok kiterjesztve
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Ismerteti, hogyan lehet jogosultságokat kibővíteni a privát felhőben a vCenter felügyeleti funkcióihoz
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372771"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Saját Felhőbeli vCenter jogosultságok kiemelése a CloudSimple-portálról
 
@@ -38,7 +39,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
     ![VSphere jogosultság módosítása](media/escalate-private-cloud-privilege.png)
 
-4. Válassza ki a vSphere felhasználói típusát.  Csak `CloudOwner@cloudsimple.local` a helyi felhasználók adhatók meg.
+4. Válassza ki a vSphere felhasználói típusát.  Csak `CloudOwner@cloudsimple.local` helyi felhasználót lehet kibővíteni.
 
 5. Válassza ki a legördülő menüből a kiterjesztés időintervallumát. Válassza ki a legrövidebb időszakot, amely lehetővé teszi a feladat befejezését.
 
@@ -59,9 +60,9 @@ A jogosultságok eszkalációja megkezdődik, és a kijelölt intervallum végé
 
 Ha további időre van szüksége a feladatok elvégzéséhez, kiterjesztheti a jogosultság-eszkalációs időszakot.  Válassza ki a további eszkalációs időszakot, amely lehetővé teszi a felügyeleti feladatok végrehajtását.
 
-1. A CloudSimple-portál **erőforrások** > **privát felhők** területén válassza ki azt a privát felhőt, amelynek ki szeretné terjeszteni a jogosultságok eszkalációját.
+1. A CloudSimple-portálon található **privát felhők** > **erőforrásainál** válassza ki azt a privát felhőt, amelynek meg szeretné hosszabbítani a jogosultság-eszkalációját.
 
-2. Az összefoglalás lap alján kattintson a jogosultságok **kiterjesztésének kiterjesztése**elemre.
+2. Az összefoglalás lap alján kattintson a **jogosultságok kiterjesztésének kiterjesztése**elemre.
 
     ![Jogosultságok kiterjesztésének kiterjesztése](media/de-escalate-private-cloud-privilege.png)
 
@@ -73,16 +74,16 @@ Ha további időre van szüksége a feladatok elvégzéséhez, kiterjesztheti a 
 
 A rendszergazdai feladatok elvégzése után meg kell szüntetnie a jogosultságok kiterjesztését.  
 
-1. A CloudSimple-portál **erőforrások** > **privát felhők** területén válassza ki azt a privát felhőt, amelynek a jogosultságait ki szeretné bővíteni.
+1. A CloudSimple-portálon található **privát felhők** > **erőforrásainál** válassza ki azt a privát felhőt, amelynek a jogosultságait ki szeretné bővíteni.
 
-2. Kattintsona deeszkaláció elemre.
+2. Kattintson a **deeszkaláció**elemre.
 
 3. Kattintson az **OK** gombra.
 
 > [!IMPORTANT]
 > A hibák elkerülése érdekében jelentkezzen ki a vCenter, és jelentkezzen be ismét a defokozódó jogosultságok után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VCenter-identitások beállítása a Active Directory használatára](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
 * Biztonsági mentési megoldás telepítése a számítási [feladatok virtuális gépei](https://docs.azure.cloudsimple.com/backup-workloads-veeam/) számára

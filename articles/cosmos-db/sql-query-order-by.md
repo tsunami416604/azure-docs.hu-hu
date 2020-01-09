@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444795"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék Azure Cosmos DB
 
@@ -50,6 +50,9 @@ ORDER BY <sort_specification>
 ## <a name="remarks"></a>Megjegyzések  
   
    Az ORDER BY záradék megköveteli, hogy az indexelési házirend tartalmazzon egy indexet a rendezés alatt álló mezőkhöz. A Azure Cosmos DB lekérdezési futtatókörnyezet támogatja a tulajdonságok neve szerinti rendezést, és nem a számított tulajdonságokkal. Azure Cosmos DB több SORRENDet is támogat a tulajdonságok alapján. Ha több SORRENDet tartalmazó lekérdezést szeretne futtatni, definiálnia kell egy [összetett indexet](index-policy.md#composite-indexes) a rendezés alatt álló mezőkben.
+   
+> [!Note] 
+> Ha a .NET SDK 3.4.0 vagy újabb verzióját használja, előfordulhat, hogy egyes dokumentumok esetében nem definiált tulajdonságok vannak meghatározva, akkor ezeket a tulajdonságokat explicit módon létre kell hoznia. Az alapértelmezett indexelési házirend nem engedélyezi a dokumentumok lekérését, ha a rendezési tulajdonság nincs definiálva.
 
 ## <a name="examples"></a>Példák
 
@@ -61,7 +64,7 @@ Például itt egy olyan lekérdezés, amely a családokat a rezidens város nev�
     ORDER BY f.address.city
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -76,7 +79,7 @@ Az eredmények a következők:
     ]
 ```
 
-A következő lekérdezés lekérdezi a Family `id`s-t az elemek létrehozási dátumának megfelelően. A `creationDate` elem egy szám, amely az *időpontot*jelöli, vagy eltelt időt a Jan. 1, 1970 másodpercben.
+A következő lekérdezés lekéri a család `id`s-t az elemek létrehozási dátumának megfelelően. Az Item `creationDate` egy szám, amely az *időpontot*jelöli, vagy az eltelt időt a Jan. 1, 1970 másodpercben.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -84,7 +87,7 @@ A következő lekérdezés lekérdezi a Family `id`s-t az elemek létrehozási d
     ORDER BY f.creationDate DESC
 ```
 
-Az eredmények a következők:
+Az eredmény a következő:
 
 ```json
     [
@@ -99,7 +102,7 @@ Az eredmények a következők:
     ]
 ```
 
-Emellett több tulajdonság is megrendelhető. A több tulajdonság által megrendelt lekérdezéseknek [összetett indexre](index-policy.md#composite-indexes)van szükségük. Vegye figyelembe a következő lekérdezést:
+Emellett több tulajdonság is megrendelhető. A több tulajdonság által megrendelt lekérdezéseknek [összetett indexre](index-policy.md#composite-indexes)van szükségük. Tekintse meg a következő lekérdezést:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -107,10 +110,10 @@ Emellett több tulajdonság is megrendelhető. A több tulajdonság által megre
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Ez a lekérdezés lekérdezi a `id` családot a város nevének növekvő sorrendjében. Ha több elem neve megegyezik a város nevével, a lekérdezés a `creationDate` sorrend szerint csökkenő sorrendbe kerül.
+A lekérdezés a város nevének növekvő sorrendjében kérdezi le a család `id`ét. Ha több elem is ugyanaz a város neve, a lekérdezés sorrendjét a `creationDate` csökkenő sorrendbe kell rendezni.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [ELTOLÁSi korlát záradéka](sql-query-offset-limit.md)

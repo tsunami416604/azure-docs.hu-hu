@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
-ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 45c04cc32733873061bd6ff44b2e5484b106a893
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406657"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintése irányítópult
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint az új áttekintő irányítópult most elindul:
 
 ![Áttekintő előnézet panel](./media/overview-dashboard/overview.png)
 
-## <a name="better-performance"></a>Jobb teljesítmény
+## <a name="better-performance"></a>Hatékonyabb
 
 Az időtartomány kiválasztása egyszerűsített egy egyszerű, egykattintásos illesztőfelületre.
 
@@ -55,7 +55,7 @@ Ha vissza szeretne térni az áttekintő felületre, csak válassza a következ�
 
 ![Áttekintés gomb](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a **csempe beállításainak megadása** lehetőséget választja, és az egyéni időtartományt 31 napnál nagyobb időtartamra állítja be, az irányítópult nem jeleníti meg a 31 napos adatmennyiséget, még az alapértelmezett 90 napos adatmegőrzéssel sem. Ehhez a viselkedéshez jelenleg nincs Áthidaló megoldás.
 

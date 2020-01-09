@@ -2,18 +2,15 @@
 title: Figyelő feladat létrehozása a Azure Automation fiókban
 description: Megtudhatja, hogyan hozhat létre figyelő feladatot a Azure Automation-fiókban egy mappában létrehozott új fájlok megtekintéséhez.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419753"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Azure Automation figyelőkkel kapcsolatos feladatok létrehozása a fájlok változásainak követéséhez egy helyi gépen
 
@@ -44,7 +41,7 @@ Az oktatóanyag elvégzésének a következők a feltételei:
 
 Ez az oktatóanyag egy **Watch-NewFile** nevű figyelő runbook használ a címtárban lévő új fájlok kereséséhez. A figyelő runbook lekéri az utolsó ismert írási időt a mappában található fájlokra, és a vízjelnél újabb fájlokat keres.
 
-Ez az importálási folyamat a PowerShell-galériaon [](https://www.powershellgallery.com)keresztül végezhető el.
+Ez az importálási folyamat a [PowerShell-galériaon](https://www.powershellgallery.com)keresztül végezhető el.
 
 1. Navigáljon a [Watch-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd)katalógus lapjára.
 2. A **Azure Automation** lapon kattintson a telepítés elemre **Azure Automation**lehetőségre.
@@ -54,7 +51,7 @@ Ezt a runbook a portál Automation-fiókjába is importálhatja a következő l�
 1. Nyissa meg az Automation-fiókját, és kattintson a **runbookok** lapra.
 2. Kattintson a **Tallózás** a katalógusban gombra.
 3. Keressen rá a "Watcher runbook" kifejezésre, válassza ki a **figyelők runbook, amely új fájlokat keres egy könyvtárban** , és válassza az **Importálás**lehetőséget.
-  ![Automatizálási runbook importálása felhasználói felületről](media/automation-watchers-tutorial/importsourcewatcher.png)
+  ![Automation-runbook importálása a felhasználói felületről](media/automation-watchers-tutorial/importsourcewatcher.png)
 1. Adja meg a runbook nevét és leírását, majd kattintson az **OK** gombra a Runbook az Automation-fiókba való importálásához.
 1. Válassza a **Szerkesztés** lehetőséget, majd kattintson a **Közzététel**elemre. Ha a rendszer kéri, válassza az **Igen** lehetőséget a runbook közzétételéhez.
 
@@ -71,7 +68,7 @@ Az [Automation változó](automation-variables.md) az előző runbook által beo
 
 A figyelő feladatban egy runbook, amely az átadott adatoknak a megfigyelő runbook való működéséhez használatos. A figyelőkkel kapcsolatos feladatok nem támogatják a PowerShell-munkafolyamatok runbookok, a PowerShell-runbookok kell használnia. A **Process-NewFile**nevű előre definiált műveleti runbook kell importálnia.
 
-Ez az importálási folyamat a PowerShell-galériaon [](https://www.powershellgallery.com)keresztül végezhető el.
+Ez az importálási folyamat a [PowerShell-galériaon](https://www.powershellgallery.com)keresztül végezhető el.
 
 1. Navigáljon a [Process-NewFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf)katalógus lapjára.
 2. A **Azure Automation** lapon kattintson a telepítés elemre **Azure Automation**lehetőségre.
@@ -81,7 +78,7 @@ Ezt a runbook a portál Automation-fiókjába is importálhatja a következő l�
 1. Navigáljon az Automation-fiókjához, és válassza a **runbookok** lehetőséget a **folyamat automatizálása** kategóriában.
 1. Kattintson a **Tallózás** a katalógusban gombra.
 1. Keressen rá a "figyelő művelet" kifejezésre, és válassza a **figyelők művelet lehetőséget, amely feldolgozza a megfigyelő runbook által aktivált eseményeket** , majd válassza az **Importálás**lehetőséget.
-  ![Művelet runbook importálása a felhasználói felületen](media/automation-watchers-tutorial/importsourceaction.png)
+  ![importálási művelet runbook a felhasználói felületen](media/automation-watchers-tutorial/importsourceaction.png)
 1. Adja meg a runbook nevét és leírását, majd kattintson az **OK** gombra a Runbook az Automation-fiókba való importálásához.
 1. Válassza a **Szerkesztés** lehetőséget, majd kattintson a **Közzététel**elemre. Ha a rendszer kéri, válassza az **Igen** lehetőséget a runbook közzétételéhez.
 
@@ -154,7 +151,7 @@ Message is Process new file...
 Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 6b9f9e3cfc198610cf1f5f76b267ea52c551716a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427507"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Hozzon létre Azure Machine Learning Studio (klasszikus) kísérleteket a munkaAzure AI Galleryban működő példákból
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek l
 
 A katalógus például a Microsoft Azure Machine Learning Studio (klasszikus) csapat által végzett kísérleteket, valamint a Machine Learning Közösség által megosztott példákat is tartalmaz. Továbbá kérdéseket tehet fel, illetve megjegyzéseket is fűzhet a kísérletekhez.
 
-A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezdőknek](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) sorozat következő 3 perces videóját: [Copy other people's work to do data science](data-science-for-beginners-the-5-questions-data-science-answers.md) (Mások munkájának felhasználása adatelemzéshez).
+A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezdőknek](data-science-for-beginners-the-5-questions-data-science-answers.md) sorozat következő 3 perces videóját: [Copy other people's work to do data science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) (Mások munkájának felhasználása adatelemzéshez).
 
 
 
@@ -49,14 +49,14 @@ Az összes kísérlet tallózásához:
     ![Példakísérlet](./media/sample-experiments/example-experiment.png)
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>Új kísérlet létrehozása példa sablonként való használatával
-Létrehozhat egy új kísérletet a Machine Learning Studio klasszikus verziójában is, például sablonként egy katalógus használatával.
+Létrehozhat egy új kísérletet Machine Learning Studio (klasszikus) is, például sablonként egy katalógus használatával.
 
 1. Jelentkezzen be a [Studióba](https://studio.azureml.net) a Microsoft-fiók hitelesítő adatait használva, és kattintson az **Új** fülre egy kísérlet létrehozásához.
 2. Tallózzon a példák között, és kattintson rá az egyikre.
 
 Új kísérlet jön létre a Machine Learning Studio (klasszikus) munkaterületen, a példaként szolgáló kísérlettel sablonként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Adatok importálása különböző forrásokból](import-data.md)
 * [Gyors üzembe helyezési oktatóanyag az R nyelvhez a Machine Learning eszközben](r-quickstart.md)
 * [Machine Learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md)

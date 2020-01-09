@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-megoldás CloudSimple – CloudSimple-karbantartás és-frissítések
+title: CloudSimple-karbantartás és-frissítések
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Ismerteti a CloudSimple szolgáltatási folyamatát az ütemezett karbantartáshoz és frissítésekhez
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372823"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple-karbantartás és-frissítések
 
@@ -29,15 +30,15 @@ A CloudSimple folyamatosan figyeli a következő virtuális gépeket az üzemid�
 
 * ESXi-gazdagépek
 * vCenter
-* PSC
-* NSX Manager
+* PBB
+* NSX-kezelő
 
 A CloudSimple a következő folyamatos hibák figyelését is figyeli:
 
 * Merevlemezek
 * Fizikai NIC-portok
 * Kiszolgálók
-* Rajongók
+* Ventilátor
 * Power
 * Kapcsolók
 * Portok váltása
@@ -48,7 +49,7 @@ A CloudSimple biztonsági mentést készít, karbantartja és frissíti ezeket a
 
 * ESXi
 * vCenter platform szolgáltatásai
-* Vezérlő
+* Tartományvezérlő
 * vSAN
 * NSX
 
@@ -103,6 +104,6 @@ A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérh
 
 A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Munkaterhelési virtuális gépek biztonsági mentése a Veeam használatával](backup-workloads-veeam.md)

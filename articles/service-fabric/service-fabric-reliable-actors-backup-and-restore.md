@@ -1,33 +1,24 @@
 ---
-title: Biztonsági mentés és visszaállítás Azure Service Fabric actors |} A Microsoft Docs
-description: Ismerje meg a biztonsági mentés végrehajtása, és az Azure Service Fabric actors visszaállítása.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric Actors biztonsági mentése és visszaállítása
+description: Ismerje meg, hogyan implementálhatja a biztonsági mentést és a visszaállítást az Azure Service Fabric Actors szolgáltatásban.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: cb397141c86f40f02d8046838865106e0fb8992c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370459"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors megvalósítása biztonsági mentése és visszaállítása
+# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors biztonsági mentés és visszaállítás megvalósítása
 
 > [!NOTE]
-> A Microsoft azt javasolja, használandó [rendszeres biztonsági mentés és visszaállítás](service-fabric-backuprestoreservice-quickstart-azurecluster.md) Reliable Stateful services és Reliable actors – adatok biztonsági másolatának konfigurálásához. 
+> A Microsoft azt javasolja, hogy [rendszeres biztonsági mentést és visszaállítást](service-fabric-backuprestoreservice-quickstart-azurecluster.md) használjon a megbízható állapot-nyilvántartó szolgáltatások és Reliable Actors biztonsági mentésének konfigurálásához. 
 > 
 
-A következő példában egy egyéni aktorszolgáltatás biztonsági másolatok aktor kihasználásával a távoli eljáráshívás figyelő már szerepel a metódus közzététele `ActorService`:
+A következő példában egy egyéni Actor szolgáltatás egy metódust tesz elérhetővé a Actor-adatbázis biztonsági mentéséhez, és kihasználja a `ActorService`ban már meglévő távelérés-figyelő előnyeit:
 
 ```csharp
 public interface IMyActorService : IService
@@ -103,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-Ebben a példában `IMyActorService` megvalósító távoli eljáráshívás szerződés `IService` (C#) és `Service` (Java), majd valósít meg és `MyActorService`. A távoli eljáráshívás szerződés, a metódusok hozzáadásával a `IMyActorService` most is elérhetők az ügyfél távoli eljáráshívás proxyn keresztül létrehozásával `ActorServiceProxy`:
+Ebben a példában a `IMyActorService` egy olyan távelérési szerződés, amely `IService` (C#) és `Service` (Java) megvalósítását valósítja meg, és ezt `MyActorService`hajtja végre. A távelérési szerződés hozzáadásával a `IMyActorService` metódusok mostantól elérhetők az ügyfél számára, ha a távelérési proxyt `ActorServiceProxy`használatával hozza létre:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -118,11 +109,11 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Reliable actors – további információért olvassa el a következő cikkeket:
-* [Aktor állapotkezelés](service-fabric-reliable-actors-state-management.md)
-* [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
-* [Aktorok API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+A Reliable Actorsról a következő cikkekben olvashat bővebben:
+* [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
+* [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
+* [A Actors API-dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

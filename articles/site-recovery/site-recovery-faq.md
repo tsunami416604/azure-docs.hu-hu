@@ -1,18 +1,14 @@
 ---
 title: Általános kérdések a Azure Site Recovery szolgáltatással kapcsolatban
 description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű általános kérdéseket tárgyalja.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078541"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497533"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -22,10 +18,10 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 - [A VMware virtuális gép vész-helyreállításával kapcsolatos kérdések az Azure-ba](vmware-azure-common-questions.md)
 - [Kérdések a Hyper-V virtuális gép vész-helyreállításáról az Azure-ba](hyper-v-azure-common-questions.md)
  
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
-Site Recovery hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához az Azure-beli virtuális gépek régiók, helyszíni virtuális gépek és fizikai kiszolgálók közötti, az Azure-ba, illetve a helyszíni gépek közötti replikációjának összehangolásával és automatizálásával másodlagos adatközpont. [További információ](site-recovery-overview.md).
+Site Recovery hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához az Azure-beli virtuális gépek régiók, helyszíni virtuális gépek és fizikai kiszolgálók közötti, az Azure-ba, illetve a helyszíni gépek közötti replikációjának összehangolásával és automatizálásával másodlagos adatközpont. [További információk](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
@@ -158,7 +154,7 @@ Partnerünk, Riverbed, részletes útmutatást nyújt a Azure Site Recovery hasz
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Használhatom a ExpressRoute a virtuális gépek Azure-ba történő replikálásához?
 Igen, a [ExpressRoute](concepts-expressroute-with-site-recovery.md) használatával replikálhatja a helyszíni virtuális gépeket az Azure-ba.
 
-- Azure Site Recovery replikálja az Azure Storage-ba egy nyilvános végponton keresztül. Be kell állítania a [Microsoft-társat](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) , vagy egy meglévő [nyilvános](../expressroute/expressroute-circuit-peerings.md#publicpeering) (új áramköröknél elavult) kapcsolatot kell használnia a ExpressRoute site Recovery replikációhoz való használatához.
+- Azure Site Recovery replikálja az Azure Storage-ba egy nyilvános végponton keresztül. Be kell állítania a [Microsoft-társat](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) , vagy egy meglévő [nyilvános](../expressroute/about-public-peering.md) (új áramköröknél elavult) kapcsolatot kell használnia a ExpressRoute site Recovery replikációhoz való használatához.
 - A replikációhoz a Microsoft-társ a javasolt útválasztási tartomány.
 - A replikáció nem támogatott privát társak esetén.
 - Ha a VMware-gépeket vagy fizikai gépeket védi, győződjön meg arról, hogy a konfigurációs kiszolgáló [hálózati követelményei](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek. A konfigurációs kiszolgáló a Site Recovery replikáció összehangolása érdekében meghatározott URL-címekhez való kapcsolódást igényel. A ExpressRoute nem használható ehhez a kapcsolathoz.
@@ -197,7 +193,7 @@ Igen. A sávszélesség szabályozásával kapcsolatos további információkér
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
 
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Ha az Azure-t átadja az Azure-nak, hogyan gondoskodik róla, hogy az adataim rugalmasak legyenek?
@@ -219,9 +215,9 @@ A helyszíni Orchestrator vagy Operations Manager segítségével automatizálha
 Igen, a másik helyre történő helyreállítást használhatja a feladat-visszavételhez egy másik gazdagépre az Azure-ból.
 
 * [VMware virtuális gépekhez](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Hyper-V rendszerű virtuális gépek esetén](hyper-v-azure-failback.md#perform-failback)
+* [Hyper-V rendszerű virtuális gépek esetén](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automatizálás
+## <a name="automation"></a>Automation
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Automatizálható Site Recovery forgatókönyvek SDK-val?
 Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a PowerShellt vagy az Azure SDK-t használhatja. Jelenleg támogatott forgatókönyvek Site Recovery üzembe helyezéséhez a PowerShell használatával:

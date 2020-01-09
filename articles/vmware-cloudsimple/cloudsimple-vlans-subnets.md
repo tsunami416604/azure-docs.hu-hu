@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372737"
 ---
 # <a name="vlans-and-subnets-overview"></a>VLAN-ok és alhálózatok áttekintése
 
@@ -21,7 +21,7 @@ A CloudSimple olyan hálózatot biztosít régiónként, ahol a CloudSimple szol
 
 ![CloudSimple hálózati topológia](media/cloudsimple-network-topology.png)
 
-## <a name="vlans"></a>VLAN
+## <a name="vlans"></a>VLAN-ok
 
 Minden egyes privát felhőhöz létrejön egy VLAN (2. rétegbeli hálózat).  A 2. rétegbeli forgalom egy privát felhő határain belül marad, ami lehetővé teszi a helyi forgalom elkülönítését a privát felhőben.  A privát felhőben létrehozott VLAN-hoz csak az adott privát felhőben hozhatók létre elosztott portok.  A privát felhőben létrehozott VLAN-t a rendszer automatikusan konfigurálja az összes olyan kapcsolón, amely a privát felhő gazdagépéhez csatlakozik.
 
@@ -38,7 +38,7 @@ A privát felhőt egy vCenter-kiszolgáló által kezelt elkülönített VMware 
 * Minimális vSphere/vSAN alhálózatok CIDR tartományának előtagja: **/24**
 * VSphere/vSAN alhálózatok maximális CIDR-tartományának előtagja: **/21**
 
-> [!IMPORTANT]
+> [!CAUTION]
 > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN alhálózatok CIDR tartományának korlátai
@@ -56,7 +56,7 @@ A vSphere/vSAN alhálózatok CIDR tartomány méretének kiválasztásával hat�
 
 A következő felügyeleti alhálózatok jönnek létre a privát felhő létrehozásakor.
 
-* **Rendszerfelügyeleti**webszolgáltatások. Az ESXi-gazdagépek felügyeleti hálózata, a DNS-kiszolgáló, a vCenter-kiszolgáló VLAN-és alhálózata.
+* **Rendszerfelügyeleti webszolgáltatások**. Az ESXi-gazdagépek felügyeleti hálózata, a DNS-kiszolgáló, a vCenter-kiszolgáló VLAN-és alhálózata.
 * **VMotion**. Az ESXi gazdagépek vMotion-hálózatának VLAN-és alhálózata.
 * **VSAN**. Az ESXi gazdagépek vSAN-hálózatának VLAN-és alhálózata.
 * **NsxtEdgeUplink1**. VLAN és alhálózat a VLAN-hoz a külső hálózathoz való kapcsolódáshoz.
@@ -80,6 +80,6 @@ Példa:
 | NSX – T Edge-Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
 | NSX – T Edge-uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VLAN-ok és alhálózatok létrehozása és kezelése](create-vlan-subnet.md)

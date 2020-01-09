@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: a rendszerkép részleteinek kinyerése C# a REST API és a-Bing Image Search'
 titleSuffix: Azure Cognitive Services
-description: A cikk alapján létrehozhat egy C# alkalmazást, amely kinyeri a képek adatait a Bing Image Search API használatával.
+description: Ezzel az Oktatóanyaggal olyan C# alkalmazást hozhat létre, amely a Bing Image Search API használatával kibontja a képrészleteket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383875"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Oktatóanyag: Képadatok kinyerése a Bing Image Search API és a C# használatával
 
@@ -113,4 +113,4 @@ Ha azonosítható személyek vagy helyek szerepelnek a képen, a kérelem rájuk
 
 ## <a name="see-also"></a>Lásd még:
 
-* [Bing Image Search API – referenciaanyag](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

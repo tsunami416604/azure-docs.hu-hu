@@ -2,17 +2,17 @@
 title: Azure Private-végpont létrehozása a Azure PowerShell használatával | Microsoft Docs
 description: További információ az Azure Private linkről
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430339"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -21,7 +21,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gép
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot, amely a Virtual Network és a privát végpontot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)tárolja. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestUS* helyen:
 
@@ -32,10 +32,10 @@ New-AzResourceGroup `
   -Location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Virtual Network létrehozása
+## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 Ebben a szakaszban egy virtuális hálózatot és egy alhálózatot hoz létre. Ezután rendelje hozzá az alhálózatot a Virtual Networkhoz.
 
-### <a name="create-a-virtual-network"></a>Virtual Network létrehozása
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa egy *MyVirtualNetwork*nevű Virtual Network hoz létre:
  
@@ -59,6 +59,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -PrivateEndpointNetworkPoliciesFlag "Disabled" `
   -VirtualNetwork $virtualNetwork
 ```
+
+> [!CAUTION]
+> A `PrivateEndpointNetworkPoliciesFlag` paramétert könnyedén összekeverheti egy másik elérhető jelzővel, `PrivateLinkServiceNetworkPoliciesFlag`, mert mindkettő hosszú szavakat tartalmaz, és hasonló megjelenéssel rendelkezik.  Győződjön meg arról, hogy a megfelelőt használja, `PrivateEndpointNetworkPoliciesFlag`.
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Az alhálózat hozzárendelése a Virtual Networkhoz
 

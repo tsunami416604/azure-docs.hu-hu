@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/17/2019
+ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818584"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462490"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Szolgáltatási korlátozások az Azure Cognitive Search
 
-A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy az Azure Cognitive Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinten van-e [kiépítve](search-create-service-portal.md) .
+A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy az Azure Cognitive Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
 
 + Az **ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéshez tartozik. Az indexelési és lekérdezési kérelmek a más bérlők által használt replikák és partíciók esetében futnak.
 
@@ -65,19 +65,18 @@ A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb o
 
 ## <a name="document-limits"></a>Dokumentumok korlátai 
 
-Október 2018-én már nem minden olyan dokumentum korlátozza az<sup>1</sup> . korlátozást, amely bármely számlázandó szinten (alapszintű, S1, S2, S3, S3 HD) létrehozott új szolgáltatás bármely régióban. Míg a legtöbb régióban a 2017 november/december óta korlátlan számú dokumentum szerepelt, a rendszer öt régióban folytatta a dokumentumok korlátozását. Attól függően, hogy mikor és hol hozott létre keresési szolgáltatást, lehet, hogy olyan szolgáltatást futtat, amely továbbra is a dokumentum korlátai alá esik.
+Október 2018-én már nem jelennek meg minden olyan új szolgáltatásra vonatkozó dokumentum, amely bármely más számlázandó szinten (alapszintű, S1, S2, S3, S3 HD) létrehozott, bármely régióban. Míg a legtöbb régióban korlátlan számú dokumentum szerepel a 2017 november/december óta, néhány régióban továbbra is érvényesek a dokumentumok korlátai. Attól függően, hogy mikor és hol hozott létre keresési szolgáltatást, lehet, hogy olyan szolgáltatást futtat, amely továbbra is a dokumentum korlátai alá esik.
 
-Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentum-korlátozásokkal, tekintse meg a szolgáltatás áttekintés lapján a használat csempét. A dokumentumok száma korlátlan, vagy a küszöbértéken alapuló korlátra vonatkozik.
+Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentum-korlátozásokkal, használja a [szolgáltatás statisztikáinak Beolvasása REST API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). A dokumentum korlátai a válaszban szerepelnek, és `null` a korlátozás nélkül jelezve.
 
-  ![Használati csempe](media/search-limits-quotas-capacity/portal-usage-tile.png)
-
-<sup>1</sup> annak ellenére, hogy nincs SKU-specifikus dokumentumra vonatkozó korlátozás, minden indexre továbbra is a maximális biztonságos korlát vonatkozik a szolgáltatás stabilitásának biztosítása érdekében. Ez a korlát a Lucene származik. Minden Azure Cognitive Search-dokumentum belsőleg indexelve van egy vagy több Lucene-dokumentumként. A Lucene dokumentumok száma egy keresési dokumentumban az összetett gyűjtemények mezőiben szereplő elemek teljes számától függ. Minden elem külön Lucene-dokumentumként van indexelve. Egy összetett gyűjtemény mezőben 3 elemet tartalmazó dokumentum például 4 Lucene-dokumentumként lesz indexelve – 1 a dokumentumhoz, és 3 az elemekhez. Az Lucene dokumentumok maximális száma nagyjából 25 000 000 000.
+> [!NOTE]
+> Annak ellenére, hogy nincs SKU-specifikus dokumentum-korlát, az indexek továbbra is a maximális biztonságos korlátot biztosítják a szolgáltatás stabilitásának biztosítása érdekében. Ez a korlát a Lucene származik. Minden Azure Cognitive Search-dokumentum belsőleg indexelve van egy vagy több Lucene-dokumentumként. A Lucene dokumentumok száma egy keresési dokumentumban az összetett gyűjtemények mezőiben szereplő elemek teljes számától függ. Minden elem külön Lucene-dokumentumként van indexelve. Egy összetett gyűjtemény mezőben 3 elemet tartalmazó dokumentum például 4 Lucene-dokumentumként lesz indexelve – 1 a dokumentumhoz, és 3 az elemekhez. Az Lucene dokumentumok maximális száma nagyjából 25 000 000 000.
 
 ### <a name="regions-previously-having-document-limits"></a>Korábban dokumentum-korlátokkal rendelkező régiók
 
 Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-es késői időpontig jött létre, vagy egy adatközpontban lett létrehozva az Azure Cognitive Search szolgáltatásainak üzemeltetéséhez szükséges alacsonyabb kapacitású fürtök használatával:
 
-+ Kelet-Ausztrália
++ Ausztrália keleti régiója
 + Kelet-Ázsia
 + Közép-India
 + Nyugat-Japán
@@ -110,15 +109,15 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 | Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Alapszintű&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N/A |10 |10 |
-| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
-| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
-| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N/A |Korlátlan |Korlátlan |
+| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
+| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
+| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |– |Korlátlan |Korlátlan |
 | Minimális ütemterv | 5 perc |5 perc |5 perc |5 perc |5 perc |5 perc |5 perc | 5 perc |
-| Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |N/A  |24 óra |24 óra |
-| A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N/A  |2 óra |2 óra |
-| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4&nbsp;millió |4&nbsp;millió |4&nbsp;millió |N/A |4&nbsp;millió |4&nbsp;millió |
+| Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
+| A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
+| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |–  |256 |256 |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4&nbsp;millió |4&nbsp;millió |4&nbsp;millió |– |4&nbsp;millió |4&nbsp;millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -135,7 +134,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 ## <a name="synonym-limits"></a>Szinonimák korlátai
 
-Az engedélyezett szinonimák maximális száma az árképzési szinten változhat. Mindegyik szabály legfeljebb 20 bővítéssel rendelkezhet, ahol a bővítés egy equivalvent-kifejezés. Például a "Cat", a "Kitty", a "macskaféle" és az "Felis" (a macskák nemhez tartozó) társítása 3 kiterjesztésnek számít.
+Az engedélyezett szinonimák maximális száma az árképzési szinten változhat. Minden egyes szabály legfeljebb 20 kiterjesztéssel rendelkezhet, ahol a terjeszkedés egy egyenértékű kifejezés. Például a "Cat", a "Kitty", a "macskaféle" és az "Felis" (a macskák nemhez tartozó) társítása 3 kiterjesztésnek számít.
 
 | Erőforrás | Ingyenes | Basic | S1 | S2 | S3 | S3 – HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
@@ -173,7 +172,7 @@ Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek
 * Maximális 32 mező a $orderby záradékban
 * A maximális keresési kifejezés mérete 32 766 bájt (32 KB mínusz 2 bájt) UTF-8 kódolású szöveg esetén
 
-<sup>1</sup> az Azure Cognitive Search-ban a kérelem törzse 16 MB-os felső korlátot tartalmaz, és az egyes mezők vagy gyűjtemények olyan tartalmára vonatkozó gyakorlati korlátozást szab, amelyet nem az elméleti korlátok határoznak meg (lásd a [támogatott adattípusokat). ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)a mezők összeállításával és korlátozásával kapcsolatos további információkért.
+<sup>1</sup> az Azure Cognitive Search-ban a kérelem törzse 16 MB-os felső korláttal rendelkezik, és az egyes mezők vagy gyűjtemények esetében gyakorlati korlátozást ír elő, amely nem korlátozza az elméleti korlátokat (lásd a [támogatott adattípusokat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a mezők összeállításával és korlátozásával kapcsolatos további információkért).
 
 ## <a name="api-response-limits"></a>API-válaszok korlátai
 * A keresési eredmények által visszaadott maximális 1000-dokumentumok száma

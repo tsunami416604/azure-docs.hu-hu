@@ -2,19 +2,15 @@
 title: Start/Stop VMs during off-hours megoldás
 description: Ez a virtuálisgép-felügyeleti megoldás elindítja és leállítja a Azure Resource Manager virtuális gépeket az ütemterven, és proaktív módon figyeli Azure Monitor naplókból.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420810"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours megoldás a Azure Automation
 
@@ -109,7 +105,7 @@ A következő lépések végrehajtásával adja hozzá a Start/Stop VMs during o
 
 2. A kiválasztott megoldás **Start/Stop VMS During off-hours** oldalán tekintse át az összegzési információkat, majd kattintson a **Létrehozás**gombra.
 
-   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure portál](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. Megjelenik a **megoldás hozzáadása** lap. A rendszer felszólítja a megoldás konfigurálására, mielőtt importálni tudja az Automation-előfizetésbe.
 

@@ -1,25 +1,16 @@
 ---
-title: Az Azure Service Fabric Actors életciklusának áttekintése | Microsoft Docs
+title: Az Azure Service Fabric Actors életciklusának áttekintése
 description: Ismerteti Service Fabric megbízható szereplők életciklusát, a szemétek gyűjtését, valamint a résztvevők és állapotuk manuális törlését
-services: service-fabric
-documentationcenter: .net
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349348"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Színészi életciklus, automatikus Garbage-gyűjtés és manuális törlés
 A színész akkor aktiválódik, amikor az első alkalommal hívást kezdeményeztek valamelyik metódusára. Egy szereplő inaktiválva van (a Actors Runtime által összegyűjtött szemetet), ha nem használják konfigurálható időtartamra. Egy színész és az állapota manuálisan is törölhető bármikor.

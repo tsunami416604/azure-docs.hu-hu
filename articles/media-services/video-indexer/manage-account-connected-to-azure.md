@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454679"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók kezelése
 
@@ -49,6 +49,17 @@ Ha a video Indexer-fiókja csatlakozik az Azure-hoz, a következő jelenik meg:
 * A lefoglalt fenntartott egységek száma és típusa.
 
 Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lapon láthatja a fiók konfigurációjának megfelelő hibákat és figyelmeztetéseket. Az üzenetek a Azure Portal pontos helyeire mutató hivatkozásokat tartalmaznak, amelyekben módosítani kell a módosításokat. További információ: a következő, [hibákkal és figyelmeztetésekkel](#errors-and-warnings) foglalkozó szakasz.
+
+## <a name="repair-the-connection-to-azure"></a>Az Azure-hoz való kapcsolódás javítása
+
+A [video Indexer](https://www.videoindexer.ai/) lap **kapcsolatok frissítése Azure Media Services** párbeszédpanelén megkéri a következő beállítások értékének megadását: 
+
+|Beállítás|Leírás|
+|---|---|
+|Azure-előfizetés azonosítója|Az előfizetés-azonosító a Azure Portalból kérhető le. A bal oldali panelen kattintson a **minden szolgáltatás** elemre, és keressen rá az "előfizetések" kifejezésre. Válassza az **előfizetések** lehetőséget, majd válassza ki a kívánt azonosítót az előfizetések listájából.|
+|Azure Media Services erőforráscsoport neve|Azon erőforráscsoport neve, amelyben létrehozta a Media Services fiókot.|
+|Alkalmazásazonosító|Az ehhez a Video Indexer-fiókhoz létrehozott Azure AD-alkalmazás azonosítója (a megadott Media Services fiókhoz tartozó engedélyekkel). <br/><br/>Az alkalmazás AZONOSÍTÓjának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Kattintson **a Kapcsolódás a Media Services API-hoz az egyszerű szolgáltatásnév** -> **Azure ad alkalmazás**. Másolja ki a megfelelő paramétereket.|
+|Alkalmazás kulcsa|A fent megadott Media Services-fiókhoz társított Azure AD-alkalmazás kulcsa. <br/><br/>Az alkalmazás kulcsának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Kattintson **a Kapcsolódás az Media Services API-hoz az egyszerű szolgáltatásnév -> az** alkalmazás -> - **tanúsítványok & titkok** **kezelése** elemre. Másolja ki a megfelelő paramétereket.|
 
 ## <a name="auto-scale-reserved-units"></a>Fenntartott egységek automatikus méretezése
 

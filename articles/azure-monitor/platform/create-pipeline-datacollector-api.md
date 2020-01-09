@@ -4,15 +4,15 @@ description: A Azure Monitor HTTP-adatgyűjtő API-val hozzáadhat JSON-adatok a
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363965"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamat létrehozása az adatgyűjtő API-val
 
@@ -21,7 +21,7 @@ A [Azure monitor adatgyűjtő API](data-collector-api.md) lehetővé teszi, hogy
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Probléma – példa
-A cikk további részében megvizsgáljuk az oldal nézetének a Application Insights. A feltételezett forgatókönyvben a Application Insights SDK által alapértelmezés szerint gyűjtött földrajzi adatokat szeretnénk összekapcsolni a világ minden országa/régiója által összegyűjtött egyéni adatokkal, azzal a céllal, hogy meghatározza, hol kell költeni a legtöbb marketing dollár. 
+A cikk további részében megvizsgáljuk az oldal nézetének a Application Insights. A feltételezett forgatókönyvben a Application Insights SDK által alapértelmezés szerint gyűjtött földrajzi adatokat szeretnénk összekapcsolni a világ minden országa/régiója között található egyéni adatokkal, azzal a céllal, hogy meghatározza, hol kell költeni a legtöbb marketing dollárt. 
 
 Olyan nyilvános adatforrást használunk, mint például az [ENSZ világméretű lakossági kilátásai](https://esa.un.org/unpd/wpp/) erre a célra. Az alábbi egyszerű sémával kell rendelkeznie:
 

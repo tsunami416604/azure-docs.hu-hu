@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: d7999488302098980ff9306836ec9d54aceac3be
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ae9550e797ad13f78f222cb6120f040721914964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454779"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>Studio (klasszikus) modellek és webszolgáltatás-végpontok létrehozása egy kísérletből a PowerShell használatával
 
@@ -25,7 +25,7 @@ Tegyük fel például, hogy egy globális kerékpár-kölcsönzési üzletág tu
 
 A modellt betaníthatja, ha az összes adathalmaz összevont verzióját használja az összes helyen. Az egyes helyszínek azonban egyedi környezettel rendelkeznek. Így jobb megközelítés lenne a regressziós modell külön betanítása az egyes helyekhez tartozó adatkészlet használatával. Így az egyes betanított modellek figyelembe vehetik a különböző tárolási méreteket, a kötetet, a földrajzot, a populációt, a kerékpár-barát forgalmi környezetet és egyebeket.
 
-Ez lehet a legjobb megközelítés, de nem kívánja létrehozni a 1 000-es Azure Machine Learning Studio klasszikus változatát, és minden egyes egyedi helyet jelképez. Amellett, hogy elsöprő feladat, nem hatékonynak tűnik, mivel minden kísérlethez ugyanaz az összetevők tartoznak, kivéve a betanítási adatkészletet.
+Ez lehet a legjobb megközelítés, de nem kívánja létrehozni a 1 000-es tanítási kísérleteket Azure Machine Learning Studio (klasszikus), és mindegyik egy egyedi helyet jelképez. Amellett, hogy elsöprő feladat, nem hatékonynak tűnik, mivel minden kísérlethez ugyanaz az összetevők tartoznak, kivéve a betanítási adatkészletet.
 
 Szerencsére ezt a [Azure Machine learning Studio (klasszikus) átképzési API](/azure/machine-learning/studio/retrain-machine-learning-model) használatával hajthatja végre, és automatizálhatja a feladatot a [Azure Machine learning Studio (klasszikus) PowerShell](powershell-module.md)-lel.
 

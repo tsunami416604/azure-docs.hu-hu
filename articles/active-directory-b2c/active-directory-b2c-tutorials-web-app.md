@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367603"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával
 
@@ -92,9 +92,9 @@ Frissítse a web. config fájlban lévő beállításokat a felhasználói folya
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 1. A **TaskWebApp** projektben nyissa meg a **web. config** fájlt.
-    1. Frissítse `ida:Tenant` és `ida:AadInstance` értékét a létrehozott Azure AD B2C bérlő nevével. A `fabrikamb2c` karakterláncot például cserélje le a következőre: `contoso`.
+    1. Frissítse `ida:Tenant` és `ida:AadInstance` értékét a létrehozott Azure AD B2C bérlő nevével. Például cserélje le a `fabrikamb2c`t a `contoso`ra.
     1. Cserélje le a `ida:ClientId` értékét a rögzített alkalmazás-AZONOSÍTÓra.
-    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ahhoz, hogy hozzáadja a web. config fájlhoz, XML-kódolással kell kódolnia az ügyfél titkos kulcsát.
+    1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ha az ügyfél titkos kulcsa olyan előre definiált XML-entitásokat tartalmaz, mint például a (`<`) kisebb, mint (`>`), a jel (`&`) vagy a dupla idézőjel (`"`), el kell menekülnie ezeket a karaktereket a web. config fájlhoz való hozzáadása előtt.
     1. Cserélje le a `ida:SignUpSignInPolicyId` értékét a `b2c_1_signupsignin1`ra.
     1. Cserélje le a `ida:EditProfilePolicyId` értékét a `b2c_1_profileediting1`ra.
     1. Cserélje le a `ida:ResetPasswordPolicyId` értékét a `b2c_1_passwordreset1`ra.

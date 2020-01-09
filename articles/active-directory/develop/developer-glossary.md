@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fb4deaf3d8fdc0347058b0af2079aebbd4cb22e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424547"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
 Ez a cikk a fejlesztői alapfogalmakkal és terminológiával kapcsolatos néhány definíciót tartalmaz, amelyek hasznosak lehetnek a Microsoft Identity platform használatával történő alkalmazásfejlesztés megismerése során.
 
-## <a name="access-token"></a>Hozzáférési jogkivonat
+## <a name="access-token"></a>hozzáférési jogkivonat
 
 Egy [engedélyezési kiszolgáló](#authorization-server)által kiállított [biztonsági jogkivonat](#security-token) típusa, amelyet egy [ügyfélalkalmazás](#client-application) használ egy [védett erőforrás-kiszolgáló](#resource-server)eléréséhez. Általában egy [JSON web token (JWT)][JWT]formájában a token az [erőforrás tulajdonosa](#resource-owner)által az ügyfélnek megadott engedélyeket testesíti meg a kért hozzáférési szint alapján. A jogkivonat tartalmazza a tulajdonossal kapcsolatos összes vonatkozó [jogcímet](#claim) , lehetővé téve az ügyfélalkalmazás számára, hogy hitelesítő adatként használja az adott erőforráshoz való hozzáféréskor. Emellett nincs szükség arra, hogy az erőforrás tulajdonosa hitelesítő adatokat tegyen elérhetővé az ügyfélnek.
 
@@ -41,7 +41,7 @@ Az egyedi azonosító az Azure AD-vel egy adott alkalmazást és a hozzá tartoz
 
 ## <a name="application-manifest"></a>alkalmazás jegyzékfájlja
 
-A [Azure Portal][AZURE-portal]által biztosított szolgáltatás, amely az alkalmazás identitás-konfigurációjának JSON-ábrázolását állítja elő, amely a hozzá tartozó [alkalmazás][AAD-Graph-App-Entity] -és [ServicePrincipal][AAD-Graph-Sp-Entity] -entitások frissítésére szolgáló mechanizmusként használható. További részletekért tekintse meg [a Azure Active Directory Application manifest ismertetése][AAD-App-Manifest] című témakört.
+A [Azure Portal][AZURE-portal]által biztosított szolgáltatás, amely az alkalmazás identitás-konfigurációjának JSON-ábrázolását állítja elő, amely a hozzá tartozó [alkalmazás][Graph-App-Resource] -és [ServicePrincipal][Graph-Sp-Resource] -entitások frissítésére szolgáló mechanizmusként használható. További részletekért tekintse meg [a Azure Active Directory Application manifest ismertetése][AAD-App-Manifest] című témakört.
 
 ## <a name="application-object"></a>Application objektum
 
@@ -102,7 +102,7 @@ A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározotta
 
 Az ügyfélalkalmazás [engedélyt](#authorization) kér egy erőforrás-tulajdonostól, hogy részt vegyen egy [OAuth2-engedélyezési](#authorization-grant) adatforgalomban, és hozzáférhet az API-khoz/adatokhoz az erőforrás tulajdonosának nevében. A OAuth2 engedélyezési keretrendszere [két típusú ügyfelet határoz][OAuth2-Client-Types]meg, "bizalmas" és "nyilvános", az ügyfél azon képessége alapján, hogy megőrizze a hitelesítő adatai titkosságát. Az alkalmazások olyan [webes ügyfélprogramot (bizalmas)](#web-client) implementálnak, amely webkiszolgálón, [natív ügyfélen (nyilvános)](#native-client) , vagy egy eszköz böngészőjében futó, [felhasználói ügynökön alapuló ügyfélen (nyilvános)](#user-agent-based-client) fut.
 
-## <a name="consent"></a>hozzájárulása
+## <a name="consent"></a>Hozzájárulása
 
 Az [erőforrás tulajdonosának](#resource-owner) az a folyamata, amely engedélyezi egy [ügyfélalkalmazás](#client-application)számára a védett erőforrások elérését az erőforrás tulajdonosának nevében, adott [engedélyekkel](#permissions). Az ügyfél által kért engedélyektől függően a rendszergazda vagy a felhasználó beleegyezik, hogy engedélyezze a hozzáférést a szervezethez vagy az egyes adatbázisokhoz. Vegye figyelembe, hogy a [több-bérlős](#multi-tenant-application) forgatókönyvekben az alkalmazás [egyszerű szolgáltatását](#service-principal-object) is rögzíti a rendszer a beleegyezést küldő felhasználó bérlője számára.
 
@@ -137,7 +137,7 @@ Az [ügyfélalkalmazás](#client-application) az engedélyek megadásával éri 
 
 Emellett felszínre kerülnek az [engedélyezési](#consent) folyamat során, így a rendszergazda vagy az erőforrás tulajdonosa a bérlő erőforrásaihoz való hozzáférés engedélyezése/tiltása.
 
-Az engedélyezési kérelmeket az alkalmazás **API-engedélyei** lapon kell konfigurálni a [Azure Portalban][AZURE-portal], a kívánt "delegált engedélyek" és az "alkalmazás engedélyei" lehetőség kiválasztásával (az utóbbi megköveteli a globális rendszergazdai szerepkör tagságát). Mivel a [nyilvános ügyfél](#client-application) nem tudja biztonságosan karbantartani a hitelesítő adatokat, csak delegált engedélyeket igényelhet, míg a [bizalmas ügyfél](#client-application) jogosult a delegált és az alkalmazásra vonatkozó engedélyek igénylésére is. Az ügyfél [Application objektuma](#application-object) a deklarált engedélyeket a [requiredResourceAccess tulajdonságában][AAD-Graph-App-Entity]tárolja.
+Az engedélyezési kérelmeket az alkalmazás **API-engedélyei** lapon kell konfigurálni a [Azure Portalban][AZURE-portal], a kívánt "delegált engedélyek" és az "alkalmazás engedélyei" lehetőség kiválasztásával (az utóbbi megköveteli a globális rendszergazdai szerepkör tagságát). Mivel a [nyilvános ügyfél](#client-application) nem tudja biztonságosan karbantartani a hitelesítő adatokat, csak delegált engedélyeket igényelhet, míg a [bizalmas ügyfél](#client-application) jogosult a delegált és az alkalmazásra vonatkozó engedélyek igénylésére is. Az ügyfél [Application objektuma](#application-object) a deklarált engedélyeket a [requiredResourceAccess tulajdonságában][Graph-App-Resource]tárolja.
 
 ## <a name="resource-owner"></a>erőforrás tulajdonosa
 
@@ -147,25 +147,25 @@ A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározotta
 
 A [OAuth2 engedélyezési keretrendszere][OAuth2-Role-Def]által meghatározottak szerint a védett erőforrásokat üzemeltető kiszolgáló, amely képes a [hozzáférési jogkivonatot](#access-token)futtató [ügyfélalkalmazások](#client-application) által a védett erőforrásokra vonatkozó kérések fogadására és megválaszolására. Más néven védett erőforrás-kiszolgáló vagy erőforrás-alkalmazás.
 
-Az erőforrás-kiszolgáló elérhetővé teszi az API-kat, és kikényszeríti a védett erőforrások elérését [hatókörökön](#scopes) és [szerepkörökön](#roles)keresztül a OAuth 2,0 engedélyezési keretrendszer használatával. Ilyenek például az Azure AD Graph API, amely hozzáférést biztosít az Azure AD-bérlői információhoz, valamint az Office 365 API-kat, amelyek hozzáférést biztosítanak a levelezéshez és a naptárhoz. Mindkettő a [Microsoft Graph API][Microsoft-Graph]-n keresztül is elérhető.
+Az erőforrás-kiszolgáló elérhetővé teszi az API-kat, és kikényszeríti a védett erőforrások elérését [hatókörökön](#scopes) és [szerepkörökön](#roles)keresztül a OAuth 2,0 engedélyezési keretrendszer használatával. Ilyenek például a [Microsoft Graph API][Microsoft-Graph] , amely hozzáférést biztosít az Azure ad-bérlői információhoz, valamint az Office 365 API-kat, amelyek hozzáférést biztosítanak a levelezéshez és a naptárhoz. 
 
-Akárcsak egy ügyfélalkalmazás esetében, az erőforrás-alkalmazás identitásának konfigurációja az Azure AD-bérlőben való [regisztrációval](#application-registration) történik, amely az alkalmazás és a szolgáltatás egyszerű objektumát is megadja. Egyes Microsoft által biztosított API-k (például az Azure AD Graph API) előzetesen regisztrált egyszerű szolgáltatásokkal rendelkeznek, amelyek az üzembe helyezés során minden bérlőn elérhetők.
+Akárcsak egy ügyfélalkalmazás esetében, az erőforrás-alkalmazás identitásának konfigurációja az Azure AD-bérlőben való [regisztrációval](#application-registration) történik, amely az alkalmazás és a szolgáltatás egyszerű objektumát is megadja. Egyes Microsoft által biztosított API-k (például a Microsoft Graph API) a kiépítés során minden bérlőn elérhetők előre regisztrált egyszerű szolgáltatások.
 
 ## <a name="roles"></a>roles
 
 A [hatókörökhöz](#scopes)hasonlóan a szerepkörök lehetővé teszik az [erőforrás-kiszolgáló](#resource-server) számára a védett erőforrásokhoz való hozzáférés szabályozását. Kétféle típus létezik: a "felhasználói" szerepkör implementálja a szerepköralapú hozzáférés-vezérlést olyan felhasználók/csoportok számára, amelyek hozzáférést igényelnek az erőforráshoz, míg az "alkalmazás" szerepkör ugyanazokat valósít meg a hozzáférést igénylő [ügyfélalkalmazások](#client-application) számára.
 
-A szerepkörök erőforrás-definiált karakterláncok (például "költségek jóváhagyója", "csak olvasható", "könyvtár. ReadWrite. all"), a [Azure Portal][AZURE-portal] az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül kezelhetők, és az erőforrás [appRoles tulajdonságában][AAD-Graph-Sp-Entity]vannak tárolva. A Azure Portal a felhasználók "felhasználói" szerepkörökhöz való hozzárendelésére, valamint az "alkalmazás" szerepkör elérésére vonatkozó ügyfélalkalmazás- [engedélyek](#permissions) konfigurálására is használható.
+A szerepkörök erőforrás-definiált karakterláncok (például "költségek jóváhagyója", "csak olvasható", "könyvtár. ReadWrite. all"), a [Azure Portal][AZURE-portal] az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül kezelhetők, és az erőforrás [appRoles tulajdonságában][Graph-Sp-Resource]vannak tárolva. A Azure Portal a felhasználók "felhasználói" szerepkörökhöz való hozzárendelésére, valamint az "alkalmazás" szerepkör elérésére vonatkozó ügyfélalkalmazás- [engedélyek](#permissions) konfigurálására is használható.
 
-Az Azure AD Graph API által elérhetővé tett alkalmazási szerepkörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][AAD-Graph-Perm-Scopes]. Lépésenkénti megvalósítási példát a következő témakörben talál: [hozzáférés kezelése a RBAC és a Azure Portal használatával][AAD-RBAC].
+A Microsoft Graph API által elérhetővé tett alkalmazási szerepkörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Lépésenkénti megvalósítási példát a következő témakörben talál: [hozzáférés kezelése a RBAC és a Azure Portal használatával][AAD-RBAC].
 
 ## <a name="scopes"></a>hatókörök
 
 A [szerepkörökhöz](#roles)hasonlóan a hatókörök lehetővé teszik az [erőforrás-kiszolgáló](#resource-server) számára a védett erőforrásokhoz való hozzáférés szabályozását. A hatókörök a [hatókörön alapuló hozzáférés-][OAuth2-Access-Token-Scopes] vezérlés megvalósítására szolgálnak olyan [ügyfélalkalmazás](#client-application) esetében, amely a tulajdonosával delegált hozzáférést kapott az erőforráshoz.
 
-A hatókörök erőforrás-definiált karakterláncok (például "mail. Read", "Directory. ReadWrite. all"), a [Azure Portal][AZURE-portal] felügyelve az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül, és az erőforrás [oauth2Permissions tulajdonságában][AAD-Graph-Sp-Entity]vannak tárolva. A Azure Portal az ügyfélalkalmazások [delegált engedélyeinek](#permissions) konfigurálására is használható a hatókör eléréséhez.
+A hatókörök erőforrás-definiált karakterláncok (például "mail. Read", "Directory. ReadWrite. all"), a [Azure Portal][AZURE-portal] felügyelve az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül, és az erőforrás [oauth2Permissions tulajdonságában][Graph-Sp-Resource]vannak tárolva. A Azure Portal az ügyfélalkalmazások [delegált engedélyeinek](#permissions) konfigurálására is használható a hatókör eléréséhez.
 
-Az ajánlott eljárás elnevezési konvenció az "erőforrás. Operation. megkötés" formátum használata. Az Azure AD Graph API által közzétett hatókörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][AAD-Graph-Perm-Scopes]. Az Office 365-szolgáltatások által közzétett hatókörökkel kapcsolatban lásd: [office 365 API-engedélyek referenciája][O365-Perm-Ref].
+Az ajánlott eljárás elnevezési konvenció az "erőforrás. Operation. megkötés" formátum használata. Az Microsoft Graph API által elérhető hatókörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Az Office 365-szolgáltatások által közzétett hatókörökkel kapcsolatban lásd: [office 365 API-engedélyek referenciája][O365-Perm-Ref].
 
 ## <a name="security-token"></a>biztonsági jogkivonat
 
@@ -207,7 +207,7 @@ Olyan [ügyfélalkalmazás](#client-application) , amely egy webkiszolgálóról
 
 ## <a name="user-principal"></a>egyszerű Felhasználónév
 
-Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ egy alkalmazás példányának ábrázolására, a felhasználói tag objektum egy másik rendszerbiztonsági tag, amely egy felhasználót jelöl. Az Azure AD Graph [felhasználói entitás][AAD-Graph-User-Entity] definiálja egy felhasználói objektum sémáját, beleértve a felhasználóval kapcsolatos tulajdonságokat, például az utónév és a vezetéknév, az egyszerű felhasználónév, a címtárbeli szerepkör tagsága stb. Ez biztosítja az Azure AD felhasználói identitásának konfigurációját, hogy futásidőben hozzon létre egy felhasználói rendszerbiztonsági tag. Az egyszerű felhasználónév az egyszeri bejelentkezéshez, a belefoglalási [felhatalmazáshoz](#consent) , a hozzáférés-vezérlési döntések meghozatalához stb.
+Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ egy alkalmazás példányának ábrázolására, a felhasználói tag objektum egy másik rendszerbiztonsági tag, amely egy felhasználót jelöl. A Microsoft Graph [felhasználói erőforrástípus][Graph-User-Resource] definiálja egy felhasználói objektum sémáját, beleértve a felhasználóval kapcsolatos tulajdonságokat, például az utónév és a vezetéknév, az egyszerű felhasználónév, a címtárbeli szerepkör tagsága stb. Ez biztosítja az Azure AD felhasználói identitásának konfigurációját, hogy futásidőben hozzon létre egy felhasználói rendszerbiztonsági tag. Az egyszerű felhasználónév az egyszeri bejelentkezéshez, a belefoglalási [felhatalmazáshoz](#consent) , a hozzáférés-vezérlési döntések meghozatalához stb.
 
 ## <a name="web-client"></a>webes ügyfél
 
@@ -226,10 +226,10 @@ A következő Megjegyzések szakaszban visszajelzést és segítséget nyújthat
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: /graph/permissions-reference
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
+[Graph-Perm-Scopes]: /graph/permissions-reference
+[Graph-App-Resource]: /graph/api/resources/application
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md

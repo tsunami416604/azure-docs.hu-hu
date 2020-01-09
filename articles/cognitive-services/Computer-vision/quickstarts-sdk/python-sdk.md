@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a Pythonhoz készült ügyféloldali kódtár Computer Vision | Microsoft Docs'
-description: Ismerkedés a Computer Vision a Pythonhoz készült ügyféloldali kódtáraval.
+title: 'Rövid útmutató: Computer Vision a Pythonhoz készült ügyféloldali kódtár'
+description: Ismerkedjen meg az Computer Vision a Pythonhoz készült ügyféloldali kódtár ezzel a rövid útmutatóval.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 1e91b204401033c7c6c47484140720ab8076f9f9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9c98c64722fa76f96161a92f93c3d984193a7a24
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382208"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Rövid útmutató: Computer Vision a Pythonhoz készült ügyféloldali kódtár
 
@@ -194,7 +194,7 @@ python quickstart-file.py
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
+* [Portál](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 

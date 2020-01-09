@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427530"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>PowerShell-modulok Azure Machine Learning Studio (klasszikus)
 
 A PowerShell-modulok használatával programozott módon kezelheti a Studio (klasszikus) erőforrásait és eszközeit, például munkaterületeket, adatkészleteket és webszolgáltatásokat.
 
-A Studio-erőforrások klasszikus verzióját három PowerShell-modul használatával használhatja:
+A Studio (klasszikus) erőforrásait három PowerShell-modul használatával használhatja:
 
 * [Azure PowerShell az](#az-rm) az 2018-ben megjelent, a AzureRM összes funkcióját tartalmazza, bár különböző parancsmag-nevekkel
 * A 2016-ben kiadott [AzureRM](#az-rm) , a PowerShell helyébe
@@ -63,7 +63,7 @@ A klasszikus PowerShell-t az az vagy a AzureRM együtt is telepítheti, hogy az 
 | Egyéni modulok kezelése | | [Új – AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tanulmányozza a PowerShell-modul teljes dokumentációját:
 * [Klasszikus PowerShell](https://aka.ms/amlps)
 * [Azure PowerShell az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

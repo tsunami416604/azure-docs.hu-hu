@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 9fe52fc16b763a03738442bb49a4969244a1d3c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837585"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427557"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
 
@@ -59,15 +59,15 @@ Erőforrás letöltése az AI-galériából:
 
 ![Elem megnyitása az AI-galériából](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-Erőforrás letöltése a Studio klasszikus verziójából:
+Erőforrás letöltése a studióból (klasszikus):
 
-1. A Studio klasszikus verziójában válassza az **új**lehetőséget.
+1. A Studio (klasszikus) területen válassza az **új**lehetőséget.
 1. Válassza a **modul**, **kísérlet**vagy **Jegyzetfüzet**lehetőséget.
 1. Tallózással vagy kereséssel keresse meg a gyűjtemény erőforrását.
 1. Mutasson az egérrel az erőforráson, majd válassza a **Megnyitás a Studióban**lehetőséget.
     ![Open Gallery-kísérletet Machine Learning Studio (klasszikus) belülről](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-Ha az erőforrás a munkaterületen található, testreszabhatja és használhatja a Studio klasszikus verziójában létrehozott bármit.
+Ha az erőforrás a munkaterületen található, testreszabhatja és használhatja a Studio (klasszikus) használatával létrehozott bármit.
 
 Importált egyéni modul használata:
 
@@ -77,12 +77,12 @@ Importált egyéni modul használata:
 
 ## <a name="contribute-experiments"></a>A kísérletek elősegítése
 
-Az elemzési technikák bemutatásához, illetve a saját megoldásaink indításának megkezdéséhez a Studio klasszikus verziójában fejlesztett **kísérleteket** is megadhat.
+Az elemzési technikák bemutatásához, illetve a saját megoldásaink indításának megkezdéséhez a Studio (klasszikus) által fejlesztett **kísérletek** is hozzájárulhatnak.
 Ahogy mások a katalógusban való részvételre is kiterjednek, követheti a részvételi nézetek számát és letöltését.
 A felhasználók megjegyzéseket adhatnak hozzá, és megoszthatják az adatelemzési Közösség más tagjaival való hozzájárulásukat.
 Emellett olyan vitafórum-eszközzel is bejelentkezhet, mint például a Disqus, amelyekkel értesítéseket kaphat a hozzájárulásaihoz.
 
-1. Nyissa meg a kísérletet a Studio klasszikus verziójában.
+1. Nyissa meg a kísérletet a Studióban (klasszikus).
 
 1. A kísérlet vászon alatti műveletek listájában válassza a **Közzététel a**katalógusban lehetőséget.
 
@@ -121,7 +121,7 @@ A kísérlethez a következő információk bármelyikét módosíthatja közvet
 * Kísérlet neve
 * Összefoglalás vagy Leírás
 * Címkék
-* Image (Kép)
+* Lemezkép
 * Láthatósági beállítás (**nyilvános** vagy nem **listázva**)
 
 A kísérletet a katalógusból is törölheti.

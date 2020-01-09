@@ -1,20 +1,16 @@
 ---
-title: Az Azure Service Fabric Mesh terminológiája | Microsoft Docs
+title: Az Azure Service Fabric Mesh terminológiája
 description: Ez a cikk részletesen ismerteti az Azure Service Fabric Mesh által használt terminológiát, amely segít jobban megérteni a dokumentációban használt feltételeket.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663010"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351973"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-terminológia
 
@@ -82,7 +78,7 @@ A következő táblázat ismerteti a különböző alkalmazás-modelleket, valam
 | Service Fabric Mesh-alkalmazások | Erőforrás-modell (YAML & JSON) | VS 2017 |Nem támogatott |Nem támogatott | Támogatott – csak Mesh környezet | Nem támogatott|
 |Natív alkalmazások Service Fabric | Natív alkalmazás modellje (XML) | VS 2017 és VS 2015| Támogatott|Támogatott|Támogatott|Támogatott|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: b43ec36f6f3a9111656892c65af2592fce6eaed2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5fd13531e438b8bcda8e3720758e338c964f77af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931757"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444256"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -69,7 +69,7 @@ Az Oracle társított szolgáltatás a következő tulajdonságokat támogatja:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot az **Oracle**értékre kell beállítani. | Igen |
-| connectionString | Megadja az Oracle Database-példányhoz való kapcsolódáshoz szükséges adatokat. <br/>A mező megjelölése `SecureString`ként, hogy biztonságosan tárolja azt a Data Factoryban. A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . <br><br>**Támogatott kapcsolattípus**: az **Oracle SID** vagy az **Oracle szolgáltatás nevét** használhatja az adatbázis azonosításához:<br>– Ha SID-t használ: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás nevét használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
+| connectionString | Megadja az Oracle Database-példányhoz való kapcsolódáshoz szükséges adatokat. <br/>A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja Azure Key Vault a hitelesítő adatokat](store-credentials-in-key-vault.md) . <br><br>**Támogatott kapcsolattípus**: az **Oracle SID** vagy az **Oracle szolgáltatás nevét** használhatja az adatbázis azonosításához:<br>– Ha SID-t használ: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Ha a szolgáltatás nevét használja: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 >[!TIP]
@@ -130,10 +130,7 @@ Az Oracle-kapcsolatok titkosításának engedélyezéséhez két lehetőség kö
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
-            }
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -151,10 +148,7 @@ Az Oracle-kapcsolatok titkosításának engedélyezéséhez két lehetőség kö
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
-            },
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

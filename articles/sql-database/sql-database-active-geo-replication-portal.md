@@ -1,6 +1,6 @@
 ---
-title: 'Azure Portal: Geo-replikáció'
-description: Geo-replikáció konfigurálása egyetlen vagy készletezett adatbázishoz Azure SQL Database a Azure Portal használatával és a feladatátvétel kezdeményezése
+title: 'Oktatóanyag: Geo-replikálás & feladatátvétel a portálon'
+description: Konfigurálja a Geo-replikálást egyetlen vagy készletezett adatbázishoz Azure SQL Database a Azure Portal használatával és a feladatátvétel elindításával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348876"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Az aktív geo-replikáció konfigurálása Azure SQL Databasehoz a Azure Portal és a feladatátvétel kezdeményezése
 
@@ -48,7 +48,7 @@ A másodlagos létrehozása és összevetése után az adatok megkezdik az első
 1. A [Azure Portal](https://portal.azure.com)keresse meg a Geo-replikációhoz beállítani kívánt adatbázist.
 2. Az SQL Database lapon válassza a **geo-replikálás**lehetőséget, majd válassza ki a régiót a másodlagos adatbázis létrehozásához. Bármelyik régiót kiválaszthatja, amely nem az elsődleges adatbázist üzemeltető régió, hanem a [párosított régiót](../best-practices-availability-paired-regions.md)is ajánljuk.
 
-    ![Aktív georeplikáció konfigurálása](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
+    ![Georeplikációk konfigurálása](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
 3. Válassza ki vagy konfigurálja a másodlagos adatbázis kiszolgálóját és díjszabási szintjét.
 
     ![Másodlagos konfigurálása](./media/sql-database-geo-replication-portal/create-secondary.png)
@@ -91,7 +91,7 @@ Ez a művelet véglegesen leállítja a replikálást a másodlagos adatbázisba
     ![Másodlagos eltávolítása](./media/sql-database-geo-replication-portal/remove-secondary.png)
 5. Megnyílik egy megerősítő ablak. Az **Igen** gombra kattintva távolítsa el az adatbázist a földrajzi replikálási partnerségből. (Állítsa azt egy írható-olvasható adatbázisba, amely nem része egyetlen replikációnak sem.)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az aktív földrajzi replikálásról: [Active geo-Replication](sql-database-active-geo-replication.md).
 * További információ az automatikus feladatátvételi csoportokról: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)

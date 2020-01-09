@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre, kezelhet és törölhet Azure Ro
 keywords: Ansible, Azure, devops, bash, ötletekbõl, hálózatkezelés, útvonal, útválasztási táblázat
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d1e44a98405bc1009f6f3d56d90fc1fd655d77d5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156490"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659797"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Oktatóanyag: az Azure Route-táblázatok konfigurálása a Ansible használatával
 
@@ -30,7 +30,7 @@ Az Azure automatikusan irányítja a forgalmat az Azure-alhálózatok, a virtuá
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-Az ebben a szakaszban található forgatókönyv-kód egy útválasztási táblázatot hoz létre. Az útvonal-táblázat korlátaival kapcsolatos információkért lásd: [Azure-korlátok](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Az ebben a szakaszban található forgatókönyv-kód egy útválasztási táblázatot hoz létre. Az útvonal-táblázat korlátaival kapcsolatos információkért lásd: [Azure-korlátok](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
 
 Mentse a következő forgatókönyvet `route_table_create.yml` néven:
 

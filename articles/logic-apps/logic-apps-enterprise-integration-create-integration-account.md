@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793059"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453411"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integrációs fiókok létrehozása és kezelése a B2B vállalati integrációk Azure Logic Apps
 
@@ -59,8 +59,8 @@ Ehhez a feladathoz a Azure Portal az ebben a szakaszban, [Azure PowerShell](/pow
    |----------|----------|-------|-------------|
    | **Name (Név)** | Igen | <*integráció – fiók neve*> | Az integrációs fiók neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "Fabrikam-Integration" szolgáltatást használja. |
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport neve*> | A kapcsolódó erőforrások rendszerezéséhez használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. Ebben a példában hozzon létre egy "FabrikamIntegration-RG" nevű új erőforráscsoportot. |
-   | **Tarifacsomag** | Igen | <*díjszabás*> | Az integrációs fiók díjszabási szintje, amelyet később módosíthat. Ebben a példában válassza az **ingyenes**lehetőséget. További információkért tekintse meg a következő témaköröket: <p>- [Logic apps díjszabási modellje](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport neve*> | A kapcsolódó erőforrások rendszerezéséhez használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) neve. Ebben a példában hozzon létre egy "FabrikamIntegration-RG" nevű új erőforráscsoportot. |
+   | **Tarifacsomag** | Igen | <*díjszabás*> | Az integrációs fiók díjszabási szintje, amelyet később módosíthat. Ebben a példában válassza az **ingyenes**lehetőséget. További információt az alábbi témakörökben talál: <p>- [Logic apps díjszabási modellje](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Hely** | Igen | <*Azure-régió*> | Az integrációs fiók metaadatait tároló régió. Vagy válassza ki ugyanazt a helyet, mint a logikai alkalmazás, vagy hozza létre a logikai alkalmazásokat az integrációs fiókkal megegyező helyen. Ehhez a példához használja az "USA nyugati régiója" kifejezést. <p>**Megjegyzés**: egy integrációs [szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)belüli integrációs fiók létrehozásához válassza ki az ISE helyet. További információ: [integrációs fiókok létrehozása ISE-ben](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Nem | Kikapcsolva | Tartsa meg a **kikapcsolt** beállítást ebben a példában. |
    |||||
@@ -112,7 +112,7 @@ Egy integrációs fiók [korlátainak](../logic-apps/logic-apps-limits-and-confi
 
 A módosítás végrehajtásához a Azure Portal az ebben a részben vagy az [Azure CLI](#upgrade-tier-azure-cli)-ben leírt lépéseket követve használhatja.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portál
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 

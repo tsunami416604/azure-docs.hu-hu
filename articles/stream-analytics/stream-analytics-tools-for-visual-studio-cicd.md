@@ -1,19 +1,18 @@
 ---
 title: A Azure Stream Analytics CI/CD NuGet csomag használata
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet-csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 6f5ba06841af580cd80b3b46bec972f717ded044
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354445"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>A Azure Stream Analytics CI/CD NuGet csomag használata az integrációhoz és a fejlesztéshez 
 Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.

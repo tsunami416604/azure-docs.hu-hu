@@ -50,6 +50,7 @@
 - name: Útmutató
   items:
     - name: Örökölt összetevők
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: Migrálás az Azure Media Encoderből
@@ -462,6 +463,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming HEVC
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: Örökölt összetevők
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: További források
   items:
     - name: Azure Media Services-közösség

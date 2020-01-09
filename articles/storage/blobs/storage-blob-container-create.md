@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372210"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Tároló létrehozása vagy törlése az Azure Storage-ban .NET-tel
 
@@ -37,7 +37,7 @@ Tároló létrehozásához hívja a következő módszerek egyikét:
 
 - [Létrehozás](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
-- [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
+- [Createifnotexists metódust](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
 A **create** és a **CreateAsync** metódus kivételt jelez, ha már létezik ilyen nevű tároló.
@@ -126,7 +126,7 @@ A tárolók .NET-ben való törléséhez használja a következő módszerek egy
 
 A **delete** és a **DeleteAsync** metódus kivételt jelez, ha a tároló nem létezik.
 
-A **DeleteIfNotExists** és a **DeleteIfNotExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy a tároló törölve lett-e. Ha a megadott tároló nem létezik, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy a tároló nem lett törölve.
+A **deleteifexists paranccsal** és a **DeleteIfExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy a tároló törölve lett-e. Ha a megadott tároló nem létezik, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy a tároló nem lett törölve.
 
 A tárolók törlése után nem hozhat létre azonos nevű tárolót legalább 30 másodpercig, és esetleg hosszabb időt is. A tároló törlését követően az azonos nevű tároló létrehozása sikertelen lesz a 409-es HTTP-hibakód miatt (ütközés). A tárolón vagy a benne található blobokon végrehajtott egyéb műveletek sikertelenek lesznek a 404-as HTTP-hibakód miatt (nem található) a tároló törlésekor.
 
@@ -185,7 +185,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Tároló létrehozása művelet](/rest/api/storageservices/create-container)
 - [Tároló törlése művelet](/rest/api/storageservices/delete-container)

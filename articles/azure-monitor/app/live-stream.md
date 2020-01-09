@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406752"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: figyelje & diagnosztizálása 1 másodperces késéssel
 
@@ -35,7 +35,7 @@ Az élő metrikák jelenleg ASP.NET, ASP.NET Core, Azure Functions, Java és Nod
 
 ## <a name="get-started"></a>Az első lépések
 
-1. Ha még nem [telepítette Application Insights](../../azure-monitor/azure-monitor-app-hub.md) a webalkalmazásban, tegye meg most.
+1. Ha még nem [telepítette Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) a webalkalmazásban, tegye meg most.
 2. A standard Application Insights csomagokon kívül a [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) csomagok is szükségesek az élő metrikák adatfolyamának engedélyezéséhez.
 3. **Frissítsen a Application Insights csomag legújabb verziójára** . A Visual Studióban kattintson a jobb gombbal a projektre, és válassza a **Nuget-csomagok kezelése**lehetőséget. Nyissa meg a **frissítések** lapot, és válassza ki az összes Microsoft. ApplicationInsights. * csomagot.
 
@@ -157,7 +157,7 @@ Az Azure Function apps (v2) esetében a csatorna API-kulccsal való biztonságos
 
 Hozzon létre egy API-kulcsot a Application Insights erőforrásból, és lépjen a függvényalkalmazás **alkalmazás beállításaihoz** . Válassza az **új beállítás hozzáadása** lehetőséget, és adjon meg egy `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` nevet és egy olyan értéket, amely megfelel az API-kulcsnak.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0-Beta vagy újabb verzió szükséges)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0 vagy újabb verzió szükséges)
 
 Módosítsa a startup.cs-fájlt a következőképpen:
 
@@ -202,7 +202,7 @@ Az alapszintű mérőszámok közé tartozik a kérelem, a függőség és a kiv
 
 Alapértelmezés szerint az élő metrikák le vannak tiltva a Node. js SDK-ban. Az élő metrikák engedélyezéséhez vegyen fel `setSendLiveMetrics(true)`eket a [konfigurációs módszerekhez](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) az SDK inicializálásakor.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Nincsenek adatok? Ha az alkalmazás védett hálózaton van: Élő metrikastream eltérő IP-címeket használ, mint a többi Application Insights telemetria. Győződjön meg arról, hogy az [IP-címek](../../azure-monitor/app/ip-addresses.md) meg vannak nyitva a tűzfalon.
 

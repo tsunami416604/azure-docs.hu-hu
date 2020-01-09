@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Batch-fiók létrehozása – Felhasználói előfizetés | Microsoft Docs
-description: Azure CLI-példaszkript – Batch-fiók létrehozása felhasználói előfizetési módban
+title: Azure CLI parancsfájl – példa – batch-fiók létrehozása – felhasználói előfizetés
+description: Ez a szkript létrehoz egy Azure Batch-fiókot felhasználói előfizetési módban. Ez a fiók számítási csomópontokat foglal le az előfizetésében.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: a22bd7a2ab4e3a9c0d56aa9f4a2137881b6216af
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 55429e0aafe978cfa6861d73b132ebcee26de493
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449694"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI-példa: Batch-fiók létrehozása felhasználói előfizetési módban
 
@@ -55,6 +55,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).

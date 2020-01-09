@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454292"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával
 
-Az Azure VPN Gateway lehetővé teszi, hogy olyan hibrid megoldást hozzon létre, amely a helyszíni hálózat és az Azure-beli virtuális hálózat közötti biztonságos kapcsolat szükségességével foglalkozik. A követelmények egyediek, így a helyszíni VPN-eszköz választható. Az Azure jelenleg [számos olyan VPN-eszközt](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) támogat, amelyek az eszközök forgalmazójával való együttműködésben folyamatosan vannak érvényesítve. A helyszíni VPN-eszköz konfigurálása előtt tekintse át az eszközre vonatkozó konfigurációs beállításokat. Hasonlóképpen, az Azure VPN Gateway a kapcsolatok létesítéséhez használt [támogatott IPsec-paraméterek](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) készletével van konfigurálva. Jelenleg nincs lehetőség az IPsec-paraméterek adott kombinációjának megadására vagy kiválasztására az Azure-VPN Gateway. A helyszíni és az Azure közötti sikeres kapcsolat létrehozásához a helyszíni VPN-eszköz beállításainak összhangban kell lenniük az Azure VPN Gateway által előírt IPsec-paraméterekkel. Ha a beállítások helyesek, a kapcsolat megszakad, és a hibák elhárítása nem volt triviális, és általában órákig tartott a probléma azonosítása és megoldása érdekében.
+Az Azure VPN Gateway lehetővé teszi, hogy olyan hibrid megoldást hozzon létre, amely a helyszíni hálózat és az Azure-beli virtuális hálózat közötti biztonságos kapcsolat szükségességével foglalkozik. A követelmények egyediek, így a helyszíni VPN-eszköz választható. Az Azure jelenleg [számos olyan VPN-eszközt](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) támogat, amelyek az eszközök forgalmazójával való együttműködésben folyamatosan vannak érvényesítve. A helyszíni VPN-eszköz konfigurálása előtt tekintse át az eszközre vonatkozó konfigurációs beállításokat. Hasonlóképpen, az Azure VPN Gateway a kapcsolatok létesítéséhez használt [támogatott IPsec-paraméterek](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) készletével van konfigurálva. Jelenleg nincs lehetőség az IPsec-paraméterek adott kombinációjának megadására vagy kiválasztására az Azure-VPN Gateway. A helyszíni és az Azure közötti sikeres kapcsolat létrehozásához a helyszíni VPN-eszköz beállításainak összhangban kell lenniük az Azure VPN Gateway által előírt IPsec-paraméterekkel. Ha a beállítások helytelenek, a kapcsolat megszakad, és a hibák elhárítása nem volt triviális, és általában órákig tartott a probléma azonosítása és megoldása érdekében.
 
 Az Azure Network Watcher hibaelhárítási funkciója lehetővé teszi az átjáróval és a kapcsolatokkal kapcsolatos problémák diagnosztizálását, és néhány percen belül elegendő információval szolgál a probléma kijavításáról.
 
@@ -82,14 +82,14 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 ### <a name="gateway"></a>Átjáró
 
-| Hiba típusa | Ok | Napló|
+| Hibatípus | Ok | Napló|
 |---|---|---|
-| Nincs hiba | Ha nem észlelhető hiba. |Igen|
+| NoFault | Ha nem észlelhető hiba. |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll.  |Nem|
+| PlannedMaintenance |  Az átjárópéldány karbantartása van folyamatban.  |Nem|
 | UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet. | Nem |
 | VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Ez akkor fordul elő, ha az állapot-ellenőrzés sikertelen. | Nem |
-| PlatformInActive | Probléma van a platformmal. | Nem|
+| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | Nem|
 | ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
 | NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| Nem|
 | ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Igen|
@@ -97,11 +97,11 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 ### <a name="connection"></a>Kapcsolat
 
-| Hiba típusa | Ok | Napló|
+| Hibatípus | Ok | Napló|
 |---|---|---|
-| Nincs hiba | Ha nem észlelhető hiba. |Igen|
+| NoFault | Ha nem észlelhető hiba. |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll.  |Nem|
+| PlannedMaintenance | Az átjárópéldány karbantartása van folyamatban.  |Nem|
 | UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet.  | Nem |
 | VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | Nem |
 | ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | Nem |

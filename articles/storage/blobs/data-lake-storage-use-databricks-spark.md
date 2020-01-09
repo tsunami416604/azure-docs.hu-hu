@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: bbe936fd572a8e23fb6e7c5da4a4bffef1c8bf7e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462576"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -75,7 +75,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.  |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/resource-group-overview.md). |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).       |
     |**Tarifacsomag**     |  Válassza a **standard**lehetőséget.     |
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
 4. Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
-## <a name="ingest-data"></a>Adatok betöltése
+## <a name="ingest-data"></a>Adatok kigyűjtése
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
 

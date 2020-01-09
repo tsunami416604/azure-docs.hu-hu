@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és Node. js alapján'
+title: 'Gyors útmutató: keresési lekérdezések javaslata a Bing Autosuggest REST API és Node. js-sel'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API valós időben.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 0dd25f5ff3767e65eeb293d6a046da034d5c8879
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9a5cce8102e3a1b3f9beaad8c42b278c56560be9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384934"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és Node. js alapján
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Gyors útmutató: keresési lekérdezések javaslata a Bing Autosuggest REST API és Node. js-sel
 
 Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű Node. js-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)
 
@@ -37,7 +37,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
     let https = require ('https');
     ```
 
-2. Hozzon létre változókat az API-végpont gazdagépéhez és elérési útjához, az előfizetési kulcshoz, a [piaci kódhoz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és a keresési kifejezéshez.
+2. Hozzon létre változókat az API-végpont gazdagépéhez és elérési útjához, az előfizetési kulcshoz, a [piaci kódhoz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -52,7 +52,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása.
 
-1. Hozzon létre egy paraméter-karakterláncot a lekérdezéshez úgy, hogy hozzáfűzi a (z) `mkt=` paraméterhez a piaci kódot, és lekérdezi a `q=` paramétert.
+1. Hozzon létre egy paraméter-karakterláncot a lekérdezéshez úgy, hogy hozzáfűzi a piaci kódot a `mkt=` paraméterhez, és lekérdezi a `q=` paramétert.
 
     ```javascript 
     let params = '?mkt=' + mkt + '&q=' + query;
@@ -102,7 +102,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
         });
         ```
 
-    3. Ha egy **záró** jelzőt jelez, a felhasználó `JSON.parse()` és `JSON.stringify()` a válasz nyomtatása.
+    3. Ha a rendszer jelzi a **végpont** jelzőjét, a felhasználó `JSON.parse()` és `JSON.stringify()` a válasz kinyomtatásához.
     
         ```javascript
         response.on ('end', function () {
@@ -115,7 +115,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
         });
         ```
 
-2. Hívja `get_suggestions()` meg a kérés küldését a Bing AutoSuggest API.
+2. Hívja meg a `get_suggestions()`t, hogy elküldje a kérést a Bing Autosuggest APInak.
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
@@ -185,7 +185,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/autosuggest.md)

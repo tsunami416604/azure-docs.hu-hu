@@ -4,15 +4,15 @@ description: Ez a cikk azokat a szempontokat és javaslatokat ismerteti, amelyek
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395761"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>A Azure Monitor naplók üzembe helyezésének megtervezése
 
@@ -102,7 +102,7 @@ A következő táblázat összefoglalja a hozzáférési módokat:
 |:---|:---|:---|
 | Kik az egyes modellek? | Központi felügyelet. Azok a rendszergazdák, akiknek olyan adatgyűjtést és felhasználókat kell konfigurálniuk, akiknek számos erőforráshoz kell hozzáféréssel rendelkezniük. Jelenleg olyan felhasználók számára is szükséges, akiknek az Azure-on kívüli erőforrásokhoz is hozzá kell férniük. | Alkalmazás-csapatok. A figyelt Azure-erőforrások rendszergazdái. |
 | Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure-engedélyekkel](manage-access.md#manage-access-using-azure-permissions). Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
-| Mi az engedélyek hatóköre? | munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók a munkaterületen lévő összes naplót le tudják kérdezni azokról a táblákról, amelyekhez engedéllyel rendelkeznek. Lásd: [Table Access Control](manage-access.md#table-level-rbac) | Azure-erőforrás. A felhasználó bármely munkaterületről lekérdezheti az egyes erőforrások, erőforráscsoportok vagy előfizetések naplóit, de más erőforrásokhoz nem tud naplókat lekérdezni. |
+| Mi az engedélyek hatóköre? | Munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók a munkaterületen lévő összes naplót le tudják kérdezni azokról a táblákról, amelyekhez engedéllyel rendelkeznek. Lásd: [Table Access Control](manage-access.md#table-level-rbac) | Azure-erőforrás. A felhasználó bármely munkaterületről lekérdezheti az egyes erőforrások, erőforráscsoportok vagy előfizetések naplóit, de más erőforrásokhoz nem tud naplókat lekérdezni. |
 | Hogyan férhet hozzá a felhasználói naplókhoz? | <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics munkaterületekről**.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> | <ul><li>**Naplók** indítása az Azure-erőforrás menüjéből</li></ul> <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics munkaterületekről**.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Hozzáférés-vezérlési mód
@@ -128,7 +128,9 @@ A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource M
 
 ## <a name="ingestion-volume-rate-limit"></a>Betöltési mennyiség maximális száma
 
-A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az alapértelmezett betöltési arány küszöbértéke **500 MB/perc/** munkaterületre van állítva. Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési kötet továbbra is meghaladja a díjszabási korlátot, vagy hamarosan várhatóan elérheti azt, akkor a támogatási kérés megnyitásával növelheti a munkaterületet.
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. Az alapértelmezett betöltési arány küszöbértéke **6 GB/perc/** munkaterületre van állítva. Ez egy hozzávetőleges érték, mivel a tényleges méret eltérő lehet az adattípusok között a napló hosszától és a tömörítési aránytól függően. Ez a korlát nem vonatkozik az ügynököktől vagy adatgyűjtő [API](data-collector-api.md)-ból továbbított adatokra.
+
+Ha egy adott munkaterülethez magasabb sebességgel küldi az adatmennyiséget, egyes adatvesztést okoz, és a rendszer 6 óránként küldi el az eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési kötet továbbra is meghaladja a díjszabási korlátot, vagy hamarosan várhatóan elérheti azt, akkor a támogatási kérés megnyitásával növelheti a munkaterületet.
  
 Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [naplózási riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékű eredmények száma értékkel.
 

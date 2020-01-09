@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435873"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 
@@ -40,11 +40,11 @@ Megtudhatja, hogyan konfigurálhatja a Apache Hive Apache Ranger-szabályzatait.
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
 
-A hiveruser1 és a hiveuser2 létrehozásával kapcsolatos információkért tekintse meg [a HDInsight-fürt ESP-vel történő létrehozását](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)ismertető témakört. Ebben a cikkben a két felhasználói fiókot használja.
+A hiveruser1 és a hiveuser2 létrehozásával kapcsolatos információkért tekintse meg [a HDInsight-fürt ESP-vel történő létrehozását](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)ismertető témakört. Ebben a cikkben a két felhasználói fiókot használja.
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
 
-Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable eléréséhez. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó a HDInsight- [fürt és az ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)együttes használatával lett létrehozva. A következő szakaszban tesztelheti a két házirendet az Excelben.
+Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable eléréséhez. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó a HDInsight- [fürt és az ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)együttes használatával lett létrehozva. A következő szakaszban tesztelheti a két házirendet az Excelben.
 
 **Ranger-házirendek létrehozása**
 
@@ -56,10 +56,10 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |---|---|
     |Házirend neve|Read-hivesampletable-all|
     |Struktúra-adatbázis|alapértelmezett|
-    |tábla|hivesampletable|
+    |table|hivesampletable|
     |Struktúra oszlop|*|
     |Felhasználó kiválasztása|hiveuser1|
-    |Engedélyek|Válassza|
+    |Engedélyek|válassza az|
 
     ![HDInsight ESP Ranger kaptár-szabályzatok konfigurálása](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -74,10 +74,10 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |---|---|
     |Házirend neve|Read-hivesampletable-devicemake|
     |Struktúra-adatbázis|alapértelmezett|
-    |tábla|hivesampletable|
+    |table|hivesampletable|
     |Struktúra oszlop|ClientID, devicemake|
     |Felhasználó kiválasztása|hiveuser2|
-    |Engedélyek|Válassza|
+    |Engedélyek|válassza az|
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-adatforrás létrehozása
 

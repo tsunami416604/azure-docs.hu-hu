@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461468"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
 
@@ -101,7 +101,7 @@ Amikor egy számítógép az internetről próbál csatlakozni az adatbázis-kis
 
 ### <a name="connections-from-inside-azure"></a>Kapcsolatok az Azure-on belül
 
-Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Ha egy Azure-alkalmazás megpróbál csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Egy olyan tűzfal-beállítás, amely a *0.0.0.0* értékkel megegyező IP-címekkel rendelkezik, azt jelzi, hogy az Azure-kapcsolatok engedélyezettek. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el a SQL Database-kiszolgálót.
+Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Ha egy Azure-alkalmazás megpróbál csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Egy olyan tűzfal-beállítás, amely a *0.0.0.0* értékkel megegyező IP-címekkel rendelkezik, azt jelzi, hogy az Azure-kapcsolatok engedélyezettek. Ez közvetlenül az Azure Portal paneljén kapcsolható be a tűzfalszabályok beállításával, valamint az **Azure-szolgáltatások és-erőforrások engedélyezésével, hogy hozzáférjenek ehhez** a kiszolgálóhoz a **tűzfalak és a virtuális hálózatok** beállításaiban. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el a SQL Database-kiszolgálót.
 
 > [!IMPORTANT]
 > Ez a beállítás úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure összes kapcsolatát, beleértve a más ügyfelek előfizetései által létesített kapcsolatokat is. Ha ezt a beállítást választja, győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei csak a jogosult felhasználókra korlátozzák a hozzáférést.

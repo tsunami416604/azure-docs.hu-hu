@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430225"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: jelentéskészítés a felhasználói fiókok automatikus üzembe helyezéséhez
 
@@ -55,13 +55,13 @@ Innen elérheti a kiépítési folyamatjelző sávot és a kiépítési naplóka
 A [kiépítési folyamatjelző sáv](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) az adott alkalmazás **létesítés** lapján látható. Az aktuális **állapot** szakaszban a **Beállítások**alatt található, és az aktuális kezdeti vagy növekményes ciklus állapotát jeleníti meg. Ez a szakasz a következőket is tartalmazza:
 
 * A szinkronizált felhasználók és/csoportok teljes száma, amelyek jelenleg a forrásrendszer és a célként megadott rendszer közötti kiépítés hatókörében vannak.
-* A szinkronizálás legutóbbi futtatásakor. A szinkronizálások jellemzően 20-40 percenként történnek, a [kezdeti ciklus](user-provisioning.md#what-happens-during-provisioning) befejeződése után.
-* Azt határozza meg, hogy befejeződött-e a [kezdeti ciklus](user-provisioning.md#what-happens-during-provisioning) .
+* A szinkronizálás legutóbbi futtatásakor. A szinkronizálások jellemzően 20-40 percenként történnek, a [kezdeti ciklus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) befejeződése után.
+* Azt határozza meg, hogy befejeződött-e a [kezdeti ciklus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .
 * Azt határozza meg, hogy a kiépítési folyamat karanténba helyezése megtörtént-e, és hogy a karantén milyen okból áll fenn (például érvénytelen rendszergazdai hitelesítő adatok miatt nem lehet kommunikálni a megcélzott rendszerrel).
 
 Az **aktuális állapotnak** az első hely rendszergazdáinak kell megkeresnie a kiépítési feladatok működési állapotát.
 
- ![Összegző jelentés](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Összesítő jelentés](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Kiépítési naplók (előzetes verzió)
 

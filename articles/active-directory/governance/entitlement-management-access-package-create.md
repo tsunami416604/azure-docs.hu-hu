@@ -1,5 +1,5 @@
 ---
-title: Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: Új hozzáférési csomag létrehozása a jogosultságok kezelésében – Azure AD
 description: Megtudhatja, hogyan hozhat létre olyan új erőforrás-hozzáférési csomagot, amelyet meg szeretne osztani a Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422699"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -131,7 +131,7 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
     Az új hozzáférési csomag megjelenik a hozzáférési csomagok listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag igénylésére szolgáló hivatkozás megosztása](entitlement-management-access-package-settings.md)
 - [Hozzáférési csomag erőforrás-szerepköreinek módosítása](entitlement-management-access-package-resources.md)

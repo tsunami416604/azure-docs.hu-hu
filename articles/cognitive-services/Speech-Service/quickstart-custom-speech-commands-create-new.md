@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446871"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)
 
@@ -24,10 +24,15 @@ Az alkalmazás felismeri a "TV bekapcsolása" kifejezést, és egy egyszerű üz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy beszédfelismerési előfizetés. [Próbálja ki ingyenesen a Speech szolgáltatást](~/articles/cognitive-services/speech-service/get-started.md).
+- Egy beszédfelismerési előfizetés. 
+
+Ha nem rendelkezik beszédfelismerési előfizetéssel, létrehozhat egyet a [Speech Studióval](https://speech.microsoft.com/) , és kiválaszthatja **a beszédfelismerési erőforrás létrehozása**lehetőséget.
+
+  > [!div class="mx-imgBorder"]
+  > [![hozzon létre egy projektet](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Az előzetes verzióban csak az westus2 régió támogatott az előfizetési kulcsok esetében.
+  > Az előzetes verzióban csak a westus2 régió támogatott.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ugrás a Speech Studio egyéni parancsaihoz
 
@@ -65,6 +70,20 @@ Az alapértelmezett nézet az egyéni parancsok által létrehozott alkalmazáso
 1. A létrehozást követően válassza ki a projektet.
 
 A nézetnek most az egyéni parancsok alkalmazás áttekintését kell használnia.
+
+## <a name="update-luis-resources-optional"></a>LUIS-erőforrások frissítése (nem kötelező)
+
+Frissítheti a szerzői erőforrás készletét az új projekt ablakban, és beállíthat egy előrejelzési erőforrást, amely a bemenetek felismeréséhez használatos a futtatókörnyezetben. 
+
+> [!NOTE]
+> Meg kell adnia egy előrejelzési erőforrást, mielőtt az alkalmazás megkezdi az előrejelzések előrejelzését az authoring Resource által biztosított 1 000-kérelmek után.
+
+> [!div class="mx-imgBorder"]
+> ![LUIS-erőforrások beállítása](media/custom-speech-commands/set-luis-resources.png)
+
+1. Navigáljon a LUIS-erőforrások ablaktáblára a bal oldali ablaktábla **Beállítások** elemének kiválasztásával, majd a középső ablaktáblán található **Luis-erőforrásokkal** .
+1. Válasszon előrejelzési erőforrást, vagy hozzon létre egyet az **új erőforrás létrehozása** lehetőség kiválasztásával.
+1. Kattintson a **Mentés** gombra
 
 ## <a name="create-a-new-command"></a>Új parancs létrehozása
 
@@ -116,11 +135,10 @@ Most adjon hozzá egy befejezési szabályt, amely arra figyelmezteti a felhaszn
 > [!div class="mx-imgBorder"]
 > ![befejezési szabály létrehozása](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Beállítás    | Ajánlott érték                        | Leírás                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| Szabály neve  | "ConfirmationResponse"                 | A szabály célját leíró név          |
-| Feltételek | None                                   | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+| Beállítás    | Ajánlott érték                          | Leírás                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| Szabály neve  | "ConfirmationResponse"                   | A szabály célját leíró név          |
+| Feltételek | None                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
 | Műveletek    | SpeechResponse "– ok, bekapcsolás a TÉVÉn" | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
 ## <a name="try-it-out"></a>Próbálja ki!

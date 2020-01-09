@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439466"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
 
@@ -57,7 +57,7 @@ Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factor
 
     b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét. 
          
-    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-overview.md) ismertető cikket. 
+    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adattárak (például az Azure Storage és a SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is használhatók.
 8. Kattintson a **Létrehozás** gombra. 
@@ -95,13 +95,13 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow3.png)
 1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset1.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset1.png)
 1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset2.png)
 1. Nevezze el az adatkészlet **MoviesDB**. A társított szolgáltatás legördülő menüben válassza az **új**lehetőséget.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset3.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset3.png)
 1. A társított szolgáltatás létrehozása képernyőn nevezze el a ADLS Gen2 társított szolgáltatás **ADLSGen2** , és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolatok hitelesítő adatait. Ebben az oktatóanyagban a fiók kulcsát használjuk a Storage-fiókhoz való kapcsolódáshoz. Kattintson a **Kapcsolódás tesztelése** lehetőségre a hitelesítő adatok helyes beírásának ellenőrzéséhez. Ha elkészült, kattintson a Létrehozás gombra.
 
     ![Társított szolgáltatás](media/tutorial-data-flow/ls1.png)
@@ -163,11 +163,11 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Sink (Fogadó)](media/tutorial-data-flow/sink2.png)
 1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset1.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset1.png)
 1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
-1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása**lehetőségnél. Kattintson a Befejezés gombra.
+    ![Adatkészlet](media/tutorial-data-flow/dataset2.png)
+1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása**lehetőségnél. Kattintson a Finish (Befejezés) gombra.
     
     ![Sink (Fogadó)](media/tutorial-data-flow/sink3.png)
 

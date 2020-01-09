@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406918"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
@@ -55,7 +55,7 @@ A .NET Core 3,0-ben futó alkalmazások esetében az SDK automatikusan összegy�
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> A Microsoft. AspNetCore. hosting kategóriájú számlálók csak a Asp.Net Core-alkalmazásokban lesznek hozzáadva.
+> A Microsoft. AspNetCore. hosting kategória számlálói csak ASP.NET Core alkalmazásokban vannak hozzáadva.
 
 ## <a name="customizing-counters-to-be-collected"></a>A gyűjteni kívánt számlálók testreszabása
 
@@ -95,19 +95,19 @@ Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlál�
 
 ## <a name="event-counters-in-metric-explorer"></a>Az események számlálói a metrika Explorerben
 
-Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután a EventCounter-metrikák a PerformanceCounter kategóriában jelennek meg.
+Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután az EventCounter mérőszámok az egyéni kategória alatt jelennek meg.
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights](./media/event-counters/metrics-explorer-counter-list.png)ban jelentett számlálók
 
 ## <a name="event-counters-in-analytics"></a>Az elemzési események számlálói
 
-Az **performanceCounters** táblában is kereshet és megjeleníthet Event Counter-jelentéseket az [Analyticsben](../../azure-monitor/app/analytics.md).
+Az **customMetrics** táblában is kereshet és megjeleníthet Event Counter-jelentéseket az [Analyticsben](../../azure-monitor/app/analytics.md).
 
 Például a következő lekérdezés futtatásával tekintheti meg, hogy a rendszer milyen számlálókat gyűjt, és hogyan érhető el a lekérdezéshez:
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 Egy adott számláló diagramjának lekéréséhez (például: `ThreadPool Completed Work Item Count`) a legutóbbi időszak alatt futtassa a következő lekérdezést.
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > egyetlen számláló ![Csevegése Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy olyan `cloud_RoleInstance` oszlopot, amely a gazdagép azon példányának identitását jelzi, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
+A többi telemetria hasonlóan a **customMetrics** is tartalmaz egy olyan `cloud_RoleInstance` oszlopot, amely a gazdagép azon példányának identitását jelzi, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
 
 ## <a name="alerts"></a>Értesítések
 Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/app/alerts.md) , amely figyelmezteti, ha egy esemény számlálója a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.

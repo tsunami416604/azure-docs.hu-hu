@@ -1,5 +1,5 @@
 ---
-title: A fenntartott kapacitással rendelkező Azure Cosmos DB erőforrások költségeit optimalizálhatja
+title: Fenntartott kapacitás a Azure Cosmos DB a Cost optimalizálásához
 description: Megtudhatja, hogyan vásárolhat Azure Cosmos DB fenntartott kapacitást a számítási költségek mentéséhez.
 author: bandersmsft
 ms.service: cosmos-db
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0ee43fe0996c05f4e59f6107ba52fac19b83cdef
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441933"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>A Cost és a fenntartott kapacitás optimalizálása Azure Cosmos DB
 
 Azure Cosmos DB fenntartott kapacitással pénzt takaríthat meg, ha akár egy évig, akár három évig Azure Cosmos DB erőforrásokra vonatkozó foglalást végez. A Azure Cosmos DB fenntartott kapacitással kedvezményt kaphat a Cosmos DB erőforrások számára kiosztott teljesítményről. Az erőforrások például adatbázisok és tárolók (táblák, gyűjtemények és diagramok).
 
-Azure Cosmos DB fenntartott kapacitás jelentős mértékben csökkentheti a Cosmos DB költségeit &mdash;up 65%-kal a normál árakon egy éves vagy hároméves előzetes kötelezettségvállalással. A fenntartott kapacitás számlázási kedvezményt biztosít, és nem befolyásolja a Azure Cosmos DB erőforrások futtatókörnyezeti állapotát.
+Azure Cosmos DB fenntartott kapacitás jelentős mértékben csökkentheti Cosmos DB költségeit,&mdash;akár 65%-ot is igénybe vehet, egy vagy három éves előzetes kötelezettségvállalással. A fenntartott kapacitás számlázási kedvezményt biztosít, és nem befolyásolja a Azure Cosmos DB erőforrások futtatókörnyezeti állapotát.
 
 Azure Cosmos DB fenntartott kapacitás az erőforrások számára kiépített átviteli sebességre vonatkozik. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit. A foglalások megvásárlása után a foglalási attribútumoknak megfelelő átviteli sebességért nem számolunk fel díjakat az utólagos elszámolású díjakért. A foglalásokkal kapcsolatos további információkért tekintse meg az [Azure foglalásait](../billing/billing-save-compute-costs-reservations.md) ismertető cikket.
 
@@ -42,7 +42,7 @@ A foglalás méretének a meglévő vagy hamarosan üzembe helyezett Azure Cosmo
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).  
 
-2. Válassza **a minden szolgáltatás**  > **fenntartások**  > **Hozzáadás**lehetőséget.  
+2. Válassza **a minden szolgáltatás** > **fenntartások** > **Hozzáadás**lehetőséget.  
 
 3. Az új foglalás megvásárlásához a **foglalások** ablaktáblán válassza a **Azure Cosmos db** lehetőséget.  
 

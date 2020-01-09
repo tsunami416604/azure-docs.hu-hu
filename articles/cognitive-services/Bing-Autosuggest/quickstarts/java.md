@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Bing Autosuggest REST API és a Javához tartozó keresési lekérdezések ajánlása'
+title: 'Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és Javával'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API valós időben.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1593d4079cf7f50d5473f24ecf57351c9d7786e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384917"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Gyors útmutató: A Bing Autosuggest REST API és a Javához tartozó keresési lekérdezések ajánlása
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és Javával
 
 
 Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az egyszerű Java-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)
@@ -44,7 +44,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre változókat az előfizetési kulcs, az API-állomás és az elérési út, a [piaci kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és a keresési lekérdezés számára.
+2. Hozzon létre változókat az előfizetési kulcs, az API-állomás és az elérési út, a [piaci kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és a keresési lekérdezés számára. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -57,7 +57,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
 
 ## <a name="format-the-response"></a>A válasz formázása
 
-Hozzon létre egy `prettify()` nevű metódust a Bing video API által visszaadott válasz formázásához. A Gson könyvtárának `JsonParser` használatával egy JSON-karakterláncban végezheti el a konvertálást, és átalakíthatja őket egy objektumba. Ezután a `GsonBuilder()` és `toJson()` a használatával hozza létre a formázott karakterláncot.
+Hozzon létre egy `prettify()` nevű metódust a Bing video API által visszaadott válasz formázásához. A Gson könyvtárának `JsonParser` egy JSON-karakterláncot kell használnia, és át kell alakítani egy objektumba. Ezután `GsonBuilder()` és `toJson()` használatával hozza létre a formázott karakterláncot.
 
 ```java
 // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -71,9 +71,9 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-1. Hozzon létre egy nevű `get_suggestions()` új metódust, és hajtsa végre a következő lépéseket:
+1. Hozzon létre egy új, `get_suggestions()` nevű metódust, és hajtsa végre a következő lépéseket:
 
-   1. hozza létre a kérelem URL-címét az API-állomás, az elérési út és a keresési lekérdezés kódolásának kombinálásával. Ügyeljen arra, hogy URL-kódolással kódolja a lekérdezést a Hozzáfűzés előtt. Hozzon létre egy paraméter-karakterláncot a lekérdezéshez úgy, hogy hozzáfűzi a (z) `mkt=` paraméterhez a piaci kódot, és lekérdezi a `q=` paramétert.
+   1. hozza létre a kérelem URL-címét az API-állomás, az elérési út és a keresési lekérdezés kódolásának kombinálásával. Ügyeljen arra, hogy URL-kódolással kódolja a lekérdezést a Hozzáfűzés előtt. Hozzon létre egy paraméter-karakterláncot a lekérdezéshez úgy, hogy hozzáfűzi a piaci kódot a `mkt=` paraméterhez, és lekérdezi a `q=` paramétert.
     
       ```java
   
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Hozzon `HttpsURLConnection` létre egy objektumot, `openConnection()` és a használatával hozzon létre egy-egy kapcsolatokat. Állítsa be a kérelem metódusát `GET`, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
+   3. Hozzon létre egy `HttpsURLConnection` objektumot, és a `openConnection()` használatával hozzon létre egy kapcsolódási lehetőséget. A kérelem metódusát állítsa `GET`re, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
       ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Olvassa el az API-választ `StringBuilder`a következőre:. A válasz rögzítése után zárd be a `InputStreamReader` streamet, és adja vissza a választ.
+   4. Olvassa el az API-választ egy `StringBuilder`. A válasz rögzítése után zárjuk be a `InputStreamReader` streamet, és adja vissza a választ.
 
        ```java
        //...
@@ -119,7 +119,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. Az alkalmazás fő függvényében hívja `get_suggestions()`meg és nyomtassa ki a választ a használatával. `prettify()`
+2. Az alkalmazás fő függvényében hívja meg a `get_suggestions()`t, és `prettify()`használatával nyomtassa ki a választ.
     
     ```java
     public static void main(String[] args) {
@@ -201,7 +201,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/autosuggest.md)

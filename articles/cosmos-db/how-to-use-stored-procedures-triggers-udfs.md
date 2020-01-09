@@ -1,27 +1,27 @@
 ---
-title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények hívása Azure Cosmos DB SDK-k használatával
+title: Tárolt eljárások, eseményindítók és felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB SDK-ban
 description: Megtudhatja, hogyan regisztrálhat és hívhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket a Azure Cosmos DB SDK-k használatával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 5aea7c0b6b2008724a4a84bca7a63ae745f2dd1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104835"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441741"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB
 
-A Azure Cosmos DBban található SQL API támogatja a JavaScriptben írt tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF) regisztrálását és meghívását. Használhatja az SQL API [.net](sql-api-sdk-dotnet.md), [.net Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)vagy [Python](sql-api-sdk-python.md) SDK-kat a tárolt eljárások regisztrálásához és meghívásához. Miután meghatározta egy vagy több tárolt eljárást, eseményindítót és felhasználó által definiált függvényt, betöltheti és megtekintheti őket a [Azure Portal](https://portal.azure.com/) adatkezelő használatával.
+Az Azure Cosmos DB-ben lévő SQL API támogatja a JavaScript nyelven írt tárolt eljárások, eseményindítók és felhasználói függvények regisztrálását és meghívását. Használhatja az SQL API [.net](sql-api-sdk-dotnet.md), [.net Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)vagy [Python](sql-api-sdk-python.md) SDK-kat a tárolt eljárások regisztrálásához és meghívásához. Miután meghatározta egy vagy több tárolt eljárást, eseményindítót és felhasználó által definiált függvényt, betöltheti és megtekintheti őket a [Azure Portal](https://portal.azure.com/) adatkezelő használatával.
 
 ## <a id="stored-procedures"></a>Tárolt eljárások futtatása
 
 A tárolt eljárások JavaScript használatával íródnak. Létrehozhatják, frissíthetik, olvashatják, lekérhetik és törölhetik az Azure Cosmos-tárolóban lévő elemeket. A tárolt eljárások Azure Cosmos DBban való írásával kapcsolatos további információkért lásd: [tárolt eljárások írása Azure Cosmos db](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) cikkben.
 
-Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy tárolt eljárást a Azure Cosmos DB SDK-k használatával. A tárolt eljárás forrásaként való mentésekor `spCreateToDoItem.js`tekintse meg a [dokumentum létrehozása](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) című témakört.
+Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy tárolt eljárást a Azure Cosmos DB SDK-k használatával. Tekintse meg a [dokumentum létrehozása](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) a tárolt eljárás forrásaként `spCreateToDoItem.js`.
 
 > [!NOTE]
 > Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
@@ -144,7 +144,7 @@ Az alábbi példa bemutatja, hogyan regisztrálhat egy tárolt eljárást a Java
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-await container.storedProcedures.create({
+await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
 });
@@ -161,7 +161,7 @@ const newItem = [{
 }];
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
+const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
 ### <a name="stored-procedures---python-sdk"></a>Tárolt eljárások – Python SDK
@@ -194,9 +194,9 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 
 ## <a id="pre-triggers"></a>Az eseményindítók futtatása
 
-Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy előindítást az Azure Cosmos DB SDK-k használatával. Tekintse meg az [Indítás előtti példát](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , mivel az előtrigger forrásaként a rendszer menti `trgPreValidateToDoItemTimestamp.js`a következőt:.
+Az alábbi példák bemutatják, hogyan regisztrálhat és hívhat meg egy előindítást az Azure Cosmos DB SDK-k használatával. Tekintse meg az előindítási [példát](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , mert az előtrigger forrásaként `trgPreValidateToDoItemTimestamp.js`lesz mentve.
 
-A végrehajtásakor az eseményindítók átadása a RequestOptions objektumba az eseményindító nevének `PreTriggerInclude` megadásával, majd a lista objektumban való átadásával történik.
+A végrehajtáskor a rendszer az eseményindítókat a RequestOptions objektumban adja át a `PreTriggerInclude` megadásával, majd az eseményindító nevének átadásával egy lista objektumban.
 
 > [!NOTE]
 > Annak ellenére, hogy az trigger neve listaként van átadva, a művelet végrehajtása csak egy triggert tud végrehajtani.
@@ -352,7 +352,7 @@ client.CreateItem(container_link, item, {
 
 ## <a id="post-triggers"></a>Az eseményindítók futtatása
 
-Az alábbi példák bemutatják, hogyan regisztrálhat egy post-triggert a Azure Cosmos DB SDK-k használatával. Tekintse meg a [trigger utáni példát](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , mivel a rendszer a post-trigger forrását menti `trgPostUpdateMetadata.js`.
+Az alábbi példák bemutatják, hogyan regisztrálhat egy post-triggert a Azure Cosmos DB SDK-k használatával. Tekintse meg a [trigger utáni példát](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , mivel a trigger forrásaként `trgPostUpdateMetadata.js`lesz mentve.
 
 ### <a name="post-triggers---net-sdk-v2"></a>Eseményindítók utáni .NET SDK v2
 
@@ -499,7 +499,7 @@ client.CreateItem(container_link, item, {
 
 ## <a id="udfs"></a>Felhasználó által definiált függvények használata
 
-Az alábbi példák bemutatják, hogyan regisztrálhat egy felhasználó által definiált függvényt a Azure Cosmos DB SDK-k használatával. Tekintse meg ezt a [felhasználó által definiált függvényt, például](how-to-write-stored-procedures-triggers-udfs.md#udfs) az utólagos trigger `udfTax.js`forrását.
+Az alábbi példák bemutatják, hogyan regisztrálhat egy felhasználó által definiált függvényt a Azure Cosmos DB SDK-k használatával. Tekintse meg ezt a [felhasználó által definiált függvényt, például](how-to-write-stored-procedures-triggers-udfs.md#udfs) a trigger forrását `udfTax.js`ként menti a rendszer.
 
 ### <a name="user-defined-functions---net-sdk-v2"></a>Felhasználó által definiált függvények – .NET SDK v2
 
@@ -637,7 +637,7 @@ results = list(client.QueryItems(
     container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása vagy használata Azure Cosmos DBban:
 

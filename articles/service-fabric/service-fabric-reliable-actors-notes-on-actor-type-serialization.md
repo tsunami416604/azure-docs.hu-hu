@@ -1,31 +1,22 @@
 ---
-title: A Reliable Actors megjegyzések az aktortípusok szerializálásával |} A Microsoft Docs
-description: Ismerteti az alapvető követelményeknek, amelyek segítségével Service Fabric Reliable Actors-állapotok és illesztők szerializálható osztályok definiálása
-services: service-fabric
-documentationcenter: .net
+title: Reliable Actors a szereplők típusának szerializálására vonatkozó megjegyzések
+description: A Service Fabric Reliable Actors állapotok és felületek definiálásához használható szerializálható osztályok definiálásának alapvető követelményeit tárgyalja
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349308"
 ---
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>A Service Fabric Reliable actors – megjegyzések szerializálásával kapcsolatban
-Az összes módszer argumentumok, az aktor illesztőjét az egyes módszerek által visszaadott eredmény típusú a feladatokat, és a egy szereplő állapotkezelője tárolt objektumok kell [adatokat szerződéses szerializálható](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Ez vonatkozik az argumentumok a meghatározott módszerek [aktor eseményfelület](service-fabric-reliable-actors-events.md). (Az aktorok esemény illesztőmetódusait mindig vrácené hodnoty void.)
+# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Megjegyzések Service Fabric Reliable Actors típus szerializálásához
+Az összes metódus argumentumai, a színészi felületen az egyes metódusok által visszaadott tevékenységek eredményei, valamint a színészek állapot-kezelőjében tárolt objektumok esetében a [szerializálható adategyezménynek](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)kell szerepelnie. Ez a [színészi esemény-illesztőfelületekben](service-fabric-reliable-actors-events.md)definiált metódusok argumentumait is érinti. (A színészi esemény felületi módszerei mindig semmisnek térnek vissza.)
 
-## <a name="custom-data-types"></a>Egyéni adatok típusa
-Ebben a példában a következő aktorillesztő határozza meg egy egyéni adattípus nevű visszaadó metódus `VoicemailBox`:
+## <a name="custom-data-types"></a>Egyéni adattípusok
+Ebben a példában a következő Actor Interface olyan metódust határoz meg, amely egy `VoicemailBox`nevű egyéni adattípust ad vissza:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -41,7 +32,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-A felület megvalósítása vystavené objektem actor, amelyet a állapotkezelője használ egy `VoicemailBox` objektum:
+Az illesztőfelületet egy olyan színész valósítja meg, amely a State Managert használja `VoicemailBox` objektum tárolásához:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -77,12 +68,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-Ebben a példában a `VoicemailBox` szerializált objektum során:
+Ebben a példában a `VoicemailBox` objektum szerializálása a következő esetekben történik:
 
-* Az objektum egy actor-példány és a egy hívó között továbbított adatok köre.
-* Az objektum az állapot Manager amennyiben megőrzi a lemezen és replikálja a többi csomópont lesz mentve.
+* Az objektum egy Actor-példány és egy hívó között lesz továbbítva.
+* Az objektum a State Managerbe kerül, ahol a lemez tárolva van, és más csomópontokra replikálva van.
 
-A Reliable Actors keretrendszerben DataContract szerializálási használ. Ezért az egyéni objektumok és azok tagjait fel kell vezetni a **DataContract** és **DataMember** attribútumok jelölik.
+A megbízható szereplők keretrendszere DataContract szerializálást használ. Ezért az egyéni adatobjektumokat és azok tagjait a **DataContract** és a **DataMember** attribútummal kell kiegészíteni.
 
 ```csharp
 [DataContract]
@@ -145,10 +136,10 @@ public class VoicemailBox implements Serializable
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
-* [Actors – időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
-* [Actors-események](service-fabric-reliable-actors-events.md)
-* [Actors – újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
-* [Aktor polimorfizmus és objektumorientált tervezési minták](service-fabric-reliable-actors-polymorphism.md)
-* [Actors diagnosztizálása és teljesítményfigyelése](service-fabric-reliable-actors-diagnostics.md)
+## <a name="next-steps"></a>Következő lépések
+* [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
+* [Színészi időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
+* [Színészi események](service-fabric-reliable-actors-events.md)
+* [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+* [Actor-polimorfizmus és objektumorientált tervezési minták](service-fabric-reliable-actors-polymorphism.md)
+* [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)

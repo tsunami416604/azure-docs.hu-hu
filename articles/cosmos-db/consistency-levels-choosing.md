@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cosmos DBt használó alkalmazás megfelelő konzisztencia-szintjének kiválasztása
+title: Válassza ki a Azure Cosmos DB alkalmazásának megfelelő konzisztencia-szintet
 description: Az alkalmazás megfelelő konzisztencia-szintjének kiválasztása Azure Cosmos DBban.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441922"
 ---
 # <a name="choose-the-right-consistency-level"></a>A megfelelő konzisztenciaszint kiválasztása 
 
@@ -34,7 +34,7 @@ Ha az alkalmazás SQL API vagy Table API használatával készült, vegye figyel
 
 - Ha a legmagasabb rendelkezésre állásra és a legalacsonyabb késésre van szüksége, használja a végleges konzisztencia-szintet.
 
-- Ha még nagyobb adattartósságra van szüksége a teljesítmény feláldozása nélkül, létrehozhat egyéni konzisztencia-szintet az alkalmazási rétegben. További információ: [útmutató egyéni szinkronizálás megvalósításához](how-to-custom-synchronization.md)az alkalmazásokban.
+- Ha még nagyobb adattartósságra van szüksége a teljesítmény feláldozása nélkül, létrehozhat egyéni konzisztencia-szintet az alkalmazási rétegben. További információ: [útmutató egyéni szinkronizálás megvalósításához az alkalmazásokban](how-to-custom-synchronization.md).
 
 ## <a name="cassandra-mongodb-and-gremlin-apis"></a>Cassandra, MongoDB és Gremlin API-k
 
@@ -50,17 +50,17 @@ A gyakorlatban gyakran nagyobb konzisztencia-garanciákat érhet el. Az olvasás
 
 * Ha a konzisztencia szintje **erős**értékre van állítva, az elavultság ablak értéke nulla, és az ügyfelek garantáltan elolvashatják az írási művelet legutóbb véglegesített értékét.
 
-* A fennmaradó három konzisztenciai szint esetében az elavultság ablak nagy mértékben függ a számítási feladatoktól. Ha például nincs írási művelet az adatbázison, akkor a rendszer a **végleges**, a munkamenetet vagy a **konzisztens előtag** -konzisztencia-szintet tartalmazó olvasási műveletet valószínűleg ugyanazt az eredményt fogja eredményezni, mint egy erős konzisztencia-szintű olvasási művelet.
+* A fennmaradó három konzisztenciai szint esetében az elavultság ablak nagy mértékben függ a számítási feladatoktól. Ha például nincs írási művelet az adatbázison, akkor a rendszer a **végleges**, a **munkamenetet**vagy a **konzisztens előtag** -konzisztencia-szintet tartalmazó olvasási műveletet valószínűleg ugyanazt az eredményt fogja eredményezni, mint egy erős konzisztencia-szintű olvasási művelet.
 
-Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva, akkor megtudhatja, hogy az ügyfelek erős és konzisztens olvasási feladatokat szereznek a számítási feladatokhoz a Probabilistically határos megkeresésével. Az elavultság (PBS) mérőszáma. Ez a mérőszám a Azure Portalban érhető el. További információért lásd: a [Probabilistically kötött elévülés (PBS) mérőszámának figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva, akkor megtudhatja, hogy az ügyfelek erős és konzisztens olvasási feladatokat szereznek a számítási feladatokhoz a *Probabilistically határos* elavulás (PBS) metrikájának megtekintésével. Ez a mérőszám a Azure Portalban érhető el. További információért lásd: a [Probabilistically kötött elévülés (PBS) mérőszámának figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 A valószínűséggel határos elavulás azt mutatja, hogy a végleges konzisztencia milyen módon lehetséges. Ez a mérőszám betekintést nyújt abba, hogy milyen gyakran lehet erősebb konzisztencia, mint az Azure Cosmos-fiókjában jelenleg konfigurált konzisztencia-szint. Más szóval az írási és olvasási régiók kombinációjának nagy mértékben konzisztens olvasásának valószínűsége (ezredmásodpercben mérve) látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk a konzisztencia-szintekről a következő cikkekben olvashatók:
 
 * [Konzisztencia-szint megfeleltetése Cosmos DB API-k között](consistency-levels-across-apis.md)
-* [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
+* [Rendelkezésre állási és teljesítménybeli kompromisszumok különböző konzisztencia-szintekhez](consistency-levels-tradeoffs.md)
 * [Az alkalmazás munkamenet-jogkivonatának kezelése](how-to-manage-consistency.md#utilize-session-tokens)
 * [Probabilistically-határos elavultság (PBS) metrikájának figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

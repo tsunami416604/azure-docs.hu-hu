@@ -8,29 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: eecca2372c7265d456276a966cc441b15c17272a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446627"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Gyors útmutató: képelemzések lekérése a Bing Visual Search REST API és a Java használatával
 
 Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API és megtekintheti az eredményeket. Ez a Java-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
-
-Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítani, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
-
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
-
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
-
---boundary_1234-abcd--
-```
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +52,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához:
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. `endpoint` lehet az alábbi globális végpont, vagy az erőforrás Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,18 +60,30 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
+    
+    Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítani, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
+    
+    ```
+    --boundary_1234-abcd
+    Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+    
+    ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+    
+    --boundary_1234-abcd--
+    ```
+
 ## <a name="create-the-json-parser"></a>A JSON-elemző létrehozása
 
 Hozzon létre egy metódust, amellyel a JSON-válasz a `JsonParser`használatával olvashatóbb lehet az API-tól:
 
-    ```java
-    public static String prettify(String json_text) {
-            JsonParser parser = new JsonParser();
-            JsonObject json = parser.parse(json_text).getAsJsonObject();
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            return gson.toJson(json);
-        }
-    ```
+```java
+public static String prettify(String json_text) {
+        JsonParser parser = new JsonParser();
+        JsonObject json = parser.parse(json_text).getAsJsonObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(json);
+    }
+```
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása
 
@@ -120,13 +121,13 @@ Hozzon létre egy metódust, amellyel a JSON-válasz a `JsonParser`használatáv
 
 2. Tárolja a JSON-karakterláncot, és nyomtassa ki a választ:
 
-```java
-String json = new Scanner(stream).useDelimiter("\\A").next();
-System.out.println("\nJSON Response:\n");
-System.out.println(prettify(json));
-```
+    ```java
+    String json = new Scanner(stream).useDelimiter("\\A").next();
+    System.out.println("\nJSON Response:\n");
+    System.out.println(prettify(json));
+    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

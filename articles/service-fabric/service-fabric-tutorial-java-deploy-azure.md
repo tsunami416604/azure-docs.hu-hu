@@ -1,28 +1,19 @@
 ---
-title: Java-alkalmazás üzembe helyezése Service Fabric-fürtön az Azure-ban | Microsoft Docs
+title: Java-alkalmazás üzembe helyezése Service Fabric-fürtön az Azure-ban
 description: Ez az oktatóanyag azt mutatja be, hogyan kell üzembe helyezni egy Java Service Fabric-alkalmazást egy Azure Service Fabric-fürtön.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c836fd122d9dba0cd7eb20fe405e63c3ca3f59eb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306796"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465277"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürtön az Azure-ban a Java-alkalmazás üzembe helyezése
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 
 Ez az oktatóanyag egy sorozat harmadik része, és azt mutatja be, hogyan kell üzembe helyezni egy Service Fabric-alkalmazást egy Azure-fürtön.
 
@@ -171,7 +162,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Az SAS URL-cím a következő struktúráját: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Például: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
+    A EventHubs SAS URL-címe a következő struktúrát követi: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Például: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
 12. Nyissa meg az *sfdeploy.parameters.json* fájlt, és cserélje le a következő tartalmakat az előző lépésekből származó értékekre. [SAS-URL-STORAGE-ACCOUNT] – a 8. lépésben feljegyezve. [SAS-URL-EVENT-HUBS] – a 11. lépésben feljegyezve.
 
@@ -240,7 +231,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     ./uninstall.sh
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -3,12 +3,12 @@ title: Fájlok és mappák helyreállítása az Azure virtuális gép biztonság
 description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392566"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -174,13 +174,13 @@ Ha a RAID-lemezen van egy másik LVM konfigurálva, használja a fenti eljárás
 
 A következő táblázat a kiszolgáló és a számítógép operációs rendszerének kompatibilitását mutatja be. A fájlok helyreállításakor nem állíthatja vissza a fájlokat egy korábbi vagy későbbi verziójú operációs rendszerre. Nem lehet például visszaállítani egy fájlt egy Windows Server 2016 rendszerű virtuális gépről a Windows Server 2012-re vagy egy Windows 8 rendszerű számítógépre. A virtuális gépek fájljait visszaállíthatja ugyanarra a kiszolgálói operációs rendszerre vagy a kompatibilis ügyfél operációs rendszerre.
 
-|Server OS | Kompatibilis ügyfél operációs rendszer  |
+|Kiszolgáló operációs rendszere | Kompatibilis ügyfél operációs rendszer  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7 rendszeren   |
 
 ### <a name="for-linux-os"></a>Linux operációs rendszer esetén
 
@@ -203,7 +203,7 @@ A Linux rendszerben a fájlok visszaállítására használt számítógép oper
 
 A parancsfájlnak a Python és a bash összetevők futtatására is szükség van, és biztonságosan csatlakozhat a helyreállítási ponthoz.
 
-|Összetevő | Verzió  |
+|Component (Összetevő) | Verzió  |
 | --------------- | ---- |
 | bash | 4 és újabb verziók |
 | python | 2.6.6 és újabb verziók  |
@@ -211,9 +211,9 @@ A parancsfájlnak a Python és a bash összetevők futtatására is szükség va
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>A fájlok helyreállítása a nagyméretű lemezekkel rendelkező virtuális gépekről
 
-Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása az Azure-beli virtuális gépekről, amelyek száma > 16, és az egyes lemezek mérete > 4 TB.
+Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása az Azure-beli virtuális gépekről, amelyek száma > 16, és az egyes lemezek mérete > 32 TB.
 
-Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (> 16) vagy nagyméretű lemez (> 4 TB) van használatban, a következő műveleti pontok ajánlottak:
+Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (> 16) vagy nagyméretű lemez (> 32 TB) van használatban, a következő műveleti pontok ajánlottak:
 
 - A fájlok helyreállításához külön helyreállítási kiszolgálót (Azure VM D2v3 virtuális gépeket) kell megőrizni. Ezt a fájlt csak akkor használhatja, ha nem szükséges, majd leállítja. Az eredeti gépen való visszaállítás nem ajánlott, mert jelentős hatással lesz a virtuális gépre.
 - Ezután futtassa egyszer a parancsfájlt annak vizsgálatához, hogy a fájl-helyreállítási művelet sikeres-e.

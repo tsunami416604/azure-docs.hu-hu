@@ -7,12 +7,12 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 94399490453c6a2774f71ef527fd24d543e2a7e2
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438767"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületével
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -49,7 +49,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 A feladatok futtatásához rendelkeznie kell egy Data Lake Analytics-fiókkal. A Data Lake Analytics-fiók létrehozásához az alábbiakat kell megadnia:
 
-* **Azure-erőforráscsoport**. A Data Lake Analytics-fiókot egy Azure-erőforráscsoportban kell létrehoznia. Az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti.  
+* **Azure-erőforráscsoport**. A Data Lake Analytics-fiókot egy Azure-erőforráscsoportban kell létrehoznia. Az [Azure Resource Manager](../azure-resource-manager/management/overview.md) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti.  
 
 Az előfizetés alá tartozó meglévő erőforráscsoportok megjelenítése:
 
@@ -65,7 +65,7 @@ az group create --name "<Resource Group Name>" --location "<Azure Location>"
 
 * **A Data Lake Analytics-fiók neve**. Minden Data Lake Analytics-fiók rendelkezik egy névvel.
 * **Hely**. Használja az egyik, a Data Lake Analytics szolgáltatást támogató Azure-adatközpontot.
-* **Alapértelmezett Data Lake Store fiók**: Minden Data Lake Analytics fiókhoz alapértelmezett Data Lake Store fiók tartozik.
+* **Alapértelmezett Data Lake Store-fiók:** minden Data Lake Analytics-fiókhoz tartozik egy alapértelmezett Data Lake Store-fiók.
 
 A meglévő Data Lake Store-fiók megjelenítése:
 
@@ -192,7 +192,7 @@ Példa:
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Data Lake Analytics Azure CLI-hivatkozási dokumentum megtekintéséhez lásd: [Data Lake Analytics](/cli/azure/dla).
 * Az Data Lake Store Azure CLI-hivatkozási dokumentum megtekintéséhez lásd: [Data Lake Store](/cli/azure/dls).

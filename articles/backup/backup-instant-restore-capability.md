@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391305"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -52,7 +52,7 @@ Alapértelmezés szerint a pillanatképek két napig őrződnek meg. Ez a funkci
 
 ## <a name="cost-impact"></a>Cost Impact
 
-A növekményes pillanatképeket a rendszer a virtuális gép Storage-fiókjában tárolja, amely az azonnali helyreállításhoz használható. A növekményes pillanatkép azt jelenti, hogy a pillanatkép által elfoglalt terület egyenlő a pillanatkép létrehozása után írt lapok által elfoglalt területtel. A számlázási szolgáltatás továbbra is a pillanatkép által foglalt GB-nyi felhasznált területre vonatkozik, és a GB-onként érvényes ár megegyezik a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/managed-disks/)említettek szerint.
+A növekményes Pillanatképek tárolása a virtuális gép Storage-fiókjában történik, amelyet az azonnali helyreállításhoz használ a rendszer. A növekményes pillanatkép azt jelenti, hogy a pillanatkép által elfoglalt terület egyenlő a pillanatkép létrehozása után írt lapok által elfoglalt területtel. A számlázási szolgáltatás továbbra is a pillanatkép által elfoglalt GB-nyi felhasznált területre vonatkozik, a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/managed-disks/)pedig a GB-os díj megegyezik. A nem felügyelt lemezeket használó virtuális gépek esetében a pillanatképek az egyes lemezek VHD-fájljának menüjében láthatók. A felügyelt lemezek esetében a pillanatképek egy kijelölt erőforráscsoport visszaállítási pontjának gyűjteményi erőforrásában vannak tárolva, és maguk a pillanatképek nem láthatók közvetlenül.
 
 >[!NOTE]
 > Heti szabályzatok esetén a pillanatkép-megőrzés 5 napig rögzített.

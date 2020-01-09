@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5879bbda9dba0d5484ffe6e7083243a299347f9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950561"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367486"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
@@ -38,9 +38,9 @@ Ha egyéni házirendeket használ, akkor (a[jelszó bonyolultságát egyéni sza
 ## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza a **felhasználói folyamatok**lehetőséget.
+2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+3. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
 2. Válasszon ki egy felhasználói folyamatot, majd kattintson a **Tulajdonságok**elemre.
 3. A **jelszó bonyolultsága**területen módosítsa a felhasználói folyamat jelszavának bonyolultságát **egyszerű**, **erős**vagy **Egyéni**értékre.
 

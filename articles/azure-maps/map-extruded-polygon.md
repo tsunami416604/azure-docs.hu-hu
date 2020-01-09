@@ -1,6 +1,6 @@
 ---
-title: Kihúzási sokszög réteg hozzáadása a Azure Mapshoz | Microsoft Docs
-description: Kihúzási sokszög réteg hozzáadása a Azure Maps web SDK-hoz.
+title: Sokszög-kihúzási réteg hozzáadása a Azure Mapshoz | Microsoft Docs
+description: Sokszög-kihúzási réteg hozzáadása a Azure Maps web SDK-hoz.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e6858359549f6a54513eda7bc692adcbc7d7e71b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432834"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>Kihúzási sokszög réteg hozzáadása a térképhez
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Sokszög-kihúzási réteg hozzáadása a térképhez
 
 Ebből a cikkből megtudhatja, hogyan használhatja a sokszög kihúzási rétegét `Polygon` és `MultiPolygon` szolgáltatásbeli geometriák megjelenítésére a Térkép kihúzott alakzataiként. A Azure Maps web SDK támogatja a kör alakú geometriák létrehozását is a [kiterjesztett GeoJSON sémában](extend-geojson.md#circle)definiált módon. Ezeket a köröket a rendszer sokszögekre alakítja át a térképen való megjelenítéskor. Az Atlas használatával az összes funkció geometriája is könnyen frissíthető [. Alakzat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) osztálya
 
@@ -46,7 +46,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/eYYYNox'>extrudál
 
 ## <a name="add-a-circle-to-the-map"></a>Kör hozzáadása a térképhez
 
-Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)feljegyzett körök definícióját adja meg. Az extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` funkciót, amelynek `subType` tulajdonsága `Circle`, és egy számozott `Radius` **tulajdonság, amely**a sugarat jelöli. Például:
+Azure Maps a GeoJSON séma egy kiterjesztett verzióját használja, amely az [itt](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)feljegyzett körök definícióját adja meg. Az extrudált kör megjeleníthető a térképen úgy, hogy létrehoz egy `point` funkciót, amelynek `subType` tulajdonsága `Circle`, és egy számozott `Radius` **tulajdonság, amely**a sugarat jelöli. Példa:
 
 ```Javascript
 {

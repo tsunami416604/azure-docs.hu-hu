@@ -1,17 +1,17 @@
 ---
-title: Kiszolgáló nélküli adatbázis-számítástechnika – Azure Functions és Azure Cosmos DB
+title: Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions
 description: Ismerje meg, hogyan használhatók együtt Azure Cosmos DB és Azure Functions az eseményvezérelt kiszolgáló nélküli számítástechnikai alkalmazások létrehozásához.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444876"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
 
@@ -23,7 +23,7 @@ A [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db) és Azure fu
 
 Azure Cosmos DB és Azure Functions lehetővé teszi az adatbázisok és kiszolgáló nélküli alkalmazások integrálását az alábbi módokon:
 
-* Hozzon létre egy eseményvezérelt **Azure functions eseményindítót a Cosmos DBhoz**. Ez az aktiválás a [hírcsatorna](change-feed.md) -adatfolyamok módosítására támaszkodik, hogy figyelje az Azure Cosmos-tárolót a változásokhoz. Ha egy tárolóban bármilyen változást végez, a rendszer elküldi a változási adatfolyamot az triggernek, amely meghívja az Azure-függvényt.
+* Hozzon létre egy eseményvezérelt **Azure functions eseményindítót a Cosmos DBhoz**. Ez az aktiválás a hírcsatorna-adatfolyamok [módosítására](change-feed.md) támaszkodik, hogy figyelje az Azure Cosmos-tárolót a változásokhoz. Ha egy tárolóban bármilyen változást végez, a rendszer elküldi a változási adatfolyamot az triggernek, amely meghívja az Azure-függvényt.
 * Azt is megteheti, hogy egy Azure-függvényt egy **bemeneti kötés**használatával kötést használ egy Azure Cosmos-tárolóhoz. A bemeneti kötések adatokat olvasnak be egy tárolóból egy függvény végrehajtásakor.
 * Függvény kötése egy Azure Cosmos-tárolóhoz **kimeneti kötés**használatával. A kimeneti kötések adatokat írnak egy tárolóba, amikor egy függvény befejeződik.
 
@@ -41,7 +41,7 @@ A Azure Cosmos DBhoz tartozó Azure Functions trigger, bemeneti kötés és kime
 * A Azure Cosmos DBhoz tartozó bemeneti kötések és kimeneti kötések ugyanabban az Azure-függvényben használhatók. Ez jól működik olyan esetekben, amikor bizonyos adatokat szeretne keresni a bemeneti kötéssel, módosítsa azt az Azure-függvényben, majd mentse azt ugyanabba a tárolóba vagy egy másik tárolóba a módosítás után.
 * Az Azure Cosmos-tárolóhoz tartozó bemeneti kötések ugyanabban a függvényben használhatók, mint a Cosmos DB Azure Functions-triggere, és kimeneti kötéssel vagy anélkül is használhatók. Ezt a kombinációt használhatja a legfrissebb valutaváltó-információk (egy Exchange-tárolóba bevitt bemeneti kötés) a bevásárlókocsi-szolgáltatásban lévő új megrendelések változási csatornán való alkalmazásához. A frissített bevásárlókocsi összege a jelenlegi pénznem-konverzióval együtt egy harmadik tárolóba is írható egy kimeneti kötés használatával.
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 
 A következő használati esetek azt mutatják be, hogy miként hozhatja ki a legtöbbet a Azure Cosmos DB-adataival – az adatai az eseményvezérelt Azure Functionshoz való csatlakoztatásával.
 
@@ -49,7 +49,7 @@ A következő használati esetek azt mutatják be, hogy miként hozhatja ki a le
 
 A IoT implementációjában egy függvényt hívhat meg, ha az ellenőrzési motor jelzőfénye megjelenik egy csatlakoztatott autóban.
 
-**Végrehajtása** Azure Functions trigger és kimeneti kötés használata Cosmos DB
+**Implementáció:** Azure Functions trigger és kimeneti kötés használata Cosmos DB
 
 1. A **Cosmos DB Azure functions triggere** az autókkal kapcsolatos riasztásokhoz kapcsolódó események elindítására szolgál, például egy csatlakoztatott autóban található ellenőrzési motorra.
 2. Ha a vizsgálat motorjának fénye bekövetkezik, a rendszer elküldi az érzékelőre vonatkozó adatAzure Cosmos DB.
@@ -67,7 +67,7 @@ Az alábbi képen az trigger Azure Portal írt kód látható.
 
 A pénzügyi megvalósításokban meghívhat egy függvényt, ha a bankszámla egyenlege egy bizonyos összeg alá esik.
 
-**Végrehajtása** Időzítő-trigger Azure Cosmos DB bemeneti kötéssel
+**Implementáció:** Időzítő-trigger Azure Cosmos DB bemeneti kötéssel
 
 1. Időzítő- [trigger](../azure-functions/functions-bindings-timer.md)használatával lekérheti az Azure Cosmos-tárolóban tárolt bankszámla-egyenleg adatait egy **bemeneti kötés**használatával.
 2. Ha az egyenleg nem éri el a felhasználó által beállított alacsony egyenleg küszöbértéket, akkor az Azure-függvény egy műveletét követi nyomon.
@@ -83,7 +83,7 @@ Az alábbi képek a forgatókönyvben szereplő kódot mutatják a Azure Portal.
 
 A játékokban új felhasználó létrehozásakor megkeresheti azokat a felhasználókat, akik ismerik a [Azure Cosmos db GREMLIN API](graph-introduction.md)használatával. Ezután megírhatja az eredményeket egy [Azure Cosmos DB SQL Database-be] az egyszerű lekéréshez.
 
-**Végrehajtása** Azure Functions trigger és kimeneti kötés használata Cosmos DB
+**Implementáció:** Azure Functions trigger és kimeneti kötés használata Cosmos DB
 
 1. Az összes felhasználó tárolásához egy Azure Cosmos DB [gráf-adatbázist](graph-introduction.md) hozhat létre, amely a Cosmos db Azure functions triggerrel is létrehozható. 
 2. Új felhasználó beszúrásakor a rendszer meghívja a függvényt, majd az eredményt egy **kimeneti kötés**használatával tárolja.
@@ -94,7 +94,7 @@ A játékokban új felhasználó létrehozásakor megkeresheti azokat a felhaszn
 
 A kiskereskedelmi megvalósítások során, amikor egy felhasználó egy elemet helyez el a kosárba, mostantól rugalmasan hozhat létre és hívhat meg függvényeket a választható üzleti folyamat-összetevőkhöz.
 
-**Végrehajtása** Több Azure Functions eseményindító, amely egy tárolót figyel Cosmos DB
+**Implementáció:** Több Azure Functions eseményindító, amely egy tárolót figyel Cosmos DB
 
 1. Több Azure Functions is létrehozhat, ha Azure Functions eseményindítókat ad hozzá Cosmos DBekhez, amelyek mindegyike ugyanazt a változási csatornát figyeli, mint a bevásárlókocsi-adatmennyiség. Vegye figyelembe, hogy ha több függvény figyel ugyanarra a változási csatornára, az egyes függvények esetében új címbérleti gyűjteményre van szükség. További információ a bérlet-gyűjteményekről: [a hírcsatorna-feldolgozó függvénytárának módosítása](change-feed-processor.md).
 2. Amikor új elemet adnak hozzá egy felhasználói kosárhoz, az egyes függvények egymástól függetlenül meghívhatják a bevásárlókocsi-tároló változási csatornáját.
@@ -122,11 +122,11 @@ A Azure Functions lehetővé teszi, hogy méretezhető munkaegységeket vagy oly
 
 A kiszolgáló nélküli számítási architektúra ajánlott adatbázisa a következő okok miatt Azure Cosmos DB:
 
-* **Azonnali hozzáférés az összes adattal**: A rendszer minden tárolt értékhez részletes hozzáférést biztosít, mivel Azure Cosmos DB alapértelmezés szerint [automatikusan indexeli](index-policy.md) az összes adatokat, és azonnal elérhetővé teszi ezeket az indexeket. Ez azt jelenti, hogy folyamatosan kérdezheti, frissítheti és új elemeket adhat hozzá az adatbázishoz, és Azure Functionson keresztül azonnal hozzáférhet.
+* **Azonnali hozzáférés az összes adattal**: minden tárolt értékhez részletesen hozzáférhet, mivel Azure Cosmos db alapértelmezés szerint [automatikusan indexeli](index-policy.md) az összes adatokat, és azonnal elérhetővé teszi ezeket az indexeket. Ez azt jelenti, hogy folyamatosan kérdezheti, frissítheti és új elemeket adhat hozzá az adatbázishoz, és Azure Functionson keresztül azonnal hozzáférhet.
 
 * **Séma**nélküli. A Azure Cosmos DB séma nélküli, így egyedi módon kezelhető az Azure-függvények adatkimenete. Ez a "bármit kezel" megközelítés egyszerűvé teszi a Azure Cosmos DB összes kimenetének számos funkciójának létrehozását.
 
-* **Méretezhető átviteli sebesség**. Az átviteli sebesség azonnal, Azure Cosmos DBban is méretezhető. Ha több száz vagy több ezer függvényt kérdez le és ír ugyanarra a tárolóra, akkor a terhelés kezeléséhez felskálázást végezhet az [ru/s](request-units.md) használatával. Az összes függvény párhuzamosan dolgozhat a lefoglalt RU/s-vel, és az adatai konzisztensek [](consistency-levels.md).
+* **Méretezhető átviteli sebesség**. Az átviteli sebesség azonnal, Azure Cosmos DBban is méretezhető. Ha több száz vagy több ezer függvényt kérdez le és ír ugyanarra a tárolóra, akkor a terhelés kezeléséhez felskálázást végezhet az [ru/s](request-units.md) használatával. Az összes függvény párhuzamosan dolgozhat a lefoglalt RU/s-vel, és az adatai [konzisztensek](consistency-levels.md).
 
 * **Globális replikálás**. A késleltetés csökkentése érdekében replikálhatja Azure Cosmos DB adatait [a világ minden](distribute-data-globally.md) pontján, így a felhasználók a legközelebb eső helyre helyezhetik a helyüket. Ahogy az összes Azure Cosmos DB lekérdezés esetében, az eseményvezérelt eseményindítók adatait a rendszer a felhasználóhoz legközelebb eső Azure Cosmos DB olvassa be.
 
@@ -138,11 +138,11 @@ A Azure Functions előnyei:
 
 * **Nincs korlát**. A függvények párhuzamosan futnak, és a szolgáltatás akár annyit is igénybe vesz, amennyire csak szüksége van. Beállítja a paramétereket.
 
-* **Jó a gyors**feladatokhoz. A szolgáltatás új példányokat hajt végre a függvények során, amikor egy esemény bekövetkezik, és lezárja őket, amint a függvény befejeződik. Csak akkor kell fizetnie, amikor a függvények futnak.
+* **Jó a gyors feladatokhoz**. A szolgáltatás új példányokat hajt végre a függvények során, amikor egy esemény bekövetkezik, és lezárja őket, amint a függvény befejeződik. Csak akkor kell fizetnie, amikor a függvények futnak.
 
 Ha nem biztos abban, hogy a folyamat, a Logic Apps, a Azure Functions vagy a webjobs a legmegfelelőbb a megvalósításhoz, tekintse meg a következőt: [választás a flow, a Logic apps, a functions és a webjobs között](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most kapcsolódjon Azure Cosmos DB és Azure Functions a Realhoz: 
 

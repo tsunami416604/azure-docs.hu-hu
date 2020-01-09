@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 76ff8a63c2fbda3ddbaed794d24f7adb66a4dd95
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 01/03/2020
+ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930359"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660307"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -97,7 +97,7 @@ Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hog
 
 A felhasználó által definiált függvény egy elszigetelt Azure digitális Twins-környezetben végrehajtott egyéni függvény. A felhasználó által definiált függvények hozzáférhetnek a nyers érzékelő telemetria-üzeneteihez, amint az beérkezett. A felhasználó által definiált függvények hozzáférhetnek a térbeli gráfhoz és a diszpécser szolgáltatáshoz is. A felhasználó által definiált függvény egy gráfon belüli regisztrálása után létre kell hozni egy Matcher ( [fent](#matchers)részletezett), hogy meg lehessen adni a függvény végrehajtásának időpontját. Ha például az Azure Digital Twins új telemetria kap egy adott érzékelőből, az egyeztetett felhasználó által definiált függvény az utolsó néhány érzékelő beolvasásának mozgóátlagát is kiszámíthatja.
 
-A felhasználó által definiált függvények a JavaScriptben is megírhatók. A segítő módszerek a felhasználó által definiált végrehajtási környezetben működnek a gráfmal. A fejlesztők egyéni kódrészleteket futtathatnak az érzékelő telemetria üzeneteiben. Példák erre vonatkozóan:
+A felhasználó által definiált függvények a JavaScriptben is megírhatók. A segítő módszerek a felhasználó által definiált végrehajtási környezetben működnek a gráfmal. A fejlesztők egyéni kódrészleteket futtathatnak az érzékelő telemetria üzeneteiben. Példák:
 
 - Állítsa az érzékelőt közvetlenül az érzékelő objektumra a gráfon belül.
 - Hajtson végre egy műveletet a diagramon belül a különböző szenzorok beolvasása alapján.

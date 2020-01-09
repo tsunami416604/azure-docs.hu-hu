@@ -3,19 +3,15 @@ title: Az első PowerShell-munkafolyamat runbook a Azure Automation
 description: Ez az oktatóanyag bemutatja egy egyszerű szöveges forgatókönyv PowerShell-munkafolyamattal való létrehozását, tesztelését és közzétételét.
 keywords: powershell-munkafolyamat, powershell-munkafolyamat példák, munkafolyamat powershell
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdaadcfa3108ca847443e100bc624c2458c34115
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365954"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Az első PowerShell-alapú munkafolyamat-forgatókönyvem
 
@@ -100,7 +96,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
    ![Forgatókönyv indítása](media/automation-first-runbook-textual/automation-runbook-controls-start.png)
 
-1. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
+1. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. Lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
 1. A feladatok állapota megjelenik a **feladatok összegzése** területen, és megfelel a runbook tesztelésekor megtekintett állapotoknak.
 
    ![Feladat összegzése](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)

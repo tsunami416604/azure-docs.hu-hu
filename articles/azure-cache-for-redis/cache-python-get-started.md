@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez'
+title: 'Gyors útmutató: Python-alkalmazás létrehozása – Azure cache a Redis-hez'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan Python-alkalmazást, amely Azure cache-t használ a Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 11/05/2019
+ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433474"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez
 
@@ -104,7 +104,7 @@ Az erőforráscsoport és az Azure-példány Redis Cacheának törlése:
    
    ![Az Azure cache Redis tartozó erőforráscsoport törlése](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)

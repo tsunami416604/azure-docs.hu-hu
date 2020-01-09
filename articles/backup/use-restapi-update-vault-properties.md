@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: cbd958dd71d2d62f7b4c7e8d66ab7e56dc679a51
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998744"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390542"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -88,11 +88,11 @@ További részletekért tekintse meg [a REST API dokumentációját](https://doc
 |eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  igaz       |Sztring         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
-|tags     |         | Objektum        |     Erőforráscímkék    |
+|címkét     |         | Objektum        |     Erőforráscímkék    |
 
 #### <a name="example-request-body"></a>Példa kérelem törzsére
 
-A következő példa a Soft-delete állapotának a "Letiltva" értékre való frissítésére szolgál.
+A következő példa a helyreállítható törlési állapot frissítésére szolgál a "Letiltva" értékre.
 
 ```json
 {

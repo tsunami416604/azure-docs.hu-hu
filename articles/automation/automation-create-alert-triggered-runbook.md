@@ -2,19 +2,15 @@
 title: Azure Automation runbook elindítására szolgáló riasztás használata
 description: Megtudhatja, hogyan indíthat el egy runbook az Azure-riasztások bevezetését követően.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366700"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
 
@@ -175,7 +171,7 @@ Ez a példa egy **stop-AzureVmInResponsetoVMAlert**nevű runbook létrehozásár
 A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás által aktivált műveletek gyűjteményei. A runbookok csak a műveletek csoportjaival használható számos művelet egyike.
 
 1. Az Automation-fiókjában válassza a **figyelés**alatt a **riasztások** lehetőséget.
-1. Válassza az **+ Új riasztási szabály** lehetőséget.
+1. Válassza a **+ Új riasztási szabály** lehetőséget.
 1. Kattintson a **kiválasztás** az **erőforrás**alatt elemre. Az **erőforrás kiválasztása** lapon válassza ki a virtuális gépet a riasztáshoz, majd kattintson a **kész**gombra.
 1. Kattintson a feltétel hozzáadása **elemre**. Válassza ki a használni kívánt jelet, például a **százalékos CPU** -t, majd kattintson a **kész**gombra.
 1. A **jel logikai beállítása** lapon adja meg a **küszöbérték értékét** a **riasztási logika**területen, majd kattintson a **kész**gombra.

@@ -2,19 +2,15 @@
 title: Runbook kimenete és üzenetei Azure Automation
 description: Ismerteti, hogyan lehet kimeneti és hibaüzeneteket létrehozni és beolvasni a runbookok Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421044"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook kimenete és üzenetei Azure Automation
 
@@ -22,7 +18,7 @@ A legtöbb Azure Automation runbookok valamilyen típusú kimenettel rendelkezik
 
 Az alábbi táblázat az egyes adatfolyamok rövid leírását, valamint azok viselkedését ismerteti Azure Portal a közzétett runbookok és a [runbook tesztelésekor](automation-testing-runbook.md). Az egyes streamekről további részleteket a későbbi részekben talál.
 
-| Stream | Leírás | Közzétéve | Tesztelés |
+| Stream | Leírás | Közzétéve | Test |
 |:--- |:--- |:--- |:--- |
 | Kimenet |Másik runbookok számára készült objektum. |Szerepel a feladatelőzményekben. |Fel van tüntetve a Tesztkimenet ablaktáblán. |
 | Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenet. |Szerepel a feladatelőzményekben. |Fel van tüntetve a Tesztkimenet ablaktáblán. |
@@ -186,7 +182,7 @@ A következő táblázat a preferenciaváltozók runbookokban érvényes érték
 
 ## <a name="runbook-output"></a>Runbook-kimenet és üzenetek beolvasása
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 Egy runbook-feladat részleteit a Azure Portal feladatok lapján tekintheti meg a runbook. A feladathoz tartozó összefoglalás megjeleníti a bemeneti paramétereket és a [kimeneti adatfolyamot](#output-stream) a feladattal kapcsolatos általános információk mellett, valamint a kivételeket, ha azok bekövetkeztek. Az előzmények a [kimeneti adatfolyamból](#output-stream) , a [Figyelmeztetési és a hiba-adatfolyamokból](#warning-and-error-streams) , valamint a [részletes adatfolyam](#verbose-stream) -és [folyamatjelző rekordokból](#progress-records) származó üzeneteket tartalmaznak, ha a runbook a részletes és a folyamatjelző rekordok naplózására van konfigurálva.
 

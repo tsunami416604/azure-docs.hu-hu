@@ -1,26 +1,17 @@
 ---
 title: 'Oktatóanyag: Java-alkalmazás létrehozása az Azure-ban Service Fabric'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy megbízható szolgáltatású Java-alkalmazást a kezelőfelület segítségével, hogyan hozhat létre egy megbízható állapotalapú háttérszolgáltatást, majd hogyan helyezheti üzembe az alkalmazást egy fürtön.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5e9b94f0c67b4b4630d554f4dde22502c90e777c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 019e50057497c9f98d303a93dfa3f905226fa246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465448"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Oktatóanyag: alkalmazás létrehozása Java API előtér-szolgáltatással és állapot-visszaállítási szolgáltatással az Azure Service Fabric
 
@@ -408,7 +399,7 @@ Most, hogy a webes Java API-szolgáltatás váza elkészült, haladjunk tovább,
 
 A Service Fabric megbízható gyűjtemények használatával konzisztens módon és megbízhatóan tárolja az adatokat a szolgáltatásban. A megbízható gyűjtemények magas rendelkezésre állású és megbízható gyűjteményosztályok. Az osztályok használatát mindenki jól ismerheti, aki már használt Java-gyűjteményeket.
 
-1. A Package Explorerben kattintson a jobb gombbal az alkalmazás-projekten belüli **szavazás** lehetőségre, és válassza a **Service Fabric** > **Service Fabric szolgáltatás hozzáadása**lehetőséget.
+1. A Package Explorerben kattintson a jobb gombbal az alkalmazás-projekten belüli **szavazás** elemre, és válassza a **Service Fabric** > **Service Fabric szolgáltatás hozzáadása**lehetőséget.
 
 2. A **szolgáltatás hozzáadása** párbeszédpanelen válassza az **állapot-nyilvántartó szolgáltatás** lehetőséget, és nevezze el a szolgáltatás **VotingDataService** , majd válassza a **szolgáltatás hozzáadása**lehetőséget.
 
@@ -891,7 +882,7 @@ Ebben a szakaszban a projekthez tartozó Gradle-szkriptek konfigurálása tört�
 
 Ezen a ponton az alkalmazás készen áll egy helyi Service Fabric-fürtön való üzembe helyezésre.
 
-1. Kattintson a jobb gombbal a csomag Explorerben a **szavazási** projektre, és válassza az **Service Fabric** > **Build alkalmazást** az alkalmazás létrehozásához.
+1. Kattintson a jobb gombbal a csomag Explorerben a **szavazási** projektre, és válassza ki **Service Fabric** > **Build alkalmazást** az alkalmazás létrehozásához.
 
 2. Futtassa a helyi Service Fabric-fürtöt. Ez a lépés a fejlesztési környezettől (Mac vagy Linux) függ.
 
@@ -911,7 +902,7 @@ Ezen a ponton az alkalmazás készen áll egy helyi Service Fabric-fürtön val�
 
 4. Az Eclipse-hez készült Package Explorerben kattintson a jobb gombbal a **szavazási** projektre, és válassza a **Service Fabric** > **alkalmazás közzététele** lehetőséget. 
 5. Az **alkalmazás közzététele** ablakban válassza a **helyi. JSON** elemet a legördülő listából, majd válassza a **Közzététel**lehetőséget.
-6. Nyissa meg a webböngészőt, és nyissa meg a http: \//localhost: 8080, és tekintse meg a futó alkalmazást a helyi Service Fabric-fürtön. 
+6. Nyissa meg a webböngészőt, és nyissa meg a http:\//localhost: 8080, és tekintse meg a futó alkalmazást a helyi Service Fabric-fürtön. 
 
 ## <a name="next-steps"></a>Következő lépések
 

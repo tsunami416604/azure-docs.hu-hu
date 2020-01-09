@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2fd5867d910d29533eb17a4660039cc7b9610290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095633"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449838"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
 
@@ -35,7 +35,7 @@ Ha többet szeretne megtudni a Batch Management .NET-könyvtár és a AccountMan
 
 Az Azure [Active Directory-hitelesítési tár][aad_adal] (ADAL) egy programozott felületet biztosít az Azure ad számára az alkalmazásokon belüli használathoz. Az ADAL az alkalmazásból való meghívásához regisztrálnia kell az alkalmazást egy Azure AD-bérlőben. Az alkalmazás regisztrálásakor az Azure AD-t az alkalmazással kapcsolatos információkkal látja el, beleértve az Azure AD-bérlőn belüli nevet is. Az Azure AD ezt követően egy alkalmazás-azonosítót biztosít, amelyet az alkalmazás az Azure AD-vel való hozzárendeléséhez használ futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal][aad_integrate]című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az átirányítási **URI** `urn:ietf:wg:oauth:2.0:oob`-hoz. Megadhat azonban bármilyen érvényes URI-t `http://myaccountmanagementsample`(például) az átirányítási **URI**számára, mivel nem kell valódi végpontnak lennie:
+A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal][aad_integrate]című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az **átirányítási uri** `urn:ietf:wg:oauth:2.0:oob`az iparági szabványnak megfelelő OAUTH 2,0 URI. Megadhat azonban bármilyen érvényes URI-t (például `http://myaccountmanagementsample`) az **átirányítási URI**számára, mivel nem kell valódi végpontnak lennie:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -47,14 +47,14 @@ Miután elvégezte a regisztrációs folyamatot, megjelenik az alkalmazás azono
 
 Ezután delegálnia kell az alkalmazáshoz való hozzáférést a Azure Resource Manager API-nak. A Resource Manager API-hoz készült Azure AD-azonosító a **Windows Azure Service Management API**.
 
-Kövesse az alábbi lépéseket a Azure Portalban:
+Hajtsa végre a következő lépéseket az Azure Portalon:
 
-1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**elemet, kattintson az **alkalmazás**-regisztrációk elemre, majd a **Hozzáadás**gombra.
+1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**elemet, kattintson az **alkalmazás-regisztrációk**elemre, majd a **Hozzáadás**gombra.
 2. Keresse meg az alkalmazás nevét az alkalmazások regisztrációinak listájában:
 
     ![Az alkalmazás nevének megkeresése](./media/batch-aad-auth-management/search-app-registration.png)
 
-3. A **Beállítások** panel megjelenítése Az a **API-hozzáférés** szakaszban jelölje be **szükséges engedélyek**.
+3. A **Beállítások** panel megjelenítése Az **API-hozzáférés** szakaszban válassza a **szükséges engedélyek**lehetőséget.
 4. Új szükséges engedély hozzáadásához kattintson a **Hozzáadás** gombra. 
 5. Az 1. lépésben írja be a **Windows Azure Service Management APIt**, válassza ki az API-t az eredmények listájából, majd kattintson a **kiválasztás** gombra.
 6. A 2. lépésben jelölje be a **klasszikus Azure-beli üzembe helyezési modell a szervezeti felhasználókként való elérésének**jelölőnégyzetét, majd kattintson a **kiválasztás** gombra.
@@ -122,7 +122,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 A hitelesítő adatok megadása után a minta alkalmazás folytathatja a hitelesített kérések kiküldését a Batch Management szolgáltatásba. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [AccountManagement-minta alkalmazás][acct_mgmt_sample]futtatásával kapcsolatos további információkért lásd: [Batch-fiókok és kvóták kezelése a .net-hez készült batch Management ügyféloldali kódtár használatával](batch-management-dotnet.md).
 
@@ -137,4 +137,4 @@ A Batch szolgáltatásbeli alkalmazások Azure AD-vel történő hitelesítésé
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Alkalmazások integrálása a Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md

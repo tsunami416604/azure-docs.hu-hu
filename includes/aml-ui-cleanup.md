@@ -8,12 +8,12 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
-ms.openlocfilehash: 96ede63b097999247675364217cf458a268e54d9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929687"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659872"
 ---
 >[!IMPORTANT]
 >A létrehozott erőforrásokat használhatja más Azure Machine Learning oktatóanyagok és útmutatók előfeltételeiként.
@@ -42,7 +42,7 @@ Az itt létrehozott számítási cél *automatikusan automatikus méretezést* v
 
 Az adatkészletek regisztrációját a munkaterületről törölheti, ha kiválasztja az egyes adatkészleteket, és kiválasztja a **Regisztráció törlése**lehetőséget.
 
-![Adatkészlet regisztrációjának törlése](./media/aml-ui-cleanup/unregister-dataset.png)
+![Adatkészlet regisztrációjának törlése](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
 Az adatkészletek törléséhez nyissa meg a Storage-fiókot a Azure Portal vagy Azure Storage Explorer használatával, és manuálisan törölje ezeket az eszközöket.
 

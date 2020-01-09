@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355286"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center javaslatok használata a biztonság növelése érdekében
 A biztonsági szabályzat konfigurálásával, majd a Azure Security Center által biztosított javaslatok végrehajtásával csökkentheti a jelentős biztonsági események esélyét. Ebből a cikkből megtudhatja, hogyan használhatja a biztonsági házirendeket és javaslatokat a Security Center a biztonsági támadások enyhítése érdekében. 
@@ -28,7 +28,7 @@ Security Center automatikusan folyamatos vizsgálatokat futtat az Azure-erőforr
 - Az operációs rendszer biztonsági konfigurációs javaslatai 48 órán belül frissülnek
 - A Endpoint Protection kapcsolatos javaslatok 8 órán belül frissülnek
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 Ebből a forgatókönyvből megtudhatja, Security Center Hogyan csökkentheti a biztonsági incidensek esélyét a Security Center javaslatok figyelésével és a műveletek elvégzésével. A forgatókönyv a Security Center [tervezési és üzemeltetési útmutatóban](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)ismertetett fiktív vállalatot, contosot és szerepköröket használja. Ebben a forgatókönyvben a következő personák szerepköreire koncentrálunk:
 
 ![Forgatókönyv szerepkörei](./media/security-center-using-recommendations/scenario-roles.png)
@@ -63,7 +63,7 @@ A napi megfigyelési tevékenységük részeként Jeff bejelentkezik az Azure-ba
 
 5. Amikor Jeff a **számítás és az alkalmazások**elemre kattint, megtekinti a javaslatok listáját, és a biztonságos pontszám hatásának megfelelően kezeli őket.
 
-6. Jeff számos internetkapcsolattal rendelkező virtuális gépet tartalmaz, és mivel a portok ki vannak téve, aggódnak amiatt, hogy a támadók megszerezhetik a kiszolgálók feletti irányítást. Így Jeff a következőt használja: (**a virtuális**gépek igény szerinti elérése) [Security-Center-just-in-time.MD].
+6. Jeff számos internetkapcsolattal rendelkező virtuális gépet tartalmaz, és mivel a portok ki vannak téve, aggódnak amiatt, hogy a támadók megszerezhetik a kiszolgálók feletti irányítást. Így Jeff úgy dönt, hogy a virtuális gépek igény szerinti [**elérését**](security-center-just-in-time.md)használja.
 
 Jeff továbbra is a magas prioritású és közepes prioritású ajánlásokon halad át, és döntéseket hoz a megvalósítással kapcsolatban. Jeff minden ajánláshoz a Security Center által biztosított részletes információkat tekinti át, hogy megtudja, mely erőforrások érintettek, milyen hatással van a biztonsági pontszámra, mit jelent az egyes javaslatok, és hogyan lehet elhárítani az egyes problémák enyhítésének lépéseit.
 
@@ -71,7 +71,7 @@ Jeff továbbra is a magas prioritású és közepes prioritású ajánlásokon h
 A Security Center figyelési javaslatai segítenek a biztonsági rések megszüntetésében a támadás előtt. A javaslatok szervizelése során a biztonságos pontszám és a számítási feladatok biztonsági helyzete javul. Security Center automatikusan felfedi a telepített új erőforrásokat, felméri azokat a biztonsági szabályzattal, és új javaslatokat biztosít számukra a biztosításához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Győződjön meg arról, hogy van egy figyelési folyamat, amelyben rendszeresen ellenőrzi a Security Center található javaslatokat, így biztosíthatja, hogy az erőforrások az idő múlásával biztonságosak legyenek.
 
 Ez a forgatókönyv azt mutatja be, hogyan használhatók a biztonsági szabályzatok és javaslatok a Security Centerban a biztonsági támadások enyhítése érdekében.

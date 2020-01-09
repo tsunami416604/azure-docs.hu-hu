@@ -1,14 +1,14 @@
 ---
-title: A Power BI-jelentések konfigurálása
+title: Power BI-jelentések konfigurálása
 description: Recovery Services-tároló használatával konfigurálhatja Azure Backup Power BI jelentéseit.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450109"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -88,7 +88,7 @@ Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkat
 4. Adja meg az előző lépésben konfigurált Storage-fiók nevét, majd kattintson a **tovább**gombra.
 
     ![A tárfiók nevének megadása](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
-5. A "Key" hitelesítési módszer használatával adja meg a tárolási fiókhoz tartozó Storage-fiók kulcsát. A [Storage-hozzáférési kulcsok megtekintéséhez és másolásához](../storage/common/storage-account-manage.md#access-keys)lépjen a Azure Portal Storage-fiókjába.
+5. A "Key" hitelesítési módszer használatával adja meg a tárolási fiókhoz tartozó Storage-fiók kulcsát. A Storage-fiók hozzáférési kulcsait a Azure Portal találja. További információ: a [Storage-fiók elérési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md).
 
      ![Adja meg a Storage-fiókot](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
 
@@ -114,7 +114,7 @@ Ha testre szeretné szabni és megosztani a jelentést, hozzon létre egy munkat
 
 ## <a name="troubleshooting-errors"></a>Hibaelhárítás
 
-| A hiba adatai | Megoldás: |
+| A hiba adatai | Felbontás |
 | --- | --- |
 | Miután beállította a Storage-fiókot a biztonsági mentési jelentésekhez, a **Storage-fiók** továbbra **sincs konfigurálva**. | Ha sikeresen konfigurálta a Storage-fiókot, a jelentéskészítési folyamat a probléma ellenére meghalad. A probléma megoldásához nyissa meg a Azure Portal, és válassza a **minden szolgáltatás** > **diagnosztikai beállítások** > **Recovery Services** tároló > **szerkesztési beállítás**elemet. Törölje az előzőleg konfigurált beállítást, és hozzon létre egy új beállítást ugyanazon a panelen. Ezúttal a **név** mezőben válassza a **szolgáltatás**elemet. Ekkor megjelenik a konfigurált Storage-fiók. |
 |A Azure Backup sablon alkalmazásnak a Power BIban való importálása után a "404-Container nem található" hibaüzenet jelenik meg. | Ahogy azt korábban említettük, 24 órát kell várnia, miután konfigurálta a jelentéseket a Recovery Services-tárolóban, hogy megfelelően megjelenjenek a Power BIban. Ha 24 óra előtt próbál hozzáférni a jelentésekhez, ez a hibaüzenet jelenik meg, mivel a teljes adathalmazok még nem jelennek meg az érvényes jelentések megjelenítéséhez. |

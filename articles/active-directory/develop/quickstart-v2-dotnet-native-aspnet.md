@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD által védett ASP.NET webes API meghívása – Microsoft Identity platform
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hívhat meg Azure Active Directory által védett ASP.NET webes API-t egy Windows asztali (WPF-) alkalmazásból. A WPF-ügyfél hitelesíti a felhasználót, hozzáférési jogkivonatot kér, és meghívja a webes API-t.
+title: A Microsoft Identity platform által védett ASP.NET web API meghívása
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hívhat meg a Microsoft Identity platform által védett ASP.NET webes API-t egy Windows asztali (WPF) alkalmazásból. A WPF-ügyfél hitelesíti a felhasználót, hozzáférési jogkivonatot kér, és meghívja a webes API-t.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424043"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Gyors útmutató: az Azure AD által védett ASP.NET webes API meghívása
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET web API meghívása
 
-Ebben a rövid útmutatóban egy webes API-t tesz elérhetővé, és gondoskodik arról, hogy csak a hitelesített felhasználók férhessenek hozzá. Ez a minta bemutatja, hogyan tehet közzé egy ASP.NET webes API-t, hogy fogadja el a személyes fiókok (például a outlook.com, a live.com és mások) által kiállított jogkivonatokat, valamint a munkahelyi és iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van a Azure Active Directory.
+Ebben a rövid útmutatóban egy webes API-t tesz elérhetővé, és gondoskodik arról, hogy csak a hitelesített felhasználók férhessenek hozzá. Ez a minta bemutatja, hogyan tehet közzé egy ASP.NET webes API-t, hogy fogadja el a személyes fiókok által kiállított jogkivonatokat (beleértve a outlook.com, a live.com és egyebeket), valamint a munkahelyi és iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van a Microsoft identitásával platform.
 
 A minta tartalmaz egy Windows Desktop Application (WPF) ügyfelet is, amely bemutatja, hogyan kérhet hozzáférési jogkivonatot a webes API-k eléréséhez.
 
@@ -49,7 +49,7 @@ Ezt a mintát a rendszerhéjból vagy parancssorból is klónozott:
 
 Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a következőket kell tennie:
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
 1. Ha a fiókja egynél több Azure AD-bérlőn található, válassza ki a profilt a lap tetején található menü jobb felső sarkában, majd **váltson át a könyvtárra**.
    Módosítsa a portál munkamenetét a kívánt Azure AD-bérlőre.
 
@@ -76,7 +76,7 @@ Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a 
      - **Állapot** megtartása **engedélyezettként**
      - **Hatókör hozzáadása** lehetőség kiválasztása
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>A szolgáltatás és az ügyfél projektjeinek konfigurálása a regisztrált webes API-nak megfelelően 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>A szolgáltatási projekt konfigurálása a regisztrált webes API-nak megfelelően 
 
 1. Nyissa meg a megoldást a Visual Studióban, majd nyissa meg a **web. config** fájlt a **TodoListService** -projekt gyökerében.
 1. Cserélje le a `ida:ClientId` paraméter értékét az **ügyfél-azonosítóra (alkalmazás-azonosító)** az alkalmazás regisztrációs portálján az imént regisztrált alkalmazásból.
@@ -104,7 +104,7 @@ Ebben a lépésben a *TodoListClient* -projektet úgy konfigurálja, hogy regisz
    - A **támogatott fióktípus** módosítása **bármely szervezeti címtárbeli fiókra**.
    - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás áttekintés lapján válassza a **hitelesítés** szakaszt.
-   - Az **átirányítási URL-címek** | **javasolt átirányítási URL-címek a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, az **urn: IETF: WG: OAuth: 2.0: OOB**
+   - Az **átirányítási URI** - **k | javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, majd a **https://login.microsoftonline.com/common/oauth2/nativeclient**
    - Kattintson a **Mentés** gombra.
 1. Válassza ki az **API-engedélyek** szakaszt
    - Kattintson az **engedély hozzáadása** gombra, majd

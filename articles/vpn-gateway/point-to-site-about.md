@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353566"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN-ről
 
@@ -51,11 +51,11 @@ A natív Azure AD-hitelesítéssel kihasználhatja az Azure AD feltételes hozz�
 
 Magas szinten az alábbi lépéseket kell elvégeznie az Azure AD-hitelesítés konfigurálásához:
 
-[1. Azure AD-bérlő konfigurálása](openvpn-azure-ad-tenant.md)
+1. [Azure AD-bérlő konfigurálása](openvpn-azure-ad-tenant.md)
 
-[2. az Azure AD-hitelesítés engedélyezése az átjárón](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Azure AD-hitelesítés engedélyezése az átjárón](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. az Azure VPN-ügyfél letöltése és konfigurálása (előzetes verzió)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN-ügyfél letöltése és konfigurálása (előzetes verzió)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés Active Directory (AD) tartományi kiszolgáló használatával
@@ -67,10 +67,6 @@ A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNET is üzembe helyezhető. A
 A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal is integrálható. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány központi telepítésének használatát a P2S-tanúsítvány hitelesítéséhez az Azure-tanúsítvány hitelesítésének alternatívájaként. Ennek az az előnye, hogy a főtanúsítványokat és a visszavont tanúsítványokat nem kell feltölteni az Azure-ba.
 
 A RADIUS-kiszolgálók integrálása más külső identitási rendszerekkel is elvégezhető. Ez számos hitelesítési lehetőséget nyit meg a P2S VPN-hez, beleértve a többtényezős beállításokat is.
-
->[!NOTE]
->Az **OpenVPN® protokoll** nem támogatott a RADIUS-hitelesítéssel.
->
 
 ![pont – hely kapcsolat](./media/point-to-site-about/p2s.png "Külső végpont és telephely közötti")
 

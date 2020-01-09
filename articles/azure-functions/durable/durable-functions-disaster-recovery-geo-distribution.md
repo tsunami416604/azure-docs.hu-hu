@@ -1,20 +1,18 @@
 ---
-title: Vész-helyreállítás és geo-eloszlás a Durable Functionsban – Azure
+title: Vész-helyreállítási és földrajzi eloszlású Azure Durable Functions
 description: Ismerje meg a vész-helyreállítást és a Geo-eloszlást Durable Functionsban.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433329"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>Vészhelyreállítás és földrajzi elosztás
-
-## <a name="overview"></a>Áttekintés
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Vész-helyreállítás és geo-eloszlás az Azure-ban Durable Functions
 
 A Durable Functionsban az összes állapot az Azure Storage-ban marad. A [Task hub](durable-functions-task-hubs.md) olyan Azure Storage-erőforrások logikai tárolója, amelyeket a rendszer az előkészítéshez használ. A Orchestrator és a Activity függvények csak akkor kommunikálhatnak egymással, ha ugyanahhoz a feladathoz tartozó hubhoz tartoznak.
 Az ismertetett forgatókönyvek javaslatot tesznek a rendelkezésre állás növelésére és az állásidő minimalizálására a vész-helyreállítási tevékenységek során.

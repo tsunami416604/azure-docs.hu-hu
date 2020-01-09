@@ -4,15 +4,15 @@ description: A syslog egy olyan eseménynaplózási protokoll, amely közös a L
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 5daa9e99ccf71da680dad00b06c4e53f6c8b4e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450638"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások a Azure Monitorban
 A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Az alkalmazások elküldik a helyi gépen tárolt vagy a syslog-gyűjtőnek küldött üzeneteket. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
@@ -27,17 +27,17 @@ A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszer
 A syslog-gyűjtő a következő létesítményeket támogatja:
 
 * egalizálás
-* Felhasználói
-* Levelezési
-* démon
+* felhasználó
+* e-mail
+* Démon
 * Auth
 * syslog
 * LPR
-* Hírek
+* news
 * UUCP
 * cron
 * authpriv
-* FTP
+* ftp
 * local0 – local7
 
 Bármilyen más létesítmény esetében [konfigurálja az egyéni naplók adatforrását](data-sources-custom-logs.md) Azure monitor.
@@ -48,7 +48,7 @@ A Linux rendszerhez készült Log Analytics-ügynök csak a konfigurációjában
 ### <a name="configure-syslog-in-the-azure-portal"></a>A syslog konfigurálása a Azure Portalban
 Konfigurálja a syslog-t a [Speciális beállítások adatok menüjéből](agent-data-sources.md#configuring-data-sources). Ezt a konfigurációt minden Linux-ügynök konfigurációs fájljába továbbítja a rendszer.
 
-Új létesítmény hozzáadásához írja be a nevét, és kattintson a **+** elemre. Minden egyes létesítmény esetében csak a kiválasztott részekkel rendelkező üzenetek lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt adott létesítmény súlyosságát. Nem adhat meg további feltételeket az üzenetek szűréséhez.
+Új létesítmény hozzáadásához először válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd írja be a nevét, és kattintson a **+** elemre. Minden egyes létesítmény esetében csak a kiválasztott részekkel rendelkező üzenetek lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt adott létesítmény súlyosságát. Nem adhat meg további feltételeket az üzenetek szűréséhez.
 
 ![A syslog konfigurálása](media/data-sources-syslog/configure.png)
 
@@ -168,7 +168,7 @@ A portszámot úgy változtathatja meg, hogy két konfigurációs fájlt hoz lé
           type filter_syslog
         </filter>
 
-* A rsyslog hozzon létre egy új konfigurációs fájlt a következő helyen: `/etc/rsyslog.d/`, és cserélje le a% SYSLOG_PORT% értéket az egyéni portszámra.  
+* A rsyslog hozzon létre egy új konfigurációs fájlt a következő helyen: `/etc/rsyslog.d/`, és cserélje le a (z)% SYSLOG_PORT% értéket az egyéni portszámra.  
 
     > [!NOTE]
     > Ha módosítja ezt az értéket a `95-omsagent.conf`konfigurációs fájlban, akkor a rendszer felülírja, ha az ügynök alapértelmezett konfigurációt alkalmaz.
@@ -180,7 +180,7 @@ A portszámot úgy változtathatja meg, hogy két konfigurációs fájlt hoz lé
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* A syslog-ng konfigurációt úgy kell módosítani, hogy átmásolja az alább látható példa konfigurációt, és hozzáadja az egyéni módosított beállításokat a syslog-ng. conf konfigurációs fájl végéhez `/etc/syslog-ng/`található. Ne **használja a** **(z)% WORKSPACE_ID% _Oms** vagy **% WORKSPACE_ID_OMS**alapértelmezett címkét, adjon meg egy egyéni címkét, amely segít a módosítások megkülönböztetésében.  
+* A syslog-ng konfigurációt úgy kell módosítani, hogy átmásolja az alább látható példa konfigurációt, és hozzáadja az egyéni módosított beállításokat a syslog-ng. conf konfigurációs fájl végéhez `/etc/syslog-ng/`található. Ne **használja a** **(z)% WORKSPACE_ID% _oms** vagy a **(z)% WORKSPACE_ID_OMS**alapértelmezett címkét, adjon meg egy egyéni címkét a módosítások megkülönböztetése érdekében.  
 
     > [!NOTE]
     > Ha módosítja a konfigurációs fájl alapértelmezett értékeit, akkor azok felül lesznek írva, amikor az ügynök alapértelmezett konfigurációt alkalmaz.
@@ -198,13 +198,13 @@ A syslog-rekordok rendelkeznek **syslog** típussal, és rendelkeznek a követke
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Computer |Az a számítógép, amelyre az eseményt gyűjtötték. |
-| Létesítmény |Meghatározza az üzenetet létrehozó rendszer részét. |
+| Szolgáltatás |Meghatározza az üzenetet létrehozó rendszer részét. |
 | HostIP |Az üzenetet küldő számítógép IP-címe. |
-| hostName |Az üzenetet küldő számítógép neve. |
-| SeverityLevel |Az esemény súlyossági szintje. |
+| HostName |Az üzenetet küldő számítógép neve. |
+| Súlyossági szint |Az esemény súlyossági szintje. |
 | SyslogMessage |Az üzenet szövege. |
 | ProcessID |Az üzenetet létrehozó folyamat azonosítója. |
-| eventTime |Az esemény létrehozásának dátuma és időpontja. |
+| EventTime |Az esemény létrehozásának dátuma és időpontja. |
 
 ## <a name="log-queries-with-syslog-records"></a>Lekérdezések naplózása syslog-rekordokkal
 Az alábbi táblázat a syslog-rekordokat lekérő lekérdezések különböző példáit mutatja be.

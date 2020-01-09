@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200ba1e227c0e2e116e368a65ce7f2c4d42661f2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 2f2efaceefc53b3c0b5dfd899baf9fd30fdf9a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547323"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430059"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépen lévő Azure-erőforrásokhoz az Azure CLI használatával
 
@@ -61,7 +61,7 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
    az login
    ```
 
-2. Az [az group create](/cli/azure/group/#az-group-create) paranccsal hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#terminology) a virtuális gép és az ahhoz kapcsolódó erőforrások elkülönítéséhez és üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
+2. Az [az group create](/cli/azure/group/#az-group-create) paranccsal hozzon létre egy [erőforráscsoportot](../../azure-resource-manager/management/overview.md#terminology) a virtuális gép és az ahhoz kapcsolódó erőforrások elkülönítéséhez és üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha inkább egy meglévő erőforráscsoportot kíván használni:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -117,7 +117,7 @@ Ebből a szakaszból megtudhatja, hogyan adhat hozzá és távolíthat el egy fe
 
 Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális GÉPHEZ a létrehozása során, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoport-csoporttal. Hozzon létre egy [erőforráscsoportot](~/articles/azure-resource-manager/resource-group-overview.md#terminology) a felhasználó által hozzárendelt felügyelt identitás tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoport-csoporttal. Hozzon létre egy [erőforráscsoportot](~/articles/azure-resource-manager/management/overview.md#terminology) a felhasználó által hozzárendelt felügyelt identitás tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

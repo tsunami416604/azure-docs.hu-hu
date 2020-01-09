@@ -1,7 +1,6 @@
 ---
-title: Az Azure Stream Analytics-lekérdezések hibaelhárítása
-description: Ez a cikk bemutatja a lekérdezések az Azure Stream Analytics-feladatok hibaelhárításához technikákat.
-services: stream-analytics
+title: Azure Stream Analytics lekérdezések hibáinak megoldása
+description: Ez a cikk azokat a technikákat ismerteti, amelyekkel Azure Stream Analytics-feladatokban található lekérdezéseket lehet elhárítani.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,94 +8,94 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621476"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354262"
 ---
-# <a name="troubleshoot-azure-stream-analytics-queries"></a>Az Azure Stream Analytics-lekérdezések hibaelhárítása
+# <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
-Ez a cikk ismerteti a gyakori problémák a Stream Analytics-lekérdezések és hogyan háríthatók el őket.
+Ez a cikk a Stream Analytics-lekérdezések fejlesztésével és hibaelhárításával kapcsolatos gyakori problémákat ismerteti.
 
-## <a name="query-is-not-producing-expected-output"></a>Lekérdezés nem állít elő várható kimenete 
-1.  Vizsgálja meg a hibákat a helyi tesztelés:
-    - Az a **lekérdezés** lapon jelölje be **teszt**. A letöltött mintaadatok használatával [a lekérdezés teszteléséhez](stream-analytics-test-query.md). Vizsgáljon meg minden hibát, és próbálja meg kijavítani a őket.   
-    - Emellett [tesztelje a lekérdezést közvetlenül a élő bemeneti](stream-analytics-live-data-local-testing.md) Stream Analytics tools for Visual Studio használatával.
+## <a name="query-is-not-producing-expected-output"></a>A lekérdezés nem hozza létre a várt kimenetet 
+1.  Hibák vizsgálata helyi teszteléssel:
+    - A **lekérdezés** lapon válassza a **teszt**elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
+    - A lekérdezést a Visual studióhoz készült Stream Analytics Tools használatával [közvetlenül is tesztelheti élő bemeneten](stream-analytics-live-data-local-testing.md) .
 
-2.  Ha [ **Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), győződjön meg arról, hogy az események időbélyege későbbi, mint a [feladat kezdési ideje](stream-analytics-out-of-order-and-late-events.md).
+2.  Ha [**időbélyegzőt**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)használ, ellenőrizze, hogy az események időbélyegei nagyobbak-e a [feladatok kezdési idejénél](stream-analytics-out-of-order-and-late-events.md).
 
-3.  Megszüntetheti a közös buktatókat, például:
-    - A [ **ahol** ](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) a lekérdezésben záradék kiszűrte az összes esemény meggátolja, hogy a kimenetet generált.
-    - A [ **CAST** ](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) függvény futása, a feladat sikertelenségét okozó. Írja be a cast hibák elkerülése érdekében használja [ **TRY_CAST** ](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) helyette.
-    - Ablakfüggvények használatakor, várjon, amíg a teljes ablak időtartamot a lekérdezés kimenetének megtekintéséhez.
-    - Az események időbélyege megelőzi a feladat megkezdési ideje, és ezért azokat a rendszer eldobja.
+3.  Távolítsa el a gyakori buktatókat, például a következőket:
+    - A lekérdezés [**Where**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) záradéka szűrte az összes eseményt, ami megakadályozza a kimenet generálását.
+    - A [**Cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) függvény meghiúsul, így a feladat sikertelen lesz. Ha el szeretné kerülni a leadott hibák beírását, használja a [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) helyet.
+    - Ha a Window functions funkciót használja, várja meg a teljes ablak időtartamát, hogy megjelenjen a lekérdezés kimenete.
+    - Az események időbélyegzője megelőzi a feladatok kezdési idejét, ezért az események el lesznek dobva.
 
-4.  Győződjön meg arról, esemény sorbarendezésre házirendek megtörténik az elvárt módon. Nyissa meg a **beállítások** válassza [ **események rendezése**](stream-analytics-out-of-order-and-late-events.md). A házirend *nem* használata esetén alkalmazza a **tesztelése** gombra a lekérdezés teszteléséhez. Ez az eredmény egy különbség a tesztelés böngészőben és a feladat az éles üzemben futó. 
+4.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** elemre, és válassza az [**események rendezése**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között. 
 
-5. Hibakeresési naplózási és diagnosztikai naplók segítségével:
-    - Használat [Auditnaplók](../azure-resource-manager/resource-group-audit.md), és a szűrőt a azonosíthatja és elháríthatja a hibákat.
-    - Használat [feladat-diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md) alapján azonosíthatja és elháríthatja a hibákat.
+5. Hibakeresés naplózási és diagnosztikai naplók használatával:
+    - Használjon [naplókat](../azure-resource-manager/resource-group-audit.md), és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
+    - A hibák azonosításához és hibakereséséhez használja a [feladatok diagnosztikai naplóit](stream-analytics-job-diagnostic-logs.md) .
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>Feladat túl sok Streamelési egységet is használja.
-Győződjön meg arról, előnyeit folyamatkezelést biztosítja az Azure Stream Analytics szolgáltatásban. A további [lekérdezési folyamatokkal méretezési](stream-analytics-parallelization.md) Stream Analytics-feladatok a bemeneti partíció konfigurálásával, valamint hangolása az analytics-lekérdezés definícióját.
+## <a name="job-is-consuming-too-many-streaming-units"></a>A feladatok túl sok átviteli egységet fogyasztanak
+Győződjön meg arról, hogy kihasználja Azure Stream Analytics párhuzamos előnyeit. Megtudhatja, hogyan méretezheti Stream Analytics feladatok [lekérdezési párhuzamos](stream-analytics-parallelization.md) a bemeneti partíciók konfigurálásával és az elemzési lekérdezés definíciójának finomhangolásával.
 
-## <a name="debug-queries-progressively"></a>Lekérdezések fokozatosan hibakeresése
+## <a name="debug-queries-progressively"></a>Hibakeresési lekérdezések fokozatosan
 
-A valós idejű feldolgozásához az adatok néz ki a lekérdezés közepén ismerete hasznos lehet. Be- vagy egy Azure Stream Analytics-feladatot fázisaiban többször olvashatók, mert extra SELECT INTO utasítások írhat. Ezzel a köztes adatokat jelenít meg storage-ba, és vizsgálja meg az adatok helyességét hasonlóan lehetővé teszi *tekintse meg a változók* ehhez Amikor hibakeresést egy programot.
+A valós idejű adatfeldolgozás során hasznos lehet annak ismerete, hogy az adatmennyiség hogyan néz ki a lekérdezés közepén. Mivel az Azure Stream Analytics feladatok bemenetei vagy lépései többször is beolvashatók, további SELECT INTO utasítások is megírhatók. Így a rendszer a közbenső adatokat a tárolóba helyezi, és lehetővé teszi az adatok helyességének vizsgálatát, mint ahogy a program hibakeresése során *megtekinti a változókat* .
 
-A következő példalekérdezés az Azure Stream Analytics-feladat egy adatfolyam-bemenetre, két referenciaadat típusú bemenetek és az Azure Table Storage-kimenet rendelkezik. A lekérdezés csatlakozik az event hubs és a két hivatkozás blobok nevét és kategóriáját információkat adatait:
+Egy Azure Stream Analytics-feladatban az alábbi lekérdezés egy stream-bemenettel, két hivatkozási adatbemenettel és egy Azure Table Storage kimenettel rendelkezik. A lekérdezés összekapcsolja az adatokat az Event hub-ból és két hivatkozási blobot a név és a kategória információinak lekéréséhez:
 
-![Example Stream Analytics SELECT INTO query](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Példa Stream Analytics kijelölés a lekérdezésben](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Vegye figyelembe, hogy a feladat fut, de nincsenek események előállítása folyamatban van a kimenetben. Az a **figyelés** csempén látható itt, láthatja, hogy a bemeneti van olyan adatokat, de nem tudja, melyik lépés a **CSATLAKOZZON** lehet elvetni az összes esemény miatt.
+Vegye figyelembe, hogy a művelet fut, de a kimenetben nem készül esemény. Az itt látható **figyelési** csempén láthatja, hogy a bemenet adatokat állít elő, de nem tudja, hogy az **illesztés** melyik lépése okozta az összes eldobott eseményt.
 
-![A Stream Analytics figyelése csempe](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![A Stream Analytics monitorozási csempe](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
-Ebben az esetben néhány további SELECT INTO utasítások a "bejelentkezés" a köztes ILLESZTÉS eredményei és a bemenetről beolvasott adatokat adhat hozzá.
+Ebben az esetben hozzáadhat néhány további KIJELÖLÉSt az utasításokhoz a köztes összekapcsolási eredmények és a bemenetből beolvasott adatok között.
 
-Ebben a példában lehetőségekkel bővült két új "ideiglenes kimenetek." Ezek lehetnek bármilyen fogadóba Öntől. Azure Storage itt példaként használjuk:
+Ebben a példában két új "ideiglenes kimenetet" adtunk hozzá. Az Ön számára bármilyen fogadó lehet. Itt az Azure Storage-t használjuk példaként:
 
-![Stream Analytics-lekérdezés extra SELECT INTO utasítások hozzáadása](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![További SELECT INTO utasítások hozzáadása a Stream Analytics lekérdezéshez](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-Majd módosíthatja a lekérdezést, ehhez hasonló:
+Ezután a következőhöz hasonló módon írhatja át a lekérdezést:
 
-![Rewritten SELECT INTO Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![KIJELÖLÉS átírása Stream Analytics lekérdezésbe](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Most indítsa el újra a feladatot, és biztosítani, hogy néhány percig. Majd lekérdezheti temp1 és a Visual Studio Cloud Explorer előállítására a következő táblázatok temp2:
+Most indítsa újra a feladatot, és néhány percen belül futtassa. Ezután lekérdezheti a temp1 és a temp2 a Visual Studio Cloud Explorerben a következő táblázatok létrehozásához:
 
 **temp1 table**
-![SELECT INTO temp1 table Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+![válassza ki a temp1 táblát Stream Analytics lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
 **temp2 table**
-![SELECT INTO temp2 table Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+![válassza ki a temp2 táblát Stream Analytics lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Amint láthatja, temp1 és a temp2 egyaránt rendelkeznek az adatokat, és az oszlop helyesen van-e feltöltve temp2. Azonban mert nem szerepel továbbra is megjeleníthető adat a kimenetben, valami probléma:
+Amint láthatja, a temp1 és a temp2 egyaránt tartalmaz adatokat, és a Name (név) oszlop helyesen van feltöltve a temp2. Mivel azonban még mindig nincsenek adatokat a kimenetben, valami nem stimmel:
 
-![SELECT INTO output1 table with no data Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![Válassza ki a output1 táblát, amely nem rendelkezik adatStream Analytics lekérdezéssel](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
-Az adatok mintavételezésének, biztos lehet majdnem biztos, hogy a probléma van a második való CSATLAKOZÁST. Töltse le a referencia-adatok a blobból, és tekintse meg:
+Az adatmintavételezéssel szinte biztos lehet abban, hogy a probléma a második ILLESZTÉSsel van ellátva. A hivatkozásokat letöltheti a blobból, és megtekintheti a következőket:
 
-![SELECT INTO ref table Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![Válassza ki a ref Table Stream Analytics lekérdezést](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Amint láthatja, a GUID, amely a referenciaadatok formátuma formátuma eltér az [a] oszlopában temp2. Ezért az adatok nem érkeznek output1 a várt módon.
+Amint láthatja, az ebben a hivatkozási adatokban található GUID formátuma eltér a (temp2) [from] oszlopának formátumával. Ezért nem érkeznek meg az output1 a várt módon.
 
-Javítsa ki az adatok formátumát, töltse fel a blob hivatkoznak, és próbálkozzon újra:
+Megjavíthatja az adatformátumot, feltöltheti a hivatkozási blobra, majd próbálkozzon újra:
 
-![SELECT INTO temp table Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![Válassza ki a temp Table Stream Analytics lekérdezést](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-Ebben az esetben az adatok a kimenetben formázott és kitölti a várt módon.
+Ezúttal a kimenetben lévő adatok formázása és feltöltése a várt módon történik.
 
-![SELECT INTO final table Stream Analytics query](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![Utolsó táblázat Stream Analytics lekérdezés kiválasztása](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség
 
-További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
 * [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

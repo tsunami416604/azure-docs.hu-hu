@@ -1,32 +1,28 @@
 ---
-title: Az Azure Monitor automatikus skálázási beállítások ismertetése
-description: Az automatikus méretezési beállítások és azok működéséről részletes áttekintését. Virtual Machines, Cloud Services, Web Apps vonatkozik
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Az Azure Monitor az autoskálázás beállításainak ismertetése
+description: Az autoskálázási beállítások részletes részletezése és működésük. Virtual Machines, Cloud Services, Web Apps
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364305"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
-Az automatikus méretezési beállítások segítségével, győződjön meg arról, hogy a megfelelő mennyiségű erőforrást fut az alkalmazás változó terhelés kezelésére. Konfigurálhatja az automatikus méretezési beállítások betöltése vagy a teljesítmény jelző mérőszámok alapján, vagy aktivált, ütemezett dátum és idő aktiválását. Ez a cikk részletes tekintse meg az automatikus skálázási beállítás felhőtámadások vesz igénybe. A cikk a séma és a egy beállítás tulajdonságait kezdődik, és ezután bemutatja a konfigurálható különböző típusaival. Végül a cikk azt ismerteti, hogyan értékeli ki az automatikus skálázási funkció az Azure-ban a profilt egy adott időpontban végrehajtásához.
+Az automatikus skálázási beállítások segítségével gondoskodhat arról, hogy megfelelő mennyiségű erőforrást futtasson az alkalmazás változó terhelésének kezeléséhez. Az automatikus skálázási beállításokat beállíthatja úgy, hogy a terhelést vagy teljesítményt jelző mérőszámok alapján induljon el, vagy egy ütemezett dátumon és időpontban aktiválódik. Ez a cikk részletesen ismerteti az autoskálázási beállítások anatómiáját. A cikk a beállítások sémájával és tulajdonságaival kezdődik, majd végigvezeti a különböző konfigurálható profilok típusain. Végül a cikk bemutatja, hogyan értékeli ki az Azure-ban az autoscale funkció az adott időpontban végrehajtandó profilt.
 
-## <a name="autoscale-setting-schema"></a>Automatikus skálázási beállítás séma
-Az automatikus skálázási beállítás séma mutatja be, a következő automatikus skálázási beállítás szolgál. Fontos megjegyezni, hogy rendelkezik-e az automatikus méretezési beállítás:
-- Egy profilt. 
-- Ebben a profilban két mérőszám szabályokat: egy kibővítési és egy, a méretezési csoport.
-  - A horizontális felskálázási szabály akkor aktiválódik, ha a virtuális gép méretezési csoportjának átlagos százalékos Processzorhasználat metrika értéke nagyobb, mint 85 %-os, az elmúlt 10 percre.
-  - A horizontális leskálázási szabály akkor aktiválódik, ha a virtuális gép méretezési átlaga kisebb, mint 60 %-os az elmúlt percben.
+## <a name="autoscale-setting-schema"></a>Az autoskálázási beállítás sémája
+Az autoskálázási beállítás sémájának szemléltetéséhez a következő autoskálázási beállítás lesz használatban. Fontos megjegyezni, hogy ez az autoskálázási beállítás a következő:
+- Egy profil. 
+- Két metrikai szabály ebben a profilban: egy a kiskálázáshoz, egy pedig a méretezéshez.
+  - A kibővített szabály akkor aktiválódik, ha a virtuálisgép-méretezési csoport átlagos CPU-mérőszáma nagyobb, mint 85% az elmúlt 10 percben.
+  - A skálázási szabály akkor aktiválódik, ha a virtuálisgép-méretezési csoport átlaga kevesebb, mint 60% az elmúlt percben.
 
 > [!NOTE]
-> Egy beállítás több profilt is rendelkezhet. További tudnivalókért tekintse meg a [profilok](#autoscale-profiles) szakaszban. Több horizontális felskálázási szabályok és leskálázási szabályokat meghatározott profilt is lehet. Hogyan értékeli, olvassa el a [értékelési](#autoscale-evaluation) szakaszban.
+> Egy beállítás több profillal is rendelkezhet. További információért lásd a [profilok](#autoscale-profiles) szakaszt. Egy profilhoz több kibővíthető szabály is tartozhat, és a méretezési szabályok definiálva vannak. A kiértékelésének módjával kapcsolatban tekintse meg a [próbaverzió](#autoscale-evaluation) szakaszt.
 
 ```JSON
 {
@@ -89,39 +85,39 @@ Az automatikus skálázási beállítás séma mutatja be, a következő automat
 }
 ```
 
-| `Section` | Elem neve | Leírás |
+| Section | Elem neve | Leírás |
 | --- | --- | --- |
-| Beállítás | id | Az automatikus skálázási beállítás erőforrás-azonosítója. Automatikus skálázási beállítások egy Azure Resource Manager-erőforrást is. |
-| Beállítás | name | Az automatikus skálázási beállítás neve. |
-| Beállítás | location | Az automatikus skálázási beállítás helyét. Ezen a helyen az erőforrás méretezése folyamatban helye eltérő lehet. |
-| properties | targetResourceUri | Az erőforrás-azonosító az erőforrás méretezése folyamatban van. Egy automatikus skálázási beállítás-erőforrásonként legfeljebb. |
-| properties | profiles | Az automatikus skálázási beállítás egy vagy több profilt tevődik össze. Minden alkalommal, amikor az automatikus skálázási motor fut, végrehajtása egy profilt. |
-| profile | name | A profil neve. Kiválaszthatja, hogy bármely név, amely segítséget nyújt a profil azonosításához. |
-| profile | Capacity.maximum | Az engedélyezett maximális kapacitását. Biztosítja, hogy automatikus skálázási profil az végrehajtása közben nem méretezhetők az erőforrás felett ezt a számot. |
-| profile | Capacity.minimum | Az engedélyezett minimális kapacitást. Ez biztosítja, hogy az automatikus skálázási profil az végrehajtása közben nem méretezhetők az erőforrás e szám alá. |
-| profile | capacity.default | Ha az erőforrás-metrika (az ebben az esetben a "vmss1" CPU) olvasása során, és a jelenlegi kapacitás nem éri el az alapértelmezett, automatikus méretezés elvégzi a horizontális felskálázást, az alapértelmezett. Ez az erőforrás rendelkezésre állásának biztosításához. Ha a jelenlegi kapacitás még magasabb, mint az alapértelmezett kapacitásértéket, automatikus méretezés nem méretezhetők a. |
-| profile | rules | Automatikus skálázási automatikusan méretezi magát, a maximális és minimális kapacitás, a szabályok segítségével a profil között. Egy profil több szabály is lehet. Általában két szabályok vonatkoznak: egyet, hogy mikor horizontális felskálázás, a másik pedig, hogy mikor alatt. |
-| rules | metricTrigger | A metrikai feltétel teljesülésekor a szabály határozza meg. |
-| metricTrigger | MetricName | A metrika neve. |
-| metricTrigger |  metricResourceUri | Az erőforrás, amely bocsát ki a metrika erőforrás-Azonosítóját. A legtöbb esetben ez megegyezik az erőforrás méretezése folyamatban van. Bizonyos esetekben ez eltérő lehet. Például egy virtuálisgép-méretezési egy storage-üzenetsorban található üzenetek száma szerint méretezheti. |
-| metricTrigger | timeGrain | A metrika-mintavételezés időtartama. Ha például **TimeGrain = "PT1M"** azt jelenti, hogy a metrikák legyenek összesítve percenként, a statisztika elemben megadott összesítő metódus használatával. |
-| metricTrigger | statistic | A timeGrain időszakban használt összesítési módszer. Ha például **statisztika = "Average"** és **timeGrain = "PT1M"** azt jelenti, hogy a metrikák legyenek összesítve 1 percenként átlaga. Ez a tulajdonság szabja meg, hogyan mintavételezés a metrikát. |
-| metricTrigger | timeWindow | A metrikák visszakeresnünk időtartama. Ha például **timeWindow = "PT10M"** azt jelenti, hogy minden alkalommal, amikor az automatikus skálázási funkció az lekérdezi metrikák az elmúlt 10 percben. Az időtartomány lehetővé teszi, hogy a metrikák lesz normalizálva, és elkerülhető az átmeneti csúcsterhelésekre való reagálás. |
-| metricTrigger | timeAggregation | Az összesítési módszer összesíthetők a mintavételezett metrikák. Ha például **TimeAggregation = "Average"** kell összesíteni a mintavételezett metrikák átlaga. Az előző esetben a tíz 1 perces mintát venni, és az átlagos őket. |
-| rules | scaleAction | A szabály a metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
-| scaleAction | direction | "Növelni" horizontális felskálázás, vagy "Csökkentéséhez" méret esetén.|
-| scaleAction | value | Mennyi növelése vagy csökkentése érdekében az erőforrás kapacitását. |
-| scaleAction | cooldown | Mennyi ideig eltelte után a skálázási művelet újbóli skálázás előtt. Például ha **utáni = "PT10M"** , automatikus méretezés nem kísérli meg méretezését, ezáltal újra egy másik 10 perc. A utáni, hogy hozzáadását és eltávolítását a példányok után stabilizálódhatnak a metrikák engedélyezése. |
+| Beállítás | ID (Azonosító) | Az autoskálázási beállítás erőforrás-azonosítója. Az autoskálázási beállítások egy Azure Resource Manager erőforrás. |
+| Beállítás | név | Az autoskálázási beállítás neve. |
+| Beállítás | location | Az autoskálázási beállítás helye Ez a hely nem lehet azonos a méretezni kívánt erőforrás helyétől. |
+| properties | targetResourceUri | A méretezni kívánt erőforrás erőforrás-azonosítója. Erőforráshoz csak egy méretezési beállítás adható meg. |
+| properties | profilok | Az autoskálázási beállítás egy vagy több profilból áll. Minden alkalommal, amikor az autoskálázási motor fut, egy profilt hajt végre. |
+| profil | név | A profil neve. Bármely olyan nevet választhat, amely segít azonosítani a profilt. |
+| profil | Kapacitás. maximum | A maximális kapacitás megengedett. Gondoskodik arról, hogy a profil végrehajtásakor az autoskálázás ne méretezi az erőforrást ezen szám felett. |
+| profil | Kapacitás. minimum | A minimális kapacitás megengedett. Gondoskodik arról, hogy a profil végrehajtásakor az autoskálázás ne méretezi az erőforrást ennél a számnál. |
+| profil | Kapacitás. default | Ha probléma merül fel az erőforrás-metrika (ebben az esetben a "vmss1" CPU) beolvasásakor, és a jelenlegi kapacitás az alapértelmezett érték alatt van, az autoskálázás az alapértelmezett értékre áll. Ez biztosítja az erőforrás rendelkezésre állását. Ha az aktuális kapacitás már magasabb az alapértelmezett kapacitásnál, az autoskálázás nem méretezhető a-ben. |
+| profil | szabályok | Az automatikus skálázás automatikusan méretezi a maximális és a minimális kapacitást a profil szabályainak használatával. Egy profilban több szabály is megadható. Jellemzően két szabály létezik: egyet a kiskálázás időpontjának meghatározásához, a másikat pedig a méretezés időpontjának meghatározásához. |
+| szabály | metricTrigger | Meghatározza a szabály metrikai feltételét. |
+| metricTrigger | metricName | A metrika neve. |
+| metricTrigger |  metricResourceUri | A metrikát kibocsátó erőforrás azonosítója. A legtöbb esetben ez ugyanaz, mint a méretezni kívánt erőforrás. Bizonyos esetekben eltérő lehet. A virtuálisgép-méretezési csoport például méretezhető a tárolási üzenetsor üzeneteinek száma alapján. |
+| metricTrigger | timeGrain | A metrika mintavételezésének időtartama. Például a **TimeGrain = "PT1M"** érték azt jelenti, hogy a metrikákat 1 percenként kell összesíteni a statisztikai elemben megadott összesítési módszer használatával. |
+| metricTrigger | statisztika | Az összesítési metódus a timeGrain időszakon belül. Például a **statisztika = "Average"** és a **TIMEGRAIN = "PT1M"** érték azt jelenti, hogy a metrikákat 1 percenként kell összesíteni, az átlag kiszámításával. Ez a tulajdonság határozza meg a metrika mintavételezésének módját. |
+| metricTrigger | timeWindow | A metrikák visszakeresésének időtartamát. Például a **timeWindow = "PT10M"** érték azt jelenti, hogy minden alkalommal, amikor az autoscale fut, lekérdezi a metrikákat az elmúlt 10 percben. Az időablak lehetővé teszi, hogy a metrikák normalizálva legyenek, és elkerülhető legyen az átmeneti tüskékre való reagálás. |
+| metricTrigger | timeAggregation | A mintául szolgáló mérőszámok összesítéséhez használt összesítési módszer. Például a **TimeAggregation = "Average"** értéknek összesíteni kell a mintavételezési metrikákat az átlag kiszámításával. Az előző esetben végezze el a TEN 1 perces mintákat, és az átlagot. |
+| szabály | scaleAction | A szabály metricTrigger elindításához végrehajtandó művelet. |
+| scaleAction | irány | "Növelje" a méretezéshez, vagy "csökkentse" a méretezést a alkalmazásban.|
+| scaleAction | érték | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
+| scaleAction | hűtő | Az a várakozási idő, ameddig a méretezési művelet a méretezés előtt újra meg nem telik. Ha például a **cooldown = "PT10M"** , az autoskálázás nem próbálkozik újra a méretezéssel újabb 10 percre. A cooldown a példányok hozzáadását vagy eltávolítását követően a mérőszámok stabilizálását teszi lehetővé. |
 
-## <a name="autoscale-profiles"></a>Automatikus méretezési profilok
+## <a name="autoscale-profiles"></a>Autoskálázási profilok
 
-Automatikus méretezési profilok három típusa van:
+Az autoskálázási profilok három típusa létezik:
 
-- **Rendszeres profil:** A leggyakrabban használt profil. Ha nincs szüksége a hét napját, vagy egy adott nap alapján az erőforrás méretezése, használhatja a szokásos profilt. Ez a profil majd metrika szabályok határozzák meg, mikor horizontális felskálázás, és mikor érdemes méretezni a is konfigurálhatók. Meghatározott egy szokásos profilt kell rendelkeznie.
+- **Normál profil:** A leggyakoribb profil. Ha nem kell a hét napjának megfelelően méreteznie az erőforrást, vagy egy adott napon, használhat egy normál profilt. Ezt a profilt ezután olyan metrikai szabályokkal konfigurálhatja, amelyek megszabják, hogy mikor érdemes felskálázást végezni, és mikor kell méretezni Csak egy normál profilt kell definiálni.
 
-    A cikk korábbi részeiben használt példa profil, amelyek rendszeres profil. Fontos megjegyezni, hogy is lehet beállítani a profil statikus példányszámra az erőforrás méretezése.
+    A cikkben korábban használt példa egy normál profilt mutat be. Vegye figyelembe, hogy az erőforrás statikus példányok száma számára is beállítható egy profil beállítása.
 
-- **Rögzített dátum profil:** Ez a profil olyan speciális esetekben. Például tegyük fel, hogy 26, 2017 December (PST) hamarosan fontos eseményt. Azt szeretné, hogy a minimális és maximális kapacitását az erőforrás kell lennie az adott nap, de továbbra is a metrikák a méretezési csoport. Ebben az esetben egy rögzített dátumon profilt kell hozzáadni a beállítás a profilok listáját. A profil csak az esemény naponta fusson van konfigurálva. Minden nap az automatikus méretezés a szokásos profilt használja.
+- **Rögzített dátum profil:** Ez a profil különleges esetekhez használható. Tegyük fel például, hogy egy fontos esemény következik be, amely a 2017 (PST) december 26-án jelenik meg. Azt szeretné, hogy az erőforrás minimális és maximális kapacitása ettől a naptól eltérő legyen, de továbbra is méretezhető ugyanazon mérőszámok esetében. Ebben az esetben adjon hozzá egy rögzített dátumú profilt a beállítások listájához. A profil úgy van konfigurálva, hogy csak az esemény napján fusson. Az autoscale bármely más napra a normál profilt használja.
 
     ``` JSON
     "profiles": [{
@@ -154,12 +150,12 @@ Automatikus méretezési profilok három típusa van:
     ]
     ```
     
-- **Ismétlődési profil:** Az ilyen típusú profil segítségével győződjön meg arról, hogy ezt a profilt minden esetben használja a hét egy adott napon. Ismétlődési profil csak a kezdési időt kell. Futnak, amíg a következő ismétlődési profil vagy rögzített dátum profil indításra van állítva. Az automatikus skálázási beállítás csak egy ismétlődési profil használatával, hogy a profil fut, akkor is, ha egy beállítás a meghatározott reguláris profil van. Az alábbi két példák bemutatják, hogyan használja ezt a profilt:
+- **Ismétlődési profil:** Ez a profil lehetővé teszi annak biztosítását, hogy ezt a profilt mindig a hét egy adott napján használják. Az ismétlődési profilok csak kezdési idővel rendelkeznek. Addig futnak, amíg a következő ismétlődési profil vagy a rögzített dátum profil értéke indítás értékre van állítva. Egy olyan autoskálázási beállítás, amely csak egy ismétlődési profillal rendelkezik, futtatja ezt a profilt, még akkor is, ha egy adott beállításban van definiálva egy normál profil. A következő két példa szemlélteti a profil használatának módját:
 
-    **1. példa: És a hétvégékre hétköznap**
+    **1. példa: hétköznapok és hétvégék**
     
-    Tegyük fel, hétvégén, amelyet az 4 lennie a maximális kapacitását. Hétköznapokon mert további terhelés várható azt szeretné, a maximális kapacitása 10. A beállítás ebben az esetben két ismétlődési profil, a másik pedig a hétvégéket és a egy másik hétköznapokon tartalmaz.
-    A beállítás a következőhöz hasonló:
+    Tegyük fel, hogy a hétvégén a maximális kapacitás 4. Mivel a hétköznapok nagyobb terhelést várnak, a maximális kapacitás 10. Ebben az esetben a beállítás két ismétlődési profilt fog tartalmazni, amelyek közül az egyik a hétvégén, a másik pedig hétköznapokon fut.
+    A beállítás a következőképpen néz ki:
 
     ``` JSON
     "profiles": [
@@ -213,13 +209,13 @@ Automatikus méretezési profilok három típusa van:
     }]
     ```
 
-    Az előző beállítás látható, hogy minden egyes ismétlődési profil rendelkezik-e az ütemezés szerint. Ez az ütemezés határozza meg a profil indításakor fut. A profil leáll, ha egy másik profilhoz futási idejét.
+    Az előző beállítás azt mutatja, hogy minden ismétlődési profilnak van ütemezése. Ez az ütemterv határozza meg, hogy a profil mikor induljon el. A profil leáll, ha ideje egy másik profil futtatására.
 
-    Ha például az előző beállításai "weekdayProfile" indításra van beállítva, hétfőn 12:00 órakor. Ez azt jelenti, hogy ez a profil elindítja a futó hétfő, 12:00 órakor. 12:00-kor, ha "weekendProfile" történő futásra van ütemezve fut, amíg szombat folytatja.
+    Az előző beállításban például a "weekdayProfile" beállítás a hétfő 12:00 ÓRAKOR való indulásra van beállítva. Ez azt jelenti, hogy ez a profil hétfőn, a 12:00-kor fut. 12:00 ÓRAKOR folytatódik, amikor a "weekendProfile" futtatása ütemezve van a futás megkezdésére.
 
-    **2. példa: Munkaidő**
+    **2. példa: munkaidő**
     
-    Tegyük fel, egy metrika küszöbértéke munkaidőben (9:00-kor, 5:00 óra), és a egy másik a minden más időszakban legyen. A beállítás a következő lenne:
+    Tegyük fel, hogy a munkaidőn belül egy metrikai küszöbértéket szeretne használni (9:00 – 5:00 PM), és egy másikat minden más alkalommal. A beállítás a következőképpen fog kinézni:
     
     ``` JSON
     "profiles": [
@@ -273,41 +269,41 @@ Automatikus méretezési profilok három típusa van:
     }]
     ```
     
-    Az előző beállítás látható, hogy a "businessHoursProfile" hétfő futó 9:00 órakor kezdődik, és 17:00-kor továbbra is. Ez mikor "nonBusinessHoursProfile" elindult. A "nonBusinessHoursProfile" 9:00-kor kedd amíg fut, és majd a "businessHoursProfile" átveszi újra. Ez ismétlődik amíg péntek, délután 5:00-kor. Ezen a ponton "nonBusinessHoursProfile" futtatásával egészen hétfő 9:00 órakor.
+    Az előző beállítás azt mutatja, hogy a "businessHoursProfile" a hétfő 9:00 órakor kezdődik, és továbbra is 5:00 PM. Ekkor kezdődik a "nonBusinessHoursProfile" futtatása. A "nonBusinessHoursProfile" a 9:00-es keddig fut, majd a "businessHoursProfile" függvény újra átveszi. Ez a péntek 5:00 ÓRAKOR ismétlődik. Ezen a ponton a "nonBusinessHoursProfile" egészen hétfő 9:00 ÓRAKOR fut.
     
 > [!Note]
-> Az automatikus skálázási felhasználói felület az Azure Portalon az ismétlődési profil befejezési kikényszeríti, és megkezdi az automatikus skálázási beállítás alapértelmezett profil között ismétlődési profilok futtató.
+> Az Azure Portal a felhasználói felület az ismétlődési profilok befejezési idejét kényszeríti, és az ismétlődési profilok között megkezdi az autoskálázási beállítás alapértelmezett profiljának futtatását.
     
-## <a name="autoscale-evaluation"></a>Automatikus skálázás kiértékelési
-Tekintve, hogy az automatikus méretezési beállítások több profilt is rendelkezik, és az egyes profilok rendelkezhet több metrika szabály, fontos tudni, hogyan értékeli ki az automatikus skálázási beállítás. Minden alkalommal, amikor az automatikus skálázási feladat fut, az megkezdi a profil érvényes kiválasztásával. Automatikus skálázási Ezután kiértékeli a minimális és maximális értékeket és a profil metrika szabályok, és úgy dönt, hogy ha szükség egy skálázási műveletet.
+## <a name="autoscale-evaluation"></a>Az autoscale kiértékelése
+Mivel az autoskálázási beállítások több profillal rendelkezhetnek, és az egyes profilok több metrikai szabállyal is rendelkezhetnek, fontos megérteni, hogyan történik az autoskálázási beállítás kiértékelése. Minden alkalommal, amikor az autoskálázási feladatot futtatja, az a megfelelő profil kiválasztásával kezdődik. Ezután az autoscale kiértékeli a profilban szereplő minimális és maximális értékeket és a metrikák szabályait, és eldönti, hogy szükséges-e méretezési művelet.
 
-### <a name="which-profile-will-autoscale-pick"></a>Melyik profilt fogja választani az automatikus méretezés?
+### <a name="which-profile-will-autoscale-pick"></a>Melyik profil automatikusan méretezi a kivételezést?
 
-Automatikus skálázási választja ki a profilt a következő folyamat használja:
-1. Bármely rögzített dátum profilt, amely konfigurálva van a Futtatás most először keresi. Ha nincs, az automatikus skálázási futtatja. Ha több rögzített dátum profilt, amely futtatni kell menteniük, automatikus méretezés kiválasztja az elsőt.
-2. Ha nincsenek nem rögzített dátum profil, automatikus méretezés ismétlődési profilok megvizsgálja. Ha egy ismétlődési profil, futtatja azt.
-3. Ha nincsenek rögzített dátum vagy ismétlődési profilok, az automatikus méretezés fut. a szokásos profilt
+Az autoscale a következő műveletsort használja a profil kiválasztásához:
+1. Először minden olyan rögzített dátumú profilt keres, amely már konfigurálva van. Ha van, az autoscale futtatja azt. Ha több rögzített dátumú profilt kellene futtatni, az autoscale kiválasztja az elsőt.
+2. Ha nincsenek rögzített dátumú profilok, az autoscale megtekinti az ismétlődési profilokat. Ha a rendszer ismétlődési profilt talál, azt futtatja.
+3. Ha nincsenek rögzített dátum-vagy ismétlődési profilok, az autoscale futtatja a normál profilt.
 
-### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Hogyan az automatikus méretezés több szabály kiértékeléséhez?
+### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Hogyan értékeli az autoscale több szabályt?
 
-Automatikus skálázási profilt futtatásához határozza meg, miután értékeli a profil a kibővített szabályokat (ezek a szabályok a **iránya = "Növelése"** ).
+Miután az autoscale meghatározza, hogy melyik profilt szeretné futtatni, kiértékeli a profil összes kibővíthető szabályát (ezek a szabályok az **irány = "növekedés"** ).
 
-Legalább egy horizontális felskálázási szabályok esetén, ha az automatikus méretezés számítja ki az új kapacitást határozza meg a **scaleAction** az egyes ezeket a szabályokat. Majd méretezhetőségének köszönhetően a maximális számát ezen a kapacitás, a szolgáltatás rendelkezésre állásának biztosításához.
+Ha egy vagy több kibővíthető szabály van kiváltva, az autoscale kiszámítja az egyes szabályok **scaleAction** által meghatározott új kapacitást. Ezt követően a szolgáltatás rendelkezésre állásának biztosítása érdekében a kapacitások maximális mennyiségét kiméretezi.
 
-Például tegyük fel, van egy virtuálisgép-méretezési csoportot 10 aktuális kapacitás beállítása. Két horizontális felskálázási szabály: egyet, amely 10 %-kal növeli a kapacitást, a másikat, amely növeli a kapacitást 3 száma szerint. Az első szabály 11 egy új kapacitást eredményez, és a második szabálynak 13 kapacitást eredményez. Ahhoz, hogy a szolgáltatás rendelkezésre állása, az automatikus skálázási úgy dönt, az eseményekből eredő műveleteket a maximális kapacitást, így a második szabálynak van kiválasztva.
+Tegyük fel például, hogy van egy virtuálisgép-méretezési csoport, amelynek a jelenlegi kapacitása 10. Két kibővített szabály létezik: az egyik, amely 10 százalékkal növeli a kapacitást, és eggyel növeli a kapacitást 3 számmal. Az első szabály a 11 új kapacitását eredményezi, a második szabály pedig 13 kapacitást eredményezne. A szolgáltatás rendelkezésre állásának biztosítása érdekében az autoscale kiválasztja a maximális kapacitást eredményező műveletet, így a második szabály van kiválasztva.
 
-Horizontális felskálázási szabályok esetén, ha az automatikus méretezés kiértékeli az összes horizontális leskálázási szabály (a szabályok **irány "Csökkentéséhez" =** ). Az automatikus méretezés csak akkor kerül a horizontális leskálázási művelet, ha aktivált összes horizontális leskálázási szabály.
+Ha nincs kibővíthető kibővített szabály, az autoscale kiértékeli az összes skálázási szabályt (szabályok: **Direction = "csökkenés"** ). Az autoscale művelet csak akkor vesz igénybe méretezési műveletet, ha az összes méretezési szabály aktiválva van.
 
-Automatikus skálázási számítja ki az új kapacitást határozza meg a **scaleAction** az egyes ezeket a szabályokat. Ezután azt úgy dönt, a skálázási művelet, amely a szolgáltatás rendelkezésre állásának biztosításához ezeket kapacitások maximális eredményez.
+Az autoscale kiszámítja az egyes szabályok **scaleAction** által meghatározott új kapacitást. Ezután kiválasztja a méretezési műveletet, amely a szolgáltatás rendelkezésre állásának biztosítása érdekében a maximális kapacitást eredményezi.
 
-Például tegyük fel, van egy virtuálisgép-méretezési csoportot 10 aktuális kapacitás beállítása. Két horizontális leskálázási szabály:, amely 50 %-kal csökkenti a kapacitást, a másikat, amely csökkenti a kapacitást 3 száma szerint. Az első szabály az 5-ből egy új kapacitást eredményez, és a második szabálynak 7 kapacitást eredményez. Ahhoz, hogy a szolgáltatás rendelkezésre állása, az automatikus skálázási úgy dönt, az eseményekből eredő műveleteket a maximális kapacitást, így a második szabálynak van kiválasztva.
+Tegyük fel például, hogy van egy virtuálisgép-méretezési csoport, amelynek a jelenlegi kapacitása 10. Két méretezési szabály létezik: az egyik, amely 50 százalékkal csökkenti a kapacitást, és egy, a kapacitást 3 számmal csökkenti. Az első szabály az 5 új kapacitását eredményezi, a második szabály pedig 7 kapacitást eredményezne. A szolgáltatás rendelkezésre állásának biztosítása érdekében az autoscale kiválasztja a maximális kapacitást eredményező műveletet, így a második szabály van kiválasztva.
 
-## <a name="next-steps"></a>További lépések
-További információ az automatikus méretezés lépésként tekintse át a következőket:
+## <a name="next-steps"></a>Következő lépések
+További információ az autoskálázásról:
 
 * [Az automatikus méretezés áttekintése](../../azure-monitor/platform/autoscale-overview.md)
-* [Gyakori metrikák az Azure Monitor automatikus méretezés](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Ajánlott eljárások az Azure Monitor automatikus skálázása](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Automatikus skálázási műveletek használatával küldjön e-mailt és webhookot riasztási értesítések](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [Az automatikus méretezés – REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Általános mérőszámok Azure Monitor](../../azure-monitor/platform/autoscale-common-metrics.md)
+* [Ajánlott eljárások az Azure Monitor-méretezéshez](../../azure-monitor/platform/autoscale-best-practices.md)
+* [E-mailek és webhookok riasztási értesítéseinek küldése az autoscale műveletekkel](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [REST API méretezése](https://msdn.microsoft.com/library/dn931953.aspx)
 

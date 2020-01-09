@@ -1,6 +1,6 @@
 ---
-title: Az Azure Storage-Blobból az Azure Data Lake Storage Gen1 összehasonlítása |} A Microsoft Docs
-description: Az Azure Storage-Blobból az Azure Data Lake Storage Gen1 összehasonlítása
+title: Azure Data Lake Storage Gen1 összehasonlítás a Azure Storage Blobval | Microsoft Docs
+description: Azure Data Lake Storage Gen1 összehasonlítása Azure Storage Blob
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,40 +12,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 478c261bb909cbc931a7dbbaa9cb6c61152970e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438723"
 ---
-# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Az Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
+# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)] 
 
-Ebben a cikkben a táblázat néhány fontos szempontjai big data-feldolgozáshoz mentén az Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket foglalja össze. Az Azure Blob Storage egy általános célú, skálázható objektumtárolását, amely számos különböző adattárolási forgatókönyvekhez készült. Az Azure Data Lake Storage Gen1 egy nagy kapacitású adattár, amely a big data-elemzési számítási feladatokhoz van optimalizálva.
+A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket big data feldolgozás néhány kulcsfontosságú aspektusa mellett. Az Azure Blob Storage egy általános célú, skálázható objektum-tároló, amelyet számos tárolási forgatókönyvhöz terveztek. A Azure Data Lake Storage Gen1 big data elemzési számítási feladatokhoz optimalizált, Hyper-Scale adattár.
 
-|  | 1\. generációs Azure Data Lake Storage | Azure Blob Storage |
+|  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | --- | --- | --- |
-| Cél |A big data-elemzési célokra tárolás |Általános célú objektumtároló a számos különböző storage-forgatókönyvek, beleértve a big data-elemzés |
-| Használati példák |Kötegelt, interaktív, analitikai és gép tanulási streamelési például naplófájlok, IoT-adatokat, kattintson a adatfolyamok, nagy méretű adatkészletek |Bármilyen típusú szöveget vagy bináris adatot, például az alkalmazás biztonsági célból, biztonsági mentési adatokat, a streamelési és az általános célú adatok médiatárolónkba. Emellett teljes körű támogatást adatelemzési feladatokhoz; kötegelt, interaktív, analitikai és gép tanulási streamelési például naplófájlok, IoT-adatokat, kattintson a adatfolyamok, nagy méretű adatkészletek |
-| Fő fogalmak |A Data Lake Storage Gen1 fiók mappával, viszont tartalmazó fájlként tárolt adatok |Storage-fiók rendelkezik tárolókkal, melynek cserébe megvan a blobok formájában adatok |
-| struktúra |Hierarchikus fájlrendszer |Objektumtároló strukturálatlan névtér esetében |
-| API |HTTPS-kapcsolaton keresztül a REST API |REST API HTTP/HTTPS-kapcsolaton keresztül |
-| Kiszolgálóoldali API |[WebHDFS-kompatibilis REST API-val](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Az Azure Blob Storage REST API-val](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Hadoop-fájl rendszer ügyfél |Igen |Igen |
-| Adatműveletek – hitelesítés |Alapján [az Azure Active Directory-identitásokkal](../active-directory/develop/authentication-scenarios.md) |A közös titkos kulcsot – alapján [hozzáférési kulcsainak](../storage/common/storage-account-manage.md#access-keys) és [megosztott hozzáférési aláírást kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
-| Adatműveletek – hitelesítési protokoll |OAuth 2.0. Hívások tartalmaznia kell egy érvényes JWT (JSON Web Token) Azure Active Directory által kiadott |Üzenet kivonat-alapú hitelesítési kód (HMAC). Hívások a Base64-kódolású SHA-256 kivonatoló tartalmaznia kell a HTTP-kérelem egy része felett. |
-| Adatműveletek – engedélyezés |A POSIX hozzáférés-vezérlési listák (ACL).  Az Azure Active Directory-identitásokkal alapuló hozzáférés-vezérlési listák a fájl- és szintjén állítható. |A fiókszintű engedélyezése – használja [Tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys)<br>A fiók, tároló vagy a blob engedélyezési - használja [megosztott hozzáférési aláírást kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
-| Adatműveletek – naplózás |Érhető el. Lásd: [Itt](data-lake-store-diagnostic-logs.md) információt. |Elérhető |
-| Az inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali</li> <ul><li>A szolgáltatás által kezelt kulcsok</li><li>Az ügyfél által felügyelt kulcsok az Azure-Kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali</li> <ul><li>A szolgáltatás által kezelt kulcsok</li><li>Az ügyfél által felügyelt kulcsok az Azure KeyVault (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
-| Felügyeleti műveletek (például fiók létrehozása) |[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) fiókok kezelése az Azure által biztosított (RBAC) |[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) fiókok kezelése az Azure által biztosított (RBAC) |
-| Fejlesztői SDK-k |.NET, Java, Python, Node.js |.Net, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |
-| Elemzési számítási feladat teljesítményére |Optimalizált teljesítménygyűjtési párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebességű és iops-t. |Optimalizált teljesítménygyűjtési párhuzamos elemzési számítási feladatokhoz. |
-| Blobméretének korlátjai |A fiókok méretének, a fájlok méretét vagy a fájlok száma korlátlan |Dokumentált konkrét korlátozások [Itt](../storage/common/storage-scalability-targets.md). Nagyobb fiók korlátozza kapcsolatba lép a [Azure-támogatás](https://azure.microsoft.com/support/faq/) |
-| Georedundancia |Helyileg redundáns (az adatok egy Azure-régióban. több példány) |Helyileg redundáns (LRS), a zónaredundáns (ZRS), globálisan georedundáns (GRS), az írásvédett globálisan redundáns (RA-GRS) zónáját. Lásd: [Itt](../storage/common/storage-redundancy.md) további információ |
+| Rendeltetés |Optimalizált tároló big data elemzési számítási feladatokhoz |Általános célú objektumok tárolója számos különböző tárolási forgatókönyvhöz, beleértve a big data elemzéseket |
+| Használati példák |Kötegelt, interaktív, adatfolyam-elemzési és gépi tanulási adatokat, például naplófájlokat, IoT adatokat, kattintson a streamek és a nagyméretű adatkészletek elemre. |Bármilyen típusú szöveges vagy bináris adat, például alkalmazás-háttér, biztonsági mentési adat, adathordozó-tároló a folyamatos átvitelhez és az általános célú adatmennyiség. Emellett teljes körű támogatást nyújt az elemzési számítási feladatokhoz; kötegelt, interaktív, adatfolyam-elemzési és gépi tanulási adatokat, például naplófájlokat, IoT adatokat, kattintson a streamek és a nagyméretű adatkészletek elemre. |
+| Fő fogalmak |Data Lake Storage Gen1 fiók olyan mappákat tartalmaz, amelyek a fájlban tárolt adatfájlok |A Storage-fiók rendelkezik tárolókkal, amelyek viszont Blobok formájában vannak tárolva. |
+| Struktúra |Hierarchikus fájlrendszer |Objektum-tároló sík névtérrel |
+| API |REST API HTTPS-kapcsolaton keresztül |REST API HTTP/HTTPS protokollon keresztül |
+| Kiszolgálóoldali API |[WebHDFS – kompatibilis REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| Hadoop fájlrendszerbeli ügyfél |Igen |Igen |
+| Adatműveletek – hitelesítés |[Azure Active Directory identitások](../active-directory/develop/authentication-scenarios.md) alapján |Közös titkokon alapuló [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) és [közös hozzáférésű aláírási kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Adatműveletek – hitelesítési protokoll |OAuth 2,0. A hívásoknak tartalmazniuk kell egy Azure Active Directory által kiadott érvényes JWT (JSON Web Token) |Kivonatoló alapú üzenethitelesítő kód (HMAC). A hívásoknak Base64 kódolású SHA-256 kivonatot kell tartalmazniuk a HTTP-kérelem egy részén. |
+| Adatműveletek – engedélyezés |POSIX Access Control listák (ACL-ek).  A Azure Active Directory identitások alapján megadott ACL-ek a fájl-és mappa szintjén állíthatók be. |Fiók szintű engedélyezés – [fiók-hozzáférési kulcsok](../storage/common/storage-account-keys-manage.md) használata<br>Fiók, tároló vagy blob engedélyezése esetén – [közös hozzáférésű aláírási kulcsok](../storage/common/storage-dotnet-shared-access-signature-part-1.md) használata |
+| Adatműveletek – naplózás |Elérhető. További [információ:.](data-lake-store-diagnostic-logs.md) |Elérhető |
+| Inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
+| Felügyeleti műveletek (például fiók létrehozása) |Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez |Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez |
+| Fejlesztői SDK-k |.NET, Java, Python, Node. js |.Net, Java, Python, Node. js, C++, Ruby, php, go, Android, iOS |
+| Elemzési számítási feladatok teljesítménye |Optimalizált teljesítmény párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebesség és IOPS. |Optimalizált teljesítmény párhuzamos elemzési számítási feladatokhoz. |
+| Méretkorlát |Nincs korlátozás a fiókok méretétől, a fájlmérettől vagy a fájlok számától |A konkrét korlátokat lásd: [a standard Storage-fiókok méretezhetőségi célpontjai](../storage/common/scalability-targets-standard-account.md) , valamint [a blob Storage méretezhetőségi és teljesítményi céljai](../storage/blobs/scalability-targets.md). Nagyobb fiókokra vonatkozó korlátozások érhetők el, ha kapcsolatba lép az [Azure ügyfélszolgálatával](https://azure.microsoft.com/support/faq/) |
+| Geo-redundancia |Helyileg redundáns (több példányban, egy Azure-régióban) |Helyileg redundáns (LRS), zóna redundáns (ZRS), globálisan redundáns (GRS), olvasási hozzáférés globális redundáns (RA-GRS). További [információ:](../storage/common/storage-redundancy.md) |
 | Szolgáltatás állapota |Általánosan elérhető |Általánosan elérhető |
-| Régiónkénti rendelkezésre állás |Lásd: [Itt](https://azure.microsoft.com/regions/#services) |Az összes Azure-régióban érhető el |
-| Ár |Lásd: [díjszabása](https://azure.microsoft.com/pricing/details/data-lake-store/) |Lásd: [díjszabása](https://azure.microsoft.com/pricing/details/storage/) |
+| Regionális elérhetőség |Lásd [itt](https://azure.microsoft.com/regions/#services) |Minden Azure-régióban elérhető |
+| Ár |[Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/) megtekintése |[Díjszabás](https://azure.microsoft.com/pricing/details/storage/) megtekintése |
 
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/11/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e51c1220e120d157ea4a413b95a7beb20c950518
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382949"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API ésC#
 
@@ -46,7 +46,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     using Newtonsoft.Json;
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a helyesírási ellenőrzéshez használt szöveghez.
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a helyesírási ellenőrzéshez használt szöveghez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```csharp
     namespace SpellCheckSample
@@ -137,6 +137,10 @@ static void Main(string[] args)
 }
 ```
 
+## <a name="run-the-application"></a>Az alkalmazás futtatása
+
+Hozza létre és futtassa a projektet. Ha a Visual studiót használja, nyomja le az **F5** billentyűt a fájl hibakereséséhez.
+
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
@@ -179,7 +183,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)

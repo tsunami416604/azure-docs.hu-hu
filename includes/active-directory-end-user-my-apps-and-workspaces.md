@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468354"
 ---
 | |
 |--|
-|Ha a képernyőn megjelenő elemek nem egyeznek a jelen cikkben ismertetett lépésekkel, az azt jelenti, hogy a rendszergazda nincs bekapcsolva az új **saját alkalmazások** (előzetes verzió) felületén. A régi élmény használatához kövesse a [saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview) található utasításokat és információkat.|
-| |
+|Ha a rendszergazda bekapcsolta az új **saját alkalmazások** előzetes verzióját a szervezete számára, megjelenik egy szalagcím a **saját** alkalmazások oldal tetején, amely szerint a **frissített saját alkalmazások felülete elérhető**. Ha a **kipróbálás**lehetőséget választja, azonnal megtekintheti az új URL-címet (myapplications.microsoft.com) és a frissített felhasználói élményt. Ezt követően minden alkalommal, amikor visszatér a **saját alkalmazások** lapra, automatikusan az új felületre lép.<br><br>Az új felhasználói felület használatának leállításához válassza az **Igen** lehetőséget az új **alkalmazások** oldalának új **felületének meghagyása** lapon. Azonnal visszatérhet a régi URL-címre (myapps.microsoft.com) és a felhasználói élményre. Ezt követően minden alkalommal, amikor visszatér a **saját alkalmazások** oldalra, automatikusan megtörténik a régi élmény.|
+|

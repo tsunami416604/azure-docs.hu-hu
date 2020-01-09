@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 69ea905bc8c0deefd34f5fe997cb90dec1b454ab
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e0f9e87fbef72db6f3a21d7531df3e1cefc6317f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444319"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Adatok másolása a részletezésből Azure Data Factory használatával
 
@@ -37,7 +37,7 @@ A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat en
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,7 +50,7 @@ A társított szolgáltatás részletezése a következő tulajdonságokkal tám
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **részletezés** | Igen |
-| connectionString | Egy ODBC-kapcsolati karakterlánc, amely a részletezéshez csatlakozik. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectionString | Egy ODBC-kapcsolati karakterlánc, amely a részletezéshez csatlakozik. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa**
@@ -61,10 +61,7 @@ A társított szolgáltatás részletezése a következő tulajdonságokkal tám
     "properties": {
         "type": "Drill",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -82,10 +79,7 @@ A társított szolgáltatás részletezése a következő tulajdonságokkal tám
     "properties": {
         "type": "Drill",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;"
-            },
+            "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

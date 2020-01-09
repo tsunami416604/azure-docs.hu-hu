@@ -1,5 +1,5 @@
 ---
-title: Egyéni mezők a Azure Monitorban | Microsoft Docs
+title: Egyéni mezők a Azure Monitorban (előzetes verzió) | Microsoft Docs
 description: A Azure Monitor egyéni mezők funkciója lehetővé teszi, hogy saját kereshető mezőket hozzon létre egy olyan Log Analytics-munkaterületen lévő rekordokból, amelyek egy összegyűjtött rekord tulajdonságaihoz vannak hozzáadva.  Ez a cikk az egyéni mezők létrehozásának folyamatát ismerteti, és részletes útmutatót nyújt egy adott eseményről.
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396885"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor (előzetes verzió)
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan elemezheti a szöveges adatokat egy Log Analytics-munkaterületen a gyűjtött adatok alapján. Azt javasoljuk, hogy a szöveges adatok elemzését a lekérdezési szűrőben a következő témakörben ismertetett útmutatást követve olvassa el: [Azure monitor](../log-query/parse-text.md). Számos előnyt biztosít az egyéni mezők használata során.
@@ -113,11 +113,11 @@ Láthatjuk, hogy a **WMI-teljesítmény adapterhez** tartozó bejegyzések ki le
 
 ![Keresési eredmények](media/custom-fields/search-results-02.png)
 
-Most már futtathatunk egy lekérdezést, amely ellenőrzi, hogy létrejött-e a **Service_CF** , de még nincs hozzáadva a rekordokhoz. Ennek az az oka, hogy az egyéni mező nem működik a meglévő rekordokkal szemben, ezért meg kell várni az új rekordok gyűjtését.
+Most már futtathatunk egy lekérdezést, amely ellenőrzi, hogy létrejött-e a **Service_CF** , de még nincs hozzáadva rekordokhoz. Ennek az az oka, hogy az egyéni mező nem működik a meglévő rekordokkal szemben, ezért meg kell várni az új rekordok gyűjtését.
 
 ![Kezdeti darabszám](media/custom-fields/initial-count.png)
 
-Némi idő elteltével a rendszer begyűjti az új eseményeket, láthatjuk, hogy a **Service_CF** mező most már hozzá van adva a feltételnek megfelelő rekordokhoz.
+Némi idő elteltével a rendszer begyűjti az új eseményeket, láthatjuk, hogy a **Service_CF** mező már hozzá van adva a feltételnek megfelelő rekordokhoz.
 
 ![Végső eredmények](media/custom-fields/final-results.png)
 

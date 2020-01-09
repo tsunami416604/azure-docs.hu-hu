@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "74815356"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása (előzetes verzió)
@@ -371,7 +371,7 @@ A parancs a következőket hajtja végre:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
-| Containers | SDK-gazda URL-címe | Protocol (Protokoll) |
+| Tárolók | SDK-gazda URL-címe | Protocol (Protokoll) |
 |--|--|--|
 | Beszéd – szöveg és Custom Speech – szöveg | `ws://localhost:5000` | WS |
 | Szöveg – beszéd és egyéni szöveg – beszéd | `http://localhost:5000` | HTTP |
@@ -396,7 +396,7 @@ Ezt a tárolót és egy másik, a GAZDAGÉPen futó Azure Cognitive Services tá
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 A tároló indításakor vagy futtatásakor problémák merülhetnek fel. Használjon kimeneti [csatlakoztatást](speech-container-configuration.md#mount-settings) , és engedélyezze a naplózást. Ezzel lehetővé teszi, hogy a tároló olyan naplófájlokat állítson elő, amelyek hasznosak a hibák elhárítása során.
 

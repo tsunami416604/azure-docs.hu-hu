@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: bd538d436d1c900a370f522bccf724eaf87210b4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582607"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666278"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -35,7 +35,7 @@ Emellett a támadók kifejlődték a módszereiket számos aláírás-alapú vé
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
 
-A riasztások a Security Center által generált értesítések, amikor észlelik a fenyegetéseket az erőforrásokon. A Security Center rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is tartalmaz a támadások megoldásához.
+A riasztások olyan értesítések, amelyeket a Security Center hoz létre, ha fenyegetést észlel egy erőforrásban. A Security Center rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is felkínál a támadás elhárítására.
 
 ## Hogyan ismeri fel Security Center a fenyegetéseket? <a name="detect-threats"> </a>
 
@@ -105,7 +105,7 @@ Az alábbi témakörök a különböző riasztásokat ismertetik az erőforrást
 A következő témakörök azt ismertetik, hogyan használják a Security Center az Azure-infrastruktúrával való integrálás során gyűjtött különböző telemetria, hogy az Azure-ban üzembe helyezett erőforrások további védelmi rétegeit is alkalmazni lehessen:
 
 * [Szolgáltatási réteggel kapcsolatos riasztások](security-center-alerts-service-layer.md)
-* [Integráció az Azure Security-termékekkel](security-center-alerts-integration.md)
+* [Veszélyforrások észlelése az Azure WAF és Azure DDoS Protection](security-center-alerts-integration.md)
 
 ## <a name="what-are-security-incidents"></a>Mik azok a biztonsági incidensek?
 
@@ -113,9 +113,13 @@ A biztonsági incidensek a kapcsolódó riasztások gyűjteményei, az egyes ria
 
 Az incidensek használatával a Security Center egyetlen nézetet biztosít a támadási kampányokról és az összes kapcsolódó riasztásról. Ez a nézet lehetővé teszi, hogy gyorsan megértse, milyen műveleteket tartott a támadó, és milyen erőforrásokat érintettek. További információ: [felhőalapú intelligens riasztás korrelációja](security-center-alerts-cloud-smart.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="security-alerts-in-azure-activity-log"></a>Biztonsági riasztások az Azure-beli tevékenység naplójában
 
-Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információkért lásd:
+Amellett, hogy a Azure Portalon vagy programozott módon elérhetővé válik, a biztonsági riasztások és incidensek naplózása eseményként történik az [Azure-tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). További információ az esemény-sémáról: [biztonsági riasztások az Azure-beli tevékenység naplójában](https://go.microsoft.com/fwlink/?linkid=2114113).
+
+## <a name="next-steps"></a>Következő lépések
+
+Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információ eléréséhez lásd:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 * [Azure Security Center – gyakori kérdések](https://docs.microsoft.com/azure/security-center/security-center-faq)

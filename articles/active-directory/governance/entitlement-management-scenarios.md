@@ -1,5 +1,5 @@
 ---
-title: Gyakori forgatókönyvek az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: A jogosultságok kezelésének gyakori forgatókönyvei – Azure AD
 description: Ismerkedjen meg a Azure Active Directory jogosultságok kezelésének gyakori eseteivel kapcsolatos magas szintű lépésekkel.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422507"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Gyakori forgatókönyvek az Azure AD-jogosultságok kezelésében
 

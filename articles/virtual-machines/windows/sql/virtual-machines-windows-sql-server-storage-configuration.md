@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/05/2017
+ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373994"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server virtuális gépek tárolási konfigurációja
 
@@ -40,7 +40,7 @@ Az automatikus tárolási konfigurációs beállítások használatához a virtu
 
 A következő szakaszok azt ismertetik, hogyan konfigurálható a tároló az új SQL Server virtuális gépekhez.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 Ha egy Azure-beli virtuális gépet kiépít egy SQL Server Gallery-rendszerkép használatával, válassza a **konfiguráció módosítása** lehetőséget a **SQL Server beállítások** lapon a teljesítményre optimalizált tárolási konfiguráció lap megnyitásához. Meghagyhatja az alapértelmezett értékeket, vagy módosíthatja az igényeinek leginkább megfelelő lemez-konfigurációt a munkaterhelés alapján. 
 
@@ -110,7 +110,6 @@ Módosíthatja a SQL Server VM létrehozási folyamat során konfigurált meghaj
 ![Meglévő SQL Server VM tárterületének konfigurálása](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-
 ## <a name="storage-configuration"></a>Tároló konfigurálása
 
 Ez a szakasz a tárolási konfiguráció változásairól nyújt hivatkozást, amelyeket az Azure automatikusan végrehajt az SQL virtuális gépek üzembe helyezése vagy konfigurálása során a Azure Portal.
@@ -141,7 +140,7 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Munkaterhelés típusa | Leírás | Optimalizálás |
+| Számítási feladat típusa | Leírás | Optimalizálás |
 | --- | --- | --- |
 | **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |None |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |

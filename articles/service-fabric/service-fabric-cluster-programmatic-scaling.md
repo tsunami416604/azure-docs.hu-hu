@@ -1,44 +1,35 @@
 ---
-title: Az Azure Service Fabric programozott skálázása |} A Microsoft Docs
-description: Méretezése az Azure Service Fabric-fürt vagy programozott módon, megfelelően egyéni eseményindítók
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric programozott skálázás
+description: Azure Service Fabric-fürt méretezése programozott módon, egyéni eseményindítók szerint
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458289"
 ---
-# <a name="scale-a-service-fabric-cluster-programmatically"></a>A Service Fabric-fürt programozott skálázása 
+# <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric-fürt programozott méretezése 
 
-Azure-ban futó Service Fabric-fürtök a virtual machine scale sets épülnek.  [Fürtméretezés](./service-fabric-cluster-scale-up-down.md) ismerteti, hogyan Service Fabric-fürtök vertikálisan fel-vagy manuálisan, vagy az automatikus skálázási szabályok. Ez a cikk hitelesítő adatok kezelése és a fürtök skálázásának módját ismerteti, vagy ki az fluent Azure számítási SDK-t, amely egy speciális forgatókönyv. Áttekintéséhez olvassa el a [Azure méretezési műveletek koordinálása a programozott módszerekkel](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Az Azure-ban futó Service Fabric fürtök a virtuálisgép-méretezési csoportokra épülnek.  A [fürt skálázása](./service-fabric-cluster-scale-up-down.md) azt ismerteti, hogyan méretezhető Service Fabric fürtök manuálisan vagy automatikus méretezési szabályokkal. Ez a cikk bemutatja, hogyan kezelheti a hitelesítő adatokat, és hogyan méretezheti be vagy ki a fürtöt a Fluent Azure számítási SDK-val, ami egy fejlettebb forgatókönyv. Áttekintést az [Azure skálázási műveleteinek koordinálására szolgáló programozott módszerekről](service-fabric-cluster-scaling.md#programmatic-scaling)olvashat. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Hitelesítő adatok kezelése
-Méretezés kezelésére való írásával szolgáltatás az egyik kihívás, hogy a szolgáltatás hozzáférjen a virtuális gép méretezési csoport erőforrásainak nélkül egy interaktív bejelentkezést kell lennie. A Service Fabric-fürt eléréséhez akkor egyszerűen, ha a méretezési szolgáltatás módosítja a saját Service Fabric-alkalmazás, de a méretezési eléréséhez szükséges hitelesítő adatokat. Jelentkezzen be, használhatja a [egyszerű szolgáltatás](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) hoztak létre a [Azure CLI-vel](https://github.com/azure/azure-cli).
+A szolgáltatásnak a skálázás kezelésére való írásának egyik kihívása, hogy a szolgáltatásnak képesnek kell lennie a virtuálisgép-méretezési csoport erőforrásainak interaktív bejelentkezés nélküli elérésére. Ha a skálázási szolgáltatás módosítja a saját Service Fabric alkalmazást, a Service Fabric-fürt elérése egyszerűen megtörténik, de a méretezési csoport eléréséhez hitelesítő adatokra van szükség. A bejelentkezéshez használhatja az [Azure CLI](https://github.com/azure/azure-cli)-vel létrehozott [egyszerű szolgáltatásnevet](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) .
 
-Egy egyszerű szolgáltatást az alábbi lépéseket követve hozható létre:
+Egy egyszerű szolgáltatásnév a következő lépésekkel hozható létre:
 
-1. Jelentkezzen be az Azure parancssori felület (`az login`) a virtuálisgép-méretezési csoport-hozzáféréssel rendelkező felhasználóként beállítása
-2. Az egyszerű szolgáltatás létrehozásához `az ad sp create-for-rbac`
-    1. Jegyezze fel az appId-(ügyfél-azonosító néven máshol), a neve, a jelszót és a bérlői későbbi használatra.
-    2. Emellett az előfizetés-azonosítója, amelyet a tekinthet meg `az account list`
+1. Jelentkezzen be az Azure CLI-be (`az login`) olyan felhasználóként, aki hozzáfér a virtuálisgép-méretezési csoporthoz
+2. Egyszerű szolgáltatásnév létrehozása `az ad sp create-for-rbac`
+    1. Jegyezze fel a appId (más néven "ügyfél-azonosító"), a nevet, a jelszót és a bérlőt későbbi használatra.
+    2. Szüksége lesz az előfizetés-AZONOSÍTÓra is, amely megtekinthető `az account list`
 
-A fluent számítási kódtár használatával ezeket a hitelesítő adatokat az alábbiak szerint bejelentkezhet (vegye figyelembe, hogy alapvető fluent Azure típusok, például `IAzure` szerepelnek a [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomag):
+A Fluent számítási függvénytár a következőképpen tud bejelentkezni ezekkel a hitelesítő adatokkal (vegye figyelembe, hogy a [Microsoft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomagban találhatók az Azure-beli Core-típusok (például `IAzure`):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -57,10 +48,10 @@ else
 }
 ```
 
-Miután bejelentkezett, scale set példányszám keresztül kérhetők le `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
+A bejelentkezést követően a méretezési csoport példányainak száma `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`keresztül kérdezhető le.
 
 ## <a name="scaling-out"></a>Méretezés
-SDK-t használja a fluent Azure számítási, néhány hívások esetén – a virtuális gép méretezési hozzáadható példányok
+A Fluent Azure számítási SDK használatával a példányok csak néhány hívással adhatók hozzá a virtuálisgép-méretezési csoportokhoz.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -68,15 +59,15 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Azt is megteheti virtuális gép méretezési készlet mérete is kezelhetők a PowerShell-parancsmagokkal. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) a virtuálisgép-méretezési készlet objektumot is lekérheti. A jelenlegi kapacitás keresztül érhető el a `.sku.capacity` tulajdonság. Miután megváltoztatta a kapacitás a kívánt értékre, az Azure-beli virtuálisgép-méretezési frissíthetők a [ `Update-AzVmss` ](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) parancsot.
+Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a `.sku.capacity` tulajdonságon keresztül érhető el. Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport a [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) paranccsal frissíthető.
 
-Amikor csomópontot ad manuálisan, hozzáadása egy méretezési csoport példánya kell lennie minden, ami szükséges egy új Service Fabric-csomópont elindítani, mert a méretezési csoport sablonját automatikusan az új példányok csatlakoztatása a Service Fabric-fürt kiterjesztéseket is tartalmaz. 
+Amikor manuálisan ad hozzá egy csomópontot, a méretezési csoport példányainak hozzáadásához minden szükséges, ami egy új Service Fabric csomópont elindításához szükséges, mivel a méretezési csoport sablonja olyan bővítményeket tartalmaz, amelyek automatikusan csatlakoznak az új példányokhoz a Service Fabric-fürthöz. 
 
-## <a name="scaling-in"></a>A méretezés
+## <a name="scaling-in"></a>Skálázás folyamatban
 
-A méretezés hasonlít a horizontális felskálázás. A tényleges virtuálisgép-méretezési csoport beállítása a módosítások vannak gyakorlatilag ugyanaz. De lett korábban említett, a Service Fabric csak automatikusan törli a eltávolított csomópontokat tartóssági arany és ezüst szintű. Így a bronz-tartóssági horizontális leskálázási esetben szükség kommunikál a Service Fabric-fürt leállítása el kell távolítani a csomópontot, majd eltávolítja a állapotában.
+A méretezése hasonló a horizontális felskálázáshoz. A virtuálisgép-méretezési csoport tényleges változásai gyakorlatilag azonosak. De ahogy korábban már említettük, Service Fabric csak az arany vagy ezüst tartósságával törli az eltávolított csomópontokat. Tehát a bronz-tartóssági méretezés esetében szükség van a Service Fabric-fürttel való interakcióra, hogy leállítsa a csomópontot, majd távolítsa el az állapotát.
 
-A csomópont Felkészülés shutdown magában foglalja a keresés, a csomópontot, eltávolítja (a legutóbb hozzáadott virtuális gép méretezési készlet példány) és inaktiválása. Virtuális gép méretezési csoport példányaihoz kerül, a sorrendben vannak számozva, így újabb csomópontok összehasonlítja a numerikus utótagot a (melyik egyezés az alapul szolgáló virtulálisgép-skálázási beállítása példányok neve) a csomópontok nevében található. 
+A csomópont leállításra való előkészítése magában foglalja az eltávolítandó csomópont (a legutóbb hozzáadott virtuálisgép-méretezési csoport példányának) megkeresését és a deaktiválását. A virtuálisgép-méretezési csoport példányai a hozzáadásuk sorrendjében vannak számozva, így az újabb csomópontok a csomópontok neveiben található szám utótag összehasonlításával (amelyek megfelelnek a virtuálisgép-méretezési csoport példányainak). 
 
 ```csharp
 using (var client = new FabricClient())
@@ -93,7 +84,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Miután található, el kell távolítani a csomópontot inaktiválhatók, és azonos segítségével távolítja el `FabricClient` példány és a `IAzure` példányának regisztrációját a korábban.
+A csomópont eltávolítását követően inaktiválható és eltávolítható ugyanazzal a `FabricClient` példánnyal és a `IAzure` példánnyal.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -118,16 +109,16 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-Mint a horizontális felskálázás, módosítsa a virtuálisgép-méretezési csoport PowerShell-parancsmagok kapacitásának is itt is használható, ha egy parancsfájl-kezelési módszer előnyösebb. Miután a virtuálisgép-példányt távolítja el, a Service Fabric-csomópont állapota távolíthatja el.
+A horizontális felskálázáshoz hasonlóan a virtuálisgép-méretezési csoport kapacitásának módosítására szolgáló PowerShell-parancsmagok is használhatók itt, ha a parancsfájl-kezelési módszer előnyös. A virtuálisgép-példány eltávolítása után Service Fabric csomópont-állapotot lehet eltávolítani.
 
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerkedés a saját automatikus skálázási logika megvalósítása, ismerkedjen meg a következő fogalmak és hasznos API-kat:
+A saját automatikus méretezési logikája megvalósításának megkezdéséhez Ismerkedjen meg a következő fogalmakkal és hasznos API-kkal:
 
-- [Manuális vagy automatikus skálázási szabályok méretezése](./service-fabric-cluster-scale-up-down.md)
-- [Fluent Azure kezelési kódtárak .NET-keretrendszerhez készült](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (hasznos egy Service Fabric-fürt alapjául szolgáló virtuális gépek méretezési folytatott kommunikációhoz)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (hasznos Service Fabric-fürt és a csomópontjai folytatott kommunikációhoz)
+- [Méretezés manuálisan vagy automatikus méretezési szabályokkal](./service-fabric-cluster-scale-up-down.md)
+- [Fluent Azure felügyeleti kódtárak a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (a Service Fabric-fürt mögöttes virtuálisgép-méretezési csoportjaival való interakcióhoz hasznos)
+- [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric-fürttel és annak csomópontjaival való interakcióhoz hasznos)

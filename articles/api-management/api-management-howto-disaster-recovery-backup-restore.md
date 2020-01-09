@@ -1,5 +1,6 @@
 ---
-title: Vész-helyreállítás implementálása a Backup és a Restore használatával az Azure API Managementban | Microsoft Docs
+title: Vész-helyreállítás implementálása biztonsági mentéssel és visszaállítással API Management
+titleSuffix: Azure API Management
 description: Ismerje meg, hogyan végezheti el a biztonsági mentést és a visszaállítást a vész-helyreállításhoz az Azure API Managementban.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430703"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vész-helyreállítás implementálása a szolgáltatás biztonsági mentésével és visszaállításával az Azure-ban API Management
 
@@ -54,7 +55,7 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory-alkalmazás létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Az API Management Service-példányát tartalmazó előfizetés használatával navigáljon a Azure Active Directory **Alkalmazásregisztrációk** (Azure Active Directory > felügyelet/Alkalmazásregisztrációk) lapjára.
 
     > [!NOTE]
@@ -64,7 +65,7 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
 
     A **Létrehozás** ablak a jobb oldalon jelenik meg. Itt adhatja meg a HRE alkalmazáshoz kapcsolódó információkat.
 
-4. Adja meg az alkalmazás nevét.
+4. Adjon nevet az alkalmazásnak.
 5. Az alkalmazás típusa mezőben válassza a **natív**lehetőséget.
 6. Adjon meg egy helyőrző URL-címet, például `http://resources` az **átirányítási URI**számára, mivel ez egy kötelező mező, de az értéket nem használja később. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
 7. Kattintson a **Create** (Létrehozás) gombra.
@@ -117,7 +118,7 @@ Cserélje le a `{tenant id}`, a `{application id}`és a `{redirect uri}`t a köv
 
 1. Cserélje le a `{tenant id}`t a létrehozott Azure Active Directory-alkalmazás bérlői azonosítójával. Az azonosítót a **Alkalmazásregisztrációk** -> **végpontok**elemre kattintva érheti el.
 
-    ![Végpontok][api-management-endpoint]
+    ![Endpoints (Végpontok)][api-management-endpoint]
 
 2. Cserélje le a `{application id}` értéket a kapott értékre a **Beállítások** lapra való navigáláskor.
 3. Cserélje le a `{redirect uri}`t a Azure Active Directory alkalmazás **átirányítási URI** -k lapjának értékére.
@@ -147,7 +148,7 @@ API Management szolgáltatás biztonsági mentése a következő HTTP-kérést a
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-ahol
+ahol:
 
 -   annak az előfizetésnek a `subscriptionId` azonosítója, amely a API Management-szolgáltatást tárolja, amelyről biztonsági másolatot szeretne készíteni
 -   `resourceGroupName` – az Azure API Management szolgáltatás erőforráscsoporthoz tartozó erőforráscsoport neve
@@ -188,7 +189,7 @@ API Management szolgáltatás korábban létrehozott biztonsági másolatból t�
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-ahol
+ahol:
 
 -   annak az előfizetésnek a `subscriptionId`-azonosítója, amely az API Management szolgáltatást tárolja, amelyről biztonsági másolatot kíván visszaállítani
 -   `resourceGroupName` – az Azure API Management-szolgáltatást birtokló erőforráscsoport neve, amelyről biztonsági másolatot kíván visszaállítani

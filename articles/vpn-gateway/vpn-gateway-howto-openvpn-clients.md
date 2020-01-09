@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425783"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Az Azure VPN Gateway OpenVPN-ügyfeleinek konfigurálása
 
@@ -63,7 +63,7 @@ Ellenőrizze, hogy elvégezte-e a VPN-átjáróhoz tartozó OpenVPN konfigurál�
 
 1. Töltse le és telepítsen egy OpenVPN-ügyfelet, például [TunnelBlick](https://tunnelblick.net/downloads.html). 
 2. Töltse le az átjáró VPN-profilját. Ez a Azure Portal pont – hely konfiguráció lapján, vagy a PowerShellben a "New-AzVpnClientConfiguration" paranccsal végezhető el.
-3. Csomagolja ki a profilt. Nyissa meg a vpnconfig. ovpn konfigurációs fájlt az OpenVPN mappából a Jegyzettömbben.
+3. Csomagolja ki a profilt. Nyissa meg a vpnconfig. ovpn konfigurációs fájlt az OpenVPN mappából egy szövegszerkesztőben.
 4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. A kódolt nyilvános kulcs lekéréséhez a tanúsítvány exportálásával kapcsolatos információkért lásd: [a nyilvános kulcs exportálása](vpn-gateway-certificates-point-to-site.md#cer) .
 5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. A titkos kulcs kibontásával kapcsolatos információkért lásd: [a titkos kulcs exportálása](https://openvpn.net/community-resources/how-to/#pki) .
 6. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
@@ -74,6 +74,39 @@ Ellenőrizze, hogy elvégezte-e a VPN-átjáróhoz tartozó OpenVPN konfigurál�
 > [!IMPORTANT]
 >Az OpenVPN protokoll csak az iOS 11,0 és újabb, valamint a MacOS 10,13 és újabb verziókat támogatja.
 >
+## <a name="iOS"></a>iOS-ügyfelek
+
+1. Telepítse az OpenVPN-ügyfelet (2,4-es vagy újabb verzió) az App Store-ból.
+2. Töltse le az átjáró VPN-profilját. Ez a Azure Portal pont – hely konfiguráció lapján, vagy a PowerShellben a "New-AzVpnClientConfiguration" paranccsal végezhető el.
+3. Csomagolja ki a profilt. Nyissa meg a vpnconfig. ovpn konfigurációs fájlt az OpenVPN mappából egy szövegszerkesztőben.
+4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. A kódolt nyilvános kulcs lekéréséhez a tanúsítvány exportálásával kapcsolatos információkért lásd: [a nyilvános kulcs exportálása](vpn-gateway-certificates-point-to-site.md#cer) .
+5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. A titkos kulcs kibontásával kapcsolatos információkért lásd: [a titkos kulcs exportálása](https://openvpn.net/community-resources/how-to/#pki) .
+6. Ne módosítson semmilyen egyéb mezőt.
+7. Küldje el az e-mail-fiókjának a profil fájlját (. ovpn) az iPhone-on található posta alkalmazásban konfigurált e-mail fiókjába. 
+8. Nyissa meg az e-mail üzenetet az iPhone alkalmazásban, és koppintson a csatolt fájlra.
+
+    ![E-mail megnyitása](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. Ha nem látja a **Másolás az OpenVPN-be** lehetőséget, koppintson a **továbbiak** elemre.
+
+    ![Másolás az OpenVPN-be](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. Koppintson a **Másolás az OpenVPN-** re lehetőségre 
+
+    ![Másolás az OpenVPN-be](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. Koppintson a **Hozzáadás** lehetőségre a **profil importálása** oldalon
+
+    ![Másolás az OpenVPN-be](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. Koppintson a **Hozzáadás** elemre az **importált profil** oldalon
+
+    ![Másolás az OpenVPN-be](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. Indítsa el az OpenVPN-alkalmazást, és csúsztassa a kapcsolót a **profil** oldalon a kapcsolódáshoz
+
+    ![Kapcsolódás](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Linux-ügyfelek
 

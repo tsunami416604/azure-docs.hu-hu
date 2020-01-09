@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044633"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435855"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
@@ -93,7 +93,7 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Cserélje le a `DOMAINADMIN`t a fürt rendszergazdai felhasználója számára a fürt [létrehozása](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)során konfiguráltra, és cserélje le a `CLUSTERNAME`t a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai felhasználói fiók jelszavát. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
+   Cserélje le a `DOMAINADMIN`t a fürt rendszergazdai felhasználója számára a fürt [létrehozása](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)során konfiguráltra, és cserélje le a `CLUSTERNAME`t a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai felhasználói fiók jelszavát. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
 
 2. Használja az alábbi parancsokat a fürtnév változóként való mentéséhez és egy JSON-elemző segédprogram, a `jq` telepítéséhez. Ha a rendszer kéri, adja meg a Kafka-fürt nevét.
 
@@ -112,7 +112,7 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
 
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) **a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
+1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)**a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
 
 1. Futtassa az alábbi parancsot:
 
@@ -123,7 +123,7 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
 
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
 
-A konfigurált Ranger-szabályzatok alapján a **sales_user** képes létrehozni/felhasználni a témakört, `salesevents` de nem `marketingspend`. Ezzel szemben a **marketing_user** képes létrehozni/felhasználni a témakört, `marketingspend` de nem `salesevents`.
+A konfigurált Ranger-szabályzatok alapján a **sales_user** a témakört `salesevents` de nem `marketingspend`. Ezzel szemben a **marketing_user** a témakört `marketingspend` de nem `salesevents`.
 
 1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. Az alábbi paranccsal jelentkezzen be mint **sales_user1**:
 
@@ -145,7 +145,7 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Például: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` a **sales_user**számára is elérhető legyen.
+4. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése** szakasz 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` is elérhető legyen **sales_user**.
 
 5. A következő parancs végrehajtásával ellenőrizze, hogy a **sales_user1** képes-e a `salesevents` témakörre:
 
@@ -161,7 +161,7 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Ellenőrizze, hogy el tudja-e olvasni az üzeneteket.
 
-7. Győződjön meg arról, hogy a **sales_user1** nem tud előállítani a témakörben `marketingspend` a következő ugyanabban az SSH-ablakban történő végrehajtásával:
+7. Győződjön meg arról, hogy a **sales_user1** nem tud előállítani a témakörben `marketingspend` a következő ugyanabban az SSH-ablakban való végrehajtásával:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
@@ -169,9 +169,9 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Engedélyezési hiba történik, amely figyelmen kívül hagyható.
 
-8. Figyelje meg, hogy a **marketing_user1** nem használható a következő témakörből: `salesevents`.
+8. Figyelje meg, hogy **marketing_user1** nem használható a témakör `salesevents`.
 
-   Ismételje meg a 1-4 lépést, de ezúttal **marketing_user1**.
+   Ismételje meg a 1-4. lépést, de ezúttal **marketing_user1**.
 
    Hajtsa végre a következő parancsot a `salesevents`témakörből való használathoz:
 
@@ -193,7 +193,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-f�
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
-1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
+1. Kattintson a **Törlés** gombra. Kattintson az **Igen** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

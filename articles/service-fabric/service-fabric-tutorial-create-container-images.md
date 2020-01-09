@@ -1,31 +1,21 @@
 ---
-title: Tárolórendszerképek létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
+title: Tároló lemezképek létrehozása Service Fabric az Azure-ban
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre tárolórendszerképeket többtárolós Service Fabric-alkalmazásokhoz.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385225"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465437"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tároló lemezképek létrehozása Linux Service Fabric-fürtön
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
 
-Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról
@@ -206,7 +196,7 @@ azure-vote-front
 
 Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Service Fabric-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy alkalmazást hoztak létre a GitHubról, és a tároló lemezképeit létrehozták, és elküldték a beállításjegyzékbe. A következő lépéseket hajtotta végre:
 

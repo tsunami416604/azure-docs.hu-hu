@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre Log Analytics munkaterületet a F
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 6dd4486d52cc5c2fb568241ebaefad454e50cb2c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0ab8019a8537d4080afdb457459f09cd156ff4ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365529"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Log Analytics munkaterület létrehozása a Azure Portal
 Az **log Analytics munkaterületek** menüjéből hozzon létre egy log Analytics munkaterületet a Azure Portal használatával. A Log Analytics munkaterület egy egyedi környezet, amely Azure Monitor naplózza az adatnaplót. Az egyes munkaterületek saját adattárral és konfigurációval rendelkeznek, és az adatforrások és megoldások úgy vannak konfigurálva, hogy egy adott munkaterületen tárolják az adataikat. Ha a következő forrásokból szeretne adatgyűjtést végrehajtani, Log Analytics munkaterületre van szüksége:
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="create-a-workspace"></a>Munkaterületek létrehozása
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
 
-    ![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
+    ![Azure portál](media/quick-create-workspace/azure-portal-01.png)
   
 2. Kattintson a **Hozzáadás**elemre, majd válassza ki a kívánt beállításokat a következő elemekhez:
 

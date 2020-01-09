@@ -1,18 +1,18 @@
 ---
-title: A függvények típusai a Azure Functions Durable Functions bővítményében
+title: Függvények típusai az Azure Durable Functions
 description: Ismerje meg, hogy milyen típusú függvények és szerepkörök működnek a Durable Functions Azure Functions-ben való összehangolása során.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7a485f31ed7e112745cf3b45bbfe348e6a2e0fd3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433267"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions típusok és szolgáltatások (Azure Functions)
+# <a name="durable-functions-types-and-features"></a>Durable Functions típusok és szolgáltatások
 
 Durable Functions a [Azure functions](../functions-overview.md)kiterjesztése. A függvények végrehajtásának állapot-nyilvántartó előkészítéséhez Durable Functions is használhatja. A tartós Function app egy olyan megoldás, amely különböző Azure-függvényekből áll. A függvények a különböző szerepköröket egy tartós függvény-előkészítés során is lejátszhatják. 
 

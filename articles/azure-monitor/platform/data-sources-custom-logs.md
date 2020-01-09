@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450658"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók a Azure Monitorban
 
@@ -71,23 +71,23 @@ Időbélyeg-elválasztó használata esetén a Azure Monitorban tárolt egyes re
 ### <a name="step-3-add-log-collection-paths"></a>3\. lépés Napló-gyűjtemény elérési útjának hozzáadása
 Meg kell adnia egy vagy több elérési utat az ügynökön, ahol megtalálhatja az egyéni naplót.  Megadhat egy adott elérési utat és nevet a naplófájlhoz, vagy megadhat egy elérési utat, amely helyettesítő karaktert tartalmaz a névhez. Ez olyan alkalmazásokat támogat, amelyek naponta új fájlt hoznak létre, vagy amikor egy fájl elér egy adott méretet. Egyetlen naplófájlhoz több elérési utat is megadhat.
 
-Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a névben szereplő dátummal a log20100316. txt fájlban. Előfordulhat, hogy az ilyen naplóhoz tartozó minta olyan *log\*.txt* , amely az alkalmazás elnevezési sémáját követő minden naplófájlra vonatkozni fog.
+Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a névben szereplő dátummal a log20100316. txt fájlban. Az ilyen naplók mintája lehet például a *log\*. txt* fájl, amely az alkalmazás elnevezési sémáját követő minden naplófájlra vonatkozni fog.
 
 A következő táblázat példákat tartalmaz a különböző naplófájlok megadására szolgáló érvényes mintákra.
 
 | Leírás | Útvonal |
 |:--- |:--- |
 | A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa\\\*. txt |
-| A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\ log\*.txt |
+| A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log\*. txt |
 | A */var/log/audit* összes fájlja. txt kiterjesztéssel a Linux-ügynökön |/var/log/audit/*. txt |
-| A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log\*.txt |
+| A */var/log/audit* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel Linux-ügynökön |/var/log/audit/log\*. txt |
 
 1. Válassza a Windows vagy a Linux lehetőséget a hozzáadni kívánt elérési út megadásához.
 2. Írja be az elérési utat, majd kattintson a **+** gombra.
 3. Ismételje meg a folyamatot bármilyen további elérési útra.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4\. lépés Adja meg a napló nevét és leírását
-A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig a _CL-vel végződik, hogy egyéni naplóként megkülönböztesse azt.
+A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig _CL, hogy egyéni naplóként megkülönböztesse azt.
 
 1. Írja be a napló nevét.  A rendszer automatikusan megadja a **\_CL** -utótagot.
 2. Adjon hozzá egy opcionális **leírást**.
@@ -146,12 +146,12 @@ A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új f�
 ![Napló gyűjteményének elérési útja](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Adja meg a napló nevét és leírását
-A *MyApp_CL* nevet használjuk, és begépeljük a **leírást**.
+Az *MyApp_CL* nevet használjuk, és a **leírást**beírhatjuk.
 
 ![Napló neve](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Annak ellenőrzése, hogy az egyéni naplók gyűjtése folyamatban van-e
-A *MyApp_CL* egyszerű lekérdezését használjuk az összegyűjtött napló összes rekordjának visszaküldéséhez.
+Az összegyűjtött naplóból származó összes rekord visszaküldéséhez a *MyApp_CL* egyszerű lekérdezését használjuk.
 
 ![Egyéni mezők nélküli naplózási lekérdezés](media/data-sources-custom-logs/query-01.png)
 

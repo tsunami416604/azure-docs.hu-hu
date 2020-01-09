@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354945"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: a Azure SQL Database C&#x23; és a ADO.net egyetlen adatbázisában megtervezheti a viszonyítási adatbázist
 
@@ -40,7 +40,7 @@ A [Visual Studio 2019](https://www.visualstudio.com/downloads/) -es vagy újabb 
 
 ## <a name="create-a-blank-single-database"></a>Üres önálló adatbázis létrehozása
 
-Azure SQL Databaseben egyetlen adatbázis jön létre a számítási és tárolási erőforrások egy meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) keretén belül jön létre, és egy [adatbázis-kiszolgáló](sql-database-servers.md)használatával van kezelve.
+Azure SQL Databaseben egyetlen adatbázis jön létre a számítási és tárolási erőforrások egy meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) keretén belül jön létre, és egy [adatbázis-kiszolgáló](sql-database-servers.md)használatával van kezelve.
 
 Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
 
@@ -101,7 +101,7 @@ A SQL Database szolgáltatás egy IP-tűzfalat hoz létre a kiszolgáló szintj�
 
 4. Kattintson az **ügyfél IP-** címének hozzáadása elemre az eszköztáron, és adja hozzá az aktuális IP-címet egy új IP-tűzfalszabály-szabályhoz. Az IP-tűzfalszabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára is megnyithatja.
 
-5. Kattintson a **Save** (Mentés) gombra. A rendszer létrehoz egy kiszolgálói szintű IP-tűzfalszabály-szabályt az aktuális IP-címhez, amely az 1433-es portot nyitja meg a SQL Database kiszolgálón.
+5. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű IP-tűzfalszabály-szabályt az aktuális IP-címhez, amely az 1433-es portot nyitja meg a SQL Database kiszolgálón.
 
 6. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
@@ -112,7 +112,7 @@ Az IP-cím mostantól átadható az IP-tűzfalon. Most már csatlakozhat az ön�
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az adatbázis alapvető feladatait, például az adatbázisok és táblák létrehozását, az adatbázishoz való kapcsolódást, az adatok betöltését és a lekérdezések futtatását. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

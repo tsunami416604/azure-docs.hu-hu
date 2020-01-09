@@ -1,36 +1,27 @@
 ---
-title: A Reliable Actors keretrendszerben polimorfizmus |} A Microsoft Docs
-description: .NET felületek és-funkciókat és API-definíciók újra felhasználhatja a Reliable Actors keretrendszerben típusok hierarchiákat hozhat létre.
-services: service-fabric
-documentationcenter: .net
+title: Polimorfizmus a Reliable Actors-keretrendszerben
+description: A Reliable Actors-keretrendszerben lévő .NET-felületek és-típusok hierarchiáit felépítve újrahasznosíthatja a funkcionalitást és az API-definíciókat.
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348926"
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>A Reliable Actors keretrendszerben polimorfizmus
-A Reliable Actors-keretrendszer lehetővé teszi ugyanazokat a technikákat szeretné használni Tervező objektumorientált többféle actors hozhat létre. Ezek a módszerek egyike polimorfizmus, amellyel típusok és felületek több öröklése az szülők általánosítva. A Reliable Actors keretrendszerben öröklési általában néhány további korlátozások a .NET-modell követi. Java/Linux, esetén, a Java modelljét követi.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizmus a Reliable Actors-keretrendszerben
+A Reliable Actors-keretrendszer lehetővé teszi, hogy többek között olyan technikákat hozzon létre, amelyeket az objektum-orientált kialakításban is használ. Az egyik ilyen módszer a polimorfizmus, amely lehetővé teszi, hogy a típusok és a felületek több általánosított szülőtől örökölnek. A Reliable Actors-keretrendszer öröklése általában a .NET-modellt követi, néhány további korlátozással. Java/Linux esetén a Java-modellt követi.
 
-## <a name="interfaces"></a>Felületek
-A Reliable Actors-keretrendszer kell megadni az aktor típusát által végrehajtandó legalább egy csatoló. Ez az interfész a actors kommunikálni az ügyfelek által használható proxyosztály létrehozására szolgál. Mindaddig, amíg minden felület, amelyet az aktor típusát és az összes hozzá tartozó szülő végső soron származtatást IActor örökölt egyéb felületek felületek is (C#) vagy Actor(Java). IActor (C#) és Actor(Java) rendre a platform által meghatározott base felületek aktorok a .NET, Java és a keretrendszereket. Így a klasszikus polimorfizmus példa az alakzatok használata előfordulhat, hogy a következőhöz hasonló:
+## <a name="interfaces"></a>Interfészek
+A Reliable Actors-keretrendszerhez meg kell határoznia legalább egy olyan felületet, amelyet a színész típusa szerint kell megvalósítani. Ez az interfész olyan proxy osztály létrehozásához használható, amelyet az ügyfelek használhatnak a szereplőkkel való kommunikációhoz. Az illesztőfelületek más felületektől is örökölnek, ha a színész típusa és az összes szülője a IActor (C#) vagy a Actor (Java) által megvalósított összes felülettel rendelkezik. A IActorC#() és a Actor (Java) a platform által meghatározott alapinterfészek, amelyek a .net és a Java keretrendszerben szereplő szereplők számára készültek. Így az alakzatokat használó klasszikus polimorfizmus például a következőhöz hasonló lehet:
 
-![Az alakzat szándékú felhasználók felület hierarchia][shapes-interface-hierarchy]
+![Alakzat szereplőinek illesztőfelület-hierarchiája][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Típusok
-A hierarchiában szereplő típusú, amely alapján az Aktor alaposztály a platform által biztosított is létrehozhat. Esetén alakzatokat, lehetséges, hogy egy alap `Shape`(C#) vagy `ShapeImpl`(Java) típusa:
+Létrehozhatja a Actor típusú hierarchiát is, amely a platform által biztosított alapszintű Actor osztályból származik. Az alakzatok esetében előfordulhat, hogy rendelkezik egy alapszintű `Shape`(C#) vagy `ShapeImpl`(Java) típussal:
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -49,7 +40,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-A altípushoz `Shape`(C#) vagy `ShapeImpl`(Java) felül lehet bírálni a következő metódusokat.
+`Shape`(C#) vagy `ShapeImpl`(Java) altípusai felülírhatják a metódusokat az alapból.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -92,11 +83,11 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Megjegyzés: a `ActorService` attribútum az aktor típusát. Ez az attribútum jelzi, hogy azt automatikusan hozzon létre ilyen típusú actors üzemeltető szolgáltatás a Reliable Actors keretrendszerben. Bizonyos esetekben célszerű létrehozni, amely kizárólag szánt funkciók osztanak meg altípus és a rendszer soha nem használja vezérlőként konkrét actors alaptípusa. Ezekben az esetekben kell használnia a `abstract` jelzi, hogy soha ne hozzon létre egy adott típus alapján szereplő kulcsszót.
+Jegyezze fel a `ActorService` attribútumot a színész típusán. Ez az attribútum tájékoztatja a megbízható szereplői keretrendszert arról, hogy automatikusan létre kell hoznia egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag altípusokkal való megosztásra szolgál, és soha nem lesz felhasználva konkrét szereplők létrehozásához. Ezekben az esetekben a `abstract` kulcsszó használatával jelezze, hogy soha nem fog létrehozni egy szereplőt az adott típus alapján.
 
-## <a name="next-steps"></a>További lépések
-* Lásd: [hogyan használja a Reliable Actors-keretrendszer a a Service Fabric platformot](service-fabric-reliable-actors-platform.md) megbízhatóságát, méretezhetőségét és konzisztens állapotba.
-* További információ a [aktor életciklus](service-fabric-reliable-actors-lifecycle.md).
+## <a name="next-steps"></a>Következő lépések
+* Ismerje meg, [hogyan használja ki a Reliable Actors Framework a Service Fabric platformot](service-fabric-reliable-actors-platform.md) a megbízhatóság, a méretezhetőség és a konzisztens állapot biztosításához.
+* Ismerkedjen meg a [színészi életciklussal](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->
 

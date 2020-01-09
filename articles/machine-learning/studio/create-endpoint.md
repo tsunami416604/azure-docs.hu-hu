@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 57bc5739d8e6b1fa30482de69285c8895294cfa8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454756"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Végpontok létrehozása központilag telepített Azure Machine Learning Studio (klasszikus) webszolgáltatásokhoz
 
@@ -39,7 +39,7 @@ A Azure Machine Learning webszolgáltatások portál használatával hozzáadhat
 
 ## <a id="scaling"></a>Webszolgáltatás méretezése további végpontok hozzáadásával
 
-Alapértelmezés szerint minden közzétett webszolgáltatás 20 egyidejű kérés támogatására van konfigurálva, és akár 200 egyidejű kérelem is lehet. A Azure Machine Learning Studio klasszikus verziója automatikusan optimalizálja a beállítást, hogy a legjobb teljesítményt nyújtsa a webszolgáltatás számára, és a portál értékét a rendszer figyelmen kívül hagyja.
+Alapértelmezés szerint minden közzétett webszolgáltatás 20 egyidejű kérés támogatására van konfigurálva, és akár 200 egyidejű kérelem is lehet. A Azure Machine Learning Studio (klasszikus) automatikusan optimalizálja a beállítást, hogy a legjobb teljesítményt nyújtsa a webszolgáltatás számára, és a portál értékét a rendszer figyelmen kívül hagyja.
 
 Ha azt tervezi, hogy az API-t nagyobb terheléssel hívja meg, mint az egyidejű hívások maximális száma 200, akkor több végpontot is létre kell hoznia ugyanazon a webszolgáltatáson. Ezután véletlenszerűen terjesztheti a terhelést az összes közül.
 
@@ -49,6 +49,6 @@ Ne feledje, hogy a magas egyidejűségek használata hátrányos lehet, ha nem h
 
 A szinkron API-kat jellemzően olyan helyzetekben használják, ahol alacsony késésre van szükség. A késés itt azt jelenti, hogy az API-nak egy kérést kell végrehajtania, és nem veszi figyelembe a hálózati késéseket. Tegyük fel, hogy van egy API-val egy 50-MS késéssel. Ahhoz, hogy teljes mértékben felhasználja a rendelkezésre álló kapacitást a magas szintű és a maximális párhuzamos hívásokkal: 20, meg kell hívnia ezt az API-t 20 * 1000/50 = 400-szor másodpercenként. Ezen túlmenően az 200-es maximális egyidejű hívások lehetővé teszik a 4000-os API-k meghívását másodpercenként, a 50 – MS késést feltételezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Machine learning webszolgáltatás felhasználása](consume-web-services.md).

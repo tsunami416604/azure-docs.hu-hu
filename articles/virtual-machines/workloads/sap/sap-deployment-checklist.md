@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425933"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -77,7 +77,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - A virtuális gépek és egyéb infrastruktúra-összetevők és/vagy logikai nevek elnevezési konvenciói.
 5.  Microsoft Premier szintű támogatás szerződés. Azonosítsa a Microsoft technikai fiókkezelő (TAM) eszközét. Az SAP-támogatási követelményekkel kapcsolatban lásd: [SAP-támogatási megjegyzés #2015553](https://launchpad.support.sap.com/#/notes/2015553).
 6.  Az előfizetésekhez tartozó Azure-előfizetések és a fő kvóta száma. Az [Azure-előfizetések kvótáinak igény szerinti növeléséhez nyissa meg a támogatási kérelmeket](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
-7.  Adatmennyiség-csökkentési és adatáttelepítési terv az SAP-beli Azure-ba való Migrálás során. Az SAP NetWeaver Systems esetében az SAP a nagy adatmennyiségek mennyiségének korlátozására vonatkozó útmutatást tartalmaz. Tekintse meg [ezt az SAP-útmutatót](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) az SAP ERP-rendszerek adatkezelésével foglalkozó témakörben. Néhány tartalom általában a NetWeaver és S/4HANA rendszerekre is vonatkozik.
+7.  Adatmennyiség-csökkentési és adatáttelepítési terv az SAP-beli Azure-ba való Migrálás során. Az SAP NetWeaver Systems esetében az SAP a nagy adatmennyiségek mennyiségének korlátozására vonatkozó útmutatást tartalmaz. Tekintse meg [ezt az SAP-útmutatót](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) az SAP ERP-rendszerek adatkezelésével foglalkozó témakörben. Néhány tartalom általában a NetWeaver és S/4HANA rendszerekre is vonatkozik.
 8.  Automatikus üzembe helyezési módszer. Az infrastruktúra Azure-beli üzembe helyezésének célja, hogy determinisztikus módon telepítsen, és determinisztikus eredményeket kapjon. Számos ügyfél PowerShell-vagy CLI-alapú parancsfájlokat használ. Vannak azonban olyan nyílt forráskódú technológiák, amelyek segítségével üzembe helyezheti az Azure-infrastruktúrát az SAP számára, és akár SAP-szoftvert is telepíthet. Példákat a GitHubon talál:
     - [Automatizált SAP-üzembe helyezések az Azure-felhőben](https://github.com/Azure/sap-hana)
     - [SAP HANA telepítés](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
@@ -244,7 +244,7 @@ A Go-Live fázisban mindenképpen kövesse a korábbi fázisokban fejlesztett fo
         - Átlagos CPU-idő, minden egyes processzor (128 processzor a M128 virtuális gépeken)
         - CPU kernel-idő, minden egyes processzor
         - CPU felhasználói idő, minden egyes processzor
-    - Memória.
+    - Memory.
         - Szabad memória
         - Memória lap/másodperc
         - Memória lap kimenő/második
@@ -255,7 +255,7 @@ A Go-Live fázisban mindenképpen kövesse a korábbi fázisokban fejlesztett fo
         - Lemez írása kbit/s-ban, külön lemezenként
         - Lemez írása/másodperc, egyéni lemezenként
         - Lemezes írás a másodpercenkénti/olvasási, egyenkénti lemezen
-    - Hálózati.
+    - Hálózat:
         - Hálózati csomagok/másodperc
         - Kimenő hálózati csomagok/másodperc
         - Hálózati KB/másodperc
@@ -276,7 +276,7 @@ Ez a fázis a rendszer figyelésére, üzemeltetésére és felügyeletére szol
 3. Optimalizálja a rendszerek leállításának időpontját.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikkeket:
 
 - [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)

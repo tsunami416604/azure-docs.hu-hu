@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392150"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service-példány létrehozása
 
@@ -30,9 +30,9 @@ Az alkalmazás egy SignalR Service-példányhoz fog csatlakozni az Azure-ban.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Erőforrás neve** | Globálisan egyedi név | Az új SignalR Service-példányt azonosító név. Érvényes karakterek: `a-z`, `0-9` és `-`.  | 
     | **Előfizetés** | Az Ön előfizetése | Az új SignalR Service-példány létrehozásához használt előfizetés. | 
-    | **[Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a SignalR Service-példányt. | 
-    | **Location** | USA nyugati régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/). |
-    | **Tarifacsomag** | Free | Az Azure SignalR Service-t ingyenesen is kipróbálhatja. |
+    | **[Erőforráscsoport](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a SignalR Service-példányt. | 
+    | **Hely** | USA nyugati régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/). |
+    | **Tarifacsomag** | Ingyenes | Az Azure SignalR Service-t ingyenesen is kipróbálhatja. |
     | **Egységek száma** |  Nem alkalmazható | Az egységek száma azt határozza meg, hogy a SignalR Service-példány hány kapcsolatot tud elfogadni. Ez a beállítás csak a Standard szinten konfigurálható. |
     | **Szolgáltatási mód** |  Kiszolgáló nélküli | Azure Functions vagy REST API használatával. |
 

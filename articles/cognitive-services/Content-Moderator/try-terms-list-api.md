@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755270"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382123"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Mérsékelt az API-konzol egyéni feltételekkel rendelkező listája
 
 Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
-A [List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) használatával létrehozhat egyéni, a szöveges MODERÁLÁSi API-val használható feltételeket tartalmazó listát. A szöveges **képernyős** művelet megkeresi a szöveget a káromkodáshoz, és összehasonlítja az egyéni és a közös feketelistán lévő szöveget is.
+A [List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) használatával létrehozhat egyéni, a szöveges MODERÁLÁSi API-val használható feltételeket tartalmazó listát. A szöveges **képernyős** művelet megkeresi a szöveget a káromkodáshoz, és összehasonlítja az egyéni és a megosztott címek listáit származó szöveget is.
 
 > [!NOTE]
 > A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.

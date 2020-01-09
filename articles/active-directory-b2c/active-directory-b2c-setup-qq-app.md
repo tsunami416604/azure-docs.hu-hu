@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c17b344764fd9c1d18f787952a6193f0c8b634d0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2bda344c32d03425c7cfec4d253e18451eb1f5a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367503"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Egy QQ-fiókkal történő bejelentkezés és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -23,12 +23,12 @@ ms.locfileid: "71065021"
 
 ## <a name="create-a-qq-application"></a>QQ-alkalmazás létrehozása
 
-Ha a QQ-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként kívánja használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik QQ-fiókkal, regisztrálhat a következő címen: [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Ha a QQ-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként kívánja használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik QQ-fiókkal, regisztrálhat [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033)címen.
 
 ### <a name="register-for-the-qq-developer-program"></a>Regisztráljon a QQ fejlesztői programra
 
 1. Jelentkezzen be a [QQ fejlesztői portálra](http://open.qq.com) a QQ-fiókja hitelesítő adataival.
-1. Bejelentkezés után lépjen a [https://open.qq.com/reg](https://open.qq.com/reg) következőre: regisztráció fejlesztőként.
+1. Bejelentkezés után lépjen a [https://open.qq.com/reg ra](https://open.qq.com/reg) , és regisztrálja magát fejlesztőként.
 1. Válassza a**个人**(egyéni fejlesztő) lehetőséget.
 1. Adja meg a szükséges adatokat, és válassza a**下一步**(következő lépés) lehetőséget.
 1. Fejezze be az e-mail ellenőrzési folyamatát. A fejlesztőként való regisztrációt követően néhány napot várnia kell a jóváhagyásra.
@@ -38,7 +38,7 @@ Ha a QQ-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltat
 1. Nyissa meg a következőt: [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 1. Válassza a**应用管理**(alkalmazás-kezelés) lehetőséget.
 1. Válassza a**创建应用**(alkalmazás létrehozása) lehetőséget, és adja meg a szükséges információkat.
-1. Adja `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` meg a**授权回调域**(visszahívási URL-cím). Ha például a `tenant_name` contoso, állítsa be az URL-címet `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`a következőre:.
+1. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Ha például a `tenant_name` contoso, akkor az URL-címet `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`értékre kell állítani.
 1. Válassza a**创建应用**(alkalmazás létrehozása) lehetőséget.
 1. A jóváhagyás lapon válassza a**应用管理**(alkalmazás-kezelés) lehetőséget az alkalmazás-kezelés lapra való visszatéréshez.
 1. A létrehozott alkalmazás mellett válassza a**查看**(nézet) elemet.
@@ -47,9 +47,9 @@ Ha a QQ-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltat
 
 ## <a name="configure-qq-as-an-identity-provider"></a>A QQ konfigurálása identitás-szolgáltatóként
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. Válassza az **identitás-szolgáltatók**, majd a **QQ (előzetes verzió)** lehetőséget.
 1. Adjon meg egy **nevet**. Például: *QQ*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott QQ-alkalmazás alkalmazás-azonosítóját.

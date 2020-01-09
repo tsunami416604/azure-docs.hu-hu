@@ -1,275 +1,150 @@
 ---
 title: Kapcsolódás az IBM Informix-adatbázishoz
-description: Erőforrások kezelése az IBM Informix REST API-kkal és Azure Logic Apps
+description: Automatizálja az IBM Informix-ben tárolt erőforrásokat kezelő feladatokat és munkafolyamatokat Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 author: gplarsen
 ms.author: plarsen
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: d6f768bc76d19c0aa21a245c008a4b05588f8f43
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789733"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665840"
 ---
-# <a name="get-started-with-the-informix-connector"></a>Ismerkedés az Informix-összekötővel
-Az Informix-hez készült Microsoft Connector összekapcsolja Logic Apps az IBM Informix-adatbázisban tárolt erőforrásokhoz. Az Informix-összekötő tartalmaz egy Microsoft-ügyfelet, amely TCP/IP-hálózaton keresztül kommunikál a távoli Informix-kiszolgáló számítógépekkel. Ez magában foglalja a felhőalapú adatbázisokat, például az IBM Informix for Windows rendszert az Azure virtualizációs szolgáltatásban, valamint a helyszíni adatátjárót használó helyszíni adatbázisokat. Tekintse meg az IBM Informix platformok és verziók [támogatott listáját](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (ebben a témakörben).
+# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>IBM Informix-adatbázis-erőforrások kezelése Azure Logic Apps használatával
 
-Az összekötő a következő adatbázis-műveleteket támogatja:
-
-* Adatbázis-táblák listázása
-* Egy sor beolvasása a SELECT használatával
-* Az összes sor olvasása a SELECT paranccsal
-* Egy sor hozzáadása a BESZÚRÁSsal
-* Egy sor módosítása a FRISSÍTÉSsel
-* Egy sor eltávolítása a DELETE használatával
-
-Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy logikai alkalmazásban az adatbázis-műveletek feldolgozásához.
-
-További információ a Logic Appsről: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-
-## <a name="available-actions"></a>Elérhető műveletek
-Ez az összekötő a következő Logic app-műveleteket támogatja:
-
-* Getables
-* GetRow
-* GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
-
-## <a name="list-tables"></a>Táblák listázása
-A logikai alkalmazások bármilyen művelethez való létrehozása a Microsoft Azure Portalon végrehajtott számos lépésből áll.
-
-A logikai alkalmazásban hozzáadhat egy műveletet egy Informix-adatbázisban lévő táblák listázásához. Ez a művelet arra utasítja az összekötőt, hogy dolgozza fel az Informix Schema utasítást, például `CALL SYSIBM.SQLTABLES`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az Azure-beli **kezdőképernyőn**válassza a **+** (plusz aláírás), **web és mobil**, majd a **logikai alkalmazás**lehetőséget.
-2. Adja meg a **nevet**, például `InformixgetTables`, **előfizetés**, **erőforráscsoport**, **hely**és **app Service terv**. Válassza **a rögzítés az irányítópulton**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-
-### <a name="add-a-trigger-and-action"></a>Trigger és művelet hozzáadása
-1. A **Logic apps Designerben**válassza az **üres LogicApp** elemet a **sablonok** listájában.
-2. Az **Eseményindítók** listában válassza az **Ismétlődés**lehetőséget. 
-3. Az **ismétlődési** Eseményindítóban válassza a **Szerkesztés**lehetőséget, válassza a **gyakoriság** legördülő menüből a **nap**lehetőséget, majd válassza az **intervallum** elemet a **7-es**típushoz.  
-4. Válassza az **+ új lépés** mezőt, majd válassza a **művelet hozzáadása**lehetőséget.
-5. A **műveletek** listán írja be az **Informix** kifejezést a **További műveletek keresése** szövegmezőbe, majd válassza az **Informix-Get Tables (előzetes verzió)** lehetőséget.
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. Az **Informix-Get Tables** konfigurációs ablaktáblán jelölje be a **jelölőnégyzetet** a helyszíni **adatátjárón keresztüli kapcsolódás**engedélyezéséhez. Figyelje meg, hogy a beállítások a felhőből a helyszíni környezetbe változnak.
-   
-   * Adja meg a **kiszolgáló**értékét a név vagy az alias kettőspont portszáma formájában. Írja be például a következőt: `ibmserver01:9089`.
-   * Adja meg az **adatbázis**értékét. Írja be például a következőt: `nwind`.
-   * Válassza az érték lehetőséget a **hitelesítéshez**. Válassza például az **alapszintű**lehetőséget.
-   * Adja meg a **username**értéket. Írja be például a következőt: `informix`.
-   * Adja meg a **jelszó**értékét. Írja be például a következőt: `Password1`.
-   * Válassza ki az **átjáró**értékét. Válassza például a **datagateway01**lehetőséget.
-7. Válassza a **Létrehozás**, majd a **Mentés**lehetőséget. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. Az **InformixgetTables** panelen az **Összefoglalás**alatt található **minden Futtatás** listában válassza ki az elsőként felsorolt elemet (a legutóbbi futtatást).
-9. A **logikai alkalmazás futtatása** panelen válassza a **Futtatás részletek**lehetőséget. A **művelet** listán válassza a **Get_tables**lehetőséget. Tekintse meg az **állapot**értéket, amelynek **sikeresnek**kell lennie. A bemenetek megtekintéséhez válassza a **bemenetek hivatkozást** . Válassza ki a **kimenetek hivatkozást**, és tekintse meg a kimeneteket; tartalmaznia kell a táblák listáját.
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
-
-## <a name="create-the-connections"></a>A kapcsolatok létrehozása
-Ez az összekötő támogatja a helyszíni és a Felhőbeli adatbázisokhoz való kapcsolódást a következő kapcsolati tulajdonságok használatával. 
-
-| Tulajdonság | Leírás |
-| --- | --- |
-| kiszolgáló |Kötelező. Egy TCP/IP-címet vagy aliast jelölő karakterlánc-értéket fogad el IPv4-vagy IPv6-formátumban, amelyet egy TCP/IP-portszám követ (kettősponttal tagolt). |
-| adatbázis |Kötelező. Egy DRDA-viszonyítási adatbázis nevét (RDBNAM) jelölő karakterlánc-értéket fogad el. Az Informix egy 128 bájtos karakterláncot fogad el (az adatbázist IBM Informix-adatbázis neve (dbname)). |
-| hitelesítés |Választható. Az alapszintű vagy a Windows (Kerberos) listaelem értékének elfogadása. |
-| felhasználónév |Kötelező. Karakterlánc-értéket fogad el. |
-| jelszó |Kötelező. Karakterlánc-értéket fogad el. |
-| Átjáró |Kötelező. Elfogad egy listaelem-értéket, amely a tárolási csoporton belül Logic Apps számára meghatározott helyszíni adatátjárót jelöli. |
-
-## <a name="create-the-on-premises-gateway-connection"></a>Helyszíni átjáró-kapcsolatok létrehozása
-Ez az összekötő egy helyszíni Informix-adatbázist tud elérni a helyszíni adatátjáró használatával. További információt az átjáróval foglalkozó témakörökben talál. 
-
-1. Az **átjárók** konfigurálása panelen válassza a **jelölőnégyzetet** a **Kapcsolódás átjárón keresztüli**engedélyezéséhez. Tekintse át a beállításokat a felhőből a helyszíni környezetbe.
-2. Adja meg a **kiszolgáló**értékét a név vagy az alias kettőspont portszáma formájában. Írja be például a következőt: `ibmserver01:9089`.
-3. Adja meg az **adatbázis**értékét. Írja be például a következőt: `nwind`.
-4. Válassza az érték lehetőséget a **hitelesítéshez**. Válassza például az **alapszintű**lehetőséget.
-5. Adja meg a **username**értéket. Írja be például a következőt: `informix`.
-6. Adja meg a **jelszó**értékét. Írja be például a következőt: `Password1`.
-7. Válassza ki az **átjáró**értékét. Válassza például a **datagateway01**lehetőséget.
-8. A folytatáshoz válassza a **Létrehozás** lehetőséget. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-
-## <a name="create-the-cloud-connection"></a>A felhőalapú kapcsolatok létrehozása
-Ez az összekötő elérheti a Cloud Informix-adatbázist. 
-
-1. Az **átjárók** konfigurációja ablaktáblán hagyja letiltva a (nem kattintott) **jelölőnégyzetet** az **átjárón keresztül**. 
-2. Adja meg a **kapcsolattípus**értékét. Írja be például a következőt: `hisdemo2`.
-3. Adja meg az **Informix-kiszolgáló nevének**értékét a név vagy az alias kettőspont portszáma formájában. Írja be például a következőt: `hisdemo2.cloudapp.net:9089`.
-4. Adja meg az **Informix-adatbázis nevének**értékét. Írja be például a következőt: `nwind`.
-5. Adja meg a **username**értéket. Írja be például a következőt: `informix`.
-6. Adja meg a **jelszó**értékét. Írja be például a következőt: `Password1`.
-7. A folytatáshoz válassza a **Létrehozás** lehetőséget. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-
-## <a name="fetch-all-rows-using-select"></a>Az összes sor beolvasása a SELECT paranccsal
-Létrehozhat egy logikai alkalmazási műveletet, amely az Informix-tábla összes sorát beolvassa. Ez a művelet arra utasítja az összekötőt, hogy dolgozza fel az Informix SELECT utasítást, például `SELECT * FROM AREA`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az Azure-beli **kezdőképernyőn**válassza a **+** (plusz aláírás), **web és mobil**, majd a **logikai alkalmazás**lehetőséget.
-2. Adja meg a **nevet** (például "**InformixgetRows**"), **előfizetést**, **erőforráscsoportot**, **helyet**és **app Service csomagot**. Válassza **a rögzítés az irányítópulton**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-
-### <a name="add-a-trigger-and-action"></a>Trigger és művelet hozzáadása
-1. A **Logic apps Designerben**válassza az **üres LogicApp** elemet a **sablonok** listájában.
-2. Az **Eseményindítók** listában válassza az **Ismétlődés**lehetőséget. 
-3. Az **ismétlődési** Eseményindítóban válassza a **Szerkesztés**lehetőséget, válassza a **gyakoriság** legördülő menüből a **nap**lehetőséget, majd válassza az **intervallum** elemet a **7-es**típushoz. 
-4. Válassza az **+ új lépés** mezőt, majd válassza a **művelet hozzáadása**lehetőséget.
-5. A **műveletek** listán írja be az **Informix** kifejezést a **További műveletek keresése** szövegmezőbe, majd válassza az **Informix-sorok beolvasása (előzetes verzió)** lehetőséget.
-6. A **sorok beolvasása (előzetes verzió)** műveletnél válassza a **kapcsolat módosítása**lehetőséget.
-7. A **kapcsolatok** konfiguráció ablaktáblán válassza az **új létrehozása**lehetőséget. 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
-8. Az **átjárók** konfigurációja ablaktáblán hagyja letiltva a (nem kattintott) **jelölőnégyzetet** az **átjárón keresztül**.
-   
-   * Adja meg a **kapcsolattípus**értékét. Írja be például a következőt: `HISDEMO2`.
-   * Adja meg az **Informix-kiszolgáló nevének**értékét a név vagy az alias kettőspont portszáma formájában. Írja be például a következőt: `HISDEMO2.cloudapp.net:9089`.
-   * Adja meg az **Informix-adatbázis nevének**értékét. Írja be például a következőt: `NWIND`.
-   * Adja meg a **username**értéket. Írja be például a következőt: `informix`.
-   * Adja meg a **jelszó**értékét. Írja be például a következőt: `Password1`.
-9. A folytatáshoz válassza a **Létrehozás** lehetőséget.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. A **tábla neve** listán válassza a **lefelé mutató nyilat**, majd válassza a **térség**lehetőséget.
-11. A lekérdezési beállítások megadásához válassza a **Speciális beállítások megjelenítése** lehetőséget.
-12. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. Az **InformixgetRows** panelen az **Összefoglalás**alatt található **minden Futtatás** listában válassza ki az elsőként felsorolt elemet (a legutóbbi futtatást).
-14. A **logikai alkalmazás futtatása** panelen válassza a **Futtatás részletek**lehetőséget. A **művelet** listán válassza a **Get_rows**lehetőséget. Tekintse meg az **állapot**értéket, amelynek **sikeresnek**kell lennie. A bemenetek megtekintéséhez válassza a **bemenetek hivatkozást** . Válassza ki a **kimenetek hivatkozást**, és tekintse meg a kimeneteket; tartalmaznia kell a sorok listáját.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
-
-## <a name="add-one-row-using-insert"></a>Egy sor hozzáadása a BESZÚRÁSsal
-Létrehozhat egy logikai alkalmazás műveletet, amellyel egy sort adhat hozzá egy Informix-táblában. Ez a művelet arra utasítja az összekötőt, hogy dolgozza fel az Informix INSERT utasítást, például `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az Azure-beli **kezdőképernyőn**válassza a **+** (plusz aláírás), **web és mobil**, majd a **logikai alkalmazás**lehetőséget.
-2. Adja meg a **nevet**, például `InformixinsertRow`, **előfizetés**, **erőforráscsoport**, **hely**és **app Service terv**. Válassza **a rögzítés az irányítópulton**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-
-### <a name="add-a-trigger-and-action"></a>Trigger és művelet hozzáadása
-1. A **Logic apps Designerben**válassza az **üres LogicApp** elemet a **sablonok** listájában.
-2. Az **Eseményindítók** listában válassza az **Ismétlődés**lehetőséget. 
-3. Az **ismétlődési** Eseményindítóban válassza a **Szerkesztés**lehetőséget, válassza a **gyakoriság** legördülő menüből a **nap**lehetőséget, majd válassza az **intervallum** elemet a **7-es**típushoz. 
-4. Válassza az **+ új lépés** mezőt, majd válassza a **művelet hozzáadása**lehetőséget.
-5. A **műveletek** listájában írja be az **Informix** **kifejezést a további műveletek keresése** szövegmezőbe, majd válassza az **Informix – sor beszúrása (előzetes verzió)** lehetőséget.
-6. A **sorok beolvasása (előzetes verzió)** műveletnél válassza a **kapcsolat módosítása**lehetőséget. 
-7. A **kapcsolatok** konfigurációs ablaktábláján válassza ki a kapcsolatot. Válassza például a **hisdemo2**lehetőséget.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. A **tábla neve** listán válassza a **lefelé mutató nyilat**, majd válassza a **térség**lehetőséget.
-9. Adja meg az összes szükséges oszlop értékeit (lásd a piros csillagot). Írja be például a következőt: `99999` **AREAID**, írja be a `Area 99999`, és írja be a következőt: `102` **REGIONID**. 
-10. Kattintson a **Mentés** gombra.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. Az **InformixinsertRow** panelen az **Összefoglalás**alatt található **minden Futtatás** listában válassza ki az elsőként felsorolt elemet (a legutóbbi futtatást).
-12. A **logikai alkalmazás futtatása** panelen válassza a **Futtatás részletek**lehetőséget. A **művelet** listán válassza a **Get_rows**lehetőséget. Tekintse meg az **állapot**értéket, amelynek **sikeresnek**kell lennie. A bemenetek megtekintéséhez válassza a **bemenetek hivatkozást** . Válassza ki a **kimenetek hivatkozást**, és tekintse meg a kimeneteket; Ennek tartalmaznia kell az új sort.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
-
-## <a name="fetch-one-row-using-select"></a>Egy sor beolvasása a SELECT használatával
-Létrehozhat egy logikai alkalmazási műveletet, amely egy sort tud beolvasni egy Informix-táblában. Ez a művelet arra utasítja az összekötőt, hogy dolgozza fel az Informix SELECT WHERE utasítást, például `SELECT FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az Azure-beli **kezdőképernyőn**válassza a **+** (plusz aláírás), **web és mobil**, majd a **logikai alkalmazás**lehetőséget.
-2. Adja meg a **nevet**, például `InformixgetRow`, **előfizetés**, **erőforráscsoport**, **hely**és **app Service terv**. Válassza **a rögzítés az irányítópulton**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-
-### <a name="add-a-trigger-and-action"></a>Trigger és művelet hozzáadása
-1. A **Logic apps Designerben**válassza az **üres LogicApp** elemet a **sablonok** listájában.
-2. Az **Eseményindítók** listában válassza az **Ismétlődés**lehetőséget. 
-3. Az **ismétlődési** Eseményindítóban válassza a **Szerkesztés**lehetőséget, válassza a **gyakoriság** legördülő menüből a **nap**lehetőséget, majd válassza az **intervallum** elemet a **7-es**típushoz. 
-4. Válassza az **+ új lépés** mezőt, majd válassza a **művelet hozzáadása**lehetőséget.
-5. A **műveletek** listán írja be az **Informix** kifejezést a **További műveletek keresése** szövegmezőbe, majd válassza az **Informix-sorok beolvasása (előzetes verzió)** lehetőséget.
-6. A **sorok beolvasása (előzetes verzió)** műveletnél válassza a **kapcsolat módosítása**lehetőséget. 
-7. A **kapcsolatok** konfigurációk ablaktáblán válassza ki a meglévő kapcsolatot. Válassza például a **hisdemo2**lehetőséget.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. A **tábla neve** listán válassza a **lefelé mutató nyilat**, majd válassza a **térség**lehetőséget.
-9. Adja meg az összes szükséges oszlop értékeit (lásd a piros csillagot). Írja be például a következőt: `99999` for **AREAID**. 
-10. A lekérdezési beállítások megadásához válassza a **Speciális beállítások megjelenítése** lehetőséget.
-11. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. Az **InformixgetRow** panelen az **Összefoglalás**alatt található **minden Futtatás** listában válassza ki az elsőként felsorolt elemet (a legutóbbi futtatást).
-13. A **logikai alkalmazás futtatása** panelen válassza a **Futtatás részletek**lehetőséget. A **művelet** listán válassza a **Get_rows**lehetőséget. Tekintse meg az **állapot**értéket, amelynek **sikeresnek**kell lennie. A bemenetek megtekintéséhez válassza a **bemenetek hivatkozást** . Válassza ki a **kimenetek hivatkozást**, és tekintse meg a kimeneteket; Ennek tartalmaznia kell a sort.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>Egy sor módosítása a FRISSÍTÉSsel
-Létrehozhat egy logikai alkalmazás műveletet, amely az Informix-tábla egy sorát módosítja. Ez a művelet arra utasítja az összekötőt, hogy dolgozza fel az Informix frissítési utasításait, például `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az Azure-beli **kezdőképernyőn**válassza a **+** (plusz aláírás), **web és mobil**, majd a **logikai alkalmazás**lehetőséget.
-2. Adja meg a **nevet**, például `InformixupdateRow`, **előfizetés**, **erőforráscsoport**, **hely**és **app Service terv**. Válassza **a rögzítés az irányítópulton**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-
-### <a name="add-a-trigger-and-action"></a>Trigger és művelet hozzáadása
-1. A **Logic apps Designerben**válassza az **üres LogicApp** elemet a **sablonok** listájában.
-2. Az **Eseményindítók** listában válassza az **Ismétlődés**lehetőséget. 
-3. Az **ismétlődési** Eseményindítóban válassza a **Szerkesztés**lehetőséget, válassza a **gyakoriság** legördülő menüből a **nap**lehetőséget, majd válassza az **intervallum** elemet a **7-es**típushoz. 
-4. Válassza az **+ új lépés** mezőt, majd válassza a **művelet hozzáadása**lehetőséget.
-5. A **műveletek** listán írja be az **Informix** kifejezést a **További műveletek keresése** szövegmezőbe, majd válassza az **Informix-Update sort (előzetes verzió)** lehetőséget.
-6. A **sorok beolvasása (előzetes verzió)** műveletnél válassza a **kapcsolat módosítása**lehetőséget. 
-7. A **kapcsolatok** konfigurációk ablaktáblán válassza ki a meglévő kapcsolatot. Válassza például a **hisdemo2**lehetőséget.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. A **tábla neve** listán válassza a **lefelé mutató nyilat**, majd válassza a **térség**lehetőséget.
-9. Adja meg az összes szükséges oszlop értékeit (lásd a piros csillagot). Írja be például a következőt: `99999` **AREAID**, írja be a `Updated 99999`, és írja be a következőt: `102` **REGIONID**. 
-10. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. Az **InformixupdateRow** panelen az **Összefoglalás**alatt található **minden Futtatás** listában válassza ki az elsőként felsorolt elemet (a legutóbbi futtatást).
-12. A **logikai alkalmazás futtatása** panelen válassza a **Futtatás részletek**lehetőséget. A **művelet** listán válassza a **Get_rows**lehetőséget. Tekintse meg az **állapot**értéket, amelynek **sikeresnek**kell lennie. A bemenetek megtekintéséhez válassza a **bemenetek hivatkozást** . Válassza ki a **kimenetek hivatkozást**, és tekintse meg a kimeneteket; Ennek tartalmaznia kell az új sort.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>Egy sor eltávolítása a DELETE használatával
-Létrehozhat egy logikai alkalmazás műveletet egy sor egy Informix-táblában való eltávolításához. Ez a művelet arra utasítja az összekötőt, hogy egy Informix DELETE utasítást, például `DELETE FROM AREA WHERE AREAID = '99999'`dolgozzon fel.
-
-### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az Azure-beli **kezdőképernyőn**válassza a **+** (plusz aláírás), **web és mobil**, majd a **logikai alkalmazás**lehetőséget.
-2. Adja meg a **nevet**, például `InformixdeleteRow`, **előfizetés**, **erőforráscsoport**, **hely**és **app Service terv**. Válassza **a rögzítés az irányítópulton**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-
-### <a name="add-a-trigger-and-action"></a>Trigger és művelet hozzáadása
-1. A **Logic apps Designerben**válassza az **üres LogicApp** elemet a **sablonok** listájában.
-2. Az **Eseményindítók** listában válassza az **Ismétlődés**lehetőséget. 
-3. Az **ismétlődési** Eseményindítóban válassza a **Szerkesztés**lehetőséget, válassza a **gyakoriság** legördülő menüből a **nap**lehetőséget, majd válassza az **intervallum** elemet a **7-es**típushoz. 
-4. Válassza az **+ új lépés** mezőt, majd válassza a **művelet hozzáadása**lehetőséget.
-5. A **műveletek** listán írja be az **Informix** kifejezést a **További műveletek keresése** szövegmezőbe, majd válassza az **Informix – sor törlése (előzetes verzió)** lehetőséget.
-6. A **sorok beolvasása (előzetes verzió)** műveletnél válassza a **kapcsolat módosítása**lehetőséget. 
-7. A **kapcsolatok** konfigurációk ablaktáblán válasszon ki egy meglévő kapcsolatot. Válassza például a **hisdemo2**lehetőséget.
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. A **tábla neve** listán válassza a **lefelé mutató nyilat**, majd válassza a **térség**lehetőséget.
-9. Adja meg az összes szükséges oszlop értékeit (lásd a piros csillagot). Írja be például a következőt: `99999` for **AREAID**. 
-10. Kattintson a **Mentés** gombra. 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. Az **InformixdeleteRow** panelen az **Összefoglalás**alatt található **minden Futtatás** listában válassza ki az elsőként felsorolt elemet (a legutóbbi futtatást).
-12. A **logikai alkalmazás futtatása** panelen válassza a **Futtatás részletek**lehetőséget. A **művelet** listán válassza a **Get_rows**lehetőséget. Tekintse meg az **állapot**értéket, amelynek **sikeresnek**kell lennie. A bemenetek megtekintéséhez válassza a **bemenetek hivatkozást** . Válassza ki a **kimenetek hivatkozást**, és tekintse meg a kimeneteket; amelynek tartalmaznia kell a törölt sort.
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
-
-## <a name="supported-informix-platforms-and-versions"></a>Támogatott Informix-platformok és-verziók
-Ez az összekötő a következő IBM Informix-verziókat támogatja, ha úgy van konfigurálva, hogy támogassa az elosztott kapcsolati adatbázis-architektúrát (DRDA) használó ügyfélkapcsolatokat.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Informix-összekötővel](/connectors/informix/)automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek egy IBM Informix-adatbázisban lévő erőforrásokat kezelnek. Ez az összekötő egy olyan Microsoft-ügyfelet tartalmaz, amely egy TCP/IP-hálózaton keresztül kommunikál a távoli Informix kiszolgáló-számítógépekkel, beleértve a felhőalapú adatbázisokat, például az Azure-virtualizálás és a helyszíni adatbázisokat futtató Windows-alapú IBM Informix-t a helyszíni [adatátjáró](../logic-apps/logic-apps-gateway-connection.md)használatakor. Ezekhez az Informix-platformokhoz és-verziókhoz kapcsolódhat, ha úgy vannak konfigurálva, hogy támogassák az elosztott kapcsolati adatbázisok architektúrájának (DRDA) ügyfélkapcsolatait:
 
 * IBM Informix 12,1
 * IBM Informix 11,7
 
+Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy logikai alkalmazásban az adatbázis-műveletek feldolgozásához.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+
+* Helyszíni adatbázisokhoz [töltse le és telepítse a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) egy helyi számítógépre, majd [hozzon létre egy Azure-beli adatátjáró-erőforrást a Azure Portal](../logic-apps/logic-apps-gateway-connection.md).
+
+* Az a logikai alkalmazás, amelyben hozzá kell férnie az Informix-adatbázishoz. Ez az összekötő csak műveleteket biztosít, így a logikai alkalmazásnak már kezdődnie kell egy eseményindítóval, például az [ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md). 
+
+## <a name="add-an-informix-action"></a>Informix-művelet hozzáadása
+
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben, ha még nincs megnyitva.
+
+1. Válassza ki az **új lépés**lehetőséget arra a lépésre, ahol az Informix-műveletet hozzá szeretné adni.
+
+   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+
+1. A keresőmezőbe írja be a `informix` szűrőt. A műveletek listából válassza ki a kívánt műveletet, például:
+
+   ![Válassza ki a futtatandó Informix műveletet](./media/connectors-create-api-informix/select-informix-connector-action.png)
+
+   Az összekötő biztosítja ezeket a műveleteket, amelyek a megfelelő adatbázis-műveleteket futtatják:
+
+   * Táblák beolvasása – adatbázis-táblák listázása `CALL` utasítás használatával
+   * Sorok beolvasása – az összes sor olvasása `SELECT *` utasítás használatával
+   * Sor beolvasása – sorok beolvasása `SELECT WHERE` utasítás használatával
+   * Sor hozzáadása `INSERT` utasítás használatával
+   * Sor szerkesztése `UPDATE` utasítás használatával
+   * Sor törlése `DELETE` utasítás használatával
+
+1. Ha a rendszer kéri, hogy adja meg az Informix-adatbázis kapcsolati adatait, kövesse a [kapcsolat létrehozásához szükséges lépéseket](#create-connection), majd folytassa a következő lépéssel.
+
+1. Adja meg a kiválasztott művelet adatait:
+
+   | Műveletek | Leírás | Tulajdonságok és leírások |
+   |--------|-------------|-----------------------------|
+   | **Táblák beolvasása** | Adatbázis-táblák listázása Informix CALL utasítás futtatásával. | None |
+   | **Sorok beolvasása** | A megadott táblában lévő összes sor beolvasása az Informix `SELECT *` utasítás futtatásával. | **Táblázat neve**: a kívánt Informix-tábla neve <p><p>Ha további tulajdonságokat szeretne hozzáadni ehhez a művelethez, válassza ki őket az **új paraméter hozzáadása** listából. További információ: az [összekötő hivatkozási témája](/connectors/informix/). |
+   | **Sor beolvasása** | Sor beolvasása a megadott táblából egy Informix `SELECT WHERE` utasítás futtatásával. | - **Táblanév**: a kívánt Informix-tábla neve <br>- **sor azonosítója**: a sor egyedi azonosítója, például `9999` |
+   | **Sor beszúrása** | Az Informix `INSERT` utasítás futtatásával adjon hozzá egy sort a megadott Informix-táblához. | - **Táblanév**: a kívánt Informix-tábla neve <br>- **elem**: a hozzáadandó értékekkel rendelkező sor |
+   | **Sor frissítése** | A megadott Informix-tábla sorait egy Informix `UPDATE` utasítás futtatásával módosíthatja. | - **Táblanév**: a kívánt Informix-tábla neve <br>- **sor azonosítója**: a frissítendő sor egyedi azonosítója, például `9999` <br>- **sor**: a frissített értékekkel rendelkező sor, például `102` |
+   | **Sor törlése** | Az Informix `DELETE` utasítás futtatásával távolítson el egy sort a megadott Informix-táblából. | - **Táblanév**: a kívánt Informix-tábla neve <br>- **sor azonosítója**: a törlendő sor egyedi azonosítója, például `9999` |
+   ||||
+
+1. Mentse a logikai alkalmazást. Most [tesztelje a logikai alkalmazást](#test-logic-app) , vagy folytassa a logikai alkalmazás létrehozásával.
+
+<a name="create-connection"></a>
+
+## <a name="connect-to-informix"></a>Kapcsolódás az Informix-hez
+
+1. Ha a logikai alkalmazás egy helyszíni adatbázishoz csatlakozik, válassza **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget.
+
+1. Adja meg a kapcsolatok adatait, majd válassza a **Létrehozás**lehetőséget.
+
+   | Tulajdonság | JSON-tulajdonság | Szükséges | Példaérték | Leírás |
+   |----------|---------------|----------|---------------|-------------|
+   | Kapcsolat neve | `name` | Igen | `informix-demo-connection` | Az Informix-adatbázishoz való kapcsolódáshoz használandó név |
+   | Kiszolgáló | `server` | Igen | – Felhő: `informixdemo.cloudapp.net:9089` <br>-Helyszíni: `informixdemo:9089` | Az IPv4-vagy IPv6-formátumú TCP/IP-cím vagy alias, amelyet egy kettőspont és egy TCP/IP-portszám követ |
+   | Adatbázis | `database` | Igen | `nwind` | A DRDA-kapcsolatok adatbázisának neve (RDBNAM) vagy az Informix-adatbázis neve (dbname). Az Informix 128 bájtos karakterláncot fogad el. |
+   | Hitelesítés | `authentication` | Csak helyszíni | **Alapszintű** vagy **Windows** (Kerberos) | Az Informix-adatbázis által igényelt hitelesítési típus. Ez a tulajdonság csak akkor jelenik meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
+   | Felhasználónév | `username` | Nem | <*adatbázis – felhasználónév*> | Az adatbázis felhasználóneve |
+   | Jelszó | `password` | Nem | <*adatbázis – jelszó*> | Az adatbázis jelszava |
+   | Átjáró | `gateway` | Csak helyszíni | -<*Azure-előfizetés*> <br>-<*Azure-helyszíni-adatátjáró-erőforrás*> | Az Azure-előfizetés és az Azure-Erőforrás neve a Azure Portalban létrehozott helyszíni adatátjáróhoz. Az **átjáró** tulajdonság és az alárendelt tulajdonságok csak akkor jelennek meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
+   ||||||
+
+   Példa:
+
+   * **Felhőbeli adatbázis**
+
+     ![A felhő adatbázis-kapcsolatainak adatai](./media/connectors-create-api-informix/informix-cloud-connection.png)
+
+   * **Helyszíni adatbázis**
+
+     ![Helyszíni adatbázis-kapcsolatok adatai](./media/connectors-create-api-informix/informix-on-premises-connection.png)
+
+1. Mentse a logikai alkalmazást.
+
+<a name="test-logic-app"></a>
+
+## <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
+
+1. A Logic app Designer eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futtatása után megtekintheti a futtatási kimeneteket.
+
+1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az Áttekintés ablaktábla **összefoglalás** > **futtatási előzmények**területén válassza ki a legutóbbi futtatást.
+
+1. A **logikai alkalmazás futtatása**területen válassza a **Futtatás részletek**lehetőséget.
+
+1. A műveletek listából válassza ki a megtekinteni kívánt kimenetekkel rendelkező műveletet, például **Get_tables**.
+
+   Ha a művelet sikeres, az **állapot** tulajdonsága sikeresként van **megjelölve.**
+
+1. A bemenetek megtekintéséhez a **bemenetek hivatkozás**alatt válassza ki az URL-hivatkozást. A kimenetek megtekintéséhez a **kimenetek hivatkozás** hivatkozása alatt válassza ki az URL-hivatkozást. Íme néhány példa a kimenetekre:
+
+   * A **táblázatok beolvasása** a táblák listáját jeleníti meg:
+
+     ![Kimenetek a "táblák beolvasása" műveletből](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
+
+   * **Get_rows** a sorok listáját jeleníti meg:
+
+     ![Kimenetek a "sorok beolvasása" műveletből](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
+
+   * **Get_row** a megadott sort mutatja:
+
+     ![Kimenetek a "sor beolvasása" műveletből](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
+
+   * **Insert_row** az új sort mutatja:
+
+     ![Kimenetek a "sor beszúrása" műveletből](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
+
+   * **Update_row** megjeleníti a frissített sort:
+
+     ![Kimenetek a "sor frissítése" műveletből](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
+
+   * **Delete_row** a törölt sort mutatja:
+
+     ![Kimenetek a "sor törlése" műveletből](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
+
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/informix/)megjelenő korlátokat is. 
+Az eseményindítók, műveletek és korlátok részletes technikai részleteiért lásd az összekötők feladatainak leírását, és tekintse át az [összekötő hivatkozási oldalát](/connectors/informix/).
 
 ## <a name="next-steps"></a>Következő lépések
-[Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ismerkedjen meg a többi elérhető összekötővel Logic Apps [API-k listáján](apis-list.md).
 
+* További Logic Apps- [Összekötők](apis-list.md) megismerése

@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés és engedélyezés a Power BI-Munkaterületcsoportok |} A Microsoft Docs
-description: Hitelesítés és engedélyezés a Power BI munkaterületi gyűjtemények.
+title: Power BI munkaterület-gyűjtemények hitelesítése és engedélyezése
+description: Power BI munkaterület-gyűjtemények hitelesítése és engedélyezése.
 services: power-bi-workspace-collections
 author: rkarlin
 ms.author: rkarlin
@@ -8,56 +8,56 @@ ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8fcd7caffb041c57090d7256361421cb49a9a5fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427117"
 ---
-# <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Hitelesítés és engedélyezés a Power BI munkaterületi gyűjteményekkel
+# <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI munkaterület-gyűjtemények hitelesítése és engedélyezése
 
-A Power BI-Munkaterületcsoportok használata **kulcsok** és **alkalmazási jogkivonatok** a hitelesítéshez és engedélyezéshez, explicit végfelhasználói hitelesítés helyett. Ebben a modellben az alkalmazás kezeli a hitelesítési és engedélyezési a végfelhasználók számára. Ha szükséges, az alkalmazás hoz létre, és az alkalmazás-jogkivonatokról, mondja el szolgáltatásunkat, amellyel jelennek meg a kért jelentést küld. Ez a kialakítás nincs szükség az alkalmazások a felhasználó hitelesítésének és engedélyezésének, az Azure Active Directory, bár továbbra is.
+Power BI munkaterület-gyűjtemények **kulcsokat** és **alkalmazás-jogkivonatokat** használnak a hitelesítéshez és engedélyezéshez, explicit végfelhasználói hitelesítés helyett. Ebben a modellben az alkalmazás kezeli a végfelhasználók hitelesítését és engedélyezését. Ha szükséges, az alkalmazás létrehozza és elküldi azokat az alkalmazás-jogkivonatokat, amelyek közlik a szolgáltatással a kért jelentés megjelenítését. Ehhez a kialakításhoz nem szükséges, hogy az alkalmazás használja a Azure Active Directory felhasználói hitelesítéshez és engedélyezéshez, de továbbra is.
 
 > [!IMPORTANT]
 > A Power BI munkaterületi gyűjtemények szolgáltatás elavult, és 2018 júniusáig vagy a szerződésében jelzett időpontig érhető el. Javasoljuk, hogy az alkalmazása zavartalan működése érdekében tervezze meg a migrációt a Power BI Embedded szolgáltatásba. Az adatok a Power BI Embedded szolgáltatásba való migrálásának részleteiért lásd a [Power BI munkaterületi gyűjtemények tartalmának Power BI Embedded szolgáltatásba történő migrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/) foglalkozó cikket.
 
-## <a name="two-ways-to-authenticate"></a>Kétféleképpen hitelesítéséhez
+## <a name="two-ways-to-authenticate"></a>Kétféle hitelesítés
 
-**Kulcs** -kulcsokat is használhat az összes Power BI munkaterületi gyűjtemények REST API-hívások. A kulcsok megtalálható a **Microsoft Azure-portálon** kiválasztásával **minden beállítás** , majd **hozzáférési kulcsok**. A kulcs mindig kezelje, mintha ez egy jelszót. Ezek a kulcsok engedélye, hogy bármilyen REST API-hívást indít az egy adott munkaterület-csoport.
+**Kulcs** – az összes Power bi-munkaterület-gyűjteményhez használhat kulcsokat REST API hívásokhoz. A kulcsok megtalálhatók a **Microsoft Azure Portalban** az **összes beállítás** kiválasztásával, majd a **kulcsok elérésével**. A kulcsot mindig úgy kezelje, mintha a jelszó. Ezeknek a kulcsoknak van engedélye arra, hogy REST API hívást végezzen egy adott munkaterület-gyűjteményen.
 
-A REST-hívást kulcsot használ, adja hozzá a következő engedélyeztetési fejléc:
+Ha egy REST-híváshoz szeretne kulcsot használni, adja hozzá a következő engedélyezési fejlécet:
 
     Authorization: AppKey {your key}
 
-**Alkalmazás-jogkivonatára** -beágyazási irányuló kérések alkalmazási jogkivonatok használhatók. Ügyféloldali futtatásra lettek kialakítva. A jogkivonat korlátozódik egyetlen jelentést és az ajánlott eljárás a lejárati idő beállítása.
+**Alkalmazás-jogkivonat** – az alkalmazás-jogkivonatok az összes beágyazási kérelemhez használatosak. Úgy tervezték, hogy az ügyféloldali futtatásra legyenek kialakítva. A jogkivonat egyetlen jelentésre korlátozódik, és az ajánlott eljárás a lejárati idő beállítása.
 
-Alkalmazás-jogkivonatokról a jwt-t (JSON Web Token), a kulcsok egyikét aláírva.
+Az alkalmazás-jogkivonatok az egyik kulcs által aláírt JWT (JSON Web Token).
 
-Az alkalmazás-jogkivonatára tartalmazza a következő jogcímek:
+Az alkalmazás-jogkivonat a következő jogcímeket tartalmazza:
 
 | Jogcím | Leírás |    
 | --- | --- |
-| **ver** |Az alkalmazás-jogkivonatára verziója. 0.2.0 van a jelenlegi verziót. |
-| **aud** |A jogkivonat az illetékes címzett. A Power BI-Munkaterületcsoportok használatával: *https:\//analysis.windows.net/powerbi/api*. |
-| **iss** |Egy karakterlánc, amely az alkalmazás, amely kiállította a jogkivonatot. |
-| **type** |A létrehozott alkalmazás-jogkivonatára típusa. Aktuális az egyetlen támogatott típus: **beágyazási**. |
-| **Windows azonnali csatlakozás** |A munkaterületi gyűjtemény nevének a jogkivonat kiállítása az folyamatban van. |
-| **wid** |Munkaterület-Azonosítót a jogkivonat kiállítása az folyamatban van. |
-| **rid** |A jogkivonat Jelentésazonosító küldése történik. |
-| **felhasználónév** (nem kötelező) |Az rls-t használja, felhasználónév egy karakterláncérték, amely segítségével azonosítható a felhasználó az RLS-szabályok alkalmazásakor. |
-| **szerepkörök** (nem kötelező) |A sorszintű biztonsági szabályok alkalmazásakor kiválasztható szerepköröket tartalmazó karakterlánc. Több szerepkör átadásakor kell azokat átadni, egy karakterlánc-tömbben. |
-| **Szolgáltatáskapcsolódási pont** (nem kötelező) |Az engedélyek hatókörök tartalmazó karakterlánc. Több szerepkör átadásakor kell azokat átadni, egy karakterlánc-tömbben. |
-| **Exp** (nem kötelező) |Az időpont, amelyben a jogkivonat lejár. Az érték Unix időbélyegeket, kell átadni. |
-| **NBF** (nem kötelező) |Azt jelzi, hogy a indításakor, amelyben a jogkivonat érvényes folyamatban. Az érték Unix időbélyegeket, kell átadni. |
+| **ver** |Az alkalmazás-jogkivonat verziója. a 0.2.0 az aktuális verzió. |
+| **AUD** |A jogkivonat címzettjei. Power BI munkaterület-gyűjtemények esetén használja a következőt: *https:\//Analysis.Windows.net/powerbi/API*. |
+| **ISS** |A jogkivonatot kiállító alkalmazást jelző karakterlánc. |
+| **type** |A létrehozandó alkalmazás-jogkivonat típusa. Jelenleg az egyetlen támogatott típus a **beágyazás**. |
+| **WCN** |A munkaterület-gyűjtemény neve, amelybe a jogkivonat ki van állítva. |
+| **wid** |A munkaterülethez tartozó azonosító, amelynek a tokenje ki van állítva. |
+| **RID** |A jelentés azonosítója, amelybe a jogkivonat ki van állítva. |
+| **username** (nem kötelező) |Az RLS használatával a username egy karakterlánc, amely segíthet azonosítani a felhasználót az RLS-szabályok alkalmazása során. |
+| **szerepkörök** (nem kötelező) |A sor szintű biztonsági szabályok alkalmazása során kiválasztható szerepköröket tartalmazó sztring. Ha egynél több szerepkört továbbít, azokat Csípés tömbként kell átadni. |
+| **szolgáltatáskapcsolódási** pont (nem kötelező) |Az engedélyek hatókörét tartalmazó karakterlánc. Ha egynél több szerepkört továbbít, azokat Csípés tömbként kell átadni. |
+| **exp** (nem kötelező) |Azt az időpontot jelzi, ameddig a jogkivonat lejár. Az értéket UNIX-timestampként kell átadni. |
+| **NBF** (nem kötelező) |Azt az időpontot jelzi, amikor a jogkivonat érvényesnek indul. Az értéket UNIX-timestampként kell átadni. |
 
-Egy mintául szolgáló alkalmazás-jogkivonatára hasonlóan néz ki:
+A minta alkalmazás-jogkivonat A következőképpen néz ki:
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsInR5cGUiOiJlbWJlZCIsIndjbiI6Ikd1eUluQUN1YmUiLCJ3aWQiOiJkNGZlMWViMS0yNzEwLTRhNDctODQ3Yy0xNzZhOTU0NWRhZDgiLCJyaWQiOiIyNWMwZDQwYi1kZTY1LTQxZDItOTMyYy0wZjE2ODc2ZTNiOWQiLCJzY3AiOiJSZXBvcnQuUmVhZCIsImlzcyI6IlBvd2VyQklTREsiLCJhdWQiOiJodHRwczovL2FuYWx5c2lzLndpbmRvd3MubmV0L3Bvd2VyYmkvYXBpIiwiZXhwIjoxNDg4NTAyNDM2LCJuYmYiOjE0ODg0OTg4MzZ9.v1znUaXMrD1AdMz6YjywhJQGY7MWjdCR3SmUSwWwIiI
 ```
 
-Amikor dekódolni, következőhöz hasonló lesz:
+A dekódoláskor a következőképpen néz ki:
 
 ```
 Header
@@ -82,37 +82,37 @@ Body
 
 ```
 
-Nincsenek elérhető belül az SDK-k, hogy az alkalmazás-jogkivonatokról létrehozása egyszerűbben módszereket. Ha például a .NET-hez tekintse meg a [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) osztály és a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) módszereket.
+Az SDK-k olyan metódusok érhetők el, amelyek megkönnyítik az alkalmazás-tokenek létrehozását. A .NET esetében például megtekintheti a [Microsoft. PowerBI. Security. PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) osztályt és a [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metódusokat.
 
-A .NET SDK-ban, olvassa el [hatókörök](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes).
+A .NET SDK esetében a [hatókörökre](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes)is hivatkozhat.
 
 ## <a name="scopes"></a>Hatókörök
 
-Beágyazási token használatakor előfordulhat, hogy korlátozni szeretné a erőforrások hozzáférést biztosít. Ebből kifolyólag a jogkivonatot az hatókörbe tartozó engedélyeket is létrehozhat.
+Beágyazási jogkivonatok használatakor érdemes korlátozni az erőforrások használatát, amelyekhez hozzáférést biztosít. Ezért létrehozhat egy jogkivonatot hatókörön belüli engedélyekkel.
 
-Az alábbiakban a Power BI-Munkaterületcsoportok elérhető hatókörök.
+A Power BI munkaterület-gyűjtemények számára elérhető hatókörök a következők.
 
-|Scope|Leírás|
+|Hatókör|Leírás|
 |---|---|
-|Dataset.Read|A megadott adatkészlet olvasási engedélyt biztosít.|
-|Dataset.Write|Itt a megadott adatkészlet írási engedéllyel.|
-|Dataset.ReadWrite|És a megadott adatkészlet olvasási engedélyt biztosít.|
-|Report.Read|A megadott megtekintési engedélyt biztosít.|
-|Report.ReadWrite|Itt megtekintheti és szerkesztheti a jelentés a megadott engedély.|
-|Workspace.Report.Create|Itt egy új jelentés a megadott munkaterület belül létrehozásához szükséges engedéllyel.|
-|Workspace.Report.Copy|Klónozásához egy meglévő jelentés a megadott munkaterület belül engedélyt biztosít.|
+|Adatkészlet. Read|Engedélyt biztosít a megadott adatkészlet olvasására.|
+|Adatkészlet. Write|Engedélyt biztosít a megadott adatkészletbe való írásra.|
+|Adatkészlet. ReadWrite|Engedélyt biztosít a megadott adatkészlet olvasására és írására.|
+|Jelentés. olvasás|Engedélyt biztosít a megadott jelentés megtekintésére.|
+|Jelentés. ReadWrite|Engedélyt biztosít a megadott jelentés megtekintésére és szerkesztésére.|
+|Munkaterület. report. Create|Engedélyt ad egy új jelentés létrehozására a megadott munkaterületen belül.|
+|Munkaterület. report. Copy|Engedélyt biztosít a meglévő jelentések klónozására a megadott munkaterületen belül.|
 
-Egy hely között az alábbiakhoz hasonlóan a hatókörök használatával több hatókörhöz is megadhatja.
+Több hatókört is megadhat, ha a hatókörök között a következőhöz hasonló térközt használ.
 
 ```csharp
 string scopes = "Dataset.Read Workspace.Report.Create";
 ```
 
-**Szükséges jogcímek - hatókörök**
+**Szükséges jogcímek – hatókörök**
 
-SCP-je: {scopesClaim} scopesClaim karakterláncot vagy karakterláncok, figyelembe véve az engedélyezett engedélyeket (jelentés, adatkészlet, stb.) a munkaterület erőforrásai is lehet.
+szolgáltatáskapcsolódási pont: a (z) {scopesClaim} scopesClaim lehet karakterlánc vagy karakterlánc, amely a munkaterület erőforrásaira (jelentés, adatkészlet stb.) vonatkozó engedélyek megadását is lehetővé teszi.
 
-A dekódolt jogkivonat hatókörökkel definiált, ehhez hasonlóan néz ki a:
+A megadott hatókörökkel rendelkező dekódolású jogkivonat a következőhöz hasonlóan néz ki:
 
 ```
 Header
@@ -138,46 +138,46 @@ Body
 
 ```
 
-### <a name="operations-and-scopes"></a>Műveletek és -hatókörök
+### <a name="operations-and-scopes"></a>Műveletek és hatókörök
 
-|Művelet|Célerőforrás|Token engedélyek|
+|Művelet|Célerőforrás|Jogkivonat-engedélyek|
 |---|---|---|
-|(Memórián belüli) hozzon létre egy új jelentés, adatkészlet alapján.|Adathalmaz|Dataset.Read|
-|Egy adatkészleten alapuló új jelentés létrehozása (memórián belüli), majd mentse a jelentést.|Adathalmaz|* Dataset.Read<br>* Workspace.Report.Create|
-|Megtekintheti és (memórián belüli) egy meglévő jelentés tallózása és szerkesztése. Report.Read Dataset.Read jelenti. Report.Read nem teszi lehetővé a módosítások mentése.|Jelentés|Report.Read|
-|Szerkessze, és a egy meglévő jelentés mentése.|Jelentés|Report.ReadWrite|
-|Mentse a jelentés (Mentés másként).|Jelentés|* Report.Read<br>* Workspace.Report.Copy|
+|Hozzon létre (memóriában) egy új jelentést egy adatkészlet alapján.|Adatkészlet|Adatkészlet. Read|
+|Hozzon létre (memóriában) egy új jelentést egy adatkészlet alapján, és mentse a jelentést.|Adatkészlet|* Adatkészlet. Read<br>* Munkaterület. report. Create|
+|Meglévő jelentés megtekintése és feltárása/szerkesztése (memóriában). A Report. Read azt jelenti, hogy az adatkészlet. Read. A Report. Read nem engedélyezi a módosítások mentését.|Jelentés|Jelentés. olvasás|
+|Meglévő jelentés szerkesztése és mentése.|Jelentés|Jelentés. ReadWrite|
+|Egy jelentés másolatának mentése (Mentés másként)|Jelentés|* Jelentés. olvasás<br>* Munkaterület. report. Copy|
 
-## <a name="heres-how-the-flow-works"></a>Itt látható a folyamat működése
-1. Az alkalmazás API-kulcs másolása. A kulcsok kezdheti **az Azure portal**.
+## <a name="heres-how-the-flow-works"></a>A folyamat működése
+1. Másolja az API-kulcsokat az alkalmazásba. A kulcsokat a **Azure Portalban**érheti el.
    
-    ![API-kulcs megkeresése az Azure Portalon](media/get-started-sample/azure-portal.png)
-1. Token használjon esetleg imperatív állításokat egy jogcímet, és a lejárati időt tartalmaz.
+    ![Hol találhatók az API-kulcsok a Azure Portalban](media/get-started-sample/azure-portal.png)
+1. A token érvényesít egy jogcímet, és lejárati idővel rendelkezik.
    
-    ![Alkalmazási jogkivonatok folyamata - jogkivonat használjon esetleg imperatív állításokat jogcím](media/get-started-sample/token-2.png)
-1. Jogkivonat-API elérési kulcsainak beolvasása aláírva.
+    ![Alkalmazás-jogkivonat folyamata – jogkivonat-érvényesítő jogcím](media/get-started-sample/token-2.png)
+1. A token egy API-hozzáférési kulccsal lesz aláírva.
    
-    ![Alkalmazási jogkivonatok folyamata - jogkivonat aláírása beolvasása](media/get-started-sample/token-3.png)
-1. Felhasználói kérelmek jelentés megtekintéséhez.
+    ![Alkalmazás-jogkivonat flow-tokenje aláírva](media/get-started-sample/token-3.png)
+1. Felhasználói kérelmek a jelentés megtekintéséhez.
    
-    ![Alkalmazási jogkivonatok folyamata – a felhasználó kéri egy jelentés megtekintése](media/get-started-sample/token-4.png)
-1. Jogkivonat-API elérési kulcsainak az érvényességét.
+    ![Alkalmazás-jogkivonat folyamata – felhasználói kérelmek a jelentés megtekintéséhez](media/get-started-sample/token-4.png)
+1. A token API-hozzáférési kulcsokkal van érvényesítve.
    
-   ![Alkalmazási jogkivonatok folyamata - jogkivonat érvényesítése](media/get-started-sample/token-5.png)
-1. A Power BI-Munkaterületcsoportok jelentést küld a felhasználónak.
+   ![Alkalmazás-jogkivonat folyamata – a jogkivonat ellenőrzése megtörtént](media/get-started-sample/token-5.png)
+1. Power BI a munkaterület-gyűjtemények jelentést küld a felhasználónak.
    
-   ![Alkalmazási jogkivonatok folyamata - szolgáltatás küldhet jelentés felhasználó](media/get-started-sample/token-6.png)
+   ![Alkalmazás-jogkivonat folyamatábrája – szolgáltatás küldése a felhasználónak](media/get-started-sample/token-6.png)
 
-Miután **Power BI-Munkaterületcsoportok** küld a felhasználónak, a felhasználó a jelentés az egyéni alkalmazás tekinthetik meg a jelentést. Például, ha importálta a [elemzése értékesítési adatok PBIX-minta](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix), a mintául szolgáló webalkalmazás ehhez hasonlóan néz ki:
+Miután **Power bi munkaterület-gyűjtemények** jelentést küld a felhasználónak, a felhasználó megtekintheti a jelentést az egyéni alkalmazásban. Ha például importálta az [értékesítési adatok elemzése PBIX mintát](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix), a minta webalkalmazás az alábbihoz hasonló lesz:
 
-![Minta beágyazott alkalmazás jelentés](media/get-started-sample/sample-web-app.png)
+![Az alkalmazásban beágyazott jelentés mintája](media/get-started-sample/sample-web-app.png)
 
 ## <a name="see-also"></a>Lásd még:
 
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
-[Ismerkedés a Microsoft Power BI-Munkaterületcsoportok minta](get-started-sample.md)  
-[A Microsoft Power BI-Munkaterületcsoportok gyakori helyzetek](scenarios.md)  
-[Ismerkedés a Microsoft Power BI munkaterületi gyűjteményekkel](get-started.md)  
-[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)
+[Ismerkedés a Microsoft Power BI Workspace-gyűjtemények példával](get-started-sample.md)  
+[Gyakori Microsoft Power BI Workspace-gyűjtemények forgatókönyvei](scenarios.md)  
+[Ismerkedés a Microsoft Power BI Workspace-gyűjtemények használatába](get-started.md)  
+[PowerBI – CSharp git-tárház](https://github.com/Microsoft/PowerBI-CSharp)
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)

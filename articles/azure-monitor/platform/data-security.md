@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan védi a Log Analytics a magánélet védelmét,
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 3ff69928f4d6aa1692cdb1d4fd7e846b3a6b7a5c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4ad762cc3a7388628b7385afb07b45819ef882b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363846"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](../../security/fundamentals/trust-center.md)információit.  
@@ -21,10 +21,10 @@ Ez a cikk bemutatja, hogyan gyűjti és dolgozza fel a Log Analytics az adatokat
 
 A Log Analytics szolgáltatás biztonságosan kezeli a felhőalapú adatait az alábbi módszerek használatával:
 
-* Az adatelkülönítés
+* Az adatok elkülönítése
 * Adatmegőrzés
 * Fizikai biztonság
-* Incidensek kezelése
+* Incidenskezelés
 * Megfelelőség
 * Biztonsági szabványok tanúsítványai
 
@@ -32,7 +32,7 @@ Vegye fel velünk a kapcsolatot az alábbi információk bármelyikével kapcsol
 
 ## <a name="sending-data-securely-using-tls-12"></a>Adatok biztonságos küldése a TLS 1,2 használatával 
 
-A Log Analytics felé irányuló adatforgalom biztosításához határozottan javasoljuk, hogy az ügynököt legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek bizonyultak, és miközben továbbra is a visszamenőleges kompatibilitás érdekében működnek, **nem ajánlottak**, és az iparág gyorsan áthelyezhető a régebbi verziók támogatásának megszüntetése érdekében. protokollok. 
+A Log Analytics felé irányuló adatforgalom biztosításához határozottan javasoljuk, hogy az ügynököt legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, miközben továbbra is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**, és az iparág gyorsan áthelyezi a régebbi protokollok támogatását. 
 
 A [PCI biztonsági szabványoknak szóló Tanács](https://www.pcisecuritystandards.org/) a TLS/SSL régebbi verzióinak letiltására, valamint a biztonságosabb protokollokra való frissítésre vonatkozó [határidő 2018. június 30-ig](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) érvényes. Ha az Azure elveszíti az örökölt támogatást, ha az ügynökök nem tudnak kommunikálni legalább TLS 1,2-ben, akkor nem fog tudni adatküldést küldeni Log Analyticsba. 
 
@@ -47,7 +47,7 @@ Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
 
-## <a name="data-segregation"></a>Az adatelkülönítés
+## <a name="data-segregation"></a>Az adatok elkülönítése
 Miután a Log Analytics szolgáltatás betöltötte az adatait, az adatai logikailag elkülönítve maradnak az egyes összetevőkön a szolgáltatáson belül. A rendszer minden adatmezőt felcímkéz a munkaterületen. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. Az adatait a kiválasztott régióban lévő Storage-fürt egy dedikált adatbázisában tárolja a rendszer.
 
 ## <a name="data-retention"></a>Adatmegőrzés
@@ -79,7 +79,7 @@ A következő táblázat példákat mutat be az adattípusokra:
 ## <a name="physical-security"></a>Fizikai biztonság
 A Log Analytics szolgáltatást a Microsoft munkatársai felügyelik, és minden tevékenység naplózva van és naplózható. Log Analytics Azure-szolgáltatásként működik, és megfelel az Azure megfelelőségi és biztonsági követelményeinek. Az Azure-eszközök fizikai biztonságával kapcsolatos részleteket a [Microsoft Azure biztonsági áttekintés](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)18. oldalán tekintheti meg. A biztonságos területekre vonatkozó fizikai hozzáférési jogok egy munkanapon belül megváltoznak mindazok számára, akik már nem felelnek meg a Log Analytics szolgáltatásért, beleértve az átvitelt és a megszüntetést is. A [Microsoft adatközpontokban](https://azure.microsoft.com/global-infrastructure/)használt globális fizikai infrastruktúráról olvashat.
 
-## <a name="incident-management"></a>Incidensek kezelése
+## <a name="incident-management"></a>Incidenskezelés
 Log Analytics egy incidens-felügyeleti folyamattal rendelkezik, amelyet minden Microsoft-szolgáltatás betart. Az összegzéshez:
 
 * Olyan megosztott felelősségi modellt használjon, amelyben a biztonsági felelősség egy része a Microsofthoz tartozik, és egy rész az ügyfélhez tartozik
@@ -104,7 +104,7 @@ Ha bármilyen vásárlói adat elvesztését tapasztalja, egy napon belül érte
 További információ arról, hogyan reagál a Microsoft a biztonsági incidensekre: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Megfelelőség
-A Log Analytics szoftverfejlesztési és a szolgáltatási csapat informatikai és irányítási programja támogatja üzleti követelményeit, és megfelel az [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) és a [Microsoft Trust Center által ismertetett törvényeknek és előírásoknak. Megfelelőség](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). A Log Analytics a biztonsági követelmények megállapítása, a biztonsági vezérlők, a felügyelt és a figyelési kockázatok azonosítása is megtörténik. Évente áttekintjük a házirendek, szabványok, eljárások és irányelvek áttekintését.
+A Log Analytics szoftverfejlesztési és szolgáltatási csapat informatikai és irányítási programja támogatja az üzleti követelményeit, és betartja a törvényeket és rendeleteket a következő témakörben leírtak szerint: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/) és a [Microsoft megbízhatósági központ megfelelősége](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). A Log Analytics a biztonsági követelmények megállapítása, a biztonsági vezérlők, a felügyelt és a figyelési kockázatok azonosítása is megtörténik. Évente áttekintjük a házirendek, szabványok, eljárások és irányelvek áttekintését.
 
 Minden fejlesztői csapat tagja megkapja a formális alkalmazások biztonsági képzését. Belsőleg a szoftverfejlesztés egy verziókövetés rendszerét használjuk. Minden szoftveres projektet a verziókövetés rendszer véd.
 

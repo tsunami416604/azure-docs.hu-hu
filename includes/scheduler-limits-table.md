@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
-ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67179495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392375"
 ---
 A következő táblázat ismerteti az Azure Scheduler főbb kvótáit, korlátozásait, alapértelmezéseit és szabályozásait.
 
-| Resource | Korlát leírása |
+| Erőforrás | Korlát leírása |
 | -------- | ----------------- |
 | **Feladatok mérete** | A feladatok maximális mérete 16 000. Ha egy PUT vagy egy javítási művelet a korlátnál nagyobb méretű feladatot eredményez, a rendszer a 400 hibás kérelem állapotkódot adja vissza. | 
 | **Feladatok gyűjteményei** | Az Azure-előfizetések száma legfeljebb 200 000. | 
-| **Feladatok gyűjtemény szerint** | Alapértelmezés szerint a feladatok maximális száma öt feladat az ingyenes és a 50-es feladatok esetében egy normál feladatban. <p>A feladatütemezés feladatainak maximális számát módosíthatja. A feladatütemezés összes feladata a feladat-gyűjteményben beállított értékre van korlátozva. Ha a feladatok maximális kvótája helyett több feladatot próbál létrehozni, a kérelem 409-as ütközési állapotkód esetén meghiúsul. | 
+| **Feladatok gyűjtemény szerint** | Alapértelmezés szerint a feladatok maximális száma öt feladat az ingyenes és a 50-es feladatok esetében egy normál feladatban. A feladatütemezés feladatainak maximális számát módosíthatja. A feladatütemezés összes feladata a feladat-gyűjteményben beállított értékre van korlátozva. Ha a feladatok maximális kvótája helyett több feladatot próbál létrehozni, a kérelem 409-as ütközési állapotkód esetén meghiúsul. | 
 | **Kezdési idő** | A "kezdési idő" legfeljebb 18 hónap lehet. |
 | **Ismétlődési tartomány** | A maximális ismétlődési időtartam 18 hónap. | 
 | **Gyakoriság** | Alapértelmezés szerint a maximális gyakorisági kvóta egy óra az ingyenes feladatokban, és egy perc a standard szintű webhelycsoportban. <p>A maximális gyakoriságot a feladatokhoz a maximálisnál alacsonyabb értékre teheti. A feladat-gyűjteményben lévő összes feladat csak a feladat gyűjteményében beállított értékre korlátozódik. Ha a feladathoz a maximális gyakoriságnál nagyobb gyakorisággal próbál felvenni egy feladatot, a kérelem a 409-as ütközési állapotkód miatt meghiúsul. | 

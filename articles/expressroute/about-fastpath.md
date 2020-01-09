@@ -5,16 +5,16 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ff1dac312bcb4df1e1afc9679df09fc8a2b28ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437096"
 ---
-# <a name="about-expressroute-fastpath"></a>Tudnivalók a ExpressRoute FastPath
+# <a name="about-expressroute-fastpath"></a>Az ExpressRoute FastPath ismertetése
 
 A ExpressRoute virtuális hálózati átjáró a hálózati útvonalak cseréjére és a hálózati forgalom irányítására szolgál. A FastPath úgy lett kialakítva, hogy javítsa a helyszíni hálózat és a virtuális hálózat adatelérési útjainak teljesítményét. Ha engedélyezve van, a FastPath közvetlenül a virtuális hálózatban lévő virtuális gépekre küldi a hálózati forgalmat, megkerülve az átjárót.
 
@@ -26,12 +26,22 @@ A FastPath az összes ExpressRoute-áramkörön elérhető.
 
 ### <a name="gateways"></a>Átjárók
 
-A FastPath továbbra is létre kell hoznia egy virtuális hálózati átjárót a virtuális hálózat és a helyszíni hálózat közötti útvonalak cseréjéhez. A virtuális hálózati átjárókkal és a ExpressRoute kapcsolatos további információkért lásd: [ExpressRoute virtuális hálózati átjárók](expressroute-about-virtual-network-gateways.md).
+A FastPath továbbra is létre kell hoznia egy virtuális hálózati átjárót a virtuális hálózat és a helyszíni hálózat közötti útvonalak cseréjéhez. A virtuális hálózati átjárókkal és ExpressRoute kapcsolatos további információk, beleértve a teljesítménnyel kapcsolatos információkat és az átjárók SKU-ját lásd: [ExpressRoute virtuális hálózati átjárók](expressroute-about-virtual-network-gateways.md).
 
-A virtuális hálózati átjárónak a következők egyikének kell lennie:
+A FastPath konfigurálásához a virtuális hálózati átjárónak a következőknek kell lennie:
 
 * Ultranagy teljesítmény
 * ErGw3AZ
+
+#### <a name="aggthroughput"></a>Az átjárói SKU becsült teljesítménye
+A következő táblázat az átjárók típusát és a becsült teljesítményt mutatja be. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes.
+
+[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
+
+> [!IMPORTANT]
+> Az alkalmazás teljesítménye több tényezőtől függ, például a végpontok közötti késéstől, valamint az alkalmazás által megnyitott adatforgalom számától. A táblázatban szereplő számok azt a felső korlátot jelentik, amelyet az alkalmazás elméletileg érhet el ideális környezetben.
+>
+>
 
 ## <a name="supported-features"></a>Támogatott funkciók
 

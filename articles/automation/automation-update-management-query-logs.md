@@ -2,19 +2,15 @@
 title: Azure Update Management-naplók lekérdezése
 description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a naplókat a Update Management
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/26/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4797e3a348b057fa21677649e4cb7de78de0d8b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 85b09aa32c8ddee6406469a2adc44e067c58e186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420328"
 ---
 # <a name="query-update-records-for-update-management-in-log-analytics"></a>A Log Analytics Update Management frissítési rekordjainak lekérdezése
 

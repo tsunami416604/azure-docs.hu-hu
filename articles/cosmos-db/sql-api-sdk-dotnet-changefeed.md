@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: .NET Change feed Processor API, SDK &-erőforrások'
+title: Azure Cosmos DB .NET Change feed Processor API, SDK kibocsátási megjegyzései
 description: Ismerkedjen meg a Change feed Processor API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a .NET Change feed Processor SDK egyes verzióiban végrehajtott módosításokat.
 author: ealsur
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444855"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
 
@@ -110,10 +110,10 @@ ms.locfileid: "74306762"
   * A GetEstimatedRemainingWork API 0 értéket adott vissza, ha nem találhatók bérletek a címbérleti gyűjteményben.
 
 * A következő kivételek nyilvánosak. A IPartitionProcessor megvalósító bővítmények kihasználhatják ezeket a kivételeket.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. LeaseLostException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionException. 
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionNotFoundException.
+  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2 – előzetes verzió
 * Másodlagos API-változások:
@@ -176,11 +176,11 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer elutasítja a szolgáltatás által.
+A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
 
 <br/>
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Verzió | Megjelenés dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
 | [2.2.8](#2.2.8) |Október 28., 2019 |--- |
 | [2.2.7](#2.2.7) |2019. május 14. |--- |
@@ -188,7 +188,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [2.2.5](#2.2.5) |December 13., 2018 |--- |
 | [2.2.4](#2.2.4) |November 29., 2018 |--- |
 | [2.2.3](#2.2.3) |November 19., 2018 |--- |
-| [2.2.2](#2.2.2) |Október 31., 2018 |--- |
+| [2.2.2](#2.2.2) |2018. október 31. |--- |
 | [2.2.1](#2.2.1) |Október 24., 2018 |--- |
 | [1.3.3](#1.3.3) |08. május 2018 |--- |
 | [1.3.2](#1.3.2) |2018. április 18. |--- |
@@ -198,10 +198,10 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [1.1.0](#1.1.0) |Augusztus 13., 2017 |--- |
 | [1.0.0](#1.0.0) |2017. július 7. |--- |
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

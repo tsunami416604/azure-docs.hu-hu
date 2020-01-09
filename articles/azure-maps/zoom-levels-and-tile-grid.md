@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407569"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
@@ -26,7 +26,7 @@ A Térkép lekérésének és megjelenítésének teljesítményének optimaliz�
 
 <center>
 
-![Globális csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![World csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 A nagyítási szint 1 négy csempét használ a világ megjelenítéséhez: 2 x 2 négyzet
 
@@ -43,24 +43,24 @@ Az alábbi táblázat a nagyítási szintek azon értékeinek teljes listáját 
 |Nagyítási szint|Mérőműszer/képpont|Méter/csempe oldal|
 |--- |--- |--- |
 |0|156543|40075008|
-|1|78271.5|20037504|
-|2|39135,8|10018764.8|
-|3|19567.9|5009382.4|
-|4|9783.9|2504678.4|
+|1|78271,5|20037504|
+|2|39135,8|10018764,8|
+|3|19567,9|5009382,4|
+|4|9783,9|2504678,4|
 |5|4892|1252352|
 |6|2446|626176|
 |7|1223|313088|
 |8|611,5|156544|
-|9|305.7|78259.2|
-|10|152,9|39142.4|
-|11|76,4|19558.4|
-|12|38,2|9779.2|
-|13|19,1|4889.6|
+|9|305,7|78259,2|
+|10|152,9|39142,4|
+|11|76,4|19558,4|
+|12|38,2|9779,2|
+|13|19,1|4889,6|
 |14|9.6|2457,6|
-|15|4.8|1228,8|
+|15|4,8|1228,8|
 |16|2.4|614,4|
 |17|1.2|307,2|
-|18|a 0.6-os|152,8|
+|18|0,6|152,8|
 |19|0,3|76,4|
 |20|0,15|38,2|
 |21|0,075|19,1|
@@ -78,11 +78,11 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a képpontok koordinátáit is használják. A térkép bal felső sarkában található képpontnak mindig van képpont-koordinátái (0, 0). A Térkép jobb alsó sarkában található pixel koordinátái *(width-1, height-1)* , vagy az előző szakaszban szereplő egyenletekre utalnak *(tileSize \* 2<sup>Nagyítás</sup>– 1, tileSize \* 2<sup>Nagyítás</sup>– 1)* . Például, ha a 2. szinten a 512 négyzet alakú csempéket használja, a képpont koordinátái (0, 0) és (2047, 2047) közé esnek, a következőhöz hasonlóan:
+Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a képpontok koordinátáit is használják. A térkép bal felső sarkában található képpontnak mindig van képpont-koordinátái (0, 0). A Térkép jobb alsó sarkában található pixel koordinátái *(width-1, height-1)* , vagy az előző szakaszban szereplő egyenletekre hivatkoznak *(tileSize \* 2<sup>Nagyítás</sup>– 1, tileSize \* 2<sup>zoom</sup>– 1)* . Például, ha a 2. szinten a 512 négyzet alakú csempéket használja, a képpont koordinátái (0, 0) és (2047, 2047) közé esnek, a következőhöz hasonlóan:
 
 <center>
 
-![Képpont dimenziókat ábrázoló Térkép](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Térkép képpont-dimenziókat ábrázoló](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
 
 A szélességi és a hosszúsági fok, valamint a részletességi szint alapján a képpont XY koordinátái a következőképpen számíthatók ki:
 
@@ -110,7 +110,7 @@ Az egyes csempék a bal felső sarokban (0, 0) kezdve az XY koordinátákat adj�
 
 <center>
 
-![Csempe koordinátáinak térképe](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+![csempe koordinátáinak leképezése](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
 A képpont XY koordinátáinak pár pontja alapján könnyedén meghatározható az adott képpontot tartalmazó csempe XY koordinátái:
 
@@ -126,7 +126,7 @@ A használni kívánt nagyítási szint meghatározásakor ügyeljen arra, hogy 
 
 <center>
 
-![Nagyítási bemutató méretezése](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+![nagyítási bemutató méretezése](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
 A nagyítási szint meghatározása után az x és az y értékeket is kiszámíthatja. Az egyes nagyítási rácsok bal felső csempe x = 0, y = 0; a jobb alsó csempe x = 2<sup>Nagyítás-1</sup>, y = 2<sup>zoom-1</sup>.
 
@@ -134,16 +134,16 @@ Itt látható az 1. nagyítási szint nagyítási rácsa:
 
 <center>
 
-![1. nagyítási szint nagyítási rácsa](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+nagyítási szint ![nagyítási rács – 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
 
 ## <a name="quadkey-indices"></a>Quadkey indexek
 
-Egyes leképezési platformok olyan quadkey indexelési elnevezési konvenciót használnak, amely összekapcsolja a quadtree-kulcsok vagy a "quadkeys" nevű egydimenziós karakterláncot. Mindegyik quadkey egyedileg azonosít egy csempét egy adott részletességi szinten, és kulcsként használható a "B" általános adatbázis-indexekben. A Azure Maps SDK-k támogatják az quadkey elnevezési konvenciót használó csempe-rétegek átfedését az egyéb elnevezési konvenciók mellett, a [csempe hozzáadása](map-add-tile-layer.md) című dokumentum dokumentációjában leírtaknak megfelelően.
+Egyes leképezési platformok olyan `quadkey` indexelési elnevezési konvenciót használnak, amely egy `quadtree` kulcsoknak nevezett egydimenziós karakterláncot és röviden a `quadkeys`t kombinálja. Minden `quadkey` egyedileg azonosít egy csempét egy adott részletességi szinten, és kulcsként használható a "B" általános adatbázis-indexekben. A Azure Maps SDK-k támogatják az `quadkey` elnevezési konvenciót használó csempe-rétegek átfedését az egyéb elnevezési konvenciók mellett, a [csempe hozzáadása](map-add-tile-layer.md) című dokumentum dokumentációjában leírtaknak megfelelően.
 
 > [!NOTE]
-> A quadkeys elnevezési konvenció csak egy vagy több nagyítási szint esetén működik. A Azure Maps SDK támogatja a 0. méretet, amely a teljes világ egyetlen Térkép csempéje. 
+> A `quadkeys` elnevezési konvenció csak egy vagy több nagyítási szint esetén működik. A Azure Maps SDK támogatja a 0. méretet, amely a teljes világ egyetlen Térkép csempéje. 
 
-A csempe koordinátáinak egy quadkey való átalakításához az Y és az X koordináta bitek összekapcsolva lesznek, és az eredmény egy alap-4 számként lesz értelmezve (a bevezető nullákkal együtt), és egy karakterlánccá konvertálva. Ha például a csempe XY koordinátáit (3, 5) a 3. szinten adja meg, a quadkey a következőképpen határozható meg:
+A csempe koordinátáinak egy `quadkey`ba való átalakításához az Y és az X koordináta bitek összekapcsolva lesznek, és a rendszer az eredményt egy alap-4 számként értelmezi (a vezető nullákkal együtt), és átalakítja őket egy karakterlánccá. Ha például a csempe XY koordinátáit (3, 5) a 3. szinten adja meg, a `quadkey` a következőképpen határozható meg:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -153,13 +153,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-A Quadkeys számos érdekes tulajdonsággal rendelkeznek. Először is a quadkey hossza (a számjegyek száma) egyenlő a megfelelő csempe nagyítási szintjével. Másodszor, a csempék quadkey a szülő csempe quadkey kezdődik (az előző szinten található csempét tartalmazó csempe). Ahogy az alábbi példában is látható, a csempe 2 a 20 és 23 közötti csempe szülőjének:
+`Qquadkeys` számos érdekes tulajdonsággal rendelkeznek. Először is a `quadkey` hossza (a számjegyek száma) egyenlő a megfelelő csempe nagyítási szintjével. Másodszor, a csempék `quadkey` a szülő csempe `quadkey`ával kezdődik (az előző szinten található csempét tartalmazó csempe). Ahogy az alábbi példában is látható, a csempe 2 a 20 és 23 közötti csempe szülőjének:
 
 <center>
 
 ![Quadkey csempe piramis](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Végül a quadkeys olyan egydimenziós index-kulcsot biztosít, amely általában megőrzi a csempék közelségét az XY térben. Ez azt jelenti, hogy két, XY koordinátákat tartalmazó csempének általában quadkeys van, amely viszonylag közel van egymáshoz. Ez azért fontos, hogy optimalizálja az adatbázis teljesítményét, mivel a szomszédos csempéket gyakran kérik a csoportokban, és érdemes megtartani ezeket a csempéket ugyanarra a lemezre, hogy a lemezes olvasások számát csökkenteni lehessen.
+Végezetül `quadkeys` egy egydimenziós index-kulcsot, amely általában megőrzi a csempék közelségét az XY térben. Ez azt jelenti, hogy két, az XY koordinátákat tartalmazó csempe általában `quadkeys`, amelyek viszonylag közel vannak egymáshoz. Ez azért fontos, hogy optimalizálja az adatbázis teljesítményét, mivel a szomszédos csempéket gyakran kérik a csoportokban, és érdemes megtartani ezeket a csempéket ugyanarra a lemezre, hogy a lemezes olvasások számát csökkenteni lehessen.
 
 ## <a name="tile-math-source-code"></a>Csempe matematikai forráskódja
 
@@ -422,6 +422,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -802,6 +803,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {
@@ -945,9 +947,9 @@ module AzureMaps {
 
 > [!NOTE]
 > A Azure Maps SDK interaktív térképének vezérlői a térinformatikai pozíciók és a nézetablak képpontja közötti átalakításra szolgáló segítő függvényekből állnak. 
-> - [Web SDK: Térkép képpont és pozíciójának kiszámítása](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK: Térkép képpontban és pozícióban számítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Maps REST-szolgáltatásokból közvetlenül elérhetők a Térkép csempéi:
 

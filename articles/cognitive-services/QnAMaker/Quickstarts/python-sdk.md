@@ -1,48 +1,48 @@
 ---
-title: 'Gyors útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódtár'
+title: 'Rövid útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódtár'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedés a QnA Maker a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
+description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker a Pythonhoz készült ügyféloldali kódtárat. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 81e5ac5e5017330d2c5ea8bf5b269c4ce70b495b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 70c985dd38ada528092ba4b66846580aa3a4f884
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447340"
 ---
-# <a name="quickstart-qna-maker-client-library-for-python"></a>Gyors útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódtár
+# <a name="quickstart-qna-maker-client-library-for-python"></a>Rövid útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódtár
 
-Ismerkedés a QnA Maker a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. 
+Ismerkedés a QnA Maker a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 
 A Pythonhoz készült QnA Maker ügyféloldali kódtára a következőre használható:
 
-* Tudásbázis létrehozása 
+* Tudásbázis létrehozása
 * Tudásbázis kezelése
 * Tudásbázis közzététele
 
-[Dokumentációs](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) |  | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [-csomag (PyPI) Python-](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/)[minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [Package (PyPI)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-a-qna-maker-azure-resource"></a>QnA Maker Azure-erőforrás létrehozása
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. 
+Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával.
 
-Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `QNAMAKER_HOST`(z) és nevű `QNAMAKER_KEY` erőforráshoz. Használja a Azure Portal található kulcs-és végpont-értékeket.
+Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az erőforráshoz, `QNAMAKER_KEY` és `QNAMAKER_HOST`névvel. Használja a Azure Portal található kulcs-és végpont-értékeket.
 
 ### <a name="install-the-python-library-for-qna-maker"></a>A QnA Maker Python-könyvtárának telepítése
 
@@ -56,12 +56,12 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-python) objektum létrehozásához.
 
-Miután létrehozta az ügyfelet [, a Tudásbázis használatával hozza](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) létre, kezelje és tegye közzé a tudásbázist. 
+Miután létrehozta az ügyfelet [, a Tudásbázis használatával hozza](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) létre, kezelje és tegye közzé a tudásbázist.
 
-Az azonnali műveletekhez a metódus általában egy JSON-objektumot ad vissza, amely az állapotot jelzi. A hosszú ideig futó műveletek esetében a válasz a művelet azonosítója. Hívja meg az [ügyfelet. Operations. getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.operations%28class%29?view=azure-python#get-details-operation-id--custom-headers-none--raw-false----operation-config-) metódus a műveleti azonosítóval a [kérelem állapotának](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)meghatározásához. 
+Az azonnali műveletekhez a metódus általában egy JSON-objektumot ad vissza, amely az állapotot jelzi. A hosszú ideig futó műveletek esetében a válasz a művelet azonosítója. Hívja meg az [ügyfelet. Operations. getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.operations%28class%29?view=azure-python#get-details-operation-id--custom-headers-none--raw-false----operation-config-) metódus a műveleti azonosítóval a [kérelem állapotának](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)meghatározásához.
 
- 
-## <a name="code-examples"></a>Példák a kódokra
+
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült QnA Maker ügyféloldali kódtár használatával:
 
@@ -80,12 +80,10 @@ Hozzon létre egy új Python-alkalmazást az előnyben részesített szerkesztő
 
 Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
 
-
-|Környezeti változó|Python-változó|Példa|
+|Környezeti változó|változó|Példa|
 |--|--|--|
-|`QNAMAKER_KEY`|`subscription_key`|32 karakteres GUID|
-|`QNAMAKER_HOST`|`host`|`https://your-resource-name.api.cognitive.microsoft.com` – a `your-resource-name` módosítása a saját erőforrás nevére|
-||||
+|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|A kulcs egy 32 karakterből álló karakterlánc, amely a Azure Portal QnA Maker erőforrásának gyors üzembe helyezés lapján érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.|
+|`QNAMAKER_HOST`|`host`| A szerzői végpont `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`formátuma tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.|
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]
 
@@ -103,14 +101,14 @@ Ezután hozzon létre egy CognitiveServicesCredentials objektumot a kulccsal, é
 A Tudásbázis a [CreateKbDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.createkbdto?view=azure-python) objektumra vonatkozó kérdés-és válasz párokat három forrásból tárolja:
 
 * A **szerkesztői tartalomhoz**használja a [QnADTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.qnadto?view=azure-python) objektumot.
-* **Fájlok**esetében használja a [FileDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-python) objektumot. 
+* **Fájlok**esetében használja a [FileDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-python) objektumot.
 * **URL-címek**esetén használja a karakterláncok listáját.
 
-Hívja meg a [create](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#create-create-kb-payload--custom-headers-none--raw-false----operation-config-) metódust, majd adja át a visszaadott művelet azonosítóját a [Operations. getDetails](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez. 
+Hívja meg a [create](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#create-create-kb-payload--custom-headers-none--raw-false----operation-config-) metódust, majd adja át a visszaadott művelet azonosítóját a [Operations. getDetails](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez.
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
-A Tudásbázis sikeres létrehozásához [`_monitor_operation`](#get-status-of-an-operation) győződjön meg arról, hogy a fenti kódban hivatkozott függvény belefoglalása. 
+A Tudásbázis sikeres létrehozásához ellenőrizze, hogy a fenti kódban hivatkozott [`_monitor_operation`](#get-status-of-an-operation) függvény szerepeljen-e.
 
 ## <a name="update-a-knowledge-base"></a>Tudásbázis frissítése
 
@@ -118,11 +116,11 @@ A tudásbázist a Tudásbázis-azonosító és egy olyan [UpdateKbOperationDTO](
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
 
-Győződjön meg arról, hogy [`_monitor_operation`](#get-status-of-an-operation) a fenti kódban hivatkozott függvény belefoglalása a Tudásbázis sikeres frissítéséhez. 
+A Tudásbázis sikeres frissítéséhez ellenőrizze, hogy a fenti kódban hivatkozott [`_monitor_operation`](#get-status-of-an-operation) függvény szerepeljen-e.
 
 ## <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
-Tegye közzé a tudásbázist a [közzétételi](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) metódus használatával. Ez az aktuálisan mentett és betanított modellt veszi alapul, amelyet a Tudásbázis-azonosító hivatkozik, és egy végponton teszi közzé. 
+Tegye közzé a tudásbázist a [közzétételi](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) metódus használatával. Ez az aktuálisan mentett és betanított modellt veszi alapul, amelyet a Tudásbázis-azonosító hivatkozik, és egy végponton teszi közzé.
 
 [!code-python[Publish a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=publishkb&highlight=2)]
 
@@ -134,23 +132,23 @@ A [letöltési](https://docs.microsoft.com/python/api/azure-cognitiveservices-kn
 
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
-Törölje a tudásbázist a [delete](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) metódus használatával a TUDÁSBÁZIS-azonosító paraméterével. 
+Törölje a tudásbázist a [delete](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) metódus használatával a TUDÁSBÁZIS-azonosító paraméterével.
 
 [!code-python[Delete a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=deletekb&highlight=2)]
 
 ## <a name="get-status-of-an-operation"></a>Művelet állapotának beolvasása
 
-Bizonyos metódusok, például a létrehozás és a frissítés, elegendő időt vehetnek igénybe, hogy a folyamat befejeződésére való várakozás helyett egy [műveletet](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation%28class%29?view=azure-python) adjon vissza. Az eredeti metódus állapotának meghatározásához használja a művelet AZONOSÍTÓját a lekérdezésben (az újrapróbálkozási logikával). 
+Bizonyos metódusok, például a létrehozás és a frissítés, elegendő időt vehetnek igénybe, hogy a folyamat befejeződésére való várakozás helyett egy [műveletet](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation%28class%29?view=azure-python) adjon vissza. Az eredeti metódus állapotának meghatározásához használja a művelet AZONOSÍTÓját a lekérdezésben (az újrapróbálkozási logikával).
 
-A következő _setTimeout_ hívásával szimulálható az aszinkron kód. Cserélje le ezt az újrapróbálkozási logikával. 
+A következő _setTimeout_ hívásával szimulálható az aszinkron kód. Cserélje le ezt az újrapróbálkozási logikával.
 
 [!code-python[Monitor an operation](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=monitorOperation&highlight=7)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `python knowledgebase_quickstart.py` a paranccsal az alkalmazás könyvtárából.
+Futtassa az alkalmazást `python knowledgebase_quickstart.py` paranccsal az alkalmazás könyvtárából.
 
-A cikkben szereplő kódrészletek mindegyike [elérhető](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) , és egyetlen fájlként is futtatható. 
+A cikkben szereplő kódrészletek mindegyike [elérhető](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) , és egyetlen fájlként is futtatható.
 
 ```console
 python knowledgebase_quickstart.py
@@ -163,10 +161,10 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: KB létrehozása és válasza](../tutorials/create-publish-query-in-portal.md)
+>[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)
 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)

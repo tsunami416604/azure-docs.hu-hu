@@ -1,21 +1,21 @@
 ---
 title: 'Oktatóanyag: Spell Check-eredmények lekérése a Bing Spell Check API használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy olyan weblapot hozunk létre, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését és az eredmények megjelenítését.
+description: Ezzel az Oktatóanyaggal létrehozhat egy olyan weblapot, amely lekérdezést küld a Bing Spell Check APInak, és megjeleníti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382796"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Spell Check-ügyfél weboldalának létrehozása
 
@@ -118,7 +118,7 @@ A getSubscriptionKeyLocalStorage segítő függvény először megpróbálja lek
     }
 ```
 
-A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** (érvénytelenítés) szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
+A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -148,7 +148,7 @@ Adja vissza a getSubscriptionKey segítő függvényt a külső getSubscriptionK
 
 ## <a name="helper-functions"></a>Segítő függvények
 
-A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címkével előre formázott adott szöveget.
+A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címke segítségével előre formázott, megadott szöveget.
 
 ```html
 function pre(text) {
@@ -164,7 +164,7 @@ function renderSearchResults(results) {
 }
 ```
 
-A renderErrorMessage függvény az adott hibaüzenetet és hibakódot jeleníti meg.
+A renderErrorMessage függvény a megadott hibaüzenetet és a hibakódot jeleníti meg.
 
 ```html
 function renderErrorMessage(message, code) {
@@ -283,7 +283,7 @@ Mentse a fájlt.
 
 ## <a name="display-results"></a>Eredmények megjelenítése
 
-Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing Spell Check API előfizetői azonosítóját. Adjon meg egy lekérdezést (például a „Hollo, wrld!” kifejezést) a **Spell Check** szövegmezőben, majd nyomja le az **ENTER** billentyűt. A weboldal ezután megjeleníti a lekérdezési eredményeket.
+Nyissa meg a weboldalt a böngészőben. Ha a rendszer kéri, adja meg a Bing Spell Check API előfizetői azonosítóját. Adjon meg egy lekérdezést (például a „Hollo, wrld!” kifejezést) a **Spell Check** szövegmezőben, majd nyomja le az **ENTER** billentyűt. A weboldal ezután megjeleníti a lekérdezési eredményeket.
 
 ```json
 {
@@ -319,7 +319,7 @@ Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Használati és megjelenítési követelmények](../UseAndDisplayRequirements.md)

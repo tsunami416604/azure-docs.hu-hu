@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430200"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
 
@@ -42,7 +42,7 @@ A rendszergazdai engedélyekkel rendelkező munkafolyamat engedélyezése és a 
 
    ![Rendszergazdai engedélyekkel rendelkező munkafolyamat beállításainak konfigurálása](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
-6. Adja meg a következő beállításokat:
+6. Adja meg az alábbi beállításokat:
 
    * **Válassza a felhasználók lehetőséget a rendszergazdai engedélyezési kérelmek áttekintéséhez**. Válassza ki a munkafolyamathoz tartozó véleményezőket a globális rendszergazda, a Felhőbeli alkalmazás-rendszergazda és az alkalmazás-rendszergazda szerepkörrel rendelkező felhasználók készletében.
    * **A kiválasztott felhasználók e-mail-értesítéseket kapnak a kérelmekről**. Az e-mail-értesítések engedélyezése vagy letiltása a felülvizsgálók számára a kérelem elküldésekor.  
@@ -153,8 +153,10 @@ Ha aggódik a rendszergazdai jóváhagyás megadásával, és a bérlő összes 
 
 További információ az alkalmazásokkal való hozzájárulásról: [Azure Active Directory beleegyezési keretrendszer](../develop/consent-framework.md).
 
-[Alkalmazások belefoglalása és integrálása a AzureAD-be](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[Annak konfigurálása, hogy a végfelhasználók hogyan hozzájárulásukat az alkalmazásokhoz](configure-user-consent.md)
 
-[A AzureAD 2.0-val konvergált alkalmazások beleegyezése és engedélyezése](../develop/active-directory-v2-scopes.md)
+[Bérlői szintű rendszergazdai jóváhagyás engedélyezése egy alkalmazás számára](grant-admin-consent.md)
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Engedélyek és beleegyezett a Microsoft Identity platform](../develop/active-directory-v2-scopes.md)
+
+[Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

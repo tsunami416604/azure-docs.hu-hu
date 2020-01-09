@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427643"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
 
 Ez a cikk bemutatja, hogyan értékelheti ki a modell teljesítményét Azure Machine Learning Studio (klasszikus), és rövid magyarázatot ad a feladathoz elérhető mérőszámokról. Három közös felügyelt tanulási forgatókönyv jelenik meg: 
 
 * regressziós
-* bináris besorolás 
+* Bináris besorolás 
 * többosztályos besorolás
 
 
@@ -41,10 +41,10 @@ Azt is megteheti, hogy több érvényesítést is használhat, hogy a bemeneti a
 A következő részekben egyszerű regressziós és besorolási modelleket hozunk létre, és kiértékeljük a teljesítményüket a [kiértékelési modell][evaluate-model] és a [modell-ellenőrzési][cross-validate-model] modulok használatával.
 
 ## <a name="evaluating-a-regression-model"></a>Regressziós modell kiértékelése
-Feltételezzük, hogy az autó árát a méretek, a lóerő, a motor specs és egyéb funkciók használatával szeretnénk előre jelezni. Ez egy tipikus regressziós probléma, amelyben a célként megadott változó (*Ár*) folytonos számérték. Egy lineáris regressziós modellt is használhatunk, amely egy adott autó funkciójának értéke alapján előre jelezheti az autó árát. Ez a regressziós modell a betanított adatkészletek kiértékelésére használható. Az előre jelzett személygépkocsik díjszabásával kiértékeljük a modell teljesítményét, és megvizsgáljuk, hogy az előrejelzések mekkora mértékben térnek el a tényleges árak átlagával. Ennek szemléltetése érdekében a ML Studio (klasszikus) **tárolt adatkészletek** szakaszában elérhető *Automobile Price (nyers) adatkészletet* használjuk.
+Feltételezzük, hogy az autó árát a méretek, a lóerő, a motor specs és egyéb funkciók használatával szeretnénk előre jelezni. Ez egy tipikus regressziós probléma, amelyben a célként megadott változó (*Ár*) folytonos számérték. Egy lineáris regressziós modellt is használhatunk, amely egy adott autó funkciójának értéke alapján előre jelezheti az autó árát. Ez a regressziós modell a betanított adatkészletek kiértékelésére használható. Az előre jelzett személygépkocsik díjszabásával kiértékeljük a modell teljesítményét, és megvizsgáljuk, hogy az előrejelzések mekkora mértékben térnek el a tényleges árak átlagával. Ennek szemléltetése érdekében a Machine Learning Studio (klasszikus) **tárolt adatkészletek** szakaszában elérhető *Automobile Price (nyers) adatkészletet* használjuk.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Adja hozzá a következő modulokat a munkaterülethez a Azure Machine Learning Studio klasszikus verziójában:
+Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
 * Az autók árát (nyers)
 * [Lineáris regresszió][linear-regression]
@@ -83,10 +83,10 @@ A kísérlet futtatása után megtekintheti a kiértékelés eredményeit a [mod
 4\. ábra Egy regressziós modell több ellenőrzési eredménye.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Bináris besorolási modell kiértékelése
-Bináris besorolási forgatókönyv esetén a célként megadott változónak csak két lehetséges eredménye van, például: {0, 1} vagy {FALSE, true}, {negatív, pozitív}. Tegyük fel, hogy a felnőtt alkalmazottak adatkészlete bizonyos demográfiai és foglalkoztatási változókkal rendelkezik, és a rendszer megkéri, hogy Jósolja meg a bevételi szintet ({"< = 50 K", "> 50 K"} értékkel rendelkező bináris változót). Ez azt jelenti, hogy a negatív osztály a 50 K/év alatti vagy azzal egyenlő alkalmazottakat jelöli, a pozitív osztály pedig az összes többi alkalmazottat jelképezi. A regressziós forgatókönyvhöz hasonlóan a modell betanítása, az egyes adatmennyiségek kiértékelése és az eredmények értékelése is megtörténik. A fő különbség az, hogy a Azure Machine Learning Studio számítások és kimenetek klasszikus változata látható. A bevételi szint előrejelzési forgatókönyvének szemléltetéséhez a [felnőtt](https://archive.ics.uci.edu/ml/datasets/Adult) adatkészletet használjuk a Studio (klasszikus) kísérlet létrehozásához és a kétosztályos logisztikai regressziós modell teljesítményének kiértékeléséhez, amely egy gyakran használt bináris osztályozó.
+Bináris besorolási forgatókönyv esetén a célként megadott változónak csak két lehetséges eredménye van, például: {0, 1} vagy {FALSE, true}, {negatív, pozitív}. Tegyük fel, hogy a felnőtt alkalmazottak adatkészlete bizonyos demográfiai és foglalkoztatási változókkal rendelkezik, és a rendszer megkéri, hogy Jósolja meg a bevételi szintet ({"< = 50 K", "> 50 K"} értékkel rendelkező bináris változót). Ez azt jelenti, hogy a negatív osztály a 50 K/év alatti vagy azzal egyenlő alkalmazottakat jelöli, a pozitív osztály pedig az összes többi alkalmazottat jelképezi. A regressziós forgatókönyvhöz hasonlóan a modell betanítása, az egyes adatmennyiségek kiértékelése és az eredmények értékelése is megtörténik. A fő különbség itt a metrikák Azure Machine Learning Studio (klasszikus) számítások és kimenetek kiválasztása. A bevételi szint előrejelzési forgatókönyvének szemléltetéséhez a [felnőtt](https://archive.ics.uci.edu/ml/datasets/Adult) adatkészletet használjuk a Studio (klasszikus) kísérlet létrehozásához és a kétosztályos logisztikai regressziós modell teljesítményének kiértékeléséhez, amely egy gyakran használt bináris osztályozó.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Adja hozzá a következő modulokat a munkaterülethez a Azure Machine Learning Studio klasszikus verziójában:
+Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
 * Felnőtt népszámlálás jövedelme bináris besorolási adatkészlet
 * [Kétosztályos logisztikai regresszió][two-class-logistic-regression]
@@ -105,7 +105,7 @@ A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-mod
 
 A pontosság egyszerűen a helyesen besorolt példányok aránya. Az osztályozó kiértékelése során általában az első mérőszámot kell megtekinteni. Ha azonban a teszt adatai kiegyensúlyozatlan (ahol a példányok többsége az egyik osztályhoz tartozik), vagy ha az egyik osztály teljesítményére kíváncsi, a pontosság nem igazán rögzíti az osztályozók hatékonyságát. A bevételi szint besorolási forgatókönyve feltételezi, hogy a példányok 99%-ában olyan személyeket vizsgál, akik évente kevesebb, mint 50 000-et keresnek. 0,99 pontosságot lehet elérni az összes példány "< = 50K" osztályának előrejelzésével. Az osztályozás ebben az esetben úgy tűnik, hogy összességében jó munkát végez, de a valóságban nem tudja osztályozni a magas jövedelmű személyeket (1%) helyesen.
 
-Emiatt hasznos lehet olyan további mérőszámokat kiszámítani, amelyek a kiértékelés konkrétabb szempontjait rögzítik. Az ilyen mérőszámok részleteinek megismerése előtt fontos megérteni a bináris besorolás kiértékelésének összekeveredési mátrixát. A betanítási készletben lévő osztályok címkéi csak két lehetséges értéket vehetnek igénybe, ami általában pozitív vagy negatív. Az osztályozó becslésének megfelelő pozitív és negatív példányokat igaz pozitív (TP) és True negatives (TN) értékeknek nevezzük. Hasonlóképpen a helytelenül besorolt példányok neve hamis pozitív (FP) és hamis negatív (FN). A zűrzavaros mátrix egyszerűen egy olyan tábla, amely a négy kategóriába tartozó példányok számát jeleníti meg. A Azure Machine Learning Studio klasszikus verziója automatikusan eldönti, hogy az adatkészlet két osztályának melyik a pozitív osztálya. Ha az osztályok neve logikai vagy egész szám, akkor a "true" vagy "1" címkézett példányok a pozitív osztályhoz vannak rendelve. Ha a címkék sztringek, például a bevételi adatkészlet, a feliratok betűrendbe vannak rendezve, és az első szint a negatív osztály lesz, míg a második szint a pozitív osztály.
+Emiatt hasznos lehet olyan további mérőszámokat kiszámítani, amelyek a kiértékelés konkrétabb szempontjait rögzítik. Az ilyen mérőszámok részleteinek megismerése előtt fontos megérteni a bináris besorolás kiértékelésének összekeveredési mátrixát. A betanítási készletben lévő osztályok címkéi csak két lehetséges értéket vehetnek igénybe, ami általában pozitív vagy negatív. Az osztályozó becslésének megfelelő pozitív és negatív példányokat igaz pozitív (TP) és True negatives (TN) értékeknek nevezzük. Hasonlóképpen a helytelenül besorolt példányok neve hamis pozitív (FP) és hamis negatív (FN). A zűrzavaros mátrix egyszerűen egy olyan tábla, amely a négy kategóriába tartozó példányok számát jeleníti meg. A Azure Machine Learning Studio (klasszikus) automatikusan eldönti, hogy az adatkészlet két osztályának melyik a pozitív osztálya. Ha az osztályok neve logikai vagy egész szám, akkor a "true" vagy "1" címkézett példányok a pozitív osztályhoz vannak rendelve. Ha a címkék sztringek, például a bevételi adatkészlet, a feliratok betűrendbe vannak rendezve, és az első szint a negatív osztály lesz, míg a második szint a pozitív osztály.
 
 ![Bináris besorolás – zavart mátrix](./media/evaluate-model-performance/6a.png)
 
@@ -136,7 +136,7 @@ A regressziós példához hasonlóan több ellenőrzés is elvégezhető az adat
 Ebben a kísérletben a népszerű [írisz](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") -adatkészletet fogjuk használni, amely az írisz három különböző típusa (osztály) példányát tartalmazza. Az egyes példányok esetében négy szolgáltatási érték (a kétféle hosszúság/szélesség és a szirom hossza/szélessége) szerepel. Az előző kísérletek során az azonos adatkészleteket használó modelleket tanítjuk és teszteltük. Itt az [Adatfelosztási][split] modult használjuk az adathalmazok két részhalmazának létrehozásához, az elsőre a betanításhoz és a pontszám és a kiértékelés során. Az írisz-adatkészlet nyilvánosan elérhető az [UCI Machine learning adattárban](https://archive.ics.uci.edu/ml/index.html), és az [importálási][import-data] modul használatával tölthető le.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Adja hozzá a következő modulokat a munkaterülethez a Azure Machine Learning Studio klasszikus verziójában:
+Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
 * [Adatimportálás][import-data]
 * [Többosztályos döntési erdő][multiclass-decision-forest]

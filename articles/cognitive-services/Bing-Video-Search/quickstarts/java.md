@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382650"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a Java használatával
 
@@ -59,7 +59,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
     }
     ```
 
-3. Hozzon létre egy `SearchVideos()` nevű új metódust az API-végponti gazdagép és elérési út, az előfizetési kulcs és a keresési kifejezés változók használatával. `SearchResults` objektumot ad vissza. 
+3. Hozzon létre egy `SearchVideos()` nevű új metódust az API-végponti gazdagép és elérési út, az előfizetési kulcs és a keresési kifejezés változók használatával. `SearchResults` objektumot ad vissza. `host` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -248,6 +248,6 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [!div class="nextstepaction"]
 > [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még: 
 
  [Mi a Bing Video Search API?](../overview.md)

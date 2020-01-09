@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan csatlakozhat Configuration Manager a mu
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364050"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
 A System Center Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtemény adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
@@ -22,7 +22,7 @@ A System Center Configuration Manager-Azure Monitor környezet összekapcsolás�
 Azure Monitor támogatja System Center Configuration Manager aktuális ág, 1606-es és újabb verzióját.
 
 >[!NOTE]
->A Configuration Manager Log Analytics munkaterülettel való összekapcsolásának funkciója nem kötelező, és alapértelmezés szerint nincs engedélyezve. A funkció használatához engedélyeznie kell ezt a funkciót. További információ: [a választható funkciók engedélyezése a frissítésekben](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>A Configuration Manager Log Analytics munkaterülettel való összekapcsolásának funkciója nem kötelező, és alapértelmezés szerint nincs engedélyezve. A funkció használatához engedélyeznie kell ezt a funkciót. További információ: [Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Konfiguráció áttekintése
 
@@ -109,11 +109,11 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 
     8. Válassza az **ellenőrzés** lehetőséget, és a jobb oldalon a **sikeres ellenőrzésnek**megfelelő eredményeket kell megjeleníteni!.
 
-8. A **konfiguráció** lapon tekintse át az **Azure-előfizetések**, az **Azure-erőforráscsoport**és az **Operations Management Suite-munkaterület** mezőinek ellenőrzéséhez szükséges információkat, amelyek jelzik, hogy az Azure ad-alkalmazás megfelelő engedélyek az erőforráscsoporthoz. Ha a mezők üresek, azt jelzi, hogy az alkalmazás nem rendelkezik a szükséges jogosultságokkal. Válassza ki a gyűjteni kívánt és a munkaterületre továbbítandó eszközöket, majd válassza a **Hozzáadás**lehetőséget.
+8. A **konfiguráció** lapon tekintse át az **Azure-előfizetések**, az **Azure-erőforráscsoport**és az **Operations Management Suite-munkaterület** mezőinek ellenőrzéséhez szükséges információkat, és jelezze, hogy az Azure ad-alkalmazás megfelelő engedélyekkel rendelkezik az erőforráscsoporthoz. Ha a mezők üresek, azt jelzi, hogy az alkalmazás nem rendelkezik a szükséges jogosultságokkal. Válassza ki a gyűjteni kívánt és a munkaterületre továbbítandó eszközöket, majd válassza a **Hozzáadás**lehetőséget.
 
 9. A kapcsolatok létrehozásának és konfigurálásának megkezdéséhez tekintse át a beállításokat a **Beállítások megerősítése** lapon, majd a **tovább** gombra kattintva.
 
-10. Ha a konfiguráció elkészült, megjelenik a **Befejezés** lap. Válassza a **Bezárás**lehetőséget. 
+10. Ha a konfiguráció elkészült, megjelenik a **Befejezés** lap. Válassza a **Bezárás** lehetőséget. 
 
 Miután csatolta Configuration Managert a Azure Monitorhoz, hozzáadhat vagy eltávolíthat gyűjteményeket, és megtekintheti a kapcsolat tulajdonságait.
 

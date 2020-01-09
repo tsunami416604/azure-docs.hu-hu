@@ -3,12 +3,12 @@ title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390762"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -110,7 +110,15 @@ Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsá
 
 1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye**területen válassza a **visszaállítás fájlként**lehetőséget.
 2. Válassza ki azt a SQL Server nevet, amelyre vissza kívánja állítani a biztonságimásolat-fájlokat.
-3. A **kiszolgáló célhelyének elérési útja** a 2. lépésben kiválasztott kiszolgálón adja meg a mappa elérési útját. Ez az a hely, ahol a szolgáltatás kiírja az összes szükséges biztonságimásolat-fájlt. A célként megadott elérési úttal megegyező hálózati megosztási elérési út vagy egy csatlakoztatott Azure-fájlmegosztás elérési útja lehetővé teszi, hogy a fájlok könnyebben hozzáférhessenek az azonos hálózatban lévő más gépekhez, illetve az azokhoz csatlakoztatott Azure-fájlmegosztáshoz.
+3. A **kiszolgáló célhelyének elérési útja** a 2. lépésben kiválasztott kiszolgálón adja meg a mappa elérési útját. Ez az a hely, ahol a szolgáltatás kiírja az összes szükséges biztonságimásolat-fájlt. A célként megadott elérési úttal megegyező hálózati megosztási elérési út vagy egy csatlakoztatott Azure-fájlmegosztás elérési útja lehetővé teszi, hogy a fájlok könnyebben hozzáférhessenek az azonos hálózatban lévő más gépekhez, illetve az azokhoz csatlakoztatott Azure-fájlmegosztáshoz.<BR>
+
+>Ha vissza szeretné állítani az adatbázis biztonsági másolatának fájljait egy olyan Azure-fájlmegosztás számára, amely a cél regisztrált virtuális gépen van csatlakoztatva, győződjön meg arról, hogy az NT AUTHORITY\SYSTEM hozzáfér a fájlmegosztás eléréséhez. Az alábbi lépések végrehajtásával engedélyezheti az olvasási/írási engedélyeket a virtuális gépen csatlakoztatott AFS-hez:
+>- `PsExec -s cmd` futtatása az NT AUTHORITY\SYSTEM-rendszerhéjba való belépéshez
+>   - Hajtsa végre az `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` parancsot.
+>   - Hozzáférés ellenőrzése `dir \\<storageacct>.file.core.windows.net\<filesharename>`
+>- A Backup-tárolóban lévő fájlok visszaállításának elindításával `\\<storageacct>.file.core.windows.net\<filesharename>` elérési útra<BR>
+A PsExec a <https://docs.microsoft.com/sysinternals/downloads/psexec> használatával tölthető le
+
 4. Kattintson az **OK** gombra.
 
 ![Válassza a visszaállítás fájlokként lehetőséget.](./media/backup-azure-sql-database/restore-as-files.png)

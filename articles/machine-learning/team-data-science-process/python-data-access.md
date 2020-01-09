@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427388"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Microsoft Azure Machine Learning Python ügyféloldali kódtár előzetes verziója lehetővé teszi a Azure Machine Learning adatkészletek biztonságos elérését egy helyi Python-környezetből, és lehetővé teszi a munkaterületen lévő adatkészletek létrehozását és kezelését.
@@ -96,7 +96,7 @@ Az engedélyezési jogkivonatok kezelése az **engedélyezési JOGkivonatok** la
     ![Kód beillesztése a jegyzetfüzetbe][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>A köztes adatkészletek elérése Machine Learning kísérletekből
-Miután egy kísérletet a Machine Learning Studio klasszikus verziójában futtatott, a modulok kimeneti csomópontjairól is elérheti a köztes adatkészleteket. A köztes adatkészletek olyan adatokat hoztak létre, amelyek a modell eszköz futtatásakor köztes lépésekhez használatosak.
+Machine Learning Studio (klasszikus) kísérlet után a közbenső adatkészletek a modulok kimeneti csomópontjairól is elérhetők. A köztes adatkészletek olyan adatokat hoztak létre, amelyek a modell eszköz futtatásakor köztes lépésekhez használatosak.
 
 A köztes adatkészletek akkor érhetők el, ha az adatformátum kompatibilis a Python ügyféloldali kódtár használatával.
 

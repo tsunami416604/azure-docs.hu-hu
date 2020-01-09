@@ -1,17 +1,17 @@
 ---
-title: Kódrészletek hozzáadása és futtatása
-description: Kódrészletek hozzáadása és futtatása beágyazott kóddal Azure Logic Apps
+title: Kódrészletek hozzáadása és futtatása beágyazott kóddal
+description: Útmutató kódrészletek létrehozásához és futtatásához a Azure Logic Apps használatával létrehozott automatizált feladatokhoz és munkafolyamatokhoz.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f28a93e47aa028f152d7ca797abb17cb3832aa60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453496"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Kódrészletek hozzáadása és futtatása beágyazott kód használatával Azure Logic Apps
 

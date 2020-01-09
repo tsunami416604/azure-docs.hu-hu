@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407549"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az Azure Application Insights folyamatainak automatizálása a Microsoft Flow-összekötővel
 
@@ -41,7 +41,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan folyamatot, a
 
     ![Ütemterv ismétlődésének beállítása a gyakoriság és az intervallum beírásával](./media/automate-with-flow/2-schedule.png)
 
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="step-3-add-an-application-insights-action"></a>3\. lépés: Application Insights művelet hozzáadása
 
@@ -66,10 +66,10 @@ Adja meg a kapcsolatok nevét, valamint az alkalmazás AZONOSÍTÓját és az AP
 
 Ha a kapcsolati mező nem jelenik meg azonnal, hanem közvetlenül a lekérdezés beírására kerül, kattintson a mező jobb felső sarkában található három pontra. Ezután válassza a saját kapcsolatok lehetőséget, vagy használjon egy meglévőt.
 
-Kattintson a  **Create** (Létrehozás) gombra.
+Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. lépés: az elemzési lekérdezés és a diagram típusának megadása
-Ez a példában szereplő lekérdezés kiválasztja a sikertelen kérelmeket az elmúlt napon, és korrelálja azokat a művelet részeként előforduló kivételekkel. Az elemzések a Műveletazonosítója-azonosító alapján korrelálnak. A lekérdezés ezután az autocluster algoritmus használatával csoportosítja az eredményeket.
+Ez a példában szereplő lekérdezés kiválasztja a sikertelen kérelmeket az elmúlt napon, és korrelálja azokat a művelet részeként előforduló kivételekkel. Az elemzés a operation_Id azonosítója alapján korrelálja őket. A lekérdezés ezután az autocluster algoritmus használatával csoportosítja az eredményeket.
 
 Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően működnek-e az Analyticsben, mielőtt hozzáadja azt a folyamathoz.
 
@@ -117,9 +117,9 @@ Amikor létrehoz egy saját lekérdezést, ellenőrizze, hogy megfelelően műk�
 
 ### <a name="step-7-save-and-test-your-flow"></a>7\. lépés: a folyamat mentése és tesztelése
 
-Kattintson a **Save** (Mentés) gombra.
+Kattintson a **Mentés** gombra.
 
-Megvárhatja, hogy a trigger futtassa ezt a műveletet, vagy kattintson a ![beaker test Icon ](./media/automate-with-flow/testicon.png) **test (tesztelés** ) ikonra a felső részen.
+Megvárhatja, hogy az trigger futtassa ezt a műveletet, vagy kattintson a ![főzőpohár teszt ikonjára,](./media/automate-with-flow/testicon.png) a **teszt** felül lehetőségre.
 
 A **teszt**kiválasztása után:
 

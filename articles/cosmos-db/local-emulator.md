@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539099"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441676"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -47,7 +47,7 @@ Az Azure Cosmos Emulator az alábbi hardver-és szoftver-követelményekkel rend
 
 * Szoftverkövetelmények
   * Windows Server 2012 R2, Windows Server 2016 vagy Windows 10
-  * 64 bites operációs rendszer
+  * 64 bites operációs rendszer esetén:
 * Minimális hardverkövetelmények
   * 2 GB RAM
   * 10 GB szabad merevlemez-terület
@@ -232,45 +232,48 @@ A telepítési helyről a parancssor segítségével elindíthatja és leállít
 
 ### <a name="command-line-syntax"></a>Parancssori szintaxis
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+    Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
-A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe /?` parancsot a parancssorba.
+A beállítások listájának megtekintéséhez írja be a `Microsoft.Azure.Cosmos.Emulator.exe /?` parancsot a parancssorba.
 
 |**Beállítás** | **Leírás** | **Parancs**| **Argumentumok**|
 |---|---|---|---|
-|[Nincsenek argumentumok] | Az alapértelmezett beállításokkal elindítja az Azure Cosmos Emulatort. |CosmosDB.Emulator.exe| |
-|[Súgó] |Megjeleníti a támogatott parancssori argumentumok listáját.|CosmosDB.Emulator.exe /? | |
-| GetStatus |Lekéri az Azure Cosmos Emulator állapotát. Az állapotot a kilépési kód jelzi: 1 = Indítás, 2 = Fut, 3 = Leállítva. A negatív kilépési kód azt jelzi, hogy hiba történt. Nem jön létre más kimenet. | CosmosDB.Emulator.exe /GetStatus| |
-| Leállítás| Leállítja az Azure Cosmos Emulatort.| CosmosDB.Emulator.exe /Shutdown | |
-|DataPath | Meghatározza az adatfájlok tárolására szolgáló elérési utat. Az alapértelmezett érték a%LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<adatútvonal\> | \<adatútvonal\>: Egy hozzáférhető elérési út |
-|Port | Az emulátorhoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: Egy portszám |
-| ComputePort | A számítási együttműködési átjáró szolgáltatáshoz használandó portszám megadása. Az átjáró HTTP-végpontjának mintavételi portja a következőképpen számítja ki: ComputePort + 79. Ezért a ComputePort és a ComputePort + 79 nyitva kell lennie és elérhetőnek kell lennie. Az alapértelmezett értékek: 8900, 8979. | CosmosDB. Emulator. exe/ComputePort = \<ComputePort\> | \<computeport\>: egyetlen portszám |
-| EnableMongoDbEndpoint | MongoDB API engedélyezése | CosmosDB. Emulator. exe/EnableMongoDbEndpoint | |
-| MongoPort | A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 10255. |CosmosDB. Emulator. exe/MongoPort = \<MongoPort\>|\<mongoport\>: Egy portszám|
-| EnableCassandraEndpoint | Engedélyezi a Cassandra API | CosmosDB. Emulator. exe/EnableCassandraEndpoint | |
-| CassandraPort | Megadja a Cassandra-végponthoz használandó portszámot. Az alapértelmezett érték a 10350. | CosmosDB. Emulator. exe/CassandraPort = \<CassandraPort\> | \<cassandraport\>: egyetlen portszám |
-| EnableGremlinEndpoint | Gremlin API engedélyezése | CosmosDB. Emulator. exe/EnableGremlinEndpoint | |
-| GremlinPort | A Gremlin-végponthoz használandó portszám. Az alapértelmezett érték a 8901. | CosmosDB. Emulator. exe/GremlinPort =\<port\> | \<port\>: Egy portszám |
-|EnableTableEndpoint | Az Azure Table API engedélyezése | CosmosDB. Emulator. exe/EnableTableEndpoint | |
-|TablePort | Az Azure Table végponthoz használandó portszám Az alapértelmezett érték a 8902. | CosmosDB. Emulator. exe/TablePort =\<port\> | \<port\>: Egy portszám|
-| KeyFile | Az engedélyezési kulcs olvasása a megadott fájlból. A/GenKeyFile kapcsoló használata a keyfile létrehozásához | CosmosDB. Emulator. exe/KeyFile =\<file_name\> | \<file_name\>: a fájl elérési útja |
-| ResetDataPath | A megadott elérési úton lévő összes fájl rekurzív eltávolítása. Ha nem ad meg elérési utat, az alapértelmezett érték a%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. Emulator. exe/ResetDataPath =\<útvonal > | \<Path\>: fájl elérési útja  |
-| StartTraces  |  Hibakeresési nyomkövetési naplók gyűjtésének megkezdése. | CosmosDB. Emulator. exe/StartTraces | |
-| StopTraces     | A hibakeresési nyomkövetési naplók gyűjtésének leállítása. | CosmosDB. Emulator. exe/StopTraces  | |
-|FailOnSslCertificateNameMismatch | Alapértelmezés szerint az emulátor újragenerálta az önaláírt SSL-tanúsítványt, ha a tanúsítvány SAN nem tartalmazza az emulátor tartományának nevét, a helyi IPv4-címeket, a "localhost" és a "127.0.0.1" értéket. Ha ezt a lehetőséget választja, az emulátor indításkor sikertelen lesz. Ezután a/GenCert lehetőség használatával hozzon létre és telepítsen egy új önaláírt SSL-tanúsítványt. | CosmosDB. Emulator. exe/FailOnSslCertificateNameMismatch  | |
-| GenCert | Új önaláírt SSL-tanúsítvány létrehozása és telepítése. szükség esetén a további DNS-nevek vesszővel tagolt listáját is megadhatja az emulátor hálózaton keresztüli eléréséhez. | CosmosDB. Emulator. exe/GenCert =\<DNS-nevek\> |\<DNS-nevek\>: a további DNS-nevek választható vesszővel tagolt listája  |
-| DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<közvetlen portok\> | \<közvetlen portok\>: 4 port vesszővel elválasztott listája |
-| Jelmagyarázat |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | CosmosDB.Emulator.exe /Key:\<kulcs\> | \<kulcs\>: A kulcsnak 64 bites vektor base-64 kódolásának kell lennie|
-| EnableRateLimiting | Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van. |CosmosDB.Emulator.exe /EnableRateLimiting | |
-| DisableRateLimiting |Megadja, hogy a kérelmek sebességét korlátozó viselkedés le van tiltva. |CosmosDB.Emulator.exe /DisableRateLimiting | |
-| NoUI | Az emulátor felhasználói felületének megjelenítése nélkül. | CosmosDB.Emulator.exe /NoUI | |
-| NoExplorer | Az adatkezelő nem jelenik meg az indításkor. |CosmosDB.Emulator.exe /NoExplorer | | 
-| PartitionCount | A particionált tárolók maximális számát határozza meg. További információt [a tárolók számának módosítása](#set-partitioncount) című témakörben talál. | CosmosDB.Emulator.exe /PartitionCount=\<partíciószám\> | \<partitioncount\>: engedélyezett egypartíciós tárolók maximális száma. Az alapértelmezett érték 25. Maximálisan 250 engedélyezett.|
-| DefaultPartitionCount| Meghatározza egy particionált tároló partícióinak alapértelmezett számát. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<alapértelmezett partíciószám\> | \<defaultpartitioncount\> alapértelmezett értéke 25.|
-| AllowNetworkAccess | Hozzáférést nyújt az emulátorhoz egy hálózaton keresztül. A /Key=\<kulcs_sztring\> vagy a /KeyFile=\<fájlnév\> parancsot is meg kell adnia a hálózati hozzáférés engedélyezéséhez. | CosmosDB. Emulator. exe/AllowNetworkAccess/Key =\<key_string\> vagy CosmosDB. Emulator. exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
-| NoFirewall | Ne módosítsa a tűzfalszabályok használatát, ha a/AllowNetworkAccess beállítás van használatban. |CosmosDB.Emulator.exe /NoFirewall | |
-| GenKeyFile | Új engedélyezési kulcsot készít, és a megadott fájlba menti azt. A létrehozott kulcs a /Key vagy a /KeyFile lehetőséggel használható. | CosmosDB. Emulator. exe/GenKeyFile =\<a kulcsfájl elérési útja\> | |
-| Konzisztencia | Állítsa be a fiók alapértelmezett konzisztenciaszintjét. | CosmosDB.Emulator.exe /Consistency=\<konzisztencia\> | \<konzisztencia\>: Az értéknek a következő [konzisztenciaszintek](consistency-levels.md) egyikének kell lennie: munkamenet (Session), erős (Strong), végleges (Eventual) vagy kötött elavulás (BoundedStaleness). Az alapértelmezett érték a munkamenet (session). |
+|[Nincsenek argumentumok] | Az alapértelmezett beállításokkal elindítja az Azure Cosmos Emulatort. |Microsoft. Azure. Cosmos. Emulator. exe| |
+|[Súgó] |Megjeleníti a támogatott parancssori argumentumok listáját.|Microsoft. Azure. Cosmos. Emulator. exe/? | |
+| GetStatus |Lekéri az Azure Cosmos Emulator állapotát. Az állapotot a kilépési kód jelzi: 1 = Indítás, 2 = Fut, 3 = Leállítva. A negatív kilépési kód azt jelzi, hogy hiba történt. Nem jön létre más kimenet. | Microsoft. Azure. Cosmos. Emulator. exe/GetStatus| |
+| Leállítás| Leállítja az Azure Cosmos Emulatort.| Microsoft. Azure. Cosmos. Emulator. exe/shutdown parancsot | |
+|DataPath | Meghatározza az adatfájlok tárolására szolgáló elérési utat. Az alapértelmezett érték a%LocalAppdata%\CosmosDBEmulator. | Microsoft. Azure. Cosmos. Emulator. exe/DataPath =\<DataPath\> | \<adatútvonal\>: Egy hozzáférhető elérési út |
+|Port | Az emulátorhoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 8081. |Microsoft. Azure. Cosmos. Emulator. exe/port =\<port\> | \<port\>: Egy portszám |
+| ComputePort | A számítási együttműködési átjáró szolgáltatáshoz használandó portszám megadása. Az átjáró HTTP-végpontjának mintavételi portja a következőképpen számítja ki: ComputePort + 79. Ezért a ComputePort és a ComputePort + 79 nyitva kell lennie és elérhetőnek kell lennie. Az alapértelmezett érték a 8900. | Microsoft. Azure. Cosmos. Emulator. exe/ComputePort =\<ComputePort\> | \<computeport\>: egyetlen portszám |
+| EnableMongoDbEndpoint = 3.2 | A MongoDB API 3,2-es verziójának engedélyezése | Microsoft. Azure. Cosmos. Emulator. exe/EnableMongoDbEndpoint = 3.2 | |
+| EnableMongoDbEndpoint = 3.6 | A MongoDB API 3,6-es verziójának engedélyezése | Microsoft. Azure. Cosmos. Emulator. exe/EnableMongoDbEndpoint = 3.6 | |
+| MongoPort | A MongoDB kompatibilitási API-hoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 10255. |Microsoft. Azure. Cosmos. Emulator. exe/MongoPort =\<MongoPort\>|\<mongoport\>: Egy portszám|
+| EnableCassandraEndpoint | Engedélyezi a Cassandra API | Microsoft. Azure. Cosmos. Emulator. exe/EnableCassandraEndpoint | |
+| CassandraPort | Megadja a Cassandra-végponthoz használandó portszámot. Az alapértelmezett érték a 10350. | Microsoft. Azure. Cosmos. Emulator. exe/CassandraPort =\<CassandraPort\> | \<cassandraport\>: egyetlen portszám |
+| EnableGremlinEndpoint | Gremlin API engedélyezése | Microsoft. Azure. Cosmos. Emulator. exe/EnableGremlinEndpoint | |
+| GremlinPort | A Gremlin-végponthoz használandó portszám. Az alapértelmezett érték a 8901. | Microsoft. Azure. Cosmos. Emulator. exe/GremlinPort =\<port\> | \<port\>: Egy portszám |
+|EnableTableEndpoint | Az Azure Table API engedélyezése | Microsoft. Azure. Cosmos. Emulator. exe/EnableTableEndpoint | |
+|TablePort | Az Azure Table végponthoz használandó portszám Az alapértelmezett érték a 8902. | Microsoft. Azure. Cosmos. Emulator. exe/TablePort =\<port\> | \<port\>: Egy portszám|
+| KeyFile | Az engedélyezési kulcs olvasása a megadott fájlból. A/GenKeyFile kapcsoló használata a keyfile létrehozásához | Microsoft. Azure. Cosmos. Emulator. exe/KeyFile =\<file_name\> | \<file_name\>: a fájl elérési útja |
+| ResetDataPath | A megadott elérési úton lévő összes fájl rekurzív eltávolítása. Ha nem ad meg elérési utat, az alapértelmezett érték a%LOCALAPPDATA%\CosmosDbEmulator | Microsoft. Azure. Cosmos. Emulator. exe/ResetDataPath =\<útvonal > | \<Path\>: fájl elérési útja  |
+| StartTraces  |  Hibakeresési nyomkövetési naplók gyűjtésének megkezdése a LOGMAN használatával. | Microsoft. Azure. Cosmos. Emulator. exe/StartTraces | |
+| StopTraces     | A hibakeresési nyomkövetési naplók gyűjtésének leállítása a LOGMAN használatával. | Microsoft. Azure. Cosmos. Emulator. exe/StopTraces  | |
+| StartWprTraces  |  A hibakeresési nyomkövetési naplók gyűjtésének megkezdése a Windows Teljesítményfigyelő eszközzel. | Microsoft. Azure. Cosmos. Emulator. exe/StartWprTraces | |
+| StopWprTraces     | A hibakeresési nyomkövetési naplók gyűjtésének leállítása a Windows Teljesítményfigyelő eszközzel. | Microsoft. Azure. Cosmos. Emulator. exe/StopWprTraces  | |
+|FailOnSslCertificateNameMismatch | Alapértelmezés szerint az emulátor újragenerálta az önaláírt SSL-tanúsítványt, ha a tanúsítvány SAN nem tartalmazza az emulátor tartományának nevét, a helyi IPv4-címeket, a "localhost" és a "127.0.0.1" értéket. Ha ezt a lehetőséget választja, az emulátor indításkor sikertelen lesz. Ezután a/GenCert lehetőség használatával hozzon létre és telepítsen egy új önaláírt SSL-tanúsítványt. | Microsoft. Azure. Cosmos. Emulator. exe/FailOnSslCertificateNameMismatch  | |
+| GenCert | Új önaláírt SSL-tanúsítvány létrehozása és telepítése. szükség esetén a további DNS-nevek vesszővel tagolt listáját is megadhatja az emulátor hálózaton keresztüli eléréséhez. | Microsoft. Azure. Cosmos. Emulator. exe/GenCert =\<DNS-nevek\> |\<DNS-nevek\>: a további DNS-nevek választható vesszővel tagolt listája  |
+| DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | Microsoft. Azure. Cosmos. Emulator. exe/DirectPorts:\<DirectPorts\> | \<közvetlen portok\>: 4 port vesszővel elválasztott listája |
+| Jelmagyarázat |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | Microsoft. Azure. Cosmos. Emulator. exe/Key:\<kulcs\> | \<kulcs\>: A kulcsnak 64 bites vektor base-64 kódolásának kell lennie|
+| EnableRateLimiting | Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van. |Microsoft. Azure. Cosmos. Emulator. exe/EnableRateLimiting | |
+| DisableRateLimiting |Megadja, hogy a kérelmek sebességét korlátozó viselkedés le van tiltva. |Microsoft. Azure. Cosmos. Emulator. exe/DisableRateLimiting | |
+| NoUI | Az emulátor felhasználói felületének megjelenítése nélkül. | Microsoft. Azure. Cosmos. Emulator. exe/NoUI | |
+| NoExplorer | Az adatkezelő nem jelenik meg az indításkor. |Microsoft. Azure. Cosmos. Emulator. exe/NoExplorer | | 
+| PartitionCount | A particionált tárolók maximális számát határozza meg. További információt [a tárolók számának módosítása](#set-partitioncount) című témakörben talál. | Microsoft. Azure. Cosmos. Emulator. exe/PartitionCount =\<PartitionCount\> | \<partitioncount\>: engedélyezett egypartíciós tárolók maximális száma. Az alapértelmezett érték 25. Maximálisan 250 engedélyezett.|
+| DefaultPartitionCount| Meghatározza egy particionált tároló partícióinak alapértelmezett számát. | Microsoft. Azure. Cosmos. Emulator. exe/DefaultPartitionCount =\<DefaultPartitionCount\> | \<defaultpartitioncount\> alapértelmezett értéke 25.|
+| AllowNetworkAccess | Hozzáférést nyújt az emulátorhoz egy hálózaton keresztül. A /Key=\<kulcs_sztring\> vagy a /KeyFile=\<fájlnév\> parancsot is meg kell adnia a hálózati hozzáférés engedélyezéséhez. | Microsoft. Azure. Cosmos. Emulator. exe/AllowNetworkAccess/Key =\<key_string\> vagy a Microsoft. Azure. Cosmos. Emulator. exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
+| NoFirewall | Ne módosítsa a tűzfalszabályok használatát, ha a/AllowNetworkAccess beállítás van használatban. |Microsoft. Azure. Cosmos. Emulator. exe/NoFirewall | |
+| GenKeyFile | Új engedélyezési kulcsot készít, és a megadott fájlba menti azt. A létrehozott kulcs a /Key vagy a /KeyFile lehetőséggel használható. | Microsoft. Azure. Cosmos. Emulator. exe/GenKeyFile =\<a kulcsfájl elérési útja\> | |
+| Konzisztencia | Állítsa be a fiók alapértelmezett konzisztenciaszintjét. | Microsoft. Azure. Cosmos. Emulator. exe/Consistency =\<konzisztencia\> | \<konzisztencia\>: Az értéknek a következő [konzisztenciaszintek](consistency-levels.md) egyikének kell lennie: munkamenet (Session), erős (Strong), végleges (Eventual) vagy kötött elavulás (BoundedStaleness). Az alapértelmezett érték a munkamenet (session). |
 | ? | A súgóüzenet megjelenítése.| | |
 
 ## <a id="set-partitioncount"></a>A tárolók számának módosítása
@@ -289,7 +292,7 @@ Az Azure Cosmos Emulatorban elérhető tárolók számának módosításához fu
 2. Törölje a mappában található összes Emulator-adat`%LOCALAPPDATA%\CosmosDBEmulator`.
 3. Az összes nyitott példány bezárásához kattintson a jobb gombbal a rendszertálcán lévő **Azure Cosmos DB Emulator** ikonra, majd kattintson a **Kilépés** lehetőségre. Az összes példány bezárása egy percig is eltarthat.
 4. Telepítse az [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator)legújabb verzióját.
-5. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Például: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
+5. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Például: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Az emulátor vezérlése
 
@@ -487,7 +490,7 @@ Végül a Windows rendszerű virtuális gépen a következő lehetőségek haszn
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatban felmerülő problémák elhárításához:
 
@@ -512,11 +515,11 @@ Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatb
 Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy rendszergazdai parancssorból:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown` kérdésre adott válaszban foglalt lépéseket. Figyelje meg a rendszertálcán, hogy a program leállt-e, mert ez egy percig is eltarthat. Egyszerűen kattintson a **Kilépés** lehetőségre az Azure Cosmos Emulator felhasználói felületén is.
-3. `CosmosDB.Emulator.exe /starttraces`
-4. `CosmosDB.Emulator.exe`
+2. `Microsoft.Azure.Cosmos.Emulator.exe /shutdown` kérdésre adott válaszban foglalt lépéseket. Figyelje meg a rendszertálcán, hogy a program leállt-e, mert ez egy percig is eltarthat. Egyszerűen kattintson a **Kilépés** lehetőségre az Azure Cosmos Emulator felhasználói felületén is.
+3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
+4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. Hozza létre ismét a problémát. Ha az Adatkezelő nem működik, csak néhány másodpercig kell megnyitnia a böngészőt a hiba megtalálásához.
-5. `CosmosDB.Emulator.exe /stoptraces`
+5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
 6. Keresse meg a `%ProgramFiles%\Azure Cosmos DB Emulator` mappát, és keresse meg a docdbemulator_000001.etl fájlt.
 7. Küldje el az [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) címre az .etl fájlt a reprodukálás lépéseivel együtt a hibakereséshez.
 

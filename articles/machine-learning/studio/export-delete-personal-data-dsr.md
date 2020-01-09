@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9d17ff38ad521dcc282be4f06d33021faeb495b8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427591"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Terméken belüli felhasználói adatok exportálása és törlése Azure Machine Learning Studio (klasszikus)
 
@@ -70,8 +70,8 @@ A felhasználók a teljes munkaterületet is törölhetik:
 ![Ingyenes munkaterület törlése Machine Learning Studio (klasszikus)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-classic-data-with-powershell"></a>Studio-(klasszikus) adatexportálás a PowerShell-lel
-A PowerShell használatával az összes adatot egy hordozható formátumba exportálhatja a Azure Machine Learning Studio klasszikus verziójából a parancsokkal. További információ: [Azure Machine learning Studio (klasszikus) PowerShell-modulja](powershell-module.md) .
+A PowerShell használatával az összes adatát hordozható formátumba exportálhatja Azure Machine Learning Studio (klasszikus) parancsokkal. További információ: [Azure Machine learning Studio (klasszikus) PowerShell-modulja](powershell-module.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A webszolgáltatásokra és a kötelezettségvállalási terv számlázására vonatkozó dokumentációért lásd: [Azure Machine learning Studio (klasszikus) REST API-hivatkozás](https://docs.microsoft.com/rest/api/machinelearning/). 

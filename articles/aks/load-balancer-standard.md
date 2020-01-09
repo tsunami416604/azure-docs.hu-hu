@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430824"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk azt feltételezi, hogy van egy AK-fürt a *standard* SKU Azure Load Balancer. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
@@ -54,6 +54,10 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * A terheléselosztó SKU definiálása csak akkor hajtható végre, ha AK-fürtöt hoz létre. Egy AK-fürt létrehozása után nem módosíthatja a terheléselosztó SKU-t.
 * Egyetlen fürtben csak egyetlen típusú terheléselosztó SKU-t (alapszintű vagy standard) használhat.
 * *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
+
+## <a name="use-the-standard-sku-load-balancer"></a>A *standard* SKU Load Balancer használata
+
+Ha egy AK-fürtöt hoz létre, a rendszer alapértelmezés szerint a *standard* SKU Load balancert használja, amikor szolgáltatásokat futtat a fürtben. Az [Azure CLI][aks-quickstart-cli] -t használó rövid útmutató például telepíti a *standard* SKU Load balancert használó minta alkalmazást. 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>A terheléselosztó belső beállítása
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 A példában a kimenetben a *AllocatedOutboundPorts* 0. A *AllocatedOutboundPorts* értéke azt jelenti, hogy a SNAT-portok kiosztása a háttérbeli készlet méretétől függően automatikus hozzárendelésre áll. További részletekért tekintse [meg az Azure-ban][azure-lb-outbound-connections] [Load Balancer kimenő][azure-lb-outbound-rules] és kimenő kapcsolatokat.
 
+## <a name="restrict-access-to-specific-ip-ranges"></a>Meghatározott IP-tartományokhoz való hozzáférés korlátozása
+
+A terheléselosztó virtuális hálózatához társított hálózati biztonsági csoport (NSG) alapértelmezés szerint rendelkezik egy olyan szabállyal, amely engedélyezi az összes bejövő külső forgalmat. Ezt a szabályt úgy frissítheti, hogy csak adott IP-tartományokat engedélyezzen a bejövő forgalom számára. A következő jegyzékfájl a *loadBalancerSourceRanges* -t használja a bejövő külső forgalomhoz tartozó új IP-címtartomány megadásához:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+A fenti példa frissíti a szabályt úgy, hogy csak a *MY_EXTERNAL_IP_RANGE* tartomány bejövő külső forgalmát engedélyezze. Az ezzel a módszerrel a terheléselosztó szolgáltatáshoz való hozzáférés korlátozására vonatkozó további információk a [Kubernetes dokumentációjában][kubernetes-cloud-provider-firewall]találhatók.
+
 ## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

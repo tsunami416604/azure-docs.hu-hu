@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 82c1159aca51bc30839f5380a414bd2b3b488bb8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446674"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API használatávalC#
 
@@ -41,7 +41,7 @@ Ez a rövid útmutató bemutatja, hogyan tölthet fel egy rendszerképet a Bing 
     using System.Collections.Generic;
     ```
 
-2. Adja meg a feltölteni kívánt rendszerképhez tartozó előfizetési kulcs, végpont és elérési út változóit:
+2. Adja meg a feltölteni kívánt rendszerképhez tartozó előfizetési kulcs, végpont és elérési út változóit. `uriBase` lehet az alábbi globális végpont, vagy az erőforrás Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -267,7 +267,7 @@ Cserélje le a `BingImageSearch` metódust a következő kódra:
         }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

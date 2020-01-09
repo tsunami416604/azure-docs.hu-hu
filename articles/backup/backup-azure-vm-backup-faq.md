@@ -4,18 +4,18 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172563"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680528"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
 Ez a cikk az Azure-beli virtuális gépek [Azure Backup](backup-introduction-to-azure-backup.md) szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Milyen virtuálisgép-rendszerképeket lehet engedélyezni a biztonsági mentéshez, amikor létrehozom őket?
 
@@ -29,15 +29,15 @@ Nem. A biztonsági mentési költségek elkülönül a virtuális gép költség
 
 Ha Ön virtuálisgép-közreműködő, akkor engedélyezheti a biztonsági mentést a virtuális gépen. Ha egyéni szerepkört használ, a következő engedélyekkel engedélyezheti a biztonsági mentést a virtuális gépen:
 
-- Microsoft.RecoveryServices/Vaults/write
-- Microsoft.RecoveryServices/Vaults/read
-- Microsoft.RecoveryServices/locations/*
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write
+- Microsoft. Recoveryservices szolgáltatónál/tárolók/írás
+- Microsoft. Recoveryservices szolgáltatónál/tárolók/olvasás
+- Microsoft. Recoveryservices szolgáltatónál/Locations/*
+- Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/*/READ
+- Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/READ
+- Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/Write
+- Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/Write
+- Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/READ
+- Microsoft. Recoveryservices szolgáltatónál/tárolók/backupPolicies/írás
 
 Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokat tartalmaz, győződjön meg arról, hogy rendelkezik írási engedéllyel a Recovery Services-tároló erőforráscsoporthoz.  
 
@@ -111,16 +111,9 @@ Használhatja a lemez visszaállítása lehetőséget, ha a következőket kív�
 
 Igen, használhat olyan biztonsági másolatokat, amelyeket a lemezek a nem felügyelt állapotból felügyelt rendszerbe való migrálása előtt készítettek.
 
-- Alapértelmezés szerint a Restore VM-feladatok nem felügyelt virtuális gépet hoznak létre.
-- Azonban visszaállíthatja a lemezeket, és felhasználhatja őket egy felügyelt virtuális gép létrehozásához.
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Hogyan lehet visszaállítani egy virtuális gépet egy, a virtuális gép felügyelt lemezekre történő migrálását megelőző visszaállítási pontra?
 
-Alapértelmezés szerint a visszaállítási virtuálisgép-feladatok létrehoznak egy nem felügyelt lemezekkel rendelkező virtuális gépet. Virtuális gép létrehozása felügyelt lemezekkel:
-
-1. [Visszaállítás a nem felügyelt lemezekre](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [Konvertálja a visszaállított lemezeket a felügyelt lemezekre](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [Hozzon létre egy virtuális gépet a Managed Disks szolgáltatással](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+A visszaállítási folyamat változatlan marad. Ha a helyreállítási pont olyan időpontra van állítva, amikor a virtuális gép nem felügyelt lemezekkel rendelkezik, a [lemezeket nem felügyelt állapotba állíthatja vissza](tutorial-restore-disk.md#unmanaged-disks-restore). Ha a virtuális gép felügyelt lemezekkel rendelkezik, akkor a [lemezeket felügyelt lemezként állíthatja vissza](tutorial-restore-disk.md#managed-disk-restore). Ezután [létrehozhat egy virtuális gépet ezekből a lemezekről](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 [További](backup-azure-vms-automation.md#restore-an-azure-vm) információ a PowerShellben való használatáról.
 

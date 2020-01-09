@@ -1,6 +1,6 @@
 ---
-title: Munkafolyamatok létrehozása sablonokból
-description: Munkafolyamatok gyorsabb létrehozása a Logic app-sablonok használatával Azure Logic Apps
+title: Logikai alkalmazás-munkafolyamatok gyors létrehozása előre elkészített sablonok használatával
+description: Logikai alkalmazások munkafolyamatainak gyors létrehozása a Azure Logic Apps által biztosított előre összeállított sablonok használatával
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793182"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666822"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazások munkafolyamatainak létrehozása előre elkészített sablonokból
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
 ## <a name="create-logic-apps-from-templates"></a>Logikai alkalmazások létrehozása sablonokból
 
-1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com "Azure Portal").
+1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com "Azure portál").
 
 2. Az Azure fő menüjéből válassza az **Erőforrás létrehozása** > **Enterprise Integration** > **Logic App** elemet.
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    | ------- | ----- | ----------- | 
    | **Name (Név)** | *a-logikai-alkalmazása-neve* | Adjon meg egy egyedi nevet a logikai alkalmazás számára. | 
    | **Előfizetés** | *az-Ön-Azure-előfizetésének-neve* | Válassza ki a használni kívánt Azure-előfizetést. | 
-   | **Erőforráscsoport** | *az-Ön-Azure-erőforráscsoportjának-neve* | Hozzon létre vagy válasszon ki egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) ehhez a logikai alkalmazáshoz, és rendezze az ehhez az alkalmazáshoz társított összes erőforrást. | 
+   | **Erőforráscsoport** | *az-Ön-Azure-erőforráscsoportjának-neve* | Hozzon létre vagy válasszon ki egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) ehhez a logikai alkalmazáshoz, és rendezze az ehhez az alkalmazáshoz társított összes erőforrást. | 
    | **Hely** | *az-Ön-Azure-adatközpont-régiója* | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez, például az USA nyugati régióját. | 
    | **Log Analytics** | **Kikapcsolva** (alapértelmezett **) vagy** | A logikai alkalmazás [diagnosztikai naplózásának](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) bekapcsolása [Azure monitor naplókon](../log-analytics/log-analytics-overview.md)keresztül. A használatához már van Log Analytics munkaterület. | 
    |||| 
@@ -99,7 +99,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
 ## <a name="update-logic-apps-with-templates"></a>Logikai alkalmazások frissítése sablonokkal
 
-1. A [Azure Portal](https://portal.azure.com "Azure Portal")a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást.
+1. A [Azure Portal](https://portal.azure.com "Azure portál")a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást.
 
 2. A tervező eszköztárán válassza a **sablonok**lehetőséget. Ez a művelet elveti a nem mentett módosításokat, ezért megjelenik egy figyelmeztető üzenet, amely megerősíti, hogy folytatja a műveletet. A megerősítéshez kattintson **az OK gombra**. Példa:
 

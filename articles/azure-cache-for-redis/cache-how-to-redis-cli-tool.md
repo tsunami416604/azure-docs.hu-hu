@@ -1,17 +1,17 @@
 ---
 title: A Redis-CLI használata az Azure cache használatával a Redis
-description: Ismerje meg, hogyan használhatja a Redis-CLI-t az Azure cache használatával a Redis.
+description: Megtudhatja, hogyan használhatja a *Redis-CLI. exe* parancssori eszközt az Redis-hez készült Azure cache-vel való interakcióhoz.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: yegu
-ms.openlocfilehash: 510110a201e943b8ffce07fc7d0de1361264ae62
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412673"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>A Redis parancssori eszköz használata az Azure cache használatával a Redis
 
@@ -19,7 +19,7 @@ a *Redis-CLI. exe* egy népszerű parancssori eszköz, amely egy Azure cache-t b
 
 Az eszköz a Windows-platformokhoz is elérhető a [Windows Redis parancssori eszközeinek](https://github.com/MSOpenTech/redis/releases/)letöltésével. 
 
-Ha egy másik platformon szeretné futtatni a parancssori eszközt, töltse le az Azure cache-t a Redis [https://redis.io/downloadról ](https://redis.io/download).
+Ha egy másik platformon szeretné futtatni a parancssori eszközt, töltse le az Azure cache-t a Redis [https://redis.io/download ról ](https://redis.io/download).
 
 ## <a name="gather-cache-access-information"></a>Gyorsítótár-hozzáférési információk összegyűjtése
 
@@ -29,7 +29,7 @@ A gyorsítótár eléréséhez a következő három módszer használatával gy�
 
 1. Azure CLI [az az Redis List-Keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) használatával
 2. Azure PowerShell a [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey) használatával
-3. A Azure Portal használata.
+3. Az Azure Portalon.
 
 Ebben a szakaszban a kulcsokat a Azure Portal fogja lekérni.
 
@@ -85,7 +85,7 @@ redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Redis- [konzolnak](cache-configure.md#redis-console) a parancsok kiküldéséhez való használatáról.
 

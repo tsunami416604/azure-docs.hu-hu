@@ -1,25 +1,16 @@
 ---
-title: Az Azure Service Fabric önálló fürt konfigurálása | Microsoft Docs
+title: Az Azure Service Fabric önálló fürt konfigurálása
 description: Ismerje meg, hogyan konfigurálhatja önálló vagy helyszíni Azure Service Fabric-fürtöt.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458373"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Önálló Windows-fürt konfigurációs beállításai
 Ez a cikk egy önálló Azure Service Fabric-fürt konfigurációs beállításait ismerteti, amelyek a *ClusterConfig. JSON* fájlban állíthatók be. Ezzel a fájllal adhatja meg a fürt csomópontjaival, a biztonsági konfigurációkkal, valamint a hálózati topológiával kapcsolatos információkat a hibák és a frissítési tartományok tekintetében.  A konfigurációs beállítások módosítása vagy hozzáadása után [létrehozhat egy önálló fürtöt](service-fabric-cluster-creation-for-windows-server.md) , vagy [frissítheti egy önálló fürt konfigurációját](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -74,10 +65,10 @@ Egy Service Fabric fürtnek legalább három csomópontot kell tartalmaznia. A b
 | **Csomópont-konfiguráció** | **Leírás** |
 | --- | --- |
 | Csomópontnév |Bármilyen felhasználóbarát nevet adhat a csomópontnak. |
-| IP-cím |A csomópont IP-címének megkereséséhez nyisson meg egy parancssorablakot, és írja be a `ipconfig` kifejezést. Jegyezze fel az IPV4-címeket, és rendelje hozzá az IP-cím változóhoz. |
+| IP-cím |A csomópont IP-címének megkereséséhez nyisson meg egy parancssori ablakot, és írja be a `ipconfig`. Jegyezze fel az IPV4-címeket, és rendelje hozzá az IP-cím változóhoz. |
 | nodeTypeRef |Mindegyik csomóponthoz egy másik csomópont-típus rendelhető. A [csomópontok típusai](#node-types) a következő szakaszban vannak meghatározva. |
-| faultDomain |A tartalék tartományok lehetővé teszik a fürt rendszergazdái számára a közös fizikai függőségek miatti feladatátvételt okozó fizikai csomópontok definiálását. |
-| upgradeDomain |A frissítési tartományok olyan csomópont-készleteket határoznak meg, amelyek a Service Fabric frissítéseinek egy időben történő leállításakor állnak le. Kiválaszthatja, hogy mely csomópontok legyenek hozzárendelve a frissítési tartományokhoz, mert nem korlátozzák semmilyen fizikai követelményt. |
+| FaultDomain |A tartalék tartományok lehetővé teszik a fürt rendszergazdái számára a közös fizikai függőségek miatti feladatátvételt okozó fizikai csomópontok definiálását. |
+| UpgradeDomain |A frissítési tartományok olyan csomópont-készleteket határoznak meg, amelyek a Service Fabric frissítéseinek egy időben történő leállításakor állnak le. Kiválaszthatja, hogy mely csomópontok legyenek hozzárendelve a frissítési tartományokhoz, mert nem korlátozzák semmilyen fizikai követelményt. |
 
 ## <a name="cluster-properties"></a>Fürt tulajdonságai
 A ClusterConfig. JSON tulajdonságok szakasza a fürt konfigurálására szolgál a következő ábrán látható módon:
@@ -156,7 +147,7 @@ A név az adott csomópont típusának rövid neve. A csomópont típusú csomó
 * a leaseDriverEndpointPort az a port, amelyet a fürt címbérletének illesztőprogramja használ annak megállapítására, hogy a csomópontok továbbra is aktívak-e. 
 * a serviceConnectionEndpointPort a csomóponton telepített alkalmazások és szolgáltatások által használt port, amely az adott csomóponton lévő Service Fabric ügyféllel folytatott kommunikációra szolgál.
 * a httpGatewayEndpointPort az Service Fabric Explorer által a fürthöz való csatlakozáshoz használt port.
-* a az ephemeralports felülbírálja az [operációs rendszer által használt dinamikus portokat](https://support.microsoft.com/kb/929851). Service Fabric a portok egy részét használja az alkalmazás portjaiként, és a fennmaradók elérhetők az operációs rendszer számára. Ez a tartomány az operációs rendszerben található meglévő tartományhoz is leképezhető, így az összes célra használhatja a JSON-fájlokban megadott tartományokat. Győződjön meg arról, hogy a kezdő és a záró portok közötti különbség legalább 255. Előfordulhat, hogy ütközések merülhetnek fel, ha a különbség túl alacsony, mert ez a tartomány meg van osztva az operációs rendszerrel. A konfigurált Dinamikus porttartomány megjelenítéséhez futtassa a `netsh int ipv4 show dynamicport tcp` parancsot.
+* a az ephemeralports felülbírálja az [operációs rendszer által használt dinamikus portokat](https://support.microsoft.com/kb/929851). Service Fabric a portok egy részét használja az alkalmazás portjaiként, és a fennmaradók elérhetők az operációs rendszer számára. Ez a tartomány az operációs rendszerben található meglévő tartományhoz is leképezhető, így az összes célra használhatja a JSON-fájlokban megadott tartományokat. Győződjön meg arról, hogy a kezdő és a záró portok közötti különbség legalább 255. Előfordulhat, hogy ütközések merülhetnek fel, ha a különbség túl alacsony, mert ez a tartomány meg van osztva az operációs rendszerrel. A konfigurált Dinamikus porttartomány megtekintéséhez futtassa `netsh int ipv4 show dynamicport tcp`.
 * a applicationPorts a Service Fabric-alkalmazások által használt portok. Az alkalmazás portszámának elég nagynak kell lennie ahhoz, hogy le lehessen fedni az alkalmazások végponti követelményeit. Ez a tartomány nem lehet a számítógép Dinamikus porttartomány, azaz a konfigurációban beállított az ephemeralports-tartomány. Service Fabric ezeket a portokat használja, amikor új portokra van szükség, és gondoskodik a portok tűzfalának megnyitásáról. 
 * a reverseProxyEndpointPort egy nem kötelező fordított proxy végpont. További információ: [Service Fabric fordított proxy](service-fabric-reverseproxy.md). 
 

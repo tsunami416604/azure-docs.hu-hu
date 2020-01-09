@@ -2,19 +2,16 @@
 title: Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 description: Ez a cikk áttekintést nyújt a Azure Automation Update Management használatáról az Azure-beli és nem Azure-beli virtuális gépek frissítéseinek és javításának kezeléséhez.
 services: automation
-author: mgoedtel
-ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/03/2019
-ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 44372f32227bbfef46a72afa6f9b0bd88b29905b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420648"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -200,7 +197,7 @@ A **frissítési központi telepítések** programozott módon is létrehozható
 
 Miután az ütemezett telepítés elindult, a **Frissítéskezelés** panel **Frissítéstelepítések** lapján láthatóvá válik a telepítés állapota. Ha a telepítés fut, az állapota **Folyamatban** lesz. A telepítés befejezése után, ha az sikeresnek bizonyult, **Sikeres** állapotúra változik. Ha a telepítésben lévő frissítések közül egy vagy több meghiúsul, az állapota **Részben sikertelen**.
 
-Ha kiválasztja a befejezett frissítéstelepítést, az megjelenik az adott frissítéstelepítés irányítópultja.
+Ha kiválasztja a befejezett frissítéstelepítést, megjelenik az adott frissítéstelepítés irányítópultja.
 
 ![Adott telepítés frissítéstelepítési állapotának irányítópultja](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 

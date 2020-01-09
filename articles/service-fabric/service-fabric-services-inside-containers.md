@@ -1,29 +1,19 @@
 ---
 title: Azure Service Fabric-szolgáltatások tárolóba helyezése Windows rendszeren
 description: Ismerje meg, hogyan tárolóba helyezése a Service Fabric Reliable Services és a Reliable Actors szolgáltatások Windows rendszeren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466185"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és a Reliable Actors tárolóba helyezése Windows rendszeren
 
-Service Fabric támogatja a containerizing Service Fabric-szolgáltatásait (Reliable Services és a megbízható Actor-alapú szolgáltatásokat). További információt a [Service Fabric](service-fabric-containers-overview.md)-tárolók című témakörben talál.
+Service Fabric támogatja a containerizing Service Fabric-szolgáltatásait (Reliable Services és a megbízható Actor-alapú szolgáltatásokat). További információt a [Service Fabric-tárolók](service-fabric-containers-overview.md)című témakörben talál.
 
 Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli futtatásához.
 
@@ -55,7 +45,7 @@ Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli f
           {
    ```
 
-4. Készítse [](service-fabric-package-apps.md#Package-App) elő és csomagolja ki a projektet. A csomagok létrehozásához és létrehozásához kattintson a jobb gombbal az alkalmazás projektre Megoldáskezelő, majd válassza a **csomag** parancsot.
+4. Készítse elő és [csomagolja](service-fabric-package-apps.md#Package-App) ki a projektet. A csomagok létrehozásához és létrehozásához kattintson a jobb gombbal az alkalmazás projektre Megoldáskezelő, majd válassza a **csomag** parancsot.
 
 5. Minden tárolóba helyezése szükséges kód esetén futtassa a [CreateDockerPackage. Ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)PowerShell-szkriptet. A használat a következő:
 
@@ -73,9 +63,9 @@ Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli f
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      A szkript létrehoz egy mappát Docker-összetevőkkel a következő helyen: $dockerPackageOutputDirectoryPath. Módosítsa a generált Docker `expose` bármely portra, futtassa a telepítési parancsfájlokat, és így tovább. igényei alapján.
+      A szkript létrehoz egy mappát Docker-összetevőkkel a következő helyen: $dockerPackageOutputDirectoryPath. Módosítsa a generált Docker a portok `expose`éhez, futtassa a telepítési parancsfájlokat, és így tovább. igényei alapján.
 
-6. Ezután [létre](service-fabric-get-started-containers.md#Build-Containers) kell hoznia és [le](service-fabric-get-started-containers.md#Push-Containers) kell küldenie a Docker-tároló csomagot a tárházba.
+6. Ezután [létre](service-fabric-get-started-containers.md#Build-Containers) kell hoznia és le kell küldenie a Docker [-tároló](service-fabric-get-started-containers.md#Push-Containers) csomagot a tárházba.
 
 7. A ApplicationManifest. XML és a ServiceManifest. xml fájl módosításával adja hozzá a tároló képét, a tárház adatait, a beállításjegyzék-hitelesítést és a port – gazdagép megfeleltetést. A jegyzékfájlok módosításához tekintse meg az [Azure Service Fabric Container-alkalmazás létrehozása](service-fabric-get-started-containers.md)című témakört. A szolgáltatás jegyzékfájljában a csomag definícióját a megfelelő tároló képével kell helyettesíteni. Győződjön meg arról, hogy a BelépésiPont ContainerHost-típusra módosítja.
 
@@ -147,6 +137,6 @@ Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli f
 
 Most már rendelkeznie kell egy, a fürtöt futtató, tárolóban Service Fabric alkalmazással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-get-started-containers.md).
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

@@ -4,15 +4,15 @@ description: Ez a cikk részletesen ismerteti a Linux rendszerhez készült Log 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395835"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Teljesítményszámlálók gyűjtése a Azure Monitor linuxos alkalmazásaihoz 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -76,9 +76,9 @@ A következő táblázat részletesen ismerteti a mycimprovauth használatának 
 | *hamis vagy igaz* értékű AutoUpdate | mycimprovauth AutoUpdate false | Megadja, hogy a hitelesítési fájl frissítése automatikusan megtörténjen-e az újraindítás vagy a frissítés során. |
 | alapértelmezett *kötési Felhasználónév jelszava* | mycimprovauth alapértelmezett 127.0.0.1 root pwd | Beállítja az alapértelmezett példányt a MySQL-t használó hitelesítési fájlban.<br>A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű. |
 | *alapértelmezett vagy port_num* törlése | mycimprovauth 3308 | A megadott példány törlése alapértelmezett vagy portszám alapján. |
-| segítség | mycimprov Súgó | Kinyomtatja a használni kívánt parancsok listáját. |
-| Nyomtatási | mycimprov nyomtatása | Kinyomtat egy könnyen olvasható MySQL-alapú hitelesítési fájlt. |
-| port_num *-kötési Felhasználónév jelszavának* frissítése | mycimprov frissítés 3307 127.0.0.1 root pwd | Frissíti a megadott példányt, vagy hozzáadja a példányt, ha az nem létezik. |
+| Súgó | mycimprov Súgó | Kinyomtatja a használni kívánt parancsok listáját. |
+| nyomtatás | mycimprov nyomtatása | Kinyomtat egy könnyen olvasható MySQL-alapú hitelesítési fájlt. |
+| a *kötési Felhasználónév jelszavának* frissítése port_num | mycimprov frissítés 3307 127.0.0.1 root pwd | Frissíti a megadott példányt, vagy hozzáadja a példányt, ha az nem létezik. |
 
 A következő példában szereplő parancsok egy alapértelmezett felhasználói fiókot határoznak meg a MySQL-kiszolgálóhoz a localhost-on.  A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű.
 
@@ -94,7 +94,7 @@ A MySQL-felhasználónak hozzá kell férnie a következő lekérdezésekhez a M
 
 A MySQL-felhasználónak emellett a következő alapértelmezett táblákhoz is meg kell adnia a hozzáférést.
 
-- entitástulajdonos
+- information_schema
 - MySQL. 
 
 Ezek a jogosultságok a következő engedélyezési parancsok futtatásával adhatók meg.

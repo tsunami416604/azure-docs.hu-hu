@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 5edda76503ab1632c5f48728a3d403555452c711
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 36788f513a44f910e1d8b3f04be654996f23216a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444267"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Adatok másolása és átmásolása az IBM Informix-adattárakba Azure Data Factory használatával
 
@@ -38,7 +38,7 @@ Az Informix-összekötő használatához a következőket kell tennie:
 - Saját üzemeltetésű Integration Runtime beállítása. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
 - Telepítse az Informix ODBC-illesztőt az adattárhoz a Integration Runtime gépen. Használhatja például az "IBM INFORMIX Informix-illesztőprogram (64-bit)" illesztőprogramot.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -51,7 +51,7 @@ Az Informix társított szolgáltatás a következő tulajdonságokat támogatja
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **Informix** | Igen |
-| connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia).<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).| Igen |
+| connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia). <br> A Azure Key Vaultban jelszót is beállíthat, és lekérheti a `password` konfigurációját a kapcsolatok karakterláncán kívülre. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) ban című témakört.| Igen |
 | authenticationType | Az Informix-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
 | userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
@@ -66,10 +66,7 @@ Az Informix társított szolgáltatás a következő tulajdonságokat támogatja
     "properties": {
         "type": "Informix",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<Informix connection string or DSN>"
-            },
+            "connectionString": "<Informix connection string or DSN>",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {

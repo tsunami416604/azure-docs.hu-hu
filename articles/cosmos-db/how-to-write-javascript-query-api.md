@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092882"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441713"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Tárolt eljárások és triggerek írása a Azure Cosmos DBban a JavaScript lekérdezési API használatával
 
@@ -19,10 +19,10 @@ A Azure Cosmos DB lehetővé teszi, hogy az optimalizált lekérdezéseket egy F
 
 ## <a id="stored-procedures"></a>Tárolt eljárás a JavaScript lekérdezési API használatával
 
-A következő mintakód azt szemlélteti, hogyan használható a JavaScript lekérdezési API egy tárolt eljárás kontextusában. A tárolt eljárás beszúr egy bemeneti paraméter által megadott Azure Cosmos-elemeket, és frissíti a metaadat-dokumentumot a `__.filter()` metódussal, a minSize, a maxSize és a totalSize használatával a bemeneti elem méret tulajdonsága alapján.
+A következő mintakód azt szemlélteti, hogyan használható a JavaScript lekérdezési API egy tárolt eljárás kontextusában. A tárolt eljárás beszúr egy bemeneti paraméter által megadott Azure Cosmos-elemeket, és frissíti a metaadat-dokumentumot a `__.filter()` metódus használatával, a minSize, a maxSize és a totalSize a bemeneti elem méret tulajdonsága alapján.
 
 > [!NOTE]
-> `__`(dupla aláhúzás) a JavaScript lekérdezési API `getContext().getCollection()` használatakor használt alias.
+> a `__` (dupla aláhúzás) a JavaScript lekérdezési API használatakor `getContext().getCollection()` alias.
 
 ```javascript
 /**
@@ -78,7 +78,7 @@ function insertDocumentAndUpdateMetadata(item) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekből megtudhatja, hogyan használhatók a tárolt eljárások, eseményindítók és a felhasználó által definiált függvények a Azure Cosmos DBban:
 
@@ -86,7 +86,7 @@ A következő cikkekből megtudhatja, hogyan használhatók a tárolt eljáráso
 
 * [Tárolt eljárások regisztrálása és használata Azure Cosmos DBban](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures)
 
-* Az eseményindítók és az [](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) eseményindítók regisztrálása [](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) és használata a Azure Cosmos DBban
+* Az [Eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és az [Eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) regisztrálása és használata a Azure Cosmos DBban
 
 * [Felhasználó által definiált függvények regisztrálása és használata Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs)
 

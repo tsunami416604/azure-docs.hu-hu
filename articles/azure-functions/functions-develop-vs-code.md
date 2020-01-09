@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975584"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667541"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -94,10 +94,6 @@ Ezen a ponton bemeneti és kimeneti kötéseket adhat hozzá a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
@@ -105,6 +101,10 @@ A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-Egy új mappa jön létre a projektben. A mappa egy új function. JSON fájlt és az új JavaScript-kódrészletet tartalmaz.
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 A projekthez új C# Class Library (. cs) fájl van hozzáadva.
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+Egy új mappa jön létre a projektben. A mappa egy új function. JSON fájlt és az új JavaScript-kódrészletet tartalmaz.
 
 ---
 
@@ -129,6 +129,24 @@ A projekthez új C# Class Library (. cs) fájl van hozzáadva.
 A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával. A kötések hozzáadásának folyamata a projekt nyelvétől függ. További információ a kötésekről: [Azure functions eseményindítók és kötések fogalmai](functions-triggers-bindings.md).
 
 Az alábbi példák egy `outqueue`nevű tárolási várólistához csatlakoznak, ahol a Storage-fiók kapcsolati karakterlánca a local. Settings. JSON fájl `MyStorageConnection` alkalmazás beállításában van beállítva.
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus definícióhoz:
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+A kódnak a következő `using` utasítást kell hozzáadnia:
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Egy vagy több üzenetet ad hozzá a gyűjteményhez. Ezeket az üzeneteket a rendszer a függvény befejeződése után elküldi a várólistára.
+
+További információt a [várólista-tároló kimeneti kötési](functions-bindings-storage-queue.md#output---c-example) dokumentációjában talál.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -144,7 +162,7 @@ A következő példa arra kéri, hogy adjon meg egy új tárolási kimeneti köt
 | **Kötés kijelölése iránysal** | `Azure Queue Storage` | A kötés egy Azure Storage-várólista kötése. |
 | **A kódban a kötés azonosítására használt név** | `msg` | A kódban hivatkozott kötési paramétert azonosító név. |
 | **Az az üzenetsor, amelybe az üzenet el lesz küldve** | `outqueue` | Annak a sornak a neve, amelyet a kötés ír. Ha a *queueName* nem létezik, a kötés létrehozza az első használatkor. |
-| **Válassza a beállítás a következőből: "local. Setting. JSON"** | `MyStorageConnection` | A Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. A `AzureWebJobsStorage` beállítás a Function alkalmazással létrehozott Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazza. |
+| **Válassza a beállítás elemet a "local. Settings. JSON" fájlból.** | `MyStorageConnection` | A Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazó Alkalmazásbeállítás neve. A `AzureWebJobsStorage` beállítás a Function alkalmazással létrehozott Storage-fiókhoz tartozó kapcsolatok karakterláncát tartalmazza. |
 
 Ebben a példában az alábbi kötést adja hozzá a function. JSON fájlban lévő `bindings` tömbhöz:
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 További információért lásd a várólista- [tároló kimeneti kötési](functions-bindings-storage-queue.md#output---javascript-example) referenciáját.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus definícióhoz:
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-A kódnak a következő `using` utasítást kell hozzáadnia:
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Egy vagy több üzenetet ad hozzá a gyűjteményhez. Ezeket az üzeneteket a rendszer a függvény befejeződése után elküldi a várólistára.
-
-További információt a [várólista-tároló kimeneti kötési](functions-bindings-storage-queue.md#output---c-example) dokumentációjában talál.
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

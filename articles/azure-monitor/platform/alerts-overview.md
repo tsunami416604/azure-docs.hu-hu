@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396522"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -184,23 +184,23 @@ A riasztási példányok felhasználása és kezelése megköveteli, hogy a felh
 
 Előfordulhat, hogy programozott módon kívánja lekérdezni az előfizetéssel létrehozott riasztásokat. Előfordulhat, hogy a Azure Portalon kívül egyéni nézeteket is létre kell hoznia, vagy elemezni kell a riasztásokat a minták és trendek azonosításához.
 
-Az előfizetésekhez kapcsolódó riasztásokat a [Alert Management REST API](https://aka.ms/alert-management-api) vagy a [riasztások Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)használatával lehet lekérdezni.
+Az előfizetésekhez kapcsolódó riasztásokat a [Alert Management REST API](https://aka.ms/alert-management-api) vagy az [Azure Resource Graph](../../governance/resource-graph/overview.md) és az [erőforrások REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)használatával kérdezheti le.
 
-Az [Azure Resource Graph REST API a riasztásokhoz](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)) lehetővé teszi a riasztási példányok lekérdezését a skálán. Ez akkor ajánlott, ha több előfizetésben létrehozott riasztásokat kell kezelnie. 
+Az erőforrások erőforrás-gráf REST API lehetővé teszi a riasztási példányok lekérdezését a skálán. Ez akkor ajánlott, ha több előfizetésben létrehozott riasztásokat kell kezelnie. 
 
-Az API-hoz tartozó következő minta-kérelem egy előfizetésben lévő riasztások számát adja vissza:
+A következő minta-kérelem az erőforrás-gráf REST API visszaadja egy előfizetésen belüli riasztások számát:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+Ezen erőforrás-gráf lekérdezés eredményét a portálon is láthatja az Azure Resource Graph Explorer használatával: [Portal.Azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 A riasztásokat lekérdezheti az [alapvető](alerts-common-schema-definitions.md#essentials) mezőire.
 
 Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségével további információkat kaphat az egyes riasztásokról, például a [riasztási környezet](alerts-common-schema-definitions.md#alert-context) mezőiről.

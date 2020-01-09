@@ -1,23 +1,18 @@
 ---
 title: Több Azure Monitor Application Insights erőforrás egységesítése | Microsoft Docs
 description: Ez a cikk részletesen ismerteti, hogyan használható függvények a Azure Monitor naplókban több Application Insights erőforrás lekérdezéséhez és az adatok megjelenítéséhez.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: azure-monitor
+author: bwren
+ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: magoedte
-ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650131"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364968"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Több Azure Monitor Application Insights erőforrás egységesítése 
 Ez a cikk azt ismerteti, hogyan lehet lekérdezni és megtekinteni az összes Application Insights naplózási adatait egy helyen, még akkor is, ha azok különböző Azure-előfizetésekben találhatók, a Application Insights Connector elavulttá tételének pótlására. Az egyetlen lekérdezésben felvehető Application Insights erőforrások száma a 100-ra korlátozódik.
@@ -34,7 +29,7 @@ ApplicationInsights
 
 Hozzon létre egy függvényt a Union operátor használatával az alkalmazások listájával, majd mentse a lekérdezést a munkaterületen a *applicationsScoping*alias függvényként. 
 
-A felsorolt alkalmazásokat bármikor módosíthatja a portálon, ha megnyitja a lekérdezési tallózót a munkaterületen, majd kiválasztja a függvényt a szerkesztéshez, majd a PowerShell- `SavedSearch` parancsmag használatával vagy a mentéshez. 
+A felsorolt alkalmazásokat bármikor módosíthatja a portálon, ha megnyitja a lekérdezési tallózót a munkaterületen, és kiválasztja a függvényt a szerkesztéshez, majd a `SavedSearch` PowerShell-parancsmag használatával vagy a mentéshez. 
 
 >[!NOTE]
 >Ez a metódus nem használható a naplózási riasztásokkal, mert a riasztási szabály erőforrásainak, köztük a munkaterületeknek és az alkalmazásoknak a hozzáférés-ellenőrzését a riasztás létrehozási ideje végzi. Új erőforrások hozzáadása a függvényhez a riasztás létrehozása után nem támogatott. Ha az erőforrás-hatókör függvényét szeretné használni a naplózási riasztásokban, szerkesztenie kell a riasztási szabályt a portálon, vagy egy Resource Manager-sablonnal a hatókörrel rendelkező erőforrások frissítéséhez. Azt is megteheti, hogy felveszi az erőforrások listáját a napló riasztási lekérdezésében.
@@ -67,10 +62,10 @@ A lekérdezés Application Insights sémát használ, bár a lekérdezés végre
 ![Példa több lekérdezés eredményére](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Lekérdezés Application Insights-erőforrások és a munkaterület-információk között 
-Ha leállítja az összekötőt, és olyan időtartományon keresztül kell lekérdezéseket végeznie, amelyet Application Insights adatmegőrzéssel (90 nap) nyírtak, [](../../azure-monitor/log-query/cross-workspace-query.md) akkor a munkaterületen több erőforrással kapcsolatos lekérdezéseket kell végrehajtania, és Application Insights egy köztes erőforrást. időszak. Ez addig tart, amíg az alkalmazások adatai a fent említett új Application Insights adatmegőrzési értékkel halmozódnak. A lekérdezéshez bizonyos manipulációk szükségesek, mivel a Application Insights sémái és a munkaterület eltérő. Tekintse meg a séma eltéréseit a szakasz későbbi részében található táblázatban. 
+Ha leállítja az összekötőt, és olyan időtartományon keresztül kell lekérdezéseket végrehajtania, amelyet Application Insights adatmegőrzéssel (90 nap) nyírtak, akkor a munkaterületen [több erőforrásra kiterjedő lekérdezéseket](../../azure-monitor/log-query/cross-workspace-query.md) kell végrehajtania, és Application Insights az erőforrásokat egy közbenső időszakra vonatkozóan. Ez addig tart, amíg az alkalmazások adatai a fent említett új Application Insights adatmegőrzési értékkel halmozódnak. A lekérdezéshez bizonyos manipulációk szükségesek, mivel a Application Insights sémái és a munkaterület eltérő. Tekintse meg a séma eltéréseit a szakasz későbbi részében található táblázatban. 
 
 >[!NOTE]
->Az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő [erőforrás-lekérdezések közötti lekérdezést](../log-query/cross-workspace-query.md) . Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. A [SCHEDULEDQUERYRULES API ARM](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) -sablonjának használata nélkül hozhat létre [erőforrás](../log-query/cross-workspace-query.md) -lekérdezési napló-riasztási szabályokat, de ez a riasztási szabály kezelhető, bár a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) nem Azure Portal.
+>Az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő [erőforrás-lekérdezések közötti lekérdezést](../log-query/cross-workspace-query.md) . Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. A [SCHEDULEDQUERYRULES API ARM-sablonjának](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) használata nélkül hozhat létre [erőforrás-lekérdezési](../log-query/cross-workspace-query.md) napló-riasztási szabályokat, de ez a riasztási szabály kezelhető, bár a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) nem Azure Portal.
 
 Ha például az összekötő leállt a 2018-11-01-on, amikor lekérdezi a naplókat Application Insights erőforrások és alkalmazások adatai között a munkaterületen, a lekérdezés a következő példához hasonlóan fog kialakítani:
 
@@ -100,23 +95,23 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 |------------|------------| 
 | AnonUserId | user_id|
 | ApplicationId | appId|
-| ApplicationName | appName|
+| ApplicationName | AppName|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
-| AvailabilityTimestamp | timestamp |
-| Browser | client_browser |
-| City | client_city |
-| ClientIP | client_IP |
-| Számítógép | cloud_RoleInstance | 
-| Country | client_CountryOrRegion | 
+| AvailabilityTestName | név |
+| AvailabilityTimestamp | időbélyeg |
+| Böngésző | client_browser |
+| Város | client_city |
+| Ügyfélip | client_IP |
+| Computer | cloud_RoleInstance | 
+| Ország/régió | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | név | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
@@ -125,25 +120,25 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
-| OS | client_OS | 
+| Operációs rendszer | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | name | 
+| PageViewName | név | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
-| RequestID | id | 
-| RequestName | name | 
-| RequestSuccess | success | 
+| Kérelemazonosító | id | 
+| RequestName | név | 
+| RequestSuccess | sikeres | 
 | ResponseCode | resultCode | 
-| Role | cloud_RoleName |
+| Szerepkör | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| URL | url |
+| URL-cím | url |
 | UserAccountId | user_AccountId |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Használat [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) részletes információk az Application Insights-alkalmazások megtekintéséhez.
+A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../../azure-monitor/log-query/log-query-overview.md) .

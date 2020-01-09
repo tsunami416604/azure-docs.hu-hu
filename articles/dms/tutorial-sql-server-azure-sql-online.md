@@ -1,5 +1,6 @@
 ---
-title: 'Oktatóanyag: A Azure Database Migration Service használatával online áttelepíthetők a SQL Serverból egy önálló/készletezett adatbázisba Azure SQL Database | Microsoft Docs'
+title: 'Oktatóanyag: SQL Server online migrálása az SQL önálló adatbázisba'
+titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan hajthat végre SQL Server helyszíni áttelepítést egy önálló adatbázisba vagy készletezett adatbázisba Azure SQL Database a Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
@@ -8,22 +9,23 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 09/22/2019
-ms.openlocfilehash: 619c36257f9166492e98d88335d767f358e3feca
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.date: 01/07/2020
+ms.openlocfilehash: 60334666c0ace76bd29ded03712549ec44d68732
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179124"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690974"
 ---
-# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server migrálása egyetlen adatbázisba vagy készletezett adatbázisba Azure SQL Database online-ban a DMS használatával
+# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server migrálása önálló adatbázisba vagy készletezett adatbázisba Azure SQL Database online-ban a DMS használatával
 
 Az Azure Database Migration Service segítségével minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban a **Adventureworks2012** -adatbázist egy SQL Server 2016 (vagy újabb) helyszíni példányára telepíti át, amely a Azure Database Migration Service használatával egyetlen adatbázishoz vagy készletezett adatbázishoz lett visszaállítva Azure SQL Database.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
+>
 > - A helyszíni adatbázis felmérése a Data Migration Assistant szolgáltatás használatával.
 > - A mintaséma migrálása a Data Migration Assistant szolgáltatás használatával.
 > - Egy Azure Database Migration Service-példány létrehozása.
@@ -51,30 +53,30 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Hozzon létre egy (vagy készletezett) adatbázist a Azure SQL Databaseban, amelyet a következő cikkben ismertetett részletességgel [hozhat létre a Azure SQL Database a Azure Portal használatával: önálló adatbázis létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started).
 
     > [!NOTE]
-    > Ha SQL Server Integration Servicest (SSIS) használ, és a katalógus-adatbázist át szeretné telepíteni a SSIS-projektekhez/csomagokhoz (SSISDB) SQL Serverról Azure SQL Databasere, akkor a rendszer automatikusan létrehozza és felügyeli a célként megadott SSISDB az Ön nevében, ha SSIS kiépítése Azure Data Factoryban (ADF). A SSIS-csomagok áttelepítésével kapcsolatos további információkért tekintse [meg SQL Server Integration Services csomagok migrálása az Azure-ba](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)című cikket.
+    > Ha SQL Server Integration Servicest (SSIS) használ, és a katalógus-adatbázist át szeretné telepíteni a SSIS-projektekhez/csomagokhoz (SSISDB) SQL Serverról Azure SQL Databasere, akkor a rendszer automatikusan létrehozza és felügyeli a célként megadott SSISDB, amikor a SSIS-t Azure Data Factory (ADF) kiépíti. A SSIS-csomagok áttelepítésével kapcsolatos további információkért tekintse [meg SQL Server Integration Services csomagok migrálása az Azure-ba](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)című cikket.
 
 - Töltse le a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 3.3-as vagy újabb verzióját.
-- Hozzon létre egy Azure-Virtual Network (VNet) a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN használatával ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). A VNet létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
+- Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
 
     > [!NOTE]
-    > Ha a VNet telepítése során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
+    > Ha a virtuális hálózat beállítása során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
     > - Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont stb.)
     > - Tárolási végpont
     > - Service Bus-végpont
     >
     > Erre a konfigurációra azért van szükség, mert a Azure Database Migration Service nem rendelkezik internetkapcsolattal.
 
-- Győződjön meg arról, hogy a virtuális hálózat hálózati biztonsági csoportjának (NSG) szabályai nem blokkolják az Azure Database Migration Service bejövő kommunikációs portokat: 443, 53, 9354, 445, 12000. Az Azure VNet NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+- Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. Az Azure Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
 - Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
 - Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
 - Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
-- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL-adatbáziskiszolgáló számára, hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt VNet alhálózati tartományát.
+- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL-adatbáziskiszolgáló számára, hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt virtuális hálózat alhálózati tartományát.
 - Gondoskodjon róla, hogy a forrásként szolgáló SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyekkel.
-- Gondoskodjon róla, hogy a forrásként szolgáló Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek CONTROL DATABASE engedéllyel a célként szolgáló Azure SQL adatbázisokban.
+- Győződjön meg arról, hogy a cél Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkeznek-e a cél Azure SQL Database példányokon a VEZÉRLÉSi adatbázis engedélyeivel.
 - A forrás SQL Servernek 2005-ös vagy újabb verziójúnak kell lennie. A futó SQL Server-példány verziójának megállapításához lásd [az SQL Server és összetevői verziójának, kiadásának és frissítési szintjének megállapításával](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) foglalkozó cikket.
 - Az adatbázis(ok)nak tömeges naplózási vagy teljes helyreállítási módban kell lenniük. Az SQL Server-példány helyreállítási modelljének megállapításához lásd az [adatbázis (SQL Server) helyreállítási modelljének megtekintésével vagy módosításával](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017) foglalkozó cikket.
-- Mindenképpen készítsen teljes biztonsági mentést az adatbázisokról. Teljes adatbázis biztonsági mentésének létrehozásához tekintse meg [a következő cikket: How to: Hozzon létre egy teljes adatbázis biztonsági mentést (](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105))Transact-SQL).
+- Mindenképpen készítsen teljes biztonsági mentést az adatbázisokról. Az adatbázisok teljes biztonsági mentésével kapcsolatban lásd az [adatbázis teljes biztonsági mentésének létrehozását (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)) ismertető cikket.
 - Ha valamelyik táblának nincs elsődleges kulcsa, engedélyezze az adatváltozások rögzítését (Change Data Capture, CDC) az adatbázisban és az adott táblán.
     > [!NOTE]
     > Az elsődleges kulccsal nem rendelkező táblákat az alábbi szkripttel keresheti meg.
@@ -218,7 +220,7 @@ A **AdventureWorks2012** -séma egyetlen adatbázisba vagy készletezett adatbá
 
 1. Az Azure Portalon válassza a + **Erőforrás létrehozása** lehetőséget, keresse meg az Azure Database Migration Service-t, és a legördülő menüben válassza ki az **Azure Database Migration Service**-t.
 
-    ![Azure Marketplace](media/tutorial-sql-server-to-azure-sql-online/portal-marketplace.png)
+    ![Azure Piactér](media/tutorial-sql-server-to-azure-sql-online/portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 
@@ -228,11 +230,11 @@ A **AdventureWorks2012** -séma egyetlen adatbázisba vagy készletezett adatbá
 
 4. Válassza ki azt a helyet, amelyen az Azure Database Migration Service példányát létre szeretné hozni. 
 
-5. Válasszon ki egy meglévő VNet, vagy hozzon létre egy újat.
+5. Válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
 
-    A VNet biztosítja a Azure Database Migration Service hozzáférést a forrás SQL Server és a célként megadott Azure SQL Database példányhoz.
+    A virtuális hálózat biztosítja a Azure Database Migration Service hozzáférést a forrás SQL Server és a célként megadott Azure SQL Database példányhoz.
 
-    További információ a VNet létrehozásáról a Azure Portalban: [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet).
+    Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
 
 6. Válasszon tarifacsomagot.
 
@@ -303,7 +305,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     Az Azure Database Migration Service automatikusan kiválasztja az összes üres forrástáblát, amely a célként szolgáló Azure SQL Database-példányon megtalálható. Ha újra kíván migrálni olyan táblákat, amelyek már tartalmaznak adatokat, azokat ezen a panelen külön kikell választania.
 
-    ![Táblák kijelölése](media/tutorial-sql-server-to-azure-sql-online/dms-configure-setting-activity3.png)
+    ![Select tables (Táblák kiválasztása)](media/tutorial-sql-server-to-azure-sql-online/dms-configure-setting-activity3.png)
 
 4. Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét, majd tekintse át az összegzést, és ellenőrizze, hogy a forrás és a cél adatai megegyeznek-e a korábban megadottakkal.
 
@@ -339,9 +341,8 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
     ![Tevékenység állapota: Befejezve](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [SQL-migrálás az Azure Database Migration Service (DMS) használatával](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) – gyakorlati labor.
 - További információ a Azure SQL Database való online áttelepítéssel kapcsolatos ismert problémákról és korlátozásokról: [Azure SQL Database online áttelepítéssel kapcsolatos ismert problémák és megkerülő megoldások](known-issues-azure-sql-online.md).
 - Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 - További információ a Azure SQL Databaseről: [Mi a Azure SQL Database szolgáltatás?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).

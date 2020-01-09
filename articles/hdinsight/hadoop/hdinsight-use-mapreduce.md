@@ -5,27 +5,27 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: c4f975b56d3658731b6dc165e01b54ac09f3b89c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435708"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>MapReduce használata a HDInsight Apache Hadoop
 
 Ismerje meg, hogyan futtathat MapReduce-feladatokat HDInsight-fürtökön.
 
-## <a id="data"></a>Példa az adatértékekre
+## <a name="example-data"></a>Példaadatok
 
-A HDInsight különböző, a és `/example/data` `/HdiSamples` a címtárban tárolt adatkészleteket biztosít. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Ebben a dokumentumban a `/example/data/gutenberg/davinci.txt` fájlt használjuk. Ez a fájl tartalmazza a Leonardo da Vinci jegyzetfüzeteit.
+A HDInsight különböző adatkészleteket biztosít, amelyek tárolása a `/example/data` és `/HdiSamples` könyvtárban történik. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Ebben a dokumentumban a `/example/data/gutenberg/davinci.txt` fájlt használjuk. Ez a fájl tartalmazza a Leonardo da Vinci jegyzetfüzeteit.
 
-## <a id="job"></a>Példa MapReduce
+## <a name="example-mapreduce"></a>Példa MapReduce
 
-A HDInsight-fürt tartalmazza például a MapReduce Word Count alkalmazást. Ez a példa a fürt `/example/jars/hadoop-mapreduce-examples.jar` alapértelmezett tárolójában található.
+A HDInsight-fürt tartalmazza például a MapReduce Word Count alkalmazást. Ez a példa a fürt alapértelmezett tárolóján `/example/jars/hadoop-mapreduce-examples.jar` található.
 
 A következő Java-kód a `hadoop-mapreduce-examples.jar` fájlban található MapReduce-alkalmazás forrása:
 
@@ -101,35 +101,22 @@ public class WordCount {
 }
 ```
 
-A saját MapReduce alkalmazások írására vonatkozó utasításokért tekintse meg a következő dokumentumot:
+A saját MapReduce alkalmazások írására vonatkozó utasításokért lásd: [Java MapReduce-alkalmazások fejlesztése a HDInsight-hez](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-* [Java MapReduce-alkalmazások fejlesztése a HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-## <a id="run"></a>A MapReduce futtatása
+## <a name="run-the-mapreduce"></a>A MapReduce futtatása
 
 A HDInsight különféle módszerekkel képes futtatni a HiveQL-feladatokat. A következő táblázat segítségével eldöntheti, hogy melyik módszer a legmegfelelőbb, majd kövesse a bemutató hivatkozását.
 
-| **Használja**... | **...fenti ehhez** | ... Ezzel a **fürt operációs rendszerrel** | ...from ez **ügyfél operációs rendszer** |
+| **Használja**... | **... Ehhez** |  ... Ebből az **ügyféloldali operációs rendszerből** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop parancs használata **SSH** -n keresztül |Linux |Linux, UNIX, Mac OS X vagy Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |A feladatot távolról küldje el a **Rest** használatával |Linux vagy Windows |Linux, UNIX, Mac OS X vagy Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladatot távolról küldje el a **Windows PowerShell** használatával |Linux vagy Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop parancs használata **SSH** -n keresztül |Linux, UNIX, Mac OS X vagy Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |A feladatot távolról küldje el a **Rest** használatával |Linux, UNIX, Mac OS X vagy Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladatot távolról küldje el a **Windows PowerShell** használatával  |Windows |
 
-## <a id="nextsteps"></a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az HDInsight-beli adatkezelésről, tekintse meg a következő dokumentumokat:
 
 * [Java MapReduce-programok fejlesztése a HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [Apache Hive használata a HDInsight][hdinsight-use-hive]
-
-* [Az Apache Pig és a HDInsight használata][hdinsight-use-pig]
-
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-mapreduce-jobs]: apache-hadoop-develop-deploy-java-mapreduce-linux.md
-[hdinsight-use-hive]:../hdinsight-use-hive.md
-[hdinsight-use-pig]:hdinsight-use-pig.md
-
-
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+* [Apache Hive használata a HDInsight](./hdinsight-use-hive.md)

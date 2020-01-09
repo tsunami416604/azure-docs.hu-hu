@@ -4,15 +4,15 @@ description: Válaszok a Azure Monitor logs Analytics szolgáltatással kapcsola
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 77159e0fa73a1f56688c867c55ae46f28016992c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579312"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394782"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 
@@ -52,7 +52,7 @@ A: kattintson a bal oldali ablaktábla szűrők elemére az új szűrők megval�
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>K. Miért kapok hibaüzenetet: "erőforrás-szolgáltató regisztrálása" Microsoft. bepillantást ehhez az előfizetéshez, hogy engedélyezze ezt a lekérdezést a naplókban a virtuális gép befúrása után? 
 
-A: alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van, azonban előfordulhat, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Ezzel konfigurálja az előfizetését az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. További információ: [Erőforrás-szolgáltatók és típusaik](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+A: alapértelmezés szerint számos erőforrás-szolgáltató automatikusan regisztrálva van, azonban előfordulhat, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. Ezzel konfigurálja az előfizetését az erőforrás-szolgáltatóval való együttműködésre. A regisztráció hatóköre mindig az előfizetés. További információ: [Erőforrás-szolgáltatók és típusaik](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>K. Miért nem kapok hozzáférési hibaüzenetet, amikor Hozzáférek a naplókhoz a virtuális gép oldaláról? 
 
@@ -72,16 +72,11 @@ A. Igen, a naplók lap az Azure-ban és a speciális elemzési portálon ugyanar
 
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>K. Hogyan láthatom a nézeteiket és a megoldásokat a Azure Portal? 
 
 A: a nézetek és a telepített megoldások listája Azure Portal érhető el. Kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában válassza a **figyelés**, majd a **... lehetőséget. Továbbiak**. A legutóbb használt munkaterület van kiválasztva, de más munkaterületet is kijelölhet. 
-
-### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>K. Miért nem tudok munkaterületeket létrehozni az USA nyugati középső régiójában? 
-
-A: Ez a régió átmeneti kapacitási korláttal rendelkezik. Ezt a korlátot a tervek szerint a 2019 szeptember végéig kell megcélozni.
-
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>K. Log Analytics ugyanazt az ügynököt használja, mint Azure Security Center?
 
@@ -105,7 +100,7 @@ A *OMS* -re való frissítés egy felügyeleti csomagban szerepel, amelyet manu�
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>K: van Log Analytics helyszíni verziója?
 
-A: nem. A Log Analytics egy skálázható felhőalapú szolgáltatás, amely nagy mennyiségű adattal dolgoz fel és tárol. 
+V: Nem. A Log Analytics egy skálázható felhőalapú szolgáltatás, amely nagy mennyiségű adattal dolgoz fel és tárol. 
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>K. Hogyan lehet értesítést kapni, ha az adatgyűjtés leáll?
 
@@ -117,7 +112,7 @@ Amikor az adatgyűjtés leáll, a riasztás létrehozásakor állítsa be a köv
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - **Jel neve** válassza az **egyéni naplók keresése**lehetőséget.
    - A **Keresési lekérdezés** legyen a következő: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
+   - **A riasztás logikája** az *eredmények* és a **feltétel** **alapján** *meghaladja* a *0* **küszöbértéket**
    - *30* perces **időtartam** , a **riasztások gyakorisága** *10* percenként
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
    - Az *adatgyűjtési név leállítva*
@@ -218,6 +213,6 @@ A WireData-ügynököt futtató számítógépek esetében a következő lekérd
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [Azure Monitorekkel](../../azure-monitor/overview.md) , és percek alatt megtudhatja, hogyan kezdheti meg a log Analytics.

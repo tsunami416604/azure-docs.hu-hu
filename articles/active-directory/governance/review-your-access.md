@@ -1,5 +1,5 @@
 ---
-title: A hozzáférési felülvizsgálatokban lévő csoportok vagy alkalmazások hozzáférésének áttekintése – Azure Active Directory | Microsoft Docs
+title: Tekintse át a hozzáférést a csoportokhoz & alkalmazások hozzáférési felülvizsgálatokban – Azure AD
 description: Megtudhatja, hogyan tekintheti át a csoportokhoz vagy alkalmazásokhoz való saját hozzáférését Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
 author: msaburnley
@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422400"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatokban lévő csoportok és alkalmazások hozzáférésének áttekintése
 
@@ -40,7 +40,7 @@ A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáfér
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.
 
-1. Jelentkezzen be a MyApps portálra a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. Jelentkezzen be a MyApps portálra a [https://myapps.microsoft.com](https://myapps.microsoft.com)címen.
 
     ![A MyApps-portál felsorolja azokat az alkalmazásokat, amelyekre jogosult](./media/review-your-access/myapps-access-panel.png)
 
@@ -79,6 +79,6 @@ Ha megnyitotta a hozzáférési felülvizsgálatot, a hozzáférését láthatja
     > [!NOTE]
     > Ha azt jelezte, hogy már nincs szüksége a hozzáférésre, nem távolítja el azonnal. Ha a felülvizsgálat véget ért, vagy ha a rendszergazda leállítja a felülvizsgálatot, a rendszer eltávolítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

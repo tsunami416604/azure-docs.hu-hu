@@ -1,25 +1,14 @@
 ---
-title: Service Fabric alkalmazás frissítése | Microsoft Docs
+title: Service Fabric-alkalmazás frissítése
 description: Ez a cikk bevezetést nyújt egy Service Fabric alkalmazás frissítéséhez, többek között a frissítési módok kiválasztásához és az állapot-ellenőrzések végrehajtásához.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167282"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426773"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-alkalmazás frissítése
 Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során Service Fabric összehasonlítja az új [alkalmazás-jegyzékfájlt](service-fabric-application-and-service-manifests.md) az előző verzióval, és meghatározza, hogy az alkalmazás mely szolgáltatásai igényelnek frissítéseket. Service Fabric összehasonlítja a szolgáltatási jegyzékfájlok verziószámait az előző verzió verziószámával. Ha egy szolgáltatás nem módosult, akkor a szolgáltatás nem frissül.
@@ -67,7 +56,7 @@ Ezért Service Fabric nem támogatja két különböző szolgáltatás frissít�
 Ha úgy látja, hogy a frissítés nem sikerül HTTPS-vel, a "Windows HTTP Server API nem támogatja több tanúsítvány használatát a portot használó alkalmazások számára."
 
 ## <a name="application-upgrade-flowchart"></a>Alkalmazás frissítési folyamatábrája
-A bekezdést követő folyamatábra segít megérteni egy Service Fabric alkalmazás frissítési folyamatát. A folyamat konkrétan leírja, hogy az időtúllépések, beleértve a *HealthCheckStableDuration*, a *HealthCheckRetryTimeout*és a *UpgradeHealthCheckInterval*, Hogyan szabályozható, hogy az egyik frissítési tartományban való frissítés sikeresnek minősül-e, vagy hiba.
+A bekezdést követő folyamatábra segít megérteni egy Service Fabric alkalmazás frissítési folyamatát. A folyamat konkrétan leírja, hogy az időtúllépések, beleértve a *HealthCheckStableDuration*, a *HealthCheckRetryTimeout*és a *UpgradeHealthCheckInterval*, Hogyan szabályozható, hogy az egyik frissítési tartományban való frissítés sikeresnek vagy meghibásodásnak minősül-e.
 
 ![Service Fabric alkalmazás frissítési folyamata][image]
 

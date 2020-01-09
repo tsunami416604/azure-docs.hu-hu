@@ -3,12 +3,12 @@ title: Mi lehet Azure Backup Server biztonsági mentést?
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449895"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 
@@ -35,8 +35,8 @@ Ez a cikk felsorolja az Azure Backup Server által védhető különböző kiszo
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2<br />SP1 frissítéssel kell rendelkeznie, majd telepítse a [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) frissítést|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut)<br /> <br /> Azure Stack|V3, V2<br />SP1 frissítéssel kell rendelkeznie, majd telepítse a [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) frissítést|Kötet, megosztás, mappa, fájl|
 |Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2<br />SP1 frissítéssel kell rendelkeznie, majd telepítse a [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) frissítést|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
-|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|Nem támogatott|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
-|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|Nem támogatott|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 SP2|Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |Kiszolgálók (32 bites és 64 bites)|Windows Storage Server 2008|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép<br /> <br /> Azure Stack|V3, V2|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli|
 |SQL Server|SQL Server 2019|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut) <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|K3|Az összes központi telepítési forgatókönyv: adatbázis|
 |SQL Server|SQL Server 2017|Fizikai kiszolgáló <br /><br /> Helyszíni Hyper-V virtuális gép <br /> <br /> Azure virtuális gép (ha a munkaterhelés Azure virtuális gépként fut) <br /><br /> Windows virtuális gép VMWare-ben (a VMWare-ben futó Windows virtuális gépek munkaterheléseinek védelme)<br /> <br /> Azure Stack|K3|Az összes központi telepítési forgatókönyv: adatbázis|
@@ -75,16 +75,30 @@ Ez a cikk felsorolja az Azure Backup Server által védhető különböző kiszo
 |Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen|Windows Server 2012 R2 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|V3, V2|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV-k)<br /><br />Helyreállítás: virtuális gép, fájlok, mappák, kötetek és virtuális merevlemezek elemszintű helyreállítása|
 |Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen|Windows Server 2012 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|V3, V2|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV-k)<br /><br />Helyreállítás: virtuális gép, fájlok, mappák, kötetek és virtuális merevlemezek elemszintű helyreállítása|
 |Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen|Windows Server 2008 R2 SP1 – Enterprise és Standard|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|V3, V2|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV-k)<br /><br />Helyreállítás: virtuális gép, fájlok, mappák, kötetek és virtuális merevlemezek elemszintű helyreállítása|
-|Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|Nem támogatott|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV-k)<br /><br />Helyreállítás: virtuális gép, fájlok, mappák, kötetek és virtuális merevlemezek elemszintű helyreállítása|
+|Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|Nem támogatott|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV-k)<br /><br />Helyreállítás: virtuális gép, fájlok, mappák, kötetek és virtuális merevlemezek elemszintű helyreállítása|
 |VMware virtuális gépek|VMware vCenter/vSphere ESX/ESXi licencelt verzió 5.5/6.0/6.5 |Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMWare-ben|V3, V2|VMware virtuális gépek a fürt megosztott kötetei (CSV), az NFS és a SAN Storage szolgáltatásban<br /> A fájlok és mappák elemszintű helyreállítása csak Windows rendszerű virtuális gépek esetén érhető el, a VMware Vapp nem támogatottak.|
 |VMware virtuális gépek|[VMware vSphere licenccel rendelkező 6,7-es verzió](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMWare-ben|K3|VMware virtuális gépek a fürt megosztott kötetei (CSV), az NFS és a SAN Storage szolgáltatásban<br /> A fájlok és mappák elemszintű helyreállítása csak Windows rendszerű virtuális gépek esetén érhető el, a VMware Vapp nem támogatottak.|
 |Linux|Hyper-V vagy VMware vendégként futó Linux|Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMWare-ben|V3, V2|A Hyper-V-nek Windows Server 2012 R2-n vagy Windows Server 2016-on kell futnia. Védelem: az egész virtuális gép<br /><br />Helyreállítás: az egész virtuális gép <br/><br/> A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](../virtual-machines/linux/endorsed-distros.md)cikket.|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
 
-Ha az Azure ExpressRoute magánhálózati vagy Microsoft-társítással van konfigurálva, nem használható az Azure-ba történő biztonsági mentéshez.
+Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.
 
-Ha az Azure ExpressRoute nyilvános összevonással van konfigurálva, az Azure-ba történő biztonsági mentését is felhasználhatja.
+Nyilvános társítás esetén: a következő tartományokhoz/címekhez való hozzáférés biztosítása:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
+* Azure Storage (az Recovery Services-tároló helyének megfelelően)
+
+További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.
@@ -93,17 +107,17 @@ Ha az Azure ExpressRoute nyilvános összevonással van konfigurálva, az Azure-
 
 A Azure Backup Server a következő fürtözött alkalmazásokban lévő adatvédelmet tudja biztosítani:
 
-- Fájlkiszolgálók
+* Fájlkiszolgálók
 
-- SQL Server
+* SQL Server
 
-- Hyper-V – ha a Hyper-V fürtöt kibővített MABS védelmi ügynök használatával védi, a védett Hyper-V munkaterhelésekhez nem adhat hozzá másodlagos védelmet.
+* Hyper-V – ha a Hyper-V fürtöt kibővített MABS védelmi ügynök használatával védi, a védett Hyper-V munkaterhelésekhez nem adhat hozzá másodlagos védelmet.
 
     Ha a Hyper-V-t Windows Server 2008 R2 rendszeren futtatja, akkor telepítse a KB [975354](https://support.microsoft.com/kb/975354)-es verzióban ismertetett frissítést.
     Ha a Hyper-V-t Windows Server 2008 R2 rendszeren futtatja a fürt konfigurációjában, akkor ügyeljen arra, hogy az SP2 és a KB [971394](https://support.microsoft.com/kb/971394)telepítését telepítse.
 
-- Az Exchange Server-Azure Backup Server képes biztosítani a nem megosztott lemezes fürtöket a támogatott Exchange Server-verziókhoz (fürt folyamatos replikációja), és a helyi folyamatos replikálásra konfigurált Exchange Servert is képes védelemmel ellátni.
+* Az Exchange Server-Azure Backup Server képes biztosítani a nem megosztott lemezes fürtöket a támogatott Exchange Server-verziókhoz (fürt folyamatos replikációja), és a helyi folyamatos replikálásra konfigurált Exchange Servert is képes védelemmel ellátni.
 
-- A SQL Server-Azure Backup Server nem támogatja a fürt megosztott kötetein (CSV) tárolt SQL Server-adatbázisok biztonsági mentését.
+* A SQL Server-Azure Backup Server nem támogatja a fürt megosztott kötetein (CSV) tárolt SQL Server-adatbázisok biztonsági mentését.
 
 A Azure Backup Server a MABS-kiszolgálóval azonos tartományban található, illetve egy gyermek vagy megbízható tartományba tartozó munkaterhelések elleni védelemmel rendelkezhet. Ha nem megbízható tartományokban vagy munkacsoportokban lévő adatforrásokat kíván védelemmel ellátni, használja az NTLM-t vagy a tanúsítványalapú hitelesítést egyetlen kiszolgáló esetén, vagy csak a fürt tanúsítvány-hitelesítését.

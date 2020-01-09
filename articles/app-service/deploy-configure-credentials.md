@@ -1,27 +1,27 @@
 ---
-title: Központi telepítési hitelesítő adatok konfigurálása
+title: Üzembe helyezési hitelesítő adatok konfigurálása
 description: Megtudhatja, milyen típusú központi telepítési hitelesítő adatok vannak Azure App Serviceban, és hogyan konfigurálhatja és használhatja azokat.
 ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e7a66a9535812da505045c26e7b1e6fbc6c661
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 15b556781f8ba620ab61c502b6f55e55e98df83c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430530"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
 
-* **Felhasználói szintű hitelesítő adatok**: a teljes Azure-fiókhoz tartozó hitelesítő adatok egy halmaza. Felhasználható arra, hogy a App Service bármely olyan alkalmazáshoz, amely az Azure-fiókhoz való hozzáféréshez szükséges. Ez az alapértelmezett beállítás, amely a portál grafikus felhasználói felületén található (például az alkalmazás [erőforrás-oldalának](../azure-resource-manager/manage-resources-portal.md#manage-resources) **áttekintése** és **tulajdonságai** ). Ha a felhasználó szerepköralapú Access Control (RBAC) vagy a rendszergazdai jogosultságok használatával kap hozzáférést az alkalmazásokhoz, a felhasználó a hozzáférés visszavonása előtt saját felhasználói szintű hitelesítő adatait használhatja. Ne ossza meg ezeket a hitelesítő adatokat más Azure-felhasználókkal.
+* **Felhasználói szintű hitelesítő adatok**: a teljes Azure-fiókhoz tartozó hitelesítő adatok egy halmaza. Felhasználható arra, hogy a App Service bármely olyan alkalmazáshoz, amely az Azure-fiókhoz való hozzáféréshez szükséges. Ez az alapértelmezett beállítás, amely a portál grafikus felhasználói felületén található (például az alkalmazás [erőforrás-oldalának](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) **áttekintése** és **tulajdonságai** ). Ha a felhasználó szerepköralapú Access Control (RBAC) vagy a rendszergazdai jogosultságok használatával kap hozzáférést az alkalmazásokhoz, a felhasználó a hozzáférés visszavonása előtt saját felhasználói szintű hitelesítő adatait használhatja. Ne ossza meg ezeket a hitelesítő adatokat más Azure-felhasználókkal.
 
 * **Alkalmazás szintű hitelesítő adatok**: az egyes alkalmazásokhoz tartozó hitelesítő adatok egy halmaza. Ezt csak az alkalmazásra lehet használni. Az egyes alkalmazások hitelesítő adatai automatikusan létrejönnek az alkalmazás létrehozásakor. Nem konfigurálhatók manuálisan, de bármikor visszaállíthatók. Ahhoz, hogy a felhasználók hozzáférést kapjanak az alkalmazás szintű hitelesítő adatokhoz a (RBAC) használatával, a felhasználónak közreműködőnek vagy magasabbnak kell lennie az alkalmazásban. Az olvasók számára nem engedélyezett a közzététel, és nem férhetnek hozzá ezekhez a hitelesítő adatokhoz.
 
 ## <a name="userscope"></a>Felhasználói szintű hitelesítő adatok konfigurálása
 
-A felhasználói szintű hitelesítő adatokat bármely alkalmazás [erőforrás-oldalán](../azure-resource-manager/manage-resources-portal.md#manage-resources)konfigurálhatja. Függetlenül attól, hogy melyik alkalmazáshoz konfigurálja ezeket a hitelesítő adatokat, az összes alkalmazásra és az Azure-fiókban lévő összes előfizetésre vonatkozik. 
+A felhasználói szintű hitelesítő adatokat bármely alkalmazás [erőforrás-oldalán](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)konfigurálhatja. Függetlenül attól, hogy melyik alkalmazáshoz konfigurálja ezeket a hitelesítő adatokat, az összes alkalmazásra és az Azure-fiókban lévő összes előfizetésre vonatkozik. 
 
 ### <a name="in-the-cloud-shell"></a>A Cloud Shell
 

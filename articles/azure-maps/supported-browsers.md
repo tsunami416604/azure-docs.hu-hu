@@ -7,13 +7,13 @@ ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432789"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Asztali
+## <a name="desktop"></a>Asztal
 
 A Azure Maps web SDK a következő asztali böngészőket támogatja:
 
@@ -40,7 +40,7 @@ A Azure Maps web SDK a következő asztali böngészőket támogatja:
 
 Lásd még: [korábbi böngészők megcélzása](#Target-Legacy-Browsers) a cikk későbbi részében.
 
-## <a name="mobile"></a>mobil
+## <a name="mobile"></a>Mobil
 
 A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
@@ -59,7 +59,7 @@ A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
 A Node. js-ben a következő web SDK-modulok is támogatottak:
 
-- Szolgáltatások modul ([dokumentációs](how-to-use-services-module.md) | [NPM modul](https://www.npmjs.com/package/azure-maps-rest))
+- Szolgáltatások modul ([dokumentáció](how-to-use-services-module.md) | [NPM modul](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="Target-Legacy-Browsers"></a>Cél örökölt böngészők
 
@@ -68,11 +68,11 @@ Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + szórólap" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + prospektust</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + szórólap</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps web SDK-ról:
 

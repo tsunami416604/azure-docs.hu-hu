@@ -10,12 +10,12 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d7cafa6ec385ed296a5341efdaec1b16f7742683
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440056"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adat-előállító létrehozása Azure Resource Manager-sablon használatával
 
@@ -38,9 +38,9 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 
 ## <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
 
-A Resource Manager-sablonokkal kapcsolatos általános információkért tekintse meg [az Azure Resource Manager-sablonok készítését ismertető cikket](../azure-resource-manager/resource-group-authoring-templates.md).
+A Resource Manager-sablonokkal kapcsolatos általános információkért tekintse meg [az Azure Resource Manager-sablonok készítését ismertető cikket](../azure-resource-manager/templates/template-syntax.md).
 
-A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
+A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon, és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
 A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Microsoft. DataFactory-erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
 

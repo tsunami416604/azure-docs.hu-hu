@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996272"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391841"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -28,6 +28,7 @@ Előfordulhat, hogy az Azure-beli virtuálisgép-ügynök leállt, elavult, inko
 - **Nyissa meg az Azure Portal > virtuális gép > beállítások > tulajdonságok panelt** > ellenőrizze, hogy a virtuális gép **állapota** **fut** -e, és az **ügynök állapota** **kész**. Ha a virtuálisgép-ügynök leállt vagy inkonzisztens állapotban van, indítsa újra az ügynököt.<br>
   - A Windows rendszerű virtuális gépek esetében az alábbi [lépéseket](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) követve indítsa újra a vendég ügynököt.<br>
   - Linux rendszerű virtuális gépek esetén az alábbi [lépéseket](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) követve indítsa újra a vendég ügynököt.
+- **Nyissa meg az Azure Portal > virtuális gép > beállítások > bővítmények** > győződjön meg arról, hogy az összes bővítmény **kiépítés sikeres** állapotban van. Ha nem, kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) a probléma megoldásához.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nem tudott kommunikálni a virtuálisgép-ügynökkel a pillanatkép állapotához
 
@@ -53,8 +54,8 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 
 Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg az Azure Portal > virtuális gép > beállítások > bővítmények > bővítmények állapotát** , és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e.
 
-- Ha a VMSnapshot-bővítmény állapota sikertelen, akkor a jobb gombbal kattintson a sikertelen bővítményre, és távolítsa el. Aktiválja a bővítményeket, és futtassa a biztonsági mentési feladatot.  <br>
-- Ha bármely más bővítmény sikertelen állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.  
+- Ha a VMSnapshot-bővítmény hibás állapotban van, kattintson a jobb gombbal a sikertelen bővítményre, és távolítsa el. Indítson el egy igény szerinti biztonsági mentést, ezzel újratelepíti a bővítményeket, és futtatja a biztonsági mentési feladatot.  <br>
+- Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – elérte a visszaállítási pont gyűjtésének maximális korlátját
 
@@ -227,9 +228,9 @@ Távolítsa el a bővítményt a VMSnapshot-bővítmény újratöltésének kén
 A bővítmény eltávolítása:
 
 1. A [Azure Portal](https://portal.azure.com/)lépjen a biztonsági mentési hibát észlelő virtuális gépre.
-2. Kattintson a **Beállítások** elemre.
+2. Válassza a **Beállítások** lehetőséget.
 3. Kattintson az **Extensions** (Bővítmények) gombra.
-4. Válassza ki a **Vmsnapshot bővítményt**.
+4. Válassza a **Pillanatkép-kiterjesztés**lehetőséget.
 5. Válassza az **Eltávolítás** lehetőséget.
 
 Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a biztonsági mentést.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365206"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>A lekérdezés hatókörének és időtartományának naplózása Azure Monitor Log Analytics
 Ha [a Azure Portal log Analyticsban](get-started-portal.md)futtat [naplózási lekérdezést](log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.
@@ -29,7 +29,7 @@ A hatókört a Log Analytics elindításához használt módszer határozza meg,
 
 | Lekérdezési hatókör | A hatókörben lévő rekordok | Kiválasztás | Hatókör módosítása |
 |:---|:---|:---|:---|
-| Log Analytics munkaterület | A Log Analytics munkaterület összes rekordja. | Válassza a **naplók** lehetőséget a **Azure monitor** menüben vagy a **log Analytics munkaterületek** menüből.  | A hatókört bármely más erőforrástípus esetében módosíthatja. |
+| Log Analytics-munkaterület | A Log Analytics munkaterület összes rekordja. | Válassza a **naplók** lehetőséget a **Azure monitor** menüben vagy a **log Analytics munkaterületek** menüből.  | A hatókört bármely más erőforrástípus esetében módosíthatja. |
 | Application Insights alkalmazás | A Application Insights alkalmazás összes rekordja. | A Application Insights **Áttekintés** lapján válassza az **elemzés** lehetőséget. | A hatókört csak egy másik Application Insights alkalmazásra lehet módosítani. |
 | Erőforráscsoport | Az erőforráscsoport összes erőforrása által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza ki a **naplókat** az erőforráscsoport menüjében. | A hatókör nem módosítható.|
 | Előfizetés | Az előfizetésben található összes erőforrás által létrehozott rekordok. Több Log Analytics munkaterületről származó adatok is szerepelhetnek. | Válassza a **naplók** lehetőséget az előfizetés menüből.   | A hatókör nem módosítható. |
@@ -40,7 +40,7 @@ A hatókört a Log Analytics elindításához használt módszer határozza meg,
 Ha a lekérdezési hatókör egy Log Analytics munkaterület vagy egy Application Insights alkalmazás, a Portálon és az összes lekérdezési parancson belül minden lehetőség elérhető. Ha egy erőforrás hatóköre nem érhető el, a portálon az alábbi beállítások nem érhetők el, mert egyetlen munkaterülethez vagy alkalmazáshoz vannak társítva:
 
 - Mentés
-- Lekérdezési tallózó
+- Lekérdezéskezelő
 - Új riasztási szabály
 
 Az alábbi parancsok nem használhatók a lekérdezésekben, ha az erőforrás hatóköre, mivel a lekérdezés hatóköre már tartalmaz minden olyan munkaterületet, amely az adott erőforráshoz vagy erőforrás-készlethez tartozó adattal rendelkezik:
@@ -68,7 +68,7 @@ Az időtartomány meghatározza a lekérdezés által a rekord létrehozásakor 
 
 | Földrajzi egység | Tulajdonság |
 |:---|:---|
-| Log Analytics munkaterület          | TimeGenerated |
+| Log Analytics-munkaterület          | TimeGenerated |
 | Application Insights alkalmazás | időbélyeg     |
 
 Állítsa be az időtartományt úgy, hogy kijelöli a Log Analytics ablak tetején található időválasztót.  Kiválaszthat egy előre meghatározott időszakot, vagy az **Egyéni** lehetőséget választva megadhat egy adott időtartományt.

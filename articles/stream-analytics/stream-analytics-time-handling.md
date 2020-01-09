@@ -1,18 +1,18 @@
 ---
 title: A Azure Stream Analytics időközbeni kezelési értelmezése
 description: Megtudhatja, hogyan működik az idő a kezelés Azure Stream Analyticsban, mint például a legjobb kezdési idő kiválasztása, a késői és korai események kezelése, valamint az időkezelési mérőszámok.
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354652"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>A Azure Stream Analytics időközbeni kezelési értelmezése
 
@@ -171,7 +171,7 @@ Az alábbi ábrán bemutatjuk, hogyan haladnak a vízjelek a különböző kör�
 
 Ez a táblázat az alábbi táblázatban szereplő példákat mutatja be. Figyelje meg, hogy az esemény időpontja és az érkezési idő eltérő, néha nem.
 
-| Esemény időpontja | Érkezés időpontja | deviceId |
+| Esemény időpontja | Érkezés időpontja | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2

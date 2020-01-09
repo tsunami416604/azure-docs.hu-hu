@@ -1,18 +1,17 @@
 ---
 title: Karakterláncok használata Azure Monitor log-lekérdezésekben | Microsoft Docs
 description: Leírja, hogyan szerkesztheti, hasonlíthatja össze, keresheti meg és végezheti el számos más műveletet a sztringeken Azure Monitor a naplók lekérdezéseit.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397468"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Karakterláncok használata Azure Monitor naplózási lekérdezésekben
 
@@ -96,7 +95,7 @@ countof(text, search [, kind])
 - `search` – egyszerű karakterlánc vagy reguláris kifejezés, amely a szövegen belüli egyezést adja meg.
 - `kind` - _normál_ | _regex_ (alapértelmezett: normál).
 
-### <a name="returns"></a>Adja vissza
+### <a name="returns"></a>Visszatérési érték
 
 Az a szám, ahányszor a keresési karakterlánc összehasonlítható a tárolóban. Az egyszerű karakterlánc-egyezések átfedésben lehetnek, amíg a regex-egyezések nem.
 
@@ -138,7 +137,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` – A keresendő karakterlánc.
 - `typeLiteral` – nem kötelező típusú literál (például typeof (Long)). Ha meg van adni, a kibontott alkarakterlánc erre a típusra lesz konvertálva.
 
-### <a name="returns"></a>Adja vissza
+### <a name="returns"></a>Visszatérési érték
 Az alkarakterlánc egyeztetve lett a jelzett rögzítési csoport captureGroup, és igény szerint typeLiteral konvertálható.
 Ha nincs egyezés, vagy a típus konvertálása sikertelen, a null értéket adja vissza.
 
@@ -244,7 +243,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` – a behelyettesítési regex, amely a megfelelő regexnek felel meg. A \ 0 paranccsal hivatkozhat a teljes egyezésre, \ 1 az első rögzítési csoporthoz, \ 2 és így tovább a következő rögzítési csoportokhoz.
 - `input_text` – a keresendő bemeneti karakterlánc.
 
-### <a name="returns"></a>Adja vissza
+### <a name="returns"></a>Visszatérési érték
 A regex összes egyezésének az újraírás értékelését követő szövege. A egyezések nem fedik át egymást.
 
 ### <a name="examples"></a>Példák

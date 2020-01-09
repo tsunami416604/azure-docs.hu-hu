@@ -1,5 +1,5 @@
 ---
-title: A VMware virtuális gépek felmérése az Azure-ba való Migrálás Azure Migrate
+title: A VMware virtuális gépek felmérése az Azure-ba való Migrálás Azure Migrate Server Assessment használatával
 description: Ismerteti, hogyan lehet kiértékelni a helyszíni VMware virtuális gépeket az Azure-ba való Migrálás Azure Migrate használatával.
 author: rayne-wiselman
 manager: carmonm
@@ -7,22 +7,20 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453284"
 ---
-# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése Azure Migrateekkel: kiszolgáló értékelése
+# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése Azure Migrate Server Assessment használatával
 
-Ez a cikk bemutatja, hogyan értékelheti a helyszíni VMware virtuális gépeket a Azure Migrate: Server Assessment Tool használatával.
+Ez a cikk bemutatja, hogyan értékelheti a helyszíni VMware virtuális gépeket (VM-EK) a Azure Migrate kiszolgáló-értékelési eszközének használatával.
 
-[Azure Migrate](migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
+[Azure Migrate](migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és a Microsoft partnereitől származó független szoftvergyártói (ISV) ajánlatokat tartalmaz.
 
-
-
-Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket az Azure-ba. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Hozzon létre egy Azure Migrate berendezést, amely a virtuális gépek felmérésére a helyszínen fut.
@@ -30,252 +28,252 @@ Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet fe
 > * Csoportosítsa a felderített virtuális gépeket, és mérje fel a virtuálisgép-csoportot.
 > * Tekintse át az értékelést.
 
-
-
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutató cikkeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Fejezze](tutorial-prepare-vmware.md) be az első oktatóanyagot ebben a sorozatban. Ha nem, az oktatóanyagban szereplő utasítások nem fognak működni.
-- Az első oktatóanyagban az alábbiakat kell elvégeznie:
-    - [Azure-engedélyek beállítása](tutorial-prepare-vmware.md#prepare-azure) Azure Migratehoz.
-    - A [VMware előkészítése](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) az értékeléshez. A VMware-beállításokat ellenőrizni kell, és rendelkeznie kell engedéllyel egy olyan VMware virtuális gép létrehozásához, amely PETESEJT-sablonnal rendelkezik. Rendelkeznie kell egy, a virtuális gép felderítéséhez beállított fiókkal is. A szükséges portok elérhetőnek kell lenniük, és tisztában kell lennie az Azure-hoz való hozzáféréshez szükséges URL-címekkel.
+[Fejezze be az első oktatóanyagot](tutorial-prepare-vmware.md) ebben a sorozatban. Ha nem, az oktatóanyagban szereplő utasítások nem fognak működni.
 
+Az első oktatóanyagban az alábbiakat kell elvégeznie:
+
+- [Azure-engedélyek beállítása](tutorial-prepare-vmware.md#prepare-azure) Azure Migratehoz.
+- A [VMware előkészítése](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) az értékeléshez:
+   - A VMware-beállítások ellenőrzése.
+   - Állítsa be az engedélyeket egy olyan VMware virtuális gép létrehozásához, amely egy PETESEJT-sablonnal rendelkezik.
+   - Hozzon létre egy fiókot a virtuális gép felderítéséhez. 
+   - Tegye elérhetővé a szükséges portokat.
+   - Ügyeljen az Azure-hoz való hozzáféréshez szükséges URL-címekre.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
 
-Állítson be egy új Azure Migrate-projektet a következők szerint.
+Hozzon létre egy új Azure Migrate projektet a következőképpen:
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
-2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
-3. Az **Áttekintés** területen a **Kiszolgálók felderítése, értékelése és migrálása** alatt kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
+1. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
+1. Az **Áttekintés**területen a **kiszolgálók felderítése, felmérése és migrálása**szakaszban válassza a **kiszolgálók felmérése és áttelepíteni**lehetőséget.
 
-    ![Kiszolgálók felderítése és értékelése](./media/tutorial-assess-vmware/assess-migrate.png)
+   ![A kiszolgálók értékelésére és átmigrálára szolgáló gomb](./media/tutorial-assess-vmware/assess-migrate.png)
 
-4. Az **Első lépések** területen kattintson az **Eszközök hozzáadása** elemre.
-5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.     
-6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét, valamint azt a földrajzi nevet, amelyben létre kívánja hozni a projektet. Ázsia, Európa, Egyesült Királyság és a Egyesült Államok támogatottak.
+1. Az **első lépések**területen válassza az **eszközök hozzáadása**lehetőséget.
+1. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.     
+1. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. Ázsia, Európa, Egyesült Királyság és Egyesült Államok támogatottak.
 
-    - A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
-    - Migrálás futtatása során bármilyen célrégiót választhat.
+   A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. Migrálás futtatása során bármilyen célrégiót választhat.
 
-    ![Azure Migrate projekt létrehozása](./media/tutorial-assess-vmware/migrate-project.png)
+   ![A projekt neve és a régió mezői](./media/tutorial-assess-vmware/migrate-project.png)
 
+1. Kattintson a **Tovább** gombra.
+1. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
 
-7. Kattintson a **Tovább** gombra.
-8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
+   ![A kiszolgáló-Assessment eszköz kiválasztása](./media/tutorial-assess-vmware/assessment-tool.png)
 
-    ![Azure Migrate projekt létrehozása](./media/tutorial-assess-vmware/assessment-tool.png)
-
-9. A **Migrálási eszköz kiválasztása** területen válassza **A migrálási eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
-10. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
-11. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik. Megnyílik a projekt oldala. Ha nem látja a projektet, az Azure Migrate irányítópult **Kiszolgálók** területéről elérheti.
-
+1. A **Migrálási eszköz kiválasztása** területen válassza **A migrálási eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
+1. A **felülvizsgálat + eszközök hozzáadása**lapon tekintse át a beállításokat, majd válassza az **eszközök hozzáadása**lehetőséget.
+1. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik. Megnyílik a projekt oldala. Ha nem látja a projektet, az Azure Migrate irányítópult **Kiszolgálók** területéről elérheti.
 
 ## <a name="set-up-the-appliance-vm"></a>A berendezés virtuális gép beállítása
 
-Azure Migrate: a kiszolgáló értékelése egy könnyű VMware VM-készüléket futtat.
+Azure Migrate Server Assessment egy egyszerűsített VMware VM-készüléket futtat. Ez a készülék virtuális gépek felderítését végzi, és a virtuális gépek metaadatait és teljesítményadatait gyűjti.
 
-- Ez a készülék a virtuális gépek felderítését végzi, és a virtuális gépek metaadatait és teljesítményadatait elküldi Azure Migrate kiszolgáló értékelésére.
-- A készülék beállítása:
-    - Töltse le a petesejtek sablon fájlját, és importálja vCenter Serverba.
-    - Hozza létre a készüléket, és győződjön meg róla, hogy tud kapcsolódni Azure Migrate Server Assessmenthez.
-    - Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel.
-- Több berendezést is beállíthat egyetlen Azure Migrate projekthez. Minden készüléken a legfeljebb 35 000 virtuális gép felderítése támogatott. Eszközönként legfeljebb 10 000 kiszolgálót lehet felderíteni.
+A készülék beállításához a következőket kell tennie:
+
+- Töltse le a petesejtek sablon fájlját, és importálja vCenter Serverba.
+- Hozza létre a készüléket, és győződjön meg róla, hogy tud kapcsolódni Azure Migrate Server Assessmenthez.
+- Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel.
+
+Több berendezést is beállíthat egyetlen Azure Migrate projekthez. Az összes készüléken a kiszolgáló értékelése legfeljebb 35 000 virtuális gép felderítését támogatja. Legfeljebb 10 000 kiszolgálót képes észlelni eszközönként.
 
 ### <a name="download-the-ova-template"></a>A petesejtek sablon letöltése
 
-1. Az **áttelepítési célok** > **kiszolgálók** > **Azure Migrate: kiszolgáló értékelése**területen kattintson a **felderítés**gombra.
-2. A **Gépek felderítése** > **Virtualizáltak a gépek?** területen kattintson az **Igen, a VMware vSphere hipervizorral** lehetőségre.
-3. Kattintson a **Letöltés** gombra az .OVA sablonfájl letöltéséhez.
+1. Az **áttelepítési célok** > **kiszolgálók** > **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+1. A számítógépek **felderítése** > a **gépek virtualizáltak?** területen válassza **az igen, a VMware vSphere hypervisor**lehetőséget.
+1. Válassza a **Letöltés** lehetőséget a petesejtek sablon fájljának letöltéséhez.
 
-    ![Az .ova-fájl letöltése](./media/tutorial-assess-vmware/download-ova.png)
-
+   ![A PETESEJT-fájlok letöltésének kiválasztása](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>Biztonság ellenőrzése
 
 A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztonságos.
 
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
-2. Futtassa a következő parancsot az OVA kivonatának létrehozásához:
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A verzió 2.19.07.30 a generált kivonatnak meg kell egyeznie ezekkel az értékekkel.
+1. Futtassa a következő parancsot a PETESEJT-fájl kivonatának létrehozásához:
+  
+   ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+   
+   Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
-  **Algoritmus** | **Kivonat értéke**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+A verzió 2.19.07.30 a generált kivonatnak meg kell egyeznie az alábbi értékekkel:
 
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
 
-Importálja a letöltött fájlt, és hozzon létre egy virtuális gépet.
+Importálja a letöltött fájlt, és hozzon létre egy virtuális gépet:
 
-1. A vSphere Client-konzolon kattintson a **Fájl** > **OVF-sablon telepítése** elemre.
+1. A vSphere-ügyfél konzolon válassza a **fájl** > **OVF-sablon telepítése**lehetőséget.
 
-    ![Az OVF telepítése](./media/tutorial-assess-vmware/deploy-ovf.png)
+   ![OVF-sablon üzembe helyezéséhez használható menüparancsok](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-2. A OVF-sablon központi telepítése varázslóban > **forrás**mezőben határozza meg a petesejt-fájl helyét.
-3. A **név** és **hely**mezőben adjon meg egy rövid nevet a virtuális gép számára. Válassza ki azt a leltár objektumot, amelyben a virtuális gép üzemeltetve lesz.
-5. A **gazdagép/fürt**területen adja meg azt a gazdagépet vagy fürtöt, amelyen a virtuális gép futni fog.
-6. A **tárterület**területen határozza meg a virtuális gép tárolási célját.
-7. A **Disk Format** (Lemezformátum) mezőben adja meg a lemez típusát és méretét.
-8. A **hálózati megfeleltetés**területen válassza ki azt a hálózatot, amelyhez a virtuális gép csatlakozni fog. A hálózatnak internetkapcsolatra van szüksége, hogy metaadatokat küldjön Azure Migrate kiszolgáló értékelésére.
-9. Tekintse át és hagyja jóvá a beállításokat, majd kattintson a **Finish** (Befejezés) gombra.
-
+1. A OVF-sablon központi telepítése varázslóban > **forrás**mezőben határozza meg a petesejt-fájl helyét.
+1. A **név** és **hely**mezőben adjon meg egy rövid nevet a virtuális gép számára. Válassza ki azt a leltár objektumot, amelyben a virtuális gép üzemeltetve lesz.
+1. A **gazdagép/fürt**területen adja meg azt a gazdagépet vagy fürtöt, amelyen a virtuális gép futni fog.
+1. A **tárterület**területen határozza meg a virtuális gép tárolási célját.
+1. A **Disk Format** (Lemezformátum) mezőben adja meg a lemez típusát és méretét.
+1. A **hálózati megfeleltetés**területen válassza ki azt a hálózatot, amelyhez a virtuális gép csatlakozni fog. A hálózat internetkapcsolatra van szüksége, hogy metaadatokat küldjön Azure Migrate kiszolgáló értékelésére.
+1. Tekintse át és erősítse meg a beállításokat, majd kattintson a **Befejezés gombra**.
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
 Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az [Azure URL-címekhez](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
 
-
 ### <a name="configure-the-appliance"></a>A berendezés konfigurálása
 
-Állítsa be a készüléket a következő lépések segítségével.
+Állítsa be a készüléket a következő lépések segítségével:
 
-1. A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gépre, majd kattintson az **Open Console** (Konzol megnyitása) elemre.
-2. Adja meg a berendezés nyelvét, időzónáját és jelszavát.
-3. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a virtuális géphez, és nyissa meg a berendezés webalkalmazásának URL-címét: **https://*készülék neve vagy IP-címe*: 44368**.
+1. A vSphere-ügyfél konzolján kattintson a jobb gombbal a virtuális gépre, majd válassza a **konzol megnyitása**lehetőséget.
+1. Adja meg a berendezés nyelvét, időzónáját és jelszavát.
+1. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a virtuális géphez, és nyissa meg a berendezés webalkalmazásának URL-címét: **https://*készülék neve vagy IP-címe*: 44368**.
 
-   Másik lehetőségként megnyithatja az alkalmazást a készülék asztaláról az alkalmazás parancsikonra kattintva.
-4. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
-    - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
-    - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDNformában.
-        - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
-        - Csak a HTTP-proxyk használata támogatott.
-    - **Időszinkronizálás**: a készüléken az idő a megfelelő működés érdekében szinkronban kell lennie az internettel.
-    - **Frissítések telepítése**: a készülék gondoskodik a legújabb frissítések telepítéséről.
-    - A **VDDK telepítése**: a készülék ellenőrzi, hogy telepítve van-e a VMware vSphere Virtual Disk Development Kit (VDDK).
-        - Azure Migrate: a kiszolgáló áttelepítése a VDDK használatával replikálja a gépeket az Azure-ba való áttelepítés során.
-        - Töltse le a VDDK 6,7-et a VMware-ből, és bontsa ki a letöltött zip-tartalmat a készülék megadott helyére.
+   Másik lehetőségként megnyithatja az alkalmazást a készülék asztaláról az alkalmazás parancsikonjának kiválasztásával.
+1. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
+   - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
+   - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
+     - Válassza a **Proxybeállítások**lehetőséget, majd adja meg a proxy címe és a figyelő portot az űrlapon http://ProxyIPAddress vagy http://ProxyFQDN.
+     - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
+     - Vegye figyelembe, hogy csak a HTTP-proxy támogatott.
+   - **Időszinkronizálás**: a készüléken az idő a megfelelő működés érdekében szinkronban kell lennie az internettel.
+   - **Frissítések telepítése**: a készülék gondoskodik a legújabb frissítések telepítéséről.
+   - A **VDDK telepítése**: a készülék ellenőrzi, hogy telepítve van-e a VMware vSphere Virtual Disk Development Kit (VDDK). Ha nincs telepítve, töltse le a VDDK 6,7-et a VMware-ből, és bontsa ki a letöltött zip-tartalmat a készülék megadott helyére.
+
+     Azure Migrate kiszolgáló áttelepítése a VDDK használatával replikálja a gépeket az Azure-ba való áttelepítés során.       
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Kattintson **a bejelentkezés**elemre. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
-2. Az új lapon jelentkezzen be az Azure-beli hitelesítő adataival.
-    - Jelentkezzen be a felhasználónevével és jelszavával.
-    - A PIN-kóddal való bejelentkezés nem támogatott.
-3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
-2. Válassza ki azt az előfizetést, amelyben a Azure Migrate projektet létrehozták, majd válassza ki a projektet.
-3. Adja meg a berendezés nevét. A névnek legalább 14 karakterből kell állnia.
-4. Kattintson a **regisztrálás**gombra.
+1. Válassza **a bejelentkezés**lehetőséget. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
+1. Az új lapon jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
+   
+   A PIN-kóddal való bejelentkezés nem támogatott.
+1. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz.
+1. Válassza ki azt az előfizetést, amelyben a Azure Migrate projektet létrehozták, majd válassza ki a projektet.
+1. Adja meg a berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
+1. Kattintson a **Register** (Regisztrálás) elemre.
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
 
 A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfigurációjának és teljesítményének felderítéséhez.
 
 ### <a name="specify-vcenter-server-details"></a>A vCenter Server adatainak megadása
-1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen a vCenter Server figyeli.
-2. A **Felhasználónév** és a **jelszó**mezőben adja meg azokat a vCenter Server fiók hitelesítő adatait, amelyeket a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. Győződjön meg arról, hogy a fiók rendelkezik a [felderítéshez szükséges engedélyekkel](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). A felderítés hatókörét a vCenter-fiókhoz való hozzáférés korlátozásával teheti meg. További információk a hatókör-felderítésről [itt](tutorial-assess-vmware.md#scoping-discovery).
-3. Kattintson a **kapcsolat ellenőrzése** elemre, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
+1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server példány nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli.
+1. A **Felhasználónév** és a **jelszó**mezőben adja meg azokat a vCenter Server fiók hitelesítő adatait, amelyeket a berendezés a vCenter Server példányon lévő virtuális gépek felderítéséhez használni fog. 
+
+   Győződjön meg arról, hogy a fiók rendelkezik a [felderítéshez szükséges engedélyekkel](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). [A felderítést](tutorial-assess-vmware.md#set-the-scope-of-discovery) a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti.
+1. Válassza a **kapcsolat ellenőrzése** lehetőséget, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása
-Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint a virtuális gépek függőségeinek megjelenítéséhez megadhat egy virtuális gép hitelesítő adatait, amely hozzáfér a VMware virtuális gépekhez. Hozzáadhat egy hitelesítő adatot a Windows rendszerű virtuális gépekhez, és egy hitelesítő adatot a linuxos virtuális gépekhez. [További](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) információ a szükséges hozzáférési jogosultságokról.
+Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint a virtuális gépek függőségeinek megjelenítéséhez megadhatja a VMware virtuális gépekhez hozzáféréssel rendelkező virtuálisgép-hitelesítő adatokat. Hozzáadhat egy hitelesítő adatot a Windows rendszerű virtuális gépekhez, és egy hitelesítő adatot a linuxos virtuális gépekhez. [További](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) információ a szükséges hozzáférési engedélyekről.
 
 > [!NOTE]
-> Ez a bemenet nem kötelező, és az alkalmazás-felderítés és az ügynök nélküli függőségi vizualizáció engedélyezéséhez szükséges.
+> Ez a bemenet nem kötelező, de szükség van rá, ha engedélyezni szeretné az alkalmazás-felderítést és az ügynök nélküli függőségi vizualizációt.
 
-1. Az **alkalmazások és a virtuális gépek függőségeinek felderítése**területen kattintson a **hitelesítő adatok hozzáadása**lehetőségre.
-2. Válassza ki az **operációs rendszert**.
-3. Adjon meg egy rövid nevet a hitelesítő adatokhoz.
-4. A **Felhasználónév** és a **jelszó**mezőben olyan fiókot válasszon, amely legalább vendég hozzáféréssel rendelkezik a virtuális gépeken.
-5. Kattintson az **Hozzáadás** parancsra.
+1. Az **alkalmazások és a virtuális gépek függőségeinek felderítése**területen válassza a **hitelesítő adatok hozzáadása**elemet.
+1. Válasszon ki egy **operációs rendszert**.
+1. Adjon meg egy rövid nevet a hitelesítő adatokhoz.
+1. A **Felhasználónév** és a **jelszó**mezőben olyan fiókot válasszon, amely legalább vendég hozzáféréssel rendelkezik a virtuális gépeken.
+1. Válassza a **Hozzáadás** lehetőséget.
 
-Miután megadta a vCenter Server és a virtuális gép hitelesítő adatait (nem kötelező), kattintson a Save (Mentés) gombra, **és indítsa el a felderítést** a helyszíni környezet felderítésének megkezdéséhez.
+Miután megadta a vCenter Server példányt és a virtuális gép hitelesítő adatait (nem kötelező), válassza a mentés lehetőséget, **és indítsa el a felderítést** a helyszíni környezet felderítésének megkezdéséhez.
 
-Körülbelül 15 percet vesz igénybe, hogy a felderített virtuális gépek metaadatai megjelenjenek a portálon. A telepített alkalmazások, szerepkörök és szolgáltatások felderítése hosszabb időt vesz igénybe, az időtartam a felderített virtuális gépek számától függ. 500 virtuális gépek esetében körülbelül 1 órát vesz igénybe, hogy az alkalmazás leltára megjelenjen a Azure Migrate-portálon.
+Körülbelül 15 percet vesz igénybe, hogy a felderített virtuális gépek metaadatai megjelenjenek a portálon. A telepített alkalmazások, szerepkörök és szolgáltatások felderítése hosszabb időt vesz igénybe. Az időtartam a felderített virtuális gépek számától függ. 500 virtuális gépek esetében körülbelül 1 órát vesz igénybe, hogy az alkalmazás leltára megjelenjen a Azure Migrate-portálon.
 
-### <a name="scoping-discovery"></a>Hatókör felderítése
+### <a name="set-the-scope-of-discovery"></a>A felderítés hatókörének beállítása
 
-A felderítés hatóköre a felderítéshez használt vCenter-fiók hozzáférésének korlátozásával lehetséges. A hatókört beállíthatja vCenter Server adatközpontok, fürtök, a fürtök, a gazdagépek, a gazdagépek mappája vagy az egyes virtuális gépek számára.
+A felderítés hatóköre a felderítéshez használt vCenter-fiók hozzáférésének korlátozásával lehetséges. A hatókört beállíthatja vCenter Server adatközpontok, fürtök, fürtök, gazdagépek, gazdagépek vagy egyéni virtuális gépek mappájára.
 
-A hatókör beállításához a következő lépéseket kell elvégeznie:
-1.  Hozzon létre egy vCenter felhasználói fiókot.
-2.  Adjon meg egy új szerepkört a szükséges jogosultságokkal. (<em>az ügynök nélküli kiszolgáló áttelepítéséhez szükséges</em>)
-3.  Engedélyeket rendelhet a felhasználói fiókhoz a vCenter-objektumokon.
+A hatókör beállításához hajtsa végre az alábbi eljárásokat.
 
-**VCenter felhasználói fiók létrehozása**
+#### <a name="1-create-a-vcenter-user-account"></a>1. hozzon létre egy vCenter felhasználói fiókot
 1.  Jelentkezzen be a vSphere webes ügyfélprogramba vCenter Server rendszergazdaként.
-2.  Kattintson a **felügyelet** > **SSO felhasználók és csoportok** > **felhasználók** fülre.
-3.  Kattintson az **új felhasználó** ikonra.
-4.  Adja meg az új felhasználó létrehozásához szükséges információkat, majd kattintson **az OK gombra**.
+1.  Válassza az **adminisztráció** > **SSO felhasználók és csoportok**lehetőséget, majd válassza a **felhasználók** lapot.
+1.  Válassza az **új felhasználó** ikont.
+1.  Adja meg a szükséges adatokat egy új felhasználó létrehozásához, majd kattintson **az OK gombra**.
 
-**Adjon meg egy új szerepkört a szükséges jogosultságokkal** (<em>az ügynök nélküli kiszolgáló áttelepítéséhez szükséges</em>)
-1.  Jelentkezzen be a vSphere webes ügyfelére vCenter Server rendszergazdaként.
-2.  Tallózással keresse meg az **adminisztráció** > a **szerepkör-kezelőt**.
-3.  Válassza ki a vCenter Server a legördülő menüből.
-4.  Kattintson a **szerepkör létrehozása** művelet elemre.
-5.  Adja meg az új szerepkör nevét. (például <em>Azure_Migrate</em>).
-6.  Rendelje hozzá ezeket az [engedélyeket](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) az újonnan definiált szerepkörhöz.
-7.  Kattintson az **OK** gombra.
+#### <a name="2-define-a-new-role-with-required-permission"></a>2. Adjon meg egy új szerepkört a szükséges engedélyekkel
+Ez az eljárás szükséges az ügynök nélküli kiszolgálók áttelepítéséhez.
+1.  Jelentkezzen be a vSphere webes ügyfélprogramba vCenter Server rendszergazdaként.
+1.  Tallózással keresse meg az **adminisztráció** > a **szerepkör-kezelőt**.
+1.  Válassza ki a vCenter Server példányt a legördülő menüből.
+1.  Válassza a **szerepkör létrehozása**lehetőséget.
+1.  Adja meg az új szerepkör nevét (például <em>Azure_Migrate</em>).
+1.  Rendeljen [engedélyeket](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) az újonnan definiált szerepkörhöz.
+1.  Kattintson az **OK** gombra.
 
-**Engedélyek kiosztása vCenter-objektumokhoz**
+#### <a name="3-assign-permissions-on-vcenter-objects"></a>3. engedélyek kiosztása vCenter-objektumokhoz
 
-A vCenter lévő leltári objektumokra vonatkozóan 2 megközelítés rendelhető hozzá a vCenter felhasználói fiókhoz, amelyhez hozzá van rendelve egy szerepkör.
-- A kiszolgáló-értékeléshez **csak olvasási** szerepkört kell alkalmazni az összes olyan szülőobjektum vCenter felhasználói fiókjához, ahol a felderített virtuális gépek futnak. Az összes szülőobjektum – gazdagép, gazdagép, fürt, a hierarchiában lévő fürtök mappája, amelybe az adatközpontot fel kell venni. Ezeket az engedélyeket a rendszer a hierarchiában lévő alárendelt objektumokra propagálja.
+A vCenter lévő leltári objektumokra vonatkozó engedélyek hozzárendelésének két módja van: az vCenter felhasználói fiókhoz a hozzárendelt szerepkörrel.
 
-    A kiszolgálók áttelepítéséhez hasonlóan a felhasználó által definiált ( <em>Azure _Migrate</em>nevű) szerepkört is [](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) alkalmazni kell az összes olyan szülőobjektum vCenter felhasználói fiókjához, ahol az áttelepíteni kívánt virtuális gépek futnak.
+A kiszolgáló értékelése során a **csak olvasási jogosultsággal** rendelkező szerepkört a vCenter felhasználói fiókra kell alkalmazni az összes olyan szülőobjektum esetében, ahol a felderíteni kívánt virtuális gépek futnak. A rendszer az összes fölérendelt objektumot tartalmazza: gazdagép, gazdagépek, fürt és a hierarchiában lévő fürtök mappája az adatközpontba. Ezeket az engedélyeket a rendszer a hierarchiában lévő alárendelt objektumokra propagálja.
 
-  ![Engedélyek kiosztása](./media/tutorial-assess-vmware/assign-perms.png)
+A kiszolgálók áttelepítéséhez hasonlóan olyan felhasználó által definiált szerepkört kell alkalmaznia, amely jogosult a vCenter felhasználói fiókjára az összes olyan szülőobjektum [esetében, ahol](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) az áttelepíteni kívánt virtuális gépek futnak. Ezt a szerepkört <em>Azure _Migrate</em>is lehet nevezni.
 
-- A másik megoldás, ha a felhasználói fiókot és szerepkört az adatközpont szintjén rendeli hozzá, és propagálja azokat a gyermekobjektumok számára. Ezután adja meg a fióknak, hogy ne legyen **hozzáférési** szerepkör minden olyan objektumhoz (például virtuális gépekhez), amelyet nem szeretne felderíteni vagy áttelepíteni. Ez a konfiguráció nehézkes. Lehetővé teszi a véletlen hozzáférés-vezérlést, mivel minden új gyermekobjektum automatikusan megkapja a szülőtől örökölt hozzáférést is. Ezért javasoljuk, hogy az első módszert használja.
+![Engedélyek kiosztása](./media/tutorial-assess-vmware/assign-perms.png)
+
+A másik megoldás, ha a felhasználói fiókot és szerepkört az adatközpont szintjén rendeli hozzá, és propagálja azokat a gyermekobjektumok számára. Ezután adja meg a fióknak, hogy ne legyen **hozzáférési** szerepkör minden olyan objektumhoz (például egy virtuális géphez), amelyet nem szeretne felderíteni vagy áttelepíteni. 
+
+Ez az alternatív konfiguráció nehézkes. Lehetővé teszi a véletlen hozzáférés-vezérlést, mivel minden új gyermekobjektum automatikusan megkapja a szülőtől örökölt hozzáférést is. Ezért javasoljuk, hogy az első módszert használja.
 
 > [!NOTE]
-> A kiszolgáló értékelése jelenleg nem képes felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén.  A következő utasításokat követve teheti meg:
+> A kiszolgáló értékelése jelenleg nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a felderítést virtuálisgép-mappák szerint szeretné használni, ezt a következő eljárással teheti meg. Gondoskodik arról, hogy a vCenter fiók csak olvasási hozzáféréssel legyen kiosztva virtuálisgép-szinten.
 >
 > 1. Rendeljen írásvédett engedélyeket azon virtuálisgép-mappák összes virtuális gépén, amelyeken a felderítés hatókörét el szeretné osztani.
-> 2. Csak olvasási hozzáférést biztosítson az összes olyan szülő objektumhoz, ahol a virtuális gépeket üzemeltetik. Az összes szülőobjektum – gazdagép, gazdagépek, fürt, a fürtök mappája – a hierarchiában az adatközpontig kell szerepelnie. Nem kell propagálnia az engedélyeket az összes gyermekobjektum számára.
-> 3. Használja a felderítési hitelesítő adatokat az adatközpont *gyűjtési hatókörként*való kiválasztásához. A RBAC beállítása biztosítja, hogy a megfelelő vCenter-felhasználó csak a bérlőre jellemző virtuális gépekhez férhessen hozzá.
+> 1. Csak olvasási hozzáférést biztosítson az összes olyan szülő objektumhoz, ahol a virtuális gépeket üzemeltetik. A rendszer a hierarchiában lévő összes szülő objektumot (gazdagép, gazdagép, fürt, a fürtök mappáját) is felveszi az adatközpontba. Nem kell propagálnia az engedélyeket az összes gyermekobjektum számára.
+> 1. A felderítési hitelesítő adatok használatával válassza ki az adatközpontot **gyűjtemény hatókörként**. A beállított szerepköralapú hozzáférés-vezérlés biztosítja, hogy a megfelelő vCenter-felhasználó csak a bérlőre jellemző virtuális gépekhez férhessen hozzá.
 >
-> Vegye figyelembe, hogy a gazdagépek és a fürtök mappája támogatott.
+> Vegye figyelembe, hogy a gazdagépek és fürtök mappái támogatottak.
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-A felderítést követően ellenőrizheti, hogy a virtuális gépek megjelennek-e a Azure Portalban.
+A felderítést követően ellenőrizheti, hogy a virtuális gépek megjelennek-e a Azure Portalban:
 
 1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+1. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése**lapon válassza ki a **felderített kiszolgálók**darabszámát megjelenítő ikont.
 
 ## <a name="set-up-an-assessment"></a>Értékelés beállítása
 
-A Azure Migrate: Server Assessment használatával kétféle értékelést hozhat létre.
+Azure Migrate Server Assessment használatával kétféle értékelést hozhat létre:
 
 **Értékelés** | **Részletek** | **Adatok**
 --- | --- | ---
 **Teljesítmény-alapú** | Értékelések az összegyűjtött teljesítményadatok alapján | **Ajánlott**virtuálisgép-méret: a processzor-és memóriahasználat adatai alapján.<br/><br/> **Ajánlott lemez típusa (standard vagy prémium szintű felügyelt lemez)** : a helyszíni lemezek IOPS és átviteli sebessége alapján.
-**Helyszíni** | Helyszíni méretezésen alapuló értékelések. | **Ajánlott**virtuálisgép-méret: a helyszíni virtuális gép méretétől függően<br/><br> **Ajánlott lemez típusa**: az értékeléshez kiválasztott tárolási típus alapján.
+**Helyszíni** | Felmérések helyszíni méretezés alapján | **Ajánlott**virtuálisgép-méret: a helyszíni virtuális gép méretétől függően.<br/><br> **Ajánlott lemez típusa**: az értékeléshez kiválasztott tárolási típus beállításán alapul.
 
-
-### <a name="run-an-assessment"></a>Értékelés futtatása
+## <a name="run-an-assessment"></a>Értékelés futtatása
 
 Az értékelést a következőképpen futtathatja:
 
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
-2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
+1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén válassza az **értékelés**lehetőséget.
 
-    ![Kiértékelés](./media/tutorial-assess-vmware/assess.png)
+   ![Az értékelés gomb helye](./media/tutorial-assess-vmware/assess.png)
 
-2. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
-3. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
+1. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
+1. Válassza az **összes megtekintése**lehetőséget, majd tekintse át az értékelés tulajdonságait.
 
-    ![Értékelés tulajdonságai](./media/tutorial-assess-vmware/view-all.png)
+   ![Értékelés tulajdonságai](./media/tutorial-assess-vmware/view-all.png)
 
-3. A **válasszon ki vagy hozzon létre egy csoportot**, válassza az **új létrehozása**lehetőséget, és adjon meg egy csoportnevet. Egy csoport egy vagy több virtuális gépet gyűjt össze az értékeléshez.
-4. A **számítógépek hozzáadása a csoporthoz**területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
-5. A csoport létrehozásához kattintson az **Értékelés létrehozása** elemre, majd futtassa az értékelést.
+1. A **válasszon ki vagy hozzon létre egy csoportot**, válassza az **új létrehozása**lehetőséget, és adjon meg egy csoportnevet. Egy csoport egy vagy több virtuális gépet gyűjt össze az értékeléshez.
+1. A **számítógépek hozzáadása a csoporthoz**területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
+1. Az **Értékelés létrehozása** elemre kattintva hozza létre a csoportot, és futtassa az értékelést.
 
-    ![Értékelés létrehozása](./media/tutorial-assess-vmware/assessment-create.png)
+   ![Kiszolgálók értékelése](./media/tutorial-assess-vmware/assessment-create.png)
 
-6. Az értékelés létrehozása után megtekintheti azt a **kiszolgálók** > **Azure Migrate: kiszolgálói felmérés** > **értékelések**.
-7. Az értékelés az **Értékelés exportálása** gombra kattintva Excel-fájlként letölthető.
-
-
+1. Az értékelés létrehozása után megtekintheti azt a **kiszolgálók** > **Azure Migrate: kiszolgálói felmérés** > **értékelések**.
+1. Válassza az **értékelés exportálása** lehetőséget, ha Excel-fájlként szeretné letölteni.
 
 ## <a name="review-an-assessment"></a>Értékelés áttekintése
 
@@ -285,51 +283,40 @@ Az értékelés a következőket írja le:
 - **Havi költségbecslés**: a virtuális gépek Azure-ban való futtatásának becsült havi számítási és tárolási költségei.
 - **Havi tárolási költségek becslése**: a lemezes tárolás becsült költségei az áttelepítés után.
 
-### <a name="view-an-assessment"></a>Értékelés megtekintése
+Értékelés megtekintése:
 
-1. Az **áttelepítési célok** >  - **kiszolgálók**területen kattintson az **értékelések** **Azure Migrate: kiszolgáló értékelése**elemre.
-2. Az **értékelésekben**kattintson egy értékelésre a megnyitásához.
+1. Az **áttelepítési célok** > - **kiszolgálók**lapon válassza az **értékelések** **Azure Migrate: kiszolgáló értékelése**lehetőséget.
+1. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához.
 
-    ![Értékelés összegzése](./media/tutorial-assess-vmware/assessment-summary.png)
+   ![Értékelés összegzése](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Az Azure készültségének áttekintése
 
 1. Az **Azure készültségi**területén ellenőrizze, hogy a virtuális gépek készen állnak-e az Azure-ba való áttelepítésre.
-2. A virtuális gép állapotának áttekintése:
-    - **Készen áll az Azure-ra**: Azure Migrate javasolja a virtuális gépek méretének és becsült értékének becslését az értékelés során.
+1. A virtuális gép állapotának áttekintése:
+    - **Készen áll az Azure-ra**: használatban van, amikor a Azure Migrate javasolja a virtuális gépek méretének és becsült értékének becslését az értékelés során.
     - **Feltételekkel kész**: megjeleníti a problémákat és a javasolt szervizelést.
     - **Nem áll készen az Azure-ra: a**problémákat és a javasolt szervizelést jeleníti meg.
-    - **Felkészültségi ismeretlen**: akkor használatos, ha az adatelérhetőségi problémák miatt Azure Migrate nem tudja felmérni a készültséget.
+    - **Felkészültségi ismeretlen**: akkor használatos, ha a Azure Migrate nem tudja felmérni a készültséget az adatelérhetőségi problémák miatt.
 
-2. Kattintson egy **Azure-készültségi** állapotra. Megtekintheti a VM-készültség részleteit, és részletesen megtekintheti a virtuális gép részleteit, beleértve a számítási, tárolási és hálózati beállításokat.
-
-
+1. Válasszon ki egy **Azure-készültségi** állapotot. Megtekintheti a VM-készültség részleteit. A virtuális gép részleteit is megtekintheti, beleértve a számítási, tárolási és hálózati beállításokat.
 
 ### <a name="review-cost-details"></a>A Cost részleteinek áttekintése
 
-Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és tárolási költségeit jeleníti meg.
+Az értékelés összegzése az Azure-ban futó virtuális gépek becsült számítási és tárolási költségeit mutatja. A költségek összesítése az összes virtuális gép számára történik a vizsgált csoportban. A részletezést lenyomva megtekintheti az adott virtuális gépek részletes költségeit.
 
-1. Tekintse át a havi számítási és tárolási költségeket. A költségek összesítése az összes virtuális gép számára történik a vizsgált csoportban.
+> [!NOTE]
+> A költségbecslés a gép, a lemezek és a hozzá tartozó tulajdonságok méretére vonatkozó javaslatok alapján történik. A becslések a helyszíni virtuális gépek IaaS virtuális gépekként való futtatására szolgálnak. Azure Migrate Server Assessment nem veszi figyelembe a Pásti vagy az SaaS költségeit.
 
-    - A költségbecslés a gép méretére vonatkozó javaslatokon, valamint a lemezek és a tulajdonságok alapján történik.
-    - A számítási és tárolási költségek becsült havi költségei láthatók.
-    - A költségbecslés a helyszíni virtuális gépek IaaS virtuális gépekként való futtatására szolgál. Azure Migrate Server Assessment nem veszi figyelembe a Pásti vagy az SaaS költségeit.
-
-2. Megtekintheti a havi tárolási díjak becsült összegét. Ez a nézet az értékelt csoport összesített tárolási költségeit jeleníti meg, a különböző típusú tárolóeszközök felosztásával.
-3. A részletezéssel megtekintheti az adott virtuális gépek részleteit.
-
+Az értékelt csoport összesített tárolási költségei különböző típusú tárolóeszközökön vannak felosztva. 
 
 ### <a name="review-confidence-rating"></a>Megbízhatósági minősítés áttekintése
 
-Ha teljesítmény-alapú értékeléseket futtat, a rendszer megbízhatósági minősítést rendel az értékeléshez.
+Azure Migrate Server Assessment megbízhatósági minősítést rendel egy teljesítmény-alapú értékeléshez, 1 csillag (legalacsonyabb) és 5 csillag között (a legmagasabb).
 
 ![Megbízhatósági minősítés](./media/tutorial-assess-vmware/confidence-rating.png)
 
-- A rendszer kinyeri az 1 csillagos (legalacsonyabb) és az 5 csillagos (legmagasabb) minősítést.
-- A megbízhatósági minősítés segít megbecsülni az értékelés által biztosított méretre vonatkozó ajánlások megbízhatóságát.
-- A megbízhatósági minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állásán alapul.
-
-Az értékelés megbízhatósági minősítése a következő.
+A megbízhatósági minősítés segít megbecsülni az értékelés méretére vonatkozó javaslatok megbízhatóságát. A minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állásán alapul:
 
 **Adatpont rendelkezésre állása** | **Megbízhatósági minősítés**
 --- | ---
@@ -339,18 +326,13 @@ Az értékelés megbízhatósági minősítése a következő.
 61%–80% | 4 csillag
 81%–100% | 5 csillag
 
-[További](best-practices-assessment.md#best-practices-for-confidence-ratings) információ a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokról.
-
+[Ismerje meg](best-practices-assessment.md#best-practices-for-confidence-ratings) a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Ebben az oktatóanyagban egy Azure Migrate berendezést állít be. Az értékelést is létrehozta és felülvizsgálta.
 
-> [!div class="checklist"]
-> * Azure Migrate berendezés beállítása
-> * Értékelés létrehozva és felülvizsgálva
-
-Folytassa a sorozat harmadik oktatóanyagával, amelyből megtudhatja, hogyan telepítheti át a VMware virtuális gépeket az Azure-ba Azure Migrate Server áttelepítéssel.
+A VMware virtuális gépek Azure-ba történő áttelepítésének megismeréséhez Azure Migrate kiszolgáló áttelepítésének használatával folytassa a sorozat harmadik oktatóanyagával:
 
 > [!div class="nextstepaction"]
 > [VMware virtuális gépek migrálása](./tutorial-migrate-vmware.md)

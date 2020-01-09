@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435572"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
 
@@ -24,13 +24,13 @@ Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* A Storage-fiók neve és kulcsa. Lásd: [a Azure Portal a Storage-fiókok beállításainak kezelése](../storage/common/storage-account-manage.md).
+* A Storage-fiók neve és kulcsa. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md).
 * A [fürt nevének megfelelő betokozása](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
 * Ha a PowerShellt használja, szüksége lesz az az modulra.  Lásd: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview).
 * Ha még nem telepítette az Azure CLI-t, tekintse meg az [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)című témakört.
 * Ha bash-t vagy Windows-parancssort használ, **jQ**, parancssori JSON-processzorra is szüksége lesz.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). A bash on Ubuntu on Windows 10 lásd: [Windows alrendszer a Linux-telepítési útmutató a Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)rendszerhez.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 A szkript a következő paramétereket veszi figyelembe:
 
@@ -86,7 +86,7 @@ Submit-AzHDInsightScriptAction `
     -Parameters $parameters
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az [az hdinsight script-Action Execute](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)paranccsal.  Cserélje le a `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`és `ACCOUNTKEY` értékeket a megfelelő értékekre.
 
@@ -100,7 +100,7 @@ az hdinsight script-action execute ^
     --script-parameters "ACCOUNTNAME ACCOUNTKEY"
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 Lásd: [parancsfájl-művelet alkalmazása futó fürtre](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
@@ -108,7 +108,7 @@ Lásd: [parancsfájl-művelet alkalmazása futó fürtre](hdinsight-hadoop-custo
 
 ### <a name="storage-firewall"></a>Tárolási tűzfal
 
-Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon**, ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára** ... így a HDInsight hozzáférhet a tárolóhoz fiók.
+Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon**, ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára** ... így a HDInsight hozzáférhet a Storage-fiókhoz.
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Azure Portal vagy eszközök nem jelennek meg a Storage-fiókok között
 
@@ -220,6 +220,6 @@ Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, a telj
 
 Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, az Azure-számlázás további kimenő költségeire is figyelmeztetheti. Ha az adatközpont elhagyja a helyi adatközpontot, a kimenő forgalom díját is alkalmazza. Ez a díj akkor is alkalmazható, ha a forgalmat egy másik régióban lévő Azure-adatközpontra szánják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan adhat hozzá további Storage-fiókokat egy meglévő HDInsight-fürthöz. További információ a parancsfájl-műveletekről: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)

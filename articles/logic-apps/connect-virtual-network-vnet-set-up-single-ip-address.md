@@ -1,21 +1,23 @@
 ---
-title: Hozzáférés beállítása több ISEs
-description: Több integrációs szolgáltatási környezet (ISEs) esetén egyetlen nyilvános kimenő IP-címet állíthat be a külső rendszerek eléréséhez Azure Logic Apps
+title: Nyilvános kimenő IP-cím beállítása a ISEs
+description: Ismerje meg, hogyan állíthat be egyetlen nyilvános kimenő IP-címet az integrációs szolgáltatási környezetekhez (ISEs) Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453482"
 ---
-# <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Több integrációs szolgáltatási környezethez való hozzáférés beállítása Azure Logic Apps
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Egyetlen IP-cím beállítása egy vagy több integrációs szolgáltatási környezethez Azure Logic Apps
 
-Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) olyan logikai alkalmazások üzemeltetéséhez, amelyek egy Azure-beli [virtuális hálózat](../virtual-network/virtual-networks-overview.md)erőforrásaihoz férnek hozzá. Ha több ISE-példánnyal rendelkezik, amelyek IP-korlátozásokkal rendelkező más végpontokhoz férnek hozzá, helyezzen üzembe egy [Azure Firewall](../firewall/overview.md) vagy egy [hálózati virtuális berendezést](../virtual-network/virtual-networks-overview.md#filter-network-traffic) a virtuális hálózatban, és irányítsa át a kimenő forgalmat a tűzfalon vagy a hálózati virtuális berendezésen keresztül. Ezután a virtuális hálózat összes ISE-példánya egyetlen, kiszámítható és nyilvános IP-címet használ a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében. Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Firewallon keresztül, de hasonló fogalmakat alkalmazhat egy virtuális hálózati virtuális berendezésre, például egy külső gyártótól származó tűzfalra az Azure piactéren.
+Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) olyan logikai alkalmazások üzemeltetéséhez, amelyek egy Azure-beli [virtuális hálózat](../virtual-network/virtual-networks-overview.md)erőforrásaihoz férnek hozzá. Ha több ISE-példánnyal rendelkezik, amelyek IP-korlátozásokkal rendelkező más végpontokhoz férnek hozzá, helyezzen üzembe egy [Azure Firewall](../firewall/overview.md) vagy egy [hálózati virtuális berendezést](../virtual-network/virtual-networks-overview.md#filter-network-traffic) a virtuális hálózatban, és irányítsa át a kimenő forgalmat a tűzfalon vagy a hálózati virtuális berendezésen keresztül. Ezután a virtuális hálózat összes ISE-példánya egyetlen, nyilvános, statikus és kiszámítható IP-címet használ a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében.
+
+Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Firewallon keresztül, de hasonló fogalmakat alkalmazhat egy hálózati virtuális berendezésre, például egy külső gyártótól származó tűzfalra az Azure piactéren. Habár ez a témakör több ISE-példány beállítására koncentrál, ezt a módszert egyetlen ISE esetében is használhatja, ha a forgatókönyv megköveteli a hozzáférést igénylő IP-címek számának korlátozását. Gondolja át, hogy a tűzfal vagy a virtuális hálózati berendezés további költségei ésszerűek-e a forgatókönyvhöz. További információ a [Azure Firewall díjszabásáról](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

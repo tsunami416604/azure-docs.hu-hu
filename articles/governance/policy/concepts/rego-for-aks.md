@@ -3,12 +3,12 @@ title: Az Azure Kubernetes Service Azure Policy megismerése
 description: Megtudhatja, hogyan kezeli a Azure Policy a Rego és a nyílt házirend-ügynököt a fürtök Azure Kubernetes szolgáltatásban való kezeléséhez.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279396"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436394"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service Azure Policy megismerése
 
@@ -29,11 +29,11 @@ A következő műveletek végrehajtásával engedélyezheti és használhatja a 
 
 ## <a name="opt-in-for-preview"></a>Előzetes verzióra való feliratkozás
 
-A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. tárolószolgáltatás** erőforrás-szolgáltatót és a **Microsoft. PolicyInsights** erőforrás-szolgáltatót, majd jóvá kell hagynia a következőt: csatlakozzon az előzetes verzióhoz. Az előzetes verzióhoz való csatlakozáshoz kövesse az alábbi lépéseket a Azure Portal vagy az Azure CLI használatával:
+A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. tárolószolgáltatás** erőforrás-szolgáltatót és a **Microsoft. PolicyInsights** erőforrás-szolgáltatót, majd jóvá kell hagynia az előzetes verzióhoz való csatlakozást. Az előzetes verzióhoz való csatlakozáshoz kövesse az alábbi lépéseket a Azure Portal vagy az Azure CLI használatával:
 
 - Azure Portal:
 
-  1. Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
   1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
@@ -123,7 +123,7 @@ Mielőtt telepítené a bővítményt az AK-fürtben, telepítenie kell az előn
 
 Az előfeltételek elvégzése után telepítse a Azure Policy-bővítményt a felügyelni kívánt AK-fürtben.
 
-- Azure Portal
+- Azure portál
 
   1. Indítsa el az AK szolgáltatást a Azure Portal a **minden szolgáltatás**elemre kattintva, majd keresse meg és válassza ki a **Kubernetes Services szolgáltatást**.
 
@@ -140,7 +140,7 @@ Az előfeltételek elvégzése után telepítse a Azure Policy-bővítményt a f
      > [!NOTE]
      > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. A szükséges lépések megtekintéséhez tekintse meg a következőt: [opt-in (előzetes](#opt-in-for-preview) verzió).
 
-- Azure CLI
+- Azure parancssori felület (CLI)
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -206,7 +206,7 @@ Ha a forgalomirányító tárolók naplóit szeretné megtekinteni, hajtsa végr
 
 Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, használja a Azure Portal vagy az Azure CLI-t:
 
-- Azure Portal
+- Azure portál
 
   1. Indítsa el az AK szolgáltatást a Azure Portal a **minden szolgáltatás**elemre kattintva, majd keresse meg és válassza ki a **Kubernetes Services szolgáltatást**.
 
@@ -220,7 +220,7 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
 
      ![Az AK-bővítmény Azure Policyának letiltása](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure CLI
+- Azure parancssori felület (CLI)
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

@@ -1,104 +1,95 @@
 ---
-title: Az Azure Service Fabric-figyelés és diagnosztika – áttekintés |} A Microsoft Docs
-description: Ismerje meg a monitorozást és diagnosztikát az Azure Service Fabric-fürtökkel, alkalmazásokkal és szolgáltatásokkal.
-services: service-fabric
-documentationcenter: .net
+title: Az Azure Service Fabric monitorozási és diagnosztikai áttekintése
+description: Ismerje meg az Azure Service Fabric-fürtök,-alkalmazások és-szolgáltatások figyelését és diagnosztizálását.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: a6c32058c68adbfd11a4cede6332b42076bea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349696"
 ---
-# <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabrichez
+# <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabric
 
-Ez a cikk áttekintést monitorozást és diagnosztikát az Azure Service Fabric. A monitoring and diagnostics létfontosságúak fejlesztéséhez, teszteléséhez és bármilyen felhőalapú környezetben a számítási feladatok üzembe helyezése. Ha például nyomon követheti az alkalmazások használata, a Service Fabric platformot, az erőforrások kihasználtságát, a teljesítményszámlálók és az általános állapotát, a fürt által végrehajtott műveletek. Ezen információk használatával diagnosztizálása és a problémák megoldása és megelőzheti azok bekövetkezését a jövőben. A következő néhány szakaszban röviden ismertetik, érdemes figyelembe venni a termelési számítási feladatokhoz monitoring Service Fabric minden területéhez. 
+Ez a cikk áttekintést nyújt az Azure Service Fabric monitorozásáról és diagnosztizálásáról. A monitorozás és a diagnosztika kritikus fontosságú a számítási feladatok bármilyen felhőalapú környezetben való fejlesztéséhez, teszteléséhez és üzembe helyezéséhez. Például nyomon követheti az alkalmazások felhasználásának módját, a Service Fabric platform által végrehajtott műveleteket, az erőforrások kihasználtságát a teljesítményszámlálók segítségével, valamint a fürt általános állapotát. Ezeket az információkat felhasználhatja a problémák diagnosztizálásához és kijavításához, és megakadályozhatja, hogy a későbbiekben is megtörténjenek. A következő néhány szakasz röviden ismerteti Service Fabric monitorozás minden területét, hogy figyelembe vegye az éles munkaterheléseket. 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="application-monitoring"></a>Alkalmazások monitorozása
-Az alkalmazásfigyelés követi nyomon, milyen szolgáltatásokat és összetevőket az alkalmazás használ. Győződjön meg arról, hogy problémákat észlelt felhasználókat, hogy hatással az alkalmazások figyelni kívánt. Az alkalmazásfigyelés felelőssége a felhasználók az alkalmazások és a hozzá tartozó szolgáltatások fejlesztéséhez, mivel az egyedi az alkalmazás üzleti logikája számára be van kapcsolva. Az alkalmazások figyelése a következő esetekben hasznos lehet:
-* Mekkora forgalom az alkalmazásom tapasztal? -Van szüksége a services felhasználói igényeknek és a potenciális szűk keresztmetszetté az alkalmazás címének megfelelő a méretezése?
-* Azok a szolgáltatások közötti hívások, a sikeres és a nyomon követett?
-* Milyen műveletek saját alkalmazást készít? -Jövőbeli funkcióinak fejlesztését, és jobb diagnosztika érdekében alkalmazáshibák telemetriai adatok gyűjtésének is útmutató
-* Az alkalmazás nem kezelt kivételeket dob? 
-* Mi történik a saját tárolókban futó szolgáltatások belül?
+Az alkalmazás figyelése nyomon követi, hogy az alkalmazás mely szolgáltatásait és összetevőit használja. Figyelnie kell az alkalmazásait, hogy a felhasználók által észlelt problémákkal kapcsolatban is legyenek. Az alkalmazások figyelésének feladata az alkalmazások fejlesztését és szolgáltatásait fejlesztő felhasználók számára, mivel ez egyedi az alkalmazás üzleti logikája számára. Az alkalmazások figyelése a következő helyzetekben lehet hasznos:
+* Mennyi forgalmat tapasztalok az alkalmazásom? – A szolgáltatásait úgy kell méreteznie, hogy megfeleljenek a felhasználói igényeknek, vagy az alkalmazás potenciális szűk keresztmetszetét?
+* A szolgáltatásom sikeres és nyomon követési hívásokat végez?
+* Milyen műveleteket végeznek az alkalmazás felhasználói? – A telemetria begyűjtése a jövőbeli szolgáltatások fejlesztését és az alkalmazások hibáinak jobb diagnosztizálását is ismerteti
+* Az alkalmazásom nem kezelt kivételeket dobott? 
+* Mi történik a saját tárolón belül futó szolgáltatásokban?
 
-A nagy kapcsolatos az alkalmazásfigyelés előnye, hogy a fejlesztők a megszokott minden eszközt és keretrendszert szeretnének, mivel az alkalmazás összefüggésében diagramadattár! További információ az Azure-alkalmazások figyelésére és az Azure Monitor – az Application Insights megoldás [eseményelemzés az Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md).
-Az oktatóanyag van [állítsa ezt a .NET-alkalmazások regisztrálásához](service-fabric-tutorial-monitoring-aspnet.md). Ez az oktatóanyag ismerteti, hogyan telepítse a megfelelő eszközökkel lehet például az application diagnostics és a telemetriai adatok megtekintése az Azure Portalon, és az alkalmazás egyéni telemetriát írhat, kerül. 
+Az alkalmazások figyelésének nagyszerű feladata, hogy a fejlesztők bármilyen eszközt és keretrendszert igénybe vehetnek, mivel az alkalmazás kontextusában él. Az alkalmazások figyelésére szolgáló Azure-megoldásról az Azure Monitor-Application Insights az [események elemzése az Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)használatával című témakörben olvashat bővebben.
+Emellett a [.NET-alkalmazásokra vonatkozó](service-fabric-tutorial-monitoring-aspnet.md)oktatóanyagot is tartalmazjuk. Ebből az oktatóanyagból megtudhatja, hogyan telepítheti a megfelelő eszközöket, például egyéni telemetria írhat az alkalmazásban, és megtekintheti az alkalmazás diagnosztikai és telemetria a Azure Portal. 
 
 
 ## <a name="platform-cluster-monitoring"></a>Platform (fürt) figyelése
-A felhasználó az vezérlőben milyen telemetriai adatokat keresztül származik alkalmazását ír a kód magát, de mi a diagnosztikai információ a Service Fabric platformot, mivel? A Service Fabric célok egyike az alkalmazások rugalmas a hardveres hibák esetén. A cél a platform system szolgáltatások képességére infrastruktúra problémákat, és gyors feladatátvételi számítási feladatok más csomópontokhoz a fürtben keresztül érhető el. Azonban ebben az esetben, mi történik, ha a rendszer szolgáltatások problémákat? Vagy ha az próbál telepíteni, vagy helyezze át a számítási feladatok, a szolgáltatások elhelyezését szabályainak megsértette vannak? A Service Fabric biztosít ezen és annak biztosításához, hogy a fürt zajló tevékenység kapjanak az Ön további diagnosztika. Fürt figyelés néhány mintaként használható jelen forgatókönyvek a következők:
+A felhasználók szabályozzák, hogy milyen telemetria származnak az alkalmazásból, mivel a felhasználó maga írja be a kódot, de mi a helyzet a Service Fabric platform diagnosztikát? A Service Fabric egyik célja, hogy a hardveres hibákhoz rugalmasan tartsa az alkalmazásokat. Ez a cél a platform rendszerszolgáltatásai által a fürt más csomópontjaira történő észlelési képességgel és a gyors feladatátvételsel kapcsolatos lehetőségekkel érhető el. De ebben a konkrét esetben mi a helyzet, ha a rendszerszolgáltatások problémái vannak? Vagy ha a számítási feladatok üzembe helyezésére vagy áthelyezésére tett kísérlet során megsértették a szolgáltatások elhelyezésére vonatkozó szabályokat? A Service Fabric diagnosztikai funkciókat biztosít, és így biztos lehet benne, hogy tájékoztat a fürtben zajló tevékenységekről. Néhány példa a fürt figyelésére:
 
-A Service Fabric beépített események széles választékát nyújtja. Ezek [Service Fabric-események](service-fabric-diagnostics-events.md) az EventStore vagy a műveleti csatorna (esemény-csatorna a platform által elérhetővé tett) keresztül érhető el. 
+Service Fabric az események széles körét biztosítja a dobozból. Ezek a [Service Fabric események](service-fabric-diagnostics-events.md) a EventStore vagy az operatív csatornán keresztül érhetők el (a platform által elérhető Event Channel). 
 
-* A Service Fabric - csatornák és a Windows, a Service Fabric eseményeinek érhetők el megfelelő számú egyetlen ETW-szolgáltató `logLevelKeywordFilters` választja ki, műveleti és adatok & üzenetküldés csatornák - között használt ezzel a a módszerrel azt meg a kimenő külön Service Fabric-események az igény szerint szűrni. Linuxon Service Fabric-események eljussanak az lttng érhető el, és a egy Storage-táblához, ahol azok szűrhető igény szerint a kerüljenek. Ezek a csatornák válogatott, strukturált események, amelyek segítségével értelmezheti a fürt állapotát tartalmazza. Diagnosztikai alapértelmezés szerint engedélyezve vannak a fürt létrehozásakor, amely hozzon létre egy Azure Storage-táblába, ahol kiolvassa az eseményeket ezek a csatornák, hogy a jövőben lekérdezése érkeznek. 
+* Service Fabric Event channels – a Windowsban Service Fabric az események egyetlen ETW-szolgáltatóból érhetők el, amelyek az operatív és az adatok & üzenetkezelési csatornák kiválasztására szolgáló releváns `logLevelKeywordFilters` rendelkeznek. Ez a módszer, amellyel a kimenő Service Fabric események igény szerint szűrhetők. Linux rendszeren a Service Fabric események a Lttng érhető el-on keresztül érkeznek, és egy Storage-táblába kerülnek, ahonnan szükség szerint szűrhetők. Ezek a csatornák olyan kurátori és strukturált eseményeket tartalmaznak, amelyek segítségével jobban megismerheti a fürt állapotát. A diagnosztika alapértelmezés szerint engedélyezve van a fürt létrehozási idején, amely létrehoz egy Azure Storage-táblázatot, ahol a csatornákon keresztül érkező eseményeket a rendszer a jövőben lekérdezi. 
 
-* Az EventStore – az EventStore egy olyan funkció, a platform által biztosított Service Fabric platform eseményeket a Service Fabric Explorerben vagy a REST API-n keresztül érhető el. Láthatja, mi történik a fürtben az egyes entitásokhoz például csomópont, service, alkalmazás és az esemény időpontjában a lekérdezéshez egy pillanatképnézet. Emellett az EventStore található további információ a [az EventStore áttekintése](service-fabric-diagnostics-eventstore.md).    
+* EventStore – a EventStore a platform által kínált olyan szolgáltatás, amely Service Fabric platformon elérhető eseményeket biztosít a Service Fabric Explorer és a REST APIon keresztül. Láthatja, hogy mi történik a fürtben az egyes entitások esetében, például a csomópont, a szolgáltatás, az alkalmazás és a lekérdezés az esemény időpontja alapján. További információt a EventStore a [EventStore áttekintése című](service-fabric-diagnostics-eventstore.md)témakörben talál.    
 
 ![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
-A megadott diagnosztikai események beépített átfogó készletét formájában vannak. Ezek [Service Fabric-események](service-fabric-diagnostics-events.md) bemutatják a különböző entitások, például a csomópontok, alkalmazások, szolgáltatások, a partíciók stb platform által végzett műveleteket. A fenti utolsó esetben, ha egy csomópont leáll, a platform lenne gridre bocsáthatja ki az olyan `NodeDown` esemény, és sikerült haladéktalanul értesíti a figyelési eszközben dolgozhat. Egyéb gyakori példák `ApplicationUpgradeRollbackStarted` vagy `PartitionReconfigured` feladatátvétel alatt. **Ugyanazokat az eseményeket a Windows- és Linux-fürtök érhetők el.**
+A megadott diagnosztika a mezőből álló átfogó események formájában érhető el. Ezek a [Service Fabric események](service-fabric-diagnostics-events.md) illusztrálják a platform különböző entitások, például csomópontok, alkalmazások, szolgáltatások, partíciók stb. által végzett műveleteit. A fenti legutóbbi forgatókönyvben, ha egy csomópontot le kellett lépni, a platform egy `NodeDown` eseményt bocsát ki, és azonnal értesítést kaphat a figyelési eszköztől. Más gyakori példák a feladatátvétel során `ApplicationUpgradeRollbackStarted` vagy `PartitionReconfigured` is tartalmaznak. **Ugyanezek az események Windows-és Linux-fürtökön is elérhetők.**
 
-Az események bármely felügyeleti eszköz, amely támogatja ezeket is olvashatják, Windows és Linux rendszereken egyaránt standard csatornákon keresztül továbbítja. Az Azure Monitor megoldás az Azure Monitor naplóira. Nyugodtan tudjon meg többet a [Azure Monitor-naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) mely tartalmazza a fürt és néhány mintalekérdezést, amely riasztásokat hozhat létre egyéni műveleti irányítópult. Több fürt megfigyelési fogalmak esetén érhető el [Platform szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-infra.md).
+Az eseményeket a Windows és a Linux standard csatornákon keresztül küldik el, és az ezeket támogató figyelési eszközök által is olvashatók. A Azure Monitor megoldás Azure Monitor naplók. Nyugodtan tájékozódhat [Azure monitor naplók integrálásáról](service-fabric-diagnostics-event-analysis-oms.md) , amely tartalmaz egy egyéni operatív irányítópultot a fürthöz, valamint néhány olyan mintát, amelyekről riasztásokat hozhat létre. Több fürt figyelési koncepciója a [platform szintű esemény és a napló létrehozásakor](service-fabric-diagnostics-event-generation-infra.md)érhető el.
 
 ### <a name="health-monitoring"></a>Állapotfigyelés
-A Service Fabric platform állapotmodell, amely bővíthető állapotfigyelő jelentési biztosít egy fürtben entitások állapotát tartalmazza. Minden egyes csomópont, alkalmazás, szolgáltatás, partíció, replika vagy példány, folyamatosan frissíthető egészségügyi állapotba került. Az állapot "OK", "Figyelmeztetés" vagy "Error" lehet. Úgy gondolja, hogy a Service Fabric-események, mint minden entitásnál egy melléknév különböző entitások és egészségügyi a fürt által végzett műveleteket. Minden alkalommal, amikor egy adott entitás állapotát értékre vált, az esemény is lehet rendelkezésre. Így állíthat be a lekérdezések és a riasztások hálózatállapot-események tetszőleges, csakúgy, mint bármely más esemény a figyelési eszközben. 
+A Service Fabric platform tartalmaz egy Health modellt, amely bővíthető állapot-jelentéskészítést biztosít a fürtben lévő entitások állapotára vonatkozóan. Az egyes csomópontok, alkalmazások, szolgáltatások, partíciók, replikák vagy példányok folyamatosan frissíthető állapottal rendelkeznek. Az állapot állapota "OK", "figyelmeztetés" vagy "hiba" lehet. Gondoljon Service Fabric eseményekre, mint a fürt által a különböző entitásokra és az állapotra, valamint az egyes entitásokra vonatkozó melléknévre végzett műveletekre. Egy adott entitás állapotának minden alkalommal történő elküldésekor a rendszer egy eseményt is kibocsát. Így beállíthat lekérdezéseket és riasztásokat a figyelési eszközben, a többi eseményhez hasonlóan. 
 
-Ezenkívül azt is segítségével a felhasználók felülbírálják az entitások állapotát. Ha az alkalmazás akkor frissítés alatt áll, és az ellenőrzések sikertelenek, írható-e a Service Fabric Health Health API használatával történő jelzik, hogy az alkalmazás már nem kifogástalan állapotú, és a Service Fabric automatikusan az visszaállítás a frissítés! További információk az állapotközpontú modellről, tekintse meg a [Service Fabric állapotmonitorozásának bemutatása](service-fabric-health-introduction.md)
+Emellett azt is lehetővé tesszük, hogy a felhasználók felülbírálják az entitások állapotát. Ha az alkalmazás egy frissítésen keresztül zajlik, és az érvényesítési tesztek sikertelenek, a Health API használatával Service Fabric állapotba írhatja, hogy az alkalmazás már nem kifogástalan állapotú, és Service Fabric automatikusan visszaállítják a frissítést. További információ az állapotfigyelő modellről: a [Service Fabric Health monitoring bemutatása](service-fabric-health-introduction.md)
 
-![SFX szolgáltatásállapot-irányítópult](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
+![SFX állapot irányítópult](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
 
-### <a name="watchdogs"></a>Watchdogs
-Általában egy figyelő egy külön szolgáltatás, amely állapotának megtekintése és szolgáltatások, a ping végpontok és a jelentés állapotának a fürtben lévő összes adat tölthető be. Ez megakadályozhatja a hibák észlelése nem történne a nézet egyetlen szolgáltatás alapján. Watchdogs egyúttal nagyszerű hely az állomás kódot, amely végrehajtja a javító műveleteket (például bizonyos időközönként törlése a naplófájlokat tároló) felhasználói beavatkozás nélkül. Egy minta-figyelő szolgáltatás megvalósítási annak [Itt](https://github.com/Azure-Samples/service-fabric-watchdog-service).
+### <a name="watchdogs"></a>Házőrző
+A watchdog általában egy különálló szolgáltatás, amely az állapotot és a terhelést a szolgáltatásokban, a ping végpontokat és a jelentések állapotát a fürtben található összes adatnál megtekintheti. Ez segít megakadályozni azokat a hibákat, amelyek nem észlelhetők egyetlen szolgáltatás nézete alapján. A watchdogok olyan kód futtatására is alkalmasak, amely felhasználói beavatkozás nélkül végez javító műveleteket (például a naplófájlok bizonyos időközönkénti tisztítása). [Itt](https://github.com/Azure-Samples/service-fabric-watchdog-service)talál egy példa watchdog Service-implementációt.
 
-## <a name="infrastructure-performance-monitoring"></a>A figyelési infrastruktúra (teljesítmény)
-Most, hogy az alkalmazás, valamint a platformot a diagnosztikai már szó, hogyan tudjuk, hogy a hardver elvárásoknak megfelelően működik? Az alapul szolgáló infrastruktúra figyelése a fürt és az erőforrások kihasználtságát állapotának megértése kulcsfontosságú része. Rendszer teljesítményének mérése attól függ, hogy számos tényezőtől függően a számítási feladatok szubjektív lehet. Ezek a tényezők teljesítményszámlálók keresztül általában mérése történik. A teljesítményszámlálók többféle forrásból, beleértve az operációs rendszer, a .NET-keretrendszer vagy a Service Fabric platformot maga származhatnak. Néhány forgatókönyvet, amelyben, akkor lehet hasznos, amelyek
+## <a name="infrastructure-performance-monitoring"></a>Infrastruktúra (teljesítmény) figyelése
+Most, hogy a diagnosztika az alkalmazásban és a platformon is szerepel, honnan tudható, hogy a hardver a várt módon működik? A mögöttes infrastruktúra monitorozása kulcsfontosságú része a fürt állapotának és az erőforrás-felhasználásnak. A rendszer teljesítményének mérése számos olyan tényezőtől függ, amelyek a munkaterheléstől függően szubjektívek lehetnek. Ezeket a tényezőket általában a teljesítményszámlálók mérik. Ezek a teljesítményszámlálók különböző forrásokból származhatnak, beleértve az operációs rendszert, a .NET-keretrendszert vagy a Service Fabric platformot is. Egyes esetekben hasznosak lehetnek
 
-* Vagyok I felhasználásával a hardver hatékonyan? Szeretné használni a hardver 90 %-ot vagy 10 %-ot. Ez akkor hasznos, ha érhető el a fürt méretezése, vagy az alkalmazás folyamatok optimalizálása.
-* E előre meg tudjuk infrastrukturális problémák proaktív módon? -számos probléma előzi meg összekapcsolhatja a hirtelen változásokat (Elvetés) a teljesítmény, így használhatja teljesítményszámlálói például a hálózati i/o- és CPU-kihasználtság előrejelzése és a problémák proaktív diagnosztika.
+* Hatékonyan használom a hardvert? A hardvert a 90%-os CPU vagy a 10%-os CPU használatával kívánja használni. Ez a fürt skálázásakor, illetve az alkalmazás folyamatainak optimalizálásakor hasznos.
+* Proaktív módon tudom előre megjósolni az infrastrukturális problémákat? – számos problémát megelőz a teljesítmény hirtelen változása (Drops), így a teljesítményszámlálók, például a hálózati I/O és a CPU-kihasználtság használatával előre megjósolhatja és diagnosztizálhatja a problémákat.
 
-Az infrastruktúra szintjén kell gyűjtött teljesítményszámlálók listája található [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md). 
+Az infrastruktúra szintjén összegyűjthető teljesítményszámlálók listáját a [teljesítmény mérőszámok](service-fabric-diagnostics-event-generation-perf.md)között találja. 
 
-Service Fabric Reliable Services és Actors programozási modell is biztosít teljesítményszámlálók készletét. Ezek a modellek valamelyikét használja, ha ezeket a teljesítményszámlálókat is győződjön meg arról, hogy az aktorok vannak működtetésével felfelé és lefelé megfelelően, illetve, hogy a reliable Services-kérések kezelésének elég gyorsan adatokat. További információkért lásd: [Reliable Service szolgáltatás táveléréséhez figyelésének](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) és [alkalmazásteljesítmény-figyelés a Reliable actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
+A Service Fabric a Reliable Services és a Actors programozási modellekhez is biztosít teljesítményszámlálókat. Ha ezeket a modelleket használja, ezek a teljesítményszámlálók olyan információkkal szolgálnak, amelyek biztosítják, hogy a szereplők megfelelően fel-és lelassulnak, vagy hogy a megbízható szolgáltatási kérelmek kezelése elég gyors legyen. További információ: a [megbízható szolgáltatás távelérésének figyelése](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) és [a Reliable Actors teljesítményének figyelése](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
 
-Az Azure Monitor megoldás ezek gyűjtéséhez az Azure Monitor naplóira hasonlóan platform szintű figyelése. Használjon a [Log Analytics-ügynököket](service-fabric-diagnostics-oms-agent.md) a megfelelő teljesítményszámlálót gyűjt, és ezeket az Azure Monitor naplókat is megtekintheti.
+A Azure Monitor-megoldás, amely összegyűjti ezeket, ugyanúgy Azure Monitor naplók, mint a platform szintű monitorozás. A megfelelő teljesítményszámlálók összegyűjtéséhez használja a [log Analytics ügynököt](service-fabric-diagnostics-oms-agent.md) , és tekintse meg őket a Azure monitor-naplókban.
 
-## <a name="recommended-setup"></a>Javasolt beállítás
-Most, hogy egyes területeken példa és forgatókönyvek de, Íme az Azure monitorozási eszközökkel, és állítsa be az összes fenti terület figyeléséhez szükséges összegzését. 
+## <a name="recommended-setup"></a>Ajánlott beállítás
+Most, hogy elvégezte a monitorozást és a példákat az egyes területeken, itt látható az Azure monitoring-eszközök összefoglalása, és az összes fenti terület figyeléséhez szükséges beállítás. 
 
-* Az alkalmazásfigyelés [Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
-* Fürt figyelése a [Diagnosztikaiügynök](service-fabric-diagnostics-event-aggregation-wad.md) és [Azure Monitor-naplók](service-fabric-diagnostics-oms-setup.md)
-* A figyelési infrastruktúra [Azure Monitor-naplók](service-fabric-diagnostics-oms-agent.md)
+* Alkalmazások figyelése [Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
+* Fürt figyelése [diagnosztikai ügynökkel](service-fabric-diagnostics-event-aggregation-wad.md) és [Azure monitor naplók](service-fabric-diagnostics-oms-setup.md)
+* Infrastruktúra-figyelés [Azure monitor naplókkal](service-fabric-diagnostics-oms-agent.md)
 
-Is használhatja, és módosítsa a minta ARM-sablon található [Itt](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) segítségével automatizálja az összes szükséges erőforrást és az ügynökök telepítését. 
+Az [itt](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) található minta ARM-sablont is használhatja és módosíthatja az összes szükséges erőforrás és ügynök üzembe helyezésének automatizálásához. 
 
-## <a name="other-logging-solutions"></a>Naplózás megoldásait
+## <a name="other-logging-solutions"></a>Egyéb naplózási megoldások
 
-Bár a két megoldást javasoljuk, [naplózza az Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md) és [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) sok eseményt ETW-szolgáltatókon keresztül írták meg, és a Service Fabric-integráció készült bővíthető más naplózási megoldásokkal. Is be kell keresnie a [Elastic Stack](https://www.elastic.co/products) (különösen akkor, ha tervezi, hogy a fürt futtatása kapcsolat nélküli környezetben), [Dynatrace](https://www.dynatrace.com/), vagy bármely más platformra a beállításokat. Integrált partnereink által kínált érhető el az alábbi listában [Itt](service-fabric-diagnostics-partners.md).
+Bár a javasolt két megoldás, [Azure monitor a naplók](service-fabric-diagnostics-event-analysis-oms.md) és a [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) a Service Fabric-nal való integrációra épülnek, számos eseményt ETW-szolgáltatókon keresztül kell kiírni, és más naplózási megoldásokkal bővíthetők. Érdemes áttekinteni a [rugalmas veremet](https://www.elastic.co/products) is (különösen akkor, ha egy fürt offline környezetben való futtatását tervezi), [Dynatrace](https://www.dynatrace.com/)vagy bármely más platformot. Az itt elérhető integrált partnereink listáját [itt](service-fabric-diagnostics-partners.md)találja.
 
-A kulcsfontosságú pontokat bármely platformra választja ki kell terjednie hogyan jól ismeri a felhasználói felület, a lekérdezési képességeket, az egyéni Vizualizációk és irányítópult áll rendelkezésre, és további eszközöket biztosítanak a figyelési élmény javításához. 
+Az Ön által választott platform főbb pontjainak tartalmaznia kell a felhasználói felület, a lekérdezési képességek, a rendelkezésre álló egyéni vizualizációk és irányítópultok, valamint az általuk biztosított további eszközök használatát a figyelési élmény fokozása érdekében. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedés az alkalmazások szándékkal, lásd: [alkalmazás szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-app.md).
-* Lépkedjen végig a lépéseket az alkalmazás az Application Insights beállítása [figyelése és diagnosztizálása a Service Fabric ASP.NET Core alkalmazás](service-fabric-tutorial-monitoring-aspnet.md).
-* A platform és a Service Fabric biztosít Önnek, események monitorozásával kapcsolatos további információkért [Platform szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-infra.md).
-* Az Azure Monitor naplók-integráció konfigurálása a Service Fabric jelenleg [állítsa be a fürt az Azure Monitor naplóira](service-fabric-diagnostics-oms-setup.md)
-* Ismerje meg, hogyan állítható be az Azure Monitor naplóira tárolók- [Monitorozás és diagnosztika a Windows a tárolók az Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
-* Lásd például diagnosztikai problémák és megoldások a Service fabrickel [gyakori helyzetek diagnosztizálása](service-fabric-diagnostics-common-scenarios.md)
-* Tekintse meg az egyéb diagnosztikai termékek, amelyek integrálhatók a Service Fabric [diagnosztikai Service Fabric-partnerek](service-fabric-diagnostics-partners.md)
-* További tudnivalók az Azure-erőforrásokhoz – általános figyelési javaslatok [ajánlott eljárások - figyelés és diagnosztika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Az alkalmazások kialakításának első lépéseiért tekintse meg az [alkalmazás szintű esemény és a napló létrehozása](service-fabric-diagnostics-event-generation-app.md)című témakört.
+* Hajtsa végre az alkalmazáshoz való Application Insights beállításának lépéseit, [és figyelje meg, hogyan diagnosztizálhatja a ASP.net Core alkalmazást a Service Fabricon](service-fabric-tutorial-monitoring-aspnet.md).
+* További információ a platform figyeléséről és az események Service Fabric biztosít a [platform szintű esemény és a napló létrehozásához](service-fabric-diagnostics-event-generation-infra.md).
+* A Azure Monitor naplók integrációjának konfigurálása a Service Fabrichoz a [fürt Azure monitor naplófájljainak beállításakor](service-fabric-diagnostics-oms-setup.md)
+* Ismerje meg, hogyan állíthat be Azure Monitor naplókat a tárolók figyeléséhez – [figyelés és diagnosztika Windows-tárolók számára az Azure Service Fabricban](service-fabric-tutorial-monitoring-wincontainers.md).
+* A [gyakori forgatókönyvek diagnosztizálásával](service-fabric-diagnostics-common-scenarios.md) kapcsolatban lásd: diagnosztikai problémák és megoldások Service Fabric
+* Tekintse meg a [Service Fabric diagnosztikai partnerei](service-fabric-diagnostics-partners.md) Service Fabrickal integrált diagnosztikai termékeket
+* Ismerje meg az Azure-erőforrások általános figyelési javaslatait – [ajánlott eljárások – monitorozás és diagnosztika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 

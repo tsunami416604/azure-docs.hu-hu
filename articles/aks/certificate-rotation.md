@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 00d8546cb20d12c5f1a94bdcababa04a77c73133
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422299"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,22 +20,9 @@ Az Azure Kubernetes Service (ak) tanúsítványokat használ a számos összetev
 
 Ez a cikk bemutatja, hogyan forgathatja el a tanúsítványokat az AK-fürtben.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Ehhez a cikkhez az Azure CLI 2.0.76 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
-
-
-### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
-
-Ennek a funkciónak a használatához a CLI *-előnézet CLI-* bővítmény 0.4.21 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Ehhez a cikkhez az Azure CLI 2.0.77 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AK-tanúsítványok, hitelesítésszolgáltatók és szolgáltatásfiókok
 
@@ -51,7 +38,13 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 * Az `kubectl` ügyfél rendelkezik tanúsítvánnyal az AK-fürttel való kommunikációhoz.
 
 > [!NOTE]
-> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019 után vagy bármely olyan fürt, amelynek a tanúsítványait elforgatták, 30 év után lejárnak.
+> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019 után vagy bármely olyan fürt, amelynek a tanúsítványait elforgatták, 30 év után lejárnak. Annak ellenőrzéséhez, hogy a fürt létrejött-e, a `kubectl get nodes` használatával megtekintheti a Node-készletek *korát* .
+> 
+> Emellett a fürt tanúsítványának lejárati dátumát is megtekintheti. A következő parancs például megjeleníti a *myAKSCluster* -fürthöz tartozó tanúsítvány részleteit.
+> ```console
+> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> openssl x509 -in my-cert.crt -text
+> ```
 
 ## <a name="rotate-your-cluster-certificates"></a>A fürt tanúsítványainak elforgatása
 
@@ -73,7 +66,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > `az aks rotate-certs` befejezéséhez akár 30 percet is igénybe vehet. Ha a parancs végrehajtása nem sikerül, a `az aks show` használatával ellenőrizze, hogy a fürt állapota a *tanúsítvány elforgatása*-e. Ha a fürt hibás állapotban van, futtassa újra a `az aks rotate-certs` a tanúsítványok újbóli elforgatásához.
 
-`kubectl` parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e. Mivel nem frissítette `kubectl`által használt tanúsítványokat, hibaüzenet jelenik meg.  Például:
+`kubectl` parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e. Mivel nem frissítette `kubectl`által használt tanúsítványokat, hibaüzenet jelenik meg.  Példa:
 
 ```console
 $ kubectl get no
@@ -86,13 +79,13 @@ Frissítse az `kubectl` által használt tanúsítványt `az aks get-credentials
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy `kubectl` parancs futtatásával, amely mostantól sikeres lesz. Például:
+Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy `kubectl` parancs futtatásával, amely mostantól sikeres lesz. Példa:
 
 ```console
 kubectl get no
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsítványait, hitelesítésszolgáltatóit és SAs-adatait. A biztonsági [és az Azure Kubernetes szolgáltatásban (ak) elérhető ajánlott eljárások][aks-best-practices-security-upgrades] további információkat találnak az AK biztonsággal kapcsolatos ajánlott eljárásairól.
 

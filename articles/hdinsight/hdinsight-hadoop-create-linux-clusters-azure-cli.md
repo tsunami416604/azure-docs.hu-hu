@@ -2,18 +2,18 @@
 title: Apache Hadoop-fürtök létrehozása az Azure CLI-vel – Azure HDInsight
 description: Ismerje meg, hogyan hozhat létre Azure HDInsight-fürtöket a platformfüggetlen Azure CLI használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: hrasheed
-ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494807"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495118"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-fürtök létrehozása az Azure CLI használatával
 
@@ -33,7 +33,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-1. Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használni, egyszerűen válassza ki a **kipróbálom** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
+1. Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használ, válassza a **kipróbálás** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
 
     ```azurecli-interactive
     az login
@@ -60,7 +60,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
     export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
     export httpCredential='PASSWORD'
     export sshCredentials='PASSWORD'
-    
+
     export AZURE_STORAGE_CONTAINER=$clusterName
     export clusterSizeInNodes=1
     export clusterVersion=3.6
@@ -136,7 +136,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
 Az erőforrások eltávolításához adja meg az alábbi parancsok mindegyikét vagy egy részét:
 
@@ -165,7 +165,7 @@ az group delete \
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen létrehozott egy HDInsight-fürtöt az Azure CLI használatával, a következő paranccsal megismerheti a fürttel való munkát:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez | Microsoft Docs'
-description: Ismerkedjen meg a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval a strukturált adatkimenet betanításához, kinyeréséhez, elemzéséhez és lekéréséhez.
+title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez'
+description: Ismerkedjen meg a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval, hogy betanítsa, kinyerje, elemezze és strukturált adatkimenetet kapjon ehhez a rövid útmutatóhoz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8fd938e685c712cda60c171ccf9092ff42e6037e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446493"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez
 
@@ -28,7 +28,7 @@ Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a k�
 * [Egyéni modellek listájának beolvasása](#get-a-list-of-custom-models)
 * [Egyéni modell törlése](#delete-a-custom-model)
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/FormRecognizer) | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -184,7 +184,7 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Ha a fiókból törölni kívánt egyéni modellt is betanított, futtassa a metódust az [Egyéni modell törlése](#delete-a-custom-model)lehetőséggel.

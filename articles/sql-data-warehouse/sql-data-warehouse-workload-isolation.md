@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cd1d57643f9a1eb7c50d0de06d42fbbcec085f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458780"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse munkaterhelési csoport elkülönítése (előzetes verzió)
 
@@ -32,18 +32,18 @@ A következő szakaszokban bemutatjuk, hogy a munkaterhelési csoportok hogyan h
 
 A számítási feladatok elkülönítése azt jelenti, hogy az erőforrások kizárólag a munkaterhelés-csoportok számára vannak fenntartva.  A számítási feladatok elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobb értékre konfigurálja a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  A szűk SLA-kat betartó folyamatos végrehajtást igénylő számítási feladatokhoz az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a munkaterhelés csoport számára. 
 
-A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet.  Ha egy MIN_PERCENTAGE_RESOURCE 30%-ra van beállítva, és a REQUEST_MIN_RESOURCE_GRANT_PERCENT 2%-ra van beállítva, a munkaterhelés-csoport esetében a 15 párhuzamossági szint garantált.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
+A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet. Ha egy MIN_PERCENTAGE_RESOURCE 30%-ra van beállítva, és a REQUEST_MIN_RESOURCE_GRANT_PERCENT 2%-ra van beállítva, a munkaterhelés-csoport esetében a 15 párhuzamossági szint garantált.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
 
 [Garantált Egyidejűség] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> A min_percentage_resourcehoz meghatározott szolgáltatási szint minimálisan életképes értékekkel rendelkezik.  További információ: a további részletek a [hatályos értékekben](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) találhatók.
+> A min_percentage_resourcehoz meghatározott szolgáltatási szint minimálisan életképes értékekkel rendelkezik.  További információ: a további részletek a [hatályos értékekben](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) találhatók.
 
 A számítási feladatok elkülönítése hiányában a kérelmek az erőforrások [megosztott készletében](#shared-pool-resources) működnek.  A megosztott készlet erőforrásaihoz való hozzáférés nem garantált, és [fontossági](sql-data-warehouse-workload-importance.md) alapon van hozzárendelve.
 
-A számítási feladatok elkülönítésének konfigurálását körültekintően kell megtenni, mivel az erőforrások a munkaterhelés-csoport számára vannak lefoglalva, még akkor is, ha a munkaterhelés csoportban nincsenek aktív kérések.  Az elkülönítés túlzott beállítása a rendszerszintű általános kihasználtság csökkenéséhez vezethet.
+A számítási feladatok elkülönítésének konfigurálását körültekintően kell megtenni, mivel az erőforrások a munkaterhelés-csoport számára vannak lefoglalva, még akkor is, ha a munkaterhelés csoportban nincsenek aktív kérések. Az elkülönítés túlzott beállítása a rendszerszintű általános kihasználtság csökkenéséhez vezethet.
 
-A felhasználóknak kerülniük kell a 100%-os munkaterhelés-elkülönítést konfiguráló munkaterhelés-kezelési megoldást: 100%-os elkülönítést akkor éri el a rendszer, ha az összes munkaterhelési csoporton konfigurált min_percentage_resource összegének értéke 100%.  Ez a típusú konfiguráció túlságosan korlátozó és merev, így kevés helyet hagy a véletlenül helytelenül besorolt erőforrás-kérelmek esetében.  Rendelkezésre áll egy olyan rendelkezés, amely lehetővé teszi, hogy egy kérelem végrehajtásához a nem elkülönítésre konfigurált munkaterhelés-csoportok fussanak.  Az ehhez a kérelemhez lefoglalt erőforrások nullaként jelennek meg a rendszerek DMV, és a rendszer által fenntartott erőforrásokból származó erőforrás-támogatás smallrc.
+A felhasználóknak kerülniük kell a 100%-os munkaterhelés-elkülönítést konfiguráló munkaterhelés-kezelési megoldást: 100%-os elkülönítést akkor éri el a rendszer, ha az összes munkaterhelési csoporton konfigurált min_percentage_resource összegének értéke 100%.  Ez a típusú konfiguráció túlságosan korlátozó és merev, így kevés helyet hagy a véletlenül helytelenül besorolt erőforrás-kérelmek esetében. Rendelkezésre áll egy olyan rendelkezés, amely lehetővé teszi, hogy egy kérelem végrehajtásához a nem elkülönítésre konfigurált munkaterhelés-csoportok fussanak. Az ehhez a kérelemhez lefoglalt erőforrások nullaként jelennek meg a rendszerek DMV, és a rendszer által fenntartott erőforrásokból származó erőforrás-támogatás smallrc.
 
 > [!NOTE] 
 > Az optimális erőforrás-használat érdekében vegye fontolóra egy olyan munkaterhelés-kezelési megoldást, amely egy bizonyos elkülönítést használ, hogy biztosítsa a SLA-kat, és a számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md)alapján elérhető megosztott erőforrásokkal együtt keverve.
@@ -57,7 +57,7 @@ A munkaterhelés-tárolás konfigurálása implicit módon meghatározza a maxim
 [Maximális Egyidejűség] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> A munkaterhelési csoport tényleges CAP_PERCENTAGE_RESOURCEa nem éri el a 100%-ot, ha a munkaterhelési csoportok a nullánál nagyobb mértékben jönnek létre MIN_PERCENTAGE_RESOURCE.  Lásd: [sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
+> A munkaterhelési csoport tényleges CAP_PERCENTAGE_RESOURCEa nem éri el a 100%-ot, ha a munkaterhelési csoportok a nullánál nagyobb mértékben jönnek létre MIN_PERCENTAGE_RESOURCE.  Lásd: [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
 
 ## <a name="resources-per-request-definition"></a>Erőforrások/kérelmek definíciója
 
@@ -71,7 +71,7 @@ Az erőforrás-osztály kiválasztásához hasonlóan a REQUEST_MIN_RESOURCE_GRA
 Ha a REQUEST_MAX_RESOURCE_GRANT_PERCENTt a REQUEST_MIN_RESOURCE_GRANT_PERCENTnál nagyobb értékre konfigurálja, a rendszer igény szerint több erőforrást foglal le.  A kérelem ütemezése során a rendszer meghatározza a kérelem tényleges erőforrás-elosztását, amely REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT között van, a megosztott készlet erőforrásainak rendelkezésre állása és a jelenlegi terhelés alapján. rendszer.  Az erőforrásoknak léteznie kell az erőforrások [megosztott készletében](#shared-pool-resources) , ha a lekérdezés ütemezve van.  
 
 > [!NOTE] 
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT érvényes értékekkel rendelkeznek, amelyek az érvényes MIN_PERCENTAGE_RESOURCE és CAP_PERCENTAGE_RESOURCE értéktől függenek.  Lásd: [sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT érvényes értékekkel rendelkeznek, amelyek az érvényes MIN_PERCENTAGE_RESOURCE és CAP_PERCENTAGE_RESOURCE értéktől függenek.  Lásd: [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
 
 ## <a name="execution-rules"></a>Végrehajtási szabályok
 

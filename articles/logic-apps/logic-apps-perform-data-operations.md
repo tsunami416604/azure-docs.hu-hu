@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793113"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666737"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -443,6 +443,9 @@ Ha olyan kisebb tömböt szeretne létrehozni, amely meghatározott feltételekn
 > A feltételben használt bármely szűrési szöveg megkülönbözteti a kis-és nagybetűket. Emellett ez a művelet nem változtathatja meg a tömbben lévő elemek formátumát vagy összetevőit. 
 > 
 > Ha a tömb kimenetét a tömb **szűrése** művelettel szeretné használni, akkor a műveleteknek el kell fogadniuk a tömböket bemenetként, vagy esetleg át kell alakítania a kimeneti tömböt egy másik kompatibilis formátumba.
+> 
+> Ha HTTP-végpontot hív meg, és JSON-választ kap, akkor a **JSON** elemzése művelettel dolgozza fel a JSON-választ. 
+> Ellenkező esetben a **szűrő tömb** művelete csak a válasz törzsét olvashatja, nem pedig a JSON-adattartalom szerkezetét.
 
 Ha inkább a Code View Editor használatával szeretne dolgozni, a jelen cikkben **szereplő, a** saját logikai alkalmazás alapjául szolgáló munkafolyamat-definícióba másolhatja a jelen cikk **változó** műveleti definícióját: [adatműveleti kód példák – szűrő tömb](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 

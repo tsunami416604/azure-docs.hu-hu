@@ -1,5 +1,5 @@
 ---
-title: Egyéni jogkivonat-gyorsítótár szerializálás a MSAL-ben Javához
+title: Egyéni jogkivonat-gyorsítótár szerializálása (MSAL4j)
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan szerializálhatja a MSAL for Java jogkivonat-gyorsítótárát
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2166cda772c358ed060b0e52a7410c7039fedf5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d80011d3fbf8973ce913ac885a7841fe19760c4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424303"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>Egyéni jogkivonat-gyorsítótár szerializálás a MSAL-ben Javához
 
@@ -61,6 +61,6 @@ PublicClientApplication app =
 PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persistenceAspect).build();
 ```
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>További információk
 
 Ismerje meg [, hogyan kérhet le és távolíthat el fiókokat a jogkivonat-gyorsítótárból a MSAL for Java használatával](msal-java-get-remove-accounts-token-cache.md).

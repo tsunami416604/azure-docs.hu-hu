@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7a55cc9398cc511ced0a43f0d7a0c1aa6e37f155
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/20/2019
+ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372703"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
@@ -33,7 +33,7 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
-> |[adatkocka](https://www.postgresql.org/docs/11/cube.html)                         | 1,4             | többdimenziós kockák adattípusa|
+> |[adatkocka](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
@@ -52,8 +52,8 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | a megosztott puffer gyorsítótárának vizsgálata|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 4.0.0           | Bővítmény a particionált táblák kezeléséhez idő vagy azonosító alapján|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | előmelegítő kapcsolatok adatvédelme|
-> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1,6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
-> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1,4             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
+> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
+> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript (V8) megbízható eljárási nyelv|
 > |[PostGIS](https://www.postgis.net/)                      | 2.5.1           | Geometriai, földrajzi és raszteres térbeli típusok és függvények PostGIS|
@@ -78,13 +78,13 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[btree_gin](https://www.postgresql.org/docs/10/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | az automatikusan titkosított jelszavak adattípusa|
-> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1,4             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
+> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
 > |[adatkocka](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | a karakterláncok közötti hasonlóságok és távolságok meghatározása|
-> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1,4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
+> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Feltételezett indexek a PostgreSQL-hez|
 > |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | függvények, operátorok és indexek támogatása egész számok 1-D tömbhöz|
 > |[helytelen átvitt](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | a nemzetközi termékek számozási szabványainak adattípusai|
@@ -98,7 +98,7 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 > |[pg_buffercache](https://www.postgresql.org/docs/10/pgbuffercache.html)               | 1.3             | a megosztott puffer gyorsítótárának vizsgálata|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Bővítmény a particionált táblák kezeléséhez idő vagy azonosító alapján|
 > |[pg_prewarm](https://www.postgresql.org/docs/10/pgprewarm.html)                   | 1.1             | előmelegítő kapcsolatok adatvédelme|
-> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1,6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
+> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1.6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
 > |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
 > |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (V8) megbízható eljárási nyelv|
@@ -130,7 +130,7 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | a karakterláncok közötti hasonlóságok és távolságok meghatározása|
-> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1,4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
+> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | a (kulcs, érték) párok tárolására szolgáló adattípus|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Feltételezett indexek a PostgreSQL-hez|
 > |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | függvények, operátorok és indexek támogatása egész számok 1-D tömbhöz|
 > |[helytelen átvitt](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | a nemzetközi termékek számozási szabványainak adattípusai|
@@ -140,11 +140,11 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting-bővítmény|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
-> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1,4             | rekord szintű statisztikák megjelenítése|
+> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1.4             | rekord szintű statisztikák megjelenítése|
 > |[pg_buffercache](https://www.postgresql.org/docs/9.6/pgbuffercache.html)               | 1.2             | a megosztott puffer gyorsítótárának vizsgálata|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Bővítmény a particionált táblák kezeléséhez idő vagy azonosító alapján|
 > |[pg_prewarm](https://www.postgresql.org/docs/9.6/pgprewarm.html)                   | 1.1             | előmelegítő kapcsolatok adatvédelme|
-> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1,4             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
+> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1.4             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
 > |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | a szöveg hasonlóságának mérése és indexelése Trigrams alapján|
 > |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (V8) megbízható eljárási nyelv|
@@ -252,6 +252,26 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 > Ha hibaüzenet jelenik meg, ellenőrizze, hogy a shared_preload_libraries mentése után [újraindította-e a kiszolgálót](howto-restart-server-portal.md) . 
 
 Most már létrehozhat egy TimescaleDB-hypertable [a semmiből](https://docs.timescale.com/getting-started/creating-hypertables) , vagy áttelepítheti a [meglévő idősoros adatok a PostgreSQL-ben](https://docs.timescale.com/getting-started/migrating-data).
+
+### <a name="restoring-a-timescale-database"></a>Időskála-adatbázis visszaállítása
+Ha pg_dump és pg_restore használatával kívánja visszaállítani az időskála-adatbázist, két segítő eljárást kell futtatnia a céladatbázis: `timescaledb_pre_restore()` és `timescaledb_post restore()`.
+
+Először készítse elő a céladatbázis-adatbázist:
+
+```SQL
+--create the new database where you'll perform the restore
+CREATE DATABASE tutorial;
+\c tutorial --connect to the database 
+CREATE EXTENSION timescaledb;
+
+SELECT timescaledb_pre_restore();
+```
+
+Most már futtathatja az pg_dump az eredeti adatbázison, majd elvégezheti a pg_restore. A visszaállítás után mindenképp futtassa a következő parancsot a visszaállított adatbázisban:
+
+```SQL
+SELECT timescaledb_post_restore();
+```
 
 
 ## <a name="next-steps"></a>Következő lépések

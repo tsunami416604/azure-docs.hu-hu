@@ -1,5 +1,5 @@
 ---
-title: Linuxos virtuális gép konvertálása az Azure-ban a nem felügyelt lemezekről a felügyelt lemezekre – Azure Managed Disks
+title: Linuxos virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 description: Linux rendszerű virtuális gép konvertálása nem felügyelt lemezekről a felügyelt lemezekre az Azure CLI használatával a Resource Manager-alapú üzemi modellben
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5464dd2ab2ab7c783945cc068a1347d7ef9ad3ab
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 24024bc66e10937f1ae2fdc5130ffcd8c76c1763
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430997"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linuxos virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -20,7 +20,7 @@ Ha már létezik olyan linuxos virtuális gép (VM), amely nem felügyelt lemeze
 
 Ez a cikk bemutatja, hogyan alakíthatja át a virtuális gépeket az Azure CLI használatával. Ha telepíteni vagy frissíteni szeretné, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 * Tekintse át [a Managed Disksre való áttelepítéssel kapcsolatos gyakori kérdéseket](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
@@ -94,7 +94,7 @@ Meg kell adni a rendelkezésre állási csoportba tartozó összes virtuális g�
 
 A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a felügyelt lemezekre.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a portálon lévő virtuális gépek listájából.
 3. A virtuális gép paneljén válassza a menü **lemezek** elemét.
 4. A **lemezek** panel tetején válassza az **áttelepítés felügyelt lemezekre**lehetőséget.

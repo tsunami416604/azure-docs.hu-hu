@@ -1,18 +1,18 @@
 ---
 title: Kapcsolódás a Facebookhoz
-description: Az ütemterv és az oldal kezelése a Facebook REST API-kkal és Azure Logic Apps
+description: A Facebook-idővonalat és-oldalt kezelő feladatok és munkafolyamatok automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 1aa936f902dc17c9a401959c19824f6c581547b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789846"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665802"
 ---
 # <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Facebook-ütemterv és-oldal kezelése Azure Logic Apps használatával
 

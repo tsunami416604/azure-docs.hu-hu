@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951428"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659621"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Mi az Azure arc a kiszolgálókhoz
 
@@ -41,7 +41,7 @@ A nyilvános előzetes kiadás kiértékelésre szolgál, és nem használható 
 
 ## <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
 
-Győződjön meg arról, hogy elolvasta a Azure Resource Manager korlátozásokat, és tervezze meg a csatlakoztatni kívánt gépek számát az [előfizetéshez](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)és az [erőforráscsoportokhöz](../../azure-subscription-service-limits.md#resource-group-limits)tartozó útmutatásnak megfelelően. Alapértelmezés szerint az erőforráscsoport legfeljebb 800-kiszolgálót foglal le.
+Győződjön meg arról, hogy elolvasta a Azure Resource Manager korlátozásokat, és tervezze meg a csatlakoztatni kívánt gépek számát az [előfizetéshez](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)és az [erőforráscsoportokhöz](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)tartozó útmutatásnak megfelelően. Alapértelmezés szerint az erőforráscsoport legfeljebb 800-kiszolgálót foglal le.
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Az erőforrás-szolgáltatókat a portálon is regisztrálhatja a [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)alatti lépéseket követve.
+Az erőforrás-szolgáltatókat a portálon is regisztrálhatja a [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)alatti lépéseket követve.
 
 ## <a name="machine-changes-after-installing-the-agent"></a>A gép módosítása az ügynök telepítése után
 

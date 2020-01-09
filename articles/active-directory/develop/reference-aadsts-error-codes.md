@@ -1,5 +1,5 @@
 ---
-title: Azure AD-hitelesítés és-engedélyezési hibakódok | Azure
+title: Azure AD-hitelesítés & engedélyezési hibakódok
 description: Ismerje meg az Azure AD biztonságijogkivonat-szolgáltatás (STS) által visszaadott AADSTS hibakódokat.
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423966"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és-engedélyezési hibakódok
 
@@ -133,6 +133,8 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS50178 | A SessionControlNotSupportedForPassthroughUsers nem támogatja az áteresztő felhasználók számára a munkamenet-vezérlést. |
 | AADSTS50180 | WindowsIntegratedAuthMissing – integrált Windows-hitelesítésre van szükség. Engedélyezze a Seamless SSO-t a bérlőn. |
 | AADSTS50187 | DeviceInformationNotProvided – a szolgáltatás nem tudta végrehajtani az eszköz hitelesítését. |
+| AADSTS50196 | LoopDetected – A rendszer egy ügyfél-hurkot észlelt. Ellenőrizze az alkalmazás logikáját, és győződjön meg arról, hogy a jogkivonat-gyorsítótárazás implementálva van, és hogy a hibákra vonatkozó feltételek megfelelően vannak kezelve.  Az alkalmazás túl sok olyan kérést hajtott végre túl rövid ideig, amely azt jelzi, hogy hibás állapotban van, vagy a visszaélésszerűen kéri a jogkivonatokat. |
+| AADSTS50199 | CmsiInterrupt – felhasználói beavatkozás szükséges ehhez a hitelesítéshez.  Mivel ez egy "interaction_required" hiba, az ügyfélnek interaktív hitelesítést kell végeznie.  Ennek az az oka, hogy a rendszer webnézete egy natív alkalmazás jogkivonatának igénylésére lett felhasználva – a felhasználónak meg kell kérnie, hogy megkérdezze, valóban volt-e az alkalmazás, amelyet be kellett jelentkeznie.|
 | AADSTS51000 | RequiredFeatureNotEnabled – a szolgáltatás le van tiltva. |
 | AADSTS51001 | A DomainHintMustbePresent-tartományhoz a helyszíni biztonsági azonosítóval vagy a helyszíni egyszerű felhasználónévvel kell rendelkeznie. |
 | AADSTS51004 | UserAccountNotInDirectory – a felhasználói fiók nem létezik a címtárban. |

@@ -1,14 +1,14 @@
 ---
 title: Útmutatás szabályozott kérésekhez
-description: Megtudhatja, hogyan végezhet párhuzamosan kötegelt, lépcsőzetes, tördelési és lekérdezési kéréseket, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
-ms.date: 11/21/2019
+description: Megtudhatja, hogyan csoportosíthat, lépcsőzetesen, oldalszámozást és lekérdezéseket végezhet párhuzamosan, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436077"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -17,7 +17,7 @@ Ha programozott és gyakori Azure Resource Graph-alapú adathasználatot hoz lé
 Ez a cikk az Azure Resource Graph lekérdezések létrehozásával kapcsolatos négy területet és mintázatot ismerteti:
 
 - A szabályozási fejlécek ismertetése
-- Kötegelt lekérdezések
+- Lekérdezések csoportosítása
 - Lekérdezések lépcsőzetes elosztása
 - A tördelés hatása
 
@@ -37,9 +37,9 @@ A fejlécek működésének szemléltetéséhez nézzük meg az `x-ms-user-quota
 
 Ha szeretné megtekinteni, hogyan használhatja a fejléceket a lekérdezési kérelmek _leállítási_ , tekintse meg [párhuzamosan a lekérdezésben](#query-in-parallel)szereplő mintát.
 
-## <a name="batching-queries"></a>Kötegelt lekérdezések
+## <a name="grouping-queries"></a>Lekérdezések csoportosítása
 
-Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lekérdezései hatékonyabbak, mint a tetszés-lekérdezések. A nagyobb lekérdezések kvóta-díja általában kisebb, mint a több kis-és a célként megadott lekérdezések kvótájának díja. A köteg mérete ajánlott _300_-nál kisebb.
+A lekérdezéseket az előfizetés, az erőforráscsoport vagy az egyes erőforrások hatékonyabban csoportosítják, mint a tetszés-lekérdezések. A nagyobb lekérdezések kvóta-díja általában kisebb, mint a több kis-és a célként megadott lekérdezések kvótájának díja. A csoport mérete ajánlott _300_-nál kisebb.
 
 - Példa a rosszul optimalizált megközelítésre
 
@@ -62,19 +62,19 @@ Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lek
   }
   ```
 
-- Példa egy optimalizált batch-módszer #1
+- Példa az optimalizált csoportosítási megközelítés #1ára
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lek
   }
   ```
 
-- Példa egy optimalizált batch-módszer #2
+- Példa #2 egy optimalizált csoportosítási megközelítésre egy lekérdezés több erőforrásának beolvasásához
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Lekérdezés párhuzamosan
 
-Annak ellenére, hogy a kötegelt feldolgozás ajánlott a párhuzamos felett, vannak olyan időpontok, amikor a lekérdezések nem könnyen kötegeltek. Ezekben az esetekben érdemes lehet lekérdezni az Azure Resource Graphot több lekérdezés párhuzamos módon történő elküldésével. Az alábbi példa bemutatja, hogyan _leállítási_ az ilyen helyzetekben a fejlécek szabályozása:
+Annak ellenére, hogy a csoportosítás ajánlott a párhuzamos-on keresztül, vannak olyan időpontok, amikor a lekérdezések nem könnyen csoportosíthatók. Ezekben az esetekben érdemes lehet lekérdezni az Azure Resource Graphot több lekérdezés párhuzamos módon történő elküldésével. Az alábbi példa bemutatja, hogyan _leállítási_ az ilyen helyzetekben a fejlécek szabályozása:
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 063728c03c689c2eafec889bdee8276772ae685a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932113"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444035"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a tárolt eljárási tevékenységgel Azure Data Factory
 Ez a cikk azt ismerteti, hogyan futtathat SSIS-csomagokat egy Azure Data Factory-folyamatban egy tárolt eljárási tevékenység használatával. 
@@ -46,7 +46,7 @@ Első lépésként hozzon létre egy adatgyárat a Azure Portal használatával.
       
      ![Új adat-előállító lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a Név mezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a Név mezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
      ![A név nem érhető el – hiba](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -55,11 +55,11 @@ Első lépésként hozzon létre egy adatgyárat a Azure Portal használatával.
    - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
    - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a  **Create** (Létrehozás) gombra.
+7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -80,7 +80,7 @@ Ebben a lépésben a Data Factory felhasználói felületét használja egy foly
 3. A tárolt eljárási tevékenység tulajdonságok ablakában váltson az **SQL-fiók** lapra, és kattintson az **+ új**elemre. Létre kell hoznia egy, az SSIS-katalógust (SSIDB-adatbázist) futtató Azure SQL Database-adatbázishoz való kapcsolódást. 
    
     ![Új társított szolgáltatás gomb](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
-4. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+4. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket: 
 
     1. A **típushoz**válassza a **Azure SQL Database** lehetőséget.
     2. Válassza ki az **alapértelmezett** Azure Integration Runtime a `SSISDB`-adatbázist futtató Azure SQL Databasehoz való kapcsolódáshoz.
@@ -154,7 +154,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 Használhatja ugyanazt az adatelőállítót, amely rendelkezik a Azure-SSIS IR vagy létrehoz egy különálló adatelőállítót. Az alábbi eljárás egy adatelőállító létrehozásának lépéseit ismerteti. A folyamat egy tárolt eljárási tevékenységgel rendelkező folyamatot hoz létre ebben az adatgyárban. A tárolt eljárási tevékenység végrehajt egy tárolt eljárást a SSISDB-adatbázisban a SSIS-csomag futtatásához. 
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -206,10 +206,7 @@ Hozzon létre egy társított szolgáltatást, amely összekapcsolja az Azure SQ
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }

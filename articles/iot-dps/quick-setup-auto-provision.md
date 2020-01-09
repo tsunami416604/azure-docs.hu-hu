@@ -8,16 +8,23 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434598"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása a Azure Portal
 
-Ezek a lépések azt mutatják be, hogyan történik az Azure felhőbeli erőforrások üzembe helyezése a portálon az eszközkiépítéshez. A cikkben ismertetett lépésekkel a következők hajthatók végre: az IoT Hub és egy új IoT Hub Device Provisioning szolgáltatás létrehozása, valamint a két szolgáltatás összekapcsolása. 
+A IoT Hub Device Provisioning Service a IoT Hub használatával lehetővé teheti a nulla érintéses, igény szerinti üzembe helyezést a kívánt IoT hubhoz anélkül, hogy emberi beavatkozásra lenne szükség, ami lehetővé teszi, hogy az ügyfelek több millió IoT-eszköz biztonságos és skálázható módon legyenek kiépítve. Az Azure IoT Hub Device Provisioning Service a TPM, a szimmetrikus kulcs és az X. 509 tanúsítvány-hitelesítéssel rendelkező IoT-eszközöket támogatja. További információkért tekintse meg a [IoT hub Device Provisioning Service áttekintése](./about-iot-dps.md) című témakört.
+
+Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be a IoT Hub Device Provisioning Service az Azure Portalon az eszközök kiépítés céljából az alábbi lépésekkel:
+> [!div class="checklist"]
+> * IoT Hub létrehozásához használja a Azure Portal
+> * IoT Hub Device Provisioning Service létrehozása és az azonosító hatókörének lekérése az Azure Portallal
+> * Az IoT Hub csatolása a Device Provisioning Service-hez
+
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -27,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 
-## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Új példány létrehozása az IoT Hub eszközkiépítési szolgáltatáshoz
+## <a name="create-a-new-iot-hub-device-provisioning-service"></a>Új IoT Hub Device Provisioning Service létrehozása
 
 1. Kattintson ismét az **+ erőforrás létrehozása** gombra.
 
@@ -77,4 +84,4 @@ Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmuta
 Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan lehet szimulált eszközt kiépíteni a telepítővel, folytassa a szimulált eszköz létrehozására szolgáló rövid útmutatóval.
 
 > [!div class="nextstepaction"]
-> [Szimulált eszköz létrehozásának rövid útmutatója](./quick-create-simulated-device.md)
+> [Szimulált eszköz létrehozásának rövid útmutatója](./quick-create-simulated-device-symm-key.md)

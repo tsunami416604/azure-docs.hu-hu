@@ -1,37 +1,37 @@
 ---
-title: Renderelési alkalmazások – Azure Batch használata
-description: Az Azure Batch renderelési alkalmazások használata
+title: Renderelési alkalmazások használata – Azure Batch
+description: Renderelési alkalmazások használata Azure Batch használatával. Ez a cikk az egyes renderelési alkalmazások futtatásának rövid leírását tartalmazza.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775389"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390485"
 ---
-# <a name="rendering-applications"></a>Renderelő alkalmazásokkal
+# <a name="rendering-applications"></a>Alkalmazások renderelése
 
-Renderelő alkalmazásokkal használja a Batch-feladatok és tevékenységek létrehozása. A tevékenység parancssori tulajdonságának megfelelő parancssor és paraméterek megadása.  Hozzon létre a feldolgozás feladatokat legegyszerűbb módja az, hogy használja a Batch Explorer sablonok megadott [Ez a cikk](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  A sablonok tekinthet meg, és szükség esetén létrehozott verziók módosítani.
+A renderelési alkalmazások a Batch-feladatok és-feladatok létrehozásával használhatók. A feladat parancssori tulajdonsága megadja a megfelelő parancssort és paramétereket.  A feladatok feladatainak létrehozásához a legegyszerűbb módszer a Batch Explorer-sablonok használata az [ebben a cikkben](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)megadott módon.  A sablonok megtekinthetők és módosíthatók, ha szükségesek.
 
-A cikk ismerteti az egyes renderelési alkalmazások futtatása rövid leírását.
+Ez a cikk az egyes renderelési alkalmazások futtatásának rövid leírását tartalmazza.
 
-## <a name="rendering-with-autodesk-3ds-max"></a>Renderelése az Autodesk 3ds Max
+## <a name="rendering-with-autodesk-3ds-max"></a>Renderelés az Autodesk 3ds Max-val
 
 ### <a name="renderer-support"></a>Megjelenítő támogatása
 
-Mellett a leképezőket beépített 3ds Max, a következő jelentéselemeket a renderelési Virtuálisgép-rendszerképek elérhetők, és hivatkozhat a 3ds Max-jelenet fájlt:
+A 3ds Max-ban beépített renderelő elemek mellett a következő megjelenítők is elérhetők a renderelési virtuálisgép-lemezképeken, és a 3ds Max Scene fájl hivatkozhat rájuk:
 
 * Autodesk Arnold
 * Chaos Group V-Ray
 
-### <a name="task-command-line"></a>Tevékenység parancssora
+### <a name="task-command-line"></a>Feladat parancssora
 
-Meghívása a `3dsmaxcmdio.exe` alkalmazásnak, hogy parancssori renderelési készlet csomóponton.  Ez az alkalmazás elérési úton van, a feladat futtatásakor. A `3dsmaxcmdio.exe` alkalmazás rendelkezik, elérhető ugyanazokat a paramétereket a `3dsmaxcmd.exe` alkalmazás, amelynek a leírása itt található a [3ds Max súgódokumentációval](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (megjelenítése |} Parancssori renderelési szakaszt).
+Hívja meg a `3dsmaxcmdio.exe` alkalmazást a parancssori renderelés végrehajtásához egy készlet-csomóponton.  Ez az alkalmazás a feladat futtatásakor megadott elérési úton található. A `3dsmaxcmdio.exe` alkalmazás ugyanazokkal az elérhető paraméterekkel rendelkezik, mint a `3dsmaxcmd.exe` alkalmazás, amely a [3ds Max Súgó dokumentációjában](https://help.autodesk.com/view/3DSMAX/2018/ENU/) található (renderelés | Parancssori renderelés szakasza).
 
 Példa:
 
@@ -41,48 +41,48 @@ Példa:
 
 Megjegyzések:
 
-* Nagy gondot kell fordítani, annak érdekében, hogy az adategység-fájlok találhatók.  Győződjön meg, hogy az elérési utak megfelelő és a relatív a **eszköz követési** ablakban, vagy használja a `-bitmapPath` paraméter a parancssorban.
-* A renderelési, például keresse meg az eszközök, úgy, hogy nem tud problémái vannak a `stdout.txt` 3ds által írt fájlok maximális száma, a feladat futtatásakor.
+* Az adategység fájljainak megtalálása érdekében nagy gonddal kell eljárni.  Győződjön meg arról, hogy az elérési utak helyesek és relatívak az **eszköz követési** ablakán keresztül, vagy használja a `-bitmapPath` paramétert a parancssorban.
+* Ellenőrizze, hogy van-e probléma a rendereléssel, például ha nem szeretné, hogy az eszközök megtalálják a 3ds Max által írt `stdout.txt` fájlt a feladat futtatásakor.
 
-### <a name="batch-explorer-templates"></a>A Batch Explorer sablonok
+### <a name="batch-explorer-templates"></a>Batch Explorer sablonok
 
-Készlet és a feladat-sablonok érhetők el a **katalógus** a Batch Explorer.  A sablon forrásfájlok érhetők el a [Batch Explorer data adattárat a Githubon](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
+A készlet **és a feladatok sablonjai a Batch Explorer** katalógusában érhetők el.  A sablon forrásfájljait a [GitHub batch Explorer adattárában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)érheti el.
 
-## <a name="rendering-with-autodesk-maya"></a>Az Autodesk Maya megjelenítése
+## <a name="rendering-with-autodesk-maya"></a>Megjelenítés Autodesk Maya
 
 ### <a name="renderer-support"></a>Megjelenítő támogatása
 
-Mellett a Maya épített leképezőkhöz a következő leképezőket a renderelési Virtuálisgép-rendszerképek elérhetők, és hivatkozhat a 3ds Max-jelenet fájlt:
+A Maya beépített renderelő eszközökön kívül a következő megjelenítők is elérhetők a renderelési virtuálisgép-lemezképeken, és a 3ds Max Scene fájl hivatkozhat rájuk:
 
 * Autodesk Arnold
 * Chaos Group V-Ray
 
-### <a name="task-command-line"></a>Tevékenység parancssora
+### <a name="task-command-line"></a>Feladat parancssora
 
-A `renderer.exe` parancssori megjelenítő szerepel a tevékenység parancssora. A parancssori megjelenítő leírása itt található [a Maya alkalmazáshoz súgó](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
+A `renderer.exe` parancssori megjelenítő a feladat parancssorában van használatban. A parancssori megjelenítő dokumentációját a [Maya súgója ismerteti](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
 
-A következő példában feladat-előkészítési tevékenységet a feladat-előkészítési munkakönyvtár másolja a jelenetfájlok és az eszközök segítségével, kimeneti mappa a renderelési lemezkép tárolására szolgál, és 10 keret jelenik meg.
+A következő példában egy feladat-előkészítési tevékenység használható a jelenet fájljainak és eszközeinek a feladat-előkészítési munkakönyvtárba való másolására, a renderelési kép tárolására szolgáló kimeneti mappa, a 10. keret pedig megjelenítésre kerül.
 
 ```
 render -renderer sw -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-V-Ray renderelést, a Maya jelenetfájl általában megadni V-Ray, a megjelenítő.  Azt is megadható a parancssorban:
+A V-Ray megjelenítéshez a Maya Scene fájl általában a renderer-ként fogja megadni a V-Ray-t.  A parancssorban is megadható:
 
 ```
 render -renderer vray -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Az Arnold renderelése, a Maya jelenetfájl általában megadni Arnold, a megjelenítő.  Azt is megadható a parancssorban:
+Az Arnold rendering esetében a Maya Scene fájl általában az Arnold-t jeleníti meg megjelenítőként.  A parancssorban is megadható:
 
 ```
 render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-### <a name="batch-explorer-templates"></a>A Batch Explorer sablonok
+### <a name="batch-explorer-templates"></a>Batch Explorer sablonok
 
-Készlet és a feladat-sablonok érhetők el a **katalógus** a Batch Explorer.  A sablon forrásfájlok érhetők el a [Batch Explorer data adattárat a Githubon](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
+A készlet **és a feladatok sablonjai a Batch Explorer** katalógusában érhetők el.  A sablon forrásfájljait a [GitHub batch Explorer adattárában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)érheti el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A készlet és -feladat sablonokat használni a [a GitHub adattár](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) Batch Explorer használatával.  Ha szükséges, hozzon létre új sablonokat, vagy módosítsa a megadott sablonok egyikét.
+Használja a készletet és a feladatsort a [GitHub adattárházában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) batch Explorer használatával.  Ha szükséges, hozzon létre új sablonokat, vagy módosítsa a megadott sablonok egyikét.

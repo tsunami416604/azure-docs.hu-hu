@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446661"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
@@ -26,11 +26,11 @@ Ha a [Bing Image Search API](../bing-image-search/overview.md)használja, a rend
 > [!IMPORTANT]
 > Ha a Bing Image Search API segítségével képelemzéseket kap, érdemes lehet átváltani a Bing Visual Search APIra, amely átfogóbb elemzéseket tesz lehetővé.
 
-## <a name="insights"></a>Insights
+## <a name="insights"></a>Elemzés
 
 A következő bepillantást a Bing Visual Search használatával derítheti fel:
 
-| Megállapítások                              | Leírás |
+| Elemzések                              | Leírás |
 |--------------------------------------|-------------|
 | Vizuálisan hasonló képek              | A bemeneti képhez hasonló rendszerképek listája. |
 | Vizuálisan hasonló termékek            | Termékek, amelyek vizuálisan hasonlóak a termékhez.            |
@@ -48,19 +48,21 @@ Bing Visual Search az eredmények közé tartoznak a rendszerképekben érdekes 
 
 A Bing Visual Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatáshoz használhatja a REST API vagy az SDK-t is.
 
-1. Hozzon létre egy [Cognitive Services fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/free/). Az előfizetési kulcsot a fiók létrehozása után, vagy az ingyenes próbaverzió aktiválása után az [Azure](https://azure.microsoft.com/try/cognitive-services/my-apis) -webhelyről szerezheti be a [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
+1. Hozzon létre egy [Cognitive Services fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/free/). Az előfizetési kulcsot a fiók létrehozása után, vagy az ingyenes próbaverzió aktiválása után az [Azure-webhelyről](https://azure.microsoft.com/try/cognitive-services/my-apis) szerezheti be a [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 2. Kérelem küldése az API-nak érvényes keresési lekérdezéssel.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Először próbálja ki a Bing Visual Search API [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 A bemutató azt mutatja be, hogyan lehet gyorsan testreszabni a keresési lekérdezéseket, és a weben képeket kutatni.
 
-Az első kérés gyors megkezdéséhez tekintse meg a rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Annak érdekében, hogy gyorsan nekiláthasson az első kérés létrehozásának, olvassa el a következő rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * A [rendszerképek – Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) hivatkozás leírja a végpontokon található definíciókat és információkat, a kérelmek fejléceit, válaszait és lekérdezési paramétereit, amelyek a képalapú keresési eredmények igénylésére használhatók.
 
 * A [BING Search API használata és a megjelenítési követelmények](../bing-web-search/use-display-requirements.md) határozzák meg a tartalom és a Bing Search API-kon keresztül szerzett információk elfogadható felhasználását.
+
+* A többi elérhető API-k megismeréséhez látogasson el a [BING Search API hub oldalára](../bing-web-search/search-the-web.md) .

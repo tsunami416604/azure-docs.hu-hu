@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: Tudásbázis létrehozása, betanítása és közzététele – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebben a példában a QnA Maker tudásbázist egy egyszerű gyakori kérdések weboldaláról hozza létre a BitLocker-kulcs helyreállításával kapcsolatos kérdések megválaszolásához.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy QnA Maker tudásbázist (KB) a saját tartalmakból, például a GYIK-ből vagy a termék-kézikönyvekből. Ebben a példában a QnA Maker tudásbázist egy egyszerű gyakori kérdések weboldaláról hozza létre a BitLocker-kulcs helyreállításával kapcsolatos kérdések megválaszolásához.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: bc64196969b23f0aad77ff4d4495e4bb3e569c32
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447605"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -36,23 +36,24 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
 1. A QnA Maker portálon válassza a **Tudásbázis létrehozása**elemet.
 
-1. A **Létrehozás** lapon válassza a **QnA szolgáltatás létrehozása**lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást. 
+1. A **Létrehozás** lapon válassza a **QnA szolgáltatás létrehozása**lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást.
 
-1. A QnA Maker portálon válassza ki a QnA Maker szolgáltatást a legördülő listából. Ha új QnA Maker szolgáltatást hozott létre, frissítse a lapot.
+1. A Azure Portal hozza létre az erőforrást. Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
+1. Térjen vissza a QnA Maker portálra, frissítse a webhelyet a portálon, és folytassa a Tudásbázis létrehozásával.
 
    ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
 1. Nevezze el a Tudásbázisban a **minta QNA kb-ot**.
 
-1. Mintaként szolgáló Word-dokumentum hozzáadása URL-címként: 
+1. Mintaként szolgáló Word-dokumentum hozzáadása URL-címként:
 
     `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
 
 1. Válassza a(z) `+ Add URL` lehetőséget.
 
-1. Vegyen fel  **_professzionális_ Chit-csevegést** a kb-ra. 
+1. Vegyen fel  **_professzionális_ Chit-csevegést** a kb-ra.
 
-1. Válassza **a kb létrehozása**lehetőséget.
+1. Válassza a **Tudásbázis létrehozása** lehetőséget.
 
     A kinyerési folyamat eltarthat néhány percig, hogy beolvassa a dokumentumot, és azonosítsa a kérdéseket és a válaszokat.
 
@@ -60,8 +61,8 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
 ## <a name="add-a-new-question-and-answer-set"></a>Új kérdés és válaszfájl hozzáadása
 
-1. A QnA Maker portál **Szerkesztés** lapján válassza a **QnA pár hozzáadása**elemet.
-1. Adja hozzá a következő kérdést: 
+1. A QnA Maker portál **Szerkesztés** lapján válassza a **+ QnA pár hozzáadása** elemet a helyi eszköztárból.
+1. Adja hozzá a következő kérdést:
 
     `How many Azure services are used by a knowledge base?`
 
@@ -71,9 +72,9 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
     ![ Adja hozzá a kérdést szövegként és a Markdown formázott választ.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    A Markdown szimbólum (`*`) a felsorolásjeles pontokhoz használható. A `\n` egy új sorhoz van használatban.  
+    A Markdown szimbólum (`*`) a felsorolásjeles pontokhoz használható. A `\n` egy új sorhoz van használatban.
 
-    A **Szerkesztés** oldalon látható a Markdown. Amikor később a **tesztelési** panelt használja, látni fogja, hogy a Markdown megfelelően jelenik-e meg. 
+    A **Szerkesztés** oldalon látható a Markdown. Amikor később a **tesztelési** panelt használja, látni fogja, hogy a Markdown megfelelően jelenik-e meg.
 
 ## <a name="save-and-train"></a>Mentés és betanítás
 
@@ -81,10 +82,10 @@ Kattintson a jobb felső sarokban a **Save and train** (Mentés és betanítás)
 
 ## <a name="test-the-knowledge-base"></a>A Tudásbázis tesztelése
 
-1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen. 
-1. Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben. 
+1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen.
+1. Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.
 
-    `How many Azure services are used by a knowledge base?`  
+    `How many Azure services are used by a knowledge base?`
 
     ![ Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
 
@@ -106,10 +107,10 @@ Ha közzétesz egy tudásbázist, a Tudásbázis tartalma a `test` indexből egy
 
 ## <a name="create-a-bot"></a>Robot létrehozása
 
-A közzététel után létrehozhat egy robotot a **közzétételi lapról:** 
+A közzététel után létrehozhat egy robotot a **közzétételi lapról:**
 
-* Több robotot is létrehozhat, amelyek mindegyike azonos tudásbázisra mutat a különböző régiókban vagy díjszabási tervekben az egyes robotok számára. 
-* Ha csak egy robotot szeretne használni a Tudásbázisban, használja a Azure Portal hivatkozásán látható **összes robot megtekintését** az aktuális robotok listájának megtekintéséhez. 
+* Több robotot is létrehozhat, amelyek mindegyike azonos tudásbázisra mutat a különböző régiókban vagy díjszabási tervekben az egyes robotok számára.
+* Ha csak egy robotot szeretne használni a Tudásbázisban, használja a Azure Portal hivatkozásán látható **összes robot megtekintését** az aktuális robotok listájának megtekintéséhez.
 
 Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műveleteket végrehajtania a robottal. Már konfigurálva van a Tudásbázisban való együttműködésre, és a Tudásbázis minden jövőbeli módosításával működik. Minden alkalommal, amikor közzétesz egy tudásbázist, az ahhoz kapcsolódó összes robot automatikusan frissül.
 
@@ -117,36 +118,47 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
     ![A robot létrehozásának képernyőképe](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Megnyílik egy új böngésző lap a Azure Portal számára a Azure Bot Service létrehozási oldalával. Konfigurálja az Azure bot Service-t. 
-    
-    * A robot létrehozásakor ne módosítsa a Azure Portal következő beállításait. A meglévő Tudásbázisban előre ki vannak töltve: 
-        * QnA-hitelesítési kulcs
-        * App Service-csomag és-hely
-    * A robot és a QnA Maker megoszthatják a Web App Service-csomagot, de nem oszthatják meg a webalkalmazást. Ez azt jelenti, hogy a robot **alkalmazásának neve** nem lehet a QnA Maker szolgáltatás alkalmazásának neve. 
+1. Megnyílik egy új böngésző lap a Azure Portal számára a Azure Bot Service létrehozási oldalával. Konfigurálja az Azure bot Service-t. A robot és a QnA Maker megoszthatják a Web App Service-csomagot, de nem oszthatják meg a webalkalmazást. Ez azt jelenti, hogy a robot **alkalmazásának neve** nem lehet a QnA Maker szolgáltatás alkalmazásának neve.
 
-1. A robot létrehozása után nyissa meg a **bot Service** -erőforrást. 
+    * **Nem**
+        * A bot fogantyújának módosítása – ha nem egyedi.
+        * Válassza ki az SDK nyelvét. A robot létrehozása után letöltheti a kódot a helyi fejlesztési környezetbe, és folytathatja a fejlesztési folyamatot.
+    * **nem**
+        * a robot létrehozásakor módosítsa a Azure Portal következő beállításait. A meglévő Tudásbázisban előre ki vannak töltve:
+           * QnA-hitelesítési kulcs
+           * App Service-csomag és-hely
+
+
+1. A robot létrehozása után nyissa meg a **bot Service** -erőforrást.
 1. A **bot Management**alatt válassza **a tesztelés webes csevegésben**lehetőséget.
 1. Írja be a következőt a csevegési **üzenetbe**:
 
     `Azure services?`
 
-    A csevegési robot a Tudásbázisban válaszol. 
+    A csevegési robot a Tudásbázisban válaszol.
 
     ![Adjon meg egy felhasználói lekérdezést a teszt webes csevegésben.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
 
+## <a name="what-did-you-accomplish"></a>Mit ért el?
+
+Létrehozott egy új tudásbázist, hozzáadott egy nyilvános URL-címet a tudásbázishoz, hozzáadta a saját QnA-készletet, betanított, tesztelt és közzétette a tudásbázist.
+
+Miután közzétette a tudásbázist, létrehozott egy robotot, és tesztelte a robotot.
+
+Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, és törölni kellene a tartalmat.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban. 
+Törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információk:
+További információ:
 
 * [Markdown-formátum a válaszokban](../concepts/data-sources-supported.md)
 * [A Markdown tesztelése](../concepts/data-sources-supported.md#testing-your-markdown)
-* QnA Maker [adatforrások](../Concepts/data-sources-supported.md). 
+* QnA Maker [adatforrások](../Concepts/data-sources-supported.md).
 * A [robot erőforrás-konfigurációs beállításai](../tutorials/create-qna-bot.md).
 
 > [!div class="nextstepaction"]
 > [Metaadatokkal kapcsolatos kérdések hozzáadása](add-question-metadata-portal.md)
-

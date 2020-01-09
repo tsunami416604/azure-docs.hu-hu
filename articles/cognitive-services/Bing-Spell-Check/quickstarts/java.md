@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/11/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 0a40163eddffd4e406dd0644f950f6af636a1dfa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 43c528a1e9e46a67e895679b1a0fd04fef8900a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382959"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Javával
 
@@ -40,7 +40,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és előfizetési kulcsához. Ezután hozzon létre változókat a piacra, a helyesírás-ellenőrzéshez használni kívánt szövegre, valamint egy karakterláncot a helyesírás-ellenőrzési módhoz.
+2. Hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és előfizetési kulcsához. Ezután hozzon létre változókat a piacra, a helyesírás-ellenőrzéshez használni kívánt szövegre, valamint egy karakterláncot a helyesírás-ellenőrzési módhoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -187,7 +187,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)

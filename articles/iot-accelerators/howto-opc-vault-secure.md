@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71203693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454190"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
 
@@ -36,7 +36,7 @@ Ha még nem tette meg, hozza létre a kiállító HITELESÍTÉSSZOLGÁLTATÓI ta
 > [!IMPORTANT]
 > Egy alkalmazás regisztrálásához az író szerepkör szükséges.
 
-1. Nyissa meg a tanúsítványszolgáltatásokat `https://myResourceGroup-app.azurewebsites.net` címen, és jelentkezzen be.
+1. Nyissa meg a tanúsítványszolgáltatásokat `https://myResourceGroup-app.azurewebsites.net`címen, és jelentkezzen be.
 2. Lépjen az **új regisztrálása**gombra. Egy alkalmazás regisztrálásához a felhasználónak legalább a hozzárendelt író szerepkörrel kell rendelkeznie.
 2. A nevezési űrlap az OPC UA elnevezési konvencióit követi. Az alábbi képernyőképen látható, hogy az OPC ua- [hivatkozási kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) mintája az OPC ua .NET Standard stackben jelenik meg:
 
@@ -57,7 +57,7 @@ Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási ké
 
 3. Válassza az **új kulcspár és tanúsítvány kérése** lehetőséget, hogy egy titkos kulcsot és egy új aláírt tanúsítványt kérjen az alkalmazás nyilvános kulcsával.
 
-   ![Képernyőfelvétel új kulcspár és tanúsítvány létrehozásáról](media/howto-opc-vault-secure/generate-new-key-pair.png "Új kulcspár előállítása")
+   ![Képernyőfelvétel új kulcspár és tanúsítvány létrehozásáról](media/howto-opc-vault-secure/generate-new-key-pair.png "Új kulcspár létrehozása")
 
 4. Töltse ki az űrlapot a tárgy és a tartománynevek között. A titkos kulcshoz válassza a PEM vagy a PFX jelszót. Válassza az **új kulcspár** létrehozása lehetőséget a tanúsítványkérelem létrehozásához.
 
@@ -98,7 +98,7 @@ Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELES
 
 Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, míg az alkalmazás tanúsítványa a tanúsítványtároló egyik `own` mappájára van alkalmazva. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
 
-### <a name="step-4-device-secured"></a>4\. lépés: biztonságos eszköz
+### <a name="step-3-device-secured"></a>3\. lépés: biztonságos eszköz
 
 Az OPC UA-eszköz most már készen áll arra, hogy a CA által aláírt tanúsítványok által védett más OPC UA-eszközökkel tudjon kommunikálni további konfiguráció nélkül.
 

@@ -1,17 +1,17 @@
 ---
 title: Az Azure cache hibaelhárítása Redis ügyféloldali problémák esetén
-description: Ismerje meg, Hogyan oldhatók fel az Azure cache szolgáltatással kapcsolatos gyakori ügyféloldali problémák a Redis
+description: Ismerje meg, hogy miként oldhatók meg az Azure cache szolgáltatással kapcsolatos gyakori ügyféloldali problémák, például a Redis-ügyfelek Redis, a forgalom Bursa, a nagy CPU, a korlátozott sávszélesség, a nagyméretű kérelmek vagy a nagy válaszok mérete.
 author: yegu-ms
-ms.service: cache
-ms.topic: conceptual
-ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 10/18/2019
+ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433373"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Az Azure cache hibaelhárítása Redis ügyféloldali problémák esetén
 
@@ -102,7 +102,7 @@ A nagyméretű válaszok méretének felbontása változó, azonban a következ�
 1. Növelje az alkalmazás által használt kapcsolatok objektumainak számát.
     - A különböző kapcsolati objektumokra irányuló kérelmeket ciklikus multiplexelés használatával hajthatja végre.
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
-- [Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén](cache-troubleshoot-server.md)
+- [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
 - [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

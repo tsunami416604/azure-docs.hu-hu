@@ -1,5 +1,5 @@
 ---
-title: A webes API-kat meghívó asztali alkalmazások jogkivonatának beolvasása | Azure
+title: Jogkivonat beszerzése a webes API meghívásához (asztali alkalmazás) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre olyan asztali alkalmazást, amely webes API-kat hív meg (token beszerzése az alkalmazáshoz |)
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423877"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás – jogkivonat beszerzése
 
@@ -38,7 +38,7 @@ A webes API-t a `scopes`határozza meg. Függetlenül attól, hogy milyen élmé
 
 ### <a name="in-msalnet"></a>A MSAL.NET
 
-```CSharp
+```csharp
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
@@ -155,7 +155,7 @@ Az alábbi példa azt mutatja be, hogy a jogkivonat interaktív beolvasása a fe
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>A MSAL.NET
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -184,7 +184,7 @@ Androidon a fölérendelt tevékenységet is meg kell adnia (`.WithParentActivit
 
 Az interaktív KEZELŐFELÜLET fontos. `AcquireTokenInteractive` egy olyan opcionális paramétert ad meg, amely lehetővé teszi, hogy az azt támogató platformok számára a szülő felhasználói felületet válassza. Asztali alkalmazásokban való használat esetén a `.WithParentActivityOrWindow` eltérő típusúnak kell lennie a platformtól függően:
 
-```CSharp
+```csharp
 // net45
 WithParentActivityOrWindow(IntPtr windowPtr)
 WithParentActivityOrWindow(IWin32Window window)
@@ -202,7 +202,7 @@ Megjegyzéseket tartalmazó
 - Windows rendszeren a felhasználói felületi szálból kell meghívnia `AcquireTokenInteractive`t, hogy a beágyazott böngésző megkapja a megfelelő felhasználói felületi szinkronizálási környezetet.  Ha a felhasználói felületi szál nem hívja meg a hívást, az üzenetek nem tudnak megfelelően és/vagy holtpontra jutni a felhasználói felületen. A MSAL a felhasználói felületi szálból való meghívásának egyik módja, ha a felhasználói felületi szálon már nem a `Dispatcher` a WPF rendszeren.
 - Ha WPF-t használ, a WPF-vezérlőkből származó ablak beszerzéséhez `WindowInteropHelper.Handle` osztályt használhat. A hívást ezután egy WPF-vezérlőből (`this`):
 
-  ```CSharp
+  ```csharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
                     .ExecuteAsync();
@@ -226,7 +226,7 @@ Az osztály a következő konstansokat határozza meg:
 
 Ez a módosító olyan speciális forgatókönyvekben használatos, ahol a felhasználónak előre jóvá kell hagynia több erőforrást (és nem szeretné használni a növekményes beleegyezést, amelyet általában a MSAL.NET/a Microsoft Identity platformmal használ). A részletekért lásd [: a felhasználó beleegyezett több erőforrásra](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();
@@ -253,7 +253,7 @@ A `end Url` gazdagépe mindig a `redirectUri`. A `end Url` elfogásához a köve
 
 a `WithCustomWebUi` egy olyan bővíthetőségi pont, amely lehetővé teszi saját felhasználói felületének megadását a nyilvános ügyfélalkalmazások számára, és lehetővé teszi, hogy a felhasználó áthaladjon az/Authorize végpontján, és lehetővé tegye a bejelentkezést és a hozzájuk való hozzájárulásukat. A MSAL.NET megadhatja a hitelesítési kódot, és lekérheti a tokent. A Visual Studióban használt példányoknak, hogy az elektron-alkalmazások (például a VS visszajelzések) biztosítják a webes interakciót, azonban ne MSAL.NET a munka nagy részét. Akkor is használhatja, ha a felhasználói felület automatizálását szeretné megadni. A nyilvános ügyfélalkalmazások esetében a MSAL.NET a PKCE standard ([RFC 7636-Proof kulcs a Code Exchange számára a OAuth nyilvános ügyfelek által](https://tools.ietf.org/html/rfc7636)) használatával biztosítja a biztonság tiszteletben tartását: csak MSAL.net válthat be a kódban.
 
-  ```CSharp
+  ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
@@ -264,7 +264,7 @@ A `.WithCustomWebUI`használatához a következőket kell tennie:
   1. A `ICustomWebUi` felület implementálása (lásd [itt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Alapvetően végre kell hajtania egy metódust `AcquireAuthorizationCodeAsync` az engedélyezési kód URL-címének (MSAL.NET-ben számított) elfogadását, így a felhasználó áthalad az identitás-szolgáltatóval való interakción, majd visszaküldi az URL-címet, amellyel az Identity Provider a megvalósítás visszahívását (beleértve az engedélyezési kódot). Ha problémák merülnek fel, a megvalósításnak `MsalExtensionException` kivételt kell eldobnia, hogy szépen működjenek együtt a MSAL-mel.
   2. A `AcquireTokenInteractive`-hívásban használhatja `.WithCustomUI()` módosítót az egyéni webes felhasználói felület példányának átadásával
 
-     ```CSharp
+     ```csharp
      result = await app.AcquireTokenInteractive(scopes)
                        .WithCustomWebUi(yourCustomWebUI)
                        .ExecuteAsync();
@@ -284,7 +284,7 @@ A MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/mi
 
 A struktúra használatához a következőhöz hasonló módon írhat:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 ...
 
@@ -443,7 +443,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 
 A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a lekérhető kivételek típusára és azok enyhítésére
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -590,7 +590,7 @@ a `IPublicClientApplication`a metódust tartalmazza `AcquireTokenByUsernamePassw
 
 Az alábbi minta egy egyszerűsített esetet mutat be
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -631,7 +631,7 @@ static async Task GetATokenForGraph()
 
 A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a lekérhető kivételek típusára és azok enyhítésére
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -894,7 +894,7 @@ Az Azure AD-vel való interaktív hitelesítéshez webböngészőre van szüksé
 
 a `IPublicClientApplication`egy `AcquireTokenWithDeviceCode` nevű metódust tartalmaz.
 
-```CSharp
+```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
                             Func<DeviceCodeResult, Task> deviceCodeResultCallback)
 ```
@@ -908,7 +908,7 @@ A metódus a következő paramétereket veszi figyelembe:
 
 A következő mintakód a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a beolvasott kivételek típusáról és azok enyhítéséről.
 
-```CSharp
+```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
 private readonly string[] Scopes = new string[] { "user.read" };
@@ -1119,7 +1119,7 @@ Az alábbi példa egy jogkivonat-gyorsítótár egyéni szerializálásának nai
 
 Az alkalmazás létrehozása után engedélyezheti a szerializálást az alkalmazás átadásával ``TokenCacheHelper.EnableSerialization()`` meghívásával `UserTokenCache`
 
-```CSharp
+```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
     .Build();
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
@@ -1127,7 +1127,7 @@ TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 
 Ez a segítő osztály a következő kódrészlethez hasonlít:
 
-```CSharp
+```csharp
 static class TokenCacheHelper
  {
   public static void EnableSerialization(ITokenCache tokenCache)
@@ -1184,7 +1184,7 @@ A Windows, Mac és Linux rendszerű asztali alkalmazásokhoz készült, a termé
 
 Ha azt szeretné, hogy a jogkivonat-gyorsítótár szerializálását az egyesített gyorsítótár formátumával (Common ADAL.NET 4. x és MSAL.NET 2. x, valamint ugyanazon generáció vagy régebbi, ugyanazon a platformon lévő más MSALs) alkalmazza, akkor a következő kód ihlette. :
 
-```CSharp
+```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
 string cacheFolder = Path.GetFullPath(appLocation) + @"..\..\..\..");
 string adalV3cacheFileName = Path.Combine(cacheFolder, "cacheAdalV3.bin");
@@ -1201,7 +1201,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 Ezúttal a segítő osztály a következő kódhoz hasonlít:
 
-```CSharp
+```csharp
 using System;
 using System.IO;
 using System.Security.Cryptography;

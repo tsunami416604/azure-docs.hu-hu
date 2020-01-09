@@ -1,5 +1,5 @@
 ---
-title: ADAL a MSAL áttelepítési útmutatója a Pythonhoz | Azure
+title: Python-ADAL a MSAL áttelepítési útmutatóhoz | Azure
 description: Ismerje meg, hogyan telepítheti át a Azure Active Directory Authentication Library (ADAL) Python-alkalmazást a Pythonhoz készült Microsoft Authentication Library (MSAL) szolgáltatásba.
 services: active-directory
 titleSuffix: Microsoft identity platform
@@ -15,12 +15,12 @@ ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72a4af690a1433f6a185ab17f06748d67927edea
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 110c719eaf68e8be618e5c865f1ac7a2cf917719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917233"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424401"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>ADAL a MSAL áttelepítési útmutatója a Pythonhoz
 

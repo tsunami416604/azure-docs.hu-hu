@@ -1,5 +1,5 @@
 ---
-title: Tanúsítványalapú hitelesítés Azure Active Directory Azure Cosmos DB
+title: Tanúsítványalapú hitelesítés Azure Cosmos DB és Active Directory
 description: Megtudhatja, hogyan konfigurálhat egy Azure AD-identitást tanúsítványalapú hitelesítésre a kulcsok Azure Cosmos DBból való eléréséhez.
 author: voellm
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442106"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
 

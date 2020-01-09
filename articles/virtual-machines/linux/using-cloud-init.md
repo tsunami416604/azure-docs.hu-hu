@@ -1,6 +1,6 @@
 ---
 title: Az Azure-beli Linux rendszerű virtuális gépek Cloud-init támogatásának áttekintése
-description: A Cloud-init képességeinek áttekintése Microsoft Azure
+description: A Cloud-init képességeinek áttekintése a virtuális gép konfigurálásához az Azure-ban kiépített időpontban.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b3f64d0629ba5d7aaf85b854e1ee8e5a1410f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458616"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után.  

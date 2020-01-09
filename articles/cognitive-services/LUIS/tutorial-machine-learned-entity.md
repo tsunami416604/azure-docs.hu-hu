@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 2d3bffd025d484ac928e21003b7cba9c63d2c514
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381766"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a számítógép által megtanult entitásokkal Language Understanding (LUIS)
 
 Ebben az oktatóanyagban kinyerheti a strukturált adatokból való kinyerését a géppel megtanult entitás használatával.
 
 A géppel megtanult entitás támogatja a [modell dekompozíciós fogalmát](luis-concept-model.md#v3-authoring-model-decomposition) azáltal, hogy alösszetevő entitásokat biztosít a leírókkal és korlátozásokkal.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -66,7 +64,7 @@ További bontást is hozzáadhat, például alösszetevőket hozhat létre a fel
 
 ## <a name="import-example-json-to-begin-app"></a>Importálja például a. JSON fájlt az alkalmazás megkezdéséhez
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json).
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

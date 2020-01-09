@@ -10,18 +10,18 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 0d8418d846d26d4104718df6d0fc66d264ef4a54
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440096"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
 Mostantól parametrizálja egy társított szolgáltatást, és átadhatja a dinamikus értékeket a futási időben. Ha például ugyanazon a Azure SQL Database-kiszolgálón lévő különböző adatbázisokhoz szeretne csatlakozni, most már parametrizálja az adatbázis nevét a társított szolgáltatás definíciójában. Ezzel megakadályozható, hogy az Azure SQL Database-kiszolgálón minden adatbázishoz hozzon létre egy társított szolgáltatást. A társított szolgáltatás definíciójában más tulajdonságokat is parametrizálja, például a *felhasználónevet.*
 
-A társított szolgáltatások parametrizálja használhatja az Azure Portalon a Data Factory felhasználói felületet vagy egy programozási felületet.
+A Data Factory felhasználói felületét a Azure Portal vagy egy programozási felületen is használhatja a társított szolgáltatások parametrizálja.
 
 > [!TIP]
 > Azt javasoljuk, hogy ne parametrizálja jelszavakat vagy titkos kódokat. A Azure Key Vault az összes kapcsolódó karakterláncot tárolja, és parametrizálja a *titkos nevet*.
@@ -56,10 +56,7 @@ A társított szolgáltatás paraméterezés jelenleg a Azure Portal Data Factor
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": null,
         "parameters": {

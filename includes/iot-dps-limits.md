@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: fb77682bce0d9faef8f9ac8197afd8751560d515
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a306a05899a644f2ee8ea738789b84ee98221531
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392429"
 ---
 A következő táblázat felsorolja az Azure IoT Hub Device Provisioning Service-erőforrásokra vonatkozó korlátozásokat.
 
@@ -22,10 +22,6 @@ A következő táblázat felsorolja az Azure IoT Hub Device Provisioning Service
 | Hitelesítésszolgáltatók maximális száma | 25 |
 | Csatolt IoT-hubok maximális száma | 50 |
 | Üzenet maximális mérete | 96 KB|
-
-
-> [!NOTE]
-> Az előfizetésben lévő példányok számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
 > A kiépítési szolgáltatásban beléptetések és regisztrációk számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).

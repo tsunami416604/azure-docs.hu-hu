@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931343"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373230"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
@@ -58,7 +58,7 @@ Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy megerősítő e-mailt, amelyet Ön az előzetes verzióban regisztrált, és egy vagy több, [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzemi modellel és egy partneri megoldással létrehozott virtuális géppel rendelkezik, amely az ugyanazon az Azure-régióban található TAP-forgalmat összesíti. Ha nem rendelkezik partneri megoldással a virtuális hálózaton, tekintse meg a következő témakörben található [partneri megoldásokat](#virtual-network-tap-partner-solutions) :. Ugyanazt a virtuális hálózati KOPPINTÁS erőforrást használhatja az azonos vagy különböző előfizetésekben található több hálózati adapterről érkező forgalom összesítésére. Ha a figyelt hálózati adapterek különböző előfizetésekben találhatók, az előfizetéseket ugyanahhoz a Azure Active Directory bérlőhöz kell társítani. Emellett a figyelt hálózati adapterek és a TAP-forgalom összesítéséhez használt cél végpont is lehet ugyanabban a régióban lévő, egymástól független virtuális hálózatokban. Ha ezt a telepítési modellt használja, ellenőrizze, hogy a virtuális [hálózat](virtual-network-peering-overview.md) társítása engedélyezve van-e a virtuális hálózati koppintás konfigurálása előtt.
+A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy megerősítő e-mailt, amelyet Ön az előzetes verzióban regisztrált, és egy vagy több, [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzemi modellel és egy partneri megoldással létrehozott virtuális géppel rendelkezik, amely az ugyanazon az Azure-régióban található TAP-forgalmat összesíti. Ha nem rendelkezik partneri megoldással a virtuális hálózaton, tekintse meg a következő témakörben található [partneri megoldásokat](#virtual-network-tap-partner-solutions) :. Ugyanazt a virtuális hálózati KOPPINTÁS erőforrást használhatja az azonos vagy különböző előfizetésekben található több hálózati adapterről érkező forgalom összesítésére. Ha a figyelt hálózati adapterek különböző előfizetésekben találhatók, az előfizetéseket ugyanahhoz a Azure Active Directory bérlőhöz kell társítani. Emellett a figyelt hálózati adapterek és a TAP-forgalom összesítéséhez használt cél végpont is lehet ugyanabban a régióban lévő, egymástól független virtuális hálózatokban. Ha ezt a telepítési modellt használja, ellenőrizze, hogy a virtuális [hálózat](virtual-network-peering-overview.md) társítása engedélyezve van-e a virtuális hálózati koppintás konfigurálása előtt.
 
 ## <a name="permissions"></a>Engedélyek
 

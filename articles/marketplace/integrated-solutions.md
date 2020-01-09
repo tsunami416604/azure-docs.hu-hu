@@ -1,31 +1,33 @@
 ---
-title: Integrált megoldások | Azure
+title: Integrált megoldások – Azure Marketplace
 description: Integrált megoldások az Azure Marketplace-en és a AppSource-ben
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427177"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrált megoldások az Azure Marketplace-en és a AppSource-ben
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrált megoldások a Microsoft AppSource és az Azure Marketplace-en
 
-Az integrált megoldás a Microsoft-partnerektől származó legjobb technológiákat kombinálja, valamint a szakértői rendszerintegrátorok (SI) által biztosított tanácsadással, üzembe helyezéssel és támogatással együtt.
+Az integrált megoldás a Microsoft partnerei által nyújtott legjobb technológiákat, valamint a szakértői szolgáltatások partnerei által biztosított konzultációt, üzembe helyezést és támogatást is magában foglal.
 
-Ezek a megoldások egy adott ügyfél-szükséglet vagy-forgatókönyv megoldására készültek, amely az iparági kihívások vagy a fájdalom pontok megismerésével kezdődik. Két vagy több, a legjobbat alkalmazó technológia integrálva van egy egységes és ismételhető üzembe helyezési környezettel az ügyfelek számára, ami segít a gyors használatban. A rendszerintegrátor is biztosít egyetlen kapcsolódási pontot az ügyfél számára, amely biztosítja a megoldáshoz kapcsolódó testreszabási, tanácsadási és támogatási lehetőségeket.  Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
+Két vagy több Microsoft-partner integrálja technológiáját és szolgáltatásait egy egységes, zökkenőmentes és ismételhető üzembe helyezési élmény létrehozásához, hogy az ügyfelek gyorsan és gyorsabban fussanak.  A megoldásban lévő vezető partner (általában a szolgáltatási partner) egyetlen kapcsolódási pontot biztosít az ügyfél számára, és biztosítja a megoldáshoz kapcsolódó testreszabási, tanácsadási és támogatási lehetőségeket.
+
+Más esetekben a partnerek közösen eladják vagy közösen forgalmazzák a megoldásaikat, míg az integrált megoldás egy közösen létrehozott új megoldás, amely integrálja a technológiát és a szolgáltatásokat a partnerek között.
 
 ## <a name="advantages"></a>Előnyök
 
 Az integrált megközelítés előnyei a következők:
 
-* *Iparági szakértelem*: rendszerintegrátorok, amelyek iparági megoldásokat és ismereteket biztosítanak
+* *Iparági szakértelem*: az iparág-specifikus megoldásokat és ismereteket biztosító szolgáltatási partnerek
 * *Az érték*: integrált üzembe helyezési megközelítés, amely segít az azonnali előnyök megvalósításában
 * *Legjobb megoldási megoldások*: az integrált vásárlási és megvalósítási élmény észlelése
 

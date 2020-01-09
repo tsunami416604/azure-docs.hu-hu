@@ -1,20 +1,20 @@
 ---
 title: Kapcsolódás a mezőhöz
-description: Fájlok létrehozása és kezelése a Box REST API-kkal és Azure Logic Apps
+description: A Azure Logic Apps segítségével automatizálhatja a fájlok létrehozásával és kezelésével kapcsolatos feladatokat és munkafolyamatokat
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789861"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666771"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Fájlok létrehozása és kezelése a box-ban Azure Logic Apps
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Fájlok létrehozása és kezelése a box-ban Azure Logic Apps használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet fájlokat a dobozban egy logikai alkalmazásban a Box Connector használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják a feladatokat és a munkafolyamatokat a fájlok és egyéb műveletek kezeléséhez, például:
 

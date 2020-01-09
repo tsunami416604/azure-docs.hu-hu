@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és a Node. js-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
+description: Ismerkedjen meg a Bing Spell Check REST API használatával a helyesírás és a nyelvtan ellenőrzéséhez ezzel a rövid útmutatóval.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382854"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Node. js-sel
 
@@ -30,7 +30,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a korlátozást, és igényelje `https`. Ezután hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és az előfizetési kulcshoz.
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a korlátozást, és igényelje `https`. Ezután hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és az előfizetési kulcshoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```javascript
     'use strict';
@@ -97,6 +97,18 @@ req.write ("text=" + text);
 req.end ();
 ```
 
+
+## <a name="run-the-application"></a>Az alkalmazás futtatása
+
+Hozza létre és futtassa a projektet.
+
+Ha a parancssort használja, az alábbi parancsokkal hozhatja létre és futtathatja az alkalmazást.
+
+```bash
+node <FILE_NAME>.js
+```
+
+
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
@@ -139,7 +151,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webes alkalmazás létrehozása](../tutorials/spellcheck.md)

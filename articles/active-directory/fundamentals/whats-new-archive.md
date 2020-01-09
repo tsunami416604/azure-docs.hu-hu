@@ -1,6 +1,6 @@
 ---
 title: Archiválja a Azure Active Directory újdonságait? | Microsoft Docs
-description: A Mi az új kibocsátási megjegyzések az áttekintésben Ez a szakasz tartalmazza a tevékenység 6 hónap. 6 hónapra elemeket a fő cikkben eltávolítja és archív cikkben üzembe.
+description: A jelen tartalomforrás Áttekintés szakaszában található Újdonságok kibocsátási megjegyzései 6 hónapos tevékenységet tartalmaznak. 6 hónap elteltével az elemek el lesznek távolítva a főcikkből, és ebbe az archív cikkbe kerül.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/10/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aa129978201017c628da00e90190d93900d2de
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2dc2a8d523b2aabd72348529561f7cfdac1b7a9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422816"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -26,11 +26,281 @@ A [Azure Active Directory legfontosabb újdonságai? a kiadási megjegyzések](w
 
 A Azure Active Directory újdonságai a kibocsátási megjegyzések a alábbiakról nyújtanak információt:
 
-- A legújabb kiadásaihoz.
+- A legújabb kiadások
 - Ismert problémák
 - Hibajavítások
-- Elavult funkciók
-- Módosítások tervek
+- Elavult funkció
+- A változtatások tervei
+
+---
+
+## <a name="june-2019"></a>2019. június
+
+### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Új riskDetections API a Microsoft Graphhoz (nyilvános előzetes verzió)
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás-biztonsági & védelme
+
+Örömmel jelentjük be, hogy a Microsoft Graph új riskDetections API már nyilvános előzetes verzióban érhető el. Ezzel az új API-val megtekintheti a szervezete személyazonosságának védelmével kapcsolatos felhasználói és bejelentkezési kockázati észlelések listáját. Ezzel az API-val hatékonyabban kérdezheti le a kockázati észleléseket, beleértve az észlelési típussal, az állapottal, a szinttel és egyebekkel kapcsolatos részleteket is.
+
+További információ: [kockázatkezelési API-dokumentáció](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2019"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – június 2019
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+
+2019 júniusában a következő 22 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
+
+[Azure ad SAML Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [Azure VPN Client](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), [Helper Helper](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial), [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Mercedes-Benz in-Car Office](https://me.secure.mercedes-benz.com/), [SKORE](https://app.justskore.it/), [Oracle FELHŐALAPÚ infrastruktúra konzol](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [CyberArk SAML hitelesítés](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise os](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), Oracle Access Manager for Oracle Kiskereskedelmi merchandising, Oracle Access Manager for Oracle E-Business Suite, Oracle IDCS for E-Business Suite, a PeopleSoft Oracle IDCS, Oracle IDCS for JD Edwards
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>Felhasználói fiókok üzembe helyezésének automatizálása az újonnan támogatott SaaS-alkalmazásokhoz
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+Mostantól automatizálhatja az újonnan integrált alkalmazások felhasználói fiókjainak létrehozását, frissítését és törlését:
+
+- [Nagyítás](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)
+
+- [Különmegbízottja](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-provisioning-tutorial)
+
+- [Proxyclick](https://docs.microsoft.com/azure/active-directory/saas-apps/proxyclick-provisioning-tutorial)
+
+- [4me](https://docs.microsoft.com/azure/active-directory/saas-apps/4me-provisioning-tutorial)
+
+Ha többet szeretne megtudni arról, hogyan javíthatja a szervezetét a felhasználói fiókok automatikus kiépítésével, tekintse meg a felhasználók kiépítésének [automatizálása SaaS-alkalmazásokhoz az Azure ad](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) használatával című témakört.
+
+---
+
+### <a name="view-the-real-time-progress-of-the-azure-ad-provisioning-service"></a>Az Azure AD-kiépítési szolgáltatás valós idejű előrehaladásának megtekintése
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+A **termék képességei:** Identitás-életciklus kezelése
+
+Frissítettük az Azure AD üzembe helyezési élményét, hogy szerepeljen egy új folyamatjelző sáv, amely megmutatja, hogy meddig tart a felhasználó kiépítési folyamata. Ez a frissített élmény az aktuális ciklusban kiosztott felhasználók számával, valamint a dátummal rendelkező felhasználók számával kapcsolatos információkat is tartalmazza.
+
+További információ: [a felhasználó kiépítési állapotának ellenõrzése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
+
+---
+
+### <a name="company-branding-now-appears-on-sign-out-and-error-screens"></a>A céges arculat mostantól megjelenik a kijelentkezés és a hibaüzenetek képernyőjén
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
+
+Frissítettük az Azure AD-t, hogy a cég arculata mostantól megjelenjen a kijelentkezés és a hibák képernyőjén, valamint a bejelentkezési oldalon. A funkció bekapcsolásához semmit nem kell tennie, az Azure AD egyszerűen azokat az eszközöket használja, amelyeket már beállított a Azure Portal **vállalati védjegyezés** területén.
+
+A vállalat arculatának beállításával kapcsolatos további információkért lásd: [branding hozzáadása a szervezet Azure Active Directory oldalaihoz](https://docs.microsoft.com/azure/active-directory/fundamentals/customize-branding).
+
+---
+
+### <a name="azure-multi-factor-authentication-mfa-server-is-no-longer-available-for-new-deployments"></a>Az Azure Multi-Factor Authentication-(MFA-) kiszolgáló már nem érhető el az új üzemelő példányokhoz
+
+**Írja be a következőt:** Elavult  
+**Szolgáltatás kategóriája:** MFA  
+A **termék képességei:** Identitás-biztonsági & védelme
+
+2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. A többtényezős hitelesítést a szervezetében megkövetelő új ügyfeleknek most már a felhőalapú Azure-Multi-Factor Authentication kell használniuk. Az MFA-kiszolgálót július 1. előtt aktivált ügyfelek nem fogják látni a változást. Továbbra is letöltheti a legújabb verziót, lekérheti a jövőbeli frissítéseket, és előállíthatja az aktiválási hitelesítő adatokat.
+
+További információ: [Bevezetés az Azure multi-Factor Authentication-kiszolgáló](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)használatába. További információ a felhőalapú Azure-Multi-Factor Authenticationről: [felhőalapú Azure-beli multi-Factor Authentication üzembe helyezésének tervezése](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted).
+
+---
+
+## <a name="may-2019"></a>2019. május
+
+### <a name="service-change-future-support-for-only-tls-12-protocols-on-the-application-proxy-service"></a>Szolgáltatás módosítása: az alkalmazásproxy szolgáltatásban csak a TLS 1,2 protokollok jövőbeli támogatása
+
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Access Control
+
+A legjobb titkosítás biztosítása érdekében ügyfeleinknek biztosítjuk, hogy csak a TLS 1,2 protokollokra korlátozza a hozzáférést az alkalmazásproxy szolgáltatásban. Ezt a változást fokozatosan a TLS 1,2 protokollokat használó ügyfeleknek kell bevezetni, így nem kell semmilyen változást látnia.
+
+A TLS 1,0 és a TLS 1,1 elavult változata a 2019-as augusztus 31-én történik, de további speciális értesítéseket is biztosítunk, így a változás előkészítéséhez időt kell igénybe vennie. A módosítás előkészítéséhez győződjön meg arról, hogy az ügyfél és a böngésző kiszolgálói kombinációja, beleértve azokat az ügyfeleket, amelyeket a felhasználók az Application proxyn keresztül közzétett alkalmazások elérésére használnak, frissülnek a TLS 1,2 protokoll használatával az alkalmazással létesített kapcsolat fenntartásához. Proxy szolgáltatás. További információ: helyszíni [alkalmazás hozzáadása a táveléréshez az alkalmazásproxy használatával Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#before-you-begin).
+
+---
+
+### <a name="use-the-usage-and-insights-report-to-view-your-app-related-sign-in-data"></a>Az alkalmazással kapcsolatos bejelentkezési adatok megtekintéséhez használja a használati és elemzési jelentést.
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+Mostantól használhatja a Azure Portal **vállalati alkalmazások** területén található használati és elemzési jelentést a bejelentkezési adatok alkalmazás-központú nézetének beszerzéséhez, beleértve a következőkkel kapcsolatos információkat:
+
+- A szervezet leggyakrabban használt alkalmazásai
+
+- A legtöbb sikertelen bejelentkezést tartalmazó alkalmazások
+
+- Leggyakoribb bejelentkezési hibák az egyes alkalmazásokhoz
+
+A szolgáltatással kapcsolatos további információkért tekintse [meg a használati és adatáttekintési jelentést a Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) .
+
+---
+
+### <a name="automate-your-user-provisioning-to-cloud-apps-using-azure-ad"></a>A felhasználók üzembe helyezésének automatizálása a Cloud apps szolgáltatásban az Azure AD használatával
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+Ezeket az új oktatóanyagokat követve az Azure AD kiépítési szolgáltatásával automatizálhatja a következő felhőalapú alkalmazások felhasználói fiókjainak létrehozását, törlését és frissítését:
+
+- [Megfelelés](https://docs.microsoft.com/azure/active-directory/saas-apps/comeet-recruiting-software-provisioning-tutorial)
+
+- [DynamicSignal](https://docs.microsoft.com/azure/active-directory/saas-apps/dynamic-signal-provisioning-tutorial)
+
+- [KeeperSecurity](https://docs.microsoft.com/azure/active-directory/saas-apps/keeper-password-manager-digitalvault-provisioning-tutorial)
+
+Ezt az új [Dropbox-oktatóanyagot](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)is követheti, amely a csoport objektumainak kiépítésével kapcsolatos információkat tartalmaz.
+
+Ha többet szeretne megtudni arról, hogyan védheti meg a szervezetét a felhasználói fiókok automatikus üzembe helyezésével, tekintse meg a felhasználók kiépítésének [automatizálása SaaS-alkalmazásokhoz az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)című témakört.
+
+---
+
+### <a name="identity-secure-score-is-now-available-in-azure-ad-general-availability"></a>Az identitások biztonságos pontszáma mostantól elérhető az Azure AD-ben (általános elérhetőség)
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** N/A  
+A **termék képességei:** Identitás-biztonsági & védelme
+
+Most már nyomon követheti és javíthatja az identitás biztonsági állapotát az Azure AD biztonságos pontszám funkciója segítségével. Az Identitáskezelés biztonságos pontszáma funkció egyetlen irányítópultot használ, amely a következőket nyújtja:
+
+- Az azonosító biztonsági helyzet tárgyilagos mérése az 1 és 223 közötti pontszám alapján.
+
+- Tervezze meg az identitás biztonsági frissítéseit
+
+- Tekintse át a biztonsági tökéletesítések sikerességét
+
+További információ a személyazonossági biztonsági pontszám funkcióról: [Mi az Identity Secure pontszám a Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score).
+
+---
+
+### <a name="new-app-registrations-experience-is-now-available-general-availability"></a>Mostantól elérhető az új Alkalmazásregisztrációki élmény (általános rendelkezésre állás)
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Fejlesztői élmény
+
+Az új [Alkalmazásregisztrációk](https://aka.ms/appregistrations) élmény már általánosan elérhető. Ez az új felhasználói élmény magában foglalja a Azure Portal és az alkalmazás regisztrációs portáljának összes fontos funkcióját, és a következőkön keresztül fejleszti őket:
+
+- **Hatékonyabb alkalmazások kezelése.** Az alkalmazások különböző portálokon való megjelenítése helyett mostantól egyetlen helyen láthatja az összes alkalmazást.
+
+- **Egyszerűsített alkalmazás regisztrálása.** A továbbfejlesztett navigációs felületről a kijavított engedélyek kiválasztásának folyamata révén könnyebben regisztrálhatók és kezelhetők az alkalmazások.
+
+- **Részletesebb információ.** Az alkalmazással kapcsolatos további részleteket, például a gyors útmutatókat és egyebeket is megtalálhatja.
+
+További információ: a [Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/) és a [Alkalmazásregisztrációk-élmény már általánosan elérhető!](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) blog bejelentése.
+
+---
+
+### <a name="new-capabilities-available-in-the-risky-users-api-for-identity-protection"></a>A kockázatos felhasználók API-ban a személyazonosság védelme érdekében elérhető új képességek
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás-biztonsági & védelme
+
+Örömmel jelentjük, hogy mostantól a kockázatos felhasználók API-val lekérheti a felhasználók kockázati előzményeit, elhagyhatja a kockázatos felhasználókat, és megerősítheti a felhasználókat a feltörtek szerint. Ezzel a módosítással hatékonyabban frissítheti a felhasználók kockázati állapotát, és megismerheti a kockázati Előzményeiket.
+
+További információkért tekintse meg a [kockázatos felhasználók API-referenciájának dokumentációját](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2019"></a>Az Azure AD App Galleryben elérhető új összevont alkalmazások – 2019. május
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+
+A 2019-es verzióban a következő 21 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
+
+[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial), [valódi hivatkozások](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/), [egyszerű aláírás](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial), [forrasztás](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial), [lejátszó](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial), [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial), [Marketo értékesítések](https://toutapp.com/login), [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial), [rendszerek](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial), [Meta4 globális HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial), [Quantum munkahely](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial), [kobalt](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial), [webMethods API-felhő](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial), [vezérlés](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial), [JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial), [NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial), [Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial), [MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
+
+---
+
+### <a name="improved-groups-creation-and-management-experiences-in-the-azure-ad-portal"></a>Továbbfejlesztett csoportok létrehozása és kezelése az Azure AD-portálon
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
+
+Továbbfejlesztettük az Azure AD-portálon a csoportokkal kapcsolatos tapasztalatokat. Ezen fejlesztésekkel a rendszergazdák hatékonyabban kezelhetik a csoportok listáját, a tagok listáját, és további létrehozási lehetőségeket biztosíthatnak.
+
+A tökéletesítések a következők:
+
+- Alapszintű szűrés a tagság típusa és a csoport típusa alapján.
+
+- Új oszlopok, például forrás-és e-mail-cím hozzáadása.
+
+- A csoportok, a tagok és a tulajdonosi listák többszörös kiválasztásának lehetősége az egyszerű törléshez.
+
+- Lehetőség van e-mail-cím kiválasztására és a tulajdonosok hozzáadására a csoportok létrehozása során.
+
+További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+
+---
+
+### <a name="configure-a-naming-policy-for-office-365-groups-in-azure-ad-portal-general-availability"></a>Az Office 365-csoportok elnevezési szabályzatának konfigurálása az Azure AD Portalon (általánosan elérhető)
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
+
+A rendszergazdák mostantól az Azure AD-portál használatával konfigurálhatják az Office 365-csoportok elnevezési szabályzatát. Ez a változás segít kikényszeríteni a szervezet felhasználói által létrehozott vagy szerkesztett Office 365-csoportok konzisztens elnevezési konvencióit.
+
+Az Office 365-csoportok elnevezési házirendjét kétféleképpen állíthatja be:
+
+- Adja meg az előtagokat vagy az utótagokat, amelyeket a rendszer automatikusan hozzáad a csoport nevéhez.
+
+- Feltöltheti a szervezete számára a tiltott szavak testreszabott készletét, amely nem engedélyezett a csoportok neveiben (például "VEZÉRIGAZGATÓ, bérszámfejtés, HR").
+
+További információ: az [Office 365-csoportok elnevezési szabályzatának érvényesítése](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy).
+
+---
+
+### <a name="microsoft-graph-api-endpoints-are-now-available-for-azure-ad-activity-logs-general-availability"></a>A Microsoft Graph API-végpontok mostantól elérhetők az Azure AD-tevékenységek naplóihoz (általános elérhetőség)
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+Örömmel jelentjük be, hogy Microsoft Graph API-végpontok támogatásának általános elérhetősége az Azure AD-tevékenységek naplóiban. Ebben a kiadásban mostantól az Azure AD-naplók 1,0-es verzióját, valamint a bejelentkezési naplók API-jait is használhatja.
+
+További információ: az [Azure ad naplózási naplójának API áttekintése](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0).
+
+---
+
+### <a name="administrators-can-now-use-conditional-access-for-the-combined-registration-process-public-preview"></a>A rendszergazdák mostantól feltételes hozzáférést is használhatnak a kombinált regisztrációs folyamathoz (nyilvános előzetes verzió)
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás-biztonsági & védelme  
+
+A rendszergazdák mostantól feltételes hozzáférési szabályzatokat hozhatnak létre a kombinált regisztrációs lap általi használatra. Ez magában foglalja a szabályzatok alkalmazását a regisztráció engedélyezéséhez, ha:
+
+- A felhasználók megbízható hálózaton vannak.
+
+- A felhasználók alacsony bejelentkezési kockázatot jelentenek.
+
+- A felhasználók felügyelt eszközön találhatók.
+
+- A felhasználók elfogadják a szervezet használati feltételeit (felhasználási feltételek).
+
+A feltételes hozzáféréssel és a jelszó-visszaállítással kapcsolatos további információkért tekintse meg az [Azure ad kombinált MFA és a jelszó-változtatási regisztrációs élmény blogbejegyzésének feltételes hozzáférését](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Conditional-access-for-the-Azure-AD-combined-MFA-and-password/ba-p/566348). A kombinált regisztrációs folyamat feltételes hozzáférési házirendjeivel kapcsolatos további információkért lásd a [feltételes hozzáférési szabályzatok a kombinált regisztrációhoz](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined#conditional-access-policies-for-combined-registration)című témakört. További információ az Azure AD használati feltételeiről: [Azure Active Directory használati feltételek szolgáltatás](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -38,19 +308,19 @@ A Azure Active Directory újdonságai a kibocsátási megjegyzések a alábbiakr
 
 ### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Az Azure AD veszélyforrások felderítésének új észlelése mostantól a Azure AD Identity Protection részeként érhető el
 
-**Típus:** új szolgáltatás  
+**Írja be a következőt:** Új funkció  
 **Szolgáltatás kategóriája:** Azure AD Identity Protection  
-**A termék funkció:** Identitásbiztonság és -védelem
+A **termék képességei:** Identitás-biztonsági & védelme
 
 Az Azure AD Threat Intelligence észlelése mostantól a frissített Azure AD Identity Protection funkció részeként érhető el. Ez az új funkció lehetővé teszi, hogy szokatlan felhasználói tevékenységet jelezzen egy adott felhasználó vagy tevékenység számára, amely konzisztens a Microsoft belső és külső veszélyforrások elleni hírszerzési forrásai alapján ismert támadási mintákkal.
 
-A Azure AD Identity Protection frissített verziójával kapcsolatos további információkért tekintse meg a [négy jelentős Azure ad Identity Protection fejlesztést a nyilvános előzetes verzióban](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) , a mi az [Azure Active Directory Identity Protection (frissítve)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) cikk. Az Azure AD veszélyforrások észlelésével kapcsolatos további információkért tekintse meg a [Azure Active Directory Identity Protection kockázati észlelésekkel](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) foglalkozó cikket.
+A Azure AD Identity Protection frissített verziójával kapcsolatos további információkért tekintse meg a [négy jelentős Azure ad Identity Protection fejlesztést a nyilvános előzetes verzióban](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) , a mi az [Azure Active Directory Identity Protection (frissítve)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) cikket. Az Azure AD veszélyforrások észlelésével kapcsolatos további információkért tekintse meg a [Azure Active Directory Identity Protection kockázati észlelésekkel](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) foglalkozó cikket.
 
 ---
 
 ### <a name="azure-ad-entitlement-management-is-now-available-public-preview"></a>Az Azure AD-jogosultságok kezelése mostantól elérhető (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
+**Írja be a következőt:** Új funkció  
 **Szolgáltatás kategóriája:** Identitás-szabályozás  
 A **termék képességei:** Identitás-szabályozás
 
@@ -60,9 +330,9 @@ A nyilvános előzetes verzióban elérhető Azure AD-jogosultsági felügyelet 
 
 ### <a name="configure-a-naming-policy-for-office-365-groups-in-azure-ad-portal-public-preview"></a>Az Office 365-csoportok elnevezési szabályzatának konfigurálása az Azure AD Portalon (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** eszközcsoport-kezelés  
-**A termék funkció:** együttműködés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
 
 A rendszergazdák mostantól az Azure AD-portál használatával konfigurálhatják az Office 365-csoportok elnevezési szabályzatát. Ez a változás segít kikényszeríteni a szervezet felhasználói által létrehozott vagy szerkesztett Office 365-csoportok konzisztens elnevezési konvencióit.
 
@@ -78,9 +348,9 @@ További információ: az [Office 365-csoportok elnevezési szabályzatának ér
 
 ### <a name="azure-ad-activity-logs-are-now-available-in-azure-monitor-general-availability"></a>Az Azure AD-Tevékenységnaplók mostantól Azure Monitorban érhetők el (általánosan elérhető)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
 Az Azure AD-tevékenység naplóival kapcsolatos vizualizációk visszajelzésének megkönnyítése érdekében a Log Analytics új elemzési funkciót vezetünk be. Ez a funkció segít az Azure AD-erőforrásokkal kapcsolatos elemzések megszerzésében interaktív sablonjaink használatával, az úgynevezett munkafüzeteknél. Ezek az előre elkészített munkafüzetek részletes adatokat biztosíthatnak az alkalmazásokhoz és a felhasználókhoz, és a következőket tartalmazzák:
 
@@ -98,22 +368,22 @@ További információ: [Azure monitor munkafüzetek használata Azure Active Dir
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---april-2019"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – április 2019
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
 
 Április 2019-én a következő 21 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
 
 [SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [átszivárog](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol-tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), [padok](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), PageDNA, EduBrite [](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial) [LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial), RStudio- [kapcsolat](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS,](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial)Mitel- [kapcsolat](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [Alibaba Cloud (szerepköralapú SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Certent Equity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), Sectigo [Certificate Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [Monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [ SurveyMonkey Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
 ### <a name="new-access-reviews-frequency-option-and-multiple-role-selection"></a>Új hozzáférési felülvizsgálatok gyakoriságának beállítása és több szerepkör kiválasztása
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** a hozzáférési felülvizsgálatok  
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
 A **termék képességei:** Identitás-szabályozás
 
 Az Azure AD hozzáférési felülvizsgálatok új frissítései a következőket teszik lehetővé:
@@ -128,9 +398,9 @@ A hozzáférési felülvizsgálat létrehozásával kapcsolatos további inform�
 
 ### <a name="azure-ad-connect-email-alert-systems-are-transitioning-sending-new-email-sender-information-for-some-customers"></a>Azure AD Connect e-mail-riasztási rendszer (ek) át lettek irányítva, és minden ügyfél számára új e-mail feladói adatokat küldenek
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** AD Sync szolgáltatásról  
-**A termék funkció:** Platform
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** AD-szinkronizáló  
+A **termék képességei:** Platform
 
 Azure AD Connect az e-mail-riasztási rendszer (ek) átváltásának folyamata, amely egy új e-mail-feladót mutat be. Ennek megoldásához hozzá kell adnia `azure-noreply@microsoft.com` a szervezet engedélyezési listájához, vagy nem fogja tudni fogadni a fontos riasztásokat az Office 365, az Azure vagy a Sync Services szolgáltatásból.
 
@@ -138,9 +408,9 @@ Azure AD Connect az e-mail-riasztási rendszer (ek) átváltásának folyamata, 
 
 ### <a name="upn-suffix-changes-are-now-successful-between-federated-domains-in-azure-ad-connect"></a>Az UPN-utótag módosításai mostantól sikeresek az összevont tartományok között Azure AD Connect
 
-**Típus:** kijavítva  
-**Szolgáltatási kategóriához:** AD Sync szolgáltatásról  
-**A termék funkció:** Platform
+**Írja be a következőt:** Rögzített  
+**Szolgáltatás kategóriája:** AD-szinkronizáló  
+A **termék képességei:** Platform
 
 Most már sikeresen módosíthatja egy felhasználó UPN-utótagját az egyik összevont tartományból egy másik összevont tartományba Azure AD Connectban. Ez a javítás azt jelenti, hogy a szinkronizálási ciklusban többé nem tapasztalja a FederatedDomainChangeError hibaüzenetet, vagy értesítést kap a következőről: "nem lehet frissíteni ezt az objektumot Azure Active Directory, mert az attribútum [ A FederatedUser. UserPrincipalName] érvénytelen. Frissítse az értéket a helyi címtárszolgáltatások szolgáltatásban.
 
@@ -150,9 +420,9 @@ További információ: [hibaelhárítási hibák a szinkronizálás során](http
 
 ### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Fokozott biztonság az App Protection-alapú feltételes hozzáférési szabályzattal az Azure AD-ben (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás-biztonsági & védelme
 
 Az App Protection-alapú feltételes hozzáférés mostantól az alkalmazás- **védelmi házirend megkövetelése** eszközzel érhető el. Ez az új szabályzat segít a szervezet biztonságának növelésében azáltal, hogy megakadályozza a következőket:
 
@@ -168,9 +438,9 @@ További információkért lásd: [alkalmazás-védelmi szabályzat megkövetel�
 
 ### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Új támogatás az Azure AD egyszeri bejelentkezéshez és a feltételes hozzáféréshez a Microsoft Edge-ben (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás-biztonsági & védelme
 
 Bővítettük a Microsoft Edge-hez készült Azure AD-támogatást, amely új támogatást nyújt az Azure AD egyszeri bejelentkezéshez és a feltételes hozzáféréshez. Ha korábban már használta Microsoft Intune Managed Browser, a Microsoft Edge-t használhatja helyette.
 
@@ -182,9 +452,9 @@ Az eszközök és alkalmazások feltételes hozzáférés használatával tört�
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Az identitási élmény keretrendszere és az egyéni szabályzatok támogatása Azure Active Directory B2C már elérhető (GA)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
 
 Mostantól létrehozhat egyéni házirendeket Azure AD B2Cban, beleértve a következő feladatokat, amelyek az Azure SLA-ban támogatottak:
 
@@ -206,23 +476,23 @@ Az egyéni szabályzatok létrehozásával kapcsolatos további információkér
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2019"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – március 2019
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
 
 Március 2019-án a következő 14 új alkalmazást bővítettük az alkalmazás-katalógusban az összevonási támogatással:
 
 [ISEC7 Mobile Exchange-delegált](https://www.isec7.com/english/), [MediusFlow](https://office365.cloudapp.mediusflow.com/), [ePlatform](https://docs.microsoft.com/azure/active-directory/saas-apps/eplatform-tutorial), [Fulcrum](https://docs.microsoft.com/azure/active-directory/saas-apps/fulcrum-tutorial), [ExcelityGlobal](https://docs.microsoft.com/azure/active-directory/saas-apps/excelityglobal-tutorial), [magyarázat-alapú naplózási rendszer](https://docs.microsoft.com/azure/active-directory/saas-apps/explanation-based-auditing-system-tutorial), [sovány](https://docs.microsoft.com/azure/active-directory/saas-apps/lean-tutorial), [Powerschool teljesítményű ügyek](https://docs.microsoft.com/azure/active-directory/saas-apps/powerschool-performance-matters-tutorial), [Cinode](https://cinode.com/), [írisz intranet](https://docs.microsoft.com/azure/active-directory/saas-apps/iris-intranet-tutorial), [Empactis](https://docs.microsoft.com/azure/active-directory/saas-apps/empactis-tutorial), [SmartDraw](https://docs.microsoft.com/azure/active-directory/saas-apps/smartdraw-tutorial), [Confirmit horizont](https://docs.microsoft.com/azure/active-directory/saas-apps/confirmit-horizons-tutorial), [Tas](https://docs.microsoft.com/azure/active-directory/saas-apps/tas-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
 ### <a name="new-zscaler-and-atlassian-provisioning-connectors-in-the-azure-ad-gallery---march-2019"></a>Új Zscaler-és Atlassian-létesítési összekötők az Azure AD-galériában – március 2019
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Alkalmazáskiosztási  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+**Termék képesség:** harmadik féltől származó integráció
 
 A következő alkalmazásokhoz tartozó felhasználói fiókok létrehozásának, frissítésének és törlésének automatizálása:
 
@@ -234,9 +504,9 @@ Ha többet szeretne megtudni arról, hogyan védheti meg a szervezetét a felhas
 
 ### <a name="restore-and-manage-your-deleted-office-365-groups-in-the-azure-ad-portal"></a>Törölt Office 365-csoportok visszaállítása és kezelése az Azure AD-portálon
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** eszközcsoport-kezelés  
-**A termék funkció:** együttműködés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
 
 Most már megtekintheti és kezelheti a törölt Office 365-csoportokat az Azure AD-portálon. Ez a módosítás segít megtekinteni, hogy mely csoportok állíthatók vissza a visszaállításhoz, és hogy véglegesen törli azokat a csoportokat, amelyek nem szükségesek a szervezet számára.
 
@@ -246,9 +516,9 @@ További információ: [lejárt vagy törölt csoportok visszaállítása](https
 
 ### <a name="single-sign-on-is-now-available-for-azure-ad-saml-secured-on-premises-apps-through-application-proxy-public-preview"></a>Az egyszeri bejelentkezés mostantól elérhető az Azure AD SAML-védelemmel ellátott helyszíni alkalmazásokhoz az Application proxyn keresztül (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Access Control
 
 Mostantól egyszeri bejelentkezéses (SSO) élményt biztosíthat a helyszíni, SAML-hitelesítésen alapuló alkalmazásokhoz, valamint az alkalmazások távoli elérését az Application proxyn keresztül. Az SAML SSO helyszíni alkalmazásokkal való beállításával kapcsolatos további információkért lásd: [SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-on-premises-apps)használatával.
 
@@ -256,9 +526,9 @@ Mostantól egyszeri bejelentkezéses (SSO) élményt biztosíthat a helyszíni, 
 
 ### <a name="client-apps-in-request-loops-will-be-interrupted-to-improve-reliability-and-user-experience"></a>A megbízhatóság és a felhasználói élmény fokozása érdekében a kérelemben szereplő ügyfélalkalmazások megszakadnak.
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
 
 Az ügyfélalkalmazások nem tudják megfelelően kiadni több száz azonos bejelentkezési kérést rövid idő alatt. Ezek a kérések, akár sikeresek, akár nem, mind hozzájárulnak a gyenge felhasználói élményhez és a megnövekedett munkaterhelésekhez a IDENTITÁSSZOLGÁLTATÓ, az összes felhasználó késésének növeléséhez és a IDENTITÁSSZOLGÁLTATÓ rendelkezésre állásának csökkentéséhez.
 
@@ -268,9 +538,9 @@ Ez a frissítés `invalid_grant` hibát küld: `AADSTS50196: The server terminat
 
 ### <a name="new-audit-logs-user-experience-now-available"></a>Új naplózási naplók – felhasználói élmény most elérhető
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
 Létrehoztunk egy új Azure AD- **naplókat** tartalmazó oldalt, amely segít az olvashatóság és az információk megkeresésének javításában. Ha meg szeretné tekinteni **az új naplók** lapot, válassza a **naplók** lehetőséget az Azure ad **tevékenység** szakaszában.
 
@@ -282,9 +552,9 @@ További információ az új **naplók** lapról: [naplózási tevékenység jel
 
 ### <a name="new-warnings-and-guidance-to-help-prevent-accidental-administrator-lockout-from-misconfigured-conditional-access-policies"></a>Új figyelmeztetések és útmutatás a nem megfelelően konfigurált feltételes hozzáférési szabályzatok véletlen rendszergazdai zárolásának megakadályozásához
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás-biztonsági & védelme
 
 Annak megakadályozása érdekében, hogy a rendszergazdák véletlenül zárolják magukat a saját bérlőik nem megfelelően konfigurált feltételes hozzáférési szabályzatokkal, új figyelmeztetéseket hoztunk létre, és frissítettük az útmutatót a Azure Portal. Az új útmutatással kapcsolatos további információkért lásd: [Mi a szolgáltatás függőségei a Azure Active Directory feltételes hozzáférésben](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
@@ -292,9 +562,9 @@ Annak megakadályozása érdekében, hogy a rendszergazdák véletlenül zárolj
 
 ### <a name="improved-end-user-terms-of-use-experiences-on-mobile-devices"></a>Jobb végfelhasználói használati feltételek a mobileszközök esetében
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
 
 Frissítettük a meglévő használati feltételeket, amelyek segítségével javítható a mobileszközök használati feltételeinek áttekintése és belefoglalása. Most nagyíthatja és kibővítheti, visszatérhet, letöltheti az adatokat, és kiválaszthatja a hiperhivatkozásokat. A frissített használati feltételekkel kapcsolatos további információkért lásd: [Azure Active Directory használati feltételek szolgáltatás](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users).
 
@@ -302,9 +572,9 @@ Frissítettük a meglévő használati feltételeket, amelyek segítségével ja
 
 ### <a name="new-azure-ad-activity-logs-download-experience-available"></a>Az Azure AD-beli új tevékenység naplóinak letöltési felülete elérhető
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
 Most már nagy mennyiségű tevékenységet is letölthet közvetlenül a Azure Portalból. Ez a frissítés a következőket teszi lehetővé:
 
@@ -322,9 +592,9 @@ További információ erről a szolgáltatásról: gyors útmutató [: naplózá
 
 ### <a name="breaking-change-updates-to-condition-evaluation-by-exchange-activesync-eas"></a>Változás megszakítása: az Exchange ActiveSync (EAS) által a feltételek kiértékelésének frissítései
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Access Control
 
 Folyamatban van az Exchange ActiveSync (EAS) az alábbi feltételek kiértékelésének frissítése:
 
@@ -332,7 +602,7 @@ Folyamatban van az Exchange ActiveSync (EAS) az alábbi feltételek kiértékel�
 
 - Bejelentkezési kockázat
 
-- Eszköz platformja
+- Eszközplatform
 
 Ha korábban már használta ezeket a feltételeket a feltételes hozzáférési házirendekben, vegye figyelembe, hogy a feltétel viselkedése változhat. Ha például korábban a felhasználói hely feltételét használta egy házirendben, akkor a rendszer a felhasználó helye alapján kihagyhatja a házirendet.
 
@@ -342,9 +612,9 @@ Ha korábban már használta ezeket a feltételeket a feltételes hozzáférési
 
 ### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurálható Azure AD SAML-jogkivonat titkosítása (nyilvános előzetes verzió) 
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
 
 Mostantól a támogatott SAML-alkalmazások is konfigurálhatók titkosított SAML-tokenek fogadására. Az Azure AD az Azure AD-ben tárolt tanúsítványból beszerzett nyilvános kulccsal titkosítja a kibocsátott SAML-kijelentéseket, ha az alkalmazás konfigurálva van és használatban van.
 
@@ -354,9 +624,9 @@ Az SAML-jogkivonat titkosításának konfigurálásával kapcsolatos további in
 
 ### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Hozzáférési felülvizsgálat létrehozása csoportok vagy alkalmazások számára az Azure AD hozzáférési felülvizsgálatok használatával
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** a hozzáférési felülvizsgálatok  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
+A **termék képességei:** Cégirányítási
 
 Mostantól több csoportot vagy alkalmazást is hozzáadhat egyetlen Azure AD-hozzáférési felülvizsgálatban csoporttagság vagy alkalmazás-hozzárendelés esetén. A különböző csoportokkal vagy alkalmazásokkal való hozzáférési felülvizsgálatok ugyanazokkal a beállításokkal vannak beállítva, és az összes belefoglalt felülvizsgálók egyszerre vannak bejelentve.
 
@@ -366,23 +636,23 @@ További információ az Azure AD hozzáférési felülvizsgálatok használatá
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – február 2019
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
  
 Február 2019-án az alábbi 27 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
 
 [Euromonitor Passport](https://docs.microsoft.com/azure/active-directory/saas-apps/euromonitor-passport-tutorial), [MINDTICKLE](https://docs.microsoft.com/azure/active-directory/saas-apps/mindtickle-tutorial), [FAT Finger](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7), [AirStack](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial), [Oracle Fusion ERP](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-fusion-erp-tutorial), [iDrive](https://docs.microsoft.com/azure/active-directory/saas-apps/idrive-tutorial), [ég felé Qmlativ](https://docs.microsoft.com/azure/active-directory/saas-apps/skyward-qmlativ-tutorial), [Brightidea](https://docs.microsoft.com/azure/active-directory/saas-apps/brightidea-tutorial), [AlertOps](https://docs.microsoft.com/azure/active-directory/saas-apps/alertops-tutorial), [Soloinsight-CloudGate SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial), engedély kattintás, [Brandfolder](https://docs.microsoft.com/azure/active-directory/saas-apps/brandfolder-tutorial), [StoregateSmartFile, Pexip](https://docs.microsoft.com/azure/active-directory/saas-apps/smartfile-tutorial) [, Stormboard](https://docs.microsoft.com/azure/active-directory/saas-apps/pexip-tutorial), [szeizmikus](https://docs.microsoft.com/azure/active-directory/saas-apps/seismic-tutorial), [az álom megosztása](https://www.shareadream.org/how-it-works), [Bugsnag](https://docs.microsoft.com/azure/active-directory/saas-apps/bugsnag-tutorial), [webmódszerek integrációs felhő](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial), [](https://docs.microsoft.com/azure/active-directory/saas-apps/stormboard-tutorial) [ismeret Bárhol az LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/knowledge-anywhere-lms-tutorial), [ou Campus](https://docs.microsoft.com/azure/active-directory/saas-apps/ou-campus-tutorial), [periszkóp](https://docs.microsoft.com/azure/active-directory/saas-apps/periscope-data-tutorial)-és [NetOp-portál](https://docs.microsoft.com/azure/active-directory/saas-apps/netop-portal-tutorial), [Smartvid.IO](https://docs.microsoft.com/azure/active-directory/saas-apps/smartvid.io-tutorial), [PureCloud by Genesys](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial), [ClickUp hatékonyságnövelő platform](https://docs.microsoft.com/azure/active-directory/saas-apps/clickup-productivity-platform-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
 ### <a name="enhanced-combined-mfasspr-registration"></a>Bővített összetett MFA/SSPR-regisztráció
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** önkiszolgáló jelszó-visszaállítás  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Önkiszolgáló jelszó-visszaállítás  
+A **termék képességei:** Felhasználói hitelesítés
 
 Az ügyfelek visszajelzései alapján továbbfejlesztettük a kombinált MFA/SSPR regisztráció előzetes verzióját, így a felhasználók gyorsabban regisztrálhatják biztonsági adataikat mind az MFA-, mind a SSPR. 
 
@@ -408,9 +678,9 @@ A továbbfejlesztett regisztrációs felülettel kapcsolatos további informáci
 
 ### <a name="updated-policy-management-experience-for-user-flows"></a>Frissített házirend-kezelési élmény a felhasználói folyamatokhoz
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
 
 A szabályzat létrehozásának és felügyeletének folyamatát frissítettük a felhasználói folyamatok (korábbi nevén a beépített házirendek) egyszerűbbé tétele érdekében. Ez az új felhasználói élmény mostantól az összes Azure AD-bérlő alapértelmezett alapszolgáltatása.
 
@@ -422,9 +692,9 @@ További információ az új házirend-kezelési feladatokról: a [Azure ad B2C 
 
 ### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Válassza ki a Azure AD B2C által biztosított adott oldal elemeinek verzióját.
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
 
 Mostantól kiválaszthatja a Azure AD B2C által biztosított oldal elemeinek egy adott verzióját. Egy adott verzió kiválasztásával tesztelheti a frissítéseket, mielőtt megjelennek az oldalon, és kiszámítható működést érhet el. Emellett a JavaScript-testreszabások engedélyezéséhez is engedélyezheti, hogy bizonyos lapokat is kikényszerítse. A funkció bekapcsolásához nyissa meg a felhasználói folyamatok **Tulajdonságok** lapját.
 
@@ -434,9 +704,9 @@ További információ az oldalelemek adott verzióinak kiválasztásáról: a [A
 
 ### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>A B2C (GA) konfigurálható végfelhasználói jelszavának követelményei
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
 
 Most már beállíthatja a szervezete jelszavának összetettségét a végfelhasználók számára, ahelyett, hogy a natív Azure AD-beli jelszavas szabályzatot kellene használnia. A felhasználói folyamatok (korábbi nevén beépített szabályzatok) **Tulajdonságok** paneljén kiválaszthatja az **egyszerű** vagy **erős**jelszó bonyolultságát, vagy létrehozhat egy **Egyéni** követelményt is.
 
@@ -446,9 +716,9 @@ A jelszó-összetettségi követelmények konfigurálásával kapcsolatos továb
 
 ### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Új alapértelmezett sablonok az egyéni márkás hitelesítési élményekhez
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
 
 Az új alapértelmezett sablonokat a felhasználói folyamatok (korábbi nevén beépített szabályzatok) **lap elrendezések** paneljén is használhatja, hogy egyéni márkás hitelesítési élményt hozzon létre a felhasználók számára.
 
@@ -460,9 +730,9 @@ További információ a sablonok használatáról: [Azure ad B2C most már rende
 
 ### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>VÁLLALATKÖZI együttműködés Active Directory egyszeri jelszó-hitelesítéssel (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2B  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2B  
+A **termék képességei:** B2B/B2C
 
 Bevezetünk egy egyszeri jelszavas hitelesítést (OTP) a B2B vendég felhasználói számára, akik nem hitelesíthetők más módon (például Azure AD, Microsoft-fiók (MSA) vagy Google Federation). Ez az új hitelesítési módszer azt jelenti, hogy a vendég felhasználóknak nem kell új Microsoft-fiók létrehozniuk. Ehelyett a meghívások beváltásakor vagy egy megosztott erőforrás elérésekor a vendég felhasználó egy ideiglenes kódot kérhet az e-mail-címre történő küldéshez. Ezt az ideiglenes kódot használva a vendég felhasználó továbbra is bejelentkezhet.
 
@@ -470,9 +740,9 @@ További információ: az [e-mailek egyszeri jelszavas hitelesítése (előzetes
 
 ### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Új Azure AD Application Proxy cookie-beállítások
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Access Control
 
 Három új cookie-beállítást vezettünk be, amelyek elérhetők az Application proxyn keresztül közzétett alkalmazások számára:
 
@@ -488,23 +758,23 @@ További információ az új cookie-król: [cookie-beállítások a helyszíni a
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – január 2019
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
  
 Január 2019-én ezeket a 35 új alkalmazásokat az alkalmazás-katalógushoz való összevonási támogatással bővítettük:
 
 [Firstbird](https://docs.microsoft.com/azure/active-directory/saas-apps/firstbird-tutorial), [Folloze](https://docs.microsoft.com/azure/active-directory/saas-apps/folloze-tutorial), [Talent paletta](https://docs.microsoft.com/azure/active-directory/saas-apps/talent-palette-tutorial), [infor CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial), [Cisco Umbrella](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-umbrella-tutorial), [Zscaler internet-hozzáférés rendszergazdája](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-internet-access-administrator-tutorial), [lejárati emlékeztető](https://docs.microsoft.com/azure/active-directory/saas-apps/expiration-reminder-tutorial), [InstaVR Viewer](https://docs.microsoft.com/azure/active-directory/saas-apps/instavr-viewer-tutorial), [CORPTAX](https://docs.microsoft.com/azure/active-directory/saas-apps/corptax-tutorial), [művelet](https://app.verb.net/login), [OpenLattice](https://openlattice.com/agora), [TheOrgWiki](https://www.theorgwiki.com/signup), [Pavaso digitális Bezárás](https://docs.microsoft.com/azure/active-directory/saas-apps/pavaso-digital-close-tutorial), [GoodPractice Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/goodpractice-toolkit-tutorial), [Cloud Service PICCO](https://docs.microsoft.com/azure/active-directory/saas-apps/cloud-service-picco-tutorial), [AuditBoard](https://docs.microsoft.com/azure/active-directory/saas-apps/auditboard-tutorial), [iProva](https://docs.microsoft.com/azure/active-directory/saas-apps/iprova-tutorial), [működőképes](https://docs.microsoft.com/azure/active-directory/saas-apps/workable-tutorial), [CallPlease](https://webapp.callplease.com/create-account/create-account.html), [GTNEXUS SSO-rendszer](https://docs.microsoft.com/azure/active-directory/saas-apps/gtnexus-sso-module-tutorial), [CBRE ServiceInsight](https://docs.microsoft.com/azure/active-directory/saas-apps/cbre-serviceinsight-tutorial), [Deskradar](https://docs.microsoft.com/azure/active-directory/saas-apps/deskradar-tutorial), [Coralogixv](https://docs.microsoft.com/azure/active-directory/saas-apps/coralogix-tutorial), [Signagelive](https://docs.microsoft.com/azure/active-directory/saas-apps/signagelive-tutorial), [Ares for Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/ares-for-enterprise-tutorial), [K2 Office 365](https://www.k2.com/O365), [Xledger](https://www.xledger.net/), [iDiD Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/idid-manager-tutorial), [HighGear](https://docs.microsoft.com/azure/active-directory/saas-apps/highgear-tutorial), [látogatás](https://docs.microsoft.com/azure/active-directory/saas-apps/visitly-tutorial), [Korn Ferry Alp](https://docs.microsoft.com/azure/active-directory/saas-apps/korn-ferry-alp-tutorial), [Acadia](https://docs.microsoft.com/azure/active-directory/saas-apps/acadia-tutorial), [Adoddle cSaas platform](https://docs.microsoft.com/azure/active-directory/saas-apps/adoddle-csaas-platform-tutorial)<!-- , [CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/cafexportal-meetings-tutorial), [MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)-->  
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
 ### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Új Azure AD Identity Protection fejlesztések (nyilvános előzetes verzió)
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Identity Protection  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás-biztonsági & védelme
 
 Örömmel jelentjük be, hogy a következő fejlesztéseket adtuk hozzá a Azure AD Identity Protection nyilvános előzetes ajánlathoz, beleértve a következőket:
 
@@ -522,9 +792,9 @@ További információ a fejlesztésekről: [Mi az Azure Active Directory Identit
 
 ### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>A Microsoft Authenticator alkalmazás új alkalmazás-zárolási funkciója iOS-és Android-eszközökön
 
-**Típus:** új szolgáltatás  
+**Írja be a következőt:** Új funkció  
 **Szolgáltatás kategóriája:** Microsoft Authenticator alkalmazás  
-**A termék funkció:** Identitásbiztonság és -védelem
+A **termék képességei:** Identitás-biztonsági & védelme
 
 Az egyszer használatos PIN-kódok, az alkalmazásadatok és az Alkalmazásbeállítások biztonságosabbá tételéhez bekapcsolhatja az alkalmazás zárolási funkcióját a Microsoft Authenticator alkalmazásban. Az alkalmazás zárolásának bekapcsolása azt jelenti, hogy minden alkalommal, amikor megnyitja a Microsoft Authenticator alkalmazást, a rendszer kérni fogja a PIN-kód vagy a biometrikus adatok hitelesítését.
 
@@ -534,9 +804,9 @@ További információ: [Microsoft Authenticator alkalmazás – gyakori kérdés
 
 ### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Továbbfejlesztett Azure AD Privileged Identity Management (PIM) exportálási képességei
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
 
 A Privileged Identity Management (PIM) rendszergazdák mostantól exportálják az összes aktív és jogosult szerepkör-hozzárendelést egy adott erőforráshoz, beleértve az összes alárendelt erőforráshoz tartozó szerepkör-hozzárendeléseket is. Korábban nehéz volt, hogy a rendszergazdák teljes listát kapjanak az előfizetéshez tartozó szerepkör-hozzárendelésekről, és minden egyes erőforráshoz hozzá kellett exportálni a szerepkör-hozzárendeléseket.
 
@@ -548,9 +818,9 @@ További információ: a [PIM-beli Azure-erőforrás szerepköreinek tevékenys�
 
 ### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>A szinkronizálási hatókörből eltávolított felhasználók már nem váltanak csak felhőalapú fiókokra
 
-**Típus:** kijavítva  
+**Írja be a következőt:** Rögzített  
 **Szolgáltatás kategóriája:** Felhasználói felügyelet  
-**A termék funkció:** könyvtár
+A **termék képességei:** Directory
 
 >[!Important]
 >A javítás miatt meghallottuk és megértettük a frusztrációt. Ezért ezt a módosítást csak addig a lépésig adtuk vissza, amíg a javítás könnyebben megvalósítható a szervezetében.
@@ -575,9 +845,9 @@ Ez a javítás ezért megakadályozza, hogy a közvetlen frissítések az AD-bő
 
 ### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>Változás megszakítása: a naplózási és a bejelentkezési naplókra vonatkozó frissítések Azure Monitor
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
 Jelenleg a naplózási és a bejelentkezési naplókat is közzéteszjük Azure Monitoron keresztül, így zökkenőmentesen integrálhatja a naplófájlokat a SIEM-eszközökkel vagy a Log Analyticsokkal. A visszajelzések alapján, és a szolgáltatás általánosan elérhetővé tételének előkészítésében a következő módosításokat végezjük el a sémán. Ezek a séma-változások és a kapcsolódó dokumentációs frissítések a januári első héten történnek.
 
@@ -609,8 +879,8 @@ További információ a sémáról: [Az Azure ad-naplók sémájának értelmez�
 
 ### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>A felügyelt gépi tanulási modell és a kockázati pontszám motorjának Identity Protection-fejlesztése
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Identity Protection  
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
 A **termék képességei:** Kockázati pontszámok
 
 Az Identity Protection szolgáltatással kapcsolatos felhasználói és bejelentkezési kockázatkezelési motor fejlesztései segíthetnek a felhasználók kockázati pontosságának és lefedettségének javításában. A rendszergazdák láthatják, hogy a felhasználói kockázati szint már nem kapcsolódik az adott észlelések kockázati szintjéhez, és a kockázatos bejelentkezési események száma és szintje is növekszik.
@@ -621,9 +891,9 @@ A kockázatos észleléseket a felügyelt gépi tanulási modell értékeli ki, 
 
 ### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>A rendszergazdák a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió) alaphelyzetbe állíthatják a saját jelszavukat
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** önkiszolgáló jelszó-visszaállítás  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Önkiszolgáló jelszó-visszaállítás  
+A **termék képességei:** Felhasználói hitelesítés
 
 Az Azure AD-rendszergazdák mostantól alaphelyzetbe állíthatják a saját jelszavukat a Microsoft Authenticator alkalmazás értesítésein vagy egy, a mobil hitelesítő alkalmazásból vagy a hardver-tokenből származó kóddal. A saját jelszavának alaphelyzetbe állításához a rendszergazdák mostantól a következő módszerek közül kettőt képesek használni:
 
@@ -631,7 +901,7 @@ Az Azure AD-rendszergazdák mostantól alaphelyzetbe állíthatják a saját jel
 
 - Egyéb mobil hitelesítő alkalmazás/hardver token kódja
 
-- E-mail
+- E-mail cím
 
 - Telefonhívás
 
@@ -643,7 +913,7 @@ További információ a jelszavak alaphelyzetbe állítására szolgáló Micros
 
 ### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Új Azure AD Cloud Device-rendszergazdai szerepkör (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
+**Írja be a következőt:** Új funkció  
 **Szolgáltatás kategóriája:** Eszközök regisztrációja és kezelése  
 A **termék képességei:** Hozzáférés-vezérlés
 
@@ -655,7 +925,7 @@ További információ a szerepkörökről és az engedélyekről: [rendszergazda
 
 ### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Az eszközök kezelése az Azure AD új tevékenység-időbélyegével (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
+**Írja be a következőt:** Új funkció  
 **Szolgáltatás kategóriája:** Eszközök regisztrációja és kezelése  
 A **termék képességei:** Eszközök életciklusának kezelése
 
@@ -667,9 +937,9 @@ További információ az időbélyegző beszerzéséről és használatáról [:
 
 ### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>A rendszergazdák megkövetelhetik a felhasználóktól a használati feltételek elfogadását minden eszközön
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
  
 A rendszergazdák most bekapcsolhatják a **felhasználók megkövetelése minden eszközre** lehetőséget, hogy a felhasználók elfogadják a használati feltételeket a bérlőn használt összes eszközön.
 
@@ -679,9 +949,9 @@ További információ: a Azure Active Directory használati [feltételeinek hasz
 
 ### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>A rendszergazdák megadhatják a használati feltételek érvényességét egy ismétlődő ütemterv alapján
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
  
 
 A rendszergazdák mostantól bekapcsolhatják a **lejárati hozzájárulási** lehetőséget, hogy a használati feltételek lejárnak az összes felhasználó számára a megadott ismétlődő ütemterv alapján. Az ütemterv lehet évente, kétévente, negyedévente vagy havonta. A használati feltételek lejárta után a felhasználóknak újra el kell fogadniuk.
@@ -692,9 +962,9 @@ További információ: a használati [feltételek hozzáadása szakasz, a Azure 
 
 ### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>A rendszergazdák megadhatják a használati feltételek érvényességét az egyes felhasználók ütemterve alapján
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
 
 A rendszergazdák mostantól megadhatnak egy időtartamot, amelyet a felhasználónak újra el kell fogadnia a használati feltételeket. A rendszergazdák például megadhatják, hogy a felhasználóknak minden 90 naponként újra el kell fogadniuk a használati feltételeket.
 
@@ -704,9 +974,9 @@ További információ: a használati [feltételek hozzáadása szakasz, a Azure 
 
 ### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Új Azure AD Privileged Identity Management (PIM) e-mailek Azure Active Directory szerepkörökhöz
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
  
 A Azure AD Privileged Identity Managementt (PIM) használó ügyfelek mostantól heti kivonatoló e-mailt kaphatnak, beleértve az elmúlt hét nap alábbi adatait:
 
@@ -726,9 +996,9 @@ A PIM-vel és az elérhető e-mail-értesítésekkel kapcsolatos további inform
 
 ### <a name="group-based-licensing-is-now-generally-available"></a>A csoport alapú licencelés mostantól általánosan elérhető
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** könyvtár
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** Directory
 
 A csoportos licencelés kívül esik a nyilvános előzetes verzióban, és már általánosan elérhető. Ennek az általános kiadásnak a részeként a szolgáltatás skálázható, és lehetővé tette a csoportos licencelési hozzárendelések újrafeldolgozását egyetlen felhasználó számára, valamint az Office 365 E3/a3 licenccel rendelkező csoportos licencelés használatát.
 
@@ -738,81 +1008,81 @@ A csoport alapú licenceléssel kapcsolatos további információkért lásd: [M
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – november 2018
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
  
 November 2018-én a következő 26 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
 
 [CoreStack](https://cloud.corestack.io/site/login), [HubSpot](https://docs.microsoft.com/azure/active-directory/saas-apps/HubSpot-tutorial), [GetThere](https://docs.microsoft.com/azure/active-directory/saas-apps/getthere-tutorial), [GRA-PE](https://docs.microsoft.com/azure/active-directory/saas-apps/grape-tutorial), [eHour](https://getehour.com/try-now), [Consent2Go](https://docs.microsoft.com/azure/active-directory/saas-apps/Consent2Go-tutorial), [Appinux](https://docs.microsoft.com/azure/active-directory/saas-apps/appinux-tutorial), [DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview), [Useall](https://docs.microsoft.com/azure/active-directory/saas-apps/useall-tutorial), [végtelen Campus](https://docs.microsoft.com/azure/active-directory/saas-apps/infinitecampus-tutorial), [Alaya](https://alayagood.com/en/demo/), [HeyBuddy](https://docs.microsoft.com/azure/active-directory/saas-apps/heybuddy-tutorial), Wrike [SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/wrike-tutorial), [drift](https://docs.microsoft.com/azure/active-directory/saas-apps/drift-tutorial), [Zenegy for Business Central 365](https://accounting.zenegy.com/), [Everbridge tag portál](https://docs.microsoft.com/azure/active-directory/saas-apps/everbridge-tutorial), [IDEO](https://profile.ideo.com/users/sign_up), [Ivanti Service Manager (ISM)](https://docs.microsoft.com/azure/active-directory/saas-apps/ivanti-service-manager-tutorial), [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-tutorial), Allbound [SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/allbound-sso-tutorial), [plex alkalmazások – klasszikus teszt ](https://test.plexonline.com/signon), [Plex-alkalmazások – klasszikus](https://www.plexonline.com/signon), [plex-alkalmazások – UX-teszt](https://test.cloud.plex.com/sso), [plex-alkalmazások – UX](https://cloud.plex.com/sso), [plex-alkalmazások – iam](https://accounts.plex.com/), [mesterségek – gyermekgondozási nyilvántartások, részvétel, & pénzügyi nyomkövető rendszer](https://getcrafts.ca/craftsregistration) 
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
 ## <a name="october-2018"></a>2018. október
 
-### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Az Azure AD naplókat mostantól működik az Azure Log Analytics (nyilvános előzetes verzió)
+### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Az Azure AD-naplók mostantól az Azure Log Analytics (nyilvános előzetes verzió) szolgáltatással működnek
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
-Örömmel jelentjük, hogy most már továbbítás az Azure AD-naplók az Azure Log Analytics! A várt funkció segítségével még jobb hozzáférést biztosíthat a elemzés az üzleti, műveletek, és a biztonsági, valamint az infrastruktúra figyelése a megoldást. További információkért lásd: a [Azure Active Directory-Tevékenységnaplók naplók az Azure Log Analytics mostantól elérhető](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843) blog.
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. október
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
-
-2018 október tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 14 új alkalmazásokról:
-
-[A díjjal járó pontokat](https://docs.microsoft.com/azure/active-directory/saas-apps/myawardpoints-tutorial), [Vibe HCM](https://docs.microsoft.com/azure/active-directory/saas-apps/vibehcm-tutorial), ambyint, [MyWorkDrive](https://docs.microsoft.com/azure/active-directory/saas-apps/myworkdrive-tutorial), [BorrowBox](https://docs.microsoft.com/azure/active-directory/saas-apps/borrowbox-tutorial), Dialpad, [ON24 virtuális környezet](https://docs.microsoft.com/azure/active-directory/saas-apps/on24-tutorial), [RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial), [Zscaler három](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-three-tutorial), [Phraseanet](https://docs.microsoft.com/azure/active-directory/saas-apps/phraseanet-tutorial), [Appraisd](https://docs.microsoft.com/azure/active-directory/saas-apps/appraisd-tutorial), [Workspot vezérlő](https://docs.microsoft.com/azure/active-directory/saas-apps/workspotcontrol-tutorial), [Shuccho Navi](https://docs.microsoft.com/azure/active-directory/saas-apps/shucchonavi-tutorial), [Glassfrog](https://docs.microsoft.com/azure/active-directory/saas-apps/glassfrog-tutorial)
-
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Örömmel jelentjük be, hogy most már továbbíthatja Azure AD-naplóit az Azure Log Analyticsba! Ez a legtöbbet kért funkció lehetővé teszi, hogy még jobban hozzáférhessen az elemzésekhez az üzleti, a műveletekhez és a biztonsághoz, valamint az infrastruktúra monitorozásához. További információkért tekintse meg az [Azure-beli Azure Active Directoryi tevékenységek naplóit log Analytics most elérhető](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843) blog.
 
 ---
 
-### <a name="azure-ad-domain-services-email-notifications"></a>Az Azure AD Domain Services E-mail-értesítések
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – október 2018
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Azure AD tartományi szolgáltatások  
-**A termék funkció:** Azure AD tartományi szolgáltatások
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
 
-Az Azure AD Domain Services konfigurációs hibák vagy problémák a felügyelt tartományhoz az Azure Portalon riasztásokat biztosít. Ezek a riasztások tartalmazzák a részletes útmutatókat, így anélkül, hogy forduljon az ügyfélszolgálathoz a probléma javításához próbálkozhat.
+2018 októberében a következő 14 új alkalmazást bővítettük az alkalmazás-katalógusban az összevonási támogatással:
 
-Októbertől az lesz az értesítési beállításokat a felügyelt tartományhoz tartozó, amikor új kapcsolatos riasztások történnek, egy e-mailt küld egy kijelölt csoport tagjainak, így nem kell folyamatosan ellenőrzése a portálon a frissítéseket.
+[Saját díjátadó pontok, a](https://docs.microsoft.com/azure/active-directory/saas-apps/myawardpoints-tutorial) [Vibe HCM](https://docs.microsoft.com/azure/active-directory/saas-apps/vibehcm-tutorial), a ambyint, a [MyWorkDrive](https://docs.microsoft.com/azure/active-directory/saas-apps/myworkdrive-tutorial), a [BorrowBox](https://docs.microsoft.com/azure/active-directory/saas-apps/borrowbox-tutorial), a [ON24 virtuális környezet](https://docs.microsoft.com/azure/active-directory/saas-apps/on24-tutorial), a [RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial), a [Zscaler három](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-three-tutorial) [, a Phraseanet,](https://docs.microsoft.com/azure/active-directory/saas-apps/phraseanet-tutorial)a [kiértékelt](https://docs.microsoft.com/azure/active-directory/saas-apps/appraisd-tutorial), a [Workspot-szabályozás](https://docs.microsoft.com/azure/active-directory/saas-apps/workspotcontrol-tutorial), a [Shuccho Navi](https://docs.microsoft.com/azure/active-directory/saas-apps/shucchonavi-tutorial) [, a Glassfrog](https://docs.microsoft.com/azure/active-directory/saas-apps/glassfrog-tutorial)
 
-További információkért lásd: [értesítési beállítások az Azure AD tartományi szolgáltatásokban](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-notifications).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
-### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Az Azure AD portal támogatja a ForceDelete tartomány API használatával törli az egyéni tartományok 
+### <a name="azure-ad-domain-services-email-notifications"></a>E-mail-értesítések Azure AD Domain Services
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Címtárkezelés  
-**A termék funkció:** könyvtár
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Azure AD Domain Services  
+A **termék képességei:** Azure AD Domain Services
 
-Örömmel jelentjük, hogy mostantól használhatja a ForceDelete tartomány API aszinkron módon átnevezésével, mint például a felhasználók, csoportok és alkalmazások az egyéni tartománynevet (contoso.com) a biztonsági mutató hivatkozásokat a kezdeti alapértelmezett tartomány nevét (az egyéni tartománynevek törlése contoso.onmicrosoft.com).
+A Azure AD Domain Services riasztásokat biztosít a Azure Portal a hibás konfigurációkkal és a felügyelt tartománnyal kapcsolatos problémákról. Ezek a riasztások részletes útmutatókat tartalmaznak, így megpróbálhatja elhárítani a problémákat anélkül, hogy kapcsolatba kellene lépnie a támogatási szolgálattal.
 
-Ez a változás segítségével gyorsabban törölni az egyéni tartománynevek, ha a szervezet már nem használja a nevét, vagy ha szeretné használni a tartománynév egy másik Azure AD-val.
+Októbertől kezdve testreszabhatja a felügyelt tartomány értesítési beállításait, hogy új riasztások bekövetkezésekor a rendszer e-mailt küldjön egy kijelölt csoportba, így nem kell folyamatosan ellenőriznie a portált a frissítésekhez.
 
-További információkért lásd: [egy egyéni tartománynév törlése](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-manage#delete-a-custom-domain-name).
+További információ: [Azure ad Domain Services értesítési beállításai](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-notifications).
+
+---
+
+### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Az Azure AD-portál támogatja a ForceDelete tartományi API-t az egyéni tartományok törléséhez 
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Címtár-kezelés  
+A **termék képességei:** Directory
+
+Örömmel jelentjük be, hogy mostantól a ForceDelete tartományi API használatával törölheti az egyéni tartományneveket, ha aszinkron módon átnevezi a hivatkozásokat, például a felhasználókat, a csoportokat és az alkalmazásokat az egyéni tartománynévről (contoso.com) a kezdeti alapértelmezett tartománynévre ( contoso.onmicrosoft.com).
+
+Ezzel a módosítással gyorsabban törölheti az egyéni tartományneveket, ha a szervezet már nem használja a nevet, vagy ha a tartománynevet egy másik Azure AD-vel kell használnia.
+
+További információ: [Egyéni tartománynév törlése](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-manage#delete-a-custom-domain-name).
 
 ---
 
 ## <a name="september-2018"></a>2018. szeptember
  
-### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>A dinamikus csoportok esetében frissültek a rendszergazdai szerepkör engedélyei
+### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>A dinamikus csoportok rendszergazdai szerepkörére vonatkozó engedélyek frissítve
 
-**Típus:** kijavítva  
-**Szolgáltatási kategóriához:** eszközcsoport-kezelés  
-**A termék funkció:** együttműködés
+**Írja be a következőt:** Rögzített  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
 
-Azt már megtörtént egy probléma javítása, adott rendszergazdai szerepkörök mostantól létrehozhat és frissíthet a dinamikus tagsági szabályok, anélkül, hogy a csoport tulajdonosa legyen.
+Kijavítunk egy problémát, hogy az adott rendszergazdai szerepkörök most már létrehozhatnak és frissíthetnek dinamikus tagsági szabályokat anélkül, hogy a csoport tulajdonosának kellene lennie.
 
 A szerepkörök a következők:
 
@@ -822,1290 +1092,1290 @@ A szerepkörök a következők:
 
 - Felhasználói rendszergazda
 
-További információkért lásd: [állapotának ellenőrzése és a egy dinamikus csoport létrehozása](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
+További információ: [dinamikus csoport létrehozása és állapotának ellenõrzése](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
 
 ---
 
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Néhány külső gyártótól származó alkalmazás esetében egyszerűsödött az egyszeri bejelentkezés (SSO) konfigurálása
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>A harmadik féltől származó alkalmazások egyszerűsített egyszeri bejelentkezési (SSO) konfigurációs beállításai
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
 
-Tisztában vagyunk vele, hogy állítja be egyszeri bejelentkezést (SSO) szoftverfrissítési szolgáltatásként (SaaS) alkalmazások kihívást jelenthet az egyes alkalmazások konfiguráció egyedi jellege miatt. Elkésztettünk egy leegyszerűsített konfigurációs élményt biztosít az egyszeri bejelentkezés beállításai a következő külső SaaS-alkalmazások automatikus feltöltéséhez:
+Tisztában vagyunk azzal, hogy az egyszeri bejelentkezés (SSO) a szolgáltatott szoftver (SaaS) alkalmazásokhoz való beállítása az egyes alkalmazások konfigurációjának egyedi jellege miatt kihívást jelenthet. A következő külső SaaS-alkalmazásokhoz készült SSO-konfigurációs beállítások automatikus feltöltéséhez készítettünk egy egyszerűsített konfigurációs élményt:
 
 - Zendesk
 
-- Az ArcGis Online
+- Online ArcGis
 
 - Jamf Pro
 
-Az egykattintásos felület használatának megkezdéséhez nyissa meg a **az Azure portal** > **egyszeri bejelentkezési konfiguráció** az alkalmazás lapját. További információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+Az egykattintásos élmény használatának megkezdéséhez nyissa meg az alkalmazás **Azure Portal** > **SSO konfigurációs** lapját. További információ: Saas- [alkalmazások integrációja Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
 ---
 
-### <a name="azure-active-directory---where-is-your-data-located-page"></a>Az Azure Active Directory - hol található a adatait? lap
+### <a name="azure-active-directory---where-is-your-data-located-page"></a>Azure Active Directory – hol találhatók az adatai? oldalala
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** GoLocal
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** GoLocal
 
-Válassza ki a régiót a vállalat a **Azure Active Directory - hol található a adatait** oldal nézet, mely Azure-beli adatközpont-környezetet tároló az Azure AD-szolgáltatásokhoz az Azure AD inaktív adatokat. Specifikus szerint szűrheti az adatokat az Azure AD-szolgáltatások számára, a vállalat.
+Válassza ki a vállalat régióját a **Azure Active Directoryból – itt** megtekintheti, hogy melyik Azure-adatközpontban található az Azure ad-adatok az összes Azure ad-szolgáltatáshoz. Az információkat a vállalat régiójának adott Azure AD-szolgáltatásai alapján szűrheti.
 
-Ez a funkció eléréséhez, és további információkért lásd: [Azure Active Directory - hol található a adatait](https://aka.ms/AADDataMap).
-
----
-
-### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>Új üzembe helyezési terv érhető el a Saját alkalmazások hozzáférési panelen
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** saját alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
-
-Tekintse meg az új központi telepítési csomag, amely a saját alkalmazások hozzáférési panelen érhető el (https://aka.ms/deploymentplans).
-A saját alkalmazások hozzáférési panel itt rendelkező felhasználók számára egyetlen helyen megtalálhatja és elérheti a saját alkalmazásokban. Ezen a portálon a felhasználók önkiszolgáló lehetőségeket biztosít, például alkalmazások és a csoportok hozzáférést kér vagy erőforrásokhoz való hozzáférés kezelését ezek mások nevében is biztosít.
-
-További információkért lásd: [Mi az a saját alkalmazások portál?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
+A szolgáltatás eléréséhez és további információkért tekintse meg a [Azure Active Directory-hol található az adatai](https://aka.ms/AADDataMap).
 
 ---
 
-### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Új lappal (Hibaelhárítás és támogatás) bővült az Azure Portal Bejelentkezések weblapja
+### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>Új központi telepítési terv érhető el a saját alkalmazások hozzáférési paneljén
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** SSO
 
-A Azure Portal **bejelentkezési** lapjának új **Hibaelhárítás és támogatás** lapján segítséget nyújt a rendszergazdáknak az Azure ad-bejelentkezésekkel kapcsolatos problémák elhárításában. Az új lapon a hibakód, a hibaüzenet és a Szervizelési javaslatok (ha vannak) a probléma megoldásához nyújtanak segítséget. Ha nem sikerül a probléma megoldásához, azt is meg kell adni, hozzon létre egy támogatási jegyet az új módon a **példányt vágólapra** észlel, amely feltölti a **Kérelemazonosító** és **dátuma (UTC)** meg a naplófájlt a támogatási jegy mezőket.  
+Tekintse meg a saját alkalmazások hozzáférési paneljén elérhető új központi telepítési csomagot (https://aka.ms/deploymentplans).
+A saját alkalmazások hozzáférési panelje lehetővé teszi, hogy a felhasználók egyetlen helyen megtalálják és hozzáférjenek az alkalmazásaihoz. Ez a portál olyan önkiszolgáló lehetőségeket is biztosít a felhasználók számára, mint például az alkalmazások és csoportok elérésének kérelmezése vagy az erőforrásokhoz való hozzáférés kezelése mások nevében.
+
+További információ: [Mi a My apps portál?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
+
+---
+
+### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Új hibaelhárítás és támogatás lap a Azure Portal bejelentkezési naplók lapján
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+A Azure Portal **bejelentkezési** lapjának új **Hibaelhárítás és támogatás** lapján segítséget nyújt a rendszergazdáknak az Azure ad-bejelentkezésekkel kapcsolatos problémák elhárításában. Az új lapon a hibakód, a hibaüzenet és a Szervizelési javaslatok (ha vannak) a probléma megoldásához nyújtanak segítséget. Ha nem tudja megoldani a problémát, a **Másolás a vágólapra** lehetőség használatával új módszert biztosítunk a támogatási jegy létrehozásához, amely feltölti a **kérelem azonosítóját** és **dátumát (UTC)** a naplófájlhoz a támogatási jegyben.  
 
 ![Az új lapot megjelenítő bejelentkezési naplók](media/whats-new/troubleshooting-and-support.png)
 
 ---
 
-### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>A dinamikus tagsági szabályok létrehozására szolgáló egyénibővítmény-tulajdonságok továbbfejlesztett támogatása
+### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>A dinamikus tagsági szabályok létrehozásához használt egyéni bővítmények tulajdonságainak továbbfejlesztett támogatása
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** eszközcsoport-kezelés  
-**A termék funkció:** együttműködés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
 
-Ez a frissítés most kattintson a **egyéni bővítménytulajdonság lekérése** a dinamikus felhasználói csoport szabály builder a hivatkozásra, adja meg az alkalmazás egyedi azonosítója, és kap egy dinamikus létrehozásakor egyéni bővítménytulajdonságok teljes listája Tagsági szabály a felhasználók számára. Ez a lista is frissíthetők úgy, hogy minden olyan új egyéni bővítmény tulajdonságainak lekérése az adott alkalmazáshoz.
+Ezzel a frissítéssel mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva megtekintheti a dinamikus felhasználói csoport-szerkesztőt, megadhatja az egyedi alkalmazás azonosítóját, és megkaphatja a dinamikus tagsági szabály létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista az alkalmazás új egyéni bővítmény-tulajdonságainak beolvasására is frissíthető.
 
-A dinamikus tagsági szabályok egyéni bővítménytulajdonságok használatával kapcsolatos további információkért lásd: [bővítmény és egyéni bővítmény tulajdonságai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership#extension-properties-and-custom-extension-properties)
+A dinamikus tagsági szabályok egyéni bővítmény-tulajdonságainak használatával kapcsolatos további információkért lásd a [bővítmény tulajdonságai és az egyéni bővítmény tulajdonságai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership#extension-properties-and-custom-extension-properties) című témakört.
 
 ---
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Új jóváhagyott ügyfélalkalmazások az Azure AD alkalmazás-alapú feltételes hozzáféréshez
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás biztonsága és védelme
 
-A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
+A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)listáján:
 
 - Microsoft To-Do
 
 - Microsoft Stream
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Már támogatott a Windows 7/8/8.1 zárolási képernyőjéről történő önkiszolgáló jelszómódosítás
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Új támogatás az önkiszolgáló jelszó-visszaállításhoz a Windows 7/8/8.1 zárolási képernyőjéről
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** SSPR  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** SSPR  
+A **termék képességei:** Felhasználói hitelesítés
 
-Miután beállította az új funkciót, a felhasználók a jelszavuk egy hivatkozás jelenik-e a **zárolási** egy Windows 7, Windows 8 vagy Windows 8.1 rendszerű eszköz képernyőjén. A hivatkozásra kattintva a felhasználó rendszer végigvezeti a azonos jelszóvisszaállítási folyamatot a webböngészőn keresztül.
+Miután beállította ezt az új szolgáltatást, a felhasználók a Windows 7, a Windows 8 vagy a Windows 8,1 operációs rendszert futtató eszközök **zárolási** képernyőjén egy hivatkozást fognak látni a jelszavuk visszaállítására. Ha erre a hivatkozásra kattint, a felhasználó ugyanazzal a jelszó-visszaállítási folyamattal vezérli, mint a böngészőben.
 
-További információkért lásd: [a Windows 7, 8 és 8.1 jelszóátállítás engedélyezése](https://aka.ms/ssprforwindows78)
-
----
-
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Változással kapcsolatos értesítés: a hitelesítő kódok a későbbiekben már nem lesznek újrafelhasználhatók 
-
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
-
-2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
-
-Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Egy alkalmazás, amely megpróbálja újból felhasználhatja a hitelesítési kódot az OAuth hitelesítésikód-folyamata során invalid_grant hiba lép fel.
-
-Ez és egyéb protokollok-vel kapcsolatos módosításokat, lásd: [teljes listája megtalálható az új hitelesítési](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
+További információ: a [jelszó-visszaállítás engedélyezése a Windows 7, 8 és 8,1](https://aka.ms/ssprforwindows78) rendszerből
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában – 2018. szeptember
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Változási Megjegyzés: az engedélyezési kódok többé nem lesznek elérhetők újra 
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
+
+A 2018. november 15-én kezdődően az Azure AD nem fogadja el a korábban használt hitelesítési kódokat az alkalmazásokhoz. Ez a biztonsági változás segíti az Azure AD-t az OAuth-specifikációnak megfelelően bevezetni, és a v1 és v2 végpontokon is érvényben lesz.
+
+Ha az alkalmazás az engedélyezési kódokat több erőforráshoz tartozó jogkivonatok lekérésére használja, javasoljuk, hogy a kód segítségével szerezzen be egy frissítési tokent, majd a frissítési token használatával további jogkivonatokat szerezzen be más erőforrásokhoz. Az engedélyezési kódok csak egyszer használhatók, de a frissítési tokenek többször is használhatók több erőforrásban. Egy olyan alkalmazás, amely egy hitelesítési kód újrafelhasználását kísérli meg a OAuth-kód folyamata során, invalid_grant hibát fog kapni.
+
+Ehhez és más protokollok kapcsolódó módosításaihoz tekintse [meg a hitelesítés újdonságait tartalmazó teljes listát](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – szeptember 2018
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
  
-2018 szeptember tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 16 új alkalmazásokról:
+2018 szeptemberében a következő 16 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
 
-[Uberflip](https://docs.microsoft.com/azure/active-directory/saas-apps/uberflip-tutorial), [Comeet szoftver felvételi](https://docs.microsoft.com/azure/active-directory/saas-apps/comeetrecruitingsoftware-tutorial), [Workteam](https://docs.microsoft.com/azure/active-directory/saas-apps/workteam-tutorial), [ArcGIS vállalati](https://docs.microsoft.com/azure/active-directory/saas-apps/arcgisenterprise-tutorial), [Nuclino](https://docs.microsoft.com/azure/active-directory/saas-apps/nuclino-tutorial), [ JDA felhőalapú](https://docs.microsoft.com/azure/active-directory/saas-apps/jdacloud-tutorial), [Snowflake](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial), NavigoCloud, [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-tutorial), join.me, [ZephyrSSO](https://docs.microsoft.com/azure/active-directory/saas-apps/zephyrsso-tutorial), [Silverback](https://docs.microsoft.com/azure/active-directory/saas-apps/silverback-tutorial), Riverbed Xirrus EasyPass, [Rackspace SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/rackspacesso-tutorial), Enlyft egyszeri bejelentkezés az Azure-hoz, használható surveymonkey szolgáltatást [Convene](https://docs.microsoft.com/azure/active-directory/saas-apps/convene-tutorial), [dmarcian](https://docs.microsoft.com/azure/active-directory/saas-apps/dmarcian-tutorial)
+[Uberflip](https://docs.microsoft.com/azure/active-directory/saas-apps/uberflip-tutorial), [a](https://docs.microsoft.com/azure/active-directory/saas-apps/comeetrecruitingsoftware-tutorial) [Workteam](https://docs.microsoft.com/azure/active-directory/saas-apps/workteam-tutorial), a [ArcGIS Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/arcgisenterprise-tutorial), a [Nuclino](https://docs.microsoft.com/azure/active-directory/saas-apps/nuclino-tutorial), a [Ambrus kiry noemi Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/jdacloud-tutorial), a [hópehely](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial), a [NavigoCloud, a Figma, a](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-tutorial)JOIN.me, a ZEPHYRSSO, a Silverback, a Riverbed Xirrus EasyPass, a [Rackspace SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/rackspacesso-tutorial), a Enlyft SSO az Azure-hoz, surveymonkey, [összehívás](https://docs.microsoft.com/azure/active-directory/saas-apps/convene-tutorial), [dmarcian](https://docs.microsoft.com/azure/active-directory/saas-apps/dmarcian-tutorial) [](https://docs.microsoft.com/azure/active-directory/saas-apps/zephyrsso-tutorial) [](https://docs.microsoft.com/azure/active-directory/saas-apps/silverback-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
-
----
-
-### <a name="support-for-additional-claims-transformations-methods"></a>Bővült a támogatott jogcím-átalakítási módszerek köre
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
-
-Új jogcím átalakítása módszer ToLower() és ToUpper(), amely is lehet alkalmazni a SAML-jogkivonatok az SAML-alapú vezettünk **egyszeri bejelentkezési konfigurációjának** lapot.
-
-További információkért lásd: [az Azure ad-ben a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
-### <a name="updated-saml-based-app-configuration-ui-preview"></a>Frissült az SAML-alapú alkalmazáskonfigurációs kezelőfelület (előzetes verzió)
+### <a name="support-for-additional-claims-transformations-methods"></a>További jogcímek átalakítási módszereinek támogatása
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
 
-A frissített SAML-alapú alkalmazás-konfigurációs felhasználói Felületet részeként láthatja:
+Bevezetjük az új jogcím-átalakítási módszereket, ToLower () és ToUpper (), amelyek az SAML-tokenekre alkalmazhatók az SAML-alapú **egyszeri bejelentkezés konfigurációs** oldaláról.
 
-- Egy frissített útmutató felületet, az SAML-alapú alkalmazások konfigurálásához.
+További információ: [az SAML-tokenben kiadott jogcímek testreszabása az Azure ad-ben nagyvállalati alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
 
-- Mi az a hiányzó vagy helytelen a konfiguráció a kapcsolatos láthatóságot.
+---
 
-- Lehetővé teszi, hogy az e-mail címeket lejárati tanúsítványt az értesítésre.
+### <a name="updated-saml-based-app-configuration-ui-preview"></a>Frissített SAML-alapú alkalmazás konfigurációs felhasználói felülete (előzetes verzió)
 
-- Új jogcím-átalakítási módszerek, ToLower() ToUpper() és még.
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
 
-- Töltse fel a saját jogkivonat-aláíró tanúsítvány a vállalati alkalmazások lehetőséget.
+A frissített SAML-alapú alkalmazás konfigurációs felhasználói felületének részeként a következőkre lesz szüksége:
 
-- Is be lehet állítani az alkalmazások SAML NameID-formátum, és a NameID értéket állítja be Címtárbővítmények módja.
+- Frissített útmutató az SAML-alapú alkalmazások konfigurálásához.
 
-A frissített nézet bekapcsolásához kattintson a **próbálja ki az új funkciót** hivatkozás tetején a **egyszeri bejelentkezés** lap. További információkért lásd: [oktatóanyag: konfigurálása SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazás](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).
+- A konfigurációban található hiányzó vagy helytelen elemek láthatósága.
+
+- Több e-mail-cím is felvehető a lejárati tanúsítvány értesítéséhez.
+
+- Új jogcím-átalakítási módszerek, ToLower () és ToUpper () és sok más.
+
+- A saját jogkivonat-aláíró tanúsítványának feltöltése a vállalati alkalmazásokhoz.
+
+- Az SAML-alkalmazások NameID-formátumának beállítása, valamint a NameID értékének megadásának módja.
+
+A frissített nézet bekapcsolásához kattintson az **egyszeri bejelentkezési** oldal tetején található **új felhasználói felület kipróbálása** hivatkozásra. További információ: [oktatóanyag: SAML-alapú egyszeri bejelentkezés konfigurálása alkalmazáshoz Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)használatával.
 
 ---
 
 ## <a name="august-2018"></a>2018. augusztus
 
-### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Módosultak az Azure Active Directory-beli IP-címtartományok
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Azure Active Directory IP-címtartományok módosításai
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** Platform
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** Platform
 
-Nagyobb IP-címtartományok vezetünk be az Azure ad Szolgáltatásba, ami azt jelenti, ha konfigurálta az Azure AD IP-címtartományok esetében a tűzfalak, útválasztók és hálózati biztonsági csoportok kell azokat. Így nem kell a tűzfalat, útválasztó vagy a hálózati biztonsági csoportok IP-címtartomány konfigurációk újra módosítása esetén az Azure AD új végpontjait hozzáadja ezt a frissítést végzünk. 
+Nagyobb IP-tartományokat vezetünk be az Azure AD-be, ami azt jelenti, hogy ha konfigurálta az Azure AD IP-címtartományt a tűzfalak, az útválasztók vagy a hálózati biztonsági csoportok számára, frissítenie kell őket. Ezt a frissítést így nem kell újra módosítania a tűzfal, az útválasztó vagy a hálózati biztonsági csoportok IP-tartományának konfigurációjában, amikor az Azure AD új végpontokat ad hozzá. 
 
-Hálózati forgalom ezen új tartományok áthelyezése a következő két hónapban. Szolgáltatás megszakításmentes folytatásához, hozzá kell adnia a frissített értékeket az IP-címek 2018. szeptember 10. előtt:
+A hálózati forgalom ezen új tartományokra kerül át a következő két hónapban. A megszakítás nélküli szolgáltatás folytatásához ezeket a frissített értékeket a 2018. szeptember 10. előtt adja hozzá az IP-címekhez:
 
 - 20.190.128.0/18 
 
 - 40.126.0.0/18 
 
-Javasoljuk, hogy nem távolítja a régi IP-címtartományokat, mindaddig, amíg az összes, a hálózati forgalom át lett helyezve az új tartományokat. Frissítések információt, és ismerje meg, amikor eltávolíthatja a régi tartományokat, lásd: [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Javasoljuk, hogy ne távolítsa el a régi IP-címtartományt, amíg az összes hálózati forgalom az új tartományokra nem került. Az áthelyezéssel és a régi tartományok eltávolításával kapcsolatos további információkért lásd: [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
 ---
 
-### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Változással kapcsolatos értesítés: a hitelesítő kódok a későbbiekben már nem lesznek újrafelhasználhatók 
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Változási Megjegyzés: az engedélyezési kódok többé nem lesznek elérhetők újra 
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
 
-2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
+A 2018. november 15-én kezdődően az Azure AD nem fogadja el a korábban használt hitelesítési kódokat az alkalmazásokhoz. Ez a biztonsági változás segíti az Azure AD-t az OAuth-specifikációnak megfelelően bevezetni, és a v1 és v2 végpontokon is érvényben lesz.
 
-Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Egy alkalmazás, amely megpróbálja újból felhasználhatja a hitelesítési kódot az OAuth hitelesítésikód-folyamata során invalid_grant hiba lép fel.
+Ha az alkalmazás az engedélyezési kódokat több erőforráshoz tartozó jogkivonatok lekérésére használja, javasoljuk, hogy a kód segítségével szerezzen be egy frissítési tokent, majd a frissítési token használatával további jogkivonatokat szerezzen be más erőforrásokhoz. Az engedélyezési kódok csak egyszer használhatók, de a frissítési tokenek többször is használhatók több erőforrásban. Egy olyan alkalmazás, amely egy hitelesítési kód újrafelhasználását kísérli meg a OAuth-kód folyamata során, invalid_grant hibát fog kapni.
 
-Ez és egyéb protokollok-vel kapcsolatos módosításokat, lásd: [teljes listája megtalálható az új hitelesítési](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
+Ehhez és más protokollok kapcsolódó módosításaihoz tekintse [meg a hitelesítés újdonságait tartalmazó teljes listát](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
  
 ---
 
-### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>Önkiszolgáló jelszóregisztráció (SSPR) és többtényezős hitelesítés (MFA) – összevont biztonságiadat-kezelés
+### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>Átszervezett biztonsági adatok kezelése az önkiszolgáló jelszó (SSPR) és a Multi-Factor Authentication (MFA) számára
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** SSPR  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** SSPR  
+A **termék képességei:** Felhasználói hitelesítés
  
-Ez az új funkció lehetővé teszi a biztonsági adataikat (mint például a telefonszám, mobilalkalmazás és így tovább) kezelheti az SSPR és a egy egyetlen helyen, és felület; MFA képest a korábban, ahol tette két különböző helyen.
+Ez az új szolgáltatás lehetővé teszi a felhasználók számára, hogy a SSPR és az MFA-hoz hasonló biztonsági adatokat (például telefonszámot, mobil alkalmazást stb.) kezeljenek egyetlen helyen és környezetben. az előzőekhez képest, ahol két különböző helyen történt.
 
-SSPR vagy MFA használatával személyek is használható az átszervezett felületet. Ezenkívül ha a szervezet nem kényszeríti a többtényezős hitelesítés vagy az SSPR regisztrációt, személyek továbbra is regisztrálhatja bármilyen MFA vagy az SSPR biztonsági adatai módszer engedélyezett a munkahelyen a saját alkalmazások portálról.
+Ez az összevont élmény a SSPR vagy MFA-t használó felhasználók számára is működik. Továbbá, ha a szervezet nem érvényesíti az MFA-t vagy a SSPR-regisztrációt, a felhasználók továbbra is regisztrálhatják a szervezet által a saját alkalmazások portálon engedélyezett MFA-vagy SSPR-biztonsági adatokat.
 
-Egy választható nyilvános előzetes kiadásról. A rendszergazdák bekapcsolhatja az új felhasználói felület (ha szükséges) a kijelölt csoport vagy a bérlő összes felhasználója esetében. Konvergens funkciókkal kapcsolatos további információkért lásd: a [Konvergens élmény blog](https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/)
+Ez egy nyilvános előzetes verzió. A rendszergazdák bekapcsolhatják az új felhasználói élményt (ha szükséges) egy kiválasztott csoporthoz vagy egy bérlő összes felhasználója számára. Az átszervezett felülettel kapcsolatos további információkért tekintse meg a [konvergens élmény blogját](https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/) .
 
 ---
 
-### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Új (csak a HTTP használatát támogató) cookie-beállítás az Azure AD Application Proxy-alkalmazásokban
+### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Új, csak HTTP-alapú cookie-k beállítása az Azure AD Application proxy-alkalmazásokban
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Access Control
 
-Van egy új nevű beállítása, **HTTP-Only cookie-k** az alkalmazásproxy-alkalmazásokban. Ez a beállítás biztosítja, beleértve a HTTP-válaszfejléc mindkét alkalmazásproxy hozzáférési és munkamenet-cookie-khoz a HTTPOnly jelző, hozzáférés leállítása a cookie-val ügyféloldali parancsfájl és további megakadályozza a műveleteket, például a Másolás adja meg a további biztonsági vagy a cookie-k módosítását. Bár ez a jelző korábban még nem használt, a cookie-kat mindig lettek titkosítva, és nem megfelelő módosításokat elleni védelem érdekében az SSL-kapcsolat használatával.
+Létezik egy új beállítás, amely **csak HTTP-cookie-kat** használ az alkalmazásproxy alkalmazásaiban. Ez a beállítás segít a fokozott biztonság biztosításában, beleértve a HTTPOnly jelzőt is a HTTP-válasz fejlécében az alkalmazásproxy-hozzáférés és a munkamenet-cookie-k esetében, így leállítja a cookie-hoz való hozzáférést egy ügyféloldali parancsfájlból, és megelőzi a másolást vagy a cookie módosítása. Bár ez a jelző korábban nem volt használatban, a cookie-k mindig titkosítottak és SSL-kapcsolaton keresztül lettek továbbítva a helytelen módosítások elleni védelem érdekében.
 
-Ez a beállítás nem kompatibilis az alkalmazások az ActiveX-vezérlők, például a távoli asztal használatával. Ha ebben a helyzetben, azt javasoljuk, hogy kapcsolja ki ezt a beállítást.
+Ez a beállítás nem kompatibilis az olyan alkalmazásokkal, amelyek ActiveX-vezérlőket használnak, például Távoli asztal. Ha ebben a helyzetben van, javasoljuk, hogy kapcsolja ki ezt a beállítást.
 
-A HTTP-Only cookie-kra vonatkozó beállítással kapcsolatos további információkért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-publish-azure-portal).
-
----
-
-### <a name="privileged-identity-management-pim-for-azure-resources-supports-management-group-resource-types"></a>A Privileged Identity Management (PIM) az Azure-erőforrások esetében támogatja a felügyeleti csoport típusú erőforrásokat
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
- 
-Just-In-Time aktiválási és hozzárendelési beállítások is érvényesek a felügyeleti csoport erőforrástípusok, ugyanúgy, mint az előfizetések, erőforráscsoportok és erőforrások (például virtuális gépek, alkalmazásszolgáltatások, és további) már nincs. Ezenkívül bárki egy szerepkör, amely rendszergazdai hozzáférést biztosít a felügyeleti csoport felderítése és kezelése a PIM erőforrás.
-
-A PIM és az Azure-erőforrásokkal kapcsolatos további információkért lásd: [felderítése és az Azure-erőforrások kezelése a Privileged Identity Management használatával](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-discover-resources)
- 
----
-
-### <a name="application-access-preview-provides-faster-access-to-the-azure-ad-portal"></a>Az alkalmazás-hozzáférés (előzetes verzió) gyorsabb hozzáférést biztosít az Azure AD-portálhoz.
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
- 
-Jelenleg a PIM használata szerepkör aktiválásakor is igénybe vehet az engedélyek érvénybe több mint 10 perc. Ha úgy dönt, hogy az alkalmazás-hozzáférést, amely jelenleg nyilvános előzetes verzióban érhető el, használja a rendszergazdák hozzáférhetnek az Azure AD portálra, amint az aktiválási kérelem befejeződött.
-
-Jelenleg alkalmazás elérése csak támogatja az Azure AD-portál felületének és az Azure-erőforrások. A PIM és az alkalmazások kapcsolatos további információkért lásd: [Mi az Azure AD Privileged Identity Management?](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
- 
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában – 2018. augusztus
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
- 
-2018 augusztus tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 16 új alkalmazásokról:
-
-[Szarvascsőrűmadár](https://docs.microsoft.com/azure/active-directory/saas-apps/hornbill-tutorial), [kötetlen Bridgeline](https://docs.microsoft.com/azure/active-directory/saas-apps/bridgelineunbound-tutorial), [mártás Labs - mobil- és webes tesztelés](https://docs.microsoft.com/azure/active-directory/saas-apps/saucelabs-mobileandwebtesting-tutorial), [Meta-összekötő hálózatok](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial), [úgy tesszük](https://docs.microsoft.com/azure/active-directory/saas-apps/waywedo-tutorial), [Spotinst](https://docs.microsoft.com/azure/active-directory/saas-apps/spotinst-tutorial), [ProMaster (által Inlogik)](https://docs.microsoft.com/azure/active-directory/saas-apps/promaster-tutorial), SchoolBooking, [4me](https://docs.microsoft.com/azure/active-directory/saas-apps/4me-tutorial), [dokumentáció](https://docs.microsoft.com/azure/active-directory/saas-apps/DOSSIER-tutorial), [N2F - kiadás jelentések](https://docs.microsoft.com/azure/active-directory/saas-apps/n2f-expensereports-tutorial), [Comm100 élő csevegés](https://docs.microsoft.com/azure/active-directory/saas-apps/comm100livechat-tutorial), [SafeConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/safeconnect-tutorial), [ZenQMS](https://docs.microsoft.com/azure/active-directory/saas-apps/zenqms-tutorial), [eLuminate](https://docs.microsoft.com/azure/active-directory/saas-apps/eluminate-tutorial), [ Dovetale](https://docs.microsoft.com/azure/active-directory/saas-apps/dovetale-tutorial).
-
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+A csak HTTP-alapú cookie-k beállításával kapcsolatos további információkért lásd: [alkalmazások közzététele az Azure ad Application proxy használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-publish-azure-portal).
 
 ---
 
-### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>A natív Tableau-támogatás már elérhető az Azure AD Application Proxyban
+### <a name="privileged-identity-management-pim-for-azure-resources-supports-management-group-resource-types"></a>Az Azure-erőforrások Privileged Identity Management (PIM) támogatja a felügyeleti csoport erőforrás-típusait
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
+ 
+Az igény szerinti aktiválási és hozzárendelési beállítások mostantól alkalmazhatók a felügyeleti csoport erőforrásaira, ugyanúgy, mint az előfizetések, az erőforráscsoportok és az erőforrások (például virtuális gépek, App Services stb.). Emellett bárki, aki egy felügyeleti csoport rendszergazdai hozzáférését biztosító szerepkörrel rendelkezik, felderítheti és kezelheti az adott erőforrást a PIM-ben.
 
-A frissítés az OpenID Connect, az üzem előtti hitelesítési protokoll az OAuth 2.0-s Kódmegadás protokoll már nem kell az alkalmazásproxy használatával a Tableau használandó további konfigurációt elvégezni. Ez a protokoll változás is segít alkalmazásproxy hatékonyabban támogatják a több modern alkalmazások csak a HTTP átirányítást, gyakran támogatott JavaScript és HTML-címkék használatával.
+A PIM-és az Azure-erőforrásokkal kapcsolatos további információkért lásd: [Azure-erőforrások felderítése és kezelése Privileged Identity Management használatával](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-discover-resources)
+ 
+---
 
-A natív módon támogatja a Tableau kapcsolatos további információkért lásd: [mostantól natív Tableau támogatásával az Azure AD-alkalmazásproxy](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support).
+### <a name="application-access-preview-provides-faster-access-to-the-azure-ad-portal"></a>Az alkalmazás-hozzáférés (előzetes verzió) gyorsabb hozzáférést biztosít az Azure AD-portálhoz
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
+ 
+Ma, amikor a PIM használatával aktiválja a szerepkört, több mint 10 percet is igénybe vehet, amíg az engedélyek érvénybe lépnek. Ha az alkalmazás-hozzáférés használata mellett dönt, amely jelenleg nyilvános előzetes verzióban érhető el, akkor a rendszergazdák az aktiválási kérelem befejeződése után azonnal hozzáférhetnek az Azure AD-portálhoz.
+
+Az alkalmazás-hozzáférés jelenleg csak az Azure AD-portál és az Azure-erőforrások használatát támogatja. További információ a PIM-ről és az alkalmazás-hozzáférésről: [Mi az Azure ad Privileged Identity Management?](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
+ 
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---august-2018"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – augusztus 2018
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+ 
+2018 augusztusában a következő 16 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
+
+[Szarvascsőrű](https://docs.microsoft.com/azure/active-directory/saas-apps/hornbill-tutorial), [bridgeline kötetlen](https://docs.microsoft.com/azure/active-directory/saas-apps/bridgelineunbound-tutorial), [Sauce Labs-mobil-és webes tesztelés](https://docs.microsoft.com/azure/active-directory/saas-apps/saucelabs-mobileandwebtesting-tutorial), [meta Networks-összekötő](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial), [így teszünk](https://docs.microsoft.com/azure/active-directory/saas-apps/waywedo-tutorial), [Spotinst](https://docs.microsoft.com/azure/active-directory/saas-apps/spotinst-tutorial), [Promaster (Inlogik)](https://docs.microsoft.com/azure/active-directory/saas-apps/promaster-tutorial), SchoolBooking, [4me](https://docs.microsoft.com/azure/active-directory/saas-apps/4me-tutorial), [dokumentáció](https://docs.microsoft.com/azure/active-directory/saas-apps/DOSSIER-tutorial), [N2F-költségelszámolás](https://docs.microsoft.com/azure/active-directory/saas-apps/n2f-expensereports-tutorial), [Comm100 élő csevegés](https://docs.microsoft.com/azure/active-directory/saas-apps/comm100livechat-tutorial), [SafeConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/safeconnect-tutorial), [ZenQMS](https://docs.microsoft.com/azure/active-directory/saas-apps/zenqms-tutorial), [eLuminate](https://docs.microsoft.com/azure/active-directory/saas-apps/eluminate-tutorial), [Dovetale](https://docs.microsoft.com/azure/active-directory/saas-apps/dovetale-tutorial).
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
 
-### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Már támogatott a Google identitásszolgáltatóként való beállítása a vállalatközi vendégfelhasználók számára (előzetes verzió)
+### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>A natív tabló támogatása mostantól elérhető az Azure-ban AD Application Proxy
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2B  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Access Control
 
-A szervezet a Google összevonási beállításával engedélyezheti, meghívott Gmail felhasználók bejelentkezési a megosztott alkalmazások és erőforrások a meglévő Google-fiók létrehozása a személyes Microsoft-Account (msa-k) vagy egy Azure AD-fiók nélkül.
+Az OpenID-vel való frissítéssel az előhitelesítési protokollhoz tartozó OAuth 2,0 Code Grant protokollhoz való csatlakozással már nem kell további konfigurálást végeznie a tabló és az alkalmazásproxy használatához. Ez a protokoll változása azt is lehetővé teszi, hogy az alkalmazásproxy jobban támogassa a modern alkalmazásokat csak a HTTP-átirányítások használatával, amelyek JavaScript-és HTML-címkékben általában támogatottak.
 
-Egy választható nyilvános előzetes kiadásról. Google összevonási kapcsolatos további információkért lásd: [Identitásszolgáltatóként B2B vendégfelhasználó hozzáadása Google](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
+A tabló natív támogatásával kapcsolatos további információkért tekintse meg [Az Azure ad Application proxy most a natív tabló-támogatással foglalkozó](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support)témakört.
+
+---
+
+### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Új támogatás a Google identitás-szolgáltatóként való hozzáadásához Azure Active Directoryban (előzetes verzió)
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2B  
+A **termék képességei:** B2B/B2C
+
+A szervezete Google-nal való összevonásának beállításával lehetővé teheti a meghívott Gmail-felhasználók számára, hogy meglévő Google-Fiókjával jelentkezzenek be a megosztott alkalmazásaiba és erőforrásaiba anélkül, hogy személyes Microsoft-fiókot (MSAs) vagy Azure AD-fiókot kellene létrehoznia.
+
+Ez egy nyilvános előzetes verzió. A Google Federation szolgáltatással kapcsolatos további információkért lásd: a [Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
 
 ---
 
 ## <a name="july-2018"></a>2018. július
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Az Azure Active Directory értesítő e-mailjeinek fejlesztései
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Azure Active Directory e-mail-értesítések fejlesztése
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** identitás-életciklus-felügyelet
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** Identitás-életciklus kezelése
  
-Az Azure Active Directory (Azure AD) e-mailek most szolgáltatás egy új megjelenés, valamint a módosítások a feladó e-mail címe és a feladó megjelenített neve, amikor a következő szolgáltatások által küldött:
+A Azure Active Directory (Azure AD) e-mailek mostantól egy frissített kialakítással, valamint a küldő e-mail-címének és a feladó megjelenített nevének a változásával is rendelkeznek, ha a következő szolgáltatásokból küldenek:
  
-- Az Azure AD hozzáférési felülvizsgálatok
+- Azure AD-hozzáférési felülvizsgálatok
 - Azure AD Connect Health 
 - Azure AD Identity Protection 
 - Azure AD Privileged Identity Management
-- Vállalati alkalmazás lejáró Tanúsítványértesítéseket
-- Vállalati alkalmazás-kiépítés szolgáltatási értesítések
+- Vállalati alkalmazás lejárati tanúsítványának értesítései
+- Vállalati alkalmazások kiépítési szolgáltatásával kapcsolatos értesítések
  
-Az e-mail-értesítések, a következő e-mail címre küldi, és a megjelenített neve:
+Az e-mail-értesítések a következő e-mail-cím és megjelenítendő név alapján lesznek elküldve:
 
 - E-mail-cím: azure-noreply@microsoft.com
-- Megjelenített név: Microsoft Azure
+- Megjelenítendő név: Microsoft Azure
  
-Egy vonatkozó példáért egyes új e-mail mintákra és további információkat lásd: [E-mail-értesítések az Azure AD PIM-ben](https://go.microsoft.com/fwlink/?linkid=2005832).
+Az új e-mail-tervekre és további információkra például az [e-mailes értesítések az Azure ad PIM-ben](https://go.microsoft.com/fwlink/?linkid=2005832)című témakörben olvashat.
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD tevékenységnaplói most már elérhetők az Azure Monitorban
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD-tevékenységek naplói mostantól elérhetők a Azure Monitor
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
-Az Azure AD-Tevékenységnaplók mostantól elérhetők az Azure monitor (az Azure platform kiterjedő figyelési szolgáltatás) nyilvános előzetes verzióban érhető el. Az Azure Monitor kínál hosszú távú adatmegőrzés és zökkenőmentes integráció mellett ezek a fejlesztések:
+Az Azure AD-tevékenységek naplói mostantól nyilvános előzetes verzióban érhetők el a Azure Monitor (az Azure platform szintű figyelési szolgáltatása). A Azure Monitor a következő fejlesztéseken túl hosszú távú adatmegőrzést és zökkenőmentes integrációt biztosít:
 
-- Hosszú távú megőrzése a naplófájlok irányítva a saját Azure storage-fiókba.
+- Hosszú távú adatmegőrzés a naplófájlok saját Azure Storage-fiókba való átirányításával.
 
-- Zökkenőmentes SIEM-integráció, nem kell írnia, vagy egyéni parancsfájlok karbantartása.
+- Zökkenőmentes SIEM-integráció, anélkül, hogy az egyéni parancsfájlok írására vagy karbantartására lenne szükség.
 
-- Zökkenőmentes integráció a saját egyéni megoldások, elemzési eszközök vagy az incidenskezelés megoldásokat.
+- Zökkenőmentes integráció saját egyéni megoldásokkal, elemzési eszközökkel vagy incidens-kezelési megoldásokkal.
 
-Ezekkel az új képességekkel kapcsolatos további információkért lásd: blogunkat [az Azure AD-Tevékenységnaplók a diagnosztika jelenleg nyilvános előzetes verzióban elérhető az Azure Monitor](https://cloudblogs.microsoft.com/enterprisemobility/2018/07/26/azure-ad-activity-logs-in-azure-monitor-diagnostics-now-in-public-preview/) és a dokumentációban, [Azure Active Directory-Tevékenységnaplók az Azure-ban A figyelő (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/reporting-azure-monitor-diagnostics-overview).
+Az új képességekkel kapcsolatos további információkért tekintse meg a blog [Azure ad-tevékenységek naplói a Azure monitor Diagnostics szolgáltatásban már nyilvános előzetes](https://cloudblogs.microsoft.com/enterprisemobility/2018/07/26/azure-ad-activity-logs-in-azure-monitor-diagnostics-now-in-public-preview/) verzióban és a dokumentációban [Azure Active Directory a tevékenység naplóit a Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/reporting-azure-monitor-diagnostics-overview)című témakörben.
 
 ---
 
 ### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentéshez hozzáadott feltételes hozzáférési információk
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** Identitás-biztonsági & védelme
  
-Ez a frissítés lehetővé teszi, hogy láthatja, hogy mely házirendek kiértékelése a felhasználó bejelentkezésekor mellett szabályzat eredménye. A jelentés emellett mostantól tartalmazza a felhasználó által használt, így azonosíthatja a régi protokoll forgalom ügyfélalkalmazás típusa. Jelentés bejegyzések most is kereshető a korrelációs Azonosítót, amely tekintheti meg a felhasználók felé néző hibaüzenet és azonosítása és megoldása a megfelelő bejelentkezési kérelem használható.
+Ezzel a frissítéssel megtekintheti, hogy mely házirendeket értékeli ki a rendszer, amikor a felhasználó bejelentkezik a szabályzat eredményével együtt. Emellett a jelentés most már tartalmazza a felhasználó által használt ügyfélalkalmazás típusát is, így azonosíthatja a régi protokoll forgalmát. A jelentési bejegyzéseket is megkeresheti egy korrelációs AZONOSÍTÓra, amely a felhasználó által megtekinthető hibaüzenetben található, és felhasználható a megfelelő bejelentkezési kérelem azonosítására és megoldására.
 
 ---
 
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>A régi hitelesítések megtekintése a bejelentkezések tevékenységnaplói révén
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Örökölt hitelesítések megtekintése a bejelentkezési tevékenység naplóiban
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
  
-Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékenységek mezője ügyfelek is most lásd: felhasználók, amelyek az örökölt hitelesítés használata. Ügyfelek érhetik el ezeket az információkat a bejelentkezések az MS Graph API használatával is, vagy a bejelentkezés keresztül Tevékenységnaplók az Azure AD-portálra, ahol használhatja a **ügyfélalkalmazás** örökölt hitelesítések szűrés vezérlő. Tekintse meg a dokumentáció További részletekért.
+A bejelentkezési tevékenység naplóiban a **Client app (ügyfélalkalmazás** ) mező bevezetésével az ügyfelek már láthatják az örökölt hitelesítést használó felhasználókat. Az ügyfelek hozzáférhetnek ezekhez az adatokhoz a bejelentkezési MS Graph API használatával vagy az Azure AD-portál bejelentkezési tevékenység naplófájljaiban, ahol az **ügyfélalkalmazás** vezérlőelem használatával szűrheti a régi hitelesítéseket. További részletekért tekintse meg a dokumentációt.
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>2018 júliusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – július 2018
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
  
-2018 július tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 16 új alkalmazásokról:
+2018 júliusában a következő 16 új alkalmazást adtuk hozzá az App Gallery összevonási támogatásával:
 
-[Innováció Hub](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial), [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial), [bizonyos rendszergazdai egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial), PSUC átmeneti, [iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial), [képernyőfelvétel-O felosztásban](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial) , PowerSchool osztályterem, egységes [Eli bevezetési](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial), [Bomgar távoli támogatási](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial), [Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial), [Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial) , [Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial), [SecureW2 JoinNow összekötő](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial), [Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial), [SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial), [képességek alapja](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
+[Innovációs központ](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial), [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial), [bizonyos adminisztrációs egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial), PSUC-előkészítés, [ipass-SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial), [képernyőfelvétel-O-Matic](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial), PowerSchool Unified osztályterem, [Eli](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial)bevezetése, Bomgar-alapú [távoli támogatás](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial), [NimbleX](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial), [Imagine webvízió](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial), [Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial), [SecureW2 JoinNow-összekötő](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial), [Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial), [SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial), [ismeretek alapja](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>2018. július – új felhasználókiépítési funkció az SaaS-alkalmazás-integrációkban
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Új felhasználó üzembe helyezése SaaS-alkalmazás-integrációk – július 2018
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Alkalmazáskiosztási  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+**Termék képesség:** harmadik féltől származó integráció
  
-Azure ad-ben automatizálhatja a létrehozás, a karbantartással és a SaaS-alkalmazások, például a Dropbox, a Salesforce, ServiceNow vagy további felhasználói identitásokat eltávolítását teszi lehetővé. 2018 július hozzáadtuk a felhasználók a következő alkalmazások az Azure AD-alkalmazásgyűjtemény támogatása:
+Az Azure AD lehetővé teszi, hogy automatizálja a felhasználói identitások létrehozását, karbantartását és eltávolítását SaaS-alkalmazásokban, például a Dropbox, a Salesforce, a ServiceNow és más rendszerekben. Július 2018-én a következő alkalmazásokhoz is hozzáadunk felhasználói üzembe helyezési támogatást az Azure AD App Galleryben:
 
 - [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
 
-- [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
+- [Bónusz](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
 
-Minden alkalmazás, amely támogatja a felhasználók átadásának az Azure AD katalógusban listáját lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
+Az Azure AD-katalógusban a felhasználók kiépítését támogató összes alkalmazás listáját itt tekintheti meg: [SaaS Application Integration with Azure Active Directory](https://aka.ms/appstutorial).
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync – Az árván maradt és ismétlődő attribútumok szinkronizálásából fakadó hibák javításának egyszerűbb módja
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>A kapcsolódási állapot szinkronizáláshoz – egyszerűbb megoldás az árva és ismétlődő attribútumok szinkronizálási hibáinak kijavításához
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** AD Connect  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** AD-kapcsolat  
+A **termék képességei:** & Jelentéskészítés figyelése
  
-Az Azure AD Connect Health önkiszolgáló szervizelést kell végeznie, jelölje ki és hárítsa el a szinkronizálási hibák mutatja be. Ez a szolgáltatás hibaelhárítása a duplikált attribútummal szinkronizálási hibák, és kijavítja a rendszer árva objektumokat az Azure ad-ből. A diagnosztika a következő előnyökkel jár:
+A Azure AD Connect Health önkiszolgáló szervizelést vezet be, amely segít kiemelni és elhárítani a szinkronizálási hibákat. Ez a szolgáltatás a duplikált attribútum-szinkronizálási hibákat és az Azure AD-ből származó, árva objektumokat javítja. Ez a diagnózis a következő előnyökkel jár:
 
-- Duplikált attribútummal szinkronizálási hibák, adott javításokat nyújtó leszűkíti
+- Leszűkíti a duplikált attribútum-szinkronizálási hibákat, és adott javításokat biztosít
 
-- A javítás vonatkozik, kijelölve, az Azure AD-forgatókönyvek esetén egyetlen lépésben hibák megoldása
+- A dedikált Azure AD-forgatókönyvek javításának alkalmazása, a hibák feloldása egyetlen lépésben
 
-- Nincs frissítés vagy a konfiguráció be-és a funkció használatához szükséges
+- A funkció bekapcsolásához és használatához nincs szükség frissítésre vagy konfigurálásra
 
-További információkért lásd: [diagnosztizálása és a duplikált attribútummal szinkronizálási hibák javítása](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-diagnose-sync-errors)
-
----
-
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Az Azure AD és az MSA bejelentkezési felületének vizuális frissítései
-
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Azure ad-ben  
-**A termék funkció:** felhasználói hitelesítés
-
-Frissítettük a felhasználói felületen, a Microsoft online services bejelentkezési élményt, például az Office 365 és az Azure. Ez a változás lehetővé teszi a képernyők, kevésbé zsúfolt és egyszerűbb. Ez a változás kapcsolatos további információkért lásd: a [hamarosan várható az Azure AD bejelentkezési felület fejlesztései](https://cloudblogs.microsoft.com/enterprisemobility/2018/04/04/upcoming-improvements-to-the-azure-ad-sign-in-experience/) blog.
+További információ: [duplikált attribútum-szinkronizálási hibák diagnosztizálása és szervizelése](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-diagnose-sync-errors)
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Az Azure AD Connect új kiadása – 2018. július
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Vizuális frissítések az Azure AD-hez és MSA bejelentkezési tapasztalatai
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Alkalmazáskiosztási  
-**A termék funkció:** identitás-életciklus-felügyelet
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Azure AD  
+A **termék képességei:** Felhasználói hitelesítés
 
-Az Azure AD Connect legújabb kiadása tartalmazza: 
+Frissítettük a Microsoft online szolgáltatások bejelentkezési FELÜLETét, például az Office 365-es és az Azure-ban. Ezzel a módosítással a képernyők kevésbé zsúfoltak és egyszerűbbek. További információ erről a változásról: az [Azure ad bejelentkezési élményének közelgő újdonságai](https://cloudblogs.microsoft.com/enterprisemobility/2018/04/04/upcoming-improvements-to-the-azure-ad-sign-in-experience/) .
 
-- Hibajavítások és a támogatási frissítéseket. 
+---
 
-- A Ping összevonni integráció általános elérhetősége
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Azure AD Connect új kiadása – július 2018
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+A **termék képességei:** Identitás-életciklus kezelése
+
+A Azure AD Connect legújabb kiadása a következőket tartalmazza: 
+
+- Hibajavítások és támogatási frissítések 
+
+- A ping-összevonása integráció általános elérhetősége
 
 - A legújabb SQL 2012-ügyfél frissítései 
 
-A frissítéssel kapcsolatos további információkért lásd: [az Azure AD Connect: verziókiadások](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
+További információ erről a frissítésről [: Azure ad Connect verzió kiadási előzményei](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
 
 ---
 
 ### <a name="updates-to-the-terms-of-use-end-user-ui"></a>A használati feltételek végfelhasználói felhasználói felületének frissítése
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
 
-Frissítjük a jelen használati feltételek végfelhasználó felhasználói felületén az elfogadási karakterlánc.
+Frissítjük az elfogadási karakterláncot a felhasználási feltételek végfelhasználói felhasználói felületén.
 
-**Aktuális szöveg.** [TenantName] erőforrásokhoz férhet hozzá, el kell fogadnia a használati feltételeket.<br>**Új szöveget.** [TenantName] erőforrás eléréséhez olvassa el a használati feltételeket.
+**Aktuális szöveg** A [tenantName] erőforrásainak eléréséhez el kell fogadnia a használati feltételeket.<br>**Új szöveg.** A (z) [tenantName] erőforrás eléréséhez el kell olvasnia a használati feltételeket.
 
-**Aktuális szöveggel:** választva fogadja el az azt jelenti, hogy Ön vállalja, hogy az összes a fenti használati feltételeket.<br>**Új szöveges:** kattintson az Elfogadás gombra annak megerősítéséhez, hogy elolvasta és megértette a használati feltételeket.
-
----
- 
-### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollok és alkalmazások használatát
-
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
- 
-Az átmenő hitelesítés most már támogatja az örökölt protokollok és alkalmazások. Most már teljes mértékben támogatja a következő korlátozások vonatkoznak:
-
-- Felhasználói bejelentkezések örökölt Office ügyfélalkalmazások számára, az Office 2010 és Office 2013, anélkül, hogy a modern hitelesítést.
-
-- A hozzáférést az naptár megosztása és a rendelkezésre állási információk az Exchange hibrid környezetek az Office 2010-et csak.
-
-- Felhasználói bejelentkezések Skype az üzleti ügyfélalkalmazások számára a modern hitelesítés nélkül.
-
-- Felhasználói bejelentkezések a PowerShell 1.0-s verzióját.
-
-- Az Apple Device Enrollment Program (Apple DEP), az iOS beállítási asszisztens használatával. 
+**Aktuális szöveg:** Az elfogadás kiválasztása azt jelenti, hogy elfogadja a fenti használati feltételeket.<br>**Új szöveg:** Az elfogadás gombra kattintva erősítse meg, hogy elolvasta és megértette a használati feltételeket.
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Az önkiszolgáló jelszóátállításhoz és a többtényezős hitelesítéshez használt biztonsági adatok kezelésének összevonása
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollokat és alkalmazásokat
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** SSPR  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
+ 
+Az átmenő hitelesítés mostantól támogatja az örökölt protokollokat és alkalmazásokat. A következő korlátozások mostantól teljes mértékben támogatottak:
 
-Ez az új funkció lehetővé teszi, hogy a felhasználók saját biztonsági adatok (például telefonszám, e-mail címét, mobilalkalmazás és így tovább) önkiszolgáló jelszó-visszaállítás (SSPR) és a multi-factor Authentication (MFA) egyetlen felületen kezeljék. Felhasználók többé nem kell az azonos biztonsági információkat kelljen regisztrálniuk az SSPR és a többtényezős hitelesítés a két különböző környezeteket. Az új felületet is vonatkozik, akik rendelkeznek vagy az SSPR, vagy a többtényezős hitelesítés.
+- Felhasználói bejelentkezések a régi Office-ügyfélalkalmazásokba, az Office 2010-be és az Office 2013-be, modern hitelesítés nélkül.
 
-Egy szervezet MFA vagy az SSPR regisztrációs nem kényszerítése, ha a felhasználók regisztrálhatják-e a biztonsági adataikat keresztül a **saját alkalmazások** portálon. Itt a felhasználók regisztrálhatnak semmilyen metódus az MFA vagy az SSPR engedélyezve van. 
+- Hozzáférés a naptár megosztásához és az ingyenes/foglalt információkhoz az Exchange hibrid környezetekben az Office 2010-ben.
 
-Egy választható nyilvános előzetes kiadásról. A rendszergazdák bekapcsolhatja az új felhasználói felület (ha szükséges) felhasználók vagy a bérlő minden felhasználók egy kiválasztott csoportja számára.
+- Felhasználói bejelentkezések a Skype for Business-ügyfélalkalmazások számára anélkül, hogy modern hitelesítést kellene igényelni.
+
+- Felhasználói bejelentkezések a PowerShell 1,0-es verziójára.
+
+- Az Apple Készülékregisztrációs program (Apple DEP) az iOS beállítási asszisztens használatával. 
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A Microsoft Authenticator alkalmazással igazolhatja személyazonosságát a jelszava átállításakor
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Átszervezett biztonsági adatok kezelése az önkiszolgáló jelszó-visszaállításhoz és Multi-Factor Authentication
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** SSPR  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** SSPR  
+A **termék képességei:** Felhasználói hitelesítés
 
-Ez a funkció lehetővé teszi, hogy a nem rendszergazda jogosultságú igazolják egy értesítést vagy a Microsoft Authenticator (vagy bármely más hitelesítő alkalmazást) kód jelszó alaphelyzetbe állítása. Rendszergazdák bekapcsolása után a önkiszolgáló jelszó-visszaállítási mód, mobilalkalmazás aka.ms/mfasetup vagy aka.ms/setupsecurityinfo keresztül regisztráló felhasználók használhatja mobilalkalmazásukkal ellenőrzési módszerként a jelszó alaphelyzetbe állítása során.
+Ez az új szolgáltatás lehetővé teszi a felhasználók számára, hogy az önkiszolgáló jelszó-visszaállítás (SSPR) és a Multi-Factor Authentication (MFA) számára egyetlen felhasználói felületen kezeljék biztonsági adataikat (például telefonszám, e-mail cím, mobil alkalmazás stb.). A felhasználóknak már nem kell ugyanazon biztonsági adatokat regisztrálniuk a SSPR és az MFA-hoz két különböző felhasználói élményben. Ez az új felhasználói élmény a SSPR vagy MFA-t használó felhasználókra is érvényes.
 
-Mobilalkalmazás-értesítés csak be kell kapcsolni, szabályzata előírja a két módszer a jelszó részeként.
+Ha egy szervezet nem érvényesíti az MFA-t vagy a SSPR-regisztrációt, akkor a felhasználók a **saját alkalmazások** portálon regisztrálhatják biztonsági adataikat. A felhasználók az MFA-hoz vagy a SSPR-hez engedélyezett bármely metódust regisztrálhatnak. 
+
+Ez egy nyilvános előzetes verzió. A rendszergazdák bekapcsolhatják az új felhasználói élményt (ha szükséges) egy adott felhasználó vagy egy bérlő összes felhasználója számára.
+
+---
+ 
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A jelszó alaphelyzetbe állításakor használja a Microsoft Authenticator alkalmazást az identitás ellenőrzéséhez
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** SSPR  
+A **termék képességei:** Felhasználói hitelesítés
+
+Ez a funkció lehetővé teszi, hogy a nem rendszergazdák ellenőrizzék az identitást, miközben visszaállítanak egy jelszót a Microsoft Authenticator (vagy bármely más hitelesítő alkalmazástól származó) értesítés vagy kód használatával. Miután a rendszergazdák bekapcsolják ezt az önkiszolgáló jelszó-visszaállítási módszert, a aka.ms/mfasetup-on vagy a aka.ms/setupsecurityinfo-en keresztül regisztrált Mobile App ellenőrzési módszerként használhatják a jelszavukat a jelszavuk alaphelyzetbe állításakor.
+
+A Mobile App Notification szolgáltatás csak olyan szabályzat részeként kapcsolható be, amelynek két módszere van a jelszó alaphelyzetbe állításához.
 
 ---
 
 ## <a name="june-2018"></a>2018. június
 
-### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Módosítsa az értesítés: a delegált engedélyezési folyamat használata az Azure AD tevékenység naplók API-alkalmazások biztonsági javítás
+### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Változási Megjegyzés: biztonsági javítás az alkalmazások delegált engedélyezési folyamatához az Azure AD-tevékenység naplófájljainak API-ját használó alkalmazásokhoz
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
 
-Az erősebb biztonsági kényszerítési miatt volt módosítást a delegált engedélyezési folyamatok eléréséhez használó alkalmazásokra vonatkozó engedélyeinek [az Azure AD tevékenység naplók API-k](https://aka.ms/aadreportsapi). Ez a változás történik a **2018. június 26**.
+Az erősebb biztonsági kényszerítés miatt módosítani kellett a delegált engedélyezési folyamatot használó alkalmazások engedélyeit az [Azure ad-tevékenység naplófájljainak API-jai](https://aka.ms/aadreportsapi)eléréséhez. Ez a módosítás 2018. **június 26-án**lép működésbe.
 
-Ha bármely, az alkalmazások az Azure AD tevékenység API-k, kövesse az alábbi lépéseket annak érdekében, hogy az alkalmazás nem lesz történik, a módosítás után új.
+Ha bármelyik alkalmazás az Azure AD Activity log API-kat használja, kövesse az alábbi lépéseket annak biztosításához, hogy az alkalmazás ne törje meg a módosítás után.
 
-**Az Alkalmazásengedélyek frissítése**
+**Az alkalmazás engedélyeinek frissítése**
 
-1. Jelentkezzen be az Azure Portalon, válassza **Azure Active Directory**, majd válassza ki **Alkalmazásregisztrációk**.
-2. Válassza ki az Azure AD tevékenység naplók API-t használó, válassza ki az alkalmazást **beállítások**, jelölje be **szükséges engedélyek**, majd válassza ki a **Windows Azure Active Directory** API.
-3. A a **delegált engedélyek** területén a **hozzáférés engedélyezése** panelen jelölje be a **olvasási directory** adatokat, és válassza ki **mentése**.
-4. Válassza ki **engedélyeket**, majd válassza ki **Igen**.
+1. Jelentkezzen be a Azure Portalba, válassza a **Azure Active Directory**lehetőséget, majd válassza az **alkalmazás-regisztrációk**lehetőséget.
+2. Válassza ki az Azure AD Activity logs API-t használó alkalmazást, válassza a **Beállítások**lehetőséget, válassza a **szükséges engedélyek**lehetőséget, majd válassza ki a **Windows Azure Active Directory** API-t.
+3. A **hozzáférés engedélyezése** panel **meghatalmazott engedélyek** területén jelölje be a **Címtáradatok olvasása** melletti jelölőnégyzetet, majd kattintson a **Mentés**gombra.
+4. Válassza az **engedélyek megadása**lehetőséget, majd válassza az **Igen**lehetőséget.
     
     >[!Note]
-    >A következőkhöz biztosítanak engedélyeket: az alkalmazás globális rendszergazdának kell lennie.
+    >Az alkalmazásra vonatkozó engedélyek megadásához globális rendszergazdának kell lennie.
 
-További információkért lásd: a [engedélyeket](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal#grant-permissions) eléréséhez az Azure AD jelentéskészítési API-t a cikk az Előfeltételek területéhez.
+További információkért tekintse meg az előfeltételek az Azure AD Reporting API-hoz való hozzáférésének előfeltételei az [engedélyek megadása](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-prerequisites-azure-portal#grant-permissions) területen.
 
 ---
 
-### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Az Azure AD-szolgáltatásokhoz, a PCI DSS TLS-beállítások konfigurálása
+### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>A TLS beállításainak konfigurálása az Azure AD-szolgáltatásokhoz való kapcsolódás PCI DSS megfelelőség érdekében
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** N/A  
-**A termék funkció:** Platform
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** N/A  
+A **termék képességei:** Platform
 
-Transport Layer Security (TLS) protokoll, amely két kommunikáló alkalmazás közötti adatvédelmi és adatintegritás biztosít, és a jelenleg használt leggyakrabban telepített biztonsági protokoll.
+A Transport Layer Security (TLS) egy olyan protokoll, amely adatvédelmet és adatintegritást biztosít két kommunikáló alkalmazás között, és a legszélesebb körben használt biztonsági protokoll, amelyet jelenleg használtak.
 
-A [PCI biztonsági szabványok Tanácsa](https://www.pcisecuritystandards.org/) megállapította, hogy korai verziói a TLS és a Secure Sockets Layer (SSL) le kell tiltani, új és biztonságosabb alkalmazások protokollok engedélyezése, a megfelelőségi től értéke **június 30., 2018-as**. Ez a módosítás azt jelenti, hogy ha az Azure AD-szolgáltatásokhoz és PCI-DSS szabvány igényelnek, le kell tiltania a TLS 1.0. A TLS több verziói elérhetők, de a TLS 1.2 a legújabb verzió érhető el az Azure Active Directory Services. Erősen ajánlott közvetlenül a TLS 1.2-es ügyfél-kiszolgáló és a böngésző és a kiszolgáló kombinációk áthelyezése.
+A [PCI biztonsági szabványok Tanácsa](https://www.pcisecuritystandards.org/) megállapította, hogy a TLS és SSL (SSL) korai verzióit le kell tiltani az új és biztonságosabb alkalmazás-protokollok engedélyezése mellett, a megfelelőség pedig **2018. június 30-ig**érvényes. Ez a módosítás azt jelenti, hogy ha az Azure AD-szolgáltatásokhoz csatlakozik, és PCI DSS megfelelőséget igényel, le kell tiltania a TLS 1,0-et. A TLS több verziója érhető el, de a TLS 1,2 a legújabb elérhető verzió Azure Active Directory szolgáltatásokhoz. Javasoljuk, hogy az ügyfél/kiszolgáló, valamint a böngésző/kiszolgáló kombinációk esetében közvetlenül a TLS 1,2-et helyezze el.
 
-Elavult böngészők nem támogatja a TLS újabb verziók, például a TLS 1.2. A böngésző által támogatott mely verziói a TLS megtekintéséhez nyissa meg a [Qualys SSL Labs](https://www.ssllabs.com/) webhelyről, és kattintson a **teszteléséhez a böngésző**. Javasoljuk, hogy a böngésző legújabb verziójára frissítse és lehetőleg engedélyezése csak a TLS 1.2-es.
+Előfordulhat, hogy az elavult böngészők nem támogatják az újabb TLS-verziókat, például a TLS 1,2-t. Ha szeretné megtekinteni, hogy a böngésző mely verzióit támogatja a TLS, lépjen a [QUALYS SSL Labs](https://www.ssllabs.com/) -webhelyre, és kattintson a **böngésző tesztelése**elemre. Javasoljuk, hogy frissítsen a webböngésző legújabb verziójára, és lehetőleg csak TLS 1,2-et engedélyezzen.
 
-**A TLS 1.2-es, böngésző engedélyezése**
+**A TLS 1,2 engedélyezése böngésző szerint**
 
-- **A Microsoft Edge és az Internet Explorer (mindkettő vannak beállítva az Internet Explorerben)**
+- **A Microsoft Edge és az Internet Explorer (mindkettő az Internet Explorerben van beállítva)**
 
-    1. Válassza ki az Internet Explorer megnyitásához **eszközök** > **Internetbeállítások** > **speciális**.
-    2. Az a **biztonsági** területen válassza **TLS 1.2 használatára**, majd válassza ki **OK**.
-    3. Minden böngészőablakot bezárni, majd indítsa újra az Internet Explorerben. 
+    1. Nyissa meg az Internet Explorert, válassza az **eszközök** > az Internetbeállítások > a **speciális** **lehetőséget** .
+    2. A **Biztonság** területen válassza a **TLS 1,2 használata**lehetőséget, majd kattintson **az OK gombra**.
+    3. Zárjunk be minden böngészőablakot, és indítsa újra az Internet Explorert. 
 
 - **Google Chrome**
 
-    1. Nyissa meg a Google Chrome, típus *chrome://settings/* a címsorában, majd nyomja le az **Enter**.
-    2. Bontsa ki a **speciális** lehetőségeket, nyissa meg a **rendszer** területre, és válassza ki **nyissa meg a proxybeállítások**.
-    3. Az a **internetes tulajdonságok** jelölje ki a **speciális** lépjen a **biztonsági** területen válassza **TLS 1.2 használatára**, majd válassza ki a  **OK**.
-    4. Minden böngészőablakot bezárni, majd indítsa újra a Google Chrome-ban.
+    1. Nyissa meg a Google Chrome-t, írja be a *Chrome://Settings/* a címsorba, majd nyomja le az **ENTER**billentyűt.
+    2. Bontsa ki a **speciális** beállításokat, lépjen a **Rendszerterületen, és válassza a** **Proxybeállítások megnyitása**lehetőséget.
+    3. Az **Internet tulajdonságok** mezőben válassza a **speciális** lapot, lépjen a **biztonság** területen válassza a **TLS 1,2 használata**lehetőséget, majd kattintson az **OK gombra**.
+    4. Zárjunk be minden böngészőablakot, és indítsa újra a Google Chrome-ot.
 
 - **Mozilla Firefox**
 
-    1. Nyissa meg a Firefox, típus *kapcsolatos: config* címsorában, és nyomja le az **Enter**.
-    2. Keresse meg az érvényességi *TLS*, majd válassza ki a **security.tls.version.max** bejegyzés.
-    3. Állítsa az értékét **3** kényszerítése a böngészőben, hogy a TLS 1.2-es verzió használatával, és válassza **OK**.
+    1. Nyissa meg a Firefox programot, írja be a *about: config* fájlt a címsorba, majd nyomja le az **ENTER**billentyűt.
+    2. Keresse meg a kifejezést, a *TLS*-t, majd válassza ki a **Security. TLS. Version. max** bejegyzést.
+    3. A **3** érték megadásával kényszerítse a böngészőt, hogy a TLS 1,2-es verziót használja, majd válassza az **OK gombot**.
 
         >[!NOTE]
-        >Firefox 60.0 verzió támogatja a TLS 1.3-as, így a security.tls.version.max érték is megadható **4**.
+        >A Firefox 60,0-es verziója támogatja a TLS 1,3-et, így a Security. TLS. Version. max értéket is beállíthatja **4**értékre.
 
-    4. Minden böngészőablakot bezárni, majd indítsa újra a Mozilla Firefox.
+    4. Zárjunk be minden böngészőablakot, és indítsa újra a Mozilla Firefox rendszert.
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. június
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Új összevont alkalmazások érhetők el az Azure AD App Galleryben – június 2018
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
  
-2018 június tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 15 új alkalmazásokról:
+2018 júniusában az alábbi 15 új alkalmazást adtuk hozzá az alkalmazás-katalógusban az összevonási támogatással:
 
-[Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial), [zene stabilizálódási](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial), [SAML 1.1-es jogkivonat engedélyezve LOB-alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial), [Supermood](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial), [Autotask](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial), [ Végponti biztonsági mentési](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial), [Skyhigh hálózatok](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial), Smartway2, [TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial), [Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial), [Zoho egy](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial), [ Helyszíni SharePoint-](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial), [CX Suite fája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial), [Vidyard](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial), [ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
+[Skytap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skytap-tutorial), a [Music](https://docs.microsoft.com/azure/active-directory/active-directory-saas-settlingmusic-tutorial), az [SAML 1,1 token engedélyezve LOB-alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-saas-saml-tutorial), a felszínek [, az](https://docs.microsoft.com/azure/active-directory/active-directory-saas-supermood-tutorial)automatikus [feladat](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial), a [végpontok biztonsági mentése](https://docs.microsoft.com/azure/active-directory/active-directory-saas-autotaskendpointbackup-tutorial), a [SkyHigh-hálózatok](https://docs.microsoft.com/azure/active-directory/active-directory-saas-skyhighnetworks-tutorial), a Smartway2, a [TonicDM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tonicdm-tutorial), a [Moconavi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-moconavi-tutorial), a [Zoho One](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zohoone-tutorial), [a helyszíni SharePoint, a](https://docs.microsoft.com/azure/active-directory/active-directory-saas-sharepoint-on-premises-tutorial) [CX Suite](https://docs.microsoft.com/azure/active-directory/active-directory-saas-foreseecxsuite-tutorial), a [Vidyard,](https://docs.microsoft.com/azure/active-directory/active-directory-saas-vidyard-tutorial)a [ChronicX](https://docs.microsoft.com/azure/active-directory/active-directory-saas-chronicx-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing). 
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakört. 
 
 ---
 
-### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Nyilvános előzetes verzióban érhető el az Azure AD jelszóvédelem
+### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Az Azure AD jelszavas védelme nyilvános előzetes verzióban érhető el
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Identity Protection  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Felhasználói hitelesítés
 
-Segítségével az Azure AD jelszóvédelem kiiktathatja könnyen kitalálni a jelszót a környezetből. Mivel ezek a jelszavak segítséget nyújt egy jelszó megfelelő típusú támadás a biztonsági sérülés kockázata.
+Az Azure AD jelszavas védelemmel segít kiszűrni a környezetből származó könnyen kitalált jelszavakat. Ezeknek a jelszavaknak a kiküszöbölése segít csökkenteni a támadás veszélyét a jelszó típusú spray-típusokkal szemben.
 
-Pontosabban az Azure AD jelszóvédelem nyújt segítséget:
+Az Azure AD jelszavas védelme különösen a következőket segíti:
 
-- A munkahelyi fiókok védelmét is az Azure AD-ben és a Windows Server Active Directory (AD). 
-- Leállítja a felhasználók listáját a leggyakrabban használt jelszavak több mint 500, és több mint 1 millió karakter helyettesítő változata ezeket a jelszavakat a jelszavak használatával.
-- Felügyelheti az Azure AD-jelszó védelmi egyetlen helyről az Azure AD-portálon is az Azure ad és helyszíni Windows Server AD.
+- A szervezet fiókjait az Azure AD-ben és a Windows Server Active Directoryban (AD) is védetté teheti. 
+- Leállítja a felhasználók számára a jelszavak használatát a leggyakrabban használt jelszavak 500-nál nagyobb listáján, és több mint 1 000 000 karakteres helyettesítő változatban.
+- Az Azure AD jelszavas védelmet az Azure ad-portálon egyetlen helyről felügyelheti, mind az Azure AD-hez, mind a helyszíni Windows Server AD-hoz.
 
-Az Azure AD jelszóvédelem kapcsolatos további információkért lásd: [rossz jelszavak, a szervezet számára](https://aka.ms/aadpasswordprotectiondocs).
+Az Azure AD jelszavas védelemmel kapcsolatos további információkért lásd: [a helytelen jelszavak kizárása a szervezetben](https://aka.ms/aadpasswordprotectiondocs).
 
 ---
 
 ### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Új "minden vendég" – a használati feltételek létrehozása során létrehozott feltételes hozzáférési szabályzat sablonja
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
 
-A használati feltételek létrehozása során a rendszer létrehoz egy új feltételes hozzáférési szabályzatot a "minden vendég" és az "összes alkalmazás" számára is. Az új csoportházirend-sablon létrehozásának és érvényesítési folyamat egyszerűsítésével vendégek újonnan létrehozott használati feltételek vonatkoznak.
+A használati feltételek létrehozása során a rendszer létrehoz egy új feltételes hozzáférési szabályzatot a "minden vendég" és az "összes alkalmazás" számára is. Ez az új házirend-sablon az újonnan létrehozott felhasználási feltételeket alkalmazza, és egyszerűbbé teszi a vendégek számára a létrehozás és a kényszerítés folyamatát.
 
-További információkért lásd: [Azure Active Directory használati feltételek funkció](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+További információ: [Azure Active Directory használati feltételek szolgáltatás](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
 ### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>A használati feltételek létrehozása során létrehozott új "egyéni" feltételes hozzáférési szabályzat sablonja
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Cégirányítási
 
 A használati feltételek létrehozásakor létrejön egy új "egyéni" feltételes hozzáférési házirend-sablon is. Ez az új házirend-sablon lehetővé teszi a felhasználási feltételek létrehozását, majd a feltételes hozzáférési szabályzat létrehozási paneljén való azonnali megnyitását anélkül, hogy manuálisan kellene navigálnia a portálon.
 
-További információkért lásd: [Azure Active Directory használati feltételek funkció](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+További információ: [Azure Active Directory használati feltételek szolgáltatás](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Üzembe helyezése az Azure multi-factor Authentication az új és átfogó útmutatást
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Új és átfogó útmutató az Azure-Multi-Factor Authentication üzembe helyezéséhez
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** Identitás-biztonsági & védelme
  
-Kiadás új részletes útmutatást nyújt az Azure multi-factor Authentication (MFA) telepítése a szervezetben.
+Új lépésenkénti útmutatót kaptunk az Azure Multi-Factor Authentication (MFA) üzembe helyezéséhez a szervezetben.
 
-Az MFA üzembe helyezési útmutató megtekintéséhez nyissa meg a [identitás üzembe helyezési útmutatók](https://aka.ms/DeploymentPlans) adattárat a Githubon. Az üzembe helyezési útmutatók visszajelzést megadásához használja a [központi telepítési csomag visszajelzési űrlap](https://aka.ms/deploymentplanfeedback). Ha az üzembe helyezési útmutatók kapcsolatban bármilyen kérdése van, írjon nekünk az [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
+Az MFA üzembe helyezési útmutatójának megtekintéséhez nyissa meg a [személyazonosság telepítési útmutatók](https://aka.ms/DeploymentPlans) tárházát a githubon. Ha visszajelzést szeretne küldeni a telepítési útmutatókról, használja a [központi telepítési terv visszajelzési űrlapját](https://aka.ms/deploymentplanfeedback). Ha bármilyen kérdése van az üzembe helyezési útmutatókkal kapcsolatban, lépjen kapcsolatba velünk a következő címen: [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
 ---
 
-### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Az Azure AD delegált felügyeleti szerepkör a nyilvános előzetes verzióban érhető el
+### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Az Azure AD által delegált alkalmazások felügyeleti szerepkörei nyilvános előzetes verzióban érhetők el
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** Access Control
 
-A rendszergazdák mostantól delegálhatja kezelési feladatokat a globális rendszergazdai szerepkör hozzárendelése nélkül. Az új szerepkörök és funkciók a következők:
+A rendszergazdák mostantól a globális rendszergazdai szerepkör kiosztása nélkül is delegálják az alkalmazás-felügyeleti feladatokat. Az új szerepkörök és képességek a következők:
 
-- **Új standard szintű Azure AD felügyeleti szerepkörök:**
+- **Új standard szintű Azure AD-rendszergazdai szerepkörök:**
 
-    - **Alkalmazás-rendszergazda.** Minden alkalmazást, beleértve a regisztráció, egyszeri bejelentkezési beállításainak, alkalmazás-hozzárendelések és a licencelés, alkalmazást proxybeállításokat és jóváhagyás minden aspektusa kezelhető képesek (kivéve az Azure AD-erőforrások).
+    - **Alkalmazás-rendszergazda.** Lehetővé teszi az alkalmazások minden aspektusának felügyeletét, beleértve a regisztrációt, az egyszeri bejelentkezés beállításait, az alkalmazások hozzárendelését és a licencelést, az alkalmazás-proxy beállításait és a jóváhagyást (kivéve az Azure AD-erőforrásokat).
 
-    - **Felhőalkalmazás-rendszergazda.** Biztosít minden, az alkalmazás-rendszergazda funkcióit, kivéve az alkalmazásproxy, mert ez nem biztosít helyszíni hozzáférés.
+    - **Cloud Application Administrator.** Minden alkalmazás-rendszergazdai képességet biztosít, kivéve az App proxyt, mivel nem biztosít helyszíni hozzáférést.
 
-    - **Alkalmazás fejlesztője.** Listázását teszi létrehozása alkalmazásregisztrációkat, akkor is, ha a **engedélyezése a felhasználók számára alkalmazások regisztrálása** beállítás ki van kapcsolva.
+    - **Alkalmazás fejlesztője.** Lehetővé teszi az alkalmazások regisztrációjának létrehozását, még akkor is, ha a **felhasználók regisztrációjának engedélyezése** lehetőség ki van kapcsolva.
 
-- **Tulajdonjog (alkalmazásonkénti regisztrációs és enterprise alkalmazás beállítása, a csoport tulajdonjogának folyamat hasonló:**
+- **Tulajdonos (az alkalmazáson belüli regisztráció és a vállalati alkalmazások beállítása, hasonlóan a csoport tulajdonosi folyamatához:**
  
-    - **Alkalmazásregisztráció tulajdonosa.** A saját tulajdonú alkalmazásregisztráció, beleértve az alkalmazás-jegyzékfájl, és további tulajdonosok hozzáadása minden aspektusa kezelhető szerepkörök.
+    - **Az alkalmazás regisztrációjának tulajdonosa.** Lehetővé teszi a tulajdonosi alkalmazások regisztrálásának minden aspektusának kezelését, beleértve az alkalmazás jegyzékfájlját és további tulajdonosok hozzáadását.
 
-    - **Vállalati alkalmazás tulajdonosa.** Szerepkörök a vállalati tulajdonban lévő alkalmazások, beleértve az egyszeri bejelentkezési beállításainak, alkalmazás-hozzárendelések és jóváhagyás számos szempontból kezelése (kivéve az Azure AD-erőforrások).
+    - **Vállalati alkalmazás tulajdonosa.** Lehetővé teszi a vállalati alkalmazások számos aspektusának kezelését, beleértve az egyszeri bejelentkezési beállításokat, az alkalmazás-hozzárendeléseket és a belefoglalást (kivéve az Azure AD-erőforrásokat).
 
-További információ a nyilvános előzetes verzióban: a [Azure ad-ben delegált felügyelet szerepkör a nyilvános előzetes verzióban érhető el!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) blog. További információ a szerepkörökről és engedélyekről: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
+A nyilvános előzetes verzióval kapcsolatos további információkért tekintse [meg az Azure ad delegált alkalmazás-felügyeleti szerepkörök nyilvános előzetesét.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) blog. További információ a szerepkörökről és az engedélyekről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
 
 ---
 
 ## <a name="may-2018"></a>2018. május
 
-### <a name="expressroute-support-changes"></a>Az ExpressRoute-támogatás módosításai
+### <a name="expressroute-support-changes"></a>ExpressRoute-támogatás módosításai
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** Platform  
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Platform  
 
-A szoftver egy szolgáltatott szoftverként, például az Azure Active Directory (Azure AD) úgy tervezték, hogy leginkább végigkövetésével közvetlenül az internethez, anélkül, hogy az expressroute-on vagy bármely más személyes VPN-alagutat. Emiatt a **2018. augusztus 1**, hogy-környezetei már nem az ExpressRoute használatával az Azure nyilvános társviszony-létesítés Azure AD-szolgáltatások és a Microsoft társviszony-létesítés Azure Közösségek. Ez a változás által érintett szolgáltatások előfordulhat, hogy figyelje meg, hogy az Azure AD-forgalom fokozatosan pótlása ExpressRoute-ból az interneten.
+A szolgáltatásként kínált szoftverek, például a Azure Active Directory (Azure AD) úgy vannak kialakítva, hogy a lehető legjobban működjenek közvetlenül az interneten keresztül anélkül, hogy ExpressRoute vagy más magánhálózati VPN-alagutakra lenne szükség. Ezért az Azure AD-szolgáltatások ExpressRoute az Azure-beli nyilvános és az Azure-közösségeket használó Microsoft-partnerekkel való támogatását követően leállítjuk. **2018** A változás által érintett szolgáltatások esetében előfordulhat, hogy az Azure AD-forgalom fokozatosan változik a ExpressRoute és az internet között.
 
-Amíg tudjuk módosítani a támogatási azzal is tisztában van vannak továbbra is olyan helyzetekben, ahol szüksége lehet használ egy dedikált Kapcsolatcsoportok a hitelesítési forgalomhoz. Ez az oka Azure ad-ben továbbra is támogatja a bérlőnkénti IP-címtartomány korlátozások használata az ExpressRoute és a szolgáltatások már a Microsoft társviszony-létesítés az "Egyéb Office 365 Online szolgáltatások"-Közösség tagjaival. Ha a szolgáltatásokat érintő eseményekről, de az ExpressRoute van szüksége, tegye a következőket:
+A támogatás módosításakor azt is tudjuk, hogy még mindig vannak olyan helyzetek, amikor szükség lehet egy dedikált áramkör használatára a hitelesítési forgalomhoz. Emiatt az Azure AD továbbra is támogatja a bérlői IP-címtartomány korlátozásait a Microsoft ExpressRoute és szolgáltatásainak használatával a "További Office 365 Online Services" Közösséggel. Ha a szolgáltatások érintettek, de ExpressRoute van szüksége, a következőket kell tennie:
 
-- **Ha Ön az Azure nyilvános társviszony-létesítés.** Ugrás a Microsoft társviszony-létesítés, és regisztráljon a **egyéb Office 365-szolgáltatások (12076:5100)** közösségi. Az Azure nyilvános társviszony-létesítésről Microsoft társviszony-létesítésre áthelyezéséről további információ: a [áthelyezni egy nyilvános társviszony-létesítés Microsoft társviszony-létesítésre](https://docs.microsoft.com/azure/expressroute/how-to-move-peering) cikk.
+- **Ha Azure-beli nyilvános társ-összevonást használ.** Lépjen a Microsoft-partneri kapcsolatra, és regisztráljon a **másik Office 365 Online Services (12076:5100)** Közösségre. További információ arról, hogyan lehet áthelyezni az Azure-ban a nyilvános Microsoft-partnerektől a [Microsoft](https://docs.microsoft.com/azure/expressroute/how-to-move-peering) -partnerek felé.
 
-- **Ha Ön a Microsoft társviszony-létesítés.** Regisztráljon a **egyéb Office 365 Online szolgáltatás (12076:5100)** közösségi. Útválasztási követelményeivel kapcsolatos további információkért tekintse meg a [támogatása BGP-Közösségek szakasz](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp) az ExpressRoute útválasztási követelményei című cikkben.
+- **Ha Microsoft-társat használ.** Regisztráljon a **másik Office 365 online Service (12076:5100)** Közösségre. Az útválasztási követelményekkel kapcsolatos további információkért tekintse meg a ExpressRoute-útválasztási követelmények cikk a [BGP-Közösségek támogatása című szakaszát](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp) .
 
-Ha folytatja, dedikált Kapcsolatcsoportok használni kell, kommunikáljon a Microsoft Account team való használatához engedélyt kell a **egyéb Office 365 Online szolgáltatás (12076:5100)** közösségi. A MS Office-felügyelt felülvizsgáló Bizottság ellenőrzi-e ezeket a Kapcsolatcsoportok kell, és győződjön meg arról, hogy megszegéseinek műszaki tartja őket. Az Office 365-höz útvonalszűrők létrehozására tett kísérlet nem engedélyezett előfizetések hibaüzenetet fog kapni. 
+Ha továbbra is dedikált áramköröket kell használnia, a Microsoft-fiókkal foglalkozó csapatának kell megadnia, hogy hogyan kérhet engedélyt a **másik Office 365 online szolgáltatás (12076:5100)** Közösség használatára. Az MS Office által felügyelt felülvizsgálati tábla ellenőrzi, hogy szüksége van-e az adott áramkörökre, és hogy tisztában legyenek a technikai következményeivel. Az Office 365 útválasztási szűrőinek létrehozására tett jogosulatlan előfizetések hibaüzenetet kapnak. 
  
 ---
 
-### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Felügyeleti forgatókönyvek a használati feltételek a Microsoft Graph API-k
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Felügyeleti forgatókönyvek Microsoft Graph API-k használata a felhasználási feltételekhez
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** fejlesztői élmény
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Fejlesztői élmény
  
 Az Azure AD használati feltételeinek felügyeleti működéséhez Microsoft Graph API-kat adtunk hozzá. Létrehozhatja, frissítheti és törölheti a használati feltételeket.
 
 ---
 
-### <a name="add-azure-ad-multi-tenant-endpoint-as-an-identity-provider-in-azure-ad-b2c"></a>Identitás-szolgáltatóként az Azure AD B2C az Azure AD több-bérlős végpont hozzáadása
+### <a name="add-azure-ad-multi-tenant-endpoint-as-an-identity-provider-in-azure-ad-b2c"></a>Azure AD több-bérlős végpont hozzáadása identitás-szolgáltatóként Azure AD B2C
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
  
-Egyéni szabályzatok használatával most már hozzáadhat az Azure AD közös végpont identitásszolgáltatójaként az Azure AD B2C-ben. Ez lehetővé teszi, hogy az összes olyan jelentkezik be az alkalmazások az Azure AD-felhasználó bejegyzés hibaérzékeny pont. További információkért lásd: [Azure Active Directory B2C: felhasználók jelentkezzen be egy egyéni szabályzatok használatával több-bérlős Azure AD-identitásszolgáltató](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom).
+Az egyéni szabályzatok használatával mostantól az Azure AD Common Endpoint Azure AD B2C identitás-szolgáltatóként is hozzáadhatja. Ez lehetővé teszi, hogy egyetlen belépési ponttal rendelkezzen az összes olyan Azure AD-felhasználó számára, akik bejelentkeznek az alkalmazásokba. További információ [: Azure Active Directory B2C: lehetővé teszi a felhasználók számára, hogy egyéni szabályzatok használatával bejelentkezzenek egy több-bérlős Azure ad-identitásba](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom).
 
 ---
 
-### <a name="use-internal-urls-to-access-apps-from-anywhere-with-our-my-apps-sign-in-extension-and-the-azure-ad-application-proxy"></a>Belső URL-címeket használnak az alkalmazások bárhonnan elérheti az Azure AD-alkalmazásproxy és a saját alkalmazások bejelentkezési bővítménye
+### <a name="use-internal-urls-to-access-apps-from-anywhere-with-our-my-apps-sign-in-extension-and-the-azure-ad-application-proxy"></a>Belső URL-címek használatával bárhonnan elérheti alkalmazásait a saját alkalmazások bejelentkezési bővítménnyel és az Azure AD Application Proxy
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** saját alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** SSO
  
-Felhasználók most már elérheti alkalmazások belső URL-címeket, még ha a vállalati hálózaton kívülről keresztül a saját alkalmazások biztonságos bejelentkezési bővítménye az Azure ad használatával. Ez minden olyan alkalmazással, amely bármely böngészőben, amelyen telepítve van hozzáférési Panel böngészőbővítményének használatánál az Azure AD-alkalmazásproxy használatával közzétett fog működni. Az URL-cím átirányítási funkció automatikusan engedélyezve lesz, miután egy felhasználó bejelentkezik a bővítményt. A bővítmény letölthető [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176), [Chrome](https://go.microsoft.com/fwlink/?linkid=866367), és [Firefox](https://go.microsoft.com/fwlink/?linkid=866366).
+A felhasználók mostantól belső URL-címeken keresztül érhetik el az alkalmazásokat, még akkor is, ha a vállalati hálózaton kívül esnek a saját alkalmazások biztonságos bejelentkezési bővítménnyel az Azure AD-hoz. Ez minden olyan alkalmazással működni fog, amelyet az Azure AD Application Proxy használatával tett közzé, minden olyan böngészőben, amelyen telepítve van a hozzáférési panel böngésző bővítménye. Az URL-átirányítás funkció automatikusan engedélyezve lesz, amint a felhasználó bejelentkezik a bővítménybe. A bővítmény letölthető a [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176), a [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)és a [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)számára.
 
 ---
  
-### <a name="azure-active-directory---data-in-europe-for-europe-customers"></a>Az Azure Active Directory - adatok Európában Európa-ügyfelek számára
+### <a name="azure-active-directory---data-in-europe-for-europe-customers"></a>Azure Active Directory – az Európa Európai ügyfeleinek
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** GoLocal
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** GoLocal
 
-Ügyfeleknek az Európai szükséges az Európai maradjon, és Európai adatközpontok értekezlet védelmében, és az Európai törvényi kívül nem replikálódnak. Ez [cikk](https://go.microsoft.com/fwlink/?linkid=872328) milyen azonosító információkat a vonatkozó részletes Európa tárolja, és adatokat részleteiért tárolt kívül az Európai adatközpontok biztosítanak. 
+Az Európai ügyfelek az adatoknak Európában maradnak, és nem replikálódnak az Európai adatközpontokon kívül az adatvédelem és az európai jogszabályok megtartása érdekében. Ez a [cikk](https://go.microsoft.com/fwlink/?linkid=872328) részletesen ismerteti, hogy milyen információk lesznek tárolva az Európai adatközpontokban, valamint az adatközpontokon kívül tárolt információkkal kapcsolatos részleteket is tartalmaz. 
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---may-2018"></a>Új felhasználók SaaS-alkalmazás Integrációk – 2018. május
+### <a name="new-user-provisioning-saas-app-integrations---may-2018"></a>Új felhasználó üzembe helyezése SaaS-alkalmazás-integrációk – május 2018
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Alkalmazáskiosztási  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+**Termék képesség:** harmadik féltől származó integráció
  
-Azure ad-ben automatizálhatja a létrehozás, a karbantartással és a SaaS-alkalmazások, például a Dropbox, a Salesforce, ServiceNow vagy további felhasználói identitásokat eltávolítását teszi lehetővé. 2018 május hozzáadtuk a felhasználók a következő alkalmazások az Azure AD-alkalmazásgyűjtemény támogatása:
+Az Azure AD lehetővé teszi, hogy automatizálja a felhasználói identitások létrehozását, karbantartását és eltávolítását SaaS-alkalmazásokban, például a Dropbox, a Salesforce, a ServiceNow és más rendszerekben. Május 2018-én a következő alkalmazásokhoz is hozzáadunk felhasználói üzembe helyezési támogatást az Azure AD App Galleryben:
 
 - [BlueJeans](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bluejeans-provisioning-tutorial)
 
-- [Alapkövei OnDemand](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
+- [Sarokköve OnDemand](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
 
 - [Zendesk](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
 
-Minden alkalmazás, amely támogatja a felhasználók átadásának az Azure AD katalógusban listáját lásd: [ https://aka.ms/appstutorial ](https://aka.ms/appstutorial).
+Az Azure AD-katalógusban a felhasználók üzembe helyezését támogató összes alkalmazás listáját itt tekintheti meg: [https://aka.ms/appstutorial](https://aka.ms/appstutorial).
 
 ---
  
-### <a name="azure-ad-access-reviews-of-groups-and-app-access-now-provides-recurring-reviews"></a>A csoportok Azure AD hozzáférési felülvizsgálatok és alkalmazás-hozzáférés mostantól lehetőséget nyújt az ismétlődő értékelések
+### <a name="azure-ad-access-reviews-of-groups-and-app-access-now-provides-recurring-reviews"></a>A csoportok és az alkalmazás-hozzáférés Azure AD hozzáférési felülvizsgálatai mostantól ismétlődő értékeléseket is biztosítanak
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** a hozzáférési felülvizsgálatok  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
+A **termék képességei:** Cégirányítási
  
-Hozzáférési felülvizsgálat csoportok és alkalmazások már általánosan elérhető az Azure AD Premium P2 részeként.  A rendszergazdák tudják a hozzáférési felülvizsgálatok például havonta vagy negyedévente rendszeres időközönként automatikusan ismétlődni csoporttagságok és alkalmazás-hozzárendelések konfigurálása.
+A csoportok és alkalmazások hozzáférési felülvizsgálata mostantól általánosan elérhető a prémium szintű Azure AD P2 részeként.  A rendszergazdák a csoporttagság és az alkalmazás-hozzárendelések hozzáférési felülvizsgálatait rendszeres időközönként, például havonta vagy negyedévente is megismétlődnek.
 
 ---
 
-### <a name="azure-ad-activity-logs-sign-ins-and-audit-are-now-available-through-ms-graph"></a>Az Azure Active Directory-naplók (bejelentkezési és hitelesítési) mostantól elérhetők az MS Graph használatával
+### <a name="azure-ad-activity-logs-sign-ins-and-audit-are-now-available-through-ms-graph"></a>Az Azure AD-tevékenységek naplói (bejelentkezések és naplózás) mostantól az MS Graphon keresztül érhetők el
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
  
-Az Azure AD tevékenységeket tartalmazó naplók, amely tartalmazza a bejelentkezések és auditnaplók, mostantól elérhetők az MS Graph használatával. A Microsoft közzétette a két végpontok keresztül az MS Graph ezek a naplók eléréséhez. Tekintse meg a [dokumentumok](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) az első lépések az Azure AD Reporting API programozás alapú hozzáférést. 
+Az Azure AD-tevékenységek naplói, amelyek a bejelentkezéseket és a naplókat is tartalmazzák, mostantól az MS Graph használatával érhetők el. A naplók eléréséhez két végpontot tettünk elérhetővé az MS Graph használatával. Az első lépésekhez tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) az Azure ad Reporting API-k programozott eléréséhez. 
 
 ---
  
-### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>Élmény és a egy szervezeti hagyja a B2B-érvényesítési fejlesztései
+### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>A B2B beváltási élményének fejlesztése és a szervezeti feladatok elhagyása
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2B  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2B  
+A **termék képességei:** B2B/B2C
 
-**Csak az érvényesítési idő:** után B2B API-val vendégfelhasználóval megosztott erőforrás – nem kell egy különleges meghívás e-mailt küld. A legtöbb esetben a vendégfelhasználó az erőforrás eléréséhez, és megnyílik a beváltási élmény szerinti keresztül. Nincs több hatással miatt kimaradt e-maileket. Nincs több kell megadniuk a Vendég "Volt, érvényesítési hivatkozásra kattintva a rendszer akkor küld?". Ez azt jelenti, miután SPO a meghívó Managert használja – zavaros mellékleteket is rendelkezhet – belső és külső – bármely érvényesítési állapotát az összes felhasználó azonos kanonikus URL-CÍMÉT.
+**Egyszeri visszaváltás:** Miután megoszt egy erőforrást egy vendég felhasználóval a B2B API használatával – nem kell elküldenie egy különleges meghívó e-mailt. A legtöbb esetben a vendég felhasználói hozzáférhetnek az erőforráshoz, és a beváltási élmény időben lesznek elvégezve. Nincs több hatása a kihagyott e-mailek miatt. Nem kell többé megkérdezni a vendég felhasználóit "a visszaváltási hivatkozásra kattintva a rendszer küldte?". Ez azt jelenti, hogy ha a "a" meghívót használja, akkor a Felhőbeli mellékletek ugyanazzal a kanonikus URL-címmel rendelkezhetnek az összes felhasználóhoz – belső és külső – a beváltási állapotban.
 
-**A modern érvényesítési élmény:** képernyő érvényesítési kezdőlap nincs több felosztása. A modern a felhasználók látják az adatvédelmi nyilatkozat a meghívó szervezetet, felhasználói jóváhagyás, ugyanúgy, mint az ilyen harmadik felek alkalmazásaihoz.
+**Modern beváltási élmény:** Nincs több osztott képernyős beváltási Kezdőlap. A felhasználók a meghívásos szervezet Adatvédelmi nyilatkozatával modern beleegyező felhasználói élményt kapnak, ugyanúgy, mint a harmadik féltől származó alkalmazások esetében.
 
-**Vendégfelhasználók a szervezettel hagyhatja:** után a felhasználó kapcsolat szervezettel való felett van, akkor is önkiszolgáló a szervezetből. Nincs több történt a meghívó szervezeti admin "el kell távolítani", több ritikus támogatási jegyeket.
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. május
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
- 
-2018 május tettünk elérhetővé összevonással 18 új alkalmazásokról, az alkalmazáskatalógusban támogatja:
-
-[AwardSpring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), Infogix Data3Sixty szabályozzák, [Yodeck](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [a Jamf Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [KnowledgeOwl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [Envi MMIS](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [LaunchDarkly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe Captivate Prime](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [Montázs Online](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial),[まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel, [Arc-közzététel – egyszeri bejelentkezés ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [PlanGrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [iWellnessNow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [Proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [Riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [állományt](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Reviewsnap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
-
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
-
-Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+**A vendég felhasználói elhagyhatják a szervezeti** szervezetet: Ha a felhasználó kapcsolata egy szervezettel már véget ért, a szervezete elhagyhatja őket. Nem kell többé felhívni a meghívót, hogy a szervezet rendszergazdája "el kellene távolítani", és ne legyen több támogatási jegy.
 
 ---
- 
-### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Az Azure Active Directory új részletes üzembe helyezési útmutatók
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** könyvtár
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Az Azure AD App Galleryben elérhető új összevont alkalmazások – 2018. május
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+ 
+A 2018-es verzióban az alábbi 18 új alkalmazást bővítettük az alkalmazás-katalógusban található összevonási támogatással:
+
+[AwardSpring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), Infogix Data3Sixty szabályozása [, Yodeck](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [JAMF Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [KnowledgeOwl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [ENVI MMIS](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [LaunchDarkly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe rabul Prime](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [Montage online](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial),[まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel [, arc Publishing-SSO](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [PlanGrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [iWellnessNow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [Proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [Flock](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Reviewsnap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial).
+
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakört.
+
+---
+ 
+### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Új lépésenkénti üzembe helyezési útmutatók a Azure Active Directory
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** Directory
  
 Új, lépésenkénti útmutató a Azure Active Directory (Azure AD) üzembe helyezéséhez, beleértve az önkiszolgáló jelszó-visszaállítás (SSPR), az egyszeri bejelentkezés (SSO), a feltételes hozzáférés (CA), az App proxy, a felhasználók kiépítése, a Active Directory összevonási szolgáltatások (AD FS) (ADFS) Átmenő hitelesítés (PTA ESP) és az ADFS jelszavas kivonatának szinkronizálása (PHS).
 
-Az üzembe helyezési útmutatók megtekintéséhez nyissa meg a [identitás üzembe helyezési útmutatók](https://aka.ms/DeploymentPlans) adattárat a Githubon. Az üzembe helyezési útmutatók visszajelzést megadásához használja a [központi telepítési csomag visszajelzési űrlap](https://aka.ms/deploymentplanfeedback). Ha az üzembe helyezési útmutatók kapcsolatban bármilyen kérdése van, írjon nekünk az [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
+Az üzembe helyezési útmutatók megtekintéséhez nyissa meg az [Identity Deployment Guides](https://aka.ms/DeploymentPlans) -tárházat a githubon. Ha visszajelzést szeretne küldeni a telepítési útmutatókról, használja a [központi telepítési terv visszajelzési űrlapját](https://aka.ms/deploymentplanfeedback). Ha bármilyen kérdése van az üzembe helyezési útmutatókkal kapcsolatban, lépjen kapcsolatba velünk a következő címen: [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
 ---
 
-### <a name="enterprise-applications-search---load-more-apps"></a>Vállalati alkalmazások keresése, – további alkalmazások betöltése
+### <a name="enterprise-applications-search---load-more-apps"></a>Vállalati alkalmazások keresése – további alkalmazások betöltése
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
  
-Ha nem találja az alkalmazás / egyszerű szolgáltatások? Hozzáadtunk további alkalmazásokat a vállalati alkalmazások betöltéséhez összes alkalmazások listáját. Alapértelmezés szerint 20 alkalmazás mutatjuk be. Rákattinthat, **Továbbiak betöltése** további alkalmazások megtekintéséhez. 
+Nem sikerül megkeresni az alkalmazásokat/egyszerű szolgáltatásokat? A vállalati alkalmazások minden alkalmazás listájában további alkalmazások tölthetők be. Alapértelmezés szerint 20 alkalmazást mutatunk be. Most kattintson a lehetőségre **, majd** a további alkalmazások megjelenítéséhez. 
 
 ---
  
-### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Az aad Connect kiadása tartalmaz egy nyilvános előzetes verziója a pingfederate-tel, az integráció május fontos biztonsági frissítések, számos hibajavítást és új nagyszerű új hibaelhárítási eszközei. 
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>A AADConnect megjelenése a PingFederate, fontos biztonsági frissítésekkel, számos hibajavítással és új, nagyszerűen új hibaelhárítási eszközökkel való integráció nyilvános előzetes verzióját tartalmazza. 
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** AD Connect  
-**A termék funkció:** identitás-életciklus-felügyelet
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** AD-kapcsolat  
+A **termék képességei:** Identitás-életciklus kezelése
  
-Az aad Connect kiadása tartalmaz egy nyilvános előzetes verziója a pingfederate-tel, az integráció május fontos biztonsági frissítések, számos hibajavítást és új nagyszerű új hibaelhárítási eszközei. A kibocsátási megjegyzésekben talál [Itt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+A AADConnect megjelenése a PingFederate, fontos biztonsági frissítésekkel, számos hibajavítással és új, nagyszerűen új hibaelhárítási eszközökkel való integráció nyilvános előzetes verzióját tartalmazza. A kibocsátási megjegyzések [itt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190)találhatók.
 
 ---
 
-### <a name="azure-ad-access-reviews-auto-apply"></a>Az Azure AD hozzáférési felülvizsgálatok: automatikus alkalmazása
+### <a name="azure-ad-access-reviews-auto-apply"></a>Azure AD hozzáférési felülvizsgálatok: automatikus alkalmazás
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** a hozzáférési felülvizsgálatok  
-**A termék funkció:** Cégirányítási
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
+A **termék képességei:** Cégirányítási
 
-A hozzáférési felülvizsgálatok a csoportok és alkalmazások most már általánosan elérhetők az Azure AD Premium P2 részeként. Automatikusan a felülvizsgáló módosítások alkalmazásához, csoport vagy alkalmazás, a hozzáférési felülvizsgálatot követően a rendszergazdák konfigurálhatják. A rendszergazda azt is megadhatja, folyamatos hozzáférésre a felhasználó, mi történik, ha a felülvizsgálók nem válaszol, távolítsa el a hozzáférést, férjenek vagy rendszer ajánlásokat. 
+A csoportok és alkalmazások hozzáférési felülvizsgálatai mostantól általánosan elérhetők a prémium szintű Azure AD P2 részeként. A rendszergazda beállíthatja, hogy automatikusan alkalmazza a véleményező módosításait az adott csoportra vagy alkalmazásra, mivel a hozzáférési felülvizsgálat befejeződik. A rendszergazda azt is megadhatja, hogy mi történik a felhasználó folyamatos hozzáférésével, ha a felülvizsgálók nem válaszolnak, nem távolítják el a hozzáférést, megtartják a hozzáférést vagy a rendszerjavaslatokat. 
 
 ---
 
-### <a name="id-tokens-can-no-longer-be-returned-using-the-query-response_mode-for-new-apps"></a>Azonosító-jogkivonatokat már nem adható vissza a lekérdezés response_mode használatával új alkalmazások esetében. 
+### <a name="id-tokens-can-no-longer-be-returned-using-the-query-response_mode-for-new-apps"></a>Az azonosító jogkivonatok már nem adhatók vissza az új alkalmazások lekérdezési response_mode használatával. 
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
  
-Be- és 2018. április 25. után létrehozott alkalmazások már nem igényelhetnek egy **id_token** használatával a **lekérdezés** response_mode.  Ekkor az Azure AD beágyazott OIDC előírásoknak, és segítséget nyújt az alkalmazások támadási felület csökkentése.  2018. április 25. előtt létrehozott alkalmazások nincs letiltva a használatával a **lekérdezés** együtt, egy response_type response_mode **id_token**.  A hiba, az aad-ből, id_token kérésekor **AADSTS70007: "query" érték nem támogatott a "response_mode" jogkivonat kérése során**.
+A 2018 április 25-én vagy azt követően létrehozott alkalmazások nem igényelhetnek **id_token** a **lekérdezési** response_mode használatával.  Ez az Azure AD-t a OIDC-specifikációkkal együtt ismerteti, és segít csökkenteni az alkalmazások támadási felületét.  Az 2018. április 25. előtt létrehozott alkalmazások nem tiltják le a **lekérdezési** response_mode response_type **id_token**.  A visszaadott hiba, amikor a HRE id_token kér, a **AADSTS70007: "Query" nem támogatott "response_mode" érték a jogkivonat kérésekor**.
 
-A **töredék** és **form_post** response_modes továbbra is működni – Ha létrehozni új alkalmazás objektumok (például az alkalmazásproxy-használat), győződjön meg, hogy ezek response_modes egyikének használata előtt, hozhatnak létre egy Új alkalmazás.  
+A **töredék** és a **form_post** response_modes továbbra is működik – új alkalmazásobjektumok létrehozásakor (például az alkalmazás proxyjának használatakor) response_modes, mielőtt új alkalmazást hozna létre.  
 
 ---
  
 ## <a name="april-2018"></a>2018. április 
 
-### <a name="azure-ad-b2c-access-token-are-ga"></a>Az Azure AD B2C hozzáférési tokent is általánosan elérhető
+### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C hozzáférési jogkivonat a GA
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel 
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C 
 
-Most már elérheti az Azure AD B2C által védett webes API-k hozzáférési jogkivonatok használatával. A funkció nyilvános előzetes verzióról való általánosan elérhető A felhasználói felület konfigurálása az Azure AD B2C-alkalmazást és a webes API-kat úgy lett továbbfejlesztve, és más kisebb fejlesztések történtek.
+A hozzáférési jogkivonatok használatával mostantól hozzáférhet a Azure AD B2C által védett webes API-khoz. A szolgáltatás a nyilvános előzetes verzióról a GA-ra vált. Az Azure AD B2C-alkalmazások és webes API-k konfigurálásának felhasználói felülete továbbfejlesztett, és egyéb kisebb fejlesztéseket hajtottak végre.
  
-További információkért lásd: [Azure AD B2C: kérelmező hozzáférési jogkivonatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens).
+További információt a [Azure ad B2C: hozzáférési tokenek igénylése](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens)című témakörben talál.
 
 ---
 
-### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>Egyszeri bejelentkezés beállításainak a SAML-alapú alkalmazások tesztelése
+### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>Az egyszeri bejelentkezés konfigurációjának tesztelése SAML-alapú alkalmazásokhoz
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
 
-Egyszeri bejelentkezési SAML-alapú alkalmazások konfigurálása, ha már tudjuk tesztelni az integrációt a lapon. Bejelentkezés során hibát észlel, ha a hibát a tesztelési élményt biztosíthat, és az Azure AD nyújt megoldási lépéseket az adott probléma megoldásához.
+Az SAML-alapú SSO-alkalmazások konfigurálásakor tesztelheti az integrációt a konfiguráció lapon. Ha a bejelentkezés során hibát észlel, megadhatja a hibát a tesztelési élményben, és az Azure AD megoldást nyújt az adott probléma megoldásához szükséges megoldási lépések elvégzésére.
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 - [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
-- [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+- [Az SAML-alapú egyszeri bejelentkezések hibakeresése Azure Active Directory-alkalmazásokban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
 ---
  
 ### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Az Azure AD használati feltételei mostantól felhasználónkénti jelentéskészítéssel rendelkeznek
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának
  
-A rendszergazdák mostantól egy adott használati feltételek kiválasztása, és tekintse meg az összes felhasználót, hogy hozzájárult, hogy, hogy a jelen használati feltételek és milyen dátum/idő, került sor.
+A rendszergazdák mostantól kiválaszthatnak egy adott felhasználási helyet, és megtekinthetik az összes olyan felhasználót, aki beleegyezett az adott felhasználási feltételekbe, és hogy milyen időpontban és időpontban történt.
 
-További információkért lásd: a [az Azure AD használati feltételek funkció](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+További információkért lásd az [Azure ad használati feltételeinek funkcióját](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
  
-### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Az Azure AD Connect Health: Kockázatos IP-cím az AD FS extranetes fiókzárolási védelem 
+### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Azure AD Connect Health: kockázatos IP-cím AD FS extranetes zárolási védelemhez 
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Más  
+A **termék képességei:** & Jelentéskészítés figyelése
 
-Connect Health mostantól támogatja a képességére IP-címek, amely meghaladja a küszöbértéket hibás felhasználónév/jelszó bejelentkezések óránkénti vagy napi rendszerességgel. Ez a szolgáltatás által biztosított képességek a következők:
+A csatlakoztatási állapot mostantól lehetővé teszi azon IP-címek észlelését, amelyek a sikertelen U/P-bejelentkezések küszöbértékét óránként vagy napi szinten túllépik. A szolgáltatás által biztosított képességek a következők:
 
-- Átfogó jelentés IP-cím és az óránként/naponta alapján testre szabható küszöbértékkel hozza létre a sikertelen bejelentkezések száma.
-- E-mail alapú értesítések megjelenítése, ha egy adott IP-cím túllépte a küszöbértéket, hibás felhasználónév/jelszó bejelentkezések egy óránként/naponta történik.
-- A letöltési lehetőséget ehhez az adatok részletes elemzés
+- Átfogó jelentés, amely az IP-címet és a sikertelen bejelentkezések másodpercenkénti számát jeleníti meg, testreszabható küszöbértékkel.
+- E-mail-alapú riasztások, amelyekben egy adott IP-cím túllépte a sikertelen U/P bejelentkezések küszöbértékét óránként/naponta.
+- Letöltési lehetőség az adatgyűjtés részletes elemzéséhez
 
-További információkért lásd: [kockázatos IP jelentés](https://aka.ms/aadchriskyip).
+További információ: [kockázatos IP-jelentés](https://aka.ms/aadchriskyip).
 
 ---
  
-### <a name="easy-app-config-with-metadata-file-or-url"></a>Egyszerű alkalmazás konfigurációs metaadatfájl vagy URL-címe
+### <a name="easy-app-config-with-metadata-file-or-url"></a>Egyszerű alkalmazás konfigurációja metaadat-fájllal vagy URL-címmel
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
 
-A vállalati alkalmazások oldalon rendszergazdák feltölthet egy SAML-metaadatfájl SAML-alapú bejelentkezés az AAD-galéria és a katalógusban nem szereplő alkalmazás konfigurálásához.
+A vállalati alkalmazások lapon a rendszergazdák feltölthetnek egy SAML-metaadat-fájlt az SAML-alapú bejelentkezés konfigurálásához a HRE Gallery és a nem katalógus alkalmazáshoz.
 
-Az Azure AD alkalmazás összevonási metaadatainak URL-címe segítségével ezenkívül a célzott alkalmazás egyszeri bejelentkezés konfigurálása.
+Emellett az Azure AD Application Federation metaadat-URL-címével is konfigurálhatja az SSO-t a célként megadott alkalmazással.
 
-További információkért lásd: [konfigurálása egyszeri bejelentkezéshez, az alkalmazásokat, amelyek nem szerepelnek az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).
+További információ: [az egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek a Azure Active Directory alkalmazás-galériában](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).
 
 ---
 
-### <a name="azure-ad-terms-of-use-now-generally-available"></a>Az Azure AD használati feltételek már általánosan elérhető
+### <a name="azure-ad-terms-of-use-now-generally-available"></a>Az Azure AD Használati feltételek már általánosan elérhető
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának
  
 
 Az Azure AD használati feltételei a nyilvános előzetes verzióról általánosan elérhetővé váltanak.
 
-További információkért lásd: a [az Azure AD használati feltételek funkció](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+További információkért lásd az [Azure ad használati feltételeinek funkcióját](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
-### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Az adott szervezetek a B2B-felhasználók meghívások engedélyezése vagy letiltása
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek VÁLLALATKÖZI felhasználói meghívásának engedélyezése vagy letiltása
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2B  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2B  
+A **termék képességei:** B2B/B2C
  
 
-Mostantól megadhatja, mely kívánt megosztás és együttműködés az Azure AD B2B együttműködés a fiókpartner-szervezetek. Ehhez hozzon létre adott választhatja engedélyezik vagy megtagadják a tartományok. Tartomány le van tiltva, ezek a képességek használatával, amikor az alkalmazottak már nem küldhet meghívókat személyek ebben a tartományban.
+Mostantól megadhatja, hogy mely partnerszervezetek számára szeretne megosztani és együttműködni az Azure AD B2B együttműködésben. Ehhez dönthet úgy, hogy létrehoz egy adott engedélyezési vagy megtagadási tartományt tartalmazó listát. Ha a tartományok blokkolva vannak ezekkel a képességekkel, az alkalmazottak többé nem küldhetnek meghívókat az adott tartományban lévő személyek számára.
 
-Ez segít, hogy ki férhet hozzá az erőforrásokat, miközben lehetővé teszi a zökkenőmentes felhasználói élmény engedélyezett.
+Ez segít az erőforrásokhoz való hozzáférés szabályozásában, miközben zökkenőmentes felhasználói élményt tesz lehetővé a jóváhagyott felhasználók számára.
 
 Ez a VÁLLALATKÖZI együttműködési funkció minden Azure Active Directory ügyfél számára elérhető, és prémium szintű Azure AD-funkciókkal, például a feltételes hozzáféréssel és az identitás-védelemmel együtt használható a külső üzleti felhasználók aláírásának részletesebb szabályozása érdekében. és hozzáférés.
 
-További információkért lásd: [engedélyezési és blokkolási Segítségkérések B2B-felhasználók az adott szervezetek](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
+További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
 
 ---
  
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Az Azure AD-alkalmazásgyűjtemény elérhető új összevont alkalmazások
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Az Azure AD App Galleryben elérhető új összevont alkalmazások
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
 
-2018 április tettünk elérhetővé összevonással 13 új alkalmazásokról, az alkalmazáskatalógusban támogatja:
+Április 2018-én a következő 13 új alkalmazást adtuk hozzá az alkalmazás-galériához való összevonási támogatással:
 
-HCM, feltétel [FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial), [titkos kiszolgáló (helyszíni)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial), [dinamikus jel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial), [mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial), [szervezeti diagram Most már](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial), [Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial), [AppNeta Teljesítményfigyelő](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial), [Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial) , [Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial), [ Cisco felhőalapú](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial), kereskedelmi, [SafetyNet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
+Az HCM, [a FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial), a [Secret Server (on-premises)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial), a [dinamikus jel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial), a [mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial), a [szervezeti diagram most](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial), a [Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial), a [AppNeta Teljesítményfigyelő](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial), a [Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial) , a [Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial), a [Cisco Cloud](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial), a polc, a [Biztonság](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial).
 
-Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
-
----
- 
-### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások (nyilvános előzetes verzió)
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2B  
-**A termék funkció:** B2B és B2C-vel
-
-Azure Active Directory (Azure AD) B2B együttműködési lehetőségeket az Azure ad a fiókpartner-szervezetek vendégfelhasználók használó szervezetek, most már megadhat a B2B-felhasználók a helyszíni alkalmazásokhoz való hozzáférés. Ezek a helyszíni alkalmazások az SAML-alapú hitelesítés vagy az integrált Windows-hitelesítés (IWA) a Kerberos által korlátozott delegálás (KCD).
-
-További információkért lásd: [Grant B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises).
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakört.
 
 ---
  
-### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Egyszeri bejelentkezés az integrációs oktatóanyagok lekérése az Azure Marketplace-ről
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz (nyilvános előzetes verzió)
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** más  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2B  
+A **termék képességei:** B2B/B2C
 
-Ha egy alkalmazás, amely szerepel az a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) támogatja az SAML egyszeri bejelentkezéshez, kattintson a alapú **Letöltés most** biztosít az adott alkalmazáshoz kapcsolódó integrációs oktatóanyagát. 
+Azure Active Directory (Azure AD) B2B együttműködési képességeket használó szervezetként, amellyel meghívhatja a vendég felhasználókat a partnerszervezetektól az Azure AD-be, mostantól elérhetővé teheti a B2B-felhasználók számára a helyszíni alkalmazásokhoz való hozzáférést. Ezek a helyszíni alkalmazások SAML-alapú hitelesítést vagy integrált Windows-hitelesítést (IWA) használhatnak a Kerberos által korlátozott delegálással (KCD).
+
+További információkért lásd: [B2B-felhasználók engedélyezése az Azure ad-ben a helyszíni alkalmazásokhoz való hozzáféréshez](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises).
+
+---
+ 
+### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>SSO-integrációs útmutatók beszerzése az Azure Marketplace-ről
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Más  
+**Termék képesség:** harmadik féltől származó integráció
+
+Ha az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) -en felsorolt alkalmazások TÁMOGATJÁK az SAML-alapú egyszeri bejelentkezést, a letöltés gombra kattintva elérhetővé **válik** az alkalmazáshoz társított integrációs oktatóanyag. 
 
 ---
 
-### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>Nagyobb teljesítmény az Azure ad-ben a felhasználók automatikus átadása a SaaS-alkalmazásokban
+### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>Az Azure AD automatikus felhasználói üzembe helyezésének gyorsabb teljesítménye SaaS-alkalmazásokhoz
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Alkalmazáskiosztási  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+**Termék képesség:** harmadik féltől származó integráció
  
-Korábban, az Azure Active Directory-felhasználó kiépítési összekötőket az olyan SaaS-alkalmazások (például Salesforce, ServiceNow és a Box) használó ügyfelek sikerült teljesítménycsökkenést tapasztal, ha az Azure AD-bérlőt tartalmazott több mint 100 000 összevont felhasználók és csoportok, és meghatározni, hogy mely felhasználókat kell létrehozni felhasználó és csoport-hozzárendelések használta.
+Korábban a Azure Active Directory felhasználó kiépítési összekötőket használó SaaS-alkalmazásokhoz (például Salesforce, ServiceNow és box) a teljesítmény lassú teljesítményt jelenthet, ha az Azure AD-bérlők több mint 100 000 egyesített felhasználóval rendelkeznek, és csoportok, és felhasználói és csoportos hozzárendelések használatával határozzák meg, hogy mely felhasználókat kell kiépíteni.
 
-2018. április 2. fontos teljesítményjavítás üzembe helyezése az Azure AD létesítési szolgáltatás, amely nagy mértékben csökkentheti az Azure Active Directory és a cél SaaS-alkalmazások közötti kezdeti szinkronizálás végrehajtásához szükséges idő a.
+2018. április 2-án jelentős teljesítménybeli fejlesztések történtek az Azure AD-létesítési szolgáltatásban, amely nagy mértékben csökkenti a Azure Active Directory és a cél SaaS-alkalmazások közötti kezdeti szinkronizálások elvégzéséhez szükséges időt.
 
-Ennek eredményeképpen a számos ügyfél, amely eddig szinkronizálások az alkalmazásoknak a tartott, hány nap vagy soha nem fejeződött be, most belül percek vagy órák során hiba.
+Ennek eredményeképpen sok olyan ügyfelet, akik kezdeti szinkronizálást végeztek a sok napot vagy soha nem teljesített alkalmazásokhoz, mostantól perc vagy óra múlva is befejeződik.
 
-További információkért lásd: [mi történik a kiépítés során?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning)
+További információ: [Mi történik a kiépítés során?](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works)
 
 ---
 
-### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>Az önkiszolgáló jelszó-visszaállítást a hibrid Azure ad-ben a Windows 10-es zárolási képernyőről csatlakoztatott gépek
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>Önkiszolgáló jelszó-visszaállítás a Windows 10 zárolási képernyőjéről a hibrid Azure AD-hez csatlakoztatott gépekhez
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** önkiszolgáló jelszó-visszaállítás  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Önkiszolgáló jelszó-visszaállítás  
+A **termék képességei:** Felhasználói hitelesítés
  
-Frissítettük a Windows 10-es SSPR funkció támogatását olyan gépeken, amelyek hibrid Azure AD-hez. Ez a funkció érhető el a Windows 10 RS4 lehetővé teszi, hogy a felhasználók visszaállíthatják a jelszavukat a Windows 10-es gép a zárolási képernyőről. Felhasználók, akik engedélyezve van, és új jelszó önkiszolgáló kérésére regisztrált Ez a szolgáltatás képes használni.
+Frissítettük a Windows 10 SSPR funkcióját, hogy támogassa a hibrid Azure AD-hez csatlakoztatott gépek támogatását is. Ez a funkció a Windows 10 RS4 lehetővé teszi a felhasználók számára, hogy a Windows 10 rendszerű gép zárolási képernyőjéről visszaállítsák a jelszavukat. Az önkiszolgáló jelszó-visszaállításra engedélyezett és regisztrált felhasználók használhatják ezt a funkciót.
 
-További információkért lásd: [az Azure AD-jelszó visszaállítása a bejelentkezési képernyőről](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows).
+További információ: [Az Azure ad-jelszó alaphelyzetbe állítása a bejelentkezési képernyőn](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows).
 
 ---
 
 ## <a name="march-2018"></a>2018. március
  
-### <a name="certificate-expire-notification"></a>Tanúsítvány lejárati értesítés
+### <a name="certificate-expire-notification"></a>Tanúsítvány lejárati értesítése
 
-**Típus:** kijavítva  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Rögzített  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
  
-Az Azure AD elküld egy értesítést, ha egy gyűjtemény egy tanúsítványt, vagy a katalógusban nem szereplő alkalmazás érvényessége hamarosan lejár. 
+Az Azure AD értesítést küld, ha egy katalógus vagy nem katalógusbeli alkalmazás tanúsítványa hamarosan lejár. 
 
-Egyes felhasználók nem kapják meg a vállalati alkalmazásokhoz SAML-alapú egyszeri bejelentkezés konfigurálva értesítések. A probléma megoldódott. Az Azure AD elküldi az értesítést a tanúsítványok, 7, 30 és 60 napon belül lejár. Ön ezt az eseményt naplóiban láthatja. 
+Néhány felhasználó nem kapott értesítéseket az SAML-alapú egyszeri bejelentkezéshez konfigurált nagyvállalati alkalmazásokhoz. A probléma megoldódott. Az Azure AD értesítést küld a 7, 30 és 60 nap alatt lejáró tanúsítványokról. Ezt az eseményt a naplókban láthatja. 
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
-- [Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
-- [Naplózási tevékenységre vonatkozó jelentések az Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
+- [Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
+- [Tevékenység-jelentések naplózása a Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
  
 ---
  
-### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Azure AD B2C-vel a Twitter és a GitHub Identitásszolgáltatók
+### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Twitter-és GitHub-identitás-szolgáltatók Azure AD B2C
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** B2C - felhasználói identitás kezelése  
-**A termék funkció:** B2B és B2C-vel
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
  
-Most már hozzáadhat Twitter- és GitHub identitásszolgáltatójaként az Azure AD B2C-ben. Twitter kerül át a nyilvános előzetes verzióban általánosan elérhető GitHub kiadásra nyilvános előzetes verzióban érhető el.
+Mostantól a Twitter vagy a GitHub is felvehető identitás-szolgáltatóként Azure AD B2Cban. A Twitter a nyilvános előzetes verzióról a GA-ra vált. A GitHub nyilvános előzetes verzióban érhető el.
 
-További információkért lásd: [Mi az Azure AD B2B együttműködés?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+További információ: [Mi az az Azure ad B2B Collaboration?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
  
 ---
 
 ### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Böngésző-hozzáférés korlátozása Intune Managed Browser használatával az Azure AD alkalmazás-alapú feltételes hozzáférés iOS-hez és Androidhoz
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás-biztonsági & védelme
  
-**Nyilvános előzetes verziója!**
+**Már nyilvános előzetes verzióban érhető el!**
 
-**Intune Managed Browser SSO:** az alkalmazottak egyszeri bejelentkezés natív ügyfelek (például a Microsoft Outlook) és az Intune Managed Browser minden Azure AD-hez csatlakozó alkalmazásokhoz használhatja.
+**Egyszeri bejelentkezés Intune Managed Browser:** Az alkalmazottak használhatnak egyszeri bejelentkezést a natív ügyfeleken (például a Microsoft Outlookban) és az Azure AD-hez csatlakoztatott összes alkalmazás Intune Managed Browser.
 
 **Intune Managed Browser feltételes hozzáférési támogatás:** Mostantól megkövetelheti, hogy az alkalmazottak az Intune által felügyelt böngészőt használják az alkalmazás alapú feltételes hozzáférési szabályzatok használatával.
 
-További információ erről a [blogbejegyzés](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
+Erről a [blogbejegyzésben](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)olvashat bővebben.
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 - [Alkalmazás-alapú feltételes hozzáférés beállítása](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
-- [Felügyeltböngésző-szabályzatok konfigurálása](https://aka.ms/managedbrowser)  
+- [Managed Browser-szabályzatok konfigurálása](https://aka.ms/managedbrowser)  
 
 ---
  
-### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Alkalmazás Webalkalmazásproxy-parancsmagok a Powershell általánosan elérhető a modul
+### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>App proxy-parancsmagok a PowerShell GA modulban
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** hozzáférés-vezérlés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Access Control
  
-Alkalmazásproxy parancsmagok támogatása már általánosan elérhető a Powershell-modult az! Ehhez szükség, hogy legyen naprakész a Powershell-modulok – Ha Ön több mint egy év mögött, egyes parancsmagok leállhat. 
+Az alkalmazásproxy-parancsmagok támogatása most már a PowerShell GA modulban érhető el. Ehhez szükség van a PowerShell-modulok frissítésére – ha több mint egy évig tart, néhány parancsmag leállhat. 
 
-További információkért lásd: [AzureAD](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0).
- 
----
- 
-### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Közvetlen egyszeri bejelentkezés használatával nem interaktív protokoll által támogatott natív Office 365-ügyfelek
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
- 
-A felhasználó Office 365-ügyfél natív használatával (verzió 16.0.8730.xxxx és újabb) csendes bejelentkezési felületet közvetlen egyszeri bejelentkezés használatával. A támogatási szolgáltatását az hozzáadását a nem interaktív (WS-Trust) protokoll az Azure AD.
-
-További információkért lásd: [hogyan jelentkezzen be egy natív ügyfél közvetlen egyszeri bejelentkezés munkahelyi?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work)
- 
----
-
-### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenant-endpoints"></a>A felhasználók kapnak a beavatkozás nélküli bejelentkezést, a közvetlen egyszeri bejelentkezés, ha egy alkalmazás bejelentkezési kéréseket küld az Azure AD-bérlő végpontok
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
- 
-A felhasználók kapnak a beavatkozás nélküli bejelentkezést, a közvetlen egyszeri bejelentkezés, ha egy alkalmazás (például `https://contoso.sharepoint.com`) bejelentkezési kéréseket küld, az Azure AD-bérlő végpontok – `https://login.microsoftonline.com/contoso.com/<..>` vagy `https://login.microsoftonline.com/<tenant_ID>/<..>` – helyett az Azure AD közös végpontot (`https://login.microsoftonline.com/common/<...>`).
-
-További információkért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
-
----
- 
-### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Közvetlen egyszeri bejelentkezés bevezetése felhasználók Intranet zóna beállítását csak egy Azure ad-ben URL-cím helyett a korábban a két URL-címet hozzá kell adnia
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
- 
-Közvetlen egyszeri bejelentkezés vezethet be a felhasználók számára, hozzá, csak egy Azure AD URL-CÍMÉT a felhasználók az intranet zóna beállításait az Active Directory csoportházirend használatával kell: `https://autologon.microsoftazuread-sso.com`. Korábban az ügyfelek kellett adjon hozzá két URL-címet.
-
-További információkért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
+További információ: [AzureAD](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0).
  
 ---
  
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény
+### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Az Office 365 natív ügyfeleket nem interaktív protokoll használatával támogatja a zökkenőmentes egyszeri bejelentkezés.
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
-
-2018 március tettünk elérhetővé összevonással 15 új alkalmazásokról, az alkalmazáskatalógusban támogatja:
-
-[Boxcryptor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-boxcryptor-tutorial), [CylancePROTECT](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cylanceprotect-tutorial), Wrike, [SignalFx](https://docs.microsoft.com/azure/active-directory/active-directory-saas-signalfx-tutorial), Segéd által FirstAgenda, [YardiOne](https://docs.microsoft.com/azure/active-directory/active-directory-saas-yardione-tutorial), Vtiger CRM, inwink, [amplitúdó](https://docs.microsoft.com/azure/active-directory/active-directory-saas-amplitude-tutorial), [Spacio](https://docs.microsoft.com/azure/active-directory/active-directory-saas-spacio-tutorial), [ContractWorks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-contractworks-tutorial), [Bersin](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bersin-tutorial), [Mercell](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mercell-tutorial), [Trisotech digitális Vállalati kiszolgáló](https://docs.microsoft.com/azure/active-directory/active-directory-saas-trisotechdigitalenterpriseserver-tutorial), [Qumu felhőalapú](https://docs.microsoft.com/azure/active-directory/active-directory-saas-qumucloud-tutorial).
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
  
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
+Az Office 365 natív ügyfeleket (16.0.8730. xxxx vagy újabb verzió) használó felhasználó csendes bejelentkezési élményt nyújt a zökkenőmentes SSO használatával. Ezt a támogatást a nem interaktív protokoll (WS-Trust) Azure AD-hez való hozzáadásával biztosítjuk.
 
-Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing). 
+További információ: [how bejelentkezni egy natív ügyfélen zökkenőmentes egyszeri bejelentkezéssel?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work)
+ 
+---
+
+### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenant-endpoints"></a>Ha egy alkalmazás bejelentkezési kéréseket küld az Azure AD bérlői végpontjának, a felhasználók csendes bejelentkezési élményt nyújtanak, zökkenőmentes egyszeri bejelentkezéssel.
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
+ 
+A felhasználók csendes bejelentkezési élményt nyújtanak, zökkenőmentes egyszeri bejelentkezéssel, ha egy alkalmazás (például `https://contoso.sharepoint.com`) bejelentkezési kéréseket küld az Azure AD bérlői végpontoknak – vagyis `https://login.microsoftonline.com/contoso.com/<..>` vagy `https://login.microsoftonline.com/<tenant_ID>/<..>` – az Azure AD közös végpontja (`https://login.microsoftonline.com/common/<...>`) helyett.
+
+További információ: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
 
 ---
  
-### <a name="pim-for-azure-resources-is-generally-available"></a>Az Azure-erőforrások PIM szolgáltatás általánosan elérhető
+### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Csak egy Azure AD-URL-címet kell hozzáadnia két URL-cím helyett a felhasználók intranetes zónájának beállításaira a zökkenőmentes egyszeri bejelentkezéshez
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
  
-Ha az Azure AD Privileged Identity Management-címtárbeli szerepkörökhöz tartozó használ, mostantól használhatja a PIM időhöz kötött access és a hozzárendelés képességek például az előfizetések, erőforráscsoportok, virtuális gépeket és bármely más, a támogatott erőforrás Azure-erőforrások szerepköreihez tartozó az Azure Resource Manager által. Többtényezős hitelesítés kikényszerítéséhez a Just-In-Time szerepkörök aktiválása során, és jóváhagyott módosítása a windows együttes aktiválások ütemezése. Ez a kiadás emellett bővült a fejlesztések többek között egy frissített felhasználói Felületet, jóváhagyási munkafolyamatokat, valamint a hamarosan lejáró szerepkörök bővítése, és lejárt szerepkörök megújítása a nyilvános előzetes verzióban nem érhető el.
+Ha a zökkenőmentes SSO-t a felhasználók számára szeretné kideríteni, csak egy Azure AD-URL-címet kell hozzáadnia a felhasználók intranetes zónájának beállításaihoz a csoportházirend használatával Active Directory: `https://autologon.microsoftazuread-sso.com`. Korábban az ügyfeleknek két URL-címet kellett felvenniük.
 
-További információkért lásd: [PIM az Azure-erőforrások (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)
- 
----
- 
-### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>Nem kötelező jogcímek, az alkalmazások jogkivonatok (nyilvános előzetes verzió) hozzáadása
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
- 
-Az Azure AD-alkalmazás mostantól az egyéni vagy választható jogcímkérések JWTs vagy SAML jogkivonatokat.  Ezek a jogcímeket a felhasználó vagy bérlői kapcsolatos, amelyek nem tartoznak a jogkivonat mérete vagy alkalmazhatósági megkötések miatt alapértelmezés szerint.  Ez jelenleg nyilvános előzetes verzióban elérhető az Azure AD-alkalmazások az 1.0-s és 2.0-s verziójú végpontok.  Információ dokumentációjában milyen jogcímek lehet hozzáadni, a tanúsítványkérelmeket az alkalmazásjegyzék szerkesztése.  
-
-További információkért lásd: [nem kötelező az Azure AD-jogcímek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims).
+További információ: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
  
 ---
  
-### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>Az Azure AD támogatja PKCE biztonságosabb OAuth-folyamatok
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Az Azure AD App Galleryben elérhető új összevont alkalmazások
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+
+Március 2018-én a következő 15 új alkalmazást bővítettük az alkalmazás-galériában az összevonási támogatással:
+
+[Boxcryptor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-boxcryptor-tutorial), [CylancePROTECT](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cylanceprotect-tutorial), Wrike, [SignalFx](https://docs.microsoft.com/azure/active-directory/active-directory-saas-signalfx-tutorial), segéd: FirstAgenda, [YardiOne](https://docs.microsoft.com/azure/active-directory/active-directory-saas-yardione-tutorial), Vtiger CRM, inwink, [amplitúdó](https://docs.microsoft.com/azure/active-directory/active-directory-saas-amplitude-tutorial), [Spacio](https://docs.microsoft.com/azure/active-directory/active-directory-saas-spacio-tutorial), [ContractWorks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-contractworks-tutorial), [Bersin](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bersin-tutorial), [Mercell](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mercell-tutorial), [Trisotech Digital Enterprise Server](https://docs.microsoft.com/azure/active-directory/active-directory-saas-trisotechdigitalenterpriseserver-tutorial), [Qumu Cloud](https://docs.microsoft.com/azure/active-directory/active-directory-saas-qumucloud-tutorial).
  
-Vegye figyelembe a PKCE, amely lehetővé teszi több biztonságos kommunikáció során az OAuth 2.0 engedélyezési kód engedélyezési folyamatával támogatása az Azure AD-docs frissítve lett-e.  Az 1.0-s és 2.0-s verziójú végpontok S256 mind a titkosítatlan szöveges code_challenges támogatottak. 
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial).
 
-További információkért lásd: [hozzáférési kód kérése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakört. 
+
+---
+ 
+### <a name="pim-for-azure-resources-is-generally-available"></a>Általánosan elérhető a PIM az Azure-erőforrásokhoz
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
+ 
+Ha Azure AD Privileged Identity Managementt használ a címtárbeli szerepkörökhöz, mostantól használhatja a PIM időkorlátos hozzáférési és hozzárendelési képességeit az Azure-erőforrás-szerepkörökhöz, például előfizetésekhez, erőforráscsoportokhoz, Virtual Machineshoz és bármely más támogatott erőforráshoz Azure Resource Manager szerint. Multi-Factor Authentication betartatása, amikor a szerepköröket időben aktiválja, és az aktiválásokat a jóváhagyott változtatási ablakokkal egyeztetve ütemezhet. Emellett ez a kiadás a nyilvános előzetes verzióban nem elérhető fejlesztéseket is tartalmaz, beleértve a frissített felhasználói felületet, a jóváhagyási munkafolyamatokat, valamint a szerepkörök kibővítésének lehetőségét a hamarosan lejár, és megújíthatja a lejárt szerepköröket.
+
+További információ: [PIM for Azure Resources (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)
  
 ---
  
-### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-get_workers-api"></a>Az összes felhasználói attribútum értékei a Workday Get_Workers API-ban elérhető kiépítés támogatása
+### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>Opcionális jogcímek hozzáadása az alkalmazások jogkivonatához (nyilvános előzetes verzió)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Alkalmazáskiosztási  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
  
-A nyilvános előzetes verziója bejövő való üzembe helyezést, a Workday az Active Directory és az most már az Azure AD képes kinyerni és kiépítés a Workday Get_Workers API-ban elérhető összes attribútum értéket támogatja. Ez hozzáadja a több száz további standard szintű csomag támogatja, és tartalmazza a szükséges kezdeti verziójában a Workday túlmutató egyéni attribútumok bejövő összekötő kiépítése.
+Az Azure AD-alkalmazás mostantól egyéni vagy választható jogcímeket is igényelhet a JWTs-vagy SAML-jogkivonatokban.  Ezek olyan felhasználói vagy bérlői jogcímek, amelyek nem szerepelnek a jogkivonatban alapértelmezés szerint, a méret vagy az alkalmazhatósági kényszer miatt.  Ez jelenleg nyilvános előzetes verzióban érhető el az Azure AD-alkalmazásokhoz a 1.0-s és a v 2.0-végpontokon.  A dokumentációban tájékozódhat arról, hogy milyen jogcímeket lehet felvenni, és hogyan szerkesztheti az alkalmazás-jegyzékfájlt a kéréshez.  
 
-További információkért lásd: [Workday felhasználói attribútumok listája testre szabható](https://docs.microsoft.com/azure/active-directory/active-directory-saas-workday-inbound-tutorial#customizing-the-list-of-workday-user-attributes)
+További információ: [opcionális jogcímek az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims).
+ 
+---
+ 
+### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>Az Azure AD támogatja a biztonságosabb OAuth-folyamatok PKCE
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
+ 
+Az Azure AD-dokumentumok frissítve lettek a PKCE támogatásához, ami lehetővé teszi a biztonságosabb kommunikációt a OAuth 2,0 engedélyezési kód engedélyezése során.  A S256 és az egyszerű szöveges code_challenges is támogatott a 1.0-s és a v 2.0-végpontokon. 
+
+További információ: [engedélyezési kód kérése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+ 
+---
+ 
+### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-get_workers-api"></a>A munkanapokon Get_Workers API-ban elérhető összes felhasználói attribútum értékének kiépítés támogatása
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítés  
+**Termék képesség:** harmadik féltől származó integráció
+ 
+A munkahelyről az Azure AD-be Active Directory való bejövő kiépítés nyilvános előzetes verziója mostantól lehetővé teszi a munkanapokon Get_Workers API-ban elérhető összes attribútumérték kinyerését és üzembe helyezését. Ez a szolgáltatás több száz további szabványos és egyéni attribútumot is támogat, amelyek a munkaidőn kívüli bejövő létesítési összekötő kezdeti verziójával együtt szállítottak.
+
+További információkért lásd: [a munkanap felhasználói attribútumai listájának testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-workday-inbound-tutorial#customizing-the-list-of-workday-user-attributes)
 
 ---
 
-### <a name="changing-group-membership-from-dynamic-to-static-and-vice-versa"></a>A dinamikus csoporttagság statikusra, és fordítva módosítása
+### <a name="changing-group-membership-from-dynamic-to-static-and-vice-versa"></a>A csoporttagság dinamikusról statikusra való módosítása és fordítva
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** eszközcsoport-kezelés  
-**A termék funkció:** együttműködés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Csoport kezelése  
+A **termék képességei:** Együttműködés
  
-Akkor lehet módosítani egy csoport tagságát kezeléséről. Ez akkor hasznos, ha meg szeretné tartani csoport neve és azonosítója a rendszeren, hogy a csoport bármely meglévő hivatkozások még érvényesek; Új csoport létrehozása miatt frissíteni kellene az ezeket a hivatkozásokat.
-Frissítettük az Azure AD felügyeleti központban az funkciót. Most már használó ügyfelek átalakíthatják a meglévő csoportokat a dinamikus tagsági hozzárendelt tagságot és fordítva. A meglévő PowerShell-parancsmagok is továbbra is elérhetők.
+Megváltoztathatja, hogy a tagság hogyan legyen kezelve egy csoportban. Ez akkor hasznos, ha meg szeretné tartani a csoport nevét és AZONOSÍTÓját a rendszeren, így a csoportra vonatkozó meglévő hivatkozások továbbra is érvényesek; új csoport létrehozásához szükség lesz a hivatkozások frissítésére.
+Frissítettük az Azure AD felügyeleti központot a funkció támogatásához. Az ügyfelek mostantól a meglévő csoportokat a dinamikus tagságból a hozzárendelt tagságra válthatják, és fordítva. A meglévő PowerShell-parancsmagok továbbra is elérhetők.
 
 További információ: a [Azure Active Directory csoportok dinamikus tagsági szabályai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
 
 ---
 
-### <a name="improved-sign-out-behavior-with-seamless-sso"></a>Közvetlen egyszeri bejelentkezés továbbfejlesztett kijelentkezési viselkedés
+### <a name="improved-sign-out-behavior-with-seamless-sso"></a>Továbbfejlesztett kijelentkezési viselkedés zökkenőmentes egyszeri bejelentkezéssel
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
  
-Korábban még akkor is, ha a felhasználók explicit módon az Azure AD által védett alkalmazáshoz kijelentkezik, ezek lenne automatikusan megtörténik vissza a közvetlen egyszeri bejelentkezés használatával, ha azok megpróbált hozzáférni egy Azure AD-alkalmazást újra a vállalati hálózaton belül, tartományhoz csatlakoztatott eszközök. Ezzel a kijelentkezési használata támogatott.  Ez lehetővé teszi, hogy a felhasználók kiválaszthatják az azonos vagy eltérő Azure AD-fiók jelentkezzen be újra, alatt automatikusan megtörténik a közvetlen egyszeri bejelentkezés használata helyett.
+Korábban, még akkor is, ha a felhasználók explicit módon kijelentkezettek az Azure AD által védett alkalmazásból, a rendszer automatikusan visszaküldi őket a zökkenőmentes SSO használatával, ha a Corpnet a tartományhoz csatlakoztatott eszközökről próbálnak újra hozzáférni egy Azure AD-alkalmazáshoz. Ezzel a módosítással a kijelentkezés támogatott.  Ez lehetővé teszi, hogy a felhasználók azonos vagy eltérő Azure AD-fiókot használjanak a szolgáltatásba való bejelentkezéshez ahelyett, hogy automatikusan bejelentkeznek a zökkenőmentes SSO használatával.
 
-További információkért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)
+További információ: [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)
  
 ---
  
-### <a name="application-proxy-connector-version-154020-released"></a>Application Proxy Connector ezen verziója, amely a 1.5.402.0
+### <a name="application-proxy-connector-version-154020-released"></a>Az alkalmazásproxy-összekötő verziója 1.5.402.0 kiadva
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Identitás-biztonsági & védelme
  
-A connector ezen verziója fokozatosan vezetjük be November keresztül. A connector új verziója az alábbi újításokat tartalmazza:
+Ez az összekötő-verzió fokozatosan zajlik novemberben. Az új összekötő verziója a következő módosításokat tartalmazza:
 
-- Az összekötő már tartományi szintű cookie-k helyett altartomány szintjének beállítása. Ez biztosítja, hogy egy egyenletesebb egyszeri Bejelentkezéses felhasználói élmény, és elkerülhető az redundáns hitelesítési kérések.
-- Darabolásos kódolás kérelmek támogatása
-- Továbbfejlesztett összekötő állapotfigyelés 
-- Számos hibajavítás és stabilitási fejlesztések
+- Az összekötő mostantól tartományi szintű cookie-kat állít be az altartomány szintjén. Ez zökkenőmentes SSO-élményt biztosít, és elkerüli a redundáns hitelesítési kéréseket.
+- A darabolásos kódolási kérelmek támogatása
+- Továbbfejlesztett összekötő állapotának figyelése 
+- Számos hibajavítás és stabilitási javítás
 
-További információkért lásd: [megismerheti az Azure AD-alkalmazásproxy összekötőit](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+További információ: az [Azure ad Application proxy-összekötők ismertetése](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
  
 ---
 
 ## <a name="february-2018"></a>2018. február
  
-### <a name="improved-navigation-for-managing-users-and-groups"></a>Továbbfejlesztett navigáció a felhasználók és csoportok kezelése
+### <a name="improved-navigation-for-managing-users-and-groups"></a>Továbbfejlesztett Navigálás felhasználók és csoportok kezeléséhez
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** Címtárkezelés  
-**A termék funkció:** könyvtár
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Címtár-kezelés  
+A **termék képességei:** Directory
 
-Egyszerűsítettük a navigációt a felhasználók és csoportok kezelése. Akkor most már elhagyhatja a címtár áttekintő közvetlenül, a lista az összes olyan felhasználó, a könnyebb elérhetőség érdekében a törölt felhasználók listájához. Is elérheti a címtár áttekintő a közvetlenül a csoportok, a könnyebb elérhetőség érdekében a csoport felügyeleti beállítások listája. És még a címtár áttekintő lapján kereshet egy felhasználó, csoport, a vállalati alkalmazás vagy alkalmazásregisztráció. 
-
----
-
-### <a name="availability-of-sign-ins-and-audit-reports-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>Bejelentkezések és naplózási jelentések a 21Vianet által működtetett Microsoft Azure-ban (Azure China 21Vianet)
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Azure Stack  
-**A termék funkció:** Monitorozás és jelentéskészítés
-
-Az Azure Active Directory naplózási jelentések mostantól elérhetők a 21Vianet (Azure China 21Vianet) példányok által működtetett Microsoft Azure-ban. A következő naplók kapcsolódnak foglalja magában:
-
-- **Bejelentkezési tevékenységeket tartalmazó naplók** – tartalmazza az összes bejelentkezés a bérlő naplóihoz.
-
-- **Önkiszolgáló jelszó-Auditnaplók** – az SSPR auditnaplókkal tartalmazza.
-
-- **Könyvtár-felügyeleti Audit naplók** -naplók mindegyikét tartalmazza a directory felügyelettel kapcsolatos naplózási például a felhasználói felügyeleti, felügyeleti és mások.
-
-Ezek a naplók is, hogy a környezet működésébe elemzéseket kaphat. A megadott adatokkal a következőket teheti:
-
-- Határozza meg, hogyan az alkalmazások és szolgáltatások vannak az egyes a felhasználók számára.
-
-- Végezzen hibaelhárítást a hibákat, amelyek megakadályozzák a felhasználók hozzáférése a munkájukat.
-
-Ezek a jelentések használatával kapcsolatos további információkért lásd: [Azure Active Directory jelentéskészítési](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal).
+A felhasználók és csoportok kezelésének navigációs felülete egyszerűbbé válik. Most már közvetlenül a címtár áttekintésében is megtekintheti az összes felhasználó listáját, és könnyebben hozzáférhet a törölt felhasználók listájához. A címtár áttekintését is megtekintheti közvetlenül az összes csoport listájára, és könnyebben hozzáférhet a csoport felügyeleti beállításaihoz. Továbbá a címtár – áttekintés oldalon megkeresheti a felhasználók, csoportok, vállalati alkalmazások vagy alkalmazások regisztrációját. 
 
 ---
 
-### <a name="use-report-reader-role-non-admin-role-to-view-azure-ad-activity-reports"></a>"A jelentés olvasó" szerepkör (nem rendszergazdai szerepkör) használata az Azure AD-Tevékenységjelentések megtekintése
+### <a name="availability-of-sign-ins-and-audit-reports-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>A bejelentkezések és a naplózási jelentések rendelkezésre állása Microsoft Azure által üzemeltetett 21Vianet (Azure China 21Vianet)
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** Monitorozás és jelentéskészítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Azure Stack  
+A **termék képességei:** & Jelentéskészítés figyelése
 
-Tartozó ügyfelek visszajelzés engedélyezése nem rendszergazda szerepkörök férnek hozzá az Azure Active Directory-naplókat, engedélyeztük a lehetőségét, hogy a felhasználók számára a "Jelentés olvasó" szerepkör a bejelentkezések hozzáférési és naplózási tevékenység belül az Azure Portalon, valamint a Graph API-k használatával. 
+Az Azure AD-tevékenységek naplózási jelentései mostantól a 21Vianet (Azure China 21Vianet)-példányok által üzemeltetett Microsoft Azureban érhetők el. A következő naplók tartoznak ide:
 
-További információ jelentések, olvassa el [Azure Active Directory jelentéskészítési](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
+- **Bejelentkezési tevékenységek naplói** – a bérlőhöz társított összes bejelentkezési naplót tartalmazza.
+
+- **Önkiszolgáló jelszó-naplózási naplók** – tartalmazza az összes SSPR-naplót.
+
+- **Címtár-felügyeleti naplók** – tartalmazza a címtár-felügyelettel kapcsolatos naplókat, például a felhasználók felügyeletét, az alkalmazások felügyeletét és egyebeket.
+
+A naplók segítségével betekintést nyerhet a környezetével. A megadott adatokkal a következőket teheti:
+
+- Határozza meg, hogy a felhasználók hogyan használják az alkalmazásokat és szolgáltatásokat.
+
+- Hibák elhárítása a felhasználók munkavégzésének megakadályozása érdekében.
+
+További információ a jelentések használatáról: [Azure Active Directory jelentéskészítés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal).
 
 ---
 
-### <a name="employeeid-claim-available-as-user-attribute-and-user-identifier"></a>Az EmployeeID jogcím felhasználói attribútumként és felhasználói azonosítóként
+### <a name="use-report-reader-role-non-admin-role-to-view-azure-ad-activity-reports"></a>Az Azure AD-tevékenységek jelentéseinek megtekintése a "jelentéskészítő olvasó" szerepkör (nem rendszergazdai szerepkör) használatával
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+Az ügyfelek visszajelzései részeként, hogy a nem rendszergazdai szerepkörök hozzáférjenek az Azure AD-tevékenység naplóihoz, engedélyezte, hogy a "jelentéskészítő" szerepkörbe tartozó felhasználók hozzáférjenek a bejelentkezésekhez és a naplózási tevékenységekhez a Azure Portalon belül, valamint a Graph API-k használatával. 
+
+További információ a jelentések használatáról: [Azure Active Directory jelentéskészítés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
+
+---
+
+### <a name="employeeid-claim-available-as-user-attribute-and-user-identifier"></a>Az Alkalmazottkód-jogcím felhasználói attribútumként és felhasználói azonosítóként érhető el
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+A **termék képességei:** SSO
  
-Konfigurálható **EmployeeID** a felhasználói azonosító és a felhasználói attribútum tagfelhasználó és B2B-vendégek a SAML-alapú bejelentkezés alkalmazásokat a vállalati alkalmazás felhasználói felületén.
+Az **AlkalmazottKód** -t felhasználói azonosítóként és felhasználói attribútumként is konfigurálhatja a felhasználók és a vállalatközi vendégek számára az SAML-alapú bejelentkezési alkalmazásokban a vállalati alkalmazás felhasználói felületén.
 
-További információkért lásd: [az Azure Active Directory vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
 
 ---
 
-### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>Helyettesítő karakterek használata az Azure AD-alkalmazásproxy egyszerűsített felügyelet
+### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>Egyszerűsített alkalmazás-kezelés helyettesítő karakterek használatával az Azure AD Application Proxy
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Felhasználói hitelesítés
  
-Alkalmazás központi telepítésének megkönnyíti, valamint csökkentheti a felügyelettel járó többletterhelést, mostantól támogatjuk a helyettesítő karaktereket használó alkalmazások közzétételének lehetősége. Helyettesítő karaktert tartalmazó alkalmazás közzététele, hajtsa végre a szabványos alkalmazás-közzétételi folyamat, de használja egy helyettesítő karaktert a belső és külső URL-címeket.
+Az alkalmazások központi telepítésének egyszerűbbé tétele és a felügyeleti terhelés csökkentése érdekében mostantól támogatjuk a helyettesítő karaktereket használó alkalmazások közzétételének lehetőségét. Helyettesítő karakteres alkalmazás közzétételéhez kövesse a normál alkalmazás-közzétételi folyamatot, de használjon helyettesítő karaktert a belső és külső URL-címekben.
 
-További információkért lásd: [helyettesítő alkalmazásokat az Azure Active Directory application proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)
+További információ: [helyettesítő alkalmazások a Azure Active Directory alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)
 
 ---
 
 ### <a name="new-cmdlets-to-support-configuration-of-application-proxy"></a>Az alkalmazásproxy konfigurálását támogató új parancsmagok
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** Platform
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Platform
 
-Az Azure ad PowerShell előzetes modul legújabb kiadása új parancsmagokat, amelyek lehetővé teszik az ügyfelek konfigurálása az Application Proxy alkalmazásai PowerShell-lel tartalmazza.
+A AzureAD PowerShell előzetes verziójának legújabb kiadása olyan új parancsmagokat tartalmaz, amelyek lehetővé teszik, hogy az ügyfelek konfiguráljanak alkalmazásproxy-alkalmazásokat a PowerShell használatával.
 
 Az új parancsmagok a következők: 
 
@@ -2115,8 +2385,8 @@ Az új parancsmagok a következők:
 - Get-AzureADApplicationProxyConnectorGroup
 - Get-AzureADApplicationProxyConnectorGroupMembers
 - Get-AzureADApplicationProxyConnectorMemberOf
-- New-AzureADApplicationProxyApplication
-- New-AzureADApplicationProxyConnectorGroup
+- Új – AzureADApplicationProxyApplication
+- Új – AzureADApplicationProxyConnectorGroup
 - Remove-AzureADApplicationProxyApplication
 - Remove-AzureADApplicationProxyApplicationConnectorGroup
 - Remove-AzureADApplicationProxyConnectorGroup
@@ -2131,141 +2401,141 @@ Az új parancsmagok a következők:
  
 ### <a name="new-cmdlets-to-support-configuration-of-groups"></a>A csoportok konfigurálását támogató új parancsmagok
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** alkalmazásproxy  
-**A termék funkció:** Platform
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazásproxy  
+A **termék képességei:** Platform
 
-Az Azure ad PowerShell-modul legújabb kiadása a csoportok kezelése az Azure AD-parancsmagokat tartalmaz. Ezek a parancsmagok korábban az AzureADPreview modulban számára elérhető, és most megjelennek az Azure ad-modul
+A AzureAD PowerShell-modul legújabb kiadása parancsmagokat tartalmaz a csoportok Azure AD-ben való kezeléséhez. Ezek a parancsmagok korábban a AzureADPreview modulban voltak elérhetők, és most már hozzá lettek adva a AzureAD modulhoz
 
-A csoport parancsmagok, amelyek általánosan elérhető kiadás most a következők: 
+A jelenleg általánosan elérhetővé tett csoport-parancsmagok a következők: 
 
 - Get-AzureADMSGroup
-- New-AzureADMSGroup
+- Új – AzureADMSGroup
 - Remove-AzureADMSGroup
 - Set-AzureADMSGroup
 - Get-AzureADMSGroupLifecyclePolicy
-- New-AzureADMSGroupLifecyclePolicy
+- Új – AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Reset-AzureADMSLifeCycleGroup   
+- Alaphelyzetbe állítás – AzureADMSLifeCycleGroup   
 - Get-AzureADMSLifecyclePolicyGroup
 
 ---
  
-### <a name="a-new-release-of-azure-ad-connect-is-available"></a>Az Azure AD Connect új kiadása érhető el
+### <a name="a-new-release-of-azure-ad-connect-is-available"></a>Azure AD Connect új kiadása érhető el
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** AD Sync szolgáltatásról  
-**A termék funkció:** Platform
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** AD-szinkronizáló  
+A **termék képességei:** Platform
  
-Az Azure AD Connect az az előnyben részesített eszköz szinkronizálhatja az Azure AD között, és a helyszíni adatforráshoz, beleértve a Windows Server Active Directory és az LDAP adatait.
+Azure AD Connect az Azure AD és a helyszíni adatforrások közötti adatszinkronizálás előnyben részesített eszköze, beleértve a Windows Server Active Directoryt és az LDAP-t.
 
 >[!Important]
->A build bemutatja a séma és a szinkronizálási szabály módosításokat. Az Azure AD Connect szinkronizálási szolgáltatás elindít egy teljes importálást és teljes szinkronizálást lépéseket frissítés után. Ezt a viselkedést módosításának módjával kapcsolatos információkért lásd: [késlelteti a frissítés után teljes szinkronizálást hogyan](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#how-to-defer-full-synchronization-after-upgrade).
+>Ez a Build bevezeti a séma-és szinkronizálási szabályok változásait. A Azure AD Connect synchronization szolgáltatás a frissítés után teljes importálási és teljes szinkronizálási lépéseket indít el. További információ a viselkedés módosításáról: a [teljes szinkronizálás késleltetése a frissítés után](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#how-to-defer-full-synchronization-after-upgrade).
 
-Ebben a kiadásban a következő frissítéseket és a változások rendelkezik:
+Ez a kiadás a következő frissítésekkel és módosításokkal rendelkezik:
 
-**Rögzített kapcsolatos problémák**
+**Kijavított problémák**
 
-- Javítsa ki a időzítési háttérfeladatok laphoz Partíciószűrés a következő lapra történő váltáskor.
+- A következő lapra váltáskor javítsa ki az időzítési időszakot a particionálási feladatok oldalának háttérben végzett feladatainál.
 
-- Kijavítva a hiba, amely engedély nélküli hozzáférési kísérlet során a configdb elemre egyéni művelet okozza.
+- Kijavítva egy olyan hibát, amely a configdb elemre egyéni művelet során hozzáférési szabálysértést okozott.
 
-- Kijavítva a hiba, helyreállítás az sql-kapcsolat időtúllépése.
+- Kijavított egy hibát az SQL-kapcsolat időtúllépése miatti helyreállításhoz.
 
-- Kijavítva a hiba, ahol a SAN helyettesítő karaktereket is tartalmazó tanúsítványok előfeltétel-ellenőrzés sikertelen.
+- Kijavítva a hiba, ha a SAN-helyettesítő karakterekkel rendelkező tanúsítványok nem rendelkeznek előre-REQ ellenőrzéssel.
 
-- Kijavítva a hiba, okozó miiserver.exe összeomlási AAD connector exportálás során.
+- Kijavítva egy hiba, amely a MIIServer. exe összeomlását okozza a HRE-összekötő exportálásakor.
 
-- Kijavítva a hiba, ahol a egy helytelen jelszómegadási kísérlet DC bejelentkezve futtatását okozta az AAD connect varázsló konfigurációjának módosítása
+- Kijavítva a hiba, ha a Futtatás során helytelen jelszó történt a TARTOMÁNYVEZÉRLŐn, amikor a HRE-csatlakozás varázsló a konfiguráció módosítását okozta
 
-**Új funkciók és fejlesztések**
+**Új funkciók és Újdonságok**
  
-- Alkalmazáshasználati - rendszergazdák válthat Ez az osztály az adatok be-és kikapcsolása.
+- Alkalmazás telemetria – a rendszergazdák be-és kikapcsolhatják ezt az adatosztályt.
 
-- Az Azure AD Health-data - rendszergazdák fel kell keresnie azok állapotfigyelő beállításait szabályozhatja a health portálon. Után a szolgáltatás házirend módosítva lett, az ügynökök olvassa el, és azt kényszerítése.
+- Azure AD Health-adatkezelés – a rendszergazdáknak meg kell adniuk az állapotfigyelő portált az állapotuk szabályozása érdekében. A szolgáltatási házirend megváltozása után az ügynökök beolvassák és érvényesítik azt.
 
-- A jelszóvisszaíró konfigurációs eszközműveletek és se inicializace stránky folyamatjelző hozzáadva.
+- Az eszköz visszaírási-konfigurációs műveletei és egy folyamatjelző sáv lett hozzáadva az oldal inicializálásához.
 
-- A HTML-jelentést és a egy ZIP-szöveg teljes adatgyűjtés általános diagnosztikai továbbfejlesztett / HTML-jelentést.
+- Továbbfejlesztett általános diagnosztika HTML-jelentéssel és teljes adatgyűjtéssel egy ZIP-text/HTML-jelentésben.
 
-- Az automatikus megbízhatósága frissítése, és hozzá lehet meghatározni a kiszolgáló állapotának biztosítása érdekében további telemetriai adatokat.
+- Az automatikus frissítés jobb megbízhatósága és további telemetria hozzáadása a kiszolgáló állapotának megállapításához.
 
-- Kiemelt jogosultságú fiókok AD-összekötő fiókhoz elérhető engedélyek korlátozása. Az új, a varázsló korlátozza az engedélyeket, a kiemelt jogosultságú fiókok tartozik az MSOL-fiók létrehozását követően a MSOL-fiókhoz. A módosítások befolyásolják az Expressz telepítés és a fiók automatikus létrehozása az egyéni telepítés.
+- Az AD Connector-fiókra vonatkozó jogosultsági szintű fiókok számára elérhető engedélyek korlátozása. Új telepítések esetén a varázsló a MSOL-fiók létrehozása után korlátozza a Kiemelt fiókok által a MSOL fiókra vonatkozó engedélyeket. A módosítások az expressz telepítéseket és az egyéni telepítéseket érintik az automatikus létrehozási fiókkal.
 
-- A telepítő, hogy ne követelje meg az aad Connect tiszta telepítését rendszergazdai jogosultság módosítani.
+- Módosította a telepítőt, hogy a AADConnect tiszta telepítésekor ne kelljen SA jogosultsága.
 
-- Egy adott objektumra szinkronizálás hibáinak elhárítása új segédprogramot. Jelenleg a segédprogram ellenőrzi az alábbiakat:
+- Új segédprogram egy adott objektum szinkronizálási problémáinak elhárításához. A segédprogram jelenleg a következő dolgokat ellenőrzi:
 
-    - Szinkronizált felhasználói objektum és a felhasználói fiók az Azure AD-bérlő a UserPrincipalName nem egyezik.
+    - UserPrincipalName eltérés a szinkronizált felhasználói objektum és az Azure AD-bérlő felhasználói fiókja között.
   
-    - Ha az objektum ki lett szűrve a tartomány szűrés miatt
+    - Ha a rendszer tartományi szűrés miatt szűri az objektumot a szinkronizálásból
   
-    - Ha az objektum ki lett szűrve a szervezeti egység (OU) szűrés miatt
+    - Ha a rendszer a szervezeti egység (OU) szűrése miatt szűri az objektumot a szinkronizálásból
 
-- Új segédprogram az egy adott felhasználói fiók az a helyszíni Active Directoryban tárolt aktuális Jelszókivonat szinkronizálása. A segédprogram nem szükséges a jelszó módosítása. 
+- Új segédprogram a helyszíni Active Directoryban tárolt aktuális jelszó-kivonat szinkronizálásához egy adott felhasználói fiókhoz. A segédprogram nem igényli a jelszó módosítását. 
 
 ---
  
 ### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Az Azure AD alkalmazás-alapú feltételes hozzáféréssel együtt használható Intune App Protection szabályzatokat támogató alkalmazások
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás-biztonsági & védelme
 
-További alkalmazásokat is felvettünk, amelyek támogatják az alkalmazás-alapú feltételes hozzáférést. Most már hozzáférhet az Office 365-höz és más Azure AD-hez csatlakozó felhőalkalmazások ezeket a jóváhagyott ügyfélalkalmazások használatával.
+További alkalmazásokat is felvettünk, amelyek támogatják az alkalmazás-alapú feltételes hozzáférést. Mostantól hozzáférhet az Office 365-hez és más Azure AD-hez kapcsolódó felhőalapú alkalmazásokhoz is a jóváhagyott ügyfélalkalmazások használatával.
 
-A következő alkalmazások szerint február végétől lesznek hozzáadva:
+Február végére a következő alkalmazások lesznek hozzáadva:
 
 - Microsoft Power BI
 
-- A Microsoft indítója
+- Microsoft Launcher
 
-- A Microsoft számlázás
+- Microsoft-számlázás
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
-- [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Jóváhagyott ügyfélalkalmazás-követelmény](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
 ### <a name="terms-of-use-update-to-mobile-experience"></a>A Mobile Experience Használati feltételek frissítése 
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának
 
-Ha megjelenik a használati feltételek, akkor a problémák megtekintése lehetőségre kattinthat **? Kattintson ide**. A hivatkozásra kattintva megnyílik a használati feltételeket, natív módon az eszközön. A betűméret a dokumentum vagy eszköz a képernyő méretétől függetlenül nagyításra, és igény szerint, olvassa el a dokumentumot. 
+Ha megjelenik a használati feltételek, akkor a problémák megtekintése lehetőségre kattinthat **? Kattintson ide**. Erre a hivatkozásra kattintva a használati feltételek natív módon megnyitható az eszközön. A dokumentumban lévő betűmérettől vagy az eszköz képernyőjének méretétől függetlenül szükség szerint nagyíthatja és elolvashatja a dokumentumot. 
 
 ---
  
 ## <a name="january-2018"></a>2018. január
  
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény 
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Az Azure AD App Galleryben elérhető új összevont alkalmazások 
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
 
-A 2018 január összevonási támogatással a következő új alkalmazások az alkalmazáskatalógusban lettek hozzáadva:
+Január 2018-án a következő új alkalmazások lettek hozzáadva az összevonási támogatással az alkalmazás-gyűjteményben:
 
-[IBM OpenPages](https://go.microsoft.com/fwlink/?linkid=864698), [OneTrust adatvédelmi felügyeleti szoftver](https://go.microsoft.com/fwlink/?linkid=861660), [Dealpath](https://go.microsoft.com/fwlink/?linkid=863526), [IriusRisk összevont könyvtárat, és [hűség NetBenefits](https://go.microsoft.com/fwlink/?linkid=864701).
+[IBM OpenPages](https://go.microsoft.com/fwlink/?linkid=864698), [OneTrust adatvédelem-kezelő szoftver](https://go.microsoft.com/fwlink/?linkid=861660), [Dealpath](https://go.microsoft.com/fwlink/?linkid=863526), [IriusRisk összevont könyvtár és [hűség NetBenefits](https://go.microsoft.com/fwlink/?linkid=864701).
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial).
 
-Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing). 
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakört. 
 
 ---
  
-### <a name="sign-in-with-additional-risk-detected"></a>Jelentkezzen be a további észlelt kockázattal érintett
+### <a name="sign-in-with-additional-risk-detected"></a>Bejelentkezés további észlelt kockázattal
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Identity Protection  
-**A termék funkció:** Identitásbiztonság és -védelem
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás-biztonsági & védelme
 
-Az észlelt kockázatok észlelésével kapcsolatos betekintés az Azure AD-előfizetéshez van kötve. Az Azure AD Premium P2 kiadás az a legrészletesebb információkat minden mögöttes észlelés beolvasása.
+Az észlelt kockázatok észlelésével kapcsolatos betekintés az Azure AD-előfizetéshez van kötve. A prémium szintű Azure AD P2 kiadással a legrészletesebb információkat kapja meg az összes mögöttes észlelésről.
 
 A prémium szintű Azure AD P1 kiadással a licenc által nem érintett észlelések nem jelennek meg, mivel a kockázatkezelési szolgáltatás a további kockázatok észlelésével jelentkezik.
 
@@ -2273,75 +2543,75 @@ További információ: [Azure Active Directory kockázati észlelések](https://
  
 ---
 
-### <a name="hide-office-365-applications-from-end-users-access-panels"></a>Office 365-alkalmazásokhoz a felhasználó hozzáférési paneljein elrejtése
+### <a name="hide-office-365-applications-from-end-users-access-panels"></a>Office 365-alkalmazások elrejtése a végfelhasználó hozzáférési panelei között
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** saját alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** SSO
 
-Most már jobban kezelhető hogyan Office 365-alkalmazások jelennek meg az új felhasználói beállítás segítségével a felhasználók hozzáférési paneljein. Ez a beállítás hasznos lehet a felhasználó hozzáférési paneljein alkalmazások számának csökkentése Ha inkább csak Office-alkalmazások jelennek meg az Office portálon. A beállítás a található a **felhasználói beállítások** és címkével ellátott, **csak a tekintse meg az Office 365 portálon az Office 365-alkalmazások**.
+Mostantól hatékonyabban kezelheti, hogy az Office 365-alkalmazások hogyan jelenjenek meg a felhasználó hozzáférési panelén egy új felhasználói beállítással. Ez a beállítás hasznos lehet a felhasználók hozzáférési panelén lévő alkalmazások számának csökkentésében, ha csak az Office-alkalmazásokat szeretné megjeleníteni az Office-portálon. A beállítás a **felhasználói beállítások** területen található, és a **felhasználók csak az Office 365-alkalmazásokat látják az Office 365-portálon**.
 
-További információkért lásd: [alkalmazás elrejtése a felhasználói élmény az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+További információ: [alkalmazás elrejtése a felhasználói felületről Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
 ---
  
-### <a name="seamless-sign-into-apps-enabled-for-password-sso-directly-from-apps-url"></a>Zökkenőmentes bejelentkezési engedélyezve a jelszó SSO közvetlenül az alkalmazás URL-alkalmazásokba 
+### <a name="seamless-sign-into-apps-enabled-for-password-sso-directly-from-apps-url"></a>Az alkalmazás URL-címéről való zökkenőmentes bejelentkezés a jelszó-SSO-hoz 
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** saját alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** SSO
 
-A saját alkalmazások webböngésző-bővítmény már elérhető kényelmes eszköz használatával, amely áttekintést nyújt a saját alkalmazások egyszeri bejelentkezés lehetőségét a parancsikont a böngészőben. Telepítés után a felhasználó a böngészőben, amely az alkalmazások gyors hozzáférést biztosít számukra egy gofri ikon látható. Felhasználók mostantól igénybe veheti:
+A saját alkalmazások böngésző bővítménye mostantól egy kényelmes eszközön keresztül érhető el, amely a saját alkalmazások egyszeri bejelentkezés lehetőségét kínálja a böngészőben. A telepítés után a felhasználó egy Waffle ikont fog látni a böngészőben, amely gyors hozzáférést biztosít az alkalmazásokhoz. A felhasználók mostantól kihasználhatják a következőket:
 
-- Lehetővé teszi a közvetlenül bejelentkezni jelszó SSO-alapú alkalmazások az alkalmazás bejelentkezési lapján
-- Indítsa el minden olyan alkalmazást kész keresési funkciója
-- A bővítmény a legutóbb használt alkalmazások parancsikonjai
+- A jelszó-SSO-alapú alkalmazásokhoz való közvetlen bejelentkezés lehetősége az alkalmazás bejelentkezési oldaláról
+- Bármely alkalmazás elindítása a gyors keresési funkció használatával
+- A legutóbb használt alkalmazásokra mutató parancsikonok a bővítményből
 - A bővítmény a Microsoft Edge, a Chrome és a Firefox számára érhető el.
  
-További információkért lásd: [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+További információt a [saját alkalmazások biztonságos bejelentkezési bővítménnyel](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)foglalkozó témakörben talál.
 
 ---
 
-### <a name="azure-ad-administration-experience-in-azure-classic-portal-has-been-retired"></a>Az Azure AD felügyeleti élmény a klasszikus Azure portálon kivonása
+### <a name="azure-ad-administration-experience-in-azure-classic-portal-has-been-retired"></a>A klasszikus Azure portál Azure AD felügyeleti felülete megszűnt
 
-**Típus:** elavult   
-**Szolgáltatási kategóriához:** Azure ad-ben  
-**A termék funkció:** könyvtár
+**Írja be a következőt:** Elavult   
+**Szolgáltatás kategóriája:** Azure AD  
+A **termék képességei:** Directory
 
-8 2018 január, az Azure AD felügyeleti-től a klasszikus Azure portál felület kivonásra került. A klasszikus Azure portál maga funkciókészletét együtt történt. A későbbiekben, használjon a [Azure AD felügyeleti központban](https://aad.portal.azure.com) valamennyi a portal-alapú felügyeleti az Azure ad-ben.
+2018. január 8-án a klasszikus Azure portálon elérhető Azure AD felügyeleti élmény megszűnt. Ez a klasszikus Azure-portál kivonulásával együtt zajlott. A későbbiekben az Azure ad [felügyeleti központot](https://aad.portal.azure.com) kell használnia az Azure ad portálon alapuló felügyeletéhez.
  
 ---
 
-### <a name="the-phonefactor-web-portal-has-been-retired"></a>A PhoneFactor-webportál kivonása
+### <a name="the-phonefactor-web-portal-has-been-retired"></a>A PhoneFactor webportál ki lett vonva.
 
-**Típus:** elavult  
-**Szolgáltatási kategóriához:** Azure ad-ben  
-**A termék funkció:** könyvtár
+**Írja be a következőt:** Elavult  
+**Szolgáltatás kategóriája:** Azure AD  
+A **termék képességei:** Directory
  
-2018. január 8. a PhoneFactor-webportál visszavontuk. Az MFA-kiszolgáló felügyeletéhez használt ezen a portálon, de ezekhez a függvényekhez rendelkezik át lett helyezve az Azure Portalon a portal.azure.com webhelyen. 
+2018. január 8-án a PhoneFactor webportál kivonult. Ezt a portált használták az MFA-kiszolgáló felügyeletéhez, de ezek a függvények át lettek helyezve a Azure Portalba a következő címen: portal.azure.com. 
 
-Az MFA konfigurálása a következő helyen található: **Azure Active Directory \> MFA-kiszolgáló**
+Az MFA-konfiguráció a következő helyen található: **Azure Active Directory \> MFA-kiszolgáló**
  
 ---
  
-### <a name="deprecate-azure-ad-reports"></a>Az Azure AD-jelentések kivezetjük
+### <a name="deprecate-azure-ad-reports"></a>Azure AD-jelentések elavultak
 
-**Típus:** elavult  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** identitás-életciklus-felügyelet  
+**Írja be a következőt:** Elavult  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** Identitás-életciklus kezelése  
 
 
-Az általánosan elérhető az új Azure Active Directory felügyeleti konzol és az új API-k már elérhető a tevékenység és a biztonsági jelentések, a jelentéskészítő API-k az a "/ jelentések" végpont kivonásra került, 2017. December 31-ig a végén.
+Az új Azure Active Directory felügyeleti konzol és az új API-k általánosan elérhetővé válnak a tevékenység-és biztonsági jelentésekhez, a "/reports" végpont alatt a jelentés API-jai a 2017-as végén megszűntek.
 
 **Mi érhető el?**
 
-Az új felügyeleti konzol az átmenet részeként elérhetővé vált 2 új API-k az Azure AD-Tevékenységnaplók beolvasása. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelések API-n keresztül érhetők el Microsoft Graphban.
+Az új felügyeleti konzolra való áttérés részeként 2 új API-t tettünk elérhetővé az Azure AD-tevékenységek naplófájljainak beolvasásához. Az új API-k szélesebb körű szűrési és rendezési funkciókat biztosítanak, továbbá gazdagabb naplózási és bejelentkezési tevékenységeket is biztosítanak. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelések API-n keresztül érhetők el Microsoft Graphban.
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
-- [Az Azure Active Directory reporting API használatának első lépései](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
+- [Ismerkedés a Azure Active Directory Reporting API-val](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
-- [Az Azure Active Directory Identity Protection és a Microsoft Graph használatának első lépései](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
+- [A Azure Active Directory Identity Protection és a Microsoft Graph első lépései](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 
 ---
 
@@ -2349,163 +2619,163 @@ További információkért lásd:
 
 ### <a name="terms-of-use-in-the-access-panel"></a>Használati feltételek a hozzáférési panelen
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának
  
-Most nyissa meg a hozzáférési panelen és megtekintheti a korábban elfogadott használati feltételeket.
+Ezután megnyithatja a hozzáférési panelt, és megtekintheti a korábban elfogadott használati feltételeket.
 
 Kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [MyApps portálról](https://myapps.microsoft.com), és jelentkezzen be.
+1. Lépjen a [MyApps portálra](https://myapps.microsoft.com), és jelentkezzen be.
 
-2. A jobb felső sarokban, válassza ki a nevét, és válassza **profil** a listából. 
+2. A jobb felső sarokban válassza ki a nevét, majd válassza a **profil** lehetőséget a listából. 
 
-3. Az a **profil**válassza **használati feltételek áttekintése**. 
+3. A **profilban**válassza a **használati feltételek áttekintése**elemet. 
 
-4. Most már megtekintheti a használati feltételeket a elfogadva. 
+4. Most már áttekintheti az elfogadott használati feltételeket. 
 
-További információkért lásd: a [az Azure AD használati feltételek funkció (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+További információkért lásd az [Azure ad használati feltételeinek (előzetes verzió) funkcióját](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
  
 ---
  
-### <a name="new-azure-ad-sign-in-experience"></a>Új Azure AD bejelentkezési felület
+### <a name="new-azure-ad-sign-in-experience"></a>Az Azure AD új bejelentkezési felülete
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Azure ad-ben  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Azure AD  
+A **termék képességei:** Felhasználói hitelesítés
  
-Az Azure AD és a Microsoft identitás-fiókrendszer előkészíthetik a korábbinál sokoldalúbban úgy, hogy egy egységes megjelenést és működést. Emellett az Azure AD bejelentkezési oldal gyűjti a felhasználónév először egy második képernyőn a hitelesítő adatok követ.
+Az Azure AD és a Microsoft-fiók Identity rendszer felülete úgy lett újratervezve, hogy egységes megjelenést és működést biztosítson. Emellett az Azure AD bejelentkezési oldala először a felhasználónevet gyűjti, amelyet a hitelesítő adatok követnek egy második képernyőn.
 
-További információkért lásd: [az új Azure AD bejelentkezési felület jelenleg nyilvános előzetes verzióban elérhető](https://cloudblogs.microsoft.com/enterprisemobility/2017/08/02/the-new-azure-ad-signin-experience-is-now-in-public-preview/).
- 
----
- 
-### <a name="fewer-sign-in-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-sign-in"></a>Kevesebb bejelentkezési kérések: egy új "bejelentkezve szeretnék maradni" tapasztalattal az Azure AD-be
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Azure ad-ben  
-**A termék funkció:** felhasználói hitelesítés
- 
-A **bejelentkezve szeretnék maradni** váltotta fel egy új parancssort, hogy megjelenik-e sikeres hitelesítést követően az Azure AD bejelentkezési lapján jelölje be jelölőnégyzetet. 
-
-Ha válaszol **Igen** , ez a kérdés a szolgáltatása, amely egy állandó frissítési jogkivonatot. Ez a viselkedés megegyezik a kiválasztott mikor a **bejelentkezve szeretnék maradni** jelölőnégyzetet a régi felületet. Összevont bérlők esetén ez a kérdés mutatja be, miután sikeresen hitelesíteni az összevont szolgáltatással.
-
-További információkért lásd: [kevesebb bejelentkezési kérések: az Azure ad az új "bejelentkezve szeretnék maradni" funkció jelenleg előzetes verzióban](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/). 
-
----
-
-### <a name="add-configuration-to-require-the-terms-of-use-to-be-expanded-prior-to-accepting"></a>A használati feltételek elfogadása előtt ki kell bővíteni kell a konfiguráció hozzáadása
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség
- 
-Lehetőség a rendszergazdák számára szükséges a felhasználókat a feltételeket, mielőtt elfogadja a használati feltételek megtekintése.
-
-Ezek közül bármelyikre **a** vagy **ki** a felhasználóktól a használati feltételeket, bontsa ki. A **a** beállítás megköveteli a felhasználóktól a használati feltételeket, mielőtt elfogadhatnák őket megtekintéséhez.
-
-További információkért lásd: a [az Azure AD használati feltételek funkció (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
- 
----
-
-### <a name="scoped-activation-for-eligible-role-assignments"></a>Jogosult szerepkör-hozzárendelések hatókörrel rendelkező aktiválás
-
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
- 
-Használhatja a hatókörön belüli aktiválási kevesebb, mint az eredeti hozzárendelés alapértelmezett autonómia jogosult Azure-erőforrás szerepkör-hozzárendelések aktiválása. Ilyen például, ha a kapott az előfizetés tulajdonosaként a bérlőben. Hatókörön belüli-aktiválási aktiválhatja a tulajdonosi szerepkör legfeljebb öt erőforrások (például az erőforráscsoportok és virtuális gépek) előfizetésen belül található. Az aktiválás felmerülő előfordulhat, hogy az esélye, kritikus fontosságú Azure-erőforrások nemkívánatos módosítások végrehajtása.
-
-További információkért lásd: [Mi az Azure AD Privileged Identity Management?](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure).
+További információ: [Az Azure ad új bejelentkezési felülete már nyilvános előzetes](https://cloudblogs.microsoft.com/enterprisemobility/2017/08/02/the-new-azure-ad-signin-experience-is-now-in-public-preview/)verzióban érhető el.
  
 ---
  
-### <a name="new-federated-apps-in-the-azure-ad-app-gallery"></a>Az Azure AD-alkalmazásgyűjtemény új összevont alkalmazások
+### <a name="fewer-sign-in-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-sign-in"></a>Kevesebb bejelentkezési kérés: az Azure AD-bejelentkezéshez új "bejelentkezett"
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** vállalati alkalmazások  
-**A termék funkció:** 3. fél integrációja
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Azure AD  
+A **termék képességei:** Felhasználói hitelesítés
+ 
+Az Azure AD bejelentkezési oldalának **bejelentkezett állapotban** jelölőnégyzete egy új, a sikeres hitelesítés után megjelenő üzenettel lett lecserélve. 
 
-2017 December vezettünk be, ezeket az új összevonási alkalmazásokat az app-galériában támogatja:
+Ha **igennel** válaszol erre a kérésre, a szolgáltatás állandó frissítési jogkivonatot biztosít. Ez a viselkedés ugyanaz, mint amikor bejelölte a a **bejelentkezve** szeretnék maradni jelölőnégyzetet a régi felületén. Összevont bérlők esetében ez a kérdés az összevont szolgáltatás sikeres hitelesítését követően jelenik meg.
 
-[Accredible](https://go.microsoft.com/fwlink/?linkid=863523), Adobe Experience Manager [EFI digitális kirakat](https://go.microsoft.com/fwlink/?linkid=861685), [Communifire](https://go.microsoft.com/fwlink/?linkid=861676) CybSafe, [FactSet](https://go.microsoft.com/fwlink/?linkid=863525), [RENDSZERKÉP működését](https://go.microsoft.com/fwlink/?linkid=863517), [MOBI](https://go.microsoft.com/fwlink/?linkid=863521), [MobileIron az Azure AD-integrációs](https://go.microsoft.com/fwlink/?linkid=858027), [Reflektive](https://go.microsoft.com/fwlink/?linkid=863518), [bambusz feloldási GmbH által a SAML SSO](https://go.microsoft.com/fwlink/?linkid=863520), [SAML SSO a Bitbucket felbontása GmbH](https://go.microsoft.com/fwlink/?linkid=863519), [Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522), WebHR, Zenegy Azure AD-integráció.
+További információ [: kevesebb bejelentkezési kérés: az Azure ad-ben az új "bejelentkezve tartom" élmény előzetes](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/)verzióban érhető el. 
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
+---
 
-Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing). 
+### <a name="add-configuration-to-require-the-terms-of-use-to-be-expanded-prior-to-accepting"></a>Konfiguráció hozzáadása a használati feltételek kibontásának megköveteléséhez az elfogadás előtt
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának
+ 
+A rendszergazdák számára a feltételek elfogadását megelőzően a felhasználóknak a használati feltételek kibontására van szükségük.
+
+Válassza ki **a** be vagy **ki** lehetőséget, hogy a felhasználók kiterjesszék a használati feltételeket. A **on** beállítás megadásához a felhasználóknak meg kell tekinteniük a használati feltételeket az elfogadásuk előtt.
+
+További információkért lásd az [Azure ad használati feltételeinek (előzetes verzió) funkcióját](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
  
 ---
 
-### <a name="approval-workflows-for-azure-ad-directory-roles"></a>Az Azure AD-címtárbeli szerepkörökhöz tartozó jóváhagyási munkafolyamatokat
+### <a name="scoped-activation-for-eligible-role-assignments"></a>Jogosult szerepkör-hozzárendelések hatókörön belüli aktiválása
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
  
-Az Azure AD-címtárbeli szerepkörökhöz tartozó jóváhagyási munkafolyamat szolgáltatás általánosan elérhető.
+A hatókörön belüli aktiválással aktiválhatja a jogosult Azure-erőforrás-szerepkör-hozzárendeléseket, és az eredeti hozzárendelés alapértelmezett értékeinél kevesebb autonómiát is használhat. Ilyen például, ha a bérlőben egy előfizetés tulajdonosaként van hozzárendelve. A hatókörön belüli aktiválással a tulajdonosi szerepkört akár öt, az előfizetésben található erőforráshoz (például erőforráscsoportok és virtuális gépek) is aktiválhatja. Az aktiválás hatóköre csökkentheti a kritikus Azure-erőforrások nemkívánatos módosításainak lehetőségét.
 
-Jóváhagyási munkafolyamat, a rendszerjogosultságú szerepkör rendszergazdák megkövetelhetik, szerepkör-aktiválás kéréséhez jogosult-szerepkör tagjai az emelt szintű szerepkör használatához. Több felhasználó és csoport is lehet delegált jóváhagyó felelőssége. Jogosult szerepkör tagjai értesítéseket kaphat, amikor a jóváhagyás befejeződött, és azok szerepét aktív.
+További információ: [Mi az Azure ad Privileged Identity Management?](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)
+ 
+---
+ 
+### <a name="new-federated-apps-in-the-azure-ad-app-gallery"></a>Új összevont alkalmazások az Azure AD App Galleryben
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+
+2017 decemberében a következő új alkalmazásokat adtuk hozzá az alkalmazás-galériában az összevonási támogatással:
+
+[Accredible](https://go.microsoft.com/fwlink/?linkid=863523), Adobe Experience Manager, [EFI digitális kirakat](https://go.microsoft.com/fwlink/?linkid=861685), [Communifire](https://go.microsoft.com/fwlink/?linkid=861676) CybSafe [, FactSet](https://go.microsoft.com/fwlink/?linkid=863525), [kép működik](https://go.microsoft.com/fwlink/?linkid=863517), [mobi](https://go.microsoft.com/fwlink/?linkid=863521), [MobileIron Azure ad-integráció](https://go.microsoft.com/fwlink/?linkid=858027), [Reflektive](https://go.microsoft.com/fwlink/?linkid=863518), [SAML SSO a Bamboo by Solution GmbH](https://go.microsoft.com/fwlink/?linkid=863520), [SAML SSO for bitbucket by Solution GmbH](https://go.microsoft.com/fwlink/?linkid=863519), [Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522), WebHR, Zenegy Azure ad-integráció.
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial).
+
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)című témakört. 
+ 
+---
+
+### <a name="approval-workflows-for-azure-ad-directory-roles"></a>Azure AD-címtárbeli szerepkörök jóváhagyási munkafolyamatai
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
+ 
+Az Azure AD-címtár szerepköreinek jóváhagyási munkafolyamata általánosan elérhető.
+
+A jóváhagyási munkafolyamatok, a Kiemelt szerepkörű rendszergazdák megkövetelhetik a jogosult szerepkör-tagokat a szerepkör-aktiválás kérelmezéséhez, mielőtt használhatják a Kiemelt szerepkört. Több felhasználó és csoport is delegálható jóváhagyási felelősséggel. A jogosult szerepkör tagjai értesítést kapnak, ha a jóváhagyás elkészült, és a szerepkörük aktív.
 
 ---
  
-### <a name="pass-through-authentication-skype-for-business-support"></a>Az átmenő hitelesítés: a Skype for Business-támogatás
+### <a name="pass-through-authentication-skype-for-business-support"></a>Átmenő hitelesítés: Skype vállalati verzió támogatása
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
 
-Átmenő hitelesítés most támogatja a felhasználói bejelentkezéseket a Skype vállalati verzióhoz való ügyfél, amely támogatja a modern hitelesítést, amely tartalmazza az online és a hibrid topológiák. 
+Az átmenő hitelesítés mostantól támogatja a felhasználói bejelentkezéseket a Skype vállalati ügyfélalkalmazások számára, amelyek támogatják a modern hitelesítést, beleértve az online és a hibrid topológiákat is. 
 
-További információkért lásd: [Skype for Business topológiákat támogatja a modern hitelesítést használó](https://technet.microsoft.com/library/mt803262.aspx).
+További információ: [a Skype for Business-topológiák, amelyek modern hitelesítéssel támogatottak](https://technet.microsoft.com/library/mt803262.aspx).
  
 ---
 
-### <a name="updates-to-azure-ad-privileged-identity-management-for-azure-rbac-preview"></a>Az Azure RBAC (előzetes verzió) az Azure AD Privileged Identity Management frissítések
+### <a name="updates-to-azure-ad-privileged-identity-management-for-azure-rbac-preview"></a>Az Azure RBAC Azure AD Privileged Identity Management frissítései (előzetes verzió)
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management
  
-Az Azure AD Privileged Identity Management (PIM) az Azure szerepköralapú hozzáférés-vezérlés (RBAC) a nyilvános előzetes verzióban frissítéssel az alábbi műveleteket hajthatja végre:
+Az Azure szerepköralapú Access Control (RBAC) Azure AD Privileged Identity Management (PIM) nyilvános előzetes frissítésével mostantól a következőket teheti:
 
-* Ezen éppen elég felügyelettel.
-* Erőforrás-szerepkörökkel aktiváláshoz jóváhagyásra van szükség.
-* Ütemezzen egy jövőbeli aktiválását egy szerepkör, amely jóváhagyásra van szüksége a két Azure AD és az Azure RBAC-szerepkörökhöz.
+* Csak elég felügyeletet használjon.
+* Az erőforrás-szerepkörök aktiválásához jóváhagyás szükséges.
+* Ütemezzen egy olyan szerepkör jövőbeli aktiválását, amely az Azure AD és az Azure RBAC szerepköreinek jóváhagyását igényli.
  
-További információkért lásd: [Privileged Identity Management (előzetes verzió) Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
+További információ: [Privileged Identity Management for Azure Resources (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
 
 ---
  
 ## <a name="november-2017"></a>2017. november
  
-### <a name="access-control-service-retirement"></a>Access Control szolgáltatás kivonása
+### <a name="access-control-service-retirement"></a>Access Control szolgáltatás nyugdíjazása
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** Access Control Service szolgáltatást  
-**A termék funkció:** Access Control Service szolgáltatást 
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Access Control szolgáltatás  
+A **termék képességei:** Access Control szolgáltatás 
 
-Az Azure Active Directory Access Control (más néven a hozzáférés-vezérlés szolgáltatás) kivezetjük késői 2018-ban. Az elkövetkező néhány hét fog adni egy részletes ütemezés és a magas szintű áttelepítési útmutató tartalmaz további információt. Hagyhatja megjegyzéseket ezen az oldalon bármilyen kérdése van, a hozzáférés-vezérlés szolgáltatással kapcsolatos, és a egy csapattag rájuk válaszolni fog.
+A Azure Active Directory Access Control (más néven Access Control szolgáltatás) a 2018-es későn megszűnik. A következő hetekben további információkat talál a részletes ütemtervről és a magas szintű áttelepítési útmutatóról. A lap megjegyzéseit a Access Control szolgáltatással kapcsolatos bármilyen kérdéssel elhagyhatja, és a csapattagok is megválaszolják őket.
 
 ---
 
-### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>Az Intune Managed Browser böngésző-hozzáférés korlátozása 
+### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>Böngésző hozzáférésének korlátozása a Intune Managed Browserhoz 
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás biztonsága és védelme
 
-Office 365-höz és más Azure AD-hez kapcsolódó felhőalapú alkalmazáshoz való böngészőalapú hozzáférés egy jóváhagyott alkalmazáshoz, az Intune Managed Browser használatával korlátozhatja. 
+A böngésző hozzáférését korlátozhatja az Office 365-hez és más Azure AD-hez kapcsolódó felhőalapú alkalmazásokhoz a Intune Managed Browser jóváhagyott alkalmazásként való használatával. 
 
 Mostantól a következő feltételt állíthatja be az alkalmazás alapú feltételes hozzáféréshez:
 
-**Ügyfélalkalmazások:** böngésző
+**Ügyfélalkalmazások:** Böngésző
 
-**Mi az a változás hatását?**
+**Mi a változás hatása?**
 
-Használja ezt az állapotot még ma, hozzáférés le lesz tiltva. Az előzetes verzió érhető el, ha minden hozzáférést, a managed browser alkalmazást használatára lesz szükség. 
+Jelenleg a hozzáférés le van tiltva, amikor ezt a feltételt használja. Ha az előzetes verzió elérhető, az összes hozzáféréshez a Managed Browser alkalmazást kell használnia. 
 
-Keresse meg ezt a funkciót, és a közelgő blogok és kibocsátási megjegyzések további információt. 
+Keresse meg ezt a képességet, és további információkat a közelgő blogokban és a kibocsátási megjegyzésekben. 
 
 További információ: [feltételes hozzáférés az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
  
@@ -2513,69 +2783,69 @@ További információ: [feltételes hozzáférés az Azure ad-ben](https://docs.
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Új jóváhagyott ügyfélalkalmazások az Azure AD alkalmazás-alapú feltételes hozzáféréshez
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás biztonsága és védelme
 
-A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
+A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)listáján:
 
-- [A Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
+- [Microsoft-Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
-- [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Jóváhagyott ügyfélalkalmazás-követelmény](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
-### <a name="terms-of-use-support-for-multiple-languages"></a>Használati feltételek több nyelv támogatása
+### <a name="terms-of-use-support-for-multiple-languages"></a>Használati feltételek támogatása több nyelvhez
 
-**Típus:** új szolgáltatás    
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség
+**Írja be a következőt:** Új funkció    
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának
 
-A rendszergazdák most már hozhat létre új használati feltételek, amelyek több PDF-dokumentumok tartalmazzák. Megjelölheti a PDF-dokumentumok egy megfelelő nyelvet. Felhasználók preferenciáik alapján megfelelő nyelven jelennek meg a PDF-fájlt. Ha nem szerepel, az alapértelmezett nyelv jelenik meg.
+A rendszergazdák mostantól létrehozhatnak olyan új használati feltételeket, amelyek több PDF-dokumentumot tartalmaznak. Ezeket a PDF-dokumentumokat a megfelelő nyelven címkézheti. A felhasználók a megfelelő nyelven jelennek meg a PDF-ben a beállítások alapján. Ha nincs egyezés, az alapértelmezett nyelv jelenik meg.
 
 ---
  
-### <a name="real-time-password-writeback-client-status"></a>Valós idejű jelszó-visszaírási ügyfél állapotát
+### <a name="real-time-password-writeback-client-status"></a>Valós idejű jelszó visszaírási-ügyfél állapota
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** önkiszolgáló jelszó-visszaállítási  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Önkiszolgáló jelszó-visszaállítás  
+A **termék képességei:** Felhasználói hitelesítés
 
-Most már megtekintheti a helyi jelszó-visszaírási ügyfél állapotát. Ez a beállítás érhető el a **a helyszíni integrációs** szakaszában a [új jelszó kérésére vonatkozó](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) lapot. 
+Most már áttekintheti a helyszíni jelszó visszaírási-ügyfelének állapotát. Ez a beállítás a [jelszó-visszaállítási](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) oldal helyszíni **integráció** szakaszában érhető el. 
 
-Probléma merül fel a helyszíni visszaírási ügyfélhez a kapcsolattal rendelkező, lásd: egy hibaüzenet, amely a következőket tartalmazza:
+Ha problémák merülnek fel a helyszíni visszaírási-ügyféllel létesített kapcsolataival kapcsolatban, a következő hibaüzenet jelenik meg:
 
-- Miért nem lehet kapcsolódni a helyszíni visszaírási ügyfélhez információk.
-- Dokumentáció, amely segítséget nyújt a problémák elhárításához mutató hivatkozást. 
+- Információ arról, hogy miért nem tud csatlakozni a helyszíni visszaírási-ügyfélhez.
+- A probléma megoldásához segítséget nyújtó dokumentációra mutató hivatkozás. 
 
-További információkért lásd: [a helyszíni integrációs](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-how-it-works#on-premises-integration).
+További információ: helyszíni [integráció](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-how-it-works#on-premises-integration).
 
 ---
 
 ### <a name="azure-ad-app-based-conditional-access"></a>Azure AD-alkalmazás-alapú feltételes hozzáférés 
  
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Azure ad-ben  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Azure AD  
+A **termék képességei:** Identitás biztonsága és védelme
 
-Mostantól az [Azure ad-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)használatával korlátozhatja az Office 365 és más Azure ad-hez kapcsolódó felhőalapú alkalmazások elérését az Intune app Protection-szabályzatokat támogató [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) számára. Az Intune alkalmazásvédelmi szabályzatai segítségével konfigurálhatja, és ezek ügyfélalkalmazások számára a vállalati adatok védelmét.
+Mostantól az [Azure ad-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)használatával korlátozhatja az Office 365 és más Azure ad-hez kapcsolódó felhőalapú alkalmazások elérését az Intune app Protection-szabályzatokat támogató [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) számára. Az Intune app Protection-szabályzatok az ügyfélalkalmazások vállalati adatainak konfigurálására és védelmére szolgálnak.
 
 Az [eszközökön alapuló](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) feltételes hozzáférési szabályzatok [alkalmazásának](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) kombinálásával rugalmasan kezelheti a személyes és a vállalati eszközökre vonatkozó adatvédelmet.
 
 Az alábbi feltételek és vezérlők mostantól használhatók az alkalmazás-alapú feltételes hozzáféréssel:
 
-**Támogatott platform feltétel**
+**Támogatott platform feltétele**
 
 - iOS
 - Android
 
-**Ügyfél alkalmazások feltétel**
+**Ügyfélalkalmazások állapota**
 
-- Mobilalkalmazások és asztali ügyfelek
+- Mobile apps és asztali ügyfelek
 
 **Hozzáférés-vezérlés**
 
@@ -2585,102 +2855,102 @@ További információ: [Azure ad alkalmazás-alapú feltételes hozzáférés](h
  
 ---
 
-### <a name="manage-azure-ad-devices-in-the-azure-portal"></a>Az Azure Portalon az Azure AD-eszközök kezelése
+### <a name="manage-azure-ad-devices-in-the-azure-portal"></a>Azure AD-eszközök kezelése a Azure Portal
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** az eszköz regisztrálása és kezelése  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Eszközök regisztrációja és kezelése  
+A **termék képességei:** Identitás biztonsága és védelme
 
-Most már megtalálhatja az Azure ad-hez csatlakoztatott eszközök és a egy helyen az eszközzel kapcsolatos tevékenységeket. Nincs új felügyeleti felület kezeli az eszközidentitások és a beállítások az Azure Portalon. Ebben a kiadásban a következőket teheti:
+Az Azure AD-hez csatlakoztatott összes eszközt és az eszközhöz kapcsolódó tevékenységeket egy helyen találja meg. A Azure Portal minden eszköz-identitását és beállítását új adminisztrációs megoldással felügyelheti. Ebben a kiadásban a következőket teheti:
 
 - Az Azure AD-ben feltételes hozzáféréshez elérhető összes eszköz megtekintése.
-- Tekintse meg a tulajdonságokat, többek között a hibrid Azure AD-hez csatlakoztatott eszközök.
-- Keresse meg a BitLocker-kulcsok az Azure AD-hez csatlakoztatott eszközök, az eszköz Intune-nal, és további kezelését.
-- Az Azure AD-eszközzel kapcsolatos beállítások kezelése.
+- Megtekintheti a hibrid Azure AD-hez csatlakoztatott eszközöket tartalmazó tulajdonságokat.
+- Megkeresheti az Azure AD-hez csatlakoztatott eszközök BitLocker-kulcsait, kezelheti az eszközt az Intune-nal, és így tovább.
+- Az Azure AD-eszközökhöz kapcsolódó beállítások kezelése.
 
-További információkért lásd: [eszközök kezelése az Azure portal használatával](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+További információ: [eszközök kezelése a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
 
 ---
 
 ### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Támogatás macOS platformként az Azure AD feltételes hozzáféréshez 
 
-**Típus:** új szolgáltatás    
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** identitás biztonsága és védelme 
+**Írja be a következőt:** Új funkció    
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás biztonsága és védelme 
 
-Mostantól belefoglalhatja (vagy kizárhatja) a macOS-t az Azure AD feltételes hozzáférési szabályzatában található eszköz-platform feltételként. MacOS-gépeken, a támogatott eszközplatformok igény szerinti hozzáadásával a következőket teheti:
+Mostantól belefoglalhatja (vagy kizárhatja) a macOS-t az Azure AD feltételes hozzáférési szabályzatában található eszköz-platform feltételként. A macOS és a támogatott eszközök platformjának hozzáadásával a következőket teheti:
 
-- **Regisztrálhat és kezelhet a macOS-eszközök Intune-nal.** Más platformokon, például iOS és Android rendszerhez hasonló, a vállalati portál alkalmazás érhető el a macOS-hez egységes regisztrációk ehhez. Az új céges portál alkalmazás macOS-hez készült segítségével egy eszközöm Intune-nal, és regisztrálja az Azure ad-ben.
-- **Győződjön meg arról, macOS-eszközök a vállalat megfelelőségi szabályzatok az Intune-ban definiált formátumhoz.** Az Intune-ban az Azure Portalon mostantól beállíthat is macOS-eszközök megfelelőségi szabályzatainak. 
-- **Alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő MacOS rendszerű eszközökhöz az Azure AD-ben.** A feltételes hozzáférési szabályzat létrehozásához a macOS-t külön eszköz platformként kell megválasztani. Most már készíthet macOS-specifikus feltételes hozzáférési szabályzatokat az Azure-beli megcélzott alkalmazás számára.
+- **MacOS-eszközök regisztrálása és kezelése az Intune használatával.** Hasonló más platformokhoz, mint például az iOS és az Android, a macOS-hez készült vállalati portál alkalmazás egyesített regisztrációkat tesz elérhetővé. A macOS-hez készült új céges portál alkalmazással regisztrálhat egy eszközt az Intune-ban, és regisztrálhatja azt az Azure AD-ben.
+- **Győződjön meg arról, hogy a macOS-eszközök megfelelnek a szervezetnek az Intune-ban definiált megfelelőségi szabályzatoknak.** A Azure Portal Intune-ban mostantól beállíthatja a macOS-eszközökre vonatkozó megfelelőségi szabályzatokat. 
+- **Az Azure AD-alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő macOS-eszközökre.** A feltételes hozzáférési szabályzat létrehozásához a macOS-t külön eszköz platformként kell megválasztani. Most már készíthet macOS-specifikus feltételes hozzáférési szabályzatokat az Azure-beli megcélzott alkalmazás számára.
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
 - [Megfelelőségi szabályzat létrehozása MacOS-eszközökhöz az Intune-nal](https://aka.ms/macoscompliancepolicy)
 - [Feltételes hozzáférés az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
 
-### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Hálózati házirend-kiszolgáló kiterjesztése az Azure multi-factor Authentication 
+### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Hálózati házirend-kiszolgáló bővítmény az Azure Multi-Factor Authentication 
 
-**Típus:** új szolgáltatás    
-**Szolgáltatási kategóriához:** többtényezős hitelesítés  
-**A termék funkció:** felhasználói hitelesítés
+**Írja be a következőt:** Új funkció    
+**Szolgáltatás kategóriája:**  Multi-Factor Authentication  
+A **termék képességei:** Felhasználói hitelesítés
 
-A hálózati házirend-kiszolgáló bővítmény, az Azure multi-factor Authentication a hitelesítési infrastruktúra felhőalapú multi-factor Authentication funkcióinak hozzáadja a meglévő kiszolgálók használatával. A hálózati házirend-kiszolgáló kiterjesztésű telefonhívás, szöveges üzenet vagy telefonos alkalmazás ellenőrzés adhat a meglévő hitelesítési folyamatot. Nem kell telepítése, konfigurálása és új kiszolgálók karbantartása. 
+Az Azure Multi-Factor Authenticationhez készült hálózati házirend-kiszolgáló bővítmény felhőalapú Multi-Factor Authentication képességeket biztosít a hitelesítési infrastruktúrához a meglévő kiszolgálók használatával. A hálózati házirend-kiszolgáló bővítmény használatával telefonhívást, szöveges üzenetet vagy telefonos alkalmazás-ellenőrzést adhat meg a meglévő hitelesítési folyamathoz. Nem kell új kiszolgálókat telepítenie, konfigurálnia és karbantartani. 
 
-Ez a bővítmény olyan szervezeteknek, amelyek számára védelmet kíván biztosítani virtuális magánhálózati kapcsolatok az Azure multi-factor Authentication-kiszolgáló üzembe helyezése nélkül lett létrehozva. A hálózati házirend-kiszolgáló bővítmény úgy működik, mint az adapter beállításai között, adja meg a hitelesítés második tényezőjét, a RADIUS- és felhőalapú Azure multi-factor Authentication összevont, vagy a szinkronizált felhasználók.
+Ez a bővítmény olyan szervezetek számára lett létrehozva, amelyek az Azure-Multi-Factor Authentication-kiszolgáló telepítése nélkül szeretnék védelemmel ellátni a virtuális magánhálózati kapcsolatokat. A hálózati házirend-kiszolgáló bővítmény adapterként működik a RADIUS és a felhőalapú Azure Multi-Factor Authentication között, hogy az összevont vagy szinkronizált felhasználók hitelesítésének második tényezője legyen.
 
-További információkért lásd: [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-extension).
+További információ: [a meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-extension).
  
 ---
 
-### <a name="restore-or-permanently-remove-deleted-users"></a>Állítsa vissza vagy végleg eltávolítani a törölt felhasználók
+### <a name="restore-or-permanently-remove-deleted-users"></a>Törölt felhasználók visszaállítása vagy végleges eltávolítása
 
-**Típus:** új szolgáltatás    
-**Szolgáltatási kategóriához:** felhasználók kezelése  
-**A termék funkció:** könyvtár 
+**Írja be a következőt:** Új funkció    
+**Szolgáltatás kategóriája:** Felhasználói felügyelet  
+A **termék képességei:** Directory 
 
-Az Azure AD felügyeleti központban az alábbi műveleteket hajthatja végre:
+Az Azure AD felügyeleti központban mostantól a következőket végezheti el:
 
-- Törölt felhasználói visszaállítása. 
+- Törölt felhasználó visszaállítása. 
 - Felhasználó végleges törlése.
 
-**Kipróbálás:**
+**A kipróbáláshoz:**
 
-1. Az Azure AD felügyeleti központban válassza [minden felhasználó](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All) a a **kezelés** szakaszban. 
+1. Az Azure AD felügyeleti központban válassza a **kezelés** szakaszban az [összes felhasználó](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All) lehetőséget. 
 
-2. Az a **megjelenítése** listáról válassza ki **nemrégiben törölt felhasználók**. 
+2. A **Megjelenítés** listából válassza a **nemrég törölt felhasználók**lehetőséget. 
 
-3. Válassza ki egy vagy több nemrégiben törölt felhasználók, és vagy visszaállíthatja a őket, vagy véglegesen törli azokat.
+3. Válasszon ki egy vagy több nemrég törölt felhasználót, majd állítsa vissza, vagy véglegesen törölje őket.
  
 ---
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Új jóváhagyott ügyfélalkalmazások az Azure AD alkalmazás-alapú feltételes hozzáféréshez
  
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás biztonsága és védelme
 
-A következő alkalmazások listájának hozzáadott [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
+A következő alkalmazások lettek hozzáadva a [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)listájához:
 
-- A Microsoft Planner
+- Microsoft Planner
 - Azure Information Protection 
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
-- [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Jóváhagyott ügyfélalkalmazás-követelmény](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
 ### <a name="use-or-between-controls-in-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzatban található vezérlők közötti "vagy" használata 
 
-**Típus:** megváltozott funkció    
-**Szolgáltatási kategóriához:** feltételes hozzáférés  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Módosított funkció    
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+A **termék képességei:** Identitás biztonsága és védelme
  
-Most már használhatja a "vagy a" (a kijelölt vezérlők egyikének megkövetelése) használatát a feltételes hozzáférés-vezérléshez. Ez a funkció segítségével szabályzatok létrehozása a "vagy" közötti hozzáférés-vezérlést. Ez a funkció segítségével például olyan szabályzatot, amely egy felhasználó jelentkezhet be a multi-factor Authentication szolgáltatás használata "vagy" a megfelelő eszköz lehet szükséges.
+Most már használhatja a "vagy a" (a kijelölt vezérlők egyikének megkövetelése) használatát a feltételes hozzáférés-vezérléshez. Ezzel a funkcióval házirendek hozhatók létre a hozzáférés-vezérlések között "vagy". Ezzel a szolgáltatással például létrehozhat egy olyan házirendet, amely megköveteli, hogy a felhasználó bejelentkezzen a Multi-Factor Authentication "vagy" utasítással kompatibilis eszközre.
 
 További információ: [vezérlők az Azure ad feltételes hozzáférésben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
  
@@ -2688,145 +2958,145 @@ További információ: [vezérlők az Azure ad feltételes hozzáférésben](htt
 
 ### <a name="aggregation-of-real-time-risk-detections"></a>A valós idejű kockázati észlelések összesítése
 
-**Típus:** megváltozott funkció    
-**Szolgáltatási kategóriához:** Identity protection  
-**A termék funkció:** identitás biztonsága és védelme
+**Írja be a következőt:** Módosított funkció    
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás biztonsága és védelme
 
 Azure AD Identity Protection az összes olyan valós idejű kockázati észlelést, amely egy adott napon belül ugyanabból az IP-címről származik, az egyes kockázati észlelési típusok esetében összesítve lesz. Ez a változás korlátozza a kockázati észlelések mennyiségét, ami a felhasználói biztonság módosítása nélkül jelenik meg.
 
-Az alapul szolgáló valós idejű észlelését működik minden alkalommal, amikor a felhasználó bejelentkezik. Ha rendelkezik egy olyan bejelentkezési kockázat-biztonsági házirendet, állítsa be a multi-factor Authentication szolgáltatás blokkolja a hozzáférést, továbbra is aktivált minden kockázatos bejelentkezés során.
+A mögöttes valós idejű észlelés minden alkalommal működik, amikor a felhasználó bejelentkezik. Ha van olyan biztonsági házirendje, amely Multi-Factor Authentication vagy letiltja a hozzáférést, az egyes kockázatos bejelentkezések során továbbra is aktiválódik.
  
 ---
  
 ## <a name="october-2017"></a>2017. október
 
-### <a name="deprecate-azure-ad-reports"></a>Az Azure AD-jelentések kivezetjük
+### <a name="deprecate-azure-ad-reports"></a>Azure AD-jelentések elavultak
 
-**Típus:** tervezett változtatás  
-**Szolgáltatási kategóriához:** jelentéskészítés  
-**A termék funkció:** identitás-életciklus-felügyelet  
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** Identitás-életciklus kezelése  
 
-Az Azure Portalon a következőket tartalmazza:
+A Azure Portal a következőket biztosítja:
 
-- Egy új Azure AD felügyeleti konzolján.
-- Új API-k tevékenység és a biztonsági jelentések.
+- Egy új Azure AD felügyeleti konzol.
+- Új API-k tevékenység-és biztonsági jelentésekhez.
  
-Új funkciók miatt a jelentést, a/Reports végpont API-k visszavontuk, 2017. December 10. 
+Az új képességek miatt a/Reports-végpont alatti jelentés API-k 2017. december 10-én megszűntek. 
 
 ---
 
-### <a name="automatic-sign-in-field-detection"></a>Az automatikus bejelentkezési mezők
+### <a name="automatic-sign-in-field-detection"></a>Automatikus bejelentkezési mező észlelése
 
-**Típus:** kijavítva   
-**Szolgáltatási kategóriához:** saját alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés  
+**Írja be a következőt:** Rögzített   
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** Egyszeri bejelentkezés  
 
-Az Azure AD automatikus bejelentkezési mezők egy HTML-felhasználói név és jelszó mezőt megjelenítő alkalmazások esetében támogatja. Ezeket a lépéseket vannak dokumentálva [automatikusan az alkalmazás bejelentkezési mezők rögzítése](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications-problems#manually-capture-sign-in-fields-for-an-app). Adja hozzá ezt a képességet talál egy *katalógusban nem szereplő* alkalmazás a a **vállalati alkalmazások** lapját a [az Azure portal](https://aad.portal.azure.com). Ezenkívül konfigurálhatja a **egyszeri bejelentkezés** módban az új alkalmazás a **jelszóalapú egyszeri bejelentkezés**, adjon meg egy webes URL-címet, és mentse az oldal.
+Az Azure AD támogatja az automatikus bejelentkezési mezők észlelését olyan alkalmazások esetében, amelyek HTML-felhasználónevet és jelszót tartalmazó mezőt jelenítenek meg. Ezek a lépések az [alkalmazások bejelentkezési mezőinek automatikus rögzítését ismertetik](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications-problems#manually-capture-sign-in-fields-for-an-app). Ezt a képességet a [Azure Portal](https://aad.portal.azure.com) **vállalati alkalmazások** lapján található *nem* katalógusbeli alkalmazás hozzáadásával érheti el. Ezen felül az új alkalmazás **egyszeri bejelentkezési** módját **jelszó alapú egyszeri bejelentkezésre**is beállíthatja, MEGadhat egy webes URL-címet, majd mentheti a lapot.
  
-Ez a funkció egy szolgáltatási hiba miatt ideiglenesen letiltotta. A probléma megoldódott, és az automatikus bejelentkezési mezők észlelési érhető el újra.
+Szolgáltatási probléma miatt ez a funkció átmenetileg le lett tiltva. A probléma megoldódott, és az automatikus bejelentkezési mező észlelése ismét elérhető.
 
 ---
 
-### <a name="new-multi-factor-authentication-features"></a>A multi-factor Authentication szolgáltatás új funkciók
+### <a name="new-multi-factor-authentication-features"></a>Új Multi-Factor Authentication funkciók
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** többtényezős hitelesítés  
-**A termék funkció:** identitás biztonsága és védelme  
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Multi-Factor Authentication  
+A **termék képességei:** Identitás biztonsága és védelme  
 
-Többtényezős hitelesítés (MFA), a szervezet védelme fontos részét képezi. Ahhoz, hogy több adaptív hitelesítő adatokat, és a felhasználói élményt a zökkenőmentes, a következő funkciók lettek hozzáadva: 
+A többtényezős hitelesítés (MFA) elengedhetetlen része a szervezet védelmének. Ahhoz, hogy a hitelesítő adatok jobban alkalmazkodnak és a tapasztalatok zökkenőmentesek legyenek, a következő funkciók lettek hozzáadva: 
 
-- Multi-factor Authentication ellenőrző eredményei közvetlenül integrálva vannak az Azure AD bejelentkezési jelentést, amely programozott hozzáférést biztosít a többtényezős hitelesítés eredménye.
-- Az MFA konfigurálása az Azure AD-konfigurációjának több mélyen integrált élmény az Azure Portalon.
+- A multi-Factor Challenge eredményei közvetlenül integrálva vannak az Azure AD bejelentkezési jelentésbe, amely az MFA-eredmények programozott elérését is magában foglalja.
+- Az MFA-konfiguráció mélyebben integrálva van az Azure AD konfigurációs felületére a Azure Portalban.
 
-A nyilvános előzetes verziója, az MFA felügyeleti és jelentéskészítési az alapvető Azure AD-konfigurációs felület integrált részét képezik. Mostantól felügyelheti a MFA felügyeleti portálon funkciókat nyújt az Azure AD lehetőséget.
+Ebben a nyilvános előzetes verzióban az MFA-felügyelet és a jelentéskészítés az Azure AD-konfiguráció alapvető felhasználói felületének szerves részét képezi. Most már kezelheti az MFA felügyeleti portál funkcióit az Azure AD-ben.
 
-További információkért lásd: [többtényezős hitelesítés az Azure Portalon jelentéskészítési referenciája](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins-mfa). 
+További információ: [az MFA-jelentéskészítés referenciája a Azure Portalban](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins-mfa). 
 
 ---
 
 ### <a name="terms-of-use"></a>Használati feltételek
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** használati feltételeket  
-**A termék funkció:** megfelelőség  
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+A **termék képességei:** Betartásának  
 
-Az Azure AD használati feltételek szükséges információkkal, mint például a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatok felhasználók is használhatja.
+Használhatja az Azure AD használati feltételeit, amelyek olyan információkat mutatnak be, mint például a felhasználókra vonatkozó jogi vagy megfelelőségi követelményekhez kapcsolódó jogcímek.
 
-Az Azure AD használati feltételek az alábbiakhoz használhatja:
+Az Azure AD használati feltételeit a következő esetekben használhatja:
 
-- A szervezet minden tagjára vonatkozó általános használati
-- Specifikus használati feltételek a felhasználói attribútumok (például orvosi nővérek és) vagy a belföldi és nemzetközi alkalmazottak, dinamikus csoportok által végzett alapján
-- Specifikus használati feltételek a nagy hatású üzleti alkalmazások, mint például a Salesforce elérése
+- Általános használati feltételek a szervezet összes felhasználója számára
+- Meghatározott használati feltételek egy felhasználó attribútumai (például orvosok, ápolók vagy belföldi és nemzetközi alkalmazottak, dinamikus csoportok által végzett) alapján
+- Bizonyos használati feltételek a nagy hatású üzleti alkalmazások, például a Salesforce eléréséhez
 
-További információkért lásd: [az Azure AD használati feltételek](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+További információ: az [Azure ad használati feltételei](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
-### <a name="enhancements-to-privileged-identity-management"></a>Privileged Identity Management fejlesztései
+### <a name="enhancements-to-privileged-identity-management"></a>A Privileged Identity Management fejlesztései
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** Privileged Identity Management  
-**A termék funkció:** Privileged Identity Management  
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Privileged Identity Management  
+A **termék képességei:** Privileged Identity Management  
 
-Az Azure AD Privileged Identity Management kezelheti, irányíthatja, és a szervezet Azure-erőforrások (előzetes verzió) való hozzáférés figyelése:
+A Azure AD Privileged Identity Management segítségével a szervezeten belül felügyelheti, vezérelheti és figyelheti az Azure-erőforrásokhoz való hozzáférést (előzetes verzió):
 
 - Előfizetések
 - Erőforráscsoportok
-- Virtual machines (Virtuális gépek) 
+- Virtuális gépek 
 
-Összes erőforrást az Azure Portalon az Azure RBAC-funkciókat használó igénybe veheti a biztonsági és az Azure AD Privileged Identity Management által biztosított lehetőségeket alkalmazásélettartam-kezelési képességgel.
+Az Azure RBAC funkciót használó Azure Portal összes erőforrása kihasználhatja a Azure AD Privileged Identity Management által kínált biztonsági és életciklus-kezelési képességek előnyeit.
 
-További információkért lásd: [Privileged Identity Management az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
+További információ: [Privileged Identity Management Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
 
 ---
 
 ### <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** hozzáférési felülvizsgálatokkal  
-**A termék funkció:** megfelelőség  
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
+A **termék képességei:** Betartásának  
 
-Szervezetek számára a hozzáférési felülvizsgálatok (előzetes verzió) segítségével hatékonyan kezelheti a csoporttagságokat és a vállalati alkalmazásokhoz való hozzáférést: 
+A szervezetek a hozzáférési felülvizsgálatok (előzetes verzió) segítségével hatékonyan kezelhetik a csoporttagságok és a vállalati alkalmazásokhoz való hozzáférést: 
 
-- Az alkalmazásokhoz való hozzáférések és a csoporttagságok felülvizsgálatával újrahitelesítheti a vendégfelhasználói hozzáférést. Felülvizsgálók-e, hogy a vendégek folyamatos hozzáférést a hozzáférési felülvizsgálatok által nyújtott alapján eldöntését is.
+- Az alkalmazásokhoz való hozzáférések és a csoporttagságok felülvizsgálatával újrahitelesítheti a vendégfelhasználói hozzáférést. A felülvizsgálók hatékonyan dönthetnek arról, hogy a vendégek továbbra is hozzáférhetnek-e a hozzáférési felülvizsgálatok által biztosított megállapítások alapján.
 - A hozzáférési felülvizsgálatok segítségével az alkalmazottak alkalmazás-hozzáférését és csoporttagságait is újból hitelesítheti.
 
 A hozzáférési felülvizsgálati vezérlőket cég- vagy szervezetspecifikus programokban is összegyűjtheti a megfelelőség vagy a kockázatérzékeny alkalmazások felülvizsgálatának nyomon követése céljából.
 
-További információkért lásd: [az Azure AD hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview).
+További információ: [Azure ad hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview).
 
 ---
 
-### <a name="hide-third-party-applications-from-my-apps-and-the-office-365-app-launcher"></a>Saját alkalmazások és az Office 365 appindítóján a külső alkalmazások elrejtése
+### <a name="hide-third-party-applications-from-my-apps-and-the-office-365-app-launcher"></a>Harmadik féltől származó alkalmazások elrejtése az alkalmazásokból és az Office 365 app launcherből
 
-**Típus:** új szolgáltatás  
-**Szolgáltatási kategóriához:** saját alkalmazások  
-**A termék funkció:** egyszeri bejelentkezés  
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** Egyszeri bejelentkezés  
 
-Most már jobban kezelhető alkalmazásokat, amelyeket a felhasználók portálokon keresztül egy új megjelenni **alkalmazás elrejtése** tulajdonság. Azokban az esetekben, ahol a Háttérszolgáltatásokhoz vagy ismétlődő csempék és legyen zsúfolt felhasználók alkalmazás kilövők megjelenni alkalmazáscsempék alkalmazások elrejtéséhez. A váltógomb ki van a **tulajdonságok** szakaszában a harmadik féltől származó alkalmazások és feliratú **felhasználó számára látható?** Egy alkalmazás programozás útján PowerShell-lel is elrejthetők. 
+Mostantól hatékonyabban kezelheti a felhasználói portálon megjelenő alkalmazásokat egy új **Hide app** -tulajdonság használatával. Az alkalmazások elrejtésével olyan esetekben lehet segíteni, amikor az alkalmazás csempéi megjelennek a háttér-szolgáltatásokhoz, illetve az ismétlődő csempék és a felhasználói alkalmazások elindításához. A váltógomb a harmadik féltől származó alkalmazás **Tulajdonságok** részében található, és **látható a felhasználó számára?** Egy alkalmazást programozott módon is el lehet rejteni a PowerShell használatával. 
 
-További információkért lásd: [egy külső alkalmazás az Azure ad-ben a felhasználói élmény elrejtése](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app). 
+További információ: [harmadik féltől származó alkalmazás elrejtése a felhasználó Azure ad-beli felhasználói felületéről](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app). 
 
 
 **Mi érhető el?**
 
- Az új felügyeleti konzol, a két új API-kkal való áttérés részeként az Azure Active Directory érhetők el naplók. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelési API-n keresztül érhetők el Microsoft Graphban.
+ Az új felügyeleti konzolra való áttérés részeként két új API érhető el az Azure AD-tevékenységek naplófájljainak beolvasásához. Az új API-k szélesebb körű szűrési és rendezési funkciókat biztosítanak, továbbá gazdagabb naplózási és bejelentkezési tevékenységeket is biztosítanak. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelési API-n keresztül érhetők el Microsoft Graphban.
 
 
 ## <a name="september-2017"></a>2017. szeptember
 
-### <a name="hotfix-for-identity-manager"></a>A gyorsjavítás az Identity Managerhez
+### <a name="hotfix-for-identity-manager"></a>Az Identity Manager gyorsjavítása
 
-**Típus:** megváltozott funkció  
-**Szolgáltatási kategóriához:** Identity Manager  
-**A termék funkció:** identitás-életciklus-felügyelet  
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Identity Manager  
+A **termék képességei:** Identitás-életciklus kezelése  
 
-2017. szeptember 25, az Identity Manager 2016 Service Pack 1 (build 4.4.1642.0) gyorsjavítás kumulatív csomag érhető el. Ez a kumulatív csomag:
+A 4.4.1642.0-alapú gyorsjavítások összesítő csomagja (Build) 2017. szeptember 25-én érhető el az Identity Manager 2016 Service Pack 1 verzióhoz. Ez az összesítő csomag:
 
-- Oldja fel a problémákat, és fejlesztéseket.
-- Az összesítő frissítés, amely lecseréli az összes Identity Manager 2016 Service Pack 1 frissítés akár build 4.4.1459.0 Identity Manager 2016. 
-- Megköveteli, hogy rendelkezik az Identity Manager 2016 4.4.1302.0 hozhat létre. 
+- Elhárítja a problémákat, és javítja a javítást.
+- A egy összegző frissítés, amely az összes Identity Manager 2016 Service Pack 1 frissítést felváltja az Identity Manager 2016 4.4.1459.0 létrehozásához. 
+- Az Identity Manager 2016 Build 4.4.1302.0 szükséges. 
 
-További információkért lásd: [gyorsjavítás frissítésgyűjtemény (build 4.4.1642.0) érhető el az Identity Manager 2016 Service Pack 1](https://support.microsoft.com/help/4021562). 
+További információ: a [gyorsjavítások kumulatív csomagja (Build 4.4.1642.0) elérhető a Identity Manager 2016 Service Pack 1 verzióhoz](https://support.microsoft.com/help/4021562). 
 
 ---

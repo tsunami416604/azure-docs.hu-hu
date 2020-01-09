@@ -1,116 +1,116 @@
 ---
-title: Oktatóanyag – az engedélyezése a virtuális hálózatok, integráció és az Event Hubs-tűzfalak |} A Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja az Event Hubs virtuális hálózatok és a tűzfalak biztonságosan elérni.
+title: Azure Event Hubs – virtuális hálózatok integrációjának és tűzfalaknak a engedélyezése
+description: Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Event Hubst virtuális hálózatokkal és tűzfalakkal a biztonságos hozzáférés érdekében.
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437119"
 ---
-# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Oktatóanyag: Virtuális hálózat integrációja és a tűzfalak engedélyezése Event Hubs-névtér
+# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Oktatóanyag: virtuális hálózatok integrációjának és tűzfalának engedélyezése Event Hubs névtérben
 
-[Virtuális hálózat (VNet) szolgáltatásvégpontjai](../virtual-network/virtual-network-service-endpoints-overview.md) bővítheti a virtuális hálózatának privát címterét és identitását az a virtuális hálózat az Azure-szolgáltatásokra egy közvetlen kapcsolaton keresztül. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
+A [Virtual Network (VNet) szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) közvetlen kapcsolaton keresztül bővítik a virtuális hálózat privát címterület-területét és a VNet identitását az Azure-szolgáltatásokhoz. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
 
-Tűzfalak, amellyel korlátozható az Event Hubs-névtér való hozzáférés meghatározott IP-címek (vagy IP-címtartományok) engedélyezése
+A tűzfalak lehetővé teszik a Event Hubs névtér elérésének korlátozását adott IP-címekről (vagy IP-címtartományok).
 
-Ez az oktatóanyag bemutatja, hogyan integrálható a virtuális hálózatokon a Szolgáltatásvégpontok, és állítsa be a tűzfalak (IP-szűrés) a meglévő Azure Event Hubs-névtér, a portál használatával.
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a virtuális hálózatok szolgáltatási végpontait, és hogyan állíthatja be a tűzfalakat (IP-szűrést) a meglévő Azure Event Hubs-névtérrel a portál használatával.
 
-Ebből az oktatóanyagból megtudhatja, hogyan lehet:
+Ez az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
-> * Hogyan lehet virtuális hálózatokon a Szolgáltatásvégpontok integrálása az Event Hubs-névtér.
-> * Hogyan állíthatja be az Event Hubs-névtér-tűzfal (IP-szűrés).
+> * Virtuális hálózatok szolgáltatásbeli végpontok integrálása a Event Hubs névtérrel.
+> * A tűzfal (IP-szűrés) beállítása a Event Hubs névtérrel.
 
 >[!WARNING]
-> Virtuális hálózatok integráció megvalósítása megakadályozhatja az egyéb Azure-szolgáltatásokhoz az Event hubs szolgáltatással való interakcióhoz.
+> A virtuális hálózatok integrálásának megvalósításával megakadályozható, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
 >
-> Első fél Integrációk nem támogatottak, ha engedélyezve vannak a virtuális hálózatok.
-> Nem működnek a Virtual Network – gyakori Azure helyzetek
-> * Az Azure Diagnostics és naplózás
+> Az első féltől származó integrációk nem támogatottak, ha a virtuális hálózatok engedélyezve vannak.
+> Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal –
+> * Azure Diagnostics és naplózás
 > * Azure Stream Analytics
-> * Event Grid-integráció
-> * Web Apps és Functions van szükség a virtuális hálózaton.
-> * IoT Hub Routes
-> * IoT-Device Explorer
+> * Event Grid integráció
+> * A virtuális hálózatokon Web Apps & függvények szükségesek.
+> * IoT Hub útvonalak
+> * IoT Device Explorer
 
 
 > [!IMPORTANT]
-> A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott.
+> A virtuális hálózatok a **standard** és a **dedikált** Event Hubsban támogatottak. Alapszintű csomag esetén nem támogatott.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiók] [-] megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot] [].
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Microsoft ezért használja egy meglévő Event Hubs-névtér, győződjön meg arról, hogy elérhető Event Hubs-névtér. Ha nem, olvassa el a [ebben az oktatóanyagban](./event-hubs-create.md)
+Kihasználunk egy meglévő Event Hubs névteret, ezért győződjön meg arról, hogy rendelkezésre áll Event Hubs névtér. Ha nem, tekintse meg [ezt az oktatóanyagot](./event-hubs-create.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Első lépésként nyissa meg a [az Azure portal][Azure portal] , és jelentkezzen be Azure-előfizetése.
+Először lépjen a [Azure Portalra][Azure portal] , és jelentkezzen be az Azure-előfizetésével.
 
-## <a name="select-event-hubs-namespace"></a>Az Event Hubs-névtér kijelölése
+## <a name="select-event-hubs-namespace"></a>Event Hubs névtér kiválasztása
 
-Jelen oktatóanyag esetében azt létrehozott Event Hubs-névtér és nyitja meg, amely.
+Ebben az oktatóanyagban egy Event Hubs névteret hoztunk létre, és a rendszer erre fogja navigálni.
 
-## <a name="navigate-to-firewalls-and-virtual-networks-experience"></a>Navigáljon a tűzfalak és virtuális hálózatok élmény
+## <a name="navigate-to-firewalls-and-virtual-networks-experience"></a>Navigáljon a tűzfalak és a virtuális hálózatok felületére
 
-A portál bal oldali ablaktáblán a navigációs menü segítségével válasszon a **"Tűzfalak és virtuális hálózatok"** lehetőséget.
+A **"tűzfalak és virtuális hálózatok"** lehetőség kiválasztásához használja a portál bal oldali ablaktáblájának navigációs menüjét.
 
-  ![Navigáljon a menü](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-landing-page.png)
+  ![Navigáljon a menühöz](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-landing-page.png)
 
-  Ezen a lapon első meglátogatásakor az **minden hálózatból elérhető** választógomb ki kell választani. Ez azt jelenti, hogy az Event Hubs-névtér lehetővé teszi, hogy az összes bejövő kapcsolat.
+  Amikor első alkalommal meglátogatja ezt az oldalt, ki kell választania a **minden hálózat** választógombot. Ez azt jelenti, hogy a Event Hubs névtér lehetővé teszi az összes bejövő kapcsolat használatát.
 
-## <a name="add-virtual-network-service-endpoint"></a>Adja hozzá a virtuális hálózati szolgáltatásvégpont
+## <a name="add-virtual-network-service-endpoint"></a>Virtual Network szolgáltatási végpont hozzáadása
 
-A hozzáférés korlátozásához, a virtuális hálózati szolgáltatásvégpontot az Event Hubs-névtér integrálnia kell.
+A hozzáférés korlátozásához integrálnia kell a Virtual Network szolgáltatási végpontot ehhez a Event Hubs névtérhez.
 
-1. Kattintson a **kiválasztott hálózatok** választógombot ahhoz, hogy a többi a menüpontok tartalmazó lap az oldal felső részén.
-  ![kijelölt hálózatok](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
-2. Az oldal a virtuális hálózat területen válassza a ***+ meglévő virtuális hálózat hozzáadása***. Ez a panel, amely lehetővé teszi, hogy egy már létrehozott virtuális hálózatot válassza ki a megnyitáskor.
-  ![Meglévő virtuális hálózat hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane.png)
-3. A virtuális hálózatot válasszon a listából, és válassza ki az alhálózatot.
-   ![alhálózat kiválasztása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-with-subnet-query.png)
-4. Hogy a szolgáltatásvégpont engedélyezése előtt a virtuális hálózat hozzáadása a listához. Ha a szolgáltatásvégpont nincs engedélyezve, a portál felszólítja majd engedélyezheti azt.
-  ![Válassza ki az alhálózatot, és engedélyezze a végpont](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-enabling.png)
+1. A lap tetején található **kijelölt hálózatok** választógombra kattintva engedélyezheti a lap további részeit a menüparancsokkal.
+  ![kiválasztott hálózatok](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
+2. A lap Virtual Network szakaszában válassza a ***meglévő virtuális hálózat hozzáadása***lehetőséget. Ekkor megjelenik a panel, amely lehetővé teszi egy már létrehozott virtuális hálózat kiválasztását.
+  ![meglévő virtuális hálózat hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane.png)
+3. Válassza ki a Virtual Network a listából, és válassza ki az alhálózatot.
+   ![válassza az alhálózat lehetőséget](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-with-subnet-query.png)
+4. A Virtual Network a listához való hozzáadása előtt engedélyeznie kell a szolgáltatási végpontot. Ha a szolgáltatási végpont nincs engedélyezve, a portál felszólítja, hogy engedélyezze.
+  ![az alhálózat kiválasztása és a végpont engedélyezése](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-enabling.png)
     > [!NOTE]
-    > Ha Ön nem sikerült engedélyezni a szolgáltatásvégpont, figyelmen kívül hagyhatja a hiányzó virtuális hálózati szolgáltatásvégpontot az ARM-sablon használatával. Ez a funkció a portálon nem érhető el.
+    > Ha nem tudja engedélyezni a szolgáltatási végpontot, figyelmen kívül hagyhatja a hiányzó virtuális hálózati szolgáltatás végpontját az ARM sablonnal. Ez a funkció nem érhető el a portálon.
 
-5. Miután engedélyezte a szolgáltatásvégpont a kiválasztott alhálózatnak, folytassa az engedélyezett virtuális hálózatok listájához hozzáadni.
-  ![Miután engedélyezte a végpont alhálózat hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-adding.png)
+5. Miután engedélyezte a szolgáltatás végpontját a kiválasztott alhálózaton, folytathatja a hozzáadását az engedélyezett virtuális hálózatok listájához.
+  ![alhálózat hozzáadása a végpont engedélyezése után](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-adding.png)
 
-6. A folytatáshoz nyomja le a **mentése** gombra a virtuális hálózati konfiguráció mentéséhez kattintson a szolgáltatás a felső szalagon. Várjon néhány percet, amíg a jóváhagyást a portál értesítési jelenik meg.
+6. A felső menüszalag **Mentés** gombjára kattintva mentse a virtuális hálózat konfigurációját a szolgáltatásban. Várjon néhány percet, amíg megtörténik a megerősítés, hogy megjelenjen a portál értesítései.
 
-## <a name="add-firewall-for-specified-ip"></a>Megadott IP-tűzfal hozzáadása
+## <a name="add-firewall-for-specified-ip"></a>Tűzfal hozzáadása a megadott IP-címhez
 
-Azt is férjenek hozzá az Event Hubs-névtér egy korlátozott IP-címtartomány vagy egy adott IP-cím tűzfalszabályok használatával.
+Korlátozott számú IP-címtartomány vagy adott IP-cím esetén a tűzfalszabályok használatával korlátozható a hozzáférés a Event Hubs névtérhez.
 
-1. Kattintson a **kiválasztott hálózatok** választógombot ahhoz, hogy a többi a menüpontok tartalmazó lap az oldal felső részén.
-  ![kijelölt hálózatok](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
-2. Az a **tűzfal** terület a ***címtartomány*** rács, előfordulhat, hogy adjon hozzá egy vagy több adott IP-cím vagy IP-címek tartományát.
-  ![ip-címek hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall.png)
-3. Miután hozzáadta a több IP-cím (vagy IP-címek tartományát), kattintson a **mentése** annak érdekében, hogy a konfigurációs szolgáltatás oldalán menti a felső szalagon. Várjon néhány percet, amíg a jóváhagyást a portál értesítési jelenik meg.
-  ![ip-címek hozzáadása, és kattintson a Mentés gombra](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall-hitting-save.png)
+1. A lap tetején található **kijelölt hálózatok** választógombra kattintva engedélyezheti a lap további részeit a menüparancsokkal.
+  ![kiválasztott hálózatok](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
+2. A **tűzfal** szakaszban, a ***címtartomány*** rács alatt egy vagy több konkrét IP-címet vagy IP-címtartományt is hozzáadhat.
+  IP-címek ![hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall.png)
+3. Miután hozzáadta a több IP-címet (vagy IP-címtartományt), a felső menüszalagon **mentse a mentést** , hogy a konfiguráció a szolgáltatás oldalán legyen mentve. Várjon néhány percet, amíg megtörténik a megerősítés, hogy megjelenjen a portál értesítései.
+  ![adjon hozzá IP-címeket, és nyomja meg a Mentés gombot](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall-hitting-save.png)
 
-## <a name="adding-your-current-ip-address-to-the-firewall-rules"></a>A tűzfalszabályok az aktuális IP-cím hozzáadása
+## <a name="adding-your-current-ip-address-to-the-firewall-rules"></a>Az aktuális IP-cím hozzáadása a tűzfalszabályok számára
 
-1. Azt is megteheti az aktuális IP-címhez gyorsan ellenőrzésével a ***adja hozzá ügyfél IP-címét (az aktuális IP-cím)*** jelölőnégyzet feladatállapotában a ***címtartomány*** rács.
-  ![jelenlegi IP-cím hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save.png)
-2. Miután hozzáadta a tűzfalszabályok az aktuális IP-címhez, nyomja le az **mentése** annak érdekében, hogy a konfigurációs szolgáltatás oldalán menti a felső szalagon. Várjon néhány percet, amíg a jóváhagyást a portál értesítési jelenik meg.
-  ![Adja hozzá az aktuális IP-címet, és kattintson a Mentés gombra](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save-after-saving.png)
+1. Az aktuális IP-címet gyorsan is hozzáadhatja az ***ügyfél IP-címének hozzáadása (az aktuális IP-cím)*** jelölőnégyzet bejelölésével, közvetlenül a ***címtartomány*** rácsa felett.
+  ![aktuális IP-cím hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save.png)
+2. Miután hozzáadta a jelenlegi IP-címét a tűzfalszabályok számára, a felső menüszalagon a **Mentés** gombra kattintva ellenőrizheti, hogy a konfiguráció a szolgáltatás oldalán van-e mentve. Várjon néhány percet, amíg megtörténik a megerősítés, hogy megjelenjen a portál értesítései.
+  ![az aktuális IP-cím hozzáadása és a Mentés megnyomva](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save-after-saving.png)
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben az oktatóanyagban, integrált virtuális hálózati végpontokat és -tűzfalszabályok egy meglévő Event Hubs-névtér. Hogyan tanulással, hogy:
+Ebben az oktatóanyagban integrált Virtual Network-végpontokat és tűzfalszabályok egy meglévő Event Hubs névtérrel. Megtanulta, hogyan:
 > [!div class="checklist"]
-> * Hogyan lehet virtuális hálózatokon a Szolgáltatásvégpontok integrálása az Event Hubs-névtér.
-> * Hogyan állíthatja be az Event Hubs-névtér-tűzfal (IP-szűrés).
+> * Virtuális hálózatok szolgáltatásbeli végpontok integrálása a Event Hubs névtérrel.
+> * A tűzfal (IP-szűrés) beállítása a Event Hubs névtérrel.
 
 
 [Azure portal]: https://portal.azure.com/

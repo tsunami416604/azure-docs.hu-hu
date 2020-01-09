@@ -2,20 +2,16 @@
 title: Azure Resource Manager-sablon üzembe helyezése egy Azure Automation runbook
 description: Azure Storage-ban tárolt Azure Resource Manager-sablon üzembe helyezése egy runbook
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
 keywords: PowerShell, runbook, JSON, Azure Automation
-ms.openlocfilehash: 922a4e8d98405de9e2b8420da4abf0e157011546
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366634"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
 
@@ -244,7 +240,7 @@ Ennyi az egész! Most már használhatja a Azure Automation és az Azure Storage
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a Resource Manager-sablonokról: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md)
+* További információ a Resource Manager-sablonokról: [Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md)
 * Az Azure Storage használatának megkezdéséhez tekintse [meg az Azure Storage bemutatása](../storage/common/storage-introduction.md)című témakört.
 * További hasznos Azure Automation runbookok a következő témakörben talál: [a Azure Automationhoz tartozó Runbook és modul-galériák](automation-runbook-gallery.md).
 * További hasznos Resource Manager-sablonokat a következő témakörben talál: [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)

@@ -1,6 +1,5 @@
 ---
-title: Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – a felhasználói felület létrehozása az Angular
-titleSuffix: Azure Cosmos DB
+title: A szögletes alkalmazás felhasználói felületének létrehozása Azure Cosmos DB API-MongoDB (part3)
 description: A MongoDB-alkalmazások Azure Cosmos DB-n Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 3. része.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444747"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – a felhasználói felület létrehozása az Angular
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a felhasználói felület felépítése szögletes
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozzon létre egy új alkalmazást az Express, Angular és Node.js nyelven írt, és hogyan csatlakoztathatja az a [Cosmos DB API a mongodb-hez konfigurált Cosmos-fiók](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
 
 Az oktatóanyag 3. része a [2. részre](tutorial-develop-mongodb-nodejs-part2.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -417,7 +416,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 2. A Visual Studio Code-ban váltson vissza a **heroes.components.ts** fájlra. Láthatja, hogy a `constructor(private heroService: HeroService) {}` sorban (13. sor), a `HeroService` egy piros vonallal alá van húzva. Kattintson a `HeroService` elemre, és a kódblokk bal oldalán megjelenik a villanykörte ikon. Kattintson a villanykörtére, majd a **HeroService importálása a „./hero.service” fájlból** vagy a **HeroService importálása az „app/hero.service” fájlból** lehetőségre.
 
-    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sornak a /app/hero.service mappára hivatkozik, módosítsa, hogy a helyi mappából a hero fájl hivatkozik (. / hero.service). A 2. sornak így kell kinéznie:
+    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sor a/app/Hero.Service mappára hivatkozik, módosítsa úgy, hogy az a helyi mappából (./Hero.Service) hivatkozik a Hero-fájlra. A 2. sornak így kell kinéznie:
     
     ```javascript
     import { HeroService } from "./hero.service"
@@ -493,7 +492,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
      ![Helyileg futó főképalkalmazás](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

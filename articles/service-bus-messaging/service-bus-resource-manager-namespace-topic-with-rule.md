@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus témakör-előfizetés és-szabály létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
+title: Service Bus témakör-előfizetés és-szabály létrehozása az Azure-sablon használatával
 description: Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: dc61fb8e066c6189b5607a6e1cd479cb812466f7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d4c4f055114ccd0be4bbc588b7785eb0fb2f48c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426892"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával
 
@@ -185,7 +185,7 @@ Ismerje meg, hogyan kezelheti ezeket az erőforrásokat a következő cikkek meg
 * [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
 * [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md

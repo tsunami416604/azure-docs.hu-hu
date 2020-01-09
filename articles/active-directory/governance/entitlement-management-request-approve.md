@@ -1,5 +1,5 @@
 ---
-title: Hozzáférési kérelmek jóváhagyása vagy megtagadása az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: Hozzáférési kérelmek jóváhagyása vagy megtagadása – Azure AD-jogosultságok kezelése
 description: Megtudhatja, hogyan engedélyezheti vagy tagadhatja meg a hozzáférési csomagra irányuló kérelmeket Azure Active Directory jogosultságok kezelésében a saját hozzáférési portál használatával.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422520"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 

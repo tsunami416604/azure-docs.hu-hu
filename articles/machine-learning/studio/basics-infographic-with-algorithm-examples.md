@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 75f1424c68f3fe78f0dbf5e729943771ff25a09d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b57728b56efc84b903ed442c0dea7e70d4eb5bb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454836"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető infografika: a gépi tanulás alapjai algoritmuspéldákkal
 
@@ -34,8 +34,8 @@ A [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) a pr
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>További segítség a kezdők és a haladó felhasználók algoritmusai számára
 
 * A gépi tanulási algoritmusok különböző típusaival kapcsolatos mélyebb megbeszélések, hogyan használják őket, és hogyan választhatja ki a legmegfelelőbb megoldást a megoldásához: [algoritmusok kiválasztása Microsoft Azure Machine learning Studio (klasszikus)](algorithm-choice.md).
-* A Machine Learning Studio klasszikus verziójában elérhető gépi tanulási algoritmusok kategóriája alapján a [modell inicializálása][initialize-model] a Machine learning Studio (klasszikus) algoritmus és a modul súgójában található.
-* Az Machine Learning Studio klasszikus verziójában található algoritmusok és modulok teljes betűrendes listáját a (Z) Machine Learning Studio (klasszikus) [Machine learning Studio (klasszikus) modulok listáját][a-z-list] ismertető témakörben találhatja meg.
+* A Machine Learning Studio (klasszikus) szolgáltatásban elérhető gépi tanulási algoritmusok kategóriája alapján a következő témakörben talál információt: [inicializálási modell][initialize-model] a Machine learning Studio (klasszikus) algoritmus és modul súgójában.
+* Machine Learning Studio (klasszikus) algoritmusok és modulok teljes betűrendes listáját a (Z) Machine Learning Studio (klasszikus) [Machine learning Studio (klasszikus) modulok listájában][a-z-list] találhatja meg.
 * A rendelkezésre álló Azure AI Gallery és számos, Közösség által létrehozott erőforrás áttekintését lásd: [erőforrások megosztása és felderítése a Azure AI Gallery](gallery-how-to-use-contribute-publish.md).
 
 

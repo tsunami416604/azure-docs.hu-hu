@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408672"
 ---
 # <a name="use-the-azure-maps-services-module"></a>A Azure Maps Services modul használata
 
@@ -29,14 +29,14 @@ A Azure Maps web SDK egy *Services modult*biztosít. Ez a modul egy segítő kö
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Azt is megteheti, hogy helyileg tölti be a Azure Maps web SDK forráskódját az [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM csomag használatával, majd üzemelteti azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Használja ezt a parancsot:
+    - Azt is megteheti, hogy az [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM csomag használatával helyileg betölti a Azure Maps web SDK forráskódját, majd futtatja azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Használja ezt a parancsot:
     
-        > **NPM telepítése Azure-Maps-Rest**
+        > **npm install azure-maps-rest**
     
         Ezután adjon hozzá egy parancsfájl-hivatkozást a fájl `<head>` eleméhez:
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
 1. Hitelesítési folyamat létrehozása. A szolgáltatás URL-címének ügyféloldali végpontjának inicializálásához létre kell hoznia a folyamatot. A Azure Maps keresési szolgáltatás ügyfelének hitelesítéséhez használja a saját Azure Maps fiókjának kulcsát vagy Azure Active Directory (Azure AD) hitelesítő adatait. Ebben a példában a keresési szolgáltatás URL-ügyfele lesz létrehozva. 
@@ -163,7 +163,29 @@ A Azure Maps web SDK egy *Services modult*biztosít. Ez a modul egy segítő kö
 Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>a szolgáltatások modullal</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>További lépések
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Felhő-támogatás Azure Government
+
+A Azure Maps web SDK támogatja a Azure Government-felhőt. A Azure Maps web SDK eléréséhez használt összes JavaScript és CSS URL-cím változatlan marad, azonban a következő feladatokat kell elvégezni a Azure Maps platform Azure Government Cloud-verziójához való kapcsolódáshoz.
+
+Az interaktív térkép vezérlőelem használatakor adja hozzá a következő kódrészletet a `Map` osztály egy példányának létrehozása előtt. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Győződjön meg arról, hogy a Térkép és a szolgáltatások hitelesítése során Azure Maps hitelesítési adatokat használ a Azure Government Cloud platformon.
+
+A szolgáltatások modul használatakor a szolgáltatás tartományát be kell állítani az API URL-végpontok példányának létrehozásakor. A következő kód például létrehozza a `SearchURL` osztály egy példányát, és a tartományt a Azure Government felhőre mutat.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Ha közvetlenül fér hozzá a Azure Maps REST-szolgáltatásokhoz, módosítsa az URL-tartományt `atlas.azure.us`re. Ha például a Search API szolgáltatást használja, módosítsa az URL-tartományt `https://atlas.microsoft.com/search/`ról `https://atlas.azure.us/search/`re.
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

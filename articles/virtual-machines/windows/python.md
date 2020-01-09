@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461091"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
@@ -125,7 +125,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>A virtuális gép és a támogató erőforrások létrehozása
 
-Az összes erőforrást egy [erőforráscsoporthoz](../../azure-resource-manager/resource-group-overview.md)kell foglalni.
+Az összes erőforrást egy [erőforráscsoporthoz](../../azure-resource-manager/management/overview.md)kell foglalni.
 
 1. Erőforráscsoport létrehozásához adja hozzá ezt a függvényt a. a. file-fájl változói után:
 
@@ -570,7 +570,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
     Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. Az alkalmazás befejezését követően több percet is igénybe vehet, mielőtt az összes erőforrást és az erőforráscsoportot törölné.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - További információ az [Azure Python-könyvtárról](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

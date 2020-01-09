@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430856"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -36,7 +36,7 @@ A parancsmagok a Azure Active Directory PowerShell V2 modul részét képezik. A
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-parancsmagok telepítése
 
-A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows PowerShellhez készült Azure Active Directory PowerShell for Graph modul összes régebbi verzióját, és telepítse az [Azure Active Directory PowerShell for Graph 2.0.0.137-es nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Ügyeljen arra, hogy a PowerShell-parancsok futtatása előtt távolítsa el a Azure Active Directory PowerShell a Graph-modul korábbi verzióját a Windows PowerShellhez, és telepítse a [Graph nyilvános előzetes kiadásához tartozó Azure Active Directory PowerShellt (a 2.0.0.137-nál későbbi)](https://www.powershellgallery.com/packages/AzureADPreview) .
 
 1. Nyissa meg a Windows PowerShell alkalmazást rendszergazdaként.
 2. Távolítsa el az AzureADPreview korábbi verzióit.
@@ -53,7 +53,7 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Beállítások létrehozása a címtár szintjén
-Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a címtárban található összes Office 365-csoportra érvényesek. A Get-AzureADDirectorySettingTemplate parancsmag csak a [Graph Azure ad PowerShell előzetes verziójú moduljában](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)érhető el.
+Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a címtárban található összes Office 365-csoportra érvényesek. A Get-AzureADDirectorySettingTemplate parancsmag csak a [Graph Azure ad PowerShell előzetes verziójú moduljában](https://www.powershellgallery.com/packages/AzureADPreview)érhető el.
 
 1. A Directorysetting objektumok-parancsmagokban meg kell adnia a használni kívánt SettingsTemplate AZONOSÍTÓját. Ha nem ismeri ezt az azonosítót, a parancsmag az összes beállítási sablon listáját adja vissza:
   
@@ -76,12 +76,13 @@ Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a 
 2. Használati útmutató URL-címének hozzáadásához először le kell kérnie a SettingsTemplate objektumot, amely meghatározza a használati útmutató URL-címét. Ez a Group. Unified sablon:
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. Ezután hozzon létre egy új beállítási objektumot a sablon alapján:
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. Ezután frissítse a használati útmutató értékét:
   
@@ -91,22 +92,57 @@ Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a 
 5. Ezután alkalmazza a beállítást:
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. Az értékeket a következő paranccsal olvashatja:
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>Beállítások frissítése a címtár szintjén
-A UsageGuideLinesUrl értékének a beállítás sablonban való frissítéséhez egyszerűen szerkessze az URL-címet a fenti 4. lépéssel, majd hajtsa végre az 5. lépést az új érték beállításához.
+A UsageGuideLinesUrl értékének a beállítás sablonban való frissítéséhez olvassa el az Azure AD aktuális beállításait, ellenkező esetben a UsageGuideLinesUrl eltérő meglévő beállítások felülírását.
 
-A UsageGuideLinesUrl értékének eltávolításához szerkessze az URL-címet üres karakterláncként a fenti 4. lépés használatával:
-
+1. Az aktuális beállítások beolvasása a Group. Unified SettingsTemplate:
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. Az aktuális beállítások keresése:
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   Kimenet:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. A UsageGuideLinesUrl értékének eltávolításához szerkessze az URL-címet üres sztringként:
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Ezután hajtsa végre az 5. lépést az új érték megadásához.
+4. Frissítés mentése a könyvtárba:
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>Sablon beállításai
 Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha másként nincs jelezve, ezeknek a szolgáltatásoknak prémium szintű Azure Active Directory P1 licencre van szükségük. 

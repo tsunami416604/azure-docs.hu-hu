@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl-Azure Cosmos DB RU/s frissítése a Table API
+title: PowerShell-parancsfájl az RU/s frissítéséhez Azure Cosmos DB Table API
 description: Ismerje meg, hogyan lehet PowerShell-parancsfájlokkal frissíteni egy adatbázis vagy egy tároló átviteli sebességét Azure Cosmos DB Table API fiókban
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8188089f216fa33ba958cf670bb321816387f5c9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444908"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Az RU/s frissítése Azure Cosmos DB-Table API táblához
 

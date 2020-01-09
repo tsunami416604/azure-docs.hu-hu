@@ -3,20 +3,16 @@ title: A Azure Automation hitelesítésének bemutatása
 description: Ez a cikk az Automation biztonságáról és az Azure Automation-fiókok számára elérhető különböző hitelesítési módszerekről nyújt áttekintést.
 keywords: automation-biztonság, automation biztonságossá tétele; automation-hitelesítés
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
-manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0a05497c05051576868c1311857d58caa0d76055
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420686"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Bevezetés a hitelesítési folyamatba az Azure Automationben  
 Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS).  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal.

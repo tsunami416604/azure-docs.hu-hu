@@ -1,5 +1,5 @@
 ---
-title: MSAL. js-problémák az Internet Explorerben & Microsoft Edge | Azure
+title: Problémák az Internet Explorerben & a Microsoft Edge-ben (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Az Internet Explorer és a Microsoft Edge böngészők használatával megismerheti a JavaScripthez készült Microsoft-hitelesítési függvénytár (MSAL. js) használata során felmerülő problémákat.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424330"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészőkkel kapcsolatos ismert problémák a MSAL. js segítségével
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL. js)
 
 ## <a name="issues-due-to-security-zones"></a>Biztonsági zónák miatti problémák
 Az IE-ben és a Microsoft Edge-ben történt hitelesítéssel kapcsolatos hibákról több jelentést is készítettünk (mivel a *Microsoft Edge böngésző verziójának*frissítése a 40.15063.0.0-re). Ezeket követjük nyomon, és tájékoztatták a Microsoft Edge-csapatot. Míg a Microsoft Edge egy megoldáson dolgozik, itt látható a gyakran előforduló problémák és a megvalósítható lehetséges megkerülő megoldások leírása.

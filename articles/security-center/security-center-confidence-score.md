@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355635"
 ---
-# <a name="alert-confidence-score"></a>Riasztás megbízhatósági pontszáma 
+# <a name="alert-confidence-score-preview"></a>Riasztási megbízhatósági pontszám (előzetes verzió)
 
 Azure Security Center az Azure-ban futtatott erőforrások láthatóságát biztosítja, és riasztást küld, ha észleli a lehetséges problémákat. A riasztások mennyisége nagy kihívást jelenthet a biztonsági műveletekért felelős csapat számára, és szükség lesz a vizsgálandó riasztások rangsorolására. A riasztások kivizsgálása összetett és időigényes lehet, ezért bizonyos riasztások figyelmen kívül lesznek hagyva.
 
-Security Center megbízhatósági pontszáma segíthet a csoport osztályozásában és a riasztások rangsorolásában. A Security Center automatikusan alkalmazza az iparági ajánlott eljárásokat, intelligens algoritmusokat és az elemzők által használt folyamatokat annak megállapítására, hogy a fenyegetés jogos-e, és hogy a megbízhatósági pontszám formájában hasznos elemzéseket biztosít-e.
+Security Center a megbízhatósági pontszám (jelenleg előzetes verzióban) segíthet a csapat osztályozásában és a riasztások rangsorolásában. A Security Center automatikusan alkalmazza az iparági ajánlott eljárásokat, intelligens algoritmusokat és az elemzők által használt folyamatokat annak megállapítására, hogy a fenyegetés jogos-e, és hogy a megbízhatósági pontszám formájában hasznos elemzéseket biztosít-e.
 
 ## <a name="how-the-confidence-score-is-triggered"></a>A megbízhatósági pontszám kiváltása
 
@@ -53,7 +53,7 @@ Használja Security Center megbízhatósági pontszámát, hogy rangsorolja a ri
 Ez a cikk azt ismerteti, hogyan használható a megbízhatósági pontszám a riasztási vizsgálat rangsorolásához. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
+* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
 
 
 

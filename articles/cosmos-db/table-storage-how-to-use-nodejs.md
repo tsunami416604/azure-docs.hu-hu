@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table storage vagy az Azure Cosmos DB Table API a Node.js használatával
+title: Az Azure Table Storage vagy a Azure Cosmos DB Table API használata a Node. js-ből
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441204"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure S
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 A `result.created` értéke `true`, amennyiben új táblát hoz létre, és `false`, amennyiben a tábla már létezik. A `response` a kérésre vonatkozó információkat tartalmaz.
 
 ### <a name="filters"></a>Szűrők
-A **TableService** objektummal opcionális szűrőket alkalmazhat a végrehajtott műveleteken. A szűrési műveletek közé tartozhat a naplózás, az automatikus újrapróbálkozás stb. A szűrők olyan objektumok, amelyek metódusokat implementálnak az alábbi aláírással:
+A **TableService** objektummal opcionális szűrőket alkalmazhat a végrehajtott műveleteken. A szűrési műveletek magukban foglalhatják a naplózást, az automatikus újrapróbálkozásokat stb. A szűrők olyan objektumok, amelyek az aláírással ellátott metódust implementálják:
 
 ```javascript
 function handle (requestOptions, next)
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Ha megvizsgálja a `continuationToken` objektumot, olyan tulajdonságokat fog találni, mint például a `nextPartitionKey`, `nextRowKey` és `targetLocation`, amelyeket az eredmények közti iterációhoz használhat.
 
-A és `top` `continuationToken` a együtt is használható az oldalméret beállításához. 
+Az oldalméret beállításához a `top` és a `continuationToken` is használható. 
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 A közös hozzáférésű jogosultságkódokkal (Shared access signatures, SAS) biztonságos és részletes hozzáférést biztosíthat a táblákhoz anélkül, hogy megadná Storage-fiókjának nevét vagy kulcsait. Az SAS-t gyakran használják az adatokhoz való korlátozott hozzáférés biztosítására, például arra, hogy a mobilalkalmazások hozzáférhessenek a lekérdezésrekordokhoz.
@@ -454,7 +454,7 @@ Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosít
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért lásd a következő forrásanyagokat.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439408"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 
@@ -160,7 +160,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
       
      ![Új adat-előállító lap](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátneveADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -169,11 +169,11 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
       - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-        Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+        Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. Válassza a **V2 (előzetes verzió)** értéket a **verzió** esetén.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a  **Create** (Létrehozás) gombra.      
+7. Kattintson a **Create** (Létrehozás) gombra.      
 8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -197,11 +197,11 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 2. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre. 
 
    ![Select Azure Blob Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket: 
 
     1. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet. 
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját. 
-    3. Kattintson a **Save** (Mentés) gombra. 
+    3. Kattintson a **Mentés** gombra. 
     
    ![Azure Storage-fiók beállításai](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -211,7 +211,7 @@ Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
 
 1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
 2. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
-3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
+3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket: 
 
     1. A **Név** mezőben adja meg az **AzureSqlDatabaseLinkedService** értéket. 
     2. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server-kiszolgálót.

@@ -1,5 +1,5 @@
 ---
-title: Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: Erőforrások létrehozása & jogosultságok kezelése – Azure AD
 description: Ismerje meg, hogyan hozhat létre új erőforrás-tárolót és hozzáférési csomagokat a Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422640"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -129,7 +129,7 @@ Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az infor
 
     ![Katalógus beállításainak szerkesztése](./media/entitlement-management-shared/catalog-edit.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="delete-a-catalog"></a>Katalógus törlése
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Managed Disks Storage konvertálása standard csomagról prémium vagy prémium szintre
+title: Felügyelt lemezek tárterületének konvertálása a standard és a prémium szintű SSD között
 description: Az Azure Managed Disks Storage standardról prémium vagy prémium szintre történő konvertálása az Azure CLI használatával.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd3c7112a70850d137f77d28e83c60916a96ea3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431507"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure Managed Disks Storage konvertálása standard csomagról prémium vagy prémium szintre
 
@@ -22,7 +22,7 @@ A nem felügyelt lemezek esetében ez a funkció nem támogatott. A nem [felügy
 
 Ez a cikk bemutatja, hogyan alakíthatja át a felügyelt lemezeket standardról prémium vagy prémium szintűre az Azure CLI használatával. Az eszköz telepítéséhez vagy frissítéséhez tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * A lemez átalakításához újra kell indítani a virtuális gépet (VM), ezért a lemezes tárolás áttelepítését egy már létező karbantartási időszakban kell ütemezni.
 * A nem felügyelt lemezek esetében először [alakítsa át a felügyelt lemezeket](convert-unmanaged-to-managed-disks.md) , hogy át lehessen váltani a tárolási lehetőségek között.
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 Kövesse az alábbi lépéseket:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a **virtuális gépek**listájából.
 3. Ha a virtuális gép nem áll le, válassza a **Leállítás** elemet a virtuális gép **Áttekintés** paneljének tetején, és várjon, amíg a virtuális gép leáll.
 4. A virtuális gép ablaktábláján válassza a menü **lemezek** elemét.

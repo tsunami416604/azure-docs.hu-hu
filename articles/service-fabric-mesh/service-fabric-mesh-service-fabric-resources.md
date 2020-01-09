@@ -1,95 +1,86 @@
 ---
-title: Az Azure Service Fabric Erőforrásmodell bemutatása |} A Microsoft Docs
-description: További információ a Service Fabric erőforrás modell, egy egyszerűsített megközelítése alkalmazások Service Fabric-háló.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Az Azure Service Fabric Resource Model bemutatása
+description: Ismerkedjen meg a Service Fabric erőforrás-modellel, amely a Service Fabric Mesh-alkalmazások definiálásának egyszerűsített módszere.
 author: vturecek
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cee0ada75c4ea265c7e9c598408eb6b01477d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352459"
 ---
-# <a name="introduction-to-service-fabric-resource-model"></a>Bevezetés a Service Fabric Erőforrásmodell
+# <a name="introduction-to-service-fabric-resource-model"></a>A Service Fabric Resource Model bemutatása
 
-A Service Fabric Erőforrásmodell ismerteti egy egyszerű módja egy Service Fabric-háló alkalmazást alkotó erőforrásokat határoz meg. Az egyéni erőforrások bármely Service Fabric-környezetbe is telepíthető.  A Service Fabric Erőforrásmodell egyben kompatibilis az Azure Resource Manager-modellben. A következő típusú erőforrásokat jelenleg ebben a modellben támogatottak:
+A Service Fabric erőforrás-modell egy egyszerű módszert ismertet a Service Fabric Mesh-alkalmazást alkotó erőforrások definiálásához. Az egyes erőforrások bármilyen Service Fabric környezetbe üzembe helyezhetők.  A Service Fabric erőforrás-modell a Azure Resource Manager modellel is kompatibilis. Ebben a modellben jelenleg a következő típusú erőforrások támogatottak:
 
 - Alkalmazások és szolgáltatások
 - Hálózatok
 - Átjárók
-- Titkos kulcsok és titkos kulcsok/értékek
+- Titkok és titkok/értékek
 - Kötetek
 
-Minden erőforrás erőforrás-fájlt, amely egy egyszerű YAML vagy JSON-dokumentum, amely ismerteti a háló alkalmazás, és ki van építve a Service Fabric platform deklaratív leírása.
+A rendszer minden erőforrást deklaratív módon ismertet egy erőforrás-fájlban, amely egy egyszerű YAML vagy JSON-dokumentum, amely leírja a Mesh alkalmazást, és a Service Fabric platformon van kiépítve.
 
 ## <a name="applications-and-services"></a>Alkalmazások és szolgáltatások
 
-Egy alkalmazás-erőforrást az üzembe helyezés, a verziókezelés és a egy háló alkalmazás teljes élettartama egysége. Mikroszolgáltatások képviselő egy vagy több, szolgáltatás-erőforrások állnak. Minden egyes szolgáltatás erőforrás, áll, amelyek egy vagy több, írja le, minden a tároló rendszerképét a kódcsomag társított futtatásához szükséges kódot csomagokat.
+Az alkalmazás-erőforrás a háló alkalmazás üzembe helyezésének, verziószámozásának és élettartamának egysége. A szolgáltatás egy vagy több olyan szolgáltatási erőforrásból áll, amely a szolgáltatást jelképezi. Az egyes szolgáltatási erőforrások egy vagy több kódból állnak, amelyek leírják mindazt, ami a programkódhoz tartozó tároló rendszerképének futtatásához szükséges.
 
 ![Alkalmazások és szolgáltatások][Image1]
 
-Service erőforrás deklarálja a következőket:
+A szolgáltatási erőforrások deklarálják a következőket:
 
-- Tároló nevét, verzióját és a beállításjegyzék
-- Az egyes tárolók szükséges CPU és memória-erőforrások
-- Hálózati végpont
-- Más erőforrások, például a hálózatok, kötetek és titkos kulcsok mutató hivatkozások 
+- Tároló neve, verziója és beállításjegyzéke
+- Az egyes tárolók számára szükséges CPU-és memória-erőforrások
+- Hálózati végpontok
+- Más erőforrásokra, például hálózatokra, kötetekre és titkos kulcsokra mutató hivatkozások 
 
-Service erőforrás részeként megadott kódcsomagok üzembe és aktiválása együtt, csoportként. A szolgáltatás-erőforrás azt is megtudhatja, hány példányt a szolgáltatás futtatásához, és is hivatkozik az egyéb erőforrások (például hálózati erőforrás) függ.
+A szolgáltatás-erőforrás részeként definiált összes kód csomag egy csoportként van telepítve és aktiválva. A szolgáltatási erőforrás azt is leírja, hogy a szolgáltatás hány példánya fusson, valamint más erőforrásokra (például hálózati erőforrásra) is hivatkozik.
 
-A háló alkalmazás több szolgáltatás épül fel, ha azok nem biztos, hogy együtt ugyanazon a csomóponton futnak. Ezenkívül az alkalmazás a frissítés során egy szolgáltatás frissítése sikertelen eredményez a korábbi verzióra visszaállításra minden szolgáltatás.
+Ha egy Mesh-alkalmazás több szolgáltatásból áll, azok nem garantáltan ugyanazon a csomóponton futnak együtt. Emellett az alkalmazás frissítése során az egyetlen szolgáltatás verziófrissítésének sikertelensége esetén az összes szolgáltatás visszakerül a korábbi verzióra.
 
-Korábban alluded, mivel mindegyik alkalmazáspéldány életciklusának egymástól függetlenül is felügyelhetők. Ha például egy alkalmazáspéldány egymástól függetlenül is frissíthető az alkalmazáspéldányok a. Általában, tartsa szolgáltatások számának az alkalmazások viszonylag kicsi, mivel a további szolgáltatások mindössze egy alkalmazás, annál nehezebb kezelésére válik minden egyes szolgáltatás egymástól függetlenül.
+Ahogy azt korábban is említettük, az egyes alkalmazás-példányok életciklusa egymástól függetlenül kezelhető. Például egy alkalmazás példánya a többi alkalmazás példányaitól függetlenül frissíthető. Általában a szolgáltatások számát egy alkalmazásban tartja elég kicsivé, ahogy az alkalmazásba helyezett több szolgáltatás, annál nehezebbé válik az egyes szolgáltatások egymástól független kezelése.
 
 ## <a name="networks"></a>Hálózatok
 
-Hálózati erőforrás külön-külön üzembe helyezhető erőforrásra, független egy alkalmazás vagy szolgáltatás-erőforrás, amely előfordulhat, hogy azok függőségként hivatkozni rá. Hozzon létre egy hálózati alkalmazások szolgál. A különböző alkalmazások több szolgáltatás ugyanazon a hálózaton része lehet.  További információkért olvassa el [hálózatkezelés a Service Fabric-háló alkalmazások](service-fabric-mesh-networks-and-gateways.md).
+A hálózati erőforrás különállóan telepíthető erőforrás, amely független olyan alkalmazás-vagy szolgáltatási erőforrástól, amely függőségként hivatkozik rá. Az alkalmazások hálózatának létrehozására szolgál. A különböző alkalmazások több szolgáltatása is lehet ugyanazon hálózat része.  További információért olvassa el a [hálózatkezelés Service Fabric Mesh-alkalmazásokban](service-fabric-mesh-networks-and-gateways.md)című témakört.
 
 > [!NOTE]
-> Az aktuális előzetes verzió csak az alkalmazások és hálózatok közötti egy az egyhez leképezést támogatja
+> Az aktuális előnézet csak egy-egy hozzárendelést támogat az alkalmazások és hálózatok között
 
 ![Hálózat és átjáró][Image2]
 
 ## <a name="gateways"></a>Átjárók
-Egy átjáró-erőforrást két hálózat csatlakozik, és átirányítja a forgalmat.  Az átjáró lehetővé teszi, hogy a szolgáltatások, külső ügyfelekkel való kommunikációhoz és a bejövő forgalmi biztosít az az oka.  Az átjáró használatával is lehet a háló-alkalmazás csatlakoztatása a saját, meglévő virtuális hálózattal. További információkért olvassa el [hálózatkezelés a Service Fabric-háló alkalmazások](service-fabric-mesh-networks-and-gateways.md).
+Az átjáró-erőforrások két hálózatot kapcsolnak össze, és a forgalmat irányítják.  Az átjáró lehetővé teszi, hogy a szolgáltatások kommunikálnak a külső ügyfelekkel, és bejövő forgalmat biztosítson a szolgáltatás (ok) ba.  Az átjárók a háló alkalmazás a saját, meglévő virtuális hálózattal való összekapcsolására is használhatók. További információért olvassa el a [hálózatkezelés Service Fabric Mesh-alkalmazásokban](service-fabric-mesh-networks-and-gateways.md)című témakört.
 
 ![Hálózat és átjáró][Image2]
 
 ## <a name="secrets"></a>Titkos kulcsok
 
-Titkos kódok erőforrások függetlenül üzembe helyezhető egy alkalmazás vagy szolgáltatás-erőforrás, amely előfordulhat, hogy azok függőségként hivatkozni rá. Titkos kulcsok biztonságos továbbítására az alkalmazások szolgál. A különböző alkalmazások több szolgáltatást is lehet hivatkozni értékeit a titkos kulcsot.
+A titkok erőforrásai olyan alkalmazás-vagy szolgáltatási erőforrástól függetlenül telepíthetők, amely függőségként hivatkozik rá. A szolgáltatás a titkok biztonságos kézbesítésére szolgál az alkalmazásokban. A különböző alkalmazások több szolgáltatása is hivatkozhat ugyanazon titok értékeire.
 
 ## <a name="volumes"></a>Kötetek
 
-Tárolók gyakran elérhetővé ideiglenes lemezek. Ideiglenes lemezek olyan rövid élettartamú, azonban, hogy egy új ideiglenes lemez lekérése, és elveszíti az adatokat, ha összeomlik, egy tárolót. Emellett akkor is nehéz ideiglenes lemezek az információk megosztása más tárolóktól. Kötetek, amely csatlakozik a tárolópéldányok állapotban maradnak használó belső könyvtárak. Kötetek általános célú a file storage biztosítanak, és lehetővé teszi olvasási/írási fájlt normál lemez i/o-fájl API-k használatával. A kötet erőforrás egy deklaratív módszert ismertetik, hogyan van csatlakoztatva egy könyvtárat és a biztonsági tárolási, (Azure Files kötet vagy a Service Fabric Reliable kötet).  További információkért olvassa el [állapot tárolására](service-fabric-mesh-storing-state.md#volumes).
+A tárolók gyakran teszik elérhetővé az ideiglenes lemezeket. Az ideiglenes lemezek elmúló jellegűek, ezért új ideiglenes lemezt kap, és elveszíti az adatokat, amikor a tároló összeomlik. A többi tárolóval rendelkező ideiglenes lemezekkel kapcsolatos információkat is nehéz megosztani. A kötetek olyan könyvtárak, amelyek az állapot megőrzéséhez használható tároló-példányokon belül vannak csatlakoztatva. A kötetek általános célú fájlmegosztást biztosítanak, és lehetővé teszik a fájlok olvasását/írását a normál lemez I/O-fájl API-jai használatával. A mennyiségi erőforrás egy deklaratív módszer, amely leírja, hogyan van csatlakoztatva egy könyvtár és a hozzá tartozó tároló (Azure Files kötet vagy Service Fabric megbízható kötet).  További információért olvassa el a [tárolás állapotot](service-fabric-mesh-storing-state.md#volumes).
 
 ![Kötetek][Image3]
 
 ## <a name="programming-models"></a>Programozási modellek
-Szolgáltatás-erőforrás csak egy tárolórendszerképet szeretne futtatni, amelyre a társított erőforrás kód csomag(ok) a szükséges. Tárolón belül bármely keretrendszer használatával anélkül, hogy tudni, hogy bármilyen nyelven, bármely kódot futtathatja, vagy a Service Fabric-háló adott API-k használata. 
+A szolgáltatási erőforráshoz csak a tároló rendszerképének futtatására van szükség, amely az erőforráshoz társított kód csomag (ok) ra hivatkozik. Bármilyen, bármilyen nyelven írt kódot futtathat a tárolón belül bármely keretrendszer használatával anélkül, hogy tudnia kellene vagy használni kellene Service Fabric Mesh-specifikus API-kat. 
 
-Az alkalmazás kódjában hordozható még a Service Fabric-háló kívül marad, és az alkalmazások központi telepítéseit a nyelv és keretrendszer, a szolgáltatások megvalósításához használt függetlenül konzisztens marad. Az alkalmazás az ASP.NET Core, Go, vagy csak a folyamatok és parancsprogramok halmaza, hogy a Service Fabric-háló erőforrás-alapú üzemi modell változatlan marad. 
+Az alkalmazás kódja Service Fabric hálón kívül is hordozható marad, és az alkalmazás központi telepítései konzisztensek maradnak a szolgáltatások megvalósításához használt nyelvtől vagy keretrendszertől függetlenül. Az Service Fabric Mesh erőforrás-telepítési modell nem azonos a ASP.NET Core, a go, vagy csak a folyamatok és parancsfájlok készletével. 
 
-## <a name="packaging-and-deployment"></a>Formátumokat támogató csomagolási és üzembe helyezés
+## <a name="packaging-and-deployment"></a>Csomagolás és üzembe helyezés
 
-Az erőforrás-modellje alapján Service Fabric-háló alkalmazásokat a Docker-tárolókként vannak csomagolva.  Service Fabric-háló egy megosztott, több-bérlős környezet, amely tárolókat biztosít magas szintű elkülönítés.  Ezeket az alkalmazásokat a JSON-formátumú, vagy egy YAML formátumú (amely majd alakul át, JSON) ismerteti. Egy háló-alkalmazást az Azure Service Fabric-háló üzembe helyezésekor, a JSON az alkalmazás leírására szolgáló egy Azure Resource Manager-sablon. Erőforrások az Azure-erőforrások vannak rendelve.  A háló alkalmazás Service Fabric-fürt üzembe helyezésekor (önálló vagy az Azure-ban üzemeltetett), a az alkalmazás leírására szolgáló JSON-ja formátuma a következőhöz hasonló az Azure Resource Manager-sablon.  Üzembe helyezését követően háló alkalmazások HTTP-kapcsolatok vagy az Azure CLI segítségével is felügyelhetők. 
+Az erőforrás-modellen alapuló Service Fabric Mesh-alkalmazások a Docker-tárolóként vannak csomagolva.  Service Fabric Mesh egy megosztott, több-bérlős környezet, és a tárolók magas szintű elkülönítést biztosítanak.  Ezeket az alkalmazásokat JSON-formátum vagy YAML-formátum (ezt követően JSON-re konvertálva) írják le. Amikor Mesh-alkalmazást telepít az Azure Service Fabric Meshba, az alkalmazás leírására használt JSON egy Azure Resource Manager sablon. Az erőforrások az Azure-erőforrásokra vannak leképezve.  Ha egy Mesh-alkalmazást Service Fabric fürtre (önálló vagy Azure-beli) helyez üzembe, az alkalmazás leírásához használt JSON formátuma egy Azure Resource Manager sablonhoz hasonlít.  A üzembe helyezést követően a háló alkalmazások a HTTP-interfészeken vagy az Azure CLI-n keresztül felügyelhetők. 
 
 
-## <a name="next-steps"></a>További lépések 
-Service Fabric-háló kapcsolatos további információkért olvassa el a áttekintése:
-- [Service Fabric-háló áttekintése](service-fabric-mesh-overview.md)
+## <a name="next-steps"></a>Következő lépések 
+Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az áttekintést:
+- [Service Fabric Mesh – áttekintés](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-service-fabric-resources/AppsAndServices.png
 [Image2]: media/service-fabric-mesh-service-fabric-resources/NetworkAndGateway.png

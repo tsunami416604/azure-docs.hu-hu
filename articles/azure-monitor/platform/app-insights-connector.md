@@ -4,15 +4,15 @@ description: A Application Insights Connector megoldással diagnosztizálhatja a
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396546"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
@@ -61,7 +61,7 @@ A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjt
 1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárást.
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Application Insights megnyitásához válassza **az összes szolgáltatás** elemet. Ezután keressen rá Application Insights. 
 3. Az **előfizetések**területen válasszon ki egy Application Insights erőforrásokkal rendelkező előfizetést, majd a **név**területen válasszon ki egy vagy több alkalmazást.
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 Körülbelül 30 perc alatt az adatok elérhetővé válnak, és a Application Insights csempe frissül az adatokkal, például a következő képpel:
 
@@ -180,10 +180,10 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Type (Típus) | ApplicationInsights |
 | Ügyfélip |   |
 | TimeGenerated | A rekord létrehozásának időpontja |
-| applicationId | A Application Insights alkalmazás kialakítási kulcsa |
-| applicationName | A Application Insights alkalmazás neve |
+| ApplicationId | A Application Insights alkalmazás kialakítási kulcsa |
+| ApplicationName | A Application Insights alkalmazás neve |
 | RoleInstance | A kiszolgáló gazdagépének azonosítója |
-| deviceType | Ügyféleszközök |
+| DeviceType | Ügyféleszközök |
 | ScreenResolution |   |
 | Kontinens | Az a kontinens, ahol a kérelem származik |
 | Ország/régió | Az ország/régió, ahol a kérés származik |
@@ -192,11 +192,11 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | isSynthetic | Azt jelzi, hogy a kérést egy felhasználó vagy egy automatikus metódus hozta-e létre. True = automatizált metódus vagy hamis = felhasználó által generált |
 | SamplingRate | A portálra eljuttatott SDK által generált telemetria százalékos aránya. Tartomány 0,0 – 100.0. |
 | SampledCount | 100/(SamplingRate). Például: 4 =&gt; 25% |
-| IsAuthenticated | igaz vagy hamis |
+| IsAuthenticated | Igaz vagy hamis |
 | OperationID | Az azonos műveleti AZONOSÍTÓval rendelkező elemek a portálon kapcsolódó elemként jelennek meg. Általában a kérelem azonosítója |
 | ParentOperationID | A szülő művelet azonosítója |
 | OperationName |   |
-| sessionId | A kérést létrehozó munkamenet egyedi azonosítására szolgáló GUID |
+| SessionId | A kérést létrehozó munkamenet egyedi azonosítására szolgáló GUID |
 | SourceSystem | ApplicationInsights |
 
 ### <a name="availability-specific-fields"></a>Rendelkezésre állásra vonatkozó mezők
@@ -256,7 +256,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Gazdagép | Webkiszolgáló-gazdagép |
 | URLBase | A kérelem teljes URL-címe |
 | ApplicationProtocol | Az alkalmazás által használt protokoll típusa |
-| requestCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
+| RequestCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
 | RequestDurationCount | 100/(mintavételi sebesség). Például: 4 =&gt; 25% |
 | RequestDurationMin | A mintául szolgáló rekordok esetében ebben a mezőben a bejelölt adatpontok minimális kérésének időtartama (ezredmásodpercben) látható. |
 | RequestDurationMax | A mintául szolgáló rekordok esetében ebben a mezőben a kérelmek maximális időtartama (ezredmásodpercben) látható a képviselt adatpontok esetében. |

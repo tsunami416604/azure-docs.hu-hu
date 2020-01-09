@@ -1,5 +1,5 @@
 ---
-title: Mik azok a hozzáférési felülvizsgálatok? – Az azure Active Directory |} A Microsoft Docs
+title: Mik azok a hozzáférési felülvizsgálatok? – Azure Active Directory | Microsoft Docs
 description: A Azure Active Directory hozzáférési felülvizsgálatok segítségével szabályozhatja a csoporttagság és az alkalmazások elérését, hogy megfeleljen a szervezet irányítási, kockázatkezelési és megfelelőségi kezdeményezéseinek.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422779"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -58,19 +58,21 @@ Attól függően, hogy mit szeretne áttekinteni, az Azure AD hozzáférési fel
 | --- | --- | --- | --- |
 | Biztonsági csoport tagjai</br>Office-csoporttagok | Megadott véleményezők</br>Csoport tulajdonosainak</br>Önálló felülvizsgálat | Azure AD hozzáférési felülvizsgálatok</br>Azure AD-csoportok | Hozzáférési panel |
 | Hozzárendelve egy csatlakoztatott alkalmazáshoz | Megadott véleményezők</br>Önálló felülvizsgálat | Azure AD hozzáférési felülvizsgálatok</br>Azure AD Enterprise-alkalmazások (előzetes verzió) | Hozzáférési panel |
-| Azure AD-szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
-| Azure-erőforrás szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Azure AD-szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portál |
+| Azure-erőforrás szerepkör | Megadott véleményezők</br>Önálló felülvizsgálat | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portál |
 
 
 ## <a name="onboard-access-reviews"></a>A fedélzeti hozzáférési felülvizsgálatok
 
 A hozzáférési felülvizsgálatok előkészítéséhez kövesse az alábbi lépéseket.
 
-1. Globális rendszergazdaként vagy felhasználói rendszergazdaként jelentkezzen be arra a [Azure Portal](https://portal.azure.com) , ahol hozzáférési felülvizsgálatokat kíván használni.
+1. Lépjen a [Azure Portal](https://portal.azure.com) a hozzáférési felülvizsgálatok kezeléséhez, és jelentkezzen be globális rendszergazdaként vagy felhasználói rendszergazdaként.
 
-1. A bal oldali navigációs sávon kattintson a **Azure Active Directory**elemre.
+1. Keresse meg és válassza ki a **Azure Active Directory**.
 
-1. A bal oldali menüben kattintson az **identitások szabályozása**elemre.
+      ![Azure Active Directory Azure Portal keresése](media/access-reviews-overview/search-azure-active-directory.png)
+
+1. Válassza az **identitás szabályozása**lehetőséget.
 
 1. Kattintson a **hozzáférési felülvizsgálatok**lehetőségre.
  
@@ -97,7 +99,7 @@ Ha készen áll a hozzáférési felülvizsgálatok üzembe helyezésére a szer
 
 ### <a name="which-users-must-have-licenses"></a>Mely felhasználóknak kell licenccel rendelkezniük?
 
-Minden, a hozzáférési felülvizsgálattal kommunikáló felhasználónak fizetős prémium szintű Azure AD P2 licenccel kell rendelkeznie. Példák erre vonatkozóan:
+Minden, a hozzáférési felülvizsgálattal kommunikáló felhasználónak fizetős prémium szintű Azure AD P2 licenccel kell rendelkeznie. Példák:
 
 - Hozzáférési felülvizsgálatot létrehozó rendszergazdák
 - Hozzáférési felülvizsgálatot végző tulajdonosok csoportosítása

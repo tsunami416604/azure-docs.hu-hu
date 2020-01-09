@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461142"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Cognitive Services-erőforrás csatlakoztatása egy készségkészlet az Azure-ban Cognitive Search 
 
-Az AI-algoritmusok a tartalom átalakításához használt [dúsítási folyamatokat](cognitive-search-concept-intro.md) használják az Azure Cognitive Searchban. Ezek az algoritmusok az Azure Cognitive Services-erőforrásokon alapulnak, beleértve a képelemzési és optikai karakterfelismerési (OCR), valamint a [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) az entitások felismeréséhez, a fő kifejezés kinyeréséhez és más dúsításhoz szükséges [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) . Ahogy az Azure Cognitive Search a dokumentumok dúsításának céljára szolgál, az algoritmusokat egy *készségkészlet*helyezi *el,* és *egy indexelő az indexelés során* hivatkozik rá.
+A dúsítási folyamat Azure-Cognitive Search való konfigurálásakor a korlátozott számú dokumentum díjmentesen bővíthető. Nagyobb és gyakoribb munkaterhelések esetén számlázható Cognitive Services-erőforrást kell csatolni.
 
-A korlátozott számú dokumentumot ingyenesen bővítheti. Az is előfordulhat, hogy számlázható Cognitive Services erőforrást is csatolhat egy *készségkészlet* nagyobb és gyakoribb számítási feladatokhoz. Ebből a cikkből megtudhatja, hogyan csatolhat számlázható Cognitive Services-erőforrásokat a dokumentumok az Azure Cognitive Search [indexelése](search-what-is-an-index.md)során történő gazdagítása érdekében.
+Ebből a cikkből megtudhatja, hogyan csatolhat egy erőforrást úgy, hogy hozzárendel egy kulcsot egy olyan készségkészlet, amely a dúsítási folyamatot definiálja.
 
-> [!NOTE]
-> A számlázható események közé tartozik a Cognitive Services API-k és a képek kinyerésének meghívása az Azure Cognitive Search dokumentum-csinos szakaszának részeként. Nem számítunk fel díjat a dokumentumokból kinyert szövegből vagy a Cognitive Servicest nem meghívó ismeretekből.
->
-> A számlázható képességek végrehajtása az [Cognitive Services utólagos elszámolású áron](https://azure.microsoft.com/pricing/details/cognitive-services/)érhető el. A képek kibontásával kapcsolatos díjszabásért tekintse meg az [Azure Cognitive Search díjszabását ismertető oldalt](https://go.microsoft.com/fwlink/?linkid=2042400).
+## <a name="resources-used-during-enrichment"></a>A dúsítás során használt erőforrások
+
+Az Azure Cognitive Search függ a Cognitive Servicestől, beleértve a képelemzéshez és az optikai karakterfelismeréshez (OCR), a természetes nyelvi feldolgozáshoz [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) , valamint más, például a [szöveg fordításához](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)szükséges bővítésekhez [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) . Az Azure Cognitive Search-bővítés kontextusában ezeket az AI-algoritmusokat egy *készségkészlet*helyezi el *, és*az indexelés során egy *Indexelő* hivatkozik rá.
+
+## <a name="how-billing-works"></a>A számlázás működése
+
++ Az Azure Cognitive Search a készségkészlet megadott Cognitive Services erőforrás-kulcsot használja a képek és a szöveg gazdagítása érdekében. A számlázható képességek végrehajtása az [Cognitive Services utólagos elszámolású áron](https://azure.microsoft.com/pricing/details/cognitive-services/)érhető el.
+
++ A képek kinyerése egy Azure Cognitive Search művelet, amely akkor fordul elő, ha a rendszer a dúsítás előtt megrepedt a dokumentumokat. A rendszerkép kibontása számlázható. A képek kibontásával kapcsolatos díjszabásért tekintse meg az [Azure Cognitive Search díjszabását ismertető oldalt](https://go.microsoft.com/fwlink/?linkid=2042400).
+
++ A szöveg kibontása a dokumentum csinos kifejezésében is előfordul. Nem számlázható.
+
++ A Cognitive Servicest nem meghívó készségek, beleértve a feltételes, a formázó, a szöveges egyesítés és a szöveg felosztása, nem számlázható.
 
 ## <a name="same-region-requirement"></a>Azonos régióra vonatkozó követelmény
 
@@ -33,7 +42,7 @@ Az Azure Cognitive Search és az Azure Cognitive Services ugyanazon a régión b
 Egy szolgáltatás nem helyezhető át a régiók között. Ha ezt a hibaüzenetet kapja, hozzon létre egy új Cognitive Services erőforrást ugyanabban a régióban, mint az Azure Cognitive Search.
 
 > [!NOTE]
-> Néhány beépített képesség nem regionális Cognitive Services alapul (például a [szöveges fordítási képességre](cognitive-search-skill-text-translation.md)). Vegye figyelembe, hogy ha ezen ismeretek bármelyikét hozzáadjuk a készségkészlet, hogy az adatai nem garantáltak maradnak ugyanabban a régióban, mint az Azure Cognitive Search vagy Cognitive Services erőforrás. További részletekért tekintse meg a [szolgáltatás állapota lapot](https://aka.ms/allinoneregioninfo) .
+> Néhány beépített képesség nem regionális Cognitive Services alapul (például a [szöveges fordítási képességre](cognitive-search-skill-text-translation.md)). A nem regionális képesség azt jelenti, hogy a kérést az Azure Cognitive Search régiójától eltérő régióban lehet kiszolgálni. További információ a nem regionális szolgáltatásokról: [Cognitive Services termékek régiónként](https://aka.ms/allinoneregioninfo) oldal.
 
 ## <a name="use-free-resources"></a>Ingyenes erőforrások használata
 
@@ -158,7 +167,7 @@ A cikkben szereplő díjak feltételezettek. A becslési folyamat szemléltetés
 
 Mindezt együttesen a $57,00-es számú 1 000-es PDF-dokumentumot kell fizetnie a leírt készségkészlet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 + [Az Azure Cognitive Search díjszabási oldala](https://azure.microsoft.com/pricing/details/search/)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446476"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Oktatóanyag: űrlap-felismerő használata a Azure Logic Apps a számlák elemzéséhez
 
@@ -85,12 +85,12 @@ Kezdjük! A munkafolyamat beállításához kövesse az alábbi lépéseket.
    |----------|-------|-------------|
    | **Name (Név)** | <*Logic-app-name*> | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket (`-`), aláhúzást (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |
-   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve* > | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](./../../azure-resource-manager/resource-group-overview.md) neve. Ez a példa a "My-First-LA-RG" kifejezést használja. |
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve*> | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](./../../azure-resource-manager/management/overview.md) neve. Ez a példa a "My-First-LA-RG" kifejezést használja. |
    | **Hely** | <*Azure-régió*> | A logikai alkalmazás adatainak tárolására szolgáló régió. Ez a példa a "West US"-t használja. |
    | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztárán válassza az **értesítések**  >  a telepített logikai alkalmazás**erőforrásának keresése** lehetőséget. Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztárán válassza az **értesítések** > a telepített logikai alkalmazás **erőforrásának keresése** lehetőséget. Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
 
    Megnyílik a Logikaialkalmazás-tervező, és egy bemutató videót és a gyakran használt triggereket tartalmazó oldalt jelenít meg. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
 
@@ -131,7 +131,7 @@ Ahhoz, hogy az űrlap-felismerő szolgáltatással elemezze a számlákat, be ke
     > [!div class="mx-imgBorder"]
     > az űrlap-felismerő ![jának neve](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Kattintson a  **Create** (Létrehozás) gombra.
+    Kattintson a **Create** (Létrehozás) gombra.
 
 1. A **betanítási modell** párbeszédpanel **forrás**mezőjébe írja be annak a tárolónak az URL-címét, ahová a mintaadatok feltöltése megtörténjen.
 
@@ -175,7 +175,7 @@ Ebben a szakaszban a logikai alkalmazást úgy konfigurálja, hogy kibontsa az a
     > [!div class="mx-imgBorder"]
     > ![Kinyeri a tábla adatait a számlából](media/tutorial-form-recognizer-with-logic-apps/select-tables.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 

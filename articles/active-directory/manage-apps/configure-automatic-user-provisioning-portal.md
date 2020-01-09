@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430194"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
-Ez a cikk azt ismerteti, hogyan használható a [Azure Portal](https://portal.azure.com) a felhasználói fiókok automatikus üzembe helyezésére és kiépítés kezelésére az azt támogató alkalmazások esetében. További információ a felhasználói fiókok automatikus kiépítéséről és működéséről: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](user-provisioning.md).
+Ez a cikk a felhasználói fiókok automatikus üzembe helyezésének és kiépítési folyamatának általános lépéseit ismerteti az azt támogató alkalmazások esetében. A *felhasználói fiókok üzembe* helyezése a felhasználói fiókok rekordjainak létrehozása, frissítése és/vagy letiltása az alkalmazás helyi felhasználói profiljának tárolójába. A legtöbb felhőalapú és SaaS-alkalmazás a felhasználók szerepkörét és engedélyeit tárolja a felhasználó helyi felhasználói profiljának tárolójában, és az egyszeri bejelentkezéshez és a munkához való hozzáféréshez *szükség* van egy ilyen felhasználói rekord meglétét a felhasználó helyi tárolójába. A felhasználói fiókok automatikus kiépítésével kapcsolatos további információkért lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](user-provisioning.md).
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak az Azure AD-vel való automatikus kiépítés során. Először meg kell keresnie az alkalmazásra vonatkozó kiépítési beállítási oktatóanyagot, amely [bemutatja, hogyan integrálható az SaaS-alkalmazások Azure Active Directory használatával](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). A kiépítési kapcsolatok létrehozásához az alkalmazás és az Azure AD konfigurálásának lépésenkénti útmutatója is várható.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Alkalmazások keresése a portálon
 

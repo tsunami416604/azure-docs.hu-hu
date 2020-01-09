@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció, a LinkedIn Sales Navigator |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a LinkedIn Sales Navigator között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a LinkedIn Sales Navigator szolgáltatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a LinkedIn Sales Navigator között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,249 +13,179 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ce83df4d4de6d7816ee969a4fee153ad5457d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d8293b23559860e70191576db13c3cd14f520e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430887"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Oktatóanyag: A LinkedIn Sales Navigator az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a LinkedIn Sales Navigator szolgáltatással
 
-Ebben az oktatóanyagban megismerheti, hogyan integrálható a LinkedIn Sales Navigator az Azure Active Directory (Azure AD).
-Az Azure AD integrálása a LinkedIn Sales Navigator nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a LinkedIn Sales Navigatort Azure Active Directory (Azure AD) használatával. A LinkedIn Sales Navigator és az Azure AD integrálásával a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá a LinkedIn Sales Navigator Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett LinkedIn Sales Navigator (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A LinkedIn Sales navigatorhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a LinkedIn Sales Navigatorba az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a LinkedIn Sales Navigator, a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* LinkedIn Sales Navigator egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A LinkedIn Sales Navigator egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Támogatja a LinkedIn Sales Navigator **SP és IDP** által kezdeményezett egyszeri bejelentkezés
-
-* Támogatja a LinkedIn Sales Navigator **igény szerinti** felhasználók átadása
-
-* Támogatja a LinkedIn Sales Navigator [ **automatikus** felhasználók átadása](linkedinsalesnavigator-provisioning-tutorial.md)
+* A LinkedIn Sales Navigator támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A LinkedIn Sales Navigator **csak időben támogatja a** felhasználók üzembe helyezését
+* A LinkedIn Sales Navigator támogatja a [felhasználók **automatikus** kiépítési felállítását](linkedinsalesnavigator-provisioning-tutorial.md)
 
 ## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>LinkedIn Sales Navigator hozzáadása a katalógusból
 
-Az Azure AD integrálása a LinkedIn Sales Navigator konfigurálásához hozzá kell LinkedIn Sales Navigator a galériából a felügyelt SaaS-alkalmazások listájára.
+A LinkedIn Sales Navigator Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a LinkedIn Sales Navigatort a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**LinkedIn Sales Navigator hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **LinkedIn Sales Navigator** kifejezést a keresőmezőbe.
+1. Válassza a **LinkedIn Sales Navigator** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a LinkedIn értékesítési Navigátorhoz
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a LinkedIn Sales Navigator használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a LinkedIn Sales Navigatorban.
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a LinkedIn Sales Navigator konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[LinkedIn Sales Navigator SSO konfigurálása](#configure-linkedin-sales-navigator-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * A **[LinkedIn Sales Navigator tesztelési felhasználójának létrehozása](#create-linkedin-sales-navigator-test-user)** – ha a LinkedIn Sales Navigatorban található, a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A Keresés mezőbe írja be a **LinkedIn Sales Navigator**válassza **LinkedIn Sales Navigator** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A [Azure Portal](https://portal.azure.com/)a **LinkedIn Sales Navigator** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-    ![Az eredmények listájában a LinkedIn Sales Navigator](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a LinkedIn Sales Navigator nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a LinkedIn Sales Navigator hivatkozás kapcsolata kell hozható létre.
+    a. Az **azonosító** szövegmezőbe írja be az **entitás azonosítójának** értékét, majd másolja a LinkedIn-portál entitás-azonosító értékét az oktatóanyag későbbi részében ismertetett értékre.
 
-Az Azure AD egyszeri bejelentkezés vizsgálata a LinkedIn Sales Navigator konfigurálni, kell hajtsa végre a következő építőelemeket:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az " **ügyfél-hozzáférési (ACS-) URL-cím** " értéket, amely az oktatóanyag későbbi részében ismertetett, a LinkedIn-portálon megjelenő URL-cím értékét másolja.
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[LinkedIn Sales Navigator egyszeri bejelentkezés konfigurálása](#configure-linkedin-sales-navigator-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre a LinkedIn Sales Navigator tesztfelhasználó](#create-linkedin-sales-navigator-test-user)**  – van egy Britta Simon megfelelője a LinkedIn Sales Navigator, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+1. A LinkedIn Sales Navigator alkalmazás meghatározott formátumban várja az SAML-kikötéseket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-Az Azure AD egyszeri bejelentkezés konfigurálásához a LinkedIn Sales Navigator, hajtsa végre az alábbi lépéseket:
+    ![image](common/default-attributes.png)
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **LinkedIn Sales Navigator** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. A fentieken kívül a LinkedIn Sales Navigator alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
-
-    ![LinkedIn Sales Navigator-tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
-
-    a. A a **azonosító** szöveget adja meg a **Entitásazonosító** érték kell átmásolnia Entitásazonosító értéket az oktatóanyag későbbi részében ismertetett Linkedin-portálról.
-
-    b. A a **válasz URL-cím** szöveget adja meg a **helyességi feltétel fogyasztói Access (ACS) URL-cím** értéket kell átmásolnia helyességi feltétel fogyasztói Access (ACS) URL-cím, az oktatóanyag későbbi részében ismertetett értéket a Linkedin-portálról.
-
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
-
-    ![LinkedIn Sales Navigator-tartomány és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
-
-6. LinkedIn Sales Navigator-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. LinkedIn Sales Navigator alkalmazás vár a leképezendő nameidentifier **user.mail**, így a attribútumleképezés szerkesztéséhez kattintson a Szerkesztés ikonra, és módosítsa a attribútumleképezés szükséges.
-
-    ![image](common/edit-attribute.png)
-
-7. Emellett a fent LinkedIn Sales Navigator-alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. Felhasználói jogcímek című szakaszban a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
-
-    | Name (Név) | Adatforrás-attribútum|
+    | Név | Forrás attribútum|
     | --- | --- |
-    | email| user.mail |
-    | Szervezeti egység| user.department |
-    | Keresztnév| user.givenname |
-    | Vezetéknév| user.surname |
+    | e-mail| User. mail |
+    | Részleg| felhasználó. részleg |
+    | utónév| User. givenName |
+    | vezetéknév| felhasználó. vezetéknév |
+    | Egyedi felhasználói azonosító | User. mail |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![image](common/new-save-attribute.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
+1. A **LinkedIn Sales Navigator beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    c. Hagyja a **Namespace** üres.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    d. Válassza ki a forrás, **attribútum**.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-    f. Kattintson a **Ok**
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-    g. Kattintson a **Save** (Mentés) gombra.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a LinkedIn Sales Navigator elérésének biztosításával.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **LinkedIn Sales Navigator**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-9. Az a **állítsa be a LinkedIn Sales Navigator** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    a. Bejelentkezési URL
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    b. Azure AD-azonosító
+## <a name="configure-linkedin-sales-navigator-sso"></a>A LinkedIn Sales Navigator egyszeri bejelentkezésének konfigurálása
 
-    c. Kijelentkezési URL
+1. Egy másik böngészőablakban jelentkezzen be a **LinkedIn Sales Navigator** webhelyére rendszergazdaként.
 
-### <a name="configure-linkedin-sales-navigator-single-sign-on"></a>LinkedIn Sales Navigator egyszeri bejelentkezés konfigurálása
-
-1. Egy másik böngészőablakban, a bejelentkezés a **LinkedIn Sales Navigator** webhely rendszergazdaként.
-
-1. A **Account Center**, kattintson a **globális beállítások** alatt **beállítások**. Jelölje be **Sales Navigator** a legördülő listából.
+1. A **Account Centerben**kattintson a **globális beállítások** elemre a **Beállítások**területen. Emellett válassza a legördülő listából a **Sales Navigator** elemet.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Kattintson a **, vagy kattintson ide betöltése, és másolja ki az egyes mezők az űrlap** , és hajtsa végre az alábbi lépéseket:
+1. Kattintson **vagy kattintson ide az egyes mezők az űrlapról való betöltéséhez és másolásához** , majd hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-    a. Másolás **entitásazonosító** és illessze be azt a **azonosító** szöveget szövegmezőbe a **alapszintű SAML-konfigurációja** az Azure Portalon.
+    a. Másolja ki az **entitás azonosítóját** , és illessze be a Azure Portal **ALAPszintű SAML-konfigurációjának** **azonosító** szövegmezőbe.
 
-    b. Másolás **helyességi feltétel fogyasztói Access (ACS) URL-cím** és illessze be azt a **válasz URL-cím** szöveget szövegmezőbe a **alapszintű SAML-konfigurációja** az Azure Portalon.
+    b. Másolja ki az alkalmazás **-hozzáférési (ACS) URL-címet** , és illessze be az **ALAPszintű SAML-konfiguráció** **Válasz URL-címe** szövegmezőbe a Azure Portal.
 
-1. Lépjen a **LinkedIn adminisztrátori beállítások** szakaszban. Az Azure Portalon kattintson a letöltött XML-fájl feltöltése a **feltöltése XML-fájl** lehetőséget.
+1. Ugrás a **LinkedIn admin Settings** szakaszra. Töltse fel a Azure Portal letöltött XML-fájlt az **XML-fájl feltöltése** lehetőségre kattintva.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-1. Kattintson a **a** egyszeri bejelentkezés engedélyezéséhez. Egyszeri bejelentkezés állapota változik **nincs csatlakoztatva** való **csatlakoztatva**
+1. Az egyszeri bejelentkezés engedélyezéséhez kattintson **a be** gombra. Az SSO-állapot változásai **nem** csatlakoztatott **kapcsolattal**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-linkedin-sales-navigator-test-user"></a>A LinkedIn Sales Navigator tesztelési felhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+A társított Sales Navigator-alkalmazás támogatja az igény szerinti (JIT) felhasználók üzembe helyezését, és a hitelesítéssel rendelkező felhasználók automatikusan jönnek létre az alkalmazásban. A licencek **automatikus kiosztásának** aktiválása a felhasználóhoz való hozzárendeléshez.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+   ![Azure AD-tesztkörnyezet létrehozása](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával a LinkedIn Sales Navigator Azure egyszeri bejelentkezés használatára.
-
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **LinkedIn Sales Navigator**.
-
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában jelölje ki a **LinkedIn Sales Navigator**.
-
-    ![Az alkalmazások listáját az a LinkedIn Sales Navigator-hivatkozás](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-linkedin-sales-navigator-test-user"></a>LinkedIn Sales Navigator tesztfelhasználó létrehozása
-
-Társított Sales Navigator-alkalmazás támogatja a csak az idő szerinti (JIT) felhasználókiépítés, miután a felhasználók hitelesítésére automatikusan létrehozza az alkalmazásban. Aktiválja **rendelhet hozzá licenceket** rendel hozzá licenceket a felhasználó számára.
-
-   ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
-
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a LinkedIn Sales Navigator csempére kattint, akkor kell automatikusan megtörténik a a LinkedIn Sales Navigator, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a LinkedIn Sales Navigator csempére kattint, automatikusan be kell jelentkeznie a LinkedIn Sales Navigatorba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [A LinkedIn Sales Navigator kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

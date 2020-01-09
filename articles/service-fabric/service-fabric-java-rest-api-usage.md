@@ -1,90 +1,81 @@
 ---
-title: Az Azure Service Fabric Java ügyfél API-k |} A Microsoft Docs
-description: Hozzon létre, és a Service Fabric Java-ügyfél API-k használata a Service Fabric ügyfél REST API-specifikációnak használatával
-services: service-fabric
-documentationcenter: java
+title: Azure Service Fabric Java ügyféloldali API-k
+description: Service Fabric Java ügyféloldali API-k előállítása és használata Service Fabric ügyfél REST API-specifikáció használatával
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 97bba87331965b0f7ce20ec2ee089e0e18f72457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451667"
 ---
-# <a name="azure-service-fabric-java-client-apis"></a>Az Azure Service Fabric Java ügyfél API-k
+# <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java ügyféloldali API-k
 
-A Service Fabric-ügyfél API-k lehetővé teszi, hogy üzembe helyezése és kezelése a mikroszolgáltatás-alapú alkalmazásokat és tárolókat egy Service Fabric-fürtön az Azure-on alapuló, a helyszínen, a helyi fejlesztői gépen, vagy más felhőben. Ez a cikk azt ismerteti, hogyan hozhat létre, illetve a Service Fabric Java-ügyfél API-k fölött a Service Fabric-ügyfél REST API-k használata
+Service Fabric ügyfél API-k lehetővé teszik a Service-alapú alkalmazások és tárolók üzembe helyezését és kezelését az Azure-ban, a helyszínen, helyi fejlesztési gépen vagy más felhőben lévő Service Fabric-fürtökön. Ez a cikk azt ismerteti, hogyan lehet Service Fabric Java ügyféloldali API-kat előállítani és használni a Service Fabric ügyfél REST API-jai esetében
 
-## <a name="generate-the-client-code-using-autorest"></a>Az AutoRest használatával Ügyfélkód generálása
+## <a name="generate-the-client-code-using-autorest"></a>Az ügyfél kódjának előállítása az autorest használatával
 
-[AutoRest](https://github.com/Azure/autorest) egy eszköz, amely létrehozza a klienskódtárak RESTful webes szolgáltatásokhoz való hozzáférését. AutoRest bemenete egy szabvány, amely ismerteti a REST API OpenAPI-specifikáció formátumban. [A Service Fabric ügyfél REST API-k](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) hajtsa végre a specifikációnak.
+Az [autorest](https://github.com/Azure/autorest) egy olyan eszköz, amely ügyféloldali kódtárakat hoz létre a REST-alapú webszolgáltatásokhoz való hozzáféréshez. Az automatikus Rest bemenetbe való bevitel olyan specifikáció, amely a OpenAPI-specifikáció formátumával ismerteti a REST API. [Service Fabric ügyfél REST API-jai](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) ezt a specifikációt követik.
 
-Kövesse az alábbi lépéseket az AutoRest eszközzel Service Fabric Java-Ügyfélkód generálása.
+Kövesse az alábbi lépéseket az Service Fabric Java-ügyfél kódjának az autorest eszközzel történő létrehozásához.
 
 1. A node.js és az NPM telepítése a gépre
 
-    Ha Linux majd használ:
+    Ha Linuxot használ, akkor:
     ```bash
     sudo apt-get install npm
     sudo apt install nodejs
     ```
-    Ha Mac OS X majd használ:
+    Ha Mac OS X-et használ, akkor:
     ```bash
     brew install node
     ```
 
-2. Telepítse az NPM segítségével AutoRest.
+2. Az autorest telepítése a NPM használatával.
     ```bash
     npm install -g autorest
     ```
 
-3. Elágazást, mind a Klónozás [azure – rest-api-specifikáció](https://github.com/Azure/azure-rest-api-specs) -tárház a helyi számítógépen, majd lépjen a klónozott helyét, a gépen a terminálból.
+3. Az [Azure-REST-API-specs](https://github.com/Azure/azure-rest-api-specs) adattárat a helyi gépen, majd a klónozott helyet a számítógép terminálján nyissa meg.
 
 
-4. Nyissa meg a helyet a klónozott tárház a fentiekben említett.
+4. Nyissa meg az alább említett helyet a klónozott tárházban.
     ```bash
     cd specification\servicefabric\data-plane\Microsoft.ServiceFabric\stable\6.0
     ```
 
     > [!NOTE]
-    > Ha nem a fürt verziója 6.0. * Keresse meg a megfelelő könyvtárra a stabil mappában.
+    > Ha a fürt verziója nem 6,0. *, akkor nyissa meg a megfelelő könyvtárat a stabil mappában.
     >   
 
-5. Futtassa a következő autorest parancsot a java-Ügyfélkód generálásához.
+5. Futtassa a következő autorest parancsot a Java-ügyfél kódjának létrehozásához.
     
     ```bash
     autorest --input-file= servicefabric.json --java --output-folder=[output-folder-name] --namespace=[namespace-of-generated-client]
     ```
-   Alább látható egy példa, autorest használatának bemutatásához.
+   Az alábbi példa az autorest használatát szemlélteti.
    
     ```bash
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   A következő parancsot a veszi ``servicefabric.json`` specifikáció bemeneti fájlt, és a java ügyféloldali kódot állít elő ``java-rest-api-     code`` mappába helyezi a kódot, és ``servicefabricrest`` névtér. Ez a lépés után két mappát találjuk ``models``, ``implementation`` és a két fájlt ``ServiceFabricClientAPIs.java`` és ``package-info.java`` létrehozott a ``java-rest-api-code`` mappa.
+   A következő parancs beírja ``servicefabric.json`` a specifikációs fájlt bemenetként, és Java-ügyfélprogramot hoz létre a ``java-rest-api-     code`` mappában, és a kódot ``servicefabricrest`` névtérbe foglalja. Ennek a lépésnek a megtalálása után két mappát ``models``, ``implementation`` és két fájlt ``ServiceFabricClientAPIs.java`` és ``package-info.java`` generál a ``java-rest-api-code`` mappában.
 
 
-## <a name="include-and-use-the-generated-client-in-your-project"></a>Közé tartozik, és a generált ügyfél használja a projektben
+## <a name="include-and-use-the-generated-client-in-your-project"></a>A generált ügyfél belefoglalása és használata a projektben
 
-1. Adja hozzá a generált kódot megfelelő projektbe a Finderből. Azt javasoljuk, hogy hozzon létre egy könyvtárat a generált kóddal, és ez a tár tartalmazza a projekt.
-2. Ha egy könyvtárat hoz létre, akkor tartalmazza a következő függőséget a szalagtár-projektben. Ha az egy másik megközelítés hozzáadhatja a függőségi megfelelően.
+1. Adja hozzá megfelelően a generált kódot a projekthez. Javasoljuk, hogy hozzon létre egy könyvtárat a generált kóddal, és vegye fel ezt a kódtárat a projektbe.
+2. Ha egy könyvtárat hoz létre, a következő függőséget adja meg a könyvtár projektben. Ha egy másik módszert követ, akkor a függőség megfelelőnek kell lennie.
 
     ```
         GroupId:  com.microsoft.rest
         Artifactid: client-runtime
         Version: 1.2.1
     ```
-    Például, ha a buildelési rendszert, többek között az alábbiak a Maven használata a ``pom.xml`` fájlt:
+    Ha például a Maven Build rendszerét használja, a ``pom.xml`` fájlban a következők szerepelnek:
 
     ```xml
         <dependency>
@@ -94,7 +85,7 @@ Kövesse az alábbi lépéseket az AutoRest eszközzel Service Fabric Java-Ügyf
         </dependency>
     ```
 
-3. Hozzon létre egy RestClient, a következő kód használatával:
+3. Hozzon létre egy RestClient a következő kóddal:
 
     ```java
         RestClient simpleClient = new RestClient.Builder()
@@ -104,8 +95,8 @@ Kövesse az alábbi lépéseket az AutoRest eszközzel Service Fabric Java-Ügyf
             .build();
         ServiceFabricClientAPIs client = new ServiceFabricClientAPIsImpl(simpleClient);
     ```
-4. Az ügyfél objektum használja, és szükség szerint a megfelelő hívásokat. Íme néhány példa, amely ügyfélobjektummal használatát mutatja be. Feltételezzük, hogy az alkalmazáscsomag készített, és feltölti a lemezképtároló használata előtt az alábbi API-k.
-    * Alkalmazás üzembe helyezése
+4. Használja az ügyfél objektumot, és szükség szerint végezze el a megfelelő hívásokat. Íme néhány példa, amely bemutatja az ügyfél-objektum használatát. Feltételezzük, hogy az alkalmazáscsomag az alábbi API-k használata előtt lett felépítve és feltöltve a rendszerkép-tárolóba.
+    * Alkalmazás kiépítése
     
         ```java
             ApplicationTypeImageStorePath imageStorePath = new ApplicationTypeImageStorePath();
@@ -122,17 +113,17 @@ Kövesse az alábbi lépéseket az AutoRest eszközzel Service Fabric Java-Ügyf
             client.createApplication(applicationDescription);
         ```
 
-## <a name="understanding-the-generated-code"></a>A generált kódot ismertetése
-Minden API-ja található megvalósítási négy túlterheléssel. Ha vannak a választható paraméterek: ezután találjuk négy további változata, beleértve a választható paraméterek. Például érdemes lehet az API-t ``removeReplica``.
- 1. **nyilvános void removeReplica (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId, logikai forceRemove, hosszú időkorlátja)**
-    * Ez az a szinkron változó a removeReplica API-hívás
- 2. **nyilvános ServiceFuture\<Void > removeReplicaAsync (karakterlánc-nodeName, UUID partitionId, replicaId karakterláncot, logikai forceRemove, hosszú időtúllépés, végső ServiceCallback\<Void > serviceCallback)**
-    * Ez az API-hívás változat használható, ha használja a jövőbeli alapján aszinkron programozás és visszahívások használni kívánt
- 3. **nyilvános rendszernek megfigyelhetőnek\<Void > removeReplicaAsync (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId)**
-    * Ez az API-hívás változat használható, ha a reaktív jellegű aszinkron programozás használni kívánt
- 4. **nyilvános rendszernek megfigyelhetőnek\<ServiceResponse\<Void >> removeReplicaWithServiceResponseAsync (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId)**
-    * Ez mérettel bővült, API-hívás is használható, ha azt szeretné, használhatja a reaktív jellegű aszinkron programozás és foglalkozik a nyers rest-válasz
+## <a name="understanding-the-generated-code"></a>A generált kód ismertetése
+Minden API-hoz négy túlterhelést talál a megvalósításhoz. Ha választható paraméterek vannak, akkor négy további változatot talál, beleértve a választható paramétereket is. Vegyük például az API-``removeReplica``.
+ 1. **nyilvános Void removeReplica (karakterlánc csomópontnév, UUID partitionId, karakterlánc replicaId, logikai forceRemove, hosszú időkorlát)**
+    * Ez a removeReplica API-hívás szinkron változata
+ 2. **nyilvános ServiceFuture\<Void > removeReplicaAsync (karakterlánc csomópontnév, UUID partitionId, karakterlánc replicaId, logikai forceRemove, hosszú időtúllépés, végső ServiceCallback\<Void > serviceCallback)**
+    * Az API-hívás ezen változata akkor használható, ha a jövőbeli aszinkron programozást szeretné használni, és visszahívásokat használ
+ 3. **nyilvános megfigyelhető\<Void > removeReplicaAsync (string csomópontnév, UUID partitionId, string replicaId)**
+    * Az API-hívás ezen változata akkor használható, ha reaktív aszinkron programozást szeretne használni
+ 4. **nyilvános megfigyelhető\<ServiceResponse\<Void > > removeReplicaWithServiceResponseAsync (string csomópontnév, UUID partitionId, string replicaId)**
+    * Az API-hívás ezen változata akkor használható, ha reaktív aszinkron programozást szeretne használni, és a nyers Rest-választal foglalkozik.
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg [Service Fabric – REST API-k](https://docs.microsoft.com/rest/api/servicefabric/)
+## <a name="next-steps"></a>Következő lépések
+* A [Service FABRIC REST API](https://docs.microsoft.com/rest/api/servicefabric/) -k megismerése
 

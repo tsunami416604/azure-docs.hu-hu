@@ -1,5 +1,5 @@
 ---
-title: A vendég hozzáférésének kezelése hozzáférési felülvizsgálatokkal – Azure Active Directory | Microsoft Docs
+title: A vendég hozzáférésének kezelése hozzáférési felülvizsgálatokkal – Azure AD
 description: Vendég felhasználók felügyelete csoport tagjaiként vagy Azure Active Directory hozzáférési felülvizsgálattal rendelkező alkalmazáshoz rendelve
 services: active-directory
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422471"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>A vendég hozzáférésének kezelése az Azure AD hozzáférési felülvizsgálatokkal
 
 
-A Azure Active Directory (Azure AD) segítségével könnyedén engedélyezheti a szervezeti határokon átívelő együttműködést az [Azure ad B2B szolgáltatásával](../b2b/what-is-b2b.md). A más bérlők vendégeit a [rendszergazdák](../b2b/add-users-administrator.md) vagy [más felhasználók](../b2b/what-is-b2b.md)is meghívhatják. Ez a képesség a közösségi identitásokra, például a Microsoft-fiókokra is vonatkozik.
+A Azure Active Directory (Azure AD) segítségével könnyedén engedélyezheti a szervezeti határokon átívelő együttműködést az [Azure ad B2B szolgáltatásával](../b2b/what-is-b2b.md). A más bérlők vendégeit a rendszergazdák vagy [más felhasználók](../b2b/what-is-b2b.md)is [meghívhatják](../b2b/add-users-administrator.md) . Ez a képesség a közösségi identitásokra, például a Microsoft-fiókokra is vonatkozik.
 
 Azt is megteheti, hogy a vendég felhasználói megfelelő hozzáféréssel rendelkeznek. Megkérheti a vendégek saját maguk vagy döntéshozóik számára, hogy részt vegyenek a hozzáférési felülvizsgálatban, és hitelesítsék (vagy tanúsítják) a vendégek hozzáférését. A felülvizsgálatot végzők az Azure AD-ből származó javaslatok alapján dönthetnek arról, hogy az egyes felhasználóknak szükségük van-e folyamatos hozzáférésre. Ha egy hozzáférési felülvizsgálat elkészült, akkor módosításokat végezhet, és eltávolíthatja a hozzáférést azon vendégek számára, akiknek már nincs rá szükségük.
 
@@ -35,7 +35,7 @@ Azt is megteheti, hogy a vendég felhasználói megfelelő hozzáféréssel rend
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
+- Prémium szintű Azure AD P2
 
 További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
 
@@ -60,7 +60,7 @@ A hozzáférési felülvizsgálatok segítségével biztosíthatja, hogy a csopo
 
 1. Ha hozzáférési felülvizsgálatot szeretne létrehozni a csoport számára, válassza a felülvizsgálat lehetőséget, hogy csak a vendég felhasználói tagok szerepeljenek hozzá, és hogy a tagok maguk vizsgálják felül. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 
-2. Kérje meg az egyes vendégeket, hogy vizsgálják felül a saját tagjaikat. Alapértelmezés szerint minden olyan vendég, aki elfogadta a meghívót, e-mailt kap az Azure AD-től a hozzáférési felülvizsgálatra mutató hivatkozással. Az Azure AD utasításokkal rendelkezik a csoportokhoz [vagy alkalmazásokhoz való hozzáférés áttekintéséhez](perform-access-review.md).
+2. Kérje meg az egyes vendégeket, hogy vizsgálják felül a saját tagjaikat. Alapértelmezés szerint minden olyan vendég, aki elfogadta a meghívót, e-mailt kap az Azure AD-től a hozzáférési felülvizsgálatra mutató hivatkozással. Az Azure AD utasításokkal rendelkezik a [csoportokhoz vagy alkalmazásokhoz való hozzáférés áttekintéséhez](perform-access-review.md).
 
 3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md).
 
@@ -74,7 +74,7 @@ Kérhet egy szponzort, például egy csoport tulajdonosát, hogy áttekintse a v
 
 1. A csoport hozzáférési felülvizsgálatának létrehozásához válassza az Áttekintés lehetőséget, hogy csak a vendég felhasználói tagok szerepeljenek hozzá. Ezután meg kell adnia egy vagy több felülvizsgáló. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 
-2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint ezek mindegyike egy, a hozzáférési panelre mutató hivatkozást tartalmazó e-mailt kap az Azure AD-től, ahol áttekintik a [csoportokhoz vagy alkalmazásokhoz való hozzáférést](perform-access-review.md).
+2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint ezek mindegyike egy, a hozzáférési panelre mutató hivatkozást tartalmazó e-mailt kap az Azure AD-től, ahol [áttekintik a csoportokhoz vagy alkalmazásokhoz való hozzáférést](perform-access-review.md).
 
 3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md).
 
@@ -84,7 +84,7 @@ A hozzáférési felülvizsgálatok segítségével biztosíthatja, hogy az adot
 
 1. Ha hozzáférési felülvizsgálatot szeretne létrehozni az alkalmazáshoz, válassza a felülvizsgálatot, hogy csak a vendégek szerepeljenek, és hogy a felhasználók a saját hozzáférését vizsgálják felül. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 
-2. Kérje meg az egyes vendégeket, hogy tekintsék át a saját hozzáférését az alkalmazáshoz. Alapértelmezés szerint minden olyan vendég, aki elfogadta a meghívót, e-mailt kap az Azure AD-től. Ez az e-mail a szervezet hozzáférési paneljén található hozzáférési felülvizsgálatra mutató hivatkozást tartalmaz. Az Azure AD utasításokkal rendelkezik a csoportokhoz [vagy alkalmazásokhoz való hozzáférés áttekintéséhez](perform-access-review.md).
+2. Kérje meg az egyes vendégeket, hogy tekintsék át a saját hozzáférését az alkalmazáshoz. Alapértelmezés szerint minden olyan vendég, aki elfogadta a meghívót, e-mailt kap az Azure AD-től. Ez az e-mail a szervezet hozzáférési paneljén található hozzáférési felülvizsgálatra mutató hivatkozást tartalmaz. Az Azure AD utasításokkal rendelkezik a [csoportokhoz vagy alkalmazásokhoz való hozzáférés áttekintéséhez](perform-access-review.md).
 
 3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md).
 
@@ -96,7 +96,7 @@ Kérhet egy szponzort, például egy alkalmazás tulajdonosát, hogy ellenőrizz
 
 1. Ha hozzáférési felülvizsgálatot szeretne létrehozni az alkalmazáshoz, válassza a felülvizsgálatot, hogy csak a vendégek szerepeljenek. Ezután egy vagy több felhasználót kell megadnia felülvizsgáló. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 
-2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint ezek mindegyike egy, a hozzáférési panelre mutató hivatkozást tartalmazó e-mailt kap az Azure AD-től, ahol áttekintik a [csoportokhoz vagy alkalmazásokhoz való hozzáférést](perform-access-review.md).
+2. Kérje meg a felülvizsgálókat, hogy nyilvánítsanak véleményt. Alapértelmezés szerint ezek mindegyike egy, a hozzáférési panelre mutató hivatkozást tartalmazó e-mailt kap az Azure AD-től, ahol [áttekintik a csoportokhoz vagy alkalmazásokhoz való hozzáférést](perform-access-review.md).
 
 3. Ha mindenki elvégezte a felülvizsgálatot, állítsa le a hozzáférési felülvizsgálatot, és alkalmazza a módosításokat. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md).
 
@@ -111,13 +111,13 @@ Egyes szervezeteknél előfordulhat, hogy a vendégek nem ismerik a csoport tags
 
 2. Az adott csoport hozzáférési felülvizsgálatának létrehozásához válassza ki a véleményezőket a tagoknak. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md).
 
-3. Kérje meg az egyes vendégeket, hogy vizsgálják felül a saját tagjaikat. Alapértelmezés szerint minden olyan vendég kap egy e-mailt az Azure AD-től, aki elfogadta a meghívót, és a hozzáférési felülvizsgálatra mutató hivatkozást a szervezet hozzáférési paneljén. Az Azure AD utasításokkal rendelkezik a csoportokhoz [vagy alkalmazásokhoz való hozzáférés áttekintéséhez](perform-access-review.md).  Azok a vendégek, akik nem fogadták el a meghívót, megjelennek a felülvizsgálati eredményekben "nem bejelentett" néven.
+3. Kérje meg az egyes vendégeket, hogy vizsgálják felül a saját tagjaikat. Alapértelmezés szerint minden olyan vendég kap egy e-mailt az Azure AD-től, aki elfogadta a meghívót, és a hozzáférési felülvizsgálatra mutató hivatkozást a szervezet hozzáférési paneljén. Az Azure AD utasításokkal rendelkezik a [csoportokhoz vagy alkalmazásokhoz való hozzáférés áttekintéséhez](perform-access-review.md).  Azok a vendégek, akik nem fogadták el a meghívót, megjelennek a felülvizsgálati eredményekben "nem bejelentett" néven.
 
 4. Ha a felülvizsgálók adatokat adnak meg, állítsa le a hozzáférési felülvizsgálatot. További információ: [csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md).
 
 5. Távolítsa el a vendég hozzáférést a megtagadott vendégek számára, nem fejezte be a felülvizsgálatot, vagy korábban nem fogadta el a meghívót. Ha a vendégek némelyike olyan kapcsolattartó, aki kiválasztotta a felülvizsgálatban való részvételt, vagy korábban nem fogadtak el meghívót, letilthatja a fiókjaikat a Azure Portal vagy a PowerShell használatával. Ha a vendégnek már nincs szüksége a hozzáférésre, és nem egy partner, akkor a Azure Portal vagy a PowerShell használatával törölheti a felhasználói objektumot a címtárból a vendég felhasználói objektum törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 

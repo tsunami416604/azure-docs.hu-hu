@@ -1,7 +1,7 @@
 ---
 title: 'Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben az egyéni parancs paramétereinek érvényesítését adja hozzá
+description: Ebből a cikkből megtudhatja, hogyan adhat hozzá érvényesítéseket egy paraméterhez egyéni parancsokban.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 64e092405686caca7baeaf58f19d577a3f80e169
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446914"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)
 
@@ -41,12 +41,12 @@ Az érvényesítések megjelenítéséhez hozzon létre egy új parancsot, amely
 
    | Beállítás           | Ajánlott érték                                          | Leírás                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | Name (Név)              | Hőmérséklet                                              | A parancs paraméterének leíró neve                                                    |
-   | Kötelező          | igaz                                                     | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
-   | Válasz sablonja | "Milyen hőmérsékletet szeretne?"                       | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                              |
-   | Típus              | Szám                                                   | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                      |
-   | Ellenőrzés        | Minimális érték: 60, maximális érték: 80                             | A Number paraméterek esetében a paraméter értékének megengedett tartománya                              |
-   | Válasz sablonja | "Sajnos csak 60 és 80 fok között lehet beállítani"        | Ha az ellenőrzés sikertelen, a rendszer kérni fogja a frissített érték megadását.                                       |
+   | Név              | Hőmérséklet                                              | A parancs paraméterének leíró neve                                                    |
+   | Szükséges          | igaz                                                     | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
+   | Válasz sablonja | "– Milyen hőmérsékletet szeretne?                     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                              |
+   | Type (Típus)              | Szám                                                   | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                      |
+   | Ellenőrzés        | Minimális érték: 60, maximális érték: 80                             | A Number paraméterek esetében a paraméter értékének megengedett tartománya                             |
+   | Válasz sablonja | "– Sajnos csak 60 és 80 fok között lehet beállítani"      | Ha az ellenőrzés sikertelen, a rendszer kérni fogja a frissített érték megadását.                                       |
 
 1. Néhány példa mondatok hozzáadása
 
@@ -59,11 +59,11 @@ Az érvényesítések megjelenítéséhez hozzon létre egy új parancsot, amely
 
 1. Befejezési szabály hozzáadása az eredmény megerősítéséhez
 
-   | Beállítás    | Ajánlott érték                                         | Leírás                                        |
-   | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | Szabály neve  | Megerősítő üzenet                                    | A szabály célját leíró név          |
-   | Feltételek | Kötelező paraméter – hőmérséklet                        | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
-   | Műveletek    | SpeechResponse – "ok, beállítás: {hőmérséklet} fok" | A szabály feltételének teljesülésekor végrehajtandó művelet |
+   | Beállítás    | Ajánlott érték                                           | Leírás                                        |
+   | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
+   | Szabály neve  | Megerősítő üzenet                                      | A szabály célját leíró név          |
+   | Feltételek | Kötelező paraméter – hőmérséklet                          | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+   | Műveletek    | SpeechResponse-"-ok, beállítás: {hőmérséklet} fok" | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
 > [!TIP]
 > Ez a példa egy beszédfelismerési választ használ az eredmény megerősítéséhez. Példák a parancs ügyfél-művelettel való végrehajtásához: útmutató: az [ügyfél parancsainak teljesítése a SPEECH SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md)
@@ -79,3 +79,8 @@ Válassza ki a teszt panelt, és próbálkozzon néhány interakcióval.
 - Kimenet: "sajnálom, csak 60 és 80 fok között lehet beállítani"
 - Bemenet: tegyük 72 fok helyett
 - Kimenet: "ok, beállítás 72 fok"
+
+## <a name="next-steps"></a>Következő lépések
+
+> [!div class="nextstepaction"]
+> [Útmutató: megerősítés hozzáadása egyéni parancshoz (előzetes verzió)](./how-to-custom-speech-commands-confirmations.md)

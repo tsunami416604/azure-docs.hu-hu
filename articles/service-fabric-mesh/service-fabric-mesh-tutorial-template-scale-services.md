@@ -1,28 +1,19 @@
 ---
-title: Oktatóanyag – Az Azure Service Fabric Meshben futó alkalmazások méretezése | Microsoft Docs
+title: Oktatóanyag – az Azure Service Fabric Meshban futó alkalmazások méretezése
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan lehet méretezni a Service Fabric Meshben futó alkalmazások szolgáltatásait.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810428"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351821"
 ---
-# <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Oktatóanyag: A Service Fabric Meshben futó alkalmazás méretezése
+# <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Oktatóanyag: Az Azure Service Fabric Meshben futó alkalmazások méretezése
 
 Ez az oktatóanyag egy sorozat második része. Elsajátíthatja, hogyan méretezheti manuálisan egy alkalmazás több szolgáltatáspéldányát, amelyeket [előzőleg helyezett üzembe a Service Fabric Meshben](service-fabric-mesh-tutorial-template-deploy-app.md). Ha elkészült, rendelkezni fog egy kezelőfelületi szolgáltatással, amely három példányt futtat, és egy adatszolgáltatással, amely két példányt futtat.
 
@@ -51,7 +42,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Szolgáltatások horizontális le- és felskálázása
 
-Az alkalmazások a Service Fabric Meshben való üzembe helyezésének egyik legfőbb előnye, hogy a szolgáltatásokat egyszerűen lehet horizontálisan le- és felskálázni. Ez akkor hasznos, ha változó mértékű terhelés éri a szolgáltatásokat, vagy ha javítani szeretne a rendelkezésre álláson.
+Az alkalmazások Service Fabric Meshba való üzembe helyezésének egyik fő előnye, hogy könnyedén méretezheti vagy kibővítheti szolgáltatásait. Ezt a szolgáltatások különböző terhelésének kezelésére, illetve a rendelkezésre állás javítására kell használni.
 
 Ez az oktatóanyag az [előzőleg telepített](service-fabric-mesh-tutorial-template-deploy-app.md) és már futó Teendőlista-mintát használja példaként. Az alkalmazás két szolgáltatással rendelkezik: WebFrontEnd és ToDoService. Eredetileg mindkét szolgáltatás 1 replikával lett üzembe helyezve.  A WebFrontEnd szolgáltatás futó replikáinak számát a következő futtatásával tekintheti meg:
 
@@ -84,7 +75,7 @@ Nyissa meg helyileg a [mesh_rp.windows.parameter.json parameters](https://github
       }
 ```
 
-Mentse a paraméterfájl módosításait.  A *frontEndReplicaCount* és a *serviceReplicaCount* paraméter a [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) *parameters* szakaszában van deklarálva:
+Mentse a paraméterfájl módosításait.  A *frontEndReplicaCount* és a *serviceReplicaCount* paraméter a [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)*parameters* szakaszában van deklarálva:
 
 ```json
 "frontEndReplicaCount":{
@@ -162,7 +153,7 @@ A ToDoService szolgáltatás futó replikáinak számát a következő futtatás
 az mesh service show --resource-group myResourceGroup --name ToDoService --app-name todolistapp --query "replicaCount"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

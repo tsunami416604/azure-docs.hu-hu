@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440152"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 
@@ -46,7 +46,7 @@ Ez a cikk azt mutatja be, hogyan használhatók a Azure Data Factory az adatok a
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Teljes másolat készítése SAP BW Open hub-ból
 
-Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & a figyelő** lehetőséget a Data Factory felhasználói felület külön lapon való megnyitásához.
+Lépjen az Azure Portalon az adat-előállítóra. Válassza a **létrehozás & a figyelő** lehetőséget a Data Factory felhasználói felület külön lapon való megnyitásához.
 
 1. Az **első lépések** lapon válassza a **Adatok másolása** lehetőséget a adatok másolása eszköz megnyitásához.
 
@@ -156,11 +156,15 @@ Az adatok előállítójának első **lépései** oldalon válassza a **folyamat
 
    - **SAPOpenHubDestinationName**: Itt adhatja meg, hogy az adatok honnan másolhatók.
 
-   - **ADLSGen2SinkPath**: a cél Azure Data Lake Storage Gen2 elérési út megadása az adatmásoláshoz. Ha az elérési út nem létezik, az Data Factory másolási tevékenység létrehoz egy elérési utat a végrehajtás során.
+   - **Data_Destination_Container**: az Adatmásolás céljának Azure Data Lake Storage Gen2 tárolójának megadásához. Ha a tároló nem létezik, az Data Factory másolási tevékenység a végrehajtás során létrehoz egyet.
+  
+   - **Data_Destination_Directory**: Itt adhatja meg a mappa elérési útját a Azure Data Lake Storage Gen2 tárolóban az adatmásoláshoz. Ha az elérési út nem létezik, az Data Factory másolási tevékenység létrehoz egy elérési utat a végrehajtás során.
+  
+   - **HighWatermarkBlobContainer**: határozza meg a tárolót, amely a nagy-vízjel értéket tárolja.
 
-   - **HighWatermarkBlobPath**: a nagy vízjel értékének (például `container/path`) tárolására szolgáló elérési utat határozza meg.
+   - **HighWatermarkBlobDirectory**: Itt adhatja meg a mappa elérési útját a tárolóban a magas vízjel értékének tárolásához.
 
-   - **HighWatermarkBlobName**: adja meg a blob nevét a felső küszöbérték (például `requestIdCache.txt`) tárolására. A blob Storage-ban lépjen a HighWatermarkBlobPath + HighWatermarkBlobName megfelelő elérési útjára, például a *Container/Path/requestIdCache. txt*fájlra. Hozzon létre egy blobot 0 tartalommal.
+   - **HighWatermarkBlobName**: adja meg a blob nevét a felső küszöbérték (például `requestIdCache.txt`) tárolására. A blob Storage-ban lépjen a HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, például a *Container/Path/requestIdCache. txt*fájl megfelelő elérési útjára. Hozzon létre egy blobot 0 tartalommal.
 
       ![BLOB tartalma](media/load-sap-bw-data/blob.png)
 
@@ -185,11 +189,11 @@ Az adatok előállítójának első **lépései** oldalon válassza a **folyamat
          }
          ```
 
-      3. Adja hozzá a **blob létrehozása** műveletet. A **mappa elérési útja** és a **blob neve mezőben**adja meg a korábban a **HighWatermarkBlobPath** és a **HighWatermarkBlobName**szolgáltatásban konfigurált értékeket.
+      3. Adja hozzá a **blob létrehozása** műveletet. A **mappa elérési útja** és a **blob neve mezőben**adja meg a korábban a *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* és a *HighWatermarkBlobName*szolgáltatásban konfigurált értékeket.
 
       4. Kattintson a **Mentés** gombra. Ezután másolja át a **http post URL-cím** értékét, amelyet a Data Factory-folyamatban használni szeretne.
 
-4. Miután megadta a Data Factory folyamat paramétereit, válassza a **hibakeresés** > **Befejezés** lehetőséget a Futtatás meghívásához a konfiguráció ellenőrzéséhez. Vagy válassza az **összes közzététele** lehetőséget a módosítások közzétételéhez, majd válassza az **aktiválás** lehetőséget a Futtatás végrehajtásához.
+4. Miután megadta a Data Factory folyamat paramétereit, válassza a **hibakeresés** > **Befejezés** lehetőséget a Futtatás meghívásához a konfiguráció ellenőrzéséhez. Vagy válassza a **Közzététel** lehetőséget az összes módosítás közzétételéhez, majd válassza az **trigger hozzáadása** parancsot a Futtatás végrehajtásához.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW nyitott hub-cél konfigurációi
 

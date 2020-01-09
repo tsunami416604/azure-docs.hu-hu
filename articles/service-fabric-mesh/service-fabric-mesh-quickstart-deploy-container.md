@@ -1,22 +1,18 @@
 ---
-title: Rövid útmutató – A Hello World üzembe helyezése a Service Fabric Meshben | Microsoft Docs
+title: Gyors útmutató – "Helló világ!" alkalmazás üzembe helyezése az Azure Service Fabric Meshban
 description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Service Fabric Mesh-alkalmazást az Azure Service Fabric Meshben.
-services: service-fabric-mesh
-keywords: Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458972"
 ---
-# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Gyors útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
+# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
 
 A [Service Fabric Mesh](service-fabric-mesh-overview.md) segítségével egyszerűen hozhat létre és felügyelhet mikroszolgáltatás-alkalmazásokat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie. Ebben a rövid útmutatóban létrehozhat egy Hello World-alkalmazást az Azure-ban, és közzéteheti azt az interneten. Ez a művelet egyetlen paranccsal hajtható végre. Néhány perc elteltével a következő nézetet láthatja a böngészőben:
 
@@ -51,9 +47,9 @@ Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment cre
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Az előző parancs helyez üzembe egy Linux használó [linux.json sablon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha szeretne Windows-alkalmazás üzembe helyezése, [windows.json sablon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
+Az előző parancs egy Linux-alkalmazást telepít [Linux. JSON sablonnal](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha Windows-alkalmazást szeretne telepíteni, használja a [Windows. JSON sablont](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
-Ez a parancs, amely az alábbiakban látható JSON-kódrészlet állítja elő. Alatt a ```outputs``` a JSON-kimenetet másolási szakaszában a ```publicIPAddress``` tulajdonság.
+Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON-kimenet ```outputs``` szakaszában másolja a ```publicIPAddress``` tulajdonságot.
 
 ```json
 "outputs": {
@@ -64,7 +60,7 @@ Ez a parancs, amely az alábbiakban látható JSON-kódrészlet állítja elő. 
 }
 ```
 
-Ez az információ származik a ```outputs``` az ARM-sablon részében. Ahogy az alábbi, ebben a szakaszban hivatkozik az átjáró erőforrás nyilvános IP-címének beolvasása. 
+Ezek az információk az ARM-sablon ```outputs``` szakasza alapján származnak. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
 
 ```json
   "outputs": {
@@ -97,13 +93,13 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor készen áll az alkalmazás törlésére, futtassa az [az group delete][az-group-delete] parancsot az erőforráscsoport és az abban lévő alkalmazás és hálózati erőforrások eltávolításához.
+Ha készen áll az alkalmazás törlésére, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot és a benne lévő alkalmazás-és hálózati erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]

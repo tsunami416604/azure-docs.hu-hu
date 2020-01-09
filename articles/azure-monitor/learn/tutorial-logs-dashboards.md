@@ -4,16 +4,16 @@ description: Ez az oktatóanyag segít megérteni, hogy Log Analytics irányít�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: baa510e060a3bca46110842600262345072b1a18
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365564"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Irányítópultok létrehozása és megosztása Log Analytics-adatokból
 
@@ -33,7 +33,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="create-a-shared-dashboard"></a>Megosztott irányítópult létrehozása
 Válassza az **irányítópult** lehetőséget az alapértelmezett [irányítópult](../../azure-portal/azure-portal-dashboards.md)megnyitásához. Az irányítópult az alábbi példától eltérően fog megjelenni.
 
-![Azure Portal irányítópult](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
+![Azure Portal irányítópultja](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Itt összeállíthatók az informatikai szempontból legfontosabb működési adatok az összes Azure-erőforrásra vonatkozóan, beleértve az Azure Log Analyticsből származó telemetriákat.  Mielőtt megkezdené a naplózási lekérdezés megjelenítését, először hozzon létre egy irányítópultot, és ossza meg azt.  Ezután a példában szereplő Teljesítménynapló-lekérdezésre koncentrálunk, amely diagramként fog megjelenni, és hozzáadja az irányítópulthoz.  
 

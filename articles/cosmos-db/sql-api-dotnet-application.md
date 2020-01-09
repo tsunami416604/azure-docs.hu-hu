@@ -1,5 +1,5 @@
 ---
-title: 'ASP.NET Core MVC-oktatóanyag a Azure Cosmos DBhoz: webalkalmazások fejlesztése'
+title: ASP.NET Core MVC-webalkalmazási oktatóanyag a Azure Cosmos DB használatával
 description: ASP.NET Core MVC-oktatóanyag az MVC-alapú webalkalmazások Azure Cosmos DB használatával történő létrehozásához. A JSON-t és az adatok elérését egy Azure App Service-ASP NET Core MVC oktatóanyag lépésről lépésre futtatott Todo-alkalmazásból fogja tárolni.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 1cfb7718c55920d817e1f87407fa1af590e9f006
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444933"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -133,7 +133,7 @@ Ezután hozza létre a következő három nézetet.
    * A **nézet neve**mezőbe írja be az *index*értéket.
    * A **sablon**területen válassza a **lista**lehetőséget.
    * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)** .
-   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout.cshtml*értéket.
+   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
 
    ![Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png)
 
@@ -152,7 +152,7 @@ Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítésé
    * A **nézet neve**mezőbe írja be a *create (létrehozás*) nevet.
    * A **sablon**lapon válassza a **Létrehozás**lehetőséget.
    * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)** .
-   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout.cshtml*értéket.
+   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
    * Válassza a **Hozzáadás** lehetőséget.
 
 #### <a name="AddEditIndexView"></a>Elem szerkesztési nézetének hozzáadása
@@ -166,7 +166,7 @@ Végül pedig vegyen fel egy nézetet egy elem szerkesztéséhez a következő l
    * A **View name** (Nézet neve) mezőbe írja be az *Edit* (Szerkesztés) nevet.
    * A **Template** (Sablon) mezőben válassza az **Edit** (Szerkesztés) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
-   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout.cshtml*értéket.
+   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
    * Válassza a **Hozzáadás** lehetőséget.
 
 Miután elvégezte ezeket a lépéseket, a Visual Studióban zárjunk be minden *cshtml* -dokumentumot, ahogy később visszatér a nézetekhez.
@@ -290,7 +290,7 @@ Egy másik lehetőség egy új profil létrehozása:
 
 Néhány másodpercen belül a Visual Studio közzéteszi a webalkalmazást, és elindít egy böngészőt, amelyen megtekintheti az Azure-ban futó projektet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy ASP.NET Core MVC-webalkalmazást. Az alkalmazás elérheti Azure Cosmos DB tárolt adatait. Most már folytathatja ezeket az erőforrásokat:
 

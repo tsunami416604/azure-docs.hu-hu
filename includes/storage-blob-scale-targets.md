@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392289"
 ---
 | Erőforrás | Cél        |
 |----------|---------------|
@@ -25,4 +25,4 @@ ms.locfileid: "73905784"
 |Cél átviteli sebesség egy egyoldalas blobhoz | Akár 60 MiB másodpercenként |
 |Cél átviteli sebesség egyetlen blokk blobhoz |Legfeljebb Storage-fiók bejövő/kimenő korlátja<sup>1</sup> |
 
-<sup>1</sup> az egyetlen objektum átviteli sebessége több tényezőtől függ, többek között a következőktől: Egyidejűség, kérelmek mérete, teljesítményszint, a feltöltések forrása, valamint a letöltések célja. A [nagy átviteli sebességű blokk Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) teljesítményének kihasználásához használjon egy Put blobot, vagy > 4 MIB-t (> 256 KiB a prémium szintű teljesítményű blob Storage-hoz vagy a Data Lake Storage Gen2-hoz).
+<sup>1</sup> az egyes Blobok átviteli sebessége több tényezőtől függ, többek között a következőktől: Egyidejűség, kérelmek mérete, teljesítményszint, a feltöltések forrása, valamint a letöltés céljának célja. A [nagy átviteli sebességű blokkos Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)teljesítményének növelésével kihasználhatja a nagyobb méretű Blobok vagy blokkok feltöltését. Pontosan hívja meg a [put blobot](/rest/api/storageservices/put-blob) vagy a [Letiltás](/rest/api/storageservices/put-block) műveletet egy olyan blob-vagy blokk-mérettel, amely nagyobb, mint 4 MIB a standard Storage-fiókokhoz. A Premium Block blob vagy a Data Lake Storage Gen2 Storage-fiókok esetében használjon 256 KiB-nál nagyobb blokk-vagy blob-méretet.

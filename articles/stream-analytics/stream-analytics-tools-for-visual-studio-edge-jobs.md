@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics Edge-feladatok a Visual Studióban
 description: Ez a cikk azt ismerteti, hogyan lehet a Visual studióhoz készült Stream Analytics Tools használatával IoT Edge-feladatokon elkészíteni és létrehozni a Stream Analytics.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354566"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Stream Analytics Edge-feladatok fejlesztése a Visual Studio Tools használatával
 
@@ -45,7 +44,7 @@ A projekt létrehozása után navigáljon a **megoldáskezelő** a mappa-hierarc
 
 2. Kattintson a jobb gombbal az **azure** > válassza a **kapcsolódás Microsoft Azure előfizetés** > lehetőséget, majd jelentkezzen be az Azure-fiókjával.
 
-## <a name="define-inputs"></a>Bemenetek definiálása
+## <a name="define-inputs"></a>A bemenetek meghatározása
 
 1. A **megoldáskezelő**bontsa ki a **bemenetek** csomópontot, és megjelenik egy **EdgeInput. JSON**nevű bemenet. Kattintson ide duplán a beállítások megtekintéséhez.  
 
@@ -88,7 +87,7 @@ A lekérdezés helyi teszteléséhez fel kell töltenie a mintaadatok. Mintaadat
 2. Az előugró ablakban > **böngészhet** a helyi útvonalon található mintaadatok között > válassza a **Mentés**lehetőséget.
    ![helyi beviteli konfiguráció a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
-3. A rendszer automatikusan hozzáadja a **local_EdgeInput. JSON** nevű fájlt a bemenetek mappájához.  
+3. A rendszer automatikusan felvesz egy **local_EdgeInput. JSON** nevű fájlt a bemenetek mappájába.  
 4. Futtathatja helyileg, vagy elküldheti az Azure-ba. A lekérdezés teszteléséhez válassza a **helyi Futtatás**lehetőséget.  
    ![Stream Analytics a feladatok futtatásának lehetőségei a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  

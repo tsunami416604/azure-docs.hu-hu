@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure Service Bus témakörök és előfizetések használata a Node. js használatával'
+title: Azure Service Bus témakörök és előfizetések használata az Azure/Service-Bus Node. js-csomaggal
 description: 'Gyors útmutató: megtudhatja, hogyan használhatja Service Bus témaköröket és előfizetéseket az Azure-ban egy Node. js-alkalmazásból.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 80ca9589e7181518874dc26a9a42b57774f60498
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3955b67bd0fd40eb903543a240795ed8bc36b3b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462112"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node. js-sel és az Azure-SB csomaggal
 > [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]

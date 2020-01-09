@@ -1,6 +1,6 @@
 ---
-title: Virtuálisgép-hálózat teljesítményének optimalizálása |} A Microsoft Docs
-description: Ismerje meg, hogyan optimalizálható az Azure virtuális gépek hálózati átviteli sebessége.
+title: VM-hálózat teljesítményének optimalizálása | Microsoft Docs
+description: Ismerje meg, hogyan optimalizálhatja az Azure-beli virtuális gépek hálózati átviteli sebességét.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202904"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690882"
 ---
-# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure-beli virtuális gépek hálózati teljesítmény optimalizálása
+# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure-beli virtuális gépek hálózati teljesítményének optimalizálása
 
-Az Azure virtual machines (VM) rendelkezik, amely a hálózati teljesítmény tovább optimalizálható az alapértelmezett hálózati beállításokat. Ez a cikk ismerteti a hálózati teljesítmény optimalizálása a Microsoft Azure Windows és Linux rendszerű virtuális gépekhez, beleértve a fő disztribúciók, például az Ubuntu, a CentOS és Red Hat.
+Az Azure Virtual Machines (VM) olyan alapértelmezett hálózati beállításokat tartalmaz, amelyek továbbra is optimalizálva lesznek a hálózati átviteli sebességre. Ez a cikk azt ismerteti, hogyan optimalizálható a hálózati átviteli sebesség Microsoft Azure Windows és Linux rendszerű virtuális gépek esetében, beleértve a nagyobb disztribúciókat, mint például az Ubuntu, a CentOS és a Red Hat.
 
 ## <a name="windows-vm"></a>Windows rendszerű virtuális gép
 
-Ha a Windows virtuális gép támogatja [gyorsított hálózatkezelés](create-vm-accelerated-networking-powershell.md), az átviteli sebesség optimális konfigurációt, hogy a funkció engedélyezése lenne. A többi Windows virtuális fogadó oldali skálázás (RSS) használatával is elérheti magasabb maximális átviteli sebesség, mint egy virtuális gép RSS nélkül. Alapértelmezés szerint a Windows virtuális gép RSS letilthatja. Annak megállapításához, hogy az RSS engedélyezve van, és engedélyezze, ha jelenleg le van tiltva, a következő lépéseket:
+Ha a Windows rendszerű virtuális gép támogatja a [gyorsított hálózatkezelést](create-vm-accelerated-networking-powershell.md), a funkció engedélyezése az átviteli sebesség optimális beállítása lenne. A fogadó oldali skálázás (RSS) használatával minden más Windows rendszerű virtuális gép esetében magasabb maximális átviteli sebességet érhet el, mint az RSS nélküli virtuális gépek. Előfordulhat, hogy az RSS alapértelmezés szerint le van tiltva egy Windows rendszerű virtuális gépen. Az alábbi lépéseket követve megállapíthatja, hogy engedélyezve van-e az RSS, és engedélyezheti, ha jelenleg le van tiltva.
 
-1. Tekintse meg, hogy engedélyezve van-e az RSS a hálózati adapterhez a `Get-NetAdapterRss` PowerShell-parancsot. A következő példa kimenet által visszaadott a `Get-NetAdapterRss`, RSS nincs engedélyezve.
+1. Ellenőrizze, hogy az RSS engedélyezve van-e egy hálózati adapterhez a `Get-NetAdapterRss` PowerShell-paranccsal. A `Get-NetAdapterRss`által visszaadott példa kimenetében az RSS nincs engedélyezve.
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
-2. Ahhoz, hogy az RSS, adja meg a következő parancsot:
+2. Az RSS engedélyezéséhez írja be a következő parancsot:
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    Az előző parancs nincs kimenet. A parancs a hálózati adapter beállításait, átmeneti hálózati adatveszteség okozó körülbelül egy percig módosítani. Egy Reconnecting párbeszédpanel jelenik meg a kapcsolat megszakadását során. Kapcsolat általában helyreáll a harmadik kísérlet után.
-3. Győződjön meg arról, hogy az RSS engedélyezve van a virtuális gépen írja be a `Get-NetAdapterRss` újra a parancsot. Ha sikeres, a rendszer visszaadja az alábbi példa kimenetében:
+    Az előző parancsnak nincs kimenete. A parancs módosította a hálózati adapter beállításait, ami egy percen keresztül ideiglenes kapcsolat elvesztését okozta. A kapcsolat elvesztésekor megjelenik egy újracsatlakozás párbeszédpanel. A kapcsolódást általában a harmadik kísérlet után állítják vissza.
+3. Ellenőrizze, hogy az RSS engedélyezve van-e a virtuális gépen a `Get-NetAdapterRss` parancs ismételt beírásával. Ha a művelet sikeres, a következő példa kimenetet adja vissza:
 
     ```powershell
     Name                    : Ethernet
@@ -52,11 +52,11 @@ Ha a Windows virtuális gép támogatja [gyorsított hálózatkezelés](create-v
 
 ## <a name="linux-vm"></a>Linux rendszerű virtuális gép
 
-Az RSS az Azure Linux VM alapértelmezés szerint mindig engedélyezve van. Kiadás dátuma: 2017. október óta Linux-kernelek vannak, amelyek lehetővé teszik a Linux virtuális gépek nagyobb hálózati átviteli sebesség eléréséhez, új hálózati optimalizálást beállításokat is tartalmazhat.
+Az RSS-t az Azure Linux virtuális gépek alapértelmezés szerint mindig engedélyezik. Az október 2017 óta kiadott linuxos kernelek olyan új hálózati optimalizálási lehetőségekkel rendelkeznek, amelyek lehetővé teszik a linuxos virtuális gépek számára a nagyobb hálózati átviteli sebesség elérését.
 
-### <a name="ubuntu-for-new-deployments"></a>Az új központi telepítéseknél Ubuntu
+### <a name="ubuntu-for-new-deployments"></a>Ubuntu az új üzemelő példányokhoz
 
-Az Ubuntu Azure kernel a lehető legjobb hálózati teljesítményt biztosít az Azure-ban, és már évek óta az alapértelmezett kernel 2017. szeptember 21. Annak érdekében, hogy a kernel kap, először 16.04-LTS, legújabb támogatott verziót a következőképpen telepítheti:
+Az Ubuntu Azure kernel a legjobb hálózati teljesítményt biztosítja az Azure-ban, és az alapértelmezett kernel volt a 2017. szeptember 21. óta. A rendszermag beszerzéséhez először telepítse az 16,04-LTS legújabb támogatott verzióját, a következőképpen:
 
 ```json
 "Publisher": "Canonical",
@@ -65,7 +65,7 @@ Az Ubuntu Azure kernel a lehető legjobb hálózati teljesítményt biztosít az
 "Version": "latest"
 ```
 
-A létrehozás befejezése után adja meg a következő parancsok futtatásával beszerezni a legújabb frissítéseket. Ezeket a lépéseket az Ubuntu Azure kernel jelenleg futó virtuális gépek is működnek.
+A létrehozás befejezését követően adja meg a következő parancsokat a legújabb frissítések beszerzéséhez. Ezek a lépések az Ubuntu Azure kernelt jelenleg futtató virtuális gépeken is működnek.
 
 ```bash
 #run as root or preface with sudo
@@ -74,7 +74,7 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-Az alábbi választható parancsot beállítása, amely már rendelkezik az Azure kernel, de további frissíti a hibák sikertelenül telepítéseit Ubuntu hasznosak lehetnek.
+A következő opcionális parancssori beállítás hasznos lehet az olyan meglévő Ubuntu-telepítések esetében, amelyek már rendelkeznek az Azure kernelével, de a hibákkal kapcsolatos további frissítések nem sikerültek.
 
 ```bash
 #optional steps may be helpful in existing deployments with the Azure kernel
@@ -87,9 +87,9 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Meglévő virtuális gépek Ubuntu Azure kernel frissítése
+#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu Azure kernel frissítése meglévő virtuális gépekhez
 
-Az Azure Linux-kernel való frissítéssel jelentős átviteli teljesítmény érhető el. Ellenőrizze, hogy a kernel rendelkezik, ellenőrizze a kernel verziója.
+Az Azure Linux kernelre való frissítéssel jelentős átviteli teljesítmény érhető el. Annak ellenőrzéséhez, hogy van-e ilyen kernel, ellenőrizze a kernel verzióját.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -99,7 +99,7 @@ uname -r
 #4.13.0-1007-azure
 ```
 
-Ha a virtuális gép nem rendelkezik az Azure kernel, a verziószám általában kezdődik "4.4." Ha a virtuális gép nem rendelkezik az Azure kernel, futtassa a következő parancsokat rendszergazdaként:
+Ha a virtuális gép nem rendelkezik Azure kernelrel, a verziószám általában a "4,4" előtaggal kezdődik. Ha a virtuális gépnek nincs Azure kernele, futtassa a következő parancsokat root-ként:
 
 ```bash
 #run as root or preface with sudo
@@ -112,7 +112,7 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-Annak érdekében, hogy a legújabb optimalizálásokat lekéréséhez a legjobb, ha a virtuális gép létrehozása a legújabb támogatott verzióját a következő paraméterek megadásával:
+A legújabb optimalizáláshoz a következő paraméterek megadásával érdemes létrehozni egy virtuális gépet a legújabb támogatott verzióval:
 
 ```json
 "Publisher": "OpenLogic",
@@ -121,7 +121,7 @@ Annak érdekében, hogy a legújabb optimalizálásokat lekéréséhez a legjobb
 "Version": "latest"
 ```
 
-Új és meglévő virtuális gépek is kihasználhatják a legújabb Linux Integration Services (LIS) telepítése. Az átviteli sebesség optimalizálása LIS, kezdve a 4.2.2-2, bár a további fejlesztéseket tartalmaz újabb verzió van. Adja meg a legújabb LIS telepítése a következő parancsokat:
+Az új és a meglévő virtuális gépek kihasználhatják a legújabb Linux Integration Services (LIS) telepítését. Az átviteli sebesség optimalizálása a 4.2.2-2-es verziójától kezdődően, a későbbi verziók azonban további fejlesztéseket is tartalmaz. A legújabb LIS telepítéséhez adja meg a következő parancsokat:
 
 ```bash
 sudo yum update
@@ -131,7 +131,7 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-Az optimalizálást, hogy a legjobb, ha a virtuális gép létrehozása a legújabb támogatott verzióját a következő paraméterek megadásával:
+Az optimalizáláshoz érdemes létrehozni egy virtuális gépet a legújabb támogatott verzióval a következő paraméterek megadásával:
 
 ```json
 "Publisher": "RedHat"
@@ -140,20 +140,18 @@ Az optimalizálást, hogy a legjobb, ha a virtuális gép létrehozása a legúj
 "Version": "latest"
 ```
 
-Új és meglévő virtuális gépek is kihasználhatják a legújabb Linux Integration Services (LIS) telepítése. Az átviteli sebesség optimalizálása LIS, kezdve a 4.2 szerepel. Adja meg, töltse le és LIS telepítése a következő parancsokat:
+Az új és a meglévő virtuális gépek kihasználhatják a legújabb Linux Integration Services (LIS) telepítését. Az átviteli sebesség optimalizálása: LIS, 4,2-tól kezdődően. A LIS letöltéséhez és telepítéséhez adja meg a következő parancsokat:
 
 ```bash
-mkdir lis4.2.3-5
-cd lis4.2.3-5
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
-tar xvzf lis-rpms-4.2.3-5.tar.gz
+wget https://aka.ms/lis
+tar xvf lis
 cd LISISO
-install.sh #or upgrade.sh if prior LIS was previously installed
+sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
-Tudjon meg többet a Linux Integration Services verzió 4.2 Hyper-V megtekintésével a [letöltési oldalát](https://www.microsoft.com/download/details.aspx?id=55106).
+További információ a Hyper-V-hez készült Linux Integration Services 4,2-es verziójáról a [letöltési oldal](https://www.microsoft.com/download/details.aspx?id=55106)megtekintésével.
 
-## <a name="next-steps"></a>További lépések
-* Az optimalizált eredményeket [sávszélesség/átviteli sebesség tesztelése az Azure virtuális gép](virtual-network-bandwidth-testing.md) a forgatókönyvhöz.
-* Megtudhatja, hogyan lehet [sávszélességet a virtuális gépek](virtual-machine-network-throughput.md)
-* További tudnivalók a [Azure Virtual Network – gyakori kérdések (GYIK)](virtual-networks-faq.md)
+## <a name="next-steps"></a>Következő lépések
+* Tekintse meg az optimalizált eredményt a [sávszélesség/átviteli sebesség tesztelése Azure virtuális gépen](virtual-network-bandwidth-testing.md) a forgatókönyvhöz.
+* További információ arról [, hogyan vannak lefoglalva a sávszélesség a virtuális gépekhez](virtual-machine-network-throughput.md)
+* További információ az [Azure Virtual Network gyakori kérdéseiről (GYIK)](virtual-networks-faq.md)

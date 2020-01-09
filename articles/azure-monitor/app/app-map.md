@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407694"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -69,15 +69,15 @@ Válassza az **Ugrás a részletekhez** lehetőséget a végpontok közötti tra
 
 ![Képernyőkép a végpontok közötti tranzakció részleteiről](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Megtekintés az elemzésekben
+### <a name="view-logs-analytics"></a>Naplók megtekintése (Analitika)
 
-Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson **a megtekintés az elemzésekben**lehetőségre.
+Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson a **megtekintés a naplókban (Analitika)** elemre.
 
-![Képernyőkép a nézetről az Analytics gombon](media/app-map/view-in-analytics.png)
+![Képernyőkép a nézetről az Analytics gombon](media/app-map/view-logs.png)
 
-![Képernyőkép az elemzési élményről](media/app-map/analytics.png)
+![Képernyőkép az elemzési élményről. Az elmúlt 12 órában egy kérelem átlagos válaszának időtartamát összefoglaló grafikon.](media/app-map/log-analytics.png)
 
-### <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Értesítések
 
 Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások**lehetőséget.
 
@@ -230,7 +230,7 @@ A [hivatalos definíciók](https://github.com/Microsoft/ApplicationInsights-dotn
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-A **Felhőbeli szerepkör-példány** hasznos lehet olyan helyzetekben, ahol a **Felhőbeli szerepkör neve** azt jelzi, hogy a probléma valahol a webes kezelőfelületen fut, de előfordulhat, hogy a webes kezelőfelület több elosztott terhelésű kiszolgálón fut, így Kusto-lekérdezések révén mélyebben végezheti el a részletezést, és megtudhatja, hogy a probléma hatással van-e az összes webes előtér-kiszolgálóra/példányra, vagy csak egy rendkívül fontos.
+Másik lehetőségként a **Felhőbeli szerepkör-példány** hasznos lehet olyan helyzetekben, ahol a **Felhőbeli szerepkör neve** azt jelzi, hogy a probléma valahol a webes kezelőfelületen fut, de előfordulhat, hogy a webes kezelőfelület több elosztott terhelésű kiszolgálóra is futtatható, így a Kusto-lekérdezéseken keresztül mélyebben megtudhatja, hogy a probléma hatással van-e az összes webes előtér-kiszolgálóra/példányra, vagy csak egy rendkívül fontos
 
 Egy olyan forgatókönyv, amelyben érdemes lehet felülbírálni a Felhőbeli szerepkör példányának értékét, ha az alkalmazás egy olyan tárolóban fut, ahol az egyes kiszolgálók nem feltétlenül elegendő információval szolgálnak az adott probléma megtalálásához.
 
@@ -240,7 +240,7 @@ További információ arról, hogyan bírálható felül a Felhőbeli szerepkör
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
@@ -274,7 +274,7 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.

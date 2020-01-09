@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja, kezdeménye
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450166"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -44,7 +44,7 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 |Név  |Type (Típus)  |Leírás  |
 |---------|---------|---------|
 |204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
-|202 elfogadva     |         |     Elfogadott    |
+|202 elfogadva     |         |     Elfogadva    |
 
 ##### <a name="example-responses"></a>Válaszok – példa
 
@@ -211,7 +211,7 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 |Név  |Type (Típus)  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 elfogadva     |         |     Elfogadott    |
+|202 elfogadva     |         |     Elfogadva    |
 
 ##### <a name="example-responses"></a>Válaszok – példa
 
@@ -321,7 +321,7 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 
 |Név  |Type (Típus)  |Leírás  |
 |---------|---------|---------|
-|202 elfogadva     |         |     Elfogadott    |
+|202 elfogadva     |         |     Elfogadva    |
 
 #### <a name="example-responses-3"></a>Válaszok – példa
 
@@ -433,7 +433,7 @@ A `{containerName}` és a `{protectedItemName}` a [fentiek](#responses-1)szerint
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>Válaszok
+#### <a name="responses-2"></a>Válaszok
 
 A védelem *törlése* [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
@@ -442,7 +442,29 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 |Név  |Type (Típus)  |Leírás  |
 |---------|---------|---------|
 |204 tartalom     |         |  Nincs tartalom       |
-|202 elfogadva     |         |     Elfogadott    |
+|202 elfogadva     |         |     Elfogadva    |
+
+> [!IMPORTANT]
+> A véletlen törlési forgatókönyvek elleni védelem érdekében a Recovery Services-tárolóhoz rendelkezésre áll egy helyreállítható [törlési funkció](use-restapi-update-vault-properties.md#soft-delete-state) . Ha a tároló Soft-delete állapota engedélyezve értékre van állítva, akkor a törlési művelet nem fogja azonnal törölni az adatmennyiséget. A rendszer 14 napig őrzi meg, majd véglegesen törli. Az ügyfél a 14 napos időszakra vonatkozóan nem számít fel díjat. A törlési művelet visszavonásához tekintse meg a [Visszavonás-törlés szakaszt](#undo-the-stop-protection-and-delete-data).
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>A védelem leállítása és az adattörlés visszavonása
+
+A véletlen törlés visszavonása hasonló a biztonsági mentési elemek létrehozásához. A törlés visszavonása után az elem megmarad, de a rendszer nem indít el jövőbeli biztonsági másolatokat.
+
+A visszavonás törlése egy *put* művelet, amely nagyon hasonlít [a szabályzat módosítására](#changing-the-policy-of-protection) és/vagy [a védelem engedélyezésére](#enabling-protection-for-the-azure-vm). Csak adja meg a szándékot, hogy visszavonja a törlést a *isRehydrate* változóval [, és küldje](#example-request-body) el a kérelmet. Például: a testVM törlésének visszavonásához a következő kérelem törzsét kell használni.
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+A válasz az [igény szerinti biztonsági mentés elindításához használt](#example-responses-3)formátumot fogja követni. Az eredő feladatot nyomon kell követni a [feladatok figyelése REST API dokumentum használatával](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint.
 
 ## <a name="next-steps"></a>Következő lépések
 

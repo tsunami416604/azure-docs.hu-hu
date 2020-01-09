@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 015aa4c209a99921a930a51b15c3d0230722519a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353886"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL-alapú virtuális gépek tömeges regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -39,7 +39,7 @@ A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a követk
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 - Az az [. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)legújabb verziója.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 A továbblépés előtt először létre kell hoznia egy helyi példányt a parancsfájlból, majd importálnia kell egy PowerShell-modulként, és kapcsolódnia kell az Azure-hoz. 
 
@@ -232,8 +232,6 @@ A GitHub teljes parancsfájlját lásd: az [SQL-alapú virtuális gépek tömege
 Másolja a teljes parancsfájlt, és mentse `RegisterSqLVMs.psm1`ként.
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
-
-
 
 ## <a name="next-steps"></a>Következő lépések
 

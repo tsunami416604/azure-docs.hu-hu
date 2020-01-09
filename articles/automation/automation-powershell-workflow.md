@@ -2,19 +2,15 @@
 title: Azure Automation PowerShell-munkafolyamatának megismerése
 description: Ez a cikk a PowerShellt és a PowerShellt, valamint az Automation runbookok kapcsolatos fogalmakat és a PowerShell-munkafolyamatok közötti konkrét különbségeket ismertető gyors lecke.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/14/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d656e97448bebe7019a63824b9de6e322b787a92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421556"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>A Windows PowerShell munkafolyamat-fogalmai az Automation runbookok
 

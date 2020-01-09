@@ -1,6 +1,6 @@
 ---
-title: A Példányazonosítók ismertetése az Azure-beli Virtuálisgép-méretezési csoport virtuális gépek |} A Microsoft Docs
-description: Az Azure Virtuálisgép-méretezési csoport a Példányazonosítók állítsa be a virtuális gépek ismertetése
+title: Az Azure virtuálisgép-méretezési csoportbeli virtuális gépek példány-azonosítóinak megismerése
+description: Az Azure-beli virtuálisgép-méretezési csoportok példány-azonosítóinak megismerése a virtuális gépek és azok felületének különféle módjai.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 6aeba722a0661979664f8d61efdb9b2bf47ad801
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1eb0cf1de3b0ebffac8810e19d69515224147bc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355998"
 ---
-# <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Az Azure Virtuálisgép-méretezési csoport a Példányazonosítók állítsa be a virtuális gépek ismertetése
-Ez a cikk ismerteti a példányok azonosítóit a méretezési csoportok és a surface, a különböző módszereket.
+# <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Az Azure virtuálisgép-méretezési csoportbeli virtuális gépek példány-azonosítóinak megismerése
+Ez a cikk a méretezési csoportokhoz tartozó példány-azonosítókat és a felületek különböző módszereit ismerteti.
 
-## <a name="scale-set-instance-ids"></a>Méretezési csoport Példányazonosítók
+## <a name="scale-set-instance-ids"></a>Méretezési csoport példányainak azonosítói
 
-Minden egyes méretezési csoportban lévő Virtuálisgép-példány azonosítója, amely egyedileg azonosítja beolvasása. Ez a példány azonosítója segítségével a méretezési API-k az adott műveleteket a méretezési csoportban lévő virtuális gép beállítása. Megadhat például egy adott példány azonosítója a rendszerkép alaphelyzetbe állítását a rendszerkép alaphelyzetbe állítását API használata esetén:
+A méretezési csoport minden virtuális gépe egy példány-azonosítót kap, amely egyedileg azonosítja azt. Ez a példány-azonosító a méretezési csoport API-jai között a méretezési csoport egy adott virtuális gépén végzett műveletek végrehajtásához használatos. Például megadhat egy adott példány-azonosítót a rendszerkép alaphelyzetbe állításához a rerendszerkép API használatakor:
 
-REST API-val: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (további információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage))
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (további tudnivalókért tekintse meg a [REST API dokumentációját](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage))
 
-PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (további információkért lásd: a [Powershell-dokumentáció](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
+PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (további információért lásd a [PowerShell dokumentációját](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
 
-Parancssori felület: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (további információkért lásd: a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (további információért lásd a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
-Példány azonosítók listáját megtekintheti a méretezési csoportban lévő összes példány listázásával:
+A példány-azonosítók listáját a méretezési csoport összes példányának listázásával érheti el:
 
-REST API-val: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (további információkért lásd: a [REST API-dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list))
+REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (további tudnivalókért tekintse meg a [REST API dokumentációját](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list))
 
-PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (további információkért lásd: a [Powershell-dokumentáció](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm))
+PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (további információért lásd a [PowerShell dokumentációját](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm))
 
-Parancssori felület: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (további információkért lásd: a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (további információért lásd a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
-Is [resources.azure.com](https://resources.azure.com) vagy a [Azure SDK-k](https://azure.microsoft.com/downloads/) a méretezési csoportban lévő virtuális gépek listáját.
+A méretezési csoportokban lévő virtuális gépek listázásához használhatja a [Resources.Azure.com](https://resources.azure.com) vagy az [Azure SDK](https://azure.microsoft.com/downloads/) -kat is.
 
-A kimenet a pontos bemutató függ, a parancshoz adja meg a beállításokat, de Íme néhány a parancssori felület mintakimenete:
+A kimenet pontos bemutatása a parancs által megadott beállításoktól függ, de itt látható a CLI-ből származó példa kimenete:
 
 ```
 $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
@@ -60,22 +60,22 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     .
 ```
 
-Amint láthatja, a "instanceId" tulajdonság csak egy tizedes tört szám. A példány azonosítók előfordulhat, hogy használja fel újra az új példányok után a régi példányok törlődnek.
+Amint láthatja, a "instanceId" tulajdonság csak decimális szám lehet. Előfordulhat, hogy a példány-azonosítók újra felhasználhatók az új példányok számára a régi példányok törlése után.
 
 >[!NOTE]
-> Nincs **nincs garancia** módon-példányon a méretezési csoportban lévő virtuális gépek azonosítót kap. Előfordulhat, hogy úgy tűnik, növekvő sorrendben esetenként, de ez nem mindig a helyzet. Függőség nem lépnek, amelyben a Példányazonosítók a virtuális gépekhez rendelt adott módjáról.
+> Nincs **garancia** arra, hogy a példány-azonosítók a méretezési csoportba tartozó virtuális gépekhez legyenek rendelve. Úgy tűnhet, hogy egymás után egyre növekszik időnként, de ez nem mindig igaz. Ne vegyen fel függőséget arra a konkrét módszerre, amelyben a példány-azonosítók hozzá vannak rendelve a virtuális gépekhez.
 
-## <a name="scale-set-vm-names"></a>Méretezési csoport egy virtuális gép neve
+## <a name="scale-set-vm-names"></a>Méretezési csoport virtuális gépek nevei
 
-A fenti példa kimenetben is van egy "name" a virtuális gép számára. Ez a név formájában adható meg "{méretezési-neve} _ {példányazonosító}". Ez a név azt láthatja, amelyeket az Azure Portalon a méretezési csoportban lévő példányok listázásakor:
+A fenti példában szereplő kimenetben a virtuális gép neve is szerepel. Ez a név a következő formát ölti: "{Scale-set-name} _ {instance-id}". Ez a név a méretezési csoport példányainak listázásakor a Azure Portal látható.
 
 ![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
-A név {példányazonosító} része decimális száma azonos a korábban tárgyalt "instanceId" tulajdonság.
+A név {instance-ID} része a korábban tárgyalt "instanceId" tulajdonsághoz tartozó decimális szám.
 
-## <a name="instance-metadata-vm-name"></a>Példány-metaadat virtuális gép neve
+## <a name="instance-metadata-vm-name"></a>Példány metaadatainak virtuális gép neve
 
-Ha lekérdezheti, ha a [példány-metaadat](../virtual-machines/windows/instance-metadata-service.md) a egy méretezési csoportot virtuális Gépen belül, lásd: "name" a kimenetben:
+Ha a [példány metaadatait](../virtual-machines/windows/instance-metadata-service.md) egy méretezési csoport virtuális gépről kérdezi le, a kimenetben a "név" látható.
 
 ```
 {
@@ -87,13 +87,13 @@ Ha lekérdezheti, ha a [példány-metaadat](../virtual-machines/windows/instance
     .
 ```
 
-Ez a név megegyezik a korábban tárgyalt nevét.
+Ez a név megegyezik a korábban tárgyalt névvel.
 
-## <a name="scale-set-vm-computer-name"></a>Méretezési csoport virtuális gép számítógép nevét
+## <a name="scale-set-vm-computer-name"></a>Méretezési csoport VM-számítógépének neve
 
-Minden virtuális gép méretezési csoportban lévő is beolvassa a hozzárendelt számítógépnevet. Ennél a számítógépnévnél a virtuális gép állomásnevét a [Azure által biztosított DNS-névfeloldás a virtuális hálózaton belül](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). A számítógép neve: "{computer-name-prefix}{base-36-instance-id}" formátumban.
+A méretezési csoport minden virtuális gépe a hozzá tartozó számítógép nevét is megjeleníti. Ez a számítógépnév a virtuális gép állomásneve az [Azure által biztosított DNS-névfeloldásban a virtuális hálózaton belül](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Ez a számítógépnév "{számítógépnév-előtag} {Base-36-instance-id}" formátumú.
 
-A {base-36-példány-azonosítója} [36 kiinduló](https://en.wikipedia.org/wiki/Base36) , és mindig hat számjegy hosszúságú. Ha alapszintű 36 leképezése az a szám kevesebb mint 6 számjegyű, az {base-36-példány-id} nullákat helyez el, hogy hosszabb 6 számjegyű számokhoz. {A(z) számítógép-neve-prefix} "nsgvmss" rendelkező példány és a példány azonosítója 85 például lesz az számítógép neve "nsgvmss00002D".
+A {Base-36-instance-ID} érték a [36-es alapszintű](https://en.wikipedia.org/wiki/Base36) , és mindig hat számjegy hosszúságú. Ha a szám 36-os alapértéke kevesebb, mint hat számjegyből áll, a {Base-36-instance-ID} nulla értékkel van feltöltve, hogy hat számjegy hosszú legyen. Például a (z) {számítógépnév-prefix} "nsgvmss" azonosítójú példánynak és a 85-as AZONOSÍTÓJÚ példánynak a neve "nsgvmss00002D" lesz.
 
 >[!NOTE]
-> A számítógépnév előtagja egy tulajdonságot a méretezési csoport modelljéből beállíthatja, hogy a helyzet a méretezési csoport név eltérő lehet.
+> A számítógép nevének előtagja a beállítható méretezési csoport modelljének egyik tulajdonsága, így a méretezési csoport nevétől eltérő lehet.

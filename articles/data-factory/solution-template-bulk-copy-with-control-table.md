@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439918"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Tömeges másolás egy vezérlőelem-táblázattal rendelkező adatbázisból
 
@@ -33,12 +33,16 @@ A sablon három tevékenységet tartalmaz:
 - A **foreach** beolvassa a keresési tevékenységből a partíciók listáját, és megismétli az egyes partíciókat a másolási tevékenységnek.
 - **Másolja** az egyes partíciókat a forrás-adatbázis tárolójából a célhelyre.
 
-A sablon öt paramétert határoz meg:
+A sablon a következő paramétereket definiálja:
 - *Control_Table_Name* a külső vezérlő tábla, amely a forrás-adatbázishoz tartozó partíciók listáját tárolja.
 - *Control_Table_Schema_PartitionID* a külső vezérlő táblában található oszlopnév neve, amely az egyes partíció-azonosítókat tárolja. Győződjön meg arról, hogy a partíció azonosítója egyedi a forrásadatbázis minden partícióján.
 - *Control_Table_Schema_SourceTableName* a külső vezérlő tábla, amely az egyes táblák nevét a forrás-adatbázisból tárolja.
 - *Control_Table_Schema_FilterQuery* a külső vezérlő tábla azon oszlopának neve, amely a szűrő lekérdezést tárolja, hogy a forrásadatbázis egyes partícióinak adatait beolvassa. Ha például az adatok évről évre particionálva lettek, az egyes sorokban tárolt lekérdezés hasonló lehet a "Select" adatforráshoz, ahol a LastModifytime > = "2015-01-01 00:00:00" és a LastModifytime < = "" 2015-12-31 23:59:59.999 "".
-- *Data_Destination_Folder_Path* az az elérési út, ahová a rendszer átmásolja az adattárolási útvonalat a célhelyre. Ez a paraméter csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként SQL Data Warehouse választja, akkor ez a paraméter nem szükséges. A táblák neveinek és a SQL Data Warehouse sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
+- *Data_Destination_Folder_Path* az az elérési út, ahová a rendszer átmásolja az adatait a célhelyre (akkor alkalmazható, ha a kiválasztott cél a "File System" vagy a "Azure Data Lake Storage Gen1"). 
+- *Data_Destination_Container* a gyökérmappa elérési útja, ahová a rendszer átmásolja az adatait a célhelyre. 
+- *Data_Destination_Directory* az a könyvtár elérési útja, amelynek a gyökerében az adatait a rendszer átmásolja a célhelyre. 
+
+Az utolsó három paraméter, amely meghatározza a célhely elérési útját, csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként az "Azure szinapszis Analytics (korábban SQL DW)" lehetőséget választja, akkor ezek a paraméterek nem szükségesek. A táblák neveinek és a SQL Data Warehouse sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
@@ -68,7 +72,7 @@ A sablon öt paramétert határoz meg:
 
 3. Hozzon létre egy **új** kapcsolódást a forrás-adatbázishoz, amelyből az adatok másolása folyamatban van.
 
-     ![Új kapcsolódás létrehozása a forrás-adatbázishoz](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Új kapcsolódás létrehozása a forrás-adatbázishoz](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. Hozzon létre egy **új** kapcsolódást ahhoz a célhely-adattárhoz, amelyhez az adatok másolása folyamatban van.
 
@@ -76,8 +80,6 @@ A sablon öt paramétert határoz meg:
 
 5. Kattintson a **Sablon használata** lehetőségre.
 
-    ![A sablon használata](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. Ekkor megjelenik a folyamat, ahogy az az alábbi példában is látható:
 
     ![A folyamat áttekintése](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,7 +92,7 @@ A sablon öt paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Választható Ha a SQL Data Warehouse adatcélhelyként választotta, meg kell adnia egy kapcsolódást az Azure Blob Storage-hoz az átmeneti tároláshoz, SQL Data Warehouse-alapú alapértéknek megfelelően. Győződjön meg arról, hogy a blob Storage tárolóban már létrejött a tároló.
+9. Választható Ha úgy döntött, hogy az "Azure szinapszis Analytics (korábban SQL DW)" értéket választotta az adat célhelyként, meg kell adnia egy, az Azure Blob Storage-hoz való kapcsolódást az átmeneti tároláshoz, SQL Data Warehouse-alapú alapkövetelménynek megfelelően. A sablon automatikusan létrehozza a tároló elérési útját a blob Storage-hoz. Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
     
     ![Alapszintű beállítás](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

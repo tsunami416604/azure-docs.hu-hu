@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454624"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>A fizikai kiszolgálók felmérésének és migrálásának támogatási mátrixa
 
@@ -40,7 +40,7 @@ A táblázat összefoglalja a fizikai kiszolgálók támogatott forgatókönyvei
 
   **Régiócsoport** | **Metaadatok tárolási helye**
   --- | ---
-  Azure Government | USA-beli államigazgatás – Virginia
+  Azure Government | US Gov Virginia
   Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
   Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
   Brazília | Dél-Brazília
@@ -49,7 +49,7 @@ A táblázat összefoglalja a fizikai kiszolgálók támogatott forgatókönyvei
   Franciaország | Közép-Franciaország
   India | Közép-India vagy Dél-India
   Japán |  Kelet-japán vagy Nyugat-Japán
-  Korea | Korea középső régiója vagy Dél-Korea
+  Dél-Korea | Korea középső régiója vagy Dél-Korea
   Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
   Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -73,9 +73,9 @@ Az értékeléshez Azure Migrate egy könnyű berendezést futtat a fizikai kisz
 
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
-| **Berendezések üzembe helyezése**   |  A készüléket fizikai vagy virtuális gépen helyezheti üzembe.<br/>  A gazdagépnek Windows Server 2012 R2 vagy újabb rendszert kell futtatnia.<br/> A gazdagépnek elegendő helyet kell biztosítania 16 GB RAM, 8 vCPU, körülbelül 80 GB tárterület és egy külső kapcsoló lefoglalásához a készülék virtuális gépe számára.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
+| **Berendezések üzembe helyezése**   |  A készülék telepítőjének parancsfájlját a portálról töltheti le (tömörített mappában). <br/> A mappát kibonthatja, és a PowerShell-szkriptet (AzureMigrateInstaller. ps1) futtathatja egy dedikált fizikai kiszolgálón vagy virtuális gépen a készülék beállításához.<br/>  A készülék telepítéséhez kiválasztott gépnek Windows Server 2016 rendszernek kell futnia.<br/> A gépnek elegendő hely szükséges ahhoz, hogy 16 GB RAM-ot, 8 vCPU, körülbelül 80 GB tárterületet és külső kapcsolót foglaljon le a készülék virtuális géphez.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
 | **Azure Migrate projekt**  |  Egy készülék egyetlen projekthez is társítható.<br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> Egy projektben legfeljebb 35 000 gépet lehet felmérni.
-| **Felfedezés**              | Egyetlen készülék akár 250-kiszolgálót is képes felderíteni.
+| **Felderítés**              | Egyetlen készülék akár 250-kiszolgálót is képes felderíteni.
 | **Értékelési csoport**       | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.
 | **Értékelés**             | Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
 
@@ -92,7 +92,7 @@ A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapc
 **URL-cím** | **Részletek**  
 --- | ---
 *.portal.azure.com | Navigálás a Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 management.azure.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
 dc.services.visualstudio.com | Naplózás és figyelés
@@ -109,7 +109,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 **Eszköz** | **Kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
-**Fizikai kiszolgálók** | **Windows:** Bejövő kapcsolatok a 443-es, 5989-as portokon a konfiguráció és a teljesítmény metaadatainak lekéréséhez Windows-kiszolgálókról. <br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (UDP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |
+**Fizikai kiszolgálók** | **Windows:** Bejövő kapcsolatok a 443-as porton, WinRM-portok 5985 (HTTP) és 5986 (HTTPS) a konfiguráció és a teljesítmény metaadatainak lekéréséhez a Windows-kiszolgálókról. <br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (UDP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |
 
 
 ## <a name="next-steps"></a>Következő lépések

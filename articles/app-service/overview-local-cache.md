@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687078"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680885"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -36,7 +36,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hogyan módosítja a helyi gyorsítótár a App Service viselkedését
 * A _D:\home_ a helyi gyorsítótárra mutat, amely a virtuálisgép-példányon jön létre, amikor az alkalmazás elindul. A _D:\Local_ továbbra is az ideiglenes VM-specifikus tárterületre mutat.
-* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 300 MB-ra van korlátozva, de akár 2 GB-ot is megnövelheti.
+* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 300 MB-ra van korlátozva, de akár 2 GB-ot is megnövelheti. Ha a másolt fájlok mérete meghaladja a helyi gyorsítótár méretét, App Service csendben hagyja figyelmen kívül a helyi gyorsítótárat, és olvassa el a távoli fájlmegosztást.
 * A helyi gyorsítótár írható-olvasható. Ha azonban az alkalmazás a virtuális gépeket helyezi át, vagy újraindul, a módosítások elvesznek. Ne használja a helyi gyorsítótárat olyan alkalmazások esetében, amelyek kritikus fontosságú adatokat tárolnak a tartalom-tárolóban.
 * A _D:\home\LogFiles_ és a _D:\home\Data_ naplófájlokat és alkalmazásadatokat tartalmaznak. A két almappát a rendszer helyileg tárolja a virtuálisgép-példányon, és rendszeres időközönként átmásolja őket a megosztott tartalom tárolójába. Az alkalmazások a naplófájlokat és az adatfájlokat a mappákba írással is megőrzik. A megosztott tartalom tárolójába való másolás azonban a legjobb megoldás, ezért lehetséges, hogy a naplófájlok és az adatmennyiség elvész a virtuálisgép-példányok hirtelen összeomlása miatt.
 * A [naplózási adatfolyamra](troubleshoot-diagnostic-logs.md#stream-logs) a legalkalmasabb másolási lehetőség vonatkozik. Akár egy percet is megfigyelheti a továbbított naplókban.
@@ -48,7 +48,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 ## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
 A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
-* [Azure Portalra](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
@@ -83,7 +83,7 @@ A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti a következ
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>A méret beállítás módosítása a helyi gyorsítótárban
-Alapértelmezés szerint a helyi gyorsítótár mérete **1 GB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja a `WEBSITE_LOCAL_CACHE_SIZEINMB`alkalmazást. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet.
+Alapértelmezés szerint a helyi gyorsítótár mérete **300 MB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja a `WEBSITE_LOCAL_CACHE_SIZEINMB`alkalmazást. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Ajánlott eljárások App Service helyi gyorsítótár használatához
 Javasoljuk, hogy a helyi gyorsítótárat az [átmeneti környezetek](../app-service/deploy-staging-slots.md) szolgáltatással együtt használja.
@@ -108,7 +108,7 @@ Ha az alkalmazás helyi gyorsítótárat használ, a legújabb módosítások be
 ### <a name="where-are-my-logs"></a>Hol találhatók a naplók?
 A helyi gyorsítótárral a naplók és az adatmappák egy kicsit máshogy néznek ki. Az almappák szerkezete azonban változatlan marad, azzal a különbséggel, hogy az almappák az "egyedi virtuálisgép-azonosító" és az időbélyeg formátuma alatt vannak.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Engedélyezve van a helyi gyorsítótár, de az alkalmazás továbbra is újraindul. Miért van ez? Azt hittem, hogy a helyi gyorsítótár segített a gyakori alkalmazás-újraindítások során.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Engedélyezve van a helyi gyorsítótár, de az alkalmazás továbbra is újraindul. Miért? Azt hittem, hogy a helyi gyorsítótár segített a gyakori alkalmazás-újraindítások során.
 A helyi gyorsítótár segít megelőzni a tárolóval kapcsolatos alkalmazások újraindítását. Az alkalmazás azonban továbbra is elvégezhető a virtuális gép tervezett infrastruktúrájának frissítése során. Az alkalmazás általános újraindítása, ha a helyi gyorsítótár engedélyezve van, kevesebbnek kell lennie.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>A helyi gyorsítótár kizár minden könyvtárat a gyorsabb helyi meghajtóra?

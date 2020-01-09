@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444845"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Aszinkron támogatáshoz
 |---|---|
 |**SDK letöltése**|[Maven 3](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API-dokumentáció**|[Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.documentdb)|
-|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Közreműködés az SDK-val**|[GitHubon](https://github.com/Azure/azure-documentdb-java/)|
 |**Első lépések**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
@@ -48,6 +48,7 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Aszinkron támogatáshoz
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
 * Az optimalizált partíciós kulcs tartományának gyorsítótár-frissítése.
+* A kijavítja azt a forgatókönyvet, amelyben az SDK nem támogatja a partíciók felosztására mutató hivatkozásokat a kiszolgálóról, és helytelen ügyféloldali útválasztási gyorsítótárak frissítését eredményezi.
 
 ### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
 * Az optimalizált gyűjtemények gyorsítótára frissül.
@@ -253,7 +254,7 @@ A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket
 
 <br/>
 
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Megjelenés dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
 | [2.1.2](#2.1.2) |Mar 09, 2018 |--- |

@@ -4,15 +4,15 @@ description: A vezetékes adatok összevont hálózati és teljesítményadatoka
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 5e19c9bd47fe253f9a416b923ec0cb1748682842
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365801"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (előzetes verzió) megoldás a Azure Monitor
 
@@ -113,21 +113,21 @@ A következő részben a Linux rendszeren futó függőségi ügynök támogatot
 
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
-| 7,4 | 3.10.0 – 693 |
-| 7,5 | 3.10.0 – 862 |
-| 7,6 | 3.10.0 – 957 |
+| 7.4 | 3.10.0 – 693 |
+| 7.5 | 3.10.0 – 862 |
+| 7.6 | 3.10.0 – 957 |
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
-| 6,9 | 2.6.32 – 696 |
+| 6.9 | 2.6.32 – 696 |
 | 6,10 | 2.6.32 – 754 |
 
 ##### <a name="centosplus"></a>CentOSPlus
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
-| 6,9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
 | 6,10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 ##### <a name="ubuntu-server"></a>Ubuntu Server
@@ -136,8 +136,8 @@ A következő részben a Linux rendszeren futó függőségi ügynök támogatot
 |:--|:--|
 | Ubuntu 18.04 | kernel 4,15.\*<br>4,18 * |
 | Ubuntu-16.04.3 | kernel 4,15. * |
-| 16,04 | 4,4. \*<br>4,8. \*<br>4,10. \*<br>4,11. \*<br>4,13. \* |
-| 14,04 | 3,13.\*<br>4,4. \* |
+| 16,04 | 4,4.\*<br>4,8.\*<br>4,10.\*<br>4,11.\*<br>4,13.\* |
+| 14,04 | 3,13.\*<br>4,4.\* |
 
 ##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 

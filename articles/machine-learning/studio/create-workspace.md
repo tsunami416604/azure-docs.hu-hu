@@ -1,5 +1,5 @@
 ---
-title: Munkaterület létrehozása
+title: Munkaterületek létrehozása
 titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (klasszikus) használatához Machine Learning Studio (klasszikus) munkaterületre van szükség. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1652febf6c3eb906990b2405590274911a45348e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427620"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
 
@@ -41,17 +41,17 @@ Azure Machine Learning Studio (klasszikus) használatához Machine Learning Stud
 
      ![Új Studio (klasszikus) munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
-5. Kattintson a **Létrehozás** elemre.
+5. Kattintson a **Create** (Létrehozás) gombra.
 
 > [!NOTE]
 > A Machine Learning Studio (klasszikus) egy Azure Storage-fiókra támaszkodik, amelyet Ön a munkafolyamatok végrehajtásakor a köztes adattároláshoz biztosít. A munkaterület létrehozása után, ha a Storage-fiókot törölték, vagy ha a hozzáférési kulcsok módosulnak, a munkaterület működése leáll, és a munkaterület összes kísérlete sikertelen lesz.
 Ha véletlenül törölte a Storage-fiókot, hozza létre újra a Storage-fiókot ugyanabban a régióban, mint a törölt Storage-fiókot, és szinkronizálja újra a hozzáférési kulcsot. Ha módosította a tárfiók hozzáférési kulcsát, az Azure Portal használatával szinkronizálja újra a hozzáférési kulcsot a munkaterületen.
 
-Miután telepítette a munkaterületet, megnyithatja azt a Machine Learning Studio klasszikus verziójában.
+Miután telepítette a munkaterületet, megnyithatja azt Machine Learning Studio (klasszikus).
 
 1. Keresse meg Machine Learning Studio (klasszikus) at [https://studio.azureml.net/](https://studio.azureml.net/)címen.
 
-2. Válassza ki a munkaterületet a jobb felső sarokban.
+2. Válassza ki munkaterületét a jobb felső sarokban.
 
     ![Munkaterület kiválasztása](./media/create-workspace/open-workspace.png)
 
@@ -76,7 +76,7 @@ Miután létrehozta a Machine Learning Studio (klasszikus) munkaterületet, megh
 
 ### <a name="to-share-a-studio-classic-workspace"></a>Studio (klasszikus) munkaterület megosztása
 
-1. Jelentkezzen be a Machine Learning Studio klasszikus verziójára [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Jelentkezzen be Machine Learning Studio (klasszikus) [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
 2. A bal oldali panelen kattintson a **Beállítások** elemre.
 

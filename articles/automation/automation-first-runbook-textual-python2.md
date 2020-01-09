@@ -2,19 +2,15 @@
 title: Az első Python-runbook Azure Automation
 description: Oktatóanyag, amely végigvezeti egy egyszerű Python-runbook létrehozásán, tesztelésén és közzétételén.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 54b008939b3d083769756b9ac3c3c9e3f7aebea5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b17a0403a3b2a3ff8c3586ed26a4b833db54922d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365937"
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-runbook
 
@@ -83,7 +79,7 @@ Ebben az esetben még nem rendelkezik közzétett verzióval, mert most létreho
 1. Görgessen vissza jobbra a **MyFirstRunbook-Python**ablaktáblájának megtekintéséhez.
    A felső beállítások lehetővé teszik, hogy elindítsa a runbook, megtekintse a runbook, vagy ütemezze azt úgy, hogy később elkezdődjön.
 2. El szeretné indítani a runbook, kattintson a **Start** gombra, majd kattintson az **OK** gombra a runbook indítása panel megnyitásakor.
-3. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
+3. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. Lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
 1. A feladatok állapota megjelenik a **feladatok összegzése** területen, és megfelel a runbook tesztelésekor megtekintett állapotoknak.
 2. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. Megnyílik a kimenet panel, és megtekintheti a *"Helló világ!" alkalmazás*.
 3. Zárja be a Kimenet panelt.

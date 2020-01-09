@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435730"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Használja az Apache Beeline-ügyfelet Apache Hive
 
 Ismerje meg, hogyan használható az [Apache beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) Apache Hive lekérdezések futtatásához a HDInsight.
 
-A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain található. A Beeline JDBC használatával csatlakozik a HDInsight-fürtön üzemeltetett HiveServer2-hez. A Beeline használatával távolról is elérheti a HDInsight a struktúrát az interneten keresztül. Az alábbi példák a HDInsight való kapcsolódáshoz használt leggyakoribb kapcsolati karakterláncokat biztosítják a következő esetekben:
+A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain található. Ha helyileg szeretné telepíteni a beelinet, tekintse meg az alábbi, a [Beeline-ügyfél telepítése](#install-beeline-client)című témakört. A Beeline JDBC használatával csatlakozik a HDInsight-fürtön üzemeltetett HiveServer2-hez. A Beeline használatával távolról is elérheti a HDInsight a struktúrát az interneten keresztül. Az alábbi példák a HDInsight való kapcsolódáshoz használt leggyakoribb kapcsolati karakterláncokat biztosítják a következő esetekben:
 
 ## <a name="types-of-connections"></a>A kapcsolatok típusai
 
@@ -59,19 +59,19 @@ Cserélje le a `<username>`t egy olyan fiók nevére, amely a fürt eléréséhe
 
 ### <a name="over-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (az alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `<clustername>.azurehdinsight.net`-címnek való kapcsolódáshoz. Ez a kapcsolat a `443`porton keresztül történik, és SSL használatával titkosítva:
+Ha nyilvános vagy privát végpontokat használó fürthöz csatlakozik, meg kell adnia a fürt bejelentkezési fiókjának nevét (az alapértelmezett `admin`) és a jelszót. Ha például egy ügyfélrendszer beelinét használja a `clustername.azurehdinsight.net`-címnek való kapcsolódáshoz. Ez a kapcsolat a `443`porton keresztül történik, és SSL használatával titkosítva:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 vagy privát végpont esetén:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `<username>`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
+Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `admin`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
 
 A privát végpontok alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse [meg a globális VNet-társítási és terheléselosztó-korlátozásokat](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . A `curl` parancsot használhatja `-v` lehetőséggel a nyilvános vagy privát végpontokkal kapcsolatos csatlakozási problémák elhárításához a beelin használata előtt.
 
@@ -86,16 +86,16 @@ Apache Spark a HiveServer2 saját implementációját biztosítja, amelyet más 
 A használt kapcsolatok karakterlánca némileg eltér. Ahelyett, hogy a `httpPath=/hive2` `httpPath/sparkhive2`:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 vagy privát végpont esetén:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `<username>`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
+Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje le a `admin`t a fürthöz tartozó bejelentkezési fiókkal. ESP-fürtök esetén használja a teljes egyszerű felhasználónevet (például user@domain.com). Cserélje le a `password`t a fürt bejelentkezési fiókjának jelszavára.
 
 A privát végpontok alapszintű Load balancerre mutatnak, amely csak ugyanabban a régióban található virtuális hálózatok érhető el. További információért tekintse [meg a globális VNet-társítási és terheléselosztó-korlátozásokat](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . A `curl` parancsot használhatja `-v` lehetőséggel a nyilvános vagy privát végpontokkal kapcsolatos csatlakozási problémák elhárításához a beelin használata előtt.
 
@@ -238,7 +238,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
 
 6. A Beeline kilépéséhez használja a `!exit`.
 
-## <a id="file"></a>HiveQL-fájl futtatása
+## <a name="run-a-hiveql-file"></a>HiveQL-fájl futtatása
 
 Ez az előző példa folytatása. A következő lépésekkel hozzon létre egy fájlt, majd futtassa a Beeline paranccsal.
 
@@ -292,7 +292,64 @@ Ez az előző példa folytatása. A következő lépésekkel hozzon létre egy f
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>További lépések
+## <a name="install-beeline-client"></a>A Beeline-ügyfél telepítése
+
+Bár a Beeline a HDInsight-fürt fő csomópontjain szerepel, érdemes lehet egy helyi gépre telepíteni.  A Beeline helyi gépen való telepítéséhez szükséges lépések a [Linux Windows alrendszerén](https://docs.microsoft.com/windows/wsl/install-win10)alapulnak.
+
+1. Frissítési csomagok listája. Adja meg a következő parancsot a bash-rendszerhéjban:
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Telepítse a Java-t, ha nincs telepítve. A `which java` paranccsal is megtekintheti.
+
+    1. Ha nincs telepítve Java-csomag, írja be a következő parancsot:
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. Módosítsa a bashrc fájlt (általában a ~/.bashrc-ben található). Nyissa meg a fájlt `nano ~/.bashrc`, majd adja hozzá a következő sort a fájl végén:
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        Ezután nyomja le a **CTRL + X**billentyűkombinációt, majd az **Y**, majd a ENTER billentyűt.
+
+1. Töltse le a Hadoop és a Beeline archívumokat, és írja be a következő parancsokat:
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Csomagolja ki az archívumokat, írja be a következő parancsokat:
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Módosítsa a bashrc-fájlt. Meg kell határoznia azt az elérési utat, ahová az archívumok kicsomagolása megtörtént. Ha a [Linux Windows alrendszerét](https://docs.microsoft.com/windows/wsl/install-win10)használja, és pontosan követte a lépéseket, az elérési út `/mnt/c/Users/user/`lesz, ahol `user` a felhasználónevét.
+
+    1. Nyissa meg a fájlt: `nano ~/.bashrc`
+    1. Módosítsa az alábbi parancsokat a megfelelő elérési úttal, majd írja be őket a bashrc fájl végére:
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. Ezután nyomja le a **CTRL + X**billentyűkombinációt, majd az **Y**, majd a ENTER billentyűt.
+
+1. Zárjuk be, majd nyissa meg újra a bash-munkamenetet.
+
+1. A kapcsolatok tesztelése. Használja a kapcsolat formátumát a fentiekben [nyilvános vagy privát végpontokon](#over-public-or-private-endpoints).
+
+## <a name="next-steps"></a>Következő lépések
 
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)
 

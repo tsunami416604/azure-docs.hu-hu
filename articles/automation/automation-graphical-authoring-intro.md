@@ -2,19 +2,15 @@
 title: Grafikus szerzői műveletek Azure Automation
 description: A grafikus szerzői műveletek lehetővé teszik, hogy runbookok hozzon létre Azure Automation a kód használata nélkül. Ez a cikk bemutatja a grafikus szerzői műveletek és a grafikus runbook létrehozásának megkezdéséhez szükséges összes részlet bevezetését.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450749"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus szerzői műveletek Azure Automation
 
@@ -46,7 +42,7 @@ A könyvtár vezérlőelemben választhatja ki a runbook hozzáadni kívánt [te
 
 | Section | Leírás |
 |:--- |:--- |
-| A  parancsmagjai |Tartalmazza az összes olyan parancsmagot, amely használható a runbook. A parancsmagok modul szerint vannak rendszerezve. Az Automation-fiókba telepített összes modul elérhető. |
+| Parancsmagok |Tartalmazza az összes olyan parancsmagot, amely használható a runbook. A parancsmagok modul szerint vannak rendszerezve. Az Automation-fiókba telepített összes modul elérhető. |
 | Runbookok |Az Automation-fiók runbookok tartalmazza. Ezek a runbookok hozzáadhatók a vászonhoz, hogy gyermek runbookok legyenek felhasználva. Csak a szerkesztett runbook azonos alaptípusú runbookok jelennek meg; a grafikus runbookok csak a PowerShell-alapú runbookok jelennek meg, míg a grafikus PowerShell-munkafolyamat runbookok csak a PowerShell-munkafolyamat-alapú runbookok láthatók. |
 | Objektumok |Az Automation-fiókban található [Automation-eszközöket](/previous-versions/azure/dn939988(v=azure.100)) tartalmazza, amelyeket a runbook használhat. Ha hozzáad egy adategységet egy runbook, hozzáad egy munkafolyamat-tevékenységet, amely beolvassa a kijelölt objektumot. Változó eszközök esetén kiválaszthatja, hogy szeretne-e tevékenységet hozzáadni a változóhoz, vagy beállítja a változót. |
 | Runbook-vezérlő |Magában foglalja az aktuális runbook használható runbook-vezérlési tevékenységeket is. Egy *elágazás* több bemenetet is igénybe vesz, és addig vár, amíg az összes befejeződött, mielőtt folytatná a munkafolyamatot. A *kód* tevékenység a grafikus runbook függően a PowerShell-vagy a PowerShell-munkafolyamat kódjának egy vagy több sorát futtatja. Ezt a tevékenységet egyéni kódokhoz vagy olyan funkciókhoz használhatja, amelyeket nehéz elérni más tevékenységekkel. |

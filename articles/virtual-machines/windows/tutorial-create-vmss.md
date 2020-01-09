@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – virtuálisgép-méretezési csoport létrehozása a Windowshoz az Azure-ban
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure PowerShellt magas rendelkezésre állású alkalmazások létrehozásához és üzembe helyezéséhez Windows rendszerű virtuális gépeken, virtuálisgép-méretezési csoport használatával
+title: 'Oktatóanyag: Windowsos virtuálisgép-méretezési csoport létrehozása'
+description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy magasan elérhető alkalmazást a Windows rendszerű virtuális gépeken egy virtuálisgép-méretezési csoport használatával a Azure PowerShell használatával.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6fcf0c14d58e70659ee5e21b03245b705294b445
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bf53b2777c5d1e4d774a9f5ee9df119a0deac9d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067894"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464972"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Windows rendszeren, az Azure PowerShell használatával
 A virtuálisgép-méretezési csoport lehetővé teszi azonos, automatikus skálázású virtuális gépek készletének üzembe helyezését és kezelését. A méretezési csoportba tartozó virtuális gépek számát manuálisan is méretezheti. A szabályokat az erőforrás-használat, például a processzor, a memória igénye vagy a hálózati forgalom alapján is megadhatja az autoskálázáshoz. Ebben az oktatóanyagban egy virtuálisgép-méretezési csoport üzembe helyezését mutatja be az Azure-ban, és megismerheti a következőket:
@@ -278,7 +278,7 @@ Add-AzAutoscaleSetting `
 Az automatikus skálázás tervezésével kapcsolatban bővebben az [automatikus skálázás ajánlott eljárásait](/azure/architecture/best-practices/auto-scaling) ismertető cikkben tájékozódhat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

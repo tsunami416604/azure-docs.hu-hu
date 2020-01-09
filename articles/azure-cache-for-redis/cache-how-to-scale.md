@@ -1,17 +1,17 @@
 ---
 title: Az Azure cache méretezése a Redis
-description: Ismerje meg, hogyan méretezheti az Azure cache-t az Redis-példányok számára
+description: Megtudhatja, hogyan méretezheti az Azure cache-t a Redis-példányok számára a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.author: yegu
-ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122121"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433499"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Az Azure cache méretezése a Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A gyorsítótár létrehozása után méretezheti a gyorsítótár méretét és díjszabási szintjét, ha az alkalmazás követelményei megváltoznak. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
@@ -24,7 +24,7 @@ A következő mérőszámok figyelésével megállapíthatja, hogy szükség van
 * Redis-kiszolgáló terhelése
 * Memóriahasználat
 * Hálózati sávszélesség
-* CPU-használat
+* Processzorhasználat
 
 Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás követelményeinek, egy nagyobb vagy kisebb gyorsítótár-díjszabási csomagra méretezheti, amely megfelelő az alkalmazásához. A gyorsítótár-díjszabási csomag kiválasztásával kapcsolatos további információkért tekintse meg az [Azure cache Redis-ajánlat és-méret használatát](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)ismertető témakört.
 
@@ -35,7 +35,7 @@ A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configu
 
 Válassza ki a kívánt díjszabási szintet a **Select díjszabási csomag kiválasztása** panelen, és kattintson a **kiválasztás**elemre.
 
-![Tarifacsomag][redis-cache-pricing-tier-blade]
+![Díjcsomag][redis-cache-pricing-tier-blade]
 
 
 A következő korlátozásokkal méretezheti át egy másik díjszabási szintet:

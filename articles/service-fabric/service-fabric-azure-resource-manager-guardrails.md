@@ -1,25 +1,18 @@
 ---
-title: Service Fabric Azure Resource Manager üzembe helyezési guardrails | Microsoft Docs
+title: Service Fabric Azure Resource Manager üzembe helyezési guardrails
 description: Ez a cikk áttekintést nyújt a Service Fabric-fürtök Azure Resource Manager használatával történő telepítésekor előforduló gyakori hibákról és azok elkerüléséről.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426739"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Service Fabric-fürt telepítésekor a rendszer behelyezi a guardrails-t, így az érvénytelen fürtkonfiguráció esetén sikertelen lesz a Azure Resource Manager központi telepítés. A következő szakaszokban áttekintheti a fürtökkel kapcsolatos gyakori problémákat és a problémák enyhítéséhez szükséges lépéseket. 
@@ -73,7 +66,7 @@ A fenti hibaüzenetek bármelyike által jelzett tartóssági eltérés kijavít
 1. Módosítsa a tartóssági szintet a Azure Resource Manager sablon virtuálisgép-méretezési csoport bővítmény vagy Service Fabric csomópont típusa szakaszában, hogy az értékek megegyezzenek.
 2. Telepítse újra a Azure Resource Manager sablont a frissített értékekkel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
 * Hibaelhárítási Service Fabric: [útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

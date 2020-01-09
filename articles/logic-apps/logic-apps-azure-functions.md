@@ -1,17 +1,17 @@
 ---
-title: Azure functions hozzáadása és hívása Azure Logic Apps
-description: Azure functions hozzáadása és futtatása logikai alkalmazásokból
+title: Azure Functions hozzáadása és hívása Azure Logic Apps
+description: Egyéni kód meghívása és futtatása a Azure Functions az automatizált feladatokból és munkafolyamatokból Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453469"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions hívása Azure Logic Apps
 

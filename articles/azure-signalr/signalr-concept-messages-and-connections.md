@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392808"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Üzenetek és kapcsolatok az Azure Signaler szolgáltatásban
 
@@ -38,8 +38,6 @@ A 2 KB-nál nagyobb üzenetek több, egyenként 2 KB-os üzenetnek számítanak.
 
 Tegyük fel például, hogy három ügyfél és egy alkalmazáskiszolgáló van. Egy ügyfél 4 KB-os üzenetet küld, amely lehetővé teszi a kiszolgáló számára az összes ügyfél számára történő szórást. Az üzenetek száma nyolc: egy üzenet a szolgáltatásból az alkalmazáskiszolgáló és három üzenet a szolgáltatástól az ügyfeleknek. Minden üzenet két 2 KB-os üzenetnek számít.
 
-A Azure Portalban megjelenő üzenetek száma mindaddig 0 marad, amíg a rendszer a 100-nál nagyobb értékre halmozódik.
-
 ## <a name="how-connections-are-counted"></a>A kapcsolatok számlálása
 
 Kiszolgálói kapcsolatok és ügyfélkapcsolatok érhetők el az Azure Signaler szolgáltatással. Alapértelmezés szerint minden alkalmazáskiszolgáló öt kezdeti kapcsolattal kezdődik, és minden ügyfélnek van egy ügyfélkapcsolata.
@@ -54,7 +52,7 @@ Az alkalmazáskiszolgáló élettartama során a szolgáltatás és az alkalmaz�
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>A bejövő/kimenő forgalom számításának módja
 
-A bejövő forgalom és a kimenő forgalom közötti különbségtétel az Azure Signaler szolgáltatás perspektíváján alapul. A forgalmat bájtban számítjuk ki. Az üzenetek számához hasonlóan a forgalom mintavételi gyakorisággal is rendelkezik. A Azure Portal bejövő/kimenő diagramja minden 100 KB-onként frissül.
+A bejövő forgalom és a kimenő forgalom közötti különbségtétel az Azure Signaler szolgáltatás perspektíváján alapul. A forgalmat bájtban számítjuk ki.
 
 ## <a name="related-resources"></a>Kapcsolódó források
 

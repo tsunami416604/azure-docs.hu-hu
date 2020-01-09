@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1a58d2170ec1107222f0e37e432063af23743e42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 12ecca5873ac7c2c3bfa30d4c73c7d8e268aabfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355719"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Szerepkör-hozzárendelések listázása az Azure RBAC és az Azure CLI használatával
 
@@ -37,7 +37,7 @@ Egy adott felhasználó szerepkör-hozzárendeléseinek listázásához használ
 az role assignment list --assignee <assignee>
 ```
 
-Alapértelmezés szerint csak az előfizetésre hatókörű közvetlen hozzárendelések jelennek meg. Ha erőforrás vagy csoport szerint szeretné megtekinteni a hozzárendeléseket, használja a `--all` és az örökölt hozzárendelések megtekintéséhez használja a `--include-inherited`.
+Alapértelmezés szerint csak a jelenlegi előfizetéshez tartozó szerepkör-hozzárendelések jelennek meg. Ha meg szeretné tekinteni a jelenlegi előfizetéshez tartozó szerepkör-hozzárendeléseket, adja hozzá a `--all` paramétert. Az örökölt szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--include-inherited` paramétert.
 
 Az alábbi példa felsorolja azokat a szerepkör-hozzárendeléseket, amelyek közvetlenül a *patlong\@contoso.com* -felhasználóhoz vannak rendelve:
 
@@ -110,6 +110,30 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 ```Example
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>Felügyelt identitás szerepkör-hozzárendeléseinek listázása
+
+1. Szerezze be a rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitás objektum-AZONOSÍTÓját. 
+
+    A felhasználó által hozzárendelt felügyelt identitás objektum-AZONOSÍTÓjának lekéréséhez az [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) vagy [az Identity List](/cli/azure/identity#az-identity-list)lehetőséget használhatja.
+
+    ```azurecli
+    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```
+
+    A rendszer által hozzárendelt felügyelt identitás azonosítójának lekéréséhez használhatja [az az ad SP listát](/cli/azure/ad/sp#az-ad-sp-list).
+
+    ```azurecli
+    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```
+
+1. A szerepkör-hozzárendelések listázásához használja az [az role-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list)lehetőséget.
+
+    Alapértelmezés szerint csak a jelenlegi előfizetéshez tartozó szerepkör-hozzárendelések jelennek meg. Ha meg szeretné tekinteni a jelenlegi előfizetéshez tartozó szerepkör-hozzárendeléseket, adja hozzá a `--all` paramétert. Az örökölt szerepkör-hozzárendelések megtekintéséhez adja hozzá a `--include-inherited` paramétert.
+
+    ```azurecli
+    az role assignment list --assignee <objectid>
+    ```
 
 ## <a name="next-steps"></a>Következő lépések
 

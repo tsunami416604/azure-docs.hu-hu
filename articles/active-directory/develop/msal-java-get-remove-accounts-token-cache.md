@@ -1,5 +1,5 @@
 ---
-title: Fiókok beolvasása és eltávolítása a jogkivonat-gyorsítótárból a MSAL for Java (MSAL4j) használatával
+title: Fiókok & eltávolítása a jogkivonat-gyorsítótárból (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy miként tekintheti meg és távolíthatja el a fiókokat a jogkivonat-gyorsítótárból a Javához készült Microsoft Authentication Library használatával.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40c5f2e272a44727d4da91600093e8dc691a95f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2f800d8d8665667c51ee57e3fe1c556c3a2d8eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424340"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Fiókok beolvasása és eltávolítása a jogkivonat-gyorsítótárból a MSAL for Java használatával
 
@@ -52,6 +52,6 @@ IAccount accountToBeRemoved = accounts.stream().filter(
 pca.removeAccount(accountToBeRemoved).join();
 ```
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>További információk
 
 Ha Java-MSAL használ, ismerkedjen meg az [Egyéni jogkivonat-gyorsítótár szerializálásával a MSAL for javában](msal-java-token-cache-serialization.md).

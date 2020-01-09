@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell parancsfájl – feladatátvételi prioritás módosítása vagy feladatátvételi trigger indítása Azure Cosmos-fiókhoz
+title: PowerShell-parancsfájl egy Azure Cosmos-fiók feladatátvételi prioritásának módosításához
 description: Azure PowerShell parancsfájl-minta – feladatátvételi prioritás módosítása vagy feladatátvételi trigger indítása Azure Cosmos-fiókhoz
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441510"
 ---
 # <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>Feladatátvételi prioritás módosítása vagy feladatátvétel indítása Azure Cosmos-fiókhoz a PowerShell használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "71155407"
 ## <a name="sample-script"></a>Példaszkript
 
 > [!NOTE]
-> Egy régió `failoverPriority=0` bármely változása manuális feladatátvételt indít el, és csak manuális feladatátvételre konfigurált fiókkal végezhető el. Az összes többi régió módosításai egyszerűen módosítják a Cosmos-fiókok feladatátvételi prioritását.
+> Ha a `failoverPriority=0` egy régió bármely változása manuális feladatátvételt indít el, és csak manuális feladatátvételre konfigurált fiókra lehet elvégezni. Az összes többi régió módosításai egyszerűen módosítják a Cosmos-fiókok feladatátvételi prioritását.
 > [!NOTE]
 > Ez a példa egy SQL-(Core-) API-fiók használatát mutatja be. Ha más API-khoz szeretné használni ezt a mintát, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra.
 
@@ -43,12 +43,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Műveletet hív meg egy erőforráson. |
+| [Meghívás – AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Műveletet hív meg egy erőforráson. |
 |**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

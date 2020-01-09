@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995881"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354883"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás a SQL Database és az adattárházban
 
@@ -72,14 +72,14 @@ Az egyetlen kivétel az, amikor egy SQL-adatbázisból exportál, és onnan expo
 
 
 ## <a name="manage-transparent-data-encryption"></a>Transzparens adattitkosítás kezelése
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 A Azure Portal transzparens adattitkosítás kezelése.
 
 A Azure Portal keresztüli transzparens adattitkosítás konfigurálásához Azure-tulajdonosként, közreműködőként vagy SQL Security managerként kell csatlakoznia.
 
 Az transzparens adattitkosítás be-és kikapcsolása az adatbázis szintjén. Egy adatbázis transzparens adattitkosításának engedélyezéséhez lépjen a [Azure Portalra](https://portal.azure.com) , és jelentkezzen be az Azure-beli rendszergazdai vagy közreműködői fiókjával. Keresse meg a felhasználói adatbázis transzparens adattitkosítási beállításait. Alapértelmezés szerint a rendszer a szolgáltatás által kezelt transzparens adattitkosítást használja. Az adatbázist tartalmazó kiszolgáló számára automatikusan létrejön egy transzparens adattitkosítási tanúsítvány. Az Azure SQL felügyelt példánya esetében a T-SQL használatával be-és kikapcsolhatja a transzparens adattitkosítást egy adatbázison.
 
-![Szolgáltatás által kezelt transzparens adattitkosítás](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
+![Szolgáltatás által kezelt transzparens adattitkosítás](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
 
 Az átlátszó adattitkosítási főkulcsot (más néven transzparens adattitkosítási védőt) a kiszolgálói szinten állíthatja be. Ha transzparens adattitkosítást szeretne használni Bring Your Own Key támogatással, és az adatbázisait Key Vault-kulccsal védi, nyissa meg a kiszolgáló transzparens adattitkosítási beállításait.
 

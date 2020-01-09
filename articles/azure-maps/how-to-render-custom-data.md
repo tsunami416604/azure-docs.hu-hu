@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408904"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
@@ -22,12 +22,14 @@ Ez a cikk azt ismerteti, hogyan használható a [statikus képszolgáltatás](ht
 
 Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez használhatja a Poster alkalmazást. Azure Maps [adatszolgáltatási API-kat](https://docs.microsoft.com/rest/api/maps/data) használhat az átfedések tárolására és megjelenítésére.
 
+> [!Tip]
+> Gyakran sokkal költséghatékonyabb, hogy a Azure Maps web SDK használatával egy egyszerű Térkép jelenjen meg egy weboldalon, mint a statikus képszolgáltatás használata. A web SDK leképezési csempéket használ, kivéve, ha a felhasználó serpenyőben és nagyítja a térképet, gyakran csak egy tranzakció töredékét eredményezi a leképezések terhelése alapján. Vegye figyelembe, hogy a Azure Maps web SDK-val lehetőség van a pásztázás és a nagyítás letiltására. Emellett a Azure Maps web SDK az adatvizualizációs lehetőségek széles választékát kínálja, mint a statikus Térkép webszolgáltatás.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása
 
-A cikkben ismertetett eljárások elvégzéséhez először létre kell hoznia egy Azure Maps fiókot a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) részben leírt utasítások alapján, és kövesse az [elsődleges kulcs beolvasása](./tutorial-search-location.md#getkey) a fiókhoz elsődleges előfizetési kulcs lekéréséhez című témakör lépéseit.
+A cikkben ismertetett eljárások elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie a Maps-fiók kulcsát. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Pushpins megjelenítése címkékkel és egyéni képpel

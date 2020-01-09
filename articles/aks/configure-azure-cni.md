@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604790"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659780"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -25,7 +25,6 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat az *Azure CN
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
-* Ne hozzon létre egynél több AK-fürtöt ugyanabban az alhálózatban.
 * Az AK-fürtök nem használhatnak `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány esetében.
 * Az AK-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
@@ -63,7 +62,7 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 
 | Üzembe helyezési módszer | Kubenet alapértelmezett értéke | Alapértelmezett Azure-CNI | Konfigurálható az üzembe helyezéskor |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
+| Azure parancssori felület (CLI) | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
 | Portál | 110 | 30 | Nem |
 
@@ -73,7 +72,7 @@ A hüvelyek maximális számát *csak a fürt központi telepítésének idejér
 
 A csomópontok maximális számaként megadott minimális érték kényszerítve van, hogy a rendszer a fürt állapotának kritikus fontosságú területét biztosítsa. A maximális hüvelyek esetében beállítható minimális érték 10, ha és csak akkor, ha az egyes csomópontok készletének konfigurációja legalább 30 hüvelyből áll. Például a maximális hüvelyek/csomópontok minimum 10 értékre való beállítása megköveteli, hogy minden egyes csomópont-készlet legalább 3 csomóponttal rendelkezzen. Ez a követelmény minden létrehozott új csomópont-készletre vonatkozik, így ha a 10 a csomópontok maximális hüvelye van definiálva, minden további hozzáadott csomópontnak legalább 3 csomóponttal kell rendelkeznie.
 
-| Hálózat | Minimális | Maximum |
+| Hálózatkezelés | Minimális | Maximum |
 | -- | :--: | :--: |
 | Azure-CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
@@ -93,7 +92,7 @@ Egy meglévő AK-fürtön nem módosítható a csomópontok maximális száma. A
 
 AK-fürt létrehozásakor a következő paraméterek konfigurálhatók az Azure CNI hálózatkezeléshez:
 
-**Virtuális hálózat**: az a virtuális hálózat, amelybe telepíteni kívánja a Kubernetes-fürtöt. Ha új virtuális hálózatot szeretne létrehozni a fürthöz, válassza az *új létrehozása* elemet, és kövesse a *virtuális hálózat létrehozása* szakasz lépéseit. Az Azure-beli virtuális hálózatok korlátaival és kvótákkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+**Virtuális hálózat**: az a virtuális hálózat, amelybe telepíteni kívánja a Kubernetes-fürtöt. Ha új virtuális hálózatot szeretne létrehozni a fürthöz, válassza az *új létrehozása* elemet, és kövesse a *virtuális hálózat létrehozása* szakasz lépéseit. Az Azure-beli virtuális hálózatok korlátaival és kvótákkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
 **Alhálózat**: azon a virtuális hálózaton belüli alhálózat, ahová a fürtöt telepíteni kívánja. Ha létre szeretne hozni egy új alhálózatot a fürt virtuális hálózatában, válassza az *új létrehozása* lehetőséget, és kövesse az *alhálózat létrehozása* szakaszban leírt lépéseket. A hibrid kapcsolatok esetében a címtartomány nem fedi át a környezetében lévő többi virtuális hálózatot.
 
@@ -171,7 +170,7 @@ Az alábbi kérdések és válaszok az **Azure CNI** hálózati konfigurációra
 
   Nem ajánlott, de ez a konfiguráció lehetséges. A szolgáltatási címtartomány a virtuális IP-címek (VIP) készlete, amelyet a Kubernetes a fürt belső szolgáltatásaihoz rendel hozzá. Az Azure hálózatkezelésének nincs láthatósága a Kubernetes-fürt szolgáltatási IP-címének tartományán. A fürt szolgáltatási címtartomány láthatóságának hiánya miatt később létrehozhat egy új alhálózatot a fürt virtuális hálózatában, amely átfedésben van a szolgáltatási címtartomány használatával. Ha átfedés történik, a Kubernetes hozzárendelhet egy olyan IP-címet, amelyet már egy másik erőforrás használ az alhálózatban, ami kiszámíthatatlan működést vagy hibát okoz. Annak biztosításával, hogy a fürt virtuális hálózatán kívüli címtartományt használjon, elkerülheti ezt az átfedési kockázatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről az AK-ban a következő cikkekben található:
 

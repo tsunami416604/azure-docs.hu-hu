@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374255"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Always On rendelkezésre állási csoportok konfigurálása az Azure Virtual Machines automatikusan: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Always On rendelkezésre állási csoportok konfigurálása az Azure-ban Virtual Machines automatikusan: Resource Manager
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan SQL Server rendelkezésre állási csoportot, amely Azure Resource Manager virtuális gépeket használ. Az oktatóanyag Azure-lapokat használ a sablonok konfigurálásához. Tekintse át az alapértelmezett beállításokat, írja be a kötelező beállításokat, majd frissítse a paneleket a portálon az oktatóanyag lépésein.
 
@@ -43,7 +43,7 @@ Az oktatóanyag elindítása előtt erősítse meg a következőket:
 
 * Már rendelkezik Azure-fiókkal. Ha még nem rendelkezik ilyennel, [regisztráljon egy próbaverziós fiókra](https://azure.microsoft.com/pricing/free-trial/).
 * Már tudja, hogyan használhatja a grafikus felhasználói felületet egy SQL Server virtuális gép üzembe helyezéséhez a virtuálisgép-galériából. További információ: [SQL Server virtuális gép üzembe helyezése az Azure](virtual-machines-windows-portal-sql-server-provision.md)-ban.
-* Már rendelkezik a rendelkezésre állási csoportok alapos megismerésével. További információ: Always [on rendelkezésre állási csoportok (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
+* Már rendelkezik a rendelkezésre állási csoportok alapos megismerésével. További információ: [Always On rendelkezésre állási csoportok (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 
 > [!NOTE]
 > Ha érdekli a rendelkezésre állási csoportok használata a SharePointban, lásd még: [SQL Server 2012 always on rendelkezésre állási csoportok konfigurálása a sharepoint 2013](/SharePoint/administration/configure-an-alwayson-availability-group)-hoz.
@@ -66,17 +66,17 @@ Az Azure egy katalógus-rendszerképet biztosít a teljes megoldáshoz. A sablon
 2. A Azure Portal kattintson az **erőforrás létrehozása** elemre az **új** ablaktábla megnyitásához.
 3. Az **új** ablaktáblán keresse meg a **AlwaysOn**.
    ![AlwaysOn-sablon keresése](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-4. A keresési eredmények között keresse meg **SQL Server AlwaysOn**-fürtöt.
+4. A keresési eredmények között keresse meg **SQL Server AlwaysOn-fürtöt**.
    ![AlwaysOn-sablon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 5. A **telepítési modell kiválasztása**lapon válassza a **Resource Manager**lehetőséget.
 
 ### <a name="basics"></a>Alapvető beállítások
-Kattintson az alapismeretek lehetőségre, és adja meg a következő beállításokat:
+Kattintson az **alapismeretek** lehetőségre, és adja meg a következő beállításokat:
 
 * A **rendszergazda felhasználóneve** olyan felhasználói fiók, amely tartományi rendszergazdai engedélyekkel rendelkezik, és a SQL Server mindkét példányán tagja a SQL Server sysadmin rögzített kiszolgálói szerepkörnek. Ebben az oktatóanyagban használja a **rdfe**-t.
 * A **jelszó** a tartományi rendszergazdai fiók jelszava. Használjon összetett jelszót. Erősítse meg a jelszót.
 * Az **előfizetés** azt az előfizetést adja meg, amelyet az Azure számláz az összes telepített erőforrás futtatásához a rendelkezésre állási csoport számára. Ha a fiókja több előfizetéssel rendelkezik, megadhat egy másik előfizetést.
-* Az **erőforráscsoport** annak a csoportnak a neve, amelyhez a sablon által létrehozott összes Azure-erőforrás tartozik. Ebben az oktatóanyagban használja az **SQL-ha-RG-** t. További információk: [Azure Resource Manager overview](../../../azure-resource-manager/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
+* Az **erőforráscsoport** annak a csoportnak a neve, amelyhez a sablon által létrehozott összes Azure-erőforrás tartozik. Ebben az oktatóanyagban használja az **SQL-ha-RG-** t. További információk: [Azure Resource Manager overview](../../../azure-resource-manager/management/overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
 * A **hely** az az Azure-régió, ahol az oktatóanyag létrehozza az erőforrásokat. Válasszon egy Azure-régiót.
 
 A következő képernyőkép egy befejezett **alapismeretek** panel:
@@ -92,8 +92,8 @@ A **tartomány és hálózati beállítások** panelen tekintse át a tartomány
 
 * Az **erdő gyökértartományának neve** a fürtöt futtató Active Directory tartomány tartományneve. Az oktatóanyaghoz használja a **contoso.com**.
 * **Virtual Network neve** az Azure-beli virtuális hálózat hálózati neve. Az oktatóanyaghoz használja a **autohaVNET**.
-* A tartományvezérlő alhálózatának **neve** a tartományvezérlőt üzemeltető virtuális hálózat egy részének a neve. Használja az **-1**alhálózatot. Ez az alhálózat a **10.0.0.0/24**előtagot használja.
-* **SQL Server alhálózat neve** a virtuális hálózat azon részének a neve, amelyen a SQL Server futtató kiszolgálók és a tanúsító fájlmegosztás található. Használja a **-2**alhálózatot. Ez az alhálózat a **10.0.1.0/26**előtagot használja.
+* A tartományvezérlő **alhálózatának neve** a tartományvezérlőt üzemeltető virtuális hálózat egy részének a neve. Használja az **-1 alhálózatot**. Ez az alhálózat a **10.0.0.0/24**előtagot használja.
+* **SQL Server alhálózat neve** a virtuális hálózat azon részének a neve, amelyen a SQL Server futtató kiszolgálók és a tanúsító fájlmegosztás található. Használja a **-2 alhálózatot**. Ez az alhálózat a **10.0.1.0/26**előtagot használja.
 
 További információ az Azure-beli virtuális hálózatokról: [Virtual Network Overview (virtuális hálózatok áttekintése](../../../virtual-network/virtual-networks-overview.md)).  
 
@@ -121,7 +121,7 @@ Kattintson az **OK** gombra.
 ### <a name="virtual-machine-size-storage-settings"></a>Virtuális gép mérete, tárolási beállításai
 A virtuális gép **mérete, a tárolási beállítások**területen válassza ki a SQL Server virtuálisgép-méretet, és tekintse át a többi beállítást.
 
-* **SQL Server a virtuális gép mérete** a SQL Server futtató virtuális gépek mérete. Válasszon ki egy megfelelő virtuálisgép-méretet a munkaterheléshez. Ha ezt a környezetet készíti elő az oktatóanyaghoz, használja a **DS2**. Éles számítási feladatokhoz válasszon olyan virtuálisgép-méretet, amely képes támogatni a munkaterhelést. Számos éles számítási feladathoz **DS4** vagy nagyobb mennyiség szükséges. A sablon két ilyen méretű virtuális gépet hoz létre, és mindegyikre telepíti a SQL Server. További információkért lásd: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* **SQL Server a virtuális gép mérete** a SQL Server futtató virtuális gépek mérete. Válasszon ki egy megfelelő virtuálisgép-méretet a munkaterheléshez. Ha ezt a környezetet készíti elő az oktatóanyaghoz, használja a **DS2**. Éles számítási feladatokhoz válasszon olyan virtuálisgép-méretet, amely képes támogatni a munkaterhelést. Számos éles számítási feladathoz **DS4** vagy nagyobb mennyiség szükséges. A sablon két ilyen méretű virtuális gépet hoz létre, és mindegyikre telepíti a SQL Server. További információ: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
 > Az Azure telepíti SQL Server Enterprise kiadását. A díj a kiadástól és a virtuális gép méretétől függ. Az aktuális költségekkel kapcsolatos részletes információkért lásd a [Virtual Machines díjszabását](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
@@ -135,7 +135,7 @@ A virtuális gép **mérete, a tárolási beállítások**területen válassza k
 * A TB **SQL Server adatlemez mérete** a TB-ban SQL Server adatlemez mérete. 1 és 4 közötti számot kell megadni. Ebben az oktatóanyagban használja az **1**.
 * A **tárolási optimalizálás** a munkaterhelés típusa alapján beállítja a SQL Server virtuális gépek adott tárolási konfigurációs beállításait. Ebben a forgatókönyvben az összes SQL Server virtuális gép Premium Storage-t használ az Azure Disk Host cache-ben a csak olvasható értékre. Emellett a következő három beállítás egyikének kiválasztásával optimalizálhatja a számítási feladatok SQL Server beállításait:
 
-  * Az **általános** munkaterhelések nem adott konfigurációs beállításokat határoznak meg.
+  * Az **általános munkaterhelések** nem adott konfigurációs beállításokat határoznak meg.
   * A **tranzakciós feldolgozás** beállítja a 1117 és a 1118 nyomkövetési jelzőt.
   * **Adattárház** -készletek nyomkövetési jelzője 1117 és 610.
 
@@ -184,7 +184,7 @@ További információ az SQL Server-konfigurációval kapcsolatos ajánlott elj�
 
 Tekintse át a beállításokat, majd kattintson **az OK**gombra.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Az összefoglalás lapon az Azure ellenőrzi a beállításokat. A sablont letöltheti is. Tekintse át az összegzést. Kattintson az **OK** gombra.
 
 ### <a name="buy"></a>Vásárlás
@@ -192,10 +192,10 @@ Ez az utolsó panel a **használati feltételeket**és az **adatvédelmi szabál
 
 A Azure Portal létrehozza az erőforráscsoportot és az összes erőforrást.
 
-## <a name="monitor-deployment"></a>Központi telepítés figyelése
+## <a name="monitor-deployment"></a>Az üzembe helyezés figyelése
 Figyelje a telepítési folyamatot a Azure Portal. A központi telepítést jelölő ikon automatikusan a Azure Portal irányítópultra van rögzítve.
 
-![Azure Dashboard](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
+![Azure-irányítópult](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
 ## <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 A SQL Server új példányai olyan virtuális gépeken futnak, amelyek internetkapcsolattal rendelkező IP-címmel rendelkeznek. A távoli asztal (RDP) közvetlenül az egyes SQL Server virtuális gépekre is felhasználható.
@@ -204,10 +204,10 @@ Ha egy SQL Server RDP-t szeretne, kövesse az alábbi lépéseket:
 
 1. A Azure Portal irányítópulton ellenőrizze, hogy a központi telepítés sikeres volt-e.
 2. Kattintson az **erőforrások**elemre.
-3. A Resources ( **erőforrások** ) panelen kattintson a **SQLServer-0**elemre, amely a SQL Server rendszert futtató virtuális gépek egyikének a számítógépének a neve.
-4. A **SQLServer-0**panelen kattintson a **kapcsolat**elemre. A böngésző megkérdezi, hogy szeretné-e megnyitni vagy menteni a távoli kapcsolódási objektumot. Kattintson a **nyílt**.
+3. A **Resources (erőforrások** ) panelen kattintson a **SQLServer-0**elemre, amely a SQL Server rendszert futtató virtuális gépek egyikének a számítógépének a neve.
+4. A **SQLServer-0**panelen kattintson a **kapcsolat**elemre. A böngésző megkérdezi, hogy szeretné-e megnyitni vagy menteni a távoli kapcsolódási objektumot. Kattintson az **Open** (Megnyitás) elemre.
 5. Előfordulhat, hogy a **Távoli asztali kapcsolat** figyelmezteti, hogy a távoli kapcsolat közzétevője nem azonosítható. Kattintson a **Csatlakozás** gombra.
 6. A Windows biztonsági szolgáltatás megkéri a hitelesítő adatok megadását az elsődleges tartományvezérlő IP-címéhez való kapcsolódáshoz. Kattintson a **másik fiók használata**elemre. A **Felhasználónév**mezőbe írja be a következőt: **contoso\DomainAdmin**. Ezt a fiókot akkor konfigurálta, amikor a rendszergazda felhasználónevet beállította a sablonban. Használja a sablon beállításakor kiválasztott összetett jelszót.
-7. Előfordulhat, hogy a **Távoli asztal** figyelmezteti, hogy a távoli számítógép nem hitelesíthető a biztonsági tanúsítvánnyal kapcsolatos problémák miatt. Megjeleníti a biztonsági tanúsítvány nevét. Ha követte az oktatóanyagot, a név **SQLServer-0.contoso.com**. Kattintson a **Yes** (Igen) gombra.
+7. Előfordulhat, hogy a **Távoli asztal** figyelmezteti, hogy a távoli számítógép nem hitelesíthető a biztonsági tanúsítvánnyal kapcsolatos problémák miatt. Megjeleníti a biztonsági tanúsítvány nevét. Ha követte az oktatóanyagot, a név **SQLServer-0.contoso.com**. Kattintson az **Igen** gombra.
 
 Mostantól RDP-kapcsolattal csatlakozik a SQL Server virtuális géphez. Megnyithatja SQL Server Management Studio, csatlakozhat a SQL Server alapértelmezett példányához, és ellenőrizheti, hogy a rendelkezésre állási csoport konfigurálva van-e.

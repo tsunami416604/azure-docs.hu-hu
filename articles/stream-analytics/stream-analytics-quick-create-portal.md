@@ -1,19 +1,18 @@
 ---
 title: Rövid útmutató – Stream Analytics-feladatok létrehozása a Azure Portal használatával
 description: Ez az útmutató a Stream Analytics-feladatok létrehozásának első lépéseit mutatja be, és segítségével megtanulhatja beállítani a bemeneteket és kimeneteket, és létrehozni egy lekérdezést.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 65114f2ddb7567b47ac3951fbaf6664654e379f0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431556"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
 
@@ -38,9 +37,9 @@ A Stream Analytics feladatának meghatározása előtt elő kell készítenie a 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
-   |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** lehetőséget, és adjon hozzá egy új erőforráscsoport-nevet a fiókhoz. |
+   |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. |
    |Region (Régió)  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a IoT Hub üzemeltetheti. Használja a felhasználókhoz legközelebb eső helyet. |
-   |IoT Hub neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
+   |IoT-központ neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
 
    ![IoT Hub létrehozása](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
@@ -93,7 +92,7 @@ A Stream Analytics feladatának meghatározása előtt elő kell készítenie a 
    |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza ki ugyanazt az erőforráscsoportot, mint a IoT Hub. |
    |Földrajzi egység  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a Stream Analytics-feladatot üzemeltetni szeretné. A nagyobb teljesítmény és az adatátviteli díjak csökkentése érdekében válassza a felhasználóihoz legközelebb eső helyet. |
    |Folyamatos átviteli egységek  | 1  |   A Streamelési egységek azoknak a számítási erőforrásoknak felelnek meg, amelyek a feladat futtatásához szükségesek. Alapértelmezés szerint ez az érték 1. A streamelési egységek skálázásával kapcsolatos további tudnivalókért olvassa el a [Skálázás streamelési egységekkel](stream-analytics-streaming-unit-consumption.md) című cikket.   |
-   |Üzemeltetési környezet  |  Felhőbeli  |   A Stream Analytics-feladatokat a felhőbe vagy peremhálózatra (Edge) telepítheti. A felhő lehetővé teszi az Azure-felhőbe való üzembe helyezést, az Edge pedig lehetővé teszi, hogy IoT Edge eszközre telepítsen. |
+   |Üzemeltetési környezet  |  Felhőbeli  |   A Stream Analytics-feladatok a felhőben vagy a peremhálózaton is üzembe helyezhetők. A felhő lehetővé teszi az Azure-felhőbe való üzembe helyezést, az Edge pedig lehetővé teszi, hogy IoT Edge eszközre telepítsen. |
 
    ![Feladat létrehozása](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
@@ -165,7 +164,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
 
 3. Kattintson a **Run** (Futtatás) parancsra. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
 
-   ![Málna PI Azure IoT online szimulátor](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
+   ![Online Raspberry Pi Azure IoT-szimulátor](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 

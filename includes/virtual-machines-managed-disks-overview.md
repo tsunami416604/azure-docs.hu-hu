@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355912"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -37,7 +37,7 @@ A Managed Disks támogatja a [Availability Zonest](../articles/availability-zone
 
 ### <a name="azure-backup-support"></a>Azure Backup támogatás
 
-A regionális katasztrófák elleni védelem érdekében [Azure Backup](../articles/backup/backup-overview.md) használható biztonsági mentési feladatok létrehozására időalapú biztonsági mentéssel és adatmegőrzési szabályzatokkal. Így egyszerűen elvégezheti a virtuális gépek helyreállítását. Azure Backup támogatja a felügyelt lemezek biztonsági mentését és helyreállítását. [További](../articles/backup/backup-support-matrix-iaas.md) információ az Azure virtuális gépek biztonsági mentésének támogatásáról.
+A regionális katasztrófák elleni védelem érdekében [Azure Backup](../articles/backup/backup-overview.md) használható biztonsági mentési feladatok létrehozására időalapú biztonsági mentéssel és adatmegőrzési szabályzatokkal. Így egyszerűen elvégezheti a virtuális gépek helyreállítását. A Azure Backup jelenleg legfeljebb négy tebibyte (TiB) lemezt támogat.  Azure Backup támogatja a felügyelt lemezek biztonsági mentését és helyreállítását. [További](../articles/backup/backup-support-matrix-iaas.md) információ az Azure virtuális gépek biztonsági mentésének támogatásáról.
 
 ### <a name="granular-access-control"></a>Részletes hozzáférés-vezérlés
 
@@ -126,5 +126,7 @@ Az Azure rangsorolt hálózati csatornát használ a lemezes forgalomhoz, ami el
 Tekintse meg a [nagy teljesítményű cikk kialakítását](../articles/virtual-machines/windows/premium-storage-performance.md) ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
 
 ## <a name="next-steps"></a>Következő lépések
+
+Ha a felügyelt lemezekről további részleteket szeretne megtudni, tekintse meg a következőt: [Az Azure-beli virtuális gépek rugalmasságának növelése a Managed Disksokkal](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 
 További információ az Azure-ajánlatok egyes típusairól, amelyek típusa jól illeszkedik az igényeihez, és megismerheti a teljesítményre vonatkozó célokat a lemez típusainak leírásában.

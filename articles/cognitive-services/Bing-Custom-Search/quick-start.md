@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: első Bing Custom Search-példány létrehozása | Microsoft Docs'
+title: 'Első lépések: az első Bing Custom Search-példány létrehozása'
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni Bing-példányt, amely képes a definiált tartományokra és weblapokra.
+description: Ezzel a rövid útmutatóval létrehozhat egy egyéni Bing-példányt, amely képes a definiált tartományokra és weblapokra.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384746"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Rövid útmutató: az első Bing Custom Search-példány létrehozása
 

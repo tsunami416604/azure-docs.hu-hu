@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 832c0e6080b82f3c38beaf051669fbdacd37081c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74101061"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692590"
 ---
 >[!NOTE]
 >Ez a szakasz az [Azure ad-alkalmazás regisztrálására](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)vonatkozó utasításokat tartalmazza.
@@ -46,7 +46,7 @@ ms.locfileid: "74101061"
 
 1. Nyissa meg az **API-engedélyek** panelt az alkalmazás regisztrálásához. Válassza **az + engedély hozzáadása** gombot. A **kérelem API-engedélyek** ablaktáblán válassza ki a **saját szervezet által használt API-kat** , majd keressen rá a következők egyikére:
     
-    1. `Azure Digital Twins`. Válassza ki az **Azure Digital Twins** API-t.
+    1. `Azure Digital Twins` kérdésre adott válaszban foglalt lépéseket. Válassza ki az **Azure Digital Twins** API-t.
 
         [![Search API vagy Azure digitális Twins](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -59,7 +59,7 @@ ms.locfileid: "74101061"
     > * A bérlői és az vevői fiókok tesztelésével `Azure Digital Twins`kereshet.
     > * Más Microsoft-fiókoknak `Azure Smart Spaces Service`kell keresniük.
 
-1. A kiválasztott API-k az **Azure digitális Twins** szolgáltatásként jelennek meg ugyanabban a **kérési API-engedélyek** ablaktáblán. Válassza a **READ (olvasás** ) legördülő lehetőséget, majd jelölje be az **olvasás. írás** jelölőnégyzetet. Kattintson az **engedélyek hozzáadása** gombra.
+1. Az API-k az **Azure Digital Twins** néven jelennek meg ugyanabban a **kérési API-engedélyek** ablaktáblán, ha ki van választva. Válassza a **READ (olvasás** ) legördülő lehetőséget, majd jelölje be az **olvasás. írás** jelölőnégyzetet. Kattintson az **engedélyek hozzáadása** gombra.
 
     [![API-engedélyek hozzáadása](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 

@@ -1,5 +1,5 @@
 ---
-title: Telemetria elválasztása a fejlesztési, tesztelési és kiadási adatokból az Azure Application Insightsban | Microsoft Docs
+title: Telemetria elválasztása az Azure Application Insightsban
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c58a54dd4916b5687d46cbf4b816bd656113f9ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406415"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztása fejlesztési, tesztelési és éles környezetből
 

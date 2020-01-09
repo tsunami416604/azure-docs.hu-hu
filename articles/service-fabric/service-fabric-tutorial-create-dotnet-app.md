@@ -1,26 +1,15 @@
 ---
-title: .NET-alkalmazás létrehozása a Service Fabricben az Azure-ban | Microsoft Docs
+title: .NET-alkalmazás létrehozása Service Fabric az Azure-ban
 description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmazást az ASP.NET Core kezelőfelülete és egy megbízható állapotalapú háttérszolgáltatás segítségével, majd hogyan helyezheti üzembe az alkalmazást egy fürtön.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465473"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -40,7 +29,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * .NET Service Fabric-alkalmazás létrehozása
 > * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [A CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -180,7 +169,7 @@ Nyissa meg a **Views/Home/Index.cshtml** fájlt, amely a kezdőlapvezérlő egye
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>A _Layout.cshtml fájl frissítése
+### <a name="update-the-_layoutcshtml-file"></a>A _Layout.cshtml fájl frissítése
 
 Nyissa meg a **Views/Shared/_Layout.cshtml** fájlt, amely az ASP.NET-alkalmazás alapértelmezett elrendezését tartalmazza.  Cserélje le annak tartalmát a következőkkel, majd mentse a módosításokat.
 
@@ -466,7 +455,7 @@ Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-
         ],
 ```
 A helyi fejlesztési fürtben használt fordított proxy port megkereséséhez tekintse meg a **HttpApplicationGatewayEndpoint** elemet a helyi Service Fabric-fürt jegyzékfájljában:
-1. Nyisson meg egy böngészőablakot, és navigáljon\/a http:/localhost: 19080 elemre a Service Fabric Explorer eszköz megnyitásához.
+1. Nyisson meg egy böngészőablakot, és navigáljon a http:\//localhost: 19080 elemre a Service Fabric Explorer eszköz megnyitásához.
 2. Válassza ki a **cluster-> jegyzékfájlt**.
 3. Jegyezze fel a HttpApplicationGatewayEndpoint elem portját. Ez alapértelmezés szerint a 19081-es port. Ha mégsem az, akkor módosítania kell a portot a következő VotesController.cs kód GetProxyAddress metódusában.
 
@@ -641,7 +630,7 @@ Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a követk
 
 A hibakeresési munkamenet leállításához nyomja le a **Shift+F5** billentyűkombinációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

@@ -6,35 +6,35 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6e35430713a3dbc8317944fed1180432a2083676
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461598"
 ---
-# <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Oktatóanyag: Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
-Ez a rövid útmutató bemutatja, hogyan készíthet meglévő Java Spring Cloud-alkalmazást az Azure Spring Cloud-hoz való üzembe helyezéshez.  Megfelelően konfigurálva az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Spring Cloud-alkalmazás monitorozásához, méretezéséhez és frissítéséhez. 
+Ez a rövid útmutató bemutatja, hogyan készíthet egy meglévő Java Spring Cloud-alkalmazást az Azure Spring Cloud-hoz való üzembe helyezéshez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Java Spring Cloud-alkalmazás monitorozásához, méretezéséhez és frissítéséhez.
 
 ## <a name="java-runtime-version"></a>Java futtatókörnyezet verziója
 
 Csak a Spring/Java-alkalmazások futhatnak az Azure Spring Cloud-ban.
 
-A Java 8 és a Java 11 is támogatott. Az üzemeltetési környezet tartalmazza az Azure-hoz készült legújabb Azul Zulu-OpenJDK. Az Azure-hoz készült Azul Zulu OpenJDK kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/java/jdk/java-jdk-install) . 
+Az Azure Spring Cloud a Java 8 és a Java 11 használatát is támogatja. Az üzemeltetési környezet tartalmazza az Azure-hoz készült Azul Zulu OpenJDK legújabb verzióját. További információ az Azure-hoz készült Azul Zulu OpenJDK: [a JDK telepítése](https://docs.microsoft.com/azure/java/jdk/java-jdk-install).
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>A Spring boot és a Spring Cloud verziói
 
-Az Azure Spring Cloud-ban csak a Spring boot-alkalmazások támogatottak. A Spring boot 2,0 és a 2,1 egyaránt támogatott. A Spring boot és Spring Felhőbeli kombinációk a következő táblázatban láthatók.
+Az Azure Spring Cloud csak a Spring boot-alkalmazásokat támogatja. Támogatja a Spring boot 2,0-es és 2,1-es verzióját is. A következő táblázat a támogatott Spring boot és Spring felhő kombinációkat sorolja fel:
 
 Spring boot-verzió | Tavaszi felhő verziója
 ---|---
-2.0. x | Finchley. RELEASE
-2.1. x | Greenwich. RELEASE
+2.0 | Finchley. RELEASE
+2.1 | Greenwich. RELEASE
 
-Ellenőrizze, hogy a `pom.xml`-fájl a verzió alapján a Spring boot és a Spring Cloud függőségeivel rendelkezik-e.
+Győződjön meg arról, hogy a Pom. xml fájl megfelelő Spring boot és Spring Cloud függőségekkel rendelkezik a Spring boot-verzió alapján.
 
-### <a name="version-20"></a>2,0-es verzió:
+### <a name="dependencies-for-spring-boot-version-20"></a>A Spring boot 2,0-es verziójának függőségei
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -58,7 +58,7 @@ Ellenőrizze, hogy a `pom.xml`-fájl a verzió alapján a Spring boot és a Spri
     </dependencyManagement>
 ```
 
-### <a name="version-21"></a>2,1-es verzió:
+### <a name="dependencies-for-spring-boot-version-21"></a>A Spring boot 2,1-es verziójának függőségei
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -84,18 +84,19 @@ Ellenőrizze, hogy a `pom.xml`-fájl a verzió alapján a Spring boot és a Spri
 
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud ügyfél-függőség
 
-Az Azure Spring Cloud üzemelteti és kezeli a tavaszi Felhőbeli összetevőket, például a Spring Cloud Service regisztrációs adatbázisát és a Spring Cloud config-kiszolgálót. A függőségek között az Azure Spring Cloud ügyféloldali könyvtára is elérhető, amely lehetővé teszi a kommunikációt az Azure Spring Cloud Service-példánnyal.
+Az Azure Spring Cloud üzemelteti és kezeli a Spring Cloud-összetevőket. Ilyen összetevők például a Spring Cloud Service Registry és a Spring Cloud config Server. Vegye fel az Azure Spring Cloud ügyféloldali kódtárat a függőségeibe, hogy lehetővé váljon a kommunikáció az Azure Spring Cloud Service-példánnyal.
 
-Az alábbi táblázat a Spring boot/Spring Cloud alkalmazás megfelelő verzióit sorolja fel.
+A következő táblázat felsorolja a Spring boot és Spring Cloud-t használó alkalmazás megfelelő Azure Spring Cloud-verzióit.
 
 Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-verzió
 ---|---|---
-2.0. x | Finchley. RELEASE | 2.0. x
-2.1. x | Greenwich. RELEASE | 2.1. x
+2.0 | Finchley. RELEASE | 2.0
+2.1 | Greenwich. RELEASE | 2.1
 
-Adja meg az alábbi kódrészletek egyikét a `pom.xml`ban.  Válassza ki azt a kódrészletet, amelynek a verziója megegyezik a saját verziójával.
+Adja meg a következő függőségek egyikét a Pom. xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
 
-### <a name="version-20x"></a>2\.0. x verzió:
+### <a name="dependency-for-azure-spring-cloud-version-20"></a>Az Azure Spring Cloud 2,0-es verziójának függősége
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -104,7 +105,8 @@ Adja meg az alábbi kódrészletek egyikét a `pom.xml`ban.  Válassza ki azt a 
 </dependency>
 ```
 
-### <a name="version-21x"></a>2\.1. x verzió:
+### <a name="dependency-for-azure-spring-cloud-version-21"></a>Az Azure Spring Cloud 2,1-es verziójának függősége
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -115,13 +117,11 @@ Adja meg az alábbi kódrészletek egyikét a `pom.xml`ban.  Válassza ki azt a 
 
 ## <a name="other-required-dependencies"></a>Egyéb szükséges függőségek
 
-Az Azure Spring Cloud beépített funkcióinak engedélyezéséhez az alkalmazásnak a következő függőségeket kell tartalmaznia. Ez biztosítja, hogy az alkalmazás helyesen konfigurálja az egyes összetevőket.  
+Az Azure Spring Cloud beépített funkcióinak engedélyezéséhez az alkalmazásnak a következő függőségeket kell tartalmaznia. Ez az integráció biztosítja, hogy az alkalmazás helyesen konfigurálja az egyes összetevőket.  
 
-### <a name="service-registry"></a>Szolgáltatás beállításjegyzéke
+### <a name="service-registry-dependency"></a>Szolgáltatás beállításjegyzékbeli függősége
 
-A felügyelt Azure-szolgáltatás beállításjegyzék-szolgáltatásának használatához az alábbi ábrán látható `POM.xml` `spring-cloud-starter-netflix-eureka-client` belefoglalása.
-
-A szolgáltatás beállításjegyzék-kiszolgálójának végpontja automatikusan környezeti változókként lesz befecskendezve az alkalmazással. Az alkalmazások regisztrálhatják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
+A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához adja meg a `spring-cloud-starter-netflix-eureka-client` függőséget a Pom. xml fájlban az itt látható módon:
 
 ```xml
     <dependency>
@@ -130,9 +130,11 @@ A szolgáltatás beállításjegyzék-kiszolgálójának végpontja automatikusa
     </dependency>
 ```
 
-### <a name="distributed-configuration"></a>Elosztott konfiguráció
+A szolgáltatás beállításjegyzék-kiszolgálójának végpontját a rendszer automatikusan környezeti változóként adja meg az alkalmazásban. Az alkalmazások regisztrálhatják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
 
-Az elosztott konfiguráció engedélyezéséhez vegyen fel `spring-cloud-config-client`t a `pom.xml`függőségek részében.
+### <a name="distributed-configuration-dependency"></a>Elosztott konfiguráció függősége
+
+Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-cloud-config-client` függőséget a Pom. xml fájl függőségek szakaszába:
 
 ```xml
 <dependency>
@@ -142,11 +144,11 @@ Az elosztott konfiguráció engedélyezéséhez vegyen fel `spring-cloud-config-
 ```
 
 > [!WARNING]
-> Ne határozza meg `spring.cloud.config.enabled=false` a rendszerindítási konfigurációban, mert az alkalmazás nem fog működni a konfigurációs kiszolgálóval.
+> Ne adja meg `spring.cloud.config.enabled=false` a bootstrap konfigurációjában. Ellenkező esetben az alkalmazás nem működik a konfigurációs kiszolgálóval.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics-dependency"></a>Metrikák függősége
 
-`spring-boot-starter-actuator` belefoglalása a Pom. XML függőségek szakaszába. A metrikák rendszeres időközönként le lesznek húzva a JMX-végpontokról, és a Azure Portal használatával megjeleníthetők.
+Foglalja bele a `spring-boot-starter-actuator` függőséget a Pom. xml fájl függőségek szakaszába, ahogy az itt látható:
 
 ```xml
 <dependency>
@@ -155,9 +157,11 @@ Az elosztott konfiguráció engedélyezéséhez vegyen fel `spring-cloud-config-
 </dependency>
 ```
 
-### <a name="distributed-tracing"></a>Elosztott nyomkövetés
+ A metrikák rendszeres időközönként a JMX-végpontokról vannak leképezve. A metrikákat a Azure Portal használatával jelenítheti meg.
 
-Az alábbi módon vegyen fel `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` a Pom. XML függőségek szakaszába. Emellett engedélyeznie kell egy Azure app bepillantást az Azure Spring Cloud Service-példányával. További információ az App bepillantást az Azure Spring Cloudtel című témakörben [talál](spring-cloud-tutorial-distributed-tracing.md)
+### <a name="distributed-tracing-dependency"></a>Elosztott nyomkövetési függőség
+
+Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` függőségeket a Pom. xml fájl függőségek szakaszában:
 
 ```xml
 <dependency>
@@ -170,11 +174,13 @@ Az alábbi módon vegyen fel `spring-cloud-starter-sleuth` és `spring-cloud-sta
 </dependency>
 ```
 
+ Emellett engedélyeznie kell egy Azure Application Insights-példány működését az Azure Spring Cloud Service-példányával. Olvassa el az [elosztott nyomkövetéssel foglalkozó oktatóanyagot](spring-cloud-tutorial-distributed-tracing.md) , amelyből megtudhatja, hogyan használhatja a Application Insightst az Azure Spring Cloud használatával.
+
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez.  Ha szeretné megtudni, hogyan engedélyezheti a konfigurációs kiszolgálót, folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításának megismeréséhez folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan állíthatja be a konfigurációs kiszolgálót](spring-cloud-tutorial-config-server.md).
+> [Ismerje meg, hogyan állíthat be egy konfigurációs kiszolgálópéldány](spring-cloud-tutorial-config-server.md)
 
 További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

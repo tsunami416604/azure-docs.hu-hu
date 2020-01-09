@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Language Understanding (LUIS) a Pythonhoz készült ügyféloldali kódtár készítése'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedés a Pythonhoz készült LUIS ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
+description: Ebben a rövid útmutatóban megismerheti a Pythonhoz készült LUIS ügyféloldali kódtárat. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381494"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Rövid útmutató: Language Understanding (LUIS) a Pythonhoz készült ügyféloldali kódtár készítése
 
@@ -103,7 +103,7 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 * [Verziók](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) – kezelés klónozással, exportálással és törléssel
 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Language Understanding (LUIS) authoring ügyféloldali kódtár használatával:
 
@@ -130,7 +130,7 @@ Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/pyth
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>A LUIS-alkalmazás létrehozása
+## <a name="create-a-luis-app"></a>LUIS-alkalmazás létrehozása
 
 1. Hozzon létre egy LUIS-alkalmazást, amely tartalmazza a természetes nyelvi feldolgozó (NLP) modellt, amely a szándékok, az entitások és a példa hosszúságú kimondott szöveg. 
 

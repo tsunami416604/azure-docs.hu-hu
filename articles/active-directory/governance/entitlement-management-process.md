@@ -1,5 +1,5 @@
 ---
-title: Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: Kérelmek feldolgozása & értesítések – Azure AD-jogosultságok kezelése
 description: Ismerje meg a hozzáférési csomag kérelmezési folyamatát, valamint azt, hogy a rendszer mikor küldjön e-mail-értesítéseket Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422609"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében
 
@@ -33,10 +33,10 @@ Egy hozzáférési csomaghoz hozzáféréssel rendelkező felhasználónak hozz�
 
 ![Jóváhagyási folyamat diagramja](./media/entitlement-management-process/request-process.png)
 
-| Állapot | Leírás |
+| Állami | Leírás |
 | --- | --- |
-| Beküldött | A felhasználó kérelmet küld. |
-| Jóváhagyásra váró elemek | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
+| Elküldve | A felhasználó kérelmet küld. |
+| Jóváhagyás függőben | Ha egy hozzáférési csomagra vonatkozó házirend jóváhagyást igényel, a kérés függőben lévő jóváhagyásra kerül. |
 | Lejárt | Ha egyetlen jóváhagyó sem hagyja jóvá a kérést a jóváhagyási kérelem időkorlátján belül, a kérelem lejár. Ha újra próbálkozik, a felhasználónak újra el kell küldenie a kérést. |
 | Megtagadva | A jóváhagyó megtagadja a kérelmet. |
 | Approved | A jóváhagyó jóváhagyja a kérelmet. |
@@ -79,8 +79,8 @@ Az alábbi táblázat részletesebben ismerteti az e-mail-értesítéseket. Az e
 | 6 | A kérelem lejárt a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a kérelem lejárta után az első jóváhagyónak és az 1. fázis alternatív jóváhagyóinak küldi el. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
 | 7 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | A rendszer ezt az e-mailt küldi el az első jóváhagyónak és az 1. fázis alternatív jóváhagyóinak a kérelem befejezésekor. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
 | 8 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | Ezt az e-mailt a rendszer a 2 fázisú kérelem első jóváhagyójának és 1. fázisának másodlagos jóváhagyójának küldi el az 1. szintű kérelem jóváhagyásakor. | Első jóváhagyó, 1. fázis – alternatív jóváhagyók |
-| 9 | Kérelem elutasítva *[access_package]* | A rendszer ezt az e-mailt küldi a kérelmezőnek a kérelem megtagadásakor | Kérelmező |
-| 10 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer egy vagy két fázisra vonatkozó kérelem végén küldi el a kérelmezőnek. Az e-mail értesíti a kérelmezőt arról, hogy a kérelem lejárt. | Kérelmező |
+| 9 | Kérelem elutasítva *[access_package]* | A rendszer ezt az e-mailt küldi a kérelmezőnek a kérelem megtagadásakor | Requestor (Kérelmező) |
+| 10 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer egy vagy két fázisra vonatkozó kérelem végén küldi el a kérelmezőnek. Az e-mail értesíti a kérelmezőt arról, hogy a kérelem lejárt. | Requestor (Kérelmező) |
 | 11 | Szükséges művelet: a (z *) [date]* jóváhagyása vagy elutasítása. | Ezt az e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció le van tiltva, a művelet elvégzéséhez. | Második jóváhagyó |
 | 12 | Szükséges művelet emlékeztető: a kérelem jóváhagyása vagy elutasítása *[date]* | Ezt az emlékeztető e-mailt a rendszer a második jóváhagyónak küldi el, ha az eszkaláció le van tiltva. Az értesítés arra kéri őket, hogy tegyenek lépéseket, ha még nem. | Második jóváhagyó |
 | 13 | Szükséges művelet: a kérelem jóváhagyása vagy elutasítása *[date]* a *[kérelmező]* számára | Ezt az e-mailt a rendszer a második jóváhagyónak küldi el, ha engedélyezve van az eszkaláció, hogy végrehajtsa a műveletet. | Második jóváhagyó |
@@ -88,9 +88,9 @@ Az alábbi táblázat részletesebben ismerteti az e-mail-értesítéseket. Az e
 | 15 | Szükséges művelet: a továbbított kérelem jóváhagyása vagy megtagadása a *[date]* alapján | Ezt az e-mailt a rendszer elküldi a 2. fázisba, ha az eszkaláció engedélyezve van, a művelet elvégzéséhez. | 2\. fázis – alternatív jóváhagyók |
 | 16 | Kérelem jóváhagyva a következőhöz: *[kérelmező]* – *[access_package]* | Ezt az e-mailt a rendszer elküldi a második jóváhagyónak és 2. fázisban lévő alternatív jóváhagyónak a kérelem jóváhagyása után. | Második jóváhagyó, 2. fázis, alternatív jóváhagyók |
 | 17 | A kérelem lejárt a következőhöz: *[access_package]* . | Ezt az e-mailt a rendszer a második jóváhagyónak vagy más jóváhagyóknak küldi el a kérelem lejárta után. | Második jóváhagyó, 2. fázis, alternatív jóváhagyók |
-| 18 | Most már hozzáférhet *[access_package]* | Ezt az e-mailt a rendszer elküldi a végfelhasználóknak a hozzáférésük használatának megkezdéséhez. | Kérelmező |
-| 19 | A *[access_package]* elérésének kiterjesztése a következőre: *[date]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta előtt küldi el a végfelhasználóknak. | Kérelmező |
-| 20 | A hozzáférés befejeződött a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta után küldi el a végfelhasználóknak. | Kérelmező |
+| 18 | Most már hozzáférhet *[access_package]* | Ezt az e-mailt a rendszer elküldi a végfelhasználóknak a hozzáférésük használatának megkezdéséhez. | Requestor (Kérelmező) |
+| 19 | A *[access_package]* elérésének kiterjesztése a következőre: *[date]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta előtt küldi el a végfelhasználóknak. | Requestor (Kérelmező) |
+| 20 | A hozzáférés befejeződött a következőhöz: *[access_package]* | Ezt az e-mailt a rendszer a felhasználók hozzáférésének lejárta után küldi el a végfelhasználóknak. | Requestor (Kérelmező) |
 
 ### <a name="access-request-emails"></a>Hozzáférési kérelem e-mail-címe
 

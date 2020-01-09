@@ -3,12 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/15/2018
-ms.openlocfilehash: 890118bf40a621cf92b3999d3ef858955a79d196
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 12/09/2018
+ms.openlocfilehash: c5f736f00c7c048de73b7f4696e29a699107c9cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67134909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382504"
 ---
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search APIs-hozzáféréssel rendelkező. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). A folytatás előtt szüksége lesz az ingyenes próbaverzió aktiválása után biztosított hozzáférési kulcs, vagy egy fizetős kulcsot az Azure irányítópultján.
+## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
+
+A Bing Video Search API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
+
+* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Nincs szükség Azure-előfizetésre.
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Bing Search v7-erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
+
+* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

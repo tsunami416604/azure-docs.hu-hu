@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory regisztrált alkalmazás felhasználóinak korlátozása | Azure
+title: Az Azure AD-alkalmazás korlátozása felhasználók készletére | Azure
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan korlátozhatja az Azure AD-ban regisztrált alkalmazásaihoz való hozzáférést egy kiválasztott felhasználói csoportba.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424461"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Útmutató: az Azure AD-alkalmazás korlátozása felhasználói csoportra
 
@@ -46,7 +46,7 @@ Egy adott alkalmazás a következő típusú alkalmazásokkal rendelkező felhas
 
 Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhatók létre alkalmazások. Egy **globális rendszergazdai** szerepkörre van szükség, a második nem.
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Vállalati alkalmazások (globális rendszergazda szerepkört igényel)
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Vállalati alkalmazások (globális rendszergazdai szerepkört igényel)
 
 1. Lépjen a [**Azure Portalra**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként**.
 1. A felső sávon válassza ki a bejelentkezett fiókot. 

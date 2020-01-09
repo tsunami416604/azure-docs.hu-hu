@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/10/2019
 ms.author: wolfma
-ms.openlocfilehash: 58738c9180fcc45a6958ea61b26d898caf4f3061
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7bd4541d135020e297bef26f234ae35d953abfce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446818"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
-A Speech szoftverfejlesztői készlet (SDK) lehetővé teszi az alkalmazások számára, hogy hozzáférjenek a beszédfelismerési szolgáltatás funkcióihoz, így egyszerűbbé válik a beszédfelismerést támogató szoftverek fejlesztése. Az SDK-k jelenleg hozzáférést biztosítanak a **beszéd-szöveg**, a **szöveg-beszéd**, a **beszédfelismerés**, a **szándék-felismerés**és a **bot-keretrendszer közvetlen vonalas beszéd csatornája**számára. A képességek és a támogatott platformok általános áttekintése a dokumentációs [bejegyzés oldalon](https://aka.ms/csspeech)található.
+A Speech szoftverfejlesztői készlet (SDK) lehetővé teszi az alkalmazások számára, hogy hozzáférjenek a beszédfelismerési szolgáltatás funkcióihoz, így egyszerűbbé válik a beszédfelismerést támogató szoftverek fejlesztése. Az SDK-k jelenleg hozzáférést biztosítanak a **beszéd-szöveg**, a **szöveg-beszéd**, a **beszédfelismerés**, a **szándék-felismerés**és a **bot-keretrendszer közvetlen vonalas beszéd csatornája**számára.
+
+A hanganyagot könnyedén rögzítheti egy mikrofonból, beolvashatja egy streamből, vagy a hangfájlokat a tárolóból is elérheti a Speech SDK-val. A Beszéd SDK 16 bites, 16 kHz/8 kHz frekvenciájú, egycsatornás WAV/PCM hangot támogat a beszédfelismeréshez. További hangformátumok a [beszéd – szöveg Rest-végpont](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) vagy a [Batch transzkripciós szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)használatával támogatottak.
+
+A képességek és a támogatott platformok általános áttekintése a dokumentációs [bejegyzés oldalon](https://aka.ms/csspeech)található.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -31,9 +35,9 @@ A Speech szoftverfejlesztői készlet (SDK) lehetővé teszi az alkalmazások sz
 
 A Windows esetében a következő nyelveket támogatjuk:
 
-* C#(UWP és .NET) C++: a Speech SDK NuGet-csomagjának legújabb verzióját használhatja. A csomag 32 bites és 64 bites ügyféloldali kódtárakat és felügyelt (.NET) kódtárakat tartalmaz. Az SDK a NuGet használatával telepíthető a Visual Studióban. Keressen rá a **Microsoft. CognitiveServices. Speech**kifejezésre.
+* C#(UWP és .NET) C++: a Speech SDK NuGet-csomagjának legújabb verzióját használhatja. A csomag 32 bites és 64 bites ügyféloldali kódtárakat és felügyelt (.NET) kódtárakat tartalmaz. Az SDK a Visual Studióban a NuGet, a [Microsoft. CognitiveServices. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)használatával telepíthető.
 
-* Java: a Speech SDK Maven-csomag legújabb verziójára hivatkozhat és használhat, amely csak a Windows x64-et támogatja. A Maven-projektben adja hozzá a `https://csspeechstorage.blob.core.windows.net/maven/`t további tárházként és hivatkozási `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`ként függőségként.
+* Java: a Speech SDK Maven-csomag legújabb verziójára hivatkozhat és használhat, amely csak a Windows x64-et támogatja. A Maven-projektben adja hozzá a `https://csspeechstorage.blob.core.windows.net/maven/`t további tárházként és hivatkozási `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0`ként függőségként.
 
 ### <a name="linux"></a>Linux
 
@@ -62,7 +66,7 @@ sudo apt-get install libssl1.0.2 libasound2
 * C#: A Speech SDK NuGet-csomag legújabb verzióját használhatja. Az SDK-ra való hivatkozáshoz adja hozzá a következő csomag-hivatkozást a projekthez:
 
   ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
+  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
   ```
 
 * Java: a Speech SDK Maven-csomag legújabb verzióját használhatja. A Maven-projektben adja hozzá a `https://csspeechstorage.blob.core.windows.net/maven/`t további tárházként és hivatkozási `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`ként függőségként.

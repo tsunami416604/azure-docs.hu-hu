@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3b176a6027b0f03c3802867df7be1e339286df2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365325"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés a Azure Monitor-naplózási lekérdezésekkel
 
@@ -40,7 +40,7 @@ Kövesse az alábbi oktatóanyag videós verzióját:
 A lekérdezések a táblanév vagy a *keresési* paranccsal kezdődhetnek. A táblázat nevével kell kezdődnie, mert egyértelmű hatókört határoz meg a lekérdezéshez, és javítja a lekérdezés teljesítményét és az eredmények relevanciáját.
 
 > [!NOTE]
-> Az Azure Monitor által használt Kusto-lekérdezési nyelv megkülönbözteti a kis-és nagybetűket. A nyelvi kulcsszavakat általában kisbetűvel kell írni. Ha a lekérdezésben táblák vagy oszlopok nevét használja, ügyeljen arra, hogy a megfelelő esetet használja a séma ablaktáblán látható módon.
+> Az Azure Monitor által használt Kusto-lekérdezési nyelv megkülönbözteti a kis- és nagybetűket. A nyelvi kulcsszavakat általában kisbetűvel kell írni. Ha a lekérdezésben táblák vagy oszlopok nevét használja, ügyeljen arra, hogy a megfelelő esetet használja a séma ablaktáblán látható módon.
 
 ### <a name="table-based-queries"></a>Tábla alapú lekérdezések
 A Azure Monitor táblákba rendezi a naplókat, amelyek mindegyike több oszlopból áll. Az elemzési portálon az összes tábla és oszlop megjelenik a Log Analytics sémája ablaktáblán. Azonosítson egy olyan táblát, amely érdekli, és tekintse meg a következőt:
@@ -109,7 +109,7 @@ A szűrési feltételek írásakor a következő kifejezéseket használhatja:
 |:---|:---|:---|
 | == | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `Level == 8` |
 | =~ | Az egyenlőség ellenõrzése<br>(kis-és nagybetűk megkülönböztetése) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
+| ! =, < > | Egyenlőtlenségek keresése<br>(mindkét kifejezés azonos) | `Level != 4` |
 | *és*, *vagy* | Feltételek között szükséges| `Level == 16 or CommandLine != ""` |
 
 Ha több feltételt szeretne szűrni, **használhatja a következőt:**

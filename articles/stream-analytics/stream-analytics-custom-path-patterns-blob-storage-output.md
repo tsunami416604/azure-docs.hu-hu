@@ -1,7 +1,6 @@
 ---
-title: Az Azure Stream Analytics egyéni blob kimeneti particionálása
-description: Ez a cikk ismerteti az egyéni dátum/idő elérésiút-minták és a blob storage-kimenet az Azure Stream Analytics-feladatok egyéni mező vagy attribútumok szolgáltatásokról.
-services: stream-analytics
+title: Egyéni blob kimeneti particionálás Azure Stream Analytics
+description: Ez a cikk az egyéni DateTime elérésiút-mintákat, valamint a blob Storage-kimenet Azure Stream Analytics-feladatokból származó egyéni mező vagy attribútumok funkcióit ismerteti.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,104 +8,104 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426388"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Az Azure Stream Analytics egyéni blob kimeneti particionálása
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
 
-Az Azure Stream Analytics támogatja a particionálást a egyéni mezők és attribútumok és egyéni dátum/idő elérésiút-minták egyéni blob kimeneti. 
+Azure Stream Analytics támogatja az egyéni Blobok kimenetének particionálását egyéni mezőkkel vagy attribútumokkal és egyéni DateTime elérésiút-mintákkal. 
 
 ## <a name="custom-field-or-attributes"></a>Egyéni mező vagy attribútumok
 
-Egyéni mező vagy a bemeneti attribútumok aktiválásához adatfeldolgozási és jelentéskészítés a munkafolyamatokat azáltal, hogy jobban szabályozhatja a kimeneti javítása.
+Az egyéni mezők vagy a bemeneti attribútumok javítják az adatfeldolgozási és jelentéskészítési munkafolyamatokat azáltal, hogy nagyobb mértékben szabályozzák a kimenetet.
 
-### <a name="partition-key-options"></a>Partíciós kulcs beállítások
+### <a name="partition-key-options"></a>Partíciós kulcs beállításai
 
-A partíciós kulcs, vagy a bemeneti adatok particionálásához használt oszlopnév alfanumerikus karaktereket és kötőjeleket, aláhúzásjeleket és szóközöket tartalmazhat. Nem alkalmas beágyazott mezői használja partíciókulcsként, kivéve, ha az aliasok együtt használható. A partíciókulcs NVARCHAR(MAX) kell lennie.
+A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX) kell lennie.
 
 ### <a name="example"></a>Példa
 
-Tegyük fel, hogy a feladat bemeneti adatokat egy külső videojátékok szolgáltatáshoz való kapcsolódás, ahol a betöltött oszlopot tartalmaz élő felhasználói munkamenetekből alatt **client_id** a munkamenetek azonosításához. Az adatok particionálásához **client_id**, állítsa be a Blob elérési út mintája mezőre, hogy a partíció jogkivonat **{client_id}** blob kimeneti tulajdonságai egy feladat létrehozásakor. A különböző adatként **client_id** értékek áthaladhat a Stream Analytics-feladat, a kimeneti adatok mentése egy alapján különböző mappákba **client_id** érték / mappa.
+Tegyük fel, hogy a feladatok olyan külső videojáték-szolgáltatáshoz csatlakoztatott élő felhasználói munkamenetek bemeneti adatait veszik át, ahol a betöltött adatok egy oszlopot tartalmaznak **client_id** a munkamenetek azonosítására. Az adatok **client_id**alapján történő particionálásához állítsa be a blob Path Pattern mezőt úgy, hogy felvegyen egy **{client_id}** partíciós tokent a blob kimeneti tulajdonságaiban a feladatok létrehozásakor. Ahogy a különböző **client_id** értékekkel rendelkező adatok a stream Analytics feladatokon keresztül áramlanak, a kimeneti adatok külön mappákba lesznek mentve, a mappa egyetlen **client_id** értéke alapján.
 
-![Ügyfél-azonosítót az elérésiút-minta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+![Elérésiút-minta ügyfél-azonosítóval](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-Hasonlóképpen ha a feladat bemeneti volt érzékelőkből érkező érzékelőadatokat, ahol minden érzékelő kellett egy **sensor_id**, lenne, az elérési út mintája **{sensor_id}** minden érzékelő adatokat különböző mappákba.  
+Hasonlóképpen, ha a megadott feladatnak több millió érzékelőkből származó érzékelő adata volt, ahol az egyes érzékelők **sensor_id**voltak, akkor a Path minta **{sensor_id}** lenne, hogy az egyes érzékelők adatai különböző mappákba legyenek particionálva.  
 
 
-Használja a REST API, a kimeneti szakaszban egy JSON-fájlt a kérelmében előfordulhat, hogy a következőhöz hasonló:  
+A REST API használatával a kérelemhez használt JSON-fájl kimeneti szakasza a következőhöz hasonló lehet:  
 
-![REST API-kimenet](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+![REST API kimenet](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
-Miután a feladat elindult, a *ügyfelek* tároló nézhet ki a következő:  
+Miután a feladatot megkezdte, az *ügyfelek* tárolója a következőhöz hasonló lehet:  
 
-![Az ügyfelek tároló](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+![Ügyfelek tárolója](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Minden mappa több blobok, ahol minden egyes blob egy vagy több rekordot tartalmaz is tartalmazhat. A fenti példában egy blobot egy mappájában nincs címkézve "06000000", a következő tartalommal:
+Az egyes mappák több blobot is tartalmazhatnak, amelyek mindegyike egy vagy több rekordot tartalmaz. A fenti példában egyetlen blob található a "06000000" címkével ellátott mappában a következő tartalommal:
 
-![A BLOB tartalma](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+![BLOB tartalma](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-Figyelje meg, hogy a blobban lévő minden egyes rekord tartalmazza-e egy **client_id** a mappa megfelelő oszlopnév az oszlop a kimenetét a kimeneti elérési út particionálásához használt óta **client_id**.
+Figyelje meg, hogy a blobban lévő összes rekordhoz tartozik egy **client_id** oszlop, amely megegyezik a mappa nevével, mivel a kimeneti elérési úton lévő kimenet particionálásához használt oszlop **client_id**.
 
 ### <a name="limitations"></a>Korlátozások
 
-1. Az elérésiút-minta kimeneti blobtulajdonság csak egy egyéni partíciókulccsal megengedett. A következő elérésiút-minták összes érvényes:
+1. Az elérésiút-minta blob output tulajdonságában csak egy egyéni partíciós kulcs engedélyezett. A következő elérésiút-minták mindegyike érvényes:
 
-   * cluster1/{date}/{aFieldInMyData}  
-   * cluster1/{time}/{aFieldInMyData}  
+   * cluster1/{Date}/{aFieldInMyData}  
+   * cluster1/{Time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData} 
+   * cluster1/{Date}/{Time}/{aFieldInMyData} 
    
-2. Partíciókulcsok olyan kis-és nagybetűket, így például a "János" és "János" partíciókulcsok egyenértékűek. Kifejezések is, mint a partíciókulcsok nem használható. Ha például **{columnA + columnB}** nem működik.  
+2. A partíciós kulcsok nem megkülönböztetik a kis-és nagybetűket, így a partíciós kulcsok, például a "John" és a "John" egyenértékűek Emellett a kifejezések nem használhatók partíciós kulcsként. Az **{columna + columnB}** például nem működik.  
 
-3. Ha egy bemeneti stream áll rögzíti a partíciós kulcs számosságuk a 8000-es, a rekordok meglévő blobok lesz hozzáfűzve, és csak a szükség esetén új blobok létrehozása. Ha a számosság keresztül van 8000-es nem garantált, meglévő blobok lesz írva, és új blobok nem hozható létre tetszőleges számú rekord ugyanazzal a partíciókulccsal rendelkező.
+3. Ha egy bemeneti adatfolyam a 8000-es számú partíciós kulccsal rendelkező rekordokból áll, a rendszer hozzáfűzi a rekordokat a meglévő blobokhoz, és szükség esetén csak új blobokat hoz létre. Ha a kardinális értéke több mint 8000, a meglévő Blobok nem fognak megjelenni, és az új Blobok nem hozhatók létre tetszőleges számú rekordhoz ugyanazzal a partíciós kulccsal.
 
-## <a name="custom-datetime-path-patterns"></a>Egyéni dátum/idő elérésiút-minták
+## <a name="custom-datetime-path-patterns"></a>Egyéni DateTime elérésiút-minták
 
-Egyéni dátum/idő elérésiút-minták lehetővé teszik adjon meg egy kimeneti formátum, amely igazodik a Hive-adatfolyam-egyezmények jogosultságot ad az Azure Stream Analytics képes adatokat küldeni az Azure HDInsight és az Azure Databricks a feldolgozás aktiválásához. Egyéni dátum/idő elérésiút-minták egyszerűen valósíthatók meg használatával a `datetime` kulcsszó kimenet, a formátummegadó együtt a blob elérési út előtagja mezőjében. Például: `{datetime:yyyy}`.
+Az egyéni DateTime elérésiút-minták lehetővé teszik olyan kimeneti formátum megadását, amely összehangolja a kaptár-adatfolyam-konvenciókat, így Azure Stream Analytics az adatok Azure-HDInsight való elküldésének lehetősége, és az alsóbb rétegbeli feldolgozáshoz Azure Databricks. Az egyéni DateTime elérésiút-mintázatok könnyen megvalósítható az `datetime` kulcsszó használatával a blob kimenetének Path előtag mezőjében, valamint a Formátum megadásakor. Például: `{datetime:yyyy}`.
 
-### <a name="supported-tokens"></a>A következő tokenek támogatottak
+### <a name="supported-tokens"></a>Támogatott jogkivonatok
 
-A következő formátumban specifikátor jogkivonatok használhatók önállóan vagy együtt egyéni DateTime formátumokból eléréséhez:
+A következő formátumú megadási jogkivonatok használhatók önállóan vagy kombinálva egyéni DateTime formátumok eléréséhez:
 
-|Specifikátor formátu.   |Leírás   |Eredmények példa időben 2018-01-02T10:06:08|
+|Megadási formátum   |Leírás   |Az eredmények például 2018-01-02T10:06:08|
 |----------|-----------|------------|
-|{datetime:yyyy}|Az év négyjegyű számként.|2018\.|
-|{datetime:MM}|01-től 12 hónap|01|
-|{datetime:M}|Hónap 1 és 12|1|
-|{datetime:dd}|01-31 nap|02|
-|{datetime:d}|Naponta 1 és 12|2|
-|{datetime:HH}|A 24 órás formátumban, a 00 és 23 óra|10|
-|{datetime:mm}|A 00 perc – 24|06|
-|{datetime:m}|0 perc – 24|6|
-|{datetime:ss}|A 00 60 másodperc|08|
+|{datetime: ÉÉÉÉ}|Az év egy négyjegyű számként|2018|
+|{datetime: PP}|Hónap, 01 és 12 között|01|
+|{datetime: M}|Hónap 1 és 12 között|1|
+|{datetime: DD}|01 és 31 közötti nap|02|
+|{datetime: d}|1 és 12 közötti nap|2|
+|{datetime: HH}|Óra 24 órás formátumban, 00 és 23 között|10|
+|{datetime: PP}|Perc/00 – 24|06|
+|{datetime: m}|Perctől 0 és 24 között|6|
+|{datetime: SS}|Másodperc/00 – 60|08|
 
-Ha nem szeretne egyéni dátum és idő minták használata, adja hozzá a {date}, illetve {time} token beépített dátum és idő formátumú legördülő lista létrehozása elérési út előtagja.
+Ha nem kíván egyéni DateTime mintázatot használni, hozzáadhatja a {Date} és/vagy {Time} tokent az elérési út előtagjához, és létrehozhatja a legördülő listát a beépített DateTime formátumokkal.
 
-![Stream Analytics régi DateTime formátumokból](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
+![Régi DateTime formátumok Stream Analytics](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
 
-### <a name="extensibility-and-restrictions"></a>Bővítési és korlátozások
+### <a name="extensibility-and-restrictions"></a>Bővíthetőség és korlátozások
 
-Tetszőleges számú jogkivonatokkal `{datetime:<specifier>}`, az az elérési út mintája van lehetősége, amíg el nem éri a útvonalának előtagja karakterszámot. Formátum specifikátory belül túl már szerepel a dátum és idő legördülő menük által kombinációit, amelyeket egyetlen token nelze kombinovat. 
+Annyi tokent használhat, `{datetime:<specifier>}`, ahogy az elérési út mintában, amíg el nem éri az elérési út előtagjának határértékét. A formázási megadások nem kombinálhatók egyetlen jogkivonaton belül a dátum és idő legördülő lista által már felsorolt kombinációk fölé. 
 
-Az elérési út partíciójának `logs/MM/dd`:
+A `logs/MM/dd`elérési útjának partíciója:
 
-|Érvénytelen kifejezés   |Érvénytelen kifejezés   |
+|Érvényes kifejezés   |Érvénytelen kifejezés   |
 |----------|-----------|
 |`logs/{datetime:MM}/{datetime:dd}`|`logs/{datetime:MM/dd}`|
 
-Használhatja a azonos formátummegadó többször is feldolgozza a útvonalának előtagja. A jogkivonat minden egyes alkalommal meg kell ismételni.
+Ugyanazt a formátumot használhatja többször is az elérési út előtagjaként. A tokent minden alkalommal meg kell ismételni.
 
-### <a name="hive-streaming-conventions"></a>Hive-Streamelési konvenciók
+### <a name="hive-streaming-conventions"></a>Struktúra streaming konvenciói
 
-Egyéni elérési út minták a blob storage-ba is használható a Hive-Streamelési egyezmény, amely mappák címkézte meg kell vár `column=` a mappa neve.
+A blob Storage egyéni elérésiút-mintái használhatók a kaptár streaming konvencióval, amely arra vár, hogy a mappák a mappa nevében `column=` címkével legyenek megjelölve.
 
 Például: `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 
-Egyéni kimeneti kiküszöböli módosítása a táblák és partíciók manuálisan hozzá port adatok között az Azure Stream Analytics és a Hive archiválás vesződségei nélkül. Ehelyett sok mappákat is hozzáadhatók használatával automatikusan:
+Az egyéni kimenet kiküszöböli a táblák módosításának gondját, és manuálisan adja hozzá a partíciókat a Azure Stream Analytics és a struktúra közötti port adataihoz. Ehelyett számos mappát lehet automatikusan hozzáadni a paranccsal:
 
 ```SQL
 MSCK REPAIR TABLE while hive.exec.dynamic.partition true
@@ -114,22 +113,22 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Példa
 
-Hozzon létre egy storage-fiókot, egy erőforráscsoportot, egy Stream Analytics-feladat és egy bemeneti forrás a következők szerint a [Azure Stream Analytics az Azure Portal](stream-analytics-quick-create-portal.md) a rövid útmutató. Az is elérhető, a rövid útmutatóban használt azonos mintaadatok használatával [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
+Hozzon létre egy Storage-fiókot, egy erőforráscsoportot, egy Stream Analytics feladatot és egy bemeneti forrást az [Azure stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) rövid útmutatója alapján. A gyors üzembe helyezési útmutatóban használt mintaadatok is használhatók a [githubon](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
 
-Hozzon létre egy blob kimeneti fogadó a következő beállításokkal:
+Hozzon létre egy blob kimeneti gyűjtőt a következő konfigurációval:
 
-![Stream Analytics blob kimeneti fogadó létrehozása](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-create-output-sink.png)
+![BLOB kimeneti fogadó Stream Analytics létrehozása](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-create-output-sink.png)
 
-A teljes elérési út mintája a következőképpen történik:
+A teljes elérési út mintája a következő:
 
 
 `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}`
 
 
-A feladat indításakor a mappastruktúra az elérésiút-minta alapján jön létre a blob-tárolóban. A napi szintű részletesen elemezheti.
+A művelet elindításakor a rendszer a blob-tárolóban létrehozza az elérésiút-minta alapján létrehozott mappastruktúrát. A napi szintre szűkítheti a részletezést.
 
-![Stream Analytics blob kimeneti az egyéni elérési út mintája](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
+![BLOB-kimenet Stream Analytics egyéni elérésiút-mintázattal](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Kimenő adatait az Azure Stream Analytics ismertetése](stream-analytics-define-outputs.md)
+* [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)

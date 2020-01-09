@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e78b647d27b162c55eb262a7590e1d3ed997de41
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440085"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adatelőállító létrehozása a PowerShell használatával
 
@@ -63,7 +63,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"ADFQuickStartRG"`.
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";

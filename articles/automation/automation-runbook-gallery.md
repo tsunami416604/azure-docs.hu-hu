@@ -2,19 +2,15 @@
 title: Runbook és modul-galériák Azure Automation
 description: A Microsoft és a Közösség runbookok és moduljai a Azure Automation-környezetben telepíthetők és használhatók.  Ez a cikk bemutatja, hogyan érheti el ezeket az erőforrásokat, és Hogyan járulhat hozzá a runbookok a katalógushoz.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421490"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook és modul-galériák Azure Automation
 
@@ -69,7 +65,7 @@ A PowerShell-modulok olyan parancsmagokat tartalmaznak, amelyeket használhat a 
 
 4. A **Tallózás** a katalógusban lapon a következő mezőkben kereshet:
 
-   * Modulnév
+   * Modul neve
    * Címkék
    * Szerző
    * Parancsmag/DSC-erőforrás neve

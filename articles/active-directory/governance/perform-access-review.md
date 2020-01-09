@@ -1,5 +1,5 @@
 ---
-title: A hozzáférési felülvizsgálatok csoportjaihoz vagy alkalmazásaihoz való hozzáférés áttekintése – Azure Active Directory | Microsoft Docs
+title: Tekintse át a csoportokhoz való hozzáférést a hozzáférési felülvizsgálatok & alkalmazásaiban – Azure AD
 description: Megtudhatja, hogyan tekintheti át a csoporttagok vagy az alkalmazások hozzáférését Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 8393a1e4719137aa09233d0a87dabdf81d8ccb59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422460"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Csoportok vagy alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
+# <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
 
 A Azure Active Directory (Azure AD) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ben és más Microsoft Online Servicesben lévő csoportokhoz és alkalmazásokhoz való hozzáférést az Azure AD hozzáférési felülvizsgálatok szolgáltatásával.
 
@@ -40,7 +40,7 @@ A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáfér
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.
 
-1. Jelentkezzen be a MyApps portálra a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. Jelentkezzen be a MyApps portálra a [https://myapps.microsoft.com](https://myapps.microsoft.com)címen.
 
     ![A MyApps-portál felsorolja azokat az alkalmazásokat, amelyekre jogosult](./media/perform-access-review/myapps-access-panel.png)
 
@@ -104,6 +104,6 @@ Ahhoz, hogy a hozzáférési felülvizsgálatok könnyebben és gyorsabban elér
 
 1. A javaslatok elfogadásához kattintson **az OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

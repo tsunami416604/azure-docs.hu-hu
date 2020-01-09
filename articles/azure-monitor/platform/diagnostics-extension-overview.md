@@ -4,15 +4,15 @@ description: Az Azure Diagnostics használata hibakereséshez, teljesítmény m�
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395373"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
 Az Azure Diagnostics-bővítmény az Azure-ban található ügynök, amely lehetővé teszi a diagnosztikai adatgyűjtést egy telepített alkalmazáson. A diagnosztikai bővítményt számos különböző forrásból is használhatja. Jelenleg támogatott az Azure Cloud Service (klasszikus) webes és feldolgozói szerepkörök, Virtual Machines, virtuálisgép-méretezési csoportok és Service Fabric. Más Azure-szolgáltatások különböző diagnosztikai módszerekkel rendelkeznek. Lásd: [a monitorozás áttekintése az Azure-ban](../../azure-monitor/overview.md).

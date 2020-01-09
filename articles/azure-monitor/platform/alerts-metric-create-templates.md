@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397341"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/resource-group-authoring-templates.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
+Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
 
 > [!IMPORTANT]
 > Erőforrás-sablon metrikai riasztások létrehozásához az erőforrás típusa: Azure Log Analytics munkaterület (például) `Microsoft.OperationalInsights/workspaces`, további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
@@ -3552,6 +3552,11 @@ Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
 ```
 
 A paraméterek értékeit a parancssorban vagy egy paraméterérték használatával állíthatja be. Az alábbiakban egy példaként megadott paramétert tartalmazó fájlt talál.
+
+
+> [!NOTE]
+>
+> `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: "`&amp`;"
 
 Mentse az alábbi JSON-t availabilityalert. Parameters. JSON néven, és módosítsa a szükséges módon.
 

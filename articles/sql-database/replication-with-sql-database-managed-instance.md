@@ -1,26 +1,30 @@
 ---
 title: Replikáció konfigurálása felügyelt példányok adatbázisában
-description: Tudnivalók a tranzakciós replikáció konfigurálásáról egy Azure SQL Database felügyelt példány adatbázisában
+description: Megtudhatja, hogyan konfigurálhatja a tranzakciós replikációt egy Azure SQL Database felügyelt példány közzétevője/terjesztője és felügyelt példánya között.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: MashaMSFT
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822592"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372472"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban
 
 A tranzakciós replikáció lehetővé teszi az adatok replikálását egy Azure SQL Database felügyelt példány-adatbázisba egy SQL Server-adatbázisból vagy egy másik példány-adatbázisból. 
+
+Ez a cikk bemutatja, hogyan konfigurálhatja a replikációt egy felügyelt példány közzétevője/terjesztője és egy felügyelt példány előfizetője között. 
+
+![Replikálás két felügyelt példány között](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 A tranzakciós replikálás használatával leküldheti a Azure SQL Database felügyelt példányban lévő példány-adatbázisban végrehajtott módosításokat a következőre:
 
@@ -31,7 +35,8 @@ A tranzakciós replikálás használatával leküldheti a Azure SQL Database fel
 A tranzakciós replikáció nyilvános előzetes verzióban érhető el [Azure SQL Database felügyelt példányon](sql-database-managed-instance.md). A felügyelt példányok közzétevői, terjesztői és előfizetői adatbázisokat is futtathatnak. Lásd: [tranzakciós replikációs konfigurációk](sql-database-managed-instance-transactional-replication.md#common-configurations) az elérhető konfigurációkhoz.
 
   > [!NOTE]
-  > Ebből a cikkből megtudhatja, hogyan konfigurálhat egy felhasználót a replikáció egy Azure Database felügyelt példányra való konfigurálásához a végponttól a végéig, kezdve az erőforráscsoport létrehozásával. Ha már telepítette a felügyelt példányokat, ugorjon a [4. lépésre](#4---create-a-publisher-database) a közzétevői adatbázis létrehozásához, vagy a [6. lépést](#6---configure-distribution) , ha már rendelkezik közzétevői és előfizetői adatbázissal, és készen áll a replikáció konfigurálására.  
+  > - Ebből a cikkből megtudhatja, hogyan konfigurálhat egy felhasználót a replikáció egy Azure Database felügyelt példányra való konfigurálásához a végponttól a végéig, kezdve az erőforráscsoport létrehozásával. Ha már telepítette a felügyelt példányokat, ugorjon a [4. lépésre](#4---create-a-publisher-database) a közzétevői adatbázis létrehozásához, vagy a [6. lépést](#6---configure-distribution) , ha már rendelkezik közzétevői és előfizetői adatbázissal, és készen áll a replikáció konfigurálására.  
+  > - Ez a cikk a közzétevőt és a terjesztőt konfigurálja ugyanazon a felügyelt példányon. Ha a terjesztőt különálló, összekapcsolt példányra szeretné helyezni, tekintse meg az oktatóanyag a [mi közzétevő és a mi terjesztő közötti replikáció konfigurálása](sql-database-managed-instance-configure-replication-tutorial.md)című témakört. 
 
 ## <a name="requirements"></a>Követelmények
 
@@ -48,7 +53,7 @@ A felügyelt példányok közzétevőként és/vagy terjesztőként való konfig
  > A Azure SQL Databaseban az önálló adatbázisok és a készletezett adatbázisok csak előfizetők lehetnek. 
 
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 Támogatja
 
@@ -67,10 +72,10 @@ A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy er�
 
 ## <a name="2---create-managed-instances"></a>2 – felügyelt példányok létrehozása
 
-A [Azure Portal](https://portal.azure.com) használatával hozzon létre két [felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md) ugyanazon a virtuális hálózaton és alhálózaton. A két felügyelt példány neve:
+A [Azure Portal](https://portal.azure.com) használatával hozzon létre két [felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md) ugyanazon a virtuális hálózaton és alhálózaton. Nevezze el például a két felügyelt példányt:
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub` (a véletlenszerűség néhány karakterrel együtt)
+- `sql-mi-sub` (a véletlenszerűség néhány karakterrel együtt)
 
 Az Azure SQL Database felügyelt példányaihoz való [kapcsolódáshoz konfigurálnia kell egy Azure-beli virtuális gépet](sql-database-managed-instance-configure-vm.md) is. 
 
@@ -80,9 +85,13 @@ Az Azure SQL Database felügyelt példányaihoz való [kapcsolódáshoz konfigur
 
 Másolja a fájlmegosztás elérési útját a (z) formátumban: `\\storage-account-name.file.core.windows.net\file-share-name`
 
+Például: `\\replstorage.file.core.windows.net\replshare`
+
 Másolja a Storage-hozzáférési kulcsokat a (z) formátumban: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
- További információért lásd: [View and copy storage access keys](../storage/common/storage-account-manage.md#access-keys) (A tárelérési kulcsok megtekintése és másolása). 
+Például: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+
+További információ: a [Storage-fiók elérési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md). 
 
 ## <a name="4---create-a-publisher-database"></a>4 – közzétevő adatbázis létrehozása
 
@@ -160,8 +169,9 @@ A közzétevő felügyelt példányán `sql-mi-pub`módosítsa a lekérdezés v�
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.windows.net\file-share-name"
+-- example: file_storage "\\replstorage.file.core.windows.net\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -173,6 +183,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > Ügyeljen arra, hogy a file_storage paraméterhez csak fordított perjel (`\`) legyen használatban. A továbbítási perjel (`/`) használata hibát okozhat a fájlmegosztás csatlakoztatásakor. 
 
 Ez a parancsfájl egy helyi közzétevőt konfigurál a felügyelt példányon, hozzáadja a csatolt kiszolgálót, és létrehoz egy feladatot a SQL Server Agent számára. 
 
@@ -322,10 +335,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Az Azure-erőforrások tisztításához [törölje a felügyelt példányok erőforrásait az erőforráscsoporthoz](../azure-resource-manager/manage-resources-portal.md#delete-resources) , majd törölje az erőforráscsoportot `SQLMI-Repl`. 
+Az Azure-erőforrások tisztításához [törölje a felügyelt példányok erőforrásait az erőforráscsoporthoz](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) , majd törölje az erőforráscsoportot `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Lásd még:
 
 - [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md)
+- [Oktatóanyag: tranzakciós replikáció konfigurálása a MI közzétevő és a SQL Server előfizető között](sql-database-managed-instance-configure-replication-tutorial.md)
 - [Mi az a felügyelt példány?](sql-database-managed-instance.md)

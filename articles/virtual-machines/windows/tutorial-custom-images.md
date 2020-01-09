@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 906ac3b28a512a866e712cefda4355ad901c258d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: aca1f8ce2c125cd90f2e61a7829be09bc81c3938
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464963"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása Azure virtuális gépről az Azure PowerShell-lel
 
@@ -35,7 +35,7 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 
 A nyilvános előzetes verzióban elérhető az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) szolgáltatás. Egyszerűen írja le a testreszabásokat egy sablonban, és kezelje a cikk rendszerkép-létrehozási lépéseit. [Próbálja ki az Azure rendszerkép-készítőt (előzetes verzió)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az alábbi lépések ismertetik, hogyan alakíthat egy meglévő virtuális gépet újrahasznosítható egyéni rendszerképpé, amely segítségével új virtuálisgép-példányokat hozhat létre.
 
@@ -155,7 +155,7 @@ Remove-AzImage `
     -ResourceGroupName myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

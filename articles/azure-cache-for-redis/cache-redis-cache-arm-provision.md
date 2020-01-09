@@ -1,18 +1,17 @@
 ---
-title: Azure cache kiépítése a Redis Azure Resource Manager használatával
-description: Azure Resource Manager sablon használatával helyezzen üzembe egy Azure-gyorsítótárat a Redis.
-services: app-service
+title: Az Azure cache üzembe helyezése a Redis Azure Resource Manager
+description: Megtudhatja, hogyan helyezhet üzembe egy Azure cache-t a Redis-erőforráshoz Azure Resource Manager sablonnal. A sablonok a gyakori forgatókönyvek esetében érhetők el.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
-ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412402"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Azure cache létrehozása Redis sablon használatával
 
@@ -22,7 +21,7 @@ Ebben a témakörben megtudhatja, hogyan hozhat létre olyan Azure Resource Mana
 
 Jelenleg a diagnosztikai beállítások az adott régióban lévő összes gyorsítótárhoz meg vannak osztva egy előfizetéshez. A régió egyik gyorsítótárának frissítése hatással van a régió összes többi gyorsítótárára.
 
-További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md)készítése. A gyorsítótár-erőforrástípusok JSON-szintaxisának és-tulajdonságainak megismeréséhez tekintse meg a [Microsoft. cache típusú erőforrástípusok](/azure/templates/microsoft.cache/allversions)című témakört.
 
 A teljes sablonhoz lásd: az [Azure cache for Redis sablonja](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
@@ -117,8 +116,6 @@ Létrehozza az Azure cache-t a Redis számára.
       ]
     }
 
-
-
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -126,7 +123,5 @@ Létrehozza az Azure cache-t a Redis számára.
 
     New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444155"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
 Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Egy tevékenységkészletet futtat le, ha a feltétel `true` értéket ad vissza, és egy másik tevékenységkészletet, ha a feltétel `false` értéket ad vissza. 
@@ -63,7 +63,7 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Kötelező
+Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 név | Az IF-Condition tevékenység neve. | Sztring | Igen
 type | **IfCondition** értékre kell állítani | Sztring | Igen
@@ -196,10 +196,7 @@ Egy másik példa a kifejezésre:
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -288,7 +285,7 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

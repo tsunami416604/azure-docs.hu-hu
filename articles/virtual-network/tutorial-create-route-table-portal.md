@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350290"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom útválasztási táblázattal való irányítása az Azure Portalon
 
@@ -58,7 +58,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson *az OK gombra*. |
     | Földrajzi egység | Hagyja meg az alapértelmezett **USA keleti**régióját.
-    | BGP-útvonal propagálása | Hagyja meg az alapértelmezett **beállítást**. |
+    | Virtual Network átjáró útvonalának propagálása | Hagyja meg az alapértelmezett **beállítást**. |
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -137,7 +137,7 @@ Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, l
 
 ### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>Myroutetablepublic elemet hozzárendelése a nyilvános alhálózathoz
 
-1. Válassza a **nyilvános**lehetőséget.
+1. Válassza a **Nyilvános** lehetőséget.
 
 1. A **nyilvános**területen válassza az **útválasztási táblázat** > **myroutetablepublic elemet** > **Mentés**lehetőséget.
 
@@ -183,7 +183,7 @@ A NVA olyan virtuális gépek, amelyek a hálózati funkciók, például az Útv
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **myVirtualNetwork**. |
     | Alhálózat | Válassza a **DMZ (10.0.2.0/24)** lehetőséget. |
-    | Nyilvános IP-cím | Válassza a **nincs**lehetőséget. Nincs szüksége nyilvános IP-címekre. A virtuális gép nem kapcsolódik az internethez.|
+    | Nyilvános IP-cím | Válassza a **Nincs** lehetőséget. Nincs szüksége nyilvános IP-címekre. A virtuális gép nem kapcsolódik az internethez.|
 
 1. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Tovább: kezelés**lehetőséget.
 
@@ -224,7 +224,7 @@ Kapcsolja be az IP-továbbítást a *myVmNva*. Ha az Azure hálózati forgalmat 
 
     ![IP-továbbítás engedélyezése](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
-## <a name="create-public-and-private-virtual-machines"></a>Nyilvános és magánhálózati virtuális gépek létrehozása
+## <a name="create-public-and-private-virtual-machines"></a>Nyilvános és privát virtuális gépek létrehozása
 
 Hozzon létre egy nyilvános virtuális gépet és egy privát virtuális GÉPET a virtuális hálózaton. Később azt fogja látni, hogy az Azure a NVA keresztül átirányítja a *nyilvános* alhálózat forgalmát a *privát* alhálózatra.
 
@@ -233,25 +233,25 @@ Hajtsa végre az 1-12-es lépéseket a [NVA létrehozásához](#create-an-nva). 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | **NYILVÁNOS VIRTUÁLIS GÉP** | |
-| ALAPJAI |  |
+| BASICS |  |
 | Virtuális gép neve | Adja meg a *myVmPublic*. |
-| HÁLÓZATI | |
+| HÁLÓZAT | |
 | Alhálózat | Válassza a **nyilvános (10.0.0.0/24)** lehetőséget. |
 | Nyilvános IP-cím | Fogadja el az alapértelmezett értéket. |
 | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
 | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget. |
-| FELÜGYELETI | |
-| Diagnosztikai Storage-fiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
+| KEZELÉS | |
+| Diagnosztikai tárfiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 | **PRIVÁT VIRTUÁLIS GÉP** | |
-| ALAPJAI |  |
+| BASICS |  |
 | Virtuális gép neve | Adja meg a *myVmPrivate*. |
-| HÁLÓZATI | |
+| HÁLÓZAT | |
 | Alhálózat | Válassza a **magánjellegű (10.0.1.0/24)** lehetőséget. |
 | Nyilvános IP-cím | Fogadja el az alapértelmezett értéket. |
 | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
 | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget. |
-| FELÜGYELETI | |
-| Diagnosztikai Storage-fiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
+| KEZELÉS | |
+| Diagnosztikai tárfiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 
 Létrehozhatja a *myVmPrivate* virtuális gépet, miközben az Azure létrehozza a *myVmPublic* virtuális gépet. Ne folytassa a további lépéseket, amíg az Azure befejezi mindkét virtuális gép létrehozását.
 

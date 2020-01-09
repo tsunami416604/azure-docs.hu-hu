@@ -4,15 +4,15 @@ description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364781"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>A Windows és a Linux Log Analytics ügynökének kezelése és karbantartása
 
@@ -58,7 +58,7 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 4. A **Microsoft monitoring Agent telepítése** **párbeszédpanelen kattintson az Elfogadom gombra a** licencszerződés elfogadásához.
 
-5. A **Microsoft monitoring Agent telepítése** párbeszédpanelen kattintson a **frissítés**elemre. Az állapot lapon a frissítés állapota látható.
+5. A **Microsoft Monitoring Agent beállítása** párbeszédpanelen kattintson a **Frissítés** lehetőségre. Az állapotlapon megjelenik a frissítés állapota.
 
 6. Ha a **Microsoft monitoring Agent konfigurálása sikeresen befejeződött.** lap jelenik meg, kattintson a **Befejezés**gombra.
 
@@ -68,7 +68,7 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 2. Az ügynök telepítési fájljainak kibontásához egy rendszergazda jogú parancssorból futtassa `MMASetup-<platform>.exe /c`, és a rendszer kérni fogja a fájlok kinyerésének elérési útját. Másik lehetőségként megadhatja az elérési utat a `MMASetup-<platform>.exe /c /t:<Full Path>`argumentumok átadásával.
 
-3. Futtassa a következő parancsot, ahol a D:\ a frissítési naplófájl helye.
+3. Futtassa a következő parancsot, amelyben a D:\ a frissítési naplófájl helye.
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1

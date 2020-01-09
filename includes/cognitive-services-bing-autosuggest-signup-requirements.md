@@ -3,12 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/19/2019
-ms.openlocfilehash: 0da406ca1b37e05a44ba0d0f3ca56c266dda0dac
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/11/2019
+ms.openlocfilehash: a678603d19b8da9ace8b519e19fc8ef2673621fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384718"
 ---
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Autosuggest API-hozzáféréssel rendelkező. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). A folytatás előtt szüksége lesz az ingyenes próbaverzió aktiválása után biztosított hozzáférési kulcs, vagy egy fizetős kulcsot az Azure irányítópultján.
+## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
+
+A Bing Autosuggest API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
+
+* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Nincs szükség Azure-előfizetésre.
+    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Bing AutoSuggest erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
+    * Bing Autosuggest a [Bing Search v7-erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)fizetős szintjein is elérhető.
+
+* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

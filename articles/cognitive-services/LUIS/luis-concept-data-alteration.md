@@ -1,7 +1,7 @@
 ---
 title: Adatváltozás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan adatokat is módosítható előtt előrejelzések a Language Understanding (LUIS)
+description: Megtudhatja, hogyan változtathatók meg az adatváltozások a Language Understanding (LUIS) előrejelzések előtt
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: a199821c4db7fd8131ec54700b8c999dfe604a6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1bde70dadbe1e5b8ba9bf90bd9ca2f48a4c65491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381800"
 ---
-# <a name="alter-utterance-data-before-or-during-prediction"></a>Az ALTER utterance (kifejezés) adatok előtt vagy közben előrejelzése
-A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a [helyesírás javítása](luis-tutorial-bing-spellcheck.md), valamint az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md)időzóna-problémáinak javítása. 
+# <a name="alter-utterance-data-before-or-during-prediction"></a>A kiírási adatértékek módosítása az előrejelzés előtt vagy közben
+LUIS lehetővé teszi a Kimondás kezelését a jóslat előtt vagy közben. Ezek közé tartozik a [helyesírás javítása](luis-tutorial-bing-spellcheck.md), valamint az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md)időzóna-problémáinak javítása. 
 
-## <a name="correct-spelling-errors-in-utterance"></a>Helyesírási hibák az utterance (kifejezés)
+## <a name="correct-spelling-errors-in-utterance"></a>Helyesírási hibák javítása a teljes szövegben
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
-LUIS [Bing Spell Check API v7](../Bing-Spell-Check/overview.md) használatával javítsa ki a helyesírási hibákat a teljes szövegben. A LUIS kell a szolgáltatáshoz tartozó kulcsot. Hozza létre a kulcsot, majd adja hozzá a kulcsot querystring paraméterként a [végpontnál](https://go.microsoft.com/fwlink/?linkid=2092356). 
+LUIS [Bing Spell Check API v7](../Bing-Spell-Check/overview.md) használatával javítsa ki a helyesírási hibákat a teljes szövegben. A LUIS-nek szüksége van a szolgáltatáshoz társított kulcsra. Hozza létre a kulcsot, majd adja hozzá a kulcsot querystring paraméterként a [végpontnál](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 <!--
 You can also correct spelling errors in the **Test** panel by [entering the key](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key is kept as a session variable in the browser for the Test panel. Add the key to the Test panel in each browser session you want spelling corrected. 
@@ -35,11 +35,11 @@ Usage of the key in the test panel and at the endpoint count toward the [key usa
 
 -->
 
-A végpont két paraméterei a helyesírási javításokkal működéséhez szükségesek:
+A végpontnak két paramétert kell megadnia a helyesírási javítások működéséhez:
 
-|Param|Érték|
+|Paraméter|Value (Díj)|
 |--|--|
-|`spellCheck`|Logikai érték|
+|`spellCheck`|logikai|
 |`bing-spell-check-subscription-key`|[Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -végpont kulcsa|
 
 Ha [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) hibát észlel, az eredeti kimaradás és a korrigált Kimondás a végponton lévő előrejelzések mellett történik.
@@ -81,22 +81,22 @@ Ha [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-serv
 ### <a name="list-of-allowed-words"></a>Engedélyezett szavak listája
 A LUIS-ben használt Bing Spell Check API nem támogatja a helyesírás-ellenőrzési változtatások során figyelmen kívül hagyó szavak listáját. Ha engedélyezni szeretné a szavak vagy rövidítések listáját, akkor a Kimondás előtt dolgozza fel a kilépést az ügyfélalkalmazás számára, mielőtt elküldi a megfogalmazást a LUIS for szándék előrejelzésére.
 
-## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Előre összeállított datetimeV2 entitás időzóna módosítása
-Ha egy LUIS-alkalmazás az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md) entitást használja, az előrejelzési válaszban egy datetime érték adható vissza. A kérelem az időzóna visszaadandó megfelelő datetime meghatározására szolgál. Ha a kérelem érkezik egy robot vagy egy másik központi alkalmazás LUIS való elérése előtt, javítsa ki az időzóna, LUIS használja. 
+## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Előre elkészített datetimeV2 entitás időzónájának módosítása
+Ha egy LUIS-alkalmazás az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md) entitást használja, az előrejelzési válaszban egy datetime érték adható vissza. A kérelem időzónája a helyes datetime érték meghatározására szolgál. Ha a kérelem egy robotból vagy egy másik központosított alkalmazásból érkezik, mielőtt elkezdené a LUIS-t, javítsa ki az időzóna LUIS használatát. 
 
-### <a name="endpoint-querystring-parameter"></a>Végpont paramétert
+### <a name="endpoint-querystring-parameter"></a>Endpoint querystring paraméter
 Az időzóna kijavítása úgy történik, hogy a felhasználó időzónáját hozzáadja a [végponthoz](https://go.microsoft.com/fwlink/?linkid=2092356) a `timezoneOffset` param használatával. Az idő módosításához a `timezoneOffset` értékének pozitív vagy negatív számnak kell lennie percben.  
 
-|Param|Érték|
+|Paraméter|Value (Díj)|
 |--|--|
-|`timezoneOffset`|pozitív vagy negatív szám, percek alatt|
+|`timezoneOffset`|pozitív vagy negatív szám (percben)|
 
-### <a name="daylight-savings-example"></a>Nyári időszámítás – megtakarítási példa
+### <a name="daylight-savings-example"></a>Nyári megtakarítások – példa
 Ha a visszaadott előre elkészített datetimeV2 szeretné beállítani a nyári időszámítást, akkor a querystring paramétert a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezéséhez percben kell `timezoneOffset` használni.
 
 #### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 előrejelzési végpont kérése](#tab/V2)
 
-Adja hozzá a 60 perc: 
+60 perc hozzáadása: 
 
 https://{Region}. API. kognitív. microsoft. com/Luis/v 2.0/apps/{appId}? q = a fények bekapcsolása? **timezoneOffset = 60**& verbose = {boolean} & helyesírás = {boolean} &-előkészítés = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
@@ -106,7 +106,7 @@ https://{Region}. API. kognitív. microsoft. com/Luis/v 2.0/apps/{appId}? q = a 
 
 #### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 előrejelzési végpont kérése](#tab/V3)
 
-Adja hozzá a 60 perc:
+60 perc hozzáadása:
 
 https://{Region}. API. kognitív. microsoft. com/Luis/v 3.0 – Preview/apps/{appId}/Slots/Production/Tippelje? Query = a fények bekapcsolása? **timezoneOffset = 60**& helyesírás = {boolean} & Bing-Spell-Check-előfizetés-Key = {string} & log = {Boolean}
 
@@ -118,10 +118,10 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * * 
 
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#-kód megfelelő timezoneOffset értékét határozza meg
+## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#a kód meghatározza a timezoneOffset helyes értékét
 A következő C# kód a [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) osztály [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metódusát használja a megfelelő `timezoneOffset` meghatározásához a rendszeridő alapján:
 
-```CSharp
+```csharp
 // Get CST zone id
 TimeZoneInfo targetZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
 
@@ -135,7 +135,7 @@ DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Helyesírási hibák javítása ezzel az Oktatóanyaggal](luis-tutorial-bing-spellcheck.md)

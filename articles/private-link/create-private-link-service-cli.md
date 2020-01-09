@@ -2,17 +2,17 @@
 title: Azure Private link szolgáltatás létrehozása az Azure CLI használatával
 description: Ismerje meg, hogyan hozhat létre Azure Private link Service-t az Azure CLI használatával
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 3cc171ddabbe8241622d4e599b4b3cd281558976
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350243"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szo
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version`. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
 

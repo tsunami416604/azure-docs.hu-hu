@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426992"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>A Search Traffic Analytics megvalósítása az Azure-ban Cognitive Search
 
@@ -167,9 +167,7 @@ Minden alkalommal, amikor egy felhasználó egy dokumentumra kattint, ez egy oly
 
 ## <a name="3---analyze-in-power-bi"></a>3 – Power BI elemzése
 
-Miután kialakította az alkalmazást, és ellenőrizte, hogy az alkalmazás megfelelően van csatlakoztatva a Application Insightshoz, használhatja az Azure Cognitive Search által létrehozott előre definiált sablont Power BI Desktophoz. 
-
-Az Azure kognitív keresési szolgáltatás egy figyelési [Power bi](https://app.powerbi.com/getdata/services/azure-search) , amely lehetővé teszi a naplófájlok elemzését. A Content Pack olyan előre definiált diagramokat és táblázatokat is biztosít, amelyek hasznosak a Search Traffic Analytics szolgáltatásban rögzített további adatok elemzéséhez. További információ: a [Content Pack Súgó lapja](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Miután felkészítette az alkalmazást, és ellenőrizte, hogy az alkalmazás megfelelően van csatlakoztatva a Application Insightshoz, letölt egy előre definiált jelentési sablont, hogy elemezze az adatait a Power BI Desktopban. A jelentés előre definiált diagramokat és táblázatokat tartalmaz, amelyek hasznosak a Search Traffic Analytics szolgáltatásban rögzített további adatok elemzéséhez. 
 
 1. Az Azure Cognitive Search-irányítópult bal oldali navigációs ablaktábláján, a **Beállítások**területen kattintson a **Traffic Analytics keresése**elemre.
 
@@ -179,7 +177,7 @@ Az Azure kognitív keresési szolgáltatás egy figyelési [Power bi](https://ap
 
 2. Ugyanazon a lapon kattintson a **Power bi-jelentés letöltése**elemre.
 
-3. A jelentés Power BI Desktopban nyílik meg, és a rendszer kéri, hogy kapcsolódjon Application Insightshoz. Ezeket az információkat a Application Insights erőforrás Azure Portal oldalain találja.
+3. A jelentés Power BI Desktopban nyílik meg, és a rendszer felszólítja, hogy kapcsolódjon Application Insightshoz, és adja meg a hitelesítő adatokat. A Application Insights-erőforrás Azure Portal lapjain a kapcsolatok adatai találhatók. A hitelesítő adatok esetében adja meg ugyanazt a felhasználónevet és jelszót, amelyet a portálon való bejelentkezéshez használ.
 
    ![Kapcsolódás Application Insightshoz](./media/search-traffic-analytics/connect-to-app-insights.png "Csatlakozás az Application Insightshoz")
 
@@ -189,11 +187,8 @@ A jelentés olyan diagramokat és táblázatokat tartalmaz, amelyek segítségé
 
 A metrikák a következő elemeket foglalják magukban:
 
-* Kattintási arány (CTR): a felhasználók aránya, akik egy adott dokumentumra kattintanak a teljes keresések számán.
+* Keresési mennyiség és a legnépszerűbb kifejezés – dokumentum párok: azok a feltételek, amelyek a dokumentumra kattintanak, a kattintások szerint rendezve jelennek meg.
 * Kattintások nélkül végzett keresések: a nem kattintást igénylő leggyakoribb lekérdezések feltételei
-* Legtöbbször rákattintottak a dokumentumok elemre: az elmúlt 24 órában, 7 nap és 30 nap alatt a dokumentumok többsége AZONOSÍTÓval kattintott.
-* Népszerű kifejezés – dokumentum párok: azok a feltételek, amelyek az adott dokumentum eredményét eredményezik, kattintásra rendezve.
-* Kattintson ide a kattintáshoz: a keresési lekérdezés óta az idő a gyűjtőre kattint
 
 Az alábbi képernyőfelvételen a beépített jelentések és diagramok láthatók a Search Traffic Analytics elemzéséhez.
 

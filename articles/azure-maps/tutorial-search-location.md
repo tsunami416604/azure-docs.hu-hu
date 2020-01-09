@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 86ba98bfb4003a723cfaaf2d1c51301314ca47cf
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432745"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
 
-Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps használatához, és hogyan használhatja a Maps API-kat egy hasznos hely kereséséhez. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps használatához, és hogyan használhatja a Maps API-kat egy hasznos hely kereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Maps-fiók létrehozása
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -55,13 +55,15 @@ Hozzon létre egy új Maps-fiókot az alábbi lépésekkel:
 
 ## <a name="get-the-primary-key-for-your-account"></a>A fiók elsődleges kulcsának lekérése
 
-A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely lehetővé teszi a Maps API-k lekérdezését.
+A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely lehetővé teszi a Maps API-k lekérdezését. Azure Maps szolgáltatások meghívásakor azt javasoljuk, hogy a fiók elsődleges kulcsát használja előfizetési kulcsként.
 
 1. Nyissa meg a Maps-fiókot a portálon.
 2. A beállítások szakaszban válassza a **hitelesítés**lehetőséget.
 3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse a helyi gépre, hogy később felhasználhassa ebben az oktatóanyagban.
 
 ![Elsődleges kulcs lekérése a portálon](./media/tutorial-search-location/get-key.png)
+
+A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 

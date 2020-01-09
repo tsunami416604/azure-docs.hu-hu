@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet lekérdezéseket lekérdezni 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/05/2019
-ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0eaaf1157bf49068958bc07d17a23fc31dd99de0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365495"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor  
 
@@ -24,7 +24,7 @@ Most már nem csak több Log Analytics-munkaterületre is lekérdezheti, hanem e
 
 * Az egyetlen lekérdezésben felvehető Application Insights-erőforrások és Log Analytics-munkaterületek száma legfeljebb 100.
 * Az erőforrások közötti lekérdezés nem támogatott a Tervező nézetében. Létrehozhat egy lekérdezést a Log Analyticsban, és rögzítheti az Azure-irányítópulton [egy napló lekérdezésének megjelenítéséhez](../learn/tutorial-logs-dashboards.md). 
-* Az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő erőforrás-lekérdezések közötti lekérdezést. Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. Az erőforrás-lekérdezési napló riasztási szabályait anélkül hozhatja létre, hogy a kapcsolót a [SCHEDULEDQUERYRULES API Azure Resource Manager sablonnal](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) használja – ez a riasztási szabály azonban kezelhető, bár a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) nem Azure Portal .
+* Az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő erőforrás-lekérdezések közötti lekérdezést. Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. Az erőforrás-lekérdezési napló riasztási szabályait anélkül is létrehozhatja, hogy a kapcsolót a [SCHEDULEDQUERYRULES API Azure Resource Manager sablonjának](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) használatával hozza létre – ez a riasztási szabály azonban kezelhető, bár a [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) nem Azure Portal.
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Lekérdezés Log Analytics munkaterületeken és a Application Insights

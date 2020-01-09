@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432860"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Képréteg hozzáadása térképhez
 
-Ebből a cikkből megtudhatja, hogyan helyezhet át egy képet a Térkép rögzített koordinátáiba. Számos olyan forgatókönyv létezik, amelyben a képek átfedésben vannak a térképen. Íme néhány példa arra, hogy milyen típusú képeket gyakran helyeznek el a térképeken;
+Ebből a cikkből megtudhatja, hogyan helyezhet át egy képet egy rögzített koordináta-készletbe a térképen. Íme néhány példa arra, hogy milyen típusú képeket gyakran helyez el a térképeken:
 
-* A herékből rögzített rendszerképek.
-* Alaprajzok kialakítása.
-* Korábbi vagy egyéb speciális térképi képek.
-* A feladatok helyeinek tervrajzai.
-* Időjárási radar-rendszerképek.
+* A herékből rögzített képek
+* Alaprajzok építése
+* Korábbi vagy egyéb speciális térképi képek
+* A feladatok webhelyeinek tervrajzai
+* Időjárási radar-rendszerképek
 
 > [!TIP]
-> A [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) egy egyszerű módja a képek térképre való átfedésének. Ha azonban a rendszerkép nagy méretű, a böngésző megküzdheti a betöltését. Ebben az esetben érdemes a képet csempévé feltörni, és a térképre betölteni a [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> Az [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) egyszerű módot biztosít a képek térképre való átfedésére. Vegye figyelembe, hogy a böngészők nehezen tudnak betölteni egy nagyméretű képet. Ebben az esetben érdemes a képet csempére feltörni, és [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)betölteni őket a térképbe.
 
 A rendszerkép réteg a következő képformátumokat támogatja:
 
@@ -38,7 +38,7 @@ A rendszerkép réteg a következő képformátumokat támogatja:
 
 ## <a name="add-an-image-layer"></a>Rendszerképréteg hozzáadása
 
-A következő kódrészletben egy, a térképen a [1922-es, Newark New Jersey-i Térkép](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) képe látható. Egy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) úgy jön létre, hogy átadja a képhez tartozó URL-címet, és a négy sarkot a `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`formátumban adja meg.
+A következő kód egy, a térképen található [Newark, New Jersey, 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) -as Térkép képét fedi le. Egy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) úgy jön létre, hogy átadja egy rendszerkép URL-címét, és a `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`formátumban a négy sarok koordinátáit adja meg.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Alább látható a fenti funkciók teljes futási kódjának mintája.
+Itt látható az előző kód teljes futtatási kódjának mintája.
 
 <br/>
 
@@ -62,9 +62,9 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 ## <a name="import-a-kml-ground-overlay"></a>KML-fedési átfedés importálása
 
-Ez a minta bemutatja, hogyan fedi le a KML-alapú átfedési adatokat képrétegként a térképen. A KML-alapú átfedések Észak-, Dél-, Kelet-és Nyugat-koordinátákat biztosítanak, és a megegyező irányú rotációs, míg a képréteg a rendszerkép minden sarkánál koordinátákat vár. A példában szereplő KML-borító a Chartres-székesegyházból származik, és a [wikimediaből](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)származik.
+Ez a következő minta bemutatja, hogyan fedi le a KML-alapú átfedési adatokat képrétegként a térképen. A KML-alapú átfedések Észak-, Dél-, Kelet-és Nyugat-koordinátákat biztosítanak, és a megegyező irányú rotációs, míg a képréteg a rendszerkép minden sarkánál koordinátákat vár. A példában szereplő KML-borító a Chartres-székesegyházból származik, és a [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)-ből származik.
 
-A következő kód a [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) osztály statikus `getCoordinatesFromEdges` funkciójával számítja ki a rendszerkép négy sarkát az Észak-, Dél-, Kelet-, nyugati és rotációs adatokból a KML-terület átfedése alapján.
+A következő kód a [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) osztály statikus `getCoordinatesFromEdges` függvényét használja. Kiszámítja a rendszerkép négy sarkát az Észak-, Dél-, Kelet-és Nyugat-és rotációs adatokból a KML-terület átfedése alapján.
 
 <br/>
 
@@ -73,7 +73,7 @@ A következő kód a [ImageLayer](https://docs.microsoft.com/javascript/api/azur
 
 ## <a name="customize-an-image-layer"></a>Képréteg testreszabása
 
-A képréteg számos stílust tartalmaz. Itt látható egy eszköz, amellyel kipróbálhatja őket.
+A képréteg számos stílust tartalmaz. Az alábbi eszköz segítségével kipróbálhatja őket.
 
 <br/>
 

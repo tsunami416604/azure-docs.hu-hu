@@ -1,5 +1,5 @@
 ---
-title: A MongoDB és a Golang SDK Azure Cosmos DB API-ját használó konzolos alkalmazás létrehozása
+title: A MongoDB és a Golang SDK Azure Cosmos DB API-ját használó konzolos alkalmazás
 description: Egy Golang-mintakód, amely a Azure Cosmos DB API-MongoDB való kapcsolódáshoz és lekérdezéshez használható.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755118"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441954"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Gyors útmutató: a MongoDB és a Golang SDK Azure Cosmos DB API-ját használó konzolos alkalmazás létrehozása
 
@@ -238,7 +238,7 @@ Lépjen vissza az Azure portálon, ha az Adatkezelőben szeretné megjeleníteni
     
 2. Ezután dolgozzon a dokumentumban, majd kattintson a **Frissítés** elemre a mentéshez. Törölheti is a dokumentumot, vagy létrehozhat új dokumentumokat és lekérdezéseket is.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

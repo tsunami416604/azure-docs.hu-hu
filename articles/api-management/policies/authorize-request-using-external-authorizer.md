@@ -1,5 +1,6 @@
 ---
-title: Azure API Management-szabályzat mintája – engedélyezi a kérést külső engedélyező használatával | Microsoft Docs
+title: Példa API Management-szabályzat – kérelem engedélyezése külső hitelesítő használatával
+titleSuffix: Azure API Management
 description: Azure API Management-szabályzat – példa – bemutatja, hogy a külső engedélyező kérések engedélyezése hogyan engedélyezzen egyéni vagy örökölt hitelesítési/engedélyezési logikát.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 92836e0bfe43a41ad6547c68bc0b9a326528862c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442503"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>Kérések engedélyezése külső engedélyező használatával
 
@@ -29,7 +30,7 @@ Illessze be a kódot a **bejövő** blokkba.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Authorize requests using external authorizer.policy.xml)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a APIM-házirendekről:
 

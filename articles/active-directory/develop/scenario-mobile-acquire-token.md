@@ -1,5 +1,5 @@
 ---
-title: Token beszerzése webes API-k meghívásához a Mobile apps szolgáltatásban | Azure
+title: Token beszerzése webes API-k meghívásához (Mobile apps) | Azure
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre olyan mobil alkalmazást, amely meghívja a webes API-kat (az alkalmazás jogkivonatának beszerzése)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5d584dc2eef27747627133511af3defe085068ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423826"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Webes API-kat meghívó mobil alkalmazás – jogkivonat beolvasása
 
@@ -45,7 +45,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 #### <a name="xamarin"></a>Xamarin
-```CSharp 
+```csharp 
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -200,7 +200,7 @@ Az iOS és a macOS rendszerhez készült MSAL különböző módosítókat támo
 
 Az alábbi példa azt mutatja be, hogy a jogkivonat interaktív beolvasása a felhasználó profiljának Microsoft Graph használatával történő olvasásához szükséges minimális kód.
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -243,7 +243,7 @@ Az osztály a következő konstansokat határozza meg:
 
 Ez a módosító olyan speciális forgatókönyvekben használatos, ahol a felhasználónak előre jóvá kell hagynia több erőforrást (és nem szeretné használni a növekményes beleegyezést, amelyet általában a MSAL.NET/a Microsoft Identity platform 2.0-s verziójában használ). A részletekért lásd [: a felhasználó beleegyezett több erőforrásra](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();

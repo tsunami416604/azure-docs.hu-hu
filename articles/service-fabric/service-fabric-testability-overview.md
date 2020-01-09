@@ -1,105 +1,96 @@
 ---
-title: Tartalék elemzési szolgáltatás áttekintése |} A Microsoft Docs
-description: Ez a cikk ismerteti a Service Fabric Fault Analysis Service hogy hibák és tesztelési forgatókönyvek futtat a szolgáltatásokat.
-services: service-fabric
-documentationcenter: .net
+title: A hiba-elemzési szolgáltatás áttekintése
+description: Ez a cikk a hiba-elemzési szolgáltatást ismerteti Service Fabric a hibák kiváltásához és a szolgáltatásokkal kapcsolatos tesztelési forgatókönyvek futtatásához.
 author: anmolah
-manager: chackdan
-editor: vturecek
-ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544814"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465565"
 ---
-# <a name="introduction-to-the-fault-analysis-service"></a>A Fault Analysis Service bemutatása
-A Fault Analysis Service tesztelése a Microsoft Azure Service Fabric beépített szolgáltatás lett tervezve. A Fault Analysis Service is idéz elő a jelentéssel bíró hibák és a teljes teszt forgatókönyvek az alkalmazások futtatásához. Ezek a hibák és a forgatókönyvek gyakorolja, és ellenőrizze a számos állapotok és átmenetek, amely egy szolgáltatás teljes élettartamuk, az összes olyan ellenőrzött, megbízható és konzisztens módon fog tapasztalni.
+# <a name="introduction-to-the-fault-analysis-service"></a>A hiba-elemzési szolgáltatás bemutatása
+A hiba-elemzési szolgáltatás a Microsoft Azure Service Fabricra épülő szolgáltatások tesztelésére szolgál. A hiba-elemzési szolgáltatással értelmes hibákat válthat ki, és teljes körű tesztelési forgatókönyveket futtathat az alkalmazásain. Ezek a hibák és forgatókönyvek a számos államot, valamint a szolgáltatás teljes élettartama során felmerülő, ellenőrzött, biztonságos és konzisztens módon működtetett állapotokat gyakorolják és érvényesítik.
 
-A műveletek az egyes hibák célzó vizsgálja, hogy a szolgáltatás olyan. Egy szolgáltatás fejlesztői használhatja ezeket az adatokat építőelemeket összetett forgatókönyvek írni. Példa:
+A műveletek a szolgáltatás tesztelésére szolgáló egyéni hibák. A szolgáltatás-fejlesztő ezeket a építőelemeket összetett forgatókönyvek írásához használhatja. Példa:
 
-* Indítsa újra a szimulálásához helyzetekben, ahol egy gépet vagy virtuális gép újraindítása bármennyi csomópontot.
-* Helyezze át egy replikát, az állapotalapú szolgáltatás szimulálása a terheléselosztást, a feladatátvétel vagy az alkalmazás frissítését.
-* Az állapotalapú szolgáltatások egy olyan helyzetet, ahol nem lehet folytatni az írási műveletek, mert nincs elég új adatokat fogadni "biztonsági mentése" vagy "másodlagos" replika létrehozása a kvórum elvesztése meghívása.
-* Adatvesztés előidézése a létrehozása olyan helyzet, amelyben minden a memóriában teljesen törli az állapotalapú szolgáltatások.
+* Indítsa újra a csomópontot, hogy tetszőleges számú helyzetet Szimuláljon, ha a gép vagy a virtuális gép újraindul.
+* Helyezzen át egy replikát az állapot-nyilvántartó szolgáltatásból a terheléselosztás, a feladatátvétel vagy az alkalmazás frissítésének szimulálása érdekében.
+* Állapot-nyilvántartó szolgáltatás kvórum elvesztésének meghívásával olyan helyzetet hozhat létre, amelyben az írási műveletek nem folytatódnak, mert nincs elég "biztonsági másolat" vagy "másodlagos" replika az új adatok elfogadásához.
+* Egy állapot-nyilvántartó szolgáltatás adatvesztésének meghívásával olyan helyzetet hozhat létre, amelyben az összes memóriában tárolt állapot teljesen törlődik.
 
-Forgatókönyvek összetett operations mikroszolgáltatásokból álló, egy vagy több műveletet is. A Fault Analysis Service két beépített teljes forgatókönyv biztosítja:
+A forgatókönyvek egy vagy több műveletből álló összetett műveletek. A hiba-elemzési szolgáltatás két beépített teljes forgatókönyvet biztosít:
 
-* A Chaos forgatókönyv
+* Káosz forgatókönyv
 * Feladatátvételi forgatókönyv
 
-## <a name="testing-as-a-service"></a>Szolgáltatás tesztelése
-A Fault Analysis Service egy Service Fabric-szolgáltatás, amely a Service Fabric-fürt automatikusan elindul. Ez a szolgáltatás a gazdagép hibabeszúrás, teszt forgatókönyv végrehajtási és egészségügyi elemzés funkcionál. 
+## <a name="testing-as-a-service"></a>Szolgáltatásként történő tesztelés
+A hiba-elemzési szolgáltatás egy Service Fabric rendszerszolgáltatás, amely automatikusan elindul egy Service Fabric-fürttel. Ez a szolgáltatás gazdagépként működik a hibák befecskendezése, a tesztelési forgatókönyvek végrehajtása és az állapot elemzése során. 
 
-![Fault Analysis Service][0]
+![Hiba-elemzési szolgáltatás][0]
 
-Tartalék művelet vagy tesztkörnyezetben a forgatókönyv elindításakor a tartalék művelet vagy tesztkörnyezetben forgatókönyvet futtatni egy parancsot küldött Fault Analysis Service. A Fault Analysis Service az állapot-nyilvántartó, így is megbízhatóan hibák és forgatókönyvek futtatása vagy eredmény ellenőrzése. Ha például egy hosszú ideig futó tesztkörnyezet megbízhatóan által hajtható végre Fault Analysis Service. És tesztek végrehajtása van a fürtben, mivel a szolgáltatás megvizsgálhatja a fürt és a hibákkal kapcsolatos részletesebb információkat biztosít a szolgáltatások állapotát.
+Ha egy hiba vagy tesztelési forgatókönyvet kezdeményeznek, a rendszer egy parancsot kap a hiba-elemzési szolgáltatásnak a művelet vagy tesztelési forgatókönyv futtatásához. A hiba-elemzési szolgáltatás állapotú, hogy megbízhatóan futtasson hibákat és forgatókönyveket, és érvényesítse az eredményeket. Egy hosszan futó tesztelési forgatókönyv esetében például a hiba-elemzési szolgáltatás megbízhatóan képes végrehajtani. Mivel a teszteket a fürtön belül hajtják végre, a szolgáltatás megvizsgálja a fürt és a szolgáltatások állapotát, hogy részletesebb információkat nyújtson a hibákról.
 
-## <a name="testing-distributed-systems"></a>Az elosztott rendszerek tesztelése
-A feladat írása, és jelentősen egyszerűbb elosztott méretezhető alkalmazások kezelése a Service Fabric gondoskodik. A Fault Analysis Service lehetővé teszi egy hasonló módon egyszerűbb elosztott alkalmazás tesztelése. Nincsenek három fő problémák tesztelése során kell megoldani:
+## <a name="testing-distributed-systems"></a>Elosztott rendszerek tesztelése
+A Service Fabric jelentősen megkönnyíti az elosztott méretezhető alkalmazások írását és kezelését. A hiba-elemzési szolgáltatás hasonló módon teszi lehetővé az elosztott alkalmazások tesztelését. A tesztelés során három fő problémát kell megoldani:
 
-1. Szimuláló/létrehozásakor fellépő hibákat a valós életből vett példák: A fontos szempontja a Service Fabric egyik célja, hogy lehetővé teszi az elosztott alkalmazások számára a különféle hibák helyreállításához. Azonban, hogy ezek a hibák helyreállíthatók-e az alkalmazás teszteléséhez kell egy mechanizmust, ezeket egy kontrollált tesztkörnyezetben végezze a való életből vett hibák szimulálása/létrehozni.
-1. Korrelált hibák képességét: A rendszer, például hálózati hibák és a gép hibák, alapvető hibák is egyszerűen külön-külön előállításához. Nem triviális generálása jelentős számos forgatókönyv esetében, amely akkor fordulhat elő a való világból interakciókat ezeket az egyes hibák miatt.
-1. Egységes felhasználói élményt között különböző szintjeit fejlesztéséhez és üzembe helyezéséhez: Nincsenek tartalék injektálási számos rendszer, amelyeket a különböző típusú hibák. Azonban a felhasználói felület az ezek mindegyikét, gyenge, beépített fejlesztői forgatókönyveket, a ugyanazokat a teszteket futó nagy tesztelési környezetekben, éles környezetben tesztek az áthelyezése esetén.
+1. Valós helyzetekben előforduló hibák szimulálása/generálása: a Service Fabric egyik fontos aspektusa, hogy az elosztott alkalmazások a különböző hibákból való helyreállítást lehetővé teszik. Azonban annak ellenőrzéséhez, hogy az alkalmazás képes-e helyreállítani ezeket a hibákat, szükségünk van egy mechanizmusra, amellyel szimulálhatja vagy előállíthatja ezeket a valós hibákat egy ellenőrzött tesztkörnyezetben.
+1. Korrelált hibák hozhatók létre: a rendszer alapvető meghibásodásai, például a hálózati hibák és a gépi meghibásodások egyszerűen előállíthatók egyenként. Ha jelentős számú forgatókönyvet generálnak, amelyek a valós világban történnek az egyes hibák interakciója miatt, nem triviálisak.
+1. Egységes felhasználói élmény a különböző fejlesztési és üzembe helyezési szinteken: számos hibás befecskendező rendszer létezik, amely különböző típusú hibákat tehet elérhetővé. Ugyanakkor az is előfordulhat, hogy az egyablakos fejlesztői forgatókönyvek esetében a tapasztalatok mindegyike gyenge, hogy az éles tesztelési környezetekben is ugyanezeket a teszteket használja.
 
-Bár vannak e problémák, a rendszer, amely megegyezik a szükséges garanciákkal – egészen a beépített fejlesztői környezet tesztelése az éles fürtök számos mechanizmusok hiányzik. A Fault Analysis Service a fejlesztőket az alkalmazás tesztelése a saját üzleti logikája összpontosít. A Fault Analysis Service biztosítja az összes szükséges a szolgáltatás az alapjául szolgáló elosztott rendszer közötti teszteléséhez.
+Habár számos mechanizmust kell megoldani ezen problémák megoldására, egy olyan rendszerre, amely a szükséges garanciákkal megegyezően működik – mindezt egy egymezős fejlesztői környezetből az üzemi fürtök tesztelésére – hiányzik. A hiba-elemzési szolgáltatás segítségével az alkalmazások fejlesztői az üzleti logikájuk tesztelésére koncentrálnak. A hiba-elemzési szolgáltatás biztosítja az összes olyan funkciót, amely a szolgáltatás interakciójának teszteléséhez szükséges a mögöttes elosztott rendszerrel.
 
-### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Hiba a való életből vett forgatókönyv szimuláló/generálása
-Teszt megbízhatóságát, egy elosztott rendszer meghibásodásokkal szemben, hibák létrehozása egy olyan mechanizmust kell. Bár elméletben létrehozása egy csomópont le egyszerű, úgy tűnik, hiba elindítja lenyomásával ugyanazokat a konzisztencia problémák, amelyek a Service Fabric próbál megoldani. Például, ha azt szeretné, hogy állítsa le a csomópontot, a szükséges munkafolyamat a következő:
+### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Valós idejű meghibásodási forgatókönyvek szimulálása/generálása
+Az elosztott rendszer meghibásodások elleni stabilitásának teszteléséhez olyan mechanizmusra van szükség, amely hibákat eredményez. Elméletileg egy olyan hiba jön létre, mint egy csomópont, amely úgy tűnik, hogy egyszerű, és ugyanazokat a konzisztencia-problémákat indítja el, amelyeket a Service Fabric megpróbál megoldani. Ha például egy csomópontot szeretnénk leállítani, a szükséges munkafolyamat a következő:
 
-1. Az ügyféltől adjon ki egy leállítási csomópont kérelmet.
-1. A kérés küldése a helyes csomópont.
+1. Adja ki az ügyféltől a leállítási csomópont kérését.
+1. Küldje el a kérést a jobb oldali csomópontnak.
    
-    a. Ha a csomópont nem található, sikertelennek kell lennie.
+    a. Ha a csomópont nem található, a művelet sikertelen lesz.
    
-    b. Ha a csomóponton található, kell visszaadnia csak ha a csomópont leáll.
+    b. Ha a csomópont található, csak akkor kell visszaadnia, ha a csomópont le van állítva.
 
-Ellenőrizze a hiba a teszt szempontjából, a teszt tudnia kell, hogy ezt a hibát okozta van, a hiba valójában nem történik. A csomópont a garantálja, hogy a Service Fabric biztosítja, hogy mindkét lép, vagy le a parancs elérésekor a csomópont már volt. Mindkét esetben a teszt megfelelően az okból az állapotával kapcsolatos információkat és sikeres legyen, vagy megfelelően az érvényesítés sikertelen képesnek kell lennie. A rendszer a Service Fabric ehhez ugyanazokat a hibák kívül végrehajtott sikerült találati számos hálózati hardveres és szoftverekkel kapcsolatos problémák, amely megakadályozná a fenti garanciát. Zajok mellett a problémákat, mielőtt hangsúlyoztuk a Service Fabric újra fogja konfigurálni a problémák megoldása a fürt állapota, és ezért a Fault Analysis Service továbbra is képesek lesznek garanciák helyes készletével biztosíthat.
+A tesztelési perspektívából érkező hibák ellenőrzéséhez a tesztnek tudnia kell, hogy a hiba kiváltása esetén a hiba ténylegesen megtörténik. A Service Fabric által biztosított garancia az, hogy vagy a csomópont leáll, vagy már leállt, amikor a parancs elérte a csomópontot. A tesztnek mindkét esetben képesnek kell lennie arra, hogy megfelelően indokolja az állapotot, és sikeres vagy sikertelen legyen az érvényesítése. A Service Fabricon kívül megvalósított rendszerek számos hálózati, hardver-és szoftverbeli problémát okozhatnak, ami megakadályozza az előző garanciák megadását. A korábban említett problémák előfordulásakor a Service Fabric újrakonfigurálja a fürt állapotát, hogy megkerülje a problémákat, és így a hiba-elemzési szolgáltatás továbbra is a megfelelő garanciákat fogja biztosítani.
 
-### <a name="generating-required-events-and-scenarios"></a>Szükséges események és a forgatókönyvek létrehozása
-Bár egy való életből vett hiba szimulálása következetesen legégetőbb a következővel kell kezdődnie, még szigorúbb arra, hogy hozzon létre a kapcsolódó hibák. Például egy adatvesztés történik az alkalmazásban az állapotalapú állandó szolgáltatások a következő dolog történik:
+### <a name="generating-required-events-and-scenarios"></a>Szükséges események és forgatókönyvek létrehozása
+A valós idejű hibák következetes szimulálása azonban nehéz, hogy a korrelált hibák is keményebbek legyenek. Az adatvesztés például egy állapot-nyilvántartó megőrzött szolgáltatásban történik, ha a következő dolgok történnek:
 
-1. Csak a replikák írási kvórum a replikáció is szerepelnek. A másodlagos replikák késés jelentkezhet az elsődleges.
-1. Az írási kvórum a replikákat a kódcsomag vagy leáll csomópont) (miatti leállítása előtt miatt leáll.
-1. Az írási kvórum nem visszatérhet az adatok a replikák (miatt a lemez sérülésére vagy a gép rendszerképének alaphelyzetbe állítása) megszakadása miatt.
+1. A replikálás csak a replikák írási kvórumát kapja meg. Az összes másodlagos replika az elsődleges mögött marad.
+1. Az írási kvórum leáll, mert a replikák le lesznek mentve (egy kód-csomag vagy egy csomópont leállása miatt).
+1. Az írási kvórum nem tud biztonsági másolatot készíteni, mert a replikák adatvesztése (a lemez sérülése vagy a gép újratelepítése miatt) elvész.
 
-Ezek a hibák korrelált fordulhat elő, a való világból, habár nem gyakran egyes hibák. Arra, hogy az ilyen feladatokhoz szükséges tesztelni, mielőtt éles környezetben. Még ennél is fontosabbak rendszer azon képessége, ezek szimulálhatja a termelési számítási feladatokhoz, ellenőrzött körülmények között (közepén összes mérnökök, meg kell oldani a nap). Ez sokkal jobb, mint 2:00 órakor éles környezetben először fordulhat elő, ha
+Ezek a korrelált hibák a valós világban történnek, de nem olyan gyakran, mint az egyéni hibák. Az ilyen forgatókönyvek tesztelésének lehetősége az éles környezetben való működésük előtt kritikus fontosságú. Még ennél is fontosabb, hogy képes legyen szimulálni ezeket a forgatókönyveket a termelési számítási feladatokkal az ellenőrzött körülmények között (a nap közepén a pakliban található összes mérnök esetében). Ez sokkal jobb, mint az első alkalommal az éles üzemben, 2:00 órakor
 
-### <a name="unified-experience-across-different-environments"></a>Egységes felhasználói élményt a különböző környezetek között
-Az eljárás volt hozhat létre három más-más részhalmazához élményt, egy fejlesztési környezetben, egy a tesztek, és egy éles környezetben. A modell a következő volt:
+### <a name="unified-experience-across-different-environments"></a>Egységes felhasználói élmény különböző környezetekben
+A gyakorlat hagyományosan három különböző felhasználói felületet hozott létre, egyet a fejlesztési környezethez, egyet a tesztekhez, egyet pedig az éles környezetben. A modell a következőket használta:
 
-1. A fejlesztési környezetben hozhat létre, amelyek lehetővé teszik az egyes módszerek egységteszteket állapotváltozási adat áramlik.
-1. A tesztelési környezetben előállítani a sikertelen különféle hiba eseteket, amelyek teljes körű teszteket.
-1. Tartsa meg az éles környezet eredeti nem természetes hibák elkerülése érdekében, és győződjön meg arról, hogy nincs-e hiba rendkívül gyors emberi választ.
+1. A fejlesztési környezetben olyan állapot-átállásokat hozhat létre, amelyek lehetővé teszik az egyes metódusok egységes tesztelését.
+1. A tesztkörnyezetben olyan hibák hozhatók létre, amelyek lehetővé teszik a különböző meghibásodási forgatókönyveket használó teljes körű tesztek elvégzését.
+1. Tartsa érintetlenül az éles környezetben a nem természetes meghibásodásokat, és győződjön meg arról, hogy rendkívül gyors emberi reagálási hiba történt.
 
-A Service Fabric segítségével a Fault Analysis Service azt vannak felajánlott fejlesztői környezetből módszert az éles környezetben, és kapcsolja be ezt a. Ennek érdekében két módja van:
+Service Fabric a hiba-elemzési szolgáltatáson keresztül azt javasoljuk, hogy kapcsolja be ezt a módszert, és használja ugyanezt a módszertant a fejlesztői környezetből a gyártásba. A következő két módon valósítható meg:
 
-1. Ellenőrzött hibák idéz elő, használja a tartalék Analysis Service API-k egy beépített környezetből egészen az éles fürtökben.
-1. A fürt egy elleni, a hibák automatikus indukciós okozó biztosíthat, a Fault Analysis Service segítségével hozza létre a hibák automatikus. Konfigurálással hibaarányának szabályozása lehetővé teszi a vizsgálandó eltérően a különböző környezetekben ugyanazt a szolgáltatást.
+1. Az ellenőrzött hibák kiváltásához használja a hiba-elemzési szolgáltatás API-jait egy egymezős környezetből, egészen a termelési fürtökig.
+1. Annak érdekében, hogy a fürt olyan láz legyen, amely a hibák automatikus leállítását okozza, a hiba-elemzési szolgáltatással automatikus hibákat állíthat elő. A hibák sebességének szabályozása a konfiguráción keresztül lehetővé teszi, hogy ugyanazt a szolgáltatást különböző környezetekben különbözőképpen tesztelje.
 
-A Service Fabric azonban a hibák a méretezési csoport lehet különböző, a különböző környezetekben a tényleges mechanizmusok lehet azonos. Ez lehetővé teszi egy sokkal gyorsabb kódot,-üzembe helyezési folyamatot és a szolgáltatások valós terhelések tesztelhetik.
+A Service Fabric, bár a hibák skálája eltérő lehet a különböző környezetekben, a tényleges mechanizmusok azonosak lesznek. Ez egy sokkal gyorsabb, a központi telepítéshez szükséges folyamat, valamint a szolgáltatások valós terhelésekkel való tesztelésének lehetősége.
 
-## <a name="using-the-fault-analysis-service"></a>A Fault Analysis Service használatával
+## <a name="using-the-fault-analysis-service"></a>A hiba-elemzési szolgáltatás használata
 **C#**
 
-Tartalék Analysis Service-szolgáltatások rendszer Microsoft.ServiceFabric NuGet-csomag a System.fabric – névtérben. A Fault Analysis Service-szolgáltatások használatához közé tartozik a nuget-csomagot a projekt hivatkozásként.
+A hiba-elemzési szolgáltatás funkciói a System. Fabric névtérben találhatók a Microsoft. ServiceFabric NuGet-csomagban. A hiba-elemzési szolgáltatás funkcióinak használatához adja meg a nuget csomagot hivatkozásként a projektben.
 
 **PowerShell**
 
-Ha a PowerShell segítségével, telepítenie kell a Service Fabric SDK. Az SDK telepítése után a ServiceFabric PowerShell-modul az automatikus használatra betölteni.
+A PowerShell használatához telepítenie kell a Service Fabric SDK-t. Az SDK telepítése után a ServiceFabric PowerShell-modul automatikusan betöltődik a használatára.
 
-## <a name="next-steps"></a>További lépések
-Valóban felhőléptékű-szolgáltatások létrehozását, rendkívül fontos annak érdekében, mielőtt és üzembe helyezés után is, hogy a szolgáltatások képes elviselni valós hibák. A szolgáltatások világ mai gyors innováció és a kód gyorsan átállni éles üzemre nagyon fontos. A Fault Analysis Service fejlesztőket szolgáltatás pontosan ezt.
+## <a name="next-steps"></a>Következő lépések
+A valóban felhőbe méretezhető szolgáltatások létrehozásához elengedhetetlen, hogy az üzembe helyezés előtt és után is gondoskodjon arról, hogy a szolgáltatások valós hibákkal bírjanak. A szolgáltatások világában ma már nagyon fontos a gyors innováció és a kód gyors mozgatása az éles környezetbe. A hiba-elemzési szolgáltatás segít a szolgáltatás fejlesztői számára, hogy pontosan ezt végezzék.
 
-Megkezdheti az alkalmazások és szolgáltatások használatával a beépített tesztelési [Tesztelési forgatókönyvek](service-fabric-testability-scenarios.md), vagy hozhat létre a saját tesztelési helyzetek használata a [műveletek tartalék](service-fabric-testability-actions.md) Fault Analysis Service által biztosított.
+Megkezdheti az alkalmazások és szolgáltatások tesztelését a beépített [tesztelési forgatókönyvek](service-fabric-testability-scenarios.md)használatával, vagy saját tesztelési forgatókönyvek létrehozásával a hiba-elemzési szolgáltatás által biztosított [hibákkal](service-fabric-testability-actions.md) .
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

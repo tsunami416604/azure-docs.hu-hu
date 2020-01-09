@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786486"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431462"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -179,7 +179,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -284,7 +284,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 1.  A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2.  Kattintson a  **Create** (Létrehozás) gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
+2.  Kattintson a **Create** (Létrehozás) gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
 3.  A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
@@ -370,7 +370,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     >[!Note]
     > Ehhez létre kell hoznia és meg kell adni a Kerberos-delegálási fiókot. Tekintse át a KCD szakaszt (lásd: függelék a változó hivatkozásokhoz)
 
-    * **Felhasználónév forrása**: Session.SAML.Last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Felhasználónév forrás**: Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/givenName
 
     * **Felhasználói tartomány forrása**: Session. Logon. Last. domain
 

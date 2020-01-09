@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 90ee036275e13b209d9f6c37aba6d16ed564cf5d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427402"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése
 Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások naplózási képességével kapcsolatos információkat tartalmaz. A naplózási szolgáltatás további információkat tartalmaz, amelyek csak egy adott számú és egy üzeneten felül segítenek a Machine Learning Studio (klasszikus) API-k hívásának hibakeresésében.  
@@ -25,7 +25,7 @@ Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások napl�
 
 Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszolgáltatások](https://services.azureml.net) portálján. 
 
-1. Jelentkezzen be a Azure Machine Learning Studio (klasszikus) webszolgáltatások portálra a következő címen: [https://services.azureml.net](https://services.azureml.net). A klasszikus webszolgáltatások esetében a portálra az **új webszolgáltatások** használata a Machine learning Studio (klasszikus) webszolgáltatások lapján, a Machine learning Studio klasszikus verziójában is elérhető.
+1. Jelentkezzen be a Azure Machine Learning Studio (klasszikus) webszolgáltatások portálra a következő címen: [https://services.azureml.net](https://services.azureml.net). A klasszikus webszolgáltatások esetében az új webMachine Learning Studio **szolgáltatások** használata a Studióban (klasszikus) webszolgáltatások lapján is elérhetővé teheti a portált.
 
    ![Új webszolgáltatási élmény hivatkozása](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -41,7 +41,7 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
    ![Naplózási szint kiválasztása](./media/web-services-logging/enable-logging.png)
 
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
 7. A klasszikus webszolgáltatások esetében hozza létre a **ml-diagnosztika** tárolót.
 
@@ -57,7 +57,7 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
 > [!TIP]
 >
-> A klasszikus webszolgáltatások esetében a Machine Learning Studio klasszikus verziójában a webszolgáltatások irányítópultján is van egy kapcsoló a naplózás engedélyezéséhez. Mivel azonban a naplózást most a webszolgáltatások portálon keresztül felügyelik, engedélyeznie kell a naplózást a portálon a jelen cikkben leírtak szerint. Ha már engedélyezte a naplózást a Studióban (klasszikus), akkor a Web Services portálon tiltsa le a naplózást, majd engedélyezze újra.
+> A klasszikus webszolgáltatások esetében a Machine Learning Studio (klasszikus) webszolgáltatások irányítópultján is van egy kapcsoló a naplózás engedélyezéséhez. Mivel azonban a naplózást most a webszolgáltatások portálon keresztül felügyelik, engedélyeznie kell a naplózást a portálon a jelen cikkben leírtak szerint. Ha már engedélyezte a naplózást a Studióban (klasszikus), akkor a Web Services portálon tiltsa le a naplózást, majd engedélyezze újra.
 
 
 ## <a name="the-effects-of-enabling-logging"></a>A naplózás engedélyezésének hatásai
@@ -80,7 +80,7 @@ Az egyes Blobok neve a következő formátumú előtaggal rendelkezik:
 
 Ahol a _napló típusa_ a következő értékek egyike:  
 
-* kötegelt  
+* batch  
 * pontszám/kérelmek  
 * pontszám/init  
 

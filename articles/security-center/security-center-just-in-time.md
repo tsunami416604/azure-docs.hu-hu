@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355572"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
@@ -108,7 +108,7 @@ A Security Centerban beállíthat egy JIT-szabályzatot, és egy JIT-házirendde
 
      3. Kattintson az **OK** gombra.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 >Ha a JIT virtuális gép hozzáférése engedélyezve van egy virtuális gépen, Azure Security Center létrehozza az összes bejövő forgalom megtagadása szabályt a kiválasztott portokhoz a társított és Azure Firewall hálózati biztonsági csoportokban. Ha a kiválasztott portokhoz más szabályok lettek létrehozva, akkor a meglévő szabályok prioritást élveznek az új "minden bejövő forgalom tiltása" szabályban. Ha nincsenek meglévő szabályok a kiválasztott portokon, akkor az új "minden bejövő forgalom tiltása" szabály kiemelt prioritást élvez a hálózati biztonsági csoportokban és Azure Firewall.

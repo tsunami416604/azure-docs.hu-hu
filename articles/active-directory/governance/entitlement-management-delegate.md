@@ -1,5 +1,5 @@
 ---
-title: Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében – Azure Active Directory
+title: Delegálás és szerepkörök a jogosultságok kezelésében – Azure AD
 description: Megtudhatja, hogyan delegálhatja a rendszergazdák és a projektmenedzserek hozzáférési irányítását, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174254"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422587"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -84,14 +84,14 @@ A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a 
 
 Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is rendelkezik jogosultságokkal, bár ezek nem szerepkörök.
 
-| Jobb gombbal | Leírás |
+| Jobbra | Leírás |
 | --- | --- |
 | Jóváhagyó | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
-| Kérelmező | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
+| Requestor (Kérelmező) | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
 
 A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
 
-| Tevékenység | Felügyeleti | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
+| Tevékenység | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegálás katalógus-létrehozóra](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |

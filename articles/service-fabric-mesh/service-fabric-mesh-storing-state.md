@@ -1,43 +1,39 @@
 ---
-title: Tárolási lehetőségek az Azure Service Fabric-háló állapot |} A Microsoft Docs
-description: Ismerje meg az állapot megbízhatóan tárolja az Azure Service Fabric-háló futó Service Fabric-háló alkalmazások.
-services: service-fabric-mesh
-keywords: ''
+title: Az Azure Service Fabric Mesh állapotának tárolási lehetőségei
+description: Ismerje meg az Azure Service Fabric Mesh szolgáltatásban futó Service Fabric Mesh-alkalmazásokban lévő állapotok megbízható tárolását.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352349"
 ---
-# <a name="state-management-with-service-fabric"></a>A Service Fabric állapotkezelés
+# <a name="state-management-with-service-fabric"></a>Állapot-kezelés Service Fabric
 
-A Service Fabric számos különböző lehetőség támogatja a állapot tárolásához. Az állapot minták és a Service Fabric fogalmi áttekintése: [Service Fabric fogalmak: Állapot](/azure/service-fabric/service-fabric-concepts-state). Az összes ezek ugyanezek a fogalmak alkalmazhatók-e a szolgáltatások futnak, belül vagy kívül a Service Fabric-háló. 
+Service Fabric számos különböző lehetőséget támogat az állapot-tároláshoz. Az állapot-felügyeleti minták és Service Fabric fogalmi áttekintését lásd [: Service Fabric fogalmak: State](/azure/service-fabric/service-fabric-concepts-state). Mindezen fogalmak érvényesek, függetlenül attól, hogy a szolgáltatásai Service Fabric hálón belül vagy kívül futnak-e. 
 
-Service Fabric tervezhetők is egyszerűen üzembe helyezni egy új alkalmazást és csatlakoztathatja azt egy Azure-ban üzemeltetett meglévő adattár. Amellett, hogy minden olyan távoli adatbázis használata esetén többféle módon, attól függően, hogy a szolgáltatás kívánja-e a helyi vagy távoli tároló adatainak tárolásához. 
+A Service Fabric Mesh használatával egyszerűen üzembe helyezhető egy új alkalmazás, és az Azure-ban üzemeltetett meglévő adattárhoz csatlakoztatható. A távoli adatbázisok mellett számos lehetőség áll rendelkezésre az adattárolásra attól függően, hogy a szolgáltatás helyi vagy távoli tárterületet kíván-e használni. 
 
 ## <a name="volumes"></a>Kötetek
 
-Tárolók gyakran győződjön meg arról, használja az ideiglenes lemezek. Ideiglenes lemezek olyan rövid élettartamú, azonban, hogy egy új ideiglenes lemez lekérése, és elveszíti az adatokat, ha összeomlik, egy tárolót. Emellett akkor is nehéz ideiglenes lemezek az információk megosztása más tárolóktól. Kötetek, amely csatlakozik a tárolópéldányok állapotban maradnak használó belső könyvtárak. Kötetek általános célú a file storage biztosítanak, és lehetővé teszi olvasási/írási fájlt normál lemez i/o-fájl API-k használatával. A köteterőforrás ismerteti, hogyan csatlakoztathat egy könyvtárat és a storage használata biztonsági. Kiválaszthatja az Azure File storage vagy a Service Fabric kötetet tartalmazó lemezt adatok tárolására.
+A tárolók gyakran használják az ideiglenes lemezeket. Az ideiglenes lemezek elmúló jellegűek, ezért új ideiglenes lemezt kap, és elveszíti az adatokat, amikor a tároló összeomlik. A többi tárolóval rendelkező ideiglenes lemezekkel kapcsolatos információkat is nehéz megosztani. A kötetek olyan könyvtárak, amelyek az állapot megőrzéséhez használható tároló-példányokon belül vannak csatlakoztatva. A kötetek általános célú fájlmegosztást biztosítanak, és lehetővé teszik a fájlok olvasását/írását a normál lemez I/O-fájl API-jai használatával. A mennyiségi erőforrás leírja, hogyan csatlakoztathat egy könyvtárat, és hogy mely biztonsági mentést kell használni a tárolóhoz. Az adattároláshoz az Azure file Storage vagy az Service Fabric kötet lemezét is választhatja.
 
 ![Kötetek][image3]
 
-### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
+### <a name="service-fabric-reliable-volume"></a>Megbízható kötet Service Fabric
 
-Service Fabric Reliable kötet egy tárolóba helyi kötet csatlakoztatásához használt Docker kötet illesztőprogramot. Írások és olvasások: a helyi operations és gyors. Az adatok másodlagos csomópontot, magas rendelkezésre állásúvá tétele replikációja meg. Is a gyors feladatátvétel. Ha összeomlik, egy tároló, azt átadja a feladatokat egy csomópont, amely már rendelkezik egy másolatot az adatokról. Egy vonatkozó példáért lásd: [hogyan helyezhet üzembe egy alkalmazást a Service Fabric Reliable kötet](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
+Service Fabric megbízható kötet a helyi kötetek tárolóba csatlakoztatására szolgáló Docker-kötet-illesztőprogram. Az olvasások és írások helyi műveletek és gyorsak. A rendszer az adatreplikációt a másodlagos csomópontokra replikálja, így azok elérhetővé válnak. A feladatátvétel is gyorsan elvégezhető. Amikor egy tároló összeomlik, a feladatátvétel olyan csomópontra történik, amely már rendelkezik az adatai másolatával. Példaként tekintse meg, [Hogyan helyezhet üzembe egy alkalmazást Service Fabric megbízható kötettel](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
 
-### <a name="azure-files-volume"></a>Az Azure Files-kötet
+### <a name="azure-files-volume"></a>Azure Files kötet
 
-Az Azure Files-kötet egy Azure-fájlmegosztási tárolóba való csatlakoztatásához használt Docker kötet illesztőprogramot. Az Azure Files storage hálózati tárolást használ, ezért olvassa be és ír a hálózaton keresztül történik. Service Fabric Reliable kötet képest, az Azure Files storage kevésbé hatékony, de olcsóbb és teljesen megbízható lehetőséget kínál. Egy vonatkozó példáért lásd: [hogyan helyezhet üzembe egy alkalmazást az Azure Files kötet](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
+Azure Files kötet egy Azure Files-megosztás tárolóba csatlakoztatására szolgáló Docker-kötet-illesztőprogram. Azure Files a tárterület hálózati tárterületet használ, ezért az olvasás és az írás a hálózaton keresztül történik. A Service Fabric megbízható kötethez képest Azure Files tárterület kevésbé nagy teljesítményű, de olcsóbb és teljesen megbízható adatbeállítást biztosít. Példaként tekintse meg, [Hogyan helyezhet üzembe egy alkalmazást Azure Files kötettel](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az alkalmazásmodell kapcsolatos tudnivalókat lásd: [Service Fabric-erőforrások](service-fabric-mesh-service-fabric-resources.md)
+Az alkalmazás modelljével kapcsolatos információkért lásd: [Service Fabric erőforrások](service-fabric-mesh-service-fabric-resources.md)
 
 [image3]: ./media/service-fabric-mesh-storing-state/volumes.png

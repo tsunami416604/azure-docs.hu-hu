@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – az Azure cache Redis való kötése az Azure Spring Cloud-alkalmazáshoz
+title: Oktatóanyag – az Azure cache kötése az Azure Spring Cloud-alkalmazás Redis
 description: Ebből az oktatóanyagból megtudhatja, hogyan köti össze az Azure cache-t az Azure Spring Cloud-alkalmazás Redis
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 662d36f8a25f2f0a21d800b7b1a25e94b13908a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461498"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Oktatóanyag: Azure-szolgáltatások kötése Azure Spring Cloud-alkalmazáshoz: Azure cache for Redis
+# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure-gyorsítótár kötése az Azure Spring Cloud-alkalmazás Redis 
 
-Az Azure Spring Cloud lehetővé teszi, hogy az Azure-szolgáltatásokat automatikusan, a Spring boot-alkalmazás manuális konfigurálása helyett az alkalmazásokhoz kösse. Ez a cikk bemutatja, hogyan köthető az alkalmazás az Azure cache-hez a Redis.
+A Spring boot-alkalmazások manuális konfigurálása helyett az Azure Spring Cloud használatával automatikusan köthető az Azure-szolgáltatások kiválasztásához az alkalmazásaihoz. Ez a cikk bemutatja, hogyan köthető az alkalmazás az Azure cache-hez a Redis.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,11 +23,11 @@ Az Azure Spring Cloud lehetővé teszi, hogy az Azure-szolgáltatásokat automat
 * Azure cache a Redis Service-példányhoz
 * Azure Spring Cloud-bővítmény az Azure CLI-hez
 
-Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebben a rövid útmutatóban ismertetett lépéseket az első Spring [Cloud-alkalmazás](spring-cloud-quickstart-launch-app-portal.md) üzembe helyezéséhez.
+Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az [Azure Spring Cloud-alkalmazás üzembe helyezésének](spring-cloud-quickstart-launch-app-portal.md)rövid útmutatójában ismertetett lépéseket.
 
 ## <a name="bind-azure-cache-for-redis"></a>Az Azure cache kötése a Redis-hez
 
-1. Adja hozzá a következő függőséget a projekt `pom.xml`
+1. Adja hozzá a következő függőséget a projekt Pom. XML fájljához:
 
     ```xml
     <dependency>
@@ -35,13 +35,15 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebbe
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. Távolítsa el `spring.redis.*` tulajdonságokat, ha van ilyen, a `application.properties` fájlban
+1. Távolítsa el a `spring.redis.*` tulajdonságokat a `application.properties` fájlból
 
 1. Frissítse az aktuális telepítést `az spring-cloud app update` használatával, vagy hozzon létre egy új központi telepítést a `az spring-cloud app deployment create`használatával.
 
-1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára. Keresse meg az **alkalmazás irányítópultját** , és válassza ki azt az alkalmazást, amely a Redis készült Azure cache-hez kötődik.  Ez ugyanaz az alkalmazás, amelyet az előző lépésben frissített vagy telepített. Ezután válassza a `Service binding` lehetőséget, majd kattintson a `Create service binding` gombra. Töltse ki az űrlapot, és győződjön meg arról, hogy a **kötési típus** `Azure Cache for Redis`, a Redis-kiszolgáló és az elsődleges kulcs lehetőség van kiválasztva. 
+1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára. Nyissa meg az **alkalmazás irányítópultját** , és válassza ki azt az alkalmazást, amelyet az Azure cache-hez szeretne kötni a Redis. Ez az alkalmazás ugyanaz, mint amelyet az előző lépésben frissített vagy telepített.
 
-1. Indítsa újra az alkalmazást, és ez a kötés most működik.
+1. Válassza ki a **szolgáltatási kötés** elemet, majd válassza a **szolgáltatás kötésének létrehozása**lehetőséget. Töltse **ki az űrlapot** , és ügyeljen arra, hogy válassza ki az **Azure cache Redis**, a Redis-kiszolgáló Azure-gyorsítótárát és az **elsődleges** kulcs beállítást.
+
+1. Indítsa újra az alkalmazást. A kötésnek most már működnie kell.
 
 1. A szolgáltatási kötés helyességének biztosításához válassza ki a kötés nevét, és ellenőrizze annak részleteit. A `property` mezőnek így kell kinéznie:
     ```
@@ -53,7 +55,7 @@ Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebbe
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan köthető az Azure Spring Cloud-alkalmazás egy Azure Redis cache-hez.  Ha többet szeretne megtudni az alkalmazásra vonatkozó kötési szolgáltatásokról, folytassa az alkalmazás egy MySQL-ADATBÁZIShoz való kötésével kapcsolatos oktatóanyagot.
+Ebben az oktatóanyagban megtanulta, hogyan köthető az Azure Spring Cloud-alkalmazás az Azure cache-hez a Redis. Ha többet szeretne megtudni az alkalmazáshoz tartozó kötési szolgáltatásokról, folytassa az alkalmazás kötése Azure Database for MySQL-példányhoz való kötésével foglalkozó oktatóanyagot.
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan köthető egy Azure MySQL-szolgáltatás az Azure Spring Cloud Service-](spring-cloud-tutorial-bind-mysql.md)hez.
+> [Útmutató Azure Database for MySQL-példányhoz való kötéshez](spring-cloud-tutorial-bind-mysql.md)

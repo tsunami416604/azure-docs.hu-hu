@@ -2,19 +2,15 @@
 title: A Azure Automation lévő kapcsolatok eszközei
 description: A Azure Automation kapcsolati eszközei tartalmazzák azokat az információkat, amelyek a külső szolgáltatáshoz vagy alkalmazáshoz való kapcsolódáshoz szükségesek egy runbook vagy DSC-konfigurációból. Ez a cikk ismerteti a kapcsolatok részleteit, valamint azt, hogy miként dolgozhat velük a szöveges és a grafikus létrehozásban.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366790"
 ---
 # <a name="connection-assets-in-azure-automation"></a>A Azure Automation lévő kapcsolatok eszközei
 

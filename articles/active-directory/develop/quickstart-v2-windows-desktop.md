@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ebf817d80fb1afdd3642f648d8e881b2e9d7de
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44b754d92eb7dc1b84ff1524161a93d3bc1f9eed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423986"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
@@ -50,13 +50,12 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 >      - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
 >      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 > 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-> 1. Bontsa ki a **Desktop + eszközök** szakaszt.  (Ha az asztali és az **eszközök** nem láthatók, először a felső szalagcímre kattintva tekintheti meg az előzetes hitelesítési élményt)
-> 1. Az **átirányítási URI** szakaszban válassza az **URI hozzáadása**elemet.  Írja be az **urn: IETF: WG: OAuth: 2.0: OOB**.
+> 1. Az **átirányítási URI** - **k | a nyilvános ügyfelek számára javasolt átirányítási URI-k (mobil, asztali)** szakaszban keresse meg a **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. lépés: Az alkalmazás konfigurálása az Azure Portalon
-> Ahhoz, hogy a rövid útmutató kódmintája működjön, hozzá kell adnia egy válasz URL-t a következő formában: **urn:ietf:wg:oauth:2.0:oob**.
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy válasz URL-címet **https://login.microsoftonline.com/common/oauth2/nativeclient ként** .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >

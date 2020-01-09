@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371819"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -25,7 +25,7 @@ A közös hozzáférésű aláírás (SAS) biztonságos delegált hozzáférést
 
 Az Azure Storage három különböző típusú közös hozzáférési aláírást támogat:
 
-- **Felhasználói delegálási SAS (előzetes verzió).** A felhasználói delegálási SAS Azure Active Directory (Azure AD) hitelesítő adatokkal, valamint a SAS számára megadott engedélyekkel van védve. A felhasználói delegálási SAS csak a blob Storage-ra vonatkozik.
+- **Felhasználói delegálás SAS.** A felhasználói delegálási SAS Azure Active Directory (Azure AD) hitelesítő adatokkal, valamint a SAS számára megadott engedélyekkel van védve. A felhasználói delegálási SAS csak a blob Storage-ra vonatkozik.
 
     A felhasználói delegálási SAS-vel kapcsolatos további információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -122,9 +122,9 @@ A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS
 
 ### <a name="user-delegation-sas"></a>Felhasználói delegálás SAS
 
-- [Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell (előzetes verzió) használatával](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz az Azure CLI-vel (előzetes verzió)](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz a PowerShell használatával](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz az Azure CLI-vel](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>Szolgáltatás SAS
 

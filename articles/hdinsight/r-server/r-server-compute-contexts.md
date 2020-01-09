@@ -1,80 +1,85 @@
 ---
-title: Számítási környezeti beállítások a Machine Learning-szolgáltatásokhoz a HDInsight – Azure
-description: További információ a különböző számítási környezeti beállítások a Machine Learning-szolgáltatásokkal a felhasználók rendelkezésére a HDInsight
-ms.service: hdinsight
+title: Számítási környezeti lehetőségek a HDInsight ML-szolgáltatásaihoz – Azure
+description: Ismerje meg a különböző számítási környezeti lehetőségeket, amelyek a HDInsight ML-szolgáltatásaival rendelkező felhasználók számára elérhetők
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: a2c66c5c4f1abe535eb51dba9101757ce6d26157
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444349"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660256"
 ---
-# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz
 
-Machine Learning-szolgáltatások az Azure HDInsight a hívások a számítási környezet beállításával végrehajtásának módját szabályozza. Ez a cikk ismerteti a számára adja meg, hogyan végrehajtási párhuzamosíthatók-e a peremhálózati csomópont vagy a HDInsight-fürt mag között elérhető beállítások.
+Az Azure HDInsight ML-szolgáltatásai vezérlik a hívások végrehajtását a számítási környezet beállításával. Ez a cikk azokat a lehetőségeket ismerteti, amelyekkel megadható, hogy a végrehajtás hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között.
 
-A fürt élcsomópontjához kényelmes megoldás az R-szkriptek futtatása és a fürthöz való csatlakozáshoz. Az élcsomópont lehetősége van a futó párhuzamos működésű elosztott funkcióit RevoScaleR a Processzormagok száma, a peremhálózati kiszolgáló között. Is futtathatja őket a fürt csomópontjai között RevoScaleR a Hadoop Mapreduce használatával, vagy az Apache Spark számítási környezetek.
+A fürt peremhálózati csomópontja kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópontok esetében lehetősége van a RevoScaleR párhuzamosan elosztott funkcióinak futtatására a peremhálózati csomópont-kiszolgáló magjai között. Ezeket a fürtök csomópontjain is futtathatja a RevoScaleR Hadoop-leképezésével, és csökkentheti vagy Apache Spark a számítási környezeteket.
 
-## <a name="ml-services-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight
-[Machine Learning-szolgáltatások az Azure HDInsight](r-server-overview.md) a legújabb funkciókat kínál az R-alapú elemzés. Használhat egy az Apache Hadoop HDFS-tárolóban tárolt adatok a [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob storage") tárfiók, egy Data Lake store vagy a Linux helyi fájlrendszer. Mivel nyílt forráskódú R, Machine Learning-szolgáltatások beépített, az R-alapú alkalmazásokat hoz létre a 8000-es + nyílt forráskódú R-csomagok is alkalmazható. Is használhatják a rutinokat a [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft big data analytics csomagot, amely a Machine Learning-szolgáltatások részét képezi.  
+## <a name="ml-services-on-azure-hdinsight"></a>ML szolgáltatások az Azure HDInsight
 
-## <a name="compute-contexts-for-an-edge-node"></a>Számítási környezetek az élcsomópont
-R-szkriptet az élcsomópont a Machine Learning szolgáltatások a fürtben futó általában az R-értelmező belül futtatja, a csomóponton. A kivétel ezeket a lépéseket, amelyek RevoScaleR függvény hívása. A RevoScaleR hívások állíthatja be, hogy a RevoScaleR számítási környezet által meghatározott számítási környezetben futnak.  Ha futtatja az R-szkriptet az élcsomóponthoz, a számítási környezet lehetséges értékei a következők:
+Az [Azure HDInsight ml-szolgáltatásai](r-server-overview.md) az R-alapú elemzések legújabb képességeit biztosítják. Az [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage-fiók, a Data Lake Store vagy a helyi Linux fájlrendszer Apache Hadoop HDFS tárolt adatait is használhatja. Mivel a ML-szolgáltatások nyílt forráskódú R-re épülnek, az Ön által létrehozott R-alapú alkalmazások a 8000-es és a nyílt forráskódú R-csomagok bármelyikét alkalmazhatják. Emellett a [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), a Microsoft Big Data Analytics-csomagjában található rutinokat is használhatják, amelyek a ml-szolgáltatások részét képezik.  
 
-- egymást követő helyi (*helyi*)
+## <a name="compute-contexts-for-an-edge-node"></a>Az Edge-csomópont számítási környezete
+
+Általánosságban elmondható, hogy egy, az Edge-csomóponton található ML Services-fürtön futó R-szkript az adott csomóponton az R-tolmácson belül fut. A kivételek a RevoScaleR függvényt meghívó lépések. A RevoScaleR-hívások olyan számítási környezetben futnak, amelyet a RevoScaleR számítási környezetének beállítása határoz meg.  Ha az R-szkriptet egy peremhálózati csomópontról futtatja, a számítási környezet lehetséges értékei a következők:
+
+- helyi szekvenciális (*helyi*)
 - helyi párhuzamos (*localpar*)
-- Mapreduce
+- Leképezés csökkentése
 - Spark
 
-A *helyi* és *localpar* beállítások eltérőek a csak a hogyan **rxExec** hívások végrehajtása. Mindkettő végrehajtani más rx függvényhívások párhuzamos módon között az összes rendelkezésre álló magok hacsak nincs másképpen megadva a RevoScaleR használatán keresztül **numCoresToUse** beállítás, például `rxOptions(numCoresToUse=6)`. Párhuzamos végrehajtási beállítások optimális teljesítményt nyújtanak.
+A *helyi* és a *localpar* beállítások csak a **rxExec** -hívások végrehajtásának módjában különböznek. Mindkettő más Rx-függvény hívásokat párhuzamosan hajtja végre az összes rendelkezésre álló magot illetően, kivéve, ha az RevoScaleR **numCoresToUse** kapcsoló használatával másképp van megadva, például `rxOptions(numCoresToUse=6)`. A párhuzamos végrehajtási lehetőségek optimális teljesítményt nyújtanak.
 
-A következő táblázat összefoglalja a különböző számítási környezeti beállítások beállítása a hívások végrehajtásának módját:
+A következő táblázat összefoglalja a különböző számítási környezeti beállításokat a hívások végrehajtásának beállításához:
 
-| Számítási környezet  | Hogyan állítható be                      | Végrehajtási környezet                        |
+| Számítási környezet  | A beállítás módja                      | Végrehajtási környezet                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| Helyi szekvenciális | rxSetComputeContext('local')    | A peremhálózati csomópont kivételével rxExec hívás, amely tárolókonfigurációhoz tevékenységében kiszolgáló között a Processzormagok száma párhuzamos végrehajtása |
-| Helyi párhuzamos   | rxSetComputeContext('localpar') | A peremhálózati kiszolgáló között a Processzormagok száma párhuzamos végrehajtása |
-| Spark            | RxSpark()                       | A HDI-fürt csomópontjai között keresztül a Spark elosztott végrehajtása párhuzamos működésű |
-| Mapreduce       | RxHadoopMR()                    | A HDI-fürt csomópontjai között keresztül Mapreduce elosztott végrehajtása párhuzamos működésű |
+| Helyi szekvenciális | rxSetComputeContext ("local")    | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között, a rxExec-hívások kivételével, amelyeket a rendszer a sorosan hajt végre. |
+| Helyi párhuzamos   | rxSetComputeContext('localpar') | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között |
+| Spark            | RxSpark ()                       | Párhuzamos elosztott végrehajtás az HDI-fürt csomópontjain keresztül a Sparkon keresztül |
+| Leképezés csökkentése       | RxHadoopMR()                    | A leképezésen keresztüli párhuzamos elosztott végrehajtás a HDI-fürt csomópontjain is csökken |
 
-## <a name="guidelines-for-deciding-on-a-compute-context"></a>Meghatározza az egy számítási környezet irányelvek
+## <a name="guidelines-for-deciding-on-a-compute-context"></a>Útmutató a számítási környezetek döntéséhez
 
-Adja meg a párhuzamos végrehajtási választott három lehetőség közül melyiket az elemzési munka, mérete és az adatok helye jellegétől függ. Nincs nincs egyszerű képlet, amely arra kéri, amely számítási környezet használata. Vannak azonban bizonyos alapelvek, amelyek segítségével győződjön meg arról, a megfelelő választás, vagy legalább, szűkítheti a választási lehetőségek a teljesítményteszt futtatása előtt. Ezek az alapelvek irányítsa a következők:
+A párhuzamos végrehajtást biztosító három lehetőség közül választhat az elemzési munka természetétől, a mérettől és az adatok helyétől függően. Nincs egyszerű képlet, amely azt jelzi, hogy milyen számítási kontextust kell használni. Vannak azonban olyan irányadó alapelvek, amelyek segíthetnek a megfelelő választásban, vagy legalábbis a teljesítményteszt futtatása előtt segítenek leszűkíteni a döntéseket. Ezek az irányadó alapelvek a következők:
 
-- A Linux helyi fájlrendszer az gyorsabb, mint a HDFS.
-- Ismétlődő elemzések gyorsabbak, ha az adatok helyi, és ha az XDF van.
-- Célszerű adatfolyam kis mennyiségű adatot egy szöveges adatforrásból. Nagyobb adatmennyiség esetén átalakíthatja XDF elemzés előtt.
-- Kezelhetetlen nagyon nagy mennyiségű adat válik, másolása, illetve az adatok elemzéséhez az élcsomóponthoz streamelési járó többletterhelést.
-- ApacheSpark a gyorsabb, mint a Mapreduce a Hadoop elemzés céljából.
+- A helyi Linux-fájlrendszer gyorsabb, mint a HDFS.
+- Az ismétlődő elemzések gyorsabbak, ha az adatterületek helyiek, és ha a XDF van.
+- Érdemes kis mennyiségű adat átvitelét egy szöveges adatforrásból. Ha az adatmennyiség nagyobb, akkor az elemzés előtt alakítsa át a XDF.
+- Az adatoknak az Edge-csomópontba való másolása vagy továbbítása a nagy mennyiségű adathoz nem lesz kezelhető.
+- A ApacheSpark gyorsabb, mint a leképezések csökkentése az Hadoop-ben végzett elemzésekhez.
 
-Adja meg ezeket az alapelveket, az alábbi szakaszok nyújtanak néhány általános szabályokat a legjobb megoldás a számítási környezet kiválasztása.
+Ezen alapelvek alapján a következő szakaszokban a számítási környezet kiválasztására vonatkozó általános szabályok nyújtanak segítséget.
 
-### <a name="local"></a>Helyi:
-* Ha elemzéséhez adatmennyiség kicsi, és nem igényel ismételt elemzése, majd, adatfolyamként közvetlenül az analysis rutin használatával *helyi* vagy *localpar*.
-* Ha ismétlődő elemzése szükséges elemzéséhez adatmennyiség kis vagy közepes méretű, majd másolja azt a helyi fájlrendszerben, azok importálása az XDF és elemezheti a testre keresztül *helyi* vagy *localpar*.
+### <a name="local"></a>Helyi
+
+- Ha az elemezni kívánt adat mennyisége kicsi, és nem igényel ismétlődő elemzést, akkor közvetlenül az elemzési rutinba továbbítja a *helyi* vagy *localpar*használatával.
+- Ha az elemzett adat mennyisége kis vagy közepes méretű, és ismétlődő elemzést igényel, akkor másolja a helyi fájlrendszerbe, importálja a XDF, és elemezze a *helyi* vagy *localpar*keresztül.
 
 ### <a name="apache-spark"></a>Apache Spark
-* Ha nagy adatmennyiség elemzését, majd importálni kell a Spark DataFrame használatával **RxHiveData** vagy **RxParquetData**, vagy a HDFS-ben XDF (kivéve, ha a tároló a hiba), és elemezheti a Spark számítási a környezet.
 
-### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
-* A Mapreduce számítási környezetet használja, ha általánosságban lassabb lesz, mivel a Spark számítási környezet megoldhatatlan hibát tapasztal.  
+- Ha az elemezni kívánt adatok mennyisége nagy, akkor importálja azt egy Spark-DataFrame **RxHiveData** vagy **RxParquetData**használatával, vagy XDF a HDFS-ben (kivéve, ha a tár problémát jelent), és elemezni szeretné a Spark számítási környezet használatával.
 
-## <a name="inline-help-on-rxsetcomputecontext"></a>Beágyazott segítséget rxSetComputeContext
-További információkat és példákat RevoScaleR számítási környezetek lásd: a beágyazott megkönnyítő R rxSetComputeContext módszer, például:
+### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Térkép csökkentése
+
+- A Térkép használata csak akkor csökkentse a számítási környezetet, ha a Spark számítási környezettel egy leküzdhetetlen probléma merül fel, mivel általában lassabb.  
+
+## <a name="inline-help-on-rxsetcomputecontext"></a>Beágyazott Súgó a rxSetComputeContext
+További információ és példák a RevoScaleR számítási környezetekre: a rxSetComputeContext metódus inline súgója az R-ben, például:
 
     > ?rxSetComputeContext
 
-Emellett olvassa el a [elosztott számítástechnikai áttekintése](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) a [Machine Learning-kiszolgáló dokumentációja](https://docs.microsoft.com/machine-learning-server/).
+A [Machine learning Server dokumentációjának](https://docs.microsoft.com/machine-learning-server/) [elosztott számítástechnikai áttekintését](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) is megtekintheti.
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerkedett a beállításokat, adja meg, hogyan végrehajtási párhuzamosíthatók-e között a peremhálózati csomópont vagy a HDInsight-fürt magok számára elérhető. Machine Learning-szolgáltatások és a HDInsight-fürtök együttes használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Apache Hadoophoz készült gépi Tanulási szolgáltatások – áttekintés](r-server-overview.md)
-* [A HDInsight Machine Learning-szolgáltatásokhoz az Azure tárolási lehetőségek](r-server-storage.md)
+Ebből a cikkből megtudhatta, hogy milyen lehetőségek állnak rendelkezésre annak megadásához, hogy a végrehajtás hogyan és hogyan legyen párhuzamos a peremhálózati csomópont vagy a HDInsight-fürt magjai között. Ha többet szeretne megtudni a HDInsight-fürtökkel rendelkező ML-szolgáltatások használatáról, tekintse meg a következő témaköröket:
 
+- [A Apache Hadoop ML-szolgáltatásainak áttekintése](r-server-overview.md)
+- [Azure Storage-beállítások a HDInsight ML-szolgáltatásaihoz](r-server-storage.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365342"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>A dátum-és időértékek használata Azure Monitor log-lekérdezésekben
 
@@ -31,11 +31,11 @@ A időtávok tizedes törtként van megadva, majd egy időegység után:
 
 |rövid függvényneve   | időegység    |
 |:---|:---|
-|D           | nap          |
-|ó           | óra         |
-|p           | Percenként       |
-|s           | második       |
-|MS          | ezredmásodperces  |
+|d           | napon          |
+|ó           | hour         |
+|p           | minute       |
+|s           | second       |
+|ms          | ezredmásodperc  |
 |mikromásodperces | mikromásodperces  |
 |osztásjel        | NS   |
 
@@ -128,7 +128,7 @@ Event
 
 Ez a lekérdezés a következő eredményeket eredményezi:
 
-|időbélyeg|száma|
+|időbélyeg|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7 136|
 |2018-07-29T00:00:00.000|12 315|

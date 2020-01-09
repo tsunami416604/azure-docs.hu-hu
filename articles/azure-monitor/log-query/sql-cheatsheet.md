@@ -1,18 +1,17 @@
 ---
 title: SQL – Azure Monitor log Query – Cheat Sheet | Microsoft Docs
 description: Súgó az SQL-t használó felhasználók számára a Azure Monitorban található naplók írásakor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 4acf3c2f8cee3ca9e679915eec677b6dd92792bf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c76ab145fd2fdd077075b345ecac9c6a473f2369
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365189"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL – Azure Monitor log Query – Cheat Adatlap 
 

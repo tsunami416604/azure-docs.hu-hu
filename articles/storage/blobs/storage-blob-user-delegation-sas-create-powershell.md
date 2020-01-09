@@ -1,33 +1,33 @@
 ---
 title: Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell használatával
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t (előzetes verzió) Azure Active Directory hitelesítő adatokkal a PowerShell használatával.
+description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t Azure Active Directory hitelesítő adatokkal a PowerShell használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371775"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a PowerShell (előzetes verzió) használatával
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz a PowerShell használatával
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatók Azure Active Directory (Azure AD) hitelesítő adatok egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz Azure PowerShell (előzetes verzió) használatával.
+Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory-(Azure AD-) hitelesítő adatok egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz Azure PowerShell használatával.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>Az előzetes verziójú modul telepítése
+## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
-Ha a PowerShell használatával szeretne felhasználói delegálási SAS-t létrehozni, először telepítenie kell az az. Storage 1.3.1-Preview modult. A modul telepítéséhez kövesse az alábbi lépéseket:
+Felhasználói delegálási SAS PowerShell-lel történő létrehozásához telepítse az az. Storage modul 1.10.0 vagy újabb verzióját. Kövesse az alábbi lépéseket a modul legújabb verziójának telepítéséhez:
 
 1. Távolítsa el a Azure PowerShell összes korábbi telepítését:
 
@@ -48,23 +48,18 @@ Ha a PowerShell használatával szeretne felhasználói delegálási SAS-t létr
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Telepítsen egy Azure Storage Preview-modult, amely támogatja a felhasználói delegálás SAS-t:
+1. Győződjön meg arról, hogy telepítette a Azure PowerShell 3.2.0-es vagy újabb verzióját. Futtassa az alábbi parancsot az Azure Storage PowerShell-modul legújabb verziójának telepítéséhez:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. Zárjuk be és nyissa meg újra a PowerShell ablakot.
 
-Mivel a PowerShell alapértelmezés szerint betölti a legújabb az. Storage modult, előfordulhat, hogy a konzol indításakor explicit módon be kell töltenie a 1.3.1-Preview modult. Az előzetes verziójú modul explicit betöltéséhez futtassa az [import-Module](/powershell/module/microsoft.powershell.core/import-module) parancsot:
+A következő parancs futtatásával ellenőrizhető, hogy az az. Storage modul melyik verzióját telepíti:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 További információ a Azure PowerShell telepítéséről: [Azure PowerShell telepítése a PowerShellGet](/powershell/azure/install-az-ps).

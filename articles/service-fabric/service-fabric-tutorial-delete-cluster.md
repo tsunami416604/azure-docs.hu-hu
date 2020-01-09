@@ -1,28 +1,17 @@
 ---
-title: Service Fabric-fürt törlése az Azure-ban | Microsoft Docs
+title: Service Fabric-fürt törlése az Azure-ban
 description: Ez az oktatóanyag azt mutatja be, hogyan kell törölni egy Azure-ban üzemeltetett Service Fabric-fürtöt és annak összes erőforrását. Dönthet úgy, hogy a fürtöt tartalmazó teljes erőforráscsoportot törli, de az erőforrások külön-külön is törölhetők.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c6fd4234257cbb19580a5b406750cc72d03609c0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 802fdfc46344929930b1ffb015b364b4e2360cca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465367"
 ---
-# <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Azure-ban futó Service Fabric-fürt eltávolítása
+# <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Az Azure-ban futó Service Fabric-fürtök törlése
 
 Ez az oktatóanyag egy sorozat ötödik része, és bemutatja, hogyan törölheti az Azure-ban futó Service Fabric-fürtöt. A Service Fabric-fürtök teljes törléséhez a fürt által használt összes erőforrást is törölnie kell. Két lehetősége van: törölheti a fürtöt tartalmazó erőforráscsoportot (amivel a fürterőforrás mellett az erőforráscsoport összes többi erőforrását is törli), vagy törölheti az adott fürterőforrást és az ahhoz társított erőforrásokat (meghagyva az erőforráscsoport többi erőforrását).
 
@@ -109,7 +98,7 @@ Remove-AzResource -ResourceName "<name of the Resource>" -ResourceType "Microsof
 az resource delete --name "<name of the Resource>" --resource-type "Microsoft.ServiceFabric/clusters" --resource-group $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -120,4 +109,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy elvégezte az oktatóanyagot, tekintse át a következőket:
 * Ismerje meg, hogyan vizsgálhat meg és kezelhet egy Service Fabric-fürtöt a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) használatával.
 * Útmutató a fürtcsomópontok [Windows operációs rendszerének javításához](service-fabric-patch-orchestration-application.md) .
-* Ismerje meg, hogyan összesítheti és gyűjtheti a [Windows](service-fabric-diagnostics-event-aggregation-wad.md) -fürtökhöz kapcsolódó eseményeket, és [beállíthatja log Analytics](service-fabric-diagnostics-oms-setup.md) a fürt eseményeinek figyeléséhez.
+* Ismerje meg, hogyan összesítheti és gyűjtheti a [Windows-fürtökhöz](service-fabric-diagnostics-event-aggregation-wad.md) kapcsolódó eseményeket, és [beállíthatja log Analytics](service-fabric-diagnostics-oms-setup.md) a fürt eseményeinek figyeléséhez.

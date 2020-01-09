@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 4b07150ac9f35085763786c505d3d746428a542b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e397cfaa9ce521ebe3c2f46ef6cc015bff3112f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839673"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454823"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Modell előkészítése a Azure Machine Learning Studio (klasszikus) üzembe helyezéséhez
 
 Azure Machine Learning Studio (klasszikus) megadja a prediktív elemzési modell kialakításához szükséges eszközöket, majd működővé tenni azt egy Azure-webszolgáltatásként való üzembe helyezésével.
 
-Ennek elvégzéséhez a Studio klasszikus verziójával hozzon létre egy kísérletet, amelyet egy *képzési kísérletnek* nevezünk. Ha meggyőződött arról, hogy a modell készen áll a telepítésre, alakítsa át a betanítási kísérletet egy *prediktív kísérletre* , amely a felhasználói adatgyűjtésre van konfigurálva.
+Ennek elvégzéséhez a Studio (klasszikus) használatával hozzon létre egy kísérletet, amelyet egy *képzési kísérletnek* nevezünk – itt taníthatja ki, szerzi be és szerkesztheti a modelljét. Ha meggyőződött arról, hogy a modell készen áll a telepítésre, alakítsa át a betanítási kísérletet egy *prediktív kísérletre* , amely a felhasználói adatgyűjtésre van konfigurálva.
 
 Ennek a folyamatnak egy példáját láthatja az [1. oktatóanyagban: hitelkockázat előrejelzése](tutorial-part1-credit-risk.md).
 

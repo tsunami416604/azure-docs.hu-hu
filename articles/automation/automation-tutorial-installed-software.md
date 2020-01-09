@@ -3,26 +3,22 @@ title: A gépekre telepített szoftverek felderítése az Azure Automation haszn
 description: Az Inventory használatával felderítheti, milyen szoftverek vannak telepítve a környezetében működő gépeken.
 services: automation
 keywords: leltár, automatizálás, változás, követés
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
-ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 47313781756e460a8c30638661489874481b88a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420562"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Az Azure- és nem Azure-gépeken telepített szoftverek felderítése
 
 Ez az oktatóanyag bemutatja, hogyan derítheti fel a környezetében telepített szoftvereket. Összegyűjtheti a számítógépeken található szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows-beállításkulcsok listáját, és leltárt készíthet belőlük. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A megoldás engedélyezése
@@ -61,7 +57,7 @@ A munkaterület egyetlen központi helyet biztosít a több forrásból származ
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot.
-A megoldás engedélyezését követően a virtuális Gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Azure Monitor naplóira.
+A megoldás engedélyezését követően a virtuális gépen található telepített szoftverekre és változásokra vonatkozó információk Azure Monitor naplókra áramlanak.
 Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ## <a name="onboard-a-vm"></a>Virtuális gép előkészítése
@@ -103,7 +99,7 @@ Például a „Contoso” kifejezésre keresve a rendszer minden olyan szoftvert
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Telepített szoftverek keresése az Inventory-naplókban
 
-Készlet által létrehozott naplóadatok a Azure Monitor naplóira küldött. Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre az **Inventory** ablak felső részén.
+A leltár az Azure Monitor naplókba küldendő naplófájlokat hozza létre. Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre az **Inventory** ablak felső részén.
 
 A rendszer az Inventory-adatokat a **ConfigurationData** típus alatt tárolja.
 A következő Log Analytics-mintalekérdezés az Inventory-eredményeket adja vissza, ahol a Közzétevő a „Microsoft Corporation”.
@@ -115,11 +111,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Futtatásával és az Azure Monitor naplóira naplófájlok keresésével kapcsolatos további információkért lásd: [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+A naplófájlok Azure Monitor-naplókban való futtatásával és keresésével kapcsolatos további tudnivalókért tekintse meg [Azure monitor naplókat](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Leltár egyetlen gépről
 
-Egyetlen gép szoftverleltárának megtekintéséhez készlet elérését az Azure-beli Virtuálisgép-erőforrások oldalának, vagy le a megfelelő gépre szűréséhez használja a Azure Monitor naplóira.
+Ha egyetlen gépen szeretné megtekinteni a szoftver leltárát, hozzáférhet az Azure-beli virtuális gép erőforrás-oldaláról, vagy Azure Monitor naplók használatával szűrheti le a megfelelő gépre.
 Az alábbi Log Analytics lekérdezési példa egy ContosoVM nevű gép szoftverlistáját adja vissza.
 
 ```loganalytics
@@ -131,7 +127,7 @@ ConfigurationData
 | summarize by Publisher, SoftwareName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan tekintheti meg a szoftverleltárt, és ennek keretében hogyan végezheti el az alábbi műveleteket:
 

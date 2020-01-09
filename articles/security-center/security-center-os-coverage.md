@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307318"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353318"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -56,7 +56,7 @@ A fent felsorolt Windows operációs rendszerek támogatott szolgáltatásaival 
 
 * CentOS 6 és 7
 * Amazon Linux 2017,09
-* Oracle Linux 6 és 7
+* Oracle Linux 6 és Oracle Linux 7
 * Red Hat Enterprise Linux 6. és 7. kiszolgáló
 * Debian GNU/Linux 8 és 9
 * Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
@@ -91,7 +91,7 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * MySQL
 * CosmosDB
 * Tárfiók
-* App Service-ben
+* App Service
 * Függvény
 * Felhőszolgáltatás
 * VNet
@@ -101,8 +101,8 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * Batch-fiók
 * Service Fabric-fiók
 * Automation-fiók
-* Terheléselosztó
-* Keresés
+* Load Balancer
+* Search
 * Service Bus-névtér
 * Stream Analytics
 * Eseményközpont-névtér

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677789"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680749"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>API-preferencia váltása naplóriasztásokhoz
 
 > [!NOTE]
-> Csak az Azure nyilvános felhőre vonatkozó, a Azure Government -vagy az Azure China Cloud-beli felhasználók számára elérhető tartalom.  
+> Csak az Azure nyilvános felhőre vonatkozó, a Azure Government- **vagy az Azure** China Cloud-beli felhasználók számára elérhető tartalom.  
 
 A riasztási szabályokat korábban a Microsoft Operations Management Suite portál használatával lehetett kezelni. Az új riasztások a Microsoft Azure különböző szolgáltatásaival lettek integrálva, beleértve a Log Analytics, és a [riasztási szabályokat a OMS portálról az Azure-ra is kiterjesztjük](alerts-extend.md). Az ügyfelek minimális megszakadásának biztosítása érdekében azonban a folyamat nem változtatta meg az SavedSearch alapuló [log Analytics riasztási API](api-alerts.md) programozási felületét.
 
@@ -44,12 +44,15 @@ A preferencia scheduledQueryRules API-ra gyakorolt hatásait az alábbiakban for
 
 - A naplózási riasztások programozási felületen keresztül történő kezeléséhez elvégzett összes műveletet most [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatával kell elvégezni. További információkért lásd: [minta használata az Azure Resource template](alerts-log.md#managing-log-alerts-using-azure-resource-template) használatával és a [minta használata a PowerShell segítségével](alerts-log.md#managing-log-alerts-using-powershell)
 - Az Azure Portal-ben létrehozott új naplózási riasztási szabály csak a [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) használatával jön létre, és lehetővé teszi, hogy a felhasználók az [új API további funkcióit](#benefits-of-switching-to-new-azure-api) használják Azure Portaleken keresztül is.
-- A naplózási riasztási szabályok súlyossága a következőtől fog áttérni: *Kritikus, figyelmeztetés & tájékoztatás*a *0, 1 & 2 súlyossági értékekre*. Továbbá a riasztási szabályok létrehozásához/frissítéséhez a 3. és a 4. súlyossági szintű beállítást is.
+- A naplózási riasztási szabályok súlyossága: *kritikus, figyelmeztetés & tájékoztatás*, *0, 1 & 2 súlyossági értékekre*. Továbbá a riasztási szabályok létrehozásához/frissítéséhez a 3. és a 4. súlyossági szintű beállítást is.
 
-A riasztási szabályok a [régi log Analytics riasztási API](api-alerts.md) -ból való áthelyezésének folyamata nem jár semmilyen módon a riasztás definíciójának, lekérdezésének vagy konfigurációjának módosításával. A riasztási szabályok és a figyelés nem érintett, és a riasztások nem állnak le, illetve nem állnak le a kapcsoló alatt vagy azt követően. Az egyetlen változás az API-beállítások módosítása és a szabályokhoz való hozzáférés egy új API-n keresztül.
+A riasztási szabályok a [régi log Analytics riasztási API](api-alerts.md) -ból való áthelyezésének folyamata nem jár semmilyen módon a riasztás definíciójának, lekérdezésének vagy konfigurációjának módosításával. A riasztási szabályok és a figyelés nem érintett, és a riasztások nem állnak le, illetve nem állnak le a kapcsoló alatt vagy azt követően. Az egyetlen változás a következő:
+
+- Az API-beállítások módosítása és a szabályokhoz való hozzáférés új API-n keresztül.
+- Egy módosított riasztási szabály erőforrás-URI-ja, amely az [örökölt log Analytics riasztási API](api-alerts.md) -ban használt azonosítókat tartalmazza a riasztási szabály neve helyett ebben a struktúrában `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`. A riasztási szabály megjelenítendő neve változatlan marad.
 
 > [!NOTE]
-> Ha a felhasználó úgy dönt, hogy az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)-ra vált, a régebbi [örökölt log Analytics riasztási API](api-alerts.md)használata nem engedélyezhető vagy nem állítható vissza.
+> Ha a felhasználó úgy dönt, hogy az új [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) -ra vált, nem lehet visszatérni a régebbi [örökölt log Analytics riasztási API](api-alerts.md)használatára.
 
 Minden olyan ügyfél, aki önként kíván váltani az új [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , és letiltja az [örökölt log Analytics riasztási API](api-alerts.md)használatát. Ezt úgy teheti meg, hogy egy PUT hívást hajt végre az alábbi API-ban az adott Log Analytics munkaterülethez társított összes riasztási szabály átváltásához.
 
@@ -110,7 +113,7 @@ Máskülönben ha a megadott log analitikai munkaterület még nem lett átvált
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor-log riasztásokról](alerts-unified-log.md).
 - Megtudhatja, hogyan hozhat létre [naplózási riasztásokat az Azure-riasztásokban](alerts-log.md).

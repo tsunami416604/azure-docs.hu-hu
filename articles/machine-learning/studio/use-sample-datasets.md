@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427430"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ Szimulált energia-profilok gyűjteménye 12 különböző építési alakzat al
   <td>
 Az Amerikai Egyesült államokbeli Közlekedési Minisztérium TranStats adatgyűjtési szolgáltatásában<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">(az időpontnál</a>) üzemelő személyszállító repülési adatok.
 <p></p>
-Az adatkészlet a 2013. április-október időszakra terjed ki. A Azure Machine Learning Studio klasszikus verziójára való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:
+Az adatkészlet a 2013. április-október időszakra terjed ki. Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
 <ul>
   <li>Az adatkészlet úgy lett szűrve, hogy csak a 70-es legforgalmasabb repülőtérre vonatkozzon az USA kontinentális területén</li>
   <li>A megszakított járatok több mint 15 perc késéssel lettek megjelölve</li>
@@ -259,7 +259,7 @@ Az országos Institute of diabétesz és az emésztési és a vese diseases adat
 </tr>
 
 <tr>
-  <td>Az éttermi ügyféladatok</td>
+  <td>Éttermek vásárlói adatai</td>
   <td>
 Az ügyfelekkel kapcsolatos metaadatok összessége, beleértve a demográfiai adatokat és a preferenciákat.
 <p></p>
@@ -270,7 +270,7 @@ Az ügyfelekkel kapcsolatos metaadatok összessége, beleértve a demográfiai a
 </tr>
 
 <tr>
-  <td>Az éttermi funkciókról</td>
+  <td>Éttermi szolgáltatási adatok</td>
   <td>
 Az éttermekkel és azok funkcióival, például élelmiszer-típussal, étkezési stílussal és hellyel kapcsolatos metaadatok halmaza.
 <p></p>
@@ -281,7 +281,7 @@ Az éttermekkel és azok funkcióival, például élelmiszer-típussal, étkezé
 </tr>
 
 <tr>
-  <td>Éttermi minősítések</td>
+  <td>Éttermek minősítései</td>
   <td>
 A felhasználók által az éttermek számára a 0 és 2 közötti skálán megadott minősítéseket tartalmazza.
 <p></p>
@@ -329,7 +329,7 @@ Azt is vegye figyelembe, hogy a háttérben futó események (h, hadronic-zuhany
   <td>
 A NOAA-ből származó, óránkénti szárazföld-alapú időjárási megfigyelések (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">201304 és 201310 közötti egyesített adatok</a>).
 <p></p>
-Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, amely az 2013. április-október időszakra vonatkozik. A Azure Machine Learning Studio klasszikus verziójára való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:
+Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, amely az 2013. április-október időszakra vonatkozik. Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
 <ul>
   <li>A meteorológiai állomás azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve</li>
   <li>Az 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások kiszűrése megtörtént</li>
@@ -344,7 +344,7 @@ Az időjárási adatok a repülőtéri meteorológiai állomások megfigyelései
   <td>
 Az adatok forrása a Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>), amely az egyes S & P 500 vállalat cikkei alapján, XML-adatként tárolva.
 <p></p>
-A Azure Machine Learning Studio klasszikus verziójára való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:
+Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
 <ul>
   <li>Szöveges tartalom kinyerése minden egyes vállalatnál</li>
   <li>Wiki formázásának eltávolítása</li>
@@ -358,28 +358,28 @@ Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a 
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
   <td>
 Az adatkészlet ügyféladatokat tartalmaz, és jelzi a közvetlen levelezési kampányra adott válaszokat. Minden sor az ügyfelet jelöli. Az adatkészlet kilenc funkciót tartalmaz a felhasználói demográfiai adatokkal és a múltbeli viselkedéssel kapcsolatban, valamint három címke oszlopot (látogatás, átalakítás és költés).  A Visit egy bináris oszlop, amely azt jelzi, hogy az ügyfél a marketing kampány után látogatta meg. Az átalakítás azt jelzi, hogy egy ügyfél vásárolt valamit. A költés a felhasznált mennyiség.  Az adathalmazt a Kevin Hillstrom tette elérhetővé a MineThatData E-Mail elemzés és az adatbányászati kihívás számára.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
   <td>
 A RCV1-v2 Reuters Hírek adatkészletében található tesztelési példák funkciói. Az adatkészlet 781K, valamint az azonosítójuk (az adatkészlet első oszlopa) szerepel. Minden cikk jogkivonat-, stopworded-és ered. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
   <td>
 A betanítási példák funkciói a RCV1-v2 Reuters Hírek adatkészletében. Az adatkészlet 23K, valamint az azonosítójuk (az adatkészlet első oszlopa) szerepel. Minden cikk jogkivonat-, stopworded-és ered. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
   <td>
 Adatkészlet a KDD Cup 1999 Knowledge Discovery és az adatbányászati eszközök versenyéről (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>).
 <p></p>
@@ -388,14 +388,14 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témák. qrels. csv</a></td>
   <td>
 Témakör-hozzárendelések a hírekhez a RCV1-v2 Reuters Hírek adatkészletében. Egy újságcikk több témakörhöz is hozzárendelhető. Az egyes sorok formátuma a következő: "&lt;témakör neve&gt; &lt;dokumentum azonosítója&gt; 1". Az adatkészlet 2,6 M témakör-hozzárendeléseket tartalmaz. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
 Ezek az adatok a KDD Cup 2010 Student Performance kiértékelési Challenge (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance értékelés</a>) alapján származnak. A felhasznált adathalmaz a Algebra_2008_2009 betanítási készlet (stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, ka (2010). Algebra I 2008-2009. A KDD Cup 2010 oktatási adatbányászati kihívása. Keresse meg a <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>fájlon.
 <p></p>

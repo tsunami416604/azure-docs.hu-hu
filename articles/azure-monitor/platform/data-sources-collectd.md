@@ -4,15 +4,15 @@ description: A Collected egy nyílt forráskódú linuxos démon, amely rendszer
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395869"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
 A [Collected](https://collectd.org/) egy nyílt forráskódú linuxos démon, amely rendszeresen gyűjti a teljesítmény-mérőszámokat az alkalmazásokból és a rendszerszintű információkból. Például az alkalmazások közé tartozik a Java virtuális gép (JVM), a MySQL-kiszolgáló és az Nginx. Ez a cikk a Azure Monitor gyűjtött teljesítményadatok gyűjtésével kapcsolatos információkat tartalmazza.
@@ -74,7 +74,7 @@ A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figye
 ## <a name="configuration"></a>Konfiguráció
 Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurálására szolgálnak Azure Monitorban.
 
-1. A begyűjtött adatok küldésével adatokat küldhet a linuxos Log Analytics-ügynöknek a write_http beépülő modullal.  
+1. Konfigurálja a begyűjtött adatokat a Linux Log Analytics-ügynöknek a write_http beépülő modullal való adatküldéshez.  
 2. Konfigurálja a Linux Log Analytics-ügynökét, hogy figyelje a gyűjtött adatokat a megfelelő porton.
 3. A Linux-ügynök összegyűjtése és Log Analytics-ügynök újraindítása.
 
@@ -101,7 +101,7 @@ Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurá
 
 3. A következő parancsokkal indítsa újra a gyűjtést és Log Analytics a Linux-ügynököt.
 
-    sudo szolgáltatás által összegyűjtött újraindítás sudo/opt/Microsoft/omsagent/bin/service_control újraindítás
+    sudo szolgáltatás újraindítása sudo/opt/Microsoft/omsagent/bin/service_control újraindítása
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Azure Monitor a séma átalakítására vonatkozó mérőszámok gyűjtése
 A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák közötti ismerős modell fenntartásához, valamint a következő séma-hozzárendeléssel gyűjtött új metrikák használata:
@@ -110,9 +110,9 @@ A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák 
 |:--|:--|
 | `host` | Computer |
 | `plugin` | None |
-| `plugin_instance` | Példány neve<br>Ha a **plugin_instance** értéke *Null* , akkor példánynév = "*összesen*" |
+| `plugin_instance` | Példány neve<br>Ha **plugin_instance** értéke *Null* , akkor példánynév = " *_Total*" |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>Ha a **type_instance** értéke *Null* , akkor a CounterName =**blank** |
+| `type_instance` | CounterName<br>Ha **type_instance** értéke *Null* , akkor a CounterName =**blank** |
 | `dsnames[]` | CounterName |
 | `dstypes` | None |
 | `values[]` | Kártyabirtokos számlájának megterhelését |

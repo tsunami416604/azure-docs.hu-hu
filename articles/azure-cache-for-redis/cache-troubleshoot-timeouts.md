@@ -1,17 +1,17 @@
 ---
 title: Az Azure cache Redis-időtúllépésekkel kapcsolatos hibáinak megoldása
-description: Ismerje meg, Hogyan oldhatók fel az Azure cache szolgáltatással kapcsolatos gyakori időtúllépési problémák az Redis
+description: Megtudhatja, Hogyan oldhatók fel az Azure cache szolgáltatással kapcsolatos gyakori időtúllépési problémák a Redis, például a Redis-kiszolgáló javítását és a StackExchange. Redis időtúllépési kivételek.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412074"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Az Azure cache Redis-időtúllépésekkel kapcsolatos hibáinak megoldása
 
@@ -43,9 +43,9 @@ Ez a hibaüzenet olyan metrikákat tartalmaz, amelyek segíthetnek a probléma o
 | üzenetsor |Összesen 73 folyamatban lévő művelet |
 | l |a folyamatban lévő műveletek közül 6 a nem küldött várólistában van, és még nem lett beírva a kimenő hálózatra. |
 | QS |67 a folyamatban lévő műveletek elküldése a kiszolgálónak, de a válasz még nem érhető el. A válasz lehet `Not yet sent by the server` vagy `sent by the server but not yet processed by the client.` |
-| qc |a folyamatban lévő műveletek közül 0 a válaszokat észlelte, de még nem jelölték meg befejezettként, mert a befejezési hurokra várnak. |
+| QC |a folyamatban lévő műveletek közül 0 a válaszokat észlelte, de még nem jelölték meg befejezettként, mert a befejezési hurokra várnak. |
 | WR |Aktív író van (vagyis a 6 el nem küldött kérések nincsenek figyelmen kívül hagyva) bájt/activewriters |
-| A |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
+| a következő helyen: |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
 
 A lehetséges kiváltó okok kivizsgálásához a következő lépéseket használhatja.
 
@@ -111,9 +111,9 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 
    További információ: [a Redis-kiszolgáló memória-nyomása](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
-- [Az Azure cache hibaelhárítása Redis ügyféloldali problémák esetén](cache-troubleshoot-client.md)
-- [Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén](cache-troubleshoot-server.md)
+- [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
+- [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
 - [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Az Azure cache figyelése a Redis](cache-how-to-monitor.md)

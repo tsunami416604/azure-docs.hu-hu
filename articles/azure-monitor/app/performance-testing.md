@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 9c86b69239bed1a15c754ce28232b97e8439942b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: db23fae6bb15e851d22e54b323428c061f55b34f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406552"
 ---
 # <a name="performance-testing"></a>Teljesítménytesztelés
 
@@ -40,7 +40,7 @@ Alapszintű teljesítményteszt létrehozásához válassza ki a **manuális tes
 
 |Beállítás| Maximális érték
 |----------|------------|
-| Felhasználói terhelés | 20 000 |
+| Felhasználói terhelés | 20 000 |
 | Időtartam (perc)  | 60 |  
 
 A teszt létrehozása után kattintson a **teszt futtatása**gombra.

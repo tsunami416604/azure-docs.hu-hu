@@ -1,65 +1,35 @@
 ---
-title: Hozzáadása vagy eltávolítása, csomópontok önálló Service Fabric-fürtön |} A Microsoft Docs
-description: Megtudhatja, hogyan hozzáadása vagy eltávolítása, csomópontok az Azure Service Fabric-fürt fizikai vagy virtuális gép fut, amely lehet a helyszíni Windows Server vagy a felhőben.
-services: service-fabric
-documentationcenter: .net
+title: Csomópontok hozzáadása vagy eltávolítása önálló Service Fabric-fürthöz
+description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el csomópontokat egy Azure Service Fabric-fürthöz egy Windows Servert futtató fizikai vagy virtuális gépen, amely a helyszínen vagy bármilyen felhőben is lehetséges.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 585d918026ca40bc1a04c55e2bac454492c55936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa9550d1ec6201f7cbaf552fac5f71c875428e21
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711033"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458258"
 ---
-# <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Hozzáadása vagy eltávolítása, csomópontok, a Windows Server rendszert futtató önálló Service Fabric-fürt
-Miután [az önálló Service Fabric-fürt létrehozása a Windows Server-gépek](service-fabric-cluster-creation-for-windows-server.md), a (vállalati) igényeinek megfelelően módosíthatja, és adjon hozzá vagy távolíthat el csomópontokat a fürthöz kell. Ez a cikk részletesen bemutatja a lépéseket ennek eléréséhez. Vegye figyelembe, hogy hozzáadása/eltávolítása csomópont funkció nem támogatott a helyi fejlesztési fürtök.
+# <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Csomópontok hozzáadása vagy eltávolítása a Windows Serveren futó önálló Service Fabric fürtön
+Miután [létrehozta az önálló Service Fabric fürtöt a Windows Server rendszerű gépeken](service-fabric-cluster-creation-for-windows-server.md), a (vállalati) igények változhatnak, és hozzá kell adnia vagy el kell távolítania a fürthöz tartozó csomópontokat. Ez a cikk a megvalósításának részletes lépéseit ismerteti. Vegye figyelembe, hogy a csomópontok hozzáadása/eltávolítása funkció nem támogatott a helyi fejlesztési fürtökben.
 
 ## <a name="add-nodes-to-your-cluster"></a>Csomópontok hozzáadása a fürthöz
 
-1. Készítse elő a virtuális gép/gép ismertetett lépéseket követve a fürthöz hozzáadni kívánt [tervezze meg és készítse elő a Service Fabric-fürtök üzembe helyezése](service-fabric-cluster-creation-for-windows-server.md)
-2. Melyik tartalék tartomány és frissítési tartományt szeretné hozzáadni a virtuális gép/gép azonosítása
-3. A fürthöz hozzáadni kívánt virtuális gép/géphez távoli asztali (RDP)
-4. Másolás vagy [töltse le a különálló csomag a Service Fabric Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) a virtuális géphez, és tömörítse ki a csomagot
-5. Powershell futtatásához emelt szintű jogosultságokkal, majd keresse meg a kicsomagolt csomag helye
-6. Futtassa a *AddNode.ps1* parancsfájlt az új csomópont hozzáadása leíró paraméterekkel. Az alábbi példa hozzáad egy új csomópont VM5 nevű, típus, NodeType0 és IP-cím 182.17.34.52, UD1 és fd: / dc1/r0. A *ExistingClusterConnectionEndPoint* egy kapcsolati végpont egy csomópont már meglévő fürtben, amely az IP-címe lehet *bármely* a fürt csomópontjaihoz.
+1. Készítse elő a fürthöz hozzáadni kívánt virtuális gépet/gépet a [Service Fabric-fürt üzembe helyezésének megtervezése és előkészítése](service-fabric-cluster-creation-for-windows-server.md) című témakörben ismertetett lépéseket követve.
+2. Azonosítsa, hogy melyik tartalék tartományhoz és frissítési tartományhoz fogja hozzáadni ezt a virtuális gépet/gépet
+3. Távoli asztal (RDP) a fürthöz hozzáadni kívánt virtuális gépre vagy gépre
+4. Másolja vagy [töltse le a Windows Server rendszerhez készült Service Fabric önálló csomagját](https://go.microsoft.com/fwlink/?LinkId=730690) a virtuális gépre/gépre, és bontsa ki a csomagot
+5. Futtassa a PowerShellt emelt szintű jogosultságokkal, és navigáljon a kibontott csomag helyére.
+6. Futtassa a *hozzáadási. ps1* parancsfájlt a hozzáadandó új csomópontot leíró paraméterekkel. Az alábbi példa egy VM5 nevű új csomópontot hoz létre, amelynek típusa NodeType0 és IP-182.17.34.52, a UD1 és az FD:/DC1/R0. A *ExistingClusterConnectionEndPoint* a meglévő fürtben már létező csomóponthoz tartozó kapcsolatok végpontja, amely a fürt *bármely* csomópontjának IP-címe lehet.
 
     ```
     .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
     ```
-    Miután a parancsfájl a lejáratot követően újrainduljon, ha hozzá van adva az új csomópont futtatásával ellenőrizheti a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmagot.
+    Miután a parancsfájl futása befejeződött, megtekintheti, hogy az új csomópont hozzá lett-e adva a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmag futtatásával.
 
-7. A konzisztencia érdekében a fürt csomópontjai között, akkor a konfiguráció frissítése kell kezdeményezni. Futtatás [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) a legfrissebb konfigurációs fájlt, és adja hozzá az újonnan hozzáadott csomópontot "Csomópont" szakaszban. Azt is javasoljuk, hogy mindig a legújabb elérhető abban az esetben, az ismételt üzembe helyezése azonos konfigurációval rendelkező fürtöt kell fürtkonfigurációt.
-
-    ```
-        {
-            "nodeName": "vm5",
-            "iPAddress": "182.17.34.52",
-            "nodeTypeRef": "NodeType0",
-            "faultDomain": "fd:/dc1/r0",
-            "upgradeDomain": "UD1"
-        }
-    ```
-8. Futtatás [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) a frissítés megkezdéséhez.
-
-    ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
-
-    ```
-    A Service Fabric Explorert a frissítés állapotának figyelése Másik megoldásként futtathatja [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
-
-### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Csoportosan felügyelt szolgáltatásfiókot használó Windows-Security szolgáltatással konfigurált fürtöknél csomópontok hozzáadása
-Csoport által felügyelt szolgáltatás Account(gMSA) szolgáltatással konfigurált fürtöknél (https://technet.microsoft.com/library/hh831782.aspx), egy új csomópont-konfiguráció frissítése vehetők:
-1. Futtatás [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) bármely, a meglévő csomópontok, a legfrissebb konfigurációs fájlt, és adja hozzá az új csomópontot szeretne hozzáadni a "Csomópont" szakaszban részleteit. Ellenőrizze, hogy az új csomópont ugyanazzal a csoportosan felügyelt fiókkal része. Ez a fiók minden gépen rendszergazdának kell lennie.
+7. A fürt különböző csomópontjai közötti konzisztencia biztosításához a konfiguráció frissítését kell elindítania. Futtassa a [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) parancsot a legújabb konfigurációs fájl beszerzéséhez, és adja hozzá az újonnan hozzáadott csomópontot a "csomópontok" szakaszhoz. Azt is javasoljuk, hogy mindig legyen elérhető a legújabb fürtkonfiguráció abban az esetben, ha újra kell telepítenie egy fürtöt ugyanazzal a konfigurációval.
 
     ```
         {
@@ -70,21 +40,42 @@ Csoport által felügyelt szolgáltatás Account(gMSA) szolgáltatással konfigu
             "upgradeDomain": "UD1"
         }
     ```
-2. Futtatás [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) a frissítés megkezdéséhez.
+8. A frissítés megkezdéséhez futtassa a [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) parancsot.
+
+    ```
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+
+    ```
+    Service Fabric Exploreron figyelheti a frissítés előrehaladását. Azt is megteheti, [hogy a Get-ServiceFabricClusterUpgrade-](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) t futtatja
+
+### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Csomópontok hozzáadása a Windows biztonsággal konfigurált fürtökhöz a gMSA használatával
+A csoportosan felügyelt szolgáltatásfiók (gMSA) használatával konfigurált fürtökhöz (https://technet.microsoft.com/library/hh831782.aspx) egy új csomópontot adhat hozzá egy konfiguráció frissítésével:
+1. Futtassa a [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) parancsot bármelyik meglévő csomóponton a legújabb konfigurációs fájl beszerzéséhez, és adja meg a "csomópontok" szakaszban hozzáadni kívánt új csomópont részleteit. Győződjön meg arról, hogy az új csomópont ugyanahhoz a csoportosan felügyelt fiókhoz tartozik. Ennek a fióknak az összes gépen rendszergazdának kell lennie.
+
+    ```
+        {
+            "nodeName": "vm5",
+            "iPAddress": "182.17.34.52",
+            "nodeTypeRef": "NodeType0",
+            "faultDomain": "fd:/dc1/r0",
+            "upgradeDomain": "UD1"
+        }
+    ```
+2. A frissítés megkezdéséhez futtassa a [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) parancsot.
 
     ```
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
     ```
-    A Service Fabric Explorert a frissítés állapotának figyelése Másik megoldásként futtathatja [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    Service Fabric Exploreron figyelheti a frissítés előrehaladását. Azt is megteheti, [hogy a Get-ServiceFabricClusterUpgrade-](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) t futtatja
 
-### <a name="add-node-types-to-your-cluster"></a>Csomóponttípusok hozzáadni a fürthöz
-Annak érdekében, hogy adjon hozzá egy új csomópont típusa, módosíthatja a konfigurációt, például az új csomópont típusa az "NodeType" a "Tulajdonságok" szakaszt, és a konfigurálás megkezdése használó frissítse [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps). A frissítés befejezése után is hozzáadhat új csomópontokat a fürthöz az ennek a csomóponttípusnak.
+### <a name="add-node-types-to-your-cluster"></a>Csomópont-típusok hozzáadása a fürthöz
+Új csomópont-típus hozzáadásához módosítsa úgy a konfigurációt, hogy az tartalmazza az új csomópont típusát a "tulajdonságok" területen található "NodeTypes" szakaszban, majd kezdjen el egy konfigurációs frissítést a [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps)használatával. Ha a frissítés befejeződött, új csomópontokat adhat hozzá a fürthöz ehhez a csomópont-típushoz.
 
-## <a name="remove-nodes-from-your-cluster"></a>Csomópont eltávolítása a fürtből
-Egy csomópont eltávolíthatók a fürtök a konfiguráció frissítése a következő módon:
+## <a name="remove-nodes-from-your-cluster"></a>Csomópontok eltávolítása a fürtből
+A csomópontokat a következő módon távolíthatja el egy fürtből a fürtből a konfiguráció frissítésével:
 
-1. Futtatás [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) beolvasni a legfrissebb konfigurációs fájlt, és *eltávolítása* a csomópont "Csomópont" szakaszban.
-Adja hozzá a "NodesToBeRemoved" paraméter "FabricSettings" szakasz "Beállítása" szakaszát. A "value" egy vesszővel elválasztott listáját a csomópontok, el kell távolítani a csomópont nevének kell lennie.
+1. Futtassa a [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) parancsot a legújabb konfigurációs fájl beszerzéséhez, és *távolítsa el* a csomópontot a "csomópontok" szakaszból.
+Adja hozzá a "NodesToBeRemoved" paramétert a "Setup" szakaszhoz a "FabricSettings" szakaszon belül. Az "érték" az eltávolítandó csomópontok csomópont-neveinek vesszővel tagolt listája.
 
     ```
          "fabricSettings": [
@@ -107,29 +98,29 @@ Adja hozzá a "NodesToBeRemoved" paraméter "FabricSettings" szakasz "Beállít�
             }
         ]
     ```
-2. Futtatás [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) a frissítés megkezdéséhez.
+2. A frissítés megkezdéséhez futtassa a [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) parancsot.
 
     ```
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
     ```
-    A Service Fabric Explorert a frissítés állapotának figyelése Másik megoldásként futtathatja [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    Service Fabric Exploreron figyelheti a frissítés előrehaladását. Azt is megteheti, [hogy a Get-ServiceFabricClusterUpgrade-](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) t futtatja
 
 > [!NOTE]
-> Csomópont eltávolítása több frissítés kezdeményezhet. Egyes csomópontok lesznek megjelölve `IsSeedNode=”true”` címkézés és a fürt lekérdezésével azonosíthatók használatával manifest `Get-ServiceFabricClusterManifest`. Ilyen csomópont eltávolítása, mint a többi tovább tarthat, mivel az ilyen esetekben áthelyezhető a magcsomópontok tartalmaz. A fürt legalább 3 elsődleges csomópont típusa csomópont kell fenntartani.
+> A csomópontok eltávolítása több frissítést is kezdeményezhet. Egyes csomópontok `IsSeedNode=”true”` címkével vannak megjelölve, és a fürt jegyzékfájljának lekérdezésével azonosíthatók a `Get-ServiceFabricClusterManifest`használatával. Az ilyen csomópontok eltávolítása több időt is igénybe vehet, mivel a vetőmag-csomópontokat ilyen helyzetekben kell áthelyezni. A fürtnek legalább 3 elsődleges csomópont típusú csomópontot kell fenntartania.
 > 
 > 
 
-### <a name="remove-node-types-from-your-cluster"></a>Csomóponttípus eltávolítása a fürtből
-Mielőtt eltávolítaná a csomópont típusa, ellenőrizze ellenőrizze, hogy a csomópont típusa hivatkozó bármely csomópont. Ezek a csomópontok eltávolítása a megfelelő csomóponttípus eltávolítása előtt. Miután az összes megfelelő csomópont el lesznek távolítva, a NodeType csomóponttípus eltávolítása a fürt konfigurációját, és a konfigurálás megkezdése használó frissítse [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
+### <a name="remove-node-types-from-your-cluster"></a>Csomópont-típusok eltávolítása a fürtből
+A csomópontok típusának eltávolítása előtt ellenőrizze, hogy van-e olyan csomópont, amely hivatkozik a csomópont típusára. Távolítsa el ezeket a csomópontokat, mielőtt eltávolítja a megfelelő csomópont-típust. Az összes kapcsolódó csomópont eltávolítása után eltávolíthatja a NodeType a fürt konfigurációjától, és megkezdheti a konfiguráció frissítését a [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps)használatával.
 
 
-### <a name="replace-primary-nodes-of-your-cluster"></a>Cserélje le a fürt elsődleges csomópontok
-Váltja fel az elsődleges csomópont lehet elvégezni egy csomópont eltávolítása, majd kötegekben helyett egymás után.
+### <a name="replace-primary-nodes-of-your-cluster"></a>A fürt elsődleges csomópontjainak cseréje
+Az elsődleges csomópontok cseréjét egy másik csomópont után kell végrehajtani, a kötegek eltávolítása és hozzáadása helyett.
 
 
-## <a name="next-steps"></a>További lépések
-* [Különálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
-* [Különálló fürt védelme a Windows X509 használ a tanúsítványok](service-fabric-windows-cluster-x509-security.md)
-* [Önálló Service Fabric-fürt létrehozása Windows rendszert futtató Azure virtuális gépekkel](service-fabric-cluster-creation-with-windows-azure-vms.md)
+## <a name="next-steps"></a>Következő lépések
+* [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
+* [Önálló fürt biztonságossá tétele a Windowsban X509-tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)
+* [Önálló Service Fabric-fürt létrehozása Windows rendszerű Azure-beli virtuális gépekkel](service-fabric-cluster-creation-with-windows-azure-vms.md)
 

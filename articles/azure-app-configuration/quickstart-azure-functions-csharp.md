@@ -2,24 +2,17 @@
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a Azure Functionskal | Microsoft Docs
 description: Útmutató az Azure-alkalmazások konfigurálásához a Azure Functions használatával.
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413766"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -37,9 +30,9 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Paraméter | Érték |
+    | Jelmagyarázat | Value (Díj) |
     |---|---|
-    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
@@ -61,7 +54,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. Adjon hozzá egy `static` tulajdonságot `Configuration` a `IConfiguration`egy példányának létrehozásához. Ezután vegyen fel egy `static` konstruktort az alkalmazás-konfigurációhoz való kapcsolódáshoz `AddAzureAppConfiguration()`meghívásával. Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
+3. Adjon hozzá egy `Configuration` nevű `static` tulajdonságot a `IConfiguration`egy egyedi példányának létrehozásához. Ezután vegyen fel egy `static` konstruktort az alkalmazás-konfigurációhoz való kapcsolódáshoz `AddAzureAppConfiguration()`meghívásával. Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -94,17 +87,19 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studiótól érkező kérést **Azure functions Core (CLI)** eszközök letöltéséhez és telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
+2. Nyomja le az F5 billentyűt a függvény teszteléséhez. Ha a rendszer kéri, fogadja el a Visual Studiótól érkező kérést **Azure functions Core (CLI)** eszközök letöltéséhez és telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
 
 3. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374300"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -103,14 +103,16 @@ Ha van meglévő adatbázisa, érdemes áthelyeznie az újonnan kiépített SQL 
 
 A Azure Portal egyetlen oldalt biztosít, ahol kezelheti az [összes Azure SQL-erőforrást,](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) beleértve az SQL-alapú virtuális gépeket is.
 
-Az **Azure SQL-erőforrások** oldal eléréséhez válassza az **Azure sql** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az *Azure SQL* kifejezést a keresőmezőbe.
+Az **Azure SQL-erőforrások** oldal eléréséhez válassza az **Azure sql** lehetőséget a Azure Portal menüben, vagy keresse meg és válassza ki az **Azure SQL** elemet bármely oldalról.
+
+![Az Azure SQL keresése](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > Az **Azure SQL** gyors és egyszerű módot biztosít az SQL-adatbázisok, a rugalmas készletek, az adatbázis-kiszolgálók, az SQL-felügyelt példányok és az SQL-alapú virtuális gépek eléréséhez. Az Azure SQL nem szolgáltatás vagy erőforrás. 
 
 A meglévő erőforrások kezeléséhez válassza ki a kívánt elemet a listában. Új Azure SQL-erőforrások létrehozásához válassza a **+ Hozzáadás**lehetőséget. 
 
-![Azure SQL-portál lap](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![Azure SQL-erőforrás létrehozása](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 A **+ Hozzáadás gombra**kattintva további információkat jeleníthet meg a különböző beállításokról a csempék **részleteinek megjelenítése** lehetőség kiválasztásával.
 

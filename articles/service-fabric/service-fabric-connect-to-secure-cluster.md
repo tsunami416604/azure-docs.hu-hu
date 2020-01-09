@@ -1,27 +1,16 @@
 ---
-title: Biztonságos kapcsolódás Azure Service Fabric-fürthöz | Microsoft Docs
+title: Biztonságos kapcsolódás Azure Service Fabric-fürthöz
 description: Útmutatás a Service Fabric-fürthöz való ügyfél-hozzáférés hitelesítéséhez, valamint az ügyfelek és a fürt közötti kommunikáció biztonságossá tételéhez.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: atsenthi
-ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458268"
 ---
-# <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
+# <a name="connect-to-a-secure-cluster"></a>Kapcsolódás biztonságos fürthöz
 
 Amikor az ügyfél egy Service Fabric fürthöz csatlakozik, az ügyfél hitelesíthető és biztonságossá tehető a tanúsítványalapú biztonság vagy a Azure Active Directory (HRE) használatával létesített kommunikációban. Ez a hitelesítés biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és a központilag telepített alkalmazásokhoz, valamint felügyeleti feladatokat hajtsanak végre.  A fürt létrehozásakor a tanúsítvány-vagy HRE biztonsági szolgáltatást előzőleg engedélyezni kell a fürtön.  A fürtök biztonsági forgatókönyvekkel kapcsolatos további információkért lásd: a [fürt biztonsága](service-fabric-cluster-security.md). Ha tanúsítványokkal védett fürthöz csatlakozik, [állítsa be az ügyféltanúsítványt](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) azon a számítógépen, amely a fürthöz csatlakozik. 
 
@@ -41,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Ha a. pfx fájl jelszava nem védett, használja a-passin pass: (utolsó paraméter) értékét.
 
-Az ügyféltanúsítvány PEM- `--pem` fájlként való megadásához az argumentumban meg kell adni a fájl elérési útját. Példa:
+Az ügyféltanúsítvány PEM-fájlként való megadásához a `--pem` argumentumban meg kell adni a fájl elérési útját. Példa:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -49,13 +38,13 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 A jelszóval védett PEM-fájlok a parancsok futtatása előtt kérik a jelszót.
 
-A tanúsítvány megadásához a kulcspár a és `--cert` `--key` az argumentumokat használja az egyes fájlok elérési útjának megadásához.
+A tanúsítvány megadásához a kulcspár a `--cert` és `--key` argumentumot használja az egyes fájlok elérési útjának megadásához.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza `--no-verify` a lehetőséget. Példa:
+Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza a `--no-verify` lehetőséget. Példa:
 
 > [!WARNING]
 > Ne használja a `no-verify` kapcsolót éles Service Fabric fürtökhöz való csatlakozáskor.
@@ -64,7 +53,7 @@ Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellen�
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához `--ca` használja az argumentumot. Példa:
+Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához használja a `--ca` argumentumot. Példa:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -240,7 +229,7 @@ catch (Exception e)
 
 ### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Kapcsolódás biztonságos fürthöz nem interaktív módon a Azure Active Directory használatával
 
-A következő példa a Microsoft. IdentityModel. clients. ActiveDirectory, Version: 2.19.208020213.
+A következő példa a Microsoft. IdentityModel. clients. ActiveDirectory, Version: 2.19.208020213 függvényre támaszkodik.
 
 További információ a HRE-jogkivonat beszerzéséről: [Microsoft. IdentityModel. clients. ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
 
@@ -371,7 +360,7 @@ A rendszer automatikusan felszólítja az ügyféltanúsítvány kiválasztásá
 
 Legalább két tanúsítványt kell használni a fürt biztonságossá tételéhez, egyet a fürthöz és a kiszolgálói tanúsítványhoz, és egy másikat az ügyfél-hozzáféréshez.  Javasoljuk, hogy használjon további másodlagos tanúsítványokat és ügyfél-hozzáférési tanúsítványokat is.  Az ügyfél és a fürtcsomópont közötti kommunikáció biztonságossá tételéhez először be kell szereznie és telepítenie kell az ügyféltanúsítványt. A tanúsítvány telepíthető a helyi számítógép vagy az aktuális felhasználó személyes (saját) tárolójába.  Szükség van a kiszolgálói tanúsítvány ujjlenyomatára is, hogy az ügyfél hitelesíteni tudja a fürtöt.
 
-* Windows rendszeren: Kattintson duplán a PFX-fájlra, `Certificates - Current User\Personal\Certificates`és kövesse az utasításokat a tanúsítvány személyes tárolóban történő telepítéséhez. Másik lehetőségként használhatja a PowerShell-parancsot is:
+* Windows rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a `Certificates - Current User\Personal\Certificates` személyes tárolóban való telepítéséhez. Másik lehetőségként használhatja a PowerShell-parancsot is:
 
     ```powershell
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -387,9 +376,9 @@ Legalább két tanúsítványt kell használni a fürt biztonságossá tételéh
     -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
     ```
 
-* Mac gépen: Kattintson duplán a PFX-fájlra, és az utasításokat követve telepítse a tanúsítványt a kulcstartóba.
+* Mac rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a kulcskarikában való telepítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)

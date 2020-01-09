@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408414"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Rövid útmutató: interaktív keresési Térkép létrehozása Azure Maps használatával
 
@@ -26,24 +26,38 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-## <a name="create-an-account-and-get-your-key"></a>Fiók létrehozása és kulcs beszerzése
+<a id="createaccount"></a>
 
-1. Az [Azure Portal](https://portal.azure.com)bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget.
-2. A **Keresés a piactéren** mezőbe írja be a **Maps**kifejezést.
-3. Az **Eredmények** részben válassza a **Maps** lehetőséget. Válassza a **Létrehozás** gombot, amely megjelenik a Térkép alatt.
-4. A **Azure Maps fiók létrehozása** lapon adja meg a következő értékeket:
-   - Az új fiók **neve**.
-   - A fiókhoz használni kívánt **előfizetés**.
-   - A fiókhoz tartozó **erőforráscsoport**. Dönthet úgy, hogy **újat hoz létre** , vagy **meglévő erőforráscsoportot használ** .
-   - Válassza ki az Ön által választott **díjszabási szintet** .
-   - Olvassa el a **licenc** -és **adatvédelmi nyilatkozatot**. Jelölje be a jelölőnégyzetet a feltételek elfogadásához.
-   - Végül kattintson a **Létrehozás** gombra.
+## <a name="create-an-account-with-azure-maps"></a>Azure Maps-fiók létrehozása
 
-     ![Azure Maps-fiók létrehozása a portálon](./media/quick-demo-map-app/create-account.png)
+Hozzon létre egy új Maps-fiókot az alábbi lépésekkel:
 
-5. A fiók sikeres létrehozása után nyissa meg, és keresse meg a fiók menü Beállítások szakaszát. Válassza a **hitelesítés** lehetőséget a Azure Maps fiók elsődleges és másodlagos kulcsainak megtekintéséhez. Másolja az **Elsődleges kulcs** értékét a vágólapra, mert a következő szakaszban használnia kell majd.
+1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában az **Erőforrás létrehozása** gombra.
+2. A *Keresés a Marketplace-en* mezőbe írja be a következőt: **Maps**.
+3. Az *Eredmények* részben válassza a **Maps** lehetőséget. Kattintson a térkép alatt megjelenő **Létrehozás** gombra.
+4. A **Maps-fiók létrehozása** lapon adja meg a következő értékeket:
+    * A fiókhoz használni kívánt *előfizetés*.
+    * A fiókhoz tartozó *erőforráscsoport* neve. Választhat, hogy *létrehoz egy új erőforráscsoportot*, vagy egy *meglévő erőforráscsoportot használ*.
+    * Az új fiók *neve*.
+    * A fiók *díjszabási szintje* .
+    * Olvassa el a *licencfeltételeket* és az *adatvédelmi nyilatkozatot*, és jelölje be az azok elfogadását jelző jelölőnégyzetet.
+    * Kattintson a **Létrehozás** gombra.
+
+![Maps-fiók létrehozása a portálon](./media/quick-demo-map-app/create-account.png)
+
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>A fiók elsődleges kulcsának lekérése
+
+A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely lehetővé teszi a Maps API-k lekérdezését. Azure Maps szolgáltatások meghívásakor azt javasoljuk, hogy a fiók elsődleges kulcsát használja előfizetési kulcsként.
+
+1. Nyissa meg a Maps-fiókot a portálon.
+2. A beállítások szakaszban válassza a **hitelesítés**lehetőséget.
+3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse a helyi gépre, hogy később felhasználhassa ebben az oktatóanyagban.
+
+![Elsődleges kulcs lekérése a portálon](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Az alkalmazás letöltése
 

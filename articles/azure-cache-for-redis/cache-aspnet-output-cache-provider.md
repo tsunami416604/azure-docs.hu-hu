@@ -1,17 +1,17 @@
 ---
 title: ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
-description: Ismerje meg, hogyan gyorsítótárazhatja a ASP.NET az Azure cache használatával a Redis
+description: Ismerje meg, hogyan gyorsítótárazhatja a ASP.NET az Azure cache használatával a Redis. A Redis kimeneti gyorsítótár-szolgáltatója egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár-adattároláshoz.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.author: yegu
-ms.openlocfilehash: 5d7099779f330bc0a92f0c8f305ac534ab385119
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a375f063d398c19ed86a0a401e2a41c696ef4e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122466"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412990"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
 
@@ -51,12 +51,12 @@ A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat
 
 Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
 
-| Attribútum | Típus | Alapértelmezett | Leírás |
+| Attribútum | Type (Típus) | Alapértelmezett | Leírás |
 | --------- | ---- | ------- | ----------- |
-| *host* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
-| *port* | pozitív egész szám | 6379 (non-SSL)<br/>6380 (SSL) | Redis-kiszolgáló portja |
+| *gazdagép* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
+| *Port* | pozitív egész szám | 6379 (nem SSL)<br/>6380 (SSL) | Redis-kiszolgáló portja |
 | *accessKey* | sztring | "" | Redis-kiszolgáló jelszavának engedélyezése, ha engedélyezve van a Redis engedélyezése. Alapértelmezés szerint az érték üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló nyilvánosan elérhető hálózatban (például Azure Redis Cache) található, ügyeljen arra, hogy a biztonság növelése érdekében engedélyezze a Redis-engedélyezést, és adjon meg egy biztonságos jelszót.** |
-| *SSL* | logikai | **hamis** | Azt jelzi, hogy SSL-kapcsolaton keresztül kapcsolódik-e a Redis-kiszolgálóhoz. Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja az SSL használatát a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Ha ezt a beállítást használja az SSL-port használatára, válassza az **igaz** értéket. A nem SSL port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
+| *SSL* | logikai | **false** | Azt jelzi, hogy SSL-kapcsolaton keresztül kapcsolódik-e a Redis-kiszolgálóhoz. Alapértelmezés szerint ez az érték **hamis** , mert a Redis nem támogatja az SSL használatát a dobozból. **Ha olyan Azure Redis Cache használ, amely támogatja az SSL-t a jelölőnégyzetből, ügyeljen rá, hogy a biztonság növelése érdekében állítsa igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Ha ezt a beállítást használja az SSL-port használatára, válassza az **igaz** értéket. A nem SSL port engedélyezésével kapcsolatos további információkért tekintse meg a [gyorsítótár konfigurálása](cache-configure.md) témakör [elérési portok](cache-configure.md#access-ports) című szakaszát. |
 | *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Határozza meg, hogy melyik Redis-adatbázist kívánja használni. |
 | *connectionTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *ConnectTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
 | *operationTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *SyncTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
@@ -64,7 +64,7 @@ Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének ért
 | *settingsClassName*<br/>*settingsMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal adhat meg egy kapcsolódási karakterláncot. a *settingsClassName* a *settingsMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *settingsMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **karakterlánc**visszatérési típusával. Ez a metódus a tényleges kapcsolatok karakterláncát adja vissza. |
 | *loggingClassName*<br/>*loggingMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak a web. config vagy a AppSettings használatával adhatók meg.*<br/><br/>Ezekkel az attribútumokkal hibakeresést végezhet az alkalmazásban, ha naplókat biztosít a munkamenet-állapot/kimeneti gyorsítótárból, valamint a StackExchange. Redis naplókat. a *loggingClassName* a *loggingMethodName*által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *loggingMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **System. IO. TextWriter**visszatérési típusával. |
 | *applicationName* | sztring | Az aktuális folyamat moduljának neve vagy "/" | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>A Redis cache-ben használandó alkalmazásnév-előtag. Az ügyfél különböző célokra használhatja ugyanazt a Redis cache-gyorsítótárat. Annak biztosításához, hogy a munkamenetkulcsok ne ütköznek, az alkalmazás neve előtaggal megadható. |
-| *throwOnError* | logikai | true | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError*: [Megjegyzések a *ThrowOnError* ](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
+| *throwOnError* | logikai | igaz | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError*: [Megjegyzések a *ThrowOnError* ](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft. Web. Redis. RedisSessionStateProvider. LastException*. |
 | *retryTimeoutInMilliseconds* | pozitív egész szám | 5000 | *Csak SessionStateProvider*<br/>*Ez az attribútum csak a web. config vagy a AppSettings használatával adható meg.*<br/><br/>Ennyi ideig próbálkozzon újra egy művelet sikertelensége esetén. Ha ez az érték kisebb, mint a *operationTimeoutInMilliseconds*, akkor a szolgáltató nem próbálkozik újra.<br/><br/>További információ a *retryTimeoutInMilliseconds*: [Megjegyzések a *RetryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
 | *redisSerializerType* | sztring | *n/a* | Meghatározza a Microsoft. Web. Redis által megvalósított osztály szerelvényének minősített típusának nevét. ISerializer, amely az értékek szerializálására és deszerializálására szolgáló egyéni logikát tartalmazza. További információ: a [ *redisSerializerType* ismertetése](#about-redisserializertype) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
 |
@@ -198,6 +198,6 @@ Az előző példában a gyorsítótárazott lap az 60 másodperces gyorsítótá
 
 A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [Azure Cache ASP.NET munkamenet-szolgáltatóját a Redis](cache-aspnet-session-state-provider.md).

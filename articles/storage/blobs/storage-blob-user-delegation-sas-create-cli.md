@@ -1,33 +1,35 @@
 ---
 title: Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz az Azure CLI használatával
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre felhasználói delegálási SAS-t (előzetes verzió) Azure Active Directory hitelesítő adatokkal az Azure CLI használatával.
+description: Megtudhatja, hogyan hozhat létre Azure Active Directory hitelesítő adatokkal rendelkező felhasználói delegálási SAS-t az Azure CLI használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371989"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz az Azure CLI-vel (előzetes verzió)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz az Azure CLI-vel
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatai egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz az Azure CLI (előzetes verzió) használatával.
+Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatai egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz az Azure CLI-vel.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="install-the-latest-version-of-the-azure-cli"></a>Az Azure CLI legújabb verziójának telepítése
 
 Ha az Azure CLI-t szeretné használni az SAS Azure AD-beli hitelesítő adatokkal való védelméhez, először győződjön meg arról, hogy telepítette az Azure CLI legújabb verzióját. Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+
+Ha az Azure CLI használatával kívánja létrehozni a felhasználói delegálási SAS-t, győződjön meg róla, hogy telepítette a 2.0.78 vagy újabb verziót. A telepített verziójának vizsgálatához használja a `az --version` parancsot.
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal
 

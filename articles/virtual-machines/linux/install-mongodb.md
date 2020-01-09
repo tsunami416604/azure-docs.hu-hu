@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430294"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>A MongoDB telepítése és konfigurálása Linux rendszerű virtuális gépen
 
@@ -215,7 +215,7 @@ Ezekben a példákban helyileg csatlakozik a MongoDB-példányhoz a virtuális g
 
 Ezek a példák a központi MongoDB környezetet telepítik fejlesztési célokra. Alkalmazza a környezetéhez szükséges biztonsági konfigurációs beállításokat. További információt a [MongoDB biztonsági dokumentációjában](https://docs.mongodb.com/manual/security/)talál.
 
-További információ a sablonok használatával történő létrehozásáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/resource-group-overview.md)).
+További információ a sablonok használatával történő létrehozásáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).
 
 A Azure Resource Manager-sablonok az egyéni szkriptek bővítményét használják a parancsfájlok letöltéséhez és végrehajtásához a virtuális gépeken. További információ: [Az Azure egyéni szkriptek bővítmény használata a Linux Virtual Machines használatával](extensions-customscript.md).
 

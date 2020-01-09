@@ -1,18 +1,17 @@
 ---
 title: Rövid útmutató – Azure Stream Analytics-feladatok létrehozása a Visual Studióval
 description: Ez az útmutató a Stream Analytics-feladatok létrehozásának első lépéseit mutatja be, és segítségével megtanulhatja beállítani a bemeneteket és kimeneteket, és létrehozni egy lekérdezést a Visual Studio használatával.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: ec3318201fd3fe8f7daf78d05bf316fb88914daf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707335"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431530"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával
 
@@ -41,9 +40,9 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
    |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
-   |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** lehetőséget, és adjon hozzá egy új erőforráscsoport-nevet a fiókhoz. |
+   |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. |
    |Region (Régió)  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a IoT Hub üzemeltetheti. Használja a felhasználókhoz legközelebb eső helyet. |
-   |IoT Hub neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
+   |IoT-központ neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
 
    ![IoT Hub létrehozása](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
@@ -170,7 +169,7 @@ Figyelje meg az Azure Stream Analytics-projektben szereplő elemeket.
 
 3. Kattintson a **Run** (Futtatás) parancsra. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
 
-   ![Málna PI Azure IoT online szimulátor](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
+   ![Online Raspberry Pi Azure IoT-szimulátor](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 

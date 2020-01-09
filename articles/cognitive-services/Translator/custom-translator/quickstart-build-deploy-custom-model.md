@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446749"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: egyéni modell összeállítása, üzembe helyezése és használata fordításhoz
 
@@ -37,7 +37,7 @@ Az egyéni Translator portál kezdőlapján kattintson az új projekt elemre. A 
 
 ## <a name="upload-documents"></a>Dokumentumok feltöltése
 
-Ezután töltse fel a [betanítást](training-and-model.md#training-dataset-for-custom-translator), a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator) és a [tesztelési](training-and-model.md#testing-dataset-for-custom-translator) dokumentum-készleteket. Egyszerre több [párhuzamos](what-are-parallel-documents.md) és kombinált dokumentumot is feltölthet. A [szótárat](what-is-dictionary.md)is feltöltheti.
+Ezután töltse fel a [betanítást](training-and-model.md#training-document-type-for-custom-translator), a [hangolást](training-and-model.md#tuning-document-type-for-custom-translator) és a [tesztelési](training-and-model.md#testing-dataset-for-custom-translator) dokumentum-készleteket. Egyszerre több [párhuzamos](what-are-parallel-documents.md) és kombinált dokumentumot is feltölthet. A [szótárat](what-is-dictionary.md)is feltöltheti.
 
 A dokumentumokat a dokumentumok lapról vagy egy adott projekt oldaláról töltheti fel.
 
@@ -49,7 +49,7 @@ Dokumentumok feltöltésekor válassza ki a dokumentum típusát (képzés, hang
 
 Ha az összes szükséges dokumentumot feltöltötte, a következő lépés a modell felépítése.
 
-Válassza ki a létrehozott projektet. Ekkor megjelenik az összes feltöltött dokumentum, amely a jelen projekttel közös nyelvi párral rendelkezik. Válassza ki a modellbe felvenni kívánt dokumentumokat. Kiválaszthatja az [adatképzést](training-and-model.md#training-dataset-for-custom-translator), a [hangolást](training-and-model.md#tuning-dataset-for-custom-translator)és a [tesztelést](training-and-model.md#testing-dataset-for-custom-translator) , vagy kiválaszthatja a csak betanítási adatait, és lehetővé teheti, hogy a Custom Translator automatikusan kiépítse a modell
+Válassza ki a létrehozott projektet. Ekkor megjelenik az összes feltöltött dokumentum, amely a jelen projekttel közös nyelvi párral rendelkezik. Válassza ki a modellbe felvenni kívánt dokumentumokat. Kiválaszthatja az [adatképzést](training-and-model.md#training-document-type-for-custom-translator), a [hangolást](training-and-model.md#tuning-document-type-for-custom-translator)és a [tesztelést](training-and-model.md#testing-dataset-for-custom-translator) , vagy kiválaszthatja a csak betanítási adatait, és lehetővé teheti, hogy a Custom Translator automatikusan kiépítse a modell
 
 ![Modell létrehozása](media/quickstart/ct-how-to-train.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: c03a7cb28820ef8aca4e10314a424ea068cb3cee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 03f8bffafe9ebfd95d439f920a5e00be27810c96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444230"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Adatok másolása a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -47,7 +47,7 @@ A Integration Runtime a 3,7-es verziótól kezdődően beépített MySQL-illeszt
 
 Az 3,7-nál kisebb, saját üzemeltetésű IR-verziók esetében telepítenie kell a [MySQL-összekötőt/hálót a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) -verzióra a 6.6.5 és a 6.10.7 között a Integration Runtime gépen. Ez a 32 bites illesztőprogram kompatibilis a 64 bites IR-vel.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,7 +60,7 @@ A MySQL-hez társított szolgáltatás a következő tulajdonságokat támogatja
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **MySQL** | Igen |
-| connectionString | Az Azure Database for MySQL-példányhoz való kapcsolódáshoz szükséges adatok meghatározása.<br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| connectionString | Az Azure Database for MySQL-példányhoz való kapcsolódáshoz szükséges adatok meghatározása.<br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`a kapcsolatok karakterlánca. További tulajdonságok állíthatók be az egyes esetekben:
@@ -68,7 +68,7 @@ Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=
 | Tulajdonság | Leírás | Beállítások | Szükséges |
 |:--- |:--- |:--- |:--- |
 | SSLMode | Ez a beállítás határozza meg, hogy az illesztőprogram SSL-titkosítást és ellenőrzést használ-e a MySQL-hez való kapcsolódáskor. Például `SSLMode=<0/1/2/3/4>`| Letiltva (0)/ELŐNYben részesített (1) **(alapértelmezett)** /kötelező (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nem |
-| useSystemTrustStore | Ezzel a beállítással adható meg, hogy a rendszer egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ-e a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1)/Letiltva (0) **(alapértelmezett)** | Nem |
+| UseSystemTrustStore | Ezzel a beállítással adható meg, hogy a rendszer egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használ-e a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1)/Letiltva (0) **(alapértelmezett)** | Nem |
 
 **Példa**
 
@@ -78,10 +78,7 @@ Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=
     "properties": {
         "type": "MySql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -99,10 +96,7 @@ Egy tipikus `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=
     "properties": {
         "type": "MySql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

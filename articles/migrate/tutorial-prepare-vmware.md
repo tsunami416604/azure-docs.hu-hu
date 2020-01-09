@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196239"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454549"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware virtuális gépek előkészítése az Azure-ba történő értékeléshez és áttelepítéshez
 
@@ -21,7 +21,7 @@ Ez a cikk segít felkészülni a helyszíni VMware virtuális gépek felmérés�
 [Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
 
 
-Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
@@ -124,7 +124,7 @@ A berendezés telepítésének megkezdése előtt tekintse meg a készülékre v
 
 1. [Ellenőrizze](migrate-support-matrix-vmware.md#assessment-appliance-requirements) a berendezések követelményeit és korlátozásait.
 2. Ha URL-alapú tűzfal-proxyt használ, [tekintse át](migrate-support-matrix-vmware.md#assessment-url-access-requirements) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie. Győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fogadott CNAME-rekordokat.
-3. Tekintse át a [teljesítményadatokat](migrate-appliance.md#collected-performance-data-vmware)] és a [metaadatokat](migrate-appliance.md#collected-metadata-vmware) , amelyeket a készülék a felderítés és az értékelés során gyűjt.
+3. Tekintse át azokat a [teljesítményadatokat](migrate-appliance.md#collected-performance-data-vmware) és [metaadatokat](migrate-appliance.md#collected-metadata-vmware) , amelyeket a berendezés a felderítés és az értékelés során gyűjt.
 4. [Jegyezze](migrate-support-matrix-vmware.md#assessment-port-requirements) fel a berendezés által elért portokat.
 5. VCenter Serveron ellenőrizze, hogy a fiókja rendelkezik-e engedéllyel egy virtuális gép létrehozásához PETESEJT-fájl használatával. A Azure Migrate berendezést VMware virtuális gépként helyezi üzembe a PETESEJT-fájl használatával.
 
@@ -156,7 +156,7 @@ Tekintse át a VMware virtuális gépek [ügynök-alapú áttelepítésének](se
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Azure-engedélyek beállítása.

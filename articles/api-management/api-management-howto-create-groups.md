@@ -1,5 +1,6 @@
 ---
-title: Fejlesztői fiókok kezelése a csoportok használatával az Azure API Managementban | Microsoft Docs
+title: Fejlesztői fiókok kezelése az Azure-beli csoportok használatával API Management
+titleSuffix: Azure API Management
 description: Ismerje meg, hogyan kezelheti a fejlesztői fiókokat az Azure-beli csoportok használatával API Management
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430710"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Csoportok létrehozása és használata a fejlesztői fiókok kezeléséhez az Azure-ban API Management
 
@@ -39,7 +40,7 @@ A kiadói portálon a csoportok létrehozása és kezelése mellett a API Manage
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő feladatok elvégzése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
+A cikkben található feladatok végrehajtása: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -52,7 +53,7 @@ Ez a szakasz bemutatja, hogyan vehet fel új csoportot a API Management-fiókjá
 3. Adjon meg egy egyedi nevet a csoportnak, és egy opcionális leírást.
 4. Nyomja meg a **Create** (Létrehozás) gombot.
 
-    ![Új csoport hozzáadása](./media/api-management-howto-create-groups/groups001.png)
+    ![Új csoport felvétele](./media/api-management-howto-create-groups/groups001.png)
 
 A csoport létrehozása után a rendszer hozzáadja a **csoportok** listájához. <br/>A csoport **nevének** vagy **leírásának** szerkesztéséhez kattintson a csoport és a **Beállítások**nevére.<br/>A csoport törléséhez kattintson a csoport nevére, majd nyomja le a **delete**billentyűt.
 
@@ -84,17 +85,17 @@ Ha egy termék társítva van egy csoporthoz, akkor a csoport fejlesztői megtek
 Ez a szakasz bemutatja, hogyan lehet csoportokat társítani a tagokkal.
 
 1. Válassza a **csoportok** fület a képernyő bal oldalán.
-2. Válasszon **tagokat**.
+2. Válassza ki a **Members** (Tagok) elemet.
 
-    ![Tag hozzáadása](./media/api-management-howto-create-groups/groups005.png)
+    ![Tag felvétele](./media/api-management-howto-create-groups/groups005.png)
 3. Kattintson a **+ Hozzáadás** gombra, és válasszon ki egy tagot.
 
-    ![Tag hozzáadása](./media/api-management-howto-create-groups/groups006.png)
+    ![Tag felvétele](./media/api-management-howto-create-groups/groups006.png)
 4. Kattintson a **kiválasztás**gombra.
 
 Miután hozzáadta a társítást a fejlesztőhöz és a csoporthoz, a **felhasználók** lapon tekintheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"> </a>További lépések
 
 * Miután hozzáadta a fejlesztőt egy csoporthoz, megtekintheti és előfizethet az adott csoporthoz társított termékekre. További információkért lásd: [termék létrehozása és közzététele az Azure-ban API Management][How create and publish a product in Azure API Management],
 * A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.

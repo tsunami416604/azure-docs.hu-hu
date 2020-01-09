@@ -1,19 +1,18 @@
 ---
 title: A CI/CD használata a REST API-kkal IoT Edge-eszközökön futó Azure Stream Analytics
 description: Ismerje meg, hogyan valósítható meg a folyamatos integrációs és üzembe helyezési folyamat a REST API-k használatával történő Azure Stream Analytics.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: a716991eaa84a6937c959885ff9c4ae5c18be35e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 78f2e06947c2b81ffe5e6cd8a88438db4dabf158
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426416"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementálása IoT Edge Stream Analyticshoz API-k használatával
 
@@ -145,7 +144,7 @@ Ha Stream Analytics feladatot szeretne közzétenni IoT Edge, hívja meg a POST 
 
 |Módszer|Kérés URL-címe|
 |------|-----------|
-|UTÁNI|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage? API-Version = 2017-04 -01-előzetes verzió|
+|POST|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage? API-Version = 2017-04 -01-előzetes verzió|
 
 Ez az aszinkron művelet a 202-es állapotot adja vissza, amíg a feladatot nem sikerült közzétenni. A hely válaszának fejléce tartalmazza a folyamat állapotának lekéréséhez használt URI-t. A folyamat futása közben a Location fejlécben lévő URI-hívás a 202-es állapotot adja vissza. A folyamat befejeződése után a Location fejlécben lévő URI a 200-es állapotot adja vissza. 
 

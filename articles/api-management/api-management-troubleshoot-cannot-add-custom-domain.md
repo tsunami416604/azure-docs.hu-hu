@@ -1,5 +1,6 @@
 ---
-title: Nem adható hozzá egyéni tartomány Key Vault-tanúsítvány használatával az Azure-ban API Management | Microsoft Docs
+title: Nem adható hozzá egyéni tartomány Key Vault tanúsítvány használatával
+titleSuffix: Azure API Management
 description: Ismerje meg, hogy miként lehet elhárítani a problémát, amelyben a Key Vault-tanúsítvánnyal nem adhat hozzá egyéni tartományt az Azure API Managementban.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430573"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nem sikerült frissíteni API Management Service-gazdagépeket
 
@@ -27,7 +28,7 @@ Ez a cikk a "nem sikerült frissíteni API Management Service hostnames" hibát 
 
 Ha a API Management szolgáltatáshoz egyéni tartományt próbál felvenni egy Azure Key Vault tanúsítványának használatával, a következő hibaüzenet jelenik meg:
 
-- Nem sikerült frissíteni API Management Service-gazdagépeket. A (z)https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0"" erőforrásra irányuló kérelem sikertelen a következő statuscode: Kérelemazonosító esetében tiltott:. Kivétel üzenete: A művelet érvénytelen állapotkódot adott vissza: "tiltott".
+- Nem sikerült frissíteni API Management Service-gazdagépeket. A (z) "https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0" erőforrásra irányuló kérelem meghiúsult a következővel: StatusCode: tiltott, kérelemazonosító:. Kivételt jelző üzenet: a művelet érvénytelen állapotkódot ("tiltott") adott vissza.
 
 ## <a name="cause"></a>Ok
 
@@ -38,22 +39,22 @@ A API Management szolgáltatásnak nincs engedélye arra, hogy hozzáférjen az 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg a [Azure Portal](Https://portal.azure.com), válassza ki a API Management példányt, majd válassza a **felügyelt identitások**lehetőséget. Győződjön meg arról, hogy a **regisztráció a Azure Active Directory** beállítás értéke **Igen**. 
-    ![Regisztrálás az Azure Active Director-ban](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
+    ![regisztrálni az Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
 1. A Azure Portal nyissa meg a **Key Vaults** szolgáltatást, és válassza ki az egyéni tartományhoz használni kívánt kulcstartót.
 1. Válassza a **hozzáférési szabályzatok**lehetőséget, és győződjön meg arról, hogy van-e olyan egyszerű szolgáltatásnév, amely megfelel az API Management Service-példány nevével. Ha van, válassza ki a szolgáltatásnevet, és győződjön meg arról, hogy a **Get** engedély szerepel a **titkos engedélyek**területen.  
-    ![Hozzáférési szabályzat hozzáadása a szolgáltatásnév számára](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
+    ![hozzáférési szabályzat hozzáadása az egyszerű szolgáltatáshoz](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
 1. Ha a API Management szolgáltatás nem szerepel a listában, válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd hozza létre a következő hozzáférési szabályzatot:
-    - **Konfigurálás sablonból**: Nincsenek
-    - **Rendszerbiztonsági tag kiválasztása**: Keresse meg a API Management szolgáltatás nevét, majd válassza ki a listából.
-    - **Kulcs engedélyei**: Nincsenek
-    - **Titkos kód engedélyei**: Lekérés
-    - **Tanúsítvány engedélyei**: Nincsenek
+    - **Konfigurálás sablonból**: nincs
+    - **Válasszon rendszerbiztonsági tag**: keresse meg a API Management szolgáltatás nevét, majd válassza ki a listából.
+    - **Kulcs engedélyei**: nincs
+    - **Titkos engedélyek**: Get
+    - **Tanúsítvány engedélyei**: nincs
 1. A hozzáférési házirend létrehozásához kattintson **az OK gombra** .
-1. Válassza ki **mentése** menti a módosításokat.
+1. A módosítások mentéséhez kattintson a **Mentés** gombra.
 
-Ellenőrizze, hogy a probléma megoldódott. Ehhez próbálja meg létrehozni az egyéni tartományt a API Management szolgáltatásban a Key Vault tanúsítvány használatával.
+Győződjön meg arról, hogy a probléma megoldódott-e. Ehhez próbálja meg létrehozni az egyéni tartományt a API Management szolgáltatásban a Key Vault tanúsítvány használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a API Management szolgáltatásról:
 
 - További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell szkript – nagy méretű partíciós kulccsal rendelkező tároló létrehozása Azure Cosmos-fiókban
+title: PowerShell-szkript egy nagy partíciós kulccsal rendelkező Azure Cosmos-tároló létrehozásához
 description: Azure PowerShell parancsfájl-minta – hozzon létre egy tárolót egy nagy partíciós kulccsal egy Azure Cosmos-fiókban
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8c4d117a77afe140ba2bc803f0ac146d4c6a8182
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ecc5e7c13d898f89bbd6b542faf69834de26e0e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444979"
 ---
 # <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>Tároló létrehozása nagyméretű partíciós kulccsal egy Azure Cosmos-fiókban a PowerShell használatával
 
@@ -39,12 +39,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
+| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
 |**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

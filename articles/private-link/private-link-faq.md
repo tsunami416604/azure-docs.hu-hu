@@ -2,17 +2,17 @@
 title: Azure Private-hivatkozás – gyakori kérdések (GYIK)
 description: További információ az Azure Private linkről.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349941"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
 
@@ -28,6 +28,7 @@ A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az inter
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Mi a különbség a szolgáltatási végpontok és a privát végpontok között?
 - Privát végpontok használata esetén a hálózati hozzáférés egy adott szolgáltatás mögötti, részletes szegmentálást biztosító erőforrásokhoz van biztosítva, a forgalom azonban a helyi végpontok használata nélkül is elérheti a szolgáltatási erőforrást a helyszínen.
+- A szolgáltatási végpontok egy nyilvánosan irányítható IP-címen maradnak.  A privát végpont a magánhálózati IP-cím azon virtuális hálózat címterület területén, ahol a magánhálózati végpont konfigurálva van.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Mi a kapcsolat a Private link Service és a privát végpont között?
 A privát végpont több privát kapcsolati erőforrás-típushoz biztosít hozzáférést, beleértve az Azure Pásti-szolgáltatásokat és a saját privát kapcsolati szolgáltatását. Ez egy-a-többhöz kapcsolat. Egy privát kapcsolati szolgáltatás több privát végpontról is fogadhat kapcsolatokat. Másfelől az egyik privát végpont csak egy privát kapcsolati szolgáltatáshoz tud csatlakozni.    
@@ -46,7 +47,7 @@ Igen. A privát végpontok a Private link Serviceshez vagy az Azure Pástihez is
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Csatlakozhatnak a privát végpontok az Azure Pásti-erőforrásokhoz az Azure-régiók között?
 Igen. A privát végpontok Azure Pásti-erőforrásokhoz is csatlakozhatnak az Azure-régiók között.
 
-## <a name="private-link-service"></a>Privát kapcsolati szolgáltatás
+## <a name="private-link-service"></a>Privát kapcsolatszolgáltatás
  
 ### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>Mik a Private link Service létrehozásához szükséges előfeltételek? 
 A szolgáltatás hátterének virtuális hálózatban kell lennie, és egy standard Load Balancer mögött kell lennie.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363523"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics munkaterület kezelése a Azure Monitor a PowerShell használatával
 
@@ -177,6 +177,10 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> Az egyéni naplók konfigurációját definiáló **CustomLogRawJson** paraméter formátuma összetett lehet. Egy meglévő egyéni napló konfigurációjának beolvasása a [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) használatával. A **Properties (Tulajdonságok** ) tulajdonság a **CustomLogRawJson** paraméterhez szükséges konfiguráció.
+
 A fenti példában a regexDelimiter "\\n" értékkel lett definiálva a sortöréshez. A naplózási határolójel is lehet időbélyeg.  A támogatott formátumok a következők:
 
 | Formátum | A JSON RegEx formátuma két \\ használ a standard RegExben, így ha egy RegEx alkalmazásban végzett tesztelés csökkenti \\ | | |

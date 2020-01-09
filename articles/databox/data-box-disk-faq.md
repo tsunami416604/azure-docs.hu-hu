@@ -8,14 +8,14 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e5625ad7c9997c172aef6ead41b7cfa9ede652dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438640"
 ---
-# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Gyakori kérdések
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
 A Microsoft Azure Data Box Disk felhőalapú megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi adatot az Azure-ba. A GYIK a Data Box Disk-lemezek Azure Portalon történő használatával kapcsolatban esetlegesen felmerülő kérdésekre ad választ. 
 
@@ -23,8 +23,8 @@ A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosított
 
 - Tudnivalók a szolgáltatásról
 - Konfigurálás és csatlakoztatás 
-- Állapotkövetés
-- Adatok migrálása 
+- Állapot nyomon követése
+- Adatok áttelepítése 
 - Adatok ellenőrzése és feltöltése 
 
 
@@ -107,13 +107,13 @@ Miután az Adatmásolás és az érvényesítés befejeződött, hajtsa végre a
 4. Használja ezt a kódot, és küldje el e-mailben a [Azure Data Box Operations csapatnak](mailto:adbops@microsoft.com) , és adja meg nekik a kódot. A felhasználók a lemezek ledobásának helyét és időpontját is megadják.
 
 
-## <a name="migrate-data"></a>Adatok migrálása
+## <a name="migrate-data"></a>Adatok áttelepítése
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>K. Legfeljebb mekkora méretű adat esetén használhatók a Data Box Disk-lemezek?  
 A.  A Data Box Disk megoldással legfeljebb 5, összesen 35 TB-os felhasználható kapacitással rendelkező lemez használható. Maguk a lemezek 8 TB-osak (amelyből 7 használható fel).
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>K. Mekkora a Data Box Disk-lemezeken támogatott legnagyobb blokkblob és lapblob mérete? 
-A.  A legnagyobb méreteket az Azure Storage tárhelykorlátai határozzák meg. A legnagyobb blokkblob mérete körülbelül 4,768 TiB, a legnagyobb lapblob mérete pedig 8 TiB. További információkért lásd: [Azure Storage Scalability and Performance Targets](../storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
+A.  A legnagyobb méreteket az Azure Storage tárhelykorlátai határozzák meg. A legnagyobb blokkblob mérete körülbelül 4,768 TiB, a legnagyobb lapblob mérete pedig 8 TiB. További információkért lásd [a blob Storage skálázhatósági és teljesítménybeli céljait](../storage/blobs/scalability-targets.md)ismertető témakört.
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>K. Milyen adatátviteli sebességgel rendelkeznek a Data Box Disk-lemezek?
 A. A tesztjeink során USB 3.0-ás kapcsolat esetén a lemezeknél 430 MB/s-os adatátviteli sebességet is mértünk. A tényleges szám a használt fájl méretének függvényében eltérő lehet. Kisebb fájlok esetén gyengébb teljesítmény figyelhető meg.
@@ -127,7 +127,7 @@ A.  Az adatok egy SMB-másoló eszköz, például a Robocopy vagy a Diskboss has
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A pontos parancs használatáról [további információt a következő oktatóanyagban olvashat: adatok Azure Data Box Diskre történő másolását és ellenőrzését](data-box-disk-deploy-copy-data.md#copy-data-to-disks) ismertető oktatóanyagot.
+- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A ténylegesen használt parancsokkal kapcsolatban további információkat a következő oktatóanyagban talál: [Oktatóanyag: Adatok másolása az Azure Data Box Disk-lemezre, és az adatok ellenőrzése](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyre a lemezeket csatlakoztatja.
 - Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [USBView eszközt](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview), amellyel azonosíthatja a számítógép USB-vezérlőit és a számítógéphez kapcsolódó USB-s eszközöket.
@@ -145,9 +145,9 @@ A.  Nem. A Data Box Disk-lemezekkel jelenleg csak egyetlen általános célú va
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>K. Milyen eszközkészlet érhető el az adataim Data Box lemezzel?
 A. A Data Box Disk elérhető eszközkészlet három eszközt tartalmaz:
- - **Data Box Disk-feloldási eszköz**: Ezzel az eszközzel oldhatja fel a Microsoft által szállított titkosított lemezeket. Ha a lemezeket az eszközzel oldja fel, meg kell adnia a Azure Portal Data Box Disk sorrendjében elérhető hozzáférési kulcsot. 
- - **Data Box Disk ellenőrző eszköz**: Ezzel az eszközzel ellenőrizheti a méretet, a formátumot és a blob nevét az Azure elnevezési konvenciók szerint. Emellett ellenőrzőösszegeket is generál a másolt adatfájlokhoz, amelyeket azután az Azure-ba feltöltött adatellenőrzéshez használ a rendszer.
- - **Data Box Disk a felosztott másolási eszköz**: Akkor használja ezt az eszközt, ha több lemezt használ, és olyan nagy adatkészlettel rendelkezik, amelyet az összes lemezre el kell osztani és át kell másolni. Ez az eszköz jelenleg Windows rendszeren érhető el. Ez az eszköz felügyelt lemezek esetén nem támogatott. Ez az eszköz azt is ellenőrzi, hogy az Adatmásolás során az adatmásolási lépés kihagyható-e az eszköz használatakor.
+ - **Data Box Disk-feloldási eszköz**: ezzel az eszközzel oldhatja fel a Microsoft által szállított titkosított lemezeket. Ha a lemezeket az eszközzel oldja fel, meg kell adnia a Azure Portal Data Box Disk sorrendjében elérhető hozzáférési kulcsot. 
+ - **Data Box Disk érvényesítési eszköz**: ezzel az eszközzel ellenőrizheti a méretet, a formátumot és a blob nevét az Azure elnevezési konvenciók szerint. Emellett ellenőrzőösszegeket is generál a másolt adatfájlokhoz, amelyeket azután az Azure-ba feltöltött adatellenőrzéshez használ a rendszer.
+ - **Data Box Disk megosztott másolási eszköz**: akkor használja ezt az eszközt, ha több lemezt használ, és olyan nagy adatkészlettel rendelkezik, amelyet az összes lemezre el kell osztani és át kell másolni. Ez az eszköz jelenleg Windows rendszeren érhető el. Ez az eszköz felügyelt lemezek esetén nem támogatott. Ez az eszköz azt is ellenőrzi, hogy az Adatmásolás során az adatmásolási lépés kihagyható-e az eszköz használatakor.
 
 Az eszközkészlet a Windows és a Linux rendszerhez egyaránt elérhető. Az eszközkészletet innen töltheti le:
 - [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
@@ -189,7 +189,7 @@ A. Igen. Az adatai az Azure-ba lettek feltöltve, de ha nem lát felügyelt leme
  - A Azure Files egy blokk blob-tárolóba kerül, amely a *databoxdisk-érvénytelen-AF-* -vel kezdődik.
  - A felügyelt lemezek egy blokk blob-tárolóba kerülnek, amely a következővel kezdődik: *databoxdisk-érvénytelen-MD-* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Data Box Disk rendszerkövetelményeit](data-box-disk-system-requirements.md).
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
