@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497811"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529609"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
@@ -23,14 +23,14 @@ Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismert
 Ezzel a modullal az adatok betölthetők egy gépi tanulási folyamatba a meglévő felhőalapú adatszolgáltatásokból. 
 
 > [!Note]
-> A modul által biztosított összes funkció az **adattár** és az **adatkészletek** segítségével végezhető el a munkaterület üzemelő példányának kezdőlapján. Javasoljuk, hogy az adattárat és az **adatkészletet** **használja, amely** olyan további funkciókat is tartalmaz, mint az adatfigyelés További információk: [az adathozzáférés](../service/how-to-access-data.md) és [az adatkészletek regisztrálása](../service/how-to-create-register-datasets.md) című cikk.
+> A modul által biztosított összes funkció az **adattár** és az **adatkészletek** segítségével végezhető el a munkaterület üzemelő példányának kezdőlapján. Javasoljuk, hogy az adattárat és az **adatkészletet** **használja, amely** olyan további funkciókat is tartalmaz, mint az adatfigyelés További információk: [az adathozzáférés](../how-to-access-data.md) és [az adatkészletek regisztrálása](../how-to-create-register-datasets.md) című cikk.
 > Az adatkészlet regisztrálása után megkeresheti azt az **adatkészletekben** , -> a **saját adatkészletek** kategóriáját a Designer felületen. Ez a modul Studio (klasszikus) felhasználók számára van fenntartva ismerős élmény érdekében. 
 >
 
 Először válassza ki az olvasni kívánt forrást, és fejezze be a további beállításokat. Az **adatimportálási** modul támogatja az adatok olvasását az alábbi forrásokból:
 
 - URL-cím HTTP-n keresztül
-- Azure Cloud Storage adattárolók [**használatával)** ](../service/how-to-access-data.md)
+- Azure Cloud Storage adattárolók [**használatával)** ](../how-to-access-data.md)
     - Azure Blob-tároló
     - Azure-fájlmegosztás
     - Azure Data Lake
@@ -38,7 +38,7 @@ Először válassza ki az olvasni kívánt forrást, és fejezze be a további b
     - Azure SQL Database
     - Azure PostgreSQL    
 
-A felhőalapú tárolás használata előtt először regisztrálnia kell egy adattárat a Azure Machine Learning-munkaterületen. További információ: [az adatok elérése](../service/how-to-access-data.md). 
+A felhőalapú tárolás használata előtt először regisztrálnia kell egy adattárat a Azure Machine Learning-munkaterületen. További információ: [az adatok elérése](../how-to-access-data.md). 
 
 A kívánt adatok definiálása és a forráshoz való kapcsolódás után az **[adatok importálása](./import-data.md)** az egyes oszlopok adattípusát következteti ki a benne foglalt értékek alapján, és betölti az adatait a tervezői folyamatba. Az **importálási adat** kimenete egy olyan adatkészlet, amely bármely tervezői folyamattal használható.
 
@@ -74,7 +74,7 @@ Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatok
 
     Ha az adatsorokban nem találhatók oszlopfejlécek, az új oszlopnevek a col1, a col2,... formátum használatával jönnek létre. , Coln *.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Amikor az importálás befejeződik, kattintson a kimeneti adatkészletre, és válassza a **Megjelenítés** lehetőséget, hogy megtekintse az adatokat az importálás sikeres volt-e.
 
@@ -88,6 +88,6 @@ Az információk importálása után szükség lehet néhány további modellez�
 
 - A [Partition és a Sample](./partition-and-sample.md) használatával ossza fel az adatkészletet, végezzen mintavételezést, vagy töltse le az első n sort.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

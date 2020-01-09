@@ -3,17 +3,17 @@ title: Használja az Azure IoT-bővítményt az Azure CLI-hez a IoT Plug and Pla
 description: Telepítse az Azure IoT-bővítményt az Azure CLI-hez, és használja az IoT hub-hoz csatlakoztatott IoT Plug and Play eszközök használatához.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571016"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529575"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
 
@@ -26,7 +26,7 @@ Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a IoT Plug
 - Az eszköz tulajdonságainak használata.
 - Hívja meg az eszköz parancsait.
 
-Ez a cikk bemutatja, hogyan végezheti el a következőket:
+Ez a cikk a következőkhöz nyújt útmutatást:
 
 - Az Azure IoT bővítmény telepítése és konfigurálása az Azure CLI-hez.
 - Használja a bővítményt az eszközök használatához és teszteléséhez.
@@ -228,6 +228,6 @@ az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyMo
 
 Csak Microsoft-partnerek tehetnek közzé modelleket a nyilvános modell adattárában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure CLI-hez készült Azure IoT-bővítményt az Plug and Play-eszközökkel való kommunikációhoz. Egy javasolt következő lépés a [modellek kezelésének](./howto-manage-models.md)megismerése.

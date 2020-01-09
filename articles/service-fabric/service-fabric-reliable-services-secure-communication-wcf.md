@@ -1,32 +1,23 @@
 ---
-title: Biztonságos WCF-alapú szolgáltatás-kommunikáció az Azure Service Fabricban | Microsoft Docs
+title: Biztonságos WCF-alapú szolgáltatás-kommunikáció
 description: Ismerje meg, hogyan védheti meg a WCF-alapú kommunikációt az Azure Service Fabric-fürtön futó megbízható szolgáltatások esetében.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 31a7a3a42436f3a818fcf48f2af5ca395fa02386
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170417"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614162"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Biztonságos WCF-alapú kommunikáció egy szolgáltatáshoz
 A biztonság a kommunikáció egyik legfontosabb aspektusa. A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ez a cikk arról beszél, hogyan javíthatja a biztonságot a szolgáltatás távelérésének használatakor.
 
 Egy meglévő [példát](service-fabric-reliable-services-communication-wcf.md) használunk, amely elmagyarázza, hogyan állíthat be egy WCF-alapú kommunikációs veremet a megbízható szolgáltatásokhoz. Ha WCF-alapú kommunikációs verem használatával kívánja biztonságossá tenni a szolgáltatást, kövesse az alábbi lépéseket:
 
-1. A szolgáltatáshoz a létrehozott WCF kommunikációs figyelő (`WcfCommunicationListener`) védelmére van szükség. Ehhez módosítsa a `CreateServiceReplicaListeners` metódust.
+1. A szolgáltatáshoz segítenie kell a létrehozott WCF kommunikációs figyelő (`WcfCommunicationListener`) védelmét. Ehhez módosítsa a `CreateServiceReplicaListeners` metódust.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -63,7 +54,7 @@ Egy meglévő [példát](service-fabric-reliable-services-communication-wcf.md) 
         return b;
     }
     ```
-2. Az ügyfélben az előző [példában](service-fabric-reliable-services-communication-wcf.md) létrehozott `WcfCommunicationClient` osztály változatlan marad. Azonban felül kell bírálnia a `CreateClientAsync` `WcfCommunicationClientFactory` metódust:
+2. Az ügyfélben az előző [példában](service-fabric-reliable-services-communication-wcf.md) létrehozott `WcfCommunicationClient` osztály változatlan marad. Azonban felül kell bírálnia `WcfCommunicationClientFactory``CreateClientAsync` módszerét:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class

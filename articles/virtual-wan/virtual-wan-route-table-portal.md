@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534136"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612360"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Hozzon létre egy virtuális WAN hub útválasztási táblázatot a NVA: Azure Portal
 
 Ebből a cikkből megtudhatja, hogyan irányíthatja át a forgalmat egy olyan ág (helyszíni hely) felé, amely a virtuális WAN-hubhoz csatlakozik egy küllős vnet egy hálózati virtuális berendezésen (NVA) keresztül.
 
-![A Virtual WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
+![Virtuális WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
@@ -67,7 +67,7 @@ Hozza létre a hubot. A gyakorlat szempontjából a következő értékeket hasz
 
 Frissítse a hubot egy hub útválasztási táblázattal. A gyakorlat szempontjából a következő értékeket használhatja:
 
-* **Közvetett küllő VNet:** (VNet1 és VNet2) 10.0.2.0/24 és 10.0.3.0/24
+* **Küllős VNet:** (VNet1 és VNet2) 10.0.2.0/24 és 10.0.3.0/24
 * **DMZ NVA hálózati adapter magánhálózati IP-címe:** 10.0.4.5
 
 1. Navigáljon a virtuális WAN-ra.

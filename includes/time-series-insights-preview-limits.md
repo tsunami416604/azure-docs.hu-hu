@@ -4,17 +4,17 @@ description: fájl belefoglalása
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 12/31/2019
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: be46a0dda24dc990e895a3e983c730337f9cf31d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 90e6e5c8d6d4f10e2d63f80b9c0840854424f5a7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980694"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75616216"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Általános elérhetőség és előzetes verzió összehasonlítása
 
@@ -49,6 +49,8 @@ A példányok száma legfeljebb két eseményforrás esetén támogatott.
 
 * Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
+
+Alapértelmezés szerint az [előzetes verziójú környezetek](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) legfeljebb **1 megabájt/másodperc (MB/s)** sebességű bejövő forgalmat támogatnak. Ha szükséges, az ügyfelek akár **16 MB/s** sebességig méretezhetik az előzetes verziójú környezeteket. A partíciós korlát **0,5 MB/s**. 
 
 ### <a name="api-limits"></a>API-korlátok
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215562"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529643"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -43,7 +43,7 @@ A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhet�
 > [!IMPORTANT]
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.orgon ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/).
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között számos közösségi webhely használható, például a [következőhöz: HDInsight MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek [https://apache.org on ](https://apache.org)is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="understand-default-python-installation"></a>A Python alapértelmezett telepítésének ismertetése
 
@@ -52,8 +52,8 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 | |Python 2.7|Python 3,5|
 |----|----|----|
 |Útvonal|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Alapértelmezett érték 2,7|N/A|
-|Livy|Alapértelmezett érték 2,7|N/A|
+|Spark|Alapértelmezett érték 2,7|–|
+|Livy|Alapértelmezett érték 2,7|–|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
@@ -81,7 +81,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    Ha nem ismeri a virtuális környezet nevét, az SSH-t használhatja a fürt fejléc-csomópontjára, és `/usr/bin/anaconda/bin/conda info -e` futtathatja az összes virtuális környezet megjelenítéséhez.
+    Ha nem ismeri a virtuális környezet nevét, az SSH-t használhatja a fürt fő csomópontjára, és `/usr/bin/anaconda/bin/conda info -e` futtathatja az összes virtuális környezet megjelenítéséhez.
 
 3. Módosítsa a Spark és a Livy konfigurációját, és mutasson a létrehozott virtuális környezetre.
 
@@ -130,7 +130,7 @@ A anaconda verziójának megkereséséhez az SSH-t használhatja a fürt fejléc
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
 * [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
 * [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)

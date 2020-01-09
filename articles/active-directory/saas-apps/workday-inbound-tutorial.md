@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849334"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613762"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -120,7 +120,7 @@ A munkafolyamatok munkanap és Active Directory közötti kiépítés megkönny�
 > A normál "munkanap" alkalmazás a munkanapok és a Azure Active Directory közötti egyszeri bejelentkezés beállítására szolgál.
 
 Az alábbi döntési folyamatábra segítségével azonosíthatja, hogy mely munkanapokat kell kiépíteni az adott forgatókönyvhöz.
-    ![Döntési folyamatábra](./media/workday-inbound-tutorial/wday_app_flowchart.png "DecisIon-folyamatábra ")
+    ![Döntési folyamatábra](./media/workday-inbound-tutorial/wday_app_flowchart.png "Döntési folyamatábra")
 
 A tartalomjegyzék használatával lépjen az oktatóanyag vonatkozó szakaszára.
 
@@ -366,9 +366,9 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a mu
 
 **Munkanapok konfigurálása Active Directory kiépítés megkezdéséhez:**
 
-1. Nyissa meg a következőt: <https://portal.azure.com>
+1. Nyissa meg a következőt: <https://portal.azure.com>.
 
-2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
+2. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
 
 3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
 
@@ -376,9 +376,9 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a mu
 
 5. Keresse meg a **munkanapokon való kiépítés Active Directoryét**, és adja hozzá az alkalmazást a katalógusból.
 
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés**lehetőséget.
 
-7. A **kiépítési** **mód** módosítása **automatikusra**
+7. Módosítsa a **kiépítési** **módot** **automatikusra**.
 
 8. A kiépítési ügynök letöltéséhez kattintson a megjelenő információs szalagcímre. 
 
@@ -468,11 +468,11 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
 
      > [!NOTE]
-     > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) állapotba kerülnek.
+     > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanapokhoz tartozó hitelesítő adatok és az ügynök telepítésére konfigurált AD hitelesítő adatok érvényesek-e.
 
-     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure portál](./media/workday-inbound-tutorial/wd_1.png)
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett hozzárendelések **szinkronizálása munkanapokat a helyszíni munkatársaival Active Directory**
 
@@ -537,7 +537,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
 1. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure portál](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Az alábbiakban néhány példát mutatunk be a munkanap és a Active Directory között, néhány gyakori kifejezéssel
 
@@ -593,7 +593,7 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
 1. Nyissa meg a következőt: <https://portal.azure.com>.
 
-2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
+2. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
 
 3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
 
@@ -601,9 +601,9 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
 5. Keresse meg a **munkanapokat az Azure ad**-ben, és adja hozzá az alkalmazást a katalógusból.
 
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés**lehetőséget.
 
-7. A **kiépítési** **mód** módosítása **automatikusra**
+7. Módosítsa a **kiépítési** **módot** **automatikusra**.
 
 8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
@@ -688,9 +688,9 @@ Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasznál
 
 **A munkanap visszaírási-összekötő konfigurálása:**
 
-1. Nyissa meg a következőt: <https://portal.azure.com>
+1. Nyissa meg a következőt: <https://portal.azure.com>.
 
-2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
+2. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
 
 3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás**lehetőséget.
 
@@ -698,9 +698,9 @@ Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasznál
 
 5. Keresse meg a **munkanap visszaírási**, és adja hozzá az alkalmazást a katalógusból.
 
-6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
+6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés**lehetőséget.
 
-7. A **kiépítési** **mód** módosítása **automatikusra**
+7. Módosítsa a **kiépítési** **módot** **automatikusra**.
 
 8. Fejezze be a **rendszergazdai hitelesítő adatok** szakaszt a következőképpen:
 
@@ -737,7 +737,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. 
 
@@ -745,7 +745,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 5. A kezdeti szinkronizálás befejezésekor a rendszer egy naplózási összesítő jelentést ír a **létesítés** lapon az alább látható módon.
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure portál](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -848,7 +848,7 @@ Ha új ötletet javasol, ellenőrizze, hogy valaki más már javasolta-e a hason
 * Nyissa meg a **vezérlőpultot** -> **távolítsa el vagy módosítsa a program** menüt
 * Keresse meg a bejegyzésnek megfelelő verziót **Microsoft Azure ad kapcsolódás kiépítési ügynökhöz**
 
-  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure portál](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>A Microsoft automatikusan leküldi a kiépítési ügynök frissítéseit?
 
@@ -905,7 +905,7 @@ Igen, az egyik kiépítési ügynök úgy konfigurálható, hogy több AD-tartom
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* A megjelenő ügynökök listájáról másolja ki az adott erőforrás "azonosító" mezőjének értékét, amelynek *resourcename* az ad-tartománynévvel egyenlő.
+* A megjelenő ügynökök listájáról másolja a `id` mező értékét az adott erőforrásból, amelynek *resourcename* az ad-tartománynévvel egyenlő.
 * Illessze be az azonosító értékét ebbe a parancsba, és futtassa a parancsot a PowerShellben.
 
   ```powershell
@@ -1191,7 +1191,7 @@ Ez a szakasz gyakran észlelt hibákat tartalmaz a munkanapokat használó felha
 |#|Hiba forgatókönyv |Lehetséges okok|Ajánlott megoldás|
 |--|---|---|---|
 |1.| Hiba történt a kiépítési ügynök telepítésekor: a (z *) "Microsoft Azure ad kapcsolódási ügynökhöz (AADConnectProvisioningAgent)" szolgáltatás nem indult el. Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a rendszer elindításához.* | Ez a hiba általában akkor jelenik meg, ha a kiépítési ügynököt tartományvezérlőre próbálja telepíteni, és a csoportházirend megakadályozza a szolgáltatás indulását.  Azt is láthatja, hogy az ügynök egy korábbi verziója fut-e, és még nem távolította el az új telepítés megkezdése előtt.| Telepítse a kiépítési ügynököt egy nem TARTOMÁNYVEZÉRLŐi kiszolgálóra. Az új ügynök telepítése előtt győződjön meg arról, hogy az ügynök korábbi verziói el lesznek távolítva.|
-|2.| A Windows-szolgáltatás "Microsoft Azure AD-kapcsolat létesítési ügynöke" *kezdő* állapotban van, és nem a *futó* állapotra vált. | A telepítés részeként az ügynök varázsló létrehoz egy helyi fiókot (**NT Service\\AADConnectProvisioningAgent**) a kiszolgálón, és ez a szolgáltatás indításához használt **bejelentkezési** fiók. Ha a Windows-kiszolgálón egy biztonsági házirend megakadályozza, hogy a helyi fiókok futtassák a szolgáltatásokat, akkor ezt a hibát fogja tapasztalni. | Nyissa meg a *szolgáltatások konzolt*. Kattintson a jobb gombbal a Windows-szolgáltatás "Microsoft Azure AD kapcsolódás kiépítési ügynöke" elemre, és a bejelentkezés lapon adja meg egy tartományi rendszergazda fiókját a szolgáltatás futtatásához. Indítsa újra a szolgáltatást. |
+|2.| A Windows-szolgáltatás "Microsoft Azure AD-kapcsolat létesítési ügynöke" *kezdő* állapotban van, és nem a *futó* állapotra vált. | A telepítés részeként az ügynök varázsló létrehoz egy helyi fiókot (**NT Service\\AADConnectProvisioningAgent**) a kiszolgálón, és ez a szolgáltatás indításához használt bejelentkezési fiók. Ha a Windows-kiszolgálón egy biztonsági házirend megakadályozza, hogy a helyi fiókok futtassák a szolgáltatásokat, akkor ezt a hibát fogja tapasztalni. | Nyissa meg a *szolgáltatások konzolt*. Kattintson a jobb gombbal a Windows-szolgáltatás "Microsoft Azure AD kapcsolat létesítési ügynöke" elemre, és a bejelentkezés lapon adja meg a szolgáltatás futtatásához szükséges tartományi rendszergazda fiókját. Indítsa újra a szolgáltatást. |
 |3.| Ha a létesítési ügynököt az AD-tartományhoz konfigurálja a *csatlakozás Active Directory*lépésben, a varázsló hosszú időt vesz igénybe az ad-séma betöltésére, és végül időtúllépést okoz. | Ez a hiba általában akkor jelentkezik, ha a varázsló tűzfalproblémák miatt nem tud csatlakozni az AD tartományvezérlői kiszolgálóhoz. | A Active Directory-varázsló *kapcsolódása* képernyőn, miközben megadja az ad-tartományhoz tartozó hitelesítő adatokat, a *tartományvezérlő prioritásának kiválasztása*lehetőségre van szükség. Ezzel a beállítással kiválaszthatja azt a tartományvezérlőt, amely ugyanabban a helyen található, mint az ügynök kiszolgálója, és gondoskodhat arról, hogy ne legyenek tűzfalszabályok blokkolja a kommunikációt. |
 
 #### <a name="connectivity-errors"></a>Csatlakozási hibák

@@ -1,31 +1,21 @@
 ---
-title: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként az Azure-ban | Microsoft Docs
+title: Tárolók csomagolása és üzembe helyezése
 description: Az oktatóanyag azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b4931b62aaf04db2ee4ff6f4a5e2b96274b8af88
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385039"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614026"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók becsomagolása és üzembe helyezése Service Fabric alkalmazásként a Yeoman használatával
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
 
-Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A Yeoman telepítése
@@ -282,11 +272,11 @@ Használja a **TestContainer** könyvtárban megadott telepítési szkriptet, ho
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és navigáljon a\/Service Fabric Explorer a http:/containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
+Nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer a http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-A futó alkalmazáshoz való kapcsolódáshoz nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét –\/például http:/containertestcluster.eastus.cloudapp.Azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
+A futó alkalmazáshoz való kapcsolódáshoz nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét – például http:\//containertestcluster.eastus.cloudapp.azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
 ![szavazóalkalmazás][votingapp]
 
@@ -405,7 +395,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
  </ServiceManifest>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban több tárolót csomagolt egy Service Fabric-alkalmazásba a Yeoman használatával, majd az alkalmazást üzembe helyezte és futtatta egy Service Fabric-fürtön. A következő lépéseket hajtotta végre:
 

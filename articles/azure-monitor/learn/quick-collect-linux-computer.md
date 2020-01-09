@@ -3,7 +3,7 @@ title: 'Gyors útmutató: adatok gyűjtése hibrid Linux rendszerű számítóg�
 description: Ebből a rövid útmutatóból megtudhatja, hogyan helyezheti üzembe a Log Analytics-ügynököt az Azure-on kívül futtatott Linux rendszerű számítógépeken, és hogyan engedélyezheti az adatgyűjtést Azure Monitor naplók
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 08/22/2019
-ms.author: magoedte
+ms.date: 12/24/2019
+ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f494702166fc3c018aba9b1356a6806384ae4673
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677969"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530017"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -55,7 +55,7 @@ Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenő
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
 
-A Linuxhoz készült Log Analytics-ügynök telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Ezt az információt az ügynök burkolójának parancsfájlja megköveteli, hogy megfelelően konfigurálja az ügynököt, és ellenőrizze, hogy sikeresen tud-e kommunikálni Azure Monitorokkal.
+A Linuxhoz készült Log Analytics-ügynök telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára. Ezt az információt az ügynök burkolójának parancsfájlja megköveteli, hogy megfelelően konfigurálja az ügynököt, és ellenőrizze, hogy sikeresen tud-e kommunikálni Azure Monitorokkal.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -88,7 +88,7 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    A következő parancs a `-p` proxyparaméter mellett példaszintaxist is tartalmaz.
+    A következő parancs tartalmazza a `-p` proxy paramétert és a példa szintaxisát, ha a proxykiszolgáló hitelesítést igényel:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -100,12 +100,13 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    A következő parancs a `-p` proxyparaméter mellett példaszintaxist is tartalmaz.
+    A következő parancs tartalmazza a `-p` proxy paramétert és a példa szintaxisát, ha a proxykiszolgáló hitelesítést igényel:
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-2. Indítsa újra az ügynököt a következő parancs futtatásával: 
+
+3. Indítsa újra az ügynököt a következő parancs futtatásával: 
 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]

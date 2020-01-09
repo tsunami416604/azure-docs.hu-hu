@@ -1,6 +1,6 @@
 ---
-title: Csatlakozhat, és kezelheti a Microsoft Azure Data Box peremhálózati eszköz, a Windows PowerShell felületéről |} A Microsoft Docs
-description: Ismerteti, hogyan csatlakozhat, és aztán kezelje a Data Box Edge a Windows PowerShell felületéről.
+title: Microsoft Azure Data Box Edge eszköz csatlakoztatása és kezelése a Windows PowerShell felületén keresztül | Microsoft Docs
+description: Ismerteti, hogyan csatlakozhat a szolgáltatáshoz, majd hogyan felügyelheti Data Box Edge a Windows PowerShell felületén keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,34 +8,34 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448625"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613856"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows Powershellen keresztül az Azure Data Box peremhálózati eszköz kezelése
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Azure Data Box Edge-eszköz kezelése a Windows PowerShell használatával
 
-Az Azure Data Box peremhálózati megoldás lehetővé teszi az adatok feldolgozásához, és az Azure-bA a hálózaton keresztüli küldéshez. Ez a cikk ismerteti a Data Box Edge-eszköz konfigurációs és felügyeleti feladatokat. Használhatja az Azure Portalon, helyi webes felhasználói felületen vagy a Windows PowerShell felületet az eszköz kezelését.
+Azure Data Box Edge megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk a Data Box Edge eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
-Ez a cikk foglalkozik a feladatok végrehajtásához a PowerShell felület használatával.
+Ez a cikk a PowerShell-felületet használó feladatokra összpontosít.
 
-Ez a cikk a következő eljárásokat tartalmazza:
+Ez a cikk az alábbi eljárásokat tartalmazza:
 
-- A PowerShell-felületünkön csatlakozni
-- Hozzon létre egy támogatási csomagot
+- Kapcsolódás a PowerShell felületéhez
+- Támogatási csomag létrehozása
 - Tanúsítvány feltöltése
 - Az eszköz alaphelyzetbe állítása
 - Eszköz adatainak megtekintése
-- Compute-naplók lekérése
-- Monitorozás és hibaelhárítás számítási modulok
+- Számítási naplók beolvasása
+- Számítási modulok figyelése és hibakeresése
 
-## <a name="connect-to-the-powershell-interface"></a>A PowerShell-felületünkön csatlakozni
+## <a name="connect-to-the-powershell-interface"></a>Kapcsolódás a PowerShell felületéhez
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
-## <a name="create-a-support-package"></a>Hozzon létre egy támogatási csomagot
+## <a name="create-a-support-package"></a>Támogatási csomag létrehozása
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
@@ -43,55 +43,55 @@ Ez a cikk a következő eljárásokat tartalmazza:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-IoT Edge-tanúsítványokat az IoT Edge-eszköz és előfordulhat, hogy csatlakozzon hozzá az alsóbb rétegbeli eszközök közötti biztonságos kapcsolatot is feltölthet. Három IoT Edge-tanúsítvány ( *.pem* formátumban), telepítenie kell:
+IoT Edge tanúsítványokat is feltölthet, hogy biztonságos kapcsolatot lehessen létesíteni a IoT Edge-eszköz és a hozzájuk kapcsolódó alsóbb rétegbeli eszközök között. Három IoT Edge tanúsítvány ( *. PEM* formátum) szükséges a telepítéséhez:
 
-- Legfelső szintű Hitelesítésszolgáltatói tanúsítványt vagy a tulajdonos, CA
-- Eszköz Hitelesítésszolgáltatói tanúsítvány
-- Eszköz kulcsú tanúsítvány
+- Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a tulajdonos HITELESÍTÉSSZOLGÁLTATÓja
+- Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
+- Eszköz kulcsának tanúsítványa
 
-Az alábbi példa bemutatja a használat, a parancsmag az IoT Edge-tanúsítványok telepítése:
+A következő példa a parancsmag használatát mutatja be IoT Edge tanúsítványok telepítéséhez:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Ez a parancsmag futtatásakor meg kell adnia a jelszót a hálózati megosztáshoz kéri.
+A parancsmag futtatásakor a rendszer kérni fogja a hálózati megosztás jelszavának megadását.
 
-További információ a tanúsítványok, nyissa meg [Azure IoT Edge-tanúsítványok](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) vagy [telepítse a tanúsítványokat az átjáró a](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
+A tanúsítványokkal kapcsolatos további információkért nyissa meg a [Azure IoT Edge tanúsítványokat](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) , vagy [telepítse a tanúsítványokat egy átjáróra](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
 
 ## <a name="view-device-information"></a>Eszköz adatainak megtekintése
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="reset-your-device"></a>Az eszköz alaphelyzetbe állítása
+## <a name="reset-your-device"></a>Eszköz alaphelyzetbe állítása
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 
-## <a name="get-compute-logs"></a>Compute-naplók lekérése
+## <a name="get-compute-logs"></a>Számítási naplók beolvasása
 
-Ha a számítási szerepkör konfigurálva van az eszközön, a PowerShell-felületen keresztül is kaphat a számítási naplókat.
+Ha a számítási szerepkör konfigurálva van az eszközön, a számítási naplókat a PowerShell felületén keresztül is lekérheti.
 
-1. [Kapcsolódás a PowerShell-felületünkön](#connect-to-the-powershell-interface).
-2. Használja a `Get-AzureDataBoxEdgeComputeRoleLogs` számítási naplók lekérése az eszközt.
+1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
+2. Az eszközhöz tartozó számítási naplók beszerzéséhez használja a `Get-AzureDataBoxEdgeComputeRoleLogs`.
 
-    Az alábbi példa bemutatja ennek a parancsmagnak a használatát:
+    A következő példa a parancsmag használatát mutatja be:
 
     ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
-    Itt látható a parancsmag paraméterei leírása:
-    - `Path`: Adja meg a megosztást, ahol szeretné létrehozni a számítási log csomagot egy hálózati elérési útját.
-    - `Credential`: Adja meg a felhasználónevet a hálózati megosztáson. Ez a parancsmag futtatásakor adja meg a megosztás jelszót kell.
-    - `FullLogCollection`: Ez a paraméter gondoskodik arról, hogy a napló csomag tartalmazza az összes számítási napló. Alapértelmezés szerint a napló csomagot a naplók csak egy részhalmazát tartalmazza.
+    Itt látható a parancsmaghoz használt paraméterek leírása:
+    - `Path`: adja meg annak a megosztásnak a hálózati elérési útját, ahol létre szeretné hozni a számítási napló csomagot.
+    - `Credential`: adja meg a hálózati megosztáshoz tartozó felhasználónevet. A parancsmag futtatásakor meg kell adnia a megosztási jelszót.
+    - `FullLogCollection`: Ez a paraméter biztosítja, hogy a naplófájl tartalmazza az összes számítási naplót. Alapértelmezés szerint a naplófájl csak a naplók egy részhalmazát tartalmazza.
 
-## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorozás és hibaelhárítás számítási modulok
+## <a name="monitor-and-troubleshoot-compute-modules"></a>Számítási modulok figyelése és hibakeresése
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
-## <a name="exit-the-remote-session"></a>Kilépés a távoli munkamenet
+## <a name="exit-the-remote-session"></a>Kilépés a távoli munkamenetből
 
-A távoli PowerShell-munkamenetet a kilépéshez zárja be a PowerShell-ablakban.
+A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure Data Box Edge](data-box-edge-deploy-prep.md) üzembe helyezése az Azure Portalon.

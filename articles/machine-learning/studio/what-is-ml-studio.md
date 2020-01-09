@@ -11,50 +11,50 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 325278ee0222070ce7c02c1d72961f0431284677
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670548"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528351"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Mi az Machine Learning Studio (klasszikus)?
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-A Microsoft Azure Machine Learning Studio (klasszikus) egy együttműködésen alapuló, húzással használható eszköz, amellyel prediktív elemzési megoldásokat hozhat létre, tesztelheti és helyezhet üzembe az adatain.  A Machine Learning Studio klasszikus verziója webszolgáltatásként teszi közzé a modelleket, amelyeket egyszerűen felhasználhat egyéni alkalmazások vagy BI-eszközök, például az Excel használatával.
+A Microsoft Azure Machine Learning Studio (klasszikus) egy együttműködésen alapuló, húzással használható eszköz, amellyel prediktív elemzési megoldásokat hozhat létre, tesztelheti és helyezhet üzembe az adatain. A Azure Machine Learning Studio (klasszikus) webszolgáltatásként teszi közzé a modelleket, amelyeket egyszerűen felhasználhat egyéni alkalmazások vagy BI-eszközök, például az Excel használatával.
 
 Machine Learning Studio (klasszikus) az adatelemzés, a prediktív elemzés, a Felhőbeli erőforrások és az adatai.
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Az Machine Learning Studio (klasszikus) interaktív munkaterület
 A prediktív elemzési modell kialakításához jellemzően egy vagy több forrásból származó adatok felhasználásával, az adatok átalakításával és elemzésével különböző adatkezelési és statisztikai függvények, valamint az eredmények összessége hozható létre. Az ilyen modellek fejlesztése iteratív folyamat. A különböző függvényeket és paramétereket addig módosítjuk, az eredményeket addig közelítjük, amíg úgy nem véljük, hogy jól betanított, hatékony modellel rendelkezünk.
 
-A Azure Machine Learning Studio klasszikus verziója interaktív, vizuális munkaterületet biztosít a prediktív elemzési modell egyszerű létrehozásához, teszteléséhez és megismétléséhez. Az ***adatkészleteket*** és az elemzési ***modulokat*** egy interaktív vászonra húzhatja, és összekapcsolhatja őket egy ***kísérlet***létrehozásához, amelyet Machine learning Studio (klasszikus) futtat. A modell felépítésének fejlesztéséhez szerkesztheti a kísérletet, szükség esetén mentheti egy másolatát, majd újrafuttathatja. Amikor készen áll, a ***tanítási kísérletet*** átalakíthatja ***prediktív kísérletté***, majd ***közzéteheti*** webszolgáltatásként, hogy mások is hozzáférjenek.
+A Azure Machine Learning Studio (klasszikus) interaktív, vizualizációs munkaterületet biztosít a prediktív elemzési modell egyszerű létrehozásához, teszteléséhez és megismétléséhez. Az ***adatkészleteket*** és az elemzési ***modulokat*** egy interaktív vászonra húzhatja, és összekapcsolhatja őket egy ***kísérlet***létrehozásához, amelyet Machine learning Studio (klasszikus) futtat. A modell felépítésének fejlesztéséhez szerkesztheti a kísérletet, szükség esetén mentheti egy másolatát, majd újrafuttathatja. Amikor készen áll, a ***tanítási kísérletet*** átalakíthatja ***prediktív kísérletté***, majd ***közzéteheti*** webszolgáltatásként, hogy mások is hozzáférjenek.
 
 A prediktív elemzési modell létrehozásához nincs szükség programozásra, valamint az adatkészletek és modulok vizuális összekapcsolására.
 
-![Azure Machine Learning Studio diagram: kísérletek létrehozása, számos forráshoz tartozó információk olvasása, pontszámmal ellátható adattípusok, írási modellek.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Azure Machine Learning Studio (klasszikus) diagram: kísérletek létrehozása, számos forráshoz tartozó adatolvasás, pontszámmal ellátható adatmennyiség, írási modellek.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Miben különbözik a Machine Learning Studio (klasszikus) Azure Machine Learningtól?
 
-A [Azure Machine learning](../service/overview-what-is-azure-ml.md) az SDK **-t és** a Azure Machine learning designert (előzetes verzió) is lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, és teljes mértékben integrálva van Azure Machine Learningba.
+A [Azure Machine learning](../overview-what-is-azure-ml.md) az SDK **-t és** a Azure Machine learning designert (előzetes verzió) is lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, és teljes mértékben integrálva van Azure Machine Learningba.
 
 Íme egy gyors összehasonlítás:
 
 || Machine Learning Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
-| Húzási interfész | Igen | Igen – [Azure Machine learning Designer (előzetes verzió)](../service/concept-designer.md) |
+| Húzási interfész | Igen | Igen – [Azure Machine learning Designer (előzetes verzió)](../concept-designer.md) |
 | Kísérlet | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Modulok a fogd és vidd interfészhez | Számos | Népszerű [modulok](../algorithm-module-reference/module-reference.md) kezdeti készlete|
-|Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| Támogatja a Azure Machine Learning számítási (GPU-vagy CPU-) és notebook-alapú virtuális gépeket.<br/>([Egyéb, az SDK-ban támogatott számítások](../service/concept-compute-target.md#train))|
-|Viszonyítási számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható |  Az Azure Kubernetes szolgáltatás és a pénzmosás-számítás <br/>([Egyéb, az SDK-ban támogatott számítások](../service/how-to-deploy-and-where.md)) |
-| ML-folyamat | Nem támogatott | Támogatott [folyamatok](../service/concept-ml-pipelines.md) |
+|Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| Támogatja a Azure Machine Learning számítási (GPU-vagy CPU-) és notebook-alapú virtuális gépeket.<br/>([Egyéb, az SDK-ban támogatott számítások](../concept-compute-target.md#train))|
+|Viszonyítási számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható |  Az Azure Kubernetes szolgáltatás és a pénzmosás-számítás <br/>([Egyéb, az SDK-ban támogatott számítások](../how-to-deploy-and-where.md)) |
+| ML-folyamat | Nem támogatott | Támogatott [folyamatok](../concept-ml-pipelines.md) |
 | MLOps | Alapszintű modell kezelése és üzembe helyezése | Konfigurálható üzembe helyezés – modell-és folyamat-verziószámozás és-követés |
-| Modell formátuma | Saját formátum, csak Studió | Normál formátum a betanítási feladattípustól függően |
-|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a tervezőben <br/> ([Az SDK és a munkaterület kezdőlapján támogatott](../service/concept-automated-ml.md)) | 
+| Modell formátuma | Saját formátum, Studio (klasszikus) csak | Normál formátum a betanítási feladattípustól függően |
+|Automatizált modellek betanítása és hiperparaméter finomhangolása | Nem | Még nem a tervezőben <br/> ([Az SDK és a munkaterület kezdőlapján támogatott](../concept-automated-ml.md)) | 
 
-Próbálja ki a tervezőt az [oktatóanyaggal: az autó árának előrejelzése a tervezővel](../service/tutorial-designer-automobile-price-train-score.md)
+Próbálja ki a tervezőt az [oktatóanyaggal: az autó árának előrejelzése a tervezővel](../tutorial-designer-automobile-price-train-score.md)
 
 > [!NOTE]
 > A Studióban létrehozott modelleket (klasszikus) nem lehet központilag telepíteni vagy felügyelni Azure Machine Learning. A tervezőben létrehozott és üzembe helyezett modellek azonban a Azure Machine Learning munkaterületen kezelhetők.
@@ -93,7 +93,7 @@ Kísérlet létrehozásakor a vászon bal oldalán elérhető adatkészletek lis
 A Machine Learning Studio (klasszikus) részét képező minta adatkészletek listáját a következő témakörben tekintheti meg: [a mintaadatok-készletek használata Azure Machine learning Studio (klasszikus)](use-sample-datasets.md).
 
 ### <a name="modules"></a>Modulok
-A modulok az adatokon végezhető algoritmusok.  A Machine Learning Studio klasszikus verziója számos modult tartalmaz, amelyek az adatok beáramlása funkciótól kezdve a képzés, a pontozás és az érvényesítési folyamatokig terjednek. Néhány példa a mellékelt modulokra:
+A modulok az adatokon végezhető algoritmusok. A Azure Machine Learning Studio (klasszikus) számos modult tartalmaz, amelyek az adatok beáramlása funkciótól kezdve a képzés, a pontozás és az érvényesítési folyamatokig terjednek. Néhány példa a mellékelt modulokra:
 
 * [Konvertálás ARFF][convert-to-arff] – a .net szerializált adatkészletet attribútum-kapcsolati fájlformátumra (ARFF) alakítja.
 * [Számítási elemi statisztikák][elementary-statistics] – kiszámítja az általános statisztikai adatokat, például a középértéket, a szórást stb.

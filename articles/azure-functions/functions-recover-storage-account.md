@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226761"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612972"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>A "functions Runtime nem érhető el" hibáinak megoldása
 
@@ -20,7 +20,7 @@ Ez a dokumentum a functions portálon megjelenő következő hiba megoldására 
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Ez a probléma akkor fordul elő, ha a Azure Functions-futtatókörnyezet nem indítható el. Ennek a hibának a leggyakoribb oka az, hogy a Function alkalmazás elveszíti a hozzáférést a Storage-fiókjához. [A Storage-fiókra vonatkozó követelményekről itt olvashat bővebben](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
@@ -31,6 +31,8 @@ Elsajátítjuk a négy leggyakoribb hibát, az egyes esetek azonosítását és 
 1. A Storage-fiók hitelesítő adatai érvénytelenek
 1. A Storage-fiók nem érhető el
 1. Napi végrehajtási kvóta megtelt
+1. Az alkalmazás tűzfal mögött van
+
 
 ## <a name="storage-account-deleted"></a>Storage-fiók törölve
 
@@ -56,7 +58,7 @@ Az előző lépésben, ha nem rendelkezik a Storage-fiókhoz tartozó kapcsolato
 
 [Az Alkalmazásbeállítások itt olvashatók](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-### <a name="guidance"></a>Útmutatás
+### <a name="guidance"></a>Segédletek
 
 * Ezen beállítások bármelyike esetében ne a "tárolóhely beállítása" beállítást. Az üzembe helyezési pontok cseréjekor a függvény megtöri.
 * Ezeket a beállításokat ne módosítsa automatikus központi telepítések részeként.
@@ -81,7 +83,13 @@ Ha a napi végrehajtási kvóta konfigurálva van, a függvényalkalmazás átme
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Távolítsa el a kvótát, és indítsa újra az alkalmazást a probléma megoldásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="app-is-behind-a-firewall"></a>Az alkalmazás tűzfal mögött van
+
+A függvény futtatókörnyezete nem érhető el, ha a Function alkalmazást [belső terheléselosztású app Service Environment](../app-service/environment/create-ilb-ase.md) üzemelteti, és úgy van konfigurálva, hogy blokkolja a bejövő internetes forgalmat, vagy [bejövő IP-korlátozásokat](functions-networking-options.md#inbound-ip-restrictions) konfigurál az Internet-hozzáférés blokkolására. A Azure Portal közvetlenül a futó alkalmazásban hívja meg a függvények listáját, és http-hívást kezdeményez a KUDU-végponthoz. A platform szintjének beállításai a `Platform Features` lapon továbbra is elérhetők lesznek.
+
+* A bevezetői konfiguráció ellenőrzéséhez navigáljon az alhálózathoz, ahol a NSG található, és ellenőrizze a bejövő szabályokat, hogy engedélyezze az alkalmazáshoz hozzáférő számítógép nyilvános IP-címéről érkező forgalmat. A portált egy olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózatban futó virtuális géphez van csatlakoztatva. [További információ a bejövő szabályok konfigurálásáról](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a függvényalkalmazás visszatért és működőképes, tekintse át a gyors üzembe helyezést és a fejlesztői referenciákat, amelyekkel újra megkezdheti a munkát.
 

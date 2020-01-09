@@ -12,7 +12,7 @@ ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0bb928fe23fcfc3580b0c3951c48f2636ab86c81
 ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/28/2019
 ms.locfileid: "75526702"

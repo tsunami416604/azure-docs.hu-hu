@@ -1,26 +1,15 @@
 ---
-title: Oktatóanyag az Azure-beli virtuális gépeken futó Service Fabric-fürtök infrastruktúrájának létrehozásához – Azure Service Fabric | Microsoft Docs
+title: Infrastruktúra létrehozása Azure-beli virtuális gépeken futó fürthöz
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuálisgép-infrastruktúrát egy Service Fabric-fürt futtatásához.
-services: service-fabric
-documentationcenter: .net
-author: jpconnock
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166274"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614009"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Azure VM-infrastruktúra létrehozása Service Fabric-fürt üzemeltetéséhez
 
@@ -72,7 +61,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
 
 9. Adjon hozzá egy másik szabályt. Állítsa a forrást a **szolgáltatás címkére** , és állítsa a forrás szolgáltatás címkéjét **VirtualNetwork**értékre. Service Fabric a következő portok megnyitását igényli a fürtön belüli kommunikációhoz: 135137-139, 445, 20001-20031, 20606-20861.
 
-   ![vnet-inbound][vnet-inbound]
+   ![vnet – bejövő][vnet-inbound]
 
 10. A többi lehetőség is elfogadható az alapértelmezett állapotukban. Ha szeretné, tekintse át őket, majd indítsa el a virtuális gépet.
 

@@ -1,26 +1,17 @@
 ---
-title: 'Oktatóanyag: Önálló Service Fabric-ügyfél telepítése – Azure Service Fabric | Microsoft Docs'
+title: Service Fabric önálló ügyfél telepítése
 description: Ez az oktatóanyag ismerteti, hogyan telepítheti az önálló Service Fabric-ügyfelet az előző oktatóanyagcikkben létrehozott fürtön.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385005"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613941"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
 
@@ -129,13 +120,13 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>A Service Fabric Explorer megnyitása
 
-Most már csatlakozhat a fürthöz Service Fabric Explorer vagy\/közvetlenül az egyik gépen, http:/localhost:19080/Explorer/index.html vagy távolról, http:\//<IPAddressofaMachine > használatával : 19080/Explorer/index.html.
+Most már csatlakozhat a fürthöz Service Fabric Explorer vagy közvetlenül az egyik gépen a http:\//localhost:19080/Explorer/index.html vagy távolról a http:\//<*IPAddressofaMachine*>: 19080/Explorer/index. html.
 
 ## <a name="add-and-remove-nodes"></a>Csomópontok hozzáadása és eltávolítása
 
 Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontokat az önálló Service Fabric-fürtről. A lépések részletes leírása: [Csomópontok hozzáadása vagy eltávolítása egy önálló Service Fabric-fürtről](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
 

@@ -3,23 +3,23 @@ title: Az Azure IoT Explorer telepítése és használata | Microsoft Docs
 description: Telepítse az Azure IoT Explorer eszközt, és használja a IoT Plug and Play előnézeti eszközökhöz csatlakoztatott IoT-hubhoz való interakcióhoz.
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679852"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529626"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése és használata
 
 Az Azure IoT Explorer egy grafikus eszköz a IoT Plug and Play előnézeti eszközökhöz való interakcióhoz és teszteléséhez. Miután telepítette az eszközt a helyi gépre, használhatja azt egy eszközhöz való kapcsolódáshoz. Az eszköz segítségével megtekintheti az eszköz által küldött telemetria, az eszköz tulajdonságait és a hívási parancsokat.
 
-Ez a cikk bemutatja, hogyan végezheti el a következőket:
+Ez a cikk a következőkhöz nyújt útmutatást:
 
 - Telepítse és konfigurálja az Azure IoT Explorer eszközt.
 - Használja az eszközt az eszközök használatához és teszteléséhez.
@@ -73,7 +73,7 @@ Az **eszközök** listája lapon a következőket teheti:
 
 - A **Hozzáadás** gombra kattintva regisztrálhat egy új eszközt a hubhoz. Ezután adja meg az eszköz AZONOSÍTÓját. Az alapértelmezett beállítások használatával automatikusan generálhat hitelesítési kulcsokat, és engedélyezheti a kapcsolódást a hubhoz.
 - Válasszon ki egy eszközt, majd válassza a **Törlés** lehetőséget az eszköz identitásának törléséhez. A művelet elvégzése előtt tekintse át az eszköz részleteit, és győződjön meg róla, hogy a megfelelő eszköz identitását törli.
-- Lekérdezés `capabilityID` és `interfaceID` alapján. Adja hozzá a `capabilityID` vagy `interfaceID` paraméterként az eszközök lekérdezéséhez.
+- Lekérdezés `capabilityID` és `interfaceID`alapján. Adja hozzá a `capabilityID` vagy `interfaceID` paraméterként az eszközök lekérdezéséhez.
 
 ## <a name="interact-with-a-device"></a>Eszköz használata
 
@@ -93,7 +93,7 @@ Ebben a szakaszban az **eszköz identitása**, az **eszköz Twin**, a **telemetr
 
 Az eszköz az eszköz digitális dupla példányára is használható. Egy IoT Plug and Play eszköz esetében az eszköz képességeinek modelljéhez társított összes interfész megjelenik az eszköz ezen szakaszában. Válasszon egy felületet a megfelelő [IoT Plug and Play primitívek](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)kibontásához.
 
-### <a name="interface"></a>Felület
+### <a name="interface"></a>Interfész
 
 A **csatoló** lapon megtekintheti az illesztőfelület JSON-definícióját.
 

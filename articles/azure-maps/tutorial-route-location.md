@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106621"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613601"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Oktatóanyag: egy hasznos ponthoz való továbbítás Azure Maps használatával
 
-Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Maps-fiókot és a Route Service SDK-t a hasznos helyekre vezető útvonalak megkereséséhez. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Maps-fiókot és a Route Service SDK-t a hasznos helyekre vezető útvonalak megkereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Új weblap létrehozása a térképkezelési API használatával
@@ -27,7 +27,7 @@ Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Maps-fiókot és a R
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A folytatás előtt kövesse a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához című témakör útmutatását, és kövesse az [elsődleges kulcs beolvasása](./tutorial-search-location.md#getkey) a fiókhoz tartozó elsődleges előfizetési kulcs beszerzéséhez című szakasz lépéseit.
+Mielőtt továbblépne, kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 

@@ -1,29 +1,18 @@
 ---
-title: Tanúsítványok importálása az Azure Service Fabric-on futó tárolóba | Microsoft Docs
+title: Tanúsítványok importálása tárolóba
 description: Ismerkedjen meg a tanúsítványfájl Service Fabric Container Service-be történő importálásával.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 496d47c88636b11375d97cc4bc50efd9d468d645
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: da4babd8f9d1a25a8514d0c6f1526b43a9723854
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170468"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614111"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Tanúsítványfájl importálása Service Fabricon futó tárolóba
 
-Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információi az alkalmazás jegyzékfájljában, a `ContainerHostPolicies` címkében jelennek meg az alábbi kódrészletben látható módon:
+Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információit az alkalmazás jegyzékfájljában, a `ContainerHostPolicies` címke alatt, az alábbi kódrészlet mutatja:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -48,7 +37,7 @@ Ha már rendelkezik a tanúsítványokkal a szükséges űrlapon, és a tároló
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-A tároló szolgáltatás vagy folyamat feladata a tanúsítványfájl tárolóba való importálása. A tanúsítvány importálásához `setupentrypoint.sh` parancsfájlokat használhat, vagy egyéni kódot futtathat a tároló folyamatán belül. Az alábbi mintakód a PFX C# -fájl importálásához használható:
+A tároló szolgáltatás vagy folyamat feladata a tanúsítványfájl tárolóba való importálása. A tanúsítvány importálásához `setupentrypoint.sh` parancsfájlokat használhat, vagy egyéni kódot is végrehajthat a tároló folyamatán belül. Az alábbi mintakód a PFX C# -fájl importálásához használható:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");

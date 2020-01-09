@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 80812d1989e528a5a0f2333e92a068093d7b6b90
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914766"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528215"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználók üzembe helyezéséhez (előzetes verzió)
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. Ez az integráció nyilvános előzetes verzióban érhető el, és támogatja a több mint [70 felhasználói attribútum](../manage-apps/sap-successfactors-attribute-reference.md) lekérését a SuccessFactors Employee Central-ból.
@@ -261,12 +261,12 @@ Ebben a lépésben kapcsolatot létesít a SuccessFactors és a Active Directory
         > Ez a beállítás csak akkor kerül lejátszásra a felhasználói fiókok létrehozásához, ha a *parentDistinguishedName* attribútum nincs konfigurálva az attribútum-hozzárendelésekben. Ez a beállítás nem használatos a felhasználói keresési vagy frissítési műveletekhez. A tartomány teljes alfájának a keresési művelet hatóköre esik.
 
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > Az Azure AD kiépítési szolgáltatás e-mailes értesítést küld, ha a kiépítési feladatok [karantén](/azure/active-directory/manage-apps/application-provisioning-quarantine-status) állapotba kerülnek.
 
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy érvényesek-e a SuccessFactors hitelesítő adatai és az ügynök telepítésére konfigurált AD hitelesítő adatok.
     >[!div class="mx-imgBorder"]
-    >![Azure Portalra](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett leképezést, **hogy szinkronizálja a SuccessFactors felhasználókat a helyszíni Active Directory**
 
@@ -346,7 +346,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a SuccessFactors-bérlőben lévő felhasználók számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 

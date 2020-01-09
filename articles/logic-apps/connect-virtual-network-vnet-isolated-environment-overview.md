@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792731"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527858"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
 Időnként a logikai alkalmazásoknak és az integrációs fiókoknak olyan biztonságos erőforrásokhoz, például virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz kell hozzáférnie, amelyek egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)belül vannak. A hozzáférés beállításához [létrehozhat egy *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) , amelyen futtathatja a logikai alkalmazásokat, és létrehozhatja az integrációs fiókokat.
 
-Ha ISE-t hoz létre, az Azure *befecskendezi* az ISE-t az Azure-beli virtuális hálózatba, amely ezután a Logic Apps szolgáltatás privát és elkülönített példányát telepíti az Azure-beli virtuális hálózatba. Ez a magánhálózati példány dedikált erőforrásokat használ, például a tárterületet, és külön fut a nyilvános "globális" Logic Apps szolgáltatástól. Ha elválasztja az elkülönített privát példányt és a nyilvános globális példányt, azzal csökkentheti annak hatását, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére, ami más néven ["zajos szomszédok"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
+Ha ISE-t hoz létre, az Azure *befecskendezi* az ISE-t az Azure-beli virtuális hálózatba, amely ezután a Logic Apps szolgáltatás privát és elkülönített példányát telepíti az Azure-beli virtuális hálózatba. Ez a magánhálózati példány dedikált erőforrásokat használ, például a tárterületet, és a nyilvános, "globális", több-bérlős Logic Apps szolgáltatástól függetlenül fut. Ha elválasztja az elkülönített privát példányt és a nyilvános globális példányt, azzal csökkentheti annak hatását, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére, ami más néven ["zajos szomszédok"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
 
 Az ISE létrehozása után a logikai alkalmazás vagy integrációs fiók létrehozása után kiválaszthatja az ISE-t a logikai alkalmazás vagy az integrációs fiók helyeként:
 
@@ -47,7 +47,7 @@ Az ISE logikai alkalmazásai ugyanazt a felhasználói élményt és hasonló k�
 
 * Azure Blob Storage, File Storage és Table Storage
 * Azure Queues, Azure Service Bus, Azure Event Hubs és IBM MQ
-* Fájlrendszer, FTP és SFTP – SSH
+* FTP és SFTP – SSH
 * SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
 * AS2, X12 és EDIFACT
 
@@ -86,11 +86,13 @@ A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.mic
 
 ## <a name="ise-endpoint-access"></a>ISE-végponti hozzáférés
 
-Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési végpontokat használ. Ezek a végpontok határozzák meg, hogy az ISE-beli logikai alkalmazásokban a kérelmek vagy a webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről. Ezek a végpontok a logikai alkalmazások futtatási előzményeiben lévő bemenetekhez és kimenetekhez is hatással vannak.
+Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési végpontokat használ. A kiválasztott beállítás határozza meg, hogy az ISE-beli Logic apps-beli kérelem vagy webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről is.
 
-* **Belső**: privát végpontok, amelyek lehetővé teszik az ISE-beli Logic apps-hívásokat, valamint a futtatási előzményekben lévő bemenetek és kimenetek elérését csak a *virtuális hálózaton belülről*
+Ezek a végpontok a logikai alkalmazások futtatási előzményeiben lévő bemenetekhez és kimenetekhez is hatással lehetnek.
 
-* **Külső**: nyilvános végpontok, amelyek lehetővé teszik az ISE-beli logikai alkalmazások meghívását, valamint a *virtuális hálózaton kívülről* a futtatási előzményekben lévő bemenetekhez és kimenetekhez való hozzáférést
+* **Belső**: olyan privát végpontok, amelyek lehetővé teszik az ISE-beli Logic Apps-alkalmazások meghívását, ahol a Logic apps bemeneteit és kimeneteit *csak a virtuális hálózatán belül* lehet megtekinteni és elérni
+
+* **Külső**: nyilvános végpontok, amelyek lehetővé teszik az ISE-beli Logic Apps-alkalmazások meghívását, ahol a logikai alkalmazások bemeneteit és kimeneteit a *virtuális hálózatán kívülről*is megtekintheti és elérheti. Ha hálózati biztonsági csoportokat (NSG) használ, győződjön meg róla, hogy be van állítva a bejövő szabályokkal, hogy engedélyezze a futtatási előzmények bemeneteit és kimeneteit. További információ: az [ISE hozzáférésének engedélyezése](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
 > [!IMPORTANT]
 > A hozzáférési végpont beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható.

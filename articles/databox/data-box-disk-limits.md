@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cd40c5d11414c91ff2f2febc0621e1e06f79e9cf
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646971"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613788"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
@@ -59,7 +59,7 @@ Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és f
 
 ## <a name="azure-storage-account-size-limits"></a>Azure Storage-fiók méretének korlátai
 
-Itt láthatók a Storage-fiókba másolt adatmennyiség korlátai. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. A korlátozásokkal kapcsolatos legfrissebb információk az [Azure Blob Storage méretezési célok](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) és [Azure Files méretezési célok](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets)című témakörben olvashatók.
+Itt láthatók a Storage-fiókba másolt adatmennyiség korlátai. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. A korlátozásokkal kapcsolatos legfrissebb információk az [Azure Blob Storage méretezési célok](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) és [Azure Files méretezési célok](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)című témakörben olvashatók.
 
 | Az Azure Storage-fiókba másolt adatmennyiség                      | Alapértelmezett korlát          |
 |---------------------------------------------------------------------|------------------------|
@@ -72,15 +72,15 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 
 | Azure-objektumtípus | Alapértelmezett korlát                                             |
 |-------------------|-----------------------------------------------------------|
-| BLOB letiltása        | ~ 4,75 TiB                                                 |
+| Blokkblob        | ~ 4,75 TiB                                                 |
 | Oldal Blobja         | 8 TiB <br> (Az oldal blob-formátumában feltöltött összes fájlnak 512 bájtnak kell lennie, különben a feltöltés meghiúsul. <br> A VHD és a VHDX egyaránt 512 bájtra van igazítva.) |
 |Azure Files        | 1 TiB <br> Legfeljebb a megosztás mérete 5 TiB     |
-| Felügyelt lemezek     |4 TiB <br> A mérettel és a korlátokkal kapcsolatos további információkért lásd: <li>[A felügyelt lemezek skálázhatósági céljai](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Managed Disks     |4 TiB <br> A mérettel és a korlátokkal kapcsolatos további információkért lásd: <li>[A felügyelt lemezek skálázhatósági céljai](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Az Azure Block blob, az oldal blobja és a fájl elnevezési konvenciói
 
-| Entitás                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
+| Jogi személy                                       | Konvenciók                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tárolók nevei a blob és az oldal blobja számára <br> Azure Files fájlmegosztás neve | Érvényes DNS-névnek kell lennie, amely 3 – 63 karakter hosszú lehet. <br>  Betűvel vagy számmal kell kezdődnie. <br> Csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. <br> Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. <br> A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. |
 | Az Azure Files címtár-és fájlnevei     |<li> Kis-és nagybetűket megőrző, kis-és nagybetűk megkülönböztetése, és legfeljebb 255 karakter hosszú lehet. </li><li> A perjel (/) nem végződhet. </li><li>Ha meg van adni, a rendszer automatikusan eltávolítja. </li><li> A következő karakterek nem engedélyezettek: <code>" \\ / : \| < > * ?</code></li><li> A fenntartott URL-karaktereket escape-karakterrel kell jelölni. </li><li> A nem engedélyezett URL-címek elérési útja nem megengedett. A kódok, például az \\uE000 nem érvényes Unicode-karakterek. Bizonyos ASCII-vagy Unicode-karakterek, például a vezérlési karakterek (kell lennie 0x00 – 0x1F, \\u0081 stb.) szintén nem engedélyezettek. A Unicode karakterláncokat a HTTP/1.1-es verzióra vonatkozó szabályoknál lásd: RFC 2616, 2,2. szakasz, alapszintű szabályok és RFC 3987. </li><li> A következő fájlnevek nem engedélyezettek: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, dot Character (.), és két pont (...).</li>|
@@ -88,10 +88,10 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 
 ## <a name="managed-disk-naming-conventions"></a>Felügyelt lemez elnevezési konvenciói
 
-| Entitás | Konvenciók                                             |
+| Jogi személy | Konvenciók                                             |
 |-------------------|-----------------------------------------------------------|
 | Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A név nem tartalmazhat szóközöket vagy `/`.                                              |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [rendszerkövetelmények áttekintése Data Box Disk](data-box-disk-system-requirements.md)

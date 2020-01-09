@@ -6,17 +6,17 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/31/2019
+ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483235"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611917"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
-Megkezdheti a Windows Data Science Virtual Machineának futtatását.
+Ismerkedjen meg a Windows Server 2019 Data Science Virtual Machine rendszerrel.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -28,16 +28,11 @@ Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t haszn�
 DSVM-példány létrehozása:
 
 1. Ha még nem jelentkezett be, lépjen a [Azure Portalba](https://portal.azure.com) , ahol a rendszer kérni fogja, hogy jelentkezzen be az Azure-fiókjába.
-1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Windows 2016" lehetőséget.
-
-    ![Windows rendszerű virtuális gépek listája](./media/provision-vm/search-windows.png)
+1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Win 2019 (előzetes verzió)" lehetőséget.
 
 1. Válassza a **Létrehozás** gombot alul.
 
-    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
-
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
-   a Windows rendszerű virtuális géphez tartozó ![alapjai lap](./media/provision-vm/review-create-windows.png)
 
 1. Adja meg az **alapok** lapot:
       * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
@@ -69,12 +64,10 @@ Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a
 <a name="tools"></a>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A **Start** menü megnyitásával tárja fel a DSVM található eszközöket.
-* Ismerje meg a Azure Machine Learningt, ha elolvasta [, mi az Azure Machine learning?](../service/overview-what-is-azure-ml.md) , és próbálja ki az [oktatóanyagokat](../index.yml).
-* A Fájlkezelőben keresse meg a C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts azokat a mintákat, amelyek az R RevoScaleR-könyvtárat használják, és nagyvállalati szintű adatelemzést támogatnak. 
+* Ismerje meg a Azure Machine Learningt, ha elolvasta [, mi az Azure Machine learning?](../overview-what-is-azure-ml.md) , és próbálja ki az [oktatóanyagokat](../index.yml).
 * Olvassa el a [Data Science Virtual Machineon](https://aka.ms/dsvmtenthings)elvégezhető tíz dolgot.
-* Ismerje meg, hogyan hozhat létre rendszeresen teljes körű analitikai megoldásokat a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml)használatával.
 * Látogasson el az Azure-ban Azure Machine Learning és kapcsolódó adatszolgáltatásokat használó gépi tanulási és adatelemzési minták [Azure AI Gallery](https://gallery.cortanaintelligence.com) . A katalógushoz a **Start** menüben és a virtuális gép asztalán is elérhető egy ikon.
 

@@ -1,26 +1,17 @@
 ---
-title: 'Oktatóanyag: Service Fabric-fürt infrastruktúrájának létrehozása AWS-en – Azure Service Fabric | Microsoft Docs'
+title: Infrastruktúra létrehozása az AWS-fürthöz
 description: Ez az oktatóanyag ismerteti, hogyan állíthatja be az AWS-infrastruktúrát Service Fabric-fürt futtatásához.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "73177825"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613975"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: AWS-infrastruktúra létrehozása Service Fabric-fürt futtatásához
 
