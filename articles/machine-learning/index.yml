@@ -12,93 +12,93 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: d9ff6c7d5fffd8ceb5d282b35db61e0ec0a0b7de
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 4324451c27342b96bedcfb420fe7ff1134624bde
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75428351"
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75771359"
 landingContent:
 - title: Ismerkedés az Azure ML szolgáltatással
   linkLists:
   - linkListType: tutorial
     links:
     - text: Kísérlet Python-jegyzetfüzetekben
-      url: service/tutorial-1st-experiment-sdk-setup.md
+      url: tutorial-1st-experiment-sdk-setup.md
     - text: Kísérletezés az RStudióban
-      url: service/tutorial-1st-r-experiment.md
+      url: tutorial-1st-r-experiment.md
     - text: Kísérletezés az egérrel használható tervezővel
-      url: service/tutorial-designer-automobile-price-train-score.md
+      url: tutorial-designer-automobile-price-train-score.md
     - text: Kísérletezés az automatizált gépi tanulással
-      url: service/tutorial-first-experiment-automated-ml.md
+      url: tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:
     - text: Mi az az Azure ML?
-      url: service/overview-what-is-azure-ml.md
+      url: overview-what-is-azure-ml.md
     - text: Architektúra és fogalmak
-      url: service/concept-azure-machine-learning-architecture.md
+      url: concept-azure-machine-learning-architecture.md
   - linkListType: how-to-guide
     links:
     - text: A környezet kialakítása
-      url: service/how-to-configure-environment.md
+      url: how-to-configure-environment.md
     - text: Betanítási számítási célok beállítása
-      url: service/how-to-set-up-training-targets.md
+      url: how-to-set-up-training-targets.md
 - title: 'Kísérlet: Python SDK'
   linkLists:
   - linkListType: tutorial
     links:
     - text: Az első gépi tanulási kísérlet létrehozása
-      url: service/tutorial-1st-experiment-sdk-setup.md
+      url: tutorial-1st-experiment-sdk-setup.md
     - text: Képek besorolása
-      url: service/tutorial-train-models-with-aml.md
+      url: tutorial-train-models-with-aml.md
     - text: Taxiutak árának előrejelzése automatizált gépi tanulással
-      url: service/tutorial-auto-train-models.md
+      url: tutorial-auto-train-models.md
   - linkListType: how-to-guide
     links:
     - text: Betanítás a Scikit-learn használatával
-      url: service/how-to-train-scikit-learn.md
+      url: how-to-train-scikit-learn.md
     - text: Betanítás a TensorFlow használatával
-      url: service/how-to-train-tensorflow.md
+      url: how-to-train-tensorflow.md
     - text: Betanítás a PyTorch használatával
-      url: service/how-to-train-pytorch.md
+      url: how-to-train-pytorch.md
     - text: Betanítás a Keras használatával
-      url: service/how-to-train-keras.md
+      url: how-to-train-keras.md
 - title: Gépi tanulási folyamatok használata
   linkLists:
   - linkListType: overview
     links:
     - text: Mik azok a gépi tanulási folyamatok?
-      url: service/concept-ml-pipelines.md
+      url: concept-ml-pipelines.md
     - text: Az egérrel használható tervező
-      url: service/concept-designer.md
+      url: concept-designer.md
   - linkListType: tutorial
     links:
     - text: Lineáris regresszió az árak előrejelzésére (tervező)
-      url: service/tutorial-designer-automobile-price-train-score.md
+      url: tutorial-designer-automobile-price-train-score.md
     - text: Gépi tanulási folyamatok létrehozása (Python SDK)
-      url: service/tutorial-pipeline-batch-scoring-classification.md
+      url: tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: Folyamatok ütemezése (Python SDK)
-      url: service/how-to-schedule-pipelines.md
+      url: how-to-schedule-pipelines.md
     - text: Késések előrejelzése (tervező)
-      url: service/how-to-designer-sample-classification-flight-delay.md
+      url: how-to-designer-sample-classification-flight-delay.md
     - text: Változás előrejelzése (tervező)
-      url: service/how-to-designer-sample-classification-churn.md
+      url: how-to-designer-sample-classification-churn.md
 - title: Modellek üzembe helyezése és kezelése
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Mi az az MLOps?
-      url: service/concept-model-management-and-deployment.md
+      url: concept-model-management-and-deployment.md
     - text: Az üzembe helyezés módja és helye
-      url: service/how-to-deploy-and-where.md
+      url: how-to-deploy-and-where.md
     - text: Hitelesítés
-      url: service/how-to-setup-authentication.md
+      url: how-to-setup-authentication.md
     - text: Valós idejű előrejelzés
-      url: service/how-to-consume-web-service.md
+      url: how-to-consume-web-service.md
     - text: Kötegelt előrejelzés
-      url: service/how-to-run-batch-predictions.md
+      url: how-to-run-batch-predictions.md
     - text: Teljes körű példák (GitHub)
       url: https://github.com/microsoft/MLOps
 - title: Alapvető referenciadokumentumok

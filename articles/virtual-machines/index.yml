@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Virtual Machines-dokumentáció
 metadata:
-  document_id: na
   title: Azure-beli virtuális gépek dokumentációja – oktatóanyagok és API-referencia
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines

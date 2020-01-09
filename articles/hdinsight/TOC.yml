@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: Fürttároló használata
-                  items:
-                    - name: Az Azure Storage használata
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: A 2. generációs Azure Data Lake Storage használata
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: Az 1. generációs Azure Data Lake Storage használata
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Fürttároló használata
+          items:
+            - name: Az Azure Storage használata
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: A 2. generációs Azure Data Lake Storage használata
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Az 1. generációs Azure Data Lake Storage használata
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: Fürtök kiterjesztése
           items:
             - name: HDInsight-alkalmazások telepítése

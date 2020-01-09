@@ -161,6 +161,8 @@
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-monitor-vscode.md
     - name: IoT Edge-eszközök használata átjáróként
       items:
         - name: Transzparens átjáró konfigurálása

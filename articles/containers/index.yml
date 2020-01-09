@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure tárolókhoz
 metadata:
-  document_id: null
   title: 'Azure tárolókhoz – Rövid útmutatók, Oktatóanyagok, API-referencia'
   description: 'A tárolókhoz tartozó rövid útmutatók, oktatóanyagok és egyéb eszközök segítséget nyújtanak a tárolóalkalmazások kezelésének és üzembe helyezésének megkezdéséhez az Azure használatával.'
   keywords: 'Azure, tárolók, Docker, API, Kubernetes'

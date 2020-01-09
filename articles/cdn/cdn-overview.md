@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593613"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660630"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Mit takar a tartalomkézbesítési hálózat az Azure-on?
 Egy tartalomkézbesítési hálózat (CDN) kiszolgálók olyan elosztott hálózata, amely hatékonyan kézbesíti a webes tartalmakat a felhasználóknak. A CDN-ek a késés minimalizálása érdekében gyorsítótárazott tartalmat tárolnak a végfelhasználók közelében lévő jelenléti pontok (POP) peremhálózati kiszolgálóin. 
@@ -35,7 +35,7 @@ A webhelyek objektumainak az Azure CDN használatával történő kézbesítése
 
 A jelenlegi CDN-csomópontok helyének listájáért tekintse meg az [Azure CDN POP-helyeket](cdn-pop-locations.md) ismertető cikket.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 ![A CDN áttekintése](./media/cdn-overview/cdn-overview.png)
 
 1. A felhasználó (Anna) fájlt (más néven objektumot) kérelmez egy speciális tartománynevet tartalmazó URL-cím (pl. _&lt;végpont neve&gt;_ .azureedge.net) használatával. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
@@ -59,7 +59,7 @@ Az egyes Azure-előfizetések alapértelmezett korlátokkal rendelkeznek a köve
  - A CDN-profilokban létrehozható végpontok száma. 
  - A végpontokra leképezhető egyéni tartományok száma.
 
-A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlátokkal](https://docs.microsoft.com/azure/azure-subscription-service-limits) kapcsolatos szakaszt.
+A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlátokkal](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) kapcsolatos szakaszt.
     
 ## <a name="azure-cdn-features"></a>Az Azure CDN szolgáltatásai
 Az Azure CDN az alábbi főbb szolgáltatásokat kínálja:
@@ -73,7 +73,7 @@ Az Azure CDN az alábbi főbb szolgáltatásokat kínálja:
 
 Az egyes Azure CDN termékek által támogatott szolgáltatások teljes listájáért tekintse meg az [Azure CDN termékek szolgáltatásait összehasonlító](cdn-features.md) részt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A CDN használatának első lépései: [Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md).
 - A CDN-végpontjait a [Microsoft Azure Portal](https://portal.azure.com) vagy a [PowerShell](cdn-manage-powershell.md) használatával kezelheti.
 - Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](cdn-app-dev-net.md) vagy a [Node.js](cdn-app-dev-node.md) segítségével.

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b63032baa60d18f3d9d98fc403bdc1087c6c9b6b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350091"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660681"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -29,11 +29,11 @@ Tartsa szem előtt ezeket a kvótákat a Batch-munkaterhelések tervezése és s
 
 Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is oszthatja a számítási feladatokat ugyanazon előfizetéshez, de különböző Azure-régiókhoz tartozó Batch-fiókok között.
 
-Ha éles számítási feladatokat kíván futtatni a Batch szolgáltatásban, előfordulhat, hogy az alapértelmezettnél nagyobb mennyiségű kvótát kell megadnia. Ha kvótát szeretne felvenni, akkor díjmentesen nyithat meg [](#increase-a-quota) egy online ügyfélszolgálati kérést.
+Ha éles számítási feladatokat kíván futtatni a Batch szolgáltatásban, előfordulhat, hogy az alapértelmezettnél nagyobb mennyiségű kvótát kell megadnia. Ha kvótát szeretne felvenni, akkor díjmentesen nyithat meg egy online [ügyfélszolgálati kérést](#increase-a-quota) .
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
-Kvóta kreditjét, nem kapacitás garantálja. Ha nagyméretű kapacitásra van szüksége, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
+A kvóta egy hitelkeret, nem pedig a kapacitási garancia. Ha nagyméretű kapacitásra van szüksége, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
 Azt is vegye figyelembe, hogy a kvóták nem garantált értékek. A kvóták a Batch szolgáltatás módosításaitól vagy a kvóta értékének módosítására vonatkozó felhasználói kéréstől függően változhatnak.
 
@@ -41,11 +41,11 @@ Azt is vegye figyelembe, hogy a kvóták nem garantált értékek. A kvóták a 
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Magok kvótái felhasználói előfizetési módban
 
-Ha olyan batch-fiókot hozott létre, amelyben a készlet-kiosztási mód **felhasználói**előfizetésre van beállítva, a kvótákat a rendszer eltérően alkalmazza. Ebben a módban a Batch virtuális gépek és egyéb erőforrások közvetlenül az előfizetésben jönnek létre a készlet létrehozásakor. Az Azure Batch magok kvótái nem érvényesek az ebben a módban létrehozott fiókra. Ehelyett a rendszer a regionális számítási magokra és egyéb erőforrásokra vonatkozó előfizetésében lévő kvótákat alkalmazza. További információ ezekről a kontingensekről az Azure-előfizetésekben [és a szolgáltatási korlátokban, a kvótákban és](../azure-subscription-service-limits.md)a megkötésekben.
+Ha olyan batch-fiókot hozott létre, amelyben a készlet-kiosztási mód **felhasználói előfizetésre**van beállítva, a kvótákat a rendszer eltérően alkalmazza. Ebben a módban a Batch virtuális gépek és egyéb erőforrások közvetlenül az előfizetésben jönnek létre a készlet létrehozásakor. Az Azure Batch magok kvótái nem érvényesek az ebben a módban létrehozott fiókra. Ehelyett a rendszer a regionális számítási magokra és egyéb erőforrásokra vonatkozó előfizetésében lévő kvótákat alkalmazza. További információ ezekről a kontingensekről az [Azure-előfizetésekben és a szolgáltatási korlátokban, a kvótákban és a megkötésekben](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="pool-size-limits"></a>Készlet méretének korlátai
 
-A készlet méretének korlátait a Batch szolgáltatás állítja be. Az [erőforrás](#resource-quotas)-kvótákkal ellentétben ezek az értékek nem módosíthatók. Csak a csomópontok közötti kommunikációt és az egyéni lemezképeket tartalmazó készletek rendelkeznek a normál kvótától eltérő korlátozásokkal.
+A készlet méretének korlátait a Batch szolgáltatás állítja be. Az [erőforrás-kvótákkal](#resource-quotas)ellentétben ezek az értékek nem módosíthatók. Csak a csomópontok közötti kommunikációt és az egyéni lemezképeket tartalmazó készletek rendelkeznek a normál kvótától eltérő korlátozásokkal.
 
 | **Erőforrás** | **Felső korlát** |
 | --- | --- |
@@ -60,13 +60,13 @@ A készlet méretének korlátait a Batch szolgáltatás állítja be. Az [erőf
 
 ## <a name="other-limits"></a>Egyéb korlátok
 
-A Batch szolgáltatás által beállított további korlátok. Az [erőforrás](#resource-quotas)-kvótákkal ellentétben ezek az értékek nem módosíthatók.
+A Batch szolgáltatás által beállított további korlátok. Az [erőforrás-kvótákkal](#resource-quotas)ellentétben ezek az értékek nem módosíthatók.
 
 | **Erőforrás** | **Felső korlát** |
 | --- | --- |
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) /számítási csomópontok | 4 x csomópont-magok száma |
 | [Alkalmazások](batch-application-packages.md) batch-fiókkal | 20 |
-| Alkalmazáscsomagok alkalmazásonként | 40 |
+| Alkalmazás-csomagok eszközönként | 40 |
 | Alkalmazáscsomag/készlet | 10 |
 | Feladat maximális élettartama | 180 nap<sup>1</sup> |
 | [Csatlakoztatások](virtual-file-mount.md) /számítási csomópontok | 10 |
@@ -75,10 +75,10 @@ A Batch szolgáltatás által beállított további korlátok. Az [erőforrás](
 
 ## <a name="view-batch-quotas"></a>Batch-kvóták megtekintése
 
-A Batch-fiók kvótáinak megtekintése [][portal]a Azure Portalban.
+A Batch-fiók kvótáinak megtekintése a [Azure Portalban][portal].
 
 1. Válassza a **Batch-fiókok** lehetőséget a portálon, majd válassza ki azt a Batch-fiókot, amelyre kíváncsi.
-1. Válassza a kvóták lehetőséget a Batch-fiók menüjében.
+1. Válassza a **kvóták** lehetőséget a Batch-fiók menüjében.
 1. A Batch-fiókra jelenleg alkalmazott kvóták megtekintése
 
     ![Batch-fiókok kvótái][account_quotas]
@@ -90,7 +90,7 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
 ### <a name="increase-cores-quota-in-batch"></a>Magok kvótájának bővítése a Batchben 
 
 1. Válassza a **Súgó + támogatás** csempét a portál irányítópultján, vagy a portál jobb felső sarkában látható kérdőjelet ( **?** ).
-1. Válassza az **új támogatási kérelem** > **alapjai**lehetőséget.
+1. Válassza az **új támogatási kérelem** > **alapismeretek**lehetőséget.
 1. Az **alapjaiban**:
    
     a. **Probléma típusa** > **szolgáltatás és előfizetés korlátai (kvóták)**
@@ -101,7 +101,7 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
       
     Kattintson a **Tovább** gombra.
     
-1. A **részletek**:
+1. **Részletek**:
       
     a. A **részletek**megadása területen adja meg a helyet, a kvóta típusát és a Batch-fiókot.
     
@@ -117,7 +117,7 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
 
     Az alacsony prioritású kvóta egyetlen érték az összes virtuálisgép-sorozaton belül. Ha korlátozott SKU-ra van szüksége, ki kell választania az **alacsony prioritású magok** elemet, és fel kell vennie a lekéréses virtuálisgép-családokat.
 
-    b. Válasszon ki egy súlyosságot az [üzleti hatásnak][support_sev]megfelelően.
+    b. Válasszon ki egy **súlyosságot** az [üzleti hatásnak][support_sev]megfelelően.
 
     Kattintson a **Tovább** gombra.
 
@@ -139,13 +139,13 @@ Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigur�
 * Egy [nyilvános IP-cím](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * Egy [Load Balancer](../load-balancer/load-balancer-overview.md)
 
-Ezek az erőforrások a Batch-készlet létrehozásakor megadott virtuális hálózatot tartalmazó előfizetésben vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-subscription-service-limits.md) vonatkoznak. Ha nagyméretű készlet-központi telepítéseket tervez egy virtuális hálózaton, ellenőrizze az előfizetéshez tartozó kvótákat ezekhez az erőforrásokhoz. Ha szükséges, a **Súgó és támogatás**lehetőség kiválasztásával növelje a Azure Portal növekedését.
+Ezek az erőforrások a Batch-készlet létrehozásakor megadott virtuális hálózatot tartalmazó előfizetésben vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha nagyméretű készlet-központi telepítéseket tervez egy virtuális hálózaton, ellenőrizze az előfizetéshez tartozó kvótákat ezekhez az erőforrásokhoz. Ha szükséges, a **Súgó és támogatás**lehetőség kiválasztásával növelje a Azure Portal növekedését.
 
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 * [Azure Batch fiók létrehozása a Azure Portal használatával](batch-account-create-portal.md)
 * [A Azure Batch funkcióinak áttekintése](batch-api-basics.md)
-* [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md)
+* [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

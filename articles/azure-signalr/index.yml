@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Az Azure SignalR Service dokumentációja
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
   title: Dokumentáció – Azure SignalR Service
   description: Könnyedén létrehozhat és skálázhat valós idejű webalkalmazásokat kiszolgáló nélküli vagy kiszolgáló módban. Számos nyelvet és keretrendszert támogató WebSocket alapján.
   services: azure-signalr

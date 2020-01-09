@@ -1,5 +1,6 @@
 ---
-title: Konfigurációs és felügyeleti problémák a Microsoft Azure Cloud Services GYIK-ban | Microsoft Docs
+title: Konfigurációs és felügyeleti problémák – gyakori kérdések
+titleSuffix: Azure Cloud Services
 description: Ez a cikk a Microsoft Azure Cloud Services konfigurálásával és kezelésével kapcsolatos gyakori kérdéseket sorolja fel.
 services: cloud-services
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161770"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660613"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -189,7 +190,7 @@ A Microsoft folyamatosan figyeli a kiszolgálókat, a hálózatokat és az alkal
 A Windows 10 és a Windows Server 2016 támogatja a HTTP/2-t mind az ügyfél, mind a kiszolgáló oldalon. Ha az ügyfél (böngésző) a TLS protokollon keresztül csatlakozik az IIS-kiszolgálóhoz, amely TLS-bővítményekkel egyeztet a HTTP/2 protokollon keresztül, akkor nem kell módosítania a kiszolgálót. Ennek az az oka, hogy a TLS-n keresztül a HTTP/2 használatát megadó H2-14 fejléc alapértelmezés szerint elküldésre kerül. Ha viszont az ügyfél egy frissítési fejlécet küld a HTTP/2 verzióra való frissítéshez, akkor az alábbi módosítást kell végrehajtania a kiszolgáló oldalon, hogy a frissítés működőképes legyen, és egy HTTP/2-alapú kapcsolatban legyen. 
 
 1. Futtassa a Regedit. exe fájlt.
-2. Keresse meg a beállításkulcsot: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Keresse meg a beállításkulcsot: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Hozzon létre egy új, **DuoEnabled**nevű DWORD értéket.
 4. Állítsa az értékét 1-re.
 5. Indítsa újra a kiszolgálót.
@@ -249,7 +250,7 @@ További információ a Cloud Services Application Insightsének engedélyezés�
 
 További információ a Cloud Services Azure Diagnostics naplózásának engedélyezéséről: [diagnosztika beállítása az Azure Cloud Services és a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) szolgáltatáshoz
 
-## <a name="generic"></a>Általános
+## <a name="generic"></a>Általánosítás
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?
 Ha meg szeretné akadályozni, hogy az ügyfelek ne tudják a MIME-típusok elemzését, adjon hozzá egy beállítást a *web. config* fájlban.
@@ -276,7 +277,7 @@ Ezt lehetőségként is hozzáadhatja az IIS-ben. Használja az alábbi parancso
 Használja az IIS indítási parancsfájlt a [gyakori indítási feladatok](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) cikkből.
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Mi a felhőalapú szolgáltatás kvótájának korlátja?
-Lásd a [szolgáltatásra vonatkozó korlátozásokat](../azure-subscription-service-limits.md#subscription-limits).
+Lásd a [szolgáltatásra vonatkozó korlátozásokat](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits).
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Miért jelenik meg a Cloud Service-beli virtuális gép meghajtója nagyon kevés szabad lemezterülettel?
 Ez a várt viselkedés, és nem okoz problémát az alkalmazásában. A naplózás be van kapcsolva a (z)% AppRoot% meghajtóhoz az Azure Pásti virtuális gépeken, ami lényegében a fájlok szokásosan felhasználható területének kétszeres mennyiségét használja fel. Azonban több dolgot is figyelembe kell vennie, amelyek lényegében ezt nem jelentik be.
