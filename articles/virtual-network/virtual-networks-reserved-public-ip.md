@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 675e7a7b557a3f19ea4d8d4960316c3859cbb9c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058477"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638221"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Fenntartott IP címek (klasszikus üzembe helyezés)
 
@@ -28,7 +28,7 @@ ms.locfileid: "71058477"
 Ha meg szeretné akadályozni, hogy az IP-címek módosítva legyenek, fenntarthat egy IP-címet. A fenntartott IP-címek csak VIP-ként használhatók, így biztosítható, hogy a felhőalapú szolgáltatás IP-címe azonos maradjon, még akkor is, ha az erőforrások le vannak állítva vagy le vannak állítva (fel van foglalva). Emellett a virtuális IP-címekhez használt meglévő dinamikus IP-címeket a fenntartott IP-címekre is konvertálhatja.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Megtudhatja, hogyan foglalhat le statikus nyilvános IP-címet a [Resource Manager](virtual-network-ip-addresses-overview-arm.md)-alapú üzemi modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Megtudhatja, hogyan foglalhat le statikus nyilvános IP-címet a [Resource Manager](virtual-network-ip-addresses-overview-arm.md)-alapú üzemi modell használatával.
 
 Ha többet szeretne megtudni az Azure-beli IP-címekről, olvassa el az [IP-címekről](virtual-network-ip-addresses-overview-classic.md) szóló cikket.
 
@@ -41,7 +41,7 @@ Ha többet szeretne megtudni az Azure-beli IP-címekről, olvassa el az [IP-cím
 - Használhatom a fenntartott IP-címet az összes Azure-szolgáltatáshoz?
     Nem. A fenntartott IP-címek csak VIP-en keresztül elérhető virtuális gépekhez és felhőalapú szolgáltatási példányokhoz használhatók.
 - Hány fenntartott IP-címet használhatok?
-    Részletekért tekintse meg az [Azure korlátozásait](../azure-subscription-service-limits.md#networking-limits) ismertető cikket.
+    Részletekért tekintse meg az [Azure korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) ismertető cikket.
 - Számítanak fel díjat a fenntartott IP-címekért?
     Néha. A díjszabással kapcsolatos részletekért tekintse meg a [fenntartott IP címe díjszabását](https://go.microsoft.com/fwlink/?LinkID=398482) ismertető oldalt.
 - Hogyan a fenntartott IP-címet?
@@ -56,7 +56,7 @@ Ha többet szeretne megtudni az Azure-beli IP-címekről, olvassa el az [IP-cím
 A fenntartott IP-címek használata előtt fel kell vennie azt az előfizetésbe. Hozzon létre egy fenntartott IP-címet az *USA középső* régiójában elérhető nyilvános IP-címek készletéből a következő módon:
 
 > [!NOTE]
-> A klasszikus üzemi modell esetében telepítenie kell Azure PowerShell Service Management verzióját. További információ: [Az Azure PowerShell Service Management modul áttekintése](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0). 
+> A klasszikus üzemi modell esetében telepítenie kell Azure PowerShell Service Management verzióját. További információ: [Az Azure PowerShell Service Management moduljának telepítése](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0). 
 
   ```powershell
     New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
@@ -83,7 +83,7 @@ Várt kimenet:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Ha fenntartott IP-címet hoz létre a PowerShell-lel, nem adhat meg erőforráscsoportot a fenntartott IP-cím létrehozásához. Az Azure egy *alapértelmezett-hálózatkezelés* nevű erőforráscsoportba helyezi azt. Ha a [Azure Portal](https://portal.azure.com)használatával hozza létre a fenntartott IP-címet, megadhat bármely kiválasztott erőforráscsoportot. Ha a fenntartott IP-címet az *alapértelmezett hálózatkezeléstől* eltérő erőforráscsoporthoz hozza létre, akkor is, ha a fenntartott IP-címet a `Get-AzureReservedIP` ( `Remove-AzureReservedIP`z) és a (z), a (z) és a (z) parancsra hivatkozik, akkor a név *Csoport fenntartott IP-név*.  Ha például egy *myResourceGroup*nevű erőforráscsoport létrehoz egy *myReservedIP* nevű fenntartott IP-címet, akkor a fenntartott IP-címet a *csoport myResourceGroup myReservedIP*kell hivatkoznia.   
+>Ha fenntartott IP-címet hoz létre a PowerShell-lel, nem adhat meg erőforráscsoportot a fenntartott IP-cím létrehozásához. Az Azure egy *alapértelmezett-hálózatkezelés* nevű erőforráscsoportba helyezi azt. Ha a [Azure Portal](https://portal.azure.com)használatával hozza létre a fenntartott IP-címet, megadhat bármely kiválasztott erőforráscsoportot. Ha a fenntartott IP-címet az *alapértelmezett hálózatkezeléstől* eltérő erőforráscsoporthoz hozza létre, akkor is, ha a fenntartott IP-címekre hivatkozik, például a `Get-AzureReservedIP` és a `Remove-AzureReservedIP`paranccsal, hivatkoznia kell a név *Csoport erőforrás-csoport-név fenntartott-IP-név*elemre.  Ha például egy *myResourceGroup*nevű erőforráscsoport létrehoz egy *myReservedIP* nevű fenntartott IP-címet, akkor a fenntartott IP-címet a *csoport myResourceGroup myReservedIP*kell hivatkoznia.   
 
 
 Ha egy IP-cím le van foglalva, az előfizetés addig marad, amíg nem törli. A következő módon törölheti a fenntartott IP-címet:
@@ -98,7 +98,7 @@ Hozzon létre egy fenntartott IP-címet az *USA középső* régiójában elérh
 > [!NOTE]
 > A klasszikus üzembe helyezéshez a klasszikus Azure CLI-t kell használnia. A klasszikus Azure CLI telepítésével kapcsolatos információkért lásd: [a klasszikus Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-classic-cli?view=azure-cli-latest)
   
- Parancs
+ Parancs:
  
 ```azurecli
 azure network reserved-ip create <name> <location>
@@ -110,13 +110,13 @@ Példa:
 
 A következő módon tekintheti meg, hogy milyen IP-címek vannak lefoglalva az előfizetésben az Azure CLI használatával: 
 
-Parancs
+Parancs:
 ```azurecli
 azure network reserved-ip list
 ```
 Ha egy IP-cím le van foglalva, az előfizetés addig marad, amíg nem törli. A következő módon törölheti a fenntartott IP-címet:
 
-Parancs
+Parancs:
 
  ```azurecli
  azure network reserved-ip delete <name>
@@ -126,7 +126,7 @@ Parancs
  azure network reserved-ip delete MyReservedIP
  ```
 ## <a name="reserve-the-ip-address-of-an-existing-cloud-service"></a>Meglévő felhőalapú szolgáltatás IP-címének lefoglalása
-A meglévő felhőalapú szolgáltatások IP-címét a `-ServiceName` (z) paraméter hozzáadásával is lefoglalhatja. Foglaljon le egy Cloud Service- *TestService* IP-címét az *USA középső* régiójában a következőképpen:
+A meglévő felhőalapú szolgáltatások IP-címét a `-ServiceName` paraméter hozzáadásával foglalhatja le. Foglaljon le egy Cloud Service- *TestService* IP-címét az *USA középső* régiójában a következőképpen:
 
 - Azure PowerShell (klasszikus) használata:
 
@@ -136,7 +136,7 @@ A meglévő felhőalapú szolgáltatások IP-címét a `-ServiceName` (z) param�
 
 - Az Azure CLI (klasszikus) használata:
   
-    Parancs
+    Parancs:
 
     ```azurecli
      azure network reserved-ip create <name> <location> -r <service-name> -d <deployment-name>
@@ -161,7 +161,7 @@ New-AzureVMConfig -Name TestVM -InstanceSize Small -ImageName $image.ImageName `
 | New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 ```
 > [!NOTE]
-> Ha egy felhőalapú szolgáltatással való használatra fenntartott IP-címet hoz létre, továbbra is a virtuális gépet a következő VIP-cím használatával tekintheti meg *:&lt;>* a bejövő kommunikációhoz. Az IP-címek lefoglalása nem jelenti azt, hogy közvetlenül tud csatlakozni a virtuális géphez. A fenntartott IP-cím ahhoz a felhőalapú szolgáltatáshoz van rendelve, amelyre a virtuális gép telepítve lett. Ha közvetlenül IP-címmel szeretne csatlakozni egy virtuális géphez, konfigurálnia kell egy példány szintű nyilvános IP-címet. A példány szintű nyilvános IP-cím olyan nyilvános IP-cím (ILPIP), amely közvetlenül a virtuális géphez van rendelve. Nem foglalható le. További információért olvassa el a [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) című cikket.
+> Ha egy felhőalapú szolgáltatással való használatra fenntartott IP-címet hoz létre, továbbra is a virtuális gépet a következő VIP-cím használatával tekintheti meg *:&lt;portszám >* a bejövő kommunikációhoz. Az IP-címek lefoglalása nem jelenti azt, hogy közvetlenül tud csatlakozni a virtuális géphez. A fenntartott IP-cím ahhoz a felhőalapú szolgáltatáshoz van rendelve, amelyre a virtuális gép telepítve lett. Ha közvetlenül IP-címmel szeretne csatlakozni egy virtuális géphez, konfigurálnia kell egy példány szintű nyilvános IP-címet. A példány szintű nyilvános IP-cím olyan nyilvános IP-cím (ILPIP), amely közvetlenül a virtuális géphez van rendelve. Nem foglalható le. További információért olvassa el a [példányszintű nyilvános IP (ILPIP)](virtual-networks-instance-level-public-ip.md) című cikket.
 > 
 
 ## <a name="remove-a-reserved-ip-from-a-running-deployment"></a>Lefoglalt IP-cím eltávolítása egy futó telepítésből
@@ -174,7 +174,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName Test
 ```
 
 ### <a name="using-azure-cli-classic"></a>Az Azure CLI (klasszikus) használata
-Parancs
+Parancs:
 
 ```azurecli
 azure network reserved-ip disassociate <name> <service-name> <deployment-name>
@@ -192,7 +192,7 @@ azure network reserved-ip disassociate MyReservedIP TestService asmtest8942
 
 A fenntartott IP-címek teljes előfizetésből való eltávolításához futtassa a következő parancsot:
 
-Parancs
+Parancs:
 
 ```azurecli
 azure network reserved-ip delete <name>
@@ -222,7 +222,7 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 ### <a name="using-azure-cli-classic"></a>Az Azure CLI (klasszikus) használata
 A következő módon rendelhet hozzá új fenntartott IP-címet a futó felhőalapú szolgáltatás üzembe helyezéséhez az Azure CLI használatával:
 
-Parancs
+Parancs:
 ```azurecli
 azure network reserved-ip associate <name> <service-name> <deployment-name>
 ```
@@ -250,7 +250,7 @@ Egy fenntartott IP-címet egy CSCFG-fájl használatával is hozzárendelhet egy
       </NetworkConfiguration>
     </ServiceConfiguration>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan működik az [IP-címzés](virtual-network-ip-addresses-overview-classic.md) a klasszikus üzemi modellben.
 * További információ a [fenntartott magánhálózati IP-címekről](virtual-networks-reserved-private-ip.md).
 * További információ a [példányok szintjének nyilvános IP-címeiről (ILPIP)](virtual-networks-instance-level-public-ip.md).

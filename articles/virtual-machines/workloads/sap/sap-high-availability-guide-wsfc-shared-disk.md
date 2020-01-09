@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7fae3c08dd4b51b8c8dc9437fce5b5b5de063726
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078279"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637916"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -31,8 +31,8 @@ ms.locfileid: "70078279"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -178,7 +178,7 @@ ms.locfileid: "70078279"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -219,30 +219,30 @@ A Windows rendszerben az SAP ASCS/SCS példány az SAP Central Services, az SAP 
 Az SAP-ASCS/SCS-példányok a következő összetevőket tartalmazják:
 
 * SAP központi szolgáltatások:
-    * Két folyamat, egy üzenet-és sorba helyezni-kiszolgáló, \<valamint egy ASCS/SCS virtuális gazdagép neve >, amely a két folyamat elérésére szolgál.
-    * Fájl szerkezete: S:\usr\sap\\SID\&gt;ASCS/SCS\<-példány száma&lt;\>
+    * Két folyamat, egy üzenet-és sorba helyezni-kiszolgáló, valamint egy \<ASCS/SCS virtuális gazdagép neve >, amely a két folyamat elérésére szolgál.
+    * Fájl szerkezete: S:\usr\sap\\&lt;SID&gt;\ ASCS/SCS\<példány száma\>
 
 
 * SAP globális gazdagép fájljai:
-  * Fájl szerkezete: S:\usr\sap\\SID&lt;-\SYS\...&gt;
-  * A sapmnt fájlmegosztást, amely a következő UNC elérési út használatával\\engedélyezi&gt;a\.hozzáférést a globális S:\usr\sap&lt;SID \SYS.. fájlokhoz:
+  * Fájl szerkezete: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * A sapmnt-fájlmegosztás, amely lehetővé teszi a hozzáférést a globális S:\usr\sap\\&lt;SID&gt;\SYS\... fájlok a következő UNC elérési úttal:
 
-    \\\\< ASCS/SCS virtuális gazdagép neve\>\sapmnt\\&lt;SID&gt;\SYS\...
+    \\\\< ASCS/SCS Virtual Host neve\>\sapmnt\\&lt;SID&gt;\SYS\...
 
 
-![2\. ábra: Egy SAP ASCS/SCS-példány folyamatai, a fájl szerkezete és a globális gazdagép sapmnt][sap-ha-guide-figure-8001]
+![2\. ábra: a folyamatok, a fájlok szerkezete és a globális gazdagép sapmnt egy SAP ASCS/SCS-példányon][sap-ha-guide-figure-8001]
 
 _**2. ábra:** Egy SAP ASCS/SCS-példány folyamatai, a fájl szerkezete és a globális gazdagép sapmnt_
 
 Magas rendelkezésre állási beállítás esetén az SAP ASCS/SCS-példányok fürtje. A *fürtözött megosztott lemezeket* (a példában a meghajtót) a SAP ASCS/SCS és az SAP globális gazdagép fájljainak elhelyezésére használjuk.
 
-![3\. ábra: SAP ASCS/SCS HA architektúra megosztott lemezzel][sap-ha-guide-figure-8002]
+![3\. ábra: SAP ASCS/SCS HA-architektúra megosztott lemezzel][sap-ha-guide-figure-8002]
 
 _**3. ábra:** SAP ASCS/SCS HA architektúra megosztott lemezzel_
 
 > [!IMPORTANT]
 > Ez a két összetevő ugyanazon az SAP ASCS/SCS-példányon fut:
->* Ugyanaz \<a ASCS/SCS virtuális állomásnév, > az SAP-üzenet és a sorba helyezni-kiszolgáló folyamatainak eléréséhez, valamint az SAP globális gazdagépek fájljaihoz is használható a sapmnt-fájlmegosztás használatával.
+>* Ugyanaz a \<ASCS/SCS virtuális állomásnév > a rendszer az SAP-üzenet és a sorba helyezni-kiszolgáló folyamatainak, valamint az SAP globális gazdagép-fájljainak a sapmnt-fájlmegosztás használatával való elérésére szolgál.
 >* Ugyanaz a fürt megosztott lemezmeghajtója van megosztva egymás között.
 >
 
@@ -273,7 +273,7 @@ _**5. ábra:** Windows feladatátvételi fürtszolgáltatás konfigurálása az 
 > A magas rendelkezésre álláshoz nincs szükség megosztott lemezekre, néhány adatbázis-kezelő termékkel, például a SQL Serversal. SQL Server a AlwaysOn replikálja az adatbázis-kezelői adatait és a naplófájlokat az egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows-fürt konfigurációjának nincs szüksége megosztott lemezre.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Készítse elő az Azure-infrastruktúrát az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
 

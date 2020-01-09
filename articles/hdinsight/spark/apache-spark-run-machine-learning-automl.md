@@ -6,28 +6,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806915"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638884"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
 
 Azure Machine Learning leegyszerűsíti és felgyorsítja a gépi tanulási modellek kialakítását, betanítását és üzembe helyezését. Az automatikus gépi tanulás (AutoML) szolgáltatásban olyan betanítási adatmennyiségeket indít el, amelyek egy meghatározott cél funkcióval rendelkeznek, majd megismétlik az algoritmusok és a szolgáltatások kiválasztásával, hogy automatikusan kiválassza a legjobb modellt az adataihoz a képzési pontszámok alapján. A HDInsight lehetővé teszi, hogy az ügyfelek több száz csomóponttal építsenek be fürtöket. A HDInsight-fürtön futó AutoML lehetővé teszi a felhasználók számára, hogy számítási kapacitást használjanak ezen csomópontok között, hogy kibővíthető módon futtassák a betanítási feladatokat, és párhuzamosan futtassanak több betanítási feladatot. Ez lehetővé teszi a felhasználók számára, hogy AutoML kísérleteket futtassanak a számítási feladatok más big data munkaterhelésekkel való megosztása során.
- 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Azure Machine Learning telepítése HDInsight-fürtön
 
-Az automatizált gépi tanulással kapcsolatos általános útmutatókért lásd [: oktatóanyag: automatikus gépi tanulás használata a regressziós modell létrehozásához](../../machine-learning/service/tutorial-auto-train-models.md).
-Minden új HDInsight-Spark-fürt előre telepítve van a AzureML-AutoML SDK-val. A AutoML a HDInsight-on való használatával megkezdheti ezt a [minta Jupyter notebookot](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi). Ez a Jupyter Notebook bemutatja, hogyan használható egy automatizált gépi tanulási osztályozó egy egyszerű besorolási probléma megoldásához.
+Az automatizált gépi tanulással kapcsolatos általános útmutatókért lásd [: oktatóanyag: automatikus gépi tanulás használata a regressziós modell létrehozásához](../../machine-learning/tutorial-auto-train-models.md).
+Minden új HDInsight-Spark-fürt előre telepítve van a AzureML-AutoML SDK-val.
 
 > [!Note]
 > Azure Machine Learning csomagok települnek a Python3 Conda-környezetbe. A telepített Jupyter-jegyzetfüzetet a PySpark3 kernel használatával kell futtatni.
 
-Azt is megteheti, hogy a Zeppelin jegyzetfüzeteket is használhatja a AutoML használatához.
+A Zeppelin notebookok használatával is használhatja a AutoML-t.
 
 > [!Note]
 > A Zeppelin egy [ismert hibával](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html) rendelkezik, ahol a PySpark3 nem választja ki a Python megfelelő verzióját. Kérjük, használja a dokumentált munkát.
@@ -46,6 +45,7 @@ auth_sp = ServicePrincipalAuthentication(
     service_principal_password='<Azure AD Application Key>'
 )
 ```
+
 Az alábbi kódrészlet egy **Azure ad-felhasználó**használatával hoz létre hitelesítési jogkivonatot.
 
 ```python

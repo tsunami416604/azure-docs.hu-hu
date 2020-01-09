@@ -8,21 +8,24 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
-ms.date: 02/22/2019
-ms.openlocfilehash: 8359a8407e93a2b31466342b82539cef04b0fe01
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 12/31/2019
+ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802198"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611968"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi a Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine?
 
 A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerkép az Azure Cloud platformon, amely kifejezetten az adatelemzéshez készült. Számos népszerű adatelemzési eszköz előre telepítve van és előre konfigurálva van az intelligens alkalmazások speciális elemzésekhez való kialakításához. 
 
 A DSVM a következő címen érhető el:
++ **Windows Server 2019 (előzetes verzió)**
++ **Ubuntu 18,04 LTS (előzetes verzió)**
 + Windows Server 2016
 + Ubuntu 16,04 LTS és CentOS 7,4
+
 
 > [!NOTE]
 > A Deep learninghez készült összes virtuálisgép-eszköz be lett hajtva a Data Science Virtual Machineba. 
@@ -63,7 +66,7 @@ A DSVM Windows Server 2016-es kiadása előre telepítve van a GPU-illesztőprog
 
 A DSVM Ubuntu, CentOS vagy Windows 2016 kiadását egy olyan Azure-beli virtuális gépre is üzembe helyezheti, amely nem a GPU-k alapján van. Ebben az esetben az összes mély tanulási keretrendszer vissza fog térni a CPU-módra.
  
-[További információ az elérhető Deep learning-és AI-keretrendszerekről](dsvm-deep-learning-ai-frameworks.md).
+[További információ az elérhető Deep learning-és AI-keretrendszerekről](dsvm-tools-deep-learning-frameworks.md).
 
 <a name="included"></a>
 
@@ -71,7 +74,7 @@ A DSVM Ubuntu, CentOS vagy Windows 2016 kiadását egy olyan Azure-beli virtuál
 
 Tekintse meg a Windows és a Linux DSVM található eszközök teljes listáját [itt](tools-included.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ ezekről a cikkekről:
 

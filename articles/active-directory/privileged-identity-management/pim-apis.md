@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aea9fbb14d3892419af104c44c8bfd5528eef421
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021929"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638663"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management API-k Microsoft Graph (előzetes verzió)
 
@@ -29,6 +29,8 @@ A Microsoft Graph API-kkal kapcsolatos részletekért tekintse meg a [Azure ad P
 
 > [!IMPORTANT]
 > A Microsoft Graph/Beta verziója alatti API-k előzetes verzióban érhetők el, és változhatnak. Az API-k üzemi alkalmazásokban való használata nem támogatott.
+>
+> Bár az összes PIM-művelet támogatott a Graph API parancsain keresztül, az aktiválási kérések jóváhagyásához egy másik rendszer használható. A jóváhagyásra Graph API jelenleg fejlesztés alatt áll, és a következő néhány hónapban lesz közzétéve.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 

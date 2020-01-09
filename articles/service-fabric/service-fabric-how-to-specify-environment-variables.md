@@ -1,23 +1,16 @@
 ---
-title: Útmutató környezeti változók megadásához az Azure Service Fabric szolgáltatásban | Microsoft Docs
+title: Környezeti változók megadása a szolgáltatásokhoz
 description: Bemutatja, hogyan használhatók környezeti változók a Service Fabric lévő alkalmazásokhoz
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: df9b199c24301016b9f9da8a8dec52129bbf94bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703546"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614315"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Környezeti változók megadása a Service Fabric szolgáltatásaihoz
 
@@ -28,7 +21,7 @@ Ez a cikk bemutatja, hogyan határozhat meg környezeti változókat egy szolgá
 Ebben a példában egy környezeti változót állít be egy tárolóhoz. A cikk feltételezi, hogy már rendelkezik egy alkalmazás-és szolgáltatás-jegyzékfájlval.
 
 1. Nyissa meg a ServiceManifest. xml fájlt.
-2. A `CodePackage` elemnél adjon hozzá egy új `EnvironmentVariables` elemet és egy `EnvironmentVariable` elemet minden környezeti változóhoz.
+2. A `CodePackage` elemben adjon hozzá egy új `EnvironmentVariables` elemet és egy `EnvironmentVariable` elemet minden környezeti változóhoz.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">
@@ -62,7 +55,7 @@ environment:
   - "hostname:${hostname}"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az ebben a cikkben tárgyalt alapfogalmakról, tekintse meg az [Alkalmazások kezelése több környezethez című cikket](service-fabric-manage-multiple-environment-app-configuration.md).
 
 További információ a Visual Studióban elérhető egyéb alkalmazás-felügyeleti lehetőségekről: [Service Fabric alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

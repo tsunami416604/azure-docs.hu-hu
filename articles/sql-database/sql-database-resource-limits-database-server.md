@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 40b277f0b1bfb3501bb246e555d46db5e1ee9f95
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279310"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638255"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Erőforrás-korlátozások és erőforrás-szabályozás SQL Database
 
@@ -32,7 +32,7 @@ Ez a cikk áttekintést nyújt az önálló adatbázisokat és rugalmas készlet
 | Adatbázisok száma kiszolgálónként | 5000 |
 | Az előfizetéshez tartozó kiszolgálók alapértelmezett száma bármely régióban | 20 |
 | Kiszolgálók/előfizetés maximális száma bármely régióban | 200 |  
-| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54,000 |  
+| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54 000 |  
 | Virtuális mag-kvóta kiszolgálónkénti/példányon | 540 |
 | Készletek maximális száma kiszolgálónként | Korlátozott számú DTU vagy virtuális mag. Ha például az egyes készletek 1000 DTU, akkor a kiszolgáló támogatja az 54-es készleteket.|
 |||
@@ -60,7 +60,7 @@ Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehet�
 - Az adatbázis vagy a rugalmas készlet számítási méretének növelése az adatbázis további számítási erőforrásokkal való biztosításához. Lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).
 - A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében. További információ: a [lekérdezés finomhangolása/célzása](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Adattárolás
 
 Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek lesznek, és az ügyfelek [hibaüzenetet](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)kapnak. A SELECT és DELETE utasítások továbbra is sikeresek lesznek.
 
@@ -99,7 +99,9 @@ A [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relationa
 
 Az Azure Storage-ban adatfájlokat használó alapszintű, standard és általános célú adatbázisok esetében előfordulhat, hogy a `primary_group_max_io` érték nem érhető el, ha egy adatbázis nem rendelkezik elegendő adatfájllal, hogy összesítse a IOPS, vagy ha az adatok nem egyenletesen vannak elosztva a fájlok között, vagy ha az alapul szolgáló Blobok teljesítményi szintje az erőforrás-irányítási korlát alatti IOPS/átviteli sebességet korlátozza. Hasonlóképpen, a gyakori tranzakció-véglegesítés által generált kis log IOs esetén a `primary_max_log_rate` érték nem valósítható meg az alapul szolgáló Azure Storage-blob IOPS-korlátja miatti munkaterheléssel.
 
-A [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetekben jelentett erőforrás-kihasználtsági értékek (például `avg_data_io_percent` és `avg_log_write_percent`) a maximális erőforrás-irányítási korlátok százalékában vannak kiszámítva. Ezért ha az erőforrás-szabályozástól eltérő tényezők IOPS/átviteli sebességre vannak korlátozva, megtekintheti a IOPS/átviteli sebesség simítását és a késések növelését a munkaterhelés növekedésével, bár a jelentett erőforrás-kihasználtság a 100% alatti marad. Ha szeretné megtekinteni az IOPS, az átviteli sebességet és a késést az adatbázis-fájlban, használja a [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) függvényt. Ez a függvény felfedi az összes i/o-t az adatbázison, beleértve a háttér i/o-t, amely nem a `avg_data_io_percent`felé van elfoglalva, de a IOPS és a mögöttes tároló átviteli sebességét használja, és hatással lehet a
+A [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) nézetekben jelentett erőforrás-kihasználtsági értékek (például `avg_data_io_percent` és `avg_log_write_percent`) a maximális erőforrás-irányítási korlátok százalékában vannak kiszámítva. Ezért ha az erőforrás-szabályozástól eltérő tényezők IOPS/átviteli sebességre vannak korlátozva, megtekintheti a IOPS/átviteli sebesség simítását és a késések növelését a munkaterhelés növekedésével, bár a jelentett erőforrás-kihasználtság a 100% alatti marad. 
+
+Ha szeretné megtekinteni az IOPS, az átviteli sebességet és a késést az adatbázis-fájlban, használja a [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) függvényt. Ez a függvény felfedi az összes i/o-t az adatbázison, beleértve a háttér i/o-t, amely nem a `avg_data_io_percent`felé van elfoglalva, de a IOPS és a mögöttes tároló átviteli sebességét használja, és hatással lehet a A függvény emellett felfedi a további késéseket is, amelyeket az i/o-erőforrások irányításával lehet bevezetni az olvasási és írási műveletekhez, a `io_stall_queued_read_ms` és `io_stall_queued_write_ms` oszlopokban.
 
 ### <a name="transaction-log-rate-governance"></a>Tranzakciós naplók arányának szabályozása
 
@@ -132,6 +134,6 @@ Ha egy, a kívánt skálázhatóságot akadályozó naplózási sebességre vona
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az általános Azure-korlátokkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-subscription-service-limits.md).
+- Az általános Azure-korlátokkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - További információ a DTU és a Edtu: [DTU és edtu](sql-database-purchase-models.md#dtu-based-purchasing-model).
 - További információ a tempdb méretéről: [tempdb Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

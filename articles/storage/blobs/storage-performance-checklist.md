@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382041"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613890"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -25,7 +25,7 @@ Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a 
 
 Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob Storage-alkalmazás fejlesztése során követendő ellenőrzőlistán.
 
-| Kész | Kategória | Tervezési szempont |
+| Kész | Kategória | Kialakítási szempont |
 | --- | --- | --- |
 | &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
@@ -52,13 +52,13 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 | &nbsp; |Metaadatok használata |[Tárolja a Blobok gyakran használt metaadatait a metaadatokban?](#use-metadata) |
 | &nbsp; |Gyors feltöltés |[Amikor egy blob gyors feltöltését kísérli meg, párhuzamosan kell feltölteni a blokkokat?](#upload-one-large-blob-quickly) |
 | &nbsp; |Gyors feltöltés |[Sok blob gyors feltöltésének megkísérlésekor a blobokat párhuzamosan kell feltölteni?](#upload-many-blobs-quickly) |
-| &nbsp; |BLOB típusa |[Az oldal blobokat használja, vagy ha szükséges, a Blobok blokkolása?](#choose-the-correct-type-of-blob) |
+| &nbsp; |Blobtípus |[Az oldal blobokat használja, vagy ha szükséges, a Blobok blokkolása?](#choose-the-correct-type-of-blob) |
 
 ## <a name="scalability-targets"></a>Méretezhetőségi célok
 
 Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
@@ -99,7 +99,7 @@ Annak megismerése, hogy az Azure Storage hogyan particionálja a blob adatait a
 
 A blob Storage egy tartományon alapuló particionálási sémát használ a skálázáshoz és a terheléselosztáshoz. Minden blobhoz tartozik egy partíciós kulcs, amely tartalmazza a blob teljes nevét (fiók + tároló + blob). A partíciós kulcs a blob-adattartományokra való particionálásra szolgál. A tartományok ezután terheléselosztást kapnak a blob Storage-ban.
 
-A tartományon alapuló particionálás azt jelenti, hogy a lexikális sorrendet (például *mypayroll*, *myperformance*, *myemployees*stb.) vagy időbélyegeket használó elnevezési konvenciók (*log20160101*, *log20160102*, *log20160102* stb.) valószínűbb, hogy a partíciók ugyanazon a partíción találhatók. , amíg a megnövekedett terhelésnek kisebb tartományokra kell bontania. A Blobok ugyanazon a partíciós kiszolgálón való közös elhelyezése javítja a teljesítményt, ezért a teljesítmény fokozásának fontos része a Blobok a leghatékonyabb módon történő megszervezését is magában foglalja.
+A tartományon alapuló particionálás azt jelenti, hogy a lexikális sorrendet (például *mypayroll*, *myperformance*, *myemployees*stb.) vagy időbélyegeket (*log20160101*, *log20160102*, *log20160102*stb.) használó elnevezési konvenciók nagyobb valószínűséggel eredményezik, hogy a partíciók ugyanazon a partíció-kiszolgálón helyezkednek el. , amíg a megnövekedett terhelésnek kisebb tartományokra kell bontania. A Blobok ugyanazon a partíciós kiszolgálón való közös elhelyezése javítja a teljesítményt, ezért a teljesítmény fokozásának fontos része a Blobok a leghatékonyabb módon történő megszervezését is magában foglalja.
 
 Egy tárolóban lévő összes blobot például egyetlen kiszolgáló is kiszolgálhat, amíg a Blobok terhelése a partíció-tartományok további kiegyensúlyozását igényli. Hasonlóképpen, a lexikális sorrendben elrendezett fiókokat tartalmazó csoportokat egyetlen kiszolgáló is kiszolgálhatja, amíg az egyik vagy az összes fiók terhelését meg kell osztani több partíciós kiszolgáló között.
 
@@ -285,5 +285,5 @@ Az oldal Blobok akkor megfelelőek, ha az alkalmazásnak véletlenszerű írást
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókok esetében](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Az Azure Storage a tárfiókokra vonatkozó skálázhatósági és teljesítménycéljai](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

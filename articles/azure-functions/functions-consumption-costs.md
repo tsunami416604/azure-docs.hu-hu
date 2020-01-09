@@ -3,12 +3,12 @@ title: A fogyasztási terv költségeinek becslése Azure Functions
 description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás Azure-beli használati tervben való futtatásakor felmerülő költségeket.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230858"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613058"
 ---
 # <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
@@ -78,7 +78,7 @@ A [Azure monitor mérőszámok Explorerrel](../azure-monitor/platform/metrics-ge
       
     |Beállítás  |Ajánlott érték  |Leírás  |
     |---------|---------|---------|
-    | Előfizetést    |  Az Ön előfizetése  | Az előfizetés a Function alkalmazással.  |
+    | Előfizetés    |  Az Ön előfizetése  | Az előfizetés a Function alkalmazással.  |
     | Erőforráscsoport     | Az erőforráscsoport  | A Function alkalmazást tartalmazó erőforráscsoport.   |
     | Erőforrás típusa     |  App Services | A Function apps App Services példányként jelenik meg a figyelőben. |
     | Erőforrás     |  A Function alkalmazás  | A figyelni kívánt Function alkalmazás.        |
@@ -99,7 +99,7 @@ Mivel a végrehajtási egységek száma sokkal nagyobb a végrehajtások számá
 
 Ez a diagram összesen 1 110 000 000 `Function Execution Units` használ két órás időszakban, MB-ezredmásodpercben mérve. Ha GB-másodpercre szeretné váltani, ossza meg a 1024000-as értéket. Ebben a példában a Function alkalmazás a `1110000000 / 1024000 = 1083.98` GB-os másodpercet használja. Ezt az értéket elvégezheti, és a [functions díjszabási]oldal[díjszabása lapon]megadhatja a végrehajtási idő aktuális árát, ami azt feltételezi, hogy már felhasználta a végrehajtási idő ingyenes támogatását. 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az [Azure CLI](/cli/azure/) a metrikák beolvasására szolgáló parancsokat tartalmaz. A CLI-t egy helyi parancssori környezetből vagy közvetlenül a portálról [Azure Cloud Shell](../cloud-shell/overview.md)használatával is használhatja. A következő az [monitor Metrics List](/cli/azure/monitor/metrics#az-monitor-metrics-list) parancs például az óránkénti adatokat adja vissza a korábban használt időszakra vonatkozóan.
 
@@ -188,7 +188,7 @@ Ez a parancs egy JSON-adattartalmat ad vissza, amely a következő példához ha
   ]
 }
 ```
-Ez az adott válasz azt mutatja, hogy `2019-09-11T21:46`ról `2019-09-11T23:18`ra, amely alatt az alkalmazás 1110000000 MB-os (1083,98 GB-os) értéket használt.
+Ez az adott válasz azt mutatja, hogy a `2019-09-11T21:46`tól a `2019-09-11T23:18`ig az alkalmazás 1110000000 MB-ezredmásodpercet (1083,98 GB-os) használ.
 
 ## <a name="determine-memory-usage"></a>Memóriahasználat meghatározása
 
@@ -208,12 +208,12 @@ Az eredmények a következő példához hasonlóan jelennek meg:
 
 | időbélyeg \[UTC\]          | név          | érték       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Saját bájtok | 209 932 288 |
-| 9/12/2019, 1:06:14\.994 AM | Saját bájtok | 212 189 184 |
-| 9/12/2019, 1:06:30\.010 AM | Saját bájtok | 231 714 816 |
-| 9/12/2019, 1:07:15\.040 AM | Saját bájtok | 210 591 744 |
-| 9/12/2019, 1:12:16\.285 AM | Saját bájtok | 216 285 184 |
-| 9/12/2019, 1:12:31\.376 AM | Saját bájtok | 235 806 720 |
+| 9/12/2019, 1:05:14\.947 AM | Saját [nem megosztható] memória (bájt) | 209 932 288 |
+| 9/12/2019, 1:06:14\.994 AM | Saját [nem megosztható] memória (bájt) | 212 189 184 |
+| 9/12/2019, 1:06:30\.010 AM | Saját [nem megosztható] memória (bájt) | 231 714 816 |
+| 9/12/2019, 1:07:15\.040 AM | Saját [nem megosztható] memória (bájt) | 210 591 744 |
+| 9/12/2019, 1:12:16\.285 AM | Saját [nem megosztható] memória (bájt) | 216 285 184 |
+| 9/12/2019, 1:12:31\.376 AM | Saját [nem megosztható] memória (bájt) | 235 806 720 |
 
 ## <a name="function-level-metrics"></a>Függvény szintű mérőszámok
 

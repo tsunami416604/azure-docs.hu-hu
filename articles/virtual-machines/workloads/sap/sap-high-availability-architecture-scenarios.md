@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4352fbf71b23aedc1dddd3e454b58196d4f5a6e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078474"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638204"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
 
@@ -37,8 +37,8 @@ ms.locfileid: "70078474"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -224,16 +224,16 @@ ms.locfileid: "70078474"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 
 ## <a name="terminology-definitions"></a>Terminológiai definíciók
 
-**Magas rendelkezésre állás**: Olyan technológiákat mutat be, amelyekkel lecsökkenthető az informatikai szolgáltatások folyamatos, hibatűrő vagy feladatátvételi védelemmel ellátott összetevőin keresztüli üzleti folytonosság az adott adatközponton belül. Ebben az esetben az adatközpont egy Azure-régión belül helyezkedik el.
+**Magas rendelkezésre állás**: olyan technológiákat mutat be, amelyek az informatikai szolgáltatások folytonosságát biztosítják a redundáns, hibatűrő vagy feladatátvételi védelemmel ellátott összetevőkön keresztül *ugyanazon* az adatközponton belül. Ebben az esetben az adatközpont egy Azure-régión belül helyezkedik el.
 
-Vész- **helyreállítás**: Arra is utal, hogy az IT-szolgáltatások megszakadásának és helyreállításának minimalizálása, de *különböző* adatközpontok között, amelyek több száz kilométerre lehetnek egymástól. Ebben az esetben az adatközpontok különböző Azure-régiókba kerülhetnek, ugyanabban a geopolitikai régióban vagy az Ön által Ön által létrehozott helyen.
+Vész- **helyreállítás**: az IT-szolgáltatások megszakadásának és helyreállításának minimalizálására is utal, de *különböző* adatközpontokban, amelyek több száz kilométerre lehetnek egymástól. Ebben az esetben az adatközpontok különböző Azure-régiókba kerülhetnek, ugyanabban a geopolitikai régióban vagy az Ön által Ön által létrehozott helyen.
 
 
 ## <a name="overview-of-high-availability"></a>A magas rendelkezésre állás áttekintése
@@ -253,7 +253,7 @@ Az Azure-ban az SAP magas rendelkezésre állása három típusba különíthet�
     * Redundáns SAP-alkalmazás-kiszolgálók.
     * Egyedi összetevők. Ilyen lehet például egy meghibásodási pont (SPOF) összetevő (például egy SAP ASCS/SCS-példány vagy egy adatbázis-kezelő rendszer).
 
-Az Azure-ban az SAP magas rendelkezésre állása különbözik az SAP magas rendelkezésre állásával egy helyszíni fizikai vagy virtuális környezetben. Az alábbi, a [VMware és a Hyper-V rendszerű virtuális környezetekben található, a Microsoft Windows][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] rendszeren futó, magas rendelkezésre állást és üzletmenet-folytonosságot ismertető tanulmány a Windows rendszerben virtualizált környezetekben a szabványos SAP magas rendelkezésre állási konfigurációkat ismerteti.
+Az Azure-ban az SAP magas rendelkezésre állása különbözik az SAP magas rendelkezésre állásával egy helyszíni fizikai vagy virtuális környezetben. Az alábbi, a [VMware és a Hyper-V rendszerű virtuális környezetekben található, a Microsoft Windows rendszeren futó, magas rendelkezésre állást és üzletmenet-folytonosságot][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] ismertető tanulmány a Windows rendszerben virtualizált környezetekben a szabványos SAP magas rendelkezésre állási konfigurációkat ismerteti.
 
 A Linux rendszerhez nincs sapinst integrált SAP magas rendelkezésre állási konfiguráció, mivel a Windows rendszerben van. További információ a Linux rendszerhez készült SAP magas rendelkezésre állásáról: [magas rendelkezésre állású partner adatai][sap-ha-partner-information].
 
@@ -288,13 +288,13 @@ A rendelkezésre állási csoport a magas rendelkezésre állás eléréséhez h
 * Fürtök két vagy több csomóponttal (például a virtuális gépekkel), amelyek védik a SPOFs, például egy SAP ASCS/SCS-példányt vagy egy adatbázis-kezelő rendszert.
 
 
-### <a name="azure-availability-zones"></a>Azure Availability Zones
-Az Azure a különböző [Azure](https://azure.microsoft.com/global-infrastructure/regions/)-régiókban [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) fogalmakat ismerteti. Az Azure-régiókban, ahol a Availability Zones kínálják, az Azure-régiók több adatközponttal rendelkeznek, amelyek függetlenek az áramforrás, a hűtés és a hálózat kínálatával. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az, hogy lehetővé teszi az alkalmazások üzembe helyezését két vagy három Availability Zonesban. Feltételezve, hogy az áramforrások és/vagy a hálózatok problémái csak az egyik rendelkezésre állási zóna infrastruktúráját érintik, az alkalmazások Azure-régión belüli üzembe helyezése továbbra is teljesen működőképes. Az egyes zónákban lévő virtuális gépek esetében előfordulhat, hogy a rendszer néhány kisebb kapacitással is elvész. A másik két zónában lévő virtuális gépek azonban még mindig működnek. A zónákat felkínáló Azure-régiók [](https://docs.microsoft.com/azure/availability-zones/az-overview)a Azure Availability Zonesban szerepelnek.
+### <a name="azure-availability-zones"></a>Azure-beli rendelkezésre állási zónák
+Az Azure a különböző [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/) [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) fogalmakat ismerteti. Az Azure-régiókban, ahol a Availability Zones kínálják, az Azure-régiók több adatközponttal rendelkeznek, amelyek függetlenek az áramforrás, a hűtés és a hálózat kínálatával. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az, hogy lehetővé teszi az alkalmazások üzembe helyezését két vagy három Availability Zonesban. Feltételezve, hogy az áramforrások és/vagy a hálózatok problémái csak az egyik rendelkezésre állási zóna infrastruktúráját érintik, az alkalmazások Azure-régión belüli üzembe helyezése továbbra is teljesen működőképes. Az egyes zónákban lévő virtuális gépek esetében előfordulhat, hogy a rendszer néhány kisebb kapacitással is elvész. A másik két zónában lévő virtuális gépek azonban még mindig működnek. A zónákat felkínáló Azure-régiók a [Azure Availability Zonesban](https://docs.microsoft.com/azure/availability-zones/az-overview)szerepelnek.
 
 A Availability Zones használatával néhány megfontolandó szempontot figyelembe kell venni. A szempontok listája, például:
 
 - Az Azure rendelkezésre állási csoportjai nem helyezhetők üzembe egy rendelkezésre állási zónán belül. Ki kell választania egy rendelkezésre állási zónát vagy egy rendelkezésre állási készletet egy virtuális gép üzembe helyezési kerete.
-- A Windows feladatátvételi fürtszolgáltatás vagy a Linux pacemaker alapján nem használhatja az alapszintű [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia
+- A Windows feladatátvételi fürtszolgáltatás vagy a Linux pacemaker alapján nem használhatja az [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia
 - A Azure Availability Zones nem biztosítanak bizonyos távolságot a különböző zónák között az egyik régión belül
 - A különböző Azure-régiókban lévő különböző Azure Availability Zones közötti hálózati késés eltérő lehet az Azure-régiótól a régióig. Előfordulnak olyan esetek, amikor az ügyfél a különböző zónákon üzembe helyezett SAP-alkalmazási réteget ésszerű módon futtatja, mivel az egyik zónából az aktív adatbázis-kezelő virtuális gépre irányuló hálózati késés továbbra is elfogadható az üzleti folyamatok hatására. Mivel az egyik zónában található aktív adatbázis-kezelő virtuális gép és egy másik zónában lévő virtuális gép SAP-alkalmazási példánya közötti késés túlságosan zavaró lehet, és nem fogadható el az SAP üzleti folyamatok számára. Ennek eredményeképpen az üzembe helyezési architektúrának eltérőnek kell lennie az alkalmazás aktív/aktív architektúrája vagy az aktív/passzív architektúra esetében, ha a késés túl magas.
 - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) használata kötelező a Azure Availability Zonesba való üzembe helyezéshez 
@@ -349,7 +349,7 @@ A következő részekben azt mutatjuk be, hogyan lehet magas rendelkezésre áll
 
 Általában nincs szükség speciális, magas rendelkezésre állású megoldásra az SAP-alkalmazáskiszolgáló és a párbeszédpanel-példányok esetében. A redundancia révén magas rendelkezésre állást érhet el, és az Azure Virtual Machines különböző példányain több párbeszédpanel-példányt is konfigurálhat. Legalább két, az Azure-beli virtuális gépek két példányán telepített SAP-alkalmazás példányának kell lennie.
 
-![1\. ábra: Magas rendelkezésre állású SAP Application Server][sap-ha-guide-figure-2000]
+![1\. ábra: magas rendelkezésre állású SAP Application Server][sap-ha-guide-figure-2000]
 
 _**1. ábra:** Magas rendelkezésre állású SAP Application Server_
 
@@ -367,8 +367,8 @@ Az Azure-beli rendelkezésre állási csoport által az Azure-méretezési egys�
 
 Ha a dedikált virtuális gépeken néhány SAP Application Server-példányt telepít, feltételezve, hogy öt frissítési tartománnyal rendelkezünk, az alábbi kép látható. A rendelkezésre állási csoporton belüli frissítési és tartalék tartományok tényleges maximális száma a jövőben változhat:
 
-![2. ábra: Az SAP-alkalmazások magas rendelkezésre állása egy Azure rendelkezésre][planning-guide-figure-3000]
-állási csoport _**2. ábráján:** Az SAP-alkalmazások magas rendelkezésre állása Azure-beli rendelkezésre állási csoportokban_
+2\. ábra: az Azure-beli rendelkezésre állási csoport SAP-alkalmazási kiszolgálóinak magas rendelkezésre állása][planning-guide-figure-3000]
+_ **2. ábra:** az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása Azure rendelkezésre állási csoportokban ![_
 
 További információ: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban][azure-virtual-machines-manage-availability].
 
@@ -387,9 +387,9 @@ További információ: az Azure Virtual Machines tervezésének és megvalósít
 
 WSFC-megoldás használatával biztosíthatja az SAP ASCS/SCS-példányok elleni védekezést. A megoldás két változattal rendelkezik:
 
-* **Fürt az SAP ASCS/SCS-példány fürtözött megosztott lemezek használatával**: Az architektúrával kapcsolatos további információkért lásd: [SAP ASCS/SCS-példány fürtözése Windows feladatátvevő fürtön fürt megosztott lemezének használatával][sap-high-availability-guide-wsfc-shared-disk].   
+* **Fürt az SAP ASCS/SCS-példány fürtözött megosztott lemezek használatával**: az architektúrával kapcsolatos további információkért tekintse meg a fürt [SAP ASCS/SCS-példánya egy Windows feladatátvevő fürtön megosztott lemez használatával][sap-high-availability-guide-wsfc-shared-disk]című témakört.   
 
-* **Fürt az SAP ASCS/SCS-példány a fájlmegosztás használatával**: Az architektúrával kapcsolatos további információkért lásd: [SAP ASCS/SCS-példány fürtje Windows feladatátvevő fürtön a fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share].
+* **Fürt az SAP ASCS/SCS-példány a fájlmegosztás használatával**: az architektúrával kapcsolatos további információkért lásd: [SAP ASCS/SCS-példány fürthöz való használata Windows feladatátvevő fürtön a fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share].
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Magas rendelkezésre állású architektúra egy SAP ASCS/SCS-példányhoz Linux rendszeren
 
@@ -416,7 +416,7 @@ Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő f
 
 Az adatbázis-kezelő az SAP-rendszer egyetlen kapcsolódási pontja is. Magas rendelkezésre állású megoldás használatával kell védelemmel ellátnia. Az alábbi ábra egy SQL Server AlwaysOn magas rendelkezésre állású megoldását mutatja be az Azure-ban, a Windows Server feladatátvételi fürtszolgáltatással és az Azure belső Load balancerrel. SQL Server a AlwaysOn a saját adatbázis-replikációs szolgáltatásával replikálja az adatbázis-kezelői és-naplófájlokat. Ebben az esetben nincs szükség a fürt megosztott lemezére, ami leegyszerűsíti a teljes telepítést.
 
-![3\. ábra: Magas rendelkezésre állású SAP adatbázis-kezelő – példa SQL Server AlwaysOn][sap-ha-guide-figure-2003]
+![3\. ábra: példa egy magas rendelkezésre állású SAP adatbázis-kezelőre, SQL Server AlwaysOn][sap-ha-guide-figure-2003]
 
 _**3. ábra:** Magas rendelkezésre állású SAP adatbázis-kezelő – példa SQL Server AlwaysOn_
 

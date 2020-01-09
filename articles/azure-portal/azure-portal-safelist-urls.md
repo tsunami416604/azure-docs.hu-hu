@@ -3,18 +3,18 @@ title: Safelist a Azure Portal URL-címekkel | Microsoft Docs
 description: Adja hozzá ezeket az URL-címeket a proxykiszolgáló megkerüléséhez a Azure Portal és annak szolgáltatásaival való kommunikációhoz
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
+author: mblythe
+ms.author: mblythe
 ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4f4badbd923b10cf2cd66f7df9742a6bc657a01c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218038"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637542"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>A tűzfal vagy a proxykiszolgáló Azure Portal URL-címeinek safelist
 
@@ -47,7 +47,7 @@ A Azure Portal safelist URL-végpontok kifejezetten az Azure-felhőre vonatkozna
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[EGYESÜLT ÁLLAMOK Kormányzati felhő](#tab/us-government-cloud)
+#### <a name="us-government-cloudtabus-government-cloud"></a>[Egyesült államokbeli kormányzati felhő](#tab/us-government-cloud)
 ```
 *.azure.us
 *.loganalytics.us
@@ -75,12 +75,12 @@ A Azure Portal safelist URL-végpontok kifejezetten az Azure-felhőre vonatkozna
 > A végpontok felé irányuló forgalom szabványos TCP-portokat használ a HTTP (80) és a HTTPS (443) számára.
 >
 >
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 IP-címeket kell safelist? Töltse le Microsoft Azure Datacenter IP-címtartományok listáját a felhőhöz:
 
 * [Világszerte](https://www.microsoft.com/download/details.aspx?id=56519)
-* [EGYESÜLT ÁLLAMOK Kormány](https://www.microsoft.com/download/details.aspx?id=57063)
+* [Egyesült Államok kormánya](https://www.microsoft.com/download/details.aspx?id=57063)
 * [Németország](https://www.microsoft.com/download/details.aspx?id=57064)
 * [Kína](https://www.microsoft.com/download/details.aspx?id=57062)
 

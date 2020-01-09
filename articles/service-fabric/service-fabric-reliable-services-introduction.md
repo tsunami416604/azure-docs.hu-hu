@@ -1,110 +1,101 @@
 ---
-title: A Service Fabric Reliable Services programozási modell áttekintése |} A Microsoft Docs
-description: További tudnivalók a Service Fabric Reliable Services programozási modell és kezdheti meg a saját szolgáltatások írása.
-services: Service-Fabric
-documentationcenter: .net
+title: A megbízható szolgáltatás programozási modelljének áttekintése
+description: Ismerje meg Service Fabric megbízható szolgáltatás programozási modelljét, és kezdje el saját szolgáltatásainak megírását.
 author: masnider
-manager: chackdan
-editor: vturecek; mani-ramaswamy
-ms.assetid: 0c88a533-73f8-4ae1-a939-67d17456ac06
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 1789c7489e58df09dccfde3e7ab106ef54b5c1ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c8e4411c0bec23790b4f4c52fc4a3d1570edc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60727012"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614247"
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
-Azure Service Fabric megkönnyíti a írása és állapot nélküli és állapotalapú Reliable Services kezeléséhez. Ez a témakör ismerteti:
+Az Azure Service Fabric leegyszerűsíti az állapot nélküli és állapot-nyilvántartó Reliable Servicesek írását és kezelését. Ez a témakör a következőkkel foglalkozik:
 
-* A Reliable Services programozási modell állapot nélküli és állapotalapú szolgáltatásokhoz.
-* A lehetőségek, akkor el kell végeznie egy Reliable Services írásakor.
-* Bizonyos forgatókönyvek és a Reliable Services használata, és hogyan írt példák.
+* Az állapot nélküli és állapot-nyilvántartó szolgáltatások Reliable Services programozási modellje.
+* A megbízható szolgáltatás írásakor szükséges döntéseket.
+* Néhány forgatókönyv és példa arra, hogy mikor kell használni a Reliable Servicest, és hogyan írják őket.
 
-A Reliable Services egyike az elérhető a Service Fabric programozási modellek. A másik pedig a Reliable Actors programozási modell, amely fölött a Reliable Services-modell virtuális Actors programozási modellt biztosít. A Reliable Actors programozási modell további információkért lásd: [Bevezetés a Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
+Reliable Services a Service Fabric elérhető programozási modellek egyike. A másik a megbízható Actors programozási modell, amely a Reliable Services modellre épülő virtuális színész programozási modelljét biztosítja. A Reliable Actors programozási modellel kapcsolatos további információkért tekintse meg a [Service Fabric Reliable Actors bemutatása](service-fabric-reliable-actors-introduction.md)című témakört.
 
-A Service Fabric-n keresztül kezeli a szolgáltatások, a kiépítés és üzembe helyezést, frissítési és törlési, teljes élettartama [Service Fabric-alkalmazásfelügyelet](service-fabric-deploy-remove-applications.md).
+Service Fabric kezeli a szolgáltatások élettartamát, a kiépítés és a telepítés révén a frissítés és törlés segítségével [Service Fabric az alkalmazások felügyeletén](service-fabric-deploy-remove-applications.md)keresztül.
 
-## <a name="what-are-reliable-services"></a>Mik azok a Reliable Services?
-A Reliable Services egy egyszerű, hatékony, legfelső szintű programozási modell segítségével az express, fontos, hogy az alkalmazás milyen segítséget nyújt. A Reliable Services programozási modell a következőket kínálja:
+## <a name="what-are-reliable-services"></a>Mi a Reliable Services?
+A Reliable Services egy egyszerű, hatékony és legfelső szintű programozási modellt kínál, amely segít kipróbálni, hogy mi a fontos az alkalmazás számára. A Reliable Services programozási modellel a következőket kapja:
 
-* A Service Fabric programozási API-k a többi való hozzáférést. Ellentétben modellezve a Service Fabric Services [futtatható Vendégalkalmazás](service-fabric-guest-executables-introduction.md), Reliable Services juthat el a Service Fabric API-k a többi közvetlenül használni. Ez lehetővé teszi, hogy a szolgáltatások:
-  * a rendszer lekérdezése
-  * a fürt entitásokról jelentés állapota
-  * konfiguráció és a kód változásaira vonatkozó értesítések fogadása
-  * Keresse meg és más szolgáltatásokkal kommunikálni
-  * (opcionális) használja a [a Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
-  * ...és hozzáférést kaphatnak sok egyéb funkciói mellett minden a számos programozási nyelven első osztályú programozási modellt.
-* Programozási modelleket, amellyel egy egyszerű modellt, amely a saját kód futtatásához tűnik. A kód jól definiált belépési pont és egyszerűen kezelhető életciklus rendelkezik.
-* Egy moduláris kommunikációs modellt. Használja a szállítás megírhatja, például HTTP- [webes API-t](service-fabric-reliable-services-communication-webapi.md), a websockets protokoll, egyéni TCP protokollt, vagy bármi más. A Reliable Services-a-beépített beállításokat használhatja, vagy megadhatja a saját néhány nagyszerű adja meg.
-* Az állapotalapú szolgáltatások esetében a Reliable Services programozási modell lehetővé teszi, hogy következetes és megbízható tárolását használatával közvetlenül a szolgáltatáson belül az állapot [a Reliable Collections](service-fabric-reliable-services-reliable-collections.md). A Reliable Collections olyan egyszerű, magas rendelkezésre állású és megbízható gyűjteményosztályok, amelyeket mindenki, aki már használt jól lesz C# gyűjteményeket. Hagyományosan szolgáltatások megbízható állapot felügyeletéhez szükséges külső rendszerekkel. Reliable Collections használata is tárolhatja az állapot mellett a számítási erőforrásokat az azonos magas rendelkezésre állás és a megbízhatóság jár várhatóan magas rendelkezésre állású külső áruházakból származó. Ez a modell is javítani tudja a késés, mert, amelyek közös helyen való elhelyezése a számítási és -állapot működéséhez.
+* Hozzáférés a Service Fabric programozási API-k további részeihez. A [vendég-végrehajthatóként](service-fabric-guest-executables-introduction.md)modellezett Service Fabric-szolgáltatásokkal ellentétben Reliable Services a Service Fabric API-k további részét közvetlenül használhatja. A szolgáltatások a következőket teszik lehetővé:
+  * a szolgáltatás lekérdezése
+  * a fürtben található entitások állapotának jelentése
+  * értesítések fogadása a konfigurációval és a kód változásaival kapcsolatban
+  * megkeresheti és kommunikálhat más szolgáltatásokkal,
+  * (opcionálisan) a [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md) használata
+  * ... és számos más képességhez is hozzáférést biztosítanak, amelyek az első osztályú programozási modellből származnak számos programozási nyelven.
+* Egy egyszerű modell a saját kód futtatásához, amely az Ön által használt programozási modelleket hasonlítja. A kód jól definiált belépési ponttal és könnyen kezelhető életciklussal rendelkezik.
+* Egy csatlakoztatható kommunikációs modell. Az Ön által választott átvitelt használhatja, például a HTTP-t [webes API](service-fabric-reliable-services-communication-webapi.md)-val, websocketekkel, egyéni TCP protokollokkal vagy bármi mással. Reliable Services rendelkezésére áll néhány remek lehetőség, amelyet használhat, vagy megadhatja a sajátját.
+* Az állapot-nyilvántartó szolgáltatások esetében az Reliable Services programozási modell lehetővé teszi, hogy [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)használatával következetesen és megbízhatóan tárolja az állapotát a szolgáltatáson belül. A megbízható gyűjtemények olyan kiválóan elérhető és megbízható gyűjteményi osztályok, amelyek mindenki számára ismerősek lesznek, akik gyűjteményeket használnak C# . A szolgáltatásoknak hagyományosan külső rendszerekre van szükségük a megbízható állami felügyelethez. Megbízható gyűjtemények esetén az állapotát a számítási kapacitás mellett tárolhatja, és a magas rendelkezésre állású külső üzletekből várhatóan magasabb rendelkezésre állást és megbízhatóságot is igénybe vehet. Ez a modell Emellett javítja a késést, mivel Ön a számítás és az állapot működéséhez szükséges.
 
-## <a name="what-makes-reliable-services-different"></a>A Reliable Services különböző teszi?
-A Service Fabric Reliable Services szolgáltatások előtt lehet, hogy írt eltérnek. A Service Fabric megbízhatóságát, rendelkezésre állást, konzisztencia és méretezhetőséget biztosít.
+## <a name="what-makes-reliable-services-different"></a>Miben különbözik Reliable Services?
+A Service Fabric Reliable Services nem azonosak a korábban írt szolgáltatásokkal. Service Fabric megbízhatóságot, rendelkezésre állást, következetességet és méretezhetőséget biztosít.
 
-* **Megbízhatóság** – a szolgáltatás fel marad, még akkor is, ha a gépek nem, vagy nyomja le a hálózati problémák megbízhatatlan környezetek, vagy olyan esetekben, ahol a szolgáltatások előforduló hibákat és az összeomlási, vagy sikertelen. Az állapotalapú szolgáltatások esetében az állapot megmarad, még a hálózati vagy más hibák folytonosságát.
-* **Rendelkezésre állási** -e a szolgáltatása, elérhető és válaszkész legyen. A Service Fabric a kívánt számú példányt futtató tart.
-* **Méretezhetőség** - szolgáltatások vannak választva a adott hardverekhez, és azok alatt megnöveljék vagy csökkentsék a szükséges keresztül hozzáadását és eltávolítását a hardver- vagy egyéb erőforrásokat is. Szolgáltatások egyszerűen particionáltak (különösen az állapot-nyilvántartó eset) annak érdekében, hogy a szolgáltatás méretezhetők, és a részleges hibáinak a kezelése. Szolgáltatások hozhatók létre, és dinamikusan keresztül code-hoz létre szükség esetén további példányok engedélyezésével törli az ügyfelek kéréseire reagálva tegyük fel, hogy. Végül a Service Fabric services az egyszerűsített javasolja. A Service Fabric lehetővé teszi, hogy a több ezer olyan szolgáltatások belül egyetlen folyamat, és egy szolgáltatás egyetlen példánya folyamatok helyett megkövetelését vagy dedikálni teljes operációsrendszer-példányt.
-* **Konzisztencia** – ebben a szolgáltatásban tárolt összes adatot is garantáltan konzisztens. Ez a még több megbízható gyűjteményt egy szolgáltatás között. A szolgáltatásokon belüli gyűjtemények között módosítás atomi tranzakciós szempontból módon.
+* **Megbízhatóság** – a szolgáltatás olyan megbízhatatlan környezetekben marad, ahol a gépek meghibásodnak vagy hálózati problémákba ütköznek, illetve olyan esetekben, amikor a szolgáltatások magukban foglalják a hibákat és összeomlást vagy meghibásodást. Az állapot-nyilvántartó szolgáltatások esetében a rendszer a hálózat vagy más hibák jelenléte esetén is megőrzi az állapotát.
+* **Rendelkezésre állás** – a szolgáltatás elérhető és rugalmas. Service Fabric megtartja a futó másolatok kívánt számát.
+* **Skálázhatóság** – a szolgáltatások egy adott hardvertől vannak leválasztva, és a hardver vagy más erőforrások hozzáadásával vagy eltávolításával szükség szerint növelhetik vagy csökkenthetik azokat. A szolgáltatások egyszerűen particionálva vannak (különösen az állapot-nyilvántartó esetekben) annak biztosítása érdekében, hogy a szolgáltatás képes legyen a részleges meghibásodások skálázására és kezelésére. A szolgáltatások a kód használatával dinamikusan hozhatók létre és törölhetők, így a további példányok szükség szerint megadhatók, az ügyfelek kéréseire válaszul. Végezetül Service Fabric a szolgáltatások egyszerűvé való kihasználása. Service Fabric lehetővé teszi, hogy több ezer szolgáltatást lehessen kiépíteni egyetlen folyamaton belül, ahelyett, hogy teljes operációsrendszer-példányt vagy-folyamatokat kellene a szolgáltatás egyetlen példányára kiépítenie.
+* **Konzisztencia** – a szolgáltatásban tárolt bármilyen információ konzisztens lehet. Ez a szolgáltatáson belüli több megbízható gyűjtemény esetében is igaz. A szolgáltatásokon belüli gyűjtemények változásai tranzakciós szempontból atomi módon is elvégezhető.
 
-## <a name="service-lifecycle"></a>Szolgáltatás-életciklusának
-A szolgáltatás működik, állapotalapú és állapot nélküli, hogy a Reliable Services egy egyszerű életciklussal, amely lehetővé teszi a kód gyorsan beépülő modul és az első lépések adja meg.  Meg kell valósítania a szolgáltatás beolvasásához, majd futtassa, csak egy vagy két módszer van.
+## <a name="service-lifecycle"></a>Szolgáltatás életciklusa
+Az, hogy a szolgáltatás állapota állapotú vagy állapot nélküli-e, Reliable Services adjon meg egy egyszerű életciklust, amely lehetővé teszi a kód gyors csatlakoztatását és az első lépéseket.  A szolgáltatás működésének megkezdéséhez csak egy vagy két módszer szükséges.
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – Ez a módszer, ahol a szolgáltatás határozza meg a kommunikációs stack(s), amely azt szeretne használni. A kommunikációs verem, mint például [webes API-t](service-fabric-reliable-services-communication-webapi.md), van, a figyelő végpont vagy a végpontok a szolgáltatás (hogyan ügyfelek elérni a szolgáltatást) határozza meg. Azt is meghatározza, az üzenetek jelennek meg, hogyan használják a szolgáltatást kód többi.
-* **RunAsync** – Ez a módszer, ahol a szolgáltatás fut, az üzleti logikát, és ahol azt szeretné indíthat bármely háttérfeladatokat, amelyek a szolgáltatás teljes élettartama futnia kell. A megszakítás token biztosított egy olyan jelet, amikor le kell állnia, a munka esetében. Például ha a szolgáltatás üzenetek megbízható várólistáról és feldolgozni azokat, ez a ahol a munka történik.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – ez a módszer, ahol a szolgáltatás meghatározza a használni kívánt kommunikációs verem (eke) t. A kommunikációs verem (például a [webes API](service-fabric-reliable-services-communication-webapi.md)) meghatározza a szolgáltatás figyelő végpontját vagy végpontját (az ügyfelek hogyan érik el a szolgáltatást). Azt is meghatározza, hogy a megjelenő üzenetek hogyan működnek együtt a szolgáltatás kódjával.
+* **RunAsync** – ez a módszer azt adja meg, hogy a szolgáltatás hogyan futtatja az üzleti logikát, és hol indítson el minden olyan háttérben futó feladatot, amelyet a szolgáltatás élettartama során futtatni kell. A megadott lemondási token egy jel, amikor a munkafolyamat leáll. Ha például a szolgáltatásnak üzeneteket kell kihúznia egy megbízható várólistából, és fel kell dolgoznia azokat, akkor ez a feladat.
 
-Ha első alkalommal a reliable services tárgyául, olvassa el a! Ha részletes leírását a reliable services életciklusa keres, akkor is látogasson el [Ez a cikk](service-fabric-reliable-services-lifecycle.md).
+Ha első alkalommal tanul a megbízható szolgáltatásokkal kapcsolatban, olvassa el a következőt:. Ha a megbízható szolgáltatások életciklusának részletes [bemutatóját](service-fabric-reliable-services-lifecycle.md)keresi, tekintse át ezt a cikket.
 
-## <a name="example-services"></a>Példa a szolgáltatásokra
-A programozási modell ismerete, két különböző szolgáltatások megtekintéséhez, hogyan működnek ezek darab együtt egy gyors pillantást vessünk.
+## <a name="example-services"></a>Példa szolgáltatások
+Ismerje meg ezt a programozási modellt, vessünk egy gyors pillantást két különböző szolgáltatásra, hogy lássuk, hogyan illeszkednek egymáshoz a darabok.
 
 ### <a name="stateless-reliable-services"></a>Állapot nélküli Reliable Services
-Állapotmentes szolgáltatás, amelyikben nincs állapot, a szolgáltatásban a hívások között megtartott van. Bármilyen állapot, amely akkor jelenik teljesen pótolhatók, és nem igényel, szinkronizálás, replikáció, adatmegőrzés vagy magas rendelkezésre állás.
+Az állapot nélküli szolgáltatások olyanok, amelyekben a szolgáltatáson belül nem tart fenn állapotot a hívások között. A jelen lévő állapotok teljes mértékben rendelkezésre állnak, és nem igényel szinkronizálást, replikálást, adatmegőrzést vagy magas rendelkezésre állást.
 
-Vegyük példaként egy számító eszköz, amely nincs elég memóriája, és megkapja a feltételeket és a műveletek végrehajtásához egyszerre.
+Vegyünk például egy olyan számológépet, amely nem rendelkezik memóriával, és fogadja az összes feltételt és műveletet egyszerre történő végrehajtásra.
 
-Ebben az esetben a `RunAsync()` (C#) vagy `runAsync()` (Java) a szolgáltatás lehet üres, mert nincs háttérben történő feladat-feldolgozás, amely a szolgáltatás szüksége van. A kalkulátor szolgáltatás létrehozásakor, akkor adja vissza egy `ICommunicationListener` (C#) vagy `CommunicationListener` (Java) (például [webes API-t](service-fabric-reliable-services-communication-webapi.md)), amely egy bizonyos porton figyel-e végpontot nyit meg. Ez a figyelő végpont hooks a különböző számítási metódusok (Példa: "Hozzáadása (n1, n2)"), amely meghatározása a díjkalkulátorban feltüntetett nyilvános API-t.
+Ebben az esetben a szolgáltatás `RunAsync()` (C#) vagy `runAsync()` (Java) üres lehet, mert nincs olyan háttérben futó feladat, amelyet a szolgáltatásnak el kell végeznie. A számológép szolgáltatás létrehozásakor egy `ICommunicationListener` (C#) vagy `CommunicationListener` (Java) (például [webes API](service-fabric-reliable-services-communication-webapi.md)) értéket ad vissza, amely egy figyelő végpontot nyit meg egy bizonyos porton. Ez a figyelő végpont a számológép nyilvános API-ját definiáló különböző számítási módszerekhez (például: "Add (N1, N2)") csatlakoztatható.
 
-Amikor egy ügyfél kezdeményezték, a megfelelő metódus meghívásakor kerül, és a Számológép szolgáltatás a megadott adatok műveleteket hajt végre, és visszaadja az eredményt. Minden olyan állapotban, nem tárolja.
+Amikor egy ügyfél hívást kezdeményez, a rendszer meghívja a megfelelő metódust, és a számológép szolgáltatás végrehajtja a műveleteket a megadott adatokon, és visszaadja az eredményt. Nem tárol semmilyen állapotot.
 
-Ne tárolja az összes belső állapot leegyszerűsíti a példa díjkalkulátort. De a legtöbb szolgáltatás nem igazán állapot nélküli. Ehelyett azok externalize néhány egyéb tároló az állapotuk. (Például minden olyan webalkalmazást üzemeltet, amely tárolja a munkamenet-állapot a mögöttes tároló vagy gyorsítótár támaszkodik nem áll állapotmentes.)
+A belső állapot tárolásának mellőzése egyszerűvé teszi ezt a példát. A legtöbb szolgáltatás azonban nem igazán állapot nélküli. Ehelyett Externalize az állapotukat egy másik áruházba. (Például minden olyan webalkalmazás, amely a munkamenet-állapot megőrzésére támaszkodik egy tárolóban vagy gyorsítótárban nem állapot nélküli.)
 
-Gyakori például hogyan állapotmentes szolgáltatások használhatók a Service Fabric van, mint egy előtér-, amely közzéteszi a nyilvános API webalkalmazás számára. Az előtér-szolgáltatás majd műsorgazdája állapotalapú szolgáltatások egy felhasználói kérelem végrehajtásához. Ebben az esetben az ügyfelek hívásait irányítja egy ismert port, pl. 80-as, ahol az állapotmentes szolgáltatás figyel. Az állapotmentes szolgáltatás fogadja a hívást, és határozza meg, hogy a hívás egy megbízható entitás, és azt kiszolgálni szánt.  Az állapotmentes szolgáltatás ezután továbbítja a hívást a megfelelő partícióba, az állapotalapú szolgáltatásból, és a válaszra vár. Az állapotmentes szolgáltatás választ kap, ha az eredeti ügyfél válaszol. Ilyen szolgáltatás például a minták tallózása a [ C# ](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started). Ez csak egy példa ezt a mintát, a minták, léteznek egyéb más mintákban.
+Gyakori példa arra, hogy az állapot nélküli szolgáltatások hogyan használhatók az Service Fabricban, amely egy webalkalmazás nyilvános API-ját teszi elérhetővé. Az előtér-szolgáltatás ezután megbeszéli az állapot-nyilvántartó szolgáltatásokat a felhasználói kérések végrehajtásához. Ebben az esetben az ügyfelektől érkező hívások egy ismert portra vannak irányítva, például 80, ahol az állapot nélküli szolgáltatás figyel. Ez az állapot nélküli szolgáltatás fogadja a hívást, és meghatározza, hogy a hívás egy megbízható féltől származik-e, és hogy melyik szolgáltatásra van szánva.  Ezután az állapot nélküli szolgáltatás továbbítja a hívást az állapot-nyilvántartó szolgáltatás megfelelő partíciójának, és megvárja a választ. Ha az állapot nélküli szolgáltatás választ kap, az az eredeti ügyfélre válaszol. Ilyen szolgáltatás például a minták [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / a [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started). Ez csak egy példa erre a mintára a mintákban, mások más mintákban is.
 
-### <a name="stateful-reliable-services"></a>A stateful Reliable Services
-Az állapotalapú szolgáltatások egyike, hogy az állapot egységes és ahhoz, hogy a szolgáltatás jelenlegi tartani a függvény valamely része. Érdemes lehet egy szolgáltatás, amely folyamatosan kiszámítja az egyes értékek alapján kap frissítéseket mozgóátlaga. Ehhez a bejövő kérelmek, a folyamat és a jelenlegi átlag kell az aktuális készletét kell legyen. Minden olyan szolgáltatás, amely beolvassa, feldolgozza és információkat tárolja egy külső tároló (például egy Azure blob vagy table store ma) állapot-nyilvántartó. Csak a külső állapotuk tárolójában tartja a állapotában.
+### <a name="stateful-reliable-services"></a>Állapot-nyilvántartó Reliable Services
+Egy állapot-nyilvántartó szolgáltatásnak olyan állapotban kell lennie, amelynek meg kell felelnie az állapotnak, és meg kell jelen lennie ahhoz, hogy a szolgáltatás működőképes legyen. Vegyünk egy olyan szolgáltatást, amely folyamatosan kiszámítja az egyes értékek mozgóátlagát a kapott frissítések alapján. Ehhez meg kell adnia a feldolgozáshoz szükséges bejövő kérelmek aktuális készletét és az aktuális átlagot. Bármely szolgáltatás, amely adatokat kér le, dolgoz fel és tárol egy külső tárolóban (például az Azure Blob vagy a Table Store-ban) állapotú. Csak a külső állapot tárolójában tartja meg az állapotát.
 
-A legtöbb szolgáltatás még ma állapotuk kívülről, tárolására, mivel a külső tároló mit kínál megbízhatóságát, rendelkezésre állást, méretezhetőséget és konzisztencia az állapotban. A Service Fabric services nem szükséges külső állapotuk tárolja. A Service Fabric gondoskodik ezeknek a feltételeknek, a szolgáltatás kódot és a szolgáltatás állapotát.
+A legtöbb szolgáltatás jelenleg kívülről tárolja az állapotukat, mivel a külső tároló, amely az adott állapot megbízhatóságát, rendelkezésre állását, méretezhetőségét és egységességét biztosítja. Service Fabric nem szükséges, hogy a szolgáltatások kívülről tárolják az állapotukat. Service Fabric a szolgáltatás kódjára és a szolgáltatás állapotára vonatkozó követelményekről gondoskodik.
 
-Tegyük szeretnénk írhat olyan szolgáltatás, amely képeket dolgoz fel. Ehhez a szolgáltatás fogadja a kép és átalakítások sorozata a rendszerkép végrehajtásához. Ez a szolgáltatás adja vissza egy kommunikációs figyelőjének (Most tegyük fel, hogy a WebAPI szó), hogy rendelkezik egy API-t, például `ConvertImage(Image i, IList<Conversion> conversions)`. Egy kérést kap, ha a szolgáltatás menti egy `IReliableQueue`, és visszaadja az ügyfélnek bizonyos azonosítója, azt is nyomon követheti a kérelem.
+Tegyük fel, hogy olyan szolgáltatást szeretnénk írni, amely képeket dolgoz fel. Ennek elvégzéséhez a szolgáltatás egy rendszerképet és az adott képen végrehajtandó konverziók sorozatát veszi igénybe. Ez a szolgáltatás egy kommunikációs figyelőt ad vissza (tegyük fel, hogy ez egy WebAPI), amely egy olyan API-t tesz elérhetővé, mint a `ConvertImage(Image i, IList<Conversion> conversions)`. Amikor kérelmet kap, a szolgáltatás egy `IReliableQueue`tárolja, és visszaadja egy azonosítóját az ügyfélnek, így nyomon követheti a kérést.
 
-Ebben a szolgáltatásban `RunAsync()` összetettebb lehet. A szolgáltatásnak van egy ciklus található a `RunAsync()` , amely lekéri a kérések közül `IReliableQueue` és hajtja végre a kért átalakítás. Az eredmények lekérése tárolja egy `IReliableDictionary` , hogy ha az ügyfél ismét hozzáférhetnek a konvertált képek. Annak érdekében, hogy akkor is, ha hiba lép fel a képet nem vesznek el, a Reliable Services lenne a várólistáról lekéréses, az átalakítás végrehajtható, és tárolja az eredmény egy tranzakció. Ebben az esetben az üzenet el van távolítva az üzenetsorból, és az eredmények tárolása az eredménye szótárkészítéses csak ha az átalakítás befejeződött. Azt is megteheti a szolgáltatás képes a várólistáról a rendszerkép lekérése, és azonnal egy távoli tárolóban tárolja. Ez csökkenti az állapot kezelése a szolgáltatás rendelkezik, de növeli összetettséget óta a szolgáltatás rendelkezik, így a szükséges metaadatokat a távoli tároló kezelése. Bármelyik módszert használja Ha valami nem sikerült, a középső a kérelem marad a feldolgozásra váró várólistában.
+Ebben a szolgáltatásban `RunAsync()` összetettebb lehet. A szolgáltatásnak van egy hurok a `RunAsync()` belül, amely lekéri a kérelmeket a `IReliableQueue`ról, és végrehajtja a kért konverziókat. Az eredményeket egy `IReliableDictionary` tárolja, hogy az ügyfél mikor kapja vissza a konvertált lemezképeit. Annak biztosítása érdekében, hogy ha valami meghibásodik, a rendszerkép nem vész el, ez a megbízható szolgáltatás kihúzza a várólistát, végrehajtja a konverziót, és az eredményt egyetlen tranzakcióban tárolja. Ebben az esetben a rendszer eltávolítja az üzenetet a várólistából, és az eredményeket csak akkor tárolja az eredmény-szótárban, ha a konverziók befejeződik. Azt is megteheti, hogy a szolgáltatás lekéri a rendszerképet a sorból, és azonnal tárolja azt egy távoli tárolóban. Ez csökkenti a szolgáltatás által kezelt állapot mennyiségét, de növeli a bonyolultságot, mivel a szolgáltatásnak meg kell őriznie a szükséges metaadatokat a távoli tároló kezeléséhez. Ha bármelyik megközelítéssel nem sikerül a közepén, a kérelem a várólistán marad, és a feldolgozásra vár.
 
-Egy változás, hogy a szolgáltatásról, hogy, megosztásánál normál .NET szolgáltatás! Az egyetlen különbség, hogy a adatstruktúrák használt (`IReliableQueue` és `IReliableDictionary`) a Service Fabric által biztosított, és nagymértékben megbízható, elérhető és konzisztens.
+Ennek a szolgáltatásnak az egyik tudnivaló, hogy úgy hangzik, mint egy normál .NET-szolgáltatás! Az egyetlen különbség, hogy a használt adatstruktúrákat (`IReliableQueue` és `IReliableDictionary`) Service Fabric biztosítják, és megbízható, elérhető és konzisztensek.
 
-## <a name="when-to-use-reliable-services-apis"></a>A Reliable Services API-k használata
-Ha az alkalmazás szolgáltatásokra van szüksége, az alábbi jellemezhető, akkor érdemes lehet a Reliable Services API-kat:
+## <a name="when-to-use-reliable-services-apis"></a>Mikor kell használni a Reliable Services API-kat
+Ha a következők bármelyike jellemző az alkalmazás szolgáltatására, érdemes megfontolnia Reliable Services API-kat:
 
-* A webszolgáltatás kódjához szeretné (és opcionálisan állapot) kell magas rendelkezésre állású és megbízható
-* Tranzakciós garanciák több egységet (például megrendelések és a rendelés) állapotban van szüksége.
-* Az alkalmazás állapota természetes módon modellezhető megbízható szótárakban és üzenetsorok.
-* Az alkalmazások kódja vagy állapotban kell lennie az alacsony késés olvasási és írási magas rendelkezésre állású.
-* Az alkalmazásnak kell szabályozhatja a párhuzamosság vagy a tranzakciós műveletek közül egy vagy több megbízható gyűjtemények között.
-* Érdemes kommunikáció kezelése, illetve a szolgáltatás a particionálási séma vezérlését.
-* A kód egy szabad szállal futtatási környezetet kell.
-* Az alkalmazásnak kell dinamikusan létrehozni, vagy szüntesse meg a megbízható szótárakban vagy az üzenetsorok vagy a teljes szolgáltatások futásidőben.
-* Programozott módon a Service Fabric által biztosított biztonsági mentés vezérlőelemet, és állítsa vissza a szolgáltatás állapotának funkciói kell.
-* Az alkalmazásnak kell változások nyomon követése az egységek állapotának karbantartása.
-* Szeretné fejlesztése vagy harmadik féltől származó fejlesztett, egyéni állapotszolgáltatója felhasználását.
+* Szeretné, hogy a szolgáltatás kódja (és opcionálisan az állapota) legyen elérhető és megbízható legyen.
+* A tranzakciós garanciák több egységre is kiterjednek (például megrendelések és rendelési sorok).
+* Az alkalmazás állapota természetesen megbízható Szótárakként és várólistákként is modellezhető.
+* Az alkalmazások kódjának vagy állapotának nagyon alacsony olvasási és írási műveletekkel kell rendelkeznie.
+* Az alkalmazásnak meg kell határoznia a tranzakciós műveletek párhuzamosságát vagy részletességét egy vagy több megbízható gyűjteményen belül.
+* Felügyelni kívánja a kommunikációt, vagy szabályozni szeretné a szolgáltatás particionálási sémáját.
+* A kódnak szabad szálon futó futásidejű környezetre van szüksége.
+* Az alkalmazásnak dinamikusan kell létrehoznia vagy megsemmisítenie megbízható szótárakat vagy várólistákat vagy teljes szolgáltatásokat futásidőben.
+* A szolgáltatás állapotához programozott módon kell vezérelni Service Fabric által biztosított biztonsági mentési és visszaállítási funkciókat.
+* Az alkalmazásnak meg kell őriznie a változási előzményeket az egysége számára.
+* Harmadik féltől származó, egyéni állami szolgáltatókat szeretne fejleszteni vagy használni.
 
-## <a name="next-steps"></a>További lépések
-* [A Reliable Services – gyorsútmutató](service-fabric-reliable-services-quick-start.md)
-* [A Reliable collections](service-fabric-reliable-services-reliable-collections.md)
-* [A Reliable Actors programozási modell](service-fabric-reliable-actors-introduction.md)
+## <a name="next-steps"></a>Következő lépések
+* [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
+* [Megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)
+* [Az Reliable Actors programozási modell](service-fabric-reliable-actors-introduction.md)

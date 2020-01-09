@@ -1,5 +1,6 @@
 ---
-title: Stílusbeli funkciók leképezése Azure Mapsban | Microsoft Docs
+title: Térkép stílusának beállítása Azure Maps az Android SDK használatával
+titleSuffix: Azure Maps
 description: Ismerje meg az Android SDK Azure Maps stílussal kapcsolatos funkcióit.
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1a898508e5c99f6cb8be46605c156106b47c08f3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844853"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528096"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Térkép stílusának beállítása a Azure Maps Android SDK-val
 
@@ -27,7 +28,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 ## <a name="set-map-style-in-the-layout"></a>Térkép stílusának beállítása az elrendezésben
 
-A tevékenység osztályának elrendezési fájljában megadhat egy térképi stílust. Szerkessze a **res > elrendezést > activity_main. xml fájlt**, így a következőképpen néz ki:
+A tevékenység osztályának elrendezési fájljában megadhat egy térképi stílust. Szerkessze a **res > elrendezést > activity_main. xml fájlban**, így a következőképpen néz ki:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +52,15 @@ A tevékenység osztályának elrendezési fájljában megadhat egy térképi st
 </FrameLayout>
 ```
 
-A `mapcontrol_style` fenti attribútum a Térkép stílusát **grayscale_dark**állítja be. 
+A fenti `mapcontrol_style` attribútum a leképezési stílust **grayscale_darkre**állítja. 
 
 <center>
 
-![style-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![Style-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
 ## <a name="set-map-style-in-the-activity-class"></a>Térkép stílusának beállítása a tevékenység osztályban
 
-A Térkép stílusa beállítható a tevékenység osztályban. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára. Ezzel a **satellite_road_labels**fogja beállítani a leképezési stílust.
+A Térkép stílusa beállítható a tevékenység osztályban. Másolja a következő kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára. Ezzel beállítja a Térkép stílusát **satellite_road_labels**.
 
 ```Java
 mapControl.onReady(map -> {

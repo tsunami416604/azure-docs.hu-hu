@@ -1,19 +1,18 @@
 ---
 title: A Azure Stream Analytics kimenetének megismerése
 description: Ez a cikk a Azure Stream Analyticsban elérhető adatkimeneti beállításokat ismerteti, beleértve az elemzési eredmények Power BIét is.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: 6f04ccf216edb4e6a654c83c6220451bfccfe6ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d4e8c081e4009b1115d6b56ffc7244ad41001e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488507"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638918"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>A Azure Stream Analytics kimenetének megismerése
 
@@ -42,13 +41,13 @@ A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tart
 | Elérésiút-előtag mintája | A fájlnak a megadott Data Lake Store fiókban való írásához használt elérési út. Megadhatja a (z) {date} és a {Time} változók egy vagy több példányát:<br /><ul><li>1\. példa: Mappa1/naplók/{Date}/{Time}</li><li>2\. példa: Mappa1/naplók/{Date}</li></ul><br />A létrehozott mappa struktúrájának időbélyegzője az UTC és a helyi idő szerint történik.<br /><br />Ha a fájl elérési útjának mintája nem tartalmaz záró perjelet (/), a fájl elérési útjának utolsó mintázata fájlnév-előtagként lesz kezelve. <br /><br />Az új fájlok a következő esetekben jönnek létre:<ul><li>Változás a kimeneti sémában</li><li>A feladatok külső vagy belső újraindítása</li></ul> |
 | Dátumformátum | Választható. Ha a Date tokent az előtag elérési útján használja, kiválaszthatja a fájlok rendszerezésének dátumát. Példa: éééé/hh/nn |
 |Időformátum | Választható. Ha az időtokent az előtag elérési útja használja, adja meg a fájlok rendszerezésének időformátumát. Jelenleg az egyetlen támogatott érték a HH. |
-| Esemény szerializálási formátuma | A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak.|
+| Eseményszerializációs formátum | A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak.|
 | Encoding | Ha CSV-vagy JSON-formátumot használ, meg kell adni egy kódolást. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.|
 | Elválasztó | Csak a CSV-szerializáláshoz alkalmazható. Stream Analytics számos gyakori elhatárolót támogat a CSV-adattárolás szerializálásához. A támogatott értékek a következők: vessző, pontosvessző, szóköz, TAB és függőleges sáv.|
 | Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva. Ezt a tömböt csak akkor zárja be a rendszer, ha a feladatot leállítja vagy Stream Analytics áthelyezte a következő időszakra. Általánosságban elmondható, hogy a rendszer inkább a sortöréses JSON-t használja, mert nem igényel semmilyen speciális kezelést, amíg a kimeneti fájl továbbra is írásra kerül.|
 | Hitelesítési módszer | A [felügyelt identitás](stream-analytics-managed-identities-adls.md) vagy felhasználói jogkivonat használatával engedélyezheti a Data Lake Storage-fiók elérését. A hozzáférés engedélyezése után visszavonhatja a hozzáférést a felhasználói fiók jelszavának módosításával, a feladathoz tartozó Data Lake Storage kimenet törlésével vagy a Stream Analyticsi feladatok törlésével. |
 
-## <a name="sql-database"></a>SQL Database
+## <a name="sql-database"></a>SQL-adatbázis
 
 A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a természettel rokon adatokhoz, illetve olyan alkalmazásokhoz is használhatja, amelyek a kapcsolódó adatbázisban tárolt tartalomtól függenek. Stream Analytics feladatok írását egy meglévő táblába SQL Database. A tábla sémájának pontosan egyeznie kell a feladatok kimenetében szereplő mezőkkel és típusokkal. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) kimenetként is megadható kimenetként a SQL Database output (kimenet) lehetőség használatával. Ha többet szeretne megtudni az írási sebesség javításának módjairól, tekintse meg a [Azure SQL Database as stream Analytics a kimenettel](stream-analytics-sql-output-perf.md) című cikket.
 
@@ -63,9 +62,9 @@ A következő táblázat felsorolja a tulajdonságok nevét és leírását SQL 
 | Kiszolgálónév | A SQL Database-kiszolgáló neve. Azure SQL Database felügyelt példány esetében az 3342-es portot kell megadni. Például: *sampleserver. public. database. Windows. net, 3342* |
 | Felhasználónév | Az adatbázishoz írási hozzáféréssel rendelkező Felhasználónév. A Stream Analytics csak az SQL-hitelesítést támogatja. |
 | Jelszó | Az adatbázishoz való kapcsolódáshoz használt jelszó. |
-| Tábla | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával. |
+| Table | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával. |
 |Partíciós séma öröklése| Az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több íróival a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).|
-|Kötegek maximális száma| Az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.|
+|Maximális kötegszám| Az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.|
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>BLOB Storage és Azure Data Lake Gen2
 
@@ -79,12 +78,12 @@ A következő táblázat felsorolja a tulajdonságok nevét, valamint a Blobok v
 | ------------------- | ---------------------------------------------------------------------------------|
 | Kimeneti alias        | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a blob-tárolóba történő irányítására szolgál. |
 | Tárfiók     | Annak a Storage-fióknak a neve, ahová a kimenetet küldi.               |
-| Storage-fiók kulcsa | A Storage-fiókhoz társított titkos kulcs.                              |
+| Tárfiók kulcsa | A Storage-fiókhoz társított titkos kulcs.                              |
 | Storage-tároló   | Az Azure Blob serviceban tárolt Blobok logikai csoportosítása. Amikor feltölt egy blobot a Blob serviceba, meg kell adnia egy tárolót a blobhoz. |
-| Elérésiút-minta | Választható. A fájl elérési útjának mintája, amely a Blobok megadott tárolón belüli írásához használatos. <br /><br /> Az elérési út mintájában dönthet úgy, hogy a dátum és idő változók egy vagy több példányát használja a Blobok írásának megadásához: <br /> {Date}, {Time} <br /><br />Egyéni blob-particionálással megadhat egy egyéni {Field} nevet az esemény adataiból a Blobok particionálásához. A mező neve alfanumerikus, és tartalmazhat szóközt, kötőjelet és aláhúzást. Az egyéni mezőkre vonatkozó korlátozások a következők: <ul><li>A mezőnevek nem megkülönböztetik a kis-és nagybetűket. A szolgáltatás például nem tud különbséget tenni az "ID" oszlop és az "id" oszlop között.</li><li>Beágyazott mezők használata nem engedélyezett. Ehelyett használjon egy aliast a feladatokhoz a lekérdezésben a mező kisimításához.</li><li>A kifejezések nem használhatók mező neveként.</li></ul> <br />Ez a szolgáltatás lehetővé teszi az egyéni Dátum-/időformátumok megadott beállításainak használatát az elérési úton. Az egyéni dátum-és időformátumokat egyszerre kell megadni, a (z) {datetime: \<specifier >} kulcsszóval elkerítve. \<-> engedélyezett bemenetei: ÉÉÉÉ, hh, M, DD, d, HH, H, mm, m, SS vagy s. A (z) {datetime: \<specifier >} kulcsszó többször is használható az elérési úton az egyéni dátum/idő konfigurációkhoz. <br /><br />Példák: <ul><li>1\. példa: cluster1/naplók/{Date}/{Time}</li><li>2\. példa: cluster1/naplók/{Date}</li><li>3\. példa: cluster1/{client_id}/{Date}/{Time}</li><li>4\. példa: cluster1/{datetime: SS}/{myField}, ahol a lekérdezés: válassza az adatok. myField lehetőséget myField a bemenettől;</li><li>5\. példa: cluster1/év = {datetime: ÉÉÉÉ}/hónap = {datetime: PP}/nap = {datetime: DD}</ul><br />A létrehozott mappa struktúrájának időbélyegzője az UTC és a helyi idő szerint történik.<br /><br />A fájlok elnevezése a következő konvenciót használja: <br /><br />{Path előtag-minta}/schemaHashcode_Guid_Number.extension<br /><br />Példa kimeneti fájlokra:<ul><li>Myoutput/20170901/00/45434_gguid_1. csv</li>  <li>Myoutput/20170901/01/45434_gguid_1. csv</li></ul> <br />További információ erről a szolgáltatásról: [Azure stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md). |
+| Elérésiút-minta | Választható. A fájl elérési útjának mintája, amely a Blobok megadott tárolón belüli írásához használatos. <br /><br /> Az elérési út mintájában dönthet úgy, hogy a dátum és idő változók egy vagy több példányát használja a Blobok írásának megadásához: <br /> {Date}, {Time} <br /><br />Egyéni blob-particionálással megadhat egy egyéni {Field} nevet az esemény adataiból a Blobok particionálásához. A mező neve alfanumerikus, és tartalmazhat szóközt, kötőjelet és aláhúzást. Az egyéni mezőkre vonatkozó korlátozások a következők: <ul><li>A mezőnevek nem megkülönböztetik a kis-és nagybetűket. A szolgáltatás például nem tud különbséget tenni az "ID" oszlop és az "id" oszlop között.</li><li>Beágyazott mezők használata nem engedélyezett. Ehelyett használjon egy aliast a feladatokhoz a lekérdezésben a mező kisimításához.</li><li>A kifejezések nem használhatók mező neveként.</li></ul> <br />Ez a szolgáltatás lehetővé teszi az egyéni Dátum-/időformátumok megadott beállításainak használatát az elérési úton. Az egyéni dátum-és időformátumokat egyszerre kell megadni, a (z) {datetime:\<megadó >} kulcsszóval. \<-> engedélyezett bemenetei: ÉÉÉÉ, hh, M, DD, d, HH, H, mm, m, SS vagy s. A (z) {datetime:\<megadási >} kulcsszó többször is felhasználható az egyéni dátum-/időkonfigurációk elérési útján. <br /><br />Példák: <ul><li>1\. példa: cluster1/naplók/{Date}/{Time}</li><li>2\. példa: cluster1/naplók/{Date}</li><li>3\. példa: cluster1/{client_id}/{Date}/{Time}</li><li>4\. példa: cluster1/{datetime: SS}/{myField}, ahol a lekérdezés: válassza az adatok. myField lehetőséget myField a bemenettől;</li><li>5\. példa: cluster1/év = {datetime: ÉÉÉÉ}/hónap = {datetime: PP}/nap = {datetime: DD}</ul><br />A létrehozott mappa struktúrájának időbélyegzője az UTC és a helyi idő szerint történik.<br /><br />A fájlok elnevezése a következő konvenciót használja: <br /><br />{Path előtag-minta}/schemaHashcode_Guid_Number. bővítmény<br /><br />Példa kimeneti fájlokra:<ul><li>Myoutput/20170901/00/45434_gguid_1. csv</li>  <li>Myoutput/20170901/01/45434_gguid_1. csv</li></ul> <br />További információ erről a szolgáltatásról: [Azure stream Analytics egyéni blob kimeneti particionálás](stream-analytics-custom-path-patterns-blob-storage-output.md). |
 | Dátumformátum | Választható. Ha a Date tokent az előtag elérési útján használja, kiválaszthatja a fájlok rendszerezésének dátumát. Példa: éééé/hh/nn |
 | Időformátum | Választható. Ha az időtokent az előtag elérési útja használja, adja meg a fájlok rendszerezésének időformátumát. Jelenleg az egyetlen támogatott érték a HH. |
-| Esemény szerializálási formátuma | A kimeneti adatokat a szerializálási formátum. A JSON, a CSV, a Avro és a Parquet támogatott. |
+| Eseményszerializációs formátum | A kimeneti adatokat a szerializálási formátum. A JSON, a CSV, a Avro és a Parquet támogatott. |
 |Minimális sorok (csak parketta esetén)|A kötegek minimális sorainak száma. A parketta esetében minden köteg létrehoz egy új fájlt. Az aktuális alapértelmezett érték 2 000 sor, és az engedélyezett maximális érték 10 000 sor.|
 |Maximális idő (csak Parkett)|A maximális várakozási idő tételenként. Ezt követően a köteg a kimenetbe kerül, még akkor is, ha a minimális sorokra vonatkozó követelmény nem teljesül. Az aktuális alapértelmezett érték 1 perc, az engedélyezett maximum pedig 2 óra. Ha a blob kimenetének elérésiút-mintázati gyakorisága van, a várakozási idő nem lehet nagyobb, mint a partíció időtartománya.|
 | Encoding    | Ha CSV-vagy JSON-formátumot használ, meg kell adni egy kódolást. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
@@ -116,7 +115,7 @@ Az Event hubokból kimenetként kell konfigurálnia az adatfolyamokat.
 | Event hub-házirend neve | A megosztott elérési házirend, amelyet az Event hub **configure (Konfigurálás** ) lapján lehet létrehozni. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. |
 | Event hub-házirend kulcsa | Az Event hub-névtérhez való hozzáférés hitelesítéséhez használt megosztott elérési kulcs. |
 | Partíciós kulcs oszlopa | Választható. Az Event hub kimenetének partíciós kulcsát tartalmazó oszlop. |
-| Esemény szerializálási formátuma | A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
+| Eseményszerializációs formátum | A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
 | Encoding | A CSV és a JSON esetében jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó | Csak a CSV-szerializáláshoz alkalmazható. Stream Analytics számos gyakori elhatárolót támogat a CSV-formátumú adatszerializáláshoz. A támogatott értékek a következők: vessző, pontosvessző, szóköz, TAB és függőleges sáv. |
 | Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva.  |
@@ -136,7 +135,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és leírásait a Po
 | Csoport munkaterülete |Ha az adatmegosztást más Power BI felhasználókkal szeretné engedélyezni, válassza ki a csoportokat a Power BI-fiókban, vagy válassza **a saját munkaterület** lehetőséget, ha nem szeretne írni egy csoportba. Egy meglévő csoport frissítéséhez a Power BI hitelesítés megújítása szükséges. |
 | Adatkészlet neve |Adja meg azt az adatkészlet-nevet, amelyet a Power BI kimenetének használni szeretne. |
 | Tábla neve |Adja meg a tábla nevét a Power BI kimenetének adatkészletében. Jelenleg Power BI Stream Analytics feladatokból származó kimenetnek csak egy táblája lehet egy adatkészletben. |
-| A kapcsolatok engedélyezése | A kimeneti beállítások konfigurálásához engedélyeznie kell a Power BI. Miután engedélyezte ezt a kimenetet a Power BI-irányítópulthoz, visszavonhatja a hozzáférést a felhasználói fiók jelszavának módosításával, a feladatok kimenetének törlésével vagy a Stream Analytics feladatok törlésével. | 
+| Kapcsolat engedélyezése | A kimeneti beállítások konfigurálásához engedélyeznie kell a Power BI. Miután engedélyezte ezt a kimenetet a Power BI-irányítópulthoz, visszavonhatja a hozzáférést a felhasználói fiók jelszavának módosításával, a feladatok kimenetének törlésével vagy a Stream Analytics feladatok törlésével. | 
 
 A Power BI kimenetének és irányítópultjának konfigurálásához lásd: [Azure stream Analytics és Power bi](stream-analytics-power-bi-dashboard.md) oktatóanyag.
 
@@ -158,8 +157,8 @@ Stream Analytics | Power BI
 -----|-----
 bigint | Int64
 nvarchar (max.) | Sztring
-dátum/idő | datetime
-lebegőpontos | duplán
+dátum/idő | Dátum/idő
+lebegőpontos | Double
 Tömb rögzítése | Karakterlánc típusa, konstans érték: "IRecord" vagy "IArray"
 
 ### <a name="update-the-schema"></a>A séma frissítése
@@ -168,12 +167,12 @@ Stream Analytics kikövetkezteti az adatmodell-sémát a kimenetben szereplő el
 Kerülje a `SELECT *` lekérdezést, hogy megakadályozza a dinamikus séma frissítését a sorok között. A lehetséges teljesítmény-kihatások mellett előfordulhat, hogy az eredményekhez szükséges idő bizonytalan. Válassza ki azokat a pontos mezőket, amelyeket meg kell jeleníteni a Power BI irányítópulton. Emellett az adatértékeknek meg kell felelniük a választott adattípusnak.
 
 
-Előző/aktuális | Int64 | Sztring | datetime | duplán
+Előző/aktuális | Int64 | Sztring | Dátum/idő | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | Sztring | Sztring | duplán
-duplán | duplán | Sztring | Sztring | duplán
+Int64 | Int64 | Sztring | Sztring | Double
+Double | Double | Sztring | Sztring | Double
 Sztring | Sztring | Sztring | Sztring | Sztring 
-datetime | Sztring | Sztring |  datetime | Sztring
+Dátum/idő | Sztring | Sztring |  Dátum/idő | Sztring
 
 ## <a name="table-storage"></a>Table Storage
 
@@ -185,13 +184,13 @@ A következő táblázat felsorolja a tulajdonságok nevét és a táblázat kim
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amelyet a lekérdezések a lekérdezés kimenetének a táblázatos tárolóba való irányításához használnak. |
 | Tárfiók |Annak a Storage-fióknak a neve, ahová a kimenetet küldi. |
-| Storage-fiók kulcsa |A Storage-fiókhoz társított hozzáférési kulcs. |
+| Tárfiók kulcsa |A Storage-fiókhoz társított hozzáférési kulcs. |
 | Tábla neve |A tábla neve. A tábla akkor jön létre, ha nem létezik. |
 | Partíciókulcs |A partíciós kulcsot tartalmazó kimeneti oszlop neve. A partíciós kulcs a partíció egyedi azonosítója egy olyan táblán belül, amely az entitás elsődleges kulcsának első részét képezi. Ez egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Sor kulcsa |A sor kulcsot tartalmazó kimeneti oszlop neve. A sor kulcsa a partíción belüli entitás egyedi azonosítója. Az entitás elsődleges kulcsának második részét képezi. A sor kulcsa egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Köteg mérete |A Batch-művelet rekordjainak száma. Az alapértelmezett érték (100) elegendő a legtöbb feladathoz. A beállítás módosításával kapcsolatos további információkért tekintse meg a [tábla batch műveletének specifikációját](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) . |
 
-## <a name="service-bus-queues"></a>Service Bus-üzenetsorok
+## <a name="service-bus-queues"></a>Service Bus üzenetsorok
 
 [Service Bus várólisták](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) egy vagy több versengő fogyasztó számára biztosítanak egy FIFO-üzenet kézbesítését. Az üzeneteket általában a fogadók a várólistához való felvételének időbeli sorrendjében fogadják és dolgozzák fel. Minden üzenet fogadása és feldolgozása csak egy üzenet felhasználója által történik.
 
@@ -204,7 +203,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és a várólista ki
 | Üzenetsor neve |Az Service Bus üzenetsor neve. |
 | Üzenetsor-házirend neve |Amikor létrehoz egy várólistát, közös hozzáférési szabályzatokat is létrehozhat a várólista **konfigurálása** lapon. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. |
 | Üzenetsor-házirend kulcsa |A Service Bus névtér hozzáférésének hitelesítéséhez használt megosztott elérési kulcs. |
-| Esemény szerializálási formátuma |A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
+| Eseményszerializációs formátum |A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
 | Encoding |A CSV és a JSON esetében jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó |Csak a CSV-szerializáláshoz alkalmazható. Stream Analytics számos gyakori elhatárolót támogat a CSV-formátumú adatszerializáláshoz. A támogatott értékek a következők: vessző, pontosvessző, szóköz, TAB és függőleges sáv. |
 | Formátum |Csak JSON-típus esetén alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva. |
@@ -225,7 +224,7 @@ A következő táblázat a tulajdonságok nevét és leírásait sorolja fel Ser
 | Témakör neve |A témakörök az Event hubokhoz és a várólistákhoz hasonló üzenetkezelési entitások. Úgy tervezték, hogy az eszközökről és szolgáltatásokból származó esemény-adatfolyamokat gyűjtsön. Egy témakör létrehozásakor egy adott nevet is kap. A témakörbe küldött üzenetek nem érhetők el, kivéve, ha előfizetést hoznak létre, ezért gondoskodjon arról, hogy egy vagy több előfizetés legyen a témakörben. |
 | Témakör-házirend neve |Service Bus témakör létrehozásakor a témakör **configure (Konfigurálás** ) lapján is létrehozhat megosztott hozzáférési házirendeket. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. |
 | Témakör-házirend kulcsa |A Service Bus névtér hozzáférésének hitelesítéséhez használt megosztott elérési kulcs. |
-| Esemény szerializálási formátuma |A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
+| Eseményszerializációs formátum |A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
 | Encoding |Ha CSV-vagy JSON-formátumot használ, meg kell adni egy kódolást. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó |Csak a CSV-szerializáláshoz alkalmazható. Stream Analytics számos gyakori elhatárolót támogat a CSV-formátumú adatszerializáláshoz. A támogatott értékek a következők: vessző, pontosvessző, szóköz, TAB és függőleges sáv. |
 | Tulajdonságok oszlopai | Választható. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai a kimenethez](#custom-metadata-properties-for-output). |
@@ -250,7 +249,7 @@ Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságai
 | Sink (Fogadó) | Azure Cosmos DB. |
 | Importálási beállítás | Válassza ki **Cosmos db az előfizetésből** , vagy adja meg a **Cosmos db beállításokat manuálisan**.
 | Fiókazonosító | A Azure Cosmos DB fiók neve vagy végpontjának URI azonosítója. |
-| Fiók kulcsa | A Azure Cosmos DB-fiókhoz tartozó megosztott elérési kulcs. |
+| Fiókkulcs | A Azure Cosmos DB-fiókhoz tartozó megosztott elérési kulcs. |
 | Adatbázis | A Azure Cosmos DB adatbázis neve. |
 | Tárolónév | A használandó tároló neve, amely a Cosmos DBban léteznie kell. Példa:  <br /><ul><li> _MyContainer_: A "MyContainer" nevű tárolónak léteznie kell.</li>|
 | Dokumentum azonosítója |Választható. Annak az elsődleges kulcsnak a megadásához használt mező neve, amelybe az INSERT vagy a Update művelet alapul.
@@ -267,8 +266,8 @@ A Azure Stream Analytics HTTP-eseményindítók használatával hívja meg Azure
 | Függvényalkalmazás |A Azure Functions alkalmazás neve. |
 | Függvény |A függvény neve a Azure Functions alkalmazásban. |
 | Jelmagyarázat |Ha egy másik előfizetésből származó Azure-függvényt szeretne használni, ezt megteheti a függvény eléréséhez szükséges kulcs megadásával. |
-| Köteg maximális mérete |Olyan tulajdonság, amely lehetővé teszi az Azure-függvénynek elküldhető kimeneti kötegek maximális méretének beállítását. A bemeneti egység bájtban van. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB). |
-| Kötegek maximális száma  |Olyan tulajdonság, amely lehetővé teszi, hogy megadhatja az egyes kötegekben a Azure Functionsba küldendő események maximális számát. Az alapértelmezett érték 100. |
+| Maximális kötegméret |Olyan tulajdonság, amely lehetővé teszi az Azure-függvénynek elküldhető kimeneti kötegek maximális méretének beállítását. A bemeneti egység bájtban van. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB). |
+| Maximális kötegszám  |Olyan tulajdonság, amely lehetővé teszi, hogy megadhatja az egyes kötegekben a Azure Functionsba küldendő események maximális számát. Az alapértelmezett érték 100. |
 
 Ha a Azure Stream Analytics egy Azure-függvénytől egy 413-es ("http-kérelem entitás túl nagy") kivételt kap, akkor csökkenti a Azure Functions számára küldött kötegek méretét. Az Azure-függvény kódjában használja ezt a kivételt annak biztosításához, hogy Azure Stream Analytics ne küldjön túlméretes kötegeket. Győződjön meg arról is, hogy a függvényben használt kötegek maximális száma és mérete konzisztens a Stream Analytics portálon megadott értékekkel.
 
@@ -282,11 +281,11 @@ Abban az esetben is, ha egy időablakban nincs esemény kirakodás, a rendszer n
 A lekérdezési oszlopokat felhasználói tulajdonságokként csatolhatja a kimenő üzenetekhez. Ezek az oszlopok nem kerülnek bele a hasznos adatokba. A tulajdonságok a kimeneti üzenet szótárának formájában jelennek meg. A *kulcs* az oszlopnév és az *érték* az oszlop értéke a tulajdonságok szótárban. A rekord és a tömb kivételével minden Stream Analytics adattípus támogatott.  
 
 Támogatott kimenetek: 
-* Service Bus üzenetsor 
-* Service Bus témakör 
+* Service Bus-üzenetsor 
+* Service Bus-téma 
 * Eseményközpont 
 
-Az alábbi példában a metaadatokhoz a következő két mezőt vesszük fel: `DeviceId` és `DeviceStatus`. 
+A következő példában hozzáadjuk a két mezőt `DeviceId` és `DeviceStatus` a metaadatokhoz. 
 * Lekérdezés: `select *, DeviceId, DeviceStatus from iotHubInput`
 * Kimeneti konfiguráció: `DeviceId,DeviceStatus`
 
@@ -313,7 +312,7 @@ Ez a tulajdonság használatát mutatja be –
 * Lekérdezés: `select *, column1, column2 INTO queueOutput FROM iotHubInput`
 * Rendszertulajdonság oszlopai: `{ "MessageId": "column1", "PartitionKey": "column2"}`
 
-Ezzel beállítja a Service Bus üzenetsor-üzeneteinek `MessageId` értékét `column1` értékekkel, a PartitionKey pedig `column2` értékkel van beállítva.
+Ezzel beállítja a Service Bus-üzenetsor üzeneteinek `MessageId` a `column1`értékeit, a PartitionKey pedig `column2`értékekkel van beállítva.
 
 ## <a name="partitioning"></a>Particionálás
 
@@ -321,14 +320,14 @@ A következő táblázat összefoglalja a partíciók támogatását és a kimen
 
 | Kimenet típusa | Particionálás támogatása | Partíciókulcs  | Kimeneti írók száma |
 | --- | --- | --- | --- |
-| Azure Data Lake Store | Igen | Használja a {Date} és az {Time} tokent az elérési út előtagjának mintájában. Válassza ki a dátumformátum (például éééé/hh/nn, nn/hh/éééé vagy hh-nn-éééé). A HH az időformátumot használja. | A [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md)esetében a bemeneti particionálást követi. |
+| Azure Data Lake adattár | Igen | Használja a {Date} és az {Time} tokent az elérési út előtagjának mintájában. Válassza ki a dátumformátum (például éééé/hh/nn, nn/hh/éééé vagy hh-nn-éééé). A HH az időformátumot használja. | A [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md)esetében a bemeneti particionálást követi. |
 | Azure SQL Database | Igen, engedélyezni kell. | A lekérdezésben a PARTITION BY záradék alapján. | Ha engedélyezve van a particionálási lehetőség, a a [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md)esetében a bemeneti particionálást követi. Ha többet szeretne megtudni az adatok Azure SQL Databaseba való betöltésével kapcsolatos jobb írási teljesítmény eléréséről, tekintse meg [Azure stream Analytics kimenetét Azure SQL Database](stream-analytics-sql-output-perf.md). |
-| Azure Blob Storage | Igen | Használja a {Date} és az {Time} jogkivonatot az esemény mezőiből az elérésiút-mintában. Válassza ki a dátumformátum (például éééé/hh/nn, nn/hh/éééé vagy hh-nn-éééé). A HH az időformátumot használja. A blob kimenete egyetlen egyéni Event attribútummal ({mezőnév} vagy {datetime: \<specifier >}) particionálható. | A [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md)esetében a bemeneti particionálást követi. |
-| Azure Event Hubs | Igen | Igen | A partíció-igazítástól függően változhat.<br /> Ha az Event hub kimenetéhez tartozó partíciós kulcs egyenlően van igazítva a felsőbb rétegbeli (előző) lekérdezési lépéssel, az írók száma megegyezik az Event hub kimenetében található partíciók számával. Az egyes írók a [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) használatával küldik el az eseményeket az adott partícióra. <br /> Ha az Event hub kimenetének partíciós kulcsa nincs igazítva a felsőbb rétegbeli (előző) lekérdezési lépéssel, az írók száma megegyezik az előző lépésben lévő partíciók számával. Mindegyik író a [SendBatchAsync osztályt](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) használja a **EventHubClient** -ben, hogy eseményeket küldjön az összes kimeneti partícióra. |
+| Azure Blob Storage | Igen | Használja a {Date} és az {Time} jogkivonatot az esemény mezőiből az elérésiút-mintában. Válassza ki a dátumformátum (például éééé/hh/nn, nn/hh/éééé vagy hh-nn-éééé). A HH az időformátumot használja. A blob kimenete egyetlen egyéni Event attribútummal ({mezőnév} vagy {datetime:\<megadási >}) particionálható. | A [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md)esetében a bemeneti particionálást követi. |
+| Azure Event Hubs-eseményközpontok | Igen | Igen | A partíció-igazítástól függően változhat.<br /> Ha az Event hub kimenetéhez tartozó partíciós kulcs egyenlően van igazítva a felsőbb rétegbeli (előző) lekérdezési lépéssel, az írók száma megegyezik az Event hub kimenetében található partíciók számával. Az egyes írók a [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) használatával küldik el az eseményeket az adott partícióra. <br /> Ha az Event hub kimenetének partíciós kulcsa nincs igazítva a felsőbb rétegbeli (előző) lekérdezési lépéssel, az írók száma megegyezik az előző lépésben lévő partíciók számával. Mindegyik író a [SendBatchAsync osztályt](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) használja a **EventHubClient** -ben, hogy eseményeket küldjön az összes kimeneti partícióra. |
 | Power BI | Nem | None | Nem alkalmazható. |
 | Azure Table Storage | Igen | Bármely kimeneti oszlop.  | A [teljesen párhuzamos lekérdezések](stream-analytics-scale-jobs.md)bemeneti particionálását követi. |
-| Azure Service Bus témakör | Igen | Automatikusan kiválasztva. A partíciók száma a [Service Bus SKU és a méret](../service-bus-messaging/service-bus-partitioning.md)alapján történik. A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.| Ugyanaz, mint a kimeneti témakörben lévő partíciók száma.  |
-| Azure Service Bus üzenetsor | Igen | Automatikusan kiválasztva. A partíciók száma a [Service Bus SKU és a méret](../service-bus-messaging/service-bus-partitioning.md)alapján történik. A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.| Ugyanaz, mint a partíciók száma a kimeneti várólistában. |
+| Azure Service Bus-témakör | Igen | Automatikusan kiválasztva. A partíciók száma a [Service Bus SKU és a méret](../service-bus-messaging/service-bus-partitioning.md)alapján történik. A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.| Ugyanaz, mint a kimeneti témakörben lévő partíciók száma.  |
+| Azure Service Bus-üzenetsor | Igen | Automatikusan kiválasztva. A partíciók száma a [Service Bus SKU és a méret](../service-bus-messaging/service-bus-partitioning.md)alapján történik. A partíciós kulcs az egyes partíciók egyedi egész értékének értéke.| Ugyanaz, mint a partíciók száma a kimeneti várólistában. |
 | Azure Cosmos DB | Igen | A lekérdezésben a PARTITION BY záradék alapján. | A [teljesen párhuzamos lekérdezések](stream-analytics-scale-jobs.md)bemeneti particionálását követi. |
 | Azure Functions | Igen | A lekérdezésben a PARTITION BY záradék alapján. | A [teljesen párhuzamos lekérdezések](stream-analytics-scale-jobs.md)bemeneti particionálását követi. |
 
@@ -341,18 +340,18 @@ A következő táblázat a kimenetek kötegelt feldolgozásával kapcsolatos sze
 
 | Kimenet típusa | Üzenetek maximális mérete | Batch méretének optimalizálása |
 | :--- | :--- | :--- |
-| Azure Data Lake Store | Lásd: [Data Lake Storage korlátok](../azure-subscription-service-limits.md#data-lake-store-limits). | Írási művelet esetén akár 4 MB-ot is használhat. |
+| Azure Data Lake adattár | Lásd: [Data Lake Storage korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Írási művelet esetén akár 4 MB-ot is használhat. |
 | Azure SQL Database | Konfigurálható a kötegek maximális száma alapján. 10 000 a maximális és a 100-os minimális sor egy tömeges beszúrási alapértelmezés szerint.<br />Lásd: [Azure SQL-korlátok](../sql-database/sql-database-resource-limits.md). |  A kötegek kezdetben tömegesen vannak beszúrva a kötegek maximális számával. A Batch az SQL-újrapróbálkozást lehetővé tevő hibák alapján fél (a minimális kötegek száma) között oszlik meg. |
-| Azure Blob Storage | Lásd: [Azure Storage-korlátok](../azure-subscription-service-limits.md#storage-limits). | A Blobok maximális mérete 4 MB.<br />A Blobok maximális száma 50 000. |
-| Azure Event Hubs  | 256 KB vagy 1 MB/üzenet. <br />Lásd: [Event Hubs korlátok](../event-hubs/event-hubs-quotas.md). |  Ha a bemeneti/kimeneti particionálás nincs igazítva, az egyes események külön vannak csomagolva `EventData` értékre, és az üzenetek maximális méretének megfelelő kötegben lesznek elküldve. Ez akkor is előfordul, ha [Egyéni metaadatokat](#custom-metadata-properties-for-output) használunk. <br /><br />  Ha a bemeneti/kimeneti particionálás be van igazítva, több esemény is bekerül egyetlen `EventData` példányba, legfeljebb az üzenetek maximális méretére, és elküldve. |
+| Azure Blob Storage | Lásd: [Azure Storage-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | A Blobok maximális mérete 4 MB.<br />A Blobok maximális száma 50 000. |
+| Azure Event Hubs-eseményközpontok  | 256 KB vagy 1 MB/üzenet. <br />Lásd: [Event Hubs korlátok](../event-hubs/event-hubs-quotas.md). |  Ha a bemeneti/kimeneti particionálás nincs igazítva, az egyes események külön vannak csomagolva `EventData` és egy kötegbe kerülnek, amely akár az üzenetek maximális méretére is vonatkozik. Ez akkor is előfordul, ha [Egyéni metaadatokat](#custom-metadata-properties-for-output) használunk. <br /><br />  Ha a bemeneti/kimeneti particionálás be van igazítva, több esemény is bekerül egyetlen `EventData` példányba, az üzenetek maximális méretére és a küldésre. |
 | Power BI | Lásd: [Power bi REST API-korlátok](https://msdn.microsoft.com/library/dn950053.aspx). |
-| Azure Table Storage | Lásd: [Azure Storage-korlátok](../azure-subscription-service-limits.md#storage-limits). | Az alapértelmezett érték a 100 entitások száma egyetlen tranzakcióban. Igény szerint kisebb értékre is konfigurálhatja. |
-| Azure Service Bus üzenetsor   | 256 KB/üzenet a standard szinthez, 1 MB a prémium szintű csomaghoz.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Egyetlen esemény használata üzenetben. |
-| Azure Service Bus témakör | 256 KB/üzenet a standard szinthez, 1 MB a prémium szintű csomaghoz.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Egyetlen esemény használata üzenetben. |
-| Azure Cosmos DB   | Lásd: [Azure Cosmos db korlátok](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | A köteg mérete és az írási gyakoriság a Azure Cosmos DB válaszok alapján dinamikusan módosul. <br /> A Stream Analytics nem rendelkezik előre meghatározott korlátozásokkal. |
+| Azure Table Storage | Lásd: [Azure Storage-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Az alapértelmezett érték a 100 entitások száma egyetlen tranzakcióban. Igény szerint kisebb értékre is konfigurálhatja. |
+| Azure Service Bus-üzenetsor   | 256 KB/üzenet a standard szinthez, 1 MB a prémium szintű csomaghoz.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Egyetlen esemény használata üzenetben. |
+| Azure Service Bus-témakör | 256 KB/üzenet a standard szinthez, 1 MB a prémium szintű csomaghoz.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Egyetlen esemény használata üzenetben. |
+| Azure Cosmos DB   | Lásd: [Azure Cosmos db korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | A köteg mérete és az írási gyakoriság a Azure Cosmos DB válaszok alapján dinamikusan módosul. <br /> A Stream Analytics nem rendelkezik előre meghatározott korlátozásokkal. |
 | Azure Functions   | | Az alapértelmezett köteg mérete 262 144 bájt (256 KB). <br /> Az események alapértelmezett száma/batch értéke 100. <br /> A köteg mérete konfigurálható, és a Stream Analytics [kimeneti beállításokban](#azure-functions)növelheti vagy csökkenthető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > 
 > [Gyors útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)

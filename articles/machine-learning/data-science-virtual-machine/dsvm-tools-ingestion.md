@@ -6,16 +6,16 @@ keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: gvashishtha
-ms.author: gopalv
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 72a881a2ab508caa2274f3b9299157921cb8ceff
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 12/12/2019
+ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330682"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612629"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatfeldolgozási eszközök Data Science Virtual Machine
 
@@ -30,7 +30,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Eszköz az adatok Azure Blob Storage-ból Azure Data Lake Storeba való másolásához. Az Adatmásolás két Azure Data Lake Store fiók között is elvégezhető.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | Több blob importálása az Azure Blob Storage-ból Azure Data Lake Storeba.      |
-|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be a `adlcopy` parancsot a súgó eléréséhez.    |
+|  Hogyan használhatja/futtatja?    |   A súgó megjelenítéséhez nyisson meg egy parancssort, és írja be `adlcopy`.    |
 | Mintákra mutató hivatkozások      | [Az AdlCopy használata](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | A DSVM kapcsolódó eszközök      | AzCopy, Azure CLI     |
 
@@ -41,7 +41,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Egy felügyeleti eszköz az Azure-hoz. Emellett parancssori műveleteket is tartalmaz az Azure-beli adatplatformok, például az Azure Blob Storage és a Azure Data Lake Store adatainak áthelyezéséhez.     |
 | Támogatott DSVM-verziók      | Windows, Linux     |
 | Jellemző felhasználások      | Adatok importálása és exportálása az Azure Storage-ba és a Azure Data Lake Storeba.      |
-|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be a `az` parancsot a súgó eléréséhez.    |
+|  Hogyan használhatja/futtatja?    |   A súgó megjelenítéséhez nyisson meg egy parancssort, és írja be `az`.    |
 | Mintákra mutató hivatkozások      | [Az Azure parancssori felület használata](https://docs.microsoft.com/cli/azure)     |
 | A DSVM kapcsolódó eszközök      | AzCopy, AdlCopy      |
 
@@ -53,7 +53,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Eszköz helyi fájlokba, Azure Blob Storage-ba, fájlokba és táblákba másolt adatok másolására.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | Fájlok másolása az Azure Blob Storage-ba és a Blobok másolása a fiókok között.      |
-|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be a `azcopy` parancsot a súgó eléréséhez.    |
+|  Hogyan használhatja/futtatja?    |   A súgó megjelenítéséhez nyisson meg egy parancssort, és írja be `azcopy`.    |
 | Mintákra mutató hivatkozások      | [AzCopy Windowson](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | A DSVM kapcsolódó eszközök      | AdlCopy     |
 
@@ -87,7 +87,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | SQL Server eszköz az Adatmásolás SQL Server és az adatfájl között.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | CSV-fájl importálása SQL Server táblába, és SQL Server táblázat exportálása fájlba.      |
-|  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be a `bcp` parancsot a súgó eléréséhez.    |
+|  Hogyan használhatja/futtatja?    |   A súgó megjelenítéséhez nyisson meg egy parancssort, és írja be `bcp`.    |
 | Mintákra mutató hivatkozások      | [BCP segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | A DSVM kapcsolódó eszközök      | SQL Server, Sqlcmd      |
 

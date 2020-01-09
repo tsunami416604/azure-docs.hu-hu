@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182705"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638680"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -58,10 +58,17 @@ Az alábbi lépéseket követve megnyithatja egy Azure-erőforrás szerepkör be
 
 1. Az oldal alján található **értesítés** lapon vagy a **következő: aktiválás** gombra kattintva megtekintheti a szerepkör értesítési beállítások lapját. Ezek a beállítások vezérlik az ehhez a szerepkörhöz kapcsolódó e-mail-értesítéseket.
 
-    > [!NOTE]
-    > Ez az értesítési felület jelenleg az Azure-régiók és-előfizetések között zajlik. Ha nem tudja konfigurálni ezeket a szemcsés értesítéseket, térjen vissza egy vagy két nap alatt.
-
     ![Szerepkör-értesítések lap a szerepkör-beállítások lapon](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    A szerepkör-beállítások lap **értesítések** lapján Privileged Identity Management lehetővé teszi, hogy a rendszer részletesen szabályozza, hogy kik kapják meg az értesítéseket és milyen értesítéseket fogadnak.
+
+    - **E-mail kikapcsolása**<br>A megadott e-maileket kikapcsolhatja az alapértelmezett címzett jelölőnégyzetének törlésével és a további címzettek törlésével.  
+
+    - **E-mailek korlátozása a megadott e-mail-címekre**<br>Kikapcsolhatja az alapértelmezett címzetteknek küldött e-maileket az alapértelmezett címzett jelölőnégyzetének törlésével. Ezután további címzettként is hozzáadhat további e-mail-címeket. Ha több e-mail-címet szeretne hozzáadni, pontosvesszővel válassza el őket (;).
+
+    - **E-mailek küldése az alapértelmezett címzetteknek és a további címzetteknek**<br>Az alapértelmezett címzett jelölőnégyzet bejelölésével és a további címzettek e-mail címeinek hozzáadásával az e-maileket is elküldheti az alapértelmezett címzettnek és a további címzetteknek.
+
+    - **Csak kritikus e-mailek**<br>Minden egyes e-mail típus esetében bejelölheti a jelölőnégyzetet a kritikus e-mailek fogadásához. Ez azt jelenti, hogy a Privileged Identity Management csak akkor folytatja az e-mailek küldését a konfigurált címzetteknek, ha az e-mailben azonnali műveletre van szükség. Például az e-mailek, amelyek arra kérik a felhasználókat, hogy bővítsék szerepkör-hozzárendelését, nem lesznek aktiválva, miközben egy, a bővítmények jóváhagyását kérő e-mailt aktivál a rendszer.
 
 1. A szerepkör-beállítások frissítéséhez kattintson a **frissítés** gombra.
 
@@ -128,7 +135,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 
 1. Miután megadta az összes szerepkör-beállítást, válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)
 - [Azure-beli erőforrás-szerepkörökre vonatkozó biztonsági riasztások konfigurálása Privileged Identity Management](pim-resource-roles-configure-alerts.md)

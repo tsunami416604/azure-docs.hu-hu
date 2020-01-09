@@ -2,18 +2,18 @@
 title: Webhcaten-hibák megértése és megoldása a HDInsight-ben – Azure
 description: Ismerkedjen meg a Webhcaten által a HDInsight-on visszaadott gyakori hibákkal és azok megoldásával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555019"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638850"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A Webhcaten által a HDInsight-on fogadott hibák ismertetése és megoldása
 
@@ -21,17 +21,11 @@ További információ a Webhcaten és a HDInsight használatával fogadott hibá
 
 ## <a name="what-is-webhcat"></a>Mi az a Webhcaten?
 
-A [webhcaten](https://cwiki.apache.org/confluence/display/Hive/WebHCat) a Apache Hadoop [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), táblázat-és tárolási felügyeleti rétegének REST API. A Webhcaten alapértelmezés szerint engedélyezve van a HDInsight-fürtökön, és számos eszköz használja a feladatok elküldésére, a feladat állapotára stb. a fürtbe való bejelentkezés nélkül.
+A [webhcaten](https://cwiki.apache.org/confluence/display/Hive/WebHCat) a Apache Hadoop [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), táblázat-és tárolási felügyeleti rétegének REST API. A Webhcaten alapértelmezés szerint engedélyezve van a HDInsight-fürtökön, és számos eszköz használja a feladatok elküldésére, a feladat állapotának beolvasására és így tovább, a fürtbe való bejelentkezés nélkül.
 
 ## <a name="modifying-configuration"></a>Konfiguráció módosítása
 
-> [!IMPORTANT]  
-> A dokumentumban felsorolt hibák némelyike miatt a rendszer túllépte a beállított maximumot. Ha a megoldási lépés megemlíti, hogy módosítható egy érték, a módosítás végrehajtásához a következők egyikét kell használnia:
-
-* **Windows** -fürtök esetén: parancsfájl-művelet használatával konfigurálja az értéket a fürt létrehozása során. További információ: parancsfájl- [műveletek fejlesztése](hdinsight-hadoop-script-actions-linux.md).
-
-* **Linux** -fürtök esetén: az érték módosításához használja az Apache Ambari (web vagy REST API). További információ: [HDInsight kezelése Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
-
+A dokumentumban felsorolt hibák némelyike miatt a rendszer túllépte a beállított maximumot. Ha a megoldási lépés megemlíti, hogy módosítható egy érték, az Apache Ambari (web vagy REST API) használatával módosíthatja az értéket. További információ: [HDInsight kezelése Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
 
 ### <a name="default-configuration"></a>Alapértelmezett konfiguráció
 

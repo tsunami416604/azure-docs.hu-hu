@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979902"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613567"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -35,8 +35,11 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Az oktatóanyag elvégzéséhez először a következőket kell tennie:
 
-1. Hozzon létre egy Azure Maps fiók-előfizetést a S0 díjszabási szinten a [Azure Maps-fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)című részben leírtak szerint.
-2. Szerezze be a fiókjához tartozó elsődleges előfizetési kulcsot, kövesse a [fiók elsődleges kulcsának beszerzése](./tutorial-search-location.md#getkey)című témakör utasításait.
+1. Hozzon létre egy Azure Maps fiók-előfizetést a S0 díjszabási szinten a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait követve.
+2. Szerezze be a fiókjához tartozó elsődleges előfizetési kulcsot, kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
+
+
+A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)című témakör utasításait.
 
@@ -68,7 +71,7 @@ Példánkban az egyes érzékelők helyszínei esetében napi előrejelzést sze
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,7 +175,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Az alábbi grafikonok az aktuális naptól számított 15 napon belül megjelenítik a szél sebességének (bal gráf) és irányának (jobb gráf) változásának előrejelzési adatait.
+Az alábbi grafikonok az adatok kérésének napjától számított 15 napon belül megjelenítik a szél sebességének (bal gráf) és irányának (jobb gráf) változásának előrejelzési adatait.
 
 <center>
 
@@ -190,6 +193,6 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 * [Napi előrejelzés](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [Render-Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference)-k.
+Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
 
 További információ a Azure Notebooksről: [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

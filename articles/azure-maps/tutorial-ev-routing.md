@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109605"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613686"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -39,15 +39,17 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Az oktatóanyag elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). 
 
-Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához kövesse a [Azure Maps fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)című témakör útmutatását. 
+Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) az S1 díjszabási csomaggal rendelkező Azure Maps fiók létrehozása című témakör utasításait. 
 
-A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse a [fiók létrehozása és a kulcs beszerzése](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)című témakör utasításait.
+A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
+
+A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 ## <a name="create-an-azure-notebook"></a>Azure-beli jegyzetfüzet létrehozása
 
 Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter notebook-fájlt. A jegyzetfüzet-fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Azure notebook-projekt létrehozásához és a Jupyter notebook-dokumentum feltöltéséhez tegye a következőket:
 
-1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. A nyilvános profil lap tetején válassza a **saját projektek**lehetőséget.
 
     ![A saját projektek gomb](./media/tutorial-ev-routing/myproject.png)
@@ -76,12 +78,12 @@ A jegyzetfüzet-fájlban megvalósított funkciók jobb megismerése érdekében
 
   ![A Futtatás gomb](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Projekt szolgáltatásiszint-csomagok telepítése
+## <a name="install-project-level-packages"></a>Projekt szintű csomagok telepítése
 
 A kód a jegyzetfüzetben való futtatásához a következő lépésekkel telepítse a csomagokat a projekt szintjén:
 
 1. Töltse le a [*követelmények. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
-1. Válassza ki a projekt irányítópultján **Projektbeállítások**. 
+1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget. 
 1. A **projekt beállításai** ablaktáblán válassza a **környezet** lapot, majd kattintson a **Hozzáadás**gombra.
 1. A **környezet beállítása lépésekben**tegye a következőket:   
     a. Az első legördülő listában válassza a **követelmények. txt**elemet.  
@@ -111,7 +113,7 @@ Mivel a vállalat inkább olyan útvonalakat használ, amelyeknek a gazdaságoss
 Az elektromos jármű elérhető tartományának határainak meghatározásához futtassa a szkriptet a következő cellában:
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -398,6 +400,6 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 * [Útvonal-mátrix küldése](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Útvonal irányának beolvasása](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference)-k.
+Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
 
 További információ a Azure Notebooksről: [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

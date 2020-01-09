@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0225405c5d3a511bbb2bbb08c1c13e5adedd5096
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903775"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638868"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba
 
@@ -49,13 +49,13 @@ Használja a következő szintaxist a AdlCopy eszközzel való együttműködés
 
 A szintaxisban található paramétereket alább találja:
 
-| Beállítás | Leírás |
+| Lehetőség | Leírás |
 | --- | --- |
 | Forrás |Megadja a forrásadatok helyét az Azure Storage-blobban. A forrás lehet blob tároló, blob vagy más Data Lake Storage Gen1 fiók. |
 | Dest |Megadja a másolandó Data Lake Storage Gen1 célhelyet. |
 | SourceKey |Megadja az Azure Storage-blob forrásának tárolási hozzáférési kulcsát. Erre csak akkor van szükség, ha a forrás blob-tároló vagy blob. |
 | Fiók |**Választható**. Akkor használja, ha Azure Data Lake Analytics fiókot szeretne használni a másolási feladatok futtatásához. Ha a szintaxisban a/Account kapcsolót használja, de nem ad meg Data Lake Analytics fiókot, a AdlCopy egy alapértelmezett fiókot használ a feladatok futtatásához. Ha ezt a kapcsolót használja, a forrás (Azure Storage Blob) és a cél (Azure Data Lake Storage Gen1) adatforrásként hozzá kell adnia a Data Lake Analytics-fiókhoz. |
-| Egység |A másolási feladatokhoz használandó Data Lake Analytics egységek számát adja meg. Ez a beállítás kötelező, ha a **/Account** kapcsolóval megadja a Data Lake Analytics fiókot. |
+| egység |A másolási feladatokhoz használandó Data Lake Analytics egységek számát adja meg. Ez a beállítás kötelező, ha a **/Account** kapcsolóval megadja a Data Lake Analytics fiókot. |
 | Mintázat |Egy olyan regex-mintát ad meg, amely jelzi, hogy mely Blobok vagy fájlok másolhatók. A AdlCopy megkülönbözteti a kis-és nagybetűket. Az alapértelmezett minta, ha nincs megadva mintázat, az összes elem másolása. Több fájl mintázatának meghatározása nem támogatott. |
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>Adatok másolása Azure Storage-blobból a AdlCopy (önálló) használatával
@@ -65,7 +65,7 @@ A szintaxisban található paramétereket alább találja:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    Például:
+    Példa:
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
@@ -84,13 +84,13 @@ A szintaxisban található paramétereket alább találja:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
 
-    Például:
+    Példa:
 
         AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
+### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
 
-Ha Azure Blob Storage-fiókból másol másolást, a blob Storage-oldalon történő másolás során lehet szabályozni. Ez csökkenti a másolási feladatok teljesítményét. Ha többet szeretne megtudni az Azure-Blob Storage korlátairól, tekintse meg az Azure Storage korlátozásait az [Azure-előfizetés és a szolgáltatás korlátainál](../azure-subscription-service-limits.md).
+Ha Azure Blob Storage-fiókból másol másolást, a blob Storage-oldalon történő másolás során lehet szabályozni. Ez csökkenti a másolási feladatok teljesítményét. Ha többet szeretne megtudni az Azure-Blob Storage korlátairól, tekintse meg az Azure Storage korlátozásait az [Azure-előfizetés és a szolgáltatás korlátainál](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>Adatok másolása egy másik Data Lake Storage Gen1 fiókból a AdlCopy (önálló) használatával
 
@@ -101,7 +101,7 @@ A AdlCopy segítségével két Data Lake Storage Gen1 fiók közötti Adatmásol
 
         AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
 
-    Például:
+    Példa:
 
         AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
 
@@ -121,7 +121,7 @@ A AdlCopy segítségével két Data Lake Storage Gen1 fiók közötti Adatmásol
 
         AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
 
-### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
+### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
 
 Ha önálló eszközként használja a AdlCopy-t, a másolás megosztott, Azure által felügyelt erőforrásokon fut. Az ebben a környezetben felhasználható teljesítmény a rendszerterheléstől és a rendelkezésre álló erőforrástól függ. Ez a mód a legjobb megoldás, ha alkalmi alapon kis átvitelre van szükség. A AdlCopy önálló eszközként való használatakor nem kell paramétereket hangolni.
 
@@ -140,7 +140,7 @@ Futtassa az alábbi parancsot egy Azure Storage-blobból egy Data Lake Storage G
 
     AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
 
-Például:
+Példa:
 
     AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
 
@@ -148,7 +148,7 @@ Hasonlóképpen, futtassa a következő parancsot a forrás Data Lake Storage Ge
 
     AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
 
-### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
+### <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos szempontok
 
 Az adatok terabájtos tartományba másolásakor a AdlCopy használata a saját Azure Data Lake Analytics fiókkal jobb és kiszámítható teljesítményt nyújt. A beállítható paraméter a másolási feladatokhoz használandó Azure Data Lake Analytics egységek száma. Az egységek számának növelésével növelheti a másolási feladatok teljesítményét. Minden másolandó fájl legfeljebb egy egységet használhat. Több egység megadásával a másolt fájlok száma nem növeli a teljesítményt.
 
@@ -161,7 +161,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a AdlCopy-t a forrásokb�
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 
-    Például:
+    Példa:
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 

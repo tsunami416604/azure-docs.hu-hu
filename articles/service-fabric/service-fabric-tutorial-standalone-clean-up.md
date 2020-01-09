@@ -1,28 +1,19 @@
 ---
-title: 'Oktatóanyag: Önálló Service Fabric-fürt törlése – Azure Service Fabric | Microsoft Docs'
-description: Ebből az oktatóanyagból megtudhatja, hogyan távolíthatja el a különálló fürtöt
-services: service-fabric
-documentationcenter: .net
+title: Önálló fürt tisztítása
+description: Ebből az oktatóanyagból megtudhatja, hogyan távolíthatja el az AWS-t vagy az Azure-erőforrásokat az önálló Service Fabric-fürtben.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385164"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639020"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>Oktatóanyag: Önálló fürt tisztítása
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>Oktatóanyag: Az önálló fürt törlése
 
 Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban létre fog hozni egy AWS-ben vagy az Azure-ban üzemeltetett önálló fürtöt, és telepítenie kell egy alkalmazást.
 
@@ -45,7 +36,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Ha `Y` a rendszer kéri, adja meg, hogy sikeres volt-e a kimenet, a saját IP-címei pedig az alábbi módon lesznek helyettesítve:
+5. Ha a rendszer kéri, adja meg `Y` ha a kimenete sikeres volt, a következőhöz hasonlóan fog kinézni a kimenet, a saját IP-címeivel:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -63,7 +54,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 1. Jelentkezzen be az AWS-fiókjába.
 2. Lépjen az EC2 konzolra.
 3. Válassza ki az oktatóanyag első részében létrehozott csomópontokat.
-4. Kattintson a **műveletek** > **példány állapotának** > **megszakítása**elemre.
+4. Kattintson a **műveletek** > **példány állapota** > **megszakítása**elemre.
 
 ## <a name="clean-up-azure-resources"></a>Azure-erőforrások karbantartása
 
@@ -72,7 +63,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 3. Jelölje be az oktatóanyag első részében létrehozott három csomópont jelölőnégyzeteit.
 4. Kattintson a **Törlés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat negyedik részében megismerte, hogyan törölheti az előző lépésekben létrehozott erőforrásokat.
 

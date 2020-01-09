@@ -3,12 +3,12 @@ title: Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 description: Ismerje meg, hogyan konfigurálhatja a Durable Functions automatikus Azure Event Grid közzétételét.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231450"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613125"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 
@@ -37,7 +37,7 @@ Hozzon létre egy Event Grid-témakört az események Durable Functionsból val�
 * [EventGrid gyors útmutató: egyéni esemény létrehozása – PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
 * [EventGrid gyors útmutató: egyéni esemény létrehozása – Azure Portal](../../event-grid/custom-event-quickstart-portal.md)
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. A Azure Event Grid jelenleg nem támogatja az összes régiót. További információ a támogatott régiókról: [Azure Event Grid Overview (áttekintés](../../event-grid/overview.md)).
 
@@ -86,7 +86,7 @@ A Durable Functions-projektben keresse meg a `host.json` fájlt.
 
 A lehetséges Azure Event Grid konfigurációs tulajdonságok a [Host. JSON dokumentációjában](../functions-host-json.md#durabletask)találhatók. A `host.json` fájl konfigurálása után a Function alkalmazás életciklus-eseményeket küld az Event Grid témakörbe. Ez akkor működik, ha a Function alkalmazást helyileg és az Azure-ban futtatja.
 
-Adja meg a témakörhöz tartozó függvényalkalmazás és `local.setting.json`alkalmazásának beállításait. A következő JSON a helyi hibakeresési `local.settings.json` mintája. Cserélje le a `<topic_key>`t a témakör kulcsára.  
+Adja meg a témakörhöz tartozó függvényalkalmazás és `local.settings.json`alkalmazásának beállításait. A következő JSON a helyi hibakeresési `local.settings.json` mintája. Cserélje le a `<topic_key>`t a témakör kulcsára.  
 
 ```json
 {
@@ -262,7 +262,7 @@ Tekintse meg a Azure Portalban létrehozott függvény naplóit.
 Az alábbi lista az életciklus-események sémáját mutatja be:
 
 * **`id`** : az Event Grid esemény egyedi azonosítója.
-* **`subject`** : az esemény tárgyának elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. a `{orchestrationRuntimeStatus}` `Running`, `Completed`, `Failed`és `Terminated`lesz.  
+* **`subject`** : az esemény tárgyának elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}` kérdésre adott válaszban foglalt lépéseket. a `{orchestrationRuntimeStatus}` `Running`, `Completed`, `Failed`és `Terminated`lesz.  
 * **`data`** : Durable functions megadott paraméterek.
   * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) neve.
   * **`functionName`** : a Orchestrator függvény neve.

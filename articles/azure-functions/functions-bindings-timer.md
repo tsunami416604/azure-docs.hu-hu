@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928378"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613091"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -166,7 +166,9 @@ public void keepAlive(
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Az attribútum konstruktora egy CRON kifejezést vagy egy `TimeSpan`t használ. `TimeSpan` csak akkor használható, ha a Function alkalmazás egy App Service csomagon fut. A következő példa egy CRON-kifejezést mutat be:
+Az attribútum konstruktora egy CRON kifejezést vagy egy `TimeSpan`t használ. `TimeSpan` csak akkor használható, ha a Function alkalmazás egy App Service csomagon fut. a `TimeSpan` nem támogatott fogyasztási vagy rugalmas prémium szintű függvények esetén.
+
+A következő példa egy CRON-kifejezést mutat be:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -338,7 +340,7 @@ Az időzítő-trigger tároló-zárolással biztosítja, hogy csak egy időzít�
 
 A várólista-triggertől eltérően az időzítő trigger nem próbálkozik újra a függvény meghibásodása után. Ha egy függvény meghibásodik, azt a rendszer nem hívja újra az ütemezés következő időpontjáig.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 További információ arról, hogy mi a teendő, ha az időzítő trigger nem a várt módon működik, lásd: [kivizsgálás és jelentéskészítési hibák az időzítő által aktivált függvények nem égetéssel](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 

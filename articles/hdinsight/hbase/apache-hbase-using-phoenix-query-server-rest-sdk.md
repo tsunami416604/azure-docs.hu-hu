@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Telepítse és használja a REST SDK-t az Azure HDInsight Phoenix Query Serverához.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311677"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612257"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix lekérdezési kiszolgáló – REST SDK
 
@@ -31,7 +31,7 @@ Apache Phoenix Query Server Microsoft .NET illesztőprogramja NuGet-csomagként 
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Új PhoenixClient objektumának példánya
 
-A könyvtár használatának megkezdéséhez hozzon létre egy új `PhoenixClient` objektumot, amely `ClusterCredentials` értéket tartalmaz, amely tartalmazza a `Uri` fürtöt és a fürt Apache Hadoop felhasználónevét és jelszavát.
+A könyvtár használatának megkezdéséhez hozzon létre egy új `PhoenixClient` objektumot, amely átadja a `Uri`t a fürtnek és a fürt Apache Hadoop felhasználónevének és jelszavának `ClusterCredentials`.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,11 +48,11 @@ Egy vagy több kérelem PQS való elküldéséhez meg kell adnia egy egyedi kapc
 string connId = Guid.NewGuid().ToString();
 ```
 
-Mindegyik példa első lépésként meghívja a `OpenConnectionRequestAsync` metódust, amely az egyedi kapcsolatazonosító alapján lesz átadva. Ezután definiálja `ConnectionProperties` és `RequestOptions` értéket, adja át ezeket az objektumokat és a generált kapcsolatazonosító a `ConnectionSyncRequestAsync` metódusnak. A PQS `ConnectionSyncRequest` objektuma segít biztosítani, hogy az ügyfél és a kiszolgáló is konzisztens képet biztosítson az adatbázis tulajdonságairól.
+Mindegyik példa először a `OpenConnectionRequestAsync` metódust hívja meg, amely az egyedi kapcsolódási azonosítóban lesz átadva. Ezután definiálja `ConnectionProperties` és `RequestOptions`, adja át ezeket az objektumokat és a generált kapcsolatazonosító a `ConnectionSyncRequestAsync` metódusnak. A PQS `ConnectionSyncRequest` objektuma segít biztosítani, hogy az ügyfél és a kiszolgáló is konzisztens képet biztosítson az adatbázis tulajdonságairól.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest és az ConnectionProperties
 
-@No__t-0 meghívásához adjon meg egy `ConnectionProperties` objektumot.
+`ConnectionSyncRequestAsync`meghívásához adjon meg egy `ConnectionProperties` objektumot.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -73,14 +73,14 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 | Tulajdonság | Leírás |
 | -- | -- |
-| Autocommit | Logikai érték, amely azt jelzi, hogy a `autoCommit` engedélyezve van-e a Phoenix-tranzakciókban. |
+| Autocommit | Logikai érték, amely azt jelzi, hogy `autoCommit` engedélyezve van-e a Phoenix-tranzakciókhoz. |
 | ReadOnly | Logikai érték, amely azt jelzi, hogy a hálózat írásvédett-e. |
 | TransactionIsolation | Egy egész szám, amely a tranzakciós elkülönítés szintjét jelöli a JDBC-specifikáció alapján – lásd a következő táblázatot.|
 | Katalógus | A kapcsolódási tulajdonságok beolvasásakor használandó katalógus neve. |
 | Séma | A kapcsolódási tulajdonságok beolvasásakor használandó séma neve. |
 | IsDirty | Logikai érték, amely azt jelzi, hogy a tulajdonságok módosultak-e. |
 
-A `TransactionIsolation` értékek:
+Itt láthatók a `TransactionIsolation` értékei:
 
 | Elkülönítési érték | Leírás |
 | -- | -- |
@@ -94,7 +94,7 @@ A `TransactionIsolation` értékek:
 
 A HBase, mint bármely más RDBMS, a táblákban tárolja az adattárolást. A Phoenix szabványos SQL-lekérdezéseket használ új táblák létrehozásához az elsődleges kulcs és az oszlopok típusának meghatározásakor.
 
-Ez a példa és az összes további példa, a példányok [új PhoenixClient objektumának létrehozása](#instantiate-new-phoenixclient-object)során definiált `PhoenixClient` objektumot használja.
+Ez a példa és az összes későbbi példa azt a példányt használja, amelyet az [új PhoenixClient objektum példányának létrehozása](#instantiate-new-phoenixclient-object)során definiált `PhoenixClient`.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -160,7 +160,7 @@ finally
 }
 ```
 
-Az előző példa egy `Customers` nevű új táblát hoz létre a `IF NOT EXISTS` kapcsoló használatával. A `CreateStatementRequestAsync` hívás új utasítást hoz létre a Avitica-(PQS-) kiszolgálón. A `finally` blokk lezárja a visszaadott `CreateStatementResponse` és a `OpenConnectionResponse` objektumot.
+Az előző példa egy `Customers` nevű új táblát hoz létre a `IF NOT EXISTS` kapcsoló használatával. A `CreateStatementRequestAsync` hívás új utasítást hoz létre a Avitica (PQS) kiszolgálóban. A `finally` blokk lezárja a visszaadott `CreateStatementResponse` és a `OpenConnectionResponse` objektumokat.
 
 ## <a name="insert-data-individually"></a>Az adatbeszúrás egyenként
 
@@ -170,7 +170,7 @@ Ez a példa egy egyéni adatbeszúrást mutat be, amely az Amerikai Egyesült á
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-A tábla `StateProvince` oszlopának értéke egy későbbi kiválasztási műveletben lesz használatban.
+A tábla `StateProvince` oszlopának értéke egy későbbi Select műveletben lesz használva.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,11 +277,11 @@ finally
 }
 ```
 
-Az INSERT utasítás végrehajtásának szerkezete hasonló egy új tábla létrehozásához. Vegye figyelembe, hogy a `try` blokk végén a tranzakció explicit módon véglegesítve lesz. Ez a példa egy INSERT tranzakció 300-szor ismétlődik. Az alábbi példa egy hatékonyabb kötegelt beszúrási folyamatot mutat be.
+Az INSERT utasítás végrehajtásának szerkezete hasonló egy új tábla létrehozásához. A `try` blokk végén a tranzakció explicit módon véglegesítve lesz. Ez a példa egy INSERT tranzakció 300-szor ismétlődik. Az alábbi példa egy hatékonyabb kötegelt beszúrási folyamatot mutat be.
 
 ## <a name="batch-insert-data"></a>Kötegek beszúrása
 
-A következő kód majdnem azonos az adatbeszúrási kóddal. Ez a példa a `UpdateBatch` objektumot használja a `ExecuteBatchRequestAsync` hívásához, nem pedig többször hívja meg a `ExecuteRequestAsync`-t egy előkészített utasítással.
+A következő kód majdnem azonos az adatbeszúrási kóddal. Ez a példa a `UpdateBatch` objektumot használja `ExecuteBatchRequestAsync`hívásához, ahelyett, hogy egy előkészített utasítással többször meghívja `ExecuteRequestAsync`.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -492,7 +492,7 @@ finally
 }
 ```
 
-A `select` utasítások kimenetének a következő eredménynek kell lennie:
+A `select`i utasítások kimenetének a következő eredménynek kell lennie:
 
 ```
 id0 first0
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Phoenix a HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 * [Az Apache HBase REST SDK használata](apache-hbase-rest-sdk.md)

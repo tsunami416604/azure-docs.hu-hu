@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/26/2019
-ms.openlocfilehash: e11b1c8c19db73ace069d4bfda3516cdbbceaa02
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1260ee32c267a2652ad02e74c3978654bf2f9669
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476107"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529786"
 ---
 1. A Pythonhoz készült Azure Machine Learning SDK telepítéséhez [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) -ban található utasításokat használhatja.
 
-1. Hozzon létre egy [Azure Machine learning munkaterületet](../articles/machine-learning/service/how-to-manage-workspace.md).
+1. Hozzon létre egy [Azure Machine learning munkaterületet](../articles/machine-learning/how-to-manage-workspace.md).
 
-1. Írja be a [konfigurációs fájlt](../articles/machine-learning/service/how-to-configure-environment.md#workspace) (**aml_config/config. JSON**).
+1. [Konfigurációs fájl](../articles/machine-learning/how-to-configure-environment.md#workspace) írása (**aml_config/config.JSON**).
 
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
