@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895216"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614888"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-hoz
 
@@ -31,7 +31,7 @@ Néhány megfontolandó szempont az RA-GRS használatakor:
 
 - Az alkalmazásnak kezelnie kell, hogy melyik végpontot használja az RA-GRS használatakor.
 - Mivel az aszinkron replikáció késéssel jár, a másodlagos régióba még nem replikált módosítások elvesznek, ha az adatok nem állíthatók helyre az elsődleges régióból.
-- A Storage-fiók utolsó szinkronizálási idejét is megtekintheti. A legutóbbi szinkronizálás ideje egy GMT dátum/idő érték. A legutóbbi szinkronizálási idő előtti összes elsődleges írást a másodlagos helyre sikerült írni, ami azt jelenti, hogy elérhetők a másodlagos helyről való olvasáshoz. A legutóbbi szinkronizálási idő után az elsődleges írások még nem állnak rendelkezésre az olvasáshoz. Ezt az értéket lekérdezheti az Azure Storage ügyféloldali kódtárainak [Azure Portalával](https://portal.azure.com/), [Azure PowerShellával](storage-powershell-guide-full.md)vagy valamelyikével.
+- A Storage-fiók **utolsó szinkronizálási ideje** tulajdonságát is megtekintheti. A **legutóbbi szinkronizálás ideje** egy GMT dátum/idő érték. A **Legutóbbi szinkronizálási idő** előtt végrehajtott összes elsődleges írást a másodlagos helyre sikerült írni, ami azt jelenti, hogy elérhetők a másodlagos helyről való olvasáshoz. A **Legutóbbi szinkronizálási idő** után az elsődleges írások még nem állnak rendelkezésre az olvasáshoz. Ezt az értéket a PowerShell, az Azure CLI vagy az Azure Storage ügyféloldali kódtárak használatával kérdezheti le. További információkért lásd: **az utolsó szinkronizálási idő beszerzése** a [magasan elérhető alkalmazások tervezéséhez az olvasási hozzáférésű geo-redundáns tárolás használatával](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time).
 - Ha egy GRS vagy RA-GRS fiók feladatátvételét (előzetes verzió) kezdeményezi a másodlagos régióba, a feladatátvétel befejeződése után a rendszer az írási hozzáférést a fiókhoz is visszaállítja. További információ: vész- [helyreállítási és Storage-fiók feladatátvétele (előzetes verzió)](storage-disaster-recovery-guidance.md).
 - Az RA-GRS magas rendelkezésre állású célokra szolgál. A méretezhetőséggel kapcsolatos útmutatásért tekintse át a [teljesítmény ellenőrzőlistáját](storage-performance-checklist.md).
 - Az RA-GRS-vel való magas rendelkezésre állás kialakításával kapcsolatos javaslatokért lásd: [magas rendelkezésre állású alkalmazások tervezése ra-GRS Storage használatával](storage-designing-ha-apps-with-ragrs.md).

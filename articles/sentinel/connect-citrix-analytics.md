@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 36a0c36de7b3f6c6aa4932770e6264bc14c2790f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4a720702cdadf641665c4c8dc3754edd1c42361
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518085"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610624"
 ---
-# <a name="connect-citrix-analytics-security"></a>A Citrix Analytics (biztonság) összekötése 
+# <a name="connect-citrix-analytics-security"></a>Citrix Analytics (Security) csatlakoztatása 
 
 A Citrix Analytics (biztonság) integrálása az Azure Sentinel szolgáltatással lehetővé teszi a Citrix Analytics (biztonság) kockázatos eseményeinek elemzését az Azure Sentinel szolgáltatásba. Egyéni irányítópultokat hozhat létre, más forrásokból származó adatok elemzését is elvégezheti a Citrix Analytics (biztonság) használatával, és egyéni munkafolyamatokat hozhat létre az Logic Apps segítségével a biztonsági események figyeléséhez és enyhítéséhez. 
 
@@ -42,8 +42,10 @@ A Citrix Analytics (biztonság) integrálása az Azure Sentinel szolgáltatássa
 
 3. Kövesse a **Citrix Analytics (biztonság)** lapon megjelenő utasításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Citrix Analytics (Security) az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
+
 

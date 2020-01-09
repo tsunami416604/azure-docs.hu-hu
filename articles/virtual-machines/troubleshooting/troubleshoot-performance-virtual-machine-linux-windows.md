@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965474"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615052"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Azure-beli virtuális gépek teljesítményének megoldása Linux vagy Windows rendszeren
 
@@ -30,7 +30,7 @@ Ez a cikk végigvezeti a teljesítménybeli szűk keresztmetszetek diagnosztizá
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-beli virtuális gépek figyelése
 
-A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
+A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
 
 ![A figyelés nincs engedélyezve](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -137,9 +137,9 @@ A memóriahasználat megmutatja, hogy mennyi memóriát használ a virtuális g�
 
 Spike és állandó/állandó fogyasztás – a nagy memória kihasználtsága nem lehet a rossz teljesítmény oka, mivel egyes alkalmazások, például a viszonyítási adatbázisok nagy mennyiségű memóriát foglalnak le, és ez a kihasználtság nem jelent jelentős értéket. Ha azonban több memóriára éhes alkalmazás van, előfordulhat, hogy gyenge teljesítményt tapasztal a memóriában, így a vágás és a lapozás/csere lemezre történik. Ez a gyenge teljesítmény gyakran észlelhető az alkalmazás teljesítményére gyakorolt hatás miatt.
 
-Folyamatosan növekvő fogyasztás – egy lehetséges "felmelegedés" alkalmazás, ez a fogyasztás gyakori az adatbázis-hajtóműveknél. Azonban egy adott alkalmazásban memóriavesztés is lehet. Azonosítsa az alkalmazást, és Ismerje meg, hogy a működés várható-e.
+Folyamatosan növekvő fogyasztás – egy lehetséges "felmelegedés" alkalmazás, ez a fogyasztás gyakori az adatbázis-hajtóműveknél. Ugyanakkor jelezheti egy alkalmazás memóriavesztését is. Azonosítsa az alkalmazást, és Ismerje meg, hogy a működés várható-e.
 
-Oldal-vagy lapozófájl-használat – győződjön meg arról, hogy a Windows lapozófájlt használja (a D: \) vagy a Linux swap-fájl (`/dev/sdb`) helyen található-e. Ha ezekkel a kötetekkel nem rendelkezik ezekkel a fájlokkal, akkor ellenőrizze, hogy vannak-e magas olvasási/írási műveletek a lemezeken. Ez a probléma kevés memóriát jelez.
+Oldal-vagy lapozófájl-használat – győződjön meg arról, hogy a Windows lapozófájlt használja (a D:\) vagy a Linux swap-fájlban (`/dev/sdb`) található. Ha ezekkel a kötetekkel nem rendelkezik ezekkel a fájlokkal, akkor ellenőrizze, hogy vannak-e magas olvasási/írási műveletek a lemezeken. Ez a probléma kevés memóriát jelez.
 
 ### <a name="high-memory-utilization-remediation"></a>Nagy memória-kihasználtság szervizelése
 
@@ -187,7 +187,7 @@ Ha a rendelkezésre állás csökkenését tapasztalja, akkor a platformmal kapc
 * ClientTimeOutError
 * ServerTimeOutError
 * AverageE2ELatency
-* Averageserverlatency értéket mutatnak
+* AverageServerLatency
 * TotalRequests
 
 A * TimeOutError mérőszámokban szereplő értékek azt jelzik, hogy egy IO-művelet túl sokáig tartott, és időtúllépés történt. A következő lépések elvégzése segít azonosítani a lehetséges okokat.

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664393"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611066"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban (előzetes verzió)
  
 Megadhatja és testreszabhatja a teljes Azure-bérlőhöz tartozó SQL Information Protection-szabályzatot Azure Security Centerban.
 
-Az adatvédelem egy fejlett biztonsági képesség az Azure-beli adatforrásokban lévő bizalmas adatok felfedéséhez, besorolásához, címkézéséhez és védelméhez. A bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyes adatok stb.) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
+Az adatvédelem egy speciális biztonsági funkció, amely az Azure-beli adatforrásokban lévő bizalmas adatok felfedésére, osztályozására, címkézésére és jelentésére szolgál. A bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyes adatok stb.) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. Infrastruktúraként alkalmas lehet az alábbiakra:
 - Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése
 - Biztonsági helyzetek, mint például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása
 - A fokozottan bizalmas adatokat tartalmazó adattárak biztonságának szabályozása és a hozzáférés megerősítése
@@ -77,7 +77,7 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
 Miután az adatvédelmi szabályzatot teljesen meghatározta és mentette, a bérlőben lévő összes Azure SQL-adatbázis adatainak besorolására vonatkozik.
  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ebben a cikkben megtanulta, hogyan határozhat meg egy SQL Information Protection szabályzatot a Azure Security Centerban. Ha többet szeretne megtudni az SQL-Information Protection használatáról az SQL-adatbázisokban található bizalmas adatok osztályozásához és védelméhez, olvassa el az [adatfelderítés és-besorolás Azure SQL Database](../sql-database/sql-database-data-discovery-and-classification.md). 
 

@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894062"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611696"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -35,9 +35,9 @@ Azure Resource Manager erőforrásokat, például a Recovery Services-tárolót,
 
 A figyelés szakaszban válassza a **diagnosztikai beállítások** elemet, és adja meg a Recovery Services tároló diagnosztikai adatcélját.
 
-![A Recovery Services tároló diagnosztikai beállítása, Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
+![A Recovery Services tároló diagnosztikai beállítása, Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-Egy Log Analytics munkaterületet egy másik előfizetésből is megcélozhat. Ha egyetlen helyen szeretné figyelni a tárolókat az előfizetések között, válassza ki ugyanazt a Log Analytics munkaterületet több Recovery Services-tárolóhoz. A Log Analytics munkaterülethez Azure Backup kapcsolódó összes információ átadásához válassza a megjelenő váltógomb **erőforrás-specifikus** elemét, és válassza ki a következő eseményeket: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. A LA Diagnostics beállításainak konfigurálásával kapcsolatos további információkért tekintse meg [ezt a cikket](backup-azure-diagnostic-events.md) .
+Egy Log Analytics munkaterületet egy másik előfizetésből is megcélozhat. Ha egyetlen helyen szeretné figyelni a tárolókat az előfizetések között, válassza ki ugyanazt a Log Analytics munkaterületet több Recovery Services-tárolóhoz. Ha a Log Analytics munkaterülethez Azure Backup kapcsolódó összes információt át szeretné irányítani, válassza a **AzureDiagnostics** elemet a megjelenő váltógomb közül, és válassza ki a **AzureBackupReport** eseményt.
 
 > [!IMPORTANT]
 > A konfiguráció befejezését követően 24 órát kell várnia a kezdeti leküldések befejezésére. A kezdeti adatküldés után a rendszer az összes eseményt leküldi a cikk későbbi részében leírtak szerint a [gyakoriság szakaszban](#diagnostic-data-update-frequency).
@@ -50,9 +50,6 @@ Egy Log Analytics munkaterületet egy másik előfizetésből is megcélozhat. H
 Miután az adatLog Analytics munkaterületen belül található, [helyezzen üzembe egy GitHub-sablont](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) , hogy a rendszer log Analytics az adatmegjelenítéshez. A munkaterület megfelelő azonosításához győződjön meg arról, hogy ugyanazt az erőforráscsoportot, a munkaterület nevét és a munkaterület helyét adja meg. Ezután telepítse ezt a sablont a munkaterületre.
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Azure Backup adatai megtekintése Log Analytics használatával
-
-> [!IMPORTANT]
-> A LA Reporting sablon jelenleg a AzureDiagnostics módban lévő örökölt esemény AzureBackupReport származó adatok használatát támogatja. A sablon használatához [konfigurálnia kell a tároló diagnosztikai beállításait a Azure Diagnostics módban](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure monitor**: a **bepillantások** szakaszban válassza a **továbbiak** lehetőséget, majd válassza ki a megfelelő munkaterületet.
 - **Log Analytics munkaterületek**: válassza ki a megfelelő munkaterületet, majd az **általános**területen válassza a **munkaterület összegzése**elemet.
@@ -113,65 +110,90 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
 - Minden sikeres biztonsági mentési feladat
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Completed"
     ````
 
 - Az összes sikertelen biztonsági mentési feladat
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Failed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Failed"
     ````
 
 - Minden sikeres Azure-beli virtuális gép biztonsági mentési feladata
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Az összes sikeres SQL-napló biztonsági mentési feladata
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup" and JobOperationSubType=="Log"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Az összes sikeres Azure Backup ügynök feladatai
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Diagnosztikai Adatfrissítés gyakorisága
@@ -217,7 +239,7 @@ Megtekintheti a tevékenységek naplóiból létrehozott összes riasztást és 
 Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, hogy használja a Log Analyticst, és ne a tevékenység naplóit, hanem a nagy léptékű monitorozást. Ezt a következők miatt kérjük:
 
 - **Korlátozott forgatókönyvek**: a tevékenység-naplókon keresztüli értesítések csak az Azure-beli virtuális gépek biztonsági mentésére vonatkoznak. Az értesítéseket minden Recovery Services-tárolóhoz be kell állítani.
-- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett az [erőforrás-naplókhoz](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)igazodik. Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
+- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett az [erőforrás-naplókhoz](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)igazodik. Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
 - **Problémák a tevékenység naplójának csatornájában**: Recovery Services-tárolókban, a Azure Backup bepumpált tevékenység-naplók egy új modellt követnek. Ez a változás sajnos a Azure Government, az Azure Germany és az Azure China 21Vianet tevékenység-naplófájljainak előállítására is hatással van. Ha a felhőalapú szolgáltatások felhasználói a Azure Monitorban lévő tevékenységi naplókból hoznak létre vagy konfigurálnak riasztásokat, a riasztások nem aktiválódnak. Továbbá, ha a felhasználó az összes Azure-beli nyilvános régióban [begyűjti Recovery Services tevékenység naplóit egy log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), akkor ezek a naplók nem jelennek meg.
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.

@@ -1,5 +1,5 @@
 ---
-title: GYIK – nagy kapacitású (Citus) – Azure Database for PostgreSQL
+title: Azure SQL Database nagy kapacitású – gyakori kérdések
 description: Válaszok a gyakori kérdésekre az ügyfelek a nagy kapacitású szolgáltatási rétegében – általában nagy kapacitású-adatbázis néven – egy Azure SQL Database-adatbázist kérnek.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974019"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614989"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 
@@ -157,7 +157,7 @@ A nagy kapacitású és a tranzakciós napló gyakorlatilag végtelen. Nem kell 
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Az adatbázis növekedésének `tempdb` méretezése
 
-A `tempdb`-adatbázis a helyi SSD-tárolón található, és a kiépített számítási méret alapján van konfigurálva. A `tempdb` úgy van optimalizálva, hogy maximális teljesítménybeli előnyöket biztosítson. `tempdb` a méret nem konfigurálható és felügyelhető.
+A `tempdb`-adatbázis a helyi SSD-tárolón található, és mérete arányos a kiépített számítási mérettel. A `tempdb` úgy van optimalizálva, hogy maximális teljesítménybeli előnyöket biztosítson. `tempdb` a méret nem konfigurálható és felügyelhető.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Az adatbázis méretének automatikus növekedése vagy az adatfájlok méretének kezelése szükséges
 
@@ -165,7 +165,7 @@ Az adatbázis mérete automatikusan növekszik, amikor több adatot szúr be/tö
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Mi az a legkisebb adatbázis-méret, amelyet a nagy kapacitású támogat vagy elindít
 
-10 GB.
+40 GB. A nagy kapacitású-adatbázis 10 GB-os kezdő mérettel jön létre. Ezt követően 10 GB-onként 10 percenként növekszik, amíg el nem éri a 40 GB-os méretet. A 10 GB-os tokmányok mindegyike egy másik kiszolgálóoldali kiszolgálón van lefoglalva, hogy nagyobb IOPS és nagyobb I/O-párhuzamosságot biztosítson. Az optimalizálás miatt még akkor is, ha a kezdeti adatbázis mérete 40 GB-nál kisebb, az adatbázis legalább 40 GB-ra növekedni fog.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Milyen növekményekben növekszik az adatbázis mérete
 
@@ -268,13 +268,13 @@ Igen.
 
 A RPO 0 perc. Az RTO cél kevesebb, mint 10 perc, az adatbázis méretétől függetlenül. 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>A nagyméretű adatbázisok biztonsági másolatai hatással vannak a számítási teljesítményre az elsődlegesen
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Az adatbázis biztonsági mentése hatással van az elsődleges vagy másodlagos replikák számítási teljesítményére
 
-Nem. A biztonsági mentéseket a tárolási alrendszer kezeli, és a tárolási Pillanatképek kihasználása. Nem érintik a felhasználói munkaterhelést az elsődlegesen.
+Nem. A biztonsági mentéseket a tárolási alrendszer kezeli, és a tárolási Pillanatképek kihasználása. Nem érintik a felhasználói munkaterheléseket.
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Végezhetek geo-visszaállítást egy nagy kapacitású-adatbázissal
 
-Igen.  A Geo-visszaállítás teljes mértékben támogatott.
+Igen.  A Geo-visszaállítás teljes mértékben támogatott. Az időpontra vonatkozó visszaállítástól eltérően a Geo-visszaállítás hosszú ideig futó adatmennyiség-adatműveletet igényelhet.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Beállítható a Geo-replikáció a nagy kapacitású-adatbázissal
 
@@ -296,7 +296,7 @@ Nem. A Azure SQL Database nem támogatja a Base használatát.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>A nagy kapacitású támogatja az R és a Python használatát
 
-Nem. Az R és a Python nem támogatott Azure SQL Databaseban.
+Jelenleg nem.
 
 ### <a name="are-compute-nodes-containerized"></a>Tárolóban lévő számítási csomópontok
 
@@ -306,11 +306,11 @@ Nem. A nagy kapacitású-folyamatok egy [Service Fabric](https://azure.microsoft
 
 ### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>Mennyi írási sebességre lehet leküldeni a nagy kapacitású-adatbázist
 
-A tranzakciós napló átviteli korlátja 100 MB/s értékre van állítva bármilyen nagy kapacitású számítási méretnél. Ennek a díjszabásnak a megvalósítása több tényezőtől függ, többek között a munkaterhelés típusától, az ügyfél konfigurációjától és az elsődleges számítási replika megfelelő számítási kapacitásával, így a napló ezen a sebességgel hozható létre.
+A tranzakciónapló átviteli sebességének felső határa 100 MB/s értékre van állítva bármilyen nagy kapacitású számítási méretnél. Ennek a díjszabásnak a megvalósítása több tényezőtől függ, többek között a munkaterhelés típusától, az ügyfél konfigurációjától és az elsődleges számítási replika megfelelő számítási kapacitásával, így a napló ezen a sebességgel hozható létre.
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>Hány IOPS kapok a legnagyobb számítási feladatokhoz
 
-A IOPS és az IO-késés a munkaterhelés-mintáktól függően változhat. Ha az elérni kívánt adatok gyorsítótárazva vannak a számítási replikán, a helyi SSD-vel megegyező IO-teljesítmény jelenik meg.
+A IOPS és az IO-késés a munkaterhelés-mintáktól függően változhat. Ha az elérni kívánt adatok a számítási replikán vannak gyorsítótárazva, a helyi SSD-vel hasonló IO-teljesítményt fog látni.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>A biztonsági másolatok hatással vannak a teljesítményre
 
@@ -318,7 +318,11 @@ Nem. A számítás a tárolási rétegből van leválasztva. Ez kiküszöböli a
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Hatással van-e az átviteli sebesség a további számítási replikák kiépítésekor
 
-Mivel a tárterület meg van osztva, és nincs közvetlen fizikai replikáció az elsődleges és a másodlagos számítási replikák között, technikailag az elsődleges replika átviteli sebessége nem lesz hatással a másodlagos replikák hozzáadásával. Előfordulhat azonban, hogy a folyamatos, agresszív írásos számítási feladatokat a másodlagos replikák és a lapozófájlok bevonásának engedélyezése lehetővé teszi, és a másodlagos replikák gyenge olvasási teljesítménye elkerülhető.
+Mivel a tárterület meg van osztva, és nincs közvetlen fizikai replikáció az elsődleges és a másodlagos számítási replikák között, a másodlagos replikák hozzáadásával az elsődleges replika átviteli sebessége nem lesz közvetlenül hatással. A másodlagos replikák esetében azonban lehetséges a folyamatos, agresszív írásos munkaterhelések szabályozása az elsődlegesen, hogy a napló a másodlagos replikák és a lapok kiszolgálóin is érvénybe lépjen, így elkerülhető a gyenge olvasási teljesítmény.
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>Nagy kapacitású-adatbázis teljesítménybeli problémáinak diagnosztizálása és hibaelhárítása Hogyan
+
+A legtöbb teljesítménnyel kapcsolatos probléma esetén, különösen a tárolási teljesítményhez nem feltörtek, a gyakori SQL Server diagnosztikai és hibaelhárítási lépések is érvényesek. A nagy kapacitású-specifikus tárolási diagnosztika esetében lásd: [SQL nagy kapacitású Performance hibaelhárítási diagnosztika](sql-database-hyperscale-performance-diagnostics.md).
 
 ## <a name="scalability-questions"></a>Skálázhatósági kérdések
 
@@ -367,7 +371,7 @@ Nem. `ApplicationIntent=ReadOnly`megadásával csak a kibővített replikák olv
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Az olvasási feladat intelligens terheléselosztása a rendszeren történik
 
-Nem. A csak olvasási szándékkal rendelkező kapcsolatok egy tetszőleges olvasási Felskálázási replikára vannak átirányítva.
+Nem. A csak olvasási szándékkal rendelkező új kapcsolatok egy tetszőleges olvasási Felskálázási replikára vannak átirányítva.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>A másodlagos számítási replikák az elsődleges replikától függetlenül méretezhetők és leállíthatók
 
@@ -383,7 +387,7 @@ Nem. A nagy kapacitású-adatbázisok megosztott tárolóval rendelkeznek, ami a
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Mennyi késleltetéssel kell számolni az elsődleges és a másodlagos számítási replikák között
 
-Attól függően, hogy mikor véglegesítik a tranzakciót az elsődlegesen, a napló aktuális generálási arányának megfelelően lehet pillanatnyi vagy alacsony ezredmásodpercben.
+Az adatok késése attól az időponttól kezdve, amikor egy tranzakció véglegesítve lett az elsődlegestől a másodlagosnál látható időpontig, az aktuális log-generálási aránytól függ. A jellemző Adatkésési érték kis ezredmásodpercben van.
 
 ## <a name="next-steps"></a>Következő lépések
 

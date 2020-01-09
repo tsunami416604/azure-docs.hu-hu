@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-példaszkript – Service Fabric-fürt létrehozása | Microsoft Docs
-description: Azure PowerShell-példaszkript – Service Fabric-fürt létrehozása.
+title: Service Fabric-fürt létrehozása a PowerShellben
+description: 'Azure PowerShell parancsfájl – példa: hozzon létre egy X. 509 tanúsítvánnyal védett Service Fabric-fürtöt.'
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ac57778f83a9e7c07360e6ff496186ae78a95dbd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035581"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614774"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric-fürt létrehozása
 
@@ -48,9 +48,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Létrehoz egy új Service Fabric-fürtöt. |
+| [Új – AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Létrehoz egy új Service Fabric-fürtöt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

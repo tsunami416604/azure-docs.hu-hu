@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014712"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615097"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -23,7 +23,9 @@ Ez a cikk az adattárolási és a bejövő Azure Time Series Insights előzetes 
 
 ## <a name="data-ingress"></a>Bejövő adatforgalom
 
-Az Azure Time Series Insights-környezet egy betöltési motort tartalmaz az idősoros adatok gyűjtéséhez, feldolgozásához és tárolásához. A környezet megtervezése során figyelembe kell venni, hogy az összes bejövő adatot feldolgozzák, és hogy magas beáramlási arányt és kis mennyiségű adatfeldolgozási késleltetést kell elérni (az ÁME által az eseményből származó adatok olvasására és feldolgozására tett idő forrás). Time Series Insights előzetes verzióban az adatbeviteli szabályzatok határozzák meg, hogy az adatok honnan származnak, és milyen formátumban kell megadni az adatok formátumát.
+Az Azure Time Series Insights-környezet egy betöltési motort tartalmaz az idősoros adatok gyűjtéséhez, feldolgozásához és tárolásához. A környezet megtervezése során figyelembe kell venni, hogy az összes bejövő adatot feldolgozzák, és hogy magas beáramlási arányt és kis mennyiségű adatfeldolgozási késleltetést kell elérni (az ÁME által az eseményből származó adatok olvasására és feldolgozására tett idő forrás). 
+
+Time Series Insights előzetes verzióban az adatbeviteli szabályzatok határozzák meg, hogy az adatok honnan származnak, és milyen formátumban kell megadni az adatok formátumát.
 
 ### <a name="ingress-policies"></a>Bejövő házirendek
 
@@ -32,12 +34,12 @@ Time Series Insights előzetes verzió a következő eseményforrás-forrásokat
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Time Series Insights az előzetes verzió legfeljebb két eseményforrás használatát támogatja példányok esetében.
-  
-Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs használatával küldött JSON-t.
+Time Series Insights az előzetes verzió legfeljebb két eseményforrás használatát támogatja példányok esetében. Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs használatával küldött JSON-t.
 
 > [!WARNING] 
-> Amikor új eseményforrás csatolását a Time Series Insights előzetes verziójának környezetéhez, a IoT Hub vagy az Event hub eseményeinek számától függően előfordulhat, hogy magas kezdeti betöltési késést tapasztal. Az adatok betöltése esetén ezt a nagy késést kell elvárnia, de ha a felhasználói élmény azt jelzi, hogy az adott esetben a támogatási jegyet a Azure Portalon keresztül küldi el, vegye fel velünk a kapcsolatot.
+> * Előfordulhat, hogy magas kezdeti késleltetést tapasztal, amikor egy eseményforrás az előzetes verziójú környezethez van csatolva. 
+> Az eseményforrás késése az IoT Hub vagy az Event hub aktuális eseményeinek számától függ.
+> * A magas késleltetés az eseményforrás-adat első betöltését követően fog megjelenni. Ha továbbra is nagy késéssel jár, lépjen kapcsolatba velünk egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="ingress-best-practices"></a>Beáramló ajánlott eljárások
 
@@ -49,12 +51,19 @@ Javasoljuk, hogy a következő ajánlott eljárásokat alkalmazza:
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>Átáramló méretezés és korlátozások az előzetes verzióban
 
-Alapértelmezés szerint a Time Series Insights-előnézet legfeljebb 1 megabájt/másodperc (MB/s) méretű kezdeti bejövő forgalom használatát támogatja. Ha szükséges, akár 16 MB/s adatátviteli sebesség is rendelkezésre áll, vegye fel velünk a kapcsolatot, ha erre szükség van, ha beküld egy támogatási jegyet a Azure Portal. Emellett a partíciós korlát 0,5 MB/s. Ennek az a következménye, hogy az ügyfelek IoT Hub kifejezetten a IoT Hub eszköz egy partíciója közötti affinitást használják. Azokban az esetekben, amikor egy átjáró-eszköz a saját eszköz-AZONOSÍTÓjának és kapcsolati karakterláncának használatával továbbít üzeneteket a hubhoz, fennáll a veszélye annak, hogy elérte az 0,5 MB/s korlátot, mivel az üzenetek egyetlen partíción érkeznek meg, még akkor is, ha az esemény adattartalma eltérő TS-t használ Azonosítók. Általánosságban elmondható, hogy a bejövő forgalom aránya a szervezetben lévő eszközök számának, az esemény-kibocsátás gyakoriságának és az esemény méretének a tényezője. A betöltési arány kiszámításakor IoT Hub felhasználóknak a használatban lévő hub-kapcsolatok számát kell használniuk, nem a szervezet összes eszközét. A továbbfejlesztett méretezési támogatás folyamatban van. Ezt a dokumentációt a rendszer frissíti, hogy tükrözze ezeket a módosításokat. 
+Alapértelmezés szerint az előzetes verziójú környezetek legfeljebb **1 megabájt/másodperc (MB/s)** sebességű bejövő forgalmat támogatnak. Ha szükséges, az ügyfelek akár **16 MB/s** sebességig méretezhetik az előzetes verziójú környezeteket.
+A partíciós korlát **0,5 MB/s**. 
 
-> [!WARNING]
-> Az IoT Hub eseményforrásként használó környezetek esetében a használatban lévő hub-eszközök száma alapján számítja ki a betöltési arányt.
+A partíciós korlát a IoT Hubt használó ügyfelekre kihat. Pontosabban, egy IoT Hub eszköz és egy partíció közötti affinitással. Azokban az esetekben, amikor egy átjáró-eszköz a saját eszköz-AZONOSÍTÓját és kapcsolati karakterláncát használva továbbít üzeneteket a hubhoz, fennáll a veszélye annak, hogy elérte az 0,5 MB/s korlátot, mivel az üzenetek egyetlen partíción érkeznek meg, még akkor is, ha az esemény adattartalma eltérő idősorozat-azonosítókat ad meg. 
 
-A következő hivatkozásokra kattintva további információkat találhat az átviteli egységekről és a partícióról:
+Általánosságban elmondható, hogy a bejövő forgalom díjszabása a szervezet eszközeinek száma, az esemény-emisszió gyakorisága, valamint az egyes események mérete:
+
+*  **Az eszközök száma** × **esemény kibocsátásának gyakorisága** × **az egyes események mérete**.
+
+> [!TIP]
+> Az IoT Hub esemény forrásaként használó környezetek esetében a használatban lévő, a használatban lévő vagy a szervezeten belüli összes eszköz helyett a használatban lévő hub-kapcsolatok számával Számítsuk ki a betöltési arányt.
+
+További információ az átviteli egységekről, a korlátozásokról és a partíciók:
 
 * [IoT Hub skála](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [Event hub-skála](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -74,7 +83,7 @@ Time Series Insights az előnézet a hűtőházi tároló adatait az Azure Blob 
 > [!WARNING]
 > Az Azure Blob Storage-fiók tulajdonosaként, ahol a hűtőházi adattárolási adat található, teljes hozzáférése van a fiókban lévő összes adathoz. Ez a hozzáférés írási és törlési engedélyeket is tartalmaz. Ne szerkessze vagy törölje az előnézeti írással Time Series Insights adatot, mert az adatvesztést eredményezhet.
 
-### <a name="data-availability"></a>Az adatelérhetőség
+### <a name="data-availability"></a>Adatok rendelkezésre állása
 
 Az optimális lekérdezési teljesítmény érdekében Time Series Insights előnézeti partíciókat és indexeli az adataikat. A lekérdezés az indexelés után elérhetővé válik. A betöltött adatmennyiség hatással lehet erre a rendelkezésre állásra.
 
@@ -113,7 +122,7 @@ Az adatai három általános módon érhetők el:
 
 ### <a name="data-deletion"></a>Adattörlés
 
-Ne törölje a Time Series Insights előnézeti fájljait. A kapcsolódó adatok csak Time Series Insights előzetes verzióról kezelhetők.
+Ne törölje a Time Series Insights előnézeti fájljait. A kapcsolódó adatok csak Time Series Insights előzetes verzióban kezelhetők.
 
 ## <a name="parquet-file-format-and-folder-structure"></a>A parketta fájlformátuma és a mappa szerkezete
 
@@ -136,7 +145,7 @@ Mindkét esetben az időértékek a blob létrehozási idejére vonatkoznak. A `
 > [!NOTE]
 > * `<YYYY>` térképeket egy négyjegyű év ábrázolásához.
 > * `<MM>` térképeket egy kétjegyű hónap ábrázolásához.
-> * `<YYYYMMDDHHMMSSfff>` térképeket egy időbélyegzős ábrázoláshoz négyjegyű (`YYYY`), kétjegyű hónap (`MM`), kétjegyű nap (`DD`), kétjegyű óra (`HH`), kétjegyű perc (`MM`), kétszámjegyű második (`SS`) és három számjegyből álló ezredmásodperc (`fff`).
+> * `<YYYYMMDDHHMMSSfff>` térképeket egy időbélyegzős ábrázoláshoz négyjegyű (`YYYY`), kétjegyű hónap (`MM`), kétjegyű nap (`DD`), kétjegyű óra (`HH`), kétjegyű perc (`MM`), kétszámjegyű második (`SS`) és háromjegyű ezredmásodperc (`fff`) alapján.
 
 Time Series Insights előnézeti események a következő módon vannak leképezve a parketta-fájl tartalmára:
 

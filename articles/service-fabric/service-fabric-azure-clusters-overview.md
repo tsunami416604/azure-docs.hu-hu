@@ -1,25 +1,18 @@
 ---
-title: Azure Service Fabric-fürtök létrehozása Windows Serveren és Linuxon | Microsoft Docs
+title: Fürtök létrehozása Windows Serveren és Linuxon
 description: A Service Fabric-fürtök Windows Serveren és Linuxon futnak, ami azt jelenti, hogy a Windows Servert vagy Linuxot futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: edb6a84762ce65e65ff33492f3a7bcebbce60777
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390374"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614672"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -31,7 +24,7 @@ Az Azure-beli Service Fabric-fürtök olyan Azure-erőforrások, amelyek más Az
 * Virtuális gépek és virtuális hálózati kártyák
 * virtuálisgép-méretezési csoportok
 * virtuális hálózat
-* terheléselosztó
+* terheléselosztók
 * tárfiókok
 * nyilvános IP-címek
 
@@ -55,9 +48,9 @@ A méretezési csoportok segítségével virtuális gépek gyűjteményét telep
 További információért olvassa el [Service Fabric csomópont-és virtuálisgép-méretezési](service-fabric-cluster-nodetypes.md)csoportok című témakört.
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-A virtuálisgép-példányok egy olyan [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)mögött vannak, amely egy [nyilvános IP-címmel](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) és egy DNS-címkével van társítva.  Amikor kiépít egy fürtöt  *&lt;a&gt;clustername*, a DNS-nevet,  *&lt;a clustername.&lt; &gt; a&gt;location. cloudapp.Azure.com* a terheléselosztó a méretezési csoport elején lévő DNS-címkéje.
+A virtuálisgép-példányok egy olyan [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)mögött vannak, amely egy [nyilvános IP-címmel](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) és egy DNS-címkével van társítva.  Ha *&lt;&gt;clustername* rendelkező fürtöt hoz létre, a DNS-név, *&lt;clustername&gt;.&lt;hely&gt;. cloudapp.Azure.com* a terheléselosztó a méretezési csoport elején lévő DNS-címkéje.
 
-A fürtben lévő virtuális gépek csak [magánhálózati IP-címmel](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)rendelkeznek.  A felügyeleti forgalom és a szolgáltatás forgalmának továbbítása a nyilvánosan elérhető terheléselosztó használatával történik.  A hálózati forgalom a NAT-szabályok (adott csomópontokhoz/példányokhoz csatlakozó ügyfelek) vagy terheléselosztási szabályok (a forgalom a virtuális gépek ciklikus időszeletelése) felé irányítja át ezeket a gépeket.  A terheléselosztó egy DNS-névvel rendelkező nyilvános IP-címmel rendelkezik, amely a (  *&lt;z&gt;)&lt; clustername formátumú. Location&gt;. cloudapp.Azure.com*.  A nyilvános IP-cím az erőforráscsoport egy másik Azure-erőforrása.  Ha egy fürtben több csomópont-típust határoz meg, a rendszer minden egyes csomópont típusú/méretezési csoporthoz létrehoz egy terheléselosztó-t. Vagy beállíthat egyetlen Load balancert több csomópontos típushoz is.  Az elsődleges csomópont típusának DNS-címkéje  *&lt;clustername&lt;. &gt; Location&gt;. cloudapp.Azure.com*, más típusú csomópontok esetén a DNS-címke  *&lt;clustername&lt; &gt;&gt;-&lt;NodeType rendelkezik. Location&gt;. cloudapp.Azure.com*.
+A fürtben lévő virtuális gépek csak [magánhálózati IP-címmel](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)rendelkeznek.  A felügyeleti forgalom és a szolgáltatás forgalmának továbbítása a nyilvánosan elérhető terheléselosztó használatával történik.  A hálózati forgalom a NAT-szabályok (adott csomópontokhoz/példányokhoz csatlakozó ügyfelek) vagy terheléselosztási szabályok (a forgalom a virtuális gépek ciklikus időszeletelése) felé irányítja át ezeket a gépeket.  A terheléselosztó egy DNS-névvel rendelkező nyilvános IP-címmel rendelkezik, amelynek formátuma: *&lt;clustername&gt;.&lt;hely&gt;. cloudapp.Azure.com*.  A nyilvános IP-cím az erőforráscsoport egy másik Azure-erőforrása.  Ha egy fürtben több csomópont-típust határoz meg, a rendszer minden egyes csomópont típusú/méretezési csoporthoz létrehoz egy terheléselosztó-t. Vagy beállíthat egyetlen Load balancert több csomópontos típushoz is.  Az elsődleges csomópont típusa a DNS-címke *&lt;clustername&gt;.&lt;hely&gt;. cloudapp.Azure.com*, más csomópontok típusai rendelkeznek a DNS-címkével *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;hely&gt;. cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Tárfiókok
 Az [Azure Storage-fiók](/azure/storage/common/storage-introduction) és a felügyelt lemezek minden egyes fürtcsomópont-típust támogatnak.
@@ -80,11 +73,11 @@ További információért olvassa el az [ügyfél és a csomópont közötti biz
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 A szerepköralapú Access Control (RBAC) lehetővé teszi a részletes hozzáférés-vezérlések hozzárendelését az Azure-erőforrásokhoz.  Különböző hozzáférési szabályokat rendelhet hozzá az előfizetésekhez, az erőforráscsoportokhöz és az erőforrásokhoz.  A RBAC-szabályok öröklik az erőforrás-hierarchiát, kivéve, ha a felülbírálása alacsonyabb szinten történik.  A HRE bármely felhasználói vagy felhasználói csoportot hozzárendelhet RBAC szabályokkal, így a kijelölt felhasználók és csoportok módosíthatják a fürtöt.  További információért olvassa el az [Azure RBAC áttekintését](/azure/role-based-access-control/overview).
 
-A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: Rendszergazdai szerepkör és felhasználói szerepkör.  
+A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: rendszergazdai szerepkör és felhasználói szerepkör.  
 
 További információért olvassa el [Service Fabric szerepköralapú Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)című témakört.
 
-### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
+### <a name="network-security-groups"></a>Hálózati biztonsági csoportok 
 Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  
 
 További információkért lásd: [biztonsági csoportok](/azure/virtual-network/security-overview)
@@ -108,9 +101,9 @@ A következő operációs rendszereket futtató virtuális gépeken hozhat létr
 | Windows Server 2012 R2 | Az összes verzió |
 | Windows Server 2016 | Az összes verzió |
 | Windows Server 1709 | 6.0 |
-| A Windows Server 1803-as verzióban | 6.4 |
+| Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
-| A Windows Server 2019 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
 További információ: [támogatott fürtözött verziók az Azure-ban](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems)
@@ -120,7 +113,7 @@ További információ: [támogatott fürtözött verziók az Azure-ban](https://
 >
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure-fürtök [biztonságossá](service-fabric-cluster-security.md)tételéről, [méretezéséről](service-fabric-cluster-scaling.md)és [frissítéséről](service-fabric-cluster-upgrade.md) .
 
 További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).

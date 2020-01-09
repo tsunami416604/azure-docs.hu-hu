@@ -1,25 +1,16 @@
 ---
-title: Service Fabric fürterőforrás-kezelő – felügyelet integrációja | Microsoft Docs
+title: Fürterőforrás-kezelő – felügyelet integrációja
 description: A fürterőforrás-kezelő és a Service Fabric felügyelet közötti integrációs pontok áttekintése.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196496"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614621"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>A fürterőforrás-kezelő integrációja Service Fabric fürtszolgáltatással
 A Service Fabric fürterőforrás-kezelő nem hajtja Service Fabric a frissítéseit, de az érintett. A fürt erőforrás-kezelője által a felügyelethez nyújtott első módszer a fürt és a benne lévő szolgáltatások kívánt állapotának nyomon követése. A fürterőforrás-kezelő jelentést küld, amikor nem tudja a fürtöt a kívánt konfigurációba helyezni. Ha például nincs elegendő kapacitás, a fürterőforrás-kezelő kiküldi az állapottal kapcsolatos figyelmeztetéseket, és hibákat jelez a problémával kapcsolatban. A frissítések működéséhez egy másik integrációra van szükség. A fürterőforrás-kezelő némileg megváltoztatja a viselkedését a frissítések során.  
@@ -131,7 +122,7 @@ Speciális helyzetekben módosíthatja a korlátozási prioritásokat. Tegyük f
 
 A különböző megkötések alapértelmezett prioritási értékei a következő konfigurációban vannak megadva:
 
-ClusterManifest.xml
+ClusterManifest. XML
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
