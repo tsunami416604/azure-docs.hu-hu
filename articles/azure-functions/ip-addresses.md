@@ -3,12 +3,12 @@ title: Azure Functions IP-címei
 description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-címeket a Function apps számára, és hogy mi okoz változást.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230331"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612887"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
 
@@ -25,9 +25,9 @@ Az IP-címek a Function apps szolgáltatáshoz vannak társítva, nem az egyes f
 
 Mindegyik Function alkalmazás egyetlen bejövő IP-címmel rendelkezik. Az IP-cím megkeresése:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Navigáljon a Function alkalmazáshoz.
-3. Válassza ki a **platform funkcióit**.
+3. Válassza a **Platformfunkciók** lehetőséget.
 4. Válassza a **Tulajdonságok**lehetőséget, és a bejövő IP-cím megjelenik a **virtuális IP-cím**területen.
 
 ## <a name="find-outbound-ip-addresses"></a>Function alkalmazás kimenő IP-címei
@@ -88,7 +88,7 @@ A bejövő IP-cím a következő **esetekben** változhat:
 - Törölje az utolsó függvény alkalmazást egy erőforráscsoport és egy régió kombinációjában, majd hozza létre újra.
 - Törölje az SSL-kötést, például a [tanúsítvány megújítása](../app-service/configure-ssl-certificate.md#renew-certificate)során.
 
-Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a bejövő IP-cím is változhat, ha nem végeztek olyan műveleteket, mint például a felsoroltak.
+Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a bejövő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
 ## <a name="outbound-ip-address-changes"></a>Kimenő IP-címek változásai
 
@@ -97,7 +97,7 @@ A Function app számára elérhető kimenő IP-címek készlete a következő es
 * Hajtson végre bármilyen műveletet, amely módosíthatja a bejövő IP-címet.
 * Változtassa meg a App Service csomag díjszabási szintjét. Az alkalmazás által használható összes lehetséges kimenő IP-cím listája az összes díjszabási szinten a `possibleOutboundIPAddresses` tulajdonságban található. Lásd: [kimenő IP](#find-outbound-ip-addresses)-címek keresése.
 
-Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a kimenő IP-cím is változhat, ha nem végeztek olyan műveleteket, mint például a felsoroltak.
+Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a kimenő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
 A kimenő IP-címek módosításának szándékos kényszerítése:
 
@@ -115,9 +115,9 @@ Ha statikus, dedikált IP-címekre van szüksége, javasoljuk [app Service körn
 
 Annak megállapítása, hogy a függvény alkalmazás fut-e egy App Service Environmentban:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Navigáljon a Function alkalmazáshoz.
-3. Válassza az **Áttekintés** lapot.
+3. Lépjen az **Áttekintés** fülre.
 4. A App Service csomag szintje a **app Service terv/árképzési**szinten jelenik meg. A App Service Environment díjszabási szintje **elkülönített**.
  
 Másik lehetőségként használhatja a [Cloud Shell](../cloud-shell/quickstart.md):
@@ -128,6 +128,6 @@ az webapp show --resource-group <group_name> --name <app_name> --query sku --out
 
 A App Service Environment `sku` `Isolated`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az IP-változások gyakori oka az alkalmazások méretezésének változásai. [További információ a Function app skálázásról](functions-scale.md).

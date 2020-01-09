@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5be7b66a51113121ed755d8ad9cea3518577f2e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706959"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612870"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -28,7 +28,7 @@ A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja
 
 Ahhoz, hogy egy eszköz átjáróként működjön, képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie a IoT Edge eszköz identitását. További információ arról, hogy IoT Edge eszközök hogyan használják a tanúsítványokat: [Azure IoT Edge tanúsítvány-használati adatok](iot-edge-certs.md).
 
-Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-rendszerkép használatával, amelyet aztán kiépítünk és futtatunk. Úgy döntöttünk, hogy egy Docker-rendszerképet használunk ennek a lépésnek a végrehajtásához, mert jelentősen csökkentette a tanúsítványok a Windows fejlesztői gépen való létrehozásához szükséges lépések számát. A tanúsítványok tároló nélküli létrehozásával kapcsolatos részleteket lásd: [tanúsítványok létrehozása a Windowsban](how-to-create-transparent-gateway.md#generate-certificates-with-windows) . A Linux-alapú [tanúsítványok létrehozása](how-to-create-transparent-gateway.md#generate-certificates-with-linux) olyan utasításokat tartalmaz, amelyeket a Docker-rendszerképpel automatizálunk.
+Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-rendszerkép használatával, amelyet aztán kiépítünk és futtatunk. Úgy döntöttünk, hogy egy Docker-rendszerképet használunk ennek a lépésnek a végrehajtásához, mert jelentősen csökkentette a tanúsítványok a Windows fejlesztői gépen való létrehozásához szükséges lépések számát. A Docker-rendszerképpel kapcsolatos automatizált információk megismeréséhez tekintse meg a [bemutató tanúsítványok létrehozása a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md) című témakört.
 
 1. Jelentkezzen be a fejlesztői virtuális gépre.
 
@@ -204,7 +204,7 @@ A cikk korábbi szakaszaiban a tanúsítványokat a Key Vault, hogy elérhetőv�
 
 1. Sikeres hitelesítés esetén a Linux rendszerű virtuális gép bejelentkezik, és kilistázza az Azure-előfizetéseit.
 
-1. ASet az Azure CLI-parancsokhoz használni kívánt Azure-előfizetést.
+1. Állítsa be az Azure CLI-parancsokhoz használni kívánt Azure-előfizetést.
 
     ```bash
     az account set --subscription <subscriptionId>
