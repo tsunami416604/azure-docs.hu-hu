@@ -1,5 +1,5 @@
 ---
-title: Az Azure App Service-beli izolált bélyegek díjainak csökkentése fenntartott kapacitással
+title: Azure App Service-díjak csökkentése fenntartott kapacitással
 description: Megtudhatja, hogyan csökkentheti az Azure App Service-beli izolált bélyegek díjait fenntartott kapacitással.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 5aafc2288b9e6b7ef217ec386211af7c3739c08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5e2ae705b271f55f8c8888f464c9e73863002c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389128"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Az Azure App Service-beli izolált bélyegek díjainak csökkentése fenntartott kapacitással
 

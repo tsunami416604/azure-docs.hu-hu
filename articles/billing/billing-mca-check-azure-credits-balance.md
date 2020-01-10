@@ -11,50 +11,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: bbd456f82e333ab8e096e5695a55be43c2084c6d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 48f7e0b3d1289d8e9c620f931f9bc85570b90042
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223791"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449532"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
-A Microsoft-ügyfélszerződés számlázási fiókjához tartozó Azure-kreditek egyenlegét az Azure Portalon ellenőrizheti. 
+A Microsoft-ügyfélszerződés számlázási fiókjához tartozó Azure-kreditek egyenlegét az Azure Portalon vagy REST API-k segítségével ellenőrizheti.
 
-A krediteket az általuk fedezett díjak kifizetésére használhatja. Díjat számítunk fel, ha olyan terméket használ, amelyet nem fedeznek a kreditek, vagy ha a használata meghaladja a kreditegyenlegét. További információért lásd [az Azure-kreditek által nem fedezett termékeket](#products-that-arent-covered-by-azure-credits).
-
-A Microsoft-ügyfélszerződéshez tartozó számlázási fiókok esetében a kreditek egy számlázási profilhoz vannak hozzárendelve. Mindegyik számlázási profil saját kreditekkel rendelkezik. Egy számlázási profil Azure-kreditegyenlegének megtekintéséhez tulajdonosi, közreműködői, olvasói, illetve számlakezelői szerepkörrel kell rendelkeznie a számlázási profilra, illetve tulajdonosi, közreműködői vagy olvasói szerepkörrel a számlázási fiókra vonatkozóan. Ha többet szeretne megtudni a szerepkörökről, tekintse meg[A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban](billing-understand-mca-roles.md) című szakaszt.
+A Microsoft-ügyfélszerződéshez tartozó számlázási fiókok esetében a kreditek egy számlázási profilhoz vannak hozzárendelve. Mindegyik számlázási profil saját kreditekkel rendelkezik, amelyeket automatikusan alkalmaz a számlán található díjakra. Egy számlázási profil Azure-kreditegyenlegének megtekintéséhez tulajdonosi, közreműködői, olvasói, illetve számlakezelői szerepkörrel kell rendelkeznie a számlázási profilra, illetve tulajdonosi, közreműködői vagy olvasói szerepkörrel a számlázási fiókra vonatkozóan. Ha többet szeretne megtudni a szerepkörökről, tekintse meg[A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban](billing-understand-mca-roles.md) című szakaszt.
 
 Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-your-credit-balance-in-the-azure-portal"></a>Kreditegyenleg ellenőrzése az Azure Portalon
+## <a name="check-your-credit-balance"></a>A kreditegyenleg ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra]( https://portal.azure.com).
+### <a name="azure-portaltabportal"></a>[Azure Portalra](#tab/portal)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
     ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3.  A bal oldalon válassza az **Azure-kredit** lehetőséget. A hozzáférésétől függően előfordulhat, hogy csak egy számlázási fiók vagy számlázási profil kiválasztása után tudja kiválasztani az **Azure-kredit** lehetőséget.
+3. A számlázási hatókörök lapon válassza ki azt a számlázási fiókot, amelynek kreditegyenlegét nyomon szeretné követni. A számlázási fióknak **Microsoft-ügyfélszerződés** típusú lesz.
 
-4. Az Azure-kredit lap az alábbi információkat jeleníti meg:
+    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
 
-   ![Képernyőkép a számlázási profil kreditegyenlegéről és tranzakcióiról](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+    > [!NOTE]
+    >
+    > Az Azure Portal megjegyzi az utoljára használt számlázási hatókört, és megjeleníti a Költségkezelés + Számlázás lap következő megnyitásakor. A számlázási hatókörök lap nem jelenik meg, ha már korábban meglátogatta a Költségkezelés + Számlázás lapot. Ebben az esetben ellenőrizze, hogy a [megfelelő hatókörben](#check-access-to-a-microsoft-customer-agreement) van-e. Ha nem, [váltson hatókört](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal), és válassza ki a Microsoft-ügyfélszerződéshez kapcsolódó számlázási fiókot.
 
-   | Időtartam               | Meghatározás                           |
+3. A bal oldalon válassza ki a **Fizetési módok**, majd az **Azure-kreditek** elemet.
+
+   ![Képernyőkép a számlázási profil kreditegyenlegéről](./media/billing-mca-check-azure-credits-balance/mca-payment-methods.png)
+
+4. Az Azure-kreditek lap az alábbi szakaszokból áll:
+    
+   #### <a name="balance"></a>Egyenleg
+   
+   Az egyenleg szakasz az Azure-kreditegyenlegének összefoglalását jeleníti meg.
+
+   ![Képernyőkép a számlázási profil kreditegyenlegéről](./media/billing-mca-check-azure-credits-balance/mca-credit-balance.png)
+
+   | Időszak               | Meghatározás                           |
    |--------------------|--------------------------------------------------------|
    | Becsült egyenleg  | A meglévő kreditek becsült mennyisége az összes számlázott és függőben lévő tranzakció figyelembevételével |
    | Aktuális egyenleg    | A kreditek mennyisége a legutóbbi számla óta. Ez nem tartalmazza a függő tranzakciókat |
-   | Tranzakciók       | Az Azure-kredit egyenlegét befolyásoló számlázási tranzakciók |
 
    Ha a becsült egyenleg 0-ra csökken, a teljes használatért fizetnie kell, beleértve a kreditek által fedezett termékeket is.
 
-6. A számlázási profilhoz tartozó kreditek listájának megtekintéséhez válassza a **Kreditek listája** lehetőséget. A kreditek listája az alábbi információkat jeleníti meg:
+   #### <a name="credits-list"></a>Kreditlista
+   
+   A kreditlista szakasz megjeleníti az Azure-kreditek listáját.
 
-   ![Képernyőkép a számlázási profilhoz tartozó kreditek listájáról](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![Képernyőkép a számlázási profilhoz tartozó kreditek listájáról](./media/billing-mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | Időtartam | Meghatározás |
+   | Időszak | Meghatározás |
    |---|---|
    | Forrás | A kredit beszerzésének forrása |
    | Kezdő dátum | A kredit beszerzésének dátuma |
@@ -63,7 +78,28 @@ Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vo
    | Eredeti mennyiség | A kredit eredeti mennyisége |
    | status | A kredit aktuális állapota. Az Állapot lehet aktív, felhasznált, lejárt vagy lejáró |
 
-## <a name="check-your-credit-balance-programmatically"></a>A kreditegyenleg programozott módon történő ellenőrzése
+   #### <a name="transactions"></a>Tranzakciók
+
+   A tranzakciók szakasz az Azure-kreditegyenlegét befolyásoló számlázási tranzakciókat jeleníti meg.
+
+   ![Képernyőkép a számlázási profil kredittranzakcióiról](./media/billing-mca-check-azure-credits-balance/mca-credits-transactions.png)
+    
+   | Időszak | Meghatározás |
+   |---|---|
+   | Tranzakció dátuma | A tranzakció dátuma |
+   | Leírás | A tranzakció leírása |
+   | Mennyiség| A tranzakció összege |
+   | Egyenleg | A tranzakció utáni egyenleg |
+
+    > [!NOTE]
+    >
+    > Ha nem lát Azure-krediteket a fizetési módszerek oldalon, akkor vagy nem rendelkezik kredittel, vagy nem a megfelelő hatókört választotta ki. Válasszon ki kreditekkel rendelkező számlázási fiókot vagy egy számlázási profilját. További információ a hatókörök módosításáról: [A számlázás hatókörének módosítása az Azure Portalon](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+
+5. Ha az Azure-krediteket a számlázási fiók hatókörében tekinti meg, és a számlázási fióknak több számlázási profilja van, az Azure-kreditek lapon megjelenik egy táblázat, amely összegzi az egyes számlázási profilokhoz tartozó Azure-krediteket. Egy számlázási profil részleteinek megtekintéséhez válasszon ki egy számlázási profilt a listából, és válassza ki a Fizetési módok, majd az Azure-kreditek elemet.
+
+    ![Képernyőkép a számlázási fiókhoz tartozó kreditek listájáról](./media/billing-mca-check-azure-credits-balance/mca-account-credit-list.png)
+
+### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
 
 Használhatja az [Azure számlázási](https://docs.microsoft.com/rest/api/billing/) vagy [használati](https://docs.microsoft.com/rest/api/consumption/) API-jait a számlázási fiókhoz tartozó kreditegyenleg programozott módon való lekérdezéséhez.
 
@@ -122,7 +158,7 @@ A számlázási profil `displayName` tulajdonságával azonosíthatja azt a szá
 
 ### <a name="get-azure-credit-balance"></a>Azure-kreditegyenleg lekérdezése 
 
-Hajtsa végre a következő kérést, amelyben cserélje le a `<billingProfileId>` értéket az előző lépésben kimásolt `id` értékével (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+Hajtsa végre a következő kérést, amelyben cserélje le a `<billingProfileId>` értéket az előző lépésben kimásolt `id` értékkel (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
@@ -173,7 +209,7 @@ Az API-válasz visszaadja a számlázási profil becsült és aktuális krediteg
 
 ### <a name="get-list-of-credits"></a>Kreditek lekérdezése
 
-Hajtsa végre a következő kérést, amelyben cserélje le a `<billingProfileId>` értéket az előző lépésben kimásolt `id` értékével (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+Hajtsa végre a következő kérést, amelyben cserélje le a `<billingProfileId>` értéket az előző lépésben kimásolt `id` értékkel (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
@@ -237,7 +273,7 @@ Az API-válasz visszaadja a számlázási profilhoz tartozó Azure-kreditek list
 
 ### <a name="get-transactions-that-affected-credit-balance"></a>A kreditegyenleget befolyásoló tranzakciók lekérdezése
 
-Hajtsa végre a következő kérést, amelyben cserélje le a `<billingProfileId>` értéket az előző lépésben kimásolt `id` értékével (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Meg kell adnia egy **startDate** értéket és egy **endDate** értéket, hogy megkapja a kért időszak tranzakcióit.
+Hajtsa végre a következő kérést, amelyben cserélje le a `<billingProfileId>` értéket az előző lépésben kimásolt `id` értékkel (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Meg kell adnia egy **startDate** értéket és egy **endDate** értéket, hogy megkapja a kért időszak tranzakcióit.
 
 ```json
 GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
@@ -324,6 +360,8 @@ Az API-válasz minden olyan tranzakciót visszaad, amely befolyásolta a száml�
 | `closedBalance`  | A tranzakciót követő egyenleg.   |
 | `eventType`  | A tranzakció típusa.   |
 | `invoiceNumber`  | Annak a számlának a száma, amelyen a tranzakció számlázva lett. Függőben lévő tranzakció esetében üres lesz.   |
+
+---
 
 ## <a name="how-credits-are-used"></a>A kreditek felhasználása
 

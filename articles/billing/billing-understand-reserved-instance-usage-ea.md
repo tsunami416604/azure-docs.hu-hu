@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 06/30/2019
 ms.author: banders
-ms.openlocfilehash: 07f8d897d55868923ecca03797cf18a5346d667c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 20eacdb1ab8f7ebdf118646cd548d7b60b2d2ebc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225795"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644345"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
 
@@ -65,9 +65,9 @@ Az adatokat lekérheti az API használatával, vagy letöltheti azokat az Azure 
 
 Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list). A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](billing-understand-your-usage.md) ismertető cikket. A hívónak az [EA Portalt](https://ea.azure.com) kell használnia, és a Nagyvállalati Szerződés egy vállalati rendszergazdájának kell lennie. A csak olvasásra jogosult vállalati rendszergazdák is megkaphatják az adatokat.
 
-Az adatok nem érhetők el az [Enterprise-ügyfelek számára a jelentéskészítő API-kban található használati adatok alatt](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Vegye figyelembe, hogy az adatok nem érhetők el az [Enterprise-ügyfelek számára elérhető jelentéskészítő API-k – Használati adatok ](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) alatt.
 
-Íme, egy példahívás az API-hoz:
+Itt látható egy példahívás a Usage Details API-hoz:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ A mérőket és szűrőket tartalmazó következő táblázat segítséget nyúj
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Az új használati adatokat tartalmazó CSV-fájl letöltése
 
-Ha Ön a nagyvállalati szerződések rendszergazdája, letöltheti az új használati adatokat tartalmazó CSV-fájlt az Azure Portalról. Ezek az adatok nem érhetők el az [EA Portalról](https://ea.azure.com).
+Ha Ön a nagyvállalati szerződések rendszergazdája, letöltheti az új használati adatokat tartalmazó CSV-fájlt az Azure Portalról. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
 
 Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) menüponthoz az Azure Portalon.
 

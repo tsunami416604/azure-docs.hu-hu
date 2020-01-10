@@ -4,16 +4,16 @@ description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849887"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644562"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -22,8 +22,6 @@ Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti. Mindig érdem
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Túlhasználati számla rendelésszámának módosítása
 
 Az Azure EA Portal automatikusan létrehoz egy alapértelmezett rendelési (PO-) számot, ha az EA-rendszergazda nem állít be egyet a számlázási dátum előtt. Az EA-rendszergazda az automatikus számlaértesítő e-mail beérkezése utáni hét napban frissítheti a rendelési számot.
-
-Adott fiókra vagy előfizetésre vonatkozóan is megadható rendelési szám. A jelentések alapértelmezés szerint a hierarchiában megadott legalacsonyabb szintű rendelési számot használják, ami azt jelenti, hogy ha előfizetéshez kapcsolódó rendelési szám nem lett megadva, a rendszer a fiókhoz kapcsolódó rendelési számot fogja használni, ha pedig a fiókhoz kapcsolódó rendelési szám nem lett megadva, akkor a részleghez kapcsolódó rendelési számot fogja használni.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Az Azure-szolgáltatások rendelési számának frissítése:
 

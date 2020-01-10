@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 2ac2d552aed5b11eaf5a8e4708b2cabc33ba1bb3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d12e3b91dad2b7e7d28c6bd50fd62623e07e580b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449496"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Azure-előfizetések számlázási tulajdonjogának beszerzése más fiókoktól
 
@@ -33,27 +33,45 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. A bal oldalon válassza a **Számlaszakaszok** lehetőséget. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt. A számlázási fiókon vagy profilon belül válassza a **Számlaszakaszok** lehetőséget.
+3. A számlázási hatókörök lapon válassza ki azt a számlázási fiókot, amellyel fizetni kívánja az előfizetés használatát. A számlázási fióknak **Microsoft-ügyfélszerződés** típusú lesz.
+
+    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
+
+    > [!NOTE]
+    >
+    > Az Azure Portal megjegyzi az utoljára használt számlázási hatókört, és megjeleníti a Költségkezelés + Számlázás lap következő megnyitásakor. A számlázási hatókörök lap nem jelenik meg, ha már korábban meglátogatta a Költségkezelés + Számlázás lapot. Ebben az esetben ellenőrizze, hogy a [megfelelő hatókörben](#check-for-access) van-e. Ha nem, [váltson hatókört](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal), és válassza ki a Microsoft-ügyfélszerződéshez kapcsolódó számlázási fiókot.
+
+4. Válassza a **Számlázási profilok** lehetőséget a bal oldalon.
    
-   ![Képernyőkép a számlaszakaszok kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Képernyőkép a számlázási profilok kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Válasszon egy számlaszakaszt a listából. Az előfizetések tulajdonjogának átvétele után ebben a számlaszakaszban lesznek számlázva.
+    > [!Note]
+    >
+    > Ha nem látja a Számlázási profilokat, nem a megfelelő számlázási hatókört használja. Először ki kell választania egy Microsoft-ügyfélszerződéshez tartozó számlázási fiókot, majd a Számlázási profilokat. További információ a hatókörök módosításáról: [A számlázás hatókörének módosítása az Azure Portalon](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget, majd a **Hozzáadás** elemet.
+5. Válasszon ki egy **Számlázási profilt** a listából. Az előfizetések használata a tulajdonjog átvétele után ebben a számlázási profilban lesz számlázva.
+
+6. A bal oldalon válassza a **Számlaszakaszok** lehetőséget. 
+
+    ![Képernyőkép a számlaszakaszok kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Válasszon egy számlaszakaszt a listából. Az előfizetések használata a tulajdonjog átvétele után a számlázási profil számlájának ehhez a szakaszához lesz hozzárendelve.
+
+8. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget, majd az **Új kérelem hozzáadása** elemet.
  
-   ![Képernyőkép az átadási kérelmek kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
+    ![Képernyőkép az átadási kérelmek kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-6. Adja meg annak a felhasználónak az e-mail-címét, akitől a számlázási tulajdonjogot kéri. A felhasználónak egy Microsoft Online Services Program számlázási fiókjának adminisztrátorának vagy egy Nagyvállalati Szerződéssel rendelkező fiók tulajdonosának kell lennie. További információk: [A számlázási fiókok megjelenítése az Azure Portalon](billing-view-all-accounts.md). Válassza az **Átadási kérelem küldése** lehetőséget.
+9. Adja meg annak a felhasználónak az e-mail-címét, akitől a számlázási tulajdonjogot kéri. A felhasználónak egy Microsoft Online Services Program számlázási fiókjának adminisztrátorának vagy egy Nagyvállalati Szerződéssel rendelkező fiók tulajdonosának kell lennie. További információk: [A számlázási fiókok megjelenítése az Azure Portalon](billing-view-all-accounts.md). Válassza az **Átadási kérelem küldése** lehetőséget.
 
-   ![Képernyőkép egy átadási kérelem küldéséről](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
+    ![Képernyőkép egy átadási kérelem küldéséről](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
 
-7. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.
+10. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.
 
-   ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
+    ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
 
-8. Az átadási kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az útmutatást.
+11. Az átadási kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az útmutatást.
 
     ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
 
@@ -63,16 +81,23 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
+3. A számlázási hatókörök lapon válassza ki azt a számlázási fiókot, amelynek az átadási kérelmet küldte.
 
-3. A bal oldalon válassza a **Számlaszakaszok** lehetőséget. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt. A számlázási fiókon vagy profilon belül válassza a **Számlaszakaszok** lehetőséget.
+4. Válassza a **Számlázási profilok** lehetőséget a bal oldalon.
    
-   ![Képernyőkép a számlaszakaszok kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Képernyőkép a számlázási profilok kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Válassza ki a listából a számlaszakaszt, amelyre az elküldött átadási kérelem vonatkozik.
+5. Válassza ki azt a **Számlázási profilt**, amelynek az átadási kérelmet küldte.
 
-5. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget. Az Átadási kérelmek lapon az alábbi információk jelennek meg:
+6. A bal oldalon válassza a **Számlaszakaszok** lehetőséget. 
+
+    ![Képernyőkép a számlaszakaszok kiválasztásáról](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Válassza ki a listából a számlaszakaszt, amelyre az elküldött átadási kérelem vonatkozik.
+
+8. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget. Az Átadási kérelmek lapon az alábbi információk jelennek meg:
 
     ![Képernyőkép az átadási kérelmek listájáról](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
@@ -95,9 +120,9 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
    |Megszakítva|Valaki, akinek az átadási kérelemhez hozzáférése volt, megszakította a kérelmet|
    |Elutasítva|A felhasználó elutasította az átadási kérelmet|
 
-7. Válasszon ki egy átadási kérelmet a részletei megtekintéséhez. Az átadási részleteinek lapján az alábbi információk jelennek meg:
+9. Válasszon ki egy átadási kérelmet a részletei megtekintéséhez. Az átadási részleteinek lapján az alábbi információk jelennek meg:
    
-   ![Képernyőkép az átadott kérelmek listájáról](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
+    ![Képernyőkép az átadott kérelmek listájáról](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
     
    |Oszlop  |Meghatározás|
    |---------|---------|

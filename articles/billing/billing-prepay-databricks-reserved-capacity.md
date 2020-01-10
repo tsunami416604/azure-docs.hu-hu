@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449329"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Azure Databricks-költségek optimalizálása előzetes vásárlással
 
@@ -41,8 +41,8 @@ A vásárlás előtt számítsa ki a különböző számítási feladatokhoz és
 
 Databricks-csomagokat az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) vásárolhat. Lefoglalt kapacitás vásárlásához legalább egy nagyvállalati előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 
-- Az előzetes vásárlás jelenleg csak a Nagyvállalati Szerződéssel rendelkező ügyfelek számára érhető el.
-- Legalább egy nagyvállalati előfizetés tulajdonosi szerepkörével kell rendelkeznie.
+- Legalább egy nagyvállalati szerződés tulajdonosi szerepkörével kell rendelkeznie (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P), vagy Microsoft-ügyfélszerződés szükséges, vagy egy egyéni előfizetés használatalapú fizetéssel (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P).
+- Nagyvállalati előfizetések esetében engedélyezni kell a Fenntartott példányok hozzáadása beállítást az EA Portalon. Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor Önnek az előfizetés EA-rendszergazdájának kell lennie.
 
 **A vásárláshoz:**

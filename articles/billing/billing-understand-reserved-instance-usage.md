@@ -1,5 +1,5 @@
 ---
-title: Használatalapú fizetéses egyéni előfizetés Azure-beli foglalásának használata
+title: Egyéni előfizetés Azure-beli foglalásának használata
 description: Megtanulhatja értelmezni a használati adatokat annak megismeréséhez, hogyan lesz alkalmazva az Azure-foglalás a használatalapú fizetéses egyedi előfizetésre.
 author: bandersmsft
 manager: yashr
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0b578436a118539517d2d515717f2bdd97612d6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 991afd5a91ef5f5586acd624c03babc38b5c1960
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449149"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Használatalapú fizetéses egyéni előfizetés Azure-beli foglalása használatának ismertetése
 
@@ -32,7 +32,7 @@ Az alábbi szakaszokban azt feltételezzük, hogy egy Standard_DS1_v2 Windows re
 
 | Mező | Érték |
 |---| :---: |
-|Foglalásazonosító |8117adfb-1d94-4675-be2b-f3c1bca808b6|
+|ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Mennyiség |1|
 |SKU | Standard_DS1_v2|
 |Régió | eastus |

@@ -1,5 +1,5 @@
 ---
-title: A Microsoft-ügyfélszerződéshez tartozó, az Azure használati adatait és díjait tartalmazó fájlban foglalt kifejezések
+title: A Microsoft-ügyfélszerződéshez tartozó, Azure-használati adatokat és -díjakat tartalmazó fájl
 description: A számlázási profiljához tartozó, az Azure használati adatait és díjait tartalmazó CSV-fájl szakaszainak ismertetése.
 author: bandersmsft
 manager: jureid
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f619d11c3df29a629b8b4da7b440376d6e9aedbd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388890"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>A Microsoft-ügyfélszerződéshez tartozó, az Azure használati adatait és díjait tartalmazó fájlban foglalt kifejezések
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 Az Azure használati adatok és -díjak CSV-fájlja az aktuális számlázási időszakra vonatkozó napi és fogyasztásszintű használati díjakat tartalmazza.
 
@@ -65,7 +65,7 @@ Ha Ön nagyvállalati ügyfél volt, látni fogja, hogy az Azure számlázási p
 
 A következő kifejezések jelennek meg az Azure használati adatait és díjait tartalmazó fájlban.
 
-Időtartam | Leírás
+Időszak | Leírás
 --- | ---
 invoiceId | A számla PDF-fájlján látható egyedi dokumentumazonosító
 previousInvoiceId | Hivatkozás az eredeti számlára, ha ez a számla visszatérítésről lett kiállítva

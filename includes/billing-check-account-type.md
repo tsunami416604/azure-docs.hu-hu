@@ -4,15 +4,13 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: 42589d6843923f84b51488057941a638515cf45d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef2b428eded71de23cae86bca8e29eced78af683
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449244"
 ---
-A számlázási fiók típusának meghatározásához tekintse meg a szerződés típusát
- 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
  
 2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
@@ -23,9 +21,9 @@ A számlázási fiók típusának meghatározásához tekintse meg a szerződés
  
     ![Képernyőkép a Tulajdonságok lapon található Microsoft-ügyfélszerződésről](./media/billing-check-account-type/billing-mca-property.png)
     
-    A Tulajdonságok lapon található **Számlázási fiók típusa** terület határozza meg a fiók típusát. Ez lehet Microsoft Online Services Program, Nagyvállalati Szerződés, Microsoft-ügyfélszerződés vagy Microsoft-partnerszerződés. A számlázási fiókok típusaival kapcsolatos további információkért lásd [a számlázási fiókok az Azure Portalon történő megtekintését](../articles/billing/billing-view-all-accounts.md) ismertető cikket.  
+    A Tulajdonságok lapon található **Típus** terület határozza meg a fiók típusát. Ez lehet Microsoft Online Services Program, Nagyvállalati Szerződés, Microsoft-ügyfélszerződés vagy Microsoft-partnerszerződés. A számlázási fiókok típusaival kapcsolatos további információkért lásd [a számlázási fiókok az Azure Portalon történő megtekintését](../articles/billing/billing-view-all-accounts.md) ismertető cikket.  
  
-4. Ha több számlázási hatókörhöz rendelkezik hozzáféréssel, válassza a bal oldalon található **Számlázási fiók** vagy **Minden számlázási hatókör** elemet. A típust a **Számlázási fiók típusa** oszlopban tekintheti meg.
+4. Ha több számlázási hatókörhöz van hozzáférése, a **Számlázási fiók típusa** oszlopban ellenőrizheti a fiók típusát.
  
     ![Képernyőkép a Számlázási fiókok listája lapon található Microsoft-ügyfélszerződésről](./media/billing-check-account-type/billing-account-type-in-the-list.png)
  

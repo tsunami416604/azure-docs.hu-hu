@@ -4,16 +4,16 @@ description: Ez a cikk azt ismerteti, hogyan használják az Azure nagyvállalat
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841370"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660664"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Ismerkedés az Azure EA Portallal
 
@@ -54,6 +54,7 @@ Az Azure-szolgáltatásoknak a regisztrációban történő felügyeletére nég
 - Részlegszintű rendszergazda
 - Fióktulajdonos
 - Szolgáltatás-rendszergazda
+- Értesítendő fél
 
 A szerepkörök két különböző Microsoft Azure-portálon végzett feladatok végrehajtásához használhatók. Az Azure EA Portal (https://ea.azure.com) a számlázás és a költségek kezelésére szolgál. Az Azure Portal (https://portal.azure.com) az Azure-szolgáltatások kezelésére szolgál.
 
@@ -101,9 +102,15 @@ Mindegyik fiókhoz szükség van egyedi munkahelyi, iskolai vagy Microsoft-fiók
 
 A szolgáltatásadminisztrátor jogosult a szolgáltatások kezelésre az Azure Portalon, és a társadminisztrátor szerepkör felhasználókhoz való hozzárendelésére.
 
+### <a name="notification-contact"></a>Értesítendő fél
+
+Az értesítendő fél a regisztrációval kapcsolatos használati értesítéseket kap.
+
 ## <a name="activate-your-enrollment"></a>Regisztráció aktiválása
 
 A szolgáltatás aktiválásához a kezdeti vállalati rendszergazda megnyitja az Azure EA Portalt ([https://ea.azure.com](https://ea.azure.com)), és bejelentkezik a meghívó e-mail e-mail-címével.
+
+Ha Ön EA-rendszergazdaként lett beállítva, nem kell megvárnia az aktiválási e-mail megérkezését, hogy bejelentkezhessen az Azure EA Portalra. A [https://ea.azure.com](https://ea.azure.com) címen bejelentkezhet a munkahelyi, iskolai vagy Live ID-jához tartozó e-mail-címével és jelszavával.
 
 Ha több regisztrációval rendelkezik, válasszon ki egyet az aktiváláshoz. Alapértelmezés szerint csak az aktív regisztrációk jelennek meg. A regisztrációs előzmények megtekintéséhez törölje az **Aktiválás** beállítás jelölőnégyzetét az Azure EA Portal jobb felső sarkában.
 
