@@ -1,6 +1,7 @@
 ---
-title: SQL Server migrálása Azure SQL Database felügyelt példányra Database Migration Service és PowerShell használatával | Microsoft Docs
-description: Ismerje meg, hogyan telepítheti át a helyszíni SQL Servert az Azure SQL DB felügyelt példányára Azure PowerShell használatával.
+title: 'PowerShell: SQL Server migrálása SQL felügyelt példányra'
+titleSuffix: Azure Database Migration Service
+description: Megtudhatja, hogyan telepítheti át a helyszíni SQL Serverról Azure SQL Database felügyelt példányra Azure PowerShell és a Azure Database Migration Service használatával.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,24 +9,25 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: 426285340a9401aa6c84a7ee07f172eee6791d9e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 01/08/2020
+ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163948"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746629"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>A helyszíni SQL Server migrálása Azure SQL Database felügyelt példányra Azure PowerShell használatával
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migrálása SQL Database felügyelt példányra PowerShell-& Azure Database Migration Service
+
 Ebben a cikkben a **Adventureworks2016** -adatbázist a SQL Server 2005 vagy újabb rendszerű helyszíni példányra telepíti át Azure SQL Database felügyelt példányra Microsoft Azure PowerShell használatával. Az adatbázisokat áttelepítheti egy helyszíni SQL Server-példányról egy Azure SQL Database felügyelt példányra a Microsoft Azure PowerShell `Az.DataMigration` moduljának használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 >
 > * Hozzon létre egy erőforráscsoportot.
-> * Azure Database Migration Service-példány létrehozása.
+> * Hozzon létre egy Azure Database Migration Service-példányt.
 > * Hozzon létre egy áttelepítési projektet Azure Database Migration Service egy példányában.
 > * A migrálás futtatása.
 
@@ -44,14 +46,14 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 * Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 * Egy Azure SQL Database felügyelt példány. Azure SQL Database felügyelt példány létrehozásához kövesse a [Azure SQL Database felügyelt példány létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)című cikkben található részleteket.
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 vagy újabb verzió letöltése és telepítése.
-* Az Azure Resource Manager üzemi modellel létrehozott Azure Virtual Network (VNet), amely az Azure Database Migration Service a helyszíni [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a VPN használatával a helyek közötti kapcsolattal biztosítja a helyszíni forráskiszolgálóról [ ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* A Azure Resource Manager üzemi modellel létrehozott Microsoft Azure Virtual Network, amely a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával biztosítja Azure Database Migration Service a helyek közötti kapcsolatot a helyszíni forráskiszolgálóról.
 * A helyszíni adatbázis és a séma áttelepítésének befejezett értékelése Data Migration Assistant használatával, a [SQL Server áttelepítési felmérés végrehajtása](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)című cikkben leírtak szerint.
 * A `Az.DataMigration` modul (0.7.2 vagy újabb verzió) letöltéséhez és telepítéséhez a PowerShell-galéria az [install-Module PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)használatával.
 * Győződjön meg arról, hogy a forrás SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkeznek a [vezérlési kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedéllyel.
 * Annak biztosítása érdekében, hogy a cél Azure SQL Database felügyelt példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek a VEZÉRLÉSi adatbázis engedéllyel a célként Azure SQL Database felügyelt példány adatbázisain.
 
     > [!IMPORTANT]
-    > Online Migrálás esetén be kell állítania a Azure Active Directory hitelesítő adatait a alread. További információkért tekintse meg az [erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)című cikket.
+    > Online áttelepítéshez már be kell állítania a Azure Active Directory hitelesítő adatait. További információkért tekintse meg az [erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)című cikket.
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be Microsoft Azure-előfizetésbe
 
@@ -77,7 +79,7 @@ Ez a parancsmag a következő szükséges paramétereket várja:
 * *Azure-erőforráscsoport neve*. [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával létrehozhat egy Azure-erőforráscsoportot a korábban megjelenített módon, és paraméterként megadhatja a nevét.
 * *Szolgáltatás neve*. A Azure Database Migration Service kívánt egyedi szolgáltatásnév megfelelő karakterlánc.
 * *Hely*. Megadja a szolgáltatás helyét. Itt adhatja meg az Azure-beli adatközpont helyét, például az USA nyugati régióját vagy Délkelet-Ázsiában.
-* *SKU*. Ez a paraméter a DMS SKU-nevének felel meg. A jelenleg támogatott SKU-nevek a következők: *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
+* *SKU*. Ez a paraméter a DMS SKU-nevének felel meg. A jelenleg támogatott SKU-nevek *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
 * *Virtuális alhálózati azonosító*. Alhálózat létrehozásához a [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) parancsmagot használhatja.
 
 A következő példa egy *MyDMS* nevű szolgáltatást hoz létre az *USA keleti* régiójában, a *MyVNET* nevű virtuális hálózat és egy *MySubnet*nevű alhálózat használatával.

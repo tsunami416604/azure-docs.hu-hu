@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 9aac6662304395b1bce5dfc21770d296f6a4f2ab
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226852"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769098"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions figyelése Azure Monitor naplókkal
 
@@ -25,11 +25,11 @@ A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv
 
 ## <a name="setting-up"></a>Beállítás
 
-A figyelés szakaszban válassza a **diagnosztikai beállítások** elemet, majd kattintson a **Hozzáadás**gombra.
+A **figyelés** szakaszban válassza a **diagnosztikai beállítások** elemet, majd kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
 ![Diagnosztikai beállítás hozzáadása](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-A beállítás lapon válassza a **küldés log Analytics**lehetőséget, majd a **napló** területen válassza a **FunctionAppLogs**lehetőséget, ez a tábla tartalmazza a kívánt naplókat.
+A **diagnosztikai beállítások** lapon válassza a **Küldés log Analyticsba**lehetőséget, majd válassza ki a log Analytics munkaterületet. A **napló** területen válassza a **FunctionAppLogs**lehetőséget, ez a táblázat tartalmazza a kívánt naplókat.
 
 ![Diagnosztikai beállítás hozzáadása](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -37,39 +37,42 @@ A beállítás lapon válassza a **küldés log Analytics**lehetőséget, majd a
 
 Egyéni naplók létrehozásához az adott nyelvtől függően használhatja az adott naplózási utasítást:
 
-**JavaScript**
 
-```javascript
-    context.log('My app logs here.');
-```
-
-**Python**
-
-```python
-    logging.info('My app logs here.')
-```
-
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-    log.LogInformation("My app logs here.");
+log.LogInformation("My app logs here.");
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
-    context.getLogger().info("My app logs here.");
+context.getLogger().info("My app logs here.");
 ```
 
-**PowerShell**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+context.log('My app logs here.');
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-    Write-Host "My app logs here."
+Write-Host "My app logs here."
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+logging.info('My app logs here.')
+```
+
+---
 
 ## <a name="querying-the-logs"></a>Naplók lekérdezése
 
-A generált naplók lekérdezéséhez lépjen a log Analytics-munkaterületre, és kattintson a **naplók**elemre.
+A generált naplók lekérdezéséhez lépjen a Log Analytics munkaterületre, amelyet úgy konfigurált, hogy elküldje a függvény naplóit, és kattintson a **naplók**elemre.
 
 ![Lekérdezési ablak az LA Workspace-ban](media/functions-monitor-log-analytics/querying.png)
 

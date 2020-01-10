@@ -9,23 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f2eabf0167865333131e0f8e5b0c4ccb409e40e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420040"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771240"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
-Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` az RSS-hírcsatorna olvasójának.
 
-* A legújabb kiadásaihoz.
+A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
+
+* A legújabb kiadások
 * Ismert problémák
 * Hibajavítások
-* Elavult funkciók
+* Elavult funkció
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -33,6 +35,40 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [Rest APIt](https://aka.ms/ams-v3-rest-sdk), a CLI-t vagy az egyik támogatott SDK-t.
 
 További információ: [áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="november-2019"></a>2019. november
+
+### <a name="live-transcription-preview"></a>Élő átirat előzetes verzió
+
+Az élő átirat mostantól nyilvános előzetes verzióban érhető el, és az USA 2. nyugati régiójában használható.
+
+Az élő átírást úgy terveztük, hogy az élő eseményekkel együtt használható kiegészítő képességként.  A szolgáltatás az átmenő és a standard vagy a prémium kódolású élő eseményeken is támogatott.  Ha ez a szolgáltatás engedélyezve van, a szolgáltatás a Cognitive Services [beszéd-szöveg](../../cognitive-services/speech-service/speech-to-text.md) funkciója segítségével átmásolja a beérkező szövegben szereplő szóbeli szavakat. Ezt a szöveget ezután elérhetővé kell tenni a videóval és hanggal együtt az MPEG-DASH és a HLS protokollok esetében. A számlázás egy új kiegészítő mérőszámon alapul, amely az élő eseményhez képest további költségeket eredményez, ha a "Running" állapotban van.  Az élő átírással és a számlázással kapcsolatos részletekért lásd: [élő átirat](live-transcription.md)
+
+> [!NOTE]
+> Jelenleg az élő átírás csak előzetes verzióként érhető el az USA 2. nyugati régiójában. Jelenleg csak az angol (en-US) nyelven beszélő szavak átírását támogatja.
+
+### <a name="content-protection"></a>Tartalomvédelem
+
+A korlátozott régiókban megjelent *jogkivonat-újrajátszás megelőzési* funkciója mostantól minden régióban elérhető.
+Media Services ügyfél mostantól korlátozhatja, hogy a rendszer hányszor használhatja ugyanazt a jogkivonatot kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](content-protection-overview.md#token-replay-prevention).
+
+### <a name="new-recommended-live-encoder-partners"></a>Új ajánlott élő kódoló partnerek
+
+A következő új ajánlott partneri kódolók támogatása a RTMP Live streaminghez:
+
+- [Cambria élő 4,3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 és Max Action kamerák](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>A fájl kódolásának továbbfejlesztése
+- Mostantól elérhető egy új tartalom-kompatibilis kódolási beállításkészlet. A szolgáltatás a GOP-ra igazított MP4-készletet a tartalommal kompatibilis kódolással hozza létre. A szolgáltatás bármilyen bemeneti tartalmat figyelembe vesz, és a bemeneti tartalom kezdeti egyszerű elemzését végzi. Ezeket az eredményeket használja a rétegek optimális számának, a megfelelő átviteli sebességnek és a megoldási beállításoknak az adaptív adatfolyamok általi továbbításához. Ez a készlet különösen hatékony az alacsony bonyolultságú és közepes bonyolultságú videókhoz, ahol a kimeneti fájlok alacsonyabb átviteli sebességű, de olyan minőségben, amely továbbra is jó élményt nyújt a nézők számára. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [Open API-specifikációk](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
+- Javult a teljesítmény és a többszálas méretezés a Media Encoder Standardban. Adott körülmények között az ügyfélnek a 5-40%-os VOD-kódolású teljesítmény-növelést kell látnia. Az alacsony komplexitású tartalom több átviteli sebességre való kódolása a legmagasabb teljesítménybeli növekedést fogja látni. 
+- A standard szintű kódolás mostantól egy normál GOP-lépésszám-tartalmat tart fenn, amely az időalapú GOP-beállítás használatakor a többtényezős adatforgalom (VFR) kódolására vonatkozik.  Ez azt jelenti, hogy a kevert képarányos tartalmat, amely a 15-30 fps között változik, például a kimenetre kiszámított normál GOP-távolságokat kell látni az adaptív sávszélességű streaming MP4-fájlokkal. Ez javítja a sávok közötti zökkenőmentes váltás lehetőségét a HLS vagy kötőjel továbbításakor. 
+-  Továbbfejlesztett AV-szinkronizálás a változó Képkockasebesség (VFR) forrás tartalmához
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer, video Analytics
+
+- A VideoAnalyzer-készlettel kinyert kulcsképek mostantól a videó eredeti felbontásában jelennek meg az átméretezés helyett. A nagyfelbontású kulcsképek kinyerése eredeti minőségi rendszerképeket biztosít, és lehetővé teszi a Microsoft Computer Vision által biztosított lemezkép-alapú mesterséges intelligencia-modellek használatát, és Custom Vision szolgáltatásokat, amelyekkel még több információt nyerhet a videóból.
 
 ## <a name="september-2019"></a>2019. szeptember
 
@@ -74,7 +110,7 @@ Részletekért lásd: [a Tamás Áttelepítésének Media Encoder standard](http
 
 A jogkivonatok korlátozásával védett tartalom továbbításakor a végfelhasználóknak meg kell szerezniük egy jogkivonatot, amelyet a rendszer a kézbesítési kérelem részeként küld. A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. További információ: jogkivonat- [újrajátszás megakadályozása](content-protection-overview.md#token-replay-prevention).
 
-Ez a szolgáltatás jelenleg az USA középső és nyugati középső régiójában érhető el.
+Júliustól az előzetes verzió funkció csak az USA középső és az USA nyugati középső régiójában érhető el.
 
 ## <a name="june-2019"></a>2019. június
 
@@ -262,7 +298,7 @@ A CMAF és a "CBCS" titkosítási támogatása az Apple HLS (iOS 11 +) és az MP
 
 A Video Indexer GA kiadása augusztusban jelent meg. A jelenleg támogatott funkciókkal kapcsolatos új információk: [Mi az video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Módosítások tervek
+### <a name="plans-for-changes"></a>A változtatások tervei
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
@@ -295,7 +331,7 @@ A .NET SDK-ban a következő funkciók találhatók:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v2 kibocsátási megjegyzései](../previous/media-services-release-notes.md)

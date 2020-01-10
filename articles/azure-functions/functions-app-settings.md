@@ -3,12 +3,12 @@ title: Alkalmazásbeállítások referenciája Azure Functions
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4de6f093e43bbb8b3e258c3dd2a71f728beb7287
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977267"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769540"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Alkalmazásbeállítások referenciája Azure Functions
 
@@ -43,7 +43,7 @@ Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók táro
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true` azt jelenti, hogy letiltja a Function app gyökerének URL-címéhez tartozó alapértelmezett kezdőlapot. Az alapértelmezett érték a `false`.
+`true` azt jelenti, hogy letiltja a Function app gyökerének URL-címéhez tartozó alapértelmezett kezdőlapot. Az alapértelmezett szint a `false`.
 
 |Jelmagyarázat|Mintaérték|
 |---|------------|
@@ -55,7 +55,7 @@ Ha ez az Alkalmazásbeállítások ki van hagyva vagy a `false`értékre van ál
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false` a hibakeresési mód használatát jelenti. Az alapértelmezett érték a `true`.
+`true` azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false` a hibakeresési mód használatát jelenti. Az alapértelmezett szint a `true`.
 
 |Jelmagyarázat|Mintaérték|
 |---|------------|
@@ -108,6 +108,19 @@ A Function alkalmazásban használni kívánt functions futtatókörnyezet verzi
 |Jelmagyarázat|Mintaérték|
 |---|------------|
 |FÜGGVÉNYEK\_BŐVÍTMÉNY\_verziója|~ 2|
+
+## <a name="functions_v2_compatibility_mode"></a>FÜGGVÉNYEK\_v2\_kompatibilitási\_mód
+
+Ez a beállítás lehetővé teszi, hogy a Function alkalmazás 2. x kompatibilis módban fusson a 3. x verziójú futtatókörnyezetben. Ezt a beállítást csak akkor használja, ha problémák merülnek [fel a Function alkalmazás 2. x és 3. x verzióra való frissítésekor](functions-versions.md#migrating-from-2x-to-3x). 
+
+>[!IMPORTANT]
+> Ez a beállítás csak rövid távú megkerülő megoldás, ha úgy frissíti az alkalmazást, hogy megfelelően fusson a 3. x verzióban. Ez a beállítás akkor támogatott, ha a [2. x futtatókörnyezet támogatott](functions-versions.md). Ha olyan problémák merülnek fel, amelyek megakadályozzák, hogy az alkalmazás a 3. x verzión fusson anélkül, hogy ezt a beállítást használja, [jelentse a problémát](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
+
+Megköveteli, hogy a [függvények\_bővítmény\_verziójának](functions-app-settings.md#functions_extension_version) `~3`re legyen állítva.
+
+|Jelmagyarázat|Mintaérték|
+|---|------------|
+|FÜGGVÉNYEK\_v2\_kompatibilitási\_mód|igaz|
 
 ## <a name="functions_worker_process_count"></a>FUNCTIONs\_WORKer\_folyamat\_DARABSZÁM
 
@@ -179,7 +192,7 @@ Alapértelmezés szerint a függvények proxyi olyan parancsikont használnak, a
 |Jelmagyarázat|Value (Díj)|Leírás|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|igaz|A helyi függvényalkalmazás függvényére mutató háttér-URL-címmel rendelkező hívások a továbbiakban nem lesznek közvetlenül a függvénynek elküldve, és helyette a függvényalkalmazás a HTTP-kezelőfelületre lesznek irányítva.|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|hamis|Ez az alapértelmezett érték. A helyi függvényalkalmazás függvényére mutató háttérbeli URL-címmel rendelkező hívások közvetlenül erre a függvényre lesznek továbbítva|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Ez az alapértelmezett érték. A helyi függvényalkalmazás függvényére mutató háttérbeli URL-címmel rendelkező hívások közvetlenül erre a függvényre lesznek továbbítva|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
@@ -189,7 +202,7 @@ Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbe
 |Jelmagyarázat|Value (Díj)|Leírás|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|igaz|A kódolt perjelekkel ellátott útválasztási paraméterek dekódolva lesznek. `example.com/api%2ftest` lesz `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|hamis|Ez az alapértelmezett viselkedés. A rendszer az összes útvonal paraméterét változatlanul adja át|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Ez az alapértelmezett viselkedés. A rendszer az összes útvonal paraméterét változatlanul adja át|
 
 ### <a name="example"></a>Példa
 
@@ -211,7 +224,7 @@ Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbe
 |URL-dekódolás|Input (Bemenet)|Kimenet|
 |-|-|-|
 |igaz|myfunction.com/test%2fapi|example.com/test/api
-|hamis|myfunction.com/test%2fapi|example.com/test%2fapi|
+|false|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Következő lépések

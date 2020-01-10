@@ -11,18 +11,18 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32e7251c7c47e7ccc03e313b939c917557a31417
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685625"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772210"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Üzleti intelligencia-partnerek SQL Data Warehouse
 A teljes körű adattárház-megoldás létrehozásához válassza az iparág vezető eszközeinek széles választékát.  Ez a cikk a Azure SQL Data Warehouset támogató hivatalos üzleti intelligenciával (BI) kapcsolatos megoldásokkal foglalkozó Microsoft-partneri vállalatokat emeli ki.
 
 ## <a name="our-business-intelligence-partners"></a>Üzleti intelligencia partnereink
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partnerek | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Birst][1] |**Birst**<br>A Birst a teljes szervezetet összekapcsolja egy közös, közös analitikai hálóra épülő, összeszőtt virtualizált BI-példányok hálózatán.|[Termék lap][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory-adathalmazok][2] |**ClearStory-adatszolgáltatások (folyamatos üzleti elemzések)**<br>A ClearStory adatai lehetővé teszik a gyors ciklusú elemzést a SQL Data Warehouseban tárolt különböző adategységek között. A ClearStory integrált Spark-alapú platform-és elemzési alkalmazási sebessége adatelérést és a különböző adathalmazok harmonizálását is tartalmazza. Lehetővé teszik a gyors, együttműködésen alapuló feltárást, amely képessé teszi az üzleti felhasználókat arra, hogy az elemzések megszerzéséhez legyenek önmagukban. |[Termék lap][clearstory_website]<br> |
@@ -41,7 +41,7 @@ A teljes körű adattárház-megoldás létrehozásához válassza az iparág ve
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni más partnereinkről, tekintse meg az [adatintegrációs partnerek][di_partners] és a [adatkezelés partnerek][dm_partners]témakört.
 
 <!--Image references-->
@@ -87,7 +87,7 @@ Ha többet szeretne megtudni más partnereinkről, tekintse meg az [adatintegrá
 
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
-[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+[looker_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20
 [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
 [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
 [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 

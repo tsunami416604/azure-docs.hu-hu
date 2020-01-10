@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894079"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750937"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz
 
 > [!NOTE]
 > Az erőforrás-naplók korábban diagnosztikai naplóként ismertek.
 
-[Azure monitor az erőforrás-naplókat](../../azure-monitor/platform/resource-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják ezeknek a szolgáltatásoknak vagy erőforrásoknak a működését. A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez.
+[Azure monitor az erőforrás-naplókat](../../azure-monitor/platform/platform-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják ezeknek a szolgáltatásoknak vagy erőforrásoknak a működését. A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez.
 
 Az erőforrástípus kombinációja (a `resourceId` tulajdonságban érhető el) és a `category` egyedileg azonosít egy sémát. Ez a cikk az erőforrás-naplók legfelső szintű sémáját, valamint az egyes szolgáltatások sémák mutató hivatkozásokat ismerteti.
 
@@ -29,7 +29,7 @@ Az erőforrástípus kombinációja (a `resourceId` tulajdonságban érhető el)
 |---|---|---|
 | time | Szükséges | Az esemény időbélyegzője (UTC). |
 | resourceId | Szükséges | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
-| TenantId | A bérlői naplókhoz szükséges | Annak a Active Directory bérlőnek a bérlői azonosítója, amelyhez ez az esemény hozzá van kötve. Ez a tulajdonság csak a bérlői szintű naplók esetében használatos, nem jelenik meg az erőforrás-szintű naplókban. |
+| tenantId | A bérlői naplókhoz szükséges | Annak a Active Directory bérlőnek a bérlői azonosítója, amelyhez ez az esemény hozzá van kötve. Ez a tulajdonság csak a bérlői szintű naplók esetében használatos, nem jelenik meg az erőforrás-szintű naplókban. |
 | operationName | Szükséges | Az esemény által jelzett művelet neve. Ha az esemény egy RBAC műveletet jelöl, akkor ez a RBAC művelet neve (például Microsoft. Storage/storageAccounts/blobServices/Blobok/olvasás). Általában Resource Manager-művelet formájában modellezve, még akkor is, ha nem ténylegesen dokumentált erőforrás-kezelői műveletek (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Választható | A művelethez társított API-verzió, ha a operationName API-val (például:) lett elvégezve. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
 | category | Szükséges | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. A szokásos naplózási kategóriák "audit" "működési" "végrehajtás" és "kérelem". |
@@ -74,7 +74,7 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 | Terheléselosztó |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Hálózati biztonsági csoportok |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS Protection | [Azure DDoS Protection standard kezelése](../../virtual-network/manage-ddos-protection.md) |
+| Védelem DDOS-támadások ellen | [Azure DDoS Protection standard kezelése](../../virtual-network/manage-ddos-protection.md) |
 | Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services (Helyreállítási szolgáltatások) | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Search |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
@@ -268,7 +268,7 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 |Microsoft. SQL/kiszolgálók/adatbázisok|Hibák|Hibák|
 |Microsoft. SQL/kiszolgálók/adatbázisok|DatabaseWaitStatistics|Adatbázis várakozási statisztikája|
 |Microsoft. SQL/kiszolgálók/adatbázisok|Időtúllépések|Időtúllépések|
-|Microsoft. SQL/kiszolgálók/adatbázisok|blokkok|blokkok|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Blokkok|Blokkok|
 |Microsoft. SQL/kiszolgálók/adatbázisok|Holtpontok|Holtpontok|
 |Microsoft. SQL/kiszolgálók/adatbázisok|Naplózás|Naplófájlok|
 |Microsoft. SQL/kiszolgálók/adatbázisok|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
@@ -313,7 +313,7 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ az erőforrás-naplókról](../../azure-monitor/platform/resource-logs-overview.md)
+* [További információ az erőforrás-naplókról](../../azure-monitor/platform/platform-logs-overview.md)
 * [Stream erőforrás-erőforrás naplófájljai **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Az erőforrás-napló diagnosztikai beállításainak módosítása a Azure Monitor használatával REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Naplók elemzése az Azure Storage-ból Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

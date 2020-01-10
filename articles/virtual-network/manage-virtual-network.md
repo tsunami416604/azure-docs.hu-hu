@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084700"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750592"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -25,7 +25,7 @@ ms.locfileid: "74084700"
 
 Megtudhatja, hogyan hozhat létre és törölhet virtuális hálózatokat, és hogyan módosíthatja a beállításokat, például a DNS-kiszolgálókat és az IP-címeket a meglévő virtuális hálózatok esetében. Ha még nem ismeri a virtuális hálózatokat, a [virtuális hálózatok áttekintésében](virtual-networks-overview.md) és az [oktatóanyag](quick-create-portal.md)elvégzésével többet is megtudhat. Egy virtuális hálózat alhálózatokat tartalmaz. Az alhálózatok létrehozásának, módosításának és törlésének megismeréséhez lásd: [alhálózatok kezelése](virtual-network-manage-subnet.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a következő feladatokat:
 
@@ -62,7 +62,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
 
      - **Alhálózati címtartomány**: a tartománynak a virtuális hálózathoz megadott címtartomány közé kell esnie. A legkisebb megadható tartomány a/29, amely nyolc IP-címet biztosít az alhálózathoz. Az Azure fenntartja az egyes alhálózatok első és utolsó címeit a protokollok megfelelőségének megadásához. Három további cím van fenntartva az Azure-szolgáltatások használatára. Ennek eredményeképpen a/29 alhálózati címtartomány-tartománnyal rendelkező virtuális hálózatok csak három használható IP-címmel rendelkeznek. Ha virtuális hálózatot szeretne csatlakozni egy VPN-átjáróhoz, létre kell hoznia egy átjáró-alhálózatot. További információ [az átjáró-alhálózatokkal kapcsolatos adott címtartomány-megfontolásokról](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). A címtartomány az alhálózat létrehozása után módosítható adott körülmények között. Az alhálózati címtartomány módosításáról az [alhálózatok kezelése](virtual-network-manage-subnet.md)című témakörben olvashat bővebben.
      - **Előfizetés**: válasszon ki egy [előfizetést](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Nem használhatja ugyanazt a virtuális hálózatot egynél több Azure-előfizetésben. Egy virtuális hálózatot azonban egyetlen előfizetésben is összekapcsolhat [a virtuális hálózatok](virtual-network-peering-overview.md)más előfizetésekben lévő virtuális hálózatokkal. A virtuális hálózathoz csatlakoztatott összes Azure-erőforrásnak ugyanabban az előfizetésben kell lennie, mint a virtuális hálózatnak.
-     - **Erőforráscsoport**: válasszon ki egy meglévő [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) , vagy hozzon létre egy újat. A virtuális hálózathoz csatlakozó Azure-erőforrások a virtuális hálózattal vagy más erőforráscsoport-csoporttal azonos erőforráscsoporthoz is lehetnek.
+     - **Erőforráscsoport**: válasszon ki egy meglévő [erőforráscsoportot](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) , vagy hozzon létre egy újat. A virtuális hálózathoz csatlakozó Azure-erőforrások a virtuális hálózattal vagy más erőforráscsoport-csoporttal azonos erőforráscsoporthoz is lehetnek.
      - **Hely**: válasszon ki egy Azure- [helyet](https://azure.microsoft.com/regions/), más néven régiót. Egy virtuális hálózat csak egy Azure-helyen lehet. A virtuális hálózatokat azonban egy másik helyen lévő virtuális hálózathoz is kapcsolódhatja egy VPN-átjáró használatával. A virtuális hálózathoz csatlakoztatott összes Azure-erőforrásnak a virtuális hálózattal megegyező helyen kell lennie.
 
 **Parancsok**
@@ -88,11 +88,11 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
    - **Tulajdonságok**: megjeleníti a virtuális hálózat beállításait, beleértve a virtuális hálózat erőforrás-azonosítóját és az Azure-előfizetést is.
    - **Ábra**: a diagram a virtuális hálózathoz csatlakozó összes eszköz vizuális megjelenítését biztosítja. A diagram néhány kulcsfontosságú információt tartalmaz az eszközökről. Ha ebben a nézetben szeretne felügyelni egy eszközt, a diagramon válassza ki az eszközt.
    - **Általános Azure-beállítások**: az általános Azure-beállításokkal kapcsolatos további információkért tekintse meg a következő információkat:
-     - [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
+     - [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
      - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
      - [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Zárak](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Automation-parancsfájl](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+     - [Automation-parancsfájl](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Parancsok**
 
@@ -103,9 +103,9 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
 
 Hozzáadhat és eltávolíthat egy virtuális hálózathoz tartozó címtartományt. Meg kell adni egy címtartományt a CIDR-jelölésben, és nem lehet átfedésben az azonos virtuális hálózaton belüli más címtartományok. Az Ön által meghatározott címtartományok lehetnek nyilvánosak vagy magánjellegűek (RFC 1918). Függetlenül attól, hogy a címtartományt nyilvános vagy magánjellegűként határozza meg, a címtartomány csak a virtuális hálózatról, az összekapcsolt virtuális hálózatokról és a virtuális hálózathoz csatlakoztatott helyszíni hálózatokról érhető el. 
 
-Ha nem rendelkezik hozzá társított alhálózattal, csökkentheti a virtuális hálózatok címtartomány-tartományát. Ellenkező esetben csak a címtartomány kiterjesztését lehet kiterjeszteni, például egy/16 és/8 közötti váltást. Kezdődhet egy kis címtartomány, majd később kiterjesztheti, vagy további tartományokat adhat hozzá.
+A virtuális hálózat címtartomány csökkenthető, ha továbbra is a társított alhálózatok tartományait tartalmazza. Emellett kiterjesztheti a címtartományt is, például a/16 és a/8 változót. 
 
-<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+<!-- the above statement has been edited to reflect the most recent comments on the reopened issue: https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
 
 A következő címtartományok nem vehetők fel:
 
@@ -137,9 +137,9 @@ A virtuális hálózathoz csatlakozó virtuális gépek a virtuális hálózatho
 1. A portál felső részén található Keresés mezőben adja meg a *virtuális hálózatok* kifejezést a keresőmezőbe. Ha a **virtuális hálózatok** megjelennek a keresési eredmények között, válassza ki.
 2. A virtuális hálózatok listájából válassza ki azt a virtuális hálózatot, amelyre vonatkozóan módosítani kívánja a DNS-kiszolgálókat.
 3. Válassza a **DNS-kiszolgálók**lehetőséget a **Beállítások**területen.
-4. Válasszon egyet a következő lehetőségek közül:
+4. Válasszon egyet az alábbi lehetőségek közül:
    - **Alapértelmezett (Azure által biztosított)** : az összes erőforrás neve és magánhálózati IP-címe automatikusan regisztrálva lesz a Azure DNS-kiszolgálókon. A neveket az ugyanahhoz a virtuális hálózathoz csatlakozó erőforrások között lehet feloldani. Ezzel a beállítással nem oldhatók fel a nevek a virtuális hálózatok között. A nevek virtuális hálózatokon keresztüli feloldásához egyéni DNS-kiszolgálót kell használnia.
-   - **Egyéni**: hozzáadhat egy vagy több kiszolgálót, akár egy virtuális hálózat Azure-ra vonatkozó korlátját is. További információ a DNS-kiszolgáló korlátairól: [Azure-korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). A következő lehetőségek közül választhat:
+   - **Egyéni**: hozzáadhat egy vagy több kiszolgálót, akár egy virtuális hálózat Azure-ra vonatkozó korlátját is. További információ a DNS-kiszolgáló korlátairól: [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). A következő lehetőségek közül választhat:
    - **Adja**meg a következő címeket: hozzáadja a kiszolgálót a virtuális hálózati DNS-kiszolgálók listájához. Ez a beállítás a DNS-kiszolgálót is regisztrálja az Azure-ban. Ha már regisztrált egy DNS-kiszolgálót az Azure-ban, akkor kiválaszthatja a listában a DNS-kiszolgálót.
    - Válasszon ki **egy címeket**: az eltávolítani kívánt kiszolgáló mellett válassza a **...** , majd az **Eltávolítás**lehetőséget. A kiszolgáló törlésével a kiszolgáló csak a virtuális hálózatok listájáról távolítható el. A DNS-kiszolgáló továbbra is regisztrálva lesz az Azure-ban a többi virtuális hálózat használatára.
    - **DNS-kiszolgáló címeinek átrendezése**: fontos ellenőrizni, hogy a DNS-kiszolgálókat a környezetének megfelelő sorrendben sorolja-e fel. A DNS-kiszolgálók listáját a rendszer a megadott sorrendben használja. Nem működnek ciklikus multiplexelés beállításként. Ha a lista első DNS-kiszolgálója elérhető, akkor az ügyfél ezt a DNS-kiszolgálót használja, függetlenül attól, hogy a DNS-kiszolgáló megfelelően működik-e. Távolítsa el az összes felsorolt DNS-kiszolgálót, majd adja őket vissza a kívánt sorrendben.
@@ -171,11 +171,11 @@ A virtuális hálózat csak akkor törölhető, ha nincs csatlakoztatva erőforr
 
 Ha virtuális hálózatokon szeretné elvégezni a feladatokat, a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                  |   Name (Név)                                |
+| Műveletek                                  |   Név                                |
 |---------------------------------------- |   --------------------------------    |
-|Microsoft.Network/virtualNetworks/read   |   Virtuális hálózat beolvasása              |
-|Microsoft.Network/virtualNetworks/write  |   Virtuális hálózat létrehozása vagy frissítése  |
-|Microsoft.Network/virtualNetworks/delete |   Virtuális hálózat törlése            |
+|Microsoft. Network/virtualNetworks/READ   |   Virtuális hálózat beolvasása              |
+|Microsoft. Network/virtualNetworks/Write  |   Virtuális hálózat létrehozása vagy frissítése  |
+|Microsoft. Network/virtualNetworks/delete |   Virtuális hálózat törlése            |
 
 ## <a name="next-steps"></a>Következő lépések
 

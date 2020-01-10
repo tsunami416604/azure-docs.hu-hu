@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973968"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763164"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -54,15 +54,15 @@ Az indexelő nem tudta olvasni a dokumentumot az adatforrásból. Ez az alábbia
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>Hiba: nem sikerült kibontani a dokumentum tartalmát
-A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat a dokumentumból (például egy PDF-fájlt). Ez az alábbiak miatt fordulhat elő:
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Hiba: nem sikerült kinyerni a dokumentum tartalmát vagy metaadatait
+A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat vagy a metaadatokat a dokumentumból (például egy PDF-fájlt). Ez az alábbiak miatt fordulhat elő:
 
 | Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
 | a blob mérete meghaladja a méretkorlátot | A dokumentum `'150441598'` bájt, ami meghaladja a jelenlegi szolgáltatási szinten a dokumentumok kinyeréséhez szükséges maximális méretet `'134217728'` bájtban. | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | a blob nem támogatott tartalomtípust tartalmaz | A dokumentum tartalma nem támogatott `'image/png'` | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | a blob titkosított | A dokumentumot nem lehetett feldolgozni – titkosított vagy jelszóval védett. | A blobot a blob- [beállításokkal](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)lehet kihagyni. |
-| átmeneti problémák | Hiba történt a blob feldolgozása közben: a kérést megszakították: a kérést megszakították. | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
+| átmeneti problémák | "Hiba történt a blob feldolgozásakor: a kérés megszakadt: a kérést megszakították." "A dokumentum időkorlátja lejárt a feldolgozás során." | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
 
 <a name="could-not-parse-document"/>
 
@@ -144,7 +144,7 @@ A dokumentum olvasása és feldolgozása megtörtént, de az indexelő nem tudja
 | --- | --- | --- |
 | Egy mező túl nagy kifejezést tartalmaz | A dokumentum egy kifejezése nagyobb az [32 KB-os korlátnál](search-limits-quotas-capacity.md#api-request-limits) | Ezt a korlátozást elkerülheti, ha úgy látja, hogy a mező nem szűrhető, sokoldalú vagy rendezhető.
 | A dokumentum túl nagy az indexeléshez | A dokumentum nagyobb, mint az [API-kérelmek maximális mérete](search-limits-quotas-capacity.md#api-request-limits) | [Nagyméretű adathalmazok indexelése](search-howto-large-index.md)
-| A dokumentum túl sok objektumot tartalmaz a gyűjteményben | A dokumentum egy gyűjteménye meghaladja a [maximális elemeket az összes összetett gyűjtemény korlátján belül](search-limits-quotas-capacity.md#index-limits) | Javasoljuk, hogy csökkentse a dokumentum összetett gyűjteményének méretét a korlát alá, és elkerülje a nagy tárterület-kihasználtságot.
+| A dokumentum túl sok objektumot tartalmaz a gyűjteményben | A dokumentum egy gyűjteménye meghaladja a [maximális elemeket az összes összetett gyűjteménynél](search-limits-quotas-capacity.md#index-limits) , amely korlátozza a (z) `'1000052'` kulccsal rendelkező dokumentum `'4303'` objektumait gyűjteményekben (JSON-tömbökben). A legtöbb `'3000'` objektum a teljes dokumentumban lévő gyűjteményekben szerepelhet. Távolítsa el az objektumokat a gyűjteményből, majd próbálja meg újból indexelni a dokumentumot. " | Javasoljuk, hogy csökkentse a dokumentum összetett gyűjteményének méretét a korlát alá, és elkerülje a nagy tárterület-kihasználtságot.
 | Hiba történt a célként megadott indexhez való kapcsolódáskor (amely az újrapróbálkozások után is fennmarad), mert a szolgáltatás más terhelés alá esik, például lekérdezés vagy indexelés. | Nem sikerült kapcsolatot létesíteni az index frissítésével. A Search szolgáltatás nagy terhelés alatt áll. | [A keresési szolgáltatás vertikális felskálázása](search-capacity-planning.md)
 | A keresési szolgáltatás javítás alatt áll a szolgáltatás frissítésére, vagy a topológia újrakonfigurálásának közepén található. | Nem sikerült kapcsolatot létesíteni az index frissítésével. A keresési szolgáltatás jelenleg nem érhető el, a keresési szolgáltatás pedig átmeneti állapotba kerül. | Állítsa be a szolgáltatást legalább 3 replikával az 99,9%-os rendelkezésre álláshoz az [SLA dokumentációjában](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
 | Hiba történt az alapul szolgáló számítási/hálózati erőforrásban (ritka) | Nem sikerült kapcsolatot létesíteni az index frissítésével. Ismeretlen hiba történt. | Az indexelő úgy konfigurálható, hogy a sikertelen állapotból való kiválasztáshoz [ütemezett ütemtervet futtasson](search-howto-schedule-indexers.md) .
@@ -158,7 +158,7 @@ A dokumentumot beolvasták és feldolgozták, de az index mezőinek és az index
 
 | Ok | Részletek/példa
 | --- | ---
-| Az indexelő által kinyert mező (k) adattípusa nem kompatibilis a megfelelő cél index mező adatmodelljével. | A _"value" kulccsal_rendelkező dokumentumban lévő "adatmező"_érvénytelen "EDM_. String" típusú. A várt típus: "Collection (EDM. String)". |
+| Az indexelő által kinyert mező (k) adattípusa nem kompatibilis a megfelelő cél index mező adatmodelljével. | A (z) "888" kulccsal rendelkező dokumentumban levő "adatmező"_érvénytelen "EDM_. String" értékű. A várt típus: "Collection (EDM. String)". |
 | Nem sikerült kibontani a JSON-entitásokat egy karakterlánc-értékből. | Nem sikerült elemezni a (z) ""_típusú ""_ EDM. String "" érték "MEZŐjét JSON-objektumként. Hiba: "az érték elemzése után a rendszer váratlan karaktert észlelt:" ". Elérési_út_útvonala, 1. sor, pozíció: 3162. |
 | Nem sikerült kibontani a JSON-entitások gyűjteményét egy karakterlánc-értékből.  | Nem sikerült értelmezni a (z) ""_típusú ""_ EDM. String "" érték "MEZŐjét JSON-tömbként. Hiba: "az érték elemzése után a rendszer váratlan karaktert észlelt:" ". Elérési út: "[0]", 1. sor, 27. pozíció |
 | Ismeretlen típus lett felderítve a forrásbizonylat dokumentumban. | Ismeretlen típus (_ismeretlen_) nem indexelhető |
@@ -174,10 +174,18 @@ Ez a hiba akkor fordul elő, ha az indexelő nem tudja befejezni egyetlen dokume
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>Figyelmeztetés: nem hajtható végre a szaktudás, mert a szakértelem bevitele érvénytelen volt.
-Az indexelő nem tudott futtatni egy képességet a készségkészlet, mert hiányzik a szakértelembe való bevitel, a helytelen típus vagy egyéb érvénytelen.
+## <a name="warning-skill-input-was-invalid"></a>Figyelmeztetés: a szakértelem bemenete érvénytelen volt.
+A szakértelem bemenete hiányzik, nem megfelelő típusú, vagy más módon érvénytelen. A figyelmeztető üzenet a következő hatást fogja jelezni:
+1) Nem hajtható végre a szaktudás
+2) A végrehajtott szaktudás, de nem várt eredmények
 
-A kognitív képességek kötelező bemenetekkel és opcionális bemenetekkel rendelkeznek. A [kinyerési képességnek](cognitive-search-skill-keyphrases.md) például két kötelező bemenete van `text`, `languageCode`, és nem választható bemenet. Ha a szükséges bemenetek érvénytelenek, a rendszer kihagyja a képességet, és figyelmeztetést generál. A kihagyott képességek nem eredményeznek kimeneteket, így ha más ismeretek is a kihagyott képességek kimenetét használják, további figyelmeztetések is készíthetők.
+A kognitív képességek kötelező bemenetekkel és opcionális bemenetekkel rendelkeznek. A [kinyerési képességnek](cognitive-search-skill-keyphrases.md) például két kötelező bemenete van `text`, `languageCode`, és nem választható bemenet. Az egyéni szaktudás bemenetei mindegyike opcionális bemenetnek minősül.
+
+Ha bármilyen szükséges bemenet hiányzik, vagy ha bármelyik bemenet nem megfelelő típusú, a rendszer kihagyja a szakértelmet, és figyelmeztetést generál. A kihagyott képességek nem eredményeznek kimeneteket, így ha más ismeretek is a kihagyott képességek kimenetét használják, további figyelmeztetések is készíthetők.
+
+Ha egy opcionális bemenet hiányzik, a rendszer továbbra is futtatja a képességet, de a hiányzó bevitel miatt váratlan kimenetet eredményezhet.
+
+Mindkét esetben ez a figyelmeztetés az adatszerkezet miatt várható. Ha például olyan dokumentummal rendelkezik, amely `firstName`, `middleName`és `lastName`mezőkkel rendelkező személyekkel kapcsolatos információkat tartalmaz, előfordulhat, hogy olyan dokumentumokkal rendelkezik, amelyek nem rendelkeznek `middleName`-bejegyzéssel. Ha a folyamat egy képességének bemenetként adja át a `middleName`t, akkor előfordulhat, hogy ez a szakértelem-bevitel néhány idő elteltével hiányzik. Ki kell értékelnie az adatait és a forgatókönyvet annak meghatározásához, hogy szükséges-e valamilyen művelet a figyelmeztetés eredményeképpen.
 
 Ha hiányzó bemenet esetén szeretné megadni az alapértelmezett értéket, a [feltételes képesség](cognitive-search-skill-conditional.md) használatával létrehozhat egy alapértelmezett értéket, majd használhatja a [feltételes képesség](cognitive-search-skill-conditional.md) kimenetét a szaktudás bemenetének megfelelően.
 
@@ -197,8 +205,8 @@ Ha hiányzó bemenet esetén szeretné megadni az alapértelmezett értéket, a 
 
 | Ok | Részletek/példa | Felbontás |
 | --- | --- | --- |
-| A szakértelem bemenete nem megfelelő típusú. | A szükséges szaktudás-beviteli `X` nem a várt típusú `String`. A szükséges szaktudás-beviteli `X` nem a várt formátumban volt. | Bizonyos készségek várhatóan adott típusok bemeneteit számítják fel, például az [érzelmi képességek](cognitive-search-skill-sentiment.md) `text` karakterláncnak számítanak. Ha a bemenet nem sztring értéket ad meg, akkor a rendszer nem hajtja végre, és nem hoz létre kimenetet. Győződjön meg arról, hogy az adatkészletben a bemeneti értékek egységesek a típusban, vagy használjon [egyéni webes API-képességet](cognitive-search-custom-skill-web-api.md) a bemenet előfeldolgozásához. Ha a képességet egy tömbön keresztül ismétli meg, ellenőrizze a szakértelem kontextusát, és a megfelelő pozícióban `*`. A környezetnek és a bemeneti forrásnak általában a tömbök `*` kell végződnie. |
-| Hiányzik a szaktudás bemenete | Hiányzik a szükséges szakértelem-beviteli `X`. | Ha az összes dokumentum ezt a figyelmeztetést kapja, valószínűleg van egy elírás a bemeneti elérési utakon, és az elérési úton ellenőrizze, hogy az elérési út tartalmazza-e a tulajdonság nevét, a további vagy a hiányzó `*`t, és az adatforrás dokumentumai határozzák meg a szükséges bemeneteket. |
+| A szakértelem bemenete nem megfelelő típusú. | "A szükséges szakértelem-bevitel nem a várt típusú `String`. Név: `text`, forrás: `/document/merged_content`. "  "A szükséges szakértelem-bevitel nem a várt formátumú. Név: `text`, forrás: `/document/merged_content`. "  "Nem lehet megismételni a nem tömb `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`."  "Nem lehet kijelölni `0` nem tömb `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`" | Bizonyos készségek várhatóan adott típusok bemeneteit számítják fel, például az [érzelmi képességek](cognitive-search-skill-sentiment.md) `text` karakterláncnak számítanak. Ha a bemenet nem sztring értéket ad meg, akkor a rendszer nem hajtja végre, és nem hoz létre kimenetet. Győződjön meg arról, hogy az adatkészletben a bemeneti értékek egységesek a típusban, vagy használjon [egyéni webes API-képességet](cognitive-search-custom-skill-web-api.md) a bemenet előfeldolgozásához. Ha a képességet egy tömbön keresztül ismétli meg, ellenőrizze a szakértelem kontextusát, és a megfelelő pozícióban `*`. A környezetnek és a bemeneti forrásnak általában a tömbök `*` kell végződnie. |
+| Hiányzik a szaktudás bemenete | "Hiányzik a szükséges képzettségi bevitel. Név: `text`, forrás: `/document/merged_content`"" hiányzó érték `/document/normalized_images/0/imageTags`. "  "Nem lehet kijelölni `0`t a (z) `0``/document/pages` hosszúságú tömbben." | Ha az összes dokumentum ezt a figyelmeztetést kapja, valószínűleg van egy elírás a bemeneti elérési utakon, és az elérési úton ellenőrizze, hogy az elérési útban van-e a tulajdonság neve, a további vagy a hiányzó `*`. Ellenőrizze, hogy az adatforrásból származó dokumentumok biztosítják-e a szükséges adatokat. |
 | A képzettségi nyelvi kód bemenete érvénytelen. | A skill input `languageCode` a következő nyelvi kódokat `X,Y,Z`, amelyek közül legalább egy érvénytelen. | További [Részletek:](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>

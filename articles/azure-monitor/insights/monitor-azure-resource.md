@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888784"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747309"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása Azure Monitor
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.
@@ -57,8 +57,8 @@ Az Azure-beli erőforrások [naplók](../platform/data-platform-logs.md) és [me
 
 
 - [Platform metrikái](../platform/data-platform-metrics.md) – a rendszeres időközönként automatikusan összegyűjtött numerikus értékek, amelyek egy adott időpontban egy erőforrás bizonyos aspektusait írják le. 
-- [Erőforrás-naplók](../platform/resource-logs-overview.md) – betekintést nyújt az Azure-erőforrásokon (az adatsíkon) végrehajtott műveletekre, például a titkos kód beszerzése egy Key Vault vagy egy adatbázisra irányuló kérés. Az erőforrás-naplók tartalma és szerkezete az Azure szolgáltatás és az erőforrás típusa szerint változik.
-- [Műveletnapló](../platform/activity-logs-overview.md) – betekintést nyújt a műveletekre az előfizetésben lévő összes Azure-erőforráson kívülről (a felügyeleti síkon), például egy új erőforrás létrehozásához vagy egy virtuális gép elindításához. Ez az előfizetésben található erőforrásokon végrehajtott írási műveletek (PUT, POST, DELETE) adatait és az azokra vonatkozó információkat ismerteti.
+- [Erőforrás-naplók](../platform/platform-logs-overview.md) – betekintést nyújt az Azure-erőforrásokon (az adatsíkon) végrehajtott műveletekre, például a titkos kód beszerzése egy Key Vault vagy egy adatbázisra irányuló kérés. Az erőforrás-naplók tartalma és szerkezete az Azure szolgáltatás és az erőforrás típusa szerint változik.
+- [Műveletnapló](../platform/platform-logs-overview.md) – betekintést nyújt a műveletekre az előfizetésben lévő összes Azure-erőforráson kívülről (a felügyeleti síkon), például egy új erőforrás létrehozásához vagy egy virtuális gép elindításához. Ez az előfizetésben található erőforrásokon végrehajtott írási műveletek (PUT, POST, DELETE) adatait és az azokra vonatkozó információkat ismerteti.
 
 
 ## <a name="configuration-requirements"></a>Konfigurációs követelmények
@@ -67,8 +67,8 @@ Az Azure-beli erőforrások [naplók](../platform/data-platform-logs.md) és [me
 Egyes figyelési adatokat a rendszer automatikusan gyűjt, de előfordulhat, hogy a követelményektől függően valamilyen konfigurációt kell végrehajtania. Az alábbi információk az egyes megfigyelési adatokra vonatkozó információkra vonatkoznak.
 
 - [Platform metrikái](../platform/data-platform-metrics.md) – a platform metrikái automatikusan bekerülnek [Azure monitor-metrikába](../platform/data-platform-metrics.md) , és nincs szükség konfigurációra. Diagnosztikai beállítás létrehozásával bejegyzéseket küldhet Azure Monitor naplókba, vagy továbbíthatja őket az Azure-on kívül.
-- [Erőforrás-naplók](../platform/resource-logs-overview.md) – az erőforrás-naplókat az Azure-erőforrások automatikusan generálják, de diagnosztikai beállítások nélkül nem gyűjtik őket.  Diagnosztikai beállítás létrehozásával bejegyzéseket küldhet Azure Monitor naplókba, vagy továbbíthatja őket az Azure-on kívül.
-- [Műveletnapló](../platform/activity-logs-overview.md) – a tevékenység naplóját a rendszer automatikusan gyűjti, és a konfiguráció nem szükséges, és a Azure Portalban is megtekinthető. Hozzon létre egy diagnosztikai beállítást Azure Monitor naplókba való másoláshoz vagy az Azure-on kívüli továbbításhoz.
+- [Erőforrás-naplók](../platform/platform-logs-overview.md) – az erőforrás-naplókat az Azure-erőforrások automatikusan generálják, de diagnosztikai beállítások nélkül nem gyűjtik őket.  Diagnosztikai beállítás létrehozásával bejegyzéseket küldhet Azure Monitor naplókba, vagy továbbíthatja őket az Azure-on kívül.
+- [Műveletnapló](../platform/platform-logs-overview.md) – a tevékenység naplóját a rendszer automatikusan gyűjti, és a konfiguráció nem szükséges, és a Azure Portalban is megtekinthető. Hozzon létre egy diagnosztikai beállítást Azure Monitor naplókba való másoláshoz vagy az Azure-on kívüli továbbításhoz.
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
 Az adatok Azure Monitor naplókba való gyűjtéséhez egy Log Analytics munkaterület szükséges. Az új munkaterület létrehozásával gyorsan megkezdheti a szolgáltatás figyelését, de előfordulhat, hogy olyan munkaterületet használ, amely más szolgáltatásokból származó adatok gyűjtésére szolgál. A munkaterületek létrehozásával és a [Azure monitor naplók központi telepítésének megtervezésével](../platform/design-logs-deployment.md) kapcsolatos részletekért lásd: [log Analytics munkaterület létrehozása a Azure Portalban](../learn/quick-create-workspace.md) . Ha a szervezet egy meglévő munkaterületét használja, akkor a megfelelő engedélyeket kell megkövetelni a következő témakörben ismertetett módon: a [hozzáférés kezelése a naplózási adataihoz és munkaterületekhez Azure monitor](../platform/manage-access.md). 
@@ -127,7 +127,7 @@ Azure Monitor a naplók több szolgáltatásból és más adatforrásokból szá
 
 - A naplók írásához használt lekérdezési nyelv használatával kapcsolatos oktatóanyagért lásd: a [Azure monitor naplózási lekérdezésének első lépései](../log-query/get-started-queries.md) .
 - Tekintse meg az [Azure-erőforrás-naplók gyűjtése a log Analytics munkaterületen a Azure monitorban](../platform/resource-logs-collect-workspace.md) című témakört, amely arról nyújt tájékoztatást, hogyan történik az erőforrás-naplók gyűjtése a Azure monitor-naplókban, és hogy miként lehet őket
-- Tekintse meg az [adatgyűjtési módot](../platform/resource-logs-collect-workspace.md#collection-mode) , amely azt ismerteti, hogyan épülnek fel az erőforrás-naplózási információk Azure monitor naplókba.
+- Tekintse meg az [adatgyűjtési módot](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) , amely azt ismerteti, hogyan épülnek fel az erőforrás-naplózási információk Azure monitor naplókba.
 - Tekintse meg az egyes Azure-szolgáltatások dokumentációját Azure Monitor naplókban található táblázat részleteivel.
 
 ![Naplók](media/monitor-azure-resource/logs.png)

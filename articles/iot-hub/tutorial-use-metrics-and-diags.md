@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084365"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746199"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
@@ -50,7 +50,7 @@ Ebben az oktatóanyagban szüksége lesz egy IoT hub-ra, egy Storage-fiókra és
 
 Ezek a szükséges lépések.
 
-1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). 
+1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/management/overview.md). 
 
 2. Hozzon létre egy IoT hubot.
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése 
 
-Új IoT hub létrehozásakor a [diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md) alapértelmezés szerint le vannak tiltva. Ebben a szakaszban engedélyezheti a központ diagnosztikai naplóit.
+Új IoT hub létrehozásakor a [diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md) alapértelmezés szerint le vannak tiltva. Ebben a szakaszban engedélyezheti a központ diagnosztikai naplóit.
 
 1. Először is, ha a portálon még nem szerepel a központban, kattintson az **erőforráscsoportok** elemre, és kattintson az erőforráscsoport contoso – erőforrások elemre. Válassza ki a hubot a megjelenő erőforrások listájából. 
 
@@ -259,7 +259,7 @@ A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure
 
    **Értesítő e-mail címzettjei**: Itt adhatja meg az e-mail-címét. 
 
-   A szabály mentéséhez kattintson **az OK** gombra. 
+   A szabály mentéséhez kattintson az **OK** gombra. 
 
 5. Ekkor két riasztás jelenik meg a klasszikus riasztások ablaktáblán: 
 

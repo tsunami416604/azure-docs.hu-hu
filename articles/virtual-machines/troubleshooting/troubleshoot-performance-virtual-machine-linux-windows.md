@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615052"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772618"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Azure-beli virtuális gépek teljesítményének megoldása Linux vagy Windows rendszeren
 
@@ -212,11 +212,11 @@ Ha a standard szintű tárolóban új lemezes ajánlatokat használ, a IOPS és 
 
 #### <a name="references"></a>Tudástár
 
-* [A virtuálisgép-lemezek skálázhatósági céljai](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Méretezhetőségi és teljesítményi célok a prémium oldal blob Storage-fiókjaihoz](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 A Storage-fiók sávszélességét a Storage-fiók Metrikái határozzák meg: TotalIngress és TotalEgress. A sávszélesség a redundancia és a régiók típusától függően eltérő küszöbértékekkel rendelkezik.
 
-* [A Blobok, várólisták, táblák és fájlok skálázhatósági céljai](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../../storage/common/scalability-targets-standard-account.md)
 
 A TotalIngress és a TotalEgress a Storage-fiók redundancia-típusa és-régiója esetében a bejövő és a kimenő forgalomra vonatkozó korlátok között tájékozódhat.
 

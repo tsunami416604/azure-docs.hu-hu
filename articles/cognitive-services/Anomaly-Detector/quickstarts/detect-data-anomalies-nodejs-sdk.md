@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: adatanomáliák észlelése az anomáliák Kiderítő ügyféloldali kódtár használatával a Pythonhoz'
 titleSuffix: Azure Cognitive Services
-description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességeket kötegként vagy adatfolyamként lehet érzékelni.
+description: A rendellenesség-Kiderítő API használatával az adatsorozatban lévő rendellenességek észlelése kötegként vagy adatfolyamként az ebben a rövid útmutatóban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 084ef1b81f7db5bd4a2d371e0c322211c0f0e142
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483491"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770441"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Gyors útmutató: a Node. js-hez készült ügyféloldali kódtár
 
@@ -67,7 +67,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 Telepítse a `ms-rest-azure` és `azure-cognitiveservices-anomalydetector` NPM-csomagokat. Ebben a rövid útmutatóban a CSV-elemzési függvénytárat is használják:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
+npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
 Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
@@ -80,7 +80,7 @@ Az idősorozat-információk küldése a [kérelem](https://docs.microsoft.com/j
 
 Az anomália-detektor válasza egy [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) vagy [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) objektum a használt módszertől függően. 
 
-## <a name="code-examples"></a>Példák a kódokra 
+## <a name="code-examples"></a>Kódpéldák 
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node. js-hez készült rendellenesség-Kiderítő ügyféloldali kódtár használatával:
 

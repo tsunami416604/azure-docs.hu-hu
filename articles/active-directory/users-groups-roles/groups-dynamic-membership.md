@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538795"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768714"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -48,9 +48,9 @@ Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és
 > [!NOTE]
 > Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
 
-További részletes útmutatásért lásd: [dinamikus csoport frissítése](groups-update-rule.md).
+További részletes útmutatásért lásd: [dinamikus csoport létrehozása vagy frissítése](groups-create-rule.md).
 
-![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Egyetlen kifejezés szabályának szintaxisa
 
@@ -97,16 +97,16 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | --- | --- | --- |
 | city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
 | ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
-| companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
-| részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
+| CompanyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
+| Részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
 | displayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
 | Alkalmazottkód |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
 | Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
 | givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
-| levelezési |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
+| e-mail |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
 | mailNickName |Bármely karakterlánc-érték (a felhasználó levelezési aliasa) |(User. mailNickName-EQ "value") |
-| mobileszköz |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
+| mobil |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
 | objectId |A felhasználói objektum GUID azonosítója |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Nincs DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
@@ -116,7 +116,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
 | state |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
-| vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
+| surname |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
 | userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
@@ -140,13 +140,13 @@ A következő táblázat felsorolja az összes támogatott operátort és azok s
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
 | Nem kezdődik |-notStartsWith |
-| Kezdete |– startsWith |
+| Ezzel kezdődik: |– startsWith |
 | Nem tartalmazza |-notContains |
 | Contains |– tartalmazza |
 | Nem egyezik |-notMatch |
-| Mérkőzés |– egyezés |
-| A | – a |
-| Nem a | -notIn |
+| Egyeztetés |– egyezés |
+| Az | – a |
+| Nincs benne | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>A-in és a-notIn operátorok használata
 
@@ -213,7 +213,7 @@ A következő példák a több kifejezéssel rendelkező, megfelelően kiépíte
 (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 ```
 
-### <a name="operator-precedence"></a>Operátori prioritás
+### <a name="operator-precedence"></a>Operátorok műveleti sorrendje
 
 Az összes operátor az alábbi sorrendben jelenik meg, a legmagasabbtól a legalacsonyabb értékig. Az azonos sorban lévő operátorok egyenlő prioritással rendelkeznek:
 
@@ -372,12 +372,12 @@ A következő eszköz-attribútumok használhatók.
  Eszköz attribútuma  | Értékek | Példa
  ----- | ----- | ----------------
  accountEnabled | Igaz hamis | (Device. accountEnabled-EQ true)
- displayName | Bármely karakterlánc-érték |(Device. displayName-EQ "Rob iPhone")
- deviceOSType | Bármely karakterlánc-érték | (Device. deviceOSType-EQ "iPad") – vagy (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType – a "AndroidEnterprise" kifejezést tartalmazza)<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | Bármely karakterlánc-érték | (Device. deviceOSVersion-EQ "9,1")
+ displayName | bármely karakterlánc-érték |(Device. displayName-EQ "Rob iPhone")
+ deviceOSType | bármely karakterlánc-érték | (Device. deviceOSType-EQ "iPad") – vagy (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType – a "AndroidEnterprise" kifejezést tartalmazza)<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | bármely karakterlánc-érték | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | egy érvényes eszköznév neve | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | Bármely karakterlánc-érték | (Device. deviceManufacturer-EQ "Samsung")
- DeviceModel | Bármely karakterlánc-érték | (Device. deviceModel-EQ "iPad Air")
+ deviceManufacturer | bármely karakterlánc-érték | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | bármely karakterlánc-érték | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Személyes, vállalati, ismeretlen | (Device. deviceOwnership-EQ "vállalat")
  enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)

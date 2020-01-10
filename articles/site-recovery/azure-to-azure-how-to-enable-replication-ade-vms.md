@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2b6c6f2882701515d868e96ae10af85890004587
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954689"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772227"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
 
 Ez a cikk azt ismerteti, hogyan replikálhatja az Azure-beli virtuális gépeket a Azure Disk Encryption (ADE) használatával az egyik Azure-régióból a másikba.
 
 >[!NOTE]
-> A Site Recovery jelenleg a Windows rendszerű virtuális gépekhez Azure Active Directory (HRE) és anélkül is támogatja az ADE-t.  Az ADE 1,1-et (HRE nélkül) futtató gépeken a Windows rendszerű virtuális gépeknek felügyelt lemezeket kell használnia. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha az ADE 0,1 (HRE) értékről 1,1-re vált, le kell tiltania a replikálást, és engedélyeznie kell egy virtuális gép replikálását a 1,1 engedélyezése után.
+> A Site Recovery jelenleg a Windows és Linux operációs rendszert futtató virtuális gépekhez Azure Active Directory (HRE) és anélkül is támogatja az ADE-t.  Az ADE 1,1-et (HRE nélkül) futtató gépek esetében a virtuális gépnek felügyelt lemezeket kell használnia. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha az ADE 0,1 (HRE) értékről 1,1-re vált, le kell tiltania a replikálást, és engedélyeznie kell egy virtuális gép replikálását a 1,1 engedélyezése után.
 
 
 ## <a id="required-user-permissions"></a>Szükséges felhasználói engedélyek
@@ -35,9 +35,9 @@ Ha engedélyezni szeretné a lemezes titkosítást használó virtuális gépek 
         - Beolvasás, Listázás és beállítás
     
 - Key Vault-kulcs engedélyei (csak akkor szükséges, ha a virtuális gépek titkosítási kulcs titkosítása a lemez titkosítási kulcsainak titkosítása érdekében)
-    - Kulcskezelő műveletek
+    - Kulcskezelési műveletek
         - Beolvasás, Listázás és létrehozás
-    - Titkosítási műveletek
+    - Kriptográfiai műveletek
         - Visszafejtés és titkosítás
 
 Az engedélyek kezeléséhez nyissa meg a Key Vault-erőforrást a portálon. Adja meg a felhasználóhoz szükséges engedélyeket. Az alábbi példa bemutatja, hogyan engedélyezheti az engedélyeket a Key Vault *ContosoWeb2Keyvault*, amely a forrásoldali régióban található.

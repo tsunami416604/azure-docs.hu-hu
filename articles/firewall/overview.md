@@ -6,23 +6,23 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 01/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 7b44597b24adce05498eed273c9494cae3360ed6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 271a4f116b8b929e17c3a0379bef91d6b80e1490
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168798"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754439"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
-Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy teljesen állapot-nyilvántartó tűzfal, amely beépített, magas rendelkezésre állású és korlátlan Felhőbeli méretezhetőséggel rendelkezik.
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy szolgáltatott, teljesen állapotalapú tűzfal, beépített magas rendelkezésre állással és korlátlan felhőalapú skálázhatósággal.
 
 ![Tűzfal áttekintése](media/overview/firewall-threat.png)
 
-Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat.  A szolgáltatás teljesen integrálva van az Azure Monitorral a naplózás és az elemzés érdekében.
+Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat.  A szolgáltatás teljesen integrálva van az Azure Monitorral naplózás és elemzés céljából.
 
 Az Azure Firewall az alábbi szolgáltatásokat kínálja:
 
@@ -65,7 +65,7 @@ Az FQDN-címkékkel egyszerűen engedélyezheti a jól ismert Azure-szolgáltat�
 
 A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatási címkét, és nem adhatja meg, hogy mely IP-címek szerepeljenek a címkén belül. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
-## <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
+## <a name="threat-intelligence"></a>Fenyegetésekkel kapcsolatos tudásbázis
 
 Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy azokba irányuló adatforgalomról való riasztáshoz és annak letiltásához. Az IP-címek és a tartományok a Microsoft Threat Intelligence hírcsatornájáról származnak.
 
@@ -94,7 +94,7 @@ A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a
 
 Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC) és a Nemzetközi Szabványügyi Szervezet (ISO) szabványnak megfelelő. Jelenleg a következőt támogatja: SOC 1 Type 2, SOC 2 Type 2, SOC 3, PCI DSS és ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
 
-További információ: [Microsoft megfelelőségi útmutató](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
+További információ: a [Microsoft megfelelőségi útmutatója](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide).
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -106,7 +106,6 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |A PowerShell és a CLI nem támogatja az ICMP-t|Az Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályok között.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
 |Az FQDN-címkék protokoll: port megadását igénylik|Az FQDN-címkékkel rendelkező alkalmazás-szabályok port: protokoll-definíciót igényelnek.|A port:protokoll értékként használhat **https**-t. Azon dolgozunk, hogy ezt a mezőt nem kötelező megadni, ha FQDN-címkéket használunk.|
 |A tűzfal más erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott|A tűzfal más erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.|A funkció támogatása a közúti térképen is elérhető. Ahhoz, hogy egy tűzfalat áthelyezzen másik erőforráscsoportba vagy előfizetésbe, először törölnie kell az aktuális példányt, és újra létre kell hoznia az új erőforráscsoportban vagy előfizetésben.|
-|Porttartomány a hálózat és az alkalmazás szabályaiban|A portok maximális száma 64 000, mivel a magas portok a felügyeleti és az állapot-mintavételek számára vannak fenntartva. |Dolgozunk ennek a korlátozásnak a kihasználása érdekében.|
 |A fenyegetések felderítésével kapcsolatos riasztások maszkolása is lehetséges|A kimenő szűréshez használt 80/443-as célként megadott hálózati szabályok a fenyegetések felderítésére vonatkozó riasztásokat észlelnek, ha csak riasztás módra vannak konfigurálva.|Hozzon létre kimenő szűrést az 80/443-hoz az alkalmazási szabályok használatával. Vagy módosítsa a fenyegetés intelligencia módot a **riasztás és a Megtagadás**értékre.|
 |A Azure Firewall csak a névfeloldáshoz használja Azure DNS|Azure Firewall csak Azure DNS használatával oldja fel a teljes tartományneveket. Az egyéni DNS-kiszolgálók nem támogatottak. Más alhálózatokon nincs hatással a DNS-feloldásra.|Dolgozunk ennek a korlátozásnak a kihasználása érdekében.|
 |Azure Firewall SNAT/DNAT nem működik a magánhálózati IP-címekhez|Azure Firewall SNAT/DNAT-támogatás az internetes kimenő/bejövő forgalomra korlátozódik. A SNAT/DNAT jelenleg nem működik a magánhálózati IP-címekhez. Tegyük fel például, hogy küllős volt.|Ez egy aktuális korlátozás.|

@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159717"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763079"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -28,7 +28,7 @@ Ez az alapszintű sablon formátuma:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+             },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -275,7 +275,8 @@ Az újraindítási testreszabó lehetővé teszi egy Windows rendszerű virtuál
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
+         {
+            "type": "WindowsRestart", 
             "restartCommand": "shutdown /r /f /t 0 /c", 
             "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
             "restartTimeout": "5m"
@@ -317,7 +318,7 @@ Tulajdonságok testreszabása:
 - **típus** – PowerShell.
 - **scriptUri** – URI a PowerShell-parancsfájl helyéhez. 
 - **beágyazott** – a futtatandó beágyazott parancsok, vesszővel elválasztva.
-- **valid_exit_codes** – választható, érvényes kódok, amelyek a parancsfájl/beágyazott parancsból visszaadhatók, így elkerülhető a parancsfájl/beágyazott parancs hibájának jelentése.
+- **valid_exit_codes** – nem kötelező, érvényes kódok, amelyek visszatérhetnek a parancsfájlból/beágyazott parancsból, így elkerülhető a parancsfájl/beágyazott parancs hibájának jelentése.
 
 ### <a name="file-customizer"></a>Fájl-testreszabó
 

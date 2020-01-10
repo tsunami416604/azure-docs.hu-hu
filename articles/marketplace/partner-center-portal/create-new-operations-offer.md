@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0318f851f547aed7c7682c9e6841f71d56c98be1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825605"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750927"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Hozzon létre egy új Dynamics 365 for Operations ajánlatot
 
@@ -99,11 +99,11 @@ A **Tulajdonságok** lapon megadhatja az ajánlatnak a piactéren, az alkalmazá
 
 ### <a name="category"></a>Kategória
 
-Válasszon legalább egyet és legfeljebb három kategóriát. A rendszer ezeket az ajánlatokat a piactér megfelelő keresési területeire helyezi. Ügyeljen arra, hogy az ajánlat leírásában ne adja meg, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. 
+Válasszon legfeljebb két (2) kategóriát, beleértve az elsődleges és a másodlagos kategóriát is (opcionális). Válasszon legfeljebb két (2) alkategóriát az egyes elsődleges és/vagy másodlagos kategóriákhoz. Ha nincs kiválasztva alkategória, a kiválasztott kategóriában a rendszer továbbra is felderíthetővé teszi az ajánlatot.
 
 ### <a name="industry"></a>Iparág
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+Lehetőség van akár két iparágra is kiválaszthat, és két vertikálisat az egyes ágazatokban. Ezek a kategóriák az ajánlat megjelenítésére szolgálnak, amikor az iparág és a vertikális szolgáltatás a keresési szűrőkben használatos, és a kirakatban van alkalmazva.  Ha az ajánlat egy adott iparágra és/vagy vertikálisra irányul, akkor mindenképpen írja le, hogyan támogatja az ajánlat a kiválasztott iparágakat vagy vertikális szolgáltatásokat az ajánlat leírásában.  Ellenkező esetben, ha az ajánlat nem iparági specifikus, ne válasszon ki egy kijelölést, és hagyja üresen ezt a szakaszt.
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 
@@ -209,7 +209,7 @@ Opcionálisan akár négy videót is hozzáadhat az ajánlat bemutatásához. Ez
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 A **rendelkezésre állás** lapon megadhatja, hol és hogyan teheti elérhetővé az ajánlatát.
 
@@ -337,7 +337,7 @@ A piactér **lapon található** **Marketplace listázási** lehetőség megjele
 
 - **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
 
-- **Videók: videók hozzáadása** (nem kötelező): a videókat feltöltheti a YouTube vagy a Vimeo weboldalára, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfél megtekintheti az információkat, így könnyebben megismerheti a tesztelési meghajtót, beleértve a következőket: az ajánlat funkcióinak sikeres használata és az előnyeiket kiemelő forgatókönyvek megismerése.
+- **Videók: videók hozzáadása** (nem kötelező): a videók feltölthetők a YouTube vagy a Vimeo webhelyre, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfelek megtekinthetik az információ lépéseit, hogy könnyebben megértsék a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát, valamint az előnyeiket kiemelő forgatókönyveket
   - **Név** (kötelező)
   - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
   - **Miniatűr (533 x 324px)** : a képfájlnak png formátumúnak kell lennie.
@@ -354,11 +354,11 @@ Ennek a fájlnak. xls vagy. xlsx formátumúnak kell lennie. Ha több jelentés 
 
 ### <a name="does-solution-include-localizations"></a>A megoldás tartalmaz-e honosítást?
 
-Válassza az **Igen** lehetőséget, ha a megoldás lehetővé teszi a helyi szabványok és házirendek használatát (például ha a különböző, különböző országokban/régiókban megkövetelt bérlista-szabályokat tartalmazza). Ellenkező esetben válassza a **nem**lehetőséget.
+Válassza az **Igen** lehetőséget, ha a megoldás lehetővé teszi a helyi szabványok és házirendek használatát (például ha a különböző, különböző országokban/régiókban megkövetelt bérlista-szabályokat tartalmazza). Ellenkező esetben válassza **Nem** lehetőséget.
 
 ### <a name="does-solution-enable-translations"></a>Engedélyezi a megoldás a fordításokat?
 
-Válasz **Igen** , ha a megoldás szövege más nyelvekre is fordítható. Ellenkező esetben válassza a **nem**lehetőséget.
+Válasz **Igen** , ha a megoldás szövege más nyelvekre is fordítható. Ellenkező esetben válassza **Nem** lehetőséget.
 
 ## <a name="publish"></a>Közzététel
 
@@ -375,6 +375,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

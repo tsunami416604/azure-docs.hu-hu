@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035266"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747798"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 A PostgreSQL egy fejlett, nyílt forráskódú adatbázis, amely az Oracle és a DB2 számára is hasonló. Olyan nagyvállalati használatra kész funkciókat tartalmaz, mint például a teljes sav megfelelősége, a megbízható tranzakciós feldolgozás és a többverziós Egyidejűség-vezérlés. Emellett olyan szabványokat is támogat, mint például az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és számos más adatburkolót is). A szolgáltatás nagyszámú, több mint 12 eljárási nyelv, a GIN és a lényegi indexek, a térbeli adattámogatás, valamint a JSON-vagy kulcs-érték alapú alkalmazások több NoSQL funkciójának támogatásával bővíthető.
 
 Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálhatja a PostgreSQL-t egy Linux rendszerű Azure-beli virtuális gépen.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>A PostgreSQL telepítése
 > [!NOTE]
@@ -64,7 +63,7 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Ha mindent felépíteni szeretne, beleértve a dokumentációt (HTML-és Man-lapokat) és a további modulokat is (például a következő parancsot), futtassa inkább az alábbi parancsot:
+5. Ha mindent felépíteni szeretne, beleértve a dokumentációt (HTML-és Man-lapokat is) és további modulokat (`contrib`), futtassa a következő parancsot:
    
         # gmake install-world
    
@@ -148,7 +147,7 @@ Módosítsa a fájlt úgy, hogy végrehajtható legyen:
 
     # chmod +x /etc/init.d/postgresql
 
-Start PostgreSQL:
+A PostgreSQL elindítása:
 
     # /etc/init.d/postgresql start
 
@@ -200,7 +199,7 @@ Először szúrjon be adatokat egy sorba:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-A következő kimenetnek kell megjelennie:
+A következő kimenet jelenik meg:
 
 ![image](./media/postgresql-install/no6.png)
 
@@ -217,7 +216,7 @@ A következő parancs használatával jelenítheti meg a táblázatot:
 
     select * from potluck;
 
-A kimenet a következőket eredményezi:
+A kimenet a következő:
 
 ![image](./media/postgresql-install/no7.png)
 
@@ -226,7 +225,7 @@ A következő paranccsal törölhet egy táblában lévő adatoszlopokat:
 
     delete from potluck where name=’John’;
 
-Ezzel törli a "János" sorban lévő összes információt. A kimenet a következőket eredményezi:
+Ezzel törli a "János" sorban lévő összes információt. A kimenet a következő:
 
 ![image](./media/postgresql-install/no8.png)
 

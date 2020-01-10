@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: 10714e155bebdd7acc5d7febb345c17fa81bab13
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516291"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771512"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>A Azure Machine Learning Designer Machine Learning algoritmushoz tartozó Cheat Sheet
 
@@ -54,12 +54,12 @@ A nem felügyelt tanulásban az adatpontokhoz nem tartoznak címkék. Ehelyett e
 
 A megerősítő tanulásban az algoritmus az egyes adatpontokra adott válaszként kiválaszt egy műveletet. A robotika közös megközelítése, amelyben egy adott időpontban az érzékelő beolvasása egy adatpont, és az algoritmusnak a robot következő műveletét kell választania. A eszközök internetes hálózata-alkalmazások számára is természetes. A tanulási algoritmus rövid idő múlva egy jutalom jelzést is kap, amely azt jelzi, hogy milyen jó döntés volt. Ennek alapján az algoritmus a legmagasabb jutalom elérése érdekében módosítja a stratégiáját. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen meg a studióval Azure Machine learning és az Azure Portal](service/overview-what-is-azure-ml.md).
+* [Ismerkedjen meg a studióval Azure Machine learning és az Azure Portal](overview-what-is-azure-ml.md).
 
 * Tekintse meg az algoritmus [és a modul hivatkozásában](algorithm-module-reference/module-reference.md)található algoritmusok és modulok listáját.
 
-* [Oktatóanyag: előrejelzési modell létrehozása Azure Machine learning Designerben](service/ui-tutorial-automobile-price-train-score.md).
+* [Oktatóanyag: előrejelzési modell létrehozása Azure Machine learning Designerben](tutorial-designer-automobile-price-train-score.md).
 
-* [Ismerkedjen meg a Deep learning és a Machine learning](service/concept-deep-learning-vs-machine-learning.md)szolgáltatással.
+* [Ismerkedjen meg a Deep learning és a Machine learning](concept-deep-learning-vs-machine-learning.md)szolgáltatással.

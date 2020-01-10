@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529481"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754221"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -33,32 +33,60 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 
 ## Virtuális gép/kiszolgáló által támogatott funkciók<a name="vm-server-features"></a>
 
-> [!div class="mx-tableFixed"]
+### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
 
-|Kiszolgáló|Windows|||Linux|||Díjszabás|
-|----|----|----|----|----|----|----|----|
-|**Környezet**|**Azure**||**Nem Azure**|**Azure**||**Nem Azure**||
-||**Virtuális gép**|**Virtuálisgép-méretezési csoport**||**Virtuális gép**|**Virtuálisgép-méretezési csoport**|
-|[Microsoft Defender ATP-integráció](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
-|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
-|[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standard|
-|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standard|
-|[VIRTUÁLIS gépek igény szerinti elérése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standard|
-|[Fájl integritásának figyelése](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standard|
-|[Adaptív alkalmazásvezérlők](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standard|
-|[Hálózati Térkép](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standard|
-|[Adaptív hálózat megerősítése](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standard|
-|Adaptív hálózati vezérlők|✔|✔|X|✔|✔|X|Standard|
-|[Szabályozási megfelelőségi irányítópult & jelentések](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standard|
-|Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|X|X|X|✔|✔|✔|Standard|
-|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|✔|✔|✔|Ingyenes|
-|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|✔|✔|✔|Ingyenes|
-|[Endpoint Protection-Értékelés](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Ingyenes|
-|Lemez titkosításának felmérése|✔|✔|X|✔|✔|X|Ingyenes|
-|Harmadik féltől származó sebezhetőségi felmérés|✔|X|X|✔|X|X|Ingyenes|
-|[Hálózati biztonsági értékelés](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|Ingyenes|
+|||||||||
+|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
+|[Microsoft Defender ATP-integráció](security-center-wdatp.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Standard|
+|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔|✔|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
+|[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[VIRTUÁLIS gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Natív sebezhetőségi felmérés](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Hálózati Térkép](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Adaptív hálózat megerősítése](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Adaptív hálózati vezérlők|✔|✔|-|Standard|
+|[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|-|-|-|Standard|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Ingyenes|
+|Lemez titkosításának felmérése|✔|✔|-|Ingyenes|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Ingyenes|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
 
-### Támogatott Endpoint Protection-megoldások<a name="endpoint-supported"></a>
+
+### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+
+|||||||||
+|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Nem Azure-beli gépek**|**Díjszabás**
+|[Microsoft Defender ATP-integráció](security-center-wdatp.md)|-|-|-|Standard|
+|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-iaas.md)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
+|[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[VIRTUÁLIS gépek igény szerinti elérése](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Natív sebezhetőségi felmérés](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Hálózati Térkép](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Adaptív hálózat megerősítése](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Adaptív hálózati vezérlők|✔|✔|-|Standard|
+|[Szabályozási megfelelőségi irányítópult & jelentések](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|✔|✔|✔|Standard|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|Ingyenes|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|Ingyenes|
+|[Endpoint Protection-Értékelés](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ingyenes|
+|Lemez titkosításának felmérése|✔|✔|-|Ingyenes|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|-|-|Ingyenes|
+|[Hálózati biztonsági értékelés](security-center-network-recommendations.md)|✔|✔|-|Ingyenes|
+
+--- 
+
+## Támogatott Endpoint Protection-megoldások<a name="endpoint-supported"></a>
 
 A következő táblázat a következőkhöz nyújt mátrixot:
 
@@ -80,7 +108,6 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
  **\*** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
 
 > [!NOTE]
->
 > - A System Center Endpoint Protection (SCEP) Windows Server 2008 R2 rendszerű virtuális gépen való észleléséhez a PowerShell 3,0 (vagy egy felső verzió) után telepíteni kell a SCEP.
 > - A Trend Micro Protection észlelése a mély biztonsági ügynökök esetében támogatott.  A OfficeScan-ügynökök nem támogatottak.
 
@@ -89,39 +116,41 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 
 A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 
-|Szolgáltatás|Javaslatok (ingyenes)|Fenyegetések észlelése (standard)|
-|----|----|----|
-|SQL|✔| ✔|
-|PostGreSQL|✔| ✔|
-|MySQL|✔| ✔|
-|CosmosDB|X| ✔|
-|Blobtároló|✔| ✔|
-|Tárfiók|✔| X|
-|App Service|✔| ✔|
-|Függvény|✔| X|
-|Felhőszolgáltatás|✔| X|
-|VNet|✔| X|
-|Alhálózat|✔| X|
-|Hálózati adapter|✔| X|
-|NSG|✔| X|
-|Előfizetés|✔ * *| ✔|
-|Batch-fiók|✔| X|
-|Service Fabric-fiók|✔| X|
-|Automation-fiók|✔| X|
-|Load Balancer|✔| X|
-|Search|✔| X|
-|Service Bus-névtér|✔| X|
-|Stream Analytics|✔| X|
-|Eseményközpont-névtér|✔| X|
-|Logikai alkalmazások|✔| X|
-|Redis|✔| X|
-|Data Lake Analytics|✔| X|
-|Data Lake Store|✔| X|
-|Key Vault|✔| X|
+|Szolgáltatás|Javaslatok (ingyenes)|Fenyegetések észlelésével kapcsolatos riasztások (standard)|Sebezhetőségi felmérés (standard)|
+|----|:----:|:----:|:----:|
+|SQL-adatbázisok|✔|✔|✔|
+|Azure Container Registry|-|-|✔|
+|Azure Kubernetes Service|✔|✔|-|
+|Azure Database for PostgreSQL *|✔|✔|-|
+|Azure Database for MySQL *|✔|✔|-|
+|Azure-CosmosDB *|-|✔|-|
+|Tárfiókok|✔|-|-|
+|Blob Storage|✔|✔|-|
+|App Service|✔|✔|-|
+|Függvényalkalmazás|✔|-|-|
+|Felhőszolgáltatások|✔|-|-|
+|Virtual Network (Virtuális hálózat)|✔|-|-|
+|Alhálózat|✔|-|-|
+|Hálózati adapter|✔|-|-|
+|Hálózati biztonsági csoportok|✔|-|-|
+|Előfizetés|✔ * *|✔|-|
+|Batch-fiók|✔|-|-|
+|Service Fabric fiók|✔|-|-|
+|Automation-fiók|✔|-|-|
+|Terheléselosztó|✔|-|-|
+|Cognitive Search|✔|-|-|
+|Service Bus névtér|✔|-|-|
+|Stream Analytics|✔|-|-|
+|Eseményközpont-névtér|✔|-|-|
+|Logikai alkalmazások|✔|-|-|
+|Gyorsítótár a Redis|✔|-|-|
+|Data Lake Analytics|✔|-|-|
+|Azure Data Lake Storage|✔|-|-|
+|Key Vault|✔|✔ *|-|
 
-\* ezek a funkciók jelenleg a nyilvános előzetes verzióban támogatottak.
+\* ezek a funkciók jelenleg előzetes verzióban támogatottak.
 
-\* \* Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
+\*\* Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
 
 ## <a name="next-steps"></a>Következő lépések
 

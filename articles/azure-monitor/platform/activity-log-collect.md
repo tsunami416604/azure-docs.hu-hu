@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931413"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745625"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-beli tevékenység-naplók gyűjtése és elemzése Log Analytics munkaterületen Azure Monitor
 
 > [!WARNING]
 > Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](diagnostic-settings-subscription.md).
 
-Az [Azure-tevékenység naplója](activity-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Ez a cikk bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, és hogyan használhatja a Activity Log Analytics [figyelési megoldást](../insights/solutions.md), amely naplózási lekérdezéseket és nézeteket biztosít az adatok elemzéséhez. 
+Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Ez a cikk bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, és hogyan használhatja a Activity Log Analytics [figyelési megoldást](../insights/solutions.md), amely naplózási lekérdezéseket és nézeteket biztosít az adatok elemzéséhez. 
 
 A tevékenység naplójának Log Analytics munkaterülethez való csatlakoztatása a következő előnyöket biztosítja:
 
@@ -47,7 +47,7 @@ A következő eljárással összekapcsolhatja a tevékenység naplóját a Log A
     ![Munkaterületek összekapcsolása](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>Elemzés Log Analytics munkaterületen
-Amikor egy Log Analytics munkaterülethez kapcsolódik a tevékenység naplójában, a bejegyzéseket a **AzureActivity** nevű táblába írja a rendszer, amelyet egy [napló lekérdezéssel](../log-query/log-query-overview.md)kérhet le. A tábla szerkezete a [naplóbejegyzés kategóriájára](activity-logs-overview.md#categories-in-the-activity-log)függően változik. Az egyes kategóriák leírását az [Azure Activity napló esemény sémája](activity-log-schema.md) tartalmazza.
+Amikor egy Log Analytics munkaterülethez kapcsolódik a tevékenység naplójában, a bejegyzéseket a **AzureActivity** nevű táblába írja a rendszer, amelyet egy [napló lekérdezéssel](../log-query/log-query-overview.md)kérhet le. A tábla szerkezete a [naplóbejegyzés kategóriájára](activity-log-view.md#categories-in-the-activity-log)függően változik. Az egyes kategóriák leírását az [Azure Activity napló esemény sémája](activity-log-schema.md) tartalmazza.
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity logs Analytics monitorozási megoldás
 Az Azure Log Analytics-figyelési megoldás több naplózási lekérdezést és nézetet tartalmaz a Log Analytics munkaterületen található műveletnapló-rekordok elemzéséhez.
@@ -74,6 +74,6 @@ Kattintson az **Azure-tevékenységek naplói** csempére az **Azure-tevékenys�
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [tevékenység naplóról](activity-logs-overview.md).
+- További információ a [tevékenység naplóról](platform-logs-overview.md).
 - További információ a [Azure monitor adatplatformról](data-platform.md).
 - A [napló lekérdezései](../log-query/log-query-overview.md) segítségével megtekintheti a tevékenység naplójának részletes adatait.

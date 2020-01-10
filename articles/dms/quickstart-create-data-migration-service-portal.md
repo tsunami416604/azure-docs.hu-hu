@@ -1,6 +1,7 @@
 ---
-title: 'Gyors útmutató: Azure Database Migration Service példány létrehozása a Azure Portal használatával | Microsoft Docs'
-description: Azure Database Migration Service-példány létrehozása a Azure Portal használatával
+title: 'Gyors útmutató: példány létrehozása a Azure Portal használatával'
+titleSuffix: Azure Database Migration Service
+description: Azure Database Migration Service példányának létrehozásához használja a Azure Portal.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.openlocfilehash: 6427de61ebf30a5e4a62070becd1cc1f750f6c1b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 01/08/2020
+ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571607"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750099"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon
 
@@ -54,11 +55,11 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
     - Válassza ki azt az **Azure-előfizetést**, amelyben a példányt létre szeretné hozni.
     - Válasszon ki egy meglévő **erőforráscsoportot**, vagy hozzon létre egy újat.
     - Válassza ki a forráshoz vagy a célkiszolgálóhoz legközelebb eső **Helyet**.
-    - Válasszon ki egy meglévő **virtuális hálózatot** (VNet), vagy hozzon létre egyet.
+    - Válasszon ki egy meglévő **virtuális hálózatot** , vagy hozzon létre egyet.
 
-        A VNet hozzáférést biztosít a forrás-adatbázishoz és a célként megadott környezethez Azure Database Migration Service.
+        A virtuális hálózat Azure Database Migration Service biztosít a forrás-adatbázis és a célként megadott környezet eléréséhez.
 
-        Ha további információt szeretne arról, hogyan hozhat létre VNet a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/vnet)című cikket.
+        Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/vnet)című cikket.
 
     - A **Tarifacsomag** esetén válassza ki az Alapszintű: 1 virtuális mag lehetőséget.
 
@@ -72,9 +73,9 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A rövid útmutató során létrehozott erőforrásokat az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) törlésével távolíthatja el. Az erőforráscsoport törléséhez keresse meg a létrehozott Azure Database Migration Service-példányt. Válassza ki az **Erőforráscsoport** nevét, majd válassza az **Erőforráscsoport törlése** elemet. A művelettel az erőforráscsoport összes elemét és magát a csoportot is törli.
+A rövid útmutató során létrehozott erőforrásokat az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) törlésével távolíthatja el. Az erőforráscsoport törléséhez keresse meg a létrehozott Azure Database Migration Service-példányt. Válassza ki az **Erőforráscsoport** nevét, majd válassza az **Erőforráscsoport törlése** elemet. A művelettel az erőforráscsoport összes elemét és magát a csoportot is törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Helyi SQL Server migrálása az Azure SQL Database-be](tutorial-sql-server-to-azure-sql.md)

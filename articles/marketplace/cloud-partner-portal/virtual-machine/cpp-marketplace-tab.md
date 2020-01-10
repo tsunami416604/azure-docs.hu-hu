@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824467"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762892"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>A virtuális gép Marketplace lapja
 
@@ -34,10 +34,10 @@ A következő táblázat a mezők célját és tartalmát ismerteti. A kötelez�
 | **Hosszú összefoglalás\***          | A megoldás célja vagy funkciója.  Legfeljebb 256 karakter hosszú lehet. |
 | **Leírás\***           | A megoldás leírása.  Legfeljebb 3000 karakter hosszú lehet, és támogatja az egyszerű HTML-formázást. |
 | **Microsoft CSP viszonteladói csatorna\*** | A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](../../cloud-solution-providers.md) című témakört. |
-| **Marketing-azonosító\***  | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza.  Például: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Marketing-azonosító\***  | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Előfizetési azonosítók\*** | Adja hozzá az előnézetek egy 100 előfizetés-azonosítóját. Ezek a felsorolt előfizetések a közzétételük előtt hozzáférhetnek az ajánlathoz, mielőtt a szolgáltatás elérhetővé válik. |
 | **Hasznos hivatkozások**          | URL-címeket adhat hozzá a dokumentumokhoz, a kibocsátási megjegyzésekhez, a GYIK-hoz stb. |
-| **Javasolt kategóriák (max. 5)\*** | Többek között az üzleti és technikai kategóriák közül választhat, melyeket a legjobban társíthat.  Legfeljebb öt engedélyezett.  |
+| **Javasolt kategóriák\*** | Válasszon legfeljebb két (2) kategóriát, beleértve az elsődleges és a másodlagos kategóriát is (opcionális). Válasszon legfeljebb két (2) alkategóriát az egyes elsődleges és/vagy másodlagos kategóriákhoz. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető. |
 |  |  |
 
 
@@ -127,6 +127,6 @@ Ez az utolsó szakasz lehetővé teszi az egyes ajánlatokhoz szükséges jogi d
 |  |  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő [támogatás](./cpp-support-tab.md) lapon technikai és felhasználói támogatási forrásokat fog biztosítani az ajánlatához.

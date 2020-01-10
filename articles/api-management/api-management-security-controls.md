@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257076"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751135"
 ---
 # <a name="security-controls-for-api-management"></a>A API Management biztonsági vezérlői
 
@@ -34,16 +34,16 @@ Ez a cikk a API Management beépített biztonsági vezérlőket dokumentálja.
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
 |---|---|--|--|
 | Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | | |
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | [Azure Monitor tevékenység naplói](../azure-monitor/platform/activity-logs-overview.md) | |
-| Adatsíkok naplózása és naplózása| Igen | [Azure monitor diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md) és (opcionálisan) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | [Azure Monitor tevékenység naplói](../azure-monitor/platform/platform-logs-overview.md) | |
+| Adatsíkok naplózása és naplózása| Igen | [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md) és (opcionálisan) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
 |---|---|--|--|
-| Authentication| Igen | |  |
-| Authorization| Igen | |  |
+| Hitelesítés| Igen | |  |
+| Engedélyezés| Igen | |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -70,6 +70,6 @@ Ez a szakasz az Azure API Managementt nem érintő általános biztonsági rése
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | A Ticketbleed a TLS SessionTicket-bővítmény néhány F5-termékben található implementációjában biztonsági réseket tartalmaz. Lehetővé teszi, hogy a kiszivárgás ("vérzés") legfeljebb 31 bájt adat legyen inicializálatlan memóriából. Ezt az okozza, hogy a TLS-verem kitöltése egy munkamenet-azonosító, amely az ügyféltől lett átadva, és az adatok alapján 32 bitet használ. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

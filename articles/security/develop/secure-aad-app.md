@@ -1,10 +1,10 @@
 ---
 title: Biztonságos Azure AD-webalkalmazás fejlesztése | Microsoft Docs
 description: Ez az egyszerű minta alkalmazás olyan ajánlott biztonsági eljárásokat valósít meg, amelyek javítják az alkalmazást és a szervezete biztonsági helyzetét az Azure-ban való fejlesztés során.
-keywords: Na
+keywords: –
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159838"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771274"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Biztonságos alkalmazás fejlesztése Azure AD-alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -55,7 +55,7 @@ Az architektúra ezekből az összetevőkből áll
 - [Azure Domain Name System](../../dns/dns-overview.md). Adja meg a szolgáltatást a tartomány üzemeltetéséhez.
 - [Azure Load Balancer](../../load-balancer/load-balancer-overview.md). Lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozását.
 - [Azure-webalkalmazás](../../app-service/overview.md).  HTTP-alapú szolgáltatást biztosít a webalkalmazások üzemeltetéséhez.
-- [Azure Security Center](../../security-center/index.yml). komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz.
+- az [Azure Security Centerben](../../security-center/index.yml). komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz.
 - [Azure Policy](../../governance/policy/overview.md). Biztosítja az erőforrások kiértékelését a hozzárendelt szabályzatok nem megfelelősége érdekében.
 
 ## <a name="threat-model"></a>Veszélyforrások modellje
@@ -412,7 +412,7 @@ Az Azure-szolgáltatások széles körben naplózzák a rendszer és a felhaszn�
    - Adattároló-hozzáférési kulcs
    - Kapcsolati sztring
    - Adattábla neve
-   - Felhasználói hitelesítő adatok
+   - Felhasználó hitelesítő adatai
    - A speciális hozzáférési szabályzatok igény szerint vannak konfigurálva
    - Key Vault hozzáférési szabályzatok minimálisan szükséges engedélyekkel rendelkeznek a kulcsok és a titkos kulcsokhoz
    - A Key Vault összes kulcsának és titkának lejárati dátuma
@@ -465,7 +465,7 @@ Az MFA engedélyezése rendszergazdai bejelentkezésekhez
    1. Lépjen a **Azure Active Directory** lapra a Azure Portal
    2. A biztonság kategóriában válassza a feltételes hozzáférés lehetőséget. Ezt a képernyőt látja
 
-       ![Feltételes hozzáférés – házirendek](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Feltételes hozzáférés – szabályzatok](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Ha nem tud új szabályzatot létrehozni
 
@@ -558,6 +558,6 @@ A munkaterület létrehozása
 ## <a name="next-steps"></a>Következő lépések
    A következő cikkek segíthetnek a biztonságos alkalmazások megtervezésében, fejlesztésében és üzembe helyezésében.
 
-- [Tervezési](secure-design.md)
+- [Kialakítás](secure-design.md)
 - [Fejlesztés](secure-develop.md)
 - [Üzembe helyezés](secure-deploy.md)

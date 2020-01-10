@@ -3,12 +3,12 @@ title: Java fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230399"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769030"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -156,11 +156,11 @@ A functions lehetővé teszi a Java-függvények futtatásához használt Java v
 
 További argumentumokat is megadhat egy `JAVA_OPTS`nevű alkalmazás-beállításban. Az Azure-ban üzembe helyezett Function-alkalmazáshoz az Azure Portal vagy az Azure CLI-ben adhat hozzá Alkalmazásbeállítások.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 A [Azure Portal](https://portal.azure.com)az [Alkalmazásbeállítások lapon](functions-how-to-use-azure-function-app-settings.md#settings) adja hozzá a `JAVA_OPTS` beállítást.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal állíthatja be a `JAVA_OPTS`t, ahogy az alábbi példában is látható:
 

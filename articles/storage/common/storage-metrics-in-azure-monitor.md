@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 62e2e3f1a80cef04dc778d5a1950cca97d79dcb0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257101"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748378"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -21,11 +21,11 @@ Az Azure Storage mérőszámai segítségével elemezheti a használati trendeke
 
 A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információ: [Azure monitor](../../monitoring-and-diagnostics/monitoring-overview.md). Az Azure Storage Azure Monitor a metrikus adatoknak a Azure Monitor platformba való küldésével integrálható.
 
-## <a name="access-metrics"></a>Access-metrikák
+## <a name="access-metrics"></a>Hozzáférési metrikák
 
-Az Azure Monitor hozzáférés metrikák több módot is biztosít. A [Azure Portal](https://portal.azure.com), a Azure monitor API-k (REST és .net) és az Analysis Solutions, például a Event Hubs használatával férhet hozzájuk. További információ: [Azure monitor mérőszámok](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Monitor több módszert biztosít a metrikák eléréséhez. A [Azure Portal](https://portal.azure.com), a Azure monitor API-k (REST és .net) és az Analysis Solutions, például a Event Hubs használatával férhet hozzájuk. További információ: [Azure monitor mérőszámok](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-A metrikák alapértelmezés szerint engedélyezve vannak, és az elmúlt 93 nap adatait is elérheti. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../../azure-monitor/platform/resource-logs-overview.md) az Azure monitorban.
+A metrikák alapértelmezés szerint engedélyezve vannak, és az elmúlt 93 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez a Azure Monitor [diagnosztikai beállításaiban](../../azure-monitor/platform/platform-logs-overview.md) van konfigurálva.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Hozzáférési metrikák a Azure Portal
 
@@ -136,7 +136,7 @@ A következő válasz JSON formátumú mérőszám-értékeket tartalmaz:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>Metrikák elérése a .NET SDK-val
 
-Azure Monitor [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) -t biztosít a metrika definíciójának és értékeinek olvasásához. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) azt mutatja be, hogyan használható az SDK különböző paraméterekkel. A tárolási metrikák `0.18.0-preview` használatához vagy újabb verziójának kell lennie. Az erőforrás-azonosító a .NET SDK-ban használatos. További információért olvassa el a Storage-szolgáltatások erőforrás-AZONOSÍTÓjának ismertetése című témakört.
+Azure Monitor [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) -t biztosít a metrika definíciójának és értékeinek olvasásához. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) azt mutatja be, hogyan használható az SDK különböző paraméterekkel. A tárolási mérőszámokhoz `0.18.0-preview` vagy újabb verziót kell használnia. Az erőforrás-azonosító a .NET SDK-ban használatos. További információért olvassa el a Storage-szolgáltatások erőforrás-AZONOSÍTÓjának ismertetése című témakört.
 
 Az alábbi példa bemutatja, hogyan használható a Azure Monitor .NET SDK a tárolási metrikák olvasásához.
 
@@ -179,7 +179,7 @@ Ha szeretné kilistázni a blob, a tábla, a fájl vagy a várólista metrikáj�
 
 #### <a name="read-metric-values-with-the-net-sdk"></a>Metrikus értékek olvasása a .NET SDK-val
 
-Az alábbi példa azt szemlélteti, hogyan `UsedCapacity` lehet az adatolvasást a fiók szintjén:
+Az alábbi példa bemutatja, hogyan olvashatja el `UsedCapacity` az adatfiók szintjén:
 
 ```csharp
     public static async Task ReadStorageMetricValue()
@@ -302,19 +302,19 @@ A következő ábrán egy Storage-fiók erőforrás-AZONOSÍTÓjának megadásá
 
 A következő ábrán az egyes tárolási szolgáltatások erőforrás-AZONOSÍTÓjának megadására szolgáló formátum látható.
 
-* Blob service-erőforrás azonosítója
+* Erőforrás-azonosító Blob service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Table service-erőforrás azonosítója
+* Erőforrás-azonosító Table service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Queue szolgáltatási erőforrás azonosítója
+* Erőforrás-azonosító Queue szolgáltatás
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* Fájlszolgáltatási erőforrás azonosítója
+* Fájlszolgáltatások erőforrás-azonosítója
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -327,7 +327,7 @@ Az alábbi ábrán az Azure Monitor REST API meghívásakor használt minta lát
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
 ```
 
-## <a name="capacity-metrics"></a>Kapacitás metrikái
+## <a name="capacity-metrics"></a>Kapacitásmetrikák
 A kapacitás metrikáinak értékeit minden órában Azure Monitor elküldjük. Az értékek naponta frissülnek. Az időkeret határozza meg azt az időintervallumot, ameddig a metrikák értékei bemutatva lesznek. Az összes kapacitás metrikájának támogatott időszelete egy óra (PT1H).
 
 Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Monitorban.
@@ -336,42 +336,42 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| UsedCapacity | A Storage-fiók által használt tárterület mennyisége. Standard szintű tárfiókok esetében ez a blob, a tábla, a fájl és a várólista által használt kapacitás összege. Prémium szintű és Blob Storage-fiókok esetében a BlobCapacity értékével azonos. <br/><br/> Egység Bájt <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
+| UsedCapacity | A Storage-fiók által használt tárterület mennyisége. Standard szintű tárfiókok esetében ez a blob, a tábla, a fájl és a várólista által használt kapacitás összege. Prémium szintű és Blob Storage-fiókok esetében a BlobCapacity értékével azonos. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
-### <a name="blob-storage"></a>Blob Storage
-
-| Metrika neve | Leírás |
-| ------------------- | ----------------- |
-| BlobCapacity | A Storage-fiókban használt BLOB Storage teljes száma. <br/><br/> Egység Bájt <br/> Összesítés típusa: Average <br/> Érték példa: 1024 <br/> Méretek: **BlobType**és **BlobTier** ([definíció](#metrics-dimensions)) |
-| BlobCount    | A Storage-fiókban tárolt blob-objektumok száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 <br/> Méretek: **BlobType**és **BlobTier** ([definíció](#metrics-dimensions)) |
-| ContainerCount    | A Storage-fiókban lévő tárolók száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| IndexCapacity     | A ADLS Gen2 hierarchikus index által használt tárterület mennyisége <br/><br/> Egység Bájt <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-
-### <a name="table-storage"></a>Táblatároló
+### <a name="blob-storage"></a>Blobtároló
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| TableCapacity | A Storage-fiók által használt Table Storage mennyisége. <br/><br/> Egység Bájt <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| TableCount   | A Storage-fiókban lévő táblák száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| TableEntityCount | A Storage-fiókban lévő tábla entitások száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
+| BlobCapacity | A Storage-fiókban használt BLOB Storage teljes száma. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 <br/> Méretek: **BlobType**és **BlobTier** ([definíció](#metrics-dimensions)) |
+| BlobCount    | A Storage-fiókban tárolt blob-objektumok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 <br/> Méretek: **BlobType**és **BlobTier** ([definíció](#metrics-dimensions)) |
+| ContainerCount    | A Storage-fiókban lévő tárolók száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| IndexCapacity     | A ADLS Gen2 hierarchikus index által használt tárterület mennyisége <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+
+### <a name="table-storage"></a>Table Storage
+
+| Metrika neve | Leírás |
+| ------------------- | ----------------- |
+| TableCapacity | A Storage-fiók által használt Table Storage mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| TableCount   | A Storage-fiókban lévő táblák száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| TableEntityCount | A Storage-fiókban lévő tábla entitások száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
 ### <a name="queue-storage"></a>Queue Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| QueueCapacity | A Storage-fiók által használt üzenetsor-tároló mennyisége. <br/><br/> Egység Bájt <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| QueueCount   | A Storage-fiókban lévő várólisták száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| QueueMessageCount | A nem lejárt üzenetsor-üzenetek száma a Storage-fiókban. <br/><br/>Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
+| QueueCapacity | A Storage-fiók által használt üzenetsor-tároló mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| QueueCount   | A Storage-fiókban lévő várólisták száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| QueueMessageCount | A nem lejárt üzenetsor-üzenetek száma a Storage-fiókban. <br/><br/>Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
 ### <a name="file-storage"></a>File Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| FileCapacity | A Storage-fiók által használt file Storage mennyisége. <br/><br/> Egység Bájt <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| FileCount   | A Storage-fiókban található fájlok száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
-| FileShareCount | A Storage-fiókban lévő fájlmegosztás száma. <br/><br/> Egység Count <br/> Összesítés típusa: Average <br/> Érték példa: 1024 |
+| FileCapacity | A Storage-fiók által használt file Storage mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| FileCount   | A Storage-fiókban található fájlok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| FileShareCount | A Storage-fiókban lévő fájlmegosztás száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
-## <a name="transaction-metrics"></a>Tranzakciós metrikák
+## <a name="transaction-metrics"></a>Tranzakciómetrikák
 
 A tranzakciós metrikák az Azure Storage-ból Azure Monitorba történő minden kérelemre kibocsátva. Abban az esetben, ha nincs tevékenység a Storage-fiókban, az adott időszakban nem lesz adat a tranzakciós metrikákban. Minden tranzakciós metrika a fiók és a szolgáltatás szintjén (blob Storage, Table Storage, Azure Files és üzenetsor-tárolás) is elérhető. Az időgabona meghatározza a metrikai értékek bemutatásának időintervallumát. Az összes tranzakciós metrika támogatott időgabona-PT1H és PT1M.
 
@@ -379,25 +379,25 @@ Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Mo
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Alkalmazható méretek: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték példa: 1024 |
-| Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység Bájt <br/> Összesítés típusa: Összes <br/> Alkalmazható méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Egység Bájt <br/> Összesítés típusa: Összes <br/> Alkalmazható méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Egység Ezredmásodperc <br/> Összesítés típusa: Average <br/> Alkalmazható méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Egység Ezredmásodperc <br/> Összesítés típusa: Average <br/> Alkalmazható méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
-| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. A Rendelkezésre állás az összes számlázható kérelem értékének és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Egység Percent <br/> Összesítés típusa: Average <br/> Alkalmazható méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 99,99 |
+| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték példa: 1024 |
+| Belépő | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Egység: ezredmásodperc <br/> Összesítés típusa: átlag <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Egység: ezredmásodperc <br/> Összesítés típusa: átlag <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
+| Elérhetőség | A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás az összes számlázható kérelem értékének és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik. <br/><br/> Egység: százalék <br/> Összesítés típusa: átlag <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 99,99 |
 
-## <a name="metrics-dimensions"></a>Metrikák dimenziók
+## <a name="metrics-dimensions"></a>Metrikák méretei
 
 Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja.
 
 | Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
 | **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobot a BlockBlob tartalmazza. |
-| **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: Gyors elérési szint</li> <li>**Cool**: Hűvös szint</li> <li>**Archiválás**: Archiválási szint</li> <li>**Prémium**: Prémium szint a blokkos blobhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: A prémium szintű lap blob-típusai</li> <li>**Standard**: A standard oldal blobjának típusa</li> <li>Nem **Lépcsőzetes**: Az általános célú v1-es Storage-fiókhoz tartozó rétegek típusa</li> |
+| **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: gyors elérésű szint</li> <li>**Cool**: lassú szint</li> <li>**Archive**: archiválási szint</li> <li>**Premium**: prémium szint a blob blokkhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: szintű prémium oldal blob</li> <li>**Standard**: a standard oldal blobjának típusa</li> <li>Nem **rétegű**: az általános célú v1-es Storage-fiók típusa</li> |
 | **GeoType** | Az elsődleges vagy a másodlagos fürtből származó tranzakció. Az elérhető értékek közé tartozik az **elsődleges** és a **másodlagos**. Az olvasási hozzáférés földrajzi redundáns tárolási (RA-GRS) szolgáltatásra vonatkozik, amikor objektumokat olvas a másodlagos bérlőről. |
-| **ResponseType** | Tranzakció válaszának típusa Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li>**ServerBusyError**: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li>**NetworkError**: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>**ClientThrottlingError**: Ügyféloldali szabályozási hiba. </li> <li>**ClientTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li>**Success**: Sikeres kérelem</li> <li> **SuccessWithThrottling**: Sikeres kérés, ha az SMB-ügyfél az első kísérlet (ek) során leszabályozza a szabályozást, de az újrapróbálkozások után sikeres lesz.</li> |
+| **ResponseType** | Tranzakció válaszának típusa Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: az összes többi kiszolgálóoldali hiba, kivéve a leírtakat </li> <li>**ServerBusyError**: hitelesített kérelem, amely http 503 állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: lejárt a hitelesített kérelem, amely http 500 állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: hitelesített kérelem, amely nem sikerült az adathozzáférés vagy az engedélyezési hiba miatt. </li> <li>**NetworkError**: a hitelesítő kérelem, amely hálózati hibák miatt meghiúsult. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>**ClientThrottlingError**: ügyféloldali sávszélesség-szabályozási hiba. </li> <li>**ClientTimeoutError**: lejárt a hitelesített kérelem, amely http 500 állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: az összes többi ügyféloldali hiba, kivéve a leírtakat. </li> <li>Sikeres **művelet**: sikeres kérelem</li> <li> **SuccessWithThrottling**: sikeres kérés, ha az SMB-ügyfél az első kísérlet (ek) során leszabályozza az újrapróbálkozásokat, de az újrapróbálkozások után sikeres lesz.</li> |
 | **ApiName** | A művelet neve. Példa: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Az összes művelet neve: [Document](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| **Hitelesítés** | A tranzakciókban használt hitelesítési típus. Az elérhető értékek közé a következők tartoznak: <br/> <li>**AccountKey**: A tranzakciót a Storage-fiók kulcsa hitelesíti.</li> <li>**SAS**: A tranzakció megosztott hozzáférési aláírásokkal van hitelesítve.</li> <li>**OAuth**: A tranzakció OAuth hozzáférési jogkivonatokkal van hitelesítve.</li> <li>**Névtelen**: A tranzakciót a rendszer névtelenül kéri. Nem tartalmaz elővizsgálati kérelmeket.</li> <li>**AnonymousPreflight**: A tranzakció elővizsgálati kérelem.</li> |
+| **Hitelesítés** | A tranzakciókban használt hitelesítési típus. Az elérhető értékek közé a következők tartoznak: <br/> <li>**AccountKey**: a tranzakciót a Storage-fiók kulcsa hitelesíti.</li> <li>**Sas**: a tranzakció megosztott hozzáférési aláírásokkal van hitelesítve.</li> <li>**OAuth**: a tranzakció OAuth hozzáférési jogkivonatokkal van hitelesítve.</li> <li>**Névtelen**: a rendszer névtelenül kéri a tranzakciót. Nem tartalmaz elővizsgálati kérelmeket.</li> <li>**AnonymousPreflight**: a tranzakció elővizsgálati kérelem.</li> |
 
 A dimenziókat támogató metrikák esetében meg kell adnia a dimenzió értékét a megfelelő mérőszámok értékeinek megtekintéséhez. Ha például a sikeres válaszok **tranzakció** értékét tekinti át, akkor a **ResponseType** dimenziót a **sikerrel**kell szűrnie. Vagy ha megtekinti a blokk **BlobCount** értékét, akkor a **BlobType** -dimenziót a **BlockBlob**-mel kell szűrnie.
 
@@ -405,7 +405,7 @@ A dimenziókat támogató metrikák esetében meg kell adnia a dimenzió érték
 
 Az örökölt metrikák párhuzamosan érhetők el Azure Monitor felügyelt metrikákkal. A támogatás addig tart, amíg az Azure Storage nem ér véget a szolgáltatásnak az örökölt mérőszámokon.
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 **Támogatja az új metrikák a klasszikus Storage-fiókot?**
 
@@ -419,6 +419,6 @@ Nem, az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszáma
 
 Részletes leképezést talál a klasszikus metrikák és az [Azure Storage-metrikák áttelepítése](./storage-metrics-migration.md)során felhasználható új metrikák között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241996"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751322"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Az SSL (SSL) titkosítás és a hitelesítés beállítása az Azure HDInsight Apache Kafkahoz
 
@@ -36,7 +36,7 @@ A közvetítő telepítési folyamatának összefoglalása a következő:
 
 1. A következő lépéseket a három feldolgozó csomóponton kell megismételni:
 
-    1. Tanúsítvány létrehozása.
+    1. Állítson elő egy tanúsítványt.
     1. Hozzon létre egy tanúsítvány-aláírási kérelmet.
     1. Küldje el a tanúsítvány-aláírási kérelmet a hitelesítésszolgáltatónak (CA).
     1. Jelentkezzen be a HITELESÍTÉSSZOLGÁLTATÓba, és írja alá a kérelmet.
@@ -49,7 +49,7 @@ A közvetítő telepítési folyamatának összefoglalása a következő:
 A következő részletes utasításokat követve hajthatja végre a Broker telepítését:
 
 > [!Important]
-> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és szükség esetén `wn0`, `wn1` vagy `wn2` értékkel kell helyettesíteni. `WorkerNode0_Name` és `HeadNode0_Name` a megfelelő gépek nevével kell helyettesíteni, például `wn0-abcxyz` vagy `hn0-abcxyz`.
+> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és szükség esetén `wn0`, `wn1` vagy `wn2` kell helyettesíteni. `WorkerNode0_Name` és `HeadNode0_Name` a megfelelő gépek nevével kell helyettesíteni.
 
 1. Hajtsa végre a kezdeti beállítást a 0. fő csomóponton, amely a HDInsight kitölti a hitelesítésszolgáltató (CA) szerepkörét.
 
@@ -125,12 +125,12 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki az Azure HDInsight Apache Kafka-fürtöt.
 1. Nyissa meg a Ambari felhasználói felületét a **Ambari** elemre kattintva a **fürt irányítópultok**területén.
-1. A **Kafka-közvetítő** alatt állítsa be a **figyelők** tulajdonságot a következőre: `PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. A **speciális Kafka-bróker** alatt állítsa be a **Security. Inter. Broker. Protocol** tulajdonságot a következőre: `SSL`
+1. A **Kafka-közvetítő** alatt állítsa be a **figyelők** tulajdonságot `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. A **speciális Kafka-Broker** területen állítsa be a **Security. Inter. Broker. Protocol** tulajdonságot a következőre: `SSL`
 
     ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. Az **Egyéni Kafka-bróker** alatt állítsa be az **SSL. Client. auth** tulajdonságot a következőre: `required`. Ez a lépés csak akkor szükséges, ha a hitelesítést és a titkosítást állítja be.
+1. Az **Egyéni Kafka-Broker** területen állítsa be az **SSL. Client. auth** tulajdonságot `required`ra. Ez a lépés csak akkor szükséges, ha a hitelesítést és a titkosítást állítja be.
 
     ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -157,10 +157,10 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 
 Az ügyfél telepítésének befejezéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az ügyfélszámítógépre (hn1).
+1. Jelentkezzen be az ügyfélszámítógépre (készenléti fej csomópontja).
 1. Hozzon létre egy Java-tárolót, és szerezzen be egy aláírt tanúsítványt a közvetítő számára. Ezután másolja a tanúsítványt arra a virtuális gépre, amelyen a HITELESÍTÉSSZOLGÁLTATÓ fut.
-1. Váltson a HITELESÍTÉSSZOLGÁLTATÓI gépre (hn0) az ügyféltanúsítvány aláírásához.
-1. Nyissa meg az ügyfélszámítógépet (hn1), és keresse meg a `~/ssl` mappát. Másolja az aláírt tanúsítványt az ügyfélszámítógépre.
+1. Váltson át a HITELESÍTÉSSZOLGÁLTATÓI gépre (az aktív fő csomópontra) az ügyféltanúsítvány aláírásához.
+1. Nyissa meg az ügyfélszámítógépet (készenléti fej csomópont), és keresse meg a `~/ssl` mappát. Másolja az aláírt tanúsítványt az ügyfélszámítógépre.
 
 ```bash
 cd ssl
@@ -174,11 +174,11 @@ keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-requ
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (hn0) to sign the client certificate.
+# Switch to the CA machine (active head node) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
@@ -191,7 +191,7 @@ keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert 
 keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Végül tekintse meg a `client-ssl-auth.properties` fájlt a `cat client-ssl-auth.properties` paranccsal. A következő sorokkal kell rendelkeznie:
+Végül tekintse meg a fájlt `client-ssl-auth.properties` a paranccsal `cat client-ssl-auth.properties`. A következő sorokkal kell rendelkeznie:
 
 ```bash
 security.protocol=SSL
@@ -206,7 +206,7 @@ ssl.key.password=MyClientPassword123
 
 Ha nincs szüksége a hitelesítésre, a csak az SSL-titkosítás beállításának lépései a következők:
 
-1. Jelentkezzen be az ügyfélszámítógépre (hn1), és navigáljon a `~/ssl` mappába.
+1. Jelentkezzen be az ügyfélszámítógépre (hn1), és navigáljon a `~/ssl` mappára
 1. Másolja az aláírt tanúsítványt az ügyfélszámítógépre a HITELESÍTÉSSZOLGÁLTATÓI gépről (wn0).
 1. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány importálása a truststore
 1. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány importálása a rendszertárolóba
@@ -226,7 +226,7 @@ keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cer
 keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Végül tekintse meg a `client-ssl-auth.properties` fájlt a `cat client-ssl-auth.properties` paranccsal. A következő sorokkal kell rendelkeznie:
+Végül tekintse meg a `client-ssl-auth.properties` fájlt a `cat client-ssl-auth.properties`paranccsal. A következő sorokkal kell rendelkeznie:
 
 ```bash
 security.protocol=SSL

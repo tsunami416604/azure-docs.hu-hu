@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 73c379d914f37de351165c19e3d73425e9a202b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6357fb2d69a9c0ded430c17b77e854f63fc8f5c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151864"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747376"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -66,7 +66,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
     https://login-us.microsoftonline.com/common/oauth2/authorize?client_id=51bb15d4-3a4f-4ebf-9dca-40096fe32426&response_type=code&redirect_uri=https://portal.azure.us&nonce=1234&prompt=admin_consent
     ````
 
-    Microsoft Cloud Németország
+    Microsoft Cloud Germany
 
     ```
     https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
@@ -84,37 +84,42 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 6. Ha a rendszer kéri, válassza az **elfogadás** lehetőséget.
 
-    ![Fogadja el](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Elfogadás](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. Az Azure AD-ben a **vállalati alkalmazásokban**a felsorolt **Azure VPN** látható.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    
+8. Ha még nem rendelkezik működő pont – hely környezettel, kövesse az utasításokat, és hozzon létre egyet. Lásd: [pont – hely típusú VPN létrehozása](vpn-gateway-howto-point-to-site-resource-manager-portal.md) és konfigurálása egy pont – hely típusú VPN-átjáróhoz natív Azure-Tanúsítványos hitelesítéssel. 
 
-8. Engedélyezze az Azure AD-hitelesítést a VPN-átjárón az alábbi parancsok futtatásával, ügyeljen arra, hogy a parancsot a saját környezetének megfelelően módosítsa:
+    > [!IMPORTANT]
+    > Az OpenVPN esetében az alapszintű SKU nem támogatott.
+
+9. Engedélyezze az Azure AD-hitelesítést a VPN-átjárón az alábbi parancsok futtatásával, ügyeljen arra, hogy a parancsot a saját környezetének megfelelően módosítsa:
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
-9. Hozza létre és töltse le a profilt a következő parancsok futtatásával. Módosítsa a-ResourcGroupName és a-name értékeket a saját igényeinek megfelelően.
+10. Hozza létre és töltse le a profilt a következő parancsok futtatásával. Módosítsa a-ResourceGroupName és a-name értékeket a saját igényeinek megfelelően.
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 
-10. A parancsok futtatása után az alábbihoz hasonló eredményt láthat. Másolja ki az eredmény URL-címét a böngészőbe a profil zip-fájljának letöltéséhez.
+11. A parancsok futtatása után az alábbihoz hasonló eredményt láthat. Másolja ki az eredmény URL-címét a böngészőbe a profil zip-fájljának letöltéséhez.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/profile.png)
 
-11. Bontsa ki a letöltött zip-fájlt.
+12. Bontsa ki a letöltött zip-fájlt.
 
-12. Tallózással keresse meg a kibontott "AzureVPN" mappát.
+13. Tallózással keresse meg a kibontott "AzureVPN" mappát.
 
-13. Jegyezze fel a "azurevpnconfig. xml" fájl helyét. A azurevpnconfig. XML a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
+14. Jegyezze fel a "azurevpnconfig. xml" fájl helyét. A azurevpnconfig. XML a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális hálózathoz való csatlakozáshoz létre kell hoznia és konfigurálnia kell egy VPN-ügyféloldali profilt. Lásd: [VPN-ügyfél konfigurálása P2S VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).

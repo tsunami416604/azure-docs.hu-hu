@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg a Linux Hybrid Runbook Worker Health-t az Azure-ban Update Management
-description: Ismerje meg, hogy miként lehet elhárítani a Update Managementt támogató Linuxon futó hibrid Runbook-feldolgozóval kapcsolatos problémákat.
+title: Linux Hybrid Runbook Worker diagnosztizálása – Azure Update Management
+description: Ismerje meg, Hogyan oldhatók meg a Azure Automation hibrid Runbook-feldolgozóval kapcsolatos hibák a Update Management támogató Linux rendszeren.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849259"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769829"
 ---
-# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>A Linux Hybrid Runbook Worker állapotának megismerése Update Management
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>A Update Management linuxos hibrid Runbook Worker Health megismerése és megoldása
 
 Előfordulhat, hogy a gép számos okból nem **áll készen** a Update Management. Update Management a hibrid Runbook Worker Agent állapotának ellenőrzését a probléma okának megállapításához. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
 

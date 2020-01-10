@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821860"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771683"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Az SQL Data Synchez ajánlott eljárások 
 
@@ -96,7 +96,7 @@ A SQL-adatszinkronizálás az alábbi korlátozásokkal rendelkezik az kiépít�
 -   A frissítés KASZKÁDOLT és a TÖRLÉSi műveletek nem hozhatók létre a külső kulcsokra vonatkozó megkötések esetében a célhely tábláiban.
 -   Ha olyan decimális vagy numerikus oszlopokkal rendelkezik, amelyek pontossága nagyobb, mint 28, akkor a szinkronizálás során előfordulhat, hogy SQL-adatszinkronizálás a konverzió túlcsordulása problémát tapasztal. Javasoljuk, hogy a decimális vagy numerikus oszlopok pontosságát 28 vagy kevesebb értékre korlátozza.
 
-#### <a name="recommendations"></a>Javaslatok
+#### <a name="recommendations"></a>Ajánlatok
 
 -   Kizárólag a szolgáltatás kipróbálásakor használja a SQL-adatszinkronizálás-kiépítési képességet.  
 -   Éles környezetben kiépítheti az adatbázis-sémát.
@@ -116,7 +116,7 @@ A késés csökkentése érdekében a hub-adatbázist közel kell tartani a szin
 
 Alkalmazza az előző irányelveket az összetett szinkronizálási csoport konfigurációkra, például a nagyvállalati Felhőbeli és a felhőből a felhőbe irányuló forgatókönyvek együttes használatára.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Szinkronizálás
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>A lassú és költséges kezdeti szinkronizálás elkerülése
 
@@ -193,7 +193,7 @@ Elavult szinkronizálási csoportok megelőzése:
 
 Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrációjának törlése miatt a szinkronizálás sikertelen lesz.
 
-#### <a name="scenario"></a>Forgatókönyv
+#### <a name="scenario"></a>Alkalmazási helyzet
 
 1. Az A szinkronizálási csoport egy SQL Database-példány és egy helyszíni SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).
@@ -218,7 +218,15 @@ Ehelyett először távolítson el egy adatbázist egy szinkronizálási csoport
 
 Ha megpróbálja eltávolítani az adatbázist, majd egy szinkronizálási csoportot anélkül szerkeszt, hogy először telepítené az egyik módosítást, akkor az egyik vagy a másik művelet meghiúsul. Előfordulhat, hogy a portál felülete inkonzisztens lesz. Ha ez történik, frissítse a lapot a megfelelő állapot visszaállításához.
 
-## <a name="next-steps"></a>További lépések
+### <a name="avoid-schema-refresh-timeout"></a>A séma-frissítés időtúllépésének elkerülése
+
+Ha a szinkronizáláshoz összetett séma áll rendelkezésre, akkor a séma frissítése során a "művelet időtúllépése" kifejezés jelenhet meg, ha a szinkronizálási metaadat-adatbázis alacsonyabb SKU-val rendelkezik (például: alapszintű). 
+
+#### <a name="solution"></a>Megoldás
+
+A probléma megoldásához csökkentse a szinkronizálási metaadat-adatbázist úgy, hogy magasabb SKU-t (például S3) használjon. 
+
+## <a name="next-steps"></a>Következő lépések
 További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)

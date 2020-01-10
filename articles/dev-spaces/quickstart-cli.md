@@ -3,15 +3,15 @@ title: Alkalmazás fejlesztése a Kubernetes-on
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Webszolgáltatás üzembe helyezése az AK-ban az Azure dev Spaces szolgáltatással
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a parancssor az alkalmazások fejlesztéséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 932b25e277936a2efe6a3e037458fabd67b024c2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 99e234fc838ef173b25989f888cb9d3ca80d649f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325642"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770611"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: alkalmazás fejlesztése a Kubernetes-ben – Azure dev Spaces
 Ebből az útmutatóból a következőket tudhatja meg:
@@ -116,7 +116,7 @@ Ha leállítja a `azds up` parancsot a *CTRL + c billentyűkombinációval*, a s
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a `azds up` parancsot. Például:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a `azds up` parancsot. Példa:
 
 1. Ha `azds up` még fut, nyomja le a *CTRL + c*billentyűkombinációt.
 1. [A `server.js`13. sorának frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
@@ -157,4 +157,4 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 [nodejs-quickstart]: quickstart-nodejs.md
 [netcore-quickstart]: quickstart-netcore.md
 [team-quickstart]: quickstart-team-development.md
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

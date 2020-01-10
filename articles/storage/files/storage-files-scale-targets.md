@@ -1,5 +1,5 @@
 ---
-title: Azure Files skálázhatósági és teljesítményi célok | Microsoft Docs
+title: Méretezhetőségi és teljesítménybeli célok Azure Files
 description: Ismerje meg a Azure Files méretezhetőségét és teljesítményét, beleértve a kapacitást, a kérelmek sebességét, valamint a bejövő és kimenő sávszélesség korlátozásait.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615776"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749508"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Méretezhetőségi és teljesítménybeli célok Azure Files
 
@@ -24,7 +24,7 @@ Az itt felsorolt skálázhatósági és teljesítményi célok magas végpontok,
 
 Az Azure-fájlmegosztás szülő erőforrása egy Azure Storage-fiók. A Storage-fiók az Azure-beli tárterületet jelöli, amelyet több tárolási szolgáltatás, többek között a Azure Files is használhat az adattároláshoz. A Storage-fiókokban tárolt egyéb szolgáltatások az Azure Blob Storage, az Azure üzenetsor Storage és az Azure Table Storage. Az alábbi célok az összes Storage-szolgáltatást a Storage-fiókba tároló összes tárolási szolgáltatásra érvényesek:
 
-[!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -78,9 +78,9 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 | Rendszerkonfiguráció |  |
 |-|-|
 | CPU | 64 virtuális magok a 64 MiB L3 gyorsítótárral |
-| Memory (Memória) | 128 GiB |
+| Memória | 128 GiB |
 | Lemez | SAS-lemezek RAID 10 akkumulátorral rendelkező gyorsítótárral |
-| Hálózat | 1 GB/s hálózat |
+| Network (Hálózat) | 1 GB/s hálózat |
 | Számítási feladat | általános célú fájlkiszolgáló|
 
 | Egyszeri kiépítés kezdeti időpontja  |  |
@@ -115,4 +115,3 @@ Az üzembe helyezésre vonatkozó általános útmutatóként vegye figyelembe a
 
 - [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Méretezhetőség és teljesítménybeli célok más tárolási szolgáltatásokhoz](../common/storage-scalability-targets.md)

@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893348"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748543"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
@@ -46,7 +46,7 @@ Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat 
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Előfizetési naplók átirányítása a tárfiókba
 
-Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenységnapló**](../../azure-monitor/platform/activity-logs-overview.md) az Azure előfizetés-szintű eseményeit tartalmazza. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
+Most már megkezdheti az Azure-környezet beállítását a monitorozási adatok a tárfiókba való irányításához. Először beállítjuk, hogy az előfizetés-szintű adatok (amelyek az Azure-tevékenységnaplóban szerepelnek) a tárfiókba legyenek irányítva. Az [**Azure-tevékenységnapló**](../../azure-monitor/platform/platform-logs-overview.md) az Azure előfizetés-szintű eseményeit tartalmazza. Az Azure Portalon ezt böngészve megállapíthatja, hogy *ki* és *milyen* erőforrásokat hozott létre, frissített vagy törölt, és a műveletekre *mikor* került sor.
 
 1. Kattintson a bal oldali navigációs listán található **Figyelés** gombra, majd a **Tevékenységnapló** gombra.
 
@@ -96,7 +96,7 @@ Most konfiguráljuk az erőforrás-szintű adatokat (erőforrás-metrikákat és
 
 6. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
@@ -137,7 +137,7 @@ Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
 9. A megjelenő szakaszban válassza ki az előző, **Tárfiók létrehozása** című lépésben létrehozott tárfiókot.
 
-10. Kattintson a **Save** (Mentés) gombra.
+10. Kattintson a **Mentés** gombra.
 
 Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 

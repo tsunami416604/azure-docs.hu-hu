@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: a50a7966af8f6453441ac19c9dafac064015f9a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607097"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771308"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -37,7 +37,7 @@ New-RdsHostPool -TenantName <tenantname> -Name <hostpoolname>
 A következő parancsmag futtatásával hozzon létre egy regisztrációs jogkivonatot, amely engedélyezi, hogy a munkamenet-állomás csatlakozzon a gazdagéphez, és mentse a helyi számítógép egy új fájljába. Megadhatja, hogy a regisztrációs jogkivonat mennyi ideig érvényes a-ExpirationHours paraméter használatával.
 
 ```powershell
-New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token > <PathToRegFile>
+New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token | Out-File -FilePath <PathToRegFile>
 ```
 
 Ezután futtassa ezt a parancsmagot, hogy Azure Active Directory felhasználókat adjon hozzá az alapértelmezett asztali alkalmazás csoporthoz a gazdagéphez.
@@ -97,16 +97,16 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 2. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynököt.
    - Töltse le a [Windows rendszerű virtuális asztali ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
    - Kattintson a jobb gombbal a letöltött telepítőre, válassza a **Tulajdonságok**, majd a **Tiltás feloldása**elemet, majd kattintson **az OK gombra**. Ez lehetővé teszi a rendszer számára, hogy megbízzon a telepítőben.
-   - Futtassa a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-RdsRegistrationInfo** parancsmagból kapott értéket.
+   - Indítsa el a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-RdsRegistrationInfo** parancsmagból kapott értéket.
 3. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynök rendszerbetöltőjét.
    - Töltse le a [Windows rendszerű virtuális asztali ügynök Rendszerbetöltőjét](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Kattintson a jobb gombbal a letöltött telepítőre, válassza a **Tulajdonságok**, majd a **Tiltás feloldása**elemet, majd kattintson **az OK gombra**. Ez lehetővé teszi a rendszer számára, hogy megbízzon a telepítőben.
-   - Futtassa a telepítőt.
+   - Indítsa el a telepítőt.
 
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy gazdagépet, feltöltheti azt a RemoteApps szolgáltatással. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg az alkalmazáscsoport kezelése oktatóanyagot.
 

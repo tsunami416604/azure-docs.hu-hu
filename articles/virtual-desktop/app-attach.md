@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972388"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772550"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -40,7 +40,7 @@ Először be kell szereznie a MSIX alkalmazáshoz használni kívánt operáció
      >[!NOTE]
      >A Windows Insider portálhoz való hozzáféréshez a Windows Insider program tagjának kell lennie. Ha többet szeretne megtudni a Windows Insider programról, tekintse meg a [Windows Insider dokumentációját](https://docs.microsoft.com/windows-insider/at-home/).
 
-2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build xxxxx**lehetőséget.
+2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build 19035** vagy újabb lehetőséget.
 
 3. Válassza a **megerősítés**lehetőséget, majd válassza ki a használni kívánt nyelvet, majd kattintson ismét a **Confirm (megerősítés** ) gombra.
     
@@ -172,8 +172,8 @@ A Windows rendszerű virtuális asztali környezetben hozzon létre egy hálóza
 Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbízható vagy önaláírt, a következő módon telepítheti:
 
 1. Kattintson a jobb gombbal a csomagra, és válassza a **Tulajdonságok**lehetőséget.
-2. A megjelenő ablakban válassza a **digitális aláírások** fület. A lapon csak egy elemnek kell szerepelnie a listán, ahogy az az alábbi képen is látható. Válassza ki az elemet az elem kiemeléséhez, majd válassza a * * de
-3. Amikor megjelenik a digitális jel részletei ablak, válassza az **általános** lapot, majd válassza a **tanúsítvány telepítése**lehetőséget.
+2. A megjelenő ablakban válassza a **digitális aláírások** fület. A lapon csak egy elemnek kell szerepelnie a listán, ahogy az az alábbi képen is látható. Válassza ki az elemet az elem kiemeléséhez, majd válassza a **részletek**lehetőséget.
+3. Amikor megjelenik a digitális aláírás részletei ablak, válassza az **általános** lapot, majd válassza a **tanúsítvány telepítése**lehetőséget.
 4. A telepítő megnyitásakor válassza a **helyi gép** lehetőséget a tárolási helyként, majd kattintson a **tovább**gombra.
 5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen**lehetőséget.
 6. Válassza **a minden tanúsítvány tárolása a következő tárolóban**lehetőséget, majd válassza a **Tallózás**lehetőséget.
@@ -199,12 +199,12 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
 2.  Kattintson a jobb gombbal a virtuális merevlemezre, és válassza a **Csatlakoztatás**lehetőséget. Ezzel csatlakoztatja a virtuális merevlemezt egy meghajtóbetűjelhez.
 
-3.  Miután csatlakoztatta a VHD-t, megnyílik a **fájlkezelő** ablak. A szülőmappa rögzítése és a **\$parentFolder** -változó frissítése
+3.  Miután csatlakoztatta a VHD-t, megnyílik a **fájlkezelő** ablak. A szülőmappa rögzítése és a **$parentFolder** változó frissítése
 
     >[!NOTE]
     >Ha nem lát szülő mappát, az azt jelenti, hogy a MSIX nem lett megfelelően kibontva. Ismételje meg az előző szakaszt, és próbálkozzon újra.
 
-4.  Nyissa meg a szülőmappa mappát. Ha a megfelelően ki van bontva, egy olyan mappa jelenik meg, amelynek a neve megegyezik a csomag nevével. Frissítse a **\$packageName** változót, hogy megegyezzen a mappa nevével.
+4.  Nyissa meg a szülőmappa mappát. Ha a megfelelően ki van bontva, egy olyan mappa jelenik meg, amelynek a neve megegyezik a csomag nevével. Frissítse a **$packageName** változót, hogy megegyezzen a mappa nevével.
 
     Például: `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
@@ -227,7 +227,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
     ```
 
 
-6.  Frissítse a **\$volumeGuid** változót az imént másolt kötet GUID azonosítóval.
+6.  Frissítse a **$volumeGuid** változót az imént másolt kötet GUID azonosítóval.
 
 7. Nyisson meg egy rendszergazdai PowerShell-parancssort, és frissítse a következő PowerShell-parancsfájlt a környezetre vonatkozó változókkal.
 
@@ -256,9 +256,9 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>PowerShell-parancsfájl regisztrációjának törlése
 
-Ehhez a parancsfájlhoz cserélje le **\$packageName** helyőrzőjét a tesztelni kívánt csomag nevére.
+Ehhez a parancsfájlhoz cserélje le a **$packageName** helyőrzőjét a tesztelni kívánt csomag nevére.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>PowerShell-parancsfájl lefázisa
 
-Ehhez a parancsfájlhoz cserélje le **\$packageName** helyőrzőjét a tesztelni kívánt csomag nevére.
+Ehhez a parancsfájlhoz cserélje le a **$packageName** helyőrzőjét a tesztelni kívánt csomag nevére.
 
 ```powershell
 #MSIX app attach de staging sample

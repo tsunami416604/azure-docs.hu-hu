@@ -1,25 +1,21 @@
 ---
-title: Útmutató az Azure-alkalmazások konfigurációjának használatáról | Microsoft Docs
+title: Útmutató az Azure-alkalmazások konfigurációjának használatáról
 description: Útmutató az Azure-alkalmazások konfigurálásához a Java Spring Apps használatával.
 services: azure-app-configuration
 documentationcenter: ''
-author: yidon
-manager: jeffya
+author: lisaguthrie
+manager: maiye
 editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring
-ms.workload: tbd
-ms.date: 01/08/2019
-ms.author: yidon
-ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/17/2019
+ms.author: lcozzens
+ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184939"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750283"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -37,7 +33,7 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Paraméter | Érték |
+    | Jelmagyarázat | Value (Díj) |
     |---|---|
     | /application/config.message | Üdvözöljük! |
 
@@ -45,16 +41,16 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
-A [Spring inicializáló](https://start.spring.io/) használatával új Spring boot-projektet hozhat létre.
+A [Spring inicializáló](https://start.spring.io/) használatával hozzon létre egy új Spring boot-projektet.
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
-2. A következő beállításokat kell megadnia:
+2. Adja meg a következő beállításokat:
 
    * **Maven** -projekt létrehozása **Javával**.
    * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
    * Adja meg az alkalmazás **csoport** -és **lelet** -nevét.
-   * Adja hozzá a **webes** függőséget.
+   * Adja hozzá a **rugó webes** függőségét.
 
 3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet egy elérési útra a helyi számítógépen.
 
@@ -68,13 +64,17 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M5</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 
 3. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -92,6 +92,11 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 4. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
     @RestController
     public class HelloController {
         private final MessageProperties properties;
@@ -110,18 +115,20 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 5. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
 6. Hozzon létre egy `bootstrap.properties` nevű új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
 
-    ```properties
+    ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
@@ -129,15 +136,17 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 1. Készítse elő a Spring boot-alkalmazást a Maven használatával, és futtassa, például:
 
-    ```shell
+    ```CLI
     mvn clean package
     mvn spring-boot:run
     ```
+
 2. Az alkalmazás futása után a *curl* használatával tesztelheti az alkalmazást, például:
 
-      ```shell
+      ```CLI
       curl -X GET http://localhost:8080/
       ```
+
     Megjelenik az alkalmazás konfigurációs tárolójában megadott üzenet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

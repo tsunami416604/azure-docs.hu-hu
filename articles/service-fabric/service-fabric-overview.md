@@ -1,51 +1,45 @@
 ---
-title: A Service Fabric az Azure-ban – áttekintés | Microsoft Docs
+title: Az Azure-beli Service Fabric áttekintése
 description: A Service Fabric áttekintése, ahol az alkalmazások számos mikroszolgáltatásból állnak a skálázhatóság és a rugalmasság érdekében. A Service Fabric egy elosztott rendszerplatform, amellyel skálázható, megbízható és könnyen felügyelhető alkalmazásokat készíthet a felhőben való használatra.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider
-ms.assetid: bbcc652a-a790-4bc4-926b-e8cd966587c0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: overview
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/22/2019
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: 3c8eb7ead7851c311c79c2f9e9bdc7e703c3af71
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901595"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747499"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
+
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezekben tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.
 
 Ez a rövid videó bemutatja a Service Fabric platformot és a mikroszolgáltatásokat:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Megfelelőség
+
 Az Azure Service Fabric erőforrás-szolgáltató minden Azure-régióban elérhető, és megfelel az Azure által birtokolt összes megfelelőségi tanúsítványnak; Ide tartozik a következő: SOC, ISO, PCI DSS, HIPAA és GDPR. A megfelelőségi tanúsítványok teljes listájáért tekintse át a következőket: [megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
-## <a name="applications-composed-of-microservices"></a>Mikroszolgáltatásokból álló alkalmazások 
-A Service Fabric lehetővé teszi mikroszolgáltatásokból álló, skálázható és megbízható alkalmazásokat készítését és felügyeletét, amelyek nagy sűrűség mellett futnak számítógépek egy megosztott készletén, vagyis fürtökön. Kifinomult, könnyen használható futtatókörnyezetet biztosít, amelyben elosztott, skálázható, állapot nélküli és állapotalapú, tárolókban futó mikroszolgáltatásokat állíthat össze. Ezenkívül átfogó alkalmazásfelügyeleti képességeket kínál a telepített alkalmazások kiépítéséhez, üzembe helyezéséhez, figyeléséhez, frissítéséhez/javításához és törléséhez, beleértve a tárolóalapú szolgáltatásokat is.
+## <a name="applications-composed-of-microservices"></a>Mikroszolgáltatásokból álló alkalmazások
+
+A Service Fabric segítségével méretezhető és megbízható alkalmazások hozhatók létre és kezelhetők, amelyek a-szolgáltatásokból állnak. Ezek az elosztott szolgáltatások nagy sűrűségben futnak a gépek megosztott készletén, amelyet fürtnek nevezünk. Service Fabric egy kifinomult, könnyű futtatókörnyezetet biztosít, amely támogatja az állapot nélküli és állapot-nyilvántartó szolgáltatásokat. Emellett átfogó alkalmazás-felügyeleti képességeket biztosít a telepített alkalmazások üzembe helyezéséhez, üzembe helyezéséhez, figyeléséhez, frissítéséhez/javításához és törléséhez.
+
+A Service Fabric segítségével olyan natív felhőalapú szolgáltatások készíthetőek, amelyek kis méretben indíthatóak el, és igény szerint nagy léptékűre skálázhatók akár többszáz vagy többezer géppel. A modern webes szolgáltatások mikroszolgáltatásokból állnak. Mikroszolgáltatások például a protokollátjárók, a felhasználói profilok, a kosarak, a készletfeldolgozók, az üzenetsorok és a gyorsítótárak.
 
 A Service Fabric képezi számos jelenleg elérhető Microsoft-szolgáltatás alapját, ilyen például az Azure SQL Database, az Azure Cosmos DB, a Cortana, a Microsoft Power BI, a Microsoft Intune, az Azure Event Hubs, az Azure IoT Hub, a Dynamics 365, a Skype Vállalati verzió, valamint több alapvető Azure-szolgáltatás.
 
-A Service Fabric segítségével olyan natív felhőalapú szolgáltatások készíthetőek, amelyek kis méretben indíthatóak el, és igény szerint nagy léptékűre skálázhatók akár többszáz vagy többezer géppel. A modern webes szolgáltatások mikroszolgáltatásokból állnak. Mikroszolgáltatások például a protokollátjárók, a felhasználói profilok, a kosarak, a készletfeldolgozók, az üzenetsorok és a gyorsítótárak. 
-
-A Service Fabric átfogó futásidejű és életciklus-felügyeleti képességeket biztosít az ilyen mikroszolgáltatásokból álló alkalmazások számára. Mikroszolgáltatásokat üzemeltet a Service Fabric-fürtben üzembe helyezett és aktivált tárolókban. A virtuális gépekről a tárolókra való áttérés lehetővé teszi, hogy nagyságrendekkel megnövelje a sűrűséget. Ehhez hasonlóan a sűrűséget jelentősen megnövelheti, ha a tárolókról áttér a tárolókban üzemeltetett mikroszolgáltatásokra. Például az Azure SQL Database egyetlen fürtje több száz számítógépből áll, amelyek több tízezer tárolót futtatnak, és ezek több százezer adatbázist üzemeltetnek. Mindegyik adatbázis egy állapotalapú Service Fabric-mikroszolgáltatás. 
+A Service Fabric a Service Fabric-fürtön üzembe helyezett és aktivált tárolókban lévő-szolgáltatásokat üzemeltet. A virtuális gépekről a tárolókra való áttérés lehetővé teszi, hogy nagyságrendekkel megnövelje a sűrűséget. Ehhez hasonlóan a sűrűséget jelentősen megnövelheti, ha a tárolókról áttér a tárolókban üzemeltetett mikroszolgáltatásokra. Például az Azure SQL Database egyetlen fürtje több száz számítógépből áll, amelyek több tízezer tárolót futtatnak, és ezek több százezer adatbázist üzemeltetnek. Mindegyik adatbázis egy állapotalapú Service Fabric-mikroszolgáltatás.
 
 A mikroszolgáltatás-alapú megközelítéssel kapcsolatos további részletekért olvassa el a [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások létrehozásához?](service-fabric-overview-microservices.md) című cikket.
 
 ## <a name="container-deployment-and-orchestration"></a>Tároló üzembe helyezése és előkészítése
-A Service Fabric a Microsoft [tárolóvezénylője](service-fabric-cluster-resource-manager-introduction.md), amely mikroszolgáltatásokat helyez üzembe számítógépfürtökön. A mikroszolgáltatások számos különféle módon fejleszthetőek a [Service Fabric programozási modellektől](service-fabric-choose-framework.md) és az [ASP.NET Core-tól](service-fabric-reliable-services-communication-aspnetcore.md) [tetszőleges kód üzembe helyezéséig](service-fabric-guest-executables-introduction.md). Ami pedig még ennél is fontosabb, hogy egy adott alkalmazáson belül vegyesen használhat folyamatokon belüli és tárolókon belüli szolgáltatásokat. Ha csak [tárolókat kíván üzembe helyezni és felügyelni](service-fabric-containers-overview.md), a Service Fabric tökéletes választás tárolóvezénylőként.
+
+A Service Fabric a Microsoft [tárolóvezénylője](service-fabric-cluster-resource-manager-introduction.md), amely mikroszolgáltatásokat helyez üzembe számítógépfürtökön. A mikroszolgáltatások számos különféle módon fejleszthetőek a [Service Fabric programozási modellektől](service-fabric-choose-framework.md) és az [ASP.NET Core-tól](service-fabric-reliable-services-communication-aspnetcore.md)[tetszőleges kód üzembe helyezéséig](service-fabric-guest-executables-introduction.md). Ami pedig még ennél is fontosabb, hogy egy adott alkalmazáson belül vegyesen használhat folyamatokon belüli és tárolókon belüli szolgáltatásokat. Ha csak [tárolókat kíván üzembe helyezni és felügyelni](service-fabric-containers-overview.md), a Service Fabric tökéletes választás tárolóvezénylőként.
 
 ## <a name="any-os-any-cloud"></a>Bármely operációs rendszeren vagy felhőben
+
 A Service Fabric bárhol futtatható. Számos környezetben létrehozhat fürtöket a Service Fabrichez, például az Azure-ban vagy a helyszínen, Windows Serveren vagy Linuxon. Akár más nyilvános felhőkben is létrehozhat fürtöket. Ráadásul az SDK fejlesztési környezete **azonos** az éles környezettel, és nem használ emulátorokat. Ez azt jelenti, hogy a helyi fejlesztési fürtön futó alkalmazások üzembe helyezhetők más környezetek fürtjein.
 
 ![Service Fabric platform][Image1]
@@ -55,12 +49,13 @@ Windows-fejlesztéshez a Service Fabric .NET SDK integrálva van a Visual Studi�
 A fürtök létrehozásával kapcsolatos további információkért olvassa el a [fürtök Windows Serveren vagy Linuxon való létrehozásával](service-fabric-deploy-anywhere.md) kapcsolatos témakört vagy Azure-ral való létrehozás esetén a [fürtök az Azure Portalon való létrehozásával](service-fabric-cluster-creation-via-portal.md) kapcsolatos témakört.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Állapot nélküli és állapotalapú mikroszolgáltatások a Service Fabrichez
+
 A Service Fabric segítségével mikroszolgáltatásokból vagy tárolókból álló alkalmazásokat építhet. Az állapot nélküli mikroszolgáltatások (például a protokollátjárók és webproxyk) nem tartanak fenn változtatható állapotot a kéréseken és a szolgáltatástól ezekre kapott válaszokon kívül. Az Azure Cloud Services feldolgozói szerepkörei például állapotmentes szolgáltatások. Az állapotalapú mikroszolgáltatások (például felhasználói fiókok, adatbázisok, eszközök, kosarak és üzenetsorok) változtatható, mérvadó állapotot tartanak fenn a kéréseken és a válaszokon kívül is. A modern webes alkalmazások állapot nélküli és állapotalapú mikroszolgáltatások kombinációjából állnak. 
 
 A Service Fabric kulcsfontosságú különbséget tesz az állapot-nyilvántartó szolgáltatások kiépítéséhez, akár a [beépített programozási modellekkel](service-fabric-choose-framework.md) , akár a tárolós állapot-nyilvántartó szolgáltatásokkal. Az [alkalmazás-forgatókönyvek](service-fabric-application-scenarios.md) az állapotalapú szolgáltatások használatát mutatják be.
 
-
 ## <a name="application-lifecycle-management"></a>Alkalmazások életciklus-felügyelete
+
 A Service Fabric támogatást nyújt a teljes alkalmazás-életciklushoz és a felhőalapú alkalmazások CI/CD folyamataihoz, beleértve a tárolókat. Az életciklus részét képezi minden a fejlesztéstől kezdve az üzembe helyezésen, valamint a napi felügyeleten és karbantartáson át a leszerelésig.
 
 A Service Fabric alkalmazáséletciklus-felügyeleti képességei lehetővé teszik az alkalmazás-rendszergazdák és az informatikai dolgozók számára egyszerű, kevés beavatkozást igénylő munkafolyamatok használatát az alkalmazások kiépítéséhez, üzembe helyezéséhez, javításához és figyeléséhez. Ezek a beépített munkafolyamatok nagy mértékben csökkentik az informatikai dolgozók az alkalmazások folyamatos elérhetőségének biztosításából eredő terheit.
@@ -72,6 +67,7 @@ A Service Fabric olyan CI-/CD-eszközökkel van integrálva, mint az [Azure Pipe
 Az alkalmazások életciklus-felügyeletével kapcsolatos további tudnivalókért tekintse meg az [alkalmazások életciklusával](service-fabric-application-lifecycle.md) kapcsolatos témakört. A kódok üzembe helyezésével kapcsolatos további tudnivalókért tekintse meg a [futtatható vendégalkalmazás üzembe helyezéséről](service-fabric-deploy-existing-app.md) szóló témakört.
 
 ## <a name="key-capabilities"></a>Főbb képességek
+
 A Service Fabric használatával a következőket teheti:
 
 * Kódváltoztatás nélkül végezhet üzembe helyezést az Azure-ban, illetve Windowst vagy Linuxot futtató helyszíni adatközpontokban. Egyszeri írás után üzembe helyezést végezhet bárhol, bármely Service Fabric-fürtben.
@@ -88,6 +84,7 @@ A Service Fabric használatával a következőket teheti:
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Következő lépések
+
 * További információ:
   * [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások létrehozásához?](service-fabric-overview-microservices.md)
   * [Terminológiai áttekintés](service-fabric-technical-overview.md)

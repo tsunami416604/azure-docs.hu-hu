@@ -3,15 +3,15 @@ title: Csoportmunka-fejlesztés a Kubernetes-on
 services: azure-dev-spaces
 ms.date: 04/25/2019
 ms.topic: quickstart
-description: Csapat Kubernetes-fejlesztés az Azure-beli tárolókkal és szolgáltatásokkal
+description: Ez a rövid útmutató bemutatja, hogyan végezheti el a Team Kubernetes-fejlesztést tárolókkal és szolgáltatásokkal az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2f3ed0f2a9635488aea509e7816fbe84e1589d14
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484025"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770832"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: csoportmunka-fejlesztés a Kubernetes-ben – Azure dev Spaces
 
@@ -236,4 +236,4 @@ Megtudhatja, hogyan segít az Azure Dev Spaces az összetettebb alkalmazások fe
 > [Több tároló használata és fejlesztés csapatban](multi-service-nodejs.md)
 
 [helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

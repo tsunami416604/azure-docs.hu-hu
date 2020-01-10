@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113285"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754324"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 > [!div class="op_single_selector"]
@@ -62,8 +62,8 @@ Az irányítópulton az erőforrás-figyelés a szolgáltatás irányítópultj�
 
 A Search szolgáltatás REST API használatával a dokumentumok és indexek száma programozott módon is elvégezhető: 
 
-* [Index statisztikájának beolvasása](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Dokumentumok száma](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Index statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Dokumentumok számlálása](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Vész-helyreállítási és szolgáltatás-kimaradások
 
@@ -71,7 +71,7 @@ Bár az adatai megmentését is lehetővé teszi, az Azure Cognitive Search nem 
 
 Ha a Microsoft általi ellenőrzésen kívüli katasztrofális hibák esetén folyamatos szolgáltatásra van szükség, egy másik régióban is [kiépítheti a további](search-create-service-portal.md) szolgáltatásokat, és a Geo-replikációs stratégia megvalósításával biztosíthatja, hogy az indexek teljes mértékben redundánsak legyenek az összes szolgáltatásban.
 
-Azok az ügyfelek, akik [Indexelő](search-indexer-overview.md) adatokat használnak az indexek feltöltéséhez és frissítéséhez, az azonos adatforrást használó geo-specifikus indexelő segítségével kezelhetik a vész-helyreállítást. A különböző régiókban található két szolgáltatás, amelyek mindegyike indexelt, indexelheti ugyanazt az adatforrást a Geo-redundancia eléréséhez. Ha olyan adatforrásokból származó indexelést is használ, amelyek földrajzilag redundánsak, vegye figyelembe, hogy az Azure Cognitive Search indexelő csak az elsődleges replikák növekményes indexelését hajthatja végre. Feladatátvételi esemény esetén ügyeljen arra, hogy az indexelő újra az új elsődleges replikára irányítsa. 
+Azok az ügyfelek, akik [Indexelő](search-indexer-overview.md) adatokat használnak az indexek feltöltéséhez és frissítéséhez, az azonos adatforrást használó geo-specifikus indexelő segítségével kezelhetik a vész-helyreállítást. A különböző régiókban található két szolgáltatás, amelyek mindegyike indexelt, indexelheti ugyanazt az adatforrást a Geo-redundancia eléréséhez. Ha olyan adatforrásokból származó indexelést is használ, amelyek földrajzilag redundánsak, vegye figyelembe, hogy az Azure Cognitive Search indexelő csak növekményes indexelést végezhetnek (új, módosított vagy törölt dokumentumokból származó frissítések egyesítése) az elsődleges replikából. Feladatátvételi esemény esetén ügyeljen arra, hogy az indexelő újra az új elsődleges replikára irányítsa. 
 
 Ha nem használ indexelő funkciót, az alkalmazás kódjával párhuzamosan küldheti el az objektumokat és az adatait a különböző keresési szolgáltatásoknak. További információ: [teljesítmény és optimalizálás az Azure Cognitive Searchban](search-performance-optimization.md).
 
@@ -83,7 +83,7 @@ Ellenkező esetben az index létrehozásához és feltöltéséhez használt alk
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Vertikális fel- és leskálázás
+## <a name="scale-up-or-down"></a>Felfelé és lefelé skálázás
 Minden keresési szolgáltatás legalább egy replikával és egy partícióval indul el. Ha olyan platformra regisztrált, [amely dedikált erőforrásokat biztosít](search-limits-quotas-capacity.md), a szolgáltatás Irányítópultján kattintson a **Méretezés** csempére az erőforrás-használat módosításához.
 
 Ha erőforráson keresztül ad hozzá kapacitást, a szolgáltatás automatikusan ezeket használja. Az Ön részéről nincs szükség további műveletre, de az új erőforrás hatásának megvalósulása némi késéssel jár. További erőforrások kiépítéséhez akár 15 percet is igénybe vehet.
@@ -114,7 +114,7 @@ Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes 
 
 <a id="next-steps"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha megértette a Service Administration mögötti fogalmakat, érdemes lehet a [PowerShell](search-manage-powershell.md) használatával automatizálni a feladatokat.
 
 Javasoljuk továbbá a [teljesítmény-és optimalizálási cikk](search-performance-optimization.md)áttekintését.

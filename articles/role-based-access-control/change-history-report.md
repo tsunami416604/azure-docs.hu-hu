@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172403"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744801"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Az Azure-erőforrásokra vonatkozó RBAC-változásokkal kapcsolatos tevékenységek naplóinak megtekintése
 
-Előfordulhat, hogy az Azure-erőforrások szerepköralapú hozzáférés-vezérlési (RBAC) módosításaival kapcsolatos információkra van szüksége, például naplózási vagy hibaelhárítási célból. Ha valaki módosítja a szerepkör-hozzárendeléseket vagy a szerepkör-definíciókat az előfizetéseken belül, akkor a módosítások bekerülnek az [Azure-tevékenység naplójába](../azure-monitor/platform/activity-logs-overview.md). A tevékenységek naplóit megtekintve megtekintheti az elmúlt 90 nap összes RBAC változását.
+Előfordulhat, hogy az Azure-erőforrások szerepköralapú hozzáférés-vezérlési (RBAC) módosításaival kapcsolatos információkra van szüksége, például naplózási vagy hibaelhárítási célból. Ha valaki módosítja a szerepkör-hozzárendeléseket vagy a szerepkör-definíciókat az előfizetéseken belül, akkor a módosítások bekerülnek az [Azure-tevékenység naplójába](../azure-monitor/platform/platform-logs-overview.md). A tevékenységek naplóit megtekintve megtekintheti az elmúlt 90 nap összes RBAC változását.
 
 ## <a name="operations-that-are-logged"></a>Naplózott műveletek
 
@@ -35,17 +35,17 @@ Itt láthatók a RBAC kapcsolatos műveletek:
 - Egyéni szerepkör-definíció létrehozása vagy frissítése
 - Egyéni szerepkör-definíció törlése
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portál
 
-Első lépésként a legkönnyebben megtekintheti a tevékenység naplóit a Azure Portal. Az alábbi képernyőfelvételen egy olyan műveletnapló látható, amely a szerepkör-hozzárendelés és a szerepkör-definíciós műveletek megjelenítésére lett szűrve. Emellett egy hivatkozást is tartalmaz, amellyel a naplófájlok a CSV-fájlként tölthetők le.
+Első lépésként a legegyszerűbb módszer, ha megtekinti a tevékenységnaplókat az Azure Portalon. Az alábbi képernyőfelvételen egy olyan műveletnapló látható, amely a szerepkör-hozzárendelés és a szerepkör-definíciós műveletek megjelenítésére lett szűrve. Emellett egy hivatkozást is tartalmaz, amellyel a naplófájlok a CSV-fájlként tölthetők le.
 
 ![A portált használó tevékenységek naplói – képernyőfelvétel](./media/change-history-report/activity-log-portal.png)
 
 A portálon a tevékenység naplója több szűrőt tartalmaz. A RBAC-hez kapcsolódó szűrők:
 
-|Szűrés  |Value  |
+|Szűrő  |Value (Díj)  |
 |---------|---------|
-|Eseménykategória     | <ul><li>Rendszergazdai</li></ul>         |
+|Esemény kategóriája     | <ul><li>Adminisztratív</li></ul>         |
 |Művelet     | <ul><li>Szerepkör-hozzárendelés létrehozása</li> <li>Szerepkör-hozzárendelés törlése</li> <li>Egyéni szerepkör-definíció létrehozása vagy frissítése</li> <li>Egyéni szerepkör-definíció törlése</li></ul>      |
 
 
@@ -92,7 +92,7 @@ Properties              :
 
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Ha az Azure CLI-vel szeretné megtekinteni a tevékenység naplóit, használja az az [monitor Activity-log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot.
 
@@ -127,7 +127,7 @@ Az első lépésekhez a következő alapvető lépések szükségesek:
 
    ![Azure Monitor naplók lehetőség a portálon](./media/change-history-report/azure-log-analytics-option.png)
 
-1. A naplók lekérdezéséhez [](../log-analytics/log-analytics-log-search.md) vagy a [speciális elemzési portálhoz](../azure-monitor/log-query/get-started-portal.md) is használhatja a naplókat, és megtekintheti azokat. További információ erről a két lehetőségről: [a naplók keresése vagy a speciális elemzési portál](../azure-monitor/log-query/portals.md).
+1. A naplók lekérdezéséhez vagy a [speciális elemzési portálhoz](../azure-monitor/log-query/get-started-portal.md) is használhatja a [naplókat](../log-analytics/log-analytics-log-search.md) , és megtekintheti azokat. További információ erről a két lehetőségről: [a naplók keresése vagy a speciális elemzési portál](../azure-monitor/log-query/portals.md).
 
 A következő egy lekérdezés, amely a célként megadott erőforrás-szolgáltató által szervezett új szerepkör-hozzárendeléseket adja vissza:
 
@@ -149,6 +149,6 @@ AzureActivity
 
 ![Tevékenységek naplói a speciális elemzési portál használatával – képernyőfelvétel](./media/change-history-report/azure-log-analytics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Események megtekintése a tevékenységnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [Előfizetési tevékenységek monitorozása az Azure-tevékenységnaplóval](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

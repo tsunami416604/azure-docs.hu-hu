@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494314"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744871"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel
 
@@ -58,7 +58,7 @@ Másolja a csomópont adatait az interaktív lekérdezési fürt headnode0 lév�
 
 1. Navigáljon a **kaptár** > **konfigurációk** > **Advanced** > **Advanced kaptár-site** > **kaptár. Zookeeper. kvórum** elemre, és jegyezze fel az értéket. Az érték a következőhöz hasonló lehet: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Navigáljon a **kaptár** > **konfigurációk** > **Advanced** > **általános** > **kaptár. metaadattár. URI** -k, és jegyezze fel az értéket. Az érték a következőhöz hasonló lehet: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Navigáljon a **kaptár** > **konfigurációk** > **Advanced** > **általános** > **kaptár. metaadattár. URI** -k, és jegyezze fel az értéket. Az érték a következőhöz hasonló lehet: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 #### <a name="from-your-apache-spark-cluster"></a>A Apache Spark-fürtből
 
@@ -74,11 +74,11 @@ A Spark Ambari webes felhasználói felületén navigáljon a **Spark2** > **kon
 
 Válassza a **tulajdonság hozzáadása...** lehetőséget a következők hozzáadásához/frissítéséhez:
 
-| Jelmagyarázat | Érték |
+| Jelmagyarázat | Value (Díj) |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|A **kaptár. llap. Daemon. Service. hosts**által korábban beszerzett érték.|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Állítsa be a JDBC kapcsolati sztringet, amely az interaktív lekérdezési fürt Hiveserver2 kapcsolódik. CSERÉLJE le a `LLAPCLUSTERNAME`t az interaktív lekérdezési fürt nevére. Cserélje le a `PWD`t a tényleges jelszóval.|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. A megfelelő HDFS-kompatibilis előkészítési könyvtárra van beállítva. Ha két különböző fürttel rendelkezik, az átmeneti könyvtárnak a LLAP-fürt Storage-fiókjának átmeneti könyvtárában kell lennie, hogy a HiveServer2 hozzáférjen hozzá.  Cserélje le a `STORAGE_ACCOUNT_NAME`t a fürt által használt Storage-fiók nevére, és `STORAGE_CONTAINER_NAME` a Storage-tároló nevével.|
+|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2` kérdésre adott válaszban foglalt lépéseket. Állítsa be a JDBC kapcsolati sztringet, amely az interaktív lekérdezési fürt Hiveserver2 kapcsolódik. CSERÉLJE le a `LLAPCLUSTERNAME`t az interaktív lekérdezési fürt nevére. Cserélje le a `PWD`t a tényleges jelszóval.|
+|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` kérdésre adott válaszban foglalt lépéseket. A megfelelő HDFS-kompatibilis előkészítési könyvtárra van beállítva. Ha két különböző fürttel rendelkezik, az átmeneti könyvtárnak a LLAP-fürt Storage-fiókjának átmeneti könyvtárában kell lennie, hogy a HiveServer2 hozzáférjen hozzá.  Cserélje le a `STORAGE_ACCOUNT_NAME`t a fürt által használt Storage-fiók nevére, és `STORAGE_CONTAINER_NAME` a Storage-tároló nevével.|
 |`spark.datasource.hive.warehouse.metastoreUri`|A **kaptár. metaadattár. URI**-k által korábban beszerzett érték.|
 |`spark.security.credentials.hiveserver2.enabled`|`false` a FONALas ügyfél üzembe helyezési módjához.|
 |`spark.hadoop.hive.zookeeper.quorum`|A **kaptár. Zookeeper. kvórum**által korábban beszerzett érték.|
@@ -107,7 +107,7 @@ A Spark-Shell-munkamenet elindításához hajtsa végre a következő lépéseke
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.2.1-8.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
@@ -132,7 +132,7 @@ A Enterprise Security Package (ESP) olyan nagyvállalati szintű képességeket 
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/3.0.1.0-183/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-183.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
     --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'
@@ -253,13 +253,13 @@ A **CTRL + C** billentyűkombinációval állítsa le a netcat a második SSH-mu
 
         ![kaptár-raktár összekötő Ranger-struktúra szabályzatának listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **alapértelmezett**, kaptár-tábla **: bemutató**, struktúra oszlop **: név**, felhasználó: **Rsadmin2**, hozzáférési típusok: **Select**és **részleges maszk: az elmúlt 4 megjelenítése** a **maszkolási beállítások kiválasztása** menüből. Kattintson az **Add** (Hozzáadás) parancsra.
+    a. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **alapértelmezett**, kaptár-tábla **: bemutató**, struktúra oszlop **: név**, felhasználó: **Rsadmin2**, hozzáférési típusok: **Select**és **részleges maszk: az elmúlt 4 megjelenítése** a **maszkolási beállítások kiválasztása** menüből. Kattintson a **Hozzáadás** parancsra.
                 ![házirend létrehozása](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Megtekintheti a tábla tartalmát. A Ranger-szabályzat alkalmazása után csak az oszlop utolsó négy karakterét láthatjuk.
 
     ![bemutató táblázat a Ranger-szabályzat alkalmazása után](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az interaktív lekérdezés használata HDInsighttal](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
 * [Példák a méhkas Warehouse-összekötővel való interakcióra a Zeppelin, a Livy, a Spark-Submit és a pyspark használatával](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

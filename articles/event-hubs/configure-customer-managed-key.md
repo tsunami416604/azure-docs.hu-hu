@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705467"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744826"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure-Event Hubs inaktív adatok titkosításához a Azure Portal (előzetes verzió) használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -87,7 +87,7 @@ A titkosítási kulcs visszavonása után a titkosított névtér Event Hubs szo
 > Ha töröl egy meglévő titkosítási kulcsot a kulcstartóból, és lecseréli a Event Hubs névtér egy új kulcsára, mivel a törlési kulcs továbbra is érvényes (mivel gyorsítótárazva van) akár egy óráig is, a régi (a régi kulccsal titkosított) adatok továbbra is elérhetők  az új adattal, amely most már csak az új kulcs használatával érhető el. Ezt a viselkedést a szolgáltatás előzetes verziójában tervezték meg. 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása 
-A diagnosztikai naplók beállítása a BYOK-kompatibilis névterekhez megadja a szükséges információkat a műveletekről, amikor egy névtér az ügyfél által felügyelt kulcsokkal van titkosítva. Ezeket a naplókat engedélyezheti és később továbbíthatja az Event hub számára, vagy elemezheti a log Analytics szolgáltatásban, vagy továbbíthatja a tárolóba a testreszabott elemzések elvégzéséhez. További információ a diagnosztikai naplókról: [Az Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md).
+A diagnosztikai naplók beállítása a BYOK-kompatibilis névterekhez megadja a szükséges információkat a műveletekről, amikor egy névtér az ügyfél által felügyelt kulcsokkal van titkosítva. Ezeket a naplókat engedélyezheti és később továbbíthatja az Event hub számára, vagy elemezheti a log Analytics szolgáltatásban, vagy továbbíthatja a tárolóba a testreszabott elemzések elvégzéséhez. További információ a diagnosztikai naplókról: [Az Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Felhasználói naplók engedélyezése
 Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél által felügyelt kulcsokat.
@@ -117,7 +117,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. M
 | kulcs | Az Event Hubs névtér titkosításához használt kulcsnév. |
 | version | A használt kulcs verziószáma. |
 | művelet | A Key vaultban a kulcsban végrehajtott művelet. Például letilthatja/engedélyezheti a kulcsot, becsomagolhatja vagy kicsomagolhatja |
-| Kód | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |
+| kód | A művelethez társított kód. Példa: hibakód, 404 azt jelenti, hogy a kulcs nem található. |
 | message | A művelethez társított hibaüzenetek |
 
 Íme egy példa egy ügyfél által felügyelt kulcs naplójára:

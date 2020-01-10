@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670088"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750466"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
 
@@ -24,7 +24,7 @@ Minden fejlesztői csapat egyedi követelményekkel rendelkezik, amelyekkel megn
 
 A központi telepítési forrás az alkalmazás kódjának helye. Az éles alkalmazások esetében a központi telepítési forrás általában egy verziókövetés szoftverrel (például [GitHub, BitBucket vagy Azure Repos](deploy-continuous-deployment.md)) üzemeltetett tárház. Fejlesztési és tesztelési helyzetekben a központi telepítési forrás lehet [egy projekt a helyi gépen](deploy-local-git.md). A App Service a [OneDrive és a Dropbox mappákat](deploy-content-sync.md) is támogatja központi telepítési forrásként. A Felhőbeli mappák megkönnyítik a App Service használatának megkezdését, ezért általában nem ajánlott a forrást nagyvállalati szintű üzemi alkalmazásokhoz használni. 
 
-### <a name="build-pipeline"></a>Folyamat létrehozása
+### <a name="build-pipeline"></a>Buildelési folyamat
 
 Ha úgy dönt, hogy egy központi telepítési forrást választ, a következő lépés a létrehozási folyamat kiválasztása. A létrehozási folyamat beolvassa a forráskódot a központi telepítési forrásból, és végrehajt egy sor lépést (például a kód fordítását, a HTML és a JavaScriptek futtatását, a tesztek futtatását és a csomagolási összetevőket), hogy az alkalmazás futtatható állapotba kerüljön. A létrehozási folyamat által végrehajtott parancsok a nyelvi veremtől függenek. Ezek a műveletek egy olyan Build-kiszolgálón hajthatók végre, mint például az Azure-folyamatok, vagy helyileg is végrehajtva.
 
@@ -66,3 +66,12 @@ A leállás megakadályozása érdekében mindig a helyi gyorsítótárat haszn�
 ### <a name="high-cpu-or-memory"></a>Magas CPU vagy memória
 
 Ha a App Service csomag a rendelkezésre álló CPU vagy memória több mint 90%-át használja, előfordulhat, hogy az alapul szolgáló virtuális gép nem tudja feldolgozni az üzemelő példányt. Ebben az esetben a példányok számának ideiglenes skálázásával végezze el az üzembe helyezést. Miután az üzembe helyezés befejeződött, visszaállíthatja a példányszámot az előző értékre.
+
+Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
+
+- Navigáljon a webalkalmazáshoz a [Azure Portal](https://portal.azure.com).
+- Kattintson a bal oldali navigációs sávon található **problémák diagnosztizálásához és megoldásához** , amely megnyitja app Service diagnosztikát.
+- Válassza az **ajánlott eljárások** Kezdőlap csempét.
+- Kattintson az **ajánlott eljárások a rendelkezésre állás & teljesítmény** vagy **ajánlott eljárások az optimális konfigurációhoz** lehetőségre az alkalmazás aktuális állapotának megtekintéséhez az ajánlott eljárásokkal kapcsolatban.
+
+Ezzel a hivatkozással közvetlenül is megnyithatja App Service diagnosztikát az erőforráshoz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

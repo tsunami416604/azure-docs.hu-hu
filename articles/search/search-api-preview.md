@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720026"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754417"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Cognitive Search Service REST API – Version 2019-05-06 – előzetes verzió
 
@@ -25,11 +25,11 @@ Ez a cikk a Search Service REST API `api-version=2019-05-06-Preview` verzióját
 
 ## <a name="new-in-2019-05-06-preview"></a>Új a 2019-05-06-ben – előzetes verzió
 
-+ A [növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md) új mód az indexeléshez, amely az állapotot és a gyorsítótárazást egy készségkészlet, így lehetővé teszi a meglévő kimenet újbóli felhasználását, ha a forrásadatok, az indexelő és a készségkészlet-definíciók változatlanok. Ez a funkció csak a kognitív készségkészlet meghatározott dúsításokra vonatkozik.
++ A [növekményes bővítés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) egy alkoholtartalom-növelési folyamatba helyezi a gyorsítótárazást, lehetővé téve a meglévő kimenet újrafelhasználását, ha egy célként megadott módosítás, például egy készségkészlet vagy egy másik objektum frissítése nem módosítja a tartalmat. A gyorsítótárazás csak a készségkészlet által létrehozott dúsított dokumentumokra vonatkozik.
 
-+ [Cosmos db indexelő](search-howto-index-cosmosdb.md) támogatja a MongoDB API-t, a Gremlin API-t és a Cassandra API.
++ [Cosmos db indexelő](search-howto-index-cosmosdb.md) támogatja a MongoDB API (előzetes verzió), a Gremlin API (előzetes verzió) és a Cassandra API (előzetes verzió) használatát.
 
-+ [Azure Data Lake Storage Gen2 indexelő](search-howto-index-azure-data-lake-storage.md) képes a tartalom és a metaadatok indexelésére Data Lake Storage Gen2.
++ [Azure Data Lake Storage Gen2 indexelő (előzetes verzió)](search-howto-index-azure-data-lake-storage.md) képes a tartalom és a metaadatok indexelésére Data Lake Storage Gen2.
 
 + A [dokumentumok kinyerése (előzetes verzió)](cognitive-search-skill-document-extraction.md) az indexelés során használt kognitív képesség, amely lehetővé teszi egy fájl tartalmának kicsomagolását egy készségkészlet belülről. Korábban a készségkészlet végrehajtása előtt csak a csinos dokumentum történt. Ennek a képességnek a hozzáadásával ezt a műveletet a készségkészlet végrehajtásán belül is végrehajthatja.
 
@@ -57,7 +57,7 @@ A következő példa szintaxisa az előzetes verziójú API-verzió hívását m
 
 Az Azure Cognitive Search szolgáltatás több verzióban is elérhető. További információ: API- [verziók](search-api-versions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Search REST API dokumentációját. Ha problémákba ütközik, kérjen segítséget a [StackOverflow](https://stackoverflow.com/) , vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 

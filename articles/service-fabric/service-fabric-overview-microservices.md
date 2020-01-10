@@ -1,209 +1,199 @@
 ---
-title: Az Azure mikroszolgáltatások bemutatása |} A Microsoft Docs
-description: Miért érdemes a mikroszolgáltatási megközelítést felhőalkalmazások létrehozásához fontos a modern alkalmazások fejlesztését, és hogyan Azure Service Fabric ennek érdekében platformot biztosít áttekintést.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Bevezetés az Azure-beli szolgáltatásokra
+description: Annak áttekintése, hogy miért fontos a Felhőbeli alkalmazások fejlesztése a szolgáltatásokkal a modern alkalmazásfejlesztés szempontjából, és hogy az Azure Service Fabric milyen platformot biztosít ennek eléréséhez.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5bcb52165c7cae18b807eff03c80b51eae8e2717
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204810"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750616"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>Miért érdemes használni a mikroszolgáltatási megközelítést alkalmazások létrehozásához?
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>Miért érdemes alkalmazások létrehozására használni a Service-t
 
-A szoftver-fejlesztők számára egy alkalmazás összetevőit faktoring nincs újdonságunk. Általában egy rétegzett megközelítéssel használnak, egy háttér-tárolót, a középső rétegű üzleti logikát és a egy előtér-felhasználói felületének (UI). Mi *rendelkezik* megváltozott az elmúlt néhány évben, hogy a fejlesztők fejleszt elosztott alkalmazások a felhőben.
+A szoftverfejlesztők számára az alkalmazások összetevő-részekre való kiszámításának nem újdonsága. A rendszer általában egy többrétegű megközelítést használ, egy háttérbeli tárolóval, egy közepes szintű üzleti logikával és egy előtér-felhasználói felülettel (UI). Az elmúlt néhány *évben módosult* , hogy a fejlesztők elosztott alkalmazásokat készítenek a felhőhöz.
 
-Az alábbiakban néhány változó üzleti igények szerint:
+Íme néhány változó üzleti igény:
 
-* Egy szolgáltatás, amely rendelkezik létrehozott és üzemeltetett egyszerre több földrajzi régióban új ügyfeleket érhet el.
-* Gyorsabb tartalomkézbesítés a funkciók és képességek az ügyféligényekre percalapú díjfizetést kínál az válaszol.
-* Továbbfejlesztett erőforrás-használat költségek csökkentése érdekében.
+* Egy nagy léptékű szolgáltatás, amellyel az ügyfelek az új földrajzi régiókban érhetők el.
+* A funkciók és képességek gyorsabb megvalósítása, hogy az ügyfelek igényeire reagáljon agilis módon.
+* Jobb erőforrás-használat a költségek csökkentése érdekében.
 
-Ezek az üzleti igények, lényegében *hogyan* alkalmazások készítünk.
+Ezek az üzleti igények hatással vannak az alkalmazások kiépítésének *módjára* .
 
-Az Azure mikroszolgáltatás-alapú megközelítést kapcsolatos további információkért lásd: [mikroszolgáltatás-alapú: Egy felhőbeli alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+További információ az Azure-beli szolgáltatásokkal kapcsolatos módszerekről: a Service-t [a felhő által működtetett alkalmazás-forradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)ismerteti.
 
-## <a name="monolithic-vs-microservices-design-approach"></a>Monolitikus, és a mikroszolgáltatások tervezési megközelítés
+## <a name="monolithic-vs-microservices-design-approach"></a>A monolit és a szolgáltatások kialakításának megközelítése
 
-Alkalmazások időbeli alakulásával. Sikeres alkalmazás fel hasznos személyek fejlesztheti tovább. Sikertelen kérelmek nem fejlődnek, és idővel elavulttá váltak. Íme a kérdést: IP-címek fenntartási ismeri a követelményekkel kapcsolatos még ma, és mi legyenek a jövőben? Például tegyük fel, a jelentéskészítő alkalmazás Intézet készít a vállalatnál. Biztos benne az alkalmazás csak a vállalat hatókörén belül vonatkozik, és, hogy a jelentések nem fog tartani hosszú. A megközelítésre eltérő, tegyük fel, videótartalmak létrehozásához egy szolgáltatás, amely továbbítja az ügyfelek tízmillió.
+Az alkalmazások az idő múlásával fejlődnek. A sikeres alkalmazások fejlődése a felhasználók számára hasznos. A sikertelen alkalmazások nem fejlődnek, és végül elavultak. Itt a kérdés: mennyit ismer a követelményekkel kapcsolatban ma, és mi is a jövőben? Tegyük fel például, hogy létrehoz egy jelentéskészítési alkalmazást a vállalat egyik részlege számára. Biztos, hogy az alkalmazás csak a vállalat hatókörén belül érvényes, és a jelentések nem maradnak meg sokáig. Az Ön megközelítése különbözik a következőtől:, azaz olyan szolgáltatás létrehozása, amely több tízezer ügyfelünk számára biztosít videotartalom-tartalmat.
 
-Egyes esetekben a környezetbarát tényező első valamit az ajtó ki, a koncepció igazolása. Biztos, hogy az alkalmazás újabb újratervezve is. Soha nem használt lekéri a fölösleges mérnöki valami kis pont van. Másrészről vállalatok felhőalkalmazások fejlesztése, amikor az elvárás növekedését és a használat. Növekedési és a méretezési csoport is előre nem látható. Szeretnénk prototípus gyorsan közben is ismerete, hogy az egy elérési utat, amely képes kezelni a jövőbeli sikeres vagyunk. Ez az a lean indítási megközelítés: hozhat létre, illetve mérheti, ismerje meg, és ismételt futtatásával.
+Időnként előfordulhat, hogy az ajtót úgy kezdi meg, hogy a koncepció bizonyítása a vezetési tényező. Tudja, hogy az alkalmazás később újratervezhető. Kevés a mérnöki tevékenység, ami soha nem lesz használatban. Másfelől, amikor a vállalatok a felhőre építenek, a várt érték a növekedés és a használat. A növekedés és a skálázás előre nem látható. Azt szeretnénk, hogy a prototípus gyors legyen, miközben azt is tudjuk, hogy olyan elérési úton vagyunk, amely képes a jövőbeli siker kezelésére. Ez a sovány indítási módszer: build, mérték, Learn és iteráció.
 
-Az ügyfél-kiszolgáló era során azt növelése az egyes technológiák használatával az egyes szintek többszintű alkalmazások készítésére. Az előfizetési időszak *monolitikus* alkalmazás felmerült, ezek a módszerek leírására. A rétegek közötti kell növelése a felületek, és több szorosan összekapcsolt tervezési használták az egyes szinteken belül összetevői között. Fejlesztők számára tervezett, és a faktorált lefordítva kódtárak és néhány végrehajtható fájlok és DLL-ek egymáshoz kapcsolódó osztályok.
+Az ügyfél/kiszolgáló korszakban úgy döntöttünk, hogy az egyes rétegekben meghatározott technológiák használatával a többrétegű alkalmazások kiépítésére koncentrálunk. A *monolitikus* alkalmazás kifejezése a következő megközelítések leírására lett kiváltva. A felületek általában a rétegek közé vannak felhasználva, és egy szorosabban összekapcsolt kialakítás lett használva az egyes rétegek összetevői között. A fejlesztők a könyvtárakba lefordított és a több végrehajtható fájlban és DLL-ben összekapcsolt osztályokba tartozó osztályokat hoztak létre.
 
-Nincsenek arra, hogy a monolitikus kialakítás megközelítést. Monolitikus alkalmazások gyakran egyszerűbb tervezhet, és -összetevők közötti hívások gyorsabbak, mivel ezeket a hívásokat sokszor folyamatközi kommunikáció (IPC) keresztül. Ezenkívül mindenki teszteli, egyetlen termékhez, amely általában egy emberi erőforrások hatékonyabb kihasználását. A hátránya az, hogy van egy rétegzett rétegek közötti szoros összekapcsolódást, és egyes összetevőket nem skálázhatja. Ha kell tennie a javítások és frissítések, akkor várja meg, mások azok tesztelés befejezésére. Ezért jóval nehezebb az agilisek lehetnek.
+A monolitikus tervezési megközelítés előnyei vannak. A monolit alkalmazások gyakran egyszerűbbek a tervezéshez, és az összetevők közötti hívások gyorsabbak, mert ezek a hívások gyakran többek között az adatfeldolgozási kommunikáción (IPC) alapulnak. Emellett mindenki tesztel egy terméket, ami általában hatékonyabban használja az emberi erőforrásokat. A hátránya az, hogy a réteges rétegek között szoros kapcsolat áll fenn, és az egyes összetevők nem méretezhetők. Ha javításokra vagy frissítésekre van szüksége, meg kell várnia, amíg mások befejezzük a tesztelést. Nehezebben lehet agilis.
 
-Mikroszolgáltatások cím ezek több szempontból sem ajánlott, és további szorosan igazítása a fenti üzleti követelményeinek. De előnyöket és forrásokat is is vannak. A mikroszolgáltatások előnyeit is, hogy mindegyikhez egyszerűbb üzleti funkció, amely, kisebbre vagy nagyobbra méretezhetők, teszteléséhez, üzembe helyezése és kezelése egymástól függetlenül általában magában foglalja. Egy fontos mikroszolgáltatási megközelítést előnye, hogy csapatok alakítják több, mint üzleti forgatókönyvek szerint technológia. Kisebb csapatok egy, az ügyfél forgatókönyv-alapú mikroszolgáltatás fejlesztés, és minden olyan technológiákat, amelyek igénybe szeretnék használni.
+A szolgáltatások a korábbi üzleti igényeknek megfelelően kezelik ezeket a hátrányait. Ugyanakkor előnyökkel és kötelezettségekkel is rendelkeznek. A Service-szolgáltatások előnye, hogy mindegyik általában egyszerűbb üzleti funkciókat ágyaz be, amelyek egymástól függetlenül méretezhetők fel és le, és nem használhatók. A szolgáltatások egyik fontos előnye, hogy a csapatok az üzleti forgatókönyvek szerint, mint a technológián alapulnak. A kisebb csapatok egy ügyfél-forgatókönyv alapján fejlesztenek egy szolgáltatást, és a használni kívánt technológiákat használják.
 
-Más szóval a szervezet műszaki épülő alkalmazások karbantartásához egységesítésére nem szükséges. Az egyes csapatok, hogy saját szolgáltatás teheti meg logikus mi számukra csapat szaktudását alapján, vagy mi a probléma megoldására legmegfelelőbb. A gyakorlatban egy ajánlott technológiák, például egy adott NoSQL-tároló vagy webalkalmazás-keretrendszer, előnyösebb.
+Más szóval a szervezetnek nem kell szabványosítani a technológiát a Service-alkalmazások karbantartásához. Az egyes csapatoknak, amelyeket a saját szolgáltatásai elvégezhetnek, a csapat szakértelmére vagy a probléma megoldására legmegfelelőbbek lehetnek. A gyakorlatban a javasolt technológiák, például egy adott NoSQL-tár vagy webalkalmazás-keretrendszer használata előnyösebb.
 
-A mikroszolgáltatások hátránya, hogy több különálló-entitások kezelését, és összetettebb telepítések és verziókezelés foglalkozik. A mikroszolgáltatások közötti hálózati forgalom növekszik, mint a megfelelő hálózati késéseket. Nagy mennyiségű forgalmas részletes szolgáltatás egy teljesítmény nightmare okozhat. A függőségek megjelenítéséhez eszközök nélkül meglehetősen nehéz a teljes rendszer megtekintéséhez.
+A szolgáltatások hátránya, hogy több különálló entitást kell kezelnie, és összetettebb központi telepítéseket és verziószámozást kell kezelni. A szolgáltatások közötti hálózati forgalom nő, akárcsak a hálózati késések. A nagy mennyiségű beszélgetés, a részletes szolgáltatások a teljesítményhez vezethetnek. A függőségek megtekintését segítő eszközök nélkül nehéz megtekinteni a teljes rendszerképet.
 
-Szabványok győződjön meg arról, a mikroszolgáltatási megközelítést kommunikáció a megadásával, és csak a legfontosabb tudnivaló a szolgáltatásból tolerating munkahelyi helyett merev szerződéseket. Fontos meghatározni a kialakításban meghozni ezek a szerződések, mert a szolgáltatások frissítése egymástól. A mikroszolgáltatási megközelítést tervezéséhez alkotta egy másik leírása a "részletes szolgáltatásorientált architektúra (SOA)."
+A szabványok a szolgáltatások megközelítését teszik elérhetővé azáltal, hogy a merev szerződések helyett csak azokat a dolgokat kell megadnia, amelyekre szüksége van a szolgáltatástól. Fontos, hogy ezeket a szerződéseket a kialakítás előtt adja meg, mivel a szolgáltatások egymástól függetlenül frissülnek. Egy másik, a Service-szolgáltatásokkal való tervezéshez megalkotott Leírás a "részletes szolgáltatásorientált architektúra (SOA)".
 
-***A legegyszerűbb a mikroszolgáltatások tervezési megközelítés tárgya egy leválasztott összevonási szolgáltatások, az egyes független módosítások és a kommunikációhoz konferenciahívások lefolytatása előírásoknak.***
+***Legegyszerűbben a szolgáltatásokra vonatkozó tervezési módszer a szolgáltatások leválasztott összevonására vonatkozik, amely az egyes és a kommunikációra vonatkozó elfogadott szabványok egymástól független módosításait tartalmazza.***
 
-Ahogy további felhőalkalmazások előállítása, személyek felderített, hogy ez az alkalmazás általános független, a forgatókönyv témájú szolgáltatásba felbontása-e jobban hosszú távú megközelítést.
+Ahogy egyre több felhőalapú alkalmazás jön létre, az emberek felfedezték, hogy a teljes alkalmazás független, forgatókönyvekre összpontosító szolgáltatásokra való kibontása jobb hosszú távú megközelítés.
 
-## <a name="comparison-between-application-development-approaches"></a>Alkalmazás fejlesztése módszerek összehasonlítása
+## <a name="comparison-between-application-development-approaches"></a>Az alkalmazások fejlesztési módszereinek összehasonlítása
 
-![A Service Fabric platformot alkalmazásfejlesztés][Image1]
+![Platform-alkalmazásfejlesztés Service Fabric][Image1]
 
-1) A monolitikus alkalmazásokat tartalmazza a tartomány-specifikus szolgáltatásokat, és általában oszlik meg például a webes, az üzleti és működési rétegek.
+1) A monolit alkalmazások tartományszintű funkciókat tartalmaznak, és általában funkcionális rétegekbe vannak osztva, például web, Business és adat.
 
-2) Több kiszolgáló/virtuális gépek klónozásával méretezése a monolitikus alkalmazásokat és tárolókat.
+2) A monolit alkalmazások méretezése több kiszolgálón/virtuális gépen/tárolón keresztüli klónozással végezhető el.
 
-3) A mikroszolgáltatás-alkalmazások elválasztja a kisebb szolgáltatások külön funkciókat.
+3) A Service-alkalmazások külön kisebb szolgáltatásokban különítik el a funkciókat.
 
-4) A mikroszolgáltatási megközelítést skálázását követve rugalmasan méretezhető által végzett központi telepítése minden egyes szolgáltatás egymástól függetlenül, ezen példányok létrehozása között kiszolgálók/virtuális gépek és tárolók.
+4) A Service-szolgáltatások megközelítése az egyes szolgáltatások egymástól független üzembe helyezésével történik, így a szolgáltatások példányai a kiszolgálók/virtuális gépek/tárolók között hozhatók létre.
 
-Tervezés a mikroszolgáltatás-alapú a megoldás nem megfelelő összes projekt, de jobban igazodnak a fentebb leírt, az üzleti célkitűzéseinek megvalósulását. A monolitikus megközelítés kezdve előfordulhat, hogy van értelme Ha ismeri a lehetőséget, hogy a kód későbbi újragyártási mikroszolgáltatásokra, rendelkezni fog. Leggyakrabban egy monolitikus alkalmazáshoz kezdődik, és lassan bontsa szakaszban, a funkcionális területeket, kell lennie a méretezhető, vagy Agilis kezdve.
+A szolgáltatással történő tervezés nem megfelelő az összes projekthez, de a korábban ismertetett üzleti célokkal szorosabban igazodik. A monolit megközelítéstől kezdve érdemes lehet, ha tudja, hogy a kódot később újra feldolgozza a Services-tervbe. Gyakrabban érdemes egy monolitikus alkalmazást kezdeni, és lassan kitörni a fázisokban, kezdve azokkal a funkcionális területekkel, amelyeknek méretezhetőnek vagy agilisnak kell lenniük.
 
-A mikroszolgáltatás-alapú módszer használata esetén az alkalmazás több kis szolgáltatásra, állítsa össze. Ezek a szolgáltatások futnak a gép egy fürtön üzembe helyezett tárolók. Kisebb csapatok fejlesztése egy szolgáltatás, amely eset fókuszál, és egymástól függetlenül tesztelése, verzió, üzembe helyezése és minden egyes szolgáltatás méretezhető, így a teljes alkalmazás tovább lehessen fejleszteni.
+Ha a szolgáltatással kapcsolatos módszert használ, számos kis szolgáltatás alkalmazását kell megalkotnia. Ezek a szolgáltatások olyan tárolókban futnak, amelyek számítógépeken üzemelő fürtökön vannak telepítve. A kisebb csapatok olyan szolgáltatást fejlesztenek, amely egy forgatókönyvre összpontosít, és az egyes szolgáltatások egymástól független tesztelését, verzióját, üzembe helyezését és méretezését végzik, hogy a teljes alkalmazás fejlődjön.
 
-## <a name="what-is-a-microservice"></a>Mit jelent a mikroszolgáltatások?
+## <a name="what-is-a-microservice"></a>Mik azok a mikroszolgáltatások?
 
-Nincsenek a mikroszolgáltatások külön definíciót. De a mikroszolgáltatási jellemzői vannak körben elfogadott:
+A szolgáltatások különböző definíciói vannak. A legtöbb ilyen jellemzőt azonban széles körben elfogadják:
 
-* Egy ügyfél vagy az üzleti forgatókönyv magába foglalja. Milyen probléma megoldására?
-* Egy kis mérnöki csapata által fejlesztett.
-* Bármely keretrendszer használatakor, bármilyen programozási nyelven írt.
-* Kód áll, és igény szerint állapot, mindkettő független verziójú, telepített, és van ellátva.
-* Együttműködhet más mikroszolgáltatások jól definiált felületek és protokollok.
-* Oldja fel a helyet használt egyedi neve (URL-címek).
-* Egységes és folytonosságát hibák esetén elérhető marad.
+* Egy ügyfél vagy üzleti forgatókönyv beágyazása. Milyen problémák megoldására?
+* Egy kisméretű mérnöki csapat fejlesztette ki.
+* Bármilyen programozási nyelven írt, bármilyen keretrendszer használatával.
+* Kód és opcionális állapot, mindkettő egymástól függetlenül, külön verziója, üzembe helyezése és méretezése.
+* Más szolgáltatásokkal való interakció jól meghatározott felületek és protokollok alapján.
+* A helyük feloldásához használt egyedi nevek (URL-címek).
+* Konzisztensek maradnak, és a hibák jelenlétében is elérhetők.
 
-Összegzését, amelyek:
+Összegzés:
 
-***Mikroszolgáltatás-alkalmazások kisebb, független verziójú és méretezhető ügyfélközpontú szolgáltatások jól meghatározott felületek a szabványos protokollokon keresztül kommunikálnak egymással állnak.***
+***A Service-alkalmazások kis, egymástól független verzióval és skálázható, ügyfél-központú szolgáltatásokból állnak, amelyek egymással kommunikálnak a szabványos protokollokkal, jól definiált felületekkel.***
 
-### <a name="written-in-any-programming-language-using-any-framework"></a>Bármilyen programozási nyelven, bármely keretrendszer használatával írt
+### <a name="written-in-any-programming-language-using-any-framework"></a>Bármilyen programozási nyelven írt, bármilyen keretrendszer használatával
 
-Fejlesztők számára nyújtanak szeretnénk tenni, hogy válasszon egy nyelvet vagy keretrendszert, a szolgáltatás, amely hozunk létre az ismeretek és a követelményektől függően. Egyes szolgáltatások előnyeinek előfordulhat, hogy érték C++ fent bármi más. Mások, felügyelt fejlesztés a, a könnyű C# vagy a Java, több fontos lehet. Bizonyos esetekben szükség lehet a szolgáltatást, hogy az ügyfelek által egy adott partner könyvtár, adattárolási módszerektől vagy módszer használata.
+A fejlesztőknek szabadon választhatnak egy nyelvet vagy keretrendszert, a képességeink és a létrehozandó szolgáltatás igényeitől függően. Egyes szolgáltatások esetében előfordulhat, hogy a fentiekben bármilyen más C++ teljesítménybeli előnyt kell kiértékelni. Mások számára a könnyen kezelhető, a Java-ból vagy C# a Java-ból származó fejlesztés fontosabb lehet. Bizonyos esetekben előfordulhat, hogy egy adott partner-függvénytárat, adattárolási technológiát vagy módszert kell használnia a szolgáltatás ügyfeleknek való kilépéséhez.
 
-Miután kiválasztotta a technológia, fontolja meg az operatív és életciklus-felügyelet és a szolgáltatás méretezése szüksége.
+A technológia kiválasztása után figyelembe kell vennie a szolgáltatás működésének vagy életciklusának kezelését és skálázását.
 
-### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>Lehetővé teszi a kóddal és állapottal, független verziójú legyen telepítve, és a méretezett
+### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>A kód és az állapot egymástól függetlenül telepíthető, telepíthető és méretezhető
 
-Függetlenül attól, hogy hogyan ír a mikroszolgáltatás-alapú, a kódot, és igény szerint az állapot érdemes egymástól függetlenül üzembe helyezése, frissítése és méretezése. Ez a probléma nem megoldani, mert van, szabadon választott technológiákkal való könnyű feladat. Méretezési, elsajátítása partíció (vagy a szegmensben) a kód és állapota is nagyobb kihívást jelent. Ha a kóddal és állapottal használnak a különböző technológiák, amely közös még ma, a mikroszolgáltatások üzembe helyezési szkriptjei képeseknek kell lenniük mindkét őket. Ez a fajta elkülönítés tárgya is gyorsasága és rugalmassága biztosítja, hogy mindegyiket egyszerre frissítése nélkül frissítheti néhány a mikroszolgáltatások.
+Függetlenül attól, hogy hogyan írja le a szolgáltatásait, a kódot és opcionálisan az állapotot, függetlenül kell telepítenie, frissítenie és méreteznie. Ez a probléma nehezen oldható meg, mert az Ön által választott technológiákhoz tartozik. A skálázáshoz a kód és az állapot felosztása (vagy szilánkja) is kihívást jelent. Ha a kód és az állapot különböző technológiákat használ, ami manapság gyakran előfordul, akkor a Service üzembe helyezési parancsfájljainak mindkettőt meg kell tudniuk méretezni. Ez az elkülönítés a rugalmassággal és a rugalmassággal is kapcsolatban áll, így az összes szolgáltatás frissítését anélkül is frissítheti, hogy mindegyiket egyszerre kellene frissítenie.
 
-Nézzük térjen vissza a monolitikus és mikroszolgáltatás-alapú megközelítés egy pillanatra az összehasonlítást. Ez az ábra állapot tárolásához az módszerek közötti különbségeket mutatja:
+Térjen vissza a monolitikus és a Services-szolgáltatások összehasonlítására egy pillanatra. Ez az ábra az állapot tárolásának módszereinek különbségeit mutatja be:
 
-#### <a name="state-storage-for-the-two-approaches"></a>A két megközelítés állapot tárolás
+#### <a name="state-storage-for-the-two-approaches"></a>A két megközelítés állapotának tárolása
 
-![A Service Fabric platformot állapot tárolásához][Image2]
+![Service Fabric platform állapotának tárolása][Image2]
 
-***A monolitikus megközelítés alkalmazásakor, a bal oldali rendelkezik egy önálló adatbázis és az egyes technológiák szint.***
+***A bal oldalon a monolitikus megközelítés egyetlen adatbázissal és meghatározott technológiákkal rendelkezik.***
 
-***A mikroszolgáltatási megközelítést, a jobb oldali rendelkezik egy grafikont a mikroszolgáltatások hálózatáról van szó, ahol állapota a mikroszolgáltatások általában hatókörét, és különböző technológiákkal.***
+***A jobb oldalon a szolgáltatásokhoz kapcsolódó szolgáltatásokra vonatkozó grafikon látható, ahol az állapot jellemzően a szolgáltatásra terjed ki, és a különböző technológiákat használják.***
 
-A monolitikus megközelítés a az alkalmazás általában egy adatbázist használ. Egy adatbázis használatával előnye, hogy legyen-e egyetlen helyen, amelynek segítségével könnyedén üzembe helyezéséhez. Minden egyes összetevő állapotában tárolásához egy táblát is rendelkezhet. Csapatok kell szigorúan külön állapotát, amely nehézségeket jelenthet. Teljesítményre valaki lesz gyermekeiről oszlop hozzáadása egy meglévő ügyfél táblázat, a táblák közötti csatlakozzon, és függőségek létrehozása a tárolási rétegben. Ha ez történik, az egyes összetevők nem skálázhatja.
+A monolitikus megközelítésben az alkalmazás általában egyetlen adatbázist használ. Az egyetlen adatbázis használatának előnye, hogy egyetlen helyen van, így könnyen üzembe helyezhető. Minden összetevő rendelkezhet egyetlen táblával az állapotának tárolásához. A csapatoknak szigorúan külön kell elkülöníteniük az állapotot, ami kihívást jelent. Elkerülhetetlen, hogy valaki felvesz egy oszlopot egy meglévő ügyfél-táblába, csatlakozhat a táblák között, és függőségeket hoz létre a tárolási rétegben. Ezt követően nem méretezheti az egyes összetevőket.
 
-A mikroszolgáltatás-alapú módszert használja, az egyes szolgáltatások kezeli, és tárolja a saját állapota. Minden egyes szolgáltatás méretezése a kód és az állapot együtt, hogy a videólejátszást a szolgáltatás felelős. Egy hátránya, hogy szeretne létrehozni, nézetek és a lekérdezések, az alkalmazásadatok, amikor meg kell több állapot tároló lekérdezésére. Ez a probléma általában megoldani, amely képet alkot között gyűjteménye, mikroszolgáltatások külön mikroszolgáltatások által. Ha az adatok több rögtönzött lekérdezések futtatására van szüksége, fontolja meg írja az egyes mikroszolgáltatások adatokat egy adattárház szolgáltatás offline elemzéshez.
+A szolgáltatásokban az egyes szolgáltatások a saját állapotát kezelik és tárolják. Minden szolgáltatás felelős a kód és az állapot skálázásával, hogy megfeleljen a szolgáltatás követelményeinek. A hátránya, hogy ha nézeteket vagy lekérdezéseket kell létrehoznia az alkalmazás adataihoz, több állapotú tárolóban kell lekérdezni. Ezt a problémát általában egy különálló szolgáltatás oldja fel, amely egy, a-gyűjteményen belül létrehozott nézetet hoz létre. Ha több rögtönzött-lekérdezést kell futtatnia az adatkapcsolaton, érdemes megfontolnia, hogy az egyes Service-szolgáltatások adattárház-szolgáltatásait az offline Analitika számára is megírja.
 
-Mikroszolgáltatások verziószámmal is. Különböző verzióinak egymás mellett futtatásához mikroszolgáltatások lehetőség. Egy újabb verziója egy mikroszolgáltatási sikerült sikertelen frissítés során, és állítható vissza egy korábbi verziója szükséges. Verziókezelés is hasznos lehet az a / B-teszteket, ahol különböző felhasználói élmény különböző verzióit a szolgáltatást. Például szokás egy új funkció teszteléséhez mielőtt széles körben közbeni további ügyfelek adott halmazának mikroszolgáltatás frissítése.
+A szervizcsomagok verziója. Lehetséges, hogy a Service különböző verziói egymás mellett futnak. A webszolgáltatás újabb verziója meghiúsulhat a frissítés során, és vissza kell térnie egy korábbi verzióra. A verziószámozás az A/B teszteléshez is hasznos, ahol a különböző felhasználók a szolgáltatás különböző verzióit tapasztalják. Például gyakori, hogy egy adott ügyfél-készletre frissít egy szolgáltatást az új funkciók kipróbálása előtt, még szélesebb körben.
 
-### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Más mikroszolgáltatások kommunikál a jól definiált felületek és protokollok
+### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Más szolgáltatásokkal való interakció jól definiált illesztőfelületeken és protokollokon keresztül
 
-Az elmúlt 10 évben széleskörű információkat ismertető kommunikációs minták a szolgáltatásorientált architektúrák közzétette. Általában a szolgáltatások közötti kommunikáció egy REST módszert használ a HTTP és a TCP protokollt és XML vagy JSON szerializálási formátum szerint. Felület szempontból egy webes Tervező módon szól. Azonban semmit nem kell ne, a bináris protokoll vagy a saját adatformátumok a célnyelven. Csak, vegye figyelembe, hogy az emberek a mikroszolgáltatások használatával, ha ezek a protokollok és formátumok nem némelyik érhetők el nehezebb időt vesz igénybe.
+Az elmúlt 10 évben részletes információk jelentek meg a szolgáltatás-orientált architektúrák kommunikációs mintáinak leírásában. A szolgáltatás-kommunikáció általánosságban a HTTP-és TCP-protokollok, valamint az XML vagy a JSON használatával történő REST-megközelítést használ a szerializálási formátumként. Egy kezelőfelületi perspektívából a webes kialakítás megközelítése zajlik. A bináris protokollok vagy a saját adatformátumok használata azonban nem áll le. Ha ezek a protokollok és formátumok nem érhetők el, ne feledje, hogy az emberek nehezebb időt fognak használni a szolgáltatásokkal.
 
-### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Oldja fel a hely egyedi neve (URL)
+### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>A hely feloldásához használt egyedi név (URL)
 
-A mikroszolgáltatások kell legyen elérhető, bárhol is fut-e. Ha szeretne áttérni a gépekről, és a egy adott mikroszolgáltatás melyiket fut, dolgot meg rossz gyorsan.
+A szolgáltatásnak bárhol kell lennie, ahol fut. Ha olyan gépeket használ, amelyek egy adott szolgáltatást futtatnak, akkor a dolgok gyorsan eltérhetnek.
 
-Ugyanolyan módon, hogy a DNS egy adott URL feloldása egy adott géphez a mikroszolgáltatások úgy, hogy az aktuális helyén felderíthető kell egy egyedi nevet. Mikroszolgáltatás-alapú független futnak az infrastruktúra címezhető nevet kell adni. Ez azt jelenti, hogy van egy belőle a szolgáltatás telepítési módját, és hogyan kiderül, mert szükség van egy szolgáltatás beállításjegyzék. Ha egy gép nem sikerül, a beállításjegyzék szolgáltatást kell mondani, ahol a szolgáltatás került.
+Ugyanúgy, ahogy a DNS feloldja egy adott gép egy adott URL-címét, a webszolgáltatás egyedi nevet igényel, hogy a jelenlegi helye felderíthető legyen. A-szolgáltatásokhoz olyan címezhető nevekre van szükség, amelyek függetlenek a-on futó infrastruktúrától. Ez azt jelenti, hogy a szolgáltatás üzembe helyezése és felderítése között interakció van, mivel a szolgáltatásnak beállításjegyzékre van szüksége. Ha egy gép meghibásodik, a beállításjegyzék szolgáltatásnak meg kell állapítania, hogy a szolgáltatás hová lett helyezve.
 
-### <a name="remains-consistent-and-available-in-the-presence-of-failures"></a>Egységes és folytonosságát hibák esetén érhető el
+### <a name="remains-consistent-and-available-in-the-presence-of-failures"></a>Konzisztens és elérhető marad a hibák jelenlétében
 
-Többé vesződnie a sérült váratlan meghibásodások esetén az egyik nagyon nehéz problémák megoldásában, különösen az elosztott rendszerekben. A kódot, amely a fejlesztők számára nyújtanak írunk számos olyan kivételek kezelése. Tesztelés során is költségei a legtöbb időt a kivételek kezelése. A folyamat bonyolultabb, mint a kódírás hibáinak a kezelése nem. Mi történik, ha a gép, amelyen fut a mikroszolgáltatások nem sikerült? A hiba, amely saját rögzített probléma észlelése kell. De is újra kell indítania a mikroszolgáltatás.
+A váratlan hibák kezelése az egyik legnehezebb megoldás, különösen az elosztott rendszerekben. A fejlesztők által írt kód nagy része a kivételek kezelésére szolgál. A tesztelés során a legtöbb időt a kivételek kezelésére is költjük. A folyamat nagyobb szerepet játszik a hibák kezelésére szolgáló kód írásakor. Mi történik, ha a gép, amelyen a szolgáltatás fut, nem sikerül? Meg kell állapítania a hibát, ami a saját problémája. Azonban újra kell indítania a szolgáltatást.
 
-A rendelkezésre állás érdekében mikroszolgáltatások kell lennie a hatással a meghibásodások és a egy másik gépen újra. Ezek a rugalmassági követelmények mellett adatokat nem lehet elveszett, és adatokat kell maradniuk.
+A rendelkezésre állás érdekében a Service-nek rugalmasnak kell lennie a hibákhoz, és képesnek kell lennie egy másik gépen való újraindításra. Ezen rugalmassági követelmények mellett az adatoknak nem szabad elveszni, és az adatoknak konzisztensnek kell maradniuk.
 
-Rugalmasság nehezen érhető el, ha hibája a legtöbb esetben egy alkalmazás frissítése során. A mikroszolgáltatás-a központi telepítés rendszer használata nem kell helyreállítania. Kell-e az továbbra is előrelépés az újabb verzióra, vagy visszaállítása egy korábbi verziójának egy konzisztens állapotba fenntartásához meghatározásához. Fontolja meg néhány kérdést, például hogy elég gép érhetők el, hogy előre történő áthelyezésének és korábbi verzióiban a mikroszolgáltatási helyreállítása kell. Ezen döntések van szüksége a mikroszolgáltatási kibocsátható állapotára vonatkozó.
+A rugalmasság nehezen érhető el, ha a hibák egy adott alkalmazás frissítésekor történnek. Az üzembe helyezési rendszerrel nem kell helyreállítani a szolgáltatást. Meg kell határoznia, hogy továbbra is folytathatja-e az újabb verzióra való áttérést, vagy visszaállíthatja egy korábbi verzióra a konzisztens állapot fenntartása érdekében. Néhány kérdést is figyelembe kell vennie, például, hogy rendelkezésre áll-e elegendő gép a folyamatos átvitelhez, és hogyan állíthatja helyre a szervizcsomag korábbi verzióit. A döntések elvégzéséhez szüksége lesz a Service-nek az állapotadatok kibocsátására.
 
-### <a name="reports-health-and-diagnostics"></a>Jelentések állapot és diagnosztika
+### <a name="reports-health-and-diagnostics"></a>Jelentések állapota és diagnosztika
 
-Nyilvánvaló, úgy tűnhet, és gyakran kihagyott van, de a mikroszolgáltatások kell jelentenie, az állapot és diagnosztika. Ellenkező esetben a health operations szempontból kis betekintést rendelkezik. Diagnostické události naplókezelője független szolgáltatások között, és kezelése összeállnak az események sorrendjének gép eltérései, is kihívást jelent. Ugyanúgy, mint protokollt konferenciahívások lefolytatása, valamint az adatformátumok a célnyelven mikroszolgáltatások dolgozhat, az egészségügyi és diagnosztikai eseményeket egy eseménytár lekérdezése és megtekintéséhez végső soron megszűnik bejelentkezéshez normalizálnia kell. Mikroszolgáltatási megközelítést, a különböző csapatok különböző kell egyetlen naplózási formátum egyeztetni. Szükség van egy egységes megközelítést diagnosztikai események megtekintése az az alkalmazás egésze.
+Úgy tűnhet, hogy nyilvánvaló, és gyakran megtekinthető, de a szolgáltatásnak jelentenie kell az állapotát és a diagnosztikát. Ellenkező esetben a működési perspektívából kevés az állapota. A diagnosztikai események összekapcsolhatók egymástól független szolgáltatásokban, és az események sorrendjének meghatározásakor a gépi óra eltérései kihívást jelentenek. Ugyanúgy, ahogyan a szolgáltatást a megállapodott protokollokon és az adatformátumokon keresztül kezeli, egységesíteni kell, hogyan kell naplózni az állapot-és diagnosztikai eseményeket, amelyek végül egy Event Store-ban fognak működni a lekérdezések és a megtekintés céljából. A szolgáltatási módszerekkel a különböző csapatoknak egyetlen naplózási formátumban kell megegyezniük. A diagnosztikai események teljes egészében történő megtekintésének egységesnek kell lennie az alkalmazásban.
 
-Diagnosztikai állapot eltér. Állapotfigyelő jelentési a megfelelő műveletet a jelenlegi állapotában a mikroszolgáltatási tárgya. Egy jó példa dolgozik azon, frissítését és telepítését mechanizmusokkal rendelkezésre állását. Bár előfordulhat, hogy egy szolgáltatás egy folyamat összeomlása miatt jelenleg nem megfelelő lehet, vagy a számítógép-újraindítás, a szolgáltatás továbbra is lehet működési. A legutolsó dolog, szüksége, hogy a helyzet még rosszabb frissítés megkezdése. A legjobb módszer az, hogy először vizsgálja meg, vagy várja meg a mikroszolgáltatások helyreállításához. A mikroszolgáltatások hálózatállapot-események segítsen tájékozott döntéseket hozhat, és érvényben, az önjavítási szolgáltatások létrehozása érdekében.
+Az állapot különbözik a diagnosztikatól. Az állapot arról szól, hogy a webszolgáltatás jelentést készít a jelenlegi állapotáról a megfelelő műveletek elvégzéséhez. Jó példa arra, hogy a rendelkezésre állás fenntartása érdekében a frissítési és üzembe helyezési mechanizmusok működnek. Bár előfordulhat, hogy egy szolgáltatás állapota összeomlás vagy a gép újraindítása miatt nem kifogástalan állapotú, a szolgáltatás továbbra is működőképes lehet. Az utolsó szükséges, hogy a helyzet még rosszabb legyen a frissítés elindításával. A legjobb megoldás az, ha először vizsgálja meg a szolgáltatás helyreállításának idejét. A szolgáltatással kapcsolatos egészségügyi események segítenek a tájékozott döntések meghozatalában, és ennek hatására segítünk önjavító szolgáltatásokat létrehozni.
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>Útmutató az Azure mikroszolgáltatások tervezése 
-Keresse meg az Azure architecture Centert kapcsolatos útmutató a [tervezése és mikroszolgáltatások készítése az Azure-ban](https://docs.microsoft.com/azure/architecture/microservices/).
+## <a name="guidance-for-designing-microservices-on-azure"></a>Útmutató az Azure-beli szolgáltatások tervezéséhez
 
-## <a name="service-fabric-as-a-microservices-platform"></a>A Service Fabric egy mikroszolgáltatás-platform szerint
+Tekintse meg az Azure Architecture centert, amely útmutatást nyújt az [Azure-beli szolgáltatások tervezéséhez és létrehozásához](https://docs.microsoft.com/azure/architecture/microservices/).
 
-Az Azure Service Fabric kiderült, amikor a Microsoft a szolgáltatások biztosítása a becsomagolt termékek, általában monolitikus, amely állítjuk át. Élmény épület és működő nagyméretű szolgáltatások, például az Azure SQL Database és az Azure Cosmos DB, a Service Fabric alakú. A platform továbbfejlődtek idővel további szolgáltatások elfogadta azt. A Service Fabric kellett futtatni, nem csak az Azure-ban, hanem a különálló Windows Server-telepítéseket.
+## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric Service-platformként
 
-***A Service Fabric célja létrehozásának és futtatásának rögzített problémákat megoldani és infrastruktúra-erőforrások hatékony használata, a csapatok a mikroszolgáltatási megközelítést az üzleti problémák megoldásában is.***
+Az Azure Service Fabric akkor alakult ki, amikor a Microsoft áttért a bekeretezett termékek, amelyek jellemzően monolitikus voltak a szolgáltatások nyújtására. Nagy méretű szolgáltatások (például Azure SQL Database és Azure Cosmos DB, formázott Service Fabric kialakításának és üzemeltetésének élménye. A platform az idő múlásával fejlődött, ahogy egyre több szolgáltatás fogadta el. Service Fabric nem csak az Azure-ban, hanem az önálló Windows Server-példányokban is futtatni kellett.
 
-A Service Fabric nyújt azáltal, hogy a mikroszolgáltatási megközelítést használó alkalmazások:
+***A Service Fabric célja, hogy megoldja a szolgáltatások kiépítésével és futtatásával, valamint az infrastruktúra-erőforrások hatékony kihasználásával kapcsolatos problémákat, így a csapatok a szolgáltatásokkal kapcsolatos üzleti problémák megoldására használhatók.***
 
-* Egy üzembe helyezéséhez, a rendszer szolgáltatásokat biztosító platform frissítése, észleli, és indítsa újra a sikertelen szolgáltatások, szolgáltatások felderítése, üzenetek, állapot kezelése és állapotának figyelése.
-* Alkalmazások üzembe helyezése vagy futó tárolók vagy folyamatok lehetővé teszi. Service Fabric-tároló és a folyamat az orchestrator a.
-* Hatékony programozási API-k, mikroszolgáltatás-alapú alkalmazások létrehozásához: [Az ASP.NET Core Reliable actors – és a Reliable Services](service-fabric-choose-framework.md). Például állapot és diagnosztika információt, vagy a beépített magas rendelkezésre állás előnyeit is.
+A Service Fabric segítségével a következőkkel hozhat létre olyan alkalmazásokat, amelyek a szolgáltatással kapcsolatos megközelítést használnak:
 
-***A Service Fabric kapcsolatban, hogyan hozhat létre a szolgáltatás független, és minden olyan technológiát is használhatja. De olyan beépített programozási API-k, amelyek megkönnyítik a mikroszolgáltatásokat.***
+* Platform, amely rendszerszolgáltatásokat biztosít a sikertelen szolgáltatások üzembe helyezésére, frissítésére, észlelésére és újraindítására, a szolgáltatások felderítésére, az üzenetek továbbítására, az állapot kezelésére és az állapot figyelésére.
+* A tárolókban vagy folyamatként futó alkalmazások központi telepítését is lehetővé teszi. Service Fabric tároló-és folyamat-Orchestrator.
+* Produktív programozási API-k, amelyek segítséget nyújtanak az alkalmazások [ASP.net Core, Reliable Actors és Reliable Services](service-fabric-choose-framework.md)létrehozásához. Például beszerezhet állapot-és diagnosztikai adatokat, vagy kihasználhatja a beépített magas rendelkezésre állást is.
 
-### <a name="migrating-existing-applications-to-service-fabric"></a>Meglévő alkalmazások Service Fabric migrálása
+***Service Fabric a szolgáltatás felépítésének módjáról van szó, és bármilyen technológia használható. Azonban olyan beépített programozási API-kat biztosít, amelyek megkönnyítik a szolgáltatások kiépítését.***
 
-A Service Fabric lehetővé teszi, hogy újból felhasználhatja a meglévő kódot, és korszerűsítheti a az új mikroszolgáltatások. Az alkalmazások modernizálása az öt szakaszon, és hogy elindíthatja és leállíthatja a bármely szakaszában. A szakasza a következő:
+### <a name="migrating-existing-applications-to-service-fabric"></a>Meglévő alkalmazások áttelepítése Service Fabricre
 
-1) Indítsa el a hagyományos monolitikus alkalmazások.  
-2) Telepítse át. Használja a vendégtárolókon és a Service Fabric a meglévő kód futtatására.  
-3) Korszerűsítse. Adja hozzá az új mikroszolgáltatások meglévő tárolóalapú kóddal együtt.  
-4) Újítás. Szünet a monolitikus alkalmazások mikroszolgáltatásokra igényei alapján.  
-5) Alakítsa át a mikroszolgáltatás-alapú alkalmazások. Előzmények nélküli új alkalmazásokat hozhat létre vagy alakíthatja át a meglévő monolitikus alkalmazások.
+Service Fabric lehetővé teszi a meglévő kódok újbóli felhasználását és korszerűsítését új Service-szolgáltatásokkal. Az alkalmazások korszerűsítésének öt szakasza van, és bármelyik szakaszban elindítható és leállítható. A szakaszok a következők:
 
-![Mikroszolgáltatás-alapú áttelepítés][Image3]
+1) Kezdje egy hagyományos monolit alkalmazással.  
+2) Áttelepítése. Tárolók vagy vendég végrehajtható fájlok használata meglévő kód Service Fabric-ben való üzemeltetéséhez.  
+3) Korszerűsítésére. Új szolgáltatások hozzáadása a meglévő tároló kód mellett.  
+4) Újítás. A monolit alkalmazást igény szerint a Service-be kell bontani.  
+5) Alkalmazások átalakítása a szolgáltatásba. Alakítsa át a meglévő monolitikus alkalmazásokat, vagy hozzon létre új zöldmezős alkalmazásokat.
 
-Ne feledje, hogy Ön is *elindítása és leállítása bármelyik, amelyek a következő szakaszok*. Nem rendelkezik a folyamat a következő szakaszra. 
+![Migrálás a Services szolgáltatásba][Image3]
 
-Lássunk erre példák az egyes szakaszokat.
+Ne feledje, hogy *bármelyik szakaszban elindíthatja és leállíthatja*. A következő szakasznak nem kell haladnia. 
+
+Nézzük meg az egyes szakaszokra vonatkozó példákat.
 
 **Migrate (Áttelepítés)**  
-Két okból számos vállalat áttelepíteni meglévő monolitikus alkalmazások tárolókba:
+Két okból kifolyólag számos vállalat telepít át meglévő monolitikus alkalmazásokat tárolóba:
 
-* Költségek csökkentése, vagy összevonás és a meglévő hardver eltávolítása miatt, vagy magasabb sűrűség alkalmazások futtatása.
-* Egységes üzembe helyezést között létrejött szerződés fejlesztésre, működésre.
+* Költségcsökkentés a meglévő hardverek összevonása és eltávolítása, illetve a nagyobb sűrűségű alkalmazások futtatása miatt.
+* Konzisztens központi telepítési szerződés A fejlesztés és a műveletek között.
 
-A költségcsökkenést magától értetődnek. A Microsoft számos meglévő alkalmazások vannak folyamatban tárolóba, akár több millió dollár megtakarítást a vezető. Egységes üzembe helyezést kiértékelheti, hogy nehezebben, de ugyanolyan fontos. Az azt jelenti, hogy a fejlesztők választhat, amelyek megfelelnek az azokat a technológiákat, de műveletek csak egyetlen módszer központi telepítésére és felügyeletére az alkalmazásokat fogja fogadni. Nem kell foglalkozni a különböző technológiák támogatása a fejlesztők számára, hogy csak bizonyos eszközök kiválasztása kényszerítése nélkül összetettsége műveletek enyhíti azt. Lényegében minden alkalmazás tárolóba van önálló központi telepítési lemezképei be.
+A költségcsökkentés egyszerű. A Microsoftnál számos meglévő alkalmazás van tárolóban, ami több millió dolláros megtakarítást eredményez. Az egységes üzembe helyezés nehezebben kiértékelhető, de ugyanilyen fontos. Ez azt jelenti, hogy a fejlesztők választhatják ki az igényeinek megfelelő technológiákat, de a műveletek csak egyetlen módszert fogadnak el az alkalmazások üzembe helyezéséhez és kezeléséhez. Ez csökkenti a különböző technológiák támogatásának összetettségét, és nem kell kiválasztania a fejlesztőket, hogy csak bizonyos beállításokat válasszon ki. Lényegében minden alkalmazás a saját környezetbe foglalt telepítési lemezképbe van beosztva.
 
-Számos szervezet megállhat itt. Már van a tárolók előnyeit, és a Service Fabric a teljes körű felügyeleti kezelőfelület, többek között a központi telepítési, frissítési, versioning, visszagörgetése és szolgáltatásállapot-figyelést biztosít.
+Számos szervezet leáll. Már rendelkeznek a tárolók előnyeivel, és a Service Fabric biztosítja a teljes körű felügyeleti élményt, beleértve az üzembe helyezést, a verziófrissítést, a verziószámozást, a visszaállítást és az állapot figyelését.
 
-**Korszerűsítse**  
-Modernizálása az új szolgáltatások meglévő tárolóalapú kóddal együtt is. Ha új kódot írni, célszerű haladjon kis lépésekben le a mikroszolgáltatás-alapú elérési útját. Ez azt is jelentheti hozzáadása egy új REST API-végpont vagy az új üzleti logikát. Ezzel a módszerrel indítsa el a folyamat új mikroszolgáltatások létrehozása és a gyakorlati fejleszteni és üzembe helyezni őket.
+**Korszerűsítésére**  
+A modernizáció az új szolgáltatások hozzáadása a meglévő tároló kód mellett. Ha új kódot fog írni, a legjobb megoldás, ha a szolgáltatás elérési útját kis méretekben hajtja végre. Ez egy új REST API-végpont vagy új üzleti logika hozzáadását jelentheti. Így elindíthatja az új mikroprocesszorok létrehozásának folyamatát, és megkezdheti az alkalmazások fejlesztését és üzembe helyezését.
 
-**Az innováció**  
-A mikroszolgáltatási megközelítést alkalmazkodik a változó üzleti igények szerint. Ezen a ponton kell elindítani a monolitikus alkalmazásokat felbonthatja szolgáltatások felosztás vagy innováció kell-e. Itt egy klasszikus például, amikor egy adatbázis, amely egy munkafolyamat-várólista használata feldolgozás szűk keresztmetszetté válik. Munkafolyamat száma növekszik kér, mivel a munkahelyi kell elérhetőnek lennie a méretezési csoport. Az alkalmazás, amely nem méretezése folyamatban van, illetve, hogy több gyakran frissül, és ossza ki, mikroszolgáltatások és az innováció kell, hogy adott szoftvertermék igénybe vehet.
+**Innováció**  
+A Service-szolgáltatások megközelítése alkalmazkodik az üzleti igényekhez. Ebben a szakaszban el kell döntenie, hogy megkezdi-e a monolit alkalmazás felosztását a szolgáltatásokban vagy az innovációban. Egy klasszikus példa itt az, amikor egy munkafolyamat-várólistaként használt adatbázis feldolgozási szűk keresztmetszetet vált ki. Ahogy a munkafolyamat-kérelmek száma nő, a munkavégzést a méretezéshez kell osztani. Vegye figyelembe, hogy az alkalmazás nem méretezhető, vagy amelyet gyakrabban kell frissíteni, és fel kell osztania a szolgáltatást és az innovációt.
 
-**Mikroszolgáltatás-alapú alkalmazások átalakítása**  
-Ezen a ponton az alkalmazás a teljes mértékben a (vagy az felosztott) mikroszolgáltatás-alapú. A mikroszolgáltatások utazás végrehajtott ezen a ponton eléréséhez. Itt is elindítható, de ehhez nélkül a mikroszolgáltatás-alapú platform, amely segít jelentős befektetéseket igényel.
+**Alkalmazások átalakítása a Service-be**  
+Ebben a szakaszban az alkalmazás teljes mértékben a (vagy a felosztott) szolgáltatásokból áll. Ezen pont eléréséhez a Services-útvonalakat hozta létre. Itt megkezdheti a használatát, de erre a szolgáltatásra nincs szükség a nagy mennyiségű befektetés biztosításához.
 
-### <a name="are-microservices-right-for-my-application"></a>Azok a mikroszolgáltatások közvetlenül az alkalmazásom?
+### <a name="are-microservices-right-for-my-application"></a>Megfelelőek-e a szolgáltatások az alkalmazáshoz?
 
-Lehetséges. A Microsoft több csapat hozhat létre a felhő üzleti okokból kezdődött, ezek közül számos is felismerte, hogy egy a mikroszolgáltatás-hez hasonló módon előnyeit. A Bing, például használja a mikroszolgáltatások évig. Más csapatok számára új volt a mikroszolgáltatási megközelítést. Csapatok találta, hogy van problémákat megoldani kívül erőssége alapvető területére. Ezért a Service Fabric szerzett elősegítik a szolgáltatások technológia.
+Lehetséges. A Microsoftnál, ahogy egyre több csapat kezdte meg a felhőbe való kiépítést, számos felismerte az előnyeit, hogy milyen előnyökkel jár a szolgáltatáshoz hasonló módszer. A Bing például évek óta használ a Services szolgáltatást. Más csapatok esetében a szolgáltatások megközelítése új volt. A csapatok úgy találták, hogy nehéz problémák léptek fel az erősségük alapvető területein kívül. Ezért Service Fabric a szolgáltatások kiépítési technológiájának köszönhetően a vontatást.
 
-A Service Fabric célja kiküszöböli a mikroszolgáltatás-alkalmazások létrehozását, így nem kell áthaladnia annyi költséges redesigns csökkentése érdekében. Indítsa el a kis, szükség esetén skálázhatja, szolgáltatások kivezetjük, újakat vehet fel és megemelkedett ügyfelek általi használatot. Is tudjuk, hogy nincsenek-e számos más még megoldandó problémák az a legtöbb fejlesztő több programozása mikroszolgáltatások legyen. Tárolók és a actors programozási modell ebben az irányban kis lépésekben példák. Sajnáljuk, hogy további innovációkat mikroszolgáltatási megközelítést könnyebben jelentkezik.
+Service Fabric célja, hogy csökkentse a Service-alkalmazások kiépítésének bonyolultságát, így nem kell a lehető legtöbb költséges újratervezéssel eljárnia. Kis méretű, méretezhető, ha szükséges, elavult szolgáltatásokat, újakat adhat hozzá, és fejlődik az ügyfelek használatában. Azt is tudjuk, hogy még sok más problémát kell megoldani, hogy a legtöbb fejlesztő számára jobban elérhetővé tegye a szolgáltatást. A tárolók és a színészek programozási modellje példákat mutat be ennek az iránynak a kis lépéseire. Biztosak vagyunk abban, hogy az innovációk könnyebben megkönnyítik a szolgáltatások kialakítását.
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-* [Mikroszolgáltatás-alapú: Egy felhőbeli alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Az Azure Architecture Centert: Mikroszolgáltatások létrehozása az Azure-ban](https://docs.microsoft.com/azure/architecture/microservices/)
-* [Az Azure Service Fabric-alkalmazás és fürt kapcsolatos ajánlott eljárások](service-fabric-best-practices-overview.md)
-* [A Service Fabric a terminológia áttekintése](service-fabric-technical-overview.md)
+* [Szolgáltatások: a felhő által működtetett alkalmazás-forradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Azure Architecture Center: szolgáltatások készítése az Azure-ban](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Az Azure Service Fabric alkalmazás és a fürt ajánlott eljárásai](service-fabric-best-practices-overview.md)
+* [Service Fabric terminológia áttekintése](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

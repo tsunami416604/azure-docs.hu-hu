@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 01/07/2020
+ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705974"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749389"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Adatok megjelenítése Time Series Insightsról Power BI
 
@@ -41,8 +41,8 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-előfizetés
 
 A Time Series Insights-környezet Power BIhoz való összekapcsolásához kövesse az alábbi lépéseket:
 
-1. Time Series Insights Explorer megnyitása                      
-1. Az adatexportálás lekérdezésként vagy nyers adatként                       
+1. Time Series Insights Explorer megnyitása
+1. Az adatexportálás lekérdezésként vagy nyers adatként
 1. Power BI Desktop megnyitása
 1. Betöltés egyéni lekérdezésből
 
@@ -51,13 +51,14 @@ A Time Series Insights-környezet Power BIhoz való összekapcsolásához köves
 Első lépések:
 
 1. Nyissa meg a Time Series Insights Preview Explorer alkalmazást, és adja meg az adatait.
-1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és kattintson a **Kapcsolódás Power bi**elemre. 
+1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és kattintson a **Kapcsolódás Power bi**elemre.
 
     [![Time Series Insights Preview Explorer exportálás](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Állítsa be a paramétereket a lapon belül:
 
-   1. A megtekinteni kívánt relatív időkeretet határozza meg. Ha elégedett a meglévő nézettel, hagyja meg ezt a **meglévő időkeretként**. 
+   1. A megtekinteni kívánt relatív időkeretet határozza meg. Ha elégedett a meglévő nézettel, hagyja meg ezt a **meglévő időkeretként**.
+   
    1. Válasszon az **összesített** és a **nyers események**közül. 
    
        > [!NOTE]
@@ -70,7 +71,7 @@ Első lépések:
 
    1. Ha nem konfigurálta a Time Series Insights-példányát a **meleg tároláshoz**, a rendszer figyelmeztetést küld.
 
-       [![-kapcsolat](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![meleg tárolás figyelmeztetése](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > A meglévő példányt a Azure Portal **meleg tárolására** is konfigurálhatja.

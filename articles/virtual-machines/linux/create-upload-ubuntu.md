@@ -3,35 +3,30 @@ title: Ubuntu Linux VHD létrehozása és feltöltése az Azure-ban
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Ubuntu Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
+author: MicahMcKittrick-MSFT
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: szark
-ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: mimckitt
+ms.openlocfilehash: e8226322ad1aa9a1079834cc26b4ff8a1b40a204
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258268"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750165"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Hivatalos Ubuntu Felhőbeli rendszerképek
-Az Ubuntu mostantól közzéteszi a hivatalos Azure VHD [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)-ket a letöltéshez. Ha saját, speciális Ubuntu-lemezképet kell létrehoznia az Azure-hoz, és nem az alábbi manuális eljárást szeretné használni, érdemes elindítani ezeket az ismert munkavhd-ket, és szükség szerint testre szabnia azokat. A legújabb rendszerkép-verziók mindig a következő helyeken találhatók:
 
-* Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+Az Ubuntu mostantól közzéteszi a hivatalos Azure VHD-ket [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)letöltéséhez. Ha saját, speciális Ubuntu-lemezképet kell létrehoznia az Azure-hoz, és nem az alábbi manuális eljárást szeretné használni, érdemes elindítani ezeket az ismert munkavhd-ket, és szükség szerint testre szabnia azokat. A legújabb rendszerkép-verziók mindig a következő helyeken találhatók:
+
+* Ubuntu 12.04/Precise: [Ubuntu-12,04-Server-cloudimg-amd64-Disk1. vhd. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 14.04/megbízható: [Ubuntu-14,04-Server-cloudimg-amd64-Disk1. vhd. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenia: [Ubuntu-16,04-Server-cloudimg-amd64-Disk1. VMDK](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-amd64. vhd. zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/kozmikus: [Cosmic-Server-cloudimg-amd64. vhd. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs rendszert egy virtuális merevlemezre. Több eszköz létezik a. vhd fájlok létrehozásához, például egy virtualizációs megoldáshoz, például a Hyper-V-hez. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és a virtuális gép konfigurálása](https://technet.microsoft.com/library/hh846766.aspx).
@@ -46,7 +41,7 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 ## <a name="manual-steps"></a>Manuális lépések
 > [!NOTE]
-> Mielőtt saját Ubuntu-lemezképet hozna létre az Azure-hoz, érdemes [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) inkább az előre elkészített és tesztelt lemezképeket használni.
+> Mielőtt saját Ubuntu-lemezképet hozna létre az Azure-hoz, érdemes inkább az előre elkészített és tesztelt rendszerképeket használni a [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) helyett.
 > 
 > 
 
@@ -54,9 +49,9 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 
-3. Cserélje le a rendszerkép aktuális tárházait az Ubuntu Azure-Repos használatára. A lépések kis mértékben változnak az Ubuntu verziójától függően.
+3. Cserélje le a rendszerkép aktuális tárházait az Ubuntu Azure-tárházának használatára. A lépések kis mértékben változnak az Ubuntu verziójától függően.
    
-    A Szerkesztés `/etc/apt/sources.list`előtt ajánlott biztonsági másolatot készíteni:
+    A `/etc/apt/sources.list`szerkesztése előtt ajánlott biztonsági másolatot készíteni:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -108,11 +103,11 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Módosítsa a grub kernel-rendszerindítási sorát, hogy további kernel-paramétereket tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, keresse meg a nevű `GRUB_CMDLINE_LINUX_DEFAULT` változót (vagy adja hozzá, ha szükséges), és szerkessze úgy, hogy tartalmazza a következő paramétereket:
+5. Módosítsa a grub kernel-rendszerindítási sorát, hogy további kernel-paramétereket tartalmazzon az Azure-hoz. Ehhez nyissa meg a `/etc/default/grub`t egy szövegszerkesztőben, keresse meg a `GRUB_CMDLINE_LINUX_DEFAULT` nevű változót (vagy adja hozzá, ha szükséges), és szerkessze úgy, hogy tartalmazza a következő paramétereket:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Mentse és zárda be ezt a fájlt, `sudo update-grub`majd futtassa a parancsot. Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely segítséget nyújt az Azure technikai támogatásához hibakeresési problémák esetén.
+    Mentse és zárjuk be ezt a fájlt, majd futtassa `sudo update-grub`. Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely segítséget nyújt az Azure technikai támogatásához hibakeresési problémák esetén.
 
 6. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik.  Ez általában az alapértelmezett.
 
@@ -122,7 +117,7 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  Előfordulhat `walinuxagent` , hogy a csomag `NetworkManager` eltávolítja `NetworkManager-gnome` a és a csomagokat, ha azok telepítve vannak.
+   >  Előfordulhat, hogy a `walinuxagent` csomag eltávolítja a `NetworkManager` és `NetworkManager-gnome` csomagokat, ha azok telepítve vannak.
 
 
 1. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
@@ -133,9 +128,9 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 1. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Tudástár
 [Ubuntu hardveres engedélyezés (HWE) kernel](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a Ubuntu Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
 

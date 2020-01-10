@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791879"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754114"
 ---
 # <a name="shaper-cognitive-skill"></a>Formáló kognitív képesség
 
@@ -252,4 +252,4 @@ Ebben az esetben az **alakzat** összetett típust hoz létre. Ez a struktúra a
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Összetett típusok használata](search-howto-complex-data-types.md)
 + [Knowledge Store (előzetes verzió)](knowledge-store-concept-intro.md)
-+ [Ismerkedés a Knowledge Store-ban](knowledge-store-howto.md)
++ [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-create-rest.md)

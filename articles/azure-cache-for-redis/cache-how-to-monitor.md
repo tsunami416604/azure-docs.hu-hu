@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 73e1e3bfbc84e6264897d571fca1bf31061d7ab6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9e829c7d3756599cc80f35187bd743ce798cecda
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122754"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750058"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Az Azure cache figyelése a Redis
 Az Azure cache for Redis [Azure monitort](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) használ a gyorsítótár-példányok figyelésére. Megtekintheti a metrikákat, rögzítheti a metrikák diagramokat a Kezdőpulton, testreszabhatja a figyelési diagramok dátumát és időtartományát, metrikákat adhat hozzá és távolíthat el a diagramokból, valamint riasztásokat állíthat be bizonyos feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure cache Redis-példányok állapotának figyelését, valamint a gyorsítótárazási alkalmazások kezelését.
@@ -62,7 +62,7 @@ Storage-fiók konfigurálása a gyorsítótár metrikái számára:
 3. Keresse **meg az archívumot egy Storage-fiókban**.
 4. Válassza ki azt a Storage-fiókot, amelyben tárolni szeretné a gyorsítótár metrikáit.
 5. Jelölje be az **1 perces** jelölőnégyzetet, és válassza a **megőrzési idő (nap)** házirendet. Ha nem szeretne adatmegőrzési szabályt alkalmazni, és örökre megőrizni az adatmegőrzési szabályokat, állítsa a **megőrzés (nap)** **értéket 0-ra**.
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
 ![Redis-diagnosztika](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
@@ -95,7 +95,7 @@ Minden metrika két verziót tartalmaz. Az egyik mérőszám a teljes gyorsító
 | Gyorsítótár-lemaradás |A sikertelen kulcsok keresésének száma a megadott jelentési intervallumban. Ez a `keyspace_misses` a Redis INFO parancsból leképezi. A gyorsítótár-lemaradás nem feltétlenül jelenti azt, hogy probléma van a gyorsítótárral. Ha például a gyorsítótár-félretéve programozási mintát használja, az alkalmazás először a gyorsítótárban tekinti meg az elemeket. Ha az elem nem létezik (cache Miss), az elem beolvasása az adatbázisból történik, és a következő alkalommal kerül a gyorsítótárba. A gyorsítótár-leállások normál viselkedést jelentenek a gyorsítótár-félretéve programozási minta esetében. Ha a gyorsítótárbeli hiányzó adatok száma a vártnál magasabb, vizsgálja meg a gyorsítótárból kitöltött és beolvasott alkalmazási logikát. Ha a memória terhelése miatt kizárja az elemeket a gyorsítótárból, előfordulhat, hogy egyes gyorsítótárak hiányoznak, de a memória nyomásának jobb mérőszáma `Used Memory` vagy `Evicted Keys`. |
 | Gyorsítótár-olvasás |A gyorsítótárban másodpercenként beolvasott adatok mennyisége megabájt/másodpercben (MB/s) a megadott jelentési intervallumban. Ez az érték a gyorsítótárat működtető virtuális gépet támogató hálózati adapterek származik, és nem Redis-specifikus. **Ez az érték a gyorsítótár által használt hálózati sávszélességnek felel meg. Ha riasztásokat szeretne beállítani a kiszolgálóoldali hálózati sávszélesség korlátaihoz, akkor ezt a `Cache Read` számláló használatával hozza létre. Tekintse meg [ezt a táblázatot](cache-faq.md#cache-performance) a különböző gyorsítótár-díjszabási szintek és méretek megfigyelt sávszélesség-korlátozásához.** |
 | Gyorsítótár írása |A gyorsítótárban másodpercenként (MB/s) a gyorsítótárba írt adatmennyiség a megadott jelentési intervallumban. Ez az érték a gyorsítótárat működtető virtuális gépet támogató hálózati adapterek származik, és nem Redis-specifikus. Ez az érték felel meg a gyorsítótárba az ügyféltől továbbított adatok hálózati sávszélességének. |
-| Csatlakoztatott ügyfelek |A gyorsítótárban a megadott jelentési intervallumban létesített ügyfélkapcsolatok száma. Ez a `connected_clients` a Redis INFO parancsból leképezi. Ha a [kapcsolódási korlát](cache-configure.md#default-redis-server-configuration) elérte a gyorsítótár további kapcsolódási kísérleteit, a művelet sikertelen lesz. Vegye figyelembe, hogy még akkor is, ha nincsenek aktív ügyfélalkalmazások, a belső folyamatok és kapcsolatok miatt továbbra is lehetnek a csatlakoztatott ügyfelek néhány példánya. |
+| Csatlakozott ügyfelek |A gyorsítótárban a megadott jelentési intervallumban létesített ügyfélkapcsolatok száma. Ez a `connected_clients` a Redis INFO parancsból leképezi. Ha a [kapcsolódási korlát](cache-configure.md#default-redis-server-configuration) elérte a gyorsítótár további kapcsolódási kísérleteit, a művelet sikertelen lesz. Vegye figyelembe, hogy még akkor is, ha nincsenek aktív ügyfélalkalmazások, a belső folyamatok és kapcsolatok miatt továbbra is lehetnek a csatlakoztatott ügyfelek néhány példánya. |
 | CPU |A Redis-kiszolgálóhoz tartozó Azure cache CPU-kihasználtsága a megadott jelentési intervallumban százalékban kifejezve. Ez az érték az operációs rendszer `\Processor(_Total)\% Processor Time` teljesítményszámláló számára van leképezve. |
 | Hibák | Meghatározott hibák és teljesítményproblémák, amelyekkel a gyorsítótár egy megadott jelentési intervallum során tapasztalható. Ennek a metrikának nyolc dimenziója van, amelyek különböző típusú hibákat mutatnak be, de a későbbiekben további hozzáadásra kerülhetnek. A következő típusú hibaüzenetek jelennek meg: <br/><ul><li>Feladatátvétel – ha egy gyorsítótár **feladatátvételt** hajt végre (az alárendelt előlépteti a főkiszolgálót)</li><li>**Dataloss** – ha Dataloss van a gyorsítótárban</li><li>**UnresponsiveClients** – ha az ügyfelek nem tudnak elég gyorsan beolvasni az adatait a kiszolgálóról</li><li>**AOF** – ha a AOF-megőrzéssel kapcsolatos probléma merül fel</li><li>**RDB** – ha a RDB-megőrzéssel kapcsolatos probléma merül fel</li><li>**Importálás** – ha probléma van a RDB importálásával kapcsolatban</li><li>**Exportálás** – ha a RDB exportálásával kapcsolatos probléma merül fel</li></ul> |
 | Kizárt kulcsok |A gyorsítótárból kizárt elemek száma a megadott jelentési intervallumban a `maxmemory` korlát miatt. Ez a `evicted_keys` a Redis INFO parancsból leképezi. |
@@ -103,7 +103,7 @@ Minden metrika két verziót tartalmaz. Az egyik mérőszám a teljes gyorsító
 | Kap |A lekérési műveletek száma a gyorsítótárból a megadott jelentési intervallumban. Ez az érték a következő értékek összege a Redis INFO all paranccsal: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`és `cmdstat_getrange`, és megegyezik a gyorsítótárbeli találatok összegével és a jelentési intervallumban lemaradt értékekkel. |
 | Műveletek száma másodpercenként | A gyorsítótár-kiszolgáló által másodpercenként feldolgozott parancsok teljes száma a megadott jelentési intervallumban.  Ez az érték a "instantaneous_ops_per_sec" értéket képezi le a Redis INFO parancsból. |
 | Redis-kiszolgáló terhelése |Azon ciklusok százalékos aránya, amelyekben a Redis-kiszolgáló foglalt, és nem várakozik az üzenetek üresjáratára. Ha ez a számláló eléri a 100-et, az azt jelenti, hogy a Redis-kiszolgáló elérte a teljesítmény felső határát, és a processzor nem tud gyorsabban feldolgozni. Ha magas Redis-kiszolgáló betöltését látja, akkor időtúllépési kivételek jelennek meg az ügyfélen. Ebben az esetben érdemes megfontolnia, hogy az adatait több gyorsítótárba lehessen felskálázással vagy particionálni. |
-| Beállítja |A megadott jelentési intervallumban a gyorsítótárban beállított műveletek száma. Ez az érték a következő értékek összege a Redis INFO all paranccsal: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange`és `cmdstat_setnx`. |
+| Készletek |A megadott jelentési intervallumban a gyorsítótárban beállított műveletek száma. Ez az érték a következő értékek összege a Redis INFO all paranccsal: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange`és `cmdstat_setnx`. |
 | Kulcsok összesen  | A gyorsítótárban lévő kulcsok maximális száma a korábbi jelentési időszakban. Ez a `keyspace` a Redis INFO parancsból leképezi. Az alapul szolgáló mérőszámok rendszerének korlátozása miatt a fürtöket engedélyező gyorsítótárak esetében az összes kulcs visszaadja azon szegmens kulcsainak maximális számát, amely a jelentési intervallumban a kulcsok maximális száma volt.  |
 | Összes művelet |A gyorsítótár-kiszolgáló által a megadott jelentési intervallumban feldolgozott parancsok teljes száma. Ez az érték leképezi a `total_commands_processed` a Redis INFO parancsból. Vegye figyelembe, hogy ha a Redis-hez készült Azure cache-t kizárólag a pub/sub esetében használja, a `Cache Hits`, `Cache Misses`, `Gets`vagy `Sets`esetében nem számítunk fel mérőszámokat, de `Total Operations` mérőszámok is megjelennek, amelyek a pub/sub műveletek gyorsítótár-használatát tükrözik. |
 | Felhasznált memória |A gyorsítótárban lévő kulcs/érték párokhoz felhasznált gyorsítótár-memória mennyisége a megadott jelentési intervallumban (MB). Ez az érték leképezi a `used_memory` a Redis INFO parancsból. Ez nem tartalmazza a metaadatokat vagy a töredezettséget. |
@@ -111,7 +111,7 @@ Minden metrika két verziót tartalmaz. Az egyik mérőszám a teljes gyorsító
 | Felhasznált memória RSS-címe |A megadott jelentési intervallumban MEGABÁJTban használt gyorsítótár-memória mennyisége, beleértve a töredezettséget és a metaadatokat is. Ez az érték leképezi a `used_memory_rss` a Redis INFO parancsból. |
 
 <a name="operations-and-alerts"></a>
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen riasztásokat szeretne kapni. Az Azure Monitor segítségével konfigurálhat riasztásokat, amelyek aktiválása esetén a követező műveletek végrehajtására kerülhet sor:
 
 * E-mail-értesítés küldése
@@ -120,7 +120,7 @@ A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen ri
 
 A gyorsítótár riasztási szabályainak konfigurálásához kattintson a **riasztási szabályok** elemre az **erőforrás menüben**.
 
-![Figyelés](./media/cache-how-to-monitor/redis-cache-monitoring.png)
+![Monitoring](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
 A riasztások konfigurálásával és használatával kapcsolatos további információkért lásd: [a riasztások áttekintése](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
@@ -134,7 +134,7 @@ A Tevékenységnaplók betekintést nyújtanak a Redis-példányok Azure-gyorsí
 
 Ha meg szeretné tekinteni a gyorsítótárhoz tartozó tevékenységek naplóit, kattintson az **erőforrás menü** **tevékenység naplók** elemére.
 
-További információ a tevékenységek naplóiról: [Az Azure-tevékenység naplójának áttekintése](../azure-monitor/platform/activity-logs-overview.md).
+További információ a tevékenységek naplóiról: [Az Azure-tevékenység naplójának áttekintése](../azure-monitor/platform/platform-logs-overview.md).
 
 
 

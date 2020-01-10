@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230673"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769217"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
-Azure Functions üzembe helyezési pontok lehetővé teszik, hogy a Function alkalmazás különböző példányokat futtasson "bővítőhelyek" néven. A tárolóhelyek egy nyilvánosan elérhető végponton keresztül kitett különböző környezetek. Az egyik alkalmazás példánya mindig az üzemi tárolóhelyre van leképezve, és igény szerint egy tárolóhelyhez rendelt példányok is felcserélhetők. Az Apps Service-csomag alatt futó Function apps több tárolóhelytel rendelkezhet, míg a felhasználás alatt csak egy tárolóhely engedélyezett.
+Azure Functions üzembe helyezési pontok lehetővé teszik, hogy a Function alkalmazás különböző példányokat futtasson "bővítőhelyek" néven. A tárolóhelyek egy nyilvánosan elérhető végponton keresztül kitett különböző környezetek. Az egyik alkalmazás példánya mindig az üzemi tárolóhelyre van leképezve, és igény szerint egy tárolóhelyhez rendelt példányok is felcserélhetők. Az Apps Service-csomag alatt futó Function apps több tárolóhelytel rendelkezhet, míg a használati terv csak egy tárolóhelyet engedélyez.
 
 A következő, a függvények a tárolóhelyek cseréjével kapcsolatos hatásait mutatja be:
 
@@ -65,7 +65,7 @@ Megadhatja a beállításokat központi telepítési beállításként, amely a 
 
 Ha egy tárolóhelyen létrehoz egy központi telepítési beállítást, mindenképpen hozzon létre egy egyedi értéket a swap-ben részt vevő többi tárolóhelyen. Így a beállítások értéke nem változik, a beállítások nevei konzisztensek maradnak a tárolóhelyek között. Ez a név konzisztencia biztosítja, hogy a kód ne próbáljon meg hozzáférni egy olyan beállításhoz, amely egy tárolóhelyen van definiálva, de még nem.
 
-A következő lépésekkel hozhat létre központi telepítési beállítást:
+A központi telepítési beállítás létrehozásához kövesse az alábbi lépéseket:
 
 - A Function alkalmazásban navigáljon a *tárolóhelyekhez*
 - Kattintson a tárolóhely nevére
@@ -77,7 +77,7 @@ A következő lépésekkel hozhat létre központi telepítési beállítást:
 
 ![Üzembe helyezési pont beállítása](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 Tárolóhelyek létrehozásakor a tárolóhelyek üresek. A [támogatott üzembe helyezési technológiák](./functions-deployment-technologies.md) bármelyikével üzembe helyezheti az alkalmazást egy tárolóhelyen.
 
@@ -88,7 +88,7 @@ Az összes tárolóhely az üzemi tárolóhelytel azonos számú feldolgozóra m
 - A használati csomagok esetében a tárolóhely a függvény alkalmazási skálájának megfelelően méretezhető.
 - App Service csomagok esetében az alkalmazás egy rögzített számú feldolgozóra méretezhető. A bővítőhelyek ugyanazon a számú feldolgozón futnak, mint az alkalmazási csomag.
 
-## <a name="add-a-slot"></a>Tárolóhely hozzáadása
+## <a name="add-a-slot"></a>Pont hozzáadása
 
 Hozzáadhat egy tárolóhelyet a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) -n keresztül, vagy a portálon keresztül is. A következő lépések bemutatják, hogyan hozhat létre egy új tárolóhelyet a portálon:
 
@@ -135,14 +135,14 @@ Az [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?
 - [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [automatikus felcserélés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>App Service-csomag módosítása
+## <a name="change-app-service-plan"></a>Váltás másik App Service-csomagra
 
-Ha egy App Service csomag alatt futó Function alkalmazást használ, lehetősége van módosítani egy tárolóhely mögöttes app Service-csomagot.
+Ha App Service csomag alatt futó Function alkalmazást használ, lehetősége van módosítani a tárolóhely alapjául szolgáló App Service tervet.
 
 > [!NOTE]
 > A tárolóhelyek App Service terve nem módosítható a használati tervben.
 
-A bővítőhely app Service-csomagjának módosításához kövesse az alábbi lépéseket:
+A tárolóhelyek App Service tervének módosításához kövesse az alábbi lépéseket:
 
 1. Nyisson meg egy tárolóhelyet
 

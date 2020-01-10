@@ -14,24 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6d43fa2621aa95bdcf18d5c033d1347e13dc3f67
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101478"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747676"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
-Ez az útmutató részletesen ismerteti, hogyan helyezhet üzembe egy Azure-beli virtuális gépet az [Oracle Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) katalógusból a lemezképből egy Oracle 12c-adatbázis létrehozásához az Azure CLI használatával. A kiszolgáló üzembe helyezését követően SSH-kapcsolaton keresztül fog csatlakozni az Oracle-adatbázis konfigurálásához. 
+Ez az útmutató részletesen ismerteti, hogyan helyezhet üzembe egy Azure-beli virtuális gépet az Oracle Marketplace katalógusból a [lemezképből](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) egy Oracle 12c-adatbázis létrehozásához az Azure CLI használatával. A kiszolgáló üzembe helyezését követően SSH-kapcsolaton keresztül fog csatlakozni az Oracle-adatbázis konfigurálásához. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
-
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
@@ -56,7 +54,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`a értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
 
 ```azurecli
 {
@@ -73,7 +71,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet `publicIpAddress` a virtuális gép értékére.
+Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet a virtuális gép `publicIpAddress` értékére.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -150,7 +148,7 @@ A kapcsolódás előtt két környezeti változót kell beállítania: *ORACLE_H
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-ORACLE_HOME-és ORACLE_SID-változókat is hozzáadhat a. bashrc-fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Győződjön meg arról, hogy a következő utasítások lettek hozzáadva a `~/.bashrc` fájlhoz az Ön által választott szerkesztőprogram használatával.
+Emellett ORACLE_HOME és ORACLE_SID változókat is hozzáadhat a. bashrc fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Ellenőrizze, hogy az alábbi utasítások hozzá lettek-e adva a `~/.bashrc`-fájlhoz az Ön által választott szerkesztő használatával.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -190,14 +188,14 @@ A grafikus felhasználói felülettel rendelkező felügyeleti eszközökhöz, a
       3           PDB1                      MOUNT
     ```
 
-4. Ha a OPEN_MODE `PDB1` nem írható, akkor futtassa az alábbi parancsokat a PDB1 megnyitásához:
+4. Ha a `PDB1` OPEN_MODE nem olvasható, akkor futtassa az alábbi parancsokat a PDB1 megnyitásához:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Be kell írnia `quit` a SQLPlus-munkamenet befejezéséhez, `exit` és be kell írnia az Oracle-felhasználó kijelentkezését.
+`quit`t kell beírnia a SQLPlus-munkamenet befejezéséhez, és be kell írnia `exit` az Oracle-felhasználó kijelentkezéséhez.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Adatbázis indításának és leállításának automatizálása
 
@@ -208,7 +206,7 @@ Az Oracle-adatbázis alapértelmezés szerint nem indul el automatikusan a virtu
     sudo su -
     ```
 
-2.  A kedvenc szerkesztője segítségével szerkessze a `/etc/oratab` fájlt, és módosítsa `N` az `Y`alapértelmezett értéket:
+2.  A kedvenc szerkesztőjével szerkessze a fájlt `/etc/oratab` és módosítsa az alapértelmezett `N` `Y`re:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
@@ -322,8 +320,8 @@ Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuál
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerkedjen [meg az Azure](oracle-considerations.md)-beli egyéb Oracle-megoldásokkal. 
+Ismerkedjen meg az Azure-beli egyéb [Oracle-megoldásokkal](oracle-considerations.md). 
 
 Próbálja ki az [Oracle automatizált Storage kezelési oktatóanyag telepítését és konfigurálását](configure-oracle-asm.md) .

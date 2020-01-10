@@ -1,37 +1,35 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
-services: azure-app-configuration
 author: yegu
+ms.author: yegu
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 01/22/2019
-ms.author: yegu
-ms.custom: include file
-ms.openlocfilehash: c98a17be394887ef4e008b079467c85d4ded7e09
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 12/03/2019
+ms.openlocfilehash: ceeeb5ee155624e050f36e733a464c2cb21db88c
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393305"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750292"
 ---
-1. Hozzon létre egy új alkalmazás-konfigurációs adattároló, jelentkezzen be a [az Azure portal](https://portal.azure.com). Az ablaktábla bal felső sarkában válassza **+ erőforrás létrehozása**. Az a **keresés a piactéren** mezőbe írja be **Alkalmazáskonfiguráció** , és nyomja le az Enter.
+1. Új alkalmazás-konfigurációs tároló létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com). A Kezdőlap bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget. A **Keresés a piactéren** mezőbe írja be az **alkalmazás konfigurációját** , és válassza az ENTER billentyűt.
 
-    ![Keresse meg az alkalmazás konfigurációja](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-new.png)
+    ![Alkalmazás konfigurációjának keresése](media/azure-app-configuration-create/azure-portal-search.png)
 
-1. Válassza ki **Alkalmazáskonfiguráció** a keresési eredmények, és válassza ki a **létrehozás**.
+1. Válassza ki az **alkalmazás konfigurációját** a keresési eredmények közül, majd válassza a **Létrehozás**lehetőséget.
 
-1. Az a **Alkalmazáskonfiguráció** > **létrehozás** panelen adja meg a következő beállításokat:
+    ![Létrehozás kiválasztása](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
+
+1. Az **alkalmazás konfigurációja** > **Létrehozás** ablaktáblán adja meg a következő beállításokat:
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
-    | **Erőforrás neve** | Globálisan egyedi név | Adjon meg egy egyedi erőforráscsoport nevét az alkalmazás konfigurációs tár erőforrás. A névnek 1 és 63 karakter közötti sztringnek kell lennie, és kizárólag számokat, betűket és a `-` karaktert tartalmazhatja. A név nem kezdődhet vagy végződhet a `-` karakterrel, és egymást követő `-` karakter nem érvényes.  |
-    | **Előfizetés** | Az Ön előfizetése | Válassza ki az alkalmazás konfigurációjának tesztelése használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, a rendszer automatikusan kiválasztja és a **előfizetés** lista nem jelenik meg. |
-    | **Erőforráscsoport** | *AppConfigTestResources* | Válassza ki vagy hozzon létre egy erőforráscsoportot az Alkalmazáskonfigurációt tároló-erőforrás. Ennek a csoportnak több erőforrást, amelyeket érdemes az erőforráscsoport törlésével egy időben törlése rendszerezésének szempontjából hasznos. További információkat az [Azure-erőforrások erőforráscsoportokkal való kezeléséről](/azure/azure-resource-manager/resource-group-overview) szóló cikkben olvashat. |
-    | **Hely** | *USA középső RÉGIÓJA* | Használat **hely** , megadhatja a földrajzi helyet, ahol az alkalmazás a konfigurációs adattároló üzemel. A legjobb teljesítmény érdekében az alkalmazás más összetevőit ugyanabban a régióban az erőforrás létrehozásához. |
+    | **Erőforrás neve** | Globálisan egyedi név | Adja meg az alkalmazás konfigurációs tárolási erőforrásához használandó egyedi erőforrás nevét. A névnek 1 és 63 karakter közötti sztringnek kell lennie, és kizárólag számokat, betűket és a `-` karaktert tartalmazhatja. A név nem kezdődhet vagy végződhet a `-` karakterrel, és az egymást követő `-` karakterek nem érvényesek.  |
+    | **Előfizetés** | Az Ön előfizetése | Válassza ki az alkalmazás konfigurációjának teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, akkor automatikusan ki van választva, és az **előfizetések** listája nem jelenik meg. |
+    | **Erőforráscsoport** | *AppConfigTestResources* | Válasszon ki vagy hozzon létre egy erőforráscsoportot az alkalmazás konfigurációs tárolójának erőforrásához. Ez a csoport akkor lehet hasznos, ha több olyan erőforrást szeretne szervezni, amelyet az erőforráscsoport törlésével egyszerre törölni kíván. További információkat az [Azure-erőforrások erőforráscsoportokkal való kezeléséről](/azure/azure-resource-manager/resource-group-overview) szóló cikkben olvashat. |
+    | **Hely** | *USA középső régiója* | A **Location (hely** ) használatával adja meg azt a földrajzi helyet, amelyben az alkalmazás konfigurációs tárolója üzemel. A legjobb teljesítmény érdekében hozza létre az erőforrást ugyanabban a régióban, mint az alkalmazás többi összetevőjét. |
 
-    ![Áruházbeli alkalmazás konfigurációs erőforrás létrehozása](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-create.png)
+    ![Alkalmazás-konfigurációs tároló erőforrásának létrehozása](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 
-1. Kattintson a **Létrehozás** gombra. A telepítés néhány percet is igénybe vehet.
+1. Kattintson a **Létrehozás** gombra. Az üzembe helyezés néhány percet is igénybe vehet.
 
-1. Az üzembe helyezés befejezése után jelölje ki a **beállítások** > **Tárelérési kulcsok**. Jegyezze fel vagy az elsődleges csak olvasható vagy elsődleges írási-olvasási kulcs kapcsolati karakterláncára. Ez a kapcsolati karakterlánc később fogja használni a kommunikációhoz az alkalmazás a konfigurációs adattároló létrehozott alkalmazás konfigurálása.
+1. Az üzembe helyezés befejeződése után válassza a **beállítások** > **hozzáférési kulcsok**elemet. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.

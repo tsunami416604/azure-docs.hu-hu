@@ -1,7 +1,7 @@
 ---
 title: Egyéni parancsok teljesítése az ügyfélen a Speech SDK-val
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben az egyéni parancsok tevékenységeit kezeli az ügyfélen a Speech SDK-val
+description: Ez a cikk bemutatja, hogyan kezelheti az egyéni parancsok tevékenységeit az ügyfélen a Speech SDK-val.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 687ae8fb30f7e81f0e35e4d4d9281b9500fd4923
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806150"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770738"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Útmutató: parancsok teljesítése az ügyfélen a Speech SDK-val (előzetes verzió)
 
@@ -60,6 +60,7 @@ Ez a cikk részletesen ismerteti, hogyan teheti meg az ügyfélalkalmazás az eg
 
    ```json
    {
+     "type": "event",
      "name": "UpdateDeviceState",
      "state": "{OnOff}",
      "device": "{SubjectDevice}"
@@ -104,12 +105,11 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
     dynamic activity = JsonConvert.DeserializeObject(activityReceivedEventArgs.Activity);
-    var payload = activity?.Value;
 
-    if(payload?.name == "SetDeviceState")
+    if(activity?.name == "SetDeviceState")
     {
-        var state = payload?.state;
-        var device = payload?.device;
+        var state = activity?.state;
+        var device = activity?.device;
         switch(device)
         {
             case "tv":

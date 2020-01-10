@@ -1,5 +1,5 @@
 ---
-title: A Update Management, a Change Tracking és a leltár bevezetésével kapcsolatos hibák elhárítása
+title: A Azure Automation felügyeleti megoldások bevezetésének megoldása
 description: Ismerje meg, hogyan lehet elhárítani a bevezetési hibákat a Update Management-, Change Tracking-és leltározási megoldásokkal
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849309"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769897"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása a megoldások bevezetéséhez
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Hibák elhárítása Update Management, Change Tracking és leltár bevezetéséhez
 
 Hibák merülhetnek fel az olyan megoldások bevezetéséhez, mint a Update Management vagy a Change Tracking és a leltár. Ez a cikk az esetlegesen előforduló különböző hibákat és azok megoldását ismerteti.
 
@@ -140,7 +140,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a Log Analytics munkaterületen olyan megoldások vannak aktívak, amelyek az Automation-fióktól és a hivatkozott Analytics-munkaterülettől függenek.
+Ez a hiba akkor fordul elő, ha a Log Analytics munkaterületen olyan megoldások vannak aktívak, amelyek az Automation-fióktól függenek, és Log Analytics a munkaterület csatolva van.
 
 ### <a name="resolution"></a>Felbontás
 

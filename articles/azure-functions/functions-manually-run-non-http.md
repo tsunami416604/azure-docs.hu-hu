@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230479"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769132"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
@@ -22,7 +22,7 @@ A [Poster](https://www.getpostman.com/) a következő példában szerepel, de a 
 
 ## <a name="define-the-request-location"></a>A kérelem helyének megadása
 
-A nem HTTP-triggert futtató függvények futtatásához el kell küldenie egy kérést az Azure-nak a függvény futtatásához. A kérelem elvégzéséhez használt URL-cím egy adott űrlapot használ.
+A nem HTTP-triggert futtató függvények futtatásához az Azure-ba irányuló kérést kell küldenie a függvény futtatásához. A kérelem elvégzéséhez használt URL-cím egy adott űrlapot használ.
 
 ![A kérelem helyének meghatározása: állomásnév + mappa elérési útja + függvény neve](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
@@ -63,7 +63,7 @@ Nyissa meg a Poster-t, és kövesse az alábbi lépéseket:
 
     ![Poster-törzs beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. Kattintson a **Küldés**gombra.
+8. Kattintson a **Küldés** gombra.
 
     ![Poster-kérelem küldése](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
@@ -75,5 +75,5 @@ Ezután térjen vissza a függvényhez a Azure Portal. Keresse meg a *naplók* a
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Stratégiák a kód teszteléséhez Azure Functions](./functions-test-a-function.md)
+- [Kódtesztelési stratégiák az Azure Functions szolgáltatásban](./functions-test-a-function.md)
 - [Az Azure Function Event Grid helyi hibakeresést indít](./functions-debug-event-grid-trigger-local.md)

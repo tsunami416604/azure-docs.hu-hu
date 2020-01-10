@@ -1,25 +1,21 @@
 ---
 title: Eseménynapló-riasztások fogadása az Azure szolgáltatási értesítésein
 description: Értesítés küldése SMS-ben, e-mailben vagy webhookon az Azure-szolgáltatás bekövetkeztekor.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383158"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749317"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Műveletnapló-riasztások létrehozása a szolgáltatási értesítéseken
 ## <a name="overview"></a>Áttekintés
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a műveletnapló riasztásait a szolgáltatás állapotára vonatkozó értesítésekhez a Azure Portal használatával.  
 
-A szolgáltatás állapotára vonatkozó értesítések tárolása az [Azure-tevékenység naplójában](../azure-monitor/platform/activity-logs-overview.md) történik, mivel a tevékenységi naplóban tárolt adatok valószínűleg nagy mennyiségű információval rendelkeznek, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a riasztások megtekintését és beállítását a szolgáltatás állapotával kapcsolatos értesítéseken. 
+A szolgáltatás állapotára vonatkozó értesítések tárolása az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md) történik, mivel a tevékenységi naplóban tárolt adatok valószínűleg nagy mennyiségű információval rendelkeznek, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a riasztások megtekintését és beállítását a szolgáltatás állapotával kapcsolatos értesítéseken. 
 
 Riasztást kaphat, ha az Azure szolgáltatás-állapotra vonatkozó értesítéseket küld az Azure-előfizetésre. A riasztást a következő alapján állíthatja be:
 
@@ -64,7 +60,7 @@ A Service Health értesítési riasztások Azure Resource Manager sablonok haszn
     > [!NOTE]
     > Ez az előfizetés a műveletnapló riasztásának mentéséhez használatos. A riasztási erőforrás erre az előfizetésre van telepítve, és figyeli az eseményeket a tevékenység naplójában.
 
-1. Válassza ki a riasztáshoz használni kívánt **esemény típusát** : *Szolgáltatási probléma*, *tervezett karbantartás*és *egészségügyi tanácsadók* 
+1. Válassza ki a riasztáshoz használni kívánt **esemény típusát** : *szolgáltatási probléma*, *tervezett karbantartás*és *állapot-tanácsadók* 
 
 1. Adja meg a riasztás részleteit a **riasztási szabály nevének** és **leírásának**megadásával.
 
@@ -76,11 +72,11 @@ A Service Health értesítési riasztások Azure Resource Manager sablonok haszn
 
 1. Adja meg a fogadók listáját a fogadó:
 
-    a. **Név**: Adja meg a fogadó nevét, aliasát vagy azonosítóját.
+    a. **Név**: adja meg a fogadó nevét, aliasát vagy azonosítóját.
 
-    b. **Művelet típusa**: Válassza az SMS-t, e-mailt, webhookot, az Azure-alkalmazást és egyebeket.
+    b. **Művelettípus**: válassza az SMS-t, e-mailt, webhookot, az Azure-alkalmazást és egyebeket.
 
-    c. **Részletek**: A kiválasztott Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-JÁT stb.
+    c. **Részletek**: a kiválasztott Művelettípus alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-ját stb.
 
 1. A műveleti csoport létrehozásához kattintson **az OK gombra** , majd **hozzon létre riasztási szabályt** a riasztás befejezéséhez.
 
@@ -200,7 +196,7 @@ Miután létrehozta a riasztást, a **figyelő** **riasztások** szakaszában l�
 * Törölje.
 * Tiltsa le vagy engedélyezze, ha átmenetileg le kívánja állítani vagy folytatni szeretné a riasztási értesítések fogadását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a Azure Service Health riasztások beállításával kapcsolatos ajánlott eljárásokról](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
 - Ismerje meg, hogyan állíthat be [Azure Service Health Mobile leküldéses értesítéseket](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).

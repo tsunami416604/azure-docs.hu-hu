@@ -3,14 +3,14 @@ title: 'Kubernetes fejlesztői terület létrehozása: Visual Studio Code & .NET
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: fa7b4b4dcd1883c7619faa6fcfe014f4fc8c036f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fccec69999be653786e59e2d19728b5e232b6849
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708577"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771155"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: Visual Studio Code és .NET Core az Azure dev Spaces használatával
 
@@ -210,7 +210,7 @@ Ez hozzáadja az Azure Dev Spaceshez készült hibakeresési konfigurációt a `
 ![](media/get-started-netcore/debug-configuration.png)
 
 > [!Note]
-> Ha nem lát Azure Dev Spaces-parancsokat a parancspalettán, győződjön meg róla, hogy a VS Code Azure Dev Spaceshez készült bővítménye telepítve van. Győződjön meg arról, hogy a VS Code-ban megnyitott munkaterület az azds.yaml fájlt tartalmazó mappa.
+> Ha nem lát Azure Dev Spaces-parancsokat a parancspalettán, győződjön meg róla, hogy a VS Code Azure Dev Spaces-hez készült bővítménye telepítve van. Győződjön meg arról, hogy a VS Code-ban megnyitott munkaterület az azds.yaml fájlt tartalmazó mappa.
 
 
 ### <a name="debug-the-container-in-kubernetes"></a>A tároló hibakeresése a Kubernetesben
@@ -254,4 +254,4 @@ Frissítse a webalkalmazást a böngészőben, és lépjen az Információ oldal
 > [További tudnivalók a több szolgáltatás fejlesztéséről](multi-service-netcore.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

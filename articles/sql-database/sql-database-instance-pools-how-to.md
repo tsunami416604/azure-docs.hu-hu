@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 13c58ddf5f51e5b63d2dbe425b3ec795e21dabb8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810355"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754057"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>A Azure SQL Database instance Pools (előzetes verzió) útmutatója
 
@@ -26,7 +26,7 @@ Ez a cikk a [példány-készletek](sql-database-instance-pools.md)létrehozásá
 
 A következő táblázat a példány-készletekhez kapcsolódó elérhető műveleteket, valamint azok rendelkezésre állását mutatja be a Azure Portal és a PowerShellben.
 
-|Parancs|Azure Portal|PowerShell|
+|Parancs|Azure portál|PowerShell|
 |:---|:---|:---|
 |Példánykészlet létrehozása|Nem|Igen|
 |Példány frissítése (korlátozott számú tulajdonság)|Nem |Igen |
@@ -92,11 +92,17 @@ A következő korlátozások vonatkoznak a példány-készletekre:
 
 - Nyilvános előzetes verzióban csak általános célú és Gen5 érhető el.
 - A készlet neve csak kisbetűket, számokat és kötőjelet tartalmazhat, és nem kezdődhet kötőjeltel.
-- Az alhálózat AZONOSÍTÓjának lekéréséhez használja a `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`.
 - Ha a AHB (Azure Hybrid Benefit) szeretné használni, azt a rendszer a példány készlet szintjén alkalmazza. A licenc típusát a készlet létrehozása során állíthatja be, vagy a létrehozás után bármikor frissítheti.
 
 > [!IMPORTANT]
 > A példányok üzembe helyezése hosszú ideig futó művelet, amely körülbelül 4,5 órát vesz igénybe.
+
+Hálózati paraméterek beolvasása:
+
+```powershell
+$virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
+```
 
 Példány készletének létrehozása:
 
@@ -104,7 +110,7 @@ Példány készletének létrehozása:
 $instancePool = New-AzSqlInstancePool `
   -ResourceGroupName "myResourceGroup" `
   -Name "mi-pool-name" `
-  -SubnetId "/subscriptions/subscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/miPoolVirtualNetwork/subnets/miPoolSubnet" `
+  -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
   -VCore 80 `
   -Edition "GeneralPurpose" `
@@ -261,7 +267,7 @@ Meglévő adatbázisok áthelyezése:
 Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](sql-database-features.md).
 - A VNet-konfigurációval kapcsolatos további információkért lásd: [felügyelt példányok VNet konfigurációja](sql-database-managed-instance-connectivity-architecture.md).

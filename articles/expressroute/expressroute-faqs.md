@@ -5,19 +5,18 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891038"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770985"
 ---
-# <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
+# <a name="expressroute-faq"></a>ExpressRoute – gyakori kérdések
 
-## <a name="what-is-expressroute"></a>Mi az az ExpressRoute?
+## <a name="what-is-expressroute"></a>Mi az ExpressRoute?
 
 A ExpressRoute egy Azure-szolgáltatás, amely lehetővé teszi, hogy a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között hozzon létre privát kapcsolatokat. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, és nagyobb biztonságot, megbízhatóságot és sebességet biztosítanak, mint a szokásos kapcsolatok az interneten.
 
@@ -49,44 +48,54 @@ Igen. A ExpressRoute-áramkörök úgy vannak konfigurálva, hogy a maximálisan
 
 Igen. A beállítás után egy ExpressRoute áramkör lehetővé teszi a virtuális hálózatokon és más Azure-szolgáltatásokon belüli szolgáltatások elérését. A virtuális hálózatokhoz a privát kapcsolati útvonalon és más szolgáltatásokon keresztül kapcsolódhat a Microsoft-partneri útvonalon keresztül.
 
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Hogyan hirdetik meg a virtuális hálózatok a ExpressRoute-alapú privát kiszolgálókon?
+
+Az ExpressRoute-átjáró meghirdeti *Az Azure* -VNet, és az alhálózat szintjén nem szerepelhet/nem zárható ki. Mindig a meghirdetett VNet-címtartomány. Továbbá, ha a VNet-társítást használja, és a "távoli átjáró használata" beállítás engedélyezve van, a rendszer a meghirdetett VNet VNet is közzéteszi.
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Szűrhetim a helyszíni hálózatról érkező útvonalakat?
+
+Az útvonalak szűrésének és belefoglalásának egyetlen módja a helyszíni peremhálózati útválasztó. A felhasználó által megadott útvonalak hozzáadhatók a VNet az adott útválasztásra, de ez statikus, és nem része a BGP-hirdetménynek.
+
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>A ExpressRoute kínál szolgáltatói szerződés (SLA)?
 
 További információ: [EXPRESSROUTE SLA](https://azure.microsoft.com/support/legal/sla/) oldal.
 
 ## <a name="supported-services"></a>Támogatott szolgáltatások
 
-A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peerings.md) támogat a különböző típusú szolgáltatások esetében: privát társak, Microsoft-társítás és nyilvános társak.
+A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peerings.md) támogat a különböző típusú szolgáltatások esetében: privát társítás, Microsoft-társítás és nyilvános társ (elavult).
 
 ### <a name="private-peering"></a>Magánhálózati társviszony-létesítés
+
+**Támogatott**
 
 * Virtuális hálózatok, beleértve az összes virtuális gépet és a Cloud Servicest
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+
+Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcsolathoz, az Azure-ban az áramkörön használt [nyilvános IP-címtartományok](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) is elérhetők. Az Azure Microsoft-partnerek hozzáférést biztosítanak a jelenleg az Azure-ban üzemeltetett szolgáltatásokhoz (az áramköri SKU-tól függően földrajzi korlátozásokkal). Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután keresse meg a cél szolgáltatás IP-tartományait, és hasonlítsa össze az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
+
+**Támogatott**
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI az Azure regionális közösségén keresztül érhető el, [itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) találhatja meg a Power bi bérlő régióját.
 * Azure Active Directory
 * [Windows rendszerű virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure globális szolgáltatások közössége)
-* Az Azure-szolgáltatások többsége támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.<br><br>**A következő szolgáltatások nem támogatottak**:
-    * Tartalomkézbesítési hálózat (CDN)
-    * Azure Front Door
-    * Multi-Factor Authentication kiszolgáló (örökölt)
-    * Traffic Manager
+* Azure nyilvános IP-címek a IaaS (Virtual Machines, Virtual Network átjárók, terheléselosztó stb.)  
+* A többi Azure-szolgáltatás többsége is támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.
+
+**Nem támogatott:**
+
+* CDN
+* Azure Front Door
+* Multi-Factor Authentication kiszolgáló (örökölt)
+* Forgalomkezelő
 
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
 
->[!NOTE]
->A nyilvános társítás le lett tiltva az új ExpressRoute-áramkörökben. Az Azure-szolgáltatások elérhetők a Microsoft-partnereken.
->
+A nyilvános társítás le lett tiltva az új ExpressRoute-áramkörökben. Az Azure-szolgáltatások mostantól elérhetők a Microsoft-partnerek számára. Ha olyan áramkört hoz létre, amely a nyilvános társítást megelőzően lett létrehozva, akkor a kívánt szolgáltatástól függően használhatja a Microsoft társközi vagy nyilvános társítását.
 
-* Power BI
-* Az Azure-szolgáltatások többsége támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.<br><br>
-  **A következő szolgáltatások nem támogatottak**:
-    * Tartalomkézbesítési hálózat (CDN)
-    * Azure Front Door
-    * Multi-Factor Authentication kiszolgáló (örökölt)
-    * Traffic Manager
+További információ és konfigurációs lépések a nyilvános társítással kapcsolatban: [ExpressRoute Public-peering](about-public-peering.md).
 
 ### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Miért látom a "meghirdetett nyilvános előtagok" állapotát "érvényesítés szükséges" állapotra a Microsoft-társak konfigurálása során?
 
@@ -149,7 +158,7 @@ A magas rendelkezésre állás kialakításához [itt](https://docs.microsoft.co
 
 Magas rendelkezésre állást érhet el, ha összekapcsolja a ExpressRoute-áramköröket a különböző (például szingapúri, Szingapúr2) helyek között a virtuális hálózatra. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
 
-### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hogyan az Azure-beli nyilvános szolgáltatásokhoz, például az Azure Storage-hoz és az Azure SQL-hez a Microsofton vagy a nyilvános ExpressRoute-on keresztül érkező forgalmat előnyben részesítettük?
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hogyan, hogy az Azure-beli nyilvános szolgáltatásokhoz, például az Azure Storage-hoz és az Azure SQL-hez a Microsoft társközi vagy nyilvános társ-kezeléshez szánt forgalma előnyben részesített a ExpressRoute útvonalon?
 
 Meg kell valósítania az útválasztó (k) *helyi preferencia* attribútumát annak biztosításához, hogy a helyszínről az Azure-ba irányuló útvonal mindig a ExpressRoute-áramkör (ek) re legyen előnyben részesítve.
 
@@ -278,7 +287,7 @@ A ExpressRoute Premium a következő funkciók gyűjteménye:
 * Nagyobb számú virtuális hálózatok és ExpressRoute Global Reach kapcsolat, amely engedélyezhető egy ExpressRoute-áramkörön (az alapértelmezett érték 10). További információ: [ExpressRoute-korlátok](#limits) tábla.
 * Csatlakozás az Office 365-hoz
 * Globális kapcsolat a Microsoft Core hálózaton keresztül. Most már összekapcsolhat egy VNet az egyik geopolitikai régióban egy másik régióban lévő ExpressRoute-áramkörrel.<br>
-    **Példák**
+    **Példák:**
 
     *  Az Európa nyugati régiójában létrehozott VNet egy Szilícium-völgyben létrehozott ExpressRoute-áramkörhöz csatolhatja. 
     *  A Microsoft-társak a többi geopolitikai régió előtagjait is meghirdetik, így például az SQL Azure Nyugat-Európában, a Szilícium-völgyben található áramkörről.

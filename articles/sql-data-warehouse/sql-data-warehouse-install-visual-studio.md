@@ -9,15 +9,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 11/06/2019
+ms.date: 01/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 758c9b323e78e7e86312555f5fabdcc9c4c28330
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123728"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750656"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Első lépések a Visual Studio 2019 for SQL Data Warehouse
 A Visual Studio **2019** SQL Server Data Tools (SSDT) egyetlen eszköz, amely lehetővé teszi a következőket:
@@ -40,13 +40,14 @@ Előfordulhat, hogy a SQL Data Warehouse funkcióinak kiadásai nem tartalmazzá
 - [Rendezett fürtözött Oszlopcentrikus indexek](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (folyamatban)
 - [Másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (folyamatban)
 - [Munkaterhelés-kezelés](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management) – munkaterhelési csoportok és osztályozók (folyamatban)
-- [Sor szintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
+- [Sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
   - Küldjön be egy támogatási jegyet, vagy szavazzon [ide](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) a funkció támogatásának megszerzéséhez.
 - [Dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
   - Küldjön be egy támogatási jegyet, vagy szavazzon [ide](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) a funkció támogatásának megszerzéséhez. 
 - [Előrejelzési](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) függvény 
+- A [korlátozásokkal rendelkező táblák](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints) nem támogatottak. Ezekben a táblázatos objektumokban állítsa a Build műveletet a "None" értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a SSDT legújabb verzióját használja, készen áll a SQL Data Warehouse való [kapcsolódásra][connect] .
 

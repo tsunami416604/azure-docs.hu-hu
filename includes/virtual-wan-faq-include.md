@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828892"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772880"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Mi a különbség az Azure Virtual Network Gateway (VPN Gateway) és egy Azure virtuális WAN VPN Gateway között?
 
@@ -22,6 +22,9 @@ A Virtual WAN nagy léptékben biztosít helyek közötti kapcsolatokat, és kif
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Miben különbözik a virtuális WAN egy Azure-beli virtuális hálózati átjárótól?
 
 A virtuális hálózati átjáró VPN-je legfeljebb 30 alagútra van korlátozva. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. Régiónként (Virtual hub) akár 1 000 ág-kapcsolatot is csatlakoztathat, és a központ 20 GB/s-os összesítéssel rendelkezik. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Régiónként egy hubhoz is rendelkezhet, ami azt jelenti, hogy több mint 1 000 ágat tud csatlakoztatni a hubok között.
+
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>A virtuális WAN Gateway méretezési egysége
+A méretezési egység egy olyan egység, amely egy átjáró összesített átviteli sebességének kiválasztására van beállítva a virtuális központban. 1 a VPN = 500 Mbps méretezési egysége. 1 skálázási egység, ExpressRoute = 2 GB/s. Például: a VPN 10 skálázási egysége 500 Mbps * 10 = 5 GB/s értéket jelentene.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Mely szolgáltatók (virtuális WAN-partnerek) támogatottak?
 
@@ -111,9 +114,11 @@ Egy virtuális WAN egyszerű konfigurációja egy hubhoz, egy vpnsite pedig egy 
 
 A VNet egy másik régióban is kapcsolódhat, mint a virtuális WAN-t.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Tudnak egymással kommunikálni a virtuális központhoz csatlakoztatott küllő virtuális hálózatok?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Megbeszélheti a virtuális hálózatok csatlakoztatott virtuális hubhoz való kommunikációt (V2V-átvitel)?
 
-Igen. A standard szintű virtuális WAN támogatja a vnet, hogy vnet a tranzitív kapcsolatot a virtuális WAN-hubhoz, amelyhez a virtuális hálózatok csatlakozik. A virtuális WAN-terminológiában ezeket az útvonalakat "helyi virtuális WAN VNet Transit"-ként tekintjük át egyetlen régióban lévő virtuális WAN-központhoz csatlakoztatott virtuális hálózatok, és a "globális virtuális WAN VNet Transit" a több virtuális WAN-hubhoz csatlakoztatott virtuális hálózatok régiók. A VNet-tranzit a nyilvános előzetes verzióban akár 3 GB-os átviteli sebességet is támogat. Az átviteli sebesség ki lesz bővítve, amikor a globális átvitel megy.   
+Igen. A standard szintű virtuális WAN támogatja a vnet, hogy vnet a tranzitív kapcsolatot a virtuális WAN-hubhoz, amelyhez a virtuális hálózatok csatlakozik. A virtuális WAN-terminológiában ezeket az útvonalakat "helyi virtuális WAN VNet Transit"-ként tekintjük át egyetlen régióban lévő virtuális WAN-központhoz csatlakoztatott virtuális hálózatok, és a "globális virtuális WAN VNet Transit" a több virtuális WAN-hubhoz csatlakoztatott virtuális hálózatok régiók. A VNet-tranzit a nyilvános előzetes verzióban akár 3 GB-os átviteli sebességet is támogat. Az átviteli sebesség ki lesz bővítve, amikor a globális átvitel megy.
+
+Megjegyzés: jelenleg a V2V Transit előzetes verziójának használatához a VPN GW-t egy virtuális központban kell telepíteni, hogy aktiválja az útválasztási elemeket. Ez a VPN GW nem használatos a V2V átviteli útvonalhoz. Ez egy ismert korlátozás, amely a V2V GA időpontban lesz eltávolítva. A csomópont (ok) VPN Gateway a teljes elindítása után törölhető, mivel nem szükséges a V2V-továbbítási funkciókhoz. 
 
 Bizonyos forgatókönyvek esetében a küllős virtuális hálózatok a helyi vagy globális virtuális WAN VNet-átvitelen kívül közvetlenül [Virtual Network](../articles/virtual-network/virtual-network-peering-overview.md) egymással is összekapcsolódhat. Ebben az esetben a vnet-társítás a virtuális WAN-központon keresztül elsőbbséget élvez a tranzitív kapcsolattal szemben. 
 

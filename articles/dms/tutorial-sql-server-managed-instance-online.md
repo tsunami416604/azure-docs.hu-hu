@@ -1,5 +1,6 @@
 ---
-title: 'Oktatóanyag: a SQL Server online áttelepítésének elvégzése Azure Database Migration Service használatával Azure SQL Database felügyelt példányon | Microsoft Docs'
+title: 'Oktatóanyag: SQL Server online migrálása SQL felügyelt példányra'
+titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan hajthat végre SQL Server helyszíni áttelepítést Azure SQL Database felügyelt példányra Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/08/2020
+ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975023"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746852"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra online a DMS használatával
 
@@ -42,6 +43,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!IMPORTANT]
 > Az optimális áttelepítési élmény érdekében a Microsoft azt javasolja, hogy Azure Database Migration Service-példányt hozzon létre ugyanabban az Azure-régióban, mint a célként megadott adatbázis. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
+> [!IMPORTANT]
+> Fontos, hogy a lehető legnagyobb mértékben csökkentse az online áttelepítési folyamat időtartamát, hogy minimalizálja a példányok újrakonfigurálásának vagy tervezett karbantartásának okozta megszakítás kockázatát. Ilyen esemény esetén az áttelepítési folyamat kezdete az elejétől kezdődik. Tervezett karbantartás esetén az áttelepítési folyamat újraindítása előtt 36 óra türelmi időszak áll rendelkezésre.
+
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 Ez a cikk a SQL Server SQL Database felügyelt példányra történő online áttelepítését ismerteti. Offline áttelepítés esetén lásd: [SQL Server áttelepítése SQL Database felügyelt példányra a DMS használatával](tutorial-sql-server-to-managed-instance.md).
@@ -50,10 +54,10 @@ Ez a cikk a SQL Server SQL Database felügyelt példányra történő online át
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Hozzon létre egy Azure-Virtual Network (VNet) a Azure Database Migration Servicehez a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. [Ismerkedjen meg Azure SQL Database felügyelt példányok áttelepítése Azure Database Migration Service használatával hálózati topológiákkal](https://aka.ms/dmsnetworkformi). A VNet létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
+* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. [Ismerkedjen meg Azure SQL Database felügyelt példányok áttelepítése Azure Database Migration Service használatával hálózati topológiákkal](https://aka.ms/dmsnetworkformi). A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
 
     > [!NOTE]
-    > Ha a VNet telepítése során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
+    > Ha a virtuális hálózat beállítása során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
     >
     > * Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont stb.)
     > * Tárolási végpont
@@ -66,9 +70,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     > [!IMPORTANT]
     > A Migrálás részeként használt Storage-fiókkal kapcsolatban a következők valamelyikét kell megadnia:
     > * A Storage-fiók elérésének engedélyezéséhez válassza az összes hálózat lehetőséget.
-    > * Adja meg a VNet hozzáférés-vezérlési listákat. További információkért tekintse meg az [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security)című cikket.
+    > * Állítsa be a virtuális hálózat ACL-jeit. További információkért tekintse meg az [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security)című cikket.
 
-* Győződjön meg arról, hogy a VNet hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. Az Azure VNet NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
 * Konfigurálja a [Windows tűzfalat a forrásadatbázis-motorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás SQL Serverhoz, amely alapértelmezés szerint a 1433-as TCP-port.
 * Ha több elnevezett SQL Server példányt futtat dinamikus portok használatával, érdemes lehet engedélyezni a SQL Browser szolgáltatást, és engedélyezni a tűzfalon keresztül a 1434-es UDP-port elérését, így Azure Database Migration Service csatlakozhat a forráshoz tartozó nevesített példányhoz Server.
@@ -113,11 +117,11 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 4. Válassza ki azt a helyet, ahol a DMS példányát létre szeretné hozni.
 
-5. Válasszon ki egy meglévő VNet, vagy hozzon létre egyet.
+5. Válasszon ki egy meglévő virtuális hálózatot, vagy hozzon létre egyet.
 
-    A VNet Azure Database Migration Service biztosít hozzáférést a forrás SQL Server és a célként megadott SQL Database felügyelt példányhoz.
+    A virtuális hálózat Azure Database Migration Service hozzáférést biztosít a forrás-SQL Server és a célként megadott SQL Database felügyelt példányhoz.
 
-    A VNet Azure Portal-ben való létrehozásával kapcsolatos további információkért tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
+    A virtuális hálózatok Azure Portalban való létrehozásával kapcsolatos további információkért tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
 
     További részletekért tekintse meg a [Azure SQL Database felügyelt példányok áttelepítése Azure Database Migration Service használatával című cikkben található hálózati topológiákat](https://aka.ms/dmsnetworkformi).
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561489"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754590"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez:
 A forrásrégió kivételével bármelyik régióban létrehozhat tárolót.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget. Ezután válassza a **felügyeleti eszközök** > **a biztonsági mentés és a site Recovery**lehetőséget.
+2. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet. Ezután válassza a **felügyeleti eszközök** > **a biztonsági mentés és a site Recovery**lehetőséget.
 3. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 4. Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
 5. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
@@ -77,15 +77,18 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha az URL-címek helyett IP-címeket használó kimenő kapcsolatot szeretne vezérelni, engedélyezze ezeket a címeket az IP-alapú tűzfalak, proxy vagy NSG szabályok számára.
+Ha a NSG-t használja, hozzon létre NSG-szabályokat az Azure Storage-hoz való hozzáféréshez, Azure Active Directory, Site Recovery a szolgáltatáshoz és a Site Recovery figyeléshez. [További információk](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+
+Ha NSG-szabályok helyett IP-címekkel szeretné vezérelni a kimenő kapcsolatot, engedélyezze ezeket a címeket az IP-alapú tűzfalak, proxy vagy NSG szabályok számára.
+
+>[!NOTE]
+>Azt javasoljuk, hogy mindig konfigurálja a NSG-szabályokat a kimenő hozzáféréshez szükséges szolgáltatási címkékkel.
 
   - [A Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653)
   - [A Microsoft Azure adatközpont IP-tartományai Németországban](https://www.microsoft.com/download/details.aspx?id=54770)
   - [A Microsoft Azure adatközpont IP-tartományai Kínában](https://www.microsoft.com/download/details.aspx?id=42064)
   - [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery-szolgáltatásvégpontok IP-címei](https://aka.ms/site-recovery-public-ips)
-
-Ha a NSG-t használja, létrehozhat egy tárolási szolgáltatáshoz tartozó NSG-szabályt a forrás régióhoz. [További információk](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 

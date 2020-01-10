@@ -1,88 +1,109 @@
 ---
 title: 'Gyors útmutató: beszédek, szándékok és entitások felismerése, Python-Speech szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 01/02/2020
+ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9a4c7f24a2e28743679e312e3dce0bc605db6749
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773035"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Az első lépések előtt:
 
-> [!div class="checklist"]
->
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Language Understanding (LUIS) alkalmazás létrehozása és végponti kulcs beszerzése](../../../../quickstarts/create-luis.md)
-> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md)
+* Ha ez az első Python-projekt, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">hozzon létre egy üres minta projektet</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Telepítse a fejlesztői környezethez készült SPEECH SDK</a>-t.
+
+## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándék-felismeréshez
+
+[!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
 ## <a name="open-your-project"></a>A projekt megnyitása
 
-Nyissa meg a Quickstart.py a Python-szerkesztőben.
+1. Nyissa meg az előnyben részesített IDE-t.
+2. Hozzon létre egy új projektet, és hozzon létre egy `quickstart.py`nevű fájlt, majd nyissa meg.
 
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-7)]
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-`IntentRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely a LUIS Endpoint kulcsát és régióját használja. Szúrja be a következő kódot.
+`IntentRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely a LUIS-előrejelzési erőforrás kulcsát és helyét használja.
 
-Ez a minta a `SpeechConfig` objektumot a LUIS kulcs és a régió használatával hozza létre. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
-A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+Szúrja be ezt a kódot a `quickstart.py`ba. Győződjön meg róla, hogy frissíti ezeket az értékeket:
 
-> [!NOTE]
-> Fontos, hogy a LUIS Endpoint kulcsot használja, nem pedig a kezdő vagy a szerzői kulcsot, mert csak a végpont kulcsa érvényes a beszédfelismerési szándék felismerésére. A megfelelő kulcs beszerzésével kapcsolatos útmutatásért lásd: [Luis-alkalmazás létrehozása és végponti kulcs beszerzése](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
+* Cserélje le a `"YourLanguageUnderstandingSubscriptionKey"`t a LUIS-előrejelzési kulcsra. 
+* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére. 
+
+>[!TIP]
+> Ha segítségre van szüksége ezeknek az értékeknek a megtalálásához, tekintse meg [a Luis-alkalmazás létrehozása a szándék felismeréséhez](#create-a-luis-app-for-intent-recognition)című témakört.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
+
+Ez a minta a `SpeechConfig` objektumot a LUIS kulcs és a régió használatával hozza létre. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
+
+A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 ## <a name="initialize-an-intentrecognizer"></a>IntentRecognizer inicializálása
 
 Most hozzon létre egy `IntentRecognizer`. Szúrja be a kódot közvetlenül a beszédfelismerési konfiguráció alá.
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel és szándékok hozzáadása
 
-Most hozzá kell rendelnie egy `LanguageUnderstandingModel`t a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket.
+Hozzá kell rendelnie egy `LanguageUnderstandingModel` a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket. Az előre elkészített tartományból szándékait fogjuk használni a Home Automation számára. 
+
+Szúrja be ezt a kódot a `IntentRecognizer`alá. Győződjön meg arról, hogy a `"YourLanguageUnderstandingAppId"`t a LUIS-alkalmazás azonosítójával helyettesíti. 
+
+>[!TIP]
+> Ha segítségre van szüksége az érték megkereséséhez, tekintse meg [a Luis-alkalmazás létrehozása a szándék-felismeréshez](#create-a-luis-app-for-intent-recognition)című témakört.
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 ## <a name="recognize-an-intent"></a>Szándék felismerése
 
 A `IntentRecognizer` objektumban meg kell hívnia a `recognize_once()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
+
+Szúrja be a kódot a modell alá:
+
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Az elismerési eredmények (vagy hibák) megjelenítése
 
 Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, érdemes megtennie a dolgot. Megtartjuk az egyszerűséget, és kinyomtathatjuk az eredményt a konzolon.
 
-A using utasításon belül, a `recognize_once()`hívása alatt adja hozzá a következő kódot: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+A `recognize_once()`hívása alatt adja hozzá a következő kódot: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
 Ezen a ponton a kódnak így kell kinéznie:  
-(Ehhez a verzióhoz hozzáadott néhány megjegyzést) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+
+> [!NOTE]
+> Ehhez a verzióhoz hozzáadott néhány megjegyzést.
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
 Futtassa a mintát a konzolról vagy az IDE-ben:
 
-    ````
-    python quickstart.py
-    ````
+```
+python quickstart.py
+```
 
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 

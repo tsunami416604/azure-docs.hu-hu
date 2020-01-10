@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935911"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752195"
 ---
 A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépek, amelyek egy vagy több NVIDIA GPU-val érhetők el. Ezek a méretek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek. Ez a cikk a GPU-k, a vCPU, az adatlemezek és a hálózati adapterek számáról és típusáról nyújt információt. A rendszer a tároló átviteli sebességét és a hálózati sávszélességet is tartalmazza a csoportosítás minden egyes méretéhez.
 
@@ -93,22 +93,34 @@ Az NCv3 sorozatú virtuális gépeket [NVIDIA Tesla V100](https://www.nvidia.com
 
 *RDMA-kompatibilis
 
-## <a name="ndv2-series-preview"></a>NDv2 sorozat (előzetes verzió)
+## <a name="updated-ndv2-series-preview"></a>Frissített NDv2 sorozat (előzetes verzió)
 
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
 
-InfiniBand: nem támogatott
+InfiniBand: támogatott
 
-A NDv2 sorozatú virtuális gép a HPC-, AI-és gépi tanulási munkaterhelések igényeihez tervezett GPU-család új bővítménye. A szolgáltatás 8 NVIDIA Tesla V100 NVLINK összekapcsolt GPU-k és 40 Intel Xeon Platinum 8168 (Skylake) maggal és 672 GiB rendszermemóriával rendelkezik. Az NDv2-példányok kitűnő FP32- és FP64-teljesítmény nyújtanak egyebek között a Cuda, a TensorFlow, a Pytorch, a Caffe keretrendszereket használó HPC és AI számítási feladatokhoz.
+A NDv2 sorozatú virtuális gép a GPU-család új, a legigényesebb GPU-gyorsított mesterséges intelligenciához, a gépi tanuláshoz, a szimulációs és a HPC számítási feladatokhoz készült. 
 
-Az előzetes verzió használatakor [regisztráljon, és máris hozzáférhet ezekhez a gépekhez](https://aka.ms/ndv2signup).
+A NDv2 8 NVIDIA Tesla V100 NVLINK csatlakoztatott GPU-val rendelkezik, amelyek mindegyike 32 GB GPU memóriával rendelkezik. Az egyes NDv2 virtuális gépekhez 40 nem hiperszálas Intel Xeon Platinum 8168 (Skylake) mag és 672 GiB a rendszermemória. 
+
+A NDv2-példányok kiváló teljesítményt nyújtanak a HPC-és AI-munkaterhelésekhez, amelyek a CUDA GPU-val optimalizált számítási kerneleket, valamint a GPU-gyorsítást támogató számos mesterséges intelligencia, ML és analitikai eszközt támogatják, például a TensorFlow, a Pytorch, a Cafe, a RAPIDS és egyéb szolgáltatásokat. keretek. 
+
+Kritikus fontosságú, hogy a NDv2 mind a számítási szempontból intenzív felskálázás (8 GPU-s virtuális gép kihasználása), mind a Kibővítés (több virtuális gép a közös munkával együtt) munkaterhelések használatával készült. A NDv2 sorozat mostantól a 100 Gigabit InfiniBand EDR háttér-hálózatkezelést támogatja, hasonlóan a HB-sorozatú HPC virtuális gépekhez, így lehetővé teszi a nagy teljesítményű fürtözést párhuzamos forgatókönyvek esetén, beleértve az AI és a ML elosztott képzését is. Ez a háttérrendszer támogatja az összes jelentősebb InfiniBand-protokollt, beleértve az NVIDIA NCCL2-könyvtárainak használatát is, ami lehetővé teszi a GPU-k zökkenőmentes fürtözését.
+
+> Ha [engedélyezi a InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) a ND40rs_v2 virtuális gépen, használja a 4.7-1.0.0.1 Mellanox OFED-illesztőprogramot.
+
+> A GPU-memória megnövekedett mérete miatt az új ND40rs_v2 virtuális gépen a [2. generációs virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) és a Piactéri rendszerképek használata szükséges. 
+
+> [Regisztráljon, hogy korai hozzáférést Kérjen a NDv2 virtuális gép előzetes verziójához.](https://aka.ms/AzureNDrv2Preview)
+
+> Megjegyzés: a GPU memóriával rendelkező ND40s_v2 a már nem érhető el az előzetes verzióhoz, és a frissített ND40rs_v2 felülírt.
 <br>
 
 | Méret | vCPU | Memória: GiB | Temp Storage (SSD): GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Maximális hálózati sávszélesség | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 ## <a name="nd-series"></a>ND sorozat
 

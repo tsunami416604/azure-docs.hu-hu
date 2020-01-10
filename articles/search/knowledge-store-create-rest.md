@@ -7,54 +7,55 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/30/2019
+ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720077"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754081"
 ---
-# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Azure Cognitive Search Knowledge Store létrehozása REST használatával
+# <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
 
 > [!IMPORTANT] 
 > A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-Az Azure Cognitive Search tudásbázisbeli funkciója továbbra is megőrzi az AI-bővítési folyamat kimenetét a későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozásokhoz. Egy mesterséges intelligenciával rendelkező folyamat képfájlokat vagy strukturálatlan szövegfájlokat fogad el, indexeli őket az Azure Cognitive Search használatával, az Azure-Cognitive Services mesterséges intelligenciát alkalmaz (például a képelemzést és a természetes nyelvi feldolgozást), majd menti az eredményeket Tudásbázis az Azure Storage-ban. A Azure Portalban Power BI vagy Storage Explorer eszközökkel is elvégezheti a Tudásbázis megismerését.
+A Knowledge Store egy Azure Cognitive Search-bővítési folyamatból származó kimenetet tartalmaz későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozáshoz. Egy mesterséges intelligenciával rendelkező folyamat képfájlokat vagy strukturálatlan szövegfájlokat fogad el, indexeli őket az Azure Cognitive Search használatával, alkalmazza a mesterséges intelligenciát Cognitive Services (például a képelemzést és a természetes nyelvi feldolgozást), majd menti az eredményeket egy Tudásbázis az Azure Storage-ban. A Azure Portalban Power BI vagy Storage Explorer eszközökkel is elvégezheti a Tudásbázis megismerését.
 
 Ebben a cikkben a REST API felület használatával végezheti el, indexelheti és alkalmazhatja a mesterséges intelligenciát a szállodai felülvizsgálatok készletén. A szállodai értékelések importálása az Azure Blob Storage-ba történik. Az eredményeket a rendszer az Azure Table Storage szolgáltatásban található Tudásbázisban menti.
 
 Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el a [Storage Explorer](knowledge-store-view-storage-explorer.md) vagy [Power bi](knowledge-store-connect-power-bi.md)használatával a Knowledge Store-t.
 
-## <a name="create-services"></a>Szolgáltatások létrehozása
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Hozza létre a következő szolgáltatásokat:
+> [!TIP]
+> Ehhez a cikkhez a [Poster Desktop alkalmazást](https://www.getpostman.com/) ajánljuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tartalmaz egy Poster-gyűjteményt, amely tartalmazza az összes kérelmet. 
 
-- Hozzon létre egy [Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetésében. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
+## <a name="create-services-and-load-data"></a>Szolgáltatások létrehozása és az adatterhelés
 
-- Hozzon létre egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok és a Tudásbázis tárolására. A Storage-fióknak ugyanazt a helyet (például az USA-Nyugatot) kell használnia az Azure Cognitive Search szolgáltatáshoz. A **fióktípus** értékének a következőnek kell lennie: **StorageV2 (általános célú v2)** (alapértelmezett) vagy **Storage (általános célú v1)** .
+Ez a rövid útmutató az Azure Cognitive Search, az Azure Blob Storage és az [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) használatát használja az AI-hoz. 
 
-- Ajánlott: szerezze be a [Poster Desktop alkalmazást](https://www.getpostman.com/) , amely kéri az Azure-Cognitive Search küldését. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására. Ebben a cikkben a Poster-t használjuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) a kérelmek Poster-gyűjteményét is tartalmazza. 
+Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, hogy naponta akár 20 tranzakciót is biztosítson az Azure-Cognitive Search. Az általunk megadott mintaadatok használata esetén kihagyhatja Cognitive Services erőforrás létrehozását vagy csatolását.
 
-## <a name="store-the-data"></a>Az adattárolás
+1. [Töltse le HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)fájlt. Ezek az adatok egy CSV-fájlban (Kaggle.com-ből származó) tárolt adatok, amelyek egy adott szállodával kapcsolatban 19 darab ügyfél-visszajelzést tartalmaznak. 
 
-Töltse be a Hotel a CSV-fájlt az Azure Blob Storage-ba, hogy az egy Azure Cognitive Search indexelő számára elérhető legyen, és a mesterséges intelligencia-bővítési folyamaton keresztül is felhasználható legyen.
+1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
 
-### <a name="create-a-blob-container-by-using-the-data"></a>BLOB-tároló létrehozása az adatai alapján
+   Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
-1. Töltse le a CSV-fájlban (HotelReviews_Free. csv) mentett, a [szállodai felülvizsgálati](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) adatfájlt. Ezek az adatok a Kaggle.com származnak, és a felhasználói visszajelzéseket tartalmazzák a szállodákról.
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg az Azure Storage-fiókját.
-1. Hozzon létre egy [BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). A tároló létrehozásához a Storage-fiók bal oldali menüjében válassza a **Blobok**lehetőséget, majd válassza a **tároló**elemet.
-1. Az új tároló **neve**mezőbe írja be a következőt: **Hotel-Reviews**.
-1. A **nyilvános hozzáférési szint**beállításnál válasszon ki egy tetszőleges értéket. Az alapértelmezett értéket használtuk.
-1. A blob-tároló létrehozásához kattintson **az OK gombra** .
-1. Nyissa meg az új **hotelek – áttekintés** tárolót, válassza a **feltöltés**lehetőséget, majd válassza ki az első lépésben letöltött HotelReviews-Free. csv fájlt.
+1. Nyissa meg a blob Services lapjait, és hozzon létre egy " *Hotel-Reviews*" nevű tárolót.
+
+1. Kattintson a **Feltöltés** gombra.
 
     ![Adatok feltöltése](media/knowledge-store-create-portal/upload-command-bar.png "A szállodai értékelések feltöltése")
 
-1. Válassza a **feltöltés** lehetőséget a CSV-fájl Azure Blob Storage-ba történő importálásához. Az új tároló megjelenik:
+1. Válassza ki az első lépésben letöltött **HotelReviews-Free. csv** fájlt.
 
-    ![A blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "A blob-tároló létrehozása")
+    ![Az Azure Blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Az Azure Blob-tároló létrehozása")
+
+1. Ezzel az erőforrással majdnem elkészült, de mielőtt elhagyja ezeket a lapokat, a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc a következő példához hasonlóan néz ki: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+
+1. Továbbra is a portálon váltson az Azure Cognitive Searchra. [Hozzon létre egy új szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Ehhez a gyakorlathoz használhatja az ingyenes szolgáltatást.
 
 ## <a name="configure-postman"></a>Postman konfigurálása
 
@@ -72,12 +73,12 @@ A Poster telepítése és beállítása.
 
 A **változók** lapon olyan értékeket adhat hozzá a Poster-feladatokhoz, amelyek minden alkalommal felvesznek egy adott változót a kettős zárójelek között. A Poster például lecseréli a `{{admin-key}}` szimbólumot a `admin-key`beállított aktuális értékre. A Poster lehetővé teszi a helyettesítést az URL-címek, a fejlécek, a kérés törzse és így tovább. 
 
-`admin-key`értékének beszerzéséhez nyissa meg az Azure Cognitive Search szolgáltatást, és válassza a **kulcsok** fület. módosítsa `search-service-name` és `storage-account-name` a [szolgáltatások létrehozása](#create-services)területen kiválasztott értékekre. A `storage-connection-string` beállítása a Storage-fiók **hozzáférési kulcsainak** lapján található érték használatával. A többi értéknél meghagyhatja az alapértelmezett értékeket.
+`admin-key`értékének beszerzéséhez nyissa meg az Azure Cognitive Search szolgáltatást, és válassza a **kulcsok** fület. módosítsa `search-service-name` és `storage-account-name` a [szolgáltatások létrehozása](#create-services-and-load-data)területen kiválasztott értékekre. A `storage-connection-string` beállítása a Storage-fiók **hozzáférési kulcsainak** lapján található érték használatával. A többi értéknél meghagyhatja az alapértelmezett értékeket.
 
 ![Poster-alkalmazás változók lapja](media/knowledge-store-create-rest/postman-variables-window.png "A Poster változói ablaka")
 
 
-| Változó    | Honnan szerezheti be |
+| Változó    | Hol szerezhető be |
 |-------------|-----------------|
 | `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
 | `api-version` | **2019-05-06 – előzetes**verzióként érhető el. |
@@ -107,7 +108,7 @@ A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 > Az összes kérelemben be kell állítania `api-key` és `Content-type` fejléceket. Ha a Poster egy változót is felismer, a változó narancssárga szövegben jelenik meg, mint az előző képernyőképen `{{admin-key}}`. Ha a változó hibásan van írva, vörös szövegben jelenik meg.
 >
 
-## <a name="create-an-azure-cognitive-search-index"></a>Azure Cognitive Search index létrehozása
+## <a name="create-an-azure-cognitive-search-index"></a>Egy Azure Cognitive Search-index létrehozása
 
 Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelem `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`ba való kiállításával. A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat (például `{{search-service-name}}`, `{{index-name}}`és `{{api-version}}`), a [Poster konfigurálása](#configure-postman)beállításban megadott értékekkel. Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
 
@@ -152,9 +153,9 @@ Válassza a **Küldés** lehetőséget a Put kérelem kiválasztásához. Ekkor 
 
 ## <a name="create-the-datasource"></a>Az adatforrás létrehozása
 
-Ezután csatlakoztassuk az Azure Cognitive Searcht az [adattárolásban](#store-the-data)tárolt adatszolgáltatáshoz. Az adatforrás létrehozásához küldjön POST-kérést `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. A korábban leírtaknak megfelelően be kell állítania a `api-key` és `Content-Type` fejléceket. 
+Következő lépésként kapcsolja össze az Azure Cognitive Search a blob Storage-ban tárolt a szállodai adatkapcsolattal. Az adatforrás létrehozásához küldjön POST-kérést `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. A korábban leírtaknak megfelelően be kell állítania a `api-key` és `Content-Type` fejléceket. 
 
-A Poster területen lépjen az **adatforrás létrehozása** kérelemre, majd a **törzs** ablaktáblára. A következő kódot kell megjelennie:
+A Poster területen lépjen az **adatforrás létrehozása** kérelemre, majd a **törzs** ablaktáblára. Az alábbi kódot kell látnia:
 
 ```json
 {
@@ -345,7 +346,7 @@ Miután beállította a `api-key` és `Content-type` fejléceket, és győződj�
 
 A Azure Portal nyissa meg az Azure Cognitive Search szolgáltatás **Áttekintés** lapját. Válassza ki az **Indexelő** fület, majd válassza a **Hotels-Reviews-IXR**lehetőséget. Ha az indexelő még nem fut, válassza a **Futtatás**lehetőséget. Előfordulhat, hogy az indexelési feladat bizonyos, a nyelvi felismeréssel kapcsolatos figyelmeztetéseket eredményezhet. Az adatelemzés tartalmaz néhány olyan nyelvet, amely a kognitív képességek által még nem támogatott nyelveken íródott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a Cognitive Services és az eredmények egy tudásbázisba való kivetítésével bővíti az adatait, a Storage Explorer vagy a Power BI használatával megismerheti a dúsított adatkészletet.
 

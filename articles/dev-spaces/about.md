@@ -3,15 +3,15 @@ title: Bevezetés az Azure dev Spaces használatába
 services: azure-dev-spaces
 ms.date: 05/07/2019
 ms.topic: overview
-description: Bevezetés az Azure dev Spaces használatába
+description: Ismerje meg, hogy az Azure dev Spaces hogyan nyújt gyors, ismétlődő Kubernetes-fejlesztési élményt az Azure Kubernetes Service-fürtökben található csapatok számára
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 08214e4be866da592e4852ef718ee82fa2a27d08
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325796"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771189"
 ---
 # <a name="introduction-to-azure-dev-spaces"></a>Bevezetés az Azure dev Spaces használatába
 
@@ -38,7 +38,7 @@ Az Azure dev Spaces működésével kapcsolatos további információkért lásd
 
 ## <a name="supported-regions-and-configurations"></a>Támogatott régiók és konfigurációk
 
-Az Azure dev-tárhelyeket csak az **USA keleti**régiójában, az **USA keleti**régiójában, az USA **középső**régiójában, az USA **déli középső**régiójában, az USA **2. nyugati**régiójában, **Észak**-Európában, **Nyugat-Európában**, **Egyesült Királyság déli régiója**, **Kelet-Ázsia**, **Délkelet-Ázsiában**, **Kelet-Ausztráliaban**, **Közép**-Kanadában és **Kelet-Kanadában** található, Az Azure Dev Spaces támogatja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Visual Studio Code](https://code.visualstudio.com/download) használatát Linux, MacOS és Windows 8 vagy újabb rendszerű gépeken (ha azokon telepítve van az [Azure Dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)) az alkalmazások AKS-en való létrehozásához és futtatásához. Emellett támogatja a Windows 8 vagy újabb rendszerre telepített [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) használatát is. A Visual Studio 2019 esetében szüksége lesz az Azure-fejlesztési számítási feladatra. A Visual Studio 2017 esetében szüksége lesz a webes fejlesztési számítási feladatra és a [Visual Studio-eszközökre a Kubernetes](https://aka.ms/get-vsk8stools).
+Az Azure dev-helyeket csak [bizonyos régiókban][supported-regions]található AK-fürtök támogatják. Az Azure Dev Spaces támogatja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Visual Studio Code](https://code.visualstudio.com/download) használatát Linux, MacOS és Windows 8 vagy újabb rendszerű gépeken (ha azokon telepítve van az [Azure Dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)) az alkalmazások AKS-en való létrehozásához és futtatásához. Emellett támogatja a Windows 8 vagy újabb rendszerre telepített [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) használatát is. A Visual Studio 2019 esetében szüksége lesz az Azure-fejlesztési számítási feladatra. A Visual Studio 2017 esetében szüksége lesz a webes fejlesztési számítási feladatra és a [Visual Studio-eszközökre a Kubernetes](https://aka.ms/get-vsk8stools).
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -49,4 +49,5 @@ Tudjon meg többet az Azure fejlesztői útmutatóval rendelkező csapatok gyors
 
 
 [how-dev-spaces-works]: how-dev-spaces-works.md
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-quickstart]: quickstart-team-development.md

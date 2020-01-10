@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682234"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747876"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -33,7 +33,7 @@ A HDInsight-fürtök csomópontjai az Azure Virtual Machines használatával val
 
 A Hadoop-szolgáltatások magas rendelkezésre állásának biztosítása érdekében a HDInsight két fő csomópontot biztosít. Mindkét fő csomópont aktív, és egyidejűleg fut a HDInsight-fürtön belül. Egyes szolgáltatások, például az Apache HDFS vagy a Apache Hadoop FONALak, csak az egyik főcsomóponton aktívak az adott időpontban. Más szolgáltatások, például a HiveServer2 vagy a kaptár Metaadattár egyszerre aktívak mindkét fő csomóponton.
 
-A fő csomópontok (és a HDInsight többi csomópontja) numerikus értékkel rendelkeznek a csomópont állomásneve részeként. Például `hn0-CLUSTERNAME` vagy `hn4-CLUSTERNAME`.
+A fürt különböző csomópontjaihoz tartozó állomásnevek beszerzéséhez használja a [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
 > [!IMPORTANT]  
 > Ne társítsa a numerikus értéket azzal, hogy a csomópont elsődleges vagy másodlagos. A numerikus érték csak az egyes csomópontok egyedi nevének megadását mutatja be.
@@ -88,7 +88,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 A parancs a következőhöz hasonló értéket ad vissza, amely tartalmazza a `oozie` paranccsal használandó belső URL-címet:
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
 ```
 
 További információ a Ambari REST API használatáról: a [HDInsight figyelése és kezelése az Apache Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md).
@@ -194,7 +194,7 @@ A válasz a következő JSON-hoz hasonló:
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -203,7 +203,7 @@ A válasz a következő JSON-hoz hasonló:
 }
 ```
 
-Az URL-cím azt jelzi, hogy a szolgáltatás jelenleg egy **hn0-CLUSTERNAME**nevű fő csomóponton fut.
+Az URL-cím azt jelzi, hogy a szolgáltatás jelenleg egy **mycluster. wutj3h4ic1zejluqhxzvckxq0g**nevű Head csomóponton fut.
 
 Az állapot azt jelzi, hogy a szolgáltatás jelenleg fut vagy **elindult**.
 
@@ -276,7 +276,7 @@ Fürt létrehozásakor megadhatja a csomópontok méretét. A következő inform
 
 * **Azure PowerShell**: a [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag használatakor beállíthatja a fej, a feldolgozó és a ZooKeeper csomópont méretét a `-HeadNodeSize`, a `-WorkerNodeSize`és a `-ZookeeperNodeSize` paraméterek használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

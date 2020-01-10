@@ -1,6 +1,6 @@
 ---
-title: Az Azure App konfigurálási eljárásoknak megfelelő beállításában |} A Microsoft Docs
-description: Legjobb használata az Azure-alkalmazások konfigurálása
+title: Az Azure app Configuration – ajánlott eljárások | Microsoft Docs
+description: Útmutató az Azure-alkalmazások konfigurációjának legmegfelelőbb használatához
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,65 +12,65 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3d9a597e7ced631627a121f3f0757e472f9a4bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b43ca5b6bec64d9283a64c9bcc0a3b60c21bca4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393587"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750417"
 ---
-# <a name="azure-app-configuration-best-practices"></a>Alkalmazások konfigurálása az Azure ajánlott eljárások
+# <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
-Ez a cikk ismerteti a gyakori minták és ajánlott eljárások Azure-alkalmazások konfigurálása használatakor.
+Ez a cikk az Azure-alkalmazások konfigurációjának használatával kapcsolatos gyakori mintákat és ajánlott eljárásokat ismerteti.
 
-## <a name="key-groupings"></a>Kulcs csoportosításokat
+## <a name="key-groupings"></a>Kulcsfontosságú csoportok
 
-Alkalmazások konfigurálása a kulcsok rendszerezéséhez két lehetőséget biztosít:
+Az alkalmazás konfigurálása két lehetőséget biztosít a kulcsok rendszerezésére:
 
-* Kulcs előtagok
+* Kulcs előtagjai
 * Címkék
 
-Használhatja az egyik vagy mindkét lehetőség a kulcsokat csoportosítására.
+A kulcsok csoportosításához használhatja az egyiket vagy mindkét lehetőséget is.
 
-*Előtagok kulcs* kulcsok elején részei. Olyan kulcsokat logikailag csoportosíthatja a nevükben ugyanazon előtaggal használatával. Előtagok tartalmazhat egy elválasztó alapján, például a kapcsolódó összetevőket `/`, hasonlóan ahhoz, hogy egy URL-cím, egy névteret. Az ilyen hierarchiák akkor hasznos, ha egy alkalmazás a konfigurációs adattárolónál a kulcsokat számos olyan alkalmazások, a Komponensszolgáltatások és környezetek tárolja.
+A *kulcs előtagjai* a kulcsok kezdetének részei. A kulcsok készletét logikailag csoportosíthatja a nevükben szereplő előtag használatával. Az előtagok több olyan összetevőt is tartalmazhatnak, amelyek egy adott URL-címhez hasonlóan egy elválasztó, például `/`, egy névtér létrehozásához. Ilyen hierarchiák akkor hasznosak, ha sok alkalmazás, összetevő-szolgáltatás és környezet kulcsait tárolja egy alkalmazás-konfigurációs tárolóban.
 
-Egy fontos figyelembe kell venni, kulcsok biztosítják az alkalmazás kódjában hivatkozik az értékeket a megfelelő beállítások beolvasása. Kulcsok nem szabad módosítani, vagy pedig módosítsa a kódot, amely akkor fordul elő, minden alkalommal, amikor kell.
+Fontos szem előtt tartani, hogy a kulcsok az alkalmazás kódjára hivatkoznak a megfelelő beállítások értékeinek lekéréséhez. A kulcsok nem változnak, különben minden alkalommal módosítania kell a kódot.
 
-*Címkék* kulcsok egy attribútumot is. Hozzon létre egy kulcsot változatának használhatók. Például címkék rendelhet egy adott kulcs több verzióját. Előfordulhat, hogy egy verziója egy iterációját, a környezeten vagy más környezeti információ. Az alkalmazás kérhetnek a kulcs értékeit egy teljesen külön készlete egy másik címke megadásával. Ennek eredményeképpen az összes hivatkozások a kódban változatlan marad.
+A *címkék* a kulcsok attribútumai. Egy kulcs változatának létrehozásához használatosak. Kijelölhet például címkéket egy kulcs több verziójához. Egy verzió lehet iteráció, környezet vagy más környezetfüggő információ. Az alkalmazás egy másik címke megadásával kérheti a kulcs értékeinek egy teljesen eltérő készletét. Ennek eredményeképpen az összes fontos hivatkozás változatlan marad a kódban.
 
-## <a name="key-value-compositions"></a>Kulcs-érték összetételű
+## <a name="key-value-compositions"></a>Kulcs-érték kompozíciók
 
-Alkalmazás konfigurációja független entitásokként vele tárolt összes kulcsok kezeli. Alkalmazások konfigurálása nem próbálja meg, vagy kulcsértékek alapján saját hierarchiájukhoz öröklésére következtetnek ki bármely, a kulcsok közötti kapcsolat. Kulcsok, több példányban azonban összesítheti az alkalmazás kódjában rétegezést megfelelő konfiguráció szolgáltatással párosítva címkék használatával.
+Az alkalmazás konfigurációja a vele együtt tárolt összes kulcsot független entitásként kezeli. Az alkalmazás konfigurációja nem kísérli meg a kulcsok közötti kapcsolat következtetését, illetve a kulcs értékének öröklését a hierarchiájuk alapján. A kulcsok több készletét is összesítheti, ha az alkalmazás kódjában a megfelelő konfiguráció halmozásával párosított címkéket használ.
 
-Lássunk erre egy példát. Tegyük fel, hogy rendelkezik egy beállítás nevű **Asset1**, amelynek az értéke eltérő lehet a fejlesztési környezet alapján. Létrehozhat egy üres címke és a "Fejlesztés" címke "Asset1" nevű kulcs. Az első címke, az alapértelmezett érték a put **Asset1**, és a egy adott érték a "Fejlesztés" az utóbbi helyezi.
+Lássunk egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
 
-A kódban először kérjen le minden olyan címkék nélkül a kulcs értékeit, és majd lekérheti ugyanazokat a kulcs értékeit, a "Fejlesztés" címkével ellátott még egyszer. A második alkalommal kérheti le az értékeket, ha az előző értékeket a kulcsok felülíródnak. A .NET Core konfigurációs rendszer "halmozódik" egymásra konfigurációs adatok több példányban teszi lehetővé. Ha több kulcs már létezik, az utolsó azt tartalmazó használatos. Az egy modern programozási keretrendszerről, például a .NET Core szolgáltatás halmozási képességhez ingyenes Alkalmazáskonfiguráció eléréséhez natív konfigurációszolgáltató használatakor. A következő kódrészlet azt mutatja be, hogyan implementálható rétegezést egy .NET Core-alkalmazást:
+A kódban először le kell kérnie a kulcs értékeit címkék nélkül, majd a "fejlesztés" címkével megegyező számú kulcs-értéket kell lekérnie. Ha a második alkalommal kéri le az értékeket, a kulcsok korábbi értékei felül lesznek írva. A .NET Core konfigurációs rendszer lehetővé teszi, hogy az egymásra épülő konfigurációs adat több készletét "verem". Ha egy kulcs egynél több készletben található, az azt tartalmazó utolsó készletet használja. A modern programozási keretrendszer, például a .NET Core esetében ez a halmozási képesség ingyenesen elérhető, ha natív konfigurációs szolgáltatót használ az alkalmazás konfigurálásához. A következő kódrészlet azt mutatja be, hogyan valósítható meg a halmozás egy .NET Core-alkalmazásban:
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
 // Pull the connection string from an environment variable
 configBuilder.AddAzureAppConfiguration(options => {
     options.Connect(configuration["connection_string"])
-           .Use(KeyFilter.Any, LabelFilter.Null)
-           .Use(KeyFilter.Any, "Development");
+           .Select(KeyFilter.Any, LabelFilter.Null)
+           .Select(KeyFilter.Any, "Development");
 });
 ```
 
-## <a name="app-configuration-bootstrap"></a>Alkalmazás-konfigurációs rendszerindítási
+## <a name="app-configuration-bootstrap"></a>Alkalmazás-konfiguráció rendszerindítási szolgáltatása
 
-Egy alkalmazás a konfigurációs adattároló eléréséhez, használhatja a kapcsolati karakterláncot, amely az Azure Portalon érhető el. Kapcsolati karakterláncok tartalmaz a hitelesítő adatokat, mert azokat a rendszer titkos kulcsok. Titkos adatokat kell az Azure Key Vaultban tárolhatók, és a kódot kell hitelesítenie a Key Vault kérheti le azokat.
+Az alkalmazás-konfigurációs tároló eléréséhez használhatja a kapcsolati karakterláncát, amely a Azure Portalban érhető el. Mivel a kapcsolatok karakterlánca hitelesítő adatokat tartalmaz, azok titkos kulcsnak tekintendők. Ezeket a titkokat Azure Key Vault kell tárolni, és a kódnak hitelesítenie kell a Key Vault a lekéréséhez.
 
-Jobb megoldás, hogy a felügyelt identitásokból szolgáltatással az Azure Active Directoryban. A felügyelt identitásokból kell az alkalmazás a konfigurációs adattároló csak az alkalmazás konfigurációs végponti URL-Címének bootstrap hozzáférést. Az alkalmazás kódjában ágyazható be az URL-címet (például a *appsettings.json* fájlt). Lásd: [integrálás az Azure által felügyelt identitásokat](howto-integrate-azure-managed-service-identity.md) részleteiről.
+A jobb lehetőség az Azure Active Directory felügyelt identitások funkciójának használata. A felügyelt identitások esetében csak az alkalmazás-konfigurációs végpont URL-címére van szükség az alkalmazás-konfigurációs tároló eléréséhez. Az URL-címet beágyazhatja az alkalmazás kódjába (például a *appSettings. JSON* fájlban). A részletekért lásd: az [Azure által felügyelt identitások integrálása](howto-integrate-azure-managed-service-identity.md) .
 
-## <a name="app-or-function-access-to-app-configuration"></a>Alkalmazások konfigurálása alkalmazás vagy függvény a hozzáférést
+## <a name="app-or-function-access-to-app-configuration"></a>Alkalmazás-konfigurációhoz való hozzáférés alkalmazása vagy funkciója
 
-Megadhat hozzáférés konfigurálása a web Apps alkalmazások vagy funkciók az alábbi módszerek egyikének használatával:
+A következő módszerek bármelyikével biztosíthat hozzáférést a webalkalmazások vagy függvények alkalmazás-konfigurációjához:
 
-* Az Azure Portalon az alkalmazás a konfigurációs adattároló az App Service alkalmazás beállításaiban adja meg a kapcsolati karakterláncot.
-* A Key Vaultban az alkalmazás a konfigurációs adattárolónál a kapcsolati karakterlánc Store és [App Service-ből hivatkozni rá](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
-* Az Azure által felügyelt identitásokat az alkalmazás a konfigurációs adattároló eléréséhez. További információkért lásd: [integrálás az Azure által felügyelt identitásokat](howto-integrate-azure-managed-service-identity.md).
-* Leküldéses konfigurációt alkalmazások konfigurálása az App Service-ben. Alkalmazások konfigurálása az exportálási funkció (az Azure Portalon és az Azure CLI), amely adatokat küld a közvetlenül az App Service biztosítja. Ezzel a módszerrel az alkalmazás kódjának módosítása egyáltalán nem kell.
+* A Azure Portalon adja meg a kapcsolódási karakterláncot az alkalmazás konfigurációs tárolójához a App Service Alkalmazásbeállítások között.
+* Tárolja a kapcsolódási karakterláncot az alkalmazás-konfigurációs tárolóban Key Vault és [hivatkozzon a app Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Az Azure által felügyelt identitások használatával érheti el az alkalmazás konfigurációs tárolóját. További információ: [integrálás az Azure felügyelt identitásokkal](howto-integrate-azure-managed-service-identity.md).
+* Az alkalmazás konfigurációjának leküldéses konfigurációja App Servicera. Az alkalmazás konfigurációja olyan exportálási függvényt biztosít (Azure Portal és az Azure CLI-ben), amely közvetlenül a App Serviceba küld adatokat. Ezzel a módszerrel egyáltalán nem kell módosítania az alkalmazás kódját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kulcsok és értékek](./concept-key-value.md)

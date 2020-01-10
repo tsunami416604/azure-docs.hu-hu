@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230700"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769268"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>HTTP-végpont testreszabása Azure Functions
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre a Azure Functions a jól méretezhető API-kat. Az Azure Functions számos beépített HTTP-eseményindítót és -kötést tartalmaz, így egyszerűen létrehozhat végpontokat különböző nyelveken (például Node.JS, C# stb.). Ebben a cikkben a HTTP-triggerek testre szabását fogja használni az API-kialakításban meghatározott műveletek kezeléséhez. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
+Ebből a cikkből megtudhatja, hogyan hozhat létre a Azure Functions a jól méretezhető API-kat. A Azure Functions beépített HTTP-eseményindítók és-kötések gyűjteményét kínálja, amelyek megkönnyítik a végpontok különböző nyelveken, köztük a Node. js- C#ben és más-ban való létrehozásában. Ebben a cikkben a HTTP-triggerek testre szabását fogja használni az API-kialakításban meghatározott műveletek kezeléséhez. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -47,7 +47,7 @@ Alapértelmezés szerint a HTTP-eseményindító által aktivált függvény min
     > [!NOTE] 
     > Figyelje meg, hogy az `/api` nem szerepel az útvonalsablon alapútvonal-előtagjában, mivel ezt egy globális beállítás kezeli.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 További információ a HTTP-függvények testreszabásáról: [Azure Functions HTTP-kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook).
 
@@ -88,7 +88,7 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
     > [!NOTE] 
     > Azért érdemes alkalmazásbeállításokat használni a gazdagép konfigurálásához, hogy a proxynak ne legyen nem módosítható környezeti függősége. Az alkalmazásbeállítások használatakor lehetősége van áthelyezni a proxykonfigurációt más környezetekbe, és ekkor a környezetspecifikus alkalmazásbeállítások fognak vonatkozni rá.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Proxy létrehozása az előtérben
 
@@ -99,13 +99,13 @@ Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.co
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
-    | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
+    | Név | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
     | Útvonalsablon | /api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
     | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
     
 1. Figyelje meg, hogy a proxyk nem adják hozzá az `/api` alapútvonal-előtagot, azt Önnek kell beírni az útvonalsablonba.
 1. A `%HELLO_HOST%` szintaxis a korábban létrehozott alkalmazásbeállításra hivatkozik. A feloldott URL az eredeti függvényre fog mutatni.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 1. Ki is próbálhatja az új proxyt. Másolja ki a proxy URL-címét, és tesztelje le a böngészőben vagy a választott HTTP-ügyféllel.
     1. Névtelen funkció esetében ezt használja:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`

@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420551"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767568"
 ---
 # <a name="what-are-baseline-policies"></a>Mik azok az alapkonfigurációs házirendek?
 
-Az alapkonfigurációs házirendek olyan előre definiált szabályzatok, amelyek számos gyakori támadás elleni védelmet nyújtanak a szervezeteknek. Ezek a gyakori támadások például a jelszó-és a visszajátszást, valamint az adathalászatot is tartalmazhatják. Az alapkonfiguráció házirendjei az Azure AD összes kiadásában elérhetők. A Microsoft ezen alapkonfiguráció-védelmi szabályzatokat mindenki számára elérhetővé teszi, mivel az identitás-alapú támadások az elmúlt néhány évben növekedtek. Ennek a négy házirendnek a célja annak biztosítása, hogy az összes szervezet külön költség nélkül engedélyezze az alapszintű biztonsági szintet.  
+Az alapkonfigurációs házirendek olyan előre definiált szabályzatok, amelyek számos gyakori támadás elleni védelmet nyújtanak a szervezeteknek. Ezek a gyakori támadások például a jelszó-és a visszajátszást, valamint az adathalászatot is tartalmazhatják. Az alapkonfiguráció házirendjei az Azure AD összes kiadásában elérhetők. A Microsoft ezen alapkonfiguráció-védelmi szabályzatokat mindenki számára elérhetővé teszi, mivel az identitás-alapú támadások az elmúlt néhány évben növekedtek. Ennek a négy házirendnek a célja annak biztosítása, hogy az összes szervezet külön költség nélkül engedélyezze az alapszintű biztonsági szintet.
 
 A testreszabott feltételes hozzáférési szabályzatok kezeléséhez prémium szintű Azure AD licenc szükséges.
 
+> [!IMPORTANT]
+> Az alaptervek házirendjei elavultak. További információt a [Azure Active Directory újdonságai](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) című témakörben talál.
+
 ## <a name="baseline-policies"></a>Alapvető szabályzatok
 
-![A feltételes hozzáférési alapszabályzatok a Azure Portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![A feltételes hozzáférési alapszabályzatok a Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Négy alapszabályzat létezik:
 
@@ -36,6 +39,10 @@ Négy alapszabályzat létezik:
 * MFA megkövetelése a Service Management szolgáltatáshoz (előzetes verzió)
 
 Ezeknek a szabályzatoknak mind a négye befolyásolja az örökölt hitelesítési folyamatokat, például a POP-, az IMAP-és a régebbi Office asztali ügyfeleket.
+
+### <a name="exclusions"></a>Korlátozások
+
+Ha az alapkonfigurációra vonatkozó szabályzatok bekerültek a kezdeti nyilvános előzetes verzióba, lehetősége volt kizárni a felhasználókat a szabályzatokból. Ez a képesség az előzetes verzióon keresztül lett kifejlesztve, és a 2019 júliusában lett eltávolítva. Azok a szervezetek, akik már létrehozták a kizárásokat, továbbra is megtarthatják az új felhasználók számára, hogy nem tudtak hozzáadni a szabályzatokhoz való kizárásokat.
 
 ### <a name="require-mfa-for-admins-preview"></a>MFA megkövetelése a rendszergazdák számára (előzetes verzió)
 
@@ -60,8 +67,8 @@ A magas jogosultsági szintű rendszergazdák nem csupán a támadásokat céloz
 
 A **végfelhasználói védelem (előzetes verzió)** egy alapkonfigurációs szabályzat, amely a címtár összes felhasználóját védi. A szabályzat engedélyezéséhez minden felhasználónak 14 napon belül regisztrálnia kell az Azure Multi-Factor Authentication. A regisztrációt követően a rendszer csak a kockázatos bejelentkezési kísérletek során kéri a felhasználókat az MFA-ra. A rendszer letiltja a feltört felhasználói fiókokat, amíg a jelszó alaphelyzetbe nem áll, és a kockázat elbocsátás 
 
-[!NOTE]
-A korábban a kockázatra megjelölt felhasználókat a rendszer letiltja, amíg a jelszó alaphelyzetbe állítása és a kockázat elbocsátása a házirend aktiválása után megtörténik
+> [!NOTE]
+> A korábban a kockázatra megjelölt felhasználókat a rendszer letiltja, amíg a jelszó alaphelyzetbe állítása és a kockázat elbocsátása a házirend aktiválása után megtörténik
 
 ### <a name="block-legacy-authentication-preview"></a>Örökölt hitelesítés blokkolása (előzetes verzió)
 
@@ -75,9 +82,9 @@ Az **örökölt hitelesítés (előzetes verzió)** alapkonfiguráció házirend
 
 A szervezetek különböző Azure-szolgáltatásokat használnak és felügyelik azokat Azure Resource Manager-alapú eszközökről, például:
 
-* Azure Portal
+* Azure portál
 * Azure PowerShell
-* Azure CLI
+* Azure parancssori felület (CLI)
 
 Ezen eszközök bármelyikének használata az erőforrás-kezelés végrehajtásához magas jogosultsági szintű művelet. Ezek az eszközök megváltoztathatják az előfizetésre kiterjedő konfigurációkat, például a szolgáltatás beállításait és az előfizetés számlázását.
 
@@ -85,8 +92,8 @@ Az emelt szintű jogosultságok elleni védelem érdekében az MFA-t **a Service
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd:
+További információ eléréséhez lásd:
 
+* [Biztonsági alapértékek engedélyezése](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
-* [Az identitás-infrastruktúra biztonságossá tétele öt lépésben](../../security/fundamentals/steps-secure-identity.md)
-* [Mi a feltételes hozzáférés a Azure Active Directory?](overview.md)
+* [Öt lépés az identitás-infrastruktúra védelmére](../../security/fundamentals/steps-secure-identity.md)

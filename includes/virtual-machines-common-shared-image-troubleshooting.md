@@ -8,95 +8,95 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179056"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773028"
 ---
-Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. Hibakeresési mód aktiválása átadásával a **-debug** CLI felülettel és a **-Debug** váltson a PowerShell használatával. Megtaláltuk a hiba, miután kövesse ezt a dokumentumot, a hibák elhárítása.
+Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. A hibakeresési mód aktiválása a **-Debug** kapcsoló parancssori felülettel való átadásával és a **-Debug** kapcsolóval a PowerShell használatával történik. A hiba megtalálása után kövesse ezt a dokumentumot a hibák elhárításához.
 
 
-## <a name="unable-to-create-a-shared-image-gallery"></a>Nem hozható létre egy megosztott lemezkép-katalógusában
+## <a name="unable-to-create-a-shared-image-gallery"></a>Nem hozható létre megosztott rendszerkép-gyűjtemény
 
 Lehetséges okok:
 
 *A katalógus neve érvénytelen.*
 
-Katalógus neveként engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat és időszakok. A katalógus neve nem tartalmazhat kötőjeleket. Módosítsa a gyűjtemény nevét, és próbálkozzon újra. 
+A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket. Módosítsa a katalógus nevét, és próbálkozzon újra. 
 
-*A katalógus név nem egyedi az előfizetésen belül.*
+*A katalógus neve nem egyedi az előfizetésen belül.*
 
-Válasszon egy másik gyűjtemény nevét, és próbálkozzon újra.
-
-
-## <a name="unable-to-create-an-image-definition"></a>Nem sikerült létrehozni a rendszerkép definíciójában. 
-
-Lehetséges okok:
-
-*lemezkép-definíció neve érvénytelen.*
-
-A rendszerkép definíciójában engedélyezett karakterek:, kis- és nagybetűket betűket, számokat, pontokat, kötőjeleket, és időszakokra. Módosítsa a lemezkép neve, majd próbálkozzon újra.
-
-*Egy rendszerkép definíciójában létrehozása kötelező tulajdonságai nincsenek feltöltve adattal.*
-
-Például a neve, közzétevő, ajánlat, termékváltozat és operációs rendszer típusa a Tulajdonságok kötelezőek. Győződjön meg arról, ha az összes tulajdonság, hogy átadta.
-
-Győződjön meg arról, hogy a **OSType**, Linux vagy Windows, a rendszerkép definíciójában nem azonos a forrás a lemezkép-verzió létrehozásához használt lemezkép kezelt állapotúként. 
+Válasszon egy másik katalógus nevét, és próbálkozzon újra.
 
 
-## <a name="unable-to-create-an-image-version"></a>Nem hozható létre egy lemezkép verziója 
+## <a name="unable-to-create-an-image-definition"></a>Nem sikerült létrehozni a rendszerkép definícióját 
 
 Lehetséges okok:
 
-*Lemezkép-verzió neve érvénytelen.*
+*a rendszerkép definíciójának neve érvénytelen.*
 
-Lemezkép-verzió engedélyezett karakterek:, számokat és pontokat. Számok belül a 32 bites egész számnak kell lennie. Formátum: *MajorVersion.MinorVersion.Patch*. Módosítsa a lemezkép-verzió neve, majd próbálkozzon újra.
+A képdefiníciók megengedett karakterei nagybetűs vagy kisbetűk, számjegyek, pontok, kötőjelek és időszakok. Módosítsa a rendszerkép definíciójának nevét, és próbálkozzon újra.
 
-*Nem található forrás felügyelt lemezkép, amelyből a lemezkép-verzió létrehozása folyamatban van.* 
+*A rendszerkép-definíciók létrehozásának kötelező tulajdonságai nincsenek feltöltve.*
 
-Ellenőrizze, hogy a forrás lemezkép létezik-e, és a rendszerkép verziószámát ugyanabban a régióban van.
+A tulajdonságok, például a név, a közzétevő, az ajánlat, az SKU és az operációs rendszer típusa kötelező. Ellenőrizze, hogy az összes tulajdonság át lett-e adva.
 
-*A felügyelt rendszerkép nem fejeződött kiépítése folyamatban.*
+Győződjön meg arról, hogy a rendszerkép definíciójának **OSType**(Linux vagy Windows) megegyezik a rendszerkép verziójának létrehozásához használt forrás által felügyelt képpel. 
 
-Ellenőrizze, hogy a felügyelt forráslemezkép kiépítési állapota **sikeres**.
 
-*A célként megadott régióban listája nem tartalmazza a forrásrégióban.*
-
-A célként megadott régióban szerepelnie kell a lemezkép-verzió a forrásrégióban. Ellenőrizze, hogy az Azure-bA replikálni a lemezkép verziója, amelyre célrégiók listájában is szerepelnek a forrásrégióban.
-
-*A replikáció nem fejeződött be az összes megcélzott régióban.*
-
-Használja a **--bontsa ki a replikáció állapota** jelző ellenőrizheti, ha minden célként megadott régióban replikálás befejeződött. Ha nem, akkor várjon a feladat befejeződésére 6 órát. Ha sikertelen, futtassa a parancsot újból létrehozni, és a lemezkép-verzió replikálása. Ha a rendszerkép verziószámát replikálódnak célrégiók rengeteg, fontolja meg a replikáció fázisban történik.
-
-## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Nem sikerült létrehozni a virtuális gép vagy a méretezési csoport beállítása 
+## <a name="unable-to-create-an-image-version"></a>Nem sikerült létrehozni a rendszerkép verzióját 
 
 Lehetséges okok:
 
-*A felhasználó megpróbált létrehozni egy virtuális gép vagy virtuálisgép-méretezési csoportot nem rendelkezik az olvasási hozzáférést a rendszerkép verziószámát.*
+*A rendszerkép-verzió neve érvénytelen.*
 
-Forduljon az előfizetés tulajdonosa, és kérje meg őket, olvasási hozzáférés biztosítása a rendszerkép verziószámát, vagy a szülő erőforrások (például a megosztott lemezkép-katalógus vagy a rendszerkép definíciójában) keresztül [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion. MinorVersion. patch*. Módosítsa a rendszerkép verziójának nevét, és próbálkozzon újra.
 
-*A lemezkép-verzió nem található.*
+*Nem található a forrás által felügyelt rendszerkép, amelyből a rendszerkép verziója létrejön.* 
 
-Győződjön meg arról, hogy a régió, hozzon létre egy virtuális gép vagy virtuálisgép-méretezési a kívánt célrégiók a lemezkép-verzió listáját tartalmazza. Ha a régió már célrégiók listájában, majd ellenőrizze a replikációs feladat befejeződött. Használhatja a **- replikáció állapota** jelző ellenőrizheti, ha minden célként megadott régióban replikálás befejeződött. 
+Ellenőrizze, hogy a forrás rendszerkép létezik-e, és a rendszerkép verziószámával megegyező régióban található-e.
 
-*A virtuális gép vagy virtuálisgép-méretezési csoport létrehozása tart sokáig beállítása.*
+*A felügyelt rendszerkép nem lett kiépítve.*
 
-Ellenőrizze, hogy a **OSType** a kép verziót próbál létrehozni a virtuális gép vagy virtuálisgép-méretezési csoport állítható be van azonos **OSType** a forrás kezelni a rendszerkép verziószámát létrehozásához használt lemezkép. 
+Győződjön meg arról, hogy a forrásként kezelt rendszerkép kiépítési állapota **sikeres**.
 
-## <a name="unable-to-share-resources"></a>Nem lehet megosztott erőforrások
+*A cél régió lista nem tartalmazza a forrás régiót.*
 
-Megosztott lemezkép-katalógusában, a rendszerkép definíciójában és a lemezkép-verzió erőforrások megosztása több előfizetés használata van engedélyezve [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+A célként megadott régió listájának tartalmaznia kell a rendszerkép verziójának a forrás régióját. Győződjön meg arról, hogy a forrás régió szerepel a célhelyek listájában, ahol az Azure-ba replikálja a rendszerkép verzióját.
 
-## <a name="replication-is-slow"></a>A replikálás lassú történik.
+*Az összes megcélzott régióba való replikálás nem fejeződött be.*
 
-Használja a **--bontsa ki a replikáció állapota** jelző ellenőrizheti, ha minden célként megadott régióban replikálás befejeződött. Ha nem, akkor várjon, amíg befejeződik a feladat akár 6 óráig. Ha sikertelen, indítson újra hozhat létre, és a lemezkép-verzió replikálása a parancsot. Ha a rendszerkép verziószámát replikálódnak célrégiók rengeteg, fontolja meg a replikáció fázisban történik.
+A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a replikáció az összes megadott régióban. Ha nem, várjon akár 6 órát, amíg a feladatok befejeződik. Ha nem sikerül, futtassa újra a parancsot a rendszerkép verziójának létrehozásához és replikálásához. Ha sok célpont van a lemezkép verziójának replikálására, a replikálást fázisokban kell elvégezni.
+
+## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Nem hozható létre virtuális gép vagy méretezési csoport 
+
+Lehetséges okok:
+
+*A virtuális gépet vagy virtuálisgép-méretezési készletet próbáló felhasználónak nincs olvasási hozzáférése a rendszerkép verziójához.*
+
+Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg őket, hogy adjon olvasási hozzáférést a képverzióhoz vagy a szülő erőforrásokhoz (például a megosztott képkatalógus vagy a rendszerkép definíciója) a [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) használatával. 
+
+*A rendszerkép verziója nem található.*
+
+Győződjön meg arról, hogy a virtuális gép vagy virtuálisgép-méretezést létrehozni próbáló régió szerepel a rendszerkép verziószámának megcélzott régiói listáján. Ha a régió már szerepel a célcsoportok listáján, akkor ellenőrizze, hogy befejeződött-e a replikálási feladatok. A **-ReplicationStatus** jelzővel ellenőrizze, hogy a replikáció az összes megadott régióban befejeződött-e. 
+
+*A virtuális gép vagy a virtuálisgép-méretezési csoport létrehozása hosszú időt vesz igénybe.*
+
+Ellenőrizze, hogy a virtuális gép vagy virtuálisgép-méretezési csoport létrehozásához használni kívánt **OSType** megegyezik-e a rendszerkép verziójának létrehozásához használt forrás által felügyelt **OSType** . 
+
+## <a name="unable-to-share-resources"></a>Nem lehet megosztani az erőforrásokat
+
+A megosztott képgyűjtemény, a képdefiníciós és a képverziós erőforrások megosztása az előfizetések között a [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) használatával engedélyezett. 
+
+## <a name="replication-is-slow"></a>A replikálás lassú
+
+A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a replikáció az összes megadott régióban. Ha nem, várjon legfeljebb 6 órát, amíg a feladatok befejeződik. Ha nem sikerül, aktiválja újra a parancsot a rendszerkép verziójának létrehozásához és replikálásához. Ha sok célpont van a lemezkép verziójának replikálására, a replikálást fázisokban kell elvégezni.
 
 ## <a name="azure-limits-and-quotas"></a>Az Azure-ra vonatkozó korlátok és kvóták 
 
-[Az Azure korlátai és kvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) minden megosztott lemezkép-katalógusában, rendszerkép definíciójában és képerőforrások verzióra vonatkoznak. Ellenőrizze, hogy az előfizetések keretein belül vannak. 
+Az [Azure korlátai és kvótái](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
 
 
 

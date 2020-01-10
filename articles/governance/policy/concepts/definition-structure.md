@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c067a5a603c1adcafe6827b3118ecff20ae23238
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894304"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770934"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -23,7 +23,7 @@ A JSON használatával hozhat létre szabályzat-definíciót. A házirend-defin
 - paraméterek
 - megjelenítendő név
 - leírás
-- Házirend-szabály
+- házirend-szabály
   - logikai Értékelés
   - érvénybe
 
@@ -374,9 +374,9 @@ A _template functions_ in **Value** használata számos összetett beágyazott f
 }
 ```
 
-A fenti példában az [alsztring ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, a `substring()` függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend **megtagadási** hatást vált ki.
+A fenti példában az [alsztring ()](../../../azure-resource-manager/templates/template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, a `substring()` függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend **megtagadási** hatást vált ki.
 
-Ehelyett a [IF ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három **karakter egyenlő-e** az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
+Ehelyett a [IF ()](../../../azure-resource-manager/templates/template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három **karakter egyenlő-e** az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
 
 ```json
 {
@@ -473,7 +473,7 @@ A **Count**a következő tulajdonságokat használja:
             "equals": "description"
         }
     },
-    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+    "equals": "[length(field('Microsoft.Network/networkSecurityGroups/securityRules[*]'))]"
 }
 ```
 

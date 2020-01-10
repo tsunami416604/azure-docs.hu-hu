@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379613"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746046"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -75,7 +75,7 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat: `/
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Ha az identitás-szolgáltató nem támogatja ezeket a protokollokat, az Azure AD JOIN nem működik natív módon. A Windows 10 1809-től kezdve a felhasználók az SAML-alapú identitás-szolgáltatóval bejelentkezhetnek egy Azure AD-hez csatlakoztatott eszközre a [Windows 10-es webes bejelentkezés](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)használatával. Jelenleg a webes bejelentkezés előzetes verziójú funkció, ezért nem ajánlott éles környezetekben üzemelő példányokhoz.
+Ha az identitás-szolgáltató nem támogatja ezeket a protokollokat, az Azure AD JOIN nem működik natív módon. 
 
 >[!NOTE]
 > Az Azure AD JOIN jelenleg nem működik, [mert a külső hitelesítő szolgáltatókkal konfigurált AD FS 2019 elsődleges hitelesítési módszer](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Az Azure AD-hez való csatlakozás alapértelmezett értéke a jelszó-hitelesítés elsődleges módszerként, amely hitelesítési hibákat eredményez ebben a forgatókönyvben
@@ -195,14 +195,14 @@ Az Azure AD JOIN a következő módszerekkel építhető ki:
  
 A következő három megközelítés összehasonlítása 
  
-|   | Önkiszolgáló telepítés | Windows Autopilot | Tömeges regisztrálás |
+|   | Önkiszolgáló telepítés | Windows Autopilot | Csoportos regisztráció |
 | --- | --- | --- | --- |
 | Felhasználói beavatkozás szükséges a beállításhoz | Igen | Igen | Nem |
 | INFORMATIKAI erőfeszítés megkövetelése | Nem | Igen | Igen |
 | Alkalmazható folyamatok | OOBE & beállításai | Csak OOBE | Csak OOBE |
 | Helyi rendszergazdai jogosultságok az elsődleges felhasználóhoz | Igen, alapértelmezés szerint | Konfigurálható | Nem |
 | Eszköz OEM-támogatásának megkövetelése | Nem | Igen | Nem |
-| Támogatott verziók | 1511+ | 1709 + | 1703 + |
+| Támogatott verziók | 1511 + | 1709 + | 1703 + |
  
 Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti táblázat áttekintésével, és tekintse át a következő szempontokat az egyik megközelítés elfogadásához:  
 
@@ -267,7 +267,7 @@ A hatókör alapján a következők egyike történik:
 A MDM-konfigurációhoz három URL-cím kapcsolódik:
 
 - MDM használati feltételeinek URL-címe
-- MDM felderítési URL-címe 
+- MDM-felderítési URL-cím 
 - MDM megfelelőségi URL-címe
 
 ![Alkalmazás hozzáadása](./media/azureadjoin-plan/06.png)
@@ -292,7 +292,7 @@ Ha rendelkezik egy, az Azure AD-hez csatlakoztatott eszközökhöz konfigurált 
 
 Ezzel a megvalósítással [feltételes hozzáféréssel rendelkező felügyelt eszközöket igényelhet a Cloud app Access számára](../conditional-access/require-managed-devices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatás](azuread-joined-devices-frx.md)

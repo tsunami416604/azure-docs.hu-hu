@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs szolgáltatásban autoshutdown szabályzatok kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan állíthatja be a labor autoshutdown szabályzatot úgy, hogy a virtuális gépek vannak automatikusan leáll, amelyek nincsenek használatban.
+title: Automatikus leállítási házirendek kezelése a Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be az automatikus leállítási szabályzatot egy laborhoz, hogy a virtuális gépek automatikusan leálljanak, ha nincsenek használatban.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,102 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9adf8dd4a5a3c469ed130b29308a0d828aee40bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873990"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772635"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Autoshutdown Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelése
-Az Azure DevTest Labs lehetővé teszi, hogy a költségek és a maximális hatékonyság a Labs-környezetben, mivel kezeli az egyes lab (beállítások) házirendeket. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók autoshutdown vonatkozó házirend konfigurálása és a egy tesztlabor autoshutdown beállításainak konfigurálása a labor-fiókban. Minden labor szabályának beállításáról, tekintse meg [laborszabályzatok definiálása az Azure DevTest Labs szolgáltatásban](devtest-lab-set-lab-policy.md).  
+# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet automatikus leállítási házirendjeinek kezelése Azure DevTest Labs
+A Azure DevTest Labs lehetővé teszi, hogy az egyes laborokhoz tartozó szabályzatok (beállítások) kezelésével szabályozza a költségeket, és csökkentse a saját laborokban lévő hulladékokat. Ebből a cikkből megtudhatja, hogyan konfigurálhatja az automatikus leállítási szabályzatot egy Lab-fiókhoz, és hogyan konfigurálhatja a laborok automatikus leállítási beállításait a laborban Ha meg szeretné tekinteni, hogyan kell beállítani az összes tesztkörnyezet házirendjét, tekintse meg [a labor-házirendek definiálása a Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>Automatikus leállítási szabályzat a tesztkörnyezet beállítása
-Labortulajdonosként leállítási ütemezés szerint konfigurálhatja a virtuális gépek a lab-ben. Ezzel a módszerrel mentheti az éppen nem használt gépek fut (inaktív) költségek. A leállítási házirend az összes a labor virtuális gépeken, hanem központilag is menteni a labor felhasználók részéről az erőfeszítés egyes gépeikhez egy ütemezés beállításával kényszerítheti. Ez a funkció lehetővé teszi, hogy állítson be a házirendet a Labs-környezeti ütemezés kezdő ajánlat teljes hozzáférés nem szabályozza a labor számára. Labortulajdonosként konfigurálja a házirendet a következő lépések végrehajtásával:
+## <a name="set-auto-shutdown-policy-for-a-lab"></a>Tesztkörnyezet automatikus leállítási házirendjének beállítása
+A labor tulajdonosaként beállíthatja a tesztkörnyezetben lévő összes virtuális gép leállítási ütemtervét. Ennek köszönhetően a nem használt gépektől (inaktív) származó költségek is megmenthetők. Központilag is kényszerítheti a leállítási szabályzatokat az összes laboratóriumi virtuális gépen, de mentheti a labor-felhasználókat arra, hogy ütemezést állítsanak be az egyes gépekhez. Ezzel a szolgáltatással beállíthatja a szabályzatot a labor-ütemtervre, kezdve a teljes hozzáférés szabályozása nélkül, a labor felhasználói számára. A labor tulajdonosaként a következő lépésekkel konfigurálhatja ezt a házirendet:
 
-1. Válassza ki a labor kezdőlapja, **Konfigurace a zásady**.
-2. Válassza ki **automatikus leállítási házirend** a a **ütemezések** szakaszában a bal oldali menüben.
-3. Válassza ki a beállítások. Az alábbi szakaszok ezen lehetőségekről további részleteket biztosítanak: A set-szabályzat vonatkozik, csak a lab-ben létrehozott új virtuális gépek és a már meglévő virtuális gépet. 
+1. A labor kezdőlapján válassza a **konfiguráció és szabályzatok**lehetőséget.
+2. Válassza a bal oldali menü **ütemtervek** szakaszának **automatikus leállítás házirend** elemét.
+3. Válasszon egyet a lehetőségek közül. A következő fejezetekben részletesebb információkat talál ezekről a beállításokról: a set Policy csak a tesztkörnyezetben létrehozott új virtuális gépekre vonatkozik, nem pedig a már meglévő virtuális gépekre. 
 
-    ![Az automatikus leállítás házirend beállításai](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+    ![Házirend-beállítások automatikus leállítása](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>Automatikus leállítási beállítások konfigurálása
-A autoshutdown szabályzattal meggyőződhetnek labor hatékonyság azáltal, hogy adja meg a labor virtuális gépek leállítása idejét.
+## <a name="configure-auto-shutdown-settings"></a>Automatikus leállítás beállításainak konfigurálása
+Az automatikus leállítási szabályzat segít a laborban lévő virtuális gépek leállítási idejének meghatározásában.
 
-Megtekintése (és módosítása) a tesztkörnyezet szabályzatainak, kövesse az alábbi lépéseket:
+A labor szabályzatának megtekintéséhez (és módosításához) kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
-3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.   
-4. Válassza ki **Konfigurace a zásady**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+3. A laborok listájából válassza ki a kívánt labort.   
+4. Válassza **a konfiguráció és szabályzatok**lehetőséget.
 
-    ![A házirend-beállítások panel](./media/devtest-lab-set-lab-policy/policies-menu.png)
-5. A laborgyakorlat **Konfigurace a zásady** ablaktáblán válassza előbb **automatikus leállítási** alatt **ütemezések**.
+    ![Házirend-beállítások ablaktábla](./media/devtest-lab-set-lab-policy/policies-menu.png)
+5. A labor **konfigurációjának és házirendjeinek** ablaktábláján válassza az **automatikus leállítás** lehetőséget az **ütemtervek**területen.
    
-    ![Autoshutdown](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. Válassza ki **a** ahhoz, hogy ezt a házirendet, és **ki** letiltja azt.
-7. Ha engedélyezi ezt a házirendet, adja meg a jelenlegi laborkörnyezetben található összes virtuális gép leállítása idő (és időzóna).
-8. Adja meg **Igen** vagy **nem** értesítés küldése a megadott autoshutdown idő előtt 15 perccel a beállítás. Ha úgy dönt, **Igen**, adjon meg egy webhook URL-végpontot, vagy e-mail-címét adja meg, ahol azt szeretné, hogy a közzétett vagy küldött értesítést. A felhasználó értesítést kap, és arra, hogy a leállás késleltetés van megadva. További információkért lásd: a [értesítések](#notifications) szakaszban. 
+    ![Automatikus leállítás](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+6. Ezzel **a** beállítással engedélyezheti a szabályzatot **, és** letilthatja azt.
+7. Ha engedélyezi ezt a házirendet, az aktuális laborban lévő összes virtuális gép leállításához válassza ki az időt (és az időzónát).
+8. Adja meg az **Igen** vagy a **nem** lehetőséget, ha a megadott automatikus leállítási idő előtt 30 perccel szeretné elküldeni az értesítést. Ha az **Igen**lehetőséget választja, adjon meg egy WEBHOOK URL-címet vagy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás késleltetését adja meg. További információ: [értesítések](#notifications) szakasz. 
 9. Kattintson a **Mentés** gombra.
 
-    Alapértelmezés szerint engedélyezve van, ezt a házirendet alkalmazza az összes virtuális gépen a jelenlegi tesztkörnyezetben. Távolítsa el ezt a beállítást egy adott virtuális gépről, a virtuális gép kezelése panel megnyitásához, és módosítsa a **Autoshutdown** beállítás.
+    Alapértelmezés szerint, ha engedélyezve van, ez a házirend az aktuális laborban található összes virtuális gépre vonatkozik. Ha egy adott virtuális gépről el szeretné távolítani ezt a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az automatikus **leállítási** beállítást.
+    
+> [!NOTE]
+> Ha a labor vagy egy adott labor virtuális gép automatikus leállítási ütemezését a jelenlegi ütemezett időponttól számított 30 percen belül frissíti, a frissített leállítási idő a következő napi ütemezés szerint fog vonatkozni. 
 
-### <a name="user-sets-a-schedule-and-can-opt-out"></a>Felhasználó beállítja az ütemezés és kikapcsolhatja az újat
-Ha a labor-e a házirend, a labor felhasználók felülbírálás vagy tilthatják le a Labs-környezeti ütemezés. Ez a beállítás a virtuális gépek automatikus leállítási ütemezés teljes hozzáférést biztosít a labor felhasználók. Labor felhasználók nem változik a virtuális gépek automatikus leállítási ütemezés lapon talál.
+### <a name="user-sets-a-schedule-and-can-opt-out"></a>A felhasználó beállít egy ütemtervet, és letilthatja
+Ha a laborban ezt a házirendet állítja be, akkor a labor felhasználói felülbírálják vagy letiltják a labor-ütemtervet. Ez a beállítás lehetővé teszi a tesztkörnyezet felhasználói számára a virtuális gépek automatikus leállítási ütemtervének teljes körű felügyeletét. A labor felhasználói nem változnak a virtuális gép automatikus leállításának ütemterve lapon.
 
-![Az automatikus leállítás házirend beállítása – 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+![Automatikus leállítási házirend-beállítás – 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
 
-### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Felhasználói csoportok ütemezés szerint, és nem vesznek
-Ha a labor-e a házirend, a labor felhasználók felülbírálhatják a Labs-környezeti ütemezés. Azonban ezek nem tilthatók le automatikus leállítási házirend. Ez a beállítás gondoskodik arról, hogy a lab-ben minden gép van-e egy automatikus leállítási ütemezés szerint. Labor a felhasználók a virtuális gépek automatikus leállítási ütemezés frissítése, és leállítást értesítések beállítása.
+### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>A felhasználó beállít egy ütemtervet, és nem tud letiltani
+Ha a laborban ezt a házirendet állítja be, a labor felhasználói felülbírálhatja a laborok ütemtervét. Azonban nem tudják letiltani az automatikus leállítási szabályzatot. Ezzel a beállítással gondoskodhat arról, hogy a laborban lévő összes gép automatikusan leállítási ütemterv alá kerüljön. A labor-felhasználók frissíthetik a virtuális gépek automatikus leállítási ütemtervét, és beállítják a leállítási értesítéseket.
 
-![Az automatikus leállítás házirend beállítása – 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+![Automatikus leállítási házirend-beállítás – 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
 
-### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Felhasználó rendelkezik nem szabályozza a labor-rendszergazda által beállított ütemezés szerint
-Ha a labor-e a házirend, a labor felhasználók nem bírálja felül, és tilthatják le a Labs-környezeti ütemezés. Ez a beállítás lehetővé teszi a labor rendszergazdai a teljes az ütemezés a lab-ben minden gép. Labor felhasználók csak értesítéseket állíthat be automatikus leállítás a virtuális gépek számára.
+### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>A felhasználónak nincs hozzáférése a labor rendszergazdája által beállított ütemtervhez
+Ha a laborban ezt a házirendet állítja be, a labor-felhasználók nem tudják felülbírálni vagy letiltani a labor-ütemtervet. Ez a beállítás a tesztkörnyezet rendszergazdájának teljes körű vezérlését kínálja a laborban lévő összes gép számára. A labor felhasználói csak automatikus leállítási értesítéseket állíthatnak be a virtuális gépekhez.
 
-![Az automatikus leállítás házirend beállítása – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
+![Automatikus leállítás házirend-beállítás – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
 ## <a name="notifications"></a>Értesítések
-Miután autoshutdown állítsa be a labor tulajdonosa, értesítéseket a labor-felhasználók számára a aktiválódik, ha bármelyikét Gépeiket autoshutdown előtt 15 perccel hatással lesz. Ezt a lehetőséget biztosít a labor-felhasználóknak a és a leállítás előtt. Az értesítés hivatkozásokat is tartalmaz, mindegyik virtuális gép a következő műveleteket:
+Ha a labor tulajdonosa állítja be az automatikus leállítást, az értesítéseket a labor felhasználói számára 30 perccel az automatikus leállítás előtt küldi el a rendszer, ha a virtuális gépek érintettek lesznek. Ez a beállítás lehetővé teszi a laboratóriumi felhasználók számára, hogy a leállítás előtt megmentsek a munkájukat. Az értesítés az egyes virtuális gépekre mutató hivatkozásokat is tartalmaz a következő műveletekhez:
 
-- Ez az idő a autoshutdown kihagyása
-- Késleltetés a autoshutdown egy óráig vagy 2 óra, úgy, hogy a munka folytatásához azokat a virtuális Gépet.
+- Automatikus leállítás kihagyása erre az időre
+- Az automatikus leállítás késleltetése egy órán vagy 2 órán keresztül, hogy továbbra is működőképesek maradjanak a virtuális gépen.
 
-Értesítés érkezik a konfigurált web hook végponton keresztül, vagy a autoshutdown beállításaiban labortulajdonosok által megadott e-mail-címmel. Webhookok hozhat létre, vagy hozzon létre, amely az egyes események feliratkozás Integrációk teszik lehetővé. Az események egyikét akkor aktiválódik, amikor DevTest Labs küld egy HTTP POST hasznos a webhook URL-cím. További információ a webhookok: [hozzon létre egy webhook vagy API Azure-függvény](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+A rendszer értesítést küld a konfigurált webhook-végponton vagy egy, az automatikus leállítási beállításokban a labor tulajdonosai által megadott e-mail-címen. A webhookok lehetővé teszik bizonyos eseményekre előfizetett integrációk készítését vagy beállítását. Az események egyikének aktiválásakor a DevTest Labs HTTP POST-adattartalmat küld a webhook konfigurált URL-címére. A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
-Azt javasoljuk, hogy a webhook használata, mivel már széles körben támogatott különféle alkalmazások (például Slack, az Azure Logic Apps és stb.), és lehetővé válik a saját módja az értesítések küldéséhez. Például ez a cikk ismerteti, hogyan autoshutdown értesítést kaphat e-mailek az Azure Logic Apps használatával. Először vegyük gyorsan fel azokon az alapvető lépéseken, a laborban autoshutdown értesítés engedélyezése.   
+Javasoljuk, hogy a webhookokat használja, mivel azokat számos különböző alkalmazás (például Slack, Azure Logic Apps stb.) széles körben támogatja, és lehetővé teszi, hogy saját módszert alkalmazzon az értesítések küldéséhez. Ebből a cikkből megtudhatja, hogyan kérhet le automatikus leállítási értesítést az e-mailekről Azure Logic Apps használatával. Először is ugorjon végig az alapszintű lépéseken, amelyekkel engedélyezheti az automatikus leállítási értesítést a laborban.   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>Hozzon létre egy logikai alkalmazást, amely e-mail-értesítések fogadása
-[Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) biztosít a több-az-beépített összekötők, amely megkönnyíti a szolgáltatás integrálása más ügyfelekkel, mint például az Office 365 és a twitter. Magas szinten a lépések egy logikai alkalmazást, az e-mail-értesítések beállításához négy fázisra osztható: 
+## <a name="create-a-logic-app-that-receives-email-notifications"></a>E-mail értesítéseket fogadó logikai alkalmazás létrehozása
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) számos beépített összekötőt biztosít, amely megkönnyíti a szolgáltatások integrálását más ügyfelekkel, például az Office 365 és a Twitter használatával. A logikai alkalmazás e-mailes értesítéshez való beállításának lépései a következő négy fázisra oszthatók fel: 
 
 - Hozzon létre egy logikai alkalmazást. 
 - Konfigurálja a beépített sablont.
-- Az Ön e-mail ügyfélprogramját integrálása
-- A Webhook URL-cím lekéréséhez.
+- Integrálás az e-mail ügyfélprogrammal
+- A webhook URL-címének beolvasása.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetéshez az alábbi lépések segítségével:
+Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetésében az alábbi lépések segítségével:
 
-1. Válassza ki **+ erőforrás létrehozása** a bal oldali menüben válassza ki a **integrációs**, és válassza ki **logikai alkalmazás**. 
+1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüben, majd az **integráció**lehetőséget, és válassza a **logikai alkalmazás**lehetőséget. 
 
-    ![Új logikai alkalmazás menüjében](./media/devtest-lab-auto-shutdown/new-logic-app.png)
-2. Az a **Logikaialkalmazás - létrehozása** lapon, kövesse az alábbi lépéseket: 
-    1. Adjon meg egy **neve** a logikai alkalmazás.
+    ![Új logikai alkalmazás menü](./media/devtest-lab-auto-shutdown/new-logic-app.png)
+2. A **logikai alkalmazás létrehozása** lapon kövesse az alábbi lépéseket: 
+    1. Adja meg a logikai alkalmazás **nevét** .
     2. Jelölje ki az Azure-**előfizetést**.
-    3. Hozzon létre egy új **erőforráscsoport** , vagy válasszon ki egy meglévő erőforráscsoportot. 
-    4. Válassza ki a **hely** a logikai alkalmazás. 
+    3. Hozzon létre egy új **erőforráscsoportot** , vagy válasszon ki egy meglévő erőforráscsoportot. 
+    4. Válassza ki a logikai alkalmazás **helyét** . 
 
-        ![Új logikai alkalmazás - beállítások](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
-3. Az a **értesítések**válassza **erőforrás megnyitása** az értesítésre. 
+        ![Új logikai alkalmazás – beállítások](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
+3. Az **értesítések**területen válassza az **Ugrás erőforráshoz** lehetőséget az értesítésben. 
 
     ![Erőforrás megnyitása](./media/devtest-lab-auto-shutdown/go-to-resource.png)
-4. Válassza ki **Logikaialkalmazás-Tervező** alatt **központi telepítési eszközök** kategória.
+4. Válassza a **Logic app Designer** elemet a **telepítési eszközök** kategóriában.
 
-    ![Select HTTP Request/Response](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
-5. Az a **HTTP-kérés-válasz** lapon jelölje be **ezzel a sablonnal**. 
+    ![HTTP-kérelem/válasz kiválasztása](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
+5. A **http-kérelem – válasz** lapon válassza a **sablon használata**lehetőséget. 
 
-    ![Jelölje be ezt a beállítást a sablon használata](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
-6. Másolja a következő JSON-kódot a **kérelem Kéréstörzs JSON-sémája** szakaszban: 
+    ![Válassza a sablon használata lehetőséget](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
+6. Másolja a következő JSON-t a **kérelem törzse JSON-séma** szakaszba: 
 
     ```json
     {
@@ -166,21 +169,21 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetésh
     }
     ```
     
-    ![Kérelem Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/request-json.png)
-7. Válassza ki **+ új lépés** a tervezőben, és kövesse az alábbi lépéseket:
-    1. Keresse meg **Office 365 Outlook – e-mail küldése**. 
-    2. Válassza ki **e-mail küldése** a **műveletek**. 
+    ![Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/request-json.png)
+7. Válassza az **+ új lépés** lehetőséget a tervezőben, és kövesse az alábbi lépéseket:
+    1. Keresse meg az **Office 365 Outlook – E-mail küldése lehetőséget**. 
+    2. Válassza **az E-mail küldése** **műveletből**lehetőséget. 
     
-        ![Beállítás e-mailek küldése](./media/devtest-lab-auto-shutdown/select-send-email.png)
-    3. Válassza ki **jelentkezzen be a** jelentkezhetnek be az e-mail-fiókjába. 
-    4. Válassza ki **TO** mezőben, majd válassza ki a tulajdonosa.
-    5. Válassza ki **tulajdonos**, és adjon meg az e-mail-értesítés tárgya. Példa: "Leállítani a gép vmName laborban: labName."
-    6. Válassza ki **törzs**, és határozza meg az értesítési e-mail szövegtörzse. Például: "vmName van ütemezve, 15 perc múlva leáll. Hagyja ki a Leállítás gombra kattintva: URL-CÍME. Egy óránál késleltetés Leállítás: delayUrl60. Késleltetés leállítási 2 óra: delayUrl120. "
+        ![E-mail küldése lehetőség](./media/devtest-lab-auto-shutdown/select-send-email.png)
+    3. A **Bejelentkezés** gombra kattintva jelentkezzen be az e-mail-fiókjába. 
+    4. Válassza ki a mezőt, és válassza **a** tulajdonos lehetőséget.
+    5. Válassza ki a **Tárgy**elemet, és adja meg az e-mail-értesítés tárgyát. Például: "a gép vmName leállítása a laborhoz: labName".
+    6. Válassza ki a **törzs**elemet, és adja meg az e-mail értesítés törzsének tartalmát. Például: "a vmName 15 percen belül leállításra van ütemezve. Hagyja ki ezt a leállítást az URL-cím lehetőségre kattintva. Késleltetés leállítása egy órára: delayUrl60. Késleltetés leállítása 2 órára: delayUrl120. "
 
-        ![Kérelem Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/email-options.png)
-1. Válassza az eszköztár **Save** (Mentés) elemét. Most is másolhatja a **HTTP POST URL-címe**. Válassza ki a Másolás gombra, hogy az URL-címet a vágólapra. 
+        ![Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/email-options.png)
+1. Válassza az eszköztár **Save** (Mentés) elemét. Most másolhatja a **http post URL-címet**. A Másolás gombra kattintva másolja az URL-címet a vágólapra. 
 
-    ![WebHook URL-címe](./media/devtest-lab-auto-shutdown/webhook-url.png)
+    ![Webhook URL-címe](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan állíthatja be az összes szabályzat, lásd: [laborszabályzatok definiálása az Azure DevTest Labs szolgáltatásban](devtest-lab-set-lab-policy.md).
+## <a name="next-steps"></a>Következő lépések
+Az összes házirend beállításának megismeréséhez tekintse meg [a tesztkörnyezet-szabályzatok meghatározása a Azure DevTest Labsban](devtest-lab-set-lab-policy.md)című témakört.

@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534307"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748254"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
 A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-redundáns tárolás (ZRS)](storage-redundancy-zrs.md) magas rendelkezésre állását a regionális kimaradások elleni védelemmel, a [földrajzilag REDUNDÁNS tárolás (GRS)](storage-redundancy-grs.md)által biztosított módon. A GZRS-fiókban lévő adatok az elsődleges régió három Azure-beli [rendelkezésre állási zónájában](../../availability-zones/az-overview.md) replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében. Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. További részletekért és kivételekhez tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a [skálázhatósági célokat](storage-scalability-targets.md) kínálja, mint a LRS, a ZRS, a GRS vagy az ra-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
+GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a skálázhatósági célokat kínálja, mint a LRS, a ZRS, a GRS vagy az RA-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
 
 A Microsoft a GZRS használatát javasolja a konzisztencia, a tartósság, a magas rendelkezésre állás, a kiváló teljesítmény és a vész-helyreállítási rugalmasság megköveteléséhez. A regionális katasztrófa esetén a másodlagos régióhoz való olvasási hozzáférés további biztonsága érdekében engedélyezze az RA-GZRS-t a Storage-fiókjához.
 
@@ -160,3 +160,4 @@ A támogatási képviselő felveszi Önnel a kapcsolatot a segítség biztosít�
 - [Azure Storage replication (Azure Storage replikáció)](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Zone-redundáns tárolás (ZRS): magasan elérhető Azure Storage-alkalmazások](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](scalability-targets-standard-account.md)

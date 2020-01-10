@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231516"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769701"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját C\#
 
@@ -34,9 +34,9 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
-A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure-beli Function alkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
+A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure-beli Function alkalmazásban. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
-1. A Visual Studio **Fájl** menüjében válassza az  > Új**Projekt** lehetőséget.
+1. A Visual Studio **Fájl** menüjében válassza az **Új** > **Projekt** lehetőséget.
 
 1. Az **új projekt hozzáadása** párbeszédpanelen keresse meg a `functions`, válassza ki a **Azure functions** sablont, és kattintson a **tovább**gombra. 
 

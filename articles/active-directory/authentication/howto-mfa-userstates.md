@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964055"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763232"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
@@ -29,9 +29,9 @@ A kétlépéses ellenőrzés megkövetelésének két módszere közül választ
 
 **Engedélyezve a felhasználói állapot módosításával** – ez a hagyományos módszer a kétlépéses ellenőrzés megköveteléséhez, és a jelen cikk tárgyalja. A felhőben és az Azure MFA-kiszolgálón egyaránt működik az Azure MFA-val. Ennek a módszernek a használatával a felhasználóknak kétlépéses ellenőrzést kell végezniük **minden alkalommal, amikor** bejelentkeznek, és felülbírálják a feltételes hozzáférési szabályzatokat.
 
-A feltételes hozzáférési házirend által engedélyezett – ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezéséhez. A feltételes hozzáférési szabályzat használatának engedélyezése csak az Azure MFA-ban működik a felhőben, és az Azure AD prémium funkciója. Az ezzel a módszerrel kapcsolatos további információkért tekintse meg a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](howto-mfa-getstarted.md)témakört.
+A **feltételes hozzáférési házirend által engedélyezett** – ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezéséhez. A feltételes hozzáférési szabályzat használatának engedélyezése csak az Azure MFA-ban működik a felhőben, és az Azure AD prémium funkciója. Az ezzel a módszerrel kapcsolatos további információkért tekintse meg a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](howto-mfa-getstarted.md)témakört.
 
-Azure AD Identity Protection által engedélyezett – ez a módszer a Azure AD Identity Protection kockázati házirendet használja a kétlépéses ellenőrzés megkövetelésére, csak a bejelentkezési kockázat alapján minden felhőalapú alkalmazás esetében. Ehhez a módszerhez Azure Active Directory P2 licencelés szükséges. A módszerről további információ található [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
+**Azure ad Identity Protection által engedélyezett** – ez a módszer a Azure ad Identity Protection kockázati házirendet használja a kétlépéses ellenőrzés megkövetelésére, csak a bejelentkezési kockázat alapján minden felhőalapú alkalmazás esetében. Ehhez a módszerhez Azure Active Directory P2 licencelés szükséges. A módszerről további információ található [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
 > A licencekkel és a díjszabással kapcsolatos további információkért tekintse meg az [Azure ad](https://azure.microsoft.com/pricing/details/active-directory/
@@ -136,7 +136,7 @@ A PowerShell használata jó megoldás, ha a felhasználók tömeges engedélyez
 Az MFA letiltásához használja a következő parancsfájlt:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
    ```
 
 a következőket is lerövidítheti:

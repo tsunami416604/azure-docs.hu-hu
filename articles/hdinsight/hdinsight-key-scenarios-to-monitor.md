@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777572"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770883"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -72,7 +72,7 @@ A Resource Manager felhasználói felületén válassza a **Scheduler** lehetős
 
 ## <a name="storage-throttling"></a>Tárolás szabályozása
 
-A fürt teljesítményének szűk keresztmetszete a tárolási szinten fordulhat elő. Ez a szűk keresztmetszet leggyakrabban a bemeneti/kimeneti (i/o) műveletek *blokkolása* miatt fordul elő, amelyek akkor történnek, ha a futó feladatok több IO-t küldenek, mint amennyit a Storage szolgáltatás tud kezelni. Ez a blokkolás létrehoz egy várólistát a feldolgozásra váró IO-kérelmekről, amíg a jelenlegi IOs-t nem dolgozza fel. A blokkok *tárolási szabályozás*miatt, amely nem egy fizikai korlát, hanem a tárolási szolgáltatás által a szolgáltatói szerződés (SLA) által kiszabott korlát. Ez a korlát biztosítja, hogy egyetlen ügyfél vagy bérlő se Sajátítsa el a szolgáltatást. Az SLA korlátozza a másodpercenkénti IOs-(IOPS-) adatok számát az Azure Storage-ban – részletekért lásd: az [Azure Storage skálázhatósági és teljesítményi céljai](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+A fürt teljesítményének szűk keresztmetszete a tárolási szinten fordulhat elő. Ez a szűk keresztmetszet leggyakrabban a bemeneti/kimeneti (i/o) műveletek *blokkolása* miatt fordul elő, amelyek akkor történnek, ha a futó feladatok több IO-t küldenek, mint amennyit a Storage szolgáltatás tud kezelni. Ez a blokkolás létrehoz egy várólistát a feldolgozásra váró IO-kérelmekről, amíg a jelenlegi IOs-t nem dolgozza fel. A blokkok *tárolási szabályozás*miatt, amely nem egy fizikai korlát, hanem a tárolási szolgáltatás által a szolgáltatói szerződés (SLA) által kiszabott korlát. Ez a korlát biztosítja, hogy egyetlen ügyfél vagy bérlő se Sajátítsa el a szolgáltatást. Az SLA korlátozza a másodpercenkénti IOs (IOPS) számát az Azure Storage-ban – részletekért lásd a [skálázhatóságot és a teljesítményre vonatkozó célokat a standard Storage-fiókok esetében](../storage/common/scalability-targets-standard-account.md).
 
 Ha az Azure Storage-t használja, a tárolással kapcsolatos problémák figyelésével, beleértve a szabályozást is, tekintse meg az [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)című témakört.
 

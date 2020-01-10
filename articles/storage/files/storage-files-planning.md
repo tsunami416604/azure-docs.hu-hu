@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931100"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771615"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -24,7 +24,7 @@ A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlm
 
 ![Fájlstruktúra](./media/storage-files-introduction/files-concepts.png)
 
-* **Storage-fiók**: Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Méretezhetőségi és teljesítménycélok).
+* **Storage-fiók**: Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A Storage-fiók kapacitásával kapcsolatos részletekért tekintse [meg a standard Storage-fiókok méretezhetőségi és teljesítménybeli céljait](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) ismertető témakört.
 
 * **Megosztás**: A File Storage-megosztás egy SMB-fájlmegosztás az Azure-ban. Minden könyvtárnak és fájlnak egy szülőmegosztásban kell létrejönnie. Egy fiók korlátlan számú megosztást tartalmazhat, és egy megosztás korlátlan számú fájlt tárolhat, akár a fájlmegosztás teljes kapacitásával. A prémium és a standard fájlmegosztás teljes kapacitása 100 TiB.
 
@@ -172,7 +172,7 @@ A következő szakaszok a különböző redundancia-beállítások közötti kü
 ### <a name="geo-redundant-storage"></a>Georedundáns tárolás
 
 > [!Warning]  
-> Ha az Azure-fájlmegosztást Felhőbeli végpontként használja egy GRS, a Storage-fiók feladatátvételét nem kell elindítania. Ennek hatására a szinkronizálás leáll, és az újonnan rétegű fájlok esetében váratlan adatvesztést okozhat. Egy Azure-régió elvesztése esetén a Microsoft a Azure File Syncával kompatibilis módon aktiválja a Storage-fiók feladatátvételét.
+> Ha az Azure-fájlmegosztást Felhőbeli végpontként használja egy GRS, a Storage-fiók feladatátvételét nem kell elindítania. Feladatátvétel esetén a szinkronizálás leáll, és az újonnan rétegzett fájlok esetében váratlan adatvesztést is okozhat. Egy Azure-régió elvesztése esetén a Microsoft a Azure File Syncával kompatibilis módon aktiválja a Storage-fiók feladatátvételét.
 
 A Geo-redundáns tárolás (GRS) úgy van kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben, az adatoknak egy olyan másodlagos régióba való replikálásával, amely több száz mérföld távolságra van az elsődleges régiótól. Ha a GRS engedélyezve van, akkor az adatai tartósak maradnak, még akkor is, ha egy teljes regionális leállás vagy egy olyan katasztrófa következik be, amelyben az elsődleges régió nem helyreállítható.
 
@@ -205,24 +205,40 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 
 |Region (Régió) |Támogatott redundancia |
 |-------|---------|
+|Ausztrália középső régiója    |LRS     |
+|Ausztrália 2. középső régiója    |LRS     |
 |Ausztrália keleti régiója |LRS     |
 |Délkelet-Ausztrália|LRS |
+|Dél-Brazília    |LRS     |
 |Közép-Kanada  |LRS     |
 |Kelet-Kanada     |LRS     |
 |Közép-India  |LRS     |
-|USA középső régiója *   |LRS     |
+|USA középső régiója *   |LRS, ZRS    |
 |Kelet-Ázsia      |LRS     |
-|USA keleti régiója *        |LRS     |
-|USA 2. keleti régiója *      |LRS     |
+|USA keleti régiója *        |LRS, ZRS|
+|USA 2. keleti régiója *      |LRS, ZRS     |
 |Közép-Franciaország |LRS, ZRS|
 |Dél-Franciaország   |LRS     |
-|USA északi középső régiója |LRS     |
+|Kelet-Japán     |LRS     |
+|Nyugat-Japán     |LRS     |
+|Korea középső régiója  |LRS     |
+|Dél-Korea    |LRS     |
+|USA északi középső régiója |LRS   |
 |Észak-Európa   |LRS     |
 |Dél-India    |LRS     |
+|USA déli középső régiója |LRS     |
 |Délkelet-Ázsia |LRS, ZRS|
+|Észak-Svájc    |LRS     |
+|Nyugat-Svájc    |LRS     |
+|Egyesült Arab Emírségek középső régiója    |LRS     |
+|Egyesült Arab Emírségek északi régiója    |LRS     |
+|Egyesült Királyság északi régiója   |LRS, ZRS    |
+|Egyesült Királyság déli régiója    |LRS     |
+|Egyesült Királyság nyugati régiója    |LRS     |
 |USA nyugati középső régiója|LRS     |
 |Nyugat-Európa *    |LRS, ZRS|
-|USA nyugati régiója *        |LRS     |
+|Nyugat-India   |LRS     |
+|USA nyugati régiója        |LRS     |
 |USA 2. nyugati régiója      |LRS, ZRS|
 
 az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
@@ -243,7 +259,7 @@ Több Azure-fájlmegosztás egyetlen Windows-fájlkiszolgálón is szinkronizál
 
 Számos egyszerű lehetőség van a meglévő fájlmegosztás, például egy helyszíni fájlmegosztás adatainak tömeges átvitelére Azure Filesba. Néhány népszerű is (nem teljes lista):
 
-* **Azure file Sync**: egy Azure-fájlmegosztás (a "Felhőbeli végpont") és a Windows Directory-névtér ("kiszolgálói végpont") közötti első szinkronizálás részeként Azure file Sync a meglévő fájlmegosztás összes adatait replikálja a Azure Filesre.
+* **[Azure file Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : egy Azure-fájlmegosztás (a "Felhőbeli végpont") és a Windows Directory-névtér ("kiszolgálói végpont") közötti első szinkronizálás részeként Azure file Sync a meglévő fájlmegosztás összes adatait replikálja a Azure Filesre.
 * **[Azure import/export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : az Azure import/export szolgáltatás lehetővé teszi, hogy a merevlemez-meghajtók Azure-adatközpontba való szállításával biztonságosan továbbítson nagy mennyiségű adatmennyiséget egy Azure-fájlmegosztás számára. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : a Robocopy egy jól ismert másolási eszköz, amely a Windows-és Windows Server-kiszolgálóval is rendelkezik. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : a AzCopy egy parancssori segédprogram, amely az adatok átmásolását Azure Files, valamint az Azure Blob Storage-t használja az optimális teljesítményű egyszerű parancsok használatával.

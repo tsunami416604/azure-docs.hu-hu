@@ -3,15 +3,15 @@ title: GitHub-műveletek & Azure Kubernetes Service-ben
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: A GitHub-műveletek és az Azure dev Spaces használatával közvetlenül az Azure Kubernetes szolgáltatásban tekintheti át és tesztelheti a lekéréses kérelmek módosításait.
+description: Lekéréses kérelem módosításainak áttekintése és tesztelése közvetlenül az Azure Kubernetes Service-ben a GitHub-műveletek és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483925"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771121"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
 * [Telepített Azure CLI][azure-cli-installed].
-* [Helm 2,13 – 2,16 telepítve][helm-installed].
+* A [Helm 3 telepítve van][helm-installed].
 * Egy GitHub-fiók, amelyen [engedélyezve van a GitHub-művelet][github-actions-beta-signup].
 * Az [Azure dev Spaces Bike Sharing minta alkalmazás](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) egy AK-fürtön fut.
 
@@ -50,7 +50,7 @@ Mentse a *lekéréséhez* értéket a kimenetből, mert azt egy későbbi lépé
 
 ## <a name="create-a-service-principal-for-authentication"></a>Egyszerű szolgáltatásnév létrehozása a hitelesítéshez
 
-Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Például:
+Egyszerű szolgáltatásnév létrehozásához használja [az az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Példa:
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -180,9 +180,8 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[helm-installed]: https://helm.sh/docs/intro/install/
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
 [team-quickstart]: ../quickstart-team-development.md

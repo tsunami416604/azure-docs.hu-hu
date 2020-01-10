@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric erőforrás-szabályozás a tárolók és szolgáltatások számára | Microsoft Docs
+title: Tárolók és szolgáltatások erőforrás-szabályozása
 description: Az Azure Service Fabric lehetővé teszi erőforrás-korlátok megadását a tárolón belüli vagy kívüli szolgáltatásokhoz.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242919"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772380"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -76,7 +65,7 @@ Ha meg szeretné hagyni az operációs rendszer pufferét, és más folyamatok i
 </Section>
 ```
 
-Ha a csomópont-kapacitások teljes manuális beállítására van szüksége, a fürt csomópontjainak leírásához használhatja a szokásos módszert. Íme egy példa arra, hogyan állíthatja be a csomópontot négy maggal és 2 GB memóriát:
+A legtöbb ügyfél és forgatókönyv esetében a processzor és a memória csomópont-kapacitásának automatikus észlelése az ajánlott konfiguráció (alapértelmezés szerint az automatikus észlelés be van kapcsolva). Ha azonban a csomópont-kapacitások teljes manuális beállítására van szüksége, a csomópontok típusait a fürt csomópontjainak leírására szolgáló mechanizmus használatával konfigurálhatja. Íme egy példa arra, hogyan állíthatja be a csomópont típusát négy maggal és 2 GB memóriával:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -145,7 +134,7 @@ Az erőforrás-irányítási korlátok az Application manifest (ServiceManifestI
   </ServiceManifestImport>
 ```
 
-Ebben a példában a **ServicePackageA** nevű szervizcsomag egy mag-t kap a csomópontokon, ahol elhelyezték. Ez a szolgáltatáscsomag két kódot tartalmaz (**CodeA1** és **CodeA2**), és mindkét esetben megadja a `CpuShares` paramétert. A CpuShares 512:256 aránya a két kód csomagjai között osztja el a magját.
+Ebben a példában a **ServicePackageA** nevű szervizcsomag egy mag-t kap a csomópontokon, ahol elhelyezték. Ez a szervizcsomag két kódot tartalmaz (**CodeA1** és **CodeA2**), és mindkét esetben megadja a `CpuShares` paramétert. A CpuShares 512:256 aránya a két kód csomagjai között osztja el a magját.
 
 Így ebben a példában a CodeA1 egy mag kétharmadát kapja meg, és a CodeA2 egy-harmada bekerül a mag (és az azonos) Ha a CpuShares nincsenek megadva a kódokhoz, Service Fabric egyenlően osztja el a magokat egymás között.
 
@@ -206,7 +195,7 @@ Az erőforrás-szabályozásnak a Service Fabric-szolgáltatásokra való alkalm
 * Sérült állapotban végződő csomópontok
 * Nem válaszol Service Fabric fürt felügyeleti API-jai
 
-Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hogy a *csomóponton futó összes Service Fabric felhasználói szolgáltatáshoz érvényesítse az erőforrás-korlátozásokat* (mind a szabályozott, mind a nem szabályozott), hogy a felhasználói szolgáltatások soha ne használják a következőt: megadott mennyiségű erőforrás. Ezt úgy érheti el, ha a ClusterManifest PlacementAndLoadBalancing szakaszában a EnforceUserServiceMetricCapacities konfiguráció értékét True értékre állítja. Ez a beállítás alapértelmezés szerint ki van kapcsolva.
+Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hogy a *csomóponton futó összes Service Fabric felhasználói szolgáltatáshoz érvényesítse az erőforrás-korlátozásokat* (mind a szabályozott, mind a nem szabályozott), hogy a felhasználói szolgáltatások soha ne használják a megadott mennyiségű erőforrást. Ezt úgy érheti el, ha a ClusterManifest PlacementAndLoadBalancing szakaszában a EnforceUserServiceMetricCapacities konfiguráció értékét True értékre állítja. Ez a beállítás alapértelmezés szerint ki van kapcsolva.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -217,7 +206,7 @@ Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hog
 További megjegyzések:
 
 * Az erőforrás-korlátozás kényszerítése csak a `servicefabric:/_CpuCores` és `servicefabric:/_MemoryInMB` erőforrás-metrikára vonatkozik
-* Az erőforrás-korlátozás kényszerítése csak akkor működik, ha az erőforrás-metrikák csomópont-kapacitása elérhető a Service Fabric számára, akár automatikus észlelési mechanizmussal, akár a felhasználókkal manuálisan, a csomópontok kapacitásának megadásával (a [fürt beállításának engedélyezésével erőforrás-szabályozás](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) szakasz). Ha a csomópont kapacitása nincs konfigurálva, az erőforrás-korlát kényszerítési funkciója nem használható, mert Service Fabric nem tudja, hogy mennyi erőforrást kell lefoglalni a felhasználói szolgáltatásokhoz. Ha a "EnforceUserServiceMetricCapacities" érték igaz, de a csomópont kapacitása nincs konfigurálva, a Service Fabric állapot figyelmeztetést ad ki.
+* Az erőforrás-korlátozás kényszerítése csak akkor működik, ha az erőforrás-metrikák csomópont-kapacitása Service Fabric elérhető az automatikus észlelési mechanizmuson keresztül, vagy a felhasználók manuálisan, a csomópontok kapacitásának megadásával (ahogy azt az [erőforrás-irányítás engedélyezése](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) című szakasz ismerteti). Ha a csomópont kapacitása nincs konfigurálva, az erőforrás-korlát kényszerítési funkciója nem használható, mert Service Fabric nem tudja, hogy mennyi erőforrást kell lefoglalni a felhasználói szolgáltatásokhoz. Ha a "EnforceUserServiceMetricCapacities" érték igaz, de a csomópont kapacitása nincs konfigurálva, a Service Fabric állapot figyelmeztetést ad ki.
 
 ## <a name="other-resources-for-containers"></a>A tárolók egyéb erőforrásai
 

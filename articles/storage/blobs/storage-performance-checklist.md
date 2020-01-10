@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613890"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749231"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
 A Microsoft számos bevált gyakorlatot fejlesztett ki a nagy teljesítményű alkalmazások blob Storage-alapú fejlesztéséhez. Ez az ellenőrzőlista azokat a kulcsfontosságú eljárásokat azonosítja, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat az alkalmazás tervezésekor és a folyamat során.
 
-Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókokhoz](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: [skálázhatósági és teljesítményi célok a standard szintű Storage-fiókokhoz](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , valamint [méretezhetőség és teljesítménybeli célok a blob Storage-](scalability-targets.md)hoz.
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
@@ -285,5 +285,6 @@ Az oldal Blobok akkor megfelelőek, ha az alkalmazásnak véletlenszerű írást
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Storage a tárfiókokra vonatkozó skálázhatósági és teljesítménycéljai](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

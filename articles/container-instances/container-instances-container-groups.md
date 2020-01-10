@@ -4,12 +4,12 @@ description: További információ a Azure Container Instances lévő tárolók 
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896578"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770271"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tároló-csoportok a Azure Container Instances
 
@@ -44,21 +44,19 @@ A tároló csoport konfigurációjának megőrzése érdekében exportálhatja a
 
 ## <a name="resource-allocation"></a>Erőforrás-kiosztás
 
-A Azure Container Instances erőforrásokat, például CPU-t, memóriát és opcionálisan [GPU][gpus] -t (előzetes verzió) foglal le egy tároló-csoportba a csoportban lévő példányok [erőforrás-kérelmeinek][resource-requests] hozzáadásával. Ha például két példánnyal rendelkező tároló csoportot hoz létre a CPU-erőforrások számára, a tároló csoport 2 CPU-t foglal le.
+A Azure Container Instances erőforrásokat, például CPU-t, memóriát és opcionálisan [GPU][gpus] -t (előzetes verzió) foglal le egy többtárolós csoportba úgy, hogy hozzáadja a csoport példányainak [erőforrás-kérelmeit][resource-requests] . Ha például két példánnyal rendelkező tároló csoportot hoz létre a CPU-erőforrások számára, a tároló csoport 2 CPU-t foglal le.
 
 ### <a name="resource-usage-by-instances"></a>Erőforrás-használat példányok szerint
 
-Minden egyes Container-példányhoz az erőforrás-kérelemben megadott erőforrások vannak lefoglalva. Egy csoportban lévő tároló-példány erőforrás-használata azonban attól függ, hogyan konfigurálja a választható [erőforrás-korlát][resource-limits] tulajdonságát. Az erőforrás-korlátnak kisebbnek kell lennie, mint a kötelező [erőforrás-kérelem][resource-requests] tulajdonsága.
+A csoport minden tároló példánya lefoglalja az erőforrás-kérelmében megadott erőforrásokat. A csoportban lévő példányok által használt maximális erőforrások azonban eltérőek lehetnek, ha a választható [erőforrás-korlát][resource-limits] tulajdonságot konfigurálja. Egy példány erőforrás-korlátjának nagyobbnak vagy egyenlőnek kell lennie a kötelező [erőforrás-kérelem][resource-requests] tulajdonsággal.
 
 * Ha nem ad meg erőforrás-korlátot, a példány maximális Erőforrás-kihasználtsága megegyezik az erőforrás-kérelemmel.
 
-* Ha erőforrás-korlátot ad meg egy példányhoz, a számítási feladathoz módosíthatja a példány erőforrás-felhasználását, vagy csökkentheti vagy növelheti a használatot az erőforrás-kérelemhez képest. A maximálisan beállítható erőforrás-korlát a csoport számára lefoglalt összes erőforrás.
+* Ha egy példányra vonatkozó korlátot ad meg, a példány maximális kihasználtsága a megadott korlátnál nagyobb lehet. Ennek megfelelően a csoport más példányai által használt erőforrás-használat csökkenhet. Egy példányhoz beállítható maximális erőforrás-korlát a csoport számára lefoglalt összes erőforrás.
     
-Ha például egy olyan csoportban, amelyben két példány 1 PROCESSZORt igényel, akkor az egyik tároló olyan munkaterhelést futtathat, amely több processzor futtatását igényli a többinél.
+Például egy olyan csoportban, amelyben az 1 CPU-t kérő két példány található, az egyik tároló olyan munkaterhelést futtathat, amelynek több processzort kell futtatnia a többinél.
 
-Ebben a forgatókönyvben egy 0,5 CPU-korlátot állíthat be egy példányhoz, és legfeljebb 2 processzort használhat a másodikhoz. Ez a konfiguráció az első tároló erőforrás-felhasználását az 0,5 CPU-ra korlátozza, így a második tároló a teljes 2 CPU-t használhatja, ha van ilyen.
-
-További információ: [ResourceRequirements][resource-requirements] tulajdonság a Container groups REST API.
+Ebben az esetben beállíthatja a példányhoz tartozó 2 processzoros erőforrás-korlátot. Ez a konfiguráció lehetővé teszi, hogy a tároló a teljes 2 CPU-t használja, ha van ilyen.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimális és maximális kiosztás
 
@@ -68,7 +66,7 @@ További információ: [ResourceRequirements][resource-requirements] tulajdonsá
 
 ## <a name="networking"></a>Hálózatkezelés
 
-A Container groups megoszthat egy külső elérésű IP-címet és egy port névterét az adott IP-címen. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. 
+A Container groups megoszthat egy külső elérésű IP-címet, egy vagy több portot az adott IP-címen, valamint egy teljes tartománynevet (FQDN) tartalmazó DNS-címkét is. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. A rendszer a tároló csoportjának IP-címét és teljes tartománynevét fogja felszabadítani a Container Group törlésekor. 
 
 A tárolók csoportjain belül a containers-példányok a localhost-on keresztül bármely porton elérhetők, még akkor is, ha ezek a portok nincsenek kitéve a csoport IP-címén vagy a tárolóból.
 
@@ -76,7 +74,13 @@ A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban]
 
 ## <a name="storage"></a>Adattárolás
 
-Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. Ezeket a köteteket meghatározott elérési utakra is leképezheti egy csoport egyes tárolói között.
+Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. A támogatott kötetek a következők:
+* [Azure-fájlmegosztás][azure-files]
+* [Titkos kód][secret]
+* [Üres könyvtár][empty-directory]
+* [Klónozott git-tárház][volume-gitrepo]
+
+Ezeket a köteteket meghatározott elérési utakra is leképezheti egy csoport egyes tárolói között. 
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
@@ -112,5 +116,8 @@ Megtudhatja, hogyan helyezhet üzembe egy több tárolóból álló tároló cso
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

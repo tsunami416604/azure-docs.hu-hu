@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889916"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754352"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
@@ -65,12 +65,6 @@ A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből ál
 Ahogy az index definíciója esetében is, a portál, a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) használatával összetett típusokat tartalmazó sémát hozhat létre. 
 
 Az alábbi példa egy olyan JSON-index sémát mutat be, amely egyszerű mezőket, gyűjteményeket és összetett típusokat tartalmaz. Figyelje meg, hogy egy összetett típuson belül minden almező rendelkezik egy típussal, és rendelkezhet attribútumokkal, mint a legfelső szintű mezők. A séma megfelel a fenti példában szereplő adatként. `Address` egy olyan összetett mező, amely nem gyűjtemény (a szállodában egy-egy címe van). `Rooms` egy összetett gyűjtemény mező (a Hotel számos szobát tartalmaz).
-
-<!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
-
-Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
--->
 
 ```json
 {
@@ -157,7 +151,7 @@ Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést
 
 A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőben, ha az index definíciójában a **szűrhető** attribútum értéke `true`. További információ: [create index API Reference](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [Hotels adatkészletet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) az **adatimportálás** varázslóban. Az adatok eléréséhez a readme szolgáltatásban megadott Cosmos DB kapcsolati információkra lesz szüksége.
 

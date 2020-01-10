@@ -3,7 +3,7 @@ title: Az LVM konfigurálása Linux rendszerű virtuális gépen
 description: Ismerje meg, hogyan konfigurálhatja az LVMt Linux rendszeren az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: na
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: szark
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036686"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751026"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban
 Ebből a dokumentumból megtudhatja, hogyan konfigurálhatja a Logical Volume Managert (LVM) az Azure-beli virtuális gépen. Az LVM az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken lévő adatlemezeken is használható, azonban a legtöbb Felhőbeli rendszerkép alapértelmezés szerint nem lesz beállítva az operációsrendszer-lemezen. Az alábbi lépések az LVM konfigurálására koncentrálnak az adatlemezek esetében.
@@ -102,7 +102,7 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Az új fájlrendszer hozzáadása az/etc/fstab modulhoz
 > [!IMPORTANT]
-> A `/etc/fstab` fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos, tekintse meg a terjesztés dokumentációját a fájl megfelelő szerkesztésével kapcsolatos információkért. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre a `/etc/fstab` fájl biztonsági másolatát.
+> Az `/etc/fstab` fájl nem megfelelő szerkesztése esetén előfordulhat, hogy a rendszer nem tud elindulni. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre a `/etc/fstab` fájl biztonsági másolatát.
 
 1. Hozza létre az új fájlrendszer kívánt csatlakoztatási pontját, például:
 

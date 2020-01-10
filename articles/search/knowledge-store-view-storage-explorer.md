@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406553"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754070"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Tudásbázis megtekintése Storage Explorer
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat a tudásbázishoz, és hogyan
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit, vagy [hozzon létre egy Azure Cognitive Search Knowledge Store](knowledge-store-create-rest.md) -t a jelen útmutatóban használt minta TUDÁSBÁZIS létrehozásához a REST használatával.
++ A jelen útmutatóban használt mintaűrlapok létrehozásához kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit.
 
 + Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan csatlakozhat a tudásbázishoz, és hogyan
 
 1. A **Tables (táblák** ) lista kibontásával megjelenítheti az Azure Table-előrejelzések listáját, amelyeket a rendszer a mintaadatok **importálása** varázsló futtatásakor hozott létre.
 
-Bármelyik táblát kiválasztva megtekintheti a dúsított adatelemeket, beleértve a főbb kifejezéseket is, és így tovább.
+Bármelyik táblát kiválasztva megtekintheti a dúsított adatelemeket, beleértve a legfontosabb kifejezéseket és a hangulati pontszámokat.
 
    ![Táblázatok megtekintése Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Táblázatok megtekintése Storage Explorer")
 
@@ -50,7 +50,7 @@ A lekérdezések futtatásához kattintson a parancssorban a **lekérdezés** el
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások díjfizetéssel járhatnak. Az erőforrásokat törölheti egyesével, vagy egyszerre, az erőforráscsoport törlésével.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
@@ -62,4 +62,4 @@ A Knowledge Store-t összekapcsolhatjuk a mélyebb elemzés érdekében, vagy a 
 
 > [!div class="nextstepaction"]
 > [Kapcsolódjon Power BI](knowledge-store-connect-power-bi.md)
-> [hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-howto.md)
+> [hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-create-rest.md)

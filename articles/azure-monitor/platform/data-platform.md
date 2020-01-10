@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e9779f612bc4a2521459bf76a6e2b399fc89e07
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894130"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751000"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor adatplatform
 
@@ -48,7 +48,7 @@ A [naplók](data-platform-logs.md) a rendszeren belül bekövetkezett események
 A Azure Monitor lévő naplókat az [Azure Adatkezelőon](/azure/data-explorer/) alapuló log Analytics munkaterületen tároljuk, amely hatékony elemzési motort és [gazdag lekérdezési nyelvet](/azure/kusto/query/)biztosít. A naplók általában elegendő információt biztosítanak az azonosított probléma teljes kontextusának biztosításához, és értékesek a problémák fő eseteinek azonosításához.
 
 > [!NOTE]
-> Fontos különbséget tenni Azure Monitor naplók és a naplózási adatforrások között az Azure-ban. Az Azure-beli előfizetési szintű események például egy, a Azure Monitor menüből megtekinthető [tevékenységi naplóba](activity-logs-overview.md) íródnak. A legtöbb erőforrás operatív adatokat fog írni egy olyan [erőforrás-naplóba](resource-logs-overview.md) , amelyet továbbíthat a különböző helyszínekhez. Azure Monitor a naplók egy olyan naplózási adatplatform, amely a tevékenységek naplóit és erőforrás-naplóit, valamint más figyelési adatokat gyűjt, így részletes elemzéseket biztosít a teljes erőforrás-készleten belül.
+> Fontos különbséget tenni Azure Monitor naplók és a naplózási adatforrások között az Azure-ban. Az Azure-beli előfizetési szintű események például egy, a Azure Monitor menüből megtekinthető [tevékenységi naplóba](platform-logs-overview.md) íródnak. A legtöbb erőforrás operatív adatokat fog írni egy olyan [erőforrás-naplóba](platform-logs-overview.md) , amelyet továbbíthat a különböző helyszínekhez. Azure Monitor a naplók egy olyan naplózási adatplatform, amely a tevékenységek naplóit és erőforrás-naplóit, valamint más figyelési adatokat gyűjt, így részletes elemzéseket biztosít a teljes erőforrás-készleten belül.
 
 
  A [naplózási lekérdezéseket](../log-query/log-query-overview.md) interaktív módon is használhatja a Azure Portal [log Analyticsével](../log-query/portals.md) , vagy az eredményeket hozzáadhat egy [Azure-irányítópulthoz](../learn/tutorial-app-dashboards.md) a vizualizációhoz más adattal kombinálva. Létrehozhat olyan [naplózási riasztásokat](alerts-log.md) is, amelyek riasztást küldenek egy ütemezett lekérdezés eredményei alapján.

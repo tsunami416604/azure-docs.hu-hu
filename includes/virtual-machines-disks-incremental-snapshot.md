@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566274"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752415"
 ---
 A növekményes Pillanatképek (előzetes verzió) olyan felügyelt lemezek időpontra vonatkozó biztonsági mentései, amelyek az utolsó pillanatkép óta csak az összes változást tartalmazzák. Ha egy növekményes pillanatkép letöltését vagy más módon történő használatát kísérli meg, a rendszer a teljes VHD-t használja. Ez az új képesség a felügyelt lemezek pillanatképei számára potenciálisan költséghatékony lehet, mivel már nem szükséges a teljes lemez tárolása az egyes Pillanatképek esetében, hacsak nem választja. A normál pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemezek létrehozásához, vagy rendszeres pillanatkép készítéséhez.
 
@@ -21,11 +21,9 @@ A növekményes pillanatfelvétel és a rendszeres Pillanatképek között néh�
 
 A növekményes Pillanatképek egy különbözeti képességet is biztosítanak, amely egyedi módon elérhető a felügyelt lemezeken. Lehetővé teszik az azonos felügyelt lemezek két növekményes pillanatképének változását a blokk szintjére. Ezzel a képességgel csökkentheti az adatlábnyomot a pillanatképek régiók közötti másolásakor.
 
-Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldje el nekünk a AzureDisks@microsoft.com a nyilvános előzetes verzió eléréséhez.
-
 ## <a name="restrictions"></a>Korlátozások
 
-- A növekményes Pillanatképek jelenleg csak az USA keleti régiójában, az USA középső régiójában, Közép-Kanadában, az USA nyugati középső régiójában és Észak-Európában találhatók
+- A növekményes Pillanatképek jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában, az USA középső régiójában, az USA nyugati középső régiójában, Közép-Kanadában és Észak-Európában érhetők el.
 - A növekményes Pillanatképek jelenleg nem hozhatók létre a lemez méretének módosítása után.
 - A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
 - Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
@@ -156,8 +154,4 @@ Növekményes pillanatkép létrehozásához Azure Resource Manager sablonokat i
 
 ## <a name="next-steps"></a>Következő lépések
 
-1. Ha még nem regisztrált az előzetes verzióra, és szeretné megkezdeni a növekményes Pillanatképek használatát, küldje el nekünk a AzureDisks@microsoft.com a nyilvános előzetes verzió eléréséhez. 
-
-2. Ismerje meg a következő mintákat a növekményes Pillanatképek régiók közötti másolásához a különbözeti képesség használatával   
-
-    - [Az Azure .net SDK-k használata](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+Ha szeretné megtekinteni a növekményes Pillanatképek különbözeti képességét bemutató mintakód használatát, tekintse meg az [Azure-Managed Disks biztonsági mentések másolása másik régióba a növekményes Pillanatképek különbözeti képességével](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)című témakört.

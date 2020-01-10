@@ -5,22 +5,22 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894515"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750366"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
-Az Azure-beli [erőforrás-naplók](resource-logs-overview.md) részletes és gyakori információkat biztosítanak az Azure-erőforrások belső működéséről. Ez a cikk ismerteti az erőforrás-naplók összegyűjtését egy Log Analytics munkaterületen, amely lehetővé teszi, hogy a rendszer hatékony naplók használatával elemezze Azure Monitor naplókban gyűjtött más figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure platform-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
+Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk ismerteti az erőforrás-naplók összegyűjtését egy Log Analytics munkaterületen, amely lehetővé teszi, hogy a rendszer hatékony naplók használatával elemezze Azure Monitor naplókban gyűjtött más figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk. 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>A munkaterület erőforrás-naplóival végezhető műveletek
-Az erőforrás-naplók Log Analytics munkaterületre való összegyűjtése lehetővé teszi az Azure-erőforrások naplóinak összegyűjtését, valamint az összes elérhető funkció kihasználása [Azure monitor naplók](data-platform-logs.md) számára, amely a következőket tartalmazza:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>A munkaterületen található platform-naplókból elvégezhető műveletek
+A platform-naplók Log Analytics munkaterületre való gyűjtése lehetővé teszi az Azure-erőforrások naplóinak összegyűjtését, valamint a [Azure monitor naplók](data-platform-logs.md) összes elérhető funkciójának kihasználása érdekében, amely a következőket tartalmazza:
 
 * **Lekérdezések naplózása** – a [napló lekérdezéseit](../log-query/log-query-overview.md) hatékony lekérdezési nyelv segítségével hozhatja létre, így gyorsan elemezheti és betekintést nyerhet a diagnosztikai adatokba, valamint elemezheti azt a Azure monitor más forrásokból gyűjtött adatokkal.
 * **Riasztás** – értesítéseket kaphat az erőforrás-naplókban azonosított kritikus feltételekről és mintákról az Azure monitor-ban található [naplózási riasztások](alerts-log.md)használatával.
@@ -30,10 +30,14 @@ Az erőforrás-naplók Log Analytics munkaterületre való összegyűjtése lehe
 Ha még nem rendelkezik ilyennel, [létre kell hoznia egy új munkaterületet](../learn/quick-create-workspace.md) . A munkaterületnek nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
 
 ## <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
-A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Egy Azure-erőforrás diagnosztikai beállításának létrehozásával összegyűjtheti azokat egy Log Analytics munkaterületen és más célhelyeken. A részletekért lásd: [diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md) .
+Platform-naplók küldése Log Analytics munkaterületre és más célhelyekre egy Azure-erőforrás diagnosztikai beállításának létrehozásával. A részletekért lásd: [diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md) .
 
-## <a name="collection-mode"></a>Gyűjtési mód
-A Log Analytics munkaterületen összegyűjtött adatokat a rendszer a [Azure monitor naplók struktúrájában](../log-query/logs-structure.md)leírtak szerint táblázatokban tárolja. Az erőforrás-naplók által használt táblák attól függnek, hogy az erőforrás milyen típusú gyűjteményt használ:
+
+## <a name="activity-log-collection"></a>Műveletnapló-gyűjtemény
+A műveletnapló bármely előfizetésből akár öt Log Analytics munkaterületre is elküldhető. Log Analytics munkaterületen összegyűjtött erőforrás-naplózási adatokat a rendszer a **AzureActivity** táblában tárolja. 
+
+## <a name="resource-log-collection-mode"></a>Erőforrás-napló gyűjtési módja
+A Log Analytics munkaterületen összegyűjtött erőforrás-naplózási adatokat a rendszer a [Azure monitor naplók struktúrájában](../log-query/logs-structure.md)leírt módon tárolja. Az erőforrás-naplók által használt táblák attól függnek, hogy az erőforrás milyen típusú gyűjteményt használ:
 
 - Azure Diagnostics – az összes írásos érték a _AzureDiagnostics_ tábla.
 - Az erőforrás-specifikus – az erőforrás minden kategóriája esetében az egyes táblákba kerül.
@@ -120,5 +124,5 @@ A naplók áttelepíthetők az erőforrás-specifikus mód használatára a lehe
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az Azure erőforrás-naplókkal kapcsolatos további információkért lásd: [Az Azure-erőforrások naplófájljainak áttekintése](resource-logs-overview.md).
-* Ha diagnosztikai beállítást szeretne létrehozni az erőforrás-naplók Log Analytics munkaterületre való gyűjtéséhez, olvassa el a [diagnosztikai beállítás létrehozása naplók és mérőszámok az Azure-ban való gyűjtéséhez](diagnostic-settings.md)című témakört.
+* [További információ az erőforrás-naplókról](platform-logs-overview.md).
+* [Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md).

@@ -3,17 +3,17 @@ title: 'Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core'
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio a .NET Core-alkalmazások hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: de830d07010037793eaf7471fc1147a42081b09c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325608"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770594"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -44,7 +44,7 @@ A [támogatott régiókban][supported-regions]létre kell hoznia egy AK-fürtöt
     ![AK létrehozása a Azure Portalban](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Kattintson az *Áttekintés + létrehozás* elemre.
-1. Kattintson a *Létrehozás* elemre.
+1. Kattintson a *Create* (Létrehozás) gombra.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
@@ -60,7 +60,7 @@ Navigáljon az AK-fürthöz a Azure Portalban, és kattintson a *dev Spaces*elem
 1. Nevezze el a projekt *webfelületét* , és kattintson a *Létrehozás*gombra.
 1. Ha a rendszer kéri, válassza a *webalkalmazás (Model-View-Controller)* elemet a sablonhoz.
 1. Válassza a *.net Core* és a *ASP.net Core 2,1* elemet a felső részen.
-1. Kattintson a *Létrehozás* elemre.
+1. Kattintson a *Create* (Létrehozás) gombra.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>A projekt összekötése a fejlesztői területtel
 
@@ -128,10 +128,10 @@ Navigáljon az erőforráscsoporthoz a Azure Portalon, majd kattintson az *erőf
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Több tároló használata és fejlesztés csapatban](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

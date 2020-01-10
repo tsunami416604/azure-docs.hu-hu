@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 11/15/2019
-ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 11/16/2019
+ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539184"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750767"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrikák és diagnosztikai naplózás
 
@@ -33,7 +33,7 @@ Az önálló adatbázisok, a rugalmas készletekben található készletezett ad
 További információ a különböző Azure-szolgáltatások által támogatott metrikákkal és naplózási kategóriákkal kapcsolatban:
 
 - [A Microsoft Azure metrikáinak áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Az Azure Diagnostics-naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md)
+- [Az Azure Diagnostics-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md)
 
 Ez a cikk útmutatást nyújt az Azure SQL Database-adatbázisok, rugalmas készletek és felügyelt példányok diagnosztikai telemetria engedélyezéséhez. Emellett azt is megtudhatja, hogyan konfigurálhatja a Azure SQL Analytics felügyeleti eszközként az adatbázis-diagnosztika telemetria megtekintéséhez.
 
@@ -41,7 +41,7 @@ Ez a cikk útmutatást nyújt az Azure SQL Database-adatbázisok, rugalmas kész
 
 Az alábbi módszerek egyikének használatával engedélyezheti és kezelheti a metrikákat és a diagnosztikai telemetria naplózását:
 
-- Azure Portal
+- Azure portál
 - PowerShell
 - Azure parancssori felület (CLI)
 - Azure Monitor REST API
@@ -79,9 +79,10 @@ Beállíthatja az Azure SQL Database-adatbázisokat és a példány-adatbázisok
 > A rugalmas készletek és a felügyelt példányok külön diagnosztikai telemetria rendelkeznek a bennük található adatbázisokból. Ez azért fontos, mert a diagnosztikai telemetria külön van konfigurálva az egyes erőforrások esetében, az alábbi módon dokumentálva.
 
 > [!NOTE]
-> A naplózási naplózás engedélyezéséhez tekintse meg az [adatbázis naplózásának beállítása](sql-database-auditing.md#subheading-2)és a [naplók naplózása Azure monitor-naplókban és az Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)című témakört.
+> - A naplózási naplózás engedélyezéséhez tekintse meg az [adatbázis naplózásának beállítása](sql-database-auditing.md#subheading-2)és a [naplók naplózása Azure monitor-naplókban és az Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)című témakört.
+> - A diagnosztikai beállítások nem konfigurálhatók a **rendszeradatbázisokhoz**, például a Master, a msdb, a Model, a resour és a tempdb adatbázisokhoz.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portál
 
 A diagnosztikai **Beállítások** menüt a Azure Portal minden egyes, készletezett vagy példány adatbázisához használhatja a diagnosztikai telemetria folyamatos átviteléhez. Emellett a diagnosztikai telemetria külön is konfigurálható az adatbázis-tárolók esetében: rugalmas készletek és felügyelt példányok. A következő célhelyek megadásával továbbíthatja a diagnosztikai telemetria: Azure Storage, Azure Event Hubs és Azure Monitor naplók.
 
@@ -221,7 +222,7 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria adatf
 
 A metrikák és a diagnosztika naplózása a PowerShell használatával engedélyezhető.
 
-- A következő parancs használatával engedélyezheti a diagnosztikai naplók tárolását egy Storage-fiókban:
+- Az alábbi paranccsal engedélyezheti a diagnosztikai naplók tárfiókban való tárolását:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -229,31 +230,31 @@ A metrikák és a diagnosztika naplózása a PowerShell használatával engedél
 
    A Storage-fiók azonosítója a cél Storage-fiók erőforrás-azonosítója.
 
-- Ha engedélyezni szeretné a diagnosztikai naplók továbbítását az Event hub-ba, használja a következő parancsot:
+- Az alábbi parancs használatával engedélyezheti a diagnosztikai naplók streamelését egy eseményközpontba:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   A Azure Service Bus szabály azonosítója a következő formátumú karakterlánc:
+   Az Azure Service Bus szabályazonosítója (rule ID) egy sztring az alábbi formátumban:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- A diagnosztikai naplók Log Analytics munkaterületre való küldésének engedélyezéséhez használja a következő parancsot:
+- Az alábbi paranccsal engedélyezheti a diagnosztikai naplók Log Analytics-munkaterületre való küldését:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- A Log Analytics munkaterület erőforrás-AZONOSÍTÓját a következő paranccsal szerezheti be:
+- A Log Analytics-munkaterület erőforrás-azonosítóját (ResourceId) az alábbi paranccsal kérheti le:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Ezeket a paramétereket kombinálva több kimeneti beállítást is engedélyezhet.
+Ezeket a paramétereket kombinálhatja is, ha több kimeneti eredményt szeretne kapni.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Több Azure-erőforrás konfigurálása
 
@@ -303,7 +304,7 @@ Az Azure CLI használatával engedélyezheti a metrikákat és a diagnosztikai n
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Ezeket a paramétereket kombinálva több kimeneti beállítást is engedélyezhet.
+Ezeket a paramétereket kombinálhatja is, ha több kimeneti eredményt szeretne kapni.
 
 ### <a name="rest-api"></a>REST API
 
@@ -735,7 +736,7 @@ További információ a [Intelligent Insights napló formátumáról](sql-databa
 Ha szeretné megtudni, hogyan engedélyezheti a naplózást, és megismerheti a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, tekintse meg a következőt:
 
 - [A Microsoft Azure metrikáinak áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Az Azure Diagnostics-naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md)
+- [Az Azure Diagnostics-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md)
 
 A Event Hubsről a következő témakörben olvashat bővebben:
 

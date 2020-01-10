@@ -8,20 +8,11 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: ca6c57b139b195b94dc7171336cfcc34d18b1872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2fd03c70cffa4efcb30518ebe6c54ca899869e16
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829055"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75752458"
 ---
-A következő korlátozások vonatkoznak a Azure Backupra.
-
-| **Korlát** | **Alapértelmezett** |
-| --- | --- |
-| A tárolóban regisztrálható kiszolgálók vagy gépek. | Windows Server/Windows ügyfél/System Center Data Protection Manager: 50. <br/><br/> IaaS virtuális gépek: 1 000.  |
-| Egy adatforrás mérete a tár tárolójában. |54 400 – legfeljebb GB. A korlát nem vonatkozik a IaaS virtuális gép biztonsági mentésére. |
-| Backup-tárolók egy Azure-előfizetésben. |500-tároló régiónként. |
-| Napi biztonsági mentések ütemezése. |Windows Server/Client: három nap.<br/> System Center DPM: két nap. <br/> IaaS virtuális gépek: naponta egyszer.  |
-| Azure-beli virtuális géphez csatlakoztatott adatlemezek biztonsági mentéshez. | 16 |
-| Az Azure virtuális géphez a biztonsági mentéshez csatolt egyes adatlemezek.| 32 TB|
+Azure Backup támogatási beállítások és korlátozások összefoglalását lásd: [Azure Backup támogatási mátrixok](https://docs.microsoft.com/azure/backup/backup-support-matrix).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977709"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750896"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
@@ -49,7 +49,7 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 
    ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs02.png)
 1. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
@@ -181,8 +181,8 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 ## <a name="see-also"></a>Lásd még:
 
 * [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
-* [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)
-* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/resource-logs-overview.md)
+* [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
+* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

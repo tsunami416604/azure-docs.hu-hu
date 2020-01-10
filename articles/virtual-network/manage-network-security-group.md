@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: afbe4aae0ac1296bfc4b2011069f9d81afed977f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d6c948c7fdfe2c5dc89c3e284ada33c2f7b542db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273683"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750668"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása, módosítása vagy törlése
 
 A hálózati biztonsági csoportokban található biztonsági szabályok lehetővé teszik a virtuális hálózati alhálózatok és hálózati adapterek közötti és onnan kimenő hálózati forgalom típusának szűrését. Ha nem ismeri a hálózati biztonsági csoportokat, tekintse meg a [hálózati biztonsági csoportok áttekintése](security-overview.md) című cikket, és ismerkedjen meg [a hálózati](tutorial-filter-network-traffic.md) biztonsági csoportokkal.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,9 +42,9 @@ Létrehozhatja, [megtekintheti az összeset](#view-all-network-security-groups),
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Az Azure-helyek és-előfizetések által létrehozott hálózati biztonsági csoportok száma korlátozott. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Az Azure-helyek és-előfizetések által létrehozott hálózati biztonsági csoportok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
 2. Válassza a **hálózatkezelés**, majd a **hálózati biztonsági csoport**elemet.
 3. Adja meg a hálózati biztonsági csoport **nevét** , válassza ki az **előfizetést**, hozzon létre egy új **erőforráscsoportot**, vagy válasszon ki egy meglévő erőforráscsoportot, válasszon ki egy **helyet**, majd válassza a **Létrehozás**lehetőséget.
 
@@ -67,11 +67,11 @@ A portál felső részén található Keresés mezőbe írja be a *hálózati bi
 1. A portál felső részén található Keresés mezőbe írja be a *hálózati biztonsági csoportok*értéket. Ha a **hálózati biztonsági csoportok** megjelennek a keresési eredmények között, válassza ki.
 2. Válassza ki a hálózati biztonsági csoportot azon a listán, amelynek a adatait meg szeretné tekinteni. A **Beállítások** területen megtekintheti a **bejövő biztonsági szabályokat** és a **kimenő biztonsági szabályokat**, valamint a hálózati biztonsági csoporthoz tartozó hálózati **adaptereket** és **alhálózatokat** . Emellett engedélyezheti vagy letilthatja a **diagnosztikai naplókat** , és megtekintheti az **érvényes biztonsági szabályokat**. További információ: [diagnosztikai naplók](virtual-network-nsg-manage-log.md) és [hatékony biztonsági szabályok megtekintése](diagnose-network-traffic-filter-problem.md).
 3. Ha többet szeretne megtudni a felsorolt általános Azure-beállításokról, tekintse meg a következő cikkeket:
-    *   [Tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md)
+    *   [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
     *   [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárak](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Automation-parancsfájl](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+    *   [Automation-parancsfájl](../azure-resource-manager/templates/export-template-portal.md)
 
 **Parancsok**
 
@@ -98,7 +98,7 @@ Ha egy hálózati biztonsági csoport bármely alhálózathoz vagy hálózati ad
 
 1. A portál felső részén található Keresés mezőbe írja be a *hálózati biztonsági csoportok* kifejezést a keresőmezőbe. Ha a **hálózati biztonsági csoportok** megjelennek a keresési eredmények között, válassza ki.
 2. Válassza ki a listából a törölni kívánt hálózati biztonsági csoportot.
-3. Válassza a **Törlés**lehetőséget, majd válassza az **Igen**lehetőséget.
+3. Válassza a **Törlés**, majd az **Igen** lehetőséget.
 
 **Parancsok**
 
@@ -111,20 +111,20 @@ A hálózati biztonsági csoport nulla vagy több biztonsági szabályt tartalma
 
 ### <a name="create-a-security-rule"></a>Biztonsági szabály létrehozása
 
-Az Azure-beli hely és előfizetés alapján a hálózati biztonsági csoportokra vonatkozó szabályok száma korlátozva lehet. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Az Azure-beli hely és előfizetés alapján a hálózati biztonsági csoportokra vonatkozó szabályok száma korlátozva lehet. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 1. A portál felső részén található Keresés mezőbe írja be a *hálózati biztonsági csoportok* kifejezést a keresőmezőbe. Ha a **hálózati biztonsági csoportok** megjelennek a keresési eredmények között, válassza ki.
 2. Válassza ki azt a hálózati biztonsági csoportot a listából, amelyhez biztonsági szabályt kíván hozzáadni.
 3. A **Beállítások**területen válassza a **bejövő biztonsági szabályok** lehetőséget. Számos meglévő szabály szerepel a felsorolásban. Előfordulhat, hogy egyes szabályok nem lettek hozzáadva. Hálózati biztonsági csoport létrehozásakor több alapértelmezett biztonsági szabály jön létre. További információ: [alapértelmezett biztonsági szabályok](security-overview.md#default-security-rules).  Az alapértelmezett biztonsági szabályok nem törölhetők, de felülbírálhatja azokat olyan szabályokkal, amelyek magasabb prioritással rendelkeznek.
 4. <a name = "security-rule-settings"></a>Válassza a **+ Hozzáadás**lehetőséget.  Válassza ki vagy adja meg a következő beállítások értékeit, majd kattintson **az OK gombra**:
     
-    |Beállítás  |Érték  |Részletek  |
+    |Beállítás  |Value (Díj)  |Részletek  |
     |---------|---------|---------|
-    |Forrás     | Válassza a **bármely**, **alkalmazás biztonsági csoport**, **IP-cím**vagy **szolgáltatási címke** lehetőséget a bejövő biztonsági szabályokhoz. Ha kimenő biztonsági szabályt hoz létre, a beállítások ugyanazok, mint a **célhelyen**felsorolt beállítások.       | Ha az **alkalmazás biztonsági csoportja**lehetőséget választja, válasszon ki egy vagy több olyan meglévő alkalmazás biztonsági csoportot, amely ugyanabban a régióban található, mint a hálózati adapter. Megtudhatja, hogyan [hozhat létre egy alkalmazás biztonsági csoportot](#create-an-application-security-group). Ha a **forráshoz** és a **célhoz**is kiválasztja az **alkalmazás biztonsági csoportot** , akkor az alkalmazás biztonsági csoportjain belüli hálózati adaptereknek ugyanabban a virtuális hálózatban kell lenniük. Ha az **IP-címek**lehetőséget választja, adja meg a **forrás IP-címek/CIDR tartományokat**. Egyetlen értéket vagy vesszővel tagolt listát is megadhat több érték közül. Több érték például a 10.0.0.0/16, a 192.188.1.1. A megadható értékek száma korlátozott. További részletekért lásd az [Azure-korlátokat](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Ha a **szolgáltatás címkét**választja, akkor válasszon ki egy szolgáltatási címkét. A szolgáltatási címke az IP-címek kategóriájának előre meghatározott azonosítója. Ha többet szeretne megtudni az elérhető szolgáltatásokkal kapcsolatos címkékről és az egyes címkékről, tekintse meg a [szolgáltatás címkéi](security-overview.md#service-tags)című témakört. Ha a megadott IP-cím egy Azure-beli virtuális géphez van hozzárendelve, akkor győződjön meg arról, hogy a magánhálózati IP-címet adta meg, nem pedig a virtuális géphez hozzárendelt nyilvános IP-címet. A biztonsági szabályok feldolgozása után az Azure lefordítja a nyilvános IP-címet a bejövő biztonsági szabályok magánhálózati IP-címére, és az Azure előtt lefordít egy magánhálózati IP-címet a kimenő szabályok nyilvános IP-címére. Ha többet szeretne megtudni az Azure nyilvános és magánhálózati IP-címeiről, tekintse meg az [IP-címek típusait](virtual-network-ip-addresses-overview-arm.md).        |
-    |Source port ranges     | Egyetlen portot kell megadnia, például 80, több port, például 1024-65535, vagy az önálló portok és/vagy porttartomány vesszővel tagolt listája, például 80, 1024-65535. Adjon meg egy csillagot, amely engedélyezi a forgalmat bármely porton. | A portok és tartományok határozzák meg, hogy a szabály mely portok forgalmát engedélyezi vagy tiltja. A megadható portok száma korlátozott. További részletekért lásd az [Azure-korlátokat](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
+    |Forrás     | Válassza a **bármely**, **alkalmazás biztonsági csoport**, **IP-cím**vagy **szolgáltatási címke** lehetőséget a bejövő biztonsági szabályokhoz. Ha kimenő biztonsági szabályt hoz létre, a beállítások ugyanazok, mint a **célhelyen**felsorolt beállítások.       | Ha az **alkalmazás biztonsági csoportja**lehetőséget választja, válasszon ki egy vagy több olyan meglévő alkalmazás biztonsági csoportot, amely ugyanabban a régióban található, mint a hálózati adapter. Megtudhatja, hogyan [hozhat létre egy alkalmazás biztonsági csoportot](#create-an-application-security-group). Ha a **forráshoz** és a **célhoz**is kiválasztja az **alkalmazás biztonsági csoportot** , akkor az alkalmazás biztonsági csoportjain belüli hálózati adaptereknek ugyanabban a virtuális hálózatban kell lenniük. Ha az **IP-címek**lehetőséget választja, adja meg a **forrás IP-címek/CIDR tartományokat**. Egyetlen értéket vagy vesszővel tagolt listát is megadhat több érték közül. Több érték például a 10.0.0.0/16, a 192.188.1.1. A megadható értékek száma korlátozott. További részletekért lásd az [Azure-korlátokat](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Ha a **szolgáltatás címkét**választja, akkor válasszon ki egy szolgáltatási címkét. A szolgáltatási címke az IP-címek kategóriájának előre meghatározott azonosítója. Ha többet szeretne megtudni az elérhető szolgáltatásokkal kapcsolatos címkékről és az egyes címkékről, tekintse meg a [szolgáltatás címkéi](security-overview.md#service-tags)című témakört. Ha a megadott IP-cím egy Azure-beli virtuális géphez van hozzárendelve, akkor győződjön meg arról, hogy a magánhálózati IP-címet adta meg, nem pedig a virtuális géphez hozzárendelt nyilvános IP-címet. A biztonsági szabályok feldolgozása után az Azure lefordítja a nyilvános IP-címet a bejövő biztonsági szabályok magánhálózati IP-címére, és az Azure előtt lefordít egy magánhálózati IP-címet a kimenő szabályok nyilvános IP-címére. Ha többet szeretne megtudni az Azure nyilvános és magánhálózati IP-címeiről, tekintse meg az [IP-címek típusait](virtual-network-ip-addresses-overview-arm.md).        |
+    |Forrásporttartományok     | Egyetlen portot kell megadnia, például 80, több port, például 1024-65535, vagy az önálló portok és/vagy porttartomány vesszővel tagolt listája, például 80, 1024-65535. Adjon meg egy csillagot, amely engedélyezi a forgalmat bármely porton. | A portok és tartományok határozzák meg, hogy a szabály mely portok forgalmát engedélyezi vagy tiltja. A megadható portok száma korlátozott. További részletekért lásd az [Azure-korlátokat](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .  |
     |Cél     | Válassza a **bármely**, **alkalmazás biztonsági csoport**, **IP-cím**vagy **Virtual Network** lehetőséget a kimenő biztonsági szabályokhoz. Ha egy bejövő biztonsági szabályt hoz létre, a beállítások ugyanazok, mint a **forrásként**megadott beállítások.        | Ha az **alkalmazás biztonsági csoport** lehetőséget választja, ki kell választania egy vagy több olyan meglévő alkalmazás biztonsági csoportját, amely ugyanabban a régióban található, mint a hálózati adapter. Megtudhatja, hogyan [hozhat létre egy alkalmazás biztonsági csoportot](#create-an-application-security-group). Ha az **alkalmazás biztonsági csoportja**lehetőséget választja, akkor válasszon egy meglévő alkalmazás biztonsági csoportot, amely ugyanabban a régióban található, mint a hálózati adapter. Ha az **IP-címek**lehetőséget választja, adja meg a **cél IP-címeket/CIDR-tartományokat**. A **forrás** -és **forrás IP-CÍMEKhez/CIDR-tartományokhoz**hasonlóan egyetlen vagy több címet vagy tartományt is megadhat, és a megadható határértékek is meghatározhatók. A **virtuális hálózat**, amely egy szolgáltatás címkéje, azt jelenti, hogy az összes IP-cím engedélyezett a virtuális hálózat címterület területén. Ha a megadott IP-cím egy Azure-beli virtuális géphez van hozzárendelve, akkor győződjön meg arról, hogy a magánhálózati IP-címet adta meg, nem pedig a virtuális géphez hozzárendelt nyilvános IP-címet. A biztonsági szabályok feldolgozása után az Azure lefordítja a nyilvános IP-címet a bejövő biztonsági szabályok magánhálózati IP-címére, és az Azure előtt lefordít egy magánhálózati IP-címet a kimenő szabályok nyilvános IP-címére. Ha többet szeretne megtudni az Azure nyilvános és magánhálózati IP-címeiről, tekintse meg az [IP-címek típusait](virtual-network-ip-addresses-overview-arm.md).        |
     |Célporttartományok     | Egyetlen értéket vagy vesszővel tagolt értékeket kell megadnia. | A **forrásport-tartományokhoz**hasonlóan egyetlen vagy több portot és tartományt is megadhat, és a megadható határértékek is meghatározhatók. |
-    |Protokoll     | Válassza **a bármely**, **TCP**, **UDP** vagy **ICMP**lehetőséget.        |         |
+    |Protocol (Protokoll)     | Válassza **a bármely**, **TCP**, **UDP** vagy **ICMP**lehetőséget.        |         |
     |Műveletek     | Válassza az **Engedélyezés** vagy a **Megtagadás**lehetőséget.        |         |
     |Prioritás     | Adjon meg egy 100-4096 közötti értéket, amely egyedi az összes biztonsági szabály számára a hálózati biztonsági csoporton belül. |A szabályok feldolgozása prioritási sorrendben történik. Minél kisebb a szám, annál magasabb a prioritás. A szabályok létrehozásakor, például a 100, az 200, a 300 a prioritási számok közötti hézagot érdemes hagyni. A hézagok kihagyása megkönnyíti a jövőbeli szabályok hozzáadását, hogy a meglévő szabályoknál nagyobb vagy alacsonyabb legyen.         |
     |Név     | A szabály egyedi neve a hálózati biztonsági csoporton belül.        |  A név legfeljebb 80 karakter hosszú lehet. Betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie, és csak betűket, számokat, aláhúzást, pontot vagy kötőjelet tartalmazhat.       |
@@ -175,7 +175,7 @@ A lista tartalmazza a létrehozott szabályokat, valamint a hálózati biztonsá
 ### <a name="delete-a-security-rule"></a>Biztonsági szabály törlése
 
 1. Hajtsa végre a [biztonsági szabály részleteinek megtekintése](#view-details-of-a-security-rule)című témakör lépéseit.
-2. Válassza a **Törlés**lehetőséget, majd válassza az **Igen**lehetőséget.
+2. Válassza a **Törlés**, majd az **Igen** lehetőséget.
 
 **Parancsok**
 
@@ -192,12 +192,12 @@ Az alkalmazás biztonsági csoportja nulla vagy több hálózati adaptert tartal
 2. A **Keresés a Marketplace-en** mezőbe írja be a következőt: *Alkalmazásbiztonsági csoport*. Amikor az **Alkalmazásbiztonsági csoport** kifejezés megjelenik a keresési eredmények között, válassza ki ismét az **Alkalmazásbiztonsági csoportot** a **Minden** területen, majd válassza a **Létrehozás** elemet.
 3. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Létrehozás** lehetőséget:
 
-    | Beállítás        | Érték                                                   |
+    | Beállítás        | Value (Díj)                                                   |
     | ---            | ---                                                     |
     | Név           | A névnek egyedinek kell lennie az erőforráscsoporton belül.        |
     | Előfizetés   | Válassza ki előfizetését.                               |
     | Erőforráscsoport | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. |
-    | Hely       | Válasszon helyet                                       |
+    | Földrajzi egység       | Hely kiválasztása                                       |
 
 **Parancsok**
 
@@ -256,31 +256,31 @@ A hálózati biztonsági csoportokkal, a biztonsági szabályokkal és az alkalm
 
 | Műveletek                                                        |   Név                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/networkSecurityGroups/read                  |   Hálózati biztonsági csoport beolvasása                                          |
-| Microsoft.Network/networkSecurityGroups/write                 |   Hálózati biztonsági csoport létrehozása vagy frissítése                             |
-| Microsoft.Network/networkSecurityGroups/delete                |   Hálózati biztonsági csoport törlése                                       |
-| Microsoft.Network/networkSecurityGroups/join/action           |   Hálózati biztonsági csoport hozzárendelése alhálózathoz vagy hálózati adapterhez 
+| Microsoft. Network/networkSecurityGroups/READ                  |   Hálózati biztonsági csoport beolvasása                                          |
+| Microsoft. Network/networkSecurityGroups/Write                 |   Hálózati biztonsági csoport létrehozása vagy frissítése                             |
+| Microsoft. Network/networkSecurityGroups/delete                |   Hálózati biztonsági csoport törlése                                       |
+| Microsoft. Network/networkSecurityGroups/csatlakozás/művelet           |   Hálózati biztonsági csoport hozzárendelése alhálózathoz vagy hálózati adapterhez 
 
 
 ### <a name="network-security-group-rule"></a>Hálózati biztonsági csoport szabálya
 
 | Műveletek                                                        |   Név                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/networkSecurityGroups/rules/read            |   Szabály lekérése                                                            |
-| Microsoft.Network/networkSecurityGroups/rules/write           |   Szabály létrehozása vagy frissítése                                               |
-| Microsoft.Network/networkSecurityGroups/rules/delete          |   Szabály törlése                                                         |
+| Microsoft. Network/networkSecurityGroups/szabályok/olvasás            |   Szabály lekérése                                                            |
+| Microsoft. Network/networkSecurityGroups/szabályok/írás           |   Szabály létrehozása vagy frissítése                                               |
+| Microsoft. Network/networkSecurityGroups/Rules/delete          |   Szabály törlése                                                         |
 
 ### <a name="application-security-group"></a>Alkalmazás biztonsági csoportja
 
 | Műveletek                                                                     | Név                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
-| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP-konfiguráció csatlakoztatása egy alkalmazás biztonsági csoportjához|
-| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Biztonsági szabály csatlakoztatása egy alkalmazás biztonsági csoportjához    |
-| Microsoft.Network/applicationSecurityGroups/read                           | Alkalmazás biztonsági csoportjának beolvasása                        |
-| Microsoft.Network/applicationSecurityGroups/write                          | Alkalmazás biztonsági csoportjának létrehozása vagy frissítése           |
-| Microsoft.Network/applicationSecurityGroups/delete                         | Alkalmazás biztonsági csoportjának törlése                     |
+| Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | IP-konfiguráció csatlakoztatása egy alkalmazás biztonsági csoportjához|
+| Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Biztonsági szabály csatlakoztatása egy alkalmazás biztonsági csoportjához    |
+| Microsoft. Network/applicationSecurityGroups/READ                           | Alkalmazás biztonsági csoportjának beolvasása                        |
+| Microsoft. Network/applicationSecurityGroups/Write                          | Alkalmazás biztonsági csoportjának létrehozása vagy frissítése           |
+| Microsoft. Network/applicationSecurityGroups/delete                         | Alkalmazás biztonsági csoportjának törlése                     |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hálózati vagy alkalmazás-biztonsági csoport létrehozása a [PowerShell](powershell-samples.md) vagy az [Azure CLI](cli-samples.md) parancsfájl használatával vagy Azure [Resource Manager-sablonok](template-samples.md) használatával
 - [Azure](policy-samples.md) -szabályzat létrehozása és alkalmazása virtuális hálózatokhoz

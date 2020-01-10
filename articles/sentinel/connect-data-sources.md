@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496382"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746875"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -43,14 +43,15 @@ Az Azure Sentinelhez először csatlakoznia kell az adatforrásokhoz. Az Azure S
 
 Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
-- **Microsoft-szolgáltatások**:<br> A Microsoft-szolgáltatások natív módon csatlakoznak, és az Azure Foundation kihasználása a Box-integrációhoz, néhány kattintással csatlakozhat a következő megoldásokhoz:
+- **Szolgáltatás-szolgáltatás integrációja**:<br> Egyes szolgáltatások natív módon csatlakoznak, mint például az AWS és a Microsoft Services, ezek a szolgáltatások kihasználják az Azure Foundation-t a Box-integrációhoz, a következő megoldások néhány kattintással csatlakoztathatók:
+    - [Amazon Web Services – CloudTrail](connect-aws.md)
     - [Office 365](connect-office-365.md)
     - [Azure AD-naplók és-bejelentkezések](connect-azure-active-directory.md)
     - [Azure-tevékenység](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure komplex veszélyforrások elleni védelem](connect-azure-atp.md)
+    - [Azure Advanced Threat Protection](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Windows biztonsági események](connect-windows-security-events.md) 
     - [Windows tűzfal](connect-windows-firewall.md)
@@ -62,7 +63,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
 - **Külső megoldások az ügynökön keresztül**: az Azure Sentinel minden más olyan adatforráshoz csatlakoztatható, amely valós idejű naplózást végez a syslog protokoll használatával egy ügynökön keresztül. <br>A legtöbb készülék a syslog protokollt használja az olyan események küldésére, amelyek magukban foglalják a naplót és a naplóval kapcsolatos információkat. A naplók formátuma változó, de a legtöbb készülék támogatja a Common Event Format (CEF) alapú formázást a naplók adataihoz. <br>Az Log Analytics ügynökön alapuló Azure Sentinel-ügynök átalakítja a CEF formázott naplókat olyan formátumba, amelyet a Log Analytics betölt. A készülék típusától függően az ügynököt közvetlenül a készülékre vagy egy dedikált Linux-kiszolgálóra telepíti. A Linux-ügynök a syslog démontól érkező eseményeket fogad UDP-n keresztül, de ha egy Linux rendszerű gépen nagy mennyiségű syslog-eseményt kell gyűjteni, a rendszer a syslog démonból az ügynököt és onnan Log Analytics.
     - Tűzfalak, proxyk és végpontok:
-        - [F5](connect-f5.md)
+        - [F5 billentyűt](connect-f5.md)
         - [Ellenőrzési pont](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
@@ -95,17 +96,17 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 
 | **Adattípus** | **Kapcsolódás** | **Adatösszekötő?** | **Megjegyzések** |
 |------|---------|-------------|------|
-| AWSCloudTrail | [Az AWS összekötése](connect-aws.md) | V | |
-| AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/platform/activity-logs-overview.md)| V | |
+| AWSCloudTrail | [Az AWS csatlakoztatása](connect-aws.md) | V | |
+| AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/platform/platform-logs-overview.md)| V | |
 | AuditLogs | [Az Azure AD összekötése](connect-azure-active-directory.md)  | V | |
 | SigninLogs | [Az Azure AD összekötése](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
 | InformationProtectionLogs_CL  | [Jelentések Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection összekötése](connect-azure-information-protection.md)  | V | Ez általában az adattípuson kívül a **InformationProtectionEvents** függvényt használja. További információ: [a jelentések módosítása és egyéni lekérdezések létrehozása](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
 | AzureNetworkAnalytics_CL  | [Traffic analitikai séma](../network-watcher/traffic-analytics.md) [Traffic Analytics](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [CEF összekötése](connect-common-event-format.md)  | V | |
-| OfficeActivity | [Az Office 365 összekötése](connect-office-365.md) | V | |
+| OfficeActivity | [Kapcsolódás az Office 365-höz](connect-office-365.md) | V | |
 | SecurityEvents | [Windows biztonsági események összekötése](connect-windows-security-events.md)  | V | A nem biztonságos protokollok-munkafüzetek esetében lásd: nem [biztonságos protokollok beállítása](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
-| Rendszernapló | [A syslog összekötése](connect-syslog.md) | V | |
+| Syslog | [A syslog összekötése](connect-syslog.md) | V | |
 | Microsoft webalkalmazási tűzfal (WAF) – (AzureDiagnostics) |[A Microsoft webalkalmazási tűzfal összekapcsolása](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [A Symantec összekötése](connect-symantec.md) | V | |
 | ThreatIntelligenceIndicator  | [A fenyegetés intelligenciának összekapcsolása](connect-threat-intelligence.md)  | V | |
@@ -127,7 +128,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Barracuda_CL | [Barracuda-kapcsolat](connect-barracuda.md) | V | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

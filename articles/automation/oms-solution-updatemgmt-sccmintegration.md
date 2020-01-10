@@ -1,32 +1,28 @@
 ---
-title: SCCM-gyűjtemények használatával Azure Automation-Update Management
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Center Configuration Managert ezzel a megoldással az SCCM által kezelt számítógépek frissítéseinek kezelésére.
+title: Az Azure Update Management használata Configuration Manager-ügyfelekkel
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Microsoft Endpoint Configuration Managert ezzel a megoldással, hogy szoftverfrissítéseket telepítsen a ConfigMgr-ügyfelekre.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850210"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769948"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager integrálása Update Management
+# <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>A Microsoft Endpoint Configuration Manager-ügyfelek frissítéseinek központi telepítése Update Management
 
-Azok a felhasználók, akik befektettek a System Center Configuration Managerbe a számítógépek, kiszolgálók és mobileszközök kezelése érdekében, a teljesítményét és fejlettségét a szoftverfrissítések kezelése során, a szoftverfrissítés-kezelési (SUM) ciklus részeként is kihasználják.
+A Microsoft Endpoint Configuration Managerban a számítógépek, kiszolgálók és mobileszközök felügyeletére használt ügyfelek a szoftverfrissítések felügyeleti (SUM) ciklusának részeként a szoftverfrissítések felügyeletének erősségét és érettségét is kihasználják.
 
 A felügyelt Windows-kiszolgálókat bejelentheti és frissítheti a szoftverfrissítések központi telepítésének létrehozásával és előzetes előkészítésével Configuration Managerban, és részletes állapotba állíthatja a befejezett frissítések telepítését a [Update Management megoldás](automation-update-management.md)használatával. Ha Configuration Managert használ a megfelelőségi jelentés frissítéséhez, de nem a frissítési központi telepítések Windows-kiszolgálókkal való kezeléséhez, akkor folytathatja a jelentéskészítést Configuration Manager, amíg a biztonsági frissítések kezelése a Update Management megoldással történik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Automation-fiókhoz hozzá kell adni az [Update Management-megoldást](automation-update-management.md) .
-* A System Center Configuration Manager környezete által jelenleg kezelt Windows-kiszolgálóknak a Log Analytics-munkaterületnek kell jelenteniük, amelyhez szintén engedélyezve van a frissítéskezelési megoldás.
-* Ez a funkció a System Center Configuration Manager aktuális ág 1606-es és újabb verziójában engedélyezett. A Configuration Manager központi adminisztrációs hely vagy önálló elsődleges hely integrálásához Azure Monitor-naplók és-gyűjtemények importálásával tekintse át a [kapcsolódási Configuration Manager a Azure monitor naplókat](../azure-monitor/platform/collect-sccm.md).  
+* A Configuration Manager-környezet által felügyelt Windows Server-kiszolgálóknak is jelentést kell készíteniük a Log Analytics munkaterületre, amelyhez a Update Management megoldás is engedélyezve van.
+* Ez a funkció a Configuration Manager aktuális ág 1606-es és újabb verziójában engedélyezett. A Configuration Manager központi adminisztrációs hely vagy önálló elsődleges hely integrálásához Azure Monitor-naplók és-gyűjtemények importálásával tekintse át a [kapcsolódási Configuration Manager a Azure monitor naplókat](../azure-monitor/platform/collect-sccm.md).  
 * A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük, ha nem kapnak biztonsági frissítéseket a Configuration Managertől.   
 
 Az Azure IaaS-ben futtatott ügyfelek Configuration Manager-környezettel való kezelésének módja elsődlegesen az Azure-adatközpontok és az infrastruktúra közötti kapcsolattól függ. Ez a kapcsolat befolyásolja a kialakítás módosításait, amelyeket a Configuration Manager-infrastruktúrán kell elvégeznie, valamint az ezeket a szükséges módosításokat támogató járulékos költségeket. Annak megismeréséhez, hogy milyen tervezési szempontokat kell értékelnie a továbblépés előtt, tekintse meg az [Azure-beli Configuration Managerrel kapcsolatos gyakori kérdéseket](/sccm/core/understand/configuration-manager-on-azure#networking).

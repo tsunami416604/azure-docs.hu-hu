@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607436"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749359"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -59,7 +59,7 @@ Nyers hiba – példa:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows rendszerű virtuális asztali munkamenetgazda-alapú virtuális gépek létrehozása
 
-A munkamenet-gazda virtuális gépek több módon is létrehozhatók, de a Távoli asztali szolgáltatások/Windows rendszerű virtuális asztali csapatok csak a Azure Resource Manager sablonnal kapcsolatos virtuális gépek kiépítési problémáit támogatják. A Azure Resource Manager sablon az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en és a [githubon](https://github.com/)érhető el.
+A munkamenet-gazda virtuális gépek többféleképpen is létrehozhatók, de a Windows rendszerű virtuális asztali csapat csak az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -ajánlattal kapcsolatos virtuális gépek üzembe helyezési problémáit támogatja. További információ: [a Windows virtuális asztal használatával kapcsolatos problémák – alkalmazáskészlet Azure Marketplace-ajánlatának kiépítése](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Problémák a Windows virtuális asztal használatával – Azure Marketplace-ajánlat kiépítése
 
@@ -87,6 +87,27 @@ A Windows rendszerű virtuális asztal – alkalmazáskészlet sablonjának kié
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Hiba: "a sablon központi telepítése nem érvényes" hibaüzenet jelenik meg
+
+![Képernyőkép a "sablon központi telepítéséről... Érvénytelen "hiba](media/troubleshooting-marketplace-validation-error-generic.png)
+
+A művelet megkezdése előtt ellenőriznie kell a tevékenység naplóját, hogy megtekintse a sikertelen telepítés ellenőrzésének részletes hibáját.
+
+A tevékenység naplójában lévő hiba megtekintéséhez:
+
+1. Lépjen ki az Azure Marketplace aktuális üzembe helyezési ajánlatával.
+2. A felső keresési sávban keresse meg és válassza ki a **műveletnapló**elemet.
+3. Keressen egy olyan nevű tevékenységet, amelynek az **érvényesítése** **sikertelen** állapotú, és válassza ki a tevékenységet.
+   Képernyőkép az egyes * * * * * * * * * * * * * * * * * * *](media/troubleshooting-marketplace-validation-error-activity-summary.png) állapot ellenőrzése ![
+
+4. Válassza a JSON lehetőséget, majd görgessen le a képernyő aljáig egészen addig, amíg meg nem jelenik a "statusMessage" mező.
+   ![képernyőkép a sikertelen tevékenységről, a JSON-szöveg statusMessage tulajdonsága körüli piros mezővel.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+Ha a műveleti sablon túllépi a kvóta korlátját, akkor a következő műveletek egyikét hajthatja végre a kijavításához:
+
+ - Futtassa az Azure Marketplace-t az első alkalommal használt paraméterekkel, de ezúttal kevesebb virtuális GÉPET és virtuálisgép-magot használ.
+ - Nyissa meg a böngésző **statusMessage** mezőjében látható hivatkozást, hogy küldjön egy kérést az Azure-előfizetéshez tartozó kvóta növelésére a megadott VIRTUÁLISGÉP-SKU-ra vonatkozóan.
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>A Azure Resource Manager sablon és a PowerShell kívánt állapot-konfigurációs (DSC) hibái
 
@@ -117,8 +138,16 @@ Nyers hiba – példa:
 
 **2. ok:** A tartománynév nem oldható fel.
 
-**2. javítás:** Tekintse meg a "tartománynév nem oldható fel" hibaüzenetet, ha a virtuális gépek nem csatlakoznak a tartományhoz a munkamenet-gazdagép virtuálisgép- [konfigurációjában](troubleshoot-vm-configuration.md).
+**2. javítás:** Lásd a [következő hibát: a tartomány neve nem oldható](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) fel a munkamenet-gazdagép virtuálisgép- [konfigurációjában](troubleshoot-vm-configuration.md).
 
+**3. ok:** A virtuális hálózat (VNET) DNS-konfigurációja **alapértelmezett**értékre van állítva.
+
+A probléma megoldásához tegye a következőket:
+
+1. Nyissa meg az Azure Portalt, és lépjen a **Virtual Networks (virtuális hálózatok** ) panelre.
+2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók**lehetőséget.
+3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
+4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Hiba: a telepítés nem sikerült. ..\Unauthorized
 
@@ -138,7 +167,7 @@ Nyers hiba – példa:
 
 **2. ok:** Átmeneti hiba történt a kapcsolatban.
 
-**Javítás:** A PowerShell használatával történő bejelentkezéssel ellenőrizze, hogy a Windows rendszerű virtuális asztali környezet kifogástalan állapotú-e. Fejezze be a virtuális gép regisztrációját manuálisan a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)-lel.
+**Javítás:** A PowerShell használatával történő bejelentkezéssel ellenőrizze, hogy a Windows rendszerű virtuális asztali környezet kifogástalan állapotú-e. Fejezze be a virtuális gép regisztrációját manuálisan a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md)-lel.
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: a megadott rendszergazdai Felhasználónév nem engedélyezett
 
@@ -326,7 +355,7 @@ Nyers hiba – példa:
 
 **OK:** A megadott Windows virtuális asztali bérlői rendszergazdának az Azure Multi-Factor Authentication (MFA) használatára van szüksége a bejelentkezéshez.
 
-**Javítás:** Hozzon létre egy egyszerű szolgáltatásnevet, és rendeljen hozzá egy szerepkört a Windows rendszerű virtuális asztali bérlőhöz az [oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)használatával című témakör lépéseit követve. Miután meggyőződött arról, hogy be tud jelentkezni a Windows rendszerű virtuális asztalra az egyszerű szolgáltatással, futtassa újra az Azure Marketplace-ajánlatot vagy a GitHub-Azure Resource Manager sablont attól függően, hogy melyik módszert használja. A metódus helyes paramétereinek megadásához kövesse az alábbi utasításokat.
+**Javítás:** Hozzon létre egy egyszerű szolgáltatásnevet, és rendeljen hozzá egy szerepkört a Windows rendszerű virtuális asztali bérlőhöz az [oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell](create-service-principal-role-powershell.md)használatával című témakör lépéseit követve. Miután meggyőződött arról, hogy be tud jelentkezni a Windows rendszerű virtuális asztalra az egyszerű szolgáltatással, futtassa újra az Azure Marketplace-ajánlatot vagy a GitHub-Azure Resource Manager sablont attól függően, hogy melyik módszert használja. A metódus helyes paramétereinek megadásához kövesse az alábbi utasításokat.
 
 Ha az Azure Marketplace-ajánlatot futtatja, adja meg a következő paraméterek értékeit a Windows rendszerű virtuális asztal megfelelő hitelesítéséhez:
 
@@ -342,13 +371,14 @@ Ha a GitHub Azure Resource Manager sablont futtatja, adja meg a következő para
 - IsServicePrincipal: **true**
 - AadTenantId: a létrehozott egyszerű szolgáltatás Azure AD-bérlői azonosítója
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
-- A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához lásd: [Távoli asztal ügyfélkapcsolatok](troubleshoot-client-connection.md).
+- A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatai](troubleshoot-service-connection.md)című témakört.
+- Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
-- A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerű virtuális asztali környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)című témakört.
-- A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerű virtuális asztali környezet](environment-setup.md)című témakört.
+- A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../azure-resource-manager/resource-group-audit.md).
+- Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](../azure-resource-manager/resource-manager-deployment-operations.md).

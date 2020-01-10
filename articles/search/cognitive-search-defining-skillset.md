@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114553"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754566"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Készségkészlet létrehozása AI-bővítési folyamatokban az Azure-ban Cognitive Search 
 
@@ -36,9 +36,9 @@ Az ajánlott kezdeti lépés azt határozza meg, hogy mely adatok legyenek kinye
 
 Tegyük fel, hogy több pénzügyi elemzői Megjegyzés feldolgozását érdekli. Minden fájlhoz ki kell bontania a vállalatok nevét és a megjegyzések általános hangulatát. Érdemes lehet olyan egyéni dúsítást is írni, amely a Bing Entity Search szolgáltatást használja a vállalattal kapcsolatos további információk megkereséséhez, például arról, hogy a vállalat milyen üzleti tevékenységet folytat. Lényegében a következőhöz hasonló adatokat szeretne kinyerni az egyes dokumentumok indexeléséhez:
 
-| record-text | vállalatok | hangulatelemzés | a cég leírása |
+| rekord – szöveg | Vállalatok | hangulatelemzés | a cég leírása |
 |--------|-----|-----|-----|
-|sample-record| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
+|minta – rekord| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
 
 Az alábbi ábrán egy feltételezett alkoholtartalom-növelési folyamat látható:
 
@@ -171,7 +171,7 @@ Nézzük meg az első szakértelmet, amely a beépített [entitás-felismerési 
 
 * A szakértelem egy ```"organizations"```nevű kimenettel rendelkezik. A kimenetek csak a feldolgozás során léteznek. Ha a kimenetet egy alsóbb rétegbeli képesség bemenetéhez szeretné felvenni, a kimenetet ```"/document/organizations"```ként kell megadnia.
 
-* Egy adott dokumentum esetében ```"/document/organizations"``` értéke a szövegből kinyert szervezetek tömbje. Például:
+* Egy adott dokumentum esetében ```"/document/organizations"``` értéke a szövegből kinyert szervezetek tömbje. Példa:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -235,7 +235,7 @@ A kimenet, ebben az esetben a vállalat leírása minden azonosított szervezeth
 
 ## <a name="add-structure"></a>Struktúra hozzáadása
 
-A készségkészlet strukturált adatokat hoz létre strukturálatlan adatokból. Vegye figyelembe a következő példát:
+A készségkészlet strukturált adatokat hoz létre strukturálatlan adatokból. Tekintse meg a következő példát:
 
 *"A negyedik negyedévében a Microsoft naplózott $1 100 000 000 a LinkedIn bevételeiből származik, az előző évben vásárolt közösségi hálózati vállalatnál. Az akvizíció lehetővé teszi, hogy a Microsoft a LinkedIn képességeit a CRM és az Office képességeivel kombinálja. Az eddigi előrehaladást a részvényesek is izgatottak. "*
 
@@ -249,7 +249,7 @@ Eddig ez a struktúra csak belső, csak a memóriában, és csak az Azure Cognit
 
 A [Knowledge Store](knowledge-store-concept-intro.md) az Azure Cognitive Search előzetes funkciója, amely a dúsított dokumentumok mentését teszi elérhetővé. A létrehozott, Azure Storage-fiókkal támogatott adattár az a tárház, amelyben a dúsított adatterületek szerepelnek. 
 
-A rendszer egy Knowledge Store-definíciót ad hozzá egy készségkészlet. A teljes folyamatról a [Ismerkedés a Knowledge Store](knowledge-store-howto.md)szolgáltatással című témakörben olvashat bővebben.
+A rendszer egy Knowledge Store-definíciót ad hozzá egy készségkészlet. A teljes folyamatról további információt a következő témakörben talál: a [Knowledge Store létrehozása a REST-ben](knowledge-store-create-rest.md).
 
 ```json
 "knowledgeStore": {
@@ -275,6 +275,6 @@ Dönthet úgy, hogy a dúsított dokumentumokat táblázatként vagy a blob Stor
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md). 

@@ -1,19 +1,15 @@
 ---
 title: Az Azure-méretezés hibaelhárítása
 description: A Service Fabric, Virtual Machines, Web Apps és Cloud Services szolgáltatásban használt Azure automatikus skálázással kapcsolatos problémák nyomon követése.
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893569"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751338"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Az Azure-méretezés hibaelhárítása
  
@@ -101,7 +97,7 @@ A legutóbbi méretezési műveletek megtekintéséhez a **futtatási előzmény
 
 ## <a name="autoscale-resource-logs"></a>Erőforrás-naplók autoskálázása
 
-Ugyanaz, mint bármely más Azure-erőforrás esetében, az autoskálázási szolgáltatás [erőforrás-naplókat](resource-logs-overview.md)biztosít. A naplóknak két kategóriája van.
+Ugyanaz, mint bármely más Azure-erőforrás esetében, az autoskálázási szolgáltatás [erőforrás-naplókat](platform-logs-overview.md)biztosít. A naplóknak két kategóriája van.
 
 - **Autoscale-értékelések** – az autoskálázási motor rögzíti az egyes feltételek kiértékeléséhez szükséges bejegyzéseket minden egyes ellenőrzés alkalmával.  A bejegyzés tartalmazza a metrikák megfigyelt értékeinek részleteit, a kiértékelt szabályokat, valamint azt, hogy a kiértékelés a méretezési műveletet eredményezte-e.
 

@@ -1,28 +1,21 @@
 ---
-title: Service Fabric Azure Files kötet-illesztőprogram (GA) | Microsoft Docs
+title: Service Fabric Azure Files kötet-illesztőprogram
 description: A Service Fabric a Azure Files használatával támogatja a kötetek biztonsági mentését a tárolóból.
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422782"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750041"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files kötet-illesztőprogram
-A Azure Files Volume beépülő modul, amely egy [Docker-kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) , amely [Azure Files](/azure/storage/files/storage-files-introduction) -alapú köteteket biztosít a Docker-tárolók számára, mostantól a **GA (általánosan elérhető)** .
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric Azure Files kötet-illesztőprogram
 
-A Dockerbeli kötetes beépülő modul Service Fabric-alkalmazásként van csomagolva, amely Service Fabric-fürtökön helyezhető üzembe. Segítségével Azure Files-alapú kötetekhez férhetnek hozzá a fürtön üzembe helyezett egyéb Service Fabric-tárolóalkalmazások.
+A Azure Files kötet-illesztőprogram egy [Docker-kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) , amely [Azure Files](/azure/storage/files/storage-files-introduction) -alapú köteteket biztosít a Docker-tárolók számára. Service Fabric alkalmazásként van csomagolva, amely Service Fabric-fürtön telepíthető, hogy a fürtön belül más Service Fabric-tároló alkalmazások számára is biztosítson köteteket.
 
 > [!NOTE]
-> A Azure Files kötet beépülő modul 6.5.661.9590 verziója egy GA (általánosan elérhető) kiadás. 
+> A Azure Files mennyiségi beépülő modul 6.5.661.9590 verziója elérhető az általános rendelkezésre állás érdekében.
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -61,7 +54,6 @@ A Azure Resource Manager sablonjának fabricSettings szakaszában (az Azure-kör
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Minta alkalmazás üzembe helyezése Service Fabric Azure Files kötet-illesztőprogram használatával
 

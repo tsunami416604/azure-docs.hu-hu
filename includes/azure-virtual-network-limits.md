@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981132"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751930"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager a következő korlátozások érvényesek csak a **Azure Resource Manager** /régiónként felügyelt hálózati erőforrásokra. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
@@ -58,21 +58,29 @@ ms.locfileid: "74981132"
 #### <a name="load-balancer"></a>Terheléselosztó korlátai
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 
-| Erőforrás | Alapértelmezett/maximális korlát |
-| --- | --- |
-| Terheléselosztók | 1,000 | 
-| Erőforrásokra vonatkozó szabályok, alapszintű | 250 |
-| Szabályok/erőforrás, standard | 1500 | 
-| Szabályok/IP-konfiguráció | 299 |
-| Szabályok/NIC | 300 |
-| Előtér-IP-konfigurációk, alapszintű | 200 |
-| Előtér-végponti IP-konfigurációk, standard | 600 |
-| Háttérbeli készlet, alapszintű | 100, egyetlen rendelkezésre állási csoport |
-| Háttérbeli készlet, standard | 1 000, egyetlen virtuális hálózat |
-| Háttérbeli erőforrások, terheléselosztó, standard<sup>1</sup> | 150 |
-| Magas rendelkezésre állású portok, standard | 1 belső előtér |
+**standard Load Balancer**
+
+| Erőforrás                                | Alapértelmezett/maximális korlát         |
+|-----------------------------------------|-------------------------------|
+| Terheléselosztók                          | 1,000                         |
+| Szabályok/erőforrás                      | 1500                         |
+| Hálózati adapterek szabályai (a hálózati adapter összes IP-címe között) | 300                           |
+| Előtér-IP-konfigurációk             | 600                           |
+| Háttérbeli készlet mérete                          | 1 000 példány, egyetlen virtuális hálózat |
+| Háttérbeli erőforrások terheléselosztó<sup>1<sup>   | 150                 |
+| Magas rendelkezésre állású portok                 | 1/belső előtér      |
 
 <sup>1</sup> A korlát akár 150 erőforrás, az önálló virtuálisgép-erőforrások, a rendelkezésre állási csoport erőforrásai és a virtuálisgép-méretezési készlet erőforrásainak bármilyen kombinációja.
+
+**Alapszintű Load Balancer**
+
+| Erőforrás                                | Alapértelmezett/maximális korlát        |
+|-----------------------------------------|------------------------------|
+| Terheléselosztók                          | 1,000                        |
+| Szabályok/erőforrás                      | 250                          |
+| Hálózati adapterek szabályai (a hálózati adapter összes IP-címe között) | 300                          |
+| Előtér-IP-konfigurációk             | 200                          |
+| Háttérbeli készlet mérete                           | 100 példány, egyetlen rendelkezésre állási csoport |
 
 #### <a name="virtual-networking-limits-classic"></a>A következő korlátozások csak a **klasszikus** üzemi modellen keresztül felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
 

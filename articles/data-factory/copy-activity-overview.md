@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927549"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754460"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -49,15 +49,13 @@ Az adatok forrásról fogadóba való másolásához a másolási tevékenysége
 
 ### <a name="supported-file-formats"></a>Támogatott fájlformátumok
 
-A másolási tevékenységgel fájlokat másolhat két fájl alapú adattár között. Ebben az esetben az Adatmásolás hatékonyan, szerializálás vagy deszerializálás nélkül történik.
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Például a következő másolási tevékenységeket végezheti el:
+A másolási tevékenységgel fájlok másolását végezheti el két fájl alapú adattár között, ebben az esetben az Adatmásolást a szerializálás vagy a deszerializálás nélkül is hatékonyan másolja a rendszer. Emellett egy adott formátumból is elemezheti vagy létrehozhatja a fájlokat, például az alábbiakat is elvégezheti:
 
-* Adatok másolása helyszíni SQL Server-adatbázisból, és az adatok beírása a Azure Data Lake Storage Gen2ba parketta formátumban.
+* Adatok másolása helyszíni SQL Server-adatbázisból, és a Azure Data Lake Storage Gen2ba való írás parketta formátumban.
 * Szövegfájlok (CSV) formátumának másolása helyszíni fájlrendszerből és az Azure Blob Storage-ba való írás Avro formátumban.
-* Másolja a tömörített fájlokat egy helyszíni fájlrendszerből, bontsa ki őket, és írja azokat Azure Data Lake Storage Gen2ba.
+* Másolhatja a tömörített fájlokat egy helyszíni fájlrendszerből, kibonthatja azokat menet közben, és kibontott fájlokat írhat a Azure Data Lake Storage Gen2ba.
 * Adatok másolása gzip tömörített szövegfájlba (CSV) az Azure Blob Storage-ból, és a Azure SQL Databasebe írás.
 * Számos további tevékenység, amelyek szerializálást/deszerializálást vagy tömörítést/kibontást igényelnek.
 
@@ -131,13 +129,14 @@ A másolási tevékenység következő sablonja a támogatott tulajdonságok tel
 | bemenetek | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Igen |
 | kimenetek | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Igen |
 | typeProperties | A másolási tevékenység konfigurálásához adja meg a tulajdonságokat. | Igen |
-| source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/><br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/><br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| fordító | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/><br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | Nem |
-| dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/><br/>További információ: [adatintegrációs egységek](copy-activity-performance.md#data-integration-units). | Nem |
-| parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/><br/>További információ: [párhuzamos másolás](copy-activity-performance.md#parallel-copy). | Nem |
-| enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/><br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance.md#staged-copy). | Nem |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/><br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | Nem |
+| source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
+| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
+| fordító | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | Nem |
+| dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/>További információ: [adatintegrációs egységek](copy-activity-performance.md#data-integration-units). | Nem |
+| parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/>További információ: [párhuzamos másolás](copy-activity-performance.md#parallel-copy). | Nem |
+| Preserve | Itt adhatja meg, hogy szeretné-e megőrizni a metaadatokat vagy az ACL-eket az adatok másolása <br/>További információ: a [metaadatok megőrzése](copy-activity-preserve-metadata.md). |Nem |
+| enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance.md#staged-copy). | Nem |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | Nem |
 
 ## <a name="monitoring"></a>Monitoring
 
@@ -238,13 +237,9 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Séma-és adattípus-hozzárendelés
+## <a name="incremental-copy"></a>Növekményes másolat
 
-Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-type-mapping.md) című témakört, amely arról nyújt tájékoztatást, hogy a másolási tevékenység hogyan képezi le a forrás adatait
-
-## <a name="fault-tolerance"></a>Hibatűrés
-
-Alapértelmezés szerint a másolási tevékenység leállítja az adatok másolását, és hibát ad vissza, ha a forrásoldali adatsorok nem kompatibilisek a fogadó adatsoraival. A másolás sikeres végrehajtásához beállíthatja a másolási tevékenységet úgy, hogy kihagyja és naplózza a nem kompatibilis sorokat, és csak a kompatibilis adatfájlokat másolja. Részletekért lásd a [másolási tevékenység hibatűrését](copy-activity-fault-tolerance.md) ismertető témakört.
+A Data Factory lehetővé teszi a különbözeti adatok növekményes másolását egy forrás adattárból egy fogadó adattárba. További részletek: [oktatóanyag: adatok növekményes másolása](tutorial-incremental-copy-overview.md).
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 
@@ -258,8 +253,36 @@ Ebben a példában a másolás során a Data Factory a fogadó Azure SQL Databas
 
 ![A monitoring és a Performance tuning tippek másolása](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Növekményes másolat
-A Data Factory lehetővé teszi a különbözeti adatok növekményes másolását egy forrás adattárból egy fogadó adattárba. További részletek: [oktatóanyag: adatok növekményes másolása](tutorial-incremental-copy-overview.md).
+## <a name="resume-from-last-failed-run"></a>Folytatás az utolsó sikertelen futtatásból
+
+A másolási tevékenység támogatja a legutóbbi sikertelen futtatást, ha nagy méretű fájlokat másol bináris formátummal a fájl alapú tárolók között, és úgy dönt, hogy a mappa vagy a fájl hierarchiáját a forrásról a fogadóra másolja, például az adatok áttelepítését az Amazon S3-ból a Azure Data Lake Storage Gen2ba. A következő file-alapú összekötőket érinti: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md)és [SFTP](connector-sftp.md).
+
+A másolási tevékenységet a következő két módon használhatja:
+
+- **Tevékenység szintje újrapróbálkozás:** Megadhatja az újrapróbálkozások száma a másolási tevékenységnél. Ha a folyamat végrehajtása során a másolási tevékenység meghiúsul, a következő automatikus újrapróbálkozás az utolsó próbaverzió meghibásodási pontjától kezdődik.
+- **Újrafuttatás sikertelen tevékenységből:** A folyamat befejezését követően az ADF felhasználói felület figyelési nézetében vagy programozott módon is indíthat újra a sikertelen tevékenységből. Ha a sikertelen tevékenység egy másolási tevékenység, a folyamat nem csak a tevékenységből fut újra, hanem az előző Futtatás meghibásodási pontjától is folytatódik.
+
+    ![Másolás folytatása](media/copy-activity-overview/resume-copy.png)
+
+Néhány fontos szempont:
+
+- A folytatás a fájl szintjén történik. Ha a másolási tevékenység egy fájl másolása közben meghiúsul, a következő futtatáskor a rendszer újramásolja ezt az adott fájlt.
+- A folytatáshoz a megfelelő működés érdekében ne módosítsa a másolási tevékenység beállításait az ismétlések között.
+- Ha az Amazon S3, az Azure Blob, a Azure Data Lake Storage Gen2 és a Google Cloud Storage szolgáltatásból másol adatokból, a másolási tevékenység tetszőleges számú másolt fájlból folytathatja a másolást. Míg a többi fájl-alapú összekötő forrásként, a másolási tevékenység csak korlátozott számú fájlból támogatja a folytatást, általában a több tízezer tartományon, és a fájlelérési utak hosszától függően változik. a rendszer az ismétlések során újra másolja az ezen a számon túli fájlokat.
+
+Más forgatókönyvek esetén, mint a bináris fájlmásolás, a másolási tevékenység újrafuttatása az elejétől kezdődik.
+
+## <a name="preserve-metadata-along-with-data"></a>Metaadatok megőrzése az adatokkal együtt
+
+Amikor adatokat másol a forrásról a fogadóba, olyan helyzetekben, mint a Lake Migration, úgy is dönthet, hogy a metaadatokat és az ACL-eket is megőrizte az adatok másolási tevékenységgel történő megőrzése mellett. A részletekért lásd a [metaadatok megőrzése](copy-activity-preserve-metadata.md) című témakört.
+
+## <a name="schema-and-data-type-mapping"></a>Séma-és adattípus-hozzárendelés
+
+Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-type-mapping.md) című témakört, amely arról nyújt tájékoztatást, hogy a másolási tevékenység hogyan képezi le a forrás adatait
+
+## <a name="fault-tolerance"></a>Hibatűrés
+
+Alapértelmezés szerint a másolási tevékenység leállítja az adatok másolását, és hibát ad vissza, ha a forrásoldali adatsorok nem kompatibilisek a fogadó adatsoraival. A másolás sikeres végrehajtásához beállíthatja a másolási tevékenységet úgy, hogy kihagyja és naplózza a nem kompatibilis sorokat, és csak a kompatibilis adatfájlokat másolja. Részletekért lásd a [másolási tevékenység hibatűrését](copy-activity-fault-tolerance.md) ismertető témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 Tekintse meg az alábbi rövid útmutatókat, oktatóanyagokat és mintákat:

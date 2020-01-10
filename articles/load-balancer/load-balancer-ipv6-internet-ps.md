@@ -5,7 +5,7 @@ description: Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkez�
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6-alapú, az azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
+keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6, mobil, IOT
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0294efb7510d4240cfdd6386c7f8bef1d4184538
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077057"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754477"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
 
@@ -35,7 +35,7 @@ Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A t
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="example-deployment-scenario"></a>A példában üzembe helyezési forgatókönyv
+## <a name="example-deployment-scenario"></a>Példa telepítési forgatókönyv
 
 A következő ábra szemlélteti a cikkben üzembe helyezett terheléselosztási megoldást.
 
@@ -55,13 +55,13 @@ Az alábbi lépések bemutatják, hogyan hozható létre internetkapcsolattal re
 
 Terheléselosztó üzembe helyezéséhez a következő objektumokat kell létrehoznia és konfigurálnia:
 
-* Előtér-IP-konfiguráció – a nyilvános IP-címeket tartalmazza a bejövő hálózati forgalomhoz.
-* Háttércímkészlet – hálózati adaptereket (NIC) tartalmaz, amelyek segítségével a virtuális gépek fogadhatják a terheléselosztóról érkező hálózati forgalmat.
+* Előtér-IP-konfiguráció – nyilvános IP-címeket tartalmaz a bejövő hálózati forgalomhoz.
+* Háttérbeli címkészlet – hálózati adaptereket (NIC) tartalmaz a virtuális gépek számára a terheléselosztó hálózati forgalmának fogadásához.
 * Terheléselosztási szabályok – olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá háttércímkészlet portjaihoz.
 * Bejövő NAT-szabályok – olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá egy adott virtuális gép portjához a háttércímkészletben.
 * Mintavételezők – állapotfigyelő mintavételezőket tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állását ellenőrzik a háttércímkészletben.
 
-A további információkat az [Azure Resource Manager support for Load Balancer](load-balancer-arm.md) (Azure Resource Manager-támogatás a terheléselosztóhoz) című rész tartalmazza.
+További információ: Azure Load Balancer- [összetevők](load-balancer-overview.md#load-balancer-components).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>A PowerShell beállítása a Resource Manager használatához
 

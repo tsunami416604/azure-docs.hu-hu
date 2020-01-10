@@ -3,15 +3,15 @@ title: 'Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code & Java'
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Gyors Kubernetes-fejlesztés a tárolókkal, a szolgáltatásokkal és a Java szolgáltatással az Azure-ban
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Java-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Java, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5f0f9991ae8718b60221c3f291b6169f677b59c5
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c1f346aceb6e710001911d7575024288c9c2ba6b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325630"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771070"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes a Visual Studio Code és a Java-Azure dev Spaces-szel
 
@@ -115,7 +115,7 @@ A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állí
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *Java program elindítása (AZDS)* . Például:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *Java program elindítása (AZDS)* . Példa:
 
 1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
 1. A (z) [`src/main/java/com/ms/sample/webfrontend/Application.java`19. sor frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) :
@@ -143,7 +143,7 @@ Távolítsa el a töréspontot úgy, hogy a kurzort az `src/main/java/com/ms/sam
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
-Amíg a szolgáltatás hibakeresési módban fut, frissítse `src/main/java/com/ms/sample/webfrontend/Application.java`a 19. sort. Például:
+Amíg a szolgáltatás hibakeresési módban fut, frissítse `src/main/java/com/ms/sample/webfrontend/Application.java`a 19. sort. Példa:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
@@ -162,7 +162,7 @@ Az új Container-lemezképek újraépítése és újratelepítése helyett az Az
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 
@@ -170,4 +170,4 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 > [Több tároló használata és fejlesztés csapatban](multi-service-java.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

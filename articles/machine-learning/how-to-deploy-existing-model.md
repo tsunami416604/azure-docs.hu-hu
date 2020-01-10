@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d783751137510febf9fb2e31d9d44728a049d88d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611816"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763929"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Meglévő modell használata Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Ha Azure Machine Learningon kívül betanított gépi tanulási modellel rendelk
 >
 > Az itt használt fogalmakkal és kifejezésekkel kapcsolatos további információkért lásd: [gépi tanulási modellek kezelése, üzembe helyezése és figyelése](concept-model-management-and-deployment.md).
 >
-> Az üzembe helyezési folyamattal kapcsolatos általános információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+> Az üzembe helyezési folyamattal kapcsolatos általános információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -138,7 +138,7 @@ dependencies:
     - keras
 ```
 
-További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ### <a name="entry-script"></a>Bejegyzési parancsfájl
 
@@ -223,7 +223,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Központi telepítés meghatározása
 
@@ -250,7 +250,7 @@ A CLI betölti a telepítési konfigurációt egy YAML-fájlból:
 }
 ```
 
-Egy másik számítási célra való üzembe helyezés, például az Azure Kubernetes szolgáltatás az Azure-felhőben, olyan egyszerűen, mint a telepítési konfiguráció módosítása. További információt a [modellek üzembe helyezésének módja és helye](service/how-to-deploy-and-where.md)című témakörben talál.
+Egy másik számítási célra való üzembe helyezés, például az Azure Kubernetes szolgáltatás az Azure-felhőben, olyan egyszerűen, mint a telepítési konfiguráció módosítása. További információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
 
 ## <a name="deploy-the-model"></a>A modell rendszerbe állítása
 
@@ -277,7 +277,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference.
 
-A telepítéssel kapcsolatos további információkért lásd a [modellek üzembe helyezésének módját és helyét](service/how-to-deploy-and-where.md)ismertető témakört.
+A telepítéssel kapcsolatos további információkért lásd a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md)ismertető témakört.
 
 ## <a name="request-response-consumption"></a>Kérelem – válasz felhasználás
 
@@ -304,5 +304,5 @@ Az üzembe helyezett szolgáltatás használatáról további információt az [
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
-* [Modellek üzembe helyezésének módja és helye](service/how-to-deploy-and-where.md)
+* [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
 * [Ügyfél létrehozása központilag telepített modellhez](how-to-consume-web-service.md)

@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701847"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772363"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
@@ -39,13 +39,13 @@ Ezeknek a feladatoknak a végrehajtásához három egyéni modult használunk:
 
 * **Útválasztó modul:** Az útválasztó modul üzeneteket fogad az alsóbb rétegbeli eszközökről, majd formázza és elküldi az üzeneteket az osztályozó számára. A modul ezután fogadja az üzeneteket az osztályozó és továbbítja az üzenetet a Avro-író modulnak. Végül a modul csak a RUL-előrejelzést küldi el a IoT Hub.
 
-  * Bemenetek
+  * Bemenetek:
     * **deviceInput**: üzenetek fogadása a Leaf-eszközökről
     * **rulInput:** üzenetek fogadása a "amlOutput"
 
-  * Kimenetek
+  * Kimenetek:
     * **besorolás:** üzenetek küldése "amlInput"
-    * **writeAvro:** üzenetek küldése "avroModuleInput"
+    * **writeAvro:** üzenetek küldése a "avroModuleInput" értékre
     * **toIotHub:** üzeneteket küld $upstream, amelyek továbbítják az üzeneteket a csatlakoztatott IoT hub
 
 Az alábbi ábrán a modulok, a bemenetek, a kimenetek és a IoT Edge hub útvonalak láthatók a teljes megoldáshoz:
@@ -639,7 +639,7 @@ A router és az osztályozó a helyén arra számítunk, hogy a rendszer csak az
 
 13. Válassza a **teszt útvonal**lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
-14. Kattintson a **Save** (Mentés) gombra.
+14. Kattintson a **Mentés** gombra.
 
 #### <a name="update-turbofandevicetostorage-route"></a>TurbofanDeviceToStorage-útvonal frissítése
 
@@ -828,7 +828,7 @@ Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban 
 További információt a következő lapokon talál:
 
 * [Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben](module-composition.md)
-* [IoT Hub üzenet-útválasztási lekérdezés szintaxisa](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
+* [IoT-központ üzenet-útválasztásának lekérdezési szintaxisa](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub üzenet-útválasztás: most az üzenet törzsének útválasztása](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Fájlok feltöltése az IoT Hubbal](../iot-hub/iot-hub-devguide-file-upload.md)
 * [Fájlok feltöltése az eszközről a felhőbe IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)

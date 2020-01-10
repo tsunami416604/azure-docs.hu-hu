@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: d3cb075d5ec0607453ca21f2574df7def02a4453
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553706"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747521"
 ---
 # <a name="alerts-on-activity-log"></a>Riasztások a tevékenység naplójában 
 
 ## <a name="overview"></a>Áttekintés
-A műveletnapló riasztásai olyan riasztások, amelyek akkor [jelentkeznek](activity-log-schema.md) be, amikor a riasztásban megadott feltételeknek megfelelő új műveletnapló-esemény következik be. Az Azure-beli [tevékenység naplójában](activity-logs-overview.md)rögzített események sorrendje és mennyisége alapján a riasztási szabály tüzet fog eredményezni. A műveletnapló riasztási szabályai Azure-erőforrások, így a Azure Resource Manager sablon segítségével hozhatók létre. Emellett a Azure Portal is létrehozhatók, frissíthetők és törölhetők. Ez a cikk a tevékenység naplójának riasztásai mögötti fogalmakat ismerteti. A műveletnapló riasztási szabályainak létrehozásával és használatával kapcsolatos további információkért lásd: [műveletnapló riasztások létrehozása és kezelése](alerts-activity-log.md).
+A műveletnapló riasztásai olyan riasztások, amelyek akkor [jelentkeznek](activity-log-schema.md) be, amikor a riasztásban megadott feltételeknek megfelelő új műveletnapló-esemény következik be. Az Azure-beli [tevékenység naplójában](platform-logs-overview.md)rögzített események sorrendje és mennyisége alapján a riasztási szabály tüzet fog eredményezni. A műveletnapló riasztási szabályai Azure-erőforrások, így a Azure Resource Manager sablon segítségével hozhatók létre. Emellett a Azure Portal is létrehozhatók, frissíthetők és törölhetők. Ez a cikk a tevékenység naplójának riasztásai mögötti fogalmakat ismerteti. A műveletnapló riasztási szabályainak létrehozásával és használatával kapcsolatos további információkért lásd: [műveletnapló riasztások létrehozása és kezelése](alerts-activity-log.md).
 
 > [!NOTE]
 > **Nem** hozhatók létre riasztások a tevékenység naplójának riasztási kategóriájában lévő eseményekhez.
@@ -31,7 +31,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
 Mindkét esetben a műveletnapló riasztása csak az előfizetésben lévő azon eseményekhez figyeli a riasztást, amelyekben a riasztás létrejött.
 
-Egy műveletnapló-eseményen a JSON-objektum minden legfelső szintű tulajdonsága alapján beállíthat egy tevékenység naplójának riasztását. További információ: [Az Azure-tevékenység naplójának áttekintése](./activity-logs-overview.md#categories-in-the-activity-log). További információ a szolgáltatás állapotával kapcsolatos eseményekről: [fogadási tevékenység naplójának riasztásai a szolgáltatási értesítéseken](./alerts-activity-log-service-notifications.md). 
+Egy műveletnapló-eseményen a JSON-objektum minden legfelső szintű tulajdonsága alapján beállíthat egy tevékenység naplójának riasztását. További információ: Kategóriák a [tevékenység naplójában](activity-log-view.md#categories-in-the-activity-log). További információ a szolgáltatás állapotával kapcsolatos eseményekről: [fogadási tevékenység naplójának riasztásai a szolgáltatási értesítéseken](alerts-activity-log-service-notifications.md). 
 
 A műveletnapló riasztásai néhány gyakori lehetőséggel rendelkeznek:
 

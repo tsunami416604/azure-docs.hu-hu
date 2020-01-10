@@ -1,5 +1,5 @@
 ---
-title: Kivetítések használata a Knowledge Store-ban (előzetes verzió)
+title: Kivetítések a Knowledge Store-ban (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból. A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790001"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754521"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések használata az Azure-beli Knowledge Store-ban Cognitive Search
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések az Azure-beli Tudásbázisban Cognitive Search
 
 > [!IMPORTANT] 
 > A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-Az Azure Cognitive Search lehetővé teszi a tartalom-bővítést a beépített kognitív képességek és egyéni képességek révén az indexelés részeként. A bővítések struktúrát adhatnak a dokumentumokhoz, és hatékonyabbá tehetik a keresést. Sok esetben a dúsított dokumentumok a kereséstől eltérő forgatókönyvek esetén hasznosak, például a Knowledge Mining esetében.
+Az Azure Cognitive Search lehetővé teszi a tartalom-bővítést a beépített kognitív képességek és egyéni képességek révén az indexelés részeként. A dúsítások olyan új adatokat hoznak létre, ahol még nem létezett adatok: információk kinyerése a képekből, az érzelmek észlelése, a legfontosabb kifejezések és a szövegből származó entitások, hogy csak néhányat említsünk. A dúsítás a nem differenciált szöveghez is felveszi a struktúrát. Ezen folyamatok mindegyike olyan dokumentumokat eredményez, amelyek a teljes szöveges keresést hatékonyabbá teszik. Számos esetben a bővített dokumentumok a kereséstől eltérő forgatókönyvek esetén hasznosak, például a Knowledge Mining esetében.
 
 A kivetítések, a [Knowledge Store](knowledge-store-concept-intro.md)egy összetevője, a kibővített dokumentumok nézetei, amelyek a fizikai tárterületre menthetők a tudás-bányászati célokra. A kivetítés lehetővé teszi, hogy az adatai egy olyan alakzatba kerüljenek, amely igazodik az igényeihez, és megőrzi a kapcsolatokat, hogy az eszközök, például a Power BI további erőfeszítés nélkül is beolvassák az adatait.
 
@@ -34,7 +34,7 @@ A Tudásbázis háromféle típusú kivetítést támogat:
 
 + **Fájlok**: Ha mentenie kell a dokumentumokból kinyert képeket, a fájl-kivetítések lehetővé teszik a normalizált képek mentését a blob Storage-ba.
 
-Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, tekintse át az [Ismerkedés a Knowledge Store szolgáltatással](knowledge-store-howto.md)című témakört.
+Ha meg szeretné tekinteni a kontextusban definiált kivetítéseket, lépjen [a Knowledge Store létrehozása a REST-ben](knowledge-store-create-rest.md)című lépésre.
 
 ## <a name="projection-groups"></a>Kivetítési csoportok
 
@@ -114,12 +114,6 @@ Minden táblázathoz három tulajdonság szükséges:
 
 Ahogy az ebben a példában is látható, a legfontosabb kifejezések és entitások különböző táblákba vannak modellezve, és az egyes sorokhoz tartozó szülőre (MainTable) mutató hivatkozást tartalmaznak.
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>Objektum-kivetítések
 
 Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek bármely csomópontból származnak. Sok esetben ugyanaz a **shapeer** -képesség, amely létrehoz egy tábla-kivetítést egy objektum-kivetítés létrehozásához. 
@@ -143,10 +137,8 @@ Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek b�
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ Az objektum-kivetítések a dúsítási fa olyan JSON-ábrázolásai, amelyek b�
 
 Az objektumok leképezésének létrehozásához néhány objektum-specifikus attribútumra van szükség:
 
-+ storageContainer: az a tároló, ahová a rendszer menti az objektumokat
++ storageContainer: a blob tároló, ahová a rendszer menti az objektumokat
 + Forrás: a kivetítés gyökeréhez tartozó dúsítási fa csomópontjának elérési útja
-+ kulcs: egy elérési út, amely a tárolni kívánt objektum egyedi kulcsát jelöli. A rendszer felhasználja a blob nevének létrehozására a tárolóban.
 
 ## <a name="file-projection"></a>Fájl kivetítése
 
@@ -219,4 +210,4 @@ Végül, ha a Knowledge Store-ból kell exportálnia az adatait, Azure Data Fact
 A következő lépésként hozza létre az első Knowledge Store-t mintaadatok és utasítások használatával.
 
 > [!div class="nextstepaction"]
-> [Tudásbázis létrehozása](knowledge-store-howto.md).
+> [Hozzon létre egy Knowledge Store-t a REST-ben](knowledge-store-create-rest.md).

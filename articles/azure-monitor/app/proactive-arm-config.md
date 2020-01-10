@@ -8,16 +8,16 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 74014a91684749eec7c4086a88785f2024694677
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929080"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749040"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
-A Application Insightsban található intelligens észlelési szabályok kezelhetők és konfigurálhatók [Azure Resource Manager sablonok](../../azure-resource-manager/resource-group-authoring-templates.md)használatával.
+A Application Insightsban található intelligens észlelési szabályok kezelhetők és konfigurálhatók [Azure Resource Manager sablonok](../../azure-resource-manager/templates/template-syntax.md)használatával.
 Ez a módszer akkor használható, ha új Application Insights erőforrásokat telepít Azure Resource Manager automatizálással, vagy a meglévő erőforrások beállításainak módosítására.
 
 ## <a name="smart-detection-rule-configuration"></a>Intelligens észlelési szabály konfigurációja
@@ -133,9 +133,12 @@ Az összes minta egy _"myApplication"_ nevű Application Insights erőforrásra,
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Hiba anomália v2 (nem klasszikus) riasztási szabály
+### <a name="failure-anomalies-alert-rule"></a>Hibák rendellenességének riasztási szabálya
 
-Ez a Azure Resource Manager-sablon azt mutatja be, hogy a hiba anomália v2 riasztási szabályt 2 értékkel. Az új Azure-riasztási platformnak ez a meghibásodási rendellenesség miatti riasztási szabálynak az új verziója, amely a klasszikus [riasztások nyugdíjazási folyamatának](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)részeként kivont klasszikus verziót váltja fel.
+Ez a Azure Resource Manager sablon azt mutatja be, hogyan állíthatók be a meghibásodási rendellenességek riasztási szabálya 2 súlyossággal. Az új Azure-riasztási platformnak ez a meghibásodási rendellenesség miatti riasztási szabálynak az új verziója, amely a klasszikus [riasztások nyugdíjazási folyamatának](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)részeként kivont klasszikus verziót váltja fel.
+
+> [!NOTE]
+> A hiba anomália egy globális szolgáltatás, ezért a szabály helye a globális helyen jön létre.
 
 ```json
 {
@@ -166,7 +169,7 @@ Ez a Azure Resource Manager-sablon azt mutatja be, hogy a hiba anomália v2 rias
 ```
 
 > [!NOTE]
-> Ez a Azure Resource Manager sablon egyedi a hiba anomália v2 riasztási szabályhoz, és eltér a jelen cikkben ismertetett klasszikus intelligens észlelési szabályoktól.   
+> Ez a Azure Resource Manager sablon egyedi a hiba-rendellenességek riasztási szabálya számára, és eltér a jelen cikkben ismertetett klasszikus intelligens észlelési szabályoktól.
 
 ## <a name="smart-detection-rule-names"></a>Intelligens észlelési szabályok nevei
 

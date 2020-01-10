@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241689"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744905"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie és a Apache Hadoop használata munkafolyamatok definiálásához és futtatásához Linux-alapú Azure-HDInsight
 
@@ -296,10 +296,10 @@ A feladatdefiníció leírja, hol található a munkafolyamat. xml fájl. Azt is
 
 2. Szerkessze az alábbi XML-t az alábbiak szerint:
 
-    |Helyőrző értéke| Lecserélt érték|
+    |Helyőrző értéke| Felülírt érték|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Az 1. lépésből kapott érték.|
-    |Felügyeleti| A HDInsight-fürt bejelentkezési neve, ha a rendszergazda nem.|
+    |rendszergazda| A HDInsight-fürt bejelentkezési neve, ha a rendszergazda nem.|
     |serverName| Az Azure SQL Database-kiszolgáló neve.|
     |sqlLogin| Azure SQL Database-kiszolgáló bejelentkezése.|
     |sqlPassword| Azure SQL Database-kiszolgáló bejelentkezési jelszava.|
@@ -394,10 +394,10 @@ A következő lépések a Oozie parancs használatával küldenek és kezelhetne
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    A `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` rész a Oozie paranccsal használható URL-cím.
+    A `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie` rész a Oozie paranccsal használható URL-cím.
 
 2. Szerkessze a kódot, és cserélje le a korábban kapott URL-címet. Az URL-cím környezeti változójának létrehozásához használja a következőt, így nem kell megadnia az összes parancshoz:
 
@@ -643,7 +643,7 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
 
     ![A OOzie webkonzoljának Job info lapja](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 A Oozie felhasználói felületén megtekintheti a Oozie naplókat. A Oozie felhasználói felülete a munkafolyamat által elindított MapReduce-feladatok JobTracker-naplóira mutató hivatkozásokat is tartalmaz. A hibaelhárítási minta a következő lehet:
 
@@ -657,7 +657,7 @@ A következő konkrét hibák merülhetnek fel, és a megoldásuk módja.
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: a fürt nem inicializálható
 
-**Tünetek**: a feladattípus **felfüggesztve**állapotúra változik. A feladathoz tartozó részletek a `RunHiveScript` állapotot jelenítik meg **START_MANUAL**. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
+**Tünetek**: a feladattípus **felfüggesztve**állapotúra változik. A feladathoz tartozó részletek a `RunHiveScript` állapotot **START_MANUALként**jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -667,7 +667,7 @@ A következő konkrét hibák merülhetnek fel, és a megoldásuk módja.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: a Oozie nem jogosult megszemélyesíteni &lt;felhasználói&gt;
 
-**Tünetek**: a feladattípus **felfüggesztve**állapotúra változik. A feladathoz tartozó részletek a `RunHiveScript` állapotot jelenítik meg **START_MANUAL**. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
+**Tünetek**: a feladattípus **felfüggesztve**állapotúra változik. A feladathoz tartozó részletek a `RunHiveScript` állapotot **START_MANUALként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 

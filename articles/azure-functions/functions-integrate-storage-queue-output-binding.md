@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226881"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769183"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -20,7 +20,7 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 * Kövesse [Az első függvény Azure Portalon való létrehozását](functions-create-first-azure-function.md) ismertető cikk utasításait, és ne végezze el **Az erőforrások eltávolítása** lépést. Ez a rövid útmutató az itt használt függvényalkalmazást és függvényt hozza létre.
 
@@ -34,7 +34,7 @@ Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üz
 
 1. Válassza ki a korábbi rövid útmutatóban létrehozott függvényt.
 
-1. Válassza az **Integrálás > Új kimenet > Azure Queue Storage** lehetőséget.
+1. Válassza az **integráció > új kimenet > Azure Queue Storage**lehetőséget.
 
 1. Kattintson a **Kiválasztás** gombra.
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
 
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-    Figyelje meg, hogy a **Kérelem törzse** tartalmazza az `name`Azure értéket. Ez az érték jelenik meg a létrehozott üzenetsori üzenetben a függvény meghívásakor.
+    Figyelje meg, hogy a **Kérelem törzse** tartalmazza az *Azure*`name` értéket. Ez az érték jelenik meg a létrehozott üzenetsori üzenetben a függvény meghívásakor.
     
     A **Futtatás** lehetőség kiválasztása helyett egy URL-cím böngészőbe történő beírásával is meghívhatja a függvényt, ahol a lekérdezési sztringben adhatja meg a `name` értékét. A böngésző használatával végrehajtott módszert az [előző rövid útmutatóban](functions-create-first-azure-function.md#test-the-function) ismertettük.
 
@@ -143,7 +143,7 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
 
 1. Bontsa ki az **Üzenetsorok** csomópontot, majd válassza ki az **outqueue** nevű üzenetsort. 
 
-   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett `name`Azure értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
+   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett *Azure*`name` értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
 
     ![A Storage Explorerben megjelenő üzenetsori üzenet](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

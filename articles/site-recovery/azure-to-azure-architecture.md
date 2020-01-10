@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 1/08/2020
 ms.author: raynew
-ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621110"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754514"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -63,7 +63,7 @@ A cél erőforrásait a következőképpen kezelheti:
 
 Az Azure-beli virtuális gépek replikálásának engedélyezésekor a Site Recovery alapértelmezés szerint létrehoz egy új replikációs házirendet a táblázatban összegzett alapértelmezett beállításokkal.
 
-**Házirend-beállítás** | **Részletek** | **Alapértelmezett**
+**Szabályzat-beállítás** | **Részletek** | **Alapértelmezett**
 --- | --- | ---
 **Helyreállítási pont megőrzése** | Meghatározza, hogy a Site Recovery mennyi ideig tart a helyreállítási pontok | 24 óra
 **Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | Négy óránként
@@ -145,17 +145,19 @@ Vegye figyelembe, hogy a hálózati kapcsolatra vonatkozó követelmények rész
 
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<régió – név >.
+HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<régió – név >
 HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directory (Azure AD)-nak megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új hálózati biztonsági csoport (NSG) szabályokat kell létrehoznia.  | AzureActiveDirectory
-HTTPS-kimenő engedélyezése: 443-es port | A célhelynek megfelelő [site Recovery végpontok](https://aka.ms/site-recovery-public-ips) elérésének engedélyezése. 
+HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban található Events hubhoz tartozó tartományok engedélyezése. | EventsHub.\<régió – név >
+HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
 
 #### <a name="target-region-rules"></a>A célként megadott régió szabályai
 
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése. | Storage.\<régió – név >.
+HTTPS-kimenő engedélyezése: 443-es port | A cél régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<régió – név >
 HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új NSG-szabályokat kell létrehoznia.  | AzureActiveDirectory
-HTTPS-kimenő engedélyezése: 443-es port | Hozzáférés engedélyezése a forrás helyének megfelelő [site Recovery-végpontokhoz](https://aka.ms/site-recovery-public-ips) . 
+HTTPS-kimenő engedélyezése: 443-es port | Az Events hub-nak megfelelő tartományok engedélyezése a forrás régióban. | EventsHub.\<régió – név >
+HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
 
 
 #### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal
@@ -186,6 +188,6 @@ Feladatátvétel kezdeményezése esetén a virtuális gépek a célként megado
 
 ![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

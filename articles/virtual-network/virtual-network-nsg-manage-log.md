@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196732"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751179"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Hálózati biztonsági csoport diagnosztikai naplózása
 
@@ -29,13 +29,13 @@ A hálózati biztonsági csoport (NSG) olyan szabályokat tartalmaz, amelyek eng
 
 A diagnosztikai naplók csak a Azure Resource Manager üzembe helyezési modellen keresztül üzembe helyezett NSG érhetők el. Nem engedélyezheti a diagnosztikai naplózást a klasszikus üzemi modellen keresztül telepített NSG. A két modell jobb megismeréséhez tekintse meg az [Azure üzembe helyezési modelljeinek ismertetése](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
-A diagnosztikai naplózás *minden* olyan NSG külön engedélyezve van, amelyhez diagnosztikai adatokat kíván gyűjteni. Ha inkább az operatív, vagy a tevékenységre, a naplókra kíváncsi, tekintse meg az Azure- [tevékenységek naplózása](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
+A diagnosztikai naplózás *minden* olyan NSG külön engedélyezve van, amelyhez diagnosztikai adatokat kíván gyűjteni. Ha inkább az operatív, vagy a tevékenységre, a naplókra kíváncsi, tekintse meg az Azure- [tevékenységek naplózása](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
 A diagnosztikai naplózás engedélyezéséhez használhatja az [Azure Portalt](#azure-portal), a [PowerShellt](#powershell)vagy az [Azure CLI](#azure-cli) -t is.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. Jelentkezzen be a [portálra](https://portal.azure.com).
 2. Válassza **a minden szolgáltatás**lehetőséget, majd írja be a *hálózati biztonsági csoportok*elemet. Ha a **hálózati biztonsági csoportok** megjelennek a keresési eredmények között, válassza ki.
@@ -46,9 +46,9 @@ A diagnosztikai naplózás engedélyezéséhez használhatja az [Azure Portalt](
 
 5. A **diagnosztika beállításai**alatt adja meg a következő információkat, vagy válassza ki az alábbi adatokat, majd kattintson a **Mentés**gombra:
 
-    | Beállítás                                                                                     | Érték                                                          |
+    | Beállítás                                                                                     | Value (Díj)                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name (Név)                                                                                        | A választott név.  Például: *myNsgDiagnostics*      |
+    | Név                                                                                        | A választott név.  Például: *myNsgDiagnostics*      |
     | **Archiválás egy Storage-fiókba**, **adatfolyam küldése az Event hub**-nak, és **Küldés log Analytics** | Tetszőleges számú célhelyet választhat ki. Ha többet szeretne megtudni az egyes szolgáltatásokról, tekintse meg a [naplók célhelyeit](#log-destinations).                                                                                                                                           |
     | LOG                                                                                         | Válassza ki vagy mindkét naplózási kategóriát. Ha többet szeretne megtudni az egyes kategóriákba bejelentkezett információkról, tekintse meg a [naplózási kategóriákat](#log-categories).                                                                                                                                             |
 6. Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
@@ -92,7 +92,7 @@ Ha a kettő helyett egyetlen kategóriához vagy a másikhoz kívánja naplózni
 
 Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure CLI-t a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a parancssori felületet a számítógépről futtatja, akkor a 2.0.38 vagy újabb verzióra van szükség. Futtassa `az --version` a számítógépen, és keresse meg a telepített verziót. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört. Ha helyileg futtatja a parancssori felületet, `az login` kell futtatnia, hogy bejelentkezzen az Azure-ba egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
@@ -127,7 +127,7 @@ Ha csak az egyik kategóriába vagy a másikba kívánja naplózni az adatnapló
 
 Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
 
-## <a name="log-destinations"></a>Napló célhelyek
+## <a name="log-destinations"></a>Naplók célhelyei
 
 A diagnosztikai adatait a következőket teheti:
 - [Egy Azure Storage-fiókba](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), naplózásra vagy manuális ellenőrzésre íródott. Megadhatja a megőrzési időt (napokban) az erőforrás-diagnosztikai beállítások használatával.
@@ -198,7 +198,7 @@ A szabály számlálójának naplója az erőforrásokra alkalmazott szabályokr
 
 ## <a name="view-and-analyze-logs"></a>Naplók megtekintése és elemzése
 
-A diagnosztikai naplózási információk megtekintésével kapcsolatos további információkért lásd: az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha diagnosztikai adatait küldi el a következőnek:
+A diagnosztikai naplózási információk megtekintésével kapcsolatos további információkért lásd: az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha diagnosztikai adatait küldi el a következőnek:
 - **Azure monitor naplók**: a [hálózati biztonsági csoport elemzési](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) megoldásával továbbfejlesztett elemzéseket készíthet. A megoldás olyan vizualizációkat biztosít a NSG-szabályokhoz, amelyek engedélyezik vagy megtagadják a virtuális gép hálózati adapterének forgalmát, MAC-címként.
 - **Azure Storage-fiók**: az PT1H. JSON fájlba íródik az adatfájlok. A következőket találja:
@@ -207,9 +207,9 @@ A diagnosztikai naplózási információk megtekintésével kapcsolatos további
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [tevékenységek naplózásáról](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), korábbi nevén naplózási vagy operatív naplók. A tevékenységek naplózása alapértelmezés szerint engedélyezve van az Azure-alapú üzemi modellel létrehozott NSG. Annak megállapításához, hogy mely műveletek befejeződtek a NSG a tevékenység naplójában, keresse meg a következő típusú erőforrásokat tartalmazó bejegyzéseket:
-  - Microsoft.ClassicNetwork/networkSecurityGroups
-  - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+- További információ a [tevékenységek naplózásáról](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), korábbi nevén naplózási vagy operatív naplók. A tevékenységek naplózása alapértelmezés szerint engedélyezve van az Azure-alapú üzemi modellel létrehozott NSG. Annak megállapításához, hogy mely műveletek befejeződtek a NSG a tevékenység naplójában, keresse meg a következő típusú erőforrásokat tartalmazó bejegyzéseket:
+  - Microsoft. ClassicNetwork/networkSecurityGroups
+  - Microsoft. ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
-  - Microsoft.Network/networkSecurityGroups/securityRules
+  - Microsoft. Network/networkSecurityGroups/securityRules
 - A diagnosztikai adatok naplózásának megismeréséhez az egyes folyamatok forrás IP-címének belefoglalásához lásd: [NSG flow naplózása](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

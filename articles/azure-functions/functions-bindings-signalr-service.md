@@ -5,22 +5,22 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925646"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769489"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
-Ez a cikk bemutatja, hogyan hitelesítheti és küldheti el a valós idejű üzeneteket az [Azure signaler szolgáltatáshoz](https://azure.microsoft.com/services/signalr-service/) csatlakozó ügyfeleknek a Azure functions-ben a Signal Service-kötések használatával. Azure Functions támogatja a jelző szolgáltatás bemeneti és kimeneti kötéseit.
+Ez a cikk bemutatja, hogyan hitelesítheti és küldheti el a valós idejű üzeneteket az [Azure signaler szolgáltatáshoz](https://azure.microsoft.com/services/signalr-service/) csatlakozó ügyfeleknek a Azure functions-ben a Signal Service-kötések használatával. Az Azure Functions támogatja a SignalR-szolgáltatás bemeneti és kimeneti kötéseit.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
-A Signaler szolgáltatás kötései a [Microsoft. Azure. webjobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) Nuget csomagban találhatók, 1. verzió. *. A csomag forráskódja az [Azure-functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-tárházban található.
+A Signaler szolgáltatás kötései a [Microsoft. Azure. webjobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet csomagban találhatók, 1. verzió. *. A csomag forráskódja az [Azure-functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 

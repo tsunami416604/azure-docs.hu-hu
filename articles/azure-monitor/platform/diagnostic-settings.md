@@ -1,38 +1,38 @@
 ---
-title: Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban | Microsoft Docs
+title: Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban
 description: Diagnosztikai beállítások létrehozásával továbbíthatja az Azure platform naplófájljait Azure Monitor naplókba, az Azure Storage-ba vagy az Azure Event Hubsba.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023740"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751085"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnosztikai beállítás létrehozása platform-naplók és-metrikák gyűjtéséhez az Azure-ban
-Az Azure [platform-naplói](resource-logs-overview.md) részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk részletesen ismerteti a diagnosztikai beállítások létrehozását és konfigurálását, hogy a különböző célhelyekre gyűjtse a platform naplófájljait.
+Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk részletesen ismerteti, hogyan lehet diagnosztikai beállításokat létrehozni és konfigurálni a platform naplófájljainak különböző célhelyekre küldéséhez.
 
-Minden Azure-erőforráshoz saját diagnosztikai beállítások szükségesek. A diagnosztikai beállítás a következőket határozza meg az erőforráshoz:
+> [!IMPORTANT]
+> Mielőtt diagnosztikai beállítást hozna létre a műveletnapló összegyűjtéséhez, először le kell tiltania az örökölt konfigurációkat. A részletekért lásd: az [Azure-tevékenység naplójának összegyűjtése örökölt beállításokkal](diagnostic-settings-legacy.md) .
+
+Minden Azure-erőforráshoz saját diagnosztikai beállítások szükségesek, amely az alábbiakat határozza meg:
 
 - A beállításban meghatározott célhelyekre továbbított naplók és metrikai adatok kategóriái. A rendelkezésre álló kategóriák a különböző erőforrástípusok esetében eltérőek lesznek.
 - Egy vagy több célhely a naplók elküldéséhez. Az aktuális célhelyek közé tartozik Log Analytics munkaterület, Event Hubs és az Azure Storage.
-- Adatmegőrzési szabályzat az Azure Storage-ban tárolt adatokhoz.
  
-Egyetlen diagnosztikai beállítás is meghatározhatja az egyes célok egyikét. Ha szeretne adatokat küldeni egy adott célhelyhez (például két különböző Log Analytics-munkaterületre), akkor hozzon létre több beállítást. Minden erőforrás legfeljebb 5 diagnosztikai beállítással rendelkezhet.
+Egyetlen diagnosztikai beállítás a célhelyek közül legfeljebb egyet tud meghatározni. Ha szeretne adatokat küldeni egy adott célhelyhez (például két különböző Log Analytics-munkaterületre), akkor hozzon létre több beállítást. Minden erőforrás legfeljebb 5 diagnosztikai beállítással rendelkezhet.
 
-> [!NOTE]
-> A műveletnapló a többi platform naplóival megegyező célhelyre is továbbítható, de nincs beállítva diagnosztikai beállításokkal. További részletek: a [platform-naplók áttekintése az Azure-ban](platform-logs-overview.md#destinations) .
 
 > [!NOTE]
 > A rendszer automatikusan gyűjti a [platform metrikáit](metrics-supported.md) [Azure monitor metrikákat](data-platform-metrics.md). A diagnosztikai beállításokkal bizonyos Azure-szolgáltatások metrikáit gyűjthetik be Azure Monitor naplókba más figyelési adatokkal való elemzéshez [a naplók használatával.](../log-query/log-query-overview.md)
 
-## <a name="destinations"></a>Destinations 
+## <a name="destinations"></a>Célhelyek 
 A platform naplói a következő táblázatban szereplő célhelyekre küldhetők el. Az egyes célhelyek konfigurációját ugyanazzal a folyamattal hajtja végre a jelen cikkben ismertetett diagnosztikai beállítások létrehozásához. Az alábbi táblázatban szereplő hivatkozásokra kattintva megtekintheti az adatok erre a célra történő küldésének részleteit.
 
 | Cél | Leírás |
@@ -41,52 +41,52 @@ A platform naplói a következő táblázatban szereplő célhelyekre küldhető
 | [Event hubok](resource-logs-stream-event-hubs.md) | A naplók küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra. |
 | [Azure Storage-fiók](resource-logs-collect-storage.md) | A naplók Azure Storage-fiókba való archiválása a naplózás, a statikus elemzés vagy a biztonsági mentés esetében hasznos. |
 
-
-> [!IMPORTANT]
-> A Azure Data Lake Storage Gen2 fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelye, annak ellenére, hogy érvényes lehetőségként szerepelnek a Azure Portalban.
-
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnosztikai beállítások létrehozása a Azure Portalban
 A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az erőforrás menüjéből is konfigurálhatja.
 
-1. A Azure Portal Azure Monitor menüjében kattintson a **diagnosztikai beállítások** elemre a **Beállítások** területen, majd kattintson az erőforrásra.
+1. A Azure Portal diagnosztikai beállításainak konfigurálása az erőforrástól függ.
 
-    ![Diagnosztikai beállítások](media/diagnostic-settings/menu-monitor.png)
+   - Egyetlen erőforrás esetén kattintson a **diagnosztikai beállítások** elemre az erőforrás menüjében a **figyelés** lehetőség alatt.
 
-    Vagy a Azure Portal erőforrás menüjében kattintson a **figyelés**lehetőségre a **diagnosztikai beállítások** elemre.
+        ![Diagnosztikai beállítások](media/diagnostic-settings/menu-resource.png)
 
-    ![Diagnosztikai beállítások](media/diagnostic-settings/menu-resource.png)
+    - Egy vagy több erőforrás esetében kattintson a Azure Monitor menü **Beállítások** területén található **diagnosztikai beállítások** elemre, majd kattintson az erőforrásra.
+    
+        ![Diagnosztikai beállítások](media/diagnostic-settings/menu-monitor.png)
 
-2. Ha a beállítások nem létezik az erőforráson kiválasztott, kéri létre beállítást. Kattintson a **Diagnosztika bekapcsolása** elemre.
+    - A tevékenység naplójában kattintson a **Azure monitor** menüben a **tevékenység napló** elemre, majd a **diagnosztikai beállítások**lehetőségre. Győződjön meg arról, hogy letiltja a tevékenység naplójának örökölt konfigurációját. További részletek: a [meglévő beállítások letiltása](diagnostic-settings-legacy.md#disable-existing-settings) .
 
-   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/diagnostic-settings/add-setting.png)
+        ![Diagnosztikai beállítások](media/diagnostic-settings/menu-activity-log.png)
+
+2. Ha nem találhatók beállítások a kiválasztott erőforráson, a rendszer kéri, hogy hozzon létre egy beállítást. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+
+   ![Diagnosztikai beállítás hozzáadása – nincsenek meglévő beállítások](media/diagnostic-settings/add-setting.png)
 
    Ha vannak meglévő beállítások az erőforráson, látni fogja a már konfigurált beállítások listáját. Kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre egy új beállítás hozzáadásához vagy egy meglévő **szerkesztési beállítás** megadásához. Az egyes beállítások nem lehetnek többek között a célhelyek közül.
 
-   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/diagnostic-settings/edit-setting.png)
+   ![Diagnosztikai beállítások hozzáadása – meglévő beállítások](media/diagnostic-settings/edit-setting.png)
 
 3. Adja meg a beállítás nevét, ha még nem rendelkezik ilyennel.
 4. Jelölje be az egyes célhelyek jelölőnégyzetét a naplók elküldéséhez. Kattintson a **Konfigurálás** elemre a beállítások megadásához az alábbi táblázatban leírtak szerint.
 
     | Beállítás | Leírás |
     |:---|:---|
-    | Log Analytics munkaterület | Munkaterület neve. |
+    | Log Analytics-munkaterület | Munkaterület neve. |
     | Tárfiók | A Storage-fiók neve. |
     | Eseményközpont-névtér | Az a névtér, amelyben az Event hub létre lett hozva (ha ez az első adatfolyam-naplók), vagy adatfolyamként továbbítja a (ha már van olyan erőforrás, amely ezen a névtéren keresztül továbbítja a naplózási kategóriát).
     | Event Hubs neve | Opcionálisan megadhat egy Event hub-nevet, amely a beállításban szereplő összes értéket elküldi. Ha nem ad meg nevet, a rendszer minden egyes naplózási kategóriához létrehoz egy Event hub-t. Ha több kategóriát küld, érdemes megadnia egy nevet a létrehozott Event hubok számának korlátozásához. A részletekért tekintse meg az [Azure Event Hubs kvótáit és korlátozásait](../../event-hubs/event-hubs-quotas.md) . |
-    | Eseményközpont szabályzatának neve | Meghatározza a folyamatos átviteli mechanizmushoz tartozó engedélyeket. |
+    | Event hub-házirend neve | Meghatározza a folyamatos átviteli mechanizmushoz tartozó engedélyeket. |
 
-    ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/diagnostic-settings/setting-details.png)
+    ![Diagnosztikai beállítások hozzáadása – meglévő beállítások](media/diagnostic-settings/setting-details.png)
 
-5. Jelölje be az egyes adatkategóriákhoz tartozó jelölőnégyzetet a megadott célhelyre való küldéshez. Ha a **Storage-fiókba való archiválás**lehetőséget választotta, akkor a [megőrzési időszakot](resource-logs-collect-storage.md#data-retention)is meg kell adnia.
+5. Jelölje be az egyes adatkategóriákhoz tartozó jelölőnégyzetet a megadott célhelyre való küldéshez. A kategóriák listája minden egyes Azure-szolgáltatás esetében eltérő lesz.
 
+   > [!NOTE]
+   > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
+   >
+   > *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 
-
-> [!NOTE]
-> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
->
-> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
-
-4. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
 Néhány pillanat elteltével megjelenik az új beállítás az erőforráshoz tartozó beállítások listájában, és a rendszer a naplókat a megadott célhelyre továbbítja az új esemény-adatforrások létrehozásakor. Vegye figyelembe, hogy egy esemény kibocsátása és a [log Analytics munkaterületen való megjelenése](data-ingestion-time.md)között akár tizenöt percet is igénybe vehet.
 
@@ -95,16 +95,22 @@ Néhány pillanat elteltével megjelenik az új beállítás az erőforráshoz t
 ## <a name="create-diagnostic-settings-using-powershell"></a>Diagnosztikai beállítások létrehozása a PowerShell használatával
 A [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmaggal hozzon létre diagnosztikai beállítást [Azure PowerShell](powershell-quickstart-samples.md)használatával. A parancsmag dokumentációját a paraméterek leírását ismertető cikkben találja.
 
+> [!IMPORTANT]
+> Ez a metódus nem használható az Azure-beli tevékenység naplójában. Ehelyett [hozzon létre diagnosztikai beállítást a Azure monitor Resource Manager-sablonnal](diagnostic-settings-template.md) egy Resource Manager-sablon létrehozásához és a PowerShell használatával történő telepítéséhez.
+
 A következő példa egy PowerShell-parancsmagot tartalmaz a diagnosztikai beállítások mind a három célhely használatával történő létrehozásához.
 
 
 ```powershell
-Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -RetentionEnabled $true -RetentionInDays 7 -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
 
 ## <a name="create-diagnostic-settings-using-azure-cli"></a>Diagnosztikai beállítások létrehozása az Azure CLI-vel
 Az az [monitor diagnosztikai-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) paranccsal hozzon létre egy diagnosztikai beállítást az [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)használatával. A paraméterek leírását a parancs dokumentációjában találja.
+
+> [!IMPORTANT]
+> Ez a metódus nem használható az Azure-beli tevékenység naplójában. Ehelyett a [Azure monitor diagnosztikai beállítás használatával Resource Manager-sablonnal](diagnostic-settings-template.md) hozzon létre egy Resource Manager-sablont, és telepítse azt a CLI-vel.
 
 A következő példa egy CLI-parancsot mutat be a diagnosztikai beállítások mind a három célhely használatával történő létrehozásához.
 
@@ -114,8 +120,8 @@ A következő példa egy CLI-parancsot mutat be a diagnosztikai beállítások m
 az monitor diagnostic-settings create  \
 --name KeyVault-Diagnostics \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
---logs    '[{"category": "AuditEvent","enabled": true,"retentionPolicy": {"days": 7,"enabled": true}}]' \
---metrics '[{"category": "AllMetrics","enabled": true,"retentionPolicy": {"days": 7,"enabled": true}}]' \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
 --storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
@@ -126,8 +132,8 @@ A diagnosztikai beállítások a [Azure Monitor REST API](https://docs.microsoft
 
 
 ### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Diagnosztikai beállítások konfigurálása Resource Manager-sablon használatával
-A diagnosztikai beállítások Resource Manager-sablonnal történő létrehozásához vagy frissítéséhez a Resource Manager-sablon használatával olvassa el a [diagnosztikai beállítások automatikus engedélyezése az erőforrás-létrehozásban](diagnostic-settings-template.md) című témakört.
+A diagnosztikai beállítások Resource Manager-sablonnal történő létrehozásához vagy frissítéséhez tekintse [meg a diagnosztikai beállítás létrehozása a Azure monitor erőforrás-kezelő sablonnal](diagnostic-settings-template.md) című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ az Azure platform naplóiról](resource-logs-overview.md)
+* [További információ az Azure platform naplóiról](platform-logs-overview.md)

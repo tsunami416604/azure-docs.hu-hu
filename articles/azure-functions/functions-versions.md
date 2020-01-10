@@ -3,12 +3,12 @@ title: Azure Functions futtatókörnyezet-verziók áttekintése
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogy miben különböznek egymástól, és hogyan választhatja ki az Önnek legmegfelelőbbet.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941710"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769115"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -78,7 +78,7 @@ A 2. x verzióban a következő módosítások történtek:
 
 ## <a name="migrating-from-2x-to-3x"></a>Migrálás 2. x és 3. x között
 
-Azure Functions 3. x verzió a 2. x verzióhoz képest nagyon visszamenőlegesen kompatibilis.  Számos alkalmazásnak képesnek kell lennie arra, hogy a kód módosítása nélkül is biztonságosan frissítsen 3. x-re.  A 3. x-re való áttérés javasolt, hogy az éles alkalmazások főverziójának módosítása előtt futtasson kiterjedt teszteket.
+Azure Functions 3. x verzió a 2. x verzióval kompatibilis.  Számos alkalmazásnak képesnek kell lennie arra, hogy a kód módosítása nélkül is biztonságosan frissítsen 3. x-re.  A 3. x-re való áttérés javasolt, hogy az éles alkalmazások főverziójának módosítása előtt futtasson kiterjedt teszteket.
 
 ### <a name="breaking-changes-between-2x-and-3x"></a>A 2. x és 3. x közötti változások megszakítása
 
@@ -115,11 +115,11 @@ Az Azure-ban közzétett alkalmazások által használt functions futtatókörny
 
 ### <a name="locally-developed-application-versions"></a>Helyileg fejlesztett alkalmazások verziói
 
-A következő frissítések funkció alkalmazásai helyileg módosíthatják a célként megadott verziókat.
+A következő frissítések alkalmazásával a megtervezett verziókat helyileg módosíthatja.
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio Runtime-verziók
 
-A Visual Studióban a projekt létrehozásakor kiválaszthatja a futtatókörnyezet verzióját. Azure Functions Tools for Visual Studio támogatja a főbb futtatókörnyezet-verziókat is. A megfelelő verzió a projekt beállításai alapján történő hibakeresés és közzététel során használatos. A verzió beállításait a `.csproj` fájlban a következő tulajdonságok határozzák meg:
+A Visual Studióban a projekt létrehozásakor kiválaszthatja a futtatókörnyezet verzióját. A Azure Functions Tools for Visual Studio támogatja a három fő futtatókörnyezet-verziót. A megfelelő verzió a projekt beállításai alapján történő hibakeresés és közzététel során használatos. A verzió beállításait a `.csproj` fájlban a következő tulajdonságok határozzák meg:
 
 ##### <a name="version-1x"></a>1\. x verzió
 
@@ -147,10 +147,10 @@ A Visual Studióban a projekt létrehozásakor kiválaszthatja a futtatókörnye
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>2\. x alkalmazások frissítése a Visual Studióban 3. x-re
 
-Megnyithatja a 2. x-es meglévő függvényt, és áthelyezheti azt 3. x-re a `.csproj` fájl szerkesztésével és a fenti értékek frissítésével.  A Visual Studio automatikusan kezeli a futásidejű verzióit a projekt metaadatai alapján.  Azonban előfordulhat, hogy még soha nem hozott létre 3. x alkalmazást, mielőtt a Visual Studio még nem rendelkezik a 3. x-es sablonokkal és futtatókörnyezettel a gépen.  Ez a következőhöz hasonló hibával járhat: "nincs elérhető functions Runtime, amely megfelel a projektben megadott verziónak."  A legújabb sablonok és futtatókörnyezet beolvasásához folytassa az új functions-projekt létrehozásával kapcsolatos élményt.  A verzió és a sablon kiválasztása képernyőn várjon, amíg a Visual Studio befejezi a legújabb sablonok beolvasását.  Ha a legújabb .NET Core 3-sablonok elérhetők, és megjelenik a 3. x verzióhoz konfigurált összes projekt futtatása és hibakeresése.
+Megnyithatja a 2. x-es meglévő függvényt, és áthelyezheti azt 3. x-re a `.csproj` fájl szerkesztésével és a fenti értékek frissítésével.  A Visual Studio automatikusan kezeli a futásidejű verzióit a projekt metaadatai alapján.  Ha azonban még soha nem hozott létre egy 3. x alkalmazást, mielőtt a Visual Studio még nem rendelkezik a 3. x-es sablonokkal és futtatókörnyezettel a gépen.  Ez a következőhöz hasonló hibával járhat: "nincs elérhető functions Runtime, amely megfelel a projektben megadott verziónak."  A legújabb sablonok és futtatókörnyezet beolvasásához folytassa az új functions-projekt létrehozásával kapcsolatos élményt.  A verzió és a sablon kiválasztása képernyőn várjon, amíg a Visual Studio befejezi a legújabb sablonok beolvasását.  Ha a legújabb .NET Core 3-sablonok elérhetők, és megjelenik a 3. x verzióhoz konfigurált összes projekt futtatása és hibakeresése.
 
 > [!IMPORTANT]
-> A 3. x verziójú függvények csak akkor fejleszthetők a Visual Studióban, ha az 16,4-es vagy újabb verziót használja.
+> A 3. x verziójú függvények csak akkor fejleszthetők a Visual Studióban, ha a Visual Studio 16,4-es vagy újabb verzióját használja.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS kód és Azure Functions Core Tools
 
@@ -206,4 +206,4 @@ További információkért lásd a következőket:
 
 * [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
 * [A Azure Functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md)
-* [Kiadási megjegyzések](https://github.com/Azure/azure-functions-host/releases)
+* [Kibocsátási megjegyzések](https://github.com/Azure/azure-functions-host/releases)

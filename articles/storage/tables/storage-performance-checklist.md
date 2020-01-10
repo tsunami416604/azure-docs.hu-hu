@@ -8,27 +8,28 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389994"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749555"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
 A Microsoft számos bevált gyakorlatot fejlesztett ki a nagy teljesítményű alkalmazások táblázatos tárolással való fejlesztéséhez. Ez az ellenőrzőlista azokat a kulcsfontosságú eljárásokat azonosítja, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat az alkalmazás tervezésekor és a folyamat során.
 
-Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókokhoz](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: [skálázhatósági és teljesítményi célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) , valamint [a táblázatos tárolás méretezhetőségi és teljesítménybeli céljai](scalability-targets.md).
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
 Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olyan ellenőrzőlista keretében, amelyet a Table Storage-alkalmazás fejlesztése során követhet.
 
-| Kész | Kategória | Tervezési szempont |
+| Kész | Kategória | Kialakítási szempont |
 | --- | --- | --- |
 | &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
+| &nbsp; |Méretezhetőségi célok |[Közeledik az entitások skálázhatósági céljaihoz másodpercenként?](#targets-for-data-operations) |
 | &nbsp; |Hálózatkezelés |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
 | &nbsp; |Hálózatkezelés |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
 | &nbsp; |Hálózatkezelés |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
@@ -41,7 +42,6 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olya
 | &nbsp; |Eszközök |[A Microsoft által biztosított ügyféloldali kódtárak és eszközök legújabb verzióit használja?](#client-libraries-and-tools) |
 | &nbsp; |Újrapróbálkozások |[Újrapróbálkozási szabályzatot használ egy exponenciális leállítási a hibák és időtúllépések szabályozásához?](#timeout-and-server-busy-errors) |
 | &nbsp; |Újrapróbálkozások |[Az alkalmazás elkerüli a nem újrapróbálkozást okozó hibák újrapróbálkozását?](#non-retryable-errors) |
-| &nbsp; |Méretezhetőségi célok |[Közeledik az entitások skálázhatósági céljaihoz másodpercenként?](#table-specific-scalability-targets) |
 | &nbsp; |Konfiguráció |[JSON-t használ a táblázatos kérelmekhez?](#use-json) |
 | &nbsp; |Konfiguráció |[Kikapcsolta a Nyéki algoritmust a kis kérelmek teljesítményének javítása érdekében?](#disable-nagle) |
 | &nbsp; |Táblák és partíciók |[Megfelelően particionálta az adatait?](#schema) |
@@ -61,7 +61,7 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olya
 
 Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-A Table service skálázhatósági céljaival kapcsolatos további információkért lásd: az [Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókok esetében](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2ftables%2ftoc.json#azure-table-storage-scale-targets).
+A Table service skálázhatósági céljaival kapcsolatos további információkért lásd: a [táblázatos tárolás skálázhatósági és teljesítményi céljai](scalability-targets.md).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
@@ -77,9 +77,17 @@ Ha az alkalmazása közeledik egyetlen Storage-fiók skálázhatósági céljaih
     Az adatok tömörítése csökkentheti a sávszélességet, és javíthatja a hálózati teljesítményt, továbbá negatív hatással lehet a teljesítményre. Értékelje ki a további feldolgozási követelmények teljesítményére gyakorolt hatást az adattömörítés és a kibontás az ügyféloldali oldalon. Ne feledje, hogy a tömörített adattárolók megnehezítik a hibaelhárítást, mivel a szabványos eszközök használatával nagyobb kihívást jelenthet az adatmegtekintés.
 - Ha az alkalmazás közeledik a méretezhetőségi célokhoz, akkor győződjön meg arról, hogy exponenciális leállítási használ az újrapróbálkozásokhoz. A legjobb megoldás, ha a jelen cikkben ismertetett javaslatok végrehajtásával el szeretné kerülni a méretezhetőségi célok elérését. Az újrapróbálkozások exponenciális leállítási használata azonban megakadályozza, hogy az alkalmazás gyorsan újrapróbálkozjon, ami még rosszabb szabályozást eredményezhet. További információ: az [időtúllépés és a kiszolgáló foglalt hibák](#timeout-and-server-busy-errors)című szakasza.
 
-## <a name="table-specific-scalability-targets"></a>Táblázatra jellemző skálázhatósági célok
+### <a name="targets-for-data-operations"></a>Az adatműveletek céljai
 
-A teljes Storage-fiók sávszélesség-korlátozásai mellett a táblázatok a következő speciális skálázhatósági korláttal rendelkeznek. A rendszer terheléselosztást végez a forgalom növekedésével, de ha a forgalom hirtelen feltört, előfordulhat, hogy nem tudja azonnal lekérni ezt a kötetet. Ha a minta feltört, érdemes megtekinteni a szabályozást és/vagy időtúllépést a burst alatt, mivel a Storage szolgáltatás automatikusan kiosztja a táblázatot. A lassú indítás általában jobb eredményeket eredményez, mivel a rendszeridőt biztosít a megfelelő terheléselosztáshoz.
+Az Azure Storage-beli terhelési egyenlegek a Storage-fiók forgalmának növekedésével növekednek, de ha a forgalom hirtelen kitörést mutat, előfordulhat, hogy nem tudja azonnal lekérni ezt a kötetet. A rendszer a burst és/vagy időtúllépést tekinti meg a folyamat során, mivel az Azure Storage automatikusan betölti a tábla egyenlegét. A lassú indítás általában jobb eredményeket biztosít, mivel a rendszeren elegendő idő van a terheléselosztás megfelelő elosztására.
+
+#### <a name="entities-per-second-storage-account"></a>Entitások másodpercenként (Storage-fiók)
+
+A táblák elérésének skálázhatósági korlátja legfeljebb 20 000 entitás (egyenként 1 KB), egy fiók esetében másodpercenként. Általánosságban elmondható, hogy minden beszúrt, frissített, törölt vagy beolvasott entitás beleszámít a cél felé. Így az 100 entitásokat tartalmazó batch-Beszúrás 100 entitásnak számít. Az 1000 entitások vizsgálatára és az 5 értéket visszaadó lekérdezések 1000 entitásnak számítanak.
+
+#### <a name="entities-per-second-partition"></a>Entitások másodpercenként (partíció)
+
+Egyetlen partíción belül a táblák elérésének méretezhetőségi célja 2 000 entitás (1 KB másodpercenként), az előző szakaszban leírtak szerint.
 
 ## <a name="networking"></a>Hálózatkezelés
 
@@ -262,7 +270,7 @@ Ez a szakasz a Table serviceban tárolt entitások módosítására vonatkozó b
 
 A Batch-tranzakciók az Azure Storage-beli Entity Group-tranzakciók néven ismertek. Az Entity (entitás) csoport tranzakcióján belüli összes műveletnek egyetlen partíción kell lennie egyetlen táblában. Ahol lehetséges, az Entity Transactions használatával szúrhat be, frissítéseket és törölheti a kötegeket. Az entitás-csoportok tranzakcióinak használata csökkenti az ügyfélalkalmazás és a kiszolgáló közötti átutazások számát, csökkentve a számlázható tranzakciók számát (az entitás-csoport tranzakciója egyetlen tranzakciónak számít a számlázási célokra, és akár 100-ig is tartalmazhat tárolási műveletek), és lehetővé teszi az atomi frissítések használatát (az összes művelet sikeres, vagy az összes művelet meghiúsul az Entity Group tranzakción belül). A nagy késéssel rendelkező környezetek, például a mobileszközök nagy mértékben kihasználják az Entity Group tranzakcióit.  
 
-#### <a name="upsert"></a>Upsert
+#### <a name="upsert"></a>Beszúrás és frissítés
 
 Ha csak lehet, használja a Table **Upsert** -műveleteket. Kétféle **Upsert**létezik, amelyek közül mindkettő hatékonyabb lehet, mint egy hagyományos **beszúrási** és **frissítési** művelet:  
 
@@ -281,5 +289,6 @@ Ha batch-beszúrásokat hajt végre, majd az entitások tartományait is beolvas
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókok esetében](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [A Table Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

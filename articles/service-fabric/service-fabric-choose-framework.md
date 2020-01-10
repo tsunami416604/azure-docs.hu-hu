@@ -1,72 +1,65 @@
 ---
-title: A Service Fabric programozási modell áttekintése |} A Microsoft Docs
-description: 'A Service Fabric biztosít két keretrendszerek, a szolgáltatások: az actors keretrendszerben, és a szolgáltatások keretében. Különböző kompromisszummal az egyszerűség és a vezérlő kínálnak.'
-services: service-fabric
-documentationcenter: .net
+title: A Service Fabric programozási modelljének áttekintése
+description: 'Service Fabric két keretrendszert kínál a szolgáltatások létrehozásához: a Actor Framework és a Services Framework. Az egyszerűség és a szabályozás terén különböző kompromisszumokat biztosítanak.'
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60341964"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749529"
 ---
-# <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modell áttekintése
-A Service Fabric írni, és a szolgáltatások kezeléséhez több lehetőséget is kínál. A Service Fabric API-k használatával teljes mértékben kihasználhatja a platform szolgáltatásai és alkalmazás-keretrendszerek szolgáltatások választhat. Szolgáltatások írt bármilyen nyelven vagy a Service Fabric-fürt által futtatott tárolóban futó bármely lefordított végrehajtható programot is lehet.
+# <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modelljének áttekintése
+
+A Service Fabric többféle módszert kínál a szolgáltatások írására és kezelésére. A szolgáltatások használhatják a Service Fabric API-kat, hogy teljes mértékben kihasználhassa a platform funkcióit és alkalmazási keretrendszereit. A szolgáltatások a Service Fabric-fürtön üzemeltetett tárolókban futtatott bármely nyelven vagy kódban írt lefordított végrehajtható program is lehet.
 
 ## <a name="guest-executables"></a>Vendég végrehajtható fájlok
-A [futtatható vendégalkalmazás](service-fabric-guest-executables-introduction.md) egy meglévő, tetszőleges végrehajtható fájl (bármilyen nyelven fejlesztett), amely az alkalmazás szolgáltatásként is futtathatók. Futtatható vendégalkalmazás hívja meg a Service Fabric SDK API-k közvetlenül. Azonban azok továbbra is élvezhetik a platformot kínál, például service észlelhetőség, egyéni állapotfigyelő szolgáltatásokat, és töltse be a reporting Service Fabric által elérhetővé tett REST API-jainak meghívásával. Alkalmazás teljes életciklus-támogatása is rendelkeznek.
 
-Ismerkedés a futtatható vendégalkalmazás üzembe az első [futtatható vendégalkalmazás](service-fabric-deploy-existing-app.md).
+A [vendég végrehajtható fájl](service-fabric-guest-executables-introduction.md) egy meglévő, tetszőlegesen végrehajtható (bármilyen nyelven írt) végrehajtható fájl, amely szolgáltatásként futtatható az alkalmazásban. A vendég végrehajtható fájlok közvetlenül nem hívhatják a Service Fabric SDK API-kat. Azonban továbbra is kihasználják a platform által kínált szolgáltatásokat, például a szolgáltatások felderíthetővé tételét, az egyéni állapotot és a betöltési jelentéskészítést azáltal, hogy az Service Fabric által elérhető REST API-kat Emellett teljes körű alkalmazás-életciklus-támogatással rendelkeznek.
 
-## <a name="containers"></a>Containers
-Alapértelmezés szerint a Service Fabric üzembe helyezi, és aktiválja a szolgáltatást folyamatokat is. A Service Fabric is üzembe helyezheti a szolgáltatások [tárolók](service-fabric-containers-overview.md). Service Fabric Linux-tárolók és a Windows-tárolók üzembe helyezése, támogatja a Windows Server 2016 rendszeren. Tárolórendszerképek is bármely tárolóadattárral lekért és telepíteni kell a a gépet. Futtatható vendégalkalmazás, Service Fabric állapotmentes vagy állapotalapú Reliable services és Reliable Actors-tárolókban, meglévő alkalmazásokat helyezhet üzembe, és kombinálhatja folyamatokon belüli és tárolókon belüli ugyanazt az alkalmazást szolgáltatásokat.
+Ismerkedés a vendég-végrehajtható fájlokkal az első [vendég végrehajtható alkalmazás](service-fabric-deploy-existing-app.md)üzembe helyezésével.
 
-[További információ a Windows vagy Linux-alapú szolgáltatások bontását](service-fabric-deploy-container.md)
+## <a name="containers"></a>Tárolók
+
+Alapértelmezés szerint a Service Fabric folyamatokként telepíti és aktiválja a szolgáltatásokat. A Service Fabric [tárolókban](service-fabric-containers-overview.md)is telepíthetnek szolgáltatásokat. Service Fabric támogatja a Linux-tárolók és Windows-tárolók telepítését a Windows Server 2016-es és újabb verzióiban. A tároló lemezképeit bármely tároló adattárból lehívhatja, és üzembe helyezheti a gépre. A meglévő alkalmazásokat vendégként is üzembe helyezheti, Service Fabric állapot nélküli vagy állapot-nyilvántartó megbízható szolgáltatásokat vagy Reliable Actors tárolókban, és az ugyanazon alkalmazásban lévő tárolókban található folyamatokban és szolgáltatásokban is összekeverheti a szolgáltatásokat.
+
+[További információ a szolgáltatások containerizing Windows vagy Linux rendszeren](service-fabric-deploy-container.md)
 
 ## <a name="reliable-services"></a>Reliable Services
-A Reliable Services egy olyan egyszerűsített keretrendszer, szolgáltatások, amelyek integrálása a Service Fabric platformot és a platform funkciók teljes készletét írásához. A Reliable Services API-k, amelyek engedélyezik a Service Fabric-futtatókörnyezet az életciklus-szolgáltatását kezelheti és, amelyek engedélyezik a modul kommunikál a szolgáltatások minimális tárházát biztosítja. Az alkalmazás-keretrendszer minimális, így tervezési és megvalósítási lehetőségek teljes körű irányítását, és üzemeltetéséhez, minden más alkalmazás-keretrendszert, például az ASP.NET Core segítségével.
 
-A Reliable Services lehet állapot nélküli, hasonlóan ahhoz, hogy a legtöbb szolgáltatás platformok, például a webkiszolgálók, amelyben a szolgáltatás mindegyik példánya nem jön létre, és állapot-külső megoldások, például az Azure DB vagy az Azure Table Storage van rögzítve.
+A Reliable Services a Service Fabric platformmal integrált és a platform összes funkciójának előnyeit kihasználó, kis súlyú keretrendszer. Reliable Services minimális API-készletet biztosítanak, amelyek lehetővé teszik a Service Fabric futtatókörnyezet számára a szolgáltatások életciklusának kezelését, és amelyek lehetővé teszik, hogy a szolgáltatások a futtatókörnyezettel kommunikálhatnak. Az alkalmazás-keretrendszer minimális, így teljes körűen szabályozható a tervezési és megvalósítási döntések, és bármely más alkalmazás-keretrendszer, például ASP.NET Core üzemeltetésére használható.
 
-A Reliable Services is lehet állapotalapú, kizárólagos a Service Fabric, ahol állapotban van megőrzött közvetlenül a szolgáltatásban magát a Reliable Collections használata. Állapot magas rendelkezésre állású replikáció útján létrejötte és particionálása, minden felügyelt automatikusan, a Service Fabric keresztül terjesztett.
+A Reliable Services állapot nélküli lehet, hasonlóan a legtöbb szolgáltatási platformhoz, például a webkiszolgálókhoz, amelyekben a szolgáltatás minden példánya egyenlő, és az állapot egy külső megoldásban, például az Azure DB-ben vagy az Azure-Table Storageban is megmarad.
 
-[További tudnivalók a Reliable Services](service-fabric-reliable-services-introduction.md) vagy történő használatának első lépései [írása az első megbízható szolgáltatás](service-fabric-reliable-services-quick-start.md).
+A Service Fabric kizárólagos értéke Reliable Services is lehet, hogy az állapotot a megbízható gyűjtemények használatával közvetlenül a szolgáltatásban őrzi meg. Az állapotot a rendszer a replikáción keresztül, a particionálással elosztva, a Service Fabric által automatikusan felügyelt módon végzi el.
 
-## <a name="aspnet-core"></a>ASP.NET-mag
-Az ASP.NET Core egy új nyílt forráskódú és platformfüggetlen keretrendszer, amellyel modern felhőalapú internetkapcsolattal rendelkező alkalmazások, például a web apps, az IoT-alkalmazások és a mobilalkalmazások háttérkomponensei a. A Service Fabric ASP.NET Core integrálható, így írhat is állapot nélküli és állapotalapú ASP.NET Core alkalmazásokat, amelyek a Reliable Collections és a Service Fabric vezénylési speciális képességek előnyeit.
+[Az első megbízható szolgáltatás megírásával többet is](service-fabric-reliable-services-quick-start.md) [megtudhat a Reliable Servicesról](service-fabric-reliable-services-introduction.md) vagy az első lépésekről.
 
-[További információ a Service Fabric ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) vagy történő használatának első lépései [az első ASP.NET Core Service Fabric-alkalmazás írása](service-fabric-tutorial-create-dotnet-app.md).
+## <a name="aspnet-core"></a>ASP.NET Core
+
+A ASP.NET Core egy nyílt forráskódú, többplatformos keretrendszer a modern, felhőalapú internetkapcsolattal rendelkező alkalmazások, például a Web Apps, a IoT-alkalmazások és a mobil háttérrendszer létrehozásához. A Service Fabric integrálható ASP.NET Coreekkel, így olyan állapot nélküli és állapot-nyilvántartó ASP.NET Core is írhat, amely kihasználja a megbízható gyűjtemények előnyeit és Service Fabric speciális előkészítési képességeit.
+
+[További információ a Service Fabric ASP.net Coreáról](service-fabric-reliable-services-communication-aspnetcore.md) vagy az [első ASP.net Core Service Fabric alkalmazás megírásáról](service-fabric-tutorial-create-dotnet-app.md).
 
 ## <a name="reliable-actors"></a>Reliable Actors
-A Reliable Actors keretrendszerben a Reliable Services-ra épülő, alkalmazás-keretrendszer, amely megvalósítja a virtuális Aktor mintában szereplő tervezési minta alapján. A Reliable Actors keretrendszerben független egység a számítási műveletek és az állapot nevű actors egyszálas végrehajtási használ. A Reliable Actors keretrendszerben aktorok és előre beállított állapot megőrzését és a horizontális felskálázást konfigurációk beépített kommunikációt biztosít.
 
-Mivel a Reliable Actors, Reliable Services épülő alkalmazás-keretrendszer teljesen integrálva van a Service Fabric platformot és a teljes körű a platform által kínált szolgáltatások előnyeit.
+A Reliable Servicesra épülő megbízható Actor Framework egy alkalmazás-keretrendszer, amely a számítási [modell](https://en.wikipedia.org/wiki/Actor_model)alapján implementálja a [virtuális színész](https://research.microsoft.com/en-us/projects/orleans/) mintáját. A *megbízható szereplők keretrendszere*a számítási és az állapot-független egységeket használja az egyszálas végrehajtással. A megbízható Actors keretrendszer beépített kommunikációt biztosít a szereplők számára, és előre beállított állapot-megőrzést és kibővíthető konfigurációkat tartalmaz.
 
-[További tudnivalók a Reliable Actors](service-fabric-reliable-actors-introduction.md) vagy történő használatának első lépései [írása az első Reliable Actors-szolgáltatás](service-fabric-reliable-actors-get-started.md)
+Mivel a Reliable Actors Reliable Servicesre épülő alkalmazás-keretrendszer, teljes mértékben integrálva van a Service Fabric platformmal, és a platform által kínált összes funkció előnyeit élvezheti.
 
+[Tudjon meg többet a Reliable Actorsról](service-fabric-reliable-actors-introduction.md) , vagy kezdje el az [első megbízható Actor szolgáltatás megírásával](service-fabric-reliable-actors-get-started.md)
 
-[ASP.NET Core használatával előtér-szolgáltatás készítése](service-fabric-reliable-services-communication-aspnetcore.md)
+[Előtér-szolgáltatás létrehozása ASP.NET Core használatával](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 [A Service Fabric és a tárolók áttekintése](service-fabric-containers-overview.md)
 
-[A Reliable Services áttekintése](service-fabric-reliable-services-introduction.md)
+[Reliable Services áttekintése](service-fabric-reliable-services-introduction.md)
 
-[A Reliable Actors áttekintése](service-fabric-reliable-actors-introduction.md)
+[Reliable Actors áttekintése](service-fabric-reliable-actors-introduction.md)
 
-[A Service Fabric és az ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
-
-
-
-
+[Service Fabric és ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)

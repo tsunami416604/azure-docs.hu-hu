@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810368"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744708"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
 
@@ -35,7 +35,7 @@ A Intelligent Insights automatikusan észleli a teljesítménnyel kapcsolatos pr
 | [Erőforrás-korlátok elérése](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | A megfigyelt előfizetésben elérhető erőforrások (DTU), adatbázis-feldolgozó szálak vagy adatbázis-bejelentkezési munkamenetek felhasználása elérte a határértékeket. Ez hatással van a SQL Database teljesítményére. | A CPU-erőforrások felhasználása a felügyelt példányok korlátainak elérése. Ez hatással van az adatbázis teljesítményére. |
 | [Munkaterhelés növekedése](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | A rendszer észlelte a munkaterhelés növelését vagy a számítási feladatok folyamatos felhalmozódását az adatbázisban. Ez hatással van a SQL Database teljesítményére. | A rendszer a munkaterhelés növelését észlelte. Ez hatással van az adatbázis teljesítményére. |
 | [Memória nyomása](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | A memória-támogatást kérő feldolgozóknak meg kell várniuk a memória kiosztását a statisztikailag jelentős mennyiségű időszakra. Vagy a rendelkezésre álló memória-támogatást igénylő feldolgozók megnövekedett felhalmozódása. Ez hatással van a SQL Database teljesítményére. | A rendelkezésre álló memória-támogatást igénylő munkatársak statisztikaian jelentős mennyiségű időt várnak a memória kiosztására. Ez hatással van az adatbázis teljesítményére. |
-| [Zárolási](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | A rendszer túl sok adatbázis-zárolást észlelt a SQL Database teljesítményének befolyásolása érdekében. | A rendszer túlzott adatbázis-zárolást észlelt, ami hatással volt az adatbázis teljesítményére. |
+| [Zárolás](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | A rendszer túl sok adatbázis-zárolást észlelt a SQL Database teljesítményének befolyásolása érdekében. | A rendszer túlzott adatbázis-zárolást észlelt, ami hatással volt az adatbázis teljesítményére. |
 | [Megnövekedett MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | A maximális párhuzamossági lehetőség (MAXDOP) módosult a lekérdezés végrehajtásának hatékonyságát érintően. Ez hatással van a SQL Database teljesítményére. | A maximális párhuzamossági lehetőség (MAXDOP) módosult a lekérdezés végrehajtásának hatékonyságát érintően. Ez hatással van az adatbázis teljesítményére. |
 | [Pagelatch-tartalom](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Több szál párhuzamosan próbálkozik ugyanahhoz a memóriában tárolt adatpuffer-lapok eléréséhez, ami megnöveli a várakozási időt, és pagelatch-tartalmat okoz. Ez hatással van az SQL-adatbázis teljesítményére. | Több szál párhuzamosan próbálkozik ugyanahhoz a memóriában tárolt adatpuffer-lapok eléréséhez, ami megnöveli a várakozási időt, és pagelatch-tartalmat okoz. Ez hatással van az adatbázis teljesítményére. |
 | [Hiányzó index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | A rendszer hiányzó indexet észlelt az SQL Database teljesítményének befolyásolására. | A rendszer hiányzó indexet észlelt, ami hatással volt az adatbázis teljesítményére. |
@@ -110,7 +110,7 @@ Emellett csökkentheti a munkaterhelést, ha több adatbázisra optimalizálja v
 
 További hibaelhárítási javaslatokért lásd [: memória-ösztöndíjak meditáció: a titokzatos SQL Server memória fogyasztója sok névvel](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Zárolási
+## <a name="locking"></a>Zárolás
 
 ### <a name="what-is-happening"></a>mi történik
 
@@ -327,8 +327,8 @@ Intelligent Insights a Azure Portal keresztül érheti el a Azure SQL Analytics.
 
 Intelligent Insights általában egy órányi időt kell igénybe vennie a teljesítménnyel kapcsolatos probléma kiváltó okának elemzéséhez. Ha nem találja a problémát Intelligent Insights és kritikus fontosságú az Ön számára, a lekérdezési tároló használatával manuálisan azonosíthatja a teljesítménnyel kapcsolatos probléma okát. (Általában ezek a problémák kevesebb, mint egy órával régebbiek.) További információ: [a teljesítmény figyelése a lekérdezési tároló használatával](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerkedjen meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakkal.
 - Használja a [Intelligent Insights Azure SQL Database Performance Diagnostics-naplót](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Azure SQL Database figyelése [Azure SQL Analytics használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/resource-logs-overview.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/platform-logs-overview.md).

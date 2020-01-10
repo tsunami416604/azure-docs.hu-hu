@@ -7,16 +7,16 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: d02ea18422e20aa2fede4f25cdffa985607e7b5c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 58dd53d9380448f177da48659b4f48c261bcfc14
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597345"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745435"
 ---
-# <a name="azure-monitor-overview"></a>Azure Monitor áttekintése
+# <a name="azure-monitor-overview"></a>Azure Monitor – áttekintés
 
-Azure Monitor maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
+Az Azure Monitor az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét növeli a lehető legnagyobbra egy olyan átfogó megoldás biztosításával, amely a felhőből és a helyszíni környezetből származó telemetriaadatokat gyűjt, elemez, valamint műveleteket hajt végre az adatok alapján. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
 
 Csak néhány példa arra, hogy mit tehet a Azure Monitor a következők:
 
@@ -27,10 +27,10 @@ Csak néhány példa arra, hogy mit tehet a Azure Monitor a következők:
 - Vizualizációkat hozhat létre az Azure- [irányítópultok](learn/tutorial-logs-dashboards.md) és- [munkafüzetek](app/usage-workbooks.md)létrehozásával.
 
 ## <a name="overview"></a>Áttekintés
-A következő ábra a Azure Monitor magas szintű áttekintését nyújtja. A diagram középpontjában a metrikák és naplók adattárai találhatók, amelyek a Azure Monitor által használt két alapvető adattípus. A bal oldalon az ezeket az [adattárakat](platform/data-platform.md)feltöltő [megfigyelési adatok forrásai](platform/data-sources.md) . A jobb oldalon azokat a különböző függvényeket Azure Monitor hajtja végre, amelyeket az összegyűjtött adatok, például az elemzés, a riasztások és a külső rendszereknek való folyamatos átvitel végez.
+Az alábbi diagramon az Azure Monitor magas szintű áttekintése látható. A diagram középpontjában a metrikák és naplók adattárai találhatók, amelyek a Azure Monitor által használt két alapvető adattípus. A bal oldalon az ezeket az [adattárakat](platform/data-platform.md)feltöltő [megfigyelési adatok forrásai](platform/data-sources.md) . A jobb oldalon azokat a különböző függvényeket Azure Monitor hajtja végre, amelyeket az összegyűjtött adatok, például az elemzés, a riasztások és a külső rendszereknek való folyamatos átvitel végez.
 
 
-![Azure Monitor áttekintése](media/overview/overview.png)
+![Azure Monitor – áttekintés](media/overview/overview.png)
 
 
 ## <a name="monitoring-data-platform"></a>Az adatplatform figyelése
@@ -46,20 +46,20 @@ A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv
 
 ![Naplók](media/overview/logs.png)
 
-## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat Azure Monitor gyűjteni?
-A Azure Monitor különböző forrásokból származó adatokat gyűjthet. Úgy gondolja, hogy az alkalmazásait, az általa használt operációs rendszert és szolgáltatásokat, illetve a platformot magától megilletően az alkalmazásaira vonatkozó adatok figyelésére kerül. A Azure Monitor a következő rétegekből gyűjt adatokat:
+## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat gyűjt az Azure Monitor?
+Az Azure Monitor számos különféle forrásból képes adatokat gyűjteni. Az alkalmazással kapcsolatos adatgyűjtést többféle rétegként lehet elképzelni, melyek az alkalmazástól, a különféle operációs rendszereken és a mögöttes szolgáltatásokon át egészen a platformig terjedhetnek. Az Azure Monitor az alábbi szintek mindegyikéről gyűjt adatokat:
 
 - **Alkalmazás-figyelési adat**: az Ön által írt kód teljesítményével és működésével kapcsolatos adat, függetlenül annak platformján.
-- **Vendég operációs rendszer figyelési adatai**: azon operációs rendszer adatai, amelyeken az alkalmazás fut. Ez az Azure-ban, egy másik felhőben vagy a helyszínen is futhat. 
+- **Vendég operációs rendszer figyelési adatai**: azon operációs rendszer adatai, amelyeken az alkalmazás fut. A futtatás történhet az Azure-ban, egy másik felhőben vagy a helyszínen is. 
 - **Azure-erőforrás-figyelési információk**: az Azure-erőforrások működésével kapcsolatos információk.
 - **Azure-előfizetések figyelésére vonatkozó**információk: az Azure-előfizetés működésével és kezelésével, valamint az Azure állapotával és működésével kapcsolatos adatmennyiség. 
 - Az **Azure-bérlő figyelési adatait**: a bérlői szintű Azure-szolgáltatások működésével, például Azure Active Directoryával kapcsolatos információk.
 
-Amint létrehoz egy Azure-előfizetést, és megkezdi az erőforrások, például a virtuális gépek és a webalkalmazások hozzáadását, Azure Monitor megkezdi az adatok gyűjtését.  A [Tevékenységnaplók](platform/activity-logs-overview.md) rögzítik az erőforrások létrehozását vagy módosítását. A [metrikák](platform/data-platform.md) megmutatják, hogyan végezheti el az erőforrást, és milyen erőforrásokat fogyaszt. 
+Amint létrehoz egy Azure-előfizetést és elkezdi hozzáadni az erőforrásokat (például virtuális gépeket vagy webalkalmazásokat), az Azure Monitor elkezdi az adatokat gyűjteni.  A [Tevékenységnaplók](platform/platform-logs-overview.md) rögzítik az erőforrások létrehozását vagy módosítását. A [metrikák](platform/data-platform.md) megmutatják, hogyan végezheti el az erőforrást, és milyen erőforrásokat fogyaszt. 
 
-Kiterjesztheti az erőforrások tényleges működéséhez gyűjtött adatokat a [diagnosztika engedélyezésével](platform/resource-logs-overview.md) és az ügynökök számítási erőforrásokhoz való [hozzáadásával](platform/agent-windows.md) . Ez összegyűjti az erőforrás belső műveletének telemetria, és lehetővé teszi különböző [adatforrások](platform/agent-data-sources.md) konfigurálását a naplók és a metrikák összegyűjtéséhez a Windows és a Linux vendég operációs rendszerből. 
+Kiterjesztheti az erőforrások tényleges működéséhez gyűjtött adatokat a [diagnosztika engedélyezésével](platform/platform-logs-overview.md) és az ügynökök számítási erőforrásokhoz való [hozzáadásával](platform/agent-windows.md) . Ez összegyűjti az erőforrás belső műveletének telemetria, és lehetővé teszi különböző [adatforrások](platform/agent-data-sources.md) konfigurálását a naplók és a metrikák összegyűjtéséhez a Windows és a Linux vendég operációs rendszerből. 
 
-A [app Services alkalmazás](app/azure-web-apps.md) vagy [a virtuális gép és a virtuálisgép-méretezési csoport alkalmazás](app/azure-vm-vmss-apps.md)figyelésének engedélyezésével engedélyezheti a Application Insights számára, hogy részletes információkat gyűjtsön az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és kivételek. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
+A [app Services alkalmazás](app/azure-web-apps.md) vagy [a virtuális gép és a virtuálisgép-méretezési csoport alkalmazás](app/azure-vm-vmss-apps.md)figyelésének engedélyezésével engedélyezheti a Application Insights számára, hogy részletes információkat gyűjtsön az alkalmazásról, beleértve a lapok nézeteit, az alkalmazások kéréseit és a kivételeket. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 
 ### <a name="custom-sources"></a>Egyéni források
 A Azure Monitor [Adatgyűjtői API](platform/data-collector-api.md)-val bármely Rest-ügyfélről gyűjthet naplózott adatokat. Ez lehetővé teszi egyéni figyelési forgatókönyvek létrehozását és a figyelés kiterjesztését olyan erőforrásokra, amelyek nem teszik elérhetővé a telemetria más forrásokon keresztül.
@@ -80,7 +80,7 @@ A [tárolók Azure monitor](insights/container-insights-overview.md) a szolgált
 ![Tároló állapota](media/overview/container-insights.png)
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
-[Azure monitor for VMS](insights/vminsights-overview.md) az Azure-beli virtuális gépeket (VM) a Windows-és Linux-alapú virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatokat és a más erőforrásokkal és külső folyamatok. A megoldás támogatja a helyszíni vagy más felhőalapú szolgáltató által üzemeltetett virtuális gépek teljesítményének és alkalmazási függőségeinek figyelését.  
+[Azure monitor for VMS](insights/vminsights-overview.md) az Azure-beli virtuális gépeket (VM) a Windows-és Linux-alapú virtuális gépek teljesítményének és állapotának elemzésével, beleértve a különböző folyamatokat és a más erőforrásokra és külső folyamatokra vonatkozó összekapcsolású függőségeket is. A megoldás támogatja a helyszíni vagy más felhőalapú szolgáltató által üzemeltetett virtuális gépek teljesítményének és alkalmazási függőségeinek figyelését.  
 
 
 ![VM-ismeretek](media/overview/vm-insights.png)

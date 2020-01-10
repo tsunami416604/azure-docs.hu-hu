@@ -1,14 +1,14 @@
 ---
 title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
-ms.date: 05/22/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960247"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751232"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -64,11 +64,9 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
 1. A felügyeleti csoportban nincsenek alárendelt felügyeleti csoportok vagy előfizetések.
 
-   - Ha az előfizetést egy felügyeleti csoportból szeretné áthelyezni, tekintse meg az [előfizetés áthelyezése másik felügyeleti csoportba](#move-subscriptions-in-the-hierarchy)című témakört.
+   - Ha egy előfizetést vagy felügyeleti csoportot másik felügyeleti csoportba szeretne helyezni, tekintse meg [a felügyeleti csoportok és előfizetések áthelyezése a hierarchiában](#moving-management-groups-and-subscriptions)című témakört.
 
-   - Ha felügyeleti csoportot szeretne áthelyezni egy másik felügyeleti csoportba, tekintse meg [a felügyeleti csoportok áthelyezése a hierarchiába](#move-management-groups-in-the-hierarchy)című témakört.
-
-1. Írási engedéllyel rendelkezik a felügyeleti csoportra ("tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködői"). Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ a RBAC-szerepkörökről: [hozzáférés és engedélyek kezelése a RBAC](../../role-based-access-control/overview.md)-mel.  
+1. Írási engedéllyel kell rendelkeznie a felügyeleti csoportra ("tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködője"). Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ a RBAC-szerepkörökről: [hozzáférés és engedélyek kezelése a RBAC](../../role-based-access-control/overview.md)-mel.  
 
 ### <a name="delete-in-the-portal"></a>Törlés a portálon
 
@@ -194,25 +192,31 @@ Ha egy adott felügyeleti csoportot és az alatta lévő hierarchia összes szin
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>Előfizetések áthelyezése a hierarchiában
+## <a name="moving-management-groups-and-subscriptions"></a>Felügyeleti csoportok és előfizetések áthelyezése   
 
 A felügyeleti csoport létrehozásának egyik oka az előfizetések összevonása. Csak a felügyeleti csoportok és előfizetések hozhatók létre egy másik felügyeleti csoport gyermekeire. Egy felügyeleti csoportba áthelyezett előfizetés örökli a szülő felügyeleti csoport összes felhasználói hozzáférését és házirendjét.
 
-Az előfizetés áthelyezéséhez az alábbi RBAC-engedélyek mindegyikének igaznak kell lennie:
+Ha a felügyeleti csoportot vagy az előfizetést egy másik felügyeleti csoport gyermekének kívánja áthelyezni, a három szabályt igaz értékként kell értékelni.
 
-- "Tulajdonos" szerepkör az alárendelt előfizetésben.
-- "Tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködői" szerepkör a célként kijelölt szülő felügyeleti csoportban.
-- A "tulajdonos", a "közreműködő" vagy a "felügyeleti csoport közreműködői" szerepkör a meglévő szülő felügyeleti csoportban.
+Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége: 
 
-Ha a cél vagy a meglévő szülő felügyeleti csoport a legfelső szintű felügyeleti csoport, az engedélyek követelményei nem érvényesek. Mivel a legfelső szintű felügyeleti csoport az összes új felügyeleti csoport és előfizetés alapértelmezett kihelyezett helye, nincs szükség arra, hogy az adott elem áthelyezéséhez szükséges engedélyekkel rendelkezik.
+-  Felügyeleti csoport írási és szerepkör-hozzárendelési írási engedélyei az alárendelt előfizetéshez vagy a felügyeleti csoporthoz.
+    - Beépített szerepkör – példa **tulajdonosa**
+- Felügyeleti csoport írási hozzáférése a cél szülő felügyeleti csoportnál.
+    - Beépített szerepkör – példa: **tulajdonos**, **közreműködő**, **felügyeleti csoport közreműködője**
+- Felügyeleti csoport írási hozzáférése a meglévő szülő felügyeleti csoporton.
+    - Beépített szerepkör – példa: **tulajdonos**, **közreműködő**, **felügyeleti csoport közreműködője**
 
-Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Nem helyezhető át olyan felügyeleti csoportba, ahol Ön közreműködő, mert elveszti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van rendelve (nem a felügyeleti csoporttól örökölt), akkor áthelyezheti bármely olyan felügyeleti csoportba, ahol Ön közreműködő.
+**Kivétel**: Ha a cél vagy a meglévő szülő felügyeleti csoport a gyökérszintű felügyeleti csoport, az engedélyek követelményei nem érvényesek. Mivel a legfelső szintű felügyeleti csoport az összes új felügyeleti csoport és előfizetés alapértelmezett kihelyezett helye, nincs szükség arra, hogy az adott elem áthelyezéséhez szükséges engedélyekkel rendelkezik.
+
+Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Nem helyezhető át olyan felügyeleti csoportba, ahol Ön közreműködő, mert elveszti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van hozzárendelve (nem a felügyeleti csoporttól örökölt), akkor áthelyezheti azt bármely olyan felügyeleti csoportba, ahol Ön közreműködő. 
 
 Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portalban, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ a RBAC-szerepkörökről: [hozzáférés és engedélyek kezelése a RBAC](../../role-based-access-control/overview.md)-mel.
 
-### <a name="move-subscriptions-in-the-portal"></a>Előfizetések áthelyezése a portálon
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>Meglévő előfizetés hozzáadása egy felügyeleti csoporthoz
+## <a name="move-subscriptions"></a>Előfizetések áthelyezése 
+
+#### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Meglévő előfizetés hozzáadása egy felügyeleti csoporthoz a portálon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -228,7 +232,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Válassza a Save (Mentés) lehetőséget.
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>Előfizetés eltávolítása egy felügyeleti csoportból
+#### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Előfizetés eltávolítása egy felügyeleti csoportból a portálon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -276,9 +280,7 @@ Ha el szeretné távolítani az előfizetést a felügyeleti csoportból, haszn�
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>Felügyeleti csoportok áthelyezése a hierarchiában  
-
-Ha áthelyez egy fölérendelt felügyeleti csoportot, az adott csoportba tartozó hierarchia áthelyeződik. A felügyeleti csoportok áthelyezéséhez szükséges hozzáférésért tekintse meg a [felügyeleti csoport elérését](overview.md#management-group-access)ismertető témakört.
+## <a name="move-management-groups"></a>Felügyeleti csoportok áthelyezése 
 
 ### <a name="move-management-groups-in-the-portal"></a>Felügyeleti csoportok áthelyezése a portálon
 
@@ -318,7 +320,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
 
-A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/activity-logs-overview.md). A felügyeleti csoportba tartozó összes eseményt a többi Azure-erőforrással megegyező központi helyen kérdezheti le.  Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
+A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/platform-logs-overview.md). A felügyeleti csoportba tartozó összes eseményt a többi Azure-erőforrással megegyező központi helyen kérdezheti le.  Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
 
 ![Tevékenységek naplói felügyeleti csoportokkal](media/al-mg.png)
 

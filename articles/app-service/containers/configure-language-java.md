@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805739"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750739"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -238,24 +238,37 @@ Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs
 
 ### <a name="using-the-java-key-store"></a>A Java Key Store használata
 
-Alapértelmezés szerint a rendszer a [app Service Linuxra feltöltött](../configure-ssl-certificate.md) nyilvános vagy privát tanúsítványokat a tároló indításakor betölti a Java Key Store-ba. Ez azt jelenti, hogy a feltöltött tanúsítványok a kapcsolati környezetben lesznek elérhetők a kimenő TLS-kapcsolatok létrehozásakor. A tanúsítvány feltöltése után újra kell indítania a App Service, hogy betöltse a Java Key Store-ba.
+Alapértelmezés szerint a rendszer a [app Service Linuxra feltöltött](../configure-ssl-certificate.md) nyilvános vagy privát tanúsítványokat a tároló indításakor betölti a megfelelő Java-kulcs-tárolókban. A tanúsítvány feltöltése után újra kell indítania a App Service, hogy betöltse a Java Key Store-ba. A nyilvános tanúsítványok be lesznek töltve a `$JAVA_HOME/jre/lib/security/cacerts`a Kulcstárolóba, és a privát tanúsítványokat a rendszer `$JAVA_HOME/lib/security/client.jks`tárolja.
 
-A Java-kulcs eszköz interakcióját vagy hibakeresését úgy teheti meg, hogy [megnyit egy SSH-kapcsolatot](app-service-linux-ssh-support.md) a app Service és futtatja a parancsot `keytool`. A parancsok listáját a [legfontosabb eszköz dokumentációjában](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) találja. A tanúsítványokat a Java alapértelmezett tároló-fájljának helye tárolja, `$JAVA_HOME/jre/lib/security/cacerts`.
-
-A JDBC-kapcsolatok titkosításához további konfigurálásra lehet szükség. Tekintse meg a kiválasztott JDBC-illesztőprogram dokumentációját.
+További konfigurálásra lehet szükség a JDBC-kapcsolatok a Java Key Store-ban található tanúsítványokkal való titkosításához. Tekintse meg a kiválasztott JDBC-illesztőprogram dokumentációját.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
-- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+- [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
+#### <a name="initializing-the-java-key-store"></a>A Java-kulcs tárolójának inicializálása
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>A Key Store manuális inicializálása és betöltése
+A `import java.security.KeyStore` objektum inicializálásához töltse be a-tároló fájlját a jelszóval. A Key Stores alapértelmezett jelszava a "changeit".
 
-A kulcstárolót inicializálhatja, és manuálisan is hozzáadhat tanúsítványokat. Hozzon létre egy alkalmazás-beállítást, `SKIP_JAVA_KEYSTORE_LOAD`a `1` értékkel, hogy letiltsa App Service a tanúsítványok automatikus betöltését a Key Store-ba. Azure Portal az App Service-on keresztül feltöltött összes nyilvános tanúsítvány `/var/ssl/certs/`alatt tárolódik. A privát tanúsítványokat a `/var/ssl/private/`alatt tárolja.
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
 
-A Webáruház API-val kapcsolatos további információkért tekintse meg [a hivatalos dokumentációt](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>A kulcstároló manuális betöltése
+
+A tanúsítványokat manuálisan is betöltheti a Key Store-ba. Hozzon létre egy alkalmazás-beállítást, `SKIP_JAVA_KEYSTORE_LOAD`a `1` értékkel, hogy letiltsa App Service a tanúsítványok automatikus betöltését a Key Store-ba. Azure Portal az App Service-on keresztül feltöltött összes nyilvános tanúsítvány `/var/ssl/certs/`alatt tárolódik. A privát tanúsítványokat a `/var/ssl/private/`alatt tárolja.
+
+A Java-kulcs eszköz interakcióját vagy hibakeresését úgy teheti meg, hogy [megnyit egy SSH-kapcsolatot](app-service-linux-ssh-support.md) a app Service és futtatja a parancsot `keytool`. A parancsok listáját a [legfontosabb eszköz dokumentációjában](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) találja. A Webáruház API-val kapcsolatos további információkért tekintse meg [a hivatalos dokumentációt](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
 ## <a name="configure-apm-platforms"></a>APM-platformok konfigurálása
 
@@ -373,7 +386,7 @@ Az indítási parancsfájl [XSL-átalakítót](https://www.w3schools.com/xml/xsl
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Alább található egy példa XSL-fájl. A példában szereplő XSL-fájl új összekötő csomópontot helyez el a Tomcat Server. XML fájlba.

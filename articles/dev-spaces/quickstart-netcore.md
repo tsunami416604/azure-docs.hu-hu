@@ -3,15 +3,15 @@ title: 'Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code & .NET C
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 29d601b9996b9cdf7825e367cae04521d4c4bc4a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325587"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771087"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code és .NET Core – Azure dev Spaces
 
@@ -110,7 +110,7 @@ A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állí
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *.net Core launcht (AZDS)* . Például:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, és újra futtathatja a *.net Core launcht (AZDS)* . Példa:
 
 1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
 1. [Az `Controllers/HomeController.cs`22. sorának frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) :
@@ -139,7 +139,7 @@ Távolítsa el a töréspontot úgy, hogy a kurzort a 22-es vonalra helyezi a `C
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
-Amíg a szolgáltatás hibakeresési módban fut, frissítse `Controllers/HomeController.cs`a 22-es sort. Például:
+Amíg a szolgáltatás hibakeresési módban fut, frissítse `Controllers/HomeController.cs`a 22-es sort. Példa:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
@@ -159,7 +159,7 @@ Az új Container-lemezképek újraépítése és újratelepítése helyett az Az
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken. 
 
@@ -167,4 +167,4 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 > [Több tároló használata és fejlesztés csapatban](multi-service-netcore.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

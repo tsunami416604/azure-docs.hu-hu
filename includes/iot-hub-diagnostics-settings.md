@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 2498711a5b7e5bce29cd0054ba40257f8f996d43
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3778ec2fac13aee29ce361402a535ca70fd56c33
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266823"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750705"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>A naplózás engedélyezése a diagnosztikai beállításokkal
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
 
 2. Válassza a **diagnosztikai beállítások**lehetőséget.
 
-3. Válassza ki **diagnosztika bekapcsolása**.
+3. Kattintson **a diagnosztika bekapcsolása**elemre.
 
    ![Diagnosztika bekapcsolása](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 
@@ -33,16 +33,16 @@ ms.locfileid: "71266823"
 
    * Archiválás tárfiókba
    * Streamelés eseményközpontba
-   * Küldés a Log Analytics szolgáltatásba
+   * Küldés a Log Analyticsnek
 
 6. Válassza ki a figyelni kívánt műveleteket, és engedélyezze a naplók számára a műveleteket. A diagnosztikai beállítások által a következő műveleteket lehet jelenteni:
 
-   * Kapcsolatok
+   * Connections (Kapcsolatok)
    * Eszköz telemetria
    * Felhőből az eszközre irányuló üzenetek
    * Eszköz-identitási műveletek
-   * Fájlfeltöltések
-   * Üzenetirányítás
+   * Fájlfeltöltés
+   * Üzenet-útválasztás
    * A felhőből az eszközre irányuló kettős műveletek
    * Az eszközről a felhőbe irányuló kettős művelet
    * Kettős művelet
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően a naplók a **diagnosztikai beállítások** panel konfigurált archiválási célpontjában jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../articles/azure-monitor/platform/resource-logs-overview.md).
+Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók a **diagnosztikai beállítások** panel konfigurált archiválási célpontjában jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../articles/azure-monitor/platform/platform-logs-overview.md).

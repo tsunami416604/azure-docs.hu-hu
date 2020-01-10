@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: dd2eb069-4c76-4154-96bb-6e6ae553ef46
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: a5ed91cef6e49fcb71c35f2262479be45a018651
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273888"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754306"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Veszélyforrások észlelése virtuális gépek és kiszolgálók esetében Azure Security Center
 
@@ -28,89 +28,53 @@ Ez a témakör bemutatja a különböző típusú észlelési módszereket és r
 
 A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-alapú gépek monitorozásához és védeleméhez. Security Center az összes szolgáltatás riasztásait és szervizelési javaslatait egyszerűen használható formátumban jeleníti meg.
 
-### Microsoft Defender ATP<a nanme="windows-atp"></a>
+* A **Microsoft Defender ATP** <a name="windows-atp"></a> -Security Center a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) integrálásával kiterjeszti a felhőalapú munkaterhelés-védelmi platformokat. Ez átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosít.
 
-A Security Center a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) integrálásával kiterjeszti a felhőalapú munkaterhelés-védelmi platformokat. Ez átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosít.
+    > [!NOTE]
+    > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
 
-> [!NOTE]
-> A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
+    Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+* **Összeomlási memóriakép elemzése** <a name="windows-dump"></a> – a szoftverek összeomlásakor egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában.
 
-### Összeomlási memóriakép elemzése<a nanme="windows-dump"></a>
+    Előfordulhat, hogy az összeomlást kártevő okozta, vagy kártevőt tartalmaz. A biztonsági termékek észlelésének elkerülése érdekében a kártevő szoftverek különböző formái egy fájl nélküli támadást használnak, amely elkerüli a lemezre írást, vagy titkosítja a lemezre írt összetevőket. Az ilyen típusú támadásokat nehéz felderíteni a hagyományos lemezes megközelítések használatával.
 
-Amikor a szoftver összeomlik, egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában.
+    A memória-elemzés használatával azonban az ilyen típusú támadásokat is kiderítheti. Az összeomlási memóriakép memóriájának elemzésével a Security Center képes azonosítani a támadás által használt technikákat. Előfordulhat például, hogy a támadás megkísérli a szoftver biztonsági réseit kihasználni, hozzáférni a bizalmas adatokhoz, és titokban megmarad egy feltört gépen belül. Security Center ez a művelet a gazdagépek minimális teljesítményére gyakorolt hatásával működik.
 
-Előfordulhat, hogy az összeomlást kártevő okozta, vagy kártevőt tartalmaz. A biztonsági termékek észlelésének elkerülése érdekében a kártevő szoftverek különböző formái egy fájl nélküli támadást használnak, amely elkerüli a lemezre írást, vagy titkosítja a lemezre írt összetevőket. Az ilyen típusú támadásokat nehéz felderíteni a hagyományos lemezes megközelítések használatával.
+    Az összeomlási memóriakép elemzési riasztásával kapcsolatos részletekért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
 
-A memória-elemzés használatával azonban az ilyen típusú támadásokat is kiderítheti. Az összeomlási memóriakép memóriájának elemzésével a Security Center képes azonosítani a támadás által használt technikákat. Előfordulhat például, hogy a támadás megkísérli a szoftver biztonsági réseit kihasználni, hozzáférni a bizalmas adatokhoz, és titokban megmarad egy feltört gépen belül. Security Center ez a művelet a gazdagépek minimális teljesítményére gyakorolt hatásával működik.
+* A **fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – a végpontokat célzó, nem gyakori támadások. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
 
-> [!div class="mx-tableFixed"]
+    A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a biztonsági szempontból kritikus folyamatok memóriájában.
 
-|Riasztás|Leírás|
-|---|---|
-|**Kód befecskendezése felderítve**|A kódinjektálás olyan művelet, amely végrehajtható modulokat szúr be a futó folyamatokba vagy szálakba. Ezt a technikát a kártevők használják az adateléréshez, miközben a rendszer sikeresen elrejti magát, hogy megakadályozza a keresését és eltávolítását. <br/>Ez a riasztás jelzi, hogy injektált modul szerepel az összeomlási memóriaképben. A kártékony és a nem rosszindulatú befecskendezett modulok megkülönböztetéséhez Security Center ellenőrzi, hogy a befecskendezett modul megfelel-e a gyanús viselkedés profiljának.|
-|**Gyanús kódrészlet felderítve**|Azt jelzi, hogy a kód szegmensét nem szabványos metódusok, például a tükröző injektálás és a folyamat-elszámolási módszer használatával osztották le. A riasztás a jelentett kódrészlet további jellemzőit tartalmazza, amelyeket a rendszer a jelentett kódrészlet képességeinek és viselkedésének biztosításához dolgoz fel.|
-|**Héjkód felderítve**|A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejut a rendszerbe.<br/>Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony hasznos adatok által gyakran végrehajtott viselkedést mutatja. Bár a nem kártevő szoftverek is elvégezhetik ezt a viselkedést, nem jellemző a normál szoftverfejlesztői gyakorlatokra.|
+    Megtalálhatja a kihasználat, a kódok befecskendezését és a kártékony hasznos adatok végrehajtását. A fájlok közötti támadás észlelése részletes biztonsági riasztásokat generál a riasztások osztályozásának, korrelációjának és az alsóbb szintű válaszidő felgyorsításához. Ez a megközelítés kiegészíti az eseményvezérelt EDR megoldásokat, és nagyobb észlelési lefedettséget biztosít.
 
-### Fájlok közötti támadás észlelése<a nanme="windows-fileless"></a>
-
-Gyakoriak a végpontokat célzó, fájlokkal nem rendelkező támadások. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
-
-A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a biztonsági szempontból kritikus folyamatok memóriájában.
-
-Megtalálhatja a kihasználat, a kódok befecskendezését és a kártékony hasznos adatok végrehajtását. A fájlok közötti támadás észlelése részletes biztonsági riasztásokat generál a riasztások osztályozásának, korrelációjának és az alsóbb szintű válaszidő felgyorsításához. Ez a megközelítés kiegészíti az eseményvezérelt EDR megoldásokat, és nagyobb észlelési lefedettséget biztosít.
+    A fájlokba nem kerülő támadás észlelésével kapcsolatos riasztások részleteiért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
 
 > [!NOTE]
-> A Windows-riasztásokat a Azure Security Center forgatókönyv [letöltésével szimulálhatja: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046).
-
-> [!div class="mx-tableFixed"]
-
-|Riasztás|Leírás|
-|---|---|
-|**A rendszer a fájlokkal nem rendelkező támadási technikákat észlelt**|A megadott folyamat memóriája tartalmaz egy file UNA támadási eszközkészletet: Meterpreter. A fájl nélkül támadási eszközkészletek általában nem rendelkeznek jelenléttel a fájlrendszerben, így a hagyományos víruskereső szoftverek észlelése bonyolult.|
-
-### <a name="further-reading"></a>További olvasnivalók
-
-Példákat és további információt a Security Center észleléséről a következő témakörben talál:
-
-* [Hogyan Azure Security Center automatizálja a számítógépes támadás észlelését](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
-* [Biztonsági rések észlelése a felügyeleti eszközök használatával Azure Security Center](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+> A Windows-riasztásokat a [biztonsági riasztások Azure Security Center](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)forgatókönyvek letöltésével szimulálhatja.
 
 ## Linux<a name="linux-machines"></a>
 
 A Security Center a Linux rendszerű gépekről naplózza a naplózási rekordokat **, az**egyik leggyakrabban használt Linux-naplózási keretrendszerben. a naplózott élet a fővonali kernelben. 
 
-### Linux auditált riasztások és a Microsoft monitoring Agent (MMA) integrációja<a name="linux-auditd"></a>
+* **Linux auditált riasztások és Microsoft monitoring Agent (MMA) integráció** <a name="linux-auditd"></a> – az auditált rendszer egy kernel szintű alrendszerből áll, amelynek feladata a rendszerhívások figyelése. Egy megadott szabálykészlet alapján szűri őket, és üzeneteket küld nekik egy szoftvercsatorna számára. A Security Center a Microsoft monitoring Agent (MMA) szolgáltatáson belül a naplózott csomag funkcióit integrálja. Ez az integráció lehetővé teszi az auditált események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.  
 
-A naplózott rendszer egy kernel szintű alrendszerből áll, amely a rendszerhívások figyelésének felelőse. Egy megadott szabálykészlet alapján szűri őket, és üzeneteket küld nekik egy szoftvercsatorna számára. A Security Center a Microsoft monitoring Agent (MMA) szolgáltatáson belül a naplózott csomag funkcióit integrálja. Ez az integráció lehetővé teszi az auditált események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.  
+    a naplózott rekordok gyűjtése, bővítése és összesítése az eseményekre a Linux MMA-ügynök használatával történik. Security Center folyamatosan bővíti a Linux-jeleket használó új elemzéseket a Felhőbeli és a helyszíni linuxos gépek kártékony viselkedésének észlelése érdekében. A Windows-képességekhez hasonlóan ezek az elemzések a gyanús folyamatokon, a kétes bejelentkezési kísérleteken, a kernel modul betöltésén és más tevékenységeken is kiterjedhetnek. Ezek a tevékenységek jelezhetik, hogy a gép támadás alatt áll, vagy megsértették.  
 
-a naplózott rekordok gyűjtése, bővítése és összesítése az eseményekre a Linux MMA-ügynök használatával történik. Security Center folyamatosan bővíti a Linux-jeleket használó új elemzéseket a Felhőbeli és a helyszíni linuxos gépek kártékony viselkedésének észlelése érdekében. A Windows-képességekhez hasonlóan ezek az elemzések a gyanús folyamatokon, a kétes bejelentkezési kísérleteken, a kernel modul betöltésén és más tevékenységeken is kiterjedhetnek. Ezek a tevékenységek jelezhetik, hogy a gép támadás alatt áll, vagy megsértették.  
+    A következő példák a támadási életciklus különböző szakaszaira kiterjedő elemzésekre mutatnak.
 
-A következő példák a támadási életciklus különböző szakaszaira kiterjedő elemzésekre mutatnak.
-
-> [!div class="mx-tableFixed"]
-
-|Riasztás|Leírás|
-|---|---|
-|**Az SSH-t használó kulcsokhoz tartozó fájl szokatlan módon való elérése folyamatban van**|Az SSH-t használó hitelesítő kulcsok fájlja az ismert kártevő-kampányokhoz hasonló módon lett hozzáférve. Ez a hozzáférés arra utalhat, hogy egy támadó állandó hozzáférést próbál a géphez.|
-|**Észlelt adatmegőrzési kísérlet**|A gazdagép adatelemzése azt észlelte, hogy az egyfelhasználós üzemmód indítási parancsfájlja telepítve van. <br/>Mivel ritkán fordul elő, hogy az adott módban bármilyen legitim folyamatra lenne szükség, ez arra utalhat, hogy egy támadó rosszindulatú folyamatot adott hozzá minden egyes futtatási szinthez, hogy biztosítsa az adatmegőrzést.|
-|**Az ütemezett feladatok kezelése észlelve**|A gazdagép adatok elemzése az ütemezett feladatok lehetséges kezelését észlelte. A támadók gyakran ütemezett feladatokat vesznek fel azokhoz a gépekhez, amelyeket az adatmegőrzés érdekében feltörtek.|
-|**Gyanús fájl időbélyegének módosítása**|A gazdagép adatelemzése gyanús időbélyeg-módosítást észlelt. A támadók gyakran az új eszközökre másolják a meglévő, legitim fájlokból származó időbélyegeket, hogy elkerülje az újonnan eldobott fájlok észlelését.|
-|**Új felhasználó lett hozzáadva a sudoers-csoporthoz**|A gazdagép adatelemzése azt észlelte, hogy a felhasználó hozzá lett adva a sudoers csoportjához, amely lehetővé teszi a tagjai számára, hogy magas szintű jogosultságokkal futtassák a parancsokat.|
-|**A DHCP-ügyfél DynoRoot biztonsági rése valószínűleg kihasználható**|A Host adatelemzési szolgáltatás egy szokatlan parancs végrehajtását észlelte a dhclient-parancsfájl fölérendelt folyamatával.|
-|**A rendszer gyanús kernel modult észlelt**|A gazdagép adatai elemzése során a rendszer kernel-modulként betöltött megosztott objektumot észlelt. Ez lehet jogos tevékenység, vagy jelzi, hogy az egyik gép sérült.|
-|**A rendszer a digitális valuta kitermeléséhez kapcsolódó folyamatot észlelt**|A Host adatelemzési szolgáltatás egy olyan folyamat végrehajtását észlelte, amely normál esetben a digitális valuta kitermeléséhez van társítva.|
-|**Lehetséges port továbbítása külső IP-címnek**|A Host adatelemzési szolgáltatás a port továbbításának kezdeményezését észlelte egy külső IP-címhez.|
+    A Linux-riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-linux)tartalmazza.
 
 > [!NOTE]
-> A Windows-riasztásokat a Azure Security Center forgatókönyv [letöltésével szimulálhatja: Linux-észlelések](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef).
-
-
-További információkért lásd:  
-
-* [Azure Security Center kihasználása a feltört Linux-gépek támadásának észlelése érdekében](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
-
-* [A Azure Security Center felismeri a Linuxon elérhető új biztonsági réseket](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+> A Linux-riasztásokat a Linux- [észlelések Azure Security Center](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)forgatókönyv letöltésével szimulálhatja.
 
  
+ ## <a name="next-steps"></a>Következő lépések
+
+Példákat és további információt a Security Center észleléséről a következő témakörben talál:
+
+* [Hogyan Azure Security Center automatizálja a számítógépes támadás észlelését](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
+* [Biztonsági rések észlelése a felügyeleti eszközök használatával Azure Security Center](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)
+* [Azure Security Center kihasználása a feltört Linux-gépek támadásának észlelése érdekében](https://azure.microsoft.com/blog/leverage-azure-security-center-to-detect-when-compromised-linux-machines-attack/)
+* [A Azure Security Center felismeri a Linuxon elérhető új biztonsági réseket](https://azure.microsoft.com/blog/azure-security-center-can-detect-emerging-vulnerabilities-in-linux/)

@@ -1,5 +1,5 @@
 ---
-title: Az Azure belső terheléselosztó létrehozása a PowerShell használatával
+title: Belső Azure-Load Balancer létrehozása a PowerShell használatával
 titleSuffix: Azure Load Balancer
 description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure PowerShell-modullal az Azure Resource Managerben
 services: load-balancer
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 547402fd2cca94f47a9ff0db3131d359bafd967a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b2c94e51e25fd34b7332e6653a9c2f2d5bb53139
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225387"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754237"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Belső terheléselosztó létrehozása az Azure PowerShell-modullal
 
@@ -48,7 +48,7 @@ A terheléselosztó üzembe helyezéséhez létre kell hoznia a következő obje
 * Mintavételi konfiguráció: A virtuális gépek állapotának mintavételei.
 * Bejövő NAT-szabályok: A virtuális gépek közvetlen elérésére vonatkozó portszabályok.
 
-A terheléselosztó összetevőkről az [Azure Resource Manager terheléselosztó-támogatását](load-balancer-arm.md) ismertető cikkben talál további információt.
+További információ a terheléselosztó összetevőiről: Azure Load Balancer- [összetevők](load-balancer-overview.md#load-balancer-components).
 
 A következő lépések elmagyarázzák, hogyan kell terheléselosztót konfigurálni két virtuális gép között.
 

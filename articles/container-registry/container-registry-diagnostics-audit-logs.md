@@ -2,17 +2,17 @@
 title: Erőforrás-naplók & gyűjtése
 description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456435"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748000"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
 
-Ez a cikk azt ismerteti, hogyan gyűjthetők be az Azure Container Registry naplózási adatai a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor [erőforrás-naplókat](../azure-monitor/platform/resource-logs-overview.md) (korábbi néven *diagnosztikai naplókat*) gyűjt a beállításjegyzékben lévő felhasználó által vezérelt eseményekhez. Gyűjtse össze és használja fel ezeket az adatokat az igények kielégítéséhez, például:
+Ez a cikk azt ismerteti, hogyan gyűjthetők be az Azure Container Registry naplózási adatai a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor [erőforrás-naplókat](../azure-monitor/platform/platform-logs-overview.md) (korábbi néven *diagnosztikai naplókat*) gyűjt a beállításjegyzékben lévő felhasználó által vezérelt eseményekhez. Gyűjtse össze és használja fel ezeket az adatokat az igények kielégítéséhez, például:
 
 * A beállításjegyzék hitelesítési eseményeinek naplózása a biztonság és a megfelelőség biztosítása érdekében 
 
@@ -26,9 +26,14 @@ Az erőforrás-naplózási adatok Azure Monitor használatával történő össz
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-A tárház szintű események naplózása jelenleg nem tartalmaz törlési vagy jelölését eseményeket. Csak a következő adattár-események vannak naplózva:
-* Képek és egyéb összetevők **leküldéses eseményei**
-* **Lekéréses események** képek és egyéb összetevők számára
+A rendszerképekhez és egyéb összetevőkhöz tartozó adattár-szintű események naplózása jelenleg a következő:
+
+* **Leküldéses események**
+* **Lekéréses események**
+* **Jelölését események**
+* **Események törlése** (beleértve a tárház törlési eseményeit)
+
+A jelenleg nem naplózott adattár-szintű események: kiürítési események.
 
 ## <a name="registry-resource-logs"></a>Beállításjegyzék-erőforrások naplói
 
@@ -42,7 +47,7 @@ A műveletek esetében a naplózási adatok a következők:
   * Sikeres vagy sikertelen állapot
   * Kezdő és záró időbélyegző
 
-Az Azure az erőforrás-naplók mellett egy [tevékenységi naplót](../azure-monitor/platform/activity-logs-overview.md)is biztosít, amely az Azure felügyeleti eseményeinek egyetlen előfizetési szintű rekordja, például egy tároló-beállításjegyzék létrehozása vagy törlése.
+Az Azure az erőforrás-naplók mellett egy [tevékenységi naplót](../azure-monitor/platform/platform-logs-overview.md)is biztosít, amely az Azure felügyeleti eseményeinek egyetlen előfizetési szintű rekordja, például egy tároló-beállításjegyzék létrehozása vagy törlése.
 
 ## <a name="enable-collection-of-resource-logs"></a>Erőforrás-naplók gyűjtésének engedélyezése
 
@@ -97,7 +102,7 @@ ContainerRegistryRepositoryEvents
 
 Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldásként egy Azure Storage-fiókot kell kiválasztania a napló célhelyként. Az Azure Storage-beli naplók archiválásához hozzon létre egy Storage-fiókot, mielőtt engedélyezi az archiválást a diagnosztikai beállításokon.
 
-A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba is továbbíthatja. Az Event Hubs fogadására képes több millió esemény / másodperc, amely, átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató segítségével. 
+A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
 
 ## <a name="next-steps"></a>Következő lépések
 

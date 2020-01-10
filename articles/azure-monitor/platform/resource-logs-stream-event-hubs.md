@@ -1,29 +1,30 @@
 ---
-title: Azure-beli erőforrás-naplók továbbítása egy Event hubhoz
+title: Azure platform-naplók továbbítása egy Event hubhoz
 description: Ismerje meg, hogyan továbbíthatja az Azure-beli erőforrás-naplókat egy Event hub-ba, ha külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra küldi az információkat
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304939"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750354"
 ---
-# <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Azure-beli erőforrás-naplók továbbítása az Azure Event Hubsba
-Az Azure-beli [erőforrás-naplók](resource-logs-overview.md) részletes és gyakori információkat biztosítanak az Azure-erőforrások belső működéséről. Ez a cikk azt ismerteti, hogyan lehet adatfolyamokat továbbítani az esemény-hubok számára az olyan külső rendszerekre, mint a harmadik féltől származó SIEM-és egyéb log Analytics-megoldások.
+# <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure platform-naplók továbbítása az Azure Event Hubsba
+Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról.  Ez a cikk a streaming platform naplófájljait ismerteti az Event hubok számára az adatküldés külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.
 
 
-## <a name="what-you-can-do-with-resource-logs-sent-to-an-event-hub"></a>Az Event hub-nak eljuttatott erőforrás-naplókból elvégezhető műveletek
-Stream erőforrás-naplók az Azure-ban az Event hubokba a következő funkciók biztosításához:
+## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>Az Event hub-nak eljuttatott platform-naplókból elvégezhető műveletek
+Stream platform-naplók az Azure-ban az Event hubokba a következő funkciók biztosításához:
 
-* **Stream-naplók harmadik féltől származó naplózási és telemetria rendszerekhez** – az összes erőforrás-naplót egy adott esemény központba továbbíthatja, hogy az adatcsatornán át lehessen továbbítani az adatait egy külső Siem-vagy log Analytics-eszközre.
-* **Hozzon létre egy egyéni telemetria-és naplózási platformot** – az Event hubok rugalmasan méretezhető közzétételi és előfizetési környezete lehetővé teszi az erőforrás-naplók rugalmas betöltését egy egyéni teletry-platformra. A részletekért lásd: [globális méretű telemetria platform tervezése és méretezése az Azure Event Hubsban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
+* **Stream-naplók harmadik féltől származó naplózási és telemetria rendszerekhez** – az összes platform naplóját egyetlen esemény központba továbbíthatja, hogy az adatcsatorna adatai egy harmadik féltől származó Siem-vagy log Analytics-eszközbe lépjenek.
+  
+* **Hozzon létre egy egyéni telemetria-és naplózási platformot** – az Event hubok rugalmasan méretezhető közzétételi és előfizetési felépítése lehetővé teszi, hogy a platform-naplókat rugalmasan betöltse egy egyéni teletry platformra. A részletekért lásd: [globális méretű telemetria platform tervezése és méretezése az Azure Event Hubsban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
 
 * A **szolgáltatás állapotának megtekintése az adattovábbítással Power BIba** – Event Hubs, Stream Analytics és Power bi használatával alakítsa át a diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. A megoldás részleteiért tekintse meg a [stream Analytics és Power bi: valós idejű elemzési irányítópultot a folyamatos adattovábbításhoz](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
@@ -40,22 +41,21 @@ Stream erőforrás-naplók az Azure-ban az Event hubokba a következő funkciók
     ```
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem rendelkezik ilyennel, [létre kell hoznia egy Event hubot](../../event-hubs/event-hubs-create.md) . Ha korábban az erőforrás-naplókat a Event Hubs névtérbe továbbította, akkor az Event hub újra fel lesz használva.
+Ha még nem rendelkezik ilyennel, [létre kell hoznia egy Event hubot](../../event-hubs/event-hubs-create.md) . Ha már rendelkezik diagnosztikai beállítással ezzel a Event Hubs névtérrel, az Event hub újra felhasználható lesz.
 
 A névtérhez tartozó megosztott hozzáférési házirend határozza meg az adatfolyam-mechanizmushoz tartozó engedélyeket. A Event Hubs való folyamatos átvitelhez a kezelés, a Küldés és a figyelés engedélyek szükségesek. A megosztott hozzáférési szabályzatokat a Event Hubs névtér configure (Konfigurálás) lapján lehet létrehozni vagy módosítani a Azure Portal.
 
 Ha szeretné frissíteni a diagnosztikai beállítást, hogy a folyamatos átvitelt is tartalmazza, rendelkeznie kell a ListKey engedéllyel az adott Event Hubs engedélyezési szabályhoz. A Event Hubs névtérnek nem kell ugyanabban az előfizetésben lennie, mint a naplókat kibocsátó előfizetésnek, feltéve, hogy a beállítást konfiguráló felhasználó RBAC-hozzáféréssel rendelkezik mindkét előfizetéshez, és mindkét előfizetés ugyanahhoz a HRE-bérlőhöz tartozik.
 
 ## <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
-A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Az Azure-erőforrások diagnosztikai beállításának létrehozásával elküldheti őket az Event hub és más célhelyek számára. A részletekért lásd: [diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md) .
+Az Azure-erőforrások diagnosztikai beállításának létrehozásával elküldheti a platform naplóit az Event hub és más célhelyek számára. A részletekért lásd: [diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md) .
 
-## <a name="stream-data-from-compute-resources"></a>Adatfolyam-adatok a számítási erőforrásokból
-A jelen cikkben ismertetett folyamat az [Azure-erőforrás-naplók áttekintése](diagnostic-settings.md)című témakörben leírtak szerint nem számítási erőforrásokra mutat.
-Stream erőforrás-naplók az Azure számítási erőforrásaiból a Windows Azure Diagnostics ügynök használatával. A részletekért tekintse meg a következő témakört: [Streaming Azure Diagnostics adatok a gyors elérési úton Event Hubs használatával](diagnostics-extension-stream-event-hubs.md) .
+## <a name="collect-data-from-compute-resources"></a>Adatok gyűjtése a számítási erőforrásokból
+A diagnosztikai beállítások olyan erőforrás-naplókat gyűjtenek az Azure számítási erőforrásaihoz, mint bármely más erőforrás, nem pedig a vendég operációs rendszerük vagy a munkaterhelések. Az adatok gyűjtéséhez telepítse a [log Analytics-ügynököt](log-analytics-agent.md). 
 
 
 ## <a name="consuming-log-data-from-event-hubs"></a>Az Event hubokból származó naplózási adatok felhasználása
-Amikor erőforrás-naplókat használ az Event hubokból, az a következő táblázatban szereplő elemekkel JSON formátumú lesz.
+Az Event hubokból származó platform-naplók JSON formátumban lesznek felhasználva az alábbi táblázat elemeivel.
 
 | Elem neve | Leírás |
 | --- | --- |
@@ -68,7 +68,7 @@ Amikor erőforrás-naplókat használ az Event hubokból, az a következő tábl
 | properties |Az esemény tulajdonságai. Ezek a következő témakörben leírtak szerint változnak [ ]()minden Azure-szolgáltatás esetében. |
 
 
-A következő példa kimeneti adatokat Event Hubs:
+Az alábbi példa kimeneti adatokat Event Hubs egy erőforrás-naplóhoz:
 
 ```json
 {
@@ -135,7 +135,8 @@ A következő példa kimeneti adatokat Event Hubs:
 
 ## <a name="next-steps"></a>Következő lépések
 
+* [További információ az erőforrás-naplókról](platform-logs-overview.md).
+* [Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md).
 * [A Stream Azure Active Directory a naplókat a Azure monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
-* [További információ az Azure erőforrás-naplókkal kapcsolatban](resource-logs-overview.md).
 * [A Event Hubs első lépései](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 

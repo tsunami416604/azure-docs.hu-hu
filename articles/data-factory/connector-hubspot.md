@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: cb7091cf61efab8e5bd7e9321911980a1f681476
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929284"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754133"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Adatok másolása a HubSpot a Azure Data Factory használatával (előzetes verzió)
 
@@ -37,7 +37,7 @@ Az adatok a HubSpot bármely támogatott fogadó adattárba másolhatók. A más
 
 A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,9 +50,9 @@ A HubSpot társított szolgáltatás a következő tulajdonságokat támogatja:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **HubSpot** | Igen |
-| ügyfél-azonosító | A HubSpot-alkalmazáshoz társított ügyfél-azonosító.  | Igen |
+| ügyfél-azonosító | A HubSpot-alkalmazáshoz társított ügyfél-azonosító. Ebből a témakörből megtudhatja, hogyan hozhat létre alkalmazást a [HubSpot-ben](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot). | Igen |
 | clientSecret | A HubSpot-alkalmazáshoz társított ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| accessToken | A OAuth-integráció kezdeti hitelesítése során kapott hozzáférési jogkivonat. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| accessToken | A OAuth-integráció kezdeti hitelesítése során kapott hozzáférési jogkivonat. [Itt](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)megtudhatja, hogyan érheti el a hozzáférési tokent az ügyfél-azonosítóval és a titkos kulccsal. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | refreshToken | A OAuth-integráció kezdeti hitelesítése során beszerzett frissítési jogkivonat. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 | useHostVerification | Azt adja meg, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték az igaz.  | Nem |
@@ -62,7 +62,7 @@ A HubSpot társított szolgáltatás a következő tulajdonságokat támogatja:
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -99,13 +99,13 @@ Az adatok HubSpot való másolásához állítsa az adatkészlet Type (típus) t
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
         "typeProperties": {},
         "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
         }
     }
@@ -134,7 +134,7 @@ Az adatok HubSpot való másolásához állítsa a forrás típusát a másolás
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],

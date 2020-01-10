@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226914"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769149"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -25,7 +25,7 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 | Section | Feladatok |
 | ------- | ----- |
 | **Hitelesítés** | <ol><li>Adjon meg egy egyszerű szolgáltatásnevet.</li><li>Közzétételi profil letöltése.</li><li>Hozzon létre egy GitHub-titkot.</li></ol>|
-| **Építeni** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
+| **Build** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
 | **Üzembe helyezés** | <ol><li>Telepítse a Function alkalmazást.</li></ol>|
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Ebben a példában az erőforrásban található helyőrzőket cserélje le az e
 
 ## <a name="download-the-publishing-profile"></a>A közzétételi profil letöltése
 
-A functionapp közzétételi profiljának letöltéséhez nyissa meg az alkalmazás **Áttekintés** lapját, és kattintson a **közzétételi profil beolvasása**lehetőségre.
+A Function alkalmazás közzétételi profiljának letöltéséhez nyissa meg az alkalmazás **Áttekintés** lapját, és kattintson a **közzétételi profil beolvasása**lehetőségre.
 
    ![Közzétételi profil letöltése](media/functions-how-to-github-actions/get-publish-profile.png)
 
@@ -54,28 +54,24 @@ Másolja a fájl tartalmát.
 
 ## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
 
-1. A [githubon](https://github.com)tallózzon a tárházban, válassza a **beállítások** > **titkok** > **új titok hozzáadása**lehetőséget.
+1. A [githubon](https://github.com)tallózással keresse meg a tárházat, válassza a **beállítások** > **titkok** > **új titok hozzáadása**lehetőséget.
 
    ![Titkos kód hozzáadása](media/functions-how-to-github-actions/add-secret.png)
 
-1. Ha ezt követően a **titok hozzáadása**lehetőséget **választja, használja**a `AZURE_CREDENTIALS` **nevet** és a másolt parancs kimenetét. Ha közzétételi profilt használ, használja a `SCM_CREDENTIALS` **nevet** és a fájl tartalmát az **értékhez**.
+1. Adjon hozzá egy új titkot.
+
+   * Ha az Azure CLI használatával létrehozott egyszerű szolgáltatást használja, akkor a **név**`AZURE_CREDENTIALS`. Ezután illessze be a vágólapra másolt JSON-objektum kimenetét az **érték**mezőbe, majd válassza a **titkos kód hozzáadása**elemet.
+   * Ha közzétételi profilt használ, használja a `SCM_CREDENTIALS` **nevet**. Ezután használja a közzétételi profil fájljának tartalmát az **Érték mezőben**, majd válassza a **titkos kód hozzáadása**lehetőséget.
 
 A GitHub mostantól képes hitelesíteni az Azure-beli Function-alkalmazást.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása 
 
-A környezet beállítása a közzétételi telepítési műveletek egyikével végezhető el.
+A környezet beállítása a nyelvspecifikus közzétételi beállítás használatával történik.
 
-|Nyelv | Telepítési művelet |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
-|**Python**   | `actions/setup-python` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a környezetet a különböző támogatott nyelvekhez állítja be:
-
-**JavaScript**
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-node` műveletet használja a környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -88,7 +84,9 @@ Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a kör
         node-version: '10.x'
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-python` műveletet használja a környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +99,9 @@ Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a kör
         python-version: 3.6
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-dotnet` műveletet használja a környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -114,7 +114,9 @@ Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a kör
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-java` műveletet használja a környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -128,14 +130,15 @@ Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a kör
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>A Function alkalmazás összeállítása
 
 Ez a Azure Functions által támogatott nyelvtől és nyelvtől függ. a szakasznak az egyes nyelvek standard Build lépéseinek kell lennie.
 
-Az alábbi példák a Function alkalmazást a különböző támogatott nyelveken felépítő munkafolyamat részét mutatják be:
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a Function alkalmazást, amely a nyelvspecifikus:
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -150,7 +153,7 @@ Az alábbi példák a Function alkalmazást a különböző támogatott nyelveke
         popd
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -164,7 +167,7 @@ Az alábbi példák a Function alkalmazást a különböző támogatott nyelveke
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -177,7 +180,7 @@ Az alábbi példák a Function alkalmazást a különböző támogatott nyelveke
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -190,6 +193,7 @@ Az alábbi példák a Function alkalmazást a különböző támogatott nyelveke
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>A függvényalkalmazás üzembe helyezése
 

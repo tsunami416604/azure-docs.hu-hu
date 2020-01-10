@@ -1,23 +1,24 @@
 ---
 title: Apache Oozie-munkafolyamatok & Enterprise Security – Azure HDInsight
 description: Biztonságos Apache Oozie-munkafolyamatok az Azure HDInsight Enterprise Security Package használatával. Ismerje meg, hogyan határozhat meg egy Oozie-munkafolyamatot, és hogyan küldhet el egy Oozie-feladatot.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,seodec18
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.openlocfilehash: 03826d1005253c408374ea4c78266eef97aab2aa
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/09/2019
+ms.openlocfilehash: 125450394a829667d45479e6e0b7844a0357f009
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044835"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750014"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Apache Oozie futtatása a HDInsight Hadoop-fürtökben Enterprise Security Package
 
 Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely Apache Hadoop feladatokat kezel. A Oozie integrálva van a Hadoop-verembe, és a következő feladatokat támogatja:
+
 - Apache MapReduce
 - Apache Pig
 - Apache Hive
@@ -27,33 +28,37 @@ A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, péld
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-- Enterprise Security Package (ESP) Azure HDInsight Hadoop-fürt. Lásd: [HDInsight-fürtök beállítása az ESP-vel](./apache-domain-joined-configure-using-azure-adds.md).
+Enterprise Security Package (ESP) Azure HDInsight Hadoop-fürt. Lásd: [HDInsight-fürtök beállítása az ESP-vel](./apache-domain-joined-configure-using-azure-adds.md).
 
-    > [!NOTE]  
-    > A nem ESP-fürtök Oozie használatával kapcsolatos részletes utasításokért lásd: [Apache Oozie-munkafolyamatok használata Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md).
+> [!NOTE]  
+> Az Oozie nem ESP-fürtökön történő használatáról az [Apache Oozie-munkafolyamatok használata Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md)című cikkben talál részletes tájékoztatást.
 
 ## <a name="connect-to-an-esp-cluster"></a>Kapcsolódás ESP-fürthöz
 
 A Secure Shell (SSH) szolgáltatással kapcsolatos további információkért lásd: [Kapcsolódás a HDInsight (Hadoop) az SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Kapcsolódjon a HDInsight-fürthöz az SSH használatával:  
-   ```bash
-   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
-   ```
+1. Kapcsolódjon a HDInsight-fürthöz az SSH használatával:
 
-2. A sikeres Kerberos-hitelesítés ellenőrzéséhez használja a `klist` parancsot. Ha nem, a `kinit` használatával indítsa el a Kerberos-hitelesítést.
+    ```bash
+    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+    ```
 
-3. Jelentkezzen be a HDInsight-átjáróba a Azure Data Lake Storage eléréséhez szükséges OAuth-token regisztrálásához:   
-     ```bash
-     curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
-     ```
+1. A sikeres Kerberos-hitelesítés ellenőrzéséhez használja a `klist` parancsot. Ha nem, a `kinit` használatával indítsa el a Kerberos-hitelesítést.
+
+1. Jelentkezzen be a HDInsight-átjáróba a Azure Data Lake Storage eléréséhez szükséges OAuth-token regisztrálásához:
+
+    ```bash
+    curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
+    ```
 
     Az **200** -es állapot-reagálási kód sikeres regisztrációt jelez. Ha nem engedélyezett választ kap, ellenőrizze a felhasználónevet és a jelszót (például 401).
 
 ## <a name="define-the-workflow"></a>A munkafolyamat definiálása
+
 A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (hPDL) nyelven írták. a hPDL egy XML-folyamat definíciós nyelve. A munkafolyamat definiálásához hajtsa végre a következő lépéseket:
 
 1. Tartományi felhasználó munkaterületének beállítása:
+
    ```bash
    hdfs dfs -mkdir /user/<DomainUser>
    cd /home/<DomainUserPath>
@@ -61,24 +66,27 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
+
    Cserélje le a `DomainUser`t a tartományi felhasználónévre.
    Cserélje le a `DomainUserPath`t a tartományi felhasználó kezdőkönyvtárának elérési útjára.
    Cserélje le a `ClusterVersion`t a fürt adatplatformjának verziójára.
 
 2. Új fájl létrehozásához és szerkesztéséhez használja az alábbi utasítást:
+
    ```bash
    nano workflow.xml
    ```
 
 3. A nano Editor megnyitása után írja be a következő XML-fájlt a fájl tartalmába:
-   ```xml
+
+    ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
           <credential name="metastore_token" type="hcat">
              <property>
                 <name>hcat.metastore.uri</name>
-                <value>thrift://hn0-<clustername>.<Domain>.com:9083</value>
+                <value>thrift://<active-headnode-name>-<clustername>.<Domain>.com:9083</value>
              </property>
              <property>
                 <name>hcat.metastore.principal</name>
@@ -166,19 +174,21 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
        </kill>
        <end name="end" />
     </workflow-app>
-   ```
-4. Cserélje le a `clustername`t a fürt nevére. 
+    ```
 
-5. A fájl mentéséhez válassza a CTRL + X billentyűkombinációt. Írja be a `Y` (igen) kifejezést. Ezután kattintson az **ENTER**gombra.
+4. Cserélje le a `clustername`t a fürt nevére.
+
+5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**. Adja meg az **Y**értéket. Ezután kattintson az **ENTER**gombra.
 
     A munkafolyamat két részre oszlik:
-   * **Hitelesítő adatok szakasza.** Ez a szakasz a Oozie műveletek hitelesítéséhez használt hitelesítő adatokat veszi figyelembe:
+
+   - **Hitelesítőadat.** Ez a szakasz a Oozie műveletek hitelesítéséhez használt hitelesítő adatokat veszi figyelembe:
 
      Ez a példa a kaptár-műveletek hitelesítését használja. További információ: [művelet hitelesítése](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
 
      A hitelesítőadat-szolgáltatás lehetővé teszi, hogy a Oozie műveletek megszemélyesítsék a felhasználót a Hadoop-szolgáltatások eléréséhez.
 
-   * **Művelet szakasz.** Ez a szakasz három műveletet tartalmaz: Map-csökkentse, kaptár Server 2 és a kaptár Server 1:
+   - **Művelet.** Ez a szakasz három műveletet tartalmaz: Map-csökkentse, kaptár Server 2 és a kaptár Server 1:
 
      - A Térkép-csökkentés művelet egy példát mutat be egy Oozie-csomagból a Map-csökkentse, amely az összesített szavak darabszámát adja vissza.
 
@@ -187,9 +197,10 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
      A kaptár-műveletek a hitelesítő adatok szakaszban meghatározott hitelesítő adatokat használják a hitelesítéshez a műveleti elem `cred` kulcsszó használatával.
 
 6. A következő parancs használatával másolja a `workflow.xml` fájlt a `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`ba:
-     ```bash
+
+    ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
-     ```
+    ```
 
 7. Cserélje le a `domainuser`t a tartomány felhasználónevére.
 
@@ -197,12 +208,13 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
 
 1. Az alábbi utasítás használatával új fájlt hozhat létre és szerkeszthet a feladatok tulajdonságaihoz:
 
-   ```bash
-   nano job.properties
-   ```
+    ```bash
+    nano job.properties
+    ```
 
 2. A nano Editor megnyitása után használja az alábbi XML-fájlt a fájl tartalmának:
 
+<<<<<<< HEAD
    ```bash
        nameNode=adl://home
        jobTracker=headnodehost:8050
@@ -213,17 +225,34 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
        hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
        oozie.use.system.libpath=true
        user.name=[domainuser]
-       jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
+       jdbcPrincipal=hive/<active-headnode-name>.<Domain>.com@<Domain>.COM
        jdbcURL=[jdbcurlvalue]
        hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
+=======
+    ```bash
+    nameNode=adl://home
+    jobTracker=headnodehost:8050
+    queueName=default
+    examplesRoot=examples
+    oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+    hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+    hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+    oozie.use.system.libpath=true
+    user.name=[domainuser]
+    jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
+    jdbcURL=[jdbcurlvalue]
+    hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+    ```
+>>>>>>> 0650d78429b6d1b43cddf90fc713eb4050d71eef
 
-   * Akkor használja a `nameNode` tulajdonsághoz tartozó `adl://home` URI-t, ha a fürt elsődleges tárolója Azure Data Lake Storage Gen1. Ha az Azure Blob Storage-t használja, akkor módosítsa ezt a `wasb://home`ra. Ha Azure Data Lake Storage Gen2t használ, módosítsa ezt a `abfs://home`ra.
-   * Cserélje le a `domainuser`t a tartomány felhasználónevére.  
-   * Cserélje le a `ClusterShortName`t a fürt rövid nevére. Ha például a fürt neve https:// *[example link]* sechadoopcontoso.azurehdisnight.net, a `clustershortname` a fürt első hat karaktere: **sechad**.  
-   * Cserélje le a `jdbcurlvalue` elemet a kaptár konfigurációjában található JDBC URL-címmel. Ilyen például a JDBC: hive2://headnodehost: 10001/; transportMode = http.      
-   * A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, írja be `Y`, majd válassza az **ENTER billentyűt**.
+   - Akkor használja a `nameNode` tulajdonsághoz tartozó `adl://home` URI-t, ha a fürt elsődleges tárolója Azure Data Lake Storage Gen1. Ha az Azure Blob Storage-t használja, akkor módosítsa ezt a `wasb://home`ra. Ha Azure Data Lake Storage Gen2t használ, módosítsa ezt a `abfs://home`ra.
+   - Cserélje le a `domainuser`t a tartomány felhasználónevére.  
+   - Cserélje le a `ClusterShortName`t a fürt rövid nevére. Ha például a fürt neve https:// *[example link]* sechadoopcontoso.azurehdisnight.net, a `clustershortname` a fürt első hat karaktere: **sechad**.  
+   - Cserélje le a `jdbcurlvalue` elemet a kaptár konfigurációjában található JDBC URL-címmel. Ilyen például a JDBC: hive2://headnodehost: 10001/; transportMode = http.
+   - A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, írja be `Y`, majd válassza az **ENTER billentyűt**.
 
    Ennek a tulajdonságnak a Oozie-feladatok futtatásakor helyileg jelen kell lennie.
 
@@ -233,38 +262,44 @@ A következő részekben látható módon létrehozhatja az 1. és a kaptár-kis
 
 ### <a name="hive-server-1-file"></a>1\. struktúra-kiszolgáló fájl
 
-1.  Hozzon létre és szerkesszen egy fájlt a kaptár Server 1 műveleteihez:
+1. Hozzon létre és szerkesszen egy fájlt a kaptár Server 1 műveleteihez:
+
     ```bash
     nano countrowshive1.hql
     ```
 
-2.  Hozza létre a parancsfájlt:
+2. Hozza létre a parancsfájlt:
+
     ```sql
-    INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+    INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  Mentse a fájlt Apache Hadoop elosztott fájlrendszerba (HDFS):
+3. Mentse a fájlt Apache Hadoop elosztott fájlrendszerba (HDFS):
+
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
 
 ### <a name="hive-server-2-file"></a>2\. struktúra-kiszolgáló fájl
 
-1.  Hozzon létre és szerkesszen egy mezőt a kaptár-kiszolgáló 2 műveleteihez:
+1. Hozzon létre és szerkesszen egy mezőt a kaptár-kiszolgáló 2 műveleteihez:
+
     ```bash
     nano countrowshive2.hql
     ```
 
-2.  Hozza létre a parancsfájlt:
+2. Hozza létre a parancsfájlt:
+
     ```sql
     INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     select devicemodel from hivesampletable limit 2;
     ```
 
-3.  Mentse a fájlt a HDFS:
+3. Mentse a fájlt a HDFS:
+
     ```bash
     hdfs dfs -put countrowshive2.hql countrowshive2.hql
     ```
@@ -276,39 +311,38 @@ Az ESP-fürtökhöz tartozó Oozie-feladatok elküldése olyan, mint az Oozie-fe
 További információ: az [Apache Oozie és a Apache Hadoop használata a munkafolyamat definiálásához és futtatásához Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Oozie-feladatok beküldésének eredményei
+
 Oozie feladatok futnak a felhasználó számára. Így mind a Apache Hadoop FONÁL, mind az Apache Ranger-napló a megszemélyesített felhasználóként futtatott feladatokat mutatja. A Oozie-feladatok parancssori felületének kimenete a következő kódhoz hasonlít:
 
+```output
+Job ID : 0000015-180626011240801-oozie-oozi-W
+------------------------------------------------------------------------------------------------
+Workflow Name : map-reduce-wf
+App Path      : adl://home/user/alicetest/examples/apps/map-reduce/wf.xml
+Status        : SUCCEEDED
+Run           : 0
+User          : alicetest
+Group         : -
+Created       : 2018-06-26 19:25 GMT
+Started       : 2018-06-26 19:25 GMT
+Last Modified : 2018-06-26 19:30 GMT
+Ended         : 2018-06-26 19:30 GMT
+CoordAction ID: -
 
-
-```bash
-    Job ID : 0000015-180626011240801-oozie-oozi-W
-    ------------------------------------------------------------------------------------------------
-    Workflow Name : map-reduce-wf
-    App Path      : adl://home/user/alicetest/examples/apps/map-reduce/wf.xml
-    Status        : SUCCEEDED
-    Run           : 0
-    User          : alicetest
-    Group         : -
-    Created       : 2018-06-26 19:25 GMT
-    Started       : 2018-06-26 19:25 GMT
-    Last Modified : 2018-06-26 19:30 GMT
-    Ended         : 2018-06-26 19:30 GMT
-    CoordAction ID: -
-    
-    Actions
-    ------------------------------------------------------------------------------------------------
-    ID                      Status  Ext ID          ExtStatus   ErrCode
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
-    ------------------------------------------------------------------------------------------------
-    0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
-    -----------------------------------------------------------------------------------------------
+Actions
+------------------------------------------------------------------------------------------------
+ID                      Status  Ext ID          ExtStatus   ErrCode
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+------------------------------------------------------------------------------------------------
+0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+-----------------------------------------------------------------------------------------------
 ```
 
 A (2) struktúra-kiszolgáló két művelete a Oozie a felhasználó műveletét futtató naplókat jeleníti meg. A Ranger és a fonal nézetei csak a fürt rendszergazdája számára láthatók.
@@ -330,5 +364,6 @@ A Oozie webes felhasználói felülete webes nézetet biztosít a fürt Oozie-fe
 2. A [Oozie webes felhasználói felületének](../hdinsight-use-oozie-linux-mac.md) lépéseit követve engedélyezze az SSH-bújtatást a peremhálózati csomóponton, és nyissa meg a webes felhasználói felületet.
 
 ## <a name="next-steps"></a>Következő lépések
-* Az [Apache Oozie és a Apache Hadoop használatával megadhatja és futtathatja a munkafolyamatokat a Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md).
-* [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+
+- Az [Apache Oozie és a Apache Hadoop használatával megadhatja és futtathatja a munkafolyamatokat a Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md).
+- [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

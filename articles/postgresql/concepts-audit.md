@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764559"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747338"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Naplózás naplózása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -21,7 +21,7 @@ Az adatbázis-tevékenységek naplózása Azure Database for PostgreSQL – az e
 > a pgAudit előzetes verzióban érhető el Azure Database for PostgreSQL.
 > A bővítmény csak általános célú és a memóriára optimalizált kiszolgálókon engedélyezhető.
 
-Ha az Azure-beli erőforrás-szintű naplókat szeretné használni a számítási és tárolási skálázási műveletekhez, tekintse meg az [Azure-tevékenység naplóját](../azure-monitor/platform/activity-logs-overview.md).
+Ha az Azure-beli erőforrás-szintű naplókat szeretné használni a számítási és tárolási skálázási műveletekhez, tekintse meg az [Azure-tevékenység naplóját](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Használati megfontolások
 Alapértelmezés szerint a pgAudit naplóutasítások a normál naplóutasításokkal együtt vannak kibocsátva a Postgres standard naplózási eszközének használatával. Az Azure Database for PostgreSQL-ben ezek a .log-fájlok az Azure Portalról vagy a parancssori felületről tölthetők le. A fájlok gyűjteményének maximális tárterülete 1 GB, és minden fájl legfeljebb hét napig érhető el (az alapértelmezett érték három nap). Ez a szolgáltatás egy rövid távú tárolási lehetőség.
@@ -84,7 +84,7 @@ t=%m u=%u db=%d pid=[%p]:
 
 Ha többet szeretne megtudni a `log_line_prefix`ről, látogasson el a [PostgreSQL dokumentációjában](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
-### <a name="getting-started"></a>Bevezetés
+### <a name="getting-started"></a>Első lépések
 A gyors kezdéshez állítsa be `pgaudit.log` `WRITE`re, és nyissa meg a naplókat a kimenet áttekintéséhez. 
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383979"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75530680"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
 
@@ -46,13 +46,13 @@ A tantermi labor beállításakor használja az alábbi táblázatban szereplő 
 | Tesztkörnyezet beállításai | Érték/utasítások |
 | ------------ | ------------------ |
 |Virtuális gép mérete| Kis GPU (számítás). Ez a méret a legjobb megoldás a nagy számítási igényű és a hálózati igényű alkalmazások, például a mesterséges intelligencia és a mély tanulás számára. |
-|Virtuálisgép-rendszerkép| SQL Server 2019 standard Windows Server 2019 rendszeren|
+|Virtuálisgép-rendszerkép| Adatelemző virtuális gép – Windows 2016|
 
 ## <a name="template-machine"></a>Sablon számítógép
 
 A [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) rendszerkép biztosítja az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket.  A kép tartalmazza a Jupyter notebookokat és a Visual Studio Code-ot.  A [Jupyter notebookok](http://jupyter-notebook.readthedocs.io) egy webalkalmazás, amely lehetővé teszi az adatszakértők számára a nyers adatok bevezetését, a számítások futtatását, valamint az eredmények megtekintését ugyanabban a környezetben.  A sablonos gépen a webalkalmazás helyileg fog futni.  A [Visual Studio Code](https://code.visualstudio.com/) egy olyan ide, amely gazdag interaktív élményt nyújt a jegyzetfüzetek írásakor és tesztelésekor.  További információ: [Jupyter notebookok használata a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/jupyter-support).
 
-Az osztály beállításához fennmaradó feladat a helyi jegyzetfüzetek biztosítása.  Az Azure Machine Learning minták használatával kapcsolatos útmutatásért lásd: [környezet konfigurálása Jupyter notebookokkal](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Saját jegyzetfüzeteket is megadhat a sablon számítógépén.  A jegyzetfüzeteket a rendszer a sablon közzétételekor másolja az összes tanulói gépre.
+Az osztály beállításához fennmaradó feladat a helyi jegyzetfüzetek biztosítása.  Az Azure Machine Learning minták használatával kapcsolatos útmutatásért lásd: [környezet konfigurálása Jupyter notebookokkal](../../machine-learning/how-to-configure-environment.md#jupyter).  Saját jegyzetfüzeteket is megadhat a sablon számítógépén.  A jegyzetfüzeteket a rendszer a sablon közzétételekor másolja az összes tanulói gépre.
 
 ## <a name="cost-estimate"></a>Becsült költség
 

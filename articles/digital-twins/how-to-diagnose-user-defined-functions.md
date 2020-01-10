@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f963885f60116bf23087fceb6a92d18e71ac7f24
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457023"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745335"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények hibakeresése az Azure Digital Ikrekben
 
@@ -35,7 +35,7 @@ Az Azure digitális Twins támogatja a robusztus naplózást, monitorozást és 
 
 * Az Azure Digital Twins-specifikus naplózási konfigurációhoz olvassa el a [figyelés és naplózás konfigurálását ismertető témakört](./how-to-configure-monitoring.md).
 * Tekintse át a [Azure monitor](../azure-monitor/overview.md) áttekintését, és ismerkedjen meg a Azure monitor használatával engedélyezett hatékony naplózási beállításokkal.
-* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/resource-logs-overview.md) az Azure Digital Twins diagnosztikai napló beállításainak konfigurálásához a Azure Portal, az Azure CLI vagy a PowerShell használatával.
+* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/platform-logs-overview.md) az Azure Digital Twins diagnosztikai napló beállításainak konfigurálásához a Azure Portal, az Azure CLI vagy a PowerShell használatával.
 
 A konfigurálást követően kiválaszthatja az összes naplózási kategóriát, metrikákat, és hatékony Azure Monitor log Analytics-munkaterületeket használhat a hibakeresési erőfeszítések támogatásához.
 
@@ -216,4 +216,4 @@ Ha engedélyezi a diagnosztikai beállításokat, a következő gyakori kivétel
 
 - Ismerje meg, hogyan engedélyezheti a [monitorozást és a naplókat](./how-to-configure-monitoring.md) az Azure digitális Twins szolgáltatásban.
 
-- További Azure-naplózási lehetőségekért olvassa el az [Azure-tevékenység naplójának áttekintését ismertető](../azure-monitor/platform/activity-logs-overview.md) cikket.
+- További Azure-naplózási lehetőségekért olvassa el az [Azure-tevékenység naplójának áttekintését ismertető](../azure-monitor/platform/platform-logs-overview.md) cikket.

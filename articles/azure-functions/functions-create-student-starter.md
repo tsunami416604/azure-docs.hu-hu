@@ -6,16 +6,16 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d20f56e0fba3af5885043fa344e7c6aa4e13d1b2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976876"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769234"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
 
-Ebben az oktatóanyagban létrehozunk egy Hello World HTTP-függvényt egy Azure diákoknak kezdő előfizetéshez. Az előfizetéshez tartozó Azure Functions elérhetővé tételeit is megismerheti.
+Ebben az oktatóanyagban létrehozunk egy "Hello World" HTTP-függvényt egy Azure diákoknak kezdő előfizetéshez. Az előfizetéshez tartozó Azure Functions elérhetővé tételeit is megismerheti.
 
 A Microsoft *Azure diákoknak kezdő* csomaggal a felhőben való fejlesztéshez szükséges Azure-termékeket ingyenesen elsajátíthatja. [Ebben az ajánlatban itt találhat további információt.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -33,9 +33,9 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen az Azur
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, telepítése és megosztása érdekében. 
+Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
-1. Válassza az Azure Portal bal felső sarkában található **Új** gombot, majd válassza a **Számítás** > **Függvényalkalmazás** lehetőséget.
+1. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombot. Ezután válassza a **számítási** > **függvényalkalmazás**lehetőséget.
 
     ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -47,7 +47,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
     | ------------ |  ------- | -------------------------------------------------- |
     | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: `a-z`, `0-9` és `-`.  | 
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. | 
-    | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
    | **[App Service csomag/hely](./functions-scale.md)** | Új | A üzemeltetési terv, amely azt szabályozza, hogy a Function alkalmazás mely régiót helyezi üzembe, és az erőforrások sűrűségét. Az ugyanarra a csomagra telepített több Function-alkalmazás mindegyike ugyanazzal az ingyenes példánnyal fog osztozni. Ez a Student Starter-terv korlátozása. [Itt részletesen ismertetjük](./functions-scale.md) a teljes üzemeltetési lehetőségeket.|
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
     |**[Application Insights](./functions-monitoring.md)**| Engedélyezve | Application Insights a függvény alkalmazás naplófájljainak tárolására és elemzésére szolgál. Alapértelmezés szerint engedélyezve van, ha olyan helyet választ, amely támogatja a Application Insights. Application Insights bármely függvényhez engedélyezhető, ha manuálisan kiválasztja a közeli régiót Application Insights üzembe helyezéséhez. Application Insights nélkül csak az élő adatfolyam-naplókat fogja tudni megtekinteni.
@@ -110,7 +110,7 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Az Azure diákoknak kezdőknek támogatott szolgáltatásai
 
-Az Azure Student Starter-ben a Azure Functions futtatókörnyezet legtöbb funkcióját elérheti, és több, az alábbiakban felsorolt kulcsfontosságú korlátozással is rendelkezik:
+Az Azure diákoknak kezdőknek hozzáférése van a Azure Functions futtatókörnyezet legtöbb funkciójának nagy részéhez, és több, az alábbiakban felsorolt kulcsfontosságú korlátozással rendelkezik:
 
 * A HTTP-trigger az egyetlen támogatott trigger-típus.
     * Minden bemenet és minden kimeneti kötés támogatott! [Itt tekintheti meg a teljes listát.](functions-triggers-bindings.md)

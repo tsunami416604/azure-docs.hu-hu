@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 05ba1d97d4eba92f492289375f85425f8920510b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572773"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749753"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
-Minden Analysis Services megoldás fontos része a kiszolgálók végrehajtásának figyelése. Az [Azure erőforrás-diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md)segítségével figyelheti és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Azure monitor naplókba](../azure-monitor/azure-monitor-log-hub.md).
+Minden Analysis Services megoldás fontos része a kiszolgálók végrehajtásának figyelése. Az [Azure erőforrás-diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)segítségével figyelheti és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [Azure monitor naplókba](../azure-monitor/azure-monitor-log-hub.md).
 
 ![Diagnosztikai naplózás a tárolási, Event Hubs vagy Azure Monitor naplókba](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="whats-logged"></a>Mi a naplózott?
+## <a name="whats-logged"></a>Mi kerül naplózásra?
 
 Kiválaszthatja a **motor**, a **szolgáltatás**és a **metrikák** kategóriáit.
 
@@ -32,8 +32,8 @@ A **motor** kiválasztásával naplózza az összes [xevent típusú eseményekh
 
 |XEvent-kategóriák |Esemény neve  |
 |---------|---------|
-|Biztonsági naplózás    |   Bejelentkezés naplózása      |
-|Biztonsági naplózás    |   Kijelentkezés naplózása      |
+|Biztonsági naplózás    |   Naplózás bejelentkezése      |
+|Biztonsági naplózás    |   Naplózás kijelentkezés      |
 |Biztonsági naplózás    |   A naplózási kiszolgáló elindul és leáll      |
 |Folyamatjelző jelentések     |   Előrehaladási jelentés kezdete      |
 |Folyamatjelző jelentések     |   Az állapotjelző jelentés vége      |
@@ -45,8 +45,8 @@ A **motor** kiválasztásával naplózza az összes [xevent típusú eseményekh
 |Hibák & figyelmeztetésekkel     |   Hiba      |
 |Ismertetők     |   Felderítés vége      |
 |Értesítés     |    Értesítés     |
-|Munkamenet     |  Munkamenet inicializálása       |
-|Zárolások    |  Holtpont       |
+|Munkamenet     |  A munkamenet inicializálása       |
+|Zárolások    |  holtpont       |
 |Lekérdezés feldolgozása     |   VertiPaq SE-lekérdezés kezdete      |
 |Lekérdezés feldolgozása     |   VertiPaq SE lekérdezés vége      |
 |Lekérdezés feldolgozása     |   VertiPaq SE lekérdezés-gyorsítótár egyezése      |
@@ -70,25 +70,25 @@ A metrikák kategória ugyanazokat a [kiszolgálói metrikákat](analysis-servic
 
 ## <a name="setup-diagnostics-logging"></a>Diagnosztikai naplózás beállítása
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. [Azure Portal](https://portal.azure.com) >-kiszolgáló területen kattintson a bal oldali navigációs sávon a **diagnosztikai naplók** elemre, majd kattintson a **diagnosztika bekapcsolása**elemre.
 
     ![Azure Cosmos DB diagnosztikai naplózásának bekapcsolása a Azure Portal](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
-2. A **diagnosztikai beállítások**területen a következő beállításokat adhatja meg: 
+2. A **diagnosztikai beállítások** területen adja meg a következő beállításokat: 
 
     * **Név**. Adja meg a létrehozandó naplók nevét.
 
-    * **Archiválás egy Storage-fiókba**. Ha ezt a beállítást szeretné használni, egy meglévő Storage-fiókra van szüksége a kapcsolódáshoz. Lásd: [Storage-fiók létrehozása](../storage/common/storage-create-storage-account.md). Az utasításokat követve hozzon létre egy Resource Managert, általános célú fiókot, majd válassza ki a Storage-fiókját, és térjen vissza erre az oldalra a portálon. Eltarthat néhány percig, amíg az újonnan létrehozott Storage-fiókok megjelennek a legördülő menüben.
-    * **Adatfolyam küldése az Event hub-** nak. Ennek a lehetőségnek a használatához egy meglévő Event hub-névtérre és egy Event hub-ra van szükség a kapcsolódáshoz. További információ: [Event Hubs névtér és az Event hub létrehozása a Azure Portal használatával](../event-hubs/event-hubs-create.md). Ezután térjen vissza ehhez az oldalhoz a portálon, és válassza ki az Event hub névterét és a házirend nevét.
+    * **Archiválás egy Storage-fiókba**. Ha ezt a beállítást szeretné használni, egy meglévő Storage-fiókra van szüksége a kapcsolódáshoz. Lásd: [Storage-fiók létrehozása](../storage/common/storage-create-storage-account.md). Az utasításokat követve hozzon létre egy Resource Managert, általános célú fiókot, majd válassza ki a Storage-fiókját, és térjen vissza erre az oldalra a portálon. Néhány percet igénybe vehet, hogy az újonnan létrehozott tárfiók megjelenjen a legördülő menüben.
+    * **Adatfolyam küldése az Event hub-** nak. Ennek a lehetőségnek a használatához egy meglévő Event hub-névtérre és egy Event hub-ra van szükség a kapcsolódáshoz. További információt az [Event Hubs-névtér és eseményközpont létrehozása az Azure Portal használatával](../event-hubs/event-hubs-create.md) című témakörben talál. Ezután térjen vissza ehhez az oldalhoz a portálon, és válassza ki az Event hub névterét és a házirend nevét.
     * **Küldés Azure monitor (log Analytics munkaterületre)** . Ha ezt a beállítást szeretné használni, használjon egy meglévő munkaterületet, vagy [hozzon létre egy új munkaterület](../azure-monitor/learn/quick-create-workspace.md) -erőforrást a portálon. A naplók megtekintésével kapcsolatos további információkért tekintse meg a jelen cikk [naplók megtekintése log Analytics munkaterületen](#view-logs-in-log-analytics-workspace) című témakörét.
 
     * **Motor**. Válassza ezt a lehetőséget a Xevent típusú eseményekhez naplózásához. Ha egy Storage-fiókba végez archiválást, kiválaszthatja a diagnosztikai naplók megőrzési időtartamát. A naplók a megőrzési időszak lejárta után törlődnek.
-    * **Szolgáltatás**. Válassza ezt a lehetőséget a szolgáltatási szint eseményeinek naplózásához. Ha Storage-fiókba végez archiválást, kiválaszthatja a megőrzési időszakot a diagnosztikai naplók számára. A naplók a megőrzési időszak lejárta után törlődnek.
-    * **Metrikák**. Válassza ezt a lehetőséget, ha részletes adatokat szeretne tárolni a [mérőszámokban](analysis-services-monitor.md#server-metrics). Ha Storage-fiókba végez archiválást, kiválaszthatja a megőrzési időszakot a diagnosztikai naplók számára. A naplók a megőrzési időszak lejárta után törlődnek.
+    * **Szolgáltatás**. Válassza ezt a lehetőséget a szolgáltatási szint eseményeinek naplózásához. Ha tárfiókba archivál, kiválaszthatja a diagnosztikai naplók megőrzési időtartamát. A naplók a megőrzési időszak lejárta után törlődnek.
+    * **Metrikák**. Válassza ezt a lehetőséget, ha részletes adatokat szeretne tárolni a [mérőszámokban](analysis-services-monitor.md#server-metrics). Ha tárfiókba archivál, kiválaszthatja a diagnosztikai naplók megőrzési időtartamát. A naplók a megőrzési időszak lejárta után törlődnek.
 
-3. Kattintson a **Save** (Mentés) gombra.
+3. Kattintson a **Mentés** gombra.
 
     Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \<munkaterület neve > a diagnosztikát. Az előfizetés \<előfizetés-azonosító > nincs regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
 
@@ -98,49 +98,49 @@ A metrikák kategória ugyanazokat a [kiszolgálói metrikákat](analysis-servic
 
 Itt találja az alapszintű parancsokat, amelyekkel elvégezheti a munkát. Ha azt szeretné, hogy a PowerShell használatával hogyan állíthatja be a naplózást egy Storage-fiókba, tekintse meg a cikk későbbi, című szakaszát.
 
-A metrikák és a diagnosztika naplózásának a PowerShell használatával történő engedélyezéséhez használja a következő parancsokat:
+PowerShell használatával a diagnosztikát és a metrikákat az alábbi parancsok segítségével engedélyezheti:
 
-- A következő parancs használatával engedélyezheti a diagnosztikai naplók tárolását egy Storage-fiókban:
+- Az alábbi paranccsal engedélyezheti a diagnosztikai naplók tárfiókban való tárolását:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
-   A Storage-fiók azonosítója annak a Storage-fióknak az erőforrás-azonosítója, ahová el szeretné küldeni a naplókat.
+   A Storage-fiók azonosítója (storage account ID) annak a tárfióknak az erőforrás-azonosítója, amelybe a naplókat szeretné küldeni.
 
-- Ha engedélyezni szeretné a diagnosztikai naplók továbbítását az Event hub-ba, használja a következő parancsot:
+- Az alábbi parancs használatával engedélyezheti a diagnosztikai naplók streamelését egy eseményközpontba:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   A Azure Service Bus szabály azonosítója a következő formátumú karakterlánc:
+   Az Azure Service Bus szabályazonosítója (rule ID) egy sztring az alábbi formátumban:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- A diagnosztikai naplók Log Analytics munkaterületre való küldésének engedélyezéséhez használja a következő parancsot:
+- Az alábbi paranccsal engedélyezheti a diagnosztikai naplók Log Analytics-munkaterületre való küldését:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
-- A Log Analytics munkaterület erőforrás-AZONOSÍTÓját a következő paranccsal szerezheti be:
+- A Log Analytics-munkaterület erőforrás-azonosítóját (ResourceId) az alábbi paranccsal kérheti le:
 
    ```powershell
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Ezeket a paramétereket kombinálva több kimeneti beállítást is engedélyezhet.
+Ezeket a paramétereket kombinálhatja is, ha több kimeneti eredményt szeretne kapni.
 
 ### <a name="rest-api"></a>REST API
 
-Megtudhatja, hogyan [változtathatja meg a diagnosztikai beállításokat a Azure Monitor REST API használatával](https://docs.microsoft.com/rest/api/monitor/). 
+Ismerje meg, [hogyan módosíthatja a diagnosztikai beállításokat az Azure Monitor REST API használatával](https://docs.microsoft.com/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Resource Manager-sablon
 
-Megtudhatja, hogyan [engedélyezheti a diagnosztikai beállításokat erőforrás-létrehozáshoz Resource Manager-sablon használatával](../azure-monitor/platform/diagnostic-settings-template.md). 
+Ismerje meg, [hogyan engedélyezheti a diagnosztikai beállításokat az erőforrás létrehozásánál a Resource Manager-sablon használatával](../azure-monitor/platform/diagnostic-settings-template.md). 
 
 ## <a name="manage-your-logs"></a>Naplók kezelése
 
@@ -158,13 +158,13 @@ A diagnosztikai adatok megtekintéséhez Log Analytics munkaterületen nyissa me
 
 ![A Azure Portal keresési beállításainak naplózása](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-A lekérdezés-szerkesztőben bontsa ki a **LogManagement** > **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass\_s mező xEvent neveket tartalmaz, amelyek ismerősek lehetnek, ha a helyszíni naplózáshoz Xevent típusú eseményekhez használta. Kattintson a **EventClass\_s** vagy az egyik esemény nevére, és log Analytics a munkaterület folytatja a lekérdezés összeállítását. Ügyeljen arra, hogy a lekérdezéseket később újra felhasználhassa.
+A lekérdezés-szerkesztőben bontsa ki a **LogManagement** > **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass\_s mező xEvent neveket tartalmaz, amelyek ismerősek lehetnek, ha a helyszíni naplózáshoz Xevent típusú eseményekhez használta. Kattintson a **EventClass\_s** vagy az egyik esemény nevére, és log Analytics a munkaterület folytatja a lekérdezés összeállítását. A lekérdezéseket ajánlatos menteni későbbi használatra.
 
 ### <a name="example-queries"></a>Példák lekérdezésekre
 
 #### <a name="example-1"></a>1\. példa
 
-A következő lekérdezés a modell-adatbázis és-kiszolgáló minden lekérdezési End/Fresh End eseményének időtartamát adja vissza. Ha a méretezés ki van bontva, az eredményeket a replika bontja ki, mert a replika száma szerepel a ServerName_s. Az RootActivityId_g szerinti csoportosítás csökkenti a Azure Diagnostics REST APIból beolvasott sorok számának lekérését, és az [log Analytics díjszabási korlátaiban](https://dev.loganalytics.io/documentation/Using-the-API/Limits)leírtaknak megfelelően segíti a korlátokon belüli tartózkodást.
+A következő lekérdezés a modell-adatbázis és-kiszolgáló minden lekérdezési End/Fresh End eseményének időtartamát adja vissza. Ha a méretezés ki van bontva, az eredmények a replika szerint vannak kiosztva, mivel a replika száma szerepel a ServerName_sban. Az RootActivityId_g csoportosítása csökkenti a Azure Diagnostics REST API lekért sorszámokat, és az [log Analytics díjszabásában](https://dev.loganalytics.io/documentation/Using-the-API/Limits)leírtaknak megfelelően segít a korlátokon belül maradni.
 
 ```Kusto
 let window = AzureDiagnostics
@@ -179,7 +179,7 @@ window
 
 #### <a name="example-2"></a>2\. példa
 
-A következő lekérdezés egy kiszolgáló memória-és QPU-felhasználását adja vissza. Ha a méretezés ki van bontva, az eredményeket a replika bontja ki, mert a replika száma szerepel a ServerName_s.
+A következő lekérdezés egy kiszolgáló memória-és QPU-felhasználását adja vissza. Ha a méretezés ki van bontva, az eredmények a replika szerint vannak kiosztva, mivel a replika száma szerepel a ServerName_sban.
 
 ```Kusto
 let window = AzureDiagnostics
@@ -208,7 +208,7 @@ window
 | order by TimeGenerated asc 
 ```
 
-Több száz lekérdezés használható. A lekérdezésekkel kapcsolatos további tudnivalókért tekintse meg [az Ismerkedés a Azure monitor log lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)című témakört.
+Több száz lekérdezést használhat. A lekérdezésekkel kapcsolatos további tudnivalókért tekintse meg [az Ismerkedés a Azure monitor log lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)című témakört.
 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>A naplózás bekapcsolása a PowerShell használatával
@@ -324,8 +324,8 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
   -RetentionEnabled $true -RetentionInDays 90
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure erőforrás-diagnosztika naplózásáról](../azure-monitor/platform/resource-logs-overview.md).
+További információ az [Azure erőforrás-diagnosztika naplózásáról](../azure-monitor/platform/platform-logs-overview.md).
 
 Lásd: [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) a PowerShell súgójában.

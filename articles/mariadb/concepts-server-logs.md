@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: 651094f043162cdc5f6d522c90c7567ae94a4274
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976315"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746655"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezési naplók a Azure Database for MariaDB
 Azure Database for MariaDB a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -41,12 +41,12 @@ Az egyéb paraméterek a következők:
 - **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
-- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha "nincs", a lassú lekérdezési napló csak a helyi kiszolgáló tárterületére lesz írva. 
+- **log_output**: Ha a "fájl", lehetővé teszi a lassú lekérdezési napló írását a helyi kiszolgáló tárterületére és a diagnosztikai naplók Azure Monitorére. Ha "nincs", a lassú lekérdezési napló csak Azure Monitor diagnosztikai naplókba lesz írva. 
 
 A lassú lekérdezési napló paramétereinek teljes leírását a MariaDB [lassú lekérdezési napló dokumentációjában](https://mariadb.com/kb/en/library/slow-query-log-overview/) találja.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Azure Database for MariaDB integrálva van Azure Monitor diagnosztikai naplókba. Ha engedélyezte a lassú lekérdezési naplókat a MariaDB-kiszolgálón, kiválaszthatja, hogy Azure Monitor naplók, Event Hubs vagy az Azure Storage szolgáltatásban. A diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációjának](../azure-monitor/platform/resource-logs-overview.md)útmutató szakaszát.
+Azure Database for MariaDB integrálva van Azure Monitor diagnosztikai naplókba. Ha engedélyezte a lassú lekérdezési naplókat a MariaDB-kiszolgálón, kiválaszthatja, hogy Azure Monitor naplók, Event Hubs vagy az Azure Storage szolgáltatásban. A diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációjának](../azure-monitor/platform/platform-logs-overview.md)útmutató szakaszát.
 
 > [!IMPORTANT]
 > A kiszolgálói naplókhoz tartozó diagnosztikai funkció csak a általános célú és a memória optimalizált [díjszabási szintjein](concepts-pricing-tiers.md)érhető el.

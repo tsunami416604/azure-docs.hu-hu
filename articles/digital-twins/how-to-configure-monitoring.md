@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547098"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745446"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>A monitorozás konfigurálása az Azure digitális Twins szolgáltatásban
 
@@ -26,7 +26,7 @@ Ez a cikk összefoglalja a naplózási és figyelési lehetőségeket, valamint 
 
 ## <a name="review-activity-logs"></a>Tevékenységek naplóinak áttekintése
 
-Az Azure- [Tevékenységnaplók](../azure-monitor/platform/activity-logs-overview.md) gyors elemzéseket nyújtanak az előfizetési szintű eseményekről és a műveleti előzményekről az egyes Azure-szolgáltatási példányok esetében.
+Az Azure- [Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md) gyors elemzéseket nyújtanak az előfizetési szintű eseményekről és a műveleti előzményekről az egyes Azure-szolgáltatási példányok esetében.
 
 Az előfizetés szintű események a következők:
 
@@ -57,7 +57,7 @@ A speciális tevékenységek naplózása:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Az ügyfél diagnosztikai naplóinak engedélyezése
 
-Az Azure [diagnosztikai beállításai](../azure-monitor/platform/resource-logs-overview.md) mindegyik Azure-példányhoz megadhatók a tevékenységek naplózásának kiegészítéséhez. Míg a tevékenység naplói előfizetési szintű eseményekre vonatkoznak, a diagnosztikai naplózási szolgáltatás betekintést nyújt az erőforrások működési előzményeibe.
+Az Azure [diagnosztikai beállításai](../azure-monitor/platform/platform-logs-overview.md) mindegyik Azure-példányhoz megadhatók a tevékenységek naplózásának kiegészítéséhez. Míg a tevékenység naplói előfizetési szintű eseményekre vonatkoznak, a diagnosztikai naplózási szolgáltatás betekintést nyújt az erőforrások működési előzményeibe.
 
 A diagnosztikai naplózás példái például a következők:
 
@@ -121,14 +121,14 @@ Azure Monitor a naplók hatékony és riasztási értesítési szolgáltatásoka
 >[!TIP]
 >Több alkalmazás-funkció, előfizetés vagy szolgáltatás esetén **log Analytics munkaterület** használatával kérdezheti le a napló előzményeit.
 
-## <a name="other-options"></a>Egyéb beállítások
+## <a name="other-options"></a>Egyéb lehetőségek
 
 Az Azure Digital Twins az alkalmazásspecifikus naplózást és a biztonsági naplózást is támogatja. Az Azure-beli digitális Twins-példányok Azure-naplózási lehetőségeinek részletes áttekintését az [Azure napló naplózási](../security/fundamentals/log-audit.md) cikkében találja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az Azure- [tevékenységek naplóiról](../azure-monitor/platform/activity-logs-overview.md).
+- További információ az Azure- [tevékenységek naplóiról](../azure-monitor/platform/platform-logs-overview.md).
 
-- A [diagnosztikai naplók áttekintésével](../azure-monitor/platform/resource-logs-overview.md)mélyebben megismerheti az Azure diagnosztikai beállításait.
+- A [diagnosztikai naplók áttekintésével](../azure-monitor/platform/platform-logs-overview.md)mélyebben megismerheti az Azure diagnosztikai beállításait.
 
 - További információ a [Azure monitor naplókról](../azure-monitor/log-query/get-started-portal.md).

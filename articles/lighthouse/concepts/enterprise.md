@@ -3,12 +3,12 @@ title: Az Azure Lighthouse nagyvállalati forgatókönyvekben
 description: Az Azure Lighthouse képességeinek használatával egyszerűsítheti a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure AD-bérlőt használ.
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463914"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749207"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Az Azure Lighthouse nagyvállalati forgatókönyvekben
 
@@ -38,7 +38,7 @@ Mindkét esetben ügyeljen arra, hogy [kövesse a legalacsonyabb jogosultsági s
 
 Az Azure Lighthouse és az Azure-beli meghatalmazott erőforrás-kezelés csak logikai kapcsolatokat biztosít a bérlők és a felügyelt bérlők között, és nem fizikailag helyezi át az adatátvitelt és az erőforrásokat. Továbbá a hozzáférés mindig csak egy irányba mutat, a bérlő kezelése a felügyelt bérlők felé.  A kezelő bérlő felhasználói és csoportjai továbbra is használhatják a többtényezős hitelesítést a felügyelt bérlői erőforrásokon végzett felügyeleti műveletek végrehajtásakor.
 
-A belső vagy külső irányítási és megfelelőségi guardrails rendelkező vállalatok az [Azure-tevékenység naplóit](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) használhatják az átláthatósági követelmények teljesítéséhez. Ha a vállalati bérlők felügyeleti és felügyelt bérlői kapcsolatokat létesítettek, az egyes bérlők felhasználói a naplózott tevékenységek megtekintésével megtekinthetik és láthatják a másik bérlő felhasználói által végrehajtott műveleteket.
+A belső vagy külső irányítási és megfelelőségi guardrails rendelkező vállalatok az [Azure-tevékenység naplóit](../../azure-monitor/platform/platform-logs-overview.md) használhatják az átláthatósági követelmények teljesítéséhez. Ha a vállalati bérlők felügyeleti és felügyelt bérlői kapcsolatokat létesítettek, az egyes bérlők felhasználói a naplózott tevékenységek megtekintésével megtekinthetik és láthatják a másik bérlő felhasználói által végrehajtott műveleteket.
 
 ## <a name="onboarding-process-considerations"></a>Előkészítési folyamat szempontjai
 

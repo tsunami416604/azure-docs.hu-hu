@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Azure-beli virtuális gépek szabályozása az Azure CLI-vel
-description: Ez az oktatóanyag bemutatja, hogyan kezelheti Azure-beli virtuális gépeit az RBAC, szabályzatok, zárolások és címkék alkalmazásával az Azure CLI-vel
+title: Oktatóanyag – virtuális gépek kezelése a parancssori felülettel
+description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-beli virtuális gépeket az Azure CLI használatával a RBAC, a házirendek, a zárolások és a címkék alkalmazásával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 97003699f8dbaa028ff7d4739a4f0576a8790716
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034543"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749924"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Oktatóanyag: A Linux rendszerű virtuális gépek Azure CLI-vel történő vezérlése
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "74034543"
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szüksége. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="understand-scope"></a>A hatókör bemutatása
+## <a name="understand-scope"></a>A hatókör megismerése
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -239,5 +239,5 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit egy virtuális gépen.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek kezelése](tutorial-config-management.md)
+> [Virtuális gépek felügyelete](tutorial-config-management.md)
 

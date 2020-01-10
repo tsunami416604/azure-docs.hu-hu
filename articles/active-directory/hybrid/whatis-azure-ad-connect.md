@@ -1,31 +1,31 @@
 ---
-title: Mi az Azure AD Connect és a Connect Health. | Microsoft Docs
-description: Szinkronizálását és figyelni a helyszíni környezetet az Azure ad-vel használt eszközöket írja le.
+title: Mi az Azure AD Connect és a kapcsolat állapota. | Microsoft Docs
+description: Ismerteti a helyszíni környezet Azure AD-vel való szinkronizálásához és figyeléséhez használt eszközöket.
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c984faf22b8e4cd499a5588f45d7072610f33544
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784463"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767925"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 
 A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid identitáskezelési célokat.  Ez a tevékenység a következő jellemzőkkel bír:
     
-- [A Jelszókivonat-szinkronizálás](whatis-phs.md) -egy bejelentkezési módszer, amely a felhasználók kivonatát szinkronizálja a helyszíni AD-jelszó az Azure ad-ben.
-- [Az átmenő hitelesítés](how-to-connect-pta.md) -egy bejelentkezési módszer, amely lehetővé teszi a felhasználóknak az azonos jelszót a helyszínen és a felhőben, de nem igényel további infrastruktúrája az összevont környezetekben.
-- [Összevonási integrációs](how-to-connect-fed-whatis.md) -összevonási az Azure AD Connect elhagyható összetevője, és a egy-egy helyszíni hibrid környezet konfigurálásához használható AD FS-infrastruktúrát. Például a tanúsítvány megújításához és a további AD FS-kiszolgálói konfigurációk mellett az AD FS felügyeleti lehetőségeket is kínál.
-- [Szinkronizálási](how-to-connect-sync-whatis.md) - felhasználók, csoportok és egyéb objektumok létrehozásáért felelős.  Valamint – identitásadatokat meg arról, hogy így a helyi felhasználók és csoportok a megfelelő a felhőben.  A szinkronizálás a jelszókivonatokat is tartalmaz.
+- [Jelszó kivonatának szinkronizálása](whatis-phs.md) – a bejelentkezési módszer, amely egy helyszíni ad-jelszó kivonatát szinkronizálja az Azure ad-vel.
+- [Átmenő hitelesítés](how-to-connect-pta.md) – a bejelentkezési módszer, amely lehetővé teszi, hogy a felhasználók ugyanazt a jelszót használják a helyszínen és a felhőben, de nincs szükség összevont környezet további infrastruktúrájának használatára.
+- [Összevonás-integráció](how-to-connect-fed-whatis.md) – az összevonás a Azure ad Connect választható része, és a hibrid környezetek helyszíni AD FS-infrastruktúrával való konfigurálására használható. Emellett AD FS felügyeleti képességeket is biztosít, mint például a tanúsítvány megújítása és a AD FS-kiszolgáló további telepítései.
+- [Szinkronizálás](how-to-connect-sync-whatis.md) – a felhasználók, csoportok és egyéb objektumok létrehozásához felelős.  Továbbá a helyszíni felhasználók és csoportok személyazonossági információinak biztosítása a felhővel egyező.  Ez a szinkronizálás jelszó-kivonatokat is tartalmaz.
 -   [Állapotfigyelés](whatis-hybrid-identity-health.md) – Az Azure AD Connect Health hatékony monitorozási képességgel rendelkezik, valamint egy központi helyet biztosít az Azure Portalon az ilyen tevékenységek megtekintéséhez. 
 
 
@@ -35,43 +35,43 @@ A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid ide
 
 ## <a name="what-is-azure-ad-connect-health"></a>Mi az Azure AD Connect Health?
 
-Az Azure Active Directory (Azure AD) Connect Health biztosít a helyszíni identitás infrastruktúra hatékony megfigyelési. Lehetővé teszi, hogy az Office 365 és a Microsoft Online Services irányuló kapcsolatok megbízható fenntartásában.  A megbízhatóságot a fontos identitás-összetevők figyelésének biztosításával érhető el. Ezenkívül adatpontjait a fontos adatokat vonatkozó ezek az összetevők könnyen elérhető.
+A Azure Active Directory (Azure AD) csatlakozási állapota biztosítja a helyszíni identitás-infrastruktúra hatékony monitorozását. Lehetővé teszi az Office 365 és a Microsoft Online Services megbízható kapcsolatának fenntartását.  Ezt a megbízhatóságot úgy érheti el, ha a legfontosabb identitás-összetevők számára biztosít figyelési képességeket. Emellett a kulcsfontosságú adatpontokat is könnyen elérhetővé teszi az összetevőkről.
 
-Ez az információ az [Azure AD Connect Health portálon](https://aka.ms/aadconnecthealth) található meg. Használja az Azure AD Connect Health portálon riasztásokat, alkalmazásteljesítmény-figyelés, használatelemzési információkat és egyéb adatok megtekintéséhez. Az Azure AD Connect Health egyetlen helyre gyűjti a legfontosabb identitás-összetevők állapotadatait.
+Ez az információ az [Azure AD Connect Health portálon](https://aka.ms/aadconnecthealth) található meg. A Azure AD Connect Health portálon megtekintheti a riasztásokat, a Teljesítményfigyelőt, a használati elemzéseket és az egyéb információkat. Az Azure AD Connect Health egyetlen helyre gyűjti a legfontosabb identitás-összetevők állapotadatait.
 
 ![Mi az az Azure AD Connect Health?](./media/whatis-hybrid-identity-health/aadconnecthealth2.png)
 
 ## <a name="why-use-azure-ad-connect"></a>Miért érdemes az Azure AD Connect megoldást használni?
-A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások hozzáféréséhez közös identitás áll a rendelkezésükre. Felhasználók és a szervezetek kihasználhatják:
+A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások hozzáféréséhez közös identitás áll a rendelkezésükre. A felhasználók és a szervezetek a következőket vehetik igénybe:
 
 * A felhasználók egyetlen identitással férhetnek hozzá olyan helyszíni alkalmazásokhoz és felhőszolgáltatásokhoz, mint például az Office 365.
 * Mivel egyetlen eszközről van szó, a szinkronizáláshoz és bejelentkezéshez használt rendszer üzembe helyezése egyszerűen végrehajtható.
-* Többféle alkalmazási helyzethez is biztosítja az elérhető legújabb képességeket. Az Azure AD Connect olyan identitásintegrációs eszközök régebbi verzióit váltja fel, mint például a DirSync és az Azure AD Sync. További információk: [Hybrid Identity directory integration tools comparison](plan-hybrid-identity-design-considerations-tools-comparison.md) (Hibrid identitás: a címtár-integrációs eszközök összehasonlítása).
+* Többféle alkalmazási helyzethez is biztosítja az elérhető legújabb képességeket. A Azure AD Connect az Identity Integration Tools (például az rSync és a Azure AD-szinkronizáló) régebbi verzióit váltja fel. További információ: [hibrid identitás címtár-integrációs eszközök összehasonlítása](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
 ## <a name="why-use-azure-ad-connect-health"></a>Miért érdemes az Azure AD Connect Health eszközt használni?
-Azure AD-val a, a felhasználók hatékonyabbak, mivel a felhő- és a helyszíni erőforrások eléréséhez közös identitás áll. Kihívást a környezet nem megbízható, így a felhasználók férhetnek hozzá ezekhez az erőforrásokhoz, biztosítva lesz.  Az Azure AD Connect Health segítségével figyelheti és elemezheti a helyszíni identitás-infrastruktúrát, így az ebben a környezetben a megbízhatóságának biztosítása. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
+Ha az Azure AD-t használják, a felhasználók termelékenyek, mivel közös identitással férhet hozzá a Felhőbeli és a helyszíni erőforrásokhoz is. A környezet megbízhatóságának biztosítása, hogy a felhasználók hozzáférhessenek ezekhez az erőforrásokhoz, kihívás lesz.  Azure AD Connect Health segíti a helyszíni identitás-infrastruktúra monitorozását és elemzését, így biztosítva a környezet megbízhatóságát. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
 
 Az AD FS-hez készült Azure AD Connect Health a Windows Server 2008 R2, a Windows Server 2012, a Windows Server 2012 R2 és a Windows Server 2016 rendszeren támogatja az AD FS 2.0-s verzióját. Ezen kívül támogatja az AD FS proxy- vagy webalkalmazás-proxykiszolgálók figyelését is, amelyek az extranetes hozzáféréshez biztosítanak hitelesítési támogatást. Az állapotügynök egyszerűen és gyorsan végrehajtható telepítésével elérhetővé válnak az Azure AD Connect Health for AD FS legfontosabb képességei.
 
-Főbb előnyeit és ajánlott eljárásokat:
+Főbb előnyök és ajánlott eljárások:
 
 |Főbb előnyök|Ajánlott eljárások|
 |-----|-----|
-|Fokozott biztonság|[Extranet zárolási tendenciák](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Jelentések a sikertelen bejelentkezésekről](how-to-connect-health-adfs-risky-ip.md)</br>[A megfelelő adatvédelem](reference-connect-health-user-privacy.md)|
-|A riasztások [összes fontos AD FS rendszerrel kapcsolatos problémák](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Kiszolgálók konfigurálása és rendelkezésre állása</br>[Teljesítmény és csatlakozási lehetőségek](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Rendszeres karbantartás|
-|Egyszerű üzembe helyezése és kezelése|[Gyors ügynök telepítése](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Az ügynökök automatikus frissítése a legújabb verzióra</br>Az adatok perceken belül elérhetők a portálon|
+|Fokozott biztonság|[Extranet zárolási tendenciák](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Jelentések a sikertelen bejelentkezésekről](how-to-connect-health-adfs-risky-ip.md)</br>[Az adatvédelem megfelelő](reference-connect-health-user-privacy.md)|
+|Riasztás a [kritikus ADFS-rendszerproblémákkal](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services) kapcsolatban|Kiszolgálók konfigurálása és rendelkezésre állása</br>[Teljesítmény és csatlakozási lehetőségek](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Rendszeres karbantartás|
+|Könnyen üzembe helyezhető és kezelhető|[Gyors ügynök telepítése](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Az ügynökök automatikus frissítése a legújabb verzióra</br>Az adatok perceken belül elérhetők a portálon|
 Gazdag [használati metrikák](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|A leggyakrabban használt alkalmazások</br>Hálózati helyek és TCP-kapcsolat</br>Jogkivonat-kérelmek kiszolgálónként|
-|Nagyszerű felhasználói élményét|Az Azure Portal irányítópult stílusa</br>[Riasztások e-mailben](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+|Nagyszerű felhasználói élmény|Az Azure Portal irányítópult stílusa</br>[Riasztások e-mailben](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Licenckövetelmények vonatkoznak az Azure AD Connect használatával
+## <a name="license-requirements-for-using-azure-ad-connect"></a>A Azure AD Connect használatára vonatkozó licencfeltételek
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>A Azure AD Connect Health használatára vonatkozó licencfeltételek
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)

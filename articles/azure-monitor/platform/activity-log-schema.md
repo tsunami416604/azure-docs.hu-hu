@@ -1,22 +1,24 @@
 ---
 title: Azure Activity log esemény sémája
 description: Az Azure-tevékenység naplójának egyes kategóriáira vonatkozó esemény sémáját ismerteti.
-author: johnkemnetz
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 1/16/2019
-ms.author: dukek
+ms.date: 12/04/2019
+ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893603"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749464"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
-Az **Azure-tevékenység naplója** olyan napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Ez a cikk az egyes adatkategóriákon keresztül mutatja be az esemény sémáját. Az Adatséma különbözik attól függően, hogy a portálon, a PowerShellben, a CLI-ben vagy közvetlenül a REST APIon keresztül olvassa-e be az adatátvitelt, [és hogyan lehet a tárolóba vagy Event Hubs naplózni](activity-log-export.md). Az alábbi példák a portálon, a PowerShellen, a CLI-n és a REST APIon elérhetővé tett sémát mutatják be. Ezeknek a tulajdonságoknak az [Azure logs sémához](diagnostic-logs-schema.md) való leképezése a cikk végén található.
+Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-ban történt előfizetési szintű eseményekre. Ez a cikk az egyes kategóriákhoz tartozó esemény sémáját ismerteti. 
+
+Az alábbi példák azt mutatják be, hogy mikor férhet hozzá a tevékenység naplóhoz a portál, a PowerShell, a CLI és a REST API. A séma különbözik [a tevékenység naplójának tárolóba vagy Event Hubsba való továbbításakor](resource-logs-stream-event-hubs.md). Az [erőforrás-naplók sémájának](diagnostic-logs-schema.md) tulajdonságainak leképezése a cikk végén található.
 
 ## <a name="administrative"></a>Adminisztratív
 Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehozási, frissítési, törlési és műveleti művelet rekordját tartalmazza. Az ebben a kategóriában látható események típusai közé tartozik például a "virtuális gép létrehozása" és a "hálózati biztonsági csoport törlése" művelet, amelyet egy felhasználó vagy alkalmazás a Resource Manager használatával végzett minden művelet egy adott erőforrástípus működésének megfelelően modellez. Ha a művelet típusa írás, törlés vagy művelet, akkor a művelet kezdési és sikerességi rekordjait is rögzíti a rendszer a felügyeleti kategóriában. A felügyeleti kategória az előfizetés szerepköralapú hozzáférés-vezérlésének változásait is tartalmazza.
@@ -277,7 +279,7 @@ Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapot
 | submissionTimestamp |Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez. |
 | subscriptionId |Azure-előfizetés azonosítója. |
 | properties |Az esemény részleteit leíró `<Key, Value>` pár (azaz egy szótár).|
-| tulajdonságok. cím | Egy felhasználóbarát karakterlánc, amely leírja az erőforrás állapotát. |
+| Tulajdonságok. cím | Egy felhasználóbarát karakterlánc, amely leírja az erőforrás állapotát. |
 | Properties. details | Egy felhasználóbarát karakterlánc, amely az esemény további részleteit ismerteti. |
 | Properties. currentHealthStatus | Az erőforrás jelenlegi állapotának állapota. A következő értékek egyike: "elérhető", "nem elérhető", "csökkentett teljesítményű" és "ismeretlen". |
 | Properties. previousHealthStatus | Az erőforrás előző állapotának állapota. A következő értékek egyike: "elérhető", "nem elérhető", "csökkentett teljesítményű" és "ismeretlen". |
@@ -558,7 +560,7 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 | eventDataId |A biztonsági esemény egyedi azonosítója. |
 | eventName |A biztonsági esemény rövid neve. |
 | category | Mindig "biztonság" |
-| id |A biztonsági esemény egyedi erőforrás-azonosítója. |
+| ID (Azonosító) |A biztonsági esemény egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyike: "kritikus", "hiba", "figyelmeztetés" vagy "tájékoztató" |
 | resourceGroupName |Az erőforrás erőforráscsoport neve. |
 | resourceProviderName |A Azure Security Center erőforrás-szolgáltatójának neve. Mindig "Microsoft. Security". |
@@ -638,7 +640,7 @@ Ez a kategória a szolgáltatásokhoz létrehozott új javaslatok rekordját tar
 | leírás |A javaslati esemény statikus szöveges leírása |
 | eventDataId | A javaslati esemény egyedi azonosítója. |
 | category | Mindig "javaslat" |
-| id |A javaslati esemény egyedi erőforrás-azonosítója. |
+| ID (Azonosító) |A javaslati esemény egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintje. A következő értékek egyike: "kritikus", "hiba", "figyelmeztetés" vagy "tájékoztató" |
 | operationName |A művelet neve.  Mindig "Microsoft. Advisor/generateRecommendations/Action"|
 | resourceGroupName |Az erőforrás erőforráscsoport neve. |
@@ -753,7 +755,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 | eventName | Vagy "BeginRequest" vagy "EndRequest". A "BeginRequest" a késleltetett auditIfNotExists és deployIfNotExists-értékelések, valamint a deployIfNotExists-effektusok elindítására szolgál. Minden más művelet "EndRequest" értéket ad vissza. |
 | category | Deklarálja a tevékenység naplójának eseményét a "szabályzat" kifejezésnek megfelelően. |
 | eventTimestamp | Időbélyeg, ha az eseményt az Azure-szolgáltatás hozta létre, és az eseményt az eseménynek megfelelő kérelem dolgozza fel. |
-| id | Az esemény egyedi azonosítója az adott erőforráson. |
+| ID (Azonosító) | Az esemény egyedi azonosítója az adott erőforráson. |
 | szint | Az esemény szintje. A naplózás a "figyelmeztetés" kifejezést használja, és a megtagadás a "hiba" kifejezést használja. Egy auditIfNotExists vagy deployIfNotExists hiba a súlyosságtól függően "figyelmeztetés" vagy "hiba" hozható elő. Minden más házirend-esemény a "tájékoztató" kifejezést használja. |
 | operationId | Az egyetlen műveletnek megfelelő események között megosztva lévő GUID. |
 | operationName | A művelet neve, és közvetlenül összefügg a házirend hatásával. |
@@ -771,9 +773,13 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 | tulajdonságok. házirendek | A szabályzat-definícióval, a hozzárendeléssel, a hatással és a paraméterekkel kapcsolatos, a házirend kiértékelését eredményező adatokat tartalmazza. |
 | relatedEvents | Ez a mező a házirend eseményeinél üres. |
 
-## <a name="mapping-to-resource-logs-schema"></a>Hozzárendelés erőforrás-naplók sémához
 
-Az Azure-tevékenység naplójának Storage-fiókba vagy Event Hubs névtérbe való továbbításakor az [Azure Resource logs sémát](./diagnostic-logs-schema.md)követi. Itt látható a fenti séma tulajdonságainak leképezése az erőforrás-naplók sémájára:
+## <a name="schema-from-storage-account-and-event-hubs"></a>A Storage-fiók és az Event hubok sémája
+Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubhoz viszi, az adatforrások az [erőforrás-napló sémáját](diagnostic-logs-schema.md)követik. Az alábbi táblázat a fenti sémából származó tulajdonságok hozzárendelését mutatja be az erőforrás-naplók sémába.
+
+> [!IMPORTANT]
+> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](diagnostic-logs-append-blobs.md) .
+
 
 | Erőforrás-naplók sémájának tulajdonsága | Műveletnapló REST API Schema tulajdonság | Megjegyzések |
 | --- | --- | --- |
@@ -796,8 +802,69 @@ Az Azure-tevékenység naplójának Storage-fiókba vagy Event Hubs névtérbe v
 | Properties. operationId | operationId |  |
 | Properties. eventProperties | properties |  |
 
+A következő példa egy olyan eseményt mutat be, amely ezt a sémát használja.
+
+``` JSON
+{
+    "records": [
+        {
+            "time": "2015-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
+
 
 ## <a name="next-steps"></a>Következő lépések
-* [További információ a tevékenység naplóról](activity-logs-overview.md)
-* [A tevékenység naplójának exportálása az Azure Storage-ba vagy a Event Hubs](activity-log-export.md)
+* [További információ a tevékenység naplóról](platform-logs-overview.md)
+* [Diagnosztikai beállítás létrehozása a műveletnapló Log Analytics munkaterületre, Azure Storage-ba vagy Event hubokba való küldéséhez](diagnostic-settings.md)
 

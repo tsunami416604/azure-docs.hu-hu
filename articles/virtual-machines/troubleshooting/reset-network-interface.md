@@ -12,16 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 1c49c6221e9b310a1b14a4e06a296befc7f6da4d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a809cabd2ace1b18af6c93dc54348137e9ba5750
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111720"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749900"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Az Azure Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszerű virtuális gép hálózati adapterét a problémák megoldásához, ha nem tud csatlakozni Microsoft Azure Windows rendszerű virtuális géphez (VM), miután:
 
@@ -34,7 +32,7 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Erőforráscsoport-modellben üzembe helyezett virtuális gépek esetén
 
-1.  Nyissa meg az [Azure Portal](https://ms.portal.azure.com).
+1.  Nyissa meg az [Azure Portalt](https://ms.portal.azure.com).
 2.  Válassza ki az érintett virtuális gépet.
 3.  Válassza a **hálózatkezelés** lehetőséget, majd válassza ki a virtuális gép hálózati adapterét.
 
@@ -47,7 +45,7 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
 8. A virtuális gép újraindul, hogy inicializálja az új hálózati adaptert a rendszerhez.
 9.  Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, a magánhálózati IP-címet visszaállíthatja az eredetire, ha szeretné. Ellenkező esetben megtarthatja. 
 
-#### <a name="use-azure-powershell"></a>Azure PowerShell használatával
+#### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
 1. Ellenőrizze, hogy telepítve van-e [a legújabb Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 2. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Futtassa az alábbi parancsot:
@@ -76,9 +74,9 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
 
 A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépéseket:
 
-#### <a name="use-azure-portal"></a>Az Azure Portal használata
+#### <a name="use-azure-portal"></a>Az Azure-portál használata
 
-1.  Nyissa meg az [Azure Portal]( https://ms.portal.azure.com).
+1.  Nyissa meg az [Azure Portalt]( https://ms.portal.azure.com).
 2.  Válassza a **Virtual Machines (klasszikus)** lehetőséget.
 3.  Válassza ki az érintett virtuális gépet.
 4.  Válassza az **IP-címek**lehetőséget.
@@ -88,7 +86,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 8.  A virtuális gép újraindul, hogy inicializálja az új hálózati adaptert a rendszerhez.
 9.  Próbálja meg az RDP-t a gépre. Ha a művelet sikeres, dönthet úgy, hogy visszaállít egy magánhálózati IP-címet az eredetire.  
 
-#### <a name="use-azure-powershell"></a>Azure PowerShell használatával
+#### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
 1. Ellenőrizze, hogy telepítve van-e [a legújabb Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 2. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). Futtassa az alábbi parancsot:
@@ -116,7 +114,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 ## <a name="delete-the-unavailable-nics"></a>A nem elérhető hálózati adapterek törlése
 Miután a Távoli asztalt elvégezte a gépen, törölnie kell a régi hálózati adaptereket, hogy elkerülje a lehetséges problémát:
 
-1.  Nyissa meg Eszközkezelő.
+1.  Indítsa el az Eszközkezelőt.
 2.  Válassza ki a **megtekintés** > a **rejtett eszközök megjelenítése**lehetőséget.
 3.  Válassza a **hálózati adapterek**lehetőséget. 
 4.  Keresse meg a "Microsoft Hyper-V hálózati adapter" nevű adaptereket.

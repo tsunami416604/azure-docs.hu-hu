@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d4fae87d999bd0f6b0b388613098a17c181dae0c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392141"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749726"
 ---
-# <a name="latency-in-blob-storage"></a>Késés a blob Storage-ban
+# <a name="latency-in-blob-storage"></a>Késés a Blob Storage-ban
 
 A késés, esetenként a válaszidő, az az időtartam, ameddig egy alkalmazásnak meg kell várnia a kérés befejeződését. A késés közvetlenül befolyásolhatja az alkalmazás teljesítményét. Az alacsony késés gyakran fontos a hurokban lévő emberekkel kapcsolatos forgatókönyvek esetében, például a hitelkártyás tranzakciók lebonyolítása vagy a weblapok betöltése. Azok a rendszerek, amelyeknek a beérkező eseményeket nagy arányban kell feldolgozniuk, például telemetria-naplózási vagy IoT-események, kis késést is igényelnek. Ez a cikk azt ismerteti, hogyan lehet megérteni és mérni a blokkos Blobok műveleteinek késését, valamint azt, hogy miként tervezze meg alkalmazásait az alacsony késés érdekében.
 
@@ -39,7 +39,7 @@ Az Azure Storage két késési metrikát biztosít a blokkos blobokhoz. Ezek a m
 
 - A **kiszolgáló késése** azt méri, hogy az Azure Storage mikor kapja meg a kérelem utolsó csomagját, amíg a válasz első csomagját vissza nem adja az Azure Storage-ból.
 
-Az alábbi képen látható az **átlagos sikerességi E2E késése** és az **átlagos sikeres kiszolgáló késése** egy olyan számítási `Get Blob` feladathoz, amely meghívja a műveletet:
+Az alábbi képen látható az **átlagos sikerességi E2E késése** és az **átlagos sikeres kiszolgáló késése** egy olyan számítási feladathoz, amely meghívja a `Get Blob` műveletet:
 
 ![A blob lekérése művelet késési mérőszámait bemutató képernyőkép](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
@@ -65,7 +65,7 @@ Ugyanilyen fontos az ügyfél és az Azure Storage közötti hálózati adapter 
 
 A késés felméréséhez először létre kell hoznia a forgatókönyv alapszintű mérőszámait. Az alapkonfiguráció metrikái a teljes körű és a kiszolgáló késését biztosítják az alkalmazási környezet környezetében, a munkaterhelés profiljától, az alkalmazás konfigurációs beállításaitól, az ügyfél erőforrásaitól, a hálózati pipe-tól és más tényezőktől függően. Az alapkonfiguráció metrikáinak használatával könnyebben azonosítható a rendellenes és a normál körülmények. Az alapkonfiguráció metrikái lehetővé teszik a módosított paraméterek (például az alkalmazás konfigurációja vagy a virtuálisgép-méretek) hatásának megfigyelését is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókok esetében](../common/storage-scalability-targets.md)
-- [Az Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](../common/storage-performance-checklist.md)
+- [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
+- [A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](storage-performance-checklist.md)

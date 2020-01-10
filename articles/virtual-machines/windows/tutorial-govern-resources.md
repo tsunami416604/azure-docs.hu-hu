@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure-beli virtuális gépek kezelése Azure PowerShell
+title: Oktatóanyag – virtuális gépek kezelése a PowerShell-lel
 description: Ez az oktatóanyag bemutatja, hogyan kezelheti Azure-beli virtuális gépeit az RBAC, szabályzatok, zárolások és címkék alkalmazásával az Azure PowerShell-lel
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9f806c6790c953d86cf7fe99daf40c17a43d2d35
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6a4c02883c80b2ad7e5283c6ac33a4604ee35c75
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067948"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751374"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: a Windows rendszerű virtuális gépek felügyeletének megismerése Azure PowerShell
 
@@ -26,13 +26,11 @@ ms.locfileid: "74067948"
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
- 
-
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-## <a name="understand-scope"></a>A hatókör bemutatása
+## <a name="understand-scope"></a>A hatókör megismerése
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -225,7 +223,7 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://do
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -238,5 +236,5 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit Linux rendszerű virtuális gépen.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek kezelése](tutorial-config-management.md)
+> [Virtuális gépek felügyelete](tutorial-config-management.md)
 

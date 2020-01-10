@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 55bcefc19723dc275cc8b421d5620c5dfe2c96e7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614956"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750500"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>A várólista tárolásának teljesítmény-és méretezhetőségi ellenőrzőlistája
 
 A Microsoft számos bevált gyakorlatot fejlesztett ki a nagy teljesítményű alkalmazások üzenetsor-tárolással való fejlesztéséhez. Ez az ellenőrzőlista azokat a kulcsfontosságú eljárásokat azonosítja, amelyeket a fejlesztők követhetnek a teljesítmény optimalizálása érdekében. Tartsa szem előtt ezeket a gyakorlatokat az alkalmazás tervezésekor és a folyamat során.
 
-Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókokhoz](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+Az Azure Storage méretezhetőségi és teljesítménybeli célokat biztosít a kapacitáshoz, a tranzakciós sebességhez és a sávszélességhez. Az Azure Storage skálázhatósági céljaival kapcsolatos további információkért lásd: a [méretezhetőségi és teljesítményi célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , valamint [méretezhetőségi és teljesítményi célok a várólista-tároláshoz](scalability-targets.md).
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
@@ -194,5 +194,6 @@ A várólisták segítségével méretezhetővé teheti az alkalmazás architekt
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Storage a tárfiókokra vonatkozó skálázhatósági és teljesítménycéljai](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Skálázhatóság és teljesítménybeli célok a várólista-tároláshoz](scalability-targets.md)
+- [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

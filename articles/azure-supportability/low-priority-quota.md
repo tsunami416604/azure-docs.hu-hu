@@ -1,124 +1,141 @@
 ---
-title: Helyszíni kvóta | Microsoft Docs
-description: Helyszíni kvóta-kérelmek
+title: Helyszíni virtuális gépek kvótája | Microsoft Docs
+description: A kvóták korlátainak növelésével a helyszíni kvóta-kérelmek
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 09c9d7940314b691e6351353e6a0076510fdcb13
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b087315e02a61886fa6f4ef083c75ed6b5b60cf9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850567"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750324"
 ---
-# <a name="spot-quota-limit-increase-for-all-vm-series"></a>Helyszíni kvóta: az összes virtuálisgép-sorozat növelésének korlátozása
+# <a name="spot-quota-increase-limits-for-all-vm-series"></a>Helyszíni kvóta: az összes virtuálisgép-sorozat korlátainak emelése
 
-A helyszíni virtuális gépek az Azure-használat egy másik modelljét biztosítják, és alacsonyabb költségeket biztosítanak az Azure számára az utólagos elszámolású vagy fenntartott virtuálisgép-példányok igény szerinti üzembe helyezéséhez. További információ a [helyszíni virtuális](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)gépekről.
+A helyszíni virtuális gépek (VM-EK) az Azure-használat egy másik modelljét nyújtják. Lehetővé teszik, hogy alacsonyabb költségekkel járjon el, ha az Azure-beli virtuális gépeket az utólagos elszámolású vagy fenntartott virtuálisgép-példányok üzembe helyezéséhez igénybe veszi. A helyszíni virtuális gépekkel kapcsolatos további információkért lásd: Azure-beli [virtuális gépek a virtuálisgép-méretezési csoportokhoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
-A Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez. Az utólagos elszámolású **virtuális gépek és a fenntartott VM-példányok** standard kvótát használnak. A **helyszíni virtuális gépek** helyszíni kvótát használnak. 
+A Azure Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez:
+* Az utólagos elszámolású *virtuális gépek* és a *fenntartott virtuálisgép-példányok* *standard vCPU-kvóta*alá esnek.
+* A *helyszíni virtuális gépekre* a *helyszínen vCPU kvóta*vonatkozik. 
 
-A **helyszíni kvóta** típusához a Resource Manager vCPU kvótái az összes rendelkezésre álló virtuálisgép-sorozatban egyetlen regionális korlátként lesznek kikényszerítve.
+A *helyszíni vCPU-kvóta* esetében az erőforrás-kezelő vCPU kvótái az összes elérhető virtuálisgép-sorozatra érvényesek egyetlen regionális korlátként.
 
-Egy új helyszíni virtuális gép üzembe helyezésének időpontjában az összes helyszíni virtuálisgép-példány új és meglévő vCPU-használatának összege nem haladhatja meg a jóváhagyott helyszíni vCPU kvóta korlátját. Ha túllépi a helyszíni kvótát, a helyszíni virtuális gép üzembe helyezése nem lesz engedélyezett. A helyszíni vCPU kvóta korlátját a Azure Portaltól kérheti. 
+Amikor új helyszíni virtuális gépet telepít, az összes új és meglévő vCPU-használat az összes helyszíni virtuálisgép-példány esetében nem haladhatja meg a jóváhagyott helyszíni vCPU-kvóta korlátját. Ha a helyszíni kvóta túllépve, a helyszíni virtuális gép üzembe helyezése nem engedélyezett. 
 
-További információ a szabványos vCPU-kvótákkal kapcsolatban a virtuális gépek vCPU kvótái lapján és az Azure-előfizetés és-szolgáltatás korlátai lapon. További információ az ezen a [lapon](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)található standard kvóta regionális vCPU korlátjának növeléséről.
+Ez a cikk azt ismerteti, hogyan lehet megemelni a helyszíni vCPU-kvóta korlátozását a Azure Portal használatával. 
 
-Mostantól az összes virtuálisgép-sorozathoz a **Súgó + támogatás** panelen vagy a portálon található **használati és kvóta** panelen is megnövelheti a **helyszíni kvóta korlátozását** .
+A standard vCPU-kvótákkal kapcsolatos további információkért lásd a [virtuális gépek vCPU kvótáit](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) és az [Azure-előfizetések és-szolgáltatások korlátozásait](https://aka.ms/quotalimits). 
 
-## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>A helyszíni kvóta korlátozásának kérése az összes virtuálisgép-sorozathoz a Súgó + támogatás panel használatával
+Ha többet szeretne megtudni a vCPU-korlát régiónként való növeléséről, tekintse meg a [standard kvóta: regionális vCPU korlátjának növekedését](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)ismertető témakört.
 
-Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el.
+## <a name="request-a-quota-limit-increase-from-the-help--support-pane"></a>Kvóta korlátozásának kérése a "Súgó + támogatás" panelen 
 
-A **kvóta több régió esetében is igényelhető** egyetlen támogatási esettel. A részletekért tekintse meg az alábbi 10. lépést. 
+Ha a **Súgó + támogatás** ablaktáblán szeretné megkeresni az összes virtuálisgép-sorozathoz a helyszíni kvóta korlátját, tegye a következőket:
 
+> [!NOTE]
+> Egyetlen támogatási esettel több régió esetében is igényelhet kvóta-korlátozást. Részletekért lásd: 8. lépés. 
 
-1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján kattintson a **Súgó és támogatás**elemre.
 
-   ![Súgó + támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
+   ![A "Súgó + támogatás" hivatkozás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
-2.  Válassza az **Új támogatási kérelem** lehetőséget. 
+1. A **Súgó + támogatás** ablaktáblán válassza az **új támogatási kérelem**lehetőséget. 
 
-     ![Új támogatási kérelem](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+    ![Új támogatási kérelem](./media/resource-manager-core-quotas-request/newsupportrequest.png)
 
-3. A probléma típusa legördülő menüben válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
+1. A **probléma típusa** legördülő listában válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
 
-   ![Probléma típusa legördülő lista](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+   ![A "probléma típusa" legördülő lista](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
 
-4. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
+1. Az **előfizetés** legördülő listában válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
 
-   ![Előfizetés-hírolvasó kiválasztása](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
+   ![Az "előfizetés" legördülő lista](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
-5. Válassza a **számítási-VM (magok-vCPU) előfizetési korlátot** a **kvóta típusa** legördülő menüből. 
+1. A **kvóta típusa** legördülő listában válassza a **számítási-VM (magok-vCPU) előfizetési korlát növekszik**lehetőséget. 
 
-   ![Kvóta típusának kiválasztása](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![A "kvóta típusa" legördülő lista](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. A **probléma részletei**területen további információkat adhat meg a kérés feldolgozásához a **részletek megadása**lehetőségre kattintva.
+1. Válassza a **részletek** fület, majd a **probléma részletei**területen válassza a **részletek**megadása lehetőséget, és adjon meg további információkat a kérelem feldolgozásához.
 
-   ![Részletek megadása](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![A "részletek megadása" hivatkozás](./media/resource-manager-core-quotas-request/provide-details.png)
    
-7.  A **kvóta részletei*** panelen válassza a **telepítési modell** lehetőséget, és válasszon egy **helyet**.
+1. A jobb felső sarokban található **kvóta részletei** panelen tegye a következőket:
 
-![Részletek megadása](./media/resource-manager-core-quotas-request/3-7.png)
+   ![A "kvóta részletei" panel](./media/resource-manager-core-quotas-request/3-7.png)
 
-8. A kiválasztott helyen válassza a **Type** Value as **"spot"** lehetőséget. A **Type (típus** ) mezőben a standard és a direktszín típusú kvótákat egyetlen támogatási esetben is kérheti a többszörös kijelölés támogatásával. További információk a **standard kvóta virtuális gépenként való növeléséről** ezen az [oldalon](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+   a. A **telepítési modell** legördülő listában válassza ki a megfelelő modellt.
 
-![Részletek megadása](./media/resource-manager-core-quotas-request/3-8.png)
+   b. A **helyek** legördülő listában válasszon ki egy helyet. A kiválasztott hely **típus**területén, a **típus kiválasztása** mezőben adja meg a **spot**értéket. 
+   
+   ![Az "új támogatási kérelem" Részletek lap](./media/resource-manager-core-quotas-request/3-8.png)
 
-9.  Adja meg az előfizetéshez tartozó új korlátot. 
+    A **types (típusok**) területen a standard és a direktszín típusú kvótákat egyetlen támogatási esetről is kérheti a többszörös kijelölés támogatásával. 
+    
+    További információ [: standard kvóta: virtuálisgép-sorozat vCPU korlátjának növekedése](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+
+   c. Adja meg az előfizetéshez használni kívánt új kvóta-korlátot. 
  
- ![Részletek megadása](./media/resource-manager-core-quotas-request/3-9.png)
+   ![Az "új vCPU korlát" szövegmező](./media/resource-manager-core-quotas-request/3-9.png)
 
-10. Ha egynél több helyre vonatkozó kvótát szeretne kérelmezni, akkor a legördülő menüből válassza ki a megfelelő virtuálisgép-típust. Ezután megadhatja a kívánt új korlátozásokat.
+1. Ha egynél több helyre szeretne kvótát emelni, válasszon egy további helyet a legördülő listából, majd válasszon ki egy megfelelő virtuálisgép-típust. Ezután megadhat egy korlátot, amely a további helyre vonatkozik.
 
-![Részletek megadása](./media/resource-manager-core-quotas-request/3-10.png)
+   ![További helyszínek a "kvóta részletei" panelen](./media/resource-manager-core-quotas-request/3-10.png)
 
-11. A kívánt kvóta megadása után kattintson a **Mentés gombra, és folytassa** a kvóta részletei panelen a támogatási kérelem létrehozásával folytatott folytatáshoz.
+1. Válassza a mentés lehetőséget, **és** folytassa a támogatási kérelem létrehozásával.
 
-## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>A helyszíni kvóta korlátjának korlátozása minden virtuálisgép-sorozatra a használat és a kvóta panelen
+## <a name="request-a-quota-limit-increase-from-the-subscriptions-pane"></a>Kvóta korlátozásának kérése az "előfizetések" panelen
 
-Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen.
+Ha az **előfizetések** ablaktáblán az összes virtuálisgép-sorozathoz a helyszíni kvóta korlátozását szeretné igénybe venni, tegye a következőket:
 
-A **kvóta több régió esetében is igényelhető** egyetlen támogatási esettel. A részletekért tekintse meg az alábbi 9. lépést. 
+> [!NOTE]
+> Egyetlen támogatási esettel több régió esetében is igényelhet kvóta-korlátozást. Részletekért lásd: 7. lépés. 
 
-1.  https://portal.azure.com válassza az **előfizetések**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza az **előfizetések**lehetőséget.
 
- ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
+   ![Az "előfizetések" hivatkozás](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-2.  Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
+1. Válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
 
- ![Előfizetés kiválasztása](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Az "előfizetések" panel](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-3.  Válassza a **használat + kvóták**lehetőséget.
+1. A **\<előfizetés neve >** oldal bal oldali ablaktábláján válassza a **használat + kvóták**lehetőséget.
 
- ![Használat és kvóták kiválasztása](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+   ![A "használat + kvóták" hivatkozás](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 
-4.  A jobb felső sarokban válassza a **kérelem növekedés lehetőséget.**
+1. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
 
    ![Kérések növekedése](./media/resource-manager-core-quotas-request/request-increase.png)
 
-5.  Válassza a **számítási-VM (magok-vCPU) előfizetési korlátot** az árajánlat típusaként.
+1. A **kvóta típusa** legördülő listában válassza a **számítási-VM (magok-vCPU) előfizetési korlát növekszik**lehetőséget.
 
-  ![Űrlap kitöltése](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![A "kvóta típusa" legördülő lista](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6.  A **kvóta részletei** panelen válassza a telepítési modell lehetőséget, és válasszon egy helyet.
+1. A jobb felső sarokban található **kvóta részletei** panelen tegye a következőket:
 
-  ![Űrlap kitöltése](./media/resource-manager-core-quotas-request/3-2-6.png)
+   ![A "kvóta részletei" panel](./media/resource-manager-core-quotas-request/3-2-6.png)
  
-7.  A kiválasztott helyen válassza a **Type** Value as **"spot" lehetőséget.** A **Type (típus** ) mezőben a standard és a direktszín típusú kvótákat egyetlen támogatási esetben is kérheti a többszörös kijelölés támogatásával. További információk a **standard kvóta virtuális gépenként való növeléséről** ezen az [oldalon](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+   a. A **telepítési modell** legördülő listában válassza ki a megfelelő modellt.
 
-  ![Űrlap kitöltése](./media/resource-manager-core-quotas-request/3-2-7.png)
- 
-8.  Adja meg az előfizetéshez tartozó új korlátot.
+   b. A **helyek** legördülő listában válasszon ki egy helyet. 
+   
+   c. A kiválasztott hely **típus**területén, a **típus kiválasztása** mezőben adja meg a **spot**értéket.
 
-  ![Űrlap kitöltése](./media/resource-manager-core-quotas-request/3-2-8.png)
- 
-9.  Ha egynél több helyre vonatkozó kvótát szeretne kérelmezni, akkor a legördülő menüből válassza ki a megfelelő **virtuálisgép-** típust. Ezután megadhatja a kívánt új korlátozásokat.
+   ![A "kvóta részletei" panel](./media/resource-manager-core-quotas-request/3-2-7.png)
 
-  ![Űrlap kitöltése](./media/resource-manager-core-quotas-request/3-2-9.png)
+   További információ [: standard kvóta: virtuálisgép-sorozat vCPU korlátjának növekedése](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+
+   d. Adja meg az előfizetéshez használni kívánt új kvóta-korlátot.
+
+   ![Az "új vCPU korlát" szövegmező](./media/resource-manager-core-quotas-request/3-2-8.png)
  
-10. A kívánt kvóta megadása után kattintson a **Mentés gombra, és folytassa** a kvóta részletei panelen a támogatási kérelem létrehozásával folytatott folytatáshoz.
+1. Ha egynél több helyre szeretne kvótát emelni, válasszon egy további helyet a legördülő listából, majd válasszon ki egy megfelelő virtuálisgép-típust. Ezután megadhat egy korlátot, amely a további helyre vonatkozik.
+
+   ![További helyszínek a "kvóta részletei" panelen](./media/resource-manager-core-quotas-request/3-2-9.png)
+ 
+1. Válassza a mentés lehetőséget, **és** folytassa a támogatási kérelem létrehozásával.
 
 

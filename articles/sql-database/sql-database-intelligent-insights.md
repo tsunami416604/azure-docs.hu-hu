@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b576510749e691b6255c849f14275db221c54460
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151431"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745118"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez
 
@@ -28,7 +28,7 @@ A Intelligent Insights a beépített intelligenciával folyamatosan figyeli az a
 
 A Intelligent Insights az Azure beépített intelligenciának egyedülálló funkciója, amely a következő értéket biztosítja:
 
-- Proaktív figyelés
+- Proaktív monitorozás
 - Testreszabott teljesítmény-felismerés
 - Az adatbázis-teljesítmény romlásának korai észlelése
 - Az észlelt problémák kiváltó okának elemzése
@@ -164,7 +164,7 @@ A túlzott várakozási idő modell figyeli az egyes adatbázis-lekérdezéseket
 - Rugalmas készlet erőforrás-korlátainak elérése
 - A munkavégző vagy a munkamenet szála túl sok
 - Túlzott adatbázis-zárolás
-- Memória nyomása
+- Memóriaterhelés
 - Egyéb várakozási statisztikák
 
 Az erőforrás-korlátok vagy a rugalmas készlet erőforrás-korlátainak elérése azt jelzi, hogy az előfizetésben vagy a rugalmas készletben elérhető erőforrások felhasználása túllépte az abszolút küszöbértékeket. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik. A munkavégző vagy a munkamenet-szálak túlzott száma azt jelzi, hogy a feldolgozói szálak vagy munkamenetek száma az abszolút küszöbértékeket eredményezte. Ezek a statisztikák a munkaterhelés teljesítményének csökkenését jelzik.
@@ -185,9 +185,9 @@ A Intelligent Insights napló a hibás kérelmek számát adja eredményül. Ez 
 
 Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt abszolút küszöbértékeket, akkor a kritikus kivétel részleteivel intelligens elemzés jön létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan lehet [elhárítani a Intelligent Insightsokkal kapcsolatos teljesítményproblémák SQL Database](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Használja a [Intelligent Insights SQL Database Performance Diagnostics-naplót](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Megtudhatja, hogyan [figyelheti SQL Database az SQL Analytics használatával](../azure-monitor/insights/azure-sql.md).
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/resource-logs-overview.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../azure-monitor/platform/platform-logs-overview.md).

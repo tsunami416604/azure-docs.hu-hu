@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e416087df6c27eff42db487e90ff908d7d49df8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977692"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750870"
 ---
 # <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
 [Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokhoz is használhatja őket.
 
-Részletes információ: [Azure monitor metrikák](../../azure-monitor/platform/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md).
+Részletes információ: [Azure monitor metrikák](../../azure-monitor/platform/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/platform/platform-logs-overview.md).
 
 Ez a cikk Media Services diagnosztikai naplók sémáit ismerteti.
 
@@ -41,7 +41,7 @@ Ezek a tulajdonságok a Key Delivery log sémára vonatkoznak.
 |Név|Leírás|
 |---|---|
 |keyId|A kért kulcs azonosítója.|
-|keyType|A következő értékek egyike lehet: "Clear" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|
+|KeyType|A következő értékek egyike lehet: "Clear" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|
 |policyName|A házirend Azure Resource Manager neve.|
 |tokenType|A jogkivonat típusa.|
 |statusMessage|Az állapotjelző üzenet.|

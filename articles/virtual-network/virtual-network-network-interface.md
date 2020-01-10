@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 809e40f6616e8ab022a31d8dd29d4a5386c5e844
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 95ed6df3192043f33cf8d911387fc2a318153ac7
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838412"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751172"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Hálózati adapter létrehozása, módosítása vagy törlése
 
@@ -26,7 +26,7 @@ ms.locfileid: "73838412"
 
 Ha IP-címeket kell hozzáadnia, módosítania vagy eltávolítania egy hálózati adapterhez, tekintse meg az [IP-címek kezelése](virtual-network-network-interface-addresses.md)című témakört. Ha hálózati adaptereket kell hozzáadnia, vagy el kell távolítania a hálózati adaptereket a virtuális gépekről, tekintse meg a [hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md)című témakört.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -58,7 +58,7 @@ Amikor a Azure Portal használatával hoz létre virtuális gépet, a portál eg
     |Magánhálózati IP-cím (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, a hálózati adapterhez rendelt IPv4-cím mellett egy IPv6-cím is hozzá van rendelve a hálózati adapterhez. Tekintse meg a jelen cikk IPv6 című szakaszát, amely fontos információkat nyújt az IPv6 hálózati adapterekkel való használatáról. Az IPv6-cím hozzárendelési metódusa nem választható ki. Ha IPv6-cím hozzárendelését választja, akkor azt a rendszer a dinamikus metódussal rendeli hozzá.
     |IPv6-név (csak akkor jelenik meg, ha a **MAGÁNHÁLÓZATI IP-cím (IPv6)** jelölőnégyzet be van jelölve) |Igen, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve.| Ezt a nevet a rendszer egy másodlagos IP-konfigurációhoz rendeli hozzá a hálózati adapterhez. További információ az IP-konfigurációkról: [hálózati adapter beállításainak megtekintése](#view-network-interface-settings).|
     |Erőforráscsoport|Igen|Válasszon ki egy meglévő [erőforráscsoportot](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) , vagy hozzon létre egyet. A hálózati adapterek ugyanabban vagy más erőforráscsoporthoz is létezhetnek, mint a virtuális gép, amelyhez csatlakoztatja, vagy a virtuális hálózathoz, amelyhez csatlakozik.|
-    |Hely|Igen|Az a virtuális gép, amelyhez csatlakoztatni kívánja a hálózati adaptert és a virtuális hálózatot, ugyanazon a [helyen](https://azure.microsoft.com/regions)kell lennie, más néven régiónak.|
+    |Földrajzi egység|Igen|Az a virtuális gép, amelyhez csatlakoztatni kívánja a hálózati adaptert és a virtuális hálózatot, ugyanazon a [helyen](https://azure.microsoft.com/regions)kell lennie, más néven régiónak.|
 
 A portál nem biztosítja a nyilvános IP-cím hozzárendelését a hálózati adapterhez a létrehozásakor, bár a portál létrehoz egy nyilvános IP-címet, és hozzárendeli azt egy hálózati adapterhez, amikor virtuális gépet hoz létre a portál használatával. Ha meg szeretné tudni, hogyan adhat hozzá nyilvános IP-címet a hálózati adapterhez a létrehozása után, tekintse meg az [IP-címek kezelése](virtual-network-network-interface-addresses.md)című témakört. Ha nyilvános IP-címmel rendelkező hálózati adaptert szeretne létrehozni, akkor a parancssori felület vagy a PowerShell használatával kell létrehoznia a hálózati adaptert.
 
@@ -71,7 +71,7 @@ A portál nem biztosítja a hálózati adapter alkalmazás-biztonsági csoportok
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic create](/cli/azure/network/nic)|
+|CLI|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[Új – AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Hálózati adapter beállításainak megtekintése
@@ -83,14 +83,14 @@ A hálózati adapterek többségi beállításait a létrehozása után tekinthe
 3. A kiválasztott hálózati adapteren a következő elemek jelennek meg:
    - **Áttekintés:** Információt nyújt a hálózati adapterről, például a hozzá rendelt IP-címekről, a hálózati adapterhez hozzárendelt virtuális hálózatról/alhálózatról, valamint azt a virtuális gépet, amelyhez a hálózati adapter csatlakoztatva van (ha van ilyen). Az alábbi képen egy **mywebserver256**nevű hálózati adapter áttekintő beállításai láthatók: ![hálózati adapter áttekintése](./media/virtual-network-network-interface/nic-overview.png)
 
-     A hálózati adaptert egy másik erőforráscsoporthoz vagy előfizetésbe helyezheti át az **erőforráscsoport** vagy az **előfizetés neve**melletti (**módosítás**) lehetőség kiválasztásával. Ha áthelyezi a hálózati adaptert, a hálózati adapterhez kapcsolódó összes erőforrást át kell helyeznie. Ha a hálózati adapter egy virtuális géphez van csatlakoztatva, például át kell helyeznie a virtuális gépet és a virtuális gépekkel kapcsolatos egyéb erőforrásokat is. Hálózati adapter áthelyezéséhez tekintse meg az [erőforrás áthelyezése új erőforráscsoporthoz vagy előfizetésre](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)című témakört. A cikk felsorolja az előfeltételeket, valamint az erőforrások áthelyezését a Azure Portal, a PowerShell és az Azure CLI használatával.
+     A hálózati adaptert egy másik erőforráscsoporthoz vagy előfizetésbe helyezheti át az **erőforráscsoport** vagy az **előfizetés neve**melletti (**módosítás**) lehetőség kiválasztásával. Ha áthelyezi a hálózati adaptert, a hálózati adapterhez kapcsolódó összes erőforrást át kell helyeznie. Ha a hálózati adapter egy virtuális géphez van csatlakoztatva, például át kell helyeznie a virtuális gépet és a virtuális gépekkel kapcsolatos egyéb erőforrásokat is. Hálózati adapter áthelyezéséhez tekintse meg az [erőforrás áthelyezése új erőforráscsoporthoz vagy előfizetésre](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal)című témakört. A cikk felsorolja az előfeltételeket, valamint az erőforrások áthelyezését a Azure Portal, a PowerShell és az Azure CLI használatával.
    - **IP-konfigurációk:** Az IP-konfigurációhoz rendelt nyilvános és magánhálózati IPv4-és IPv6-címeket itt találja. Ha egy IPv6-cím IP-konfigurációhoz van rendelve, a cím nem jelenik meg. Az IP-konfigurációkkal és az IP-címek hozzáadásával és eltávolításával kapcsolatos további tudnivalókért tekintse meg az [IP-címek konfigurálása Azure-beli hálózati adapterhez](virtual-network-network-interface-addresses.md)című témakört. Ebben a szakaszban az IP-továbbítás és az alhálózat-hozzárendelés is be van állítva. További információ ezekről a beállításokról: az [IP-továbbítás engedélyezése vagy letiltása](#enable-or-disable-ip-forwarding) , valamint [alhálózat-hozzárendelés módosítása](#change-subnet-assignment).
    - **DNS-kiszolgálók:** Megadhatja, hogy a rendszer melyik DNS-kiszolgálót rendelje hozzá az Azure DHCP-kiszolgálók által hozzárendelt hálózati adapterekhez. A hálózati adapter örökölheti a beállítást a virtuális hálózatból, amelyhez a hálózati adapter hozzá van rendelve, vagy rendelkezik egy egyéni beállítással, amely felülbírálja a hozzárendelt virtuális hálózat beállítását. A megjelenített elemek módosításához tekintse meg a [DNS-kiszolgálók módosítása](#change-dns-servers)című témakört.
    - **Hálózati biztonsági csoport (NSG):** Megjeleníti, hogy mely NSG van társítva a hálózati adapterhez (ha van ilyen). A NSG bejövő és kimenő szabályokat tartalmaz a hálózati adapter hálózati forgalmának szűrésére. Ha egy NSG van társítva a hálózati adapterhez, megjelenik a társított NSG neve. A megjelenített elemek módosításához tekintse meg [a hálózati biztonsági csoport társítása vagy](#associate-or-dissociate-a-network-security-group)leválasztása című témakört.
    - **Tulajdonságok:** A hálózati adapterrel kapcsolatos legfontosabb beállításokat jeleníti meg, beleértve annak MAC-címe (üres, ha a hálózati adapter nincs csatlakoztatva virtuális géphez), és az előfizetése megtalálható a rendszerben.
    - **Érvényes biztonsági szabályok:**  A biztonsági szabályok akkor jelennek meg, ha a hálózati adapter egy futó virtuális géphez van csatlakoztatva, és egy NSG van társítva a hálózati adapterhez, a hozzárendelt alhálózathoz vagy mindkettőhöz. A megjelenített információkkal kapcsolatos további tudnivalókért tekintse meg az [érvényes biztonsági szabályok megtekintése](#view-effective-security-rules)című témakört. További információ a NSG: [hálózati biztonsági csoportok](security-overview.md).
    - **Érvényes útvonalak:** Az útvonalak akkor jelennek meg, ha a hálózati adapter egy futó virtuális géphez van csatlakoztatva. Az útvonalak az Azure alapértelmezett útvonalait, a felhasználó által megadott útvonalakat, valamint az alhálózathoz a hálózati adapterhez hozzárendelt BGP-útvonalak kombinációját jelentik. Ha többet szeretne megtudni a megjelenített tartalmakról, tekintse meg a [hatályos útvonalak megtekintése](#view-effective-routes)című témakört. Az Azure alapértelmezett útvonalakkal és a felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: az [Útválasztás áttekintése](virtual-networks-udr-overview.md).
-   - **Gyakori Azure Resource Manager beállítások:**  További információ a közös Azure Resource Manager beállításokról: [műveletnapló](../azure-monitor/platform/activity-logs-overview.md), [hozzáférés-vezérlés (iam)](../role-based-access-control/overview.md), [címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)és [Automation-parancsfájlok](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - **Gyakori Azure Resource Manager beállítások:**  További információ a közös Azure Resource Manager beállításokról: [műveletnapló](../azure-monitor/platform/platform-logs-overview.md), [hozzáférés-vezérlés (iam)](../role-based-access-control/overview.md), [címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)és [Automation-parancsfájlok](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Parancsok**
 
@@ -98,7 +98,7 @@ Ha egy IPv6-cím hozzá van rendelve egy hálózati adapterhez, a PowerShell kim
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|az az [Network NIC List](/cli/azure/network/nic) az előfizetésben található hálózati adapterek megtekintéséhez; [az Network NIC show](/cli/azure/network/nic) a hálózati adapter beállításainak megtekintéséhez|
+|CLI|az az [Network NIC List](/cli/azure/network/nic) az előfizetésben található hálózati adapterek megtekintéséhez; [az Network NIC show](/cli/azure/network/nic) a hálózati adapter beállításainak megtekintéséhez|
 |PowerShell|A [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) segítségével megtekintheti a hálózati adaptereket az előfizetésben, vagy megtekintheti a hálózati adapterek beállításait.|
 
 ## <a name="change-dns-servers"></a>DNS-kiszolgálók módosítása
@@ -119,7 +119,7 @@ A DNS-kiszolgálót az Azure DHCP-kiszolgáló rendeli hozzá a virtuális gép 
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az Network NIC Update](/cli/azure/network/nic)|
+|CLI|[az Network NIC Update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>IP-továbbítás engedélyezése vagy letiltása
@@ -140,7 +140,7 @@ A beállítást engedélyezni kell minden olyan virtuális géphez csatlakoztato
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az Network NIC Update](/cli/azure/network/nic)|
+|CLI|[az Network NIC Update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Alhálózat-hozzárendelés módosítása
@@ -160,7 +160,7 @@ Módosíthatja az alhálózatot, de nem a virtuális hálózatot, mert a hálóz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az Network NIC IP-config Update](/cli/azure/network/nic/ip-config)|
+|CLI|[az Network NIC IP-config Update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Alkalmazás-biztonsági csoportok hozzáadása vagy eltávolítása
@@ -174,7 +174,7 @@ Ha a hálózati adapter egy virtuális géphez van csatlakoztatva, csak hálóza
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az Network NIC Update](/cli/azure/network/nic)|
+|CLI|[az Network NIC Update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Hálózati biztonsági csoport társítása vagy leválasztása
@@ -206,7 +206,7 @@ Ha töröl egy hálózati adaptert, a hozzá rendelt MAC-és IP-címek jelennek 
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az Network NIC delete](/cli/azure/network/nic)|
+|CLI|[az Network NIC delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Kapcsolódási problémák megoldása
@@ -267,7 +267,7 @@ A hálózati adapterekkel kapcsolatos feladatok elvégzéséhez a fiókját hozz
 | Microsoft. Network/networkInterfaces/serviceAssociations/validate/Action    | Szolgáltatási társítás ellenőrzése                              |
 | Microsoft. Network/networkInterfaces/ipconfigurations/READ                  | Hálózati adapter IP-konfigurációjának beolvasása                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Több hálózati adapterrel rendelkező virtuális gép létrehozása az [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) használatával
 - Egyetlen hálózati adaptert tartalmazó virtuális gép létrehozása több IPv4-címmel az [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) vagy a [PowerShell](virtual-network-multiple-ip-addresses-powershell.md) használatával

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4ebde6295c3f3467dd615b58d2140302aa86a61
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949983"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75367654"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
@@ -93,7 +93,7 @@ A Azure AD B2C által védett Azure API Management API-k áttelepítéséhez tek
 
 Ha a [MSAL.net][msal-dotnet] v2 vagy a korábbi verzióját használja, állítsa a **ValidateAuthority** tulajdonságot `false`re az ügyfél-példányon, hogy az átirányítást engedélyezze a *b2clogin.com*. Erre a beállításra nincs szükség a MSAL.NET v3 és újabb verziókhoz.
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```

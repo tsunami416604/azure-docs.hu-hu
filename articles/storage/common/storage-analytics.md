@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 04206a45a3322a1b0d28e3dfeed65225773e9038
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: efca3dad6d8bfadbc334067b0189d2bea5aef445
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844845"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750521"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -23,7 +23,7 @@ Storage Analytics használatához külön kell engedélyeznie a figyelni kíván
 
 Az összesített adatokat egy jól ismert blobban (naplózáshoz) és jól ismert táblákban (a metrikák esetében) tárolják, amelyek a Blob service és az Table service API-k használatával érhetők el.
 
-A Storage Analytics 20 TB-os korláttal rendelkezik a Storage-fiókhoz tartozó teljes korláttól független tárolt adat mennyiségétől függően. További információ a Storage-fiókok korlátairól: az [Azure Storage skálázhatósági és teljesítménybeli céljai](storage-scalability-targets.md).
+A Storage Analytics 20 TB-os korláttal rendelkezik a Storage-fiókhoz tartozó teljes korláttól független tárolt adat mennyiségétől függően. A Storage-fiók korlátaival kapcsolatos további információkért lásd [a standard szintű Storage-fiókok méretezhetőségi és teljesítménybeli céljait](scalability-targets-standard-account.md)ismertető témakört.
 
 Az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és hibaelhárítására vonatkozó részletes útmutató a Storage Analytics és egyéb eszközök használatáról: [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md).
 
@@ -38,7 +38,7 @@ A Storage Analytics által végrehajtott következő műveletek számlázandóek
 * Kérelmek a Blobok létrehozásához a naplózáshoz.
 * A táblázat entitások metrikák létrehozásához szükséges kérelmek.
 
-Ha az adatmegőrzési szabályzatot konfigurálta, akkor nem kell fizetnie a törlési tranzakcióért, ha Storage Analytics törli a régi naplózási és metrikái adatokat. Az ügyfél tranzakcióinak törlése azonban számlázható. További információ az adatmegőrzési házirendekről: Storage Analytics adatmegőrzési szabályzat [beállítása](https://msdn.microsoft.com/library/azure/hh343263.aspx).
+Ha az adatmegőrzési szabályzatot konfigurálta, akkor nem kell fizetnie a törlési tranzakcióért, ha Storage Analytics törli a régi naplózási és metrikái adatokat. Az ügyfél tranzakcióinak törlése azonban számlázható. További információ az adatmegőrzési házirendekről: [Storage Analytics adatmegőrzési szabályzat beállítása](https://msdn.microsoft.com/library/azure/hh343263.aspx).
 
 ### <a name="understanding-billable-requests"></a>Számlázandó kérelmek ismertetése
 
@@ -46,7 +46,7 @@ A fiók tárolási szolgáltatására tett minden kérelem számlázható vagy n
 
 Storage Analytics adatok megtekintésekor használhatja a [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) témakör táblázatait, amelyekkel meghatározhatja, hogy mely kérések legyenek számlázva. Ezután összehasonlíthatja a naplókat és a metrikákat az állapotüzenetek adataival, hogy megtudja, van-e terhelve egy adott kérelemért. Az előző témakör tábláival is megvizsgálhatja a tárolási szolgáltatás vagy az egyes API-műveletek rendelkezésre állását.
 
-## <a name="next-steps"></a>További lépések
-* [Storage-fiók figyelése a Azure Portal](storage-monitor-storage-account.md)
+## <a name="next-steps"></a>Következő lépések
+* [Tárfiók monitorozása az Azure Portalon](storage-monitor-storage-account.md)
 * [Storage Analytics metrikák](storage-analytics-metrics.md)
 * [Storage Analytics naplózás](storage-analytics-logging.md)

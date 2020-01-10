@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810383"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745953"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az adatraktárhoz a Azure Portal használatával
 
@@ -48,7 +48,7 @@ A riasztási szabályokkal kapcsolatos információkat a
 1. A [portálon](https://portal.azure.com/)keresse meg a figyelni kívánt erőforrást, és jelölje ki.
 2. A figyelés szakaszban válassza a **riasztások (klasszikus)** lehetőséget. A szöveg és az ikon némileg eltérő lehet a különböző erőforrások esetében.  
    
-     ![Figyelés](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
+     ![Monitoring](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **Csak SQL DW esetén**: kattintson a **DWU használati** gráfra. Válassza ki a **klasszikus riasztások megtekintése** lehetőséget.
 
@@ -74,17 +74,17 @@ A riasztás létrehozása után kiválaszthatja a következőket:
 
 ## <a name="sql-database-alert-values"></a>SQL Database riasztási értékek
 
-| Erőforrás típusa | Metrika neve | Felhasználóbarát név | Összesítés típusa | Minimális riasztási idő ablaka|
+| Erőforrás típusa | Metrika neve | Felhasználóbarát név | Aggregáció típusa | Minimális riasztási idő ablaka|
 | --- | --- | --- | --- | --- |
 | SQL-adatbázis | cpu_percent | Processzorhasználat (%) | Átlag | 5 perc |
 | SQL-adatbázis | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 5 perc |
 | SQL-adatbázis | log_write_percent | Naplózási IO-százalék | Átlag | 5 perc |
 | SQL-adatbázis | dtu_consumption_percent | DTU-kihasználtság (%) | Átlag | 5 perc |
 | SQL-adatbázis | tárterület | Adatbázis teljes mérete | Maximum | 30 perc |
-| SQL-adatbázis | connection_successful | Sikeres kapcsolatok | Összesen | 10 perc |
-| SQL-adatbázis | connection_failed | Sikertelen kapcsolatok | Összesen | 10 perc |
-| SQL-adatbázis | blocked_by_firewall | Tűzfal blokkolja | Összesen | 10 perc |
-| SQL-adatbázis | Holtpont | Holtpontok | Összesen | 10 perc |
+| SQL-adatbázis | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
+| SQL-adatbázis | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
+| SQL-adatbázis | blocked_by_firewall | Tűzfal blokkolja | Összes | 10 perc |
+| SQL-adatbázis | holtpont | Holtpontok | Összes | 10 perc |
 | SQL-adatbázis | storage_percent | Adatbázis méretének kihasználtsága | Maximum | 30 perc |
 | SQL-adatbázis | xtp_storage_percent | Memóriában tárolt OLTP tárolási százaléka (előzetes verzió) | Átlag | 5 perc |
 | SQL-adatbázis | workers_percent | Munkavégzők százalékos aránya | Átlag | 5 perc |
@@ -103,20 +103,20 @@ A riasztás létrehozása után kiválaszthatja a következőket:
 | Rugalmas készlet | eDTU_used | használt eDTU | Átlag | 10 perc |
 | Rugalmas készlet | storage_used | Felhasznált tárterület | Átlag | 10 perc |
 ||||||               
-| SQL-adattárház | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
-| SQL-adattárház | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
-| SQL-adattárház | connection_successful | Sikeres kapcsolatok | Összesen | 10 perc |
-| SQL-adattárház | connection_failed | Sikertelen kapcsolatok | Összesen | 10 perc |
-| SQL-adattárház | blocked_by_firewall | Tűzfal blokkolja | Összesen | 10 perc |
-| SQL-adattárház | service_level_objective | Az adatbázis szolgáltatási szintje | Összesen | 10 perc |
-| SQL-adattárház | dwu_limit | DWU korlátja | Maximum | 10 perc |
-| SQL-adattárház | dwu_consumption_percent | DWU százalékos aránya | Átlag | 10 perc |
-| SQL-adattárház | dwu_used | Használt DWU | Átlag | 10 perc |
+| SQL Data Warehouse | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
+| SQL Data Warehouse | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
+| SQL Data Warehouse | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
+| SQL Data Warehouse | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
+| SQL Data Warehouse | blocked_by_firewall | Tűzfal blokkolja | Összes | 10 perc |
+| SQL Data Warehouse | service_level_objective | Az adatbázis szolgáltatási szintje | Összes | 10 perc |
+| SQL Data Warehouse | dwu_limit | DWU korlátja | Maximum | 10 perc |
+| SQL Data Warehouse | dwu_consumption_percent | DWU százalékos aránya | Átlag | 10 perc |
+| SQL Data Warehouse | dwu_used | Használt DWU | Átlag | 10 perc |
 ||||||
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Tekintse át az Azure monitoring áttekintését](../monitoring-and-diagnostics/monitoring-overview.md) , beleértve a gyűjtött információk típusát és a figyelést.
 * További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
-* [Tekintse át a diagnosztikai naplókat](../azure-monitor/platform/resource-logs-overview.md) , és gyűjtsön részletes, nagy gyakoriságú mérőszámokat a szolgáltatásban.
+* [Tekintse át a diagnosztikai naplókat](../azure-monitor/platform/platform-logs-overview.md) , és gyűjtsön részletes, nagy gyakoriságú mérőszámokat a szolgáltatásban.
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

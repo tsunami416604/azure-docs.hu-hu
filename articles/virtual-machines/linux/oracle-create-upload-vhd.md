@@ -3,7 +3,7 @@ title: Oracle Linux VHD létrehozása és feltöltése
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Oracle Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -12,33 +12,31 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/12/2018
-ms.author: szark
-ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 12/10/2019
+ms.author: mimckitt
+ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035373"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747724"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Oracle Linux-alapú virtuális gép előkészítése Azure-beli használatra
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy már telepített egy Oracle Linux operációs rendszert egy virtuális merevlemezre. Több eszköz létezik a. vhd fájlok létrehozásához, például egy virtualizációs megoldáshoz, például a Hyper-V-hez. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és a virtuális gép konfigurálása](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="oracle-linux-installation-notes"></a>Oracle Linux telepítési megjegyzések
+## <a name="oracle-linux-installation-notes"></a>Oracle Linux telepítési megjegyzések
 * A Linux for Azure előkészítésével kapcsolatos további tippeket a [Linux általános telepítési megjegyzései](create-upload-generic.md#general-linux-installation-notes) című témakörben talál.
-* A Hyper-V és az Azure egyaránt támogatja az Oracle Red hat-kompatibilis kernelét és a UEK3 (nem törhető vállalati kernel). A legjobb eredmények érdekében frissítsen a legújabb kernelre a Oracle Linux VHD előkészítése során.
+* A Hyper-V és az Azure támogatási Oracle Linux a nem törhető vállalati rendszermaggal (UEK) vagy a Red hat-kompatibilis Kernelrel.
 * Az Oracle UEK2 nem támogatott a Hyper-V-ben és az Azure-ban, mert nem tartalmazza a szükséges illesztőprogramokat.
 * A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a convert-VHD parancsmag használatával.
 * A Linux rendszer telepítésekor azt javasoljuk, hogy az LVM helyett standard partíciót használjon (ez általában számos telepítés esetében). Ezzel elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemezt egy másik virtuális géphez kell csatolni a hibaelhárításhoz. Az [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható, ha az előnyben részesített.
-* A NUMA nem támogatott nagyobb méretű virtuálisgép-méretekhez, mert a 2.6.37 alatti Linux kernel-verziókban hiba fordul elő. Ez a probléma elsősorban a felsőbb rétegbeli Red Hat 2.6.32 kernelt használó disztribúciókat befolyásolja. Az Azure Linux-ügynök (waagent) manuális telepítése automatikusan letiltja a NUMA-t a Linux kernel GRUB-konfigurációjában. Erről további információt az alábbi lépésekben találhat.
+* A 2.6.37-nál korábbi Linux kernel verziók nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és a Oracle Linux 6,6-es és újabb verzióiban lett javítva
 * Ne állítson be swap-partíciót az operációsrendszer-lemezen. A Linux-ügynök úgy konfigurálható, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén.  Erről további információt az alábbi lépésekben találhat.
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) .
 * Győződjön meg arról, hogy a `Addons` adattár engedélyezve van. Szerkessze a fájlt `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7), és módosítsa a sort `enabled=0` a következőre: **[`enabled=1`]** vagy **[ol6_addons]** .
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 és újabb verziók
 Az Azure-ban való futtatáshoz a virtuális gép operációs rendszerében meghatározott konfigurációs lépéseket kell végrehajtania.
 
 1. A Hyper-V kezelőjének középső ablaktábláján válassza ki a virtuális gépet.
@@ -71,11 +69,11 @@ Az Azure-ban való futtatáshoz a virtuális gép operációs rendszerében megh
 8. Telepítse a Python-pyasn1 a következő parancs futtatásával:
    
         # sudo yum install python-pyasn1
-9. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/boot/grub/menu.lst" szöveget egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel a következő paramétereket tartalmazza:
+9. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg a "/boot/grub/menu.lst" szöveget egy szövegszerkesztőben, és győződjön meg arról, hogy a kernel a következő paramétereket tartalmazza:
    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
+        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Ez azt is biztosítja, hogy az összes konzolos üzenet el legyen küldve az első soros portra, amely segítséget nyújt az Azure támogatásához hibakeresési problémák esetén. Ezzel letiltja a NUMA-t az Oracle Red hat-kompatibilis kernel hibája miatt.
+   Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely a hibakeresési problémákkal segíti az Azure-támogatást.
    
    A fentiek mellett ajánlott *eltávolítani* a következő paramétereket:
    
@@ -107,12 +105,12 @@ Az Azure-ban való futtatáshoz a virtuális gép operációs rendszerében megh
 14. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
 ---
-## <a name="oracle-linux-70"></a>Oracle Linux 7.0 +
+## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7,0 és újabb verziók
 **Változások a Oracle Linux 7**
 
 Egy Oracle Linux 7 virtuális gép Azure-hoz való előkészítése nagyon hasonlít a Oracle Linux 6-hoz, azonban számos fontos eltérést érdemes megjegyezni:
 
-* A Red hat-kompatibilis kernel és az Oracle UEK3 is támogatottak az Azure-ban.  A UEK3 kernel használata javasolt.
+* Az Azure támogatja a Oracle Linux a nem törhető vállalati rendszermaggal (UEK) vagy a Red hat-kompatibilis Kernelrel. A UEK ajánlott Oracle Linux.
 * A hálózatkezelő csomag már nem ütközik az Azure Linux-ügynökkel. Ez a csomag alapértelmezés szerint telepítve van, ezért azt javasoljuk, hogy ne távolítsa el.
 * A GRUB2 mostantól alapértelmezett rendszerbetöltőként van használatban, így a kernel-paraméterek szerkesztésének eljárása módosult (lásd alább).
 * A XFS mostantól az alapértelmezett fájlrendszer. Az ext4 fájlrendszer továbbra is használható, ha szükséges.
@@ -151,7 +149,7 @@ Egy Oracle Linux 7 virtuális gép Azure-hoz való előkészítése nagyon hason
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Ez azt is biztosítja, hogy az összes konzolos üzenet el legyen küldve az első soros portra, amely segítséget nyújt az Azure támogatásához hibakeresési problémák esetén. Emellett kikapcsolja a hálózati adapterek új OEL 7 elnevezési konvencióit is. A fentiek mellett ajánlott *eltávolítani* a következő paramétereket:
+   Ez azt is biztosítja, hogy az összes konzolos üzenet el legyen küldve az első soros portra, amely segítséget nyújt az Azure támogatásához hibakeresési problémák esetén. Emellett kikapcsolja a hálózati adapterek elnevezési konvencióit a Oracle Linux 7 környezetben a nem törhető vállalati Kernelrel. A fentiek mellett ajánlott *eltávolítani* a következő paramétereket:
    
        rhgb quiet crashkernel=auto
    
