@@ -1,6 +1,6 @@
 ---
-title: Az Azure Sentinel Azure Monitor-munkafüzetek alapján felügyelheti adatait az irányítópultok használatával | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti meg adatait az irányítópultok használatával az Azure Sentinel-munkafüzetek alapján.
+title: Az Azure Sentinel Azure Monitor-munkafüzetek alapján jeleníti meg az adatait az irányítópultok használatával | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg az adatait irányítópultok használatával az Azure Sentinelben található munkafüzetek alapján.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2019
+ms.date: 01/01/2020
 ms.author: rkarlin
-ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158857"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610454"
 ---
-# <a name="tutorial-monitor-your-data"></a>Oktatóanyag: az adatai monitorozása
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: az adatai megjelenítése és figyelése
 
 
 
-Miután az [adatforrásokat](quickstart-onboard.md) az Azure Sentinel szolgáltatáshoz csatlakoztatta, az Azure Sentinel-integrációval Azure monitor-munkafüzetek segítségével figyelheti az adatait, ami sokoldalúan használható az egyéni irányítópultok létrehozásához. Míg a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
+Miután az [adatforrásokat](quickstart-onboard.md) az Azure sentinelhez csatlakoztatta, megjelenítheti és figyelheti az adatait a Azure monitor-munkafüzetek Azure Sentinel-bevezetésével, amely az egyéni irányítópultok létrehozásának sokoldalúságát biztosítja. Míg a munkafüzetek eltérően jelennek meg az Azure Sentinelben, hasznos lehet megtekinteni, hogyan [hozhat létre interaktív jelentéseket Azure monitor-munkafüzetek](../azure-monitor/app/usage-workbooks.md)használatával. Az Azure Sentinel lehetővé teszi, hogy egyéni munkafüzeteket hozzon létre az adatai között, és a beépített munkafüzet-sablonokkal is lehetővé teszi, hogy az adatforrások összekapcsolását követően gyorsan szerezzen információt az adatelemzésről.
 
 
-Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai figyeléséhez.
+Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megjelenítéséhez.
 > [!div class="checklist"]
 > * Beépített munkafüzetek használata
 > * Új munkafüzetek létrehozása

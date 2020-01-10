@@ -4,24 +4,37 @@ description: Ismerje meg, hogyan elemezheti a diagnosztikai adatait az Azure Spr
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 01/06/2020
 ms.author: jeconnoc
-ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607861"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730042"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
-Az Azure Spring Cloud diagnosztikai funkciójának használatával a naplók és a metrikák a következő szolgáltatások bármelyikével elemezhetők:
+Az Azure Spring Cloud diagnosztikai funkciójának használatával a naplók és a metrikák a következő szolgáltatásokkal elemezhetők:
 
-* Használja az Azure Log Analyticst, ahol az adatírás azonnal megtörténik anélkül, hogy először a Storage-ba kellene írnia.
-* A naplózáshoz vagy a manuális ellenőrzéshez mentse őket egy Storage-fiókba. Megadhatja a megőrzési időt (napokban).
-* Továbbíthatja őket az Event hub-nak egy harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás betöltéséhez.
+* Használja az Azure Log Analyticst, ahol az Azure Storage-ba írja az adatbevitelt. A naplók Log Analyticsba való exportálásakor késés történik.
+* Naplókat menthet egy Storage-fiókba a naplózáshoz vagy a manuális ellenőrzéshez. Megadhatja a megőrzési időt (napokban).
+* Adatfolyam-naplók küldése az Event hub-nak harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás betöltéséhez.
 
-A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadást. A Log Analytics konfigurálásával kapcsolatos további információkért tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört. 
+Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát.
+
+## <a name="logs"></a>Naplók
+
+|Napló | Leírás |
+|----|----|
+| **ApplicationConsole** | Az összes felhasználói alkalmazás konzoljának naplója. | 
+| **SystemLogs** | Jelenleg csak a [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) naplózza ezt a kategóriát. |
+
+## <a name="metrics"></a>Metrikák
+
+A metrikák teljes listájáért lásd: [Spring Cloud mérőszámok](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+
+A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadást. A Log Analytics konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört. 
 
 ## <a name="configure-diagnostics-settings"></a>Diagnosztikai beállítások konfigurálása
 
@@ -38,17 +51,44 @@ A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadá
 > [!NOTE]
 > A naplók és a metrikák kibocsátása között akár 15 percet is igénybe vehet, és amikor megjelennek a Storage-fiókban, az Event hub vagy a Log Analytics.
 
-## <a name="view-the-logs"></a>A naplók megtekintése
+## <a name="view-the-logs-and-metrics"></a>A naplók és a metrikák megtekintése
+A naplók és a metrikák megtekintésére többféle módszer áll rendelkezésre a következő fejlécekben leírtak szerint.
+
+### <a name="use-logs-blade"></a>Naplók panel használata
+
+1. A Azure Portal nyissa meg az Azure Spring Cloud-példányát.
+1. A **naplóbeli keresés** ablaktábla megnyitásához válassza a **naplók**lehetőséget.
+1. A **napló** keresési mezőjében
+   * A naplók megtekintéséhez adjon meg egy egyszerű lekérdezést, például:
+
+    ```sql
+    AppPlatformLogsforSpring
+    | limit 50
+    ```
+   * A metrikák megtekintéséhez adjon meg egy egyszerű lekérdezést, például:
+
+    ```sql
+    AzureMetrics
+    | limit 50
+    ```
+1. A keresés eredményének megtekintéséhez válassza a **Futtatás**lehetőséget.
 
 ### <a name="use-log-analytics"></a>A Log Analytics használata
 
 1. A Azure Portal a bal oldali ablaktáblán válassza a **log Analytics**lehetőséget.
 1. Válassza ki a diagnosztikai beállítások hozzáadásakor kiválasztott Log Analytics munkaterületet.
 1. A **naplóbeli keresés** ablaktábla megnyitásához válassza a **naplók**lehetőséget.
-1. A **napló** keresési mezőjében adjon meg egy egyszerű lekérdezést, például:
+1. A **napló** keresési mezőjében
+   * a naplók megtekintéséhez adjon meg egy egyszerű lekérdezést, például:
 
     ```sql
     AppPlatformLogsforSpring
+    | limit 50
+    ```
+    * a metrikák megtekintéséhez adjon meg egy egyszerű lekérdezést, például:
+
+    ```sql
+    AzureMetrics
     | limit 50
     ```
 
@@ -60,6 +100,8 @@ A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadá
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
+> [!NOTE]  
+> a `==` megkülönbözteti a kis-és nagybetűket, de `=~` nem.
 
 Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](../azure-monitor/log-query/query-language.md)ismertető témakört.
 
@@ -87,9 +129,9 @@ Ha többet szeretne megtudni a diagnosztikai információk esemény-központba k
 
 ## <a name="analyze-the-logs"></a>A naplók elemzése
 
-Az Azure Log Analytics biztosítja a Kusto, hogy lekérdezze a naplókat az elemzéshez. A naplók Kusto használatával történő lekérdezésének gyors bevezetéséhez tekintse át a [log Analytics oktatóanyagot](../azure-monitor/log-query/get-started-portal.md).
+Az Azure Log Analytics Kusto motorral fut, így elemzés céljából lekérdezheti a naplókat. A naplók Kusto használatával történő lekérdezésének gyors bevezetéséhez tekintse át a [log Analytics oktatóanyagot](../azure-monitor/log-query/get-started-portal.md).
 
-Az alkalmazás naplói kritikus információkat biztosítanak az alkalmazás állapotáról, teljesítményéről és egyéb adatairól. A következő részekben néhány egyszerű lekérdezés segíti az alkalmazás jelenlegi és múltbeli állapotának megértését.
+Az alkalmazás naplói kritikus információkat és részletes naplókat biztosítanak az alkalmazás állapotával, teljesítményével és egyéb adataival kapcsolatban. A következő részekben néhány egyszerű lekérdezés segíti az alkalmazás jelenlegi és múltbeli állapotának megértését.
 
 ### <a name="show-application-logs-from-azure-spring-cloud"></a>Alkalmazás-naplók megjelenítése az Azure Spring Cloud-ból
 

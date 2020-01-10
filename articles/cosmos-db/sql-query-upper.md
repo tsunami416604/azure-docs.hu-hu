@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b0f025948803a23c5b3c8bb6415c0e111b946b2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349039"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728888"
 ---
 # <a name="upper-azure-cosmos-db"></a>FELSŐ (Azure Cosmos DB)
- Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza.  
-  
+ Egy karakterlánc-kifejezést ad vissza a kisbetűs karakterek nagybetűssé alakítását követően.  
+
+A felső rendszerfüggvény nem használja az indexet. Ha gyakori kis-és nagybetűket nem megkülönböztető összehasonlításokat tervez, a felső rendszerfunkció nagy mennyiségű RU-t használhat fel. Ha ez az eset áll fenn, ahelyett, hogy a felső rendszerfüggvényt használja az összehasonlítások minden egyes időpontjában az adatnormalizálás során, a borítást a Beszúrás után normalizálhatja. Ezután egy olyan lekérdezés, mint például a SELECT * FROM c, ahol az UPPER (c. Name) = ' BOB ' egyszerűen KIVÁLASZTJA * a c-ből, ahol a c.name = ' BOB ' lesz.
+
 ## <a name="syntax"></a>Szintaxis
   
 ```sql
@@ -30,23 +32,23 @@ UPPER(<str_expr>)
   
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Egy karakterlánc-kifejezés adja vissza.  
+  Egy karakterlánc-kifejezést ad vissza.  
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa azt szemlélteti, hogyan használható a `UPPER` a lekérdezésekben  
+  Az alábbi példa bemutatja, hogyan használható a `UPPER` a lekérdezésekben  
   
 ```sql
 SELECT UPPER("Abc") AS upper  
 ```  
   
- Íme az eredményhalmaz.  
+ Itt látható az eredményhalmaz.  
   
 ```json
 [{"upper": "ABC"}]  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

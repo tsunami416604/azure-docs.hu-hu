@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b560cee23855d1c0e8a7b3c2cb9d82c184a1ebf6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811355"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732399"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állás és Azure SQL Database
 
-A Azure SQL Database magas rendelkezésre állású architektúrájának célja annak biztosítása, hogy az adatbázis az idő 99,99%-ában működik, és ne aggódjon a karbantartási műveletek és kimaradások következményeivel. Az Azure automatikusan kezeli a kritikus karbantartási feladatokat, például a javításokat, a biztonsági mentéseket, a Windows-és az SQL-frissítéseket, valamint a nem tervezett eseményeket, például a mögöttes hardvereket, szoftvereket vagy hálózati hibákat.  Ha az alapul szolgáló SQL-példány javított vagy feladatátvételt végez, az állásidő nem észlelhető, ha az alkalmazásban [újrapróbálkozási logikát alkalmaz](sql-database-develop-overview.md#resiliency) . Azure SQL Database a legfontosabb körülmények között is gyorsan helyreállítható, így biztosítva, hogy az adatok mindig elérhetők legyenek.
+A Azure SQL Database magas rendelkezésre állású architektúrájának célja annak biztosítása, hogy az adatbázis legalább 99,99%-ban rendelkezésre álljon (a különböző szintekre vonatkozó SLA-ra vonatkozó további információkért tekintse meg az SLA-t [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/)), és ne aggódjon a karbantartási műveletek és kimaradások következményeivel. Az Azure automatikusan kezeli a kritikus karbantartási feladatokat, például a javításokat, a biztonsági mentéseket, a Windows-és az SQL-frissítéseket, valamint a nem tervezett eseményeket, például a mögöttes hardvereket, szoftvereket vagy hálózati hibákat.  Ha az alapul szolgáló SQL-példány javított vagy feladatátvételt végez, az állásidő nem észlelhető, ha az alkalmazásban [újrapróbálkozási logikát alkalmaz](sql-database-develop-overview.md#resiliency) . Azure SQL Database a legfontosabb körülmények között is gyorsan helyreállítható, így biztosítva, hogy az adatok mindig elérhetők legyenek.
 
 A magas rendelkezésre állású megoldás úgy van kialakítva, hogy a hibák miatt soha ne vesszenek el az véglegesített adatok, hogy a karbantartási műveletek ne befolyásolják a munkaterhelést, és hogy az adatbázis nem lesz egyetlen meghibásodási pont a szoftver architektúrájában. Nincsenek olyan karbantartási időszakok vagy állásidők, amelyeknek az adatbázis frissítése vagy karbantartása közben le kell állítania a munkaterhelést. 
 
@@ -102,7 +102,7 @@ A feladatátvételt REST API vagy PowerShell használatával lehet kezdeményezn
 
 A Azure SQL Database egy beépített, magas rendelkezésre állású megoldást kínál, amely mélyen integrálva van az Azure platformmal. A probléma a hibák észlelése és helyreállítása Service Fabric függ, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében. Az Azure SQL Database emellett az Always On rendelkezésre állási csoport technológiáját is kihasználja SQL Server a replikációhoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [Azure Availability Zones](../availability-zones/az-overview.md)
 - Tudnivalók a [Service Fabric](../service-fabric/service-fabric-overview.md)

@@ -4,19 +4,19 @@ description: Ez a cikk áttekintést nyújt az Azure Application Gateway többhe
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/17/2019
+ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 61184fc7415de3c142b460710cceefed61a25af3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835344"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719953"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
-A többhelyes üzemeltetéssel egynél több webalkalmazást konfigurálhat ugyanazon az alkalmazásátjáró-példányon. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Az alábbi példában az alkalmazásátjáró a contoso.com és a fabrikam.com webhelyet szolgálja ki a ContosoServerPool és a FabrikamServerPool nevű háttér-kiszolgálókészlettel.
+Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Az alábbi példában az alkalmazásátjáró a contoso.com és a fabrikam.com webhelyet szolgálja ki a ContosoServerPool és a FabrikamServerPool nevű háttér-kiszolgálókészlettel.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -120,7 +120,7 @@ Nincs szükség változtatásra az útválasztási szabályban. Az alapszintű �
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an application gateway using multiple site hosting](tutorial-multiple-sites-powershell.md) (Alkalmazásátjáró létrehozása többhelyes üzemeltetéssel) weboldalra, ahonnan megtudhatja, hogyan hozhat létre egynél több webalkalmazást támogató alkalmazásátjárót.
 

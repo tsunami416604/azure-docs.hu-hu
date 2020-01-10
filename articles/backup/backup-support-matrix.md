@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172068"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708480"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -54,7 +54,7 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 
 **Korlát** | **Részletek**
 --- | ---
-**Azure-beli VM-adatlemezek** | Legfeljebb 16
+**Azure-beli VM-adatlemezek** | Legfeljebb 16 <br> Ha regisztrálni szeretne a 16-nál több (legfeljebb 32) adatlemezzel rendelkező virtuális gépek privát előzetes verziójára, írjon nekünk a következő címre: AskAzureBackupTeam@microsoft.com
 **Azure-beli virtuális gép adatlemezének mérete** | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 
 ### <a name="azure-vm-backup-options"></a>Azure virtuális gépek biztonsági mentési lehetőségei
@@ -117,7 +117,7 @@ A Azure Backup támogatja a titkosítást az átvitel közbeni és a nyugalmi ad
 **Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek DPM-mel** | ![Igen][green] | ![Igen][green]
 **Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek MABS-mel** | ![Igen][green] | ![Igen][green]
 
-## <a name="compression-support"></a>A tömörítés támogatása
+## <a name="compression-support"></a>Tömörítés támogatása
 
 A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom tömörítését támogatja.
 
@@ -126,8 +126,8 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 
 **Gép** | **Tömörítés a MABS/DPM (TCP)** | **Tömörítés a tárolóba (HTTPS)**
 --- | --- | ---
-**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | NA | ![Igen][green]
-**Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | NA | NA
+**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | n/a | ![Igen][green]
+**Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | n/a | n/a
 **Biztonsági mentés helyszíni/Azure-alapú gépeken a MABS/DPM használatával** | ![Igen][green] | ![Igen][green]
 
 ## <a name="retention-limits"></a>Megőrzési korlátok
@@ -141,6 +141,19 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 **Helyreállítási pont megőrzése** | Napi, heti, havi, éves
 **Maximális megőrzési idő** | A biztonsági mentés gyakoriságától függően változik
 **Helyreállítási pontok a DPM-vagy MABS-lemezen** | 64 fájlkiszolgálók esetén; 448 alkalmazás-kiszolgálókhoz <br/><br/>Korlátlan szalagos helyreállítási pontok a helyszíni DPM
+
+## <a name="cross-region-restore"></a>Régiók közötti visszaállítás
+
+Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást az adatok rendelkezésre állásának és a rugalmassági képesség megerősítéséhez, így az ügyfelek teljes körűen vezérelhetik az adatok másodlagos régióba való visszaállítását. A szolgáltatás konfigurálásához látogasson el [a régióbeli visszaállítás beállítása című cikkre.](backup-create-rs-vault.md#set-cross-region-restore) Ez a funkció a következő felügyeleti típusok esetén támogatott:
+
+| Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Azure VM               | Igen. A korlátozott, 4 TB-nál kisebb lemezekkel rendelkező virtuális gépek és virtuális gépek esetében a nyilvános korlátozott előzetes verzió támogatott | USA nyugati középső régiója   |
+| MARS-ügynök/helyszíni | Nem                                                           | –               |
+| SQL/SAP HANA          | Nem                                                           | –               |
+| AFS                    | Nem                                                           | –               |
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901391"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732569"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -178,7 +178,7 @@ Az ajánlott eljárás a GA előtt létrehozott meglévő Azure AD-rendszergazd�
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és futnia. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és futnia. Részletes információk: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
@@ -236,7 +236,7 @@ További információ a CLI-parancsokról: [az SQL mi](/cli/azure/sql/mi).
 
 Az alábbi két eljárás bemutatja, hogyan építhet ki Azure Active Directory rendszergazdát az Azure SQL Serverhez a Azure Portal és a PowerShell használatával.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. A [Azure Portal](https://portal.azure.com/)jobb felső sarokban válassza ki a kapcsolódást a lehetséges aktív könyvtárak listájának legördülő listához. Válassza ki a megfelelő Active Directory alapértelmezett Azure AD-ként. Ez a lépés összekapcsolja az előfizetéshez kapcsolódó Active Directory az Azure SQL Serverrel, és gondoskodik arról, hogy ugyanazt az előfizetést használja az Azure AD és a SQL Server esetében is. (Az Azure SQL Server Azure SQL Database vagy Azure SQL Data Warehouse is üzemeltethető.)
 
@@ -274,7 +274,7 @@ Ha később el szeretné távolítani a rendszergazdát, a **Active Directory-re
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és futnia. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure PowerShell parancsokat:
+A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és futnia. Részletes információk: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása). Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure PowerShell parancsokat:
 
 - Kapcsolat – AzAccount
 - Select-AzSubscription
@@ -345,14 +345,17 @@ További információ a CLI-parancsokról: [az SQL Server](/cli/azure/sql/server
 A következő szoftvereket kell telepítenie minden olyan ügyfélszámítógépen, amelyről az alkalmazások vagy a felhasználók az Azure AD-identitások használatával csatlakoznak Azure SQL Databasehoz vagy Azure SQL Data Warehousehoz:
 
 - A .NET-keretrendszer 4,6-es vagy újabb verziója [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Azure Active Directory hitelesítési könyvtár a SQL Serverhoz (*ADALSQL. DLL*) több nyelven (x86 és amd64) is elérhető a letöltőközpontban a [Microsoft Active Directory-hitelesítési tár Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
+- Azure Active Directory hitelesítési könyvtár a SQL Serverhoz (*ADAL. DLL*). Alább láthatók a letöltési hivatkozások, amelyek a ADAL tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot telepítik *. DLL* -függvénytár.
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC-illesztő, 17 SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB 18. illesztőprogram SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 Ezeket a követelményeket az alábbiak szerint teljesítheti:
 
-- A [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) vagy [a Visual Studio 2015 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) telepítése megfelel a .NET-keretrendszer 4,6 követelményének.
-- A SSMS a ADALSQL x86-os verzióját telepíti *. DLL*.
-- A SSDT a ADALSQL amd64 verzióját telepíti *. DLL*.
-- A [Visual Studio letöltések](https://www.visualstudio.com/downloads/download-visual-studio-vs) legújabb Visual Studio verziója megfelel a .NET-keretrendszer 4,6-es követelményének, de nem telepíti a ADALSQL szükséges amd64-es verzióját *. DLL*.
+- A [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) vagy [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) legújabb verziójának telepítése megfelel a .NET-keretrendszer 4,6-es követelményének.
+    - A SSMS a ADAL x86-os verzióját telepíti *. DLL*.
+    - A SSDT a ADAL amd64 verzióját telepíti *. DLL*.
+    - A [Visual Studio letöltések](https://www.visualstudio.com/downloads/download-visual-studio-vs) legújabb Visual Studio verziója megfelel a .NET-keretrendszer 4,6-es követelményének, de nem telepíti a ADAL szükséges amd64-es verzióját *. DLL*.
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Tárolt adatbázis-felhasználók létrehozása az adatbázisban az Azure AD-identitásokhoz rendelve
 
@@ -513,9 +516,13 @@ A következő utasítások az Sqlcmd 13,1-es verziójának használatával csatl
 > a `sqlcmd` a `-G` paranccsal nem működik a rendszeridentitásokkal, és felhasználói egyszerű bejelentkezést igényel.
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>Az Azure AD-hitelesítés hibaelhárítása
+
+Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítási útmutató a következő blogban található: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793305"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732237"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Összetevők hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
-Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után olyan összetevőket adhat hozzá, mint például a Logic apps, az integrációs fiókok és az összekötők, hogy hozzáférhessenek az Azure-beli virtuális hálózatban található erőforrásokhoz.
+Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)létrehozása után olyan összetevőket adhat hozzá, mint például a Logic apps, az integrációs fiókok és az összekötők, hogy hozzáférhessenek az Azure-beli virtuális hálózatban található erőforrásokhoz. Az ISE létrehozása után elérhető felügyelt ISE-összekötők például nem jelennek meg automatikusan a Logic app Designerben. Az ISE-összekötők használata előtt ezeket az [összekötőket manuálisan kell hozzáadnia és telepítenie az ISE](#add-ise-connectors-environment) -ben, hogy azok megjelenjenek a Logic app Designerben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -84,17 +84,17 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
 ## <a name="add-ise-connectors"></a>ISE-összekötők hozzáadása
 
-Felveheti a Microsoft által felügyelt összekötőket, amelyek elérhetők az ISE-ben, de nincsenek telepítve az ISE-ben.
+Azok a Microsoft által felügyelt összekötők, amelyek az ISE létrehozása után válnak elérhetővé, nem jelennek meg automatikusan a Logic app Designer összekötő-választójában. Az ISE-összekötők használata előtt ezeket az összekötőket manuálisan kell hozzáadnia és telepítenie az ISE-ben, hogy azok megjelenjenek a Logic app Designerben.
 
 1. Az ISE menü **Beállítások**területén válassza a **felügyelt összekötők**lehetőséget. Az eszköztáron válassza a **Hozzáadás**lehetőséget.
 
    ![Felügyelt összekötők megtekintése](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Ha a kívánt összekötő elérhető, válassza ki az összekötőt, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Kattintson a **Létrehozás** gombra.
 
-   A lista csak azokat az összekötőket jeleníti meg, amelyek jogosultak, de nincsenek telepítve az ISE-ben. Az ISE-ben már üzembe helyezett összekötők nem érhetők el a kijelöléshez.
+   ![Válassza ki az ISE-ben telepíteni kívánt ISE-összekötőt](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![Jogosult összekötő kiválasztása](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   Csak azok az ISE-összekötők érhetők el, amelyek jogosultak, de még nincsenek telepítve az ISE számára a kiválasztáshoz. Az ISE-ben már üzembe helyezett összekötők nem érhetők el a kijelöléshez.
 
 <a name="create-custom-connectors-environment"></a>
 

@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786418"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732450"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -132,13 +132,13 @@ Gondolja át, hogy a szervezetnek meg kell határoznia a felhasználói kiépít
 
 A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségi körök eltérő elvárásai vannak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és hogy a projektben érintett szerepköröket jól megértette az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
 
-### <a name="plan-communications"></a>Kommunikáció tervezése
+### <a name="plan-communications"></a>A kommunikáció tervezése
 
 A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon kommunikálhat a felhasználókkal, hogy a felhasználói élmény hogyan módosuljon, mikor módosul, és hogyan szerezhet támogatást, ha problémákat tapasztal.
 
 ### <a name="plan-a-pilot"></a>Pilóta megtervezése
 
-Javasoljuk, hogy az automatikus felhasználó-kiépítés kezdeti konfigurációjának tesztelési környezetben legyen a felhasználók kis részhalmaza, mielőtt az összes éles üzemben lévő felhasználónak méreteznie kellene.
+Javasoljuk, hogy az automatikus felhasználó-kiépítés kezdeti konfigurációjának tesztelési környezetben legyen a felhasználók kis részhalmaza, mielőtt az összes éles üzemben lévő felhasználónak méreteznie kellene. Lásd: [ajánlott eljárások](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) a próbaüzem futtatásához.
 
 #### <a name="best-practices-for-a-pilot"></a>Ajánlott eljárások a pilóták számára  
 

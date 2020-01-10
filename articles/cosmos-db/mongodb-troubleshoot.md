@@ -4,15 +4,15 @@ description: Ez a dokumentum a Azure Cosmos DB API-MongoDB kapcsolatos gyakori p
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41d667f4e90114052a17c5707989634bbb5fc421
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754972"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719834"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Az Azure Cosmos DB API-MongoDB kapcsolatos gyakori problémák elhárítása
 

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468080"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707203"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
-Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítenek a felhőben tárolt adatvédelmek, erőforrások és alkalmazások védelmében, és megfelelnek a vállalat biztonsági igényeinek.
+Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
 
 ## <a name="azure-platform"></a>Azure-platform
 
@@ -57,7 +57,7 @@ A Microsoft identitás-és hozzáférés-kezelési megoldásai segítenek a vál
 
 Az Azure Active Directory (Azure AD) biztonsági előnyei közé tartozik a következők lehetősége:
 
-- Egyetlen identitás létrehozása és kezelése minden felhasználó számára a hibrid vállalaton belül, a felhasználók, csoportok és eszközök szinkronizálással való megőrzése.
+- A hibrid vállalat minden felhasználójához létrehozhat és kezelhet egy-egy identitást, így a felhasználók, csoportok és eszközök folyamatosan szinkronizálva lesznek.
 
 - Egyszeri bejelentkezéses hozzáférést biztosíthat az alkalmazásokhoz, több ezer előre integrált SaaS-alkalmazáshoz.
 
@@ -73,7 +73,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Egyszeri bejelentkezés
 
-- Multi-Factor Authentication
+- Többtényezős hitelesítés
 
 - Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 
@@ -81,9 +81,9 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Eszközregisztráció
 
-- Privilegizált identitások kezelése
+- Privileged Identity Management
 
-- Identitásvédelem
+- Identity Protection
 
 #### <a name="single-sign-on"></a>Egyszeri bejelentkezés
 
@@ -91,11 +91,11 @@ Az [egyszeri bejelentkezés (SSO)](https://azure.microsoft.com/documentation/vid
 
 Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint például az Office 365, a Box és a Salesforce a végfelhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak minden SaaS-alkalmazáshoz meg kellett emlékezniük a jelszót.
 
-[Az Azure ad kiterjeszti a helyszíni Active Directory a felhőbe](../../active-directory/manage-apps/what-is-single-sign-on.md), lehetővé téve a felhasználók számára, hogy az elsődleges szervezeti fiókját ne csak a tartományhoz csatlakoztatott eszközökre és a vállalati erőforrásokra jelentkezzen be, hanem az összes szükséges webes és SaaS-alkalmazást is feladat.
+[Az Azure ad kiterjeszti a helyszíni Active Directory a felhőbe](../../active-directory/manage-apps/what-is-single-sign-on.md), lehetővé téve a felhasználók számára, hogy az elsődleges szervezeti fiókját ne csak a tartományhoz csatlakoztatott eszközökre és a vállalati erőforrásokra jelentkezzen be, hanem a feladatokhoz szükséges összes webes és SaaS-alkalmazást is.
 
 Nem csak a felhasználóknak nem kell több felhasználónevet és jelszót kezelnie, az alkalmazások hozzáférését a szervezeti csoportok és az alkalmazotti állapotuk alapján automatikusan kiépítheti vagy kiépítheti. Az [Azure ad olyan biztonsági és hozzáférési irányítási vezérlőket vezet be](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , amelyek segítségével központilag kezelheti a felhasználók hozzáférését az SaaS-alkalmazásokon keresztül.
 
-#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+#### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Az [Azure multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget hoz létre a felhasználói bejelentkezésekhez és tranzakciókra. Az [MFA segít megvédeni](../../active-directory/authentication/concept-mfa-howitworks.md) az adathozzáférést az adatkezeléshez és az alkalmazásokhoz, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést tesz lehetővé számos ellenőrzési lehetőség – telefonhívás, szöveges üzenet vagy Mobile apps-értesítés, valamint ellenőrző kód és külső OAuth-tokenek – használatával.
 
@@ -129,7 +129,7 @@ Az [Azure ad-eszközök regisztrációja](../../active-directory/devices/overvie
 
 A [mobileszköz-kezelési (Mdm)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) megoldással, például az Intune-nal együtt a Azure Active Directoryban található eszköz attribútumai frissülnek az eszközre vonatkozó további információkkal. Ez lehetővé teszi, hogy olyan feltételes hozzáférési szabályokat hozzon létre, amelyek az eszközök hozzáférését kényszerítik, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak.
 
-#### <a name="privileged-identity-management"></a>Privilegizált identitások kezelése
+#### <a name="privileged-identity-management"></a>Privileged Identity Management
 
 [Azure Active Directory (ad) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) lehetővé teszi a Kiemelt identitások kezelését, vezérlését és figyelését, valamint az Azure ad-ben és más Microsoft-online szolgáltatások, például az Office 365-as vagy Microsoft Intune-beli erőforrásokhoz való hozzáférést.
 
@@ -145,7 +145,7 @@ A Azure AD Privileged Identity Management a következőket teszi lehetővé:
 
 - A Kiemelt szerepkörhöz való hozzáférésre vonatkozó riasztások beszerzése
 
-#### <a name="identity-protection"></a>Identitásvédelem
+#### <a name="identity-protection"></a>Identity Protection
 
 A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection meglévő Azure Active Directory anomáliák észlelési képességeit használja (az Azure AD rendellenes tevékenységi jelentésein keresztül érhető el), és új kockázati észlelési típusokat vezet be, amelyek valós időben észlelik a rendellenességeket.
 
@@ -171,7 +171,7 @@ A felhőben az adatvédelem egyik kulcsa az, hogy milyen állapotokban lehet az 
 
 - A REST-on: magában foglalja az összes olyan adattárolási objektumot, tárolót és típust, amely statikusan, fizikai adathordozón található, mágneses vagy optikai lemez.
 
-- Tranzitban: Ha az adatok átvitele az összetevők, a helyszínek és a programok között történik, például a hálózaton keresztül, a helyszíni és a felhő között, illetve fordítva, beleértve a hibrid kapcsolatokat, például a ExpressRoute-t, vagy egy bemeneti/kimeneti folyamat során. , úgy gondolja, hogy mozgásban van.
+- Tranzitban: Ha az adatok átvitele az összetevők, a helyszínek és a programok között történik, például a hálózaton keresztül, a helyszíniről a felhőbe és fordítva, beleértve a hibrid kapcsolatokat, például a ExpressRoute-t, vagy egy bemeneti/kimeneti folyamat során, úgy gondolja, hogy mozgásban van.
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
@@ -256,7 +256,7 @@ Nagyobb adatkészletek helyezhetők át egy dedikált nagy sebességű WAN-kapcs
 
 Ha az Azure Storage-t az Azure Portalon keresztül használja, az összes tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) HTTPS protokollon keresztül is használható az [Azure storage](https://azure.microsoft.com/services/storage/) és a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)használatára.
 
-Azok a szervezetek, amelyek nem tudnak védelmet biztosítani az átvitel során, érzékenyebbek a [támadók](https://technet.microsoft.com/library/gg195821.aspx), a [lehallgatás](https://technet.microsoft.com/library/gg195641.aspx)és a munkamenet-eltérítések számára. Ezeket a támadásokat a bizalmas adatokhoz való hozzáférés első lépéseként lehet megszerezni.
+Azok a szervezetek, amelyek nem tudnak védelmet biztosítani az átvitel során, érzékenyebbek a [támadók](https://technet.microsoft.com/library/gg195821.aspx), a [lehallgatás](https://technet.microsoft.com/library/gg195641.aspx)és a munkamenet-eltérítések számára. Ezek a támadások a bizalmas adatokhoz való hozzáférés első lépései lehetnek.
 
 Ha többet szeretne megtudni az Azure VPN-ről, tekintse át a [VPN Gateway tervezésének és kialakításának](../../vpn-gateway/vpn-gateway-about-vpngateways.md)cikkét.
 
@@ -281,7 +281,7 @@ Az [adatbesorolásra](https://download.microsoft.com/download/0/A/3/0A3BE969-85C
 ## <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 Míg az Azure felelős az alkalmazás által futtatott infrastruktúra és platform védelméért, az Ön felelőssége, hogy saját maga is biztonságossá tegye az alkalmazást. Más szóval az alkalmazás kódjának és tartalmának biztonságos módon történő fejlesztését, üzembe helyezését és kezelését kell végeznie. Ennek hiányában az alkalmazás kódja vagy tartalma továbbra is sebezhető lehet a fenyegetésekkel szemben.
 
-### <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A [webalkalmazási tűzfal (WAF)](../../application-gateway/waf-overview.md) a [Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen.
 
 A webalkalmazási tűzfal az [alapvető OWASP-szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak szabályai alapján működik. A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának több rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
@@ -432,7 +432,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 - Az integrált kártevőirtó programok és a tűzfalak biztonsági riasztásai
 
-### <a name="azure-monitor"></a>Azure-figyelő
+### <a name="azure-monitor"></a>Azure monitor
 
 A [Azure monitor](../../azure-monitor/overview.md) az adott típusú erőforrásokra mutató tájékoztatókat biztosít. Vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást biztosít az Azure-infrastruktúra (műveletnapló) és az egyes Azure-erőforrások (diagnosztikai naplók) esetében egyaránt.
 
@@ -476,7 +476,7 @@ A szolgáltatás az alábbiakat figyeli:
 
 - **Egyéni események és metrikák** , amelyeket az ügyfél vagy a kiszolgáló kódjában írhat, hogy nyomon követhesse az üzleti eseményeket, például az eladott elemeket vagy a megnyert játékokat.
 
-Az alkalmazás infrastruktúrája általában számos összetevőből áll – például egy virtuális gépből, tárfiókból és virtuális hálózatból, vagy egy webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból és harmadik féltől származó szolgáltatásokból. Ezeket az összetevőket nem külön entitásokként látja, hanem egyetlen entitás kapcsolódó és egymással összefüggő részeiként. Csoportként érdemes telepíteni, kezelni és megfigyelni őket. A [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival.
+Az alkalmazás infrastruktúrája általában számos összetevőből áll – például egy virtuális gépből, tárfiókból és virtuális hálózatból, vagy egy webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból és harmadik féltől származó szolgáltatásokból. Ezeket az összetevőket nem külön entitásokként látja, hanem egyetlen entitás kapcsolódó és egymással összefüggő részeiként. Csoportként érdemes telepíteni, kezelni és megfigyelni őket. A [Azure Resource Manager](../../azure-resource-manager/management/overview.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival.
 
 A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. A telepítéshez egy sablon használatos, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően.
 
@@ -501,7 +501,7 @@ A Resource Manager számos előnyt kínál:
 > [!Note]
 > A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi üzemi modellt használta, és szeretne többet megtudni a változásokról, tekintse meg a [Resource Manager-telepítés és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/resource-manager-deployment-model.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonságról további információt a részletes biztonsági témakörökben talál:
 
@@ -513,7 +513,7 @@ A biztonságról további információt a részletes biztonsági témakörökben
 
 - [Titkosítás](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [Identitás-és hozzáférés-kezelés](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [Identitás- és hozzáférés-kezelés](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [Hálózati biztonság](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 

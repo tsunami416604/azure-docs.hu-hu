@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazás teljesítményértékelése Azure Disk Storage által felügyelt lemezeken
+title: Az alkalmazás teljesítményértékelése Azure Disk Storage
 description: Ismerje meg az Azure-beli alkalmazás teljesítménytesztének folyamatát.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 640ec54e9634751d05c2cea90d7c03d02e7a3387
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695856"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720055"
 ---
 # <a name="benchmarking-a-disk"></a>Lemez teljesítményértékelése
 
@@ -24,9 +24,8 @@ Az alábbi példák követéséhez hozzon létre egy standard DS14 virtuális g�
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Folytassa a tervezést a nagy teljesítményű cikkhez. Ebben az esetben a prototípushoz tartozó meglévő alkalmazáshoz hasonló ellenőrzőlista jön létre. A teljesítményértékelési eszközök használatával szimulálhatja a számítási feladatokat, és mérhetővé teheti a teljesítményt a prototípus alkalmazásban. Ezzel meghatározhatja, hogy melyik lemez-ajánlat megfelel vagy meghaladja az alkalmazás teljesítményére vonatkozó követelményeket. Ezután megadhatja az éles alkalmazásra vonatkozó irányelveket.
+Folytassa a cikket a [nagy teljesítmény kialakításához](premium-storage-performance.md).
 
-> [!div class="nextstepaction"]
-> Tekintse meg a [nagy teljesítmény kialakításának](premium-storage-performance.md) megkezdéséről szóló cikket.
+Ebben a cikkben a prototípushoz tartozó meglévő alkalmazáshoz hasonló ellenőrzőlistát hoz létre. A teljesítményértékelési eszközök használatával szimulálhatja a számítási feladatokat, és mérhetővé teheti a teljesítményt a prototípus alkalmazásban. Ezzel meghatározhatja, hogy melyik lemez-ajánlat megfelel vagy meghaladja az alkalmazás teljesítményére vonatkozó követelményeket. Ezután megadhatja az éles alkalmazásra vonatkozó irányelveket.

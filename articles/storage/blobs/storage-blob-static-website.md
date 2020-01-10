@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311214"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708162"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -52,17 +52,20 @@ A felhasználók a webhely nyilvános URL-címének használatával tekinthetik 
 
 |Eszköz| Segédletek |
 |----|----|
-|**Azure Portalra** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure Portal** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [A webhely URL-címének megkeresése az Azure CLI használatával](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Azure PowerShell modul** | [A webhely URL-címének megkeresése a PowerShell használatával](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-A hely URL-címe tartalmaz egy regionális kódot. Például a `https://contosoblobaccount.z22.web.core.windows.net/` URL-cím a következő regionális kódot tartalmazza: `z22`.
+A hely URL-címe tartalmaz egy regionális kódot. Például a `https://contosoblobaccount.z22.web.core.windows.net/` URL-cím `z22`regionális kódot tartalmaz.
 
 Habár a kódnak az URL-címben kell maradnia, csak belső használatra szolgál, és semmilyen más módon nem kell ezt a kódot használnia.
 
 A statikus webhelyek üzemeltetésének engedélyezésekor megadott index-dokumentum akkor jelenik meg, amikor a felhasználók megnyitják a helyet, és nem határoznak meg egy adott fájlt (például: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
 Ha a kiszolgáló 404 hibát ad vissza, és nem adott meg hibaüzenetet a webhely engedélyezésekor, akkor a rendszer az alapértelmezett 404 lapot adja vissza a felhasználónak.
+
+> [!NOTE]
+> A statikus webhely nem támogatja a [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>A webes tároló nyilvános hozzáférési szintjének beállításának hatása
 
@@ -74,15 +77,15 @@ Az alábbi képernyőfelvételen a Azure Portal nyilvános hozzáférési szintj
 
 Noha a rendszer nem érinti az elsődleges statikus webhely végpontját, a nyilvános hozzáférési szint módosítása hatással van az elsődleges blob Service-végpontra.
 
-Ha például módosítja a **$web** tároló nyilvános hozzáférési szintjét **(nincs névtelen hozzáférés)** a **blobhoz (névtelen olvasási hozzáférés csak Blobok esetén)** , akkor a nyilvános hozzáférés szintje a statikus webhely végpontja `https://contosoblobaccount.z22.web.core.windows.net/index.html` nem változik.
+Ha például módosítja a **$web** tároló nyilvános hozzáférési szintjét **(nincs névtelen hozzáférés)** a **blobhoz (névtelen olvasási hozzáférés csak Blobok esetén)** , akkor a nyilvános elérési szint nem változik az elsődleges statikus webhely végpontjának `https://contosoblobaccount.z22.web.core.windows.net/index.html`.
 
-Azonban a `https://contosoblobaccount.blob.core.windows.net/$web/index.html` elsődleges blob Service-végponthoz való nyilvános hozzáférés magán-és nyilvánosra változik. Most a felhasználók megnyithatja a fájlt a két végpont egyikével.
+Azonban a `https://contosoblobaccount.blob.core.windows.net/$web/index.html` elsődleges blob Service-végponthoz való nyilvános hozzáférés a magánjellegűről nyilvánosra változik. Most a felhasználók megnyithatja a fájlt a két végpont egyikével.
 
 ## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Content Delivery Network (CDN) és Secure Socket Layer (SSL) támogatása
 
 Annak érdekében, hogy a statikus webhelyek fájljai elérhetők legyenek az egyéni tartományon és a HTTPS-en keresztül, tekintse meg a következőt: [a Azure CDN használata a Blobok egyéni tartományokkal](storage-https-custom-domain-cdn.md) Ennek a folyamatnak a részeként be kell mutatnia a CDN-t az elsődleges *statikus webhely* -végpontra, szemben az elsődleges *blob Service* -végponttal. Előfordulhat, hogy néhány percet várnia kell, amíg a tartalom látható lesz, mivel a CDN-konfiguráció nem kerül azonnal végrehajtásra.
 
-A statikus webhely frissítésekor ügyeljen arra, hogy a CDN peremhálózati kiszolgálókon törölje a gyorsítótárazott tartalmat a CDN-végpont törlésével. További információkért lásd: [CDN-végpont végleges törlése](../../cdn/cdn-purge-endpoint.md).
+A statikus webhely frissítésekor ügyeljen arra, hogy a CDN peremhálózati kiszolgálókon törölje a gyorsítótárazott tartalmat a CDN-végpont törlésével. További információkért lásd az [Azure CDN-végpontok végleges törléséről](../../cdn/cdn-purge-endpoint.md) szóló cikket.
 
 > [!NOTE]
 > A HTTPS a fiók webes végpontján keresztül natív módon támogatott, így a webes végpont a HTTP és a HTTPS protokollon keresztül érhető el. Ha azonban a Storage-fiók úgy van konfigurálva, hogy biztonságos átvitelt igényel a HTTPS protokollon keresztül, akkor a felhasználóknak a HTTPS-végpontot kell használniuk. További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md).

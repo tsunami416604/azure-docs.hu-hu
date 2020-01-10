@@ -1,26 +1,17 @@
 ---
 title: .NET-alkalmazás gyors létrehozása Service Fabric az Azure-ban
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet .NET-alkalmazást létrehozni az Azure-ban a Service Fabric Reliable Services mintaalkalmazásának használatával.
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013218"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730139"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rövid útmutató: .NET Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
 
@@ -41,7 +32,7 @@ Az alkalmazás használatával a következőkkel ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 1. [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) -et az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** munkaterhelésekkel.
 2. [A Git telepítése](https://git-scm.com/)
@@ -60,6 +51,8 @@ Miután telepítette a futtatókörnyezetet, az SDK-kat, a Visual Studio-eszköz
 > A fürt létrehozásakor a Docker futtatásának okát úgy kell létrehozni, hogy a fürt a tároló funkcióinak engedélyezésével legyen létrehozva. Ha a Docker nem fut, akkor újra létre kell hoznia a fürtöt a tároló funkcióinak engedélyezéséhez.
 > Bár ez a rövid útmutató szükségtelen, a fürt létrehozásakor a Docker futtatására szolgáló utasítás az ajánlott eljárás.
 > A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
+>
+> [Windows 10 vagy Windows Server for containers szolgáltatás beállítása](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Nyisson meg egy új, emelt szintű PowerShell-ablakot rendszergazdaként.
 2. Futtassa az alábbi PowerShell-parancsot egy fejlesztési fürt létrehozásához:

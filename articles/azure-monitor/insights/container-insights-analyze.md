@@ -1,18 +1,14 @@
 ---
 title: Kubernetes-figyelés a Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a tárolók Azure Monitorával.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872978"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731016"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>A Kubernetes-fürt teljesítményének figyelése a Azure Monitor for containers szolgáltatással
 
@@ -24,13 +20,7 @@ További információ a tárolók Azure Monitorének engedélyezéséről: [Azur
 
 A Azure Monitor egy több fürtből álló nézetet biztosít, amely a Linux és a Windows Server 2019 operációs rendszert futtató összes figyelt Kubernetes-fürt állapotát megjeleníti az előfizetésekben található erőforráscsoportok között. Megjeleníti a megoldás által nem figyelt környezetekben felderített fürtöket. Azonnal megismerheti a fürt állapotát, és itt megtekintheti a csomópont-és vezérlő teljesítmény lapját, vagy megnyithatja a fürthöz tartozó teljesítménymutatókat. A felderített és nem ellenőrzöttként azonosított AK-fürtök esetében bármikor engedélyezheti a figyelést. 
 
-A Windows Server-fürtöknek a Linux-fürthöz képest Azure Monitorekkel való figyelésével kapcsolatos fő különbségek a következők:
-
-- A memóriabeli RSS-metrika nem érhető el a Windows-csomópontok és-tárolók esetében.
-- A lemezes tárolás kapacitására vonatkozó információk nem érhetők el Windows-csomópontok esetén.
-- Az élő naplók támogatása a Windows-tároló naplófájljainak kivételével érhető el.
-- Csak a pod környezetek figyelhetők meg, nem pedig a Docker-környezetek.
-- Az előzetes kiadásban legfeljebb 30 Windows Server-tároló támogatott. Ez a korlátozás nem vonatkozik a Linux-tárolók esetében. 
+A Windows Server-fürtök egy Linux-fürthöz képest Azure Monitor használatával történő figyelésének fő különbségeit [itt](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) találja az áttekintő cikkben.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -88,7 +78,7 @@ A következő táblázat a megfigyelt fürt állapotának a többfürtes nézete
 | |Figyelmeztetés |– |
 | |Kritikus |100% < |
 | |Ismeretlen |Ha nem jelentett az elmúlt 30 percben |
-|**Node** | | |
+|**Csomópont** | | |
 | |Kifogástalan |> 85% |
 | |Figyelmeztetés |60 – 84% |
 | |Kritikus |60% < |
@@ -103,7 +93,7 @@ A tárolók Azure Monitorhoz való hozzáférése közvetlenül egy AK-fürtből
 - Fürt
 - Csomópontok 
 - Vezérlők 
-- Containers
+- Tárolók
 
 >[!NOTE]
 >A cikk további részében ismertetett tapasztalatok a Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének és állapotának megtekintésére is érvényesek, ha a több fürtből álló nézetből van kiválasztva. 
@@ -205,7 +195,7 @@ A **csomópontok** lap megtekintésekor megjelenő információkat az alábbi t�
 | Állapot | A csomópont állapotának Kubernetes. |
 | Min&nbsp;%, átlagos&nbsp;%, 50&nbsp;%, 90&nbsp;%, 95.&nbsp;%, Max&nbsp;%  | A csomópontok átlagos százalékos aránya a megadott időtartamon belül a percentilis alapján. |
 | Min, AVG, 50, 90, 95., Max | A csomópontok átlagos tényleges értéke a percentilis alapján a megadott időtartam alatt. Az átlagos értéket a rendszer a csomópont processzor-/memória-korlátja alapján méri. A hüvelyek és a tárolók esetében ez a gazdagép által jelentett átlagos érték. |
-| Containers | Tárolók száma. |
+| Tárolók | Tárolók száma. |
 | Hasznos üzemidő | A csomópont elindítása vagy újraindítása óta eltelt időt jelöli. |
 | Tartományvezérlő | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. Nem minden hüvely van vezérlőben, ezért előfordulhat, hogy egyesek **N/a**-t jelenítenek meg. | 
 | Trend min&nbsp;%, AVG&nbsp;%, 50&nbsp;%, 90&nbsp;%, 95.&nbsp;%, Max&nbsp;% | A oszlopdiagram trendje a vezérlő átlagos százalékos értékének százalékos arányát jelöli. |
@@ -234,7 +224,7 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 | Állapot | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított*vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
 | Min&nbsp;%, átlagos&nbsp;%, 50&nbsp;%, 90&nbsp;%, 95.&nbsp;%, Max&nbsp;%| Az egyes entitások átlagos százalékának összesítési átlaga a kiválasztott metrika és a percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max  | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
-| Containers | A vezérlő vagy a pod tárolók teljes száma. |
+| Tárolók | A vezérlő vagy a pod tárolók teljes száma. |
 | Újraindítja | A tárolók újraindítási számának összesítése. |
 | Hasznos üzemidő | A tároló elindítása óta eltelt időt jelöli. |
 | Csomópont | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. | 

@@ -1,28 +1,31 @@
 ---
 title: Kapcsolódás a Outlook.com
-description: E-mailek, naptárak és névjegyek kezelése a Outlook.com REST API-kkal és Azure Logic Apps
+description: Az e-maileket, naptárakat és névjegyeket kezelő feladatokat és munkafolyamatokat az Azure Logic Apps használatával automatizálhatja a Outlook.com
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
-ms.openlocfilehash: 750efc2cb928bf127c4f3c68d5a58c5f52ca7d51
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789365"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707186"
 ---
-# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>E-mailek, naptárak és névjegyek kezelése a Outlook.com-ben Azure Logic Apps
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>E-mailek, naptárak és névjegyek kezelése a Outlook.com-ben Azure Logic Apps használatával
 
-Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti a Outlook.com-fiókját egy logikai alkalmazásban a Box Connector használatával. Így olyan logikai alkalmazásokat hozhat létre, amelyek automatizálják a Outlook.com-fiókhoz tartozó feladatokat és munkafolyamatokat, például:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Outlook.com-összekötővel](/connectors/outlook/)a logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a @outlook.com vagy @hotmail.com fiókot kezelik. Automatizálhatja például ezeket a feladatokat:
 
-* E-mail küldése. 
-* Értekezletek beosztása.
-* Névjegyek hozzáadása. 
+* Az e-mailek lekérése, küldése és megválaszolása.
+* Értekezletek ütemezhetnek a naptárban.
+* Névjegyek hozzáadása és szerkesztése.
 
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md).
+Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor új e-mail érkezik, amikor egy naptári elem frissül, vagy ha egy esemény a különbségi szolgáltatásban történik. Használhatja az eseményindító eseményre válaszoló műveleteket, például e-mailek küldését vagy új naptári esemény létrehozását.
+
+> [!NOTE]
+> A Microsoft munkahelyi fiókjához (például @fabrikam.onmicrosoft.com) tartozó feladatok automatizálásához használja az [Office 365 Outlook Connectort](../connectors/connectors-create-api-office365-outlook.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,24 +33,45 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni a Outlook.com-fiókját. A logikai alkalmazás Outlook-triggerrel való elindításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. 
+* Az a logikai alkalmazás, amelyhez el szeretné érni a Outlook.com-fiókját. Ha egy Outlook.com triggerrel szeretné elindítani a munkafolyamatot, [üres logikai alkalmazással](../logic-apps/quickstart-create-first-logic-app-workflow.md)kell rendelkeznie. Ha Outlook.com műveletet szeretne hozzáadni a munkafolyamathoz, a logikai alkalmazásnak már rendelkeznie kell egy triggerrel.
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
-## <a name="connect-to-outlookcom"></a>Kapcsolódás a Outlook.com
+Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan esemény, amely elindítja a munkafolyamatot a logikai alkalmazásban. Ez a példa a logikai alkalmazás egy "lekérdezés" triggert használ, amely minden új e-mailt keres az e-mail-fiókjában a megadott intervallum és gyakoriság alapján.
 
-[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-[!INCLUDE [Connect to Outlook.com](../../includes/connectors-create-api-outlook.md)]
+1. A keresőmezőbe írja be szűrőként a "outlook.com" kifejezést. Ebben a példában válassza ki, hogy **mikor érkezik új e-mail**.
+
+1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a Outlook.com hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a hálózat már létezik, adja meg az trigger tulajdonságainak adatait:
+
+1. A triggerben állítsa be a **gyakoriság** és az **intervallum** értékét.
+
+   Ha például 15 percenként szeretné lekérdezni a triggert, állítsa a **gyakoriságot** **percre**, és állítsa be az **intervallumot** **15**-re.
+
+1. A tervező eszköztárán válassza a **Mentés**lehetőséget, amely menti a logikai alkalmazást.
+
+Az triggerre való reagáláshoz adjon hozzá egy újabb műveletet. Felveheti például a Twilio- **üzenet küldése** műveletet, amely szöveget küld egy e-mail érkezésekor.
+
+## <a name="add-an-action"></a>Művelet hozzáadása
+
+A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan művelet, amelyet a logikai alkalmazás munkafolyamata futtat. Ez a példa logikai alkalmazás e-mailt küld a Outlook.com-fiókjából. A művelet kitöltéséhez egy másik trigger kimenetét használhatja. Tegyük fel például, hogy a logikai alkalmazás a SalesForce használja az **objektum létrehozásakor** trigger. Hozzáadhat **egy e-mail** -Outlook.com, és a Salesforce trigger kimeneteit is használhatja az e-mailben.
+
+1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
+
+1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
+
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+
+1. A keresőmezőbe írja be szűrőként a "outlook.com" kifejezést. Ebben a példában válassza **az E-mail küldése**lehetőséget. 
+
+1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a Outlook.com hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a kapcsolat már létezik, adja meg a művelet tulajdonságaira vonatkozó információkat.
+
+1. A tervező eszköztárán válassza a **Mentés**lehetőséget, amely menti a logikai alkalmazást.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/outlook/). 
-
-## <a name="get-support"></a>Támogatás kérése
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Következő lépések
 

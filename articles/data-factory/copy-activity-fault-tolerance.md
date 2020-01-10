@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: b874c0dcc1f394866e74b45e6bc335a25ce24499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930017"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708902"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -37,7 +37,7 @@ A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem k
 
 - A **forrás és a fogadó közötti oszlopok száma nem egyezik**.
 
-    Például: adatok másolása egy CSV-fájlból a blob Storage-ban egy SQL Database-be olyan séma-definícióval, amely hat oszlopot tartalmaz. A hat oszlopot tartalmazó CSV-fájl sorainak másolása sikeresen megtörtént a fogadó tárolóba. A több vagy kevesebb, mint hat oszlopot tartalmazó CSV-fájl sorai nem kompatibilisként észlelhetők, és a rendszer kihagyja őket.
+    Például: adatok másolása egy CSV-fájlból a blob Storage-ban egy SQL Database-be olyan séma-definícióval, amely hat oszlopot tartalmaz. A hat oszlopot tartalmazó CSV-fájl sorainak másolása sikeresen megtörtént a fogadó tárolóba. A több mint hat oszlopot tartalmazó CSV-fájlok nem kompatibilisként vannak észlelve, és kimaradnak.
 
 - **Az elsődleges kulcs megsértése SQL Server/Azure SQL Database/Azure Cosmos db írásakor**.
 
@@ -75,7 +75,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | Igaz<br/>False (alapértelmezett) | Nem
 redirectIncompatibleRowSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
 linkedServiceName | Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureStorage` vagy `AzureDataLakeStore` típusú társított szolgáltatás neve, amely arra a példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | Nem
-elérési út | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+path | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 ## <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
 A másolási tevékenység futtatása után a másolási tevékenység kimenetében a kihagyott sorok száma látható:

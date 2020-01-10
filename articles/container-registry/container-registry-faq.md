@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456395"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708308"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések az Azure Container Registryről
 
@@ -32,7 +32,7 @@ Igen. Itt látható [egy olyan sablon](https://github.com/Azure/azure-quickstart
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Biztonsági rést okoz a rendszerképek keresése az ACR-ben?
 
-Igen. Tekintse meg a [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) és az [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)dokumentációját.
+Igen. Tekintse meg a [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), a [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) és az [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)dokumentációját.
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Hogyan konfigurálja a Kubernetes-t a Azure Container Registrykal?
 
@@ -101,7 +101,7 @@ Időbe telik a tűzfalszabály módosításainak propagálása. A tűzfalbeáll�
 - [Miért nem csökkenti a beállításjegyzékbeli kvóta használatát a lemezképek törlése után?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [Hogyan ellenőrzi a tárolási kvóta változásait?](#how-do-i-validate-storage-quota-changes)
 - [Hogyan hitelesíteni a beállításjegyzéket a CLI egy tárolóban való futtatásakor?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [A Azure Container Registry csak a TLS 1.2-es verzió konfigurációját és a TLS 1.2-es verziójának engedélyezését?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [A TLS 1,2 engedélyezése](#how-to-enable-tls-12)
 - [Támogatja a Azure Container Registry a tartalom megbízhatóságát?](#does-azure-container-registry-support-content-trust)
 - [Hogyan hozzáférést biztosítanak a lekéréses vagy leküldéses képekhez engedély nélkül a beállításjegyzék-erőforrás kezeléséhez?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Hogyan lehetővé teszi az automatikus rendszerképek karanténba helyezését a beállításjegyzékben](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,12 @@ Ezután végezze el a hitelesítést a beállításjegyzékben:
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>A Azure Container Registry csak a TLS 1.2-es verzió konfigurációját és a TLS 1.2-es verziójának engedélyezését?
+### <a name="how-to-enable-tls-12"></a>A TLS 1,2 engedélyezése
 
-Igen. Engedélyezze a TLS-t a legutóbbi Docker-ügyfél (18.03.0 vagy újabb verzió) használatával. 
+Engedélyezze a TLS 1,2-et a legutóbbi Docker-ügyfél (18.03.0 vagy újabb verzió) használatával. 
+
+> [!IMPORTANT]
+> 2020. január 13-án Azure Container Registry a TLS 1,2 használatához a kiszolgálók és alkalmazások összes biztonságos kapcsolata szükséges. A TLS 1,0 és 1,1 támogatása megszűnik.
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Támogatja az Azure Container Registry a tartalommegbízhatóságot?
 
@@ -305,7 +308,7 @@ unauthorized: authentication required
 ```
 
 A hiba elhárítása:
-1. Adja hozzá a `--signature-verification=false` elemet a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Például:
+1. Adja hozzá a `--signature-verification=false` elemet a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Példa:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -427,8 +430,8 @@ Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigu
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Miért sikertelen a lekéréses vagy leküldéses kérelem a nem engedélyezett művelettel?
 
-Íme néhány olyan senarios, ahol a műveletek valószínűleg nem engedélyezettek:
-* A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [SKU](https://aka.ms/acr/skus) -ra az [az ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy az Azure Portal használatával.
+Íme néhány forgatókönyv, ahol a műveletek valószínűleg nem engedélyezettek:
+* A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [SKU](https://aka.ms/acr/skus) -ra az [az ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy a Azure Portal használatával.
 * Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) parancsot.
 * Néhány művelet nem engedélyezett, ha a rendszerkép karanténban van. További információ a [karanténba helyezésről](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
@@ -489,7 +492,7 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 | Git szolgáltatás | Forrás kontextus | Manuális létrehozás | Automatikus létrehozás a commit trigger használatával |
 |---|---|---|---|
 | GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Igen | Igen |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Igen | Igen |
+| Azure-beli adattárak | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Igen | Igen |
 | GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Igen | Nem |
 | BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Igen | Nem |
 

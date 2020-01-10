@@ -6,18 +6,26 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812836"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708056"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
 A Transport Layer Security (TLS) 1,2-es vagy újabb verziójának kizárólagos használatára az egész iparágra kiterjedő leküldés. A 1,0-es és 1,1-as TLS-verziók ismertek olyan támadásokra, mint például a BEAST és az USZKÁR, valamint más gyakori biztonsági rések és a kitettségek (CVE) gyengeségei. Emellett nem támogatják a Payment Card Industry (PCI) megfelelőségi szabványai által ajánlott modern titkosítási módszereket és titkosítási csomagokat. Ez a [TLS biztonsági blog](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) részletesebben ismerteti ezeket a biztonsági réseket.
 
-Habár a fenti megfontolások egyike sem jelent azonnali problémát, javasoljuk, hogy hamarosan állítsa le a TLS 1,0 és a 1,1 használatát. A Redis-hez készült Azure cache a 2020-es március 31-én leállítja a TLS-verziók támogatását. Ezt követően az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
+Ennek a tevékenységnek a részeként a következő módosításokat hajtjuk végre az Azure cache Redis:
+
+* 2020. január 13-án az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót kell beállítani 1,2.  Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok.  Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében.  Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
+* 2020. március 31-ig megszüntetjük a TLS-verziók 1,0 és 1,1-es verziójának támogatását. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
+
+Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cypher-csomagok támogatását.  A támogatott Cypher-csomagok a következőre lesznek korlátozva, ha a gyorsítótár a 1,2-es minimális TLS-verzióval van konfigurálva.
+
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségeinek észleléséhez és az alkalmazásból való eltávolításához.
 
@@ -42,15 +50,15 @@ A Redis .NET Core-ügyfelek alapértelmezés szerint a legújabb TLS-verziót ha
 
 ### <a name="java"></a>Java
 
-A Redis Java-ügyfelek TLS 1,0-et használnak a Java 6-os vagy korábbi verzióján. A jedis, a saláta és a Radisson nem tud csatlakozni az Azure cache-hez a Redis, ha a TLS 1,0 le van tiltva a gyorsítótárban. Jelenleg nincs ismert Áthidaló megoldás.
+A Redis Java-ügyfelek TLS 1,0-et használnak a Java 6-os vagy korábbi verzióján. A jedis, a saláta és a Redisson nem tud csatlakozni az Azure cache-hez a Redis, ha a TLS 1,0 le van tiltva a gyorsítótárban. A Java-keretrendszer frissítése új TLS-verziók használatára.
 
-A Java 7-es vagy újabb verzióiban a Redis-ügyfelek alapértelmezés szerint nem használják a TLS 1,2-et, de konfigurálható rá. A saláta és a Radisson jelenleg nem támogatja ezt a konfigurációt. Akkor törnek, ha a gyorsítótár csak TLS 1,2-kapcsolatokat fogad el. A jedis segítségével megadhatja a mögöttes TLS-beállításokat a következő kódrészlettel:
+A Java 7 esetében a Redis-ügyfelek alapértelmezés szerint nem használják a TLS 1,2-et, de konfigurálható rá. A jedis segítségével megadhatja a mögöttes TLS-beállításokat a következő kódrészlettel:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -59,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+A saláta és a Redisson-ügyfelek még nem támogatják a TLS-verzió megadását, ezért a gyorsítótár csak TLS 1,2-kapcsolatokat fogad el. Az ügyfelekre vonatkozó javítások felülvizsgálata folyamatban van, ezért ezeket a csomagokat egy frissített verzióra kell ellenőrizni.
+
+A Java 8 esetében a TLS 1,2 alapértelmezés szerint használatos, és a legtöbb esetben nem szükséges frissíteni az ügyfél konfigurációját. A biztonság érdekében tesztelje az alkalmazást.
 
 ### <a name="nodejs"></a>Node.js
 

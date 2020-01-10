@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre Recovery Servic
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273397"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708519"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -73,12 +73,54 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
 > [!NOTE]
 > A **Storage replikálási típusának** (helyileg redundáns/geo-redundáns) módosítását a helyreállítási tár számára a biztonsági mentések a tárolóban való konfigurálása előtt kell elvégezni. A biztonsági mentés konfigurálása után a módosítás lehetőség le van tiltva, és nem módosíthatja a **tárolási replikálás típusát**.
 
+## <a name="set-cross-region-restore"></a>Régiók közötti visszaállítás beállítása
+
+A visszaállítási lehetőségek egyike, a régiók közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy Azure-beli [párosított régió](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Ez a beállítás a következőket teszi lehetővé:
+
+- a naplózási vagy megfelelőségi követelmények betartásának elvégzése
+- Állítsa vissza a virtuális gépet vagy a lemezét, ha az elsődleges régióban katasztrófa következik be.
+
+A szolgáltatás kiválasztásához válassza a **tartományok közötti visszaállítás engedélyezése** lehetőséget a **biztonsági mentési konfiguráció** panelen.
+
+Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási szinten vannak.
+
+>[!NOTE]
+>Előzetes teendők
+>
+>- A támogatott felügyelt típusok és régiók listáját a [támogatási mátrixban](backup-support-matrix.md#cross-region-restore) tekintheti meg.
+>- A régiók közötti visszaállítás (CRR) szolgáltatás jelenleg csak a WCUS régióban érhető el.
+>- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
+>- Használja a *"featureName": "CrossRegionRestore"* lehetőséget a szolgáltatás előfizetésének bevezetéséhez.
+>- Ha ez a funkció a nyilvános korlátozott előzetes verzióban van bevezetve, a felülvizsgálati jóváhagyási e-mail tartalmazza a díjszabási szabályzat részleteit is.
+>- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
+>- Jelenleg a CRR csak a Backup Management Type-ARM Azure-beli virtuális gépen támogatott (a klasszikus Azure-beli virtuális gép nem lesz támogatott).  Ha a további felügyeleti típusok támogatják a CRR-t, a **rendszer automatikusan** regisztrálja őket.
+
+### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
+
+A GRS-redundanciával létrehozott tárolók tartalmazzák a régiók közötti visszaállítási szolgáltatás konfigurálásának lehetőségét. Minden GRS-tárolóban megjelenik egy szalagcím, amely a dokumentációra hivatkozik. A tár CRR konfigurálásához nyissa meg a biztonsági mentési konfiguráció panelt, amely a funkció engedélyezésének lehetőségét tartalmazza.
+
+ ![Biztonsági mentési konfiguráció szalagcíme](./media/backup-azure-arm-restore-vms/banner.png)
+
+1. A portálon lépjen a Recovery Services tároló > Beállítások > Tulajdonságok elemre.
+2. A funkció engedélyezéséhez kattintson a **régión belüli visszaállítás engedélyezése** ebben a tárolóban elemre.
+
+   ![Mielőtt a tárolóban a régiók közötti visszaállítás engedélyezése lehetőségre kattint](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+
+   ![Miután rákattintott a régiók közötti visszaállítás engedélyezése ebben a tárolóban](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+
+Megtudhatja, hogyan [tekintheti meg a másodlagos régióban található biztonsági másolati elemeket](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
+
+Ismerje meg, hogyan lehet [visszaállítani a másodlagos régióban](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
+
+Megtudhatja, hogyan [figyelheti a másodlagos régió visszaállítási feladatait](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
 ## <a name="modifying-default-settings"></a>Alapértelmezett beállítások módosítása
 
-Javasoljuk, hogy a biztonsági mentések konfigurálása előtt tekintse át a **tárolási replikálási típus** és a **biztonsági beállítások** alapértelmezett beállításait. 
-* Alapértelmezés szerint a **tárolási replikálás típusa** **geo-redundáns**értékre van állítva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva. A beállítások áttekintéséhez és módosításához kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) . 
-* Az újonnan létrehozott tárolók alapértelmezés szerint a **Soft delete** lehetőséggel védik a biztonsági mentési adatok véletlen vagy kártékony törlési **funkcióit** . A beállítások áttekintéséhez és módosításához kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) .
+Javasoljuk, hogy a biztonsági mentések konfigurálása előtt tekintse át a **tárolási replikálási típus** és a **biztonsági beállítások** alapértelmezett beállításait.
 
+- Alapértelmezés szerint a **tárolási replikálás típusa** **geo-redundáns**értékre van állítva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva. A beállítások áttekintéséhez és módosításához kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) .
+
+- Az újonnan létrehozott tárolók alapértelmezés szerint a **Soft delete** lehetőséggel védik a biztonsági mentési adatok véletlen vagy kártékony törlési **funkcióit** . A beállítások áttekintéséhez és módosításához kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) .
 
 ## <a name="next-steps"></a>Következő lépések
 

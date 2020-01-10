@@ -3,7 +3,7 @@ title: Red Hat Enterprise Linux VHD létrehozása és feltöltése az Azure-ban 
 description: Ismerje meg, hogyan hozhat létre és tölthet fel egy Red Hat Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: szark
-ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: mimckitt
+ms.openlocfilehash: 77334e3e807776e9072bb4ad9674bf7ba5a8f915
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035162"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732518"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)című témakört.
@@ -154,7 +154,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = igen NM_CONTROLLED = igen
 
 1. A következő parancs futtatásával győződjön meg arról, hogy a hálózati szolgáltatás indításkor elindul:
 
@@ -164,7 +164,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Példa:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -408,7 +408,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = igen NM_CONTROLLED = igen
 
 1. A következő parancs futtatásával győződjön meg arról, hogy a hálózati szolgáltatás indításkor elindul:
 
@@ -418,7 +418,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A konfiguráció elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A konfiguráció elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Példa:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -568,7 +568,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Példa:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -666,7 +666,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = igen NM_CONTROLLED = igen
 
 1. A következő parancs futtatásával győződjön meg arról, hogy a hálózati szolgáltatás indításkor elindul:
 
@@ -676,7 +676,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Például:
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a `GRUB_CMDLINE_LINUX` paramétert. Példa:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -883,8 +883,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
-        EOF
+    PERSISTENT_DHCLIENT = igen NM_CONTROLLED = igen EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision

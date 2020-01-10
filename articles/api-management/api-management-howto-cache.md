@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073565"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708355"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
@@ -34,7 +34,7 @@ Ismertetett témák:
 > * Válaszok gyorsítótárazásának hozzáadása az API esetében
 > * A gyorsítótárazás ellenőrzése működés közben
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 > [!NOTE]
 > A belső gyorsítótár nem érhető el az Azure API Management **felhasználási** szintjében. Ehelyett [egy külső Azure cache-t is használhat a Redis](api-management-howto-cache-external.md) .
@@ -56,7 +56,7 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
 4. Kattintson a **Demo Conference API** elemre az API-k listájában.
 5. Válassza a **GetSpeakers** lehetőséget.
 6. A képernyő felső részén válassza a **Tervezés** lapot.
-7. A **bejövő feldolgozás** szakaszban kattintson az **</>** ikonra.
+7. A **Bejövő feldolgozás** szakaszban kattintson a **</>** ikonra.
 
     ![kódszerkesztő](media/api-management-howto-cache/code-editor.png)
 
@@ -70,14 +70,14 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
 
 9. Az **outbound** elemben adja hozzá a következő szabályzatot:
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét. Ebben a példában az időköz **20** másodperc.
 
 > [!TIP]
-> Ha külső gyorsítótárat használ, a következő témakörben leírtak szerint: [külső Azure cache használata az Azure-beli Redis-API Management](api-management-howto-cache-external.md)esetén érdemes `caching-type` megadnia a gyorsítótárazási házirendek attribútumát. További részletekért tekintse meg [API Management gyorsítótárazási házirendeket](api-management-caching-policies.md) .
+> Ha külső gyorsítótárat használ, a következő témakörben leírtak szerint: [külső Azure cache használata az Azure-beli Redis-API Management](api-management-howto-cache-external.md), érdemes megadnia a gyorsítótárazási házirendek `caching-type` attribútumát. További részletekért tekintse meg [API Management gyorsítótárazási házirendeket](api-management-caching-policies.md) .
 
-## <a name="test-operation"></a>Művelet meghívása és a gyorsítótárazás tesztelése
+## <a name="test-operation"> </a>Művelet meghívása és a gyorsítótárazás tesztelése
 A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a műveletet a fejlesztői portálról.
 
 1. Az Azure Portalon tallózzon az APIM-példányra.
@@ -87,8 +87,8 @@ A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a művele
 5. Kattintson a **Tesztelés** lapra a jobb felső menüben.
 6. Kattintson a **Küldés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
-* További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
+## <a name="next-steps"> </a>További lépések
+* További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference][Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 * További információ a Redis külső Azure cache-ről való használatáról: [külső Azure-gyorsítótár használata az azure API Management-ben való Redis](api-management-howto-cache-external.md).
 

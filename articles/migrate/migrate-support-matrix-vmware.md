@@ -1,18 +1,14 @@
 ---
-title: A VMware értékelésének és áttelepítésének támogatása Azure Migrate
-description: Ismerje meg, hogyan támogatja a VMware virtuális gépek felmérését és áttelepítését Azure Migrateban.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: VMware-támogatás a Azure Migrate
+description: Ismerkedjen meg a VMware Assessment/Migrálás támogatásával Azure Migrateban.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.date: 01/02/2020
+ms.openlocfilehash: b4d498b869bafe579e2539a049aae58ac6f26575
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196276"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75719443"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>A VMware felmérésének és migrálásának támogatási mátrixa
 
@@ -39,7 +35,7 @@ A táblázat összefoglalja a VMware virtuális gépek támogatott forgatóköny
 
 **Régiócsoport** | **Metaadatok tárolási helye**
 --- | ---
-Azure Government | USA-beli államigazgatás – Virginia
+Azure Government | US Gov Virginia
 Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
 Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
 Brazília | Dél-Brazília
@@ -48,7 +44,7 @@ Európa | Észak-Európa vagy Nyugat-Európa
 Franciaország | Közép-Franciaország
 India | Közép-India vagy Dél-India
 Japán |  Kelet-japán vagy Nyugat-Japán
-Korea | Korea középső régiója vagy Dél-Korea
+Dél-Korea | Korea középső régiója vagy Dél-Korea
 Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
 Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
@@ -57,7 +53,7 @@ Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
  > A Azure Government támogatása jelenleg csak a Azure Migrate [régebbi verziójához](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) érhető el.
 
 
-## <a name="application-discovery"></a>Alkalmazás felderítése
+## <a name="application-discovery"></a>Alkalmazásfelderítés
 
 Azure Migrate: a kiszolgáló értékelése képes felderíteni az alkalmazásokat, a szerepköröket és a szolgáltatásokat. Az alkalmazás leltárának felderítése lehetővé teszi a helyszíni munkaterhelésekhez igazított áttelepítési útvonal azonosítását és megtervezését. Azure Migrate: a kiszolgáló értékelése ügynök nélküli felderítést biztosít a számítógép vendég hitelesítő adataival, a számítógépek távoli elérését a WMI-és SSH-hívásokkal.
 
@@ -80,11 +76,10 @@ Ez a táblázat összefoglalja a VMware virtualizációs kiszolgálók értékel
 
 Azure Migrate el kell érnie a vCenter Server, hogy felderítse a virtuális gépeket az értékeléshez és az ügynök nélküli áttelepítéshez.
 
-- Ha ügynök nélküli módon szeretné felderíteni az alkalmazásokat, vagy a függőséget szeretné megjeleníteni, hozzon létre egy vCenter Server fiókot csak olvasási hozzáféréssel, valamint a **virtuális gépekhez** > **vendég műveletekhez**engedélyezett jogosultságokkal.
-
-  ![vCenter Server fiók jogosultságai](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
-
-- Ha nem tervezi az alkalmazások felderítését és az ügynök nélküli függőségek megjelenítését, állítson be írásvédett fiókot a vCenter Server számára.
+**Tevékenység** | **Szükséges engedélyek**
+--- | ---
+Csak Értékelés | írásvédett fiók vCenter Server.
+Értékelés az [app-Discovery](how-to-discover-applications.md) vagy az [ügynök nélküli függőségi vizualizációval](how-to-create-group-machine-dependencies-agentless.md) | vCenter Server fiók csak olvasási hozzáféréssel, és a **virtuális gépek** számára engedélyezett jogosultságokkal > **vendég műveletekkel**.
 
 ## <a name="assessment-appliance-requirements"></a>Felmérés – készülékre vonatkozó követelmények
 
@@ -92,9 +87,9 @@ Azure Migrate egy könnyű berendezést futtat a VMware virtuális gépek felder
 
 **Támogatás** | **Részletek**
 --- | ---
-**Berendezések üzembe helyezése** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU, körülbelül 80 GB lemezes tárterülettel és egy külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.
+**Berendezések üzembe helyezése** | A készüléket VMware virtuális gépként kell üzembe helyezni. Elegendő erőforrásra van szüksége a vCenter Server egy virtuális gép lefoglalásához 32 GB RAM-mal, 8 vCPU, körülbelül 80 GB lemezes tárterülettel és külső virtuális kapcsolóval.<br/><br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/> A berendezés virtuális gépnek a 5,5-es vagy újabb verzióját futtató ESXi-gazdagépre kell telepítenie.
 **Azure Migrate projekt** | Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> Egy projektben akár 35 000 virtuális gépet is megvizsgálhat.
-**Felfedezés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
+**Felderítés** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
 **Értékelési csoport** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.
 **Értékelés** | Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
 
@@ -109,7 +104,7 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 **URL-cím** | **Részletek**  
 --- | --- |
 *.portal.azure.com  | Navigáljon a Azure Portal Azure Migrate.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésébe.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésébe.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
@@ -138,8 +133,8 @@ A függőségi vizualizáció segítséget nyújt a függőségek megjelenítés
         - A fenti folyamatokat futtató telepített alkalmazások nevei
         - Nem. az összes lekérdezési időszakban észlelt kapcsolatok
 - **Ügynök-alapú függőségi vizualizáció**: az ügynök-alapú függőségi vizualizáció használatához le kell töltenie és telepítenie kell az alábbi ügynököket minden olyan helyszíni gépen, amelyet elemezni szeretne.
-    - A Microsoft monitoring Agent (MMA) szolgáltatást minden gépre telepíteni kell. [További](how-to-create-group-machine-dependencies.md#install-the-mma) információ az MMA-ügynök telepítéséről.
-    - A függőségi ügynököt minden gépen telepíteni kell. [További](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) információ a függőségi ügynök telepítéséről.
+    - Telepítse a Microsoft monitoring Agent (MMA) szolgáltatást mindegyik gépre. [További](how-to-create-group-machine-dependencies.md#install-the-mma) információ az MMA-ügynök telepítéséről.
+    - Telepítse a függőségi ügynököt az egyes gépekre. [További](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) információ a függőségi ügynök telepítéséről.
     - Továbbá ha olyan gépekkel rendelkezik, amelyeken nincs internetkapcsolat, ezekre le kell töltenie és telepítenie kell a Log Analytics-átjárót.
 
 ## <a name="migration---limitations"></a>Áttelepítés – korlátozások
@@ -176,7 +171,7 @@ Virtuális gép. interakció. kikapcsolás | A virtuális gép kikapcsolásának
 **Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. A Azure Migrate a következő operációs rendszerek esetében automatikusan végrehajtja ezeket a módosításokat:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Más operációs rendszerek esetében manuálisan kell elvégezni a módosításokat az áttelepítés előtt. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak.
 **Linux rendszerű rendszerindítás** | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie.
 **UEFI-rendszerindítás** | Az UEFI-rendszerindítással rendelkező virtuális gépek migrálása nem támogatott.
-**Lemez mérete** | 2 TB operációsrendszer-lemez; 4 TB adatlemezek esetében.
+**Lemez mérete** | 2 – TB operációsrendszer-lemez; 4 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 60 lemez/virtuális gép.
 **Titkosított lemezek/kötetek** | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott.
 **Megosztott lemezes fürt** | Nem támogatott.
@@ -212,7 +207,7 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége az internethe
 **URL-cím** | **Részletek**  
 --- | ---
 *.portal.azure.com | Navigáljon a Azure Portal Azure Migrate.
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe.
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 management.azure.com | Hozzon létre Active Directory alkalmazásokat a készülékhez a Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
@@ -271,7 +266,7 @@ Operációs rendszer területi beállítása | Angol (en-us)
 TLS | A TLS 1,2-et engedélyezni kell.
 .NET-keretrendszer | A .NET-keretrendszer 4,6-es vagy újabb verziójának telepítve kell lennie a gépen (erős kriptográfiai támogatással.
 MySQL | A MySQL-t telepíteni kell a készülékre.<br/> Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti a készülék telepítése során.
-Egyéb alkalmazások | Ne futtasson más alkalmazásokat a replikációs berendezésen.
+Más alkalmazások | Ne futtasson más alkalmazásokat a replikációs berendezésen.
 Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V
 Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése
@@ -322,7 +317,7 @@ Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a r
 **Mobilitási szolgáltatás** | Az áttelepíteni kívánt virtuális gépeken telepíteni kell a mobilitási szolgáltatás ügynökét.
 **UEFI-rendszerindítás** | Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva.<br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
 **Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, prémium SSD) az Azure-ban.
-**Lemez mérete** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
+**Lemez mérete** | 2 – TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 63 lemez/virtuális gép.
 **Titkosított lemezek/kötetek** | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott.
 **Megosztott lemezes fürt** | Nem támogatott.
@@ -361,7 +356,7 @@ dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-napl�
 
 **Eszköz** | **Kapcsolat**
 --- | ---
-Virtuális gépek | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
+VG | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
 Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
 Kiszolgáló feldolgozása | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.<br/> Alapértelmezés szerint a Process Server fut a replikációs berendezésen.
 
@@ -378,7 +373,7 @@ Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem tám
 Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemez mérete | Legfeljebb 4 095 GB | Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter is támogatott. |
-Megosztott virtuális merevlemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
+Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A számítógép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 – 63 karakter.<br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. |  Frissítse az értéket a Site Recovery számítógép tulajdonságai között.

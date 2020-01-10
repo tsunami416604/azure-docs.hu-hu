@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873250"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732586"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>ELTOLÁSi korlát záradéka Azure Cosmos DB
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Megjegyzések
   
-  Az eltolási korlátot és a KORLÁTot is meg kell adni az OFFSet LIMIT záradékban. Ha nem kötelező `ORDER BY` záradékot használ, az eredményhalmaz a megrendelt értékek kihagyásával jön létre. Ellenkező esetben a lekérdezés az értékek rögzített sorrendjét fogja visszaadni. Jelenleg ez a záradék csak egy partíción belüli lekérdezésekhez támogatott, a több partíciós lekérdezések még nem támogatják azt.
+  Az eltolási korlátot és a KORLÁTot is meg kell adni az OFFSet LIMIT záradékban. Ha nem kötelező `ORDER BY` záradékot használ, az eredményhalmaz a megrendelt értékek kihagyásával jön létre. Ellenkező esetben a lekérdezés az értékek rögzített sorrendjét fogja visszaadni. Ez a záradék mostantól támogatott egyetlen partíción belüli lekérdezések, valamint a több partíciós lekérdezések esetében is.
 
 ## <a name="examples"></a>Példák
 
@@ -82,6 +82,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Első lépések](sql-query-getting-started.md)
+- [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [ORDER BY záradék](sql-query-order-by.md)

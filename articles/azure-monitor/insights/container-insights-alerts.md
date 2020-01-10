@@ -1,18 +1,14 @@
 ---
 title: Teljesítmény-riasztások létrehozása a Azure Monitor for containers szolgáltatáshoz | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre egyéni riasztások a memória és a CPU-használat Azure Monitor a tárolók számára történő naplózási lekérdezései alapján.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841625"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730925"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Riasztások beállítása a Azure Monitor a tárolók teljesítményével kapcsolatos problémákhoz
 
@@ -288,13 +284,14 @@ Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure M
 >
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A bal oldali ablaktáblán válassza a **figyelő** elemet. Az **Áttekintés**területen válassza a **tárolók**lehetőséget.
-3. A **figyelt fürtök** lapon válasszon ki egy fürtöt a listából.
-4. A **figyelés**területen a bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezen a lapon Azure Log Analytics-lekérdezéseket írhat és futtathat.
-5. A **naplók** lapon válassza az **+ új riasztási szabály**lehetőséget.
-6. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni naplók keresése \<logika nem definiált >** előre definiált egyéni napló feltétele. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
-7. Illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe.
-8. A riasztást a következőképpen állíthatja be:
+2. A Azure Portal keresse meg és válassza ki **log Analytics munkaterületeket**.
+3. Log Analytics munkaterületek listájában válassza ki a tárolók Azure Monitor támogató munkaterületet. 
+4. A bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezen a lapon Azure Log Analytics-lekérdezéseket írhat és futtathat.
+5. A **naplók** lapon illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe, majd kattintson a **Futtatás** elemre az eredmények ellenőrzéséhez. Ha nem hajtja végre ezt a lépést, a **+ új riasztási** lehetőség nem választható ki.
+6. A log-riasztás létrehozásához válassza az **+ új riasztás** elemet.
+7. A **feltétel** szakaszban válassza ki azt az esetet, **amikor az egyéni naplók keresése \<logika nem definiált >** előre definiált egyéni napló feltétele. Az **Egyéni napló keresési** jel típusa automatikusan ki van választva, mert közvetlenül a Azure monitor naplók lapról hozunk létre riasztási szabályt.  
+8. Illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe.
+9. A riasztást a következőképpen állíthatja be:
 
     1. A **Riasztás alapja** legördülő menüből válassza a **Metrikamérés** elemet. A metrikák mérése riasztást hoz létre a lekérdezés minden olyan objektumához, amelynek értéke a megadott küszöbérték felett van.
     1. A **feltétel**beállításnál válassza a **nagyobb, mint**lehetőséget, és adja meg a **75** értéket kezdeti alapértékként **a CPU** -és memória-kihasználtsági riasztásokhoz. A kevés lemezterülettel kapcsolatos riasztáshoz adja meg a **90**értéket. Vagy adjon meg egy másik értéket, amely megfelel a feltételnek.
@@ -302,11 +299,11 @@ Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure M
     1. Ha riasztást szeretne beállítani a tároló PROCESSZORához vagy a memória kihasználtságához, az Összesítés területen válassza **a** **ContainerName**lehetőséget. A fürt csomópontjának alacsony lemezes riasztásának konfigurálásához válassza a **ClusterId**lehetőséget.
     1. A **kiértékelt alapján** szakaszban állítsa **60 percre**az **időszak** értékét. A szabály 5 percenként fut, és az aktuális időponton belül az elmúlt órában létrehozott rekordokat adja vissza. Az időszak beállítása széles ablakos fiókok számára az esetleges adatkésés érdekében. Azt is biztosítja, hogy a lekérdezés az adatok visszaadása után elkerülje a hamis negatív értéket, ha a riasztás soha nem következik be.
 
-9. A riasztási szabály befejezéséhez válassza a **kész** lehetőséget.
-10. Adjon meg egy nevet a **riasztási szabály neve** mezőben. Adja meg azt a **leírást** , amely a riasztás részleteit tartalmazza. Válassza ki a megfelelő súlyossági szintet a megadott beállítások közül.
-11. Ha azonnal aktiválni szeretné a riasztási szabályt, fogadja el az alapértelmezett értéket a **létrehozáskor a szabály engedélyezéséhez**.
-12. Válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. Ez a lépés biztosítja, hogy a rendszer minden alkalommal végrehajtson ugyanazokat a műveleteket, amikor a rendszer riasztást indít el. Konfigurálás az alapján, hogy az informatikai vagy DevOps operatív csapata hogyan kezeli az incidenseket.
-13. Válassza a **riasztási szabály létrehozása** lehetőséget a riasztási szabály befejezéséhez. Azonnal el fog indulni.
+10. A riasztási szabály befejezéséhez válassza a **kész** lehetőséget.
+11. Adjon meg egy nevet a **riasztási szabály neve** mezőben. Adja meg azt a **leírást** , amely a riasztás részleteit tartalmazza. Válassza ki a megfelelő súlyossági szintet a megadott beállítások közül.
+12. Ha azonnal aktiválni szeretné a riasztási szabályt, fogadja el az alapértelmezett értéket a **létrehozáskor a szabály engedélyezéséhez**.
+13. Válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. Ez a lépés biztosítja, hogy a rendszer minden alkalommal végrehajtson ugyanazokat a műveleteket, amikor a rendszer riasztást indít el. Konfigurálás az alapján, hogy az informatikai vagy DevOps operatív csapata hogyan kezeli az incidenseket.
+14. Válassza a **riasztási szabály létrehozása** lehetőséget a riasztási szabály befejezéséhez. Azonnal el fog indulni.
 
 ## <a name="next-steps"></a>Következő lépések
 

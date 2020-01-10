@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286460"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732620"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -35,7 +35,7 @@ Az elnevezett entitások felismerésének következő verziója már elérhető 
 Az entitások csatolása az angol és a spanyol nyelvet támogatja. A nyelv támogatása az entitás típusától függően változik. 
 
 > [!div class="nextstepaction"]
-> [További információ az elnevezett Entity Recognition v3-ról](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
+> [További információ az elnevezett Entity Recognition v3-ról](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Hangulatelemzés v3 nyilvános előzetes verzió – október 2019
 
@@ -47,9 +47,9 @@ A [Hangulatelemzés következő verziója](https://westus.dev.cognitive.microsof
 Támogatja az angol (`en`), a japán (`ja`), egyszerűsített kínai (`zh-Hans`), hagyományos kínai (`zh-Hant`), francia (`fr`), olasz (`it`), spanyol (`es`), holland (`nl`), Portugál (`pt`) és német (`de`), és a következő régiókban érhető el: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`és `West US 2`. 
 
 > [!div class="nextstepaction"]
-> [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
+> [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvekre](text-analytics-user-scenarios.md)

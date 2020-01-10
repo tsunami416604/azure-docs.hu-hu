@@ -1,6 +1,6 @@
 ---
-title: Store titkos kulcsok a key vault az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Útmutató az Azure Key vaultban titkos kulcsok tárolására, és használhassák őket egy virtuális gép, képlet, vagy egy környezet létrehozása közben.
+title: Kulcsok tárolása a kulcstartóban Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan tárolhatja a titkokat egy Azure Key Vault, és hogyan használhatja őket virtuális gépek, képletek vagy környezetek létrehozása során.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -14,42 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 17469d3602935715d570a496e12b6680269ff465
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f16d84f66f2da6094054d161f286070fc86a73b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622911"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720123"
 ---
-# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Store titkos kulcsok a key vault az Azure DevTest Labs szolgáltatásban
-Előfordulhat, hogy meg kell adnia egy összetett titkos kulcs Azure DevTest Labs használata esetén: Windows virtuális gép Linux rendszerű virtuális gép vagy a személyes hozzáférési tokent egy összetevő révén a Git-tárház klónozásához a nyilvános SSH-kulcs jelszava. Titkos kódok általában hosszúak és véletlenszerű karakter hosszúságú lehet. Ezért őket lehet megkülönböztetni és kényelmetlen lehet, különösen akkor, ha több alkalommal használja a titkos kulcsot.
+# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Titkos kulcsok tárolása Azure DevTest Labsban található kulcstartóban
+Előfordulhat, hogy egy összetett titkot kell megadnia, ha Azure DevTest Labs: jelszót használ a Windows rendszerű virtuális géphez, a Linux rendszerű virtuális gép nyilvános SSH-kulcsához vagy a személyes hozzáférési tokenhez a git-tárház egy összetevőn keresztüli klónozásához. A titkok általában hosszúak, és véletlenszerű karakterekkel rendelkeznek. Ezért a megadásuk bonyolult és kényelmetlen lehet, különösen akkor, ha ugyanazt a titkos kódot többször használja.
 
-A probléma megoldásához, és ne a titkos kulcsok egy biztonságos helyre, DevTest Labs tárolását titkok támogatja egy [az Azure key vault](../key-vault/key-vault-overview.md). Amikor a felhasználó első alkalommal menti a titkos kulcs, a DevTest Labs szolgáltatás automatikusan létrehoz egy kulcstárolót ugyanazt az erőforráscsoportot, amely tartalmazza a tesztkörnyezetben, és tárolja a titkos kulcsot a kulcstartóban. DevTest Labs minden felhasználóhoz külön kulcstartót hoz létre. 
+A probléma megoldásához, valamint a titkos kulcsok biztonságának fenntartásához a DevTest Labs támogatja a titkos kódok [Azure Key vaultban](../key-vault/key-vault-overview.md)való tárolását. Amikor a felhasználó első alkalommal ment egy titkos kulcsot, a DevTest Labs szolgáltatás automatikusan létrehoz egy kulcstárolót ugyanabban az erőforráscsoporthoz, amely tartalmazza a labort, és a kulcsot a kulcstartóban tárolja. A DevTest Labs külön kulcstartót hoz létre minden felhasználó számára. 
 
-## <a name="save-a-secret-in-azure-key-vault"></a>Az Azure Key Vaultban titkos kulcs mentése
-Szeretné menteni a titkos kulcsot az Azure Key Vaultban, tegye a következőket:
+Vegye figyelembe, hogy a labor felhasználónak először létre kell hoznia egy Tesztkörnyezet virtuális gépet, mielőtt titkos kulcsot hozna létre a kulcstartóban. Ennek az az oka, hogy a DevTest Lab szolgáltatásnak hozzá kell rendelnie a labor felhasználót egy érvényes felhasználói dokumentumhoz, mielőtt a titkos kulcsokat a kulcstartóban szeretné létrehozni és tárolni. 
 
-1. Válassza ki **Moje tajné kódy** a bal oldali menüben.
-2. Adjon meg egy **neve** számára a titkos kulcsot. Ezt a nevet a virtuális gép létrehozásakor, képlet, a legördülő listából vagy egy környezet megjelenik. 
-3. Adja meg a titkos kulcsot, mint a **érték**.
 
-    ![Store titkos kulcs](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
+## <a name="save-a-secret-in-azure-key-vault"></a>Titkos kód mentése Azure Key Vault
+Ha Azure Key Vault szeretné menteni a titkot, hajtsa végre a következő lépéseket:
 
-## <a name="use-a-secret-from-azure-key-vault"></a>Azure Key vault titkos kulcs használata
-Adja meg egy titkos kulcsot, hozzon létre egy virtuális Gépet, képlet, vagy egy környezetre van szüksége, ha manuálisan adja meg a titkos kulcs, vagy ki egy mentett titkos kulcsot a kulcstartóban található. A key vaultban tárolt titkos kulcs használatára, tegye a következőket:
+1. Válassza a **saját titkok** lehetőséget a bal oldali menüben.
+2. Adja meg a titok **nevét** . Ez a név jelenik meg a legördülő listában a virtuális gép, a képlet vagy a környezet létrehozásakor. 
+3. Adja meg a titkot **értékként**.
 
-1. Válassza ki **mentett titkos kulcs használata**. 
-2. A legördülő listából válassza ki a a titkos kód **titkos kód kiválasztása**. 
+    ![Titkos kód tárolása](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
-    ![A virtuális gép titkos kulcs használata](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
+## <a name="use-a-secret-from-azure-key-vault"></a>Titkos kód használata Azure Key Vault
+Ha egy titkot kell megadnia egy virtuális gép, egy képlet vagy egy környezet létrehozásához, manuálisan is megadhat egy titkos kulcsot, vagy kijelölhet egy mentett titkot a kulcstartóból. A Key vaultban tárolt titkos kód használatához hajtsa végre a következő műveleteket:
 
-## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Titkos kulcs használata az Azure Resource Manager-sablon
-A titkos kód nevét adhatja meg az Azure Resource Manager-sablon, amellyel a virtuális gép létrehozása az alábbi példában látható módon:
+1. Válassza **a mentett titkos kód használata**lehetőséget. 
+2. A **titkos**kód kiválasztásához válassza ki a titkot a legördülő listából. 
 
-![Használja a titkos képletet vagy környezetben](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
+    ![Titok használata a virtuális gépen](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Titkos kód használata Azure Resource Manager-sablonban
+Megadhatja a titkos kulcs nevét egy olyan Azure Resource Manager sablonban, amely a virtuális gép létrehozásához használatos a következő példában látható módon:
 
-- [A titkos kulcs virtuális gép létrehozása](devtest-lab-add-vm.md) 
-- [A titkos kulcs használatával képlet létrehozása](devtest-lab-manage-formulas.md)
-- [A titkos kulcs-környezet létrehozása](devtest-lab-create-environment-from-arm.md)
+![Titkos kód használata a képletben vagy a környezetben](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Virtuális gép létrehozása a titok használatával](devtest-lab-add-vm.md) 
+- [Képlet létrehozása a titkos kód használatával](devtest-lab-manage-formulas.md)
+- [Környezet létrehozása a titok használatával](devtest-lab-create-environment-from-arm.md)

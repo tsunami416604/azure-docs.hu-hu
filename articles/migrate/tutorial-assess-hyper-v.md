@@ -1,19 +1,15 @@
 ---
 title: A Hyper-V virtuális gépek felmérése az Azure-ba való Migrálás Azure Migrate használatával | Microsoft Docs
 description: Ismerteti, hogyan lehet kiértékelni a helyszíni Hyper-V virtuális gépeket az Azure-ba való Migrálás Azure Migrate használatával.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f2a7caad13ad845d5b2aeb3240b7d77fa89faf12
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158380"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720259"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>A Hyper-V virtuális gépek felmérése Azure Migrate kiszolgáló értékelésével
 
@@ -23,7 +19,7 @@ Ez a cikk bemutatja, hogyan értékelheti a helyszíni Hyper-V virtuális gépek
 
 
 
-Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a Hyper-V virtuális gépeket az Azure-ba. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a Hyper-V virtuális gépeket az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
@@ -43,7 +39,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 - [Fejezze](tutorial-prepare-hyper-v.md) be az első oktatóanyagot ebben a sorozatban. Ha nem, az oktatóanyagban szereplő utasítások nem fognak működni.
 - Az első oktatóanyagban az alábbiakat kell elvégeznie:
     - [Azure-engedélyek beállítása](tutorial-prepare-hyper-v.md#prepare-azure) Azure Migratehoz.
-    - [Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment) fürtök, gazdagépek és virtuális gépek előkészítése az értékeléshez.
+    - [Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) fürtök, gazdagépek és virtuális gépek előkészítése az értékeléshez.
+    - Felkészülés a Hyper-V virtuális gépek felderítéséhez és értékeléséhez használt Azure Migrate berendezés [üzembe helyezésére](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) .
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
 
@@ -72,7 +69,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     - A projekt régió csak a helyszíni virtuális gépekről összegyűjtött metaadatok tárolására szolgál.
     - A virtuális gépek áttelepítésekor egy másik Azure Target-régiót is kijelölhet. Az összes Azure-régió áttelepítési célként támogatott.
 
-7. Kattintson a **Tovább**gombra.
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-hyper-v/assessment-tool.png)
@@ -139,10 +136,10 @@ Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
 3. A **mappa keresése**területen válassza a **Virtual Machines** mappát. Ezután kattintson a **Next** (Tovább) gombra.
 1. A **virtuális gép kiválasztása lapon**kattintson a **tovább**gombra.
 2. Az **importálási típus kiválasztása**területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Ezután kattintson a **Next** (Tovább) gombra.
-3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább**gombra.
-4. A **tárolási mappák**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább**gombra.
+3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
+4. A **tárolási mappák**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
 5. A **hálózat kiválasztása**területen adja meg azt a virtuális kapcsolót, amelyet a virtuális gép használni fog. A kapcsolónak internetkapcsolattal kell rendelkeznie az Azure-ba való adatküldéshez.
-6. Az **Összefoglalás**területen tekintse át a beállításokat. Ezután kattintson a **Befejezés**gombra.
+6. Az **Összefoglalás**területen tekintse át a beállításokat. Ezután kattintson a **Befejezés** gombra.
 7. A Hyper-V kezelőjében > **Virtual Machines**indítsa el a virtuális gépet.
 
 
@@ -162,7 +159,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 1. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
-      - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDNformában.
+      - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDN formában.
       - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
       - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő a virtuális gép felderítésének megfelelő működéséhez szinkronban kell lennie.
@@ -184,7 +181,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 
 Ha virtuális merevlemezeket futtat az SMB-n, engedélyeznie kell a hitelesítő adatok delegálását a készülékről a Hyper-V gazdagépekre. Ehhez a következőkre van szükség:
 
-- Engedélyezheti, hogy mindegyik gazdagép meghatalmazottként működjön a berendezésben. Ezt az előző oktatóanyagban kell végrehajtania, amikor felkészítette a Hyper-V-t az értékeléshez és az áttelepítéshez. [Manuálisan](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)kell beállítania a CredSSP a gazdagépekhez, vagy [a Hyper-V előfeltétel-konfigurációs parancsfájl futtatásával](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script).
+- Engedélyezheti, hogy mindegyik gazdagép meghatalmazottként működjön a berendezésben. Ha követte az oktatóanyagokat, ezt az előző oktatóanyagban végezte el, amikor felkészítette a Hyper-V-t az értékeléshez és az áttelepítéshez. [Manuálisan](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)kell beállítania a CredSSP a gazdagépekhez, vagy [egy olyan parancsfájl futtatásával](tutorial-prepare-hyper-v.md#prepare-with-a-script) , amely ezt teszi.
 - Engedélyezze az CredSSP delegálást, hogy az Azure Migrate készülék ügyfélként működhet, hitelesítő adatokat delegáljon egy gazdagépre.
 
 A következő módon engedélyezheti a készüléket:
@@ -248,7 +245,7 @@ Az értékelést a következőképpen futtathatja:
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** > **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelés**elemre.
 
-    ![Kiértékelés](./media/tutorial-assess-hyper-v/assess.png)
+    ![Értékelés](./media/tutorial-assess-hyper-v/assess.png)
 
 3. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 4. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
@@ -335,7 +332,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Azure Migrate berendezés beállítása

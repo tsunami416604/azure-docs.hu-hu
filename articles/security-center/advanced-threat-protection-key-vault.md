@@ -8,40 +8,41 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: b28f03f0997b6bb2c494c35cee9695a478906c47
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 2375d8ee92d9c04c287b7fca793fcdc236e1e8f4
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521877"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720038"
 ---
-# <a name="how-to-set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Komplex veszélyforrások elleni védelem beállítása a Azure Key Vaulthoz (előzetes verzió)
+# <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Komplex veszélyforrások elleni védelem beállítása a Azure Key Vaulthoz (előzetes verzió)
 
-A Azure Key Vault komplex veszélyforrások elleni védelme további biztonsági intelligencia réteget biztosít. Ez az eszköz észleli a Key Vault fiókok elérését vagy kiaknázását okozó potenciálisan káros kísérleteket. A Security Center natív komplex veszélyforrások elleni védelmének használatával biztonsági szakértő nélkül kezelheti a fenyegetéseket, és nem kell további biztonsági figyelési rendszereket megtanulnia.
+A Azure Key Vault komplex veszélyforrások elleni védelme további biztonsági intelligencia réteget biztosít. Ez az eszköz észleli a Key Vault fiókok elérését vagy kiaknázását okozó potenciálisan káros kísérleteket. A Azure Security Center natív komplex veszélyforrások elleni védelem használatával a fenyegetéseket biztonsági szakértő nélkül, a további biztonsági figyelési rendszerek megismerése nélkül kezelheti.
 
-Amikor Security Center észleli a rendellenes tevékenységeket, riasztásokat jelenít meg. Emellett e-mailben elküldi az előfizetés-rendszergazdának a gyanús tevékenységek részleteit, és javaslatokat tesz az azonosított fenyegetések kivizsgálására és szervizelésére. 
+Amikor Security Center észleli a rendellenes tevékenységeket, riasztásokat jelenít meg. Emellett e-mailben elküldi az előfizetés-rendszergazdának a gyanús tevékenységek részleteit, és javaslatokat tesz az azonosított fenyegetések kivizsgálására és szervizelésére.
 
 > [!NOTE]
-> A Azure Key Vault komplex veszélyforrások elleni védelme jelenleg csak Észak-Amerika régiókban érhető el.
+> A Azure Key Vault összetett veszélyforrások elleni védelme jelenleg csak Észak-Amerika régióban érhető el.
 
-## <a name="to-set-up-advanced-threat-protection-from-azure-security-center"></a>Összetett veszélyforrások elleni védelem beállítása Azure Security Center
+## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Összetett veszélyforrások elleni védelem beállítása Azure Security Center
 
-Alapértelmezés szerint a komplex veszélyforrások elleni védelem minden Key Vault-fiók esetében engedélyezve van a Security Center Standard szintjére való előfizetéskor (lásd a [díjszabást](security-center-pricing.md)). 
+Alapértelmezés szerint a komplex veszélyforrások elleni védelem minden Key Vault-fiók esetében engedélyezve van a Security Center Standard csomagra való előfizetéskor. További információ: [díjszabás](security-center-pricing.md).
 
-Egy adott előfizetés védelmének engedélyezése vagy letiltása:
+Egy adott előfizetés védelmének engedélyezéséhez vagy letiltásához kövesse az alábbi lépéseket.
 
-1. A Security Center oldalsávján kattintson a **díjszabás & beállítások**elemre.
+1. Security Center bal oldali ablaktábláján válassza a **díjszabás & beállítások**lehetőséget.
 1. Válassza ki azt a Storage-fiókot tartalmazó előfizetést, amelyhez engedélyezni vagy tiltani szeretné a veszélyforrások elleni védelmet.
-1. Kattintson a **díjszabási**csomag elemre.
-1. Az **árképzési csomag kiválasztása erőforrástípus alapján** csoportban keresse meg a Key Vaults sort, és kattintson az **engedélyezve** vagy a **Letiltva**lehetőségre.
+1. Válassza a **Tarifacsomag** lehetőséget,
+1. Az **árképzési csomag kiválasztása erőforrástípus alapján** csoportban keresse meg a **Key Vaults** sort, és válassza az **engedélyezve** vagy a **Letiltva**lehetőséget.
+
     [![Key Vault speciális veszélyforrások elleni védelmének engedélyezése vagy letiltása Azure Security Center](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti és tilthatja le a Azure Key Vault komplex veszélyforrások elleni védelmét. 
 
 Más kapcsolódó anyagok esetében tekintse meg a következő cikket:
 
-- [Veszélyforrások észlelése a Security Center Azure-szolgáltatások rétegeiben](security-center-alerts-service-layer.md) – ez a cikk a komplex veszélyforrások elleni védelemmel kapcsolatos riasztásokat ismerteti Azure Key Vault
+- [Veszélyforrások észlelése a Security Center Azure-szolgáltatások rétegeiben](security-center-alerts-service-layer.md): Ez a cikk a Azure Key Vault komplex veszélyforrások elleni védelmével kapcsolatos riasztásokat ismerteti.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379205"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707944"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Eszközök hibaelhárítása a dsregcmd parancs használatával
 
@@ -28,10 +28,10 @@ Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Eszköz állapota |
 | ---   | ---   | ---   | ---   |
-| igen | NO | NO | Azure AD-hez csatlakoztatott |
-| NO | NO | igen | Tartományhoz csatlakoztatott |
-| igen | NO | igen | Hibrid AD-hez csatlakoztatott |
-| NO | igen | igen | A helyszíni DRS csatlakoztatva |
+| IGEN | NO | NO | Azure AD-hez csatlakoztatott |
+| NO | NO | IGEN | Tartományhoz csatlakoztatott |
+| IGEN | NO | IGEN | Hibrid AD-hez csatlakoztatott |
+| NO | IGEN | IGEN | A helyszíni DRS csatlakoztatva |
 
 > [!NOTE]
 > Workplace Join (az Azure AD-ben regisztrált) állapot a "felhasználói állapot" szakaszban jelenik meg
@@ -54,7 +54,7 @@ Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Eszköz adatai
+## <a name="device-details"></a>Eszközadatok
 
 Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid Azure AD-hez csatlakozik (nem az Azure AD-ben regisztrált). Ez a szakasz felsorolja az eszköz a felhőben tárolt adatait.
 
@@ -193,7 +193,7 @@ Ez a szakasz figyelmen kívül hagyható az Azure AD által regisztrált eszköz
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnosztikai adatszolgáltatások
+## <a name="diagnostic-data"></a>Diagnosztikai adatok
 
 ### <a name="pre-join-diagnostics"></a>Csatlakozás előtti diagnosztika
 
@@ -297,10 +297,22 @@ Ez a szakasz a felhőhöz csatlakoztatott eszközön elvégzett, józan ész-ell
 
 ## <a name="ngc-prerequisite-check"></a>NGC Előfeltételek ellenőrzése
 
-Ez a szakasz az NGC-kulcsok kiépítési előfeltételek-ellenőrzéseit végzi. 
+Ez a szakasz a vállalati Windows Hello (WHFB) üzembe helyezéséhez szükséges előfeltételek-ellenőrzéseket végzi. 
 
 > [!NOTE]
-> Ha a felhasználó már sikeresen konfigurálta az NGC hitelesítő adatokat, előfordulhat, hogy a dsregcmd/status nem látja az NGC előfeltétel-ellenőrzési részleteit.
+> Ha a felhasználó már sikeresen beállította a WHFB-t, előfordulhat, hogy a dsregcmd-/status nem látja az NGC előfeltétel-ellenőrzési részleteit.
+
+- **IsDeviceJoined:** – az "igen" értékre állítva, ha az eszköz csatlakoztatva van az Azure ad-hez.
+- **IsUserAzureAD:** – az "igen" értékre állítva, ha a bejelentkezett felhasználó megtalálható az Azure ad-ben.
+- **PolicyEnabled:** – állítsa az "igen" értékre, ha a WHFB szabályzat engedélyezve van az eszközön.
+- **PostLogonEnabled:** – az "igen" értékre állítva, ha a WHFB-regisztrációt a platform natív módon indítja el. Ha a "nem" értékre van állítva, az azt jelzi, hogy egy egyéni mechanizmus aktiválja a vállalati Windows Hello-regisztrációt
+- **DeviceEligible:** – az "igen" értékre állítva, ha az eszköz megfelel a WHFB-regisztrációhoz szükséges hardverkövetelmények követelményeinek.
+- **SessionIsNotRemote:** – állítsa Igen értékre, ha az aktuális felhasználó közvetlenül az eszközre van bejelentkezve, és nem távolról.
+- **CertEnrollment:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozik, amely a WHFB tanúsítványigénylési szolgáltatóját jelzi. A "beléptetési szolgáltató" értékre van állítva, ha a WHFB házirend forrása Csoportházirend, "mobileszköz-kezelés", ha a forrás MDM. "nincs", máskülönben
+- **AdfsRefreshToken:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozó specifikus. Csak akkor jelennek meg, ha a CertEnrollment "beléptetési szolgáltató". Azt jelzi, hogy az eszköz rendelkezik-e vállalati PRT-vel a felhasználó számára.
+- **AdfsRaIsReady:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozó specifikus.  Csak akkor jelennek meg, ha a CertEnrollment "beléptetési szolgáltató". Állítsa az Igen értékre, ha az ADFS a WHFB által támogatott felderítési metaadatokban szerepel, *és* ha elérhető a bejelentkezési tanúsítvány sablonja.
+- **LogonCertTemplateReady:** – a WHFB tanúsítvány-megbízhatóság telepítésére vonatkozó specifikus. Csak akkor jelennek meg, ha a CertEnrollment "beléptetési szolgáltató". Ha az "igen" értékre van állítva, ha a bejelentkezési tanúsítvány sablonjának állapota érvényes, és segít az ADFS-k hibakeresésében.
+- **PreReqResult:** – a WHFB előfeltétel-kiértékelésének eredményét adja meg. Ha a felhasználó a következő alkalommal jelentkezik be, a "kiépítés" értékre van állítva, ha a WHFB-regisztráció Bejelentkezés utáni feladatként indul el.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Az NGC előfeltétel-ellenőrzési kimenetének mintája
 

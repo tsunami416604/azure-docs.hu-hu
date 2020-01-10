@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935050"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732382"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Az újraparticionálással optimalizálja a feldolgozást Azure Stream Analytics
 
@@ -21,11 +21,11 @@ Ebből a cikkből megtudhatja, hogy az újraparticionálással hogyan méretezhe
 Előfordulhat, hogy nem tudja használni a [párhuzamos](stream-analytics-parallelization.md) , ha:
 
 * A bemeneti adatfolyamhoz tartozó partíciós kulcs nem szabályozható.
-* A forrás "spray" bemenete több partíción keresztül történik, amelyeket később egyesíteni kell. 
-
-## <a name="how-to-repartition"></a>Újraparticionálás
+* A forrás "spray" bemenete több partíción keresztül történik, amelyeket később egyesíteni kell.
 
 Az újraparticionálás vagy az újrakeverés szükséges, ha olyan adatfolyamon dolgoz fel adatokat, amely nem egy természetes bemeneti séma alapján van felosztva, például Event Hubs **PartitionID** . Az újraparticionáláskor az egyes szegmensek egymástól függetlenül dolgozhatók fel, ami lehetővé teszi a folyamatos átviteli folyamat lineáris felskálázását.
+
+## <a name="how-to-repartition"></a>Újraparticionálás
 
 Az újraparticionáláshoz használja a kulcsszót egy **Partition by** **utasítás után a** lekérdezésben. Az alábbi példa az adatmennyiséget az **DeviceID** értékre particionálja egy 10. számú partíción. A **DeviceID** kivonatolása annak meghatározására szolgál, hogy melyik partíciónak kell elfogadnia az alstreamet. Az adatokat az egyes particionált adatfolyamok egymástól függetlenül ürítik, feltéve, hogy a kimenet támogatja a particionált írásokat, és 10 partíciót tartalmaz.
 
