@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941831"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768979"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -26,10 +26,10 @@ A functions a helyi számítógépen való fejlesztése és az Azure-ba való k�
 > * [Trigger-és kötési bővítmények regisztrálása.](#register-extensions)
 > * [Tároló és egyéb kapcsolatok definiálása.](#local-settings-file)
 > * [Hozzon létre egy függvényt egy triggerből és egy nyelvspecifikus sablonból.](#create-func)
-> * [A függvény helyi futtatása](#start)
-> * [A projekt közzététele az Azure-ban](#publish)
+> * [Futtassa helyileg a függvényt.](#start)
+> * [Tegye közzé a projektet az Azure-ban.](#publish)
 
-## <a name="core-tools-versions"></a>A Core Tools verziói
+## <a name="core-tools-versions"></a>Alapvető eszközök verziói
 
 A Azure Functions Core Tools három verziója létezik. A használt verzió a helyi fejlesztési környezettől, a [választott nyelvtől](supported-languages.md)és a szükséges támogatási szinttől függ:
 
@@ -56,7 +56,7 @@ A következő lépések a NPM segítségével telepítik a Windows rendszerhez t
 
 1. Telepítse a [Node.js]-t, amely tartalmazza a NPM.
     - Az eszközök 2. x verziója esetében csak a Node. js 8,5-es és újabb verziói támogatottak.
-    - Az eszközök 3. x verziójában csak a 10-es és újabb verziók támogatottak.
+    - Az eszközök 3. x verziójában csak a Node. js 10 és újabb verziók támogatottak.
 
 1. Telepítse a Core Tools csomagot:
 
@@ -129,7 +129,6 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
 
     | Linux-disztribúció | Verzió |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
@@ -151,11 +150,11 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
 
 1. Ha nem tervezi a [bővítmények]használatát, telepítse [a .net Core 2. x SDK-t a Linux rendszerhez](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Helyi functions-projekt létrehozása
+## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
 
 A functions projekt könyvtára tartalmazza a [Host. JSON](functions-host-json.md) és a [Local. Settings. JSON](#local-settings-file)fájlt, valamint az egyes függvények kódját tartalmazó almappákat. Ez a könyvtár egyenértékű egy Azure-beli Function alkalmazással. A functions mappa struktúrájával kapcsolatos további tudnivalókért tekintse meg a [Azure functions fejlesztői útmutató](functions-reference.md#folder-structure)című témakört.
 
-A 2. x verzióhoz az inicializáláskor ki kell választania a projekt alapértelmezett nyelvét, és az összes funkció hozzáadásra kerül az alapértelmezett nyelvi sablonok használatával. Az 1. x verzióban az egyes függvények létrehozásakor minden alkalommal meg kell adnia a nyelvet.
+A 2. x verzióhoz az inicializáláskor ki kell választania a projekt alapértelmezett nyelvét. A 2. x verzióban minden funkció hozzáadva az alapértelmezett nyelvi sablonokat. Az 1. x verzióban az egyes függvények létrehozásakor minden alkalommal meg kell adnia a nyelvet.
 
 A terminál ablakban vagy egy parancssorban futtassa a következő parancsot a projekt és a helyi git-tárház létrehozásához:
 
@@ -189,7 +188,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 a `func init` a következő beállításokat támogatja, amelyek csak 2. x verziójúak, hacsak másként nincs jelezve:
 
-| Lehetőség     | Leírás                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Egy [ C# Class Library-(. cs) projekt](functions-dotnet-class-library.md)inicializálása. |
 | **`--csx`** | Egy [ C# parancsfájl-(. CSX) projekt](functions-reference-csharp.md)inicializálása. A következő parancsokban meg kell adnia `--csx`. |
@@ -227,7 +226,7 @@ Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc a [`Azur
 
 ### <a name="get-your-storage-connection-strings"></a>A tárolási kapcsolatok karakterláncának beolvasása
 
-Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-create-storage-account.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
+Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-create-storage-account.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
 
 - A [Azure Portalra]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
   ![válassza a Storage-fiókok lehetőséget Azure Portal](./media/functions-run-local/select-storage-accounts.png)
@@ -235,7 +234,7 @@ Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes l
   Válassza ki a Storage-fiókját, válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen, majd másolja a **kapcsolati karakterlánc** egyik értékét.
   ![a Azure Portal a kapcsolatok karakterláncának másolása](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Az Azure-fiókhoz való kapcsolódáshoz használjon [Azure Storage Explorer](https://storageexplorer.com/) . Az **Explorerben**bontsa ki az előfizetését, válassza ki a Storage-fiókját, és másolja az elsődleges vagy másodlagos kapcsolatok sztringjét.
+- Az Azure-fiókhoz való kapcsolódáshoz használjon [Azure Storage Explorer](https://storageexplorer.com/) . Az **Explorerben**bontsa ki az előfizetést, bontsa ki a **Storage-fiókok**elemet, válassza ki a Storage-fiókját, és másolja az elsődleges vagy másodlagos kapcsolatok karakterláncát.
 
   ![A Storage Explorerból származó kapcsolatok karakterláncának másolása](./media/functions-run-local/storage-explorer.png)
 
@@ -252,11 +251,11 @@ Még ha a Storage emulatort is szeretné használni a fejlesztéshez, érdemes l
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Ha még nem jelentkezett be az Azure-ba, a rendszer felszólítja erre.
+    Ha még nem jelentkezett be az Azure-ba, a rendszer erre kéri.
 
 ## <a name="create-func"></a>Függvény létrehozása
 
-Függvény létrehozásához futtassa a következő parancsot:
+Hozzon létre egy függvényt, futtassa a következő parancsot:
 
 ```bash
 func new
@@ -346,14 +345,14 @@ func host start
 
 `func start` a következő lehetőségeket támogatja:
 
-| Lehetőség     | Leírás                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Csak 2. x verzió. |
 | **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak `--useHttps`használatos. Csak 2. x verzió. |
 | **`--cors-credentials`** | A csak a cookie-k és a hitelesítési fejlécek használatának engedélyezése csak a 2. x verzióban. |
 | **`--cors`** | A CORS-eredetek vesszővel tagolt listája, szóközök nélkül. |
-| **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Csak 2. x verzió. |
-| **`--nodeDebugPort -n`** | A csomópont-hibakereső által használandó port. Default (alapértelmezett): A Launch. JSON vagy A 5858 érték. Csak 1. x verzió. |
+| **`--language-worker`** | A nyelv feldolgozójának konfigurálására szolgáló argumentum. Engedélyezheti például a nyelvi feldolgozó hibakeresését a [hibakeresési port és egyéb szükséges argumentumok](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)megadásával. Csak 2. x verzió. |
+| **`--nodeDebugPort -n`** | A Node. js hibakereső által használandó port. Default (alapértelmezett): A Launch. JSON vagy A 5858 érték. Csak 1. x verzió. |
 | **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak `--cert`használatos. Csak 2. x verzió. |
 | **`--port -p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | A folyamat bezárása előtt szüneteltesse a további adatokat. Csak akkor használható, ha egy integrált fejlesztői környezetből (IDE) indít alapszintű eszközöket.|
@@ -372,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->A helyileg futtatott hitelesítés nem kényszeríti ki a HTTP-végpontokat. Ez azt jelenti, hogy az összes helyi HTTP-kérelem `authLevel = "anonymous"`-ként van kezelve. További információkért lásd a http- [kötést ismertető cikket](functions-bindings-http-webhook.md#authorization-keys).
+>Helyileg futtatva az engedélyezés nem kényszeríti ki a HTTP-végpontokat. Ez azt jelenti, hogy az összes helyi HTTP-kérelem `authLevel = "anonymous"`-ként van kezelve. További információkért lásd a http- [kötést ismertető cikket](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Tesztelési adat átadása egy függvénynek
 
@@ -436,7 +435,7 @@ A függvényeket közvetlenül a `func run <FunctionName>` használatával is me
 
 `func run` a következő lehetőségeket támogatja:
 
-| Lehetőség     | Leírás                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | Beágyazott tartalom. |
 | **`--debug -d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
@@ -472,14 +471,14 @@ Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hib
 
 A következő közzétételi beállítások mindkét verzióra érvényesek: 1. x és 2. x.
 
-| Lehetőség     | Leírás                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  A beállítások közzététele a local. Settings. JSON fájlban az Azure-ba, ha a beállítás már létezik, a rendszer megkéri a felülírásra. Ha a Storage emulatort használja, először módosítsa az alkalmazás beállításait egy [tényleges Storage-kapcsolatban](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  A beállítások közzététele a local. Settings. JSON fájlban az Azure-ba, ha a beállítás már létezik, a rendszer megkéri a felülírásra. Ha a Microsoft Azure Storage Emulator használja, először módosítsa az alkalmazás beállításait egy [tényleges tárolási kapcsolatban](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | `--publish-local-settings -i` használatakor a rendszer letiltja az Alkalmazásbeállítások felülírását.|
 
 A következő közzétételi beállítások csak a 2. x verzióban támogatottak:
 
-| Lehetőség     | Leírás                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
 |**`--list-ignored-files`** | A közzététel során figyelmen kívül hagyott fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
@@ -503,7 +502,7 @@ func deploy
 
 A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
 
-| Lehetőség     | Leírás                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Annak a Docker-beállításjegyzéknek a neve, amelyre az aktuális felhasználó bejelentkezett. |
 | **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők `kubernetes` |
@@ -516,9 +515,9 @@ A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
 
 A függvények végrehajtásának ajánlott figyelése az Azure Application Insights integrálásával történik. A végrehajtási naplókat a helyi számítógépre is továbbíthatja. További információért lásd: [Azure functions figyelése](functions-monitoring.md).
 
-### <a name="enable-application-insights-integration"></a>Application Insights integráció engedélyezése
+### <a name="application-insights-integration"></a>Application Insights integráció
 
-Ha a Azure Portalban hoz létre egy Function alkalmazást, a rendszer alapértelmezés szerint a Application Insights-integrációt végzi. Ha azonban az Azure CLI használatával hozza létre a Function alkalmazást, az Azure-beli Function alkalmazásban nem történik meg az integráció.
+Application Insights integrációt engedélyezni kell, amikor létrehozza a Function alkalmazást az Azure-ban. Ha a Function alkalmazás valamilyen okból nem kapcsolódik Application Insights-példányhoz, egyszerűen elvégezheti ezt az integrációt a Azure Portal. 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,10 +529,10 @@ Megtekintheti a függvények által a helyi számítógépen lévő parancssori 
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Az ilyen típusú folyamatos átviteli naplókhoz [engedélyeznie kell Application Insights integrációját](#enable-application-insights-integration) a Function alkalmazáshoz.   
+Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integrációjának engedélyezése szükséges a Function alkalmazáshoz.   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).

@@ -2,13 +2,13 @@
 title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226647"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769003"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -100,8 +100,8 @@ A fő projekt mappája (\_\_alkalmazás\_\_) a következő fájlokat tartalmazha
 * *Local. Settings. JSON*: az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
 * *követelmények. txt*: az Azure-ba való közzétételkor a rendszer által telepített csomagok listáját tartalmazza.
 * a *Host. JSON*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [Host. JSON](functions-host-json.md).
-* *funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
-* *gitignore*: (nem kötelező) deklarálja a git-tárházból kizárt fájlokat, például a local. Settings. JSON fájlt.
+* *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
+* *. gitignore*: (nem kötelező) a git-tárházból kizárt fájlokat deklarálja, például a local. Settings. JSON fájlt.
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function. JSON). 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-A függvény meghívásakor a rendszer a HTTP-kérelmet `req`ként továbbítja a függvénynek. A rendszer beolvas egy bejegyzést az Azure _blob Storage az útvonal_ URL-címe alapján, és a függvény törzsében `obj`ként elérhetővé teszi.  Itt a megadott Storage-fiók a szolgáltatásban található, a Function alkalmazás által használt Storage-fiók.
+A függvény meghívásakor a rendszer a HTTP-kérelmet `req`ként továbbítja a függvénynek. A rendszer beolvas egy bejegyzést az Azure _blob Storage az útvonal_ URL-címe alapján, és a függvény törzsében `obj`ként elérhetővé teszi.  Itt a megadott Storage-fiók a AzureWebJobsStorage alkalmazás-beállításban található, a Function alkalmazás által használt Storage-fiók.
 
 
 ## <a name="outputs"></a>Kimenetek
@@ -280,28 +280,30 @@ Ebben a függvényben a `name` lekérdezési paraméter értékét a [HttpReques
 
 Hasonlóképpen beállíthatja a válaszüzenet `status_code`ét és `headers` a visszaadott [HttpResponse] objektumban.
 
-## <a name="concurrency"></a>Egyidejűség
+## <a name="scaling-and-concurrency"></a>Skálázás és Egyidejűség
 
-Alapértelmezés szerint a Python Runtime függvény egyszerre csak egy függvény hívását képes feldolgozni. Előfordulhat, hogy ez a párhuzamossági szint nem elegendő a következő feltételek közül egy vagy több esetében:
+Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Pythonhoz. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-+ Egyszerre több meghívást próbál kezelni...
-+ Nagy mennyiségű I/O-eseményt dolgoz fel.
-+ Az alkalmazás I/O-kötésű.
+Ez a skálázási viselkedés számos alkalmazás esetében elegendő. A következő jellemzők bármelyikével rendelkező alkalmazások esetében azonban nem lehet hatékonyan méretezni:
 
-Ezekben az esetekben a teljesítményt aszinkron módon, több nyelvi feldolgozói folyamat használatával növelheti.  
+- Az alkalmazásnak számos egyidejű hívást kell kezelnie.
+- Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel.
+- Az alkalmazás I/O-kötésű.
+
+Ilyen esetekben az aszinkron minták és a több nyelvű munkavégző folyamat használatával tovább javíthatja a teljesítményt.
 
 ### <a name="async"></a>Aszinkron
 
-Azt javasoljuk, hogy a `async def` utasítást használja, hogy a függvény aszinkron módon fusson.
+Mivel a Python egy egyszálas futtatókörnyezet, a Pythonhoz tartozó gazdagép-példány egyszerre csak egy függvényt tud feldolgozni. A nagy mennyiségű I/O-eseményt feldolgozó alkalmazások és/vagy I/O-kötések esetén a függvények aszinkron futtatásával javítható a teljesítmény.
+
+A függvények aszinkron futtatásához használja a `async def` utasítást, amely a függvényt közvetlenül a [asyncio](https://docs.python.org/3/library/asyncio.html) futtatja:
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Ha a `main()` függvény szinkron (a `async` minősítő nélkül), a függvény automatikusan egy `asyncio` szálban fut.
+A `async` kulcsszó nélküli függvény automatikusan fut egy asyncio szál-készletben:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,7 +314,9 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>Több nyelvet használó munkavégző folyamat használata
 
-Alapértelmezés szerint minden functions Host-példány egyetlen nyelvi munkavégző folyamattal rendelkezik. A gazdagép-példányok esetében azonban több nyelvi feldolgozói folyamat is támogatott. A függvények meghívásai ezután egyenletesen eloszthatók a nyelvi munkavégző folyamatok között. Ennek az értéknek a megváltoztatásához használja a [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) alkalmazás beállítását. 
+Alapértelmezés szerint minden functions Host-példány egyetlen nyelvi munkavégző folyamattal rendelkezik. A [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) alkalmazás beállításával növelheti a munkavégző folyamatok számát a gazdagépen (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között. 
+
+A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez. 
 
 ## <a name="context"></a>Környezet
 
@@ -637,9 +641,9 @@ Győződjön meg arról, hogy a function. JSON fájlt is frissíti a beállítá
     ...
 ```
 
-Ezt a módszert a Chrome böngésző használja az engedélyezett Origins lista egyeztetéséhez. 
+Ezt a HTTP-metódust a böngészők használják az engedélyezett Origins lista egyeztetésére. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 

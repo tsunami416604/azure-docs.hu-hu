@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226606"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768962"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 
@@ -43,7 +43,7 @@ Hajtsa végre az itt található lépéseket a függvényalkalmazás létrehozá
 
 A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A Text Analytics API-t használja a monitorozott tweetek hangulatának megállapításához.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
@@ -129,7 +129,7 @@ Ezzel létrehozott egy olyan függvényt, amely kategorizálja a véleményponts
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása   
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. A Azure Portal kattintson a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombra.
 
 2. Kattintson a **Web** > **Logikai alkalmazás** elemre.
  
@@ -281,7 +281,7 @@ A logikai alkalmazás letiltásához kattintson az **Áttekintés**, majd a kép
 
 ![Függvénynaplók](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

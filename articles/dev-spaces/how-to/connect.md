@@ -5,12 +5,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan csatlakoztatható a fejlesztői gép egy AK-fürthöz az Azure dev Spaces használatával
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: c26d159d6f883e1c368b09a82bc53c621c70e281
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482243"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770679"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>A fejlesztői gép csatlakoztatása egy AKS-fürthöz (előzetes verzió)
 
@@ -242,7 +242,7 @@ Kattintson az Azure dev Spaces állapotsorra, és válassza a *diagnosztikai ada
 
 Ezen kívül megtalálhatja a diagnosztikai naplókat `Azure Dev Spaces` könyvtárban a [fejlesztői számítógép *temp* könyvtárában][azds-tmp-dir].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan használható az Azure dev Spaces és a GitHub-műveletek a lekéréses kérelemben szereplő módosítások tesztelésére közvetlenül az AK-ban, mielőtt a lekéréses kérelem beolvad a tárház fő ágában.
 
@@ -254,6 +254,6 @@ Ismerje meg, hogyan használható az Azure dev Spaces és a GitHub-műveletek a 
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [gh-actions]: github-actions.md
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-quickstart]: ../quickstart-team-development.md
 [vs-code]: https://code.visualstudio.com/download

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489211"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772312"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -32,8 +32,8 @@ A függőségi vizualizáció segítségével megismerheti a felmérni és átte
 
 A függőségi vizualizáció üzembe helyezésének két lehetősége van:
 
-- **Ügynök nélküli függőségi vizualizáció**: Ez a beállítás jelenleg előzetes verzióban érhető el. Nem szükséges ügynököket telepíteni a gépekre. 
-    - Úgy működik, hogy rögzíti a TCP-kapcsolatok adatait azokról a gépekről, amelyeken engedélyezve van. [Részletek](how-to-create-group-machine-dependencies-agentless.md).
+- **Ügynök nélküli függőségi vizualizáció**: Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMWare virtuális gépek esetében érhető el. Nem szükséges ügynököket telepíteni a gépekre. 
+    - Úgy működik, hogy rögzíti a TCP-kapcsolatok adatait azokról a gépekről, amelyeken engedélyezve van. [További információk](how-to-create-group-machine-dependencies-agentless.md).
 A függőségi felderítés elindítása után a készülék öt perces lekérdezési időköz alapján gyűjt adatokat a gépekről.
     - A rendszer a következő adatokat gyűjti össze:
         - TCP-kapcsolatok
@@ -93,6 +93,6 @@ További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.mi
 
 ## <a name="next-steps"></a>További lépések
 - [Gépek csoportosítása számítógép-függőségek használatával](how-to-create-group-machine-dependencies.md)
-- [További](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) információ a függőségi vizualizációval kapcsolatos gyakori kérdésekért.
+- [További](common-questions-discovery-assessment.md#what-is-dependency-visualization) információ a függőségi vizualizációval kapcsolatos gyakori kérdésekért.
 
 

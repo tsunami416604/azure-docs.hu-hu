@@ -1,5 +1,5 @@
 ---
-title: A nagy kapacitású áttekintése
+title: Azure SQL Database nagy kapacitású – áttekintés | Microsoft Docs
 description: Ez a cikk ismerteti a nagy kapacitású szolgáltatási rétegét a Azure SQL Database virtuális mag-alapú vásárlási modellben, és elmagyarázza, hogy miben különbözik a általános célú és a üzletileg kritikus szolgáltatási rétegtől.
 services: sql-database
 ms.service: sql-database
@@ -7,22 +7,22 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dimitri-furman
-ms.author: dfurman
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978628"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614927"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
 A Azure SQL Database a felhőalapú környezethez igazított SQL Server adatbázismotor-architektúrán alapul, hogy az infrastruktúra meghibásodása esetén is biztosítson 99,99%-os rendelkezésre állást. A Azure SQL Database három építészeti modellt használ:
 - Általános célú/standard 
--  Rugalmas méretezés
+-  Rugalmas skálázás
 -  Üzletileg kritikus/prémium
 
 A Azure SQL Database nagy kapacitású szolgáltatási szintje a legújabb szolgáltatási réteg a virtuális mag-alapú vásárlási modellben. Ez a szolgáltatási réteg egy rugalmasan méretezhető tárolási és számítási teljesítményi réteg, amely az Azure-architektúrát használja a általános célú és a vállalat számára elérhető korlátokon túlmenően a Azure SQL Database tárolási és számítási erőforrásainak méretezésére. Kritikus szolgáltatási szintek.
@@ -38,7 +38,7 @@ A Azure SQL Database nagy kapacitású szolgáltatási szintje a következő kie
 
 - Akár 100 TB-os adatbázis-méret támogatása
 - Szinte azonnali adatbázis-biztonsági másolatok (az Azure Blob Storage-ban tárolt fájl-Pillanatképek alapján), függetlenül a számítási erőforrásokra vonatkozó IO-hatás nélküli mérettől  
-- Gyors adatbázis-időponthoz tartozó visszaállítás (fájl-Pillanatképek alapján) percek alatt, nem pedig óra vagy nap (nem az adatművelet mérete)
+- Gyors adatbázis-visszaállítások (fájl-Pillanatképek alapján) percek és napok helyett (nem az adatműveletek mérete)
 - Nagyobb általános teljesítmény a nagyobb naplózási átviteli sebesség és a gyorsabb tranzakció-végrehajtási idő miatt, függetlenül az adatmennyiségtől
 - Gyors kibővítés – kiépíthető egy vagy több írásvédett csomópont az olvasási számítási feladat kiszervezéséhez és a meleg készenléti használatra
 - Gyors vertikális felskálázás – állandó időben, a számítási erőforrások vertikális felskálázásával nagy mennyiségű számítási feladathoz is alkalmazkodhat, és szükség esetén a számítási erőforrások méretezése nem szükséges.
@@ -70,9 +70,9 @@ A nagy kapacitású szolgáltatási szintje csak a [virtuális mag modellben](sq
 
   A nagy kapacitású számítási egységének díja replika. A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) árát a rendszer automatikusan beolvassa a skálázási replikákat. Alapértelmezés szerint egy elsődleges replikát és egy írásvédett replikát hozunk létre nagy kapacitású-adatbázisban.  A felhasználók a replikák teljes számát módosíthatják, beleértve az elsődleges 1-5-as értéket is.
 
-- **Tárolás**:
+- **Tárterület**:
 
-  A nagy kapacitású-adatbázis konfigurálásakor nem kell megadnia a maximális adatméretet. A rugalmas méretezés szintjén az adatbázis tárolási díjai a tényleges használat alapján lesznek kiszámlázva. A tárterületet a rendszer automatikusan 10 GB és 100 TB között osztja el a 10 GB és 40 GB közötti dinamikusan igazított növekményekben.  
+  A nagy kapacitású-adatbázis konfigurálásakor nem kell megadnia a maximális adatméretet. A nagy kapacitású szinten a tényleges használat alapján kell fizetnie az adatbázis tárolásához. A tárterületet a rendszer automatikusan 10 GB és 100 TB között osztja el a 10 GB és 40 GB közötti dinamikusan igazított növekményekben.  
 
 További információ a nagy kapacitású díjszabásáról: [Azure SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -82,11 +82,11 @@ Az egy helyen/folyamatban lévő összes adatkezelési funkciót központosító
 
 A következő ábra a nagy kapacitású-adatbázisok különböző típusait szemlélteti:
 
-![architektúra](./media/sql-database-hyperscale/hyperscale-architecture2.png)
+![architektúra](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 A nagy kapacitású-adatbázisok a következő különböző típusú összetevőket tartalmazzák:
 
-### <a name="compute"></a>Számítási szolgáltatások
+### <a name="compute"></a>Számítás
 
 A számítási csomópont az a hely, ahol a viszonyítási motor él, így minden nyelvi elem, lekérdezés feldolgozása és így tovább történik. A nagy kapacitású-adatbázissal folytatott összes felhasználói interakció ezen számítási csomópontokon keresztül történik. A számítási csomópontok SSD-alapú gyorsítótárral rendelkeznek (az előző ábrán megcímkézett RBPEX-rugalmasságú puffer-bővítmény), így minimálisra csökkenthető az adatoldalak lekéréséhez szükséges hálózati kör-átutazások száma. Létezik egy elsődleges számítási csomópont, amelyben az összes írási és olvasási feladat feldolgozásra kerül. Van egy vagy több olyan másodlagos számítási csomópont, amely gyors készenléti csomópontként működik feladatátvételi célokra, valamint írásvédett számítási csomópontként működik az olvasási feladatok kiszervezéséhez (ha ez a funkció szükséges).
 
@@ -98,13 +98,13 @@ A kiszolgálóoldali kiszolgálók egy kibővített tárolási motort jelképez�
 
 A naplózási szolgáltatás fogadja az elsődleges számítási replika naplófájljait, tartós gyorsítótárban tárolja azokat, és továbbítja a napló rekordjait a többi számítási replikához (a gyorsítótárak frissítéséhez), valamint a kapcsolódó kiszolgálóoldali kiszolgáló (ka) t, hogy az adatok frissíthetők legyenek. nincs. Így az elsődleges számítási replika összes adatváltozása a naplózási szolgáltatáson keresztül továbbítódik a másodlagos számítási replikák és a lapok kiszolgálójára. Végül a naplóbejegyzések a hosszú távú tárolásra kerülnek az Azure Storage-ban, ami gyakorlatilag végtelen tárolóhely. Ez a mechanizmus eltávolítja a gyakori naplózási csonkítás szükségességét. A log szolgáltatás helyi gyorsítótárral is rendelkezik a naplókhoz való hozzáférés felgyorsításához.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage tárterület
 
 Az Azure Storage egy adatbázis összes adatfájlját tartalmazza. Az oldal-kiszolgálók naprakészen tárolják az adatfájlokat az Azure Storage szolgáltatásban. Ez a tároló biztonsági mentési célokra, valamint az Azure-régiók közötti replikációra szolgál. A biztonsági mentések az adatfájlok tárolási pillanatképei használatával valósíthatók meg. A pillanatképeket használó visszaállítási műveletek gyorsak, függetlenül az adatok méretétől. Az adatok bármikor visszaállíthatók az adatbázis biztonsági másolatának megőrzési időszakán belül bármely időpontra.
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-A biztonsági mentések a fájlok pillanatkép-alapúak, ezért szinte azonnal elérhetők. A tárolási és a számítási elkülönítés lehetővé teszi a biztonsági mentési/visszaállítási művelet lenyomását a tárolási rétegre, hogy csökkentse az elsődleges számítási replika feldolgozási terhelését. Ennek eredményeképpen az adatbázis biztonsági mentése nem befolyásolja az elsődleges számítási csomópont teljesítményét; Hasonlóképpen, a visszaállítások a fájl-Pillanatképek visszavonásával is elvégezhető, és nem az adatműveletek mérete. A visszaállítás egy állandó idejű művelet, és akár több terabájtos adatbázis is visszaállítható óra vagy nap helyett percek alatt. Az új adatbázisok létrehozása egy meglévő biztonsági másolat visszaállításával is kihasználhatja ezt a funkciót: az adatbázis-másolatok létrehozása ugyanazon a logikai kiszolgálón belül, fejlesztési vagy tesztelési célból, akár terabájt méretű adatbázisok esetén is, percek alatt megvalósítható.
+A biztonsági mentések a fájlok pillanatkép-alapúak, ezért szinte azonnal elérhetők. A tárolási és a számítási elkülönítés lehetővé teszi a biztonsági mentési/visszaállítási művelet lenyomását a tárolási rétegre, hogy csökkentse az elsődleges számítási replika feldolgozási terhelését. Ennek eredményeképpen az adatbázis biztonsági mentése nem befolyásolja az elsődleges számítási csomópont teljesítményét; Hasonlóképpen, a visszaállítások a fájl-Pillanatképek visszavonásával is elvégezhető, és nem az adatműveletek mérete. A visszaállítás egy állandó idejű művelet, és akár több terabájtos adatbázis is visszaállítható óra vagy nap helyett percek alatt. Új adatbázisok létrehozása egy meglévő biztonsági másolat visszaállításával is kihasználhatja ezt a funkciót: adatbázis-másolatok létrehozása fejlesztési vagy tesztelési célokra, akár terabájt méretű adatbázisok esetén is, percek alatt megvalósítható.
 
 ## <a name="scale-and-performance-advantages"></a>Méretezési és teljesítménybeli előnyök
 
@@ -114,7 +114,7 @@ A további írásvédett számítási csomópontok gyors üzembe helyezésének 
 
 Nagy kapacitású-adatbázis hozható létre a [Azure Portal](https://portal.azure.com), a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) vagy a [parancssori](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)felület használatával. A nagy kapacitású-adatbázisok csak a [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)használatával érhetők el.
 
-A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. A kiadás és a szolgáltatás célját is meg kell adnia a `CREATE DATABASE` utasításban. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) .
+A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. A kiadás és a szolgáltatás célját is meg kell adnia a `CREATE DATABASE` utasításban. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) .
 
 ```sql
 -- Create a HyperScale Database
@@ -166,13 +166,13 @@ Ha egy Azure SQL Database nagy kapacitású ADATBÁZISát egy olyan régióba k�
 
 A Azure SQL Database nagy kapacitású szintje jelenleg a következő régiókban érhető el:
 
-- Ausztrália keleti régiója
+- Kelet-Ausztrália
 - Délkelet-Ausztrália
 - Dél-Brazília
 - Közép-Kanada
 - USA középső régiója
-- Kína 2. keleti régiója
-- Kína 2. északi régiója
+- Kelet-Kína 2
+- Észak-Kína 2
 - Kelet-Ázsia
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -180,41 +180,41 @@ A Azure SQL Database nagy kapacitású szintje jelenleg a következő régiókba
 - Kelet-Japán
 - Nyugat-Japán
 - Korea középső régiója
-- Dél-Korea
+- Korea déli régiója
 - USA északi középső régiója
 - Észak-Európa
 - Dél-Afrika északi régiója
 - USA déli középső régiója
 - Délkelet-Ázsia
-- Egyesült Királyság déli régiója
-- Egyesült Királyság nyugati régiója
+- Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
 - Nyugat-Európa
 - USA nyugati régiója
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 Ha olyan régióban szeretné létrehozni a nagy kapacitású-adatbázist, amely nem támogatottként van felsorolva, Azure Portal használatával küldhet bevezetési kérést. Dolgozunk a támogatott régiók listájának kibontásán, ezért kérjük, térjen vissza a legutóbbi régiók listájára.
 
 Nagy kapacitású-adatbázisok létrehozásának lehetősége a felsorolt régiókban:
 
-1. A Azure Portal menüben válassza a **Súgó + támogatás**lehetőséget, vagy keresse meg és válassza a **Súgó + támogatás** lehetőséget bármely oldalon.
+1. Navigáljon az [Azure Súgó és támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) paneljére
 
-2. Az [Azure Súgó és támogatás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)területén válassza az [**új támogatási kérelem**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)lehetőséget.
+2. Kattintson az [ **új támogatási kérelem** elemre.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-3. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+    ![Azure Súgó és támogatás panel](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+
+3. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták) lehetőséget.**
 
 4. Válassza ki az adatbázis (ok) létrehozásához használni kívánt előfizetést.
 
-5. A **kvóta típusa**beállításnál válassza az **SQL Database**lehetőséget.
+5. A **kvóta típusa**beállításnál válassza az **SQL Database** lehetőséget.
 
-    ![Azure Súgó és támogatás panel](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
+6. Kattintson a **Tovább gombra: megoldások**
 
-6. Kattintson a **Tovább gombra: megoldások**.
-
-7. Kattintson a **részletek megadása**lehetőségre.
+1. Kattintson a **részletek megadása** lehetőségre
 
     ![Probléma részletei](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Válassza ki **SQL Database kvóta típusát**: **egyéb kvóta-kérelem**.
+8. Válassza ki **SQL Database kvóta típusát**: **egyéb kvóta kérése**
 
 9. Töltse ki a következő sablont:
 
@@ -227,11 +227,11 @@ Nagy kapacitású-adatbázisok létrehozásának lehetősége a felsorolt régi�
     > A TB becsült száma 
     >
 
-10. Válassza a **Súlyosság C**elemet.
+10. Válassza a **C súlyosság** lehetőséget
 
 11. Válassza ki a megfelelő kapcsolattartási módszert, és adja meg a részleteket.
 
-12. Kattintson a **Mentés** és **Folytatás**gombra.
+12. Kattintson a **Mentés** és **Folytatás** gombra.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlátozások a GA-ban.  Aktívan dolgozunk azon, hogy minél több korlátozást távolítson el.
@@ -239,22 +239,22 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | Probléma | Leírás |
 | :---- | :--------- |
 | A logikai kiszolgáló biztonsági mentések ablaktáblája nem jeleníti meg a nagy kapacitású-adatbázisok szűrését az SQL Server rendszerből  | A nagy kapacitású külön módszert biztosít a biztonsági mentések kezeléséhez, így a hosszú távú megőrzési és időponthoz kötött biztonsági mentési adatmegőrzési beállítások nem érvényesek/érvénytelenítve vannak. Ennek megfelelően a nagy kapacitású-adatbázisok nem jelennek meg a biztonsági mentés kezelése ablaktáblán. |
-| Időponthoz kötött visszaállítás | Miután áttelepítette az adatbázist a nagy kapacitású szolgáltatási szintjére, a Migrálás előtti időpontban történő visszaállítás nem támogatott.|
+| Adott időpontnak megfelelő helyreállítás | Miután áttelepítette az adatbázist a nagy kapacitású szolgáltatási szintjére, a Migrálás előtti időpontban történő visszaállítás nem támogatott.|
 | Nem nagy kapacitású adatbázis visszaállítása nagy kapacitású és fordítva | A nagy kapacitású-adatbázisok nem állíthatók vissza nem nagy kapacitású adatbázisba, és nem állíthatók vissza egy nem nagy kapacitású adatbázis egy nagy kapacitású-adatbázisba.|
 | Ha egy adatbázis 1 TB-nál nagyobb adatfájllal rendelkezik, az áttelepítés meghiúsul | Bizonyos esetekben előfordulhat, hogy a probléma megoldásához a nagyméretű fájlokat 1 TB-nál kisebbre kell csökkenteni. Ha az áttelepítési folyamat során használt adatbázist telepít át, győződjön meg arról, hogy egyetlen fájl sem lesz nagyobb 1 TB-nál. Az adatbázisfájlok méretének meghatározásához használja az alábbi lekérdezést. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Felügyelt példány | Azure SQL Database felügyelt példány jelenleg nem támogatott a nagy kapacitású-adatbázisokban. |
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak SQL Database nagy kapacitású.|
 | A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Ha egy adatbázis át lett telepítve a nagy kapacitású-be, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a BACPAC-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik.|
-| Adatbázisok áttelepítése memóriában tárolt OLTP-objektumokkal | A nagy kapacitású csak a memóriában lévő OLTP-objektumtípusok egy részhalmazát támogatja, beleértve a memóriára optimalizált táblák típusát, a natív módon lefordított tárolt eljárásokat és a függvényeket. Ha azonban bármilyen memóriabeli OLTP-objektum szerepel az adatbázisban, a prémium szintű és üzletileg kritikus szolgáltatási szintről a nagy kapacitású való közvetlen áttelepítés nem támogatott. Az ilyen adatbázisok nagy kapacitású való áttelepítéséhez három lépés szükséges: (1) az összes memóriában lévő OLTP-objektum és azok függőségeinek eldobása. Az adatok tartós, memóriában optimalizált táblákban való megőrzéséhez konvertálja őket lemezes táblákba. (2) módosítsa az adatbázis szolgáltatási szintjét a nagy kapacitású értékre. (3) hozza létre újra a korábban eldobott objektumokat. A tartós és nem tartós, memóriára optimalizált táblák jelenleg nem támogatottak a nagy kapacitású-ben, és a lemezen kell maradniuk. A memóriára optimalizált tábla változói támogatottak. |
-| Változáskövetés | Change Tracking jelenleg nyilvános előzetes verzióban érhető el, és az új vagy meglévő nagy kapacitású-adatbázisokon engedélyezhető. |
-| Georeplikáció  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt. |
+| Adatbázisok áttelepítése állandó memóriában tárolt objektumokkal | A nagy kapacitású csak a nem állandó memóriabeli objektumokat támogatja (a táblák típusai, a natív SPs és a functions).  Az állandó memóriában lévő táblákat és egyéb objektumokat el kell dobni, és nem memóriában lévő objektumként kell újból létrehozni, mielőtt áttelepíti az adatbázist a nagy kapacitású szolgáltatási szintjére.|
+| Változások követése | Change Tracking jelenleg nyilvános előzetes verzióban érhető el, és az új vagy meglévő nagy kapacitású-adatbázisokon engedélyezhető. |
+| Földrajzi replikálás  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt. |
 | Adatbázis másolása | Az adatbázis másolása még nem használható új adatbázis létrehozására az Azure SQL-nagy kapacitású. |
 | TDE/AKV-integráció | A Azure Key Vault (általában saját kulcsú vagy BYOK) használatával történő transzparens adatbázis-titkosítás még nem támogatott Azure SQL Database nagy kapacitású, azonban a szolgáltatás által felügyelt kulcsokkal való TDE teljes mértékben támogatott. |
 |Intelligens adatbázis-funkciók | A "kényszerített terv" lehetőség kivételével az összes többi Automatikus hangolási beállítás még nem támogatott a nagy kapacitású: a beállítások engedélyezhetők, de nem lesznek javaslatok vagy műveletek. |
 | Adatbázis zsugorítása | A DBCC SHRINKDATABASE vagy DBCC SHRINKFILE jelenleg nem támogatott nagy kapacitású-adatbázisok esetén. |
 | Adatbázis integritásának ellenőrzése | A DBCC CHECKDB UTASÍTÁST jelenleg nem támogatott nagy kapacitású-adatbázisok esetén. A Azure SQL Database adatintegritás-kezelésével kapcsolatos részletekért tekintse meg a [Azure SQL Database adatok integritását](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) ismertető témakört. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A nagy kapacitású kapcsolatos gyakori [kérdésekért](sql-database-service-tier-hyperscale-faq.md)lásd: nagy kapacitású.
 - További információ a szolgáltatási szintekről: [szolgáltatási szintek](sql-database-service-tiers.md)
