@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8f77083ae0107ed9f9c5e3943cfcec25846ff087
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227202"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769353"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Az első PowerShell-függvény létrehozása az Azure-ban
 
@@ -28,7 +28,7 @@ A következő lépések támogatottak a macOS, a Windows és a Linux rendszerű 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 * A [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows) telepítése
 
@@ -48,7 +48,7 @@ A gyorsútmutató elvégzéséhez:
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
-A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében. 
+A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
 1. A Visual Studio Code-ban, válassza az Azure logót az **Azure: Functions** terület megjelenítéséhez, majd válassza a Create New Project (Új projekt létrehozása) ikont.
 

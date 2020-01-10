@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3d8d7c6d3c4e752480310c122bcb7db237b3022b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209413"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772108"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha `/etc/fstab`-bejegyzést hoz létre.
@@ -22,9 +22,9 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásának ajánlott m
 | | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5 + |
-| CentOS | 7+ |  7.5 + |
-| Debian | 8+ | 10+ |
+| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
+| CentOS | 7 + |  7.5 + |
+| Debian | 8 + | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
 
@@ -80,7 +80,7 @@ uname -r
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
     smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
-    fileHost=$(echo $fileHost | tr -d "/")
+    fileHost=$(echo $smbPath | tr -d "/")
 
     nc -zvw3 $fileHost 445
     ```
@@ -199,7 +199,7 @@ Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásához a 445-es po
 
 A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amelyet örökölt okok miatt `cifs`, egy új modul-paramétert (más néven a különböző külső dokumentációban *paramétert* ) tesz elérhetővé (más néven `disable_legacy_dialects`). Bár a Linux kernel 4,18-ben jelent meg, egyes gyártók backported ezt a változást az általuk támogatott régebbi kerneleken. A kényelmes használat érdekében a következő táblázat részletezi a modul paraméterének rendelkezésre állását a gyakori Linux-disztribúciók esetében.
 
-| Disztribúció | Az SMB 1 letiltása |
+| Terjesztés | Az SMB 1 letiltása |
 |--------------|-------------------|
 | Ubuntu 14.04 – 16.04 | Nem |
 | Ubuntu 18.04 | Igen |

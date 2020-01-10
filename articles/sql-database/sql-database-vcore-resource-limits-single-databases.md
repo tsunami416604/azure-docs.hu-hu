@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647849"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834981"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Az virtuális mag beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 
@@ -322,9 +322,10 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|333|
 |Tárhely típusa|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|23 040|
+|Maximális adatmennyiség IOPS *|12 800|
 |Maximális naplózási arány (MBps)|30|
 |Egyidejű feldolgozók maximális száma (kérelem)|3600|
+|Egyidejű bejelentkezések maximális száma|3600|
 |Egyidejű munkamenetek maximális száma|30 000|
 |Replikák száma|1|
 |Több – AZ|–|
@@ -448,21 +449,22 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 
 ### <a name="m-series-compute-generation-preview"></a>Az M-sorozat számítási generációja (előzetes verzió)
 
-|Számítási méret|GP_M_128|
+|Számítási méret|BC_M_128|
 |:--- | --: |
 |Számítási generáció|M sorozat|
 |Virtuális magok|128|
-|Memória (GB)|3767|
+|Memória (GB)|3767,1|
 |Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|481|
+|Memóriában tárolt OLTP-tároló (GB)|1768|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|2048|
 |TempDB maximális adatméret (GB)|4096|
 |Tárhely típusa|Helyi SSD|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|204 800|
-|Maximális naplózási arány (MBps)|192|
-|Egyidejű feldolgozók maximális száma (kérelem)|12800|
+|Maximális adatmennyiség IOPS *|160 000|
+|Maximális naplózási arány (MBps)|264|
+|Egyidejű feldolgozók maximális száma (kérelem)|12 800|
+|Egyidejű bejelentkezések maximális száma|12 800|
 |Egyidejű munkamenetek maximális száma|30000|
 |Replikák száma|4|
 |Több – AZ|Igen|

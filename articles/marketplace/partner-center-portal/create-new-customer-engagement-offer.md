@@ -7,13 +7,13 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: b3aefb22f5b58d673d099e6b2b609b89b88c35c7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/31/2019
+ms.openlocfilehash: 354bd8520977ee7533f7902255a7c8ecbab11e19
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825616"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779994"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Hozzon létre egy új Dynamics 365-et a Customer engagement & PowerApps ajánlathoz
 
@@ -212,7 +212,7 @@ Opcionálisan akár négy videót is hozzáadhat az ajánlat bemutatásához. Ez
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 A **rendelkezésre állás** lapon megadhatja, hol és hogyan teheti elérhetővé az ajánlatát.
 
@@ -350,7 +350,7 @@ A piactér **lapon található** **Marketplace listázási** lehetőség megjele
 
 - **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
 
-- **Videók: videók hozzáadása** (nem kötelező): a videókat feltöltheti a YouTube vagy a Vimeo weboldalára, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfél megtekintheti az információkat, így könnyebben megismerheti a tesztelési meghajtót, beleértve a következőket: az ajánlat funkcióinak sikeres használata és az előnyeiket kiemelő forgatókönyvek megismerése.
+- **Videók: videók hozzáadása** (nem kötelező): a videók feltölthetők a YouTube vagy a Vimeo webhelyre, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfelek megtekinthetik az információ lépéseit, hogy könnyebben megértsék a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát, valamint az előnyeiket kiemelő forgatókönyveket
   - **Név** (kötelező)
   - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
   - **Miniatűr (533 x 324px)** : a képfájlnak png formátumúnak kell lennie.
@@ -378,6 +378,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

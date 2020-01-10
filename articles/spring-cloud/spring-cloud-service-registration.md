@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 72327e116e498ce0f6881a5c585a08e56c8bf8c2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 1a45e744db36be651e770f7b5c7cc6df530f887d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038742"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772057"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>A Spring Cloud Services felderítése és regisztrálása
 
@@ -20,24 +20,7 @@ A Service Discovery kulcsfontosságú követelmény a Service-alapú architektú
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Alkalmazás regisztrálása a Spring Cloud Service Registry használatával
 
 Ahhoz, hogy az alkalmazás kezelni tudja a szolgáltatás regisztrációját és a felderítést a Spring Cloud Service beállításjegyzékével, számos függőséget fel kell venni az alkalmazás *Pom. XML* fájljába.
-
-A kezdéshez vegyen fel egy pillanatkép-tárházat a *Pom. XML* *adattár* szakaszába.
-
-```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-```
-
-## <a name="include-dependencies"></a>Függőségek belefoglalása
-
-A következő lépés a *Spring-Cloud-Starter-Netflix-Eureka-Client* és a *Spring-Cloud-Starter-Azure-Spring-Cloud-Client* és a *Pom. XML* közötti függőségek belefoglalása.
+Függőségek belefoglalása a *Spring-Cloud-Starter-Netflix-Eureka-Client* és *Spring-Cloud-Starter-Azure-Spring-Cloud-Client* és a *Pom. XML fájlra*
 
 ```xml
     <dependency>
@@ -47,7 +30,7 @@ A következő lépés a *Spring-Cloud-Starter-Netflix-Eureka-Client* és a *Spri
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.0</version>
     </dependency>
 ```
 

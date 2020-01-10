@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0cd6cbf21a392f68db707b9c0184320316d45ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 97df5c309a3bdbf5055d67f893e33ab1a0c3232a
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851026"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832763"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -23,7 +23,7 @@ A Azure Key Vault a következő problémák megoldásában nyújt segítséget:
 
 - **Titkos kódok kezelése** – Az Azure Key Vaulttal biztonságosan tárolhatók a jogkivonatok, jelszavak, tanúsítványok, API-kulcsok és egyéb titkos kulcsok, valamint szigorúan szabályozható az ezekhez való hozzáférés
 - **Kulcskezelés** – Az Azure Key Vault kulcskezelési megoldásként is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
-- **Tanúsítványkezelés** – Az Azure Key Vault egyben egy olyan szolgáltatás is, amellyel egyszerűen építhet ki, kezelhet és helyezhet üzembe az Azure-ral és a belső csatlakoztatott erőforrásokkal használható nyilvános és privát SSL- és TLS-tanúsítványokat. 
+- A **tanúsítványkezelő** – Azure Key Vault egy olyan szolgáltatás is, amely lehetővé teszi a nyilvános és magánhálózati Transport Layer Security/SSL (TLS/SSL) tanúsítványok egyszerű üzembe helyezését, kezelését és telepítését az Azure-ral és a belső csatlakoztatott erőforrásokkal való használatra. 
 - A **hardveres biztonsági modulok által támogatott titkos kulcsok tárolása** – a titkokat és a kulcsokat a szoftver vagy az FIPS 140-2 2. szintű ellenőrzött HSM védi.
 
 ## <a name="why-use-azure-key-vault"></a>Miért érdemes az Azure Key Vaultot használni?

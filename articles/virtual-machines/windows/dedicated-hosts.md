@@ -4,26 +4,23 @@ description: További információ arról, hogyan használhatók az Azure dedik�
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/25/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: cfcc8aeb3d1cc1f199b19abc16cc54db416a307e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033379"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833868"
 ---
-# <a name="preview-azure-dedicated-hosts"></a>Előzetes verzió: Azure dedikált gazdagépek
+# <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
 
 Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyek az adatközpontokban, erőforrásként vannak megadva. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
 
-[!INCLUDE [virtual-machines-common-dedicated-hosts-preview](../../../includes/virtual-machines-common-dedicated-hosts-preview.md)]
 
 [!INCLUDE [virtual-machines-common-dedicated-hosts](../../../includes/virtual-machines-common-dedicated-hosts.md)]
 

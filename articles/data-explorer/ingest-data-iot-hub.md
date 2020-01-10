@@ -1,28 +1,28 @@
 ---
 title: Adatok beolvasása IoT Hubból az Azure-ba Adatkezelő
 description: Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését az Azure Adatkezelőba IoT Hubból.
-author: oflipman
-ms.author: oflipman
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667411"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780283"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Adatok beolvasása IoT Hubból az Azure Adatkezelőba (előzetes verzió)
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-iot-hub.md)
+> * [Portál](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-iot-hub-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a IoT Hub, a big data streaming platform és a IoT betöltési szolgáltatás által betöltött adatok betöltését biztosítja.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a IoT Hub, a big data streaming platform és a IoT betöltési szolgáltatás által betöltött adatok betöltését biztosítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -103,6 +103,8 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
     > [!NOTE]
     > * Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
     > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="generate-sample-data-for-testing"></a>Mintaadatok készítése teszteléshez
 

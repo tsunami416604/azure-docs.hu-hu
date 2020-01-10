@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076989"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771478"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
-Az Azure standard Load Balancer támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyveit. Standard Load Balancer használatával optimalizálhatja a rendelkezésre állást a végpontok közötti forgatókönyvben az erőforrások zónákhoz igazításával és a zónák közötti elosztásával.  Tekintse át a rendelkezésre állási [zónákat](../availability-zones/az-overview.md) a rendelkezésre állási zónákra vonatkozó útmutatásért, mely régiókban jelenleg a rendelkezésre állási zónák és egyéb kapcsolódó fogalmak és termékek érhetők el. a rendelkezésre állási zónák és a standard Load Balancer együttes használata egy átfogó és rugalmas szolgáltatáskészlet, amely számos különböző forgatókönyvet képes létrehozni.  Tekintse át ezt a dokumentumot, hogy megértse ezeket a [fogalmakat](#concepts) és az alapvető forgatókönyv [kialakítására vonatkozó útmutatót](#design).
+Az Azure standard Load Balancer támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md) forgatókönyveit. Standard Load Balancer használatával optimalizálhatja a rendelkezésre állást a végpontok közötti forgatókönyvben az erőforrások zónákhoz igazításával és a zónák közötti elosztásával.  Tekintse át a rendelkezésre állási [zónákat](../availability-zones/az-overview.md) a rendelkezésre állási zónákra vonatkozó útmutatásért, mely régiókban jelenleg a rendelkezésre állási zónák és egyéb kapcsolódó fogalmak és termékek érhetők el. A rendelkezésre állási zónák és a standard Load Balancer együttes használata egy átfogó és rugalmas szolgáltatáskészlet, amely számos különböző forgatókönyvet képes létrehozni.  Tekintse át ezt a dokumentumot, hogy megértse ezeket a [fogalmakat](#concepts) és az alapvető forgatókönyv [kialakítására vonatkozó útmutatót](#design).
 
 >[!IMPORTANT]
 >Tekintse át [Availability Zones](../availability-zones/az-overview.md) kapcsolódó témaköröket, beleértve a régióra vonatkozó információkat is.
@@ -37,7 +37,7 @@ A rendelkezésre állási zónák kontextusában a Load Balanceri szabályok vis
 
 Mind a nyilvános, mind a belső Load Balancer támogatja a zóna-redundáns és a zónákra kiterjedő forgatókönyveket, és mindkettő képes a zónák közötti közvetlen forgalmat igény szerint (*több zóna terheléselosztása*). 
 
-### <a name="frontend"></a>Frontend
+### <a name="frontend"></a>Előtér
 
 A Load Balancer előtér olyan előtéri IP-konfiguráció, amely egy nyilvános IP-cím erőforrásra vagy egy virtuális hálózati erőforrás alhálózatán belüli magánhálózati IP-címére hivatkozik.  Ez az elosztott terhelésű végpontot képezi, ahol a szolgáltatás elérhető.
 
@@ -151,7 +151,7 @@ A zónák közötti terheléselosztás az Load Balancer képessége, hogy bárme
 
 Ügyelnie kell arra, hogy a forgatókönyvet olyan módon hozza létre, amely a rendelkezésre állási zónák fogalmát jelezte. Például garantálnia kell, hogy a virtuális gép üzembe helyezése egyetlen zónán vagy több zónán belül történjen, és a zóna-előtérben és a zónákhoz tartozó háttér-erőforrások ugyanazon zónához legyenek igazítva.  Ha a rendelkezésre állási zónákat csak a zónákhoz tartozó erőforrásokkal együtt szeretné megtekinteni, a forgatókönyv működni fog, de a rendelkezésre állási zónák tekintetében nem lehet tiszta meghibásodási mód. 
 
-### <a name="backend"></a>Backend
+### <a name="backend"></a>Háttérszolgáltatás
 
 A Load Balancer Virtual Machines-példányokkal működik.  Ezek lehetnek önálló, rendelkezésre állási csoportok vagy virtuálisgép-méretezési csoportok.  Az egyetlen virtuális hálózatban található virtuálisgép-példányok a háttér-készlet részét képezhetik, függetlenül attól, hogy az adott zóna számára garantált-e vagy sem, vagy hogy melyik zónában volt garantált.
 
@@ -214,7 +214,7 @@ Nincs általános útmutatás arra, hogy az egyik a szolgáltatás architektúr�
 
 - Míg az adatsík teljesen redundáns zónában van (kivéve, ha meg van adva a zónákhoz való hozzáférés), a vezérlési sík műveletei nem teljesen redundáns zónában vannak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Availability Zones](../availability-zones/az-overview.md)
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
 - Ismerje meg, hogyan oszthatja meg a [virtuális gépeket egy zónán belül egy olyan standard Load Balancer használatával,](load-balancer-standard-public-zonal-cli.md) amely egy zóna-előtérben található.

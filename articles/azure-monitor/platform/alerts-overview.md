@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396522"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830326"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -60,7 +60,7 @@ A riasztási szabályok legfontosabb attribútumai a következők:
 
 ## <a name="what-you-can-alert-on"></a>A riasztás bekapcsolása
 
-Az [adatforrások figyelése](../../azure-monitor/platform/data-sources-reference.md)című témakörben leírtak szerint riasztást kaphat a mérőszámokról és naplókról. Ezeket a következőkben ismertetjük a teljesség igénye nélkül:
+Az [adatforrások figyelése](../../azure-monitor/platform/data-sources.md)című témakörben leírtak szerint riasztást kaphat a mérőszámokról és naplókról. Ezeket a következőkben ismertetjük a teljesség igénye nélkül:
 - Metrika értékei
 - Naplóbeli keresési lekérdezések
 - Tevékenységnapló eseményei

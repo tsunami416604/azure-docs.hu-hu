@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767603"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
 Azure AD Connect a felhő-kiépítés egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálására szolgál.  Azure AD Connect szinkronizálás mellett is használható, és a következő előnyöket biztosítja:
@@ -61,6 +61,7 @@ Az alábbi táblázat összehasonlítja a Azure AD Connect és a Azure AD Connec
 | Visszaírási-támogatás (jelszavak, eszközök, csoportok) |● | |
 | Azure AD Domain Services támogatás|● | |
 | Hibrid Exchange-konfiguráció |● | |
+| Több mint 50 000 objektum támogatása AD-tartományban |● | |
 
 ## <a name="next-steps"></a>Következő lépések 
 

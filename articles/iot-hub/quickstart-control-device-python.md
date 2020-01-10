@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: b36e5d88c67a4aabf530aa8d945c17870e9c126b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892651"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778073"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Python)
 
@@ -28,10 +28,6 @@ Ez a rövid útmutató két előre megírt Python-alkalmazást használ:
 * Egy szimulálteszköz-alkalmazás, amely válaszol a háttéralkalmazásokból meghívott közvetlen metódusokra. A közvetlen metódusok meghívásának fogadásához ez az alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik.
 
 * Egy háttéralkalmazás, amely meghívja a közvetlen metódusokat a szimulált eszközre. A közvetlen metódus egy eszközre való meghívásához ez az alkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik.
-
-> [!IMPORTANT]
-> Ebben a cikkben a háttérbeli alkalmazás a Python v1 szolgáltatási ügyfelet használja, és az eszköz a Python v2-eszköz ügyfelét használja. A v1 szolgáltatási ügyfél az Azure IoT Python SDK GitHub-tárházának [v1-elavult ágában](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated) található. A v1 szolgáltatási ügyfél, az *Azure-iothub-Service-Client*pip-csomagja szigorú, platform-specifikus követelményekkel rendelkezik – beleértve a fejlesztői gépen telepített Python verzióját is. Ezeket a követelményeket az **Előfeltételek** szakaszban találja.
->
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,13 +43,7 @@ az extension add --name azure-cli-iot-ext
 
 Ha még nem tette meg, töltse le a Python-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip címről, és csomagolja ki a ZIP-archívumot.
 
-**Windows**esetén a v1 IoT hub Service Client pip csomag telepítéséhez a következő előfeltételek szükségesek:
-
-* Győződjön meg arról, hogy telepítve van a [Python **3.6. x** verziója](https://www.python.org/downloads/) .
-
-* Győződjön meg arról, hogy a [Visual C++ studióhoz telepítve van a Microsoft vizualizációs terjeszthető](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) csomag.
-
-A **nem Windows platformokon**a v1 SDK dokumentációjában tekintse meg a [Python pip Package Distribution táblát](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md#python-pip-package-distribution-table) . Győződjön meg arról, hogy a platformhoz megadott Python 3. x verzió és a kapcsolódó követelmények telepítve vannak a fejlesztői gépen. A Python 3. x verziójának telepítése a 2,7 helyett lehetővé teszi az aszinkron műveleteket a v2-eszköz ügyfelén, amely ebben a rövid útmutatóban is használatos.
+A [Python 3,7-es vagy újabb verziója](https://www.python.org/downloads/) telepítve van a fejlesztői gépen. A Python egyéb verziói esetében lásd: az SDK dokumentációjának [Azure IoT-eszközök funkciói](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) .
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -147,7 +137,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges kódtárak telepítéséhez:
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. Futtassa az alábbi parancsokat a helyi terminálablakban a háttéralkalmazás futtatásához:
@@ -163,10 +153,6 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
     A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
 
     ![Változás a szimulált ügyfélben](./media/quickstart-control-device-python/SimulatedDevice-2.png)
-
-    > [!NOTE]
-    > Ha a *iothub_service_client*importálásakor hibaüzenet jelenik meg, győződjön meg arról, hogy telepítette a Python pontos verzióját és a platformhoz az [előfeltételekben](#prerequisites)megadott egyéb kapcsolódó összetevőket. Ha az Előfeltételek ellenőrzése után még mindig hibaüzenetet kap, előfordulhat, hogy létre kell hoznia a szolgáltatás-ügyfelet a platformhoz. Ha szeretné megtudni, hogyan építheti ki az SDK-t a platformhoz, tekintse meg a [devbox telepítési utasításait](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) a v1 SDK dokumentációjában.
-    >
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

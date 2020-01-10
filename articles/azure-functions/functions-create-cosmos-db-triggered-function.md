@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 922babb4b9b80c91ea99062170cf224346df192a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230928"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769421"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
 
@@ -43,7 +43,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB-eseményindító létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -64,7 +64,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Name (Név)** | Alapértelmezett | Használja a sablonban javasolt alapértelmezett függvénynevet.|
-    | **Azure Cosmos DB-fiók kapcsolata** | Új beállítás | Válassza ki az **Új** gombot, majd válassza ki az **előfizetését**, a korábban létrehozott **adatbázisfiókot**, és a **Kiválasztás** lehetőséget. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást használja a kötés, hogy kapcsolódjon az adatbázishoz. |
+    | **Azure Cosmos DB-fiók kapcsolata** | Új beállítás | Válassza ki az **Új** gombot, majd válassza ki az **előfizetését**, a korábban létrehozott **adatbázisfiókot**, és a **Kiválasztás** lehetőséget. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást a kötés használja az adatbázishoz való kapcsolódáshoz. |
     | **Gyűjtemény neve** | Elemek | A monitorozni kívánt gyűjtemény neve. |
     | **A bérletek gyűjteményének létrehozása, ha az nem létezik** | Bejelölve | A gyűjtemény még nem létezik, hozza létre. |
     | **Adatbázis neve** | Feladatok | A monitorozni kívánt gyűjteményt tartalmazó adatbázis neve. |
@@ -89,7 +89,7 @@ Ezután csatlakozzon Azure Cosmos DB-fiókjához, és hozza létre az `Items` gy
 
 1. A **Gyűjtemények** területen válassza a **taskDatabase**, majd az **Új gyűjtemény** elemet.
 
-    ![Gyűjtemény létrehozása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Katalógus létrehozása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
 
 1. A **Gyűjtemény hozzáadása** területen használja az ábra alatti táblázatban látható beállításokat. 
 

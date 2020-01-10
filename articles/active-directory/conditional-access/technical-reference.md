@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893463"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768148"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory feltételes hozzáférési beállítások ismertetése
 
@@ -29,8 +29,6 @@ Ez a cikk a feltételes hozzáférési szabályzat következő konfigurációs l
 - Ügyfélalkalmazások feltétele
 - Jóváhagyott ügyfélalkalmazás-követelmény
 
-Ha nem az Ön által keresett információ, akkor a cikk végén hagyjon megjegyzést.
-
 ## <a name="cloud-apps-assignments"></a>Cloud apps-hozzárendelések
 
 A feltételes hozzáférési szabályzatokkal szabályozhatja, hogy a felhasználók hogyan férhessenek hozzá a [felhőalapú alkalmazásokhoz](conditions.md#cloud-apps-and-actions). Feltételes hozzáférési szabályzat konfigurálásakor ki kell választania legalább egy felhőalapú alkalmazást. 
@@ -41,6 +39,7 @@ A feltételes hozzáférési szabályzatokkal szabályozhatja, hogy a felhaszná
 
 Feltételes hozzáférési szabályzatot rendelhet a Microsoft következő felhőalapú alkalmazásaihoz:
 
+- Office 365 (előzetes verzió)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL Database és adattárház – [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -65,14 +64,30 @@ Feltételes hozzáférési szabályzatot rendelhet a Microsoft következő felh�
 - Office 365 Exchange Online
 - Office 365 SharePoint Online
 - Office 365 Yammer
-- Office-ás
+- Office Delve
 - Office-Sway
-- Outlook-csoportok
-- Power BI szolgáltatás
+- Outlook Groups
+- A Power BI szolgáltatás
 - Project Online
 - Skype Vállalati online verzió
 - Virtuális magánhálózat (VPN)
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365 (előzetes verzió)
+
+Az Office 365 olyan felhőalapú hatékonyságnövelő és együttműködési szolgáltatásokat nyújt, mint például az Exchange, a SharePoint és a Microsoft teams. Az Office 365 Cloud Services szorosan integrált a zökkenőmentes és együttműködő élmény biztosítása érdekében. Az Office 365 (előzetes verzió) alkalmazás lehetővé teszi, hogy egyszerre lehessen megcélozni ezeket a szolgáltatásokat. Javasoljuk, hogy az új Office 365 (előzetes verzió) alkalmazást használja az egyes felhőalapú alkalmazások, például az Office 365 Exchange Online és az Office 365 SharePoint Online megcélzása helyett, hogy elkerülje a nem konzisztens házirendek és szolgáltatási függőségek miatt felmerülő problémákat.
+
+Az Office 365 (előzetes verzió) ügyfélalkalmazás részét képező legfontosabb alkalmazások:
+
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Office portál
+- Microsoft Forms
+- Microsoft Power automatizálás
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>Egyéb alkalmazások
 
@@ -142,7 +157,7 @@ A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza l�
 
 |    |    |
 | --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Útvonal | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Név | 1 |
 | Type (Típus) | REG_SZ (karakterlánc) |
 | Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS\://clients2.google.com/service/update2/crx |
@@ -151,7 +166,7 @@ A **Windows 8,1 és 7 rendszerhez**készült Chrome-támogatáshoz hozza létre 
 
 |    |    |
 | --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Útvonal | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Név | 1 |
 | Type (Típus) | REG_SZ (karakterlánc) |
 | Adatok | {"minta": "https://device.login.microsoftonline.com", "filter": {"kiállító": {"CN": "MS-Organization-Access"}}} |
@@ -213,7 +228,7 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 - Microsoft-számlázás
 - Microsoft Kaizala
 - Microsoft Launcher
-- Microsoft-OneDrive
+- Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
@@ -221,7 +236,7 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 - Microsoft Power BI
 - Microsoft PowerPoint
 - Microsoft SharePoint
-- Microsoft Skype vállalati verzió
+- Microsoft Skype Vállalati verzió
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -235,6 +250,7 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 - A jóváhagyott ügyfélalkalmazások támogatják az Intune Mobile Application Management szolgáltatást.
 - A **jóváhagyott ügyfélalkalmazás megkövetelése** :
    - A csak az iOS és az Android for [Device platform feltételeit](#device-platform-condition)támogatja.
+- A feltételes hozzáférés nem tekintheti meg a Microsoft Edge-t InPrivate módban egy jóváhagyott ügyfélalkalmazás.
 
 ## <a name="app-protection-policy-requirement"></a>Alkalmazás-védelmi szabályzat követelménye 
 
@@ -245,7 +261,7 @@ A feltételes hozzáférési házirendben megkövetelheti, hogy az alkalmazás v
 Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 - Microsoft-Cortana
-- Microsoft-OneDrive
+- Microsoft OneDrive
 - Microsoft Outlook
 - Microsoft Planner
 

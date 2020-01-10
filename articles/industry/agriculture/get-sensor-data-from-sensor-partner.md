@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851298"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777784"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -18,16 +18,16 @@ Az Azure FarmBeats segítségével a IoT-eszközökről és-érzékelőkről át
 
   ![FarmBeats-partnerek](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Az eszköz adatainak az Azure FarmBeats való integrálásával a farmon üzembe helyezett IoT-érzékelőkből az adatközpontba helyezheti a terepi adatait. A rendelkezésre álló, a FarmBeats-gyorsító használatával megjeleníthető adatelemek. Az adatok a FarmBeats használatával adatfúziós és gépi tanulási/mesterséges intelligencia (ML/AI) modellek létrehozásához használhatók.
+Az eszközök Azure FarmBeats-vel való integrálásával a farmon üzembe helyezett IoT-érzékelőkből származó adatokkal szerezheti be a datahub. A rendelkezésre álló, a FarmBeats-gyorsító használatával megjeleníthető adatelemek. Az adatok a FarmBeats használatával adatfúziós és gépi tanulási/mesterséges intelligencia (ML/AI) modellek létrehozásához használhatók.
 
 Az érzékelő adatfolyamának elindításához a következőket kell biztosítani:
 
 -  Telepítette a FarmBeats az Azure Marketplace-en.
 -  Ön dönti el, hogy milyen érzékelőkkel és eszközökkel kívánja telepíteni a farmon.
--  Ha a talaj nedvességtartalmának érzékelőit kívánja használni, használja a FarmBeats-szennyeződési érzékelő elhelyezési térképét, hogy javaslatot tegyen az érzékelők számára, és hogy pontosan hol kell elhelyezni azokat. További információ: Maps- [Létrehozás](generate-maps.md).
+-  Ha a talaj nedvességtartalmának érzékelőit kívánja használni, használja a FarmBeats-szennyeződési érzékelő elhelyezési térképét, hogy javaslatot tegyen az érzékelők számára, és hogy pontosan hol kell elhelyezni azokat. További információ: Maps- [Létrehozás](generate-maps-in-azure-farmbeats.md).
 - A farmján megvásárolhatja és üzembe helyezheti eszközeit és érzékelőit. Győződjön meg arról, hogy az eszköz partnereinek megoldásán keresztül éri el az érzékelő adatait.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Eszköz-integráció engedélyezése a FarmBeats 
+## <a name="enable-device-integration-with-farmbeats"></a>Eszköz-integráció engedélyezése a FarmBeats
 
 Az érzékelők adatközvetítésének megkezdése után megkezdheti az adatgyűjtési folyamat beszerzését a FarmBeats-rendszeren. Adja meg a következő információkat az eszköz szolgáltatójának az FarmBeats való integráció engedélyezéséhez:
 
@@ -41,28 +41,36 @@ Az előző adatokat a rendszerintegrátor kapja meg. Az eszközök integrációj
 
 A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt Azure Cloud Shellról futtatja. Kövesse az alábbi lépéseket.
 
-1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscript), és bontsa ki a helyi meghajtóra. A zip-fájlban két fájl található.
-2. Jelentkezzen be https://portal.azure.com/, és nyissa meg Cloud Shell. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
+1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscriptv2), és bontsa ki a helyi meghajtóra. Egy fájl lesz a zip-fájlban.
+2. Jelentkezzen be https://portal.azure.com/, és lépjen a Azure Active Directory-> alkalmazás regisztrációi
+
+3. Kattintson a FarmBeats-telepítés részeként létrehozott alkalmazás-regisztrációra. Ez a neve megegyezik a FarmBeats Datahub.
+
+4. Kattintson az "API közzététele" elemre, > kattintson az "ügyfélalkalmazás hozzáadása" elemre, és írja be a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az "engedélyezés hatóköre" lehetőséget. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához.
+
+5. Nyissa meg a Cloud Shellt. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
     ![Azure Portal eszköztár](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
+6. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
 
     ![PowerShell eszköztár-beállítás](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Töltse fel a két fájlt az 1. lépésben az Cloud Shell-példányban.
+7. Töltse fel a fájlt az 1. lépésben az Cloud Shell-példányban.
 
     ![Eszköztár feltöltése gomb](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Nyissa meg azt a könyvtárat, ahová a fájlokat feltöltötte. Alapértelmezés szerint a rendszer feltölti őket a kezdőkönyvtár alá a Felhasználónév alatt.
-6. Futtassa a következő parancsfájlt:
+8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
+
+9. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
 
     ```azurepowershell-interactive 
 
-    ./generateCredentials.ps1   
+    ./generatePartnerCredentials.ps1   
 
     ```
-7. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét. A EventHub kapcsolati karakterlánc a hencegés API-válaszának részeként érhető el.
+
+10. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Az eszközök adatainak integrálása a generált hitelesítő adatok használatával
 
@@ -155,4 +163,4 @@ Kövesse az alábbi lépéseket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most már rendelkezik érzékelővel az Azure FarmBeats-példányba. Most megismerheti, hogyan [hozhatja](generate-maps.md#generate-maps) ki a térképeket a farmokhoz.
+Most már rendelkezik érzékelővel az Azure FarmBeats-példányba. Most megismerheti, hogyan [hozhatja](generate-maps-in-azure-farmbeats.md#generate-maps) ki a térképeket a farmokhoz.

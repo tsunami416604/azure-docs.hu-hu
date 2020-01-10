@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8a85dd3d3d80a8c3988c7653eb74f403fdc54cd4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639483"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772499"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos alkalmazás-beállítások biztonságos mentése webalkalmazásokhoz
 
@@ -41,7 +41,8 @@ Ha projektet fejleszt, és a forráskódot biztonságosan kell megosztania, hasz
 
     ![Azure Key Vault létrehozása](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. A Key Vaulthoz való hozzáférés biztosítása Önnek és a csoport tagjainak. Ha nagyméretű csapattal rendelkezik, létrehozhat egy [Azure Active Directory csoportot](../active-directory/active-directory-groups-create-azure-portal.md) , és hozzáadhatja a biztonsági csoportnak a Key Vaulthoz való hozzáférését. A *titkos engedélyek* legördülő menüben tekintse meg a beolvasás és *Listázás* a *titkos felügyeleti műveletekben*részt.
+2. A Key Vaulthoz való hozzáférés biztosítása Önnek és a csoport tagjainak. Ha nagyméretű csapattal rendelkezik, létrehozhat egy [Azure Active Directory csoportot](../active-directory/active-directory-groups-create-azure-portal.md) , és hozzáadhatja a biztonsági csoportnak a Key Vaulthoz való hozzáférését. A *titkos engedélyek* legördülő menüben tekintse meg a *beolvasás* és *Listázás* a *titkos felügyeleti műveletekben*részt.
+Ha már létrehozta a webalkalmazást, adja meg a webalkalmazáshoz való hozzáférést a Key Vault számára, hogy az alkalmazás beállításaiban és fájljaiban ne tárolja titkos konfigurációját. Keresse meg a webalkalmazás nevét, és adja hozzá a felhasználók hozzáférésének megadásához.
 
     ![Key Vault hozzáférési szabályzat hozzáadása](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,39 +50,43 @@ Ha projektet fejleszt, és a forráskódot biztonságosan kell megosztania, hasz
 
     ![Key Vault titkos kód hozzáadása](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > A Visual Studio 2017 V 15,6 előtt javasoljuk, hogy telepítse a Visual studióhoz készült Azure Services-alapú hitelesítési bővítményt. Ez azonban már elavult, mivel a funkció integrálva van a Visual Studióban. Ezért ha a Visual Studio 2017 egy régebbi verzióját használja, javasoljuk, hogy frissítsen legalább VS 2017 15,6-ra vagy akár úgy, hogy ezt a funkciót natív módon használhassa, és a Key-vaultot a Visual Studio bejelentkezési identitásának használatával is elérheti.
     >
- 
+
 4. Adja hozzá a következő NuGet-csomagokat a projekthez:
 
     ```
+    Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
+    Microsoft.Extensions.Configuration.AzureKeyVault
     ```
 5. Adja hozzá a következő kódot a Program.cs fájlhoz:
 
     ```csharp
-    public static IWebHost BuildWebHost(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((ctx, builder) =>
-            {
-                var keyVaultEndpoint = GetKeyVaultEndpoint();
-                if (!string.IsNullOrEmpty(keyVaultEndpoint))
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((ctx, builder) =>
                 {
-                    var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                    var keyVaultClient = new KeyVaultClient(
-                        new KeyVaultClient.AuthenticationCallback(
-                            azureServiceTokenProvider.KeyVaultTokenCallback));
-                            builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                        }
-                    })
-                    .UseStartup<Startup>()
-                    .Build();
+                    var keyVaultEndpoint = GetKeyVaultEndpoint();
+                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                    {
+                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        var keyVaultClient = new KeyVaultClient(
+                            new KeyVaultClient.AuthenticationCallback(
+                                azureServiceTokenProvider.KeyVaultTokenCallback));
+                        builder.AddAzureKeyVault(
+                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                    }
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Adja hozzá a Key Vault URL-címét a launchsettings. JSON fájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kódban van definiálva.
+6. Adja hozzá a Key Vault URL-címét a launchsettings. JSON fájlhoz. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kódban van meghatározva.
 
     ![Key Vault URL-cím hozzáadása projekt környezeti változóként](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894423"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834677"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure standard Load Balancer áttekintése
 
@@ -183,14 +183,6 @@ Az SKU-ket nem változtathatók meg. Kövesse az ebben a szakaszban található 
 
 4. Csatolja az összes VM-példányt az új szabványos SKU-erőforrásokhoz.
 
-### <a name="migrate-from-standard-to-basic-sku"></a>Migrálás a standard és az alapszintű SKU között
-
-1. Hozzon létre egy új alapszintű erőforrást (szükség szerint Load Balancer és nyilvános IP-címek). Hozza létre újra a szabályokat és a mintavételi definíciókat.  Módosítsa a HTTPS-mintavételt TCP-mintavételi értékre 443/TCP-re. 
-
-2. Távolítsa el a szabványos SKU-erőforrásokat (Load Balancer és a nyilvános IP-címeket) az összes virtuálisgép-példányból. Ügyeljen arra, hogy egy rendelkezésre állási csoport összes virtuálisgép-példányát is eltávolítsa.
-
-3. Csatolja az összes VM-példányt az új alapszintű SKU-erőforrásokhoz.
-
 >[!IMPORTANT]
 >
 >Az alapszintű és a standard SKU-ra vonatkozó korlátozások vannak érvényben.
@@ -203,18 +195,18 @@ Az SKU-ket nem változtathatók meg. Kövesse az ebben a szakaszban található 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A standard Load Balancer jelenleg minden nyilvános Felhőbeli régióban elérhető.
+Standard Load Balancer jelenleg minden Azure-régióban elérhető.
 
-## <a name="sla"></a>Szolgáltatási szerződés
+## <a name="sla"></a>Szolgáltatási szerződés 
 
-A standard Load Balancer 99,99%-os SLA-val érhető el.  A részletekért tekintse át a [standard Load BALANCER SLA](https://aka.ms/lbsla) -t.
+A standard Load Balancer 99,99%-os SLA-val érhető el.  A részletekért tekintse át a [standard Load BALANCER SLA](https://aka.ms/lbsla) -t. 
 
-## <a name="pricing"></a>Díjszabás
+## <a name="pricing"></a>Díjszabás 
 
-Standard Load Balancer használat díjat számítunk fel.
+Standard Load Balancer használat díjat számítunk fel. 
 
-- Konfigurált terheléselosztási és kimenő szabályok száma (a bejövő NAT-szabályok nem számítanak bele a szabályok teljes számára)
-- A bejövő és kimenő adatmennyiség, a szabálytól függetlenül. 
+- Konfigurált terheléselosztási és kimenő szabályok száma (a bejövő NAT-szabályok nem számítanak bele a szabályok teljes számára) 
+- A bejövő és kimenő adatmennyiség, a szabálytól függetlenül.
 
 A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](https://azure.microsoft.com/pricing/details/load-balancer/) ismertető oldalon talál további információt.
 
@@ -224,15 +216,15 @@ A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](http
 - Egy önálló virtuálisgép-erőforrás, rendelkezésre állási készlet erőforrás vagy virtuálisgép-méretezési csoport erőforrása hivatkozhat egyetlen SKU-ra, soha nem mindkettőre.
 - Egy Load Balancer szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a hozzájuk kapcsolódó háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
 - Az [előfizetési műveletek](../azure-resource-manager/resource-group-move-resources.md) nem támogatottak a standard SKU LB és a pip-erőforrások esetében.
-- A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök csak akkor érhetők el, ha csak belső standard Load Balancer van használatban, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkciójának mellékhatása. Ezt nem kell felhasználnia, mert a saját maga vagy a mögöttes platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a [kimenő kapcsolatot](load-balancer-outbound-connections.md) explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges.
+- A VNet és más Microsoft-platformokat nem tartalmazó webes feldolgozói szerepkörök elérhetők a csak belső standard Load Balancer mögötti példányokból, mivel a VNet szolgáltatások és egyéb platform-szolgáltatások funkcióinak mellékhatásai is hatással lehetnek. Ezt nem kell felhasználnia, mert a saját maga vagy a mögöttes platform értesítés nélkül változhat. Mindig feltételezni kell, hogy a [kimenő kapcsolatot](load-balancer-outbound-connections.md) explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szükséges.
 - A Load Balancer egy TCP- és UDP-termék az adott IP-protokollok terheléselosztásához és porttovábbításához.  A TCP és az UDP támogatja a terheléselosztási szabályokat és a bejövő NAT-szabályokat, de egyéb IP-protokollok (mint például az ICMP) nem támogatják őket. A Load Balancer nem szakít meg folyamatokat, nem válaszol rájuk, és semmilyen egyéb módon nem lép kapcsolatba egy UDP- vagy TCP-folyamat adatcsomagjával. Nem egy proxy. Az előtérhöz való csatlakozás sikeres ellenőrzéséhez a terheléselosztásban vagy a bejövő NAT-szabályban (TCP vagy UDP) használt protokollnak kell futnia, _és_ legalább az egyik virtuális gépnek választ kell adnia az ügyfél számára, hogy megtekintse az előtértől kapott választ.  Nem érkezett sávon kívüli válasz a Load Balancer előtérből azt jelzi, hogy egyetlen virtuális gép sem tudott válaszolni.  Nem lehet kommunikálni Load Balancer előtérrel anélkül, hogy a virtuális gép válaszolni tudjon.  Ez vonatkozik a kimenő kapcsolatokra is, ahol a [porthelyettesítő SNAT](load-balancer-outbound-connections.md#snat) csak a TCP-hez és UDP-hez támogatott – bármely más IP-protokoll, többek között az ICMP is sikertelen lesz.  A mérsékléshez rendeljen hozzá egy példányszintű nyilvános IP-címet.
 - A belső terheléselosztási szolgáltatásokkal ellentétben, amelyek [kimenő kapcsolatokat](load-balancer-outbound-connections.md) biztosítanak a virtuális hálózaton belüli magánhálózati IP-címekről a nyilvános IP-címekre való áttéréskor, a belső terheléselosztó nem fordítja le a kimenő kapcsolatot a belső Load Balancer előtér-hálózatával, mivel mindkettő a magánhálózati IP-címtartomány részét képezi.  Ezzel elkerülhető, hogy a SNAT kimerülése az egyedi belső IP-címtartomány belsejében történjen, ahol a fordítás nem szükséges.  Ennek mellékhatása az, hogy ha a háttér-készletben lévő virtuális gépről érkező kimenő forgalom egy olyan belső Load Balancer előtér-végpontját kísérli meg, amelyben a készlet található, _és_ az önmagához van rendelve, a folyamat mindkét lába nem egyezik, és a folyamat sikertelen lesz.  Ha a folyamat nem adott vissza ugyanarra a virtuális gépre a háttér-készletben, amely létrehozta az előtér-folyamatot, a folyamat sikeres lesz.   Ha a folyamat magához a rendszerhez kapcsolódik, a kimenő folyamat úgy tűnik, hogy a virtuális gépről a kezelőfelületről származik, és úgy tűnik, hogy a megfelelő bejövő folyamat a virtuális gépről származik. A vendég operációs rendszer szempontjából ugyanazon folyamat bejövő és kimenő részei nem egyeznek a virtuális gépen belül. A TCP-verem nem fogja ugyanazon folyam részeiként felismerni a folyamat két felét, mivel a forrás és a cél nem egyezik.  Ha a folyamat a háttérbeli készlet bármely más virtuális gépe felé mutat, a folyamat felei megegyeznek, és a virtuális gép sikeresen tud válaszolni a folyamatra.  A forgatókönyv tünete átmeneti kapcsolati időtúllépés. A forgatókönyv megbízható megvalósításának számos gyakori megkerülő megoldása van (a háttér-készletből a háttér-készletekből származó, a belső Load Balancer előtér-környezetből származó folyamatokat), amelyek a belső Load Balancer vagy a [DSR-stílus szabályainak használatával](load-balancer-multivip-overview.md)vagy egy külső gyártótól származó proxy beszúrását is magukban foglalják.  Habár a mérsékléshez használható nyilvános Load Balancer, a létrejövő forgatókönyvnél valószínű lesz az [SNAT elfogyása](load-balancer-outbound-connections.md#snat), és ez körültekintő felügyelet nélkül inkább kerülendő.
 
 ## <a name="next-steps"></a>Következő lépések
 
+- További információ a [Azure Load Balancerról](load-balancer-overview.md).
 - Tudnivalók a [standard Load Balancer és a Availability Zones](load-balancer-standard-availability-zones.md)használatáról.
 - Tudnivalók az [állapot](load-balancer-custom-probe-overview.md)-mintavételekről.
-- További információ a [Availability Zonesról](../availability-zones/az-overview.md).
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
 - Ismerje meg a [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) [-diagnosztika támogatott többdimenziós mérőszámait](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) .
 - Tudnivalók a [Kimenő kapcsolatok Load Balancer](load-balancer-outbound-connections.md)használatáról.
@@ -240,8 +232,4 @@ A Standard Load Balancer díjszabásáról a [Load Balancer díjszabását](http
 - További információ [a TCP alaphelyzetbe állításáról üresjáratban](load-balancer-tcp-reset.md).
 - További tudnivalók a HA-portok terheléselosztási [szabályaival standard Load Balancer](load-balancer-ha-ports-overview.md).
 - Ismerje meg, hogyan használhatja [a Load Balancert több előtér-felülettel](load-balancer-multivip-overview.md).
-- További információ a [virtuális hálózatokról](../virtual-network/virtual-networks-overview.md).
 - További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
-- További információ a [VNet szolgáltatási végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md).
-- Ismerje meg az Azure egyéb fontos [hálózati funkcióit](../networking/networking-overview.md) .
-- További információ a [Load Balancerról](load-balancer-overview.md).

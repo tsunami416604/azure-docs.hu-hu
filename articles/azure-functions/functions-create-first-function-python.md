@@ -1,15 +1,15 @@
 ---
 title: HTTP által aktivált Python-függvény létrehozása az Azure-ban
-description: Útmutató az első Python-függvény létrehozása az Azure-ban az Azure Functions Core Tools és az Azure CLI használatával.
+description: Ismerje meg, hogyan hozhatja létre az első Python-függvényt az Azure-ban a Azure Functions Core Tools és az Azure CLI használatával.
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227190"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769336"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Gyors útmutató: HTTP által aktivált Python-függvény létrehozása az Azure-ban
 
@@ -33,7 +33,7 @@ A Kezdés előtt a következőket kell tennie:
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-and-activate-a-virtual-environment"></a>Hozzon létre, és aktiválja a virtuális környezet
+## <a name="create-and-activate-a-virtual-environment"></a>Virtuális környezet létrehozása és aktiválása
 
 Python 3,7-környezetet kell használnia a Python-függvények helyi fejlesztéséhez. Futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához.
 
@@ -122,9 +122,9 @@ Az alkalmazás üzembe helyezése előtt létre kell hoznia néhány Azure-erőf
 
 ## <a name="create-a-function-app-in-azure"></a>Function-alkalmazás létrehozása az Azure-ban
 
-A Function alkalmazás egy környezetet biztosít a függvény kódjának végrehajtásához. Lehetővé teszi, hogy egyszerűbb felügyelete, üzembe helyezéséhez és erőforrás-megosztás logikai egységbe csoportosítsa a függvényeket. 
+A Function alkalmazás egy környezetet biztosít a függvény kódjának végrehajtásához. Lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
-Futtassa a következő parancsot. Cserélje le a `<APP_NAME>`t egy egyedi Function app-névvel. Cserélje le a `<STORAGE_NAME>`t egy Storage-fiók nevére. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, ezért az Azure összes alkalmazásában csak egyszer használhatja.
+Futtassa az alábbi parancsot. Cserélje le a `<APP_NAME>`t egy egyedi Function app-névvel. Cserélje le a `<STORAGE_NAME>`t egy Storage-fiók nevére. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, ezért az Azure összes alkalmazásában csak egyszer használhatja.
 
 > [!NOTE]
 > Nem futtathat Linux-és Windows-alkalmazásokat ugyanabban az erőforráscsoporthoz. Ha van egy `myResourceGroup` nevű meglévő erőforráscsoport egy Windows-függvény alkalmazással vagy webalkalmazással, egy másik erőforráscsoportot kell használnia.
@@ -144,10 +144,10 @@ Most már készen áll a helyi functions-projekt közzétételére az Azure-beli
 Miután létrehozta a Function alkalmazást az Azure-ban, használhatja a functions [Azure functionapp publish](functions-run-local.md#project-file-deployment) Core Tools parancsot a projekt kódjának az Azure-ba történő üzembe helyezéséhez. Ebben a példában a `<APP_NAME>` helyére írja be az alkalmazás nevét.
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-A `--build remote` lehetőség a Python-projektet az Azure-ban hozza létre távolról a központi telepítési csomagban található fájlokból, ami ajánlott. 
+A Python-projekt az Azure-ban a központi telepítési csomagban található fájlokból távolról épül fel. 
 
 A következő üzenethez hasonló kimenet jelenik meg. Itt csonkolt, így jobban áttekinthető:
 

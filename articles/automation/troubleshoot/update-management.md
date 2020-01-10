@@ -1,6 +1,6 @@
 ---
-title: Hibák elhárítása Update Management
-description: Ismerje meg, hogyan lehet elhárítani a Update Managementével kapcsolatos problémákat.
+title: Az Azure Update Management hibáinak elhárítása
+description: Útmutató az Azure-beli Update Management megoldással kapcsolatos problémák elhárításához és megoldásához.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849241"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769795"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -253,9 +253,13 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
+```error
+Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
+```
+
 ### <a name="cause"></a>Ok
 
-Előfordulhat, hogy A proxy, az átjáró vagy a tűzfal blokkolja a hálózati kommunikációt.
+Előfordulhat, hogy A proxy, az átjáró vagy a tűzfal blokkolja a hálózati kommunikációt. 
 
 ### <a name="resolution"></a>Felbontás
 
@@ -325,9 +329,10 @@ Ha megjelenik egy HRESULT, kattintson duplán a pirosban megjelenő kivételre a
 |`0x8024402C`     | Ha WSUS-kiszolgálót használ, győződjön meg arról, hogy az `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` beállításkulcs alatt `WUServer` és `WUStatusServer` beállításjegyzék-értékei megadják a megfelelő WSUS-kiszolgálót.        |
 |`0x80072EE2`|Hálózati kapcsolati probléma vagy probléma történt a konfigurált WSUS-kiszolgálóval való kommunikáció során. Ellenőrizze a WSUS beállításait, és ellenőrizze, hogy a szolgáltatás elérhető-e az ügyfélről.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Ellenőrizze, hogy a Windows Update szolgáltatás (wuauserv) fut-e, és nincs-e letiltva.        |
+|`0x80070005`| A hozzáférés-megtagadási hibát a következők egyike okozhatja:<br> Fertőzött számítógép<br> A Windows Update beállítások nincsenek megfelelően konfigurálva<br> Fájl engedélyével kapcsolatos hiba a%WinDir%\SoftwareDistribution mappában<br> Nincs elég szabad lemezterület a rendszermeghajtón (C:).
 |Bármely más általános kivétel     | Futtasson keresést az interneten a lehetséges megoldásokért, és működjön együtt a helyi informatikai támogatással.         |
 
-A windowsupdate. log fájl áttekintése segíthet a lehetséges okok meghatározásában is. További információ a napló beolvasásáról: [a windowsupdate. log fájl olvasása](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
+A%Windir%\Windowsupdate.log-fájl áttekintése segíthet a lehetséges okok meghatározásában is. További információ a napló beolvasásáról: [a windowsupdate. log fájl olvasása](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
 
 Emellett letöltheti és futtathatja a [Windows Update-hibakeresőt](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) , hogy megkeresse a gépen Windows Update kapcsolatos problémákat.
 

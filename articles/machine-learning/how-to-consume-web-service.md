@@ -1,0 +1,513 @@
+---
+title: Ügyfél létrehozása webszolgáltatásként üzembe helyezett modellhez
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhat olyan webszolgáltatást, amely akkor jött létre, amikor egy modellt Azure Machine Learning modellel telepítettek. A webszolgáltatás REST API tesz elérhetővé. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+ms.author: aashishb
+author: aashishb
+ms.reviewer: larryfr
+ms.date: 01/07/2020
+ms.custom: seodec18
+ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75765663"
+---
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+Azure Machine Learning modell webszolgáltatásként való üzembe helyezése egy REST API hoz létre. Ebben az API-ban küldhet adatküldést, és megkaphatja a modell által visszaadott előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a, a go, a Java és a Python használatával C#.
+
+Webszolgáltatást akkor hozhat létre, amikor lemezképet telepít Azure Container Instances, Azure Kubernetes Service vagy Field-programozható Gate-tömbökbe (FPGA). A lemezképeket regisztrált modellből és pontozási fájlokból hozza létre. A webszolgáltatásokhoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
+
+A Machine learning-webszolgáltatást használó ügyfelek létrehozásának általános munkafolyamata a következő:
+
+1. A kapcsolódási adatok beszerzéséhez használja az SDK-t.
+1. Határozza meg a modell által használt kérelem-adattípust.
+1. Hozzon létre egy alkalmazást, amely meghívja a webszolgáltatást.
+
+> [!TIP]
+> A dokumentumban szereplő példákat manuálisan hozza létre a OpenAPI (hencegés) specifikációk használata nélkül. Ha engedélyezte a OpenAPI-specifikációt a központi telepítéshez, olyan eszközöket használhat, mint például a [hencegés-CODEGEN](https://github.com/swagger-api/swagger-codegen) a szolgáltatáshoz tartozó ügyféloldali kódtárak létrehozásához.
+
+## <a name="connection-information"></a>Kapcsolatok adatai
+
+> [!NOTE]
+> A webszolgáltatási információk beszerzéséhez használja a Azure Machine Learning SDK-t. Ez egy Python SDK. A szolgáltatáshoz bármilyen nyelven létrehozhat egy ügyfelet.
+
+A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az ügyfélalkalmazás létrehozásához a következő `Webservice` tulajdonságok hasznosak:
+
+* `auth_enabled` – ha a kulcsos hitelesítés engedélyezve van, `True`; Ellenkező esetben `False`.
+* `token_auth_enabled` – ha engedélyezve van a jogkivonat-hitelesítés, `True`; Ellenkező esetben `False`.
+* `scoring_uri` – a REST API címe.
+* `swagger_uri` – a OpenAPI-specifikáció címe. Ez az URI akkor érhető el, ha engedélyezte az automatikus séma létrehozását. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md#schema).
+
+Az alábbi három módon kérheti le ezeket az információkat az üzembe helyezett webszolgáltatások számára:
+
+* Modell telepítésekor a rendszer `Webservice` objektumot ad vissza a szolgáltatással kapcsolatos információkkal:
+
+    ```python
+    service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+    service.wait_for_deployment(show_output = True)
+    print(service.scoring_uri)
+    print(service.swagger_uri)
+    ```
+
+* A `Webservice.list` segítségével lekérheti az üzembe helyezett webszolgáltatások listáját a munkaterületen. Szűrőket adhat hozzá a visszaadott információk listájának szűkítéséhez. További információ arról, hogy mit lehet szűrni [. a webszolgáltatások listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) ismertető dokumentációban talál további információt.
+
+    ```python
+    services = Webservice.list(ws)
+    print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
+    ```
+
+* Ha ismeri a telepített szolgáltatás nevét, létrehozhat egy `Webservice`új példányát, és paraméterként megadhatja a munkaterület és a szolgáltatás nevét. Az új objektum a központilag telepített szolgáltatással kapcsolatos információkat tartalmaz.
+
+    ```python
+    service = Webservice(workspace=ws, name='myservice')
+    print(service.scoring_uri)
+    print(service.swagger_uri)
+    ```
+
+### <a name="secured-web-service"></a>Biztonságos webszolgáltatás
+
+Ha az üzembe helyezett webszolgáltatást SSL-tanúsítvánnyal biztosította, [https](https://en.wikipedia.org/wiki/HTTPS) használatával csatlakozhat a szolgáltatáshoz a pontozási vagy a hencegő URI használatával. A HTTPS segíti a kommunikációt az ügyfél és a webszolgáltatás között a kettő közötti kommunikáció titkosításával. A titkosítás [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)protokollt használ. A TLS-t néha *SSL* (SSL) néven is emlegetik, amely a TLS elődje volt.
+
+> [!IMPORTANT]
+> A Azure Machine Learning által központilag telepített webszolgáltatások támogatják a TLS 1,2-es verzióját. Ügyfélalkalmazás létrehozásakor győződjön meg arról, hogy az támogatja ezt a verziót.
+
+További információ: [SSL használata webszolgáltatások biztonságossá tételéhez Azure Machine Learningon keresztül](how-to-secure-web-service.md).
+
+### <a name="authentication-for-services"></a>Szolgáltatások hitelesítése
+
+A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való hozzáférés vezérlésére.
+
+|Hitelesítési módszer|ACI|AKS|
+|---|---|---|
+|Jelmagyarázat|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett?|
+|Jogkivonat| Nincs| Alapértelmezés szerint letiltva |
+
+Egy kulccsal vagy jogkivonattal védett szolgáltatásnak küldött kérelem küldésekor az __engedélyezési__ fejléc használatával adja át a kulcsot vagy a jogkivonatot. A kulcsot vagy tokent `Bearer <key-or-token>`ként kell formázni, ahol a `<key-or-token>` a kulcs vagy a jogkivonat értéke.
+
+#### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
+
+Ha engedélyezi a hitelesítést a központi telepítéshez, automatikusan létrehozza a hitelesítési kulcsokat.
+
+* A hitelesítés alapértelmezés szerint engedélyezve van az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A hitelesítés alapértelmezés szerint le van tiltva, amikor Azure Container Instances telepíti.
+
+A hitelesítés vezérléséhez használja a `auth_enabled` paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+
+Ha engedélyezve van a hitelesítés, a `get_keys` metódussal kérhet le elsődleges és másodlagos hitelesítési kulcsot:
+
+```python
+primary, secondary = service.get_keys()
+print(primary)
+```
+
+> [!IMPORTANT]
+> Ha újra kell létrehoznia egy kulcsot, használja a [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+#### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
+
+Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználónak meg kell adnia egy Azure Machine Learning JWT tokent a webszolgáltatásnak az eléréséhez. 
+
+* Alapértelmezés szerint a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
+* A jogkivonat-hitelesítés nem támogatott a Azure Container Instances való telepítésekor.
+
+A jogkivonat-hitelesítés vezérléséhez használja a `token_auth_enabled` paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+
+Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódussal kérheti le a tulajdonosi jogkivonatot és a jogkivonatok lejárati idejét:
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> Új jogkivonatot kell kérnie a jogkivonat `refresh_by` időpontja után. 
+
+## <a name="request-data"></a>Adatkérés
+
+A REST API azt várja, hogy a kérelem törzse JSON-dokumentum legyen a következő szerkezettel:
+
+```json
+{
+    "data":
+        [
+            <model-specific-data-structure>
+        ]
+}
+```
+
+> [!IMPORTANT]
+> Az adatok struktúrájának meg kell egyeznie a szolgáltatás által várt pontozási szkripttel és modellel. Előfordulhat, hogy a pontozási parancsfájl módosítja az adattípust, mielőtt átadná azt a modellnek.
+
+A példában szereplő modell a [jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) példaként egy 10 számból álló tömböt vár. A példában szereplő pontozási szkript létrehoz egy NumPy tömböt a kérelemből, és átadja a modellnek. A következő példában a szolgáltatás által várt adatok láthatók:
+
+```json
+{
+    "data": 
+        [
+            [
+                0.0199132141783263, 
+                0.0506801187398187, 
+                0.104808689473925, 
+                0.0700725447072635, 
+                -0.0359677812752396, 
+                -0.0266789028311707, 
+                -0.0249926566315915, 
+                -0.00259226199818282, 
+                0.00371173823343597, 
+                0.0403433716478807
+            ]
+        ]
+}
+```
+
+A webszolgáltatás több adatkészletet is elfogadhat egyetlen kérelemben. Egy olyan JSON-dokumentumot ad vissza, amely a válaszok tömbjét tartalmazza.
+
+### <a name="binary-data"></a>Bináris adatok
+
+További információ a szolgáltatásban található bináris adatok támogatásának engedélyezéséről: [bináris adatok](how-to-deploy-and-where.md#binary).
+
+### <a name="cross-origin-resource-sharing-cors"></a>Több eredetű erőforrás-megosztás (CORS)
+
+Az CORS-támogatás szolgáltatásban való engedélyezésével kapcsolatos információkért lásd: a [több eredetű erőforrás-megosztás](how-to-deploy-and-where.md#cors).
+
+## <a name="call-the-service-c"></a>A szolgáltatás meghívása (C#)
+
+Ebből a példából megtudhatja C# , hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a jegyzetfüzet példáján [belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) :
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+
+namespace MLWebServiceClient
+{
+    // The data structure expected by the service
+    internal class InputData
+    {
+        [JsonProperty("data")]
+        // The service used by this example expects an array containing
+        //   one or more arrays of doubles
+        internal double[,] data;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Set the scoring URI and authentication key or token
+            string scoringUri = "<your web service URI>";
+            string authKey = "<your key or token>";
+
+            // Set the data to be sent to the service.
+            // In this case, we are sending two sets of data to be scored.
+            InputData payload = new InputData();
+            payload.data = new double[,] {
+                {
+                    0.0199132141783263,
+                    0.0506801187398187,
+                    0.104808689473925,
+                    0.0700725447072635,
+                    -0.0359677812752396,
+                    -0.0266789028311707,
+                    -0.0249926566315915,
+                    -0.00259226199818282,
+                    0.00371173823343597,
+                    0.0403433716478807
+                },
+                {
+                    -0.0127796318808497, 
+                    -0.044641636506989, 
+                    0.0606183944448076, 
+                    0.0528581912385822, 
+                    0.0479653430750293, 
+                    0.0293746718291555, 
+                    -0.0176293810234174, 
+                    0.0343088588777263, 
+                    0.0702112981933102, 
+                    0.00720651632920303
+                }
+            };
+
+            // Create the HTTP client
+            HttpClient client = new HttpClient();
+            // Set the auth header. Only needed if the web service requires authentication.
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authKey);
+
+            // Make the request
+            try {
+                var request = new HttpRequestMessage(HttpMethod.Post, new Uri(scoringUri));
+                request.Content = new StringContent(JsonConvert.SerializeObject(payload));
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = client.SendAsync(request).Result;
+                // Display the response from the web service
+                Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+            }
+            catch (Exception e)
+            {
+                Console.Out.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+
+```json
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="call-the-service-go"></a>A szolgáltatás meghívása (go)
+
+Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
+
+```go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+// Features for this model are an array of decimal values
+type Features []float64
+
+// The web service input can accept multiple sets of values for scoring
+type InputData struct {
+    Data []Features `json:"data",omitempty`
+}
+
+// Define some example data
+var exampleData = []Features{
+    []float64{
+        0.0199132141783263, 
+        0.0506801187398187, 
+        0.104808689473925, 
+        0.0700725447072635, 
+        -0.0359677812752396, 
+        -0.0266789028311707, 
+        -0.0249926566315915, 
+        -0.00259226199818282, 
+        0.00371173823343597, 
+        0.0403433716478807,
+    },
+    []float64{
+        -0.0127796318808497, 
+        -0.044641636506989, 
+        0.0606183944448076, 
+        0.0528581912385822, 
+        0.0479653430750293, 
+        0.0293746718291555, 
+        -0.0176293810234174, 
+        0.0343088588777263, 
+        0.0702112981933102, 
+        0.00720651632920303,
+    },
+}
+
+// Set to the URI for your service
+var serviceUri string = "<your web service URI>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
+
+func main() {
+    // Create the input data from example data
+    jsonData := InputData{
+        Data: exampleData,
+    }
+    // Create JSON from it and create the body for the HTTP request
+    jsonValue, _ := json.Marshal(jsonData)
+    body := bytes.NewBuffer(jsonValue)
+
+    // Create the HTTP request
+    client := &http.Client{}
+    request, err := http.NewRequest("POST", serviceUri, body)
+    request.Header.Add("Content-Type", "application/json")
+
+    // These next two are only needed if using an authentication key
+    bearer := fmt.Sprintf("Bearer %v", authKey)
+    request.Header.Add("Authorization", bearer)
+
+    // Send the request to the web service
+    resp, err := client.Do(request)
+    if err != nil {
+        fmt.Println("Failure: ", err)
+    }
+
+    // Display the response received
+    respBody, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(respBody))
+}
+```
+
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+
+```json
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="call-the-service-java"></a>A szolgáltatás meghívása (Java)
+
+Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívására:
+
+```java
+import java.io.IOException;
+import org.apache.http.client.fluent.*;
+import org.apache.http.entity.ContentType;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class App {
+    // Handle making the request
+    public static void sendRequest(String data) {
+        // Replace with the scoring_uri of your service
+        String uri = "<your web service URI>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
+        try {
+            // Create the request
+            Content content = Request.Post(uri)
+            .addHeader("Content-Type", "application/json")
+            // Only needed if using authentication
+            .addHeader("Authorization", "Bearer " + key)
+            // Set the JSON data as the body
+            .bodyString(data, ContentType.APPLICATION_JSON)
+            // Make the request and display the response.
+            .execute().returnContent();
+            System.out.println(content);
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    public static void main(String[] args) {
+        // Create the data to send to the service
+        JSONObject obj = new JSONObject();
+        // In this case, it's an array of arrays
+        JSONArray dataItems = new JSONArray();
+        // Inner array has 10 elements
+        JSONArray item1 = new JSONArray();
+        item1.add(0.0199132141783263);
+        item1.add(0.0506801187398187);
+        item1.add(0.104808689473925);
+        item1.add(0.0700725447072635);
+        item1.add(-0.0359677812752396);
+        item1.add(-0.0266789028311707);
+        item1.add(-0.0249926566315915);
+        item1.add(-0.00259226199818282);
+        item1.add(0.00371173823343597);
+        item1.add(0.0403433716478807);
+        // Add the first set of data to be scored
+        dataItems.add(item1);
+        // Create and add the second set
+        JSONArray item2 = new JSONArray();
+        item2.add(-0.0127796318808497);
+        item2.add(-0.044641636506989);
+        item2.add(0.0606183944448076);
+        item2.add(0.0528581912385822);
+        item2.add(0.0479653430750293);
+        item2.add(0.0293746718291555);
+        item2.add(-0.0176293810234174);
+        item2.add(0.0343088588777263);
+        item2.add(0.0702112981933102);
+        item2.add(0.00720651632920303);
+        dataItems.add(item2);
+        obj.put("data", dataItems);
+
+        // Make the request using the JSON document string
+        sendRequest(obj.toJSONString());
+    }
+}
+```
+
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+
+```json
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="call-the-service-python"></a>Szolgáltatás meghívása (Python)
+
+Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = '<your web service URI>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [
+                0.0199132141783263,
+                0.0506801187398187,
+                0.104808689473925,
+                0.0700725447072635,
+                -0.0359677812752396,
+                -0.0266789028311707,
+                -0.0249926566315915,
+                -0.00259226199818282,
+                0.00371173823343597,
+                0.0403433716478807
+            ],
+            [
+                -0.0127796318808497,
+                -0.044641636506989,
+                0.0606183944448076,
+                0.0528581912385822,
+                0.0479653430750293,
+                0.0293746718291555,
+                -0.0176293810234174,
+                0.0343088588777263,
+                0.0702112981933102,
+                0.00720651632920303]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+# If authentication is enabled, set the authorization header
+headers['Authorization'] = f'Bearer {key}'
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
+
+```JSON
+[217.67978776218715, 224.78937091757172]
+```
+
+## <a name="consume-the-service-from-power-bi"></a>A szolgáltatás felhasználása Power BI
+
+A Power BI támogatja a Azure Machine Learning webszolgáltatások felhasználását, hogy az előrejelzésekkel gazdagítsa Power BI az adatmennyiséget. 
+
+Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való használathoz támogat, a sémának támogatnia kell a Power BI számára szükséges formátumot. [Megtudhatja, hogyan hozhat létre Power bi által támogatott sémát](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
+
+A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+
+## <a name="next-steps"></a>Következő lépések
+
+A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

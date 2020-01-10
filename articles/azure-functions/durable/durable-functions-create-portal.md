@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Function
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231477"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769642"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -22,7 +22,7 @@ A Azure Functions [Durable functions](durable-functions-overview.md) -bővítmé
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-A függvények végrehajtásának üzemeltetéséhez Function-alkalmazás szükséges. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése és megosztása érdekében. Létrehozhat .NET-vagy JavaScript-alkalmazást is.
+A függvények végrehajtásának üzemeltetéséhez Function-alkalmazás szükséges. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében. Létrehozhat .NET-vagy JavaScript-alkalmazást is.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -58,7 +58,7 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -68,7 +68,7 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
 
 1. A keresőmezőbe írja be a `durable` kifejezést, majd válassza a **DURABLE FUNCTIONS http-indító** sablont.
 
-1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure DurableTask bővítmény bármely függőségének telepítéséhez a Function alkalmazásban. Az Add Function alkalmazáshoz csak egyszer kell telepítenie a bővítményt. A telepítést követően válassza a **Folytatás** gombot.
+1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure DurableTask bővítmény és a Function alkalmazásban lévő függőségek telepítéséhez. A bővítményt csak egyszer kell telepíteni az adott függvényalkalmazáshoz. A telepítést követően válassza a **Folytatás** gombot.
 
     ![Kötési bővítmények telepítése](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
@@ -88,7 +88,7 @@ Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    Ebben a példában a `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet olyan URI-végpontokat tartalmaz, amelyek segítségével figyelheti és kezelheti a végrehajtást, ami a következő példához hasonlóan néz ki:
+    Ebben a példában a `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet URI-végpontok készletét fogja tartalmazni, amelyek a végrehajtás monitorozásához és szabályozásához használhatók fel hasonlóan a következő példához:
 
     ```json
     {  

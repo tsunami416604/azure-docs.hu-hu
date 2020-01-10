@@ -8,24 +8,28 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818668"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779102"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
 Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehozására és folytatására vonatkozó javaslatokat tartalmaznak. A marketing-anyagok írásához és konfigurálásához lépjen a [Cloud Partner portálra](https://cloudpartner.azure.com/#insights). 
 
 ## <a name="storefront-offer-details"></a>A kirakati ajánlat részletei
+
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Offer Name | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
+| Csomag neve | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
 | Ajánlat leírása | Adja meg az ajánlat egyértelmű leírását:<br> <ul> <li> A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét. </li> <li> Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg. </li> <li> Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania. </li> <li> A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.</li> <li> Emellett a tanácsadási szolgáltatások listáinak egyértelműen meg kell adniuk az Ön által megadott professzionális szolgáltatást. </li></ul> Az érték kiosztásának alapvető összetevőinek a következő információkat kell tartalmazniuk:<ul><li>A termék leírása.</li><li>A termékből származó előnyöket biztosító felhasználó típusa.</li><li>Az ügyfélnek szüksége van a termék címére vagy a fájdalomra.</li></ul> |
 
+Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehozására és folytatására vonatkozó javaslatokat tartalmaznak. A marketing-anyagok írásához és konfigurálásához lépjen a [Cloud Partner portálra](https://cloudpartner.azure.com/#insights). 
+
 ## <a name="storefront-listing-details"></a>Kirakati lista részletei
+
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
 | Iparágak: csak AppSource alkalmazások és tanácsadási szolgáltatások | Válassza az iparágak lehetőséget, ha az ajánlata az iparágra jellemző igényekkel foglalkozik: <ul><li> Ismerje meg az iparágra jellemző képességeket az ajánlat leírásában.</li> </ul> **Megjegyzés**: a lehetőségek maximális száma az ajánlat típusa szerint változhat, és a [Felhőbeli partner portálon](https://cloudpartner.azure.com/#insights)van megadva. |
@@ -43,10 +47,10 @@ Akár két kategóriát és két alkategóriát is kijelölhet egy ajánlathoz. 
 | :------------------- | :-------------------|
 | \* Autóipar     | \* Autóipar |
 | Mezőgazdaság     | \* Egyéb – nem szegmentált |
-| Disztribúció    | \* Nagykereskedelmi <br> \* Parcella & csomag szállítása |
-| Education     | \* Felsőoktatás <br> \* Elsődleges & középfokú oktatás/K-12 <br> \* Könyvtárak & múzeumok |
+| Terjesztés    | \* Nagykereskedelmi <br> \* Parcella & csomag szállítása |
+| Oktatás     | \* Felsőoktatás <br> \* Elsődleges & középfokú oktatás/K-12 <br> \* Könyvtárak & múzeumok |
 | Pénzügyi szolgáltatások     | \* Banki & tőkepiacok <br> \* Biztosítás |
-| Government    | \* Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> \* Közbiztonság & igazságszolgáltatás <br> \* Polgári kormányzat |
+| Közigazgatás    | \* Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> \* Közbiztonság & igazságszolgáltatás <br> \* Polgári kormányzat |
 | Egészségügyi ellátás (ún. állapot)   | \* Állapot költségviselő <br> \* Állapot szolgáltatója <br> \* Gyógyszeripar |
 | Gyártási & erőforrások (a gyártás meghívásához használatos)   | \* Kémiai & Agrokémiai <br> \* Diszkrét gyártás <br> \* Energia |
 | Lakossági & fogyasztási cikkek (a kereskedelmi elnevezéshez használatos)  | \* Fogyasztási cikkek <br> \* Kiskereskedők |
@@ -57,12 +61,24 @@ Akár két kategóriát és két alkategóriát is kijelölhet egy ajánlathoz. 
 | \* Egyéb állami szektorbeli iparágak  | \* Erdészeti & horgászat <br> \* Nonprofit szervezetek |
 | \* Ingatlan  | \* Egyéb – nem szegmentált |
 
+### <a name="industries"></a>Ágazatok
+
+Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és tanácsadási szolgáltatásokban közzétett ajánlatokra vonatkozik. Válassza az iparágak és/vagy a vertikálisak lehetőséget, ha az ajánlata az iparágra jellemző igények kielégítésével foglalkozik, és az ajánlat leírásában az iparágra jellemző képességeket hívja meg. Kiválaszthat legfeljebb két (2) iparágat és két (2) vertikális elemet.
+
+### <a name="applicable-products"></a>Alkalmazható termékek
+
+Válassza ki azokat a megfelelő termékeket, amelyekkel az alkalmazás együttműködik, hogy az ajánlat megjelenjen a kiválasztott termékek területen a AppSource.
+
+### <a name="search-keywords"></a>Kulcsszavak keresése
+
+A kulcsszavak segítségével az ügyfelek megkereshetik az ajánlatot a kereséskor. Azonosítsa az ajánlat legfontosabb keresési kulcsszavait, és foglalja bele őket az ajánlat összefoglalásához és leírásához, valamint az ajánlat részletei című szakaszban található kulcsszó szakaszhoz.
+
 ## <a name="storefront-marketing-details"></a>A kirakati marketing részletei
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
 | Ajánlat emblémája (PNG formátum, 48&nbsp;&times;&nbsp;48): keresési oldal | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat keresési oldalára. |
 | Ajánlat emblémája (PNG formátum, 216&nbsp;&times;&nbsp;216): alkalmazás részletei lap | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat alkalmazás részletei listázási oldalára. |
-| "További információ" dokumentumok | A "További információ" című részében szerepelnek a Sales és a marketing-eszközök támogatása, néhány példa: <ul> <li> tanulmányok, </li> <li> brosúrák </li> <li> Ellenőrzőlista vagy </li> <li> PowerPoint-bemutatók.</li> </ul>Mentse az összes fájlt PDF formátumban. A cél az, hogy az ügyfeleket ne értékesítsen. <br><br>Vegyen fel egy hivatkozást az alkalmazás kezdőlapján az összes dokumentumra, és adjon hozzá URL-paramétereket a látogatók és a próbaverziók nyomon követéséhez. |
+| "További információ" dokumentumok | A "További információ" című részében szerepelnek a Sales és a marketing-eszközök támogatása, néhány példa: <ul> <li> tanulmányok, </li> <li> Brosúrák </li> <li> Ellenőrzőlista vagy </li> <li> PowerPoint-bemutatók.</li> </ul>Mentse az összes fájlt PDF formátumban. A cél az, hogy az ügyfeleket ne értékesítsen. <br><br>Vegyen fel egy hivatkozást az alkalmazás kezdőlapján az összes dokumentumra, és adjon hozzá URL-paramétereket a látogatók és a próbaverziók nyomon követéséhez. |
 | Videók: AppSource, tanácsadási szolgáltatások és SaaS-ajánlatok | A legerősebb videók az ajánlat értékét a narratív formában közlik:<ul> <li> Tegye meg az ügyfelet, és ne a vállalata, a történet hőse. </li> <li> A videónak foglalkoznia kell a megcélzott ügyfél legfontosabb kihívásaival és céljaival. </li> <li> Javasolt hossz: 60-90 másodperc.</li> <li> A videók nevét használó legfontosabb keresési szavakat foglalja bele. </li> <li> Vegye fontolóra további videók, például útmutató, első lépések vagy vásárlói visszajelzések hozzáadását. </li> </ul> |
 | Képernyőképek (1280&nbsp;&times;&nbsp;720) | Legfeljebb öt képernyőkép hozzáadása:<br>A kulcsok keresési szavainak belefoglalása a fájlnevekben. |
 
@@ -76,7 +92,7 @@ A következő példában szereplő URL-cím tartalmazza az előző lekérdezési
 
 A paramétereknek a AppSource URL-címhez való hozzáadásával áttekintheti a kampány hatékonyságát a [Cloud Partner portál](https://cloudpartner.azure.com/#insights)elemzési irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 

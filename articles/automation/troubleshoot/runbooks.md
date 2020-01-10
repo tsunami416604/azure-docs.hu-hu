@@ -1,6 +1,6 @@
 ---
 title: Azure Automation Runbookok kapcsolatos hibák elhárítása
-description: Tudnivalók a Azure Automation runbookok kapcsolatos hibák elhárításáról
+description: Ismerje meg, hogy miként lehet elhárítani a Azure Automation runbookok kapcsolatban felmerülő problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 10152087b45a4048f30f382b237017efbbb63787
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850142"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769880"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookok kapcsolatos hibák elhárítása
 
@@ -270,9 +270,9 @@ The job was tried three times but it failed
 
 Ez a hiba az alábbi problémák egyike miatt fordul elő:
 
-* Memória korlátja Az [Automation szolgáltatás korlátozásai](../../azure-subscription-service-limits.md#automation-limits)alapján a rendszer megtalálta a rendelkezésre álló memória mennyiségét a Sandboxhoz. Ha a feladat 400 MB-nál több memóriát használ, A feladatok sikertelenek lehetnek.
+* Memória korlátja Az [Automation szolgáltatás korlátozásai](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)alapján a rendszer megtalálta a rendelkezésre álló memória mennyiségét a Sandboxhoz. Ha a feladat 400 MB-nál több memóriát használ, A feladatok sikertelenek lehetnek.
 
-* Hálózati szoftvercsatornák. Az Azure-beli munkaterületek 1000 egyidejű hálózati szoftvercsatornára korlátozódnak, az [Automation szolgáltatás korlátainál](../../azure-subscription-service-limits.md#automation-limits)leírtak szerint.
+* Hálózati szoftvercsatornák. Az Azure-beli munkaterületek 1000 egyidejű hálózati szoftvercsatornára korlátozódnak, az [Automation szolgáltatás korlátainál](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)leírtak szerint.
 
 * A modul nem kompatibilis. Ez a hiba akkor fordulhat elő, ha a modul függőségei nem megfelelőek, és ha nem, a runbook jellemzően "parancs nem található" vagy "nem köthető paraméter" üzenetet ad vissza.
 

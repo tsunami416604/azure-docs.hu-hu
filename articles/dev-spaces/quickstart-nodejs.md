@@ -3,15 +3,15 @@ title: 'Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code & Node. 
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Gyors Kubernetes-fejlesztés a tárolókkal, a szolgáltatásokkal és a Node. js-szel az Azure-ban
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node. js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8f3ffb6a539937b6d4a03b8fdc808c033c371697
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 855c2cefce9d16436a94ea991e8ba0d4066e7c8d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325578"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770577"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes Visual Studio Code és Node. js-sel – Azure dev Spaces
 
@@ -110,7 +110,7 @@ A hibakereső leállításához kattintson a *hibakeresés* gombra, majd *állí
 
 ## <a name="update-code"></a>Kód frissítése
 
-A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, majd újra futtathatja a *Launch Servert*. Például:
+A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a projektben lévő összes fájlt, majd újra futtathatja a *Launch Servert*. Példa:
 
 1. Ha az alkalmazás még fut, kattintson a *hibakeresés* lehetőségre, majd állítsa le a *hibakeresést* .
 1. [A `server.js`13. sorának frissítése a következőre](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
@@ -148,7 +148,7 @@ Ez a parancs az Azure dev Spaces szolgáltatásban hozza létre és futtatja a s
 
 A szolgáltatás elindítása után navigáljon a böngészővel, és használja azt.
 
-A szolgáltatás futása közben térjen vissza a VS Code-ra, és frissítse a 13. sort `server.js`. Például:
+A szolgáltatás futása közben térjen vissza a VS Code-ra, és frissítse a 13. sort `server.js`. Példa:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
@@ -163,7 +163,7 @@ A nem *démon*futtatásakor a rendszer automatikusan újraindítja a csomópont-
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 
@@ -171,4 +171,4 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 > [Több tároló használata és fejlesztés csapatban](multi-service-nodejs.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

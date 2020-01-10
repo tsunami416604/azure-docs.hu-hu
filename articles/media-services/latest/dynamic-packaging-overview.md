@@ -1,5 +1,5 @@
 ---
-title: Dinamikus csomagolás a Media Servicesban
+title: Dinamikus csomagolás a Azure Media Services v3-ban
 titleSuffix: Azure Media Services
 description: Ez a cikk áttekintést nyújt a Azure Media Services dinamikus csomagolásáról.
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977760"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779603"
 ---
-# <a name="dynamic-packaging-in-media-services"></a>Dinamikus csomagolás a Media Servicesban
+# <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
 A Microsoft Azure Media Services számos médiafájl-formátum kódolására használható. A szolgáltatás különböző streaming protokollokon keresztül érhető el, tartalom védelme nélkül vagy anélkül, hogy elérje az összes jelentős eszközt (például az iOS és az Android rendszerű eszközöket). Ezek az ügyfelek megismerhetik a különböző protokollokat. Az iOS esetében például HTTP Live Streaming (HLS) formátumban kell továbbítani a streameket, és az Android-eszközök támogatják a HLS, valamint az MPEG DASH-t.
 

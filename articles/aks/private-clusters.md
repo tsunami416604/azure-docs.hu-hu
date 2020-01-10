@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 8af0f998df2a92e51078a2e23806cca07ff08ca3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480085"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830054"
 ---
 # <a name="public-preview---private-azure-kubernetes-service-cluster"></a>Nyilvános előzetes verzió – privát Azure Kubernetes Service-fürt
 
@@ -81,16 +81,16 @@ Where--enable-Private-cluster kötelező jelző egy privát fürthöz
 #### <a name="advanced-networking"></a>Speciális hálózatkezelés  
 
 ```azurecli-interactive
-az aks create \ 
-    --resource-group <private-cluster-resource-group>\ 
-    --name <private-cluster-name> \ 
-    --load-balancer-sku standard
-    --enable-private-cluster 
-    --network-plugin azure \ 
-    --vnet-subnet-id <subnet-id> \ 
-    --docker-bridge-address 172.17.0.1/16 \ 
-    --dns-service-ip 10.2.0.10 \ 
-    --service-cidr 10.2.0.0/24 \ 
+az aks create \
+    --resource-group <private-cluster-resource-group> \
+    --name <private-cluster-name> \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 
 ```
 Where--enable-Private-cluster kötelező jelző egy privát fürthöz 
 
@@ -108,6 +108,11 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következté
     * kattintson a saját DNS zónára 
     * Válassza ki a virtuális hálózat hivatkozást a bal oldali panelen
     * hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép VNET a saját DNS zónához *(néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik)*
+    * Visszatérés a portál MC_ * erőforráscsoporthoz
+    * Válassza ki a virtuális hálózatot a jobb oldali ablaktáblán. A virtuális hálózat neve AK-vnet-* formátumban lesz.
+    * a bal oldali ablaktáblán válassza a társak lehetőséget
+    * kattintson a Hozzáadás gombra, és adja hozzá a virtuális gép virtuális hálózatát, és hozza létre a társítást.
+    * Nyissa meg azt a vnet, ahol a virtuális gép, majd kattintson a társaik elemre, és válassza ki az AK-beli virtuális hálózatot, és hozza létre a társítást. Ha a címtartomány az AK-beli virtuális hálózatban és a virtuális gép virtuális hálózati összeütközései között mozog, akkor a társítás sikertelen lesz. A virtuális hálózatokkal kapcsolatos további információkért tekintse meg ezt a [dokumentumot][virtual-network-peering] .
 * SSH a virtuális géphez
 * A Kubectl eszköz telepítése és a Kubectl parancsok futtatása
 
@@ -132,3 +137,5 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következté
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+

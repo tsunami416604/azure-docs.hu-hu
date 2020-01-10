@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996731"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768588"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -35,11 +35,11 @@ A több csomópontot támogató AK-fürtök létrehozásakor és kezelésekor a 
 * A HTTP-alkalmazás útválasztási bővítménye nem használható.
 * Az AK-fürtnek a standard SKU Load balancert kell használnia több Node-készlet használatához, a szolgáltatás alapszintű SKU-terheléselosztó esetén nem támogatott.
 * Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
-* A legtöbb művelethez hasonlóan a meglévő Resource Manager-sablonok használatával nem adhat hozzá vagy törölhet csomópont-készleteket. Ehelyett [használjon egy különálló Resource Manager-sablont](#manage-node-pools-using-a-resource-manager-template) , amellyel módosításokat hajthat végre egy AK-fürtben lévő csomópont-készleteken.
 * A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie, a Windows-csomópontok esetében a hossznak 1 és 6 karakter közöttinek kell lennie.
 * Az AK-fürt legfeljebb nyolc csomópont-készletet tartalmazhat.
 * Az AK-fürt legfeljebb 800 csomóponttal rendelkezhet a nyolc csomópontos készletben.
-* Az összes csomópont-készletnek ugyanabban az alhálózatban kell lennie.
+* Az összes csomópont-készletnek ugyanabban a vnet és alhálózatban kell lennie.
+* Ha több csomópont-készletet hoz létre a fürt létrehozásakor, a csomópontok által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlési síkon beállított verzióval. Ezt azután frissítheti, ha a fürtöt csomópont-készletezési műveletek használatával állították ki.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 

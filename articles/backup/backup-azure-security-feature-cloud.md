@@ -3,16 +3,16 @@ title: Biztonsági funkciók a Felhőbeli munkaterhelések védelme érdekében
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496921"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829629"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
 
-A biztonsági veszélyforrások, például a kártevők, a zsarolóprogramok és a jogosulatlan behatolások egyre jelentősebb problémát okoznak. Ezek a biztonsági fenyegetések egyre nagyobb költséggel is járnak pénzben és adatban kifejezve egyaránt. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő töröl egy virtuális gép biztonsági mentését (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig marad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. Ezen további 14 nap biztonsági mentési adatok megőrzése a "Soft Delete" állapotban nem jár költséggel az ügyfélnek. Az Azure az adatok védelme érdekében a [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) használatával is titkosítja az összes tárolt biztonsági másolatot.
+A biztonsági veszélyforrások, például a kártevők, a zsarolóprogramok és a jogosulatlan behatolások egyre jelentősebb problémát okoznak. Ezek a biztonsági fenyegetések egyre nagyobb költséggel is járnak pénzben és adatban kifejezve egyaránt. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő töröl egy virtuális gép biztonsági mentését (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig marad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. Ezen további 14 nap biztonsági mentési adatok megőrzése a "Soft Delete" állapotban nem jár költséggel az ügyfélnek. Az Azure az adatok védelmének biztosítása érdekében a [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) használatával is titkosítja az összes biztonsági másolatban tárolt adatait.
 
 > [!NOTE]
 > A helyreállítható törlés csak a törölt biztonsági mentési adatvédelmet védi. Ha egy virtuális gépet biztonsági mentés nélkül töröl, a helyreállítható funkció nem fogja megőrizni az adatvédelmet. A teljes rugalmasság biztosítása érdekében minden erőforrást Azure Backup védelemmel kell ellátni.
@@ -89,7 +89,7 @@ A biztonsági mentési elem "DeleteState" változása "NotDeleted" értékről "
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>A törlési művelet visszavonása az Azure PowerShell használatával
 
-Először olvassa be a megfelelő biztonsági mentést, amely a törléshez szükséges állapotú.
+Először olvassa be a megfelelő biztonsági mentést, amely a törlésre kész állapotú.
 
 ```powershell
 
@@ -164,7 +164,7 @@ A szolgáltatás letiltását megelőzően a törölt állapotban lévő biztons
 Kövesse az alábbi lépéseket:
 
 1. A [Soft delete letiltásához](#disabling-soft-delete)kövesse a következő lépéseket:.
-2. A Azure Portal nyissa meg a tárolót, lépjen a **biztonsági másolatok elemre** , és válassza a Soft Deleted VM elemet.
+2. A Azure Portal nyissa meg a tárolót, lépjen a **biztonsági másolatok elemre**, és válassza a Soft Deleted VM elemet.
 
 ![A törölt virtuális gép kiválasztása](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -232,19 +232,32 @@ Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor
 2. Ezután tiltsa le a Soft-delete funkciót a REST API használatával az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépések végrehajtásával.
 3. Ezután törölje a biztonsági mentéseket a REST API az [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említett módon.
 
-## <a name="other-security-features"></a>Egyéb biztonsági funkciók
+## <a name="encryption"></a>Titkosítás
 
-### <a name="storage-side-encryption"></a>Tárolási oldal titkosítása
+### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Biztonsági mentési adatai titkosítása a Microsoft által felügyelt kulcsokkal
 
-Az Azure Storage automatikusan titkosítja az adatait a felhőben való megőrzés során. A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure Storage-ban tárolt adatai a 256 bites AES-titkosítással vannak titkosítva és visszafejtve, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás hasonló a Windows rendszeren a BitLocker-titkosításhoz. A Azure Backup a tárolása előtt automatikusan titkosítja az adattitkosítást. Az Azure Storage visszafejti az adatok beolvasása előtt.  
+A biztonsági mentési adatai automatikusan titkosítva vannak az Azure Storage encryption használatával. A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az adattitkosítás és az adattitkosítás a 256 bites AES-titkosítással történik, és az egyik legerősebb blokk titkosítási algoritmus, amely az FIPS 140-2-kompatibilis. Az Azure Storage-titkosítás hasonló a Windows rendszeren a BitLocker-titkosításhoz.
 
 Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel HTTPS-védelemmel történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
 
-További információ: az [Azure Storage titkosítása inaktív adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).  A titkosítással kapcsolatban esetlegesen felmerülő kérdések megválaszolásához tekintse meg a [Azure Backup gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) című témakört.
+További információ: az [Azure Storage titkosítása inaktív adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). A titkosítással kapcsolatban esetlegesen felmerülő kérdések megválaszolásához tekintse meg a [Azure Backup gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) című témakört.
 
-### <a name="vm-encryption"></a>VM-titkosítás
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
-A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthat Windows vagy Linux rendszerű Azure-beli virtuális gépeket (VM-ket) titkosított lemezekkel. Útmutatásért tekintse meg a [titkosított virtuális gépek biztonsági mentése és visszaállítása Azure Backupokkal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)című témakört.
+Az Azure Virtual Machines biztonsági mentése közben lehetősége van arra is, hogy a Azure Key Vaultban tárolt titkosítási kulcsokkal Titkosítsa a biztonsági mentési adatait a Recovery Services-tárolóban.
+
+>[!NOTE]
+>Ez a funkció jelenleg korai használatban van. Ha az ügyfél által felügyelt kulcsokkal szeretné titkosítani a biztonsági mentési adatait, töltse ki [ezt a kérdőívet](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) . Vegye figyelembe, hogy a funkció használatának lehetősége a Azure Backup szolgáltatás jóváhagyását képezi.
+
+### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Felügyelt lemezes virtuális gép biztonsági mentése az ügyfél által felügyelt kulcsok használatával
+
+Azure Backup lehetővé teszi az Azure-Virtual Machines biztonsági mentését, amely az ügyfél által felügyelt kulcsokkal titkosított lemezeket tartalmaz. További részletekért tekintse meg a [felügyelt lemezek titkosítása az ügyfél által felügyelt kulcsokkal](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview)című témakört.
+
+### <a name="backup-of-encrypted-vms"></a>Titkosított virtuális gépek biztonsági mentése
+
+A Azure Backup szolgáltatás használatával biztonsági mentést készíthet és visszaállíthat Windows vagy Linux rendszerű Azure-beli virtuális gépeket (VM-ket) titkosított lemezekkel. Útmutatásért lásd: a [titkosított virtuális gépek biztonsági mentése és visszaállítása Azure Backupokkal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="other-security-features"></a>Egyéb biztonsági funkciók
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Azure Backup helyreállítási pontok védelme
 
@@ -258,7 +271,7 @@ További információ: [szerepköralapú Access Control használata Azure Backup
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Engedélyezni kell a Soft-delete szolgáltatást minden tárolón?
 
-Nem, alapértelmezés szerint a Recovery Services-tárolók számára van felépítve és engedélyezve.
+Nem, alapértelmezés szerint a Recovery Services-tárolók számára van kiépítve és engedélyezve.
 
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Megadhatom, hogy a törlési művelet befejezése után a rendszer hány napig őrizze meg az adataimat a törölt állapotban?
 
@@ -282,11 +295,11 @@ Törlés után a folytatási művelet ismét védi az erőforrást. A folytatás
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Törölhetem a tárolót, ha a tárolóban nem találhatók a törölt elemek?
 
-Az Recovery Services-tár nem törölhető, ha a tárolóban található helyreállítható állapotú biztonsági másolati elemek vannak. A törölt elemek a törlési művelet után 14 nappal véglegesen törlődnek. Ha 14 napig nem tud megvárni, tiltsa le a helyreállítható [törlést](#disabling-soft-delete), törölje a nem törölt elemek törlését, majd törölje újra a véglegesen a törléshez. Miután meggyőződött róla, hogy nincsenek védett elemek, és nem törölhetők a tárolók.  
+Az Recovery Services-tár nem törölhető, ha a tárolóban található helyreállítható állapotú biztonsági másolati elemek vannak. A törölt elemek a törlési művelet után 14 nappal véglegesen törlődnek. Ha 14 napig nem tud megvárni, tiltsa le a helyreállítható [törlést](#disabling-soft-delete), törölje a nem törölt elemek törlését, majd törölje újra a véglegesen a törléshez. Miután meggyőződött róla, hogy nincsenek védett elemek, és nem találhatók a törölt elemek, a tároló törölhető.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Törölhetem a 14 napnál régebbi adattörlési időszakot a törlés után?
 
-Nem. Nem kényszerítheti a nem törölt elemek törlését, ezeket a rendszer 14 nap elteltével automatikusan törli. Ez a biztonsági funkció lehetővé teszi az adatok véletlen vagy rosszindulatú törlésből való védelmét.  A virtuális gépen bármilyen más művelet végrehajtása előtt várjon 14 napot.  A helyreállított elemek nem lesznek felszámítva.  Ha újra kell védenie a nem kötelező törlésre kijelölt virtuális gépeket 14 napon belül egy új tárba, forduljon a Microsoft ügyfélszolgálatához.
+Nem. Nem kényszerítheti a nem törölt elemek törlését, ezeket a rendszer 14 nap elteltével automatikusan törli. Ez a biztonsági funkció lehetővé teszi az adatok véletlen vagy rosszindulatú törlésből való védelmét.  A virtuális gépen bármilyen más művelet végrehajtása előtt várjon 14 napot.  A helyreállított elemek nem lesznek felszámítva.  Ha az új tárolóra vonatkozó 14 napon belül a helyreállítható törlésre kijelölt virtuális gépeket újra kell védetté tenni, forduljon a Microsoft ügyfélszolgálatához.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Végrehajthatók a helyreállítható törlési műveletek a PowerShellben vagy a parancssori felületen?
 

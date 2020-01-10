@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689143"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834940"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -66,7 +66,7 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 |--------|-----------|
 | **Fiók feladatátvétele** |Még nem támogatott|
 | **AzCopy** | Verzió-specifikus támogatás <br><br>Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.|
-| **Azure Blob Storage életciklus-kezelési szabályzatok** | Az életciklus-kezelési házirendek támogatottak (előzetes verzió).  Minden hozzáférési szintet támogat. Az archív hozzáférési szint jelenleg előzetes verzióban érhető el. A blob-Pillanatképek törlése még nem támogatott. <br><br> Jelenleg vannak olyan hibák, amelyek hatással vannak az életciklus-kezelési házirendekre és az archív hozzáférési szintre.  Regisztráljon az életciklus-kezelési szabályzatok előzetes verziójára, és archiválja a hozzáférési szintet [itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   |
+| **Azure Blob Storage életciklus-kezelési szabályzatok** | Az életciklus-kezelési házirendek támogatottak (előzetes verzió).  Regisztráljon az életciklus-kezelési szabályzatok előzetes verziójára, és archiválja a hozzáférési szintet [itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   <br><br>Minden hozzáférési szintet támogat. Az archív hozzáférési szint jelenleg előzetes verzióban érhető el. A blob-Pillanatképek törlése még nem támogatott.  Jelenleg vannak olyan hibák, amelyek hatással vannak az életciklus-kezelési házirendekre és az archív hozzáférési szintre.  |
 | **Azure Content Delivery Network (CDN)** | Még nem támogatott|
 | **Azure-keresés** |Támogatott (előzetes verzió)|
 | **Azure Storage Explorer** | Verzió-specifikus támogatás. <br><br>Csak `1.6.0` vagy újabb verziót használjon. <br> Jelenleg van olyan tárolási hiba, amely hatással van a `1.11.0` verzióra, ami bizonyos helyzetekben hitelesítési hibákhoz vezethet. A tárolási hiba elhárítása folyamatban van, de megkerülő megoldásként javasoljuk, hogy a `1.10.x` verzióját használja, amely [ingyenes letöltésként](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)érhető el. a tárolási hiba nem érinti a `1.10.x`.|
@@ -74,7 +74,7 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 | **Blobfuse** |Még nem támogatott|
 | **Egyéni tartományok** |Még nem támogatott|
 | **Storage Explorer a Azure Portal** | Korlátozott támogatás. Az ACL-ek még nem támogatottak. |
-| **Diagnosztikai naplózás** |A diagnosztikai naplók támogatottak (előzetes verzió).<br><br>A naplók engedélyezése a Azure Portal jelenleg nem támogatott. Az alábbi példa bemutatja, hogyan engedélyezheti a naplókat a PowerShell használatával. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` kérdésre adott válaszban foglalt lépéseket. <br><br>Győződjön meg arról, hogy a `-ServiceType` paraméter értékeként `Blob` értéket kell megadnia, ahogy az ebben a példában is látható. <br><br>A Azure Storage Explorer jelenleg nem használható a diagnosztikai naplók megtekintéséhez. A naplók megtekintéséhez használja a AzCopy vagy SDK-kat.
+| **Diagnosztikai naplózás** |A diagnosztikai naplók támogatottak (előzetes verzió). <br><br>Azure Storage Explorer 1.10. x nem használható a diagnosztikai naplók megtekintéséhez. A naplók megtekintéséhez használja a AzCopy vagy SDK-kat.
 | **Megváltoztathatatlan tároló** |Még nem támogatott <br><br>A nem módosítható tárterület lehetővé teszi az adattárolást egy [féregben (egyszer írható, olvasható)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) állapottal.|
 | **Objektum szintű szintek** |A ritka elérésű és az archív rétegek támogatottak. Az archiválási szint előzetes verzióban érhető el. Az összes többi hozzáférési szintet még nem támogatja a rendszer. <br><br> Jelenleg vannak olyan hibák, amelyek hatással vannak az archív hozzáférési szintre.  Regisztráljon az archív [hozzáférési szint előzetes](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)verziójára.|
 | **Statikus webhelyek** |Még nem támogatott <br><br>Konkrétan a fájlok [statikus webhelyekre](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)való kiszolgálásának lehetősége.|

@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d54ef06fd63a1064962aea6099a2289d04ff658
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462016"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767942"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és a Azure AD Connect hardverre vonatkozó követelményeit.
@@ -57,11 +57,7 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 >[!IMPORTANT]
 >A Azure AD Connect a Small Business Server, a Server Essentials vagy a Server Core rendszerre való telepítése nem támogatott.
 
-* Azure AD Connect a Windows Server 2008 R2 vagy újabb verzióra kell telepíteni. A kiszolgálónak tartományhoz kell csatlakoznia, és lehet tartományvezérlő vagy tagkiszolgáló.
-* Ha a Azure AD Connect Windows Server 2008 R2 rendszerre telepíti, akkor ügyeljen arra, hogy a legújabb gyorsjavításokat alkalmazza Windows Updateról. A telepítés nem indítható el egy kijavítás nélküli kiszolgálóval.
-* Ha a szolgáltatás **jelszavas szinkronizálását**tervezi használni, akkor a Azure ad Connect-kiszolgálónak a Windows Server 2008 R2 SP1 vagy újabb verziójának kell lennie.
-* Ha egy **csoportosan felügyelt szolgáltatásfiókot**kíván használni, akkor a Azure ad Connect-kiszolgálónak a Windows Server 2012-es vagy újabb verziójával kell rendelkeznie.
-* A Azure AD Connect kiszolgálónak a [.NET-keretrendszer 4.5.1](#component-prerequisites) -es vagy újabb verziójával, valamint a [Microsoft PowerShell 3,0](#component-prerequisites) -es vagy újabb verziójával kell rendelkeznie.
+* Azure AD Connect a Windows Server 2012-es vagy újabb verziójára kell telepíteni. A kiszolgálónak tartományhoz kell csatlakoznia, és lehet tartományvezérlő vagy tagkiszolgáló.
 * Ha Azure AD Connect varázslót használ az ADFS-konfiguráció felügyeletéhez, a Azure AD Connect kiszolgáló nem rendelkezhet a PowerShell átírásával Csoportházirend. Ha Azure AD Connect varázslót használ a szinkronizálási konfiguráció kezelésére, engedélyezheti a PowerShell átírását.
 * Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, azok a kiszolgálók, amelyeken AD FS vagy webalkalmazás-proxy telepítve van, Windows Server 2012 R2 vagy újabb rendszernek kell lennie. A Távoli telepítéshez [engedélyezni kell a](#windows-remote-management) Rendszerfelügyeleti webszolgáltatásokat ezeken a kiszolgálókon.
 * Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, [SSL-tanúsítványokra](#ssl-certificate-requirements)van szükség.
@@ -84,7 +80,7 @@ További tudnivalókért lásd:
 ### <a name="sql-server-used-by-azure-ad-connect"></a>A Azure AD Connect által használt SQL Server
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint a SQL Server 2012 Express LocalDB (SQL Server Express) egy egyszerűsített verziója van telepítve. A SQL Server Express 10 GB méretű korláttal rendelkezik, amely lehetővé teszi körülbelül 100 000 objektum kezelését. Ha nagyobb mennyiségű címtár-objektumot kell kezelnie, a telepítővarázslót a SQL Server egy másik telepítésére kell irányítani. A SQL Server telepítésének típusa hatással lehet [Azure ad Connect teljesítményére](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Ha a SQL Server eltérő telepítését használja, a következő követelmények érvényesek:
-  * A Azure AD Connect a Microsoft SQL Server összes verzióját támogatja a 2008 R2-ről (a legújabb szervizcsomaggal) a SQL Server 2019. A Microsoft Azure SQL Database adatbázisként **nem támogatott** .
+  * A Azure AD Connect a Microsoft SQL Server összes verzióját támogatja a 2012 (a legújabb szervizcsomaggal) SQL Server 2019. A Microsoft Azure SQL Database adatbázisként **nem támogatott** .
   * Kis-és nagybetűket nem megkülönböztető SQL-rendezést kell használnia. Ezeket a rendezéseket a nevükben egy \_CI_ azonosítja. **Nem támogatott** a kis-és nagybetűket megkülönböztető rendezés használata, amelyet \_CS_ azonosít a nevükben.
   * SQL-példányon csak egy szinkronizálási motor tartozhat. **Nem támogatott** SQL-példányok megosztása FIM/a rendszerbe történő szinkronizálással, vagy a következővel: Azure ad-szinkronizáló.
 
@@ -93,7 +89,7 @@ További tudnivalókért lásd:
 * Ha az expressz beállításokat használja, vagy a frissítését a (z) rendszerről, akkor vállalati rendszergazdai fiókkal kell rendelkeznie a helyszíni Active Directoryhoz.
 * [Active Directory fiókok,](reference-connect-accounts-permissions.md) ha az egyéni beállítások telepítési útvonalát vagy egy vállalati rendszergazdai fiókot használ a helyszíni Active Directoryhoz.
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolódás
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .
 * Ha a proxy vagy a tűzfal korlátozza, hogy mely URL-címek érhetők el, akkor meg kell nyitni az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) által dokumentált URL-címeket.
@@ -143,7 +139,7 @@ A Azure AD Connect a Microsoft PowerShelltől és a .NET-keretrendszer 4.5.1-tő
 * Windows Server 2012R2
   * A Microsoft PowerShell alapértelmezés szerint telepítve van. Nincs szükség műveletre.
   * A .NET-keretrendszer 4.5.1-es és újabb kiadásai a Windows Updateon keresztül érhetők el. Győződjön meg arról, hogy a Vezérlőpulton telepítette a legújabb frissítéseket a Windows Server rendszerre.
-* Windows Server 2008 R2 és Windows Server 2012
+* Windows Server 2012
   * A Microsoft PowerShell legújabb verziója a **Windows Management Framework 4,0**-es verziójában érhető el, amely a [Microsoft letöltőközpontból](https://www.microsoft.com/downloads)érhető el.
   * A .NET-keretrendszer 4.5.1-es és újabb kiadásai a [Microsoft letöltőközpontban](https://www.microsoft.com/downloads)érhetők el.
 
@@ -151,81 +147,75 @@ A Azure AD Connect a Microsoft PowerShelltől és a .NET-keretrendszer 4.5.1-tő
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>A TLS 1,2 engedélyezése Azure AD Connect
 A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint TLS 1,0-et használ a Sync Engine-kiszolgáló és az Azure AD közötti kommunikáció titkosításához. Ezt úgy változtathatja meg, hogy a .NET-alkalmazások alapértelmezés szerint a (z) kiszolgálón a TLS 1,2 használatára vannak konfigurálva. A TLS 1,2-ről a [Microsoft Security advisor 2960358 webhelyén](https://technet.microsoft.com/security/advisory/2960358)talál további információt.
 
-1. A TLS 1,2 nem engedélyezhető a Windows Server 2008 R2 vagy korábbi verziók előtt. Győződjön meg arról, hogy telepítve van az operációs rendszerének megfelelő .NET 4.5.1-gyorsjavítás, lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Lehet, hogy ez a gyorsjavítás vagy egy későbbi kiadás már telepítve van a kiszolgálón.
-2. Ha a Windows Server 2008 R2 rendszert használja, akkor győződjön meg arról, hogy a TLS 1,2 engedélyezve van. A Windows Server 2012 Server és újabb verziókban a TLS 1,2 már engedélyezve kell lennie.
+1.  Győződjön meg arról, hogy telepítve van az operációs rendszerének megfelelő .NET 4.5.1-gyorsjavítás, lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Lehet, hogy ez a gyorsjavítás vagy egy későbbi kiadás már telepítve van a kiszolgálón.
     ```
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+2. For all operating systems, set this registry key and restart the server.
     ```
-3. Az összes operációs rendszer esetében állítsa be ezt a beállításkulcsot, és indítsa újra a kiszolgálót.
+    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\.NETFramework\v4.0.30319 "alatt" = DWORD: 00000001
     ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
-    "SchUseStrongCrypto"=dword:00000001
-    ```
-4. Ha a TLS 1,2-et is engedélyezni szeretné a Sync Engine-kiszolgáló és egy távoli SQL Server között, akkor győződjön meg arról, hogy a szükséges verziók telepítve vannak a [tls 1,2-támogatáshoz a Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
+4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
-## <a name="prerequisites-for-federation-installation-and-configuration"></a>Az összevonás telepítésének és konfigurálásának előfeltételei
-### <a name="windows-remote-management"></a>Rendszerfelügyeleti webszolgáltatások
-Ha a Azure AD Connect használatával telepíti Active Directory összevonási szolgáltatások (AD FS) vagy a webalkalmazás-proxyt, olvassa el a következő követelményeket:
+## Prerequisites for federation installation and configuration
+### Windows Remote Management
+When using Azure AD Connect to deploy Active Directory Federation Services or the Web Application Proxy, check these requirements:
 
-* Ha a célkiszolgáló tartományhoz van csatlakoztatva, ellenőrizze, hogy engedélyezve van-e a Windows távoli felügyelt
-  * Emelt szintű PSH parancssori ablakban használja a parancsot `Enable-PSRemoting –force`
-* Ha a célkiszolgáló nem tartományhoz csatlakozó WAP-gép, akkor néhány további követelmény
-  * A célszámítógépen (WAP-gép):
-    * Győződjön meg arról, hogy a Rendszerfelügyeleti webszolgáltatások (Windows távfelügyeleti/WS-Management) szolgáltatás fut a szolgáltatások beépülő modulon keresztül.
-    * Emelt szintű PSH parancssori ablakban használja a parancsot `Enable-PSRemoting –force`
-  * Azon a számítógépen, amelyen a varázsló fut (ha a célszámítógép nem tartományhoz csatlakoztatott vagy nem megbízható tartomány):
-    * Emelt szintű PSH parancssori ablakban használja a parancsot `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
-    * A Kiszolgálókezelőben:
-      * DMZ WAP-gazdagép hozzáadása a számítógép-készlethez (Kiszolgálókezelő – > kezelés – > kiszolgálók hozzáadása... DNS lap használata)
-      * Kiszolgálókezelő minden kiszolgáló lap: kattintson a jobb gombbal a WAP-kiszolgáló elemre, és válassza a kezelés másként... lehetőséget, írja be a WAP-gép helyi (nem tartományi) jogcímeit.
-      * A távoli PSH-kapcsolat ellenőrzéséhez a Kiszolgálókezelő minden kiszolgáló lapján kattintson a jobb gombbal a WAP-kiszolgáló lehetőségre, és válassza a Windows PowerShell elemet. A távoli PSH-munkamenetnek nyitva kell lennie a távoli PowerShell-munkamenetek létrehozásához.
+* If the target server is domain joined, then ensure that Windows Remote Managed is enabled
+  * In an elevated PSH command window, use command `Enable-PSRemoting –force`
+* If the target server is a non-domain joined WAP machine, then there are a couple of additional requirements
+  * On the target machine (WAP machine):
+    * Ensure the winrm (Windows Remote Management / WS-Management) service is running via the Services snap-in
+    * In an elevated PSH command window, use command `Enable-PSRemoting –force`
+  * On the machine on which the wizard is running (if the target machine is non-domain joined or untrusted domain):
+    * In an elevated PSH command window, use the command `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+    * In Server Manager:
+      * add DMZ WAP host to machine pool (server manager -> Manage -> Add Servers...use DNS tab)
+      * Server Manager All Servers tab: right click WAP server and choose Manage As..., enter local (not domain) creds for the WAP machine
+      * To validate remote PSH connectivity, in the Server Manager All Servers tab: right click WAP server and choose Windows PowerShell. A remote PSH session should open to ensure remote PowerShell sessions can be established.
 
-### <a name="ssl-certificate-requirements"></a>SSL-tanúsítványokra vonatkozó követelmények
-* Javasoljuk, hogy ugyanazt az SSL-tanúsítványt használja a AD FS Farm és az összes webalkalmazás-proxy kiszolgáló összes csomópontján.
-* A tanúsítványnak X509-tanúsítványnak kell lennie.
-* Az összevonási kiszolgálókon önaláírt tanúsítványt is használhat tesztkörnyezetben tesztkörnyezetben. Éles környezetben azonban azt javasoljuk, hogy egy nyilvános HITELESÍTÉSSZOLGÁLTATÓTÓL szerezze be a tanúsítványt.
-  * Ha olyan tanúsítványt használ, amely nem nyilvánosan megbízható, győződjön meg arról, hogy az egyes webalkalmazás-proxy kiszolgálókon telepített tanúsítvány megbízható a helyi kiszolgálón és az összes összevonási kiszolgálón is.
-* A tanúsítvány identitásának meg kell egyeznie az összevonási szolgáltatás nevével (például sts.contoso.com).
-  * Az identitás vagy a tulajdonos alternatív neve (SAN) dNSName típusú bővítmény, vagy ha nincsenek SAN-bejegyzések, a tulajdonos neve köznapi névként van megadva.  
-  * Több SAN-bejegyzés is szerepelhet a tanúsítványban, ha ezek egyike megegyezik az összevonási szolgáltatás nevével.
-  * Ha Workplace Join használatát tervezi, további SAN-t kell megadnia a enterpriseregistration értékkel **.** ezt követően a szervezet egyszerű felhasználóneve (UPN) utótagja, például **enterpriseregistration.contoso.com**.
-* A CryptoAPI következő generációs (CNG) kulcsokon és a kulcstároló-szolgáltatókon alapuló tanúsítványok nem támogatottak. Ez azt jelenti, hogy tanúsítványt kell használnia egy CSP (kriptográfiai szolgáltató) alapján, és nem KSP (kulcstároló-szolgáltató).
-* A Wild-Card tanúsítványok támogatottak.
+### SSL Certificate Requirements
+* It’s strongly recommended to use the same SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
+* The certificate must be an X509 certificate.
+* You can use a self-signed certificate on federation servers in a test lab environment. However, for a production environment, we recommend that you obtain the certificate from a public CA.
+  * If using a certificate that is not publicly trusted, ensure that the certificate installed on each Web Application Proxy server is trusted on both the local server and on all federation servers
+* The identity of the certificate must match the federation service name (for example, sts.contoso.com).
+  * The identity is either a subject alternative name (SAN) extension of type dNSName or, if there are no SAN entries, the subject name specified as a common name.  
+  * Multiple SAN entries can be present in the certificate, provided one of them matches the federation service name.
+  * If you are planning to use Workplace Join, an additional SAN is required with the value **enterpriseregistration.** followed by the User Principal Name (UPN) suffix of your organization, for example, **enterpriseregistration.contoso.com**.
+* Certificates based on CryptoAPI next generation (CNG) keys and key storage providers are not supported. This means you must use a certificate based on a CSP (cryptographic service provider) and not a KSP (key storage provider).
+* Wild-card certificates are supported.
 
-### <a name="name-resolution-for-federation-servers"></a>Névfeloldás összevonási kiszolgálókon
-* Állítsa be a DNS-rekordokat a AD FS összevonási szolgáltatás neveként (például sts.contoso.com) az intraneten (belső DNS-kiszolgáló) és az extraneten (a nyilvános DNS-en keresztül). Az intranetes DNS-rekord esetében ügyeljen arra, hogy a rekordokat és a nem CNAME rekordokat használja. Ez ahhoz szükséges, hogy a Windows-hitelesítés megfelelően működjön a tartományhoz csatlakoztatott gépről.
-* Ha egynél több AD FS-kiszolgálót vagy webalkalmazás-proxykiszolgálót telepít, győződjön meg arról, hogy konfigurálta a terheléselosztó nevét, és hogy a AD FS összevonási szolgáltatás neve (például sts.contoso.com) DNS-rekordjai a terheléselosztó felé mutatnak.
-* Ahhoz, hogy a Windows beépített hitelesítése az Internet Explorer használatával működjön az intraneten, győződjön meg arról, hogy a AD FS összevonási szolgáltatás neve (például sts.contoso.com) hozzá van adva az az intranetes zónához az IE-ben. Ez a csoportházirenden keresztül vezérelhető, és az összes tartományhoz csatlakoztatott számítógépen üzembe helyezhető.
+### Name resolution for federation servers
+* Set up DNS records for the AD FS federation service name (for example sts.contoso.com) for both the intranet (your internal DNS server) and the extranet (public DNS through your domain registrar). For the intranet DNS record, ensure that you use A records and not CNAME records. This is required for windows authentication to work correctly from your domain joined machine.
+* If you are deploying more than one AD FS server or Web Application Proxy server, then ensure that you have configured your load balancer and that the DNS records for the AD FS federation service name (for example sts.contoso.com) point to the load balancer.
+* For windows integrated authentication to work for browser applications using Internet Explorer in your intranet, ensure that the AD FS federation service name (for example sts.contoso.com) is added to the intranet zone in IE. This can be controlled via group policy and deployed to all your domain joined computers.
 
-## <a name="azure-ad-connect-supporting-components"></a>Azure AD Connect támogató összetevők
-Az alábbi lista azon összetevők listáját tartalmazza, amelyeket Azure AD Connect a Azure AD Connect telepítésére szolgáló kiszolgálón. Ez a lista egy alapszintű expressz telepítéshez használható. Ha más SQL Server használatát választja a szinkronizálási szolgáltatások telepítése lapon, akkor az SQL Express LocalDB nincs helyileg telepítve.
+## Azure AD Connect supporting components
+The following is a list of components that Azure AD Connect installs on the server where Azure AD Connect is installed. This list is for a basic Express installation. If you choose to use a different SQL Server on the Install synchronization services page, then SQL Express LocalDB is not installed locally.
 
 * Azure AD Connect Health
-* Microsoft SQL Server 2012 parancssori segédeszközök
+* Microsoft SQL Server 2012 Command Line Utilities
 * Microsoft SQL Server 2012 Express LocalDB
-* Microsoft SQL Server 2012 natív ügyfél
-* Microsoft Visual C++ 2013 újraterjesztési csomag
+* Microsoft SQL Server 2012 Native Client
+* Microsoft Visual C++ 2013 Redistribution Package
 
-## <a name="hardware-requirements-for-azure-ad-connect"></a>A Azure AD Connecthez szükséges hardverkövetelmények
-Az alábbi táblázat a Azure AD Connect szinkronizálására szolgáló számítógép minimális követelményeit mutatja be.
+## Hardware requirements for Azure AD Connect
+The table below shows the minimum requirements for the Azure AD Connect sync computer.
 
-| Objektumok száma a Active Directoryban | CPU | Memory (Memória) | Merevlemez mérete |
+| Number of objects in Active Directory | CPU | Memory | Hard drive size |
 | --- | --- | --- | --- |
-| Kevesebb mint 10 000 |1,6 GHz-es |4 GB |70 GB |
-| 10,000–50,000 |1,6 GHz-es |4 GB |70 GB |
-| 50,000–100,000 |1,6 GHz-es |16 GB |100 GB |
-| 100 000 vagy több objektum esetén a SQL Server teljes verziója szükséges | | | |
-| 100,000–300,000 |1,6 GHz-es |32 GB |300 GB |
-| 300,000–600,000 |1,6 GHz-es |32 GB |450 GB |
-| Több mint 600 000 |1,6 GHz-es |32 GB |500 GB |
+| Fewer than 10,000 |1.6 GHz |4 GB |70 GB |
+| 10,000–50,000 |1.6 GHz |4 GB |70 GB |
+| 50,000–100,000 |1.6 GHz |16 GB |100 GB |
+| For 100,000 or more objects the full version of SQL Server is required | | | |
+| 100,000–300,000 |1.6 GHz |32 GB |300 GB |
+| 300,000–600,000 |1.6 GHz |32 GB |450 GB |
+| More than 600,000 |1.6 GHz |32 GB |500 GB |
 
-AD FS vagy webalkalmazás-proxy kiszolgálókat futtató számítógépek minimális követelményei a következők:
+The minimum requirements for computers running AD FS or Web Application Proxy Servers is the following:
 
-* CPU: kétmagos 1,6 GHz-es vagy újabb
-* MEMÓRIA: 2 GB vagy magasabb
-* Azure-beli virtuális gép: a2 vagy újabb konfiguráció
+* CPU: Dual core 1.6 GHz or higher
+* MEMORY: 2 GB or higher
+* Azure VM: A2 configuration or higher
 
-## <a name="next-steps"></a>További lépések
-További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
+## Next steps
+Learn more about [Integrating your on-premises identities with Azure Active Directory](whatis-hybrid-identity.md).

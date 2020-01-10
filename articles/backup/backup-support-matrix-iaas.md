@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátri
 description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: fa4e01def8db4e5fef32b644d198bad1e9beab27
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 36fbc4813cdc9849b77e8309c97a2d42511a31d0
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996170"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829544"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -62,7 +62,7 @@ Biztonsági mentés az Azure VM Agent bővítménnyel | – Windows 10-ügyfél 
 Biztonsági mentés a MARS-ügynökkel | [Támogatott](backup-support-matrix-mars-agent.md#support-for-direct-backups) operációs rendszerek.
 Biztonsági mentés a DPM/MABS | A [MABS](backup-mabs-protection-matrix.md) és [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)biztonsági mentéshez támogatott operációs rendszerek.
 
-A Azure Backup nem támogatja a 32 bites operációs rendszereket.
+Az Azure Backup nem támogatja a 32 bites operációs rendszereket.
 
 ## <a name="support-for-linux-backup"></a>Linux biztonsági mentés támogatása
 
@@ -79,7 +79,7 @@ Linuxos Azure-beli virtuális gépek biztonsági mentése a DPM/MABS | Nem támo
 Az Azure-beli virtuális gépek linuxos biztonsági mentését Azure Backup támogatja az [Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)listáját. Vegye figyelembe a következőket:
 
 - A Azure Backup nem támogatja a Core OS Linux rendszert.
-- A Azure Backup nem támogatja a 32 bites operációs rendszereket.
+- Az Azure Backup nem támogatja a 32 bites operációs rendszereket.
 - Más, saját linuxos disztribúciók is működhetnek, ha a Linux rendszerhez készült [Azure VM-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) elérhető a virtuális gépen, és a Python is támogatott.
 - A Azure Backup nem támogatja a proxyval konfigurált linuxos virtuális gépeket, ha nincs telepítve a Python 2,7-es verziója.
 
@@ -154,16 +154,16 @@ Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtu�
 
 **Összetevő** | **Támogatás**
 --- | ---
-Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel.
+Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel.<BR> Ha regisztrálni szeretne a 16-nál több (legfeljebb 32) adatlemezzel rendelkező virtuális gépek privát előzetes verziójára, írjon nekünk a következő címre: AskAzureBackupTeam@microsoft.com
 Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 Tárhely típusa | Standard HDD, standard SSD, prémium SSD.
 Managed Disks | Támogatott.
-Titkosított lemezek | Támogatott (legfeljebb 4 TB).<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
+Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
 írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> Az Azure Backup automatikusan kizárja a lemezeket, amelyeken engedélyezve van a írásgyorsító a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem tudja visszaállítani ezeket a lemezeket a virtuális gép helyreállítási pontjairól.
-Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure Backup nem duplikálja a Recovery Services-tárolóban lévő virtuális gépek között <br/> <br/>  – Ha a visszaállítás során a rendszer lemásolja a virtuális gépeket, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot.
+Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure Backup nem duplikálja a Recovery Services-tárolóban lévő virtuális gépek között <br/> <br/>  – Ha a visszaállítás során a rendszer duplikált virtuális gépeket tartalmaz, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot. A virtuális gép teljes visszaállítását azonban sikeresen végrehajthatja.
 Lemez hozzáadása a védett virtuális géphez | Támogatott.
 Lemez átméretezése védett virtuális gépen | Támogatott.
-Megosztott tároló| Nem ajánlott biztonsági másolatot készíteni a virtuális gépekről Fürt megosztott kötete (CSV) vagy Kibővíthető fájlkiszolgáló használatával. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.
+Megosztott tároló| A virtuális gépek Fürt megosztott kötete (CSV) vagy Kibővíthető fájlkiszolgáló használatával történő biztonsági mentése nem támogatott. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.
 
 ## <a name="vm-network-support"></a>VM-hálózat támogatása
 

@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez irányítja.
-ms.date: 12/16/2019
+ms.date: 01/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1eb06794551be498e05e2b9c3b893013b718ce9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a1720a3bcfd0b08f8d9c8147b5e47ed42af6fda
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453537"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834093"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -63,7 +63,7 @@ Hajtsa végre a következő szakaszokat a **csomag részletei** szakaszban:
 |**Ez egy privát csomag?**     | Azt jelzi, hogy az SKU magán-vagy nyilvános. Az alapértelmezett érték **nem** (nyilvános). Ha ezt a beállítást választja, a csomag nem korlátozódik meghatározott ügyfelekre (vagy bizonyos számú ügyfélre); Miután közzétett egy nyilvános csomagot, később nem módosíthatja magánjellegűre. Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen**lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 20 000 előfizetés esetén). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot. További információ: [Private SKU-i és csomagok](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  |
 
 > [!IMPORTANT]
-> Miután közzétett egy csomagot nyilvánosként, nem módosíthatja magánjellegűre. Egy privát csomag használatával szabályozhatja, hogy mely ügyfelek fogadhatják el az ajánlatot, és hogyan delegálhat erőforrásokat. Egy nyilvános csomaggal nem korlátozhatja a rendelkezésre állást bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfél számára is (bár ha úgy dönt, hogy teljesen megszüntetheti a csomag értékesítését). Jelenleg nincs olyan mechanizmus, amely elutasítja vagy eltávolítja a delegálásokat, ha az ügyfél elfogad egy ajánlatot, de bármikor elérheti az ügyfelet, és megkérheti, hogy [távolítsa el a hozzáférését](view-manage-service-providers.md#add-or-remove-service-provider-offers).
+> Miután közzétett egy csomagot nyilvánosként, nem módosíthatja magánjellegűre. Egy privát csomag használatával szabályozhatja, hogy mely ügyfelek fogadhatják el az ajánlatot, és hogyan delegálhat erőforrásokat. Egy nyilvános csomaggal nem korlátozhatja a rendelkezésre állást bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfél számára is (bár ha úgy dönt, hogy teljesen megszüntetheti a csomag értékesítését). A [delegáláshoz való hozzáférést csak akkor távolíthatja el,](onboard-customer.md#remove-access-to-a-delegation) ha az ügyfél csak akkor fogadja el az **ajánlatot, ha** az ajánlat közzétételekor a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) beállította a **szerepkör-definícióban** . Az ügyfelet is elérheti, és megkérheti, hogy [távolítsa el a hozzáférését](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ### <a name="manifest-details"></a>Jegyzékfájl részletei
 
@@ -76,7 +76,10 @@ Először adja meg a jegyzékfájl **verzióját** . Használja az *n. n. n* for
 
 Ezután adja meg a **bérlői azonosítóját**. Ez a szervezet Azure Active Directory bérlői azonosítójával társított GUID (azaz a bérlő, amely az ügyfelek erőforrásainak kezeléséhez fog dolgozni). Ha nem rendelkezik ezzel a hasznos megoldással, a fiók neve fölé helyezve a Azure Portal jobb felső sarkában vagy a **címtár váltása**lehetőségre kattintva.
 
-Végül adjon hozzá egy vagy több **engedélyezési** bejegyzést a csomaghoz. Az engedélyek határozzák meg azokat az entitásokat, akik hozzáférhetnek a csomagot megvásárló ügyfelek erőforrásaihoz és előfizetéséhez, valamint olyan szerepköröket, amelyek adott hozzáférési szinteket biztosítanak. A támogatott szerepkörökkel kapcsolatos részletekért lásd: [bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
+Végül adjon hozzá egy vagy több **engedélyezési** bejegyzést a csomaghoz. Az engedélyek határozzák meg azokat az entitásokat, akik hozzáférhetnek a csomagot megvásárló ügyfelek erőforrásaihoz és előfizetéséhez, valamint olyan szerepköröket, amelyek adott hozzáférési szinteket biztosítanak.
+
+> [!TIP]
+> A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet. További javaslatokért lásd: [bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
 
 Minden egyes **engedélyezéshez**meg kell adnia a következőket. Ezután több felhasználó és szerepkör-definíció hozzáadásához több alkalommal is kiválaszthatja az **új engedélyezést** .
 
@@ -86,7 +89,7 @@ Minden egyes **engedélyezéshez**meg kell adnia a következőket. Ezután több
 - **Hozzárendelhető szerepkörök**: erre csak akkor van szükség, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](../../active-directory/managed-identities-azure-resources/overview.md), ami szükséges a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. Ha itt nem választ ki egy vagy több szerepkört, a beküldés nem ad át minősítést. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
 
 > [!TIP]
-> A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet. További javaslatokért lásd: [bérlők, szerepkörök és felhasználók az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
+> Ha meg szeretné győződni arról, hogy szükség esetén [el tudja távolítani a hozzáférést a delegáláshoz](onboard-customer.md#remove-access-to-a-delegation) , adjon **meg egy, a** [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepköréhez](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)beállított **szerepkör-definíciót** . Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak egy felhasználó távolíthatja el az ügyfél bérlője számára.
 
 Miután elvégezte az információkat, az új csomagok lehetőség kiválasztásával tetszőleges számú további **csomagot** hozhat létre. Ha elkészült, válassza a **Mentés**lehetőséget, majd folytassa a **piactérsel** szakaszt.
 
@@ -147,7 +150,7 @@ Bármikor [közzéteheti az ajánlat frissített verzióját](../../marketplace/
 Miután az ügyfél hozzáadja az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources), amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg.
 
 > [!IMPORTANT]
-> A delegálást olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, [listázhatja az összes szerepkört](../../role-based-access-control/role-definitions-list.md#list-all-roles), majd a **tulajdonos** lehetőséget választva megtekintheti az adott szerepkörrel
+> A delegálást olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
 

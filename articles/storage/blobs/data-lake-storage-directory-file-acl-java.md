@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 5a08a1f104e1820755f231ae6d1248ccc21ce330
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41e93ad19e21ae81843992b1b190d1bd37585c2e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431839"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835075"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>A Java használata könyvtárak, fájlok és ACL-ek kezeléséhez Azure Data Lake Storage Gen2 (előzetes verzió)
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet a Java használ
 > [!IMPORTANT]
 > A cikkben szereplő Java-kódtár jelenleg nyilvános előzetes verzióban érhető el.
 
-[Csomag (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [minta](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API-referenciával](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 a Gen2 leképezéséhez](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [visszajelzés küldése](https://github.com/Azure/azure-sdk-for-java/issues)
+[Csomag (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [minta](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API-referenciával](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 a Gen2 leképezéséhez](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [visszajelzés küldése](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -158,6 +158,9 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 
 Ez a példa lekéri és beállítja a `my-directory`nevű könyvtár ACL-listáját. Ez a példa az olvasási, írási és végrehajtási engedélyeket adja meg, így a tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik, és minden más olvasási hozzáférést biztosít.
 
+> [!NOTE]
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
+
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
 
@@ -217,6 +220,9 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 ## <a name="manage-a-file-acl"></a>Fájl hozzáférés-vezérlési listájának kezelése
 
 Ez a példa lekérdezi és beállítja a `upload-file.txt`nevű fájl hozzáférés-vezérlési listáját. Ez a példa az olvasási, írási és végrehajtási engedélyeket adja meg, így a tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik, és minden más olvasási hozzáférést biztosít.
+
+> [!NOTE]
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
 
 ```java
 static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){

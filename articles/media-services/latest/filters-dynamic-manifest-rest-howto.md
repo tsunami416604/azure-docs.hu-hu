@@ -1,6 +1,6 @@
 ---
-title: Szűrők létrehozása az Azure Media Services REST API-val |} A Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, így az ügyfél használhatja őket stream konkrét szakaszokra datového proudu. A Media Services dinamikus jegyzékek érdekében, ami a szelektív hoz létre.
+title: Szűrők létrehozása Azure Media Services v3 REST API
+description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, hogy az ügyfél egy stream adott szakaszait továbbítsa. A Media Services dinamikus jegyzékfájlokat hoz létre a szelektív streaming eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,36 +13,36 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 76e6e1595cb8bf49dbbc82c3cae5de80ea718aeb
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786455"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780334"
 ---
-# <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása a Media Services REST API-val
+# <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása Media Services REST API
 
-Az ügyfelek számára (élő eseményeket vagy igény szerinti Videószolgáltatás streaming) tartalomtovábbításkor az ügyfél igényelhet az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot. Az Azure Media Services lehetővé teszi, hogy meghatározza a fiók és a tartalom eszköz szűrőket. 
+Ha a tartalmat az ügyfeleknek (élő vagy igény szerinti közvetítéssel közvetíti), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
 
-Ez a szolgáltatás és a felhasználási forgatókönyvek részletes ismertetését lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
+A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ez a témakör bemutatja, hogyan videó igény szerint eszköz a kapcsolódó szűrő megadásához és a REST API-k használatával létrehozhat [Fiókszűrők](https://docs.microsoft.com/rest/api/media/accountfilters) és [eszköz szűrők](https://docs.microsoft.com/rest/api/media/assetfilters). 
+Ebből a témakörből megtudhatja, hogyan határozhat meg egy igény szerinti videóhoz tartozó szűrőt, és hogyan hozhat létre REST API-kat a [fiókok](https://docs.microsoft.com/rest/api/media/accountfilters) és az [eszközök szűrőinek](https://docs.microsoft.com/rest/api/media/assetfilters)létrehozásához. 
 
 > [!NOTE]
-> Mindenképpen tekintse át [presentationTimeRange](filters-concept.md#presentationtimerange).
+> Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-Az ebben a témakörben leírt lépések elvégzéséhez kell:
+A jelen témakörben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-- Felülvizsgálat [szűrők és dinamikus jegyzékek](filters-dynamic-manifest-overview.md).
-- [Postman konfigurálása az Azure Media Services REST API-hívások](media-rest-apis-with-postman.md).
+- Tekintse át [a szűrőket és a dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md).
+- [A Poster beállítása Azure Media Services REST API-hívásokhoz](media-rest-apis-with-postman.md).
 
-    Kövesse a témakör az utolsó lépés [lekérése az Azure AD-Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](media-rest-apis-with-postman.md#get-azure-ad-token)című témakör utolsó lépését. 
 
-## <a name="define-a-filter"></a>Szűrő megadásához.  
+## <a name="define-a-filter"></a>Szűrő definiálása  
 
-Az alábbiakban a **kérelem törzse** példa, amely meghatározza a jegyzékfájl hozzáadott követése kiválasztási feltételek. Ez a szűrő tartalmazza, bármilyen, amelyek EC-3 hangsáv és bármely videó nyomon követi a 0-1000000 sávszélességű rendelkező tartományt.
+A következő példa a **kérelem szövegtörzsét** határozza meg, amely meghatározza a jegyzékfájlhoz hozzáadott kiválasztási feltételeket. Ez a szűrő minden olyan hangsávot magában foglal, amely EC-3, valamint az 0-1000000-es tartományon belüli bitrátával rendelkező videók.
 
 ```json
 {
@@ -81,60 +81,60 @@ Az alábbiakban a **kérelem törzse** példa, amely meghatározza a jegyzékfá
 }
 ```
 
-## <a name="create-account-filters"></a>Fiók szűrők létrehozása
+## <a name="create-account-filters"></a>Fiókok szűrőinek létrehozása
 
-Válassza ki a letöltött a Postman-gyűjtemény, **Fiókszűrők**->**létrehozás vagy frissítés egy szűrő**.
+A letöltött Poster gyűjteményében válassza a **fiók szűrők** lehetőséget,->**hozzon létre vagy frissítsen egy fiók szűrőt**.
 
-A **PUT** HTTP-kérési metódust hasonlít:
+A **put** HTTP-kérelem módszere a következőhöz hasonló:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
 ```
 
-Válassza ki a **törzs** lapra, és illessze be a json-kód, [korábban meghatározott](#define-a-filter).
+Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
 Kattintson a **Küldés** gombra. 
 
 A szűrő létrejött.
 
-További információkért lásd: [létrehozásának vagy frissítésének](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+További információ: [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
-## <a name="create-asset-filters"></a>Az eszközintelligencia-szűrők létrehozásához  
+## <a name="create-asset-filters"></a>Eszközcsoport-szűrők létrehozása  
 
-Válassza a "Media Services v3" Postman-gyűjtemény letöltött, **eszközök**->**létrehozásának vagy frissítésének eszköz szűrő**.
+A letöltött "Media Services v3" Poster-gyűjteményben válassza az adategységek->**create vagy Update Asset Filter (eszközök létrehozása vagy frissítése**) lehetőséget.
 
-A **PUT** HTTP-kérési metódust hasonlít:
+A **put** HTTP-kérelem módszere a következőhöz hasonló:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
 ```
 
-Válassza ki a **törzs** lapra, és illessze be a json-kód, [korábban meghatározott](#define-a-filter).
+Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
 Kattintson a **Küldés** gombra. 
 
-Az eszközintelligencia-szűrő létrehozása.
+Az eszköz szűrője létrejött.
 
-További információ a létrehozása vagy frissítése az eszközintelligencia szűrők: [létrehozásának vagy frissítésének](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Lásd még [JSON példák a szűrők](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Az eszközoldali szűrők létrehozásával vagy frissítésével kapcsolatos részletekért lásd: [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
-## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+## <a name="associate-filters-with-streaming-locator"></a>Szűrők hozzárendelése a folyamatos átviteli Lokátorhoz
 
-Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus Packager (folyamatos átviteli végponton)](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dinamikus Manifest](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+Megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. A [dinamikus csomagoló (streaming Endpoint)](dynamic-packaging-overview.md) a szűrők ezen listáját alkalmazza, az ügyfél által megadott URL-címen. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. Azt javasoljuk, hogy használja ezt a funkciót, ha szűrőket kíván alkalmazni, de nem szeretné kitenni a szűrő nevét az URL-címben.
 
-Hozzon létre, és rendelje hozzá a REST használatával Streamelési lokátor szűrők, használja a [létrehozása a Streamelési Lokátorok -](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API-t, és adja meg `properties.filters` a a [kérelem törzse](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body).
+Ha a REST használatával szeretne szűrőket létrehozni és hozzárendelni egy streaming-Lokátorhoz, használja a [streaming-lokátorok – API létrehozása](https://docs.microsoft.com/rest/api/media/streaminglocators/create) és a `properties.filters` megadását a [kérelem törzsében](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body).
                                 
-## <a name="stream-using-filters"></a>Stream-szűrők használata
+## <a name="stream-using-filters"></a>Stream szűrők használatával
 
-Miután meghatározott szűrőket, az ügyfelek lehetett használni őket a streamelési URL-CÍMÉT. Az adaptív sávszélességű streamelési protokollok szűrőket is lehet alkalmazni: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
+A szűrők meghatározása után az ügyfelek a streaming URL-ben használhatják őket. A szűrők alkalmazhatók az adaptív sávszélességű adatfolyam-továbbítási protokollokra: Apple HTTP Live Streaming (HLS), MPEG-DASH és Smooth Streaming.
 
-Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
+Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
-|Protocol|Példa|
+|Protocol (Protokoll)|Példa|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Stream-videók](stream-files-tutorial-with-rest.md) 

@@ -5,20 +5,20 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: f00637ff2c8cf39b683056b041fe0e991276a065
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227219"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769523"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions kötési kifejezés mintái
 
 Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése*. A *function. JSON* fájlban és a függvény paraméterei és kódja területen olyan kifejezéseket használhat, amelyek különböző forrásokból származó értékekre vannak feloldva.
 
-A legtöbb kifejezést kapcsos zárójelek közé kell becsomagolni. Egy üzenetsor-kiváltó függvényben például `{queueTrigger}` a rendszer feloldja az üzenetsor-üzenet szövegét. Ha egy blob kimeneti kötés `path` tulajdonsága `container/{queueTrigger}`, és a függvényt egy üzenetsor-üzenet `HelloWorld`indítja el, a rendszer létrehoz egy `HelloWorld` nevű blobot.
+A legtöbb ilyen kifejezés könnyen azonosítható, mivel kapcsos zárójelek között vannak. Egy üzenetsor-kiváltó függvényben például `{queueTrigger}` a rendszer feloldja az üzenetsor-üzenet szövegét. Ha egy blob kimeneti kötés `path` tulajdonsága `container/{queueTrigger}`, és a függvényt egy üzenetsor-üzenet `HelloWorld`indítja el, a rendszer létrehoz egy `HelloWorld` nevű blobot.
 
-Kötési kifejezések típusai
+Kötéskifejezések típusai
 
 * [Alkalmazásbeállítások](#binding-expressions---app-settings)
 * [Trigger fájljának neve](#trigger-file-name)
@@ -67,7 +67,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Trigger fájljának neve
+## <a name="trigger-file-name"></a>Eseményindító fájl neve
 
 A blob-triggerek `path` egy olyan minta lehet, amely lehetővé teszi az indító blob nevét más kötésekben és a függvény kódjában. A minta tartalmazhat olyan szűrési feltételeket is, amelyek meghatározzák, hogy mely Blobok indíthatnak el egy függvényt.
 
@@ -133,7 +133,7 @@ public static void Run(
 
 A fájlnevek részeihez (például a kiterjesztéshez) is létrehozhat kifejezéseket. A kifejezéseknek és mintáknak a blob Path karakterláncban történő használatáról további információt a [Storage blob kötési referenciájában](functions-bindings-storage-blob.md)talál.
 
-## <a name="trigger-metadata"></a>Trigger metaadatainak
+## <a name="trigger-metadata"></a>Eseményindító metaadatok
 
 Az eseményindító által biztosított adattartalom (például a függvényt kiváltó üzenetsor-üzenet tartalma) mellett számos eseményindító további metaadat-értékeket is biztosít. Ezek az értékek a (z) C# és a ( F# z) és a (z) `context.bindings` objektumban található bemeneti paraméterekként használhatók a JavaScriptben. 
 
@@ -141,7 +141,7 @@ Az Azure üzenetsor-tárolói trigger például a következő tulajdonságokat t
 
 * QueueTrigger – az üzenet tartalmának elindítása, ha érvényes karakterlánc
 * DequeueCount
-* Expirationtime tulajdonságok
+* ExpirationTime
 * Azonosító
 * InsertionTime
 * NextVisibleTime
@@ -169,7 +169,7 @@ Ezek a metaadat-értékek a *function. JSON* fájl tulajdonságaiban érhetők e
 
 Az egyes triggerek metaadat-tulajdonságainak részletes ismertetését a megfelelő hivatkozási cikk ismerteti. Példa: [üzenetsor-trigger metaadatainak](functions-bindings-storage-queue.md#trigger---message-metadata). A dokumentáció a portál Integration ( **integrálás** ) lapján, a kötési konfiguráció terület alatti **dokumentáció** szakaszban is elérhető.  
 
-## <a name="json-payloads"></a>JSON-adattartalom
+## <a name="json-payloads"></a>JSON-adattartalmak
 
 Ha egy trigger adattartalma JSON, akkor a más kötésekhez tartozó tulajdonságokat a konfigurációban tekintheti meg ugyanabban a függvényben és a függvény kódjában.
 
@@ -285,7 +285,7 @@ A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy `functi
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{rand-guid}"
+  "path": "my-output-container/{rand-guid}.txt"
 }
 ```
 
@@ -298,7 +298,7 @@ A kötési kifejezés `DateTime` `DateTime.UtcNow`. Egy `function.json` fájlban
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{DateTime}"
+  "path": "my-output-container/{DateTime}.txt"
 }
 ```
 ## <a name="binding-at-runtime"></a>Kötés futásidőben

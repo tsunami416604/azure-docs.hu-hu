@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799394"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832924"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
@@ -160,13 +160,13 @@ Habár az aszimmetrikus kulcsokat használó WRAPKEY/UNWRAPKEY feleslegesnek tű
 
 A Key Vault nem támogatja az EXPORTÁLÁSi műveleteket. Ha a kulcsot kiépítik a rendszerbe, azt nem lehet kibontani, vagy a kulcs lényegét módosítani. Előfordulhat azonban, hogy a Key Vault felhasználóinak más használati esetekhez, például a törlésük után is szükségük van a kulcsra. Ebben az esetben a biztonsági mentési és VISSZAÁLLÍTÁSi műveleteket a kulcs védett formában való exportálására/importálására használhatják. A biztonsági mentési művelet által létrehozott kulcsok nem használhatók Key Vaulton kívül. Azt is megteheti, hogy az IMPORTÁLÁSi művelet több Key Vault példányon is használható.  
 
-A felhasználók a JWK objektum key_ops tulajdonságának használatával korlátozhatják az Key Vault által támogatott titkosítási műveleteket.  
+A felhasználók a JWK objektum key_ops tulajdonságának használatával korlátozhatják a Key Vault által támogatott titkosítási műveleteket.  
 
 A JWK-objektumokkal kapcsolatos további információkért lásd a [JSON webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)című témakört.  
 
 ###  <a name="key-attributes"></a>Fő attribútumok
 
-A kulcs anyagán kívül a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
+A fő elemek mellett a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
 
 - *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp*együttes használata esetén használatos. Ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz**). A *NBF* -en kívüli műveletek / *exp* ablak automatikusan le lesz tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
 - *NBF*: IntDate, nem kötelező, alapértelmezés szerint most. A *NBF* (nem előtte) attribútum azt az időpontot határozza meg, ameddig a kulcs nem használható a titkosítási műveletekhez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. A *NBF* attribútum feldolgozásához az aktuális dátumnak és időpontnak a *NBF* attribútumban felsorolt nem korábbi dátummal és időponttal kell rendelkeznie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely általában legfeljebb néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
@@ -230,7 +230,7 @@ A kulcsok használatával kapcsolatos további információkért tekintse meg [a
 
 Fejlesztői szempontból Key Vault API-k elfogadják és visszaadják a titkos értékeket karakterláncként. Belsőleg Key Vault a titkokat az oktettek (8 bites bájtok) sorozatának megfelelően tárolja és kezeli, és a 25k maximális mérete (bájt). A Key Vault szolgáltatás nem biztosít szemantikai adatokat a titkokhoz. Csupán elfogadja az adatot, titkosítja, tárolja, és visszaadja a titkos azonosítót ("id"). Az azonosító segítségével később is lekérheti a titkos kulcsot.  
 
-A szigorúan bizalmas adatok esetében az ügyfeleknek az adatok védelmének további rétegeit kell figyelembe venniük. Az adattitkosítás egy külön védelmi kulccsal történik, a tárolás előtt Key Vault egy példa.  
+A szigorúan bizalmas adatokhoz az ügyfeleknek ajánlott további adatvédelmi rétegeket is használni. Ez lehet például az adatok külön védelmi kulccsal történő titkosítása a Key Vaultba helyezés előtt.  
 
 A Key Vault a Secrets (contentType) mezőt is támogatja. Az ügyfelek megadhatják a titkos kód tartalomtípusát, hogy segítséget nyújtsanak a titkos adatokat a beolvasás során. A mező maximális hossza 255 karakter. Nincsenek előre definiált értékek. A javasolt használat a titkos adatok értelmezésére utal. Előfordulhat például, hogy egy implementáció titkos kulcsként tárolja a jelszavakat és a tanúsítványokat, majd ezt a mezőt használja a megkülönböztetéshez. Nincsenek előre definiált értékek.  
 
@@ -376,7 +376,7 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 A Key Vault Certificate objektum olyan konfigurációt tartalmaz, amely a kiválasztott tanúsítvány-kiállító szolgáltatóval való kommunikációra szolgál a x509-tanúsítványok megrendeléséhez.  
 
--   Key Vault partnerek az SSL-tanúsítványok következő tanúsítvány-kiállítói szolgáltatói által
+-   Key Vault partnerek a következő tanúsítvány-kiállító szolgáltatókkal a TLS/SSL-tanúsítványokhoz
 
 |**Szolgáltató neve**|**Helyek**|
 |----------|--------|
@@ -389,7 +389,7 @@ Ahhoz, hogy a tanúsítvány kiállítója egy Key Vaulton legyen létrehozva, a
 
     -   A vállalati rendszergazdának be kell jelentkeznie a vállalatnál (pl. Contoso) legalább egy HITELESÍTÉSSZOLGÁLTATÓI szolgáltatóval.  
 
-2. A rendszergazda az SSL-tanúsítványok regisztrálásához (és megújításához) Key Vault kérő hitelesítő adatokat hoz létre.  
+2. A rendszergazda létrehoz egy kérelmező hitelesítő adatokat a Key Vault számára a TLS/SSL-tanúsítványok regisztrálásához (és megújításához)  
 
     -   A Key vaultban a szolgáltató kiállító objektumának létrehozásához használandó konfigurációt adja meg.  
 

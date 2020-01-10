@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 85aa1bda395240d0f11b0654ee48b9f1a0401eaa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 561162767a48a060763510310de77767f37d4eb4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930598"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770186"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Gyorskonfigurálás: Képek keresése a Python-hoz készült Bing Image Search SDK használatával
 
@@ -29,7 +29,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 * [Python 2.7 vagy 3.4-es](https://www.python.org/) vagy ennél újabb verzió.
 
 * [Azure Image Search SDK](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) Pythonhoz
-    * Végezze el a telepítést az `pip install azure-cognitiveservices-search-imagesearch` paranccsal.
+    * Végezze el a telepítést a `pip install azure-cognitiveservices-search-imagesearch` paranccsal
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -38,7 +38,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 1. Hozzon létre egy új Python-szkriptet a kedvenc IDE-környezetében vagy szerkesztőjében, az alábbi importálásokkal:
 
     ```python
-    from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
+    from azure.cognitiveservices.search.imagesearch import ImageSearchClient
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
@@ -46,6 +46,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
     ```python
     subscription_key = "Enter your key here"
+    subscription_endpoint = "Enter your endpoint here"
     search_term = "canadian rockies"
     ```
 
@@ -54,7 +55,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 1. Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
 
     ```python
-    client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
+    client = ImageSearchClient(endpoint=subscription_endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 1. Küldjön egy keresési lekérdezést a Bing Image Search API-nak:
     ```python
@@ -90,4 +91,4 @@ else:
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Python-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

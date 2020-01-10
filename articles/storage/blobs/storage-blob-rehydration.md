@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: d6370509b49ae464b53525e7320676b04912bd12
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113710"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780239"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 
@@ -48,7 +48,69 @@ Az archiválási szinten lévő blobokat legalább 180 napig kell tárolni. Az a
 > [!NOTE]
 > A blokk-blobok és az adattisztítások díjszabásával kapcsolatos további információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/blobs/). A kimenő adatátviteli díjakkal kapcsolatos további információkért tekintse meg az [adatátviteli díjszabás részleteit](https://azure.microsoft.com/pricing/details/data-transfers/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="quickstart-scenarios"></a>Rövid útmutatóul szolgáló forgatókönyvek
+
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Archív blob rehidratálása online szintre
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+
+1. A Azure Portal keresse meg és válassza ki az **összes erőforrás**elemet.
+
+1. Válassza ki a tárfiókot.
+
+1. Válassza ki a tárolót, majd válassza ki a blobot.
+
+1. A **blob tulajdonságainál**válassza a lehetőség **módosítása**lehetőséget.
+
+1. Válassza ki **a** gyakori **vagy ritka** elérésű hozzáférési szintet. 
+
+1. Válassza a **standard** vagy a **magas**rehidratálás prioritást.
+
+1. Kattintson a **Save (Mentés** ) gombra a lap alján.
+
+![Storage-fiók szintjeinek módosítása](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Az alábbi PowerShell-parancsfájl segítségével módosíthatja az archív Blobok blob-szintjét. Az `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$containerName` változót inicializálni kell a tároló nevével. A `$blobName` változót inicializálni kell a blob nevével. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to Hot using Standard priority rehydrate
+$blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
+```
+---
+
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Archív blob másolása egy új blobba egy online szinttel
+Az alábbi PowerShell-szkripttel másolhatja az archív blobokat egy új blobba ugyanazon a Storage-fiókon belül. Az `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$srcContainerName` és `$destContainerName` változókat a tároló nevével kell inicializálni. A `$srcBlobName` és `$destBlobName` változókat inicializálni kell a blob nevével. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$srcContainerName = ""
+$destContainerName = ""
+$srcBlobName == ""
+$destBlobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Copy source blob to a new destination blob with access tier hot using standard rehydrate priority
+Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -DestContainer $destContainerName -DestBlob $destBlobName -StandardBlobTier Hot -RehydratePriority Standard -Context $ctx
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Tudnivalók a Blob Storage szintjeiről](storage-blob-storage-tiers.md)
 * [A gyakori és ritka elérésű, valamint az archív tárolási szint díjszabásának régiók szerinti ellenőrzése Blob Storage- és GPv2-fiókok esetében](https://azure.microsoft.com/pricing/details/storage/)

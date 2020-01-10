@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366379"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834106"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez
 
@@ -31,8 +31,7 @@ Azure Automation állapot-konfiguráció számos gép felügyeletére használha
 
 - Azure-alapú virtuális gépek
 - Azure-beli virtuális gépek (klasszikus)
-- Amazon Web Services (AWS) EC2-példányok
-- Fizikai/virtuális Windowsos gépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben
+- Fizikai/virtuális Windowsos gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat)
 - Fizikai/virtuális Linux rendszerű számítógépek a helyszínen, az Azure-ban vagy az Azure-tól eltérő felhőben
 
 Emellett, ha nem áll készen a számítógép-konfiguráció felhőből való kezelésére, Azure Automation az állapot-konfiguráció csak jelentési végpontként is használható.
@@ -82,11 +81,7 @@ A virtuális gépek más Azure-előfizetésből való regisztrálásának legjob
 Példákat a [Azure Resource Manager sablonokkal rendelkező, a kívánt állapotú konfigurációs bővítményben](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)talál.
 A sablonban paraméterként használandó regisztrációs kulcs és regisztrációs URL-cím megkereséséhez tekintse meg a következő [**biztonságos regisztráció**](#secure-registration) szakaszt.
 
-## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) virtuális gépek
-
-Az AWS DSC Toolkit használatával egyszerűen elkészítheti Amazon Web Services virtuális gépek konfigurálását Azure Automation állapot-konfigurációval. Az eszközkészletről [itt](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)olvashat bővebben.
-
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>Fizikai/virtuális Windowsos gépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben
+## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Fizikai/virtuális Windowsos gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat)
 
 A helyszíni vagy más Felhőbeli környezetekben futó Windows-kiszolgálók is bekészíthetők Azure Automation állapot-konfigurációba, feltéve, hogy az [Azure-ban kimenő hozzáférésük](automation-dsc-overview.md#network-planning)van:
 

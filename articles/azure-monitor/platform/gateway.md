@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530986"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830139"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -103,7 +103,7 @@ Az alábbi táblázat azt mutatja be, hogy hány ügynök tud kommunikálni egy 
 
 ## <a name="download-the-log-analytics-gateway"></a>Az Log Analytics-átjáró letöltése
 
-Szerezze be a Log Analytics átjáró telepítési fájljának legújabb verzióját a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=54443) vagy a Azure Portal.
+Szerezze be a Log Analytics átjáró telepítési fájljának legújabb verzióját a Microsoft letöltőközpontból ([letöltési hivatkozás](https://go.microsoft.com/fwlink/?linkid=837444)) vagy a Azure Portal.
 
 Az Log Analytics-átjárónak a Azure Portalból való lekéréséhez kövesse az alábbi lépéseket:
 

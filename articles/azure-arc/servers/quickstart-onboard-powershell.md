@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951445"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834079"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Gyors útmutató: számítógépek összekötése az Azure-hoz az Azure arc for Servers használatával – PowerShell
 
@@ -35,6 +35,9 @@ Az egyszerű szolgáltatásnév egy speciális korlátozott felügyeleti identit
 ### <a name="steps-to-create-the-service-principal"></a>Az egyszerű szolgáltatás létrehozásának lépései
 
 Ebben a példában a [Azure PowerShellt](/powershell/azure/install-az-ps) használjuk egy egyszerű szolgáltatásnév (SPN) létrehozásához. Másik lehetőségként követheti az [egyszerű szolgáltatásnév létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md) című témakörben felsorolt lépéseket a feladat Azure Portal használatával.
+
+> [!NOTE]
+> Az egyszerű szolgáltatás létrehozásakor a bevezetéshez használni kívánt előfizetés tulajdonosi vagy felhasználói hozzáférési rendszergazdája kell, hogy legyen. Ha nem rendelkezik megfelelő engedélyekkel a szerepkör-hozzárendelések létrehozásához, előfordulhat, hogy az egyszerű szolgáltatásnév létrejött, de nem fogja tudni bevezetni a gépeket.
 
 A `Azure Connected Machine Onboarding` szerepkör csak a bevezetéshez szükséges engedélyeket tartalmazza. Megadhatja egy egyszerű szolgáltatásnév engedélyét, amely lehetővé teszi annak hatókörét egy erőforráscsoport vagy előfizetés lefedéséhez.
 
@@ -142,7 +145,7 @@ Windows rendszeren nyissa meg a PowerShellt rendszergazdaként a cél csomópont
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ Paraméterek:
 * `tenant-id`: a bérlő GUID-azonosítója. Azure Portal az **Azure Active directory** -> **Tulajdonságok** -> **könyvtár-azonosító**lehetőség kiválasztásával találhatja meg.
 * `subscription-id`: annak az előfizetésnek a GUID azonosítója, amely az Azure-ban csatlakozik a számítógéphez.
 * `resource-group`: az erőforráscsoport, amelyhez a gépet csatlakoztatni szeretné.
-* `location`: [Az Azure-régiók és-telephelyek](https://azure.microsoft.com/global-infrastructure/regions/). Ez a hely lehet azonos vagy más, mint az erőforráscsoport helye. A nyilvános előzetes verzióban a szolgáltatás a **WestUS2** és **Nyugat-Európában**is támogatott.
+* `location`: [Az Azure-régiók és-telephelyek](https://azure.microsoft.com/global-infrastructure/regions/). Ez a hely lehet azonos vagy más, mint az erőforráscsoport helye. A nyilvános előzetes verzió esetében a szolgáltatás **WestUS2**, Délkelet- **Ázsiában**és Nyugat- **Európában**is támogatott.
 * `resource-name`: (nem*kötelező*) a helyszíni gép Azure-beli erőforrás-ábrázolásához használatos. Ha nem megadja ezt az értéket, a rendszer a gép állomásnevét fogja használni.
 
 A "azcmagent" eszközzel kapcsolatos további információkat a [azcmagent-dokumentációban](azcmagent-reference.md)talál.

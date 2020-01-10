@@ -12,41 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033365"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833843"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Előzetes verzió: virtuális gépek üzembe helyezése dedikált gazdagépekre a Azure PowerShell használatával
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
-Győződjön meg arról, hogy telepítette a Azure PowerShell 2.4.2-as vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a (`Connect-AzAccount`) használatával. A 2.4.2-es verzió telepítéséhez nyisson meg egy PowerShell-parancssort, és írja be a következőt:
+Győződjön meg arról, hogy telepítette a Azure PowerShell 2.8.0-as vagy újabb verzióját, és bejelentkezett egy Azure-fiókba a következővel: `Connect-AzAccount`. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Korlátozások
 
-Az előnézeti modul funkcióinak a PowerShellben való engedélyezéséhez a PowerShellGet modul legalább 1.6.0 kell lennie. A PowerShell Core legújabb verziói automatikusan beépítettek, de a PowerShell régebbi verzióihoz a következő parancsot is futtathatja a legújabb verzióra való frissítéshez:
+- A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
+- A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
 
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Az Azure dedikált gazdagépek jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Ismert előzetes verzió korlátai**
-> - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-> - Az előzetes verzió kezdeti kiadása a következő virtuálisgép-sorozatot támogatja: DSv3 és ESv3. 
-
-
-
-## <a name="create-a-host-group"></a>Gazda csoport létrehozása
+## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása
 
 A **gazda-csoport** egy olyan erőforrás, amely dedikált gazdagépek gyűjteményét jelöli. Egy adott régióban és egy rendelkezésre állási zónában hozhat létre egy gazdagépet, és hozzáadhat gazdagépeket. A magas rendelkezésre állás tervezése során további lehetőségek is rendelkezésre állnak. A dedikált gazdagépekhez a következő lehetőségek közül választhat: 
 - Több rendelkezésre állási zónára kiterjedő span. Ebben az esetben minden használni kívánt zónában rendelkeznie kell egy gazdagép-csoporttal.

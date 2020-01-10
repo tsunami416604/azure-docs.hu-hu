@@ -2,38 +2,32 @@
 title: Azure dedikált gazdagépek üzembe helyezése a parancssori felület használatával
 description: Virtuális gépek üzembe helyezése dedikált gazdagépekre az Azure CLI használatával.
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036404"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834922"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Előzetes verzió: virtuális gépek üzembe helyezése dedikált gazdagépeken az Azure CLI használatával
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken az Azure CLI használatával
  
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
 Győződjön meg arról, hogy telepítette az Azure CLI 2.0.70 vagy újabb verzióját, majd jelentkezzen be egy Azure-fiókba `az login`használatával. 
 
-> [!IMPORTANT]
-> Az Azure dedikált gazdagépek jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Ismert előzetes verzió korlátai**
-> - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
-> - Az előzetes verzió kezdeti kiadása a következő virtuálisgép-sorozatot támogatja: DSv3 és ESv3. 
+
+## <a name="limitations"></a>Korlátozások
+
+- A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
+- A kezdeti kiadás a következő virtuálisgép-sorozatot támogatja: DSv3 és ESv3. 
  
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása 
@@ -43,7 +37,7 @@ Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe h
 az group create --name myDHResourceGroup --location eastus 
 ```
  
-## <a name="create-a-host-group"></a>Gazda csoport létrehozása 
+## <a name="create-a-host-group"></a>Gazdagépcsoport létrehozása 
 
 A **gazda-csoport** egy olyan erőforrás, amely dedikált gazdagépek gyűjteményét jelöli. Egy adott régióban és egy rendelkezésre állási zónában hozhat létre egy gazdagépet, és hozzáadhat gazdagépeket. A magas rendelkezésre állás tervezése során további lehetőségek is rendelkezésre állnak. A dedikált gazdagépekhez a következő lehetőségek közül választhat: 
 - Több rendelkezésre állási zónára kiterjedő span. Ebben az esetben minden használni kívánt zónában rendelkeznie kell egy gazdagép-csoporttal.
@@ -63,7 +57,7 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
-### <a name="other-examples"></a>Egyéb példák
+### <a name="other-examples"></a>További példák
 
 Azt is megteheti, hogy az [az VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) paranccsal létrehoz egy gazdagép csoportot az 1. rendelkezésre állási zónában (és nincs tartalék tartomány).
 
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Gazdagép létrehozása 
 
-Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  Az előzetes verzió ideje alatt a következő gazdagépi SKU-értékeket fogjuk támogatni: DSv3_Type1 és ESv3_Type1.
-
+Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  A következő SKU-értékek támogatottak: DSv3_Type1 és ESv3_Type1.
 
 A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
 

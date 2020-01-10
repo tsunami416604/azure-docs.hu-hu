@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443862"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835014"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -105,7 +105,7 @@ Ha a hardveres generációk nem támogatottak ugyanabban a régióban, akkor a h
 
 ## <a name="tune-performance"></a>Teljesítmény hangolása
 
-\* * Hogyan felügyelt példánya teljesítményének finomhangolása? **
+**Hogyan a felügyelt példány teljesítményének finomhangolását?**
 
 Általános célú felügyelt példány a távoli tárterületet használja, mert az adatmennyiség és a naplófájlok teljesítménye fontos. További információ: a [naplófájl méretének hatása általános célú felügyelt példány teljesítményére](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
@@ -180,8 +180,8 @@ Ha jobban meg szeretné ismerni a Azure SQL Database felügyelt példány üzemb
 
 ## <a name="dns-refresh"></a>DNS-frissítés 
 
-\* * Használhatom a DNS-frissítést? **
-  
+**Használhatok DNS-frissítést?**
+
 Jelenleg nem biztosítunk olyan funkciót, amely a felügyelt példány DNS-kiszolgáló konfigurációját frissíti.
 
 A DNS-konfigurációt a rendszer végül frissíti:

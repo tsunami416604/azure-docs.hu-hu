@@ -3,26 +3,26 @@ title: Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 description: Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését az Azure Adatkezelőba az Event hub-ból.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667438"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779951"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-event-hub.md)
+> * [Portál](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,7 +109,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
 
     ![Eseményközpont-kapcsolat](media/ingest-data-event-hub/event-hub-connection.png)
 
-    Adatforrás:
+    **Adatforrás:**
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
@@ -120,7 +120,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     | Eseményvezérelt rendszerek tulajdonságai | Válassza ki a megfelelő tulajdonságokat | Az [Event hub rendszertulajdonságai](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) Ha az eseményen több rekord van, akkor a rendszer tulajdonságai hozzáadódnak az elsőhöz. A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/tables#create-table) vagy [frissítsen](/azure/kusto/management/tables#alter-table-and-alter-merge-table) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. |
     | | |
 
-    Céltábla:
+    **Céltábla:**
 
     Két lehetőség van a betöltött adatmennyiség útválasztására: *statikus* és *dinamikus*. 
     Ebben a cikkben statikus útválasztást használ, ahol megadhatja a tábla nevét, az adatformátumot és a leképezést. Ezért hagyja, hogy az adatok között ne legyenek kiválasztva **az útválasztási adatok** .
@@ -137,6 +137,8 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
     > * Engedélyezze a GZip-tömörítést a statikus útválasztáshoz egy [támogatási kérelem megnyitásával a Azure Portalban](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Engedélyezze a GZip-tömörítést a dinamikus útválasztáshoz a [minta alkalmazásban](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)látható módon. 
     > * A Avro formátum és az eseményrendszer tulajdonságai nem támogatottak a tömörítési adattartalomban.
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 

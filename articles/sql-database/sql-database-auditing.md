@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551624"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780198"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -241,6 +241,8 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
     Különböző típusú műveletek és műveleti csoportok naplózását a PowerShell használatával konfigurálhatja az [SQL-adatbázis naplózásának kezelése Azure PowerShell használatával](#subheading-7) című szakaszban leírtak szerint.
 
 - HRE-hitelesítés használata esetén a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
+
+- Azure SQL Database naplózás a rendelkezésre állási & teljesítményére van optimalizálva. A nagyon magas tevékenység Azure SQL Database lehetővé teszi a műveletek folytatását, és előfordulhat, hogy nem rögzítik a naplózott eseményeket.
 
 
 ## <a id="subheading-7"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése Azure PowerShell használatával

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 12/11/2019
-ms.openlocfilehash: 1c419e0550561e99694d9256c9c9111a2549b82e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.date: 01/09/2020
+ms.openlocfilehash: f6b7797fbebd3d1df3da3405926543d716e584f4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647866"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835099"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 
@@ -52,8 +52,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
 |Tárhely típusa|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|400|800|1200|1600|2000|2400|
-|Maximális naplózási arány (MBps)|4.7|9.4|14,1|18,8|23,4|28,1|
+|IOPS adatkészletek maximális száma *|400|800|1200|1600|2000|2400|
+|Maximális naplózási arány (MB/s)|4.7|9.4|14,1|18,8|23,4|28,1|
 |Egyidejű feldolgozók maximális száma (kérelmek) * * |210|420|630|840|1050|1260|
 |Egyidejű bejelentkezések maximális száma a készletben * * |210|420|630|840|1050|1260|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -82,8 +82,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
 |Tárhely típusa|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|2800|3200|3600|4000|6400|9600|
-|Maximális naplózási arány (MBps)|32,8|37,5|37,5|37,5|37,5|37,5|
+|IOPS adatkészletek maximális száma *|2800|3200|3600|4000|6400|9600|
+|Maximális naplózási arány (MB/s)|32,8|37,5|37,5|37,5|37,5|37,5|
 |Egyidejű feldolgozók maximális száma (kérelmek) *|1470|1680|1890|2100|3360|5040|
 |Egyidejű bejelentkezések maximális száma (kérelmek) *|1470|1680|1890|2100|3360|5040|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -112,8 +112,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|448|
 |Tárhely típusa|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|800|1600|2400|3200|4000|4800|5600|
-|Maximális naplózási arány (MBps)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
+|IOPS adatkészletek maximális száma *|800|1600|2400|3200|4000|4800|5600|
+|Maximális naplózási arány (MB/s)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
 |Egyidejű feldolgozók maximális száma (kérelmek) * *|210|420|630|840|1050|1260|1470|
 |Egyidejű bejelentkezések maximális száma (kérelmek) * *|210|420|630|840|1050|1260|1470|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -142,8 +142,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárhely típusa|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS * |6 400|7 200|8,000|9600|12 800|16000|32 000|
-|Maximális naplózási arány (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
+|IOPS adatkészletek maximális száma * |6 400|7 200|8,000|9600|12 800|16000|32 000|
+|Maximális naplózási arány (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Egyidejű feldolgozók maximális száma (kérelmek) * *|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű bejelentkezések maximális száma (kérelmek) * *|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -174,10 +174,10 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|333|
 |Tárhely típusa|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|28 800|
-|Maximális naplózási arány (MBps)|37,5|
-|Egyidejű feldolgozók maximális száma (kérelmek) * *|1680|
-|Egyidejű bejelentkezések maximális száma (kérelmek) * *|1680|
+|IOPS adatkészletek maximális száma *|16000|
+|Maximális naplózási arány (MB/s)|37,5|
+|Egyidejű feldolgozók maximális száma (kérelmek) * *|3780|
+|Egyidejű bejelentkezések maximális száma (kérelmek) * *|3780|
 |Egyidejű munkamenetek maximális száma|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-72|
 |Replikák száma|1|
@@ -209,8 +209,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |Napló maximális mérete (GB)|307|307|307|307|307|
 |TempDB maximális adatméret (GB)|64|96|128|160|192|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|9000|13 500|18000|22 500|27 000|
-|Maximális naplózási arány (MBps)|20|30|40|50|60|
+|IOPS adatkészletek maximális száma *|9000|13 500|18000|22 500|27 000|
+|Maximális naplózási arány (MB/s)|20|30|40|50|60|
 |Egyidejű feldolgozók maximális száma (kérelmek) * *|420|630|840|1050|1260|
 |Egyidejű bejelentkezések maximális száma (kérelmek) * *|420|630|840|1050|1260|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
@@ -239,8 +239,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |Napló maximális mérete (GB)|307|307|307|307|307|307|
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|31 500|36 000|40 500|45.000|72 000|90,000|
-|Maximális naplózási arány (MBps)|70|80|80|80|80|80|
+|IOPS adatkészletek maximális száma *|31 500|36 000|40 500|45.000|72 000|96 000|
+|Maximális naplózási arány (MB/s)|70|80|80|80|80|80|
 |Egyidejű feldolgozók maximális száma (kérelmek) * *|1470|1680|1890|2100|3360|5040|
 |Egyidejű bejelentkezések maximális száma (kérelmek) * *|1470|1680|1890|2100|3360|5040|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -271,8 +271,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|128|192|256|320|384|448|
 |Tárhely típusa|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|18000|27 000|36 000|45.000|54 000|63 000|
-|Maximális naplózási arány (MBps)|60|90|120|120|120|120|
+|IOPS adatkészletek maximális száma *|18000|27 000|36 000|45.000|54 000|63 000|
+|Maximális naplózási arány (MB/s)|60|90|120|120|120|120|
 |Egyidejű feldolgozók maximális száma (kérelmek) * *|420|630|840|1050|1260|1470|
 |Egyidejű bejelentkezések maximális száma (kérelmek) * *|420|630|840|1050|1260|1470|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -301,8 +301,8 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárhely típusa|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|72 000|81 000|90,000|108 000|144 000|180 000|256 000|
-|Maximális naplózási arány (MBps)|120|120|120|120|120|120|120|
+|IOPS adatkészletek maximális száma *|72 000|81 000|90,000|108 000|144 000|180 000|256 000|
+|Maximális naplózási arány (MB/s)|120|120|120|120|120|120|120|
 |Egyidejű feldolgozók maximális száma (kérelmek) * *|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű bejelentkezések maximális száma (kérelmek) * *|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -320,23 +320,23 @@ Az i/o-méretek maximális értékének \* 8 KB és 64 KB között kell lennie. 
 
 ### <a name="m-series-compute-generation-preview"></a>Az M-sorozat számítási generációja (előzetes verzió)
 
-|Számítási méret|GP_M_128|
+|Számítási méret|BC_M_128|
 |:--- | --: |
 |Számítási generáció|M sorozat|
 |Virtuális magok|128|
-|Memória (GB)|3767|
+|Memória (GB)|3767,1|
 |Adatbázisok maximális száma készletenként|100|
 |Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|481|
+|Memóriában tárolt OLTP-tároló (GB)|1768|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|2048|
 |TempDB maximális adatméret (GB)|4096|
 |Tárhely típusa|Helyi SSD|
 |IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|40 000|
-|Maximális naplózási arány (MBps)|120|
-|Egyidejű feldolgozók maximális száma (kérelmek) *|1680|
-|Egyidejű bejelentkezések maximális száma (kérelmek) *|1680|
+|IOPS adatkészletek maximális száma *|200,000|
+|Maximális naplózási arány (MB/s)|333|
+|Egyidejű feldolgozók maximális száma (kérelmek) *|13 440|
+|Egyidejű bejelentkezések maximális száma (kérelmek) *|13 440|
 |Egyidejű munkamenetek maximális száma|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-128|
 |Replikák száma|4|

@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás- és erőforrás-hozzáférés kezelése a csoportok – Azure Active Directory |} A Microsoft Docs
-description: Ismerje meg a hozzáférést a szervezet felhőalapú alkalmazásokat, a helyszíni alkalmazások és -erőforrások Azure Active Directory-csoportok kezelése.
+title: Alkalmazás-& erőforrás-hozzáférés kezelése csoportok használatával – Azure AD
+description: Ismerje meg, hogyan kezelheti a szervezet felhőalapú alkalmazásaihoz, helyszíni alkalmazásaihoz és erőforrásaihoz való hozzáférést Azure Active Directory csoportok használatával.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -8,56 +8,63 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 01/08/2020
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbc19c2148a2b62ff1aa28d705591430b4fad20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561833"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768010"
 ---
-# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Alkalmazás- és erőforrás-hozzáférés kezelése Azure Active Directory-csoportok
-Az Azure Active Directory (Azure AD) segítségével felügyelheti felhőalapú alkalmazásait, a helyszíni alkalmazások és használatával a szervezet erőforrásaihoz. Az erőforrások a címtár, például való kezelése a szerepkörök a címtárnak, vagy a könyvtárba, külső objektumok, például a szoftverek (SaaS) Szolgáltatottszoftver-alkalmazásokat, az Azure-szolgáltatásokat, SharePoint-webhelyekre és a helyszíni erőforrások része lehet.
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Alkalmazás- és erőforrás-hozzáférés kezelése Azure Active Directory-csoportokkal
+Azure Active Directory (Azure AD) segítségével csoportok használatával kezelheti a felhőalapú alkalmazásokhoz, a helyszíni alkalmazásokhoz és az erőforrásokhoz való hozzáférést. Az erőforrások lehetnek az Azure AD-szervezet részei, például az objektumok felügyeletéhez szükséges engedélyek az Azure AD-ben vagy a szervezeten kívül, például a szolgáltatott szoftver (SaaS) alkalmazások, az Azure-szolgáltatások, a SharePoint-webhelyek és a helyszíni erőforrások számára.
 
 >[!NOTE]
 >Az Azure Active Directory használatához Azure-fiókra lesz szükség. Ha nincs fiókja, [regisztrálhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
+>
+> A Azure Portalban megtekintheti azokat a csoportokat, amelyek tagsági és csoportos adatait nem tudja kezelni a portálon:
+>
+> - A helyszíni Active Directory szinkronizált csoportok csak a helyszíni Active Directory kezelhetők.
+> - A más típusú csoportok, például a terjesztési és a levelezésre képes biztonsági csoportok csak az Exchange felügyeleti központban vagy Microsoft 365 felügyeleti központban kezelhetők. A csoportok kezeléséhez be kell jelentkeznie az Exchange felügyeleti központba vagy Microsoft 365 felügyeleti központba.
 
-## <a name="how-does-access-management-in-azure-ad-work"></a>Hogyan hozzáférés-kezelés az Azure ad-ben során?
-Az Azure AD segítségével hozzáférést biztosíthat a munkahelyi erőforrásokhoz azáltal, hogy egy felhasználó hozzáférési jogosultságokat, vagy az egy teljes Azure AD-csoportban. Csoportok használata lehetővé teszi, hogy az erőforrás tulajdonosa (vagy az Azure AD directory), rendelje hozzá a hozzáférési engedélyek egy készletét, ahelyett, hogy a jogok egyesével adja meg a csoport összes tagja. Az erőforrás vagy a könyvtár tulajdonosa is adhat a management rights számára a taglistára valaki másra, például egy részleg vezető vagy egy ügyfélszolgálati adminisztrátor, ami lehetővé teszi, hogy a személy, hozzáadhat és eltávolíthat tagokat, igény szerint. Csoporttulajdonosok kezelése kapcsolatos további információkért lásd: [csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
+## <a name="how-access-management-in-azure-ad-works"></a>Hogyan működik a hozzáférés-kezelés az Azure AD-ben?
+
+Az Azure AD segítségével hozzáférést biztosíthat a szervezet erőforrásaihoz azáltal, hogy hozzáférési jogokat biztosít egyetlen felhasználónak vagy egy teljes Azure AD-csoportnak. A csoportok használatával az erőforrás (vagy az Azure AD-címtár) tulajdonosa hozzáférési engedélyeket rendelhet a csoport minden tagjához ahelyett, hogy ezt egyesével kellene megtennie. Az erőforrás vagy a könyvtár tulajdonosa a tagok számára is megadhatja a felügyeleti jogokat, például a részleg kezelője vagy a segélyszolgálat rendszergazdája számára, hogy szükség szerint adjon hozzá és távolítson el tagokat. További információ a csoportok tulajdonosainak kezeléséről: [tulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
 
 ![Ábra: Az Azure Active Directory hozzáférés-kezelése](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
-## <a name="ways-to-assign-access-rights"></a>Hozzáférési jogosultságok hozzárendelése módjai
-Erőforrás-hozzáférési jogosultsága ahhoz, hogy a felhasználók hozzárendelése négy módja van:
+## <a name="ways-to-assign-access-rights"></a>Hozzáférési jogosultságok kiosztásának módjai
 
-- **Közvetlen hozzárendelés.** Az erőforrás tulajdonosa közvetlenül az erőforráshoz rendeli hozzá a felhasználó.
+Az erőforrás-hozzáférési jogosultságokat négyféle módon rendelheti hozzá a felhasználókhoz:
 
-- **Csoport-hozzárendelés.** Az erőforrás tulajdonosa az erőforráshoz, ami automatikusan biztosít az összes a csoport tagjainak hozzáférést az erőforráshoz rendeli hozzá az Azure AD-csoportok. Csoporttagság kezeli a csoport tulajdonosa, mind az erőforrás tulajdonosa, ami lehetővé teszi a tagok hozzáadása vagy eltávolítása a csoportból vagy tulajdonos. A csoporttagság hozzáadásával vagy eltávolításával kapcsolatos további információkért lásd [: How to: Csoport hozzáadása vagy eltávolítása egy másik csoportból a Azure Active Directory-portál](active-directory-groups-membership-azure-portal.md)használatával. 
+- **Közvetlen hozzárendelés.** Az erőforrás tulajdonosa közvetlenül hozzárendeli a felhasználót az erőforráshoz.
 
-- **A szabály-alapú hozzárendelést.** Az erőforrás tulajdonosa létrehoz egy csoportot, és a egy szabályt használ a meghatározására, hogy melyik felhasználók vannak hozzárendelve egy adott erőforrás. A szabály az attribútumokat, amelyek az egyes felhasználókhoz rendelt alapul. Az erőforrás tulajdonosa kezeli a szabályt, amely meghatározza, hogy melyik attribútumai és értékei szükség, hogy engedélyezze a hozzáférést az erőforráshoz. További információkért lásd: [dinamikus csoport létrehozása és állapotának](../users-groups-roles/groups-create-rule.md).
+- **Csoport-hozzárendelés.** Az erőforrás tulajdonosa egy Azure AD-csoportot rendel az erőforráshoz, amely automatikusan lehetővé teszi az összes csoport tagjai számára az erőforráshoz való hozzáférést. A csoporttagság kezelését a csoport tulajdonosa és az erőforrás tulajdonosa is kezeli, így a tulajdonos a csoport tagjainak hozzáadását vagy eltávolítását is lehetővé teszi. A csoporttagság hozzáadásával vagy eltávolításával kapcsolatos további információkért lásd [: útmutató: Csoport hozzáadása vagy eltávolítása egy másik csoportból a Azure Active Directory-portál használatával](active-directory-groups-membership-azure-portal.md). 
 
-    Ez a rövid videó gyors létrehozásáról és használatáról a dinamikus csoportok ismertetése is megtekintheti:
+- **Szabály-alapú hozzárendelés.** Az erőforrás tulajdonosa létrehoz egy csoportot, és egy olyan szabályt használ, amely meghatározza, hogy mely felhasználók vannak hozzárendelve egy adott erőforráshoz. A szabály az egyes felhasználókhoz rendelt attribútumok alapján történik. Az erőforrás tulajdonosa kezeli a szabályt, és meghatározza, hogy mely attribútumok és értékek szükségesek az erőforráshoz való hozzáférés engedélyezéséhez. További információ: [dinamikus csoport létrehozása és állapotának ellenõrzése](../users-groups-roles/groups-create-rule.md).
+
+    Ezt a rövid videót is megtekintheti a dinamikus csoportok létrehozásával és használatával kapcsolatos gyors magyarázattal:
 
     >[!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
 
-- **Külső szolgáltató hozzárendelést.** Hozzáférés a külső forrásból, például egy helyszíni címtár vagy egy SaaS-alkalmazás származik. Ebben a helyzetben az erőforrás tulajdonosa egy csoportot, így biztosítva hozzáférést az erőforráshoz rendeli hozzá, és majd a külső adatforrás kezeli-e a csoport tagjai.
+- **Külső szolgáltató hozzárendelése.** A hozzáférés egy külső forrásból, például egy helyszíni címtárból vagy egy SaaS-alkalmazásból származik. Ebben az esetben az erőforrás tulajdonosa hozzárendel egy csoportot az erőforráshoz való hozzáférés biztosításához, majd a külső forrás kezeli a csoporttagokat.
 
    ![Ábra: A hozzáférés-kezelés áttekintése](./media/active-directory-manage-groups/access-management-overview.png)
 
-## <a name="can-users-join-groups-without-being-assigned"></a>Csatlakozhat felhasználói csoportok nélkül érvényessége a felhasználóhoz?
-A csoport tulajdonosa engedélyezheti a felhasználók számára, amelyhez csatlakozhatnak hozzájuk rendelni helyett a saját csoportok kereséséhez. A tulajdonos is állíthat be a csoport, automatikusan elfogadja az összes olyan felhasználó, amelyhez csatlakozni vagy jóváhagyás szükséges.
+## <a name="can-users-join-groups-without-being-assigned"></a>A felhasználók hozzárendelés nélkül csatlakozhatnak a csoportokhoz?
+A csoport tulajdonosa lehetővé teheti a felhasználók számára, hogy a hozzárendelésük helyett a saját Csoportjaikat is megtalálják a csatlakozáshoz. A tulajdonos úgy is beállíthatja a csoportot, hogy automatikusan fogadja az összes csatlakozni kívánó felhasználót, vagy jóváhagyást kér.
 
-Miután egy felhasználó egy csoporthoz való csatlakoztatáshoz igényel, a rendszer továbbítja a kérést a csoport tulajdonosa. Ez szükséges, ha a tulajdonos jóváhagyhatja a kérést, és a felhasználó értesítést kap a csoport tagságát. Azonban, ha több tulajdonosai, és egyik fennmaradhat, a felhasználó értesítést kap, de nincs hozzá a csoporthoz. További információkat és útmutatást ahhoz, hogy a felhasználók, csoportok csatlakozni kérése: [Azure AD beállítása, így a felhasználók kérhetik való csatlakozás csoportokhoz](../users-groups-roles/groups-self-service-management.md)
+Miután egy felhasználó megpróbált csatlakozni egy csoporthoz, a rendszer továbbítja a kérést a csoport tulajdonosának. Ha szükséges, a tulajdonos jóváhagyhatja a kérést, és a felhasználó értesítést kap a csoporttagságról. Ha azonban több tulajdonossal rendelkezik, és egyikük sem hagyja jóvá, a rendszer értesítést küld a felhasználónak, de nem adja hozzá a csoportot. További információt és útmutatást arról, hogyan kérheti a felhasználók a csoportok összekapcsolását: az [Azure ad beállítása, hogy a felhasználók csatlakozzanak a csoporthoz](../users-groups-roles/groups-self-service-management.md)
 
-## <a name="next-steps"></a>További lépések
-Most, hogy egy kis csoportok használata a hozzáférés-kezelés bemutatása, megkezdése az erőforrások és alkalmazások felügyeletét.
+## <a name="next-steps"></a>Következő lépések
+Most, hogy már rendelkezik egy kis bevezetéssel a hozzáférés-kezeléshez a csoportok használatával, megkezdheti az erőforrások és alkalmazások kezelését.
 
-- [Hozzon létre egy új csoportot az Azure Active Directoryval](active-directory-groups-create-azure-portal.md) vagy [létrehozása és kezelése a PowerShell-parancsmagok használatával új csoport](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Új csoport létrehozása Azure Active Directory használatával](active-directory-groups-create-azure-portal.md) vagy [új csoport létrehozása és kezelése PowerShell-parancsmagok használatával](../users-groups-roles/groups-settings-v2-cmdlets.md)
 
-- [Csoportok használata hozzáférések hozzárendelése az integrált SaaS-alkalmazások](../users-groups-roles/groups-saasapps.md)
+- [Csoportok használata egy integrált SaaS-alkalmazáshoz való hozzáféréshez](../users-groups-roles/groups-saasapps.md)
 
-- [Egy helyi csoport az Azure-ban az Azure AD Connect szinkronizálása](../hybrid/whatis-hybrid-identity.md)
+- [Helyszíni csoport szinkronizálása az Azure-ba a Azure AD Connect használatával](../hybrid/whatis-hybrid-identity.md)

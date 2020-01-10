@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: 5badd4aeabd8ec322ea5fb847cf134f302269c27
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331013"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771751"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával
 
@@ -46,11 +46,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Elemzés** > **Azure Databricks** elemet.
 
-    ![Databricks az Azure Portalon](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks az Azure Portalon")
+    ![Databricks Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks Azure Portal")
 
 2. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
 
-    ![Azure Databricks-munkaterület létrehozása](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
+    ![Azure Databricks munkaterület létrehozása](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
     Adja meg a következő értékeket:
 
@@ -58,7 +58,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/resource-group-overview.md). |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. Nyugodtan választhat egy másik nyilvános régiót is igény szerint.        |
     |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -72,11 +72,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 2. A rendszer átirányítja az Azure Databricks portáljára. A portálon válassza az **Új** > **Fürt** elemet.
 
-    ![Databricks az Azure-on](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Databricks az Azure-on")
+    ![Databricks az Azure-ban](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Databricks az Azure-ban")
 
 3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-    ![Databricks Spark-fürt létrehozása az Azure-on](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
+    ![Databricks Spark-fürt létrehozása az Azure-ban](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
     Adjon meg értékeket a következő mezőkben, és fogadja el az alapértelmezett értékeket a többi mezőben:
 
@@ -96,11 +96,11 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
 2. A bal oldali panelen válassza a **Munkaterület** elemet. A **Munkaterület** legördülő menüből válassza a **Létrehozás** > **Jegyzetfüzet** lehetőséget.
 
-    ![Notebook létrehozása a Databricksben](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Notebook létrehozása a Databricksben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Scala** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-    ![Notebook létrehozása a Databricksben](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Notebook létrehozása a Databricksben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
     Kattintson a **Létrehozás** gombra.
 
@@ -140,7 +140,7 @@ A cellában nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtat�
 
 Most egy új cellában az alábbi kód megadásával írja be a következő kódot, és cserélje le a zárójelben megjelenő értékeket a korábban használt értékekkel:
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
 
 A cellában nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához.
 
@@ -173,13 +173,13 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
 3. Így egy, az alábbi képernyőképhez hasonló táblázatos kimenet jelenik meg (csak egyes oszlopok láthatók):
 
-    ![JSON-mintaadatok](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-mintaadatok")
+    ![JSON-adatminta](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-adatminta")
 
     Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, **nem),** valamint azt, hogy az előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint**).
 
 4. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
-    ![Oszlopdiagram létrehozása](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "Oszlopdiagram létrehozása")
+    ![Sávdiagram létrehozása](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "Sávdiagram létrehozása")
 
 5. A **Ábrázolás testreszabása** lapon húzza az értékeket a megfelelő helyre a képernyőképen látható módon.
 

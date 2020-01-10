@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 816009bb7481d93fd53011d067ab56cecbe8e3ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a5489b22ade2c661b2fae23c70440a29489e39f7
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440420"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830360"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása és átmásolása az ODBC-adattárakba Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -34,14 +34,14 @@ Ez az ODBC-összekötő a következő tevékenységek esetén támogatott:
 
 Az ODBC-forrásból származó adatok bármely támogatott fogadó adattárba másolhatók, vagy bármely támogatott forrásból származó adattárból másolhatók az ODBC-tárolóba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Ez az ODBC-összekötő az **alapszintű** vagy a **Névtelen** hitelesítés használatával támogatja az adatok másolását **bármely ODBC-kompatibilis adattárba** .
+Ez az ODBC-összekötő az **alapszintű** vagy a **Névtelen** hitelesítés használatával támogatja az adatok másolását **bármely ODBC-kompatibilis adattárba** . **64 bites ODBC-illesztő** szükséges.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ODBC-összekötő használatához a következőket kell tennie:
 
 - Saját üzemeltetésű Integration Runtime beállítása. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
-- Telepítse az adattárakhoz tartozó ODBC-illesztőt a Integration Runtime gépen.
+- Telepítse a 64 bites ODBC-illesztőt az adattárhoz a Integration Runtime gépen.
 
 ## <a name="getting-started"></a>Első lépések
 

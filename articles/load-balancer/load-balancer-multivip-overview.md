@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075949"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771257"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
@@ -29,7 +29,7 @@ Azure Load Balancer definiálásakor a rendszer egy előtér-és egy háttér-k�
 
 A következő táblázat néhány példát tartalmaz a frontend-konfigurációkra:
 
-| Frontend | IP-cím | protocol | port |
+| Előtér | IP-cím | protokoll | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -53,7 +53,7 @@ Ezeket a forgatókönyveket tovább vizsgálja az alapértelmezett viselkedést�
 
 Ebben az esetben a frontendek konfigurálása a következőképpen történik:
 
-| Frontend | IP-cím | protocol | port |
+| Előtér | IP-cím | protokoll | port |
 | --- | --- | --- | --- |
 | ![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![lila felület](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -64,12 +64,12 @@ Két szabályt definiálunk:
 
 | Szabály | Térkép előtér | Háttérbeli készlet |
 | --- | --- | --- |
-| 1 |![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2 EGYSÉGEK: 80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2 EGYSÉGEK: 81 |
 
 A Azure Load Balancer teljes leképezése mostantól a következő:
 
-| Szabály | Előtérbeli IP-cím | protocol | port | Cél | port |
+| Szabály | Előtérbeli IP-cím | protokoll | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP-címe |80 |
 | ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP-címe |81 |
@@ -98,26 +98,46 @@ Ebben az esetben a háttér-készlet minden virtuális gépe három hálózati c
 * 1\. frontend: a vendég operációs rendszeren belüli visszacsatolási felület, amely az 1. előtér IP-címével van konfigurálva
 * 2\. frontend: a vendég operációs rendszeren belüli, a 2. előtér IP-címével konfigurált visszacsatolási felület
 
+A háttér-készletben lévő minden egyes virtuális géphez futtassa a következő parancsokat egy Windows-parancssorban.
+
+A virtuális gépen található interfész-nevek listájának lekéréséhez írja be a következő parancsot:
+
+    netsh interface show interface 
+
+A VM NIC (Azure Managed) esetében írja be a következő parancsot:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   (a InterfaceName helyére írja be az interfész nevét)
+
+Az egyes hozzáadott visszacsatolási felületek esetében ismételje meg a következő parancsokat:
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   (cserélje le a InterfaceName-t a visszacsatolási felület nevére)
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   (cserélje le a InterfaceName-t a visszacsatolási felület nevére)
+
 > [!IMPORTANT]
 > A visszacsatolási felületek konfigurációja a vendég operációs rendszeren belül történik. Ezt a konfigurációt az Azure nem végzi el vagy nem kezeli. Ezen konfiguráció nélkül a szabályok nem fognak működni. Az állapot-mintavételi definíciók a virtuális gép DIP felületét használják a DSR-felületet jelképező visszacsatolási interfész helyett. Ezért a szolgáltatásnak mintavételi válaszokat kell adnia egy olyan DIP-porton, amely tükrözi a DSR-felületet jelképező visszacsatolási felületen kínált szolgáltatás állapotát.
 
+
 Tegyük fel, hogy ugyanazt a frontend-konfigurációt feltételezzük, mint az előző forgatókönyvben:
 
-| Frontend | IP-cím | protocol | port |
+| Előtér | IP-cím | protokoll | port |
 | --- | --- | --- | --- |
 | ![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![lila felület](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 Két szabályt definiálunk:
 
-| Szabály | Frontend | Leképezés a háttérrendszer-készletre |
+| Szabály | Előtér | Leképezés a háttérrendszer-készletre |
 | --- | --- | --- |
-| 1 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (a VM1 és a VM2) |
-| 2 |![rule](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (a VM1 és a VM2) |
+| 1 |![szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (a VM1 és a VM2) |
+| 2 |![szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (a VM1 és a VM2) |
 
 A következő táblázat a terheléselosztó teljes leképezését tartalmazza:
 
-| Szabály | Előtérbeli IP-cím | protocol | port | Cél | port |
+| Szabály | Előtérbeli IP-cím | protokoll | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ugyanaz, mint a frontend (65.52.0.1) |ugyanaz, mint a frontend (80) |
 | ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ugyanaz, mint a frontend (65.52.0.2) |ugyanaz, mint a frontend (80) |
@@ -133,8 +153,8 @@ A lebegőpontos IP-szabály típusa több terheléselosztó-konfigurációs mint
 * Több előtér-konfiguráció csak IaaS virtuális gépek esetén támogatott.
 * A lebegőpontos IP-szabállyal az alkalmazásnak a kimenő SNAT-folyamatok elsődleges IP-konfigurációját kell használnia. Ha az alkalmazás a vendég operációs rendszerben a visszacsatolási felületen konfigurált előtérbeli IP-címhez van kötve, az Azure kimenő SNAT nem érhető el a kimenő folyamat újraírásához, és a folyamat meghiúsul.  Tekintse át a [kimenő forgatókönyveket](load-balancer-outbound-connections.md).
 * A nyilvános IP-címek a számlázásra érvényesek. További információt az [IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/) című témakörben talál.
-* Az előfizetés korlátai érvényesek. További információ: [szolgáltatási korlátozások](../azure-subscription-service-limits.md#networking-limits) a részletekért.
+* Az előfizetés korlátai érvényesek. További információ: [szolgáltatási korlátozások](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) a részletekért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [kimenő kapcsolatokat](load-balancer-outbound-connections.md) , hogy megértse, milyen hatással van több előtér a kimenő kapcsolat viselkedésére.

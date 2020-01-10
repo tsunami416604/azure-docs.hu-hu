@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537187"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834729"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-A Python és [Machine learning parancssori](reference-azure-machine-learning-cli.md) felülethez készült [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) különböző módszereket biztosít a futtatások monitorozásához, rendszerezéséhez és felügyeletéhez.
+A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine learning parancssori](reference-azure-machine-learning-cli.md)felület és a [Azure Machine learning Studio](https://ml.azure.com) különböző módszereket biztosít a futtatások monitorozásához, rendszerezéséhez és kezeléséhez a képzés és kísérletezés érdekében.
 
 Ez a cikk a következő feladatokra mutat be példákat:
 
@@ -105,6 +105,16 @@ A kísérlet futtatásának elindításához kövesse az alábbi lépéseket:
 
     További információ: [az ml Run Submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio használata
+
+A következő lépések végrehajtásával elindíthat egy folyamat küldését a tervezőben (előzetes verzió):
+
+1. Állítsa be a folyamat alapértelmezett számítási célját.
+
+1. Válassza a **Futtatás** lehetőséget a folyamat vászon tetején.
+
+1. Válasszon ki egy kísérletet a folyamat futásának csoportosításához.
+
 ## <a name="monitor-the-status-of-a-run"></a>Futtatás állapotának figyelése
 
 ### <a name="using-the-sdk"></a>Az SDK használata
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     További információ: [az ml Run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio használata
+
+A kísérlethez tartozó aktív futtatások számának megtekintése a Studióban.
+
+1. Navigáljon a **kísérletek** szakaszhoz. 
+
+1. Válasszon ki egy kísérletet.
+
+    A kísérlet oldalon láthatja az aktív számítási célok számát és az egyes futtatások időtartamát. 
+
+1. Válasszon egy adott futtatási számot.
+
+1. A **naplók** lapon diagnosztikai és hibanapló találhatók a folyamat futtatásához.
+
+
 ## <a name="cancel-or-fail-runs"></a>Megszakítás vagy sikertelen Futtatás
 
 Ha hibát észlel, vagy ha a futtatása túl sokáig tart, megszakíthatja a futtatást.
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 További információ: [az ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio használata
+
+A következő lépések végrehajtásával szakíthatja meg a futtatást a Studióban:
+
+1. Ugorjon a futó folyamatra a **kísérletek** vagy **folyamatok** szakaszban. 
+
+1. Válassza ki a megszüntetni kívánt folyamat-futtatási számot.
+
+1. Az eszköztáron válassza a **Mégse** lehetőséget.
+
 
 ## <a name="create-child-runs"></a>Gyermek-futtatások létrehozása
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Az Azure CLI eredményeinek lekérdezésével kapcsolatos további információkért lásd: az [Azure CLI-parancs kimenetének lekérdezése](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio használata
+
+1. Navigáljon a **folyamatok** szakaszhoz.
+
+1. A keresősáv használatával szűrheti a folyamatokat a címkék, a leírások, a kísérletezési nevek és a küldő neve alapján.
 
 ## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
 

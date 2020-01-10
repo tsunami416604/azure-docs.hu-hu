@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671924"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768435"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>A App Service alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
 
@@ -22,7 +22,7 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet
 
 1. Lépjen [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portal. Ha szükséges, jelentkezzen be a Microsoft-fiók.
 1. Válassza az **új regisztráció**lehetőséget, majd adja meg az alkalmazás nevét.
-1. Az **átirányítási URI**-k területen válassza a **web**lehetőséget, majd írja be a `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`. Cserélje le *\<app-domain-name >* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
+1. Az **átirányítási URI**-k területen válassza a **web**lehetőséget, majd írja be a `https://<app-domain-name>/.auth/login/microsoftaccount/callback`. Cserélje le *\<app-domain-name >* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
 
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Másolja az **alkalmazás (ügyfél) azonosítóját**. Erre később még szüksége lesz.
@@ -30,11 +30,11 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet
 1. Másolja a **tanúsítványok & titkok** lapon megjelenő értéket. Miután elhagyta a lapot, nem jelenik meg újra.
 
     > [!IMPORTANT]
-    > A jelszó egy fontos biztonsági hitelesítő adat. Ne ossza meg senkivel a jelszót, vagy küldje el azt egy ügyfélalkalmazáson belül.
+    > Az ügyfél titkos értéke (jelszó) fontos biztonsági hitelesítő adat. Ne ossza meg senkivel a jelszót, vagy küldje el azt egy ügyfélalkalmazáson belül.
 
 ## <a name="secrets"> </a>Microsoft-fiókadatok hozzáadása a app Service-alkalmazáshoz
 
-1. Nyissa meg az alkalmazást a [Azure Portalra].
+1. Nyissa meg az alkalmazást a [Azure Portal].
 1. Válassza a **beállítások** > a **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. A **hitelesítésszolgáltatók**területen válassza a **Microsoft-fiók**lehetőséget. Illessze be a korábban beszerzett alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát. Engedélyezze az alkalmazás által igényelt hatóköröket.
 1. Kattintson az **OK** gombra.
@@ -50,11 +50,11 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet
 
 Most már készen áll a Microsoft-fiók használatára a hitelesítéshez az alkalmazásban.
 
-## <a name="related-content"></a>Következő lépések
+## <a name="related-content"> </a>További lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3205f853088245461e854562999164f9813f3bd5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f8f7d16c9fa5141add5c661c0e05cc93da436614
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536628"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834902"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -158,3 +158,4 @@ A betanítási modellekhez tartozó jegyzetfüzetek mélyreható tanulási keret
 * [TensorFlow-modellek betanítása](how-to-train-tensorflow.md)
 * [Hiperparaméterek beállítása hangolása](how-to-tune-hyperparameters.md)
 * [Betanított modell üzembe helyezése](how-to-deploy-and-where.md)
+* [Környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md)

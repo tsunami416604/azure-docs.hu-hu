@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/06/2020
+ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213347"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777903"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -24,19 +24,19 @@ A szolgáltatott szoftver (SaaS)-ajánlatok létrehozásának megkezdéséhez el
 >[!Note]
 > Ha egy ajánlat közzé lett téve, a partner Centerben végzett ajánlat szerkesztése csak a rendszeren történik meg, és az újbóli közzététel után tárolja az előfizetéseket. Győződjön meg arról, hogy a módosítások elvégzése után elküldi az ajánlatot közzétételre.
 
-Válassza ki az + **új ajánlatot...** gombra, majd válassza ki a **szoftvert szolgáltatásként** menüpontot. 
+Válassza ki az + **új ajánlatot...** gombra, majd válassza ki a **szoftvert szolgáltatásként** menüpontot.
 
 Ha más ajánlat típusát választja, akkor a rendszer átirányítja a régebbi [Cloud Partner Portalra](https://cloudpartner.azure.com/). Jelenleg csak a SaaS-és Dynamics 365-ajánlatok érhetők el a partner Center kereskedelmi piactér portálján.
 
 ![Ajánlati ablak létrehozása a partner Centerben](./media/new-offer-click.png)
 
-Megjelenik az **új ajánlat** párbeszédpanel. 
+Megjelenik az **új ajánlat** párbeszédpanel.
 
 ![Új ajánlat párbeszédpanel](./media/new-offer-popup.png)
 
 ## <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
-- **Ajánlat azonosítója**: egyedi azonosító a fiókban található összes ajánlathoz. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat-azonosító csak kisbetűket, alfanumerikus karaktereket (például kötőjeleket és aláhúzásokat) tartalmazhat. Ez 50 karakterre van korlátozva, és a *Létrehozás*gombra kattintva nem módosítható.  
+- **Ajánlat azonosítója**: egyedi azonosító a fiókban található összes ajánlathoz. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat-azonosító csak kisbetűket, alfanumerikus karaktereket (például kötőjeleket és aláhúzásokat) tartalmazhat. Az **ajánlat azonosítója** 50 karakterre van korlátozva, és a *Létrehozás*gombra kattintva nem módosítható.  
 Példa: test-Offer-1
 <br>Eredményül kapott URL-cím: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
@@ -52,14 +52,14 @@ Kattintson a **Létrehozás** gombra.  Ehhez az ajánlathoz létrejön egy **aj�
 
 ## <a name="offer-overview"></a>Ajánlat áttekintése
 
-Az **ajánlat áttekintése** oldalon a következők szerepelnek: 
+Az **ajánlat áttekintése** oldalon a következők szerepelnek:
 
-- A **közzétételi állapot** megjeleníti az ajánlat közzétételéhez szükséges lépések vizuális megjelenítését, valamint azt, hogy az egyes lépések mennyi ideig tartanak. Hiányos közzétételi lépések ikonjai szürkén jelennek meg. 
+- A **közzétételi állapot** megjeleníti az ajánlat közzétételéhez szükséges lépések vizuális megjelenítését, valamint azt, hogy az egyes lépések mennyi ideig tartanak. Hiányos közzétételi lépések ikonjai szürkén jelennek meg.
 
 - Az **ajánlat áttekintő** menüjében az ajánlaton végrehajtott műveletekre mutató hivatkozásokat tartalmazó lista szerepel. A műveletek listája az ajánlathoz választott kiválasztási alapján változik.  
-    - Ha az ajánlat Piszkozat törlése 
-    - Ha az ajánlat élő leállású ajánlat eladása 
-    - Ha az ajánlat előzetes verzióban érhető el 
+    - Ha az ajánlat Piszkozat törlése
+    - Ha az ajánlat élő leállású ajánlat eladása
+    - Ha az ajánlat előzetes verzióban érhető el
     - Ha még nem fejezte be a közzétevő kijelentkezését – közzététel megszakítása
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
@@ -68,7 +68,7 @@ Az **ajánlat beállítása** lap az alábbi információkat kéri. A mezők bef
 
 - **Szeretné eladni a Microsoftot?** (Igen/nem)
     - **Igen**, szeretné értékesíteni ajánlatát a Microsoftnál, és a Microsoft üzemeltetési piactér-tranzakciókat az Ön nevében. vagy 
-    - **Nem**, inkább a piactéren szeretné kilistázni az ajánlatot, és a Microsofttól függetlenül bármilyen pénzügyi tranzakciót feldolgozni.    
+    - **Nem**, inkább a piactéren szeretné kilistázni az ajánlatot, és a Microsofttól függetlenül bármilyen pénzügyi tranzakciót feldolgozni.
 
 ### <a name="sell-through-microsoft"></a>Értékesítés a Microsofton keresztül
 
@@ -87,7 +87,7 @@ A kiadó Azure-előfizetésében futó SaaS-megoldásokkal az ügyfelek által k
 
 Az SaaS a mért számlázási szolgáltatással havi vagy éves számlázási támogatást biztosít, amely átalány, felhasználónkénti vagy használati díj alapján történik. A Microsoft kereskedelmi piactére egy ügynökségi modellen működik, amelynek során a kiadók díjszabást, Microsoft-számlákat és Microsoft-számlázást fizetnek a kiadónak, miközben az ügynökség díját is megtartják.
 
-Az alábbi táblázat egy példát mutat be a költségek és a kifizetések lebontására az Ügynökség modelljének bemutatására.
+Az alábbi táblázat a költségek és a kifizetések lebontását mutatja be az Ügynökség modelljének bemutatására.
 
 |**A licenc díja**|**$100/hó**|
 |:---|:---|
@@ -102,11 +102,11 @@ Az alábbi táblázat egy példát mutat be a költségek és a kifizetések leb
 - Azok a partnerek, akik a **kedvezményes Piactéri szolgáltatási díjjal** rendelkeznek, csökkentett tranzakciós díjat kapnak az SaaS-ajánlatokról, a május 2019-ig, 2020-ig. Ebben az esetben a Microsoft $100,00-es számlát küld a szoftverlicenc számára, és kifizeti a $90,00-et a közzétevőnek.
 
 > [!NOTE]
-> **Csökkentett Piactéri szolgáltatási díj**: a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Ahhoz, hogy az ajánlat megfelelő legyen, legalább az egyik ajánlatát a Microsoftnak kell kijelölnie, mint az IP-címek közös értékesítésének vagy az IP-címek közös értékesítésének prioritása.  A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkaphassa a Marketplace szolgáltatási díját a hónapra.  A Piactéri szolgáltatási díj nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre.  A csökkentett Piactéri szolgáltatási díj csak a Microsoft által a 2019 és a 2020. június 30. között gyűjtött licencek díjaihoz érhető el.  Ezt követően a Piactéri szolgáltatási díj visszaáll a normál mennyiségre. 
+> **Csökkentett Piactéri szolgáltatási díj**: a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Ahhoz, hogy az ajánlat megfelelő legyen, legalább az egyik ajánlatát a Microsoftnak kell kijelölnie, mint az IP-címek közös értékesítésének vagy az IP-címek közös értékesítésének prioritása.  A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkaphassa a Marketplace szolgáltatási díját a hónapra.  A Piactéri szolgáltatási díj nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre.  A csökkentett Piactéri szolgáltatási díj csak a Microsoft által a 2019 és a 2020. június 30. között gyűjtött licencek díjaihoz érhető el.  Ezt követően a Piactéri szolgáltatási díj visszaáll a normál mennyiségre.
 
 ### <a name="list-through-microsoft"></a>Listázás a Microsofton keresztül
 
-A piactér-lista létrehozásával népszerűsítheti vállalkozását a Microsofttal. Ha csak az ajánlat listázását választja, és nem a Microsofttól, hanem azt is jelenti, hogy a Microsoft nem vesz részt közvetlenül a szoftverlicenc-tranzakciókban. Nincs hozzárendelt tranzakciós díj, és a közzétevő megtartja az ügyféltől begyűjtött licencelési díjak 100%-át. A közzétevő azonban felelős a szoftverlicenc-tranzakció valamennyi aspektusának támogatásában, beleértve a rendelés teljesítését, a mérést, a számlázást, a számlázást, a fizetést és a gyűjtést. 
+A piactér-lista létrehozásával népszerűsítheti vállalkozását a Microsofttal. Ha csak az ajánlat listázását választja, és nem a Microsofttól, hanem azt is jelenti, hogy a Microsoft nem vesz részt közvetlenül a szoftverlicenc-tranzakciókban. Nincs hozzárendelt tranzakciós díj, és a közzétevő megtartja az ügyféltől begyűjtött licencelési díjak 100%-át. A közzétevő azonban felelős a szoftverlicenc-tranzakció valamennyi aspektusának támogatásában, beleértve a rendelés teljesítését, a mérést, a számlázást, a számlázást, a fizetést és a gyűjtést.
 
 - **Hogyan kívánja használni a potenciális ügyfeleket a jelen tőzsdei ajánlathoz?**
 
@@ -120,7 +120,7 @@ Az ingyenes próbaverzióra mutató hivatkozást tartalmazó ajánlat listázás
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak a felhasználói adatok Azure AD-n keresztüli beszerzéséhez használhatók, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok (MSA-EK) nem támogatottak a jogkivonat használatával történő hitelesítéshez.
 
 ##### <a name="contact-me"></a>Megkeresést kérek
-Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse össze az ügyfelek kapcsolattartási adatait. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és Piactéri forrását, ahol az ajánlat megtalálható, a rendszer elküldi a konfigurált CRM-rendszernek. A CRM konfigurálásával kapcsolatos további információkért lásd: az [érdeklődők felügyeletének összekötése](#connect-lead-management). 
+Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse össze az ügyfelek kapcsolattartási adatait. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és Piactéri forrását, ahol az ajánlat megtalálható, a rendszer elküldi a konfigurált CRM-rendszernek. A CRM konfigurálásával kapcsolatos további információkért lásd: az [érdeklődők felügyeletének összekötése](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Példa a piactér ajánlatának listázására
 
@@ -157,14 +157,16 @@ A test Drive engedélyezésével a rendszer arra kéri, hogy állítson be egy d
 - [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Az érdeklődők felügyelete – Áttekintés egy pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
+Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni a mentést** .
 
 ## <a name="properties"></a>Tulajdonságok
-A **Properties (Tulajdonságok** ) lapon megtekintheti az ajánlatnak a piactéren való csoportosításához használt kategóriákat és iparágakat, az ajánlatot támogató jogi szerződéseket és az alkalmazás verzióját. 
 
-A mezők befejezése után válassza a **Mentés** lehetőséget. 
+A **Properties (Tulajdonságok** ) lapon megtekintheti az ajánlatnak a piactéren való csoportosításához használt kategóriákat és iparágakat, az ajánlatot támogató jogi szerződéseket és az alkalmazás verzióját.
+
+A mezők befejezése után válassza a **Mentés** lehetőséget.
 
 ### <a name="category"></a>Kategória
+
 Válasszon legalább egyet (1), és legfeljebb három (3) kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területein való csoportosításához használhatók. Kérjük, tekintse meg, hogyan támogatja az ajánlat a kategóriákat az ajánlat leírásában. 
 
 ### <a name="industry"></a>Iparág
@@ -172,25 +174,51 @@ Válasszon legalább egyet (1), és legfeljebb három (3) kategóriát, amelyek 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Az alkalmazás verziója
-Ez egy nem kötelezően kitöltendő mező, amely az AppSource piactéren az ajánlat verziószámának azonosítására szolgál. 
 
-### <a name="standard-contract"></a>Standard szerződés
+Ez egy nem kötelezően kitöltendő mező, amely az AppSource piactéren az ajánlat verziószámának azonosítására szolgál.
 
-- **Standard szintű szerződést használ?**
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
 
-Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft egy standard szintű szerződést biztosít, amely megkönnyíti a tranzakciót a piactéren. 
+A Microsoft szabványos szerződéssablon-sablont biztosít.
 
-Az egyéni használati feltételek és kikötések elvégzése helyett az Azure Marketplace-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. 
+- **Szabványos szerződést használ a Microsoft kereskedelmi piactérről?**
 
-A standard szintű szerződés itt található: https://go.microsoft.com/fwlink/?linkid=2041178.
+Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést biztosít a Microsoft kereskedelmi piactérről, amely megkönnyíti a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések elvégzése helyett a kereskedelmi piactér-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. A standard szintű szerződés itt található: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-#### <a name="terms-of-use"></a>Használati feltételek
+A normál szerződést úgy is kiválaszthatja, hogy a saját használati feltételeinek megadása helyett a "szabványos szerződés használata a kereskedelmi piactérhez" jelölőnégyzetet válassza.
 
-Ha a licencfeltételek eltérnek a standard szerződéstől, dönthet úgy, hogy megadja a saját jogi használati feltételeit itt. Ezek egyszerű szövegként vagy egyetlen URL-cím formájában is megadhatók a licencfeltételeket illetően.
+![A standard szerződés használata jelölőnégyzet](./media/use-standard-contract.png)
 
-Az ügyfeleknek el kell fogadniuk ezeket a feltételeket az alkalmazás kipróbálása előtt. 
+> [!NOTE]
+> Miután közzétette az ajánlatot a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéssel, nem használhatja saját használati feltételeit és kikötéseit. Ez egy "vagy" forgatókönyv. A megoldást a standard szerződés **vagy** a saját használati feltételei alapján ajánljuk fel. Ha módosítani szeretné a standard szerződés feltételeit, ezt a standard szintű szerződés módosításain keresztül teheti meg.
 
-Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
+#### <a name="standard-contract-amendments"></a>Standard szintű szerződés módosításai
+
+A standard szintű szerződések módosításai lehetővé teszik a kiadók számára, hogy a szokásos szerződési feltételeket használják az egyszerűség kedvéért, és testre szabják a termék vagy a vállalat használati Az ügyfeleknek csak akkor kell áttekinteniük a szerződés módosításait, ha már áttekintették és elfogadták a Microsoft standard szerződést.
+
+A kereskedelmi piactér-közzétevők számára két fajta módosítás érhető el:
+
+- Univerzális módosítások: ezeket a módosításokat a rendszer univerzálisan alkalmazza az összes ügyfélre vonatkozó standard szerződésre. Az univerzális módosítások az ajánlat minden ügyfelének a vásárlás folyamatában jelennek meg. Az ügyfeleknek el kell fogadniuk a standard szerződés és a módosítás feltételeit, mielőtt felhasználhatják az ajánlatot.
+- Egyéni módosítások: ezek a módosítások a standard szerződés speciális módosításai, amelyek csak az Azure-bérlői azonosítók használatával vannak megcélozva az egyes ügyfelekre. A kiadók kiválaszthatják, hogy melyik bérlőt szeretnék megcélozni. Az ajánlat vásárlási folyamatában csak a bérlő ügyfelei jelennek meg az egyéni módosítási feltételekkel.  Az ügyfeleknek el kell fogadniuk a standard szerződés feltételeit és a módosítás (oka) t, mielőtt felhasználhatják az ajánlatot.
+
+>[!NOTE]
+> Ez a két típusú módosítás egymásra épül. Az egyéni módosításokkal rendelkező ügyfelek a vásárlás során általános módosítást is kapnak a standard szerződéshez.
+
+**Általános módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: ebben a mezőben adja meg az univerzális módosítási feltételeket. Ajánlathoz egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a AppSource, az Azure Marketplace és/vagy a Azure Portal ügyfelei számára jelennek meg a felderítési és vásárlási folyamat során.
+
+**Egyéni módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: először válassza az **Egyéni módosítási feltételek hozzáadása**lehetőséget. Ajánlatunk legfeljebb 10 egyéni módosítási feltételt adhat meg.
+
+- **Egyéni módosítási feltételek**: az egyéni módosítási feltételek mezőben adja meg az egyéni módosítási feltételeket. Ebben a mezőben korlátlan számú karaktert adhat meg. Csak az egyéni feltételekhez megadott bérlői azonosítók ügyfelei jelennek meg az ajánlat vásárlási folyamatában az Azure Portalban.  
+- **Bérlői azonosítók** (kötelező): minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót. A bérlő azonosítója azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az AZONOSÍTÓra, és megkeresheti a portal.azure.com > Azure Active Directory > a Tulajdonságok lehetőségre kattintva. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com).
+- **Leírás** (nem kötelező): opcionálisan megadhatja a bérlői azonosító rövid leírását, amely segít azonosítani a módosítással megcélzott ügyfelet.
+
+#### <a name="terms-and-conditions"></a>Feltételek és kikötések
+
+Ha meg szeretné adni saját használati feltételeit, megadhatja őket a feltételek és kikötések mezőben. Ebben a mezőben legfeljebb 10 000 karakter hosszúságú szöveget adhat meg. Ha a feltételek és kikötések további leírást igényelnek, adjon meg egy URL-hivatkozást ebbe a mezőbe, ahol a feltételek és kikötések megtalálhatók. Aktív hivatkozásként jelenik meg az ügyfelek számára.
+
+Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
+
+Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni a mentést** .
 
 ## <a name="offer-listing"></a>Ajánlati lista
 
@@ -208,28 +236,28 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Leírás** (kötelező): adja meg a piactér-lista (ek) áttekintésében megjelenítendő ajánlat leírását. Érdemes figyelembe venni az érték kiosztását, a főbb előnyöket, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, a szükséges közzétételeket, valamint egy hivatkozást, amely további információkat tartalmaz.
 Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. További tippekért tekintse meg a [nagyszerű alkalmazás leírását](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)ismertető cikket.
 - **Kulcsszavak keresése**: legfeljebb három olyan keresési kulcsszót adhat meg, amelyeket az ügyfelek a piactér (ek) ben használhatnak fel az ajánlat megtalálására.
-- **Útmutató az első lépésekhez** (kötelező): az alkalmazás konfigurálásának és használatának megkezdése a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
+- **Útmutató az első lépésekhez** (kötelező): az alkalmazás konfigurálásának és használatának megkezdése a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
 #### <a name="description"></a>**Leírás**
 
-Ez egy kötelező mező. A leírásban szerepeltetni kívánt elemek: 
+A mezőt kötelező kitölteni. A leírásban szerepeltetni kívánt elemek:
 
 * A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét.  
 * Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.  
 * Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania.  
-* A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést. 
+* A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.
 
-Az érték kiosztásának alapvető összetevőinek a következő információkat kell tartalmazniuk: 
+Az érték kiosztásának alapvető összetevőinek a következő információkat kell tartalmazniuk:
 
-* A termék leírása. 
-* A termékből származó előnyöket biztosító felhasználó típusa. 
-* Az ügyfélnek szüksége van a termék címére, vagy a fájdalomra. 
+* A termék leírása.
+* A termékből származó előnyöket biztosító felhasználó típusa.
+* Az ügyfélnek szüksége van a termék címére, vagy a fájdalomra.
 
-Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címkék használatával formázhatja a leírást. 
+Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címkék használatával formázhatja a leírást.
 
 1. Ha bekezdéseket szeretne létrehozni, vegye fel `<p>` a szöveg megadásával, és adja hozzá a `</p>`t a végén.
 
-    **Példa**: 
+    **Példa**:
 
     `<p>` ez az első bekezdés. `</p>` <br>
     `<p>` ez a második bekezdés. `</p>` <br>
@@ -239,44 +267,44 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
     <p> Ez az első bekezdés. </p>
     <p> Ez a második bekezdés. </p>
 
-1. Ha **listajeles listát kíván hozzáadni az elemek listájához**, helyezze a szöveget az alábbi `<li>` címkékbe. A `<ul>` és a `</ul>` címkén belül több listajeles elemet (a `<li>` és a `</li>` címkék között található elemeket) másolhat és beilleszthet. Ügyeljen arra, hogy hozzáadja a `<ul></ul>`. 
+1. Ha **listajeles listát kíván hozzáadni az elemek listájához**, helyezze a szöveget az alábbi `<li>` címkékbe. A `<ul>` és a `</ul>` címkén belül több listajeles elemet (a `<li>` és a `</li>` címkék között található elemeket) másolhat és beilleszthet. Ügyeljen arra, hogy hozzáadja a `<ul></ul>`.
 
     **Példa**:
 
     ```
     <ul> 
-        <li>add text here</li> 
-        <li> add text here </li> 
-        <li> add text here </li> 
-    </ul> 
+        <li>add text here</li>
+        <li> add text here </li>
+        <li> add text here </li>
+    </ul>
     ```
 
     A fentiek így néznek ki:
     <ul> 
-        <li>Ide írja be a szöveget</li> 
-        <li> Ide írja be a szöveget </li> 
-        <li> Ide írja be a szöveget </li> 
+        <li>Ide írja be a szöveget</li>
+        <li> Ide írja be a szöveget </li>
+        <li> Ide írja be a szöveget </li>
     </ul> 
 
-1. **Félkövér** tartalom hozzáadásához vegyen fel `<b>`t a félkövérre állítani kívánt szöveg elejére, és vegye fel `</b>` a félkövérre állítani kívánt szöveg végén. 
+1. **Félkövér** tartalom hozzáadásához vegyen fel `<b>`t a félkövérre állítani kívánt szöveg elejére, és vegye fel `</b>` a félkövérre állítani kívánt szöveg végén.
 
     **Példa**: `<b>` ingyenes próbaverzió `</b>`
     
-    A fentiek hatására az ingyenes PRÓBAIDŐSZAKot a kirakatban található ajánlat leírásában félkövérre kell állítani. 
+    A fentiek hatására az ingyenes PRÓBAIDŐSZAKot a kirakatban található ajánlat leírásában félkövérre kell állítani.
 
-    **INGYENES PRÓBAVERZIÓ**
+    **INGYENES PRÓBA**
 
-1. Ha **sortörést szeretne hozzáadni a** tartalomhoz, adja hozzá a `<br>`t az új sorban elindítani kívánt tartalomhoz. Ha helyet szeretne hagyni, és gondoskodjon arról, hogy a tartalom új sorban induljon el, adja hozzá a `<br><br>`t a tartalom előtt. 
+1. Ha **sortörést szeretne hozzáadni a** tartalomhoz, adja hozzá a `<br>`t az új sorban elindítani kívánt tartalomhoz. Ha helyet szeretne hagyni, és gondoskodjon arról, hogy a tartalom új sorban induljon el, adja hozzá a `<br><br>`t a tartalom előtt.
 
     **Példa**:
 
-    Ez egy szöveges sor. `<br>` ez egy olyan szövegsor, amely új sorban indul el. `<br><br>` ez egy olyan vonal, amely az alábbi két sort fogja elindítani. 
+    Ez egy szöveges sor. `<br>` ez egy olyan szövegsor, amely új sorban indul el. `<br><br>` ez egy olyan vonal, amely az alábbi két sort fogja elindítani.
 
     A fentiek így néznek ki:
 
-    Ez egy szöveges sor. <br> Ez egy olyan szövegsor, amely új sorban indul el. <br><br> Ez egy olyan sor, amely az alábbi két sort fogja elindítani. 
+    Ez egy szöveges sor. <br> Ez egy olyan szövegsor, amely új sorban indul el. <br><br> Ez egy olyan sor, amely az alábbi két sort fogja elindítani.
 
-1. Ha szeretné **megnövelni a szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő `<H*></H*>` címkéket a szöveg elejéhez és végéhez. 
+1. Ha szeretné **megnövelni a szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő `<H*></H*>` címkéket a szöveg elejéhez és végéhez.
 
     **Példa**:
 
@@ -299,7 +327,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
 #### <a name="contact-information"></a>Kapcsolattartási adatok
 
-- **Névjegyek**: minden ügyfél-kapcsolattartó esetében adja meg az alkalmazott **nevét** , **telefonszámát**és **e-mail-** címét.  (Ezek *nem* lesznek nyilvánosan megjelenítve). A **támogatási kapcsolattartó** csoportnak egy **támogatási URL-címet** is meg kell adnia.  (Ez az *információ nyilvánosan jelenik meg* ).
+- **Névjegyek**: minden ügyfél-kapcsolattartó esetében adja meg az alkalmazott **nevét**, **telefonszámát**és **e-mail-** címét.  (Ezek *nem* lesznek nyilvánosan megjelenítve). A **támogatási kapcsolattartó** csoportnak egy **támogatási URL-címet** is meg kell adnia.  (Ez az *információ nyilvánosan jelenik meg* ).
 
 **Támogatási kapcsolattartó** (kötelező): általános támogatási kérdések.
 
@@ -310,11 +338,11 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
 - **Dokumentumok** (kötelező): kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz PDF formátumban, legalább egy (1) és legfeljebb három (3) dokumentum biztosításával.
-- **Képek** (nem kötelező): több hely is van, ahol az ajánlat emblémájának képei megjelenhetnek a piactéren, a következő méretek megkövetelésével: 48 x 48 képpont _(kötelező),_ közepes: 90 x 90 képpont, nagyméretű: 216 x 216 képpont _( kötelező),_ széles: 255 x 115 képpont és hős: 815 x 290 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
+- **Képek** (nem kötelező): több hely is van, ahol az ajánlat emblémájának képei megjelenhetnek a piactéren, a következő méretek megkövetelésével: 48 x 48 képpont _(kötelező),_ közepes: 90 x 90 képpont, nagyméretű: 216 x 216 képpont _(kötelező),_ Wide: 255 x 115 képpont és Hero: 815 x 290 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Képernyőképek** (kötelező): az ajánlatot bemutató képernyőképeket adhat hozzá. Legfeljebb öt (5) képernyőkép adható hozzá, és 1280 x 720 képpont méretűnek kell lennie. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező): az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.
 
-Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
+Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni a mentést** .
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
@@ -476,7 +504,7 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 
 - Tekintse meg az ajánlat egyes szakaszainak befejezési állapotát.
     - *Nincs elindítva* – azt jelenti, hogy a szakasz nem lett megérintve, és el kell végezni.
-    - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Lépjen vissza a szakasz (ok) ra, és frissítse azt.
+    - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Vissza kell térnie a szakaszhoz, és frissítenie kell.
     - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - Adjon meg tesztelési útmutatást a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.

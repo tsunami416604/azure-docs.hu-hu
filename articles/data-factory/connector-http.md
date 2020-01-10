@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6305a6e68f435c009fdfdea371e88f4a73c3d92
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440618"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830394"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
 
@@ -222,7 +222,7 @@ A következő tulajdonságok támogatottak a HTTP-n belül `storeSettings` beál
 
 | Tulajdonság                 | Leírás                                                  | Szükséges |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | A `storeSettings` alatti Type tulajdonságot **HttpReadSetting**értékre kell állítani. | Igen      |
+| type                     | A `storeSettings` alatti Type tulajdonságot **HttpReadSettings**értékre kell állítani. | Igen      |
 | requestMethod            | A HTTP-metódus. <br>Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem       |
 | addtionalHeaders         | További HTTP-kérelmek fejlécei.                             | Nem       |
 | RequestBody              | A HTTP-kérelem törzse.                               | Nem       |
@@ -252,11 +252,11 @@ A következő tulajdonságok támogatottak a HTTP-n belül `storeSettings` beál
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "HttpReadSetting",
+                    "type": "HttpReadSettings",
                     "requestMethod": "Post",
                     "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
                     "requestBody": "<body for POST HTTP request>"

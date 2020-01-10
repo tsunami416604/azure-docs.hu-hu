@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 89b86124d6da0d0d659ed0673585eadbf1008aa3
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.custom: hdinsightactive
+ms.date: 01/03/2020
+ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847297"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767670"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel
 
@@ -36,25 +36,25 @@ Data Lake Storage Gen2 for Storage-t használó HDInsight-fürt létrehozásáho
 
 Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha még nem rendelkezik ilyennel.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás**elemre.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 1. Adja meg a felügyelt identitás nevét, válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](hdinsight-managed-identities.md).
 
 ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
-### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 fiók létrehozása
+### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók létrehozása
 
 Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók**elemre.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 1. A **Storage-fiók létrehozása** képernyőn:
     1. Válassza ki a megfelelő előfizetést és erőforráscsoportot.
     1. Adja meg a Data Lake Storage Gen2-fiók nevét. A Storage-fiókok elnevezési konvenciókkal kapcsolatos további információkért lásd: [Az Azure-erőforrások elnevezési konvenciói](/azure/architecture/best-practices/resource-naming#storage).
@@ -93,8 +93,10 @@ Rendelje hozzá a felügyelt identitást a Storage- **blob adattulajdonosi** sze
 
         ![Az Data Lake Storage Gen2 és a HDInsight használatára vonatkozó identitás-beállítások](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
 
-> [!Note]
-> Másodlagos Data Lake Storage Gen2 fiók hozzáadásához a Storage-fiók szintjén egyszerűen rendelje hozzá a korábban létrehozott felügyelt identitást a hozzáadni kívánt új Data Lake Storage Gen2 Storage-fiókhoz. Javasoljuk, hogy a HDInsight nem támogatja a másodlagos Data Lake Storage Gen2 fiók hozzáadását a "további Storage-fiókok" panelen.
+> [!NOTE]
+> * Másodlagos Data Lake Storage Gen2 fiók hozzáadásához a Storage-fiók szintjén egyszerűen rendelje hozzá a korábban létrehozott felügyelt identitást a hozzáadni kívánt új Data Lake Storage Gen2 Storage-fiókhoz. Javasoljuk, hogy adjon hozzá egy másodlagos Data Lake Storage Gen2 fiókot a HDInsight "további Storage-fiókok" paneljén nem támogatott.
+> * Engedélyezheti az RA-GRS vagy az RA-ZRS az Azure Storage-fiókban, amelyet a HDInsight használ. A fürt az RA-GRS vagy az RA-ZRS másodlagos végponttal való létrehozása azonban nem támogatott.
+
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Data Lake Storage Gen2-fürt létrehozása az Azure CLI-vel
 
@@ -146,6 +148,10 @@ az group deployment create --name HDInsightADLSGen2Deployment \
     --template-file hdinsight-adls-gen2-template.json \
     --parameters parameters.json
 ```
+
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>Fürt létrehozása Data Lake Storage Gen2 segítségével Azure PowerShell
+
+A PowerShell használatával HDInsight-fürtöt hozhat létre a Azure Data Lake Storage Gen2val. jelenleg nem támogatott.
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Data Lake Storage Gen2 hozzáférés-vezérlése a HDInsight-ben
 
@@ -250,7 +256,7 @@ LOCATION 'abfs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight-integráció Data Lake Storage Gen2 előzetes verzióval – ACL és biztonsági frissítés](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Bevezetés a Azure Data Lake Storage Gen2ba](../storage/blobs/data-lake-storage-introduction.md)

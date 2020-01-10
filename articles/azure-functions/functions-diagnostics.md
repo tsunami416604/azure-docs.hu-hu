@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562051"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834047"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions diagnosztika áttekintése
 
@@ -42,9 +42,9 @@ A csempék kiválasztása után megtekintheti a csempén bemutatott problémáva
 
 Miután kiválasztott egy témakört, megtekintheti a Function alkalmazásra jellemző diagnosztikai jelentést. A diagnosztikai jelentések állapotjelző ikonokkal jelzik, hogy van-e konkrét probléma az alkalmazással kapcsolatban. Megtekintheti a probléma részletes leírását, az ajánlott műveleteket, a kapcsolódó mérőszámokat és a hasznos dokumentumokat. A rendszer a testreszabott diagnosztikai jelentéseket a Function alkalmazásban futó ellenőrzések sorozatából hozza létre. A diagnosztikai jelentések hasznos eszköz lehet a Function-alkalmazásban felmerülő problémák azonosításához és a probléma megoldásához.
 
-## <a name="find-the-problem-code"></a>A probléma kódjának megkeresése 
+## <a name="find-the-problem-code"></a>A probléma kódjának megkeresése
 
-A parancsfájl-alapú függvények esetében a **függvény végrehajtása** és a **hibák** **függvényalkalmazás legördülő menüben, illetve a hibák bejelentése** a kódban a kivételeket vagy hibákat okozó sorokra szűkíthető. Ez a funkció hasznos eszköz lehet a kiváltó ok beszerzéséhez és a hibák adott kódból való kijavításához. Ez a beállítás nem érhető el előre C# lefordított és Java-függvényekhez.
+A parancsfájl-alapú függvények esetében a **függvény végrehajtása és a hibák** **függvényalkalmazás legördülő menüben, illetve a hibák bejelentése** a kódban a kivételeket vagy hibákat okozó sorokra szűkíthető. Ez a funkció hasznos eszköz lehet a kiváltó ok beszerzéséhez és a hibák adott kódból való kijavításához. Ez a beállítás nem érhető el előre C# lefordított és Java-függvényekhez.
 
 ![Diagnosztikai jelentés a függvények végrehajtásával kapcsolatos hibákról](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

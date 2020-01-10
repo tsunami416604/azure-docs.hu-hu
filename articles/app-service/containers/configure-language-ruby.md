@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670388"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834315"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Linux Ruby-alkalmazás konfigurálása a Azure App Servicehoz
 
-Ez a cikk leírja, hogyan futtatja [Azure app Service](app-service-linux-intro.md) a Ruby-alkalmazásokat, és hogyan szabhatja testre a app Service viselkedését, ha szükséges. A Ruby-alkalmazásokat az összes szükséges [pip](https://pypi.org/project/pip/) -modullal telepíteni kell.
+Ez a cikk leírja, hogyan futtatja [Azure app Service](app-service-linux-intro.md) a Ruby-alkalmazásokat, és hogyan szabhatja testre a app Service viselkedését, ha szükséges. A Ruby-alkalmazásokat az összes szükséges [drágakövevel](https://rubygems.org/gems)telepíteni kell.
 
 Ez az útmutató a App Service beépített linuxos tárolóját használó Ruby-fejlesztők számára biztosít főbb fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [Ruby](quickstart-ruby.md) - [útmutató és a Ruby with PostgreSQL oktatóanyagot](tutorial-ruby-postgres-app.md) .
 
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > Ez azt jelenti, hogy a projektben konfigurált Ruby-verzió eltér a futtatott tárolóban telepített verziótól (a fenti példában`2.3.3`). A fenti példában ellenőrizze mind a *Gemfile* , mind a *. Ruby-Version* jelet, és ellenőrizze, hogy nincs-e beállítva a Ruby verziója, vagy a (`2.3.3` a fenti példában szereplő) verzióra van-e beállítva.
 
-## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
+## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
 App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezután a standard [env ['\<Path-name >]](https://ruby-doc.org/core-2.3.3/ENV.html) minta használatával érheti el azokat. Ha például egy `WEBSITE_SITE_NAME`nevű alkalmazás-beállítást szeretne elérni, használja a következő kódot:
 

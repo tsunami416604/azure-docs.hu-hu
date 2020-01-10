@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671494"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768486"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Ajánlott eljárások az Azure App Service-hez
 Ez a cikk a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)használatának ajánlott eljárásait foglalja össze. 
@@ -65,3 +65,13 @@ Ha a biztonsági mentési hibák történnek, tekintse át a legutóbbi eredmén
 ## <a name="nodejs"></a>Új Node. js-alkalmazások telepítésekor Azure App Service
 A Node. js-alkalmazások alapértelmezett konfigurációja Azure App Service a leggyakoribb alkalmazások igényeinek legmegfelelőbb. Ha a Node. js-alkalmazás konfigurációja a személyre szabott hangolás előnyeit kihasználva javítja a teljesítményt vagy optimalizálja a CPU/memória/hálózati erőforrások erőforrás-felhasználását, tekintse [meg az ajánlott eljárásokat és a hibaelhárítási útmutatót a Node-alkalmazásokhoz a Azure app Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Ez a cikk a Node. js-alkalmazás konfigurálásához szükséges iisnode-beállításokat ismerteti, ismerteti az alkalmazás által megtekinthető különböző forgatókönyveket vagy problémákat, és bemutatja, hogyan kezelheti ezeket a problémákat.
 
+
+## <a name="next-steps"></a>Következő lépések
+Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
+
+- Navigáljon a webalkalmazáshoz a [Azure Portal](https://portal.azure.com).
+- Kattintson a bal oldali navigációs sávon található **problémák diagnosztizálásához és megoldásához** , amely megnyitja app Service diagnosztikát.
+- Válassza az **ajánlott eljárások** Kezdőlap csempét.
+- Kattintson az **ajánlott eljárások a rendelkezésre állás & teljesítmény** vagy **ajánlott eljárások az optimális konfigurációhoz** lehetőségre az alkalmazás aktuális állapotának megtekintéséhez az ajánlott eljárásokkal kapcsolatban.
+
+Ezzel a hivatkozással közvetlenül is megnyithatja App Service diagnosztikát az erőforráshoz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

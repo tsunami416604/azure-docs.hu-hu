@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762717"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771291"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
@@ -32,7 +32,7 @@ Azure Logic Apps összekötők: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
-Az Azure Sentinel naplózási naplóit az [Azure-tevékenységek naplójában](../azure-monitor/platform/activity-logs-overview.md)tartják karban.
+Az Azure Sentinel naplózási naplóit az [Azure-tevékenységek naplójában](../azure-monitor/platform/platform-logs-overview.md)tartják karban.
 
 A következő támogatott műveletek naplózhatók.
 
@@ -44,8 +44,6 @@ A következő támogatott műveletek naplózhatók.
 |Munkafolyamat törlése    |Microsoft. Logic/munkafolyamatok|
 |Mentett keresés létrehozása    |Microsoft. OperationalInsights/munkaterületek/savedSearches|
 |Mentett keresés törlése    |Microsoft. OperationalInsights/munkaterületek/savedSearches|
-|Irányítópult beállítása  |Microsoft. Portal/irányítópultok|
-|Irányítópult törlése   |Microsoft. Portal/irányítópultok|
 |Riasztási szabályok frissítése |Microsoft. SecurityInsights/alertRules|
 |Riasztási szabályok törlése |Microsoft. SecurityInsights/alertRules|
 |Riasztási szabály válaszára vonatkozó műveletek frissítése |Microsoft. SecurityInsights/alertRules|

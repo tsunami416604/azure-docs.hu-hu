@@ -1,6 +1,6 @@
 ---
 title: Azure Automation megosztott erőforrásokkal kapcsolatos hibák elhárítása
-description: Ismerje meg, hogyan lehet elhárítani a Azure Automation megosztott erőforrásokkal kapcsolatos problémákat
+description: Megtudhatja, hogyan lehet elhárítani és elhárítani a runbookok támogató Azure Automation megosztott erőforrásokkal kapcsolatos problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849292"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769863"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
 

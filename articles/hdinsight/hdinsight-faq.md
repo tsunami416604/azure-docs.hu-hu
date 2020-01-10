@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644596"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830377"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: gyakori kérdések
 
@@ -84,23 +84,9 @@ Igen. További összetevők telepítéséhez vagy a fürtkonfiguráció testresz
 
 - Parancsfájlok létrehozása a létrehozás során vagy után. A szkripteket parancsfájl- [művelettel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)hívja meg a rendszer, amely a Azure Portal, HDInsight Windows PowerShell-parancsmagok vagy a HDINSIGHT .net SDK használatával használható konfigurációs lehetőség. Ezt a konfigurációs lehetőséget a Azure Portal, a HDInsight Windows PowerShell-parancsmagok vagy a HDInsight .NET SDK használatával lehet használni.
 
-- a fürt kiépítése után `sudo` vagy más metódusok.
-  
 - [HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) az ökoszisztéma-alkalmazások telepítéséhez.
 
-Microsoft ügyfélszolgálata csapatok azonban csak a következő helyzetekben nyújthatnak támogatást:
-
-- A parancsfájl betöltésekor előforduló problémák vagy hibák. Az egyéni szkriptek végrehajtásakor felmerülő hibák kezelésére a támogatási jegyek nem terjednek ki.
-
-- A fürt létrehozási folyamatának részét képező további alkalmazások. 
-
 A támogatott összetevők listáját lásd: [Mik a Apache Hadoop összetevők és verziók érhetők el a HDInsight-ben?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
-
-Az egyes összetevők támogatása fürttípustól függően is változhat. Például a Spark nem támogatott egy Kafka-fürtön, és fordítva.
-
-A fürt létrehozási folyamatán kívüli alkalmazásokhoz és szolgáltatásokhoz a támogatásért forduljon a szállítóhoz vagy a szolgáltatóhoz. Számos közösségi támogatási helyet is használhat. Ilyenek például a HDInsight és a [stack overflow](https://stackoverflow.com/) [MSDN-fóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) . Az Apache-projektek az [Apache webhelyén](https://apache.org/)is rendelkeznek Project-webhelyekkel. Ilyen például a [Hadoop](https://hadoop.apache.org/). 
-
-Az Azure-támogatással kapcsolatos további információkért tekintse meg az [Azure-támogatási gyakori kérdések](https://azure.microsoft.com/support/faq/)című témakört.
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Frissíthetem a fürtön előre telepített egyes összetevőket?
 

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b646c64b0ec45a11f99350ff5bd81a89418b2ecd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072511"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768527"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>API-k hibakeresése kérelmek nyomkövetésének használatával
 
@@ -34,8 +34,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
-+ Továbbá hajtsa végre a következő oktatóanyagot: [Az első API importálása és közzététele](import-and-publish.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Hívás nyomon követése
 
@@ -47,10 +47,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 4. Válassza a **GetSpeakers** műveletet.
 5. Győződjön meg róla, hogy egy **Ocp-Apim-Trace** elnevezésű HTTP-fejlécet is belefoglal, amely a **true** (igaz) értékre van állítva.
 
-    > [!NOTE]
-    > Ha az Ocp-Apim-Subscription-Key nincs automatikusan kitöltve, akkor a fejlesztői portálon, a profiloldalon a kulcsok felfedésével szerezheti be.
+   > [!NOTE]
+   > * Ha az Ocp-Apim-Subscription-Key nincs automatikusan kitöltve, akkor a fejlesztői portálon, a profiloldalon a kulcsok felfedésével szerezheti be.
+   > * Ahhoz, hogy nyomkövetést kapjon a OCP-APIM-Trace HTTP-fejléc használatakor, engedélyezni kell az előfizetési kulcs **nyomkövetési** beállítását. A **nyomkövetés engedélyezése** beállítás konfigurálásához a bal oldali menü **API Management** területén válassza az **előfizetések**lehetőséget.
+   >   ![a nyomkövetés engedélyezése a API Management-előfizetések ablaktáblán](media/api-management-howto-api-inspector/allowtracing.png)
 
-6. Kattintson a **„Küldés”** gombra egy API-hívás indításához. 
+6. Az API-hívás létrehozásához kattintson a **Küldés** gombra. 
 7. Várjon, amíg a hívás véget ér. 
 8. Lépjen az **API-konzol** **Nyomkövetés** lapjára. A következő hivatkozások bármelyikére kattintva a részletes nyomkövetési információkra ugorhat: **bejövő**, **háttér**, **kimenő**.
 
@@ -63,7 +65,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     > [!TIP]
     > Az egyes lépések a hívás az API Management által való fogadása óta eltelt időt is mutatják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

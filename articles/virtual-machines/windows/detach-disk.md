@@ -2,25 +2,20 @@
 title: Adatlemez leválasztása Windows rendszerű virtuális gépről – Azure
 description: Adatlemez leválasztása az Azure-beli virtuális gépről a Resource Manager-alapú üzemi modell használatával.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-service-management
-ms.assetid: 13180343-ac49-4a3a-85d8-0ead95e2028c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 01/08/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 93db2935fdc41787bb1820d1f8ce85ac05ef0863
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 301f3abd26f702f3f29c8833c835ba7d0e41bcaf
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033349"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834607"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Adatlemez leválasztása egy Windows rendszerű virtuális gépről
 
@@ -40,22 +35,29 @@ Az adatlemezeket a PowerShell *használatával is* elvégezheti, de ügyeljen ar
 Ebben a példában eltávolítjuk a **myDisk** nevű lemezt a **myResourceGroup** erőforráscsoport virtuálisgép- **myVM** . Először távolítsa el a lemezt a [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) parancsmag használatával. Ezután frissítse a virtuális gép állapotát az [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) parancsmag használatával az adatlemez eltávolítási folyamatának befejezéséhez.
 
 ```azurepowershell-interactive
-$VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
-Remove-AzVMDataDisk -VM $VirtualMachine -Name "myDisk"
-Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
+$VirtualMachine = Get-AzVM `
+   -ResourceGroupName "myResourceGroup" `
+   -Name "myVM"
+Remove-AzVMDataDisk `
+   -VM $VirtualMachine `
+   -Name "myDisk"
+Update-AzVM `
+   -ResourceGroupName "myResourceGroup" `
+   -VM $VirtualMachine
 ```
 
 A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
 
+Elvégezheti az adatlemezek *eltávolítását* , de a virtuális gépről való leválasztása előtt győződjön meg arról, hogy a lemez nem használja aktívan a lemezt.
+
 1. A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
-2. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található, és kattintson a **Leállítás** gombra a virtuális gép lefoglalásához.
-3. A virtuális gép ablaktáblán válassza a **lemezek**elemet.
-4. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
-5. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a ![leválasztási gomb képe](./media/detach-disk/detach.png) Leválasztás gombra.
-5. A lemez eltávolítása után kattintson a panel tetején található **Mentés** gombra.
-6. A virtuális gép ablaktáblán kattintson az **Áttekintés** elemre, majd kattintson a panel tetején található **Start** gombra a virtuális gép újraindításához.
+1. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található.
+1. A **Beállítások** alatt válassza a **Lemezek** lehetőséget.
+1. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
+1. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a **Leválasztás**lehetőségre.
+1. A módosítások mentéséhez kattintson a lap tetején található **Mentés** gombra.
 
 A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 

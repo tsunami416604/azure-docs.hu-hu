@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048196"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768622"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások méretezési lehetőségei az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,6 +28,8 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújta
 ## <a name="manually-scale-pods-or-nodes"></a>Hüvelyek vagy csomópontok manuális skálázása
 
 A replikák (hüvelyek) és a csomópontok manuális skálázásával tesztelheti, hogy az alkalmazás hogyan reagáljon a rendelkezésre álló erőforrások és állapot változására. Az erőforrások manuális skálázása azt is lehetővé teszi, hogy meghatározott mennyiségű erőforrást határozzon meg a rögzített költségeket, például a csomópontok számának fenntartásához. A manuális méretezéshez meg kell határoznia a replika vagy a csomópontok darabszámát. A Kubernetes API ezután az adott replika vagy csomópontok száma alapján további hüvelyek vagy kiürítési csomópontok létrehozását ütemezheti.
+
+A csomópontok skálázásakor a Kubernetes API meghívja a megfelelő Azure számítási API-t a fürt által használt számítási típushoz kötve. Például a VM Scale Sets API által meghatározott csomópontok kiválasztásához az VM Scale Setsra épülő fürtök esetében. Ha többet szeretne megtudni arról, hogy a csomópontok hogyan legyenek kiválasztva az eltávolításra, tekintse meg a [VMSS kapcsolatos gyakori kérdéseket](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 A hüvelyek és a csomópontok manuális méretezésének megkezdéséhez lásd: [alkalmazások méretezése az AK-ban][aks-scale].
 

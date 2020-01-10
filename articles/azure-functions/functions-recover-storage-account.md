@@ -5,18 +5,18 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612972"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834237"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>A "functions Runtime nem érhető el" hibáinak megoldása
 
 
 ## <a name="error-text"></a>Hiba szövege
-Ez a dokumentum a functions portálon megjelenő következő hiba megoldására szolgál.
+Ez a cikk a functions portálon megjelenő következő hiba megoldására szolgál.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
@@ -40,13 +40,13 @@ Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. H
 
 ### <a name="how-to-find-your-storage-account"></a>A Storage-fiók megkeresése
 
-Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage` vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További részletek az [Alkalmazásbeállítások referenciájában itt](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage) olvashatók
+Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage` vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További részletekért tekintse meg az [Alkalmazásbeállítások hivatkozását](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
 Keresse meg a Storage-fiókját a Azure Portalban, és ellenőrizze, hogy még létezik-e. Ha törölték, újra létre kell hoznia egy Storage-fiókot, és cserélnie kell a Storage-kapcsolódási karakterláncokat. A függvény kódja elveszett, és újra kell telepíteni újra.
 
 ## <a name="storage-account-application-settings-deleted"></a>A Storage-fiók alkalmazásának beállításai törölve
 
-Az előző lépésben, ha nem rendelkezik a Storage-fiókhoz tartozó kapcsolatok karakterláncával, valószínűleg törölték vagy felülírták őket. Az Alkalmazásbeállítások törlésére leggyakrabban az üzembehelyezési pontok használatakor vagy Azure Resource Manager parancsfájlokban van szükség az alkalmazás beállításainak megadásához.
+Az előző lépésben, ha nem rendelkezik a Storage-fiókhoz tartozó kapcsolatok karakterláncával, valószínűleg törölték vagy felülírták. Az Alkalmazásbeállítások törlésére leggyakrabban az üzembehelyezési pontok használatakor vagy Azure Resource Manager parancsfájlokban van szükség az alkalmazás beállításainak megadásához.
 
 ### <a name="required-application-settings"></a>Szükséges Alkalmazásbeállítások
 
@@ -56,7 +56,7 @@ Az előző lépésben, ha nem rendelkezik a Storage-fiókhoz tartozó kapcsolato
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Az Alkalmazásbeállítások itt olvashatók](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Az Alkalmazásbeállítások itt olvashatók](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
 ### <a name="guidance"></a>Segédletek
 
@@ -66,7 +66,7 @@ Az előző lépésben, ha nem rendelkezik a Storage-fiókhoz tartozó kapcsolato
 
 ## <a name="storage-account-credentials-invalid"></a>A Storage-fiók hitelesítő adatai érvénytelenek
 
-A tárolási kulcsok újragenerálása esetén frissíteni kell a fenti Storage-fiókhoz tartozó kapcsolatok karakterláncait. [További információ a Storage Key managementről](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+A tárolási kulcsok újragenerálása esetén frissíteni kell a fenti Storage-fiókhoz tartozó kapcsolatok karakterláncait. [További információ a Storage Key managementről](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ## <a name="storage-account-inaccessible"></a>A Storage-fiók nem érhető el
 
@@ -79,15 +79,15 @@ A függvényalkalmazásnak képesnek kell lennie hozzáférni a Storage-fiókhoz
 
 Ha a napi végrehajtási kvóta konfigurálva van, a függvényalkalmazás átmenetileg le lesz tiltva, és számos portál vezérlő elérhetetlenné válik. 
 
-* Az ellenőrzéshez jelölje be a platform szolgáltatásai > függvényalkalmazás beállítások a portálon című részt. A következő üzenet jelenik meg, ha túllépi a kvótát
+* Az ellenőrzéshez nyissa meg a platform szolgáltatásai > függvényalkalmazás beállításokat a portálon. A következő üzenet jelenik meg, ha túllépi a kvótát:
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Távolítsa el a kvótát, és indítsa újra az alkalmazást a probléma megoldásához.
 
 ## <a name="app-is-behind-a-firewall"></a>Az alkalmazás tűzfal mögött van
 
-A függvény futtatókörnyezete nem érhető el, ha a Function alkalmazást [belső terheléselosztású app Service Environment](../app-service/environment/create-ilb-ase.md) üzemelteti, és úgy van konfigurálva, hogy blokkolja a bejövő internetes forgalmat, vagy [bejövő IP-korlátozásokat](functions-networking-options.md#inbound-ip-restrictions) konfigurál az Internet-hozzáférés blokkolására. A Azure Portal közvetlenül a futó alkalmazásban hívja meg a függvények listáját, és http-hívást kezdeményez a KUDU-végponthoz. A platform szintjének beállításai a `Platform Features` lapon továbbra is elérhetők lesznek.
+A függvény futtatókörnyezete nem érhető el, ha a Function alkalmazást [belső terheléselosztású app Service Environment](../app-service/environment/create-ilb-ase.md) üzemelteti, és úgy van konfigurálva, hogy blokkolja a bejövő internetes forgalmat, vagy [bejövő IP-korlátozásokat](functions-networking-options.md#inbound-ip-restrictions) konfigurál az Internet-hozzáférés blokkolására. A Azure Portal közvetlenül a futó alkalmazásban hívja meg a függvények listáját, és HTTP-hívásokat kezdeményez a KUDU-végponthoz. A platform szintjének beállításai a `Platform Features` lapon továbbra is elérhetők lesznek.
 
-* A bevezetői konfiguráció ellenőrzéséhez navigáljon az alhálózathoz, ahol a NSG található, és ellenőrizze a bejövő szabályokat, hogy engedélyezze az alkalmazáshoz hozzáférő számítógép nyilvános IP-címéről érkező forgalmat. A portált egy olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózatban futó virtuális géphez van csatlakoztatva. [További információ a bejövő szabályok konfigurálásáról](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+* A bevezető konfiguráció ellenőrzéséhez navigáljon annak az alhálózatnak a NSG, ahol a központilag található, és ellenőrizze a bejövő szabályokat, hogy engedélyezzék az alkalmazáshoz hozzáférő számítógép nyilvános IP-címéről érkező forgalmat. A portált egy olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózatban futó virtuális géphez van csatlakoztatva. [További információ a bejövő szabályok konfigurálásáról](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>Következő lépések
 

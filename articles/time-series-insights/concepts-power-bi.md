@@ -7,19 +7,27 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 8ca5dec833f3e726aed0d469525ca3d9735fc33c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/06/2020
+ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114967"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770322"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Time Series Insights összekötése a Power BI  
- 
+
 Olyan megoldást keres, amely segít az idősoros adatai összekapcsolásában, élénk vizualizációk létrehozásában és az elemzések megosztásában a szervezeten belül?
 
-A Time Series Insights mostantól zökkenőmentesen integrálható a [Power BIekkel](https://powerbi.microsoft.com/), így hatékonyabb vizualizációs és irányítópult-funkciókat biztosít a folyamatos átviteli teljesítményhez, és lehetővé teszi az elemzések és az eredmények megosztását a szervezeten belül.
+A Azure Time Series Insights mostantól zökkenőmentesen integrálható a [Power BIekkel](https://powerbi.microsoft.com/), így hatékonyabb vizualizációs és irányítópult-funkciókat biztosít a folyamatos átviteli teljesítményhez, és lehetővé teszi az elemzések és az eredmények megosztását a szervezeten belül.
+
+## <a name="video"></a>Videó
+
+További információ a Azure Time Series Insights és a Power BI integrálásáról.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
+
+## <a name="summary"></a>Összefoglalás
 
    [![exportálási lehetőség a Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
@@ -51,7 +59,7 @@ Használja az összekötőt bárhonnan a munkafolyamatban:
 
 A Power BIon belüli speciális lekérdezési és szerkesztési funkciókhoz használja a Power BI Speciális szerkesztő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el [, hogyan csatlakoztatható Time Series Insights a Power BIhoz](./how-to-connect-power-bi.md).
 

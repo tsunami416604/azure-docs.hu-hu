@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670737"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768460"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -113,8 +113,8 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 |-|-|
 | Név | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
-| Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Erőforráscsoport | A tanúsítványt tartalmazó erőforráscsoport. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
+| Előfizetés | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
+| Erőforráscsoport | Az erőforráscsoport, amely a tanúsítványt fogja tartalmazni. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványok a GoDaddyből szerezhetők be. |
 
@@ -128,7 +128,7 @@ Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.a
 
 A [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) egy Azure-szolgáltatás, amely segít megvédeni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Ez a App Service-tanúsítványok számára választható tároló.
 
-A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új tároló létrehozásához, vagy válasszon egy meglévő **tárat** . Ha úgy dönt, hogy létrehoz egy új tárat, a következő táblázat segítségével konfigurálja a tárolót, és kattintson a Létrehozás gombra. További információ: új Key Vault létrehozása ugyanazon az előfizetésen belül és az erőforráscsoporthoz.
+A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új tároló létrehozásához, vagy válasszon egy meglévő **tárat** . Ha úgy dönt, hogy létrehoz egy új tárat, a következő táblázat segítségével konfigurálja a tárolót, és kattintson a Létrehozás gombra. Hozza létre az új Key Vault ugyanabban az előfizetésben és erőforráscsoporthoz, mint a App Service alkalmazás.
 
 | Beállítás | Leírás |
 |-|-|
@@ -137,9 +137,9 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 | Földrajzi egység | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
 | Díjcsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a lépéseket követve [számos alkalmazás hozzáférést biztosít a kulcstartóhoz](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című témakör lépéseit követve. |
+| Virtual Network-hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című témakör lépéseit követve. |
 
-Miután kiválasztotta a tárolót, zárjuk be a **Key Vault adattár** lapot. Az **áruházi** beállításnak a sikerhez zöld pipa jelet kell mutatnia. Tartsa nyitva a lapot a következő lépéshez.
+Miután kiválasztotta a tárolót, zárjuk be a **Key Vault adattár** lapot. Az **1. lépés: tárolási** lehetőségnek zöld pipa jelzést kell mutatnia a sikeres művelethez. Tartsa nyitva a lapot a következő lépéshez.
 
 ### <a name="verify-domain-ownership"></a>Tartomány tulajdonjogának ellenőrzése
 
@@ -183,7 +183,7 @@ A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali 
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL-beállítások** > a **titkos kulcsú tanúsítványok (. pfx)**  > **Key Vault tanúsítvány importálása**lehetőséget.
 
-![Key Vault tanúsítvány importálása App Service](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![Key Vault tanúsítvány importálása App Service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 A következő táblázat segítségével választhatja ki a tanúsítványt.
 

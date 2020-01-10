@@ -1,5 +1,5 @@
 ---
-title: Fiók konfigurálása a PlayReady által védett tartalom offline folyamatos átviteléhez – Azure
+title: Offline PlayReady Streaming Media Services v3 – Azure
 description: Ez a cikk bemutatja, hogyan konfigurálhatja Azure Media Services-fiókját a Windows 10 rendszerű streaming PlayReady.
 services: media-services
 keywords: DASH, DRM, Widevine offline üzemmód, ExoPlayer, Android
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 0798cffdca8d5876373c35f3f5fd657551586d43
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 15a3e2f7fee6d130b1913ec4f74069a09d5aec53
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974053"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779787"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady streaming a Windows 10 rendszerhez
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offline PlayReady streaming a Windows 10 rendszerhez Media Services v3
 
 Azure Media Services támogatja az offline letöltést/lejátszást a DRM-védelemmel. Ez a cikk a Azure Media Services Windows 10-es/PlayReady-ügyfelekhez való offline támogatását ismerteti. Az alábbi cikkekben olvashat az iOS/FairPlay és az Android/Widevine rendszerű eszközök offline üzemmódjának támogatásáról:
 

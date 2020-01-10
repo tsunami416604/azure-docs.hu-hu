@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: f8f5e65115acddd71808a169039d0b98b2470147
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e7a6e819676752aac679a36221eb60f9ad767071
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932076"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830156"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON formátum Azure Data Factory
 
@@ -86,7 +86,7 @@ Támogatott **JSON írási beállítások** a `formatSettings`alatt:
 
 | Tulajdonság      | Leírás                                                  | Szükséges                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | A formatSettings típusát **JsonWriteSetting**értékre kell beállítani. | Igen                                                   |
+| type          | A formatSettings típusát **JsonWriteSettings**értékre kell beállítani. | Igen                                                   |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták

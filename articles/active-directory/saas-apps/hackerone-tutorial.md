@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0158a7df96f4c83763c5b2324ccc2bfcb5a72b5d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159159"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Oktatóanyag: Azure Active Directory integráció a HackerOne
 
@@ -107,12 +107,9 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     ![HackerOne tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://hackerone.com/<company name>/authentication`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt: `https://hackerone.com/users/saml/auth`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be a következő URL-címet: `https://hackerone.com/users/saml/metadata`
-
-    > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [HackerOne](mailto:support@hackerone.com) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be a következőt: `hackerone.com`
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -122,11 +119,11 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
     b. Azure ad-azonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezési URL
 
 ### <a name="configure-hackerone-single-sign-on"></a>HackerOne egyszeri bejelentkezés konfigurálása
 
@@ -150,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     c. Nyissa meg a letöltött **tanúsítványfájl** Azure Portal a Jegyzettömbbe, másolja ki a tartalmát a vágólapra, majd illessze be a **X509-tanúsítvány** szövegmezőbe.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 5. A hitelesítési beállítások párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -183,7 +180,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

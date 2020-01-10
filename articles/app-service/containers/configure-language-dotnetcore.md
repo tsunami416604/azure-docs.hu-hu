@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített ASP.NET
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670466"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768418"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Linux ASP.NET Core-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -39,12 +39,12 @@ Futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) a .net
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
+## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
 App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően bármely osztályban elérheti őket a standard ASP.NET Core függőségi befecskendezési minta használatával:
 
 ```csharp
-include Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace SomeNamespace 
 {
@@ -72,7 +72,7 @@ Ha például a App Service és a *appSettings. JSON*fájlban azonos nevű Alkalm
 
 ## <a name="get-detailed-exceptions-page"></a>Részletes kivételek oldalának beolvasása
 
-Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenetet. A App Service részletes kivétel lapjának megjelenítéséhez adja hozzá a `ASPNETCORE_ENVIRONMENT` alkalmazás-beállítást az alkalmazáshoz a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsának futtatásával.
+Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a böngésző egy részletes kivétel lapot jelenít meg, de App Service a lapot általános **HTTP 500** -hiba váltja fel, vagy **hiba történt a kérelem feldolgozása során.** üzenet. A App Service részletes kivétel lapjának megjelenítéséhez adja hozzá a `ASPNETCORE_ENVIRONMENT` alkalmazás-beállítást az alkalmazáshoz a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsának futtatásával.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"

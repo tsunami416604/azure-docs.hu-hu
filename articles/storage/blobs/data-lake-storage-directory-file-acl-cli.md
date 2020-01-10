@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 596f8334b647daf6fe3a15521f7caeecb0c0e303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462604"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835112"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2 (előzetes verzió)
 
@@ -201,6 +201,9 @@ az storage blob delete -c my-file-system -b my-file.txt --account-name mystorage
 ## <a name="manage-permissions"></a>Engedélyek kezelése
 
 Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
+
+> [!NOTE]
+> Ha Azure Active Directory (Azure AD) használatával engedélyezi a parancsokat, akkor győződjön meg arról, hogy a rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
 
 ### <a name="get-directory-and-file-permissions"></a>Könyvtár-és fájlengedélyek beolvasása
 

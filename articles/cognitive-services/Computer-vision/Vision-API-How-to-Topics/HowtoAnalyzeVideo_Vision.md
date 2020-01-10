@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: f4410d9cab5677327d2950dfdc1a093140f31708
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102277"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770373"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Videók elemzése közel valós időben
 
@@ -144,7 +144,7 @@ while (true)
 
 Annak érdekében, hogy az alkalmazás a lehető leggyorsabban elérhető legyen, az előző szakaszban ismertetett rendszert Implementáljuk. Ennek a célja, hogy rugalmasan alkalmazkodjon a sok forgatókönyvhöz, miközben könnyen használható. A kód eléréséhez nyissa meg a [video frame Analysis Sample](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) oldalt a githubon.
 
-A könyvtár tartalmazza a `FrameGrabber` osztályt, amely a korábban tárgyalt gyártó – fogyasztói rendszer segítségével dolgozza fel a képkockákat egy webkamera használatával. A felhasználók megadhatják az API-hívás pontos formáját, és az osztály az eseményeket használva lehetővé teszi, hogy a hívó kód megismerje az új keret beszerzését, vagy ha elérhetővé vált egy új elemzési eredmény.
+A függvénytár tartalmazza a `FrameGrabber` osztályt, amely a korábban tárgyalt gyártó – fogyasztói rendszer használatával dolgozza fel a képkockákat a webkamera segítségével. A felhasználók megadhatják az API-hívás pontos formáját, és az osztály az eseményeket használva lehetővé teszi, hogy a hívó kód megismerje az új keret beszerzését, vagy ha elérhetővé vált egy új elemzési eredmény.
 
 Néhány lehetőség kimutatása érdekében két, a könyvtárat használó alkalmazást adtunk meg. 
 
@@ -164,7 +164,7 @@ namespace BasicConsoleSample
         const string ApiKey = "<your API key>";
         const string Endpoint = "https://<your API region>.api.cognitive.microsoft.com";
 
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
@@ -205,14 +205,14 @@ namespace BasicConsoleSample
             grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
 
             // Start running in the background.
-            grabber.StartProcessingCameraAsync().Wait();
+            await grabber.StartProcessingCameraAsync();
 
             // Wait for key press to stop.
             Console.WriteLine("Press any key to stop...");
             Console.ReadKey();
 
             // Stop, blocking until done.
-            grabber.StopProcessingAsync().Wait();
+            await grabber.StopProcessingAsync();
         }
     }
 }
@@ -243,7 +243,7 @@ Ha készen áll a minták integrálására, a saját projektjeiből hivatkozhat 
 
 A VideoFrameAnalyzer-, hang-, videó-és szöveg-megértési képességei az Azure Cognitive Services-t használják. A Microsoft fogadja a képeket, a hang-és a videót, valamint a feltöltött egyéb adatok (az alkalmazáson keresztül), és felhasználhatja őket szolgáltatás-javító célokra. Szükségünk van az Ön közreműködésére az alkalmazás által az Azure Cognitive Services szolgáltatásba küldött adatok tulajdonosainak védelmében.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebből a cikkből megtudhatta, hogyan futtathatja a közel valós idejű elemzést élő videós streameken a Face API és a Computer Vision API használatával. Azt is megtanulta, hogyan használhatja a minta kódját a kezdéshez. Az alkalmazás ingyenes API-kulcsokkal való létrehozásának megkezdéséhez nyissa meg az [Azure Cognitive Services regisztrációs lapját](https://azure.microsoft.com/try/cognitive-services/).
 

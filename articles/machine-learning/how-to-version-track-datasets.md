@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: f70c826d839be1de82f3f21cf615f261a2193358
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536433"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834794"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-A kísérletek `input_datasets` [Azure Machine learning Studio (klasszikus)](https://ml.azure.com/)használatával is megtalálhatja. 
+A kísérletek `input_datasets` a [Azure Machine learning Studio](https://ml.azure.com/)használatával is megtalálhatja. 
 
-Az alábbi képen látható, hogy hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studio (klasszikus). Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`.
+Az alábbi képen látható, hol található egy kísérlet bemeneti adatkészlete Azure Machine Learning Studióban. Ebben a példában lépjen a **kísérletek** ablaktáblára, és nyissa meg a kísérlet adott futtatásához tartozó **tulajdonságok** lapot, `keras-mnist`.
 
 ![Bemeneti adatkészletek](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-A regisztráció után megtekintheti az adatkészletben regisztrált modellek listáját a Python vagy a [Azure Machine learning Studio (klasszikus)](https://ml.azure.com/)használatával. A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
+A regisztráció után megtekintheti az adatkészlethez regisztrált modellek listáját a Python vagy a [Azure Machine learning Studio](https://ml.azure.com/)használatával. A következő nézet az **adatkészletek** ablaktábla **eszközök**területén található. Válassza ki az adatkészletet, majd válassza a **modellek** fület az adatkészletben regisztrált modellek listájához. 
 
 ![Bemeneti adatkészletek modelljei](./media/how-to-version-track-datasets/dataset-models.png)
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996660"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770084"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -122,7 +122,7 @@ A Traffic Manager használatával terjesztheti a forgalmat több Application Gat
 
 Igen, a Application Gateway v2 SKU támogatja az automatikus skálázást. További információ: automatikus [skálázás és zóna – redundáns Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>A manuális vertikális felskálázás vagy leskálázás miatt leáll a leállás?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>A manuális vagy automatikus vertikális fel-vagy leskálázás miatt leáll az állásidő?
 
 Nem. A példányok a frissítési tartományok és a tartalék tartományok között oszlanak meg.
 
@@ -158,7 +158,7 @@ Tekintse [meg a Application Gateway alhálózat által támogatott, felhasznál�
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Milyen korlátozások vonatkoznak a Application Gatewayra? Növelhetim ezeket a korlátokat?
 
-Lásd: [Application Gateway korlátok](../azure-subscription-service-limits.md#application-gateway-limits).
+Lásd: [Application Gateway korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Használhatom-e egyidejűleg a külső és belső forgalomhoz Application Gateway is?
 
@@ -200,6 +200,9 @@ Nem.
 
 Igen. Részletekért lásd: az [Azure Application Gateway és a webalkalmazási tűzfal áttelepítésének v1-ről v2-re](migrate-v1-v2.md).
 
+### <a name="does-application-gateway-support-ipv6"></a>Támogatja az Application Gateway az IPv6-ot?
+
+A Application Gateway v2 jelenleg nem támogatja az IPv6 protokollt. Csak IPv4-t használó kettős verem-VNet működhet, de az átjáró-alhálózatnak csak IPv4-alapúnak kell lennie. A Application Gateway v1 nem támogatja a kettős verem virtuális hálózatok. 
 
 ## <a name="configuration---ssl"></a>Konfiguráció – SSL
 
@@ -380,6 +383,30 @@ Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik 
 - Telepítette Application Gateway v2-t
 - Rendelkezik egy NSG az Application Gateway alhálózaton
 - Engedélyezte a NSG folyamat naplóit az adott NSG
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Hogyan csak a saját előtérbeli IP-címmel rendelkező Application Gateway v2-t használja?
+
+A Application Gateway v2 jelenleg nem támogatja csak a magánhálózati IP-módot. A következő kombinációkat támogatja
+* Privát IP-cím és nyilvános IP-cím
+* Csak nyilvános IP-cím
+
+Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2-t, kövesse az alábbi eljárást:
+1. Nyilvános és privát előtér-IP-címmel rendelkező Application Gateway létrehozása
+2. Ne hozzon létre figyelőket a nyilvános előtérbeli IP-címhez. A Application Gateway nem fogja figyelni a nyilvános IP-cím forgalmát, ha a rendszer nem hoz létre figyelőket.
+3. Hozzon létre és csatoljon egy [hálózati biztonsági csoportot](https://docs.microsoft.com/azure/virtual-network/security-overview) a Application Gateway alhálózat számára a következő konfigurációval a prioritás sorrendjében:
+    
+    a. Engedélyezi a forrásból származó forgalmat a **GatewayManager** szolgáltatás címkéjének és céljának, mint a **65200-65535** **-as** portot. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezek a portok tanúsítvány-hitelesítéssel vannak védve (zárolva). A külső entitások, beleértve az átjáró felhasználói rendszergazdáit, nem indíthatnak módosításokat a végpontokon a megfelelő tanúsítványok nélkül.
+    
+    b. Adatforgalom engedélyezése a forrástól a **AzureLoadBalancer** -szolgáltatás címkéjének és a célként megadott portnak a **bármely**
+    
+    c. Minden bejövő forgalom megtagadása az **Internet** -szolgáltatás címkéjének és a célként megadott portnak **megfelelően.** Adja meg ezt a szabályt a *legkevesebb prioritással* a bejövő szabályokban
+    
+    d. Tartsa meg az alapértelmezett szabályokat, például engedélyezze a VirtualNetwork bejövő beállítást, hogy a magánhálózati IP-címekhez való hozzáférés ne legyen letiltva.
+    
+    e. A kimenő internetkapcsolatot nem lehet blokkolni. Ellenkező esetben a naplózással, a metrikákkal és az egyéb problémákkal szembesül.
+
+NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![Application Gateway v2 NSG-konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>Következő lépések
 

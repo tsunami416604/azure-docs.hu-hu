@@ -2,19 +2,15 @@
 title: Konfigurációk fordítása Azure Automation állapot konfigurációjában
 description: Ez a cikk azt ismerteti, hogyan lehet lefordítani a Azure Automation kívánt állapot-konfiguráció (DSC) konfigurációit.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/10/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: fdea8ed9a9e59a169a6ffb525ed286eb7d1ada53
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d7f22e5042f301d7c16573318b6ddd1585f1e350
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850907"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769999"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>A DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
 
@@ -43,26 +39,26 @@ A kívánt állapot-konfiguráció (DSC) konfigurációk kétféleképpen fordí
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) segítségével megkezdheti a fordítást a Windows PowerShell használatával. Az alábbi mintakód elindítja a **SampleConfig**nevű DSC-konfiguráció fordítását.
+A [`Start-AzAutomationDscCompilationJob`](/powershell/module/az.automation/start-azautomationdsccompilationjob) segítségével megkezdheti a fordítást a Windows PowerShell használatával. Az alábbi mintakód elindítja a **SampleConfig**nevű DSC-konfiguráció fordítását.
 
 ```powershell
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` egy fordítási feladattípust ad vissza, amelyet az állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladattípust használhatja [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
-a fordítási feladatok állapotának megállapítása és [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
+`Start-AzAutomationDscCompilationJob` egy fordítási feladattípust ad vissza, amelyet az állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladattípust használhatja [`Get-AzAutomationDscCompilationJob`](/powershell/module/az.automation/get-azautomationdsccompilationjob)
+a fordítási feladatok állapotának megállapítása és [`Get-AzAutomationDscCompilationJobOutput`](/powershell/module/az.automation/get-azautomationdscconfiguration)
 a streamek (kimenet) megtekintéséhez. Az alábbi mintakód elindítja a **SampleConfig** -konfiguráció fordítását, megvárja, amíg befejeződik, majd megjeleníti a folyamait.
 
 ```powershell
-$CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
+$CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 
 while($null -eq $CompilationJob.EndTime -and $null -eq $CompilationJob.Exception)
 {
-    $CompilationJob = $CompilationJob | Get-AzureRmAutomationDscCompilationJob
+    $CompilationJob = $CompilationJob | Get-AzAutomationDscCompilationJob
     Start-Sleep -Seconds 3
 }
 
-$CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any
+$CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 ```
 
 ###  <a name="basic-parameters"></a>Alapszintű paraméterek
@@ -117,7 +113,7 @@ $Parameters = @{
     'IsPresent' = $False
 }
 
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
 További információ a PSCredentials paraméterként való átadásáról: az alábbi [hitelesítőadat-eszközök](#credential-assets) .
@@ -184,7 +180,7 @@ $ConfigData = @{
     }
 }
 
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ConfigurationDataSample' -ConfigurationData $ConfigData
 ```
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Adategységek használata a fordítás során Azure Automation
@@ -242,7 +238,7 @@ $ConfigData = @{
     )
 }
 
-Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'CredentialSample' -ConfigurationData $ConfigData
+Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'CredentialSample' -ConfigurationData $ConfigData
 ```
 
 > [!NOTE]
@@ -281,16 +277,16 @@ A konfiguráció fordításával létrehozott MOF-fájl vagy-fájlok ezután kö
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>Csomópont-konfiguráció importálása Azure PowerShell
 
-Az [import-AzureRmAutomationDscNodeConfiguration](/powershell/module/azurerm.automation/import-azurermautomationdscnodeconfiguration) parancsmag használatával importálhat egy csomópont-konfigurációt az Automation-fiókjába.
+Az [import-AzAutomationDscNodeConfiguration](/powershell/module/az.automation/import-azautomationdscnodeconfiguration) parancsmag használatával importálhat egy csomópont-konfigurációt az Automation-fiókjába.
 
 ```powershell
-Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
+Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
 ```
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md) című témakört.
 - A DSC-konfigurációk fordításának megismeréséhez, hogy hozzá lehessen rendelni azokat a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md) című témakört.
-- A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation)
+- A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/az.automation)
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfiguráció és a csokoládés használatával](automation-dsc-cd-chocolatey.md) .

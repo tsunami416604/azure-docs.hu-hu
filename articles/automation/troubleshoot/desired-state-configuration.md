@@ -1,5 +1,5 @@
 ---
-title: A Azure Automation kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhárítása
+title: A Azure Automation kívánt állapot konfigurációjának (DSC) hibáinak megoldása
 description: Ez a cikk a kívánt állapot-konfiguráció (DSC) hibaelhárításával kapcsolatos információkat tartalmaz.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951462"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834262"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) hibáinak megoldása
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>A Azure Automation kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhárítása
 
 Ez a cikk a kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhárításával kapcsolatos információkat tartalmaz.
 
@@ -270,7 +270,7 @@ Az előfizetési csomópontot úgy kezelje, mintha egy különálló felhőben v
 
 A csomópont regisztrálásához kövesse az alábbi lépéseket.
 
-* Windows – [fizikai/virtuális Windows rendszerű számítógépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Windows – [fizikai/virtuális Windows rendszerű számítógépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances).
 * Linux- [fizikai/virtuális Linux rendszerű számítógépek a helyszínen, vagy az Azure-on kívül más felhőben is](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
 
 ### <a name="agent-has-a-problem"></a>Forgatókönyv: hibaüzenet – "kiépítés sikertelen"

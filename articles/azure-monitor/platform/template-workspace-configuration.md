@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363370"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834209"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
 
@@ -20,7 +20,7 @@ ms.locfileid: "75363370"
 
 [Azure Resource Manager sablonokkal](../../azure-resource-manager/templates/template-syntax.md) log Analytics munkaterületeket hozhat létre és konfigurálhat Azure monitor. A sablonokkal végrehajtható feladatok például a következők:
 
-* Munkaterület létrehozása, beleértve az árképzési szintet 
+* Munkaterület létrehozása, többek között az árképzési csomag és a kapacitás foglalásának beállítása
 * Megoldás hozzáadása
 * Mentett keresések létrehozása
 * Számítógépcsoport létrehozása
@@ -47,7 +47,19 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
-A következő példa egy munkaterületet hoz létre egy sablon használatával a helyi gépről. A JSON-sablon úgy van konfigurálva, hogy csak az új munkaterület nevét és helyét használja (a többi munkaterület paraméterének alapértelmezett értékeivel, például az árképzési csomaggal és a megőrzéssel).  
+A következő példa egy munkaterületet hoz létre egy sablon használatával a helyi gépről. A JSON-sablon úgy van konfigurálva, hogy csak az új munkaterület nevét és helyét írja elő. Más munkaterület-paraméterekhez megadott értékeket használ, például a [hozzáférés-vezérlési módot](design-logs-deployment.md#access-control-mode), az árképzési szintet, a megőrzést és a kapacitás foglalási szintjét.
+
+A kapacitás foglalása esetén a kiválasztott kapacitás foglalását az adatfeldolgozáshoz adja meg az SKU `CapacityReservation` és egy GB értékkel a `capacityReservationLevel`tulajdonsághoz. Az alábbi lista a konfiguráláskor a támogatott értékeket és viselkedést ismerteti.
+
+- A foglalási korlát beállítása után 31 napon belül nem válthat másik SKU-ra.
+
+- A foglalási érték beállítása után 31 napon belül megnövelheti azt.
+
+- A `capacityReservationLevel` értéke csak 100-es többszörös értékben állítható be a 50000-es maximális értékkel.
+
+- Ha megnövelte a foglalási szintet, az időzítő alaphelyzetbe áll, és a frissítéstől számított további 31 napig nem módosítható.  
+
+- Ha módosítja a munkaterület bármely más tulajdonságát, de a foglalási korlátot azonos szintre tartja, az időzítő nem áll alaphelyzetbe. 
 
 ### <a name="create-and-deploy-template"></a>Sablon létrehozása és üzembe helyezése
 
@@ -64,6 +76,21 @@ A következő példa egy munkaterületet hoz létre egy sablon használatával a
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -101,11 +128,18 @@ A következő példa egy munkaterületet hoz létre egy sablon használatával a
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -168,9 +202,9 @@ A következő sablon szemlélteti a következőket:
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -257,7 +291,7 @@ A következő sablon szemlélteti a következőket:
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -267,7 +301,9 @@ A következő sablon szemlélteti a következőket:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('pricingTier')]",
+          "name": "CapacityReservation",
+          "capacityReservationLevel": 100
         }
       },
       "resources": [

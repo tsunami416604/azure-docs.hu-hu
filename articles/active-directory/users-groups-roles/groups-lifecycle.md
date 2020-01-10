@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 01/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914074"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768680"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok elévülési szabályzatának konfigurálása
 
@@ -86,11 +86,9 @@ A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos 
     - Ha elkészült, mentse a beállításokat a **Mentés gombra**kattintva.
 
 > [!NOTE]
-> Amikor első alkalommal állítja be a lejáratot, a lejárati időintervallumnál régebbi csoportok 35 napra vannak beállítva, kivéve, ha a csoport automatikusan megújul, vagy a tulajdonos megújítja.
->
-> Dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként tekinti meg, és a szabálynak megfelelően újra feltölti őket. Ez a folyamat akár 24 órát is igénybe vehet.
->
-> A csapatokban használt csoportok lejárati megjegyzései megjelennek a csapatok tulajdonosai hírcsatornában.
+> - Amikor első alkalommal állítja be a lejáratot, a lejárati időintervallumnál régebbi csoportok 35 napra vannak beállítva, kivéve, ha a csoport automatikusan megújul, vagy a tulajdonos megújítja.
+> - Dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként tekinti meg, és a szabálynak megfelelően újra feltölti őket. Ez a folyamat akár 24 órát is igénybe vehet.
+> - A csapatokban használt csoportok lejárati megjegyzései megjelennek a csapatok tulajdonosai hírcsatornában.
 
 ## <a name="email-notifications"></a>E-mail-értesítések
 

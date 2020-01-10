@@ -4,15 +4,15 @@ description: Event Hubs végpontok közötti Azure Diagnostics konfigurálása, 
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555525"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770169"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Diagnostics adatok továbbítása a gyors elérési úton a Event Hubs használatával
 A Azure Diagnostics rugalmas módszereket biztosít a Cloud Services virtuális gépekről származó mérőszámok és naplók gyűjtésére, valamint az eredmények Azure Storage-ba történő átvitelére. Az 2016-as (SDK 2,9) időkerettől kezdve a diagnosztika elküldhető az egyéni adatforrásokhoz, és másodpercek alatt átviheti az elérési utat az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)használatával.
@@ -21,8 +21,7 @@ A támogatott adattípusok a következők:
 
 * A Windows esemény-nyomkövetés (ETW) eseményei
 * Teljesítményszámlálók
-* Windows-eseménynaplók
-* Alkalmazás-naplók
+* Windows-eseménynaplók, beleértve az alkalmazások naplóit a Windows eseménynaplóban
 * Azure Diagnostics-infrastruktúranaplók
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Diagnosticst Event Hubs a végpontok között. A következő gyakori forgatókönyvekhez is útmutatást nyújtunk:
@@ -43,7 +42,7 @@ Az Azure Diagnostics Event Hubs adatok fogadása támogatott a Cloud Services, a
 * Event Hubs a cikk alapján kiépített névtér – első [lépések Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Diagnostics összekötése Event Hubs fogadóval
-Alapértelmezés szerint a Azure Diagnostics mindig egy Azure Storage-fiókba küldi a naplókat és a metrikákat. Az alkalmazások az Event Hubs számára is küldhetnek egy új **mosogató** szakaszt a *. wadcfgx* fájl **PublicConfig**  / **WadCfg** eleme alatt. A Visual Studióban a *. wadcfgx* fájlt a következő elérési úton tárolja: **Cloud Service Project**  > **roles**  >  **(RoleName)**  > **Diagnostics. wadcfgx** fájl.
+Alapértelmezés szerint a Azure Diagnostics mindig egy Azure Storage-fiókba küldi a naplókat és a metrikákat. Az alkalmazások az Event Hubs számára is küldhetnek egy új **mosogató** szakaszt a *. wadcfgx* fájl **PublicConfig** / **WadCfg** eleme alatt. A Visual Studióban a *. wadcfgx* fájlt a következő elérési úton tárolja: **Cloud Service Project** > **roles** >  **(RoleName)**  > **Diagnostics. wadcfgx** fájl.
 
 ```xml
 <SinksConfig>
@@ -200,7 +199,7 @@ Az alábbi példa bemutatja, hogyan korlátozhatja a fejlesztő az elküldett ad
 Ebben a példában a fogadó a naplókra van alkalmazva, és csak a hiba szintű nyomkövetésre van szűrve.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services alkalmazás és diagnosztika konfigurációjának központi telepítése és frissítése
-A Visual Studio biztosítja az alkalmazás üzembe helyezéséhez és Event Hubs fogadó konfigurációjának legegyszerűbb elérési útját. A fájl megtekintéséhez és szerkesztéséhez nyissa meg a *. wadcfgx* fájlt a Visual Studióban, szerkessze, majd mentse. Az elérési út a **Cloud Service Project**  > **roles**  >  **(RoleName)**  > **Diagnostics. wadcfgx**.  
+A Visual Studio biztosítja az alkalmazás üzembe helyezéséhez és Event Hubs fogadó konfigurációjának legegyszerűbb elérési útját. A fájl megtekintéséhez és szerkesztéséhez nyissa meg a *. wadcfgx* fájlt a Visual Studióban, szerkessze, majd mentse. Az elérési út a **Cloud Service Project** > **roles** >  **(RoleName)**  > **Diagnostics. wadcfgx**.  
 
 Ezen a ponton a Visual Studióban, a Visual Studio Team Systemben, valamint az MSBuild-on alapuló összes központi telepítési és üzembe helyezési frissítési művelet, valamint a **/t: publish** cél a *. wadcfgx* tartalmazza a csomagolási folyamat során. Emellett a központi telepítések és frissítések az Azure-ba helyezik üzembe a fájlt a megfelelő Azure Diagnostics ügynök-bővítmény használatával a virtuális gépeken.
 

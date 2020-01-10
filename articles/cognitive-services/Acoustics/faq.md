@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855024"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770203"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics – gyakori kérdések
 
@@ -28,9 +28,9 @@ A beépülő modulok projektje egy akusztikai rendszer, amely a futásidejű mű
 
 Letöltheti a [Project akusztikai egység beépülő](https://www.microsoft.com/download/details.aspx?id=57346) modulját vagy a [Project Acoustics Unreal beépülő modulját](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Támogatja &lt;a Project Acoustics az&gt; x platformot?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Támogatja a Project Acoustics a &lt;x&gt; platformot?
 
-A Project akusztikai platform támogatja az ügyfelek igényei alapján történő kialakulását. Ha további platformokra vonatkozó támogatást szeretne megtudni, lépjen kapcsolatba velünk a [Project akusztikai kérdésekkel](https://github.com/microsoft/ProjectAcoustics/issues) foglalkozó fórumában.
+A Project akusztikai platform támogatja az ügyfelek igényei alapján történő kialakulását. Ha további platformokra vonatkozó támogatást szeretne megtudni, lépjen kapcsolatba velünk a [Project akusztikai kérdésekkel foglalkozó fórumában](https://github.com/microsoft/ProjectAcoustics/issues) .
 
 ## <a name="is-azure-used-at-runtime"></a>Az Azure-t használja futásidőben?
 
@@ -76,6 +76,10 @@ A Project akusztika pontos és megbízható akusztikai paramétereket biztosít 
 
 A Bake a téglatest-szimulációk akusztikus hullámos szimulációit tartalmazza az egyes figyelőknél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="is-my-source-content-secure"></a>Biztonságos a tartalom?
+
+A Project akusztika nem tölti fel a forrás jelenet geometriáját a felhőbe. Ehelyett a szimuláció a saját jelenetének egyik voxelization működik, amely a mintavételi hely adataival együtt és saját formátumban van tárolva.     
+
+## <a name="next-steps"></a>Következő lépések
 * Próbálja ki a [Project akusztikai egység minta tartalmát](unity-quickstart.md) vagy az [Unreal Sample tartalmat](unreal-quickstart.md)
 

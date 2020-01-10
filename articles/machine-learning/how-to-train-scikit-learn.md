@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 60b5b47b305ae809304f86b8f6e12d06b2acbf21
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 7e4a916b3765007a130c6ae84b317c2c7b700f2e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536589"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834885"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -145,6 +145,9 @@ estimator = SKLearn(source_directory=project_folder,
                     pip_packages=['joblib']
                    )
 ```
+
+
+A Python-környezet testreszabásával kapcsolatos további információkért lásd: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md). 
 
 ## <a name="submit-a-run"></a>Futtatás küldése
 

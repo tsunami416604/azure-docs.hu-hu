@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429181"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768826"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service használatához
 
@@ -27,13 +27,13 @@ A Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) k
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a Maps Service API-kon bármilyen hívást lehessen kezdeményezni, szüksége van egy Maps-fiókra és egy kulcsra. A fiókok létrehozásával kapcsolatos információkért kövesse a [fiók kezelése](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) című témakör útmutatását, és kövesse az [elsődleges kulcs lekérése](./tutorial-search-location.md#getkey) a fiókhoz elsődleges előfizetési kulcs lekéréséhez című témakör lépéseit.
+Ahhoz, hogy a Maps Service API-kon bármilyen hívást lehessen kezdeményezni, szüksége van egy Maps-fiókra és egy kulcsra. A fiókok létrehozásával kapcsolatos információkért kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) című témakör utasításait, és kövesse az [elsődleges](quick-demo-map-app.md#get-the-primary-key-for-your-account) kulcs beolvasása a fiókhoz tartozó elsődleges kulcs (előfizetés) lekéréséhez című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 > [!Tip]
 > A Search szolgáltatás lekérdezéséhez használhatja a [Poster alkalmazást](https://www.getpostman.com/apps) a REST-hívások létrehozásához, vagy bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
 
-## <a name="best-practices-for-geocoding"></a>Ajánlott eljárások a helymeghatározáshoz
+## <a name="best-practices-for-geocoding-address-search"></a>Ajánlott eljárások a helymeghatározáshoz (címek keresése)
 
 Ha Azure Maps Search Service használatával keres teljes vagy részleges címeket, a keresési kifejezést veszi át, és visszaadja a címe hosszúsági és szélességi koordinátáit. Ezt a folyamatot helymeghatározáshoz nevezzük. Egy adott országban való geocode a közúti adatlefedettségtől és a helymeghatározáshoz szolgáltatás helymeghatározáshoz pontosságtól függ.
 
@@ -58,10 +58,12 @@ Tekintse meg a [helymeghatározáshoz lefedettségét](https://docs.microsoft.co
 
 
    **Fuzzy keresési paraméterek**
+   
+   Azure Maps a [fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) a javasolt szolgáltatás, amely akkor használható, ha nem tudja, hogy a felhasználói bemenetek milyen keresési lekérdezésekhez tartoznak. Az API összekapcsolja az érdeklődési pont (POI) keresését és a helymeghatározáshoz egy kanonikus *egysoros kereséssel*. 
 
    1. A `minFuzzyLevel` és `maxFuzzyLevel`, a Súgó akkor is visszaküldi a megfelelő egyezéseket, ha a lekérdezési paraméterek nem pontosan egyeznek a kívánt információkkal. A legtöbb keresési lekérdezés alapértelmezett értéke `minFuzzyLevel=1` és `maxFuzzyLevel=2` a teljesítmény eléréséhez és a szokatlan eredmények csökkentéséhez. A "restrant" keresési kifejezésre példaként tekintse meg az "étterem" kifejezést, ha a `maxFuzzyLevel` 2 értékre van állítva. Az alapértelmezett homályos szintek felülbírálják a kérelmekre vonatkozó igényeket. 
 
-   2. Megadhatja azt is, hogy a `idxSet` paraméterrel milyen típusú eredményeket kell visszaadnia. Erre a célra elküldheti az indexek vesszővel tagolt listáját, az elemek sorrendje nem számít. A támogatott indexek a következők:
+   2. A `idxSet` paraméterrel rangsorolhatja az eredményhalmaz pontos készletét is. Erre a célra elküldheti az indexek vesszővel tagolt listáját; az elemek sorrendje nem számít. A következő indexek támogatottak:
 
        * `Addr` - **címtartományok**: egyes utcáknál vannak olyan címek, amelyek az utca elejéről és végéről vannak interpolált. Ezek a pontok címtartományokként jelennek meg.
        * `Geo` - **földrajzi**régió: a térképen egy olyan terület, amely a föld felügyeleti részlegét jelöli, vagyis ország, állam, város.
@@ -265,7 +267,7 @@ JavaScript/írógéppel:
 encodeURIComponent(query)
 ```
 
-C#/VB:
+C#VB
 ```csharp
 Uri.EscapeDataString(query)
 ```
@@ -317,7 +319,10 @@ A POI-keresések lehetővé teszik a POI-találatok név szerinti kérését, p�
 
 Az eredmények relevanciájának és a válaszban szereplő információk (POI) keresési válaszának tökéletesítése érdekében a válaszok elemzéséhez továbbra is használhatók a részletes információk.
 
+A kérelemben elküldheti a márkanevek vesszővel tagolt listáját is. A listával korlátozhatja az eredményeket adott márkákra a `brandSet` paraméter használatával. Az elemek sorrendje nem számít. Több márka megadása esetén a rendszer csak a megadott (legalább) találatok egyikét adja vissza.
+
 Tegyük fel, hogy a Microsoft Campus (Redmond, WA) közelében megjelenő [POI-kategóriák keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) kérelme a benzinkutak. Ha betartja a választ, megtekintheti a visszaadott POI-ra vonatkozó összes információt.
+
 
 **Mintalekérdezés:**
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931261"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830190"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tagolt szöveg formátuma Azure Data Factory
 
@@ -85,7 +85,7 @@ Támogatott **tagolt szöveges olvasási beállítások** a `formatSettings`alat
 
 | Tulajdonság      | Leírás                                                  | Szükséges |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | A formatSettings típusát **DelimitedTextReadSetting**értékre kell beállítani. | Igen      |
+| type          | A formatSettings típusát **DelimitedTextReadSettings**értékre kell beállítani. | Igen      |
 | skipLineCount | Az adatok bemeneti fájlokból való olvasásakor kihagyható **nem üres** sorok számát jelzi. <br>Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. | Nem       |
 
 ### <a name="delimited-text-as-sink"></a>Tagolt szöveg fogadóként
@@ -102,8 +102,8 @@ Támogatott **tagolt szöveges írási beállítások** a `formatSettings`alatt:
 
 | Tulajdonság      | Leírás                                                  | Szükséges                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | A formatSettings típusát **DelimitedTextWriteSetting**értékre kell beállítani. | Igen                                                   |
-| fileExtension | A kimeneti fájlok elnevezéséhez használt fájlkiterjesztés, például `.csv`, `.txt`. Meg kell adni, ha a `fileName` nincs megadva a kimeneti DelimitedText adatkészletben. | Igen, ha a fájl neve nincs megadva a kimeneti adatkészletben |
+| type          | A formatSettings típusát **DelimitedTextWriteSettings**értékre kell beállítani. | Igen                                                   |
+| fileExtension | A kimeneti fájlok elnevezéséhez használt fájlkiterjesztés, például `.csv`, `.txt`. Meg kell adni, ha a `fileName` nincs megadva a kimeneti DelimitedText adatkészletben. Ha a fájl neve konfigurálva van a kimeneti adatkészletben, akkor a rendszer a fogadó fájl nevét fogja használni, és a fájlkiterjesztés beállítás figyelmen kívül lesz hagyva.  | Igen, ha a fájl neve nincs megadva a kimeneti adatkészletben |
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 

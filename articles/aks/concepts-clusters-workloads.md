@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 349d7d8206cc4139de020234ee063e85f9a8f9ef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120620"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768639"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -20,7 +20,7 @@ Mivel az alkalmazásfejlesztés egy tároló alapú megközelítés irányába m
 
 Ez a cikk bemutatja a legfontosabb Kubernetes infrastruktúra-összetevőket, például a *vezérlési síkot*, a *csomópontokat*és a *csomópont-készleteket*. A munkaterhelések erőforrásai, például a *hüvelyek*, a *központi telepítések*és a *készletek* , valamint az erőforrások *névterek*szerinti csoportosítása is bevezethető.
 
-## <a name="what-is-kubernetes"></a>Mi az a Kubernetes?
+## <a name="what-is-kubernetes"></a>Mi a Kubernetes?
 
 A Kubernetes egy gyorsan változó platform, amely a tároló-alapú alkalmazásokat és a hozzájuk társított hálózatkezelési és tárolási összetevőket kezeli. A hangsúly az alkalmazás munkaterhelésén, nem pedig az alapul szolgáló infrastruktúra-összetevőkön van. A Kubernetes a központi telepítések deklaratív megközelítését biztosítja, amely az API-k robusztus készletével támogatott a felügyeleti műveletekhez.
 
@@ -95,22 +95,22 @@ A csomópontok teljesítményének és funkcióinak fenntartásához az erőforr
 |---|---|---|---|---|---|---|---|
 |Kube – fenntartott (millicores)|60|100|140|180|260|420|740|
 
-- A **memória** számára fenntartott memória tartalmazza a két érték összegét
+- Az AK által használt **memória** -memória két érték összegét foglalja magában.
 
-1. A kubelet démon az összes Kubernetes-ügynök csomópontján telepítve van a tárolók létrehozásának és megszüntetésének kezeléséhez. Alapértelmezés szerint az AK-ban ez a démon a következő kiürítési szabállyal rendelkezik: memória. rendelkezésre álló < 750Mi, ami azt jelenti, hogy egy csomópontnak mindig legalább 750, de mindenkor lefoglalható kell lennie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alá esik, a kubelet leállítja az egyik futó hüvelyt, hogy szabad memóriát szabadítson fel a gazdagépen, és megvédje azt.
+1. A kubelet démon az összes Kubernetes-ügynök csomópontján telepítve van a tárolók létrehozásának és megszüntetésének kezeléséhez. Alapértelmezés szerint az AK-ban ez a démon a következő kiürítési szabállyal rendelkezik: *memória. rendelkezésre álló < 750Mi*, ami azt jelenti, hogy egy csomópontnak mindig legalább 750, de mindenkor lefoglalható kell lennie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alá esik, a kubelet leállítja az egyik futó hüvelyt, hogy szabad memóriát szabadítson fel a gazdagépen, és megvédje azt. Ez egy reaktív művelet, ha a rendelkezésre álló memória a 750Mi küszöbértékén túl csökken.
 
-2. A második érték a kubelet démon megfelelő működéséhez fenntartott memória (Kube) fokozatos sebessége.
+2. A második érték a memória-foglalások progresszív aránya a kubelet démon számára a megfelelő működéshez (Kube).
     - az első 4 GB memória 25%-a
     - a következő 4 GB memória 20%-a (legfeljebb 8 GB)
     - a következő 8 GB memória 10%-a (legfeljebb 16 GB)
     - a következő 112 GB memória 6%-a (legfeljebb 128 GB)
     - a 128 GB-nál nagyobb memória 2%-a
 
-Ennek a két meghatározott szabálynak az eredményeképpen a Kubernetes és az ügynök-csomópontok Kifogástalan állapotba kerültek, a lefoglalható CPU és memória mennyisége kevesebb lesz, mint maga a csomópont. A fent megadott erőforrás-foglalások nem módosíthatók.
+A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak Ezek a kiosztási szabályok azt is okozják, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint a Kubernetes-fürt része. A fenti erőforrás-foglalások nem módosíthatók.
 
-Ha például egy csomópont 7 GB-ot biztosít, akkor a memória 34%-a nem foglalható le:
+Ha például egy csomópont 7 GB-ot biztosít, akkor a 750Mi-kiürítési küszöbértéken felül nem foglalható memória 34%-át fogja jelenteni.
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
 A Kubernetes foglalása mellett az alapul szolgáló Node operációs rendszer a processzor-és memória-erőforrások mennyiségét is lefoglalja az operációs rendszer funkcióinak fenntartásához.
 
@@ -152,7 +152,7 @@ További információ a hüvelyek ütemezésének szabályozásáról: [ajánlot
 
 A Kubernetes *hüvelyek* használatával futtatja az alkalmazás egy példányát. A pod az alkalmazás egy példányát jelöli. A hüvelyek általában egy tárolóval rendelkező 1:1-es hozzárendeléssel rendelkeznek, bár a pod több tárolót is tartalmazhat. Ezek a többtárolós hüvelyek ugyanazon a csomóponton vannak ütemezve, és lehetővé teszik a tárolók számára a kapcsolódó erőforrások megosztását.
 
-Amikor létrehoz egy Pod-t, megadhat *erőforrás-korlátozásokat* , hogy bizonyos mennyiségű CPU-vagy memória-erőforrást igényeljen. A Kubernetes ütemező megkísérli a hüvelyek ütemezését, hogy az elérhető erőforrásokkal rendelkező csomóponton fusson a kérelem teljesítése érdekében. Megadhatja a maximális erőforrás-korlátot is, amely megakadályozza, hogy egy adott Pod túl sok számítási erőforrást fogyasztson a mögöttes csomópontból. Az ajánlott eljárás az, hogy az összes hüvely erőforrás-korlátait tartalmazza, hogy a Kubernetes Scheduler megértse, mely erőforrások szükségesek és engedélyezettek.
+A pod létrehozásakor megadhatja az *erőforrás-kérelmeket* , hogy bizonyos mennyiségű CPU-vagy memória-erőforrást igényeljen. A Kubernetes ütemező megkísérli a hüvelyek ütemezését, hogy az elérhető erőforrásokkal rendelkező csomóponton fusson a kérelem teljesítése érdekében. Megadhatja a maximális erőforrás-korlátot is, amely megakadályozza, hogy egy adott Pod túl sok számítási erőforrást fogyasztson a mögöttes csomópontból. Az ajánlott eljárás az, hogy az összes hüvely erőforrás-korlátait tartalmazza, hogy a Kubernetes Scheduler megértse, mely erőforrások szükségesek és engedélyezettek.
 
 További információ: [Kubernetes hüvelyek][kubernetes-pods] és [Kubernetes Pod életciklusa][kubernetes-pod-lifecycle].
 
@@ -259,7 +259,7 @@ Ha AK-fürtöt hoz létre, a következő névterek érhetők el:
 
 További információ: Kubernetes- [névterek][kubernetes-namespaces].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a legfontosabb Kubernetes-összetevőket ismerteti, valamint azt, hogy ezek hogyan vonatkoznak az AK-fürtökre. Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

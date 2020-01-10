@@ -3,13 +3,13 @@ title: JavaScript fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript használatával.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 30d69476c96017319842a424c26de29350ec1ef6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226707"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769047"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -371,9 +371,9 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
 + **A `context` objektum `req` és `res` tulajdonságai között.** Ily módon a környezeti objektumból a HTTP-adatok eléréséhez a hagyományos mintát használhatja ahelyett, hogy a teljes `context.bindings.name` mintát kellene használnia. Az alábbi példa bemutatja, hogyan érheti el a `context``req` és `res` objektumokat:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -405,6 +405,16 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
+
+## <a name="scaling-and-concurrency"></a>Skálázás és Egyidejűség
+
+Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség szerint további gazdagép-példányokat hoz létre a Node. js-hez. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
+
+Ez a skálázási viselkedés elegendő sok Node. js-alkalmazáshoz. A CPU-kötésű alkalmazásokhoz több nyelvi feldolgozói folyamat használatával növelheti a teljesítményt.
+
+Alapértelmezés szerint minden functions Host-példány egyetlen nyelvi munkavégző folyamattal rendelkezik. A [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) alkalmazás beállításával növelheti a munkavégző folyamatok számát a gazdagépen (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között. 
+
+A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez. 
 
 ## <a name="node-version"></a>Csomópont verziója
 
@@ -477,7 +487,7 @@ Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functio
 
 A `function.json` tulajdonságok `scriptFile` és `entryPoint` az exportált függvény helyének és nevének konfigurálására használhatók. Ezek a tulajdonságok akkor lehetnek fontosak, ha a JavaScript transpiled.
 
-### <a name="using-scriptfile"></a>`scriptFile` használata
+### <a name="using-scriptfile"></a>Az `scriptFile` használata
 
 Alapértelmezés szerint a JavaScript-függvényt a rendszer `index.js`ból hajtja végre, és egy olyan fájlt, amely ugyanazt a szülő könyvtárat osztja meg a megfelelő `function.json`.
 
@@ -506,7 +516,7 @@ A `myNodeFunction` `function.json` tartalmaznia kell egy `scriptFile` tulajdons�
 }
 ```
 
-### <a name="using-entrypoint"></a>`entryPoint` használata
+### <a name="using-entrypoint"></a>Az `entryPoint` használata
 
 `scriptFile` (vagy `index.js`) esetében a függvényt az `module.exports` használatával kell exportálni, hogy azok megtalálhatók és fussanak. Alapértelmezés szerint az aktiváláskor végrehajtandó függvény az egyetlen Exportálás az adott fájlból, a `run`nevű exportálásból, vagy a `index`nevű exportálásból.
 
@@ -564,7 +574,7 @@ Az transpiled (. TS) a `dist` kimeneti könyvtárában található JavaScript-f�
 
 A helyi fejlesztés és üzembe helyezés módja a fejlesztői eszköztől függ.
 
-### <a name="visual-studio-code"></a>Visual Studio Code
+### <a name="visual-studio-code"></a>Visual Studio-kód
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) bővítményhez készült Azure functions lehetővé teszi a függvények fejlesztését a géppel. Az alapvető eszközök a Azure Functions bővítmény követelménye.
 

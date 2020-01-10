@@ -10,25 +10,74 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968716"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832305"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
+
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` az RSS-hírcsatorna olvasójának.
 
 A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
 
 * A legújabb kiadások
 * Ismert problémák
 * Hibajavítások
-* Elavult funkciók
+* Elavult funkció
 
-## <a name="october-2019"></a>Október 2019
+## <a name="december-2019"></a>2019. december
+
+### <a name="update-transcript-with-the-new-api"></a>Átirat frissítése az új API-val
+
+Frissítsen egy adott szakaszt az átiratban az [Update-video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) API használatával.
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>A fiók konfigurációjának javítása a Video Indexer portálon
+
+Most már frissítheti Media Services a kapcsolódási konfigurációt, hogy önsegítse az alábbi problémákkal: 
+
+* helytelen Azure Media Services erőforrás
+* jelszó módosítása
+* Media Services erőforrások áthelyezve az előfizetések között  
+
+A fiók konfigurációjának kijavításához a Video Indexer-portálon navigáljon a beállítások > fiók lapra (tulajdonosként).
+
+### <a name="configure-the-custom-vision-account"></a>Egyéni látási fiók konfigurálása
+
+A Video Indexer portálon konfigurálhatja a fizetős fiókokra vonatkozó egyéni jövőképi fiókot (korábban ez az API által támogatott). Ehhez jelentkezzen be a Video Indexer portálra, válassza a modell testreszabása > animált karakterek > Konfigurálás lehetőséget. 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Jelenetek, felvételek és kulcsképek – most egy betekintési panelen
+
+A jelenetek, a felvételek és a kulcsképek mostantól egyetlen pillantással egyesülnek, így könnyebb a használat és a Navigálás. A kívánt jelenet kiválasztásával megtekintheti, hogy mely felvételek és kulcsképek alkotják. 
+
+### <a name="notification-about-a-long-video-name"></a>Értesítés hosszú videó nevéről
+
+Ha a videó neve 80 karakternél hosszabb, Video Indexer a feltöltésnél leíró hibát jelez.
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>A folyamatos átviteli végpont értesítése letiltva
+
+Ha a folyamatos átviteli végpont le van tiltva, Video Indexer egy leíró hibát jelez a Player oldalon.
+
+### <a name="error-handling-improvement"></a>Hibakezelés javítása
+
+A 409-as állapotkódot a rendszer most [Visszaindexeli a videóból](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) , és frissíti a video [index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API-kat arra az esetre, ha egy videó aktívan van indexelve, hogy megakadályozza a jelenlegi újraindexelési változások véletlenre váltását.
+
+## <a name="november-2019"></a>2019. november
+ 
+* Egyéni koreai nyelvi modellek támogatása
+
+    A video Indexer mostantól támogatja a Koreai (`ko-KR`) egyéni nyelvi modelleket az API-ban és a portálon is. 
+* Beszéd – szöveg (STT) által támogatott új nyelvek
+
+    Video Indexer API-k mostantól támogatják a STT-t az Arab levantei (AR-SY), az angol Egyesült királyságbeli dialektusban (en-GB) és az angol ausztráliai nyelvjárásban (en-AU).
+    
+    A videó feltöltésekor a zh-HANS-t zh-CN-re cseréljük, de a zh-CN ajánlott és pontosabb.
+    
+## <a name="october-2019"></a>2019. október
  
 * Animált karakterek keresése a gyűjteményben
 
@@ -52,7 +101,7 @@ Több előrelépés is jelent meg az IBC 2019-ben:
     A felvételek címkézése olyan szerkesztési típusokkal, mint például a közelkép, közepes méretű felvétel, két lövés, beltéri, kültéri stb. További információ: [szerkesztési shot típusú észlelés](scenes-shots-keyframes.md#editorial-shot-type-detection).
 * A fejlesztéssel foglalkozó témakör (2. szint)
     
-    A "viszonyítási modell" példa mostantól támogatja az IPTC-rendszertan mélyebb részletességét. Olvassa el részletesen [Azure Media Services új AI-alapú innovációt](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
+    A témakörre hivatkozó modell mostantól támogatja az IPTC-rendszertan mélyebb részletességét. Olvassa el részletesen [Azure Media Services új AI-alapú innovációt](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
 ## <a name="august-2019"></a>2019. augusztus
  

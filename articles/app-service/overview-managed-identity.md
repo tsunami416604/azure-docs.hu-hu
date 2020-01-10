@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422011"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834166"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
 > [!Important] 
 > A App Service és Azure Functions felügyelt identitásai nem a várt módon fognak működni, ha az alkalmazást áttelepítik az előfizetések/bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció letiltásával és újbóli engedélyezésével végezhető el. Lásd [az alábbi identitások eltávolítását](#remove) ismertető szakaszt. Az alárendelt erőforrásoknak is szükségük lesz a hozzáférési szabályzatok frissítésére az új identitás használatához.
 
-Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelt identitást App Service és Azure Functions alkalmazásokhoz, és hogyan használhatja azt más erőforrásokhoz való hozzáféréshez. Az Azure Active Directoryben a felügyelt identitás lehetővé teszi, hogy az alkalmazás egyszerűen hozzáférhessen az AAD által védett más erőforrásokhoz is, például az Azure Key Vaulthoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ a HRE felügyelt identitásokról: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
+Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelt identitást App Service és Azure Functions alkalmazásokhoz, és hogyan használhatja azt más erőforrásokhoz való hozzáféréshez. Azure Active Directory (HRE) felügyelt identitása lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más HRE által védett erőforrásokhoz, például Azure Key Vaultokhoz. Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ a HRE felügyelt identitásokról: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
 Az alkalmazás két típusú identitást biztosíthat: 
 - A **rendszer által hozzárendelt identitás** az alkalmazáshoz van kötve, és törlődik, ha az alkalmazás törölve lett. Egy alkalmazásnak csak egy rendszerhez rendelt identitása lehet.
@@ -77,7 +77,7 @@ A következő lépések végigvezetik a webalkalmazások létrehozásán és az 
 
 A következő lépések végigvezetik a webalkalmazások létrehozásán és az identitás hozzárendelésének Azure PowerShell használatával:
 
-1. Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Login-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
+1. Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasításokkal, majd futtassa a `Login-AzAccount`t az Azure-beli kapcsolatok létrehozásához.
 
 2. Webalkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a App Service használatával kapcsolatos további példákért tekintse meg az [app Service PowerShell-mintákat](../app-service/samples-powershell.md):
 
@@ -235,12 +235,12 @@ Ahol a `<PRINCIPALID>` és `<CLIENTID>` GUID azonosítókkal lesznek lecserélve
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Jogkivonatok beszerzése az Azure-erőforrásokhoz
 
-Az alkalmazás az identitásával lekérheti a jogkivonatokat a HRE által védett más erőforrásokhoz, például a Azure Key Vaulthoz. Ezek a tokenek az erőforráshoz hozzáférő alkalmazást, és nem az alkalmazás adott felhasználóját jelölik. 
+Egy alkalmazás a felügyelt identitásával lekérheti a jogkivonatokat a HRE által védett egyéb erőforrások, például a Azure Key Vault eléréséhez. Ezek a tokenek az erőforráshoz hozzáférő alkalmazást, és nem az alkalmazás adott felhasználóját jelölik. 
 
 > [!IMPORTANT]
-> Előfordulhat, hogy a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést. Ha például jogkivonatot kér Key Vault, meg kell győződnie arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> Előfordulhat, hogy a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést. Ha például jogkivonatot kér Key Vaulthoz való hozzáféréshez, meg kell győződnie arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service és Azure Functions. Ezt minden alkalmazáshoz és nyelvhez használhatja. Egyes .NET-és Java-alkalmazások esetében az Azure SDK absztrakciót biztosít a protokollon keresztül, és megkönnyíti a helyi fejlesztési élményt.
+Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service és Azure Functions. Ezt minden alkalmazáshoz és nyelvhez használhatja. A .NET és a Java esetében az Azure SDK absztrakciót biztosít a protokollon keresztül, és megkönnyíti a helyi fejlesztési élményt.
 
 ### <a name="using-the-rest-protocol"></a>A REST protokoll használata
 

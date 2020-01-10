@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: e77bf5226a216c04beae86a23f1c08303d56db94
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f10de425bf83720b06f3ea7772343edfefc8d952
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536550"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834824"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -188,11 +188,12 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
-Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat. 
+Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Gépi tanulási modellek automatikus tanítása](how-to-auto-train-remote.md) a TabularDatasets.
+* [Gépi tanulási modellek automatikus betanítása](how-to-auto-train-remote.md) a TabularDatasets
 
-* [Képosztályozási modellek betanítása](https://aka.ms/filedataset-samplenotebook) a FileDatasets.
+* [Képosztályozási modellek betanítása](https://aka.ms/filedataset-samplenotebook) a FileDatasets
 
+* [Környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md)

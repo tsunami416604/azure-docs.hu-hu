@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseke
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230660"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769769"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions fejlesztése a Visual Studióval  
 
@@ -48,7 +48,7 @@ A közzétételi folyamat során a szükséges egyéb erőforrások, például a
 
 1. Jegyezze fel a telepített **verziót**. Ezt a verziót a [kibocsátási megjegyzésekben](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)felsorolt legújabb verzióval is összehasonlíthatja. 
 
-1. Ha a verzió régebbi, frissítse az eszközök a Visual Studióban, a következő szakaszban látható módon.
+1. Ha régebbi verziójú, frissítse az eszközöket a Visual Studióban, ahogy az a következő szakaszban is látható.
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Eszközök frissítése a Visual Studio 2017-ban
 
@@ -56,14 +56,14 @@ A közzétételi folyamat során a szükséges egyéb erőforrások, például a
 
     ![A functions Tools verziójának frissítése](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. Után az eszközök a frissítés letöltését követően zárja be a Visual Studióban az eszközök frissítése a VSIX telepítővel eseményindítóra.
+1. Az eszközök frissítésének letöltése után a Visual Studio bezárásával aktiválja az eszközök frissítését a VSIX telepítő használatával.
 
 1. A telepítőben kattintson az **OK** gombra a kezdéshez, majd **módosítsa** az eszközök frissítéséhez. 
 
 1. A frissítés befejezése után kattintson a **Bezárás gombra** , és indítsa újra a Visual studiót.
 
 > [!NOTE]  
-A Visual Studio 2019-es és újabb verzióiban a Azure Functions Tools bővítmény a Visual Studio részeként frissül.  
+> A Visual Studio 2019-es és újabb verzióiban a Azure Functions Tools bővítmény a Visual Studio részeként frissül.  
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions-projekt létrehozása
 

@@ -8,28 +8,29 @@ ms.topic: include
 ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 07cae1cee9810646de5bf9610a29991376736373
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391667"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772969"
 ---
-Ez a hiba akkor fordulhat elő, ha a Azure File Sync szolgáltatás nem érhető el a kiszolgálóról. Ezt a hibát a következő lépésekkel végezheti el:
+Ez a hiba akkor következhet be, ha az Azure File Sync nem érhető el a kiszolgálóról. A hiba elhárításához végezze el a következő lépéseket:
 
-1. Ellenőrizze, hogy a tűzfal nem blokkolja-e a Windows `FileSyncSvc.exe` szolgáltatást.
-2. Ellenőrizze, hogy a 443-es port nyitva van-e a kimenő kapcsolatokhoz a Azure File Sync szolgáltatással. Ezt a `Test-NetConnection` parancsmaggal teheti meg. Az alábbi `<azure-file-sync-endpoint>` helyőrző URL-címe a [Azure file Sync proxy-és tűzfalbeállítások](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) dokumentumban található. 
+1. Ellenőrizze, hogy a tűzfal nem blokkolja-e a Windows-szolgáltatás `FileSyncSvc.exe`ét.
+2. Ellenőrizze, hogy a 443-es port nyitva van-e a kimenő kapcsolatokhoz a Azure File Sync szolgáltatással. Ezt a `Test-NetConnection` parancsmaggal teheti meg. Az alábbi `<azure-file-sync-endpoint>` helyőrző URL-címe [Az Azure File Sync proxy- és tűzfalbeállításai](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) című dokumentumban található. 
 
     ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443
     ```
 
-3. Győződjön meg arról, hogy a proxy konfigurációja a várt módon van beállítva. Ezt a `Get-StorageSyncProxyConfiguration` parancsmaggal teheti meg. A Azure File Sync proxy-konfigurációjának konfigurálásával kapcsolatos további információkért tekintse meg a [Azure file Sync proxy és a tűzfal beállításait](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
+3. Ügyeljen arra, hogy a proxykonfiguráció a vártnak megfelelően legyen beállítva. Ez a `Get-StorageSyncProxyConfiguration` parancsmaggal végezhető el. Az Azure File Sync proxykonfigurációjának beállításáról [Az Azure File Sync proxy- és tűzfalbeállításai](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) című dokumentumban talál további információt.
 
     ```powershell
     $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration
     ```
-    
-4. További segítségért forduljon a hálózati rendszergazdához, és kérjen segítséget a hálózati kapcsolatról.
+4. A test-StorageSyncNetworkConnectivity parancsmaggal ellenőrizze, hogy van-e hálózati kapcsolat a szolgáltatási végpontokkal. További információért lásd: [hálózati kapcsolat tesztelése a szolgáltatási végpontokkal](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).    
+
+5. További segítségért forduljon a hálózati rendszergazdához, és kérjen segítséget a hálózati kapcsolatról.

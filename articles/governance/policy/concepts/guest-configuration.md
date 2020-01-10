@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f3d99b32b952470f266ed2168d5760c2c72377c4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 205aa5a9292d0f70fed8247a8af1fe575ad3614e
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666720"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830496"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy vendég konfigurációjának ismertetése
 
@@ -91,12 +91,8 @@ A Windows Server Nano Server semmilyen verzióban nem támogatott.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>A vendég konfigurációs bővítmény hálózati követelményei
 
-Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha az Azure-ban olyan magánhálózati virtuális hálózatot használ, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival. Azure Policy vendég konfigurációhoz jelenleg nem létezik szolgáltatási címke.
-
-Az IP-címlisták esetében letöltheti az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519). A fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait tartalmazza. Csak a virtuális gépeket üzembe helyező régiókban lévő IP-címekhez kell engedélyeznie a kimenő hozzáférést.
-
-> [!NOTE]
-> Az Azure IP-címtartományok és a szolgáltatási címkék JSON-fájlja felsorolja az Microsoft Azure adatközpontokban használt IP-címtartományok listáját. A fájl a számítási, az SQL-és a tárolási tartományokat tartalmazza. A frissített fájlok hetente kerülnek közzétételre. A fájl a jelenleg telepített tartományokat és az IP-címtartományok közelgő változásait tükrözi. A fájlban megjelenő új tartományok legalább egy hétig nem használhatók az adatközpontokban. Érdemes minden héten letölteni az új XML-fájlt. Ezután frissítse a webhelyet az Azure-ban futó szolgáltatások megfelelő azonosításához. Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
+Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha az Azure-ban olyan magánhálózati virtuális hálózatot használ, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival.
+A "GuestAndHybridManagement" [szolgáltatási címke](../../../virtual-network/service-tags-overview.md) használható a vendég konfigurációs szolgáltatásra való hivatkozáshoz.
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 

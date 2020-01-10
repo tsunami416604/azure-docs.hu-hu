@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879309"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832851"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -38,10 +38,10 @@ A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amely
 **1. lépés** – hitelesítésszolgáltatói szolgáltatók  
 -   Az adott vállalat számára az informatikai rendszergazdaként, PKI-rendszergazdaként vagy a hitelesítésszolgáltatókkal rendelkező fiókok kezelésével foglalkozó felhasználó (pl. A contoso) Key Vault tanúsítványok használatának előfeltétele.  
     A következő hitelesítésszolgáltatók az aktuális partneri szolgáltatók Key Vault:  
-    -   A DigiCert-Key Vault az DigiCert-val rendelkező OV SSL-tanúsítványokat kínál.  
-    -   A GlobalSign-Key Vault az GlobalSign-val rendelkező OV SSL-tanúsítványokat kínál.  
+    -   A DigiCert-Key Vault OV TLS/SSL-tanúsítványokat kínál a DigiCert.  
+    -   A GlobalSign-Key Vault OV TLS/SSL-tanúsítványokat kínál a GlobalSign.  
 
-**2. lépés** – a hitelesítésszolgáltató-szolgáltatóhoz tartozó fiók rendszergazdája létrehozza a hitelesítő adatokat, amelyeket a Key Vault HASZNÁLHAT az SSL-tanúsítványok regisztrálásához, megújításához és használatához Key Vaulton keresztül.
+**2. lépés** – a hitelesítésszolgáltató-szolgáltatóhoz tartozó fiók rendszergazdája létrehozza a hitelesítő adatokat, amelyeket a Key Vault a TLS/SSL-tanúsítványok Key Vault használatával történő regisztrálásához, megújításához és használatához használhat.
 
 **3. lépés** – a contoso rendszergazdája, valamint a tanúsítványokat birtokló contoso-alkalmazott (Key Vault felhasználó) a hitelesítésszolgáltatótól függően beszerezhet egy tanúsítványt a rendszergazdától, vagy közvetlenül a fiókból a hitelesítésszolgáltatótól.  
 
@@ -62,9 +62,9 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
 
 **4. lépés** – az alábbi leírások az előző ábrán látható zöld számú lépéseknek felelnek meg.  
   (1) – a fenti ábrán az alkalmazás olyan tanúsítványt hoz létre, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.  
-  (2) – Key Vault SSL-tanúsítványkérelmet küld a HITELESÍTÉSSZOLGÁLTATÓNAK.  
-  (3) – az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor fejeződik be, amikor Key Vault megkapja a HITELESÍTÉSSZOLGÁLTATÓ válaszát az x509-tanúsítvánnyal.  
-  (4) – a HITELESÍTÉSSZOLGÁLTATÓ válaszol az Key Vault SSL-tanúsítványára vonatkozó kérelemre egy X509 SSL-tanúsítvánnyal.  
+  (2) – Key Vault TLS/SSL-tanúsítványkérelem küldését küldi a HITELESÍTÉSSZOLGÁLTATÓNAK.  
+  (3) – az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor ér véget, amikor a kulcstartó megkapja a CA válaszát az X.509-tanúsítvánnyal.  
+  (4) – a HITELESÍTÉSSZOLGÁLTATÓ a Key Vault TLS/SSL-tanúsítványkérelem X509 TLS/SSL-tanúsítvánnyal való kérelmére válaszol.  
   (5) – az új tanúsítvány létrehozása a HITELESÍTÉSSZOLGÁLTATÓ X509-tanúsítványának egyesítésével fejeződik be.  
 
   Key Vault felhasználó – tanúsítvány létrehozása egy házirend megadásával
@@ -72,7 +72,7 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
   -   Szükség esetén ismételje meg a műveletet  
   -   Házirend-korlátozások  
       -   X509 tulajdonságai  
-      -   Kulcs tulajdonságai  
+      -   Fő tulajdonságok  
       -   Szolgáltatói hivatkozás – > ex. MyDigiCertIssure  
       -   Megújítási információ – > ex. 90 nappal a lejárat előtt  
 

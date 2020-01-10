@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665331"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830207"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -46,11 +46,11 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt
 | --- | --- | --- |
 | Biztonsági mentés | Az online helyreállítási pont létrehozása nem sikerült | **Hibaüzenet**: a Windows Azure Backup ügynök nem tudott pillanatképet készíteni a kijelölt kötetről. <br> **Áthidaló megoldás**: próbálja meg növelni a helyet a replika és a helyreállítási pont kötetén.<br> <br> **Hibaüzenet**: a Windows Azure Backup ügynök nem tud csatlakozni a OBEngine szolgáltatáshoz <br> **Áthidaló megoldás**: Ellenőrizze, hogy a OBEngine létezik-e a számítógépen futó szolgáltatások listájában. Ha a OBEngine szolgáltatás nem fut, használja a "net start OBEngine" parancsot a OBEngine szolgáltatás elindításához. <br> <br> **Hibaüzenet**: nincs beállítva a kiszolgáló titkosítási jelszava. Konfigurálja a titkosítási jelszót. <br> **Áthidaló megoldás**: próbálkozzon titkosítási jelszó konfigurálásával. Ha nem sikerül, hajtsa végre a következő lépéseket: <br> <ol><li>Ellenőrizze, hogy létezik-e a megkarcolt hely. Ez az a hely, amely szerepel a beállításjegyzékben **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure-Backup\Config**, és a **ScratchLocation** néven is léteznie kell.</li><li> Ha a megjelenő hely létezik, próbálja meg újból regisztrálni a régi jelszó használatával. *Ha titkosítási jelszót állít be, mentse biztonságos helyre.*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>A tár megadott hitelesítő adatai eltérnek a kiszolgáló által regisztrált tárolótól
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/tároló hitelesítő adatai hiba: 100110 <br/> <br/>**Hibaüzenet**: a tár megadott hitelesítő adatai eltérnek a kiszolgáló által regisztrált tárolótól. | **OK**: Ez a probléma akkor fordul elő, ha a fájlokat az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával szeretné visszaállítani, és ha a helyreállított kiszolgáló, illetve az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nem ugyanahhoz a helyreállítási tárhoz van társítva.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
+| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/tároló hitelesítő adatai hiba: 100110 <br/> <br/>**Hibaüzenet**: az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni. | **OK**: Ez a probléma akkor fordul elő, ha a fájlokat az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával szeretné visszaállítani, és ha a helyreállított kiszolgáló, illetve az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nem ugyanahhoz a helyreállítási tárhoz van társítva.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek
 

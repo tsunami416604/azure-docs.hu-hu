@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f61fdedcd3c910ef5d09685fea00473a83b321f1
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421881"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834280"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management-, Change Tracking-és leltározási megoldások
 
@@ -59,7 +59,7 @@ Ha a kiválasztott munkaterület már rendelkezik a megoldással, a rendszer nem
 
 Ha hozzáad egy számítógépet a Update Managementhoz vagy a Change Trackinghoz és a leltári megoldásokhoz, a rendszer a munkaterületen két mentett keresés egyikére adja hozzá őket. Ezek a mentett keresések azok a lekérdezések, amelyek tartalmazzák azokat a számítógépeket, amelyek ezekre a megoldásokra vannak rendelve.
 
-Navigáljon az Automation-fiókjához, és az **általános**területen válassza a **mentett keresések** lehetőséget. A megoldások által használt két mentett keresés a következő táblázatban látható:
+Navigáljon a Log Analytics munkaterületre, és válassza a **mentett keresések** **általános**lehetőséget. A megoldások által használt két mentett keresés a következő táblázatban látható:
 
 |Név     |Kategória  |Alias  |
 |---------|---------|---------|

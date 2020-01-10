@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666035"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780062"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
 
@@ -28,10 +28,12 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 | Verzió | Spark | Hive | LLAP | HBase | Kafka | A Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 ESP nélkül | Csak igen 2,3| Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 4,0 ESP nélkül | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 3,6, ESP-vel | Csak igen 2,3 | Igen | Nem | Nem | Nem | Nem | Nem |
-| HDInsight 4,0, ESP-vel | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
+| HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+
+\* HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
 ## <a name="how-it-works"></a>Működési elv
 
@@ -188,7 +190,7 @@ HDInsight-fürtöt úgy hozhat létre, hogy egy Azure Resource Manager sablonon 
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Ha egy futó fürtön engedélyezni szeretné az autoskálázást, a **Beállítások**területen válassza a **fürt méretét** . Ezután kattintson az **autoskálázás engedélyezése**lehetőségre. Válassza ki a kívánt automatikus méretezési típust, és adja meg a terhelés vagy az ütemterv szerinti skálázás beállításait. Végül kattintson a **Mentés**gombra.
+Ha egy futó fürtön engedélyezni szeretné az autoskálázást, a **Beállítások**területen válassza a **fürt méretét** . Ezután kattintson az **autoskálázás engedélyezése**lehetőségre. Válassza ki a kívánt automatikus méretezési típust, és adja meg a terhelés vagy az ütemterv szerinti skálázás beállításait. Végül kattintson a **Mentés** gombra.
 
 ![Munkavégző csomópont ütemezett méretezésének engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
@@ -246,7 +248,7 @@ Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet
 | Fürt állapota | Magyarázat |
 |---|---|
 | Fut | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
-| Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
+| Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
 | HDInsight-konfiguráció  | Egy fürt vertikális fel-vagy leskálázási művelete folyamatban van.  |
 | Frissítési hiba  | A HDInsight problémákba ütközött az automatikus skálázási konfiguráció frissítése során. Az ügyfelek dönthetnek úgy, hogy megpróbálják megismételni a frissítést vagy letiltani az autoskálázást.  |
 | Hiba  | Probléma van a fürttel, és nem használható. Törölje a fürtöt, és hozzon létre egy újat.  |
