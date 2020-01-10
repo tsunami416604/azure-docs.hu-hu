@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5c4ba510360475e1365d4901136c94181e8c3da3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174369"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708846"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Gyors útmutató: egyéni események átirányítása egy Azure-függvénybe Event Grid
 
@@ -47,7 +47,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
 
 4. A **témakör létrehozása** lapon kövesse az alábbi lépéseket:
 
-    1. Adjon egyedi **nevet** az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre a saját nevét – kell 3 – 50 karakter hosszúságú lehet, és tartalmaznia csak a-z, A-Z, 0-9, értékek és a "-".
+    1. Adjon egyedi **nevet** az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre egy saját nevet – 3-50 karakter közé kell esnie, és csak a-z, A-Z, 0-9 és a "-" értékeket kell tartalmaznia.
     2. Jelölje ki az Azure-**előfizetést**.
     3. Válassza ki ugyanazt az erőforráscsoportot az előző lépésekben.
     4. Válassza ki az Event Grid-témakör **helyét** .
@@ -96,7 +96,7 @@ Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az E
 Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-címét és kulcsát, valamint a mintául szolgáló eseményadatokat. A `<topic name>` helyett használja az egyéni témakör nevét. Ez mintául szolgáló eseményadatokat hoz létre. A JSON `data` eleme az esemény hasznos adata. Bármilyen, megfelelően formált JSON megadható ebben a mezőben. A speciális útválasztáshoz és szűréshez használhatja a tárgy mezőt is. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld.
 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 1. A Azure Portal válassza a **Cloud Shell**lehetőséget. Válassza a **bash** elemet a Cloud Shell ablak bal felső sarkában. 
 
     ![Cloud Shell – bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
@@ -124,7 +124,7 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 ### <a name="azure-powershell"></a>Azure PowerShell
 A második példa a PowerShell használatával végez hasonló lépéseket.
 
-1. A Azure Portal válassza a **Cloud Shell** lehetőséget (a https://shell.azure.com/)lehetőségre. Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
+1. A Azure Portal válassza a **Cloud Shell** lehetőséget (a https://shell.azure.com/) lehetőségre. Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
 2. Állítsa be a következő változókat. Az egyes parancsok másolását és beillesztését követően frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt:
 
     ```powershell
@@ -184,13 +184,12 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
     ![Erőforráscsoportok](./media/custom-event-to-function/delete-resource-groups.png)
 
     A rendszerképben látható másik erőforráscsoportot a Cloud Shell ablak hozta létre és használta. Ha később nem tervezi használni a Cloud Shell ablakot, törölje azt. 
-```
 
-## Next steps
+## <a name="next-steps"></a>Következő lépések
 
-Now that you know how to create topics and event subscriptions, learn more about what Event Grid can help you do:
+Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 
-- [About Event Grid](overview.md)
-- [Route Blob storage events to a custom web endpoint](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Stream big data into a data warehouse](event-grid-event-hubs-integration.md)
+- [Bevezetés az Event Grid használatába](overview.md)
+- [Azure Blob Storage-események átirányítása egyéni webes végpontra](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével](monitor-virtual-machine-changes-event-grid-logic-app.md)
+- [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)

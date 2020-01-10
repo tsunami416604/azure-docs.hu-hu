@@ -1,6 +1,7 @@
 ---
-title: 'Gyors útmutató: Azure Database Migration Service hibrid üzemmódú példány létrehozása a Azure Portal használatával | Microsoft Docs'
-description: Azure Database Migration Service hibrid módban való létrehozásához használja a Azure Portal.
+title: 'Gyors útmutató: hibrid üzemmódú példány létrehozása Azure Portal'
+titleSuffix: Azure Database Migration Service
+description: A Azure Portal használatával hibrid módban hozhat létre Azure Database Migration Service-példányt.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,32 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/06/2019
-ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/17/2019
+ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890691"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708291"
 ---
-# <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Gyors útmutató: Azure Database Migration Service-példány létrehozása hibrid módban a Azure Portal használatával (előzetes verzió)
+# <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Gyors útmutató: hibrid üzemmódú példány létrehozása Azure Portal & Azure Database Migration Service
 
 Azure Database Migration Service a hibrid üzemmód az adatbázisok áttelepítését a helyszínen üzemeltetett áttelepítési feldolgozóval, a felhőben futó Azure Database Migration Service egy példányával kezeli. A hibrid mód különösen olyan esetekben hasznos, amikor a helyszíni hálózat és az Azure közötti helyek közötti kapcsolat hiánya, illetve ha a helyek közötti kapcsolat sávszélessége korlátozott.
 
+>[!NOTE]
+>Jelenleg a hibrid módban futó Azure Database Migration Service támogatja SQL Server áttelepítését a következőre:
+>
+>- Azure SQL Database felügyelt példányt közel nulla állásidővel (online).
+>- Azure SQL Database egy adatbázist bizonyos állásidővel (offline).
+>- MongoDb az Azure CosmosDB a közel nulla állásidővel (online).
+>- MongoDb az Azure CosmosDB bizonyos állásidővel (offline).
+
 Ebben a rövid útmutatóban a Azure Portal használatával hozza létre a Azure Database Migration Service egy példányát hibrid módban. Ezt követően töltse le, telepítse és állítsa be a hibrid feldolgozót a helyszíni hálózatán. Az előzetes verzió használata során Azure Database Migration Service hibrid mód használatával áttelepítheti az adatok áttelepítését a SQL Server helyszíni példányáról Azure SQL Databasere.
+
+> [!NOTE]
+> A Azure Database Migration Service Hybrid Installer a Microsoft Windows Server 2012 R2, a Server 2016, a Windows Server 2019 és a Windows 10 rendszeren fut.
 
 > [!IMPORTANT]
 > A Azure Database Migration Service hibrid telepítőhöz .NET 4.7.2 vagy újabb verzió szükséges. A .NET legújabb verzióinak megkereséséhez tekintse meg a [.NET-keretrendszer letöltése](https://dotnet.microsoft.com/download/dotnet-framework) lapot.
@@ -51,7 +63,7 @@ A Azure Database Migration Service első példányának létrehozása előtt reg
 
 1. Válassza az +**erőforrás létrehozása** lehetőséget Azure Database Migration Service-példány létrehozásához.
 
-2. A piactéren keressen a „migration” kifejezésre, válassza ki az **Azure Database Migration Service** elemet, majd az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** parancsot.
+2. Keresse meg a piactéren az áttelepítés lehetőséget, válassza a **Azure Database Migration Service**lehetőséget, majd a **Azure Database Migration Service** képernyőn válassza a **Létrehozás**elemet.
 
 3. A **Migrálási szolgáltatás létrehozása** képernyőn:
 
@@ -59,13 +71,9 @@ A Azure Database Migration Service első példányának létrehozása előtt reg
     - Válassza ki azt az **Azure-előfizetést**, amelyben a példányt létre szeretné hozni.
     - Válasszon ki egy meglévő **erőforráscsoportot**, vagy hozzon létre egy újat.
     - Válassza ki a forráshoz vagy a célkiszolgálóhoz legközelebb eső **Helyet**.
-
-    > [!IMPORTANT]
-    > Az előzetes verzióban a hibrid üzemmód csak az USA keleti régiójában támogatott. Mivel a hibrid feldolgozó a helyszíni hálózatra van telepítve, a teljesítményre nincs hatással, még akkor is, ha egy másik régióban lévő célra végez áttelepítést.
-
     - **Szolgáltatási mód**esetén válassza a **hibrid (előzetes verzió)** lehetőséget.
 
-      ![Áttelepítési szolgáltatás létrehozása – alapismeretek](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
@@ -120,7 +128,7 @@ Létre kell hoznia egy Azure-alkalmazás regisztrációs AZONOSÍTÓját, amelye
 4. A telepítési mappában keresse meg és nyissa meg a **dmsSettings. JSON** fájlt, adja meg a **ApplicationId** és a **resourceId**, majd mentse a fájlt.
 
     ![Hibrid feldolgozói beállítások Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
- 
+
 5. A következő parancs használatával létrehozhat egy olyan tanúsítványt, amelyet a Azure Database Migration Service használhat a hibrid feldolgozóval folytatott kommunikáció hitelesítéséhez.
 
     ```
@@ -141,6 +149,12 @@ Létre kell hoznia egy Azure-alkalmazás regisztrációs AZONOSÍTÓját, amelye
     <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms
     ```
 
+    > [!NOTE]
+    > Az install parancs futtatásakor a következő paramétereket is használhatja:
+    >
+    > - **-TelemetryOptOut** – leállítja a feldolgozó számára a telemetria küldését, de az továbbra is kis mértékben naplózza a helyileg.  A telepítő továbbra is telemetria küld.
+    > - **-p {INSTALLLOCATION}** . Lehetővé teszi a telepítési útvonal módosítását, amely alapértelmezés szerint "C:\Program Files\DatabaseMigrationServiceHybrid".
+
 8. Ha a telepítő hiba nélkül fut, akkor a szolgáltatás a Azure Database Migration Service online állapotot jeleníti meg, és készen áll az adatbázisok áttelepítésére.
 
     ![Online Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode-online.png)
@@ -152,6 +166,27 @@ Jelenleg a Azure Database Migration Service hibrid üzemmód eltávolítása csa
 ```
 <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a uninstall
 ```
+
+> [!NOTE]
+> Az eltávolítási parancs futtatásakor használhatja a "-ReuseCert" paramétert is, amely megtartja a generateCert-munkafolyamat által generált AdApp-tanúsítványt.  Ez lehetővé teszi, hogy ugyanazt a tanúsítványt használja, amelyet korábban hozott létre és töltött fel.
+
+## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>A Azure Database Migration Service Hybrid Worker beállítása a PowerShell használatával
+
+A Azure Database Migration Service Hybrid Worker Azure Portal használatával történő telepítése mellett egy [PowerShell-szkriptet](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) is biztosítunk, amellyel automatizálható a feldolgozó telepítési lépései, miután létrehozta a Azure Database Migration Service új példányát hibrid módban. A parancsfájl:
+
+1. Új AdApp hoz létre.
+2. Letölti a telepítőt.
+3. Futtatja a generateCert munkafolyamatot.
+4. Feltölti a tanúsítványt.
+5. Hozzáadja a AdApp a Azure Database Migration Service-példányhoz közreműködőként.
+6. Futtatja a telepítési munkafolyamatot.
+
+Ez a szkript a gyors prototípusok készítésére szolgál, ha a felhasználó már rendelkezik a szükséges engedélyekkel a környezetben. Vegye figyelembe, hogy az éles környezetben a AdApp és a tanúsítvány eltérő követelményekkel rendelkezhet, így a szkript sikertelen lehet.
+
+> [!IMPORTANT]
+> Ez a szkript feltételezi, hogy a Azure Database Migration Service egy meglévő példánya hibrid módban van, és hogy a használt Azure-fiók rendelkezik a AdApps létrehozásához szükséges engedélyekkel a bérlőben, és módosíthatja az előfizetéshez tartozó RBAC.
+
+Egyszerűen adja meg a paramétereket a parancsfájl tetején, majd futtassa a parancsfájlt egy rendszergazdai PowerShell-példányból.
 
 ## <a name="next-steps"></a>Következő lépések
 

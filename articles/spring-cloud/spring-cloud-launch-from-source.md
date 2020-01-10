@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 37af0ee99e48bfeddf4be81241b75318d1afda40
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895453"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707884"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rövid útmutató: a Spring Cloud-alkalmazás elindítása forráskódból
 
@@ -77,6 +77,9 @@ az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
+
 ## <a name="create-the-spring-cloud-application"></a>A Spring Cloud-alkalmazás létrehozása
 
 A következő parancs egy Spring Cloud-alkalmazást hoz létre az előfizetésében.  Ezzel létrehoz egy üres Spring Cloud Service-szolgáltatást, amellyel feltöltheti az alkalmazást.
@@ -137,12 +140,18 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > A kpack-naplók csak akkor jelennek meg a legújabb központi telepítésben, ha a központi telepítés forrása a kpack használatával készült.
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Nyilvános végpont társítása az átjáróhoz
 
 1. Nyissa meg az **alkalmazás-irányítópult** lapot.
 2. Válassza ki a `gateway` alkalmazást az **alkalmazás részletei** lap megjelenítéséhez.
 3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet. 
 4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános IP-címet a böngészőben.
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Következő lépések
 

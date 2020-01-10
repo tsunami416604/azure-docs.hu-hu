@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 26b53e897d70e596bcd770e99d2d29ac16c52755
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895413"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707078"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató a következőket ismerteti:
 >[!TIP]
 > A Azure Cloud Shell egy ingyenes interaktív felület, amelyet a cikkben szereplő parancsok futtatására használhat. A közös Azure-eszközök előre telepítve vannak, beleértve a git legújabb verzióit, a Java Development Kit (JDK), a Maven és az Azure CLI-t. Ha bejelentkezett az Azure-előfizetésbe, indítsa el [Azure Cloud Shell](https://shell.azure.com). További információ: [Azure Cloud Shell áttekintése](../cloud-shell/overview.md).
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 1. [Telepítse a Git szoftvert](https://git-scm.com/).
 2. A [JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -57,6 +57,9 @@ A gyorsútmutató elvégzéséhez:
 
 A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szolgáltatás telepítése után válassza az Ugrás az **erőforráshoz** lehetőséget, és megjelenik a szolgáltatási példány **Áttekintés** lapja.
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+
 ## <a name="set-up-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
 1. A szolgáltatás **áttekintése** lapon válassza a **konfigurációs kiszolgáló**lehetőséget.
@@ -64,6 +67,9 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 
     > [!div class="mx-imgBorder"]
     > ![a konfigurációs beállítások megadása és alkalmazása](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>A minta alkalmazás-adattár klónozása és összeállítása
 
@@ -105,6 +111,9 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
    ```
 
 1. Az üzembe helyezés befejezése után a PiggyMetrics az előző parancs kimenetében megadott URL-címen keresztül érheti el.
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c00749191b83423e771535525afcbdd7892da88e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0d3bc43d5e639c0de9059da300d91494948f1770
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895437"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707220"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával
 
@@ -36,7 +36,7 @@ Ez a rövid útmutató a következőket ismerteti:
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 1. [A Git telepítése](https://git-scm.com/)
 2. [A JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
@@ -69,7 +69,7 @@ az extension add --name spring-cloud
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
-    Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/resource-group-overview.md) kapcsolatban.
+    Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.
 
 4. Nyisson meg egy Azure CLI-ablakot, és futtassa az alábbi parancsokat az Azure Spring Cloud egy példányának kiépítéséhez.
 
@@ -86,6 +86,9 @@ az extension add --name spring-cloud
         az configure --defaults spring-cloud=<service instance name>
     ```
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=provision)
+
 ## <a name="setup-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
 Frissítse a config-Servert a projekt git-tárházának a helyére:
@@ -93,6 +96,9 @@ Frissítse a config-Servert a projekt git-tárházának a helyére:
 ```git
 az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics --label config
 ```
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=config-server)
 
 ## <a name="build-the-microservices-applications-locally"></a>A Service-alkalmazások helyi létrehozása
 
@@ -132,6 +138,9 @@ az spring-cloud app deploy -n account-service --jar-path ./account-service/targe
 az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
 ```
 
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=deploy)
+
 ## <a name="assign-public-endpoint-to-gateway"></a>Nyilvános végpont kiosztása az átjáróhoz
 
 Egy webböngészőn keresztül elérhetővé kell tennie az alkalmazást. Az átjáró alkalmazásnak nyilvános végpontra van szüksége, amely a következő paranccsal rendelhető hozzá:
@@ -156,6 +165,9 @@ Az URL-cím megkereséséhez navigáljon a Azure Portal is.
 
     ![A PiggyMetrics-t futtató képernyőkép](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
 1. Keresse meg az **átjáró áttekintő** oldalán található URL-címet ![képernyőképet a futó PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,12 +4,12 @@ ms.author: baanders
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: e6ca830a7224326c17003924b76192b95ba6bcb2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d88d166e001e71cabdabc3a3d344adc4da19aa8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453703"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -32,4 +32,4 @@ Ha csak az IoT hub-ban regisztrált eszköz identitását szeretné törölni, f
 az iot hub device-identity delete --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Érdemes lehet eltávolítani a klónozott SDK-fájlokat is a fejlesztői gépről.
+Előfordulhat, hogy el kívánja távolítani a klónozott minta fájlokat a fejlesztői gépről.

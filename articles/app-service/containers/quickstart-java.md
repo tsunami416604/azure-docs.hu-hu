@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872740"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707914"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -21,7 +21,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 > [!NOTE]
 >
-> Ugyanezt a népszerű ide-ket is megteheti, például a IntelliJ és az Eclipse-et. Tekintse meg a hasonló dokumentumokat a [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) rövid útmutatóban vagy [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)gyors útmutatóban.
+> Ugyanezt is megteheti a népszerű ide-IntelliJ, az Eclipse és a VS Code használatával is. Tekintse meg a hasonló dokumentumokat [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)rövid útmutató, [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) gyors útmutató vagy a [vs Code](https://code.visualstudio.com/docs/java/java-webapp)gyors üzembe helyezése című útmutatóban.
 >
 ![Azure App Service futó minta alkalmazás](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -35,6 +35,11 @@ Hajtsa végre a következő Maven-parancsot a Cloud Shell promptban egy új, `he
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+```
+Ezután módosítsa a munkakönyvtárat a projekt mappájába:
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
@@ -93,11 +98,11 @@ A beépülő modul konfigurációjának megtekintéséhez navigáljon `pom.xml` 
 
  Tulajdonság | Szükséges | Leírás | Verzió
 ---|---|---|---
-`<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1`, `v2`. | 1.5.2
+`<schemaVersion>` | false | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1`, `v2`. | 1.5.2
 `<resourceGroup>` | igaz | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | igaz | A webalkalmazás neve. | 0.1.0 +
 [`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | igaz | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) szakaszban található összes érvényes régió. | 0.1.0 +
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték a **P1V2**.| 0.1.0 +
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | A webalkalmazás díjszabási szintje. Az alapértelmezett érték a **P1V2**.| 0.1.0 +
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | igaz | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)tekintheti meg. | 0.1.0 +
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | igaz | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)láthatja a részleteket. | 0.1.0 +
 
