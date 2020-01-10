@@ -1,5 +1,5 @@
 ---
-title: Introduction (Bevezetés)
+title: Bevezetés
 description: Ismerje meg, hogy Azure App Service környezetek hogyan segítik az alkalmazások méretezését, védelmét és optimalizálását egy teljesen elkülönített és dedikált környezetben.
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 35b667056698fdb2563ad9b1be9af19bcc98c1cc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688610"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768327"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
  
@@ -41,6 +41,7 @@ Elkülönítettségük révén az ASE-k környezetek egyetlen ügyfél alkalmaz�
 * Több ASE is felhasználható a horizontális skálázásra. További információkért lásd a [földrajzilag elosztott alkalmazás beállítását](app-service-app-service-environment-geo-distributed-scale.md) ismertető részt.
 * Az ASE környezetek használatával a biztonsági architektúra is konfigurálható, ahogyan azt az AzureCon Deep Dive is bemutatja. Az AzureCon Deep Dive-ban látható biztonsági architektúra konfigurálásáról a [rétegelt biztonsági architektúra App Service Environmenttel történő megvalósításáról szóló cikkben](app-service-app-service-environment-layered-security.md) találhat további információkat.
 * Az ASE környezetekben futó alkalmazások hozzáférésében sorompós kapcsolatok alakíthatók ki alsóbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF-ok) segítségével. További információt a [webalkalmazási tűzfal (WAF)][AppGW]című témakörben talál.
+* App Service környezetek a Availability Zones (AZ) rendszerbe helyezhetők üzembe a zóna-rögzítés használatával.  További részletekért tekintse meg a [Availability Zones app Service Environment támogatását][ASEAZ] ismertető témakört.
 
 ## <a name="dedicated-environment"></a>Dedikált környezet ##
 
@@ -97,8 +98,9 @@ Az ASEv1 díjszabása eltér az ASEv2-étől. Az ASEv1 esetében minden lefoglal
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md
+[ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 266f6e37584807e139e80a581d16f404c6636f6e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687472"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768401"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -52,7 +52,7 @@ A terminál ablakban használja az alábbi parancsokat (az operációs rendszern
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-FLASK_APP=application.py
+export FLASK_APP=application.py
 flask run
 ```
 
@@ -98,7 +98,7 @@ az login
 
 A [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs létrehozza a webalkalmazást app Service és üzembe helyezi a kódot.
 
-A mintakódt tartalmazó *Python-docs-Hello-World* mappában futtassa a következő `az webapp up` parancsot. Cserélje le a `<app-name>`t egy globálisan egyedi alkalmazás nevére (*érvényes karakterek: `a-z`, `0-9`és `-`* ). Emellett cserélje le a `<location-name>`t egy olyan Azure-régióra, mint például a **CentralUS**, a **eastasia**, a **westeurope**, a **koreasouth**, a **brazilsouth**, a **centralindia**stb. (A [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs futtatásával lekérheti az Azure-fiók számára engedélyezett régiók listáját.)
+A mintakódt tartalmazó *Python-docs-Hello-World* mappában futtassa a következő `az webapp up` parancsot. Cserélje le a `<app-name>`t egy globálisan egyedi alkalmazás nevére (*érvényes karakterek: `a-z`, `0-9`és `-`* ). Emellett cserélje le a `<location-name>`t egy olyan Azure-régióra, mint például a **CentralUS**, a **eastasia**, a **westeurope**, a **koreasouth**, a **brazilsouth**, a **centralindia**stb. (A [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs futtatásával lekérheti az Azure-fiók számára engedélyezett régiók listáját.)
 
 
 ```terminal

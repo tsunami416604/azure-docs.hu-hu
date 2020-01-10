@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048729"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772040"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
 Az Azure standard Load Balancer a következő diagnosztikai képességeket teszi elérhetővé:
 
-* **Többdimenziós mérőszámok és riasztások**: új többdimenziós diagnosztikai képességeket biztosít a standard Load Balancer-konfigurációk [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview) keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
+* **Többdimenziós mérőszámok és riasztások**: többdimenziós diagnosztikai képességeket biztosít a standard Load Balancer-konfigurációk [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview) keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
 
 * **Erőforrás állapota**: a Azure Portal Load Balancer lapja és a Resource Health lap (a figyelő alatt) tegye elérhetővé a standard Load Balancer Resource Health szakaszát. 
 
@@ -31,7 +31,7 @@ Ez a cikk gyors áttekintést nyújt ezekről a képességekről, és lehetősé
 
 ## <a name = "MultiDimensionalMetrics"></a>Többdimenziós metrikák
 
-A Azure Load Balancer új, többdimenziós metrikákat biztosít a Azure Portal új Azure-Metrikáján keresztül, és segít valós idejű diagnosztikai információk beszerzésében a terheléselosztó erőforrásaiban. 
+Azure Load Balancer többdimenziós metrikákat biztosít az Azure-metrikák használatával a Azure Portalban, és segít valós idejű diagnosztikai információk beszerzésében a terheléselosztó erőforrásaiban. 
 
 A különböző standard Load Balancer konfigurációk a következő metrikákat biztosítják:
 

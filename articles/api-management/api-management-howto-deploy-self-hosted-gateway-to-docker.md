@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747702"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768503"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
 
@@ -33,7 +33,7 @@ Ez a cikk a saját üzemeltetésű Azure API Management-átjárók Docker-körny
 - [Átjáró-erőforrás kiépítése a API Management-példányban](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> A saját üzemeltetésű átjáró Linux-alapú Docker-tárolóként van csomagolva.
+> A saját üzemeltetésű átjáró x86-64 Linux-alapú Docker-tárolóként van csomagolva.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>A saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
 
@@ -57,14 +57,14 @@ CONTAINER ID        IMAGE                                                 COMMAN
 ```
 10. Lépjen vissza a Azure Portalra, és ellenőrizze, hogy az imént telepített átjáró-csomópont a kifogástalan állapotot jelenti-e.
 
-![Átjáró állapota](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
+![átjáró állapota](media/api-management-howto-deploy-self-hosted-gateway-to-docker/status.png)
 
 > [!TIP]
 > A <code>console docker container logs <gateway-name></code> parancs használatával megtekintheti a saját üzemeltetésű átjáró naplójának pillanatképét.
 >
 > <code>docker container logs --help</code> parancs használatával tekintheti meg az összes naplózási megtekintési beállítást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a saját üzemeltetésű átjáróról: az [Azure API Management saját üzemeltetésű átjárójának áttekintése](self-hosted-gateway-overview.md).
 * [Konfigurálja az egyéni tartománynevet a saját üzemeltetésű átjáróhoz](api-management-howto-configure-custom-domain-gateway.md).

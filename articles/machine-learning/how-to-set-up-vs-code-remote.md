@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: a91035773d4427f0f3c07097eb3e02fc08c5f375
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528759"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771819"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktív hibakeresés egy Azure Machine Learning számítási példányon és a VS Code Remote
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a Visual Studio Code Remot
 > [!NOTE]
 > A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
 
-+ Az [Azure Machine learning számítási példány](/azure/machine-learning/service/concept-compute-instance) egy teljes körűen felügyelt felhőalapú munkaállomás az adatszakértők számára, és felügyeleti és vállalati készültségi képességeket biztosít a rendszergazdák számára. 
++ Az [Azure Machine learning számítási példány](concept-compute-instance.md) egy teljes körűen felügyelt felhőalapú munkaállomás az adatszakértők számára, és felügyeleti és vállalati készültségi képességeket biztosít a rendszergazdák számára. 
 
 
 + [Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) A fejlesztés lehetővé teszi, hogy egy tárolót, távoli gépet vagy a Linux (WSL) Windows alrendszerét teljes funkcionalitású fejlesztői környezetként használja. 
@@ -117,4 +117,4 @@ Innentől kezdve teljes mértékben dolgozik a számítási példányon, és mos
 
 Most, hogy beállította a Visual Studio Code Remote-t, a Visual Studio Code-ból távoli számításként használhat számítási példányt a kód interaktív hibakereséséhez. 
 
-[Oktatóanyag: az első ml-modell betanítása](/azure/machine-learning/service/tutorial-1st-experiment-sdk-train) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.
+[Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

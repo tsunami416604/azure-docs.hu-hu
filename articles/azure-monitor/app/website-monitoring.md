@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 3b909f1cb65ae2b355451def53410c32ae482167
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 54bd12db9a85cf237d6c22ad63e6f20f7d2b713a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872961"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770220"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
@@ -23,7 +23,7 @@ Ez a rövid útmutató végigvezeti Önt a [nyílt forráskódú Application Ins
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 - Rendelkeznie kell Azure-előfizetéssel.
 
@@ -47,10 +47,10 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
     | Beállítások        | Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
+   | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a  **Create** (Létrehozás) gombra.
+2. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="create-an-html-file"></a>HTML-fájl létrehozása
 
@@ -79,7 +79,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 2. Adja hozzá az alábbi szkriptet a ``hello_world.html`` fájlhoz a záró ``</head>`` címke előtt:
 
    ```javascript
-    <script type="text/javascript">
+   <script type="text/javascript">
       var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
       {
          instrumentationKey:"INSTRUMENTATION_KEY"
@@ -96,7 +96,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (ahol a kialakítási kulcsot is megjelenítette) a jelenleg futó alkalmazás részleteinek megtekintéséhez. Az áttekintő oldal négy alapértelmezett diagramjának hatóköre a kiszolgálóoldali alkalmazásadatokra van beállítva. Mivel az ügyfél-/böngészőoldali interakció kialakítását végezzük a JavaScript SDK-val, ez az adott nézet most nem releváns, hacsak nincs egy kiszolgálóoldali SDK is telepítve.
 
-2. Kattintson az ![Alkalmazástérkép ikon](media/website-monitoring/006.png) **Analytics** elemre.  Megnyílik az **Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Az ügyféloldali böngészőkérésekkel kapcsolatos adatok megtekintéséhez futtassa az alábbi lekérdezést:
+2. Kattintson ![alkalmazás-Térkép ikon](media/website-monitoring/006.png) **Analytics**elemre.  Megnyílik az **Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Az ügyféloldali böngészőkérésekkel kapcsolatos adatok megtekintéséhez futtassa az alábbi lekérdezést:
 
     ```kusto
     // average pageView duration by name
@@ -132,6 +132,9 @@ A webhelyek monitorozásával kapcsolatos speciális konfigurációkról a [Java
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha azonban nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
+
+> [!NOTE]
+> Ha meglévő erőforráscsoportot használt, az alábbi utasítások nem fognak működni, és csak törölni kell az egyéni Application Insights erőforrást. Ne feledje, hogy bármikor törli az erőforráscsoportot az összes olyan underyling-erőforrást, amely tagja a csoportnak.
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.

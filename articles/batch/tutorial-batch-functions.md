@@ -1,6 +1,6 @@
 ---
-title: Eseményindító Batch-feladat, Azure Functions használatával
-description: Oktatóanyag – OCR vonatkozik beolvasott dokumentumokat, a rendszer hozzáadja azt egy storage-blobba
+title: Batch-feladatok elindítása Azure Functions használatával
+description: Oktatóanyag – OCR alkalmazása a beolvasott dokumentumokra a tárolási blobba való felvételük során
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -11,109 +11,109 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: d5a5197227ff62ca0c610e2c4e269480690d3faf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 99b9a8cac1342f30fcd70f8e938ba6d3dcb90aef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342063"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770152"
 ---
-# <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Oktatóanyag: Eseményindító Batch-feladat, Azure Functions használatával
+# <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Oktatóanyag: batch-feladatok elindítása Azure Functions használatával
 
-Ebben az oktatóanyagban elsajátíthatja a Batch-feladat az Azure Functions szolgáltatással való lesz. Végigvesszük egy példa, amelyben egy Azure Storage blob-tárolóba felvett dokumentumok rendelkezik optikai karakterfelismerés (OCR) alkalmaz, az Azure Batch-n keresztül. Az optikai Karakterfelismerés feldolgozási egyszerűsítésére, konfigurálunk, egy Azure-függvényt, amely a Batch OCR feladatot futtat minden alkalommal, amikor egy fájlt adnak hozzá a blob-tároló.
+Ebből az oktatóanyagból megtudhatja, hogyan indíthat el egy batch-feladatot a Azure Functions használatával. Megmutatjuk, hogy az Azure Storage blob-tárolóhoz hozzáadott dokumentumok milyen optikai karakterfelismeréssel (OCR) vannak alkalmazva a Azure Batchon keresztül. Az OCR-feldolgozás egyszerűsítése érdekében egy batch OCR-feladatot futtató Azure-függvényt állítunk be, amikor egy fájlt hozzáadnak a blob-tárolóhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-* Egy Azure Batch-fiók és egy társított Azure Storage-fiók. Lásd: [Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) hogyan hozhat létre és -fiók összekapcsolása további tájékoztatást.
+* Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásával és összekapcsolásával kapcsolatos további információkért tekintse meg [a Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) című témakört.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Hozzon létre egy Batch-készlet és a Batch-feladat a Batch Explorer használata
+## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Batch-készlet és batch-feladatok létrehozása a Batch Explorer használatával
 
-Ebben a szakaszban való hozza létre a Batch-készlet és a kötegelt feldolgozás OCR-feladatokat a Batch Explorer használni kívánt. 
+Ebben a szakaszban a Batch Explorer használatával hozza létre a Batch-készletet és a Batch-feladatot, amely OCR-feladatokat fog futtatni. 
 
 ### <a name="create-a-pool"></a>Készlet létrehozása
 
-1. Jelentkezzen be hitelesítő adataival az Azure Batch Explorer.
-1. Hozzon létre egy készlet kiválasztásával **készletek** a bal oldali sávon, majd a **Hozzáadás** gomb fölött a keresési képernyőn. 
-    1. Válasszon egy Azonosítót, és megjelenítendő nevét. Fogjuk használni `ocr-pool` ebben a példában.
-    1. A méretezési csoport típusa **rögzített méretű**, és állítsa be a dedikált csomópontok száma 3.
-    1. Válassza ki **Ubuntu 18.04-LTS** operációs rendszerként.
-    1. Válasszon `Standard_f2s_v2` , a virtuális gép méretét.
-    1. Az indítási tevékenység engedélyezze és adja hozzá a a parancs `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`. Meg kell adni a felhasználó identitását, **feladat alapértelmezett felhasználó (rendszergazdai)** , amely lehetővé teszi, hogy a parancsok használata tartalmazza az indítási tevékenységeket `sudo`.
+1. Jelentkezzen be Batch Explorer Azure-beli hitelesítő adataival.
+1. Hozzon létre egy készletet a bal oldali sávban található **készletek** kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
+    1. Válassza ki az azonosítót és a megjelenítendő nevet. Ezt a példát `ocr-pool` fogjuk használni.
+    1. Állítsa a skálázási típust **rögzített méretre**, és állítsa a dedikált csomópontok száma értéket 3 értékre.
+    1. Válassza az **Ubuntu 18,04-LTS** operációs rendszert.
+    1. A virtuális gép méreteként válassza a `Standard_f2s_v2` lehetőséget.
+    1. Engedélyezze az indítási feladatot, és adja hozzá a `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`parancsot. Ügyeljen arra, hogy a felhasználói identitást a **feladat alapértelmezett felhasználója (rendszergazda)** értékre állítsa be, amely lehetővé teszi, hogy a feladatok elindításához a `sudo`parancsokat tartalmazzon.
     1. Kattintson az **OK** gombra.
 ### <a name="create-a-job"></a>Feladat létrehozása
 
-1. Hozzon létre egy feladatot a készleten kiválasztásával **feladatok** a bal oldali sávon, majd a **Hozzáadás** gomb fölött a keresési képernyőn. 
-    1. Válasszon egy Azonosítót, és megjelenítendő nevét. Fogjuk használni `ocr-job` ebben a példában.
-    1. Állítsa a készlet `ocr-pool`, vagy bármi nevét, a készlet számára is választott.
+1. Hozzon létre egy feladatot a készleten a bal oldali sávban a **feladatok** elem kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
+    1. Válassza ki az azonosítót és a megjelenítendő nevet. Ezt a példát `ocr-job` fogjuk használni.
+    1. Állítsa a készletet `ocr-pool`re, vagy bármilyen nevet, amelyet a készlethez választott.
     1. Kattintson az **OK** gombra.
 
 
-## <a name="create-blob-containers"></a>Blob tárolók létrehozása
+## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
 
-Ide fog létrehozni, amely tárolja a bemeneti és kimeneti fájlok a OCR kötegelt blob-tárolók.
+Itt olyan blob-tárolókat hoz létre, amelyek a bemeneti és kimeneti fájljait fogják tárolni az OCR batch-feladathoz.
 
-1. Jelentkezzen be hitelesítő adataival az Azure Storage Explorerben.
-1. A Batch-fiókhoz társított tárfiókba használatával hozzon létre két blob-tárolók (egy bemeneti fájlokhoz, egyet a kimeneti fájlokat) a következő témakörben talál [hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container).
+1. Jelentkezzen be Storage Explorer Azure-beli hitelesítő adataival.
+1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)című témakör lépéseit követve.
 
-Ebben a példában a bemeneti tárolóba nevű `input` , és ahol minden dokumentum nélkül OCR kezdetben feltöltött feldolgozásra. A kimeneti tárolóhoz nevű `output` , és ahol a a kötegelt feldolgozás OCR-rel feldolgozott dokumentumok ír.  
-    * Ebben a példában a bemeneti tárolóba Felhívjuk `input`, és a kimeneti tárolóhoz `output`.  
-    * A bemeneti tárolóba, ahol minden dokumentumok nélkül OCR kezdetben feltöltésekor.  
-    * A kimeneti tárolóhoz, ahol a Batch-feladat írja a dokumentumok OCR-rel.  
+Ebben a példában a bemeneti tároló neve `input`, és az a hely, ahol az OCR nélküli összes dokumentumot fel kell tölteni a feldolgozásba. A kimeneti tároló neve `output`, és az a hely, ahol a Batch-feladatok a feldolgozott dokumentumokat az OCR-sel együtt írja.  
+    * Ebben a példában meghívjuk a bemeneti tárolót `input`és a kimeneti tárolót `output`.  
+    * A bemeneti tároló az OCR nélküli összes dokumentum feltöltése.  
+    * A kimeneti tároló, ahol a Batch-feladatok a dokumentumokat OCR-sel írja.  
 
-A kimeneti tároló közös hozzáférésű jogosultságkód létrehozása a Storage Explorerben. Ehhez kattintson a jobb gombbal a a kimeneti tárolóhoz, majd válasszon **közös hozzáférésű Jogosultságkód beolvasása...** . A **engedélyek**, ellenőrizze **írási**. Nincsenek más engedélyek szükségesek.  
+Hozzon létre egy közös hozzáférési aláírást a kimeneti tárolóhoz Storage Explorerban. Ehhez kattintson a jobb gombbal a kimeneti tárolóra, és válassza a **közös hozzáférésű aláírás beolvasása..** . lehetőséget. Az **engedélyek**alatt keresse meg az **írást**. Nincs szükség további engedélyekre.  
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ebben a szakaszban az Azure-függvény, amely elindítja a OCR kötegelt, amikor a bemeneti tárolóba bekerül egy fájl fog létrehozni.
+Ebben a szakaszban létrehoz egy Azure-függvényt, amely elindítja az OCR batch-feladatot, valahányszor feltölt egy fájlt a bemeneti tárolóba.
 
-1. Kövesse a [Azure blobtároló által aktivált függvény létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) függvény létrehozásához.
-    1. Ha a rendszer kéri egy tárfiók, használja ugyanazt a tárfiókot a Batch-fiókhoz csatolva.
-    1. A **futtatókörnyezeti verem**, válassza ki a .NET. A függvény azt fog írni C# kihasználhatja a Batch .NET SDK-t.
-1. A blob által aktivált függvény létrehozása után használja a [ `run.csx` ](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) és [ `function.proj` ](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) a Githubról a függvényben.
-    * `run.csx` a bemeneti blob-tárolóba új blob hozzáadásakor futtatja.
-    * `function.proj` a külső kódtárak a függvénykódban, például a Batch .NET SDK sorolja fel.
-1. Módosítsa a változókat a helyőrző értékét az `Run()` funkcióját a `run.csx` fájlt, hogy a Batch- és storage hitelesítő adatait. Az Azure Portalon találhatja meg a Batch- és tárolási fiók hitelesítő adatait a **kulcsok** szakaszában a Batch-fiókhoz.
-    * Beolvasni a Batch- és tárolási fiók hitelesítő adatait az Azure Portalon, a **kulcsok** szakaszában a Batch-fiókhoz. 
+1. A függvények létrehozásához kövesse az [Azure Blob Storage által aktivált függvény létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) című témakör lépéseit.
+    1. Amikor a rendszer a Storage-fiókra kéri, használja ugyanazt a Storage-fiókot, amelyet a Batch-fiókjához társított.
+    1. A **futásidejű verem**esetében válassza a .net elemet. A függvény beírásával kihasználhatja a Batch .NET SDK- C# t.
+1. A blob által aktivált függvény létrehozása után a függvényben használja a GitHubon lévő [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) és [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) .
+    * a `run.csx` akkor fut le, amikor új blobot adnak hozzá a bemeneti blob-tárolóhoz.
+    * `function.proj` listázza a függvény kódjában található külső kódtárakat, például a Batch .NET SDK-t.
+1. Módosítsa a változók helyőrző értékét a `run.csx` fájl `Run()` függvényében, hogy az tükrözze a Batch és a Storage hitelesítő adatait. A Batch-és Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portaljában találja.
+    * Kérje le a Batch-és a Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portal. 
 
-## <a name="trigger-the-function-and-retrieve-results"></a>Aktiválja a függvényt, és az eredmények lekérése
+## <a name="trigger-the-function-and-retrieve-results"></a>A függvény elindítása és az eredmények beolvasása
 
-Töltse fel a vizsgált fájlok egy részének vagy egészének a [ `input_files` ](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) könyvtárat a Githubon a bemeneti tárolóba. Ellenőrizze, hogy egy feladat hozzáadása a Batch Explorer figyelése `ocr-pool` fájl esetében. Néhány másodperc elteltével a alkalmazni OCR-rel fájl kerül a kimeneti tárolóhoz. A fájl nem majd látható és a Storage Explorer lekérhető.
+Töltse fel a beolvasott fájlok bármelyikét vagy mindegyikét a GitHubon lévő [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) könyvtárából a bemeneti tárolóba. Figyelje a Batch Explorer annak ellenőrzéséhez, hogy a feladat minden fájlhoz hozzá lesz-e adva `ocr-pool`hoz. Néhány másodperc elteltével a rendszer hozzáadja az OCR-t alkalmazó fájlt a kimeneti tárolóhoz. A fájl ezután látható és beolvasható Storage Explorer.
 
-Emellett megtekinthet a naplók fájl alján, az Azure Functions Webalkalmazás-szerkesztő ablakban Itt láthatja az alábbihoz hasonló üzenetek minden fájlhoz a bemeneti tárolóba feltöltött:
+Emellett megtekintheti a naplófájlokat a Azure Functions Webszerkesztő ablakának alján, ahol a bemeneti tárolóba feltöltött összes fájlhoz hasonló üzenet jelenik meg:
 
 ```
 2019-05-29T19:45:25.846 [Information] Creating job...
 2019-05-29T19:45:25.847 [Information] Accessing input container <inputContainer>...
 2019-05-29T19:45:25.847 [Information] Adding <fileName> as a resource file...
-2019-06-21T20:02:35.129 [Information] Name of output text file: <outputTxtFile>
-2019-06-21T20:02:35.130 [Information] Name of output PDF file: <outputPdfFile>
+2019-05-29T19:45:25.848 [Information] Name of output text file: <outputTxtFile>
+2019-05-29T19:45:25.848 [Information] Name of output PDF file: <outputPdfFile>
 2019-05-29T19:45:26.200 [Information] Adding OCR task <taskID> for <fileName> <size of fileName>...
 ```
 
-A kimeneti fájlok letöltése a Storage Explorer a helyi gépre, először válassza ki a kívánt fájlokat, majd válassza ki a **letöltése** a felső szalagon. 
+A kimeneti fájlok Storage Explorerról a helyi gépre való letöltéséhez először jelölje ki a kívánt fájlokat, majd válassza ki a **letöltést** a felső menüszalagon. 
 
 > [!TIP]
-> A letöltött fájlok kereshető akkor, ha a PDF-olvasó megnyitása.
+> A letöltött fájlok kereshetők, ha PDF-olvasóban vannak megnyitva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta a következőket: 
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket: 
 
 > [!div class="checklist"]
-> * Készletek és feladatok létrehozásához Batch Explorer használatával
-> * Blob-tárolók és a egy közös hozzáférésű jogosultságkód (SAS) létrehozása a Storage Explorer használatával
-> * Egy Azure blob által aktivált függvény létrehozása
+> * Készletek és feladatok létrehozása Batch Explorer használatával
+> * BLOB-tárolók és közös hozzáférésű aláírás (SAS) létrehozásához használja a Storage Explorer
+> * BLOB által aktivált Azure-függvény létrehozása
 > * Bemeneti fájlok feltöltése a Storage-ba
 > * Tevékenységek végrehajtásának figyelése
 > * Kimeneti fájlok lekérése
 
-* .NET API használatával történő ütemezésére és feldolgozására a Batch számítási feladatot további példákért lásd [a mintákat a Githubon](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
+* Ha további példákat szeretne használni a .NET API-t a Batch-munkaterhelések ütemezhetik és dolgozzák fel, tekintse [meg a mintákat a githubon](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* További Azure Functions eseményindítók, amelyek segítségével a Batch számítási feladatok futtatásához, olvassa el [az Azure Functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).
+* A Batch-munkaterhelések futtatására használható Azure Functions-eseményindítók megjelenítéséhez tekintse meg [a Azure functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).

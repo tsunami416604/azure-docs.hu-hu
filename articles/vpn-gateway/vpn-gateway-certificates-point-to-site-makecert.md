@@ -1,88 +1,87 @@
 ---
-title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: A MakeCert: Azure | Microsoft Docs'
-description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyilvános kulcsot, és létrehoz ügyféltanúsítványokat a MakeCert használatával.
+title: 'Azure VPN Gateway: & exportálási tanúsítványok előállítása a P2S: MakeCert'
+description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyilvános kulcsot, és hozzon létre ügyféltanúsítványt a MakeCert használatával.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768106"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833972"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>A MakeCert használatával, pont – hely kapcsolatokhoz a tanúsítványok létrehozása és exportálása
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Tanúsítványok létrehozása és exportálása pont – hely kapcsolatokhoz a MakeCert használatával
 
-Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cikk bemutatja, hogyan hozzon létre egy önaláírt tanúsítványt, és a MakeCert használatával ügyféltanúsítványokat. Ha ugyanazt a tanúsítványt utasításokat keres, tekintse meg [tanúsítványok – PowerShell](vpn-gateway-certificates-point-to-site.md) vagy [tanúsítványok – Linux](vpn-gateway-certificates-point-to-site-linux.md).
+A pont – hely kapcsolatok tanúsítványokat használnak a hitelesítéshez. Ez a cikk bemutatja, hogyan hozhat létre önaláírt főtanúsítványokat, és hogyan hozhat létre ügyféltanúsítványt az MakeCert használatával. Ha más tanúsítványokra vonatkozó utasításokat keres, lásd: [tanúsítványok – PowerShell](vpn-gateway-certificates-point-to-site.md) vagy [tanúsítványok – Linux](vpn-gateway-certificates-point-to-site-linux.md).
 
-Bár javasoljuk a [Windows 10-es PowerShell-lépések](vpn-gateway-certificates-point-to-site.md) a tanúsítványok létrehozásához, egy nem kötelező módszerként kínálunk Makecertre vonatkozó utasítások. A tanúsítványok, létrehozhat módszerek használatával is telepíthető [bármely támogatott ügyfél operációs rendszer](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). Azonban a MakeCert van a következő korlátozást:
+Habár azt javasoljuk, hogy a [Windows 10 PowerShell-lépések](vpn-gateway-certificates-point-to-site.md) használatával hozza létre a tanúsítványokat, a MakeCert utasításait opcionális módszerként adja meg. A bármelyik módszerrel létrehozott tanúsítványok a [támogatott ügyfél operációs rendszerekre](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)telepíthetők. A MakeCert azonban a következő korlátozásokkal rendelkezik:
 
-* MakeCert elavult. Ez azt jelenti, hogy ezt az eszközt bármikor eltávolítása sikerült. Ha már nem érhető el a MakeCert már létrehozott MakeCert használatával tanúsítványokat nem befolyásolja. Létrehozásához a tanúsítványok nem érvényesítésekor mechanizmusként csak használatos a MakeCert.
+* A MakeCert elavult. Ez azt jelenti, hogy ez az eszköz bármikor eltávolítható. Az MakeCert használatával már létrehozott tanúsítványok nem lesznek hatással, ha a MakeCert már nem érhető el. A MakeCert csak tanúsítványok létrehozásához használatos, nem pedig érvényesítő mechanizmusként.
 
-## <a name="rootcert"></a>Hozzon létre egy önaláírt főtanúsítványt.
+## <a name="rootcert"></a>Önaláírt főtanúsítvány létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre egy önaláírt tanúsítványt a MakeCert használatával. Ezeket a lépéseket nem üzemi specifikus el. Akkor érvényesek az erőforrás-kezelő és a klasszikus modellt.
+A következő lépések bemutatják, hogyan hozhat létre önaláírt tanúsítványt a MakeCert használatával. Ezek a lépések nem üzemelő példány-modellre vonatkoznak. Ezek a Resource Manager és a klasszikus esetében egyaránt érvényesek.
 
-1. Töltse le és telepítse [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. A telepítés után általában megtalálható a makecert.exe segédprogramot a elérési úton: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. Bár, lehetséges, hogy egy másik helyre telepítve lett. Nyisson meg egy parancssort rendszergazdaként, és keresse meg a helyet, a MakeCert segédprogram. Használhatja a következő példában a megfelelő hely módosítása:
+1. Töltse le és telepítse a [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
+2. A telepítés után a MakeCert. exe segédprogramot általában a következő elérési úton találja: "C:\Program Files (x86) \Windows Kits\10\bin\<Arch >". Bár lehetséges, hogy egy másik helyre telepítették. Nyisson meg egy parancssort rendszergazdaként, és navigáljon a MakeCert segédprogram helyére. A következő példát használhatja a megfelelő helyhez való igazításhoz:
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64
    ```
-3. Hozzon létre és telepítsen egy tanúsítványt a számítógép személyes tanúsítványtárolójába. Az alábbi példa létrehoz egy megfelelő *.cer* P2S konfigurálásakor az Azure-bA feltöltött fájl. "P2SRootCert" és "p2srootcert.cer nevet" cserélje le a tanúsítványhoz használni kívánt nevét. A tanúsítvány található a "tanúsítványok – aktuális felhasználó\személyes\tanúsítványok".
+3. Hozzon létre és telepítsen egy tanúsítványt a számítógép személyes tanúsítványtárolójában. A következő példa létrehoz egy megfelelő *. cer* fájlt, amelyet az Azure-ba tölt fel a P2S konfigurálásakor. Cserélje le a "P2SRootCert" és a "P2SRootCert. cer" nevet a tanúsítványhoz használni kívánt névre. A tanúsítvány a "tanúsítványok – aktuális User\Personal\Certificates" mappában található.
 
    ```cmd
    makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
    ```
 
-## <a name="cer"></a>Exportálja a nyilvános kulcsot (.cer)
+## <a name="cer"></a>A nyilvános kulcs (. cer) exportálása
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-Az Azure-bA a exported.cer fájlt kell feltölteni. Útmutatásért lásd: [pont – hely kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). További megbízható főtanúsítvány hozzáadásával, lásd: [ebben a szakaszban](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add) a cikk.
+Az exportált. cer fájlt fel kell tölteni az Azure-ba. Útmutatásért lásd: [pont – hely kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). További megbízható legfelső szintű tanúsítvány hozzáadásához tekintse meg a cikk [ezen szakaszát](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add) .
 
-### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>Exportálhatja az önaláírt tanúsítvány és titkos kulcsot tárolni (nem kötelező)
+### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>Az önaláírt tanúsítvány és a titkos kulcs exportálása a tároláshoz (nem kötelező)
 
-Előfordulhat, hogy szeretné önaláírt főtanúsítvány exportálása és tárolja biztonságos helyen. Ha szükséges, később is telepítheti egy másik számítógépen és további ügyféltanúsítványokat, vagy egy másik .cer-fájl exportálása. Önaláírt főtanúsítvány exportálása a .pfx fájlként, válassza ki a legfelső szintű tanúsítványt, és ugyanazokat a lépéseket ismertetett módon kihasználhassák [ügyféltanúsítvány exportálásához](#clientexport).
+Előfordulhat, hogy exportálni szeretné az önaláírt főtanúsítványt, és biztonságosan tárolja. Ha szükséges, később telepítheti egy másik számítógépre, és több ügyféltanúsítványt is létrehozhat, vagy exportálhat egy másik. cer fájlt. Az önaláírt főtanúsítvány. pfx néven való exportálásához jelölje ki a főtanúsítványt, és használja az [ügyféltanúsítvány exportálása](#clientexport)című témakörben leírt lépéseket.
 
-## <a name="create-and-install-client-certificates"></a>Hozzon létre, és az ügyféltanúsítványok telepítése
+## <a name="create-and-install-client-certificates"></a>Ügyféltanúsítványok létrehozása és telepítése
 
-Az önaláírt tanúsítvány nem telepít közvetlenül az ügyfélszámítógépen. Létre kell hoznia egy ügyfél-tanúsítványt az önaláírt tanúsítvány. Majd exportálja és az az ügyféltanúsítvány telepítése az ügyfélszámítógépre. A következő lépéseket nem üzemi specifikus el. Akkor érvényesek az erőforrás-kezelő és a klasszikus modellt.
+Az önaláírt tanúsítványt nem telepíti közvetlenül az ügyfélszámítógépen. Az önaláírt tanúsítványból kell létrehoznia egy ügyféltanúsítványt. Ezután exportálja és telepíti az ügyféltanúsítványt az ügyfélszámítógépre. A következő lépések nem üzemelő példány – modell specifikusak. Ezek a Resource Manager és a klasszikus esetében egyaránt érvényesek.
 
-### <a name="clientcert"></a>Ügyfél-tanúsítvány létrehozása
+### <a name="clientcert"></a>Ügyféltanúsítvány létrehozása
 
-Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyfélszámítógépnek rendelkeznie kell telepített ügyféltanúsítvánnyal. Az ügyféltanúsítványokat a önaláírt főtanúsítványból és exportálni, és telepítheti az ügyféltanúsítványt. Ha az ügyféltanúsítvány nincs telepítve, a hitelesítés meghiúsul. 
+Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyfélszámítógépnek rendelkeznie kell telepített ügyféltanúsítvánnyal. Létrehoz egy ügyféltanúsítványt az önaláírt főtanúsítványból, majd exportálja és telepíti az ügyféltanúsítványt. Ha az ügyféltanúsítvány nincs telepítve, a hitelesítés sikertelen lesz. 
 
-A következő lépések végigvezetik egy önaláírt főtanúsítványból ügyféltanúsítvány hozható létre. Előfordulhat, hogy több ügyféltanúsítványt generálhatnak ugyanazt a legfelső szintű tanúsítványt. Az alábbi lépéseket követve ügyféltanúsítványok generál, amikor az ügyfél-tanúsítványt automatikusan települ azon a számítógépen, a tanúsítvány létrehozásához használt. Ha telepíthet ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne, exportálhatja a tanúsítványt.
+Az alábbi lépések végigvezetik az ügyféltanúsítvány önaláírt főtanúsítványból történő létrehozásán. Több ügyféltanúsítványt is létrehozhat ugyanahhoz a főtanúsítványhoz. Ha az alábbi lépésekkel állít elő ügyféltanúsítványt, az ügyféltanúsítvány automatikusan települ arra a számítógépre, amelyet a tanúsítvány létrehozásához használt. Ha egy másik ügyfélszámítógépen szeretné telepíteni az ügyféltanúsítványt, exportálhatja a tanúsítványt.
  
-1. Ugyanazon a számítógépen, amelyet az önaláírt tanúsítvány létrehozásához használt nyisson meg egy parancssort rendszergazdaként.
-2. Módosíthatja, és futtassa a mintát az ügyféltanúsítványokat.
-   * Változás *"P2SRootCert"* az önaláírt főtanúsítványok meg az ügyféltanúsítványt a létrehozó nevére. Ellenőrizze, hogy a legfelső szintű tanúsítvány, amely bármilyen nevét használja a "CN =" érték volt, amikor létrehozta az önaláírt főtanúsítványok megadott.
-   * Változás *P2SChildCert* kell ügyféltanúsítvány létrehozásához használni kívánt nevet.
+1. Az önaláírt tanúsítvány létrehozásához használt számítógépen nyisson meg egy parancssort rendszergazdaként.
+2. Módosítsa és futtassa a mintát egy ügyféltanúsítvány létrehozásához.
+   * Módosítsa a *"P2SRootCert"* elemet annak az önaláírt gyökérnek a nevére, amelyről az ügyféltanúsítványt létrehozza. Győződjön meg arról, hogy a főtanúsítvány nevét használja, azaz a "CN =" értéket, amelyet az önaláírt gyökér létrehozásakor adott meg.
+   * Módosítsa a *P2SChildCert* arra a névre, amelyhez ügyféltanúsítványt szeretne készíteni.
 
-   Ha az alábbi példa azt módosítása nélkül futtatja, ez nevű P2SChildcert a személyes tanúsítványtárolójában P2SRootCert főtanúsítványból létrehozott ügyféltanúsítvány.
+   Ha a következő példát a módosítás nélkül futtatja, az eredmény egy P2SChildcert nevű ügyféltanúsítvány, amelyet a rendszer a főtanúsítvány P2SRootCert generált a személyes tanúsítványtárolóban.
 
    ```cmd
    makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
    ```
 
-### <a name="clientexport"></a>Ügyféltanúsítvány exportálásához
+### <a name="clientexport"></a>Ügyféltanúsítvány exportálása
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
 
-### <a name="install"></a>Az exportált ügyféltanúsítvány telepítése
+### <a name="install"></a>Exportált ügyféltanúsítvány telepítése
 
-Ügyféltanúsítvány telepítése: [telepíthet ügyféltanúsítványt](point-to-site-how-to-vpn-client-install-azure-cert.md).
+Az ügyféltanúsítvány telepítéséhez tekintse meg az [ügyféltanúsítvány telepítése](point-to-site-how-to-vpn-client-install-azure-cert.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A pont – hely konfiguráció folytatásához. 
+Folytassa a pont – hely konfigurációval. 
 
-* A **Resource Manager** üzembe helyezési modell lépéseiért lásd: [P2S konfigurálása Azure natív tanúsítványalapú hitelesítésének használatával](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
-* A **klasszikus** üzembe helyezési modell lépéseiért lásd: [(klasszikus) virtuális hálózathoz pont – hely VPN-kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* A **Resource Manager** -alapú üzemi modell lépéseivel kapcsolatban lásd: [P2S konfigurálása natív Azure tanúsítványalapú hitelesítés használatával](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+* A **klasszikus** üzemi modell lépéseivel kapcsolatban lásd: [pont – hely VPN-kapcsolat konfigurálása VNet (klasszikus)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
 A pont–hely hibaelhárítási információiért tekintse át az [Azure pont–hely kapcsolatok hibaelhárításával](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) foglalkozó cikket.
