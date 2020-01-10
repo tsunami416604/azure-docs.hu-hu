@@ -5,7 +5,7 @@
   items:
     - name: Mi az az Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Spring Cloud-alkalmazás indítása a portál használatával
@@ -34,6 +34,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: Alkalmazás kötése az Azure MySQL-hez
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Alkalmazások üzembe helyezése az Azure Spring Cloudban a Jenkins és az Azure parancssori felületének használatával
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: Alapelvek
   items:
     - name: Az Azure Spring Cloud-kvóták és -korlátok ismertetése

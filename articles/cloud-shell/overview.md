@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449002"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832479"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>A Azure Cloud Shell áttekintése
 A Azure Cloud Shell egy interaktív, hitelesített, böngészővel elérhető rendszerhéj az Azure-erőforrások kezeléséhez.
@@ -40,11 +40,14 @@ A Cloud Shell lehetővé teszi az Azure felügyeleti feladatokkal létrehozott, 
 Kihasználhatja a Cloud Shellt, hogy a helyi gépekről csak a felhő által biztosított munkafolyamatok legyenek lekötve.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Az előnyben részesített rendszerhéj-élmény kiválasztása
-A felhasználók a rendszerhéj legördülő menüjéből választhatnak a bash vagy a PowerShell közül.
+A felhasználók a bash vagy a PowerShell közül választhatnak.
+1. Válassza a **Cloud Shell**lehetőséget.
 
-![Bash Cloud Shell](media/overview/overview-bash-pic.png)
+    ![Cloud Shell ikon](media/overview/overview-cloudshell-icon.png)
 
-![PowerShell a Cloud Shellben](media/overview/overview-ps-pic.png)
+2. Válassza a **bash** vagy a **PowerShell**lehetőséget.
+
+    ![Válassza a bash vagy a PowerShell lehetőséget.](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Hitelesített és konfigurált Azure munkaállomás
 A Cloud Shell a Microsoft felügyeli, ezért népszerű parancssori eszközöket és nyelvi támogatást nyújt. Az Azure CLI-n vagy Azure PowerShell-parancsmagokon keresztül a Cloud Shell automatikusan biztonságosan hitelesíti az erőforrásokhoz való azonnali hozzáférést.

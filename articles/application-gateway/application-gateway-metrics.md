@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551386"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777818"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -36,7 +36,7 @@ A kérelem és válasz időzítésével kapcsolatos következő mérőszámok é
 
   A kérelem feldolgozásának és a válasz elküldésekor elvégezhető átlagos idő. Ez az időszak átlaga, amikor a Application Gateway megkapja egy HTTP-kérelem első bájtját, amikor a válasz küldése művelet befejeződik. Fontos megjegyezni, hogy ez általában a Application Gateway feldolgozási időt, az időpontot, amikor a kérés és a válasz csomagjai a hálózaton keresztül utaznak, valamint a háttér-kiszolgáló válaszának időpontját.
   
-Ha az *ügyfél RTT* sokkal több, mint az *Application Gateway teljes ideje*, akkor a rendszer következtetni tud arra, hogy az ügyfél által megfigyelt késés az ügyfél és a Application Gateway közötti hálózati kapcsolat miatt van. Ha a késések is összehasonlíthatóak, akkor a nagy késés oka a következők egyike lehet: Application Gateway, a Application Gateway és a háttérrendszer-alkalmazás közötti hálózat, vagy a háttérrendszer-alkalmazás teljesítménye.
+Ha a figyelő alapján szűrést végez, ha az *ügyfél RTT* sokkal több, mint az *Application Gateway teljes ideje*, akkor a lekövetkeztethető, hogy az ügyfél által megfigyelt késés az ügyfél és a Application Gateway közötti hálózati kapcsolat miatt van. Ha a késések is összehasonlíthatóak, akkor a nagy késés oka a következők egyike lehet: Application Gateway, a Application Gateway és a háttérrendszer-alkalmazás közötti hálózat, vagy a háttérrendszer-alkalmazás teljesítménye.
 
 - **Háttérbeli első bájt válaszideje**
 

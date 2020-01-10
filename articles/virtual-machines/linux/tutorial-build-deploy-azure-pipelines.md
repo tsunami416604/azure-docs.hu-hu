@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: c9d8ec2ce78746352b1fc5d2f337ad8686213839
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
-ms.translationtype: HT
+ms.openlocfilehash: 0318b73dfb8fed05432dd25b5784e1c890815c53
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75662366"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778515"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -148,20 +148,20 @@ Válassza ki az **alapszintű** sablont, és másolja az alábbi YAML-kódrészl
 
 ```YAML
 - job: Build
-    displayName: Build Maven Project
-    steps:
-    - task: Maven@3
-      displayName: 'Maven Package'
-      inputs:
-        mavenPomFile: 'pom.xml'
-    - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/target/*.?(war|jar)'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
-    - upload: $(Build.ArtifactStagingDirectory)
-      artifact: drop
+  displayName: Build Maven Project
+  steps:
+  - task: Maven@3
+    displayName: 'Maven Package'
+    inputs:
+      mavenPomFile: 'pom.xml'
+  - task: CopyFiles@2
+    displayName: 'Copy Files to artifact staging directory'
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)'
+      Contents: '**/target/*.?(war|jar)'
+      TargetFolder: $(Build.ArtifactStagingDirectory)
+  - upload: $(Build.ArtifactStagingDirectory)
+    artifact: drop
 ```
 
 További útmutatásért kövesse a [Java-alkalmazás létrehozása a mavenrel](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)című témakörben leírt lépéseket.
@@ -213,13 +213,13 @@ További útmutatásért kövesse a [Node. js-alkalmazás felépítése a Nyelő
 
    ```YAML
    jobs:  
-     - deployment: VMDeploy
-       displayName: web
-       environment:
-         name:  <environment name>
-         resourceType: VirtualMachine
-         tags: web1
-       strategy:
+   - deployment: VMDeploy
+     displayName: web
+     environment:
+       name:  <environment name>
+       resourceType: VirtualMachine
+       tags: web1
+     strategy:
    ```
 2. A környezetből kiválaszthatja a virtuális gépek meghatározott készleteit, hogy a központi telepítést a környezetben minden egyes virtuális géphez definiált **címkék** megadásával kapja meg.
 [Itt](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
@@ -256,7 +256,7 @@ További útmutatásért kövesse a [Node. js-alkalmazás felépítése a Nyelő
        resourceType: VirtualMachine
      strategy:
          rolling:
-           maxParallel: 2  #for percentages, mention as x%
+           maxParallel: 5  #for percentages, mention as x%
            preDeploy:
              steps:
              - download: current
@@ -298,3 +298,7 @@ A környezet üzembe helyezési nézete biztosítja a véglegesítés és a munk
 ## <a name="next-steps"></a>Következő lépések
 - Folytathatja az imént létrehozott [folyamat testreszabását](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline) .
 - Ha szeretné megtudni, hogy mit tehet a YAML-folyamatokban, tekintse meg a [YAML-séma referenciáját](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema).
+- Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.
+
+> [!div class="nextstepaction"]
+> [LAMP stack telepítése](tutorial-lamp-stack.md)

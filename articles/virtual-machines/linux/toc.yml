@@ -41,11 +41,11 @@
       href: tutorial-monitor.md
     - name: 13 – Virtuális gépek biztonságának kezelése
       href: tutorial-azure-security.md
-    - name: 14 – A Jenkins üzembe helyezése
+    - name: 14a – Buildelés a Jenkins használatával
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15a – Üzembe helyezés az Azure Pipelines használatával
+    - name: 14b – Üzembe helyezés az Azure Pipelines használatával (klasszikus)
       href: tutorial-build-deploy-jenkins.md
-    - name: 15b – CI/CD az Azure Pipelines használatával
+    - name: 15 – CI/CD az Azure Pipelines használatával (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a – LAMP-verem létrehozása
       href: tutorial-lamp-stack.md

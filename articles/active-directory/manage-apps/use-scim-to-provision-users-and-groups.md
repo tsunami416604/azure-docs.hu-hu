@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433810"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829867"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása Azure Active Directory (Azure AD) segítségével
 
@@ -62,15 +62,16 @@ Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat
 | Azure Active Directory felhasználó | "urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user" |
 | --- | --- |
 | IsSoftDeleted |aktív |
+|Részleg|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|
 | displayName |displayName |
+|Alkalmazottkód|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|
 | Fax – TelephoneNumber |phoneNumbers [type EQ "fax"]. Value |
 | givenName |név. givenName |
 | Beosztás |title |
 | e-mail |e-mailek [type EQ "work"]. Value |
 | mailNickname |externalId |
-| manager |manager |
+| manager |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager |
 | mobil |phoneNumbers [type EQ "Mobile"]. Value |
-| objectId |ID (Azonosító) |
 | Irányítószám |címek [type EQ "work"]. irányítószám |
 | proxy – címek |e-mailek [type EQ "other"]. Érték |
 | fizikai kézbesítés – OfficeName |címek [type EQ "other"]. Formázott |
@@ -79,15 +80,16 @@ Vegye figyelembe, hogy nem kell támogatnia a felhasználókat és a csoportokat
 | telefonszám |phoneNumbers [type EQ "work"]. Value |
 | felhasználó – egyszerű név |userName (Felhasználónév) |
 
+
 ### <a name="table-2-default-group-attribute-mapping"></a>2\. táblázat: az alapértelmezett Group attribútum leképezése
 
 | Azure Active Directory csoport | urn: IETF: params: scim: sémák: Core: 2.0: Group |
 | --- | --- |
-| displayName |externalId |
+| displayName |displayName |
 | e-mail |e-mailek [type EQ "work"]. Value |
 | mailNickname |displayName |
 | tagok |tagok |
-| objectId |ID (Azonosító) |
+| objectId |externalId |
 | proxyAddresses |e-mailek [type EQ "other"]. Érték |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>2\. lépés: az Azure AD SCIM implementációjának ismertetése

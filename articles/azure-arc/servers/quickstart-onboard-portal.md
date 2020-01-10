@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26c79db956b2703bf037fc6f7790d4ee13874410
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668681"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834251"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>Gyors útmutató: számítógépek összekötése az Azure-ban az Azure arc for Servers használatával – portál
 
@@ -88,7 +88,7 @@ A gépek Azure arc-kiszolgálókról történő leválasztásához két lépést
    sudo apt purge hybridagent
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szabályzat társítása csatlakoztatott gépekhez](../../governance/policy/assign-policy-portal.md)

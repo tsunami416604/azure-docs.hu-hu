@@ -4,7 +4,7 @@
   items:
     - name: A Jenkins az Azure-on
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Jenkins-kiszolgáló létrehozása
@@ -24,6 +24,10 @@
           href: jenkins-azure-vm-agents.md
     - name: 3. CI/CD implementálása
       items:
+        - name: Azure Spring Cloud
+          items:
+            - name: Üzembe helyezés az Azure Spring Cloudban az Azure parancssori felületének használatával
+              href: tutorial-jenkins-deploy-cli-spring-cloud-service.md
         - name: AKS
           items:
             - name: CI/CD–Kubernetes

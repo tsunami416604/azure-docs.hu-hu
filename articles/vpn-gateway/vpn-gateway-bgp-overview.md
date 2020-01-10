@@ -1,5 +1,5 @@
 ---
-title: A BGP és az Azure VPN Gateway-átjárók áttekintése | Microsoft Docs
+title: 'BGP és Azure VPN Gateway: áttekintés'
 description: Ez a cikk bemutatja, hogyan használható a BGP az Azure VPN Gateway megoldással együtt.
 services: vpn-gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: e85eb756e416f1170a0cb2b19ab68888b5a9422f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516442"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779775"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>A BGP és az Azure VPN Gateway
 Ez a cikk az Azure VPN Gateway BGP (Border Gateway Protocol) támogatásának áttekintését tartalmazza.
@@ -47,6 +47,6 @@ A következő ábra egy olyan, több elérési úttal rendelkező, többugrásos
 ## <a name="faq"></a>BGP – GYAKORI KÉRDÉSEK
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A BGP helyek és virtuális hálózatok közötti kapcsolathoz történő konfigurálásának lépéseit [A BGP használatának első lépései Azure VPN-átjárókon](vpn-gateway-bgp-resource-manager-ps.md) című részben tekintheti meg.
 

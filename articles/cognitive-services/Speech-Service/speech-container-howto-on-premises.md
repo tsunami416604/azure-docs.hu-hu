@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7874a6b274939c233dd1c4e6d146df2a9a409e65
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816506"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833985"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>A Speech Service-tárolók használata a Kubernetes és a Helm használatával
 
@@ -48,20 +48,20 @@ A gazdaszámítógépnek várhatóan rendelkezésre áll egy Kubernetes-fürt. E
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-hitelesítő adatok megosztása a Kubernetes-fürttel
 
-Annak engedélyezéséhez, hogy a Kubernetes-fürt `docker pull` a konfigurált rendszerkép (ek) et a `mcr.microsoft.com` Container registryből, át kell vinnie a Docker hitelesítő adatait a fürtbe. Az alábbi [`kubectl create`][kubectl-create] -parancs végrehajtásával hozzon létre egy *Docker-beállításjegyzékbeli titkot* a tároló beállításjegyzék-hozzáférésének előfeltétele alapján megadott hitelesítő adatok alapján.
+Annak engedélyezéséhez, hogy a Kubernetes-fürt `docker pull` a konfigurált rendszerkép (ek) et a `containerpreview.azurecr.io` Container registryből, át kell vinnie a Docker hitelesítő adatait a fürtbe. Az alábbi [`kubectl create`][kubectl-create] -parancs végrehajtásával hozzon létre egy *Docker-beállításjegyzékbeli titkot* a tároló beállításjegyzék-hozzáférésének előfeltétele alapján megadott hitelesítő adatok alapján.
 
 A választható parancssori felületen futtassa a következő parancsot. A tároló beállításjegyzékbeli hitelesítő adataival ne felejtse el lecserélni a `<username>`, `<password>`és `<email-address>`.
 
 ```console
 kubectl create secret docker-registry mcr \
-    --docker-server=mcr.microsoft.com \
+    --docker-server=containerpreview.azurecr.io \
     --docker-username=<username> \
     --docker-password=<password> \
     --docker-email=<email-address>
 ```
 
 > [!NOTE]
-> Ha már rendelkezik hozzáféréssel a `mcr.microsoft.com` Container registryhez, létrehozhat egy Kubernetes-titkot az általános jelző használatával. Vegye figyelembe a következő parancsot, amely a Docker-konfiguráció JSON-fájlján fut.
+> Ha már rendelkezik hozzáféréssel a `containerpreview.azurecr.io` Container registryhez, létrehozhat egy Kubernetes-titkot az általános jelző használatával. Vegye figyelembe a következő parancsot, amely a Docker-konfiguráció JSON-fájlján fut.
 > ```console
 >  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -106,8 +106,8 @@ speechToText:
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: mcr.microsoft.com
-    repository: azure-cognitive-services/speech-to-text
+    registry: containerpreview.azurecr.io
+    repository: microsoft/cognitive-services-speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -122,8 +122,8 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: mcr.microsoft.com
-    repository: azure-cognitive-services/text-to-speech
+    registry: containerpreview.azurecr.io
+    repository: microsoft/cognitive-services-text-to-speech
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -138,21 +138,20 @@ textToSpeech:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>A Kubernetes-csomag (Helm-diagram)
 
-A *Helm diagram* tartalmazza azt a konfigurációt, amely alapján a Docker-rendszerképek lehívhatók a `mcr.microsoft.com` tároló beállításjegyzékből.
+A *Helm diagram* tartalmazza azt a konfigurációt, amely alapján a Docker-rendszerképek lehívhatók a `containerpreview.azurecr.io` tároló beállításjegyzékből.
 
 > A [Helm diagram][helm-charts] a Kubernetes-erőforrások kapcsolódó készletét leíró fájlok gyűjteménye. Egy diagramot felhasználhat egy egyszerű, például egy Memcached vagy egy összetett Pod üzembe helyezésére, például egy teljes webalkalmazás-verem használatára HTTP-kiszolgálók, adatbázisok, gyorsítótárak és így tovább.
 
-A megadott *Helm-diagramok* lekérik a beszédfelismerési szolgáltatás Docker-rendszerképeit, a szöveges és a beszédfelismerési szolgáltatásokat, valamint a `mcr.microsoft.com` tároló beállításjegyzékének beszéd-szöveges szolgáltatásait.
+A megadott *Helm-diagramok* lekérik a beszédfelismerési szolgáltatás Docker-rendszerképeit, a szöveges és a beszédfelismerési szolgáltatásokat, valamint a `containerpreview.azurecr.io` tároló beállításjegyzékének beszéd-szöveges szolgáltatásait.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>A Helm diagram telepítése a Kubernetes-fürtön
 
 A *Helm diagram* telepítéséhez végre kell hajtania a [`helm install`][helm-install-cmd] parancsot, és a megfelelő elérési úttal és fájlnév argumentummal kell lecserélnie a `<config-values.yaml>`. Az alább hivatkozott `microsoft/cognitive-services-speech-onpremise` Helm-diagram itt érhető el a [Microsoft Helm hub][ms-helm-hub-speech-chart]-ban.
 
 ```console
-helm install microsoft/cognitive-services-speech-onpremise \
+helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
     --version 0.1.1 \
-    --values <config-values.yaml> \
-    --name onprem-speech
+    --values <config-values.yaml> 
 ```
 
 Az alábbi példa egy olyan kimenetet mutat be, amely sikeres telepítés után várható:

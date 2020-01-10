@@ -130,6 +130,10 @@
       href: /rest/api/virtual-desktop/
     - name: Támogatott RDP-fájlbeállítások
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+    - name: Hálózati útmutató
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+    - name: Útmutató a virtuális gépek méretezéséhez
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: További források
   items:
     - name: Élménybecslő

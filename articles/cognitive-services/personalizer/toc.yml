@@ -66,6 +66,8 @@
     - name: Személyre szabó létrehozása és konfigurálása
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: A tanulási szabályzat kezelése
+      href: how-to-learning-policy.md
     - name: Elemzés
       items:
         - name: Offline értékelés

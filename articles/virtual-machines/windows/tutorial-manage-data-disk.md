@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 7c68299e4df187b1e9006d9ee1f2f70a13df3c52
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 05ad0b95b106b56d92cdbc5a7acd23cc34de7ae4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064784"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780266"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 
@@ -50,7 +50,7 @@ Egy Azure-beli virtuális gép létrehozásakor a rendszer két lemezt automatik
 
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
 
-További adatlemezeket adhat hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához négy adatlemez csatolható.
+További adatlemezeket adhat hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez.
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 
@@ -144,7 +144,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>Az adatlemez ellenőrzése
 
-Annak ellenőrzéséhez, hogy az adatlemez csatlakozik-e, tekintse meg a csatlakoztatott `StorageProfile` `DataDisks` profilját.
+Annak ellenőrzéséhez, hogy az adatlemez csatlakozik-e, tekintse meg a csatlakoztatott `DataDisks``StorageProfile` profilját.
 
 ```azurepowershell-interactive
 $vm.StorageProfile.DataDisks
@@ -163,7 +163,7 @@ VirtualHardDisk :
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a virtuálisgép-lemezekkel kapcsolatos témakörökkel ismerkedett meg, például:
 

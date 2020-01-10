@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatásszintek NetApp Azure-fájlok |} A Microsoft Docs
-description: Ismerteti a szolgáltatási szintekhez Azure NetApp fájlok teljesítménye szempontjából.
+title: Azure NetApp Files szolgáltatási szintjei | Microsoft Docs
+description: A Azure NetApp Files szolgáltatási szintjeinek teljesítménybeli teljesítményét ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,50 +12,51 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f9c427045c9d42f6a11cc4bcc798cfc47a4428c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523103"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832583"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Az Azure NetApp Files szolgáltatásszintjei
-Szolgáltatási szintekhez olyan attribútum, amely a kapacitás-készletben. Szolgáltatási szintek és határozza meg az engedélyezett maximális átviteli sebesség egy kötet a kapacitás-készlet, amely a kötethez hozzárendelt kvóta alapján különbözteti meg.
+A szolgáltatási szint a kapacitási készlet egyik attribútuma. A szolgáltatási szinteket a rendszer a kötethez hozzárendelt kvóta alapján határozza meg, és megkülönbözteti a kapacitások megengedett maximális átviteli sebességét.
 
 ## <a name="supported-service-levels"></a>Támogatott szolgáltatási szintek
 
-NetApp Azure Files három szolgáltatási szintet támogat: *Ultranagy*, *prémium*, és *Standard*. 
+A Azure NetApp Files három szolgáltatási szintet támogat: *Ultra*, *Premium*és *standard*. 
 
-* <a name="Ultra"></a>Ultranagy storage
+* <a name="Ultra"></a>Ultra Storage
 
-    Az Ultranagy tárolási szintet biztosít akár 128 MiB/s sebességet hozzárendelt köteten kvóta 1 Tib-ra. 
+    Az ultra Storage-szinten legfeljebb 128 MiB/s átviteli sebesség adható meg a hozzárendelt mennyiségi kvóta alapján 1 TiB-onként. 
 
-* <a name="Premium"></a>A Premium storage
+* <a name="Premium"></a>Prémium szintű Storage
 
-    A prémium szintű storage akár 64 MiB/s sebességet hozzárendelt köteten kvóta 1 TiB biztosít. 
+    A Premium Storage-szint legfeljebb 64 MiB/s átviteli sebességet biztosít a hozzárendelt mennyiségi kvóta alapján 1 TiB-onként. 
 
-* <a name="Standard"></a>Standard szintű storage
+* <a name="Standard"></a>Standard szintű Storage
 
-    A standard szintű tárolási réteget biztosít, akár 16 MiB/s sebességet hozzárendelt köteten kvóta 1 Tib-ra.
+    A standard szintű tárolási szint legfeljebb 16 MiB/s adatátviteli sebességet biztosít a hozzárendelt mennyiségi kvóta alapján 1 TiB-onként.
 
-## <a name="throughput-limits"></a>Teljesítmény korlátok
+## <a name="throughput-limits"></a>Átviteli korlátok
 
-Az átviteli sebességhatár egy kötet a következő tényezőket kombinációja határozza meg:
-* A kapacitás-készlet, amely a kötet tartozik a szolgáltatási szint
-* A kötethez hozzárendelt kvóta  
+A kötetek átviteli sebességének korlátját a következő tényezők kombinációja határozza meg:
+* Azon kapacitási készlet szolgáltatási szintje, amelyhez a kötet tartozik
+* A kötethez rendelt kvóta  
 
-A koncepciót az alábbi ábrán:
+Ezt a koncepciót az alábbi ábra szemlélteti:
 
-![Szolgáltatás szintű ábra](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
+![Szolgáltatási szint illusztrációja](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-A fenti példa 1, a prémium szintű storage hozzárendelt kvóta 2 Tib-ra a kapacitás-készletből egy kötet hozzá lesz rendelve egy 128 MiB/s átviteli Sebességhatár (2 Tib-ra * 64 MiB/s). Ebben a forgatókönyvben a kapacitás a készlet méretét vagy a kötet tényleges fogyasztás függetlenül érvényes.
+A fenti 1. példában egy, a prémium szintű Storage-szinttel rendelkező, 2 TiB-t hozzárendelő kapacitási készletből származó kötethez 128 MiB/s (2 TiB * 64 MiB/s) átviteli korlát lesz hozzárendelve. Ez a forgatókönyv a kapacitási készlet méretétől vagy a tényleges mennyiségi felhasználástól függetlenül érvényes.
 
-A fenti példában 2, a kötet kapacitása készletből a prémium szintű storage hozzárendelt kvóta 100 GB-hozzá lesz rendelve egy 6.25 MiB/s átviteli Sebességhatár (0.09765625 TiB * 64 MiB/s). Ebben a forgatókönyvben a kapacitás a készlet méretét vagy a kötet tényleges fogyasztás függetlenül érvényes.
+A fenti 2. példában egy olyan kötetet, amely egy, a prémium szintű Storage-szinthez hozzárendelt, 100 GiB-as csomaggal rendelkező kapacitási készletből áll, 6,25 MiB/s (0,09765625 TiB * 64 MiB/s) átviteli korlátot kap. Ez a forgatókönyv a kapacitási készlet méretétől vagy a tényleges mennyiségi felhasználástól függetlenül érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a [Azure NetApp fájlok díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/netapp/) az ár különböző szolgáltatási szintek
-- Lásd: [Azure NetApp fájlok költségmodell](azure-netapp-files-cost-model.md) a kapacitás felhasználását, a kapacitás készlet kiszámítása 
+- A különböző szolgáltatási szintek árának [Azure NetApp Files díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/netapp/) talál.
+- A kapacitás felhasználásának számítási kapacitásának kiszámításához tekintse meg [Azure NetApp Files a Cost modelljét](azure-netapp-files-cost-model.md) 
 - [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
+- [Azure NetApp Files szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)

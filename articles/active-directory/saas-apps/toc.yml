@@ -1315,6 +1315,8 @@
           href: springerlink-tutorial.md
         - name: Sprinklr
           href: sprinklr-tutorial.md
+        - name: 'SSOGEN Azure AD SSO-átjáró az Oracle E Business Suite EBS-hez, a PeopleSofthoz és a JDE-hez'
+          href: ssogen-tutorial.md
         - name: StatusPage
           href: statuspage-tutorial.md
         - name: Stormboard

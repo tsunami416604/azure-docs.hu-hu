@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: Alapelvek
   items:
-    - name: A TLS 1.2 kényszerítése
+    - name: TLS-támogatás
+      href: iot-hub-tls.md
+    - name: Megszűnik a TLS 1.0 és 1.1 támogatása
       href: tls-1.2-everywhere.md
     - name: Az üzenetbővítések áttekintése
       href: iot-hub-message-enrichments-overview.md

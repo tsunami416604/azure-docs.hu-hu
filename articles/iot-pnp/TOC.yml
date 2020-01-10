@@ -71,8 +71,12 @@
       href: howto-develop-solution.md
 - name: Referencia
   items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: Digital Twin
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+    - name: Digital Twin szolgáltatás
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+    - name: Digital Twin modelladattár
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
     - name: REST biztonsági jogkivonat létrehozása
       href: howto-generate-sas-token.md
 - name: Kapcsolódó témakörök

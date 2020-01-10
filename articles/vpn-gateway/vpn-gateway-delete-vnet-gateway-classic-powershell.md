@@ -1,28 +1,21 @@
 ---
-title: 'Virtuális hálózati átjáró törlése: PowerShell: Klasszikus Azure portál |} A Microsoft Docs'
-description: PowerShell-lel a klasszikus üzemi modellben virtuális hálózati átjáró törlése.
+title: 'Virtuális hálózati átjáró törlése: klasszikus Azure'
+description: Virtuális hálózati átjáró törlése a PowerShell használatával a klasszikus üzembehelyezési modellben.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 0ff8e42cecb705e57ce85c92e84a0ad9b78929a5
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60863980"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778498"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell (klasszikus) használatával virtuális hálózati átjáró törlése
+# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Virtuális hálózati átjáró törlése a PowerShell (klasszikus) használatával
 
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -30,15 +23,15 @@ ms.locfileid: "60863980"
 > * [Klasszikus – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 
-Ez a cikk segít a klasszikus üzemi modellben a VPN gateway törlése a PowerShell használatával. Miután a virtuális hálózati átjáró törölve lett, módosítsa a hálózati konfigurációs fájlt, amely már nem használt elemek eltávolítása.
+Ez a cikk segítséget nyújt a VPN-átjárók törlésében a klasszikus üzemi modellben a PowerShell használatával. A virtuális hálózati átjáró törlése után módosítsa a hálózati konfigurációs fájlt a már nem használt elemek eltávolításához.
 
-## <a name="connect"></a>1. lépés: Csatlakozás az Azure szolgáltatáshoz
+## <a name="connect"></a>1. lépés: Kapcsolódás az Azure-hoz
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Telepítse a legújabb PowerShell-parancsmagokat.
 
-Töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+Töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagok legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
 
-### <a name="2-connect-to-your-azure-account"></a>2. Csatlakozás az Azure-fiókjával. 
+### <a name="2-connect-to-your-azure-account"></a>2. kapcsolódjon az Azure-fiókhoz. 
 
 Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
@@ -46,9 +39,9 @@ Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzo
 Add-AzureAccount
 ```
 
-## <a name="export"></a>2. lépés: Exportálás, és megtekintheti a hálózati konfigurációs fájlt
+## <a name="export"></a>2. lépés: a hálózati konfigurációs fájl exportálása és megtekintése
 
-Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ez a fájl mindkét nézetben a jelenlegi konfigurációs adatokat és a hálózati konfiguráció módosításához használhatja.
+Hozzon létre egy könyvtárat a számítógépén, majd exportálja a hálózati konfigurációs fájlt a könyvtárba. Ezt a fájlt a jelenlegi konfigurációs információk megtekintésére, valamint a hálózati konfiguráció módosítására is használhatja.
 
 Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre exportálja.
 
@@ -56,31 +49,31 @@ Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre expo
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Nyissa meg a fájlt egy szövegszerkesztőben, és tekintse meg a nevet a klasszikus virtuális hálózat számára. Az Azure Portalon hoz létre egy virtuális hálózathoz, amikor a teljes Azure használó név nem látható a portálon. Virtuális hálózat neve "ClassicVNet1" az Azure Portalon megjelenő például rendelkezhet egy sokkal hosszabb nevet a hálózat konfigurációs fájljában. Neve a következőhöz hasonló: 'Csoport ClassicRG1 ClassicVNet1'. Virtuális hálózat nevei jelennek meg **"VirtualNetworkSite name ="** . A hálózati konfigurációs fájlt a neveket használja, ha futtatja a PowerShell-parancsmagokat.
+Nyissa meg a fájlt egy szövegszerkesztővel, és tekintse meg a klasszikus VNet nevét. Amikor VNet hoz létre a Azure Portalban, az Azure által használt teljes név nem látható a portálon. Például egy "ClassicVNet1" nevű VNet a Azure Portalban, a hálózati konfigurációs fájlban sokkal több nevet kaphat. A név a következőhöz hasonló lehet: "Group ClassicRG1 ClassicVNet1". A virtuális hálózatok nevei **"VirtualNetworkSite Name ="** néven szerepelnek. A PowerShell-parancsmagok futtatásakor használja a hálózati konfigurációs fájl nevét.
 
-## <a name="delete"></a>3. lépés: A virtuális hálózati átjáró törlése
+## <a name="delete"></a>3. lépés: a virtuális hálózati átjáró törlése
 
-Ha töröl egy virtuális hálózati átjárót, a virtuális hálózathoz, az átjárón keresztüli összes kapcsolat megszakadt a kapcsolat. Ha a virtuális hálózathoz kapcsolódó P2S-ügyfelekhez, akkor le lesz választva figyelmeztetés nélkül.
+Ha töröl egy virtuális hálózati átjárót, a rendszer az átjárón keresztül az VNet létesített összes kapcsolatot leválasztja. Ha P2S-ügyfelek csatlakoznak a VNet, figyelmeztetés nélkül le lesznek választva.
 
-Ebben a példában a virtuális hálózati átjáró törlése. Ellenőrizze, hogy a virtuális hálózat teljes nevét használja a hálózati konfigurációs fájlból.
+Ez a példa törli a virtuális hálózati átjárót. Győződjön meg arról, hogy a virtuális hálózat teljes nevét használja a hálózati konfigurációs fájlból.
 
 ```powershell
 Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 ```
 
-Ha sikeres, a visszatérési jeleníti meg:
+Ha a művelet sikeres, a visszatérés a következőket mutatja:
 
 ```
 Status : Successful
 ```
 
-## <a name="modify"></a>4. lépés: A hálózati konfigurációs fájl módosítása
+## <a name="modify"></a>4. lépés: a hálózati konfigurációs fájl módosítása
 
-Ha töröl egy virtuális hálózati átjárót, a parancsmag nem módosítja a hálózati konfigurációs fájlt. Módosítania kell a fájlt, és távolítsa el az elemeket, amely már nem használ. Az alábbi szakaszok segítségével módosítsa a hálózati konfigurációs fájlt, ahonnan letöltötte.
+Ha töröl egy virtuális hálózati átjárót, a parancsmag nem módosítja a hálózati konfigurációs fájlt. A már nem használt elemek eltávolításához módosítania kell a fájlt. A következő fejezetek segítséget nyújtanak a letöltött hálózati konfigurációs fájl módosításához.
 
-### <a name="lnsref"></a>Helyi hálózati telephelyekre való hivatkozások
+### <a name="lnsref"></a>Helyi hálózati telephelyek hivatkozásai
 
-Távolítsa el a hely kapcsolódó információk, győződjön meg arról, konfigurációs módosítások **ConnectionsToLocalNetwork/LocalNetworkSiteRef**. A helyi hely referencia eseményindítók törölni egy alagutat az Azure eltávolítása. Az Ön által létrehozott konfigurációtól függően lehet, hogy nincs egy **LocalNetworkSiteRef** szerepel.
+A hely hivatkozási adatainak eltávolításához végezze el a konfigurációs módosításokat a **ConnectionsToLocalNetwork/LocalNetworkSiteRef**. A helyi hely hivatkozásának eltávolítása elindítja az Azure-t egy alagút törléséhez. A létrehozott konfigurációtól függően előfordulhat, hogy nem rendelkezik a felsorolt **LocalNetworkSiteRef** .
 
 ```
 <Gateway>
@@ -103,7 +96,7 @@ Példa:
 
 ### <a name="lns"></a>Helyi hálózati helyek
 
-Távolítsa el minden olyan helyek, amely már nem használ. A létrehozott konfigurációtól függően lehetséges, hogy nem rendelkezik az egy **LocalNetworkSite** szerepel.
+Távolítson el minden olyan helyi helyet, amelyet már nem használ. A létrehozott konfigurációtól függően előfordulhat, hogy nem rendelkezik a felsorolt **LocalNetworkSite** .
 
 ```
 <LocalNetworkSites>
@@ -122,7 +115,7 @@ Távolítsa el minden olyan helyek, amely már nem használ. A létrehozott konf
  </LocalNetworkSites>
 ```
 
-Ebben a példában csak Site3 eltávolítottuk.
+Ebben a példában csak a Site3 távolítjuk el.
 
 ```
 <LocalNetworkSites>
@@ -135,9 +128,9 @@ Ebben a példában csak Site3 eltávolítottuk.
  </LocalNetworkSites>
 ```
 
-### <a name="clientaddresss"></a>Ügyfél címkészlete
+### <a name="clientaddresss"></a>Ügyfél-címkészlete
 
-Ha a P2S-kapcsolat a virtuális hálózathoz, hogy egy **VPNClientAddressPool**. Távolítsa el az ügyfél-címkészleteket, amelyek megfelelnek a virtuális hálózati átjárót, amelyet törölt.
+Ha P2S-kapcsolatban állt a VNet, egy **címtérről**fog rendelkezni. Távolítsa el a törölt virtuális hálózati átjárónak megfelelő ügyféloldali címkészlet-készleteket.
 
 ```
 <Gateway>
@@ -158,7 +151,7 @@ Példa:
 
 ### <a name="gwsub"></a>GatewaySubnet
 
-Törölje a **GatewaySubnet** , amely megfelel a virtuális hálózathoz.
+Törölje a VNet megfelelő **GatewaySubnet** .
 
 ```
 <Subnets>
@@ -181,15 +174,15 @@ Példa:
  </Subnets>
 ```
 
-## <a name="upload"></a>5. lépés: A hálózati konfigurációs fájl feltöltése
+## <a name="upload"></a>5. lépés: a hálózati konfigurációs fájl feltöltése
 
-Mentse a módosításokat, és töltse fel a hálózati konfigurációs fájlt az Azure-bA. Ellenőrizze, hogy a fájl elérési útját a környezetben szükség szerint módosíthatja.
+Mentse a módosításokat, és töltse fel a hálózati konfigurációs fájlt az Azure-ba. Győződjön meg arról, hogy a környezetéhez szükség van a fájl elérési útjának módosítására.
 
 ```powershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
-Ha ez sikeres, a visszatérési valami hasonló ebben a példában látható:
+Ha a művelet sikeres, a visszatérés az alábbi példához hasonló módon jelenik meg:
 
 ```
 OperationDescription        OperationId                      OperationStatus                                                

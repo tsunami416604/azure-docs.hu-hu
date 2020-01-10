@@ -1,74 +1,66 @@
 ---
-title: Mac OS X-ügyfelek az Azure pont – hely VPN-kapcsolatok hibaelhárítása |} A Microsoft Docs
-description: P2S Mac OS X VPN kapcsolatok hibaelhárítása
+title: 'Azure VPN Gateway: pont – hely kapcsolatok hibakeresése: Mac OS X-ügyfelek'
+description: A P2S hibaelhárításának lépései Mac OS X VPN-ügyfélkapcsolatok
 services: vpn-gateway
-documentationcenter: na
 author: anzaman
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457082"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780181"
 ---
-# <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>A Mac OS X VPN-ügyfelek a pont – hely VPN-kapcsolatok hibaelhárítása
+# <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Pont – hely típusú VPN-kapcsolatok hibakeresése Mac OS X VPN-ügyfelektől
 
-Ez a cikk segít a Mac OS X használata a natív VPN-ügyfél és az IKEv2 pont – hely kapcsolati problémák elhárításához. A VPN-ügyfél a Mac rendszerben az IKEv2 protokollhoz nagyon egyszerű, és nem teszi lehetővé a sok testreszabáshoz. Nincsenek ellenőrizendő csak négy beállítások:
+Ez a cikk segítséget nyújt a Mac OS X pont – hely kapcsolati problémák hibaelhárításához a natív VPN-ügyfél és a IKEv2 használatával. A IKEv2 Mac rendszerű VPN-ügyfele nagyon alapszintű, és nem teszi lehetővé a sok testreszabást. Csak négy beállítást kell ellenőrizni:
 
 * Kiszolgáló címe
-* Távoli azonosítója
-* Helyi azonosítója
+* Távoli azonosító
+* Helyi azonosító
 * Hitelesítési beállítások
-* Operációsrendszer-verzió (10.11 vagy újabb)
+* Operációs rendszer verziója (10,11 vagy újabb)
 
 
-## <a name="VPNClient"></a> Hibaelhárítás – Tanúsítványalapú hitelesítés
-1. Ellenőrizze a VPN-ügyfél beállításait. Nyissa meg a **hálózati beállítás** paranccsal + Shift, és a ellenőrizze a VPN-ügyfél beállításait, majd írja be a "VPN" billentyű lenyomásával. A listából kattintson a VPN-bejegyzés, meg kell vizsgálni.
+## <a name="VPNClient"></a>Tanúsítványalapú hitelesítés – problémamegoldás
+1. Keresse meg a VPN-ügyfél beállításait. Nyissa meg a **hálózati beállítást** a Command + Shift billentyűkombináció lenyomásával, majd írja be a "VPN" parancsot a VPN-ügyfél beállításainak ellenőrzéséhez. A listából válassza ki a vizsgálni kívánt VPN-bejegyzést.
 
-   ![Az IKEv2-alapú hitelesítés](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
-2. Ellenőrizze, hogy a **kiszolgálócím** teljes Tartománynevét, és a cloudapp.net tartalmaz.
-3. A **távoli azonosítója** ugyanaz, mint a kiszolgáló címe (átjáró FQDN) kell lennie.
-4. A **helyi azonosítója** legyen ugyanaz, mint a **tulajdonos** az ügyféltanúsítvány.
-5. Kattintson a **hitelesítési beállítások** nyissa meg a hitelesítési beállításokat.
+   ![IKEv2 tanúsítvány alapú hitelesítés](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
+2. Ellenőrizze, hogy a **kiszolgáló címe** a teljes FQDN, és tartalmazza-e a cloudapp.net.
+3. A **távoli azonosítónak** meg kell egyeznie a kiszolgáló címeként (az ÁTJÁRÓ teljes tartományneve).
+4. A **helyi azonosítónak** meg kell egyeznie az ügyféltanúsítvány **tárgyával** .
+5. Kattintson a **hitelesítési beállítások** elemre a hitelesítési beállítások lap megnyitásához.
 
    ![Hitelesítési beállítások](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
-6. Ellenőrizze, hogy **tanúsítvány** kiválasztott elemet a legördülő listából.
-7. Kattintson a **kiválasztása** gombra, és győződjön meg arról, hogy a megfelelő tanúsítvány van kiválasztva. Kattintson a **OK** menteni a módosításokat.
+6. Ellenőrizze, hogy a **tanúsítvány** ki van-e választva a legördülő listából.
+7. Kattintson a **kiválasztás** gombra, és ellenőrizze, hogy a megfelelő tanúsítvány van-e kiválasztva. A módosítások mentéséhez kattintson **az OK** gombra.
 
-## <a name="ikev2"></a>Felhasználónév- és jelszóalapú hitelesítés hibaelhárítása
+## <a name="ikev2"></a>Felhasználónév és jelszó hitelesítésének hibakeresése
 
-1. Ellenőrizze a VPN-ügyfél beállításait. Nyissa meg a **hálózati beállítás** paranccsal + Shift, és a ellenőrizze a VPN-ügyfél beállításait, majd írja be a "VPN" billentyű lenyomásával. A listából kattintson a VPN-bejegyzés, meg kell vizsgálni.
+1. Keresse meg a VPN-ügyfél beállításait. Nyissa meg a **hálózati beállítást** a Command + Shift billentyűkombináció lenyomásával, majd írja be a "VPN" parancsot a VPN-ügyfél beállításainak ellenőrzéséhez. A listából válassza ki a vizsgálni kívánt VPN-bejegyzést.
 
-   ![Az IKEv2 felhasználónév-jelszó](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2user3.jpg)
-2. Ellenőrizze, hogy a **kiszolgálócím** teljes Tartománynevét, és a cloudapp.net tartalmaz.
-3. A **távoli azonosítója** ugyanaz, mint a kiszolgáló címe (átjáró FQDN) kell lennie.
-4. A **helyi azonosítója** maradhat üresen.
-5. Kattintson a **hitelesítési beállítást** gombra, és győződjön meg arról, hogy a "Felhasználónév" van kiválasztva a legördülő listából.
+   ![IKEv2 Felhasználónév jelszava](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2user3.jpg)
+2. Ellenőrizze, hogy a **kiszolgáló címe** a teljes FQDN, és tartalmazza-e a cloudapp.net.
+3. A **távoli azonosítónak** meg kell egyeznie a kiszolgáló címeként (az ÁTJÁRÓ teljes tartományneve).
+4. A **helyi azonosító** üres is lehet.
+5. Kattintson a **hitelesítési beállítások** gombra, és ellenőrizze, hogy a "username" lehetőség ki van-e választva a legördülő listából.
 
    ![Hitelesítési beállítások](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.jpg)
-6. Győződjön meg arról, hogy a helyes hitelesítő adatok vannak megadva.
+6. Ellenőrizze, hogy a helyes hitelesítő adatok meg vannak-e adva.
 
 ## <a name="additional"></a>További lépések
 
-Ha, próbálja ki az előző lépést, és mindent megfelelően van konfigurálva, töltse le a [Wireshark](https://www.wireshark.org/#download) és végezzen csomagrögzítés.
+Ha kipróbálja az előző lépéseket, és minden megfelelően van konfigurálva, töltse le a [Wireshark](https://www.wireshark.org/#download) , és hajtson végre egy csomagot.
 
-1. Szűrés *isakmp* tekintse meg a **IKE_SA** csomagokat. Tekintse meg az SA-javaslat részletei alapján elvileg a **hasznos: Biztonsági társítás**. 
-2. Ellenőrizze, hogy az ügyfél és a kiszolgáló rendelkezik-e a közös.
+1. Szűrje az *ISAKMP* -t, és tekintse meg a **IKE_SA** csomagokat. Tekintse meg az SA-javaslat részleteit a **hasznos adatok: biztonsági társítás**lehetőség alatt. 
+2. Ellenőrizze, hogy az ügyfél és a kiszolgáló közös készlettel rendelkezik-e.
 
-   ![csomag](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
+   ![Csomag](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
-3. Ha nem érkezik válasz server, az a hálózati nyomkövetés, ellenőrizze a engedélyezte az IKEv2 protokollt, az Azure Portal webhelyen az Azure-átjáró konfigurációs lapján.
+3. Ha nincs kiszolgálói válasz a hálózati nyomkövetéseken, ellenőrizze, hogy engedélyezve van-e a IKEv2 protokoll az Azure Portal webhely Azure Gateway Configuration (Azure Gateway) konfigurációja lapján.
 
-## <a name="next-steps"></a>További lépések
-További segítségért lásd: [Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+## <a name="next-steps"></a>Következő lépések
+További segítségért lásd: [Microsoft ügyfélszolgálata](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

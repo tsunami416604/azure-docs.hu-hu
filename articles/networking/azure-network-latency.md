@@ -5,14 +5,14 @@ services: networking
 author: nayak-mahesh
 ms.service: virtual-network
 ms.topic: article
-ms.date: 12/04/2019
+ms.date: 01/08/2020
 ms.author: mnayak
-ms.openlocfilehash: 3947df81b67d5aefc1b628b6ddaf8275152a4cd3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 91b528cc6900a3ec91ff7189f58f941226b8acd5
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893085"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779722"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure-alapú hálózati időszeletelési késések statisztikája
 
@@ -22,17 +22,11 @@ Az Azure folyamatosan figyeli a hálózat alapvető területeinek késését (se
 
 A késési mérések gyűjtése a ThousandEyes-ügynököktől történik, amelyek világszerte Azure Cloud-régiókban futnak, amelyek folyamatosan küldenek hálózati mintavételt egymás között 1 percenként. A havi késési statisztikát a havi begyűjtött minták átlaga alapján kell származtatni.
 
-## <a name="november-2019-latency-figures"></a>November 2019 késési számok
+## <a name="december-2019-latency-figures"></a>December 2019 késési számok
 
-**Novemberi frissítés:** 3 régió lett hozzáadva.
+Az Azure-régiók közötti, az elmúlt 30 napban (2019. december 31-én végződő) havi átlagos menettérti időpontok alább láthatók. A [ThousandEyes](https://thousandeyes.com)a következő méréseket látja el.
 
-* Norvégia keleti régiója
-* Norvégia nyugati régiója
-* Ausztrália
-
-Az Azure-régiók közötti, az elmúlt 30 napban (2019. november 30-án végződő) havi átlagos menettérti időpontok alább láthatók. A [ThousandEyes](https://thousandeyes.com)a következő méréseket látja el.
-
-![Az Azure régiók közötti késési statisztikái](media/azure-network-latency/latency-nov-2019.png)
+[![Azure régiók közötti késések statisztikája](media/azure-network-latency/december.jpg)](media/azure-network-latency/december.jpg#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 

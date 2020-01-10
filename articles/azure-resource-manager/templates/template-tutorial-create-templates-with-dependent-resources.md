@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 15c707b5424e84e99e0b1942bb623e6d3845213a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472666"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834364"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása
 
@@ -117,7 +117,7 @@ A sablonok üzembe helyezésének számos módszere van.  Ebben az oktatóanyagb
     ![Fájl feltöltése az Azure Portal Cloud Shell szolgáltatásával](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 1. Válassza ki az oktatóanyag korábbi részében mentett sablont. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.  Ha ilyen néven már létezik fájl, a rendszer értesítés nélkül felülírja a régit.
 
-    Igény szerint az **ls $Home** parancsot és a **Cat $Home/azuredeploy.JSON** parancsot is használhatja annak ellenőrzéséhez, hogy a fájlok feltöltése sikeresen megtörtént-e a areis.
+    Igény szerint az **ls $Home** parancsot és a **Cat $Home/azuredeploy.JSON** parancsot is használhatja annak ellenőrzéséhez, hogy a fájlok feltöltése sikeresen megtörtént-e.
 
 1. Futtassa az alábbi PowerShell-parancsokat a Cloud Shellben. A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
 
@@ -161,7 +161,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott és üzembe helyezett egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
+Ebben az oktatóanyagban létrehozott és üzembe helyezett egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. A telepítési parancsfájlok az üzembe helyezés előtti és utáni műveletek végrehajtásához való használatáról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Feltételek használata](./template-tutorial-use-conditions.md)
+> [Üzembehelyezési parancsfájl használata](./template-tutorial-deployment-script.md)

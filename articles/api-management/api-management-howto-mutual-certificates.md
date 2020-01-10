@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442650"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834341"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>A háttér-szolgáltatások biztonságossá tétele az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management
 
@@ -30,9 +30,12 @@ A tanúsítványok a API Management REST API használatával történő kezelés
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgáltatási példányt az ügyféltanúsítvány-alapú hitelesítés használatára a háttér-szolgáltatás API-hoz való hozzáféréséhez. A cikk lépéseinek követése előtt rendelkeznie kell az ügyféltanúsítvány-alapú hitelesítéshez konfigurált háttér-szolgáltatással ([Az Azure-webhelyeken a tanúsítványalapú hitelesítés konfigurálásához tekintse meg ezt a cikket][to configure certificate authentication in Azure WebSites refer to this article]). Hozzá kell férnie a tanúsítványhoz és a jelszóhoz a API Management szolgáltatásba való feltöltéshez.
+Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgáltatási példányt az ügyféltanúsítvány-alapú hitelesítés használatára a háttér-szolgáltatás API-hoz való hozzáféréséhez. A cikkben ismertetett lépések végrehajtása előtt rendelkeznie kell az ügyféltanúsítvány-alapú hitelesítéshez konfigurált háttér-szolgáltatással (a[tanúsítvány-hitelesítés konfigurálásához a Azure app Service tekintse meg ezt a cikket][to configure certificate authentication in Azure WebSites refer to this article]). Hozzá kell férnie a tanúsítványhoz és a jelszóhoz a API Management szolgáltatásba való feltöltéshez.
 
 ## <a name="step1"> </a>Tanúsítvány feltöltése
+
+> [!NOTE]
+> Feltöltött tanúsítvány helyett használhat a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) szolgáltatásban tárolt tanúsítványt, ahogy az ebben a [példában](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml)is látható.
 
 ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgálta
 
 1. Navigáljon az Azure API Management Service-példányhoz a Azure Portal.
 2. Válassza a **tanúsítványok** lehetőséget a menüből.
-3. Kattintson a **+ Hozzáadás** gombra.  
-    ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Keresse meg a tanúsítványt, adja meg annak AZONOSÍTÓját és jelszavát.  
+3. Kattintson a **+ Hozzáadás** gombra.
+    ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. Keresse meg a tanúsítványt, adja meg annak AZONOSÍTÓját és jelszavát.
 5. Kattintson a **Create** (Létrehozás) gombra.
 
 > [!NOTE]
@@ -65,14 +68,14 @@ Ha a tanúsítványt egy API használja, megjelenik egy figyelmeztető képerny�
 
 ## <a name="step2"> </a>API konfigurálása ügyféltanúsítvány használatára az átjáró-hitelesítéshez
 
-1. Kattintson a bal oldali **API Management** menüjében **az API-** k elemre, és navigáljon az API-hoz.  
+1. Kattintson a bal oldali **API Management** menüjében **az API-** k elemre, és navigáljon az API-hoz.
     Ügyféltanúsítványok engedélyezése ![](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. A **tervezés** lapon kattintson a **háttér** szakasz ceruza ikonjára. 
-3. Módosítsa az **átjáró hitelesítő adatait** az **ügyfél-tanúsítványra** , és válassza ki a tanúsítványt a legördülő listából.  
+2. A **tervezés** lapon kattintson a **háttér** szakasz ceruza ikonjára.
+3. Módosítsa az **átjáró hitelesítő adatait** az **ügyfél-tanúsítványra** , és válassza ki a tanúsítványt a legördülő listából.
     Ügyféltanúsítványok engedélyezése ![](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Kattintson a **Mentés** gombra. 
+4. Kattintson a **Mentés** gombra.
 
 > [!WARNING]
 > Ez a változás azonnal hatályba lép, és az API műveleteinek meghívása a tanúsítványt használja a háttér-kiszolgálón történő hitelesítéshez.

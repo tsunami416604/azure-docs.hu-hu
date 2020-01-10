@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390547"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833895"
 ---
+## <a name="limitations"></a>Korlátozások
+
+- A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
+- A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
+
 ## <a name="benefits"></a>Előnyök 
 
 A teljes gazdagép megőrzése a következő előnyöket biztosítja:
@@ -22,7 +27,6 @@ A teljes gazdagép megőrzése a következő előnyöket biztosítja:
 -   Hardver elkülönítése a fizikai kiszolgáló szintjén. Más virtuális gépek nem lesznek elhelyezve a gazdagépeken. A dedikált gazdagépeket ugyanabban az adatközpontban helyezik üzembe, és ugyanazon a hálózaton és mögöttes tárolási infrastruktúrán osztoznak, mint más, nem elkülönített gazdagépek.
 -   Az Azure platform által kezdeményezett karbantartási események szabályozása. Habár a karbantartási események többsége kevés hatással van a virtuális gépekre, vannak olyan érzékeny munkaterhelések, amelyekben a Szüneteltetés minden egyes másodperce hatással lehet. A dedikált gazdagépekkel a karbantartási időszakra is lehetőség van, hogy csökkentse a szolgáltatásra gyakorolt hatást.
 -   Az Azure Hybrid benefittel saját licenceket hozhat a Windows és az SQL rendszerhez az Azure-ba. A hibrid előnyök használata további előnyöket biztosít. További információ: [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 
 ## <a name="groups-hosts-and-vms"></a>Csoportok, gazdagépek és virtuális gépek  
@@ -62,7 +66,7 @@ Mindkét képességet együtt használva még több hibatűrést érhet el. Ebbe
 
 Az [itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) található Resource Manager-minta sablon zónák és tartalék tartományok használatával terjeszti a gazdagépeket a maximális rugalmasság érdekében egy adott régióban.
 
-## <a name="maintenance-control"></a>Karbantartási ellenőrzés
+## <a name="maintenance-control"></a>Karbantartásszabályozás
 
 A virtuális gépeket támogató infrastruktúra esetenként frissíthető a megbízhatóság, a teljesítmény, a biztonság és az új funkciók megkezdése érdekében. Az Azure platform megpróbálja csökkenteni a platform karbantartásának hatását, amikor csak lehetséges, de a *karbantartási szempontból bizalmas* munkaterheléseket használó ügyfelek még néhány másodpercet sem tudnak elviselni, hogy a virtuális gépet be kell fagyasztani vagy le kell kapcsolni a karbantartáshoz.
 
@@ -99,11 +103,11 @@ További információ: [Azure dedikált gazdagép díjszabása](https://aka.ms/A
 
 Egy gazdagéphez van definiálva SKU, és a virtuális gép mérete adatsorozatot és típust jelöl. A különböző méretű virtuális gépeket egyetlen gazdagépen belül is keverheti, ha azok azonos méretű adatsorozattal rendelkeznek. A típus a jelenleg elérhető hardverek létrehozása a régióban.
 
-Ugyanannak a virtuálisgép-sorozatnak különböző `types` lesz a különböző CPU-szállítóktól, és különböző CPU-generációk és magok száma.
+Ugyanannak a virtuálisgép-sorozatnak különböző `types`ei különböző CPU-szállítóktól származnak, és különböző CPU-generációkkal és magok számával rendelkeznek.
 
 További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
-Az előzetes verzió során a következő gazdagép-SKU\types fogjuk támogatni: DSv3_Type1 és ESv3_Type1
+A dedikált gazdagépek a következő gazdagép-SKU\types támogatják: DSv3_Type1 és ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Gazdagép életciklusa
@@ -115,6 +119,6 @@ Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok 
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |
-| Gazdagép függőben lévő felszabadítása   | Az Azure nem tudja visszaállítani a gazdagépet Kifogástalan állapotba, és megkéri, hogy telepítse újra a virtuális gépeket a gazdagépről. Ha a `autoReplaceOnFailure` engedélyezve van, a virtuális gépek a *szolgáltatás* Kifogástalan állapotba kerültek. Ellenkező esetben előfordulhat, hogy a virtuális gép olyan gazdagépen fut, amely hamarosan sikertelen lesz.|
+| Gazdagép függőben lévő felszabadítása   | Az Azure nem tudja visszaállítani a gazdagépet Kifogástalan állapotba, és megkéri, hogy telepítse újra a virtuális gépeket a gazdagépről. Ha a `autoReplaceOnFailure` engedélyezve van, a virtuális gépek a *szolgáltatás* Kifogástalan állapotba kerülnek. Ellenkező esetben előfordulhat, hogy a virtuális gép olyan gazdagépen fut, amely hamarosan sikertelen lesz.|
 | Gazdagép delefoglalt  | Az összes virtuális gép el lett távolítva a gazdagépről. Ez a gazdagép már nem töltődik fel, mivel a hardver elforgatása nem történt meg.   |
 

@@ -1,35 +1,35 @@
 ---
-title: A zónaredundáns virtuális hálózati átjáró létrehozása az Azure-beli rendelkezésre állási zónák |} A Microsoft Docs
-description: Rendelkezésre állási zónában a VPN-átjáró és ExpressRoute-átjárók üzembe helyezése
+title: Zóna – redundáns virtuális hálózati átjáró létrehozása Azure Availability Zones
+description: VPN Gateway-és ExpressRoute-átjárók üzembe helyezése Availability Zones
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 209c4deec2863de21362ab69a7f1d372921ac147
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 250ced13696d6ec34e7c434b26a2917a3c55e91d
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575563"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834633"
 ---
-# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>A zónaredundáns virtuális hálózati átjáró létrehozása az Azure-beli rendelkezésre állási zónák
+# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Zóna – redundáns virtuális hálózati átjáró létrehozása Azure Availability Zones
 
-Az Azure-beli rendelkezésre állási zónák a VPN és ExpressRoute-átjárók telepítheti. Ekkor a rugalmasság, a méretezhetőség és a magasabb rendelkezésre állás virtuális hálózati átjárók. Egy adott régión belül átjárók telepítése átjárók az Azure-beli rendelkezésre állási zónák fizikailag és logikailag elkülöníti a során a helyszíni hálózati kapcsolatok védelme az Azure-bA a zónaszintű hibák. További információ: [kapcsolatos zónaredundáns virtuális hálózati átjárók](about-zone-redundant-vnet-gateways.md) és [kapcsolatos Azure-beli rendelkezésre állási zónák](../availability-zones/az-overview.md).
+A VPN-és ExpressRoute-átjárók üzembe helyezhetők a Azure Availability Zonesban. Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól. További információ: [a zóna-redundáns virtuális hálózati átjárók](about-zone-redundant-vnet-gateways.md) és [a Azure Availability Zones](../availability-zones/az-overview.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell-lel helyben telepítve a számítógépen, vagy az Azure Cloud Shellt használhatja. Ha helyi telepítése és használata a PowerShell, a funkcióhoz a PowerShell-modul legújabb verzióját.
+A számítógépen vagy a Azure Cloud Shellon helyileg telepített PowerShellt is használhat. Ha a PowerShell helyi telepítése és használata mellett dönt, a szolgáltatás használatához a PowerShell-modul legújabb verziója szükséges.
 
 [!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-### <a name="to-use-powershell-locally"></a>Ha a PowerShell segítségével helyileg
+### <a name="to-use-powershell-locally"></a>A PowerShell helyi használata
 
-Ha a Powershellt használ helyileg a számítógépen, nem pedig a Cloud Shell használata esetén telepítenie kell PowerShell-modul 1.0.0 vagy újabb verziója. PowerShell telepített verziójának ellenőrzéséhez használja a következő parancsot:
+Ha az Cloud Shell használata helyett a PowerShellt helyileg használja a számítógépen, telepítenie kell a PowerShell-modul 1.0.0 vagy újabb verzióját. A telepített PowerShell-verzió ellenőrzését a következő paranccsal végezheti el:
 
 ```azurepowershell
 Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
@@ -39,9 +39,9 @@ Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
-## <a name="variables"></a>1. A változók deklarálása
+## <a name="variables"></a>1. a változók deklarálása
 
-A példa lépései használt értékek az alábbiak. Emellett néhány példája a deklarált változók belül a lépéseket használja. Ha ezeket a lépéseket a saját környezetében használ, mindenképpen ezeket az értékeket a saját értékeire cserélni. Adja meg a helyet, győződjön meg arról, hogy a megadott régióban támogatott. További információkért lásd: a [– gyakori kérdések](#faq).
+A példa lépéseihez használt értékek alább láthatók. Emellett néhány példa deklarált változókat használ a lépéseken belül. Ha ezeket a lépéseket a saját környezetében használja, ne felejtse el ezeket az értékeket saját értékre cserélni. A hely megadásakor ellenőrizze, hogy a megadott régió támogatott-e. További információt a [Gyakori kérdések](#faq)című témakörben talál.
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -59,7 +59,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2. A virtuális hálózat létrehozása
+## <a name="configure"></a>2. a virtuális hálózat létrehozása
 
 Hozzon létre egy erőforráscsoportot.
 
@@ -75,9 +75,9 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3. Az átjáró alhálózatának hozzáadása
+## <a name="gwsub"></a>3. az átjáró alhálózatának hozzáadása
 
-Az átjáróalhálózat tartalmazza a fenntartott IP-címek, amelyek a virtuális hálózati átjáró-szolgáltatások használják. Az alábbi példák segítségével adja hozzá, és állítsa be az átjáró-alhálózat:
+Az átjáró-alhálózat tartalmazza azokat a fenntartott IP-címeket, amelyeket a Virtual Network Gateway Services használ. Az alábbi példákat követve adhat hozzá és állíthat be átjáró-alhálózatot:
 
 Adja hozzá az átjáró alhálózatát.
 
@@ -86,39 +86,39 @@ $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
 ```
 
-Állítsa be a virtuális hálózati átjáró alhálózati konfigurációját.
+Állítsa be a virtuális hálózat átjáró-alhálózatának konfigurációját.
 
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4. Nyilvános IP-cím kérése
+## <a name="publicip"></a>4. nyilvános IP-cím kérése
  
-Ebben a lépésben válassza ki a létrehozni kívánt átjáróhoz érvényes utasításokat. Az átjárók telepítésére zónák a kijelölt a zónák a nyilvános IP-címhez megadott függ.
+Ebben a lépésben válassza ki a létrehozni kívánt átjáróra vonatkozó utasításokat. Az átjárók telepítésére szolgáló zónák kiválasztása a nyilvános IP-címhez megadott zónáktól függ.
 
-### <a name="ipzoneredundant"></a>Az átjárók zónaredundáns
+### <a name="ipzoneredundant"></a>A Zone-redundáns átjárók esetében
 
-Kérjen egy nyilvános IP-címet egy **Standard** Termékváltozat nyilvános IP-címre, és ne adjon meg minden zónában. Ebben az esetben a Standard nyilvános IP-cím létrehozott zónaredundáns nyilvános IP-cím lesz.   
+Igényeljen egy nyilvános IP-címet **standard** PublicIpaddress SKU-val, és ne határozzon meg zónát. Ebben az esetben a létrehozott szabványos nyilvános IP-cím egy zóna-redundáns nyilvános IP-cím lesz.   
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>A zónaszintű átjárók esetében
+### <a name="ipzonalgw"></a>A zóna-átjárók esetében
 
-Kérjen egy nyilvános IP-címet egy **Standard** Termékváltozat nyilvános IP-címre. Adja meg a zóna (1, 2 vagy 3). Ebben a zónában lesz telepítve, az összes átjárópéldányához.
+Igényeljen egy nyilvános IP-címet egy **standard** PublicIpaddress SKU-val. Határozza meg a zónát (1, 2 vagy 3). Ebben a zónában minden átjáró-példány üzembe lesz helyezve.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>Regionális átjárók esetében
+### <a name="ipregionalgw"></a>Regionális átjárók esetén
 
-Kérjen egy nyilvános IP-címet egy **alapszintű** Termékváltozat nyilvános IP-címre. Ebben az esetben az átjáró regionális átjáróként üzemel, és minden zóna-redundanciát építve az átjáró nem rendelkezik. Az átjárópéldányok rendre minden zónában létrejönnek.
+Igényeljen egy nyilvános IP-címet egy **Alapszintű** PublicIpaddress SKU-val. Ebben az esetben az átjáró regionális átjáróként van telepítve, és nincs olyan zónája, amely az átjáróhoz van építve. Az átjáró példányai bármely zónában létrejönnek.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5. Az IP-konfiguráció létrehozása
+## <a name="gwipconfig"></a>5. az IP-konfiguráció létrehozása
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -126,17 +126,17 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $get
 $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>6. Az átjáró létrehozása
+## <a name="gwconfig"></a>6. az átjáró létrehozása
 
-A virtuális hálózati átjáró létrehozásához.
+Hozza létre a virtuális hálózati átjárót.
 
-### <a name="for-expressroute"></a>Az expressroute-hoz
+### <a name="for-expressroute"></a>ExpressRoute
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute -GatewaySku ErGw1AZ
 ```
 
-### <a name="for-vpn-gateway"></a>A VPN Gateway
+### <a name="for-vpn-gateway"></a>VPN Gateway
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
@@ -144,22 +144,22 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 
 ## <a name="faq"></a>GYIK
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Mi változik, ha új Termékváltozatokban üzembe helyezhetem?
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Mi változik, ha az új SKU-t üzembe helyezem?
 
-A szempontból az átjárók zóna redundanciával is telepítheti. Ez azt jelenti, hogy az átjárók az összes példányát telepíti, az Azure rendelkezésre állási zónák között, és minden egyes rendelkezésre állási zónában egy másik tartalék és frissítési tartományban. Ez lehetővé teszi az átjárók megbízható, elérhető és rugalmas zóna hibákkal szemben.
+Az átjárók az Ön szemszögéből is üzembe helyezhetők a zóna-redundanciával. Ez azt jelenti, hogy az átjárók összes példánya Azure Availability Zones lesz telepítve, és az egyes rendelkezésre állási zónák egy másik hiba-és frissítési tartomány. Így az átjárók megbízhatóbbak, elérhetők és rugalmasak lesznek a zónák meghibásodása miatt.
 
-### <a name="can-i-use-the-azure-portal"></a>Használható az Azure Portalon?
+### <a name="can-i-use-the-azure-portal"></a>Használhatom a Azure Portal?
 
-Igen, az Azure portal használatával üzembe helyezése az új termékváltozatokra. Azonban csak az adott Azure-régiók, amelyek az Azure-beli rendelkezésre állási zónák új Termékváltozatokban megjelenik.
+Igen, a Azure Portal használatával telepítheti az új SKU-t. Ezeket az új SKU-ket azonban csak azokban az Azure-régiókban fogja látni, amelyek Azure Availability Zones rendelkeznek.
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Mely régiók érhetők el az új termékváltozatokra használni?
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Milyen régiókban érhetők el az új SKU-i használata?
 
-Lásd: [rendelkezésre állási zónák](../availability-zones/az-overview.md#services-support-by-region) a teljes lista az elérhető régiók.
+Tekintse meg az elérhető régiók legújabb listáját [Availability Zones](../availability-zones/az-overview.md#services-support-by-region) .
 
-### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Helyezhetem el a módosítása/áttelepítése/frissítése a meglévő virtuális hálózati átjárók zónaredundáns vagy zónaszintű átjárók?
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Módosíthatom/telepíthetem vagy frissíthetem a meglévő virtuális hálózati átjárókat a zóna-redundáns vagy a zónák közötti átjáróra?
 
-A meglévő virtuális hálózati átjárók zónaredundáns vagy zónaszintű átjárók migrálása jelenleg nem támogatott. Azonban, törölje a meglévő átjárót és hozhat újra létre zónaredundáns vagy zónaszintű átjáró.
+Jelenleg nem támogatott a meglévő virtuális hálózati átjárók áttelepítése a zóna-redundáns vagy a zónák közötti átjáróra. Azonban törölheti a meglévő átjárót, és újból létrehozhatja a zóna-redundáns vagy a zónákhoz tartozó átjárót.
 
-### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Telepítheti a VPN- és Express Route átjárók azonos virtuális hálózatba?
+### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>Telepíthetek VPN-és Express Route Gateway-átjárókat is ugyanazon a virtuális hálózaton?
 
-Az azonos virtuális hálózatba VPN- és Express Route-átjárók együttes jelenléte használata támogatott. Azonban, / 27-es kell lefoglalni az átjáró-alhálózat IP-címtartományt.
+Az azonos virtuális hálózatban található VPN-és Express Route-átjárók együttes létezése is támogatott. Az átjáró-alhálózat esetében azonban foglaljon le egy/27 IP-címtartományt.

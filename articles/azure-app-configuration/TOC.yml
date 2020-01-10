@@ -47,6 +47,8 @@
       href: manage-feature-flags.md
     - name: Key Vault-hivatkozások használata az ASP.NET Core-ban
       href: use-key-vault-references-dotnet-core.md
+    - name: Key Vault-hivatkozások használata a Spring Bootban
+      href: use-key-vault-references-spring-boot.md
     - name: Integráció CI-/CD-folyamattal
       href: integrate-ci-cd-pipeline.md
 - name: Példák

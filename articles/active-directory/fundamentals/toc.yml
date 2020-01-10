@@ -7,13 +7,15 @@
       href: active-directory-whatis.md
     - name: Újdonságok az Azure Active Directoryban
       href: whats-new.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
+  expanded: true
   items:
     - name: A portál hozzáférése és bérlő létrehozása
       href: active-directory-access-create-new-tenant.md
     - name: A hozzárendelt tagokkal rendelkező csoportok megtekintése
       href: active-directory-groups-view-azure-portal.md
 - name: Alapelvek
+  expanded: true
   items:
     - name: Identitásbiztonság pontszám
       href: identity-secure-score.md
@@ -37,11 +39,13 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Az európai ügyfelek identitásadatainak tárolása
       href: active-directory-data-storage-eu.md
+    - name: Az ausztrál ügyfelek identitásadatainak tárolása
+      href: active-directory-data-storage-australia.md
     - name: Újdonságok a Microsoft 365 Kormányzati verzióban
       href: whats-new-microsoft-365-government.md
     - name: Azure AD-üzemeltetési referencia
       items:
-        - name: Bevezetés
+        - name: Introduction (Bevezetés)
           href: active-directory-ops-guide-intro.md
         - name: Identitás- és hozzáférés-kezelés
           href: active-directory-ops-guide-iam.md
@@ -97,6 +101,7 @@
         - name: Törölt felhasználó visszaállítása
           href: active-directory-users-restore.md
 - name: További források
+  expanded: true
   items:
     - name: Támogatás az Azure Active Directoryhoz
       href: active-directory-troubleshooting-support-howto.md

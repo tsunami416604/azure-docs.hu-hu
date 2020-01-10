@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Az internetes társviszony-létesítés dokumentációja
+summary: Ismerkedjen meg a Microsoft segítségével történő internetes társviszony-létesítéssel.
+metadata:
+  title: Az internetes társviszony-létesítés dokumentációja
+  titleSuffix: Azure
+  description: Ismerkedjen meg a Microsoft segítségével történő társviszony-létesítéssel.
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773519"
+landingContent:
+- title: Tudnivalók az internetes társviszony-létesítésről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Tudnivalók az internetes társviszony-létesítésről
+      url: overview.md
+    - text: Internetes társviszony-létesítés vagy Peering Service
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: Társviszony-létesítési szabályzat
+      url: policy.md
+    - text: A Microsoft segítségével történő társviszony-létesítés előfeltételei
+      url: prerequisites.md
+    - text: Gyakori kérdések az internetes társviszony-létesítéssel kapcsolatban
+      url: faqs.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Társ ASN társítása Azure-előfizetéshez a portál használatával
+      url: howto-subscription-association-portal.md
+- title: Exchange-társviszony létesítése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Útmutató Exchange-társviszony létesítéséhez
+      url: walkthrough-exchange-all.md
+    - text: Exchange-társviszony létesítése vagy módosítása a portál használatával
+      url: howto-exchange-portal.md
+    - text: Örökölt Exchange-társviszony konvertálása Azure-erőforrássá a portál használatával
+      url: howto-legacy-exchange-portal.md
+- title: Közvetlen társviszony-létesítés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Útmutató a közvetlen társviszony-létesítéshez
+      url: walkthrough-direct-all.md
+    - text: Közvetlen társviszony létesítése vagy módosítása a portál használatával
+      url: howto-direct-portal.md
+    - text: Örökölt közvetlen társviszony konvertálása Azure-erőforrássá a portál használatával
+      url: howto-legacy-direct-portal.md
+- title: Peering Service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Peering Service – gyakori kérdések
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Útmutató a Peering Service szolgáltatáshoz partnerek számára
+      url: walkthrough-peering-service-all.md
+    - text: A Peering Service engedélyezése közvetlen társviszony-létesítés esetében a portál használatával
+      url: howto-peering-service-portal.md

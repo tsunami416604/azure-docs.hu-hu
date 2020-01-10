@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 97fcd3241be6dac81adfa8e17999d92d84abaa19
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0eea6700b8b248a87666071ee02572d356110cd0
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647288"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830173"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -71,47 +71,17 @@ Csak a csomagok rögzítése, a kapcsolati hibák és a kapcsolat figyelője sz�
 ### <a name="what-does-nsg-flow-logs-do"></a>Mit jelentenek a NSG flow-naplók?
 Az Azure hálózati erőforrásait [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview)segítségével lehet egyesíteni és felügyelni. A NSG flow-naplók lehetővé teszik az 5 rekordos adatfolyamok naplózását a NSG keresztüli összes forgalomról. A nyers flow-naplók egy Azure Storage-fiókba íródnak, ahonnan szükség szerint további feldolgozásra, elemzésre, lekérdezésre vagy exportálásra kerülhet sor.
 
-### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Vannak kikötések a NSG flow-naplók használatára?
-A NSG flow-naplók használatához nincsenek előfeltételek. Van azonban két korlátozás
-- A **szolgáltatási végpontok nem lehetnek jelen a VNET**: a NSG-adatfolyamok a virtuális gépeken lévő ügynökökből vannak kibocsátva a Storage-fiókokba. Jelenleg azonban csak a naplókat lehet közvetlenül a Storage-fiókokba kibocsátani, és nem használhat a VNET hozzáadott szolgáltatási végpontot.
+### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall-or-through-a-service-endpoints"></a>Hogyan a NSG egy tűzfalon vagy egy szolgáltatási végponton keresztül használja a Storage-fiókokat?
 
-- A **Storage-fióknak nem szabad tűzfallal rendelkeznie**: a belső korlátozások miatt a Storage-fiókoknak elérhetőnek kell lenniük a nyilvános interneten keresztül a NSG-flow naplófájljainak használatához. A forgalom továbbra is az Azure-on keresztül lesz átirányítva, és nem fog megjelenni az extra kimenő költségek.
-
-A problémák megoldásával kapcsolatos útmutatásért tekintse meg a következő két kérdést. A következő korlátozásokat a rendszer január 2020-én tárgyalja.
-
-### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Hogyan NSG-flow-naplókat használ a szolgáltatási végpontokkal?
-
-*1. lehetőség: konfigurálja újra a NSG-folyamatok naplóit az Azure Storage-fiókba VNET-végpontok nélkül*
-
-* Alhálózatok keresése végpontokkal:
-
-    - Az Azure Portalon keressen rá az **erőforráscsoportok** kifejezésre a lap tetején található globális keresés használatával
-    - Lépjen a használt NSG-t tartalmazó erőforráscsoporthoz
-    - A második legördülő lista szerinti szűréshez és a **virtuális hálózatok** kiválasztásához használja a következőt:
-    - Kattintson a szolgáltatásvégpontokat tartalmazó virtuális hálózatra
-    - Válassza a **Szolgáltatásvégpontok** elemet a bal oldali ablaktábla **Beállítások** részén
-    - Jegyezze fel azokat az alhálózatokat, amelyeken a **Microsoft.Storage** engedélyezve lett
-
-* Szolgáltatási végpontok letiltása:
-
-    - A fentiekben leírtakat folytatva válassza az **Alhálózatok** elemet a bal oldali ablaktábla **Beállítások** részén
-    * Kattintson a szolgáltatásvégpontokat tartalmazó alhálózatra
-    - A **Szolgáltatásvégpontok** szakasz **Szolgáltatások** részén törölje a **Microsoft.Storage** bejelölését
-
-Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbélyeget vagy egy újonnan létrehozott JSON-fájlt kell látnia.
-
-*2. lehetőség: a NSG-folyamatok naplófájljainak letiltása*
-
-Ha a Microsoft.Storage szolgáltatásvégpontokat mindenképpen használni kell, le kell tiltania az NSG-forgalom naplóit.
-
-### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Hogyan letiltani a tűzfalat a saját Storage-fiókomban?
-
-A probléma megoldásához engedélyezze a "minden hálózat" lehetőséget a Storage-fiók eléréséhez:
+Ha tűzfallal vagy szolgáltatás-végpontokon keresztül szeretne Storage-fiókot használni, engedélyeznie kell a megbízható Microsoft-szolgáltatások számára a Storage-fiók elérését:
 
 * Keresse meg a tárfiók nevét. Ehhez keresse meg az NSG-t az [NSG-forgalom naplóinak áttekintési oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)
 * Lépjen a tárfiókhoz a tárfiók nevét a portál globális keresési eszközébe beírva
 * A **BEÁLLÍTÁSOK** szakaszban válassza a **Tűzfalak és virtuális hálózatok** elemet
-* Válassza az **Összes hálózat** lehetőséget, és mentse a beállítást. Ha ez a beállítás már ki lett választva, nincs szükség módosításra.  
+* A "hozzáférés engedélyezése innen" területen válassza a **kiválasztott hálózatok**elemet. Ezután a **kivételek**alatt jelölje be a **"megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz"** jelölőnégyzetet. 
+* Ha ez a beállítás már ki lett választva, nincs szükség módosításra.  
+
+Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbélyeget vagy egy újonnan létrehozott JSON-fájlt kell látnia.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?
 A flow-naplók 2. verziója bevezeti a *folyamat állapotának* fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/5/2019
+ms.date: 1/8/2020
 ms.author: raiye
-ms.openlocfilehash: c22ed9da2d2947fa4085a4695acd8803964ca757
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894624"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778209"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
 Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-kiadásairól. Ez az információ segít megtervezni a frissítési útvonalat, mielőtt a vendég operációs rendszer le lenne tiltva. Ha úgy konfigurálja a szerepköröket, hogy az *automatikus* vendég operációs rendszer frissítéseit használják az [Azure vendég operációs rendszer frissítési beállításai][Azure Guest OS Update Settings]részében leírtak szerint, nem létfontosságú, hogy elolvassa ezt a lapot.
@@ -41,6 +41,9 @@ Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-k
 Nem biztos benne, hogy miként lehet frissíteni a vendég operációs rendszert? Tekintse meg [ezt a][cloud updates] kivételt.
 
 ## <a name="news-updates"></a>Hírek frissítései
+
+###### <a name="january-8-2020"></a>**2020. január 8.**
+A decemberi vendég operációs rendszer megjelent.
 
 ###### <a name="december-5-2019"></a>**2019. december 5.**
 A november vendég operációs rendszer megjelent.
@@ -112,8 +115,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-6.14 _201912-01 | 2020. január 8. | 6,16 post |  
 | WA-GUEST-OS-6.13 _201911-01 | 2019. december 5. | 6,15 post |  
-| WA-GUEST-OS-6,12 _201910-01 | 2019. november 1. | 6,14 post |  
+|~~WA-GUEST-OS-6,12 _201910-01~~| 2019. november 1. | 2020. január 8. |  
 |~~WA-GUEST-OS-6.11 _201909-01~~| Október 7., 2019 | 2019. december 5. |  
 |~~WA-GUEST-OS-6,10 _201908-01~~| 2019. augusztus 4. | 2019. november 1.  |  
 |~~WA-GUEST-OS-6,9 _201907 – 0~~|2019. július 26. | Október 7., 2019 |
@@ -138,8 +142,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-5.38 _201912-01 | 2020. január 8. | 5,40 post |  
 | WA-GUEST-OS-5.37 _201911-01 | 2019. december 5. | 5,39 post |  
-| WA-GUEST-OS-5.36 _201910-01 | 2019. november 1. | 5,38 post |  
+|~~WA-GUEST-OS-5.36 _201910-01~~| 2019. november 1. | 2020. január 8. |  
 |~~WA-GUEST-OS-5.35 _201909-01~~| Október 7., 2019 | 2019. december 5. |  
 |~~WA-GUEST-OS-5.34 _201908-01~~|  2019. augusztus 4.  | 2019. november 1. |  
 |~~WA-GUEST-OS-5.33 _201907-01~~| 2019. július 26. | Október 7., 2019 |  
@@ -155,14 +160,15 @@ A szeptemberi vendég operációs rendszer megjelent.
 |~~WA-GUEST-OS-5.23 _201809-01~~ |2018. október 12. |December 14., 2018 |
 
 ## <a name="family-4-releases"></a>4\. család kiadásai
-**Windows Server 2012 R2**
+**Windows Server 2012 R2**
 
 .NET-keretrendszer telepítve: 3,5, 4.5.1, 4.5.2
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-4.73 _201912-01 | 2020. január 8. | 4,75 post |  
 | WA-GUEST-OS-4.72 _201911-01 | 2019. december 5. | 4,74 post |  
-| WA-GUEST-OS-4.71 _201910-01 | 2019. november 1. | 4,73 post |  
+|~~WA-GUEST-OS-4.71 _201910-01~~| 2019. november 1. | 2020. január 8. |  
 |~~WA-GUEST-OS-4.70 _201909-01~~| Október 7., 2019 | 2019. december 5. |  
 |~~WA-GUEST-OS-4.69 _201908-01~~| 2019. augusztus 4. | 2019. november 1. |  
 |~~WA-GUEST-OS-4.68 _201907-01~~| 2019. július 26.  | Október 7., 2019 |
@@ -184,8 +190,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-3.80 _201912-01 | 2020. január 8. | 3,82 post |  
 | WA-GUEST-OS-3.79 _201911-01 | 2019. december 5. | 3,81 post |  
-| WA-GUEST-OS-3.78 _201910-01 | 2019. november 1. | 3,80 post |  
+|~~WA-GUEST-OS-3.78 _201910-01~~| 2019. november 1. | 2020. január 8. |  
 |~~WA-GUEST-OS-3.77 _201909-01~~| Október 7., 2019 | 2019. december 5. |  
 |~~WA-GUEST-OS-3.76 _201908-01~~|  2019. augusztus 4.  |  2019. november 1.  |  
 |~~WA-GUEST-OS-3,75 _201907-01~~| 2019. július 26. | Október 7., 2019 |
@@ -207,8 +214,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
+| WA-GUEST-OS-2.94 _201912-01 | 2020. január 8. | 2,95 post |  
 | WA-GUEST-OS-2.93 _201911-01 | 2019. december 5. | 2,94 post |  
-| WA-GUEST-OS-2.91 _201910-01 | 2019. november 1. | 2,93 post |  
+|~ WA-GUEST-OS-2.91 _201910-01 ~| 2019. november 1. | 2020. január 8. |  
 |~~WA-GUEST-OS-2.90 _201909-01~~| Október 7., 2019 | 2019. december 5. |  
 |~~WA-GUEST-OS-2.89 _201908-01~~| 2019. augusztus 4. | 2019. november 1. |  
 |~~WA-GUEST-OS-2,88 _201907-01~~| 2019. július 26. | Október 7., 2019 |

@@ -29,84 +29,98 @@
       href: data-flow-create.md
 - name: Oktatóanyagok
   items:
-    - name: Adatok másolása a felhőben
+    - name: Adatok másolása és betöltése
       items:
-        - name: Adatok másolása eszköz
-          href: tutorial-copy-data-tool.md
-        - name: Felhasználói felület (UI)
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: Helyszíni adatok másolása a felhőbe
-      items:
-        - name: Adatok másolása eszköz
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: Felhasználói felület (UI)
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: Adatok tömeges másolása
-      items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: Adatok fokozatos másolása
-      href: tutorial-incremental-copy-overview.md
-      items:
-        - name: 1 – Másolás egy táblából
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2 – Másolás több táblából
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3 – Változáskövetési funkció használata
-          items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-        - name: 4 – Új fájlok másolása az utolsó módosítás dátuma szerint
+        - name: Az Azure Blob Storage-ból az Azure SQL Database-be
           items:
             - name: Adatok másolása eszköz
+              href: tutorial-copy-data-tool.md
+            - name: Felhasználói felület (UI)
+              href: tutorial-copy-data-portal.md
+            - name: .NET
+              href: tutorial-copy-data-dot-net.md
+        - name: Helyszíni SQL Server-adatbázisból az Azure Blob Storage-ba
+          items:
+            - name: Adatok másolása eszköz
+              href: tutorial-hybrid-copy-data-tool.md
+            - name: Felhasználói felület (UI)
+              href: tutorial-hybrid-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-hybrid-copy-powershell.md
+        - name: Az Amazon Web Services S3-ból az Azure Data Lake Storage-ba
+          items:
+            - name: 2. generációs Azure Data Lake Storage
+              href: load-azure-data-lake-storage-gen2.md
+            - name: 1. generációs Azure Data Lake Storage
+              href: load-azure-data-lake-store.md
+        - name: Az Azure Data Lake Storage Gen1-ből az Azure Data Lake Storage Gen2-be
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+        - name: Az Azure SQL Database-ből az Azure Synapse Analyticsbe
+          href: load-azure-sql-data-warehouse.md
+        - name: Az SAP BW-ből az Azure Data Lake Storage Gen2-be
+          href: load-sap-bw-data.md
+        - name: Az Office 365-ből az Azure Blob Storage-ba
+          href: load-office-365-data.md
+        - name: 'Táblák, tömegesen'
+          items:
+            - name: Felhasználói felület (UI)
+              href: tutorial-bulk-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-bulk-copy.md
+        - name: Adatok növekményes betöltése
+          href: tutorial-incremental-copy-overview.md
+          items:
+            - name: Egy Azure SQL Database-táblából
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-incremental-copy-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-powershell.md
+            - name: Több helyszíni SQL Server-táblából
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-incremental-copy-multiple-tables-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-multiple-tables-powershell.md
+            - name: Változáskövetési adatok használata az SQL Serverben
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-incremental-copy-change-tracking-feature-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: 'Új fájlok, a legutóbb módosított adatok alapján'
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
-        - name: 5 – Új fájlok másolása idő szerint particionált fájlnév alapján
-          items:
-            - name: Adatok másolása eszköz
+            - name: 'Új fájlok, idő szerint particionált fájlnév alapján'
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Adatok átalakítása és előkészítése adatfolyamokkal
+    - name: Adatok átalakítása
       items:
-        - name: Adatok átalakítása leképezési adatfolyammal
-          href: tutorial-data-flow.md
-        - name: Adatfolyamok leképezését ismertető oktatóvideók
-          href: data-flow-tutorials.md
-        - name: Adatok előkészítése szervezési adatfolyammal
+        - name: Adatok átalakítása leképezési adatfolyamokkal
+          items:
+            - name: Adatok átalakítása leképezési adatfolyamokkal
+              href: tutorial-data-flow.md
+            - name: Adatfolyamok leképezését ismertető oktatóvideók
+              href: data-flow-tutorials.md
+        - name: Adatok előkészítése szervezési adatfolyamokkal
           href: wrangling-data-flow-tutorial.md
-    - name: Külső átalakítások
-      items:
-        - name: HDInsight Spark
+        - name: Külső szolgáltatások használata
           items:
-            - name: Felhasználói felület (UI)
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Databricks-jegyzetfüzet
-          items:
-            - name: Felhasználói felület (UI)
-              href: transform-data-using-databricks-notebook.md
-    - name: Hive-átalakítás virtuális hálózatban
-      items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: Elágaztatás és láncolás hozzáadása
+            - name: HDInsight Spark
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-transform-data-spark-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-spark-powershell.md
+            - name: Databricks-jegyzetfüzet
+              items:
+                - name: Felhasználói felület (UI)
+                  href: transform-data-using-databricks-notebook.md
+            - name: Hive-átalakítás virtuális hálózatban
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-transform-data-hive-virtual-network-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-hive-virtual-network.md
+    - name: Átvitelvezérlés
       items:
         - name: Felhasználói felület (UI)
           href: tutorial-control-flow-portal.md
@@ -118,19 +132,6 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: 2. generációs Data Lake Storage betöltése
-      href: load-azure-data-lake-storage-gen2.md
-      items:
-        - name: Másolás az 1. generációs Data Lake Storage-ből
-          href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: A Synapse Analytics (korábbi nevén SQL Data Warehouse) betöltése
-      href: load-azure-sql-data-warehouse.md
-    - name: 1. generációs Data Lake Storage betöltése
-      href: load-azure-data-lake-store.md
-    - name: SAP BW-adatok betöltése
-      href: load-sap-bw-data.md
-    - name: Office 365-adatok betöltése
-      href: load-office-365-data.md
 - name: Példák
   items:
     - name: Kódminták
@@ -518,12 +519,14 @@
           href: control-flow-expression-language-functions.md
         - name: Rendszerváltozók
           href: control-flow-system-variables.md
-        - name: Adatfolyam-paraméterek
+        - name: Leképezési adatfolyamok paraméterezése
           href: parameters-data-flow.md
     - name: Biztonság
       items:
         - name: Az adatáthelyezés biztonsági szempontjai
           href: data-movement-security-considerations.md
+        - name: Azure Integration Runtime – IP-címek
+          href: azure-integration-runtime-ip-addresses.md
         - name: Hitelesítő adatok tárolása az Azure Key Vaultban
           href: store-credentials-in-key-vault.md
         - name: Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
@@ -616,20 +619,20 @@
           href: solution-template-move-files.md
         - name: Adatátalakítás a Databricksszel
           href: solution-template-databricks-notebook.md
-    - name: Hibaelhárítási útmutató
+    - name: Hibaelhárítási útmutatók
       items:
-        - name: Tevékenységek hibaelhárítása
+        - name: Tevékenységek
           href: data-factory-troubleshoot-guide.md
-        - name: Összekötő hibaelhárítása
+        - name: Összekötők
           href: connector-troubleshoot-guide.md
-        - name: Az Azure-SSIS integrációs modul kezelésével kapcsolatos hibaelhárítás
-          href: ssis-integration-runtime-management-troubleshoot.md
-        - name: Saját üzemeltetésű integrációs modul hibaelhárítása
-          href: self-hosted-integration-runtime-troubleshoot-guide.md
-        - name: Csomagvégrehajtás hibaelhárítása az Azure-SSIS integrációs modulban
-          href: ssis-integration-runtime-ssis-activity-faq.md
-        - name: Adatfolyamok hibaelhárítása
+        - name: Adatfolyamok
           href: data-flow-troubleshoot-guide.md
+        - name: Helyi integrációs futtatókörnyezetek
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
+        - name: Azure-SSIS integrációs modul
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Csomagvégrehajtás az Azure-SSIS IR-ben
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Forgatókönyvek
   items:
     - name: Data Lake- és EDW-adatmigrálás
@@ -670,18 +673,18 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: További források
   items:
+    - name: Tanulmányok
+      href: whitepapers.md
+    - name: GYIK
+      href: frequently-asked-questions.md
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: Kérdés feltevése – MSDN-fórum
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: Kérdés feltevése – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Szolgáltatás igénylése
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: GYIK
-      href: frequently-asked-questions.md
-    - name: Tanulmányok
-      href: whitepapers.md
-    - name: Ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Rendelkezésre állás régiónként

@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367620"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829561"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webes bejelentkezés OpenID-kapcsolattal Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Az OpenID Connect egy OAuth 2,0-re épülő hitelesítési protokoll, amely a fe
 
 Az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kiterjeszti a OAuth 2,0 *engedélyezési* protokollt *hitelesítési* protokollként való használatra. Ez a hitelesítési protokoll lehetővé teszi az egyszeri bejelentkezés végrehajtását. Bevezeti az *azonosító jogkivonat*fogalmát, amely lehetővé teszi az ügyfél számára, hogy ellenőrizze a felhasználó identitását, és beszerezze a felhasználó alapszintű profiljának adatait.
 
-Mivel a kiterjeszti a OAuth 2,0-es alkalmazást, lehetővé teszi az alkalmazások számára a *hozzáférési tokenek*biztonságos beszerzését is. Hozzáférési jogkivonatokkal férhet hozzá az [engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md)által védett erőforrásokhoz. Az OpenID Connect használata akkor ajánlott, ha olyan webalkalmazást hoz létre, amely egy kiszolgálón fut, és böngészőn keresztül érhető el. Ha Azure AD B2C használatával szeretne identitáskezelést hozzáadni a mobil-vagy asztali alkalmazásokhoz, akkor az OpenID Connect helyett a [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) -et kell használnia. A jogkivonatokkal kapcsolatos további információkért tekintse [meg a jogkivonatok áttekintését Azure Active Directory B2C](active-directory-b2c-reference-tokens.md)
+Mivel a kiterjeszti a OAuth 2,0-es alkalmazást, lehetővé teszi az alkalmazások számára a *hozzáférési tokenek*biztonságos beszerzését is. Hozzáférési jogkivonatokkal férhet hozzá az [engedélyezési kiszolgáló](active-directory-b2c-reference-protocols.md)által védett erőforrásokhoz. Az OpenID Connect használata akkor ajánlott, ha olyan webalkalmazást hoz létre, amely egy kiszolgálón fut, és böngészőn keresztül érhető el. A jogkivonatokkal kapcsolatos további információkért tekintse [meg a jogkivonatok áttekintését Azure Active Directory B2C](active-directory-b2c-reference-tokens.md)
 
 Azure AD B2C kiterjeszti a szabványos OpenID Connect protokollt, hogy több, mint egyszerű hitelesítést és engedélyezést végezzen. Bevezeti a [felhasználói folyamat paramétert](active-directory-b2c-reference-policies.md), amely lehetővé teszi, hogy az OpenID Connect használatával felhasználói élményeket vegyen fel az alkalmazásba, például a regisztrálást, a bejelentkezést és a profilok kezelését.
 

@@ -1,31 +1,23 @@
 ---
-title: Az Azure VPN-átjárókkal magas rendelkezésre állású konfigurációk áttekintése |} A Microsoft Docs
+title: 'Azure VPN Gateway: áttekintés – a magasan elérhető átjáró-konfigurációk'
 description: Ez a cikk áttekintést nyújt a magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60760329"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779620"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között
 Ez a cikk áttekintést nyújt a létesítmények közötti és a virtuális hálózatok közötti kapcsolatokra vonatkozó magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
 
-## <a name = "activestandby"></a>Tudnivalók az Azure VPN-átjárók redundanciájáról
+## <a name = "activestandby"></a>Az Azure VPN Gateway redundancia ismertetése
 Minden egyes Azure-alapú VPN-átjáró két példányból áll, amelyek aktív-készenléti konfigurációban vannak. Az aktív példányt érintő bármilyen tervezett karbantartás vagy nem tervezett kimaradás esetén a készenléti példány automatikusan átveszi az aktív szerepét (feladatátvétel), és fenntartja az S2S VPN- vagy a virtuális hálózatok közötti kapcsolatokat. Az átvétel rövid megszakítással jár. Tervezett karbantartás esetén a kapcsolatnak 10-15 másodpercen belül vissza kell állnia. Nem tervezett problémák esetén a kapcsolat helyreállítása hosszabb időt, kb. egy, vagy legrosszabb esetben másfél percet vehet igénybe. A P2S VPN-ügyfél és az átjáró közötti kapcsolatok esetében a P2S-kapcsolatok megszakadnak, és az ügyfeleknek ismét csatlakozniuk kell az ügyfélgépekről.
 
 ![Aktív-készenléti](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -44,12 +36,12 @@ Az alábbi ábrán látható módon több VPN-eszközt is használhat a helyszí
 
 Ez a konfiguráció több aktív alagutat biztosít ugyanabból az Azure-alapú VPN-átjáróból az azonos helyen lévő helyszíni eszközeihez. Van néhány követelmény és megkötés:
 
-1. Több S2S VPN-kapcsolatot kell létesítenie a VPN-eszközök és az Azure között. A csatlakozáskor több VPN-eszköz a ugyanazt a helyszíni hálózatból az Azure-ban minden VPN-eszköz számára egy helyi hálózati átjáró és a egy kapcsolatot az Azure VPN gateway egyes helyi hálózati átjáró létrehozása szeretne.
+1. Több S2S VPN-kapcsolatot kell létesítenie a VPN-eszközök és az Azure között. Ha ugyanarról a helyszíni hálózatról csatlakoztat több VPN-eszközt az Azure-hoz, létre kell hoznia egy helyi hálózati átjárót minden egyes VPN-eszközhöz, és egy kapcsolatot az Azure VPN gatewaytől az egyes helyi hálózati átjárókkal.
 2. A VPN-eszközöknek megfelelő helyi hálózati átjáróknak egyedi nyilvános IP-címmel kell rendelkezniük a GatewayIpAddress tulajdonságban.
 3. Ehhez a konfigurációhoz BGP szükséges. A VPN-eszközöknek megfelelő összes helyi hálózati átjáróhoz meg kell adnia egy egyedi BGP társ IP-címet a BgpPeerIpAddress tulajdonságban.
 4. Az egyes helyi hálózati átjárók AddressPrefix tulajdonságmezői nem lehetnek egymással átfedésben. A BgpPeerIpAddress tulajdonságot /32 CIDR formátumban kell megadnia az AddressPrefix mezőben, például így: 10.200.200.254/32.
 5. Az azonos helyszíni hálózatok előtagjait BGP használatával kell meghirdetnie az Azure-alapú VPN-átjárónak, hogy a forgalom továbbítása egyszerre történjen ezeken az alagutakon keresztül.
-6. Azonos költségű több utas útválasztás (ECMP) kell használnia.
+6. A több elérési úttal rendelkező útválasztást (ECMP) kell használnia.
 7. Minden kapcsolat beleszámít az Azure-alapú VPN-átjáró alagútjainak maximális számába: 10 az alapszintű és standard, illetve 30 a HighPerformance termékváltozat esetében. 
 
 Ebben a konfigurációban az Azure-alapú VPN-átjáró továbbra is aktív-készenléti állapotban van, ezért a feladatátvétel és a rövid megszakítás továbbra is bekövetkezik a [fent](#activestandby) leírtak szerint. Ez a beállítás viszont védelmet nyújt a hibák vagy megszakítások ellen a helyszíni hálózat és a VPN-eszközök esetében.
@@ -83,6 +75,6 @@ Ugyanez az aktív-aktív konfiguráció az Azure virtuális hálózatok között
 
 Ez biztosítja, hogy bármilyen tervezett karbantartási esemény esetében legyen két alagút a két virtuális hálózat között, ami még jobb rendelkezésre állást eredményez. Bár az azonos topológia a létesítmények közötti kapcsolatok esetében két kapcsolatot igényel, a fent bemutatott virtuális hálózatok közötti topológiához az egyes átjárókhoz csak egy kapcsolat szükséges. Emellett a BGP használata nem kötelező, kivéve, ha a virtuális hálózatok közötti kapcsolat esetében átmenő útválasztásra van szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A létesítmények közötti és a virtuális hálózatok közötti aktív-aktív kapcsolatok konfigurálásának lépéseit lásd: [Aktív-aktív VPN Gateway-átjárók konfigurálása létesítmények közötti és virtuális hálózatok közötti kapcsolatokhoz](vpn-gateway-activeactive-rm-powershell.md).
 

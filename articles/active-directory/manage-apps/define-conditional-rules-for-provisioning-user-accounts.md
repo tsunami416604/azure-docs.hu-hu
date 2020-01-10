@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120114"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778345"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -79,7 +79,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 7. Definiáljon egy záradékot úgy, hogy kiválasztja a forrás **attribútum nevét**, egy **operátort**és egy **attribútum-értéket** , amely megfelel a következőnek:. A következő operátorok támogatottak:
 
-   a. **EQUALS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
+   a. **Egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
    b. **nem egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
@@ -94,8 +94,9 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
    g. **REGEX egyezés**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum megfelel egy reguláris kifejezési mintának. Például: ([1-9] [0-9]) a 10 és 99 közötti számra illeszkedik.
 
    h. **nem a REGEX egyezése**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem felel meg a reguláris kifejezési mintának.
-
-8. Válassza az **Új hatókör hozzáadása záradékot**.
+ 
+>[!IMPORTANT] 
+> A includes és a IsMemberOf szűrők nem támogatottak. Hamarosan el lesznek távolítva a felhasználói felületen.
 
 9. Szükség esetén ismételje meg a 7-8. lépést további hatókör-záradékok hozzáadásához.
 
@@ -112,11 +113,11 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 
 ## <a name="common-scoping-filters"></a>Gyakori hatókörű szűrők
-| Cél attribútum| Művelet | Érték | Leírás|
+| Cél attribútum| Művelet | Value (Díj) | Leírás|
 |----|----|----|----|
 |userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartomány @domain.com userPrincipal, a kiépítés hatóköre lesz|
 |userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartomány @domain.com userPrincipal, a kiépítés hatókörén kívül fog esni|
-|Szervezeti egység|EGYENLŐ|értékesítési|Az értékesítési részleg összes felhasználója a kiépítés hatókörében van|
+|Részleg|EGYENLŐ|értékesítés|Az értékesítési részleg összes felhasználója a kiépítés hatókörében van|
 |workerID|REGEX EGYEZÉS|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| A 1000000 és 2000000 közötti workerIDs rendelkező alkalmazottak a kiépítés hatókörébe tartoznak.|
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek

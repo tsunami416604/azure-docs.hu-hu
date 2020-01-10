@@ -1,5 +1,5 @@
 ---
-title: Fiók konfigurálása a Widevine által védett tartalom offline folyamatos átviteléhez – Azure
+title: Offline Widevine streaming az Androidhoz Azure Media Services v3
 description: Ez a témakör bemutatja, hogyan konfigurálhatja a Azure Media Services-fiókját a Widevine által védett tartalmak offline folyamatos átviteléhez.
 services: media-services
 keywords: DASH, DRM, Widevine offline üzemmód, ExoPlayer, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 17416fce887f5f5b952232e284873e539fd68337
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974155"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779909"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streaming Android rendszerhez
 

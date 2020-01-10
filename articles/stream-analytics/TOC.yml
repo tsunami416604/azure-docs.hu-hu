@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Blob egyéni elérési útjára vonatkozó minták
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Stream Analytics-feladat optimalizálása
+      items:
+        - name: A streamelési egységek ismertetése és módosítása
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Jobb lekérdezési teljesítmény
+          href: stream-analytics-parallelization.md
+        - name: A bemenet újraparticionálása
+          href: repartition.md
+        - name: A feladat átviteli sebességének növelése
+          href: stream-analytics-scale-jobs.md
     - name: Feladat állapotai
       href: job-states.md
     - name: Ablakfunkciók
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: Feladatok monitorozása – Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Méretezés
-      items:
-        - name: Skálázás streamelési egységekkel
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Skálázás párhuzamosítással
-          items:
-            - name: Lekérdezések párhuzamosítása
-              href: stream-analytics-parallelization.md
-            - name: Az átviteli sebesség növelése
-              href: stream-analytics-scale-jobs.md
-        - name: Skálázás Machine Learning-függvényekkel
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Skálázás újraparticionálással
-          href: repartition.md
     - name: Automatizálás
       items:
         - name: A .NET SDK használata
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Hibakeresés feladatábra segítségével
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: Skálázás Machine Learning-függvényekkel
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: A Stream Analytics lekérdezési nyelve
   items:
     - name: Beépített függvények

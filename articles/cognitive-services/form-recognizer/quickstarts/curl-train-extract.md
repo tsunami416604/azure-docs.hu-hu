@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 16837ff53d7a87f6d6ac86643c7c8d16721e9470
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: b95c5511b2f64414fcf165a4346dbb06b1f02435
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660375"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833852"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
 - a [fürt](https://curl.haxx.se/windows/) telepítve van.
-- Legalább öt azonos típusú űrlap. Ezeket az adattípusokat fogja használni a modell betanításához. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumnak kell lenniük. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
+- Legalább hat egyforma típusú formátumból álló készlet. Ezek közül öt a modell betanításához, majd a hatodik űrlappal való teszteléséhez fog használni. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumnak kell lenniük. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban. A tesztelési fájlokat külön mappában helyezheti el.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -143,15 +143,14 @@ Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzés
 
 1. Cserélje le a `<Endpoint>`t az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le a `<model ID>`t az előző szakaszban kapott modell-AZONOSÍTÓra.
-1. Cserélje le a `<path to your form>`t az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ez lehet egy távoli fájl URL-címe is. Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
-1. Cserélje le a `<file type>`t a fájl típusára. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. Cserélje le a `<SAS URL>`t egy SAS URL-címmel az Azure Storage-ban található fájlra. Kövesse a betanítás szakasz lépéseit, de ahelyett, hogy a teljes blob-tároló SAS URL-címét beolvassa, szerezze be egyet az elemezni kívánt fájlhoz.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-Egy `202 (Success)` választ kap egy **művelet – hely** fejléctel. A fejléc értéke az elemzési művelet eredményeinek nyomon követésére használt azonosító. Mentse ezt az azonosítót a következő lépéshez.
+Egy `202 (Success)` választ kap egy **művelet – hely** fejléctel. Ennek a fejlécnek az értéke tartalmazza az elemzési művelet eredményeinek nyomon követésére használt eredmény-azonosítót. Mentse a következő lépés eredmény-AZONOSÍTÓját.
 
 ## <a name="get-the-analyze-results"></a>Az elemzés eredményeinek beolvasása
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034570"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778413"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése Linux rendszerű virtuális gépeken az Azure-ban a Jenkins és az Azure DevOps Services használatával
 
@@ -37,7 +37,7 @@ egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportb
 > * Hozzon létre egy Azure-folyamatok kiadási folyamatát.
 > * Manuális és CI által kiváltott üzembe helyezések végrehajtása.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Egy Jenkins-kiszolgálóhoz történő hozzáférés szükséges. Ha még nem hozott létre Jenkins-kiszolgálót, lásd: [Jenkins-főkiszolgáló létrehozása Azure virtuális gépen](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
@@ -130,7 +130,7 @@ Szüksége van egy [üzembe helyezési csoportra](https://www.visualstudio.com/d
    > [!NOTE]
    > A következő eljárásban nem mulassza el az előfeltételek telepítését, és *ne futtassa a szkriptet sudo engedélyekkel.*
 
-1. Nyissa meg a **Build**  Release **(Build és kiadás) központ &amp;Releases** (Kiadások) lapját, nyissa meg a **Deployment groups** (Üzembe helyezési csoportok) elemet, és válassza a **+ New** (+ Új) lehetőséget.
+1. Nyissa meg a **Build &amp; Release** (Build és kiadás) központ **Releases** (Kiadások) lapját, nyissa meg a **Deployment groups** (Üzembe helyezési csoportok) elemet, és válassza a **+ New** (+ Új) lehetőséget.
 2. Adjon meg egy nevet a központi telepítési csoporthoz, és egy opcionális leírást. Ezután kattintson a **Létrehozás** elemre.
 3. Válassza ki az üzembe helyezési cél virtuális gépének operációs rendszerét. Válassza például az **Ubuntu 16.04+** lehetőséget.
 4. Válassza ki a **Use a personal access token in the script for authentication** (Személyes hozzáférési jogkivonat használata a szkriptben a hitelesítéséhez) elemet.
@@ -146,7 +146,7 @@ A kiadási folyamat azt a folyamatot határozza meg, amelyet az Azure Pipelines 
 
 Kiadási folyamat létrehozása az Azure Pipelinesban:
 
-1. Nyissa meg a **Build**  Release **(Build és kiadás) központ &amp;Releases** (Kiadások) lapját, és válassza a **Create release pipeline** (Kiadási folyamat létrehozása) elemet. 
+1. Nyissa meg a **Build &amp; Release** (Build és kiadás) központ **Releases** (Kiadások) lapját, és válassza a **Create release pipeline** (Kiadási folyamat létrehozása) elemet. 
 2. Válassza ki az **Empty** (Üres) sablont, hogy egy **Empty process** (Üres folyamat) legyen a kezdési folyamat.
 3. Az **Artifacts** (Összetevők) szakaszban jelölje ki a **+ Add Artifact** (+ Összetevő hozzáadása) lehetőséget, és válassza a **Jenkins** elemet, mint **Source type** (Erőforrástípus). Válassza ki a Jenkins szolgáltatási végpont kapcsolatát. Ezután jelölje ki a Jenkins-forrásfeladatot, és válassza az **Add** (Hozzáadás) lehetőséget.
 4. Válassza a három pontot az **Environment 1** (1. környezet) mellett. Válassza az **Add deployment group phase** (Üzembe helyezési csoport fázisának hozzáadása) lehetőséget.
@@ -182,9 +182,11 @@ Ebben az oktatóanyagban automatizálta az alkalmazás Azure-ban történő üze
 > * Alkalmazás létrehozása a Jenkinsben.
 > * A Jenkins konfigurálása az Azure DevOps Services-el való integrációhoz.
 > * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
-> * Olyan kiadási folyamat létrehozása, amely konfigurálja a virtuális gépeket, és üzembe helyezi az alkalmazást.
+> * Hozzon létre egy Azure-folyamatot, amely konfigurálja a virtuális gépeket, és üzembe helyezi az alkalmazást.
 
-Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.
+Ha szeretne többet megtudni arról, hogyan használhatók az Azure-folyamatok az összeállítási és a kiadási lépésekhez, tekintse meg [ezt a témakört](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups).
+
+Ha szeretné megtudni, hogyan hozhat létre YAML-alapú CI/CD-folyamatot a virtuális gépekre való üzembe helyezéshez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [LAMP stack telepítése](tutorial-lamp-stack.md)
+> [CI/CD az Azure-folyamatokkal](tutorial-build-deploy-azure-pipelines.md)

@@ -44,6 +44,9 @@
         - name: Erőforrások üzembehelyezési sorrendjének beállítása
           displayName: 'dependent resources, dependency'
           href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: Üzembehelyezési szkript használata
+          displayName: custom script
+          href: template-tutorial-deployment-script.md
         - name: Feltételek használata
           href: template-tutorial-use-conditions.md
         - name: A Key Vault integrálása
@@ -122,6 +125,9 @@
               href: add-resource-extensions.md
         - name: Kimenetek
           href: template-outputs.md
+        - name: Üzembehelyezési szkript
+          displayName: custom script
+          href: deployment-script-template.md
         - name: Sablonok modularizálása
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916502"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777836"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása a MSAL. js használatával
 Ez a cikk a Microsoft hitelesítési függvénytárának a JavaScripthez (MSAL. js) való inicializálását ismerteti egy felhasználói ügynök alkalmazás egy példányával. A User-Agent alkalmazás a nyilvános ügyfélalkalmazás olyan formája, amelyben az ügyfél kódja egy felhasználói ügynökön, például egy böngészőben fut. Ezek az ügyfelek nem tárolják a titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
@@ -116,10 +116,10 @@ Alább látható a konfigurációs objektumban jelenleg támogatott konfigurálh
         * `https://login.microsoftonline.com/common`– a felhasználók munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal való bejelentkezéshez használhatók.
         * `https://login.microsoftonline.com/organizations/`– a felhasználók munkahelyi és iskolai fiókkal való bejelentkezéshez használhatók.
         * `https://login.microsoftonline.com/consumers/` – csak a személyes Microsoft-fiók (élő) felhasználókkal való bejelentkezéshez használatos.
-    * Azure AD B2C az űrlap `https://<instance>/tfp/<tenant>/<policyName>/`, ahol a példány a Azure AD B2C tartomány, a bérlő a Azure AD B2C bérlő neve, a policyName pedig az alkalmazandó B2C-szabályzat neve.
+    * Azure AD B2C az űrlap `https://<instance>/tfp/<tenant>/<policyName>/`, ahol a példány a Azure AD B2C tartomány, azaz {a-bérlő-neve}. b2clogin. com, a bérlő a Azure AD B2C bérlő neve, azaz {a-bérlő-Name}. onmicrosoft. com, policyName az alkalmazandó B2C-szabályzat neve.
 
 
-- **validateAuthority**: nem kötelező.  A jogkivonatok kiállítójának ellenőrzése. Az alapértelmezett érték a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és a szabályzatok eltérőek lehetnek, a hatóság ellenőrzése nem fog működni, és a `false`re kell beállítani.
+- **validateAuthority**: nem kötelező.  A jogkivonatok kiállítójának ellenőrzése. Az alapértelmezett szint a `true`. A B2C-alkalmazások esetében, mivel a hatóság értéke ismert, és a szabályzatok eltérőek lehetnek, a hatóság ellenőrzése nem fog működni, és a `false`re kell beállítani.
 
 - **redirectUri**: nem kötelező.  Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével. Az alapértelmezett érték a `window.location.href`.
 

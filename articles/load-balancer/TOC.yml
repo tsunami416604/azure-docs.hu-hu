@@ -8,26 +8,34 @@
       href: load-balancer-standard-overview.md
 - name: Első lépések
   items:
-    - name: Standard Load Balancer létrehozása – Portal
-      href: quickstart-load-balancer-standard-public-portal.md
-    - name: Standard Load Balancer létrehozása – Azure CLI
-      href: quickstart-load-balancer-standard-public-cli.md
-    - name: Standard Load Balancer létrehozása – Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Standard Load Balancer létrehozása – sablon
-      href: quickstart-load-balancer-standard-public-template.md
-    - name: Alapszintű Load Balancer létrehozása – Portal
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: Alapszintű Load Balancer létrehozása – Azure CLI
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: Alapszintű Load Balancer létrehozása – Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
+    - name: Standard Load Balancer létrehozása
+      items:
+        - name: Portál
+          href: quickstart-load-balancer-standard-public-portal.md
+        - name: Azure CLI
+          href: quickstart-load-balancer-standard-public-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-standard-load-balancer-powershell.md
+        - name: Sablon
+          href: quickstart-load-balancer-standard-public-template.md
+    - name: Alapszintű Load Balancer létrehozása
+      items:
+        - name: Portál
+          href: quickstart-create-basic-load-balancer-portal.md
+        - name: Azure CLI
+          href: quickstart-create-basic-load-balancer-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-basic-load-balancer-powershell.md
+        - name: Sablon
+          href: load-balancer-get-started-internet-arm-template.md
+        - name: REST API
+          href: create-load-balancer-rest-api.md
 - name: Oktatóanyagok
   items:
     - name: Virtuális gépek internetes forgalmának terheléselosztása
       href: tutorial-load-balancer-standard-manage-portal.md
     - name: Virtuális gépek belső bejövő forgalmának terheléselosztása
-      href: tutorial-load-balancer-basic-internal-portal.md
+      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Virtuális gép terheléselosztása adott rendelkezésre állási zónán belül
@@ -42,8 +50,16 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Állapotminták
-      href: load-balancer-custom-probe-overview.md
+    - name: Állapotfigyelés
+      items:
+        - name: Állapotminták
+          href: load-balancer-custom-probe-overview.md
+        - name: A Standard Load Balancer metrikái és diagnosztikai eszközei
+          href: load-balancer-standard-diagnostics.md
+        - name: Azure Monitor-naplók az alapszintű Load Balancerhez
+          href: load-balancer-monitor-log.md
+        - name: Load Balancer-metrikák lekérése a REST használatával
+          href: load-balancer-query-metrics-rest-api.md
     - name: Magas rendelkezésre állású portok
       href: load-balancer-ha-ports-overview.md
     - name: IPv6-támogatás
@@ -58,72 +74,63 @@
       href: load-balancer-tcp-reset.md
     - name: A Standard Load Balancer és a rendelkezésre állási zónák
       href: load-balancer-standard-availability-zones.md
-    - name: A Standard Load Balancer metrikái és diagnosztikai eszközei
-      href: load-balancer-standard-diagnostics.md
     - name: Beépített biztonsági vezérlők
       href: load-balancer-security-controls.md
 - name: Útmutató
   items:
     - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása
-      href: load-balancer-get-started-internet-az-portal.md
       items:
-        - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)
-          href: load-balancer-get-started-internet-az-powershell.md
-        - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (parancssori felület)
+        - name: Portál
+          href: load-balancer-get-started-internet-az-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-az-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-az-powershell.md
     - name: Zónaszintű nyilvános Standard Load Balancer létrehozása
-      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
       items:
-        - name: Zónaszintű nyilvános Standard Load Balancer létrehozása (PowerShell)
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: Zónaszintű nyilvános Standard Load Balancer létrehozása (parancssori felület)
+        - name: Portál
+          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között (parancssori felület)
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Virtuális gépek terheléselosztása zónán belül (parancssori felület)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Kimenő szabályok konfigurálása
       items:
-        - name: Kimenő szabályok konfigurálása – CLI
+        - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
-        - name: Kimenő szabályok konfigurálása – PowerShell
+        - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
-    - name: Azure Load Balancer létrehozása REST API használatával
-      href: create-load-balancer-rest-api.md
-    - name: Alapszintű Load Balancer létrehozása (sablon)
-      href: load-balancer-get-started-internet-arm-template.md
     - name: Nyilvános Load Balancer létrehozása IPv6-tal
-      href: load-balancer-ipv6-internet-ps.md
       items:
-        - name: Nyilvános Load Balancer létrehozása IPv6-tal (parancssori felület)
+        - name: Azure CLI
           href: load-balancer-ipv6-internet-cli.md
-        - name: Nyilvános Load Balancer létrehozása IPv6-tal (sablon)
+        - name: Azure PowerShell
+          href: load-balancer-ipv6-internet-ps.md
+        - name: Sablon
           href: load-balancer-ipv6-internet-template.md
     - name: Belső Load Balancer konfigurálása
       items:
-        - name: Belső Load Balancer konfigurálása (PowerShell)
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Belső Load Balancer konfigurálása (parancssori felület)
+        - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Belső Load Balancer konfigurálása (sablon)
+        - name: Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Sablon
           href: load-balancer-get-started-ilb-arm-template.md
     - name: TCP üresjárati időkorlát konfigurálása Load Balancer
       href: load-balancer-tcp-idle-timeout.md
     - name: A Load Balancer elosztási módjának konfigurálása
       href: load-balancer-distribution-mode.md
-    - name: Többféle terheléselosztási szolgáltatás használata
-      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: Több IP-konfiguráció használata
       href: load-balancer-multiple-ip.md
       items:
-        - name: Több IP-konfiguráció használata (parancssori felület)
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
-        - name: Több IP-konfiguráció használata (PowerShell)
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Az Azure Load Balancer Azure Monitor-naplói
-      href: load-balancer-monitor-log.md
-    - name: Load Balancer-metrikák lekérése a REST használatával
-      href: load-balancer-query-metrics-rest-api.md
     - name: Magas rendelkezésre állású portok konfigurálása belső Load Balancerhez
       href: load-balancer-configure-ha-ports.md
     - name: Áthelyezés régiók között
@@ -160,22 +167,6 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
-- name: Kapcsolódó témakörök
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Express Route
-      href: /azure/expressroute/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: VPN Gateway
-      href: /azure/vpn-gateway/
-    - name: Virtuális gép
-      href: /azure/virtual-machines/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: DNS
-      href: /azure/dns/
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
@@ -188,5 +179,5 @@
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Szolgáltatási hírek
+    - name: Termékfrissítések
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'

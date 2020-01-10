@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
-ms.translationtype: MT
+ms.date: 01/07/2020
+ms.openlocfilehash: 0ce2884a2382c7dff2bdb90bd92934609675f314
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901326"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834392"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -29,13 +29,19 @@ Az API-verziók, a Nuget-csomagok, a névterek és a végpontok változatlanok. 
 
 ## <a name="feature-announcements"></a>Szolgáltatások hirdetményei
 
-### <a name="december-2019"></a>December 2019
+### <a name="january-2020"></a>Január 2020
+
++ Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-t használ, `api-version=2019-05-06`használatával érheti el a szolgáltatást. A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
+
++ A keresési szolgáltatás végpontján a *korlátozott IP-hozzáférés és a magánhálózati végpont (előzetes verzió)* már elérhető az **API-Version = 2019-10 -01-Preview-** ban. A biztonságos végpontot a [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) felügyeleti REST API új **IpRule** és **NetworkRuleSet** tulajdonságaival állíthatja be. További információ az API-verziókról és a regionális elérhetőségről: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+### <a name="december-2019"></a>2019. december
 
 + Az [alkalmazás létrehozása (előzetes verzió)](search-create-app-portal.md) egy új varázsló a portálon, amely egy letölthető HTML-fájlt hoz létre. A fájl beágyazott parancsfájlt tartalmaz, amely egy operatív "localhost" stílusú webalkalmazást jelenít meg, amely egy indexhez van kötve a keresési szolgáltatásban. A lapok konfigurálhatók a varázslóban, és tartalmazhatnak egy keresősáv, az eredmények, az oldalsáv és a typeahead-lekérdezés támogatását. A HTML-t a munkafolyamat vagy a megjelenés kibővítéséhez vagy testreszabásához offline módon módosíthatja.
 
 ### <a name="november-2019---ignite-conference"></a>November 2019 – Ignite konferencia
 
-+ A [növekményes indexelés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) lehetővé teszi a kiválasztását, és kiválaszthatja, hogy mely lépéseket kell újradolgozni a dúsítási folyamat módosításakor. A növekményes indexelés akkor hasznos, ha olyan képtartalommal rendelkezik, amelyet korábban elemezett. A költséges elemzés kimenete tárolva lesz, és a rendszer a további indexelés vagy bővítés alapjául szolgál.
++ A [növekményes bővítés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) gyorsítótárazást és statefullness tesz elérhetővé egy alkoholtartalom-növelési folyamathoz, így adott lépéseken vagy fázisokon dolgozhat a már feldolgozott tartalmak elvesztése nélkül. Korábban a dúsítási folyamat bármilyen módosítása teljes Újraépítés szükséges. A növekményes bővítéssel a költséges elemzések, különösen a képelemzések kimenete megmarad.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->

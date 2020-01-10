@@ -10,37 +10,40 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824176"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834295"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
 API Management házirendek a rendszer hatékony funkciója, amely lehetővé teszi, hogy a Azure Portal a konfiguráción keresztül megváltoztassa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A házirend-utasítások literális szöveges értékekkel, házirend-kifejezésekkel és elnevezett értékekkel állíthatók össze.
 
-Minden API Management Service-példányhoz kulcs/érték párokat tartalmazó tulajdonságok gyűjteménye tartozik, amely neve named Values, amely globális a szolgáltatási példány számára. A gyűjtemény elemeinek száma nincs korlátozva. A nevesített értékek használatával állandó karakterlánc-értékeket kezelhet az összes API-konfigurációban és-házirendben. Minden megnevezett érték a következő tulajdonságokkal rendelkezhet:
+Minden API Management Service-példányhoz kulcs/érték párok gyűjteménye tartozik, amely neve named Values, amely globális a szolgáltatási példány számára. A gyűjtemény elemeinek száma nincs korlátozva. A nevesített értékek használatával állandó karakterlánc-értékeket kezelhet az összes API-konfigurációban és-házirendben. Minden megnevezett érték a következő tulajdonságokkal rendelkezhet:
 
-| Attribútum      | Típus            | Leírás                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Attribútum      | Type (Típus)            | Leírás                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | sztring          | A megnevezett értékre hivatkozik a szabályzatokban. Egy 256 karakterből álló karakterlánc. Csak betűket, számokat, pontokat és kötőjeleket lehet engedélyezni. |
-| `Value`        | sztring          | Tényleges érték. Nem lehet üres, és nem állhat csak szóközökből. Legfeljebb 4096 karakter hosszú lehet.                                     |
-| `Secret`       | logikai         | Meghatározza, hogy az érték titkos-e, és hogy titkosítva legyen-e.                                                            |
+| `Value`        | sztring          | Tényleges érték. Nem lehet üres, és nem állhat csak szóközökből. Legfeljebb 4096 karakter hosszú lehet.                                        |
+| `Secret`       | logikai         | Meghatározza, hogy az érték titkos-e, és hogy titkosítva legyen-e.                                                               |
 | `Tags`         | sztringek tömbje | A megnevezett értékek listájának szűrésére szolgál. Legfeljebb 32 címkével.                                                                                    |
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
 A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket](/azure/api-management/api-management-policy-expressions)tartalmazhatnak. Az `Expression` értéke például egy olyan házirend-kifejezés, amely az aktuális dátumot és időpontot tartalmazó karakterláncot ad vissza. Az elnevezett érték `Credential` titkos kulcsként van megjelölve, ezért az értéke alapértelmezés szerint nem jelenik meg.
 
-| Név       | Érték                      | Titkos | Címkék          |
+| Név       | Value (Díj)                      | Titkos | Címkék          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Érték      | 42                         | False (Hamis)  | létfontosságú számok |
-| Hitelesítő adat | ••••••••••••••••••••••     | True (Igaz)   | biztonság      |
-| Kifejezés | @ (DateTime. Now. ToString ()) | False (Hamis)  |               |
+| Value (Díj)      | 42                         | Hamis  | létfontosságú számok |
+| Hitelesítő adat | ••••••••••••••••••••••     | Igaz   | biztonság      |
+| Kifejezés | @ (DateTime. Now. ToString ()) | Hamis  |               |
+
+> [!NOTE]
+> Egy API Management szolgáltatásban tárolt névvel ellátott értékek helyett a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) szolgáltatásban tárolt értékeket használhatja, ahogy azt a [példa](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)mutatja.
 
 ## <a name="to-add-and-edit-a-named-value"></a>Megnevezett érték hozzáadása és szerkesztése
 
@@ -50,7 +53,7 @@ A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket
 2. Válassza a **nevesített értékek**lehetőséget.
 3. Kattintson a **+ Hozzáadás**gombra.
 
-    A név és az érték kötelező érték. Ha az érték titkos, jelölje be a *titkos* jelölőnégyzetet. Adjon meg egy vagy több opcionális címkét, amely segítséget nyújt az elnevezett értékek megszervezésében, majd kattintson a Mentés gombra.
+    A név és az érték kötelező érték. Ha az érték titkos, jelölje be a _titkos_ jelölőnégyzetet. Adjon meg egy vagy több opcionális címkét, amely segítséget nyújt az elnevezett értékek megszervezésében, majd kattintson a Mentés gombra.
 
 4. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -101,13 +104,13 @@ Ezt kipróbálhatja a fejlesztői portálon egy olyan művelet meghívásával, 
 
 ![Fejlesztői portál][api-management-send-results]
 
-Ha megtekinti az [API Inspector nyomkövetését](api-management-howto-api-inspector.md) egy olyan híváshoz, amely tartalmazza a két korábbi, nevesített értékkel rendelkező minta szabályzatot, akkor a két `set-header` házirendet láthatja a beszúrt névvel, valamint a szabályzat kifejezés kiértékelése a megnevezett értékre a szabályzat kifejezése szerepel.
+Ha megtekinti az [API Inspector nyomkövetését](api-management-howto-api-inspector.md) egy olyan híváshoz, amely tartalmazza a két korábbi, névvel ellátott minta szabályzatot, akkor a két `set-header` házirendet láthatja a beszúrt névvel, valamint a szabályzat kifejezés kiértékelését a házirend kifejezést tartalmazó megnevezett értékre.
 
 ![API Inspector nyomkövetés][api-management-api-inspector-trace]
 
 Míg a nevesített értékek tartalmazhatnak házirend-kifejezéseket, nem tartalmazhatnak más nevesített értékeket. Ha egy megnevezett értékű hivatkozást tartalmazó szöveg szerepel egy értékhez (például `Text: {{MyProperty}}`), a hivatkozás nem lesz feloldva és lecserélve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   További információ a szabályzatok használatáról
     -   [Szabályzatok API Management](api-management-howto-policies.md)

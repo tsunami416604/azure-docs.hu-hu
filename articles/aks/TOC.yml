@@ -21,18 +21,27 @@
       items:
         - name: Vázlat használata
           href: kubernetes-draft.md
-        - name: A Visual Studio Code és az Azure Dev Spaces használata
-          href: ../dev-spaces/quickstart-netcore.md
-          maintainContext: true
-        - name: A Visual Studio és az Azure Dev Spaces használata
-          href: ../dev-spaces/quickstart-netcore-visualstudio.md
-          maintainContext: true
-        - name: A parancssori felület és az Azure Dev Spaces használata
-          href: ../dev-spaces/quickstart-cli.md
-          maintainContext: true
-        - name: Az Azure Dev Spaces használata csoportos fejlesztéshez
-          href: ../dev-spaces/quickstart-team-development.md
-          maintainContext: true
+        - name: Azure Dev Spaces
+          expanded: true
+          items:
+            - name: Az Azure Dev Spaces használata csoportos fejlesztéshez
+              href: ../dev-spaces/quickstart-team-development.md
+              maintainContext: true
+            - name: A Visual Studio Code használata
+              href: ../dev-spaces/quickstart-netcore.md
+              maintainContext: true
+            - name: A Visual Studio használata
+              href: ../dev-spaces/quickstart-netcore-visualstudio.md
+              maintainContext: true
+            - name: A parancssori felület (CLI) használata
+              href: ../dev-spaces/quickstart-cli.md
+              maintainContext: true
+            - name: Az Azure Dev Spaces használata – Java
+              href: ../dev-spaces/quickstart-java.md
+              maintainContext: true
+            - name: Az Azure Dev Spaces használata – Node.js
+              href: ../dev-spaces/quickstart-nodejs.md
+              maintainContext: true
 - name: Oktatóanyagok
   items:
     - name: 1 – Alkalmazás előkészítése az AKS-hez

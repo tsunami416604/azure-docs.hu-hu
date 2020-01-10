@@ -5,34 +5,51 @@ services: azure-portal
 keywords: ''
 author: mblythe
 ms.author: mblythe
-ms.date: 01/25/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3d2e6d2d0bde76a35a18373fabf64ce36c6c320e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 17d86b7c89ea5fb24c2adea22c5047c3e1ac3b6f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640142"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832684"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown csempe használata az Azure-irányítópultokon egyéni tartalom megjelenítéséhez
 
-Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csempét az Azure-irányítópultokhoz. Megjelenítheti például az alapszintű utasításokat, a képeket vagy a Markdown csempével rendelkező hiperhivatkozásokat.
+Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csempét az Azure-irányítópultokhoz. Megjelenítheti például az alapszintű utasításokat, a képeket vagy a hiperhivatkozások egy készletét egy Markdown csempén.
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>Markdown csempe hozzáadása az irányítópulthoz
 
-1. Válassza ki az **irányítópultot** a Azure Portal oldalsávon. Ha létrehozta az egyéni irányítópultokat, az irányítópult nézetben a legördülő listából válassza ki azt az irányítópultot, amelyben az egyéni Markdown csempének kell megjelennie. Kattintson a Szerkesztés ikonra a **csempék gyűjteményének**megnyitásához.
+1. Válassza ki az **irányítópultot** a Azure Portal oldalsávon.
+
+   ![A portál oldalsávját ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-nav.png)
+
+1. Ha létrehozta az egyéni irányítópultokat, az irányítópult nézetben a legördülő listából válassza ki azt az irányítópultot, amelyben az egyéni Markdown csempének kell megjelennie. Kattintson a Szerkesztés ikonra a **csempék gyűjteményének**megnyitásához.
 
    ![Az irányítópult szerkesztési nézetét bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-2. A **csempék gyűjteményében**keresse meg a **Markdown** nevű csempét, és kattintson a **Hozzáadás**gombra. Ekkor megjelenik a csempe az irányítópulton, és megnyílik a **Markdown szerkesztése** panel.
+1. A **csempék gyűjteményében**keresse meg a **Markdown** nevű csempét, és válassza a **Hozzáadás**lehetőséget. Ekkor megjelenik a csempe az irányítópulton, és megnyílik a **Markdown szerkesztése** panel.
 
-1. Szerkessze a **cím**, az **alcím**és a **tartalom** mezőket a csempe testreszabásához. Az itt látható példában a Markdown csempe úgy lett szerkesztve, hogy az egyéni ügyfélszolgálat adatait jelenítse meg.
+1. Adja meg a **cím** és az **alcím**értékét, amely a csempén jelenik meg, miután áthelyezte egy másik mezőre.
 
-   ![A Markdown csempe szerkesztési nézetét bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![A cím és alcím beírásának eredményeit bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-4. A **kész** gombra kattintva zárja be a **Markdown szerkesztése** panelt. A tartalom megjelenik a Markdown csempén, amelyet aztán a jobb alsó sarokban lévő fogantyú húzásával lehet átméretezni.
+1. Válassza ki az egyik lehetőséget, amely tartalmazza a Markdown tartalmakat: **beágyazott szerkesztés** vagy **tartalom beszúrása URL-cím használatával**.
+
+   - Ha közvetlenül szeretné megadni a Markdown, válassza a **beágyazott szerkesztés** lehetőséget.
+
+      ![A beágyazott tartalom bevitelét bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+
+   - Válassza a **tartalom beszúrása URL-cím használatával** lehetőséget, ha a meglévő, online Markdown-tartalmat szeretné használni.
+
+      ![Az URL-cím beírását bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+
+      > [!NOTE]
+      > A további biztonság érdekében létrehozhat egy Markdown-fájlt, és tárolhatja azt egy [Azure Storage-fiók blobjában, ahol engedélyezve van a titkosítás](../storage/common/storage-service-encryption.md), majd mutasson a fájlra az URL-cím beállítás használatával. A Markdown-tartalom titkosítva van a Storage-fiók titkosítási beállításain keresztül. Csak a fájlra vonatkozó engedélyekkel rendelkező felhasználók láthatják a Markdown tartalmát az irányítópulton.
+
+1. A **kész** gombra kattintva zárja be a **Markdown szerkesztése** panelt. A tartalom megjelenik a Markdown csempén, amelyet a jobb alsó sarokban lévő fogantyú húzásával méretezheti át.
 
    ![Az egyéni Markdown csempét ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: Leképezések
       href: knowledge-store-projection-overview.md
-    - name: Növekményes indexelés
+    - name: Növekményes bővítés
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Útmutatók
   items:
@@ -237,9 +237,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Leképezés index mezőire
               href: cognitive-search-output-field-mapping.md
-            - name: Képeken szereplő információk feldolgozása és kinyerése
+            - name: Információk kinyerése képekből
               href: cognitive-search-concept-image-scenarios.md
-            - name: A növekményes indexelés beállítása
+            - name: Gyorsítótár (növekményes) bővítése
               href: search-howto-incremental-index.md
         - name: Egyéni készségek
           items:
@@ -330,7 +330,11 @@
     - name: REST (Management)
       href: /rest/api/searchmanagement
     - name: REST (előzetes verzió)
-      href: search-api-preview.md
+      items:
+        - name: API-verzió (2019-05-06) előnézete
+          href: search-api-preview.md
+        - name: ResetSkills API
+          href: preview-api-resetskills.md
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.search/searchservices
     - name: OData nyelvi referencia

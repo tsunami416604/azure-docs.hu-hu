@@ -1,24 +1,25 @@
 ---
-title: 'Több VPN Gateway-helyek közötti kapcsolat hozzáadása egy VNet: Azure Portal: Resource Manager | Microsoft Docs'
+title: 'Több VPN Gateway-helyek közötti kapcsolat hozzáadása egy VNet: Azure Portal'
 description: Többhelyes S2S-kapcsolatok hozzáadása meglévő kapcsolattal rendelkező VPN-átjáróhoz
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244620"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779688"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 >
 > 
@@ -45,28 +46,28 @@ Ellenőrizze a következő elemeket:
 * A VPN-eszközhöz külsőleg megtekintett nyilvános IP-címet kell megnéznie. Ez az IP-cím nem lehet NAT mögötti.
 
 ## <a name="part1"></a>1. rész – kapcsolat konfigurálása
-1. Egy böngészőből keresse fel az [Azure portált](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+1. Egy böngészőből keresse fel az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 2. Kattintson a **minden erőforrás** lehetőségre, és keresse meg a **virtuális hálózati átjárót** az erőforrások listájából, és kattintson rá.
 3. A **virtuális hálózati átjáró** lapon kattintson a **kapcsolatok**elemre.
    
-    ![Kapcsolatok oldal](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Kapcsolatok oldal")<br>
+    ![Kapcsolatok lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Kapcsolatok lap")<br>
 4. A **kapcsolatok** lapon kattintson a **+ Hozzáadás**gombra.
    
-    A kapcsolatok hozzáadása ![gomb](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "hozzáadása gomb")<br>
+    ![Kapcsolatok hozzáadása gomb](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Kapcsolatok hozzáadása gomb")<br>
 5. A **kapcsolatok hozzáadása** lapon töltse ki a következő mezőket:
    
    * **Név:** Az a név, amelyet a helyhez szeretne adni, amelyhez a kapcsolódást hozza létre.
    * **Kapcsolattípus:** Válassza **a helyek közötti (IPSec)** lehetőséget.
      
-     ![Kapcsolatok hozzáadása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "kapcsolatok hozzáadása lapja")<br>
+     ![A kapcsolatok hozzáadása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "A kapcsolatok hozzáadása lap")<br>
 
 ## <a name="part2"></a>2. rész – helyi hálózati átjáró hozzáadása
 1. Kattintson a **helyi hálózati átjáró** elemre, és ***válassza ki a helyi hálózati átjárót***. Ekkor megnyílik a **helyi hálózati átjáró kiválasztása** lap.
    
-    ![Helyi hálózati átjáró]választása(./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "helyi hálózati átjáró választása")<br>
+    ![Helyi hálózati átjáró kiválasztása](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Helyi hálózati átjáró kiválasztása")<br>
 2. Kattintson az **új létrehozása** elemre a **helyi hálózati átjáró létrehozása** lap megnyitásához.
    
-    ![Helyi hálózati átjáró létrehozása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "helyi hálózati átjáró létrehozása")<br>
+    ![Helyi hálózati átjáró létrehozása lap](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Helyi hálózati átjáró létrehozása")<br>
 3. A **helyi hálózati átjáró létrehozása** lapon töltse ki a következő mezőket:
    
    * **Név:** A helyi hálózati átjáró erőforrásához adni kívánt név.

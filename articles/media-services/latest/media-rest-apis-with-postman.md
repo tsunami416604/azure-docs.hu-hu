@@ -1,5 +1,5 @@
 ---
-title: Poster konfigurálása Azure Media Services REST API hívásokhoz
+title: Poster konfigurálása Azure Media Services v3 REST API-hívásokhoz
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a Poster-t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888104"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779637"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Poster konfigurálása Media Services REST API hívásokhoz
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Poster konfigurálása Media Services v3 REST API-hívásokhoz
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a **Poster** -t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására. A cikk bemutatja, hogyan importálhatja a környezet és a gyűjtemény fájljait a **Poster**-ba. A gyűjtemény a Azure Media Services (AMS) REST API-kat meghívó HTTP-kérések csoportosított definícióit tartalmazza. A környezeti fájl azokat a változókat tartalmazza, amelyeket a gyűjtemény használ.
 
@@ -92,7 +92,7 @@ Az AMS v3-erőforrások kezelésének megkezdése előtt be kell szereznie és b
 
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="troubleshooting"></a>Hibakeresés 
+## <a name="troubleshooting"></a>Hibaelhárítás 
 
 * Ha az alkalmazás a "HTTP 504: Gateway timeout" művelettel meghiúsul, győződjön meg arról, hogy a Location változó nincs explicit módon beállítva a Media Services fiók várt helyétől eltérő értékre. 
 * Ha "a fiók nem található" hibaüzenet jelenik meg, ellenőrizze, hogy a szövegtörzs JSON-üzenetében található Location tulajdonság arra a helyre van-e beállítva, amelyben a Media Services fiók található. 

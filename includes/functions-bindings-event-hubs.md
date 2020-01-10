@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 27333f272ca5000fd3b09b305712875c065f6bc7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2ab07e55606533390f6f3d2da3caf3ceee981e14
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924439"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75840691"
 ---
 ## <a name="trigger"></a>Eseményindító
 
@@ -337,7 +337,7 @@ def main(event: func.EventHubEvent):
 
 ### <a name="trigger---java-example"></a>Trigger – Java-példa
 
-Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban és egy olyan [Java-függvényben](../articles/azure-functions/functions-reference-java.md) , amely a kötést használja. A függvény naplózza az Event hub eseményindítójának üzenet törzsét.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Java-függvényt](../articles/azure-functions/functions-reference-java.md) , amely a kötést használja. A függvény naplózza az Event hub eseményindítójának üzenet törzsét.
 
 ```json
 {
@@ -389,11 +389,10 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attrib
 |**direction** | – | `in`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
 |**név** | – | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
+|**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. Hivatkozhatók a (z)% eventHubName% alkalmazás beállításain keresztül |
 |**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a rendszer a `$Default` fogyasztói csoportot használja. |
-|**számosság** | – | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva vagy `one`értékre van állítva, a rendszer a függvénynek átadott üzenetet küld. |
+|**számosság** | – | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva, vagy a `one`értékre van állítva, a függvény egyetlen üzenetet ad át. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
-|**elérési útja**|**EventHubName**|Az Event hub neve. Az alkalmazás beállításain keresztül lehet hivatkozni `%eventHubName%`|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -450,7 +449,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Az alábbi minta azt mutatja be, hogyan lehet a `IAsyncCollector` felületen elküldeni egy köteg üzenetet. Ez a forgatókönyv gyakori, ha egy adott esemény központból érkező üzeneteket dolgoz fel, és az eredményt egy másik Event hub számára küldi el.
+Az alábbi példa azt szemlélteti, hogyan lehet a `IAsyncCollector` felületen elküldeni egy köteg üzenetet. Ez a forgatókönyv gyakori, ha egy adott esemény központból érkező üzeneteket dolgoz fel, és az eredményt egy másik Event hub számára küldi el.
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -640,13 +639,13 @@ def main(timer: func.TimerRequest) -> str:
 
 ### <a name="output---java-example"></a>Kimenet – Java-példa
 
-Az alábbi példa egy Java-függvényt mutat be, amely az aktuális időponthoz tartozó üzenetet ír egy Event hub-ba.
+Az alábbi példa egy Java-függvényt mutat be, amely egy Event hub aktuális időpontját tartalmazó üzenetet ír.
 
 ```java
 @FunctionName("sendTime")
 @EventHubOutput(name = "event", eventHubName = "samples-workitems", connection = "AzureEventHubConnection")
 public String sendTime(
-   @TimerTrigger(name = "sendTimeTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo)  {
+   @TimerTrigger(name = "sendTimeTrigger", schedule = "0 */5 * * * *") String timerInfo)  {
      return LocalDateTime.now().toString();
  }
 ```

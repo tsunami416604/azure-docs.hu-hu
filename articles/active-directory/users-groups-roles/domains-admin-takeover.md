@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027373"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834188"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként Azure Active Directory
 
@@ -56,7 +56,7 @@ Az előző lépések elvégzése után Ön most már az Office 365 negyedik káv
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Tartománynév hozzáadása felügyelt bérlőhöz az Azure AD-ben
 
-1. Nyissa meg a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com).
+1. Nyissa meg a [Microsoft 365 Felügyeleti központot](https://admin.microsoft.com).
 2. Válassza a **felhasználók** fület, és hozzon létre egy olyan nevű új felhasználói fiókot, amelynek a neve például a *User\@fourthcoffeexyz.onmicrosoft.com* , amely nem az egyéni tartománynevet használja. 
 3. Győződjön meg arról, hogy az új felhasználói fiók globális rendszergazdai jogosultságokkal rendelkezik az Azure AD-bérlőhöz.
 4. Nyissa meg a **tartományok** fület a Microsoft 365 felügyeleti központban, válassza ki a tartománynevet, és válassza az **Eltávolítás**lehetőséget. 
@@ -130,40 +130,40 @@ parancsmag | Használat
 
 1. Kapcsolódjon az Azure AD-hez az önkiszolgáló ajánlatra való válaszadáshoz használt hitelesítő adatok használatával:
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. Tartományok listájának lekérése:
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. A Get-MsolDomainVerificationDns parancsmag futtatásával hozzon létre egy kihívást:
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    Példa:
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Másolja ki a parancs által visszaadott értéket (a kihívást). Például:
+4. Másolja ki a parancs által visszaadott értéket (a kihívást). Példa:
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. A nyilvános DNS-névtérben hozzon létre egy olyan DNS TXT-rekordot, amely az előző lépésben másolt értéket tartalmazza. A rekord neve a szülőtartomány neve, így ha létrehozza ezt az erőforrásrekordot a Windows Server DNS-szerepkörének használatával, hagyja üresen a rekord nevét, és illessze be az értéket a szövegmezőbe.
 6. Futtassa a Confirm-MsolDomain parancsmagot a probléma ellenőrzéséhez:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Például:
+   Példa:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 A sikeres kihívás egy hiba nélkül visszaadja a kérést.
@@ -171,10 +171,10 @@ A sikeres kihívás egy hiba nélkül visszaadja a kérést.
 ## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
-* [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-Msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png

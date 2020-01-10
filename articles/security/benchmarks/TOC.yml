@@ -1,10 +1,10 @@
-- name: Azure-biztonsági teljesítményteszt
+- name: Az Azure biztonsági teljesítménytesztjei
   href: index.yml
 - name: Introduction (Bevezetés)
   href: introduction.md
 - name: Biztonsági vezérlők
   items:
-    - name: Áttekintés
+    - name: Az Azure-beli biztonsági vezérlők áttekintése
       href: overview.md
     - name: Hálózati biztonság
       href: security-control-network-security.md

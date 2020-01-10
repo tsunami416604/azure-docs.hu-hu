@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: Adatok streamelése a Stream Analyticsszel
           href: sql-database-stream-analytics.md
+        - name: SQLite-adatbázis migrálása a kiszolgáló nélküli Azure SQL Database-be
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Alapelvek
       items:
         - name: Az önálló adatbázis erőforrásai

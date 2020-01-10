@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373247"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780079"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Mi az az IPv6 for Azure Virtual Network? (Előzetes verzió)
 
@@ -75,7 +75,7 @@ Az IPv6 for Azure VNET egy alapszintű szolgáltatáskészlet, amely lehetővé 
 ## <a name="limitations"></a>Korlátozások
 Az Azure Virtual Network jelenlegi IPv6-kiadása a következő korlátozásokkal rendelkezik:
 - Az Azure Virtual Network (előzetes verzió) IPv6 az összes globális Azure-régióban elérhető, de csak a globális Azure-ban – a kormányzati felhőkben még nem.
-- Az expressz útvonal és a VPN-átjárók nem használhatók olyan VNET, amelyeken engedélyezve van az IPv6, vagy közvetlenül, vagy a "UseRemoteGateway" kapcsolattal. 
+- A ExpressRoute és a VPN-átjárók nem használhatók olyan VNET, amelyeken engedélyezve van az IPv6, vagy közvetlenül a "UseRemoteGateway" kapcsolattal. 
 - Az Azure platform (ak stb.) nem támogatja az IPv6-alapú kommunikációt a tárolók esetében.  
 
 ## <a name="pricing"></a>Díjszabás
