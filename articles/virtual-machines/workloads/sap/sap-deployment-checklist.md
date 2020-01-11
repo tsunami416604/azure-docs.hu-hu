@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425933"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896031"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -76,7 +76,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - [Címkézési stratégia](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing).
     - A virtuális gépek és egyéb infrastruktúra-összetevők és/vagy logikai nevek elnevezési konvenciói.
 5.  Microsoft Premier szintű támogatás szerződés. Azonosítsa a Microsoft technikai fiókkezelő (TAM) eszközét. Az SAP-támogatási követelményekkel kapcsolatban lásd: [SAP-támogatási megjegyzés #2015553](https://launchpad.support.sap.com/#/notes/2015553).
-6.  Az előfizetésekhez tartozó Azure-előfizetések és a fő kvóta száma. Az [Azure-előfizetések kvótáinak igény szerinti növeléséhez nyissa meg a támogatási kérelmeket](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .
+6.  Az előfizetésekhez tartozó Azure-előfizetések és a fő kvóta száma. Az [Azure-előfizetések kvótáinak igény szerinti növeléséhez nyissa meg a támogatási kérelmeket](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
 7.  Adatmennyiség-csökkentési és adatáttelepítési terv az SAP-beli Azure-ba való Migrálás során. Az SAP NetWeaver Systems esetében az SAP a nagy adatmennyiségek mennyiségének korlátozására vonatkozó útmutatást tartalmaz. Tekintse meg [ezt az SAP-útmutatót](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) az SAP ERP-rendszerek adatkezelésével foglalkozó témakörben. Néhány tartalom általában a NetWeaver és S/4HANA rendszerekre is vonatkozik.
 8.  Automatikus üzembe helyezési módszer. Az infrastruktúra Azure-beli üzembe helyezésének célja, hogy determinisztikus módon telepítsen, és determinisztikus eredményeket kapjon. Számos ügyfél PowerShell-vagy CLI-alapú parancsfájlokat használ. Vannak azonban olyan nyílt forráskódú technológiák, amelyek segítségével üzembe helyezheti az Azure-infrastruktúrát az SAP számára, és akár SAP-szoftvert is telepíthet. Példákat a GitHubon talál:
     - [Automatizált SAP-üzembe helyezések az Azure-felhőben](https://github.com/Azure/sap-hana)

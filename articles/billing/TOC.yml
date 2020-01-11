@@ -232,7 +232,7 @@
     - name: Vállalati költségek nézet letiltva
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kapcsolatfelvétel a támogatási szolgáltatással
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Példák
   items:
     - name: REST API

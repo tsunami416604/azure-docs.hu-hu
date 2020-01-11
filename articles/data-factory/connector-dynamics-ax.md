@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 2a2debf9b1cbc669d2402b1797097b97e94139fc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4acad5e2de55211b6c4492513f331c36286ed852
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929479"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892786"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Adatok másolása a Dynamics AX-ból Azure Data Factory használatával
 
@@ -106,7 +106,7 @@ Ha adatokat szeretne másolni a Dynamics AX-ból, állítsa az adatkészlet **Ty
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet **Type** tulajdonságát **DynamicsAXResource**értékre kell állítani. | Igen |
-| elérési út | A Dynamics AX OData entitás elérési útja. | Igen |
+| path | A Dynamics AX OData entitás elérési útja. | Igen |
 
 **Példa**
 
@@ -181,4 +181,4 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 ## <a name="next-steps"></a>Következő lépések
 
-A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md##supported-data-stores-and-formats)című témakörben.
+A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

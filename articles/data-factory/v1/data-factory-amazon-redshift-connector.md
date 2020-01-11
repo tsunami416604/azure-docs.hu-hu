@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924868"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894217"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -38,7 +38,7 @@ Data Factory jelenleg csak az Amazon vöröseltolódásról származó adatok á
 * Ha helyszíni adattárba helyezi át az adatátvitelt, telepítse [adatkezelés átjárót](data-factory-data-management-gateway.md) egy helyszíni gépre. A helyszíni számítógép IP-címének használatával adjon hozzáférést egy átjáróhoz az Amazon Vöröseltolódási fürthöz. Útmutatásért lásd: [hozzáférés engedélyezése a fürthöz](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Az adatok Azure-adattárba való áthelyezéséhez tekintse meg az [Microsoft Azure adatközpontok által használt számítási IP-címeket és SQL-tartományokat](https://www.microsoft.com/download/details.aspx?id=41653).
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök és API-k használatával helyezi át az adatait egy Amazon Vöröseltolódási forrásból.
 
 A folyamat létrehozásának legegyszerűbb módja a Azure Data Factory másolási varázsló használata. A folyamat a másolás varázslóval történő létrehozásával kapcsolatos gyors útmutatóért tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md)című témakört.
@@ -146,7 +146,7 @@ A minta a következő adatgyári entitásokat tartalmazhatja:
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
 * [RelationalTable](#dataset-properties) típusú bemeneti [adatkészlet](data-factory-create-datasets.md)
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) típusú kimeneti [adatkészlet](data-factory-create-datasets.md)
-* A [RelationalSource](#copy-activity-properties) és a [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties) tulajdonságot használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md)
+* A [RelationalSource](#copy-activity-properties) és a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) tulajdonságot használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md)
 
 A minta az Amazon vöröseltolódását egy lekérdezési eredményből másolja egy Azure-blobba óránként. A mintában használt JSON-tulajdonságokat az entitás-definíciókat követő szakaszokban ismertetjük.
 

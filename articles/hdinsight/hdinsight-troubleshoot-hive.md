@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 9169bd9a63666238e9d6b97d86bf1e9e10312c1b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076509"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895234"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Apache Hive az Azure HDInsight használatával – problémamegoldás
 
@@ -23,7 +23,7 @@ Ismerkedjen meg a legfontosabb kérdésekkel és azok megoldásával, amikor az 
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Csatlakozzon a HDInsight-fürthöz egy Secure Shell (SSH) ügyfél használatával. További információkért lásd: [További olvasnivaló](#additional-reading-end).
+1. Kapcsolódjon a HDInsight-fürthöz egy Secure Shell-(SSH-) ügyfél használatával. További információ: [további olvasás](#additional-reading-end).
 
 2. Futtassa a következő parancsot azon a HDInsight-fürtön, amelyről exportálni kívánja a metaadattár:
 
@@ -39,7 +39,7 @@ Ismerkedjen meg a legfontosabb kérdésekkel és azok megoldásával, amikor az 
     hive -f alltables.sql
     ```
 
-A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön lévő adatelérési utak megegyeznek a régi fürtön lévő adatelérési utakkal. Ha az adatelérési utak eltérnek, manuálisan szerkesztheti a `alltables.sql` létrehozott fájlt, hogy az tükrözze a módosításokat.
+A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön lévő adatelérési utak megegyeznek a régi fürtön lévő adatelérési utakkal. Ha az adatelérési utak eltérőek, manuálisan szerkesztheti a generált `alltables.sql` fájlt, hogy tükrözze a módosításokat.
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
@@ -49,7 +49,7 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Kapcsolódjon a HDInsight-fürthöz az SSH használatával. További információkért lásd: **További olvasnivaló**.
+1. Kapcsolódjon a HDInsight-fürthöz az SSH használatával. További információ: **további olvasás**.
 
 2. A kaptár-ügyfél naplófájljainak megtekintéséhez használja a következő parancsot:
 
@@ -77,7 +77,7 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. A kaptár rendszerhéj indításakor a konfigurációs kulcs-érték párokat kell megadni. További információkért lásd: [További olvasnivaló](#additional-reading-end).
+1. A kaptár rendszerhéj indításakor a konfigurációs kulcs-érték párokat kell megadni. További információ: [további olvasás](#additional-reading-end).
 
    ```apache
    hive -hiveconf a=b
@@ -103,7 +103,7 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. Ha az Apache TEZ irányított aciklikus gráfot (DAG) szeretné elemezni egy fürtre kritikus gráfon, csatlakozzon a HDInsight-fürthöz SSH használatával. További információkért lásd: [További olvasnivaló](#additional-reading-end).
+1. Ha az Apache TEZ irányított aciklikus gráfot (DAG) szeretné elemezni egy fürtre kritikus gráfon, csatlakozzon a HDInsight-fürthöz SSH használatával. További információ: [további olvasás](#additional-reading-end).
 
 2. A parancssorban futtassa a következő parancsot:
 
@@ -120,17 +120,17 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
    Meg kell adnia egy példaként szolgáló programot az első argumentumként.
 
    A program érvényes nevei a következők:
-    - **ContainerReuseAnalyzer**: A nyomtató tárolójának újrafelhasználási részletei egy DAG-ben
-    - **CriticalPath**: A DAG kritikus elérési útjának megkeresése
-    - **LocalityAnalyzer**: A területi adatok kinyomtatása egy DAG-ben
-    - **ShuffleTimeAnalyzer**: A véletlenszerű idő részleteinek elemzése egy DAG-ben
-    - **SkewAnalyzer**: Az elferdítés részleteinek elemzése egy DAG-ben
-    - **SlowNodeAnalyzer**: Csomópont részleteinek kinyomtatása egy DAG-ben
-    - **SlowTaskIdentifier**: Lassú feladat adatainak nyomtatása DAG-ben
-    - **SlowestVertexAnalyzer**: Leglassabb csúcspont-Részletek nyomtatása egy DAG-ben
-    - **SpillAnalyzer**: Kiszivárgás részletei egy DAG-ben
-    - **TaskConcurrencyAnalyzer**: A feladat egyidejűségi részleteinek nyomtatása DAG-ben
-    - **VertexLevelCriticalPathAnalyzer**: Kritikus elérési út megkeresése a DAG szintjén
+    - **ContainerReuseAnalyzer**: tárolók ismételt újrafelhasználásának részletei egy Dag-ben
+    - **CriticalPath**: a Dag kritikus elérési útját keresi
+    - **LocalityAnalyzer**: a területi adatok kinyomtatása egy Dag-ben
+    - **ShuffleTimeAnalyzer**: a megcsoszogott idő részleteinek elemzése egy Dag-ben
+    - **SkewAnalyzer**: az elferdítés részleteinek elemzése egy Dag-ben
+    - **SlowNodeAnalyzer**: csomópont adatainak nyomtatása Dag-ben
+    - **SlowTaskIdentifier**: lassú feladat adatainak nyomtatása egy Dag-ben
+    - **SlowestVertexAnalyzer**: a leglassabb csúcspont-Részletek nyomtatása egy Dag-ben
+    - **SpillAnalyzer**: a nyomtatási kiömlés részletei egy Dag-ben
+    - **TaskConcurrencyAnalyzer**: a feladat egyidejűségi adatainak nyomtatása egy Dag-ben
+    - **VertexLevelCriticalPathAnalyzer**: megkeresi a kritikus elérési utat a vertex szinten egy Dag-ben
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
@@ -161,12 +161,12 @@ Kétféle módon gyűjthetjük össze a TEZ DAG-adatokat:
 
 [Kapcsolódás HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 - Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+- Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

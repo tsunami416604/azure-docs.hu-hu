@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 0e6631d36f8b8153c34f787f8941b45b7522aceb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083925"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893901"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>A Microsoft Azure Site Recovery Provider frissítésével kapcsolatos hibák elhárítása
 
@@ -27,14 +27,14 @@ A frissítés nem támogatott, mert a szoftver újabb verziója már telepítve 
 A frissítéshez kövesse az alábbi lépéseket:
 
 1. Töltse le a Microsoft Azure Site Recovery egyesített telepítőt:
-   1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md##links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
+   1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md#links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
    2. Az Összesítés lapon keresse meg a **frissítési adatok** szakaszt, és töltse le a Microsoft Azure site Recovery egyesített telepítő kumulatív frissítését.
 
 2. Nyisson meg egy parancssort, és navigáljon ahhoz a mappához, amelyhez az egyesített telepítőfájlt letöltötte. Bontsa ki a telepítő fájljait a letöltésből a következő paranccsal, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappa elérési útja a kibontott fájlokhoz&gt;.
     
-    A példában szereplő parancs:
+    Példa parancs:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\Temp\Extracted
 
 3. A parancssorban navigáljon ahhoz a mappához, amelyhez kibontotta a fájlokat, és futtassa a következő telepítési parancsokat:
    
@@ -51,13 +51,13 @@ A probléma megoldásához.
 1. Indítsa el a Beállításszerkesztőt (Regedit. exe), és nyissa meg a HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
 1. Ellenőrizze a `Build_Version` kulcs értékét. Ha a legújabb verzióra van beállítva, csökkentse a verziószámot. Ha például a legújabb verzió a 9,22.\* és az `Build_Version` kulcs értéke erre az értékre van állítva, majd csökkentse 9,21-ra.\*.
 1. Töltse le a legújabb Microsoft Azure Site Recovery egyesített telepítőt:
-   1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md##links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
+   1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md#links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
    2. Az Összesítés lapon keresse meg a **frissítési adatok** szakaszt, és töltse le a Microsoft Azure site Recovery egyesített telepítő kumulatív frissítését.
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a mappához, amelyhez az egyesített telepítőfájlt letöltötte, és a telepítési fájlok kibontása a letöltésből a következő paranccsal, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappa elérési útja a kibontott fájlokhoz&gt;.
 
-    A példában szereplő parancs:
+    Példa parancs:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\Temp\Extracted
 
 1. A parancssorban navigáljon ahhoz a mappához, amelyhez kibontotta a fájlokat, és futtassa a következő telepítési parancsokat:
    

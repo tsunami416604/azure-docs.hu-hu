@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647424"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895317"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight-fürtön futó lassú vagy sikertelen feladat hibáinak megoldása
 
@@ -91,7 +91,7 @@ A HDInsight számos Azure-szolgáltatásra támaszkodik. Virtuális kiszolgáló
 #### <a name="check-azure-service-usage-limits"></a>Az Azure-szolgáltatások használati korlátainak keresése
 
 Ha nagyméretű fürtöt indít, vagy egyszerre sok fürtöt indított el, a fürt meghiúsulhat, ha túllépte az Azure-szolgáltatási korlátot. A szolgáltatás korlátai az Azure-előfizetéstől függően változnak. További információk: [Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére vonatkozó kéréssel](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Kérheti, hogy a Microsoft növelje a rendelkezésre álló HDInsight-erőforrások (például a virtuálisgép-magok és a virtuálisgép-példányok) számát a [Resource Manager Core kvóta növelésére vonatkozó kéréssel](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>A kiadás verziójának keresése
 

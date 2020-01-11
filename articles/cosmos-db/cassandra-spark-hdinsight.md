@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés az Azure Cosmos DB Cassandra API a Spark a YARN-HDInsight
-description: Ez a cikk bemutatja, hogyan működik az Azure Cosmos DB Cassandra API a Spark on HDInsight a YARN
+title: Hozzáférés Azure Cosmos DB Cassandra API a Sparkból a HDInsight-mel
+description: Ez a cikk azt ismerteti, hogyan használható a Spark on Azure Cosmos DB Cassandra API a HDInsight-mel
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,34 +8,34 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893702"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887632"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés az Azure Cosmos DB Cassandra API a Spark a YARN-HDInsight
+# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés Azure Cosmos DB Cassandra API a Sparkból a HDInsight-mel
 
-Ez a cikk bemutatja, hogyan a Spark on HDInsight-Spark a YARN a spark-shell az Azure Cosmos DB Cassandra API elérését. HDInsight a Microsoft Hortonworks Hadoop PaaS Azure objektumtár használja a HDFS, és számos változata használható, beleértve a érhető el a rendszer [Spark](../hdinsight/spark/apache-spark-overview.md).  Amíg ez a dokumentum a tartalmának a Spark HDInsight hivatkozik, esetén minden Hadoop disztribúciók alkalmazható.  
+Ez a cikk bemutatja, hogyan érheti el Azure Cosmos DB Cassandra API a Sparkból a HDInsight-Sparkból a Spark-shellből. A HDInsight a Microsoft Hortonworks Hadoop, amely az Azure-on található, és a HDFS számos különböző, többek között a [Spark](../hdinsight/spark/apache-spark-overview.md)használatát is lehetővé teszi.  Habár a jelen dokumentumban szereplő tartalom a HDInsight-Spark-ra hivatkozik, minden Hadoop-eloszlásra érvényes.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Az Azure Cosmos DB Cassandra API üzembe helyezése](create-cassandra-dotnet.md#create-a-database-account)
+* [Azure Cosmos DB kiépítése Cassandra API](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Az Azure Cosmos DB Cassandra API-t kapcsolódás alapjai](cassandra-spark-generic.md)
+* [Tekintse át Azure Cosmos DB Cassandra APIhoz való csatlakozás alapjait](cassandra-spark-generic.md)
 
-* [A Spark HDInsight-fürt üzembe helyezése](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
+* [HDInsight-Spark-fürt kiépítése](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
 
-* [Tekintse át a mintakódokat, a Cassandra API használata](cassandra-spark-generic.md#next-steps)
+* [Tekintse át a Cassandra API használatáról szóló kód mintáit](cassandra-spark-generic.md#next-steps)
 
-* [Cqlsh ellenőrzés céljából használja, így igény szerint](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Cqlsh használata az érvényesítéshez, ha szeretné](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Cassandra API-konfigurációt a Spark2** -Cassandra a Spark-összekötő szükséges, hogy a Cassandra-kapcsolatot a részletek a Spark környezet részeként inicializálni. Ha elindítja egy Jupyter notebookot, a spark-munkamenetet, és a környezet már inicializálva vannak, és nem tanácsos leállítása és a Spark környezet újrainicializálása, kivéve, ha ez kész, de minden beállítani, a HDInsight alapértelmezett Jupyter notebook indítási konfiguráció. Egy lehetséges megoldást, hogy a Cassandra példány részleteit hozzá Ambari, közvetlenül a Spark2 szolgáltatás konfigurációja. Ez a Spark2 szolgáltatás újraindítását igénylő fürtönként egy egyszeri tevékenységet.
+* **Cassandra API konfiguráció a Spark2-ben** – a Cassandra Connector for Cassandra szükséges, hogy a Cassandra kapcsolat részletei a Spark-környezet részeként legyenek inicializálva. A Jupyter-jegyzetfüzet indításakor a Spark-munkamenet és a környezet már inicializálva van, és nem tanácsos leállítani és újrainicializálni a Spark-környezetet, kivéve, ha az HDInsight alapértelmezett Jupyter-jegyzetfüzet-telepítés részeként beállított minden konfigurációs beállítással rendelkezik. Az egyik megkerülő megoldás, ha a Cassandra-példány részleteit közvetlenül a Ambari, a Spark2 szolgáltatás konfigurációjában adja hozzá. Ez egy egyszeri tevékenység, amely egy Spark2 szolgáltatás újraindítását igényli.
  
-  1. Nyissa meg az Ambari, Spark2 szolgáltatás és a select configs
+  1. Nyissa meg a Ambari, a Spark2 szolgáltatást, és válassza a konfigurációk lehetőséget.
 
-  2. Ezután nyissa meg az egyéni spark2-alapértelmezett, és adja hozzá az alábbi új tulajdonság, és Spark2 szolgáltatás újraindítása:
+  2. Ezután nyissa meg az egyéni spark2-alapértékeket, és adjon hozzá egy új tulajdonságot a következővel, és indítsa újra a Spark2 szolgáltatást:
 
   ```scala
   spark.cassandra.connection.host=YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com<br>
@@ -45,17 +45,17 @@ Ez a cikk bemutatja, hogyan a Spark on HDInsight-Spark a YARN a spark-shell az A
   spark.cassandra.auth.password=YOUR_COSMOSDB_KEY<br>
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Hozzáférés az Azure Cosmos DB Cassandra API a Spark-shell
+## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Hozzáférés Azure Cosmos DB Cassandra API a Spark shellből
 
-Spark-shell tesztelés/feltárás célokat szolgál.
+A Spark Shell tesztelési/feltárási célokra szolgál.
 
-* Indítsa el a spark-shell a szükséges maven függőségekkel a fürtön a Spark-verzióval kompatibilis.
+* Indítsa el a Spark-shellt a fürt Spark-verziójával kompatibilis szükséges Maven-függőségekkel.
 
   ```scala
   spark-shell --packages "com.datastax.spark:spark-cassandra-connector_2.11:2.3.0,com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0"
   ```
 
-* Néhány DDL és DML-művelet végrehajtása
+* Néhány DDL-és DML-művelet végrehajtása
 
   ```scala
   import org.apache.spark.rdd.RDD
@@ -86,7 +86,7 @@ Spark-shell tesztelés/feltárás célokat szolgál.
   spark.conf.set("spark.cassandra.connection.keep_alive_ms", "60000000") //Increase this number as needed
   ```
 
-* CRUD-műveletek futtatása
+* SZIFILISZ-műveletek futtatása
 
   ```scala
   //1) Create table if it does not exist
@@ -112,28 +112,28 @@ Spark-shell tesztelés/feltárás célokat szolgál.
   spark.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "books", "keyspace" -> "books_ks")).load.show
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Hozzáférés az Azure Cosmos DB Cassandra API a Jupyter notebookok
+## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Hozzáférés Azure Cosmos DB Cassandra API Jupyter-jegyzetfüzetből
 
-A Spark HDInsight Zeppelin és a Jupyter notebook szolgáltatásokat tartalmaz. Mindkét, amelyek támogatják a Scala- és Python webes notebook környezetben. Notebookok kitűnően alkalmasak interaktív és feltáró jellegű elemzési és együttműködést, de nem jelentette az operatív/productionized folyamatok.
+A HDInsight-Spark a Zeppelin és a Jupyter notebook-szolgáltatásokkal is rendelkezik. Ezek mind a web-alapú notebook-környezetek, amelyek támogatják a Scalat és a Pythont. A notebookok hasznosak az interaktív felderítő elemzésekhez és az együttműködéshez, de nem jelentenek operatív/éles folyamatokat.
 
-A következő Jupyter notebookok tölthető fel, a HDInsight Spark-fürthöz, és adja meg készen áll a minták használata az Azure Cosmos DB Cassandra API. Ne feledje el áttekinteni az első Jegyzetfüzet `1.0-ReadMe.ipynb` , tekintse át a Spark szolgáltatás konfigurációját az Azure Cosmos DB Cassandra API-hoz való kapcsolódáshoz.
+A következő Jupyter-jegyzetfüzeteket feltöltheti a HDInsight Spark-fürtbe, és kész mintákat készíthet a Azure Cosmos DB Cassandra API való munkához. Tekintse át az első jegyzetfüzet-`1.0-ReadMe.ipynb` a Spark szolgáltatás konfigurációjának áttekintéséhez Azure Cosmos DB Cassandra APIhoz való csatlakozáshoz.
 
-Töltse le ezeket a notebookokat alatt [azure-cosmos-db-cassandra-api-spark-notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) a gépre.
+Töltse le ezeket a jegyzetfüzeteket az [Azure-Cosmos-db-Cassandra-API-Spark-Notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) a gépre.
   
-### <a name="how-to-upload"></a>Hogyan tölthetők fel:
-Ha elindítja a Jupyter, navigáljon a Scala. Először hozzon létre egy könyvtárat, és ezután a notebookok feltöltése a könyvtárba. A feltöltés gombot a felső van jobb-oldalon.  
+### <a name="how-to-upload"></a>Feltöltés:
+A Jupyter indításakor navigáljon a Scala-hoz. Először hozzon létre egy könyvtárat, majd töltse fel a jegyzetfüzeteket a könyvtárba. A feltöltés gomb a jobb felső sarokban található.  
 
-### <a name="how-to-run"></a>Hogyan futtathat:
-Egymás után futnak a jegyzetfüzetek és a notebook cellákat.  A Futtatás gombra minden egyes notebook számára, hogy hajtsa végre az összes cellát, vagy a shift + enter billentyűkombinációt az egyes cellák tetején.
+### <a name="how-to-run"></a>Futtatás:
+Futtasson végig a jegyzetfüzeteken, és mindegyik jegyzetfüzet-cellát egymás után.  Kattintson az egyes jegyzetfüzetek tetején található Futtatás gombra az összes cella végrehajtásához, vagy a SHIFT + ENTER billentyűkombinációt az egyes cellákhoz.
 
-## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Hozzáférés az Azure Cosmos DB Cassandra API a Spark Scala-program
+## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Hozzáférés Azure Cosmos DB Cassandra API a Spark Scala programból
 
-Automatizált folyamatok éles környezetben, a Spark-programok elküldi a fürtön keresztül [spark-submit szkripttel](https://spark.apache.org/docs/latest/submitting-applications.html).
+Az éles környezetben futó automatizált folyamatok esetében a Spark-programokat a [Spark-Submit](https://spark.apache.org/docs/latest/submitting-applications.html)használatával küldi el a rendszer a fürtnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan hozhat létre egy Spark Scala program IDE-ben, és küldheti el a HDInsight Spark-fürt livy-n keresztül végrehajtás](../hdinsight/spark/apache-spark-create-standalone-application.md)
+* [Spark Scala-program létrehozása egy IDE-ben, és elküldése a HDInsight Spark-fürtnek a Livy-en keresztül a végrehajtáshoz](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Hogyan csatlakozhat az Azure Cosmos DB Cassandra API a Spark Scala-program](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Kapcsolódás Azure Cosmos DB Cassandra API Spark Scala programból](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
-* [Kódminták a Cassandra API használatának teljes listája](cassandra-spark-generic.md)
+* [A Cassandra API használatához használható mintakód-minták teljes listája](cassandra-spark-generic.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c5d9f665c9b3e7a439a09f4259f304f8f8b1a0a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718333"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895247"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Apache Hadoop HDFS hibáinak megoldása az Azure HDInsight használatával
 
@@ -27,7 +27,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. A parancssorban a szó szerint `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` használja a következő parancsot:
+1. A parancssorban használja a `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` szó szerint, ahogy a következő parancsban:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -37,7 +37,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. A forráskódból használja az URI `hdfs://mycluster/` -t a szó szoros értelmében, ahogy az alábbi példában is látható:
+2. A forráskódból használja az URI `hdfs://mycluster/` szó szerint, ahogy az alábbi példában is látható:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
     }
     ```
 
-3. Futtassa a lefordított. jar-fájlt (például egy nevű `java-unit-tests-1.0.jar`fájlt) a HDInsight-fürtön a következő paranccsal:
+3. Futtassa a lefordított. jar-fájlt (például egy `java-unit-tests-1.0.jar`nevű fájlt) a HDInsight-fürtön a következő paranccsal:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -76,8 +76,8 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
 
 A [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) parancs megjeleníti az adott könyvtárban található fájlok és könyvtárak méretét, vagy egy fájl hosszát, ha ez csak egy fájl.
 
-A `-s` kapcsoló a fájlok megjelenített hosszának összesített összegzését állítja elő.  
-A `-h` kapcsoló a fájlméretet formázza.
+A `-s` beállítás a fájlok megjelenített hosszának összesített összegzését állítja elő.  
+Az `-h` lehetőség a fájlméretet formázza.
 
 Példa:
 
@@ -96,12 +96,12 @@ Példa:
 hdfs dfs -rm hdfs://mycluster/tmp/testfile
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

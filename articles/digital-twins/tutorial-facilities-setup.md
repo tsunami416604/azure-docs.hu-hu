@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 68bc6f8c81fb44dc26d2208d33893c21ff9b5b3c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860979"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895451"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: az Azure digitális Twins előzetes verziójának üzembe helyezése és a térbeli gráf konfigurálása
 
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 Ez a függvény a [provisionSample. YAML](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) -t használja ugyanabban a mappában. Nyissa meg ezt a fájlt, és jegyezze fel az irodaház hierarchiáját: *helyszín*, a *padló*, a *terület*és a *szobák*. A fizikai területek bármelyike tartalmazhat *eszközöket* és *érzékelőket*. Mindegyik bejegyzéshez előre definiált `type`&mdash;tartozik, például a padló, a szoba.
@@ -150,7 +149,7 @@ A **provisionSample. YAML** fájl a következő csomópontokat tartalmazza:
 
 - **devices**: A terek `devices`-elemeket tartalmazhatnak, amelyek érzékelőket kezelő fizikai vagy virtuális entitások. Előfordulhat például, hogy egy eszköz lehet egy felhasználó telefonja, egy málna PI szenzor Pod vagy egy átjáró. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
 
-- **érzékelők**: az eszközök több `sensors`is tartalmazhatnak. Képesek a fizikai változások, például a hőmérséklet, a mozgás és az akkumulátor szintjének észlelésére és rögzítésére. Minden érzékelő csomópontot egyedileg azonosít egy `hardwareId`, hardcoded itt. Egy tényleges alkalmazás esetében cserélje le ezeket az érzékelők egyedi azonosítóinak használatával a telepítőben. A provisionSample. YAML fájl két érzékelővel rendelkezik a *Motion* és a *CarbonDioxide*rögzítéséhez. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Vegye figyelembe, hogy ezek a provisionSample. YAML-ben vannak megadva megjegyzésekkel ellátható sorokként. Az egyes sorok elején lévő `#` karakter eltávolításával törölheti a megjegyzéseket. 
+- **érzékelők**: az eszközök több `sensors`is tartalmazhatnak. Képesek a fizikai változások, például a hőmérséklet, a mozgás és az akkumulátor szintjének észlelésére és rögzítésére. Minden érzékelő csomópontot egyedileg azonosít egy `hardwareId`, hardcoded itt. Egy tényleges alkalmazás esetében cserélje le ezeket az érzékelők egyedi azonosítóinak használatával a telepítőben. A provisionSample. YAML fájl két érzékelővel rendelkezik a *Motion* és a *CarbonDioxide*rögzítéséhez. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Ezeket a provisionSample. YAML a megjegyzésekkel ellátható sorokban biztosítjuk. Az egyes sorok elején lévő `#` karakter eltávolításával törölheti a megjegyzéseket. 
 
     ```yaml
             - dataType: Temperature

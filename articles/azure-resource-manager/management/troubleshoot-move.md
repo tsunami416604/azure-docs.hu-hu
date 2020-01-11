@@ -3,12 +3,12 @@ title: Áthelyezési hibák elhárítása
 description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezéséhez használja a Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 422ecb92e264d7e728282bbe8ee491a642cf013f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478343"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891272"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Azure-erőforrások új erőforráscsoporthoz vagy előfizetésbe való áthelyezésének hibája
 
@@ -21,7 +21,7 @@ Ha valóban frissíteni szeretné az Azure-előfizetését (például az ingyene
 * Az ingyenes próbaverzió frissítését lásd: [ingyenes próbaverzió frissítése vagy Microsoft Imagine Azure-előfizetés](../../billing/billing-upgrade-azure-subscription.md)utólagos elszámolású.
 * Az utólagos elszámolású fiók módosításához lásd: [Az Azure utólagos elszámolású előfizetés módosítása egy másik ajánlatra](../../billing/billing-how-to-switch-azure-offer.md).
 
-Ha nem tudja konvertálni az előfizetést, [hozzon létre egy Azure-támogatási kérést](../../azure-supportability/how-to-create-azure-support-request.md). Válassza az **előfizetés kezelése** lehetőséget a probléma típusához.
+Ha nem tudja konvertálni az előfizetést, [hozzon létre egy Azure-támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md). Válassza az **előfizetés kezelése** lehetőséget a probléma típusához.
 
 ## <a name="service-limitations"></a>Szolgáltatási korlátozások
 
@@ -44,7 +44,7 @@ Ha olyan hibaüzenetet kap, amely azt jelzi, hogy egy erőforrás nem helyezhet�
 
 Ha a forrás vagy a cél erőforráscsoport virtuális hálózatot tartalmaz, a rendszer az áthelyezés során ellenőrzi, hogy a virtuális hálózat összes függő erőforrásának állapota be van-e jelölve. Az ellenőrzési szolgáltatás közvetlenül és közvetve a virtuális hálózattól függ. Ha valamelyik erőforrás hibás állapotban van, az áthelyezés le lesz tiltva. Ha például a virtuális hálózatot használó virtuális gép meghiúsult, az áthelyezés le lesz tiltva. Az áthelyezés akkor is le van tiltva, ha a virtuális gép nem az áthelyezett erőforrások egyike, és az áthelyezéshez nem az egyik erőforráscsoport.
 
-Ha ezt a hibaüzenetet kapja, két lehetőség közül választhat. Helyezze át az erőforrásokat olyan erőforráscsoporthoz, amely nem rendelkezik virtuális hálózattal, vagy [forduljon az ügyfélszolgálathoz](../../azure-supportability/how-to-create-azure-support-request.md).
+Ha ezt a hibaüzenetet kapja, két lehetőség közül választhat. Helyezze át az erőforrásokat olyan erőforráscsoporthoz, amely nem rendelkezik virtuális hálózattal, vagy [forduljon az ügyfélszolgálathoz](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

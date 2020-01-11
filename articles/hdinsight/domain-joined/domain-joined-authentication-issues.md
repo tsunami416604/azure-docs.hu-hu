@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 2ffc3ced360e1fdf00f69ea5826e6c6af7806f71
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215993"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896136"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Hitelesítési problémák az Azure HDInsight
 
@@ -36,7 +36,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 Az Azure AD 50126-es hibakód azt jelenti, hogy a bérlő nem állította be a `AllowCloudPasswordValidation` szabályzatot.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Az Azure ad-bérlő vállalati rendszergazdája engedélyezheti az Azure AD számára a jelszó-kivonatok használatát az ADFS-t használó felhasználók számára.  Alkalmazza a `AllowCloudPasswordValidationPolicy` az [Enterprise Security Package használata a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md)című cikkben látható módon.
 
@@ -56,7 +56,7 @@ A bejelentkezés sikertelen a 50034-es hibakód miatt. A hibaüzenet a következ
 
 A Felhasználónév helytelen (nem létezik). A felhasználó nem ugyanazt a felhasználónevet használja, mint amelyet a Azure Portal használ.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Használja ugyanazt a felhasználónevet, amely az adott portálon működik.
 
@@ -76,7 +76,7 @@ A felhasználói fiók ki van zárva, hibakód: 50053. A hibaüzenet a következ
 
 Túl sok bejelentkezési kísérlet helytelen jelszóval.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Várjon 30 percet, és állítsa le a hitelesíteni próbált alkalmazásokat.
 
@@ -96,7 +96,7 @@ A jelszó lejárt, hibakód: 50053. A hibaüzenet a következőhöz hasonló:
 
 A jelszó lejárt.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Módosítsa a jelszót a Azure Portalban (a helyszíni rendszeren), majd várjon 30 percet, amíg a szinkronizálás befejeződik.
 
@@ -112,7 +112,7 @@ A rendszer hibaüzenetet kap `interaction_required`.
 
 A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy az AD `ServiceEndpoints` engedélyezve vannak az adott vnet.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Használja a feltételes hozzáférési házirendet, és a HDInisght-fürtöket az MFA-ból is felhasználhatja, ahogy [azt a Enterprise Security Package Azure Active Directory Domain Services használatával történő konfigurálása](./apache-domain-joined-configure-using-azure-adds.md)című rész mutatja.
 
@@ -128,7 +128,7 @@ A bejelentkezés megtagadva.
 
 Ennek a szakasznak a beszerzéséhez a OAuth-hitelesítés nem jelent problémát, de a Kerberos-hitelesítés is. Ha a fürtöt a ADLS támogatja, a OAuth-bejelentkezés sikeres volt a Kerberos-hitelesítés megkísérlése előtt. A WASB-fürtökön a OAuth bejelentkezés nem történt meg. Számos oka lehet a Kerberos-hibák, például a jelszó-kivonatok szinkronizálása, a felhasználói fiók kizárva az Azure AD DS, és így tovább. A jelszó-kivonatok szinkronizálása csak akkor történt meg, amikor a felhasználó megváltoztatja a jelszót. Az Azure AD DS példány létrehozásakor a rendszer elindítja a létrehozás után módosított jelszavak szinkronizálását. Nem fogja visszamenőlegesen szinkronizálni azokat a jelszavakat, amelyek a kezdetektől fogva lettek beállítva.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Ha úgy gondolja, hogy a jelszavak nem szinkronizálhatók, próbálja meg módosítani a jelszót, és várjon néhány percet.
 
@@ -146,7 +146,7 @@ A kinit parancsot sikertelen.
 
 Változik.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Ahhoz, hogy a kinit parancsot sikeres legyen, ismernie kell a `sAMAccountName` (ez a fiók neve a tartomány nélkül). `sAMAccountName` általában a fiók előtagja (például a `bob@contoso.com`). Egyes felhasználók esetében eltérő lehet. A `sAMAccountName`megismeréséhez szükség van a címtár tallózására és keresésére.
 
@@ -172,7 +172,7 @@ A kinit parancsot `Preauthentication` hibával meghiúsul.
 
 Helytelen Felhasználónév vagy jelszó.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett egyéb tulajdonságokat is. A részletes hibakeresés engedélyezéséhez futtassa `export KRB5_TRACE=/tmp/krb.log` a munkamenetből a kinit parancsot kipróbálása előtt.
 
@@ -188,7 +188,7 @@ A feladatok/HDFS parancs `TokenNotFoundException`miatt meghiúsul.
 
 A szükséges OAuth hozzáférési jogkivonat nem található a sikeres művelethez/parancshoz. A ADLS/ABFS-illesztőprogram megpróbálja lekérni a OAuth hozzáférési tokent a hitelesítőadat-szolgáltatásból a tárolási kérelmek végrehajtása előtt. Ez a jogkivonat akkor lesz regisztrálva, ha ugyanazzal a felhasználóval jelentkezik be a Ambari-portálra.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Győződjön meg arról, hogy sikeresen bejelentkezett a Ambari-portálra azon a felhasználónévn keresztül, amelynek az identitását a rendszer a feladatok futtatására használja.
 
@@ -204,7 +204,7 @@ A felhasználó hibaüzenetet kap `Error fetching access token`.
 
 Ez a hiba időnként fordul elő, amikor a felhasználók ACL-ek használatával próbálnak hozzáférni a ADLS Gen2hoz, és a Kerberos-jogkivonat lejárt.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 * Azure Data Lake Storage Gen1 a böngésző gyorsítótárát, és jelentkezzen be újra a Ambari.
 
@@ -220,4 +220,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléssel és számlázással kapcsolatos támogatás a Microsoft Azure-előfizetés részét képezi, míg a technikai támogatást [Azure-támogatási csomagjainkkal](https://azure.microsoft.com/support/plans/) biztosítjuk.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

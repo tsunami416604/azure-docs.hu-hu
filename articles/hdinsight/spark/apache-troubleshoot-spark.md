@@ -1,6 +1,6 @@
 ---
 title: Az Azure HDInsight Apache Spark hibáinak megoldása
-description: Az Apache Spark és az Azure HDInsight használatához kapcsolatos gyakori kérdésekre adott válaszok.
+description: Választ kaphat a Apache Spark és az Azure HDInsight való használattal kapcsolatos gyakori kérdésekre.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,90 +8,90 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018430"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894294"
 ---
-# <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
+# <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark az Azure HDInsight használatával – problémamegoldás
 
 Ismerje meg a leggyakoribb problémákat és azok megoldásait, amikor Apache Spark hasznos adatokkal dolgozik az [Apache Ambari](https://ambari.apache.org/).
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása az Apache Ambari-fürtökön
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Hogyan konfiguráljon egy Apache Spark alkalmazást az Apache Ambari használatával a fürtökön?
 
-A Spark konfigurációs értékei a Apache Spark alkalmazás `OutofMemoryError` kivételének elkerülése érdekében állíthatók be. Az alábbi lépések az alapértelmezett Spark-konfigurációs értékeket mutatják be az Azure HDInsight:
+A Spark konfigurációs értékei úgy állíthatók be, hogy elkerülhető legyen Apache Spark alkalmazás `OutofMemoryError` kivétel. Az alábbi lépések az alapértelmezett Spark-konfigurációs értékeket mutatják be az Azure HDInsight:
 
-1. Jelentkezzen be a Ambari `https://CLUSTERNAME.azurehdidnsight.net` -ba a fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg. A HDInsight 3,6 és 4,0 közötti enyhe kozmetikai különbségek vannak.
+1. Jelentkezzen be a Ambari `https://CLUSTERNAME.azurehdidnsight.net` a fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg. A HDInsight 3,6 és 4,0 közötti enyhe kozmetikai különbségek vannak.
 
-1. Navigáljon a **Spark2** > -**konfigurációkhoz**.
+1. Navigáljon a **Spark2** > **configs**elemre.
 
-    ![Válassza ki a Configs lap](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
+    ![Válassza a konfigurációk fület](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. A konfigurációk listájában válassza ki és bontsa ki az **Egyéni-spark2 – alapértelmezett értékeket**.
 
-1. Keresse meg a beállítás, amely kell beállítani, mint például **spark.executor.memory**. Ebben az esetben a **9728m** értéke túl magas.
+1. Keresse meg a módosítani kívánt érték beállítást, például **Spark. végrehajtó. Memory**. Ebben az esetben a **9728m** értéke túl magas.
 
-    ![Válassza ki az egyéni – a spark-alapértelmezései](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
+    ![Egyéni-Spark – alapértékek kiválasztása](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-1. Állítsa az értékét az ajánlott beállítás. Az érték **2048m** állítja ezt a beállítást javasoljuk.
+1. Állítsa be az értéket az ajánlott beállításra. Ehhez a beállításhoz a **2048m** érték használata javasolt.
 
-1. Mentse az értéket, és mentse a konfigurációt. Kattintson a **Mentés** gombra.
+1. Mentse az értéket, majd mentse a konfigurációt. Kattintson a **Mentés** gombra.
 
-    ![Módosítsa az értéket a 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
+    ![Érték módosítása 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Írjon megjegyzést a konfigurációs változásokról, és válassza ki **mentése**.
+    Jegyezze fel a konfigurációs módosításokat, majd kattintson a **Mentés**gombra.
 
-    ![Adja meg a végzett módosítások kapcsolatos megjegyzés](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
+    ![Adjon meg egy megjegyzést az elvégzett módosításokról](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    Ha a figyelmet igénylő konfigurációk értesítést kap. Jegyezze fel az elemeket, és válassza ki **folytatja ennek ellenére**.
+    Értesítést kap, ha bármilyen konfigurációhoz beavatkozásra van szükség. Jegyezze fel az elemeket, majd válassza a **Folytatás egyébként**lehetőséget.
 
-    ![Válassza ki folytatja ennek ellenére](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
+    ![Válassza a folytatás](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. Amikor egy konfigurációs mentette, a rendszer kéri, indítsa újra a szolgáltatást. Válassza ki **indítsa újra a**.
+1. Amikor egy konfiguráció mentve lett, a rendszer felszólítja a szolgáltatás újraindítására. Válassza az **Újraindítás**lehetőséget.
 
-    ![Válassza az újraindítás](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
+    ![Újraindítás kiválasztása](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     Erősítse meg az újraindítást.
 
-    ![Indítsa újra az összes jóváhagyás kijelölése](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
+    ![Válassza az összes újraindításának megerősítése lehetőséget.](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
-    A futó folyamatok tekintheti meg.
+    Áttekintheti a futó folyamatokat.
 
-    ![Tekintse át a futó folyamatok](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
+    ![Futó folyamatok áttekintése](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Konfigurációkat adhat hozzá. Konfigurációk listájából válassza ki **egyéni-spark2 – alapértelmezett**, majd válassza ki **tulajdonság hozzáadása**.
+1. Hozzáadhat konfigurációkat is. A konfigurációk listájában válassza az **Egyéni-spark2-alapértékek**lehetőséget, majd kattintson a **tulajdonság hozzáadása**lehetőségre.
 
-    ![Válassza ki a tulajdonság hozzáadása](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
+    ![Válassza a tulajdonság hozzáadása lehetőséget](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
-1. Adjon meg egy új tulajdonság. Egyetlen tulajdonság meghatározhatja az egyes beállítások, például az adattípus párbeszédpanel használatával. Vagy több tulajdonságok adhatók soronként egy definíció használatával.
+1. Adjon meg egy új tulajdonságot. Egyetlen tulajdonságot az egyes beállításokhoz, például az adattípushoz tartozó párbeszédpanel használatával adhat meg. Másik lehetőségként több tulajdonságot is megadhat, ha egy definíciót használ soronként.
 
-    Ebben a példában a **spark.driver.memory** tulajdonság értékkel van definiálva **4g**.
+    Ebben a példában a **Spark. Driver. Memory** tulajdonság a **4G**értékkel van definiálva.
 
-    ![Adja meg az új tulajdonság](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
+    ![Új tulajdonság definiálása](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
-1. A konfiguráció mentéséhez, és indítsa újra a 6 és 7 lépésben ismertetett módon.
+1. Mentse a konfigurációt, majd indítsa újra a szolgáltatást a 6. és 7. lépésekben leírtak szerint.
 
-Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felülbírálható.
+Ezek a változások a fürtre kiterjedő, de a Spark-feladatok elküldésekor felülbírálható.
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása a fürtök Jupyter notebook használatával
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfiguráljon egy Apache Spark alkalmazást egy Jupyter notebook használatával a fürtökön?
 
-Az első olyan cellára, a Jupyter notebookot az után a **%% konfigurálása** irányelv, érvényes JSON formátumban adja meg a Spark-konfigurációkat. A tényleges értékek módosítása szükséges:
+A Jupyter jegyzetfüzet első cellájában, a **%% configure** direktíva után adja meg a Spark-konfigurációkat érvényes JSON formátumban. Módosítsa a tényleges értékeket szükség szerint:
 
 ![Konfiguráció hozzáadása](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása fürtökön Apache Livy használatával
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Hogyan konfiguráljon egy Apache Spark alkalmazást az Apache Livy használatával a fürtökön?
 
-Küldje el a Livy-, Spark-alkalmazás REST-ügyfél, például a cURL használatával. Használjon az alábbihoz hasonló parancsot. A tényleges értékek módosítása szükséges:
+Küldje el a Spark-alkalmazást a Livy egy REST-ügyfél, például a cURL használatával. Használjon az alábbihoz hasonló parancsot. Módosítsa a tényleges értékeket szükség szerint:
 
 ```apache
 curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
 ```
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatom egy Apache Spark, az alkalmazás a spark-submit fürtökön?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfiguráljon egy Apache Spark alkalmazást a fürtökön a Spark-Submit paranccsal?
 
-Indítsa el a spark-shell az alábbihoz hasonló parancs használatával. Szükség szerint módosítsa a konfiguráció a tényleges érték:
+Indítsa el a Spark-shellt az alábbihoz hasonló parancs használatával. Szükség szerint módosítsa a konfigurációk tényleges értékét:
 
 ```apache
 spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
@@ -99,9 +99,9 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Apache Spark a feladatok beküldését a HDInsight-fürtökön](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
@@ -111,6 +111,6 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658542"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889525"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -87,9 +87,9 @@ Előfordulhat, hogy a fürtök áttelepítésekor külső Azure-szolgáltatások
 
 ## <a name="ensure-valid-quotas"></a>Érvényes kvóták biztosítása
 
-Mivel az áttelepítés során további virtuális gépek lesznek telepítve az előfizetésben, ellenőriznie kell, hogy a kvóták és a korlátozások elegendőek-e az adott erőforrásokhoz. Előfordulhat, hogy a [vCPU-kvóta](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)növelését kell kérnie.
+Mivel az áttelepítés során további virtuális gépek lesznek telepítve az előfizetésben, ellenőriznie kell, hogy a kvóták és a korlátozások elegendőek-e az adott erőforrásokhoz. Előfordulhat, hogy a [vCPU-kvóta](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)növelését kell kérnie.
 
-Előfordulhat, hogy a [hálózati kvóták](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) növelését kell megadnia, hogy ne legyenek kimerítve az IP-címek. További információért lásd: [hálózati és IP-címtartományok](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+Előfordulhat, hogy a [hálózati kvóták](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) növelését kell megadnia, hogy ne legyenek kimerítve az IP-címek. További információért lásd: [hálózati és IP-címtartományok](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
 További információ: Azure- [előfizetés és-szolgáltatási korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
 

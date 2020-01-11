@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure DB for PostgreSQL?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Egyetlen kiszolgáló
@@ -98,6 +98,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: Azure AD-hitelesítés
               href: concepts-aad-authentication.md
+            - name: Privát kapcsolat
+              href: concepts-data-access-and-security-private-link.md
         - name: Az üzletmenet folytonossága
           items:
             - name: Az üzletmenet folytonossága – bevezetés
@@ -251,6 +253,12 @@
               href: howto-manage-vnet-using-portal.md
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
+        - name: Privát kapcsolat
+          items:
+            - name: Azure Portal
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
         - name: Kiszolgáló újraindítása
           items:
             - name: Azure Portal

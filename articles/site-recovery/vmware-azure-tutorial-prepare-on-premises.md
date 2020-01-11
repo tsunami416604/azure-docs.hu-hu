@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953749"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893638"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -94,7 +94,7 @@ Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Wi
 - **Helyek közötti VPN-elérés**:
     - Feladatátvétel előtt engedélyezze az RDP-t a helyszíni gépen.
     - Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
-    - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információ](https://support.microsoft.com/kb/3031135).
+    - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135).
 - A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 - A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
@@ -108,7 +108,7 @@ Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Li
 
 
 ## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
-Ha azt tervezi, hogy visszaadja a feladatokat a helyszíni helynek, a feladat- [visszavételhez számos előfeltételt](vmware-azure-reprotect.md##before-you-begin)kell megadnia. Ezeket most is előkészítheti, de nem szükséges. Az Azure-ba történő feladatátvétel után is előkészítheti a feladatokat.
+Ha azt tervezi, hogy visszaadja a feladatokat a helyszíni helynek, a feladat- [visszavételhez számos előfeltételt](vmware-azure-reprotect.md#before-you-begin)kell megadnia. Ezeket most is előkészítheti, de nem szükséges. Az Azure-ba történő feladatátvétel után is előkészítheti a feladatokat.
 
 
 

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793431"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896385"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -29,7 +29,7 @@ A műveletek például a következők:
 
 * A speciális műveleteket kiváltó eseményindítók. Minden logikai alkalmazásnak szüksége van egy triggerre az első lépésként.
 * ["Beépített" vagy natív műveletek](../connectors/apis-list.md#built-in) , mint például a http, a Azure functions és a API Management hívások
-* A [felügyelt összekötők](../connectors/apis-list.md##managed-connectors) , például az Outlook 365, a Dropbox stb. meghívása
+* A [felügyelt összekötők](../connectors/apis-list.md#managed-connectors) , például az Outlook 365, a Dropbox stb. meghívása
 * Vezérlési folyamat lépései, például hurkok, feltételes utasítások stb.
 
 A standard [szintű összekötőket](../connectors/apis-list.md#managed-connectors) a [standard szintű összekötő](https://azure.microsoft.com/pricing/details/logic-apps)díja alapján számítjuk fel. Az általánosan [elérhető nagyvállalati](../connectors/apis-list.md#managed-connectors) összekötőket a [vállalati összekötők díjszabása](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel, míg a nyilvános előzetes verziójú vállalati összekötők [díját a standard szintű összekötő](https://azure.microsoft.com/pricing/details/logic-apps)díja alapján számítjuk fel

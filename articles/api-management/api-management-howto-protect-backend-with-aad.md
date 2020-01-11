@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36b4b597ae70642fee8726555ea71b5164c13cca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442513"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889384"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Az API-k védelemmel való ellátása a OAuth 2,0-mel a Azure Active Directory és API Management használatával
 
@@ -47,12 +47,12 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 Az API-k Azure AD-vel való ellátásához az első lépés egy olyan alkalmazás regisztrálása az Azure AD-ben, amely az API-t képviseli. 
 
-1. Navigáljon a [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapra. 
+1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **API-regisztrációkat**.
 
 1. Válassza az **új regisztráció**lehetőséget. 
 
 1. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait: 
-    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `backend-app`). 
+    - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például *háttér-alkalmazás*). 
     - A **támogatott fióktípus** szakaszban válasszon egy olyan beállítást, amely megfelel a forgatókönyvnek. 
 
 1. Hagyja üresen az **átirányítási URI** szakaszt.
@@ -63,51 +63,51 @@ Az API-k Azure AD-vel való ellátásához az első lépés egy olyan alkalmazá
 
 1. Válassza ki az **API közzététele** lehetőséget, és állítsa be az **alkalmazás-azonosító URI-ját** az alapértelmezett értékre. Jegyezze fel ezt az értéket később.
 
-1. A **hatókör hozzáadása** lapon hozzon létre egy új, az API által támogatott hatókört. (például olvassa el), majd kattintson a *hatókör hozzáadása* elemre a hatókör létrehozásához. Ismételje meg ezt a lépést az API által támogatott összes hatókör hozzáadásához.
+1. Kattintson a **hatókör hozzáadása** gombra a **hatókör** hozzáadása lap megjelenítéséhez. Ezután hozzon létre egy új hatókört, amelyet az API támogat (például `Files.Read`). Végül kattintson a **hatókör hozzáadása** gombra a hatókör létrehozásához. Ismételje meg ezt a lépést az API által támogatott összes hatókör hozzáadásához.
 
-1. A hatókör létrehozásakor jegyezze fel, hogy egy későbbi lépésben való használatra. 
+1. A hatókörök létrehozásakor jegyezze fel őket egy későbbi lépésben való használatra. 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Egy másik alkalmazás regisztrálása az Azure AD-ben egy ügyfélalkalmazás képviseletéhez
 
 Minden ügyfélalkalmazás, amely meghívja az API-t, alkalmazásként kell regisztrálni az Azure AD-ben is. Ebben a példában az ügyfélalkalmazás a fejlesztői konzol a API Management fejlesztői portálon. A következő témakörből megtudhatja, hogyan regisztrálhat egy másik alkalmazást az Azure AD-ben a fejlesztői konzol megjelenítéséhez.
 
-1. Navigáljon a [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapra. 
+1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **API-regisztrációkat**.
 
 1. Válassza az **új regisztráció**lehetőséget.
 
 1. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait: 
-    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `client-app`). 
-    - A **támogatott fiókok típusai** szakaszban válassza a **fiókok lehetőséget bármely szervezeti címtárban**. 
+    - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például *Client-app*). 
+    - A **támogatott fiókok típusai** szakaszban válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő)** . 
 
-1. Az **átirányítási URI** szakaszban válassza a `Web` lehetőséget, és adja meg az URL-címet `https://contoso5.portal.azure-api.net/signin`
+1. Az **átirányítási URI** szakaszban válassza a `Web` lehetőséget, majd adja meg az URL-címet `https://contoso5.portal.azure-api.net/signin`.
 
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
 
 1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később.
 
-Most hozzon létre egy ügyfél-titkot ehhez az alkalmazáshoz egy későbbi lépésben való használatra.
+Most hozzon létre egy ügyfél-titkot az alkalmazás számára egy későbbi lépésben való használatra.
 
 1. Az ügyfélalkalmazás oldalain válassza a **tanúsítványok & titkok**lehetőséget, és válassza az **új ügyfél titka**lehetőséget.
 
 1. Az **ügyfél titkos kulcsának hozzáadása**területen adjon meg egy **leírást**. Válassza ki a kulcs lejárati idejét, majd válassza a **Hozzáadás**lehetőséget.
 
-A titkos kód létrehozásakor jegyezze fel a kulcs értékét a következő lépésben való használatra. 
+A titkos kód létrehozásakor jegyezze fel a kulcs értékét egy későbbi lépésben való használatra. 
 
 ## <a name="grant-permissions-in-azure-ad"></a>Engedélyek megadása az Azure AD-ben
 
 Most, hogy regisztrált két alkalmazást az API és a fejlesztői konzol képviseletére, engedélyeket kell megadnia ahhoz, hogy az ügyfél-alkalmazás meghívni lehessen a háttér-alkalmazást.  
 
-1. Navigáljon **Alkalmazásregisztrációk**. 
+1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki az **API-regisztrációkat**.
 
-1. Válassza a `client-app`lehetőséget, majd az alkalmazás lapjain keresse meg az **API-engedélyek**elemet.
+1. Válassza ki az ügyfélalkalmazás. Ezután az alkalmazás oldalain válassza az **API-engedélyek**lehetőséget.
 
 1. Válassza **az engedély hozzáadása**lehetőséget.
 
-1. Az **API kiválasztása**területen keresse meg és válassza ki `backend-app`.
+1. Az **API kiválasztása**területen válassza a **saját API**-k elemet, majd keresse meg és válassza ki a háttér-alkalmazás elemet.
 
-1. A **delegált engedélyek**területen válassza ki a megfelelő engedélyeket `backend-app` majd kattintson a **Hozzáadás engedélyek**elemre.
+1. A **delegált engedélyek**területen válassza ki a háttér-alkalmazás megfelelő engedélyeit, majd válassza az **engedélyek hozzáadása**lehetőséget.
 
-1. Ha szükséges, az **API-engedélyek** lapon kattintson a **rendszergazdai jóváhagyás megadása lehetőségre < a-bérlő-neve >** a lap alján, hogy a jóváhagyást a címtár összes felhasználója nevében megadja. 
+1. Ha kívánja, az **API-engedélyek** lapon jelölje be a **rendszergazdai jóváhagyás megadása \<a-bérlő-neve >** lehetőséget, hogy a jóváhagyást a címtár összes felhasználója nevében megadja. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>A OAuth 2,0 felhasználói hitelesítés engedélyezése a Fejlesztői konzolon
 

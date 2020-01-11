@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 60d9c7fb57e079fde54d60df9b90266ccb94acdc
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747264"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895828"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Tervezett karbantartási értesítések feldolgozása
 
@@ -29,7 +29,7 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 Az újraindítást igénylő tervezett karbantartás hullámokban van ütemezve. Minden egyes hullám különböző hatókörrel (régiókkal) rendelkezik.
 
-- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld az előfizetés tulajdonosának és a közös tulajdonosoknak. A [műveletnapló értesítéseivel](../azure-monitor/platform/platform-logs-overview.md)további címzetteket és üzenetküldési lehetőségeket, például e-maileket, SMS-t és webhookokat adhat hozzá.  
+- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld az előfizetés tulajdonosának és a közös tulajdonosoknak. A [műveletnapló értesítéseivel](../service-health/alerts-activity-log-service-notifications.md)további címzetteket és üzenetküldési lehetőségeket, például e-maileket, SMS-t és webhookokat adhat hozzá.  
 - Ha egy értesítés bekerül, az *önkiszolgáló ablak* elérhetővé válik. Ebben az ablakban lekérdezheti, hogy mely virtuális gépek érintettek, és hogyan kezdheti el a karbantartást a saját ütemezési igényei alapján. Az önkiszolgáló ablak általában körülbelül 35 nap.
 - Az önkiszolgáló ablak után megkezdődik az *ütemezett karbantartási* időszak. Ezen az időszakon belül az Azure ütemezni fogja a szükséges karbantartást a virtuális gépen. 
 

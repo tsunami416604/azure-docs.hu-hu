@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d578b5d08fecde733bb7b257057e480fef83c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754413"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890668"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -71,9 +70,8 @@ Konfigurálja és tesztelje az Azure AD SSO-t a NetSuite használatával egy **B
 Az Azure AD SSO és a NetSuite konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
-
-    a. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon felhasználóval.  
-    b. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy engedélyezze a B. Simon felhasználó számára az Azure ad egyszeri bejelentkezés használatát.
+    * [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon felhasználóval.  
+    * [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy engedélyezze a B. Simon felhasználó számára az Azure ad egyszeri bejelentkezés használatát.
 1. [Konfigurálja a NETSUITE SSO](#configure-netsuite-sso) -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
     * [Hozza létre a NetSuite-teszt felhasználót](#create-the-netsuite-test-user) , hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez csatolt B. Simon felhasználóval.
 1. Ellenőrizze az [SSO](#test-sso) -t a konfiguráció működésének ellenőrzéséhez.
@@ -90,52 +88,32 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban a **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő formátumok egyikében:
 
-    ```
-    https://<tenant-name>.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.NetSuite.com/saml2/acs
-    https://<tenant-name>.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
+    ||
+    |-|
+    | `https://<Account ID>.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
     > [!NOTE]
     > Az előző URL-címek értékei nem valósak. Frissítse őket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a [NetSuite ügyfél-támogatási csapathoz](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
 
-    A NetSuite-alkalmazás azt várja, hogy az SAML-kijelentések egy adott formátumban jelenjenek meg. Egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. 
-    
-1. A **felhasználói attribútumok** panel megnyitásához válassza a **Szerkesztés** ("ceruza") ikont. Az ablaktábla az alapértelmezett attribútumok listáját jeleníti meg, ahogyan az a következő képen látható: 
+1. A NetSuite-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![A felhasználói attribútumok panel](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-    Ezen attribútumok mellett a NetSuite-alkalmazás néhány további attribútumot vár, amelyeket vissza kell adni az SAML-válaszban. 
+1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-1. A **felhasználói attribútumok** ablaktábla **felhasználói jogcímek**területén hajtsa végre a következő lépéseket a következő táblázatban látható SAML-jogkivonat attribútum hozzáadásához:
-
-    | Név | Forrás attribútum | 
+    | Név | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
-    a. Válassza az **új jogcím hozzáadása** elemet a **felhasználói jogcímek kezelése** ablaktábla megnyitásához.
+    > [!NOTE]
+    > A fiók attribútum értéke nem valódi. Ezt az értéket az oktatóanyag későbbi részében leírtak szerint frissítheti.
 
-    b. A **név** mezőbe írja be az adott sorhoz megjelenített attribútum nevét.
-
-    c. Hagyja üresen a **névtér** mezőt.
-
-    d. A **forrás** legördülő listában válassza az **attribútum**elemet.
-
-    e. A **forrás attribútum** listán adja meg az adott sorhoz megjelenített attribútumérték értékét.
-
-    f. Kattintson az **OK** gombra.
-
-    g. Kattintson a **Mentés** gombra.
-
-    >[!NOTE]
-    >A fiók attribútum értéke nem valódi. Ezt az értéket az oktatóanyag későbbi részében leírtak szerint frissítheti.
-
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját**.
-
-1. A **Letöltés** gombra kattintva letöltheti a tanúsítványt, és mentheti a számítógépre.
+1. Az egyszeri bejelentkezés az SAML-vel lapon az SAML aláíró tanúsítvány szakaszban keresse meg az összevonási metaadatok XML-fájlját, és válassza a letöltés lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -147,7 +125,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**  > **felhasználók**  > **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
 
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
@@ -183,7 +161,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
 1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a NetSuite vállalati webhelyre rendszergazdaként.
 
-2. A felső navigációs sávon válassza a **beállítás**lehetőséget, majd válassza a **vállalati**  > **szolgáltatások engedélyezése**lehetőséget.
+2. A felső navigációs sávon válassza a **beállítás**lehetőséget, majd válassza a **vállalati** > **szolgáltatások engedélyezése**lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -215,9 +193,9 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     b. Az **SAMLV2-szolgáltató metaadatainak**területén válassza a **identitásszolgáltató-metaadatok feltöltése**lehetőséget, majd a **Tallózás** gombra kattintva töltse fel a letöltött metaadat-fájlt a Azure Portal.
 
-    c. Válassza a **Küldés**lehetőséget.
+    c. Válassza a **Küldés** lehetőséget.
 
-9. A NetSuite felső navigációs sávban válassza a **beállítás**lehetőséget, majd válassza a **vállalati**  > **vállalati adatok**elemet.
+9. A NetSuite felső navigációs sávban válassza a **beállítás**lehetőséget, majd válassza a **vállalati** > **vállalati adatok**elemet.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-com.png)
 
@@ -275,7 +253,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
 Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a NetSuite-ban. A NetSuite az igény szerinti felhasználói üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs művelet. Ha egy felhasználó még nem létezik a NetSuite-ban, a rendszer egy újat hoz létre a hitelesítés után.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
@@ -287,4 +265,3 @@ Ha a hozzáférési panelen kiválasztja a NetSuite csempét, akkor automatikusa
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [A NetSuite kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-

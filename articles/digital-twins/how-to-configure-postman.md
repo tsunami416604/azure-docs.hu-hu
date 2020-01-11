@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: d87112697bfa3aa7bb6b4c8f14420598ccd914cb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8c358b727a436f1951337005883b5d577119fac1
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864315"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895621"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -66,7 +66,7 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
 
     Jelölje be a **hozzáférési jogkivonatok** lehetőséget a **oauth2AllowImplicitFlow** beállítás engedélyezéséhez a manifest. JSON fájlban.
 
-    [![nyilvános ügyfél-konfigurációs beállítás](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![nyilvános ügyfél-konfigurációs beállítás](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1. Másolja és őrizze meg Azure Active Directory **alkalmazásának azonosítóját** . Ezt az alábbi lépések használják.
 
